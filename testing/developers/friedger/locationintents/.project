@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>OpenIntentsFriedgerLocationIntents</name>
+	<name>LocationsView</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -32,14 +32,14 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/org/openintents/provider/Location.java</name>
-			<type>1</type>
-			<location>D:/Programmieren/Android/OpenIntents/src/org/openintents/provider/Location.java</location>
-		</link>
-		<link>
 			<name>src/org/openintents/locations/LocationsProvider.java</name>
 			<type>1</type>
 			<location>D:/Programmieren/Android/OpenIntents/src/org/openintents/locations/LocationsProvider.java</location>
+		</link>
+		<link>
+			<name>src/org/openintents/provider/Location.java</name>
+			<type>1</type>
+			<location>D:/Programmieren/Android/OpenIntents/src/org/openintents/provider/Location.java</location>
 		</link>
 	</linkedResources>
 </projectDescription>
