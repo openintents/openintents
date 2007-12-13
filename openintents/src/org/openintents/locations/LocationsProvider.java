@@ -58,11 +58,10 @@ public class LocationsProvider extends ContentProvider {
     private static final ContentURIParser URL_MATCHER;
 
     private static class DatabaseHelper extends ContentProviderDatabaseHelper {
-
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
-                    + "title TEXT," + "note TEXT," + "created INTEGER,"
+                    + "latitude DOUBLE," + "longitude DOUBLE," + "created INTEGER,"
                     + "modified INTEGER" + ");");
         }
 
@@ -89,12 +88,12 @@ public class LocationsProvider extends ContentProvider {
 
         switch (URL_MATCHER.match(url)) {
         case LOCATIONS:
-            qb.setTables("notes");
+            qb.setTables("locations");
             qb.setProjectionMap(LOCATION_PROJECTION_MAP);
             break;
 
         case LOCATION_ID:
-            qb.setTables("notes");
+            qb.setTables("locations");
             qb.appendWhere("_id=" + url.getPathSegment(1));
             break;
 
@@ -120,10 +119,10 @@ public class LocationsProvider extends ContentProvider {
     public String getType(ContentURI url) {
         switch (URL_MATCHER.match(url)) {
         case LOCATIONS:
-            return "vnd.android.cursor.dir/vnd.openintents.location";
+            return "vnd.openintents.cursor.dir/location";
 
         case LOCATION_ID:
-            return "vnd.android.cursor.item/vnd.openintents.location";
+            return "vnd.openintents.cursor.item/location";
 
         default:
             throw new IllegalArgumentException("Unknown URL " + url);
@@ -221,8 +220,8 @@ public class LocationsProvider extends ContentProvider {
 
     static {
         URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
-        URL_MATCHER.addURI("org.openintents.provider.Location", "locations", LOCATIONS);
-        URL_MATCHER.addURI("org.openintents.provider.Location", "locations/#", LOCATION_ID);
+        URL_MATCHER.addURI("org.openintents.locations", "locations", LOCATIONS);
+        URL_MATCHER.addURI("org.openintents.locations", "locations/#", LOCATION_ID);
 
         LOCATION_PROJECTION_MAP = new HashMap<String, String>();
         LOCATION_PROJECTION_MAP.put(Location.Locations._ID, "_id");

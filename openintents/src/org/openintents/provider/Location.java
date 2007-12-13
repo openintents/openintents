@@ -20,13 +20,13 @@ public abstract class Location {
        
         /**
          * The latitude of the location
-         * <P>Type: TEXT</P>
+         * <P>Type: DOUBLE</P>
          */
         public static final String LATITUDE = "latitude";
 
         /**
          * The longitude of the location
-         * <P>Type: TEXT</P>
+         * <P>Type: DOUBLE</P>
          */
         public static final String LONGITUDE = "longitude";
 
