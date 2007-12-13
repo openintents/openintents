@@ -40,194 +40,208 @@ import android.util.Log;
 /**
  * Provides access to a database of notes. Each note has a title, the note
  * itself, a creation date and a modified data.
- *
+ * 
  */
 public class LocationsProvider extends ContentProvider {
-    
-    private SQLiteDatabase mDB;
 
-    private static final String TAG = "LocationsProvider";
-    private static final String DATABASE_NAME = "locations.db";
-    private static final int DATABASE_VERSION = 2;
+	private SQLiteDatabase mDB;
 
-    private static HashMap<String, String> LOCATION_PROJECTION_MAP;
+	private static final String TAG = "LocationsProvider";
+	private static final String DATABASE_NAME = "locations.db";
+	private static final int DATABASE_VERSION = 3;
 
-    private static final int LOCATIONS = 1;
-    private static final int LOCATION_ID = 2;
+	private static HashMap<String, String> LOCATION_PROJECTION_MAP;
 
-    private static final ContentURIParser URL_MATCHER;
+	private static final int LOCATIONS = 1;
+	private static final int LOCATION_ID = 2;
 
-    private static class DatabaseHelper extends ContentProviderDatabaseHelper {
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
-                    + "latitude DOUBLE," + "longitude DOUBLE," + "created INTEGER,"
-                    + "modified INTEGER" + ");");
-        }
+	private static final ContentURIParser URL_MATCHER;
 
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS locations");
-            onCreate(db);
-        }
-    }
-    
-    @Override
-    public boolean onCreate() {
-        DatabaseHelper dbHelper = new DatabaseHelper();
-        mDB = dbHelper.openDatabase(getContext(), DATABASE_NAME, null, DATABASE_VERSION);
-        return (mDB == null) ? false : true;
-    }
+	private static class DatabaseHelper extends ContentProviderDatabaseHelper {
+		@Override
+		public void onCreate(SQLiteDatabase db) {
+			db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
+					+ "latitude VARCHAR," + "longitude VARCHAR,"
+					+ "created INTEGER," + "modified INTEGER" + ");");
+		}
 
-    @Override
-    public Cursor query(ContentURI url, String[] projection, String selection,
-            String[] selectionArgs, String groupBy, String having, String sort) {
-        QueryBuilder qb = new QueryBuilder();
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
+					+ newVersion + ", which will destroy all old data");
+			db.execSQL("DROP TABLE IF EXISTS locations");
+			onCreate(db);
+		}
+	}
 
-        switch (URL_MATCHER.match(url)) {
-        case LOCATIONS:
-            qb.setTables("locations");
-            qb.setProjectionMap(LOCATION_PROJECTION_MAP);
-            break;
+	@Override
+	public boolean onCreate() {
+		DatabaseHelper dbHelper = new DatabaseHelper();
+		mDB = dbHelper.openDatabase(getContext(), DATABASE_NAME, null,
+				DATABASE_VERSION);
+		return mDB != null;
+	}
 
-        case LOCATION_ID:
-            qb.setTables("locations");
-            qb.appendWhere("_id=" + url.getPathSegment(1));
-            break;
+	@Override
+	public Cursor query(ContentURI url, String[] projection, String selection,
+			String[] selectionArgs, String groupBy, String having, String sort) {
+		QueryBuilder qb = new QueryBuilder();
 
-        default:
-            throw new IllegalArgumentException("Unknown URL " + url);
-        }
+		switch (URL_MATCHER.match(url)) {
+		case LOCATIONS:
+			qb.setTables("locations");
+			qb.setProjectionMap(LOCATION_PROJECTION_MAP);
+			break;
 
-        // If no sort order is specified use the default
-        String orderBy;
-        if (TextUtils.isEmpty(sort)) {
-            orderBy = Location.Locations.DEFAULT_SORT_ORDER;
-        } else {
-            orderBy = sort;
-        }
+		case LOCATION_ID:
+			qb.setTables("locations");
+			qb.appendWhere("_id=" + url.getPathSegment(1));
+			break;
 
-        Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-                having, orderBy);
-        c.setNotificationUri(getContext().getContentResolver(), url);
-        return c;
-    }
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
 
-    @Override
-    public String getType(ContentURI url) {
-        switch (URL_MATCHER.match(url)) {
-        case LOCATIONS:
-            return "vnd.openintents.cursor.dir/location";
+		// If no sort order is specified use the default
+		String orderBy;
+		if (TextUtils.isEmpty(sort)) {
+			orderBy = Location.Locations.DEFAULT_SORT_ORDER;
+		} else {
+			orderBy = sort;
+		}
 
-        case LOCATION_ID:
-            return "vnd.openintents.cursor.item/location";
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
+				having, orderBy);
+		c.setNotificationUri(getContext().getContentResolver(), url);
+		return c;
+	}
 
-        default:
-            throw new IllegalArgumentException("Unknown URL " + url);
-        }
-    }
+	@Override
+	public String getType(ContentURI url) {
+		switch (URL_MATCHER.match(url)) {
+		case LOCATIONS:
+			return "vnd.openintents.cursor.dir/location";
 
-    @Override
-    public ContentURI insert(ContentURI url, ContentValues initialValues) {
-        long rowID;
-        ContentValues values;
-        if (initialValues != null) {
-            values = new ContentValues(initialValues);
-        } else {
-            values = new ContentValues();
-        }
+		case LOCATION_ID:
+			return "vnd.openintents.cursor.item/location";
 
-        if (URL_MATCHER.match(url) != LOCATIONS) {
-            throw new IllegalArgumentException("Unknown URL " + url);
-        }
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
+	}
 
-        Long now = Long.valueOf(System.currentTimeMillis());
-        Resources r = Resources.getSystem();
+	@Override
+	public ContentURI insert(ContentURI url, ContentValues initialValues) {
+		long rowID;
+		ContentValues values;
+		if (initialValues != null) {
+			values = new ContentValues(initialValues);
+		} else {
+			values = new ContentValues();
+		}
 
-        // Make sure that the fields are all set
-        if (values.containsKey(Location.Locations.CREATED_DATE) == false) {
-            values.put(Location.Locations.CREATED_DATE, now);
-        }
+		if (URL_MATCHER.match(url) != LOCATIONS) {
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
 
-        if (values.containsKey(Location.Locations.MODIFIED_DATE) == false) {
-            values.put(Location.Locations.MODIFIED_DATE, now);
-        }
+		Long now = Long.valueOf(System.currentTimeMillis());
+		Resources r = Resources.getSystem();
 
+		// Make sure that the fields are all set
+		if (!values.containsKey(Location.Locations.CREATED_DATE)) {
+			values.put(Location.Locations.CREATED_DATE, now);
+		}
 
-        rowID = mDB.insert("locations", "location", values);
-        if (rowID > 0) {
-            ContentURI uri = Location.Locations.CONTENT_URI.addId(rowID);
-            getContext().getContentResolver().notifyChange(uri, null);
-            return uri;
-        }
+		if (!values.containsKey(Location.Locations.MODIFIED_DATE)) {
+			values.put(Location.Locations.MODIFIED_DATE, now);
+		}
 
-        throw new SQLException("Failed to insert row into " + url);
-    }
+		rowID = mDB.insert("locations", "location", values);
+		if (rowID > 0) {
+			ContentURI uri = Location.Locations.CONTENT_URI.addId(rowID);
+			getContext().getContentResolver().notifyChange(uri, null);
+			return uri;
+		}
 
-    @Override
-    public int delete(ContentURI url, String where, String[] whereArgs) {
-        int count;
-        long rowId = 0;
-        switch (URL_MATCHER.match(url)) {
-        case LOCATIONS:
-            count = mDB.delete("locations", where, whereArgs);
-            break;
+		throw new SQLException("Failed to insert row into " + url);
+	}
 
-        case LOCATION_ID:
-            String segment = url.getPathSegment(1);
-            rowId = Long.parseLong(segment);
-            count = mDB
-                    .delete("locations", "_id="
-                            + segment
-                            + (!TextUtils.isEmpty(where) ? " AND (" + where
-                                    + ')' : ""), whereArgs);
-            break;
+	@Override
+	public int delete(ContentURI url, String where, String[] whereArgs) {
+		int count;
+		long rowId = 0;
+		switch (URL_MATCHER.match(url)) {
+		case LOCATIONS:
+			count = mDB.delete("locations", where, whereArgs);
+			break;
 
-        default:
-            throw new IllegalArgumentException("Unknown URL " + url);
-        }
+		case LOCATION_ID:
+			String segment = url.getPathSegment(1);
+			rowId = Long.parseLong(segment);
+			String whereString;
+			if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
 
-        getContext().getContentResolver().notifyChange(url, null);
-        return count;
-    }
+			count = mDB.delete("locations", "_id=" + segment + whereString,
+					whereArgs);
+			break;
 
-    @Override
-    public int update(ContentURI url, ContentValues values, String where, String[] whereArgs) {
-        int count;
-        switch (URL_MATCHER.match(url)) {
-        case LOCATIONS:
-            count = mDB.update("locations", values, where, whereArgs);
-            break;
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
 
-        case LOCATION_ID:
-            String segment = url.getPathSegment(1);
-            count = mDB
-                    .update("locations", values, "_id="
-                            + segment
-                            + (!TextUtils.isEmpty(where) ? " AND (" + where
-                                    + ')' : ""), whereArgs);
-            break;
+		getContext().getContentResolver().notifyChange(url, null);
+		return count;
+	}
 
-        default:
-            throw new IllegalArgumentException("Unknown URL " + url);
-        }
+	@Override
+	public int update(ContentURI url, ContentValues values, String where,
+			String[] whereArgs) {
+		int count;
+		switch (URL_MATCHER.match(url)) {
+		case LOCATIONS:
+			count = mDB.update("locations", values, where, whereArgs);
+			break;
 
-        getContext().getContentResolver().notifyChange(url, null);
-        return count;
-    }
+		case LOCATION_ID:
+			String segment = url.getPathSegment(1);
+			
+			String whereString;
+				if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
+			
+			count = mDB.update("locations", values,
+					"_id="
+							+ segment
+							+ whereString, whereArgs);
+			break;
 
-    static {
-        URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
-        URL_MATCHER.addURI("org.openintents.locations", "locations", LOCATIONS);
-        URL_MATCHER.addURI("org.openintents.locations", "locations/#", LOCATION_ID);
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
 
-        LOCATION_PROJECTION_MAP = new HashMap<String, String>();
-        LOCATION_PROJECTION_MAP.put(Location.Locations._ID, "_id");
-        LOCATION_PROJECTION_MAP.put(Location.Locations.LATITUDE, "latitude");
-        LOCATION_PROJECTION_MAP.put(Location.Locations.LONGITUDE, "longitude");
-        LOCATION_PROJECTION_MAP.put(Location.Locations.CREATED_DATE, "created");
-        LOCATION_PROJECTION_MAP.put(Location.Locations.MODIFIED_DATE, "modified");
-    }
+		getContext().getContentResolver().notifyChange(url, null);
+		return count;
+	}
+
+	static {
+		URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
+		URL_MATCHER.addURI("org.openintents.locations", "locations", LOCATIONS);
+		URL_MATCHER.addURI("org.openintents.locations", "locations/#",
+				LOCATION_ID);
+
+		LOCATION_PROJECTION_MAP = new HashMap<String, String>();
+		LOCATION_PROJECTION_MAP.put(Location.Locations._ID, "_id");
+		LOCATION_PROJECTION_MAP.put(Location.Locations.LATITUDE, "latitude");
+		LOCATION_PROJECTION_MAP.put(Location.Locations.LONGITUDE, "longitude");
+		LOCATION_PROJECTION_MAP.put(Location.Locations.CREATED_DATE, "created");
+		LOCATION_PROJECTION_MAP.put(Location.Locations.MODIFIED_DATE,
+				"modified");
+	}
 }
