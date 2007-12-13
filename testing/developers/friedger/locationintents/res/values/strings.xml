@@ -2,5 +2,8 @@
 <resources>
     <string name="app_name">Locations</string>
     <string name="add_current_location">Add curr. loc.</string>
+    <string name="list_of_locations">List of locations</string>
+    <string name="view_location">View</string>
+    <string name="tag_location">Tag</string>
 </resources>
 

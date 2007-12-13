@@ -7,7 +7,7 @@
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="OpenIntents developer interface"
+    android:text="@string/list_of_locations"
     />
 <ListView id="@+id/locations"
 	    android:layout_width="fill_parent" 
