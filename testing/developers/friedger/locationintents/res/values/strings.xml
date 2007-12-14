@@ -5,5 +5,9 @@
     <string name="list_of_locations">List of locations</string>
     <string name="view_location">View</string>
     <string name="tag_location">Tag</string>
+    
+    <string name="list_of_tags">List of Tags</string>
+    <string name="select">Select</string>
+    <string name="add">Add</string>
 </resources>
 

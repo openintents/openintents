@@ -4,8 +4,11 @@ import java.net.URISyntaxException;
 
 import org.openintents.R;
 import org.openintents.provider.Location.Locations;
+import org.openintents.provider.Tag.Contents;
+import org.openintents.provider.Tag.Tags;
 
 import android.app.Activity;
+import android.content.ContentService;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +27,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class LocationsView extends Activity implements OnItemClickListener {
+public class LocationsView extends Activity {
 
 	private static final int MENU_ADD_CURRENT_LOCATION = 1;
 	private static final int MENU_VIEW = 2;
@@ -43,19 +46,22 @@ public class LocationsView extends Activity implements OnItemClickListener {
 		setContentView(R.layout.main);
 
 		mList = (ListView) findViewById(R.id.locations);
-
-		mList.setOnItemClickListener(this);
+		
 		fillData();
 
 	}
 
-	private void fillData() {
-
-		// Get a cursor with all location
+	private void fillData() {		
+		String ids = getFavoriteIds();
+		
+		// Get a cursor with location with given id
 		Cursor c = getContentResolver().query(
 				Locations.CONTENT_URI,
 				new String[] { Locations._ID, Locations.LATITUDE,
-						Locations.LONGITUDE }, null, null,
+						Locations.LONGITUDE },
+						// soon we will have something like
+						//"_id in (?)", new String[]{ids},
+						null, null,
 				Locations.DEFAULT_SORT_ORDER);
 		startManagingCursor(c);
 
@@ -69,6 +75,39 @@ public class LocationsView extends Activity implements OnItemClickListener {
 				// The "text1" view defined in the XML template
 				new int[] { R.id.latitude, R.id.longitude });
 		mList.setAdapter(adapter);
+	}
+
+	private String getFavoriteIds() {
+		return "1,2,3";
+	}
+	
+	private String getFavoriteIds2() {
+		// query for ids with tag favorite
+		ContentURI uri = Contents.CONTENT_URI;
+		uri.addQueryParameter("tag", "favorite");
+		uri.addQueryParameter("content", Locations.CONTENT_URI.toString());
+
+		Cursor c = getContentResolver().query(uri,
+				new String[] { Contents._ID, Contents.URI }, null, null,
+				Contents.DEFAULT_SORT_ORDER);
+
+		StringBuffer sb = new StringBuffer();
+		while (c.next()) {
+			String id = null;
+			try {
+				id = new ContentURI(c.getString(1)).getPathLeaf();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (id != null) {
+				sb.append(id).append(",");
+			}		
+		}
+		if (sb.length() > 0){
+			sb.setLength(sb.length() - 1);
+		}
+		return sb.toString();
 	}
 
 	@Override
@@ -94,7 +133,7 @@ public class LocationsView extends Activity implements OnItemClickListener {
 				viewLocation(cursor);
 			}
 			break;
-		case MENU_TAG:
+		case MENU_TAG:			
 			long id = mList.getSelectedItemId();
 			if (id >= 0) {
 				tagLocation(id);
@@ -108,7 +147,12 @@ public class LocationsView extends Activity implements OnItemClickListener {
 		ContentURI uri = Locations.CONTENT_URI;
 		uri.addId(id);
 		Intent intent = new Intent(TAG_ACTION, uri);
-		startActivity(intent);		
+		try {
+			startActivity(intent);	
+		} catch (Exception e) {
+			showAlert("tag action failed", e.toString(), "ok", false);
+		}
+		
 	}
 
 	private void viewLocation(Cursor cursor) {
@@ -154,10 +198,5 @@ public class LocationsView extends Activity implements OnItemClickListener {
 				.getName());
 		return location;
 	}
-
-	public void onItemClick(AdapterView l, View v, int position, long id) {
-		// do nothing
-
-	}
-
+	
 }
