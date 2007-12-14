@@ -5,10 +5,8 @@ import java.net.URISyntaxException;
 import org.openintents.R;
 import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Contents;
-import org.openintents.provider.Tag.Tags;
 
 import android.app.Activity;
-import android.content.ContentService;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -19,13 +17,10 @@ import android.location.LocationProvider;
 import android.net.ContentURI;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.view.Menu.Item;
-import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class LocationsView extends Activity {
 
@@ -35,7 +30,7 @@ public class LocationsView extends Activity {
 
 	/** tag for logging */
 	private static final String TAG = "locationsView";
-	private static final String TAG_ACTION = "TAG";
+	private static final String TAG_ACTION = "org.openintents.action.TAG";	
 
 	private ListView mList;
 
@@ -53,7 +48,7 @@ public class LocationsView extends Activity {
 
 	private void fillData() {		
 		String ids = getFavoriteIds();
-		
+		getContentResolver().getProvider(Locations.CONTENT_URI);
 		// Get a cursor with location with given id
 		Cursor c = getContentResolver().query(
 				Locations.CONTENT_URI,
@@ -145,11 +140,12 @@ public class LocationsView extends Activity {
 
 	private void tagLocation(long id) {
 		ContentURI uri = Locations.CONTENT_URI;
-		uri.addId(id);
+		uri = uri.addId(id);
 		Intent intent = new Intent(TAG_ACTION, uri);
 		try {
 			startActivity(intent);	
 		} catch (Exception e) {
+			e.printStackTrace();
 			showAlert("tag action failed", e.toString(), "ok", false);
 		}
 		
@@ -171,9 +167,17 @@ public class LocationsView extends Activity {
 
 		if (uri != null) {
 			Intent intent = new Intent(Intent.VIEW_ACTION, uri);
-			startActivity(intent);
+			startSubActivity(intent, 0);
 		}
 
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			String data, Bundle extras) {	
+		super.onActivityResult(requestCode, resultCode, data, extras);
+		
+		// nothing to do yet.
 	}
 
 	private void addCurrentLocation() {

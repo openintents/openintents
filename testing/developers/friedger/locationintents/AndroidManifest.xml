@@ -18,8 +18,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents">
     <application android:icon="@drawable/openintents_icon">
-        	<provider class=".locations.LocationsProvider"
+        <provider class=".locations.LocationsProvider"
                 android:authorities="org.openintents.locations" />
+    	<provider class=".tags.TagsProvider"
+                android:authorities="org.openintents.tags" />
     
         <activity class=".testing.friedger.locationintents.LocationsView" android:label="@string/app_name">
             <intent-filter>
@@ -27,5 +29,23 @@
                 <category android:value="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+ 		<activity class=".testing.friedger.tagintents.TagsView" android:label="@string/list_of_tags">
+            <intent-filter>
+                <action android:value="org.openintents.action.TAG" />
+                
+                <category android:value="android.intent.category.DEFAULT" />
+                <category android:value="android.intent.category.LAUNCHER" />
+                <!--
+                <scheme android:value="content"/>                
+                <authority android:host="org.openintents.locations"/>
+                <path android:value="locations/1"/>
+                -->
+                
+                <type android:value="vnd.openintents.cursor.item/location"/>
+                  
+            </intent-filter>
+        </activity>
+       
     </application>
 </manifest> 

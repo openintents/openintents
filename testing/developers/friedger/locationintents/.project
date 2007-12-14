@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>LocationsView</name>
+	<name>OpenIntentsFriedgerLocationIntents</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
 		<buildCommand>
-			<name>com.google.android.adt.ResourceManagerBuilder</name>
+			<name>com.android.ide.eclipse.adt.ResourceManagerBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.google.android.adt.PreCompilerBuilder</name>
+			<name>com.android.ide.eclipse.adt.PreCompilerBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -21,25 +21,13 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.google.android.adt.ApkBuilder</name>
+			<name>com.android.ide.eclipse.adt.ApkBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>com.google.android.adt.AndroidNature</nature>
+		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/org/openintents/locations/LocationsProvider.java</name>
-			<type>1</type>
-			<location>D:/Programmieren/Android/OpenIntents/src/org/openintents/locations/LocationsProvider.java</location>
-		</link>
-		<link>
-			<name>src/org/openintents/provider/Location.java</name>
-			<type>1</type>
-			<location>D:/Programmieren/Android/OpenIntents/src/org/openintents/provider/Location.java</location>
-		</link>
-	</linkedResources>
 </projectDescription>
