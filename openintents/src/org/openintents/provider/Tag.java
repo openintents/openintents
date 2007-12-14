@@ -4,70 +4,93 @@ import android.net.ContentURI;
 import android.provider.BaseColumns;
 
 public abstract class Tag {
-	
+
 	public static final class Tags implements BaseColumns {
 		/**
-         * The content:// style URL for this table
-         */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.tags/tags");
+		 * The content:// style URL for this table
+		 */
+		public static final ContentURI CONTENT_URI = ContentURI
+				.create("content://org.openintents.tags/tags");
 
-        /**
-         * The default sort order for this table.
-         */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
-        
-       
-        /**
-         * The name of the tag.
-         * <P>Type: TEXT</P>
-         */
-        public static final String NAME = "name";
+		/**
+		 * The default sort order for this table.
+		 */
+		public static final String DEFAULT_SORT_ORDER = "modified DESC";
 
-        /**
-         * The label of the tag.
-         * <P>Type: TEXT</P>
-         */
-        public static final String LABEL = "label";
+		/**
+		 * The id of the tag.
+		 * <P>
+		 * Type: LONG
+		 * </P>
+		 */
+		public static final String TAG_ID = "tag_id";
 
-        /**
-         * The timestamp for when the note was created.
-         * <P>Type: INTEGER (long)</P>
-         */
-        public static final String CREATED_DATE = "created";
+		/**
+		 * The id of the content.
+		 * <P>
+		 * Type: LONG
+		 * </P>
+		 */
+		public static final String CONTENT_ID = "content_id";
 
-        /**
-         * The timestamp for when the note was last modified.
-         * <P>Type: INTEGER (long)</P>
-         */
-        public static final String MODIFIED_DATE = "modified";
-    }
-	
+		/**
+		 * The timestamp for when the note was created.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String CREATED_DATE = "created";
+
+		/**
+		 * The timestamp for when the note was last modified.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String MODIFIED_DATE = "modified";
+
+		/**
+		 * The timestamp for when the note was last modified.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String ACCESS_DATE = "accessed";
+
+		/**
+		 * Uri to be tagged.
+		 * 
+		 */
+		public static final String QUERY_URI = "uri";
+	}
+
 	public static final class Contents implements BaseColumns {
 		/**
-         * The content:// style URL for this table
-         */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.tags/contents");
+		 * The content:// style URL for this table
+		 */
+		public static final ContentURI CONTENT_URI = ContentURI
+				.create("content://org.openintents.tags/contents");
 
-        /**
-         * The default sort order for this table.
-         */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
-        
-       
-        /**
-         * The uri of the content.
-         * <P>Type: TEXT</P>
-         */
-        public static final String URI = "uri";
- 
+		/**
+		 * The default sort order for this table.
+		 */
+		public static final String DEFAULT_SORT_ORDER = "modified DESC";
 
-        /**
-         * The timestamp for when the note was created.
-         * <P>Type: INTEGER (long)</P>
-         */
-        public static final String CREATED_DATE = "created";
-        
-    }
+		/**
+		 * The uri of the content.
+		 * <P>
+		 * Type: TEXT
+		 * </P>
+		 */
+		public static final String URI = "uri";
+
+		/**
+		 * The timestamp for when the note was created.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String CREATED_DATE = "created";
+
+	}
 }

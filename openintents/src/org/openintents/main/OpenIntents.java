@@ -1,10 +1,11 @@
 package org.openintents.main;
 
+import org.openintents.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.app.ListActivity;
 
 public class OpenIntents extends Activity {
 
