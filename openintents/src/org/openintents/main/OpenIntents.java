@@ -8,6 +8,9 @@ import android.app.ListActivity;
 
 public class OpenIntents extends Activity {
 
+	/** identifier for tag action. */
+	public final String TAG_ACTION = "org.openintents.action.TAG";
+	
 	private String[] activitylist = {
     "Show favorite locations",
     "Lookup geo->label",
