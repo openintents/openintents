@@ -28,5 +28,19 @@
                 <category android:value="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity class=".locations.LocationsView" android:label="@string/list_of_locations">
+            <intent-filter>
+                <action android:value="android.intent.action.MAIN" />
+                <category android:value="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+ 		<activity class=".tags.TagsView" android:label="@string/list_of_tags">
+            <intent-filter>                                
+                <category android:value="android.intent.action.MAIN" />
+                <category android:value="android.intent.category.LAUNCHER" />                
+            </intent-filter>
+        </activity>        
     </application>
 </manifest> 

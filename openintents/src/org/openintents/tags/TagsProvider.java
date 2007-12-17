@@ -50,7 +50,7 @@ public class TagsProvider extends ContentProvider {
 
 	private static final String TAG = "TagsProvider";
 	private static final String DATABASE_NAME = "tags.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	private static HashMap<String, String> TAG_PROJECTION_MAP;
 	private static HashMap<String, String> CONTENT_PROJECTION_MAP;
@@ -68,7 +68,7 @@ public class TagsProvider extends ContentProvider {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE content (_id INTEGER PRIMARY KEY,"
-					+ "uri VARCHAR," + "created INTEGER" + ");");
+					+ "uri VARCHAR," + "type VARCHAR," + "created INTEGER" + ");");
 			db.execSQL("CREATE TABLE tag (_id INTEGER PRIMARY KEY,"
 					+ "tag_id LONG," + "content_id LONG," + "created INTEGER,"
 					+ "modified INTEGER," + "accessed INTEGER" + ");");
@@ -100,8 +100,9 @@ public class TagsProvider extends ContentProvider {
 		String defaultOrderBy = null;
 		switch (URL_MATCHER.match(url)) {
 		case TAGS:
-			qb.setTables("tag tag, content content");
-			qb.setProjectionMap(TAG_PROJECTION_MAP);
+			qb.setTables("tag tag, content content1, content content2");
+			qb.setProjectionMap(TAG_PROJECTION_MAP);			
+			qb.appendWhere("tag.tag_id = content1._id AND tag.content_id = content2._id");
 			defaultOrderBy = Tags.DEFAULT_SORT_ORDER;
 			break;
 
@@ -135,6 +136,7 @@ public class TagsProvider extends ContentProvider {
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
+			
 		} else {
 			values = new ContentValues();
 		}
@@ -159,25 +161,48 @@ public class TagsProvider extends ContentProvider {
 			values.put(Tags.ACCESS_DATE, now);
 		}
 
-		if (!values.containsKey(Tags.CONTENT_ID)) {
-			String uriToTag;
-			if (values.containsKey(Contents.URI)) {
-				uriToTag = values.getAsString(Contents.URI);
-				values.remove(Contents.URI);
+		if (!values.containsKey(Tags.TAG_ID)) {
+			String tagUri;
+			if (values.containsKey(Tags.URI_1)) {
+				tagUri = values.getAsString(Tags.URI_1);
+				values.remove(Tags.URI_1);
 			} else {
-				uriToTag = DEFAULT_TAG;
+				tagUri = DEFAULT_TAG;
 			}
-			Cursor existingContents = mDB.query("content",
+			Cursor existingTag = mDB.query("content",
 					new String[] { Contents._ID }, "uri = '?'",
-					new String[] { uriToTag }, null, null, null);
+					new String[] { tagUri }, null, null, null);
+
 			String contentId;
-			if (!existingContents.next()) {
-				contentId = String.valueOf(insertContent(url));
+			if (!existingTag.next()) {
+				contentId = String.valueOf(insertContent(url, "TAG"));
 			} else {
-				contentId = existingContents.getString(1);
+				contentId = existingTag.getString(0);
+			}
+			values.put(Tags.TAG_ID, contentId);
+		}
+		
+		if (!values.containsKey(Tags.CONTENT_ID)) {
+			String contentUri;
+			if (values.containsKey(Tags.URI_2)) {
+				contentUri = values.getAsString(Tags.URI_2);
+				values.remove(Tags.URI_2);
+			} else {
+				return null;
+			}
+			Cursor existingTag = mDB.query("content",
+					new String[] { Contents._ID }, "uri = '?'",
+					new String[] { contentUri }, null, null, null);
+
+			String contentId;
+			if (!existingTag.next()) {
+				contentId = String.valueOf(insertContent(url, null));
+			} else {
+				contentId = existingTag.getString(0);
 			}
 			values.put(Tags.CONTENT_ID, contentId);
 		}
+		
 
 		rowID = mDB.insert("tag", "tag", values);
 		if (rowID > 0) {
@@ -189,9 +214,12 @@ public class TagsProvider extends ContentProvider {
 		throw new SQLException("Failed to insert row into " + url);
 	}
 
-	private long insertContent(ContentURI url) {
+	private long insertContent(ContentURI url, String type) {
 		ContentValues values = new ContentValues(1);
 		values.put(Contents.URI, url.toString());
+		if (type != null){
+			values.put(Contents.TYPE, type);
+		}
 		long rowId = mDB.insert("content", "content", values);
 		return rowId;
 	}
@@ -271,6 +299,7 @@ public class TagsProvider extends ContentProvider {
 		TAG_PROJECTION_MAP.put(Tags.CREATED_DATE, "tag.created");
 		TAG_PROJECTION_MAP.put(Tags.MODIFIED_DATE, "tag.modified");
 		TAG_PROJECTION_MAP.put(Tags.ACCESS_DATE, "tag.accessed");
-		TAG_PROJECTION_MAP.put(Contents.URI, "content.uri");
+		TAG_PROJECTION_MAP.put(Tags.URI_1, "content1.uri");
+		TAG_PROJECTION_MAP.put(Tags.URI_2, "content2.uri");
 	}
 }

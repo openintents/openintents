@@ -58,6 +58,18 @@ public abstract class Tag {
 		public static final String ACCESS_DATE = "accessed";
 
 		/**
+		 * First URI of the relationship (usually the tag).
+		 * 
+		 */
+		public static final String URI_1 = "uri_1";
+		
+		/**
+		 * Second URI of the relationship (usually the content).
+		 * 
+		 */
+		public static final String URI_2 = "uri_2";
+		
+		/**
 		 * Uri to be tagged.
 		 * 
 		 */
@@ -84,6 +96,15 @@ public abstract class Tag {
 		 */
 		public static final String URI = "uri";
 
+		/**
+		 * The type of the content, e.g TAG
+		 * null means CONTENT.
+		 * <P>
+		 * Type: TEXT
+		 * </P>
+		 */
+		public static final String TYPE = "type";
+		
 		/**
 		 * The timestamp for when the note was created.
 		 * <P>
