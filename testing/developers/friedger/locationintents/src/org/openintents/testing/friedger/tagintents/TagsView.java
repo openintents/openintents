@@ -66,7 +66,7 @@ public class TagsView extends Activity implements OnItemClickListener {
 
 		// Get a cursor with all tags
 		Cursor c = getContentResolver().query(Tags.CONTENT_URI,
-				new String[] { Tags._ID, Contents.URI }, null, null,
+				new String[] { Tags._ID, Tags.URI_1, Tags.URI_2 }, null, null,
 				Tags.DEFAULT_SORT_ORDER);
 		startManagingCursor(c);
 
