@@ -38,9 +38,13 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Provides access to a database of notes. Each note has a title, the note
- * itself, a creation date and a modified data.
- * 
+ * Provides access to a database of locations. Each location has a latitude and longitude,
+ *  a creation date and a modified data.
+ *  
+ *  supports urls of the format
+ *  org.openintents.locations/locations
+ *  org.openintents.locations/locations/23
+ *  
  */
 public class LocationsProvider extends ContentProvider {
 
@@ -48,7 +52,7 @@ public class LocationsProvider extends ContentProvider {
 
 	private static final String TAG = "LocationsProvider";
 	private static final String DATABASE_NAME = "locations.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 1;
 
 	private static HashMap<String, String> LOCATION_PROJECTION_MAP;
 
@@ -140,6 +144,7 @@ public class LocationsProvider extends ContentProvider {
 			values = new ContentValues();
 		}
 
+		// only allow inserts for locations (as list)
 		if (URL_MATCHER.match(url) != LOCATIONS) {
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}

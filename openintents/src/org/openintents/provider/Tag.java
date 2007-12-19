@@ -3,6 +3,10 @@ package org.openintents.provider;
 import android.net.ContentURI;
 import android.provider.BaseColumns;
 
+/**
+ * Definition for content provider related to tag.
+ *
+ */
 public abstract class Tag {
 
 	public static final class Tags implements BaseColumns {
@@ -20,7 +24,7 @@ public abstract class Tag {
 		/**
 		 * The id of the tag.
 		 * <P>
-		 * Type: LONG
+		 * Type: STRING
 		 * </P>
 		 */
 		public static final String TAG_ID = "tag_id";
@@ -28,7 +32,7 @@ public abstract class Tag {
 		/**
 		 * The id of the content.
 		 * <P>
-		 * Type: LONG
+		 * Type: STRING
 		 * </P>
 		 */
 		public static final String CONTENT_ID = "content_id";
@@ -86,7 +90,7 @@ public abstract class Tag {
 		/**
 		 * The default sort order for this table.
 		 */
-		public static final String DEFAULT_SORT_ORDER = "modified DESC";
+		public static final String DEFAULT_SORT_ORDER = "type DESC, uri";
 
 		/**
 		 * The uri of the content.

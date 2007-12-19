@@ -40,8 +40,10 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Provides access to a database of notes. Each note has a title, the note
- * itself, a creation date and a modified data.
+ * Provides access to a database of tags and contents. 
+ * Each tag has a tag_id and a content_id, a creation date and a modified data.
+ * Both ids refer to an entry to the contents table.
+ * A content row has a uri and a type.
  * 
  */
 public class TagsProvider extends ContentProvider {
@@ -50,7 +52,7 @@ public class TagsProvider extends ContentProvider {
 
 	private static final String TAG = "TagsProvider";
 	private static final String DATABASE_NAME = "tags.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 1;
 
 	private static HashMap<String, String> TAG_PROJECTION_MAP;
 	private static HashMap<String, String> CONTENT_PROJECTION_MAP;
@@ -68,7 +70,8 @@ public class TagsProvider extends ContentProvider {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE content (_id INTEGER PRIMARY KEY,"
-					+ "uri VARCHAR," + "type VARCHAR," + "created INTEGER" + ");");
+					+ "uri VARCHAR," + "type VARCHAR," + "created INTEGER"
+					+ ");");
 			db.execSQL("CREATE TABLE tag (_id INTEGER PRIMARY KEY,"
 					+ "tag_id LONG," + "content_id LONG," + "created INTEGER,"
 					+ "modified INTEGER," + "accessed INTEGER" + ");");
@@ -100,15 +103,23 @@ public class TagsProvider extends ContentProvider {
 		String defaultOrderBy = null;
 		switch (URL_MATCHER.match(url)) {
 		case TAGS:
+			// queries for tags also return the uris, not only the ids.
 			qb.setTables("tag tag, content content1, content content2");
-			qb.setProjectionMap(TAG_PROJECTION_MAP);			
+			qb.setProjectionMap(TAG_PROJECTION_MAP);
 			qb.appendWhere("tag.tag_id = content1._id AND tag.content_id = content2._id");
 			defaultOrderBy = Tags.DEFAULT_SORT_ORDER;
 			break;
 
 		case TAG_ID:
+			// queries for a tags just returns the ids.
 			qb.setTables("tag");
 			qb.appendWhere("_id=" + url.getPathSegment(1));
+			break;
+
+		case CONTENTS:
+			qb.setTables("content");
+			qb.setProjectionMap(CONTENT_PROJECTION_MAP);
+			defaultOrderBy = Contents.DEFAULT_SORT_ORDER;
 			break;
 
 		default:
@@ -119,7 +130,7 @@ public class TagsProvider extends ContentProvider {
 
 		String orderBy;
 		if (TextUtils.isEmpty(sort)) {
-			orderBy = Location.Locations.DEFAULT_SORT_ORDER;
+			orderBy = defaultOrderBy;
 		} else {
 			orderBy = sort;
 		}
@@ -136,11 +147,12 @@ public class TagsProvider extends ContentProvider {
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
-			
+
 		} else {
 			values = new ContentValues();
 		}
 
+		// insert is only supported for tags
 		if (URL_MATCHER.match(url) != TAGS) {
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -161,63 +173,82 @@ public class TagsProvider extends ContentProvider {
 			values.put(Tags.ACCESS_DATE, now);
 		}
 
-		if (!values.containsKey(Tags.TAG_ID)) {
+		// lookup id for uri or create new
+		replaceUriById(values, Tags.TAG_ID, Tags.URI_1, "TAG", DEFAULT_TAG);
+
+		if (!values.containsKey(Tags.CONTENT_ID)
+				&& !values.containsKey(Tags.URI_2)) {
+			new SQLException("missing uri or content_id for insert " + url);
+		}
+		// lookup id for uri or create new
+		replaceUriById(values, Tags.CONTENT_ID, Tags.URI_2, null, DEFAULT_TAG);
+
+		// check whether tag already exists
+		Cursor existingTag = mDB.query("tag", new String[] { Tags._ID },
+				"tag_id = ? AND content_id = ?", new String[] {
+						String.valueOf(values.get(Tags.TAG_ID)),
+						String.valueOf((String) values.get(Tags.CONTENT_ID)) },
+				null, null, null);
+		
+		if (!existingTag.next()) {
+			// finally insert the tag.
+			rowID = mDB.insert("tag", "tag", values);
+			if (rowID > 0) {
+				ContentURI uri = Tags.CONTENT_URI.addId(rowID);
+				getContext().getContentResolver().notifyChange(uri, null);
+				return uri;
+			}
+			throw new SQLException("Failed to insert row into " + url);
+		} else {
+			return null;
+		}
+
+	}
+
+	/**
+	 * lookup content id for given uri
+	 * or create new entry in content table if not present
+	 * 
+	 * @param values
+	 * @param idColumnName
+	 * @param uriColumnName
+	 * @param tagType
+	 * @param defaultValue
+	 */
+	private void replaceUriById(ContentValues values, String idColumnName,
+			String uriColumnName, String tagType, String defaultValue) {
+		if (!values.containsKey(idColumnName)) {
 			String tagUri;
-			if (values.containsKey(Tags.URI_1)) {
-				tagUri = values.getAsString(Tags.URI_1);
-				values.remove(Tags.URI_1);
+			if (values.containsKey(uriColumnName)) {
+				tagUri = values.getAsString(uriColumnName);
+				values.remove(uriColumnName);
 			} else {
-				tagUri = DEFAULT_TAG;
+				tagUri = defaultValue;
 			}
 			Cursor existingTag = mDB.query("content",
-					new String[] { Contents._ID }, "uri = '?'",
+					new String[] { Contents._ID }, "uri = ?",
 					new String[] { tagUri }, null, null, null);
 
 			String contentId;
 			if (!existingTag.next()) {
-				contentId = String.valueOf(insertContent(url, "TAG"));
+				contentId = String.valueOf(insertContent(tagUri, tagType));
 			} else {
 				contentId = existingTag.getString(0);
 			}
-			values.put(Tags.TAG_ID, contentId);
+			values.put(idColumnName, contentId);
 		}
-		
-		if (!values.containsKey(Tags.CONTENT_ID)) {
-			String contentUri;
-			if (values.containsKey(Tags.URI_2)) {
-				contentUri = values.getAsString(Tags.URI_2);
-				values.remove(Tags.URI_2);
-			} else {
-				return null;
-			}
-			Cursor existingTag = mDB.query("content",
-					new String[] { Contents._ID }, "uri = '?'",
-					new String[] { contentUri }, null, null, null);
-
-			String contentId;
-			if (!existingTag.next()) {
-				contentId = String.valueOf(insertContent(url, null));
-			} else {
-				contentId = existingTag.getString(0);
-			}
-			values.put(Tags.CONTENT_ID, contentId);
-		}
-		
-
-		rowID = mDB.insert("tag", "tag", values);
-		if (rowID > 0) {
-			ContentURI uri = Tags.CONTENT_URI.addId(rowID);
-			getContext().getContentResolver().notifyChange(uri, null);
-			return uri;
-		}
-
-		throw new SQLException("Failed to insert row into " + url);
 	}
 
-	private long insertContent(ContentURI url, String type) {
-		ContentValues values = new ContentValues(1);
-		values.put(Contents.URI, url.toString());
-		if (type != null){
+	/**
+	 * create new entry in content table
+	 * @param uri
+	 * @param type
+	 * @return
+	 */
+	private long insertContent(String uri, String type) {
+		ContentValues values = new ContentValues();
+		values.put(Contents.URI, uri);
+		if (type != null) {
 			values.put(Contents.TYPE, type);
 		}
 		long rowId = mDB.insert("content", "content", values);
@@ -245,8 +276,8 @@ public class TagsProvider extends ContentProvider {
 				whereString = "";
 			}
 
-			count = mDB.delete("tag", "_id=" + segment + whereString,
-					whereArgs);
+			count = mDB
+					.delete("tag", "_id=" + segment + whereString, whereArgs);
 			// TODO remove unreferenced content
 			break;
 
@@ -299,7 +330,12 @@ public class TagsProvider extends ContentProvider {
 		TAG_PROJECTION_MAP.put(Tags.CREATED_DATE, "tag.created");
 		TAG_PROJECTION_MAP.put(Tags.MODIFIED_DATE, "tag.modified");
 		TAG_PROJECTION_MAP.put(Tags.ACCESS_DATE, "tag.accessed");
-		TAG_PROJECTION_MAP.put(Tags.URI_1, "content1.uri");
-		TAG_PROJECTION_MAP.put(Tags.URI_2, "content2.uri");
+		TAG_PROJECTION_MAP.put(Tags.URI_1, "content1.uri as uri_1");
+		TAG_PROJECTION_MAP.put(Tags.URI_2, "content2.uri as uri_2");
+
+		CONTENT_PROJECTION_MAP = new HashMap<String, String>();
+		CONTENT_PROJECTION_MAP.put(Contents._ID, "_id");
+		CONTENT_PROJECTION_MAP.put(Contents.URI, "uri");
+		CONTENT_PROJECTION_MAP.put(Contents.TYPE, "type");
 	}
 }

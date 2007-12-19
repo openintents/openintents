@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Open Intents</string>
-    <string name="default_tag">DEFAULT</string>
-    
-    <string name="list_of_locations">List of locations</string>
-    <string name="add_current_location">Add curr. loc.</string>
-    <string name="view_location">View</string>
-    
-    <string name="list_of_tags">List of Tags</string>
-    <string name="select">Select</string>
-    <string name="add">Add</string>
-    
+	<string name="app_name">Open Intents</string>
+	<string name="default_tag">DEFAULT</string>
+
+	<string name="list_of_locations">List of locations</string>
+	<string name="add_current_location">Add curr. loc.</string>
+	<string name="view_location">View</string>
+	
+
+	<string name="list_of_tags"><b>List of tags</b></string>
+	<string name="list_of_contents"><b>List of contents</b></string>
+	<string name="select">Select</string>
+	<string name="add">Add</string>
+	<string name="add_tag"><b>Add new tag/content</b></string>
 </resources>

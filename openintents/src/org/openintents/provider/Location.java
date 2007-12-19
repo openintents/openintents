@@ -3,6 +3,10 @@ package org.openintents.provider;
 import android.net.ContentURI;
 import android.provider.BaseColumns;
 
+/**
+ * Definition for content provider related to location.
+ *
+ */
 public abstract class Location {
 	
 	public static final class Locations implements BaseColumns {
@@ -20,13 +24,13 @@ public abstract class Location {
        
         /**
          * The latitude of the location
-         * <P>Type: DOUBLE</P>
+         * <P>Type: TEXT</P>
          */
         public static final String LATITUDE = "latitude";
 
         /**
          * The longitude of the location
-         * <P>Type: DOUBLE</P>
+         * <P>Type: TEXT</P>
          */
         public static final String LONGITUDE = "longitude";
 

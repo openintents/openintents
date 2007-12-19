@@ -1,20 +1,15 @@
 package org.openintents.locations;
 
-import java.net.URISyntaxException;
-
 import org.openintents.R;
 import org.openintents.provider.Location.Locations;
-import org.openintents.provider.Tag.Contents;
 
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.net.ContentURI;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.Menu.Item;
@@ -22,6 +17,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+/**
+ * Simple activity to show a list of locations and
+ * add the current location to the list.
+ * 
+ *
+ */
 public class LocationsView extends Activity {
 
 	private static final int MENU_ADD_CURRENT_LOCATION = 1;
@@ -45,8 +46,8 @@ public class LocationsView extends Activity {
 
 	private void fillData() {		
 		
-		getContentResolver().getProvider(Locations.CONTENT_URI);
-		// Get a cursor with location with given id
+		
+		// Get a cursor for all locations
 		Cursor c = getContentResolver().query(
 				Locations.CONTENT_URI,
 				new String[] { Locations._ID, Locations.LATITUDE,

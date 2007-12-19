@@ -13,10 +13,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Main activity to start simple activities for ContentProviders.
+ * 
+ * Currently supported:
+ * LocationsProvider
+ * TagsProvider
+ * 
+ *
+ */
 public class OpenIntents extends Activity implements OnItemClickListener {
 
-	private String[] activitylist = { "Show locations", "Show tags",
-			"Lookup geo->label", "Lookup label->geo" };
+	private String[] activitylist = { "Show locations", "Show tags"};
 
 	/** Called when the activity is first created. */
 	@Override
