@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Favorite Locations</string>
+
+	<string name="add_current_location">Add curr. loc.</string>
+	<string name="list_of_locations">List of locations</string>
+	<string name="view_location">View</string>
+	<string name="tag_location">Tag</string>
+	<string name="rest">other locations</string>
+
+</resources>
