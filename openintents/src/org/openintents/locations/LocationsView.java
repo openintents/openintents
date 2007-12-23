@@ -1,3 +1,19 @@
+/* 
+ * Copyright (C) 2007 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.locations;
 
 import org.openintents.R;
@@ -57,13 +73,14 @@ public class LocationsView extends Activity {
 		startManagingCursor(c);
 
 		ListAdapter adapter = new SimpleCursorAdapter(this,
-		// Use a template that displays a text view
+				// Use a template that displays a text view
 				R.layout.location_row,
 				// Give the cursor to the list adapter
 				c,
-				// Map the NAME column in the people database to...
+				// Map the LATITUDE and LONGITUDE columns in the
+				// database to...
 				new String[] { Locations.LATITUDE, Locations.LONGITUDE },
-				// The "text1" view defined in the XML template
+				// The view defined in the XML template
 				new int[] { R.id.latitude, R.id.longitude });
 		mList.setAdapter(adapter);
 	}

@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 Google Inc.
+ * Copyright (C) 2007 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,10 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
- * This file is based on NotePadProvider.java
- * 
- * Copyright (C) 2007 openIntents.org.
  */
 
 package org.openintents.locations;
@@ -42,8 +38,8 @@ import android.util.Log;
  *  a creation date and a modified data.
  *  
  *  supports urls of the format
- *  org.openintents.locations/locations
- *  org.openintents.locations/locations/23
+ *  content://org.openintents.locations/locations
+ *  content://org.openintents.locations/locations/23
  *  
  */
 public class LocationsProvider extends ContentProvider {
