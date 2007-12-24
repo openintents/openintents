@@ -16,11 +16,20 @@
 
 package org.openintents.samples;
 
-import java.net.URISyntaxException;
+/*
+ * YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-n.n.n.JAR FILE:
+ * 
+ * In the Eclipse Package Explorer, right-click on the imported 
+ * project FavoriteLocations, select "Properties", then "Java Build Path" 
+ * and tab "Libraries". There "Add External JARs..." and select 
+ * lib/openintents-n.n.n.jar. 
+ */
 
 import org.openintents.OpenIntents;
 import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
+
+import java.net.URISyntaxException;
 
 import android.app.Activity;
 import android.content.ContentValues;

@@ -14,8 +14,19 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-n.n.n.JAR FILE:
+
+In the Eclipse Package Explorer, right-click on the imported 
+project FavoriteLocations, select "Properties", then "Java Build Path" 
+and tab "Libraries". There "Add External JARs..." and select
+lib/openintents-n.n.n.jar. 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ---------------------------------------------------------
-release: 0.0.4
+release: 0.1.0
 date: 2007-12-19
 
 features:
