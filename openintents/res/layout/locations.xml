@@ -30,8 +30,13 @@
 	    android:layout_height="wrap_content"
 	    android:layout_weight="0"
 	    />
-<ImageButton
+<!--  <ImageButton
     	android:layout_width="64px"
     	android:layout_height="64px"
-    	android:src="@drawable/openintents_icon" />
+    	android:src="@drawable/openintents_icon" />  -->
+<TextView   id="@+id/listempty"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/list_is_empty"
+    />
 </LinearLayout>

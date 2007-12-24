@@ -24,8 +24,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -52,7 +54,10 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 		list.setAdapter(new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, activitylist));
 		list.setOnItemClickListener(this);
-
+		
+		// Watch for button clicks.
+        ImageButton aboutButton = (ImageButton)findViewById(R.id.about);
+        aboutButton.setOnClickListener(mAboutListener);
 	}
 
 	public void onItemClick(AdapterView adapterView, View view, int position,
@@ -70,5 +75,12 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 		}
 
 	}
+	
+	private OnClickListener mAboutListener = new OnClickListener() {
+		public void onClick(View v) {
+			Intent intent = new Intent(OpenIntents.this, About.class);
+			startActivity(intent);
+	    }
+	};
 
 }

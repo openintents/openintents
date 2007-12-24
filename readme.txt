@@ -9,6 +9,6 @@ samples/
    contains samples that use openintents
 
 testing/
-   developer/
+   developers/
    common/
       directories for testing concepts
