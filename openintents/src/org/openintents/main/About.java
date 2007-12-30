@@ -28,7 +28,22 @@ public class About extends Activity {
 	protected void onCreate(Bundle icicle) {
 		
 		super.onCreate(icicle);
+
+		// from com.google.android.samples.app.TranslucentFancyActivity
+		
+        // Have the system blur any windows behind this one.
+        getWindow().setFlags(WindowManager.LayoutParams.BLUR_BEHIND_FLAG,
+                WindowManager.LayoutParams.BLUR_BEHIND_FLAG);
         
+        // Apply a tint to any windows behind this one.  Doing a tint this
+        // way is more efficient than using a translucent background.  Note
+        // that the tint color really should come from a resource.
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        // TODO: Put value into resource colors.xml
+        lp.tintBehind = 0x60000820;
+        getWindow().setAttributes(lp);
+        
+		setTheme(android.R.style.Theme_Dialog);
 		setContentView(R.layout.about);
 	}
 

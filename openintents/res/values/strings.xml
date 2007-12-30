@@ -16,6 +16,7 @@
  -->
  
 <resources>
+	<!-- Main application -->
 	<string name="app_name">Open Intents</string>
 	<string name="default_tag">DEFAULT</string>
 	
@@ -27,15 +28,22 @@
 		http://code.google.com/p/openintents/
 	</string>
 
+	<!-- Location Provider -->
 	<string name="list_of_locations">List of locations</string>
 	<string name="add_current_location">Add curr. loc.</string>
 	<string name="view_location">View</string>
 	<string name="list_is_empty">(end of list)</string>
 	
-
+	<!-- Tags Provider -->
 	<string name="list_of_tags"><b>List of tags</b></string>
 	<string name="list_of_contents"><b>List of contents</b></string>
 	<string name="select">Select</string>
 	<string name="add">Add</string>
 	<string name="add_tag"><b>Add new tag/content</b></string>
+	
+	<!-- Shopping Provider -->
+	<string name="shopping_list"><b>Shopping list</b></string>
+	<string name="new_item">new item</string>
+	<string name="new_list">new list</string>
+	
 </resources>

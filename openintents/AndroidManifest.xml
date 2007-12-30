@@ -18,10 +18,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents">
 	<application android:icon="@drawable/openintents_icon">
+		<!-- Providers -->
 		<provider class=".locations.LocationsProvider"
 			android:authorities="org.openintents.locations" />
 		<provider class=".tags.TagsProvider"
 			android:authorities="org.openintents.tags" />
+		<provider class=".shopping.ShoppingProvider"
+			android:authorities="org.openintents.shopping" />
+			
+		<!-- Main activity -->
 		<activity class=".main.OpenIntents"
 			android:label="@string/app_name">
 			<intent-filter>
@@ -40,6 +45,7 @@
 			</intent-filter>
 		</activity>
 
+		<!-- Locations activity -->
 		<activity class=".locations.LocationsView"
 			android:label="@string/list_of_locations">
 			<intent-filter>
@@ -50,6 +56,7 @@
 		</activity>
 
 
+		<!-- Tags activity -->
 		<activity class=".tags.TagsView"
 			android:label="@string/list_of_tags">
 			<intent-filter>
@@ -64,6 +71,15 @@
 			</intent-filter>
 		</activity>
 
+		<!-- Shopping activity -->
+		<activity class=".shopping.ShoppingView"
+			android:label="@string/shopping_list">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<!--  <category
+					android:value="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</activity>
 		
 	</application>	 
 </manifest>

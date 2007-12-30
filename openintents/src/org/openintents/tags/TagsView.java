@@ -50,7 +50,7 @@ public class TagsView extends Activity {
 	/** tag for logging */
 	private static final String TAG = "tagView";
 	private static final String TAG_ACTION = "TAG";
-	protected static final String ALL = "ALL";
+	protected static final String ALL = "ALL"; // TODO: Put string into resource
 
 	private ListView mTags;
 	private ListView mListContents;
