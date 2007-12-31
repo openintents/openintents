@@ -16,7 +16,7 @@
  -->
  
 <resources>
-	<!-- Main application -->
+    <!-- Main application  -->
 	<string name="app_name">Open Intents</string>
 	<string name="default_tag">DEFAULT</string>
 	
@@ -34,7 +34,7 @@
 	<string name="view_location">View</string>
 	<string name="list_is_empty">(end of list)</string>
 	
-	<!-- Tags Provider -->
+	<!--   Tags Provider   -->
 	<string name="list_of_tags"><b>List of tags</b></string>
 	<string name="list_of_contents"><b>List of contents</b></string>
 	<string name="select">Select</string>
@@ -43,7 +43,15 @@
 	
 	<!-- Shopping Provider -->
 	<string name="shopping_list"><b>Shopping list</b></string>
-	<string name="new_item">new item</string>
-	<string name="new_list">new list</string>
+	<string name="new_item">New item</string>
+	<string name="new_list">New list</string>
+	<string name="ask_new_list">Enter name of new shopping list</string>
+	
+	<!--     Dialog box    -->
+	<string name="cancel">Cancel</string>
+	<string name="ok">OK</string>
+	
+	<!--     Key codes     -->
+	<string name="key_return">64</string>
 	
 </resources>

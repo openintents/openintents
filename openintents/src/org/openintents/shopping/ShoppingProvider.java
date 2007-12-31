@@ -19,11 +19,11 @@ package org.openintents.shopping;
 import java.util.HashMap;
 
 import org.openintents.R;
-import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Contains;
+import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
-import org.openintents.provider.Tag.Contents;
-import org.openintents.provider.Tag.Tags;
+import org.openintents.provider.Shopping.Status;
 
 import android.content.ContentProvider;
 import android.content.ContentProviderDatabaseHelper;
@@ -48,21 +48,38 @@ public class ShoppingProvider extends ContentProvider {
 
 	private static final String TAG = "ShoppingProvider";
 	private static final String DATABASE_NAME = "shopping.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 1; // Release 0.1.1
 
 	private static HashMap<String, String> ITEMS_PROJECTION_MAP;
 	private static HashMap<String, String> LISTS_PROJECTION_MAP;
+	private static HashMap<String, String> CONTAINS_PROJECTION_MAP;
+	private static HashMap<String, String> CONTAINS_FULL_PROJECTION_MAP;
 
+	// Basic tables
 	private static final int ITEMS = 1;
 	private static final int ITEM_ID = 2;
 	private static final int LISTS = 3;
 	private static final int LIST_ID = 4;
-
+	private static final int CONTAINS = 5;
+	private static final int CONTAINS_ID = 6;
+	
+	// Derived tables
+	private static final int CONTAINS_FULL = 101; // combined with items and lists
+	private static final int CONTAINS_FULL_ID = 102;
+	
 	private static final ContentURIParser URL_MATCHER;
 
-	private static final String DEFAULT_TAG = "DEFAULT";
-
+	/**
+	 * ShoppingProvider maintains the following tables:
+	 *  * items: items you want to buy
+	 *  * lists: shopping lists ("My shopping list", "Bob's shopping list")
+	 *  * contains: which item/list/(recipe) is contained 
+	 *              in which shopping list.
+	 */
 	private static class DatabaseHelper extends ContentProviderDatabaseHelper {
+		/**
+		 * Creates tables "items", "lists", and "contains".
+		 */
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE items ("
@@ -81,6 +98,16 @@ public class ShoppingProvider extends ContentProvider {
 					+ "modified INTEGER," // V1
 					+ "accessed INTEGER" // V1
 					+ ");");
+			db.execSQL("CREATE TABLE contains ("
+					+ "_id INTEGER PRIMARY KEY," // Database Version 1
+					+ "item_id INTEGER," // V1
+					+ "list_id INTEGER," // V1
+					+ "quantity VARCHAR," // V1
+					+ "status INTEGER," // V1
+					+ "created INTEGER," // V1
+					+ "modified INTEGER," // V1
+					+ "accessed INTEGER" // V1
+					+ ");");
 		}
 
 		@Override
@@ -89,6 +116,7 @@ public class ShoppingProvider extends ContentProvider {
 					+ newVersion + ", which will destroy all old data");
 			db.execSQL("DROP TABLE IF EXISTS items");
 			db.execSQL("DROP TABLE IF EXISTS lists");
+			db.execSQL("DROP TABLE IF EXISTS contains");
 			onCreate(db);
 		}
 	}
@@ -106,17 +134,17 @@ public class ShoppingProvider extends ContentProvider {
 			String[] selectionArgs, String groupBy, String having, String sort) {
 		QueryBuilder qb = new QueryBuilder();
 
+		Log.i(TAG, "Query for URL: " + url);
+		
 		String defaultOrderBy = null;
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
-			// queries for tags also return the uris, not only the ids.
 			qb.setTables("items");
 			qb.setProjectionMap(ITEMS_PROJECTION_MAP);
 			defaultOrderBy = Items.DEFAULT_SORT_ORDER;
 			break;
 
 		case ITEM_ID:
-			// queries for a tags just returns the ids.
 			qb.setTables("items");
 			qb.appendWhere("_id=" + url.getPathSegment(1));
 			break;
@@ -128,11 +156,33 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 			
 		case LIST_ID:
-			// queries for a tags just returns the ids.
 			qb.setTables("lists");
 			qb.appendWhere("_id=" + url.getPathSegment(1));
 			break;
+			
+		case CONTAINS:
+			qb.setTables("contains");
+			qb.setProjectionMap(CONTAINS_PROJECTION_MAP);
+			defaultOrderBy = Contains.DEFAULT_SORT_ORDER;
+			break;
 
+		case CONTAINS_ID:
+			qb.setTables("contains");
+			qb.appendWhere("_id=" + url.getPathSegment(1));
+			break;
+		
+		case CONTAINS_FULL:
+			qb.setTables("contains, items, lists");
+			qb.setProjectionMap(CONTAINS_FULL_PROJECTION_MAP);
+			qb.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
+			defaultOrderBy = ContainsFull.DEFAULT_SORT_ORDER;
+			break;
+
+		case CONTAINS_FULL_ID:
+			qb.setTables("contains, items, lists");
+			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
+			break;
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -165,11 +215,16 @@ public class ShoppingProvider extends ContentProvider {
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			return insertItem(url, values);
-			// break; // unreachable code
 			
 		case LISTS:
 			return insertList(url, values);
-			// break; // unreachable code
+			
+		case CONTAINS:
+			return insertContains(url, values);
+			
+		case CONTAINS_FULL:
+			throw new IllegalArgumentException("Insert not supported for " + url
+					+ ", use CONTAINS instead of CONTAINS_FULL.");
 			
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
@@ -262,19 +317,76 @@ public class ShoppingProvider extends ContentProvider {
 		
 	}
 	
+	public ContentURI insertContains(ContentURI url, ContentValues values) {		
+		Long now = Long.valueOf(System.currentTimeMillis());
+		Resources r = Resources.getSystem();
+
+		// Make sure that the fields are all set
+		if (!(values.containsKey(Contains.ITEM_ID)
+				&& values.containsKey(Contains.LIST_ID))) {
+			// At least these values should exist.
+			throw new SQLException("Failed to insert row into " + url 
+					+ ": ITEM_ID and LIST_ID must be given.");
+		}
+		
+		// TODO: Check here that ITEM_ID and LIST_ID
+		//       actually exist in the tables. 
+		
+		if (!values.containsKey(Contains.QUANTITY)) {
+			values.put(Contains.QUANTITY, "");
+		}
+		
+		if (!values.containsKey(Contains.STATUS)) {
+			values.put(Contains.STATUS, Status.WANT_TO_BUY);
+		} else {
+			// Check here that STATUS is valid.
+			long s = values.getAsInteger(Contains.STATUS);
+			
+			if (!Status.isValid(s)) {
+				throw new SQLException("Failed to insert row into " + url
+						+ ": Status " + s + " is not valid.");
+			}
+		}
+		
+		if (!values.containsKey(Items.CREATED_DATE)) {
+			values.put(Items.CREATED_DATE, now);
+		}
+
+		if (!values.containsKey(Items.MODIFIED_DATE)) {
+			values.put(Items.MODIFIED_DATE, now);
+		}
+
+		if (!values.containsKey(Items.ACCESSED_DATE)) {
+			values.put(Items.ACCESSED_DATE, now);
+		}
+		
+		// TODO: Here we should check, whether item exists already. 
+		// (see TagsProvider)
+		
+		// insert the item. 
+		long rowId = mDB.insert("contains", "contains", values);
+		if (rowId > 0) {
+			ContentURI uri = Contains.CONTENT_URI.addId(rowId);
+			getContext().getContentResolver().notifyChange(uri, null);
+			return uri;
+		}
+		
+		// If everything works, we should not reach the following line:
+		throw new SQLException("Failed to insert row into " + url);
+	}
 
 	@Override
 	public int delete(ContentURI url, String where, String[] whereArgs) {
 		int count;
-		long rowId = 0;
+		//long rowId;
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			count = mDB.delete("items", where, whereArgs);
 			break;
 
 		case ITEM_ID:
-			String segment = url.getPathSegment(1);
-			rowId = Long.parseLong(segment);
+			String segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -283,16 +395,16 @@ public class ShoppingProvider extends ContentProvider {
 			}
 
 			count = mDB
-					.delete("tag", "_id=" + segment + whereString, whereArgs);
+					.delete("items", "_id=" + segment + whereString, whereArgs);
 			break;
 
 		case LISTS:
-			count = mDB.delete("items", where, whereArgs);
+			count = mDB.delete("lists", where, whereArgs);
 			break;
 
 		case LIST_ID:
-			segment = url.getPathSegment(1);
-			rowId = Long.parseLong(segment);
+			segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
@@ -300,7 +412,24 @@ public class ShoppingProvider extends ContentProvider {
 			}
 
 			count = mDB
-					.delete("tag", "_id=" + segment + whereString, whereArgs);
+					.delete("lists", "_id=" + segment + whereString, whereArgs);
+			break;
+
+		case CONTAINS:
+			count = mDB.delete("contains", where, whereArgs);
+			break;
+
+		case CONTAINS_ID:
+			segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
+			if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
+
+			count = mDB
+					.delete("contains", "_id=" + segment + whereString, whereArgs);
 			break;
 
 		default:
@@ -314,8 +443,70 @@ public class ShoppingProvider extends ContentProvider {
 	@Override
 	public int update(ContentURI url, ContentValues values, String where,
 			String[] whereArgs) {
-		// TODO which values can be updated.
-		return 0;
+		Log.i(TAG, "update called for: " + url);
+		int count;
+		//long rowId;
+		switch (URL_MATCHER.match(url)) {
+		case ITEMS:
+			count = mDB.update("items", values, where, whereArgs);
+			break;
+
+		case ITEM_ID:
+			String segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
+			String whereString;
+			if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
+
+			count = mDB
+					.update("items", values, 
+							"_id=" + segment + whereString, whereArgs);
+			break;
+
+		case LISTS:
+			count = mDB.update("lists", values, where, whereArgs);
+			break;
+
+		case LIST_ID:
+			segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
+			if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
+
+			count = mDB
+					.update("lists", values, "_id=" + segment + whereString, whereArgs);
+			break;
+
+		case CONTAINS:
+			count = mDB.update("contains", values, where, whereArgs);
+			break;
+
+		case CONTAINS_ID:
+			segment = url.getPathSegment(1); // contains rowId
+			//rowId = Long.parseLong(segment);
+			if (!TextUtils.isEmpty(where)) {
+				whereString = " AND (" + where + ')';
+			} else {
+				whereString = "";
+			}
+
+			count = mDB
+					.update("contains", values, "_id=" + segment + whereString, whereArgs);
+			break;
+
+		default:
+			Log.e(TAG, "Update received unknown URL: " + url);
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
+
+		getContext().getContentResolver().notifyChange(url, null);
+		return count;
 	}
 
 	@Override
@@ -333,6 +524,18 @@ public class ShoppingProvider extends ContentProvider {
 		case LIST_ID:
 			return "vnd.openintents.cursor.item/shopping.list";
 
+		case CONTAINS:
+			return "vnd.openintents.cursor.dir/shopping.contains";
+
+		case CONTAINS_ID:
+			return "vnd.openintents.cursor.item/shopping.contains";
+
+		case CONTAINS_FULL:
+			return "vnd.openintents.cursor.dir/shopping.containsfull";
+
+		case CONTAINS_FULL_ID:
+			return "vnd.openintents.cursor.item/shopping.containsfull";
+
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -344,6 +547,14 @@ public class ShoppingProvider extends ContentProvider {
 		URL_MATCHER.addURI("org.openintents.shopping", "items/#", ITEM_ID);
 		URL_MATCHER.addURI("org.openintents.shopping", "lists", LISTS);
 		URL_MATCHER.addURI("org.openintents.shopping", "lists/#", LIST_ID);
+		URL_MATCHER.addURI(
+				"org.openintents.shopping", "contains", CONTAINS);
+		URL_MATCHER.addURI(
+				"org.openintents.shopping", "contains/#", CONTAINS_ID);
+		URL_MATCHER.addURI(
+				"org.openintents.shopping", "containsfull", CONTAINS_FULL);
+		URL_MATCHER.addURI(
+				"org.openintents.shopping", "containsfull/#", CONTAINS_FULL_ID);
 
 		ITEMS_PROJECTION_MAP = new HashMap<String, String>();
 		ITEMS_PROJECTION_MAP.put(Items._ID, "items._id");
@@ -360,5 +571,44 @@ public class ShoppingProvider extends ContentProvider {
 		LISTS_PROJECTION_MAP.put(Lists.CREATED_DATE, "lists.created");
 		LISTS_PROJECTION_MAP.put(Lists.MODIFIED_DATE, "lists.modified");
 		LISTS_PROJECTION_MAP.put(Lists.ACCESSED_DATE, "lists.accessed");
+		
+		CONTAINS_PROJECTION_MAP = new HashMap<String, String>();
+		CONTAINS_PROJECTION_MAP.put(Contains._ID, "contains._id");
+		CONTAINS_PROJECTION_MAP.put(Contains.ITEM_ID, "contains.item_id");
+		CONTAINS_PROJECTION_MAP.put(Contains.LIST_ID, "contains.list_id");
+		CONTAINS_PROJECTION_MAP.put(Contains.QUANTITY, "contains.quantity");
+		CONTAINS_PROJECTION_MAP.put(Contains.STATUS, "contains.status");
+		CONTAINS_PROJECTION_MAP.put(Contains.CREATED_DATE, "contains.created");
+		CONTAINS_PROJECTION_MAP.put(
+				Contains.MODIFIED_DATE, "contains.modified");
+		CONTAINS_PROJECTION_MAP.put(
+				Contains.ACCESSED_DATE, "contains.accessed");
+		
+		CONTAINS_FULL_PROJECTION_MAP = new HashMap<String, String>();
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull._ID, "contains._id");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.ITEM_ID, "contains.item_id");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.LIST_ID, "contains.list_id");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.QUANTITY, "contains.quantity");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.STATUS, "contains.status");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.CREATED_DATE, "contains.created");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.MODIFIED_DATE, "contains.modified");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.ACCESSED_DATE, "contains.accessed");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.ITEM_NAME, "items.name as item_name");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.ITEM_IMAGE, "items.image as item_image");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.LIST_NAME, "lists.name as list_name");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.LIST_IMAGE, "lists.image as list_image");
+		
 	}
 }

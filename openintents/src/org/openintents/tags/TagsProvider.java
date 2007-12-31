@@ -48,7 +48,7 @@ public class TagsProvider extends ContentProvider {
 
 	private static final String TAG = "TagsProvider";
 	private static final String DATABASE_NAME = "tags.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 1; // Release 0.1.0
 
 	private static HashMap<String, String> TAG_PROJECTION_MAP;
 	private static HashMap<String, String> CONTENT_PROJECTION_MAP;
@@ -107,7 +107,7 @@ public class TagsProvider extends ContentProvider {
 			break;
 
 		case TAG_ID:
-			// queries for a tags just returns the ids.
+			// queries for a tag just returns the ids.
 			qb.setTables("tag");
 			qb.appendWhere("_id=" + url.getPathSegment(1));
 			break;
