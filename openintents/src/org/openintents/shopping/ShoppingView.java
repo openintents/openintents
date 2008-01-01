@@ -26,8 +26,13 @@ import org.openintents.provider.Shopping.Lists;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Resources;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -43,10 +48,12 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class ShoppingView extends Activity {
+public class ShoppingView extends Activity //implements AdapterView.OnItemClickListener 
+{
 
 	/**
 	 * TAG for logging.
@@ -60,24 +67,25 @@ public class ShoppingView extends Activity {
 	 */
 	private Spinner mSpinnerListFilter;
 	private Cursor mCursorListFilter;
-	private String[] mStringListFilter = 
+	private static final String[] mStringListFilter = 
 		new String[] { Lists._ID, Lists.NAME, Lists.IMAGE};
-	private int mStringListFilterID = 0;
-	private int mStringListFilterNAME = 1;
-	private int mStringListFilterIMAGE = 2;
+	private static final int mStringListFilterID = 0;
+	private static final int mStringListFilterNAME = 1;
+	private static final int mStringListFilterIMAGE = 2;
 	
-	private ListView mListItems;
-	private Cursor mCursorItems;
-	private String[] mStringItems =
+	ListView mListItems;
+	Cursor mCursorItems;
+	private String TEST;
+	private static final String[] mStringItems =
 		new String[] { 
 				ContainsFull._ID, 
 				ContainsFull.ITEM_NAME,
 				ContainsFull.ITEM_IMAGE,
 				ContainsFull.STATUS};
-	private int mStringItemsCONTAINSID = 0;
-	private int mStringItemsITEMNAME = 1;
-	private int mStringItemsITEMIMAGE = 2;
-	private int mStringItemsSTATUS = 3;
+	private static final int mStringItemsCONTAINSID = 0;
+	private static final int mStringItemsITEMNAME = 1;
+	private static final int mStringItemsITEMIMAGE = 2;
+	private static final int mStringItemsSTATUS = 3;
 	
 	protected Context mDialogContext;
 	protected Dialog mDialog;
@@ -138,6 +146,8 @@ public class ShoppingView extends Activity {
 		});
 		
 		mListItems = (ListView) findViewById(R.id.list_items);
+		//mListItems.setOnItemClickListener(this);
+		
 		mListItems.setOnItemClickListener(
 			new OnItemClickListener() {
 
@@ -149,13 +159,7 @@ public class ShoppingView extends Activity {
 					//Log.i(TAG, "Contains ID: " + getSelectedItemContainsId(pos));
 					// id contains what we need...
 					
-					if (parent == null)
-						Log.i(TAG, "parent NULL");
-					
 					Cursor c = (Cursor) parent.obtainItem(pos);
-					
-					if (c == null)
-						Log.i(TAG, "c NULL");
 					
 					Log.i(TAG, "via Cursor: " 
 							+ c.getString(mStringItemsITEMNAME)
@@ -164,8 +168,9 @@ public class ShoppingView extends Activity {
 					// Toggle status:
 					long oldstatus = c.getLong(mStringItemsSTATUS);
 					long newstatus = Shopping.Status.BOUGHT;
-					if (oldstatus == Shopping.Status.BOUGHT)
+					if (oldstatus == Shopping.Status.BOUGHT) {
 						newstatus = Shopping.Status.WANT_TO_BUY;
+					}
 						
 					c.updateLong(mStringItemsSTATUS, newstatus);
 					
@@ -175,8 +180,27 @@ public class ShoppingView extends Activity {
 					Log.i(TAG, "Requery now:");
 					c.requery();
 					
+					// fillItems();
+					
 				}
 				
+		});
+		mListItems.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView parent, View v,
+					int position, long id) {
+				// Log.i(TAG, "mListItems selected: pos:" 
+				// 	+ position + ", id:" + id);
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
 		});
 		
 		
@@ -236,24 +260,25 @@ public class ShoppingView extends Activity {
 			// Accept OK also when user hits "Enter"
 			et.setKeyListener(new OnKeyListener() {
 				@Override
-				public boolean onKey(View v, int keyCode, KeyEvent key) {
+				public boolean onKey(final View v, final int keyCode, 
+						final KeyEvent key) {
 					//Log.i(TAG, "KeyCode: " + keyCode);
 					
-					if (key.isDown() && 
-							keyCode == Integer.parseInt(getString(R.string.key_return)))
-					{
+					if (key.isDown() && keyCode == Integer
+								.parseInt(getString(R.string.key_return))) {
 						// User pressed "Enter" 
-						EditText edittext = (EditText) mDialog.findViewById(R.id.edittext);
+						EditText edittext = (EditText) 
+							mDialog.findViewById(R.id.edittext);
 						
-						Shopping.insertList(getContentResolver(), edittext.getText().toString());
+						Shopping.insertList(getContentResolver(), 
+							edittext.getText().toString());
 						
 						edittext.setText("");
 						fillListFilter();
 						
 						mDialog.dismiss();
-						return true;
-						
-					};
+						return true;	
+					}
 					return false;
 				}
 				
@@ -262,10 +287,12 @@ public class ShoppingView extends Activity {
 			
 			Button bOk = (Button) mDialog.findViewById(R.id.ok);
 			bOk.setOnClickListener(new OnClickListener() {
-				public void onClick(View v) {
-					EditText edittext = (EditText) mDialog.findViewById(R.id.edittext);
+				public void onClick(final View v) {
+					EditText edittext = (EditText) mDialog
+						.findViewById(R.id.edittext);
 					
-					Shopping.insertList(getContentResolver(), edittext.getText().toString());
+					Shopping.insertList(getContentResolver(), 
+							edittext.getText().toString());
 					
 					edittext.setText("");
 					fillListFilter();
@@ -350,12 +377,13 @@ public class ShoppingView extends Activity {
 		
 		// Get a cursor for all items that are contained 
 		// in currently selected shopping list.
-		Cursor mCursorItems = getContentResolver().query(
+		mCursorItems = getContentResolver().query(
 				ContainsFull.CONTENT_URI,
 				mStringItems,
 				"list_id = " + listId, null,
 				ContainsFull.DEFAULT_SORT_ORDER);
 		startManagingCursor(mCursorItems);
+		
 
 		if (mCursorItems == null) {
 			Log.e(TAG, "missing shopping provider");
@@ -365,7 +393,7 @@ public class ShoppingView extends Activity {
 			return;
 		}
 		
-		ListAdapter adapter = new SimpleCursorAdapter(this,
+		ListAdapter adapter = new mSimpleCursorAdapter(this,
 				// Use a template that displays a text view
 				R.layout.shopping_item_row,
 				// Give the cursor to the list adapter
@@ -379,6 +407,64 @@ public class ShoppingView extends Activity {
 					R.id.name, 
 					R.id.image_URI });
 		mListItems.setAdapter(adapter);
+		
+		TEST = new String("ok");
+		Log.i(TAG, "fillItems: mCursorItems : " + (mCursorItems == null) 
+				+ ", " + TEST);
+		
+		//strikeItems();
 	}
+	
+	/**
+	 * 
+	 * Extend the SimpleCursorAdapter to strike through items.
+	 * if STATUS == Shopping.Status.BOUGHT
+	 * 
+	 */
+	public class mSimpleCursorAdapter extends SimpleCursorAdapter {
 
+		/**
+		 * Constructor simply calls super class.
+		 * @param context Context.
+		 * @param layout Layout.
+		 * @param c Cursor.
+		 * @param from Projection from.
+		 * @param to Projection to.
+		 */
+		mSimpleCursorAdapter(final Context context, final int layout, 
+				final Cursor c, final String[] from, final int[] to) {
+			super(context, layout, c, from, to);
+		}
+		
+		@Override
+		public void bindView(final View view, final Context context, 
+				final Cursor cursor) {
+			//Log.i(TAG, "bindView " + view.toString());
+			super.bindView(view, context, cursor);
+			
+			TextView t = (TextView) view.findViewById(R.id.name);
+			if (cursor.getLong(mStringItemsSTATUS) 
+					== Shopping.Status.BOUGHT) {
+				// We have bought the item,
+				// so we strike it through:
+				
+				// First convert text to 'spannable'
+				t.setText(t.getText(), TextView.BufferType.SPANNABLE);
+				Spannable str = (Spannable) t.getText();
+				
+				// Strikethrough
+				str.setSpan(new StrikethroughSpan(), 0, str.length(),
+						Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				
+				// apply color
+				// TODO: How to get color from resource?
+				//Drawable colorStrikethrough = context
+				//	.getResources().getDrawable(R.drawable.strikethrough);
+				str.setSpan(new ForegroundColorSpan(0x33336600), 0,
+						str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			}
+		}
+		
+	}
 }
+
