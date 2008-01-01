@@ -45,7 +45,12 @@
 	<string name="shopping_list"><b>Shopping list</b></string>
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
+	<string name="clean_up_list">Clean up list</string>
+	<string name="delete_list">Delete list</string>
 	<string name="ask_new_list">Enter name of new shopping list</string>
+	<string name="no_items_marked">"No items are marked as crossed out."</string>
+	<string name="confirm_delete_list">"Do you really want to delete this shopping list?"</string>
+	<string name="no_shopping_provider">No shopping provider available.</string>
 	
 	<!--     Dialog box    -->
 	<string name="cancel">Cancel</string>

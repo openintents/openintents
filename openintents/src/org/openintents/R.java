@@ -12,7 +12,8 @@ public final class R {
     }
     public static final class drawable {
         public static final int openintents_icon=0x7f020000;
-        public static final int strikethrough=0x7f020001;
+        public static final int shoppinglist01d=0x7f020001;
+        public static final int strikethrough=0x7f020002;
     }
     public static final class id {
         public static final int about=0x7f050009;
@@ -61,17 +62,22 @@ public final class R {
         public static final int add_current_location=0x7f040005;
         public static final int add_tag=0x7f04000c;
         public static final int app_name=0x7f040000;
-        public static final int ask_new_list=0x7f040010;
-        public static final int cancel=0x7f040011;
+        public static final int ask_new_list=0x7f040012;
+        public static final int cancel=0x7f040016;
+        public static final int clean_up_list=0x7f040010;
+        public static final int confirm_delete_list=0x7f040014;
         public static final int default_tag=0x7f040001;
-        public static final int key_return=0x7f040013;
+        public static final int delete_list=0x7f040011;
+        public static final int key_return=0x7f040018;
         public static final int list_is_empty=0x7f040007;
         public static final int list_of_contents=0x7f040009;
         public static final int list_of_locations=0x7f040004;
         public static final int list_of_tags=0x7f040008;
         public static final int new_item=0x7f04000e;
         public static final int new_list=0x7f04000f;
-        public static final int ok=0x7f040012;
+        public static final int no_items_marked=0x7f040013;
+        public static final int no_shopping_provider=0x7f040015;
+        public static final int ok=0x7f040017;
         public static final int select=0x7f04000a;
         public static final int shopping_list=0x7f04000d;
         public static final int view_location=0x7f040006;
