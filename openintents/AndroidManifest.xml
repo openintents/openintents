@@ -76,6 +76,8 @@
 			android:label="@string/shopping_list">
 			<intent-filter>
 				<action android:value="android.intent.action.MAIN" />
+				<category android:value="android.intent.category.DEFAULT" />
+				<type android:value="vnd.openintents.cursor.dir/shopping.list"/>
 				<!--  <category
 					android:value="android.intent.category.LAUNCHER" />  -->              					
 			</intent-filter>

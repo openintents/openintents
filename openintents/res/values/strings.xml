@@ -58,5 +58,5 @@
 	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>
-	
+	<string name="test">test</string>
 </resources>

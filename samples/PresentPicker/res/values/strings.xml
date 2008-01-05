@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Present Picker</string>
+    <string name="pick_contact">Pick a contact</string>
+    <string name="name">Name:</string>
+    <string name="recommendation"><I>I recommend the following presents:</I></string>
+    <string name="add_item_to">Add to shopping list</string>
+    <string name="view_shopping_list">View shopping list</string>
+	<string name="male">M</string>
+	<string name="female">F</string>
+	<string name="age">Age:</string>
+	<string name="personality">Personality:</string>
+	<string name="occasion">Occasion:</string>
+	<string name="search">Search</string>
+	<string name="selection">Your selection:</string>
+	<string name="autocomplete_hint">Typing * will show all of your contacts.</string>
+   
+    <string name="about">About</string>
+    <string name="about_title">About Present Picker</string>
+    <string name="about_content">Present Picker finds the right present for any occasion.</string>
+    <string name="copyright">(c) 2008 OpenIntents.org</string>
+    <string name="about_icons">The freeware icons are created by FastIcon.com and are subject to their license conditions.</string>
+    <string name="ok">OK</string>
+    
+   </resources>

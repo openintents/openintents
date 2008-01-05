@@ -80,6 +80,7 @@ public final class R {
         public static final int ok=0x7f040017;
         public static final int select=0x7f04000a;
         public static final int shopping_list=0x7f04000d;
+        public static final int test=0x7f040019;
         public static final int view_location=0x7f040006;
     }
 }

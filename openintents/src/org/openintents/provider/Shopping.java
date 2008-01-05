@@ -394,4 +394,16 @@ public abstract class Shopping {
 		}
 	}
 	
+	/**
+	 * Returns the id of the default shopping list.
+	 * Currently this is always 1.
+	 * 
+	 * @return The id of the default shopping list.
+	 */
+	public static long getDefaultList() {
+		// TODO: Once CentralTagging is available,
+		// the shopping list that is tagged as "default"
+		// should be returned here.
+		return 1;
+	}
 }

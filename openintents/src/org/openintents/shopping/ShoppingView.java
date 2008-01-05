@@ -101,8 +101,14 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private static final int mStringItemsITEMIMAGE = 2;
 	private static final int mStringItemsSTATUS = 3;
 	
+	EditText mEditText;
+	
 	protected Context mDialogContext;
 	protected Dialog mDialog;
+	
+	// TODO: Set up state information for onFreeze(), ...
+	// State data to be stored when freezing:
+	private final String ORIGINAL_ITEM = "original item";
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -114,8 +120,38 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		//setTheme(android.R.style.Theme_Black);
 		setContentView(R.layout.shopping);
 
-		mSpinnerListFilter = (Spinner) findViewById(R.id.spinner_listfilter);
+		// hook up all buttons, lists, edit text:
+		createView();
 		
+		// populate the lists
+		fillListFilter();
+		fillItems();
+		
+		if (icicle != null) {
+			String prevText = icicle.getString(ORIGINAL_ITEM);
+			if (prevText != null) {
+				mEditText.setText(prevText);
+			}
+		}
+		
+		// set focus to the edit line:
+		mEditText.requestFocus();
+	}
+	
+	@Override
+	protected void onFreeze(Bundle outState) {
+		super.onFreeze(outState);
+		
+        // Save original text from edit box
+		String s = mEditText.getText().toString();
+        outState.putString(ORIGINAL_ITEM, s);
+    }
+
+	/**
+	 * Hook up buttons, lists, and edittext with functionality.
+	 */
+	private void createView() {
+		mSpinnerListFilter = (Spinner) findViewById(R.id.spinner_listfilter);
 		mSpinnerListFilter.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View v,
 					int position, long id) {
@@ -127,9 +163,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			}
 		});
         
-		EditText et = (EditText) findViewById(R.id.edittext_add_item);
-		et.setKeyListener(new OnKeyListener() {
-
+		mEditText = (EditText) findViewById(R.id.edittext_add_item);
+		mEditText.setKeyListener(new OnKeyListener() {
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode 
@@ -142,84 +177,42 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 						keyCode == Integer.parseInt(getString(R.string.key_return)))
 				{
 					insertNewItem();
-					
 					return true;
-					
 				};
 				return false;
 			}
-			
 		});
 		
 		Button button = (Button) findViewById(R.id.button_add_item);
 		button.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				insertNewItem();
-				
 			}
 		});
 		
-		mListItems = (ListView) findViewById(R.id.list_items);
-		//mListItems.setOnItemClickListener(this);
-		
+		mListItems = (ListView) findViewById(R.id.list_items);		
 		mListItems.setOnItemClickListener(
 			new OnItemClickListener() {
-
 				@Override
 				public void onItemClick(AdapterView parent, 
 						View v, int pos, long id) {
-					// strike item through or undo this.
-					Log.i(TAG, "onItemClick: Pos:" + pos + ", id: " + id);
-					//Log.i(TAG, "Contains ID: " + getSelectedItemContainsId(pos));
-					// id contains what we need...
-					
 					Cursor c = (Cursor) parent.obtainItem(pos);
-					
-					Log.i(TAG, "via Cursor: " 
-							+ c.getString(mStringItemsITEMNAME)
-							+ "old status: " + c.getLong(mStringItemsSTATUS));
-					
-					// Toggle status:
-					long oldstatus = c.getLong(mStringItemsSTATUS);
-					long newstatus = Shopping.Status.BOUGHT;
-					if (oldstatus == Shopping.Status.BOUGHT) {
-						newstatus = Shopping.Status.WANT_TO_BUY;
-					}
-						
-					c.updateLong(mStringItemsSTATUS, newstatus);
-					
-					Log.i(TAG, "Commit now:");
-					c.commitUpdates();
-					
-					Log.i(TAG, "Requery now:");
-					c.requery();
-					
-					// fillItems();
-					
+					toggleItemBought(c);
 				}
 				
 		});
 		mListItems.setOnItemSelectedListener(new OnItemSelectedListener() {
-
 			@Override
 			public void onItemSelected(AdapterView parent, View v,
 					int position, long id) {
 				// Log.i(TAG, "mListItems selected: pos:" 
 				// 	+ position + ", id:" + id);
-				
 			}
-
 			@Override
 			public void onNothingSelected(AdapterView arg0) {
 				// TODO Auto-generated method stub
-				
 			}
-			
 		});
-		
-		
-		fillListFilter();
-		fillItems();
 	}
 	
 	/**
@@ -230,19 +223,44 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		EditText edittext = 
 			(EditText) findViewById(R.id.edittext_add_item);
 						
-		long listId = getSelectedListId();
+		String newItem = edittext.getText().toString();
 		
-		long itemId = Shopping.insertItem(getContentResolver(), 
-				edittext.getText().toString());
+		// Only add if there is something to add:
+		if (newItem.compareTo("") != 0) {
+			long listId = getSelectedListId();
+			
+			long itemId = Shopping.insertItem(getContentResolver(), 
+					newItem);
+			
+			Log.i(TAG, "Insert new item. " 
+					+ " itemId = " + itemId + ", listId = " + listId);
+			Shopping.insertContains(getContentResolver(), 
+					itemId, listId);
+			
+			edittext.setText("");
+			
+			fillItems();
+		}
+	}
+	
+	// strike item through or undo this.
+	private void toggleItemBought(Cursor c) {
+		// Toggle status:
+		long oldstatus = c.getLong(mStringItemsSTATUS);
+		long newstatus = Shopping.Status.BOUGHT;
+		if (oldstatus == Shopping.Status.BOUGHT) {
+			newstatus = Shopping.Status.WANT_TO_BUY;
+		}
+			
+		c.updateLong(mStringItemsSTATUS, newstatus);
 		
-		Log.i(TAG, "Insert new item. " 
-				+ " itemId = " + itemId + ", listId = " + listId);
-		Shopping.insertContains(getContentResolver(), 
-				itemId, listId);
+		Log.i(TAG, "Commit now:");
+		c.commitUpdates();
 		
-		edittext.setText("");
+		Log.i(TAG, "Requery now:");
+		c.requery();
 		
-		fillItems();
+		// fillItems();
 	}
 	
 	// Menu
@@ -286,7 +304,6 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 
 	@Override
 	public boolean onOptionsItemSelected(Item item) {
-		super.onOptionsItemSelected(item);
 		switch (item.getId()) {
 		case MENU_NEW_LIST:
 			newListDialog();
