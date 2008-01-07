@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007 OpenIntents.org                                       *
+ * Copyright (C) 2007-2008 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -20,21 +20,47 @@ improved interoperability of Android applications.
 To obtain the current release, visit
   http://code.google.com/p/openintents/
 
+
+---------------------------------------------------------
+release: 0.1.1
+date: 2008-01-07
+
+new features:
+- ShoppingList
+  - add items to list
+  - mark items (displayed as strike-through)
+  - clean up list (remove marked items)
+  - create new list
+  - delete list
+
+known issues:
+  - no automatic scrolling for very long shopping lists
+
 ---------------------------------------------------------
 release: 0.1.0
 date: 2007-12-19
 
 features:
-- show list of favorite locations.
-- add current location to database.
-- use tag intent to tag selected location.
-- view selected location on map.
+- LocationsProvider
+- TagsProvider
+- TagView for OpenIntent.TAG action
 
 use cases:
-- tag selected location: 
-  1) add current location to database (using menu)
-  2) select this location (in list of other locations)
-  3) tag selected location (using menu)
+- view locations:
+  1) select "show locations"
+  2) add current location to database (using menu)
+- view and add tags
+  1) select "show tags"
+  2) enter tag and content in text fields (or select tag from list of content)
+  3) click "add"
+- use OpenIntent.TAG
+  1) create a new application, import OpenIntents-n-n-n.jar
+  2) create an Intent with action = OpenIntent.TAG and uri = Tags.CONTENT_URI
+  3) add content to Intent using putExtrag(Tags.QUERY_URI, myContentToTag)
+  4) startSubActivity using the Intent
+  5) return code is Activity.RESULT_OK if a tag has been added to the myContentToTag
+  
 
 know issues:
-- remove location from database and/or from list of favorites not possible.
+- LocationsProvider: remove location from database not possible.
+- TagsProvider: remove tags and content from database not possible.

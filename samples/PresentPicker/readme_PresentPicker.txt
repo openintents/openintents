@@ -14,35 +14,32 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-OpenIntents defines and implements open interfaces for
-improved interoperability of Android applications.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-To obtain the current release, visit
-  http://code.google.com/p/openintents/
+   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib-n.n.n.JAR FILE:
 
------------------------------------------------------------------------------
+In the Eclipse Package Explorer, right-click on the imported 
+project FavoriteLocations, select "Properties", then "Java Build Path" 
+and tab "Libraries". There "Add External JARs..." and select
+lib/openintents-lib-n.n.n.jar. 
 
-OpenIntents
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-The directory structure is organized as follows:
+PresentPicker picks the right present for you.
+It demonstrates the usage of the Shopping List application.
 
-archive/
-   lib/
-      contains old library JAR versions
+---------------------------------------------------------
+release: 0.1.1
+date: 2008-01-07
 
-lib/
-   contains the latest library JAR version
+features:
+- Select contact and search criteria
+- MagicOracle for finding suitable presents
+- Write result to shopping list
+- view shopping list
 
-openintents/
-   contains all core functionality
+use cases:
+- fill out the forms and press "Search".  
 
-samples/
-   contains samples that use openintents
-
-testing/
-   developers/
-   common/
-      directories for testing concepts
-
-(tutorials/)
-   will contain very simple tutorials
+known issues:
+- MagicOracle fails in some rare instances

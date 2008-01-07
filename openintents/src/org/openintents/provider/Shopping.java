@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 OpenIntents.org
+ * Copyright (C) 2007-2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package org.openintents.provider;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.net.ContentURI;
 import android.provider.BaseColumns;
 import android.util.Log;
@@ -46,7 +47,7 @@ public abstract class Shopping {
         /**
          * The default sort order for this table.
          */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
+        public static final String DEFAULT_SORT_ORDER = "modified ASC";
         
        
         /**
@@ -95,8 +96,8 @@ public abstract class Shopping {
          * The default sort order for this table.
          */
         public static final String DEFAULT_SORT_ORDER 
-        	 = "modified DESC";
-        	//= "modified ASC";
+        	// = "modified DESC";
+        	= "modified ASC";
         
        
         /**
@@ -315,23 +316,25 @@ public abstract class Shopping {
 	
 	// Some convenience functions follow
 	
+	// The content resolver has to be set before accessing 
+	// any of these functions.
+	public static ContentResolver mContentResolver;
+	
 	/**
-	 * Adds a new item and returns its id.
+	 * Gets or creates a new item and returns its id.
 	 * If the item exists already, the existing id is returned.
-	 * @param cr result from calling getContentResolver() 
-	 *                          within your activity.
+	 * Otherwise a new item is created.
 	 * @param name New name of the item.
 	 * @return id of the new or existing item.
 	 */
-	public static long insertItem(final ContentResolver cr, 
-			final String name) {
+	public static long getItem(final String name) {
 		// TODO check whether item exists
 		
 		// Add item to list:
 		ContentValues values = new ContentValues(1);
 		values.put(Items.NAME, name);
 		try {
-			ContentURI uri = cr.insert(Items.CONTENT_URI, values);
+			ContentURI uri = mContentResolver.insert(Items.CONTENT_URI, values);
 			Log.i(TAG, "Insert new item: " + uri);
 			return Long.parseLong(uri.getPathSegment(1));
 		} catch (Exception e) {
@@ -341,22 +344,20 @@ public abstract class Shopping {
 	}
 
 	/**
-	 * Adds a new shopping list and returns its id.
+	 * Gets or creates a new shopping list and returns its id.
 	 * If the list exists already, the existing id is returned.
-	 * @param cr result from calling getContentResolver() 
-	 *                          within your activity.
+	 * Otherwise a new list is created.
 	 * @param name New name of the list.
 	 * @return id of the new or existing list.
 	 */
-	public static long insertList(final ContentResolver cr, 
-			final String name) {
+	public static long getList(final String name) {
 		// TODO check whether list exists
 		
 		// Add item to list:
 		ContentValues values = new ContentValues(1);
 		values.put(Lists.NAME, name);
 		try {
-			ContentURI uri = cr.insert(Lists.CONTENT_URI, values);
+			ContentURI uri = mContentResolver.insert(Lists.CONTENT_URI, values);
 			Log.i(TAG, "Insert new list: " + uri);
 			return Long.parseLong(uri.getPathSegment(1));
 		} catch (Exception e) {
@@ -369,15 +370,13 @@ public abstract class Shopping {
 	/**
 	 * Adds a new item to a specific list and returns its id.
 	 * If the item exists already, the existing id is returned.
-	 * @param cr result from calling getContentResolver() 
-	 *                          within your activity.
 	 * @param itemId The id of the new item.
-	 * @param itemType The type of the new item
 	 * @param listId The id of the shopping list the item is added.
+	 * @param itemType The type of the new item
 	 * @return id of the "contains" table entry.
 	 */
-	public static long insertContains(final ContentResolver cr, 
-			final long itemId, final long listId) {
+	public static long addItemToList(final long itemId, 
+			final long listId) {
 		// TODO check whether "contains" entry exists
 		
 		// Add item to list:
@@ -385,7 +384,7 @@ public abstract class Shopping {
 		values.put(Contains.ITEM_ID, itemId);
 		values.put(Contains.LIST_ID, listId);
 		try {
-			ContentURI uri = cr.insert(Contains.CONTENT_URI, values);
+			ContentURI uri = mContentResolver.insert(Contains.CONTENT_URI, values);
 			Log.i(TAG, "Insert new entry in 'contains': " + uri);
 			return Long.parseLong(uri.getPathSegment(1));
 		} catch (Exception e) {
@@ -405,5 +404,12 @@ public abstract class Shopping {
 		// the shopping list that is tagged as "default"
 		// should be returned here.
 		return 1;
+	}
+	
+	// TODO: Can we write a convenience function like this?
+	// How can we store information about Activity?
+	public static void showList(long listId) {
+		// Intent intent = new Intent(Intent.MAIN_ACTION, Shopping.Lists.CONTENT_URI);
+		// startActivity(intent);
 	}
 }

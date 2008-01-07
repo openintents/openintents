@@ -1,5 +1,20 @@
-/* Part of the code is taken from Google's ApiDemos
- * (com.google.android.sample.view.Grid2.java)
+/* 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Part of the code is based on Google's ApiDemos
  * */
 
 package org.openintents.samples.presentpicker;
@@ -91,6 +106,9 @@ public class PresentPicker extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.main);
+        
+		// Initialize the convenience functions:
+		Shopping.mContentResolver = getContentResolver();
     
 /*
         GridView g = (GridView) findViewById(R.id.myGrid);
@@ -168,6 +186,12 @@ public class PresentPicker extends Activity {
                 mPickList = new int[mPickListLen];
                 for (int i=0; i<mPickList.length; i++)
                 	mPickList[i] = i;
+                
+                // for screenshot:
+                // mPickList = new int[] {5, 3, 1, 7, 6, 2, 0, 9};
+                // mPickListLen = mPickList.length;
+                // mPresentNum = 5;
+                
                 removeButtons();
                 addQuestionButton();
                 mHandler.sendMessage(mHandler.obtainMessage(PROGRESS));
@@ -230,13 +254,11 @@ public class PresentPicker extends Activity {
 				// Only add if there is something to add
 				if (newItem.compareTo("") != 0) {
 					// First create the new item:
-					long itemId = Shopping.insertItem(getContentResolver(), 
-						newItem);
+					long itemId = Shopping.getItem(newItem);
 					
 					// Now put this into the default shopping list
 					long listId = Shopping.getDefaultList();
-					Shopping.insertContains(getContentResolver(), 
-							itemId, listId);
+					Shopping.addItemToList(itemId, listId);
 					
 					// That was it!
 				}
@@ -265,6 +287,9 @@ public class PresentPicker extends Activity {
         public void handleMessage(Message msg) {
             if (msg.what == PROGRESS && !mCancelled) {
                 mProgress += mMagicOracle.nextInt(200);
+            	
+            	// for screenshot:
+            	// mProgress += 5;
                 
                 if (mProgress / 10000. * mPresentNum > mPresentPos)
                 {
@@ -274,6 +299,7 @@ public class PresentPicker extends Activity {
                 		mFirstItem = null;
                 	}
                 	int inspiration = mMagicOracle.nextInt(mPickListLen);
+                	// inspiration = 0; // for screenshot
                 	addPresentButton(mPickList[inspiration]);
                 	// remove this item from the possible choices of the oracle:
                 	mPickListLen--;

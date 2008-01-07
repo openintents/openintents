@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 OpenIntents.org
+ * Copyright (C) 2007-2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
@@ -39,6 +40,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -46,6 +48,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -60,7 +63,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	/**
 	 * TAG for logging.
 	 */
-	private static final String TAG = "ShoppingProvider";
+	private static final String TAG = "ShoppingView";
 	
 	private static final int MENU_NEW_LIST = Menu.FIRST;
 	private static final int MENU_CLEAN_UP_LIST = Menu.FIRST + 1;
@@ -73,11 +76,25 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private static final int MENU_SORT = Menu.FIRST + 6; // sort alphabetically or modified
 	private static final int MENU_PICK_ITEMS = Menu.FIRST + 7; // pick from previously used items
 	
+	// TODO: Implement "select list" action 
+	// that can be called by other programs.
+	private static final int MENU_SELECT_LIST = Menu.FIRST + 8; // select a shopping list
+	
 	// TODO: Further possible actions to implement:
 	// * Move items to some other shopping list
 	
+	private LinearLayout mLinearLayoutBackground;
+	
 	/**
-	 * Private members connected to Spinner ListFilter
+	 * Sets how many pixels the EditBox shall be away
+	 * from the bottom of the screen, when 
+	 * the height of the list-box is limited in
+	 * checkListLength()
+	 */
+	private static final int mBottomPadding = 5;
+	
+	/**
+	 * Private members connected to Spinner ListFilter.
 	 */
 	private Spinner mSpinnerListFilter;
 	private Cursor mCursorListFilter;
@@ -87,8 +104,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private static final int mStringListFilterNAME = 1;
 	private static final int mStringListFilterIMAGE = 2;
 	
-	ListView mListItems;
-	Cursor mCursorItems;
+	private ListView mListItems;
+	private Cursor mCursorItems;
 	private String TEST;
 	private static final String[] mStringItems =
 		new String[] { 
@@ -100,8 +117,10 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private static final int mStringItemsITEMNAME = 1;
 	private static final int mStringItemsITEMIMAGE = 2;
 	private static final int mStringItemsSTATUS = 3;
+	private LinearLayout.LayoutParams mLayoutParamsItems;
+	private int mAllowedListHeight; // Height for the list allowed in this view.
 	
-	EditText mEditText;
+	private EditText mEditText;
 	
 	protected Context mDialogContext;
 	protected Dialog mDialog;
@@ -119,12 +138,24 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		//setTheme(android.R.style.Theme_Dark);
 		//setTheme(android.R.style.Theme_Black);
 		setContentView(R.layout.shopping);
+		
+		// Initialize the convenience functions:
+		Shopping.mContentResolver = getContentResolver();
 
 		// hook up all buttons, lists, edit text:
 		createView();
 		
 		// populate the lists
 		fillListFilter();
+
+		// select the default shopping list at the beginning:
+		setSelectedListId((int) Shopping.getDefaultList());
+		// TODO: Select the last shopping list viewed
+		//       instead of the default shopping list.
+		//       (requires saving that information as
+		//        preference).
+		
+		// now fill all items
 		fillItems();
 		
 		if (icicle != null) {
@@ -138,6 +169,17 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		mEditText.requestFocus();
 	}
 	
+	
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		checkListLength();
+	}
+
+
+
 	@Override
 	protected void onFreeze(Bundle outState) {
 		super.onFreeze(outState);
@@ -151,6 +193,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	 * Hook up buttons, lists, and edittext with functionality.
 	 */
 	private void createView() {
+		mLinearLayoutBackground = (LinearLayout) findViewById(R.id.background);
+		
 		mSpinnerListFilter = (Spinner) findViewById(R.id.spinner_listfilter);
 		mSpinnerListFilter.setOnItemSelectedListener(new OnItemSelectedListener() {
 			public void onItemSelected(AdapterView parent, View v,
@@ -190,6 +234,10 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			}
 		});
 		
+		mLayoutParamsItems = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT); 
+		
 		mListItems = (ListView) findViewById(R.id.list_items);		
 		mListItems.setOnItemClickListener(
 			new OnItemClickListener() {
@@ -207,10 +255,12 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 					int position, long id) {
 				// Log.i(TAG, "mListItems selected: pos:" 
 				// 	+ position + ", id:" + id);
+				checkListLength();
 			}
 			@Override
 			public void onNothingSelected(AdapterView arg0) {
 				// TODO Auto-generated method stub
+				checkListLength();
 			}
 		});
 	}
@@ -219,27 +269,33 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	 * Inserts new item from edit box into 
 	 * currently selected shopping list.
 	 */
-	private void insertNewItem() {
-		EditText edittext = 
-			(EditText) findViewById(R.id.edittext_add_item);
-						
-		String newItem = edittext.getText().toString();
+	private void insertNewItem() {		
+		String newItem = mEditText.getText().toString();
 		
 		// Only add if there is something to add:
 		if (newItem.compareTo("") != 0) {
 			long listId = getSelectedListId();
 			
-			long itemId = Shopping.insertItem(getContentResolver(), 
-					newItem);
+			long itemId = Shopping.getItem(newItem);
 			
 			Log.i(TAG, "Insert new item. " 
 					+ " itemId = " + itemId + ", listId = " + listId);
-			Shopping.insertContains(getContentResolver(), 
-					itemId, listId);
+			Shopping.addItemToList(itemId, 
+					listId);
 			
-			edittext.setText("");
+			mEditText.setText("");
 			
 			fillItems();
+			
+			checkListLength();
+			
+			// TODO:
+			// Now scroll the list to the end, where
+			// the new item has been inserted:
+			// Can these functions be of use?
+			// mListItems.scrollTo(x, y)
+			// mListItems.requestChildRectangleOnScreen(child, rectangle)
+			
 		}
 	}
 	
@@ -354,15 +410,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				if (key.isDown() && keyCode == Integer
 							.parseInt(getString(R.string.key_return))) {
 					// User pressed "Enter" 
-					EditText edittext = (EditText) 
-						mDialog.findViewById(R.id.edittext);
-					
-					Shopping.insertList(getContentResolver(), 
-						edittext.getText().toString());
-					
-					edittext.setText("");
-					fillListFilter();
-					
+					createNewList();
 					mDialog.dismiss();
 					return true;	
 				}
@@ -375,15 +423,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		Button bOk = (Button) mDialog.findViewById(R.id.ok);
 		bOk.setOnClickListener(new OnClickListener() {
 			public void onClick(final View v) {
-				EditText edittext = (EditText) mDialog
-					.findViewById(R.id.edittext);
-				
-				Shopping.insertList(getContentResolver(), 
-						edittext.getText().toString());
-				
-				edittext.setText("");
-				fillListFilter();
-				
+				createNewList();
 				mDialog.dismiss();
 			}
 		});
@@ -396,6 +436,18 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		});
 		
 		mDialog.show();
+	}
+	
+	private void createNewList() {
+		EditText edittext = (EditText) 
+			mDialog.findViewById(R.id.edittext);
+	
+		int newId = (int) Shopping.getList(edittext.getText().toString());
+		
+		edittext.setText("");
+		fillListFilter();
+		
+		setSelectedListId(newId);
 	}
 	
 	/**
@@ -499,6 +551,35 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	};
 	
 	/**
+	 * sets the selected list to a specific list Id
+	 */
+	private void setSelectedListId(int id) {
+		// Is there a nicer way to accomplish the following?
+		// (we look through all elements to look for the
+		//  one entry that has the same ID as returned by
+		//  getDefaultList()).
+		//
+		// unfortunately, a SQL query won't work, as it would
+		// return 1 row, but I still would not know which
+		// row in the mCursorListFilter corresponds to that id.
+		//
+		// one could use: findViewById() but how will this
+		// translate to the position in the list?
+		mCursorListFilter.moveTo(-1);
+		while (mCursorListFilter.next()) {
+			int posId = mCursorListFilter.getInt(mStringListFilterID);
+			if (posId == id) {
+				int row = mCursorListFilter.position();
+				
+				// if we found the Id, then select this in 
+				// the Spinner:
+				mSpinnerListFilter.setSelection(row);
+				break;
+			}
+		}
+	}
+	
+	/**
 	 * 
 	 */
 	private void fillListFilter() {
@@ -520,7 +601,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		if (mCursorListFilter.count() < 1) {
 			// We have to create default shopping list:
 			// TODO Put the following string into resource my_shopping_list
-			Shopping.insertList(getContentResolver(), "My shopping list");
+			Shopping.getList("My shopping list");
 			
 			// TODO Check if insertion really worked. Otherwise
 			//      we may end up in infinite recursion.
@@ -546,7 +627,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 
 
 	private void fillItems() {
-		Log.i(TAG, "Starting fillItems()");
+		//Log.i(TAG, "Starting fillItems()");
 		
 		long listId = getSelectedListId();
 		
@@ -583,11 +664,95 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 					R.id.image_URI });
 		mListItems.setAdapter(adapter);
 		
-		TEST = new String("ok");
-		Log.i(TAG, "fillItems: mCursorItems : " + (mCursorItems == null) 
-				+ ", " + TEST);
-		
 		//strikeItems();
+		 //checkListLength();
+	}
+	
+	/**
+	 * This function checks the length of the list.
+	 * If the number of items is too large, the height
+	 * of the list is limited, such that the EditText
+	 * element will not drop out of the view.
+	 */
+	private void checkListLength() {
+		Log.i(TAG, "checkListLength()");
+		/*
+		// Now we check whether we reach the lower border already:
+		int[] locEditText = new int[2];
+		mEditText.getAbsoluteLocationOnScreen(locEditText);
+		int bottomEdit = locEditText[1] + mEditText.getBottom();
+		
+		int[] locBackground = new int[2];
+		mLinearLayoutBackground.getAbsoluteLocationOnScreen(locBackground);
+		int bottomBackground = locBackground[1] + mLinearLayoutBackground.getBottom();
+		*/
+		// number of items in the list
+		int count = mListItems.getCount();
+		
+		if (count < 1) {
+			mLayoutParamsItems.height = LinearLayout.LayoutParams.WRAP_CONTENT;
+		}
+		else {
+			// for now, let us take the height of 
+			// the first element and multiply by count.
+			// TODO later: Some items may be larger
+			//      (if they contain images).
+			//      How can we best determine the size
+			//      there?
+			//int singleHeight = mListItems.getChildAt(0).getHeight();
+			int listHeight = mListItems.getHeight();
+			Log.i(TAG, "listHeight: " + listHeight);
+			
+			int editTextHeight = mEditText.getHeight();
+			
+			// calculate the allowed height of the list
+			// TODO: could be moved to initialization after freeze?
+			mAllowedListHeight = 
+				mLinearLayoutBackground.getHeight()
+				- mListItems.getTop()
+				- editTextHeight
+				- mBottomPadding;
+			
+			if ((mAllowedListHeight < 1) 
+					|| (listHeight + editTextHeight < mAllowedListHeight)) {
+				mLayoutParamsItems.height 
+					= LinearLayout.LayoutParams.WRAP_CONTENT;
+			} else {
+				// we have to limit the height:
+				mLayoutParamsItems.height = mAllowedListHeight;
+			}
+		}
+		Log.i(TAG, "Items.height: " + mLayoutParamsItems.height);
+		if (mLayoutParamsItems.height > 0)
+		{
+			mListItems.setLayoutParams(mLayoutParamsItems);
+		};
+		/*
+		int listLen = 
+		
+		if (bottomEdit > bottomBackground) {
+			// The list is too long, the edit text field
+			// would fall off the screen, so we have
+			// to limit the height of the list:
+			int[] locList = new int[2];
+			mListItems.getAbsoluteLocationOnScreen(locList);
+			int topList = locList[1];
+			
+			int newListSize = bottomBackground 
+				- topList
+				- mEditText.getHeight();
+			
+			Log.i(TAG, "newListSize : " + newListSize);
+			
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					LinearLayout.LayoutParams.FILL_PARENT,
+					newListSize); 
+					//LinearLayout.LayoutParams.WRAP_CONTENT);
+			//mLinearLayoutBackground.updateViewLayout(mListItems, params);
+			mListItems.setLayoutParams(params);
+		}
+		*/
+		
 	}
 		
 	/**

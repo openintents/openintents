@@ -26,10 +26,6 @@ OpenIntents
 
 The directory structure is organized as follows:
 
-archive/
-   lib/
-      contains old library JAR versions
-
 lib/
    contains the latest library JAR version
 
@@ -38,11 +34,3 @@ openintents/
 
 samples/
    contains samples that use openintents
-
-testing/
-   developers/
-   common/
-      directories for testing concepts
-
-(tutorials/)
-   will contain very simple tutorials

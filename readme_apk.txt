@@ -26,23 +26,21 @@ OpenIntents
 
 The directory structure is organized as follows:
 
-archive/
-   lib/
-      contains old library JAR versions
+openintents.apk    the main program
 
-lib/
-   contains the latest library JAR version
+lib/               contains the latest library JAR version
 
-openintents/
-   contains all core functionality
+samples/           contains samples that use openintents
 
-samples/
-   contains samples that use openintents
+-----------------------------------------------------------------------------
 
-testing/
-   developers/
-   common/
-      directories for testing concepts
+To install an application from the command line:
 
-(tutorials/)
-   will contain very simple tutorials
+* run the emulator:
+  emulator
+
+* install the main program and optionally any of the sample programs:
+  adb install OpenIntents.apk
+  adb install samples/PresentPicker.apk
+
+* run the program from the Applications folder within the emulator.
