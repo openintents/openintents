@@ -55,6 +55,10 @@
 			</intent-filter>
 		</activity>
 
+		<!-- Location Map activity -->
+		<activity class=".locations.LocationsMapView"
+			android:label="@string/locations_map">
+		</activity> 
 
 		<!-- Tags activity -->
 		<activity class=".tags.TagsView"
