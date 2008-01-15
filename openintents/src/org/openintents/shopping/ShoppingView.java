@@ -209,7 +209,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
         
 		mEditText = (EditText) findViewById(R.id.edittext_add_item);
 		mEditText.setKeyListener(new OnKeyListener() {
-			@Override
+			
 			public boolean onKey(View v, int keyCode, KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode 
 				//		+ " =?= " 
@@ -241,7 +241,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		mListItems = (ListView) findViewById(R.id.list_items);		
 		mListItems.setOnItemClickListener(
 			new OnItemClickListener() {
-				@Override
+				
 				public void onItemClick(AdapterView parent, 
 						View v, int pos, long id) {
 					Cursor c = (Cursor) parent.obtainItem(pos);
@@ -250,14 +250,14 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				
 		});
 		mListItems.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
+			
 			public void onItemSelected(AdapterView parent, View v,
 					int position, long id) {
 				// Log.i(TAG, "mListItems selected: pos:" 
 				// 	+ position + ", id:" + id);
 				checkListLength();
 			}
-			@Override
+			
 			public void onNothingSelected(AdapterView arg0) {
 				// TODO Auto-generated method stub
 				checkListLength();
@@ -402,7 +402,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		
 		// Accept OK also when user hits "Enter"
 		et.setKeyListener(new OnKeyListener() {
-			@Override
+			
 			public boolean onKey(final View v, final int keyCode, 
 					final KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode);
@@ -494,7 +494,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			getString(R.string.confirm_delete_list), 
 			getString(R.string.ok),
 			new DialogInterface.OnClickListener() {
-				@Override
+				
 				public void onClick(DialogInterface di, int whichDialog) {
 					Log.i(TAG, "Dialog click on:" + whichDialog);
 					deleteList();
@@ -502,14 +502,14 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			},
 			getString(R.string.cancel),
 			new DialogInterface.OnClickListener() {
-				@Override
+				
 				public void onClick(DialogInterface di, int whichDialog) {
 					Log.i(TAG, "Dialog click on:" + whichDialog);
 				}
 			},
 			true, 
 			new DialogInterface.OnCancelListener() {
-				@Override
+				
 				public void onCancel(DialogInterface di) {
 					// TODO Auto-generated method stub
 				}				
