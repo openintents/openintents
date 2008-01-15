@@ -72,7 +72,7 @@ public class LocationsView extends Activity {
 		fillData();
 		mList.setOnItemClickListener(new OnItemClickListener(){
 
-			@Override
+			
 			public void onItemClick(AdapterView parent, View v, int position,
 					long id) {
 				int longitude = 0, latitude = 0;
