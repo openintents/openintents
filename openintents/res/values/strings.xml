@@ -42,6 +42,17 @@
 	<string name="add">Add</string>
 	<string name="add_tag"><b>Add new tag/content</b></string>
 	
+	<!--  Content Browser -->
+	<string name = "content_browser">Content browser</string>
+	<string name ="tags_add_tag">Tag</string>
+	<string name="tags_view_content">View</string>
+	<string name="tags_remove_tag">Remove</string>
+	
+	<string name="message">Message</string>
+	<string name="todo">To do</string>
+	<string name="tags_view_tag">View</string>
+	<string name="no_tags">No tagged content found.</string>
+		
 	<!-- Shopping Provider -->
 	<string name="shopping_list"><b>Shopping list</b></string>
 	<string name="new_item">New item</string>

@@ -26,6 +26,7 @@ import org.openintents.provider.Tag.Tags;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,6 +52,7 @@ public class TagsView extends Activity {
 	private static final String TAG = "tagView";
 	private static final String TAG_ACTION = "TAG";
 	protected static final String ALL = "ALL"; // TODO: Put string into resource
+	private static final int MENU_VIEW_TAG = 1;
 
 	private ListView mTags;
 	private ListView mListContents;
@@ -233,8 +235,28 @@ public class TagsView extends Activity {
 				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
 				// The view defined in the XML template
 				new int[] { R.id.tag_tag, R.id.tag_content, R.id.tag_uri_1 });
+		
 		mListContents.setAdapter(adapter);
 
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, MENU_VIEW_TAG, R.string.tags_view_tag);
+		return true;
+	}
+	
+	@Override
+	public boolean onMenuItemSelected(int featureId, Item item) {
+
+		super.onMenuItemSelected(featureId, item);
+
+		switch (item.getId()) {
+		case MENU_VIEW_TAG:
+			Intent intent = new Intent(Intent.VIEW_ACTION, Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, mTagFilter.getSelectedItem());
+			startActivity(intent);
+		}
+
+		return true;
+	}
 }

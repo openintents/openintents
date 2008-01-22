@@ -18,7 +18,6 @@ package org.openintents.tags;
 
 import java.util.HashMap;
 
-import org.openintents.provider.Location;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
@@ -36,10 +35,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Provides access to a database of tags and contents. 
- * Each tag has a tag_id and a content_id, a creation date and a modified data.
- * Both ids refer to an entry to the contents table.
- * A content row has a uri and a type.
+ * Provides access to a database of tags and contents. Each tag has a tag_id and
+ * a content_id, a creation date and a modified data. Both ids refer to an entry
+ * to the contents table. A content row has a uri and a type.
  * 
  */
 public class TagsProvider extends ContentProvider {
@@ -91,7 +89,6 @@ public class TagsProvider extends ContentProvider {
 		return mDB != null;
 	}
 
-	@Override
 	public Cursor query(ContentURI url, String[] projection, String selection,
 			String[] selectionArgs, String groupBy, String having, String sort) {
 		QueryBuilder qb = new QueryBuilder();
@@ -102,7 +99,8 @@ public class TagsProvider extends ContentProvider {
 			// queries for tags also return the uris, not only the ids.
 			qb.setTables("tag tag, content content1, content content2");
 			qb.setProjectionMap(TAG_PROJECTION_MAP);
-			qb.appendWhere("tag.tag_id = content1._id AND tag.content_id = content2._id");
+			qb.appendWhere("tag.tag_id = content1._id AND "
+					+ "tag.content_id = content2._id");
 			defaultOrderBy = Tags.DEFAULT_SORT_ORDER;
 			break;
 
@@ -185,7 +183,7 @@ public class TagsProvider extends ContentProvider {
 						String.valueOf(values.get(Tags.TAG_ID)),
 						String.valueOf((String) values.get(Tags.CONTENT_ID)) },
 				null, null, null);
-		
+
 		if (!existingTag.next()) {
 			// finally insert the tag.
 			rowID = mDB.insert("tag", "tag", values);
@@ -202,8 +200,8 @@ public class TagsProvider extends ContentProvider {
 	}
 
 	/**
-	 * lookup content id for given uri
-	 * or create new entry in content table if not present
+	 * lookup content id for given uri or create new entry in content table if
+	 * not present
 	 * 
 	 * @param values
 	 * @param idColumnName
@@ -237,6 +235,7 @@ public class TagsProvider extends ContentProvider {
 
 	/**
 	 * create new entry in content table
+	 * 
 	 * @param uri
 	 * @param type
 	 * @return
@@ -254,9 +253,12 @@ public class TagsProvider extends ContentProvider {
 	@Override
 	public int delete(ContentURI url, String where, String[] whereArgs) {
 		int count;
-		long rowId = 0;
+		long rowId = 0;		
 		switch (URL_MATCHER.match(url)) {
-		case TAGS:
+		case TAGS:						
+			where = "tag.tag_id = (select content1._id FROM content content1 WHERE content1.uri = ?) " +
+					"AND tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
+			
 			count = mDB.delete("tag", where, whereArgs);
 
 			// TODO remove unreferenced content

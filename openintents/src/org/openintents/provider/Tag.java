@@ -90,10 +90,15 @@ public abstract class Tag {
 		public static final String URI_2 = "uri_2";
 		
 		/**
-		 * Uri to be tagged.
+		 * The Uri to be tagged that the query is about.
 		 * 
 		 */
 		public static final String QUERY_URI = "uri";
+
+		/**
+		 * The tag that the query is about.
+		 */
+		public static final String QUERY_TAG = "tag";
 	}
 
 	public static final class Contents implements BaseColumns {
