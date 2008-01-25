@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	* Copyright (C) 2007-2008 OpenIntents.org
+	*
+	* Licensed under the Apache License, Version 2.0 (the "License");
+	* you may not use this file except in compliance with the License.
+	* You may obtain a copy of the License at
+	*
+	*      http://www.apache.org/licenses/LICENSE-2.0
+	*
+	* Unless required by applicable law or agreed to in writing, software
+	* distributed under the License is distributed on an "AS IS" BASIS,
+	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	* See the License for the specific language governing permissions and
+	* limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.openintents">
+
+	<uses-permission id="android.permission.READ_CONTACTS" />
+
+	<application android:icon="@drawable/openintents_icon">
+		<!-- Providers -->
+		<provider class=".locations.LocationsProvider"
+			android:authorities="org.openintents.locations" />
+		<provider class=".tags.TagsProvider"
+			android:authorities="org.openintents.tags" />
+		<provider class=".shopping.ShoppingProvider"
+			android:authorities="org.openintents.shopping" />
+		<!-- 
+			<provider class=".tags.content.ContentIndexProvider"
+			android:authorities="org.openintents.contentindices" />			
+		-->
+		
+		
+		<!-- Main activity -->
+		<activity class=".main.OpenIntents"
+			android:label="@string/app_name">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<category
+					android:value="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<activity class=".main.About"
+			android:label="@string/about_openintents">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<!-- <category
+					android:value="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+		</activity>
+
+		<!-- Locations activity -->
+		<activity class=".locations.LocationsView"
+			android:label="@string/list_of_locations">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<!--  <category
+					android:value="android.intent.category.LAUNCHER" />  -->
+			</intent-filter>
+		</activity>
+
+		<!-- Location Map activity -->
+		<activity class=".locations.LocationsMapView"
+			android:label="@string/locations_map">
+		</activity>
+
+		<!-- Tags activity -->
+		<activity class=".tags.TagsView"
+			android:label="@string/list_of_tags">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<!--  <category
+					android:value="android.intent.category.LAUNCHER" />  -->
+			</intent-filter>
+			<intent-filter>
+				<action android:value="org.openintents.action.TAG" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<type android:value="vnd.openintents.cursor.dir/tag" />
+			</intent-filter>
+			<intent-filter>
+				<action android:value="org.openintents.action.TAG"
+					android:label="tag" />
+				<category
+					android:value="android.intent.category.ALTERNATIVE" />
+				<scheme android:value="content" />
+			</intent-filter>
+			<intent-filter>
+				<action android:value="org.openintents.action.TAG"
+					android:label="tag" />
+				<category
+					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
+				<scheme android:value="content" />
+			</intent-filter>
+		</activity>
+
+		<!-- android:icon="@drawable/directory" -->
+		<activity class=".tags.content.ContentBrowserView"
+			android:label="@string/content_browser"
+			android:icon="@drawable/openintents_icon">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<category
+					android:value="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:value="android.intent.action.VIEW" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<type android:value="vnd.openintents.cursor.dir/tag" />
+			</intent-filter>
+			<intent-filter>
+				<action android:value="android.intent.action.VIEW" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<type android:value="vnd.openintents.cursor.item/tag" />
+			</intent-filter>
+		</activity>
+
+		<activity class=".tags.TagsAddView"
+			android:label="@string/tags_add_tag" android:theme="@android:style/Theme.Dialog">
+			<intent-filter>
+				<action android:value="org.openintents.action.TAG" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<category
+					android:value="android.intent.category.ALTERNATIVE" />
+				<category
+					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
+				<type android:value="vnd.openintents.cursor.dir/tag" />
+			</intent-filter>
+
+			<intent-filter>
+				<action android:value="android.intent.action.INSERT" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<category
+					android:value="android.intent.category.ALTERNATIVE" />
+				<category
+					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
+				<type android:value="vnd.openintents.cursor.dir/tag" />
+			</intent-filter>
+		</activity>
+
+		<!-- Shopping activity -->
+		<activity class=".shopping.ShoppingView"
+			android:label="@string/shopping_list">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<type
+					android:value="vnd.openintents.cursor.dir/shopping.list" />
+				<!--  <category
+					android:value="android.intent.category.LAUNCHER" />  -->
+			</intent-filter>
+		</activity>
+
+	</application>
+</manifest>
