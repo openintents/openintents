@@ -44,9 +44,10 @@
 		<LinearLayout android:orientation="horizontal"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
+			<!-- android:src="@drawable/tag_blue" --> 
 			<ImageView android:layout_width="12px"
     	android:layout_height="12px"
-    	android:src="@drawable/tag_blue" 
+    	android:src="@drawable/openintents_icon"
     	android:visibility="gone" />
 
 			<Spinner id="@+id/tag_filter"

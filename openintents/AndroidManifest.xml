@@ -98,9 +98,10 @@
 			</intent-filter>
 		</activity>
 
+		<!-- android:icon="@drawable/directory" -->
 		<activity class=".tags.content.ContentBrowserView"
 			android:label="@string/content_browser"
-			android:icon="@drawable/directory">
+			android:icon="@drawable/openintents_icon">
 			<intent-filter>
 				<action android:value="android.intent.action.MAIN" />
 				<category

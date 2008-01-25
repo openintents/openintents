@@ -18,13 +18,11 @@ package org.openintents.tags;
 
 import java.util.ArrayList;
 
-import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -242,7 +240,10 @@ public class TagsView extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_VIEW_TAG, R.string.tags_view_tag);
+		//menu.add(0, MENU_VIEW_TAG, R.string.tags_view_tag);
+		
+		// TODO !!! THIS IS DEFINITELY THE WRONG TAG,
+		menu.add(0, MENU_VIEW_TAG, R.string.view_location);
 		return true;
 	}
 	
