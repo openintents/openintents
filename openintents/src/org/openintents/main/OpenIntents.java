@@ -17,6 +17,7 @@
 package org.openintents.main;
 
 import org.openintents.R;
+import org.openintents.hardware.SensorSimulatorView;
 import org.openintents.locations.LocationsView;
 import org.openintents.shopping.ShoppingView;
 import org.openintents.tags.TagsView;
@@ -43,7 +44,12 @@ import android.widget.AdapterView.OnItemClickListener;
  */
 public class OpenIntents extends Activity implements OnItemClickListener {
 
-	private String[] activitylist = { "Show locations", "Show tags", "Shopping list"};
+	private String[] activitylist = { 
+			"Show locations", 
+			"Show tags", 
+			"Shopping list",
+			"SensorSimulator"
+			};
 
 	/** Called when the activity is first created. */
 	@Override
@@ -78,7 +84,12 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			intent = new Intent(this, ShoppingView.class);
 			startActivity(intent);
 			break;
-
+			
+		case 3:
+			intent = new Intent(this, SensorSimulatorView.class);
+			startActivity(intent);
+			break;
+			
 		default:
 			throw new IllegalArgumentException("Unknown position " + position);
 		}

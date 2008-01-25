@@ -34,6 +34,9 @@
 		-->
 		
 		
+		<provider class=".hardware.HardwareProvider"
+			android:authorities="org.openintents.hardware" />
+			
 		<!-- Main activity -->
 		<activity class=".main.OpenIntents"
 			android:label="@string/app_name">
@@ -159,6 +162,16 @@
 					android:value="android.intent.category.LAUNCHER" />  -->
 			</intent-filter>
 		</activity>
-
-	</application>
+		
+		<!-- SensorSimulator -->
+		<activity class=".hardware.SensorSimulatorView"
+			android:label="@string/sensorsimulator">
+			<intent-filter>
+				<action android:value="android.intent.action.MAIN" />
+				<category android:value="android.intent.category.DEFAULT" /> 
+				<type android:value="vnd.openintents.cursor.dir/hardware.preference"/>          					
+			</intent-filter>
+		</activity>
+		
+	</application>	 
 </manifest>

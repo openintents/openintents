@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.openintents.samples.openglsensors">
+    <application android:icon="@drawable/icon_openintents_sample">
+        <activity class=".OpenGLSensors" android:label="@string/app_name">
+            <intent-filter>
+                <action android:value="android.intent.action.MAIN" />
+                <category android:value="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest> 

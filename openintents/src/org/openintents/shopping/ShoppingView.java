@@ -296,6 +296,19 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			// mListItems.scrollTo(x, y)
 			// mListItems.requestChildRectangleOnScreen(child, rectangle)
 			
+			// now select the new item (which will be at the bottom
+			// TODO: THIS IS REALLY A CHEAP FIX:
+			// This only works for one specific view size and font size.
+			
+			// Answer? 
+			// http://groups.google.com/group/android-developers/browse_frm/thread/3b2f4063a2221acb/36462ba1301a18c8
+			int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 9;
+			if (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE)
+			{
+				mListItems.setSelection(mListItems.getCount() - NUMBER_OF_ELEMENTS_BELOW_MIDDLE);
+			};
+			
+			//mListItems.getChildAt(mListItems.getCount()-1).setSelected(true);
 		}
 	}
 	

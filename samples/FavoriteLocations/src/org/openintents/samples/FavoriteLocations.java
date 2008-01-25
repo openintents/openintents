@@ -17,12 +17,12 @@
 package org.openintents.samples;
 
 /*
- * YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-n.n.n.JAR FILE:
+ * YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-LIB-n.n.n.JAR FILE:
  * 
  * In the Eclipse Package Explorer, right-click on the imported 
  * project FavoriteLocations, select "Properties", then "Java Build Path" 
  * and tab "Libraries". There "Add External JARs..." and select 
- * lib/openintents-n.n.n.jar. 
+ * lib/openintents-lib-n.n.n.jar. 
  */
 
 import org.openintents.OpenIntents;

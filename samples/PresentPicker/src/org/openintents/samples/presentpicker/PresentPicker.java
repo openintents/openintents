@@ -19,9 +19,18 @@
 
 package org.openintents.samples.presentpicker;
 
-import java.util.Random;
+/*
+ * YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-LIB-n.n.n.JAR FILE:
+ * 
+ * In the Eclipse Package Explorer, right-click on the imported 
+ * project PresentPicker, select "Properties", then "Java Build Path" 
+ * and tab "Libraries". There "Add External JARs..." and select 
+ * lib/openintents-lib-n.n.n.jar. 
+ */
 
 import org.openintents.provider.Shopping;
+
+import java.util.Random;
 
 import android.app.Activity;
 import android.app.Dialog;

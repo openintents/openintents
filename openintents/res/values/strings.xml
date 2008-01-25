@@ -68,6 +68,18 @@
 	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
 	
+	<!--  Sensor Simulator -->
+	<string name="sensorsimulator">Sensor Simulator</string>
+	<string name="connect">Connect</string>
+	<string name="disconnect">Disconnect</string>
+	<string name="IP_address">IP address:</string>
+	<string name="socket">Socket:</string>
+	<string name="real_device_data">Real device data:</string>
+	<string name="sensor_simulator_data">Sensor simulator data:</string>
+	<string name="enable_sensors">Enable sensors</string>
+	<string name="auto_update">Auto update</string>
+	<string name="disabled">disabled</string>
+	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>
 	<string name="test">test</string>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="OpenIntents SensorSimulator"
+    />
+<TableLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TableRow>
+	    <TextView  
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/IP_address"
+		    />
+    	<EditText id="@+id/ipaddress"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			/>
+	</TableRow>
+	<TableRow>
+		<TextView  
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/socket"
+		    />
+		<EditText id="@+id/socket"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			/>
+    </TableRow>
+</TableLayout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+	<Button id="@+id/buttonconnect"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 				
+				android:text="@string/connect" />
+	<Button id="@+id/buttondisconnect"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content" 				
+				android:text="@string/disconnect" />
+			
+</LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+	<CheckBox id="@+id/checkenable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enable_sensors" />
+        <!-- 
+    <CheckBox id="@+id/checkautoupdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auto_update" />
+         -->
+			
+</LinearLayout>
+
+<EditText id="@+id/edittext"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			/>
+
+</LinearLayout>
