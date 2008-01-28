@@ -1,9 +1,23 @@
+/* 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-/**
+/*
  * This application is based on Google's ApiDemos
  * com.google.android.samples.graphics.GLView1.java
- * 
- * which is licensed under the same license (Apache License, Version 2.0
+ * which is licensed under the same license (Apache License, Version 2.0)
  */
 
 package org.openintents.samples.openglsensors;
@@ -341,6 +355,14 @@ public class OpenGLSensors extends Activity {
     	if ((mUseAccelerometer && !mAccelerometerSupported) 
     			|| (mUseCompass && !mCompassSupported)
     			|| (mUseOrientation && !mOrientationSupported)) {
+    		useBestAvailableSensors();
+    	}
+    	
+    	// another possibility is that previously no sensor
+    	// was available, and now they are available.
+    	if (!mUseAccelerometer && !mUseCompass && !mUseOrientation) {
+    		// we had not used anything, so let's check whether
+    		// anything is possible now.
     		useBestAvailableSensors();
     	}
     }
@@ -767,7 +789,7 @@ class Cube
     private ByteBuffer  mIndexBuffer;
 }
 
-// The pyramid is from the anddev.org tutorial.
+// The pyramid is taken from the anddev.org tutorial.
 class Pyramid { 
       
      private IntBuffer mVertexBuffer; 
@@ -790,7 +812,7 @@ class Pyramid {
           * R(ed) 
           * G(green) 
           * B(blue) 
-          * A(lpha) <-- Opticacy 
+          * A(lpha) <-- Opacity 
           */ 
           int colors[] = { 0, 0, one, one, 
                one, 0, 0, one, 
@@ -800,16 +822,14 @@ class Pyramid {
 
            /* The last thing is that we need to describe some Triangles. 
            * A triangle got 3 vertices. 
-           * The confusing thing is, that it is important in which order 
+           * It is important in which order 
            * the vertices of each triangle are described. 
            * So describing a triangle through the vertices: "0, 3, 4" 
            * will not result in the same triangle as: "0, 4, 3" 
-           * You probably ask: Why the hell isn't that the same ??? 
            * The reason for that is the call of: "gl.glFrontFace(gl.GL_CW);" 
            * which means, that we have to describe the "visible" side of the 
            * triangles by naming its vertices in a ClockWise order! 
-           * From the other side, the triangle will be 100% lookthru! 
-           * You can create a kind of magic mirror with that . 
+           * From the other side, the triangle will be 100% transparent! 
            */ 
           byte indices[] = { 0, 4, 1, // The four side-triangles 
                1, 4, 2, 

@@ -34,3 +34,7 @@ openintents/
 
 samples/
    contains samples that use openintents
+
+tools/
+   contains additional tools (SensorSimulator)
+

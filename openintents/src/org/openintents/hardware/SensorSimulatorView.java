@@ -1,3 +1,19 @@
+/* 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.hardware;
 
 import java.text.DecimalFormat;
@@ -12,13 +28,17 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class SensorSimulatorView extends Activity {
+public class SensorSimulatorView extends Activity implements OnFocusChangeListener {
 	/**
 	 * TAG for logging.
 	 */
@@ -30,11 +50,18 @@ public class SensorSimulatorView extends Activity {
 	private EditText mEditTextIP;
 	private EditText mEditTextSocket;
 	
+	// Indicators whether real device or sensor simulator is connected.
+	private TextView mTextSensorType;
+	private ImageView mImageSensorType;
+	
 	private Button mButtonConnect;
 	private Button mButtonDisconnect;
 	
 	private CheckBox mCheckBoxEnable;
 	//private CheckBox mCheckBoxAutoUpdate;
+	
+	private LinearLayout mSettingsBackground;
+	private LinearLayout mTestingBackground;
 	
 	private int updateInterval;
 	DecimalFormat mDecimalFormat;
@@ -75,14 +102,8 @@ public class SensorSimulatorView extends Activity {
 		mCheckBoxEnable = (CheckBox) findViewById(R.id.checkenable);
 		mCheckBoxEnable.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				// Enable all sensors:
-				for (String sensor : mSupportedSensors) {
-					if (isChecked) {
-						Sensors.enableSensor(sensor);
-					} else {
-						Sensors.disableSensor(sensor);
-					}
-				};
+				
+				enableAllSensors(isChecked);
 				
 				readAllSensors();
 				
@@ -122,6 +143,12 @@ public class SensorSimulatorView extends Activity {
 		}
 		mEditTextSocket.setText(s);
 		
+		mTextSensorType = (TextView) findViewById(R.id.datatype);
+		mImageSensorType = (ImageView) findViewById(R.id.imagetype);
+		
+		mSettingsBackground = (LinearLayout) findViewById(R.id.settings_background);
+		mTestingBackground = (LinearLayout) findViewById(R.id.testing_background);
+		
 		// Format for output of data
 		mDecimalFormat = new DecimalFormat("#0.00");
 		
@@ -131,8 +158,35 @@ public class SensorSimulatorView extends Activity {
 		// Default timer interval
 		updateInterval = 100;
 		
+		readAllSensors(); // initial reading
 		
+		// Register all possible focus changes:
+		mEditText.setOnFocusChangeListener(this);
+		mEditTextIP.setOnFocusChangeListener(this);
+		mEditTextSocket.setOnFocusChangeListener(this);
+		mButtonConnect.setOnFocusChangeListener(this);
+		mButtonDisconnect.setOnFocusChangeListener(this);
+		mCheckBoxEnable.setOnFocusChangeListener(this);
 	}
+	
+	/**
+	 * Implement the OnFocusChangeListener interface
+	 */
+	@Override
+	public void onFocusChanged(View v, boolean hasFocus) {
+		int id = v.getId();
+		if (id == R.id.ipaddress
+				|| id == R.id.socket) {
+			// Focus in settings area:
+			mSettingsBackground.setBackground(R.drawable.border_orange_01b);
+			mTestingBackground.setBackground(R.drawable.border_gray_01b);
+		} else {
+			// Focus in testing area:
+			mSettingsBackground.setBackground(R.drawable.border_gray_01b);
+			mTestingBackground.setBackground(R.drawable.border_orange_01b);
+		}
+	}
+		
 	
 	public void connect() {
 		
@@ -140,6 +194,11 @@ public class SensorSimulatorView extends Activity {
 		String newSocket = mEditTextSocket.getText().toString();
 		String oldIP = Hardware.getPreference(Hardware.IPADDRESS);
 		String oldSocket = Hardware.getPreference(Hardware.SOCKET);
+		
+		boolean disableEnable = false; // first disable, then enable
+		if (mCheckBoxEnable.isChecked()) disableEnable = true;
+		
+		if (disableEnable) enableAllSensors(false);
 		
 		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
 			// new values
@@ -156,6 +215,8 @@ public class SensorSimulatorView extends Activity {
 		// Get current sensors
 		mSupportedSensors = Sensors.getSupportedSensors();
 		
+		if (disableEnable) enableAllSensors(true);
+		
 		readAllSensors();
 		
 		// Hardware.mContentResolver = getContentResolver();
@@ -165,10 +226,19 @@ public class SensorSimulatorView extends Activity {
 	}
 	
 	public void disconnect() {
+		boolean disableEnable = false; // first disable, then enable
+		if (mCheckBoxEnable.isChecked()) disableEnable = true;
+		
+		if (disableEnable) enableAllSensors(false);
+		
 		Sensors.mClient.disconnect();
 
+		if (disableEnable) enableAllSensors(true);
+		
 		// Get current sensors
 		mSupportedSensors = Sensors.getSupportedSensors();
+		
+		readAllSensors();
 		
 		setButtonState();
 	}
@@ -178,15 +248,34 @@ public class SensorSimulatorView extends Activity {
 		mButtonConnect.setEnabled(!connected);
 		
 		mButtonDisconnect.setEnabled(connected);
+		
+		mButtonConnect.invalidate();
+		mButtonDisconnect.invalidate();
 	}
-	
+
+    public void enableAllSensors(boolean newEnabledState) {
+		// Enable all sensors:
+		for (String sensor : mSupportedSensors) {
+			if (newEnabledState) {
+				Sensors.enableSensor(sensor);
+			} else {
+				Sensors.disableSensor(sensor);
+			}
+		};
+	}
+
 	public void readAllSensors() {
 		Log.i(TAG, "readAllSensors()");
 		String data = "";
 		if (Sensors.mClient.connected) {
-			data += getString(R.string.sensor_simulator_data) + "\n";
+			//data += getString(R.string.sensor_simulator_data) + "\n";
+			mTextSensorType.setText(R.string.sensor_simulator_data);
+			mImageSensorType.setImageResource(R.drawable.sensorsimulator01b);
+			
 		} else {
-			data += getString(R.string.real_device_data) + "\n";
+			//data += getString(R.string.real_device_data) + "\n";
+			mTextSensorType.setText(R.string.real_device_data);
+			mImageSensorType.setImageResource(R.drawable.realdevice01a);
 		}
 		
 		for (String sensor : mSupportedSensors) {
@@ -206,16 +295,45 @@ public class SensorSimulatorView extends Activity {
 			data += "\n";
 		}
 		
+		/*  /// COMMENTED OUT: May cause confusion...
 		// only update field if user is not trying to do anything in the text field.
 		if (!mEditText.isFocused()) {
 			// update info.
 			mEditText.setText(data);
 		}
+		*/
+		
+		mEditText.setText(data);
 		
 	}
 
-
-    // Handle the process of searching for suitable present:
+	/*/*
+	 * Notification about corrupt table
+	 *//*
+	private void notifyCorruptTable() {
+		AlertDialog.show(SensorSimulatorView.this, 
+			getString(R.string.delete_list),
+			getString(R.string.confirm_delete_list), 
+			getString(R.string.ok),
+			new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface di, int whichDialog) {
+				}
+			},
+			getString(R.string.cancel),
+			new DialogInterface.OnClickListener() {
+				
+				public void onClick(DialogInterface di, int whichDialog) {
+				}
+			},
+			true, 
+			new DialogInterface.OnCancelListener() {
+				public void onCancel(DialogInterface di) {
+				}				
+			});
+	}
+	*/
+	
+	// Handle the process of automatically updating enabled sensors:
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

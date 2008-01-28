@@ -16,9 +16,14 @@ How to create the JAR file in Eclipse:
 
 2) Deselect ALL files, and only select the following classes:
    OpenIntents/src/org.openintents.provider/
-     * Location.java
-     * Shopping.java
-     * Tag.java
+     * ALL FILES in this directory.
+       (ContentIndex.java, Hardware.java, Location.java, News.java,
+        RSSFeed.java, Shopping.java, Tag.java)
+
+   OpenIntents/src/org.openintents.hardware/
+     * Sensors.java
+     * SensorSimulatorClient.java
+
    OpenIntents/src/org.openintents/
      * OpenIntents.java
    

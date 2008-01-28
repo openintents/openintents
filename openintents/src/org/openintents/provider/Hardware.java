@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007-2008 OpenIntents.org
+ * Copyright (C) 2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -116,8 +116,8 @@ public abstract class Hardware {
 				return "";
 			}
 		} catch (Exception e) {
-			Log.i(TAG, "insert into table 'contains' failed", e);
-			return "";
+			Log.e(TAG, "insert into table 'contains' failed", e);
+			return "Preferences table corrupt!";
 		}
 	}
 	

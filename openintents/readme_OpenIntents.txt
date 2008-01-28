@@ -22,6 +22,22 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 0.1.2
+date: 2008-01-28
+
+new features:
+- SensorSimulator
+  - tools/SensorSimulator: standalone Java application
+  - connect through SensorSimulatorView
+    - set global connection settings
+    - test connection to SensorSimulator
+  - samples/OpenGLSensors
+    - Displays pyramid that always points up,
+      regardless how you hold the phone.
+    - Works with accelerometer and orientation sensor.
+    - Displays bar magnet for compass sensor.
+
+---------------------------------------------------------
 release: 0.1.1
 date: 2008-01-07
 

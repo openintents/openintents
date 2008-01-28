@@ -20,74 +20,128 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="OpenIntents SensorSimulator"
-    />
-<TableLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content">
-    <TableRow>
-	    <TextView  
-		    android:layout_width="wrap_content" 
-		    android:layout_height="wrap_content" 
-		    android:text="@string/IP_address"
-		    />
-    	<EditText id="@+id/ipaddress"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			/>
-	</TableRow>
-	<TableRow>
+	<LinearLayout id="@+id/settings_background"
+		android:orientation="vertical" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="0.1" 
+		android:layout_marginTop="5dip"
+		android:background="@drawable/border_orange_01b">
 		<TextView  
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
-		    android:text="@string/socket"
+		    android:text="@string/settings"
+		    android:background="@drawable/title_background_transparency_01c"
 		    />
-		<EditText id="@+id/socket"
+		<TableLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="3dip"
+		    android:layout_marginTop="3dip"
+        	>
+		    <TableRow>
+			    <TextView  
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content" 
+				    android:text="@string/IP_address"
+				    />
+		    	<EditText id="@+id/ipaddress"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					/>
+			</TableRow>
+			<TableRow>
+				<TextView  
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content" 
+				    android:text="@string/socket"
+				    />
+				<EditText id="@+id/socket"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					android:nextFocusDown="@+id/buttonconnect"
+					/>
+		    </TableRow>
+		</TableLayout>
+	</LinearLayout>
+	<LinearLayout id="@+id/testing_background"
+		android:orientation="vertical" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="5.0" 
+		android:layout_marginTop="10dip"
+		android:background="@drawable/border_gray_01b">
+		<TextView  
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/testing"
+		    android:background="@drawable/title_background_transparency_01c"
+		    />
+		<LinearLayout
+			android:orientation="horizontal" 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			/>
-    </TableRow>
-</TableLayout>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-	<Button id="@+id/buttonconnect"
+			>
+			<LinearLayout
+				android:orientation="vertical" 
 				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 				
-				android:text="@string/connect" />
-	<Button id="@+id/buttondisconnect"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 				
-				android:text="@string/disconnect" />
-			
-</LinearLayout>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-	<CheckBox id="@+id/checkenable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enable_sensors" />
-        <!-- 
-    <CheckBox id="@+id/checkautoupdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/auto_update" />
-         -->
-			
-</LinearLayout>
-
-<EditText id="@+id/edittext"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			/>
-
+				android:layout_height="wrap_content">
+				<LinearLayout 
+				    android:orientation="horizontal"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="5dip"
+					>
+					<Button id="@+id/buttonconnect"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content" 				
+								android:text="@string/connect" />
+					<Button id="@+id/buttondisconnect"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content" 				
+								android:text="@string/disconnect" />
+							
+				</LinearLayout>
+				<LinearLayout
+				    android:orientation="horizontal"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    >
+					<CheckBox id="@+id/checkenable"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/enable_sensors" />
+				        <!-- 
+				    <CheckBox id="@+id/checkautoupdate"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:text="@string/auto_update" />
+				         -->
+							
+				</LinearLayout>
+				<TextView id="@+id/datatype"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content" 
+				    android:text=""
+				    android:layout_marginTop="10dip"
+					/>
+			</LinearLayout>
+			<!-- TODO 
+			  It seems there is a bug with layout_gravity="right"?
+			  The image will not float to the right.
+			  Workaround: specify marginLeft.
+			 -->
+			<ImageView  id="@+id/imagetype"
+				android:layout_width="40px"
+		    	android:layout_height="66px"
+		    	android:src="@drawable/realdevice01a" 
+		    	android:layout_marginLeft="50dip"
+				android:layout_gravity="right"
+		    	/>
+		</LinearLayout>
+		<EditText id="@+id/edittext"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content"
+					/>
+	</LinearLayout>
 </LinearLayout>

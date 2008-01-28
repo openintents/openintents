@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2008 OpenIntents.org                                  *
+ * Copyright (C) 2008 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -14,39 +14,28 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-OpenIntents defines and implements open interfaces for
-improved interoperability of Android applications.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-To obtain the current release, visit
-  http://code.google.com/p/openintents/
+   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib-n.n.n.JAR FILE:
 
------------------------------------------------------------------------------
+In the Eclipse Package Explorer, right-click on the imported 
+project OpenGLSensors, select "Properties", then "Java Build Path" 
+and tab "Libraries". There "Add External JARs..." and select
+lib/openintents-lib-n.n.n.jar. 
 
-OpenIntents
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-The directory structure is organized as follows:
+OpenGLSensors demonstrates accessing the sensors and the sensor simulator.
+The pyramid displayed will always show up, regardless how you hold the
+device.
+The bar magnet displayed will always point along the magnetic field.
 
-archive/
-   lib/
-      contains old library JAR versions
+---------------------------------------------------------
+release: 0.1.2
+date: 2008-01-28
 
-lib/
-   contains the latest library JAR version
-
-openintents/
-   contains all core functionality
-
-samples/
-   contains samples that use openintents
-
-testing/
-   developers/
-   common/
-      directories for testing concepts
-
-tools/
-   contains additional tools (SensorSimulator)
-
-
-(tutorials/)
-   will contain very simple tutorials
+new features:
+  - Displays pyramid that always points up,
+    regardless how you hold the phone.
+  - Works with accelerometer and orientation sensor.
+  - Displays bar magnet for compass sensor.

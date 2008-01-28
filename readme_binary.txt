@@ -32,6 +32,8 @@ lib/               contains the latest library JAR version
 
 samples/           contains samples that use openintents
 
+tools/             contains additional tools like the SensorSimulator
+
 -----------------------------------------------------------------------------
 
 To install an application from the command line:
