@@ -20,7 +20,10 @@ import org.openintents.R;
 import org.openintents.hardware.SensorSimulatorView;
 import org.openintents.locations.LocationsView;
 import org.openintents.shopping.ShoppingView;
+import org.openintents.tags.MagnoliaSettings;
+import org.openintents.tags.MagnoliaTagging;
 import org.openintents.tags.TagsView;
+import org.openintents.tags.content.ContentBrowserView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -48,7 +51,10 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			"Show locations", 
 			"Show tags", 
 			"Shopping list",
-			"SensorSimulator"
+			"SensorSimulator",
+			"Content browser",
+			"Magnolia settings",
+			"Magnolia tagging"
 			};
 
 	/** Called when the activity is first created. */
@@ -87,6 +93,21 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			
 		case 3:
 			intent = new Intent(this, SensorSimulatorView.class);
+			startActivity(intent);
+			break;
+		
+		case 4:
+			intent = new Intent(this, ContentBrowserView.class);
+			startActivity(intent);
+			break;
+			
+		case 5:
+			intent = new Intent(this, MagnoliaSettings.class);
+			startActivity(intent);
+			break;
+			
+		case 6:
+			intent = new Intent(this, MagnoliaTagging.class);
 			startActivity(intent);
 			break;
 			

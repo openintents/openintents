@@ -173,5 +173,14 @@
 			</intent-filter>
 		</activity>
 		
+		
+		<!-- Magnolia -->
+		<activity class=".tags.MagnoliaSettings"
+			android:label="MagnoliaSettings"><!-- TODO move to Resource ! -->
+		</activity>
+		<activity class=".tags.MagnoliaTagging"
+			android:label="MagnoliaTagging"><!-- TODO move to Resource ! -->
+		</activity>
+		
 	</application>	 
 </manifest>
