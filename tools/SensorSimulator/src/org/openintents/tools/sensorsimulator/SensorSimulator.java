@@ -15,7 +15,6 @@
  */
 
 package org.openintents.tools.sensorsimulator;
-
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -74,9 +73,14 @@ public class SensorSimulator extends JPanel
 	
 	static final String DISABLED = "DISABLED";
 	
-	
+	// Simulation delay:
 	int delay;
     Timer timer;
+    
+    // for measureing updates:
+    int updateSensorCount;
+    int updateEmulatorCount;
+    
     
     int mouseMode;
     static int mouseYawPitch = 1;
@@ -116,6 +120,17 @@ public class SensorSimulator extends JPanel
     JCheckBox mEnabledOrientation;
     JCheckBox mEnabledThermometer;
     
+    // Simulation update
+    JTextField mUpdateText;
+    JTextField mRefreshCountText;
+    JLabel mRefreshSensorsLabel;
+    JLabel mRefreshEmulatorLabel;
+    
+    // Accelerometer
+    JTextField mGravityConstantText;
+    JTextField mAccelerometerLimitText;
+    JTextField mPixelPerMeterText;
+    
     // Gravity
     JTextField mGravityXText;
     JTextField mGravityYText;
@@ -128,6 +143,12 @@ public class SensorSimulator extends JPanel
     
     // Temperature
     JTextField mTemperatureText;
+    
+    // Random contribution
+    JTextField mRandomAccelerometerText;
+    JTextField mRandomCompassText;
+    JTextField mRandomOrientationText;
+    JTextField mRandomTemperatureText;
     
     // Action Commands:
     static String yawPitch = "yaw & pitch";
@@ -426,6 +447,153 @@ public class SensorSimulator extends JPanel
         GridBagConstraints c3;
         
         ////////////////////////////////
+        // Sensor output update frequency
+        // and measure frequency
+        // Also update connected sensor frequency.
+        JPanel updateFieldPane = new JPanel(new GridBagLayout());
+        c3 = new GridBagConstraints();
+        c3.fill = GridBagConstraints.HORIZONTAL;
+        c3.anchor = GridBagConstraints.NORTHWEST;
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy = 0;
+        
+        updateFieldPane.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Sensor update"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
+        
+        label = new JLabel("Update sensors: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mUpdateText = new JTextField(5);
+        mUpdateText.setText("10");
+        c3.gridx = 1;
+        updateFieldPane.add(mUpdateText, c3);
+        
+        label = new JLabel(" ms", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Refresh after: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mGravityYText = new JTextField(5);
+        mGravityYText.setText("0");
+        c3.gridx = 1;
+        updateFieldPane.add(mGravityYText, c3);
+        
+        label = new JLabel(" times", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Sensor update: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshSensorsLabel = new JLabel("0", JLabel.LEFT);
+        c3.gridx = 1;
+        updateFieldPane.add(mRefreshSensorsLabel, c3);
+        
+        label = new JLabel("Emulator update: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshEmulatorLabel = new JLabel("0", JLabel.LEFT);
+        c3.gridx = 1;
+        updateFieldPane.add(mRefreshEmulatorLabel, c3);
+
+        // Update panel ends
+        
+        // Add update panel to settings
+        c2.gridx = 0;
+        c2.gridwidth = 1;
+        c2.gridy++;
+        settingsPane.add(updateFieldPane, c2);
+        
+        ////////////////////////////////
+        // Acceleration / accelerometer settings:
+        // * how much screen movement translates to
+        //   real world acceleration
+        // * smoothing of action(?)
+        JPanel accelerometerFieldPane = new JPanel(new GridBagLayout());
+        c3 = new GridBagConstraints();
+        c3.fill = GridBagConstraints.HORIZONTAL;
+        c3.anchor = GridBagConstraints.NORTHWEST;
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy = 0;
+        
+        accelerometerFieldPane.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Accelerometer"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
+        
+        label = new JLabel("Gravity constant g: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        accelerometerFieldPane.add(label, c3);
+        
+        mGravityConstantText = new JTextField(5);
+        mGravityConstantText.setText("9.82");
+        c3.gridx = 1;
+        accelerometerFieldPane.add(mGravityConstantText, c3);
+        
+        label = new JLabel(" m/s²", JLabel.LEFT);
+        c3.gridx = 2;
+        accelerometerFieldPane.add(label, c3);
+        
+
+        label = new JLabel("Accelerometer limit: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        accelerometerFieldPane.add(label, c3);
+        
+        mAccelerometerLimitText = new JTextField(5);
+        mAccelerometerLimitText.setText("10");
+        c3.gridx = 1;
+        accelerometerFieldPane.add(mAccelerometerLimitText, c3);
+        
+        label = new JLabel(" g", JLabel.LEFT);
+        c3.gridx = 2;
+        accelerometerFieldPane.add(label, c3);
+        
+        
+        label = new JLabel("Pixels per meter: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        accelerometerFieldPane.add(label, c3);
+        
+        mPixelPerMeterText = new JTextField(5);
+        mPixelPerMeterText.setText("3000");
+        c3.gridx = 1;
+        accelerometerFieldPane.add(mPixelPerMeterText, c3);
+        
+        label = new JLabel(" p/m", JLabel.LEFT);
+        c3.gridx = 2;
+        accelerometerFieldPane.add(label, c3);
+        
+        // Accelerometer field panel ends
+        
+        // Add accelerometer field panel to settings
+        c2.gridx = 0;
+        c2.gridwidth = 1;
+        c2.gridy++;
+        settingsPane.add(accelerometerFieldPane, c2);
+        
+        
+        ////////////////////////////////
         // Gravity (in g = 9.81 m/s^2)
         JPanel gravityFieldPane = new JPanel(new GridBagLayout());
         c3 = new GridBagConstraints();
@@ -485,9 +653,9 @@ public class SensorSimulator extends JPanel
         c3.gridx = 2;
         gravityFieldPane.add(label, c3);
         
-        // Magnetic field panel ends
+        // Gravity field panel ends
         
-        // Add magnetic field panel to settings
+        // Add gravity field panel to settings
         c2.gridx = 0;
         c2.gridwidth = 1;
         c2.gridy++;
@@ -566,9 +734,7 @@ public class SensorSimulator extends JPanel
         c2.gridwidth = 1;
         c2.gridy++;
         settingsPane.add(magneticFieldPane, c2);
-        
-        /////////////////////////////////////////////////////
-        
+
 
         ////////////////////////////////
         // Temperature (in °C: Centigrade Celsius)
@@ -607,7 +773,95 @@ public class SensorSimulator extends JPanel
         c2.gridwidth = 1;
         c2.gridy++;
         settingsPane.add(temperatureFieldPane, c2);
+
+        ///////////////////////////////
+        // Random contribution to sensor values
+
+        JPanel randomFieldPane = new JPanel(new GridBagLayout());
+        c3 = new GridBagConstraints();
+        c3.fill = GridBagConstraints.HORIZONTAL;
+        c3.anchor = GridBagConstraints.NORTHWEST;
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy = 0;
         
+        randomFieldPane.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Random component"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
+        
+        label = new JLabel("Accelerometer: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        randomFieldPane.add(label, c3);
+        
+        mRandomAccelerometerText = new JTextField(5);
+        mRandomAccelerometerText.setText("0");
+        c3.gridx = 1;
+        randomFieldPane.add(mRandomAccelerometerText, c3);
+        
+        label= new JLabel(" g", JLabel.LEFT);
+        c3.gridx = 2;
+        randomFieldPane.add(label, c3);
+        
+        
+        label = new JLabel("Compass: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        randomFieldPane.add(label, c3);
+        
+        mRandomCompassText = new JTextField(5);
+        mRandomCompassText.setText("0");
+        c3.gridx = 1;
+        randomFieldPane.add(mRandomCompassText, c3);
+        
+        label = new JLabel(" nT", JLabel.LEFT);
+        c3.gridx = 2;
+        randomFieldPane.add(nanoTeslaLabel, c3);
+        
+        label = new JLabel("Orientation: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        randomFieldPane.add(label, c3);
+        
+        mRandomOrientationText = new JTextField(5);
+        mRandomOrientationText.setText("0");
+        c3.gridx = 1;
+        randomFieldPane.add(mRandomOrientationText, c3);
+        
+        label = new JLabel(" °", JLabel.LEFT);
+        c3.gridx = 2;
+        randomFieldPane.add(label, c3);
+        
+        label = new JLabel("Temperature: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        randomFieldPane.add(label, c3);
+        
+        mRandomTemperatureText = new JTextField(5);
+        mRandomTemperatureText.setText("0");
+        c3.gridx = 1;
+        randomFieldPane.add(mRandomTemperatureText, c3);
+        
+        label = new JLabel(" °C", JLabel.LEFT);
+        c3.gridx = 2;
+        randomFieldPane.add(label, c3);
+        
+        // Random field panel ends
+        
+        // Add andom field panel to settings
+        c2.gridx = 0;
+        c2.gridwidth = 1;
+        c2.gridy++;
+        settingsPane.add(randomFieldPane, c2);
+        
+        
+        
+        /////////////////////////////////////////////////////
+                
         /////////////////////////////////////////////////////
         // Add settings scroll panel to right pane.
         c.gridx = 0;
@@ -743,8 +997,26 @@ public class SensorSimulator extends JPanel
     	// Update acceleration:
     	mobile.updateMouseAcceleration();
     	
+    	// Measure refresh
+    	updateSensorRefresh();
+    	
     	// Now show updated data:
     	showSensorData();
+    }
+    
+    /**
+     * Updates the information about sensor updates.
+     */
+    public void updateSensorRefresh() {
+    	//java.util.Date d;
+    	//d.getTime();
+    }
+    
+    /**
+     * Updates information about emulator updates.
+     */
+    public void updateEmulatorRefresh() {
+    	
     }
     
     public void showSensorData() {

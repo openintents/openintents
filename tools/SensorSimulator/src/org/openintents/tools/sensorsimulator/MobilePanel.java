@@ -23,6 +23,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Line2D;
+import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -82,6 +83,9 @@ class MobilePanel extends JPanel {
 	JSlider yawSlider;
 	JSlider pitchSlider;
 	JSlider rollSlider;
+	
+	Random r;
+	
 	
 	/*
 	 * http://code.google.com/android/reference/android/hardware/Sensors.html
@@ -145,6 +149,7 @@ class MobilePanel extends JPanel {
 		meterperpixel = 1/3000.; // meter per pixel
 		g = 9.8; // meter per second^2
 		
+		r = new Random();
 		
 		//this.setDoubleBuffered(true);
 		
@@ -212,6 +217,19 @@ class MobilePanel extends JPanel {
 	
 	public void updateMouseAcceleration() {
 		Vector vec;
+		double random;
+
+		// Update the timer if necessary:
+		double newdelay;
+		newdelay = getSafeDouble(mSensorSimulator.mUpdateText);
+		if (newdelay > 0) {
+			mSensorSimulator.delay = (int) newdelay;
+			mSensorSimulator.timer.setDelay(mSensorSimulator.delay);
+		}
+		
+		dt = 0.001 * mSensorSimulator.delay; // from ms to s
+		g = getSafeDouble(mSensorSimulator.mGravityConstantText, 9.82);
+		meterperpixel = 1 / getSafeDouble(mSensorSimulator.mPixelPerMeterText, 3000);
 		
 		// Calculate velocity induced by mouse:
 		double f = meterperpixel / g;
@@ -253,6 +271,27 @@ class MobilePanel extends JPanel {
 			accelx = vec.x;
 			accely = vec.y;
 			accelz = vec.z;
+			
+			// Add random component:
+			random = getSafeDouble(mSensorSimulator.mRandomAccelerometerText);
+			if (random > 0) {
+				accelx += getRandom(random);
+				accely += getRandom(random);
+				accelz += getRandom(random);
+			}
+			
+			// Add accelerometer limit:
+			double limit = getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
+			if (limit > 0) {
+				// limit on each component separately, as each is
+				// a separate sensor.
+				if (accelx > limit) accelx = limit;
+				if (accelx < -limit) accelx = -limit;
+				if (accely > limit) accely = limit;
+				if (accely < -limit) accely = -limit;
+				if (accelz > limit) accelz = limit;
+				if (accelz < -limit) accelz = -limit;
+			}
 		} else {
 			accelx = 0;
 			accely = 0;
@@ -269,6 +308,14 @@ class MobilePanel extends JPanel {
 			magneticnorth = getSafeDouble(mSensorSimulator.mMagneticFieldNorthText);
 			magneticeast = getSafeDouble(mSensorSimulator.mMagneticFieldEastText);
 			magneticvertical = getSafeDouble(mSensorSimulator.mMagneticFieldVerticalText);
+
+			// Add random component:
+			random = getSafeDouble(mSensorSimulator.mRandomCompassText);
+			if (random > 0) {
+				magneticnorth += getRandom(random);
+				magneticeast += getRandom(random);
+				magneticvertical += getRandom(random);
+			}
 			
 			// Magnetic vector in phone coordinates:
 			vec = new Vector(magneticeast, magneticnorth, -magneticvertical);
@@ -300,6 +347,14 @@ class MobilePanel extends JPanel {
 			yaw = yawDegree;
 			pitch = pitchDegree;
 			roll = rollDegree;
+			
+			// Add random component:
+			random = getSafeDouble(mSensorSimulator.mRandomOrientationText);
+			if (random > 0) {
+				yaw += getRandom(random);
+				pitch += getRandom(random);
+				roll += getRandom(random);
+			}
 		} else {
 			yaw = 0;
 			pitch = 0;
@@ -309,6 +364,12 @@ class MobilePanel extends JPanel {
 		// Thermometer
 		if (mSensorSimulator.mEnabledThermometer.isSelected()) {
 			temperature = getSafeDouble(mSensorSimulator.mTemperatureText);
+		
+			// Add random component:
+			random = getSafeDouble(mSensorSimulator.mRandomTemperatureText);
+			if (random > 0) {
+				temperature += getRandom(random);
+			}
 		} else {
 			temperature = 0;
 		}
@@ -320,19 +381,36 @@ class MobilePanel extends JPanel {
 	 * is marked red.
 	 * 
 	 * @param textfield Textfield from which the value should be read.
+	 * @param defaultValue default value if input field is invalid.
 	 * @return double value.
 	 */
-	public double getSafeDouble(JTextField textfield) {
+	public double getSafeDouble(JTextField textfield, double defaultValue) {
 		double value;
 		try {
 			value = Double.parseDouble(textfield.getText());
 			textfield.setBackground(Color.WHITE);
 		} catch (NumberFormatException e) {
 			// wrong user input in box - take default values.
-			value = 0;
+			value = defaultValue;
 			textfield.setBackground(Color.RED);
 		}
 		return value;
+	}
+	
+	public double getSafeDouble(JTextField textfield) {
+		return getSafeDouble(textfield, 0);
+	}
+	
+	/** 
+	 * get a random number in the range -random to +random
+	 * 
+	 * @param random range of random number
+	 * @return random number
+	 */
+	public double getRandom(double random) {
+		double val;
+		val = r.nextDouble();
+		return (2*val - 1) * random;
 	}
 	
     public Dimension getPreferredSize() {
