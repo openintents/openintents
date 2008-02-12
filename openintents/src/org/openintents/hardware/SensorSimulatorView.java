@@ -172,7 +172,6 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 	/**
 	 * Implement the OnFocusChangeListener interface
 	 */
-	@Override
 	public void onFocusChanged(View v, boolean hasFocus) {
 		int id = v.getId();
 		if (id == R.id.ipaddress
