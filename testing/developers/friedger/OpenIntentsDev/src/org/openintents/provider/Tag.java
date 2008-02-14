@@ -21,7 +21,7 @@ import android.provider.BaseColumns;
 
 /**
  * Definition for content provider related to tag.
- *
+ * 
  */
 public abstract class Tag {
 
@@ -82,13 +82,13 @@ public abstract class Tag {
 		 * 
 		 */
 		public static final String URI_1 = "uri_1";
-		
+
 		/**
 		 * Second URI of the relationship (usually the content).
 		 * 
 		 */
 		public static final String URI_2 = "uri_2";
-		
+
 		/**
 		 * The Uri to be tagged that the query is about.
 		 * 
@@ -122,14 +122,13 @@ public abstract class Tag {
 		public static final String URI = "uri";
 
 		/**
-		 * The type of the content, e.g TAG
-		 * null means CONTENT.
+		 * The type of the content, e.g TAG null means CONTENT.
 		 * <P>
 		 * Type: TEXT
 		 * </P>
 		 */
 		public static final String TYPE = "type";
-		
+
 		/**
 		 * The timestamp for when the note was created.
 		 * <P>
@@ -139,4 +138,5 @@ public abstract class Tag {
 		public static final String CREATED_DATE = "created";
 
 	}
+
 }

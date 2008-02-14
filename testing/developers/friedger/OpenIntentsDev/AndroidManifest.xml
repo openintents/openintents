@@ -28,12 +28,10 @@
 			android:authorities="org.openintents.tags" />
 		<provider class=".shopping.ShoppingProvider"
 			android:authorities="org.openintents.shopping" />
-		<!-- 
-			<provider class=".tags.content.ContentIndexProvider"
-			android:authorities="org.openintents.contentindices" />			
-		-->
-		
-		
+		<provider class=".tags.content.ContentIndexProvider"
+			android:authorities="org.openintents.contentindices" />
+
+
 		<!-- Main activity -->
 		<activity class=".main.OpenIntents"
 			android:label="@string/app_name">
@@ -101,7 +99,7 @@
 		<!-- android:icon="@drawable/directory" -->
 		<activity class=".tags.content.ContentBrowserView"
 			android:label="@string/content_browser"
-			android:icon="@drawable/openintents_icon">
+			android:icon="@drawable/folder">
 			<intent-filter>
 				<action android:value="android.intent.action.MAIN" />
 				<category
@@ -122,7 +120,8 @@
 		</activity>
 
 		<activity class=".tags.TagsAddView"
-			android:label="@string/tags_add_tag" android:theme="@android:style/Theme.Dialog">
+			android:label="@string/tags_add_tag"
+			android:theme="@android:style/Theme.Dialog">
 			<intent-filter>
 				<action android:value="org.openintents.action.TAG" />
 				<category
@@ -146,6 +145,22 @@
 			</intent-filter>
 		</activity>
 
+		<activity class=".tags.content.PackageList">
+			<intent-filter>
+				<action android:value="android.intent.action.PICK" />
+				<category
+					android:value="android.intent.category.DEFAULT" />
+				<type android:value="vnd.openintents.cursor.dir/contentdirectory" />
+			</intent-filter>
+		</activity>
+		
+		<activity class=".tags.content.PackageAdd" android:label="@string/app_name">
+            <intent-filter>
+                <action android:value="android.intent.action.INSERT" />
+                <category android:value="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
 		<!-- Shopping activity -->
 		<activity class=".shopping.ShoppingView"
 			android:label="@string/shopping_list">

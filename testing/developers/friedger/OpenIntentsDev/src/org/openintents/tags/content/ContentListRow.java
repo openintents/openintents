@@ -3,7 +3,6 @@ package org.openintents.tags.content;
 import java.net.URISyntaxException;
 import java.util.List;
 
-
 import org.openintents.provider.ContentIndex;
 import org.openintents.provider.ContentIndex.Entry;
 import org.openintents.provider.Tag.Tags;
@@ -28,11 +27,13 @@ public class ContentListRow extends RelativeLayout {
 	private static final int CONTENT_TYPE = 3;
 	private ImageView mIcon;
 	private TextView mName;
-	private TextView mType;	
-	private DirectoryRegister mDirectoryRegister;
+	private TextView mType;
+	private ContentIndex mContentIndex;
 
-	public ContentListRow(Context context, DirectoryRegister register) {
+	public ContentListRow(Context context) {
 		super(context);
+		
+		mContentIndex = new ContentIndex(context.getContentResolver());
 
 		mIcon = new ImageView(context);
 		mIcon.setPadding(2, 2, 2, 2);
@@ -60,8 +61,7 @@ public class ContentListRow extends RelativeLayout {
 				LayoutParams.WRAP_CONTENT, 30);
 		type.addRule(ALIGN_WITH_PARENT_RIGHT);
 		addView(mType, type);
-		
-		mDirectoryRegister = register;
+
 	}
 
 	public void bindCursor(Cursor cursor) {
@@ -100,11 +100,16 @@ public class ContentListRow extends RelativeLayout {
 	}
 
 	private String getTextForUri(ContentURI uri, String type, Intent intent) {
-		String[] result = mDirectoryRegister.getContentBody(uri);
-		if (result == null || result.length < 1){
-			result = new String[]{"nothing found ("+ uri.toString() + ")"}; 
-		}			
-		return result[1];
+		Cursor cursor = mContentIndex.getContentBody(uri);
+
+		String result;
+		if (cursor == null || cursor.count() < 1) {
+			result = "nothing found (" + uri.toString() + ")";
+		} else {
+			cursor.next();
+			result = cursor.getColumnName(0);
+		}
+		return result;
 	}
 
 	private Drawable getIconForUri(ContentURI uri, String type, Intent intent) {

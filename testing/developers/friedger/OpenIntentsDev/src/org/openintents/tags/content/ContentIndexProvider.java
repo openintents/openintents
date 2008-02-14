@@ -1,13 +1,18 @@
 package org.openintents.tags.content;
 
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.openintents.provider.ContentIndex;
+import org.openintents.provider.ContentIndex.Dir;
 
 import android.content.ContentProviderDatabaseHelper;
 import android.content.ContentURIParser;
 import android.content.ContentValues;
 import android.content.QueryBuilder;
+import android.database.ArrayListCursor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ContentURI;
@@ -21,7 +26,7 @@ public class ContentIndexProvider extends
 
 	static final String DATABASE_NAME = "deepdroid.db";
 
-	private static final int DATABASE_VERSION = 26;
+	private static final int DATABASE_VERSION = 28;
 
 	private static final ContentURIParser URL_MATCHER;
 	private static final int DIRECTORIES = 1;
@@ -80,42 +85,36 @@ public class ContentIndexProvider extends
 
 	}
 
-	private SQLiteDatabase mDB;;
-
-	public ContentIndexProvider(String dbName, int dbVersion) {
-		super(dbName, dbVersion);
-	}
-
-	@Override
-	public boolean onCreate() {
-		DatabaseHelper dbHelper = new DatabaseHelper();
-		mDB = dbHelper.openDatabase(getContext(), DATABASE_NAME, null,
-				DATABASE_VERSION);
-		return (mDB == null) ? false : true;
+	public ContentIndexProvider() {
+		super(DATABASE_NAME, DATABASE_VERSION);
 	}
 
 	@Override
 	protected void upgradeDatabase(int oldVersion, int newVersion) {
 		DatabaseHelper dbHelper = new DatabaseHelper();
-		dbHelper.onUpgrade(mDB, oldVersion, newVersion);
+		dbHelper.onUpgrade(getDatabase(), oldVersion, newVersion);
 	}
 
 	@Override
 	public Cursor queryInternal(ContentURI url, String[] projection,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String sort) {
-		QueryBuilder qb = new QueryBuilder();
+		QueryBuilder qb = null;
 
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
-			qb.setTables("dir");
+			qb = new QueryBuilder();
+			qb.setTables("dirs");
 			break;
 
 		case DIRECTORY:
-			qb.setTables("dir");
+			qb = new QueryBuilder();
+			qb.setTables("dirs");
 			qb.appendWhere("_id=" + url.getPathSegment(1));
 			break;
 
+		case INDEX_ENTRIES:
+			return getBodyContent(url);
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -123,15 +122,60 @@ public class ContentIndexProvider extends
 		// If no sort order is specified use the default
 		String orderBy;
 		if (TextUtils.isEmpty(sort)) {
-			orderBy = ContentIndex.Entry.DEFAULT_SORT_ORDER;
+			orderBy = ContentIndex.Dir.DEFAULT_SORT_ORDER;
 		} else {
 			orderBy = sort;
 		}
 
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-				having, orderBy);
+		Cursor c = qb.query(getDatabase(), projection, selection,
+				selectionArgs, groupBy, having, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
+	}
+
+	@Override
+	public ContentURI insertInternal(ContentURI url, ContentValues initialValues) {
+
+		switch (URL_MATCHER.match(url)) {
+		case DIRECTORIES:
+			if (initialValues.containsKey("_id")) {
+				initialValues.remove("_id");
+			}
+			
+			long id = getDatabase().insert("dirs", "dirs", initialValues);
+			if (id >= 0) {
+				return Dir.CONTENT_URI.addId(id);
+			} else {
+				return null;
+			}
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
+	}
+
+	private Cursor getBodyContent(ContentURI url) {
+		List<String> bodyUris = null;
+		try {
+			bodyUris = url
+					.getQueryParameters(ContentIndex.QUERY_CONTENT_BODY_URI);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if (bodyUris != null) {
+			ArrayList bodies = new ArrayList();
+			for (String bodyUri : bodyUris) {
+				String[] bodyArray = getContentBody(ContentURI.create(bodyUri));
+				if (bodyArray != null && bodyArray.length > 0) {
+					String body = bodyArray[0];
+					bodies.add(body);
+				}
+
+			}
+			return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -150,19 +194,33 @@ public class ContentIndexProvider extends
 	}
 
 	@Override
-	public ContentURI insertInternal(ContentURI url, ContentValues initialValues) {
-		return null;
-	}
-
-	@Override
 	protected void bootstrapDatabase() {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public int deleteInternal(ContentURI url, String where, String[] whereArgs) {
-		// do not allow to delete directories
-		return 0;
+		int count;
+		switch (URL_MATCHER.match(url)) {
+		case DIRECTORIES:
+			count = getDatabase().delete("dirs", where, whereArgs);
+			break;
+
+		case DIRECTORY:
+			String id = url.getPathLeaf();
+			count = getDatabase().delete(
+					"dirs",
+					"_id="
+							+ id
+							+ (!TextUtils.isEmpty(where) ? " AND (" + where
+									+ ')' : ""), whereArgs);
+			break;
+
+		default:
+			throw new IllegalArgumentException("Unknown URL " + url);
+		}
+
+		return count;
 	}
 
 	@Override
@@ -171,14 +229,16 @@ public class ContentIndexProvider extends
 		int count;
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
-			count = mDB.update("dir", values, where, whereArgs);
+			count = getDatabase().update("dirs", values, where, whereArgs);
 			break;
 
 		case DIRECTORY:
-			String segment = url.getPathSegment(1);
-			count = mDB.update("dir", values,
+			String id = url.getPathLeaf();
+			count = getDatabase().update(
+					"dirs",
+					values,
 					"_id="
-							+ segment
+							+ id
 							+ (!TextUtils.isEmpty(where) ? " AND (" + where
 									+ ')' : ""), whereArgs);
 			break;
@@ -197,7 +257,142 @@ public class ContentIndexProvider extends
 				DIRECTORIES);
 		URL_MATCHER.addURI("org.openintents.contentindices", "directories/#",
 				DIRECTORY);
+		URL_MATCHER.addURI("org.openintents.contentindices", "entries",
+				INDEX_ENTRIES);
+		
 
+	}
+
+	private String[] getContentBody(ContentURI uri) {
+
+		Directory dir = getDirectoryForUri(uri.toString());
+		if (dir != null) {
+			String[] projection = getProjection(dir);
+			String orderby;
+
+			if (StringUtils.isNotBlank(dir.time_column)) {
+				orderby = dir.time_column;
+				Log.d(TAG, "orderby=" + dir.time_column);
+			} else {
+				orderby = dir.id_column;
+				Log.d(TAG, "orderby=" + dir.id_column);
+			}
+
+			Cursor cursor = getContext().getContentResolver().query(uri,
+					projection, null, null, orderby);
+			int idIndex = cursor.getColumnIndex("_id");
+
+			int[] columnIndex = getColumnIndex(cursor, projection);
+			String[] values = new String[columnIndex.length];
+
+			while (cursor.next()) {
+				String id = cursor.getString(idIndex);
+				getValues(cursor, columnIndex, values);
+			}
+
+			return values;
+		} else {
+			return null;
+		}
+
+	}
+
+	public static ContentValues getContentValues(Directory dir) {
+		ContentValues values = new ContentValues();
+		values.put("_id", dir.id);
+		values.put("parent_id", dir.parent_id);
+		values.put("uri", dir.uri);
+		values.put("package", dir.package_name);
+		values.put("name", dir.name);
+		values.put("text_columns", dir.text_columns);
+		values.put("id_column", dir.id_column);
+		values.put("time_column", dir.time_column);
+		values.put("intent_uri", dir.intent_uri);
+		values.put("intent_action", dir.intent_action);
+		values.put("refreshed", 0);
+		values.put("updated", 0);
+		return values;
+	}
+	
+	public static Directory getDirectory(Cursor cursor) {
+		Directory dir = new Directory();
+		dir.id = cursor.getLong(0);
+		dir.parent_id = cursor.getLong(1);
+		dir.uri = cursor.getString(2);
+		dir.package_name = cursor.getString(3);
+		dir.name = cursor.getString(4);
+		dir.text_columns = cursor.getString(5);
+		dir.id_column = cursor.getString(6);
+		dir.time_column = cursor.getString(7);
+		dir.intent_uri = cursor.getString(8);
+		dir.intent_action = cursor.getString(9);
+		dir.refreshed = cursor.getLong(10);
+		dir.updated = cursor.getLong(11);
+		return dir;
+	}
+
+	private Cursor getDirectories(String selection, String[] args,
+			String orderBy) {
+		String[] columns = new String[] { "_id", "parent_id", "uri", "package",
+				"name", "text_columns", "id_column", "time_column",
+				"intent_uri", "intent_action", "refreshed", "updated" };
+		return mDb.query("dirs", columns, selection, args, null, null, orderBy);
+	}
+
+	private ArrayList<Directory> getDirectoryList(String selection,
+			String[] args, String orderBy) {
+		ArrayList<Directory> list = new ArrayList<Directory>();
+
+		Cursor c = getDirectories(selection, args, orderBy);
+		while (c.next()) {
+			Directory dir = getDirectory(c);
+			list.add(dir);
+		}
+		c.close();
+
+		return list;
+	}
+
+	private Directory getDirectoryForUri(String uri) {
+		Directory result = null;
+		int maxLength = -1;
+
+		for (Directory dir : getDirectoryList(null, null, null)) {
+			if (uri.startsWith(dir.uri) && uri.length() > maxLength) {
+				result = dir;
+				maxLength = uri.length();
+			}
+		}
+		return result;
+	}
+
+	private String[] getProjection(Directory dir) {
+		ArrayList<String> l = new ArrayList<String>();
+		l.add("_id");
+
+		String[] textColumns = dir.getTextColumns();
+
+		for (int i = 0; textColumns != null && i < textColumns.length; i++) {
+			if (StringUtils.isNotBlank(textColumns[i])) {
+				l.add(textColumns[i].trim());
+			}
+		}
+
+		return l.toArray(new String[l.size()]);
+	}
+
+	private void getValues(Cursor cursor, int[] columnIndex, String[] values) {
+		for (int i = 0; i < columnIndex.length; i++) {
+			values[i] = cursor.getString(columnIndex[i]);
+		}
+	}
+
+	private int[] getColumnIndex(Cursor cursor, String[] projection) {
+		int[] index = new int[projection.length];
+		for (int i = 0; i < projection.length; i++) {
+			index[i] = cursor.getColumnIndex(projection[i]);
+		}
+		return index;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.PackageManager;

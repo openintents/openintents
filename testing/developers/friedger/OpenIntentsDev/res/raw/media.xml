@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package name="com.google.android.media">
+<package name="com.google.android.providers.media">
 	<dir name="Audio"
 		uri="content://media/internal/audio/media"
 		text-columns="title,artist,album"

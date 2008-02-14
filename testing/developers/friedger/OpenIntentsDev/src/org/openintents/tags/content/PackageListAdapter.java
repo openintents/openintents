@@ -7,23 +7,21 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.Filterable;
 
-public class ContentListAdapter extends CursorAdapter implements Filterable {
+public class PackageListAdapter extends CursorAdapter implements Filterable {
 
-	
-	public ContentListAdapter(Cursor c, Context context) {
-		super(c, context);		
+	public PackageListAdapter(Cursor c, Context context) {
+		super(c, context);
 	}
 
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-		ContentListRow row = (ContentListRow) view;
+		PackageListRow row = (PackageListRow) view;
 		row.bindCursor(cursor);
-
 	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		ContentListRow row = new ContentListRow(context);
+		PackageListRow row = new PackageListRow(context);
 		bindView(row, context, cursor);
 		return row;
 	}
