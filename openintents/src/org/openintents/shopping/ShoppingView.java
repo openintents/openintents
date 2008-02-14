@@ -19,6 +19,9 @@ package org.openintents.shopping;
 import java.util.ArrayList;
 
 import org.openintents.R;
+import org.openintents.hardware.Sensors;
+import org.openintents.hardware.SensorsPlus;
+import org.openintents.provider.Hardware;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Lists;
@@ -31,7 +34,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
@@ -40,7 +42,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -82,6 +83,11 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	
 	// TODO: Further possible actions to implement:
 	// * Move items to some other shopping list
+	
+	// 
+	private static final int MENU_SETTINGS = Menu.FIRST + 100;
+	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 101;
+
 	
 	private LinearLayout mLinearLayoutBackground;
 	
@@ -345,6 +351,14 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			.setShortcut(KeyEvent.KEYCODE_1, 0, KeyEvent.KEYCODE_C);
 		menu.add(0, MENU_DELETE_LIST, R.string.delete_list)
 		.setShortcut(KeyEvent.KEYCODE_2, 0, KeyEvent.KEYCODE_D);
+		
+		menu.addSeparator(0, 0);
+		
+		menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
+		.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_S);
+		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_to_sensorsimulator)
+		.setShortcut(KeyEvent.KEYCODE_1, 0, KeyEvent.KEYCODE_C);
+	
 	
 		// Generate any additional actions that can be performed on the
         // overall list.  This allows other applications to extend
@@ -355,6 +369,9 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
             Menu.ALTERNATIVE, 0, new ComponentName(this, ShoppingView.class),
             null, intent, 0, null);
         
+        // Set checkable items:
+        menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
+
 		return true;
 	}
 	
@@ -367,6 +384,9 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		
 		// Delete list is possible, if we have more than one list:
 		menu.setItemShown(MENU_DELETE_LIST, mCursorListFilter.count() > 1);
+		
+		menu.setItemChecked(MENU_CONNECT_SIMULATOR, SensorsPlus.isConnectedSimulator());
+
 		
 		return true;
 	}
@@ -385,6 +405,34 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		case MENU_DELETE_LIST:
 			deleteListConfirm();
 			return true;
+
+		case MENU_SETTINGS:
+			Intent intent = new Intent(Intent.MAIN_ACTION, Hardware.Preferences.CONTENT_URI);
+			startActivity(intent);
+			return true;
+			
+		case MENU_CONNECT_SIMULATOR:
+			// check if accelerometer is supported:
+			if (SensorsPlus.isSupportedSensor(Sensors.SENSOR_ACCELEROMETER)) {
+				// first disable the current sensors:
+				Sensors.disableSensor(Sensors.SENSOR_ACCELEROMETER);
+			}
+			
+			if (!SensorsPlus.isConnectedSimulator()) {
+				// now connect to simulator
+				Sensors.connectSimulator();
+			} else {
+				// or disconnect to simulator
+				Sensors.disconnectSimulator();				
+			}
+			
+			// check if accelerometer is supported:
+	        if (SensorsPlus.isSupportedSensor(Sensors.SENSOR_ACCELEROMETER)) {
+	        	// enable the sensor:
+		        Sensors.enableSensor(Sensors.SENSOR_ACCELEROMETER);	
+	        }
+	        
+	        return true;
 		}
 		return super.onOptionsItemSelected(item);
 		

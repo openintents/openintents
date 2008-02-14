@@ -81,6 +81,10 @@
 	<string name="enable_sensors">Enable sensors</string>
 	<string name="auto_update">Auto update</string>
 	<string name="disabled">disabled</string>
+	<string name="set_update_interval">Set update interval...</string>
+	<string name="ask_update_interval">Enter update interval (ms)</string>
+	<string name="sensorsimulator_settings">SensorSimulator settings...</string>
+	<string name="connect_to_sensorsimulator">Connect to SensorSimulator</string>
 	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>

@@ -177,14 +177,7 @@ public class OpenGLSensors extends Activity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
-		
-		// TODO: Add item-specific menu items (see NotesList.java example)
-		// like edit, strike-through, delete.
-		
-		// Delete list is possible, if we have more than one list:
-		//menu.setItemShown(MENU_CONNECT, !mConnected);
-		//menu.setItemShown(MENU_DISCONNECT, mConnected);
-		
+				
         menu.setItemChecked(MENU_CONNECT_SIMULATOR, mConnected);
 
         menu.setItemShown(MENU_SENSOR_NOT_AVAILABLE, 
@@ -292,6 +285,7 @@ public class OpenGLSensors extends Activity {
 			= isSupportedSensor(Sensors.SENSOR_ORIENTATION);
 	}
 	
+	// TODO: Use SensorPlus function
 	/**
 	 *  Check whether a specific sensor is supported.
 	 */

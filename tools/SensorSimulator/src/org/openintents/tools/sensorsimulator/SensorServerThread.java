@@ -102,18 +102,22 @@ public class SensorServerThread implements Runnable {
 	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
 	        			out.println("" + mSensorSimulator.mEnabledAccelerometer.isSelected());
 	        			mSensorSimulator.mEnabledAccelerometer.setSelected(enable);
+	        			mSensorSimulator.mRefreshEmulatorAccelerometerLabel.setText("-");
 	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
 	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
 	        			out.println("" + mSensorSimulator.mEnabledCompass.isSelected());
 	        			mSensorSimulator.mEnabledCompass.setSelected(enable);
+	        			mSensorSimulator.mRefreshEmulatorCompassLabel.setText("-");
 	        		} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
 	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
 	        			out.println("" + mSensorSimulator.mEnabledOrientation.isSelected());
 	        			mSensorSimulator.mEnabledOrientation.setSelected(enable);
+	        			mSensorSimulator.mRefreshEmulatorOrientationLabel.setText("-");
 	        		} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
 	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
 	        			out.println("" + mSensorSimulator.mEnabledThermometer.isSelected());
 	        			mSensorSimulator.mEnabledThermometer.setSelected(enable);
+	        			mSensorSimulator.mRefreshEmulatorThermometerLabel.setText("-");
 	        		} else {
 	        			// This sensor is not supported
 	        			out.println("throw IllegalArgumentException");
@@ -141,10 +145,11 @@ public class SensorServerThread implements Runnable {
 	        		if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
 	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
 	        			if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
-		        			out.println("3"); // number of data following
+	        				out.println("3"); // number of data following
 		        			out.println(mSensorSimulator.mobile.accelx);
 		        			out.println(mSensorSimulator.mobile.accely);
 		        			out.println(mSensorSimulator.mobile.accelz);
+		        			mSensorSimulator.updateEmulatorAccelerometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
 	        				out.println("throw IllegalStateException");
@@ -156,6 +161,7 @@ public class SensorServerThread implements Runnable {
 		        			out.println(mSensorSimulator.mobile.compassx);
 		        			out.println(mSensorSimulator.mobile.compassy);
 		        			out.println(mSensorSimulator.mobile.compassz);
+		        			mSensorSimulator.updateEmulatorCompassRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
 	        				out.println("throw IllegalStateException");
@@ -167,6 +173,7 @@ public class SensorServerThread implements Runnable {
 		        			out.println(mSensorSimulator.mobile.yaw);
 		        			out.println(mSensorSimulator.mobile.pitch);
 		        			out.println(mSensorSimulator.mobile.roll);
+		        			mSensorSimulator.updateEmulatorOrientationRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
 	        				out.println("throw IllegalStateException");
@@ -176,6 +183,7 @@ public class SensorServerThread implements Runnable {
 	        			if (mSensorSimulator.mEnabledThermometer.isSelected()) {
 				        	out.println("1"); // number of data following
 				        	out.println(mSensorSimulator.mobile.temperature);
+		        			mSensorSimulator.updateEmulatorThermometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
 	        				out.println("throw IllegalStateException");

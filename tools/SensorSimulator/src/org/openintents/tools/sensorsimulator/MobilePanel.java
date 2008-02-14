@@ -27,7 +27,6 @@ import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.JSlider;
-import javax.swing.JTextField;
 
 class MobilePanel extends JPanel {
 	
@@ -221,15 +220,15 @@ class MobilePanel extends JPanel {
 
 		// Update the timer if necessary:
 		double newdelay;
-		newdelay = getSafeDouble(mSensorSimulator.mUpdateText);
+		newdelay = mSensorSimulator.getSafeDouble(mSensorSimulator.mUpdateText);
 		if (newdelay > 0) {
 			mSensorSimulator.delay = (int) newdelay;
 			mSensorSimulator.timer.setDelay(mSensorSimulator.delay);
 		}
 		
 		dt = 0.001 * mSensorSimulator.delay; // from ms to s
-		g = getSafeDouble(mSensorSimulator.mGravityConstantText, 9.82);
-		meterperpixel = 1 / getSafeDouble(mSensorSimulator.mPixelPerMeterText, 3000);
+		g = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityConstantText, 9.82);
+		meterperpixel = 1 / mSensorSimulator.getSafeDouble(mSensorSimulator.mPixelPerMeterText, 3000);
 		
 		// Calculate velocity induced by mouse:
 		double f = meterperpixel / g;
@@ -252,9 +251,9 @@ class MobilePanel extends JPanel {
 		double gravityay;
 		double gravityaz;
 		
-		gravityax = getSafeDouble(mSensorSimulator.mGravityXText);
-		gravityay = getSafeDouble(mSensorSimulator.mGravityYText);
-		gravityaz = getSafeDouble(mSensorSimulator.mGravityZText);
+		gravityax = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityXText);
+		gravityay = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityYText);
+		gravityaz = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityZText);
 		
 		
 		////
@@ -273,7 +272,7 @@ class MobilePanel extends JPanel {
 			accelz = vec.z;
 			
 			// Add random component:
-			random = getSafeDouble(mSensorSimulator.mRandomAccelerometerText);
+			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomAccelerometerText);
 			if (random > 0) {
 				accelx += getRandom(random);
 				accely += getRandom(random);
@@ -281,7 +280,7 @@ class MobilePanel extends JPanel {
 			}
 			
 			// Add accelerometer limit:
-			double limit = getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
+			double limit = mSensorSimulator.getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
 			if (limit > 0) {
 				// limit on each component separately, as each is
 				// a separate sensor.
@@ -305,12 +304,12 @@ class MobilePanel extends JPanel {
 		double magneticvertical;
 		
 		if (mSensorSimulator.mEnabledCompass.isSelected()) {
-			magneticnorth = getSafeDouble(mSensorSimulator.mMagneticFieldNorthText);
-			magneticeast = getSafeDouble(mSensorSimulator.mMagneticFieldEastText);
-			magneticvertical = getSafeDouble(mSensorSimulator.mMagneticFieldVerticalText);
+			magneticnorth = mSensorSimulator.getSafeDouble(mSensorSimulator.mMagneticFieldNorthText);
+			magneticeast = mSensorSimulator.getSafeDouble(mSensorSimulator.mMagneticFieldEastText);
+			magneticvertical = mSensorSimulator.getSafeDouble(mSensorSimulator.mMagneticFieldVerticalText);
 
 			// Add random component:
-			random = getSafeDouble(mSensorSimulator.mRandomCompassText);
+			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomCompassText);
 			if (random > 0) {
 				magneticnorth += getRandom(random);
 				magneticeast += getRandom(random);
@@ -349,7 +348,7 @@ class MobilePanel extends JPanel {
 			roll = rollDegree;
 			
 			// Add random component:
-			random = getSafeDouble(mSensorSimulator.mRandomOrientationText);
+			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomOrientationText);
 			if (random > 0) {
 				yaw += getRandom(random);
 				pitch += getRandom(random);
@@ -363,42 +362,16 @@ class MobilePanel extends JPanel {
 		
 		// Thermometer
 		if (mSensorSimulator.mEnabledThermometer.isSelected()) {
-			temperature = getSafeDouble(mSensorSimulator.mTemperatureText);
+			temperature = mSensorSimulator.getSafeDouble(mSensorSimulator.mTemperatureText);
 		
 			// Add random component:
-			random = getSafeDouble(mSensorSimulator.mRandomTemperatureText);
+			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomTemperatureText);
 			if (random > 0) {
 				temperature += getRandom(random);
 			}
 		} else {
 			temperature = 0;
 		}
-	}
-	
-	/**
-	 * Safely retries the double value of a text field.
-	 * If the value is not a valid number, 0 is returned, and the field
-	 * is marked red.
-	 * 
-	 * @param textfield Textfield from which the value should be read.
-	 * @param defaultValue default value if input field is invalid.
-	 * @return double value.
-	 */
-	public double getSafeDouble(JTextField textfield, double defaultValue) {
-		double value;
-		try {
-			value = Double.parseDouble(textfield.getText());
-			textfield.setBackground(Color.WHITE);
-		} catch (NumberFormatException e) {
-			// wrong user input in box - take default values.
-			value = defaultValue;
-			textfield.setBackground(Color.RED);
-		}
-		return value;
-	}
-	
-	public double getSafeDouble(JTextField textfield) {
-		return getSafeDouble(textfield, 0);
 	}
 	
 	/** 

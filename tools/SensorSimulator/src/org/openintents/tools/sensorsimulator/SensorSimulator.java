@@ -16,6 +16,7 @@
 
 package org.openintents.tools.sensorsimulator;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -77,9 +78,17 @@ public class SensorSimulator extends JPanel
 	int delay;
     Timer timer;
     
-    // for measureing updates:
+    // for measuring updates:
     int updateSensorCount;
-    int updateEmulatorCount;
+    long updateSensorTime;
+    int updateEmulatorAccelerometerCount;
+    long updateEmulatorAccelerometerTime;
+    int updateEmulatorCompassCount;
+    long updateEmulatorCompassTime;
+    int updateEmulatorOrientationCount;
+    long updateEmulatorOrientationTime;
+    int updateEmulatorThermometerCount;
+    long updateEmulatorThermometerTime;
     
     
     int mouseMode;
@@ -124,7 +133,10 @@ public class SensorSimulator extends JPanel
     JTextField mUpdateText;
     JTextField mRefreshCountText;
     JLabel mRefreshSensorsLabel;
-    JLabel mRefreshEmulatorLabel;
+    JLabel mRefreshEmulatorAccelerometerLabel;
+    JLabel mRefreshEmulatorCompassLabel;
+    JLabel mRefreshEmulatorOrientationLabel;
+    JLabel mRefreshEmulatorThermometerLabel;
     
     // Accelerometer
     JTextField mGravityConstantText;
@@ -150,6 +162,10 @@ public class SensorSimulator extends JPanel
     JTextField mRandomOrientationText;
     JTextField mRandomTemperatureText;
     
+    // Real device bridge
+    JCheckBox mRealDeviceThinkpad;
+    JTextField mRealDeviceThinkpadPath;
+    
     // Action Commands:
     static String yawPitch = "yaw & pitch";
     static String rollPitch = "roll & pitch";
@@ -165,7 +181,7 @@ public class SensorSimulator extends JPanel
 	public SensorSimulator() {
 		// Initialize variables
 		mIncomingConnections = 0;
-		
+				
 		//setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setLayout(new BorderLayout());
 
@@ -483,10 +499,10 @@ public class SensorSimulator extends JPanel
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mGravityYText = new JTextField(5);
-        mGravityYText.setText("0");
+        mRefreshCountText = new JTextField(5);
+        mRefreshCountText.setText("10");
         c3.gridx = 1;
-        updateFieldPane.add(mGravityYText, c3);
+        updateFieldPane.add(mRefreshCountText, c3);
         
         label = new JLabel(" times", JLabel.LEFT);
         c3.gridx = 2;
@@ -508,9 +524,49 @@ public class SensorSimulator extends JPanel
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshEmulatorLabel = new JLabel("0", JLabel.LEFT);
+
+        label = new JLabel(" * Accelerometer: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshEmulatorAccelerometerLabel = new JLabel("-", JLabel.LEFT);
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshEmulatorLabel, c3);
+        updateFieldPane.add(mRefreshEmulatorAccelerometerLabel, c3);
+
+
+        label = new JLabel(" * Compass: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshEmulatorCompassLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateFieldPane.add(mRefreshEmulatorCompassLabel, c3);
+
+
+        label = new JLabel(" * Orientation: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshEmulatorOrientationLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateFieldPane.add(mRefreshEmulatorOrientationLabel, c3);
+
+
+        label = new JLabel(" * Thermometer: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mRefreshEmulatorThermometerLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateFieldPane.add(mRefreshEmulatorThermometerLabel, c3);
 
         // Update panel ends
         
@@ -852,16 +908,59 @@ public class SensorSimulator extends JPanel
         
         // Random field panel ends
         
-        // Add andom field panel to settings
+        // Add random field panel to settings
         c2.gridx = 0;
         c2.gridwidth = 1;
         c2.gridy++;
         settingsPane.add(randomFieldPane, c2);
         
+        /////////////////////////////////////////////////////
+
+
+        ///////////////////////////////
+        // Real sensor bridge
+
+        JPanel realSensorBridgeFieldPane = new JPanel(new GridBagLayout());
+        c3 = new GridBagConstraints();
+        c3.fill = GridBagConstraints.HORIZONTAL;
+        c3.anchor = GridBagConstraints.NORTHWEST;
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy = 0;
+        
+        realSensorBridgeFieldPane.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Real sensor bridge"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
+        
+        mRealDeviceThinkpad = new JCheckBox("Use Thinkpad accelerometer");
+        mRealDeviceThinkpad.setSelected(false);
+        mRealDeviceThinkpad.addItemListener(this);
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        realSensorBridgeFieldPane.add(mRealDeviceThinkpad, c3);
+        
+        label = new JLabel("- Accelerator path: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        realSensorBridgeFieldPane.add(label, c3);
+        
+        mRealDeviceThinkpadPath = new JTextField(5);
+        mRealDeviceThinkpadPath.setText("/usr/...");
+        c3.gridx = 1;
+        realSensorBridgeFieldPane.add(mRealDeviceThinkpadPath, c3);
+        
+        // Real sensor bridge ends
+        
+        // Add real sensor bridge field panel to settings
+        c2.gridx = 0;
+        c2.gridwidth = 1;
+        c2.gridy++;
+        settingsPane.add(realSensorBridgeFieldPane, c2);
         
         
         /////////////////////////////////////////////////////
-                
+
         /////////////////////////////////////////////////////
         // Add settings scroll panel to right pane.
         c.gridx = 0;
@@ -905,6 +1004,12 @@ public class SensorSimulator extends JPanel
         // Set up the server:
         mSensorServer = new SensorServer(this);
         
+
+		// Variables for timing:
+		updateSensorCount = 0;
+	    updateSensorTime = System.currentTimeMillis();
+	    updateEmulatorAccelerometerCount = 0;
+	    updateEmulatorAccelerometerTime = System.currentTimeMillis();
 
         //Set up a timer that calls this object's action handler.
         delay = 500;
@@ -1008,15 +1113,90 @@ public class SensorSimulator extends JPanel
      * Updates the information about sensor updates.
      */
     public void updateSensorRefresh() {
-    	//java.util.Date d;
-    	//d.getTime();
+    	updateSensorCount++;
+    	long maxcount = (long) getSafeDouble(mRefreshCountText);
+		if (maxcount >= 0 && updateSensorCount >= maxcount) {
+			long newtime = System.currentTimeMillis();
+			double ms = (double) (newtime - updateSensorTime) 
+						/ ((double) maxcount);
+			
+			DecimalFormat mf = new DecimalFormat("#0.0");
+			
+			mRefreshSensorsLabel.setText(mf.format(ms) + " ms");
+			
+			updateSensorCount = 0;
+			updateSensorTime = newtime;
+		}
     }
     
     /**
      * Updates information about emulator updates.
      */
-    public void updateEmulatorRefresh() {
-    	
+    public void updateEmulatorAccelerometerRefresh() {
+	    updateEmulatorAccelerometerCount++;
+    	long maxcount = (long) getSafeDouble(mRefreshCountText);
+    	if (maxcount >= 0 && updateEmulatorAccelerometerCount >= maxcount) {
+			long newtime = System.currentTimeMillis();
+			double ms = (double) (newtime - updateEmulatorAccelerometerTime) 
+						/ ((double) maxcount);
+			
+			DecimalFormat mf = new DecimalFormat("#0.0");
+			
+			mRefreshEmulatorAccelerometerLabel.setText(mf.format(ms) + " ms");
+			
+			updateEmulatorAccelerometerCount = 0;
+			updateEmulatorAccelerometerTime = newtime;
+		}
+    }
+    
+    public void updateEmulatorCompassRefresh() {
+	    updateEmulatorCompassCount++;
+    	long maxcount = (long) getSafeDouble(mRefreshCountText);
+		if (maxcount >= 0 && updateEmulatorCompassCount >= maxcount) {
+			long newtime = System.currentTimeMillis();
+			double ms = (double) (newtime - updateEmulatorCompassTime) 
+						/ ((double) maxcount);
+			
+			DecimalFormat mf = new DecimalFormat("#0.0");
+			
+			mRefreshEmulatorCompassLabel.setText(mf.format(ms) + " ms");
+			
+			updateEmulatorCompassCount = 0;
+			updateEmulatorCompassTime = newtime;
+		}
+    }
+    public void updateEmulatorOrientationRefresh() {
+	    updateEmulatorOrientationCount++;
+    	long maxcount = (long) getSafeDouble(mRefreshCountText);
+		if (maxcount >= 0 && updateEmulatorOrientationCount >= maxcount) {
+			long newtime = System.currentTimeMillis();
+			double ms = (double) (newtime - updateEmulatorOrientationTime) 
+						/ ((double) maxcount);
+			
+			DecimalFormat mf = new DecimalFormat("#0.0");
+			
+			mRefreshEmulatorOrientationLabel.setText(mf.format(ms) + " ms");
+			
+			updateEmulatorOrientationCount = 0;
+			updateEmulatorOrientationTime = newtime;
+		}
+    }
+    
+    public void updateEmulatorThermometerRefresh() {
+	    updateEmulatorAccelerometerCount++;
+    	long maxcount = (long) getSafeDouble(mRefreshCountText);
+		if (maxcount >= 0 && updateEmulatorThermometerCount >= maxcount) {
+			long newtime = System.currentTimeMillis();
+			double ms = (double) (newtime - updateEmulatorThermometerTime) 
+						/ ((double) maxcount);
+			
+			DecimalFormat mf = new DecimalFormat("#0.0");
+			
+			mRefreshEmulatorThermometerLabel.setText(mf.format(ms) + " ms");
+			
+			updateEmulatorThermometerCount = 0;
+			updateEmulatorThermometerTime = newtime;
+		}
     }
     
     public void showSensorData() {
@@ -1145,6 +1325,34 @@ public class SensorSimulator extends JPanel
     }
     
     /**
+	 * Safely retries the double value of a text field.
+	 * If the value is not a valid number, 0 is returned, and the field
+	 * is marked red.
+	 * 
+	 * @param textfield Textfield from which the value should be read.
+	 * @param defaultValue default value if input field is invalid.
+	 * @return double value.
+	 */
+	public double getSafeDouble(JTextField textfield, double defaultValue) {
+		double value;
+		try {
+			value = Double.parseDouble(textfield.getText());
+			textfield.setBackground(Color.WHITE);
+		} catch (NumberFormatException e) {
+			// wrong user input in box - take default values.
+			value = defaultValue;
+			textfield.setBackground(Color.RED);
+		}
+		return value;
+	}
+
+
+	public double getSafeDouble(JTextField textfield) {
+		return getSafeDouble(textfield, 0);
+	}
+
+
+	/**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.

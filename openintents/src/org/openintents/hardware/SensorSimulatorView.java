@@ -22,13 +22,19 @@ import org.openintents.R;
 import org.openintents.provider.Hardware;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
+import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnKeyListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -43,7 +49,15 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 	 * TAG for logging.
 	 */
 	private static final String TAG = "Hardware";
-	
+
+	/**
+	 * Build the menu
+	 */
+	private static final int MENU_UPDATE_INTERVAL = Menu.FIRST;
+
+	/** 
+	 * Constant for message handling.
+	 */
 	private static final int UPDATE_SENSOR_DATA = 1;
 	
 	private EditText mEditText;
@@ -63,12 +77,16 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 	private LinearLayout mSettingsBackground;
 	private LinearLayout mTestingBackground;
 	
-	private int updateInterval;
+	private int mUpdateInterval;
 	DecimalFormat mDecimalFormat;
 	
 	String[] mSupportedSensors;
     
-
+	/**
+	 * Dialog: setRefreshDelayDialog.
+	 */
+	private Dialog mDialog;
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -110,7 +128,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 				Log.i(TAG, "start" + isChecked);
 				if (isChecked) {
 					// start the timer for automatic update:
-					mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_SENSOR_DATA), updateInterval);
+					mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_SENSOR_DATA), mUpdateInterval);
 				}
 			}
 		});
@@ -156,7 +174,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		mSupportedSensors = Sensors.getSupportedSensors();
 		
 		// Default timer interval
-		updateInterval = 100;
+		mUpdateInterval = 100;
 		
 		readAllSensors(); // initial reading
 		
@@ -185,7 +203,126 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 			mTestingBackground.setBackground(R.drawable.border_orange_01b);
 		}
 	}
+	
+    ////////////////////////////////////////////////////////
+    // The menu
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+
+		// Standard menu
+		menu.add(0, MENU_UPDATE_INTERVAL, R.string.set_update_interval)
+			.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_R);
+
+		return true;
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+				
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(Item item) {
+		switch (item.getId()) {
+		case MENU_UPDATE_INTERVAL:
+			setUpdateIntervalDialog();
+			return true;	
+		}
+		return super.onOptionsItemSelected(item);		
+	}
+
+	///////////////////////////////////////
+	// Menu related functions
+
+	/**
+	 * Opens a dialog to set the update interval.
+	 */
+	private void setUpdateIntervalDialog() {
 		
+		// TODO Shall we implement this as action?
+		// Then other applications may call this as well.
+
+		mDialog = new Dialog(SensorSimulatorView.this);
+		
+		mDialog.setContentView(R.layout.input_box);
+		
+		mDialog.setTitle(getString(R.string.ask_update_interval));
+		
+		EditText et = (EditText) mDialog.findViewById(R.id.edittext);
+		et.setText("" + mUpdateInterval);
+		et.selectAll();
+		
+		// Accept OK also when user hits "Enter"
+		et.setKeyListener(new OnKeyListener() {
+			
+			public boolean onKey(final View v, final int keyCode, 
+					final KeyEvent key) {
+				//Log.i(TAG, "KeyCode: " + keyCode);
+				EditText editText = (EditText) mDialog.findViewById(R.id.edittext);
+				/*
+				if (key.isDown()) {
+					// undo red marking of wrong number (if existed)
+					editText.setBackground(Color.WHITE);					
+				}
+				*/
+				
+				if (key.isDown() && keyCode == Integer
+							.parseInt(getString(R.string.key_return))) {
+					// User pressed "Enter" 
+					int value;
+					try {
+						value = Integer.parseInt(editText.getText().toString());
+					} catch (NumberFormatException e) {
+						// wrong user input in box - take default values.
+						//value = defaultValue;
+						//editText.setBackground(Color.RED);
+						//editText.setBackgroundColor(Color.RED);
+						return true; // no dismiss
+					}
+					mUpdateInterval = value;
+					mDialog.dismiss();
+					return true;	
+				}
+				return false;
+			}
+			
+		});
+		
+		
+		Button bOk = (Button) mDialog.findViewById(R.id.ok);
+		bOk.setOnClickListener(new OnClickListener() {
+			public void onClick(final View v) {
+				EditText editText = (EditText) mDialog.findViewById(R.id.edittext);
+				int value;
+				try {
+					value = Integer.parseInt(editText.getText().toString());
+				} catch (NumberFormatException e) {
+					// wrong user input in box - take default values.
+					//value = defaultValue;
+					editText.setBackground(Color.RED);
+					return; // no dismiss
+				}
+				mUpdateInterval = value;
+					
+				mDialog.dismiss();
+			}
+		});
+		
+		Button bCancel = (Button) mDialog.findViewById(R.id.cancel);
+		bCancel.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				mDialog.cancel();
+			}
+		});
+		
+		mDialog.show();
+	}
+
+	///////////////////////////////////////
 	
 	public void connect() {
 		
@@ -341,7 +478,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
             	
                 if (mCheckBoxEnable.isChecked()) {
                 	// Autoupdate
-                	sendMessageDelayed(obtainMessage(UPDATE_SENSOR_DATA), updateInterval);
+                	sendMessageDelayed(obtainMessage(UPDATE_SENSOR_DATA), mUpdateInterval);
                 }
             }
         }

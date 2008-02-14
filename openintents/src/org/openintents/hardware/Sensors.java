@@ -92,6 +92,5 @@ public class Sensors extends android.hardware.Sensors {
 	 */
 	public static void disconnectSimulator() {
 		mClient.disconnect();
-	};
-	
+	}
 }
