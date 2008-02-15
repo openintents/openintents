@@ -22,7 +22,7 @@ public class LocationsMapView extends MapActivity {
         
         Bundle bundle = getIntent().getExtras();
         if( bundle != null){
-        	point = new Point(bundle.getInteger("latitude"), bundle.getInteger("longitude"));
+        	point = new Point(bundle.getInt("latitude"), bundle.getInt("longitude"));
         }
         
         view = new MapView(this);

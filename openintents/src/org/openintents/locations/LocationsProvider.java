@@ -21,15 +21,16 @@ import java.util.HashMap;
 import org.openintents.provider.Location;
 
 import android.content.ContentProvider;
-import android.content.ContentProviderDatabaseHelper;
-import android.content.ContentURIParser;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.content.UriMatcher;
+import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.QueryBuilder;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.content.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -55,9 +56,9 @@ public class LocationsProvider extends ContentProvider {
 	private static final int LOCATIONS = 1;
 	private static final int LOCATION_ID = 2;
 
-	private static final ContentURIParser URL_MATCHER;
+	private static final UriMatcher URL_MATCHER;
 
-	private static class DatabaseHelper extends ContentProviderDatabaseHelper {
+	private static class DatabaseHelper extends SQLiteOpenHelper {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
@@ -83,9 +84,9 @@ public class LocationsProvider extends ContentProvider {
 	}
 
 	@Override
-	public Cursor query(ContentURI url, String[] projection, String selection,
-			String[] selectionArgs, String groupBy, String having, String sort) {
-		QueryBuilder qb = new QueryBuilder();
+	public Cursor query(Uri url, String[] projection, String selection,
+			String[] selectionArgs, String sort) {
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
 		switch (URL_MATCHER.match(url)) {
 		case LOCATIONS:
@@ -95,7 +96,7 @@ public class LocationsProvider extends ContentProvider {
 
 		case LOCATION_ID:
 			qb.setTables("locations");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 
 		default:
@@ -110,14 +111,13 @@ public class LocationsProvider extends ContentProvider {
 			orderBy = sort;
 		}
 
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-				having, orderBy);
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs,null,null,orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
 
 	@Override
-	public String getType(ContentURI url) {
+	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case LOCATIONS:
 			return "vnd.openintents.cursor.dir/location";
@@ -131,7 +131,7 @@ public class LocationsProvider extends ContentProvider {
 	}
 
 	@Override
-	public ContentURI insert(ContentURI url, ContentValues initialValues) {
+	public Uri insert(Uri url, ContentValues initialValues) {
 		long rowID;
 		ContentValues values;
 		if (initialValues != null) {
@@ -159,7 +159,7 @@ public class LocationsProvider extends ContentProvider {
 
 		rowID = mDB.insert("locations", "location", values);
 		if (rowID > 0) {
-			ContentURI uri = Location.Locations.CONTENT_URI.addId(rowID);
+			Uri uri = ContentUris.withAppendedId(Location.Locations.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return uri;
 		}
@@ -168,7 +168,7 @@ public class LocationsProvider extends ContentProvider {
 	}
 
 	@Override
-	public int delete(ContentURI url, String where, String[] whereArgs) {
+	public int delete(Uri url, String where, String[] whereArgs) {
 		int count;
 		long rowId = 0;
 		switch (URL_MATCHER.match(url)) {
@@ -177,7 +177,7 @@ public class LocationsProvider extends ContentProvider {
 			break;
 
 		case LOCATION_ID:
-			String segment = url.getPathSegment(1);
+			String segment = url.getPathSegments().get(1);
 			rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
@@ -199,7 +199,7 @@ public class LocationsProvider extends ContentProvider {
 	}
 
 	@Override
-	public int update(ContentURI url, ContentValues values, String where,
+	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
 		int count;
 		switch (URL_MATCHER.match(url)) {
@@ -208,7 +208,7 @@ public class LocationsProvider extends ContentProvider {
 			break;
 
 		case LOCATION_ID:
-			String segment = url.getPathSegment(1);
+			String segment = url.getPathSegments().get(1);
 			
 			String whereString;
 				if (!TextUtils.isEmpty(where)) {
@@ -232,7 +232,7 @@ public class LocationsProvider extends ContentProvider {
 	}
 
 	static {
-		URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
+		URL_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 		URL_MATCHER.addURI("org.openintents.locations", "locations", LOCATIONS);
 		URL_MATCHER.addURI("org.openintents.locations", "locations/#",
 				LOCATION_ID);

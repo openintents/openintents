@@ -82,8 +82,8 @@ public class LocationsView extends Activity {
 				longitude = c.getInt(2);
 				
 				Bundle bundle = new Bundle();
-				bundle.putInteger("latitude", latitude);
-				bundle.putInteger("longitude", longitude);
+				bundle.putInt("latitude", latitude);
+				bundle.putInt("longitude", longitude);
 
 				Intent intent = new Intent();
 				intent.setClass(v.getContext(), LocationsMapView.class);
