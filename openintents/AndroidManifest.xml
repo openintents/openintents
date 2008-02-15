@@ -22,163 +22,191 @@
 
 	<application android:icon="@drawable/openintents_icon">
 		<!-- Providers -->
-		<provider class=".locations.LocationsProvider"
+		<provider android:name=".locations.LocationsProvider"
 			android:authorities="org.openintents.locations" />
-		<provider class=".tags.TagsProvider"
+		<provider android:name=".tags.TagsProvider"
 			android:authorities="org.openintents.tags" />
-		<provider class=".shopping.ShoppingProvider"
+		<provider android:name=".shopping.ShoppingProvider"
 			android:authorities="org.openintents.shopping" />
+		
+
+		<provider android:name=".news.NewsProvider"
+			android:authorities="org.openintents.news" />		
+
 		<!-- 
-			<provider class=".tags.content.ContentIndexProvider"
+			<provider android:name=".tags.content.ContentIndexProvider"
 			android:authorities="org.openintents.contentindices" />			
 		-->
 		
 		
-		<provider class=".hardware.HardwareProvider"
+		<provider android:name=".hardware.HardwareProvider"
 			android:authorities="org.openintents.hardware" />
-			
+
+			-->
 		<!-- Main activity -->
-		<activity class=".main.OpenIntents"
+		<activity android:name=".main.OpenIntents"
 			android:label="@string/app_name">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<category
-					android:value="android.intent.category.LAUNCHER" />
+					android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
 
-		<activity class=".main.About"
+		<activity android:name=".main.About"
 			android:label="@string/about_openintents">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<!-- <category
-					android:value="android.intent.category.LAUNCHER" />   -->
+					android:name="android.intent.category.LAUNCHER" />   -->
 			</intent-filter>
 		</activity>
 
 		<!-- Locations activity -->
-		<activity class=".locations.LocationsView"
+		<activity android:name=".locations.LocationsView"
 			android:label="@string/list_of_locations">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<!--  <category
-					android:value="android.intent.category.LAUNCHER" />  -->
+					android:name="android.intent.category.LAUNCHER" />  -->
 			</intent-filter>
 		</activity>
 
 		<!-- Location Map activity -->
-		<activity class=".locations.LocationsMapView"
+		<activity android:name=".locations.LocationsMapView"
 			android:label="@string/locations_map">
 		</activity>
 
 		<!-- Tags activity -->
-		<activity class=".tags.TagsView"
+		<activity android:name=".tags.TagsView"
 			android:label="@string/list_of_tags">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<!--  <category
-					android:value="android.intent.category.LAUNCHER" />  -->
+					android:name="android.intent.category.LAUNCHER" />  -->
 			</intent-filter>
 			<intent-filter>
-				<action android:value="org.openintents.action.TAG" />
+				<action android:name="org.openintents.action.TAG" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
-				<type android:value="vnd.openintents.cursor.dir/tag" />
+					android:name="android.intent.category.DEFAULT" />
+				<data android:name="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 			<intent-filter>
-				<action android:value="org.openintents.action.TAG"
+				<action android:name="org.openintents.action.TAG"
 					android:label="tag" />
 				<category
-					android:value="android.intent.category.ALTERNATIVE" />
-				<scheme android:value="content" />
+					android:name="android.intent.category.ALTERNATIVE" />
+				<data android:scheme="content" />
 			</intent-filter>
 			<intent-filter>
-				<action android:value="org.openintents.action.TAG"
+				<action android:name="org.openintents.action.TAG"
 					android:label="tag" />
 				<category
-					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
-				<scheme android:value="content" />
+					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<data android:scheme="content" />
 			</intent-filter>
 		</activity>
 
 		<!-- android:icon="@drawable/directory" -->
-		<activity class=".tags.content.ContentBrowserView"
+		<activity android:name=".tags.content.ContentBrowserView"
 			android:label="@string/content_browser"
 			android:icon="@drawable/openintents_icon">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<category
-					android:value="android.intent.category.LAUNCHER" />
+					android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 			<intent-filter>
-				<action android:value="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.VIEW" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
-				<type android:value="vnd.openintents.cursor.dir/tag" />
+					android:name="android.intent.category.DEFAULT" />
+				<data android:name="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 			<intent-filter>
-				<action android:value="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.VIEW" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
-				<type android:value="vnd.openintents.cursor.item/tag" />
+					android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.item/tag" />
 			</intent-filter>
 		</activity>
 
-		<activity class=".tags.TagsAddView"
+		<activity android:name=".tags.TagsAddView"
 			android:label="@string/tags_add_tag" android:theme="@android:style/Theme.Dialog">
 			<intent-filter>
-				<action android:value="org.openintents.action.TAG" />
+				<action android:name="org.openintents.action.TAG" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
+					android:name="android.intent.category.DEFAULT" />
 				<category
-					android:value="android.intent.category.ALTERNATIVE" />
+					android:name="android.intent.category.ALTERNATIVE" />
 				<category
-					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
-				<type android:value="vnd.openintents.cursor.dir/tag" />
+					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 
 			<intent-filter>
-				<action android:value="android.intent.action.INSERT" />
+				<action android:name="android.intent.action.INSERT" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
+					android:name="android.intent.category.DEFAULT" />
 				<category
-					android:value="android.intent.category.ALTERNATIVE" />
+					android:name="android.intent.category.ALTERNATIVE" />
 				<category
-					android:value="android.intent.category.SELECTED_ALTERNATIVE" />
-				<type android:value="vnd.openintents.cursor.dir/tag" />
+					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 		</activity>
 
 		<!-- Shopping activity -->
-		<activity class=".shopping.ShoppingView"
+		<activity android:name=".shopping.ShoppingView"
 			android:label="@string/shopping_list">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.MAIN" />
 				<category
-					android:value="android.intent.category.DEFAULT" />
-				<type
-					android:value="vnd.openintents.cursor.dir/shopping.list" />
+					android:name="android.intent.category.DEFAULT" />
+				<data
+					android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
 				<!--  <category
-					android:value="android.intent.category.LAUNCHER" />  -->
+					android:name="android.intent.category.LAUNCHER" />  -->
 			</intent-filter>
 		</activity>
-		
+
+		<!-- Ma.Gnolia Tags activity -->
+		<activity android:name=".tags.MagnoliaSettings"
+			android:label="MagnoliaSettings">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</activity>		
+		<activity android:name=".tags.MagnoliaTagging"
+			android:label="Tag in Ma.Gnolia.com">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</activity>	
+
 		<!-- SensorSimulator -->
-		<activity class=".hardware.SensorSimulatorView"
+		<activity android:name=".hardware.SensorSimulatorView"
 			android:label="@string/sensorsimulator">
 			<intent-filter>
-				<action android:value="android.intent.action.MAIN" />
-				<category android:value="android.intent.category.DEFAULT" /> 
-				<type android:value="vnd.openintents.cursor.dir/hardware.preference"/>          					
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" /> 
+				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>          					
 			</intent-filter>
 		</activity>
 		
 		
 		<!-- Magnolia -->
-		<activity class=".tags.MagnoliaSettings"
+		<activity android:name=".tags.MagnoliaSettings"
 			android:label="MagnoliaSettings"><!-- TODO move to Resource ! -->
 		</activity>
-		<activity class=".tags.MagnoliaTagging"
+		<activity android:name=".tags.MagnoliaTagging"
 			android:label="MagnoliaTagging"><!-- TODO move to Resource ! -->
 		</activity>
 		

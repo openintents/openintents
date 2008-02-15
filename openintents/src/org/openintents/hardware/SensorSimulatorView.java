@@ -213,7 +213,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 
 		// Standard menu
 		menu.add(0, MENU_UPDATE_INTERVAL, R.string.set_update_interval)
-			.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_R);
+			.setShortcut('0', 'r');
 
 		return true;
 	}
@@ -257,7 +257,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		et.selectAll();
 		
 		// Accept OK also when user hits "Enter"
-		et.setKeyListener(new OnKeyListener() {
+		et.setOnKeyListener(new OnKeyListener() {
 			
 			public boolean onKey(final View v, final int keyCode, 
 					final KeyEvent key) {

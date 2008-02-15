@@ -214,7 +214,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		});
         
 		mEditText = (EditText) findViewById(R.id.edittext_add_item);
-		mEditText.setKeyListener(new OnKeyListener() {
+		mEditText.setOnKeyListener(new OnKeyListener() {
 			
 			public boolean onKey(View v, int keyCode, KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode 
@@ -223,7 +223,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				
 				// Shortcut: Instead of pressing the button, 
 				// one can also press the "Enter" key.
-				if (key.isDown() && 
+				if (key.getAction() == key.ACTION_DOWN && 
 						keyCode == Integer.parseInt(getString(R.string.key_return)))
 				{
 					insertNewItem();
@@ -346,18 +346,16 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 
 		// Standard menu
 		menu.add(0, MENU_NEW_LIST, R.string.new_list)
-			.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_N);
+			.setShortcut('0', 'n');
 		menu.add(0, MENU_CLEAN_UP_LIST, R.string.clean_up_list)
-			.setShortcut(KeyEvent.KEYCODE_1, 0, KeyEvent.KEYCODE_C);
+			.setShortcut('1', 'c');
 		menu.add(0, MENU_DELETE_LIST, R.string.delete_list)
-		.setShortcut(KeyEvent.KEYCODE_2, 0, KeyEvent.KEYCODE_D);
-		
-		menu.addSeparator(0, 0);
+		.setShortcut('2', 'd');
 		
 		menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
-		.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_S);
+		.setShortcut('0', 's');
 		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_to_sensorsimulator)
-		.setShortcut(KeyEvent.KEYCODE_1, 0, KeyEvent.KEYCODE_C);
+		.setShortcut('1', 'c');
 	
 	
 		// Generate any additional actions that can be performed on the
@@ -462,13 +460,14 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		et.selectAll();
 		
 		// Accept OK also when user hits "Enter"
-		et.setKeyListener(new OnKeyListener() {
+		et.setOnKeyListener(new OnKeyListener() {
 			
 			public boolean onKey(final View v, final int keyCode, 
 					final KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode);
 				
-				if (key.isDown() && keyCode == Integer
+				if (key.getAction() == key.ACTION_DOWN
+						&& keyCode == Integer
 							.parseInt(getString(R.string.key_return))) {
 					// User pressed "Enter" 
 					createNewList();
@@ -536,9 +535,9 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		
 		if (nothingdeleted) {
 			// Show dialog:
-
 			AlertDialog.show(ShoppingView.this, 
 				getString(R.string.clean_up_list),
+				0, // TODO choose IconID
 				getString(R.string.no_items_marked), 
 				getString(R.string.ok),
 				false);
@@ -552,6 +551,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private void deleteListConfirm() {
 		AlertDialog.show(ShoppingView.this, 
 			getString(R.string.delete_list),
+			0, // TODO IconID?
 			getString(R.string.confirm_delete_list), 
 			getString(R.string.ok),
 			new DialogInterface.OnClickListener() {
@@ -607,7 +607,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	private long getSelectedListId() {
 		// Obtain Id of currently selected shopping list:
 		mCursorListFilter.moveTo(
-				mSpinnerListFilter.getSelectedItemIndex());
+				mSpinnerListFilter.getSelectedItemPosition());
 		return mCursorListFilter.getLong(mStringListFilterID);
 	};
 	

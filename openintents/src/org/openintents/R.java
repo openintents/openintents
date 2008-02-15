@@ -110,25 +110,37 @@ public final class R {
         public static final int add=0x7f05000c;
         public static final int add_current_location=0x7f050005;
         public static final int add_tag=0x7f05000d;
+        /**  Main application  
+         */
         public static final int app_name=0x7f050000;
         public static final int ask_new_list=0x7f05001b;
         public static final int ask_update_interval=0x7f05002e;
         public static final int auto_update=0x7f05002b;
+        /**      Dialog box    
+         */
         public static final int cancel=0x7f05001f;
         public static final int clean_up_list=0x7f050019;
         public static final int confirm_delete_list=0x7f05001d;
         public static final int connect=0x7f050023;
         public static final int connect_to_sensorsimulator=0x7f050030;
+        /**   Content Browser 
+         */
         public static final int content_browser=0x7f05000e;
         public static final int default_tag=0x7f050001;
         public static final int delete_list=0x7f05001a;
         public static final int disabled=0x7f05002c;
         public static final int disconnect=0x7f050025;
         public static final int enable_sensors=0x7f05002a;
+        /**      Key codes     
+         */
         public static final int key_return=0x7f050031;
         public static final int list_is_empty=0x7f050007;
         public static final int list_of_contents=0x7f05000a;
+        /**  Location Provider 
+         */
         public static final int list_of_locations=0x7f050004;
+        /**    Tags Provider   
+         */
         public static final int list_of_tags=0x7f050009;
         public static final int locations_map=0x7f050008;
         public static final int message=0x7f050012;
@@ -141,10 +153,14 @@ public final class R {
         public static final int real_device_data=0x7f050028;
         public static final int select=0x7f05000b;
         public static final int sensor_simulator_data=0x7f050029;
+        /**   Sensor Simulator 
+         */
         public static final int sensorsimulator=0x7f050021;
         public static final int sensorsimulator_settings=0x7f05002f;
         public static final int set_update_interval=0x7f05002d;
         public static final int settings=0x7f050022;
+        /**  Shopping Provider 
+         */
         public static final int shopping_list=0x7f050016;
         public static final int socket=0x7f050027;
         public static final int tags_add_tag=0x7f05000f;

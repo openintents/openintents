@@ -23,7 +23,12 @@ import org.openintents.shopping.ShoppingView;
 import org.openintents.tags.MagnoliaSettings;
 import org.openintents.tags.MagnoliaTagging;
 import org.openintents.tags.TagsView;
+
+import org.openintents.tags.MagnoliaSettings;
+import org.openintents.tags.MagnoliaTagging;
+
 import org.openintents.tags.content.ContentBrowserView;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -47,6 +52,7 @@ import android.widget.AdapterView.OnItemClickListener;
  */
 public class OpenIntents extends Activity implements OnItemClickListener {
 
+
 	private String[] activitylist = { 
 			"Show locations", 
 			"Show tags", 
@@ -56,6 +62,7 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			"Magnolia settings",
 			"Magnolia tagging"
 			};
+
 
 	/** Called when the activity is first created. */
 	@Override
@@ -111,6 +118,7 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			startActivity(intent);
 			break;
 			
+
 		default:
 			throw new IllegalArgumentException("Unknown position " + position);
 		}
