@@ -19,7 +19,7 @@ package org.openintents.provider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
 
@@ -41,8 +41,8 @@ public abstract class Shopping {
 		/**
          * The content:// style URL for this table.
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.shopping/items");
+        public static final Uri CONTENT_URI
+                = Uri.parse("content://org.openintents.shopping/items");
 
         /**
          * The default sort order for this table.
@@ -89,8 +89,8 @@ public abstract class Shopping {
 		/**
          * The content:// style URL for this table.
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.shopping/lists");
+        public static final Uri CONTENT_URI
+                = Uri.parse("content://org.openintents.shopping/lists");
 
         /**
          * The default sort order for this table.
@@ -140,8 +140,8 @@ public abstract class Shopping {
 		/**
          * The content:// style URL for this table.
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.shopping/contains");
+        public static final Uri CONTENT_URI
+                = Uri.parse("content://org.openintents.shopping/contains");
 
         /**
          * The default sort order for this table.
@@ -201,8 +201,8 @@ public abstract class Shopping {
 		/**
          * The content:// style URL for this table.
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create(
+        public static final Uri CONTENT_URI
+                = Uri.parse(
                 "content://org.openintents.shopping/containsfull");
 
         /**
@@ -334,9 +334,9 @@ public abstract class Shopping {
 		ContentValues values = new ContentValues(1);
 		values.put(Items.NAME, name);
 		try {
-			ContentURI uri = mContentResolver.insert(Items.CONTENT_URI, values);
+			Uri uri = mContentResolver.insert(Items.CONTENT_URI, values);
 			Log.i(TAG, "Insert new item: " + uri);
-			return Long.parseLong(uri.getPathSegment(1));
+			return Long.parseLong(uri.getPathSegments().get(1));
 		} catch (Exception e) {
 			Log.i(TAG, "Insert item failed", e);
 			return -1;
@@ -357,9 +357,9 @@ public abstract class Shopping {
 		ContentValues values = new ContentValues(1);
 		values.put(Lists.NAME, name);
 		try {
-			ContentURI uri = mContentResolver.insert(Lists.CONTENT_URI, values);
+			Uri uri = mContentResolver.insert(Lists.CONTENT_URI, values);
 			Log.i(TAG, "Insert new list: " + uri);
-			return Long.parseLong(uri.getPathSegment(1));
+			return Long.parseLong(uri.getPathSegments().get(1));
 		} catch (Exception e) {
 			Log.i(TAG, "insert list failed", e);
 			return -1;
@@ -384,9 +384,9 @@ public abstract class Shopping {
 		values.put(Contains.ITEM_ID, itemId);
 		values.put(Contains.LIST_ID, listId);
 		try {
-			ContentURI uri = mContentResolver.insert(Contains.CONTENT_URI, values);
+			Uri uri = mContentResolver.insert(Contains.CONTENT_URI, values);
 			Log.i(TAG, "Insert new entry in 'contains': " + uri);
-			return Long.parseLong(uri.getPathSegment(1));
+			return Long.parseLong(uri.getPathSegments().get(1));
 		} catch (Exception e) {
 			Log.i(TAG, "insert into table 'contains' failed", e);
 			return -1;

@@ -1,6 +1,6 @@
 package org.openintents.provider;
 
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class ContentIndex {
@@ -8,8 +8,8 @@ public class ContentIndex {
 		/**
 		 * The content:// style URL for this table
 		 */
-		public static final ContentURI CONTENT_URI = ContentURI
-				.create("content://org.openintents.contentindices/entries");
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.contentindices/entries");
 
 		/**
 		 * The default sort order for this table.

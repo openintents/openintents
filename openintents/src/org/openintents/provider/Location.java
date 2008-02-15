@@ -16,7 +16,7 @@
 
 package org.openintents.provider;
 
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -29,8 +29,8 @@ public abstract class Location {
 		/**
          * The content:// style URL for this table
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create("content://org.openintents.locations/locations");
+        public static final Uri CONTENT_URI
+                = Uri.parse("content://org.openintents.locations/locations");
 
         /**
          * The default sort order for this table

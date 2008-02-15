@@ -1,6 +1,6 @@
 package org.openintents.provider;
 
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 import android.*;
 import android.content.ContentResolver;
@@ -11,8 +11,8 @@ public abstract class News {
 
 	public static final class RSSFeeds implements BaseColumns{
 		
-		public static final ContentURI CONTENT_URI= ContentURI
-			.create("content://org.openintents.news/rss");
+		public static final Uri CONTENT_URI= Uri
+			.parse("content://org.openintents.news/rss");
 		
 		public static final String RSS_FORMAT="2.0";
 		
@@ -72,8 +72,8 @@ public abstract class News {
 	
 	public static final class RSSFeedContents implements BaseColumns{
 		/*Uri for accessing Channel Items in RSS2.0 Format*/
-		public static final ContentURI CONTENT_URI= ContentURI
-		.create("content://org.openintents.news/rsscontents");
+		public static final Uri CONTENT_URI= Uri
+		.parse("content://org.openintents.news/rsscontents");
 	
 		
 		public static final String RSS_FORMAT="2.0";
@@ -102,8 +102,8 @@ public abstract class News {
 	
 	public static final class AtomFeeds implements BaseColumns{
 	
-		public static final ContentURI CONTENT_URI=
-			ContentURI.create("content://org.openintents.news/atom");
+		public static final Uri CONTENT_URI=
+			Uri.parse("content://org.openintents.news/atom");
 			
 			public static final String DEFAULT_SORT_ORDER="";
 
@@ -136,8 +136,8 @@ public abstract class News {
 
 	public static final class AtomFeedContents implements BaseColumns{
 		
-		public static final ContentURI CONTENT_URI=
-			ContentURI.create("content://org.openintents.news/atomcontents");
+		public static final Uri CONTENT_URI=
+			Uri.parse("content://org.openintents.news/atomcontents");
 
 		public static final String DEFAULT_SORT_ORDER="";
 
@@ -166,7 +166,7 @@ public abstract class News {
 
 	public static ContentResolver mContentResolver;
 	
-	public static ContentURI ins(ContentValues cv){
+	public static Uri ins(ContentValues cv){
 		//return  new org.openintents.news.rss.RSSFeedProvider().insert(RSSFeeds.CONTENT_URI,cv);
 //		return mContentResolver.insert(ContentURI.create("content://org.openintents.news"),cv);
 		//return new org.openintents.news.NewsProvider().insert(ContentURI.create("content://org.openintents.news"),cv);//works

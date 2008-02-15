@@ -21,7 +21,7 @@ import org.openintents.R;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -46,8 +46,8 @@ public abstract class Hardware {
 		/**
          * The content:// style URL for this table.
          */
-        public static final ContentURI CONTENT_URI
-                = ContentURI.create(
+        public static final Uri CONTENT_URI
+                = Uri.parse(
                 		"content://org.openintents.hardware/preferences");
 
         /**

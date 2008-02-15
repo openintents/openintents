@@ -16,7 +16,7 @@
 
 package org.openintents.provider;
 
-import android.net.ContentURI;
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -29,8 +29,8 @@ public abstract class Tag {
 		/**
 		 * The content:// style URL for this table
 		 */
-		public static final ContentURI CONTENT_URI = ContentURI
-				.create("content://org.openintents.tags/tags");
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.tags/tags");
 
 		/**
 		 * The default sort order for this table.
@@ -105,8 +105,8 @@ public abstract class Tag {
 		/**
 		 * The content:// style URL for this table
 		 */
-		public static final ContentURI CONTENT_URI = ContentURI
-				.create("content://org.openintents.tags/contents");
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.tags/contents");
 
 		/**
 		 * The default sort order for this table.
