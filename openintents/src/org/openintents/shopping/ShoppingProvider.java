@@ -26,15 +26,16 @@ import org.openintents.provider.Shopping.Lists;
 import org.openintents.provider.Shopping.Status;
 
 import android.content.ContentProvider;
-import android.content.ContentProviderDatabaseHelper;
-import android.content.ContentURIParser;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.content.UriMatcher;
+import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.QueryBuilder;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.content.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -67,7 +68,7 @@ public class ShoppingProvider extends ContentProvider {
 	private static final int CONTAINS_FULL = 101; // combined with items and lists
 	private static final int CONTAINS_FULL_ID = 102;
 	
-	private static final ContentURIParser URL_MATCHER;
+	private static final UriMatcher URL_MATCHER;
 
 	/**
 	 * ShoppingProvider maintains the following tables:
@@ -76,7 +77,7 @@ public class ShoppingProvider extends ContentProvider {
 	 *  * contains: which item/list/(recipe) is contained 
 	 *              in which shopping list.
 	 */
-	private static class DatabaseHelper extends ContentProviderDatabaseHelper {
+	private static class DatabaseHelper extends SQLiteOpenHelper {
 		/**
 		 * Creates tables "items", "lists", and "contains".
 		 */
@@ -130,9 +131,9 @@ public class ShoppingProvider extends ContentProvider {
 	}
 
 	@Override
-	public Cursor query(ContentURI url, String[] projection, String selection,
-			String[] selectionArgs, String groupBy, String having, String sort) {
-		QueryBuilder qb = new QueryBuilder();
+	public Cursor query(Uri url, String[] projection, String selection,
+			String[] selectionArgs, String sort) {
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
 		Log.i(TAG, "Query for URL: " + url);
 		
@@ -146,7 +147,7 @@ public class ShoppingProvider extends ContentProvider {
 
 		case ITEM_ID:
 			qb.setTables("items");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 
 		case LISTS:
@@ -157,7 +158,7 @@ public class ShoppingProvider extends ContentProvider {
 			
 		case LIST_ID:
 			qb.setTables("lists");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 			
 		case CONTAINS:
@@ -168,7 +169,7 @@ public class ShoppingProvider extends ContentProvider {
 
 		case CONTAINS_ID:
 			qb.setTables("contains");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 		
 		case CONTAINS_FULL:
@@ -180,7 +181,7 @@ public class ShoppingProvider extends ContentProvider {
 
 		case CONTAINS_FULL_ID:
 			qb.setTables("contains, items, lists");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			qb.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
 			break;
 		default:
@@ -196,14 +197,13 @@ public class ShoppingProvider extends ContentProvider {
 			orderBy = sort;
 		}
 
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-				having, orderBy);
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs,null,null,orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
 
 	@Override
-	public ContentURI insert(ContentURI url, ContentValues initialValues) {
+	public Uri insert(Uri url, ContentValues initialValues) {
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
@@ -231,7 +231,7 @@ public class ShoppingProvider extends ContentProvider {
 		}
 	}
 	
-	public ContentURI insertItem(ContentURI url, ContentValues values) {
+	public Uri insertItem(Uri url, ContentValues values) {
 		long rowID;
 		
 		Long now = Long.valueOf(System.currentTimeMillis());
@@ -264,7 +264,7 @@ public class ShoppingProvider extends ContentProvider {
 		// insert the item. 
 		rowID = mDB.insert("items", "items", values);
 		if (rowID > 0) {
-			ContentURI uri = Items.CONTENT_URI.addId(rowID);
+			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return uri;
 		}
@@ -273,7 +273,7 @@ public class ShoppingProvider extends ContentProvider {
 		throw new SQLException("Failed to insert row into " + url);
 	}
 
-	public ContentURI insertList(ContentURI url, ContentValues values) {
+	public Uri insertList(Uri url, ContentValues values) {
 		long rowID;
 		
 		Long now = Long.valueOf(System.currentTimeMillis());
@@ -307,7 +307,7 @@ public class ShoppingProvider extends ContentProvider {
 		// insert the tag. 
 		rowID = mDB.insert("lists", "lists", values);
 		if (rowID > 0) {
-			ContentURI uri = Items.CONTENT_URI.addId(rowID);
+			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return uri;
 		}
@@ -317,7 +317,7 @@ public class ShoppingProvider extends ContentProvider {
 		
 	}
 	
-	public ContentURI insertContains(ContentURI url, ContentValues values) {		
+	public Uri insertContains(Uri url, ContentValues values) {		
 		Long now = Long.valueOf(System.currentTimeMillis());
 		Resources r = Resources.getSystem();
 
@@ -366,7 +366,7 @@ public class ShoppingProvider extends ContentProvider {
 		// insert the item. 
 		long rowId = mDB.insert("contains", "contains", values);
 		if (rowId > 0) {
-			ContentURI uri = Contains.CONTENT_URI.addId(rowId);
+			Uri uri = ContentUris.withAppendedId(Contains.CONTENT_URI,rowId);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return uri;
 		}
@@ -376,7 +376,7 @@ public class ShoppingProvider extends ContentProvider {
 	}
 
 	@Override
-	public int delete(ContentURI url, String where, String[] whereArgs) {
+	public int delete(Uri url, String where, String[] whereArgs) {
 		int count;
 		//long rowId;
 		switch (URL_MATCHER.match(url)) {
@@ -385,7 +385,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case ITEM_ID:
-			String segment = url.getPathSegment(1); // contains rowId
+			String segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
@@ -403,7 +403,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case LIST_ID:
-			segment = url.getPathSegment(1); // contains rowId
+			segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -420,7 +420,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case CONTAINS_ID:
-			segment = url.getPathSegment(1); // contains rowId
+			segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -441,7 +441,7 @@ public class ShoppingProvider extends ContentProvider {
 	}
 
 	@Override
-	public int update(ContentURI url, ContentValues values, String where,
+	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
 		Log.i(TAG, "update called for: " + url);
 		int count;
@@ -452,7 +452,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case ITEM_ID:
-			String segment = url.getPathSegment(1); // contains rowId
+			String segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
@@ -471,7 +471,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case LIST_ID:
-			segment = url.getPathSegment(1); // contains rowId
+			segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -488,7 +488,7 @@ public class ShoppingProvider extends ContentProvider {
 			break;
 
 		case CONTAINS_ID:
-			segment = url.getPathSegment(1); // contains rowId
+			segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -510,7 +510,7 @@ public class ShoppingProvider extends ContentProvider {
 	}
 
 	@Override
-	public String getType(ContentURI url) {
+	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			return "vnd.openintents.cursor.dir/shopping.item";
@@ -542,7 +542,7 @@ public class ShoppingProvider extends ContentProvider {
 	}
 
 	static {
-		URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
+		URL_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 		URL_MATCHER.addURI("org.openintents.shopping", "items", ITEMS);
 		URL_MATCHER.addURI("org.openintents.shopping", "items/#", ITEM_ID);
 		URL_MATCHER.addURI("org.openintents.shopping", "lists", LISTS);
