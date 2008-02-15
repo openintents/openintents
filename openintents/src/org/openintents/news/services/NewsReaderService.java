@@ -3,14 +3,16 @@ package org.openintents.news.services;
 import android.app.NotificationManager;
 import android.app.Notification;
 import android.app.Service;
-import android.os.BinderNative;
+//import android.os.BinderNative; //doesnt exist anymore in m5.
 import android.os.IBinder;
 import android.os.Parcel;
 import android.util.Log;
 
 
-public class NewsReaderService extends Service implements Runnable{
-
+//public class NewsReaderService extends Service implements Runnable{
+//TODOD: Resolve Issues. It's just a basic construct atm anyway.
+public class NewsReaderService {
+/*
 	private boolean alive=false;
 	
 	private NotificationManager mNM;
@@ -81,6 +83,6 @@ public class NewsReaderService extends Service implements Runnable{
         }
     };
 	
-	
+	*/
 	
 }/*eoc*/
