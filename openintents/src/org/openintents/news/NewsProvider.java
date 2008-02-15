@@ -11,10 +11,12 @@ import org.openintents.provider.Tag.Tags;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.net.ContentURI;
-import android.content.ContentProviderDatabaseHelper;
-import android.content.ContentURIParser;
-import android.content.QueryBuilder;
+import android.net.Uri;
+import android.database.sqlite.SQLiteOpenHelper;
+//import android.database.sqlite.SQliteOpenHelper;
+import android.content.UriMatcher;
+import android.content.ContentUris;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.content.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,7 +39,7 @@ public class NewsProvider extends ContentProvider {
 	private static final int ATOMFEED_CONTENTS=2003;
 	private static final int ATOMFEED_CONTENT_ID=2004;
 
-	private static final ContentURIParser URL_MATCHER;
+	private static final UriMatcher URL_MATCHER;
 	
 	public static final HashMap<String,String> RSSFEED_PROJECTION_MAP;
 	public static final HashMap<String,String> RSSCONTENT_PROJECTION_MAP;
@@ -46,7 +48,7 @@ public class NewsProvider extends ContentProvider {
 	public static final HashMap<String,String> ATOMCONTENT_PROJECTION_MAP;
 	
 	
-	private static class RSSFeedDBHelper extends ContentProviderDatabaseHelper{
+	private static class NewsFeedDBHelper extends SQLiteOpenHelper{
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
@@ -130,13 +132,13 @@ public class NewsProvider extends ContentProvider {
 	
 	
 	@Override
-	public int delete(ContentURI uri, String selection, String[] selectionArgs) {
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public String getType(ContentURI uri) {
+	public String getType(Uri uri) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -150,7 +152,7 @@ public class NewsProvider extends ContentProvider {
 	 * @return uri of the new item.
 	 * 
 	 */
-	public ContentURI insert(ContentURI uri, ContentValues values) {
+	public Uri insert(Uri uri, ContentValues values) {
 		Log.d(this.TAG,"ENTERING INSERT, uri>>"+uri+"<<");
 		//if there's nowhere to insert, we fail. if  there's no data to insert, we fail.
 		if (uri==null||values==null){
@@ -172,7 +174,7 @@ public class NewsProvider extends ContentProvider {
 			}
 			rowID=mDB.insert("rssfeeds", "", values);			
 			if (rowID > 0) {
-				ContentURI nUri = News.RSSFeeds.CONTENT_URI.addId(rowID);
+				Uri nUri = ContentUris.withAppendedId(News.RSSFeeds.CONTENT_URI,rowID);
 				getContext().getContentResolver().notifyChange(nUri, null);
 				return nUri;
 			}
@@ -183,7 +185,7 @@ public class NewsProvider extends ContentProvider {
 			//TODO: Update rssfeeds table's "LastUpdated" field to keep track of changes.
 			rowID=mDB.insert("rssfeedcontents", "", values);			
 			if (rowID > 0) {
-				ContentURI nUri = News.RSSFeedContents.CONTENT_URI.addId(rowID);
+				Uri nUri = ContentUris.withAppendedId(News.RSSFeedContents.CONTENT_URI,rowID);
 				getContext().getContentResolver().notifyChange(nUri, null);
 				return nUri;
 			}
@@ -198,7 +200,7 @@ public class NewsProvider extends ContentProvider {
 			}
 			rowID=mDB.insert("atomfeeds", "", values);			
 			if (rowID > 0) {
-				ContentURI nUri = News.AtomFeeds.CONTENT_URI.addId(rowID);
+				Uri nUri = ContentUris.withAppendedId(News.AtomFeeds.CONTENT_URI,rowID);
 				getContext().getContentResolver().notifyChange(nUri, null);
 				return nUri;
 			}
@@ -208,7 +210,7 @@ public class NewsProvider extends ContentProvider {
 			//TODO: Update atomfeeds table's "LastChecked" field to keep track of changes.
 			rowID=mDB.insert("atomfeedcontents", "", values);			
 			if (rowID > 0) {
-				ContentURI nUri = News.AtomFeedContents.CONTENT_URI.addId(rowID);
+				Uri nUri = ContentUris.withAppendedId(News.AtomFeedContents.CONTENT_URI,rowID);
 				getContext().getContentResolver().notifyChange(nUri, null);
 				return nUri;
 			}
@@ -225,16 +227,16 @@ public class NewsProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {		 
-		RSSFeedDBHelper dbHelper=new RSSFeedDBHelper();
+		NewsFeedDBHelper dbHelper=new NewsFeedDBHelper();
 		mDB=dbHelper.openDatabase(getContext(),DATABASE_NAME,null,DATABASE_VERSION);
 		
 		return mDB!=null;
 	}
 
 	@Override
-	public Cursor query(ContentURI uri, String[] projection, String selection, String[] selectionArgs, String groupBy, String having, String sortOrder) {
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		// TODO Auto-generated method stub
-        QueryBuilder qb = new QueryBuilder();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String orderBy=null;
         switch (URL_MATCHER.match(uri)) {
         case RSSFEEDS:
@@ -249,7 +251,7 @@ public class NewsProvider extends ContentProvider {
         case RSSFEED_ID:
             qb.setTables("rssfeeds");
             //qb.setProjectionMap(FEED_PROJECTION_MAP);
-            qb.appendWhere("_id=" + uri.getPathLeafId());
+            qb.appendWhere("_id=" + uri.getLastPathSegment());
             
             if (TextUtils.isEmpty(sortOrder)) {
                 orderBy = News.RSSFeeds.DEFAULT_SORT_ORDER;
@@ -268,7 +270,7 @@ public class NewsProvider extends ContentProvider {
             break;
         case RSSFEED_CONTENT_ID:
         	qb.setTables("rssfeedcontents");
-        	qb.appendWhere("_id=" + uri.getPathLeafId());
+        	qb.appendWhere("_id=" + uri.getLastPathSegment());
             if (TextUtils.isEmpty(sortOrder)) {
                 orderBy = News.RSSFeeds.DEFAULT_SORT_ORDER;
             } else {
@@ -288,7 +290,7 @@ public class NewsProvider extends ContentProvider {
         case ATOMFEED_ID:
             qb.setTables("atomfeeds");
             //qb.setProjectionMap(FEED_PROJECTION_MAP);
-            qb.appendWhere("_id=" + uri.getPathLeafId());
+            qb.appendWhere("_id=" + uri.getLastPathSegment());
             
             if (TextUtils.isEmpty(sortOrder)) {
                 orderBy = News.AtomFeeds.DEFAULT_SORT_ORDER;
@@ -307,7 +309,7 @@ public class NewsProvider extends ContentProvider {
             break;
         case ATOMFEED_CONTENT_ID:
         	qb.setTables("atomfeedcontents");
-        	qb.appendWhere("_id=" + uri.getPathLeafId());
+        	qb.appendWhere("_id=" + uri.getLastPathSegment());
             if (TextUtils.isEmpty(sortOrder)) {
                 orderBy = News.AtomFeeds.DEFAULT_SORT_ORDER;
             } else {
@@ -322,14 +324,13 @@ public class NewsProvider extends ContentProvider {
         
 
 
-        Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-                having, orderBy);
+        Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,null, orderBy);
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
 	}
 
 	@Override
-	public int update(ContentURI uri, ContentValues values, String selection, String[] selectionArgs) {
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		// TODO Auto-generated method stub
 		int result=0;
 		if (URL_MATCHER.match(uri)==RSSFEEDS){
@@ -338,7 +339,7 @@ public class NewsProvider extends ContentProvider {
 			//getContext().getContentResolver().notifyChange(nUri, null);
 			getContext().getContentResolver().notifyChange(uri, null);
 		}else if (URL_MATCHER.match(uri)==RSSFEED_ID){
-			long feedID=uri.getPathLeafId();
+			String feedID=uri.getPathSegments().get(1);
 			result= mDB
 					.update("rssfeeds",
 							values,
@@ -362,7 +363,7 @@ public class NewsProvider extends ContentProvider {
 
 	static{
 	
-		URL_MATCHER=new ContentURIParser(ContentURIParser.NO_MATCH);
+		URL_MATCHER=new UriMatcher(UriMatcher.NO_MATCH);
 		URL_MATCHER.addURI("org.openintents.news","rss",RSSFEEDS);
 		URL_MATCHER.addURI("org.openintents.news","rss/#",RSSFEED_ID);
 		URL_MATCHER.addURI("org.openintents.news","rssfeedcontents",RSSFEED_CONTENTS);
