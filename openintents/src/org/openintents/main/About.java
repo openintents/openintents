@@ -32,8 +32,8 @@ public class About extends Activity {
 		// from com.google.android.samples.app.TranslucentFancyActivity
 		
         // Have the system blur any windows behind this one.
-        getWindow().setFlags(WindowManager.LayoutParams.BLUR_BEHIND_FLAG,
-                WindowManager.LayoutParams.BLUR_BEHIND_FLAG);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND,
+                WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
         
         // Apply a tint to any windows behind this one.  Doing a tint this
         // way is more efficient than using a translucent background.  Note
