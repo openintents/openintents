@@ -14,7 +14,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import android.content.ContentResolver;
 import android.content.Resources;
 import android.database.Cursor;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.util.Log;
 
 public class DirectoryRegister {
@@ -157,7 +157,7 @@ public class DirectoryRegister {
 		return l.toArray(new String[l.size()]);
 	}
 
-	public String[] getContentBody(ContentURI uri) {
+	public String[] getContentBody(Uri uri) {
 		Directory dir = getDirectoryForUri(uri.toString());
 		if (dir != null) {
 			String[] projection = getProjection(dir);

@@ -10,12 +10,12 @@ import org.openintents.provider.Tag.Tags;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.PackageManager;
-import android.content.PackageManager.NameNotFoundException;
-import android.content.PackageManager.ResolveInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -70,13 +70,13 @@ public class ContentListRow extends RelativeLayout {
 	}
 
 	public void updateContentFrom(String uri) {
-		ContentURI contentUri = null;
+		Uri contentUri = null;
 		String type = null;
 		Intent intent = null;
 
 		try {
-			contentUri = new ContentURI(uri);
-		} catch (URISyntaxException e1) {
+			contentUri = Uri.parse(uri);
+		} catch (NullPointerException e1) {
 			e1.printStackTrace();
 			mType.setText("U");
 		}
@@ -99,7 +99,7 @@ public class ContentListRow extends RelativeLayout {
 
 	}
 
-	private String getTextForUri(ContentURI uri, String type, Intent intent) {
+	private String getTextForUri(Uri uri, String type, Intent intent) {
 		String[] result = mDirectoryRegister.getContentBody(uri);
 		if (result == null || result.length < 1){
 			result = new String[]{"nothing found ("+ uri.toString() + ")"}; 
@@ -107,7 +107,7 @@ public class ContentListRow extends RelativeLayout {
 		return result[1];
 	}
 
-	private Drawable getIconForUri(ContentURI uri, String type, Intent intent) {
+	private Drawable getIconForUri(Uri uri, String type, Intent intent) {
 		Drawable icon = null;
 
 		PackageManager pm = getContext().getPackageManager();

@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.PackageManager;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.util.Log;
 
 public class Directory {
@@ -84,9 +84,9 @@ public class Directory {
 		return intent;
 	}
 
-	public ContentURI createURI(String _id, String body) throws URISyntaxException {
+	public Uri createURI(String _id, String body) throws URISyntaxException {
 		if (text_columns == null || body == null) {
-			return new ContentURI(uri);
+			return  Uri.parse(uri);
 		}
 
 		String[] names = getTextColumns();
@@ -95,11 +95,11 @@ public class Directory {
 		return createURI(_id, names, values);
 	}
 
-	public ContentURI createURI(String _id, String[] names, String[] values) throws URISyntaxException {
+	public Uri createURI(String _id, String[] names, String[] values) throws URISyntaxException {
 		String uri = intent_uri.replace("{_id}", _id);
 
 		if (names == null || names.length == 0 || values == null || values.length == 0) {
-			return new ContentURI(uri);
+			return Uri.parse(uri);
 		}
 
 		Matcher m = INTENT_URI_PTN.matcher(uri);
@@ -116,7 +116,7 @@ public class Directory {
 
 		Log.d(TAG, "uri=" + buf.toString());
 
-		return new ContentURI(buf.toString());
+		return Uri.parse(buf.toString());
 	}
 
 }

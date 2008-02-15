@@ -29,7 +29,7 @@ import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.DeadObjectException;
 import android.os.Handler;
@@ -163,8 +163,8 @@ public class ContentBrowserView extends ListActivity {
 		for (Directory directory : mRegister.getDirectories().values()) {
 			final Directory dir = directory;
 			Item dirMenuItem = tagMenu.add(0, tagMenuId, dir.name);
-			Intent intent = new Intent(Intent.PICK_ACTION, ContentURI
-					.create(dir.uri));
+			Intent intent = new Intent(Intent.PICK_ACTION, Uri
+					.parse(dir.uri));
 			dirMenuItem.setIntent(intent);
 		}
 
@@ -215,8 +215,8 @@ public class ContentBrowserView extends ListActivity {
 			String uri = ((Cursor) getListView().getSelectedItem())
 					.getString(1);
 			try {
-				intent = new Intent(Intent.VIEW_ACTION, new ContentURI(uri));
-			} catch (URISyntaxException e) {
+				intent = new Intent(Intent.VIEW_ACTION, Uri.parse(uri));
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				intent = null;
