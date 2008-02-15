@@ -21,7 +21,7 @@
 			  android:background="@drawable/magnoliabg2"
 			>
 
-		<ProgressBar id="@+id/magnoliatagging.progressbar"
+		<ProgressBar android:id="@+id/magnoliatagging.progressbar"
 			android:visibility="invisible"
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
 		/>
 
 		<TableLayout 
-			id="@+id/magnoliatagging.ft1"
+			android:id="@+id/magnoliatagging.ft1"
 			android:layout_alignParentTop="true"
 			android:layout_width="fill_parent" 
 			android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
 		        android:paddingBottom="4dip"
 		        android:text="URI"
 		    />
-			<EditText id="@+id/magnoliatagging.curi"
+			<EditText android:id="@+id/magnoliatagging.curi"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"/>
@@ -55,7 +55,7 @@
 		        android:text="Description"
 		    />
 			
-			<EditText id="@+id/magnoliatagging.description"
+			<EditText android:id="@+id/magnoliatagging.description"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -70,7 +70,7 @@
 		        android:text="Tags"
 		    />
 			
-			<EditText id="@+id/magnoliatagging.outboundtags"
+			<EditText android:id="@+id/magnoliatagging.outboundtags"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -90,7 +90,7 @@
 					android:paddingBottom="4dip"
 					android:text="shared"
 					/>
-				<CheckBox id="@+id/magnoliatagging.shared"
+				<CheckBox android:id="@+id/magnoliatagging.shared"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						/>
@@ -100,11 +100,11 @@
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				>			
-				<Button id="@+id/magnoliatagging.cancel"
+				<Button android:id="@+id/magnoliatagging.cancel"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 				
 					android:text="cancel" />
-				<Button id="@+id/magnoliatagging.save"
+				<Button android:id="@+id/magnoliatagging.save"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 				
 					android:text="save" />
@@ -117,7 +117,7 @@
 					android:layout_height="wrap_content"
 					android:text="@string/list_of_tags" />
 
-				<Spinner id="@+id/magnoliatagging.tagfilter"
+				<Spinner android:id="@+id/magnoliatagging.tagfilter"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" />
 	</TableRow>
@@ -128,7 +128,7 @@
 			android:layout_below="@id/magnoliatagging.ft1"
 			android:layout_width="fill_parent"
 			android:layout_height="300px">
-		<ListView id="@+id/magnoliatagging.tags" 
+		<ListView android:id="@+id/magnoliatagging.tags" 
 					android:layout_width="500px"
 					android:layout_height="300px"  
 					/>	
@@ -146,13 +146,13 @@
 					android:layout_height="wrap_content"
 					android:text="@string/list_of_tags" />
 
-				<Spinner id="@+id/magnoliatagging.tagfilter"
+				<Spinner android:id="@+id/magnoliatagging.tagfilter"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" />
 
 			</LinearLayout>
 
-				<ListView id="@+id/magnoliatagging.tags" 
+				<ListView android:id="@+id/magnoliatagging.tags" 
 				android:layout_width="wrap_content"
 				android:layout_height="fill_parent"  />
 		</LinearLayout>

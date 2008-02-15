@@ -20,7 +20,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-	<LinearLayout id="@+id/settings_background"
+	<LinearLayout android:id="@+id/settings_background"
 		android:orientation="vertical" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 				    android:layout_height="wrap_content" 
 				    android:text="@string/IP_address"
 				    />
-		    	<EditText id="@+id/ipaddress"
+		    	<EditText android:id="@+id/ipaddress"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					/>
@@ -56,7 +56,7 @@
 				    android:layout_height="wrap_content" 
 				    android:text="@string/socket"
 				    />
-				<EditText id="@+id/socket"
+				<EditText android:id="@+id/socket"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					android:nextFocusDown="@+id/buttonconnect"
@@ -64,7 +64,7 @@
 		    </TableRow>
 		</TableLayout>
 	</LinearLayout>
-	<LinearLayout id="@+id/testing_background"
+	<LinearLayout android:id="@+id/testing_background"
 		android:orientation="vertical" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
@@ -92,11 +92,11 @@
 				    android:layout_height="wrap_content"
 				    android:layout_marginTop="5dip"
 					>
-					<Button id="@+id/buttonconnect"
+					<Button android:id="@+id/buttonconnect"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content" 				
 								android:text="@string/connect" />
-					<Button id="@+id/buttondisconnect"
+					<Button android:id="@+id/buttondisconnect"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content" 				
 								android:text="@string/disconnect" />
@@ -107,19 +107,19 @@
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    >
-					<CheckBox id="@+id/checkenable"
+					<CheckBox android:id="@+id/checkenable"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/enable_sensors" />
 				        <!-- 
-				    <CheckBox id="@+id/checkautoupdate"
+				    <CheckBox android:id="@+id/checkautoupdate"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:text="@string/auto_update" />
 				         -->
 							
 				</LinearLayout>
-				<TextView id="@+id/datatype"
+				<TextView android:id="@+id/datatype"
 				    android:layout_width="wrap_content" 
 				    android:layout_height="wrap_content" 
 				    android:text=""
@@ -131,7 +131,7 @@
 			  The image will not float to the right.
 			  Workaround: specify marginLeft.
 			 -->
-			<ImageView  id="@+id/imagetype"
+			<ImageView  android:id="@+id/imagetype"
 				android:layout_width="40px"
 		    	android:layout_height="66px"
 		    	android:src="@drawable/realdevice01a" 
@@ -139,7 +139,7 @@
 				android:layout_gravity="right"
 		    	/>
 		</LinearLayout>
-		<EditText id="@+id/edittext"
+		<EditText android:id="@+id/edittext"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
 					/>

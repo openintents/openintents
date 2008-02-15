@@ -25,7 +25,7 @@
     android:layout_height="wrap_content" 
     android:text="@string/list_of_locations"
     />
-<ListView id="@+id/locations"
+<ListView android:id="@+id/locations"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
 	    android:layout_weight="0"
@@ -34,7 +34,7 @@
     	android:layout_width="64px"
     	android:layout_height="64px"
     	android:src="@drawable/openintents_icon" />  -->
-<TextView   id="@+id/listempty"
+<TextView   android:id="@+id/listempty"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:text="@string/list_is_empty"

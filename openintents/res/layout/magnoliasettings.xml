@@ -28,7 +28,7 @@
 		        android:paddingBottom="4dip"
 		        android:text="Screen Name"
 		    />
-			<EditText id="@+id/magnoliasettings.screenname"
+			<EditText android:id="@+id/magnoliasettings.screenname"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"/>
@@ -41,7 +41,7 @@
 		        android:text="Passwd"
 		    />
 			
-			<EditText id="@+id/magnoliasettings.passwd"
+			<EditText android:id="@+id/magnoliasettings.passwd"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="1"
@@ -50,7 +50,7 @@
 				
 		</TableRow>
 		<TableRow>
-		<Button id="@+id/magnoliasettings.import"
+		<Button android:id="@+id/magnoliasettings.import"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 				
 			android:text="Import Tags from Magnolia" />

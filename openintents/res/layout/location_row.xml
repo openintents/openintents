@@ -21,8 +21,8 @@
 	<ImageView  android:layout_width="12px"
     	android:layout_height="12px"
     	android:src="@drawable/openintents_icon" />
-	<TextView id="@+id/latitude" android:layout_width="wrap_content"
+	<TextView android:id="@+id/latitude" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
-	<TextView id="@+id/longitude" android:layout_width="wrap_content"
+	<TextView android:id="@+id/longitude" android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
 </LinearLayout>

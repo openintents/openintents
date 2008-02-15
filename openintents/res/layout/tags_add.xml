@@ -18,7 +18,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	<RelativeLayout id="@+id/content" android:padding="5px"
+	<RelativeLayout android:id="@+id/content" android:padding="5px"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 		<ImageButton android:layout_width="24px"
@@ -29,22 +29,22 @@
 			android:src="@drawable/search">
 		</ImageButton>
 	</RelativeLayout>
-	<TextView id="@+id/tags_tags_list"
+	<TextView android:id="@+id/tags_tags_list"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
 	<LinearLayout android:orientation="horizontal"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:padding="5px">
-		<ImageView id="@+id/tags_label" android:layout_width="24px"
+		<ImageView android:id="@+id/tags_label" android:layout_width="24px"
 			android:layout_height="24px" android:src="@drawable/tag_blue" />
-		<AutoCompleteTextView id="@+id/tag_filter"
+		<AutoCompleteTextView android:id="@+id/tag_filter"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" 
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true" 
 			android:layout_weight="1" >
 		</AutoCompleteTextView>
-		<Button id="@+id/tags_ok_button"
+		<Button android:id="@+id/tags_ok_button"
 			android:layout_weight="3" 
 		    android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text="@string/ok">
