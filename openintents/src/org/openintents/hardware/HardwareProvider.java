@@ -22,15 +22,16 @@ import org.openintents.R;
 import org.openintents.provider.Hardware.Preferences;
 
 import android.content.ContentProvider;
-import android.content.ContentProviderDatabaseHelper;
-import android.content.ContentURIParser;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.content.UriMatcher;
+import android.content.ContentUris;
 import android.content.ContentValues;
-import android.content.QueryBuilder;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.content.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -56,14 +57,14 @@ public class HardwareProvider extends ContentProvider {
 	private static final int PREFERENCES = 1;
 	private static final int PREFERENCE_ID = 2;
 	
-	private static final ContentURIParser URL_MATCHER;
+	private static final UriMatcher URL_MATCHER;
 
 	/**
 	 * HardwareProvider maintains the following tables:
 	 *  * preferences: preferences related to hardware abstraction
 	 *                 or hardware simulation.
 	 */
-	private static class DatabaseHelper extends ContentProviderDatabaseHelper {
+	private static class DatabaseHelper extends SQLiteOpenHelper {
 		/**
 		 * Creates tables "preferences".
 		 */
@@ -90,9 +91,9 @@ public class HardwareProvider extends ContentProvider {
 		return mDB != null;
 	}
 
-	public Cursor query(ContentURI url, String[] projection, String selection,
-			String[] selectionArgs, String groupBy, String having, String sort) {
-		QueryBuilder qb = new QueryBuilder();
+	public Cursor query(Uri url, String[] projection, String selection,
+			String[] selectionArgs,String sort) {
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
 		Log.i(TAG, "Query for URL: " + url);
 		
@@ -106,7 +107,7 @@ public class HardwareProvider extends ContentProvider {
 
 		case PREFERENCE_ID:
 			qb.setTables("preferences");
-			qb.appendWhere("_id=" + url.getPathSegment(1));
+			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 
 		default:
@@ -122,13 +123,12 @@ public class HardwareProvider extends ContentProvider {
 			orderBy = sort;
 		}
 
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs, groupBy,
-				having, orderBy);
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs,null,null,orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
 
-	public ContentURI insert(ContentURI url, ContentValues initialValues) {
+	public Uri insert(Uri url, ContentValues initialValues) {
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
@@ -146,7 +146,7 @@ public class HardwareProvider extends ContentProvider {
 		}
 	}
 	
-	public ContentURI insertPreferences(ContentURI url, ContentValues values) {
+	public Uri insertPreferences(Uri url, ContentValues values) {
 		long rowID;
 		
 		Resources r = Resources.getSystem();
@@ -167,7 +167,7 @@ public class HardwareProvider extends ContentProvider {
 		// insert the item. 
 		rowID = mDB.insert("preferences", "preferences", values);
 		if (rowID > 0) {
-			ContentURI uri = Preferences.CONTENT_URI.addId(rowID);
+			Uri uri = ContentUris.withAppendedId(Preferences.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return uri;
 		}
@@ -176,7 +176,7 @@ public class HardwareProvider extends ContentProvider {
 		throw new SQLException("Failed to insert row into " + url);
 	}
 
-	public int delete(ContentURI url, String where, String[] whereArgs) {
+	public int delete(Uri url, String where, String[] whereArgs) {
 		int count;
 		//long rowId;
 		switch (URL_MATCHER.match(url)) {
@@ -185,7 +185,7 @@ public class HardwareProvider extends ContentProvider {
 			break;
 
 		case PREFERENCE_ID:
-			String segment = url.getPathSegment(1); // contains rowId
+			String segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
@@ -206,7 +206,7 @@ public class HardwareProvider extends ContentProvider {
 		return count;
 	}
 
-	public int update(ContentURI url, ContentValues values, String where,
+	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
 		Log.i(TAG, "update called for: " + url);
 		int count;
@@ -217,7 +217,7 @@ public class HardwareProvider extends ContentProvider {
 			break;
 
 		case PREFERENCE_ID:
-			String segment = url.getPathSegment(1); // contains rowId
+			String segment = url.getPathSegments().get(1); // contains rowId
 			//rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
@@ -240,7 +240,7 @@ public class HardwareProvider extends ContentProvider {
 		return count;
 	}
 
-	public String getType(ContentURI url) {
+	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case PREFERENCES:
 			return "vnd.openintents.cursor.dir/hardware.preference";
@@ -254,7 +254,7 @@ public class HardwareProvider extends ContentProvider {
 	}
 
 	static {
-		URL_MATCHER = new ContentURIParser(ContentURIParser.NO_MATCH);
+		URL_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 		URL_MATCHER.addURI("org.openintents.hardware", "preferences", PREFERENCES);
 		URL_MATCHER.addURI("org.openintents.hardware", "preferences/#", PREFERENCE_ID);
 		
