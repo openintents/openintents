@@ -20,11 +20,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  id = "@+id/tag"
+<TextView  android:id = "@+id/tag"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     />
-<ListView  id = "@+id/list_favorite"
+<ListView  android:id = "@+id/list_favorite"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
     android:layout_weight="1" 
@@ -34,7 +34,7 @@
     android:layout_height="wrap_content" 
     android:text="@string/rest"
     />    
-<ListView  id = "@+id/list"
+<ListView  android:id = "@+id/list"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
     android:layout_weight="1" 
