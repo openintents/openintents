@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<project name="OpenIntents-Release" default="help">
+
+<!-- ______________________________properties, load these from file sometime in the future  -->
+	<!-- The following properties have to be set in Eclipse:
+		* Open "Window" / "Preferences..."
+		* Select "Ant" / "Runtime"
+		* Choose tab "Properties"
+		* Click "Add Property..." for the following:
+		
+		* - Name: "android.sdk"
+		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
+		
+		* - Name: "openintents.release"
+		  - value: [path to release directory, e.g. C:\OpenIntents\Release]
+	-->
+	
+	<!-- ############################################# -->
+	<!-- Properties taken from Eclipse -->
+	
+	<!-- sdk-dir: path to Android SDK -->
+	<property name="sdk-dir" value="${android.sdk}" />
+	<!-- ############################################# -->
+		
+	<!-- SDK tools folder -->
+    <property name="android-tools" value="${sdk-dir}/tools" />
+	
+	<!-- workspace dir: this is where all the completed files go -->
+	<property name="w-dir" value="${openintents.release}" />
+		
+	<!-- subproject will use this jar for compile -->
+	<property name="release-jar" value="${release-dir}/openintents.jar" />
+
+	<!-- (sub)project folders  -->
+	<property name="base-root" value="C:\\Openintents.Workspace\\OpenIntents" />
+	<property name="news-root" value="C:\Openintents.Workspace\samples\newsreader" />
+	<property name="locations-root" value="C:\Openintents.Workspace\samples\FavoriteLocations" />
+	<property name="presentpicker-root" value="C:\Openintents.Workspace\samples\PresentPicker" />
+    <!-- Tools -->
+    <property name="aapt" value="${android-tools}/aapt.exe" />
+    <property name="aidl" value="${android-tools}/aidl.exe" />
+    <property name="dx" value="${android-tools}/dx.bat" />
+    <property name="android-jar" value="${sdk-folder}/android.jar" />
+
+
+	<target
+		name="help"
+		>
+		<echo>----------openintents.org buildscript v0.0.1</echo>
+		<echo>use release.$domainname to compile domainname</echo>
+		<echo>use release.appname to comile appname</echo>
+		<echo>use release for a full openintents release</echo>
+
+	</target>
+
+	<target name="setup.dirs">
+		<mkdir dir="${release-dir}"/>
+
+	</target>
+
+	<target name="setup.clean">
+		<delete file="${release-dir}/openintents.apk" />
+		<delete file="${release-dir}/openintents.jar" />
+	</target>
+
+	<target 
+		name="base.package"		
+		depends="
+			setup.dirs,
+			setup.clean"
+		>
+		<echo>------------------------------base.package----------------------</echo>
+		<ant
+			dir="${base-root}"
+			antfile="openintents-base.xml"
+			target="package"
+		/>
+		<copy
+			file="${base-root}/bin/openintents.apk"
+			todir="${release-dir}"
+			/>
+	</target>
+	
+	<target 
+		name="base.jar"		
+		depends="
+			setup.dirs,
+			setup.clean,
+			base.package"
+		>
+		<echo>------------------------------base.jar----------------------</echo>
+		<jar 
+			destfile="${release-jar}"
+			basedir="${base-root}/bin/classes"
+
+			/>			
+	</target>
+
+	<target name="news.package"
+		depends="
+			setup.dirs,
+			setup.clean,
+			base.jar"
+		>
+		<echo>------------------------------news.package----------------------</echo>
+		<ant
+			dir="${news-root}"
+			antfile="openintents-news.xml"
+			target="package"
+		>
+			<property name="openintents-jar" value="${release-jar}" />
+		</ant>
+		<copy
+			file="${news-root}/bin/OpenIntents Newsreader.apk"
+			todir="${release-dir}"
+			/>
+
+	</target>
+
+
+	<target name="locations.package"
+		depends="
+			setup.dirs,
+			setup.clean,
+			base.jar"
+		>
+		<echo>------------------------------locations.package----------------------</echo>
+		<ant
+			dir="${locations-root}"
+			antfile="openintents-locations.xml"
+			target="package"
+		>
+			<property name="openintents-jar" value="${release-jar}" />
+		</ant>
+		<copy
+			file="${locations-root}/bin/OpenIntents-favoriteLocations.apk"
+			todir="${release-dir}"
+			/>
+
+	</target>
+
+	<target name="presentpicker.package"
+		depends="
+			setup.dirs,
+			setup.clean,
+			base.jar"
+		>
+		<echo>------------------------------presentpicker.package----------------------</echo>
+		<ant
+			dir="${presentpicker-root}"
+			antfile="openintents-presentpicker.xml"
+			target="package"
+		>
+			<property name="openintents-jar" value="${release-jar}" />
+		</ant>
+		<copy
+			file="${presentpicker-root}/bin/OpenIntents-PresentPicker.apk"
+			todir="${release-dir}"
+			/>
+
+	</target>	
+
+
+
+	<target name="release.base" depends="base.package,base.jar" />
+	<target name="release.news" depends="base.jar,news.package" />
+	<target name="release.locations" depends="base.jar,locations.package" />
+	<target name="release.presentpicker" depends="base.jar,presentpicker.package" />
+	<target 
+		name="release"		
+		depends="
+			setup.dirs,
+			setup.clean,
+			release.base,
+			release.news,
+			release.locations,
+			release.presentpicker"
+		>
+	</target>
+</project>

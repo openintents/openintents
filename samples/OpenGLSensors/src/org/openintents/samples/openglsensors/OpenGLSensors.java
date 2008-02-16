@@ -50,7 +50,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.SubMenu;
 import android.view.View;
@@ -138,9 +137,9 @@ public class OpenGLSensors extends Activity {
 
 		// Standard menu
 		menu.add(0, MENU_SETTINGS, R.string.settings)
-			.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_S);
+			.setShortcut('0', 's');
 		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_simulator)
-			.setShortcut(KeyEvent.KEYCODE_1, 0, KeyEvent.KEYCODE_C);
+			.setShortcut('1', 'c');
 		
 		
 		SubMenu menuSensor;
@@ -474,7 +473,7 @@ class GLView extends View
              */
              
             float ratio = (float)w / h;
-            gl.glMatrixMode(gl.GL_PROJECTION);
+            gl.glMatrixMode(GL10.GL_PROJECTION);
             gl.glLoadIdentity();
             gl.glFrustumf(-ratio, ratio, -1, 1, 2, 12);
 
@@ -483,7 +482,7 @@ class GLView extends View
              * it has a significant impact on performace in software
              * implementation. Often, it's better to just turn it off.
              */
-             gl.glDisable(gl.GL_DITHER);
+             gl.glDisable(GL10.GL_DITHER);
 
             /*
              * Usually, the first thing one might want to do is to clear

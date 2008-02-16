@@ -29,9 +29,8 @@ import org.openintents.OpenIntents;
 import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
 
-import java.net.URISyntaxException;
-
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -39,7 +38,7 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -143,12 +142,13 @@ public class FavoriteLocations extends Activity {
 		StringBuffer sb = new StringBuffer();
 		while (c.next()) {
 			String id = null;
-			try {
-				id = new ContentURI(c.getString(2)).getPathLeaf();
-			} catch (URISyntaxException e) {
+//			try {
+				id = Uri.parse(c.getString(2)).getLastPathSegment();
+				// TODO ??? IS THIS CORRECT? Formerly it was: .getPathLeaf();
+//			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//				e.printStackTrace();
+//			}
 			if (id != null) {
 				sb.append(id).append(",");
 			}
@@ -197,8 +197,8 @@ public class FavoriteLocations extends Activity {
 	}
 
 	private void tagLocation(long id) {
-		ContentURI uriToTag = Locations.CONTENT_URI;
-		uriToTag = uriToTag.addId(id);
+		Uri uriToTag = Locations.CONTENT_URI;
+		uriToTag = ContentUris.appendId(uriToTag.buildUpon(), id).build();;
 		Intent intent = new Intent(OpenIntents.TAG_ACTION, Tags.CONTENT_URI);
 		intent.putExtra(Tags.QUERY_URI, uriToTag.toString());
 
@@ -206,7 +206,7 @@ public class FavoriteLocations extends Activity {
 			startSubActivity(intent, TAG_ACTIVITY);
 		} catch (Exception e) {
 			e.printStackTrace();
-			showAlert("tag action failed", e.toString(), "ok", false);
+			showAlert("tag action failed", 0, e.toString(), "ok", false);
 		}
 
 	}
@@ -216,14 +216,14 @@ public class FavoriteLocations extends Activity {
 				.getColumnIndex(Locations.LATITUDE));
 		String longitude = cursor.getString(cursor
 				.getColumnIndex(Locations.LONGITUDE));
-		ContentURI uri;
-		try {
-			uri = new ContentURI("geo:" + latitude + "," + longitude);
-		} catch (URISyntaxException e) {
+		Uri uri;
+//		try {
+			uri = Uri.parse("geo:" + latitude + "," + longitude);
+//		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			uri = null;
-		}
+//			e.printStackTrace();
+//			uri = null;
+//		}
 
 		if (uri != null) {
 			Intent intent = new Intent(Intent.VIEW_ACTION, uri);

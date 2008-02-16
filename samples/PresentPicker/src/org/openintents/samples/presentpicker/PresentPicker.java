@@ -28,9 +28,9 @@ package org.openintents.samples.presentpicker;
  * lib/openintents-lib-n.n.n.jar. 
  */
 
-import org.openintents.provider.Shopping;
-
 import java.util.Random;
+
+import org.openintents.provider.Shopping;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -42,13 +42,12 @@ import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.database.Cursor;
 import android.graphics.Typeface;
-import android.net.ContentURI;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Contacts;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -358,6 +357,7 @@ public class PresentPicker extends Activity {
 			}
         	
         });
+        
         if (mFirstItem == null) {
         	mFirstItem = ib;
         }
@@ -393,7 +393,7 @@ public class PresentPicker extends Activity {
 		
 		// Standard menu
 		menu.add(0, MENU_ABOUT, R.string.about)
-			.setShortcut(KeyEvent.KEYCODE_0, 0, KeyEvent.KEYCODE_A);
+			.setShortcut('0', 'a');
 		
 		return true;
 	}
@@ -427,7 +427,7 @@ public class PresentPicker extends Activity {
 			.setOnClickListener(new OnClickListener() {
 				public void onClick(final View v) {
 					Intent i = new Intent(Intent.VIEW_ACTION, 
-						ContentURI.create("http://www.fasticon.com/commercial_license.html"));
+						Uri.parse("http://www.fasticon.com/commercial_license.html"));
 					startActivity(i);
 				}
 			});
