@@ -39,14 +39,14 @@
 	    		android:layout_height="fill_parent"
 	    		android:gravity="center"
 	    		>
-				<ImageButton id="@+id/image"
+				<ImageButton android:id="@+id/image"
 			    	android:layout_width="70dip"
 			    	android:layout_height="70dip"
 			    	android:scaleType="fitCenter"    
 			    	android:src="@drawable/boy_1" 
 			    	android:layout_marginRight="10dip" />
 			    <!-- 
-		    	<ImageButton id="@+id/callperson"
+		    	<ImageButton android:id="@+id/callperson"
 				    	android:layout_width="70dip"
 				    	android:layout_height="40dip"
 				    	android:layout_marginTop="5dip"   
@@ -65,7 +65,7 @@
 					    android:layout_height="wrap_content" 
 					    android:text="@string/name"
 					    />
-			    	<AutoCompleteTextView id="@+id/name"
+			    	<AutoCompleteTextView android:id="@+id/name"
 			            android:completionThreshold="1"
 			            android:completionHint="@string/autocomplete_hint"
 			            android:layout_width="fill_parent"
@@ -77,18 +77,18 @@
 		    		android:orientation="horizontal"
 			    	android:layout_width="fill_parent"
 			    	android:layout_height="wrap_content">
-			    	<RadioGroup id="@+id/radio_mf"
+			    	<RadioGroup android:id="@+id/radio_mf"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
 				        android:orientation="horizontal"
 				        android:layout_marginTop="3dip"
 				        >
-				        <RadioButton id="@+id/radio_m"
+				        <RadioButton android:id="@+id/radio_m"
 				            android:layout_width="wrap_content"
 				            android:layout_height="wrap_content"
 				            android:text="@string/male" 
 				            />
-				        <RadioButton id="@+id/radio_f"
+				        <RadioButton android:id="@+id/radio_f"
 				            android:layout_width="wrap_content"
 				            android:layout_height="wrap_content"
 				            android:text="@string/female" />
@@ -99,7 +99,7 @@
 					    android:layout_height="wrap_content" 
 					    android:text="@string/age"
 					    />
-					<EditText id="@+id/age"
+					<EditText android:id="@+id/age"
 						android:layout_width="50dip"
 						android:layout_height="wrap_content"
 						android:layout_weight="1"/>
@@ -115,7 +115,7 @@
 					    android:layout_height="wrap_content" 
 					    android:text="@string/personality"
 					    />
-					<Spinner id="@+id/personality"
+					<Spinner android:id="@+id/personality"
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content" />
 			    </LinearLayout>
@@ -130,7 +130,7 @@
 					    android:layout_height="wrap_content" 
 					    android:text="@string/occasion"
 					    />
-					<Spinner id="@+id/occasion"
+					<Spinner android:id="@+id/occasion"
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content"
 						/>
@@ -149,7 +149,7 @@
 	  	android:layout_marginBottom="20dip"
 	  	>
 	  	
-		<Button id="@+id/search"
+		<Button android:id="@+id/search"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 				
 			android:text="@string/search" 
@@ -163,7 +163,7 @@
 	    android:text="@string/recommendation"
 	    android:layout_marginLeft="20dip"
 	    />
-	<LinearLayout id="@+id/results"
+	<LinearLayout android:id="@+id/results"
    		android:orientation="horizontal"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
@@ -184,7 +184,7 @@
 		    android:layout_marginLeft="10dip"
 		    />
 			
-	    <EditText id="@+id/selection"
+	    <EditText android:id="@+id/selection"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			/>
@@ -195,7 +195,7 @@
     	android:layout_height="wrap_content"
     	android:layout_marginLeft="10dip"
     	android:layout_marginRight="10dip">
-	    <Button id="@+id/button_add"
+	    <Button android:id="@+id/button_add"
 	        android:text="@string/add_item_to"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -205,12 +205,12 @@
 	        />
 	    
 	    <!-- 
-	    <Spinner id="@+id/spinner_listfilter"
+	    <Spinner android:id="@+id/spinner_listfilter"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" />
 		 -->
 			
-	    <Button id="@+id/button_view"
+	    <Button android:id="@+id/button_view"
 	        android:text="@string/view_shopping_list"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

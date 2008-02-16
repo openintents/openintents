@@ -131,7 +131,7 @@ public class PresentPicker extends Activity {
          );
         mLayoutParams.height = 60;
         mLayoutParams.width = 60;
-
+        
         // Placeholder
         addQuestionButton();
         
