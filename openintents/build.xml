@@ -1,6 +1,23 @@
 <?xml version="1.0" ?>
 <project name="OpenIntents" default="package">
-	
+
+	<!-- The following property has to be set:
+	    **************************************************************
+		In Eclipse:
+		* Open "Window" / "Preferences..."
+		* Select "Ant" / "Runtime"
+		* Choose tab "Properties"
+		* Click "Add Property..." for the following:
+		
+		* - Name: "android.sdk"
+		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
+		**************************************************************
+		Alternatively, you can provide the property through the
+		command line:
+		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
+		**************************************************************
+	-->
+
 	<!-- ############################################# -->
 	<!-- Properties taken from Eclipse -->
 	
@@ -86,7 +103,7 @@
 	<!-- Removed option: -->
     <target name="compile" depends="dirs, resource-src, aidl">
         <javac encoding="ascii" target="1.5" debug="true" extdirs=""
-                srcdir="."
+                srcdir="src"
                 destdir="${outdir-classes}"
                 bootclasspath="${android-jar}" />
     </target>
@@ -171,6 +188,7 @@
     <!-- Create the package file for this project from the sources. -->
     <target name="package" depends="package-dex" />
 
+	<!-- ############### optinally ####################### -->
 	<!-- Create the library -->
 	<!-- Content is defined in "lib-content.txt" -->
 	<target name="lib" 
@@ -179,7 +197,7 @@
 			<jar 
 				destfile="${outdir}/openintents-lib.jar"
 				basedir="${outdir-classes}"
-				includesfile="lib-content.txt"
+				includesfile="build-lib-content.txt"
 				>
 				
 
