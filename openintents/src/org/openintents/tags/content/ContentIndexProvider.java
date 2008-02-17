@@ -153,8 +153,8 @@ public class ContentIndexProvider extends
 			ArrayList bodies = new ArrayList();
 			for (String bodyUri : bodyUris) {
 				String[] bodyArray = getContentBody(Uri.parse(bodyUri));
-				if (bodyArray != null && bodyArray.length > 0) {
-					String body = bodyArray[0];
+				if (bodyArray != null && bodyArray.length > 1) {
+					String body = bodyArray[1];
 					ArrayList columns = new ArrayList();
 					columns.add(body);
 					bodies.add(columns);
