@@ -9,11 +9,9 @@ import android.widget.Filterable;
 
 public class ContentListAdapter extends CursorAdapter implements Filterable {
 
-	private DirectoryRegister mDirectoryRegister;
 	
-	public ContentListAdapter(Cursor c, Context context, DirectoryRegister register) {
-		super(c, context);
-		mDirectoryRegister = register;
+	public ContentListAdapter(Cursor c, Context context) {
+		super(c, context);		
 	}
 
 	@Override
@@ -25,7 +23,7 @@ public class ContentListAdapter extends CursorAdapter implements Filterable {
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		ContentListRow row = new ContentListRow(context, mDirectoryRegister);
+		ContentListRow row = new ContentListRow(context);
 		bindView(row, context, cursor);
 		return row;
 	}

@@ -16,35 +16,28 @@
 
 package org.openintents.tags.content;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 import org.openintents.R;
-import org.openintents.main.OpenIntents;
+import org.openintents.provider.ContentIndex.Dir;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.DeadObjectException;
-import android.os.Handler;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
-import android.view.SubMenu;
-import android.view.View;
 import android.view.Menu.Item;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 /**
  * View to show tags in a hierarchical manner.
@@ -52,7 +45,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * 
  * 
  */
-public class ContentBrowserView extends ListActivity {
+public class ContentBrowserView extends ListActivity implements Runnable {
 
 	// tag for logging
 	private static final String TAG = "tagHierarchyView";
@@ -61,13 +54,14 @@ public class ContentBrowserView extends ListActivity {
 	private static final int MENU_ADD_TAG = 1;
 	private static final int MENU_VIEW_CONTENT = 2;
 	private static final int MENU_REMOVE_TAG = 3;
-
+	private static final int MENU_PACKAGES = 4;
+	
 	protected static final int REQUEST_PICK = 1;
+	 
 
 	private AutoCompleteTextView mTagFilter;
 
 	private ListAdapter mTaggedContentAdapter;
-	private DirectoryRegister mRegister;
 
 	/**
 	 * Called when the activity is first created.
@@ -95,8 +89,8 @@ public class ContentBrowserView extends ListActivity {
 		});
 
 		fillDataTagFilter();
-		mRegister = new DirectoryRegister(this);
-
+		Thread t = new Thread(this);
+		t.start();
 	}
 
 	/**
@@ -149,7 +143,7 @@ public class ContentBrowserView extends ListActivity {
 			return;
 		}
 
-		ContentListAdapter adapter = new ContentListAdapter(c, this, mRegister);
+		ContentListAdapter adapter = new ContentListAdapter(c, this);
 		setListAdapter(adapter);
 	}
 
@@ -157,25 +151,18 @@ public class ContentBrowserView extends ListActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		SubMenu tagMenu = menu.addSubMenu(0, MENU_ADD_TAG,
-				R.string.tags_add_tag);
-		int tagMenuId = 100;
-		for (Directory directory : mRegister.getDirectories().values()) {
-			final Directory dir = directory;
-			Item dirMenuItem = tagMenu.add(0, tagMenuId, dir.name);
-			Intent intent = new Intent(Intent.PICK_ACTION, Uri
-					.parse(dir.uri));
-			dirMenuItem.setIntent(intent);
-		}
-
+		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag);
 		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content);
 		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag);
+		
+		menu.add(0, MENU_PACKAGES, R.string.menu_package_list);
 
 		Intent intent = new Intent(null, Tags.CONTENT_URI);
 		intent.addCategory(Intent.ALTERNATIVE_CATEGORY);
 		menu.addIntentOptions(Menu.ALTERNATIVE, 0, new ComponentName(this,
 				ContentBrowserView.class), null, intent, 0, null);
 
+		
 		intent = new Intent(null, Tags.CONTENT_URI);
 		intent.addCategory(Intent.SELECTED_ALTERNATIVE_CATEGORY);
 		menu.addIntentOptions(Menu.ALTERNATIVE, 0, new ComponentName(this,
@@ -198,18 +185,14 @@ public class ContentBrowserView extends ListActivity {
 	@Override
 	public boolean onMenuItemSelected(int featureId, Item item) {
 		super.onMenuItemSelected(featureId, item);
-
-		if (item.getId() >= 100){
-			startSubActivity(item.getIntent(), REQUEST_PICK);
-		}
 		
 		String tag = mTagFilter.getText().toString();
 		Intent intent;
 		switch (item.getId()) {
 		case MENU_ADD_TAG:
-//			Intent intent = new Intent(org.openintents.OpenIntents.TAG_ACTION,
-//					Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, tag);
-//			startActivity(intent);
+			// pick a directory, expect a content uri of the given directory as return value
+			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI.buildUpon().appendQueryParameter("q", "content").build());
+			startSubActivity(intent, REQUEST_PICK);
 			break;
 		case MENU_VIEW_CONTENT:
 			String uri = ((Cursor) getListView().getSelectedItem())
@@ -235,6 +218,10 @@ public class ContentBrowserView extends ListActivity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			break;
+		case MENU_PACKAGES:
+			startActivity(new Intent(this, PackageList.class));
+			break;
 		}
 
 		return true;
@@ -254,5 +241,19 @@ public class ContentBrowserView extends ListActivity {
 					Tags.QUERY_URI, data);
 			startActivity(intent);
 		}
+	}
+	
+	public void run() {
+		DirectoryRegister r = new DirectoryRegister(this);
+		Resources res = getResources();
+		try {
+			r.fromXML(res.openRawResource(R.raw.browser));
+			r.fromXML(res.openRawResource(R.raw.contacts));
+			r.fromXML(res.openRawResource(R.raw.notepad));
+			r.fromXML(res.openRawResource(R.raw.media));
+			r.fromXML(res.openRawResource(R.raw.shopping));	
+		} catch (Exception e) {
+			e.printStackTrace();			
+		}		
 	}
 }

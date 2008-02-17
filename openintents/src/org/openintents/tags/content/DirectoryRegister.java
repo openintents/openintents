@@ -8,10 +8,12 @@ import java.util.Map;
 import java.util.Stack;
 
 import org.openintents.R;
+import org.openintents.provider.ContentIndex;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Resources;
 import android.database.Cursor;
 import android.net.Uri;
@@ -31,21 +33,11 @@ public class DirectoryRegister {
 	private static final String ATTR_URI = "uri";
 
 	private static final String TAG = "DirectoryRegister";
+	private ContentIndex mContentIndex;
 
-	private Map<String, Directory> mTables = new HashMap<String, Directory>();
-	private ContentResolver mResolver;
 
-	public DirectoryRegister(android.content.Context context) {
-		mResolver = context.getContentResolver();
-		Resources res = context.getResources();
-		try {
-			fromXML(res.openRawResource(R.raw.browser));
-			fromXML(res.openRawResource(R.raw.contacts));
-			fromXML(res.openRawResource(R.raw.notepad));
-			fromXML(res.openRawResource(R.raw.media));			
-		} catch (Exception e) {
-			e.printStackTrace();			
-		}
+	public DirectoryRegister(Context context) {		
+		mContentIndex = new ContentIndex(context.getContentResolver());
 	}
 
 	public void fromXML(InputStream in) throws Exception {
@@ -86,7 +78,9 @@ public class DirectoryRegister {
 	}
 
 	private void endDirectory(Stack<Directory> stack) {
-		// do nothing
+		if (stack.size() > 0) {
+			mContentIndex.updateDirectory(stack.pop());
+		}
 	}
 
 	private void startIntent(XmlPullParser xpp, Stack<Directory> stack)
@@ -115,7 +109,7 @@ public class DirectoryRegister {
 
 		notBlank(xpp, ATTR_URI, dir.uri);
 
-		mTables.put(dir.package_name, dir);
+		mContentIndex.addDirectory(dir);
 		stack.push(dir);
 	}
 
@@ -125,7 +119,7 @@ public class DirectoryRegister {
 
 		notBlank(xpp, ATTR_NAME, package_name);
 
-		mTables.remove(package_name);
+		mContentIndex.deletePackage(package_name);
 		return package_name;
 	}
 
@@ -138,81 +132,5 @@ public class DirectoryRegister {
 		}
 	}
 
-	public Map<String, Directory> getDirectories() {
-		return mTables;
-	}
-
-	private String[] getProjection(Directory dir) {
-		ArrayList<String> l = new ArrayList<String>();
-		l.add("_id");
-
-		String[] textColumns = dir.getTextColumns();
-
-		for (int i = 0; textColumns != null && i < textColumns.length; i++) {
-			if (StringUtils.isNotBlank(textColumns[i])) {
-				l.add(textColumns[i].trim());
-			}
-		}
-
-		return l.toArray(new String[l.size()]);
-	}
-
-	public String[] getContentBody(Uri uri) {
-		Directory dir = getDirectoryForUri(uri.toString());
-		if (dir != null) {
-			String[] projection = getProjection(dir);
-			String orderby;
-
-			if (StringUtils.isNotBlank(dir.time_column)) {
-				orderby = dir.time_column;
-				Log.d(TAG, "orderby=" + dir.time_column);
-			} else {
-				orderby = dir.id_column;
-				Log.d(TAG, "orderby=" + dir.id_column);
-			}	
-			
-			Cursor cursor = mResolver.query(uri, projection,
-					null, null, orderby);
-			int idIndex = cursor.getColumnIndex("_id");
-
-			int[] columnIndex = getColumnIndex(cursor, projection);
-			String[] values = new String[columnIndex.length];
-
-			while (cursor.next()) {
-				String id = cursor.getString(idIndex);
-				getValues(cursor, columnIndex, values);
-			}
-
-			return values;
-		} else {
-			return null;
-		}
-	}
-
-	private void getValues(Cursor cursor, int[] columnIndex, String[] values) {
-		for (int i = 0; i < columnIndex.length; i++) {
-			values[i] = cursor.getString(columnIndex[i]);
-		}
-	}
-
-	private int[] getColumnIndex(Cursor cursor, String[] projection) {
-		int[] index = new int[projection.length];
-		for (int i = 0; i < projection.length; i++) {
-			index[i] = cursor.getColumnIndex(projection[i]);
-		}
-		return index;
-	}
-
-	private Directory getDirectoryForUri(String uri) {
-		Directory result = null;
-		int maxLength = -1;
-		for (Directory dir : mTables.values()) {
-			if (uri.startsWith(dir.uri) && uri.length() > maxLength) {
-				result = dir;
-				maxLength = uri.length();
-			}
-		}
-		return result;
-	}
 
 }

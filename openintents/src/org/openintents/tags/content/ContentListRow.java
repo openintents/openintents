@@ -29,10 +29,12 @@ public class ContentListRow extends RelativeLayout {
 	private ImageView mIcon;
 	private TextView mName;
 	private TextView mType;	
-	private DirectoryRegister mDirectoryRegister;
+	private ContentIndex mContentIndex;
 
-	public ContentListRow(Context context, DirectoryRegister register) {
+	public ContentListRow(Context context) {
 		super(context);
+		
+		mContentIndex = new ContentIndex(context.getContentResolver());
 
 		mIcon = new ImageView(context);
 		mIcon.setPadding(2, 2, 2, 2);
@@ -60,8 +62,7 @@ public class ContentListRow extends RelativeLayout {
 				LayoutParams.WRAP_CONTENT, 30);
 		type.addRule(ALIGN_WITH_PARENT_RIGHT);
 		addView(mType, type);
-		
-		mDirectoryRegister = register;
+
 	}
 
 	public void bindCursor(Cursor cursor) {
@@ -100,11 +101,16 @@ public class ContentListRow extends RelativeLayout {
 	}
 
 	private String getTextForUri(Uri uri, String type, Intent intent) {
-		String[] result = mDirectoryRegister.getContentBody(uri);
-		if (result == null || result.length < 1){
-			result = new String[]{"nothing found ("+ uri.toString() + ")"}; 
-		}			
-		return result[1];
+		Cursor cursor = mContentIndex.getContentBody(uri);
+
+		String result;
+		if (cursor == null || cursor.count() < 1) {
+			result = "nothing found (" + uri.toString() + ")";
+		} else {
+			cursor.next();
+			result = cursor.getString(0);
+		}
+		return result;
 	}
 
 	private Drawable getIconForUri(Uri uri, String type, Intent intent) {

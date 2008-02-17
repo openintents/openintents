@@ -52,7 +52,21 @@
 	<string name="todo">To do</string>
 	<string name="tags_view_tag">View</string>
 	<string name="no_tags">No tagged content found.</string>
-		
+
+    <string name="menu_package_add">Import</string>
+    <string name="menu_package_del">Unregister</string>
+    <string name="menu_package_list">Packages</string>
+    <string name="label_packages">Packages (%n)</string>
+    <string name="label_package_add">Enter URL</string>
+    <string name="button_ok">OK</string>
+    <string name="no_packages">No packages</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_title_package_add">Import</string>
+    <string name="dialog_message_package_add">Loading...</string>
+    <string name="dialog_title_package_del">Unregister</string>
+    <string name="dialog_message_package_del">Are you sure?</string>
+    		
 	<!-- Shopping Provider -->
 	<string name="shopping_list"><b>Shopping list</b></string>
 	<string name="new_item">New item</string>

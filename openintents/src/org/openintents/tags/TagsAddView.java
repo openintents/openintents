@@ -68,7 +68,7 @@ public class TagsAddView extends Activity {
 
 		if (mUri != null) {
 			RelativeLayout content = (RelativeLayout) findViewById(R.id.content);
-			mContentRow = new ContentListRow(this, new DirectoryRegister(this));
+			mContentRow = new ContentListRow(this);
 			RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
 			layout.addRule(RelativeLayout.ALIGN_WITH_PARENT_LEFT);
 			content.addView(mContentRow, layout);

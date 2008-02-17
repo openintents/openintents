@@ -18,7 +18,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents">
 
-	<uses-permission id="android.permission.READ_CONTACTS" />
+    <!-- required for ContentBrowserView (in order to view tagged people) -->
+	<uses-permission id="android.permission.READ_CONTACTS" android:name="android.permission.READ_CONTACTS"/>
 
 	<application android:icon="@drawable/openintents_icon">
 		<!-- Providers -->
@@ -28,21 +29,15 @@
 			android:authorities="org.openintents.tags" />
 		<provider android:name=".shopping.ShoppingProvider"
 			android:authorities="org.openintents.shopping" />
+		<provider android:name=".tags.content.ContentIndexProvider"
+			android:authorities="org.openintents.contentindices" />
 		
 
 		<provider android:name=".news.NewsProvider"
-			android:authorities="org.openintents.news" />		
-
-		<!-- 
-			<provider android:name=".tags.content.ContentIndexProvider"
-			android:authorities="org.openintents.contentindices" />			
-		-->
-		
-		
+			android:authorities="org.openintents.news" />						
 		<provider android:name=".hardware.HardwareProvider"
 			android:authorities="org.openintents.hardware" />
-
-			-->
+			
 		<!-- Main activity -->
 		<activity android:name=".main.OpenIntents"
 			android:label="@string/app_name">
@@ -89,7 +84,7 @@
 				<action android:name="org.openintents.action.TAG" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
-				<data android:name="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="org.openintents.action.TAG"
@@ -110,7 +105,7 @@
 		<!-- android:icon="@drawable/directory" -->
 		<activity android:name=".tags.content.ContentBrowserView"
 			android:label="@string/content_browser"
-			android:icon="@drawable/openintents_icon">
+			android:icon="@drawable/folder">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category
@@ -120,7 +115,7 @@
 				<action android:name="android.intent.action.VIEW" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
-				<data android:name="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
@@ -154,6 +149,23 @@
 				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 		</activity>
+
+		<activity android:name=".tags.content.PackageList">
+			<intent-filter>
+				<action android:name="android.intent.action.PICK" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/contentdirectory" />
+			</intent-filter>
+		</activity>
+		
+		<activity android:name=".tags.content.PackageAdd" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
 
 		<!-- Shopping activity -->
 		<activity android:name=".shopping.ShoppingView"
