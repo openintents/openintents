@@ -44,15 +44,12 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.OpenGLContext;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
 import android.view.Menu;
 import android.view.SubMenu;
-import android.view.View;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.Menu.Item;
 
 
@@ -91,11 +88,14 @@ public class OpenGLSensors extends Activity {
 	public boolean mUseCompass;
 	public boolean mUseOrientation;
 	
+	private GLSurfaceView mGLSurfaceView;
+	
     @Override
 	protected void onCreate(Bundle icicle)
     {
-        super.onCreate(icicle);     
-        setContentView(new GLView( getApplication() , this));
+        super.onCreate(icicle);   
+        mGLSurfaceView = new GLSurfaceView( getApplication() , this);
+        setContentView(mGLSurfaceView);
         
         // !! Very important !!
         // Before calling any of the Simulator data,
@@ -370,21 +370,34 @@ public class OpenGLSensors extends Activity {
     }
 }
 
-class GLView extends View
+class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
+	SurfaceHolder mHolder;
+	private GLThread mGLThread;
+	/*
+    private OpenGLContext   mGLContext;
+    */
+    private Cube            mCube;
+    private Pyramid         mPyramid;
+    private float           mAngle;
+    private long            mNextTime;
+    private boolean         mAnimate;
+    
 	private OpenGLSensors mOpenGLAccelerator; // needed to access sensor settings
 	
     /**
      * The View constructor is a good place to allocate our OpenGL context
      */
-    public GLView(Context context, OpenGLSensors newOpenGLAccelerator)
+    public GLSurfaceView(Context context, OpenGLSensors newOpenGLAccelerator)
     {
         super(context);
+        init();
+        mOpenGLAccelerator = newOpenGLAccelerator;
         
         /* 
          * Create an OpenGL|ES context. This must be done only once, an
-         * OpenGL contex is a somewhat heavy object.
-         */
+         * OpenGL context is a somewhat heavy object.
+         * /
         mGLContext = new OpenGLContext( OpenGLContext.DEPTH_BUFFER );
         mCube = new Cube();
         mPyramid = new Pyramid();
@@ -395,75 +408,110 @@ class GLView extends View
          * First, we need to get to the appropriate GL interface.
          * This is simply done by casting the GL context to either
          * GL10 or GL11.
-         */
+         * /
         GL10 gl = (GL10)(mGLContext.getGL());
 
         /*
          * Some one-time OpenGL initialization can be made here
          * probably based on features of this particular context
          */
-         gl.glHint(gl.GL_PERSPECTIVE_CORRECTION_HINT, gl.GL_FASTEST);
+         //gl.glHint(gl.GL_PERSPECTIVE_CORRECTION_HINT, gl.GL_FASTEST);
 
     }
     
-    /*
-     * Start the animation only once we're attached to a window
-     * @see android.view.View#onAttachedToWindow()
-     */
-    @Override
-    protected void onAttachedToWindow() {
-        mAnimate = true;
-        Message msg = mHandler.obtainMessage(INVALIDATE);
-        mNextTime = SystemClock.uptimeMillis();
-        mHandler.sendMessageAtTime(msg, mNextTime);
-        super.onAttachedToWindow();
-    }
-    
-    /*
-     * Make sure to stop the animation when we're no longer on screen,
-     * failing to do so will cause most of the view hierarchy to be
-     * leaked until the current process dies.
-     * @see android.view.View#onDetachedFromWindow()
-     */
-    @Override
-    protected void onDetachedFromWindow() {
-        mAnimate = false;
-        super.onDetachedFromWindow();
+    private void init() {
+        // Install a SurfaceHolder.Callback so we get notified when the
+        // underlying surface is created and destroyed 
+        mHolder = getHolder();
+        mHolder.addCallback(this);
     }
 
-    /**
-     * Draw the view content
-     * 
-     * @see android.view.View#onDraw(android.graphics.Canvas)
-     */
-    @Override
-    protected void onDraw(Canvas canvas) {
-    	if (true) {
-        /*
-         * First, we need to get to the appropriate GL interface.
-         * This is simply done by casting the GL context to either
-         * GL10 or GL11.
-         */
-        GL10 gl = (GL10)(mGLContext.getGL());
+    public void surfaceCreated(SurfaceHolder holder) {
+        // The Surface has been created, start our drawing thread.
+        mGLThread = new GLThread();
+        mGLThread.start();
+    }
+
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        // Surface will be destroyed when we return
+        mGLThread.requestExitAndWait();
+        mGLThread = null;
+    }
+
+    public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
+        // Surface size or format has changed. This should not happen in this
+        // example.
+        mGLThread.onWindowResize(w, h);
+    }
+    
+ // ----------------------------------------------------------------------
+
+    class GLThread extends Thread {
+        private boolean mDone;
+        private int mWidth;
+        private int mHeight;
         
-        /*
-         * Before we can issue GL commands, we need to make sure all
-         * native drawing commands are completed. Simply call
-         * waitNative() to accomplish this. Once this is done, no native
-         * calls should be issued.
-         */
-        mGLContext.waitNative(canvas, this);
-        
-            int w = getWidth();
-            int h = getHeight();
+        GLThread() {
+            super();
+            mDone = false;
+            mWidth = 0;
+            mHeight = 0;
+            mCube = new Cube();
+            mPyramid = new Pyramid();
+        }
+    
+        @Override
+        public void run() {
+            /* 
+             * Create an OpenGL|ES context. This must be done only once, an
+             * OpenGL context is a somewhat heavy object.
+             */
+            OpenGLContext glc = new OpenGLContext( OpenGLContext.DEPTH_BUFFER );
+            
+            /*
+             * Before we can issue GL commands, we need to make sure 
+             * the context is current and bound to a surface.
+             */
+            SurfaceHolder holder = mHolder;
+            glc.makeCurrent(holder);
+            
+            /*
+             * First, we need to get to the appropriate GL interface.
+             * This is simply done by casting the GL context to either
+             * GL10 or GL11.
+             */
+            GL10 gl = (GL10)(glc.getGL());
 
             /*
-             * Set the viewport. This doesn't have to be done each time
-             * draw() is called. Typically this is called when the view
-             * is resized.
+             * Some one-time OpenGL initialization can be made here
+             * probably based on features of this particular context
              */
+             gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
 
 
+            // This is our main acquisition thread's loop, we go until
+            // asked to quit.
+            while (!mDone) {
+                // Update the asynchronous state (window size, key events)
+                int w, h;
+                synchronized(this) {
+                    w = mWidth;
+                    h = mHeight;
+                }
+
+                /* draw a frame here */
+                drawFrame(gl, w, h);
+
+                /*
+                 * Once we're done with GL, we need to call post()
+                 */
+                glc.post();
+            }
+            
+            glc.makeCurrent((SurfaceHolder)null);
+        }
+        
+        private void drawFrame(GL10 gl, int w, int h) {
             gl.glViewport(0, 0, w, h);
         
             /*
@@ -471,18 +519,25 @@ class GLView extends View
              * each time we draw, but usualy a new projection needs to be set
              * when the viewport is resized.
              */
-             
+
             float ratio = (float)w / h;
             gl.glMatrixMode(GL10.GL_PROJECTION);
             gl.glLoadIdentity();
             gl.glFrustumf(-ratio, ratio, -1, 1, 2, 12);
 
             /*
-             * dithering is enabled by default in OpenGL, unfortunattely
-             * it has a significant impact on performace in software
-             * implementation. Often, it's better to just turn it off.
+             * By default, OpenGL enables features that improve quality
+             * but reduce performance. One might want to tweak that
+             * especially on software renderer.
              */
-             gl.glDisable(GL10.GL_DITHER);
+            gl.glDisable(GL10.GL_DITHER);
+            gl.glActiveTexture(GL10.GL_TEXTURE0);
+            gl.glBindTexture(GL10.GL_TEXTURE_2D, 0);
+            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
+            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+            gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_REPLACE);
 
             /*
              * Usually, the first thing one might want to do is to clear
@@ -493,6 +548,281 @@ class GLView extends View
              */
 
             gl.glClearColor(1,1,1,1);
+            gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+
+            /*
+             * Now we're ready to draw some 3D object
+             */
+
+            gl.glMatrixMode(GL10.GL_MODELVIEW);
+            gl.glLoadIdentity();
+            
+            gl.glTranslatef(0, 0, -3.0f);
+            gl.glScalef(0.5f, 0.5f, 0.5f);
+            
+            gl.glColor4f(0.7f, 0.7f, 0.7f, 1.0f);
+            gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
+            gl.glEnableClientState(gl.GL_COLOR_ARRAY);
+            gl.glEnable(gl.GL_CULL_FACE);
+            gl.glEnable(gl.GL_DEPTH_TEST);
+
+            //gl.glRotatef(mAngle,        0, 1, 0);
+            //gl.glRotatef(mAngle*0.25f,  1, 0, 0);
+            
+            float yaw = 0;
+            float pitch = 0;
+            float roll = 0;
+            
+            float compass_yaw = 0;
+            float compass_pitch = 0;
+            float compass_roll = 0;
+            
+            if (mOpenGLAccelerator.mUseOrientation) {
+            	// Using orientation sensor definitely is the 
+            	// easiest way to rotate things:
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ORIENTATION);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
+            	} catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}
+				// Assign yaw, pitch, and roll.
+				// Negative angles are used, because we have to
+				// "undo" the rotations that brought the mobile phone
+				// into its current position.
+				yaw = -val[0];
+				pitch = -val[1];
+				roll = -val[2];
+            }
+            
+            if (mOpenGLAccelerator.mUseAccelerometer) {
+            	// We can only let the pyramid point up,
+            	// but we can not obtain information about the yaw.
+            	
+            	// (strictly speaking, we can only adjust two of the three
+            	//  variables (yaw, pitch, and roll). Since the
+            	//  standard orientation is to point down (-z), we
+            	//  choose to calculate pitch and roll as the 
+            	//  deviation from that standard position.)
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ACCELEROMETER);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
+				} catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}
+				
+				// we can only adjust pitch and roll:
+				double r = Math.sqrt(val[0]*val[0] + val[2]*val[2]);
+				pitch = (float) - Math.toDegrees(Math.atan2(-val[1], r));
+				roll = (float) - Math.toDegrees(Math.atan2(val[0], -val[2]));	
+            }
+            
+            if (mOpenGLAccelerator.mUseCompass) {
+            	// We can only adjust the compass to point
+            	// along the magnetic field, but we can not
+            	// say where "up" is.
+            	// Since the expected standard orientation is
+            	// to point north (that is in +y direction),
+            	// we use the information to adjust 
+            	// compass_yaw and compass_pitch,
+            	// but we don't know compass_roll.
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_COMPASS);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
+	            } catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}	
+				// we can only adjust yaw and pitch:
+				//double r = Math.sqrt(val[0]*val[0] + val[1]*val[1]);
+				//compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], r));
+				//compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], val[1]));	
+				double r = Math.sqrt(val[1]*val[1] + val[2]*val[2]);
+				compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], r));	
+	            compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], val[1]));
+			}
+            
+            if (mOpenGLAccelerator.mUseAccelerometer 
+            		&& mOpenGLAccelerator.mUseCompass) {
+				// If we use both sensors, we could use the 
+            	// compass orientation to fix the yaw of the accelerometer
+            	// information.
+            	
+            	// TODO Fix accelerometer yaw using compass direction.
+            }
+            
+			// Now perform the rotation:
+			gl.glRotatef((int) roll, 0, 1, 0);
+			gl.glRotatef((int) pitch, 1, 0, 0);
+			gl.glRotatef((int) yaw, 0, 0, -1);
+
+			//mCube.draw(gl);
+            
+			if (mOpenGLAccelerator.mUseAccelerometer
+					|| mOpenGLAccelerator.mUseOrientation) {
+				// draw the pyramid
+				mPyramid.draw(gl);
+			}
+			
+            if (mOpenGLAccelerator.mUseCompass) {
+            	// Plot the compass on top of the pyramid:
+                gl.glTranslatef(0, 0, 1.0f);
+                
+                // Compass coordinates are given with respect
+                // to the phone, not with respect to the pyramid.
+                // So we first have to undo the rotations from above:
+                gl.glRotatef((int) -yaw, 0, 0, -1);
+                gl.glRotatef((int) -pitch, 1, 0, 0);
+    			gl.glRotatef((int) -roll, 0, 1, 0);
+    			
+                // Now we perform the compass rotations:
+                gl.glRotatef((int) compass_roll, 0, 1, 0); // should be 0
+                gl.glRotatef((int) compass_pitch, 1, 0, 0);
+                gl.glRotatef((int) compass_yaw, 0, 0, -1);
+                
+                gl.glScalef(0.1f, 0.25f, 0.1f);
+                
+	            // Draw the compass
+	            gl.glTranslatef(0, 1f, 0);
+	            mCube.drawColor(gl, 1,0,0);
+	            gl.glTranslatef(0, -2f, 0);
+	            mCube.drawColor(gl, 1,1,1);
+            }
+            //mAngle += 1.2f;
+            //mAngle += 12f;
+
+        }
+
+        public void onWindowResize(int w, int h) {
+            synchronized(this) {
+                mWidth = w;
+                mHeight = h;
+            }
+        }
+        
+        public void requestExitAndWait() {
+            // don't call this from GLThread thread or it a guaranteed
+            // deadlock!
+            mDone = true;
+            try {
+                join();
+            } catch (InterruptedException ex) { }
+        }
+    }
+    
+    /*
+     * Start the animation only once we're attached to a window
+     * @see android.view.View#onAttachedToWindow()
+     */
+    /*
+    @Override
+    protected void onAttachedToWindow() {
+        mAnimate = true;
+        Message msg = mHandler.obtainMessage(INVALIDATE);
+        mNextTime = SystemClock.uptimeMillis();
+        mHandler.sendMessageAtTime(msg, mNextTime);
+        super.onAttachedToWindow();
+    }
+    */
+    
+    /*
+     * Make sure to stop the animation when we're no longer on screen,
+     * failing to do so will cause most of the view hierarchy to be
+     * leaked until the current process dies.
+     * @see android.view.View#onDetachedFromWindow()
+     */
+    /*
+    @Override
+    protected void onDetachedFromWindow() {
+        mAnimate = false;
+        super.onDetachedFromWindow();
+    }
+    */
+
+    /**
+     * Draw the view content
+     * 
+     * @see android.view.View#onDraw(android.graphics.Canvas)
+     */
+    /*
+    @Override
+    protected void onDraw(Canvas canvas) {
+    	if (true) {
+        / *
+         * First, we need to get to the appropriate GL interface.
+         * This is simply done by casting the GL context to either
+         * GL10 or GL11.
+         * /
+        GL10 gl = (GL10)(mGLContext.getGL());
+        
+        / *
+         * Before we can issue GL commands, we need to make sure all
+         * native drawing commands are completed. Simply call
+         * waitNative() to accomplish this. Once this is done, no native
+         * calls should be issued.
+         * /
+        mGLContext.waitNative();
+        mGLContext.makeCurrent(this);
+        
+            int w = getWidth();
+            int h = getHeight();
+
+            / *
+             * Set the viewport. This doesn't have to be done each time
+             * draw() is called. Typically this is called when the view
+             * is resized.
+             * /
+
+
+            gl.glViewport(0, 0, w, h);
+        
+            / *
+             * Set our projection matrix. This doesn't have to be done
+             * each time we draw, but usualy a new projection needs to be set
+             * when the viewport is resized.
+             * /
+             
+            float ratio = (float)w / h;
+            gl.glMatrixMode(GL10.GL_PROJECTION);
+            gl.glLoadIdentity();
+            gl.glFrustumf(-ratio, ratio, -1, 1, 2, 12);
+
+            /*
+             * dithering is enabled by default in OpenGL, unfortunattely
+             * it has a significant impact on performace in software
+             * implementation. Often, it's better to just turn it off.
+             * /
+             gl.glDisable(GL10.GL_DITHER);
+
+            /*
+             * Usually, the first thing one might want to do is to clear
+             * the screen. The most efficient way of doing this is to use
+             * glClear(). However we must make sure to set the scissor
+             * correctly first. The scissor is always specified in window
+             * coordinates:
+             * /
+
+            gl.glClearColor(1,1,1,1);
             gl.glEnable(gl.GL_SCISSOR_TEST);
             gl.glScissor(0, 0, w, h);
             gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT);
@@ -500,7 +830,7 @@ class GLView extends View
 
             /*
              * Now we're ready to draw some 3D object
-             */
+             * /
 
             gl.glMatrixMode(gl.GL_MODELVIEW);
             gl.glLoadIdentity();
@@ -644,8 +974,9 @@ class GLView extends View
          * Once we're done with GL, we need to flush all GL commands and
          * make sure they complete before we can issue more native
          * drawing commands. This is done by calling waitGL().
-         */
+         * /
         mGLContext.waitGL();
+        mGLContext.post();
     	}
     }
     
@@ -670,13 +1001,8 @@ class GLView extends View
             }
         }
     };
+    */
 
-    private OpenGLContext   mGLContext;
-    private Cube            mCube;
-    private Pyramid         mPyramid;
-    private float           mAngle;
-    private long            mNextTime;
-    private boolean         mAnimate;
 }
 
 
