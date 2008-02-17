@@ -95,6 +95,9 @@ public class OpenGLSensors extends Activity {
     {
         super.onCreate(icicle);   
         mGLSurfaceView = new GLSurfaceView( getApplication() , this);
+        
+        mGLSurfaceView.stopUseSensors();
+        
         setContentView(mGLSurfaceView);
         
         // !! Very important !!
@@ -111,6 +114,8 @@ public class OpenGLSensors extends Activity {
         useBestAvailableSensors();
 
         enableAllSensors();
+        
+        mGLSurfaceView.startUseSensors();
     }
     
     @Override
@@ -300,6 +305,10 @@ public class OpenGLSensors extends Activity {
 	 * Disable all sensors that we want to use.
 	 */
 	public void disableAllSensors() {
+		// First disable access to sensors 
+		// by GLSurfaceView
+		mGLSurfaceView.stopUseSensors();
+        
 		if (mUseAccelerometer)
 			Sensors.disableSensor(Sensors.SENSOR_ACCELEROMETER);
 		if (mUseCompass)
@@ -317,7 +326,11 @@ public class OpenGLSensors extends Activity {
 		if (mUseCompass)
 			Sensors.enableSensor(Sensors.SENSOR_COMPASS);
 		if (mUseOrientation)
-			Sensors.enableSensor(Sensors.SENSOR_ORIENTATION);		
+			Sensors.enableSensor(Sensors.SENSOR_ORIENTATION);	
+		
+		// Now enable access to sensors
+		// by GLSurfaceView
+		mGLSurfaceView.startUseSensors();
 	}
 	
 	/**
@@ -444,12 +457,34 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
         mGLThread.onWindowResize(w, h);
     }
     
+    public void startUseSensors() {
+    	if (mGLThread != null) {
+    		mGLThread.startUseSensors();
+    	}
+    }
+    
+    public void stopUseSensors() {
+    	if (mGLThread != null) {
+    		mGLThread.stopUseSensors();
+    	}
+    }
+    
  // ----------------------------------------------------------------------
 
     class GLThread extends Thread {
         private boolean mDone;
         private int mWidth;
         private int mHeight;
+        
+        float mYaw = 0;
+        float mPitch = 0;
+        float mRoll = 0;
+        
+        float mCompassYaw = 0;
+        float mCompassPitch = 0;
+        float mCompassRoll = 0;
+        
+        private boolean mUseSensors;
         
         GLThread() {
             super();
@@ -458,6 +493,7 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             mHeight = 0;
             mCube = new Cube();
             mPyramid = new Pyramid();
+            mUseSensors = true;
         }
     
         @Override
@@ -569,112 +605,17 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             //gl.glRotatef(mAngle,        0, 1, 0);
             //gl.glRotatef(mAngle*0.25f,  1, 0, 0);
             
-            float yaw = 0;
-            float pitch = 0;
-            float roll = 0;
-            
-            float compass_yaw = 0;
-            float compass_pitch = 0;
-            float compass_roll = 0;
-            
-            if (mOpenGLAccelerator.mUseOrientation) {
-            	// Using orientation sensor definitely is the 
-            	// easiest way to rotate things:
-            	
-            	// First get the sensor values
-	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ORIENTATION);
-	            final int num = 3; // we known that there are 3 values.
-				float[] val = new float[num];
-				try {
-					Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
-            	} catch (IllegalStateException e) {
-					// Currently not enabled:
-					val[0] = 0;
-					val[1] = 0;
-					val[2] = 0;
-				}
-				// Assign yaw, pitch, and roll.
-				// Negative angles are used, because we have to
-				// "undo" the rotations that brought the mobile phone
-				// into its current position.
-				yaw = -val[0];
-				pitch = -val[1];
-				roll = -val[2];
-            }
-            
-            if (mOpenGLAccelerator.mUseAccelerometer) {
-            	// We can only let the pyramid point up,
-            	// but we can not obtain information about the yaw.
-            	
-            	// (strictly speaking, we can only adjust two of the three
-            	//  variables (yaw, pitch, and roll). Since the
-            	//  standard orientation is to point down (-z), we
-            	//  choose to calculate pitch and roll as the 
-            	//  deviation from that standard position.)
-            	
-            	// First get the sensor values
-	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ACCELEROMETER);
-	            final int num = 3; // we known that there are 3 values.
-				float[] val = new float[num];
-				try {
-					Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
-				} catch (IllegalStateException e) {
-					// Currently not enabled:
-					val[0] = 0;
-					val[1] = 0;
-					val[2] = 0;
-				}
-				
-				// we can only adjust pitch and roll:
-				double r = Math.sqrt(val[0]*val[0] + val[2]*val[2]);
-				pitch = (float) - Math.toDegrees(Math.atan2(-val[1], r));
-				roll = (float) - Math.toDegrees(Math.atan2(val[0], -val[2]));	
-            }
-            
-            if (mOpenGLAccelerator.mUseCompass) {
-            	// We can only adjust the compass to point
-            	// along the magnetic field, but we can not
-            	// say where "up" is.
-            	// Since the expected standard orientation is
-            	// to point north (that is in +y direction),
-            	// we use the information to adjust 
-            	// compass_yaw and compass_pitch,
-            	// but we don't know compass_roll.
-            	
-            	// First get the sensor values
-	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_COMPASS);
-	            final int num = 3; // we known that there are 3 values.
-				float[] val = new float[num];
-				try {
-					Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
-	            } catch (IllegalStateException e) {
-					// Currently not enabled:
-					val[0] = 0;
-					val[1] = 0;
-					val[2] = 0;
-				}	
-				// we can only adjust yaw and pitch:
-				//double r = Math.sqrt(val[0]*val[0] + val[1]*val[1]);
-				//compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], r));
-				//compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], val[1]));	
-				double r = Math.sqrt(val[1]*val[1] + val[2]*val[2]);
-				compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], r));	
-	            compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], val[1]));
-			}
-            
-            if (mOpenGLAccelerator.mUseAccelerometer 
-            		&& mOpenGLAccelerator.mUseCompass) {
-				// If we use both sensors, we could use the 
-            	// compass orientation to fix the yaw of the accelerometer
-            	// information.
-            	
-            	// TODO Fix accelerometer yaw using compass direction.
+            synchronized(this) {
+            	if (mUseSensors)
+            	{
+            		readSensors();
+            	}
             }
             
 			// Now perform the rotation:
-			gl.glRotatef((int) roll, 0, 1, 0);
-			gl.glRotatef((int) pitch, 1, 0, 0);
-			gl.glRotatef((int) yaw, 0, 0, -1);
+			gl.glRotatef((int) mRoll, 0, 1, 0);
+			gl.glRotatef((int) mPitch, 1, 0, 0);
+			gl.glRotatef((int) mYaw, 0, 0, -1);
 
 			//mCube.draw(gl);
             
@@ -691,14 +632,14 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 // Compass coordinates are given with respect
                 // to the phone, not with respect to the pyramid.
                 // So we first have to undo the rotations from above:
-                gl.glRotatef((int) -yaw, 0, 0, -1);
-                gl.glRotatef((int) -pitch, 1, 0, 0);
-    			gl.glRotatef((int) -roll, 0, 1, 0);
+                gl.glRotatef((int) -mYaw, 0, 0, -1);
+                gl.glRotatef((int) -mPitch, 1, 0, 0);
+    			gl.glRotatef((int) -mRoll, 0, 1, 0);
     			
                 // Now we perform the compass rotations:
-                gl.glRotatef((int) compass_roll, 0, 1, 0); // should be 0
-                gl.glRotatef((int) compass_pitch, 1, 0, 0);
-                gl.glRotatef((int) compass_yaw, 0, 0, -1);
+                gl.glRotatef((int) mCompassRoll, 0, 1, 0); // should be 0
+                gl.glRotatef((int) mCompassPitch, 1, 0, 0);
+                gl.glRotatef((int) mCompassYaw, 0, 0, -1);
                 
                 gl.glScalef(0.1f, 0.25f, 0.1f);
                 
@@ -712,6 +653,114 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             //mAngle += 12f;
 
         }
+
+        public void stopUseSensors() {
+        	synchronized (this) {
+        		mUseSensors = false;
+        	}
+        }
+        
+        public void startUseSensors() {
+        	synchronized (this) {
+        		mUseSensors = true;
+        	}
+        }
+        
+		public void readSensors() {
+			if (mOpenGLAccelerator.mUseOrientation) {
+            	// Using orientation sensor definitely is the 
+            	// easiest way to rotate things:
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ORIENTATION);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
+            	} catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}
+				// Assign mYaw, mPitch, and mRoll.
+				// Negative angles are used, because we have to
+				// "undo" the rotations that brought the mobile phone
+				// into its current position.
+				mYaw = -val[0];
+				mPitch = -val[1];
+				mRoll = -val[2];
+            }
+            
+            if (mOpenGLAccelerator.mUseAccelerometer) {
+            	// We can only let the pyramid point up,
+            	// but we can not obtain information about the mYaw.
+            	
+            	// (strictly speaking, we can only adjust two of the three
+            	//  variables (mYaw, mPitch, and mRoll). Since the
+            	//  standard orientation is to point down (-z), we
+            	//  choose to calculate mPitch and mRoll as the 
+            	//  deviation from that standard position.)
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_ACCELEROMETER);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
+				} catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}
+				
+				// we can only adjust mPitch and mRoll:
+				double r = Math.sqrt(val[0]*val[0] + val[2]*val[2]);
+				mPitch = (float) - Math.toDegrees(Math.atan2(-val[1], r));
+				mRoll = (float) - Math.toDegrees(Math.atan2(val[0], -val[2]));	
+            }
+            
+            if (mOpenGLAccelerator.mUseCompass) {
+            	// We can only adjust the compass to point
+            	// along the magnetic field, but we can not
+            	// say where "up" is.
+            	// Since the expected standard orientation is
+            	// to point north (that is in +y direction),
+            	// we use the information to adjust 
+            	// mCompassYaw and mCompassPitch,
+            	// but we don't know mCompassRoll.
+            	
+            	// First get the sensor values
+	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_COMPASS);
+	            final int num = 3; // we known that there are 3 values.
+				float[] val = new float[num];
+				try {
+					Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
+	            } catch (IllegalStateException e) {
+					// Currently not enabled:
+					val[0] = 0;
+					val[1] = 0;
+					val[2] = 0;
+				}	
+				// we can only adjust mYaw and mPitch:
+				//double r = Math.sqrt(val[0]*val[0] + val[1]*val[1]);
+				//mCompassPitch = (float) - Math.toDegrees(Math.atan2(-val[2], r));
+				//mCompassYaw = (float) - Math.toDegrees(Math.atan2(-val[0], val[1]));	
+				double r = Math.sqrt(val[1]*val[1] + val[2]*val[2]);
+				mCompassYaw = (float) - Math.toDegrees(Math.atan2(-val[0], r));	
+	            mCompassPitch = (float) - Math.toDegrees(Math.atan2(-val[2], val[1]));
+			}
+            
+            if (mOpenGLAccelerator.mUseAccelerometer 
+            		&& mOpenGLAccelerator.mUseCompass) {
+				// If we use both sensors, we could use the 
+            	// compass orientation to fix the mYaw of the accelerometer
+            	// information.
+            	
+            	// TODO Fix accelerometer mYaw using compass direction.
+            }
+		}
 
         public void onWindowResize(int w, int h) {
             synchronized(this) {
@@ -847,13 +896,13 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             //gl.glRotatef(mAngle,        0, 1, 0);
             //gl.glRotatef(mAngle*0.25f,  1, 0, 0);
             
-            float yaw = 0;
-            float pitch = 0;
-            float roll = 0;
+            float mYaw = 0;
+            float mPitch = 0;
+            float mRoll = 0;
             
-            float compass_yaw = 0;
-            float compass_pitch = 0;
-            float compass_roll = 0;
+            float mCompassYaw = 0;
+            float mCompassPitch = 0;
+            float mCompassRoll = 0;
             
             if (mOpenGLAccelerator.mUseOrientation) {
             	// Using orientation sensor definitely is the 
@@ -865,23 +914,23 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 				float[] val = new float[num];
 				Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
 
-				// Assign yaw, pitch, and roll.
+				// Assign mYaw, mPitch, and mRoll.
 				// Negative angles are used, because we have to
 				// "undo" the rotations that brought the mobile phone
 				// into its current position.
-				yaw = -val[0];
-				pitch = -val[1];
-				roll = -val[2];
+				mYaw = -val[0];
+				mPitch = -val[1];
+				mRoll = -val[2];
             }
             
             if (mOpenGLAccelerator.mUseAccelerometer) {
             	// We can only let the pyramid point up,
-            	// but we can not obtain information about the yaw.
+            	// but we can not obtain information about the mYaw.
             	
             	// (strictly speaking, we can only adjust two of the three
-            	//  variables (yaw, pitch, and roll). Since the
+            	//  variables (mYaw, mPitch, and mRoll). Since the
             	//  standard orientation is to point down (-z), we
-            	//  choose to calculate pitch and roll as the 
+            	//  choose to calculate mPitch and mRoll as the 
             	//  deviation from that standard position.)
             	
             	// First get the sensor values
@@ -890,10 +939,10 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 				float[] val = new float[num];
 				Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
 				
-				// we can only adjust pitch and roll:
+				// we can only adjust mPitch and mRoll:
 				double r = Math.sqrt(val[0]*val[0] + val[2]*val[2]);
-				pitch = (float) - Math.toDegrees(Math.atan2(-val[1], r));
-				roll = (float) - Math.toDegrees(Math.atan2(val[0], -val[2]));	
+				mPitch = (float) - Math.toDegrees(Math.atan2(-val[1], r));
+				mRoll = (float) - Math.toDegrees(Math.atan2(val[0], -val[2]));	
             }
             
             if (mOpenGLAccelerator.mUseCompass) {
@@ -903,8 +952,8 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             	// Since the expected standard orientation is
             	// to point north (that is in +y direction),
             	// we use the information to adjust 
-            	// compass_yaw and compass_pitch,
-            	// but we don't know compass_roll.
+            	// mCompassYaw and mCompassPitch,
+            	// but we don't know mCompassRoll.
             	
             	// First get the sensor values
 	            //int num = Sensors.getNumSensorValues(Sensors.SENSOR_COMPASS);
@@ -912,28 +961,28 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 				float[] val = new float[num];
 				Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
 					
-				// we can only adjust yaw and pitch:
+				// we can only adjust mYaw and mPitch:
 				//double r = Math.sqrt(val[0]*val[0] + val[1]*val[1]);
-				//compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], r));
-				//compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], val[1]));	
+				//mCompassPitch = (float) - Math.toDegrees(Math.atan2(-val[2], r));
+				//mCompassYaw = (float) - Math.toDegrees(Math.atan2(-val[0], val[1]));	
 				double r = Math.sqrt(val[1]*val[1] + val[2]*val[2]);
-				compass_yaw = (float) - Math.toDegrees(Math.atan2(-val[0], r));	
-	            compass_pitch = (float) - Math.toDegrees(Math.atan2(-val[2], val[1]));
+				mCompassYaw = (float) - Math.toDegrees(Math.atan2(-val[0], r));	
+	            mCompassPitch = (float) - Math.toDegrees(Math.atan2(-val[2], val[1]));
 			}
             
             if (mOpenGLAccelerator.mUseAccelerometer 
             		&& mOpenGLAccelerator.mUseCompass) {
 				// If we use both sensors, we could use the 
-            	// compass orientation to fix the yaw of the accelerometer
+            	// compass orientation to fix the mYaw of the accelerometer
             	// information.
             	
-            	// TODO Fix accelerometer yaw using compass direction.
+            	// TODO Fix accelerometer mYaw using compass direction.
             }
             
 			// Now perform the rotation:
-			gl.glRotatef((int) roll, 0, 1, 0);
-			gl.glRotatef((int) pitch, 1, 0, 0);
-			gl.glRotatef((int) yaw, 0, 0, -1);
+			gl.glRotatef((int) mRoll, 0, 1, 0);
+			gl.glRotatef((int) mPitch, 1, 0, 0);
+			gl.glRotatef((int) mYaw, 0, 0, -1);
 
 			//mCube.draw(gl);
             
@@ -950,14 +999,14 @@ class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 // Compass coordinates are given with respect
                 // to the phone, not with respect to the pyramid.
                 // So we first have to undo the rotations from above:
-                gl.glRotatef((int) -yaw, 0, 0, -1);
-                gl.glRotatef((int) -pitch, 1, 0, 0);
-    			gl.glRotatef((int) -roll, 0, 1, 0);
+                gl.glRotatef((int) -mYaw, 0, 0, -1);
+                gl.glRotatef((int) -mPitch, 1, 0, 0);
+    			gl.glRotatef((int) -mRoll, 0, 1, 0);
     			
                 // Now we perform the compass rotations:
-                gl.glRotatef((int) compass_roll, 0, 1, 0); // should be 0
-                gl.glRotatef((int) compass_pitch, 1, 0, 0);
-                gl.glRotatef((int) compass_yaw, 0, 0, -1);
+                gl.glRotatef((int) mCompassRoll, 0, 1, 0); // should be 0
+                gl.glRotatef((int) mCompassPitch, 1, 0, 0);
+                gl.glRotatef((int) mCompassYaw, 0, 0, -1);
                 
                 gl.glScalef(0.1f, 0.25f, 0.1f);
                 
