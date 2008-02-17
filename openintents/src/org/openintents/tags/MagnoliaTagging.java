@@ -146,7 +146,7 @@ public class  MagnoliaTagging extends Activity{
 		mTags = (ListView) findViewById(R.id.magnoliatagging_tags);
 		mTags.setOnItemClickListener(
 			new OnItemClickListener() {
-				@Override
+				
 				public void onItemClick(AdapterView parent, 
 						View v, int pos, long id) {
 					Cursor c = (Cursor) parent.obtainItem(pos);
