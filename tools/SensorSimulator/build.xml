@@ -1,0 +1,78 @@
+<?xml version="1.0" ?>
+<project name="FavoriteLocations" default="package">
+
+
+	<!-- The intermediates directory -->
+	<!-- Eclipse uses "bin" for its own output, so we do the same. -->
+	<property name="outdir" value="bin" />
+
+	<!-- No user servicable parts below. -->
+
+	<!-- Version number -->
+	<property name="version.num" value="0.1.3"/>
+	<buildnumber file="build.num"/>
+    <tstamp>
+		<format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+	</tstamp>
+
+    <!-- Input directories -->
+    <property name="srcdir" value="src" />
+
+    <!-- Output directories -->
+    <property name="outdir-classes" value="${outdir}/classes" />
+	
+	<!-- Output file -->
+	<property name="out-jar" value="${outdir}/sensorsimulator.jar" />
+    
+    <!-- Rules -->
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="dirs">
+    	<delete file="${out-jar}" />
+        <mkdir dir="${outdir}" />
+        <mkdir dir="${outdir-classes}" />
+    </target>
+	
+	<target name="clean">
+    	<delete file="${out-jar}" />
+        <delete dir="${outdir-classes}" />
+    </target>
+
+	<target name="clear_layout">
+		<echo>purging .bak files </echo>
+		<delete>
+			<fileset dir="." includes="**/*.bak"/>
+		</delete>
+	</target>
+	
+
+    <!-- Compile this project's .java files into .class files. -->
+    <target name="compile" depends="dirs">
+        <javac encoding="ascii" target="1.5" debug="true" extdirs=""
+                srcdir="src"
+                destdir="${outdir-classes}"
+				/>
+    </target>
+
+
+    <!-- Put the project's .class files into the output package file. -->
+    <target name="package" depends="compile">
+		<echo>Packaging java...</echo>
+		<manifest file="MANIFEST.MF">
+			<!-- attribute name="Built-By" value="${user.name}"/ -->
+			<attribute name="Main-Class" 
+				value="org.openintents.tools.sensorsimulator.SensorSimulator"/>
+			<attribute name="Implementation-Version" 
+				value="${version.num}-b${build.number}"/>   
+			<attribute name="Built-Date" value="${TODAY}"/>                 
+		</manifest>
+
+        <jar destfile="${out-jar}"
+            basedir="${outdir-classes}"
+            update="true"
+			manifest="MANIFEST.MF"
+			/>
+    </target>
+
+
+</project>
