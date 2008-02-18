@@ -10,11 +10,14 @@
 	<property name="source-dir" value="${release-dir}/openintents-source-${build-version}" />
 	<property name="binary-lib-dir" value="${binary-dir}/lib" />
 	<property name="binary-samples-dir" value="${binary-dir}/samples" />
-					
+	<property name="source-lib-dir" value="${source-dir}/lib" />
+						
 	<!-- (sub)project folders  -->
 	<property name="base-dir" value="." />
+	<property name="lib-dir" value="../lib" />
+	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
+	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="news-dir" value="../samples/newsreader" />
-	<property name="locations-dir" value="../samples/FavoriteLocations" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
 
 	<!-- standard lib file -->
@@ -24,9 +27,8 @@
 		name="help"
 		>
 		<echo>----------openintents.org buildscript v0.0.1</echo>
-		<echo>use release.$domainname to compile domainname</echo>
-		<echo>use release.appname to comile appname</echo>
-		<echo>use release for a full openintents release</echo>
+		<echo>use release for a full openintents release.</echo>
+		<echo>use release-zip for creating release zip-files.</echo>
 
 	</target>
 
@@ -74,54 +76,98 @@
 			file="${base-dir}/bin/openintents.apk"
 			todir="${binary-dir}"
 			/>
+		<!-- Copy lib to lib dir -->
+		<copy
+			file="${base-dir}/bin/openintents-lib.jar"
+			todir="${lib-dir}"
+			/>
+		<!-- Copy lib to binary release -->
 		<copy
 			file="${base-dir}/bin/openintents-lib.jar"
 			tofile="${binary-lib-file}"
 			/>
 		<copy
-			file="${base-dir}/bin/openintents-lib.jar"
-			todir="${source-lib-dir}"
+			file="${lib-dir}/readme.txt"
+			todir="${binary-lib-dir}"
 			/>
-
-			
-	</target>
-
-	<target name="News"
-		depends="OpenIntents"
-		>
-		<echo>------------------------------news.package----------------------</echo>
-		<ant
-			dir="${news-root}"
-			antfile="openintents-news.xml"
-			target="package"
-		>
-			<property name="openintents-jar" value="${release-jar}" />
-		</ant>
-		<copy
-			file="${news-root}/bin/OpenIntents Newsreader.apk"
-			todir="${release-dir}"
-			/>
-
+		<!-- Copy lib to source release -->
+		<copy todir="${source-lib-dir}">
+			<fileset dir=".">
+				<include name="${base-dir}/bin/openintents-lib.jar" />
+				<include name="${lib-dir}/readme.txt" />
+				<include name="${lib-dir}/readme_source.txt" />
+			</fileset>
+		</copy>
 	</target>
 
 
 	<target name="FavoriteLocations"
 		depends="OpenIntents"
 		>
-		<echo>------------------------------locations.package----------------------</echo>
+		<echo>------------------------------FavoriteLocations----------------------</echo>
+		<!-- Use most recent lib file -->
+		<mkdir dir="${favoritelocations-dir}/lib"/>
+		<copy
+			file="${binary-lib-file}"
+			todir="${favoritelocations-dir}/lib"
+			/>
+		<!-- Compile -->
 		<ant
-			dir="${locations-root}"
-			antfile="openintents-locations.xml"
+			dir="${favoritelocations-dir}"
+			antfile="build.xml"
 			target="package"
 			>
-			<property name="openintents-jar" value="${release-jar}" />
 		</ant>
-		<copy
-			file="${locations-root}/bin/OpenIntents-favoriteLocations.apk"
-			todir="${release-dir}"
-			/>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-samples-dir}" flatten="true">
+			<fileset dir="${favoritelocations-dir}">
+				<include name="bin/FavoriteLocations.apk" />
+				<include name="readme_favoriteLocations.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/samples/FavoriteLocations">
+		    <fileset dir="${favoritelocations-dir}">
+		    	<exclude name="**/bin/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+	</target>	
 
-	</target>
+	
+	<target name="OpenGLSensors"
+		depends="OpenIntents"
+		>
+		<echo>------------------------------OpenGLSensors----------------------</echo>
+		<!-- Use most recent lib file -->
+		<mkdir dir="${openglsensors-dir}/lib"/>
+		<copy
+			file="${binary-lib-file}"
+			todir="${openglsensors-dir}/lib"
+			/>
+		<!-- Compile -->
+		<ant
+			dir="${openglsensors-dir}"
+			antfile="build.xml"
+			target="package"
+			>
+		</ant>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-samples-dir}" flatten="true">
+			<fileset dir="${openglsensors-dir}">
+				<include name="bin/OpenGLSensors.apk" />
+				<include name="readme_OpenGLSensors.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/samples/OpenGLSensors">
+		    <fileset dir="${openglsensors-dir}">
+		    	<exclude name="**/bin/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+	</target>	
+
 
 	<target name="PresentPicker"
 		depends="OpenIntents"
@@ -141,14 +187,14 @@
 			>
 		</ant>
 		<!-- Copy to binary release -->
-		<copy todir="${binary-samples-dir}">
-			<fileset>
-				<include name="${presentpicker-dir}/bin/PresentPicker.apk" />
-				<include name="${presentpicker-dir}/readme_PresentPicker.txt" />				
+		<copy todir="${binary-samples-dir}" flatten="true">
+			<fileset dir="${presentpicker-dir}">
+				<include name="bin/PresentPicker.apk" />
+				<include name="readme_PresentPicker.txt" />				
 			</fileset>
 		</copy>
 		<!-- Copy to source release -->
-		<copy todir="${source-dir}/PresentPicker">
+		<copy todir="${source-dir}/samples/PresentPicker">
 		    <fileset dir="${presentpicker-dir}">
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
@@ -156,12 +202,17 @@
 		</copy>
 	</target>	
 
+	<!-- Release -->
 	<target
 		name="release"		
-		depends="PresentPicker"
+		depends="
+			FavoriteLocations,
+			OpenGLSensors,
+			PresentPicker"
 		>
 	</target>
 	
+	<!-- Zip the release directories -->
 	<target 
 		name="release-zip"
 		depends="release">
