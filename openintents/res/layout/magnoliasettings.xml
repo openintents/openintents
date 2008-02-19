@@ -55,5 +55,11 @@
 			android:layout_height="wrap_content" 				
 			android:text="Import Tags from Magnolia" />
 		</TableRow>
+		<TableRow>
+		<Button android:id="@+id/magnoliasettings.createaccount"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" 				
+			android:text="Join Magnolia" />
+		</TableRow>
 	</TableLayout>
 </LinearLayout>

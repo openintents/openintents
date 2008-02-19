@@ -32,6 +32,7 @@ import android.content.Intent;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
@@ -100,6 +101,16 @@ public class MagnoliaSettings extends Activity {
 				importMagnoliaTags();
 			}
 		});
+		
+		button = (Button) findViewById(R.id.magnoliasettings_createaccount);
+		button.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				Uri joinUri = Uri.parse("http://ma.gnolia.com/join");
+				new Intent(Intent.VIEW_ACTION, joinUri);
+			}
+		});
+			
        
     }
     

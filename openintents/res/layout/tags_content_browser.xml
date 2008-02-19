@@ -31,7 +31,7 @@
 		android:layout_height="fill_parent"
 		android:layout_below="@id/tags_label"
 		android:layout_centerHorizontal="true"
-		android:listSelector="@drawable/tag_blue" 
+		android:listSelector="@drawable/background_orange" 
 		/>
 	<TextView android:id="@android:id/empty" android:layout_width="fill_parent"
 		android:layout_height="fill_parent"

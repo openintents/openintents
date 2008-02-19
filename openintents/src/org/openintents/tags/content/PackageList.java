@@ -112,8 +112,11 @@ public class PackageList extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		if (isEmbedded()) {
+		
+		if (getCallingActivity() != null) {
+			l.setSelection(position);
 			setResult(RESULT_OK, ((Cursor) l.getSelectedItem()).getString(2));
+			finish();
 		}
 	}
 

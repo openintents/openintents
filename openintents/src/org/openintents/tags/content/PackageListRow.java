@@ -43,6 +43,7 @@ public class PackageListRow extends RelativeLayout {
 
 	public void bindCursor(Cursor cursor) {
 		String packageName = cursor.getString(cursor.getColumnIndex("package"));
+		String name = cursor.getString(cursor.getColumnIndex("name"));
 
 		Drawable icon;
 		
@@ -55,6 +56,6 @@ public class PackageListRow extends RelativeLayout {
 		}
 		
 		mIcon.setImageDrawable(icon);
-		mName.setText(packageName);
+		mName.setText(name + " - " + packageName);
 	}
 }

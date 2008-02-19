@@ -34,10 +34,12 @@ import android.os.DeadObjectException;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.Menu.Item;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
 /**
  * View to show tags in a hierarchical manner.
@@ -151,22 +153,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag);
-		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content);
-		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag);
+		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.new_doc);
+		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content, R.drawable.window);
+		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag, R.drawable.trash);
 		
-		menu.add(0, MENU_PACKAGES, R.string.menu_package_list);
-
-		Intent intent = new Intent(null, Tags.CONTENT_URI);
-		intent.addCategory(Intent.ALTERNATIVE_CATEGORY);
-		menu.addIntentOptions(Menu.ALTERNATIVE, 0, new ComponentName(this,
-				ContentBrowserView.class), null, intent, 0, null);
-
-		
-		intent = new Intent(null, Tags.CONTENT_URI);
-		intent.addCategory(Intent.SELECTED_ALTERNATIVE_CATEGORY);
-		menu.addIntentOptions(Menu.ALTERNATIVE, 0, new ComponentName(this,
-				ContentBrowserView.class), null, intent, 0, null);
+		menu.add(0, MENU_PACKAGES, R.string.menu_package_list, R.drawable.advanced);
 
 		return true;
 	}
@@ -175,7 +166,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
 
-		boolean show = getListView().getSelectedItem() instanceof Cursor;
+		boolean show = getListView().getSelectedItemId() != Long.MIN_VALUE;
 		menu.get(1).setShown(show);
 		menu.get(2).setShown(show);
 		
@@ -241,6 +232,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 					Tags.QUERY_URI, data);
 			startActivity(intent);
 		}
+	}
+	
+	@Override
+	protected void onListItemClick(ListView listview, View view, int i, long l1) {
+		setSelection(i);
 	}
 	
 	public void run() {

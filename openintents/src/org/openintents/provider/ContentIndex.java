@@ -48,9 +48,10 @@ public class ContentIndex {
 
 		public static final String PACKAGE = "package";
 		public static final String URI = "uri";
+		private static final String NAME = "name";
 
 		public static final String[] PROJECTION_PACKAGENAMES = new String[] {
-				_ID, PACKAGE, URI };
+				_ID, PACKAGE, URI, NAME };
 
 	}
 
