@@ -23,6 +23,9 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Line2D;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 import javax.swing.JPanel;
@@ -270,6 +273,37 @@ class MobilePanel extends JPanel {
 			accelx = vec.x;
 			accely = vec.y;
 			accelz = vec.z;
+			
+			if (mSensorSimulator.mRealDeviceThinkpad.isSelected()) {
+				// We will use data directly from sensor instead:
+				
+				// Read data from file
+				String line = "";
+				try {
+				  //FileReader always assumes default encoding is OK!
+				  BufferedReader input =  new BufferedReader(
+						  new FileReader(mSensorSimulator.mRealDeviceThinkpadPath.getText()));
+				  try {
+					  line = input.readLine();
+				  } finally {
+				    input.close();
+				    //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.WHITE);
+				  }
+				}
+				catch (IOException ex){
+				  ex.printStackTrace();
+				  //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.RED);
+				  line = "Error reading file!";
+				}
+				
+				// Show the line content:
+				mSensorSimulator.mRealDeviceThinkpadOutputLabel.setText(line);
+
+				// Assign values
+				
+				// Create z-component (optional)
+				
+			}
 			
 			// Add random component:
 			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomAccelerometerText);

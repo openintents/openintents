@@ -165,6 +165,7 @@ public class SensorSimulator extends JPanel
     // Real device bridge
     JCheckBox mRealDeviceThinkpad;
     JTextField mRealDeviceThinkpadPath;
+    JLabel mRealDeviceThinkpadOutputLabel;
     
     // Action Commands:
     static String yawPitch = "yaw & pitch";
@@ -935,21 +936,30 @@ public class SensorSimulator extends JPanel
         mRealDeviceThinkpad = new JCheckBox("Use Thinkpad accelerometer");
         mRealDeviceThinkpad.setSelected(false);
         mRealDeviceThinkpad.addItemListener(this);
-        c3.gridwidth = 3;
+        c3.gridwidth = 1;
         c3.gridx = 0;
         realSensorBridgeFieldPane.add(mRealDeviceThinkpad, c3);
         
-        label = new JLabel("- Accelerator path: ", JLabel.LEFT);
+        /*
+        label = new JLabel("Path: ", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         realSensorBridgeFieldPane.add(label, c3);
+        */
         
-        mRealDeviceThinkpadPath = new JTextField(5);
-        mRealDeviceThinkpadPath.setText("/usr/...");
-        c3.gridx = 1;
+        mRealDeviceThinkpadPath = new JTextField(20);
+        mRealDeviceThinkpadPath.setText("/sys/devices/platform/hdaps/position");
+        //mRealDeviceThinkpadPath.setText("C:\\temp\\position.txt");
+        c3.gridx = 0;
+        c3.gridy++;
         realSensorBridgeFieldPane.add(mRealDeviceThinkpadPath, c3);
         
+        mRealDeviceThinkpadOutputLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 0;
+        c3.gridy++;
+        realSensorBridgeFieldPane.add(mRealDeviceThinkpadOutputLabel, c3);
+
         // Real sensor bridge ends
         
         // Add real sensor bridge field panel to settings
