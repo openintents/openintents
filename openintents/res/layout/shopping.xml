@@ -20,14 +20,16 @@
 	android:orientation="vertical" 
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:background="@drawable/shoppinglist01d">
+	>
+	<!-- android:background="@drawable/shoppinglist01d" -->
         
-    <Spinner android:id="@+id/spinner_listfilter"
+	<Spinner android:id="@+id/spinner_listfilter"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" />
-	
+		android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true" />
+        
 	<ListView android:id="@+id/list_items" 
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		/>
   		<!--  android:layout_weight="0"  -->
@@ -38,10 +40,12 @@
 		<EditText android:id="@+id/edittext_add_item"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dip"
 			android:layout_weight="1"/>
 		<Button android:id="@+id/button_add_item"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 				
 			android:text="@string/add" />
 	</LinearLayout>
+	
 </LinearLayout>

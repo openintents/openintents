@@ -20,18 +20,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
+<!--  TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:text="OpenIntents developer interface"
-    />
+    / -->
 <ListView android:id="@+id/activities"
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
 	    android:layout_weight="0"
 	    />
-<ImageButton android:id="@+id/about"
+<!--  ImageButton android:id="@+id/about"
     	android:layout_width="64px"
     	android:layout_height="64px"
-    	android:src="@drawable/openintents_icon" />
+    	android:src="@drawable/openintents_icon" / -->
 </LinearLayout>

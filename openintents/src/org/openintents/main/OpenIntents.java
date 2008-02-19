@@ -60,7 +60,8 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			"SensorSimulator",
 			"Content browser",
 			"Magnolia settings",
-			"Magnolia tagging"
+			"Magnolia tagging",
+			"About..."
 			};
 
 
@@ -75,9 +76,11 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 				android.R.layout.simple_list_item_1, activitylist));
 		list.setOnItemClickListener(this);
 		
+		/*
 		// Watch for button clicks.
         ImageButton aboutButton = (ImageButton)findViewById(R.id.about);
         aboutButton.setOnClickListener(mAboutListener);
+        */
 	}
 
 	public void onItemClick(AdapterView adapterView, View view, int position,
@@ -118,18 +121,23 @@ public class OpenIntents extends Activity implements OnItemClickListener {
 			startActivity(intent);
 			break;
 			
-
+		case 7:
+			intent = new Intent(OpenIntents.this, About.class);
+			startActivity(intent);
+			break;
+			
 		default:
 			throw new IllegalArgumentException("Unknown position " + position);
 		}
 
 	}
-	
+	/*
 	private OnClickListener mAboutListener = new OnClickListener() {
 		public void onClick(View v) {
 			Intent intent = new Intent(OpenIntents.this, About.class);
 			startActivity(intent);
 	    }
 	};
+	*/
 
 }

@@ -29,6 +29,7 @@ public class About extends Activity {
 		
 		super.onCreate(icicle);
 
+		/*
 		// from com.google.android.samples.app.TranslucentFancyActivity
 		
         // Have the system blur any windows behind this one.
@@ -42,6 +43,7 @@ public class About extends Activity {
         // TODO: Put value into resource colors.xml
         lp.tintBehind = 0x60000820;
         getWindow().setAttributes(lp);
+        */
         
 		setTheme(android.R.style.Theme_Dialog);
 		setContentView(R.layout.about);

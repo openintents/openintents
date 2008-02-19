@@ -39,9 +39,11 @@ import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
+import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -97,7 +99,13 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	 * the height of the list-box is limited in
 	 * checkListLength()
 	 */
-	private static final int mBottomPadding = 5;
+	private static final int mBottomPadding = 50;
+	
+	/**
+	 * Maximum number of lines on the screen.
+	 * (should be calculated later, for now hardcoded.)
+	 */
+	private static int mMaxListCount = 7;
 	
 	/**
 	 * Private members connected to Spinner ListFilter.
@@ -143,7 +151,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		//setTheme(android.R.style.Theme_Dialog);
 		//setTheme(android.R.style.Theme_Dark);
 		//setTheme(android.R.style.Theme_Black);
-		setContentView(R.layout.shopping);
+		//setTheme(android.R.style.Theme_Dark);
+        setContentView(R.layout.shopping);
 		
 		// Initialize the convenience functions:
 		Shopping.mContentResolver = getContentResolver();
@@ -206,10 +215,12 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			public void onItemSelected(AdapterView parent, View v,
 					int position, long id) {
 				fillItems();
+				checkListLength();
 			}
 			
 			public void onNothingSelected(AdapterView arg0) {
 				fillItems();
+				checkListLength();
 			}
 		});
         
@@ -269,6 +280,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				checkListLength();
 			}
 		});
+		
 	}
 	
 	/**
@@ -308,7 +320,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			
 			// Answer? 
 			// http://groups.google.com/group/android-developers/browse_frm/thread/3b2f4063a2221acb/36462ba1301a18c8
-			int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 9;
+			int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 4;
 			if (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE)
 			{
 				mListItems.setSelection(mListItems.getCount() - NUMBER_OF_ELEMENTS_BELOW_MIDDLE);
@@ -532,6 +544,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				nothingdeleted = false;
 			}
 		}
+		mCursorItems.commitUpdates();
+		mCursorItems.requery();
 		
 		if (nothingdeleted) {
 			// Show dialog:
@@ -541,7 +555,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				getString(R.string.no_items_marked), 
 				getString(R.string.ok),
 				false);
-			
+		} else {
+			checkListLength();
 		}
 	}
 
@@ -654,7 +669,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			Log.e(TAG, "missing shopping provider");
 			
 			mSpinnerListFilter.setAdapter(new ArrayAdapter(this,
-					android.R.layout.simple_list_item_1,
+					android.R.layout.simple_spinner_item,
 					new String[] { getString(R.string.no_shopping_provider) }));
 			return;
 		}
@@ -680,8 +695,8 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 			list.add(mCursorListFilter.getString(mStringListFilterNAME));
 		}
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, list);
-		adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+				android.R.layout.simple_spinner_item, list);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mSpinnerListFilter.setAdapter(adapter);
 		
 	}
@@ -748,7 +763,40 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		int bottomBackground = locBackground[1] + mLinearLayoutBackground.getBottom();
 		*/
 		// number of items in the list
-		int count = mListItems.getCount();
+		//int count = mListItems.getCount();
+		int count = mCursorItems.count();
+		
+		// Let's hardcode the number of items:
+		if (count <= mMaxListCount) {
+			mLayoutParamsItems.height 
+			= LinearLayout.LayoutParams.WRAP_CONTENT;
+			//mEditText.append("l");
+		} else {
+			//mEditText.append("m");
+			WindowManager w = getWindowManager(); 
+	        Display d = w.getDefaultDisplay(); 
+	        int width = d.getWidth(); 
+	        int height = d.getHeight(); 
+
+			mAllowedListHeight = 
+				//mLinearLayoutBackground.getHeight()
+				height
+				//- mListItems.getTop()
+				- mSpinnerListFilter.getHeight()
+				- mEditText.getHeight()
+				- mBottomPadding;
+			if (mAllowedListHeight < 0)
+			{
+				mAllowedListHeight = 0;
+			}
+			// we have to limit the height:
+			mLayoutParamsItems.height = mAllowedListHeight;
+		}
+		
+		mListItems.setLayoutParams(mLayoutParamsItems);
+		
+		
+		/*
 		
 		if (count < 1) {
 			mLayoutParamsItems.height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -788,6 +836,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		{
 			mListItems.setLayoutParams(mLayoutParamsItems);
 		};
+		*/
 		/*
 		int listLen = 
 		
