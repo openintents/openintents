@@ -4,7 +4,7 @@
 		name="Shopping List"
 		uri="content://org.openintents.shopping/lists/"
 		text-columns="name"
-		time-column="created_date">
+		time-column="created">
 		<intent
 			uri="{url}"
 			action="android.intent.action.VIEW"/>
@@ -13,7 +13,7 @@
 		name="Shopping Items"
 		uri="content://org.openintents.shopping/items/"
 		text-columns="name"
-		time-column="created_date">
+		time-column="created">
 		<intent
 			uri="{url}"
 			action="android.intent.action.VIEW"/>
