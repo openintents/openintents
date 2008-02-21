@@ -21,7 +21,7 @@
     <!-- required for ContentBrowserView (in order to view tagged people) -->
 	<uses-permission id="android.permission.READ_CONTACTS" android:name="android.permission.READ_CONTACTS"/>
 
-	<application android:icon="@drawable/openintents_icon">
+	<application android:icon="@drawable/openintents002a">
 		<!-- Providers -->
 		<provider android:name=".locations.LocationsProvider"
 			android:authorities="org.openintents.locations" />

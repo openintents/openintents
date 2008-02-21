@@ -357,11 +357,11 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_NEW_LIST, R.string.new_list)
+		menu.add(0, MENU_NEW_LIST, R.string.new_list, R.drawable.shoppinglistnew001b)
 			.setShortcut('0', 'n');
-		menu.add(0, MENU_CLEAN_UP_LIST, R.string.clean_up_list)
+		menu.add(0, MENU_CLEAN_UP_LIST, R.string.clean_up_list, R.drawable.shoppinglistcleanup001b)
 			.setShortcut('1', 'c');
-		menu.add(0, MENU_DELETE_LIST, R.string.delete_list)
+		menu.add(0, MENU_DELETE_LIST, R.string.delete_list, R.drawable.shoppinglistdelete001b)
 		.setShortcut('2', 'd');
 		
 		menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)

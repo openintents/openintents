@@ -39,6 +39,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.Resources;
 import android.content.DialogInterface.OnCancelListener;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -66,7 +67,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.TabHost.TabSpec;
 
 public class PresentPicker extends Activity {
 	
@@ -102,12 +105,15 @@ public class PresentPicker extends Activity {
     
     private EditText mSelection;
     
-    private Button mAddToShoppingList;
-    private Button mViewShoppingList;
+    // The following are complex Buttons
+    private LinearLayout mAddToShoppingList;
+    private LinearLayout mViewShoppingList;
 	
     private ImageButton mFirstItem; 
     
     private Dialog mAboutDialog;
+    
+    private TabHost mTabHost;
     
     /** Called when the activity is first created. */
     @Override
@@ -117,7 +123,28 @@ public class PresentPicker extends Activity {
         
 		// Initialize the convenience functions:
 		Shopping.mContentResolver = getContentResolver();
+		
+		Context context = this;
+        // Get the Resources object from our context
+        Resources res = context.getResources();
     
+		mTabHost = (TabHost)findViewById(R.id.tabhost);
+		mTabHost.setup();
+		
+		TabSpec tabspec = mTabHost.newTabSpec("Presentee");
+		tabspec.setIndicator("Presentee", res.getDrawable(R.drawable.present001b));
+		tabspec.setContent(R.id.content1);
+		mTabHost.addTab(tabspec);
+		
+		tabspec = mTabHost.newTabSpec("Results");
+		tabspec.setIndicator("Results", res.getDrawable(android.R.drawable.search_icon_default));
+		tabspec.setContent(R.id.content2);
+		mTabHost.addTab(tabspec);
+		
+		mTabHost.setCurrentTab(0);
+		
+		//if (true) return;
+		
 /*
         GridView g = (GridView) findViewById(R.id.myGrid);
         g.setAdapter(new ImageAdapter(this));
@@ -168,7 +195,7 @@ public class PresentPicker extends Activity {
         mMagicOracle = new Random();
         
         // Add progress handler
-        Button button = (Button) findViewById(R.id.search);
+        LinearLayout button = (LinearLayout) findViewById(R.id.search);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mCancelled = false;
@@ -176,7 +203,7 @@ public class PresentPicker extends Activity {
                 OnCancelListener cancelListener = new OnCancelListener() {
                     public void onCancel(DialogInterface dialog) {
                         mCancelled = true;
-                        //todo: remove before submiting
+                        //TODO: remove before submitting
 //                        Log.v("ProgressBarTest", "Canceled the progress bar.");
                     }
                 };
@@ -200,6 +227,8 @@ public class PresentPicker extends Activity {
                 // mPickListLen = mPickList.length;
                 // mPresentNum = 5;
                 
+                mTabHost.setCurrentTab(1);
+        		
                 removeButtons();
                 addQuestionButton();
                 mHandler.sendMessage(mHandler.obtainMessage(PROGRESS));
@@ -235,19 +264,24 @@ public class PresentPicker extends Activity {
         
         // Set personality list:
         mPersonality = (Spinner) findViewById(R.id.personality);
-        mPersonality.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, mPersonalityStrings));
+        ArrayAdapter<String> arrayadapter
+        	= new ArrayAdapter<String>(this,
+                    android.R.layout.simple_spinner_item, mPersonalityStrings);
+        arrayadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mPersonality.setAdapter(arrayadapter);
         
         // Set occasion list:
         mOccasion = (Spinner) findViewById(R.id.occasion);
-        mOccasion.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, mOccasionStrings));
+        arrayadapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, mOccasionStrings);
+        arrayadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mOccasion.setAdapter(arrayadapter);
         
         // Set edit text:
         mSelection = (EditText) findViewById(R.id.selection);
         
         // Add to shopping list button:
-        mAddToShoppingList = (Button) findViewById(R.id.button_add);
+        mAddToShoppingList = (LinearLayout) findViewById(R.id.button_add);
         mAddToShoppingList.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -275,7 +309,7 @@ public class PresentPicker extends Activity {
         });
         
         // View the shopping list by calling the activity:
-        mViewShoppingList = (Button) findViewById(R.id.button_view);
+        mViewShoppingList = (LinearLayout) findViewById(R.id.button_view);
         mViewShoppingList.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -373,6 +407,7 @@ public class PresentPicker extends Activity {
         bb.setText("?");
         bb.setTextSize(42);
         bb.setTextColor(0xffaa00aa);
+        bb.setPadding(0, 0, 0, 0);
         bb.setTypeface(Typeface.DEFAULT_BOLD_ITALIC);
         mLayout.addView(bb);
     }

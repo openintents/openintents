@@ -29,6 +29,7 @@
 	<string name="occasion">Occasion:</string>
 	<string name="search">Search</string>
 	<string name="selection">Your selection:</string>
+	<string name="selection_hint">Pick a present</string>
 	<string name="autocomplete_hint">Typing * will show all of your contacts.</string>
    
     <string name="about">About</string>
