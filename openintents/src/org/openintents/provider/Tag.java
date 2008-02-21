@@ -16,14 +16,18 @@
 
 package org.openintents.provider;
 
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.DeadObjectException;
 import android.provider.BaseColumns;
 
 /**
  * Definition for content provider related to tag.
- *
+ * 
  */
-public abstract class Tag {
+public class Tag {
 
 	public static final class Tags implements BaseColumns {
 		/**
@@ -82,13 +86,13 @@ public abstract class Tag {
 		 * 
 		 */
 		public static final String URI_1 = "uri_1";
-		
+
 		/**
 		 * Second URI of the relationship (usually the content).
 		 * 
 		 */
 		public static final String URI_2 = "uri_2";
-		
+
 		/**
 		 * The Uri to be tagged that the query is about.
 		 * 
@@ -122,14 +126,13 @@ public abstract class Tag {
 		public static final String URI = "uri";
 
 		/**
-		 * The type of the content, e.g TAG
-		 * null means CONTENT.
+		 * The type of the content, e.g TAG null means CONTENT.
 		 * <P>
 		 * Type: TEXT
 		 * </P>
 		 */
 		public static final String TYPE = "type";
-		
+
 		/**
 		 * The timestamp for when the note was created.
 		 * <P>
@@ -138,5 +141,61 @@ public abstract class Tag {
 		 */
 		public static final String CREATED_DATE = "created";
 
+	}
+
+	private Context mContext;
+
+	public Tag(Context context) {
+		mContext = context;
+	}
+
+	public void removeTag(String tag, String uri) {
+		try {
+			mContext.getContentResolver().getProvider(Tags.CONTENT_URI).delete(
+					Tags.CONTENT_URI, "uri_1 = ? AND uri_2 = ?",
+					new String[] { tag, uri });
+		} catch (DeadObjectException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void addTag(String tag, String uri) {
+		Intent intent = new Intent(org.openintents.OpenIntents.TAG_ACTION,
+				Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, tag).putExtra(
+				Tags.QUERY_URI, uri);
+		mContext.startActivity(intent);
+
+	}
+
+	/**
+	 * cursor over contentUriStrings is returned where the content is tagged
+	 * with the given tag.
+	 * 
+	 * @param tag
+	 * @param contentUri
+	 * @return
+	 */
+	public Cursor findTaggedContent(String tag, String contentUri) {
+		Cursor c = mContext.getContentResolver().query(Tags.CONTENT_URI,
+				new String[] { Tags._ID, Tags.URI_2 },
+				"content1.uri like ? and content2.uri like ?",
+				new String[] { tag, contentUri + "%" }, "content2.uri");
+		return c;
+	}
+
+	/**
+	 * cursor over tags with all tags for the given content is returned.
+	 * 
+	 * @param tag
+	 * @param contentUri
+	 * @return
+	 */
+	public Cursor findTags(String contentUri) {
+		Cursor c = mContext.getContentResolver().query(Tags.CONTENT_URI,
+				new String[] { Tags._ID, Tags.URI_1 }, "content2.uri = ?",
+				new String[] { contentUri }, "content1.uri");
+		return c;
 	}
 }

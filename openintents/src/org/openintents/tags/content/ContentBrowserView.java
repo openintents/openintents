@@ -19,6 +19,7 @@ package org.openintents.tags.content;
 import java.util.ArrayList;
 
 import org.openintents.R;
+import org.openintents.provider.Tag;
 import org.openintents.provider.ContentIndex.Dir;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
@@ -57,13 +58,13 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private static final int MENU_VIEW_CONTENT = 2;
 	private static final int MENU_REMOVE_TAG = 3;
 	private static final int MENU_PACKAGES = 4;
-	
+
 	protected static final int REQUEST_PICK = 1;
-	 
 
 	private AutoCompleteTextView mTagFilter;
 
 	private ListAdapter mTaggedContentAdapter;
+	private Tag mTags;
 
 	/**
 	 * Called when the activity is first created.
@@ -90,6 +91,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			}
 		});
 
+		mTags = new Tag(this);
 		fillDataTagFilter();
 		Thread t = new Thread(this);
 		t.start();
@@ -154,10 +156,14 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		super.onCreateOptionsMenu(menu);
 
 		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.new_doc);
-		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content, R.drawable.window);
-		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag, R.drawable.trash);
-		
-		menu.add(0, MENU_PACKAGES, R.string.menu_package_list, R.drawable.advanced);
+		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content,
+				R.drawable.window);
+		menu
+				.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag,
+						R.drawable.trash);
+
+		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
+				R.drawable.advanced);
 
 		return true;
 	}
@@ -169,20 +175,22 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		boolean show = getListView().getSelectedItemId() != Long.MIN_VALUE;
 		menu.get(1).setShown(show);
 		menu.get(2).setShown(show);
-		
+
 		return true;
 	}
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, Item item) {
 		super.onMenuItemSelected(featureId, item);
-		
+
 		String tag = mTagFilter.getText().toString();
 		Intent intent;
 		switch (item.getId()) {
 		case MENU_ADD_TAG:
-			// pick a directory, expect a content uri of the given directory as return value
-			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI.buildUpon().appendQueryParameter("q", "content").build());
+			// pick a directory, expect a content uri of the given directory as
+			// return value
+			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI.buildUpon()
+					.appendQueryParameter("q", "content").build());
 			startSubActivity(intent, REQUEST_PICK);
 			break;
 		case MENU_VIEW_CONTENT:
@@ -201,14 +209,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			break;
 		case MENU_REMOVE_TAG:
 			uri = ((Cursor) getListView().getSelectedItem()).getString(1);
-			try {
-				getContentResolver().getProvider(Tags.CONTENT_URI).delete(
-						Tags.CONTENT_URI, "uri_1 = ? AND uri_2 = ?",
-						new String[] { tag, uri });
-			} catch (DeadObjectException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			mTags.removeTag(tag, uri);
+
 			break;
 		case MENU_PACKAGES:
 			startActivity(new Intent(this, PackageList.class));
@@ -227,18 +229,15 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 		switch (requestCode) {
 		case REQUEST_PICK:
-			Intent intent = new Intent(org.openintents.OpenIntents.TAG_ACTION,
-					Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, tag).putExtra(
-					Tags.QUERY_URI, data);
-			startActivity(intent);
+			mTags.addTag(tag, data);
 		}
 	}
-	
+
 	@Override
 	protected void onListItemClick(ListView listview, View view, int i, long l1) {
 		setSelection(i);
 	}
-	
+
 	public void run() {
 		DirectoryRegister r = new DirectoryRegister(this);
 		Resources res = getResources();
@@ -247,9 +246,9 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			r.fromXML(res.openRawResource(R.raw.contacts));
 			r.fromXML(res.openRawResource(R.raw.notepad));
 			r.fromXML(res.openRawResource(R.raw.media));
-			r.fromXML(res.openRawResource(R.raw.shopping));	
+			r.fromXML(res.openRawResource(R.raw.shopping));
 		} catch (Exception e) {
-			e.printStackTrace();			
-		}		
+			e.printStackTrace();
+		}
 	}
 }
