@@ -1,25 +1,22 @@
 package org.openintents.news;
 
 
+
+
 import java.util.HashMap;
 
 import org.openintents.provider.News;
-import org.openintents.provider.Tag.Tags;
-
-
 
 import android.content.ContentProvider;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
-import android.database.sqlite.SQLiteOpenHelper;
-//import android.database.sqlite.SQliteOpenHelper;
-import android.content.UriMatcher;
 import android.content.ContentUris;
-import android.database.sqlite.SQLiteQueryBuilder;
-import android.content.Resources;
+import android.content.ContentValues;
+import android.content.UriMatcher;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -95,7 +92,7 @@ public class NewsProvider extends ContentProvider {
 				News.AtomFeeds.FEED_LINK_SELF+" STRING,"+
 				News.AtomFeeds.FEED_LINK_ALTERNATE+" STRING,"+
 				News.AtomFeeds.FEED_ICON+" STRING,"+
-				News.AtomFeeds.FEED_RIGHTS+" STRING,"+
+				News.AtomFeeds.FEED_RIGHTS+" STRING"+
 				");"
 			);
 
@@ -133,7 +130,89 @@ public class NewsProvider extends ContentProvider {
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// TODO Auto-generated method stub
+		Log.d(this.TAG,"ENTERING INSERT, uri>>"+uri+"<<");
+		//if there's nowhere to insert, we fail. if  there's no data to insert, we fail.
+		if (uri==null){
+			throw new IllegalArgumentException("uri and values must be specified");	
+		}
+		
+		String feedID;
+		int match=URL_MATCHER.match(uri);
+
+		switch (match)
+		{
+
+		case RSSFEED_ID:
+			feedID=uri.getPathSegments().get(1);
+			return mDB.delete(
+				"rssfeeds",
+				"_id="+feedID
+				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+				+ ')' : ""),
+				selectionArgs);
+			
+		case RSSFEEDS:
+			return mDB.delete(
+				"rssfeeds",
+				selection,
+				selectionArgs
+				);		
+			
+		case RSSFEED_CONTENT_ID:
+			feedID=uri.getPathSegments().get(1);
+			return mDB.delete(
+				"rssfeedcontents",
+				"_id="+feedID
+				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+				+ ')' : ""),
+				selectionArgs);
+
+			
+		case RSSFEED_CONTENTS:
+			return mDB.delete(
+				"rssfeedcontents",
+				selection,
+				selectionArgs
+				);			
+			
+		case ATOMFEED_ID:
+			feedID=uri.getPathSegments().get(1);
+			return mDB.delete(
+				"atomfeeds",
+				"_id="+feedID
+				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+				+ ')' : ""),
+				selectionArgs);
+
+		case ATOMFEEDS:
+			return mDB.delete(
+				"atomfeeds",
+				selection,
+				selectionArgs
+				);			
+			
+
+		case ATOMFEED_CONTENT_ID:
+			feedID=uri.getPathSegments().get(1);
+			return mDB.delete(
+				"atomfeedcontents",
+				"_id="+feedID
+				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+				+ ')' : ""),
+				selectionArgs);
+
+			
+
+		case ATOMFEED_CONTENTS:
+			return mDB.delete(
+				"atomfeedcontents",
+				selection,
+				selectionArgs
+				);
+			
+		}
+
+
 		return 0;
 	}
 
