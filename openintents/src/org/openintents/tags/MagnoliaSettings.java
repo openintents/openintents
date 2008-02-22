@@ -107,7 +107,8 @@ public class MagnoliaSettings extends Activity {
 
 			public void onClick(View arg0) {
 				Uri joinUri = Uri.parse("http://ma.gnolia.com/join");
-				new Intent(Intent.VIEW_ACTION, joinUri);
+				Intent intent = new Intent(Intent.VIEW_ACTION, joinUri);
+				startActivity(intent);
 			}
 		});
 			
