@@ -21,8 +21,9 @@
 	<RelativeLayout android:id="@+id/content" android:padding="5px"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
-		<ImageButton android:layout_width="24px"
-			android:layout_height="24px" 
+		<ImageButton android:id="@+id/tags_search_button"
+		    android:layout_width="48px"
+			android:layout_height="48px" 
 			android:scaleType="fitXY"
 			android:layout_alignParentTop="true"
 			android:layout_alignParentRight="true"
@@ -42,6 +43,7 @@
 			android:layout_height="wrap_content" 
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true" 
+			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_weight="1" >
 		</AutoCompleteTextView>
 		<Button android:id="@+id/tags_ok_button"

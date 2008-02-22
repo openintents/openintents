@@ -16,12 +16,14 @@
 
 package org.openintents.provider;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.DeadObjectException;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 /**
  * Definition for content provider related to tag.
@@ -143,6 +145,8 @@ public class Tag {
 
 	}
 
+	private static final String TAG = "Tag.java";
+
 	private Context mContext;
 
 	public Tag(Context context) {
@@ -161,13 +165,18 @@ public class Tag {
 
 	}
 
-	public void addTag(String tag, String uri) {
-		Intent intent = new Intent(org.openintents.OpenIntents.TAG_ACTION,
-				Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, tag).putExtra(
-				Tags.QUERY_URI, uri);
-		mContext.startActivity(intent);
+	public void insertTag(String tag, String content) {
+		ContentValues values = new ContentValues(2);
+		values.put(Tags.URI_1, tag);
+		values.put(Tags.URI_2, content);
 
+		try {
+			mContext.getContentResolver().insert(Tags.CONTENT_URI, values);
+		} catch (Exception e) {
+			Log.i(TAG, "insert failed", e);
+		}
 	}
+
 
 	/**
 	 * cursor over contentUriStrings is returned where the content is tagged
@@ -198,4 +207,23 @@ public class Tag {
 				new String[] { contentUri }, "content1.uri");
 		return c;
 	}
+
+	
+	/** 
+	 * start add tag activity.
+	 * Only useful, if tag or uri is null.
+	 * Consider using insertTag if you want to add the tag without user interaction.
+	 * 
+	 * @param tag
+	 * @param uri
+	 */
+	public void startAddTagActivity(String tag, String uri) {
+		Intent intent = new Intent(org.openintents.OpenIntents.TAG_ACTION,
+				Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, tag).putExtra(
+				Tags.QUERY_URI, uri);
+		mContext.startActivity(intent);
+
+	}
+
+
 }

@@ -192,8 +192,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		case MENU_ADD_TAG:
 			// pick a directory, expect a content uri of the given directory as
 			// return value
-			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI.buildUpon()
-					.appendQueryParameter("q", "content").build());
+			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI);
 			startSubActivity(intent, REQUEST_DIR_PICK);
 			break;
 		case MENU_VIEW_CONTENT:
@@ -246,7 +245,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		case REQUEST_CONTENT_PICK:
 			if (data != null) {
 				// data is the picked content
-				mTags.addTag(tag, data);
+				mTags.startAddTagActivity(tag, data);
 			}
 		}
 	}
