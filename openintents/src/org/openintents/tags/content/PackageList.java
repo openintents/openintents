@@ -78,7 +78,7 @@ public class PackageList extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(0, PACKAGE_ADD_ID, R.string.menu_package_add).setShortcut('3', 'i');
+		menu.add(0, PACKAGE_ADD_ID, R.string.menu_package_add, R.drawable.new_doc).setShortcut('3', 'i');
 		return true;
 	}
 
@@ -90,7 +90,7 @@ public class PackageList extends ListActivity {
 
 		if (haveItems) {
 			menu.add(Menu.SELECTED_ALTERNATIVE, PACKAGE_DEL_ID,
-					R.string.menu_package_del).setShortcut('5', 'u');
+					R.string.menu_package_del, R.drawable.trash).setShortcut('5', 'u');
 			menu.setDefaultItem(PACKAGE_ADD_ID);
 		}
 
@@ -152,6 +152,6 @@ public class PackageList extends ListActivity {
 	}
 
 	private void addPackage() {
-		startActivity(new Intent(Intent.INSERT_ACTION, getIntent().getData()));
+		startActivity(new Intent(this, PackageAdd.class));
 	}
 }
