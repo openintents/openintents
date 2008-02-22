@@ -24,6 +24,8 @@ import org.openintents.provider.ContentIndex.Dir;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -59,7 +61,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private static final int MENU_REMOVE_TAG = 3;
 	private static final int MENU_PACKAGES = 4;
 
-	protected static final int REQUEST_PICK = 1;
+	protected static final int REQUEST_DIR_PICK = 1;
+	protected static final int REQUEST_CONTENT_PICK = 2;
 
 	private AutoCompleteTextView mTagFilter;
 
@@ -191,7 +194,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			// return value
 			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI.buildUpon()
 					.appendQueryParameter("q", "content").build());
-			startSubActivity(intent, REQUEST_PICK);
+			startSubActivity(intent, REQUEST_DIR_PICK);
 			break;
 		case MENU_VIEW_CONTENT:
 			String uri = ((Cursor) getListView().getSelectedItem())
@@ -228,8 +231,23 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		String tag = mTagFilter.getText().toString();
 
 		switch (requestCode) {
-		case REQUEST_PICK:
-			mTags.addTag(tag, data);
+		case REQUEST_DIR_PICK:
+			if (data != null) {
+				// data is the picked content directory
+				Uri uri = Uri.parse(data);
+				Intent intent = new Intent(Intent.PICK_ACTION, uri);
+				if (getPackageManager().resolveActivity(intent, 0) != null) {
+					startSubActivity(intent, REQUEST_CONTENT_PICK);
+				} else {
+					AlertDialog.show(this, "info", 0, "no pick activity for " + data, "ok", true);
+				}
+			}
+			break;
+		case REQUEST_CONTENT_PICK:
+			if (data != null) {
+				// data is the picked content
+				mTags.addTag(tag, data);
+			}
 		}
 	}
 
