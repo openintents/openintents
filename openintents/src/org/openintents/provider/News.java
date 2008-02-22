@@ -1,11 +1,9 @@
 package org.openintents.provider;
 
-import android.net.Uri;
-import android.provider.BaseColumns;
-import android.*;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.provider.*;
+import android.net.Uri;
+import android.provider.BaseColumns;
 
 public abstract class News {
 
@@ -165,6 +163,11 @@ public abstract class News {
 
 
 	public static ContentResolver mContentResolver;
+
+
+	public static final String FEED_TYPE_RSS="RSS";
+	public static final String FEED_TYPE_ATOM="ATOM";
+
 	
 	public static Uri ins(ContentValues cv){
 		//return  new org.openintents.news.rss.RSSFeedProvider().insert(RSSFeeds.CONTENT_URI,cv);
@@ -173,5 +176,18 @@ public abstract class News {
 		//return new org.openintents.news.NewsProvider().insert(RSSFeeds.CONTENT_URI,cv);//works
 		return mContentResolver.insert(RSSFeeds.CONTENT_URI,cv);//works
 	}
+
+
+	public static Uri insert(Uri uri, ContentValues cv){
+
+		return mContentResolver.insert(uri,cv);
+		
+	}
+
+	public static int delete(Uri uri,String selection,String[] selectionArgs){
+
+		return mContentResolver.delete(uri,selection,selectionArgs);
+	}
+
 
 }
