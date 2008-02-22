@@ -163,6 +163,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.INSERT" />
                 <category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/contentdirectory" />
             </intent-filter>
         </activity>
         
