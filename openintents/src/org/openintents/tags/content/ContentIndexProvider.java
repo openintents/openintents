@@ -185,6 +185,8 @@ public class ContentIndexProvider extends
 	@Override
 	protected void bootstrapDatabase() {
 		super.bootstrapDatabase();
+		DatabaseHelper dbHelper = new DatabaseHelper();
+		dbHelper.onCreate(getDatabase());
 	}
 
 	@Override
