@@ -127,7 +127,7 @@
 
 		<activity android:name=".tags.TagsAddView"
 			android:label="@string/tags_add_tag" android:theme="@android:style/Theme.Dialog">
-			<intent-filter>
+			<intent-filter android:icon="@drawable/folder">			    
 				<action android:name="org.openintents.action.TAG" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
@@ -138,7 +138,7 @@
 				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 
-			<intent-filter>
+			<intent-filter android:icon="@drawable/folder">			    
 				<action android:name="android.intent.action.INSERT" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
