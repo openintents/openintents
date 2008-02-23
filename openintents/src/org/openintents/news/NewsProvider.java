@@ -130,8 +130,9 @@ public class NewsProvider extends ContentProvider {
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		Log.d(this.TAG,"ENTERING INSERT, uri>>"+uri+"<<");
-		//if there's nowhere to insert, we fail. if  there's no data to insert, we fail.
+		Log.d(this.TAG,"ENTERING DELETE, uri>>"+uri+"<<");
+		int res=0;
+		//if there's nowhere to delete, we fail. 
 		if (uri==null){
 			throw new IllegalArgumentException("uri and values must be specified");	
 		}
@@ -144,76 +145,76 @@ public class NewsProvider extends ContentProvider {
 
 		case RSSFEED_ID:
 			feedID=uri.getPathSegments().get(1);
-			return mDB.delete(
+			res =  mDB.delete(
 				"rssfeeds",
 				"_id="+feedID
 				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
 				+ ')' : ""),
 				selectionArgs);
-			
+			break;
 		case RSSFEEDS:
-			return mDB.delete(
+			res =  mDB.delete(
 				"rssfeeds",
 				selection,
 				selectionArgs
 				);		
-			
+			break;
 		case RSSFEED_CONTENT_ID:
 			feedID=uri.getPathSegments().get(1);
-			return mDB.delete(
+			res =  mDB.delete(
 				"rssfeedcontents",
 				"_id="+feedID
 				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
 				+ ')' : ""),
 				selectionArgs);
 
-			
+			break;
 		case RSSFEED_CONTENTS:
-			return mDB.delete(
+			res =  mDB.delete(
 				"rssfeedcontents",
 				selection,
 				selectionArgs
 				);			
-			
+			break;
 		case ATOMFEED_ID:
 			feedID=uri.getPathSegments().get(1);
-			return mDB.delete(
+			res =  mDB.delete(
 				"atomfeeds",
 				"_id="+feedID
 				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
 				+ ')' : ""),
 				selectionArgs);
-
+			break;
 		case ATOMFEEDS:
-			return mDB.delete(
+			res =  mDB.delete(
 				"atomfeeds",
 				selection,
 				selectionArgs
 				);			
 			
-
+			break;
 		case ATOMFEED_CONTENT_ID:
 			feedID=uri.getPathSegments().get(1);
-			return mDB.delete(
+			res =  mDB.delete(
 				"atomfeedcontents",
 				"_id="+feedID
 				+(!TextUtils.isEmpty(selection) ? " AND (" + selection
 				+ ')' : ""),
 				selectionArgs);
-
+			break;
 			
 
 		case ATOMFEED_CONTENTS:
-			return mDB.delete(
+			res =  mDB.delete(
 				"atomfeedcontents",
 				selection,
 				selectionArgs
 				);
-			
+			break;
 		}
 
-
-		return 0;
+		getContext().getContentResolver().notifyChange(uri, null);
+		return res;
 	}
 
 	@Override
