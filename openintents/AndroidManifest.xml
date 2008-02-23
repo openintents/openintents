@@ -170,15 +170,16 @@
 
 		<!-- Shopping activity -->
 		<activity android:name=".shopping.ShoppingView"
-			android:label="@string/shopping_list">
+			android:label="@string/shopping_list"
+			android:icon="@drawable/shoppinglist001b">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
 				<data
 					android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->
+				<!-- -->  <category
+					android:name="android.intent.category.LAUNCHER" />  <!--  -->
 			</intent-filter>
 		</activity>
 

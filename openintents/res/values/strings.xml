@@ -99,6 +99,12 @@
 	<string name="ask_update_interval">Enter update interval (ms)</string>
 	<string name="sensorsimulator_settings">SensorSimulator settings...</string>
 	<string name="connect_to_sensorsimulator">Connect to SensorSimulator</string>
+	<string name="sensorsimulator_settings_description">
+		Enter the connection settings below.
+		They are displayed on the Sensor Simulator.</string>
+	<string name="sensorsimulator_testing_description">
+		Test the connection to the Sensor Simulator.
+		Disable the sensors and disconnect after testing.</string>
 	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>

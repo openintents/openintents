@@ -333,6 +333,9 @@
 					</LinearLayout>
 				</LinearLayout>
 			</LinearLayout>
+			<!-- ############################################ 
+				 					 Tabs end
+			     ############################################-->
 		</FrameLayout>
 	</LinearLayout>
 </TabHost>

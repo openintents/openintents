@@ -14,74 +14,89 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
- 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-	<LinearLayout android:id="@+id/settings_background"
+
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:id="@+id/tabhost"
+ 	android:layout_width="fill_parent"
+ 	android:layout_height="fill_parent" >
+ 	<LinearLayout 
+ 		android:orientation="vertical"
+	 	android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" >
+	    <TabWidget android:id="@android:id/tabs"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="64dip" >
+	    </TabWidget>
+	    <FrameLayout android:id="@android:id/tabcontent"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="0dip"
+			android:layout_weight="1" >
+			
+			<!-- ############################################ 
+				 					 Tab 1
+			     ############################################-->
+
+
+	<LinearLayout android:id="@+id/content1"
 		android:orientation="vertical" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="0.1" 
-		android:layout_marginTop="5dip"
-		android:background="@drawable/border_orange_01b">
+		android:layout_marginTop="5dip">
 		<TextView  
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
-		    android:text="@string/settings"
-		    android:background="@drawable/title_background_transparency_01c"
-		    />
-		<TableLayout
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_marginLeft="3dip"
-		    android:layout_marginTop="3dip"
-        	>
-		    <TableRow>
-			    <TextView  
-				    android:layout_width="wrap_content" 
-				    android:layout_height="wrap_content" 
-				    android:text="@string/IP_address"
-				    />
-		    	<EditText android:id="@+id/ipaddress"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					/>
-			</TableRow>
-			<TableRow>
-				<TextView  
-				    android:layout_width="wrap_content" 
-				    android:layout_height="wrap_content" 
-				    android:text="@string/socket"
-				    />
-				<EditText android:id="@+id/socket"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:nextFocusDown="@+id/buttonconnect"
-					/>
-		    </TableRow>
-		</TableLayout>
+		    android:text="@string/sensorsimulator_settings_description"
+		    android:layout_marginTop="10dip"
+			/>
+		<TextView  
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/IP_address"
+		    android:layout_marginTop="10dip"
+			/>
+    	<EditText android:id="@+id/ipaddress"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			/>
+		<TextView  
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:text="@string/socket"
+		    android:layout_marginTop="10dip"
+			/>
+		<EditText android:id="@+id/socket"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			/>
+		
 	</LinearLayout>
-	<LinearLayout android:id="@+id/testing_background"
+	
+	<!-- ############################################ 
+		 					 Tab 2
+	     ############################################-->
+	<LinearLayout android:id="@+id/content2"
 		android:orientation="vertical" 
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_weight="5.0" 
-		android:layout_marginTop="10dip"
-		android:background="@drawable/border_gray_01b">
+		android:layout_marginTop="10dip">
 		<TextView  
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
-		    android:text="@string/testing"
-		    android:background="@drawable/title_background_transparency_01c"
+		    android:layout_marginTop="10dip"
+		    android:text="@string/sensorsimulator_testing_description"
 		    />
 		<LinearLayout
 			android:orientation="horizontal" 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			>
+			android:layout_marginTop="10dip"
+		    >
 			<LinearLayout
 				android:orientation="vertical" 
 				android:layout_width="wrap_content"
@@ -137,6 +152,7 @@
 		    	android:src="@drawable/realdevice01a" 
 		    	android:layout_marginLeft="50dip"
 				android:layout_gravity="right"
+				android:visibility="gone"
 		    	/>
 		</LinearLayout>
 		<EditText android:id="@+id/edittext"
@@ -144,4 +160,10 @@
 					android:layout_height="wrap_content"
 					/>
 	</LinearLayout>
-</LinearLayout>
+
+			<!-- ############################################ 
+				 					 Tabs end
+			     ############################################-->
+		</FrameLayout>
+	</LinearLayout>
+</TabHost>

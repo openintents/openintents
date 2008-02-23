@@ -364,11 +364,12 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		menu.add(0, MENU_DELETE_LIST, R.string.delete_list, R.drawable.shoppinglistdelete001b)
 		.setShortcut('2', 'd');
 		
+		/*
 		menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
 		.setShortcut('0', 's');
 		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_to_sensorsimulator)
 		.setShortcut('1', 'c');
-	
+		 */
 	
 		// Generate any additional actions that can be performed on the
         // overall list.  This allows other applications to extend

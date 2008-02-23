@@ -23,6 +23,8 @@ import org.openintents.provider.Hardware;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,10 +43,12 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TabHost.TabSpec;
 
-public class SensorSimulatorView extends Activity implements OnFocusChangeListener {
+public class SensorSimulatorView extends Activity {
 	/**
 	 * TAG for logging.
 	 */
@@ -87,6 +91,8 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 	 */
 	private Dialog mDialog;
 	
+	private TabHost mTabHost;
+    
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
@@ -97,6 +103,25 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		setContentView(R.layout.sensorsimulator);
 		Hardware.mContentResolver = getContentResolver();
 		
+		Context context = this;
+        // Get the Resources object from our context
+        Resources res = context.getResources();
+    
+		mTabHost = (TabHost)findViewById(R.id.tabhost);
+		mTabHost.setup();
+		
+		TabSpec tabspec = mTabHost.newTabSpec("settings");
+		tabspec.setIndicator(res.getString(R.string.settings), res.getDrawable(R.drawable.settings001a_32));
+		tabspec.setContent(R.id.content1);
+		mTabHost.addTab(tabspec);
+		
+		tabspec = mTabHost.newTabSpec("testing");
+		tabspec.setIndicator(res.getString(R.string.testing), res.getDrawable(R.drawable.mobile_shake001a_32));
+		tabspec.setContent(R.id.content2);
+		mTabHost.addTab(tabspec);
+		
+		mTabHost.setCurrentTab(0);
+	
 		mEditText = (EditText) findViewById(R.id.edittext);
 		mEditTextIP = (EditText) findViewById(R.id.ipaddress);
 		mEditTextSocket = (EditText) findViewById(R.id.socket);
@@ -164,8 +189,10 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		mTextSensorType = (TextView) findViewById(R.id.datatype);
 		mImageSensorType = (ImageView) findViewById(R.id.imagetype);
 		
+		/*
 		mSettingsBackground = (LinearLayout) findViewById(R.id.settings_background);
 		mTestingBackground = (LinearLayout) findViewById(R.id.testing_background);
+		*/
 		
 		// Format for output of data
 		mDecimalFormat = new DecimalFormat("#0.00");
@@ -178,6 +205,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		
 		readAllSensors(); // initial reading
 		
+		/*
 		// Register all possible focus changes:
 		mEditText.setOnFocusChangeListener(this);
 		mEditTextIP.setOnFocusChangeListener(this);
@@ -185,11 +213,13 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 		mButtonConnect.setOnFocusChangeListener(this);
 		mButtonDisconnect.setOnFocusChangeListener(this);
 		mCheckBoxEnable.setOnFocusChangeListener(this);
+		*/
 	}
 	
 	/**
 	 * Implement the OnFocusChangeListener interface
 	 */
+	/*
 	public void onFocusChanged(View v, boolean hasFocus) {
 		int id = v.getId();
 		if (id == R.id.ipaddress
@@ -203,6 +233,7 @@ public class SensorSimulatorView extends Activity implements OnFocusChangeListen
 			mTestingBackground.setBackground(R.drawable.border_orange_01b);
 		}
 	}
+	*/
 	
     ////////////////////////////////////////////////////////
     // The menu
