@@ -165,10 +165,17 @@ public abstract class News {
 	public static ContentResolver mContentResolver;
 
 
+	//some conveniece constants.
+	public static final String FEED_TYPE="FEEDTYPE";
 	public static final String FEED_TYPE_RSS="RSS";
 	public static final String FEED_TYPE_ATOM="ATOM";
 
-	
+	public static final String MESSAGE_COUNT="MESSAGE_COUNT";
+	public static final String _ID="_id";
+
+	/*
+	*@deprecated use insert(uri,contentvalues) instead.
+	*/
 	public static Uri ins(ContentValues cv){
 		//return  new org.openintents.news.rss.RSSFeedProvider().insert(RSSFeeds.CONTENT_URI,cv);
 //		return mContentResolver.insert(ContentURI.create("content://org.openintents.news"),cv);
