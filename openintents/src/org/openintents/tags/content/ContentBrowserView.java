@@ -158,12 +158,12 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.new_doc);
+		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.tag_add001a);
 		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content,
 				R.drawable.window);
 		menu
 				.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag,
-						R.drawable.trash);
+						R.drawable.tag_delete001a);
 
 		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
 				R.drawable.advanced);

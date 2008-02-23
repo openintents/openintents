@@ -30,16 +30,21 @@ public final class R {
         public static final int settings001a_32=0x7f020010;
         public static final int shoppinglist001b=0x7f020011;
         public static final int shoppinglist01d=0x7f020012;
-        public static final int shoppinglistcleanup001b=0x7f020013;
-        public static final int shoppinglistdelete001b=0x7f020014;
-        public static final int shoppinglistnew001b=0x7f020015;
-        public static final int shoppinglistrename001b=0x7f020016;
-        public static final int strikethrough=0x7f02001c;
-        public static final int subtitle=0x7f020017;
-        public static final int tag_blue=0x7f020018;
-        public static final int title_background_transparency_01c=0x7f020019;
-        public static final int trash=0x7f02001a;
-        public static final int window=0x7f02001b;
+        public static final int shoppinglist_application001a=0x7f020013;
+        public static final int shoppinglistcleanup001b=0x7f020014;
+        public static final int shoppinglistdelete001b=0x7f020015;
+        public static final int shoppinglistnew001b=0x7f020016;
+        public static final int shoppinglistrename001b=0x7f020017;
+        public static final int strikethrough=0x7f020021;
+        public static final int subtitle=0x7f020018;
+        public static final int tag001a=0x7f020019;
+        public static final int tag_add001a=0x7f02001a;
+        public static final int tag_blue=0x7f02001b;
+        public static final int tag_delete001a=0x7f02001c;
+        public static final int tagging_application001a=0x7f02001d;
+        public static final int title_background_transparency_01c=0x7f02001e;
+        public static final int trash=0x7f02001f;
+        public static final int window=0x7f020020;
     }
     public static final class id {
         public static final int activities=0x7f060016;
@@ -128,7 +133,7 @@ public final class R {
         public static final int shopping=0x7f040004;
     }
     public static final class string {
-        public static final int IP_address=0x7f050033;
+        public static final int IP_address=0x7f050035;
         public static final int about_openintents=0x7f050002;
         public static final int about_openintents_text=0x7f050003;
         public static final int add=0x7f05000c;
@@ -137,34 +142,34 @@ public final class R {
         /**  Main application  
          */
         public static final int app_name=0x7f050000;
-        public static final int ask_new_list=0x7f050028;
-        public static final int ask_update_interval=0x7f05003b;
-        public static final int auto_update=0x7f050038;
+        public static final int ask_new_list=0x7f05002a;
+        public static final int ask_update_interval=0x7f05003d;
+        public static final int auto_update=0x7f05003a;
         public static final int button_ok=0x7f05001b;
         /**      Dialog box    
          */
-        public static final int cancel=0x7f05002c;
-        public static final int clean_up_list=0x7f050026;
-        public static final int confirm_delete_list=0x7f05002a;
-        public static final int connect=0x7f050030;
-        public static final int connect_to_sensorsimulator=0x7f05003d;
+        public static final int cancel=0x7f05002e;
+        public static final int clean_up_list=0x7f050028;
+        public static final int confirm_delete_list=0x7f05002c;
+        public static final int connect=0x7f050032;
+        public static final int connect_to_sensorsimulator=0x7f05003f;
         /**   Content Browser 
          */
         public static final int content_browser=0x7f05000e;
         public static final int default_tag=0x7f050001;
-        public static final int delete_list=0x7f050027;
+        public static final int delete_list=0x7f050029;
         public static final int dialog_cancel=0x7f05001e;
         public static final int dialog_message_package_add=0x7f050020;
         public static final int dialog_message_package_del=0x7f050022;
         public static final int dialog_ok=0x7f05001d;
         public static final int dialog_title_package_add=0x7f05001f;
         public static final int dialog_title_package_del=0x7f050021;
-        public static final int disabled=0x7f050039;
-        public static final int disconnect=0x7f050032;
-        public static final int enable_sensors=0x7f050037;
+        public static final int disabled=0x7f05003b;
+        public static final int disconnect=0x7f050034;
+        public static final int enable_sensors=0x7f050039;
         /**      Key codes     
          */
-        public static final int key_return=0x7f050040;
+        public static final int key_return=0x7f050042;
         public static final int label_package_add=0x7f05001a;
         public static final int label_packages=0x7f050019;
         public static final int list_is_empty=0x7f050007;
@@ -176,38 +181,42 @@ public final class R {
          */
         public static final int list_of_tags=0x7f050009;
         public static final int locations_map=0x7f050008;
+        /**  Magnolia tagging 
+         */
+        public static final int magnolia_settings=0x7f050023;
+        public static final int magnolia_tagging=0x7f050024;
         public static final int menu_package_add=0x7f050016;
         public static final int menu_package_del=0x7f050017;
         public static final int menu_package_list=0x7f050018;
         public static final int message=0x7f050012;
-        public static final int new_item=0x7f050024;
-        public static final int new_list=0x7f050025;
-        public static final int no_items_marked=0x7f050029;
+        public static final int new_item=0x7f050026;
+        public static final int new_list=0x7f050027;
+        public static final int no_items_marked=0x7f05002b;
         public static final int no_packages=0x7f05001c;
-        public static final int no_shopping_provider=0x7f05002b;
+        public static final int no_shopping_provider=0x7f05002d;
         public static final int no_tags=0x7f050015;
-        public static final int ok=0x7f05002d;
-        public static final int real_device_data=0x7f050035;
+        public static final int ok=0x7f05002f;
+        public static final int real_device_data=0x7f050037;
         public static final int select=0x7f05000b;
-        public static final int sensor_simulator_data=0x7f050036;
+        public static final int sensor_simulator_data=0x7f050038;
         /**   Sensor Simulator 
          */
-        public static final int sensorsimulator=0x7f05002e;
-        public static final int sensorsimulator_settings=0x7f05003c;
-        public static final int sensorsimulator_settings_description=0x7f05003e;
-        public static final int sensorsimulator_testing_description=0x7f05003f;
-        public static final int set_update_interval=0x7f05003a;
-        public static final int settings=0x7f05002f;
+        public static final int sensorsimulator=0x7f050030;
+        public static final int sensorsimulator_settings=0x7f05003e;
+        public static final int sensorsimulator_settings_description=0x7f050040;
+        public static final int sensorsimulator_testing_description=0x7f050041;
+        public static final int set_update_interval=0x7f05003c;
+        public static final int settings=0x7f050031;
         /**  Shopping Provider 
          */
-        public static final int shopping_list=0x7f050023;
-        public static final int socket=0x7f050034;
+        public static final int shopping_list=0x7f050025;
+        public static final int socket=0x7f050036;
         public static final int tags_add_tag=0x7f05000f;
         public static final int tags_remove_tag=0x7f050011;
         public static final int tags_view_content=0x7f050010;
         public static final int tags_view_tag=0x7f050014;
-        public static final int test=0x7f050041;
-        public static final int testing=0x7f050031;
+        public static final int test=0x7f050043;
+        public static final int testing=0x7f050033;
         public static final int todo=0x7f050013;
         public static final int view_location=0x7f050006;
     }

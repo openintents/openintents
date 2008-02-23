@@ -104,8 +104,7 @@
 
 		<!-- android:icon="@drawable/directory" -->
 		<activity android:name=".tags.content.ContentBrowserView"
-			android:label="@string/content_browser"
-			android:icon="@drawable/folder">
+			android:label="@string/content_browser" android:icon="@drawable/tagging_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category
@@ -170,9 +169,8 @@
 
 		<!-- Shopping activity -->
 		<activity android:name=".shopping.ShoppingView"
-			android:label="@string/shopping_list"
-			android:icon="@drawable/shoppinglist001b">
-			<intent-filter>
+			android:label="@string/shopping_list" android:icon="@drawable/shoppinglist_application001a">
+			<intent-filter android:label="Shopping list" android:icon="@drawable/shoppinglist_application001a">
 				<action android:name="android.intent.action.MAIN" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
@@ -185,7 +183,7 @@
 
 		<!-- Ma.Gnolia Tags activity -->
 		<activity android:name=".tags.MagnoliaSettings"
-			android:label="MagnoliaSettings">
+			android:label="@string/magnolia_settings">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -195,7 +193,7 @@
 			</intent-filter>
 		</activity>		
 		<activity android:name=".tags.MagnoliaTagging"
-			android:label="Tag in Ma.Gnolia.com">
+			android:label="@string/magnolia_tagging">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
@@ -204,7 +202,7 @@
 					android:name="android.intent.category.LAUNCHER" />  -->              					
 			</intent-filter>
 		</activity>	
-
+		
 		<!-- SensorSimulator -->
 		<activity android:name=".hardware.SensorSimulatorView"
 			android:label="@string/sensorsimulator">
@@ -216,13 +214,7 @@
 		</activity>
 		
 		
-		<!-- Magnolia -->
-		<activity android:name=".tags.MagnoliaSettings"
-			android:label="MagnoliaSettings"><!-- TODO move to Resource ! -->
-		</activity>
-		<activity android:name=".tags.MagnoliaTagging"
-			android:label="MagnoliaTagging"><!-- TODO move to Resource ! -->
-		</activity>
+		
 		
 	</application>	 
 </manifest>

@@ -44,9 +44,9 @@
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Content browser</string>
-	<string name ="tags_add_tag">Tag</string>
+	<string name ="tags_add_tag">Add tag</string>
 	<string name="tags_view_content">View</string>
-	<string name="tags_remove_tag">Remove</string>
+	<string name="tags_remove_tag">Remove tag</string>
 	
 	<string name="message">Message</string>
 	<string name="todo">To do</string>
@@ -66,6 +66,10 @@
     <string name="dialog_message_package_add">Loading...</string>
     <string name="dialog_title_package_del">Unregister</string>
     <string name="dialog_message_package_del">Are you sure?</string>
+    
+    <!-- Magnolia tagging -->
+    <string name="magnolia_settings">Ma.Gnolia.com Settings</string>
+    <string name="magnolia_tagging">Tag in Ma.Gnolia.com</string>
     		
 	<!-- Shopping Provider -->
 	<string name="shopping_list"><b>Shopping list</b></string>
