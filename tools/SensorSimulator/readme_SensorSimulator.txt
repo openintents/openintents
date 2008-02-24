@@ -40,13 +40,17 @@
 
 ---------------------------------------------------------
 release: 0.1.3
-date: ?
+date: 2008-02-24
 
 new features:
   - update interval can be set and is monitored
   - more settings for accelerometer / acceleration:
     pixel per meter, limit for accelerometer.
   - random contribution to sensors
+  
+known issues:
+  - the new Sensors methods related to sensor update
+    rate are not yet implemented.
 
 ---------------------------------------------------------
 release: 0.1.2

@@ -20,6 +20,18 @@ improved interoperability of Android applications.
 To obtain the current release, visit
   http://code.google.com/p/openintents/
 
+---------------------------------------------------------
+release: 0.1.3
+date: 2008-02-24
+
+new features:
+- Update to Android SDK m5.
+- Content browser implemented.
+- New icons in the new Android style.
+- Visual appearance of applications (shopping list)
+  and menus adjusted.
+- Main view of OpenIntents is an icon grid on 
+  tabs. This replaces the plain activity list.
 
 ---------------------------------------------------------
 release: 0.1.2

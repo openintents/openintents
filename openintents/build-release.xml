@@ -10,6 +10,7 @@
 	<property name="source-dir" value="${release-dir}/openintents-source-${build-version}" />
 	<property name="binary-lib-dir" value="${binary-dir}/lib" />
 	<property name="binary-samples-dir" value="${binary-dir}/samples" />
+	<property name="binary-tools-dir" value="${binary-dir}/tools" />
 	<property name="source-lib-dir" value="${source-dir}/lib" />
 						
 	<!-- (sub)project folders  -->
@@ -19,6 +20,7 @@
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="news-dir" value="../samples/newsreader" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
+	<property name="sensorsimulator-dir" value="../tools/SensorSimulator" />
 
 	<!-- standard lib file -->
 	<property name="binary-lib-file" value="${binary-lib-dir}/openintents-lib.jar" />
@@ -26,7 +28,7 @@
 	<target
 		name="help"
 		>
-		<echo>----------openintents.org buildscript v0.0.1</echo>
+		<echo>----------openintents.org buildscript v0.1.3</echo>
 		<echo>use release for a full openintents release.</echo>
 		<echo>use release-zip for creating release zip-files.</echo>
 
@@ -39,6 +41,7 @@
 		<mkdir dir="${binary-dir}"/>
 		<mkdir dir="${binary-lib-dir}"/>
 		<mkdir dir="${binary-samples-dir}"/>
+		<mkdir dir="${binary-tools-dir}"/>
 		<mkdir dir="${source-dir}"/>
 		
 		<!-- Now copy global readme files -->
@@ -73,7 +76,7 @@
 			target="lib"
 		/>
 		<copy
-			file="${base-dir}/bin/openintents.apk"
+			file="${base-dir}/bin/OpenIntents.apk"
 			todir="${binary-dir}"
 			/>
 		<!-- Copy lib to lib dir -->
@@ -200,22 +203,52 @@
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
+	</target>
+	
+
+	<target name="SensorSimulator">
+		<echo>------------------------------SensorSimulator----------------------</echo>
+		<!-- Compile -->
+		<ant
+			dir="${sensorsimulator-dir}"
+			antfile="build.xml"
+			target="package"
+			>
+		</ant>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-tools-dir}" flatten="true">
+			<fileset dir="${sensorsimulator-dir}">
+				<include name="bin/sensorsimulator.jar" />
+				<include name="readme_SensorSimulator.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/tools/SensorSimulator">
+		    <fileset dir="${sensorsimulator-dir}">
+		    	<exclude name="**/bin/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
 	</target>	
 
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<!-- Release -->
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 	<target
 		name="release"		
 		depends="
 			FavoriteLocations,
 			OpenGLSensors,
-			PresentPicker"
+			PresentPicker,
+			SensorSimulator"
 		>
 	</target>
-	
+
 	<!-- Zip the release directories -->
 	<target 
 		name="release-zip"
 		depends="release">
+		<echo>------------------------------Zipping files----------------------</echo>
 		<zip
 			destfile="${binary-dir}.zip"
 			basedir="${binary-dir}"

@@ -120,6 +120,7 @@
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
             <arg path="${basedir}\${outdir-classes}" />
+			<arg path="${openintents-lib-jar}" />
         </exec>
     </target>
 

@@ -29,6 +29,14 @@ PresentPicker picks the right present for you.
 It demonstrates the usage of the Shopping List application.
 
 ---------------------------------------------------------
+release: 0.1.3
+date: 2008-02-24
+
+features:
+- update to Android m5 look.
+- program split in two tabs.
+
+---------------------------------------------------------
 release: 0.1.1
 date: 2008-01-07
 
