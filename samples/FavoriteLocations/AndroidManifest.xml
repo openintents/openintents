@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.samples">
-    <application android:icon="@drawable/icon_openintents_sample">
+    <application android:icon="@drawable/locations_favorite_application001a">
         <activity android:name=".FavoriteLocations" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            	<category android:name="org.openintents.category.MAIN" />
+			</intent-filter>
         </activity>
     </application>
 </manifest>

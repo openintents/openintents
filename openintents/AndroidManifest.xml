@@ -39,7 +39,7 @@
 			android:authorities="org.openintents.hardware" />
 			
 		<!-- Main activity -->
-		<activity android:name=".main.OpenIntents"
+		<activity android:name=".main.OpenIntentsView"
 			android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -59,11 +59,14 @@
 
 		<!-- Locations activity -->
 		<activity android:name=".locations.LocationsView"
-			android:label="@string/list_of_locations">
+			android:label="@string/list_of_locations"
+			android:icon="@drawable/locations_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<!--  <category
 					android:name="android.intent.category.LAUNCHER" />  -->
+				<category
+					android:name="org.openintents.category.MAIN" />
 			</intent-filter>
 		</activity>
 
@@ -74,11 +77,13 @@
 
 		<!-- Tags activity -->
 		<activity android:name=".tags.TagsView"
-			android:label="@string/list_of_tags">
+			android:label="@string/list_of_tags"
+			android:icon="@drawable/tagging_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<!--  <category
 					android:name="android.intent.category.LAUNCHER" />  -->
+				<category android:name="org.openintents.category.SETTINGS" /> 
 			</intent-filter>
 			<intent-filter>
 				<action android:name="org.openintents.action.TAG" />
@@ -104,11 +109,13 @@
 
 		<!-- android:icon="@drawable/directory" -->
 		<activity android:name=".tags.content.ContentBrowserView"
-			android:label="@string/content_browser" android:icon="@drawable/tagging_application001a">
+			android:label="@string/content_browser" 
+			android:icon="@drawable/tagging_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category
 					android:name="android.intent.category.LAUNCHER" />
+				<category android:name="org.openintents.category.MAIN" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
@@ -169,47 +176,70 @@
 
 		<!-- Shopping activity -->
 		<activity android:name=".shopping.ShoppingView"
-			android:label="@string/shopping_list" android:icon="@drawable/shoppinglist_application001a">
-			<intent-filter android:label="Shopping list" android:icon="@drawable/shoppinglist_application001a">
+			android:label="@string/shopping_list" 
+			android:icon="@drawable/shoppinglist_application001a">
+			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.MAIN" />
+				<!-- -->  <category
+					android:name="android.intent.category.LAUNCHER" />  <!--  -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
 				<data
 					android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
-				<!-- -->  <category
-					android:name="android.intent.category.LAUNCHER" />  <!--  -->
 			</intent-filter>
 		</activity>
 
 		<!-- Ma.Gnolia Tags activity -->
 		<activity android:name=".tags.MagnoliaSettings"
-			android:label="@string/magnolia_settings">
+			android:label="@string/magnolia_settings"
+			android:icon="@drawable/tagging_magnolia_application001a" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->              					
+				<category android:name="org.openintents.category.SETTINGS" />            					
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					             					
 			</intent-filter>
 		</activity>		
 		<activity android:name=".tags.MagnoliaTagging"
-			android:label="@string/magnolia_tagging">
+			android:label="@string/magnolia_tagging"
+			android:icon="@drawable/tagging_magnolia_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->              					
+				<category android:name="org.openintents.category.MAIN" />
+				<category
+					android:name="android.intent.category.LAUNCHER" />              					
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					           					
 			</intent-filter>
 		</activity>	
 		
 		<!-- SensorSimulator -->
 		<activity android:name=".hardware.SensorSimulatorView"
-			android:label="@string/sensorsimulator">
+			android:label="@string/sensorsimulator"
+			android:icon="@drawable/mobile_shake_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.DEFAULT" /> 
-				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>          					
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>
 			</intent-filter>
 		</activity>
 		

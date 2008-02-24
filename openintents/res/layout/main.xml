@@ -15,23 +15,98 @@
  * limitations under the License.
  -->
  
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<!--  TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="OpenIntents developer interface"
-    / -->
-<ListView android:id="@+id/activities"
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:layout_weight="0"
-	    />
-<!--  ImageButton android:id="@+id/about"
-    	android:layout_width="64px"
-    	android:layout_height="64px"
-    	android:src="@drawable/openintents_icon" / -->
-</LinearLayout>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:id="@+id/tabhost"
+ 	android:layout_width="fill_parent"
+ 	android:layout_height="fill_parent" >
+ 	<LinearLayout 
+ 		android:orientation="vertical"
+	 	android:layout_width="fill_parent"
+	    android:layout_height="fill_parent" >
+	    <TabWidget android:id="@android:id/tabs"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="64dip" >
+	    </TabWidget>
+	    <FrameLayout android:id="@android:id/tabcontent"
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="0dip"
+			android:layout_weight="1" >
+			
+			<!-- ############################################ 
+				 					 Tab 1
+			     ############################################-->
+
+
+			<LinearLayout android:id="@+id/content1"
+				android:orientation="vertical" 
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				>
+				<TableLayout android:id="@+id/grid_main"
+					android:orientation="horizontal" 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_marginTop="5dip"
+					>
+				</TableLayout>
+				<!--  GridView  android:id="@+id/grid_main"
+					android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"
+				    android:padding="1dip"
+				    android:verticalSpacing="1"
+				    
+				    android:horizontalSpacing="1"
+				    android:numColumns="auto_fit"
+				    android:columnWidth="80"
+				    android:stretchMode="columnWidth"
+				    
+				    android:focusable="false"
+				    android:clickable="false"
+				    
+				    android:gravity="center"
+				    / -->
+			</LinearLayout>
+		
+			<!-- ############################################ 
+				 					 Tab 2
+			     ############################################-->
+			
+			<LinearLayout android:id="@+id/content2"
+				android:orientation="vertical" 
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				>
+				<TableLayout android:id="@+id/grid_settings"
+					android:orientation="horizontal" 
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_marginTop="5dip"
+					>
+				</TableLayout>
+				
+				<!--  GridView  android:id="@+id/grid_settings"
+					android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"
+				    android:padding="10dip"
+				    android:verticalSpacing="10"
+				    
+				    android:horizontalSpacing="10"
+				    android:numColumns="auto_fit"
+				    android:columnWidth="50"
+				    android:stretchMode="columnWidth"
+				    
+				    android:gravity="center"
+				    / -->
+				    
+
+			</LinearLayout>
+		
+		
+			<!-- ############################################ 
+				 					 Tabs end
+			     ############################################-->
+		</FrameLayout>
+	</LinearLayout>
+</TabHost>
+		
+		

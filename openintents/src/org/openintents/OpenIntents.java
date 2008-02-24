@@ -18,6 +18,19 @@ package org.openintents;
 
 
 public abstract class OpenIntents {
+	
+	// -----------------------------------------------
+	//                     Tags
+	// -----------------------------------------------
 	/** identifier for tag action. */
 	public final static String TAG_ACTION = "org.openintents.action.TAG";
+	
+	// -----------------------------------------------
+	//                     Categories
+	// -----------------------------------------------
+	/** Main Category */
+	public final static String MAIN_CATEGORY = "org.openintents.category.MAIN";
+
+	/** Settings Category */
+	public final static String SETTINGS_CATEGORY = "org.openintents.category.SETTINGS";
 }

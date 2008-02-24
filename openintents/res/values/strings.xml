@@ -20,6 +20,7 @@
 	<string name="app_name">Open Intents</string>
 	<string name="default_tag">DEFAULT</string>
 	
+	<string name="openintents">OpenIntents</string>
 	<string name="about_openintents">About OpenIntents</string>
 	<string name="about_openintents_text">OpenIntents 
 		defines open intents and interfaces to make Android applications
@@ -36,11 +37,11 @@
 	<string name="locations_map">Map</string>
 	
 	<!--   Tags Provider   -->
-	<string name="list_of_tags"><b>List of tags</b></string>
-	<string name="list_of_contents"><b>List of contents</b></string>
+	<string name="list_of_tags">List of tags</string>
+	<string name="list_of_contents">List of contents</string>
 	<string name="select">Select</string>
 	<string name="add">Add</string>
-	<string name="add_tag"><b>Add new tag/content</b></string>
+	<string name="add_tag">Add new tag/content</string>
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Content browser</string>
@@ -67,12 +68,12 @@
     <string name="dialog_title_package_del">Unregister</string>
     <string name="dialog_message_package_del">Are you sure?</string>
     
-    <!-- Magnolia tagging -->
-    <string name="magnolia_settings">Ma.Gnolia.com Settings</string>
-    <string name="magnolia_tagging">Tag in Ma.Gnolia.com</string>
+    <!-- Magnolia tagging (Ma.Gnolia.com) -->
+    <string name="magnolia_settings">Ma.gnolia settings</string>
+    <string name="magnolia_tagging">Ma.gnolia tags</string>
     		
 	<!-- Shopping Provider -->
-	<string name="shopping_list"><b>Shopping list</b></string>
+	<string name="shopping_list">Shopping list</string>
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
 	<string name="clean_up_list">Clean up list</string>

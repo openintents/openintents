@@ -19,21 +19,16 @@
     package="org.openintents.samples.presentpicker">
     
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    
     <application android:icon="@drawable/present_application001a">
-
         <activity android:name=".PresentPicker" android:label="@string/app_name">
-
-            <intent-filter>
+             <intent-filter>
 
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
+				<category android:name="org.openintents.category.MAIN" />
+				
             </intent-filter>
-
         </activity>
-
     </application>
-
 </manifest> 
