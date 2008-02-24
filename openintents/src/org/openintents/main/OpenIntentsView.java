@@ -235,7 +235,7 @@ public class OpenIntentsView extends Activity {
 			mInfo = info;
 		}
 		
-		@Override
+		
 		public void onClick(View arg0) {
 			Intent intent = new Intent(
 					Intent.MAIN_ACTION, 
