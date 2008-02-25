@@ -1,6 +1,46 @@
 <?xml version="1.0" ?>
 <project name="OpenIntents-Release" default="help">
+
+	<!-- 
+	    ==============================================================
+	    Use this Ant script to build the complete release.
+	    
+	    Targets:
+	    - "release": the full openintents release, binary + source.
+	    - "release-zip": create release zip-files, binary + source.
+	    ==============================================================
+	    
+	    The following property has to be set:
+	    **************************************************************
+		In Eclipse:
+		* Open "Window" / "Preferences..."
+		* Select "Ant" / "Runtime"
+		* Choose tab "Properties"
+		* Click "Add Property..." for the following:
 		
+		* - Name: "android.sdk"
+		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
+		**************************************************************
+		Alternatively, you can provide the property through the
+		command line:
+		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
+		**************************************************************
+		
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		To run the release script directly in Eclipse:
+		
+		* In the Package Explorer, open the project OpenIntents
+		* Right-click on "build-release.xml" / "Run As" / 
+		  "2 Ant Build..."
+		* Check targets to execute: "release-zip"
+		* Click "Run"
+		
+		The release files and corresponding zip files are created in 
+		OpenIntents/release.
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		
+	-->
+	
 	<!-- Read version number from file -->
 	<property file="build-version.txt" />
 	
@@ -28,7 +68,7 @@
 	<target
 		name="help"
 		>
-		<echo>----------openintents.org buildscript v0.1.3</echo>
+		<echo>----------openintents.org buildscript ${build-version}</echo>
 		<echo>use release for a full openintents release.</echo>
 		<echo>use release-zip for creating release zip-files.</echo>
 

@@ -313,7 +313,7 @@ public class PresentPicker extends Activity {
         mViewShoppingList.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(Intent.MAIN_ACTION, Shopping.Lists.CONTENT_URI);
+				Intent intent = new Intent(Intent.VIEW_ACTION, Shopping.Lists.CONTENT_URI);
 				startActivity(intent);
 			}
         	

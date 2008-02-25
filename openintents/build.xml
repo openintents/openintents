@@ -16,6 +16,8 @@
 		command line:
 		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
 		**************************************************************
+		
+		Choose target "lib" to also create the openintents-lib.jar file.
 	-->
 
 	<!-- ############################################# -->
@@ -188,9 +190,9 @@
     <!-- Create the package file for this project from the sources. -->
     <target name="package" depends="package-dex" />
 
-	<!-- ############### optinally ####################### -->
+	<!-- ############### optionally ####################### -->
 	<!-- Create the library -->
-	<!-- Content is defined in "lib-content.txt" -->
+	<!-- Content is defined in "build-lib-content.txt" -->
 	<target name="lib" 
 			depends="package"
 			>
