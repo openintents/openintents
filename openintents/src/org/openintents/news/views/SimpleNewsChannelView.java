@@ -95,7 +95,7 @@ public class SimpleNewsChannelView extends LinearLayout{
 
 		mChannelName = new TextView(this.context);
 		mChannelName.setText(channelName);
-		mChannelName.setWidth(300);
+		mChannelName.setWidth(280);
 		
 		//tr.addView(mChannelName);
 		addView(mChannelName, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
