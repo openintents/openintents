@@ -196,5 +196,8 @@ public abstract class News {
 		return mContentResolver.delete(uri,selection,selectionArgs);
 	}
 
+	public static int update(Uri uri,ContentValues values, String selection, String[] selectionArgs){
+		return mContentResolver.update(uri,values,selection,selectionArgs);
+	}
 
 }
