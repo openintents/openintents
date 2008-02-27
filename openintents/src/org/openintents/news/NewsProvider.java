@@ -446,12 +446,12 @@ public class NewsProvider extends ContentProvider {
 		URL_MATCHER=new UriMatcher(UriMatcher.NO_MATCH);
 		URL_MATCHER.addURI("org.openintents.news","rss",RSSFEEDS);
 		URL_MATCHER.addURI("org.openintents.news","rss/#",RSSFEED_ID);
-		URL_MATCHER.addURI("org.openintents.news","rssfeedcontents",RSSFEED_CONTENTS);
-		URL_MATCHER.addURI("org.openintents.news","rssfeedcontents/#",RSSFEED_CONTENT_ID);
+		URL_MATCHER.addURI("org.openintents.news","rsscontents",RSSFEED_CONTENTS);
+		URL_MATCHER.addURI("org.openintents.news","rsscontents/#",RSSFEED_CONTENT_ID);
 		URL_MATCHER.addURI("org.openintents.news","atom",ATOMFEEDS);
 		URL_MATCHER.addURI("org.openintents.news","atom/#",ATOMFEED_ID);
-		URL_MATCHER.addURI("org.openintents.news","atomfeedcontents",ATOMFEED_CONTENTS);
-		URL_MATCHER.addURI("org.openintents.news","atomfeedcontents/#",ATOMFEED_CONTENT_ID);
+		URL_MATCHER.addURI("org.openintents.news","atomcontents",ATOMFEED_CONTENTS);
+		URL_MATCHER.addURI("org.openintents.news","atomcontents/#",ATOMFEED_CONTENT_ID);
 		
 
 
