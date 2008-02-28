@@ -136,7 +136,7 @@
 		</activity>
 
 		<activity android:name=".tags.TagsAddView"
-			android:label="@string/tags_add_tag" android:theme="@android:style/Theme.Dialog">
+			android:label="@string/tags_add_tag">
 			<intent-filter android:icon="@drawable/folder">			    
 				<action android:name="org.openintents.action.TAG" />
 				<category
@@ -150,6 +150,20 @@
 
 			<intent-filter android:icon="@drawable/folder">			    
 				<action android:name="android.intent.action.INSERT" />
+				<category
+					android:name="android.intent.category.DEFAULT" />
+				<category
+					android:name="android.intent.category.ALTERNATIVE" />
+				<category
+					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+			</intent-filter>
+		</activity>
+
+		<activity android:name=".tags.TagsCloudView"
+			android:label="@string/tags_cloud">
+			<intent-filter android:icon="@drawable/folder">			    
+				<action android:name="android.intent.action.PICK" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
 				<category

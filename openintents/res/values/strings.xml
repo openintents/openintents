@@ -28,7 +28,8 @@
 		For more information visit the OpenIntents developer home at \n
 		http://code.google.com/p/openintents/
 	</string>
-	
+	<string name="action_MAIN">org.openintents.main.OpenIntentsView</string>
+
 	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
 	
 	<!-- Location Provider -->
@@ -44,6 +45,7 @@
 	<string name="select">Select</string>
 	<string name="add">Add</string>
 	<string name="add_tag">Add new tag/content</string>
+	<string name="tag_all">ALL</string>
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Content browser</string>
@@ -54,8 +56,11 @@
 	<string name="message">Message</string>
 	<string name="todo">To do</string>
 	<string name="tags_view_tag">View</string>
+	
 	<string name="no_tags">No tagged content found.</string>
-
+	<string name="nothing_selected">Nothing selected</string>
+	<string name="nothing_found">Nothing found (%s)</string>
+	
     <string name="menu_package_add">Import</string>
     <string name="menu_package_del">Unregister</string>
     <string name="menu_package_list">Packages</string>
@@ -69,6 +74,9 @@
     <string name="dialog_message_package_add">Loading...</string>
     <string name="dialog_title_package_del">Unregister</string>
     <string name="dialog_message_package_del">Are you sure?</string>
+    
+    <string name="tags_cloud">Tag Cloud</string>
+    
     
     <!-- Magnolia tagging (Ma.Gnolia.com) -->
     <string name="magnolia_settings">Ma.gnolia settings</string>

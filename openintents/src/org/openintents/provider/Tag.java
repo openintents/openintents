@@ -207,7 +207,30 @@ public class Tag {
 				new String[] { contentUri }, "content1.uri");
 		return c;
 	}
+	
+	/**
+	 * cursor over tags with all tags for the given content is returned.
+	 * 
+	 * @param contentUriPrefix
+	 * @return
+	 */
+	public Cursor findTagsForContentType(String contentUriPrefix) {
+		Cursor c = mContext.getContentResolver().query(Tags.CONTENT_URI,
+				new String[] { Tags._ID, Tags.URI_1 }, "content2.uri like ?",
+				new String[] { contentUriPrefix + "%"}, "content1.uri");
+		return c;
+	}
 
+	/**
+	 * Get a cursor with all tags
+	 * @return
+	 */
+	public Cursor findAllTags(){
+		Cursor c = mContext.getContentResolver().query(Contents.CONTENT_URI,
+				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
+				"type like 'TAG%'", null, Contents.DEFAULT_SORT_ORDER);
+		return c;
+	}
 	
 	/** 
 	 * start add tag activity.

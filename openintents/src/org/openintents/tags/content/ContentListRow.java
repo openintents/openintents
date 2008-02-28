@@ -1,18 +1,16 @@
 package org.openintents.tags.content;
 
-import java.net.URISyntaxException;
 import java.util.List;
 
-
+import org.openintents.R;
 import org.openintents.provider.ContentIndex;
-import org.openintents.provider.ContentIndex.Entry;
 import org.openintents.provider.Tag.Tags;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -95,21 +93,34 @@ public class ContentListRow extends RelativeLayout {
 		Drawable icon = getIconForUri(contentUri, type, intent);
 		mIcon.setImageDrawable(icon);
 
-		String text = getTextForUri(contentUri, type, intent);
+		String text = getTextForUri(contentUri, type, intent, uri);
 		mName.setText(text);
 
 	}
 
-	private String getTextForUri(Uri uri, String type, Intent intent) {
-		Cursor cursor = mContentIndex.getContentBody(uri);
+	private String getTextForUri(Uri uri, String type, Intent intent, String uri2) {
 
 		String result;
-		if (cursor == null || cursor.count() < 1) {
-			result = "nothing found (" + uri.toString() + ")";
-		} else {
-			cursor.next();
-			result = cursor.getString(0);
-		}
+		if (uri == null) {
+			if (uri2 == null){
+				result = getResources().getString(R.string.nothing_selected);
+			} else {
+				result = uri2;
+			}
+		} else if ("geo".equals(uri.getScheme())) {
+			// deal with geo
+			result = uri.getPath();
+		} else  {
+			Cursor cursor = mContentIndex.getContentBody(uri);
+
+			if (cursor == null || cursor.count() < 1) {
+				result = getResources().getString(R.string.nothing_found,  uri.toString());
+			} else {
+				cursor.next();
+				result = cursor.getString(0);
+			}
+		} 
+
 		return result;
 	}
 

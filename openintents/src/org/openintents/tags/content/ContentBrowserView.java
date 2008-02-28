@@ -39,8 +39,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -54,7 +56,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 	// tag for logging
 	private static final String TAG = "tagHierarchyView";
-	protected static final String ALL = "ALL"; // TODO: Put string into
+
 	// resource
 	private static final int MENU_ADD_TAG = 1;
 	private static final int MENU_VIEW_CONTENT = 2;
@@ -63,10 +65,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 	protected static final int REQUEST_DIR_PICK = 1;
 	protected static final int REQUEST_CONTENT_PICK = 2;
+	protected static final int REQUEST_TAG_PICK = 3;
 
 	private AutoCompleteTextView mTagFilter;
 
-	private ListAdapter mTaggedContentAdapter;
 	private Tag mTags;
 
 	/**
@@ -95,7 +97,22 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		});
 
 		mTags = new Tag(this);
+		
+		
+		ImageButton searchButton = (ImageButton) findViewById(R.id.tags_search_button);
+		searchButton.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+
+				Intent intent = new Intent(Intent.PICK_ACTION, Tags.CONTENT_URI);
+				startSubActivity(intent, REQUEST_TAG_PICK);
+			}
+
+		});
+		
 		fillDataTagFilter();
+		
+		// load directories from xml 
 		Thread t = new Thread(this);
 		t.start();
 	}
@@ -119,7 +136,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		}
 
 		ArrayList<String> list = new ArrayList<String>();
-		list.add(ALL);
+		list.add(getString(R.string.tag_all));
 		while (c.next()) {
 			list.add(c.getString(1));
 		}
@@ -247,6 +264,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 				// data is the picked content
 				mTags.startAddTagActivity(tag, data);
 			}
+			break;
+		case REQUEST_TAG_PICK:
+			if (data != null){
+				mTagFilter.setText(data);
+			}
 		}
 	}
 
@@ -264,6 +286,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			r.fromXML(res.openRawResource(R.raw.notepad));
 			r.fromXML(res.openRawResource(R.raw.media));
 			r.fromXML(res.openRawResource(R.raw.shopping));
+			r.fromXML(res.openRawResource(R.raw.location));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
