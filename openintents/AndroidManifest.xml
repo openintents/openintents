@@ -22,6 +22,9 @@
 	<uses-permission id="android.permission.READ_CONTACTS" android:name="android.permission.READ_CONTACTS" />
 	<uses-permission id="android.permission.ACCESS_LOCATION" android:name="android.permission.ACCESS_LOCATION" />
 
+	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
+	android:label="@string/oi_acceptancetest"/>
+	
 	<application android:icon="@drawable/openintents002a">
 		<!-- Providers -->
 		<provider android:name=".locations.LocationsProvider"

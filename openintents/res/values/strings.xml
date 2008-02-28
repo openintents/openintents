@@ -28,7 +28,9 @@
 		For more information visit the OpenIntents developer home at \n
 		http://code.google.com/p/openintents/
 	</string>
-
+	
+	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
+	
 	<!-- Location Provider -->
 	<string name="list_of_locations">List of locations</string>
 	<string name="add_current_location">Add curr. loc.</string>
