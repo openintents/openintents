@@ -158,17 +158,20 @@ public class RSSFetcherThread extends Thread{
 					Node el1=(Node)node.getFirstChild();
 					if (el1!=null)
 					{
-						System.out.println("sub node el1 is of type>>"+el1.getNodeType());
+					//	System.out.println("sub node el1 is of type>>"+el1.getNodeType());
 						nodeValue=el1.getNodeValue();
 					}else{
-						System.out.println("node "+nodeName+" seems to have no data. :( ");
+					//	System.out.println("node "+nodeName+" seems to have no data. :( ");
+						Log.d(_TAG,"node "+nodeName+" seems to have no data. :( ");
 					}
+					/*
 					Log.d(_TAG,">>node named>>"+nodeName+"<< has value\n"
 						+nodeValue+
 						"\n ##############################################\n"
 						);
-					System.out.println("#############################>>"+nodeName+"#######################");
-					System.out.println(nodeValue+"\n");
+						*/
+				//	System.out.println("#############################>>"+nodeName+"#######################");
+				//	System.out.println(nodeValue+"\n");
 
 					if (nodeName.equalsIgnoreCase("link"))
 					{
@@ -189,19 +192,19 @@ public class RSSFetcherThread extends Thread{
 				}
 				catch (NullPointerException npe){
 					Log.e(_TAG,"Node >>"+nodeName+"<< had now Text entry");
-					System.out.println("exception >"+npe.getMessage());
+			//		System.out.println("exception >"+npe.getMessage());
 					throw npe;
 				}
 				catch (Exception e)
 				{
-					System.out.println("excecption >"+e.getMessage());
+					//System.out.println("excecption >"+e.getMessage());
 					e.printStackTrace();
 				}
 			}
 
-			System.out.println("DUMPING NODE TYPE\n TEXT>>"+Node.TEXT_NODE+"\n CDATA>"+Node.CDATA_SECTION_NODE);
+			//System.out.println("DUMPING NODE TYPE\n TEXT>>"+Node.TEXT_NODE+"\n CDATA>"+Node.CDATA_SECTION_NODE);
 
-			Uri rUri=News.insert(News.RSSFeedContents.CONTENT_URI,cv);
+			Uri rUri=News.insertIfNotExists(News.RSSFeedContents.CONTENT_URI,cv);
 			Log.d(_TAG,"insert returned >>"+rUri+"<<");
 
 
