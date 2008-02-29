@@ -3,10 +3,14 @@ package org.openintents.provider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.net.Uri;
+import android.util.Log;
 import android.provider.BaseColumns;
+import java.util.*;
 
 public abstract class News {
 
+	public static final String _TAG="News";
+	
 	public static final class RSSFeeds implements BaseColumns{
 		
 		public static final Uri CONTENT_URI= Uri
@@ -189,6 +193,43 @@ public abstract class News {
 
 		return mContentResolver.insert(uri,cv);
 		
+	}
+
+	public static Uri insertIfNotExists(Uri uri,ContentValues cs){
+		/*
+		StringBuffer selBuf=new StringBuffer();
+		String selection="";
+		Set valueSet=cs.valueSet();
+		Iterator valIt=valueSet.iterator();
+		while (valIt.hasNext())
+		{
+			String pair=(String)valIt.next();
+			String[] disjunct=pair.split("=");
+			if (disjunct[0].equals(News.RSSFeedContents.CHANNEL_ID))
+			{
+				selBuf.append(" "+News.RSSFeedContents.CHANNEL_ID+"="+disjunct[1]+",");
+			}else if (disjunct[0].equals(News.RSSFeedContents.ITEM_GUID))
+			{
+				selBuf.append(" "+News.RSSFeedContents.ITEM_GUID+" like '"+disjunct[1]+"',");
+			}
+
+		}
+		selection=selBuf.toString();
+		Log.d(_TAG,"checking selection>>"+selection+"<<");
+		if (selection.endsWith(","))
+		{
+			selection=selection.substring(0,selection.length() -1);
+		}
+		//query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
+		if (mContentResolver.query(uri,null,selection,null,null).count()<=0)
+		{
+			insert(uri,cs);
+		}
+		//Log.d(_TAG,"valueset:"+valueSet.toString());
+		return null;			
+		*/
+		return insert(uri,cs);
+
 	}
 
 	public static int delete(Uri uri,String selection,String[] selectionArgs){
