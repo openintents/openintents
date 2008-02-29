@@ -24,7 +24,7 @@ public class NewsProvider extends ContentProvider {
 
 	private SQLiteDatabase mDB;
 	private static final String DATABASE_NAME="newsfeeds.db";
-	private static final int DATABASE_VERSION=1;
+	private static final int DATABASE_VERSION=2;
 	private static final String TAG="NewsProvider";
 	
 	private static final int RSSFEEDS=1001;
@@ -69,7 +69,7 @@ public class NewsProvider extends ContentProvider {
 			Log.d(TAG,"Creating table rssfeedcontents");
 			
 			db.execSQL("CREATE TABLE rssfeedcontents("+
-					News.RSSFeedContents._ID +"INTEGER PRIMARY KEY,"+
+					News.RSSFeedContents._ID +" INTEGER PRIMARY KEY,"+
 					News.RSSFeedContents._COUNT+" INTEGER,"+
 					News.RSSFeedContents.CHANNEL_ID+" "+News.RSSFeedContents.CHANNEL_ID_TYPE+","+
 					News.RSSFeedContents.ITEM_GUID+" "+News.RSSFeedContents.ITEM_GUID_TYPE+","+
@@ -81,7 +81,7 @@ public class NewsProvider extends ContentProvider {
 					);
 			
 			db.execSQL("CREATE TABLE atomfeeds("+
-				News.AtomFeeds._ID+"INTEGER PRIMARY KEY,"+
+				News.AtomFeeds._ID+" INTEGER PRIMARY KEY,"+
 				News.AtomFeeds._COUNT+" INTEGER,"+
 				News.AtomFeeds.FEED_ID+" INTEGER,"+
 				News.AtomFeeds.FEED_UPDATED+" STRING,"+
@@ -116,6 +116,43 @@ public class NewsProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+			if (oldVersion==1 && newVersion==2)
+			{
+
+				db.execSQL("DROP TABLE atomfeeds;");
+				db.execSQL("CREATE TABLE atomfeeds("+
+					News.AtomFeeds._ID+" INTEGER PRIMARY KEY,"+
+					News.AtomFeeds._COUNT+" INTEGER,"+
+					News.AtomFeeds.FEED_ID+" INTEGER,"+
+					News.AtomFeeds.FEED_UPDATED+" STRING,"+
+					News.AtomFeeds.FEED_LAST_CHECKED+" STRING,"+
+					News.AtomFeeds.UPDATE_CYCLE+" INTEGER,"+
+					News.AtomFeeds.HISTORY_LENGTH+" INTEGER,"+
+					News.AtomFeeds.FEED_LINK+" STRING,"+
+					News.AtomFeeds.FEED_LINK_SELF+" STRING,"+
+					News.AtomFeeds.FEED_LINK_ALTERNATE+" STRING,"+
+					News.AtomFeeds.FEED_ICON+" STRING,"+
+					News.AtomFeeds.FEED_RIGHTS+" STRING"+
+					");"
+				);
+
+
+				db.execSQL("DROP TABLE rssfeedcontents;");
+				db.execSQL("CREATE TABLE rssfeedcontents("+
+						News.RSSFeedContents._ID +" INTEGER PRIMARY KEY,"+
+						News.RSSFeedContents._COUNT+" INTEGER,"+
+						News.RSSFeedContents.CHANNEL_ID+" "+News.RSSFeedContents.CHANNEL_ID_TYPE+","+
+						News.RSSFeedContents.ITEM_GUID+" "+News.RSSFeedContents.ITEM_GUID_TYPE+","+
+						News.RSSFeedContents.ITEM_TITLE+" "+News.RSSFeedContents.ITEM_TITLE_TYPE+","+
+						News.RSSFeedContents.ITEM_AUTHOR+" "+News.RSSFeedContents.ITEM_AUTHOR_TYPE+","+
+						News.RSSFeedContents.ITEM_LINK+" "+News.RSSFeedContents.ITEM_LINK_TYPE+","+
+						News.RSSFeedContents.ITEM_DESCRIPTION+" "+News.RSSFeedContents.ITEM_DESCRIPTION_TYPE+
+						");"
+						);
+
+
+
+			}
 			Log.w(TAG,"upgrade not supported");
 			//Log.v(TAG, "");
 			
