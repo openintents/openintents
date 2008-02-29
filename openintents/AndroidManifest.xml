@@ -21,7 +21,11 @@
     <!-- required for ContentBrowserView (in order to view tagged people) -->
 	<uses-permission id="android.permission.READ_CONTACTS" android:name="android.permission.READ_CONTACTS" />
 	<uses-permission id="android.permission.ACCESS_LOCATION" android:name="android.permission.ACCESS_LOCATION" />
-
+	
+	<!-- required for Locations (in order to getCurrentLocation) -->
+	<uses-permission android:name="android.permission.ACCESS_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
+	
 	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
 	android:label="@string/oi_acceptancetest"/>
 	
@@ -137,7 +141,7 @@
 
 		<activity android:name=".tags.TagsAddView"
 			android:label="@string/tags_add_tag">
-			<intent-filter android:icon="@drawable/folder">			    
+			<intent-filter android:icon="@drawable/tag_add001a">			    
 				<action android:name="org.openintents.action.TAG" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
@@ -148,7 +152,7 @@
 				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
 			</intent-filter>
 
-			<intent-filter android:icon="@drawable/folder">			    
+			<intent-filter android:icon="@drawable/tag_add001a">			    
 				<action android:name="android.intent.action.INSERT" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
@@ -260,9 +264,6 @@
 				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>
 			</intent-filter>
 		</activity>
-		
-		
-		
 		
 	</application>	 
 </manifest>

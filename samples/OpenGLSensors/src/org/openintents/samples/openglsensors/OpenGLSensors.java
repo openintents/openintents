@@ -213,7 +213,7 @@ public class OpenGLSensors extends Activity {
 	public boolean onOptionsItemSelected(Item item) {
 		switch (item.getId()) {
 		case MENU_SETTINGS:
-			Intent intent = new Intent(Intent.MAIN_ACTION, Hardware.Preferences.CONTENT_URI);
+			Intent intent = new Intent(Intent.VIEW_ACTION, Hardware.Preferences.CONTENT_URI);
 			startActivity(intent);
 			return true;
 			
