@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="org/openintents/provider/ContentIndex.java|org/openintents/provider/Tag.java" including="./org/openintents/news/**|./org/openintents/provider/*" kind="src" path="oisrc"/>
+	<classpathentry kind="lib" path="C:/android-sdk_m5-rc14_windows/android.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
