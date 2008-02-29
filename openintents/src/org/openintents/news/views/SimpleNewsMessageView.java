@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.content.Context;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 
 /*
@@ -58,6 +59,18 @@ public class SimpleNewsMessageView extends LinearLayout{
 		
 		mLink.setVisibility(expanded ? VISIBLE : GONE);
 		mMessage.setVisibility(expanded ? VISIBLE : GONE);
+
+		mLink.setOnClickListener(
+			new OnClickListener(){
+
+				public void onClick(View v){
+					String link=((TextView)v).getText().toString();
+					Toast.makeText(SimpleNewsMessageView.this.mContext, "Link Clicked", Toast.LENGTH_SHORT).show();
+
+
+				}
+			}
+		);
 	}
 	
 	/**
