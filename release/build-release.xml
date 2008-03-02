@@ -55,11 +55,11 @@
 	<property name="source-lib-dir" value="${source-dir}/lib" />
 						
 	<!-- (sub)project folders  -->
-	<property name="base-dir" value="." />
+	<property name="base-dir" value="../openintents" />
 	<property name="lib-dir" value="../lib" />
+	<property name="newsreader-dir" value="../applications/newsreader" />
 	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
-	<property name="newsreader-dir" value="../applications/newsreader" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
 	<property name="sensorsimulator-dir" value="../tools/SensorSimulator" />
 
@@ -88,7 +88,7 @@
 		
 		<!-- Now copy global readme files -->
 		<copy 
-			file="readme_OpenIntents.txt" 
+			file="${base-dir}/readme_OpenIntents.txt" 
 			todir="${binary-dir}" />
 		<copy 
 			file="../readme_binary.txt" 
@@ -99,7 +99,7 @@
 
 		<!-- Copy the source files -->
 		<copy todir="${source-dir}/openintents">
-		    <fileset dir=".">
+		    <fileset dir="${base-dir}">
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/release/**" />
 	    		<exclude name="**/.svn" />
