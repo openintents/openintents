@@ -16,21 +16,36 @@
 
 package org.openintents;
 
-
+/**
+ * Provides OpenIntents action and category specifiers.
+ * 
+ * These specifiers extend the standard Android specifiers.
+ */
 public abstract class OpenIntents {
 	
 	// -----------------------------------------------
 	//                     Tags
 	// -----------------------------------------------
 	/** identifier for tag action. */
-	public final static String TAG_ACTION = "org.openintents.action.TAG";
+	public static final String TAG_ACTION = "org.openintents.action.TAG";
 	
 	// -----------------------------------------------
 	//                     Categories
 	// -----------------------------------------------
-	/** Main Category */
-	public final static String MAIN_CATEGORY = "org.openintents.category.MAIN";
+	/** 
+	 * Main category specifier.
+	 * 
+	 * Applications placed into this category in the 
+	 * AndroidManifest.xml file are displayed in the
+	 * main view of OpenIntents.
+	 *  */
+	public static final String MAIN_CATEGORY = "org.openintents.category.MAIN";
 
-	/** Settings Category */
-	public final static String SETTINGS_CATEGORY = "org.openintents.category.SETTINGS";
+	/** Settings category specifier.
+	 * 
+	 * Applications placed into this category in the 
+	 * AndroidManifest.xml file are displayed in the
+	 * settings tab of OpenIntents.*/
+	public static final String SETTINGS_CATEGORY 
+		= "org.openintents.category.SETTINGS";
 }
