@@ -262,12 +262,15 @@ public class AFeedMessages extends ListActivity {
 			desc=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_TITLE));
 		
 		}	
+		
+		// TODO put correct expression below
+		/*
 		b.putString(org.openintents.tags.MagnoliaTagging.URI,strUri);
 		b.putString(org.openintents.tags.MagnoliaTagging.DESCRIPTION,desc);
 		Intent intent = new Intent(this, org.openintents.tags.MagnoliaTagging.class);
 		intent.putExtras(b);
 		startActivity(intent);
-
+		 */
 	}
 
     

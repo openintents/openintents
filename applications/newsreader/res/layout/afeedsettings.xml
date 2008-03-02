@@ -45,7 +45,7 @@
 	       <EditText android:id="@+id/feedurl"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-	            android:text="enter feed url here"
+	            android:hint="enter feed url here"
 	            android:padding="3dip"
 	            android:scrollHorizontally="true" 
 	       />		    
@@ -70,7 +70,7 @@
 	       <EditText android:id="@+id/feedname"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="enter feed Name here"
+				android:hint="enter feed Name here"
 				android:padding="3dip"
 				android:scrollHorizontally="true" 
 	       />		    		    

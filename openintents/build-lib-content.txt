@@ -3,3 +3,6 @@ org/openintents/OpenIntents.class
 org/openintents/hardware/Sensors.class
 org/openintents/hardware/SensorsPlus.class
 org/openintents/hardware/SensorSimulatorClient.class
+org/openintents/news/views/*.class
+org/openintents/news/services/*.class
+org/openintents/tags/*.class

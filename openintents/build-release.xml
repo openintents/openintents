@@ -48,6 +48,7 @@
 	<property name="release-dir" value="release" />
 	<property name="binary-dir" value="${release-dir}/openintents-binary-${build-version}" />
 	<property name="source-dir" value="${release-dir}/openintents-source-${build-version}" />
+	<property name="binary-applications-dir" value="${binary-dir}/applications" />
 	<property name="binary-lib-dir" value="${binary-dir}/lib" />
 	<property name="binary-samples-dir" value="${binary-dir}/samples" />
 	<property name="binary-tools-dir" value="${binary-dir}/tools" />
@@ -58,7 +59,7 @@
 	<property name="lib-dir" value="../lib" />
 	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
-	<property name="news-dir" value="../samples/newsreader" />
+	<property name="newsreader-dir" value="../applications/newsreader" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
 	<property name="sensorsimulator-dir" value="../tools/SensorSimulator" />
 
@@ -79,6 +80,7 @@
 		<delete dir="${release-dir}"/>
 		<mkdir dir="${release-dir}"/>
 		<mkdir dir="${binary-dir}"/>
+		<mkdir dir="${binary-applications-dir}"/>
 		<mkdir dir="${binary-lib-dir}"/>
 		<mkdir dir="${binary-samples-dir}"/>
 		<mkdir dir="${binary-tools-dir}"/>
@@ -246,6 +248,40 @@
 	</target>
 	
 
+	<target name="NewsReader"
+		depends="OpenIntents"
+		>
+		<echo>------------------------------NewsReader----------------------</echo>
+		<!-- Use most recent lib file -->
+		<mkdir dir="${newsreader-dir}/lib"/>
+		<copy
+			file="${binary-lib-file}"
+			todir="${newsreader-dir}/lib"
+			/>
+		<!-- Compile -->
+		<ant
+			dir="${newsreader-dir}"
+			antfile="build.xml"
+			target="package"
+			>
+		</ant>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-applications-dir}" flatten="true">
+			<fileset dir="${newsreader-dir}">
+				<include name="bin/Newsreader.apk" />
+				<include name="readme_newsreader.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/applications/newsreader">
+		    <fileset dir="${newsreader-dir}">
+		    	<exclude name="**/bin/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+	</target>	
+
+
 	<target name="SensorSimulator">
 		<echo>------------------------------SensorSimulator----------------------</echo>
 		<!-- Compile -->
@@ -280,7 +316,8 @@
 			FavoriteLocations,
 			OpenGLSensors,
 			PresentPicker,
-			SensorSimulator"
+			SensorSimulator,
+			NewsReader"
 		>
 	</target>
 

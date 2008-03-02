@@ -25,7 +25,7 @@ import android.app.ExpandableListActivity;
 
 import org.openintents.provider.News;
 import org.openintents.news.views.*;
-import org.openintents.news.views.MessageCursorTreeAdapter;
+//import org.openintents.news.views.MessageCursorTreeAdapter;
 
 public class FeedMessages extends ExpandableListActivity {
 
@@ -135,6 +135,8 @@ public class FeedMessages extends ExpandableListActivity {
 			if (mCursor.count()>0)
 			{
 
+				// TODO: Include MessageCursorTreeAdapter
+				/*
 				mAdapter = new MessageCursorTreeAdapter(
 						this,
 						mCursor,
@@ -153,7 +155,7 @@ public class FeedMessages extends ExpandableListActivity {
 									},
 						feedType
 						);
-
+				 	*/
 
 			}else {
 				Log.e(_TAG,"Cursor was empty");
@@ -169,6 +171,8 @@ public class FeedMessages extends ExpandableListActivity {
 			if (mCursor.count()>0)
 			{
 
+				// TODO: Include MessageCursorTreeAdapter
+				/*
 				mAdapter = new MessageCursorTreeAdapter(
 						this,
 						mCursor,
@@ -185,7 +189,7 @@ public class FeedMessages extends ExpandableListActivity {
 									},
 						feedType
 						);
-
+					*/
 
 
 			}else{

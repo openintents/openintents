@@ -1,25 +1,23 @@
 <?xml version="1.0" ?>
-<project name="OpenIntents" default="package">
+<project name="Newsreader" default="package">
 
 	<!-- The following property has to be set:
-	    **************************************************************
-		In Eclipse:
-		* Open "Window" / "Preferences..."
-		* Select "Ant" / "Runtime"
-		* Choose tab "Properties"
-		* Click "Add Property..." for the following:
-		
-		* - Name: "android.sdk"
-		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
-		**************************************************************
-		Alternatively, you can provide the property through the
-		command line:
-		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
-		**************************************************************
-		
-		Choose target "lib" to also create the openintents-lib.jar file.
-	-->
-
+		    **************************************************************
+			In Eclipse:
+			* Open "Window" / "Preferences..."
+			* Select "Ant" / "Runtime"
+			* Choose tab "Properties"
+			* Click "Add Property..." for the following:
+			
+			* - Name: "android.sdk"
+			  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
+			**************************************************************
+			Alternatively, you can provide the property through the
+			command line:
+			* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
+			**************************************************************
+		-->
+	
 	<!-- ############################################# -->
 	<!-- Properties taken from Eclipse -->
 	
@@ -29,13 +27,13 @@
 	
 	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
-	
+		
     <!-- The intermediates directory -->
     <!-- Eclipse uses "bin" for its own output, so we do the same. -->
     <property name="outdir" value="bin" />
 	
-	<!-- Library file positron -->
-	<property name="positron-lib-jar" value="lib/positron-0.8-alpha.jar" />
+	<!-- OpenIntents library file -->
+	<property name="openintents-lib-jar" value="lib/openintents-lib.jar" />
 
     <!-- No user servicable parts below. -->
 
@@ -46,7 +44,7 @@
 
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
-
+    
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
 
@@ -77,9 +75,9 @@
 			<fileset dir="." includes="**/*.bak"/>
 		</delete>
 	</target>
-
+	
     <!-- Generate the R.java file for this project's resources. -->
-    <target name="resource-src" depends="dirs,clear_layout">
+    <target name="resource-src" depends="dirs">
         <echo>Generating R.java...</echo>
         <exec executable="${aapt}" failonerror="true">
             <arg value="compile" />
@@ -105,14 +103,13 @@
     </target>
 
     <!-- Compile this project's .java files into .class files. -->
-	<!-- Removed option: -->
     <target name="compile" depends="dirs, resource-src, aidl">
         <javac encoding="ascii" target="1.5" debug="true" extdirs=""
-                srcdir="src;acceptance"
+                srcdir="src"
                 destdir="${outdir-classes}"
                 bootclasspath="${android-jar}"
-        		classpath="${positron-lib-jar}"
-        />
+				classpath="${openintents-lib-jar}"
+				/>
     </target>
 
     <!-- Convert this project's .class files into .dex files. -->
@@ -123,6 +120,7 @@
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
             <arg path="${basedir}\${outdir-classes}" />
+			<arg path="${openintents-lib-jar}" />
         </exec>
     </target>
 
@@ -195,20 +193,4 @@
     <!-- Create the package file for this project from the sources. -->
     <target name="package" depends="package-dex" />
 
-	<!-- ############### optionally ####################### -->
-	<!-- Create the library -->
-	<!-- Content is defined in "build-lib-content.txt" -->
-	<target name="lib" 
-			depends="package"
-			>
-			<jar 
-				destfile="${outdir}/openintents-lib.jar"
-				basedir="${outdir-classes}"
-				includesfile="build-lib-content.txt"
-				>
-				
-
-			</jar>
-	
-	</target>
 </project>
