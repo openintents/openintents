@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" destdir="doc" 
+        	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
+        	packagenames="
+        		org.openintents,
+        	    org.openintents.main,
+	    		org.openintents.hardware,
+    			org.openintents.lib,
+	    		org.openintents.locations,
+        		org.openintents.news,
+	       		org.openintents.news.services,
+ 				org.openintents.news.views,
+    			org.openintents.provider,
+	    		org.openintents.shopping,
+        		org.openintents.tags,
+        	    org.openintents.tags.content" 
+        	source="1.6" sourcepath="acceptance;src" splitindex="true" use="true" version="true">
+            
+        </javadoc>
+    </target>
+</project>
