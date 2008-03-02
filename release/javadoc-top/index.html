@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<HTML>
+<HEAD>
+<TITLE>
+OpenIntents documentation
+</TITLE>
+<SCRIPT type="text/javascript">
+    targetPage = "" + window.location.search;
+    if (targetPage != "" && targetPage != "undefined")
+        targetPage = targetPage.substring(1);
+    if (targetPage.indexOf(":") != -1)
+        targetPage = "undefined";
+    function loadFrames() {
+        if (targetPage != "" && targetPage != "undefined")
+             top.classFrame.location = top.targetPage;
+    }
+</SCRIPT>
+<NOSCRIPT>
+</NOSCRIPT>
+</HEAD>
+<FRAMESET rows="120px,100%" title="" onLoad="top.loadFrames()">
+<FRAME src="openintents-stacks.html" name="stackFrame" title="" scrolling="yes">
+<FRAME src="openintents/index.html" name="contentFrame" title="" scrolling="yes">
+<NOFRAMES>
+<H2>
+Frame Alert</H2>
+
+<P>
+This document is designed to be viewed using the frames feature. If you see this message, you are using a non-frame-capable web client.
+<BR>
+Link to<A HREF="openintents-stacks.html">Non-frame version.</A>
+</NOFRAMES>
+</FRAMESET>
+</HTML>

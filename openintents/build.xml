@@ -1,6 +1,13 @@
 <?xml version="1.0" ?>
 <project name="OpenIntents" default="package">
-
+	<!--
+		The following targets are possible:
+		
+		* package: creates OpenIntents.apk
+		* lib: creates openintents-lib.jar
+		* javadoc: creates the JavaDoc
+	-->
+	
 	<!-- The following property has to be set:
 	    **************************************************************
 		In Eclipse:
@@ -30,6 +37,10 @@
 	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
 	
+	<!-- Input file for source files to be included in 
+	     lib javadoc -->
+	<property file="build-lib-javadoc.txt" />
+	
     <!-- The intermediates directory -->
     <!-- Eclipse uses "bin" for its own output, so we do the same. -->
     <property name="outdir" value="bin" />
@@ -46,7 +57,8 @@
 
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
-
+	<property name="docdir" value="doc" />
+	
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
 
@@ -196,6 +208,8 @@
     <target name="package" depends="package-dex" />
 
 	<!-- ############### optionally ####################### -->
+
+	<!-- ############### openintents-lib.jar ################ -->
 	<!-- Create the library -->
 	<!-- Content is defined in "build-lib-content.txt" -->
 	<target name="lib" 
@@ -206,9 +220,44 @@
 				basedir="${outdir-classes}"
 				includesfile="build-lib-content.txt"
 				>
-				
-
 			</jar>
-	
 	</target>
+	
+	<!-- ############### JavaDoc ####################### -->
+	<!-- Create OpenIntents JavaDoc -->
+	<target name="javadoc">
+		<delete dir="${docdir}" />
+		<javadoc access="public" author="true" destdir="${docdir}" 
+        	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
+        	packagenames="
+        		org.openintents,
+        	    org.openintents.main,
+	    		org.openintents.hardware,
+    			org.openintents.lib,
+	    		org.openintents.locations,
+        		org.openintents.news,
+	       		org.openintents.news.services,
+ 				org.openintents.news.views,
+    			org.openintents.provider,
+	    		org.openintents.shopping,
+        		org.openintents.tags,
+        	    org.openintents.tags.content" 
+        	source="1.6" sourcepath="acceptance;${srcdir}" splitindex="true" use="true" version="true">
+        </javadoc>
+    </target>
+	
+	<!-- Create OpenIntents-Library JavaDoc -->
+	<!-- This consists of a subset of classes, defined in "build-lib-javadoc.txt" -->
+	<target name="javadoc-lib">
+		<delete dir="doc-lib" />
+        <javadoc access="public" author="true" destdir="doc-lib"
+        	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
+        	sourcefiles="${lib-javadoc-include}" 
+        	source="1.6" splitindex="true" use="true" version="true">
+        </javadoc>
+    </target>
+	
+	<!-- Convencience target -->
+	<target name="all" 
+		depends="package, lib, javadoc, javadoc-lib" />
 </project>

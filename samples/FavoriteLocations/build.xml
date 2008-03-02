@@ -44,6 +44,7 @@
 
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
+	<property name="docdir" value="doc" />
     
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
@@ -193,4 +194,18 @@
     <!-- Create the package file for this project from the sources. -->
     <target name="package" depends="package-dex" />
 
+	<!-- ############### JavaDoc ####################### -->
+	<!-- Create JavaDoc -->
+	<target name="javadoc">
+		<delete dir="${docdir}" />
+		<javadoc access="public" author="true" destdir="${docdir}" 
+        	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
+        	source="1.6" sourcepath="${srcdir}" splitindex="true" use="true" version="true">
+        </javadoc>
+    </target>
+		
+	<!-- ############ Convencience target ############## -->
+	<target name="all" 
+		depends="package, javadoc" />
+	
 </project>

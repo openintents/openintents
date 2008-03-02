@@ -48,6 +48,9 @@
 	<property name="release-dir" value="release" />
 	<property name="binary-dir" value="${release-dir}/openintents-binary-${build-version}" />
 	<property name="source-dir" value="${release-dir}/openintents-source-${build-version}" />
+	<property name="javadoc-dir" value="${release-dir}/openintents-javadoc-${build-version}" />
+		
+	<!-- subdirectories in the release-dir -->
 	<property name="binary-applications-dir" value="${binary-dir}/applications" />
 	<property name="binary-lib-dir" value="${binary-dir}/lib" />
 	<property name="binary-samples-dir" value="${binary-dir}/samples" />
@@ -66,6 +69,10 @@
 	<!-- standard lib file -->
 	<property name="binary-lib-file" value="${binary-lib-dir}/openintents-lib.jar" />
 		
+	<!-- JavaDoc subdirectory -->
+	<property name="doc-dir" value="doc" />
+	<property name="javadoc-top-dir" value="javadoc-top" />
+	
 	<target
 		name="help"
 		>
@@ -85,6 +92,7 @@
 		<mkdir dir="${binary-samples-dir}"/>
 		<mkdir dir="${binary-tools-dir}"/>
 		<mkdir dir="${source-dir}"/>
+		<mkdir dir="${javadoc-dir}"/>
 		
 		<!-- Now copy global readme files -->
 		<copy 
@@ -104,6 +112,14 @@
 	    		<exclude name="**/release/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		
+		<!-- Copy standard JavaDoc top files -->
+		<copy todir="${javadoc-dir}">
+			<fileset dir="${javadoc-top-dir}">
+				<exclude name="**/Thumbs.db" />
+		    	<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>
 
@@ -143,6 +159,18 @@
 				<include name="${lib-dir}/readme_source.txt" />
 			</fileset>
 		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/openintents">
+			<fileset dir="${base-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
+		<!-- Copy to javadoc-lib release -->
+		<copy todir="${javadoc-dir}/lib">
+			<fileset dir="${base-dir}/doc-lib">
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
 	</target>
 
 
@@ -160,7 +188,7 @@
 		<ant
 			dir="${favoritelocations-dir}"
 			antfile="build.xml"
-			target="package"
+			target="all"
 			>
 		</ant>
 		<!-- Copy to binary release -->
@@ -176,6 +204,12 @@
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/samples/FavoriteLocations">
+			<fileset dir="${favoritelocations-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>	
 
@@ -194,7 +228,7 @@
 		<ant
 			dir="${openglsensors-dir}"
 			antfile="build.xml"
-			target="package"
+			target="all"
 			>
 		</ant>
 		<!-- Copy to binary release -->
@@ -210,6 +244,12 @@
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/samples/OpenGLSensors">
+			<fileset dir="${openglsensors-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>	
 
@@ -228,7 +268,7 @@
 		<ant
 			dir="${presentpicker-dir}"
 			antfile="build.xml"
-			target="package"
+			target="all"
 			>
 		</ant>
 		<!-- Copy to binary release -->
@@ -244,6 +284,12 @@
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/samples/PresentPicker">
+			<fileset dir="${presentpicker-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>
 	
@@ -262,7 +308,7 @@
 		<ant
 			dir="${newsreader-dir}"
 			antfile="build.xml"
-			target="package"
+			target="all"
 			>
 		</ant>
 		<!-- Copy to binary release -->
@@ -278,6 +324,12 @@
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/applications/newsreader">
+			<fileset dir="${newsreader-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>	
 
@@ -304,6 +356,12 @@
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/tools/SensorSimulator">
+			<fileset dir="${sensorsimulator-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
 		</copy>
 	</target>	
 
@@ -333,6 +391,10 @@
 		<zip
 			destfile="${source-dir}.zip"
 			basedir="${source-dir}"
+			/>
+		<zip
+			destfile="${javadoc-dir}.zip"
+			basedir="${javadoc-dir}"
 			/>
 	</target>
 </project>
