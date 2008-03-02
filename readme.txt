@@ -26,9 +26,8 @@ OpenIntents
 
 The directory structure is organized as follows:
 
-archive/
-   lib/
-      contains old library JAR versions
+applications/
+   contains applications using OpenIntents
 
 lib/
    contains the latest library JAR version
@@ -36,13 +35,11 @@ lib/
 openintents/
    contains all core functionality
 
+release/
+   contains scripts to build the full release
+
 samples/
    contains samples that use openintents
-
-testing/
-   developers/
-   common/
-      directories for testing concepts
 
 tools/
    contains additional tools (SensorSimulator)
