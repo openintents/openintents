@@ -61,6 +61,7 @@ public class Mail{
 		public static final Uri CONTENT_URI=
 			Uri.parse("org.openintents.mail/accounts");
 
+			public static final String DEFAULT_SORT_ORDER="";
 			public static final String TYPE="type";
 
 			public static final String NAME="name";
@@ -113,6 +114,7 @@ public class Mail{
 			public static final Uri CONTENT_URI=
 				Uri.parse("org.openintents.mail/messages");
 
+			public static final String DEFAULT_SORT_ORDER="";
 			
 			public static final String ACCOUNT_ID="account_id";
 
@@ -149,6 +151,8 @@ public class Mail{
 
 			public static final String HEADER="header";
 
+			public static final String ATTACHMENTS="attachments";
+
 			public static final String[] PROJECTION={
 				_ID,
 				_COUNT,
@@ -168,21 +172,45 @@ public class Mail{
 				MESSAGE_ID,
 				IN_REPLY_TO,
 				TAG_NAMES,
-				HEADER
+				HEADER,
+				ATTACHMENTS
 			};
 
 	};
 	
 
-	public static final class Folders implements BaseColumns	{
+	public static final class Folders implements BaseColumns {
 			public static final Uri CONTENT_URI=
 				Uri.parse("org.openintents.mail/folders");
 
+			public static final String DEFAULT_SORT_ORDER="";
+
+			public static final String ACCOUNT_ID="account_id";
+
+			public static final String FOLDER_NAME="folder_name";
+
+			public static final String FOLDER_PARENT="folder_parent";
+
+			public static final String FOLDER_CHILDS="folder_childs";
+
+			public static final String FOLDER_COMPLETE_PATH="folder_complete_path";
+
+
+			public static final String[] PROJECTION={
+				ACCOUNT_ID,
+				FOLDER_NAME,
+				FOLDER_PARENT,
+				FOLDER_CHILDS
+			};
+
 	};
+
+
 
 	public static final class Signatures implements BaseColumns{
 			public static final Uri CONTENT_URI=
 				Uri.parse("org.openintents.mail/signatures");
+		public static final String DEFAULT_SORT_ORDER="";
 		//Name of signature, eg "Default"
 		public static final String NAME="name";
 
@@ -193,10 +221,50 @@ public class Mail{
 			NAME,
 			SIG
 		};
-
-
-
 	};
+
+	public static final class Attachments implements BaseColumns{
+			public static final Uri CONTENT_URI=
+				Uri.parse("org.openintents.mail/attachments");
+		public static final String DEFAULT_SORT_ORDER="";
+
+		public static final String ACCOUNT_ID="account_id";
+
+		public static final String MAIL_ID="mail_id";
+
+		public static final String CONTENT_TYPE="content_type";
+
+		public static final String CONTENT_TRANSFER_ENCODING="content_transfer_encoding";
+
+		public static final String DATA="data";
+
+		public static final String STATUS="status";
+		
+		public static final String LOCAL_URI="local_uri";
+
+		public static final String SIZE="size";
+
+		public static final String STATUS_DOWNLOADED="downloaded";
+		public static final String STATUS_UPLOADED="uploaded";
+		public static final String STATUS_SAVED_LOCAL="saved";
+		public static final String STATUS_WILL_DOWNLOAD="w_down";
+		public static final String STATUS_WILL_UPLOAD="w_up";
+
+
+		public static final String[] PROJECTION={
+			ACCOUNT_ID,
+			MAIL_ID,
+			CONTENT_TYPE,
+			CONTENT_TRANSFER_ENCODING,
+			DATA,
+			STATUS,
+			LOCAL_URI,
+			SIZE
+		};
+	
+	};
+
+	
 
 		public static Cursor getInboxForAccount(String AccountName){return null;}
 		
