@@ -28,6 +28,7 @@ public class MailProvider extends ContentProvider {
 	private static final String TABLE_MESSAGES="messages";
 	private static final String TABLE_FOLDERS="folders";
 	private static final String TABLE_SIGNATURES="signatures";
+	private static final String TABLE_ATTACHMENTS="attachments";
 
 
 	private static final String TAG="MailProvider";
@@ -101,7 +102,7 @@ public class MailProvider extends ContentProvider {
 				");"
 			);
 
-			db.execSQL("CREATE TABLE "+TABLE_SIGNATURES+"+ ("+
+			db.execSQL("CREATE TABLE "+TABLE_SIGNATURES+" ("+
 				Mail.Signatures._ID+" INTEGER PRIMARY KEY,"+
 				Mail.Signatures._COUNT+" INTEGER,"+
 				Mail.Signatures.NAME+" STRING,"+
@@ -109,6 +110,20 @@ public class MailProvider extends ContentProvider {
 				");"
 			);
 
+			db.execSQL("CREATE TABLE "+TABLE_ATTACHMENTS+" ("+
+				Mail.Attachments._ID+" INTEGER PRIMARY KEY,"+
+				Mail.Attachments._COUNT+" INTEGER,"+
+				Mail.Attachments.ACCOUNT_ID+" INTEGER,"+
+				Mail.Attachments.MAIL_ID+" INTEGER,"+
+				Mail.Attachments.CONTENT_TYPE+" STRING,"+
+				Mail.Attachments.CONTENT_TRANSFER_ENCODING+" STRING,"+
+				Mail.Attachments.DATA+" BLOB,"+
+				Mail.Attachments.STATUS+" STRING,"+
+				Mail.Attachments.LOCAL_URI+" STRING,"+
+				Mail.Attachments.SIZE+" INTEGER"+
+
+				");"
+			);
 
 
 			
@@ -185,21 +200,43 @@ public class MailProvider extends ContentProvider {
 		long rowID=0;
 		switch (match){
 			case MAIL_ACCOUNTS:
-				break;
-			case MAIL_ACCOUNT_ID:
-				break;
+				rowID=mDB.insert(TABLE_ACCOUNTS, "", values);			
+				if (rowID > 0) {
+					Uri nUri = ContentUris.withAppendedId(Mail.Account.CONTENT_URI,rowID);
+					getContext().getContentResolver().notifyChange(nUri, null);
+					return nUri;
+				}
+				throw new SQLException("Failed to insert row into " + uri);	
+				//break;
+
 			case MAIL_MESSAGES:
-				break;
-			case MAIL_MESSAGE_ID:
-				break;
+
+					rowID=mDB.insert(TABLE_MESSAGES, "", values);			
+					if (rowID > 0) {
+						Uri nUri = ContentUris.withAppendedId(Mail.Message.CONTENT_URI,rowID);
+						getContext().getContentResolver().notifyChange(nUri, null);
+						return nUri;
+					}
+					throw new SQLException("Failed to insert row into " + uri);	
+				//break;
 			case MAIL_FOLDERS:
-				break;
-			case MAIL_FOLDER_ID:
-				break;
+					rowID=mDB.insert(TABLE_FOLDERS, "", values);			
+					if (rowID > 0) {
+						Uri nUri = ContentUris.withAppendedId(Mail.Folders.CONTENT_URI,rowID);
+						getContext().getContentResolver().notifyChange(nUri, null);
+						return nUri;
+					}
+					throw new SQLException("Failed to insert row into " + uri);					
+			
+			//break;
 			case MAIL_SIGNATURES:
-				break;
-			case MAIL_SIGNATURE_ID:
-				break;
+					rowID=mDB.insert(TABLE_SIGNATURES, "", values);			
+					if (rowID > 0) {
+						Uri nUri = ContentUris.withAppendedId(Mail.Signatures.CONTENT_URI,rowID);
+						getContext().getContentResolver().notifyChange(nUri, null);
+						return nUri;
+					}
+					throw new SQLException("Failed to insert row into " + uri);					
 		}
 		return null;
 	}
@@ -210,52 +247,190 @@ public class MailProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String orderBy=null;
+
 		long rowID=0;
 		switch (match){
 			case MAIL_ACCOUNTS:
+				qb.setTables(TABLE_ACCOUNTS);
+				if (projection==null)
+				{
+					projection=Mail.Account.PROJECTION;
+				}
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Account.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_ACCOUNT_ID:
+				qb.setTables(TABLE_ACCOUNTS);
+				//qb.setProjectionMap(FEED_PROJECTION_MAP);
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Account.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_MESSAGES:
+				qb.setTables(TABLE_MESSAGES);
+				if (projection==null)
+				{
+					projection=Mail.Message.PROJECTION;
+				}
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Message.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_MESSAGE_ID:
+				qb.setTables(TABLE_MESSAGES);
+				//qb.setProjectionMap(FEED_PROJECTION_MAP);
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Message.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_FOLDERS:
+				qb.setTables(TABLE_FOLDERS);
+				if (projection==null)
+				{
+					projection=Mail.Folders.PROJECTION;
+				}
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Folders.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_FOLDER_ID:
+				qb.setTables(TABLE_FOLDERS);
+				//qb.setProjectionMap(FEED_PROJECTION_MAP);
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Folders.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_SIGNATURES:
+				qb.setTables(TABLE_SIGNATURES);
+				if (projection==null)
+				{
+					projection=Mail.Signatures.PROJECTION;
+				}
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Signatures.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 			case MAIL_SIGNATURE_ID:
+				qb.setTables(TABLE_SIGNATURES);
+				//qb.setProjectionMap(FEED_PROJECTION_MAP);
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Mail.Signatures.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
 				break;
 		}
-		return null;
+        Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,null, orderBy);
+        c.setNotificationUri(getContext().getContentResolver(), uri);
+        return c;
 	}
 
 	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+		int result=0;
+
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
-		long rowID=0;
+		String rowID="";
+
+
 		switch (match){
 			case MAIL_ACCOUNTS:
+				result= mDB.update(TABLE_ACCOUNTS, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_ACCOUNT_ID:
+				rowID=uri.getPathSegments().get(1);
+				result= mDB
+					.update(TABLE_ACCOUNTS,
+							values,
+							"_id="+rowID
+							+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+                            + ')' : ""),
+							selectionArgs);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_MESSAGES:
+				result= mDB.update(TABLE_MESSAGES, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_MESSAGE_ID:
+				rowID=uri.getPathSegments().get(1);
+				result= mDB
+					.update(TABLE_MESSAGES,
+							values,
+							"_id="+rowID
+							+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+                            + ')' : ""),
+							selectionArgs);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_FOLDERS:
+				result= mDB.update(TABLE_FOLDERS, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_FOLDER_ID:
+				rowID=uri.getPathSegments().get(1);
+				result= mDB
+					.update(TABLE_FOLDERS,
+							values,
+							"_id="+rowID
+							+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+                            + ')' : ""),
+							selectionArgs);				
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
+
 			case MAIL_SIGNATURES:
+				result= mDB.update(TABLE_SIGNATURES, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case MAIL_SIGNATURE_ID:
+				rowID=uri.getPathSegments().get(1);
+				result= mDB
+					.update(TABLE_SIGNATURES,
+							values,
+							"_id="+rowID
+							+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+                            + ')' : ""),
+							selectionArgs);
+				getContext().getContentResolver().notifyChange(uri, null);
 				break;
-		}
-			return 0;
+			}
+			return result;
 		}
 
 	@Override
