@@ -22,8 +22,13 @@ import java.util.List;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
+import org.openintents.hardware.Sensors;
+import org.openintents.hardware.SensorsPlus;
+import org.openintents.provider.Hardware;
+import org.openintents.shopping.ShoppingView;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Resources;
@@ -34,7 +39,9 @@ import android.text.Layout;
 import android.text.Spannable;
 import android.text.style.AlignmentSpan;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
+import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -58,14 +65,10 @@ public class OpenIntentsView extends Activity {
 
 	private TabHost mTabHost;
 	
-	/*
-	GridView mGridMain;
-	GridView mGridSettings;
-	*/
-	
 	TableLayout mGridMain;
 	TableLayout mGridSettings;
 	
+	private static final int MENU_ABOUT = Menu.FIRST;
 	
 
 	/** Called when the activity is first created. */
@@ -94,16 +97,6 @@ public class OpenIntentsView extends Activity {
 		mTabHost.setCurrentTab(0);
 		
 		// loadApps(); // do this in onresume?
-
-		/*
-        mGridMain = (GridView) findViewById(R.id.grid_main);
-        mGridMain.setAdapter(new AppsAdapter(this, OpenIntents.MAIN_CATEGORY));
-        //mGridMain.setAddsStatesFromChildren(true);
-        //mGridMain.
-        
-        mGridSettings = (GridView) findViewById(R.id.grid_settings);
-        mGridSettings.setAdapter(new AppsAdapter(this, OpenIntents.SETTINGS_CATEGORY));
-        */
 		
 		mGridMain = (TableLayout) findViewById(R.id.grid_main);
 		mGridSettings = (TableLayout) findViewById(R.id.grid_settings);
@@ -162,13 +155,7 @@ public class OpenIntentsView extends Activity {
         if (col > 0) {
         	table.addView(rowview, new TableLayout.LayoutParams());
         }
-        /*
-        for (int i=0; i<max; i++) {
-        	
-            // Add the button to the linearlayout:
-            grid.addView(ll);
-        }
-        */
+        
 	}
 	
 	private LinearLayout getCustomButton(List<ResolveInfo> apps, int pos) {
@@ -247,155 +234,57 @@ public class OpenIntentsView extends Activity {
 		}
 	}
 	
-	/*
-	public void onItemClick(AdapterView adapterView, View view, int position,
-			long id) {
-		switch (position) {
-		case 0:
-			Intent intent = new Intent(this, LocationsView.class);
-			startActivity(intent);
-			break;
-			
-		case 1:
-			intent = new Intent(this, TagsView.class);
-			startActivity(intent);
-			break;
-			
-		case 2:
-			intent = new Intent(this, ShoppingView.class);
-			startActivity(intent);
-			break;
-			
-		case 3:
-			intent = new Intent(this, SensorSimulatorView.class);
-			startActivity(intent);
-			break;
-		
-		case 4:
-			intent = new Intent(this, ContentBrowserView.class);
-			startActivity(intent);
-			break;
-			
-		case 5:
-			intent = new Intent(this, MagnoliaSettings.class);
-			startActivity(intent);
-			break;
-			
-		case 6:
-			intent = new Intent(this, MagnoliaTagging.class);
-			startActivity(intent);
-			break;
-			
-		case 7:
-			intent = new Intent(OpenIntentsView.this, About.class);
-			startActivity(intent);
-			break;
-			
-		default:
-			throw new IllegalArgumentException("Unknown position " + position);
-		}
+	/////////////////////////////////////////////////////////
+	// Menu
 
-	}
-	*/
-	/*
-	private OnClickListener mAboutListener = new OnClickListener() {
-		public void onClick(View v) {
-			Intent intent = new Intent(OpenIntents.this, About.class);
-			startActivity(intent);
-	    }
-	};
-	*/
+	/**
+	 * Creates the menu structure.
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
 
-/*
-    
-    
-    public class AppsAdapter extends BaseAdapter {
-    	
-    	private String mCategory;
-    	private List<ResolveInfo> mApps;
-    	
-        public AppsAdapter(Context context, String category) {
-        	mCategory = category;
-        	loadApps();
-        }
-
-        public View getView(int position, View convertView, ViewGroup parent) {
-        	
-        	ImageView i = new ImageView(OpenIntentsView.this);
-            ResolveInfo info = mApps.get(position);
-
-            i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));
-            i.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            i.setLayoutParams(new LinearLayout.LayoutParams(
-            		LinearLayout.LayoutParams.WRAP_CONTENT,
-            		LinearLayout.LayoutParams.WRAP_CONTENT));
-        	/*
-             ImageView i = new ImageView(OpenIntentsView.this);
-            ResolveInfo info = mApps.get(position);
-
-            i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));
-            i.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            i.setLayoutParams(new Gallery.LayoutParams(50, 50));
-            * 
-             * /
-        	/*
-        	ViewInflate v = getViewInflate();
-        	
-            View i = v.inflate(R.layout.main_imagetextbutton, parent, null);
-            
-            ResolveInfo info = mApps.get(position);
-
-            //i.setImageDrawable(info.activityInfo.loadIcon(getPackageManager()));
-            //i.setScaleType(ImageView.ScaleType.FIT_CENTER);
-            i.setLayoutParams(new Gallery.LayoutParams(50, 50));
-            return i;
-            * /
-            
-            TextView tv = new TextView(OpenIntentsView.this);
-            tv.setLayoutParams(new LinearLayout.LayoutParams(
-            		LinearLayout.LayoutParams.WRAP_CONTENT,
-            		LinearLayout.LayoutParams.WRAP_CONTENT));
-            tv.setText(info.activityInfo.loadLabel(getPackageManager()));
-            tv.setTextColor(Color.BLACK);
-            
-            LinearLayout ll = new LinearLayout(OpenIntentsView.this);
-            ll.setLayoutParams(new GridView.LayoutParams(80, 80));
-            ll.setOrientation(LinearLayout.VERTICAL);
-            ll.addView(i);
-            ll.addView(tv);
-            ll.setBackground(android.R.drawable.button_background);
-            ll.setFocusable(true);
-            ll.setClickable(true);
-            
-            
-        	
-            //parent.setBackground(android.R.drawable.button_background);
-            //convertView.setBackground(android.R.drawable.button_background);
-            //parent.getChildAt(0).setBackground(android.R.drawable.button_background);
-            return ll;
-        }
-
-
-        public final int getCount() {
-            return mApps.size();
-        }
-
-        public final Object getItem(int position) {
-            return mApps.get(position);
-        }
-
-        public final long getItemId(int position) {
-            return position;
-        }
+		// Standard menu
+		menu.add(0, MENU_ABOUT, R.string.about, R.drawable.about001a)
+			.setShortcut('0', 'a');
+	
+		// Generate any additional actions that can be performed.
+        // This allows other applications to extend
+        // our menu with their own actions.
+        Intent intent = new Intent(null, getIntent().getData());
+        intent.addCategory(Intent.ALTERNATIVE_CATEGORY);
+        menu.addIntentOptions(
+            Menu.ALTERNATIVE, 0, new ComponentName(this, OpenIntentsView.class),
+            null, intent, 0, null);
         
+        return true;
+	}
+	
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		
+		// Nothing to be done here.
+		
+		return true;
+	}
 
-        private void loadApps() {
-            Intent mainIntent = new Intent(Intent.MAIN_ACTION, null);
-            mainIntent.addCategory(mCategory);
+	@Override
+	public boolean onOptionsItemSelected(Item item) {
+		switch (item.getId()) {
+		case MENU_ABOUT:
+			showAboutDialog();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+		
+	}
+	
+	
+	private void showAboutDialog() {
+		Intent intent = new Intent(OpenIntentsView.this, About.class);
+		startActivity(intent);
+	};
+	
 
-            mApps = getPackageManager().queryIntentActivities(mainIntent, 0);
-        }
-    }
-    
-*/
 }

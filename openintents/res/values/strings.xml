@@ -22,6 +22,7 @@
 	
 	<string name="openintents">OpenIntents</string>
 	<string name="about_openintents">About OpenIntents</string>
+	<string name="about">About</string>
 	<string name="about_openintents_text">OpenIntents 
 		defines open intents and interfaces to make Android applications
 		work together.\n\n
