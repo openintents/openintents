@@ -16,8 +16,16 @@
 
 package org.openintents.tools.sensorsimulator;
 
-
-class Vector {
+/**
+ * Rolls, pitches, and yaws a three-dimensional vector.
+ * 
+ * This tiny vector class is optimized for 
+ * rolling, pitching, and yawing of a three-vector.
+ * 
+ * @author Peli
+ *
+ */
+public class Vector {
 	public double x;
 	public double y;
 	public double z;

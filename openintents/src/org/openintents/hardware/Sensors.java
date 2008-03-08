@@ -23,20 +23,44 @@ public class Sensors extends android.hardware.Sensors {
 	 */
 	private static final String TAG = "Hardware";
 	
+	/**
+	 * A constant describing an accelerometer. 
+	 * Constant Value: "accelerometer" 
+	 */
 	public static final String SENSOR_ACCELEROMETER 
 		= android.hardware.Sensors.SENSOR_ACCELEROMETER;
+	
+	/**
+	 * A constant describing a compass. 
+	 * Constant Value: "compass" 
+	 */
 	public static final String SENSOR_COMPASS 
 		= android.hardware.Sensors.SENSOR_COMPASS;
+	
+	/**
+	 * A constant describing an orientation sensor. 
+	 * Constant Value: "orientation"
+	 */
 	public static final String SENSOR_ORIENTATION 
 		= android.hardware.Sensors.SENSOR_ORIENTATION;
 	
-	// Extensions
+	/**
+	 * Client that communicates with the SensorSimulator application.
+	 */
 	public static SensorSimulatorClient mClient = new SensorSimulatorClient();
 	
 	public Sensors() {
 		super();
 	}
 
+	/**
+	 * Disables the given sensor for this VM. 
+	 * Following this call, calls to readSensor or getSensorUpdateRate 
+	 * for the given sensor type are disallowed.
+	 * 
+	 * @param sensor the name of the sensor to be enabled 
+	 * @throws IllegalArgumentException if the sensor is not supported 
+	 */
 	public static void disableSensor(String sensor) {
 		if (mClient.connected) {
 			mClient.disableSensor(sensor);
@@ -45,6 +69,12 @@ public class Sensors extends android.hardware.Sensors {
 		}
 	}
 
+	/**
+	 * Enables the given sensor for this VM. 
+	 * Following this call, calls to readSensor for the given sensor type are allowed. 
+	 * @param sensor the name of the sensor to be enabled 
+	 * @throws IllegalArgumentException if the sensor is not supported
+	 */
 	public static void enableSensor(String sensor) {
 		if (mClient.connected) {
 			mClient.enableSensor(sensor);
@@ -53,6 +83,14 @@ public class Sensors extends android.hardware.Sensors {
 		}
 	}
 
+	/**
+	 * Returns the number of sensor values returned by the given sensor. 
+	 * The returned value is 1 for temperature and pedometer values, 
+	 * and 3 for accelerator or compass values. 
+	 * @param sensor a string indicating the sensor type
+	 * @return number of sensor values
+	 * @throws IllegalArgumentException if the sensor is not supported 
+	 */
 	public static int getNumSensorValues(String sensor) {
 		if (mClient.connected) {
 			return mClient.getNumSensorValues(sensor);
@@ -60,7 +98,43 @@ public class Sensors extends android.hardware.Sensors {
 			return android.hardware.Sensors.getNumSensorValues(sensor);
 		}
 	}
+	
+	/**
+	 * Returns the current update rate for the given sensor, in updates per second. 
+	 * If the sensor does not allow external control over its update rate, 
+	 * or does not have a fixed update rate, 0 is returned. 
+	 * @param sensor the name of the sensor to be queried 
+	 * @return the current update rate for the sensor, or 0
+	 * @throws IllegalArgumentException  if the sensor is not supported
+	 * @throws IllegalStateException  if the sensor is not enabled  
+	 */
+	public static float getSensorUpdateRate(String sensor) {
+		if (mClient.connected) {
+			return mClient.getSensorUpdateRate(sensor);
+		} else {
+			return android.hardware.Sensors.getSensorUpdateRate(sensor);
+		}
+	}
 
+	/**
+	 * Returns a list of supported update rates for the given sensor, in updates per second. 
+	 * If no information is available, null is returned. 
+	 * @param sensor the name of the sensor to be queried 
+	 * @return an array of floats, or null is nor information is available.
+	 * @throws IllegalArgumentException if the sensor is not supported
+	 */
+	public static float[] getSensorUpdateRates(String sensor) {
+		if (mClient.connected) {
+			return mClient.getSensorUpdateRates(sensor);
+		} else {
+			return android.hardware.Sensors.getSensorUpdateRates(sensor);
+		}
+	}
+	
+	/**
+	 * Returns an array of Strings containing the supported sensor types.
+	 * @return array of Strings containing the supported sensor types
+	 */
 	public static String[] getSupportedSensors() {
 		if (mClient.connected) {
 			return mClient.getSupportedSensors();
@@ -69,13 +143,63 @@ public class Sensors extends android.hardware.Sensors {
 		}
 	}
 
+	/**
+	 * Reads the sensor indicated by sensorType, storing the vector of returned values into the entries of sensorValues. 
+	 * Values whose values are not given in defined units are normalized to the range [-1, 1]. 
+	 * 
+	 * For sensors that return a spatial vector, the axes are oriented as follows: 
+	 * with the device lying flat on a horizontal surface in front of the user, 
+	 * oriented so the screen is readable by the user in the normal fashion, 
+	 * the X axis goes from left to right, the Y axis goes from the user toward the device, 
+	 * and the Z axis goes upwards perpendicular to the surface.
+	 *
+	 * @param sensor the name of the sensor to read from
+	 * @param sensorValues an array of floats to hold the returned value(s) 
+	 * @throws IllegalArgumentException if the sensor is not supported 
+	 * @throws IllegalStateException if the sensor is not enabled 
+	 * @throws NullPointerException if sensorValues is null 
+	 * @throws ArrayIndexOutOfBoundsException if sensorValues has too few elements to hold the sensor values  
+	 */
 	public static void readSensor(String sensor, float[] sensorValues) {
 		if (mClient.connected) {
 			mClient.readSensor(sensor, sensorValues);
 		} else {
 			android.hardware.Sensors.readSensor(sensor, sensorValues);
 		}
-				
+	}
+	
+	/**
+	 * Sets the desired update rate for the given sensor, in updates per second. 
+	 * The supported update rate closest to the given rate is used. 
+	 * If the sensor is not enabled at the time of the call, 
+	 * the change will take effect when it becomes enabled. 
+	 * If the sensor does not allow external control over its update rate, nothing happens. 
+	 * @param sensor the name of the sensor to be queried
+	 * @param updatesPerSecond the desired update rate for the sensor
+	 * @throws IllegalArgumentException  if the sensor is not supported  
+	 */
+	public static void setSensorUpdateRate(String sensor, float updatesPerSecond) {
+		if (mClient.connected) {
+			mClient.setSensorUpdateRate(sensor, updatesPerSecond);
+		} else {
+			android.hardware.Sensors.setSensorUpdateRate(sensor, updatesPerSecond);
+		}
+	}
+	
+	/**
+	 * Unsets the desired update rate for the given sensor. 
+	 * The sensor will use its default rate. 
+	 * If the sensor is not enabled at the time of the call, 
+	 * the change will take effect when it becomes enabled. 
+	 * @param sensor the name of the sensor to be updated
+	 * @throws IllegalArgumentException if the sensor is not supported  
+	 */
+	public static void unsetSensorUpdateRate(String sensor) {
+		if (mClient.connected) {
+			mClient.unsetSensorUpdateRate(sensor);
+		} else {
+			android.hardware.Sensors.unsetSensorUpdateRate(sensor);
+		}
 	}
 	
 	//  Member function extensions:

@@ -120,6 +120,8 @@
 	<string name="sensorsimulator_testing_description">
 		Test the connection to the Sensor Simulator.
 		Disable the sensors and disconnect after testing.</string>
+	<string name="update_rate">update rate</string>
+	<string name="update_rate_seconds">update rate (1/s)</string>
 	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>

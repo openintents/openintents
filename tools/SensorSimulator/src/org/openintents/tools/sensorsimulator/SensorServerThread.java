@@ -70,6 +70,10 @@ public class SensorServerThread implements Runnable {
 	
 
     public void listenThread() {
+    	double updatesPerSecond;
+        double[] updatesList;
+        int len;
+    	
         try {
 	        PrintWriter out = new PrintWriter(mClientSocket.getOutputStream(), true);
 	        BufferedReader in = new BufferedReader(
@@ -85,6 +89,7 @@ public class SensorServerThread implements Runnable {
 	
 	        while ((inputLine = in.readLine()) != null) {
 	             //outputLine = kkp.processInput(inputLine);
+	        	//////////////////////////////////////////////////////////
 	        	if (inputLine.compareTo("getSupportedSensors()") == 0) {
 	        		String[] supportedSensors = getSupportedSensors();
 	        		out.println("" + supportedSensors.length);
@@ -92,7 +97,8 @@ public class SensorServerThread implements Runnable {
 	        			out.println(supportedSensors[i]);
 	        		}
 	        		
-	        	} else if (inputLine.compareTo("disableSensor()") == 0 ||
+	        	//////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("disableSensor()") == 0 ||
 	        			inputLine.compareTo("enableSensor()") == 0) {
 	        		boolean enable = (inputLine.compareTo("enableSensor()") == 0);
 	        		
@@ -122,7 +128,8 @@ public class SensorServerThread implements Runnable {
 	        			// This sensor is not supported
 	        			out.println("throw IllegalArgumentException");
 	        		}
-	        	} else if (inputLine.compareTo("getNumSensorValues()") == 0) {
+	        	//////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("getNumSensorValues()") == 0) {
 	    	        inputLine = in.readLine();
 	        		if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
 	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
@@ -140,15 +147,16 @@ public class SensorServerThread implements Runnable {
 	        			// This sensor is not supported
 	        			out.println("throw IllegalArgumentException");
 	        		}
-	        	} else if (inputLine.compareTo("readSensor()") == 0) {
+	        	//////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("readSensor()") == 0) {
 	        		inputLine = in.readLine();
 	        		if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
 	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
 	        			if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
 	        				out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.accelx);
-		        			out.println(mSensorSimulator.mobile.accely);
-		        			out.println(mSensorSimulator.mobile.accelz);
+		        			out.println(mSensorSimulator.mobile.read_accelx);
+		        			out.println(mSensorSimulator.mobile.read_accely);
+		        			out.println(mSensorSimulator.mobile.read_accelz);
 		        			mSensorSimulator.updateEmulatorAccelerometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -158,9 +166,9 @@ public class SensorServerThread implements Runnable {
 	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
 	        			if (mSensorSimulator.mEnabledCompass.isSelected()) {
 		        			out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.compassx);
-		        			out.println(mSensorSimulator.mobile.compassy);
-		        			out.println(mSensorSimulator.mobile.compassz);
+		        			out.println(mSensorSimulator.mobile.read_compassx);
+		        			out.println(mSensorSimulator.mobile.read_compassy);
+		        			out.println(mSensorSimulator.mobile.read_compassz);
 		        			mSensorSimulator.updateEmulatorCompassRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -170,9 +178,9 @@ public class SensorServerThread implements Runnable {
 	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
 	        			if (mSensorSimulator.mEnabledOrientation.isSelected()) {
 			        		out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.yaw);
-		        			out.println(mSensorSimulator.mobile.pitch);
-		        			out.println(mSensorSimulator.mobile.roll);
+		        			out.println(mSensorSimulator.mobile.read_yaw);
+		        			out.println(mSensorSimulator.mobile.read_pitch);
+		        			out.println(mSensorSimulator.mobile.read_roll);
 		        			mSensorSimulator.updateEmulatorOrientationRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -182,7 +190,7 @@ public class SensorServerThread implements Runnable {
 	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
 	        			if (mSensorSimulator.mEnabledThermometer.isSelected()) {
 				        	out.println("1"); // number of data following
-				        	out.println(mSensorSimulator.mobile.temperature);
+				        	out.println(mSensorSimulator.mobile.read_temperature);
 		        			mSensorSimulator.updateEmulatorThermometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -192,7 +200,191 @@ public class SensorServerThread implements Runnable {
 	        			// This sensor is not supported
 	        			out.println("throw IllegalArgumentException");
 	        		}
-	        	}
+	        	//////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("getSensorUpdateRates()") == 0) {
+	    	        inputLine = in.readLine();
+	        		if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
+	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
+	        			updatesList = mSensorSimulator.getSafeDoubleList(mSensorSimulator.mUpdateRatesAccelerometerText);
+	        			if (updatesList == null || updatesList.length < 1) {
+	        				out.println("0");
+	        			} else {
+	        				len = updatesList.length;
+		        			out.println("" + len);
+	        				for (int i=0; i<len; i++) {
+	        					out.println("" + updatesList[i]);
+	        				}
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
+	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
+	        			updatesList = mSensorSimulator.getSafeDoubleList(mSensorSimulator.mUpdateRatesCompassText);
+	        			if (updatesList == null || updatesList.length < 1) {
+	        				out.println("0");
+	        			} else {
+	        				len = updatesList.length;
+		        			out.println("" + len);
+	        				for (int i=0; i<len; i++) {
+	        					out.println("" + updatesList[i]);
+	        				}
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
+	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
+	        			updatesList = mSensorSimulator.getSafeDoubleList(mSensorSimulator.mUpdateRatesOrientationText);
+	        			if (updatesList == null || updatesList.length < 1) {
+	        				out.println("0");
+	        			} else {
+	        				len = updatesList.length;
+		        			out.println("" + len);
+	        				for (int i=0; i<len; i++) {
+	        					out.println("" + updatesList[i]);
+	        				}
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
+	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
+	        			updatesList = mSensorSimulator.getSafeDoubleList(mSensorSimulator.mUpdateRatesThermometerText);
+	        			if (updatesList == null || updatesList.length < 1) {
+	        				out.println("0");
+	        			} else {
+	        				len = updatesList.length;
+		        			out.println("" + len);
+	        				for (int i=0; i<len; i++) {
+	        					out.println("" + updatesList[i]);
+	        				}
+	        			}
+	        		} else {
+	        			// This sensor is not supported
+	        			out.println("throw IllegalArgumentException");
+	        		}
+	        	//////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("getSensorUpdateRate()") == 0) {
+	    	        inputLine = in.readLine();
+	    	        if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
+	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
+	        			if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
+	        				updatesPerSecond = mSensorSimulator.getSafeDouble(
+	        						mSensorSimulator.mCurrentUpdateRateAccelerometerText, 0);
+	        				out.println("" + updatesPerSecond);
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
+	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
+	        			if (mSensorSimulator.mEnabledCompass.isSelected()) {
+	        				updatesPerSecond = mSensorSimulator.getSafeDouble(
+	        						mSensorSimulator.mCurrentUpdateRateCompassText, 0);
+	        				out.println("" + updatesPerSecond);
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
+	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
+	        			if (mSensorSimulator.mEnabledOrientation.isSelected()) {
+	        				updatesPerSecond = mSensorSimulator.getSafeDouble(
+	        						mSensorSimulator.mCurrentUpdateRateOrientationText, 0);
+	        				out.println("" + updatesPerSecond);
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
+	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
+	        			if (mSensorSimulator.mEnabledThermometer.isSelected()) {
+	        				updatesPerSecond = mSensorSimulator.getSafeDouble(
+	        						mSensorSimulator.mCurrentUpdateRateThermometerText, 0);
+	        				out.println("" + updatesPerSecond);
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else {
+	        			// This sensor is not supported
+	        			out.println("throw IllegalArgumentException");
+	        		}
+	    	    //////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("setSensorUpdateRate()") == 0) {
+	    	        inputLine = in.readLine();
+	    	        if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
+	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
+        				out.println("OK");
+        				inputLine = in.readLine();
+        				updatesPerSecond = Float.parseFloat(inputLine);
+        				mSensorSimulator.mCurrentUpdateRateAccelerometerText.setText(inputLine);
+	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
+	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
+        				out.println("OK");
+        				inputLine = in.readLine();
+        				updatesPerSecond = Float.parseFloat(inputLine);
+        				mSensorSimulator.mCurrentUpdateRateCompassText.setText(inputLine);
+        			} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
+	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
+        				out.println("OK");
+        				inputLine = in.readLine();
+        				updatesPerSecond = Float.parseFloat(inputLine);
+        				mSensorSimulator.mCurrentUpdateRateOrientationText.setText(inputLine);
+        			} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
+	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
+        				out.println("OK");
+        				inputLine = in.readLine();
+        				updatesPerSecond = Float.parseFloat(inputLine);
+        				mSensorSimulator.mCurrentUpdateRateThermometerText.setText(inputLine);
+        			} else {
+	        			// This sensor is not supported
+	        			out.println("throw IllegalArgumentException");
+	        		}
+	    	    //////////////////////////////////////////////////////////
+		        } else if (inputLine.compareTo("unsetSensorUpdateRate()") == 0) {
+	    	        inputLine = in.readLine();
+	    	        if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
+	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
+	        			if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
+	        				out.println("OK");
+	        				mSensorSimulator.mCurrentUpdateRateAccelerometerText.setText(
+	        						mSensorSimulator.mDefaultUpdateRateAccelerometerText.getText());
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
+	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
+	        			if (mSensorSimulator.mEnabledCompass.isSelected()) {
+	        				out.println("OK");
+	        				mSensorSimulator.mCurrentUpdateRateCompassText.setText(
+	        						mSensorSimulator.mDefaultUpdateRateCompassText.getText());
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
+	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
+	        			if (mSensorSimulator.mEnabledOrientation.isSelected()) {
+	        				out.println("OK");
+	        				mSensorSimulator.mCurrentUpdateRateOrientationText.setText(
+	        						mSensorSimulator.mDefaultUpdateRateOrientationText.getText());
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
+	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
+	        			if (mSensorSimulator.mEnabledThermometer.isSelected()) {
+	        				out.println("OK");
+	        				mSensorSimulator.mCurrentUpdateRateThermometerText.setText(
+	        						mSensorSimulator.mDefaultUpdateRateThermometerText.getText());
+	        			} else {
+	        				// This sensor is currently disabled
+	        				out.println("throw IllegalStateException");
+	        			}
+	        		} else {
+	        			// This sensor is not supported
+	        			out.println("throw IllegalArgumentException");
+	        		}
+	        	//////////////////////////////////////////////////////////
+			    } else {
+		        	// ??? The client is violating the protocol.
+			        mSensorSimulator.addMessage("WARNING: Client sent unexpected command: " + inputLine);
+		        }
 	        	//outputLine = inputLine;
 	        	//mSensorSimulator.yawSlider.setValue(Integer.parseInt(inputLine));
 	             //out.println(outputLine);

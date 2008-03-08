@@ -19,6 +19,25 @@ package org.openintents.tools.sensorsimulator;
 import javax.swing.JApplet;
 import javax.swing.SwingUtilities;
 
+/**
+ * Provides the SensorSimulator in form of a Java Applet to be run in a web browser.
+ * 
+ * The applet can be used in a HTML document in the following way:
+ * <pre>
+ * <applet code="org.openintents.tools.sensorsimulator.SensorSimulatorWeb.class" 
+ *         archive="sensorsimulator.jar" width="640" height="440" alt="OpenIntents">
+ * </applet>
+ * </pre>
+ * 
+ * The applet currently does not take any parameters.
+ * 
+ * Note that the applet is meant as a demo only. Due to web browser restrictions,
+ * an Android application running in the emulator is not allowed to connect
+ * to a Java applet.
+ * 
+ * @author Peli
+ *
+ */
 public class SensorSimulatorWeb extends JApplet {
 	
 	public SensorSimulator mSensorSimulator;

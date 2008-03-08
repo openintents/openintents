@@ -122,10 +122,10 @@
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    >
-					<CheckBox android:id="@+id/checkenable"
+					<!--  CheckBox android:id="@+id/checkenable"
 				        android:layout_width="wrap_content"
 				        android:layout_height="wrap_content"
-				        android:text="@string/enable_sensors" />
+				        android:text="@string/enable_sensors" / -->
 				        <!-- 
 				    <CheckBox android:id="@+id/checkautoupdate"
 				        android:layout_width="wrap_content"
@@ -134,12 +134,7 @@
 				         -->
 							
 				</LinearLayout>
-				<TextView android:id="@+id/datatype"
-				    android:layout_width="wrap_content" 
-				    android:layout_height="wrap_content" 
-				    android:text=""
-				    android:layout_marginTop="10dip"
-					/>
+				
 			</LinearLayout>
 			<!-- TODO 
 			  It seems there is a bug with layout_gravity="right"?
@@ -155,10 +150,33 @@
 				android:visibility="gone"
 		    	/>
 		</LinearLayout>
-		<EditText android:id="@+id/edittext"
+		<LinearLayout
+			android:orientation="horizontal" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dip"
+			>
+			<TextView android:id="@+id/datatype"
+					    android:layout_width="dip" 
+					    android:layout_height="wrap_content" 
+					    android:layout_weight="2"
+					    android:text=""
+					    />
+			<TextView  
+			    android:layout_width="0dip" 
+			    android:layout_height="wrap_content" 
+			    android:layout_weight="1"
+				android:text="@string/update_rate_seconds"
+			    />
+		</LinearLayout>
+		<ListView android:id="@+id/sensordatalist" 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			/>
+		<!--  EditText android:id="@+id/edittext"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
-					/>
+					/ -->
 	</LinearLayout>
 
 			<!-- ############################################ 

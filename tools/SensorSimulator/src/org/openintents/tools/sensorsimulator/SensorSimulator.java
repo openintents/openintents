@@ -50,6 +50,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSlider;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -57,7 +58,19 @@ import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-/* SensorSimulator.java requires no other files. */
+/**
+ *  Main class of SensorSimulator.
+ *  
+ *  The SensorSimulator is a Java stand-alone application.
+ *  
+ *  It simulates various sensors. 
+ *  An Android application can connect through 
+ *  TCP/IP with the settings shown to the SensorSimulator
+ *  to simulate accelerometer, compass, orientation sensor,
+ *  and thermometer.
+ *  
+ *  @author Peli
+ */
 public class SensorSimulator extends JPanel
 							implements ActionListener,
 								WindowListener,
@@ -71,7 +84,14 @@ public class SensorSimulator extends JPanel
 	static final String COMPASS = "compass";
 	static final String ORIENTATION = "orientation";
 	static final String THERMOMETER = "thermometer";
-	
+
+	static final String SHOW_ACCELERATION = "show acceleration";
+
+	static final String AVERAGE_ACCELEROMETER = "average accelerometer";
+	static final String AVERAGE_COMPASS = "average compass";
+	static final String AVERAGE_ORIENTATION = "average orientation";
+	static final String AVERAGE_THERMOMETER = "average thermometer";
+
 	static final String DISABLED = "DISABLED";
 	
 	// Simulation delay:
@@ -130,6 +150,30 @@ public class SensorSimulator extends JPanel
     JCheckBox mEnabledThermometer;
     
     // Simulation update
+    JTextField mUpdateRatesAccelerometerText;
+    JTextField mDefaultUpdateRateAccelerometerText;
+    JTextField mCurrentUpdateRateAccelerometerText;
+    /** Whether to form an average at each update */
+    JCheckBox mUpdateAverageAccelerometer;
+    
+    JTextField mUpdateRatesCompassText;
+    JTextField mDefaultUpdateRateCompassText;
+    JTextField mCurrentUpdateRateCompassText;
+    /** Whether to form an average at each update */
+    JCheckBox mUpdateAverageCompass;
+    
+    JTextField mUpdateRatesOrientationText;
+    JTextField mDefaultUpdateRateOrientationText;
+    JTextField mCurrentUpdateRateOrientationText;
+    /** Whether to form an average at each update */
+    JCheckBox mUpdateAverageOrientation;
+    
+    JTextField mUpdateRatesThermometerText;
+    JTextField mDefaultUpdateRateThermometerText;
+    JTextField mCurrentUpdateRateThermometerText;
+    /** Whether to form an average at each update */
+    JCheckBox mUpdateAverageThermometer;
+    
     JTextField mUpdateText;
     JTextField mRefreshCountText;
     JLabel mRefreshSensorsLabel;
@@ -142,6 +186,9 @@ public class SensorSimulator extends JPanel
     JTextField mGravityConstantText;
     JTextField mAccelerometerLimitText;
     JTextField mPixelPerMeterText;
+    JTextField mSpringConstantText;
+    JTextField mDampingConstantText;
+    JCheckBox mShowAcceleration;
     
     // Gravity
     JTextField mGravityXText;
@@ -273,7 +320,7 @@ public class SensorSimulator extends JPanel
         areaScrollPane.setVerticalScrollBarPolicy(
         		JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         areaScrollPane.setPreferredSize(new Dimension(250, 80));
-
+        
         leftPane.add(areaScrollPane, c);
         
         
@@ -476,98 +523,258 @@ public class SensorSimulator extends JPanel
         c3.gridy = 0;
         
         updateFieldPane.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder("Sensor update"),
+                BorderFactory.createTitledBorder("Sensor update rate"),
                 BorderFactory.createEmptyBorder(5,5,5,5)));
         
-        label = new JLabel("Update sensors: ", JLabel.LEFT);
+        //------------------
+        label = new JLabel("Accelerometer", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mUpdateText = new JTextField(5);
-        mUpdateText.setText("10");
-        c3.gridx = 1;
-        updateFieldPane.add(mUpdateText, c3);
+        label = new JLabel("Update rates: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
         
-        label = new JLabel(" ms", JLabel.LEFT);
+        mUpdateRatesAccelerometerText = new JTextField(5);
+        mUpdateRatesAccelerometerText.setText("1, 10, 50");
+        c3.gridx = 1;
+        updateFieldPane.add(mUpdateRatesAccelerometerText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
         c3.gridx = 2;
         updateFieldPane.add(label, c3);
         
-        label = new JLabel("Refresh after: ", JLabel.LEFT);
+        label = new JLabel("Default rate: ", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshCountText = new JTextField(5);
-        mRefreshCountText.setText("10");
+        mDefaultUpdateRateAccelerometerText = new JTextField(5);
+        mDefaultUpdateRateAccelerometerText.setText("50");
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshCountText, c3);
+        updateFieldPane.add(mDefaultUpdateRateAccelerometerText, c3);
         
-        label = new JLabel(" times", JLabel.LEFT);
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+       
+        label = new JLabel("Current rate: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mCurrentUpdateRateAccelerometerText = new JTextField(5);
+        mCurrentUpdateRateAccelerometerText.setText("50");
+        c3.gridx = 1;
+        updateFieldPane.add(mCurrentUpdateRateAccelerometerText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
         c3.gridx = 2;
         updateFieldPane.add(label, c3);
         
-        label = new JLabel("Sensor update: ", JLabel.LEFT);
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy++;
+        mUpdateAverageAccelerometer = new JCheckBox(AVERAGE_ACCELEROMETER);
+        mUpdateAverageAccelerometer.setSelected(true);
+        mUpdateAverageAccelerometer.addItemListener(this);
+        updateFieldPane.add(mUpdateAverageAccelerometer, c3);
+        
+        c3.gridy++;
+        updateFieldPane.add(new JSeparator(SwingConstants.HORIZONTAL), c3);
+
+
+        //------------------
+        label = new JLabel("Compass", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshSensorsLabel = new JLabel("0", JLabel.LEFT);
+        label = new JLabel("Update rates: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mUpdateRatesCompassText = new JTextField(5);
+        mUpdateRatesCompassText.setText("1, 10");
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshSensorsLabel, c3);
+        updateFieldPane.add(mUpdateRatesCompassText, c3);
         
-        label = new JLabel("Emulator update: ", JLabel.LEFT);
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Default rate: ", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-
-        label = new JLabel(" * Accelerometer: ", JLabel.LEFT);
-        c3.gridwidth = 1;
-        c3.gridx = 0;
-        c3.gridy++;
-        updateFieldPane.add(label, c3);
-        
-        mRefreshEmulatorAccelerometerLabel = new JLabel("-", JLabel.LEFT);
+        mDefaultUpdateRateCompassText = new JTextField(5);
+        mDefaultUpdateRateCompassText.setText("10");
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshEmulatorAccelerometerLabel, c3);
-
-
-        label = new JLabel(" * Compass: ", JLabel.LEFT);
+        updateFieldPane.add(mDefaultUpdateRateCompassText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+       
+        label = new JLabel("Current rate: ", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshEmulatorCompassLabel = new JLabel("-", JLabel.LEFT);
+        mCurrentUpdateRateCompassText = new JTextField(5);
+        mCurrentUpdateRateCompassText.setText("10");
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshEmulatorCompassLabel, c3);
+        updateFieldPane.add(mCurrentUpdateRateCompassText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy++;
+        mUpdateAverageCompass = new JCheckBox(AVERAGE_COMPASS);
+        mUpdateAverageCompass.setSelected(true);
+        mUpdateAverageCompass.addItemListener(this);
+        updateFieldPane.add(mUpdateAverageCompass, c3);
 
+        c3.gridy++;
+        updateFieldPane.add(new JSeparator(SwingConstants.HORIZONTAL), c3);
 
-        label = new JLabel(" * Orientation: ", JLabel.LEFT);
+      //------------------
+        label = new JLabel("Orientation", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshEmulatorOrientationLabel = new JLabel("-", JLabel.LEFT);
-        c3.gridx = 1;
-        updateFieldPane.add(mRefreshEmulatorOrientationLabel, c3);
-
-
-        label = new JLabel(" * Thermometer: ", JLabel.LEFT);
+        label = new JLabel("Update rates: ", JLabel.LEFT);
         c3.gridwidth = 1;
         c3.gridx = 0;
         c3.gridy++;
         updateFieldPane.add(label, c3);
         
-        mRefreshEmulatorThermometerLabel = new JLabel("-", JLabel.LEFT);
+        mUpdateRatesOrientationText = new JTextField(5);
+        mUpdateRatesOrientationText.setText("1, 10, 50");
         c3.gridx = 1;
-        updateFieldPane.add(mRefreshEmulatorThermometerLabel, c3);
+        updateFieldPane.add(mUpdateRatesOrientationText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Default rate: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mDefaultUpdateRateOrientationText = new JTextField(5);
+        mDefaultUpdateRateOrientationText.setText("50");
+        c3.gridx = 1;
+        updateFieldPane.add(mDefaultUpdateRateOrientationText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+       
+        label = new JLabel("Current rate: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mCurrentUpdateRateOrientationText = new JTextField(5);
+        mCurrentUpdateRateOrientationText.setText("50");
+        c3.gridx = 1;
+        updateFieldPane.add(mCurrentUpdateRateOrientationText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy++;
+        mUpdateAverageOrientation = new JCheckBox(AVERAGE_ORIENTATION);
+        mUpdateAverageOrientation.setSelected(true);
+        mUpdateAverageOrientation.addItemListener(this);
+        updateFieldPane.add(mUpdateAverageOrientation, c3);
+
+        c3.gridy++;
+        updateFieldPane.add(new JSeparator(SwingConstants.HORIZONTAL), c3);
+
+      //------------------
+        label = new JLabel("Thermometer", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Update rates: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mUpdateRatesThermometerText = new JTextField(5);
+        mUpdateRatesThermometerText.setText("0.1, 1");
+        c3.gridx = 1;
+        updateFieldPane.add(mUpdateRatesThermometerText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+        
+        label = new JLabel("Default rate: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mDefaultUpdateRateThermometerText = new JTextField(5);
+        mDefaultUpdateRateThermometerText.setText("1");
+        c3.gridx = 1;
+        updateFieldPane.add(mDefaultUpdateRateThermometerText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+       
+        label = new JLabel("Current rate: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateFieldPane.add(label, c3);
+        
+        mCurrentUpdateRateThermometerText = new JTextField(5);
+        mCurrentUpdateRateThermometerText.setText("1");
+        c3.gridx = 1;
+        updateFieldPane.add(mCurrentUpdateRateThermometerText, c3);
+        
+        label = new JLabel("1/s", JLabel.LEFT);
+        c3.gridx = 2;
+        updateFieldPane.add(label, c3);
+
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy++;
+        mUpdateAverageThermometer = new JCheckBox(AVERAGE_THERMOMETER);
+        mUpdateAverageThermometer.setSelected(true);
+        mUpdateAverageThermometer.addItemListener(this);
+        updateFieldPane.add(mUpdateAverageThermometer, c3);
 
         // Update panel ends
         
@@ -576,6 +783,123 @@ public class SensorSimulator extends JPanel
         c2.gridwidth = 1;
         c2.gridy++;
         settingsPane.add(updateFieldPane, c2);
+
+        ////////////////////////////////
+        // Sensor output update frequency
+        // and measure frequency
+        // Also update connected sensor frequency.
+        JPanel updateSimulationFieldPane = new JPanel(new GridBagLayout());
+        c3 = new GridBagConstraints();
+        c3.fill = GridBagConstraints.HORIZONTAL;
+        c3.anchor = GridBagConstraints.NORTHWEST;
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy = 0;
+        
+        updateSimulationFieldPane.setBorder(
+        		BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Simulation update"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
+        
+        
+        // ---------------------
+        label = new JLabel("Update sensors: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mUpdateText = new JTextField(5);
+        mUpdateText.setText("10");
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mUpdateText, c3);
+        
+        label = new JLabel(" ms", JLabel.LEFT);
+        c3.gridx = 2;
+        updateSimulationFieldPane.add(label, c3);
+        
+        label = new JLabel("Refresh after: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshCountText = new JTextField(5);
+        mRefreshCountText.setText("10");
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshCountText, c3);
+        
+        label = new JLabel(" times", JLabel.LEFT);
+        c3.gridx = 2;
+        updateSimulationFieldPane.add(label, c3);
+        
+        label = new JLabel("Sensor update: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshSensorsLabel = new JLabel("0", JLabel.LEFT);
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshSensorsLabel, c3);
+        
+        label = new JLabel("Emulator update: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+
+        label = new JLabel(" * Accelerometer: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshEmulatorAccelerometerLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshEmulatorAccelerometerLabel, c3);
+
+
+        label = new JLabel(" * Compass: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshEmulatorCompassLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshEmulatorCompassLabel, c3);
+
+
+        label = new JLabel(" * Orientation: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshEmulatorOrientationLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshEmulatorOrientationLabel, c3);
+
+
+        label = new JLabel(" * Thermometer: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        updateSimulationFieldPane.add(label, c3);
+        
+        mRefreshEmulatorThermometerLabel = new JLabel("-", JLabel.LEFT);
+        c3.gridx = 1;
+        updateSimulationFieldPane.add(mRefreshEmulatorThermometerLabel, c3);
+
+        // Update panel ends
+        
+        // Add update panel to settings
+        c2.gridx = 0;
+        c2.gridwidth = 1;
+        c2.gridy++;
+        settingsPane.add(updateSimulationFieldPane, c2);
         
         ////////////////////////////////
         // Acceleration / accelerometer settings:
@@ -641,6 +965,46 @@ public class SensorSimulator extends JPanel
         c3.gridx = 2;
         accelerometerFieldPane.add(label, c3);
         
+        
+        label = new JLabel("Spring constant (k/m) ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        accelerometerFieldPane.add(label, c3);
+        
+        mSpringConstantText = new JTextField(5);
+        mSpringConstantText.setText("500");
+        c3.gridx = 1;
+        accelerometerFieldPane.add(mSpringConstantText, c3);
+        
+        label = new JLabel(" p/s^2", JLabel.LEFT);
+        c3.gridx = 2;
+        accelerometerFieldPane.add(label, c3);
+        
+        
+        label = new JLabel("Damping constant: ", JLabel.LEFT);
+        c3.gridwidth = 1;
+        c3.gridx = 0;
+        c3.gridy++;
+        accelerometerFieldPane.add(label, c3);
+        
+        mDampingConstantText = new JTextField(5);
+        mDampingConstantText.setText("50");
+        c3.gridx = 1;
+        accelerometerFieldPane.add(mDampingConstantText, c3);
+        
+        label = new JLabel(" p/s", JLabel.LEFT);
+        c3.gridx = 2;
+        accelerometerFieldPane.add(label, c3);
+        
+        c3.gridwidth = 3;
+        c3.gridx = 0;
+        c3.gridy++;
+        mShowAcceleration = new JCheckBox(SHOW_ACCELERATION);
+        mShowAcceleration.setSelected(false);
+        mShowAcceleration.addItemListener(this);
+        accelerometerFieldPane.add(mShowAcceleration, c3);
+
         // Accelerometer field panel ends
         
         // Add accelerometer field panel to settings
@@ -978,8 +1342,23 @@ public class SensorSimulator extends JPanel
         c.gridy++;
         rightPane.add(settingsScrollPane, c);
         
-        add(leftPane, BorderLayout.WEST);
-        add(rightPane, BorderLayout.EAST);
+        // We put both into a Split pane:
+        //Create a split pane with the two scroll panes in it.
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                                   leftPane, rightPane);
+        //splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(271);
+        
+        //Provide minimum sizes for the two components in the split pane
+        //Dimension minimumSize = new Dimension(260, 50);
+        //leftPane.setMinimumSize(minimumSize);
+        //rightPane.setMinimumSize(minimumSize);
+
+        add(splitPane, BorderLayout.CENTER);
+        
+        // Add left and right pane.
+        //add(leftPane, BorderLayout.WEST);
+        //add(rightPane, BorderLayout.EAST);
         
         
         
@@ -1087,6 +1466,11 @@ public class SensorSimulator extends JPanel
         if (e.getStateChange() == ItemEvent.DESELECTED)
         
         */
+        if (source == mShowAcceleration) {
+        	// Refresh the screen when this drawing element
+        	// changes
+        	mobile.repaint();
+        }
     }
     
 
@@ -1109,8 +1493,12 @@ public class SensorSimulator extends JPanel
     }
     
     public void doTimer() {
-    	// Update acceleration:
-    	mobile.updateMouseAcceleration();
+    	// Update sensors:
+    	mobile.updateSensorPhysics();
+    	
+    	mobile.updateSensorReadoutValues();
+    	
+    	mobile.updateUserSettings();
     	
     	// Measure refresh
     	updateSensorRefresh();
@@ -1217,9 +1605,9 @@ public class SensorSimulator extends JPanel
     	if (mSupportedAccelerometer.isSelected()) {
 	    	data += ACCELEROMETER + ": ";
 	    	if (mEnabledAccelerometer.isSelected()) {
-				data += mf.format(mobile.accelx) + ", " 
-						+ mf.format(mobile.accely) + ", "
-						+ mf.format(mobile.accelz);
+				data += mf.format(mobile.read_accelx) + ", " 
+						+ mf.format(mobile.read_accely) + ", "
+						+ mf.format(mobile.read_accelz);
 	    	} else {
 				data += DISABLED;
 	    	}
@@ -1230,9 +1618,9 @@ public class SensorSimulator extends JPanel
     	    // Compass data
 			data += COMPASS + ": ";
 			if (mEnabledCompass.isSelected()) {
-				data += mf.format(mobile.compassx) + ", " 
-						+ mf.format(mobile.compassy) + ", "
-						+ mf.format(mobile.compassz);
+				data += mf.format(mobile.read_compassx) + ", " 
+						+ mf.format(mobile.read_compassy) + ", "
+						+ mf.format(mobile.read_compassz);
 			} else {
 				data += DISABLED;
 			}
@@ -1243,9 +1631,9 @@ public class SensorSimulator extends JPanel
 		    // Orientation data
 			data += ORIENTATION + ": ";
 			if (mEnabledOrientation.isSelected()) {
-				data += mf.format(mobile.yaw) + ", " 
-						+ mf.format(mobile.pitch) + ", "
-						+ mf.format(mobile.roll);
+				data += mf.format(mobile.read_yaw) + ", " 
+						+ mf.format(mobile.read_pitch) + ", "
+						+ mf.format(mobile.read_roll);
 			} else {
 				data += DISABLED;
 			}
@@ -1255,7 +1643,7 @@ public class SensorSimulator extends JPanel
 		if (mSupportedThermometer.isSelected()) {
 			data += THERMOMETER + ": ";
 			if (mEnabledThermometer.isSelected()) {
-				data += mf.format(mobile.temperature);
+				data += mf.format(mobile.read_temperature);
 			} else {
 				data += DISABLED;
 			}
@@ -1361,6 +1749,37 @@ public class SensorSimulator extends JPanel
 		return getSafeDouble(textfield, 0);
 	}
 
+	/**
+	 * Safely retries the a list of double values of a text field.
+	 * If the list contains errors, null is returned, and the field
+	 * is marked red.
+	 * 
+	 * @param textfield Textfield from which the value should be read.
+	 * @return list double[] with values or null.
+	 */
+	public double[] getSafeDoubleList(JTextField textfield) {
+		double[] valuelist;
+		try {
+			String t = textfield.getText();
+			// Now we have to split this into pieces
+			String[] tlist = t.split(",");
+			int len = tlist.length;
+			if (len > 0) {
+				valuelist = new double[len];
+				for (int i = 0; i<len; i++) {
+					valuelist[i] = Double.parseDouble(tlist[i]);
+				}
+			} else {
+				valuelist = null;
+			}
+			textfield.setBackground(Color.WHITE);
+		} catch (NumberFormatException e) {
+			// wrong user input in box - take default values.
+			valuelist = null;
+			textfield.setBackground(Color.RED);
+		}
+		return valuelist;
+	}
 
 	/**
      * Create the GUI and show it.  For thread safety,

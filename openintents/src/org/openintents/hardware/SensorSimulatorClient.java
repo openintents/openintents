@@ -39,6 +39,13 @@ public class SensorSimulatorClient {
 	private static final String TAG = "Hardware";
 	private static final String TAG2 = "Hardware2";
 	
+	/**
+	 * Whether to log sensor protocol data 
+	 * (send and receive) through LogCat.
+	 * This is very instructive, but time-consuming.
+	 */
+	private static final boolean LOG_PROTOCOL = false;
+	
 	public boolean connected;
 	
 	Socket mSocket;
@@ -146,7 +153,7 @@ public class SensorSimulatorClient {
 			if (answer.compareTo("throw IllegalArgumentException") == 0) {
 				throw new IllegalArgumentException(
 						"Sensor '" + sensor
-						+ "' is currently not supported.");
+						+ "' is not supported.");
 			}
 			Log.i(TAG2, "Received: " + answer);
 			
@@ -167,7 +174,7 @@ public class SensorSimulatorClient {
 			if (answer.compareTo("throw IllegalArgumentException") == 0) {
 				throw new IllegalArgumentException(
 						"Sensor '" + sensor
-						+ "' is currently not supported.");
+						+ "' is not supported.");
 			}
 			Log.i(TAG2, "Received: " + answer);
 			
@@ -206,10 +213,10 @@ public class SensorSimulatorClient {
 	}
 	
 	public int getNumSensorValues(String sensor) {
-		Log.i(TAG, "Send: getNumSensorValues()");
+		if (LOG_PROTOCOL) Log.i(TAG, "Send: getNumSensorValues()");
 		mOut.println("getNumSensorValues()");
 		
-		Log.i(TAG, "Send: " + sensor);
+		if (LOG_PROTOCOL) Log.i(TAG, "Send: " + sensor);
         mOut.println(sensor);
         
 		int num = 0;
@@ -219,9 +226,9 @@ public class SensorSimulatorClient {
 			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
 				throw new IllegalArgumentException(
 						"Sensor '" + sensor
-						+ "' is currently not supported.");
+						+ "' is not supported.");
 			}
-			Log.i(TAG, "Received: " + numstr);
+			if (LOG_PROTOCOL) Log.i(TAG, "Received: " + numstr);
 	        
 			num = Integer.parseInt(numstr);
 		} catch (IOException e) {
@@ -238,9 +245,9 @@ public class SensorSimulatorClient {
 					"readSensor for '" + sensor
 					+ "' called with sensorValues == null.");
 		}
-		Log.i(TAG, "Send: getNumSensorValues()");
+		if (LOG_PROTOCOL) Log.i(TAG, "Send: getNumSensorValues()");
 		mOut.println("readSensor()");
-		Log.i(TAG, "Send: " + sensor);
+		if (LOG_PROTOCOL) Log.i(TAG, "Send: " + sensor);
         mOut.println(sensor);
 		int num = 0;
 		
@@ -249,13 +256,13 @@ public class SensorSimulatorClient {
 			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
 				throw new IllegalArgumentException(
 						"Sensor '" + sensor
-						+ "' is currently not supported.");
+						+ "' is not supported.");
 			} else if (numstr.compareTo("throw IllegalStateException") == 0){
 				throw new IllegalStateException(
 						"Sensor '" + sensor
 						+ "' is currently not enabled.");
 			}
-			Log.i(TAG, "Received: " + numstr);
+			if (LOG_PROTOCOL) Log.i(TAG, "Received: " + numstr);
 	        num = Integer.parseInt(numstr);
 	        
 	        if (sensorValues.length < num) {
@@ -269,7 +276,7 @@ public class SensorSimulatorClient {
 			//sensorValues = new float[num];
 			for (int i=0; i<num; i++) {
 				String val = mIn.readLine();
-				Log.i(TAG, "Received: " + val);
+				if (LOG_PROTOCOL) Log.i(TAG, "Received: " + val);
 		        
 				sensorValues[i] = Float.parseFloat(val);
 			}
@@ -278,4 +285,123 @@ public class SensorSimulatorClient {
             System.exit(1);
 		}
 	}
+	
+	public float[] getSensorUpdateRates(String sensor) {
+		if (LOG_PROTOCOL) Log.i(TAG, "getSensorUpdateRates()");
+        
+		mOut.println("getSensorUpdateRates()");
+		float[] rates = null;
+		if (LOG_PROTOCOL) Log.i(TAG, "Send: " + sensor);
+        mOut.println(sensor);
+        int num = 0;
+		
+		try {
+			String numstr = mIn.readLine();
+			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
+				throw new IllegalArgumentException(
+						"Sensor '" + sensor
+						+ "' is not supported.");
+			}
+			if (LOG_PROTOCOL) Log.i(TAG, "Received: " + numstr);
+	        
+			num = Integer.parseInt(numstr);
+			
+			if (num > 0) {
+				rates = new float[num];
+				for (int i=0; i<num; i++) {
+					rates[i] = Float.parseFloat(mIn.readLine());
+					if (LOG_PROTOCOL) Log.i(TAG, "Received: " + rates[i]);
+				}
+			} else {
+				rates = null;
+			}
+		} catch (IOException e) {
+			System.err.println("Couldn't get I/O for the connection to: x.x.x.x.");
+            System.exit(1);
+		}
+		
+		return rates;
+			
+	}
+	
+	public float getSensorUpdateRate(String sensor) {
+		Log.i(TAG, "getSensorUpdateRate()");
+        
+		mOut.println("getSensorUpdateRate()");
+		float rate = 0;
+		Log.i(TAG, "Send: " + sensor);
+        mOut.println(sensor);
+        
+		try {
+			String numstr = mIn.readLine();
+			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
+				throw new IllegalArgumentException(
+						"Sensor '" + sensor
+						+ "' is not supported.");
+			} else if (numstr.compareTo("throw IllegalStateException") == 0){
+				throw new IllegalStateException(
+						"Sensor '" + sensor
+						+ "' is currently not enabled.");
+			}
+			
+			Log.i(TAG, "Received: " + numstr);
+	        
+			rate = Float.parseFloat(numstr);
+			Log.i(TAG, "Received: " + rate);
+			
+		} catch (IOException e) {
+			System.err.println("Couldn't get I/O for the connection to: x.x.x.x.");
+            System.exit(1);
+		}
+		
+		return rate;		
+	}
+	
+	public void setSensorUpdateRate(String sensor, float updatesPerSecond) {
+		Log.i(TAG, "setSensorUpdateRate()");
+        
+		mOut.println("setSensorUpdateRate()");
+		
+		Log.i(TAG, "Send: " + sensor);
+        mOut.println(sensor);
+        
+		try {
+			String numstr = mIn.readLine();
+			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
+				throw new IllegalArgumentException(
+						"Sensor '" + sensor
+						+ "' is not supported.");
+			}			
+			Log.i(TAG, "Received: " + numstr); // should be numstr=="OK"
+	        
+			Log.i(TAG, "Send: " + updatesPerSecond);
+	        mOut.println("" + updatesPerSecond);			
+		} catch (IOException e) {
+			System.err.println("Couldn't get I/O for the connection to: x.x.x.x.");
+            System.exit(1);
+		}
+	}
+	
+	public void unsetSensorUpdateRate(String sensor) {
+		Log.i(TAG, "unsetSensorUpdateRate()");
+        
+		mOut.println("unsetSensorUpdateRate()");
+		
+		Log.i(TAG, "Send: " + sensor);
+        mOut.println(sensor);
+        
+		try {
+			String numstr = mIn.readLine();
+			if (numstr.compareTo("throw IllegalArgumentException") == 0) {
+				throw new IllegalArgumentException(
+						"Sensor '" + sensor
+						+ "' is not supported.");
+			}
+			Log.i(TAG, "Received: " + numstr); // should be numstr=="OK"
+		} catch (IOException e) {
+			System.err.println("Couldn't get I/O for the connection to: x.x.x.x.");
+            System.exit(1);
+		}
+	}
+	
 }
