@@ -1,14 +1,21 @@
 package org.openintents.tags.content;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+/** 
+ * Displays a row in the package list.
+ *
+ */
 public class PackageListRow extends RelativeLayout {
 
 	private static final int PACKAGE_ICON = 1;
@@ -22,6 +29,10 @@ public class PackageListRow extends RelativeLayout {
 	private TextView mName;
 	
 	private TextView mPackageName;
+
+	/** Small text to display info if no Pick Activity is available. */
+	private TextView mAlertInfo;
+
 
 	public PackageListRow(Context context) {
 		super(context);
@@ -51,6 +62,15 @@ public class PackageListRow extends RelativeLayout {
 		mPackageName.setPadding(5,0,0,0);
 		
 
+		mAlertInfo = new TextView(context);
+		mAlertInfo.setGravity(RelativeLayout.CENTER_VERTICAL);
+		mAlertInfo.setId(PACKAGE_PACKAGE_NAME);
+		
+		// set some explicit values for now
+		mAlertInfo.setTextSize(12);
+		mAlertInfo.setTextColor(0xFFFF0000);
+		mAlertInfo.setPadding(5,0,0,0);
+
 		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64, 64);
 		icon.addRule(ALIGN_WITH_PARENT_LEFT);
 		addView(mIcon, icon);
@@ -63,11 +83,17 @@ public class PackageListRow extends RelativeLayout {
 		packagename.addRule(POSITION_BELOW, PACKAGE_NAME);
 		packagename.addRule(POSITION_TO_RIGHT, PACKAGE_ICON);
 		addView(mPackageName, packagename);
+		
+		RelativeLayout.LayoutParams alertinfo = new RelativeLayout.LayoutParams(64, 64);
+		alertinfo.addRule(RelativeLayout.ALIGN_WITH_PARENT_TOP);
+		alertinfo.addRule(RelativeLayout.ALIGN_WITH_PARENT_RIGHT);
+		addView(mAlertInfo, alertinfo);
 	}
 
 	public void bindCursor(Cursor cursor) {
 		String packageName = cursor.getString(cursor.getColumnIndex("package"));
 		String name = cursor.getString(cursor.getColumnIndex("name"));
+		String alertinfo = "";
 
 		Drawable icon;
 		
@@ -79,8 +105,18 @@ public class PackageListRow extends RelativeLayout {
 			icon = pm.getDefaultActivityIcon();
 		}
 		
+		// data is the picked content directory
+		String data = cursor.getString(2);
+		Uri uri = Uri.parse(data);
+		Intent intent = new Intent(Intent.PICK_ACTION, uri);
+		if (pm.resolveActivity(intent, 0) == null) {
+			alertinfo = "no pick activity available";
+		};
+		
 		mIcon.setImageDrawable(icon);
 		mName.setText(name);
 		mPackageName.setText(packageName);
+		mAlertInfo.setText(alertinfo);
+		
 	}
 }
