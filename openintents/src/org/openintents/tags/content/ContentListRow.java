@@ -45,23 +45,32 @@ public class ContentListRow extends RelativeLayout {
 		mName = new TextView(context);
 		mName.setGravity(RelativeLayout.CENTER_VERTICAL);
 		mName.setId(CONTENT_URI);
+		
+		// TODO The following does not seem to work?
+		mName.setTextAppearance(context, android.R.attr.textAppearanceLarge);
+		
+		// so we give some explicit values for now
+		mName.setTextSize(24);
+		mName.setTextColor(0xFFFFFFFF);
+		
 
 		mType = new TextView(context);
 		mType.setGravity(RelativeLayout.CENTER_VERTICAL);
 		mType.setId(CONTENT_TYPE);
+		mType.setTextAppearance(context, android.R.attr.textAppearanceLarge);
 
-		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(30,
-				30);
+		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64,
+				64);
 		icon.addRule(ALIGN_WITH_PARENT_LEFT);
 		addView(mIcon, icon);
 
 		RelativeLayout.LayoutParams name = new RelativeLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, 30);
+				LayoutParams.FILL_PARENT, 64);
 		name.addRule(POSITION_TO_RIGHT, CONTENT_ICON);
 		addView(mName, name);
 
 		RelativeLayout.LayoutParams type = new RelativeLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, 30);
+				LayoutParams.WRAP_CONTENT, 64);
 		type.addRule(ALIGN_WITH_PARENT_RIGHT);
 		addView(mType, type);
 
