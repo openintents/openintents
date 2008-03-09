@@ -45,9 +45,10 @@
 			android:layout_height="wrap_content" 
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true" 
-			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_weight="1" >
 		</AutoCompleteTextView>
+		<!-- android:textAppearance="?android:attr/textAppearanceLarge"
+			 -->
 		<Button android:id="@+id/tags_ok_button"
 			android:layout_weight="3" 
 		    android:layout_width="fill_parent"

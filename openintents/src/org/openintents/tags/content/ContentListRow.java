@@ -19,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+/**
+ * Displays a row of content with image and content description.
+ *
+ */
 public class ContentListRow extends RelativeLayout {
 
 	private static final int CONTENT_ICON = 1;

@@ -120,7 +120,8 @@ public class Tag {
 		public static final String DEFAULT_SORT_ORDER = "type DESC, uri";
 
 		/**
-		 * The uri of the content.
+		 * The uri of the content, or the tag text if the uri starts with "TAG".
+		 * This can be tested in SQL using "WHERE type like 'TAG%'".
 		 * <P>
 		 * Type: TEXT
 		 * </P>

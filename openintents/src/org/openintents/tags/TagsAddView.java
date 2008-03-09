@@ -22,30 +22,34 @@ import org.openintents.provider.ContentIndex.Dir;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 import org.openintents.tags.content.ContentListRow;
-import org.openintents.tags.content.DirectoryRegister;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.ContentValues;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.view.Menu.Item;
+import android.view.ViewGroup;
+import android.view.ViewInflate;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CursorAdapter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
+/**
+ * Displays selected content and asks for tag to be added.
+ * 
+ * When this activity is called, getStringExtra(Tags.QUERY_URI)
+ * should contain the URI to be tagged.
+ */
 public class TagsAddView extends Activity {
 
 	/** tag for logging */
@@ -56,6 +60,22 @@ public class TagsAddView extends Activity {
 	private static final int REQUEST_DIR_PICK = 1;
 	private static final int REQUEST_CONTENT_PICK = REQUEST_DIR_PICK + 1;
 
+	/**
+	 * Contents fields to be used in SQL queries.
+	 */
+	private static final String[] TAGS_PROJECTION = new String[] {
+    	Contents._ID, 
+    	Contents.URI, 
+    	Contents.TYPE
+    };
+
+	/**
+	 * The column in the cursor c that contains Contents.URI.
+	 * (Careful: counting is related to the java list above
+	 *           and starts with 0).
+	 */
+	private static int column_Contents_URI = 1;
+	
 	private ListView mTagsListView;
 	private AutoCompleteTextView mTagFilter;
 	private String mFilter = null;
@@ -122,26 +142,101 @@ public class TagsAddView extends Activity {
 	private void fillDataTagFilter() {
 		// Get a cursor with all tags
 		Cursor c = getContentResolver().query(Contents.CONTENT_URI,
-				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
-				"type like 'TAG%'", null, Contents.DEFAULT_SORT_ORDER);
+				TAGS_PROJECTION,
+				Contents.TYPE + " like 'TAG%'", null, Contents.DEFAULT_SORT_ORDER);
 		startManagingCursor(c);
 
 		if (c == null) {
 			Log.e(TAG, "missing tag provider");
-			mTagFilter.setAdapter(new ArrayAdapter(this,
+			mTagFilter.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" }));
 			return;
 		}
 
+		/*
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				android.R.layout.simple_list_item_1, c,
 				new String[] { Contents.URI },
-				new int[] { android.R.layout.simple_list_item_1 });
+				new int[] { android.R.id.text1 });
+				*/
+		TagsCursorAdapter adapter = new TagsCursorAdapter(c, this);
 		mTagFilter.setAdapter(adapter);
 
 	}
 
+
+    // XXX compiler bug in javac 1.5.0_07-164, we need to implement Filterable
+    // to make compilation work
+    public static class TagsCursorAdapter
+            extends CursorAdapter implements Filterable {
+    	
+        public TagsCursorAdapter(Cursor c, Context context) {
+            super(c, context);
+            mContent = context.getContentResolver();
+        }
+
+        @Override
+        public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        	// TODO TextView too small to be clickable. If new AutoCompleteTextView
+        	//      ApiDemo is available, the following should be updated.
+        	//      (look at AutoComplete4.java)
+            /*
+        	TextView view = new TextView(context);
+            view.setText(cursor, column_Contents_URI);
+            */
+        	
+            ViewInflate inf = 
+    			(ViewInflate)context.getSystemService(INFLATE_SERVICE); 
+    		View rowView = inf.inflate(android.R.layout.simple_list_item_1, null, null); 
+    		
+    		TextView view = (TextView) rowView.findViewById(android.R.id.text1);
+            view.setText(cursor, column_Contents_URI);
+            
+            return view;
+        }
+
+        @Override
+        public void bindView(View view, Context context, Cursor cursor) {
+            ((TextView) view).setText(cursor, column_Contents_URI);
+        }
+
+        @Override
+        protected String convertToString(Cursor cursor) {
+            return cursor.getString(column_Contents_URI);
+        }
+
+        @Override
+        protected Cursor runQuery(CharSequence constraint) {
+            StringBuilder buffer = null;
+            String[] args = null;
+            if (constraint != null) {
+                buffer = new StringBuilder();
+                buffer.append("UPPER(");
+                buffer.append(Contents.URI);
+                buffer.append(") GLOB ?");
+                args = new String[] { constraint.toString().toUpperCase() + "*" };
+            }
+            if (buffer == null) {
+            	buffer = new StringBuilder();
+            } else {
+            	buffer.append(" AND ");
+            }
+            // After the last if-construct, buffer is always != null.
+            buffer.append (Contents.TYPE + " like 'TAG%'");
+            
+            // "buffer == null ?" kept below only for possible future changes.
+            return mContent.query(Contents.CONTENT_URI, TAGS_PROJECTION,
+                    buffer == null ? null : buffer.toString(), args,
+                    Contents.DEFAULT_SORT_ORDER);
+        }
+
+        private ContentResolver mContent;        
+    }
+
+    
+	
+	/*
 	private void fillDataTags() {
 
 		String filter = null;
@@ -227,4 +322,5 @@ public class TagsAddView extends Activity {
 		}
 
 	}
+	*/
 }

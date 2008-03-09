@@ -251,7 +251,7 @@ public class TagsView extends Activity {
 	public boolean onMenuItemSelected(int featureId, Item item) {
 
 		super.onMenuItemSelected(featureId, item);
-		//TODO: either use bundle or check if getSelecteItemPostion is what is neede here.
+		//TODO: either use bundle or check if getSelecteItemPostion is what is needed here.
 		switch (item.getId()) {
 		case MENU_VIEW_TAG:
 			Intent intent = new Intent(Intent.VIEW_ACTION, Tags.CONTENT_URI).putExtra(Tags.QUERY_TAG, mTagFilter.getSelectedItemPosition());
