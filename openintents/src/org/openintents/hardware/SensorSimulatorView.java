@@ -55,6 +55,14 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TabHost.TabSpec;
 
+/**
+ * Lets user set connection settings to the SensorSimulator and test them.
+ * 
+ * The connection is outbound to the SensorSimulator.
+ * 
+ * @author Peli
+ *
+ */
 public class SensorSimulatorView extends Activity {
 	/**
 	 * TAG for logging.
@@ -149,7 +157,18 @@ public class SensorSimulatorView extends Activity {
 	
 	private TabHost mTabHost;
     
-	/* (non-Javadoc)
+	/**
+	 * Called when activity starts.
+	 * 
+	 * This can either be the first time, or the user navigates back
+	 * after the activity has been killed.
+	 * 
+	 * We do not automatically reconnect to the SensorSimulator,
+	 * as it may not be available in the mean-time anymore or 
+	 * the IP address may have changed.
+	 * 
+	 * (We do not know how long the activity had been dormant).
+	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	protected void onCreate(Bundle icicle) {
@@ -280,6 +299,47 @@ public class SensorSimulatorView extends Activity {
 		mCheckBoxEnable.setOnFocusChangeListener(this);
 		*/
 	}
+	
+	/**
+	 * Called when activity comes to foreground.
+	 */
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    /**
+     * Called when a new activity is started.
+     */
+    @Override
+    protected void onFreeze(Bundle outState) {
+        super.onFreeze(outState);
+    }
+
+	/**
+	 * Called when the user leaves.
+	 * Here we store the IP address and port.
+	 */
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        String newIP = mEditTextIP.getText().toString();
+		String newSocket = mEditTextSocket.getText().toString();
+		String oldIP = Hardware.getPreference(Hardware.IPADDRESS);
+		String oldSocket = Hardware.getPreference(Hardware.SOCKET);
+		
+		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
+			// new values
+			Sensors.mClient.disconnect();
+			
+			// Save the values
+			Hardware.setPreference(Hardware.IPADDRESS, newIP);
+			Hardware.setPreference(Hardware.SOCKET, newSocket);
+		
+		}
+	}
+
 	
 	/**
 	 * Implement the OnFocusChangeListener interface
