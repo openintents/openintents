@@ -6,6 +6,14 @@ import java.nio.IntBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
+/**
+ * Displays a cube.
+ * 
+ * The cube is streched to form a part of a compass needle.
+ *
+ * This cube is taken from the Android ApiDemos, 
+ * and has been modified for support of different colors.
+ */
 public class Cube
 {
     public Cube()

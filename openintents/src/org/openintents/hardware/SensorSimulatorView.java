@@ -309,7 +309,7 @@ public class SensorSimulatorView extends Activity {
     }
 
     /**
-     * Called when a new activity is started.
+     * Called when another activity is started.
      */
     @Override
     protected void onFreeze(Bundle outState) {

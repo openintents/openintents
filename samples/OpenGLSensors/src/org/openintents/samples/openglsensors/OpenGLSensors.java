@@ -31,34 +31,38 @@ package org.openintents.samples.openglsensors;
  * lib/openintents-lib-n.n.n.jar. 
  */
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.IntBuffer;
-
-import javax.microedition.khronos.opengles.GL10;
-
 import org.openintents.hardware.Sensors;
 import org.openintents.provider.Hardware;
 
 import android.app.Activity;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.OpenGLContext;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.SubMenu;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.Menu.Item;
 
 
 /**
- * Example of how to use OpenGL|ES in a custom view
+ * Displays a pyramid that always points up, or a 
+ * compass needle that always points towards North.
+ * 
+ * Directions are obtained from Android Sensors.
+ * If no real sensors are available, one can connect
+ * to the SensorSimulator.
+ * 
+ * Accelerometer, compass, and orientation sensors are supported.
+ * 
+ * @author Peli
  *
  */
 
 public class OpenGLSensors extends Activity {
+	/**
+	 * TAG for logging.
+	 */
+	private static final String TAG = "OpenGLSensors";
 
 	private static final int MENU_SETTINGS = Menu.FIRST;
 	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 1;
@@ -90,7 +94,18 @@ public class OpenGLSensors extends Activity {
 	
 	private GLSurfaceView mGLSurfaceView;
 	
-    @Override
+	/**
+	 * Called when activity starts.
+	 * 
+	 * We do not automatically reconnect to the SensorSimulator,
+	 * as it may not be available in the mean-time anymore or 
+	 * the IP address may have changed.
+	 * 
+	 * (We do not know how long the activity had been dormant).
+	 * 
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	@Override
 	protected void onCreate(Bundle icicle)
     {
         super.onCreate(icicle);   
@@ -118,19 +133,43 @@ public class OpenGLSensors extends Activity {
         mGLSurfaceView.startUseSensors();
     }
     
+    /**
+	 * Called when activity comes to foreground.
+	 */
     @Override
 	protected void onResume()
     {
         super.onResume();
-    	//android.os.Debug.startMethodTracing("/tmp/trace/GLView1.dmtrace",
-        //  8 * 1024 * 1024);
+       	Log.i(TAG, "onResume()");
+               
+        // Actually, the following should only be called
+        // after holdAnimation(), but a quickfix allows
+        // us to call this method once at start
+        // without consequences.
+        mGLSurfaceView.resumeAnimation();
+    	
     }
     
-    @Override
+	/** 
+	 * Called when another activity is started.
+	 * 
+	 * @see android.app.Activity#onFreeze(android.os.Bundle)
+	 */
+	@Override
+	protected void onFreeze(Bundle outState) {
+		super.onFreeze(outState);
+    	Log.i(TAG, "onFreeze()");
+		
+		// Hold the animation to save CPU consumtion
+		// when in background.
+		mGLSurfaceView.holdAnimation();
+	}
+
+	@Override
 	protected void onStop()
     {
         super.onStop();
-        //android.os.Debug.stopMethodTracing();
+        
     }
     
     ////////////////////////////////////////////////////////

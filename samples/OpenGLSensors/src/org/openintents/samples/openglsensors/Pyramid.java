@@ -5,8 +5,12 @@ import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
-
-//The pyramid is taken from the anddev.org tutorial.
+/**
+ * Displays a pyramid.
+ * 
+ * The pyramid is taken from an anddev.org tutorial.
+ *
+ */
 
 public class Pyramid { 
       

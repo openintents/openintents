@@ -1,5 +1,8 @@
 package org.openintents.samples.openglsensors;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import javax.microedition.khronos.opengles.GL10;
 
 import org.openintents.hardware.Sensors;
@@ -9,6 +12,13 @@ import android.graphics.OpenGLContext;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+/**
+ * Holds the Open GL surface.
+ * 
+ * This class also contains the GLThread class 
+ * that takes care of graphics updates.
+ *
+ */
 public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 {
 	SurfaceHolder mHolder;
@@ -45,6 +55,10 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
     public void surfaceCreated(SurfaceHolder holder) {
         // The Surface has been created, start our drawing thread.
         mGLThread = new GLThread();
+        
+        // Increase interactivity of menu
+        mGLThread.setPriority(Thread.MIN_PRIORITY);
+        
         mGLThread.start();
     }
 
@@ -72,6 +86,28 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
     	}
     }
     
+    /**
+     * Holds animation temporarily.
+     * 
+     * This can be called onPause() to save CPU power consumption.
+     */
+    public void holdAnimation() {
+    	if (mGLThread != null) {
+    		mGLThread.holdAnimation();
+    	}
+    }
+    
+    /**
+     * Resumes animation.
+     * 
+     * Only to be called after holdAnimation().
+     */
+    public void resumeAnimation() {
+    	if (mGLThread != null) {
+    		mGLThread.resumeAnimation();
+    	}
+    }
+    
  // ----------------------------------------------------------------------
 
     class GLThread extends Thread {
@@ -89,6 +125,19 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
         
         private boolean mUseSensors;
         
+        /**
+         * Lock for animations if activity is in background.
+         * 
+         * This lock should reduce CPU usage by stalling the animation.
+         */
+        private Lock animationLock;
+        
+        /**
+         * Takes care that multiple locks don't cause deadlock.
+         */
+        private int numAnimationLocks;
+        
+        
         GLThread() {
             super();
             mDone = false;
@@ -97,6 +146,9 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             mCube = new Cube();
             mPyramid = new Pyramid();
             mUseSensors = true;
+            
+            animationLock = new ReentrantLock(); 
+            numAnimationLocks = 0;
         }
     
         @Override
@@ -131,6 +183,35 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             // This is our main acquisition thread's loop, we go until
             // asked to quit.
             while (!mDone) {
+            	// We try to get the animationLock first.
+            	// (if it is locked, then we wait here until 
+            	//  the lock is released).
+            	//
+            	// Unfortunately, a simple
+            	//    animationLock.lock();
+                //    animationLock.unlock();
+            	// is not enough, as the lock() will
+            	// also consume a lot of CPU.
+            	
+            	animationLock.lock();
+                animationLock.unlock();
+                try {
+            		Thread.sleep(2000);
+            	} catch (InterruptedException e) {
+            		// Woke up sooner. That is fine.
+            	}
+                while (! animationLock.tryLock()) {
+                	try {
+                		Thread.sleep(200);
+                	} catch (InterruptedException e) {
+                		// Woke up sooner. That is fine.
+                	}
+                }
+                // We got the lock, so we can proceed
+                // with graphics. The lock itself is
+                // not necessary anymore.
+                animationLock.unlock();
+                
                 // Update the asynchronous state (window size, key events)
                 int w, h;
                 synchronized(this) {
@@ -374,6 +455,43 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             try {
                 join();
             } catch (InterruptedException ex) { }
+        }
+        
+        /**
+         * Holds animation temporarily.
+         * 
+         * This can be called onPause() to save CPU power consumption.
+         */
+        public void holdAnimation() {
+        	assert(numAnimationLocks >= 0);
+        	// Only if there has been no lock previously, we lock.
+        	// This is to prevent a deadlock.
+        	if (numAnimationLocks == 0) {
+        		animationLock.lock();
+        	}
+        	numAnimationLocks++;
+        }
+        
+        /**
+         * Resumes animation.
+         * 
+         * Only to be called after holdAnimation().
+         * (Quickfix: for now we allow calling this
+         *  once at start to avoid introducing
+         *  another state variable).
+         */
+        public void resumeAnimation() {
+        	// assert(numAnimationLocks >= 1);
+        	numAnimationLocks--;
+        	if (numAnimationLocks == 0) {
+        		animationLock.unlock();
+        	} else if (numAnimationLocks < 0) {
+        		// Quickfix: for now we allow calling this
+                //  once at start to avoid introducing
+                //  another state variable.
+        		assert(numAnimationLocks == -1);
+        		numAnimationLocks = 0;
+        	}
         }
     }
 }
