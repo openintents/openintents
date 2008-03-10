@@ -14,15 +14,25 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   YOU MAY HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib.JAR FILE:
+
+If it is not included yet, in the Eclipse Package Explorer, 
+right-click on the imported project Newsreader, 
+select "Properties", then "Java Build Path" and tab "Libraries". 
+There "Add JARs..." and select lib/openintents-lib.jar. 
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 ---------------------------------------------------------
 release: 0.1.4
-date: ?
+date: 2008-03-12
 
 features:
-- 
-
-use cases:
-- 
+- Basic Newsreader
+- Service for receiving feeds in the background
 
 know issues:
-- 
+- Unstable pre-release
+- Magnolia tagging does not work yet (issue #41)

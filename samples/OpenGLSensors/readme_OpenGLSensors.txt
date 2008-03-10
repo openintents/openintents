@@ -16,12 +16,12 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib-n.n.n.JAR FILE:
+   YOU MAY HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib.JAR FILE:
 
-In the Eclipse Package Explorer, right-click on the imported 
-project OpenGLSensors, select "Properties", then "Java Build Path" 
-and tab "Libraries". There "Add External JARs..." and select
-lib/openintents-lib-n.n.n.jar. 
+If it is not included yet, in the Eclipse Package Explorer, 
+right-click on the imported project OpenGLSensors, 
+select "Properties", then "Java Build Path" and tab "Libraries". 
+There "Add JARs..." and select lib/openintents-lib.jar. 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -29,6 +29,13 @@ OpenGLSensors demonstrates accessing the sensors and the sensor simulator.
 The pyramid displayed will always show up, regardless how you hold the
 device.
 The bar magnet displayed will always point along the magnetic field.
+
+---------------------------------------------------------
+release: 0.1.4
+date: 2008-03-12
+
+known bugs:
+- Uses full CPU even if activity moves to background (issue #43).
 
 ---------------------------------------------------------
 release: 0.1.2

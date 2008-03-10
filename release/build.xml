@@ -58,6 +58,7 @@
 	<property name="source-lib-dir" value="${source-dir}/lib" />
 						
 	<!-- (sub)project folders  -->
+	<property name="buildrelease-dir" value="." />
 	<property name="base-dir" value="../openintents" />
 	<property name="lib-dir" value="../lib" />
 	<property name="newsreader-dir" value="../applications/newsreader" />
@@ -65,7 +66,8 @@
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
 	<property name="sensorsimulator-dir" value="../tools/SensorSimulator" />
-
+	<property name="thisrelease-dir" value="." />
+	
 	<!-- standard lib file -->
 	<property name="binary-lib-file" value="${binary-lib-dir}/openintents-lib.jar" />
 		
@@ -108,6 +110,15 @@
 		<!-- Copy the source files -->
 		<copy todir="${source-dir}/openintents">
 		    <fileset dir="${base-dir}">
+		    	<exclude name="**/bin/**" />
+	    		<exclude name="**/release/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+		
+		<!-- Copy the build-release files -->
+		<copy todir="${source-dir}/release">
+		    <fileset dir="${buildrelease-dir}">
 		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/release/**" />
 	    		<exclude name="**/.svn" />

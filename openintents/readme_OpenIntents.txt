@@ -21,8 +21,25 @@ To obtain the current release, visit
   http://code.google.com/p/openintents/
 
 ---------------------------------------------------------
+release: 0.1.4
+date: 2008-03-12
+for: Android SDK m5-rc15
+
+new features:
+- unit testing with Android-Positron.
+- JavaDoc.
+- Shopping list PICK_ACTION added (issue #20).
+- SensorSimulator Settings (tab Testing) now supports sensor update rates.
+
+bug fixes:
+- GPS access permissions set correctly (issues #32, 38).
+- Content browser list sizes adapted, bugs fixed (issues #14, 15, 19, 21).
+- SensorSimulator Settings saves IP and socket settings on leaving (issue #39).
+
+---------------------------------------------------------
 release: 0.1.3
 date: 2008-02-24
+for: Android SDK m5-rc14
 
 new features:
 - Update to Android SDK m5.
@@ -36,6 +53,7 @@ new features:
 ---------------------------------------------------------
 release: 0.1.2
 date: 2008-01-28
+for: Android SDK m3-rc37a
 
 new features:
 - SensorSimulator
@@ -52,6 +70,7 @@ new features:
 ---------------------------------------------------------
 release: 0.1.1
 date: 2008-01-07
+for: Android SDK m3-rc37a
 
 new features:
 - ShoppingList
@@ -67,6 +86,7 @@ known issues:
 ---------------------------------------------------------
 release: 0.1.0
 date: 2007-12-19
+for: Android SDK m3-rc37a
 
 features:
 - LocationsProvider

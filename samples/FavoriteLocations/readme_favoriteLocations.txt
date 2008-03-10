@@ -16,14 +16,21 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib-n.n.n.JAR FILE:
+   YOU MAY HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib.JAR FILE:
 
-In the Eclipse Package Explorer, right-click on the imported 
-project FavoriteLocations, select "Properties", then "Java Build Path" 
-and tab "Libraries". There "Add External JARs..." and select
-lib/openintents-lib-n.n.n.jar. 
+If it is not included yet, in the Eclipse Package Explorer, 
+right-click on the imported project FavoriteLocations, 
+select "Properties", then "Java Build Path" and tab "Libraries". 
+There "Add JARs..." and select lib/openintents-lib.jar. 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+---------------------------------------------------------
+release: 0.1.4
+date: 2008-03-12
+
+bug fixes:
+- GPS access permissions set correctly (issues #32, 38).
 
 ---------------------------------------------------------
 release: 0.1.3

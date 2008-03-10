@@ -55,6 +55,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ---------------------------------------------------------
+release: 0.1.4
+date: 2008-03-12
+
+new features:
+  - support for Sensors class updateSensorRate() and related methods.
+  - new physical model for accelerometer that allows for higher 
+    time-resolution. Accelerometer can be specified by spring constant
+    and damping terms.
+
+---------------------------------------------------------
 release: 0.1.3
 date: 2008-02-24
 
