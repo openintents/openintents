@@ -189,13 +189,22 @@ public abstract class News {
 		return mContentResolver.insert(RSSFeeds.CONTENT_URI,cv);//works
 	}
 
-
+	/*
+	 *@param uri the content uri to insert to
+	 *@param cv the ContentValues that will be inserted to
+	*/
 	public static Uri insert(Uri uri, ContentValues cv){
 
 		return mContentResolver.insert(uri,cv);
 		
 	}
 
+	/*
+	 *@param uri the content uri to insert to
+	 *@param selection the selection to check against
+	 *@param selectionArgs the arguments applied to selection string (optional)
+	 *@param cs the ContentValues that will be inserted if selection returns 0 rows.
+	 */
 	public static Uri insertIfNotExists(Uri uri,String selection,String[] selectionArgs,ContentValues cs){
 		Uri u=null;
 
