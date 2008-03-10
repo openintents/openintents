@@ -30,10 +30,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ComponentName;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
@@ -89,7 +91,16 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	// 
 	private static final int MENU_SETTINGS = Menu.FIRST + 100;
 	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 101;
-
+	
+	/**
+	 * One of the different states this activity can run.
+	 */
+	private static final int STATE_MAIN = 0;
+	private static final int STATE_VIEW = 1;
+	private static final int STATE_PICK = 2;
+	
+	/** Current state */
+	private int mState;
 	
 	private LinearLayout mLinearLayoutBackground;
 	
@@ -126,11 +137,13 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				ContainsFull._ID, 
 				ContainsFull.ITEM_NAME,
 				ContainsFull.ITEM_IMAGE,
-				ContainsFull.STATUS};
+				ContainsFull.STATUS,
+				ContainsFull.ITEM_ID};
 	private static final int mStringItemsCONTAINSID = 0;
 	private static final int mStringItemsITEMNAME = 1;
 	private static final int mStringItemsITEMIMAGE = 2;
 	private static final int mStringItemsSTATUS = 3;
+	private static final int mStringItemsITEMID = 4;
 	private LinearLayout.LayoutParams mLayoutParamsItems;
 	private int mAllowedListHeight; // Height for the list allowed in this view.
 	
@@ -156,6 +169,23 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		
 		// Initialize the convenience functions:
 		Shopping.mContentResolver = getContentResolver();
+		
+		// Handle the calling intent
+		final Intent intent = getIntent();
+        final String type = intent.resolveType(this);
+        final String action = intent.getAction();
+        if (action.equals(Intent.MAIN_ACTION)) {
+            mState = STATE_MAIN;
+        } else if (action.equals(Intent.VIEW_ACTION)) {
+            mState = STATE_VIEW;
+        } else if (action.equals(Intent.PICK_ACTION)) {
+            mState = STATE_PICK;
+        } else {
+            // Unknown action.
+            Log.e(TAG, "Shopping: Unknown action, exiting");
+            finish();
+            return;
+        }
 
 		// hook up all buttons, lists, edit text:
 		createView();
@@ -189,6 +219,16 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 	@Override
 	protected void onResume() {
 		super.onResume();
+		
+		// Modify our overall title depending on the mode we are running in.
+        if (mState == STATE_MAIN ||
+        		mState == STATE_VIEW) {
+            setTitle(getText(R.string.shopping_list));
+        } else if (mState == STATE_PICK) {
+            setTitle(getText(R.string.pick_item));
+            setTitleColor(0xFFAAAAFF);
+        }
+
 		
 		checkListLength();
 	}
@@ -262,7 +302,11 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 				public void onItemClick(AdapterView parent, 
 						View v, int pos, long id) {
 					Cursor c = (Cursor) parent.obtainItem(pos);
-					toggleItemBought(c);
+					if (mState == STATE_PICK) {
+						pickItem(c);
+					} else {
+						toggleItemBought(c);
+					}
 				}
 				
 		});
@@ -330,7 +374,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		}
 	}
 	
-	// strike item through or undo this.
+	/** strike item through or undo this. */
 	private void toggleItemBought(Cursor c) {
 		// Toggle status:
 		long oldstatus = c.getLong(mStringItemsSTATUS);
@@ -348,6 +392,15 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 		c.requery();
 		
 		// fillItems();
+	}
+	
+	/** Picks an item and returns to calling activity. */
+	private void pickItem(Cursor c) {
+		long itemId = c.getLong(mStringItemsITEMID);
+		Uri url = ContentUris.withAppendedId(Shopping.Items.CONTENT_URI, itemId);
+		
+		setResult(RESULT_OK, url.toString());
+		finish();
 	}
 	
 	// Menu

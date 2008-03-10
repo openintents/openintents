@@ -149,7 +149,7 @@ public final class R {
         public static final int shopping=0x7f040005;
     }
     public static final class string {
-        public static final int IP_address=0x7f05003d;
+        public static final int IP_address=0x7f05003e;
         public static final int about=0x7f050004;
         public static final int about_openintents=0x7f050003;
         public static final int about_openintents_text=0x7f050005;
@@ -161,16 +161,16 @@ public final class R {
          */
         public static final int app_name=0x7f050000;
         public static final int ask_new_list=0x7f050032;
-        public static final int ask_update_interval=0x7f050045;
-        public static final int auto_update=0x7f050042;
+        public static final int ask_update_interval=0x7f050046;
+        public static final int auto_update=0x7f050043;
         public static final int button_ok=0x7f050022;
         /**      Dialog box    
          */
-        public static final int cancel=0x7f050036;
+        public static final int cancel=0x7f050037;
         public static final int clean_up_list=0x7f050030;
         public static final int confirm_delete_list=0x7f050034;
-        public static final int connect=0x7f05003a;
-        public static final int connect_to_sensorsimulator=0x7f050047;
+        public static final int connect=0x7f05003b;
+        public static final int connect_to_sensorsimulator=0x7f050048;
         /**   Content Browser 
          */
         public static final int content_browser=0x7f050013;
@@ -182,12 +182,12 @@ public final class R {
         public static final int dialog_ok=0x7f050024;
         public static final int dialog_title_package_add=0x7f050026;
         public static final int dialog_title_package_del=0x7f050028;
-        public static final int disabled=0x7f050043;
-        public static final int disconnect=0x7f05003c;
-        public static final int enable_sensors=0x7f050041;
+        public static final int disabled=0x7f050044;
+        public static final int disconnect=0x7f05003d;
+        public static final int enable_sensors=0x7f050042;
         /**      Key codes     
          */
-        public static final int key_return=0x7f05004c;
+        public static final int key_return=0x7f05004d;
         public static final int label_package_add=0x7f050021;
         public static final int label_packages=0x7f050020;
         public static final int list_is_empty=0x7f05000b;
@@ -216,34 +216,35 @@ public final class R {
         public static final int nothing_found=0x7f05001c;
         public static final int nothing_selected=0x7f05001b;
         public static final int oi_acceptancetest=0x7f050007;
-        public static final int ok=0x7f050037;
+        public static final int ok=0x7f050038;
         public static final int openintents=0x7f050002;
-        public static final int real_device_data=0x7f05003f;
+        public static final int pick_item=0x7f050036;
+        public static final int real_device_data=0x7f050040;
         public static final int select=0x7f05000f;
-        public static final int sensor_simulator_data=0x7f050040;
+        public static final int sensor_simulator_data=0x7f050041;
         /**   Sensor Simulator 
          */
-        public static final int sensorsimulator=0x7f050038;
-        public static final int sensorsimulator_settings=0x7f050046;
-        public static final int sensorsimulator_settings_description=0x7f050048;
-        public static final int sensorsimulator_testing_description=0x7f050049;
-        public static final int set_update_interval=0x7f050044;
-        public static final int settings=0x7f050039;
+        public static final int sensorsimulator=0x7f050039;
+        public static final int sensorsimulator_settings=0x7f050047;
+        public static final int sensorsimulator_settings_description=0x7f050049;
+        public static final int sensorsimulator_testing_description=0x7f05004a;
+        public static final int set_update_interval=0x7f050045;
+        public static final int settings=0x7f05003a;
         /**  Shopping Provider 
          */
         public static final int shopping_list=0x7f05002d;
-        public static final int socket=0x7f05003e;
+        public static final int socket=0x7f05003f;
         public static final int tag_all=0x7f050012;
         public static final int tags_add_tag=0x7f050014;
         public static final int tags_cloud=0x7f05002a;
         public static final int tags_remove_tag=0x7f050016;
         public static final int tags_view_content=0x7f050015;
         public static final int tags_view_tag=0x7f050019;
-        public static final int test=0x7f05004d;
-        public static final int testing=0x7f05003b;
+        public static final int test=0x7f05004e;
+        public static final int testing=0x7f05003c;
         public static final int todo=0x7f050018;
-        public static final int update_rate=0x7f05004a;
-        public static final int update_rate_seconds=0x7f05004b;
+        public static final int update_rate=0x7f05004b;
+        public static final int update_rate_seconds=0x7f05004c;
         public static final int view_location=0x7f05000a;
     }
 }

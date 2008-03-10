@@ -29,7 +29,7 @@
 	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
 	android:label="@string/oi_acceptancetest"/>
 	
-	<application android:icon="@drawable/openintents002a">
+	<application android:icon="@drawable/openintents002a" android:label="@string/app_name">
 		<!-- Providers -->
 		<provider android:name=".locations.LocationsProvider"
 			android:authorities="org.openintents.locations" />
@@ -202,18 +202,37 @@
 			android:icon="@drawable/shoppinglist_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="org.openintents.category.MAIN" />
-				<!-- -->  <category
-					android:name="android.intent.category.LAUNCHER" />  <!--  -->
+				<!-- -->  <category android:name="android.intent.category.LAUNCHER" />  <!--  -->
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
-				<data
-					android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
+				<action android:name="android.intent.action.PICK" />
+				<action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.item/shopping.list" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.PICK" />
+				<action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.dir/shopping.item" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.GET_CONTENT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.item/shopping.item" />
 			</intent-filter>
 		</activity>
 
