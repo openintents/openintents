@@ -24,9 +24,9 @@ import javax.swing.SwingUtilities;
  * 
  * The applet can be used in a HTML document in the following way:
  * <pre>
- * <applet code="org.openintents.tools.sensorsimulator.SensorSimulatorWeb.class" 
- *         archive="sensorsimulator.jar" width="640" height="440" alt="OpenIntents">
- * </applet>
+ * &lt;applet code="org.openintents.tools.sensorsimulator.SensorSimulatorWeb.class" 
+ *         archive="sensorsimulator.jar" width="640" height="440" alt="OpenIntents"&gt;
+ * &lt;/applet&gt;
  * </pre>
  * 
  * The applet currently does not take any parameters.

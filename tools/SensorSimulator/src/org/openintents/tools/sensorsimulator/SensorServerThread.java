@@ -22,6 +22,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Handles the communication with the SensorClient from the Android phone or emulator.
+ * 
+ * This class is invoked from the {@link SensorServer}.
+ * 
+ * @author Peli
+ *
+ */
 public class SensorServerThread implements Runnable {
 
 	public SensorSimulator mSensorSimulator;
@@ -37,8 +45,10 @@ public class SensorServerThread implements Runnable {
 	public Socket mClientSocket;
 	
 	
-	
-	boolean talking; // whether thread is supposed to be continuing work.
+	/**
+	 * Whether thread is supposed to be continuing work.
+	 */
+	boolean talking;
 	/*
 	String[] mSupportedSensors = {
 			SensorSimulator.ACCELEROMETER,
@@ -46,6 +56,7 @@ public class SensorServerThread implements Runnable {
 			SensorSimulator.ORIENTATION
 		};
 	*/
+	
 	/**
 	 * Constructor to start as thread.
 	 * @param newSensorSimulator
@@ -68,7 +79,13 @@ public class SensorServerThread implements Runnable {
 		listenThread();
 	}
 	
-
+	/**
+	 * Handles communication with the client.
+	 * 
+	 * In a simple protocol, all Android Sensors class methods are 
+	 * received and answered. If necessary, exceptions are thrown
+	 * as specified in the Sensors class.
+	 */
     public void listenThread() {
     	double updatesPerSecond;
         double[] updatesList;
@@ -447,6 +464,9 @@ public class SensorServerThread implements Runnable {
 		return returnSensorList;
     }
     
+    /**
+     * Closes the socket.
+     */
     public void stop() {
     	// close the socket
     	try {

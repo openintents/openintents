@@ -6,8 +6,10 @@
 	    Use this Ant script to build the complete release.
 	    
 	    Targets:
-	    - "release": the full openintents release, binary + source.
-	    - "release-zip": create release zip-files, binary + source.
+	    - "release": the full openintents release, 
+	       binary + source + javadoc.
+	    - "release-zip": create release zip-files, 
+	      binary + source + javadoc.
 	    ==============================================================
 	    
 	    The following property has to be set:
@@ -111,7 +113,9 @@
 		<copy todir="${source-dir}/openintents">
 		    <fileset dir="${base-dir}">
 		    	<exclude name="**/bin/**" />
-	    		<exclude name="**/release/**" />
+		    	<exclude name="**/doc/**" />
+		    	<exclude name="**/doc-lib/**" />
+		    	<exclude name="**/release/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
@@ -119,7 +123,6 @@
 		<!-- Copy the build-release files -->
 		<copy todir="${source-dir}/release">
 		    <fileset dir="${buildrelease-dir}">
-		    	<exclude name="**/bin/**" />
 	    		<exclude name="**/release/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
@@ -142,7 +145,7 @@
 		<ant
 			dir="${base-dir}"
 			antfile="build.xml"
-			target="lib"
+			target="all"
 		/>
 		<copy
 			file="${base-dir}/bin/OpenIntents.apk"
@@ -213,6 +216,7 @@
 		<copy todir="${source-dir}/samples/FavoriteLocations">
 		    <fileset dir="${favoritelocations-dir}">
 		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
@@ -253,6 +257,7 @@
 		<copy todir="${source-dir}/samples/OpenGLSensors">
 		    <fileset dir="${openglsensors-dir}">
 		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
@@ -293,6 +298,7 @@
 		<copy todir="${source-dir}/samples/PresentPicker">
 		    <fileset dir="${presentpicker-dir}">
 		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
@@ -333,6 +339,7 @@
 		<copy todir="${source-dir}/applications/newsreader">
 		    <fileset dir="${newsreader-dir}">
 		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>
@@ -351,7 +358,7 @@
 		<ant
 			dir="${sensorsimulator-dir}"
 			antfile="build.xml"
-			target="package"
+			target="all"
 			>
 		</ant>
 		<!-- Copy to binary release -->
@@ -365,6 +372,7 @@
 		<copy todir="${source-dir}/tools/SensorSimulator">
 		    <fileset dir="${sensorsimulator-dir}">
 		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
 	    		<exclude name="**/.svn" />
 		    </fileset>
 		</copy>

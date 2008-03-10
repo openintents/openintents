@@ -20,6 +20,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Listens for incoming connections from an Android phone or emulator.
+ * 
+ * Connections are then passed to the {@link SensorServerThread}.
+ * 
+ * @author Peli
+ *
+ */
 public class SensorServer implements Runnable {
 
 	public SensorSimulator mSensorSimulator;
