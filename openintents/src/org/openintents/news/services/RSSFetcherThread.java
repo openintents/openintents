@@ -122,6 +122,11 @@ public class RSSFetcherThread extends Thread{
 
 	public void parse(Document doc){
 
+		if (doc==null)
+		{
+			Log.w(_TAG,"Document was null. Connection broken?");
+			return;
+		}
 		//TODO: parse doc.
 		System.out.println(doc.toString());
 		//System.out.println("UURI>>"+doc.getDocumentURI());
@@ -139,6 +144,11 @@ public class RSSFetcherThread extends Thread{
 			int childLen=childs.getLength();
 			ContentValues cv=new ContentValues();
 			System.out.println("LEN>"+childLen);
+			StringBuffer selection=new StringBuffer();
+			selection.append(News.RSSFeedContents.CHANNEL_ID);
+			selection.append("=");
+			selection.append(_id);
+
 			cv.put(News.RSSFeedContents.CHANNEL_ID,_id);
 			for (int n=0;n<childLen ;n++ )
 			{
@@ -179,6 +189,11 @@ public class RSSFetcherThread extends Thread{
 					}else if (nodeName.equalsIgnoreCase("guid"))
 					{
 						cv.put(News.RSSFeedContents.ITEM_GUID,nodeValue);
+						selection.append(" AND ");
+						selection.append(News.RSSFeedContents.ITEM_GUID);
+						selection.append(" like '");
+						selection.append(nodeValue);
+						selection.append("'");
 					}else if (nodeName.equalsIgnoreCase("title"))
 					{
 						cv.put(News.RSSFeedContents.ITEM_TITLE,nodeValue);
@@ -203,8 +218,9 @@ public class RSSFetcherThread extends Thread{
 			}
 
 			//System.out.println("DUMPING NODE TYPE\n TEXT>>"+Node.TEXT_NODE+"\n CDATA>"+Node.CDATA_SECTION_NODE);
-
-			Uri rUri=News.insertIfNotExists(News.RSSFeedContents.CONTENT_URI,cv);
+			
+			
+			Uri rUri=News.insertIfNotExists(News.RSSFeedContents.CONTENT_URI,selection.toString(),null,cv);
 			Log.d(_TAG,"insert returned >>"+rUri+"<<");
 
 
