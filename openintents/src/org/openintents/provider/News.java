@@ -177,14 +177,15 @@ public abstract class News {
 	public static final String MESSAGE_COUNT="MESSAGE_COUNT";
 	public static final String _ID="_id";
 
+
+
+
+
 	/*
-	*@deprecated use insert(uri,contentvalues) instead.
+	*@deprecated use insert(uri,contentvalues) instead. Will be removed in release 0.1.5
 	*/
 	public static Uri ins(ContentValues cv){
-		//return  new org.openintents.news.rss.RSSFeedProvider().insert(RSSFeeds.CONTENT_URI,cv);
-//		return mContentResolver.insert(ContentURI.create("content://org.openintents.news"),cv);
-		//return new org.openintents.news.NewsProvider().insert(ContentURI.create("content://org.openintents.news"),cv);//works
-		//return new org.openintents.news.NewsProvider().insert(RSSFeeds.CONTENT_URI,cv);//works
+
 		return mContentResolver.insert(RSSFeeds.CONTENT_URI,cv);//works
 	}
 
@@ -195,41 +196,39 @@ public abstract class News {
 		
 	}
 
-	public static Uri insertIfNotExists(Uri uri,ContentValues cs){
-		/*
-		StringBuffer selBuf=new StringBuffer();
-		String selection="";
-		Set valueSet=cs.valueSet();
-		Iterator valIt=valueSet.iterator();
-		while (valIt.hasNext())
-		{
-			String pair=(String)valIt.next();
-			String[] disjunct=pair.split("=");
-			if (disjunct[0].equals(News.RSSFeedContents.CHANNEL_ID))
-			{
-				selBuf.append(" "+News.RSSFeedContents.CHANNEL_ID+"="+disjunct[1]+",");
-			}else if (disjunct[0].equals(News.RSSFeedContents.ITEM_GUID))
-			{
-				selBuf.append(" "+News.RSSFeedContents.ITEM_GUID+" like '"+disjunct[1]+"',");
-			}
+	public static Uri insertIfNotExists(Uri uri,String selection,String[] selectionArgs,ContentValues cs){
+		Uri u=null;
 
-		}
-		selection=selBuf.toString();
-		Log.d(_TAG,"checking selection>>"+selection+"<<");
-		if (selection.endsWith(","))
-		{
-			selection=selection.substring(0,selection.length() -1);
-		}
+		String[] projection={BaseColumns._ID};
 		//query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
-		if (mContentResolver.query(uri,null,selection,null,null).count()<=0)
+		Log.d(_TAG,"insertIfNotExists:entering");
+		Log.d(_TAG,"checking for\n uri:"+uri+"\n selection:"+selection+"\n selArgs[]:"+selectionArgs+"\n cv:"+cs);
+		android.database.Cursor c=mContentResolver.query(uri,projection,selection,selectionArgs,null);
+		Log.d(_TAG,"returned count of>>"+c.count());
+		if (c.count()<=0)
 		{
-			insert(uri,cs);
+			u=insert(uri,cs);
+		}else{
+			c.first();
+			Log.d(_TAG,"uri part>>"+uri.getSchemeSpecificPart()+"<<");
+			String tid=c.getString(c.getColumnIndex(BaseColumns._ID));
+			//Uri temp=Uri.fromParts(
+			u=Uri.fromParts(
+					uri.getScheme(),
+					uri.getSchemeSpecificPart(),
+					tid
+				);
+			 //u=android.content.ContentUris.withAppendedId(temp,c.getLong(c.getColumnIndex(BaseColumns._ID)));
+			 
+
 		}
 		//Log.d(_TAG,"valueset:"+valueSet.toString());
-		return null;			
-		*/
-		return insert(uri,cs);
-
+		//return null;			
+		
+		//return insert(uri,cs);
+		c.close();
+		Log.d(_TAG,"insertIfNotExists:leaving");
+		return u;
 	}
 
 	public static int delete(Uri uri,String selection,String[] selectionArgs){
@@ -240,5 +239,7 @@ public abstract class News {
 	public static int update(Uri uri,ContentValues values, String selection, String[] selectionArgs){
 		return mContentResolver.update(uri,values,selection,selectionArgs);
 	}
+
+
 
 }
