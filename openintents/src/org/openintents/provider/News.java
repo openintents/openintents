@@ -181,15 +181,16 @@ public abstract class News {
 
 
 
-	/*
+	/**
 	*@deprecated use insert(uri,contentvalues) instead. Will be removed in release 0.1.5
+	*@see insert(Uri uri,ContentValues cv)
 	*/
 	public static Uri ins(ContentValues cv){
 
 		return mContentResolver.insert(RSSFeeds.CONTENT_URI,cv);//works
 	}
 
-	/*
+	/**
 	 *@param uri the content uri to insert to
 	 *@param cv the ContentValues that will be inserted to
 	*/
@@ -199,7 +200,7 @@ public abstract class News {
 		
 	}
 
-	/*
+	/**
 	 *@param uri the content uri to insert to
 	 *@param selection the selection to check against
 	 *@param selectionArgs the arguments applied to selection string (optional)
@@ -240,11 +241,24 @@ public abstract class News {
 		return u;
 	}
 
+	/**
+	 *@param uri the content uri to delete
+	 *@param selection the selection to check against
+	 *@param selectionArgs the arguments applied to selection string (optional)	 
+	 *@return number of deleted rows
+	 */
 	public static int delete(Uri uri,String selection,String[] selectionArgs){
 
 		return mContentResolver.delete(uri,selection,selectionArgs);
 	}
 
+	/**
+	 *@param uri the content uri to update
+	 *@param cv the ContentValues that will be update in selected rows.
+	 *@param selection the selection to check against
+	 *@param selectionArgs the arguments applied to selection string (optional)	 
+	 *@return number of updated rows
+	 */
 	public static int update(Uri uri,ContentValues values, String selection, String[] selectionArgs){
 		return mContentResolver.update(uri,values,selection,selectionArgs);
 	}
