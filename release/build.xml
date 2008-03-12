@@ -46,11 +46,16 @@
 	<!-- Read version number from file -->
 	<property file="build-version.txt" />
 	
+	<!-- Base name of the release files -->
+	<property name="binary-name" value="openintents-binary-${build-version}" />
+	<property name="source-name" value="openintents-source-${build-version}" />
+	<property name="javadoc-name" value="openintents-javadoc-${build-version}" />
+		
 	<!-- release dir: this is where all the completed files go -->
 	<property name="release-dir" value="release" />
-	<property name="binary-dir" value="${release-dir}/openintents-binary-${build-version}" />
-	<property name="source-dir" value="${release-dir}/openintents-source-${build-version}" />
-	<property name="javadoc-dir" value="${release-dir}/openintents-javadoc-${build-version}" />
+	<property name="binary-dir" value="${release-dir}/${binary-name}" />
+	<property name="source-dir" value="${release-dir}/${source-name}" />
+	<property name="javadoc-dir" value="${release-dir}/${javadoc-name}" />
 		
 	<!-- subdirectories in the release-dir -->
 	<property name="binary-applications-dir" value="${binary-dir}/applications" />
@@ -96,6 +101,7 @@
 		<mkdir dir="${binary-samples-dir}"/>
 		<mkdir dir="${binary-tools-dir}"/>
 		<mkdir dir="${source-dir}"/>
+		<mkdir dir="${source-lib-dir}"/>
 		<mkdir dir="${javadoc-dir}"/>
 		
 		<!-- Now copy global readme files -->
@@ -107,7 +113,10 @@
 			tofile="${binary-dir}/readme.txt" />
 		<copy 
 			file="../readme_source.txt" 
-			tofile="${source-dir}/readme.txt" />
+			tofile="${source-dir}/readme_source.txt" />
+		<copy 
+			file="../readme_binary.txt" 
+			tofile="${source-dir}/readme_binary.txt" />
 
 		<!-- Copy the source files -->
 		<copy todir="${source-dir}/openintents">
@@ -166,6 +175,7 @@
 			todir="${binary-lib-dir}"
 			/>
 		<!-- Copy lib to source release -->
+		<!--
 		<copy todir="${source-lib-dir}">
 			<fileset dir=".">
 				<include name="${base-dir}/bin/openintents-lib.jar" />
@@ -173,6 +183,19 @@
 				<include name="${lib-dir}/readme_source.txt" />
 			</fileset>
 		</copy>
+		-->
+		<copy
+			file="${base-dir}/bin/openintents-lib.jar"
+			todir="${source-lib-dir}"
+			/>
+		<copy
+			file="${lib-dir}/readme.txt"
+			todir="${source-lib-dir}"
+			/>
+		<copy
+			file="${lib-dir}/readme_source.txt"
+			todir="${source-lib-dir}"
+			/>
 		<!-- Copy to javadoc release -->
 		<copy todir="${javadoc-dir}/openintents">
 			<fileset dir="${base-dir}/${doc-dir}">
@@ -403,17 +426,14 @@
 		name="release-zip"
 		depends="release">
 		<echo>------------------------------Zipping files----------------------</echo>
-		<zip
-			destfile="${binary-dir}.zip"
-			basedir="${binary-dir}"
-			/>
-		<zip
-			destfile="${source-dir}.zip"
-			basedir="${source-dir}"
-			/>
-		<zip
-			destfile="${javadoc-dir}.zip"
-			basedir="${javadoc-dir}"
-			/>
+		<zip destfile="${binary-dir}.zip">
+			<zipfileset dir="${binary-dir}" prefix="${binary-name}"/>
+		</zip>
+		<zip destfile="${source-dir}.zip">
+			<zipfileset dir="${source-dir}" prefix="${source-name}"/>
+		</zip>
+		<zip destfile="${javadoc-dir}.zip">
+			<zipfileset dir="${javadoc-dir}" prefix="${javadoc-name}"/>
+		</zip>
 	</target>
 </project>
