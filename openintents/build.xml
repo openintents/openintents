@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <project name="OpenIntents" default="package">
+	<property file="build.properties"/>
+
 	<!--
 		The following targets are possible:
 		
@@ -33,7 +35,7 @@
 	<!-- sdk-dir: path to Android SDK -->
 	<property name="sdk-dir" value="${android.sdk}" />
 	<!-- ############################################# -->
-	
+		
 	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
 	
@@ -66,9 +68,16 @@
     <property name="dex-file" value="classes.dex" />
     <property name="intermediate-dex" value="${outdir}/${dex-file}" />
 
-    <!-- The final package file to generate -->
-    <property name="out-package" value="${outdir}/${ant.project.name}.apk" />
-
+	<!-- bolt related properties -->
+	<property name="version" value="${release.major}.${release.minor}.${release.dev}"/>
+	<property name="bolt.manifest" value="manifest.bolt"/>
+	<property name="bolt.template" value="template manifest.bolt"/>
+	
+	<!-- The final package file to generate -->
+    <property name="out-package" value="${outdir}/${ant.project.name}.apk" />	
+	<property name="out-bolt-package" value="${outdir}/bolt/${package.name}-${version}.apk"/>
+	
+	
     <!-- Tools -->
     <property name="aapt" value="${android-tools}/aapt.exe" />
     <property name="aidl" value="${android-tools}/aidl.exe" />
@@ -221,6 +230,35 @@
 				includesfile="build-lib-content.txt"
 				>
 			</jar>
+	</target>
+	
+	<!-- ############### bolt related ################ -->
+	
+	<!-- copy package to package with name according to bolt -->	
+	<target name="bolt-apk" depends="package">
+		<copy file="${out-package}" tofile="${out-bolt-package}" />
+		<echo>bolt package read for upload at ${out-bolt-package}</echo>
+	</target>
+	
+	<!-- create md5 -->
+	<target name="bolt-md5" depends="bolt-apk">
+		<checksum algorithm="MD5" file="${out-bolt-package}" property="md5"/>
+	</target>
+	
+	<target name="bolt-update-manifest" depends="bolt-md5">
+		<copy file="${bolt.template}" tofile="${bolt.manifest}" />
+		<replace file="${bolt.manifest}">
+			<replacefilter 
+		    	token="@version@" 
+		    	value="${version}"/>
+			<replacefilter 
+		    	token="@md5@" 
+		    	value="${md5}"/>
+			<replacefilter 
+		    	token="@package-name@" 
+		    	value="${package.name}"/>			
+		</replace>	
+		<echo>updated manifest at ${bolt.manifest}</echo>
 	</target>
 	
 	<!-- ############### JavaDoc ####################### -->
