@@ -158,8 +158,8 @@ public class AFeedMessages extends ListActivity {
 		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_DELETE,"Delete");
 		
 		submenu=menu.addSubMenu(0,AFeedMessages.MENU_TAGS, "Tags");
-		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local");
-		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia");
+		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
+		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia",R.drawable.tagging_magnolia_application001a);
 
 /*
 		submenu=menu.addSubMenu(0,AFeedMessages.MENU_CHANNELITEM, "Message");
@@ -262,15 +262,14 @@ public class AFeedMessages extends ListActivity {
 			desc=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_TITLE));
 		
 		}	
-		
-		// TODO put correct expression below
-		/*
 		b.putString(org.openintents.tags.MagnoliaTagging.URI,strUri);
 		b.putString(org.openintents.tags.MagnoliaTagging.DESCRIPTION,desc);
-		Intent intent = new Intent(this, org.openintents.tags.MagnoliaTagging.class);
+		Intent intent = new Intent();
+		intent.setAction("org.openintents.action.TAGMAGNOLIA");
+		intent.addCategory(Intent.DEFAULT_CATEGORY);
 		intent.putExtras(b);
 		startActivity(intent);
-		 */
+
 	}
 
     

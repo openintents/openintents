@@ -77,7 +77,8 @@ public class Newsreader extends Activity {
 	
 	@Override
 	public void onCreate(Bundle icicle){
-		Log.v(_TAG,"helo");
+		
+		this.setTitle("Openintents Newsreader");
 		try{ 
 		
 		super.onCreate(icicle);
