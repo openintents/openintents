@@ -37,15 +37,31 @@
 			android:authorities="org.openintents.tags" />
 		<provider android:name=".shopping.ShoppingProvider"
 			android:authorities="org.openintents.shopping" />
-		<provider android:name=".tags.content.ContentIndexProvider"
-			android:authorities="org.openintents.contentindices" />
+
 		
 
-		<provider android:name=".news.NewsProvider"
-			android:authorities="org.openintents.news" />						
+		<provider android:name="org.openintents.news.NewsProvider"
+			android:authorities="org.openintents.news" />		
+
+	
+
+		<!-- 
+			<provider android:name=".tags.content.ContentIndexProvider"
+			android:authorities="org.openintents.contentindices" />			
+		-->
+
+		<provider android:name=".tags.content.ContentIndexProvider"
+			android:authorities="org.openintents.contentindices" />
+
+		
+
+		
+
+
 		<provider android:name=".hardware.HardwareProvider"
 			android:authorities="org.openintents.hardware" />
-			
+
+
 		<!-- Main activity -->
 		<activity android:name=".main.OpenIntentsView"
 			android:label="@string/app_name">
@@ -96,8 +112,10 @@
 			<intent-filter>
 				<action android:name="org.openintents.action.TAG" />
 				<category
+
 					android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+
 			</intent-filter>
 			<intent-filter>
 				<action android:name="org.openintents.action.TAG"
@@ -130,6 +148,7 @@
 				<category
 					android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
@@ -261,11 +280,26 @@
 				<category
 					android:name="android.intent.category.LAUNCHER" />              					
 			</intent-filter>
+
+			<intent-filter>
+				<action android:name="org.openintents.action.TAGMAGNOLIA"
+					android:label="tag" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.EDIT"
+					android:label="tag" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+			</intent-filter>
+
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					           					
 			</intent-filter>
+
 		</activity>	
 		
 		<!-- SensorSimulator -->
@@ -284,5 +318,19 @@
 			</intent-filter>
 		</activity>
 		
+		<!-- news services -->
+		<service android:name=".news.services.NewsReaderService"
+				 android:enabled="true"
+		>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</service>
+
+
 	</application>	 
 </manifest>
