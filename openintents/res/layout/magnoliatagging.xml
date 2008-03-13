@@ -15,7 +15,14 @@
  * limitations under the License.
  -->
  
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="#f3f3cc"
+		
+		>
+<RelativeLayout 
+
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent"
 			  android:background="@drawable/magnoliabg2"
@@ -41,6 +48,7 @@
 		        android:layout_weight="0"
 		        android:paddingBottom="4dip"
 		        android:text="URI"
+		        android:textColor="#933100"
 		    />
 			<EditText android:id="@+id/magnoliatagging.curi"
 				android:layout_width="fill_parent"
@@ -53,6 +61,8 @@
 		        android:layout_weight="0"
 		        android:paddingBottom="4dip"
 		        android:text="Description"
+		        android:textColor="#933100"
+
 		    />
 			
 			<EditText android:id="@+id/magnoliatagging.description"
@@ -68,6 +78,8 @@
 		        android:layout_weight="0"
 		        android:paddingBottom="4dip"
 		        android:text="Tags"
+		        android:textColor="#933100"
+
 		    />
 			
 			<EditText android:id="@+id/magnoliatagging.outboundtags"
@@ -88,6 +100,7 @@
 					android:layout_width="wrap_content" android:layout_height="wrap_content"
 					android:layout_weight="0"
 					android:paddingBottom="4dip"
+					android:textColor="#933100"
 					android:text="shared"
 					/>
 				<CheckBox android:id="@+id/magnoliatagging.shared"
@@ -115,6 +128,7 @@
 
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+			        android:textColor="#933100"
 					android:text="@string/list_of_tags" />
 
 				<Spinner android:id="@+id/magnoliatagging.tagfilter"
@@ -159,3 +173,4 @@
 -->
 
 </RelativeLayout>
+</LinearLayout>
