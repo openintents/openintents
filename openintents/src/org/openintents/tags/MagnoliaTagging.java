@@ -68,6 +68,10 @@ public class  MagnoliaTagging extends Activity{
 	public static final String _TAG="MagnoliaTagging";
 	public static final String PREFS_NAME = "MagnoliaSettings";
 
+	public static final String URI="URI";
+	public static final String DESCRIPTION="DESC";
+	public static final String TITLE="TITLE";
+
 
 	public static final String MAGNOLIA_API="https://ma.gnolia.com/api/mirrord/v1";
 
@@ -108,7 +112,16 @@ public class  MagnoliaTagging extends Activity{
 			Intent i=new Intent(this,org.openintents.tags.MagnoliaSettings.class);
 			startActivity(i);
 		}
-
+		Bundle b=getIntent().getExtras();
+		String myUri="";
+		String myDesc="";
+		if (b!=null)
+		{
+			 myUri=b.getString(URI);
+			 myDesc=b.getString(DESCRIPTION);
+		}
+		
+		//String myTitle=b.getString(TITLE);
 
 		requestWindowFeature(android.view.Window.FEATURE_PROGRESS);
 		//getWindow().setFeatureInt(android.view.Window.FEATURE_PROGRESS, android.view.Window.PROGRESS_INDETERMINATE_ON);
@@ -123,7 +136,20 @@ public class  MagnoliaTagging extends Activity{
 
 		mOutboundTags=(EditText) findViewById(R.id.magnoliatagging_outboundtags);
 		mCURL=(EditText) findViewById(R.id.magnoliatagging_curi);
+	
+		if (myUri!=null && !myUri.equals(""))
+		{
+			mCURL.setText(myUri);
+		}
+
+
 		mDescription=(EditText) findViewById(R.id.magnoliatagging_description);
+
+		if (myDesc!=null && ! myDesc.equals(""))
+		{
+			mDescription.setText(myDesc);
+		}
+
 		mTagFilter = (Spinner) findViewById(R.id.magnoliatagging_tagfilter);
 		mTagFilter.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -189,7 +215,7 @@ public class  MagnoliaTagging extends Activity{
 	public boolean onCreateOptionsMenu(Menu menu){
 		boolean res=super.onCreateOptionsMenu(menu);
 		
-		menu.add(0,MENU_MAGNOLIASETTINGS,"Magnolia Settings");
+		menu.add(0,MENU_MAGNOLIASETTINGS,"Magnolia Settings",R.drawable.tagging_magnolia_settings);
 		return res;
 	}
 
