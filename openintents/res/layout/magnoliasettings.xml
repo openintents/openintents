@@ -14,18 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
- 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:background="#f3f3cc"
+		
+		>
+<RelativeLayout 
 			  android:layout_width="fill_parent"
 			  android:layout_height="fill_parent"
-			  android:background="@drawable/magnoliabg2"
+			  android:background="@drawable/magnoliabg3"
 			>
-	<TableLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<TableLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:id="@+id/magnoliasettings.ft1"
+	>
 		<TableRow>
 		    <TextView
-		        android:layout_width="fill_parent" android:layout_height="wrap_content"
+		        android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
 		        android:layout_weight="0"
 		        android:paddingBottom="4dip"
+				android:textColor="#933100"
 		        android:text="Screen Name"
 		    />
 			<EditText android:id="@+id/magnoliasettings.screenname"
@@ -35,9 +46,11 @@
 		</TableRow>
 		<TableRow>
 			<TextView
-		        android:layout_width="fill_parent" android:layout_height="wrap_content"
+		        android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
 		        android:layout_weight="0"
 		        android:paddingBottom="4dip"
+				android:textColor="#933100"
 		        android:text="Passwd"
 		    />
 			
@@ -49,17 +62,42 @@
 				/>
 				
 		</TableRow>
+		<!--
+	</TableLayout>
+	<TableLayout 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:layout_below="@id/magnoliasettings.ft1"> 
+
+			-->
 		<TableRow>
+			<TextView
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:paddingBottom="4dip"
+			android:textColor="#933100"
+	
+			/>
 		<Button android:id="@+id/magnoliasettings.import"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 				
 			android:text="Import Tags from Magnolia" />
 		</TableRow>
 		<TableRow>
+			<TextView
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:paddingBottom="4dip"
+			android:textColor="#933100"
+	
+			/>
 		<Button android:id="@+id/magnoliasettings.createaccount"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" 				
 			android:text="Join Magnolia" />
 		</TableRow>
 	</TableLayout>
+</RelativeLayout>
 </LinearLayout>
