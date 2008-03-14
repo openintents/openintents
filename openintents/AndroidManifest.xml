@@ -319,7 +319,7 @@
 		</activity>
 		
 		<!-- news services -->
-		<service android:name=".news.services.NewsReaderService"
+		<service android:name=".news.services.NewsreaderService"
 				 android:enabled="true"
 		>
 			<intent-filter>
@@ -330,7 +330,16 @@
 					android:name="android.intent.category.LAUNCHER" />  -->              					
 			</intent-filter>
 		</service>
+		<activity android:name=".news.services.NewsServiceSettings"
+			>
 
+			<intent-filter>
+				<action android:name="org.openintents.action.CONFIG_NEWSREADERSERVICE"
+					android:label="tag" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+			</intent-filter>
+		</activity>
 
 	</application>	 
 </manifest>
