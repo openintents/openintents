@@ -75,6 +75,12 @@ public class Newsreader extends Activity {
 		News.AtomFeeds.FEED_TITLE
 	};
 	
+	private static final String[] ATOM_CONTENTS_PROJECTION=new String[]{
+		News.AtomFeeds._ID,
+		News.AtomFeeds._COUNT,
+		News.AtomFeeds.FEED_ID
+	};
+
 	@Override
 	public void onCreate(Bundle icicle){
 		
@@ -93,7 +99,7 @@ public class Newsreader extends Activity {
 			Log.d(_TAG,"# Items in mRSSCursor>>"+mRSSCursor.count()+"<<");
 		}catch(Exception x){Log.e(_TAG,"RSSCURSOR Error, e>>"+x.getMessage()+"<<");}
 		
-		/*
+		
 		 //TODO: activate and test atom support.
 		try {
 			//get all feeds.
@@ -102,7 +108,7 @@ public class Newsreader extends Activity {
 			Log.d(_TAG,"mAtomCursor"+mAtomCursor);
 			Log.d(_TAG,"# Items in mAtomCursor>>"+mAtomCursor.count()+"<<");
 		}catch(Exception x){Log.e(_TAG,"AtomCURSOR Error, e>>"+x.getMessage()+"<<");}
-		*/
+		
 
 		setContentView(R.layout.newsreader);
 
@@ -298,8 +304,16 @@ public class Newsreader extends Activity {
 	private void menuServiceSettings() {
 		Log.v(_TAG,"menuServieSettings:entering");
 		// TODO Auto-generated method stub
-		Intent i= new Intent(this,ServiceSettings.class);
-		startSubActivity(i,ServiceSettings.ACTIVITY_MODIFY);
+
+		Intent intent = new Intent();
+		intent.setAction("org.openintents.action.CONFIG_NEWSREADERSERVICE");
+		intent.addCategory(Intent.DEFAULT_CATEGORY);
+		//intent.putExtras(b);
+		startActivity(intent);
+
+
+//		Intent i= new Intent(this,ServiceSettings.class);
+		//startSubActivity(i,ServiceSettings.ACTIVITY_MODIFY);
 	}
 	
 	@Override
@@ -330,16 +344,20 @@ public class Newsreader extends Activity {
 
 	private void updateChannelsList(){
 
-		int cursorItems=mRSSCursor.count();
+		mRSSCursor.requery();
+		mAtomCursor.requery();
+		int rssCursorItems=mRSSCursor.count();
+		int atmCursorItems=mAtomCursor.count();
 
-		String[] namesList= new String[cursorItems];
+		String[] namesList= new String[rssCursorItems+atmCursorItems];
 		int namesRowIndex=mRSSCursor.getColumnIndex(News.RSSFeeds.CHANNEL_NAME);
 		int idRowIndex=mRSSCursor.getColumnIndex(News.RSSFeeds._ID);
 		List <HashMap> dataList=new Vector<HashMap>();
 		mRSSCursor.first();
+		mAtomCursor.first();
 
 
-		for (int i=0;i<cursorItems ;i++ )
+		for (int i=0;i<rssCursorItems ;i++ )
 		{
 			HashMap<String,String> data= new HashMap<String,String>();
 			
@@ -361,6 +379,33 @@ public class Newsreader extends Activity {
 			dataList.add(data);
 			mRSSCursor.next();
 		}
+
+
+		namesRowIndex=mAtomCursor.getColumnIndex(News.AtomFeeds.FEED_TITLE);
+		idRowIndex=mAtomCursor.getColumnIndex(News.AtomFeeds._ID);
+		for (int i=0;i<atmCursorItems ;i++ )
+		{
+			HashMap<String,String> data= new HashMap<String,String>();
+			
+			String tID=mAtomCursor.getString(idRowIndex);
+			Log.d(_TAG,"ID IS >>"+tID+"<<");
+			Cursor tempCursor= News.mContentResolver.query(
+				News.AtomFeedContents.CONTENT_URI,
+				ATOM_CONTENTS_PROJECTION,
+				News.AtomFeedContents.FEED_ID+"="+tID,
+				null,
+				""
+			);
+			int count=tempCursor.count();
+			tempCursor.close();
+			data.put(News._ID,tID);
+			data.put(News.AtomFeeds.FEED_TITLE,mAtomCursor.getString(namesRowIndex));
+			data.put(News.MESSAGE_COUNT,Integer.toString(count));
+			data.put(News.FEED_TYPE,News.FEED_TYPE_ATOM);
+			dataList.add(data);
+			mAtomCursor.next();
+		}
+
 
 		ListAdapter channelsAdapter = new ChannelListAdapter(
 			this,
