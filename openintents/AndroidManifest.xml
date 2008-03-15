@@ -331,7 +331,13 @@
 			</intent-filter>
 		</service>
 		<activity android:name=".news.services.NewsServiceSettings"
-			>
+			android:label="@string/news_service_settings"
+			android:icon="@drawable/news_service_settings">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
 
 			<intent-filter>
 				<action android:name="org.openintents.action.CONFIG_NEWSREADERSERVICE"
