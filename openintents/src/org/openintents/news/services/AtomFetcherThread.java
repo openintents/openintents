@@ -80,7 +80,6 @@ public class AtomFetcherThread extends Thread{
 		String rpc=(String)this.config.get(News.AtomFeeds.FEED_LINK_SELF);
 		Element tag;
 		URL u=null;
-		Log.d(_TAG,"Fetching RSS Feed>"+u);
 		try
 		{
 			u=new URL(rpc);	
@@ -88,17 +87,24 @@ public class AtomFetcherThread extends Thread{
 			System.out.println("Malformed URL>>"+mu.getMessage());
 			Log.e(_TAG,"Malformed URL>>"+mu.getMessage());
 		}
+		Log.d(_TAG,"Fetching ATOM Feed>"+u);
 
 
 		Document doc = null;
 		try {
+					Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 1");
+
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
+								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 2");
+
 			doc = db.parse(u.openStream());
+								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 3");
+
 			//doc=db.parse(rpc);
 			System.out.println("##################done parsing#############");
 
-		String s=new Scanner( u.openStream() ).useDelimiter( "\\Z" ).next();
+		//String s=new Scanner( u.openStream() ).useDelimiter( "\\Z" ).next();
 		//System.out.println(s);
 
 		} catch (java.io.IOException ioe) {
@@ -115,12 +121,14 @@ public class AtomFetcherThread extends Thread{
 		}
 
 		System.out.println(doc);
+								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n Ireturning doc>"+doc.toString());
 
 		return doc;
 	}
 
 
 	public void parse(Document doc){
+		Log.d(_TAG,"parse::entering");
 
 		if (doc==null)
 		{
@@ -133,7 +141,7 @@ public class AtomFetcherThread extends Thread{
 		String _id=(String)this.config.get(News.AtomFeeds._ID);
 		//echo(doc.getFirstChild());
 
-		NodeList nl=doc.getElementsByTagName("item");
+		NodeList nl=doc.getElementsByTagName("entry");
 		int nlen=nl.getLength();
 
 		for (int i=0;i<nlen ;i++ )
@@ -174,17 +182,20 @@ public class AtomFetcherThread extends Thread{
 					//	System.out.println("node "+nodeName+" seems to have no data. :( ");
 						Log.d(_TAG,"node "+nodeName+" seems to have no data. :( ");
 					}
-					/*
+				
 					Log.d(_TAG,">>node named>>"+nodeName+"<< has value\n"
 						+nodeValue+
 						"\n ##############################################\n"
 						);
-						*/
+						
 				//	System.out.println("#############################>>"+nodeName+"#######################");
 				//	System.out.println(nodeValue+"\n");
 
 					if (nodeName.equalsIgnoreCase("link"))
 					{
+						Element e=(Element)node;
+						nodeValue=e.getAttribute("href");
+						Log.d(_TAG,"link attr href>>"+nodeValue);
 						cv.put(News.AtomFeedContents.ENTRY_LINK,nodeValue);
 					}else if (nodeName.equalsIgnoreCase("id"))
 					{
@@ -230,7 +241,7 @@ public class AtomFetcherThread extends Thread{
 		int res=News.update(u,cv,null,null);
 		Log.d(_TAG,"Updated #"+res+" rows");
 
-
+		Log.d(_TAG,"parse::leaving");
 		//return null;
 	}
 
