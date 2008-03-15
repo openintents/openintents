@@ -24,7 +24,7 @@ public class NewsProvider extends ContentProvider {
 
 	private SQLiteDatabase mDB;
 	private static final String DATABASE_NAME="newsfeeds.db";
-	private static final int DATABASE_VERSION=2;
+	private static final int DATABASE_VERSION=4;
 	private static final String TAG="NewsProvider";
 	
 	private static final int RSSFEEDS=1001;
@@ -63,7 +63,8 @@ public class NewsProvider extends ContentProvider {
 					News.RSSFeeds.CHANNEL_IMAGE_URI+" "+News.RSSFeeds.CHANNEL_IMAGE_URI_TYPE+","+
 					News.RSSFeeds.HISTORY_LENGTH+" "+News.RSSFeeds.HISTORY_LENGTH_TYPE+","+
 					News.RSSFeeds.UPDATE_CYCLE+" "+News.RSSFeeds.UPDATE_CYCLE_TYPE+","+
-					News.RSSFeeds.LAST_UPDATE+" "+News.RSSFeeds.LAST_UPDATE_TYPE+
+					News.RSSFeeds.LAST_UPDATE+" "+News.RSSFeeds.LAST_UPDATE_TYPE+","+
+					News.RSSFeeds.FEED_NATURE+" INTEGER"+
 					");");
 			
 			Log.d(TAG,"Creating table rssfeedcontents");
@@ -83,7 +84,7 @@ public class NewsProvider extends ContentProvider {
 			db.execSQL("CREATE TABLE atomfeeds("+
 				News.AtomFeeds._ID+" INTEGER PRIMARY KEY,"+
 				News.AtomFeeds._COUNT+" INTEGER,"+
-				News.AtomFeeds.FEED_ID+" INTEGER,"+
+				News.AtomFeeds.FEED_TITLE+" STRING,"+
 				News.AtomFeeds.FEED_UPDATED+" STRING,"+
 				News.AtomFeeds.FEED_LAST_CHECKED+" STRING,"+
 				News.AtomFeeds.UPDATE_CYCLE+" INTEGER,"+
@@ -92,7 +93,8 @@ public class NewsProvider extends ContentProvider {
 				News.AtomFeeds.FEED_LINK_SELF+" STRING,"+
 				News.AtomFeeds.FEED_LINK_ALTERNATE+" STRING,"+
 				News.AtomFeeds.FEED_ICON+" STRING,"+
-				News.AtomFeeds.FEED_RIGHTS+" STRING"+
+				News.AtomFeeds.FEED_RIGHTS+" STRING,"+
+				News.AtomFeeds.FEED_NATURE+" INTEGER"+
 				");"
 			);
 
@@ -116,9 +118,9 @@ public class NewsProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			if (oldVersion==1 && newVersion==2)
+			if (oldVersion<2 && newVersion>=2)
 			{
-
+				Log.w(TAG,"upgrading newsprovider to version 2");
 				db.execSQL("DROP TABLE atomfeeds;");
 				db.execSQL("CREATE TABLE atomfeeds("+
 					News.AtomFeeds._ID+" INTEGER PRIMARY KEY,"+
@@ -153,11 +155,48 @@ public class NewsProvider extends ContentProvider {
 
 
 			}
-			Log.w(TAG,"upgrade not supported");
+			if (oldVersion<3 && newVersion>=3)
+			{
+				Log.w(TAG,"upgrading newsprovider to version 3");
+				db.execSQL("DROP TABLE atomfeeds;");
+				db.execSQL("CREATE TABLE atomfeeds("+
+					News.AtomFeeds._ID+" INTEGER PRIMARY KEY,"+
+					News.AtomFeeds._COUNT+" INTEGER,"+
+					News.AtomFeeds.FEED_TITLE+" STRING,"+
+					News.AtomFeeds.FEED_UPDATED+" STRING,"+
+					News.AtomFeeds.FEED_LAST_CHECKED+" STRING,"+
+					News.AtomFeeds.UPDATE_CYCLE+" INTEGER,"+
+					News.AtomFeeds.HISTORY_LENGTH+" INTEGER,"+
+					News.AtomFeeds.FEED_LINK+" STRING,"+
+					News.AtomFeeds.FEED_LINK_SELF+" STRING,"+
+					News.AtomFeeds.FEED_LINK_ALTERNATE+" STRING,"+
+					News.AtomFeeds.FEED_ICON+" STRING,"+
+					News.AtomFeeds.FEED_RIGHTS+" STRING"+
+					");"
+				);
+			}
+			if (oldVersion<4 && newVersion>=4)
+			{
+				Log.w(TAG,"upgrading newsprovider to version 4");
+				db.execSQL("ALTER TABLE rssfeeds ADD COLUMN "+
+					News.RSSFeeds.FEED_NATURE +" INTEGER"+
+					";"
+				);
+
+				db.execSQL("ALTER TABLE atomfeeds ADD COLUMN "+
+					News.AtomFeeds.FEED_NATURE +" INTEGER"+
+					";"
+				);
+				//we can't vacuum here.
+				//db.execSQL("VACUUM;");
+				//TODO: add fields FEED_NATURE to rssatom feeds.
+				//News.RSSFeeds.FEED_NATURE+" INTEGER"+
+			}
+			
 			//Log.v(TAG, "");
 			
 			
-		}
+		}//onupgrade
 		
 		
 		
@@ -310,8 +349,8 @@ public class NewsProvider extends ContentProvider {
 			
 		case ATOMFEEDS:
 			//use insert as intended by SQL standard, avoid "nullcolumnhack" at all costs.
-			if (!values.containsKey(News.RSSFeeds.CHANNEL_NAME)){
-				throw new IllegalArgumentException("At least News.RSSFeedContent.CHANNEL_NAME"+
+			if (!values.containsKey(News.AtomFeeds.FEED_TITLE)){
+				throw new IllegalArgumentException("At least News.AtomFeeds.FEED_TITLE"+
 				"  must be specified in values. Unbound Items are not allowed.");
 				
 			}
@@ -465,7 +504,7 @@ public class NewsProvider extends ContentProvider {
                             + ')' : ""),
 							selectionArgs);
 				
-			
+			getContext().getContentResolver().notifyChange(uri, null);
 		}else{
 			
 			throw new IllegalArgumentException("Unsupported URL " + uri);
