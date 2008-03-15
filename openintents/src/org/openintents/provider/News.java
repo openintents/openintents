@@ -65,6 +65,7 @@ public abstract class News {
 
 		public static final String DEFAULT_SORT_ORDER = "";
 		
+		public static final String FEED_NATURE="feed_nature";
 		
 		
 		
@@ -98,6 +99,8 @@ public abstract class News {
 		
 		public static final String ITEM_AUTHOR="item_author";
 		public static final String ITEM_AUTHOR_TYPE="VARCHAR";
+
+		public static final String READ_STATUS="read_status";
 		
 	}/*eoc RSSFeedContents*/
 	
@@ -133,6 +136,7 @@ public abstract class News {
 			public static final String FEED_ICON="feed_icon";
 			public static final String FEED_RIGHTS="feed_rights";
 			
+			public static final String FEED_NATURE="feed_nature";
 
 	}/*eoc AtomFeeds*/
 
@@ -163,6 +167,8 @@ public abstract class News {
 		public static final String ENTRY_SUMMARY="entry_summary";
 		public static final String ENTRY_SUMMARY_TYPE="entry_summary_type"; //Defaults to text
 
+		public static final String READ_STATUS="read_status";
+
 	}/*eoc AtomFeedContents*/
 
 
@@ -174,10 +180,17 @@ public abstract class News {
 	public static final String FEED_TYPE_RSS="RSS";
 	public static final String FEED_TYPE_ATOM="ATOM";
 
+	public static final String	FEED_NATURE="feed_nature";
+	public static final int		FEED_NATURE_USER=0;
+	public static final int		FEED_NATURE_SYSTEM=1;
+
+
 	public static final String MESSAGE_COUNT="MESSAGE_COUNT";
 	public static final String _ID="_id";
 
 
+	public static final int STATUS_UNREAD=0;
+	public static final int STATUS_READ=1;
 
 
 
