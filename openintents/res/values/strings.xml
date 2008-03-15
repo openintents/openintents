@@ -99,6 +99,9 @@
 	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
 	
+	<!--     Newsreader Service -->
+	<string name="news_service_settings">News Service</string>
+
 	<!--  Sensor Simulator -->
 	<string name="sensorsimulator">Sensor Simulator</string>
 	<string name="settings">Settings</string>
