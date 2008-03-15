@@ -85,7 +85,7 @@ public class NewsreaderService extends Service implements Runnable{
 	public void run() {		
 
 			mRSSCursor=News.mContentResolver.query(News.RSSFeeds.CONTENT_URI,RSS_PROJECTION,null,null,null);			
-			mATMCursor=News.mContentResolver.query(News.RSSFeeds.CONTENT_URI,RSS_PROJECTION,null,null,null);
+			mATMCursor=News.mContentResolver.query(News.AtomFeeds.CONTENT_URI,ATOM_PROJECTION,null,null,null);
 			
 
 
@@ -145,11 +145,21 @@ public class NewsreaderService extends Service implements Runnable{
 				for (int i2=0;i2<atmLen ;i2++ )
 				{
 
-					Log.d(_TAG,"# i1>>"+i2+"<<");
+					Log.d(_TAG,"# i2>>"+i2+"<<");
+					Log.d(_TAG,"# i2>>"+i2+"<< [xx]supposed LastUpdColIndex"+atmLastUpdCol);
+					String[] cols=mATMCursor.getColumnNames();
+					StringBuffer b=new StringBuffer();
+					for (int x=0;x<cols.length ;x++ )
+					{
+						b.append("["+x+"]::"+cols[x]+"\n");
+					}
+					Log.d(_TAG,"# i2>>"+i2+"<< [xxx] cursor cols----\n"+b.toString()+"\n-----");
+					
 					
 					long lastUpdate=mATMCursor.getLong(atmLastUpdCol);
 					long updateCycle=mATMCursor.getLong(atmUpdCyCol);
-				
+					Log.d(_TAG,"# i2>>"+i2+"<<, last update>>"+lastUpdate);
+			
 					//convert update cycle to milliseconds
 					updateCycle=updateCycle * 60 * 1000;
 					if (lastUpdate+updateCycle<now)
@@ -158,9 +168,9 @@ public class NewsreaderService extends Service implements Runnable{
 						data.put(News.AtomFeeds._ID,mATMCursor.getString(atmIDCol));
 						data.put(News.AtomFeeds.FEED_LINK_SELF,mATMCursor.getString(atmCLinkCol));
 						AtomFetcherThread rt=new AtomFetcherThread(data);
-						Log.d(_TAG,"# >>"+i2+"<< will start thread now");
+						Log.d(_TAG,"#atm >>"+i2+"<< will start thread now");
 						rt.start();
-						Log.d(_TAG,"# >>"+i2+"<< called start.");
+						Log.d(_TAG,"#atm >>"+i2+"<< called start.");
 					}
 					mATMCursor.next();
 
