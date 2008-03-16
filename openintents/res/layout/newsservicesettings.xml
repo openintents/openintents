@@ -30,6 +30,18 @@
 				android:layout_height="wrap_content"
 				/>
 	</TableRow>
+	<TableRow>
+			<TextView
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:paddingBottom="4dip"			
+			android:text="@string/start_on_system_boot"
+			/>
+		<CheckBox android:id="@+id/newsservice.startonboot"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				/>
+	</TableRow>
 	</TableLayout>
     <Button android:id="@+id/servicesettings.save"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
