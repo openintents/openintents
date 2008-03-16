@@ -505,6 +505,24 @@ public class NewsProvider extends ContentProvider {
 							selectionArgs);
 				
 			getContext().getContentResolver().notifyChange(uri, null);
+
+		}else if (URL_MATCHER.match(uri)==ATOMFEEDS){
+	
+			result= mDB.update("atomfeeds", values, selection,selectionArgs);
+			//getContext().getContentResolver().notifyChange(nUri, null);
+			getContext().getContentResolver().notifyChange(uri, null);
+		}else if (URL_MATCHER.match(uri)==ATOMFEED_ID){
+			String feedID=uri.getPathSegments().get(1);
+			result= mDB
+					.update("atomfeeds",
+							values,
+							"_id="+feedID
+							+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+                            + ')' : ""),
+							selectionArgs);
+				
+			getContext().getContentResolver().notifyChange(uri, null);
+
 		}else{
 			
 			throw new IllegalArgumentException("Unsupported URL " + uri);
