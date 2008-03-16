@@ -1,5 +1,19 @@
 package org.openintents.news.services;
-
+/* 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 //import org.openintents.news.services.NewsReaderService;
 import org.openintents.R;
@@ -26,6 +40,9 @@ public class NewsServiceSettings extends Activity {
 
 
 	private CheckBox mDebugMode;
+	private CheckBox mStartOnBoot;
+
+	private static final String _TAG="NewsServiceSetting";
 //	private NotificationManager mNM;
     /** Called when the activity is first created. */
     @Override
@@ -53,7 +70,8 @@ public class NewsServiceSettings extends Activity {
        // mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	   mDebugMode=(CheckBox)findViewById(R.id.newsservice_debugmode);
 	   mDebugMode.setChecked(debugMode);
-        
+	   mStartOnBoot=(CheckBox)findViewById(R.id.newsservice_startonboot);
+	   mStartOnBoot.setChecked(startOnSystemBoot);        
     }
     
     private OnClickListener mStartServiceListener=new OnClickListener(){
@@ -121,10 +139,16 @@ public class NewsServiceSettings extends Activity {
     	}
     };
     
-	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		savePrefs();
+		
+	}  	
 	private void savePrefs(){
-
+		Log.d(_TAG,"saving preferences");
 		debugMode=mDebugMode.isChecked();
+		startOnSystemBoot=mStartOnBoot.isChecked();
 		// Save user preferences. We need an Editor object to
 		// make changes. All objects are from android.context.Context
 		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
