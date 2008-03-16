@@ -25,6 +25,10 @@
 	<!-- required for Locations (in order to getCurrentLocation) -->
 	<uses-permission android:name="android.permission.ACCESS_GPS" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
+
+	<!-- required for news service  -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
 	
 	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
 	android:label="@string/oi_acceptancetest"/>
@@ -319,6 +323,13 @@
 		</activity>
 		
 		<!-- news services -->
+
+		<receiver android:name=".news.services.AutostartService">
+		 <intent-filter>
+		   <action android:name="android.intent.action.BOOT_COMPLETED" />
+		 </intent-filter>
+		</receiver>
+
 		<service android:name=".news.services.NewsreaderService"
 				 android:enabled="true"
 		>
