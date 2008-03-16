@@ -49,12 +49,21 @@ public class AtomFetcherThread extends Thread{
 	
 	public static final String _TAG="AtomFetcherThread";
 	
+	public static final String DEBUG_MODE="debugMode";
+
+	private boolean debugMode=false;
 
 	private HashMap config;
 
 	public AtomFetcherThread(HashMap config){
 		
 		this.config=config;
+
+		String dbStr=(String)this.config.get(DEBUG_MODE);
+		if (dbStr!=null)
+		{
+			this.debugMode=Boolean.parseBoolean(dbStr);
+		}
 
 		Log.d(_TAG,"created, dumping config:\n"+config);
 	}
@@ -87,19 +96,19 @@ public class AtomFetcherThread extends Thread{
 			System.out.println("Malformed URL>>"+mu.getMessage());
 			Log.e(_TAG,"Malformed URL>>"+mu.getMessage());
 		}
-		Log.d(_TAG,"Fetching ATOM Feed>"+u);
+		if (debugMode){	Log.d(_TAG,"Fetching ATOM Feed>"+u);}
 
 
 		Document doc = null;
 		try {
-					Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 1");
+			if (debugMode){Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 1");}
 
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 2");
+			if (debugMode){Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 2");}
 
 			doc = db.parse(u.openStream());
-								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 3");
+			if (debugMode){Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n IN TRY 3");}
 
 			//doc=db.parse(rpc);
 			System.out.println("##################done parsing#############");
@@ -121,7 +130,7 @@ public class AtomFetcherThread extends Thread{
 		}
 
 		System.out.println(doc);
-								Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n Ireturning doc>"+doc.toString());
+		if (debugMode){Log.d(_TAG,"Fetching ATOM Feed>"+u+"\n Ireturning doc>"+doc.toString());}
 
 		return doc;
 	}
@@ -183,11 +192,12 @@ public class AtomFetcherThread extends Thread{
 						Log.d(_TAG,"node "+nodeName+" seems to have no data. :( ");
 					}
 				
-					Log.d(_TAG,">>node named>>"+nodeName+"<< has value\n"
-						+nodeValue+
-						"\n ##############################################\n"
-						);
-						
+					if (debugMode){
+						Log.d(_TAG,">>node named>>"+nodeName+"<< has value\n"
+							+nodeValue+
+							"\n ##############################################\n"
+							);
+					}						
 				//	System.out.println("#############################>>"+nodeName+"#######################");
 				//	System.out.println(nodeValue+"\n");
 
@@ -229,7 +239,7 @@ public class AtomFetcherThread extends Thread{
 			
 			
 			Uri rUri=News.insertIfNotExists(News.AtomFeedContents.CONTENT_URI,selection.toString(),null,cv);
-			Log.d(_TAG,"insert returned >>"+rUri+"<<");
+			if (debugMode){Log.d(_TAG,"insert returned >>"+rUri+"<<");}
 
 
 
@@ -239,9 +249,9 @@ public class AtomFetcherThread extends Thread{
 		cv.put(News.AtomFeeds.FEED_LAST_CHECKED,now);
 		Uri u=ContentUris.withAppendedId(News.AtomFeeds.CONTENT_URI,Long.parseLong(_id));
 		int res=News.update(u,cv,null,null);
-		Log.d(_TAG,"Updated #"+res+" rows");
+		if (debugMode){Log.d(_TAG,"Updated #"+res+" rows");}
 
-		Log.d(_TAG,"parse::leaving");
+		if (debugMode){Log.d(_TAG,"parse::leaving");}
 		//return null;
 	}
 

@@ -11,10 +11,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class NewsServiceSettings extends Activity {
 	public static final int ACTIVITY_MODIFY=1001;
 	
+
+	private boolean useWhileRoaming=false;
+	private boolean startOnSystemBoot=false;
+	private boolean debugMode=false;
+
+
+	private CheckBox mDebugMode;
 //	private NotificationManager mNM;
     /** Called when the activity is first created. */
     @Override
@@ -22,6 +33,11 @@ public class NewsServiceSettings extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.newsservicesettings);
         
+		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
+		useWhileRoaming		=settings.getBoolean(NewsreaderService.DO_ROAMING,false);
+		startOnSystemBoot	=settings.getBoolean(NewsreaderService.ON_BOOT_START,false);
+		debugMode			=settings.getBoolean(NewsreaderService.DEBUG_MODE,false);
+
         //use only one instance to save memory
         Button bInstance=(Button)findViewById(R.id.startFeedService);
         bInstance.setOnClickListener(mStartServiceListener);
@@ -29,12 +45,14 @@ public class NewsServiceSettings extends Activity {
         bInstance.setOnClickListener(mStopServiceListener);
         bInstance=(Button)findViewById(R.id.servicesettings_save);
         bInstance.setOnClickListener(mSave);
-        bInstance=(Button)findViewById(R.id.servicesettings_cancel);
-        bInstance.setOnClickListener(mCancel);
+      //  bInstance=(Button)findViewById(R.id.servicesettings_cancel);
+//        bInstance.setOnClickListener(mCancel);
         
         
         
        // mNM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+	   mDebugMode=(CheckBox)findViewById(R.id.newsservice_debugmode);
+	   mDebugMode.setChecked(debugMode);
         
     }
     
@@ -43,7 +61,7 @@ public class NewsServiceSettings extends Activity {
 		@SuppressWarnings("static-access")
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
-			Toast.makeText(NewsServiceSettings.this, "ehlo1", Toast.LENGTH_SHORT).show();
+		//	Toast.makeText(NewsServiceSettings.this, "ehlo1", Toast.LENGTH_SHORT).show();
 			NewsreaderService.Test();
 
 			Log.v("ServiceSettings","Starting service");   
@@ -64,7 +82,7 @@ public class NewsServiceSettings extends Activity {
 		public void onClick(View arg0) {
 			Log.v("ServiceSettings","Stopping service");
 			//mNM.notifyWithText(1, "ehlo2", NotificationManager.LENGTH_SHORT,null);
-			Toast.makeText(NewsServiceSettings.this, "ehlo2", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(NewsServiceSettings.this, "ehlo2", Toast.LENGTH_SHORT).show();
 			stopService(new Intent(
 					NewsServiceSettings.this,
 					NewsreaderService.class));
@@ -78,8 +96,20 @@ public class NewsServiceSettings extends Activity {
     
     private OnClickListener mSave=new OnClickListener(){
     	public void onClick(View arg0){
+
+			NewsServiceSettings.this.savePrefs();
+			stopService(new Intent(
+					NewsServiceSettings.this,
+					NewsreaderService.class));
+			
+			startService(new Intent(
+					NewsServiceSettings.this,
+					NewsreaderService.class)
+			,null);
+			/*
 			NewsServiceSettings.this.setResult(Activity.RESULT_OK);
 			NewsServiceSettings.this.finish();    		
+			*/
     	}
     };
     
@@ -92,6 +122,22 @@ public class NewsServiceSettings extends Activity {
     };
     
 	
+	private void savePrefs(){
+
+		debugMode=mDebugMode.isChecked();
+		// Save user preferences. We need an Editor object to
+		// make changes. All objects are from android.context.Context
+		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
+		SharedPreferences.Editor editor = settings.edit();
+		//editor.putBoolean("silentMode", mSilentMode);
+		editor.putBoolean(NewsreaderService.DO_ROAMING,useWhileRoaming);
+		editor.putBoolean(NewsreaderService.ON_BOOT_START,startOnSystemBoot);
+		editor.putBoolean(NewsreaderService.DEBUG_MODE,debugMode);
+
+
+		// Don't forget to commit your edits!!!
+		editor.commit();
+	}
 
 
 }/*eoc*/

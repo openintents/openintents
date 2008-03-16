@@ -11,6 +11,9 @@ import android.content.ContentUris;
 import android.database.Cursor;
 import android.widget.Toast;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+
 import java.util.HashMap;
 
 import org.openintents.provider.News;
@@ -22,6 +25,11 @@ public class NewsreaderService extends Service implements Runnable{
 
 	private boolean alive=false;
 	
+	public static final String PREFS_NAME="newsdaemon_prefs";
+	public static final String DO_ROAMING="doRoaming";
+	public static final String ON_BOOT_START="onBootStart";
+	public static final String DEBUG_MODE="debugMode";
+
 //	private NotificationManager mNM;
 	
 	private static final String _TAG="NewsReaderService";
@@ -30,6 +38,12 @@ public class NewsreaderService extends Service implements Runnable{
 	
 	private Cursor mRSSCursor;
 	private Cursor mATMCursor;
+
+	private boolean useWhileRoaming=false;
+	private boolean isRoaming=false;
+	private boolean debugMode=false;
+	
+	private boolean startOnSystemBoot=false;
 
 	private static final String[] RSS_PROJECTION= new String[] {
 		News.RSSFeeds._ID,
@@ -61,7 +75,16 @@ public class NewsreaderService extends Service implements Runnable{
         // separate thread because the service normally runs in the process's
         // main thread, which we don't want to block.
 		Toast.makeText(this, "NewsReaderService started", Toast.LENGTH_SHORT).show();
+
         News.mContentResolver=getContentResolver();
+
+		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
+		this.useWhileRoaming		=settings.getBoolean(NewsreaderService.DO_ROAMING,false);
+		this.startOnSystemBoot		=settings.getBoolean(NewsreaderService.ON_BOOT_START,false);
+		this.debugMode				=settings.getBoolean(NewsreaderService.DEBUG_MODE,false);
+		
+		Log.d(_TAG,"startup: \nuseWhileRoaming>>"+useWhileRoaming+"<<\n startOnSystemBoot>>+"+startOnSystemBoot+"<< \n debugMode>>"+debugMode+"<<");
+
         this.alive=true;
         Thread thr = new Thread(null, this, "NewsReaderService");
         thr.start();
@@ -114,10 +137,19 @@ public class NewsreaderService extends Service implements Runnable{
 				int atmLastUpdCol	=mATMCursor.getColumnIndex(News.AtomFeeds.FEED_LAST_CHECKED);
 
 				now=System.currentTimeMillis();
-				Log.d(_TAG,"# RSS Feeds>>"+rssLen+"<< , time is >>"+now+"<<");
+				if (debugMode)
+				{
+					Log.d(_TAG,"# RSS Feeds>>"+rssLen+"<< , time is >>"+now+"<<");
+				}
+				
+
 				for (int i1=0;i1<rssLen ;i1++ )
 				{
-					Log.d(_TAG,"# i1>>"+i1+"<<");
+					if (debugMode)
+					{
+						Log.d(_TAG,"# i1>>"+i1+"<<");
+					}
+				
 					
 					long lastUpdate=mRSSCursor.getLong(rssLastUpdCol);
 					long updateCycle=mRSSCursor.getLong(rssUpdCyCol);
@@ -130,9 +162,9 @@ public class NewsreaderService extends Service implements Runnable{
 						data.put(News.RSSFeeds._ID,mRSSCursor.getString(rssIDCol));
 						data.put(News.RSSFeeds.CHANNEL_LINK,mRSSCursor.getString(rssCLinkCol));
 						RSSFetcherThread rt=new RSSFetcherThread(data);
-						Log.d(_TAG,"# >>"+i1+"<< will start thread now");
+						if (debugMode){	Log.d(_TAG,"# >>"+i1+"<< will start thread now");}
 						rt.start();
-						Log.d(_TAG,"# >>"+i1+"<< called start.");
+						if (debugMode){Log.d(_TAG,"# >>"+i1+"<< called start.");}
 					}
 					mRSSCursor.next();
 
@@ -141,24 +173,26 @@ public class NewsreaderService extends Service implements Runnable{
 				}
 
 				now=System.currentTimeMillis();
-				Log.d(_TAG,"# ATOM Feeds>>"+atmLen+"<< , time is >>"+now+"<<");
+				if (debugMode){Log.d(_TAG,"# ATOM Feeds>>"+atmLen+"<< , time is >>"+now+"<<");}
 				for (int i2=0;i2<atmLen ;i2++ )
 				{
 
-					Log.d(_TAG,"# i2>>"+i2+"<<");
-					Log.d(_TAG,"# i2>>"+i2+"<< [xx]supposed LastUpdColIndex"+atmLastUpdCol);
-					String[] cols=mATMCursor.getColumnNames();
-					StringBuffer b=new StringBuffer();
-					for (int x=0;x<cols.length ;x++ )
-					{
-						b.append("["+x+"]::"+cols[x]+"\n");
-					}
-					Log.d(_TAG,"# i2>>"+i2+"<< [xxx] cursor cols----\n"+b.toString()+"\n-----");
+					if (debugMode){
+						Log.d(_TAG,"# i2>>"+i2+"<<");
+						Log.d(_TAG,"# i2>>"+i2+"<< [xx]supposed LastUpdColIndex"+atmLastUpdCol);
 					
+						String[] cols=mATMCursor.getColumnNames();
+						StringBuffer b=new StringBuffer();
+						for (int x=0;x<cols.length ;x++ )
+						{
+							b.append("["+x+"]::"+cols[x]+"\n");
+						}
+						Log.d(_TAG,"# i2>>"+i2+"<< [xxx] cursor cols----\n"+b.toString()+"\n-----");
+					}					
 					
 					long lastUpdate=mATMCursor.getLong(atmLastUpdCol);
 					long updateCycle=mATMCursor.getLong(atmUpdCyCol);
-					Log.d(_TAG,"# i2>>"+i2+"<<, last update>>"+lastUpdate);
+					if (debugMode){Log.d(_TAG,"# i2>>"+i2+"<<, last update>>"+lastUpdate);}
 			
 					//convert update cycle to milliseconds
 					updateCycle=updateCycle * 60 * 1000;
@@ -167,10 +201,11 @@ public class NewsreaderService extends Service implements Runnable{
 						HashMap <String,String>data=new HashMap();
 						data.put(News.AtomFeeds._ID,mATMCursor.getString(atmIDCol));
 						data.put(News.AtomFeeds.FEED_LINK_SELF,mATMCursor.getString(atmCLinkCol));
+						data.put(AtomFetcherThread.DEBUG_MODE,Boolean.toString(debugMode));
 						AtomFetcherThread rt=new AtomFetcherThread(data);
-						Log.d(_TAG,"#atm >>"+i2+"<< will start thread now");
+						if (debugMode){Log.d(_TAG,"#atm >>"+i2+"<< will start thread now");}
 						rt.start();
-						Log.d(_TAG,"#atm >>"+i2+"<< called start.");
+						if (debugMode){Log.d(_TAG,"#atm >>"+i2+"<< called start.");}
 					}
 					mATMCursor.next();
 
@@ -180,7 +215,7 @@ public class NewsreaderService extends Service implements Runnable{
 				//next thing to do is sleep, so keep resources low.
 				mRSSCursor.deactivate();
 				mATMCursor.deactivate();
-				Log.d(_TAG,"will sleep now");
+				if (debugMode){Log.d(_TAG,"will sleep now");}
 			}catch(Exception e){   
 				
 				Log.e(_TAG,"Error:"+e.getMessage());
