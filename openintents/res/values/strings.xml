@@ -101,7 +101,8 @@
 	
 	<!--     Newsreader Service -->
 	<string name="news_service_settings">News Service</string>
-	<string name="start_on_system_boot">Start on System Boot</string>
+	<string name="start_on_system_boot">Start on system boot</string>
+	<string name="use_while_roaming">Use while roaming</string>
 
 	<!--  Sensor Simulator -->
 	<string name="sensorsimulator">Sensor Simulator</string>
