@@ -1090,8 +1090,7 @@ public class SensorSimulatorView extends Activity {
 				/**
 				 * Select a new update rate for a sensor.
 				 * @see android.widget.AdapterView$OnItemSelectedListener#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
-				 */
-    			@Override
+				 */    			
 				public void onItemSelected(AdapterView parent, View v,
 						int position, long id) {
     				if (id == mDefaultValueIndex) {
@@ -1128,7 +1127,7 @@ public class SensorSimulatorView extends Activity {
     				
 				}
 
-				@Override
+				
 				public void onNothingSelected(AdapterView arg0) {
 					// We don't have to do anything.
 				}
