@@ -22,11 +22,6 @@
 	<ImageView android:id="@+id/tags_label" android:layout_width="24px"
 		android:layout_height="24px" android:src="@drawable/tag001a"
 		/>
-	<AutoCompleteTextView android:id="@+id/tag_filter"
-		android:completionThreshold="1" android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:layout_toRight="@id/tags_label"
-		android:layout_alignBaseline="@id/tags_label" />
 	<ImageButton android:id="@+id/tags_search_button"
 		    android:layout_width="48px"
 			android:layout_height="48px" 
@@ -35,6 +30,12 @@
 			android:layout_alignParentRight="true"
 			android:src="@drawable/search">
 	</ImageButton>
+	<AutoCompleteTextView android:id="@+id/tag_filter"
+		android:completionThreshold="1" android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_toRight="@id/tags_label"
+		android:layout_toLeft="@id/tags_search_button"
+		android:layout_alignBaseline="@id/tags_label" />
 	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
 		android:layout_below="@id/tags_label"
