@@ -321,7 +321,7 @@
 				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>
 			</intent-filter>
 		</activity>
-		
+
 		<!-- news services -->
 
 		<receiver android:name=".news.services.AutostartService">
@@ -357,6 +357,15 @@
 				<category android:name="android.intent.category.ALTERNATIVE" />				
 			</intent-filter>
 		</activity>
-
-	</application>	 
+		
+		<activity android:name=".main.IntentsListView" android:label="@string/intents_list">
+<intent-filter>
+<category android:name="org.openintents.category.SETTINGS">
+</category><action android:name="android.intent.action.MAIN">
+</action><category android:name="android.intent.category.DEFAULT">
+</category></intent-filter></activity>
+		
+</application>	 
+	
+	
 </manifest>

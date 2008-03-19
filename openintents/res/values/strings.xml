@@ -39,6 +39,8 @@
 	<string name="view_location">View</string>
 	<string name="list_is_empty">(end of list)</string>
 	<string name="locations_map">Map</string>
+	<string name="tag_location">Tag location</string>
+	<string name="delete_location">Delete loc.</string>
 	
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>
@@ -47,6 +49,9 @@
 	<string name="add">Add</string>
 	<string name="add_tag">Add new tag/content</string>
 	<string name="tag_all">ALL</string>
+	
+	<!-- intent list  -->
+	<string name = "intents_list">List of Actions by Type</string>
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Content browser</string>

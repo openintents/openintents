@@ -49,7 +49,7 @@ public class LocationsProvider extends ContentProvider {
 
 	private static final String TAG = "LocationsProvider";
 	private static final String DATABASE_NAME = "locations.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	private static HashMap<String, String> LOCATION_PROJECTION_MAP;
 
@@ -62,7 +62,7 @@ public class LocationsProvider extends ContentProvider {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
-					+ "latitude VARCHAR," + "longitude VARCHAR,"
+					+ "latitude DOUBLE," + "longitude DOUBLE,"
 					+ "created INTEGER," + "modified INTEGER" + ");");
 		}
 

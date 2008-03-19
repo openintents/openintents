@@ -16,50 +16,81 @@
 
 package org.openintents.provider;
 
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
  * Definition for content provider related to location.
- *
+ * 
  */
-public abstract class Location {
-	
+public class Location {
+
 	public static final class Locations implements BaseColumns {
 		/**
-         * The content:// style URL for this table
-         */
-        public static final Uri CONTENT_URI
-                = Uri.parse("content://org.openintents.locations/locations");
+		 * The content:// style URL for this table
+		 */
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.locations/locations");
 
-        /**
-         * The default sort order for this table
-         */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
-        
-       
-        /**
-         * The latitude of the location
-         * <P>Type: TEXT</P>
-         */
-        public static final String LATITUDE = "latitude";
+		/**
+		 * The default sort order for this table
+		 */
+		public static final String DEFAULT_SORT_ORDER = "modified DESC";
 
-        /**
-         * The longitude of the location
-         * <P>Type: TEXT</P>
-         */
-        public static final String LONGITUDE = "longitude";
+		/**
+		 * The latitude of the location
+		 * <P>
+		 * Type: TEXT
+		 * </P>
+		 */
+		public static final String LATITUDE = "latitude";
 
-        /**
-         * The timestamp for when the note was created
-         * <P>Type: INTEGER (long)</P>
-         */
-        public static final String CREATED_DATE = "created";
+		/**
+		 * The longitude of the location
+		 * <P>
+		 * Type: TEXT
+		 * </P>
+		 */
+		public static final String LONGITUDE = "longitude";
 
-        /**
-         * The timestamp for when the note was last modified
-         * <P>Type: INTEGER (long)</P>
-         */
-        public static final String MODIFIED_DATE = "modified";
-    }
+		/**
+		 * The timestamp for when the note was created
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String CREATED_DATE = "created";
+
+		/**
+		 * The timestamp for when the note was last modified
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String MODIFIED_DATE = "modified";
+	}
+
+	private ContentResolver mResolver;
+
+	public Location(ContentResolver resolver) {
+		mResolver = resolver;
+	}
+
+	public Uri addLocation(android.location.Location location) {
+		ContentValues values = new ContentValues(2);
+		values.put(Locations.LATITUDE, location.getLatitude());
+		values.put(Locations.LONGITUDE, location.getLongitude());
+		return mResolver.insert(Locations.CONTENT_URI, values);
+	}
+
+	public int deleteLocation(long id) {
+
+		return mResolver.delete(ContentUris.withAppendedId(
+				Locations.CONTENT_URI, id), null, null);
+
+	}
+
 }
