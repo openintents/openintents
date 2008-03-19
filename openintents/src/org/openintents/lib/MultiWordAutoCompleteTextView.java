@@ -1,4 +1,4 @@
-package org.openintents.utils;
+package org.openintents.lib;
 
 import java.util.Map;
 

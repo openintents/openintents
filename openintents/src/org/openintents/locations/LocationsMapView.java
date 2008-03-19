@@ -2,9 +2,9 @@ package org.openintents.locations;
 
 import org.apache.harmony.security.x509.OtherName;
 import org.openintents.R;
+import org.openintents.lib.MultiWordAutoCompleteTextView;
 import org.openintents.provider.Location;
 import org.openintents.provider.Tag;
-import org.openintents.utils.MultiWordAutoCompleteTextView;
 
 import android.app.NotificationManager;
 import android.content.Intent;
