@@ -14,18 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
-
-<!--
-$Id:: colors.xml 22 2008-03-19 13:11:58Z muthu.ramadoss                         $: Id of last commit
-$Rev:: 22                                                                       $: Revision of last commit
-$Author:: muthu.ramadoss                                                        $: Author of last commit
-$Date:: 2008-03-19 18:41:58 +0530 (Wed, 19 Mar 2008)                            $: Date of last commit
-$HeadURL:: https://ibt-macd.googlecode.com/svn/trunk/capsules/cooking/res/value#$: Head URL of last commit
--->
-
+ 
 <resources>
-    <color name="black">#000</color>
-    <color name="strikethrough">#33336600</color>
-    <drawable name="yellow_green">#9acd32</drawable>
-    <drawable name="gold">#ffd700</drawable>
+	<drawable name="strikethrough">#33336600</drawable>
 </resources>

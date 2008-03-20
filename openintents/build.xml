@@ -33,6 +33,7 @@
 	<!-- Properties taken from Eclipse -->
 	
 	<!-- sdk-dir: path to Android SDK -->
+	<property name="android.sdk" value="/opt/tools/javame/android-sdk_m5-rc15_linux-x86" />
 	<property name="sdk-dir" value="${android.sdk}" />
 	<!-- ############################################# -->
 		
@@ -79,9 +80,12 @@
 	
 	
     <!-- Tools -->
-    <property name="aapt" value="${android-tools}/aapt.exe" />
-    <property name="aidl" value="${android-tools}/aidl.exe" />
-    <property name="dx" value="${android-tools}/dx.bat" />
+    <!--<property name="aapt" value="${android-tools}/aapt.exe" />-->
+    <property name="aapt" value="${android-tools}/aapt" />
+    <!--<property name="aidl" value="${android-tools}/aidl.exe" />-->
+    <property name="aidl" value="${android-tools}/aidl" />
+    <!--<property name="dx" value="${android-tools}/dx.bat" />-->
+    <property name="dx" value="${android-tools}/dx" />
     <property name="android-jar" value="${sdk-dir}/android.jar" />
 
     <!-- Rules -->
@@ -140,7 +144,7 @@
     <target name="dex" depends="compile">
         <exec executable="${dx}" failonerror="true">
             <arg value="--dex" />
-            <arg value="--output=${basedir}\${intermediate-dex}" />
+            <arg value="--output=${basedir}/${intermediate-dex}" />
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
             <arg path="${basedir}\${outdir-classes}" />
