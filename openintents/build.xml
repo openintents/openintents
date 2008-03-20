@@ -33,21 +33,20 @@
 	<!-- Properties taken from Eclipse -->
 	
 	<!-- sdk-dir: path to Android SDK -->
-	<property name="android.sdk" value="/opt/tools/javame/android-sdk_m5-rc15_linux-x86" />
 	<property name="sdk-dir" value="${android.sdk}" />
 	<!-- ############################################# -->
-		
+
 	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
-	
-	<!-- Input file for source files to be included in 
+
+	<!-- Input file for source files to be included in
 	     lib javadoc -->
 	<property file="build-lib-javadoc.txt" />
-	
+
     <!-- The intermediates directory -->
     <!-- Eclipse uses "bin" for its own output, so we do the same. -->
     <property name="outdir" value="bin" />
-	
+
 	<!-- Library file positron -->
 	<property name="positron-lib-jar" value="lib/positron-0.8-alpha.jar" />
 
@@ -61,7 +60,7 @@
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
 	<property name="docdir" value="doc" />
-	
+
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
 
@@ -73,19 +72,16 @@
 	<property name="version" value="${release.major}.${release.minor}.${release.dev}"/>
 	<property name="bolt.manifest" value="manifest.bolt"/>
 	<property name="bolt.template" value="template manifest.bolt"/>
-	
+
 	<!-- The final package file to generate -->
-    <property name="out-package" value="${outdir}/${ant.project.name}.apk" />	
+    <property name="out-package" value="${outdir}/${ant.project.name}.apk" />
 	<property name="out-bolt-package" value="${outdir}/bolt/${package.name}-${version}.apk"/>
-	
-	
+
+
     <!-- Tools -->
-    <!--<property name="aapt" value="${android-tools}/aapt.exe" />-->
-    <property name="aapt" value="${android-tools}/aapt" />
-    <!--<property name="aidl" value="${android-tools}/aidl.exe" />-->
-    <property name="aidl" value="${android-tools}/aidl" />
-    <!--<property name="dx" value="${android-tools}/dx.bat" />-->
-    <property name="dx" value="${android-tools}/dx" />
+    <property name="aapt" value="${android-tools}/aapt.exe" />
+    <property name="aidl" value="${android-tools}/aidl.exe" />
+    <property name="dx" value="${android-tools}/dx.bat" />
     <property name="android-jar" value="${sdk-dir}/android.jar" />
 
     <!-- Rules -->
@@ -144,7 +140,7 @@
     <target name="dex" depends="compile">
         <exec executable="${dx}" failonerror="true">
             <arg value="--dex" />
-            <arg value="--output=${basedir}/${intermediate-dex}" />
+            <arg value="--output=${basedir}\${intermediate-dex}" />
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
             <arg path="${basedir}\${outdir-classes}" />
