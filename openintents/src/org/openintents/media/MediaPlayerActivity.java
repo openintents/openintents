@@ -235,7 +235,6 @@ public class MediaPlayerActivity extends Activity implements
 					 * Changed slider to new position.
 					 * @see org.openintents.widget.Slider.OnPositionChangedListener#onPositionChangeCompleted()
 					 */
-					@Override
 					public void onPositionChangeCompleted() {
 						int newPos = mSlider.pos;
 						if (mp != null) {
@@ -246,7 +245,6 @@ public class MediaPlayerActivity extends Activity implements
 					/* (non-Javadoc)
 					 * @see org.openintents.widget.Slider.OnPositionChangedListener#onPositionChanged(org.openintents.widget.Slider, int, int)
 					 */
-					@Override
 					public void onPositionChanged(Slider slider,
 							int oldPosition, int newPosition) {
 						// Update text field:
