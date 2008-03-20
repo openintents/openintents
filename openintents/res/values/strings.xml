@@ -88,6 +88,22 @@
     <string name="magnolia_settings">Ma.gnolia settings</string>
     <string name="magnolia_tagging">Ma.gnolia tags</string>
     		
+    <!-- Media Browser -->
+    <string name="media_browser">Media browser</string>
+    <string name="internal_content">Internal</string>
+    <string name="external_content">SD card</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="images">Images</string>
+    <string name="media">Media</string>
+    <string name="media_scanner">Media scanner</string>
+    
+    <!-- Media Player -->
+    <string name="media_player">Media player</string>
+    <string name="pick_media_file">Pick a media file</string>
+    <string name="open_audio">Open audio</string>
+    <string name="open_video">Open video</string>
+    
 	<!-- Shopping Provider -->
 	<string name="shopping_list">Shopping list</string>
 	<string name="new_item">New item</string>
