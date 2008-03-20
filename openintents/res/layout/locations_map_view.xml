@@ -22,7 +22,7 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 		<view android:id="@+id/tag"
-			class="org.openintents.utils.MultiWordAutoCompleteTextView"
+			class="org.openintents.lib.MultiWordAutoCompleteTextView"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:layout_weight="1"
 			android:text="LOC" android:completionThreshold="1"
