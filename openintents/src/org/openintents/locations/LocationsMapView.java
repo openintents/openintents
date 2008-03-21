@@ -1,13 +1,12 @@
 package org.openintents.locations;
 
-import org.apache.harmony.security.x509.OtherName;
 import org.openintents.R;
 import org.openintents.lib.MultiWordAutoCompleteTextView;
 import org.openintents.provider.Location;
 import org.openintents.provider.Tag;
+import org.openintents.provider.Location.Locations;
 
-import android.app.NotificationManager;
-import android.content.Intent;
+import android.content.ContentUris;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -24,6 +23,8 @@ public class LocationsMapView extends MapActivity {
 
 	private Point point;
 	private MapView view;
+	private long pointId;
+	private Tag mTag;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -31,11 +32,13 @@ public class LocationsMapView extends MapActivity {
 		super.onCreate(icicle);
 
 		setContentView(R.layout.locations_map_view);
-
+		mTag = new Tag(LocationsMapView.this);
+		
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			point = new Point(bundle.getInt("latitude"), bundle
 					.getInt("longitude"));
+			pointId = bundle.getLong("_id");
 		}
 
 		view = (MapView) findViewById(R.id.mapview);
@@ -44,6 +47,11 @@ public class LocationsMapView extends MapActivity {
 				.getLongitudeE6()), true);
 		controller.zoomTo(9);
 
+		MultiWordAutoCompleteTextView tv = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);		
+		// TODO set text, set adapter 
+		//tv.setText();
+		//tv.setAdapter()
+		
 		view.createOverlayController().add(new LocationsMapOverlay(this), true);
 
 		Button button = (Button) findViewById(R.id.button);
@@ -59,17 +67,24 @@ public class LocationsMapView extends MapActivity {
 					android.location.Location loc = new android.location.Location();
 					loc.setLatitude(p.getLatitudeE6() / 1E6);
 					loc.setLongitude(p.getLongitudeE6() / 1E6);
-					Uri contentUri = location.addLocation(loc);
+					
+					Uri contentUri;
+					if (p.getLatitudeE6() == point.getLatitudeE6() &&
+							p.getLongitudeE6() == point.getLongitudeE6() &&
+							pointId != 0L){
+						contentUri = ContentUris.withAppendedId(Locations.CONTENT_URI, pointId);
+					} else { 
+						contentUri = location.addLocation(loc);
+					}
 					String content = contentUri.toString();
-
-					Tag tag = new Tag(LocationsMapView.this);
+					
 
 					String[] tags = autoComplete.getText().toString().split(
 							autoComplete.getSeparator());
 
 					for (int i = 0; i < tags.length; i++) {
 						String s = tags[i].trim();
-						tag.insertTag(s, content);
+						mTag.insertTag(s, content);
 					}
 				}
 

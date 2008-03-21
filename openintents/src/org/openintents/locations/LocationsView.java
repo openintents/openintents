@@ -232,7 +232,8 @@ public class LocationsView extends Activity {
 		Bundle bundle = new Bundle();
 		bundle.putInt("latitude", latitude.intValue());
 		bundle.putInt("longitude", longitude.intValue());
-
+		bundle.putLong("_id", c.getLong(c.getColumnIndex(Locations._ID)));
+		
 		Intent intent = new Intent();
 		intent.setClass(this, LocationsMapView.class);
 		intent.putExtras(bundle);
