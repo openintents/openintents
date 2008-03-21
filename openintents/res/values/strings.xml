@@ -52,6 +52,8 @@
 	
 	<!-- intent list  -->
 	<string name = "intents_list">List of Actions by Type</string>
+	<string name = "intents_types">ActionList by Type</string>
+	<string name = "no_types">No types</string>
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Content browser</string>

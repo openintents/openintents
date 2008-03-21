@@ -1,4 +1,4 @@
-package org.openintents.main;
+package org.openintents.actions;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
