@@ -1,5 +1,21 @@
 package org.openintents.alert;
 
+/* 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 
 import java.util.HashMap;
 
@@ -36,9 +52,11 @@ public class AlertProvider extends ContentProvider {
 	private static final int ALERT_COMBINED_ID=105;
 	private static final int ALERT_SENSOR=106;
 	private static final int ALERT_SENSOR_ID=106;
+	private static final int ALERT_TIME=107;
+	private static final int ALERT_TIME_ID=108;
 
 	private static final UriMatcher URL_MATCHER;
-
+	private static final HashMap<String,String> GENERIC_PROJECTION_MAP;
 
 
 	private static class AlertDBHelper extends SQLiteOpenHelper{
@@ -55,6 +73,8 @@ public class AlertProvider extends ContentProvider {
 				Alert.Generic.RULE+" STRING,"+
 				Alert.Generic.NATURE+" STRING,"+
 				Alert.Generic.INTENT+" STRING,"+
+				Alert.Generic.INTENT_CATEGORY+" STRING,"+
+				Alert.Generic.INTENT_URI+" STRING,"+
 				Alert.Generic.ACTIVE+" INTEGER,"+
 				Alert.Generic.ACTIVATE_ON_BOOT+" INTEGER"+
 				");");
@@ -97,7 +117,40 @@ public class AlertProvider extends ContentProvider {
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
 		long rowID=0;
+		//if nature is not given, it's user.
+		if (!values.containsKey(Alert.Generic.NATURE))
+		{
+			values.put(Alert.Generic.NATURE,Alert.NATURE_USER);
+		}
+
 		switch (match){
+			case ALERT_GENERIC:
+				
+				rowID=mDB.insert(TABLE_ALERTS, "", values);			
+				if (rowID > 0) {
+					Uri nUri = ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,rowID);
+					getContext().getContentResolver().notifyChange(nUri, null);
+					return nUri;
+				}
+				throw new SQLException("Failed to insert row into " + uri);		
+
+				
+			case ALERT_LOCATION:
+
+				if (!values.containsKey(Alert.Location.TYPE)){
+					values.put(Alert.Location.TYPE,Alert.TYPE_LOCATION);
+					
+				}
+
+				rowID=mDB.insert(TABLE_ALERTS, "", values);			
+				if (rowID > 0) {
+					Uri nUri = ContentUris.withAppendedId(Alert.Location.CONTENT_URI,rowID);
+					getContext().getContentResolver().notifyChange(nUri, null);
+					return nUri;
+				}
+				throw new SQLException("Failed to insert row into " + uri);		
+
+
 		}
 
 		return null;
@@ -109,10 +162,66 @@ public class AlertProvider extends ContentProvider {
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String orderBy=null;
-
+		//actually all alerts share one id space. 
+		//so we just have to match any url set sort order
+		//then query
+		boolean didMatch=false;
 		long rowID=0;
 		switch (match){
+
+			case ALERT_GENERIC:
+
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
+				break;
+			case ALERT_LOCATION:
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
+				break;
+			case ALERT_COMBINED:
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
+				break;
+			case ALERT_GENERIC_ID:
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			case ALERT_LOCATION_ID:
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			case ALERT_COMBINED_ID:
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown URL " + uri);
 		}
+
+		qb.setTables(TABLE_ALERTS);
+							
+		qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
         Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,null, orderBy);
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
@@ -121,13 +230,49 @@ public class AlertProvider extends ContentProvider {
 	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		int result=0;
-
+		String alertID="";
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"UPDATE,URI MATCHER RETURNED >>"+match+"<<");
 		String rowID="";
 
 
 		switch (match){
+
+			case ALERT_GENERIC:
+				result= mDB.update(TABLE_ALERTS, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+			case ALERT_GENERIC_ID:
+				alertID=uri.getPathSegments().get(1);
+				result= mDB
+						.update(TABLE_ALERTS,
+								values,
+								"_id="+alertID
+								+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+								+ ')' : ""),
+								selectionArgs);
+					
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+			case ALERT_LOCATION:
+				result= mDB.update(TABLE_ALERTS, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+			case ALERT_LOCATION_ID:
+				alertID=uri.getPathSegments().get(1);
+				result= mDB
+						.update(TABLE_ALERTS,
+								values,
+								"_id="+alertID
+								+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+								+ ')' : ""),
+								selectionArgs);
+					
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+
 
 		}
 		return result;
@@ -136,12 +281,49 @@ public class AlertProvider extends ContentProvider {
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		int res=0;
+		String alertID="";
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
 		long rowID=0;
 		switch (match){
+
+			case ALERT_GENERIC:
+				res =  mDB.delete(
+					TABLE_ALERTS,
+					selection,
+					selectionArgs
+					);		
+				break;
+			case ALERT_GENERIC_ID:
+				alertID=uri.getPathSegments().get(1);
+				res =  mDB.delete(
+					TABLE_ALERTS,
+					"_id="+alertID
+					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+					+ ')' : ""),
+					selectionArgs);
+				break;
+			case ALERT_LOCATION:
+				res =  mDB.delete(
+					TABLE_ALERTS,
+					selection,
+					selectionArgs
+					);		
+				break;
+			case ALERT_LOCATION_ID:
+				alertID=uri.getPathSegments().get(1);
+				res =  mDB.delete(
+					TABLE_ALERTS,
+					"_id="+alertID
+					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+					+ ')' : ""),
+					selectionArgs);
+				break;
+
 		}
-		return 0;
+		getContext().getContentResolver().notifyChange(uri, null);
+		return res;
 	}
 
 	@Override
@@ -159,7 +341,19 @@ public class AlertProvider extends ContentProvider {
 		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
 		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
 		
-		
+		GENERIC_PROJECTION_MAP=new HashMap<String,String>();
+		GENERIC_PROJECTION_MAP.put(Alert.Generic._ID,Alert.Generic._ID);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic._COUNT,Alert.Generic._COUNT);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.TYPE,Alert.Generic.TYPE);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.CONDITION1,Alert.Generic.CONDITION1);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.CONDITION2,Alert.Generic.CONDITION2);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.NATURE,Alert.Generic.NATURE);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.ACTIVE,Alert.Generic.ACTIVE);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.ACTIVATE_ON_BOOT,Alert.Generic.ACTIVATE_ON_BOOT);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.RULE,Alert.Generic.RULE);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT,Alert.Generic.INTENT);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_CATEGORY,Alert.Generic.INTENT_CATEGORY);
+
 	}
 
 }/*eoc*/
