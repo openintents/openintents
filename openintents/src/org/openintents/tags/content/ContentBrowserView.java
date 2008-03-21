@@ -36,10 +36,12 @@ import android.os.Bundle;
 import android.os.DeadObjectException;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
+import android.view.View.OnPopulateContextMenuListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
@@ -81,7 +83,15 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		super.onCreate(icicle);
 		setContentView(R.layout.tags_content_browser);
 
-		getListView();
+		getListView().setOnPopulateContextMenuListener(new View.OnPopulateContextMenuListener(){
+
+			public void onPopulateContextMenu(ContextMenu contextmenu,
+					View view, Object obj) {
+				// TODO add menu content
+				//contextmenu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag);
+			}
+			
+		});		
 
 		mTagFilter = (AutoCompleteTextView) findViewById(R.id.tag_filter);
 
@@ -146,7 +156,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		mTagFilter.setAdapter(adapter);
 
 	}
-
+	
 	/**
 	 * fill main list.
 	 */
@@ -198,7 +208,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 		return true;
 	}
-
+	
 	@Override
 	public boolean onMenuItemSelected(int featureId, Item item) {
 		super.onMenuItemSelected(featureId, item);
