@@ -47,7 +47,10 @@
 		<provider android:name="org.openintents.news.NewsProvider"
 			android:authorities="org.openintents.news" />		
 
-	
+		<provider android:name="org.openintents.alert.AlertProvider"
+			android:authorities="org.openintents.alert" />		
+		
+
 
 		<!-- 
 			<provider android:name=".tags.content.ContentIndexProvider"
@@ -421,6 +424,20 @@
 		</activity>		
 		<activity android:name=".actions.PickStringView" android:label="@string/intents_list">
 		</activity>		
+
+
+	<!-- alert framework -->
+	<activity android:name=".alert.AddGenericAlertActivity"
+			android:label="Add Generic Alert"
+			>
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+
+	</activity>
+
 </application>	 
 	
 	
