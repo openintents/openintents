@@ -159,9 +159,10 @@ public class AlertProvider extends ContentProvider {
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		int match=URL_MATCHER.match(uri);
-		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
+		Log.d(this.TAG,"query,URI MATCHER RETURNED >>"+match+"<<");
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String orderBy=null;
+
 		//actually all alerts share one id space. 
 		//so we just have to match any url set sort order
 		//then query
