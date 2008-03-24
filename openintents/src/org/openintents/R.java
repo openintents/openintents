@@ -9,6 +9,8 @@ package org.openintents;
 
 public final class R {
     public static final class attr {
+        public static final int background=0x7f010003;
+        public static final int knob=0x7f010004;
         public static final int max=0x7f010001;
         public static final int min=0x7f010000;
         public static final int pos=0x7f010002;
@@ -83,119 +85,130 @@ public final class R {
         public static final int window=0x7f020041;
     }
     public static final class id {
-        public static final int add=0x7f060036;
-        public static final int add_tag_button=0x7f06004e;
-        public static final int background=0x7f060025;
-        public static final int button=0x7f06000b;
-        public static final int button_add_item=0x7f060045;
-        public static final int button_view=0x7f060021;
-        public static final int buttonconnect=0x7f06003a;
-        public static final int buttondisconnect=0x7f06003b;
-        public static final int cancel=0x7f060002;
-        public static final int content=0x7f060051;
-        public static final int content1=0x7f06001d;
-        public static final int content2=0x7f06001f;
-        public static final int contents=0x7f060050;
-        public static final int datatype=0x7f06003d;
-        public static final int edittext=0x7f060001;
-        public static final int edittext_add_item=0x7f060044;
-        public static final int enabled=0x7f06003f;
-        public static final int external=0x7f060024;
-        public static final int grid_main=0x7f06001e;
-        public static final int grid_settings=0x7f060020;
-        public static final int image=0x7f060022;
-        public static final int image_URI=0x7f060046;
-        public static final int imagetype=0x7f06003c;
-        public static final int info=0x7f060027;
-        public static final int intents_list_container=0x7f060004;
-        public static final int internal=0x7f060023;
-        public static final int ipaddress=0x7f060038;
-        public static final int label=0x7f060037;
-        public static final int latitude=0x7f060005;
-        public static final int list_items=0x7f060043;
-        public static final int listempty=0x7f060009;
-        public static final int locations=0x7f060008;
-        public static final int longitude=0x7f060006;
-        public static final int magnoliasettings_createaccount=0x7f060011;
-        public static final int magnoliasettings_ft1=0x7f06000d;
-        public static final int magnoliasettings_import=0x7f060010;
-        public static final int magnoliasettings_passwd=0x7f06000f;
-        public static final int magnoliasettings_screenname=0x7f06000e;
-        public static final int magnoliatagging_cancel=0x7f060018;
-        public static final int magnoliatagging_curi=0x7f060014;
-        public static final int magnoliatagging_description=0x7f060015;
-        public static final int magnoliatagging_ft1=0x7f060013;
-        public static final int magnoliatagging_outboundtags=0x7f060016;
-        public static final int magnoliatagging_progressbar=0x7f060012;
-        public static final int magnoliatagging_save=0x7f060019;
-        public static final int magnoliatagging_shared=0x7f060017;
-        public static final int magnoliatagging_tagfilter=0x7f06001a;
-        public static final int magnoliatagging_tags=0x7f06001b;
-        public static final int mapview=0x7f06000c;
-        public static final int name=0x7f060047;
-        public static final int name_field=0x7f060029;
-        public static final int name_text=0x7f060028;
-        public static final int new_content=0x7f06004d;
-        public static final int new_tag=0x7f06004c;
-        public static final int newsservice_debugmode=0x7f060032;
-        public static final int newsservice_startonboot=0x7f060033;
-        public static final int ok=0x7f060003;
-        public static final int pause=0x7f06002d;
-        public static final int play=0x7f06002c;
-        public static final int position=0x7f06002b;
-        public static final int reset=0x7f06002f;
-        public static final int sensordata=0x7f060040;
-        public static final int sensordatalist=0x7f06003e;
-        public static final int servicesettings_save=0x7f060034;
-        public static final int slider=0x7f06002a;
-        public static final int socket=0x7f060039;
-        public static final int spinner_listfilter=0x7f060042;
-        public static final int startFeedService=0x7f060030;
-        public static final int stop=0x7f06002e;
-        public static final int stopFeedService=0x7f060031;
-        public static final int surface=0x7f060026;
-        public static final int tabhost=0x7f06001c;
-        public static final int tag=0x7f06000a;
-        public static final int tag_content=0x7f060049;
-        public static final int tag_filter=0x7f06004f;
-        public static final int tag_tag=0x7f060048;
-        public static final int tag_uri_1=0x7f06004a;
-        public static final int tag_uri_2=0x7f06004b;
-        public static final int tags=0x7f060007;
-        public static final int tags_label=0x7f060054;
-        public static final int tags_ok_button=0x7f060055;
-        public static final int tags_search_button=0x7f060052;
-        public static final int tags_tags_list=0x7f060053;
+        public static final int add=0x7f06003e;
+        public static final int add_tag_button=0x7f060056;
+        public static final int alert_addgeneric_active=0x7f060006;
+        public static final int alert_addgeneric_condition1=0x7f060001;
+        public static final int alert_addgeneric_condition2=0x7f060002;
+        public static final int alert_addgeneric_intent=0x7f060003;
+        public static final int alert_addgeneric_intentcategory=0x7f060004;
+        public static final int alert_addgeneric_intenturi=0x7f060005;
+        public static final int alert_addgeneric_onboot=0x7f060007;
+        public static final int background=0x7f06002d;
+        public static final int button=0x7f060013;
+        public static final int button_add_item=0x7f06004d;
+        public static final int button_view=0x7f060029;
+        public static final int buttonconnect=0x7f060042;
+        public static final int buttondisconnect=0x7f060043;
+        public static final int cancel=0x7f060009;
+        public static final int content=0x7f060059;
+        public static final int content1=0x7f060025;
+        public static final int content2=0x7f060027;
+        public static final int contents=0x7f060058;
+        public static final int datatype=0x7f060045;
+        public static final int edittext=0x7f060008;
+        public static final int edittext_add_item=0x7f06004c;
+        public static final int enabled=0x7f060047;
+        public static final int external=0x7f06002c;
+        public static final int grid_main=0x7f060026;
+        public static final int grid_settings=0x7f060028;
+        public static final int image=0x7f06002a;
+        public static final int image_URI=0x7f06004e;
+        public static final int imagetype=0x7f060044;
+        public static final int info=0x7f06002f;
+        public static final int intents_list_container=0x7f06000b;
+        public static final int intents_types_name=0x7f06000c;
+        public static final int internal=0x7f06002b;
+        public static final int ipaddress=0x7f060040;
+        public static final int label=0x7f06003f;
+        public static final int latitude=0x7f06000d;
+        public static final int list_items=0x7f06004b;
+        public static final int listempty=0x7f060011;
+        public static final int locations=0x7f060010;
+        public static final int longitude=0x7f06000e;
+        public static final int magnoliasettings_createaccount=0x7f060019;
+        public static final int magnoliasettings_ft1=0x7f060015;
+        public static final int magnoliasettings_import=0x7f060018;
+        public static final int magnoliasettings_passwd=0x7f060017;
+        public static final int magnoliasettings_screenname=0x7f060016;
+        public static final int magnoliatagging_cancel=0x7f060020;
+        public static final int magnoliatagging_curi=0x7f06001c;
+        public static final int magnoliatagging_description=0x7f06001d;
+        public static final int magnoliatagging_ft1=0x7f06001b;
+        public static final int magnoliatagging_outboundtags=0x7f06001e;
+        public static final int magnoliatagging_progressbar=0x7f06001a;
+        public static final int magnoliatagging_save=0x7f060021;
+        public static final int magnoliatagging_shared=0x7f06001f;
+        public static final int magnoliatagging_tagfilter=0x7f060022;
+        public static final int magnoliatagging_tags=0x7f060023;
+        public static final int mapview=0x7f060014;
+        public static final int name=0x7f06004f;
+        public static final int name_field=0x7f060031;
+        public static final int name_text=0x7f060030;
+        public static final int new_content=0x7f060055;
+        public static final int new_tag=0x7f060054;
+        public static final int newsservice_debugmode=0x7f06003a;
+        public static final int newsservice_startonboot=0x7f06003b;
+        public static final int ok=0x7f06000a;
+        public static final int pause=0x7f060035;
+        public static final int play=0x7f060034;
+        public static final int position=0x7f060033;
+        public static final int reset=0x7f060037;
+        public static final int sensordata=0x7f060048;
+        public static final int sensordatalist=0x7f060046;
+        public static final int servicesettings_save=0x7f06003c;
+        public static final int slider=0x7f060032;
+        public static final int socket=0x7f060041;
+        public static final int spinner_listfilter=0x7f06004a;
+        public static final int startFeedService=0x7f060038;
+        public static final int stop=0x7f060036;
+        public static final int stopFeedService=0x7f060039;
+        public static final int surface=0x7f06002e;
+        public static final int tabhost=0x7f060024;
+        public static final int tag=0x7f060012;
+        public static final int tag_content=0x7f060051;
+        public static final int tag_filter=0x7f060057;
+        public static final int tag_tag=0x7f060050;
+        public static final int tag_uri_1=0x7f060052;
+        public static final int tag_uri_2=0x7f060053;
+        public static final int tags=0x7f06000f;
+        public static final int tags_label=0x7f06005c;
+        public static final int tags_ok_button=0x7f06005d;
+        public static final int tags_search_button=0x7f06005a;
+        public static final int tags_tags_list=0x7f06005b;
         public static final int text=0x7f060000;
-        public static final int updaterate=0x7f060041;
-        public static final int url=0x7f060035;
+        public static final int updaterate=0x7f060049;
+        public static final int url=0x7f06003d;
     }
     public static final class layout {
         public static final int about=0x7f030000;
-        public static final int input_box=0x7f030001;
-        public static final int intents_list=0x7f030002;
-        public static final int location_row=0x7f030003;
-        public static final int locations=0x7f030004;
-        public static final int locations_map_view=0x7f030005;
-        public static final int magnoliasettings=0x7f030006;
-        public static final int magnoliatagging=0x7f030007;
-        public static final int main=0x7f030008;
-        public static final int main_imagetextbutton=0x7f030009;
-        public static final int mediabrowser=0x7f03000a;
-        public static final int mediaplayer=0x7f03000b;
-        public static final int newsservicesettings=0x7f03000c;
-        public static final int package_add=0x7f03000d;
-        public static final int package_list=0x7f03000e;
-        public static final int sensorsimulator=0x7f03000f;
-        public static final int sensorsimulator_row=0x7f030010;
-        public static final int shopping=0x7f030011;
-        public static final int shopping_item_row=0x7f030012;
-        public static final int tag_row=0x7f030013;
-        public static final int tag_row_simple=0x7f030014;
-        public static final int tags=0x7f030015;
-        public static final int tags_add=0x7f030016;
-        public static final int tags_cloud=0x7f030017;
-        public static final int tags_content_browser=0x7f030018;
+        public static final int alert_add_generic=0x7f030001;
+        public static final int input_box=0x7f030002;
+        public static final int intents_list=0x7f030003;
+        public static final int intents_types=0x7f030004;
+        public static final int intents_types_view=0x7f030005;
+        public static final int location_row=0x7f030006;
+        public static final int locations=0x7f030007;
+        public static final int locations_map_view=0x7f030008;
+        public static final int magnoliasettings=0x7f030009;
+        public static final int magnoliatagging=0x7f03000a;
+        public static final int main=0x7f03000b;
+        public static final int main_imagetextbutton=0x7f03000c;
+        public static final int mediabrowser=0x7f03000d;
+        public static final int mediaplayer=0x7f03000e;
+        public static final int newsservicesettings=0x7f03000f;
+        public static final int package_add=0x7f030010;
+        public static final int package_list=0x7f030011;
+        public static final int sensorsimulator=0x7f030012;
+        public static final int sensorsimulator_row=0x7f030013;
+        public static final int shopping=0x7f030014;
+        public static final int shopping_item_row=0x7f030015;
+        public static final int tag_row=0x7f030016;
+        public static final int tag_row_simple=0x7f030017;
+        public static final int tags=0x7f030018;
+        public static final int tags_add=0x7f030019;
+        public static final int tags_cloud=0x7f03001a;
+        public static final int tags_content_browser=0x7f03001b;
     }
     public static final class raw {
         public static final int browser=0x7f040000;
@@ -206,7 +219,7 @@ public final class R {
         public static final int shopping=0x7f040005;
     }
     public static final class string {
-        public static final int IP_address=0x7f050050;
+        public static final int IP_address=0x7f050052;
         public static final int about=0x7f050004;
         public static final int about_openintents=0x7f050003;
         public static final int about_openintents_text=0x7f050005;
@@ -217,44 +230,45 @@ public final class R {
         /**  Main application  
          */
         public static final int app_name=0x7f050000;
-        public static final int ask_new_list=0x7f050041;
-        public static final int ask_update_interval=0x7f050058;
-        public static final int audio=0x7f050033;
-        public static final int auto_update=0x7f050055;
-        public static final int button_ok=0x7f050025;
+        public static final int ask_new_list=0x7f050043;
+        public static final int ask_update_interval=0x7f05005a;
+        public static final int audio=0x7f050035;
+        public static final int auto_update=0x7f050057;
+        public static final int button_ok=0x7f050027;
         /**      Dialog box    
          */
-        public static final int cancel=0x7f050046;
-        public static final int clean_up_list=0x7f05003f;
-        public static final int confirm_delete_list=0x7f050043;
-        public static final int connect=0x7f05004d;
-        public static final int connect_to_sensorsimulator=0x7f05005a;
+        public static final int cancel=0x7f050048;
+        public static final int clean_up_list=0x7f050041;
+        public static final int confirm_delete_list=0x7f050045;
+        public static final int connect=0x7f05004f;
+        public static final int connect_to_sensorsimulator=0x7f05005c;
         /**   Content Browser 
          */
-        public static final int content_browser=0x7f050016;
+        public static final int content_browser=0x7f050018;
         public static final int default_tag=0x7f050001;
-        public static final int delete_list=0x7f050040;
+        public static final int delete_list=0x7f050042;
         public static final int delete_location=0x7f05000e;
-        public static final int dialog_cancel=0x7f050028;
-        public static final int dialog_message_package_add=0x7f05002a;
-        public static final int dialog_message_package_del=0x7f05002c;
-        public static final int dialog_ok=0x7f050027;
-        public static final int dialog_title_package_add=0x7f050029;
-        public static final int dialog_title_package_del=0x7f05002b;
-        public static final int disabled=0x7f050056;
-        public static final int disconnect=0x7f05004f;
-        public static final int enable_sensors=0x7f050054;
-        public static final int external_content=0x7f050032;
-        public static final int images=0x7f050035;
+        public static final int dialog_cancel=0x7f05002a;
+        public static final int dialog_message_package_add=0x7f05002c;
+        public static final int dialog_message_package_del=0x7f05002e;
+        public static final int dialog_ok=0x7f050029;
+        public static final int dialog_title_package_add=0x7f05002b;
+        public static final int dialog_title_package_del=0x7f05002d;
+        public static final int disabled=0x7f050058;
+        public static final int disconnect=0x7f050051;
+        public static final int enable_sensors=0x7f050056;
+        public static final int external_content=0x7f050034;
+        public static final int images=0x7f050037;
         /**  intent list  
          */
         public static final int intents_list=0x7f050015;
-        public static final int internal_content=0x7f050031;
+        public static final int intents_types=0x7f050016;
+        public static final int internal_content=0x7f050033;
         /**      Key codes     
          */
-        public static final int key_return=0x7f05005f;
-        public static final int label_package_add=0x7f050024;
-        public static final int label_packages=0x7f050023;
+        public static final int key_return=0x7f050061;
+        public static final int label_package_add=0x7f050026;
+        public static final int label_packages=0x7f050025;
         public static final int list_is_empty=0x7f05000b;
         public static final int list_of_contents=0x7f050010;
         /**  Location Provider 
@@ -266,68 +280,69 @@ public final class R {
         public static final int locations_map=0x7f05000c;
         /**  Magnolia tagging (Ma.Gnolia.com) 
          */
-        public static final int magnolia_settings=0x7f05002e;
-        public static final int magnolia_tagging=0x7f05002f;
-        public static final int media=0x7f050036;
+        public static final int magnolia_settings=0x7f050030;
+        public static final int magnolia_tagging=0x7f050031;
+        public static final int media=0x7f050038;
         /**  Media Browser 
          */
-        public static final int media_browser=0x7f050030;
+        public static final int media_browser=0x7f050032;
         /**  Media Player 
          */
-        public static final int media_player=0x7f050038;
-        public static final int media_scanner=0x7f050037;
-        public static final int menu_package_add=0x7f050020;
-        public static final int menu_package_del=0x7f050021;
-        public static final int menu_package_list=0x7f050022;
-        public static final int message=0x7f05001a;
-        public static final int new_item=0x7f05003d;
-        public static final int new_list=0x7f05003e;
+        public static final int media_player=0x7f05003a;
+        public static final int media_scanner=0x7f050039;
+        public static final int menu_package_add=0x7f050022;
+        public static final int menu_package_del=0x7f050023;
+        public static final int menu_package_list=0x7f050024;
+        public static final int message=0x7f05001c;
+        public static final int new_item=0x7f05003f;
+        public static final int new_list=0x7f050040;
         /**      Newsreader Service 
          */
-        public static final int news_service_settings=0x7f050048;
-        public static final int no_items_marked=0x7f050042;
-        public static final int no_packages=0x7f050026;
-        public static final int no_shopping_provider=0x7f050044;
-        public static final int no_tags=0x7f05001d;
-        public static final int nothing_found=0x7f05001f;
-        public static final int nothing_selected=0x7f05001e;
+        public static final int news_service_settings=0x7f05004a;
+        public static final int no_items_marked=0x7f050044;
+        public static final int no_packages=0x7f050028;
+        public static final int no_shopping_provider=0x7f050046;
+        public static final int no_tags=0x7f05001f;
+        public static final int no_types=0x7f050017;
+        public static final int nothing_found=0x7f050021;
+        public static final int nothing_selected=0x7f050020;
         public static final int oi_acceptancetest=0x7f050007;
-        public static final int ok=0x7f050047;
-        public static final int open_audio=0x7f05003a;
-        public static final int open_video=0x7f05003b;
+        public static final int ok=0x7f050049;
+        public static final int open_audio=0x7f05003c;
+        public static final int open_video=0x7f05003d;
         public static final int openintents=0x7f050002;
-        public static final int pick_item=0x7f050045;
-        public static final int pick_media_file=0x7f050039;
-        public static final int real_device_data=0x7f050052;
+        public static final int pick_item=0x7f050047;
+        public static final int pick_media_file=0x7f05003b;
+        public static final int real_device_data=0x7f050054;
         public static final int select=0x7f050011;
-        public static final int sensor_simulator_data=0x7f050053;
+        public static final int sensor_simulator_data=0x7f050055;
         /**   Sensor Simulator 
          */
-        public static final int sensorsimulator=0x7f05004b;
-        public static final int sensorsimulator_settings=0x7f050059;
-        public static final int sensorsimulator_settings_description=0x7f05005b;
-        public static final int sensorsimulator_testing_description=0x7f05005c;
-        public static final int set_update_interval=0x7f050057;
-        public static final int settings=0x7f05004c;
+        public static final int sensorsimulator=0x7f05004d;
+        public static final int sensorsimulator_settings=0x7f05005b;
+        public static final int sensorsimulator_settings_description=0x7f05005d;
+        public static final int sensorsimulator_testing_description=0x7f05005e;
+        public static final int set_update_interval=0x7f050059;
+        public static final int settings=0x7f05004e;
         /**  Shopping Provider 
          */
-        public static final int shopping_list=0x7f05003c;
-        public static final int socket=0x7f050051;
-        public static final int start_on_system_boot=0x7f050049;
+        public static final int shopping_list=0x7f05003e;
+        public static final int socket=0x7f050053;
+        public static final int start_on_system_boot=0x7f05004b;
         public static final int tag_all=0x7f050014;
         public static final int tag_location=0x7f05000d;
-        public static final int tags_add_tag=0x7f050017;
-        public static final int tags_cloud=0x7f05002d;
-        public static final int tags_remove_tag=0x7f050019;
-        public static final int tags_view_content=0x7f050018;
-        public static final int tags_view_tag=0x7f05001c;
-        public static final int test=0x7f050060;
-        public static final int testing=0x7f05004e;
-        public static final int todo=0x7f05001b;
-        public static final int update_rate=0x7f05005d;
-        public static final int update_rate_seconds=0x7f05005e;
-        public static final int use_while_roaming=0x7f05004a;
-        public static final int video=0x7f050034;
+        public static final int tags_add_tag=0x7f050019;
+        public static final int tags_cloud=0x7f05002f;
+        public static final int tags_remove_tag=0x7f05001b;
+        public static final int tags_view_content=0x7f05001a;
+        public static final int tags_view_tag=0x7f05001e;
+        public static final int test=0x7f050062;
+        public static final int testing=0x7f050050;
+        public static final int todo=0x7f05001d;
+        public static final int update_rate=0x7f05005f;
+        public static final int update_rate_seconds=0x7f050060;
+        public static final int use_while_roaming=0x7f05004c;
+        public static final int video=0x7f050036;
         public static final int view_location=0x7f05000a;
     }
     public static final class styleable {
@@ -337,17 +352,34 @@ public final class R {
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute<th>Summary</tr>
+           <tr><th><code>{@link #Slider_background org.openintents:background}</code><td></tr>
+           <tr><th><code>{@link #Slider_knob org.openintents:knob}</code><td></tr>
            <tr><th><code>{@link #Slider_max org.openintents:max}</code><td></tr>
            <tr><th><code>{@link #Slider_min org.openintents:min}</code><td></tr>
            <tr><th><code>{@link #Slider_pos org.openintents:pos}</code><td></tr>
            </table>
+           @see #Slider_background
+           @see #Slider_knob
            @see #Slider_max
            @see #Slider_min
            @see #Slider_pos
          */
         public static final int[] Slider = {
-            0x7f010000, 0x7f010001, 0x7f010002
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004
         };
+        /**
+          <p>This symbol is the offset where the {@link org.openintents.R.attr#background}
+          attribute's value can be found in the {@link #Slider} array.
+          @attr name android:background
+        */
+        public static final int Slider_background = 3;
+        /**
+          <p>This symbol is the offset where the {@link org.openintents.R.attr#knob}
+          attribute's value can be found in the {@link #Slider} array.
+          @attr name android:knob
+        */
+        public static final int Slider_knob = 4;
         /**
           <p>This symbol is the offset where the {@link org.openintents.R.attr#max}
           attribute's value can be found in the {@link #Slider} array.

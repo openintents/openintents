@@ -134,6 +134,20 @@ public class MediaPlayerActivity extends Activity implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        
+        /* TODO The following does not seem to work. 
+         * 
+         * 
+        // Before we can inflate the view, we have to set
+        // the correct R-values:
+        Slider.R.styleable.Slider = R.styleable.Slider;
+        Slider.R.styleable.Slider_max = R.styleable.Slider_max;
+        Slider.R.styleable.Slider_min = R.styleable.Slider_min;
+        Slider.R.styleable.Slider_pos = R.styleable.Slider_pos;
+        Slider.R.styleable.Slider_background = R.styleable.Slider_background;
+        Slider.R.styleable.Slider_knob = R.styleable.Slider_knob;
+        */
+        
         setContentView(R.layout.mediaplayer);
         
         mp = null;
@@ -194,7 +208,6 @@ public class MediaPlayerActivity extends Activity implements
         mPause.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View view) { 
                 pauseMedia(); 
-                mPlaying = false;
             } 
         }); 
         
@@ -202,7 +215,6 @@ public class MediaPlayerActivity extends Activity implements
         mStop.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View view) { 
                 stopMedia(); 
-                mPlaying = false;
             } 
         }); 
         
@@ -374,20 +386,17 @@ public class MediaPlayerActivity extends Activity implements
             	mInfoView.setVisibility(View.VISIBLE);
             }
 	        
-	        Log.i(TAG,"setOn... ok");
-	        
 	        try { 
-	        		mp.setDataSource(mFilename); 
-	        	   
-	               Log.i(TAG,"setDataSource OK");
-	               } catch (IOException e) { 
-	                   Log.e(TAG, e.getMessage(), e);} 
-	
-	
+	        	mp.setDataSource(mFilename); 
+	        	
+	        	Log.i(TAG,"setDataSource OK");
+	        } catch (IOException e) { 
+	        	Log.e(TAG, e.getMessage(), e);
+	        }
 	        try{ 
 	               mp.prepare(); 
 	               Log.i(TAG,"prepare OK");
-	        }catch(Exception e){ 
+	        } catch(Exception e) { 
 	          Log.e("\n\nprepare",e.toString()); 
 	        } 
 	        
@@ -405,8 +414,8 @@ public class MediaPlayerActivity extends Activity implements
     public void pauseMedia() {
     	if (mp != null) {
     		mp.pause();
-    		mPlaying = false;	        
     	}
+    	mPlaying = false;	       
     }
     
     public void stopMedia() {
@@ -415,8 +424,8 @@ public class MediaPlayerActivity extends Activity implements
     		mp.stop();
     		mp.release();
     		mp = null;
-    		mPlaying = false;
     	}
+    	mPlaying = false;
     }
     
     public void resetMedia() {
@@ -431,6 +440,9 @@ public class MediaPlayerActivity extends Activity implements
     } 
 
 
+    /**
+     * Is called when the song reached is final position.
+     */
     public void onCompletion(MediaPlayer arg0) { 
     	Log.d(TAG, "onCompletion called"); 
     	

@@ -13,3 +13,4 @@ org/openintents/hardware/SensorSimulatorClient.class
 org/openintents/news/views/*.class
 org/openintents/news/services/*.class
 org/openintents/tags/*.class
+org/openintents/widget/*.class

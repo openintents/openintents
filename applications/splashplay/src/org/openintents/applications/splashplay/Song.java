@@ -11,19 +11,19 @@ package org.openintents.applications.splashplay;
 public class Song {
 
 	/** Chords in the song */
-	private Chord[] chords;
+	public Chord[] chords;
 	
 	/** Maximum number of elements in time and events */
-	private int mMax;
+	public int mMax;
 	
 	/** Pointer to current event */
-	private int mCur;
+	public int mCur;
 	
 	/** Time when events happen */
-	private int[] times;
+	public int[] times;
 	
 	/** Events corresponding to time */
-	private Event[] events;
+	public Event[] events;
 	
 	
 	public Song() {

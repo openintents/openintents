@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.project.AndroidClasspathContainerInitializer"/>
+	<classpathentry kind="lib" path="lib/openintents-lib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SplashPlay</string>
+    <string name="about">About</string>
+    <string name="connect_bluetooth">Bluetooth connection</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="connect">Connect</string>
+    <string name="splashpod_content">Ensure the Bluetooth is on and press connect.</string>
 </resources>

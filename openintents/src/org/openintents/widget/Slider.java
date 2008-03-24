@@ -23,6 +23,34 @@ import android.view.View;
  *
  */
 public class Slider extends View {
+	
+	// Here we supply static versions of R values.
+	// If they are not set by an application they are not used.
+	
+	public static final int UNUSED = -1;
+	
+	/** 
+	 * Resource styles to be set.
+	 * 
+	 * These are included in such a way, that the Slider.class can
+	 * be imported in another application as part of a .jar file.
+	 * Before inflating any view (typically in setContentView()), 
+	 * these static variables
+	 * have to be filled with the corresponding values of the
+	 * external application.
+	 * @author Peli
+	 *
+	 */
+	public static class R {
+		public static class styleable {
+			public static int[] Slider = null;
+			public static int Slider_max = UNUSED;
+	        public static int Slider_min = UNUSED;
+	        public static int Slider_pos = UNUSED;
+	        public static int Slider_background = UNUSED;
+	        public static int Slider_knob = UNUSED;
+		}
+	}
 
 	/** Minimum slider value */
 	public int min;
@@ -48,6 +76,7 @@ public class Slider extends View {
 	/** Knob drawable element */
 	public Drawable knob;
 	
+	int res;
 	
 	private Paint mPaint; 
 	private Rect mRect;
@@ -68,7 +97,12 @@ public class Slider extends View {
 	
 	private OnPositionChangedListener mPositionListener;
 
-	public Slider(Context context) {
+	/**
+     * Constructor.  This version is only needed for instantiating
+     * the object manually (not from a layout XML file).
+     * @param context
+     */
+    public Slider(Context context) {
 		super(context);
 		initSlider();
 	}
@@ -83,20 +117,34 @@ public class Slider extends View {
      */
     public Slider(Context context, AttributeSet attrs, Map inflateParams) {
         super(context, attrs, inflateParams);
-
         initSlider();
         
-        Resources.StyledAttributes a = context.obtainStyledAttributes(attrs,
-                R.styleable.Slider);
-
-        min = a.getInt(R.styleable.Slider_min, 0);
-        max = a.getInt(R.styleable.Slider_max, 100);
-        pos = a.getInt(R.styleable.Slider_pos, 0);
+        if (R.styleable.Slider != null) {
+        	Resources.StyledAttributes sa = context.obtainStyledAttributes(attrs,
+	                R.styleable.Slider);
+	        
+	        if (R.styleable.Slider_min != UNUSED)
+	        	min = sa.getInt(R.styleable.Slider_min, min);
+	        if (R.styleable.Slider_max != UNUSED)
+	        	max = sa.getInt(R.styleable.Slider_max, max);
+	        if (R.styleable.Slider_pos != UNUSED)
+	        	pos = sa.getInt(R.styleable.Slider_pos, pos);
+	        if (R.styleable.Slider_background != UNUSED) {
+	        	/*res = sa.getInt(R.styleable.Slider_background, UNUSED);
+	        	if (res != UNUSED) {
+	        		setBackground(getResources().getDrawable(res));
+	        	}*/
+	        	setBackground(sa.getDrawable(R.styleable.Slider_background));
+	        }
+	        if (R.styleable.Slider_knob != UNUSED) {
+	        	setKnob(sa.getDrawable(R.styleable.Slider_knob));	
+	        }
+	        
+	        sa.recycle();
+        }
         
         background = null;
         knob = null;
-        
-        a.recycle();
     }
 	
 	/**
@@ -104,7 +152,8 @@ public class Slider extends View {
 	 */
 	void initSlider() {
 
-		min = 0;
+		// Standard values:
+        min = 0;
 		max = 100;
 		pos = 0;
 		
