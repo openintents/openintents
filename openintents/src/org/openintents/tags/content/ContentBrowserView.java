@@ -47,6 +47,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.ContextMenuInfo;
 
 /**
  * View to show tags in a hierarchical manner.
@@ -83,15 +84,18 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		super.onCreate(icicle);
 		setContentView(R.layout.tags_content_browser);
 
-		getListView().setOnPopulateContextMenuListener(new View.OnPopulateContextMenuListener(){
+		getListView().setOnPopulateContextMenuListener(
+				new View.OnPopulateContextMenuListener() {
 
-			public void onPopulateContextMenu(ContextMenu contextmenu,
-					View view, Object obj) {
-				// TODO add menu content
-				//contextmenu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag);
-			}
-			
-		});		
+					public void onPopulateContextMenu(ContextMenu contextmenu,
+							View view, Object obj) {
+						contextmenu.add(0, MENU_REMOVE_TAG,
+								R.string.tags_remove_tag);
+						contextmenu.add(0, MENU_VIEW_CONTENT,
+								R.string.tags_view_content);
+					}
+
+				});
 
 		mTagFilter = (AutoCompleteTextView) findViewById(R.id.tag_filter);
 
@@ -107,8 +111,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		});
 
 		mTags = new Tag(this);
-		
-		
+
 		ImageButton searchButton = (ImageButton) findViewById(R.id.tags_search_button);
 		searchButton.setOnClickListener(new OnClickListener() {
 
@@ -119,10 +122,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			}
 
 		});
-		
+
 		fillDataTagFilter();
-		
-		// load directories from xml 
+
+		// load directories from xml
 		Thread t = new Thread(this);
 		t.start();
 	}
@@ -156,7 +159,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		mTagFilter.setAdapter(adapter);
 
 	}
-	
+
 	/**
 	 * fill main list.
 	 */
@@ -185,12 +188,13 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.tag_add001a);
+		menu
+				.add(0, MENU_ADD_TAG, R.string.tags_add_tag,
+						R.drawable.tag_add001a);
 		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content,
 				R.drawable.window);
-		menu
-				.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag,
-						R.drawable.tag_delete001a);
+		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag,
+				R.drawable.tag_delete001a);
 
 		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
 				R.drawable.advanced);
@@ -208,12 +212,27 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 		return true;
 	}
-	
+
+	@Override
+	public boolean onContextItemSelected(Item item) {
+		super.onContextItemSelected(item);
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();		
+		switch (item.getId()) {
+		case MENU_VIEW_CONTENT:
+			viewContent(menuInfo.position);
+			break;
+		case MENU_REMOVE_TAG:
+			removeTag(menuInfo.position);
+			break;
+		}
+
+		return true;
+	}
+
 	@Override
 	public boolean onMenuItemSelected(int featureId, Item item) {
 		super.onMenuItemSelected(featureId, item);
 
-		String tag = mTagFilter.getText().toString();
 		Intent intent;
 		switch (item.getId()) {
 		case MENU_ADD_TAG:
@@ -222,31 +241,33 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI);
 			startSubActivity(intent, REQUEST_DIR_PICK);
 			break;
-		case MENU_VIEW_CONTENT:
-			String uri = ((Cursor) getListView().getSelectedItem())
-					.getString(1);
-			try {
-				intent = new Intent(Intent.VIEW_ACTION, Uri.parse(uri));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				intent = null;
-			}
-			if (intent != null) {
-				startActivity(intent);
-			}
-			break;
-		case MENU_REMOVE_TAG:
-			uri = ((Cursor) getListView().getSelectedItem()).getString(1);
-			mTags.removeTag(tag, uri);
-
-			break;
 		case MENU_PACKAGES:
 			startActivity(new Intent(this, PackageList.class));
 			break;
 		}
 
 		return true;
+	}
+
+	private void removeTag(int position) {
+		String tag = mTagFilter.getText().toString();
+		String uri = ((Cursor) getListAdapter().getItem(position)).getString(1);
+		mTags.removeTag(tag, uri);
+	}
+
+	private void viewContent(int position) {
+		Intent intent;
+		String uri = ((Cursor) getListAdapter().getItem(position)).getString(1);
+		try {
+			intent = new Intent(Intent.VIEW_ACTION, Uri.parse(uri));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			intent = null;
+		}
+		if (intent != null) {
+			startActivity(intent);
+		}
 	}
 
 	@Override
@@ -265,7 +286,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 				if (getPackageManager().resolveActivity(intent, 0) != null) {
 					startSubActivity(intent, REQUEST_CONTENT_PICK);
 				} else {
-					AlertDialog.show(this, "info", 0, "no pick activity for " + data, "ok", true);
+					AlertDialog.show(this, "info", 0, "no pick activity for "
+							+ data, "ok", true);
 				}
 			}
 			break;
@@ -276,7 +298,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			}
 			break;
 		case REQUEST_TAG_PICK:
-			if (data != null){
+			if (data != null) {
 				mTagFilter.setText(data);
 			}
 		}
