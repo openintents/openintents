@@ -16,9 +16,12 @@
 
 package org.openintents.provider;
 
+import com.google.android.maps.Point;
+
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
@@ -91,6 +94,20 @@ public class Location {
 		return mResolver.delete(ContentUris.withAppendedId(
 				Locations.CONTENT_URI, id), null, null);
 
+	}
+
+	public Point getPoint(long id) {
+		Cursor cursor = mResolver.query(ContentUris.withAppendedId(
+				Locations.CONTENT_URI, id), new String[] { Locations._ID,
+				Locations.LATITUDE, Locations.LONGITUDE }, null, null,
+				Locations.DEFAULT_SORT_ORDER);
+		if (cursor.next()) {
+			int lat = Double.valueOf(cursor.getDouble(1) * 1E6).intValue();
+			int lon = Double.valueOf(cursor.getDouble(2) * 1E6).intValue();
+			return new Point(lat, lon);
+		} else {
+			return null;
+		}
 	}
 
 }

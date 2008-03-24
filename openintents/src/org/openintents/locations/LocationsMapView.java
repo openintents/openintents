@@ -7,6 +7,7 @@ import org.openintents.provider.Tag;
 import org.openintents.provider.Location.Locations;
 
 import android.content.ContentUris;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -25,6 +26,7 @@ public class LocationsMapView extends MapActivity {
 	private MapView view;
 	private long pointId;
 	private Tag mTag;
+	private Location mLocations;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -33,12 +35,25 @@ public class LocationsMapView extends MapActivity {
 
 		setContentView(R.layout.locations_map_view);
 		mTag = new Tag(LocationsMapView.this);
+		mLocations = new Location(this.getContentResolver());
 		
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			point = new Point(bundle.getInt("latitude"), bundle
 					.getInt("longitude"));
 			pointId = bundle.getLong("_id");
+		}
+		
+		if (pointId == 0L && getIntent() != null){
+			String id =  getIntent().getData().getLastPathSegment();
+			if (id != null && id.length() > 0){
+				try {
+					pointId = Integer.parseInt(id);	
+					point = mLocations.getPoint(pointId);
+				} catch (NumberFormatException e) {
+					// ignore - no id found
+				}				
+			}
 		}
 
 		view = (MapView) findViewById(R.id.mapview);
@@ -47,8 +62,11 @@ public class LocationsMapView extends MapActivity {
 				.getLongitudeE6()), true);
 		controller.zoomTo(9);
 
+		
 		MultiWordAutoCompleteTextView tv = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);		
-		// TODO set text, set adapter 
+		// TODO set text, set adapter
+		Cursor idTagCursor = mTag.findTags(ContentUris.withAppendedId(Locations.CONTENT_URI, pointId).toString());
+		Cursor allTagsCursor = mTag.findTagsForContentType(Locations.CONTENT_URI.toString());
 		//tv.setText();
 		//tv.setAdapter()
 		

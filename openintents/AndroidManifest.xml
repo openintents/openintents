@@ -104,6 +104,11 @@
 		<!-- Location Map activity -->
 		<activity android:name=".locations.LocationsMapView"
 			android:label="@string/locations_map">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.openintents.cursor.item/location"/>
+			</intent-filter>
 		</activity>
 
 		<!-- Tags activity -->
