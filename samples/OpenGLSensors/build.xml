@@ -1,32 +1,14 @@
 <?xml version="1.0" ?>
 <project name="OpenGLSensors" default="package">
 
-	<!-- The following property has to be set:
-		    **************************************************************
-			In Eclipse:
-			* Open "Window" / "Preferences..."
-			* Select "Ant" / "Runtime"
-			* Choose tab "Properties"
-			* Click "Add Property..." for the following:
-			
-			* - Name: "android.sdk"
-			  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
-			**************************************************************
-			Alternatively, you can provide the property through the
-			command line:
-			* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
-			**************************************************************
-		-->
+	<!-- Read properties from OpenIntents property file -->
+	<property file="build.properties" />
+	<property file="${build.properties.dir}/build.properties" />
 	
-	<!-- ############################################# -->
-	<!-- Properties taken from Eclipse -->
-	
-	<!-- sdk-dir: path to Android SDK -->
+	<!-- Path to Android SDK and tools -->
 	<property name="sdk-dir" value="${android.sdk}" />
-	<!-- ############################################# -->
-	
-	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
+	<echo>Using Android SDK directory ${sdk-dir}</echo>
 		
     <!-- The intermediates directory -->
     <!-- Eclipse uses "bin" for its own output, so we do the same. -->
@@ -57,11 +39,11 @@
     <property name="out-package" value="${outdir}/${ant.project.name}.apk" />
 
     <!-- Tools -->
-    <property name="aapt" value="${android-tools}/aapt.exe" />
-    <property name="aidl" value="${android-tools}/aidl.exe" />
-    <property name="dx" value="${android-tools}/dx.bat" />
-    <property name="android-jar" value="${sdk-dir}/android.jar" />
-
+	<property name="aapt" value="${android-tools}/${android.aapt}" />
+	<property name="aidl" value="${android-tools}/${android.aidl}" />
+	<property name="dx" value="${android-tools}/${android.dx}" />
+	<property name="android-jar" value="${sdk-dir}/${android.jar}" />
+		
     <!-- Rules -->
 
     <!-- Create the output directories if they don't exist yet. -->
@@ -117,10 +99,10 @@
     <target name="dex" depends="compile">
         <exec executable="${dx}" failonerror="true">
             <arg value="--dex" />
-            <arg value="--output=${basedir}\${intermediate-dex}" />
+            <arg value="--output=${basedir}/${intermediate-dex}" />
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
-            <arg path="${basedir}\${outdir-classes}" />
+            <arg path="${basedir}/${outdir-classes}" />
 			<arg path="${openintents-lib-jar}" />
         </exec>
     </target>

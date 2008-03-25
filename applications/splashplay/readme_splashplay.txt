@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                  *
+ * Copyright (C) 2007-2008 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -14,30 +14,15 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-OpenGLSensors demonstrates accessing the sensors and the sensor simulator.
-The pyramid displayed will always show up, regardless how you hold the
-device.
-The bar magnet displayed will always point along the magnetic field.
-
 ---------------------------------------------------------
 release: 0.1.5
 date: 2008-03-26
 
-- no changes
+features:
+- Guitar music tuition software.
+- Chord and markers on guitar fretboard show position
+  along with music.
+- Connection via bluetooth to SplashPod is simulated.
 
----------------------------------------------------------
-release: 0.1.4
-date: 2008-03-12
-
-known bugs:
-- Uses full CPU even if activity moves to background (issue #43).
-
----------------------------------------------------------
-release: 0.1.2
-date: 2008-01-28
-
-new features:
-  - Displays pyramid that always points up,
-    regardless how you hold the phone.
-  - Works with accelerometer and orientation sensor.
-  - Displays bar magnet for compass sensor.
+know issues:
+- Only one demo song available.

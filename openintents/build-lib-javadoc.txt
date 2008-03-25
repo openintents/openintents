@@ -25,5 +25,6 @@ lib-javadoc-include = \
 	src/org/openintents/news/views/MessageListAdapter.java,\
 	src/org/openintents/news/views/SimpleNewsChannelView.java,\
 	src/org/openintents/news/views/SimpleNewsMessageView.java,\
+	src/org/openintents/tags/MagnoliaTagging.java,\
 	src/org/openintents/widget/Slider.java
 	

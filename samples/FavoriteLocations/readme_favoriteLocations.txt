@@ -14,16 +14,13 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+---------------------------------------------------------
+release: 0.1.5
+date: 2008-03-26
 
-   YOU MAY HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib.JAR FILE:
-
-If it is not included yet, in the Eclipse Package Explorer, 
-right-click on the imported project FavoriteLocations, 
-select "Properties", then "Java Build Path" and tab "Libraries". 
-There "Add JARs..." and select lib/openintents-lib.jar. 
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+- FavoriteLocations is obsolete and will be no longer
+  supported. Its functionality has been included in 
+  the core.
 
 ---------------------------------------------------------
 release: 0.1.4

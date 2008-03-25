@@ -14,6 +14,9 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
+SensorSimulator lets you simulate sensor events from 
+accelerometer, compass, orientation, and temperature sensors.
+It transmits the simulated sensor data to an Android emulator.
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -21,38 +24,13 @@
 
 * To launch it, open the sensorsimulator.jar file with your JRE
   (requires Java Runtime Environment 1.6.0 or higher).
-  
-* To open the project in Eclipse (requires source code):
-  1) File / Import...
-  2) General / Existing Projects into Workspace...
-  3) Next >
-  4) Select root directory (that contains the the SensorSimulator)
-  5) Finish
-
-  * alternatively do *
-  
-  1) File / New / Project...
-  2) Java / Java project
-  3) Create project from existing source
-  4) For project name enter: SensorSimulator
-
-* To create a jar file in Eclipse using the Ant script:
-  1) In Package Explorer, right-click "build.xml"
-  2) Run As / Ant Build
-  3) Find the result in bin/sensorsimulator.jar
-  
-  * alternatively create it manually: *
-
-  1) File / Export...
-  2) Java / JAR file
-  3) Deselect all; select only org.openintents.tools.sensorsimulator
-  4) Select the export destination
-  5) Next / Next / Select the class of the application entry point:
-     org.openintents.tools.sensorsimulator.SensorSimulator
-     
-  
-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  
+---------------------------------------------------------
+release: 0.1.5
+date: 2008-03-26
+
+- no changes
 
 ---------------------------------------------------------
 release: 0.1.4

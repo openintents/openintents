@@ -18,7 +18,7 @@ OpenIntents defines and implements open interfaces for
 improved interoperability of Android applications.
 
 To obtain the current release, visit
-  http://code.google.com/p/openintents/
+  http://www.openintents.org
 
 -----------------------------------------------------------------------------
 

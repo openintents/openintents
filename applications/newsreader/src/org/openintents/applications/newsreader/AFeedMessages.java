@@ -2,26 +2,20 @@ package org.openintents.applications.newsreader;
 
 
 
+import org.openintents.news.views.MessageListAdapter;
+import org.openintents.provider.News;
+import org.openintents.tags.MagnoliaTagging;
+
 import android.app.ListActivity;
-import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.LinearLayout.LayoutParams;
-import android.database.Cursor;
-import android.content.Intent;
-import android.content.ContentUris;
-import android.net.Uri;
-
-import org.openintents.provider.News;
-import org.openintents.news.views.*;
 
 public class AFeedMessages extends ListActivity {
 
@@ -261,9 +255,9 @@ public class AFeedMessages extends ListActivity {
 			strUri=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_LINK));
 			desc=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_TITLE));
 		
-		}	
-		b.putString(org.openintents.tags.MagnoliaTagging.URI,strUri);
-		b.putString(org.openintents.tags.MagnoliaTagging.DESCRIPTION,desc);
+		}
+		b.putString(MagnoliaTagging.URI,strUri);
+		b.putString(MagnoliaTagging.DESCRIPTION,desc);
 		Intent intent = new Intent();
 		intent.setAction("org.openintents.action.TAGMAGNOLIA");
 		intent.addCategory(Intent.DEFAULT_CATEGORY);

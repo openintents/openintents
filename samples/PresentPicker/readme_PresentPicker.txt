@@ -14,19 +14,14 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-   YOU HAVE TO MANUALLY INCLUDE THE OPENINTENTS-lib.JAR FILE:
-
-If it is not included yet, in the Eclipse Package Explorer, 
-right-click on the imported project PresentPicker, 
-select "Properties", then "Java Build Path" and tab "Libraries". 
-There "Add JARs..." and select lib/openintents-lib.jar. 
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 PresentPicker picks the right present for you.
 It demonstrates the usage of the Shopping List application.
+
+---------------------------------------------------------
+release: 0.1.5
+date: 2008-03-26
+
+- no changes
 
 ---------------------------------------------------------
 release: 0.1.4

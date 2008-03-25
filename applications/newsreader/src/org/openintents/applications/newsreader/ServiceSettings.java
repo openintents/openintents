@@ -1,7 +1,7 @@
 package org.openintents.applications.newsreader;
 
 
-import org.openintents.news.services.NewsReaderService;
+import org.openintents.news.services.NewsreaderService;
 
 import android.app.Activity;
 import android.widget.Toast;
@@ -44,7 +44,7 @@ public class ServiceSettings extends Activity {
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
 			Toast.makeText(ServiceSettings.this, "ehlo1", Toast.LENGTH_SHORT).show();
-			NewsReaderService.Test();
+			NewsreaderService.Test();
 
 			Log.v("ServiceSettings","Starting service");   
 			startService(new Intent(

@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
-<project name="FavoriteLocations" default="package">
-
+<project name="SplashPlay" default="package">
+	
 	<!-- Read properties from OpenIntents property file -->
 	<property file="build.properties" />
 	<property file="${build.properties.dir}/build.properties" />
@@ -43,7 +43,7 @@
 	<property name="aidl" value="${android-tools}/${android.aidl}" />
 	<property name="dx" value="${android-tools}/${android.dx}" />
 	<property name="android-jar" value="${sdk-dir}/${android.jar}" />
-	
+	    
     <!-- Rules -->
 
     <!-- Create the output directories if they don't exist yet. -->
@@ -103,7 +103,7 @@
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
             <arg path="${basedir}/${outdir-classes}" />
-        	<arg path="${openintents-lib-jar}" />
+			<arg path="${openintents-lib-jar}" />
         </exec>
     </target>
 

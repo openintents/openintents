@@ -1,7 +1,5 @@
 <?xml version="1.0" ?>
 <project name="OpenIntents" default="package">
-	<property file="build.properties"/>
-
 	<!--
 		The following targets are possible:
 		
@@ -10,34 +8,12 @@
 		* javadoc: creates the JavaDoc
 	-->
 	
-	<!-- The following property has to be set:
-	    **************************************************************
-		In Eclipse:
-		* Open "Window" / "Preferences..."
-		* Select "Ant" / "Runtime"
-		* Choose tab "Properties"
-		* Click "Add Property..." for the following:
-		
-		* - Name: "android.sdk"
-		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
-		**************************************************************
-		Alternatively, you can provide the property through the
-		command line:
-		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
-		**************************************************************
-		
-		Choose target "lib" to also create the openintents-lib.jar file.
-	-->
-
-	<!-- ############################################# -->
-	<!-- Properties taken from Eclipse -->
+	<property file="build.properties"/>
 	
-	<!-- sdk-dir: path to Android SDK -->
+	<!-- Path to Android SDK and tools -->
 	<property name="sdk-dir" value="${android.sdk}" />
-	<!-- ############################################# -->
-
-	<!-- SDK tools folder -->
 	<property name="android-tools" value="${sdk-dir}/tools" />
+	<echo>Using Android SDK directory ${sdk-dir}</echo>
 
 	<!-- Input file for source files to be included in
 	     lib javadoc -->
@@ -69,21 +45,19 @@
     <property name="intermediate-dex" value="${outdir}/${dex-file}" />
 
 	<!-- bolt related properties -->
-	<property name="version" value="${release.major}.${release.minor}.${release.dev}"/>
 	<property name="bolt.manifest" value="manifest.bolt"/>
-	<property name="bolt.template" value="template manifest.bolt"/>
+	<property name="bolt.template" value="manifest-template.bolt"/>
 
 	<!-- The final package file to generate -->
     <property name="out-package" value="${outdir}/${ant.project.name}.apk" />
-	<property name="out-bolt-package" value="${outdir}/bolt/${package.name}-${version}.apk"/>
+	<property name="out-bolt-package" value="${outdir}/bolt/${bolt.package.name}-${version}.apk"/>
 
-
-    <!-- Tools -->
-    <property name="aapt" value="${android-tools}/aapt.exe" />
-    <property name="aidl" value="${android-tools}/aidl.exe" />
-    <property name="dx" value="${android-tools}/dx.bat" />
-    <property name="android-jar" value="${sdk-dir}/android.jar" />
-
+	<!-- Tools -->
+	<property name="aapt" value="${android-tools}/${android.aapt}" />
+	<property name="aidl" value="${android-tools}/${android.aidl}" />
+	<property name="dx" value="${android-tools}/${android.dx}" />
+	<property name="android-jar" value="${sdk-dir}/${android.jar}" />
+    
     <!-- Rules -->
 
     <!-- Create the output directories if they don't exist yet. -->
@@ -140,10 +114,10 @@
     <target name="dex" depends="compile">
         <exec executable="${dx}" failonerror="true">
             <arg value="--dex" />
-            <arg value="--output=${basedir}\${intermediate-dex}" />
+            <arg value="--output=${basedir}/${intermediate-dex}" />
             <arg value="--locals=full" />
             <arg value="--positions=lines" />
-            <arg path="${basedir}\${outdir-classes}" />
+            <arg path="${basedir}/${outdir-classes}" />
         </exec>
     </target>
 
@@ -256,7 +230,7 @@
 		    	value="${md5}"/>
 			<replacefilter 
 		    	token="@package-name@" 
-		    	value="${package.name}"/>			
+		    	value="${bolt.package.name}"/>			
 		</replace>	
 		<echo>updated manifest at ${bolt.manifest}</echo>
 	</target>
@@ -297,5 +271,5 @@
 	
 	<!-- Convencience target -->
 	<target name="all" 
-		depends="package, lib, javadoc, javadoc-lib" />
+		depends="package, lib, javadoc, javadoc-lib, bolt-update-manifest" />
 </project>

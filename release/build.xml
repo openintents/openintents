@@ -12,22 +12,6 @@
 	      binary + source + javadoc.
 	    ==============================================================
 	    
-	    The following property has to be set:
-	    **************************************************************
-		In Eclipse:
-		* Open "Window" / "Preferences..."
-		* Select "Ant" / "Runtime"
-		* Choose tab "Properties"
-		* Click "Add Property..." for the following:
-		
-		* - Name: "android.sdk"
-		  - value: [path to sdk, e.g. C:\android-sdk_m5-rc14_windows]
-		**************************************************************
-		Alternatively, you can provide the property through the
-		command line:
-		* ant -Dandroid.sdk=C:\android-sdk_m5-rc14_windows
-		**************************************************************
-		
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		To run the release script directly in Eclipse:
 		
@@ -43,13 +27,14 @@
 		
 	-->
 	
-	<!-- Read version number from file -->
-	<property file="build-version.txt" />
-	
+	<!-- Read properties from OpenIntents property file -->
+	<property file="build.properties" />
+	<property file="${build.properties.dir}/build.properties" />
+			
 	<!-- Base name of the release files -->
-	<property name="binary-name" value="openintents-binary-${build-version}" />
-	<property name="source-name" value="openintents-source-${build-version}" />
-	<property name="javadoc-name" value="openintents-javadoc-${build-version}" />
+	<property name="binary-name" value="openintents-binary-${version}" />
+	<property name="source-name" value="openintents-source-${version}" />
+	<property name="javadoc-name" value="openintents-javadoc-${version}" />
 		
 	<!-- release dir: this is where all the completed files go -->
 	<property name="release-dir" value="release" />
@@ -65,10 +50,11 @@
 	<property name="source-lib-dir" value="${source-dir}/lib" />
 						
 	<!-- (sub)project folders  -->
+	<property name="base-dir" value="${build.properties.dir}" />
 	<property name="buildrelease-dir" value="." />
-	<property name="base-dir" value="../openintents" />
 	<property name="lib-dir" value="../lib" />
 	<property name="newsreader-dir" value="../applications/newsreader" />
+	<property name="splashplay-dir" value="../applications/splashplay" />
 	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
@@ -85,7 +71,7 @@
 	<target
 		name="help"
 		>
-		<echo>----------openintents.org buildscript ${build-version}</echo>
+		<echo>----------openintents.org buildscript ${version}</echo>
 		<echo>use release for a full openintents release.</echo>
 		<echo>use release-zip for creating release zip-files.</echo>
 
@@ -375,6 +361,46 @@
 	</target>	
 
 
+	<target name="SplashPlay"
+		depends="OpenIntents"
+		>
+		<echo>------------------------------NewsReader----------------------</echo>
+		<!-- Use most recent lib file -->
+		<mkdir dir="${splashplay-dir}/lib"/>
+		<copy
+			file="${binary-lib-file}"
+			todir="${splashplay-dir}/lib"
+			/>
+		<!-- Compile -->
+		<ant
+			dir="${splashplay-dir}"
+			antfile="build.xml"
+			target="all"
+			>
+		</ant>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-applications-dir}" flatten="true">
+			<fileset dir="${splashplay-dir}">
+				<include name="bin/SplashPlay.apk" />
+				<include name="readme_splashplay.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/applications/splashplay">
+		    <fileset dir="${splashplay-dir}">
+		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/applications/splashplay">
+			<fileset dir="${splashplay-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
+	</target>	
+
 	<target name="SensorSimulator">
 		<echo>------------------------------SensorSimulator----------------------</echo>
 		<!-- Compile -->
@@ -417,7 +443,8 @@
 			OpenGLSensors,
 			PresentPicker,
 			SensorSimulator,
-			NewsReader"
+			NewsReader,
+			SplashPlay"
 		>
 	</target>
 
