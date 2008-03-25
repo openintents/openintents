@@ -197,6 +197,7 @@ public class LocationsView extends Activity {
 		super.onActivityResult(requestCode, resultCode, data, extras);
 
 		if (requestCode == TAG_ACTIVITY && resultCode == Activity.RESULT_OK) {
+			c.requery();
 			fillData();
 		}
 	}
