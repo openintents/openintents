@@ -94,6 +94,12 @@ public class SensorSimulator extends JPanel
 
 	static final String DISABLED = "DISABLED";
 	
+	// Constant giving the unicode value of degrees symbol.
+	final static public String DEGREES = "\u00B0";
+	final static public String MICRO = "\u00b5";
+	final static public String PLUSMINUS = "\u00b1";
+	final static public String SQUARED = "\u00b2"; // superscript two
+	
 	// Simulation delay:
 	int delay;
     Timer timer;
@@ -929,7 +935,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         accelerometerFieldPane.add(mGravityConstantText, c3);
         
-        label = new JLabel(" m/s²", JLabel.LEFT);
+        label = new JLabel(" m/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         accelerometerFieldPane.add(label, c3);
         
@@ -977,7 +983,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         accelerometerFieldPane.add(mSpringConstantText, c3);
         
-        label = new JLabel(" p/s^2", JLabel.LEFT);
+        label = new JLabel(" p/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         accelerometerFieldPane.add(label, c3);
         
@@ -1144,9 +1150,9 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         magneticFieldPane.add(mMagneticFieldVerticalText, c3);
         
-        nanoTeslaLabel = new JLabel(" nT", JLabel.LEFT);
+        label = new JLabel(" nT", JLabel.LEFT);
         c3.gridx = 2;
-        magneticFieldPane.add(nanoTeslaLabel, c3);
+        magneticFieldPane.add(label, c3);
         
         // Magnetic field panel ends
         
@@ -1182,7 +1188,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         temperatureFieldPane.add(mTemperatureText, c3);
         
-        label = new JLabel(" °C", JLabel.LEFT);
+        label = new JLabel(" " + DEGREES + "C", JLabel.LEFT);
         c3.gridx = 2;
         temperatureFieldPane.add(label, c3);
         
@@ -1239,7 +1245,7 @@ public class SensorSimulator extends JPanel
         
         label = new JLabel(" nT", JLabel.LEFT);
         c3.gridx = 2;
-        randomFieldPane.add(nanoTeslaLabel, c3);
+        randomFieldPane.add(label, c3);
         
         label = new JLabel("Orientation: ", JLabel.LEFT);
         c3.gridwidth = 1;
@@ -1252,7 +1258,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         randomFieldPane.add(mRandomOrientationText, c3);
         
-        label = new JLabel(" °", JLabel.LEFT);
+        label = new JLabel(" " + DEGREES, JLabel.LEFT);
         c3.gridx = 2;
         randomFieldPane.add(label, c3);
         
@@ -1267,7 +1273,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         randomFieldPane.add(mRandomTemperatureText, c3);
         
-        label = new JLabel(" °C", JLabel.LEFT);
+        label = new JLabel(" " + DEGREES + "C", JLabel.LEFT);
         c3.gridx = 2;
         randomFieldPane.add(label, c3);
         
