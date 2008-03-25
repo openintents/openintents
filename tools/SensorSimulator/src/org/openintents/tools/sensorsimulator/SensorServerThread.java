@@ -170,10 +170,17 @@ public class SensorServerThread implements Runnable {
 	        		if (inputLine.compareTo(SensorSimulator.ACCELEROMETER) == 0
 	        				&& mSensorSimulator.mSupportedAccelerometer.isSelected()) {
 	        			if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
-	        				out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.read_accelx);
-		        			out.println(mSensorSimulator.mobile.read_accely);
-		        			out.println(mSensorSimulator.mobile.read_accelz);
+	        				//out.println("3"); // number of data following
+		        			//out.println(mSensorSimulator.mobile.read_accelx);
+		        			//out.println(mSensorSimulator.mobile.read_accely);
+		        			//out.println(mSensorSimulator.mobile.read_accelz);
+	        				
+	        				// For performance reasons, send these commands together
+	        				String sensorData = "3\n"  // number of data following
+	        					+ mSensorSimulator.mobile.read_accelx + "\n" 
+	        					+ mSensorSimulator.mobile.read_accely + "\n" 
+	        					+ mSensorSimulator.mobile.read_accelz; 
+	        				out.println(sensorData);
 		        			mSensorSimulator.updateEmulatorAccelerometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -182,10 +189,17 @@ public class SensorServerThread implements Runnable {
 	        		} else if (inputLine.compareTo(SensorSimulator.COMPASS) == 0
 	        				&& mSensorSimulator.mSupportedCompass.isSelected()) {
 	        			if (mSensorSimulator.mEnabledCompass.isSelected()) {
-		        			out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.read_compassx);
-		        			out.println(mSensorSimulator.mobile.read_compassy);
-		        			out.println(mSensorSimulator.mobile.read_compassz);
+		        			//out.println("3"); // number of data following
+		        			//out.println(mSensorSimulator.mobile.read_compassx);
+		        			//out.println(mSensorSimulator.mobile.read_compassy);
+		        			//out.println(mSensorSimulator.mobile.read_compassz);
+		        			
+		        			// For performance reasons, send these commands together
+	        				String sensorData = "3\n"  // number of data following
+	        					+ mSensorSimulator.mobile.read_compassx + "\n" 
+	        					+ mSensorSimulator.mobile.read_compassy + "\n" 
+	        					+ mSensorSimulator.mobile.read_compassz; 
+	        				out.println(sensorData);
 		        			mSensorSimulator.updateEmulatorCompassRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -194,10 +208,17 @@ public class SensorServerThread implements Runnable {
 	        		} else if (inputLine.compareTo(SensorSimulator.ORIENTATION) == 0
 	        				&& mSensorSimulator.mSupportedOrientation.isSelected()) {
 	        			if (mSensorSimulator.mEnabledOrientation.isSelected()) {
-			        		out.println("3"); // number of data following
-		        			out.println(mSensorSimulator.mobile.read_yaw);
-		        			out.println(mSensorSimulator.mobile.read_pitch);
-		        			out.println(mSensorSimulator.mobile.read_roll);
+			        		//out.println("3"); // number of data following
+		        			//out.println(mSensorSimulator.mobile.read_yaw);
+		        			//out.println(mSensorSimulator.mobile.read_pitch);
+		        			//out.println(mSensorSimulator.mobile.read_roll);
+		        			
+		        			// For performance reasons, send these commands together
+	        				String sensorData = "3\n"  // number of data following
+	        					+ mSensorSimulator.mobile.read_yaw + "\n" 
+	        					+ mSensorSimulator.mobile.read_pitch + "\n" 
+	        					+ mSensorSimulator.mobile.read_roll; 
+	        				out.println(sensorData);
 		        			mSensorSimulator.updateEmulatorOrientationRefresh();
 	        			} else {
 	        				// This sensor is currently disabled
@@ -206,8 +227,14 @@ public class SensorServerThread implements Runnable {
 	        		} else if (inputLine.compareTo(SensorSimulator.THERMOMETER) == 0
 	        				&& mSensorSimulator.mSupportedThermometer.isSelected()) {
 	        			if (mSensorSimulator.mEnabledThermometer.isSelected()) {
-				        	out.println("1"); // number of data following
-				        	out.println(mSensorSimulator.mobile.read_temperature);
+				        	//out.println("1"); // number of data following
+				        	//out.println(mSensorSimulator.mobile.read_temperature);
+				        	
+				        	// For performance reasons, send these commands together
+				        	// (yes, we need a fast thermometer)
+	        				String sensorData = "1\n"  // number of data following
+	        					+ mSensorSimulator.mobile.read_temperature; 
+	        				out.println(sensorData);
 		        			mSensorSimulator.updateEmulatorThermometerRefresh();
 	        			} else {
 	        				// This sensor is currently disabled

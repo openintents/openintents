@@ -246,9 +246,11 @@ public class SensorSimulatorClient {
 					+ "' called with sensorValues == null.");
 		}
 		if (LOG_PROTOCOL) Log.i(TAG, "Send: getNumSensorValues()");
-		mOut.println("readSensor()");
-		if (LOG_PROTOCOL) Log.i(TAG, "Send: " + sensor);
-        mOut.println(sensor);
+		//mOut.println("readSensor()");
+		//if (LOG_PROTOCOL) Log.i(TAG, "Send: " + sensor);
+        //mOut.println(sensor);
+		// For performance reasons, send these commands together
+		mOut.println("readSensor()\n" + sensor);
 		int num = 0;
 		
 		try {
