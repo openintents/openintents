@@ -49,6 +49,7 @@
 	<string name="add">Add</string>
 	<string name="add_tag">Add new tag/content</string>
 	<string name="tag_all">ALL</string>
+	<string name="tags_add_any_tag">add new tag (advanced)</string>
 	
 	<!-- intent list  -->
 	<string name = "intents_list">List of Actions by Type</string>

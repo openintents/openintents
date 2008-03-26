@@ -65,10 +65,13 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private static final int MENU_VIEW_CONTENT = 2;
 	private static final int MENU_REMOVE_TAG = 3;
 	private static final int MENU_PACKAGES = 4;
-
+	private static final int MENU_ADD_ANY_TAG = 5;
+	
 	protected static final int REQUEST_DIR_PICK = 1;
 	protected static final int REQUEST_CONTENT_PICK = 2;
 	protected static final int REQUEST_TAG_PICK = 3;
+
+	
 
 	private AutoCompleteTextView mTagFilter;
 
@@ -188,6 +191,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.tag_add001a);
+		menu.add(0, MENU_ADD_ANY_TAG, R.string.tags_add_any_tag, R.drawable.tag_add001a);
 
 		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
 				R.drawable.tagging_packages001a);
@@ -225,6 +229,13 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			intent = new Intent(Intent.PICK_ACTION, Dir.CONTENT_URI);
 			startSubActivity(intent, REQUEST_DIR_PICK);
 			break;
+		case MENU_ADD_ANY_TAG:
+			// query for a string as uri and 
+			// start tag action
+			// data is the picked content
+			String tag = mTagFilter.getText().toString();
+			mTags.startAddTagActivity(tag, null);
+			break;
 		case MENU_PACKAGES:
 			startActivity(new Intent(this, PackageList.class));
 			break;
@@ -250,7 +261,12 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			intent = null;
 		}
 		if (intent != null) {
-			startActivity(intent);
+			if (getPackageManager().resolveActivity(intent, 0) != null) {
+				startActivity(intent);	
+			} else {
+				AlertDialog.show(this, "info", 0, "content can not be shown", "ok", null, null, null, false, null);
+			}
+			
 		}
 	}
 

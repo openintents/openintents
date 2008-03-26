@@ -112,40 +112,7 @@
 		</activity>
 
 		<!-- Tags activity -->
-		<activity android:name=".tags.TagsView"
-			android:label="@string/list_of_tags"
-			android:icon="@drawable/tagging_application001a">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->
-				<category android:name="org.openintents.category.SETTINGS" /> 
-			</intent-filter>
-			<intent-filter>
-				<action android:name="org.openintents.action.TAG" />
-				<category
-
-					android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
-
-			</intent-filter>
-			<intent-filter>
-				<action android:name="org.openintents.action.TAG"
-					android:label="tag" />
-				<category
-					android:name="android.intent.category.ALTERNATIVE" />
-				<data android:scheme="content" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="org.openintents.action.TAG"
-					android:label="tag" />
-				<category
-					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
-				<data android:scheme="content" />
-			</intent-filter>
-		</activity>
-
-		<!-- android:icon="@drawable/directory" -->
+		
 		<activity android:name=".tags.content.ContentBrowserView"
 			android:label="@string/content_browser" 
 			android:icon="@drawable/tagging_application001a">
