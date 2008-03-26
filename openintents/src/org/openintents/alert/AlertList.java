@@ -57,6 +57,13 @@ public class AlertList extends ListActivity{
 
 	private Cursor mCursor;
 
+
+
+	private static final int MENU_GENERIC_CREATE=101;
+	private static final int MENU_GENERIC_EDIT=102;
+	private static final int MENU_DELETE=103;
+
+
 	@Override
 	protected void onFreeze(Bundle icicle){
 		stopManagingCursor(mCursor);
@@ -68,7 +75,7 @@ public class AlertList extends ListActivity{
 	protected void onResume(){
 		super.onResume();
 		Log.d(_TAG,"onResume: entering");
-		init();
+		//init();
 	}
 
     @Override
@@ -82,14 +89,24 @@ public class AlertList extends ListActivity{
 
 
 	public void init(){
-
+	
 		Alert.mContentResolver=getContentResolver();
 
-		Log.d(_TAG,"contetnresovler is>>"+Alert.mContentResolver);
+//		Log.d(_TAG,"contetnresovler is>>"+Alert.mContentResolver.toString());
+//		Log.d(_TAG,"uri is >>"+Alert.Generic.CONTENT_URI+"<<");
+//		Log.d(_TAG,"projection is >>"+Alert.Generic.PROJECTION.toString()+"<<");
+		//Log.d(_TAG,"strange data path >>"+Alert.mContentResolver.getDataFilePath(Alert.Generic.CONTENT_URI)+"<<");
 
+//		AlertProvider.test(Alert.Generic.CONTENT_URI);
+//		AlertProvider.test(Uri.parse("content://org.openintents.alert"));
+//		AlertProvider.test(Uri.parse("content://org.openintents.alert/"));
+//		AlertProvider.test(Alert.Location.CONTENT_URI);
+		
+		mCursor=managedQuery(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null);
+		//new AlertProvider().query(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null,null);
+		//mCursor=Alert.mContentResolver.query(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null,null);
+		Log.d(_TAG,"cursor is now>>"+mCursor+"<<");
 
-		//mCursor=managedQuery(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null);
-		mCursor=Alert.mContentResolver.query(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null,null);
 		if (mCursor.count()==0)
 		{
 			Log.e(_TAG,"Cursor was empty");
@@ -110,6 +127,57 @@ public class AlertList extends ListActivity{
 
 	}
 
+
+	@Override
+	public boolean onOptionsItemSelected(Item item){
+		Log.v(_TAG,"onOptionsItemSelected: item.id>>"+item.getId()+"<<");
+		int iID=item.getId();
+		if (iID==MENU_GENERIC_CREATE)
+		{
+			menuCreate();
+		}else if (iID==MENU_GENERIC_EDIT)
+		{
+			menuEdit();
+		}else if (iID==MENU_DELETE)
+		{
+			menuDelete();
+		}
+
+		return super.onOptionsItemSelected(item);
+	}
+	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu){
+		boolean result= super.onCreateOptionsMenu(menu);
+		
+		menu.add(0,MENU_GENERIC_CREATE,"Add Generic",R.drawable.settings001a);
+		menu.add(0,MENU_GENERIC_EDIT,"Edit Generic",R.drawable.settings001a);
+		menu.add(0,MENU_DELETE,"Delete Generic",R.drawable.settings001a);
+		//menu.add(0,MENU_SERVICESETTINGS, "ServiceSettings",R.drawable.settings001a);
+		
+		return result;
+		
+	}
+
+
+	private void menuCreate(){
+
+		Intent intent = new Intent();
+		intent.setAction(org.openintents.OpenIntents.ADD_GENERIC_ALERT);
+		intent.addCategory(Intent.DEFAULT_CATEGORY);
+		//intent.putExtras(b);
+		startActivity(intent);		
+	}
+	private void menuEdit(){
+		Intent intent = new Intent();
+		intent.setAction(org.openintents.OpenIntents.EDIT_GENERIC_ALERT);
+		intent.addCategory(Intent.DEFAULT_CATEGORY);
+		//intent.putExtras(b);
+		startActivity(intent);		
+	
+	}
+	private void menuDelete(){}
 
 
 }/*eoc*/

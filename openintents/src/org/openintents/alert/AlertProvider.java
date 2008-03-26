@@ -106,6 +106,18 @@ public class AlertProvider extends ContentProvider {
 		return null;
 	}
 
+	public static void test(){
+		Log.d(TAG,"TEST CALL ACCEPTED");
+	}
+
+	public static void test(Uri u){
+		int match=URL_MATCHER.match(u);
+		Log.d(TAG,"TEST CALL ACCEPTED");
+		Log.d(TAG,"uri>>"+u+"<< matched >>"+match+"<<");
+	}
+
+
+
 	/*
 	 * @author Zero
 	 * @version 1.0
@@ -160,6 +172,7 @@ public class AlertProvider extends ContentProvider {
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		int match=URL_MATCHER.match(uri);
+		Log.d(this.TAG,"query,URI is >>"+uri+"<<");
 		Log.d(this.TAG,"query,URI MATCHER RETURNED >>"+match+"<<");
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String orderBy=null;
@@ -336,12 +349,14 @@ public class AlertProvider extends ContentProvider {
 	
 		URL_MATCHER=new UriMatcher(UriMatcher.NO_MATCH);
 		
-		URL_MATCHER.addURI("org.openintents.alert","",ALERT_GENERIC);
-		URL_MATCHER.addURI("org.openintents.alert","/#",ALERT_GENERIC_ID);
+		URL_MATCHER.addURI("org.openintents.alert","generic/",ALERT_GENERIC);
+		URL_MATCHER.addURI("org.openintents.alert","generic/#",ALERT_GENERIC_ID);
 		URL_MATCHER.addURI("org.openintents.alert","location",ALERT_LOCATION);
 		URL_MATCHER.addURI("org.openintents.alert","location/#",ALERT_LOCATION_ID);
 		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
 		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
+		URL_MATCHER.addURI("org.openintents.alert","",6000);
+		URL_MATCHER.addURI("org.openintents.alert","/",6001);
 		
 		GENERIC_PROJECTION_MAP=new HashMap<String,String>();
 		GENERIC_PROJECTION_MAP.put(Alert.Generic._ID,Alert.Generic._ID);
@@ -355,6 +370,8 @@ public class AlertProvider extends ContentProvider {
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.RULE,Alert.Generic.RULE);
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT,Alert.Generic.INTENT);
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_CATEGORY,Alert.Generic.INTENT_CATEGORY);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_URI,Alert.Generic.INTENT_URI);
+		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_MIME_TYPE,Alert.Generic.INTENT_MIME_TYPE);
 
 	}
 
