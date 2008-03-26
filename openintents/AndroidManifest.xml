@@ -418,7 +418,6 @@
 				<category android:name="org.openintents.category.SETTINGS"></category>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
-				<data android:scheme="openintents" android:host="intents"/>				
 			</intent-filter>
 			<intent-filter>
 				<category android:name="org.openintents.category.SETTINGS"></category>
