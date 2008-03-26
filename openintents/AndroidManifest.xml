@@ -418,13 +418,13 @@
 				<category android:name="org.openintents.category.SETTINGS"></category>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
-				<data android:path = "openintents://intents"/>				
+				<data android:scheme="openintents" android:host="intents"/>				
 			</intent-filter>
 			<intent-filter>
 				<category android:name="org.openintents.category.SETTINGS"></category>
 				<action android:name="android.intent.action.PICK"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
-				<data android:path = "openintents://intents"/>				
+				<data android:scheme="openintents" android:host="intents"/>				
 			</intent-filter>
 		</activity>		
 		<activity android:name=".actions.PickStringView" android:label="@string/intents_list">

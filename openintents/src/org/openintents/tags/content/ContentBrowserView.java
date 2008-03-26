@@ -90,9 +90,9 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 					public void onPopulateContextMenu(ContextMenu contextmenu,
 							View view, Object obj) {
 						contextmenu.add(0, MENU_REMOVE_TAG,
-								R.string.tags_remove_tag);
+								R.string.tags_remove_tag, R.drawable.tag_delete001a);
 						contextmenu.add(0, MENU_VIEW_CONTENT,
-								R.string.tags_view_content);
+								R.string.tags_view_content, R.drawable.view_001a);
 					}
 
 				});
@@ -187,31 +187,15 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-
-		menu
-				.add(0, MENU_ADD_TAG, R.string.tags_add_tag,
-						R.drawable.tag_add001a);
-		menu.add(0, MENU_VIEW_CONTENT, R.string.tags_view_content,
-				R.drawable.window);
-		menu.add(0, MENU_REMOVE_TAG, R.string.tags_remove_tag,
-				R.drawable.tag_delete001a);
+		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.tag_add001a);
 
 		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
-				R.drawable.advanced);
+				R.drawable.tagging_packages001a);
+
 
 		return true;
 	}
 
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		super.onPrepareOptionsMenu(menu);
-
-		boolean show = getListView().getSelectedItemId() != Long.MIN_VALUE;
-		menu.get(1).setShown(show);
-		menu.get(2).setShown(show);
-
-		return true;
-	}
 
 	@Override
 	public boolean onContextItemSelected(Item item) {
@@ -220,7 +204,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		switch (item.getId()) {
 		case MENU_VIEW_CONTENT:
 			viewContent(menuInfo.position);
-			break;
+			break;		
 		case MENU_REMOVE_TAG:
 			removeTag(menuInfo.position);
 			break;
