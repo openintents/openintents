@@ -75,6 +75,7 @@ public class AlertProvider extends ContentProvider {
 				Alert.Generic.INTENT+" STRING,"+
 				Alert.Generic.INTENT_CATEGORY+" STRING,"+
 				Alert.Generic.INTENT_URI+" STRING,"+
+				Alert.Generic.INTENT_MIME_TYPE+" STRING,"+
 				Alert.Generic.ACTIVE+" INTEGER,"+
 				Alert.Generic.ACTIVATE_ON_BOOT+" INTEGER"+
 				");");
