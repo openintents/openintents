@@ -47,7 +47,7 @@
 		<provider android:name="org.openintents.news.NewsProvider"
 			android:authorities="org.openintents.news" />		
 
-		<provider android:name="org.openintents.alert.AlertProvider"
+		<provider android:name=".alert.AlertProvider"
 			android:authorities="org.openintents.alert" />		
 		
 
@@ -400,6 +400,23 @@
 	<!-- alert framework -->
 	<activity android:name=".alert.AddGenericAlertActivity"
 			android:label="Add Generic Alert"
+			>
+
+			<intent-filter>
+				<action android:name="org.openintents.action.ADD_GENERIC_ALERT" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="org.openintents.action.EDIT_GENERIC_ALERT" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+	</activity>
+	<activity android:name=".alert.AlertList"
+			android:label="Alert List"
 			>
 
 			<intent-filter>
