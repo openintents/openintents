@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TextView
+		android:id="@+id/alert.id"
+		android:text="Packages"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/subtitle"/>
+	<TextView
+		android:id="@+id/alert.count"
+		android:text="Packages"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/subtitle"/>
+	<TextView
+		android:id="@+id/alert.cond1"
+		android:text="Packages"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/subtitle"/>
+	<LinearLayout
+		android:paddingTop="5px"
+		android:paddingLeft="0px"
+		android:paddingRight="0px"
+		android:paddingBottom="0px"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+		<ListView android:id="@android:id/list"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"/>
+	</LinearLayout>
+</LinearLayout>
