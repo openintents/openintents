@@ -79,7 +79,7 @@ public class SensorSimulatorView extends Activity {
 	 */
 	private static final int UPDATE_SENSOR_DATA = 1;
 	
-	private EditText mEditText;
+	// private EditText mEditText;
 	private EditText mEditTextIP;
 	private EditText mEditTextSocket;
 	
@@ -95,11 +95,14 @@ public class SensorSimulatorView extends Activity {
 	//private CheckBox mCheckBoxEnable;
 	//private CheckBox mCheckBoxAutoUpdate;
 	
+	private LinearLayout mSensorsList;
+	/*
 	private ListView mSensorsList;
 	private SensorListAdapter mSensorListAdapter;
+	*/
 	
-	private LinearLayout mSettingsBackground;
-	private LinearLayout mTestingBackground;
+	//private LinearLayout mSettingsBackground;
+	//private LinearLayout mTestingBackground;
 	
 	private int mUpdateInterval;
 	DecimalFormat mDecimalFormat;
@@ -197,7 +200,7 @@ public class SensorSimulatorView extends Activity {
 		
 		mTabHost.setCurrentTab(0);
 	
-		mEditText = (EditText) findViewById(R.id.edittext);
+//		mEditText = (EditText) findViewById(R.id.edittext);
 		mEditTextIP = (EditText) findViewById(R.id.ipaddress);
 		mEditTextSocket = (EditText) findViewById(R.id.socket);
 		
@@ -282,9 +285,13 @@ public class SensorSimulatorView extends Activity {
 		
 		readAllSensorsUpdate(); // initial reading
 		
-		mSensorsList = (ListView) findViewById(R.id.sensordatalist);
+		mSensorsList = (LinearLayout) findViewById(R.id.sensordatalist);
+		/*
+		 * // Let' try without SensorListAdapter
 		mSensorListAdapter = new SensorListAdapter(this);
 		mSensorsList.setAdapter(mSensorListAdapter);
+		*/
+		fillSensorList(); // Fills the sensor list manually, giving us more control
 		
 		// Default timer interval
 		mUpdateInterval = 100;
@@ -537,9 +544,11 @@ public class SensorSimulatorView extends Activity {
  		// the whole row is recreated.
  		//
 		// Now notify the ListAdapter of the changes:
-		mSensorListAdapter.notifyDataSetChanged();
+//		mSensorListAdapter.notifyDataSetChanged();
 		//mSensorListAdapter.notifyDataSetInvalidated();
 		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ 		
+ 		fillSensorList();
 		
 	}
 	
@@ -572,6 +581,8 @@ public class SensorSimulatorView extends Activity {
 		mSensorListAdapter.notifyDataSetChanged();
 		//mSensorListAdapter.notifyDataSetInvalidated();
 		 */
+ 		
+ 		fillSensorList();
 	}
 	
 	public void setButtonState() {
@@ -596,19 +607,19 @@ public class SensorSimulatorView extends Activity {
 	}
     */
 	
-    public void enableAllSensors() {
-		// Enable all sensors:
-		for (String sensor : mSupportedSensors) {
-			Sensors.enableSensor(sensor);
-		};
-	}
-    
-    public void disableAllSensors() {
-		// Enable all sensors:
-		for (String sensor : mSupportedSensors) {
-			Sensors.disableSensor(sensor);
-		};
-	}
+//    public void enableAllSensors() {
+//		// Enable all sensors:
+//		for (String sensor : mSupportedSensors) {
+//			Sensors.enableSensor(sensor);
+//		};
+//	}
+//    
+//    public void disableAllSensors() {
+//		// Enable all sensors:
+//		for (String sensor : mSupportedSensors) {
+//			Sensors.disableSensor(sensor);
+//		};
+//	}
     
     /**
      * Reads information about which sensors are supported and what their rates and current rates are.
@@ -830,89 +841,114 @@ public class SensorSimulatorView extends Activity {
         }
     };
 
-    /**
-     * Adapter for displaying information about single sensors.
-     * 
+    /** 
+     * Fills the sensor list with currently active sensors.
      */
-    private class SensorListAdapter extends BaseAdapter {
-
-        /**
-         * Remember our context so we can use it when constructing views.
-         */
-        private Context mContext;
-        
-        public SensorListAdapter(Context context) {
-            mContext = context;
-        }
-
-        public int getCount() {
-        	Log.i(TAG, "SensorListAdapater - getCount()");
-            return mSupportedSensors.length;
-        }
-
-        public Object getItem(int position) {
-        	Log.i(TAG, "SensorListAdapater - getItem()");
-            return position;
-        }
-
-        /**
-         * We use the array index as a unique id.
-         */
-        public long getItemId(int position) {
-        	Log.i(TAG, "SensorListAdapater - getItemId()");
-            return position;
-        }
-
-        /**
-         * 
-         */
-        public View getView(int position, View convertView, ViewGroup parent) {
-        	Log.i(TAG, "SensorListAdapater - getView(" + position + ")");
-        	SingleSensorView sv;
-            if (convertView == null) {
-                sv = new SingleSensorView(mContext, mSupportedSensors[position], mSensorUpdateRates[position], position);
-            } else {
-                sv = (SingleSensorView) convertView;
-                sv.setSensor(mSupportedSensors[position],  mSensorUpdateRates[position], position);               
-            }
-
-            return sv;
-        }
-        
-        
-		@Override
-		public void notifyDataSetChanged() {
-			// TODO Auto-generated method stub
-			Log.i(TAG,"notifyDataSetChanged called");
-			super.notifyDataSetChanged();
-			Log.i(TAG,"notifyDataSetChanged super called");
-			/*
-			// We can not call super as this will trigger
-			// a strange mode.
-			// We will update everything by hand:
-
-			for (int i=0; i<mNumSensors; i++) {
-				SingleSensorView ssv = 
-					(SingleSensorView) mSensorsList.getChildAt(i);
-				
-				getView(i, ssv, mSensorsList);
-				
-				//if (ssv != null) {
-					
-					
-					// in the child we update the views
-	    			//TextView tv = (TextView) ssv.findViewById(R.id.sensordata);
-	    			//if (tv != null) {
-	    				//tv.setText("OK" + current);
-	    			//	ssv.updateSensorValues();
-	    			//}
-	    			
-				// }
-			}
-			*/
-		}
-		
+    void fillSensorList() {
+    	// First clean the list
+    	mSensorsList.removeAllViews();
+    	
+    	
+    	// Now we fill the list, one by one:
+    	int max = mSupportedSensors.length;
+    	mSingleSensorView = new SingleSensorView[max];
+    	
+    	for (int i=0; i < max; i++) {
+    		SingleSensorView ssv = 
+    			new SingleSensorView(this, 
+    					mSupportedSensors[i], 
+    					mSensorUpdateRates[i], i);
+    		ssv.setLayoutParams(new LinearLayout.LayoutParams(
+    				LinearLayout.LayoutParams.FILL_PARENT,
+    				LinearLayout.LayoutParams.WRAP_CONTENT));
+    		mSensorsList.addView(ssv, i);
+    		mSingleSensorView[i] = ssv;
+    	}
     }
+    
+//    /**
+//     * Adapter for displaying information about single sensors.
+//     * 
+//     */
+//    private class SensorListAdapter extends BaseAdapter {
+//
+//        /**
+//         * Remember our context so we can use it when constructing views.
+//         */
+//        private Context mContext;
+//        
+//        public SensorListAdapter(Context context) {
+//            mContext = context;
+//        }
+//
+//        public int getCount() {
+//        	Log.i(TAG, "SensorListAdapater - getCount()");
+//            return mSupportedSensors.length;
+//        }
+//
+//        public Object getItem(int position) {
+//        	Log.i(TAG, "SensorListAdapater - getItem()");
+//            return position;
+//        }
+//
+//        /**
+//         * We use the array index as a unique id.
+//         */
+//        public long getItemId(int position) {
+//        	Log.i(TAG, "SensorListAdapater - getItemId()");
+//            return position;
+//        }
+//
+//        /**
+//         * 
+//         */
+//        public View getView(int position, View convertView, ViewGroup parent) {
+//        	Log.i(TAG, "SensorListAdapater - getView(" + position + ")");
+//        	SingleSensorView sv;
+//            if (convertView == null) {
+//                sv = new SingleSensorView(mContext, mSupportedSensors[position], mSensorUpdateRates[position], position);
+//            } else {
+//                sv = (SingleSensorView) convertView;
+//                sv.setSensor(mSupportedSensors[position],  mSensorUpdateRates[position], position);               
+//            }
+//
+//            return sv;
+//        }
+//        
+//        
+//		@Override
+//		public void notifyDataSetChanged() {
+//			// TODO Auto-generated method stub
+//			Log.i(TAG,"notifyDataSetChanged called");
+//			super.notifyDataSetChanged();
+//			Log.i(TAG,"notifyDataSetChanged super called");
+//			/*
+//			// We can not call super as this will trigger
+//			// a strange mode.
+//			// We will update everything by hand:
+//
+//			for (int i=0; i<mNumSensors; i++) {
+//				SingleSensorView ssv = 
+//					(SingleSensorView) mSensorsList.getChildAt(i);
+//				
+//				getView(i, ssv, mSensorsList);
+//				
+//				//if (ssv != null) {
+//					
+//					
+//					// in the child we update the views
+//	    			//TextView tv = (TextView) ssv.findViewById(R.id.sensordata);
+//	    			//if (tv != null) {
+//	    				//tv.setText("OK" + current);
+//	    			//	ssv.updateSensorValues();
+//	    			//}
+//	    			
+//				// }
+//			}
+//			*/
+//		}
+//		
+//    }
     
     /**
      * Layout for displaying single sensor.
@@ -986,57 +1022,57 @@ public class SensorSimulatorView extends Activity {
     		updateSensorValues();
     	}
     	
-    	public void setSensor(String sensor, String[] updateRates, int sensorId) {
-    		Log.i(TAG, "SingleSensorView - setSensor(" + sensor + ", " + updateRates + ")");
-
-    		if ((!mSensor.equals(sensor)) || mSensorId != sensorId) {
-    			Log.i(TAG, "SensorListAdapter.setSensor() - update general information");
-    			// Need to update general information:
-	    		mSensorId = sensorId;
-	    		mSensor = sensor;
-	
-	    		mCheckBox.setText(sensor);
-	            mCheckBox.setChecked(SensorsPlus.isEnabledSensor(sensor));
-    		}
-    		
-    		if (!mUpdateRates.equals(updateRates)) {
-    			Log.i(TAG, "SensorListAdapter.setSensor() - update updateRates");
-    			// Need to update updateRates:
-	    		mUpdateRates = updateRates;
-	
-	    		/*
-	            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-	                    context, android.R.layout.simple_spinner_item, updateRates);
-	            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	            mSpinner.setAdapter(adapter);
-	            */
-	            
-	           	mUpdateRateAdapter = new ArrayAdapter<String>(
-	                    mContext, android.R.layout.simple_spinner_item, updateRates);
-	            mUpdateRateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	            mSpinner.setAdapter(mUpdateRateAdapter);
-	
-	             
-	            /*
-	            int max=updateRates.length;
-	            for (int i=0; i<max; i++) {
-	            	
-	            	// TODO: How to adjust the adapter??
-	            	// The following is brute force: Replace by a new adapter.
-	            }
-	            */
-	            
-	            updateSensorStateInformation();
-    		}
-    		
-    		// The following should be done periodically anyway.
-    		if (mInvalidateSensorData[mSensorId]) {
-    			updateSensorValues();
-
-    			// Data are now up-to-date:
-    			mInvalidateSensorData[mSensorId] = false;
-    		}
-        }
+//    	public void setSensor(String sensor, String[] updateRates, int sensorId) {
+//    		Log.i(TAG, "SingleSensorView - setSensor(" + sensor + ", " + updateRates + ")");
+//
+//    		if ((!mSensor.equals(sensor)) || mSensorId != sensorId) {
+//    			Log.i(TAG, "SensorListAdapter.setSensor() - update general information");
+//    			// Need to update general information:
+//	    		mSensorId = sensorId;
+//	    		mSensor = sensor;
+//	
+//	    		mCheckBox.setText(sensor);
+//	            mCheckBox.setChecked(SensorsPlus.isEnabledSensor(sensor));
+//    		}
+//    		
+//    		if (!mUpdateRates.equals(updateRates)) {
+//    			Log.i(TAG, "SensorListAdapter.setSensor() - update updateRates");
+//    			// Need to update updateRates:
+//	    		mUpdateRates = updateRates;
+//	
+//	    		/*
+//	            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//	                    context, android.R.layout.simple_spinner_item, updateRates);
+//	            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//	            mSpinner.setAdapter(adapter);
+//	            */
+//	            
+//	           	mUpdateRateAdapter = new ArrayAdapter<String>(
+//	                    mContext, android.R.layout.simple_spinner_item, updateRates);
+//	            mUpdateRateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//	            mSpinner.setAdapter(mUpdateRateAdapter);
+//	
+//	             
+//	            /*
+//	            int max=updateRates.length;
+//	            for (int i=0; i<max; i++) {
+//	            	
+//	            	// TODO: How to adjust the adapter??
+//	            	// The following is brute force: Replace by a new adapter.
+//	            }
+//	            */
+//	            
+//	            updateSensorStateInformation();
+//    		}
+//    		
+//    		// The following should be done periodically anyway.
+//    		if (mInvalidateSensorData[mSensorId]) {
+//    			updateSensorValues();
+//
+//    			// Data are now up-to-date:
+//    			mInvalidateSensorData[mSensorId] = false;
+//    		}
+//        }
     	
     	public void updateSensorStateInformation() {
     		boolean sensorEnabled = SensorsPlus.isEnabledSensor(mSensor);
@@ -1093,38 +1129,42 @@ public class SensorSimulatorView extends Activity {
 				 */    			
 				public void onItemSelected(AdapterView parent, View v,
 						int position, long id) {
-    				if (id == mDefaultValueIndex) {
-    					// The user selected the default value, so let's get
-    					// that by unsetting:
-    					Sensors.unsetSensorUpdateRate(mSensor);
-    					setSensorUpdateDuration();
-    				} else {
-    					// User selected non-default value:
-    					
-        				// get again the float values
-        				// (because currently only string values are stored).
-        				// (I'm sure all this can be handled more efficiently
-        				//  and cleanly...)
-	    				float[] rate = Sensors.getSensorUpdateRates(mSensor);
-	    				if (rate != null) {
-	    					if (id >= rate.length) {
-		    					/// uh uh, this should not happen.
-		    					Log.e(TAG, "Inconsistent list behavior (id >= rate.length) (" + id + " >= " + rate.length + ")");
-		    					Log.e(TAG, "in SensorSimulatorView - updateSensorStateInformation - onItemSelected");
-		    					
-		    					// We could refresh the list at this point,
-		    					// but for now we simply do nothing...
-		    				} else {
-		    					assert(id < rate.length);
-		    					
-		    					Sensors.setSensorUpdateRate(mSensor, rate[(int) id]);
-		    					setSensorUpdateDuration();
-		    				}
+					if (mSensorEnabled[mSensorId]) {
+						// Only set or unset anything if the sensor
+						// is enabled. 
+						
+	    				if (id == mDefaultValueIndex) {
+	    					// The user selected the default value, so let's get
+	    					// that by unsetting:
+	    					Sensors.unsetSensorUpdateRate(mSensor);
+	    					setSensorUpdateDuration();
 	    				} else {
-	    					// Nothing to be set as updateRates are not supported.
+	    					// User selected non-default value:
+	    					
+	        				// get again the float values
+	        				// (because currently only string values are stored).
+	        				// (I'm sure all this can be handled more efficiently
+	        				//  and cleanly...)
+		    				float[] rate = Sensors.getSensorUpdateRates(mSensor);
+		    				if (rate != null) {
+		    					if (id >= rate.length) {
+			    					/// uh uh, this should not happen.
+			    					Log.e(TAG, "Inconsistent list behavior (id >= rate.length) (" + id + " >= " + rate.length + ")");
+			    					Log.e(TAG, "in SensorSimulatorView - updateSensorStateInformation - onItemSelected");
+			    					
+			    					// We could refresh the list at this point,
+			    					// but for now we simply do nothing...
+			    				} else {
+			    					assert(id < rate.length);
+			    					
+			    					Sensors.setSensorUpdateRate(mSensor, rate[(int) id]);
+			    					setSensorUpdateDuration();
+			    				}
+		    				} else {
+		    					// Nothing to be set as updateRates are not supported.
+		    				}
 	    				}
-    				}
-    				
+					}
 				}
 
 				
@@ -1145,7 +1185,9 @@ public class SensorSimulatorView extends Activity {
     				}
     				
     				mSensorEnabled[mSensorId] = isChecked;
-
+    				
+    				updateSensorStateInformation();
+    				
     				updateSensorValues();
     				
     				if (isChecked) {
