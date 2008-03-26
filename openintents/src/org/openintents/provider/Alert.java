@@ -44,7 +44,7 @@ public class Alert{
 	public static final class Generic implements BaseColumns{
 
 		public static final Uri CONTENT_URI= Uri.parse
-								("org.openintents.alert");
+								("content://org.openintents.alert/generic");
 
 
 		public static final String CONDITION1="condition1";
@@ -67,6 +67,8 @@ public class Alert{
 
 		public static final String INTENT_URI="intent_uri";
 
+		public static final String INTENT_MIME_TYPE="intent_mime_type";
+
 		public static final String DEFAULT_SORT_ORDER="";
 
 		public static final String[] PROJECTION={
@@ -81,7 +83,8 @@ public class Alert{
 			ACTIVATE_ON_BOOT,
 			INTENT,
 			INTENT_CATEGORY,
-			INTENT_URI
+			INTENT_URI,
+			INTENT_MIME_TYPE
 		};
 
 	};
@@ -111,6 +114,8 @@ public class Alert{
 		public static final String INTENT_CATEGORY=Generic.INTENT_CATEGORY;
 
 		public static final String INTENT_URI=Generic.INTENT_URI;
+
+		public static final String INTENT_MIME_TYPE=Generic.INTENT_MIME_TYPE;
 		
 		public static final String DEFAULT_SORT_ORDER="";
 
@@ -126,7 +131,8 @@ public class Alert{
 			ACTIVATE_ON_BOOT,
 			INTENT,
 			INTENT_CATEGORY,
-			INTENT_URI
+			INTENT_URI,
+			INTENT_MIME_TYPE
 		};			
 
 	};
