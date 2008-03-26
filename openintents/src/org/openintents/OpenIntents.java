@@ -48,4 +48,10 @@ public abstract class OpenIntents {
 	 * settings tab of OpenIntents.*/
 	public static final String SETTINGS_CATEGORY 
 		= "org.openintents.category.SETTINGS";
+
+
+	/** identifier for adding generic alerts  action. */
+	public static final String ADD_GENERIC_ALERT="org.openintents.action.ADD_GENERIC_ALERT";
+	public static final String EDIT_GENERIC_ALERT="org.openintents.action.EDIT_GENERIC_ALERT";
+
 }
