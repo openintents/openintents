@@ -156,4 +156,7 @@
 	<!--     Key codes     -->
 	<string name="key_return">64</string>
 	<string name="test">test</string>
+	
+	<!--  alert related  -->
+	<string name="add_alert">add alert</string>
 </resources>

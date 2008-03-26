@@ -18,6 +18,8 @@ package org.openintents.locations;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
+import org.openintents.provider.Alert;
+import org.openintents.provider.Intents;
 import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
 
@@ -55,14 +57,17 @@ public class LocationsView extends Activity {
 	private static final int MENU_VIEW = 2;
 	private static final int MENU_TAG = 3;
 	private static final int MENU_DELETE = 4;
+	private static final int MENU_ADD_ALERT = 5;
 	
-	private static final int TAG_ACTIVITY = 0;
+	private static final int TAG_ACTIVITY = 1;
 
 	private org.openintents.provider.Location mLocation;
 	private Cursor c;
 
 	/** tag for logging */
 	private static final String TAG = "locationsView";
+	private static final int REQUEST_PICK_INTENT = 1;
+
 	
 
 	private ListView mList;
@@ -118,10 +123,11 @@ public class LocationsView extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_CURRENT_LOCATION, R.string.add_current_location);
-		menu.add(0, MENU_VIEW, R.string.view_location);
-		menu.add(0, MENU_TAG, R.string.tag_location);
-		menu.add(0, MENU_DELETE, R.string.delete_location);
+		menu.add(0, MENU_ADD_CURRENT_LOCATION, R.string.add_current_location, R.drawable.locations_add001a);
+		menu.add(0, MENU_VIEW, R.string.view_location, R.drawable.locations_view001a);
+		menu.add(0, MENU_TAG, R.string.tag_location, R.drawable.locations_favorite_application001a);
+		menu.add(0, MENU_DELETE, R.string.delete_location, R.drawable.locations_delete001a);
+		menu.add(0, MENU_ADD_ALERT, R.string.add_alert, R.drawable.locations_add_alert001a);
 		return true;
 	}
 
@@ -150,8 +156,24 @@ public class LocationsView extends Activity {
 				deleteLocation(id);
 			}
 			break;
+		case MENU_ADD_ALERT:
+			id = mList.getSelectedItemId();
+			if (id >= 0){
+				Intent intent = new Intent(Intent.PICK_ACTION, Intents.CONTENT_URI);
+				startSubActivity(intent , REQUEST_PICK_INTENT);
+			}
 		}
 		return true;
+	}
+
+	private void addAlert(long id, String data, String actionName, String type, String uri) {
+		
+		ContentValues values = new ContentValues();
+		values.put(Alert.Location.INTENT, actionName);
+		values.put(Alert.Location.INTENT_URI, uri);
+		// TODO convert type to uri (?) or add INTENT_MIME_TYPE column
+		getContentResolver().insert(Alert.Location.CONTENT_URI, values);
+		
 	}
 
 	private void deleteLocation(long id) {
@@ -199,6 +221,9 @@ public class LocationsView extends Activity {
 		if (requestCode == TAG_ACTIVITY && resultCode == Activity.RESULT_OK) {
 			c.requery();
 			fillData();
+		} else if (requestCode == REQUEST_PICK_INTENT && resultCode == Activity.RESULT_OK){
+			Long id = mList.getSelectedItemId();
+			addAlert(id, data, extras.getString(Intents.EXTRA_TYPE),extras.getString(Intents.EXTRA_ACTION), extras.getString(Intents.EXTRA_URI));
 		}
 	}
 

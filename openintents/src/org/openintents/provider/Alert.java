@@ -90,7 +90,7 @@ public class Alert{
 	public static final class Location implements BaseColumns	{
 		
 		public static final Uri CONTENT_URI= Uri.parse
-								("org.openintents.alert/location");
+								("content://org.openintents.alert/location");
 
 		public static final String POSITION=Generic.CONDITION1;
 

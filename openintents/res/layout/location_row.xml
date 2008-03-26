@@ -24,7 +24,7 @@
 		android:layout_height="wrap_content">
 		<ImageView android:layout_width="12px"
 			android:layout_height="12px"
-			android:src="@drawable/openintents_icon" />
+			android:src="@drawable/locations_small001a" />
 		<TextView android:id="@+id/latitude"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
