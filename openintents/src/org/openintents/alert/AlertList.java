@@ -83,7 +83,8 @@ public class AlertList extends ListActivity{
     {
         super.onCreate(icicle);
         
-        
+		setContentView(R.layout.alert_list);
+   
 		init();
     }
 
@@ -114,10 +115,23 @@ public class AlertList extends ListActivity{
 		}
 		SimpleCursorAdapter sca=new SimpleCursorAdapter(
 			this,
-			R.layout.alert_list,
+			R.layout.alert_list_row,
 			mCursor,
 			Alert.Generic.PROJECTION,
-			new int[]{R.id.alert_id,R.id.alert_count,R.id.alert_cond1,R.id.alert_cond1,R.id.alert_cond1}
+			new int[]{
+				R.id.alert_id,
+				R.id.alert_count,
+				R.id.alert_cond1,
+				R.id.alert_cond2,
+				R.id.alert_type,
+				R.id.alert_rule,
+				R.id.alert_nature,
+				R.id.alert_active,
+				R.id.alert_onboot,
+				R.id.alert_intent,
+				R.id.alert_intentcat,
+				R.id.alert_intenturi
+				}
 		);
 
 		this.setListAdapter(sca);
@@ -177,7 +191,17 @@ public class AlertList extends ListActivity{
 		startActivity(intent);		
 	
 	}
-	private void menuDelete(){}
+	private void menuDelete(){
+		long i=0;
+		int res=0;
+		
+		i=getSelectedItemId();
+		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,_id);
+		res=Alert.delete(u,null,null);
+
+
+	
+	}
 
 
 }/*eoc*/

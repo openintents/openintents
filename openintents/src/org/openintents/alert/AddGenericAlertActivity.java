@@ -168,7 +168,11 @@ public class AddGenericAlertActivity extends Activity{
 		{
 			saveDataSet();
 		}
-		mCursor.close();
+		if (mCursor!=null)
+		{
+			mCursor.close();
+		}
+		
 	}
 
 
