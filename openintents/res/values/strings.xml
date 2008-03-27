@@ -104,6 +104,7 @@
     <!-- Media Player -->
     <string name="media_player">Media player</string>
     <string name="pick_media_file">Pick a media file</string>
+    <string name="get_content_media_file">Pick a media file (get content)</string>
     <string name="open_audio">Open audio</string>
     <string name="open_video">Open video</string>
     

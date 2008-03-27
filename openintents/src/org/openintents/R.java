@@ -230,7 +230,7 @@ public final class R {
         public static final int shopping=0x7f040005;
     }
     public static final class string {
-        public static final int IP_address=0x7f050053;
+        public static final int IP_address=0x7f050054;
         public static final int about=0x7f050004;
         public static final int about_openintents=0x7f050003;
         public static final int about_openintents_text=0x7f050005;
@@ -238,29 +238,29 @@ public final class R {
         public static final int add=0x7f050012;
         /**   alert related  
          */
-        public static final int add_alert=0x7f050064;
+        public static final int add_alert=0x7f050065;
         public static final int add_current_location=0x7f050009;
         public static final int add_tag=0x7f050013;
         /**  Main application  
          */
         public static final int app_name=0x7f050000;
-        public static final int ask_new_list=0x7f050044;
-        public static final int ask_update_interval=0x7f05005b;
+        public static final int ask_new_list=0x7f050045;
+        public static final int ask_update_interval=0x7f05005c;
         public static final int audio=0x7f050036;
-        public static final int auto_update=0x7f050058;
+        public static final int auto_update=0x7f050059;
         public static final int button_ok=0x7f050028;
         /**      Dialog box    
          */
-        public static final int cancel=0x7f050049;
-        public static final int clean_up_list=0x7f050042;
-        public static final int confirm_delete_list=0x7f050046;
-        public static final int connect=0x7f050050;
-        public static final int connect_to_sensorsimulator=0x7f05005d;
+        public static final int cancel=0x7f05004a;
+        public static final int clean_up_list=0x7f050043;
+        public static final int confirm_delete_list=0x7f050047;
+        public static final int connect=0x7f050051;
+        public static final int connect_to_sensorsimulator=0x7f05005e;
         /**   Content Browser 
          */
         public static final int content_browser=0x7f050019;
         public static final int default_tag=0x7f050001;
-        public static final int delete_list=0x7f050043;
+        public static final int delete_list=0x7f050044;
         public static final int delete_location=0x7f05000e;
         public static final int dialog_cancel=0x7f05002b;
         public static final int dialog_message_package_add=0x7f05002d;
@@ -268,10 +268,11 @@ public final class R {
         public static final int dialog_ok=0x7f05002a;
         public static final int dialog_title_package_add=0x7f05002c;
         public static final int dialog_title_package_del=0x7f05002e;
-        public static final int disabled=0x7f050059;
-        public static final int disconnect=0x7f050052;
-        public static final int enable_sensors=0x7f050057;
+        public static final int disabled=0x7f05005a;
+        public static final int disconnect=0x7f050053;
+        public static final int enable_sensors=0x7f050058;
         public static final int external_content=0x7f050035;
+        public static final int get_content_media_file=0x7f05003d;
         public static final int images=0x7f050038;
         /**  intent list  
          */
@@ -280,7 +281,7 @@ public final class R {
         public static final int internal_content=0x7f050034;
         /**      Key codes     
          */
-        public static final int key_return=0x7f050062;
+        public static final int key_return=0x7f050063;
         public static final int label_package_add=0x7f050027;
         public static final int label_packages=0x7f050026;
         public static final int list_is_empty=0x7f05000b;
@@ -308,41 +309,41 @@ public final class R {
         public static final int menu_package_del=0x7f050024;
         public static final int menu_package_list=0x7f050025;
         public static final int message=0x7f05001d;
-        public static final int new_item=0x7f050040;
-        public static final int new_list=0x7f050041;
+        public static final int new_item=0x7f050041;
+        public static final int new_list=0x7f050042;
         /**      Newsreader Service 
          */
-        public static final int news_service_settings=0x7f05004b;
-        public static final int no_items_marked=0x7f050045;
+        public static final int news_service_settings=0x7f05004c;
+        public static final int no_items_marked=0x7f050046;
         public static final int no_packages=0x7f050029;
-        public static final int no_shopping_provider=0x7f050047;
+        public static final int no_shopping_provider=0x7f050048;
         public static final int no_tags=0x7f050020;
         public static final int no_types=0x7f050018;
         public static final int nothing_found=0x7f050022;
         public static final int nothing_selected=0x7f050021;
         public static final int oi_acceptancetest=0x7f050007;
-        public static final int ok=0x7f05004a;
-        public static final int open_audio=0x7f05003d;
-        public static final int open_video=0x7f05003e;
+        public static final int ok=0x7f05004b;
+        public static final int open_audio=0x7f05003e;
+        public static final int open_video=0x7f05003f;
         public static final int openintents=0x7f050002;
-        public static final int pick_item=0x7f050048;
+        public static final int pick_item=0x7f050049;
         public static final int pick_media_file=0x7f05003c;
-        public static final int real_device_data=0x7f050055;
+        public static final int real_device_data=0x7f050056;
         public static final int select=0x7f050011;
-        public static final int sensor_simulator_data=0x7f050056;
+        public static final int sensor_simulator_data=0x7f050057;
         /**   Sensor Simulator 
          */
-        public static final int sensorsimulator=0x7f05004e;
-        public static final int sensorsimulator_settings=0x7f05005c;
-        public static final int sensorsimulator_settings_description=0x7f05005e;
-        public static final int sensorsimulator_testing_description=0x7f05005f;
-        public static final int set_update_interval=0x7f05005a;
-        public static final int settings=0x7f05004f;
+        public static final int sensorsimulator=0x7f05004f;
+        public static final int sensorsimulator_settings=0x7f05005d;
+        public static final int sensorsimulator_settings_description=0x7f05005f;
+        public static final int sensorsimulator_testing_description=0x7f050060;
+        public static final int set_update_interval=0x7f05005b;
+        public static final int settings=0x7f050050;
         /**  Shopping Provider 
          */
-        public static final int shopping_list=0x7f05003f;
-        public static final int socket=0x7f050054;
-        public static final int start_on_system_boot=0x7f05004c;
+        public static final int shopping_list=0x7f050040;
+        public static final int socket=0x7f050055;
+        public static final int start_on_system_boot=0x7f05004d;
         public static final int tag_all=0x7f050014;
         public static final int tag_location=0x7f05000d;
         public static final int tags_add_any_tag=0x7f050015;
@@ -351,12 +352,12 @@ public final class R {
         public static final int tags_remove_tag=0x7f05001c;
         public static final int tags_view_content=0x7f05001b;
         public static final int tags_view_tag=0x7f05001f;
-        public static final int test=0x7f050063;
-        public static final int testing=0x7f050051;
+        public static final int test=0x7f050064;
+        public static final int testing=0x7f050052;
         public static final int todo=0x7f05001e;
-        public static final int update_rate=0x7f050060;
-        public static final int update_rate_seconds=0x7f050061;
-        public static final int use_while_roaming=0x7f05004d;
+        public static final int update_rate=0x7f050061;
+        public static final int update_rate_seconds=0x7f050062;
+        public static final int use_while_roaming=0x7f05004e;
         public static final int video=0x7f050037;
         public static final int view_location=0x7f05000a;
     }

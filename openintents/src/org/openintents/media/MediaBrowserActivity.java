@@ -49,10 +49,28 @@ public class MediaBrowserActivity extends Activity {
 	
 	
 	/**
-	 * One of the different states this activity can run.
+	 * STATE_MAIN performs the main activity.
+	 * If an item is clicked, the VIEW activity is invoked
+	 * (which starts the MediaPlayer).
 	 */
 	private static final int STATE_MAIN = 0;
+	
+	/**
+	 * PICK picks an item from the directory of items.
+	 * If the item is clicked, it is returned to the calling
+	 * activity.
+	 */
 	private static final int STATE_PICK = 1;
+	
+	/**
+	 * GET_CONTENT gets an item from the directory of items.
+	 * The only different to PICK is the MIME type.
+	 * (PICK works on the directory, while GET_CONTENT works
+	 *  on the item MIME type).
+	 * If the item is clicked, it is returned to the calling
+	 * activity.
+	 */
+	private static final int STATE_GET_CONTENT = 2;
 	
 	/** Current state of Activity. */
 	private int mState;
@@ -124,6 +142,10 @@ public class MediaBrowserActivity extends Activity {
             
             setMediaTypeFromIntent(intent);
             
+        } else if (action.equals(Intent.GET_CONTENT_ACTION)) {
+        	mState = STATE_GET_CONTENT;
+        	
+        	setMediaTypeFromIntent(intent);
         } else {
             // Unknown action.
             Log.e(TAG, "AudioBrowser: Unknown action, exiting");
@@ -183,6 +205,9 @@ public class MediaBrowserActivity extends Activity {
         } else if (mState == STATE_PICK) {
             setTitle(getText(R.string.pick_media_file));
             setTitleColor(0xFFAAAAFF);
+        } else if (mState == STATE_GET_CONTENT) {
+            setTitle(getText(R.string.get_content_media_file));
+            setTitleColor(0xFFAAAAFF);
         }
 
 	}
@@ -228,7 +253,7 @@ public class MediaBrowserActivity extends Activity {
 					public void onItemClick(AdapterView parent, 
 							View v, int pos, long id) {
 						Cursor c = (Cursor) parent.obtainItem(pos);
-						if (mState == STATE_PICK) {
+						if ((mState == STATE_PICK) || (mState == STATE_GET_CONTENT)) {
 							pickItem(mInternalUri,
 									c);
 						} else {
@@ -258,7 +283,7 @@ public class MediaBrowserActivity extends Activity {
 	    	// No items in list
 	    	mExternalList.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
-					new String[] { "(no " + getMediaTypeString() + " available)" }));
+					new String[] { "(no " + getMediaTypeString() + " found)" }));
 	    	mExternalList.setOnItemClickListener(null);
 	    	
 	    } else {
@@ -298,9 +323,17 @@ public class MediaBrowserActivity extends Activity {
 	private void setMediaTypeFromIntent(final Intent intent) {
 		// Select media:
 		Uri data = intent.getData();
+		String type = intent.getType();
+		
+		// To avoid failure in the following comparisons:
+		if (data == null) data = Uri.parse("");
+		if (type == null) type = "";
+		
+		Log.i(TAG, "MediaBrowserActivity: data. " + data + ", type: " + type + ".");
 		if (data.compareTo(
 				android.provider.MediaStore.Audio.Media
-				.INTERNAL_CONTENT_URI) == 0) {
+				.INTERNAL_CONTENT_URI) == 0
+			|| type.startsWith("audio/") || type.equals("audio")) {
 			mMediaType = MEDIA_TYPE_AUDIO;
 			mMediaLocation = MEDIA_LOCATION_INTERNAL;
 		} else if (data.compareTo(
@@ -309,9 +342,10 @@ public class MediaBrowserActivity extends Activity {
 			// We pick video data:
 			mMediaType = MEDIA_TYPE_AUDIO;
 			mMediaLocation = MEDIA_LOCATION_EXTERNAL;
-		} else if (data.compareTo(
+		} else if ((data.compareTo(
 				android.provider.MediaStore.Video.Media
-				.INTERNAL_CONTENT_URI) == 0) {
+				.INTERNAL_CONTENT_URI) == 0)
+			|| type.startsWith("video/") || type.equals("video")) {
 			mMediaType = MEDIA_TYPE_VIDEO;
 			mMediaLocation = MEDIA_LOCATION_INTERNAL;
 		} else if (data.compareTo(
@@ -320,9 +354,10 @@ public class MediaBrowserActivity extends Activity {
 			// We pick video data:
 			mMediaType = MEDIA_TYPE_VIDEO;
 			mMediaLocation = MEDIA_LOCATION_EXTERNAL;
-		} else if (data.compareTo(
+		} else if ((data.compareTo(
 				android.provider.MediaStore.Images.Media
-				.INTERNAL_CONTENT_URI) == 0) {
+				.INTERNAL_CONTENT_URI) == 0)
+			|| type.startsWith("image/") || type.equals("image")) {
 			mMediaType = MEDIA_TYPE_IMAGES;
 			mMediaLocation = MEDIA_LOCATION_INTERNAL;
 		} else if (data.compareTo(
