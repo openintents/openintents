@@ -196,7 +196,7 @@ public class AlertList extends ListActivity{
 		int res=0;
 		
 		i=getSelectedItemId();
-		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,_id);
+		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI, i); // ??? _id);
 		res=Alert.delete(u,null,null);
 
 
