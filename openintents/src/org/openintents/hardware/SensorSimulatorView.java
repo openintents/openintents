@@ -433,8 +433,7 @@ public class SensorSimulatorView extends Activity {
 				}
 				*/
 				
-				// TODO: Upgrade deprecated function.
-				if (key.isDown() && keyCode == Integer
+				if (key.getAction() == key.ACTION_DOWN && keyCode == Integer
 							.parseInt(getString(R.string.key_return))) {
 					// User pressed "Enter" 
 					int value;

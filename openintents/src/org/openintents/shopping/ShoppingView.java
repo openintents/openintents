@@ -274,7 +274,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 
 				// Shortcut: Instead of pressing the button,
 				// one can also press the "Enter" key.
-				if (key.getAction() == key.ACTION_DOWN &&
+				if (key.getAction() == KeyEvent.ACTION_DOWN &&
 						keyCode == Integer.parseInt(getString(R.string.key_return)))
 				{
 					insertNewItem();
@@ -532,7 +532,7 @@ public class ShoppingView extends Activity //implements AdapterView.OnItemClickL
 					final KeyEvent key) {
 				//Log.i(TAG, "KeyCode: " + keyCode);
 
-				if (key.getAction() == key.ACTION_DOWN
+				if (key.getAction() == KeyEvent.ACTION_DOWN
 						&& keyCode == Integer
 							.parseInt(getString(R.string.key_return))) {
 					// User pressed "Enter"
