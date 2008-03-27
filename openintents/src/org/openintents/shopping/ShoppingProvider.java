@@ -513,28 +513,28 @@ public class ShoppingProvider extends ContentProvider {
 	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
-			return "vnd.openintents.cursor.dir/shopping.item";
+			return "vnd.android.cursor.dir/vnd.openintents.shopping.item";
 
 		case ITEM_ID:
-			return "vnd.openintents.cursor.item/shopping.item";
+			return "vnd.android.cursor.item/vnd.openintents.shopping.item";
 
 		case LISTS:
-			return "vnd.openintents.cursor.dir/shopping.list";
+			return "vnd.android.cursor.dir/vnd.openintents.shopping.list";
 
 		case LIST_ID:
-			return "vnd.openintents.cursor.item/shopping.list";
+			return "vnd.android.cursor.item/vnd.openintents.shopping.list";
 
 		case CONTAINS:
-			return "vnd.openintents.cursor.dir/shopping.contains";
+			return "vnd.android.cursor.dir/vnd.openintents.shopping.contains";
 
 		case CONTAINS_ID:
-			return "vnd.openintents.cursor.item/shopping.contains";
+			return "vnd.android.cursor.item/vnd.openintents.shopping.contains";
 
 		case CONTAINS_FULL:
-			return "vnd.openintents.cursor.dir/shopping.containsfull";
+			return "vnd.android.cursor.dir/vnd.openintents.shopping.containsfull";
 
 		case CONTAINS_FULL_ID:
-			return "vnd.openintents.cursor.item/shopping.containsfull";
+			return "vnd.android.cursor.item/vnd.openintents.shopping.containsfull";
 
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);

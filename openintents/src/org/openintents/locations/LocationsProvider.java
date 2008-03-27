@@ -139,16 +139,16 @@ public class LocationsProvider extends ContentProvider {
 	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case LOCATIONS:
-			return "vnd.openintents.cursor.dir/location";
+			return "vnd.android.cursor.dir/vnd.openintents.location";
 
 		case LOCATION_ID:
-			return "vnd.openintents.cursor.item/location";
+			return "vnd.android.cursor.item/vnd.openintents.location";
 
 		case LOCATIONSEXTRA:			
-			return "vnd.openintents.cursor.dir/locationextra";
+			return "vnd.android.cursor.dir/vnd.openintents.locationextra";
 
 		case LOCATIONSEXTRA_ID:			
-			return "vnd.openintents.cursor.item/locationextra";
+			return "vnd.android.cursor.item/vnd.openintents.locationextra";
 
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);

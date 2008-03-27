@@ -171,12 +171,12 @@ public class ContentIndexProvider extends
 	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
-			return "vnd.openintents.cursor.dir/contentdirectory";
+			return "vnd.android.cursor.dir/vnd.openintents.contentdirectory";
 
 		case DIRECTORY:
-			return "vnd.openintents.cursor.item/contentdirectory";
+			return "vnd.android.cursor.item/vnd.openintents.contentdirectory";
 		case INDEX_ENTRIES:
-			return "vnd.openintents.cursor.item/contentindexentry";
+			return "vnd.android.cursor.item/vnd.openintents.contentindexentry";
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}

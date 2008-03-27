@@ -298,16 +298,16 @@ public class TagsProvider extends ContentProvider {
 	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case TAGS:
-			return "vnd.openintents.cursor.dir/tag";
+			return "vnd.android.cursor.dir/vnd.openintents.tag";
 
 		case TAG_ID:
-			return "vnd.openintents.cursor.item/tag";
+			return "vnd.android.cursor.item/vnd.openintents.tag";
 
 		case CONTENTS:
-			return "vnd.openintents.cursor.dir/content";
+			return "vnd.android.cursor.dir/vnd.openintents.content";
 
 		case CONTENT_ID:
-			return "vnd.openintents.cursor.item/content";
+			return "vnd.android.cursor.item/vnd.openintents.content";
 
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);

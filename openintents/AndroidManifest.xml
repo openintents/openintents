@@ -109,7 +109,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.item/location"/>
+				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.location"/>
 			</intent-filter>
 		</activity>
 
@@ -128,14 +128,14 @@
 				<action android:name="android.intent.action.VIEW" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.item/tag" />
+				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
 
@@ -149,7 +149,7 @@
 					android:name="android.intent.category.ALTERNATIVE" />
 				<category
 					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
 
 			<intent-filter android:icon="@drawable/tag_add001a">			    
@@ -160,7 +160,7 @@
 					android:name="android.intent.category.ALTERNATIVE" />
 				<category
 					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
 
@@ -174,7 +174,7 @@
 					android:name="android.intent.category.ALTERNATIVE" />
 				<category
 					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
 
@@ -183,7 +183,7 @@
 				<action android:name="android.intent.action.PICK" />
 				<category
 					android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/contentdirectory" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.contentdirectory" />
 			</intent-filter>
 		</activity>
 		
@@ -191,7 +191,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.INSERT" />
                 <category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/contentdirectory" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.contentdirectory" />
             </intent-filter>
         </activity>
         
@@ -260,28 +260,28 @@
 				<action android:name="android.intent.action.PICK" />
 				<action android:name="android.intent.action.INSERT" />
                 <category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/shopping.list" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.list" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<action android:name="android.intent.action.EDIT" />
                 <action android:name="android.intent.action.GET_CONTENT" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.item/shopping.list" />
+				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<action android:name="android.intent.action.PICK" />
 				<action android:name="android.intent.action.INSERT" />
                 <category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/shopping.item" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.item" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<action android:name="android.intent.action.EDIT" />
                 <action android:name="android.intent.action.GET_CONTENT" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.item/shopping.item" />
+				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.item" />
 			</intent-filter>
 		</activity>
 
@@ -297,7 +297,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					             					
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag"/>               					             					
 			</intent-filter>
 		</activity>		
 		<activity android:name=".tags.MagnoliaTagging"
@@ -327,7 +327,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/tag"/>               					           					
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag"/>               					           					
 			</intent-filter>
 
 		</activity>	
@@ -344,7 +344,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.openintents.cursor.dir/hardware.preference"/>
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.hardware.preference"/>
 			</intent-filter>
 		</activity>
 

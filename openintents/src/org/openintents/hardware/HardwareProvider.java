@@ -243,10 +243,10 @@ public class HardwareProvider extends ContentProvider {
 	public String getType(Uri url) {
 		switch (URL_MATCHER.match(url)) {
 		case PREFERENCES:
-			return "vnd.openintents.cursor.dir/hardware.preference";
+			return "vnd.android.cursor.dir/vnd.openintents.hardware.preference";
 
 		case PREFERENCE_ID:
-			return "vnd.openintents.cursor.item/hardware.preference";
+			return "vnd.android.cursor.item/vnd.openintents.hardware.preference";
 
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
