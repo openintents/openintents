@@ -44,6 +44,8 @@
 	<string name="locations_manage_extras">Manage extras</string>
 	<string name="locations_delete_extra">Delete</string>
 	<string name="locations_add_extra">Add</string>
+	<string name="locations_use_center">Use center as new coord.</string>
+	<string name="locations_restore_values">Restore values</string>
 	
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>

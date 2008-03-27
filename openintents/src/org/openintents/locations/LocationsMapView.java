@@ -8,11 +8,14 @@ import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
 
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.View;
+import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SimpleCursorAdapter;
@@ -24,12 +27,16 @@ import com.google.android.maps.Point;
 
 public class LocationsMapView extends MapActivity {
 
+	private static final int MENU_USE_CENTER = 1;
+	private static final int MENU_RESTORE_VALUES = 2;
 	private Point point;
 	private MapView view;
 	private long pointId;
 	private Tag mTag;
 	private Location mLocations;
 	private Cursor mIdTagCursor;
+	private StringBuffer mOriginalTags;
+	private MultiWordAutoCompleteTextView mEditTags;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -40,6 +47,7 @@ public class LocationsMapView extends MapActivity {
 		mTag = new Tag(LocationsMapView.this);
 		mLocations = new Location(this.getContentResolver());
 
+		// get point and pointId
 		Bundle bundle = getIntent().getExtras();
 		if (bundle != null) {
 			point = new Point(bundle.getInt("latitude"), bundle
@@ -59,14 +67,15 @@ public class LocationsMapView extends MapActivity {
 			}
 		}
 
+		// prepare controls
 		view = (MapView) findViewById(R.id.mapview);
 		MapController controller = view.getController();
 		controller.centerMapTo(new Point(point.getLatitudeE6(), point
 				.getLongitudeE6()), true);
 		controller.zoomTo(9);
 
-		MultiWordAutoCompleteTextView tv = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);
-		
+		mEditTags = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);
+
 		mIdTagCursor = mTag.findTags(ContentUris.withAppendedId(
 				Locations.CONTENT_URI, pointId).toString());
 		startManagingCursor(mIdTagCursor);
@@ -80,7 +89,8 @@ public class LocationsMapView extends MapActivity {
 		if (idTags.length() > 0) {
 			idTags.deleteCharAt(idTags.length() - 1);
 		}
-		tv.setText(idTags);
+		mOriginalTags = idTags;
+		mEditTags.setText(idTags);
 
 		Cursor allTagsCursor = mTag
 				.findTagsForContentType(Locations.CONTENT_URI.toString());
@@ -88,65 +98,12 @@ public class LocationsMapView extends MapActivity {
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				R.layout.tag_row_simple, allTagsCursor,
 				new String[] { Tags.URI_1 }, new int[] { R.id.tag_tag });
-		adapter.setStringConversionColumn(allTagsCursor.getColumnIndex(Tags.URI_1));
-		tv.setAdapter(adapter);
+		adapter.setStringConversionColumn(allTagsCursor
+				.getColumnIndex(Tags.URI_1));
+		mEditTags.setAdapter(adapter);
 
 		view.createOverlayController().add(new LocationsMapOverlay(this), true);
 
-		Button button = (Button) findViewById(R.id.button);
-		button.setOnClickListener(new OnClickListener() {
-
-			public void onClick(View view) {
-				MultiWordAutoCompleteTextView autoComplete = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);
-
-				if (autoComplete.getText().length() > 0) {
-					Point p = LocationsMapView.this.view.getMapCenter();
-					Location location = new Location(LocationsMapView.this
-							.getContentResolver());
-					android.location.Location loc = new android.location.Location();
-					loc.setLatitude(p.getLatitudeE6() / 1E6);
-					loc.setLongitude(p.getLongitudeE6() / 1E6);
-
-					Uri contentUri;
-					if (p.getLatitudeE6() == point.getLatitudeE6()
-							&& p.getLongitudeE6() == point.getLongitudeE6()
-							&& pointId != 0L) {
-						contentUri = ContentUris.withAppendedId(
-								Locations.CONTENT_URI, pointId);
-					} else {
-						contentUri = location.addLocation(loc);
-					}
-					String content = contentUri.toString();
-
-					String[] tags = autoComplete.getText().toString().split(
-							autoComplete.getSeparator());
-
-					for (int i = 0; i < tags.length; i++) {
-						String s = tags[i].trim();
-						mTag.insertTag(s, content);
-					}
-					
-					// delete removed tags
-					mIdTagCursor.requery();
-					while (mIdTagCursor.next()){
-						String oldTag = mIdTagCursor.getString(mIdTagCursor.getColumnIndex(Tags.URI_1));
-						boolean found = false;
-						for (String newTag:tags){
-							if (oldTag.equals(newTag)){
-								found = true;
-								break;
-							}
-						}
-						if (! found){
-							mIdTagCursor.deleteRow();
-						}
-					}
-				}
-
-				finish();
-			}
-
-		});
 	}
 
 	public Point getPoint() {
@@ -169,20 +126,102 @@ public class LocationsMapView extends MapActivity {
 			level = view.getZoomLevel();
 			view.getController().zoomTo(level - 1);
 			return true;
-
 		}
 		return superResult;
 	}
 
 	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
+	protected void onPause() {
+		super.onPause();
+		updateTags(true);
+	}
+
+	private void updateTags(boolean useCenterIfRequired) {		
+
+		if (mEditTags.getText().length() > 0) {
+			Point p = LocationsMapView.this.view.getMapCenter();
+
+			android.location.Location loc = new android.location.Location();
+			loc.setLatitude(p.getLatitudeE6() / 1E6);
+			loc.setLongitude(p.getLongitudeE6() / 1E6);
+
+			Uri contentUri;
+			if (pointId != 0L) {
+				contentUri = ContentUris.withAppendedId(Locations.CONTENT_URI,
+						pointId);
+			} else {
+				if (useCenterIfRequired) {
+					contentUri = mLocations.addLocation(loc);
+				} else {
+					contentUri = null;
+				}
+			}
+			if (contentUri != null) {
+				String content = contentUri.toString();
+
+				String[] tags = mEditTags.getText().toString().split(
+						mEditTags.getSeparator());
+
+				for (int i = 0; i < tags.length; i++) {
+					String s = tags[i].trim();
+					mTag.insertTag(s, content);
+				}
+
+				// delete removed tags
+				mIdTagCursor.requery();
+				while (mIdTagCursor.next()) {
+					String oldTag = mIdTagCursor.getString(mIdTagCursor
+							.getColumnIndex(Tags.URI_1));
+					boolean found = false;
+					for (String newTag : tags) {
+						if (oldTag.equals(newTag)) {
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						mIdTagCursor.deleteRow();
+					}
+				}
+			}
+		}
 	}
 
 	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		boolean superResult = super.onCreateOptionsMenu(menu);
+		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center);
+		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values);
+		return superResult;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(Item item) {
+		switch (item.getId()) {
+		case MENU_USE_CENTER:
+			Point p = view.getMapCenter();
+			android.location.Location loc = new android.location.Location();
+			loc.setLatitude(p.getLatitudeE6() / 1E6);
+			loc.setLongitude(p.getLongitudeE6() / 1E6);
+
+			if (pointId != 0l) {
+				ContentValues values = new ContentValues();
+				values.put(Locations.LATITUDE, loc.getLatitude());
+				values.put(Locations.LONGITUDE, loc.getLongitude());
+				getContentResolver().update(ContentUris.withAppendedId(Locations.CONTENT_URI, pointId), values , null, null);
+			} else {
+				Uri uri = mLocations.addLocation(loc);
+				pointId = Integer.parseInt(uri.getLastPathSegment());
+			}
+			break;
+		case MENU_RESTORE_VALUES:
+			mEditTags.setText(mOriginalTags);
+			view.getController().centerMapTo(new Point(point.getLatitudeE6(), point
+					.getLongitudeE6()), true);
+			break;
+			
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
