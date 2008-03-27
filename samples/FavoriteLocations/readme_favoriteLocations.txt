@@ -16,7 +16,7 @@
 
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
 - FavoriteLocations is obsolete and will be no longer
   supported. Its functionality has been included in 

@@ -28,9 +28,10 @@ It transmits the simulated sensor data to an Android emulator.
   
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
-- no changes
+- Performance patch included (by Ogurash).
+- Special characters implemented as unicode.
 
 ---------------------------------------------------------
 release: 0.1.4

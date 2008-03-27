@@ -19,7 +19,7 @@ It demonstrates the usage of the Shopping List application.
 
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
 - no changes
 

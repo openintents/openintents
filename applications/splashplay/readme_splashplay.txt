@@ -16,7 +16,7 @@
 
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
 features:
 - Guitar music tuition software.

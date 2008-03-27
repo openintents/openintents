@@ -21,7 +21,7 @@ The bar magnet displayed will always point along the magnetic field.
 
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
 - no changes
 

@@ -16,9 +16,11 @@
 
 ---------------------------------------------------------
 release: 0.1.5
-date: 2008-03-26
+date: 2008-03-28
 
-- 
+- Newsreader:
+  - NewsreaderServiceSettings moved to core.
+  - Atom support.
 
 ---------------------------------------------------------
 release: 0.1.4
