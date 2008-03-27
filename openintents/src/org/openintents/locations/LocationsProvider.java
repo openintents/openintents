@@ -35,13 +35,12 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Provides access to a database of locations. Each location has a latitude and longitude,
- *  a creation date and a modified data.
- *  
- *  supports urls of the format
- *  content://org.openintents.locations/locations
- *  content://org.openintents.locations/locations/23
- *  
+ * Provides access to a database of locations. Each location has a latitude and
+ * longitude, a creation date and a modified data.
+ * 
+ * supports urls of the format content://org.openintents.locations/locations
+ * content://org.openintents.locations/locations/23
+ * 
  */
 public class LocationsProvider extends ContentProvider {
 
@@ -49,14 +48,18 @@ public class LocationsProvider extends ContentProvider {
 
 	private static final String TAG = "LocationsProvider";
 	private static final String DATABASE_NAME = "locations.db";
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 
 	private static HashMap<String, String> LOCATION_PROJECTION_MAP;
 
 	private static final int LOCATIONS = 1;
 	private static final int LOCATION_ID = 2;
-
+	private static final int LOCATIONSEXTRA = 3;
+	private static final int LOCATIONSEXTRA_ID = 4;
+	
 	private static final UriMatcher URL_MATCHER;
+
+	
 
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 		@Override
@@ -64,6 +67,8 @@ public class LocationsProvider extends ContentProvider {
 			db.execSQL("CREATE TABLE locations (_id INTEGER PRIMARY KEY,"
 					+ "latitude DOUBLE," + "longitude DOUBLE,"
 					+ "created INTEGER," + "modified INTEGER" + ");");
+			db.execSQL("CREATE TABLE locations_extra (_id INTEGER PRIMARY KEY,"
+					+ "location_id INTEGER," + "extra STRING," + "type STRING"+ ");");
 		}
 
 		@Override
@@ -71,6 +76,7 @@ public class LocationsProvider extends ContentProvider {
 			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 					+ newVersion + ", which will destroy all old data");
 			db.execSQL("DROP TABLE IF EXISTS locations");
+			db.execSQL("DROP TABLE IF EXISTS locations_extra");
 			onCreate(db);
 		}
 	}
@@ -99,6 +105,18 @@ public class LocationsProvider extends ContentProvider {
 			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 
+		case LOCATIONSEXTRA:
+			qb.setTables("locations_extra");
+			String segment = url.getPathSegments().get(1);
+			qb.appendWhere("location_id=" + segment);
+			sort = "extra";
+			break;			
+		case LOCATIONSEXTRA_ID:
+			qb.setTables("locations_extra");
+			qb.appendWhere("_id=" + url.getLastPathSegment());
+			sort = "extra";
+			break;
+
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -111,7 +129,8 @@ public class LocationsProvider extends ContentProvider {
 			orderBy = sort;
 		}
 
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs,null,null,orderBy);
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,
+				null, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
@@ -124,6 +143,12 @@ public class LocationsProvider extends ContentProvider {
 
 		case LOCATION_ID:
 			return "vnd.openintents.cursor.item/location";
+
+		case LOCATIONSEXTRA:			
+			return "vnd.openintents.cursor.dir/locationextra";
+
+		case LOCATIONSEXTRA_ID:			
+			return "vnd.openintents.cursor.item/locationextra";
 
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
@@ -140,31 +165,48 @@ public class LocationsProvider extends ContentProvider {
 			values = new ContentValues();
 		}
 
-		// only allow inserts for locations (as list)
-		if (URL_MATCHER.match(url) != LOCATIONS) {
+		
+		switch (URL_MATCHER.match(url)){
+		case LOCATIONS:
+			Long now = Long.valueOf(System.currentTimeMillis());
+			Resources r = Resources.getSystem();
+
+			// Make sure that the fields are all set
+			if (!values.containsKey(Location.Locations.CREATED_DATE)) {
+				values.put(Location.Locations.CREATED_DATE, now);
+			}
+
+			if (!values.containsKey(Location.Locations.MODIFIED_DATE)) {
+				values.put(Location.Locations.MODIFIED_DATE, now);
+			}
+
+			rowID = mDB.insert("locations", "location", values);
+			if (rowID > 0) {
+				Uri uri = ContentUris.withAppendedId(
+						Location.Locations.CONTENT_URI, rowID);
+				getContext().getContentResolver().notifyChange(uri, null);
+				return uri;
+			}
+
+			throw new SQLException("Failed to insert row into " + url);
+			
+		case LOCATIONSEXTRA:	
+			String locationId = url.getPathSegments().get(1);
+			long id = Long.parseLong(locationId);
+			values.put("location_id", id);
+			rowID = mDB.insert("locations_extra", "locationextra", values);
+			if (rowID > 0) {
+				Uri uri = ContentUris.withAppendedId(
+						Location.Extras.CONTENT_URI, rowID);
+				getContext().getContentResolver().notifyChange(uri, null);
+				return uri;
+			}
+			throw new SQLException("Failed to insert row into " + url);
+		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
 
-		Long now = Long.valueOf(System.currentTimeMillis());
-		Resources r = Resources.getSystem();
 
-		// Make sure that the fields are all set
-		if (!values.containsKey(Location.Locations.CREATED_DATE)) {
-			values.put(Location.Locations.CREATED_DATE, now);
-		}
-
-		if (!values.containsKey(Location.Locations.MODIFIED_DATE)) {
-			values.put(Location.Locations.MODIFIED_DATE, now);
-		}
-
-		rowID = mDB.insert("locations", "location", values);
-		if (rowID > 0) {
-			Uri uri = ContentUris.withAppendedId(Location.Locations.CONTENT_URI,rowID);
-			getContext().getContentResolver().notifyChange(uri, null);
-			return uri;
-		}
-
-		throw new SQLException("Failed to insert row into " + url);
 	}
 
 	@Override
@@ -189,7 +231,17 @@ public class LocationsProvider extends ContentProvider {
 			count = mDB.delete("locations", "_id=" + segment + whereString,
 					whereArgs);
 			break;
-
+			
+		case LOCATIONSEXTRA:
+			segment = url.getPathSegments().get(2);
+			long locationId = Long.parseLong(segment);
+			count = mDB.delete("locations_extra", "location_id = " + locationId, null);
+			break;			
+		case LOCATIONSEXTRA_ID:
+			segment = url.getLastPathSegment();
+			long extraId = Long.parseLong(segment);
+			count = mDB.delete("locations_extra", "_id = " + extraId, null);
+			break;
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
@@ -209,18 +261,16 @@ public class LocationsProvider extends ContentProvider {
 
 		case LOCATION_ID:
 			String segment = url.getPathSegments().get(1);
-			
+
 			String whereString;
-				if (!TextUtils.isEmpty(where)) {
+			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
 				whereString = "";
 			}
-			
-			count = mDB.update("locations", values,
-					"_id="
-							+ segment
-							+ whereString, whereArgs);
+
+			count = mDB.update("locations", values, "_id=" + segment
+					+ whereString, whereArgs);
 			break;
 
 		default:
@@ -236,6 +286,12 @@ public class LocationsProvider extends ContentProvider {
 		URL_MATCHER.addURI("org.openintents.locations", "locations", LOCATIONS);
 		URL_MATCHER.addURI("org.openintents.locations", "locations/#",
 				LOCATION_ID);
+		URL_MATCHER.addURI("org.openintents.locations", "locations/#/*",
+				LOCATIONSEXTRA);
+		URL_MATCHER.addURI("org.openintents.locations", "locations/#/*/#",
+				LOCATIONSEXTRA_ID);
+		URL_MATCHER.addURI("org.openintents.locations", "extras/#",
+				LOCATIONSEXTRA_ID);
 
 		LOCATION_PROJECTION_MAP = new HashMap<String, String>();
 		LOCATION_PROJECTION_MAP.put(Location.Locations._ID, "_id");

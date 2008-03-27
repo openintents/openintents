@@ -101,6 +101,8 @@
 			</intent-filter>
 		</activity>
 
+		<activity android:name=".locations.ExtrasView"/>
+
 		<!-- Location Map activity -->
 		<activity android:name=".locations.LocationsMapView"
 			android:label="@string/locations_map">

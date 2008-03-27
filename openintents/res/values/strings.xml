@@ -41,6 +41,9 @@
 	<string name="locations_map">Map</string>
 	<string name="tag_location">Tag location</string>
 	<string name="delete_location">Delete loc.</string>
+	<string name="locations_manage_extras">Manage extras</string>
+	<string name="locations_delete_extra">Delete</string>
+	<string name="locations_add_extra">Add</string>
 	
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>

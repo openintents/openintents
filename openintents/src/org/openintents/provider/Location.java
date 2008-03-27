@@ -23,6 +23,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
+import android.net.Uri.Builder;
 import android.provider.BaseColumns;
 
 /**
@@ -76,6 +77,18 @@ public class Location {
 		public static final String MODIFIED_DATE = "modified";
 	}
 
+	public static final class Extras implements BaseColumns {
+
+		public static final String LOCATION_ID = "locationId";
+		public static final String EXTRA = "extra";
+		public static final String TYPE = "type";
+		
+		public static final String URI_PATH_EXTRAS = "extras";
+		public static final Uri CONTENT_URI = Uri.parse("content://org.openintents.locations/extras");
+		
+
+	}
+
 	private ContentResolver mResolver;
 
 	public Location(ContentResolver resolver) {
@@ -110,4 +123,19 @@ public class Location {
 		}
 	}
 
+	public Cursor queryExtras(long locationId) {
+		Builder uri = Locations.CONTENT_URI.buildUpon().appendPath(String.valueOf(locationId)).appendPath(Extras.URI_PATH_EXTRAS);
+		return mResolver.query(uri.build(), new String[]{Extras._ID, Extras.EXTRA, Extras.TYPE}, null, null, Extras.EXTRA);
+	}
+
+	public int deleteExtra(long extraId) {
+		return mResolver.delete(ContentUris.withAppendedId(Extras.CONTENT_URI, extraId), null, null);
+		
+	}
+
+	public Uri addExtra(long locationId) {
+		Builder uri = Locations.CONTENT_URI.buildUpon().appendPath(String.valueOf(locationId)).appendPath(Extras.URI_PATH_EXTRAS);
+		return mResolver.insert(uri.build(), null);
+		
+	}
 }
