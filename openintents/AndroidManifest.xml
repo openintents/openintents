@@ -105,6 +105,7 @@
 
 		<!-- Location Map activity -->
 		<activity android:name=".locations.LocationsMapView"
+		    android:icon="@drawable/locations_application001a"
 			android:label="@string/locations_map">
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
