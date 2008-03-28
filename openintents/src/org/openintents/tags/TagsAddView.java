@@ -17,6 +17,7 @@
 package org.openintents.tags;
 
 import org.openintents.R;
+import org.openintents.lib.MultiWordAutoCompleteTextView;
 import org.openintents.provider.Tag;
 import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
@@ -31,10 +32,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewInflate;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -76,7 +79,7 @@ public class TagsAddView extends Activity {
 	private static int column_Contents_URI = 1;
 
 	private ListView mTagsListView;
-	private AutoCompleteTextView mTagFilter;
+	private MultiWordAutoCompleteTextView mTagFilter;
 	private String mFilter = null;
 	private ContentListRow mContentRow;
 	private String mUri;
@@ -96,7 +99,23 @@ public class TagsAddView extends Activity {
 		setContentView(R.layout.tags_add);
 
 		mTag = new Tag(this);
-		mTagFilter = (AutoCompleteTextView) findViewById(R.id.tag_filter);
+		mTagFilter = (MultiWordAutoCompleteTextView) findViewById(R.id.tag_filter);
+		
+		mTagFilter.setOnKeyListener(new OnKeyListener() {
+
+			public boolean onKey(View v, int keyCode, KeyEvent key) {				
+				// Shortcut: Instead of pressing the button,
+				// one can also press the "Enter" key.
+				if (key.getAction() == KeyEvent.ACTION_DOWN &&
+						keyCode == Integer.parseInt(getString(R.string.key_return)))
+				{
+					save();
+					return true;
+				};
+				return false;
+			}
+		});
+
 
 		mContent = (RelativeLayout) findViewById(R.id.content);
 		mContentRow = new ContentListRow(this);
@@ -128,12 +147,7 @@ public class TagsAddView extends Activity {
 		button.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View arg0) {
-				if (mAnyUri != null){
-					mUri = mAnyUri.getText().toString();
-				}
-				mTag.insertTag(mTagFilter.getText().toString(), mUri);
-				setResult(Activity.RESULT_OK);
-				finish();
+				save();
 			}
 
 		});
@@ -183,6 +197,25 @@ public class TagsAddView extends Activity {
 		TagsCursorAdapter adapter = new TagsCursorAdapter(c, this);
 		mTagFilter.setAdapter(adapter);
 
+	}
+	
+	@Override
+	protected void onPause() {	
+		super.onPause();
+		save();
+	}
+
+	private void save() {
+		if (mAnyUri != null){
+			mUri = mAnyUri.getText().toString();
+		}
+		String tagString = mTagFilter.getText().toString();
+		String[] tags  =tagString.split(mTagFilter.getSeparator());
+		for (String tag:tags){
+			mTag.insertTag(tag.trim(), mUri);
+		}
+		setResult(Activity.RESULT_OK);
+		finish();
 	}
 
 	// XXX compiler bug in javac 1.5.0_07-164, we need to implement Filterable

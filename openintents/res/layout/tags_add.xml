@@ -41,13 +41,14 @@
 			android:layout_height="24px" 
 			android:layout_gravity="center_vertical"
 			android:src="@drawable/tag001a"/>
-		<AutoCompleteTextView android:id="@+id/tag_filter"
+		<view android:id="@+id/tag_filter"
+			class="org.openintents.lib.MultiWordAutoCompleteTextView"
 			android:layout_width="fill_parent"
-			android:layout_height="wrap_content" 
+			android:layout_height="wrap_content" android:layout_weight="1"			
 			android:layout_alignParentTop="true"
 			android:layout_alignParentLeft="true" 
-			android:layout_weight="1" >
-		</AutoCompleteTextView>
+			android:completionThreshold="1"
+			android:selectAllOnFocus="true" />
 		<!-- android:textAppearance="?android:attr/textAppearanceLarge"
 			 -->
 		<Button android:id="@+id/tags_ok_button"
