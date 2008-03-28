@@ -51,6 +51,7 @@ public class TagsProvider extends ContentProvider {
 
 	private static HashMap<String, String> TAG_PROJECTION_MAP;
 	private static HashMap<String, String> CONTENT_PROJECTION_MAP;
+	private static HashMap<String, String> CONTENT_PROJECTION_MAP_2;
 
 	private static final int TAGS = 1;
 	private static final int TAG_ID = 2;
@@ -99,9 +100,11 @@ public class TagsProvider extends ContentProvider {
 		case TAGS:
 			// queries for tags also return the uris, not only the ids.
 			qb.setTables("tag tag, content content1, content content2");
-			qb.setProjectionMap(TAG_PROJECTION_MAP);
 			qb.appendWhere("tag.tag_id = content1._id AND "
 					+ "tag.content_id = content2._id");
+			qb.setProjectionMap(TAG_PROJECTION_MAP);
+			qb.setDistinct(url.getQueryParameter(Tags.DISTINCT) != null);
+
 			defaultOrderBy = Tags.DEFAULT_SORT_ORDER;
 			break;
 
@@ -112,8 +115,10 @@ public class TagsProvider extends ContentProvider {
 			break;
 
 		case CONTENTS:
-			qb.setTables("content");
+
 			qb.setProjectionMap(CONTENT_PROJECTION_MAP);
+			qb.setTables("content");
+			qb.setDistinct(url.getQueryParameter(Tags.DISTINCT) != null);
 			defaultOrderBy = Contents.DEFAULT_SORT_ORDER;
 			break;
 
@@ -129,8 +134,8 @@ public class TagsProvider extends ContentProvider {
 		} else {
 			orderBy = sort;
 		}
-
-		Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,null, orderBy);
+		Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,
+				null, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
@@ -188,7 +193,7 @@ public class TagsProvider extends ContentProvider {
 			// finally insert the tag.
 			rowID = mDB.insert("tag", "tag", values);
 			if (rowID > 0) {
-				Uri uri = ContentUris.withAppendedId(Tags.CONTENT_URI,rowID);
+				Uri uri = ContentUris.withAppendedId(Tags.CONTENT_URI, rowID);
 				getContext().getContentResolver().notifyChange(uri, null);
 				return uri;
 			}
@@ -253,12 +258,12 @@ public class TagsProvider extends ContentProvider {
 	@Override
 	public int delete(Uri url, String where, String[] whereArgs) {
 		int count;
-		long rowId = 0;		
+		long rowId = 0;
 		switch (URL_MATCHER.match(url)) {
-		case TAGS:						
-			where = "tag.tag_id = (select content1._id FROM content content1 WHERE content1.uri = ?) " +
-					"AND tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
-			
+		case TAGS:
+			where = "tag.tag_id = (select content1._id FROM content content1 WHERE content1.uri = ?) "
+					+ "AND tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
+
 			count = mDB.delete("tag", where, whereArgs);
 
 			// TODO remove unreferenced content
@@ -335,5 +340,10 @@ public class TagsProvider extends ContentProvider {
 		CONTENT_PROJECTION_MAP.put(Contents._ID, "_id");
 		CONTENT_PROJECTION_MAP.put(Contents.URI, "uri");
 		CONTENT_PROJECTION_MAP.put(Contents.TYPE, "type");
+
+		CONTENT_PROJECTION_MAP_2 = new HashMap<String, String>();
+		CONTENT_PROJECTION_MAP_2.put(Contents._ID, "content1._id");
+		CONTENT_PROJECTION_MAP_2.put(Contents.URI, "content1.uri");
+		CONTENT_PROJECTION_MAP_2.put(Contents.TYPE, "content1.type");
 	}
 }

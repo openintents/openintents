@@ -105,6 +105,8 @@ public class Tag {
 		 * The tag that the query is about.
 		 */
 		public static final String QUERY_TAG = "tag";
+
+		public static final String DISTINCT = "distinct";
 	}
 
 	public static final class Contents implements BaseColumns {
@@ -143,6 +145,8 @@ public class Tag {
 		 * </P>
 		 */
 		public static final String CREATED_DATE = "created";
+
+		public static final String QUERY_BY_TYPE = "byType";
 
 	}
 
@@ -216,9 +220,10 @@ public class Tag {
 	 * @return
 	 */
 	public Cursor findTagsForContentType(String contentUriPrefix) {
-		Cursor c = mContext.getContentResolver().query(Tags.CONTENT_URI,
-				new String[] { Tags._ID, Tags.URI_1 }, "content2.uri like ?",
-				new String[] { contentUriPrefix + "%"}, "content1.uri");
+		Uri uri = Contents.CONTENT_URI.buildUpon().appendQueryParameter(Tags.DISTINCT, "true").build();
+		Cursor c = mContext.getContentResolver().query(uri,
+				new String[] { Contents._ID, Contents.URI}, "exists(select * from content content2, tag tag where content2.uri like ? and content2._id = tag.content_id and content._id = tag.tag_id)",
+				new String[] { contentUriPrefix + "%"}, "content.uri");
 		return c;
 	}
 

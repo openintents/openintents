@@ -5,6 +5,7 @@ import org.openintents.lib.MultiWordAutoCompleteTextView;
 import org.openintents.provider.Location;
 import org.openintents.provider.Tag;
 import org.openintents.provider.Location.Locations;
+import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
 import android.content.ContentUris;
@@ -97,9 +98,9 @@ public class LocationsMapView extends MapActivity {
 		startManagingCursor(allTagsCursor);
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				R.layout.tag_row_simple, allTagsCursor,
-				new String[] { Tags.URI_1 }, new int[] { R.id.tag_tag });
+				new String[] { Contents.URI }, new int[] { R.id.tag_tag });
 		adapter.setStringConversionColumn(allTagsCursor
-				.getColumnIndex(Tags.URI_1));
+				.getColumnIndex(Contents.URI));
 		mEditTags.setAdapter(adapter);
 
 		view.createOverlayController().add(new LocationsMapOverlay(this), true);
@@ -136,52 +137,50 @@ public class LocationsMapView extends MapActivity {
 		updateTags(true);
 	}
 
-	private void updateTags(boolean useCenterIfRequired) {		
+	private void updateTags(boolean useCenterIfRequired) {
 
-		if (mEditTags.getText().length() > 0) {
-			Point p = LocationsMapView.this.view.getMapCenter();
+		Point p = LocationsMapView.this.view.getMapCenter();
 
-			android.location.Location loc = new android.location.Location();
-			loc.setLatitude(p.getLatitudeE6() / 1E6);
-			loc.setLongitude(p.getLongitudeE6() / 1E6);
+		android.location.Location loc = new android.location.Location();
+		loc.setLatitude(p.getLatitudeE6() / 1E6);
+		loc.setLongitude(p.getLongitudeE6() / 1E6);
 
-			Uri contentUri;
-			if (pointId != 0L) {
-				contentUri = ContentUris.withAppendedId(Locations.CONTENT_URI,
-						pointId);
+		Uri contentUri;
+		if (pointId != 0L) {
+			contentUri = ContentUris.withAppendedId(Locations.CONTENT_URI,
+					pointId);
+		} else {
+			if (useCenterIfRequired) {
+				contentUri = mLocations.addLocation(loc);
 			} else {
-				if (useCenterIfRequired) {
-					contentUri = mLocations.addLocation(loc);
-				} else {
-					contentUri = null;
-				}
+				contentUri = null;
 			}
-			if (contentUri != null) {
-				String content = contentUri.toString();
+		}
+		if (contentUri != null) {
+			String content = contentUri.toString();
 
-				String[] tags = mEditTags.getText().toString().split(
-						mEditTags.getSeparator());
+			String[] tags = mEditTags.getText().toString().split(
+					mEditTags.getSeparator());
 
-				for (int i = 0; i < tags.length; i++) {
-					String s = tags[i].trim();
-					mTag.insertTag(s, content);
+			for (int i = 0; i < tags.length; i++) {
+				String s = tags[i].trim();
+				mTag.insertTag(s, content);
+			}
+
+			// delete removed tags
+			mIdTagCursor.requery();
+			while (mIdTagCursor.next()) {
+				String oldTag = mIdTagCursor.getString(mIdTagCursor
+						.getColumnIndex(Tags.URI_1));
+				boolean found = false;
+				for (String newTag : tags) {
+					if (oldTag.equals(newTag)) {
+						found = true;
+						break;
+					}
 				}
-
-				// delete removed tags
-				mIdTagCursor.requery();
-				while (mIdTagCursor.next()) {
-					String oldTag = mIdTagCursor.getString(mIdTagCursor
-							.getColumnIndex(Tags.URI_1));
-					boolean found = false;
-					for (String newTag : tags) {
-						if (oldTag.equals(newTag)) {
-							found = true;
-							break;
-						}
-					}
-					if (!found) {
-						mIdTagCursor.deleteRow();
-					}
+				if (!found) {
+					mIdTagCursor.deleteRow();
 				}
 			}
 		}
@@ -209,7 +208,9 @@ public class LocationsMapView extends MapActivity {
 				ContentValues values = new ContentValues();
 				values.put(Locations.LATITUDE, loc.getLatitude());
 				values.put(Locations.LONGITUDE, loc.getLongitude());
-				getContentResolver().update(ContentUris.withAppendedId(Locations.CONTENT_URI, pointId), values , null, null);
+				getContentResolver().update(
+						ContentUris.withAppendedId(Locations.CONTENT_URI,
+								pointId), values, null, null);
 			} else {
 				Uri uri = mLocations.addLocation(loc);
 				pointId = Integer.parseInt(uri.getLastPathSegment());
@@ -217,10 +218,11 @@ public class LocationsMapView extends MapActivity {
 			break;
 		case MENU_RESTORE_VALUES:
 			mEditTags.setText(mOriginalTags);
-			view.getController().centerMapTo(new Point(point.getLatitudeE6(), point
-					.getLongitudeE6()), true);
+			view.getController().centerMapTo(
+					new Point(point.getLatitudeE6(), point.getLongitudeE6()),
+					true);
 			break;
-			
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
