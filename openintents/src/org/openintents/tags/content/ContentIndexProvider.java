@@ -58,14 +58,14 @@ public class ContentIndexProvider extends
 			dirs.append("intent_action TEXT,");
 			dirs.append("refreshed LONG,");
 			dirs.append("updated LONG);");
-			db.execSQL(dirs.toString());	
+			db.execSQL(dirs.toString());
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 					+ newVersion + ", which will destroy all old data");
-			db.execSQL("DROP TABLE IF EXISTS dirs");	
+			db.execSQL("DROP TABLE IF EXISTS dirs");
 			onCreate(db);
 		}
 
@@ -79,13 +79,12 @@ public class ContentIndexProvider extends
 	protected void upgradeDatabase(int oldVersion, int newVersion) {
 		DatabaseHelper dbHelper = new DatabaseHelper();
 		dbHelper.onUpgrade(getDatabase(), oldVersion, newVersion);
-		
-		
+
 	}
 
 	@Override
-	public Cursor queryInternal(Uri url, String[] projection,
-			String selection, String[] selectionArgs, String sort) {
+	public Cursor queryInternal(Uri url, String[] projection, String selection,
+			String[] selectionArgs, String sort) {
 		SQLiteQueryBuilder qb = null;
 
 		switch (URL_MATCHER.match(url)) {
@@ -128,10 +127,10 @@ public class ContentIndexProvider extends
 			if (initialValues.containsKey("_id")) {
 				initialValues.remove("_id");
 			}
-			
+
 			long id = getDatabase().insert("dirs", "dirs", initialValues);
 			if (id >= 0) {
-				return ContentUris.withAppendedId(Dir.CONTENT_URI,id);
+				return ContentUris.withAppendedId(Dir.CONTENT_URI, id);
 			} else {
 				return null;
 			}
@@ -160,11 +159,7 @@ public class ContentIndexProvider extends
 					bodies.add(columns);
 				}
 			}
-			if (bodies.size() > 0){
-				return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
-			} else {
-				return null;
-			}
+			return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
 		} else {
 			return null;
 		}
@@ -218,8 +213,8 @@ public class ContentIndexProvider extends
 	}
 
 	@Override
-	public int updateInternal(Uri url, ContentValues values,
-			String where, String[] whereArgs) {
+	public int updateInternal(Uri url, ContentValues values, String where,
+			String[] whereArgs) {
 		int count;
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
@@ -253,7 +248,6 @@ public class ContentIndexProvider extends
 				DIRECTORY);
 		URL_MATCHER.addURI("org.openintents.contentindices", "entries",
 				INDEX_ENTRIES);
-		
 
 	}
 
@@ -285,9 +279,9 @@ public class ContentIndexProvider extends
 				return values;
 			} else {
 				// e.g. deleted content will return a cursor with no entries.
-				return null;
+				return new String[0];
 			}
-			
+
 		} else {
 			return null;
 		}
@@ -310,7 +304,7 @@ public class ContentIndexProvider extends
 		values.put("updated", 0);
 		return values;
 	}
-	
+
 	public static Directory getDirectory(Cursor cursor) {
 		Directory dir = new Directory();
 		dir.id = cursor.getLong(0);

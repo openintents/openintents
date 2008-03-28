@@ -75,6 +75,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 	private Tag mTags;
 
+	private Cursor mContentCursor;
+
 	/**
 	 * Called when the activity is first created.
 	 * 
@@ -167,21 +169,21 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private void fillDataTaggedContent() {
 
 		// Get a cursor with all content of the selected tag
-		Cursor c = getContentResolver().query(Tags.CONTENT_URI,
+		mContentCursor = getContentResolver().query(Tags.CONTENT_URI,
 				new String[] { Tags._ID, Tags.URI_2 }, "content1.uri like ?",
 				new String[] { mTagFilter.getText().toString() },
 				"content1.uri");
-		startManagingCursor(c);
+		startManagingCursor(mContentCursor);
 
 		ListAdapter result;
-		if (c == null) {
+		if (mContentCursor == null) {
 			Log.e(TAG, "missing tag provider");
 			result = new ArrayAdapter(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" });
 
 		} else {
-			result = new ContentListAdapter(c, this);
+			result = new ContentListAdapter(mContentCursor, this);
 		}
 		setListAdapter(result);
 	}
@@ -323,5 +325,12 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void delete(String uri) {
+		Log.i("contentbrowser", "delete tags " + uri);
+		mTags.removeAllTags(uri);
+		
+		
 	}
 }

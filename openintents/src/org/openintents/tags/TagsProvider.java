@@ -260,13 +260,10 @@ public class TagsProvider extends ContentProvider {
 		int count;
 		long rowId = 0;
 		switch (URL_MATCHER.match(url)) {
-		case TAGS:
-			where = "tag.tag_id = (select content1._id FROM content content1 WHERE content1.uri = ?) "
-					+ "AND tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
-
+		case TAGS:			
 			count = mDB.delete("tag", where, whereArgs);
 
-			// TODO remove unreferenced content
+			deleteUnrefContent();
 			break;
 
 		case TAG_ID:
@@ -281,7 +278,8 @@ public class TagsProvider extends ContentProvider {
 
 			count = mDB
 					.delete("tag", "_id=" + segment + whereString, whereArgs);
-			// TODO remove unreferenced content
+
+			deleteUnrefContent();
 			break;
 
 		default:
@@ -290,6 +288,11 @@ public class TagsProvider extends ContentProvider {
 
 		getContext().getContentResolver().notifyChange(url, null);
 		return count;
+	}
+
+	private void deleteUnrefContent() {
+		mDB.delete("content", "type not like 'TAG%' and not exists(select content_id from tag where tag.content_id = content._id)", null);
+		
 	}
 
 	@Override

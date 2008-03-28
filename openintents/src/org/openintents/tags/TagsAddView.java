@@ -108,8 +108,9 @@ public class TagsAddView extends Activity {
 				// one can also press the "Enter" key.
 				if (key.getAction() == KeyEvent.ACTION_DOWN &&
 						keyCode == Integer.parseInt(getString(R.string.key_return)))
-				{
-					save();
+				{				
+					setResult(Activity.RESULT_OK);
+					finish();
 					return true;
 				};
 				return false;
@@ -118,7 +119,7 @@ public class TagsAddView extends Activity {
 
 
 		mContent = (RelativeLayout) findViewById(R.id.content);
-		mContentRow = new ContentListRow(this);
+		mContentRow = new ContentListRow(this);		
 		RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.FILL_PARENT,
 				android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -146,8 +147,9 @@ public class TagsAddView extends Activity {
 		Button button = (Button) findViewById(R.id.tags_ok_button);
 		button.setOnClickListener(new OnClickListener() {
 
-			public void onClick(View arg0) {
-				save();
+			public void onClick(View arg0) {	
+				setResult(Activity.RESULT_OK);
+				finish();
 			}
 
 		});
@@ -213,9 +215,7 @@ public class TagsAddView extends Activity {
 		String[] tags  =tagString.split(mTagFilter.getSeparator());
 		for (String tag:tags){
 			mTag.insertTag(tag.trim(), mUri);
-		}
-		setResult(Activity.RESULT_OK);
-		finish();
+		}		
 	}
 
 	// XXX compiler bug in javac 1.5.0_07-164, we need to implement Filterable

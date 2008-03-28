@@ -14,10 +14,17 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Handler;
+import android.text.Spannable;
+import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.view.ViewParent;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 /**
@@ -33,6 +40,36 @@ public class ContentListRow extends RelativeLayout {
 	private TextView mName;
 	private TextView mType;
 	private ContentIndex mContentIndex;
+	private Drawable mIconDrawable;
+	private String mNameString;
+	private String mTypeString;
+
+	private Handler mHandler = new Handler();
+
+	private Runnable mUpdateViews = new Runnable() {
+
+		public void run() {
+			if (mNameString == null) {
+				mIcon.setImageDrawable(null);
+				mName.setText(mUri);
+				// First convert text to 'spannable'
+				mName.setText(mName.getText(), TextView.BufferType.SPANNABLE);
+				Spannable str = (Spannable) mName.getText();
+
+				// Strikethrough
+				str.setSpan(new StrikethroughSpan(), 0, str.length(),
+						Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				deleteRow();
+			} else {
+				mName.setText(mNameString);
+				mType.setText(mTypeString);
+				mIcon.setImageDrawable(mIconDrawable);
+			}
+		}
+
+	};
+	boolean mHide;	
+	private String mUri;
 
 	public ContentListRow(Context context) {
 		super(context);
@@ -75,12 +112,33 @@ public class ContentListRow extends RelativeLayout {
 
 	}
 
-	public void bindCursor(Cursor cursor) {
-		String uri = cursor.getString(cursor.getColumnIndex(Tags.URI_2));
-		updateContentFrom(uri);
+	protected void deleteRow() {
+		mHide = true;
+		if (getContext() instanceof ContentBrowserView) {
+			((ContentBrowserView)getContext()).delete(mUri);
+		}
 	}
 
-	public void updateContentFrom(String uri) {
+	public void bindCursor(Cursor cursor) {
+		mUri = cursor.getString(cursor.getColumnIndex(Tags.URI_2));
+		updateContentFrom(mUri);
+	}
+
+	public void updateContentFrom(final String uri) {
+		Thread t = new Thread() {
+
+			@Override
+			public void run() {
+				updateContentFromInternal(uri);
+				mHandler.post(mUpdateViews);
+			}
+
+		};
+		t.start();
+	}
+
+	public void updateContentFromInternal(String uri) {
+
 		Uri contentUri = null;
 		String type = null;
 		Intent intent = null;
@@ -109,10 +167,14 @@ public class ContentListRow extends RelativeLayout {
 		}
 
 		Drawable icon = getIconForUri(contentUri, type, intent);
-		mIcon.setImageDrawable(icon);
+		mIconDrawable = icon;
 
 		String text = getTextForUri(contentUri, type, intent, uri);
-		mName.setText(text);
+		if (text == null && contentUri != null) {
+			getContext().getContentResolver().delete(contentUri, null, null);
+			mHide = true;
+		}
+		mNameString = text;
 
 	}
 
@@ -133,8 +195,11 @@ public class ContentListRow extends RelativeLayout {
 			if (uri.getScheme() != null) {
 				Cursor cursor = mContentIndex.getContentBody(uri);
 
-				if (cursor == null || cursor.count() < 1) {
+				if (cursor == null) {
 					result = uri.toString();
+				} else if (cursor.count() < 1) {
+					// deleted content
+					result = null;
 				} else {
 					cursor.next();
 					result = cursor.getString(0);
@@ -155,7 +220,7 @@ public class ContentListRow extends RelativeLayout {
 		if (intent != null) {
 
 			try {
-				icon = pm.getActivityIcon(intent);
+				icon = pm.getActivityIcon(intent);								
 			} catch (NameNotFoundException e1) {
 				Log.i("ContentListRowIcon", e1.getMessage());
 				setUnknownName();
@@ -190,18 +255,18 @@ public class ContentListRow extends RelativeLayout {
 	}
 
 	private void setSecurity() {
-		mType.setText("S");
+		mTypeString = "S";
 		// mType.setImageResource(R.drawable.security);
 	}
 
 	private void setUnknowUri() {
-		mType.setText("U");
+		mTypeString = "U";
 		// mType.setImageResource(R.drawable.unknown);
 
 	}
 
 	private void setUnknownName() {
-		mType.setText("N");
+		mTypeString = "N";
 		// mType.setImageResource(R.drawable.unknown);
 	}
 

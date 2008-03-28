@@ -152,6 +152,11 @@ public class Tag {
 
 	private static final String TAG = "Tag.java";
 
+	private static final String DELETE_URI = "tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
+
+	private static final String DELETE_TAG_URI = "tag.tag_id = (select content1._id FROM content content1 WHERE content1.uri = ?) "
+			+ "AND tag.content_id = (select content2._id FROM content content2 WHERE content2.uri = ?)";
+
 	private Context mContext;
 
 	public Tag(Context context) {
@@ -161,11 +166,21 @@ public class Tag {
 	public void removeTag(String tag, String uri) {
 		try {
 			mContext.getContentResolver().getProvider(Tags.CONTENT_URI).delete(
-					Tags.CONTENT_URI, "uri_1 = ? AND uri_2 = ?",
+					Tags.CONTENT_URI, Tag.DELETE_TAG_URI,
 					new String[] { tag, uri });
 		} catch (DeadObjectException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+	}
+
+	public void removeAllTags(String uri) {
+		try {
+			mContext.getContentResolver().getProvider(Tags.CONTENT_URI).delete(
+					Tags.CONTENT_URI, Tag.DELETE_URI, new String[] { uri });
+		} catch (DeadObjectException e) {
+			Log.w(TAG, "removeAllTags " + e.getMessage());
 		}
 
 	}
@@ -181,7 +196,6 @@ public class Tag {
 			Log.i(TAG, "insert failed", e);
 		}
 	}
-
 
 	/**
 	 * cursor over contentUriStrings is returned where the content is tagged
@@ -212,7 +226,7 @@ public class Tag {
 				new String[] { contentUri }, "content1.uri");
 		return c;
 	}
-	
+
 	/**
 	 * cursor over tags with all tags for the given content is returned.
 	 * 
@@ -220,28 +234,33 @@ public class Tag {
 	 * @return
 	 */
 	public Cursor findTagsForContentType(String contentUriPrefix) {
-		Uri uri = Contents.CONTENT_URI.buildUpon().appendQueryParameter(Tags.DISTINCT, "true").build();
-		Cursor c = mContext.getContentResolver().query(uri,
-				new String[] { Contents._ID, Contents.URI}, "exists(select * from content content2, tag tag where content2.uri like ? and content2._id = tag.content_id and content._id = tag.tag_id)",
-				new String[] { contentUriPrefix + "%"}, "content.uri");
+		Uri uri = Contents.CONTENT_URI.buildUpon().appendQueryParameter(
+				Tags.DISTINCT, "true").build();
+		Cursor c = mContext
+				.getContentResolver()
+				.query(
+						uri,
+						new String[] { Contents._ID, Contents.URI },
+						"exists(select * from content content2, tag tag where content2.uri like ? and content2._id = tag.content_id and content._id = tag.tag_id)",
+						new String[] { contentUriPrefix + "%" }, "content.uri");
 		return c;
 	}
 
 	/**
 	 * Get a cursor with all tags
+	 * 
 	 * @return
 	 */
-	public Cursor findAllTags(){
+	public Cursor findAllTags() {
 		Cursor c = mContext.getContentResolver().query(Contents.CONTENT_URI,
 				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
 				"type like 'TAG%'", null, Contents.DEFAULT_SORT_ORDER);
 		return c;
 	}
-	
-	/** 
-	 * start add tag activity.
-	 * Only useful, if tag or uri is null.
-	 * Consider using insertTag if you want to add the tag without user interaction.
+
+	/**
+	 * start add tag activity. Only useful, if tag or uri is null. Consider
+	 * using insertTag if you want to add the tag without user interaction.
 	 * 
 	 * @param tag
 	 * @param uri
@@ -253,6 +272,5 @@ public class Tag {
 		mContext.startActivity(intent);
 
 	}
-
 
 }
