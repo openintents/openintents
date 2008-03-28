@@ -159,9 +159,12 @@ public class ContentIndexProvider extends
 					columns.add(body);
 					bodies.add(columns);
 				}
-
 			}
-			return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
+			if (bodies.size() > 0){
+				return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
+			} else {
+				return null;
+			}
 		} else {
 			return null;
 		}
@@ -276,12 +279,15 @@ public class ContentIndexProvider extends
 			int[] columnIndex = getColumnIndex(cursor, projection);
 			String[] values = new String[columnIndex.length];
 
-			while (cursor.next()) {
+			if (cursor.next()) {
 				String id = cursor.getString(idIndex);
 				getValues(cursor, columnIndex, values);
+				return values;
+			} else {
+				// e.g. deleted content will return a cursor with no entries.
+				return null;
 			}
-
-			return values;
+			
 		} else {
 			return null;
 		}

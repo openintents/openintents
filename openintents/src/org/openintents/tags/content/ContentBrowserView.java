@@ -66,12 +66,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private static final int MENU_REMOVE_TAG = 3;
 	private static final int MENU_PACKAGES = 4;
 	private static final int MENU_ADD_ANY_TAG = 5;
-	
+
 	protected static final int REQUEST_DIR_PICK = 1;
 	protected static final int REQUEST_CONTENT_PICK = 2;
 	protected static final int REQUEST_TAG_PICK = 3;
-
-	
 
 	private AutoCompleteTextView mTagFilter;
 
@@ -93,9 +91,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 					public void onPopulateContextMenu(ContextMenu contextmenu,
 							View view, Object obj) {
 						contextmenu.add(0, MENU_REMOVE_TAG,
-								R.string.tags_remove_tag, R.drawable.tag_delete001a);
+								R.string.tags_remove_tag,
+								R.drawable.tag_delete001a);
 						contextmenu.add(0, MENU_VIEW_CONTENT,
-								R.string.tags_view_content, R.drawable.view_001a);
+								R.string.tags_view_content,
+								R.drawable.view_001a);
 					}
 
 				});
@@ -138,9 +138,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	 */
 	private void fillDataTagFilter() {
 		// Get a cursor with all tags
-		Cursor c = getContentResolver().query(Contents.CONTENT_URI,
-				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
-				"type like 'TAG%'", null, Contents.DEFAULT_SORT_ORDER);
+		Cursor c = mTags.findAllTags();
 		startManagingCursor(c);
 
 		if (c == null) {
@@ -168,47 +166,49 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	 */
 	private void fillDataTaggedContent() {
 
-		// Get a cursor with all tags
+		// Get a cursor with all content of the selected tag
 		Cursor c = getContentResolver().query(Tags.CONTENT_URI,
 				new String[] { Tags._ID, Tags.URI_2 }, "content1.uri like ?",
 				new String[] { mTagFilter.getText().toString() },
 				"content1.uri");
 		startManagingCursor(c);
 
+		ListAdapter result;
 		if (c == null) {
 			Log.e(TAG, "missing tag provider");
-			setListAdapter(new ArrayAdapter(this,
+			result = new ArrayAdapter(this,
 					android.R.layout.simple_list_item_1,
-					new String[] { "no tag provider" }));
-			return;
-		}
+					new String[] { "no tag provider" });
 
-		ContentListAdapter adapter = new ContentListAdapter(c, this);
-		setListAdapter(adapter);
+		} else {
+			result = new ContentListAdapter(c, this);
+		}
+		setListAdapter(result);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(0, MENU_ADD_TAG, R.string.tags_add_tag, R.drawable.tag_add001a);
-		menu.add(0, MENU_ADD_ANY_TAG, R.string.tags_add_any_tag, R.drawable.tag_add001a);
+		menu
+				.add(0, MENU_ADD_TAG, R.string.tags_add_tag,
+						R.drawable.tag_add001a);
+		menu.add(0, MENU_ADD_ANY_TAG, R.string.tags_add_any_tag,
+				R.drawable.tag_add001a);
 
 		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
 				R.drawable.tagging_packages001a);
 
-
 		return true;
 	}
-
 
 	@Override
 	public boolean onContextItemSelected(Item item) {
 		super.onContextItemSelected(item);
-		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();		
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
 		switch (item.getId()) {
 		case MENU_VIEW_CONTENT:
 			viewContent(menuInfo.position);
-			break;		
+			break;
 		case MENU_REMOVE_TAG:
 			removeTag(menuInfo.position);
 			break;
@@ -230,7 +230,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			startSubActivity(intent, REQUEST_DIR_PICK);
 			break;
 		case MENU_ADD_ANY_TAG:
-			// query for a string as uri and 
+			// query for a string as uri and
 			// start tag action
 			// data is the picked content
 			String tag = mTagFilter.getText().toString();
@@ -262,11 +262,12 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		}
 		if (intent != null) {
 			if (getPackageManager().resolveActivity(intent, 0) != null) {
-				startActivity(intent);	
+				startActivity(intent);
 			} else {
-				AlertDialog.show(this, "info", 0, "content can not be shown", "ok", null, null, null, false, null);
+				AlertDialog.show(this, "info", 0, "content can not be shown",
+						"ok", null, null, null, false, null);
 			}
-			
+
 		}
 	}
 
