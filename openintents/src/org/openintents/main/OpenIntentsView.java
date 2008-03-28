@@ -69,6 +69,8 @@ public class OpenIntentsView extends Activity {
 	TableLayout mGridSettings;
 	
 	private static final int MENU_ABOUT = Menu.FIRST;
+
+	private static final String BUNDLE_TABHOST = "tabHost";
 	
 
 	/** Called when the activity is first created. */
@@ -94,7 +96,12 @@ public class OpenIntentsView extends Activity {
 		tabspec.setContent(R.id.content2);
 		mTabHost.addTab(tabspec);
 		
-		mTabHost.setCurrentTab(0);
+		// issue #62
+		int currentTab = 0;
+		if (icicle != null && icicle.containsKey(BUNDLE_TABHOST)){
+			currentTab = icicle.getInt(BUNDLE_TABHOST);
+		}		
+		mTabHost.setCurrentTab(currentTab);
 		
 		// loadApps(); // do this in onresume?
 		
@@ -286,5 +293,10 @@ public class OpenIntentsView extends Activity {
 		startActivity(intent);
 	};
 	
+	@Override
+	protected void onFreeze(Bundle outState) {	
+		super.onFreeze(outState);
+		outState.putInt(BUNDLE_TABHOST, mTabHost.getCurrentTab());
+	}
 
 }
