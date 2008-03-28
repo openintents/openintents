@@ -94,7 +94,12 @@ public class LocationsView extends Activity {
 
 			public void onItemClick(AdapterView parent, View v, int position,
 					long id) {
-				viewLocationWithMapView(position);
+				if (getCallingActivity() != null && Intent.PICK_ACTION.equals(getIntent().getAction())){					
+					setResult(Activity.RESULT_OK, ContentUris.withAppendedId(Locations.CONTENT_URI, id).toString());
+					finish();
+		 		} else {
+		 			viewLocationWithMapView(position);
+		 		}
 			}
 
 		});

@@ -99,6 +99,12 @@
 				<category
 					android:name="org.openintents.category.MAIN" />
 			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.PICK" />
+				<category
+					android:name="android.intent.category.DEFAULT" /> 
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.location"/>					
+			</intent-filter>
 		</activity>
 
 		<activity android:name=".locations.ExtrasView"/>
