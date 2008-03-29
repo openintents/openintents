@@ -62,6 +62,10 @@ public class TagsProvider extends ContentProvider {
 
 	private static final String DEFAULT_TAG = "DEFAULT";
 
+	private static final String TAG_TYPE_TAG = "TAG";
+
+	private static final String TAG_TYPE_UNIQUE_TAG = "TAG_UNIQUE";
+
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 		@Override
 		public void onCreate(SQLiteDatabase db) {
@@ -142,7 +146,7 @@ public class TagsProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri url, ContentValues initialValues) {
-		long rowID;
+		long rowID = 0l;
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
@@ -172,8 +176,16 @@ public class TagsProvider extends ContentProvider {
 			values.put(Tags.ACCESS_DATE, now);
 		}
 
+		boolean uniqueTag = !TextUtils.isEmpty(url
+				.getQueryParameter(Tags.QUERY_UNIQUE_TAG));
+		String tagType;
+		if (uniqueTag) {
+			tagType = TAG_TYPE_TAG;
+		} else {
+			tagType = TAG_TYPE_UNIQUE_TAG;
+		}
 		// lookup id for uri or create new
-		replaceUriById(values, Tags.TAG_ID, Tags.URI_1, "TAG", DEFAULT_TAG);
+		replaceUriById(values, Tags.TAG_ID, Tags.URI_1, tagType, DEFAULT_TAG);
 
 		if (!values.containsKey(Tags.CONTENT_ID)
 				&& !values.containsKey(Tags.URI_2)) {
@@ -190,8 +202,26 @@ public class TagsProvider extends ContentProvider {
 				null, null, null);
 
 		if (!existingTag.next()) {
-			// finally insert the tag.
-			rowID = mDB.insert("tag", "tag", values);
+
+			boolean inserted = false;
+
+			existingTag = mDB.query("tag tag, content content", new String[] {
+					"tag._id", "tag.content_id" },
+					"tag_id = ? and tag_id = content._id and content.type = ?",
+					new String[] { String.valueOf(values.get(Tags.TAG_ID)),
+							TAG_TYPE_UNIQUE_TAG }, null, null, null);
+			if (existingTag.next()) {
+				rowID = existingTag.getLong(0);
+				existingTag.updateString(1, String.valueOf(values
+						.get(Tags.CONTENT_ID)));
+				existingTag.commitUpdates();
+				inserted = true;
+			}
+
+			if (!inserted) {
+				// finally insert the tag.
+				rowID = mDB.insert("tag", "tag", values);
+			}
 			if (rowID > 0) {
 				Uri uri = ContentUris.withAppendedId(Tags.CONTENT_URI, rowID);
 				getContext().getContentResolver().notifyChange(uri, null);
@@ -260,7 +290,7 @@ public class TagsProvider extends ContentProvider {
 		int count;
 		long rowId = 0;
 		switch (URL_MATCHER.match(url)) {
-		case TAGS:			
+		case TAGS:
 			count = mDB.delete("tag", where, whereArgs);
 
 			deleteUnrefContent();
@@ -291,8 +321,12 @@ public class TagsProvider extends ContentProvider {
 	}
 
 	private void deleteUnrefContent() {
-		mDB.delete("content", "type not like 'TAG%' and not exists(select content_id from tag where tag.content_id = content._id)", null);
-		
+		mDB
+				.delete(
+						"content",
+						"type not like 'TAG%' and not exists(select content_id from tag where tag.content_id = content._id)",
+						null);
+
 	}
 
 	@Override

@@ -41,6 +41,7 @@ import android.view.View.OnKeyListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.Filterable;
@@ -88,9 +89,9 @@ public class TagsAddView extends Activity {
 
 	private RelativeLayout mContent;
 
-
-
 	private EditText mAnyUri;
+
+	private CheckBox mUnique;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -100,26 +101,28 @@ public class TagsAddView extends Activity {
 
 		mTag = new Tag(this);
 		mTagFilter = (MultiWordAutoCompleteTextView) findViewById(R.id.tag_filter);
-		
+
 		mTagFilter.setOnKeyListener(new OnKeyListener() {
 
-			public boolean onKey(View v, int keyCode, KeyEvent key) {				
+			public boolean onKey(View v, int keyCode, KeyEvent key) {
 				// Shortcut: Instead of pressing the button,
 				// one can also press the "Enter" key.
-				if (key.getAction() == KeyEvent.ACTION_DOWN &&
-						keyCode == Integer.parseInt(getString(R.string.key_return)))
-				{				
+				if (key.getAction() == KeyEvent.ACTION_DOWN
+						&& keyCode == Integer
+								.parseInt(getString(R.string.key_return))) {
 					setResult(Activity.RESULT_OK);
 					finish();
 					return true;
-				};
+				}
+				;
 				return false;
 			}
 		});
 
+		mUnique = (CheckBox) findViewById(R.id.tags_unique);
 
 		mContent = (RelativeLayout) findViewById(R.id.content);
-		mContentRow = new ContentListRow(this);		
+		mContentRow = new ContentListRow(this);
 		RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(
 				RelativeLayout.LayoutParams.FILL_PARENT,
 				android.widget.RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -128,15 +131,15 @@ public class TagsAddView extends Activity {
 
 		mUri = getIntent().getStringExtra(Tags.QUERY_URI);
 
-		mAnyUri = (EditText)findViewById(R.id.tags_any);
-		
+		mAnyUri = (EditText) findViewById(R.id.tags_any);
+
 		if (mUri != null) {
 			mContentRow.updateContentFrom(mUri);
 			mAnyUri.setVisibility(View.GONE);
 			mAnyUri = null;
 		} else {
 			mContent.setVisibility(View.GONE);
-						
+
 		}
 
 		String tag = getIntent().getStringExtra(Tags.QUERY_TAG);
@@ -147,7 +150,7 @@ public class TagsAddView extends Activity {
 		Button button = (Button) findViewById(R.id.tags_ok_button);
 		button.setOnClickListener(new OnClickListener() {
 
-			public void onClick(View arg0) {	
+			public void onClick(View arg0) {
 				setResult(Activity.RESULT_OK);
 				finish();
 			}
@@ -167,7 +170,9 @@ public class TagsAddView extends Activity {
 				if (getPackageManager().resolveActivity(intent, 0) != null) {
 					startActivity(intent);
 				} else {
-					AlertDialog.show(TagsAddView.this, "info", 0, "content can not be shown.", "ok", null, "no", null, false, null);
+					AlertDialog.show(TagsAddView.this, "info", 0,
+							"content can not be shown.", "ok", null, "no",
+							null, false, null);
 				}
 			}
 
@@ -200,22 +205,27 @@ public class TagsAddView extends Activity {
 		mTagFilter.setAdapter(adapter);
 
 	}
-	
+
 	@Override
-	protected void onPause() {	
+	protected void onPause() {
 		super.onPause();
 		save();
 	}
 
 	private void save() {
-		if (mAnyUri != null){
+		if (mAnyUri != null) {
 			mUri = mAnyUri.getText().toString();
 		}
 		String tagString = mTagFilter.getText().toString();
-		String[] tags  =tagString.split(mTagFilter.getSeparator());
-		for (String tag:tags){
-			mTag.insertTag(tag.trim(), mUri);
-		}		
+		boolean unique = mUnique.isChecked();
+		String[] tags = tagString.split(mTagFilter.getSeparator());
+		for (String tag : tags) {
+			if (unique){
+				mTag.insertUniqueTag(tag.trim(), mUri);
+			} else {
+				mTag.insertTag(tag.trim(), mUri);
+			}
+		}
 	}
 
 	// XXX compiler bug in javac 1.5.0_07-164, we need to implement Filterable

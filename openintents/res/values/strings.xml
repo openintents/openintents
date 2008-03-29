@@ -55,7 +55,10 @@
 	<string name="add_tag">Add new tag/content</string>
 	<string name="tag_all">ALL</string>
 	<string name="tags_add_any_tag">add new tag (advanced)</string>
-	
+	<string name="tags_unique">unique tag</string>
+	<string name="tags_security">Content is secured, privileges has not been granted.</string>
+	<string name="tags_unparsable_uri">Content URI could not be parsed</string>
+	<string name="tags_unknown_content">Content type is unknown, add package information using menu "packages".</string>
 	<!-- intent list  -->
 	<string name = "intents_list">List of Actions by Type</string>
 	<string name = "intents_types">ActionList by Type</string>

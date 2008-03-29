@@ -6,6 +6,7 @@ import org.openintents.R;
 import org.openintents.provider.ContentIndex;
 import org.openintents.provider.Tag.Tags;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -38,11 +39,14 @@ public class ContentListRow extends RelativeLayout {
 	private static final int CONTENT_TYPE = 3;
 	private ImageView mIcon;
 	private TextView mName;
-	private TextView mType;
+	private ImageView mType;
 	private ContentIndex mContentIndex;
 	private Drawable mIconDrawable;
 	private String mNameString;
-	private String mTypeString;
+	private int mTypeString;
+	boolean mHide;
+	private String mUri;
+	private int mTypeDrawable = 0;
 
 	private Handler mHandler = new Handler();
 
@@ -62,14 +66,21 @@ public class ContentListRow extends RelativeLayout {
 				deleteRow();
 			} else {
 				mName.setText(mNameString);
-				mType.setText(mTypeString);
+				if (mTypeDrawable > 0) {
+					mType.setImageResource(mTypeDrawable);
+					mType.setOnClickListener(new OnClickListener() {
+
+						public void onClick(View view) {
+							AlertDialog.show(ContentListRow.this.getContext(), "info", mTypeDrawable, getResources().getString(mTypeString), getResources().getString(R.string.ok), false);
+							
+						}
+					});
+				}
 				mIcon.setImageDrawable(mIconDrawable);
 			}
 		}
 
 	};
-	boolean mHide;	
-	private String mUri;
 
 	public ContentListRow(Context context) {
 		super(context);
@@ -91,9 +102,8 @@ public class ContentListRow extends RelativeLayout {
 		mName.setTextSize(24);
 		mName.setTextColor(0xFFFFFFFF);
 
-		mType = new TextView(context);
+		mType = new ImageView(context);
 		mType.setId(CONTENT_TYPE);
-		mType.setGravity(Gravity.CENTER_HORIZONTAL);
 
 		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64,
 				64);
@@ -115,7 +125,7 @@ public class ContentListRow extends RelativeLayout {
 	protected void deleteRow() {
 		mHide = true;
 		if (getContext() instanceof ContentBrowserView) {
-			((ContentBrowserView)getContext()).delete(mUri);
+			((ContentBrowserView) getContext()).delete(mUri);
 		}
 	}
 
@@ -147,7 +157,7 @@ public class ContentListRow extends RelativeLayout {
 			contentUri = Uri.parse(uri);
 		} catch (NullPointerException e1) {
 			Log.i("ContentListRowNP", e1.getMessage());
-			setUnknowUri();
+			setUnparsableUri();
 		}
 
 		if (contentUri != null) {
@@ -171,7 +181,6 @@ public class ContentListRow extends RelativeLayout {
 
 		String text = getTextForUri(contentUri, type, intent, uri);
 		if (text == null && contentUri != null) {
-			getContext().getContentResolver().delete(contentUri, null, null);
 			mHide = true;
 		}
 		mNameString = text;
@@ -191,6 +200,15 @@ public class ContentListRow extends RelativeLayout {
 		} else if ("geo".equals(uri.getScheme())) {
 			// deal with geo
 			result = uri.getPath();
+		} else if ("http".equals(uri.getScheme())) {
+			// deal with http
+			result = uri2;
+		} else if ("https".equals(uri.getScheme())) {
+			// deal with https
+			result = uri2;
+		} else if ("mailto".equals(uri.getScheme())) {
+			// deal with mailto
+			result = uri2;
 		} else {
 			if (uri.getScheme() != null) {
 				Cursor cursor = mContentIndex.getContentBody(uri);
@@ -220,7 +238,7 @@ public class ContentListRow extends RelativeLayout {
 		if (intent != null) {
 
 			try {
-				icon = pm.getActivityIcon(intent);								
+				icon = pm.getActivityIcon(intent);
 			} catch (NameNotFoundException e1) {
 				Log.i("ContentListRowIcon", e1.getMessage());
 				setUnknownName();
@@ -255,19 +273,19 @@ public class ContentListRow extends RelativeLayout {
 	}
 
 	private void setSecurity() {
-		mTypeString = "S";
-		// mType.setImageResource(R.drawable.security);
+		mTypeString = R.string.tags_security;
+		mTypeDrawable = R.drawable.lock001a;
 	}
 
-	private void setUnknowUri() {
-		mTypeString = "U";
-		// mType.setImageResource(R.drawable.unknown);
+	private void setUnparsableUri() {
+		mTypeString = R.string.tags_unparsable_uri;
+		mTypeDrawable = R.drawable.question001a;
 
 	}
 
 	private void setUnknownName() {
-		mTypeString = "N";
-		// mType.setImageResource(R.drawable.unknown);
+		mTypeString = R.string.tags_unknown_content;
+		mTypeDrawable = R.drawable.question001a;
 	}
 
 }

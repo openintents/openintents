@@ -107,6 +107,7 @@ public class Tag {
 		public static final String QUERY_TAG = "tag";
 
 		public static final String DISTINCT = "distinct";
+		public static final String QUERY_UNIQUE_TAG = "unique";
 	}
 
 	public static final class Contents implements BaseColumns {
@@ -192,6 +193,19 @@ public class Tag {
 
 		try {
 			mContext.getContentResolver().insert(Tags.CONTENT_URI, values);
+		} catch (Exception e) {
+			Log.i(TAG, "insert failed", e);
+		}
+	}
+	
+	public void insertUniqueTag(String tag, String content) {
+		ContentValues values = new ContentValues(2);
+		values.put(Tags.URI_1, tag);
+		values.put(Tags.URI_2, content);
+
+		try {
+			Uri uri = Tags.CONTENT_URI.buildUpon().appendQueryParameter(Tags.QUERY_UNIQUE_TAG, "true").build();
+			mContext.getContentResolver().insert(uri , values);
 		} catch (Exception e) {
 			Log.i(TAG, "insert failed", e);
 		}
