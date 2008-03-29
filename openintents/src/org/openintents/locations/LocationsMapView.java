@@ -190,8 +190,8 @@ public class LocationsMapView extends MapActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		boolean superResult = super.onCreateOptionsMenu(menu);
-		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center);
-		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values);
+		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center, R.drawable.location_center001a);
+		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values, R.drawable.restore001a);
 		return superResult;
 	}
 
