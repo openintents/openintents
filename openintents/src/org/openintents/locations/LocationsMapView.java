@@ -38,6 +38,7 @@ public class LocationsMapView extends MapActivity {
 	private Cursor mIdTagCursor;
 	private StringBuffer mOriginalTags;
 	private MultiWordAutoCompleteTextView mEditTags;
+	private Point orgPoint;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -67,6 +68,8 @@ public class LocationsMapView extends MapActivity {
 				}
 			}
 		}
+		// store orignal point.
+		orgPoint = new Point(point.getLatitudeE6(), point.getLongitudeE6());
 
 		// prepare controls
 		view = (MapView) findViewById(R.id.mapview);
@@ -200,30 +203,39 @@ public class LocationsMapView extends MapActivity {
 		switch (item.getId()) {
 		case MENU_USE_CENTER:
 			Point p = view.getMapCenter();
-			android.location.Location loc = new android.location.Location();
-			loc.setLatitude(p.getLatitudeE6() / 1E6);
-			loc.setLongitude(p.getLongitudeE6() / 1E6);
-
-			if (pointId != 0l) {
-				ContentValues values = new ContentValues();
-				values.put(Locations.LATITUDE, loc.getLatitude());
-				values.put(Locations.LONGITUDE, loc.getLongitude());
-				getContentResolver().update(
-						ContentUris.withAppendedId(Locations.CONTENT_URI,
-								pointId), values, null, null);
-			} else {
-				Uri uri = mLocations.addLocation(loc);
-				pointId = Integer.parseInt(uri.getLastPathSegment());
-			}
+			updateUsingPoint(p);
+			
 			break;
 		case MENU_RESTORE_VALUES:
 			mEditTags.setText(mOriginalTags);
 			view.getController().centerMapTo(
-					new Point(point.getLatitudeE6(), point.getLongitudeE6()),
+					new Point(orgPoint.getLatitudeE6(), orgPoint.getLongitudeE6()),
 					true);
+			updateUsingPoint(orgPoint);
 			break;
 
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	private void updateUsingPoint(Point p) {
+		android.location.Location loc = new android.location.Location();
+		loc.setLatitude(p.getLatitudeE6() / 1E6);
+		loc.setLongitude(p.getLongitudeE6() / 1E6);
+
+		if (pointId != 0l) {
+			ContentValues values = new ContentValues();
+			values.put(Locations.LATITUDE, loc.getLatitude());
+			values.put(Locations.LONGITUDE, loc.getLongitude());
+			getContentResolver().update(
+					ContentUris.withAppendedId(Locations.CONTENT_URI,
+							pointId), values, null, null);
+		} else {
+			Uri uri = mLocations.addLocation(loc);
+			pointId = Integer.parseInt(uri.getLastPathSegment());
+		}
+		point = p;
+					
+		view.createOverlayController().add(new LocationsMapOverlay(this), true);
 	}
 }
