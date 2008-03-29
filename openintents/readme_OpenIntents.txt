@@ -24,20 +24,28 @@ To obtain the current release, visit
 release: 0.1.5
 date: 2008-03-28
 
+new features:
 - support for bolt ( http://code.google.com/p/android-bolt/ ).
-- Magnolia updated.
-- NewsreaderServiceSettings moved to core.
+  (issue #36)
+- new Media player and Media browser for audio and video,
+  internal and from SD card. (issue #59)
 - Content browser:
   - MultiWordAutoComplete widget for tagging.
-  - ContextMenu
-  - 'List of tags' and 'add tag' merged.
-- new Media player and Media browser for audio and video,
-  internal and from SD card.
-- Locations updated, issues fixed.
+  - ContextMenu (issue #22)
+  - Tag Cloud (issue #31)
+- new (alpha) Alert Framework.
+  
+changes:
+- NewsreaderServiceSettings moved to core.
+- 'List of tags' and 'add tag' merged (issue #57).
+
+bug fixes:
+- Magnolia updated.
+- Locations updated (issues #5, 9, 10, 50, 52, 54, 55, 58)
   - Add location alert.
   - Extras for locations.
-- new (alpha) Alert Framework.
-- SensorSimulator testing pane: issues resolved.
+- SensorSimulator testing pane: issues resolved
+  (issues #43, 46).
   
 
 ---------------------------------------------------------
