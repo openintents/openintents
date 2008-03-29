@@ -14,7 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
- 
+
 <resources>
-	<drawable name="strikethrough">#33336600</drawable>
+	<color name="darkgreen">#FF006600</color>
+    <color name="black">#000</color>
+    <color name="strikethrough">#33336600</color>
+    <drawable name="yellow_green">#9acd32</drawable>
+    <drawable name="gold">#ffd700</drawable>
 </resources>

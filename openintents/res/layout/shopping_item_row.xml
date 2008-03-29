@@ -16,28 +16,41 @@
  -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="horizontal" android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:layout_weight="1" >
-	<ImageView  android:id="@+id/image"
-		android:layout_width="12px"
-    	android:layout_height="12px"
-    	android:src="@drawable/openintents_icon"
-    	android:visibility="gone" />
-    <TextView  android:id="@+id/image_URI"
-    	android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-     	android:visibility="gone" />
-	<TextView android:id="@+id/name"
-		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_marginLeft="27dip"
-		android:layout_marginTop="8dip"
-		android:layout_marginBottom="8dip"
-		android:layout_marginRight="27dip"
-		android:textStyle="normal"
-		android:bufferType="spannable"
-		android:layout_weight="1"
-		 />
+              android:orientation="horizontal"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:layout_weight="1">
+    <ImageView android:id="@+id/image"
+               android:layout_width="12px"
+               android:layout_height="12px"
+               android:src="@drawable/openintents_icon"
+               android:visibility="gone"/>
+    <TextView android:id="@+id/image_URI"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:visibility="gone"/>
+    <CheckBox android:id="@+id/check"
+              android:textAppearance="?android:attr/textAppearanceLarge"
+              android:layout_width="wrap_content"
+              android:layout_height="fill_parent"
+              android:layout_marginLeft="27dip"
+              android:layout_marginTop="8dip"
+              android:layout_marginBottom="8dip"
+              android:layout_marginRight="-10dip"
+              android:textStyle="normal"
+              android:bufferType="spannable"
+              android:focusable="false"
+              android:visibility="gone"
+            />
+   <TextView android:id="@+id/name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="27dip"
+            android:layout_marginTop="8dip"
+            android:layout_marginBottom="8dip"
+            android:layout_marginRight="27dip"
+            android:textStyle="normal"
+            android:bufferType="spannable"
+             />
 </LinearLayout>
