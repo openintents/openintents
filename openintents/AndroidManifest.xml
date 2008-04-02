@@ -24,6 +24,7 @@
 	
 	<!-- required for Locations (in order to getCurrentLocation) -->
 	<uses-permission android:name="android.permission.ACCESS_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_CELL_ID" />
 	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
 
 	<!-- required for news service  -->
