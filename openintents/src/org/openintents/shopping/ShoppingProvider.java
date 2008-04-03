@@ -49,7 +49,15 @@ public class ShoppingProvider extends ContentProvider {
 
 	private static final String TAG = "ShoppingProvider";
 	private static final String DATABASE_NAME = "shopping.db";
-	private static final int DATABASE_VERSION = 1; // Release 0.1.1
+	
+	/**
+	 * Version of database.
+	 * 
+	 * The various versions were introduced in the following releases:
+	 * 1: Release 0.1.1
+	 * 2: Release 0.1.6
+	 */
+	private static final int DATABASE_VERSION = 2;
 
 	private static HashMap<String, String> ITEMS_PROJECTION_MAP;
 	private static HashMap<String, String> LISTS_PROJECTION_MAP;
@@ -97,7 +105,13 @@ public class ShoppingProvider extends ContentProvider {
 					+ "image VARCHAR," // V1
 					+ "created INTEGER," // V1
 					+ "modified INTEGER," // V1
-					+ "accessed INTEGER" // V1
+					+ "accessed INTEGER," // V1
+					+ "share_name VARCHAR," // V2
+					+ "share_contacts VARCHAR," // V2
+					+ "skin_background VARCHAR," // V2
+					+ "skin_font VARCHAR," // V2
+					+ "skin_color INTEGER," // V2
+					+ "skin_color_strikethrough INTEGER" // V2
 					+ ");");
 			db.execSQL("CREATE TABLE contains ("
 					+ "_id INTEGER PRIMARY KEY," // Database Version 1
@@ -107,7 +121,9 @@ public class ShoppingProvider extends ContentProvider {
 					+ "status INTEGER," // V1
 					+ "created INTEGER," // V1
 					+ "modified INTEGER," // V1
-					+ "accessed INTEGER" // V1
+					+ "accessed INTEGER," // V1
+					+ "share_created_by VARCHAR," // V2
+					+ "share_modified_by VARCHAR" // V2
 					+ ");");
 		}
 
@@ -258,7 +274,7 @@ public class ShoppingProvider extends ContentProvider {
 		if (!values.containsKey(Items.ACCESSED_DATE)) {
 			values.put(Items.ACCESSED_DATE, now);
 		}
-		
+				
 		// TODO: Here we should check, whether item exists already. 
 		// (see TagsProvider)
 		// insert the item. 
@@ -301,6 +317,26 @@ public class ShoppingProvider extends ContentProvider {
 			values.put(Lists.ACCESSED_DATE, now);
 		}
 		
+		if (!values.containsKey(Lists.SHARE_CONTACTS)) {
+			values.put(Lists.SHARE_CONTACTS, "");
+		}
+		
+		if (!values.containsKey(Lists.SKIN_BACKGROUND)) {
+			values.put(Lists.SKIN_BACKGROUND, "");
+		}
+		
+		if (!values.containsKey(Lists.SKIN_FONT)) {
+			values.put(Lists.SKIN_FONT, "");
+		}
+		
+		if (!values.containsKey(Lists.SKIN_COLOR)) {
+			values.put(Lists.SKIN_COLOR, 0);
+		}
+		
+		if (!values.containsKey(Lists.SKIN_COLOR_STRIKETHROUGH)) {
+			values.put(Lists.SKIN_COLOR_STRIKETHROUGH, 0xFF006600);
+		}
+
 		// TODO: Here we should check, whether item exists already.
 		// (see TagsProvider)
 		
@@ -348,16 +384,24 @@ public class ShoppingProvider extends ContentProvider {
 			}
 		}
 		
-		if (!values.containsKey(Items.CREATED_DATE)) {
-			values.put(Items.CREATED_DATE, now);
+		if (!values.containsKey(Contains.CREATED_DATE)) {
+			values.put(Contains.CREATED_DATE, now);
 		}
 
-		if (!values.containsKey(Items.MODIFIED_DATE)) {
-			values.put(Items.MODIFIED_DATE, now);
+		if (!values.containsKey(Contains.MODIFIED_DATE)) {
+			values.put(Contains.MODIFIED_DATE, now);
 		}
 
-		if (!values.containsKey(Items.ACCESSED_DATE)) {
-			values.put(Items.ACCESSED_DATE, now);
+		if (!values.containsKey(Contains.ACCESSED_DATE)) {
+			values.put(Contains.ACCESSED_DATE, now);
+		}
+		
+		if (!values.containsKey(Contains.SHARE_CREATED_BY)) {
+			values.put(Contains.SHARE_CREATED_BY, "");
+		}
+		
+		if (!values.containsKey(Contains.SHARE_MODIFIED_BY)) {
+			values.put(Contains.SHARE_MODIFIED_BY, "");
 		}
 		
 		// TODO: Here we should check, whether item exists already. 
@@ -571,6 +615,12 @@ public class ShoppingProvider extends ContentProvider {
 		LISTS_PROJECTION_MAP.put(Lists.CREATED_DATE, "lists.created");
 		LISTS_PROJECTION_MAP.put(Lists.MODIFIED_DATE, "lists.modified");
 		LISTS_PROJECTION_MAP.put(Lists.ACCESSED_DATE, "lists.accessed");
+		LISTS_PROJECTION_MAP.put(Lists.SHARE_NAME, "lists.share_name");
+		LISTS_PROJECTION_MAP.put(Lists.SHARE_CONTACTS, "lists.share_contacts");
+		LISTS_PROJECTION_MAP.put(Lists.SKIN_BACKGROUND, "lists.skin_background");
+		LISTS_PROJECTION_MAP.put(Lists.SKIN_FONT, "lists.skin_font");
+		LISTS_PROJECTION_MAP.put(Lists.SKIN_COLOR, "lists.skin_color");
+		LISTS_PROJECTION_MAP.put(Lists.SKIN_COLOR_STRIKETHROUGH, "lists.skin_color_strikethrough");
 		
 		CONTAINS_PROJECTION_MAP = new HashMap<String, String>();
 		CONTAINS_PROJECTION_MAP.put(Contains._ID, "contains._id");
@@ -583,6 +633,10 @@ public class ShoppingProvider extends ContentProvider {
 				Contains.MODIFIED_DATE, "contains.modified");
 		CONTAINS_PROJECTION_MAP.put(
 				Contains.ACCESSED_DATE, "contains.accessed");
+		CONTAINS_PROJECTION_MAP.put(
+				Contains.SHARE_CREATED_BY, "contains.share_created_by");
+		CONTAINS_PROJECTION_MAP.put(
+				Contains.SHARE_MODIFIED_BY, "contains.share_modified_by");
 		
 		CONTAINS_FULL_PROJECTION_MAP = new HashMap<String, String>();
 		CONTAINS_FULL_PROJECTION_MAP.put(
@@ -601,6 +655,10 @@ public class ShoppingProvider extends ContentProvider {
 				ContainsFull.MODIFIED_DATE, "contains.modified");
 		CONTAINS_FULL_PROJECTION_MAP.put(
 				ContainsFull.ACCESSED_DATE, "contains.accessed");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.SHARE_CREATED_BY, "contains.share_created_by");
+		CONTAINS_FULL_PROJECTION_MAP.put(
+				ContainsFull.SHARE_MODIFIED_BY, "contains.share_modified_by");
 		CONTAINS_FULL_PROJECTION_MAP.put(
 				ContainsFull.ITEM_NAME, "items.name as item_name");
 		CONTAINS_FULL_PROJECTION_MAP.put(

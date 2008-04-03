@@ -130,6 +130,59 @@ public abstract class Shopping {
 		 * <P>Type: INTEGER (long)</P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+		
+		/**
+		 * The name of the shared shopping list that should be
+		 * worldwide unique.
+		 * 
+		 * It is formed of the current user's email address and
+		 * a unique suffix.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_NAME = "share_name";
+		
+		/**
+		 * The comma separated list of contacts with whom this list
+		 * is shared.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_CONTACTS = "share_contacts";
+		
+		/**
+		 * Name of background image.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SKIN_BACKGROUND = "skin_background";
+		
+		/**
+		 * Name of font in list.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SKIN_FONT = "skin_font";
+		
+		/**
+		 * Color of text in list.
+		 * 
+		 * <P>Type: INTEGER (long)</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SKIN_COLOR = "skin_color";
+		
+		/**
+		 * Color of strikethrough text in list.
+		 * 
+		 * <P>Type: INTEGER (long)</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SKIN_COLOR_STRIKETHROUGH = "skin_color_strikethrough";
     }
 
 
@@ -191,6 +244,22 @@ public abstract class Shopping {
 		 * <P>Type: INTEGER (long)</P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+		
+		/**
+		 * Name of person who inserted the item.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_CREATED_BY = "share_created_by";
+		
+		/**
+		 * Name of person who changed status of the item, for example mark it as bought.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_MODIFIED_BY = "share_modified_by";
     }
 
 	/**
@@ -258,6 +327,22 @@ public abstract class Shopping {
 		 * <P>Type: INTEGER (long)</P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+		
+		/**
+		 * Name of person who inserted the item.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_CREATED_BY = "share_created_by";
+		
+		/**
+		 * Name of person who crossed out the item.
+		 * 
+		 * <P>Type: TEXT</P>
+		 * Available since release 0.1.6.
+		 */
+		public static final String SHARE_MODIFIED_BY = "share_modified_by";
 
 		// Elements from Items
 		
@@ -373,7 +458,7 @@ public abstract class Shopping {
 	 * @param itemId The id of the new item.
 	 * @param listId The id of the shopping list the item is added.
 	 * @param itemType The type of the new item
-	 * @return id of the "contains" table entry.
+	 * @return id of the "contains" table entry, or -1 if insert failed.
 	 */
 	public static long addItemToList(final long itemId, 
 			final long listId) {

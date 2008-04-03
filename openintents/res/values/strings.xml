@@ -123,10 +123,21 @@
 	<string name="clean_up_list">Clean up list</string>
 	<string name="delete_list">Delete list</string>
 	<string name="ask_new_list">Enter name of new shopping list</string>
-	<string name="no_items_marked">"No items are marked as crossed out."</string>
-	<string name="confirm_delete_list">"Do you really want to delete this shopping list?"</string>
+	<string name="no_items_marked">No items are marked as crossed out.</string>
+	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
 	<string name="no_shopping_provider">No shopping provider available.</string>
 	<string name="pick_item">Pick an item</string>
+	<string name="shopping_name_description">Enter a unique identifier for this list.</string>
+	<string name="shopping_share_description">Insert the email addresses of the contacts
+		with who you want to share this list (use 'local/id' to test locally).</string>
+	<string name="share">Share</string>
+	<string name="share_settings">Share settings</string>
+	
+	<!-- GTalk related -->
+	<string name="gtalk_invalid_username">Invalid username. Please enter your Gmail or Google apps. username.</string>
+    <string name="gtalk_service_not_connected">GTalk service not connected.</string>
+    <string name="gtalk_session_not_found">The default GTalk session cannot be found.</string>
+    <string name="gtalk_found_stale_service">The GTalk service is stale. Rebinding...</string>
 	
 	<!--     Dialog box    -->
 	<string name="cancel">Cancel</string>

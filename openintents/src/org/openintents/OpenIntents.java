@@ -34,9 +34,48 @@ public abstract class OpenIntents
     //                     Tags
     // -----------------------------------------------
     /**
-     * identifier for tag action.
+     * Identifier for tag action.
      */
     public static final String TAG_ACTION = "org.openintents.action.TAG";
+    
+    // -----------------------------------------------
+    //                     Shopping
+    // -----------------------------------------------
+    /**
+     * Change share settings for an item.
+     * 
+     * Currently implemented for shopping list.
+     */
+    public static final String SET_SHARE_SETTINGS_ACTION =
+        "org.openintents.action.SET_SHARE_SETTINGS";
+    
+    /**
+     * Change skin settings and appearance for an item.
+     * 
+     * Currently implemented for shopping list.
+     */
+    public static final String SET_SKIN_SETTINGS_ACTION =
+        "org.openintents.action.SET_SKIN_SETTINGS";
+    
+    /**
+     * Broadcasts updated information about an item or a list.
+     * 
+     * If the list does not exist on one of the recipients, it is
+     * created.
+     * If the item does not exist, it is created.
+     * This action is intended to be received through GTalk or XMPP.
+     */
+    public static final String SHARE_UPDATE_ACTION =
+    	"org.openintents.action.SHARE_UPDATE_ACTION";
+    
+    /**
+     * Inserts an item into a shared shopping list.
+     * 
+     * This action is intended to be received through GTalk or XMPP.
+     */
+    public static final String SHARE_INSERT_ACTION =
+    	"org.openintents.action.SHARE_INSERT_ACTION";
+    
 
     // -----------------------------------------------
     //                     Categories
