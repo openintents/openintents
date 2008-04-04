@@ -62,6 +62,10 @@ public class AlertList extends ListActivity{
 	private static final int MENU_GENERIC_CREATE=101;
 	private static final int MENU_GENERIC_EDIT=102;
 	private static final int MENU_DELETE=103;
+	private static final int MENU_DEBUG=104;
+
+	private static final int MENU_DEBUG_START=201;
+	private static final int MENU_DEBUG_STOP=202;
 
 
 	@Override
@@ -155,7 +159,14 @@ public class AlertList extends ListActivity{
 		}else if (iID==MENU_DELETE)
 		{
 			menuDelete();
+		}else if (iID==MENU_DEBUG_START)
+		{
+			menuDebugStart();
+		}else if (iID==MENU_DEBUG_STOP)
+		{
+			menuDebugStop();
 		}
+
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -168,8 +179,17 @@ public class AlertList extends ListActivity{
 		menu.add(0,MENU_GENERIC_CREATE,"Add Generic",R.drawable.settings001a);
 		menu.add(0,MENU_GENERIC_EDIT,"Edit Generic",R.drawable.settings001a);
 		menu.add(0,MENU_DELETE,"Delete Generic",R.drawable.settings001a);
+//		menu.add(0,MENU_DEBUG,"Debug Locations",R.drawable.settings001a);
 		//menu.add(0,MENU_SERVICESETTINGS, "ServiceSettings",R.drawable.settings001a);
+				
 		
+		android.view.SubMenu submenu;
+		submenu=menu.addSubMenu(0,MENU_DEBUG, "Debug Locations");
+		submenu.add(0,MENU_DEBUG_START,"Start Service",R.drawable.settings001a);
+		submenu.add(0,MENU_DEBUG_STOP,"Stop Service",R.drawable.settings001a);
+
+
+
 		return result;
 		
 	}
@@ -196,12 +216,24 @@ public class AlertList extends ListActivity{
 		int res=0;
 		
 		i=getSelectedItemId();
-		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI, i); // ??? _id);
+		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,i);
 		res=Alert.delete(u,null,null);
 
 
 	
 	}
 
+	private void menuDebugStart(){
+			startService(new Intent(
+					this,
+					DebugGPSService.class)
+			,null);
+	}
+	private void menuDebugStop(){
+			stopService(new Intent(
+					this,
+					DebugGPSService.class)
+			);
+	}
 
 }/*eoc*/
