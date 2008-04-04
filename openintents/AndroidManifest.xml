@@ -497,6 +497,11 @@
 			</intent-filter>
 
 	</activity>
+	<receiver android:name=".alert.LocationAlertDispatcher">
+	 <intent-filter>
+	   <action android:name="org.openintents.action.LOCATION_ALERT_DISPATCH" />
+	 </intent-filter>
+	</receiver>
 	<receiver android:name=".alert.AlertTest">
 	 <intent-filter>
 	   <action android:name="org.openintents.action.ALERT_TEST" />
