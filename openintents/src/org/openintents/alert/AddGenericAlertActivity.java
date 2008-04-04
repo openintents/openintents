@@ -33,6 +33,7 @@ import android.content.ContentValues;
 
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ArrayAdapter;
@@ -74,12 +75,14 @@ public class AddGenericAlertActivity extends Activity{
 	private TextView mIntent;
 	private TextView mIntentCat;
 	private TextView mIntentUri;
+	private Spinner	 mType;
 
-	private int Cond1Row=0;
-	private int Cond2Row=0;
-	private int IntentRow=0;
-	private int IntentCatRow=0;
-	private int IntentUriRow=0;
+	private int cond1Row=0;
+	private int cond2Row=0;
+	private int intentRow=0;
+	private int intentCatRow=0;
+	private int intentUriRow=0;
+	private int typeRow=0;
 
 	
 	public void onCreate(Bundle b){	
@@ -94,30 +97,43 @@ public class AddGenericAlertActivity extends Activity{
 		mIntentCat=(TextView)findViewById(R.id.alert_addgeneric_intentcategory);
 		mIntentUri=(TextView)findViewById(R.id.alert_addgeneric_intenturi);
 
-		Alert.mContentResolver=getContentResolver();
+		mType=(Spinner)findViewById(R.id.alert_addgeneric_type);
+		Alert.init(this);
+
+		ArrayAdapter ad= new ArrayAdapter(
+						this,
+						android.R.layout.simple_spinner_item,
+						new String[] {Alert.TYPE_GENERIC,Alert.TYPE_LOCATION,Alert.TYPE_DATE_TIME}
+						);
+		ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		mType.setAdapter(ad);
+		
 
 		if (getIntent().getAction().equals(org.openintents.OpenIntents.ADD_GENERIC_ALERT)){
         	mState=STATE_CREATE;
+			mType.setSelection(1);
         	//mChannelLink.setText("EHLO CREATOR!");
         }else if (getIntent().getAction().equals(Intent.EDIT_ACTION)){
         	mState=STATE_EDIT;
         	cUri=Uri.parse(b.getString("URI"));
 
 			mCursor=managedQuery(cUri,Alert.Generic.PROJECTION,null,null);
-			Cond1Row=mCursor.getColumnIndex(Alert.Generic.CONDITION1);
-			Cond2Row=mCursor.getColumnIndex(Alert.Generic.CONDITION2);
-			IntentRow=mCursor.getColumnIndex(Alert.Generic.INTENT);
-			IntentCatRow=mCursor.getColumnIndex(Alert.Generic.INTENT_CATEGORY);
-			IntentUriRow=mCursor.getColumnIndex(Alert.Generic.INTENT_URI);
+			cond1Row=mCursor.getColumnIndex(Alert.Generic.CONDITION1);
+			cond2Row=mCursor.getColumnIndex(Alert.Generic.CONDITION2);
+			intentRow=mCursor.getColumnIndex(Alert.Generic.INTENT);
+			intentCatRow=mCursor.getColumnIndex(Alert.Generic.INTENT_CATEGORY);
+			intentUriRow=mCursor.getColumnIndex(Alert.Generic.INTENT_URI);
+			typeRow=mCursor.getColumnIndex(Alert.Generic.TYPE);
 			if (mCursor.count()>0)
 			{
 				mCursor.first();
 
-				mCond1.setText(mCursor.getString(Cond1Row));
-				mCond2.setText(mCursor.getString(Cond2Row));
-				mIntent.setText(mCursor.getString(IntentRow));
-				mIntentCat.setText(mCursor.getString(IntentCatRow));
-				mIntentUri.setText(mCursor.getString(IntentUriRow));
+				mCond1.setText(mCursor.getString(cond1Row));
+				mCond2.setText(mCursor.getString(cond2Row));
+				mIntent.setText(mCursor.getString(intentRow));
+				mIntentCat.setText(mCursor.getString(intentCatRow));
+				mIntentUri.setText(mCursor.getString(intentUriRow));
+				//TODO: something usefull here. mType.setSelectedItem
 
 			}
 
@@ -131,14 +147,24 @@ public class AddGenericAlertActivity extends Activity{
 
 	private void createDataSet(){
 		ContentValues cv=new ContentValues();
+		Uri typedUri=Alert.Generic.CONTENT_URI;
+		String sType=(String)mType.getSelectedItem();
+		if (sType.equals(Alert.TYPE_LOCATION))
+		{
+			typedUri=Alert.Location.CONTENT_URI;
+		}else if (sType.equals(Alert.TYPE_DATE_TIME))
+		{
+			typedUri=Alert.DateTime.CONTENT_URI;
+		}
 		Log.d(_TAG,"creating dataset now");
 		cv.put(Alert.Generic.CONDITION1,mCond1.getText().toString());
 		cv.put(Alert.Generic.CONDITION2,mCond2.getText().toString());
 		cv.put(Alert.Generic.INTENT,mIntent.getText().toString());
 		cv.put(Alert.Generic.INTENT_CATEGORY,mIntentCat.getText().toString());
 		cv.put(Alert.Generic.INTENT_URI,mIntentUri.getText().toString());
+		cv.put(Alert.Generic.TYPE,sType);
 
-		cUri = Alert.insert(Alert.Generic.CONTENT_URI,cv);
+		cUri = Alert.insert(typedUri,cv);
 		mCursor=managedQuery(cUri,Alert.Generic.PROJECTION,null,null);
 
 
@@ -148,11 +174,12 @@ public class AddGenericAlertActivity extends Activity{
 
 	private void saveDataSet(){
 		Log.d(_TAG,"creating dataset now");
-		mCursor.updateString(Cond1Row,mCond1.getText().toString());
-		mCursor.updateString(Cond2Row,mCond2.getText().toString());
-		mCursor.updateString(IntentRow,mIntent.getText().toString());
-		mCursor.updateString(IntentCatRow,mIntentCat.getText().toString());
-		mCursor.updateString(IntentUriRow,mIntentUri.getText().toString());
+		mCursor.updateString(cond1Row,mCond1.getText().toString());
+		mCursor.updateString(cond2Row,mCond2.getText().toString());
+		mCursor.updateString(intentRow,mIntent.getText().toString());
+		mCursor.updateString(intentCatRow,mIntentCat.getText().toString());
+		mCursor.updateString(intentUriRow,mIntentUri.getText().toString());
+		mCursor.updateString(typeRow,((String)mType.getSelectedItem()));
 		mCursor.commitUpdates();
 
 	}
