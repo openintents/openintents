@@ -11,6 +11,22 @@
 			android:layout_weight="0"
 			android:paddingBottom="4dip"
 			android:textColor="#933100"
+			android:text="Type"
+			/>
+    	<Spinner android:id="@+id/alert.addgeneric.type"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dip"
+			android:layout_marginRight="10dip"
+			/>
+
+	</TableRow>
+	<TableRow>
+			<TextView
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:paddingBottom="4dip"
+			android:textColor="#933100"
 			android:text="Condition 1"
 			/>
     	<EditText android:id="@+id/alert.addgeneric.condition1"
