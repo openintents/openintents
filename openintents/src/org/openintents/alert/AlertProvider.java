@@ -52,8 +52,8 @@ public class AlertProvider extends ContentProvider {
 	private static final int ALERT_COMBINED_ID=105;
 	private static final int ALERT_SENSOR=106;
 	private static final int ALERT_SENSOR_ID=106;
-	private static final int ALERT_TIME=107;
-	private static final int ALERT_TIME_ID=108;
+	private static final int ALERT_DATE_TIME=107;
+	private static final int ALERT_DATE_TIME_ID=108;
 
 	private static final UriMatcher URL_MATCHER;
 	private static final HashMap<String,String> GENERIC_PROJECTION_MAP;
