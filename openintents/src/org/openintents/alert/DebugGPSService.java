@@ -51,13 +51,13 @@ public class DebugGPSService  extends Service implements Runnable{
 		
 		locMan=(LocationManager)getSystemService(android.content.Context.LOCATION_SERVICE);
         this.alive=true;
-        Thread thr = new Thread(null, this, "NewsReaderService");
+        Thread thr = new Thread(null, this, _TAG);
         thr.start();
     }
 
 
 	public void run() {		
-		  Log.d(_TAG,"BEFORE LOOPER BLOCK");
+		  //Log.d(_TAG,"BEFORE LOOPER BLOCK");
           Looper.prepare();
           
          Handler mHandler = new Handler() {
@@ -67,7 +67,7 @@ public class DebugGPSService  extends Service implements Runnable{
           };
           
         //  Looper.loop();
-		  Log.d(_TAG,"AFERT LOOPER BLOCK");
+		//  Log.d(_TAG,"AFERT LOOPER BLOCK");
 		while (this.alive){
 			
 			try{
@@ -104,7 +104,7 @@ public class DebugGPSService  extends Service implements Runnable{
 
 	@Override
 	public void onDestroy(){
-		Toast.makeText(this, "NewsReaderService stoping..", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, _TAG+" stoping..", Toast.LENGTH_SHORT).show();
 		this.alive=false;
 	//	mNM.notifyWithText(1, "thread stopping", NotificationManager.LENGTH_SHORT,null);
 	}

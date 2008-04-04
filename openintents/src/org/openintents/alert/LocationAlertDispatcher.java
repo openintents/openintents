@@ -45,6 +45,7 @@ public class LocationAlertDispatcher extends IntentReceiver{
 	public static final String _TAG="LocationAlertDispatcher";
 
 	public void onReceiveIntent(Context context,Intent intent){
+		Log.d(_TAG,"Received Intent>>"+intent.getAction()+"<<");
 		String geo="";
 		Intent i=null;
 		Alert.init(context);
