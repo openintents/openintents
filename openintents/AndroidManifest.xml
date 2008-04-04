@@ -326,6 +326,15 @@
              item IDs will be different on the sender and on the receiver side.
              All information about items and lists is carried in the bundle. -->
         <receiver android:name=".shopping.share.GTalkReceiver">
+        	<!-- We introduce the following intents as workarounds
+        	     for GTalk, m5, which does not support sending a content URI -->
+            <intent-filter>
+                <action android:name="org.openintents.action.SHARE_UPDATE_ACTION" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.openintents.action.SHARE_INSERT_ACTION" />
+            </intent-filter>
+            <!-- The following intent filters do not work with GTalk m5. -->
             <intent-filter>
                 <action android:name="org.openintents.action.SHARE_UPDATE_ACTION" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.list" />

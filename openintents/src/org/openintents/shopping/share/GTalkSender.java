@@ -63,6 +63,14 @@ public class GTalkSender {
     public static final String SENDER = "sender"; 
     
     /**
+     * Bundle marker for data (content URI).
+     * 
+     * This is only necessary for the Anroid m5 issue that
+     * data is not sent along with a GTalk message.
+     */
+    public static final String DATA = "data";
+    
+    /**
      * Constructs a new sender and binds automatically to GTalk.
      * 
      * @param mContext
@@ -212,8 +220,13 @@ public class GTalkSender {
         				modifiedRecipientList.insert(0, mGTalkSession.getJid());
         				// or getUsername() ?
         				
-    	                Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
-	        					Shopping.Lists.CONTENT_URI);
+    	                //Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
+	        			//		Shopping.Lists.CONTENT_URI);
+    	                
+        				// workaround for Anroid m5 issue: send content URI in bundle.
+        				Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION);
+        				intent.putExtra(DATA, Shopping.Lists.CONTENT_URI.toString());
+    	                
 	        	        intent.putExtra(Shopping.Lists.SHARE_NAME, shareListName);
 	        	        intent.putExtra(Shopping.Lists.SHARE_CONTACTS, 
 	        	        		modifiedRecipientList.toString());
@@ -272,9 +285,14 @@ public class GTalkSender {
     			// Recipient is remote address 
     			if (mGTalkSession != null) {
                     try {
-            			Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION,
-	        					Shopping.Items.CONTENT_URI);
-	        	        intent.putExtra(Shopping.Lists.SHARE_NAME, shareListName);
+            			//Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION,
+	        			//		Shopping.Items.CONTENT_URI);
+            			
+            			// workaround for Anroid m5 issue: send content URI in bundle.
+        				Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION);
+        				intent.putExtra(DATA, Shopping.Items.CONTENT_URI.toString());
+    	                
+        				intent.putExtra(Shopping.Lists.SHARE_NAME, shareListName);
 	        	        intent.putExtra(Shopping.Items.NAME, itemName);
 	
 	        	        mGTalkSession.sendDataMessage(recipient, intent);
@@ -350,9 +368,14 @@ public class GTalkSender {
     			// Recipient is remote address 
     			if (mGTalkSession != null) {
                     try {
-            			Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
-	        					Shopping.Items.CONTENT_URI);
-	        	        intent.putExtra(Shopping.Lists.SHARE_NAME, shareListName);
+            			//Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
+	        			//		Shopping.Items.CONTENT_URI);
+	        	        
+            			// workaround for Anroid m5 issue: send content URI in bundle.
+        				Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION);
+        				intent.putExtra(DATA, Shopping.Items.CONTENT_URI.toString());
+    	                
+            			intent.putExtra(Shopping.Lists.SHARE_NAME, shareListName);
 	        	        intent.putExtra(Shopping.Items.NAME + OLD, itemNameOld);
 	        	        intent.putExtra(Shopping.Items.NAME, itemName);
 	        	        // TODO: In m5, Android only supports Strings in bundles for GTalk

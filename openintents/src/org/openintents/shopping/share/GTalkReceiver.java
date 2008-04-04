@@ -89,6 +89,17 @@ public class GTalkReceiver extends IntentReceiver {
     	String action = intent.getAction();
     	Uri data = intent.getData();
     	Bundle bundle = intent.getExtras();
+    	
+    	if (data == null) {
+    		// Here we have to work around an GTalk issue in Android m5-rc14/15:
+    		// GTalk does not send data, so we send them in the bundle:
+    		if (bundle != null) {
+    			data = Uri.parse(bundle.getString(GTalkSender.DATA));
+    		} else {
+    			Log.i(TAG, "IntentReceiver: Received neither data nor bundle.");
+    			return;
+    		}
+    	}
         
     	Log.i(TAG, "Received intent " + action + ", data " + data.toString());
     	
