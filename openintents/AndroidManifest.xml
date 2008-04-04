@@ -497,6 +497,39 @@
 			</intent-filter>
 
 	</activity>
+	<receiver android:name=".alert.AlertTest">
+	 <intent-filter>
+	   <action android:name="org.openintents.action.ALERT_TEST" />
+	 </intent-filter>
+	</receiver>
+		<service android:name=".alert.DebugGPSService"
+				 android:enabled="true"
+		>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</service>
+		<!--  this will register all alerts after the device boots up		-->
+		<receiver android:name=".alert.services.OnBootRegisterAlerts">
+		 <intent-filter>
+		   <action android:name="android.intent.action.BOOT_COMPLETED" />
+		 </intent-filter>
+		</receiver>
+		<service android:name=".alert.services.RegisterAlertsService"
+				 android:enabled="true"
+		>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</service>
 
 </application>	 
 	
