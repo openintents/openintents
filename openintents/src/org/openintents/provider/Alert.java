@@ -22,9 +22,23 @@ import android.content.ContentValues;
 import android.net.Uri;
 import android.util.Log;
 import android.provider.BaseColumns;
+import android.content.UriMatcher;
+import android.location.LocationManager;
+import android.content.Intent;
+import android.content.Context;
+import android.os.Bundle;
+
 import java.util.*;
 
-
+/**
+ * Provider for the Alert Framework,
+ * Make sure you call init(Context c) before using any of the 
+ * convenience functions. 
+ * Location.Position is an Uri of the format geo:long,lat
+ * example: geo:3.1472,567890
+ * Location.Distance is distance in meters as long.
+ *@author Ronan 'Zero' Schwarz
+ */
 public class Alert{
 
 
@@ -34,13 +48,37 @@ public class Alert{
 	public static final String TYPE_SENSOR		="sensor";
 	public static final String TYPE_GENERIC		="generic";
 	public static final String TYPE_COMBINED	="combined";
+	public static final String TYPE_DATE_TIME	="datetime";
 
 	public static final String NATURE_USER	="user";
 	public static final String NATURE_SYSTEM="system";
 
 	public static ContentResolver mContentResolver;
 	
-		
+	private static final UriMatcher URL_MATCHER;
+
+	private static final int ALERT_GENERIC=100;
+	private static final int ALERT_GENERIC_ID=101;
+	private static final int ALERT_LOCATION=102;
+	private static final int ALERT_LOCATION_ID=103;
+	private static final int ALERT_COMBINED=104;
+	private static final int ALERT_COMBINED_ID=105;
+	private static final int ALERT_SENSOR=106;
+	private static final int ALERT_SENSOR_ID=106;
+	private static final int ALERT_DATE_TIME=107;
+	private static final int ALERT_DATE_TIME_ID=108;
+
+	//ugly hack to make the mock provider work, 
+	//see [..]
+	public static final long LOCATION_EXPIRES=1000000;
+	
+
+	
+	protected static  LocationManager locationManager;
+
+	protected static Context context;
+
+
 	public static final class Generic implements BaseColumns{
 
 		public static final Uri CONTENT_URI= Uri.parse
@@ -89,16 +127,31 @@ public class Alert{
 
 	};
 
-
+	/**
+	 * location based alerts.
+	 * you must at least specify a position
+	 */
 	public static final class Location implements BaseColumns	{
 		
 		public static final Uri CONTENT_URI= Uri.parse
 								("content://org.openintents.alert/location");
 
+		/**
+		* Location.Position is an Uri of the format geo:long,lat
+		* example: geo:3.1472,567890
+		*/
 		public static final String POSITION=Generic.CONDITION1;
 
+		/**
+		 * Location.Distance is distance in meters as long.
+		 */
 		public static final String DISTANCE=Generic.CONDITION2;
 
+		/**
+		* Type must always be of Alert.TYPE_LOCATION
+		* any other values will result in your alert not
+		* beeing processed.
+		*/
 		public static final String TYPE=Generic.TYPE;
 
 		public static final String RULE=Generic.RULE;
@@ -138,14 +191,55 @@ public class Alert{
 	};
 
 
-	public static class ACTION{
+	public static final class DateTime implements BaseColumns{
+	
+		public static final Uri CONTENT_URI=
+				Uri.parse("content://org.openintents.alert/datetime");
 		
-		public static final String POSITION_REACHED="POSITION_REACHED";
+		public static final String DATE=Generic.CONDITION1;
 
-		public static final String ADD_LOCATION_ALERT="ADD_LOCATION_ALERT";
+		public static final String TIME=Generic.CONDITION2;
+		public static final String TYPE=Generic.TYPE;
 
+		public static final String RULE=Generic.RULE;
+
+		public static final String NATURE=Generic.NATURE;
+
+		public static final String ACTIVE=Generic.ACTIVE;
+
+		public static final String ACTIVATE_ON_BOOT=Generic.ACTIVATE_ON_BOOT;
+
+		public static final String INTENT=Generic.INTENT;
+
+		public static final String INTENT_CATEGORY=Generic.INTENT_CATEGORY;
+
+		public static final String INTENT_URI=Generic.INTENT_URI;
+
+		public static final String INTENT_MIME_TYPE=Generic.INTENT_MIME_TYPE;
 		
+		public static final String DEFAULT_SORT_ORDER="";
+
+		public static final String[] PROJECTION={
+			_ID,
+			_COUNT,
+			DATE,
+			TIME,
+			TYPE,
+			RULE,
+			NATURE,
+			ACTIVE,
+			ACTIVATE_ON_BOOT,
+			INTENT,
+			INTENT_CATEGORY,
+			INTENT_URI,
+			INTENT_MIME_TYPE
+		};			
+
 	};
+
+
+
+
 
 
 	/**
@@ -153,9 +247,27 @@ public class Alert{
 	 *@param cv the ContentValues that will be inserted to
 	*/
 	public static Uri insert(Uri uri, ContentValues cv){
-
-		return mContentResolver.insert(uri,cv);
+		Uri res=null;
+		int type=URL_MATCHER.match(uri);
 		
+		res=mContentResolver.insert(uri,cv);
+		Log.d(_TAG," insert, result>>"+res+"<<");
+		if (res!=null)
+		{//register alert
+			Log.d(_TAG,"uri>>"+uri+"<< matched>>"+type+"<<");
+			switch (type)
+			{
+			case ALERT_LOCATION:
+				registerLocationAlert(cv);
+				break;
+			case ALERT_DATE_TIME:
+				registerDateTimeAlert(cv);
+				break;
+			
+			}	
+		
+		}
+		return res;		
 	}
 
 
@@ -179,6 +291,81 @@ public class Alert{
 	 */
 	public static int update(Uri uri,ContentValues values, String selection, String[] selectionArgs){
 		return mContentResolver.update(uri,values,selection,selectionArgs);
+	}
+
+
+	public static void registerLocationAlert(ContentValues cv){
+		
+
+		try
+		{
+			Uri gUri=Uri.parse(cv.getAsString(Location.POSITION));
+			float	dist=cv.getAsFloat(Location.DISTANCE);
+			String geo		=gUri.getSchemeSpecificPart();
+			String loc[]	=geo.split(",");
+			double	latitude=Double.parseDouble(loc[0]);
+			double	longitude=Double.parseDouble(loc[1]);			
+
+			Intent i= new Intent();
+			//i.setClassName("org.openintents.alert","LocationAlertDispatcher");
+			i.setAction("org.openintents.action.LOCATION_ALERT_DISPATCH");
+			Bundle b= new Bundle();
+			b.putString(Alert.Location.POSITION,geo);
+			i.putExtras(b);
+
+			locationManager.addProximityAlert(
+				latitude,
+				longitude,
+				dist,
+				LOCATION_EXPIRES,
+				i
+				);
+			Log.d(_TAG,"Registerd alert geo:"+geo+" dist:"+dist);
+		}
+		catch (ArrayIndexOutOfBoundsException aioe)
+		{
+			Log.e(_TAG,"Error parsing geo uri. not in format geo:lat,long");
+		}catch(NumberFormatException nfe)
+		{
+			Log.e(_TAG,"Error parsing longitude/latitude. Not A Number (NAN)");
+		}catch(NullPointerException npe){
+			Log.e(_TAG,"Nullpointer occured. did you call init(context) ?");
+			npe.printStackTrace();
+		}
+
+		//registerReceiver(org.openintents.alert.LocationAlertDispatcher,);	
+	}
+
+
+	public static void init(Context c){
+		context=c;
+		locationManager=(LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
+		mContentResolver=context.getContentResolver();
+	}
+
+
+	public static void registerDateTimeAlert(ContentValues cv){
+		
+		long myDate=cv.getAsLong(DateTime.DATE);
+		long myTime=cv.getAsLong(DateTime.TIME);
+
+
+
+
+	}
+
+	static {
+		
+		URL_MATCHER=new UriMatcher(UriMatcher.NO_MATCH);
+		
+		URL_MATCHER.addURI("org.openintents.alert","generic/",ALERT_GENERIC);
+		URL_MATCHER.addURI("org.openintents.alert","generic/#",ALERT_GENERIC_ID);
+		URL_MATCHER.addURI("org.openintents.alert","location",ALERT_LOCATION);
+		URL_MATCHER.addURI("org.openintents.alert","location/#",ALERT_LOCATION_ID);
+		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
+		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
+		URL_MATCHER.addURI("org.openintents.alert","",6000);
+		URL_MATCHER.addURI("org.openintents.alert","/",6001);
 	}
 
 }/*eoc*/
