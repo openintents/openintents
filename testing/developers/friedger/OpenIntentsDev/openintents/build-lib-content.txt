@@ -1,5 +1,0 @@
-org/openintents/provider/*.class
-org/openintents/OpenIntents.class
-org/openintents/hardware/Sensors.class
-org/openintents/hardware/SensorsPlus.class
-org/openintents/hardware/SensorSimulatorClient.class
