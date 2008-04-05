@@ -59,7 +59,7 @@ public class IntentsListView extends Activity {
 					intent.setAction(action);
 					List<ResolveInfo> activities = this.getPackageManager()
 							.queryIntentActivities(intent, flags);
-					Log.i(LOG_TAG, intent + ":" + activities.size());
+					//Log.i(LOG_TAG, intent + ":" + activities.size());
 
 					resolveListToMap(intent, activities, map);
 				}
@@ -69,7 +69,7 @@ public class IntentsListView extends Activity {
 		intent.setAction(OpenIntents.TAG_ACTION);
 		List<ResolveInfo> activities = this.getPackageManager()
 				.queryIntentActivities(intent, flags);
-		Log.i(LOG_TAG, intent + ":" + activities.size());
+		//Log.i(LOG_TAG, intent + ":" + activities.size());
 
 		resolveListToMap(intent, activities, map);
 
@@ -122,7 +122,7 @@ public class IntentsListView extends Activity {
 							map.put(type, set);
 						}						
 						set.add(ri.filter);
-						Log.i("test", type + ": " + intent);
+						//Log.i("test", type + ": " + intent);
 
 					}
 				}

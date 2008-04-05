@@ -188,7 +188,7 @@ public class TypesListView extends ListActivity {
 
 		List<ResolveInfo> activities = this.getPackageManager()
 				.queryIntentActivities(intent, flags);
-		Log.i(LOG_TAG, intent + ":" + activities.size());
+		//Log.i(LOG_TAG, intent + ":" + activities.size());
 
 		resolveListToMap(intent, activities, map);
 	}
@@ -210,7 +210,7 @@ public class TypesListView extends ListActivity {
 							map.put(type, set);
 						}
 						set.add(ri.filter);
-						Log.i("test", type + ": " + intent);
+						//Log.i("test", type + ": " + intent);
 
 					}
 				}
