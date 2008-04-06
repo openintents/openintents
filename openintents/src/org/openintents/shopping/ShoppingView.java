@@ -1097,7 +1097,7 @@ public class ShoppingView
             }
         })
        .setOnCancelListener(new OnCancelListener() {
-			@Override
+			
 			public void onCancel(DialogInterface arg0) {
 				int themeId = loadListTheme();
                 setListTheme(themeId);
