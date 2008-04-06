@@ -319,10 +319,15 @@ public class LocationsView extends Activity {
 	@Override
 	protected void onFreeze(Bundle outState) {
 		super.onFreeze(outState);
-		Log.i(TAG, "freeze position: " + mList.getSelectedItemPosition());
 		outState.putInt(MLAST, mList.getSelectedItemPosition());
+		stopManagingCursor(c);
 	}
 
+	@Override
+	protected void onResume() {
+		startManagingCursor(c);
+	}
+	
 	private void viewLocation(Cursor cursor) {
 		String geoString = getGeoString(cursor);
 		Uri uri;
