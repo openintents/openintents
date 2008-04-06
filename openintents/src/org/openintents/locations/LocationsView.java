@@ -113,11 +113,7 @@ public class LocationsView extends Activity {
 				}
 			}
 
-		});
-
-		if (icicle != null && icicle.get(MLAST) != null) {
-			mlastPosition = icicle.getInt(MLAST);
-		}
+		});		
 	}
 
 	private String getGeoString(Cursor cursor) {
@@ -307,11 +303,12 @@ public class LocationsView extends Activity {
 		} else if (requestCode == REQUEST_PICK_INTENT
 				&& resultCode == Activity.RESULT_OK) {
 
-			Log.i("locationsView", "id = " + mList.getSelectedItemId());
-			Log.i("locationsView", "pos = " + mList.getSelectedItemPosition());
-			Log.i("locationsView", "last pos = " + mlastPosition);
-
 			Cursor cursor = (Cursor) mList.getAdapter().getItem(mlastPosition);
+			if (cursor == null) {
+				c.requery();
+				cursor = (Cursor) mList.getAdapter().getItem(mlastPosition);
+			}
+
 			String locationUri = getGeoString(cursor);
 			addAlert(locationUri, data, extras.getString(Intents.EXTRA_TYPE),
 					extras.getString(Intents.EXTRA_ACTION), extras
