@@ -197,7 +197,7 @@
 	<string name="alert_pick_location">pick location</string>
 	<string name="alert_pick_action">pick action</string>
 	<string name="alert_pick_date_time">pick date/time</string>
-	<string name="alert_label_location">Location (geo://dd.cccc:dd.cccc)</string>
+	<string name="alert_label_location">Location (geo:dd.cccc:dd.cccc)</string>
 	<string name="alert_label_range">Range (m)</string>
 	<string name="alert_label_date_time">Date/time</string>
 	<string name="alert_label_unused">Unused</string>
