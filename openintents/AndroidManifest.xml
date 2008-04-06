@@ -321,6 +321,32 @@
             </intent-filter>
         </activity>
         
+        
+		<activity android:name=".shopping.share.ThemeSettingsActivity" 
+				android:label="@string/theme_settings"
+				android:theme="@android:style/Theme.Dialog"
+				android:icon="@drawable/shoppinglisttheme001a">
+            <!-- This activity implements an alternative action that can be
+                 performed on notes: editing their title.  It can be used as
+                 a default operation if the user invokes this action, and is
+                 available as an alternative action for any note data. -->
+            <intent-filter android:label="@string/theme"
+            	android:icon="@drawable/shoppinglisttheme001a">
+                <!-- Edit the share settings. -->
+                <action android:name="org.openintents.action.SET_THEME_SETTINGS" />
+                <!-- DEFAULT: execute if being directly invoked. -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- ALTERNATIVE: show as an alternative action when the user is
+                     working with this type of data. -->
+                <!-- <category android:name="android.intent.category.ALTERNATIVE" />  -->
+                <!-- SELECTED_ALTERNATIVE: show as an alternative action the user
+                     can perform when selecting this type of data. -->
+                <!-- <category android:name="android.intent.category.SELECTED_ALTERNATIVE" /> -->
+                <!-- This is the data type we operate on. -->
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
+            </intent-filter>
+        </activity>
+        
         <!-- GTalk support for shopping list -->
         <!-- SHARE actions can only supply cursor.dir data, because the
              item IDs will be different on the sender and on the receiver side.

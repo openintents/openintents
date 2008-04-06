@@ -188,6 +188,9 @@ public class GTalkReceiver extends IntentReceiver {
 	            
 	            c.requery();
 	        }
+	        
+	        // Finally send notification that data changed:
+	        mContext.broadcastIntent(new Intent(OpenIntents.REFRESH_ACTION));
 		
 		} else {
 			Log.e(TAG, "Bundle received is null");
@@ -242,6 +245,10 @@ public class GTalkReceiver extends IntentReceiver {
 	        	
 	        	Shopping.addItemToList(itemId, listId);
 	        }
+	        
+
+	        // Finally send notification that data changed:
+	        mContext.broadcastIntent(new Intent(OpenIntents.REFRESH_ACTION));
 		
 		} else {
 			Log.e(TAG, "Bundle received is null");
@@ -377,6 +384,9 @@ public class GTalkReceiver extends IntentReceiver {
 		        	*/
 		        }
 	        }
+	        
+	        // Finally send notification that data changed:
+	        mContext.broadcastIntent(new Intent(OpenIntents.REFRESH_ACTION));
 		
 		} else {
 			Log.e(TAG, "Bundle received is null");

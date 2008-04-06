@@ -35,22 +35,26 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.IntentReceiver;
+import android.content.DialogInterface.OnCancelListener;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.IContentObserver;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Spannable;
-import android.text.style.ForegroundColorSpan;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewInflate;
 import android.view.WindowManager;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
@@ -63,6 +67,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -87,6 +92,7 @@ public class ShoppingView
     private static final int MENU_DELETE_LIST = Menu.FIRST + 2;
     
     private static final int MENU_SHARE = Menu.FIRST + 3;
+    private static final int MENU_THEME = Menu.FIRST + 4;
 
     // TODO: Implement the following menu items
     private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
@@ -185,12 +191,15 @@ public class ShoppingView
     private Spinner mSpinnerListFilter;
     private Cursor mCursorListFilter;
     private static final String[] mStringListFilter =
-            new String[]{Lists._ID, Lists.NAME, Lists.IMAGE, Lists.SHARE_NAME, Lists.SHARE_CONTACTS};
+            new String[]{Lists._ID, Lists.NAME, Lists.IMAGE, 
+    		Lists.SHARE_NAME, Lists.SHARE_CONTACTS,
+    		Lists.SKIN_BACKGROUND};
     private static final int mStringListFilterID = 0;
     private static final int mStringListFilterNAME = 1;
     private static final int mStringListFilterIMAGE = 2;
     private static final int mStringListFilterSHARENAME = 3;
     private static final int mStringListFilterSHARECONTACTS = 4;
+    private static final int mStringListFilterSKINBACKGROUND = 5;
     
 
     private ListView mListItems;
@@ -225,6 +234,22 @@ public class ShoppingView
     // State data to be stored when freezing:
     private final String ORIGINAL_ITEM = "original item";
     
+    // Skins --------------------------
+    public Typeface mTypeface;
+    public Typeface mTypefaceHandwriting;
+    public Typeface mTypefaceDigital;
+    
+    public boolean mUpperCaseFont;
+    public int mTextColor;
+    public int mMarkTextColor;
+    
+    public int mMarkType;
+    public static final int mMarkCheckbox = 1;
+    public static final int mMarkStrikethrough = 2;
+    public static final int mMarkAddtext = 3;
+    
+    
+    // GTalk --------------------------
     private GTalkSender mGTalkSender;
 
     /**
@@ -293,8 +318,22 @@ public class ShoppingView
             return;
         }
 
+        // Read fonts
+        mTypefaceHandwriting = Typeface.createFromAsset(getAssets(),
+			"fonts/AnkeHand.ttf");
+        mTypefaceDigital = Typeface.createFromAsset(getAssets(),
+    		"fonts/Crysta.ttf");
+		mTypeface = null;
+		mTypeface = mTypefaceHandwriting;
+		
+		
+
         // hook up all buttons, lists, edit text:
         createView();
+        
+        // Called after createView
+        // (as we need the view already retrieved from the ids.
+		setListTheme(1);
 
         // populate the lists
         fillListFilter();
@@ -311,7 +350,10 @@ public class ShoppingView
 
         // now fill all items
         fillItems();
-
+        
+        // Set the theme based on the selected list:
+        setListTheme(loadListTheme());
+        
         if (icicle != null)
         {
             String prevText = icicle.getString(ORIGINAL_ITEM);
@@ -323,6 +365,9 @@ public class ShoppingView
 
         // set focus to the edit line:
         mEditText.requestFocus();
+        
+        // Create Intent receiver:
+        mIntentReceiver = new ListIntentReceiver();
     }
 
 
@@ -348,15 +393,32 @@ public class ShoppingView
         
         if (! mUpdating) {
         	mUpdating = true;
-        	mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_UPDATE_CURSORS), mUpdateInterval);
+        	// mHandler.sendMessageDelayed(mHandler.obtainMessage(MESSAGE_UPDATE_CURSORS), mUpdateInterval);
         }
         
         // Bind GTalk service
         mGTalkSender.bindGTalkService();
+        
+        // Register intent receiver for refresh intents:
+        IntentFilter intentfilter = new IntentFilter(OpenIntents.REFRESH_ACTION);
+        registerReceiver(mIntentReceiver, intentfilter);
     }
 
 
-    @Override
+    /* (non-Javadoc)
+	 * @see android.app.Activity#onPause()
+	 */
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		
+		// Unregister refresh intent receiver
+		unregisterReceiver(mIntentReceiver);
+	}
+
+
+	@Override
     protected void onFreeze(Bundle outState)
     {
         super.onFreeze(outState);
@@ -386,6 +448,8 @@ public class ShoppingView
                             int position, long id)
                     {
                         fillItems();
+                        // Now set the theme based on the selected list:
+                        setListTheme(loadListTheme());
                         checkListLength();
                     }
 
@@ -578,6 +642,8 @@ public class ShoppingView
 
         // fillItems();
         
+        mListItems.invalidate();
+        
 
         // If we share items, send this item also to other lists:
     	if (! recipients.equals("")) {
@@ -624,6 +690,10 @@ public class ShoppingView
         menu.add(0, MENU_SHARE, R.string.share,
                 R.drawable.contact_share001a)
                 .setShortcut('3', 's');
+        
+        menu.add(0, MENU_THEME, R.string.theme,
+        		R.drawable.shoppinglisttheme001a)
+        		.setShortcut('4', 't');
                 
 
         /*
@@ -698,6 +768,10 @@ public class ShoppingView
             case MENU_SHARE:
             	setShareSettings();
             	return true;
+            	
+            case MENU_THEME:
+            	setThemeSettings();
+            	return true;
 
             case MENU_SETTINGS:
                 Intent intent = new Intent(Intent.MAIN_ACTION,
@@ -758,7 +832,8 @@ public class ShoppingView
         mDialog.setTitle(getString(R.string.ask_new_list));
 
         EditText et = (EditText) mDialog.findViewById(R.id.edittext);
-        et.setText(getString(R.string.new_list));
+        //et.setText(getString(R.string.new_list));
+        et.setHint(getString(R.string.new_list_hint));
         et.selectAll();
 
         // Accept OK also when user hits "Enter"
@@ -818,6 +893,9 @@ public class ShoppingView
         fillListFilter();
 
         setSelectedListId(newId);
+        
+        // Now set the theme based on the selected list:
+        setListTheme(loadListTheme());
     }
 
     /**
@@ -921,6 +999,9 @@ public class ShoppingView
         // Update view
         fillListFilter();
         fillItems();
+        
+        // Now set the theme based on the selected list:
+        setListTheme(loadListTheme());
     }
 
     /** 
@@ -934,6 +1015,199 @@ public class ShoppingView
 				mListUri);
 		startSubActivity(intent, SUBACTIVITY_LIST_SHARE_SETTINGS);
     	
+    }
+    
+    /**
+     * Displays a dialog to select a theme for the current shopping list.
+     */
+    void setThemeSettings() {
+
+        /* Display a custom progress bar */
+        ViewInflate inflate = (ViewInflate) getSystemService(Context.INFLATE_SERVICE);
+        final View view = inflate.inflate(R.layout.shopping_theme_settings, null, null);
+        
+        final RadioGroup radiogroup = (RadioGroup) view.findViewById(R.id.radiogroup);
+        
+        // Set Theme according to database
+        radiogroup.check(R.id.radio1);
+        
+        int themeId = loadListTheme();
+        switch(themeId) {
+        case 1:
+        	radiogroup.check(R.id.radio1);
+        	break;
+        case 2:
+        	radiogroup.check(R.id.radio2);
+        	break;
+        case 3:
+        	radiogroup.check(R.id.radio3);
+        	break;
+        }
+        
+        radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        	
+        	public void onCheckedChanged(RadioGroup group, int checkedId) {
+        		switch (checkedId) {
+                case R.id.radio1:
+                	setListTheme(1);
+                	break;
+                case R.id.radio2:
+                	setListTheme(2);
+                	break;
+                case R.id.radio3:
+                	setListTheme(3);
+                	break;
+                	
+                }
+        	}
+        });
+                
+        new AlertDialog.Builder(ShoppingView.this)
+        .setIcon(R.drawable.shoppinglisttheme001a)
+        .setTitle(R.string.theme_pick)
+        .setView(view)
+        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                
+                /* User clicked Yes so do some stuff */
+                int r = radiogroup.getCheckedRadioButtonId();
+                int themeId = 0;
+                switch (r) {
+                case R.id.radio1:
+                	themeId = 1;
+                	break;
+                case R.id.radio2:
+                	themeId = 2;
+                	break;
+                case R.id.radio3:
+                	themeId = 3;
+                	break;
+                }
+                saveListTheme(themeId);
+                setListTheme(themeId);
+
+            }
+        })
+        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                
+                /* User clicked No so do some stuff */
+            	int themeId = loadListTheme();
+                setListTheme(themeId);
+            }
+        })
+       .setOnCancelListener(new OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface arg0) {
+				int themeId = loadListTheme();
+                setListTheme(themeId);
+			}
+       })
+       .show();
+        
+    }
+    
+    /**
+     * Set theme according to Id.
+     * @param themeId
+     */
+    void setListTheme(int themeId) {
+    	switch (themeId) {
+    	case 1:
+    		mTypeface = null;
+    		mUpperCaseFont = false;
+    		mTextColor = 0xffffffff; // white
+    		mMarkTextColor = 0xffcccccc; // white gray
+    		mMarkType = mMarkCheckbox;
+
+    		mLinearLayoutBackground.setBackground(null);
+    		
+    		break;
+    	case 2:
+    		mTypeface = mTypefaceHandwriting;
+    		mUpperCaseFont = false;
+    		mTextColor = 0xff000000; // black
+    		mMarkTextColor = 0xff008800; // dark green
+    		mMarkType = mMarkStrikethrough;
+    		
+    		mLinearLayoutBackground.setBackground(R.drawable.shoppinglist01d);
+    		
+    		break;
+    	case 3:
+    		mTypeface = mTypefaceDigital;
+    		
+    		// Digital only supports upper case fonts.
+    		mUpperCaseFont = true;
+    		mTextColor = 0xffff0000; // red
+    		mMarkTextColor = 0xff00ff00; // light green
+    		mMarkType = mMarkAddtext;
+    		
+    		mLinearLayoutBackground.setBackground(R.drawable.theme_android);
+            
+    		break;
+    	}
+    	
+    	mListItems.invalidate();
+    	if (mCursorItems != null) {
+    		mCursorItems.requery();
+    	}
+    }
+    
+    /** 
+     * Loads the theme settings for the currently selected theme.
+     * 
+     * Currently only one of 3 hardcoded themes are available.
+     * These are stored in 'skin_background' as '1', '2', or '3'.
+     * 
+     * @return 
+     */
+    public int loadListTheme() {
+    	/*
+    	long listId = getSelectedListId();
+        if (listId < 0) {
+        	// No valid list - probably view is not active
+        	// and no item is selected.
+        	return 1; // return default theme
+        }
+        */
+    	
+    	// Return default theme if something unexpected happens:
+    	if (mCursorListFilter == null) return 1;
+    	if (mCursorListFilter.position() < 0) return 1;
+        
+        // mCursorListFilter has been set to correct position
+        // by calling getSelectedListId(),
+        // so we can read out further elements:
+        String skinBackground = mCursorListFilter.getString(mStringListFilterSKINBACKGROUND);
+        
+        int themeId;
+        try {
+        	themeId = Integer.parseInt(skinBackground);
+        } catch (NumberFormatException e) {
+        	themeId = 1;
+        }
+        if (themeId < 1 || themeId > 3) {
+        	themeId = 1;
+        }
+    	return themeId;
+    }
+    
+    public void saveListTheme(int themeId) {
+    	long listId = getSelectedListId();
+        if (listId < 0) {
+        	// No valid list - probably view is not active
+        	// and no item is selected.
+        	return; // return default theme
+        }
+        
+        if (themeId < 1 || themeId > 3) {
+        	themeId = 1;
+        }
+    	
+        mCursorListFilter.updateString(mStringListFilterSKINBACKGROUND, "" + themeId);
+        
+        mCursorListFilter.commitUpdates();
+        mCursorListFilter.requery();
     }
     
     ///////////////////////////////////////////////////////
@@ -1118,6 +1392,7 @@ public class ShoppingView
                 android.R.layout.simple_spinner_dropdown_item);
         
         mSpinnerListFilter.setAdapter(adapter);
+        
 
     }
 
@@ -1367,33 +1642,67 @@ public class ShoppingView
 			TextView t = (TextView) view.findViewById(R.id.name);
             // we have a check box now.. more visual and gets the point across
             CheckBox c = (CheckBox) view.findViewById(R.id.check);
-            // start with a clean slate.. not checked
-            c.setChecked(false);
+            
+            // Set font
+            t.setTypeface(mTypeface);
+            
+            // Check for upper case:
+            if (mUpperCaseFont) {
+            	// Only upper case should be displayed
+            	CharSequence cs = t.getText();
+            	t.setText(cs.toString().toUpperCase());
+            }
+            
+            t.setTextColor(mTextColor);
+            
+            
+            if (mMarkType == mMarkCheckbox) {
+        		c.setVisibility(CheckBox.VISIBLE);
+        		if (cursor.getLong(mStringItemsSTATUS)
+                        == Shopping.Status.BOUGHT)
+                {
+        			c.setChecked(true);
+                } else {
+                	c.setChecked(false);
+                }
+        	} else {
+        		c.setVisibility(CheckBox.GONE);
+        	}
+            
             if (cursor.getLong(mStringItemsSTATUS)
                     == Shopping.Status.BOUGHT)
             {
-                // now check the item since its bought
-                c.setChecked(true);
-                // We have bought the item,
-                // so we strike it through:
+            	t.setTextColor(mMarkTextColor);
+            	
+            	if (mMarkType == mMarkStrikethrough) {
+            		// We have bought the item,
+                    // so we strike it through:
 
-                // First convert text to 'spannable'
-                t.setText(t.getText(), TextView.BufferType.SPANNABLE);
-                Spannable str = (Spannable) t.getText();
+                    // First convert text to 'spannable'
+                    t.setText(t.getText(), TextView.BufferType.SPANNABLE);
+                    Spannable str = (Spannable) t.getText();
 
-                // Strikethrough
-                str.setSpan(new StrikethroughSpan(), 0, str.length(),
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    // Strikethrough
+                    str.setSpan(new StrikethroughSpan(), 0, str.length(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                // apply color
-                // TODO: How to get color from resource?
-                //Drawable colorStrikethrough = context
-                //	.getResources().getDrawable(R.drawable.strikethrough);
-//				str.setSpan(new ForegroundColorSpan(0xFF006600), 0,
-                str.setSpan(new ForegroundColorSpan
-                        (getResources().getColor(R.color.darkgreen)), 0,
-						str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-				// color: 0x33336600
+                    // apply color
+                    // TODO: How to get color from resource?
+                    //Drawable colorStrikethrough = context
+                    //	.getResources().getDrawable(R.drawable.strikethrough);
+//    				str.setSpan(new ForegroundColorSpan(0xFF006600), 0,
+                    //str.setSpan(new ForegroundColorSpan
+                    //        (getResources().getColor(R.color.darkgreen)), 0,
+    				//		str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+    				// color: 0x33336600
+            	}
+            	
+            	if (mMarkType == mMarkAddtext) {
+            		// very simple
+            		t.append("... OK");
+            	}
+            	
+                
 				
 			}
 		}
@@ -1418,6 +1727,26 @@ public class ShoppingView
         }
     };
 
+    /**
+     * Listens for intents for updates in the database.
+     * @param context
+     * @param intent
+     */
+    public class ListIntentReceiver extends IntentReceiver { 
+	
+	    public void onReceiveIntent(Context context, Intent intent) {
+	    	String action = intent.getAction();
+	    	Log.i(TAG, "ShoppingList received intent " + action);
+	    	
+	    	if (action.equals(OpenIntents.REFRESH_ACTION)) {
+	    		mCursorListFilter.requery();
+	    		
+	    	}
+	    }
+    }
+    
+    ListIntentReceiver mIntentReceiver;
+    
     /**
      * This method is called when the sending activity has finished, with the
      * result it supplied.

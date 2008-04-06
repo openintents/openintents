@@ -50,12 +50,12 @@ public abstract class OpenIntents
         "org.openintents.action.SET_SHARE_SETTINGS";
     
     /**
-     * Change skin settings and appearance for an item.
+     * Change theme settings or appearance for an item.
      * 
      * Currently implemented for shopping list.
      */
-    public static final String SET_SKIN_SETTINGS_ACTION =
-        "org.openintents.action.SET_SKIN_SETTINGS";
+    public static final String SET_THEME_SETTINGS_ACTION =
+        "org.openintents.action.SET_THEME_SETTINGS";
     
     /**
      * Broadcasts updated information about an item or a list.
@@ -66,7 +66,7 @@ public abstract class OpenIntents
      * This action is intended to be received through GTalk or XMPP.
      */
     public static final String SHARE_UPDATE_ACTION =
-    	"org.openintents.action.SHARE_UPDATE_ACTION";
+    	"org.openintents.action.SHARE_UPDATE";
     
     /**
      * Inserts an item into a shared shopping list.
@@ -74,7 +74,13 @@ public abstract class OpenIntents
      * This action is intended to be received through GTalk or XMPP.
      */
     public static final String SHARE_INSERT_ACTION =
-    	"org.openintents.action.SHARE_INSERT_ACTION";
+    	"org.openintents.action.SHARE_INSERT";
+    
+    /**
+     * Notifies a list that the content changed.
+     */
+    public static final String REFRESH_ACTION =
+    	"org.openintents.action.REFRESH";
     
 
     // -----------------------------------------------
