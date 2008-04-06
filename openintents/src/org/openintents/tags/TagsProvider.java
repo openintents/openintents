@@ -161,7 +161,6 @@ public class TagsProvider extends ContentProvider {
 		}
 
 		Long now = Long.valueOf(System.currentTimeMillis());
-		Resources r = Resources.getSystem();
 
 		// Make sure that the fields are all set
 		if (!values.containsKey(Tags.CREATED_DATE)) {
@@ -194,12 +193,19 @@ public class TagsProvider extends ContentProvider {
 		// lookup id for uri or create new
 		replaceUriById(values, Tags.CONTENT_ID, Tags.URI_2, null, DEFAULT_TAG);
 
+		Long tagId = values.getAsLong(Tags.TAG_ID);
+		Long contentId = values.getAsLong(Tags.CONTENT_ID);
+		if ( tagId == null || tagId == -1 || contentId == null || contentId == -1){
+			return null;
+		}
+		
 		// check whether tag already exists
-		Cursor existingTag = mDB.query("tag", new String[] { Tags._ID },
-				"tag_id = ? AND content_id = ?", new String[] {
-						String.valueOf(values.get(Tags.TAG_ID)),
-						String.valueOf((String) values.get(Tags.CONTENT_ID)) },
-				null, null, null);
+		Cursor existingTag = mDB
+				.query("tag", new String[] { Tags._ID },
+						"tag_id = ? AND content_id = ?", new String[] {
+								String.valueOf(tagId),
+								String.valueOf(contentId) }, null,
+						null, null);
 
 		if (!existingTag.next()) {
 
@@ -281,8 +287,12 @@ public class TagsProvider extends ContentProvider {
 		if (type != null) {
 			values.put(Contents.TYPE, type);
 		}
-		long rowId = mDB.insert("content", "content", values);
-		return rowId;
+		if (!TextUtils.isEmpty(uri)) {
+			long rowId = mDB.insert("content", "content", values);
+			return rowId;
+		} else {
+			return -1;
+		}
 	}
 
 	@Override

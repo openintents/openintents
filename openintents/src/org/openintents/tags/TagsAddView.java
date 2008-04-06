@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -220,10 +221,13 @@ public class TagsAddView extends Activity {
 		boolean unique = mUnique.isChecked();
 		String[] tags = tagString.split(mTagFilter.getSeparator());
 		for (String tag : tags) {
-			if (unique){
-				mTag.insertUniqueTag(tag.trim(), mUri);
-			} else {
-				mTag.insertTag(tag.trim(), mUri);
+			tag = tag.trim();
+			if (!TextUtils.isEmpty(tag)) {
+				if (unique) {
+					mTag.insertUniqueTag(tag, mUri);
+				} else {
+					mTag.insertTag(tag, mUri);
+				}
 			}
 		}
 	}

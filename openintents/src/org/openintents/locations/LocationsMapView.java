@@ -13,6 +13,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -167,7 +168,9 @@ public class LocationsMapView extends MapActivity {
 
 			for (int i = 0; i < tags.length; i++) {
 				String s = tags[i].trim();
-				mTag.insertTag(s, content);
+				if (!TextUtils.isEmpty(s)) {
+					mTag.insertTag(s, content);
+				}
 			}
 
 			// delete removed tags
@@ -193,8 +196,10 @@ public class LocationsMapView extends MapActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		boolean superResult = super.onCreateOptionsMenu(menu);
-		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center, R.drawable.location_center001a);
-		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values, R.drawable.restore001a);
+		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center,
+				R.drawable.location_center001a);
+		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values,
+				R.drawable.restore001a);
 		return superResult;
 	}
 
@@ -204,13 +209,13 @@ public class LocationsMapView extends MapActivity {
 		case MENU_USE_CENTER:
 			Point p = view.getMapCenter();
 			updateUsingPoint(p);
-			
+
 			break;
 		case MENU_RESTORE_VALUES:
 			mEditTags.setText(mOriginalTags);
 			view.getController().centerMapTo(
-					new Point(orgPoint.getLatitudeE6(), orgPoint.getLongitudeE6()),
-					true);
+					new Point(orgPoint.getLatitudeE6(), orgPoint
+							.getLongitudeE6()), true);
 			updateUsingPoint(orgPoint);
 			break;
 
@@ -228,14 +233,14 @@ public class LocationsMapView extends MapActivity {
 			values.put(Locations.LATITUDE, loc.getLatitude());
 			values.put(Locations.LONGITUDE, loc.getLongitude());
 			getContentResolver().update(
-					ContentUris.withAppendedId(Locations.CONTENT_URI,
-							pointId), values, null, null);
+					ContentUris.withAppendedId(Locations.CONTENT_URI, pointId),
+					values, null, null);
 		} else {
 			Uri uri = mLocations.addLocation(loc);
 			pointId = Integer.parseInt(uri.getLastPathSegment());
 		}
 		point = p;
-					
+
 		view.createOverlayController().add(new LocationsMapOverlay(this), true);
 	}
 }
