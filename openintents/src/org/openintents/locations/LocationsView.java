@@ -25,6 +25,7 @@ import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -35,17 +36,16 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.ContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.SimpleCursorAdapter.ViewBinder;
 
 /**
@@ -64,15 +64,18 @@ public class LocationsView extends Activity {
 	protected static final int MENU_MANAGE_EXTRAS = 6;
 
 	private static final int TAG_ACTIVITY = 1;
+	private static final int REQUEST_PICK_INTENT = 2;
 
 	private org.openintents.provider.Location mLocation;
 	private Cursor c;
 
 	/** tag for logging */
 	private static final String TAG = "locationsView";
-	private static final int REQUEST_PICK_INTENT = 1;
+
+	private static final String MLAST = "mlast";
 
 	private ListView mList;
+	private int mlastPosition;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -94,15 +97,35 @@ public class LocationsView extends Activity {
 
 			public void onItemClick(AdapterView parent, View v, int position,
 					long id) {
-				if (getCallingActivity() != null && Intent.PICK_ACTION.equals(getIntent().getAction())){					
-					setResult(Activity.RESULT_OK, ContentUris.withAppendedId(Locations.CONTENT_URI, id).toString());
+				if (getCallingActivity() != null
+						&& Intent.PICK_ACTION.equals(getIntent().getAction())) {
+
+					Cursor cursor = (Cursor) mList.getAdapter().getItem(
+							position);
+					String geo = getGeoString(cursor);
+					Bundle extras = new Bundle();
+					extras.putString(Locations.EXTRA_GEO, geo);
+					setResult(Activity.RESULT_OK, ContentUris.withAppendedId(
+							Locations.CONTENT_URI, id).toString(), extras);
 					finish();
-		 		} else {
-		 			viewLocationWithMapView(position);
-		 		}
+				} else {
+					viewLocationWithMapView(position);
+				}
 			}
 
 		});
+
+		if (icicle != null && icicle.get(MLAST) != null) {
+			mlastPosition = icicle.getInt(MLAST);
+		}
+	}
+
+	private String getGeoString(Cursor cursor) {
+		String latitude = String.valueOf(cursor.getDouble(cursor
+				.getColumnIndex(Locations.LATITUDE)));
+		String longitude = String.valueOf(cursor.getString(cursor
+				.getColumnIndex(Locations.LONGITUDE)));
+		return "geo:" + latitude + ":" + longitude;
 	}
 
 	private void fillData() {
@@ -202,6 +225,7 @@ public class LocationsView extends Activity {
 		case MENU_ADD_ALERT:
 			id = mList.getSelectedItemId();
 			if (id >= 0) {
+				mlastPosition = mList.getSelectedItemPosition();
 				Intent intent = new Intent(Intent.PICK_ACTION,
 						Intents.CONTENT_URI);
 				startSubActivity(intent, REQUEST_PICK_INTENT);
@@ -210,10 +234,14 @@ public class LocationsView extends Activity {
 		return true;
 	}
 
-	private void addAlert(long id, String data, String actionName, String type,
-			String uri) {
+	private void addAlert(String locationUri, String data, String actionName,
+			String type, String uri) {
 
 		ContentValues values = new ContentValues();
+		values.put(Alert.Location.ACTIVE, Boolean.TRUE);
+		values.put(Alert.Location.ACTIVATE_ON_BOOT, Boolean.TRUE);
+		values.put(Alert.Location.DISTANCE, 100L);
+		values.put(Alert.Location.POSITION, locationUri);
 		values.put(Alert.Location.INTENT, actionName);
 		values.put(Alert.Location.INTENT_URI, uri);
 		// TODO convert type to uri (?) or add INTENT_MIME_TYPE column
@@ -229,18 +257,28 @@ public class LocationsView extends Activity {
 	private void addCurrentLocation() {
 		Location location = getCurrentLocation();
 
-		mLocation.addLocation(location);
-		fillData();
+		if (location == null) {
+			AlertDialog.show(this, "info", 0,
+					"curr. location could not be determined", getResources()
+							.getString(R.string.ok), null, false, null);
+		} else {
+			mLocation.addLocation(location);
+			fillData();
+		}
 
 	}
 
 	private Location getCurrentLocation() {
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		LocationProvider locationProvider = locationManager.getProviders().get(
-				0);
-		Location location = locationManager.getCurrentLocation(locationProvider
-				.getName());
-		return location;
+		if (locationManager != null) {
+			LocationProvider locationProvider = locationManager.getProviders()
+					.get(0);
+			Location location = locationManager
+					.getCurrentLocation(locationProvider.getName());
+			return location;
+		} else {
+			return null;
+		}
 	}
 
 	private void tagLocation(long id) {
@@ -268,21 +306,31 @@ public class LocationsView extends Activity {
 			fillData();
 		} else if (requestCode == REQUEST_PICK_INTENT
 				&& resultCode == Activity.RESULT_OK) {
-			Long id = mList.getSelectedItemId();
-			addAlert(id, data, extras.getString(Intents.EXTRA_TYPE), extras
-					.getString(Intents.EXTRA_ACTION), extras
-					.getString(Intents.EXTRA_URI));
+
+			Log.i("locationsView", "id = " + mList.getSelectedItemId());
+			Log.i("locationsView", "pos = " + mList.getSelectedItemPosition());
+			Log.i("locationsView", "last pos = " + mlastPosition);
+
+			Cursor cursor = (Cursor) mList.getAdapter().getItem(mlastPosition);
+			String locationUri = getGeoString(cursor);
+			addAlert(locationUri, data, extras.getString(Intents.EXTRA_TYPE),
+					extras.getString(Intents.EXTRA_ACTION), extras
+							.getString(Intents.EXTRA_URI));
 		}
 	}
 
+	@Override
+	protected void onFreeze(Bundle outState) {
+		super.onFreeze(outState);
+		Log.i(TAG, "freeze position: " + mList.getSelectedItemPosition());
+		outState.putInt(MLAST, mList.getSelectedItemPosition());
+	}
+
 	private void viewLocation(Cursor cursor) {
-		String latitude = String.valueOf(cursor.getDouble(cursor
-				.getColumnIndex(Locations.LATITUDE)));
-		String longitude = String.valueOf(cursor.getString(cursor
-				.getColumnIndex(Locations.LONGITUDE)));
+		String geoString = getGeoString(cursor);
 		Uri uri;
 		// try {
-		uri = Uri.parse("geo:" + latitude + "," + longitude);
+		uri = Uri.parse(geoString);
 		// } catch (URISyntaxException e) {
 		// TODO Auto-generated catch block
 		// e.printStackTrace();

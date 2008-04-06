@@ -22,13 +22,12 @@
 
 	</TableRow>
 	<TableRow>
-			<TextView
+			<TextView android:id="@+id/alert.addgeneric.label.condition1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_weight="0"
 			android:paddingBottom="4dip"
-			android:textColor="#933100"
-			android:text="Condition 1"
-			/>
+			android:textColor="#933100"/>
+			<!-- android:text="Condition 1"  filled in activity -->
     	<EditText android:id="@+id/alert.addgeneric.condition1"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
@@ -38,13 +37,12 @@
 
 	</TableRow>
 	<TableRow>
-			<TextView
+			<TextView android:id="@+id/alert.addgeneric.label.condition2"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:layout_weight="0"
 			android:paddingBottom="4dip"
-			android:textColor="#933100"
-			android:text="Condition 2"
-			/>
+			android:textColor="#933100"/>
+			<!-- android:text="Condition 2" filled in activity -->
     	<EditText android:id="@+id/alert.addgeneric.condition2"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
