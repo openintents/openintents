@@ -74,6 +74,8 @@ public class LocationAlertDispatcher extends IntentReceiver{
 					i.setAction(mCursor.getString(intentRow));
 					i.addCategory(mCursor.getString(intentCatRow));
 					i.setData(Uri.parse(mCursor.getString(intentUriRow)));		
+					Log.d(_TAG,"going to broadcast Intent:\n "+i.toString()+"\n--");
+					//action>>"+i.getAction()+"\n category>>"+i.getCategory()+"\n Data>>"+i.getData()+"\n-------");
 					context.broadcastIntent(i);
 				}
 				catch (Exception e)
