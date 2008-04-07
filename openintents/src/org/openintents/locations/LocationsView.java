@@ -114,6 +114,10 @@ public class LocationsView extends Activity {
 			}
 
 		});		
+
+		//init Alertprovider convenicen functions (zero)
+		Alert.init(this);
+
 	}
 
 	private String getGeoString(Cursor cursor) {
@@ -121,7 +125,7 @@ public class LocationsView extends Activity {
 				.getColumnIndex(Locations.LATITUDE)));
 		String longitude = String.valueOf(cursor.getString(cursor
 				.getColumnIndex(Locations.LONGITUDE)));
-		return "geo:" + latitude + ":" + longitude;
+		return "geo:" + latitude + "," + longitude;
 	}
 
 	private void fillData() {
@@ -241,7 +245,9 @@ public class LocationsView extends Activity {
 		values.put(Alert.Location.INTENT, actionName);
 		values.put(Alert.Location.INTENT_URI, uri);
 		// TODO convert type to uri (?) or add INTENT_MIME_TYPE column
-		getContentResolver().insert(Alert.Location.CONTENT_URI, values);
+		//getContentResolver().insert(Alert.Location.CONTENT_URI, values);
+		//using alert.insert will register alerts automatically.
+		Alert.insert(Alert.Location.CONTENT_URI,values);
 
 	}
 
