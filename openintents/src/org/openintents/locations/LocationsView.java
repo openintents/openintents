@@ -325,6 +325,7 @@ public class LocationsView extends Activity {
 
 	@Override
 	protected void onResume() {
+		super.onResume();
 		startManagingCursor(c);
 	}
 	
