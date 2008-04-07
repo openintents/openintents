@@ -295,14 +295,22 @@ public class Alert{
 
 
 	public static void registerLocationAlert(ContentValues cv){
+		Uri gUri=null;
+		String distStr="";
 		
+		String geo="";
+		String loc[]=null;
+	
 
 		try
 		{
-			Uri gUri=Uri.parse(cv.getAsString(Location.POSITION));
-			float	dist=cv.getAsFloat(Location.DISTANCE);
-			String geo		=gUri.getSchemeSpecificPart();
-			String loc[]	=geo.split(",");
+			gUri=Uri.parse(cv.getAsString(Location.POSITION));
+			//do this for easier debugging.
+			distStr=cv.getAsString(Location.DISTANCE);
+			float dist=Float.parseFloat(distStr);
+			//float dist=cv.getAsFloat(Location.DISTANCE);
+			geo		=gUri.getSchemeSpecificPart();
+			loc	=geo.split(",");
 			double	latitude=Double.parseDouble(loc[0]);
 			double	longitude=Double.parseDouble(loc[1]);			
 
@@ -327,7 +335,7 @@ public class Alert{
 			Log.e(_TAG,"Error parsing geo uri. not in format geo:lat,long");
 		}catch(NumberFormatException nfe)
 		{
-			Log.e(_TAG,"Error parsing longitude/latitude. Not A Number (NAN)");
+			Log.e(_TAG,"Error parsing longitude/latitude. Not A Number (NAN)\n uri>>"+gUri+"<< \n dist>>"+distStr+"<<");
 		}catch(NullPointerException npe){
 			Log.e(_TAG,"Nullpointer occured. did you call init(context) ?");
 			npe.printStackTrace();
