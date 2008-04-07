@@ -46,5 +46,5 @@
 		android:layout_height="fill_parent"
 		android:layout_below="@id/tags_label"
 		android:layout_centerHorizontal="true" 
-		android:text="@string/no_tags"/>
+		android:text="@string/empty_tag"/>
 </RelativeLayout>

@@ -21,19 +21,16 @@ import java.util.ArrayList;
 import org.openintents.R;
 import org.openintents.provider.Tag;
 import org.openintents.provider.ContentIndex.Dir;
-import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.Resources;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.DeadObjectException;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -41,13 +38,15 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
-import android.view.View.OnPopulateContextMenuListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.AdapterView.ContextMenuInfo;
+import android.widget.RelativeLayout.LayoutParams;
 
 /**
  * View to show tags in a hierarchical manner.
@@ -76,6 +75,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private Tag mTags;
 
 	private Cursor mContentCursor;
+
+	private TextView mEmptyResultView;
 
 	/**
 	 * Called when the activity is first created.
@@ -115,6 +116,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			}
 		});
 
+		mEmptyResultView = (TextView) findViewById(android.R.id.empty);
+
 		mTags = new Tag(this);
 
 		ImageButton searchButton = (ImageButton) findViewById(R.id.tags_search_button);
@@ -133,6 +136,18 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		// load directories from xml
 		Thread t = new Thread(this);
 		t.start();
+	}
+
+	@Override
+	public void onContentChanged() {
+		super.onContentChanged();
+		if (mTagFilter != null && mEmptyResultView != null) {
+			if (TextUtils.isEmpty(mTagFilter.getText())) {
+				mEmptyResultView.setText(R.string.empty_tag);
+			} else {
+				mEmptyResultView.setText(R.string.no_tags);
+			}
+		}
 	}
 
 	/**
@@ -186,6 +201,14 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			result = new ContentListAdapter(mContentCursor, this);
 		}
 		setListAdapter(result);
+		
+		if (mTagFilter != null && mEmptyResultView != null) {
+			if (TextUtils.isEmpty(mTagFilter.getText())) {
+				mEmptyResultView.setText(R.string.empty_tag);
+			} else {
+				mEmptyResultView.setText(R.string.no_tags);
+			}
+		}
 	}
 
 	@Override
@@ -330,7 +353,6 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public void delete(String uri) {
 		Log.i("contentbrowser", "delete tags " + uri);
 		mTags.removeAllTags(uri);
-		
-		
+
 	}
 }

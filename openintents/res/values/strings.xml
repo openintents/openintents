@@ -75,6 +75,7 @@
 	<string name="tags_view_tag">View</string>
 	
 	<string name="no_tags">No tagged content found.</string>
+	<string name="empty_tag">Please enter an existing tag or select one using the magnifier.</string>
 	<string name="nothing_selected">Nothing selected</string>
 	<string name="nothing_found">Nothing found (%s)</string>
 	
