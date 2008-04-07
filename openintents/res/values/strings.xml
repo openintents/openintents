@@ -140,6 +140,14 @@
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
 	
+	<!-- Shopping list location alert related -->
+	<string name="shopping_add_alert">Add alert</string>
+	<string name="add_location_alert">Add location alert</string>
+	<string name="add_location_alert_description">This shopping list can be opened automatically
+	when you reach the following location.</string>
+	<string name="pick_location">Pick a location</string>
+	<string name="view_alerts">View alerts</string>
+	
 	<!-- GTalk related -->
 	<string name="gtalk_invalid_username">Invalid username. Please enter your Gmail or Google apps. username.</string>
     <string name="gtalk_service_not_connected">GTalk service not connected.</string>

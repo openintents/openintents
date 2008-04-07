@@ -347,6 +347,27 @@
             </intent-filter>
         </activity>
         
+		<activity android:name=".shopping.AddLocationAlertActivity" 
+				android:label="@string/add_location_alert"
+				android:theme="@android:style/Theme.Dialog"
+				android:icon="@drawable/locations_add_alert001a">
+            <intent-filter android:label="@string/theme"
+            	android:icon="@drawable/shoppinglisttheme001a">
+                <!-- Edit the share settings. -->
+                <action android:name="org.openintents.action.ADD_LOCATION_ALERT" />
+                <!-- DEFAULT: execute if being directly invoked. -->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- ALTERNATIVE: show as an alternative action when the user is
+                     working with this type of data. -->
+                <!-- <category android:name="android.intent.category.ALTERNATIVE" />  -->
+                <!-- SELECTED_ALTERNATIVE: show as an alternative action the user
+                     can perform when selecting this type of data. -->
+                <!-- <category android:name="android.intent.category.SELECTED_ALTERNATIVE" /> -->
+                <!-- This is the data type we operate on. -->
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
+            </intent-filter>
+        </activity>
+        
         <!-- GTalk support for shopping list -->
         <!-- SHARE actions can only supply cursor.dir data, because the
              item IDs will be different on the sender and on the receiver side.

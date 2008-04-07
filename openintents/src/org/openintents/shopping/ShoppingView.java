@@ -93,6 +93,8 @@ public class ShoppingView
     
     private static final int MENU_SHARE = Menu.FIRST + 3;
     private static final int MENU_THEME = Menu.FIRST + 4;
+    
+    private static final int MENU_ADD_LOCATION_ALERT = Menu.FIRST + 5;
 
     // TODO: Implement the following menu items
     private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
@@ -694,6 +696,10 @@ public class ShoppingView
         menu.add(0, MENU_THEME, R.string.theme,
         		R.drawable.shoppinglisttheme001a)
         		.setShortcut('4', 't');
+        
+        menu.add(0, MENU_ADD_LOCATION_ALERT, R.string.shopping_add_alert,
+        		R.drawable.locations_add_alert001a)
+        		.setShortcut('5', 'l');
                 
 
         /*
@@ -771,6 +777,10 @@ public class ShoppingView
             	
             case MENU_THEME:
             	setThemeSettings();
+            	return true;
+            	
+            case MENU_ADD_LOCATION_ALERT:
+            	addLocationAlert();
             	return true;
 
             case MENU_SETTINGS:
@@ -1208,6 +1218,18 @@ public class ShoppingView
         
         mCursorListFilter.commitUpdates();
         mCursorListFilter.requery();
+    }
+    
+    /**
+     * Calls a dialog for setting the locations alert.
+     */
+    void addLocationAlert() {
+    	
+    	// Call dialog as activity
+    	Intent intent = new Intent(OpenIntents.ADD_LOCATION_ALERT_ACTION, 
+				mListUri);
+		//startSubActivity(intent, SUBACTIVITY_ADD_LOCATION_ALERT);
+    	startActivity(intent);
     }
     
     ///////////////////////////////////////////////////////

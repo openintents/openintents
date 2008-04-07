@@ -82,6 +82,13 @@ public abstract class OpenIntents
     public static final String REFRESH_ACTION =
     	"org.openintents.action.REFRESH";
     
+    /**
+     * Adds a location alert to a specific item.
+     * 
+     * Currently implemented for shopping list.
+     */
+    public static final String ADD_LOCATION_ALERT_ACTION =
+    	"org.openintents.action.ADD_LOCATION_ALERT";
 
     // -----------------------------------------------
     //                     Categories
