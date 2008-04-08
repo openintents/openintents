@@ -501,12 +501,10 @@
 
 		<activity android:name=".actions.TypesListView" android:label="@string/intents_types">
 			<intent-filter>
-				<category android:name="org.openintents.category.SETTINGS"></category>
 				<action android:name="android.intent.action.MAIN"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
 			</intent-filter>
 			<intent-filter>
-				<category android:name="org.openintents.category.SETTINGS"></category>
 				<action android:name="android.intent.action.PICK"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
 				<data android:scheme="openintents" android:host="intents"/>				
