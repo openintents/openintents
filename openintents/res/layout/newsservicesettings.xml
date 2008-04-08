@@ -42,6 +42,18 @@
 				android:layout_height="wrap_content"
 				/>
 	</TableRow>
+	<TableRow>
+			<TextView
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:layout_weight="0"
+			android:paddingBottom="4dip"			
+			android:text="@string/use_while_roaming"
+			/>
+		<CheckBox android:id="@+id/newsservice.usewhileroaming"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				/>
+	</TableRow>
 	</TableLayout>
     <Button android:id="@+id/servicesettings.save"
         android:layout_width="wrap_content" android:layout_height="wrap_content" 
