@@ -39,10 +39,10 @@ public class AutostartService extends IntentReceiver{
 	public void onReceiveIntent(Context context, Intent intent) {
 
 		//get prefs and check if we should do anthing
-		SharedPreferences settings = context.getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
+		SharedPreferences settings = context.getSharedPreferences(NewsreaderService1.PREFS_NAME, 0);
 		//useWhileRoaming		=settings.getBoolean(NewsreaderService.DO_ROAMING,false);
-		startOnSystemBoot	=settings.getBoolean(NewsreaderService.ON_BOOT_START,false);
-		debugMode			=settings.getBoolean(NewsreaderService.DEBUG_MODE,false);
+		startOnSystemBoot	=settings.getBoolean(NewsreaderService1.ON_BOOT_START,false);
+		debugMode			=settings.getBoolean(NewsreaderService1.DEBUG_MODE,false);
 	
 		//startOnSystemBoot=true;
 		Log.d(_TAG,"StartOnSystemBoot:"+startOnSystemBoot);
@@ -61,7 +61,7 @@ public class AutostartService extends IntentReceiver{
 				
 				context.startService(new Intent(
 						context,
-						NewsreaderService.class)
+						NewsreaderService1.class)
 				,null);
 
 			}

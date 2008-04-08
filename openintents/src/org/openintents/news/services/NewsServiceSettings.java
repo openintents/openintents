@@ -41,6 +41,7 @@ public class NewsServiceSettings extends Activity {
 
 	private CheckBox mDebugMode;
 	private CheckBox mStartOnBoot;
+	private CheckBox mDoRoaming;
 
 	private static final String _TAG="NewsServiceSetting";
 //	private NotificationManager mNM;
@@ -50,10 +51,10 @@ public class NewsServiceSettings extends Activity {
         super.onCreate(icicle);
         setContentView(R.layout.newsservicesettings);
         
-		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
-		useWhileRoaming		=settings.getBoolean(NewsreaderService.DO_ROAMING,false);
-		startOnSystemBoot	=settings.getBoolean(NewsreaderService.ON_BOOT_START,false);
-		debugMode			=settings.getBoolean(NewsreaderService.DEBUG_MODE,false);
+		SharedPreferences settings = getSharedPreferences(NewsreaderService1.PREFS_NAME, 0);
+		useWhileRoaming		=settings.getBoolean(NewsreaderService1.DO_ROAMING,false);
+		startOnSystemBoot	=settings.getBoolean(NewsreaderService1.ON_BOOT_START,false);
+		debugMode			=settings.getBoolean(NewsreaderService1.DEBUG_MODE,false);
 
         //use only one instance to save memory
         Button bInstance=(Button)findViewById(R.id.startFeedService);
@@ -72,6 +73,8 @@ public class NewsServiceSettings extends Activity {
 	   mDebugMode.setChecked(debugMode);
 	   mStartOnBoot=(CheckBox)findViewById(R.id.newsservice_startonboot);
 	   mStartOnBoot.setChecked(startOnSystemBoot);        
+	   mDoRoaming=(CheckBox)findViewById(R.id.newsservice_usewhileroaming);
+	   mDoRoaming.setChecked(useWhileRoaming);  
     }
     
     private OnClickListener mStartServiceListener=new OnClickListener(){
@@ -80,12 +83,12 @@ public class NewsServiceSettings extends Activity {
 		public void onClick(View arg0) {
 			// TODO Auto-generated method stub
 		//	Toast.makeText(NewsServiceSettings.this, "ehlo1", Toast.LENGTH_SHORT).show();
-			NewsreaderService.Test();
+			NewsreaderService1.Test();
 
 			Log.v("ServiceSettings","Starting service");   
 			startService(new Intent(
 					NewsServiceSettings.this,
-					NewsreaderService.class)
+					NewsreaderService1.class)
 			,null);
 			
 		}
@@ -103,7 +106,7 @@ public class NewsServiceSettings extends Activity {
 			//Toast.makeText(NewsServiceSettings.this, "ehlo2", Toast.LENGTH_SHORT).show();
 			stopService(new Intent(
 					NewsServiceSettings.this,
-					NewsreaderService.class));
+					NewsreaderService1.class));
 			
 		}
     	
@@ -118,11 +121,11 @@ public class NewsServiceSettings extends Activity {
 			NewsServiceSettings.this.savePrefs();
 			stopService(new Intent(
 					NewsServiceSettings.this,
-					NewsreaderService.class));
+					NewsreaderService1.class));
 			
 			startService(new Intent(
 					NewsServiceSettings.this,
-					NewsreaderService.class)
+					NewsreaderService1.class)
 			,null);
 			/*
 			NewsServiceSettings.this.setResult(Activity.RESULT_OK);
@@ -149,14 +152,15 @@ public class NewsServiceSettings extends Activity {
 		Log.d(_TAG,"saving preferences");
 		debugMode=mDebugMode.isChecked();
 		startOnSystemBoot=mStartOnBoot.isChecked();
+		useWhileRoaming=mDoRoaming.isChecked();
 		// Save user preferences. We need an Editor object to
 		// make changes. All objects are from android.context.Context
-		SharedPreferences settings = getSharedPreferences(NewsreaderService.PREFS_NAME, 0);
+		SharedPreferences settings = getSharedPreferences(NewsreaderService1.PREFS_NAME, 0);
 		SharedPreferences.Editor editor = settings.edit();
 		//editor.putBoolean("silentMode", mSilentMode);
-		editor.putBoolean(NewsreaderService.DO_ROAMING,useWhileRoaming);
-		editor.putBoolean(NewsreaderService.ON_BOOT_START,startOnSystemBoot);
-		editor.putBoolean(NewsreaderService.DEBUG_MODE,debugMode);
+		editor.putBoolean(NewsreaderService1.DO_ROAMING,useWhileRoaming);
+		editor.putBoolean(NewsreaderService1.ON_BOOT_START,startOnSystemBoot);
+		editor.putBoolean(NewsreaderService1.DEBUG_MODE,debugMode);
 
 
 		// Don't forget to commit your edits!!!
