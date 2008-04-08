@@ -129,7 +129,7 @@ public class LocationsView extends Activity {
 						contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
 								R.drawable.locations_add_alert001a);
 						contextmenu.add(0, MENU_MANAGE_EXTRAS,
-								R.string.locations_manage_extras);
+								R.string.locations_manage_extras, R.drawable.locations_application001a);
 
 					}
 
