@@ -223,4 +223,6 @@ Earth Technology.
 	<string name="alert_label_unused">Unused</string>
 	<string name="alert_label_condition1">Condition 1</string>
 	<string name="alert_label_condition2">Condition 2</string>
+	<string name="alert_added">Alert has been added.</string>
+	<string name="alert_not_added">Alert could not be added (see log for information).</string>
 </resources>

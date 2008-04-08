@@ -48,6 +48,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 import android.widget.AdapterView.ContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SimpleCursorAdapter.ViewBinder;
@@ -225,6 +226,7 @@ public class LocationsView extends Activity {
 				mlastPosition = menuInfo.position;
 				Intent intent = new Intent(Intent.PICK_ACTION,
 						Intents.CONTENT_URI);
+				intent.putExtra(Intents.EXTRA_ACTION_LIST, Intent.VIEW_ACTION);
 				startSubActivity(intent, REQUEST_PICK_INTENT);
 			}
 			break;
@@ -266,7 +268,16 @@ public class LocationsView extends Activity {
 		// TODO convert type to uri (?) or add INTENT_MIME_TYPE column
 		// getContentResolver().insert(Alert.Location.CONTENT_URI, values);
 		// using alert.insert will register alerts automatically.
-		Alert.insert(Alert.Location.CONTENT_URI, values);
+		Uri result = Alert.insert(Alert.Location.CONTENT_URI, values);
+		int textId; 
+		if (uri != null){
+			textId = R.string.alert_added;
+		} else {
+			textId = R.string.alert_not_added;
+		}
+		Toast.makeText(this, textId, Toast.LENGTH_SHORT)
+		.show();
+
 
 	}
 
