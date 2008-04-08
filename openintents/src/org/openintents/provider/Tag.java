@@ -273,6 +273,18 @@ public class Tag {
 	}
 
 	/**
+	 * Get a cursor with all used tags, i.e. at least one content 
+	 * has been tagged with this tag. 
+	 * @return
+	 */
+	public Cursor findAllUsedTags() {
+		Cursor c = mContext.getContentResolver().query(Contents.CONTENT_URI,
+				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
+				"type like 'TAG%' and (select count(*) from tag where tag.tag_id = content._id) > 0", null, Contents.DEFAULT_SORT_ORDER);
+		return c;
+	}
+
+	/**
 	 * start add tag activity. Only useful, if tag or uri is null. Consider
 	 * using insertTag if you want to add the tag without user interaction.
 	 * 

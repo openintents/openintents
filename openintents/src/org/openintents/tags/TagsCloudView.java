@@ -65,11 +65,15 @@ public class TagsCloudView extends ListActivity {
 
 		mTag = new Tag(this);
 		fillCloud();
+		
+		if (getCallingActivity() != null) {
+			setTitle(R.string.tags_cloud_pick);
+		}
 				
 	}
 
 	private void fillCloud() {
-		Cursor c = mTag.findAllTags();
+		Cursor c = mTag.findAllUsedTags();
 		startManagingCursor(c);
 
 		if (c == null) {

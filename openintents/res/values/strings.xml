@@ -94,7 +94,7 @@
     <string name="dialog_message_package_del">Are you sure?</string>
     
     <string name="tags_cloud">Tag Cloud</string>
-    
+	<string name="tags_cloud_pick">Tag Cloud - Pick a tag</string>    
     
     <!-- Magnolia tagging (Ma.Gnolia.com) -->
     <string name="magnolia_settings">Ma.gnolia settings</string>

@@ -154,7 +154,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	 * fill data for filter (auto complete).
 	 */
 	private void fillDataTagFilter() {
-		// Get a cursor with all tags
+		// Get a cursor with all tags (used and unused)
 		Cursor c = mTags.findAllTags();
 		startManagingCursor(c);
 
@@ -167,7 +167,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		}
 
 		ArrayList<String> list = new ArrayList<String>();
-		list.add(getString(R.string.tag_all));
+		// TODO add functionallity for all
+		//list.add(getString(R.string.tag_all));
 		while (c.next()) {
 			list.add(c.getString(1));
 		}
