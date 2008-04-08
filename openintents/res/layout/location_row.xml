@@ -33,6 +33,9 @@
 		<TextView android:id="@+id/longitude"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content" />
+		<TextView android:id="@+id/distance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 	</LinearLayout>
 	<TextView android:id="@+id/tags" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />

@@ -88,11 +88,14 @@ public class LocationsView extends Activity {
 				new String[] { Locations._ID, Locations.LATITUDE,
 						Locations.LONGITUDE }, null, null,
 				Locations.DEFAULT_SORT_ORDER);
+
+		
 		mLocation = new org.openintents.provider.Location(this
 				.getContentResolver());
 		mList = (ListView) findViewById(R.id.locations);
-
+	
 		fillData();
+		
 		mList.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int position,
@@ -132,7 +135,7 @@ public class LocationsView extends Activity {
 
 		// Get a cursor for all locations
 		startManagingCursor(c);
-
+		
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 		// Use a template that displays a text view
 				R.layout.location_row,
@@ -141,10 +144,10 @@ public class LocationsView extends Activity {
 				// Map the LATITUDE and LONGITUDE columns in the
 				// database to...
 				new String[] { Locations.LATITUDE, Locations.LONGITUDE,
-						Locations._ID },
+						Locations._ID, Locations._ID },
 				// The view defined in the XML template
-				new int[] { R.id.latitude, R.id.longitude, R.id.tags });
-		ViewBinder viewBinder = new TagsViewBinder(this);
+				new int[] { R.id.latitude, R.id.longitude, R.id.tags, R.id.distance });
+		ViewBinder viewBinder = new TagsViewBinder(this, getCurrentLocation());
 		adapter.setViewBinder(viewBinder);
 		mList.setAdapter(adapter);
 		mList
