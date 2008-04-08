@@ -2,6 +2,7 @@ package org.openintents.locations;
 
 import org.openintents.R;
 import org.openintents.lib.MultiWordAutoCompleteTextView;
+import org.openintents.main.About;
 import org.openintents.provider.Location;
 import org.openintents.provider.Tag;
 import org.openintents.provider.Location.Locations;
@@ -10,16 +11,14 @@ import org.openintents.provider.Tag.Tags;
 
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.View;
 import android.view.Menu.Item;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.SimpleCursorAdapter;
 
 import com.google.android.maps.MapActivity;
@@ -31,6 +30,8 @@ public class LocationsMapView extends MapActivity {
 
 	private static final int MENU_USE_CENTER = 1;
 	private static final int MENU_RESTORE_VALUES = 2;
+	private static final int MENU_ABOUT = 3;
+	
 	private Point point;
 	private MapView view;
 	private long pointId;
@@ -200,6 +201,8 @@ public class LocationsMapView extends MapActivity {
 				R.drawable.location_center001a);
 		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values,
 				R.drawable.restore001a);
+		menu.add(0, MENU_ABOUT, R.string.about,
+				R.drawable.about001a);
 		return superResult;
 	}
 
@@ -218,11 +221,21 @@ public class LocationsMapView extends MapActivity {
 							.getLongitudeE6()), true);
 			updateUsingPoint(orgPoint);
 			break;
+		case MENU_ABOUT:
+			showAboutDialog();
 
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void showAboutDialog() {
+		Intent intent = new Intent(this, About.class);
+		intent.putExtra(About.TITLE_ID, R.string.locations_about);
+		intent.putExtra(About.TEXT_ID, R.string.locations_about_text);		
+		startActivity(intent);
+	};
+	
 	private void updateUsingPoint(Point p) {
 		android.location.Location loc = new android.location.Location();
 		loc.setLatitude(p.getLatitudeE6() / 1E6);

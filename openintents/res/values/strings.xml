@@ -46,7 +46,14 @@
 	<string name="locations_add_extra">Add</string>
 	<string name="locations_use_center">Use center as new coord.</string>
 	<string name="locations_restore_values">Restore values</string>
-	
+	<string name="locations_about">About Location Map View</string>
+	<string name="locations_about_text">Location Map View uses 3rd party data and imagery \n\n
+	Copyright Notice: Data: (c)2007 TeleAtlas, AND, Europa Technologies,
+Kingway, Map Data Sciences Pty Ltd, PSMA, ZENRIN, Geocentre,
+MapLink/TeleAtlas; Imagery: (c)2007 DigitalGlobe, EarthSat, Sanborn, NYGIS,
+Scankort, TerraMetrics, MassGIS Commonwealth of Massachusetts, Digital
+Earth Technology.
+	</string>
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>
 	<string name="list_of_contents">List of contents</string>

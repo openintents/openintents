@@ -55,18 +55,8 @@
 			android:authorities="org.openintents.alert" />		
 		
 
-
-		<!-- 
-			<provider android:name=".tags.content.ContentIndexProvider"
-			android:authorities="org.openintents.contentindices" />			
-		-->
-
 		<provider android:name=".tags.content.ContentIndexProvider"
 			android:authorities="org.openintents.contentindices" />
-
-		
-
-		
 
 
 		<provider android:name=".hardware.HardwareProvider"
