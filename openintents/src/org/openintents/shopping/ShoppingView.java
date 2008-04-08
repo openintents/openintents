@@ -301,7 +301,11 @@ public class ShoppingView
         } else if (action.equals(Intent.VIEW_ACTION)) {
             mState = STATE_VIEW_LIST;
             
-            mListUri = intent.getData();
+            if (Shopping.ITEM_TYPE.equals(type)){
+            	mListUri = Shopping.getListForItem(intent.getData().getLastPathSegment());
+            }else {
+            	mListUri = intent.getData();
+            }
             
         } else if (action.equals(Intent.PICK_ACTION)) {
             mState = STATE_PICK_ITEM; 

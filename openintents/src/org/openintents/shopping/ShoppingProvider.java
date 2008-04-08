@@ -19,6 +19,7 @@ package org.openintents.shopping;
 import java.util.HashMap;
 
 import org.openintents.R;
+import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
@@ -560,7 +561,7 @@ public class ShoppingProvider extends ContentProvider {
 			return "vnd.android.cursor.dir/vnd.openintents.shopping.item";
 
 		case ITEM_ID:
-			return "vnd.android.cursor.item/vnd.openintents.shopping.item";
+			return Shopping.ITEM_TYPE;
 
 		case LISTS:
 			return "vnd.android.cursor.dir/vnd.openintents.shopping.list";
