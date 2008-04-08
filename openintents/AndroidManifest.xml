@@ -467,7 +467,7 @@
 		 </intent-filter>
 		</receiver>
 
-		<service android:name=".news.services.NewsreaderService"
+		<service android:name=".news.services.NewsreaderService1"
 				 android:enabled="true"
 		>
 			<intent-filter>
