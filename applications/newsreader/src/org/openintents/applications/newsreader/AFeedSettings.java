@@ -40,6 +40,8 @@ public class AFeedSettings extends Activity {
 	private String	updateCycle;
 
 
+	private String[] uCycles=new String[] {"10","30","60","90","120","180"};
+
 	private static String[] RSS_PROJECTION=new String[]{
 		News.RSSFeeds._ID,
 		News.RSSFeeds._COUNT,
@@ -91,7 +93,8 @@ public class AFeedSettings extends Activity {
 		ad= new ArrayAdapter(
 						this,
 						android.R.layout.simple_spinner_item,
-						new String[] {"10","30","60","90","120","180"}
+						uCycles
+						//new String[] {"10","30","60","90","120","180"}
 						);
 		ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		mUpdateCycle.setAdapter(ad);
@@ -118,6 +121,8 @@ public class AFeedSettings extends Activity {
 					mCursor.first();
 					mChannelName.setText(mCursor.getString(mCursor.getColumnIndex(News.RSSFeeds.CHANNEL_NAME)));
 					mChannelLink.setText(mCursor.getString(mCursor.getColumnIndex(News.RSSFeeds.CHANNEL_LINK)));
+					preselectSpinner(mCursor.getString(mCursor.getColumnIndex(News.RSSFeeds.UPDATE_CYCLE)));
+					
 				}else {
 					Log.e(_TAG,"Cursor was empty");
 				}
@@ -131,6 +136,8 @@ public class AFeedSettings extends Activity {
 					mCursor.first();
 					mChannelName.setText(mCursor.getString(mCursor.getColumnIndex(News.AtomFeeds.FEED_TITLE)));
 					mChannelLink.setText(mCursor.getString(mCursor.getColumnIndex(News.AtomFeeds.FEED_LINK_SELF)));
+					preselectSpinner(mCursor.getString(mCursor.getColumnIndex(News.AtomFeeds.UPDATE_CYCLE)));
+					//mUpdateCycle.setSelectedItem(mCursor.getString(mCursor.getColumnIndex(News.AtomFeeds.UPDATE_CYCLE)));
 				}else{
 					Log.e(_TAG,"Cursor was empty");
 				}
@@ -195,9 +202,33 @@ public class AFeedSettings extends Activity {
     	
     }
 
+
+	private void preselectSpinner(String data){
+//mUpdateCycle.setSelectedItem(mCursor.getString(mCursor.getColumnIndex(News.RSSFeeds.UPDATE_CYCLE)));	
+		if (data==null || data.equals(""))
+		{
+			return;
+		}
+
+		for (int i=0;i<uCycles.length ;i++ )
+		{
+			if (data.equals(uCycles[i]))
+			{
+				mUpdateCycle.setSelection(i);
+				return;
+			}
+		}
+	}
     
 	private void saveDataSet(){
-
+		String myLink=mChannelLink.getText().toString();
+		Log.d(_TAG,"myLink was>>"+myLink);
+		if (myLink!=null && !myLink.equals("") && !myLink.startsWith("http://"))
+		{
+		
+			myLink="http://"+myLink;
+			Log.d(_TAG,"myLink now>>"+myLink);
+		}
 		if (mCursor!=null&&feedType.equals(News.FEED_TYPE_RSS))
 		{
 			//TODO: delete empty row if canceld
@@ -209,8 +240,12 @@ public class AFeedSettings extends Activity {
 			
 			mCursor.updateString(
 					mCursor.getColumnIndex(News.RSSFeeds.CHANNEL_LINK),
-					mChannelLink.getText().toString()
+					myLink
 					);	
+			mCursor.updateString(
+					mCursor.getColumnIndex(News.RSSFeeds.UPDATE_CYCLE),
+					((String)mUpdateCycle.getSelectedItem())
+					);
 			mCursor.commitUpdates();
 		}else if (mCursor!=null&&feedType.equals(News.FEED_TYPE_ATOM))
 		{
@@ -221,8 +256,12 @@ public class AFeedSettings extends Activity {
 			
 			mCursor.updateString(
 					mCursor.getColumnIndex(News.AtomFeeds.FEED_LINK_SELF),
-					mChannelLink.getText().toString()
-					);	
+					myLink
+					);
+			mCursor.updateString(
+					mCursor.getColumnIndex(News.AtomFeeds.UPDATE_CYCLE),
+					((String)mUpdateCycle.getSelectedItem())
+					);			
 			mCursor.commitUpdates();
 		}else{
 			Log.e(this._TAG,"Error: Cursor was Null. Nothin to Save");
@@ -234,14 +273,21 @@ public class AFeedSettings extends Activity {
 	private void createDataSet(){
 		//TODO: decide type of feed before creating new record.
 		ContentValues v=new ContentValues();
+		String myLink=mChannelLink.getText().toString();
+		Log.d(_TAG,"myLink was>>"+myLink);
+		if (myLink!=null && !myLink.equals("") && !myLink.startsWith("http://"))
+		{
 		
+			myLink="http://"+myLink;
+			Log.d(_TAG,"myLink now>>"+myLink);
+		}
 	
 
 		if (feedType.equals(News.FEED_TYPE_RSS))
 		{
 
 			v.put(News.RSSFeeds.CHANNEL_NAME,mChannelName.getText().toString());
-			v.put(News.RSSFeeds.CHANNEL_LINK,mChannelLink.getText().toString());
+			v.put(News.RSSFeeds.CHANNEL_LINK,myLink);
 			v.put(News.RSSFeeds.UPDATE_CYCLE,((String)mUpdateCycle.getSelectedItem()));
 
 
@@ -252,7 +298,7 @@ public class AFeedSettings extends Activity {
 		{
 
 			v.put(News.AtomFeeds.FEED_TITLE,mChannelName.getText().toString());
-			v.put(News.AtomFeeds.FEED_LINK_SELF,mChannelLink.getText().toString());
+			v.put(News.AtomFeeds.FEED_LINK_SELF,myLink);
 			v.put(News.AtomFeeds.UPDATE_CYCLE,((String)mUpdateCycle.getSelectedItem()));
 
 
