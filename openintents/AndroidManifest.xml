@@ -466,7 +466,14 @@
 		   <action android:name="android.intent.action.BOOT_COMPLETED" />
 		 </intent-filter>
 		</receiver>
-
+		<receiver android:name=".news.services.RoamingWatcher">
+		 <intent-filter>
+		   <action android:name="android.intent.action.PHONE_STATE" />
+		 </intent-filter>
+		 <intent-filter>
+		   <action android:name="android.intent.action.DATA_STATE" />
+		 </intent-filter>
+		</receiver>
 		<service android:name=".news.services.NewsreaderService1"
 				 android:enabled="true"
 		>
