@@ -36,6 +36,7 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -43,6 +44,8 @@ import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnPopulateContextMenuListener;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.ContextMenuInfo;
@@ -77,6 +80,7 @@ public class LocationsView extends Activity {
 
 	private ListView mList;
 	private int mlastPosition;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -84,19 +88,10 @@ public class LocationsView extends Activity {
 		super.onCreate(icicle);
 		setContentView(R.layout.locations);
 
-		c = getContentResolver().query(
-				Locations.CONTENT_URI,
-				new String[] { Locations._ID, Locations.LATITUDE,
-						Locations.LONGITUDE }, null, null,
-				Locations.DEFAULT_SORT_ORDER);
-
-		
 		mLocation = new org.openintents.provider.Location(this
 				.getContentResolver());
 		mList = (ListView) findViewById(R.id.locations);
-	
-		fillData();
-		
+
 		mList.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int position,
@@ -117,32 +112,35 @@ public class LocationsView extends Activity {
 				}
 			}
 
-		});		
-		
-		mList.setOnPopulateContextMenuListener(new OnPopulateContextMenuListener(){
-
-			public void onPopulateContextMenu(ContextMenu contextmenu,
-					View view, Object obj) {
-				contextmenu.add(0, MENU_VIEW, R.string.view_location,
-						R.drawable.locations_view001a);
-				contextmenu.add(0, MENU_TAG, R.string.tag_location,
-						R.drawable.locations_favorite_application001a);
-				contextmenu.add(0, MENU_DELETE, R.string.delete_location,
-						R.drawable.locations_delete001a);
-				contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
-						R.drawable.locations_add_alert001a);
-				contextmenu.add(0, MENU_MANAGE_EXTRAS,
-						R.string.locations_manage_extras);
-
-
-				
-			}
-			
 		});
 
-		//init Alertprovider convenicen functions (zero)
+		mList
+				.setOnPopulateContextMenuListener(new OnPopulateContextMenuListener() {
+
+					public void onPopulateContextMenu(ContextMenu contextmenu,
+							View view, Object obj) {
+						contextmenu.add(0, MENU_VIEW, R.string.view_location,
+								R.drawable.locations_view001a);
+						contextmenu.add(0, MENU_TAG, R.string.tag_location,
+								R.drawable.locations_favorite_application001a);
+						contextmenu.add(0, MENU_DELETE,
+								R.string.delete_location,
+								R.drawable.locations_delete001a);
+						contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
+								R.drawable.locations_add_alert001a);
+						contextmenu.add(0, MENU_MANAGE_EXTRAS,
+								R.string.locations_manage_extras);
+
+					}
+
+				});
+
+		ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.location_row, new String[0]);		
+		mList.setAdapter(adapter );
+		// init Alertprovider convenicen functions (zero)
 		Alert.init(this);
 
+		fillData();
 	}
 
 	private String getGeoString(Cursor cursor) {
@@ -155,9 +153,20 @@ public class LocationsView extends Activity {
 
 	private void fillData() {
 
+		if (c == null) {
+			c = getContentResolver().query(
+					Locations.CONTENT_URI,
+					new String[] { Locations._ID, Locations.LATITUDE,
+							Locations.LONGITUDE }, null, null,
+					Locations.DEFAULT_SORT_ORDER);
+
+		} else {
+			c.requery();
+		}
+
 		// Get a cursor for all locations
 		startManagingCursor(c);
-		
+
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 		// Use a template that displays a text view
 				R.layout.location_row,
@@ -168,7 +177,8 @@ public class LocationsView extends Activity {
 				new String[] { Locations.LATITUDE, Locations.LONGITUDE,
 						Locations._ID, Locations._ID },
 				// The view defined in the XML template
-				new int[] { R.id.latitude, R.id.longitude, R.id.tags, R.id.distance });
+				new int[] { R.id.latitude, R.id.longitude, R.id.tags,
+						R.id.distance });
 		ViewBinder viewBinder = new TagsViewBinder(this, getCurrentLocation());
 		adapter.setViewBinder(viewBinder);
 		mList.setAdapter(adapter);
@@ -191,7 +201,8 @@ public class LocationsView extends Activity {
 		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
 		switch (item.getId()) {
 		case MENU_VIEW:
-			Cursor cursor = (Cursor) mList.getAdapter().getItem( menuInfo.position);
+			Cursor cursor = (Cursor) mList.getAdapter().getItem(
+					menuInfo.position);
 			if (cursor != null) {
 				viewLocation(cursor);
 			}
@@ -227,11 +238,10 @@ public class LocationsView extends Activity {
 			}
 			break;
 		}
-		
 
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(Item item) {
 		super.onOptionsItemSelected(item);
@@ -254,9 +264,9 @@ public class LocationsView extends Activity {
 		values.put(Alert.Location.INTENT, actionName);
 		values.put(Alert.Location.INTENT_URI, uri);
 		// TODO convert type to uri (?) or add INTENT_MIME_TYPE column
-		//getContentResolver().insert(Alert.Location.CONTENT_URI, values);
-		//using alert.insert will register alerts automatically.
-		Alert.insert(Alert.Location.CONTENT_URI,values);
+		// getContentResolver().insert(Alert.Location.CONTENT_URI, values);
+		// using alert.insert will register alerts automatically.
+		Alert.insert(Alert.Location.CONTENT_URI, values);
 
 	}
 
@@ -313,7 +323,6 @@ public class LocationsView extends Activity {
 		super.onActivityResult(requestCode, resultCode, data, extras);
 
 		if (requestCode == TAG_ACTIVITY && resultCode == Activity.RESULT_OK) {
-			c.requery();
 			fillData();
 		} else if (requestCode == REQUEST_PICK_INTENT
 				&& resultCode == Activity.RESULT_OK) {
@@ -343,7 +352,7 @@ public class LocationsView extends Activity {
 		super.onResume();
 		startManagingCursor(c);
 	}
-	
+
 	private void viewLocation(Cursor cursor) {
 		String geoString = getGeoString(cursor);
 		Uri uri;
