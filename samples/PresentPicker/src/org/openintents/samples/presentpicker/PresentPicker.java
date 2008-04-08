@@ -167,7 +167,7 @@ public class PresentPicker extends Activity {
         
         mPersonIB = (ImageButton) findViewById(R.id.image);
         mPersonIB.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View arg0) {
 				mPersonId++;
 				if (mPersonId >= 3) mPersonId = 0;
@@ -180,7 +180,7 @@ public class PresentPicker extends Activity {
         mRadioMF = (RadioGroup) findViewById(R.id.radio_mf);
         RadioGroup.OnCheckedChangeListener occl 
         	= new RadioGroup.OnCheckedChangeListener() {
-			@Override
+			
 			public void onCheckedChanged(RadioGroup rg, int i) {
 				Log.i("PP", "radio: " + i);
 				if (i == R.id.radio_m) mMF = 0;
@@ -283,7 +283,7 @@ public class PresentPicker extends Activity {
         // Add to shopping list button:
         mAddToShoppingList = (LinearLayout) findViewById(R.id.button_add);
         mAddToShoppingList.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View arg0) {
 				// insert item in shopping list #0:
 				String newItem = mSelection.getText().toString();
@@ -311,7 +311,7 @@ public class PresentPicker extends Activity {
         // View the shopping list by calling the activity:
         mViewShoppingList = (LinearLayout) findViewById(R.id.button_view);
         mViewShoppingList.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View arg0) {
 				Intent intent = new Intent(Intent.VIEW_ACTION, Shopping.Lists.CONTENT_URI);
 				startActivity(intent);
@@ -370,7 +370,7 @@ public class PresentPicker extends Activity {
         ib.setLayoutParams(mLayoutParams);
         ib.setId(i); // set id, so that we know later who we are
         ib.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View v) {
 				int id = v.getId();
 				mSelection.setText(mPresentStrings[id]);
@@ -380,8 +380,7 @@ public class PresentPicker extends Activity {
 
 			/* (non-Javadoc)
 			 * @see android.view.View.OnFocusChangeListener#onFocusChanged(android.view.View, boolean)
-			 */
-			@Override
+			 */		
 			public void onFocusChanged(View v, boolean hasFocus) {
 				if (hasFocus) {
 					int id = v.getId();
@@ -427,7 +426,7 @@ public class PresentPicker extends Activity {
 		super.onCreateOptionsMenu(menu);
 		
 		// Standard menu
-		menu.add(0, MENU_ABOUT, R.string.about)
+		menu.add(0, MENU_ABOUT, R.string.about, R.drawable.about001a)
 			.setShortcut('0', 'a');
 		
 		return true;
