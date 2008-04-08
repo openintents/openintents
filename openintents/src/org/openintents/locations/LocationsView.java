@@ -41,6 +41,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
+import android.view.View.OnPopulateContextMenuListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -117,6 +118,27 @@ public class LocationsView extends Activity {
 			}
 
 		});		
+		
+		mList.setOnPopulateContextMenuListener(new OnPopulateContextMenuListener(){
+
+			public void onPopulateContextMenu(ContextMenu contextmenu,
+					View view, Object obj) {
+				contextmenu.add(0, MENU_VIEW, R.string.view_location,
+						R.drawable.locations_view001a);
+				contextmenu.add(0, MENU_TAG, R.string.tag_location,
+						R.drawable.locations_favorite_application001a);
+				contextmenu.add(0, MENU_DELETE, R.string.delete_location,
+						R.drawable.locations_delete001a);
+				contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
+						R.drawable.locations_add_alert001a);
+				contextmenu.add(0, MENU_MANAGE_EXTRAS,
+						R.string.locations_manage_extras);
+
+
+				
+			}
+			
+		});
 
 		//init Alertprovider convenicen functions (zero)
 		Alert.init(this);
@@ -150,16 +172,15 @@ public class LocationsView extends Activity {
 		ViewBinder viewBinder = new TagsViewBinder(this, getCurrentLocation());
 		adapter.setViewBinder(viewBinder);
 		mList.setAdapter(adapter);
-		mList
-				.setOnPopulateContextMenuListener(new View.OnPopulateContextMenuListener() {
+	}
 
-					public void onPopulateContextMenu(ContextMenu contextmenu,
-							View view, Object obj) {
-						contextmenu.add(0, MENU_MANAGE_EXTRAS,
-								R.string.locations_manage_extras);
-					}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
 
-				});
+		menu.add(0, MENU_ADD_CURRENT_LOCATION, R.string.add_current_location,
+				R.drawable.locations_add001a);
+		return true;
 	}
 
 	@Override
@@ -169,6 +190,33 @@ public class LocationsView extends Activity {
 
 		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
 		switch (item.getId()) {
+		case MENU_VIEW:
+			Cursor cursor = (Cursor) mList.getAdapter().getItem( menuInfo.position);
+			if (cursor != null) {
+				viewLocation(cursor);
+			}
+			break;
+		case MENU_TAG:
+			long id = menuInfo.id;
+			if (id >= 0) {
+				tagLocation(id);
+			}
+			break;
+		case MENU_DELETE:
+			id = menuInfo.id;
+			if (id >= 0) {
+				deleteLocation(id);
+			}
+			break;
+		case MENU_ADD_ALERT:
+			id = menuInfo.id;
+			if (id >= 0) {
+				mlastPosition = menuInfo.position;
+				Intent intent = new Intent(Intent.PICK_ACTION,
+						Intents.CONTENT_URI);
+				startSubActivity(intent, REQUEST_PICK_INTENT);
+			}
+			break;
 		case MENU_MANAGE_EXTRAS:
 			Intent intent = new Intent(this, ExtrasView.class);
 			long locationId = ((Cursor) mList.getAdapter().getItem(
@@ -179,27 +227,11 @@ public class LocationsView extends Activity {
 			}
 			break;
 		}
+		
 
 		return true;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-
-		menu.add(0, MENU_ADD_CURRENT_LOCATION, R.string.add_current_location,
-				R.drawable.locations_add001a);
-		menu.add(0, MENU_VIEW, R.string.view_location,
-				R.drawable.locations_view001a);
-		menu.add(0, MENU_TAG, R.string.tag_location,
-				R.drawable.locations_favorite_application001a);
-		menu.add(0, MENU_DELETE, R.string.delete_location,
-				R.drawable.locations_delete001a);
-		menu.add(0, MENU_ADD_ALERT, R.string.add_alert,
-				R.drawable.locations_add_alert001a);
-		return true;
-	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(Item item) {
 		super.onOptionsItemSelected(item);
@@ -207,32 +239,6 @@ public class LocationsView extends Activity {
 		case MENU_ADD_CURRENT_LOCATION:
 			addCurrentLocation();
 			break;
-		case MENU_VIEW:
-			Cursor cursor = (Cursor) mList.getSelectedItem();
-			if (cursor != null) {
-				viewLocation(cursor);
-			}
-			break;
-		case MENU_TAG:
-			long id = mList.getSelectedItemId();
-			if (id >= 0) {
-				tagLocation(id);
-			}
-			break;
-		case MENU_DELETE:
-			id = mList.getSelectedItemId();
-			if (id >= 0) {
-				deleteLocation(id);
-			}
-			break;
-		case MENU_ADD_ALERT:
-			id = mList.getSelectedItemId();
-			if (id >= 0) {
-				mlastPosition = mList.getSelectedItemPosition();
-				Intent intent = new Intent(Intent.PICK_ACTION,
-						Intents.CONTENT_URI);
-				startSubActivity(intent, REQUEST_PICK_INTENT);
-			}
 		}
 		return true;
 	}
