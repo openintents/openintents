@@ -85,8 +85,8 @@ public class Location {
 	public static final class Extras implements BaseColumns {
 
 		public static final String LOCATION_ID = "locationId";
-		public static final String EXTRA = "extra";
-		public static final String TYPE = "type";
+		public static final String KEY = "key";
+		public static final String VALUE = "value";
 
 		public static final String URI_PATH_EXTRAS = "extras";
 		public static final Uri CONTENT_URI = Uri
@@ -132,7 +132,7 @@ public class Location {
 		Builder uri = Locations.CONTENT_URI.buildUpon().appendPath(
 				String.valueOf(locationId)).appendPath(Extras.URI_PATH_EXTRAS);
 		return mResolver.query(uri.build(), new String[] { Extras._ID,
-				Extras.EXTRA, Extras.TYPE }, null, null, Extras.EXTRA);
+				Extras.KEY, Extras.VALUE}, null, null, Extras.KEY + "," + Extras.VALUE);
 	}
 
 	public int deleteExtra(long extraId) {

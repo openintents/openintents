@@ -23,10 +23,16 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text=""/>
+	<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/key"/>
 	<EditText android:id="@+id/edittext"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text=""/>
+	<TextView android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/value"/>
 	<EditText android:id="@+id/edittext2"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"

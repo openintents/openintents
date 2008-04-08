@@ -54,6 +54,9 @@ MapLink/TeleAtlas; Imagery: (c)2007 DigitalGlobe, EarthSat, Sanborn, NYGIS,
 Scankort, TerraMetrics, MassGIS Commonwealth of Massachusetts, Digital
 Earth Technology.
 	</string>
+	<string name="key">Key</string>
+	<string name="value">Value</string>
+	
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>
 	<string name="list_of_contents">List of contents</string>
@@ -72,7 +75,7 @@ Earth Technology.
 	<string name = "no_types">No types</string>
 	
 	<!--  Content Browser -->
-	<string name = "content_browser">Content browser</string>
+	<string name = "content_browser">Tag browser</string>
 	<string name ="tags_add_tag">Add tag</string>
 	<string name="tags_view_content">View</string>
 	<string name="tags_remove_tag">Remove tag</string>

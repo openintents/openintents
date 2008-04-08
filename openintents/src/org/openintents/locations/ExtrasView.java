@@ -48,7 +48,7 @@ public class ExtrasView extends ListActivity {
 
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				org.openintents.R.layout.locations_extras, mExtrasCursor,
-				new String[] { Extras._ID, Extras.EXTRA, Extras.TYPE },
+				new String[] { Extras._ID, Extras.KEY, Extras.VALUE },
 				new int[] { org.openintents.R.id.text,
 						org.openintents.R.id.edittext,
 						org.openintents.R.id.edittext2 });

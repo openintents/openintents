@@ -19,6 +19,7 @@ package org.openintents.locations;
 import java.util.HashMap;
 
 import org.openintents.provider.Location;
+import org.openintents.provider.Location.Extras;
 
 import android.content.ContentProvider;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -48,7 +49,7 @@ public class LocationsProvider extends ContentProvider {
 
 	private static final String TAG = "LocationsProvider";
 	private static final String DATABASE_NAME = "locations.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 
 	private static HashMap<String, String> LOCATION_PROJECTION_MAP;
 
@@ -68,7 +69,7 @@ public class LocationsProvider extends ContentProvider {
 					+ "latitude DOUBLE," + "longitude DOUBLE,"
 					+ "created INTEGER," + "modified INTEGER" + ");");
 			db.execSQL("CREATE TABLE locations_extra (_id INTEGER PRIMARY KEY,"
-					+ "location_id INTEGER," + "extra STRING," + "type STRING"+ ");");
+					+ "location_id INTEGER," + "key STRING," + "value STRING"+ ");");
 		}
 
 		@Override
@@ -109,12 +110,12 @@ public class LocationsProvider extends ContentProvider {
 			qb.setTables("locations_extra");
 			String segment = url.getPathSegments().get(1);
 			qb.appendWhere("location_id=" + segment);
-			sort = "extra";
+			sort = Extras.KEY;
 			break;			
 		case LOCATIONSEXTRA_ID:
 			qb.setTables("locations_extra");
 			qb.appendWhere("_id=" + url.getLastPathSegment());
-			sort = "extra";
+			sort = Extras.KEY;
 			break;
 
 		default:
