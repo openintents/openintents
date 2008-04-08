@@ -155,7 +155,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	 */
 	private void fillDataTagFilter() {
 		// Get a cursor with all tags (used and unused)
-		Cursor c = mTags.findAllTags();
+		Cursor c = mTags.findAllUsedTags();
 		startManagingCursor(c);
 
 		if (c == null) {

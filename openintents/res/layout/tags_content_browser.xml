@@ -38,13 +38,13 @@
 		android:layout_alignBaseline="@id/tags_label" />
 	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_below="@id/tags_label"
+		android:layout_below="@id/tags_search_button"
 		android:layout_centerHorizontal="true"
 		android:listSelector="@drawable/background_orange" 
 		/>
 	<TextView android:id="@android:id/empty" android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_below="@id/tags_label"
+		android:layout_below="@id/tags_search_button"
 		android:layout_centerHorizontal="true" 
 		android:text="@string/empty_tag"/>
 </RelativeLayout>
