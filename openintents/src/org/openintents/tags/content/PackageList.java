@@ -56,9 +56,15 @@ public class PackageList extends ListActivity {
 	}
 
 	private void refreshPackages() {
-		String label = getString(R.string.label_packages);
 		int n = mCursor.count();
-		mLabel.setText(label.replace("%n", String.valueOf(n)));
+		String label;
+		if (getCallingActivity() != null) {
+			label = getString(R.string.label_packages_pick, String.valueOf(n));
+		} else {
+			label = getString(R.string.label_packages, String.valueOf(n));
+		}
+		
+		mLabel.setText(label);
 	}
 
 	@Override

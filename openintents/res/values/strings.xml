@@ -81,11 +81,12 @@
 	
     <string name="menu_package_add">Import</string>
     <string name="menu_package_del">Unregister</string>
-    <string name="menu_package_list">Packages</string>
-    <string name="label_packages">Packages (%n)</string>
+    <string name="menu_package_list">Content types</string>
+    <string name="label_packages">Content types (%s)</string>
+    <string name="label_packages_pick">Content types (%s) - Pick a type</string>
     <string name="label_package_add">Enter URL</string>
     <string name="button_ok">OK</string>
-    <string name="no_packages">No packages</string>
+    <string name="no_packages">No content types</string>
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_title_package_add">Import</string>
