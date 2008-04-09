@@ -179,9 +179,9 @@ public class TagsProvider extends ContentProvider {
 				.getQueryParameter(Tags.QUERY_UNIQUE_TAG));
 		String tagType;
 		if (uniqueTag) {
-			tagType = TAG_TYPE_TAG;
-		} else {
 			tagType = TAG_TYPE_UNIQUE_TAG;
+		} else {
+			tagType = TAG_TYPE_TAG;
 		}
 		// lookup id for uri or create new
 		replaceUriById(values, Tags.TAG_ID, Tags.URI_1, tagType, DEFAULT_TAG);
