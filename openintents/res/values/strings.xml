@@ -34,9 +34,10 @@
 	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
 	
 	<string name="init_add_locations">Add default locations</string>
+	<string name="init_add_news_feeds">Add default new feeds</string>
 	<string name="init_databases">Init default values</string>
 	<string name="init_done">Values added</string>
-	
+
 	<!-- Location Provider -->
 	<string name="list_of_locations">List of locations</string>
 	<string name="add_current_location">Add curr. loc.</string>
