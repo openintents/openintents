@@ -2,6 +2,7 @@ package org.openintents.applications.newsreader;
 
 
 
+import org.openintents.OpenIntents;
 import org.openintents.provider.News;
 import org.openintents.news.*;
 import org.openintents.news.services.*;
@@ -10,10 +11,14 @@ import org.openintents.news.views.*;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ContentUris;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 
@@ -90,6 +95,9 @@ public class Newsreader extends Activity {
 		super.onCreate(icicle);
 		Log.v(_TAG,Integer.toString(R.layout.newsreader));
 
+		// check for OI.
+		OpenIntents.requiresOpenIntents(this);
+		
 		try {
 			//get all feeds.
 			News.mContentResolver=getContentResolver();
