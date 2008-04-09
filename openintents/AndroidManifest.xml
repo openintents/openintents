@@ -521,7 +521,7 @@
 
 	<!-- alert framework -->
 	<activity android:name=".alert.AddGenericAlertActivity"
-			android:label="Add Generic Alert"
+			android:label="@string/alert_add"
 			>
 
 			<intent-filter>

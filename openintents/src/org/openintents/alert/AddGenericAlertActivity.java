@@ -145,8 +145,11 @@ public class AddGenericAlertActivity extends Activity {
 			mState = STATE_CREATE;
 			mType.setSelection(1);
 			// mChannelLink.setText("EHLO CREATOR!");
+			setTitle(R.string.alert_add);
+			
 		} else if (getIntent().getAction().equals(OpenIntents.EDIT_GENERIC_ALERT)) {
 			mState = STATE_EDIT;
+			setTitle(R.string.alert_edit);
 			cUri = Uri.parse(getIntent().getStringExtra(Alert.EXTRA_URI));
 			Log.v(_TAG, "edit " + cUri);
 			

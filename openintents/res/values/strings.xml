@@ -35,9 +35,10 @@
 
 	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
 	
-	<string name="init_add_locations">Add default locations</string>
-	<string name="init_add_news_feeds">Add default new feeds</string>
 	<string name="init_databases">Init default values</string>
+	<string name="init_add_locations">Add default locations</string>
+	<string name="init_add_news_feeds">Add default new feeds</string>	
+	<string name="init_add_all_values">Add all default values</string>
 	<string name="init_done">Values added</string>
 
 	<!-- Location Provider -->
@@ -225,11 +226,13 @@ Earth Technology.
 	<string name="test">test</string>
 	
 	<!--  alert related  -->
+	<string name="alert_edit">Edit alert</string>
+	<string name="alert_add">Add alert</string>
 	<string name="add_alert">add alert</string>
 	<string name="alert_pick_location">pick location</string>
 	<string name="alert_pick_action">pick action</string>
 	<string name="alert_pick_date_time">pick date/time</string>
-	<string name="alert_label_location">Location (geo:dd.cccc:dd.cccc)</string>
+	<string name="alert_label_location">Location (geo:x:y)</string>
 	<string name="alert_label_range">Range (m)</string>
 	<string name="alert_label_date_time">Date/time</string>
 	<string name="alert_label_unused">Unused</string>

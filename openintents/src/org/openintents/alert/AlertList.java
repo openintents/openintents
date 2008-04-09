@@ -77,6 +77,9 @@ public class AlertList extends ListActivity {
 		super.onResume();
 		Log.d(_TAG, "onResume: entering");
 		// init();
+		if (mCursor != null){
+			mCursor.requery();
+		}
 	}
 
 	@Override
