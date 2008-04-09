@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/*
+ * 09/Apr/08 Dale Thatcher <openintents at dalethatcher dot com>
+ *           Added wii-mote data collection.
+ */
+
 package org.openintents.tools.sensorsimulator;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -217,8 +222,9 @@ public class SensorSimulator extends JPanel
     
     // Real device bridge
     JCheckBox mRealDeviceThinkpad;
-    JTextField mRealDeviceThinkpadPath;
-    JLabel mRealDeviceThinkpadOutputLabel;
+    JCheckBox mRealDeviceWiimote;
+    JTextField mRealDevicePath;
+    JLabel mRealDeviceOutputLabel;
     
     // Action Commands:
     static String yawPitch = "yaw & pitch";
@@ -230,6 +236,8 @@ public class SensorSimulator extends JPanel
     // Server for sending out sensor data
     SensorServer mSensorServer;
     int mIncomingConnections;
+    
+    WiiMoteData wiiMoteData = new WiiMoteData();
     
 	
 	public SensorSimulator() {
@@ -1310,6 +1318,12 @@ public class SensorSimulator extends JPanel
         c3.gridx = 0;
         realSensorBridgeFieldPane.add(mRealDeviceThinkpad, c3);
         
+        mRealDeviceWiimote = new JCheckBox("Use Wii-mote accelerometer");
+        mRealDeviceWiimote.setSelected(false);
+        mRealDeviceWiimote.addItemListener(this);
+        c3.gridy++;
+        realSensorBridgeFieldPane.add(mRealDeviceWiimote, c3);
+        
         /*
         label = new JLabel("Path: ", JLabel.LEFT);
         c3.gridwidth = 1;
@@ -1318,17 +1332,17 @@ public class SensorSimulator extends JPanel
         realSensorBridgeFieldPane.add(label, c3);
         */
         
-        mRealDeviceThinkpadPath = new JTextField(20);
-        mRealDeviceThinkpadPath.setText("/sys/devices/platform/hdaps/position");
+        mRealDevicePath = new JTextField(20);
+        mRealDevicePath.setText("/sys/devices/platform/hdaps/position");
         //mRealDeviceThinkpadPath.setText("C:\\temp\\position.txt");
         c3.gridx = 0;
         c3.gridy++;
-        realSensorBridgeFieldPane.add(mRealDeviceThinkpadPath, c3);
+        realSensorBridgeFieldPane.add(mRealDevicePath, c3);
         
-        mRealDeviceThinkpadOutputLabel = new JLabel("-", JLabel.LEFT);
+        mRealDeviceOutputLabel = new JLabel("-", JLabel.LEFT);
         c3.gridx = 0;
         c3.gridy++;
-        realSensorBridgeFieldPane.add(mRealDeviceThinkpadOutputLabel, c3);
+        realSensorBridgeFieldPane.add(mRealDeviceOutputLabel, c3);
 
         // Real sensor bridge ends
         
@@ -1472,6 +1486,15 @@ public class SensorSimulator extends JPanel
         if (e.getStateChange() == ItemEvent.DESELECTED)
         
         */
+        
+        // Don't allow the thinkpad and wiimote to be selected at the same time
+        if (source == mRealDeviceThinkpad && e.getStateChange() == ItemEvent.SELECTED) {
+        	mRealDeviceWiimote.setSelected(false);
+        }
+        else if (source == mRealDeviceWiimote && e.getStateChange() == ItemEvent.SELECTED) {
+        	mRealDeviceThinkpad.setSelected(false);
+        }
+        
         if (source == mShowAcceleration) {
         	// Refresh the screen when this drawing element
         	// changes
@@ -1499,6 +1522,10 @@ public class SensorSimulator extends JPanel
     }
     
     public void doTimer() {
+    	if (mRealDeviceWiimote.isSelected()) {
+    		updateFromWiimote();
+    	}
+    	
     	// Update sensors:
     	mobile.updateSensorPhysics();
     	
@@ -1834,6 +1861,23 @@ public class SensorSimulator extends JPanel
         frame.pack();
         frame.setVisible(true);
     }
+    
+    
+    
+    private void updateFromWiimote() {
+    	// Read raw data
+		wiiMoteData.setDataFilePath(mRealDevicePath.getText());
+		
+		boolean success = wiiMoteData.updateData();
+		mRealDeviceOutputLabel.setText(wiiMoteData.getStatus());
+		
+		if (success) {
+			// Update controls
+			yawSlider.setValue(0);  // Wiimote can't support yaw
+			rollSlider.setValue(wiiMoteData.getRoll());
+			pitchSlider.setValue(wiiMoteData.getPitch());
+		}
+    }
 
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
@@ -1845,4 +1889,5 @@ public class SensorSimulator extends JPanel
         });
     }
 }
+
 

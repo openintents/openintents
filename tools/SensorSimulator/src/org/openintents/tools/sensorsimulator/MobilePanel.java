@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
+/*
+ * 09/Apr/08 Dale Thatcher <openintents at dalethatcher dot com>
+ *           Added wii-mote data collection.
+ */
+
 package org.openintents.tools.sensorsimulator;
 
 import java.awt.Color;
@@ -515,60 +520,67 @@ public class MobilePanel extends JPanel {
 		vec.reverserollpitchyaw(rollDegree, pitchDegree, yawDegree);
 		
 		if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
-			accelx = vec.x;
-			accely = vec.y;
-			accelz = vec.z;
-			
-			if (mSensorSimulator.mRealDeviceThinkpad.isSelected()) {
-				// We will use data directly from sensor instead:
-				
-				// Read data from file
-				String line = "";
-				try {
-				  //FileReader always assumes default encoding is OK!
-				  BufferedReader input =  new BufferedReader(
-						  new FileReader(mSensorSimulator.mRealDeviceThinkpadPath.getText()));
-				  try {
-					  line = input.readLine();
-				  } finally {
-				    input.close();
-				    //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.WHITE);
-				  }
-				}
-				catch (IOException ex){
-				  ex.printStackTrace();
-				  //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.RED);
-				  line = "Error reading file!";
-				}
-				
-				// Show the line content:
-				mSensorSimulator.mRealDeviceThinkpadOutputLabel.setText(line);
-
-				// Assign values
-				
-				// Create z-component (optional)
-				
+			if (mSensorSimulator.mRealDeviceWiimote.isSelected()) {
+				accelx = mSensorSimulator.wiiMoteData.getX();
+				accely = mSensorSimulator.wiiMoteData.getY();
+				accelz = mSensorSimulator.wiiMoteData.getZ();
 			}
-			
-			// Add random component:
-			random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomAccelerometerText);
-			if (random > 0) {
-				accelx += getRandom(random);
-				accely += getRandom(random);
-				accelz += getRandom(random);
-			}
-			
-			// Add accelerometer limit:
-			double limit = mSensorSimulator.getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
-			if (limit > 0) {
-				// limit on each component separately, as each is
-				// a separate sensor.
-				if (accelx > limit) accelx = limit;
-				if (accelx < -limit) accelx = -limit;
-				if (accely > limit) accely = limit;
-				if (accely < -limit) accely = -limit;
-				if (accelz > limit) accelz = limit;
-				if (accelz < -limit) accelz = -limit;
+			else {
+				accelx = vec.x;
+				accely = vec.y;
+				accelz = vec.z;
+				
+				if (mSensorSimulator.mRealDeviceThinkpad.isSelected()) {
+					// We will use data directly from sensor instead:
+					
+					// Read data from file
+					String line = "";
+					try {
+					  //FileReader always assumes default encoding is OK!
+					  BufferedReader input =  new BufferedReader(
+							  new FileReader(mSensorSimulator.mRealDevicePath.getText()));
+					  try {
+						  line = input.readLine();
+					  } finally {
+					    input.close();
+					    //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.WHITE);
+					  }
+					}
+					catch (IOException ex){
+					  ex.printStackTrace();
+					  //mSensorSimulator.mRealDeviceThinkpadOutputLabel.setBackground(Color.RED);
+					  line = "Error reading file!";
+					}
+					
+					// Show the line content:
+					mSensorSimulator.mRealDeviceOutputLabel.setText(line);
+	
+					// Assign values
+					
+					// Create z-component (optional)
+					
+				}
+				
+				// Add random component:
+				random = mSensorSimulator.getSafeDouble(mSensorSimulator.mRandomAccelerometerText);
+				if (random > 0) {
+					accelx += getRandom(random);
+					accely += getRandom(random);
+					accelz += getRandom(random);
+				}
+				
+				// Add accelerometer limit:
+				double limit = mSensorSimulator.getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
+				if (limit > 0) {
+					// limit on each component separately, as each is
+					// a separate sensor.
+					if (accelx > limit) accelx = limit;
+					if (accelx < -limit) accelx = -limit;
+					if (accely > limit) accely = limit;
+					if (accely < -limit) accely = -limit;
+					if (accelz > limit) accelz = limit;
+					if (accelz < -limit) accelz = -limit;
+				}
 			}
 		} else {
 			accelx = 0;
