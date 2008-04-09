@@ -17,6 +17,7 @@ package org.openintents.alert;
 
 import org.openintents.provider.Alert;
 import org.openintents.provider.Intents;
+import org.openintents.provider.Alert.Location;
 import org.openintents.provider.Location.Locations;
 import org.openintents.OpenIntents;
 import org.openintents.R;
@@ -229,8 +230,15 @@ public class AddGenericAlertActivity extends Activity {
 			mCursor.updateInt(onBootRow, 1);
 		} else {
 			mCursor.updateInt(onBootRow, 0);
-		}		
+		}				
 		mCursor.commitUpdates();
+		
+		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())){		
+			ContentValues cv = new ContentValues();
+			cv.put(Location.POSITION, mCond1.getText().toString());
+			cv.put(Location.DISTANCE, mCond2.getText().toString());
+			Alert.registerLocationAlert(cv );
+		}
 
 	}
 
