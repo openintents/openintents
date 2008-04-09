@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
+import org.openintents.OpenIntents;
 import org.openintents.widget.Slider;
 import org.openintents.widget.Slider.OnPositionChangedListener;
 
@@ -97,6 +98,8 @@ public class SplashPlay extends Activity implements
         super.onCreate(icicle);
         setContentView(R.layout.main);
         
+        OpenIntents.requiresOpenIntents(this);
+        
         // Variable initialization
         mp = null;
         mPlaying = false;
@@ -146,8 +149,7 @@ public class SplashPlay extends Activity implements
 					/**
 					 * Changed slider to new position.
 					 * @see org.openintents.widget.Slider.OnPositionChangedListener#onPositionChangeCompleted()
-					 */
-					@Override
+					 */					
 					public void onPositionChangeCompleted() {
 						int newPos = mSlider.pos;
 						if (mp != null) {
@@ -160,8 +162,7 @@ public class SplashPlay extends Activity implements
 
 					/* (non-Javadoc)
 					 * @see org.openintents.widget.Slider.OnPositionChangedListener#onPositionChanged(org.openintents.widget.Slider, int, int)
-					 */
-					@Override
+					 */					
 					public void onPositionChanged(Slider slider,
 							int oldPosition, int newPosition) {
 						// Update text field:
