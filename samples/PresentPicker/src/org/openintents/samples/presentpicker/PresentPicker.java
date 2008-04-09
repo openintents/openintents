@@ -30,9 +30,11 @@ package org.openintents.samples.presentpicker;
 
 import java.util.Random;
 
+import org.openintents.OpenIntents;
 import org.openintents.provider.Shopping;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -41,6 +43,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Resources;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -121,6 +124,8 @@ public class PresentPicker extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.main);
+                
+       OpenIntents.requiresOpenIntents(this);
         
 		// Initialize the convenience functions:
 		Shopping.mContentResolver = getContentResolver();
