@@ -27,7 +27,9 @@
 		defines open intents and interfaces to make Android applications
 		work together.\n\n
 		For more information visit the OpenIntents developer home at \n
-		http://code.google.com/p/openintents/
+		http://code.google.com/p/openintents/\n\n
+		For copyright notes of maps see the About menu of Location Map View.\n
+		3rd party fonts by www.anke-art.de have been included. 
 	</string>
 	<string name="action_MAIN">org.openintents.main.OpenIntentsView</string>
 
