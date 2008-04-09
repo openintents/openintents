@@ -64,6 +64,7 @@ public class SensorServer implements Runnable {
 	
 	
 	// Called when starting a thread for network connection
+    @Override
 	public void run() {
 		listenServer();
 	}
