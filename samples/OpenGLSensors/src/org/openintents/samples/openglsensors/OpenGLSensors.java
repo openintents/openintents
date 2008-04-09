@@ -31,6 +31,7 @@ package org.openintents.samples.openglsensors;
  * lib/openintents-lib-n.n.n.jar. 
  */
 
+import org.openintents.OpenIntents;
 import org.openintents.hardware.Sensors;
 import org.openintents.provider.Hardware;
 
@@ -109,6 +110,9 @@ public class OpenGLSensors extends Activity {
 	protected void onCreate(Bundle icicle)
     {
         super.onCreate(icicle);   
+        
+        OpenIntents.requiresOpenIntents(this);
+        
         mGLSurfaceView = new GLSurfaceView( getApplication() , this);
         
         mGLSurfaceView.stopUseSensors();
