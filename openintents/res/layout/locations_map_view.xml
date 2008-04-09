@@ -21,7 +21,11 @@
 	<LinearLayout android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
-		<view android:id="@+id/tag"
+			<ImageView android:id="@+id/tags_label"
+			android:layout_width="24px" android:layout_height="24px"
+			android:layout_gravity="center_vertical"
+			android:src="@drawable/tag001a" />
+			<view android:id="@+id/tag"
 			class="org.openintents.lib.MultiWordAutoCompleteTextView"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:layout_weight="1"
