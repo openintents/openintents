@@ -17,103 +17,114 @@
 package org.openintents;
 
 import android.app.Activity;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.app.AlertDialog;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 /**
- * Provides OpenIntents action and category specifiers.
- * <p/>
- * These specifiers extend the standard Android specifiers.
+ * Provides OpenIntents action and category specifiers. <p/> These specifiers
+ * extend the standard Android specifiers.
  */
-public abstract class OpenIntents
-{
+public abstract class OpenIntents {
 
-    // -----------------------------------------------
-    //                     Tags
-    // -----------------------------------------------
-    /**
-     * Identifier for tag action.
-     */
-    public static final String TAG_ACTION = "org.openintents.action.TAG";
-    
-    // -----------------------------------------------
-    //                     Shopping
-    // -----------------------------------------------
-    /**
-     * Change share settings for an item.
-     * 
-     * Currently implemented for shopping list.
-     */
-    public static final String SET_SHARE_SETTINGS_ACTION =
-        "org.openintents.action.SET_SHARE_SETTINGS";
-    
-    /**
-     * Change theme settings or appearance for an item.
-     * 
-     * Currently implemented for shopping list.
-     */
-    public static final String SET_THEME_SETTINGS_ACTION =
-        "org.openintents.action.SET_THEME_SETTINGS";
-    
-    /**
-     * Broadcasts updated information about an item or a list.
-     * 
-     * If the list does not exist on one of the recipients, it is
-     * created.
-     * If the item does not exist, it is created.
-     * This action is intended to be received through GTalk or XMPP.
-     */
-    public static final String SHARE_UPDATE_ACTION =
-    	"org.openintents.action.SHARE_UPDATE";
-    
-    /**
-     * Inserts an item into a shared shopping list.
-     * 
-     * This action is intended to be received through GTalk or XMPP.
-     */
-    public static final String SHARE_INSERT_ACTION =
-    	"org.openintents.action.SHARE_INSERT";
-    
-    /**
-     * Notifies a list that the content changed.
-     */
-    public static final String REFRESH_ACTION =
-    	"org.openintents.action.REFRESH";
-    
-    /**
-     * Adds a location alert to a specific item.
-     * 
-     * Currently implemented for shopping list.
-     */
-    public static final String ADD_LOCATION_ALERT_ACTION =
-    	"org.openintents.action.ADD_LOCATION_ALERT";
+	// -----------------------------------------------
+	// Tags
+	// -----------------------------------------------
+	/**
+	 * Identifier for tag action.
+	 */
+	public static final String TAG_ACTION = "org.openintents.action.TAG";
 
-    // -----------------------------------------------
-    //                     Categories
-    // -----------------------------------------------
-    /**
-     * Main category specifier.
-     * <p/>
-     * Applications placed into this category in the AndroidManifest.xml file are
-     * displayed in the main view of OpenIntents.
-     */
-    public static final String MAIN_CATEGORY = "org.openintents.category.MAIN";
+	// -----------------------------------------------
+	// Shopping
+	// -----------------------------------------------
+	/**
+	 * Change share settings for an item.
+	 * 
+	 * Currently implemented for shopping list.
+	 */
+	public static final String SET_SHARE_SETTINGS_ACTION = "org.openintents.action.SET_SHARE_SETTINGS";
 
-    /**
-     * Settings category specifier.
-     * <p/>
-     * Applications placed into this category in the AndroidManifest.xml file are
-     * displayed in the settings tab of OpenIntents.
-     */
-    public static final String SETTINGS_CATEGORY
-            = "org.openintents.category.SETTINGS";
+	/**
+	 * Change theme settings or appearance for an item.
+	 * 
+	 * Currently implemented for shopping list.
+	 */
+	public static final String SET_THEME_SETTINGS_ACTION = "org.openintents.action.SET_THEME_SETTINGS";
 
-    
+	/**
+	 * Broadcasts updated information about an item or a list.
+	 * 
+	 * If the list does not exist on one of the recipients, it is created. If
+	 * the item does not exist, it is created. This action is intended to be
+	 * received through GTalk or XMPP.
+	 */
+	public static final String SHARE_UPDATE_ACTION = "org.openintents.action.SHARE_UPDATE";
 
-	/** identifier for adding generic alerts  action. */
-	public static final String ADD_GENERIC_ALERT="org.openintents.action.ADD_GENERIC_ALERT";
-	public static final String EDIT_GENERIC_ALERT="org.openintents.action.EDIT_GENERIC_ALERT";
+	/**
+	 * Inserts an item into a shared shopping list.
+	 * 
+	 * This action is intended to be received through GTalk or XMPP.
+	 */
+	public static final String SHARE_INSERT_ACTION = "org.openintents.action.SHARE_INSERT";
 
+	/**
+	 * Notifies a list that the content changed.
+	 */
+	public static final String REFRESH_ACTION = "org.openintents.action.REFRESH";
+
+	/**
+	 * Adds a location alert to a specific item.
+	 * 
+	 * Currently implemented for shopping list.
+	 */
+	public static final String ADD_LOCATION_ALERT_ACTION = "org.openintents.action.ADD_LOCATION_ALERT";
+
+	// -----------------------------------------------
+	// Categories
+	// -----------------------------------------------
+	/**
+	 * Main category specifier. <p/> Applications placed into this category in
+	 * the AndroidManifest.xml file are displayed in the main view of
+	 * OpenIntents.
+	 */
+	public static final String MAIN_CATEGORY = "org.openintents.category.MAIN";
+
+	/**
+	 * Settings category specifier. <p/> Applications placed into this category
+	 * in the AndroidManifest.xml file are displayed in the settings tab of
+	 * OpenIntents.
+	 */
+	public static final String SETTINGS_CATEGORY = "org.openintents.category.SETTINGS";
+
+	/** identifier for adding generic alerts action. */
+	public static final String ADD_GENERIC_ALERT = "org.openintents.action.ADD_GENERIC_ALERT";
+	public static final String EDIT_GENERIC_ALERT = "org.openintents.action.EDIT_GENERIC_ALERT";
+
+	/**
+	 * shows an English message if open intents is not installed, finishes the activity after user clicked "ok". 
+	 * @param activity
+	 */
+	public static final void requiresOpenIntents(final Activity activity) {
+		try {
+			activity.getPackageManager().getPackageInfo("org.openintents", 0);
+		} catch (NameNotFoundException e) {
+			AlertDialog
+					.show(
+							activity,
+							"Warning",
+							0,
+							"Requires OpenIntents! Please install the open intents application from www.openintents.org first.",
+							"ok", new OnClickListener() {
+
+								public void onClick(DialogInterface arg0,
+										int arg1) {
+									activity.finish();
+								}
+
+							}, false, null);
+
+		}
+	}
 }
