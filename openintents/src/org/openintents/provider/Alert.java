@@ -71,6 +71,8 @@ public class Alert{
 	//ugly hack to make the mock provider work, 
 	//see [..]
 	public static final long LOCATION_EXPIRES=1000000;
+
+	public static final String EXTRA_URI = "URI";
 	
 
 	

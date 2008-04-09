@@ -18,6 +18,7 @@ package org.openintents.alert;
 import org.openintents.provider.Alert;
 import org.openintents.provider.Intents;
 import org.openintents.provider.Location.Locations;
+import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.R.*;
 
@@ -89,6 +90,10 @@ public class AddGenericAlertActivity extends Activity {
 	private int intentCatRow = 0;
 	private int intentUriRow = 0;
 	private int typeRow = 0;
+	private CheckBox mActive;
+	private CheckBox mOnBoot;
+	private int activeRow;
+	private int onBootRow;
 
 	public void onCreate(Bundle b) {
 
@@ -103,6 +108,10 @@ public class AddGenericAlertActivity extends Activity {
 		mIntentUri = (TextView) findViewById(R.id.alert_addgeneric_intenturi);
 
 		mType = (Spinner) findViewById(R.id.alert_addgeneric_type);
+		mActive = (CheckBox) findViewById(R.id.alert_addgeneric_active);
+		mOnBoot = (CheckBox) findViewById(R.id.alert_addgeneric_onboot);
+			
+		
 		Alert.init(this);
 
 		ArrayAdapter ad = new ArrayAdapter(this,
@@ -136,10 +145,11 @@ public class AddGenericAlertActivity extends Activity {
 			mState = STATE_CREATE;
 			mType.setSelection(1);
 			// mChannelLink.setText("EHLO CREATOR!");
-		} else if (getIntent().getAction().equals(Intent.EDIT_ACTION)) {
+		} else if (getIntent().getAction().equals(OpenIntents.EDIT_GENERIC_ALERT)) {
 			mState = STATE_EDIT;
-			cUri = Uri.parse(b.getString("URI"));
-
+			cUri = Uri.parse(getIntent().getStringExtra(Alert.EXTRA_URI));
+			Log.v(_TAG, "edit " + cUri);
+			
 			mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null);
 			cond1Row = mCursor.getColumnIndex(Alert.Generic.CONDITION1);
 			cond2Row = mCursor.getColumnIndex(Alert.Generic.CONDITION2);
@@ -148,6 +158,9 @@ public class AddGenericAlertActivity extends Activity {
 					.getColumnIndex(Alert.Generic.INTENT_CATEGORY);
 			intentUriRow = mCursor.getColumnIndex(Alert.Generic.INTENT_URI);
 			typeRow = mCursor.getColumnIndex(Alert.Generic.TYPE);
+			activeRow = mCursor.getColumnIndex(Alert.Generic.ACTIVE);
+			onBootRow = mCursor.getColumnIndex(Alert.Generic.ACTIVATE_ON_BOOT);
+			
 			if (mCursor.count() > 0) {
 				mCursor.first();
 
@@ -156,8 +169,9 @@ public class AddGenericAlertActivity extends Activity {
 				mIntent.setText(mCursor.getString(intentRow));
 				mIntentCat.setText(mCursor.getString(intentCatRow));
 				mIntentUri.setText(mCursor.getString(intentUriRow));
-				// TODO: something usefull here. mType.setSelectedItem
-
+				mType.setSelection(((ArrayAdapter) mType.getAdapter()).getPosition(mCursor.getString(typeRow)));
+				mActive.setChecked(!mCursor.isNull(activeRow) && mCursor.getInt(activeRow) == 1);
+				mOnBoot.setChecked(!mCursor.isNull(onBootRow) && mCursor.getInt(onBootRow) == 1);
 			}
 
 		}
@@ -181,7 +195,9 @@ public class AddGenericAlertActivity extends Activity {
 		cv.put(Alert.Generic.INTENT_CATEGORY, mIntentCat.getText().toString());
 		cv.put(Alert.Generic.INTENT_URI, mIntentUri.getText().toString());
 		cv.put(Alert.Generic.TYPE, sType);
-
+		cv.put(Alert.Generic.ACTIVE, mActive.isChecked());
+		cv.put(Alert.Generic.ACTIVATE_ON_BOOT, mOnBoot.isChecked());
+		
 		cUri = Alert.insert(typedUri, cv);
 		mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null);
 		//Issue 113: pick action/location adds alert
@@ -190,13 +206,27 @@ public class AddGenericAlertActivity extends Activity {
 	}
 
 	private void saveDataSet() {
-		Log.d(_TAG, "creating dataset now");
+		Log.d(_TAG, "save dataset now");	
+		
+		Log.v(_TAG, "requery: " +mCursor.requery());
+		Log.v(_TAG, "next: " + mCursor.next());
+		
 		mCursor.updateString(cond1Row, mCond1.getText().toString());
 		mCursor.updateString(cond2Row, mCond2.getText().toString());
 		mCursor.updateString(intentRow, mIntent.getText().toString());
 		mCursor.updateString(intentCatRow, mIntentCat.getText().toString());
 		mCursor.updateString(intentUriRow, mIntentUri.getText().toString());
 		mCursor.updateString(typeRow, ((String) mType.getSelectedItem()));
+		if (mActive.isChecked()){
+			mCursor.updateInt(activeRow, 1);
+		} else {
+			mCursor.updateInt(activeRow, 0);
+		}
+		if (mOnBoot.isChecked()){
+			mCursor.updateInt(onBootRow, 1);
+		} else {
+			mCursor.updateInt(onBootRow, 0);
+		}		
 		mCursor.commitUpdates();
 
 	}
