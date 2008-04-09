@@ -81,6 +81,14 @@
 					android:name="android.intent.category.LAUNCHER" />   -->
 			</intent-filter>
 		</activity>
+		
+		<activity android:name=".main.InitView"
+			android:label="@string/init_databases">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+		</activity>
 
 		<!-- Locations activity -->
 		<activity android:name=".locations.LocationsView"
