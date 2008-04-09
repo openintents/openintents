@@ -32,7 +32,9 @@ date: 2008-04-09
   72, 86, 88, 89, 95)
 - Renamed ContentBrowser in TagBrowser, and 
   several issues fixed (issues #17, 25, 29, 30, 42, 
-  ... 99, 100)
+  71, 73, 74, 79, 81, 99, 100)
+- Shopping list: Added GTalk support, themes, and 
+  location alert (issues #20, 65, 66).
 
 ---------------------------------------------------------
 release: 0.1.5
