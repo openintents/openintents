@@ -18,6 +18,13 @@ PresentPicker picks the right present for you.
 It demonstrates the usage of the Shopping List application.
 
 ---------------------------------------------------------
+release: 0.1.6
+date: 2008-04-09
+
+- added About icon (issue #104)
+- show toast when adding items to shopping list (issue #93)
+
+---------------------------------------------------------
 release: 0.1.5
 date: 2008-03-28
 

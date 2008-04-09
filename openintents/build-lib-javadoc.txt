@@ -19,7 +19,7 @@ lib-javadoc-include = \
     src/org/openintents/hardware/Sensors.java,\
 	src/org/openintents/hardware/SensorsPlus.java,\
 	src/org/openintents/hardware/SensorSimulatorClient.java,\
-	src/org/openintents/news/services/NewsReaderService.java,\
+	src/org/openintents/news/services/NewsreaderServices.java,\
 	src/org/openintents/news/services/RSSFetcherThread.java,\
 	src/org/openintents/news/views/ChannelListAdapter.java,\
 	src/org/openintents/news/views/MessageListAdapter.java,\

@@ -195,48 +195,6 @@
 			</fileset>
 		</copy>
 	</target>
-
-
-	<target name="FavoriteLocations"
-		depends="OpenIntents"
-		>
-		<echo>------------------------------FavoriteLocations----------------------</echo>
-		<!-- Use most recent lib file -->
-		<mkdir dir="${favoritelocations-dir}/lib"/>
-		<copy
-			file="${binary-lib-file}"
-			todir="${favoritelocations-dir}/lib"
-			/>
-		<!-- Compile -->
-		<ant
-			dir="${favoritelocations-dir}"
-			antfile="build.xml"
-			target="all"
-			>
-		</ant>
-		<!-- Copy to binary release -->
-		<copy todir="${binary-samples-dir}" flatten="true">
-			<fileset dir="${favoritelocations-dir}">
-				<include name="bin/FavoriteLocations.apk" />
-				<include name="readme_favoriteLocations.txt" />				
-			</fileset>
-		</copy>
-		<!-- Copy to source release -->
-		<copy todir="${source-dir}/samples/FavoriteLocations">
-		    <fileset dir="${favoritelocations-dir}">
-		    	<exclude name="**/bin/**" />
-		    	<exclude name="**/doc/**" />
-	    		<exclude name="**/.svn" />
-		    </fileset>
-		</copy>
-		<!-- Copy to javadoc release -->
-		<copy todir="${javadoc-dir}/samples/FavoriteLocations">
-			<fileset dir="${favoritelocations-dir}/${doc-dir}">
-				<exclude name="**/.svn" />
-			</fileset>
-		</copy>
-	</target>	
-
 	
 	<target name="OpenGLSensors"
 		depends="OpenIntents"
@@ -439,7 +397,6 @@
 	<target
 		name="release"		
 		depends="
-			FavoriteLocations,
 			OpenGLSensors,
 			PresentPicker,
 			SensorSimulator,

@@ -21,6 +21,20 @@ To obtain the current release, visit
   http://www.openintents.org
   
 ---------------------------------------------------------
+release: 0.1.6
+date: 2008-04-09
+
+- FavoriteLocations sample application removed, its 
+  functionality moved into the core.
+- Base issues fixed (issues #61, 62, 90, 98)
+- Improved locations, extras for locations, distance to
+  current location, copyright notice (issues #56, 60,
+  72, 86, 88, 89, 95)
+- Renamed ContentBrowser in TagBrowser, and 
+  several issues fixed (issues #17, 25, 29, 30, 42, 
+  ... 99, 100)
+
+---------------------------------------------------------
 release: 0.1.5
 date: 2008-03-28
 
