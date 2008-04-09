@@ -251,7 +251,9 @@ public class AddGenericAlertActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, MENU_PICK_LOC, R.string.alert_pick_location);
 		menu.add(0, MENU_PICK_ACTION, R.string.alert_pick_action);
-		menu.add(0, MENU_PICK_DATE_TIME, R.string.alert_pick_date_time);
+		//descoped
+		//menu.add(0, MENU_PICK_DATE_TIME, R.string.alert_pick_date_time);
+		
 		return super.onCreateOptionsMenu(menu);
 	}
 
