@@ -303,7 +303,7 @@ public class ShoppingView
             
             if (Shopping.ITEM_TYPE.equals(type)){
             	mListUri = Shopping.getListForItem(intent.getData().getLastPathSegment());
-            }else {
+            }else {            	
             	mListUri = intent.getData();
             }
             
@@ -345,7 +345,13 @@ public class ShoppingView
         fillListFilter();
 
         // Get last part of URI:
-        int selectList = Integer.parseInt(mListUri.getLastPathSegment());
+        int selectList;
+        	try {
+        		selectList = Integer.parseInt(mListUri.getLastPathSegment());	
+			} catch (NumberFormatException e) {
+				selectList = defaultShoppingList;
+			}
+        	
         
         // select the default shopping list at the beginning:
         setSelectedListId(selectList);
