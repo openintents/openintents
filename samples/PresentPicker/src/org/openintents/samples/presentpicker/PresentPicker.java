@@ -69,6 +69,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
 public class PresentPicker extends Activity {
@@ -300,7 +301,14 @@ public class PresentPicker extends Activity {
 					
 					// Now put this into the default shopping list
 					long listId = Shopping.getDefaultList();
-					Shopping.addItemToList(itemId, listId);
+					long id = Shopping.addItemToList(itemId, listId);
+					int toastId;
+					if (id > 0){
+						toastId = R.string.item_added_to_shopping;
+					} else {
+						toastId = R.string.item_not_added_to_shopping;
+					}
+					Toast.makeText(PresentPicker.this, toastId, Toast.LENGTH_SHORT).show();
 					
 					// That was it!
 				}

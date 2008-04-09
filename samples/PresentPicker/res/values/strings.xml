@@ -38,5 +38,7 @@
     <string name="copyright">(c) 2008 OpenIntents.org</string>
     <string name="about_icons">The freeware icons are created by FastIcon.com and are subject to their license conditions.</string>
     <string name="ok">OK</string>
+    <string name="item_added_to_shopping">Item has been added to default shopping list</string>
+    <string name="item_not_added_to_shopping">Item could NOT been added to list (see log)</string>
     
    </resources>
