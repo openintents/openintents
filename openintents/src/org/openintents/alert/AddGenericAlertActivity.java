@@ -184,7 +184,9 @@ public class AddGenericAlertActivity extends Activity {
 
 		cUri = Alert.insert(typedUri, cv);
 		mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null);
-
+		//Issue 113: pick action/location adds alert
+		// only allow to create an alert once, thereafter the state changes to edit.
+		mState = STATE_EDIT;
 	}
 
 	private void saveDataSet() {
