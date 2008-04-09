@@ -62,11 +62,24 @@ public class InitView extends Activity {
 		News.mContentResolver = this.getContentResolver();
 
 		Button button = createButton();
+		button.setText(R.string.init_add_all_values);
+		button.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View view) {
+				addLocations();
+				addNewsFeeds();
+				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+			}
+
+		});
+		
+		button = createButton();
 		button.setText(R.string.init_add_locations);
 		button.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View view) {
 				addLocations();
+				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
 			}
 
 		});
@@ -77,6 +90,8 @@ public class InitView extends Activity {
 
 			public void onClick(View view) {
 				addNewsFeeds();
+				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+
 			}
 
 		});
@@ -107,10 +122,7 @@ public class InitView extends Activity {
 			Log.v(LOG_TAG, locUri.toString());
 			mTag.insertTag((String) locations[i * 3 + 2], locUri.toString());
 			mTag.insertTag("Shop", locUri.toString());
-		}
-
-		Toast.makeText(this, R.string.init_done, Toast.LENGTH_SHORT).show();
-
+		}		
 	}
 
 	public void addNewsFeeds() {
@@ -132,8 +144,6 @@ public class InitView extends Activity {
 		cv.put(News.RSSFeeds.CHANNEL_NAME,
 		"OpenIntents News");		
 		News.insert(News.RSSFeeds.CONTENT_URI, cv);
-		
-		
-		Toast.makeText(this, R.string.init_done, Toast.LENGTH_SHORT).show();
+				
 	}
 }
