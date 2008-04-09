@@ -71,8 +71,12 @@ Earth Technology.
 	<string name="tags_unknown_content">Content type is unknown, add package information using menu "packages".</string>
 	<!-- intent list  -->
 	<string name = "intents_list">List of Actions by Type</string>
-	<string name = "intents_types">ActionList by Type</string>
+	<string name = "intents_types">Action list by Type</string>
 	<string name = "no_types">No types</string>
+	<string name="intents_list_of">List of %s</string>
+	<string name="intents_item_of">%s</string>
+	<string name="intents_list_pick_type">Pick type for action %s</string>
+	<string name="intents_list_pick_type_action">Pick type, thereafter an action</string>
 	
 	<!--  Content Browser -->
 	<string name = "content_browser">Tag browser</string>
@@ -225,4 +229,6 @@ Earth Technology.
 	<string name="alert_label_condition2">Condition 2</string>
 	<string name="alert_added">Alert has been added.</string>
 	<string name="alert_not_added">Alert could not be added (see log for information).</string>
+		
+	
 </resources>

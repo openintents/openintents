@@ -233,6 +233,7 @@ public class AddGenericAlertActivity extends Activity {
 			break;
 		case MENU_PICK_ACTION:
 			intent = new Intent(Intent.PICK_ACTION, Intents.CONTENT_URI);
+			intent.putExtra(Intents.EXTRA_ACTION_LIST, Intent.VIEW_ACTION);
 			startSubActivity(intent, REQUEST_PICK_ACTION);
 			break;
 		case MENU_PICK_DATE_TIME:

@@ -2,6 +2,9 @@ package org.openintents.actions;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,12 +18,16 @@ import org.openintents.provider.Intents;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListActivity;
+import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.ArrayListCursor;
+import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,9 +36,12 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.SimpleCursorAdapter.ViewBinder;
 
 public class TypesListView extends ListActivity {
 
@@ -72,11 +82,14 @@ public class TypesListView extends ListActivity {
 
 	private ArrayListCursor mTypesCursor = null;
 
+	private HashSet<String> mActionSet;
+
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.intents_types_view);
 
+		
 		Thread t = new Thread() {
 			@Override
 			public void run() {
@@ -89,9 +102,44 @@ public class TypesListView extends ListActivity {
 	}
 
 	protected void updateList() {
+		if (getCallingActivity() != null){
+			if (mActionSet.size() == 1){
+				setTitle(getResources().getString(R.string.intents_list_pick_type, mActionSet.iterator().next()));
+			} else {
+				setTitle(getResources().getString(R.string.intents_list_pick_type_action, mActionSet.size()));				
+			}
+		}
+
+		
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(
 				TypesListView.this, R.layout.intents_types, mTypesCursor,
-				new String[] { "type" }, new int[] { R.id.intents_types_name });
+				new String[] { "type", "actions" }, new int[] {
+						R.id.intents_types_name, R.id.intents_types_icon });
+		adapter.setViewBinder(new ViewBinder() {
+
+			public boolean setViewValue(View view, Cursor cursor, int i) {
+				if (view instanceof TextView) {
+					String type = cursor.getString(i);
+					String[] typeParts = type.split("/");
+					CharSequence translatedType = type;
+					if (typeParts.length == 2){
+						if (Intents.TYPE_PREFIX_DIR.equals(typeParts[0])){
+							translatedType = getResources().getString(R.string.intents_list_of, typeParts[1]);
+						} else if (Intents.TYPE_PREFIX_ITEM.equals(typeParts[0])){
+							translatedType = getResources().getString(R.string.intents_item_of, typeParts[1]);
+						}
+					}					
+					((TextView) view).setText(translatedType);
+					
+				} else if (view instanceof ImageView) {
+					Drawable icon = getIcon(cursor.getString(0), cursor
+							.getString(1));
+					((ImageView) view).setImageDrawable(icon);
+				}
+				return true;
+			}
+
+		});
 		setListAdapter(adapter);
 
 		getListView().setOnItemClickListener(
@@ -100,12 +148,38 @@ public class TypesListView extends ListActivity {
 					public void onItemClick(AdapterView adapterview, View view,
 							int i, long l) {
 						getListView().setSelection(i);
-						Object item = getListAdapter().getItem(i);
-						Intent intent = new Intent(TypesListView.this,
-								PickStringView.class);
-						intent.putExtra(PickStringView.EXTRA_LIST,
-								(String) ((ArrayListCursor) item).getString(1));
-						startSubActivity(intent, REQUEST_PICK);
+						ArrayListCursor cursor = (ArrayListCursor) getListAdapter()
+								.getItem(i);
+
+						String actionList = cursor.getString(1);
+						String[] actions = actionList.split(" ");
+						// requires pick action request if type has more than
+						// one action
+						// and this activity was initialized with a different
+						// action than
+						// this type allows.
+						boolean requiresPickRequest = actions.length > 1;
+						String action = null;
+						if (!requiresPickRequest) {
+							action = actions[0];
+						} else {
+							requiresPickRequest = (mActionSet.size() > 1 || !Arrays
+									.asList(actions).contains(
+											mActionSet.iterator().next()));
+							if (!requiresPickRequest) {
+								action = mActionSet.iterator().next();
+							}
+						}
+
+						if (requiresPickRequest) {
+							Intent intent = new Intent(TypesListView.this,
+									PickStringView.class);
+							intent.putExtra(PickStringView.EXTRA_LIST,
+									actionList);
+							startSubActivity(intent, REQUEST_PICK);
+						} else {
+							completeActionPick(action, cursor.getString(0));
+						}
 
 					}
 
@@ -116,7 +190,7 @@ public class TypesListView extends ListActivity {
 	private void createTypesList() {
 		if (mTypesCursor == null) {
 			HashMap<String, ArrayList<IntentFilter>> map = createIntentsMap();
-
+		
 			ArrayList<ArrayList> list = new ArrayList<ArrayList>();
 
 			for (Entry<String, ArrayList<IntentFilter>> e : map.entrySet()) {
@@ -140,8 +214,20 @@ public class TypesListView extends ListActivity {
 				ArrayList<Object> row = new ArrayList<Object>();
 				row.add(e.getKey());
 				row.add(sb);
+				Log.v(LOG_TAG, e.getKey() + " " + sb + " added.");
 				list.add(row);
 			}
+
+			// comparator for a list of rows containing only string as first
+			// element.
+			final Comparator<ArrayList> comparator = new Comparator<ArrayList>() {
+				public int compare(ArrayList object1, ArrayList object2) {
+					return ((String) object1.get(0))
+							.compareToIgnoreCase((String) object2.get(0));
+				}
+			};
+
+			Collections.sort(list, comparator);
 
 			mTypesCursor = new ArrayListCursor(
 					new String[] { "type", "actions" }, list);
@@ -149,30 +235,61 @@ public class TypesListView extends ListActivity {
 
 	}
 
+	private Drawable getIcon(String type, String actionList) {
+		Intent intent = new Intent();
+		intent.setDataAndType(null, type);
+		if (actionList.contains(Intent.VIEW_ACTION)) {
+			intent.setAction(Intent.VIEW_ACTION);
+		} else {
+			intent.setAction(actionList.split(" ")[0]);
+		}
+		try {
+			return getPackageManager().getActivityIcon(intent);
+		} catch (NameNotFoundException e) {
+			return getPackageManager().getDefaultActivityIcon();
+		}
+	}
+
 	private HashMap<String, ArrayList<IntentFilter>> createIntentsMap() {
 
 		// inspect actions defined at Intent.class
 		HashMap<String, ArrayList<IntentFilter>> map = new HashMap<String, ArrayList<IntentFilter>>();
-		for (Field f : Intent.class.getFields()) {
 
-			if (f.getName().endsWith("ACTION")) {
-				String action = null;
-				try {
-					action = (String) f.get(Intent.class);
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
+		mActionSet = new HashSet<String>();
+		if (getIntent() != null) {
+			if (getIntent().getBooleanExtra(Intents.EXTRA_ANDROID_ACTIONS,
+					false)) {
+
+				for (Field f : Intent.class.getFields()) {
+
+					if (f.getName().endsWith("ACTION")) {
+						String action = null;
+						try {
+							action = (String) f.get(Intent.class);
+						} catch (IllegalArgumentException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
+						}
+
+						if (action != null) {
+							mActionSet.add(action);
+							addIntentsToMap(map, action);
+						}
+					}
 				}
+			}
 
-				if (action != null) {
-					addIntentsToMap(map, action);
+			String actionList = getIntent().getStringExtra(
+					Intents.EXTRA_ACTION_LIST);
+			if (actionList != null) {
+				String[] actions = actionList.split(",");
+				for (String action : actions) {
+					mActionSet.add(action);
+					addIntentsToMap(map, action.trim());
 				}
 			}
 		}
-
-		// inspect OpenIntents.TAG_ACTION
-		addIntentsToMap(map, OpenIntents.TAG_ACTION);
 
 		// return result
 		return map;
@@ -188,7 +305,7 @@ public class TypesListView extends ListActivity {
 
 		List<ResolveInfo> activities = this.getPackageManager()
 				.queryIntentActivities(intent, flags);
-		//Log.i(LOG_TAG, intent + ":" + activities.size());
+		// Log.i(LOG_TAG, intent + ":" + activities.size());
 
 		resolveListToMap(intent, activities, map);
 	}
@@ -210,7 +327,7 @@ public class TypesListView extends ListActivity {
 							map.put(type, set);
 						}
 						set.add(ri.filter);
-						//Log.i("test", type + ": " + intent);
+						// Log.i("test", type + ": " + intent);
 
 					}
 				}
@@ -230,27 +347,7 @@ public class TypesListView extends ListActivity {
 
 		switch (requestCode) {
 		case REQUEST_PICK:
-			if (Intent.VIEW_ACTION.equals(s)) {
-				Intent intent = new Intent();
-				intent.setAction(Intent.PICK_ACTION);
-				intent.setDataAndType(null, type);
-				if (getPackageManager().resolveActivity(intent, 0) == null) {
-					intent.setAction(Intent.GET_CONTENT_ACTION);
-				}
-				if (getPackageManager().resolveActivity(intent, 0) != null) {
-					startSubActivity(intent, REQUEST_VIEW_URI);
-				} else {
-					Bundle b = new Bundle();
-					b.putString(Intents.EXTRA_ACTION, s);
-					b.putString(Intents.EXTRA_TYPE, type);					
-					finishOrAction(b);
-				}
-			} else {
-				Bundle b = new Bundle();
-				b.putString(Intents.EXTRA_ACTION, s);
-				b.putString(Intents.EXTRA_TYPE, type);
-				finishOrAction(b);
-			}
+			completeActionPick(s, type);
 			break;
 		case REQUEST_VIEW_URI:
 			Bundle b = new Bundle();
@@ -260,30 +357,56 @@ public class TypesListView extends ListActivity {
 		}
 	}
 
+	private void completeActionPick(String action, String type) {
+		if (Intent.VIEW_ACTION.equals(action)) {
+			Intent intent = new Intent();
+			intent.setAction(Intent.PICK_ACTION);
+			intent.setDataAndType(null, type);
+			if (getPackageManager().resolveActivity(intent, 0) == null) {
+				intent.setAction(Intent.GET_CONTENT_ACTION);
+			}
+			if (getPackageManager().resolveActivity(intent, 0) != null) {
+				startSubActivity(intent, REQUEST_VIEW_URI);
+			} else {
+				Bundle b = new Bundle();
+				b.putString(Intents.EXTRA_ACTION, action);
+				b.putString(Intents.EXTRA_TYPE, type);
+				finishOrAction(b);
+			}
+		} else {
+			Bundle b = new Bundle();
+			b.putString(Intents.EXTRA_ACTION, action);
+			b.putString(Intents.EXTRA_TYPE, type);
+			finishOrAction(b);
+		}
+	}
+
 	private void finishOrAction(Bundle b) {
-		if (getCallingActivity() != null){
+		if (getCallingActivity() != null) {
 			setResult(Activity.RESULT_OK, null, b);
 			finish();
-		} else {			
+		} else {
 			Intent intent = new Intent();
 			intent.setAction(b.getString(Intents.EXTRA_ACTION));
 			Uri uri = null;
 			String uriString = b.getString(Intents.EXTRA_URI);
-			if (uriString != null){
+			if (uriString != null) {
 				uri = Uri.parse(uriString);
 			}
 			intent.setDataAndType(uri, b.getString(Intents.EXTRA_TYPE));
-			startActivity(intent );
+			startActivity(intent);
 		}
-		
+
 	}
 
 	@Override
-	public boolean onMenuItemSelected(int featureId, Item item) {
+	public boolean onOptionsItemSelected(Item item) {
 		super.onOptionsItemSelected(item);
 		switch (item.getId()) {
 		case MENU_VIEW_ALL:
 			Intent intent = new Intent(this, IntentsListView.class);
+			intent.putExtra(Intents.EXTRA_ANDROID_ACTIONS, true);
+			intent.putExtra(Intents.EXTRA_ACTION_LIST, OpenIntents.TAG_ACTION);
 			startActivity(intent);
 			break;
 		}
