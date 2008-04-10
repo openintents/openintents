@@ -128,7 +128,7 @@ public class AddLocationAlertActivity extends Activity
     public void addLocationAlert() {
     	// Add location into database
     	addAlert(mLocation.getText().toString(), null, Intent.VIEW_ACTION,
-    			null, mShoppingListUri.getPath());
+    			null, mShoppingListUri.toString());
     }
     
     public void viewAlerts() {
@@ -179,7 +179,8 @@ public class AddLocationAlertActivity extends Activity
 			
 			case REQUEST_PICK_LOC:
 				
-				mLocation.setText(bundle.getString(Locations.EXTRA_GEO) + " - " + mTag.findTags(data, " "));				
+				mLocation.setText(bundle.getString(Locations.EXTRA_GEO));
+				mTags.setText(mTag.findTags(data, " "));
 				addLocationAlert();
 				break;
 			}
