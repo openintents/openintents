@@ -522,6 +522,7 @@
 	<!-- alert framework -->
 	<activity android:name=".alert.AddGenericAlertActivity"
 			android:label="@string/alert_add"
+			android:icon="@drawable/alert_application001a"
 			>
 
 			<intent-filter>
@@ -539,6 +540,7 @@
 	</activity>
 	<activity android:name=".alert.AlertList"
 			android:label="Alert List"
+			android:icon="@drawable/alert_application001a"
 			>
 
 			<intent-filter>
