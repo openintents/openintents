@@ -24,6 +24,7 @@ import org.openintents.lib.DeliciousApiHelper;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -324,9 +325,9 @@ public class MagnoliaTagging extends Activity {
 		DeliciousApiHelper dah = new DeliciousApiHelper(
 				DeliciousApiHelper.MAGNOLIA_API, mScreenName, mPassWd);
 
-		mProgress.setIndeterminate(true);
-		mProgress.setVisibility(ProgressBar.VISIBLE);
-
+		//mProgress.setIndeterminate(true);
+		//mProgress.setVisibility(ProgressBar.VISIBLE);
+  //      ProgressDialog iProgressBar = ProgressDialog.show(MagnoliaTagging.this,null,"Please wait...", false, false); 
 		
 		//getWindow().setFeatureInt(android.view.Window.FEATURE_PROGRESS,10);
 		try
@@ -347,9 +348,11 @@ public class MagnoliaTagging extends Activity {
 				description,
 				oTags,
 				shared
+			//	,iProgressBar
 				);
 			t.run();
 			t.join();
+			remoteResult=t.getResult();
 /*
 			//debug
 			remoteResult=true;
@@ -386,6 +389,18 @@ public class MagnoliaTagging extends Activity {
 			Log.e(_TAG,"IOE while posting to Magnolia>>"+ioe2.getMessage()+"<<");
 		}
 		
+		/*
+		//TODO: make Progress Bars work
+		try
+		{
+			iProgressBar.dismiss();	
+		}
+		catch (Exception x)
+		{
+			//iProgressBar.dismiss();	
+		}
+*/
+		
 		// only add local tags if rpc was successfull
 		// so user has a chance of retrying without local dublettes
 		if (remoteResult) {
@@ -400,8 +415,8 @@ public class MagnoliaTagging extends Activity {
 		// getWindow().setFeatureInt(android.view.Window.FEATURE_PROGRESS,
 		// android.view.Window.PROGRESS_INDETERMINATE_OFF);
 
-		mProgress.setIndeterminate(false);
-		mProgress.setVisibility(ProgressBar.GONE);
+	//	mProgress.setIndeterminate(false);
+	//	mProgress.setVisibility(ProgressBar.GONE);
 
 		Log.d(_TAG, "saveBookmark:leaving");
 
@@ -440,6 +455,7 @@ public class MagnoliaTagging extends Activity {
 		private String[] tags;
 		private boolean shared;
 		private boolean result=false;
+		private ProgressDialog callback=null;
 
 		public TaggThread(DeliciousApiHelper dah,String u,String d,String[] t,boolean s){
 			this.dah=dah;
@@ -449,8 +465,19 @@ public class MagnoliaTagging extends Activity {
 			this.shared=s;
 		}
 
+		public TaggThread(DeliciousApiHelper dah,String u,String d,String[] t,boolean s,ProgressDialog pg){
+			this.dah=dah;
+			this.bmUri=u;
+			this.desc=d;
+			this.tags=t;
+			this.shared=s;
+			this.callback=pg;
+		}
+
+
 		public void run(){
 			boolean r=false;
+			
 			try
 			{
 				r=dah.addPost(
@@ -466,6 +493,34 @@ public class MagnoliaTagging extends Activity {
 
 				r=false;
 			}
+
+
+
+
+			
+
+/*
+
+//debug for progressbars
+			try
+			{
+				Thread.sleep(3000); 
+				if (this.callback!=null)
+				{
+					this.callback.dismiss();
+										Log.e("BLA","DISSMISSED");
+
+				}else{
+					Log.e("BLA","WAS NULL");
+				}
+			}
+			catch (InterruptedException ex)
+			{
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+
+*/
 			setResult(r);
 		}
 
