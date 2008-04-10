@@ -143,6 +143,8 @@
 		<ListView android:id="@+id/magnoliatagging.tags" 
 					android:layout_width="500px"
 					android:layout_height="300px"  
+					android:textColor="#933100"
+
 					/>	
 	</LinearLayout>
 	
