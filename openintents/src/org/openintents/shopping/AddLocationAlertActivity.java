@@ -19,6 +19,7 @@ package org.openintents.shopping;
 import org.openintents.R;
 import org.openintents.alert.AlertList;
 import org.openintents.provider.Alert;
+import org.openintents.provider.Tag;
 import org.openintents.provider.Location.Locations;
 
 import android.app.Activity;
@@ -52,11 +53,15 @@ public class AddLocationAlertActivity extends Activity
     TextView mLocation;
     
     Uri mShoppingListUri;
+
+	private Tag mTag;
     
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        mTag = new Tag(this);
+        
         setContentView(R.layout.shopping_add_location_alert);
 
         // Get the uri of the list
@@ -173,7 +178,8 @@ public class AddLocationAlertActivity extends Activity
 			switch (requestCode) {
 			
 			case REQUEST_PICK_LOC:
-				mLocation.setText(bundle.getString(Locations.EXTRA_GEO));				
+				
+				mLocation.setText(bundle.getString(Locations.EXTRA_GEO) + " - " + mTag.findTags(data, " "));				
 				addLocationAlert();
 				break;
 			}
