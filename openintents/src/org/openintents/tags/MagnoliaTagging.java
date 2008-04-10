@@ -276,7 +276,7 @@ public class MagnoliaTagging extends Activity {
 
 		ListAdapter adapter = new SimpleCursorAdapter(this,
 		// Use a template that displays a text view
-				R.layout.tag_row,
+				R.layout.magnolia_tag_row,
 				// Give the cursor to the list adapter
 				c,
 				// Map the TAG / CONTENT columns in the database to...
@@ -327,21 +327,65 @@ public class MagnoliaTagging extends Activity {
 		mProgress.setIndeterminate(true);
 		mProgress.setVisibility(ProgressBar.VISIBLE);
 
+		
+		//getWindow().setFeatureInt(android.view.Window.FEATURE_PROGRESS,10);
+		try
+		{
+
+			/*
+			remoteResult=dah.addPost(
+				bookmarkURL,
+				description,
+				null,
+				oTags,
+				shared
+				);
+				*/
+			TaggThread t=new TaggThread(
+				dah,
+				bookmarkURL,
+				description,
+				oTags,
+				shared
+				);
+			t.run();
+			t.join();
+/*
+			//debug
+			remoteResult=true;
+			if (false)
+			{
+				throw new java.io.IOException();
+			}
+			try {
+			// 1 Sekunde = 1000 ms warten!
+			Thread.sleep(6000);
+			} catch (InterruptedException e) {
+			} 
+			*/
+
 		// getWindow().setFeatureInt(android.view.Window.FEATURE_PROGRESS,10);
-		try {
-			remoteResult = dah.addPost(bookmarkURL, description, null, oTags,
-					shared);
+	//	try {
+		//	remoteResult = dah.addPost(bookmarkURL, description, null, oTags,
+//					shared);
 
 			/*
 			 * //debug remoteResult=true; if (false) { throw new
 			 * java.io.IOException(); } try { // 1 Sekunde = 1000 ms warten!
 			 * Thread.sleep(6000); } catch (InterruptedException e) { }
 			 */
+			 /*
 		} catch (java.io.IOException ioe) {
 			Log.e(_TAG, "IOE while posting to Magnolia>>" + ioe.getMessage()
 					+ "<<");
-		}
+		}*/
 
+		}catch (java.lang.InterruptedException ioe2)
+		//catch (java.io.IOException ioe)
+		{
+			Log.e(_TAG,"IOE while posting to Magnolia>>"+ioe2.getMessage()+"<<");
+		}
+		
 		// only add local tags if rpc was successfull
 		// so user has a chance of retrying without local dublettes
 		if (remoteResult) {
@@ -387,4 +431,53 @@ public class MagnoliaTagging extends Activity {
 
 	}
 
-}/* eoc */
+
+	
+	private class TaggThread extends Thread	{
+		private DeliciousApiHelper dah;
+		private String bmUri;
+		private String desc;
+		private String[] tags;
+		private boolean shared;
+		private boolean result=false;
+
+		public TaggThread(DeliciousApiHelper dah,String u,String d,String[] t,boolean s){
+			this.dah=dah;
+			this.bmUri=u;
+			this.desc=d;
+			this.tags=t;
+			this.shared=s;
+		}
+
+		public void run(){
+			boolean r=false;
+			try
+			{
+				r=dah.addPost(
+					bmUri,
+					desc,
+					null,
+					tags,
+					shared
+					);				
+			}
+			catch (Exception ioe)
+			{
+
+				r=false;
+			}
+			setResult(r);
+		}
+
+		private synchronized void setResult(boolean result){
+			this.result=result;
+		}
+
+		public synchronized boolean getResult(){
+			return this.result;
+		}
+
+	};
+
+
+}/*eoc*/
