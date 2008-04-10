@@ -25,16 +25,10 @@ public class TagsViewBinder implements ViewBinder {
 	public boolean setViewValue(View view, Cursor cursor, int i) {
 		if (view instanceof TextView && "_id".equals(cursor.getColumnName(i))) {
 			if (view.getId() == R.id.tags) {
-				Cursor tags = mTag.findTags(ContentUris.withAppendedId(
+				String tags = mTag.findTags(ContentUris.withAppendedId(
 						Location.Locations.CONTENT_URI, cursor.getLong(i))
-						.toString());
-				StringBuffer sb = new StringBuffer();
-				int colIndex = tags.getColumnIndex(Tags.URI_1);
-				while (tags.next()) {
-					sb.append(tags.getString(colIndex));
-					sb.append(" ");
-				}
-				((TextView) view).setText(sb.toString());
+						.toString(), " ");
+				((TextView) view).setText(tags);
 				return true;
 			} else {
 				final double lat = cursor.getDouble(1);

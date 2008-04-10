@@ -240,6 +240,20 @@ public class Tag {
 				new String[] { contentUri }, "content1.uri");
 		return c;
 	}
+	
+	public String findTags(String uri, String separator) {
+		Cursor tags = findTags(uri);
+		StringBuffer sb = new StringBuffer();
+		int colIndex = tags.getColumnIndex(Tags.URI_1);
+		while (tags.next()) {
+			sb.append(tags.getString(colIndex));
+			sb.append(separator);
+		}
+		if (sb.length() > 0){
+			sb.deleteCharAt(sb.length() - 1);
+		}
+		return sb.toString();
+	}
 
 	/**
 	 * cursor over tags with all tags for the given content is returned.
@@ -298,5 +312,7 @@ public class Tag {
 		mContext.startActivity(intent);
 
 	}
+
+
 
 }

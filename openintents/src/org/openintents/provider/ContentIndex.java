@@ -59,7 +59,7 @@ public class ContentIndex {
 
 	public static final class ContentBody {
 
-		public static final String[] COLUMNS = new String[] { "BODY" };
+		public static final String[] COLUMNS = new String[] { "BODY1", "BODY2" };
 
 	}
 

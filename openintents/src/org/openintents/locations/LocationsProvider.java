@@ -103,6 +103,7 @@ public class LocationsProvider extends ContentProvider {
 
 		case LOCATION_ID:
 			qb.setTables("locations");
+			qb.setProjectionMap(LOCATION_PROJECTION_MAP);
 			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
 
@@ -269,7 +270,7 @@ public class LocationsProvider extends ContentProvider {
 			} else {
 				whereString = "";
 			}
-
+			
 			count = mDB.update("locations", values, "_id=" + segment
 					+ whereString, whereArgs);
 			break;

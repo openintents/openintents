@@ -71,6 +71,8 @@ public class ContentIndexProvider extends
 
 	}
 
+	private final static String _TAG = "contentIndex";
+
 	public ContentIndexProvider() {
 		super(DATABASE_NAME, DATABASE_VERSION);
 	}
@@ -152,10 +154,18 @@ public class ContentIndexProvider extends
 			ArrayList bodies = new ArrayList();
 			for (String bodyUri : bodyUris) {
 				String[] bodyArray = getContentBody(Uri.parse(bodyUri));
-				if (bodyArray != null && bodyArray.length > 1) {
-					String body = bodyArray[1];
+				if (bodyArray != null && bodyArray.length > 1) {					
 					ArrayList columns = new ArrayList();
+					
+					// add first column (not _id)
+					String body = bodyArray[1];
 					columns.add(body);
+
+					// add second column if available					
+					if (bodyArray.length > 2){
+						body = bodyArray[2];
+						columns.add(body);
+					}
 					bodies.add(columns);
 				}
 			}
@@ -373,13 +383,14 @@ public class ContentIndexProvider extends
 	}
 
 	private void getValues(Cursor cursor, int[] columnIndex, String[] values) {
-		for (int i = 0; i < columnIndex.length; i++) {
+		for (int i = 0; i < columnIndex.length; i++) {			
 			values[i] = cursor.getString(columnIndex[i]);
+			Log.v(_TAG, i + ":" + values[i]);
 		}
 	}
 
 	private int[] getColumnIndex(Cursor cursor, String[] projection) {
-		int[] index = new int[projection.length];
+		int[] index = new int[projection.length];		
 		for (int i = 0; i < projection.length; i++) {
 			index[i] = cursor.getColumnIndex(projection[i]);
 		}

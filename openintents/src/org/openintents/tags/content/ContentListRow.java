@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.openintents.R;
 import org.openintents.provider.ContentIndex;
+import org.openintents.provider.Tag;
+import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Tag.Tags;
 
 import android.app.AlertDialog;
@@ -14,6 +16,7 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.Spannable;
@@ -37,6 +40,8 @@ public class ContentListRow extends RelativeLayout {
 	private static final int CONTENT_ICON = 1;
 	private static final int CONTENT_URI = 2;
 	private static final int CONTENT_TYPE = 3;
+	private static final int TAGS = 4;
+
 	private ImageView mIcon;
 	private TextView mName;
 	private ImageView mType;
@@ -71,21 +76,30 @@ public class ContentListRow extends RelativeLayout {
 					mType.setOnClickListener(new OnClickListener() {
 
 						public void onClick(View view) {
-							AlertDialog.show(ContentListRow.this.getContext(), "info", mTypeDrawable, getResources().getString(mTypeString), getResources().getString(R.string.ok), false);
-							
+							AlertDialog.show(ContentListRow.this.getContext(),
+									"info", mTypeDrawable, getResources()
+											.getString(mTypeString),
+									getResources().getString(R.string.ok),
+									false);
+
 						}
 					});
 				}
 				mIcon.setImageDrawable(mIconDrawable);
+				mTags.setText(mTagsString);
 			}
 		}
 
 	};
+	private TextView mTags;
+	private Tag mTagHelper;
+	private String mTagsString;
 
 	public ContentListRow(Context context) {
 		super(context);
 
 		mContentIndex = new ContentIndex(context.getContentResolver());
+		mTagHelper = new Tag(context);
 
 		mIcon = new ImageView(context);
 		mIcon.setPadding(2, 2, 2, 2);
@@ -105,6 +119,11 @@ public class ContentListRow extends RelativeLayout {
 		mType = new ImageView(context);
 		mType.setId(CONTENT_TYPE);
 
+		mTags = new TextView(context);
+		mTags.setId(TAGS);
+		mTags.setTextSize(15);
+		mTags.setTextColor(0xFFFFFFFF);
+
 		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64,
 				64);
 		icon.addRule(ALIGN_WITH_PARENT_LEFT);
@@ -119,6 +138,12 @@ public class ContentListRow extends RelativeLayout {
 				LayoutParams.WRAP_CONTENT, 64);
 		type.addRule(ALIGN_WITH_PARENT_RIGHT);
 		addView(mType, type);
+
+		RelativeLayout.LayoutParams tags = new RelativeLayout.LayoutParams(
+				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+		tags.addRule(ALIGN_WITH_PARENT_LEFT);
+		tags.addRule(POSITION_BELOW, CONTENT_ICON);
+		addView(mTags, tags);
 
 	}
 
@@ -185,6 +210,10 @@ public class ContentListRow extends RelativeLayout {
 		}
 		mNameString = text;
 
+		if (contentUri != null && !mHide) {
+			mTagsString = mTagHelper.findTags(uri, " ");
+		}
+
 	}
 
 	private String getTextForUri(Uri uri, String type, Intent intent,
@@ -220,7 +249,11 @@ public class ContentListRow extends RelativeLayout {
 					result = null;
 				} else {
 					cursor.next();
-					result = cursor.getString(0);
+					if (uri.toString().startsWith(Locations.CONTENT_URI.toString())){
+						result = cursor.getString(0) + "," + cursor.getString(1);
+					} else {
+						result = cursor.getString(0);
+					}
 				}
 			} else {
 				result = uri2;
