@@ -319,9 +319,8 @@ public class Alert{
 			Intent i= new Intent();
 			//i.setClassName("org.openintents.alert","LocationAlertDispatcher");
 			i.setAction("org.openintents.action.LOCATION_ALERT_DISPATCH");
-			Bundle b= new Bundle();
-			b.putString(Alert.Location.POSITION,geo);
-			i.putExtras(b);
+			//i.setData(gUri);
+			i.putExtra(Location.POSITION, cv.getAsString(Location.POSITION));
 
 			locationManager.addProximityAlert(
 				latitude,
@@ -331,6 +330,7 @@ public class Alert{
 				i
 				);
 			Log.d(_TAG,"Registerd alert geo:"+geo+" dist:"+dist);
+			Log.d(_TAG,"Registered alert intent:" + i);
 		}
 		catch (ArrayIndexOutOfBoundsException aioe)
 		{

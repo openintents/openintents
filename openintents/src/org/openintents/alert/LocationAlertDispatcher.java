@@ -22,8 +22,10 @@ import org.openintents.provider.Alert.Location;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentReceiver;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 
 public class LocationAlertDispatcher extends IntentReceiver {
@@ -40,16 +42,24 @@ public class LocationAlertDispatcher extends IntentReceiver {
 
 	public void onReceiveIntent(Context context, Intent intent) {
 		Log.d(_TAG, "Received Intent>>" + intent.getAction() + "<<");
+		Log.d(_TAG, "Received Intent>>" + intent + "<<");
 
 		Intent i = null;
 		Alert.init(context);
+		String position = null;
+		if (intent.getData() != null && "geo:".equals(intent.getData().getScheme())) {
+			position = intent.getData().toString();
+		} else {
+			position = intent.getStringExtra(Alert.Location.POSITION);
+		}
+	
 		mCursor = Alert.mContentResolver
 				.query(
 						Alert.Location.CONTENT_URI,
 						Alert.Location.PROJECTION,
 						Alert.Generic.ACTIVE + " = 1 AND " //
-								+ Alert.Generic.CONDITION1 + "= ?", //
-						new String[] { intent.getStringExtra(Location.POSITION) },
+								+ Alert.Generic.CONDITION1 + " = ?", //
+						new String[] {position},
 						null);
 		if (mCursor != null && mCursor.count() > 0) {
 
@@ -65,8 +75,15 @@ public class LocationAlertDispatcher extends IntentReceiver {
 			while (!mCursor.isAfterLast()) {
 				i = new Intent();
 				try { // TODO: INtent MIME TYPE
+					
+					
 					i.setAction(mCursor.getString(intentRow));
-					i.addCategory(mCursor.getString(intentCatRow));
+					
+					String cat = mCursor.getString(intentCatRow);
+					if (TextUtils.isEmpty(cat)){
+						cat = Intent.DEFAULT_CATEGORY;
+					}
+					i.addCategory(cat);
 					i.setData(Uri.parse(mCursor.getString(intentUriRow)));
 					Log.d(_TAG, "going to broadcast Intent:\n " + i.toString()
 							+ "\n--");
@@ -74,6 +91,20 @@ public class LocationAlertDispatcher extends IntentReceiver {
 					// category>>"+i.getCategory()+"\n
 					// Data>>"+i.getData()+"\n-------");
 					context.broadcastIntent(i);
+					int receiverCount = context.getPackageManager().queryIntentReceivers(i, 0).size(); 
+					if (receiverCount == 0){
+						int activityCount = context.getPackageManager().queryIntentActivities(i, 0).size();
+						if (activityCount > 0){
+							i.setLaunchFlags(Intent.NEW_TASK_LAUNCH);
+						context.startActivity(i);
+						} else {
+							Log.w(_TAG, "no activity found");
+						} 
+					} else {
+						Log.i(_TAG, "broadcast count:" + receiverCount);							
+					}
+					
+					
 				} catch (Exception e) {
 					Log.e(_TAG, "coulndt launch intent, reason>>"
 							+ e.getMessage());
@@ -84,5 +115,4 @@ public class LocationAlertDispatcher extends IntentReceiver {
 			mCursor.close();
 		}
 	}
-
 }/**/

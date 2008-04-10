@@ -345,9 +345,9 @@ public class LocationsView extends Activity {
 			}
 
 			String locationUri = getGeoString(cursor);
-			addAlert(locationUri, data, extras.getString(Intents.EXTRA_TYPE),
-					extras.getString(Intents.EXTRA_ACTION), extras
-							.getString(Intents.EXTRA_URI));
+			addAlert(locationUri, data, extras.getString(Intents.EXTRA_ACTION), 
+					extras.getString(Intents.EXTRA_TYPE),
+					extras.getString(Intents.EXTRA_URI));
 		}
 	}
 

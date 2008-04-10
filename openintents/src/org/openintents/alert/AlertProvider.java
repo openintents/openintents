@@ -21,9 +21,9 @@ import java.util.HashMap;
 
 import org.openintents.provider.Alert;
 
-import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.DatabaseContentProvider;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -34,11 +34,11 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class AlertProvider extends ContentProvider {
+public class AlertProvider extends DatabaseContentProvider {
 
-	private SQLiteDatabase mDB;
+		
 	private static final String DATABASE_NAME="alerts.db";
-	private static final int DATABASE_VERSION=1;
+	private static final int DATABASE_VERSION=2;
 
 	private static final String TABLE_ALERTS="alerts";
 
@@ -92,13 +92,25 @@ public class AlertProvider extends ContentProvider {
 					
 	}//class helper
 
-	@Override
-	public boolean onCreate() {		 
-		AlertDBHelper dbHelper=new AlertDBHelper();
-		mDB=dbHelper.openDatabase(getContext(),DATABASE_NAME,null,DATABASE_VERSION);
-		
-		return mDB!=null;
+	
+	public AlertProvider() {
+		super(DATABASE_NAME, DATABASE_VERSION);
 	}
+	
+	@Override
+	protected void upgradeDatabase(int oldVersion, int newVersion) {
+		AlertDBHelper dbHelper = new AlertDBHelper();
+		dbHelper.onUpgrade(getDatabase(), oldVersion, newVersion);
+
+	}
+	
+	@Override
+	protected void bootstrapDatabase() {
+		super.bootstrapDatabase();
+		AlertDBHelper dbHelper = new AlertDBHelper();
+		dbHelper.onCreate(getDatabase());
+	}
+	
 
 	@Override
 	public String getType(Uri uri) {
@@ -126,7 +138,8 @@ public class AlertProvider extends ContentProvider {
 	 * @return uri of the new item.
 	 * 
 	 */
-	public Uri insert(Uri uri, ContentValues values) {
+	@Override
+	protected Uri insertInternal(Uri uri, ContentValues values) {
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
 		long rowID=0;
@@ -139,7 +152,7 @@ public class AlertProvider extends ContentProvider {
 		switch (match){
 			case ALERT_GENERIC:
 				
-				rowID=mDB.insert(TABLE_ALERTS, "", values);			
+				rowID=getDatabase().insert(TABLE_ALERTS, "", values);			
 				if (rowID > 0) {
 					Uri nUri = ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,rowID);
 					getContext().getContentResolver().notifyChange(nUri, null);
@@ -155,7 +168,7 @@ public class AlertProvider extends ContentProvider {
 					
 				}
 
-				rowID=mDB.insert(TABLE_ALERTS, "", values);			
+				rowID=getDatabase().insert(TABLE_ALERTS, "", values);			
 				if (rowID > 0) {
 					Uri nUri = ContentUris.withAppendedId(Alert.Location.CONTENT_URI,rowID);
 					getContext().getContentResolver().notifyChange(nUri, null);
@@ -169,8 +182,8 @@ public class AlertProvider extends ContentProvider {
 		return null;
 	}
 
-	@Override
-	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
+	@Override	
+	protected Cursor queryInternal(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"query,URI is >>"+uri+"<<");
 		Log.d(this.TAG,"query,URI MATCHER RETURNED >>"+match+"<<");
@@ -237,13 +250,14 @@ public class AlertProvider extends ContentProvider {
 		qb.setTables(TABLE_ALERTS);
 							
 		qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
-        Cursor c = qb.query(mDB, projection, selection, selectionArgs, null,null, orderBy);
+        Cursor c = qb.query(getDatabase(), projection, selection, selectionArgs, null,null, orderBy);
+        Log.v(TAG, "query result for " + selection + " " + (selectionArgs != null  && selectionArgs.length > 0 ? selectionArgs[0]: selectionArgs) + ": " + c.count());
         c.setNotificationUri(getContext().getContentResolver(), uri);
         return c;
 	}
 
-	@Override
-	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+	
+	protected int updateInternal(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		int result=0;
 		String alertID="";
 		int match=URL_MATCHER.match(uri);
@@ -254,13 +268,13 @@ public class AlertProvider extends ContentProvider {
 		switch (match){
 
 			case ALERT_GENERIC:
-				result= mDB.update(TABLE_ALERTS, values, selection,selectionArgs);
+				result= getDatabase().update(TABLE_ALERTS, values, selection,selectionArgs);
 				//getContext().getContentResolver().notifyChange(nUri, null);
 				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case ALERT_GENERIC_ID:
 				alertID=uri.getPathSegments().get(1);
-				result= mDB
+				result= getDatabase()
 						.update(TABLE_ALERTS,
 								values,
 								"_id="+alertID
@@ -271,13 +285,13 @@ public class AlertProvider extends ContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case ALERT_LOCATION:
-				result= mDB.update(TABLE_ALERTS, values, selection,selectionArgs);
+				result= getDatabase().update(TABLE_ALERTS, values, selection,selectionArgs);
 				//getContext().getContentResolver().notifyChange(nUri, null);
 				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			case ALERT_LOCATION_ID:
 				alertID=uri.getPathSegments().get(1);
-				result= mDB
+				result= getDatabase()
 						.update(TABLE_ALERTS,
 								values,
 								"_id="+alertID
@@ -295,7 +309,7 @@ public class AlertProvider extends ContentProvider {
 
 
 	@Override
-	public int delete(Uri uri, String selection, String[] selectionArgs) {
+	protected int deleteInternal(Uri uri, String selection, String[] selectionArgs) {
 		int res=0;
 		String alertID="";
 		int match=URL_MATCHER.match(uri);
@@ -304,7 +318,7 @@ public class AlertProvider extends ContentProvider {
 		switch (match){
 
 			case ALERT_GENERIC:
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_ALERTS,
 					selection,
 					selectionArgs
@@ -312,7 +326,7 @@ public class AlertProvider extends ContentProvider {
 				break;
 			case ALERT_GENERIC_ID:
 				alertID=uri.getPathSegments().get(1);
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_ALERTS,
 					"_id="+alertID
 					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
@@ -320,7 +334,7 @@ public class AlertProvider extends ContentProvider {
 					selectionArgs);
 				break;
 			case ALERT_LOCATION:
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_ALERTS,
 					selection,
 					selectionArgs
@@ -328,7 +342,7 @@ public class AlertProvider extends ContentProvider {
 				break;
 			case ALERT_LOCATION_ID:
 				alertID=uri.getPathSegments().get(1);
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_ALERTS,
 					"_id="+alertID
 					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
