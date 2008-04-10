@@ -35,6 +35,9 @@ lib/
 openintents/
    contains all core functionality
 
+release/
+   contains scripts to build the full release
+
 samples/
    contains samples that use openintents
 

@@ -21,6 +21,16 @@ To obtain the current release, visit
   http://www.openintents.org
   
 ---------------------------------------------------------
+release: 0.1.7
+date: 2008-04-14
+
+- added default locations and news feeds )(issue #91)
+- added copyright notice for maps and shopping list font
+  (issue #106)
+- shopping list - add alert shows tag (issue #115)
+- alert fixes (issues #92, 113, 114)
+
+---------------------------------------------------------
 release: 0.1.6
 date: 2008-04-09
 

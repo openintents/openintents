@@ -20,6 +20,12 @@ device.
 The bar magnet displayed will always point along the magnetic field.
 
 ---------------------------------------------------------
+release: 0.1.7
+date: 2008-04-14
+
+- no changes
+
+---------------------------------------------------------
 release: 0.1.6
 date: 2008-04-09
 

@@ -18,6 +18,12 @@ PresentPicker picks the right present for you.
 It demonstrates the usage of the Shopping List application.
 
 ---------------------------------------------------------
+release: 0.1.7
+date: 2008-04-14
+
+- no changes
+
+---------------------------------------------------------
 release: 0.1.6
 date: 2008-04-09
 

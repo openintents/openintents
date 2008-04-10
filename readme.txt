@@ -44,6 +44,3 @@ samples/
 tools/
    contains additional tools (SensorSimulator)
 
-
-(tutorials/)
-   will contain very simple tutorials
