@@ -27,6 +27,23 @@ import org.xml.sax.helpers.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
+
+//import org.apache.commons.httpclient.HttpClient;
+//import org.apache.commons.httpclient.methods.GetMethod; 
+import org.apache.http.client.*;
+import org.apache.http.client.methods.*;
+//import org.apache.commons.httpclient.methods.*;
+
+import org.apache.http.*;
+import org.apache.http.conn.*;
+import org.apache.http.impl.*;
+import org.apache.http.impl.client.*;
+import org.apache.http.message.BasicHttpRequest;
+import org.apache.http.params.*;
+import org.apache.http.util.*;
+
+
+
 import android.util.Log;
 
 /*
@@ -75,21 +92,31 @@ public class  DeliciousApiHelper{
 		String[] result=null;
 		String rpc=mAPI+"tags/get";
 		Element tag;
-		URL u=null;
-
+		java.net.URL u=null;
+		
 		try
 		{
 			u=new URL(rpc);	
+			
 		}catch(java.net.MalformedURLException mu){
 			System.out.println("Malformed URL>>"+mu.getMessage());
 		}
 
-
 		Document doc = null;
-		try {
+
+		try
+		{
+			javax.net.ssl.HttpsURLConnection connection=(javax.net.ssl.HttpsURLConnection)u.openConnection();
+			//that's actualy pretty ugly to do, but a neede workaround for m5.rc15
+			javax.net.ssl.HostnameVerifier v= new org.apache.http.conn.ssl.AllowAllHostnameVerifier();
+			
+			connection.setHostnameVerifier(v);
+			
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			doc = db.parse(u.openStream());
+
+			 doc=db.parse(connection.getInputStream());
+		
 		} catch (java.io.IOException ioe) {
 			System.out.println("Error >>"+ioe.getMessage());		
 			Log.e(_TAG,"Error >>"+ioe.getMessage());		
@@ -100,7 +127,13 @@ public class  DeliciousApiHelper{
 		} catch (SAXException se) {
 			System.out.println("ERRROR>>"+se.getMessage());
 			Log.e(_TAG,"ERRROR>>"+se.getMessage());
-		}
+
+		}catch( Exception e )
+		{
+			Log.e(_TAG, "Error while excecuting HTTP method. URL is: " + u);
+			System.out.println( "Error while excecuting HTTP method. URL is: " + u);
+			e.printStackTrace();
+		} 
 
 		if (doc==null)
 		{
@@ -194,8 +227,30 @@ public class  DeliciousApiHelper{
 			System.out.println("Malformed URL>>"+mu.getMessage());
 		}
 
-		//tru3 3v1l h4ack1ng ;)
-		String s=new Scanner( u.openStream() ).useDelimiter( "\\Z" ).next();
+		String s="";
+		try
+		{
+			javax.net.ssl.HttpsURLConnection connection=(javax.net.ssl.HttpsURLConnection)u.openConnection();
+			//that's actualy pretty ugly to do, but a neede workaround for m5.rc15
+			javax.net.ssl.HostnameVerifier v= new org.apache.http.conn.ssl.AllowAllHostnameVerifier();
+			
+			connection.setHostnameVerifier(v);
+			
+			//tru3 3v1l h4ack1ng ;)
+			s=new Scanner( connection.getInputStream() ).useDelimiter( "\\Z" ).next();
+	
+		
+		} catch (java.io.IOException ioe) {
+			System.out.println("Error >>"+ioe.getMessage());		
+			Log.e(_TAG,"Error >>"+ioe.getMessage());		
+		
+		}catch( Exception e )
+		{
+			Log.e(_TAG, "Error while excecuting HTTP method. URL is: " + u);
+			System.out.println( "Error while excecuting HTTP method. URL is: " + u);
+			e.printStackTrace();
+		}
+	
 		if (s.equals("<result code=\"done\" />"))
 		{
 		//	System.out.println("YEA!");
