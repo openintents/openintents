@@ -52,6 +52,8 @@ import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 
+import android.text.TextUtils;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -60,6 +62,9 @@ public class AddGenericAlertActivity extends Activity {
 
 	public static final int STATE_CREATE = 1001;
 	public static final int STATE_EDIT = 1002;
+	public static final int STATE_SUB = 1003;
+	public static final int STATE_SUB_CREATE = 1004;
+	public static final int STATE_SUB_EDIT = 1005;
 
 	public static final int STATE_SAVE = 201;
 	public static final int STATE_CANCEL = 202;
@@ -212,14 +217,70 @@ public class AddGenericAlertActivity extends Activity {
 	private void saveDataSet() {
 		Log.d(_TAG, "save dataset now");	
 		
-		Log.v(_TAG, "requery: " +mCursor.requery());
-		Log.v(_TAG, "next: " + mCursor.next());
+	//	Log.v(_TAG, "next: " + mCursor.next());
+		Log.v(_TAG, "first: " + mCursor.first());
+
+		CharSequence c=null;
+		String s=new String();
+		//ugly hack following
+		c=mCond1.getText();
+		if (TextUtils.isEmpty(c))
+		{
+			s="";
+		}else{
+			s=c.toString();
+		}
+		mCursor.updateString(cond1Row, s);
+
+		c=mCond2.getText();
+		if (TextUtils.isEmpty(c))
+		{
+			s="";
+		}else{
+			s=c.toString();
+		}
+
+		Log.d(_TAG,"cond2row set 2 >>"+s+"<<");
+		try
+		{
+			mCursor.updateString(mCursor.getColumnIndex(Alert.Generic.CONDITION2), s);	
+		}
+		catch (Exception ex)
+		{
+			Log.e(_TAG,"once again, we have no plan.");
+		}
 		
-		mCursor.updateString(cond1Row, mCond1.getText().toString());
-		mCursor.updateString(cond2Row, mCond2.getText().toString());
-		mCursor.updateString(intentRow, mIntent.getText().toString());
-		mCursor.updateString(intentCatRow, mIntentCat.getText().toString());
-		mCursor.updateString(intentUriRow, mIntentUri.getText().toString());
+
+		c=mIntent.getText();
+		if (TextUtils. isEmpty(c))
+		{
+			s="";
+		}else{
+			s=c.toString();
+		}
+
+
+		mCursor.updateString(intentRow, s);
+
+		c=mIntentCat.getText();
+		if (TextUtils. isEmpty(c))
+		{
+			s="";
+		}else{
+			s=c.toString();
+		}
+
+		mCursor.updateString(intentCatRow, s);
+		
+		c=mIntentUri.getText();
+		if (TextUtils. isEmpty(c))
+		{
+			s="";
+		}else{
+			s=c.toString();
+		}
+		mCursor.updateString(intentUriRow, s);
+
 		mCursor.updateString(typeRow, ((String) mType.getSelectedItem()));
 		if (mActive.isChecked()){
 			mCursor.updateInt(activeRow, 1);
@@ -244,6 +305,8 @@ public class AddGenericAlertActivity extends Activity {
 
 	public void onPause() {
 		super.onPause();
+		Log.d(_TAG,"onPause: state is >>"+mState+"<<");
+
 		if (mState == STATE_CREATE) {
 			createDataSet();
 		} else if (mState == STATE_EDIT) {
@@ -254,6 +317,29 @@ public class AddGenericAlertActivity extends Activity {
 		}
 
 	}
+
+	public void onResume(){
+		super.onResume();
+		Log.d(_TAG,"onResume: state is >>"+mState+"<<");
+		
+		if (mState==STATE_EDIT)
+		{
+			Log.d(_TAG,"onResume: Edit State, reqeuiyn cursor>>"+mCursor+"<<");
+			//mCursor.requery();
+			//mCursor.first();
+			Log.d(_TAG,"onResume: Edit State, cursor has >>"+mCursor.count()+"<<  rows");
+
+		}
+		if (mState==STATE_SUB_CREATE)
+		{
+			mState=STATE_CREATE;
+		}else if (mState==STATE_SUB_EDIT)
+		{
+			mState=STATE_EDIT;
+		}
+
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -274,11 +360,28 @@ public class AddGenericAlertActivity extends Activity {
 		switch (item.getId()) {
 		case MENU_PICK_LOC:
 			intent = new Intent(Intent.PICK_ACTION, Locations.CONTENT_URI);
+
+			if (mState==STATE_CREATE)
+			{
+				mState=STATE_SUB_CREATE;
+			}else if (mState==STATE_EDIT)
+			{
+				mState=STATE_SUB_EDIT;
+			}
+			
 			startSubActivity(intent, REQUEST_PICK_LOC);
 			break;
 		case MENU_PICK_ACTION:
 			intent = new Intent(Intent.PICK_ACTION, Intents.CONTENT_URI);
 			intent.putExtra(Intents.EXTRA_ACTION_LIST, Intent.VIEW_ACTION);
+			if (mState==STATE_CREATE)
+			{
+				mState=STATE_SUB_CREATE;
+			}else if (mState==STATE_EDIT)
+			{
+				mState=STATE_SUB_EDIT;
+			}
+
 			startSubActivity(intent, REQUEST_PICK_ACTION);
 			break;
 		case MENU_PICK_DATE_TIME:
@@ -305,6 +408,8 @@ public class AddGenericAlertActivity extends Activity {
 				break;
 			}
 		}
+		//Log.v(_TAG, "onActivityResult:requery: " +mCursor.requery());
+
 	}
 
 	private void updateLabels() {
