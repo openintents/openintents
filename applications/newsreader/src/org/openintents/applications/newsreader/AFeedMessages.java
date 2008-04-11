@@ -149,10 +149,10 @@ public class AFeedMessages extends ListActivity {
 		boolean result= super.onCreateOptionsMenu(menu);
 		
 		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_FOLLOW,"Open in Browser");
-		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_DELETE,"Delete");
+		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_DELETE,"Delete",R.drawable.shoppinglistdelete001b);
 		
-		submenu=menu.addSubMenu(0,AFeedMessages.MENU_TAGS, "Tags");
-		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
+		submenu=menu.addSubMenu(0,AFeedMessages.MENU_TAGS, "Tags",R.drawable.tagging_application001a);
+		//submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
 		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia",R.drawable.tagging_magnolia_application001a);
 
 /*
@@ -211,28 +211,36 @@ public class AFeedMessages extends ListActivity {
 
 	private void followItemLink(){
 		int pos=getSelectedItemPosition();
-		mCursor.moveTo(pos);
-		Uri uri=null;
-		if (feedType.equals(News.FEED_TYPE_RSS))
+		Log.d(_TAG,"followItemLink: pos>>"+pos+"<<");
+		if (pos>-1)
 		{
-			String strUri=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_LINK));
-			uri=Uri.parse(strUri);
-		}else if (feedType.equals(News.FEED_TYPE_ATOM))
-		{
-			String strUri=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_LINK));
-			uri=Uri.parse(strUri);
-		}				
-		Intent intent = new Intent(Intent.VIEW_ACTION, uri);
-		startActivity(intent);
+		
+			mCursor.moveTo(pos);
+			Uri uri=null;
+			if (feedType.equals(News.FEED_TYPE_RSS))
+			{
+				String strUri=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_LINK));
+				uri=Uri.parse(strUri);
+			}else if (feedType.equals(News.FEED_TYPE_ATOM))
+			{
+				String strUri=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_LINK));
+				uri=Uri.parse(strUri);
+			}				
+			Intent intent = new Intent(Intent.VIEW_ACTION, uri);
+			startActivity(intent);
+		}
 	}
 
 	private void menuDelete(){
 		boolean res=false;
 		int pos=getSelectedItemPosition();
-		mCursor.moveTo(pos);
-		res=mCursor.deleteRow();
-		Log.d(_TAG," deletet row #"+pos+" >"+res);
-	
+		if (pos>-1)
+		{
+		
+			mCursor.moveTo(pos);
+			res=mCursor.deleteRow();
+			Log.d(_TAG," deletet row #"+pos+" >"+res);
+		}
 	}
 
 	private void menuTag(){}
@@ -241,29 +249,32 @@ public class AFeedMessages extends ListActivity {
 
 		Bundle b=new Bundle();
 		int pos=getSelectedItemPosition();
-		mCursor.moveTo(pos);
-		String strUri="";
-		String desc="";
+		if (pos>-1)
+		{
+			
+			mCursor.moveTo(pos);
+			String strUri="";
+			String desc="";
 
-		if (feedType.equals(News.FEED_TYPE_RSS))
-		{
-			strUri=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_LINK));
-			desc=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_TITLE));
-		
-		}else if (feedType.equals(News.FEED_TYPE_ATOM))
-		{
-			strUri=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_LINK));
-			desc=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_TITLE));
-		
+			if (feedType.equals(News.FEED_TYPE_RSS))
+			{
+				strUri=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_LINK));
+				desc=mCursor.getString(mCursor.getColumnIndex(News.RSSFeedContents.ITEM_TITLE));
+			
+			}else if (feedType.equals(News.FEED_TYPE_ATOM))
+			{
+				strUri=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_LINK));
+				desc=mCursor.getString(mCursor.getColumnIndex(News.AtomFeedContents.ENTRY_TITLE));
+			
+			}
+			b.putString(MagnoliaTagging.URI,strUri);
+			b.putString(MagnoliaTagging.DESCRIPTION,desc);
+			Intent intent = new Intent();
+			intent.setAction("org.openintents.action.TAGMAGNOLIA");
+			intent.addCategory(Intent.DEFAULT_CATEGORY);
+			intent.putExtras(b);
+			startActivity(intent);
 		}
-		b.putString(MagnoliaTagging.URI,strUri);
-		b.putString(MagnoliaTagging.DESCRIPTION,desc);
-		Intent intent = new Intent();
-		intent.setAction("org.openintents.action.TAGMAGNOLIA");
-		intent.addCategory(Intent.DEFAULT_CATEGORY);
-		intent.putExtras(b);
-		startActivity(intent);
-
 	}
 
     
