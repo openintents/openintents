@@ -20,7 +20,7 @@ package org.openintents.news.views;
 
 
 
-
+import android.database.DataSetObserver;
 import android.app.ListActivity;
 import android.content.Context;
 import android.os.Bundle;
@@ -47,7 +47,7 @@ import org.openintents.provider.News;
  */
 public class MessageListAdapter extends CursorAdapter{
 	
-	private boolean[] mExpanded;
+	protected boolean[] mExpanded;
 	private String feedType;
 
 	private static final String _TAG="MessgeListAdapter";
@@ -59,22 +59,22 @@ public class MessageListAdapter extends CursorAdapter{
 
 	public MessageListAdapter(Cursor c, Context context, boolean autoRequery) {
 		super(c,context,autoRequery);
-		
-		initBoolTable(c.count());
+	registerDataSetObserver(new MyObserver(this));
+	initBoolTable(c.count());
 
 	}
 
 
 	public MessageListAdapter(Cursor c, Context context,String feedType){
 		super(c,context);
-		
+		registerDataSetObserver(new MyObserver(this));
 		initBoolTable(c.count());
 		this.feedType=feedType;
 	}
 
 	public MessageListAdapter(Cursor c, Context context, boolean autoRequery,String feedType) {
 		super(c,context,autoRequery);
-		
+		registerDataSetObserver(new MyObserver(this));
 		initBoolTable(c.count());
 		this.feedType=feedType;
 
@@ -159,6 +159,28 @@ public class MessageListAdapter extends CursorAdapter{
 			
 		return null;
 	}
+
+	protected static final class MyObserver extends DataSetObserver{
+
+		MessageListAdapter parent;
+		public MyObserver(MessageListAdapter parent){
+			this.parent=parent;
+		}
+
+
+		public void  onChanged(){
+			Log.d("MessageListAdapter.MyObserver","onChange called");
+			Log.d("MessageListAdapter.MyObserver","my Parent cursor count>>"+this.parent.getCursor().count());
+			Log.d("MessageListAdapter.MyObserver","my Parent boolTable count>>"+this.parent.mExpanded.length);
+			if (this.parent.getCursor().count()!=this.parent.mExpanded.length)
+			{
+				this.parent.initBoolTable(this.parent.getCursor().count());
+			}
+			
+		}
+
+		public void  onInvalidated(){}
+	};
 
 
 }/*eoc*/
