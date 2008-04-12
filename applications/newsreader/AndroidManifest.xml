@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.applications.newsreader">
-    <application android:icon="@drawable/news_application001a">
+    <application android:icon="@drawable/news_application001a" >
 
-        <activity android:name=".Newsreader" android:label="@string/app_name">
+        <activity android:name=".Newsreader" 
+					android:label="Newsreader"
+		>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="org.openintents.category.MAIN" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.openintents.action.SHOW_NEWSFEEDS" />     
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />								
             </intent-filter>
         </activity>
 
@@ -29,11 +36,5 @@
 		<activity android:name=".FeedMessages" android:label="@string/app_name">
         </activity> 
 				<!-- news services -->
-		<service android:name=".fdNewsReaderService"
-				 android:enabled="true"
-		>
-
-	</service>
-
     </application>
 </manifest> 
