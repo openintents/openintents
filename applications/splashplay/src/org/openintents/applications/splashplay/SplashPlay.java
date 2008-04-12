@@ -238,8 +238,7 @@ public class SplashPlay extends Activity implements
         mIntroContinue.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View view) { 
                 // Start with main application:
-            	mLayout.setVisibility(LinearLayout.VISIBLE);
-            	mIntroscreen.setVisibility(AbsoluteLayout.GONE);
+            	hideIntroScreen();
             } 
         }); 
         
@@ -296,6 +295,10 @@ public class SplashPlay extends Activity implements
     	SharedPreferences prefs = getPreferences(0);
     	mIntroCheckboxState = prefs.getBoolean(PREFERENCES_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
     	updateIntroCheckbox();
+    	if (mIntroCheckboxState == true) {
+    		// User does not want to see intro screen again.
+    		hideIntroScreen();
+    	}
     }
     
     /**     
@@ -543,8 +546,8 @@ public class SplashPlay extends Activity implements
 		// Standard menu
 		menu.add(0, MENU_BLUETOOTH, R.string.bluetooth, R.drawable.bluetooth_icon1)
 			.setShortcut('0', 'b');
-		/*menu.add(1, MENU_ABOUT, R.string.about)
-		.setShortcut('1', 'a');*/
+		menu.add(1, MENU_ABOUT, R.string.about, R.drawable.about001a)
+		.setShortcut('1', 'a');
 		
 		return true;
 	}
@@ -559,10 +562,10 @@ public class SplashPlay extends Activity implements
 		case MENU_BLUETOOTH:
 			showBluetoothBox();
 			return true;
-	/*	case MENU_ABOUT:
-			showAboutBox();
+		case MENU_ABOUT:
+			showIntroScreen();
 			return true;
-	*/	}
+		}
 		return super.onOptionsItemSelected(item);
 	}
     
@@ -625,6 +628,18 @@ public class SplashPlay extends Activity implements
 		
 		mBluetoothDialog.show();
 	
+    }
+    
+    /** Shows the intro screen */
+    void showIntroScreen() {
+    	mIntroscreen.setVisibility(AbsoluteLayout.VISIBLE);
+    	mLayout.setVisibility(LinearLayout.GONE);
+    }
+    
+    /** Hides the intro screen */
+    void hideIntroScreen() {
+    	mLayout.setVisibility(LinearLayout.VISIBLE);
+    	mIntroscreen.setVisibility(AbsoluteLayout.GONE);
     }
     
     // Handle the process of searching for suitable present:
