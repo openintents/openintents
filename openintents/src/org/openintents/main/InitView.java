@@ -29,9 +29,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.content.Intent;
 
 /**
  * Init dialog
@@ -83,18 +85,54 @@ public class InitView extends Activity {
 			}
 
 		});
-		
+
+		//strange way to create a separator, i know ;) (zero)
+		TextView t=new TextView(this);
+		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				android.widget.LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		t.setLayoutParams(params);
+		t.setHeight(40);
+		t.setWidth(1);
+		mMainView.addView(t);
 		button = createButton();
-		button.setText(R.string.init_add_news_feeds);
+		button.setText(R.string.init_view_locations);
+		//button.setText(R.string.init_add_news_feeds);
 		button.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View view) {
-				addNewsFeeds();
-				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+				//addNewsFeeds();
+				//Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+				
+				Intent intent = new Intent();
+				intent.setClassName("org.openintents","org.openintents.locations.LocationsView");
+				intent.addCategory(Intent.DEFAULT_CATEGORY);
+				startActivity(intent);
 
 			}
 
 		});
+
+
+		button = createButton();
+		button.setText(R.string.init_view_news);
+		//button.setText(R.string.init_add_news_feeds);
+		button.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View view) {
+				//addNewsFeeds();
+				//Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+				
+				Intent intent = new Intent();
+				//intent.setClassName("org.openintents","org.openintents.applications.newsreader.Newsreader");
+				intent.setAction("org.openintents.action.SHOW_NEWSFEEDS");
+				intent.addCategory(Intent.DEFAULT_CATEGORY);
+				startActivity(intent);
+
+			}
+
+		});
+
 	}
 
 	private Button createButton() {
