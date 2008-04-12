@@ -56,7 +56,7 @@ public class SplashPlay extends Activity implements
 	/** Message for message handler. */
 	private static final int UPDATE_POSITION = 1;
     
-	private MediaPlayer mp; 
+	private MediaPlayer mp;
 	
 	/** 
 	 * Whether a media file is being played.
@@ -140,7 +140,7 @@ public class SplashPlay extends Activity implements
         mPlay = (Button) findViewById(R.id.play); 
         mPlay.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View view) { 
-                playMusic(); 
+            	playMusic();
             } 
         }); 
         
@@ -313,6 +313,9 @@ public class SplashPlay extends Activity implements
     		// User does not want to see intro screen again.
     		hideIntroScreen();
     	}
+    	
+    	// Prepare the media player:
+    	prepareMusic();
     }
     
     @Override
@@ -376,21 +379,9 @@ public class SplashPlay extends Activity implements
     	}
     }
 
-    private void playMusic() { 
-	    try { 
-	    	Log.i(TAG,"Starting music");
-	        // If the path has not changed, just start the media player 
-	        if (mp != null) { 
-	        	Log.i(TAG,"Re-start music");
-	            
-	            mp.start(); 
-	            if (! mPlaying ) {
-		            mPlaying = true;
-			        mHandler.sendMessage(mHandler.obtainMessage(UPDATE_POSITION));
-	            }
-	            return; 
-	        } 
-	          // Create a new media player and set the listeners 
+    private void prepareMusic() {
+    	try { 
+	        // Create a new media player and set the listeners 
 	        mp = new MediaPlayer(); 
 	        //mp.setOnErrorListener(this); 
 	        mp.setOnBufferingUpdateListener(this); 
@@ -411,11 +402,53 @@ public class SplashPlay extends Activity implements
 				Log.e(TAG, e.getMessage(), e);
 			}	
 	        try{ 
-	               mp.prepare(); 
-	               Log.i(TAG,"prepare OK");
+	            mp.prepare(); 
+	            Log.i(TAG,"prepare OK");
 	        } catch(Exception e) { 
 	          Log.e("\n\nprepare",e.toString()); 
 	        } 
+    		
+    	} catch (Exception e) { 
+	        Log.e(TAG, "error: " + e.getMessage(), e); 
+	    } 
+    	
+    	int time = 0;
+    	int timeMax = mp.getDuration();
+    	if (mSlider.mTouchState == Slider.STATE_RELEASED) {
+        	mPositionText.setText("" 
+        			+ formatTime(time) + " / " 
+        			+ formatTime(timeMax));
+    	}
+    	
+    	mSlider.min = 0;
+    	mSlider.max = timeMax;
+    }
+
+    private void playMusic() { 
+	    try { 
+	    	Log.i(TAG,"Starting music");
+	        // If the path has not changed, just start the media player 
+	        if (mp != null) { 
+	        	Log.i(TAG,"Re-start music");
+	        	
+		        // Also reset the looping function:
+		        if (mRepeatState == REPEAT_LOOP && mp.isPlaying()) {
+		        	// Actually we are already playing.
+		        	// Pressing Play then changes the loop status:
+		        	mRepeatState = REPEAT_NONE;
+		        	updateRepeatButton();
+		        }
+		        
+	            
+	            mp.start(); 
+	            if (! mPlaying ) {
+		            mPlaying = true;
+			        mHandler.sendMessage(mHandler.obtainMessage(UPDATE_POSITION));
+	            }
+	            return; 
+	        } 
+	        
+	        prepareMusic();
 	        
 	        mp.start(); 
 	        Log.i(TAG,"start OK");
@@ -426,7 +459,8 @@ public class SplashPlay extends Activity implements
 	    } catch (Exception e) { 
 	        Log.e(TAG, "error: " + e.getMessage(), e); 
 	    } 
-    } 
+    }
+    
 
     public void pauseMusic() {
     	if (mp != null) {
@@ -436,16 +470,43 @@ public class SplashPlay extends Activity implements
     }
     
     public void stopMedia() {
+    	/*
     	if (mp != null) {
     		//mp.reset();
     		mp.stop();
     		mp.release();
     		mp = null;
     	}
+    	*/
+    	
+    	// Instead of really stopping, we just move position to beginning
+    	// and pause:
+    	if (mp != null) {
+    		if (mRepeatState == REPEAT_LOOP && mp.isPlaying()) {
+    			// Special case: When we are playing in the
+    			// repeat loop, we first only go to the
+    			// starting position of the repeat loop:
+    			mp.seekTo(mRepeatStart);
+    			mp.pause();
+    			mNextTime = mRepeatStart;
+    			
+    		} else {
+    			mp.seekTo(0);
+        		mp.pause();
+        		mNextTime = 0;
+        		
+        		// We also cancel the repeat loop.
+        		mRepeatState = REPEAT_NONE;
+        		updateRepeatButton();
+    		}
+    		
+    	}
+    	
     	mPlaying = false;
 
     	// Reset all views to initial song position
-		mNextTime = updateViews(0);
+    	mSlider.setPosition(mNextTime);
+		mNextTime = updateViews(mNextTime);
     }
     
     public void resetMusic() {
@@ -498,14 +559,25 @@ public class SplashPlay extends Activity implements
     public void onCompletion(MediaPlayer arg0) { 
     	Log.d(TAG, "onCompletion called"); 
     	
+    	// We don't release the Media Player.
+    	/*
     	// Let us clean up
     	if (mp != null) {
 	    	mp.release();
 	    	mp = null;
     	}
+
+    	// As soon as we finished, we can start again:
+    	prepareMusic();
+    	*/
+    	
+    	// but we set time to beginning:
+    	mp.seekTo(0);
+    	
     	mPlaying = false;
     	
 		// Reset all views to initial song position
+    	mSlider.setPosition(0);
 		mNextTime = updateViews(0);		
     } 
 
