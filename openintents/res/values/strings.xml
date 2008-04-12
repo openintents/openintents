@@ -40,6 +40,8 @@
 	<string name="init_add_news_feeds">Add default new feeds</string>	
 	<string name="init_add_all_values">Add all default values</string>
 	<string name="init_done">Values added</string>
+	<string name="init_view_locations">View Locations</string>
+	<string name="init_view_news">View Newsfeeds</string>
 
 	<!-- Location Provider -->
 	<string name="list_of_locations">List of locations</string>
