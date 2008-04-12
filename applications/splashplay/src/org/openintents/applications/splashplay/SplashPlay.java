@@ -204,6 +204,8 @@ public class SplashPlay extends Activity implements
 			            			+ formatTime(timeMax));	
 							
 						}
+
+						updateViews(newPosition);
 					}
         			
         		});
@@ -313,6 +315,13 @@ public class SplashPlay extends Activity implements
     	}
     }
     
+    @Override
+	protected void onFreeze(Bundle outState) {	
+		super.onFreeze(outState);
+		Log.i(TAG, "Output state " + mIntroCheckboxState);
+		outState.putBoolean(BUNDLE_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
+	}
+    
     /**     
      * Any time we are paused we need to save away the current state, so it     
      * will be restored correctly when we are resumed.     
@@ -324,14 +333,16 @@ public class SplashPlay extends Activity implements
     	SharedPreferences.Editor editor = getPreferences(0).edit();
     	editor.putBoolean(PREFERENCES_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
     	editor.commit();
+    	
+    	// Also, stop the Media Player
+    	// TODO: Later it would be nice to have music run in service.
+    	// Let us clean up
+    	if (mp != null) {
+	    	mp.release();
+	    	mp = null;
+    	}
     }
     
-    @Override
-	protected void onFreeze(Bundle outState) {	
-		super.onFreeze(outState);
-		Log.i(TAG, "Output state " + mIntroCheckboxState);
-		outState.putBoolean(BUNDLE_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
-	}
     
     /**
      * Installs sample files from the assets folder into the user's data folder.
@@ -533,13 +544,18 @@ public class SplashPlay extends Activity implements
 	            		if (time > mRepeatStop) {
 	            			// Jump back to starting position
 	            			mp.seekTo(mRepeatStart);
+	            			time = mRepeatStart;
+	            			mNextTime = mRepeatStart;
 	            		}
 	            	}
 	            	
 	            	// Now check for music updates:
 	            	if (time >= mNextTime) {
 	            		// Time to update the chord:
-	            		mNextTime = updateViews(time);
+	            		if (mSlider.mTouchState == Slider.STATE_RELEASED) {
+	            			// Only update, if user is not using the slider
+	            			mNextTime = updateViews(time);
+	            		}
 	            	}
 	            	
 	            	if (mPlaying) {
