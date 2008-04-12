@@ -19,8 +19,9 @@ public final class R {
         public static final int news_application001a=0x7f020005;
         public static final int openintents_icon=0x7f020006;
         public static final int settings001a=0x7f020007;
-        public static final int tagging_application001a=0x7f020008;
-        public static final int tagging_magnolia_application001a=0x7f020009;
+        public static final int shoppinglistdelete001b=0x7f020008;
+        public static final int tagging_application001a=0x7f020009;
+        public static final int tagging_magnolia_application001a=0x7f02000a;
     }
     public static final class id {
         public static final int CancelFeedSettings=0x7f050008;

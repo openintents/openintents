@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+<!-- #########################################
+     SplashPlay main screen
+     ######################################### -->
+<LinearLayout
 	android:id="@+id/layout"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:visibility="gone"
     >
 	
 	<LinearLayout
@@ -91,3 +102,44 @@
 	</LinearLayout>	
     
 </LinearLayout>
+
+    
+<!-- #########################################
+     SplashPlay intro screen
+     ######################################### -->
+<AbsoluteLayout 
+	android:id="@+id/introscreen"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <ImageView
+    	android:id="@+id/intro_image"
+    	android:layout_x="0px"
+    	android:layout_y="0px"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" 
+    	android:background="@drawable/overview_5"
+    	/>
+    <Button
+		android:id="@+id/intro_checkbox"
+		android:background="@drawable/overview_5_checkbox"
+    	android:layout_x="195px"
+    	android:layout_y="345px"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" />
+    <Button
+		android:id="@+id/intro_exit"
+    	android:background="@drawable/overview_5_exit_button"
+    	android:layout_x="15px"
+    	android:layout_y="380px"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" />
+    <Button
+		android:id="@+id/intro_continue"
+    	android:background="@drawable/overview_5_continue_button"
+    	android:layout_x="187px"
+    	android:layout_y="380px"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" />
+</AbsoluteLayout>
+
+</FrameLayout>

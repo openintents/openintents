@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 
-import org.openintents.OpenIntents;
 import org.openintents.widget.Slider;
 import org.openintents.widget.Slider.OnPositionChangedListener;
 
@@ -16,6 +15,7 @@ import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
@@ -29,7 +29,9 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -66,6 +68,7 @@ public class SplashPlay extends Activity implements
 	 */
 	private boolean mPlaying;
 	
+	private FrameLayout mContainer;
 	private LinearLayout mLayout;
 	private Button mPlay; 
 	private Button mPause; 
@@ -92,18 +95,35 @@ public class SplashPlay extends Activity implements
     private static final int BLUETOOTH_NOTIFICATIONS = R.layout.bluetooth;
     private boolean mBluetoothConnected;
     
+    ///////////////////////////////
+    // For intro screen:
+    AbsoluteLayout mIntroscreen;
+    Button mIntroCheckbox;
+    Button mIntroExit;
+    Button mIntroContinue;
+    boolean mIntroCheckboxState;
+
+	private static final String BUNDLE_INTRO_CHECKBOX_STATE 
+		= "introCheckboxState";
+	private static final String PREFERENCES_INTRO_CHECKBOX_STATE 
+		= "prefsCheckboxState";
+    
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.main);
         
-        OpenIntents.requiresOpenIntents(this);
+        // Not needed yet, but will be required for tagging functionality.
+        // OpenIntents.requiresOpenIntents(this);
         
         // Variable initialization
         mp = null;
         mPlaying = false;
         mBluetoothConnected = false;
+        
+        ////////////////////////////////////////////////
+        // SplashPlay main activity
         
         // Hook up widgets
         mPlay = (Button) findViewById(R.id.play); 
@@ -192,6 +212,46 @@ public class SplashPlay extends Activity implements
         
         mChords = (ChordsView) findViewById(R.id.chords);
         
+        ////////////////////////////////////////////////
+        // SplashPlay intro screen
+        mIntroscreen = (AbsoluteLayout) findViewById(R.id.introscreen);
+        mIntroCheckbox = (Button) findViewById(R.id.intro_checkbox);
+        mIntroCheckbox.setOnClickListener(new View.OnClickListener() { 
+            public void onClick(View view) { 
+                // Toggle checkbox
+            	mIntroCheckboxState = ! mIntroCheckboxState;
+            	updateIntroCheckbox();
+            	Log.i(TAG, "Update checkbox state " + mIntroCheckboxState);
+        		
+            } 
+        }); 
+        
+        mIntroExit = (Button) findViewById(R.id.intro_exit);
+        mIntroExit.setOnClickListener(new View.OnClickListener() { 
+            public void onClick(View view) { 
+                // Exit application
+            	finish(); 
+            } 
+        }); 
+        
+        mIntroContinue = (Button) findViewById(R.id.intro_continue);
+        mIntroContinue.setOnClickListener(new View.OnClickListener() { 
+            public void onClick(View view) { 
+                // Start with main application:
+            	mLayout.setVisibility(LinearLayout.VISIBLE);
+            	mIntroscreen.setVisibility(AbsoluteLayout.GONE);
+            } 
+        }); 
+        
+        // Read old state from preferences:
+        mIntroCheckboxState = false;
+        if (icicle != null && icicle.containsKey(BUNDLE_INTRO_CHECKBOX_STATE)){
+        	mIntroCheckboxState = icicle.getBoolean(BUNDLE_INTRO_CHECKBOX_STATE);
+		}
+        updateIntroCheckbox();
+        
+        ////////////////////////////////////////////////
+        // Further initialization
         
         /*mFretboard = new FretboardView(this);
         
@@ -225,6 +285,39 @@ public class SplashPlay extends Activity implements
 		mNextTime = updateViews(0);
     }
     
+    /**     
+     * Upon being resumed we can retrieve the current state.  
+     * This allows us     
+     * to update the state if it was changed at any time while paused.     
+     */    
+    @Override    
+    protected void onResume() {
+    	super.onResume();
+    	SharedPreferences prefs = getPreferences(0);
+    	mIntroCheckboxState = prefs.getBoolean(PREFERENCES_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
+    	updateIntroCheckbox();
+    }
+    
+    /**     
+     * Any time we are paused we need to save away the current state, so it     
+     * will be restored correctly when we are resumed.     
+     * */    
+    @Override    
+    protected void
+    onPause() {
+    	super.onPause();
+    	SharedPreferences.Editor editor = getPreferences(0).edit();
+    	editor.putBoolean(PREFERENCES_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
+    	editor.commit();
+    }
+    
+    @Override
+	protected void onFreeze(Bundle outState) {	
+		super.onFreeze(outState);
+		Log.i(TAG, "Output state " + mIntroCheckboxState);
+		outState.putBoolean(BUNDLE_INTRO_CHECKBOX_STATE, mIntroCheckboxState);
+	}
+    
     /**
      * Installs sample files from the assets folder into the user's data folder.
      */
@@ -246,6 +339,14 @@ public class SplashPlay extends Activity implements
     	} catch (IOException e) {
     		// Should never happen
             throw new RuntimeException(e);
+    	}
+    }
+    
+    void updateIntroCheckbox() {
+    	if (mIntroCheckboxState) {
+    		mIntroCheckbox.setBackground(R.drawable.overview_5_checkbox_checked_1);
+    	} else {
+    		mIntroCheckbox.setBackground(R.drawable.overview_5_checkbox);
     	}
     }
 
