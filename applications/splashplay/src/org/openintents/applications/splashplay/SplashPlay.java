@@ -73,7 +73,7 @@ public class SplashPlay extends Activity implements
 	private Button mPlay; 
 	private Button mPause; 
 	private Button mStop;
-	private Button mReset; 
+	private Button mRepeat; 
 	private TextView mPositionText;
 	private Slider mSlider;
 	
@@ -94,6 +94,17 @@ public class SplashPlay extends Activity implements
     // Use our layout id for a unique identifier
     private static final int BLUETOOTH_NOTIFICATIONS = R.layout.bluetooth;
     private boolean mBluetoothConnected;
+    
+    // Repeat AB functionality:
+    private int mRepeatState;
+    private static final int REPEAT_NONE = 0;
+    private static final int REPEAT_A = 1;
+    private static final int REPEAT_B = 2;
+    private static final int REPEAT_LOOP = 3;
+    
+    private int mRepeatStart;
+    private int mRepeatStop;
+    
     
     ///////////////////////////////
     // For intro screen:
@@ -147,10 +158,10 @@ public class SplashPlay extends Activity implements
             } 
         }); 
         
-        mReset = (Button) findViewById(R.id.reset); 
-        mReset.setOnClickListener(new View.OnClickListener() { 
+        mRepeat = (Button) findViewById(R.id.reset); 
+        mRepeat.setOnClickListener(new View.OnClickListener() { 
             public void onClick(View view) { 
-                resetMusic(); 
+            	repeatAB();
             } 
         }); 
         
@@ -435,6 +446,37 @@ public class SplashPlay extends Activity implements
     	}
     }
     
+    /**
+     * Implements repeat AB functionality.
+     */
+    public void repeatAB() {
+		// Repeat is a three state button:
+		switch(mRepeatState) {
+		case REPEAT_NONE:
+			// First time pressed: Remember current position.
+			mRepeatStart = mp.getCurrentPosition();
+			
+			mRepeatState = REPEAT_B; // Go directly to B
+			break;
+		case REPEAT_A:
+			// There is no REPEAT_A.
+			mRepeatState = REPEAT_B;
+			break;
+		case REPEAT_B:
+			mRepeatStop = mp.getCurrentPosition();
+			
+			mRepeatState = REPEAT_LOOP;
+			break;
+		case REPEAT_LOOP:
+			// Pressing again simply exists Repeat mode
+			mRepeatState = REPEAT_NONE;
+			break;
+		default:
+			Log.e(TAG, "updateRepeatButton(): Wrong state " + mRepeatState);
+		}
+		updateRepeatButton();
+    }
+	
     public void onBufferingUpdate(MediaPlayer arg0, int percent) { 
     	Log.d(TAG, "onBufferingUpdate percent:" + percent); 
     } 
@@ -462,7 +504,7 @@ public class SplashPlay extends Activity implements
 	    mediaplayer.start(); 
     } 
     
-    // Handle the process of searching for suitable present:
+    // Handle the process of updating music position:
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -486,6 +528,14 @@ public class SplashPlay extends Activity implements
 	            	mSlider.max = timeMax;
 	            	mSlider.setPosition(time);
 	            	
+	            	// Check for Repeat AB:
+	            	if (mRepeatState == REPEAT_LOOP) {
+	            		if (time > mRepeatStop) {
+	            			// Jump back to starting position
+	            			mp.seekTo(mRepeatStart);
+	            		}
+	            	}
+	            	
 	            	// Now check for music updates:
 	            	if (time >= mNextTime) {
 	            		// Time to update the chord:
@@ -500,7 +550,25 @@ public class SplashPlay extends Activity implements
         }
     };
 
-
+    void updateRepeatButton() {
+    	switch (mRepeatState) {
+    	case REPEAT_NONE:
+    		mRepeat.setBackground(R.drawable.shiny_button_repeat_a_1);
+    		break;
+    	case REPEAT_A:
+    		mRepeat.setBackground(R.drawable.shiny_button_repeat_a_1);
+    		break;
+    	case REPEAT_B:
+    		mRepeat.setBackground(R.drawable.shiny_button_repeat_b_1);
+    		break;
+    	case REPEAT_LOOP:
+    		mRepeat.setBackground(R.drawable.shiny_button_repeat_ab_1);
+    		break;
+    	default:
+    		Log.e(TAG, "updateRepeatButton(): Wrong state " + mRepeatState);
+    	}
+    }
+    
     /**
      * Update all views to the current time.
      * @param time Song position in ms.
@@ -643,7 +711,7 @@ public class SplashPlay extends Activity implements
     	mIntroscreen.setVisibility(AbsoluteLayout.GONE);
     }
     
-    // Handle the process of searching for suitable present:
+    // Handle the process of connecting to bluetooth:
     private Handler mBluetoothHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -670,7 +738,7 @@ public class SplashPlay extends Activity implements
     private void setNotification() {
     	mBluetoothConnected = true;
     	
-    	// Get the notification manager serivce.
+    	// Get the notification manager service.
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
     	
         // This is who should be launched if the user selects our notification.
@@ -680,9 +748,7 @@ public class SplashPlay extends Activity implements
         Intent appIntent = new Intent(this, SplashPlay.class);
 
         mNotificationManager.notify(
-                   BLUETOOTH_NOTIFICATIONS, // we use a layout id because it is a unique
-                                          // number.  we use it later to cancel the
-                                          // notification
+                   BLUETOOTH_NOTIFICATIONS, // Application-specific Unique ID
                    new Notification(
                        this,                        // our context
                        R.drawable.bluetooth_classic_16,                      // the icon for the status bar
