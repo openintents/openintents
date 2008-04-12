@@ -112,7 +112,7 @@ public class NewsreaderService1 extends Service implements Runnable{
 
 	@Override
 	public void onDestroy(){
-		Toast.makeText(this, "NewsReaderService stoping..", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "NewsReaderService stopping..", Toast.LENGTH_SHORT).show();
 		this.alive=false;
 	//	mNM.notifyWithText(1, "thread stopping", NotificationManager.LENGTH_SHORT,null);
 	}
