@@ -7,6 +7,7 @@ import org.openintents.provider.News;
 import org.openintents.news.*;
 import org.openintents.news.services.*;
 import org.openintents.news.views.*;
+import org.openintents.OpenIntents;
 
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -420,7 +423,11 @@ public class Newsreader extends Activity {
 			dataList
 			);
 
-
+		if (dataList.size()==0)
+		{
+		
+			Toast.makeText(this,"No feeds are subscribed. Use menu to add new feed.",Toast.LENGTH_LONG).show();
+		}
         //Log.d(_TAG,"rssListAdapter count>>"+rssListAdapter.getCount()+"<<");
         Log.d(_TAG,"cahnnelsAdapter count>>"+channelsAdapter.getCount()+"<<");
         mChannelsView.setAdapter(channelsAdapter);
