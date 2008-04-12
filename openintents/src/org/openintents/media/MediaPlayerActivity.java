@@ -12,6 +12,7 @@ import org.openintents.widget.Slider.OnPositionChangedListener;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
@@ -275,7 +276,19 @@ public class MediaPlayerActivity extends Activity implements
         loadFileFromUri();
     }
 
-
+    @Override    
+    protected void
+    onPause() {
+    	super.onPause();
+    	// Stop the Media Player
+    	// TODO: Later it would be nice to have music run in service.
+    	// Let us clean up
+    	if (mp != null) {
+	    	mp.release();
+	    	mp = null;
+    	}
+    }
+    
 	/** Sets the media type from an intent. */
 	private void setMediaTypeFromUri(Uri data) {
 		// Chop off last part (that contains the row number in the database)
