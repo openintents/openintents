@@ -29,8 +29,8 @@ public class Song {
 	public Song() {
 		chords = new Chord[3];
 		chords[0] = new Chord("G", 3, 0, 0, 0, 2, 3);
-		chords[1] = new Chord("D", 2, 3, 2, 0, 0, -1);
-		chords[2] = new Chord("C", 0, 1, 0, 2, 3, 0);
+		chords[1] = new Chord("D", 2, 3, 2, 0, -1, -1);
+		chords[2] = new Chord("C", 0, 1, 0, 2, 3, -1);
 		
 		
 		// Some shortcuts:

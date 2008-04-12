@@ -80,6 +80,7 @@ public class FretboardView extends View {
 	private final int[] MARKERLIST_EMPTY
 		= new int[] {0,1,2,3,4,5}; //{0,0,0,0,0,0};
 	
+	private float mOpenMarkerWidth;
 	private float mNutWidth;
 	private float mFretWidth;
 	
@@ -160,7 +161,8 @@ public class FretboardView extends View {
 		fretNum = fretMax;
 		fretPosMax = SCALE * 0.27f;
 		
-		mNutWidth = SCALE * 0.015f;
+		mOpenMarkerWidth = SCALE * 0.015f;
+		mNutWidth = SCALE * 0.010f;
 		mFretWidth = SCALE * 0.006f;
 		mMarkerRadius = SCALE * 0.07f;
 		mMarkerVoidRadius = SCALE * 0.045f;
@@ -231,7 +233,8 @@ public class FretboardView extends View {
 		
 		// Set transformation
 		canvas.save();
-		float[] src = new float[] {-mNutWidth, 0, -mNutWidth, SCALE, fretPosMax, SCALE}; // fretboard coordinates
+		float leftx = -mOpenMarkerWidth - mNutWidth;
+		float[] src = new float[] {leftx, 0, leftx, SCALE, fretPosMax, SCALE}; // fretboard coordinates
 		float[] dst = new float[] {0, 0, 0, height, width, height}; // view coordinates
 		mMatrix.setPolyToPoly(src, 0, dst, 0, src.length >> 1);
 		canvas.concat(mMatrix);
@@ -246,6 +249,16 @@ public class FretboardView extends View {
 			mPaint.setColor(0xFF885500);
 			canvas.drawRect(0, 0, SCALE, SCALE, mPaint);
 		}
+
+		// Draw open marker place
+		//d = mDrawables[NUT];
+		//if (d != null) {
+		//	d.setBounds((int) (fretPos[0] - mNutWidth), 0, (int) (fretPos[0]), SCALE);
+		//	d.draw(canvas);
+		//} else {
+			mPaint.setColor(Color.WHITE);
+			canvas.drawRect(fretPos[0]-mNutWidth-mOpenMarkerWidth, 0,fretPos[0], SCALE, mPaint);
+		//}
 		
 		// Draw nut
 		d = mDrawables[NUT];
@@ -322,16 +335,16 @@ public class FretboardView extends View {
 					d.setBounds((int) (x - dx), (int) (y - dy), 
 							(int) (x + dx), (int) (y + dy));
 					d.draw(canvas);
-				} else if (m == MARKER_VOID) {
-					// Draw open circle
-					// draw a filled marker
-					//canvas.drawCircle(markerPos[m], stringPos[i], 0.1f, mPaint);
-					float x = fretPos[0] - mNutWidth + d2x;
+				} else if (m == 0) {
+					// Draw open circle to show string is played open
+					float x = fretPos[0] - mNutWidth - mOpenMarkerWidth + d2x;
 					float y = stringPos[i];
 					
 					d2.setBounds((int) (x - d2x), (int) (y - d2y), 
 							(int) (x + d2x), (int) (y + d2y));
 					d2.draw(canvas);
+				} else if (m == MARKER_VOID) {
+					// Draw X to show string is not played.
 				}
 			}
 		} else {
