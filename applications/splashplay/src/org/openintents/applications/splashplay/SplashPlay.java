@@ -205,10 +205,11 @@ public class SplashPlay extends Activity implements
         
         // Now assign the graphics elements.
         mFretboard.setDrawable(FretboardView.WOOD, R.drawable.wood001a);
-        mFretboard.setDrawable(FretboardView.NUT, R.drawable.nut001a);
+        mFretboard.setDrawable(FretboardView.NUT, R.drawable.nut002a);
         mFretboard.setDrawable(FretboardView.FRET, R.drawable.fret001a);
         mFretboard.setDrawable(FretboardView.MARKER, R.drawable.marker001a);
         mFretboard.setDrawable(FretboardView.SPOT, R.drawable.spot001a);
+        mFretboard.setDrawable(FretboardView.SPOT_VOID, R.drawable.spot_void001a);
         
         mChords = (ChordsView) findViewById(R.id.chords);
         

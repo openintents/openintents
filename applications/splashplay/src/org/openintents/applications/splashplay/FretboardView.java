@@ -34,7 +34,8 @@ public class FretboardView extends View {
 	public static final int FRET = 2;
 	public static final int MARKER = 3;
 	public static final int SPOT = 4;
-	public static final int mDrawablesMax = 5;
+	public static final int SPOT_VOID = 5;
+	public static final int mDrawablesMax = 6;
 	
 	private Paint mPaint; 
 	private Matrix  mMatrix;
@@ -84,6 +85,7 @@ public class FretboardView extends View {
 	
 	/* Radius of marker */
 	private float mMarkerRadius;
+	private float mMarkerVoidRadius;
 	
 	private float mMarkerOffsetX;
 	
@@ -161,6 +163,7 @@ public class FretboardView extends View {
 		mNutWidth = SCALE * 0.015f;
 		mFretWidth = SCALE * 0.006f;
 		mMarkerRadius = SCALE * 0.07f;
+		mMarkerVoidRadius = SCALE * 0.045f;
 		mMarkerOffsetX = SCALE * 0.003f;
 		
 		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -301,9 +304,12 @@ public class FretboardView extends View {
 		// aspect ratio through transformation matrix:
 		float dy = mMarkerRadius;
 		float dx = dy * aspectratio;
+		float d2y = mMarkerVoidRadius;
+		float d2x = d2y * aspectratio;
 		
 		// draw markers
 		d = mDrawables[SPOT];
+		Drawable d2 = mDrawables[SPOT_VOID];
 		if (d != null) {
 			for (int i = 0; i<stringNum; i++) {
 				int m = mMarkerList[i];
@@ -316,6 +322,16 @@ public class FretboardView extends View {
 					d.setBounds((int) (x - dx), (int) (y - dy), 
 							(int) (x + dx), (int) (y + dy));
 					d.draw(canvas);
+				} else if (m == MARKER_VOID) {
+					// Draw open circle
+					// draw a filled marker
+					//canvas.drawCircle(markerPos[m], stringPos[i], 0.1f, mPaint);
+					float x = fretPos[0] - mNutWidth + d2x;
+					float y = stringPos[i];
+					
+					d2.setBounds((int) (x - d2x), (int) (y - d2y), 
+							(int) (x + d2x), (int) (y + d2y));
+					d2.draw(canvas);
 				}
 			}
 		} else {
