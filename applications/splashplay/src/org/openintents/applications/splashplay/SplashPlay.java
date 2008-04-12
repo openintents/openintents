@@ -84,7 +84,7 @@ public class SplashPlay extends Activity implements
 	private Song mSong;
 	
 	/** Time of next event */
-	private int mNextTime;
+	int mNextTime;
 	
 	private Dialog mBluetoothDialog;
 	private ProgressDialog mProgressDialog;
@@ -96,14 +96,14 @@ public class SplashPlay extends Activity implements
     private boolean mBluetoothConnected;
     
     // Repeat AB functionality:
-    private int mRepeatState;
-    private static final int REPEAT_NONE = 0;
-    private static final int REPEAT_A = 1;
-    private static final int REPEAT_B = 2;
-    private static final int REPEAT_LOOP = 3;
+    int mRepeatState;
+    static final int REPEAT_NONE = 0;
+    static final int REPEAT_A = 1;
+    static final int REPEAT_B = 2;
+    static final int REPEAT_LOOP = 3;
     
-    private int mRepeatStart;
-    private int mRepeatStop;
+    int mRepeatStart;
+    int mRepeatStop;
     
     
     ///////////////////////////////
@@ -287,7 +287,9 @@ public class SplashPlay extends Activity implements
 		mSong.setTime(0);
 		mNextTime = 0;
 		
+		// Set Chordsview up:
 		mChords.mSong = mSong;
+		mChords.mSplashPlay = this;
         
         
         // We install the sample applications
@@ -655,6 +657,10 @@ public class SplashPlay extends Activity implements
     	default:
     		Log.e(TAG, "updateRepeatButton(): Wrong state " + mRepeatState);
     	}
+    	
+    	// Also the chord display may depend on the state of repeat,
+    	// so it is also updated:
+    	mChords.invalidate();
     }
     
     /**

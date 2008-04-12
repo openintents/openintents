@@ -27,6 +27,8 @@ public class ChordsView extends View {
 
 	public Song mSong;
 	
+	SplashPlay mSplashPlay; //Needed for repeat AB
+	
 	public int mTileWidth;
 	public int mTileHeight;
 	
@@ -104,6 +106,7 @@ public class ChordsView extends View {
 		int height = getHeight();
 		
 		// Fill background white
+		mPaintBackground.setColor(0xFFFFFFFF);
 		canvas.drawRect(0, 0, width, height, mPaintBackground);
 		
 		if (mSong == null) {
@@ -134,8 +137,45 @@ public class ChordsView extends View {
 		// Center vertically:
 		int tilesPerHeight = height / mTileHeight;
 		y = (height - tilesPerHeight * mTileHeight) / 2;
-			
+		
+		// Draw all previous chords fainter
+		mPaintText.setColor(0xFFaaaaaa);
+		
 		while (cur < mSong.mMax) {
+			if (mSplashPlay != null) {
+				// Mark repeat positions:
+				if (mSplashPlay.mRepeatState == SplashPlay.REPEAT_B) {
+					// In loop mode, highlight marked songs:
+					int time = mSong.times[cur];
+					int next = cur + 1;
+					if (next >= mSong.mMax) next = mSong.mMax - 1;
+					int nextTime = mSong.times[next];
+					if (nextTime >= mSplashPlay.mRepeatStart 
+							&& time < mSplashPlay.mNextTime) {
+						// Draw the background yellow:
+						mPaintBackground.setColor(0xFFFFFF88);
+						canvas.drawRect(x, y, 
+								x + mTileWidth - 1,  y + mTileHeight - 1, 
+								mPaintBackground);
+					}
+				}
+				if (mSplashPlay.mRepeatState == SplashPlay.REPEAT_LOOP) {
+					// In loop mode, highlight marked songs:
+					int time = mSong.times[cur];
+					int next = cur + 1;
+					if (next >= mSong.mMax) next = mSong.mMax - 1;
+					int nextTime = mSong.times[next];
+					if (nextTime >= mSplashPlay.mRepeatStart 
+							&& time <= mSplashPlay.mRepeatStop) {
+						// Draw the background green:
+						mPaintBackground.setColor(0xFF88FF88);
+						canvas.drawRect(x, y, 
+								x + mTileWidth - 1,  y + mTileHeight - 1, 
+								mPaintBackground);
+					}
+				}
+			}
+			
 			// Highlight current chord
 			if (cur == mSong.mCur) {
 				// Highlight the current chord:
@@ -143,6 +183,9 @@ public class ChordsView extends View {
 				
 				mHighlight.setBounds(x, y, x + mTileWidth - 1, y + mTileHeight - 1);
 				mHighlight.draw(canvas);   
+				
+				// draw all following chords black:
+				mPaintText.setColor(0xFF000000);
 			}			
 			
 			canvas.drawText(mSong.events[cur].chord.name, x + textx, y + texty, mPaintText);
