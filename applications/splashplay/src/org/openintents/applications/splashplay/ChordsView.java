@@ -12,6 +12,7 @@ import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 /**
@@ -145,13 +146,19 @@ public class ChordsView extends View {
 			if (mSplashPlay != null) {
 				// Mark repeat positions:
 				if (mSplashPlay.mRepeatState == SplashPlay.REPEAT_B) {
-					// In loop mode, highlight marked songs:
+					// In loop mode B, highlight marked songs
+					// up to current position (that we read from slider):
+					int timeRepeatStop = mSplashPlay.mSlider.pos;
+					
+					// extra treatment if user is touching region:
+					if (mDownCreateLoop) timeRepeatStop = mSplashPlay.mRepeatStop;
+					
 					int time = mSong.times[cur];
 					int next = cur + 1;
 					if (next >= mSong.mMax) next = mSong.mMax - 1;
 					int nextTime = mSong.times[next];
 					if (nextTime >= mSplashPlay.mRepeatStart 
-							&& time < mSplashPlay.mNextTime) {
+							&& time < timeRepeatStop) {
 						// Draw the background yellow:
 						mPaintBackground.setColor(0xFFFFFF88);
 						canvas.drawRect(x, y, 
@@ -206,4 +213,124 @@ public class ChordsView extends View {
 		
 		
 	}
+
+	private int mDownPos;
+	private int mDownRepeatState;
+	private int mDownRepeatStart;
+	private int mDownRepeatStop;
+	private boolean mDownCreateLoop;
+	
+	/* (non-Javadoc)
+	 * @see android.view.View#onTouchEvent(android.view.MotionEvent)
+	 */
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		// TODO Auto-generated method stub
+		int action = event.getAction();
+		float x = event.getX();
+		float y = event.getY();
+		
+		switch (action) {
+		case MotionEvent.ACTION_DOWN:
+			int newSongPos = getSongPos(x, y);
+			
+			// Set new song position:
+			int newPos = mSong.times[newSongPos];
+			mSplashPlay.seekToMusic(newPos);
+			mSplashPlay.updateViews(newPos);
+			mSplashPlay.mSlider.setPosition(newPos);
+			mDownPos = newSongPos;
+			mDownRepeatState = mSplashPlay.mRepeatState;
+			mDownRepeatStart = mSplashPlay.mRepeatStart;
+			mDownRepeatStop = mSplashPlay.mRepeatStop;
+			mDownCreateLoop = false;
+			
+			break;
+		case MotionEvent.ACTION_MOVE:
+			newSongPos = getSongPos(x, y);
+			
+			/*
+			 // Set new song position:
+			newPos = mSong.times[newSongPos];
+			mSplashPlay.seekToMusic(newPos);
+			mSplashPlay.updateViews(newPos);
+			mSplashPlay.mSlider.setPosition(newPos);
+			*/
+			
+			if (newSongPos != mDownPos) {
+				// Let us create a loop:
+				mSplashPlay.mRepeatState = SplashPlay.REPEAT_B;
+				int p1 = mDownPos;
+				int p2 = newSongPos;
+				if (p2 < p1) {
+					// always keep smaller position the starting pos.
+					p2 = mDownPos;
+					p1 = newSongPos;
+				}
+				p2 = p2 + 1;
+				if (p2 >= mSong.mMax) p2 = mSong.mMax - 1;
+				mSplashPlay.mRepeatStart = mSong.times[p1] + 1;
+				mSplashPlay.mRepeatStop = mSong.times[p2] - 1;
+				mDownCreateLoop = true;
+				mSplashPlay.updateRepeatButton();
+			} else {
+				mSplashPlay.mRepeatState = mDownRepeatState;
+				mSplashPlay.mRepeatStart = mDownRepeatStart;
+				mSplashPlay.mRepeatStop = mDownRepeatStop;
+				mDownCreateLoop = false;
+				mSplashPlay.updateRepeatButton();
+			}
+			invalidate();
+			break;
+		case MotionEvent.ACTION_UP:
+			if (mDownCreateLoop) {
+				// Let us create a loop:
+				mSplashPlay.mRepeatState = SplashPlay.REPEAT_LOOP;
+				mSplashPlay.updateRepeatButton();
+				
+				// Start playing automatically:
+				mSplashPlay.playMusic(false);
+				mDownCreateLoop = false;
+			}
+			invalidate();
+			break;
+		} 
+		return true;
+	}
+	
+	/** Get song position from touched position */
+	int getSongPos(float x, float y) {
+		int width = getWidth();
+		int height = getHeight();
+		
+		// Set Song position to currently clicked item:
+		int cur = 0; // current position in song
+		
+		// x-alignment for centered text
+		int textx = mTileWidth / 2 - 1;
+		
+		int texty = mTileHeight * 3 / 4;
+		
+		// Set first line containing current song position
+		int tilesPerLine = width / mTileWidth;
+		cur = (mSong.mCur / tilesPerLine) * tilesPerLine;
+		// (this works because of the integer division)
+		
+		// Center vertically:
+		int tilesPerHeight = height / mTileHeight;
+		int yoffset = (height - tilesPerHeight * mTileHeight) / 2;
+		
+		// Click position in tiles:
+		int tileColumn = (int) x / mTileWidth;
+		int tileRow = (int) (y - yoffset) / mTileHeight;
+		
+		int newSongPos = cur + tilesPerLine * tileRow + tileColumn;
+		
+		// Safety checks:
+		if (newSongPos < 0) newSongPos = 0;
+		if (newSongPos >= mSong.mMax) newSongPos = mSong.mMax - 1;
+		
+		return newSongPos;
+	}
+	
 }

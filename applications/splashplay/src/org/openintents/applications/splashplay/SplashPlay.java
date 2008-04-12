@@ -75,7 +75,7 @@ public class SplashPlay extends Activity implements
 	private Button mStop;
 	private Button mRepeat; 
 	private TextView mPositionText;
-	private Slider mSlider;
+	Slider mSlider;
 	
 	private FretboardView mFretboard;
 	//private TextView mChordText;
@@ -182,13 +182,7 @@ public class SplashPlay extends Activity implements
 					 * @see org.openintents.widget.Slider.OnPositionChangedListener#onPositionChangeCompleted()
 					 */					
 					public void onPositionChangeCompleted() {
-						int newPos = mSlider.pos;
-						if (mp != null) {
-							mp.seekTo(newPos);
-
-							// Force update of song position at next event.
-							mNextTime = 0;
-						}
+						seekToMusic(mSlider.pos);
 					}
 
 					/* (non-Javadoc)
@@ -426,7 +420,11 @@ public class SplashPlay extends Activity implements
     	mSlider.max = timeMax;
     }
 
-    private void playMusic() { 
+    void playMusic() {
+    	playMusic(true);
+    }
+    
+    void playMusic(boolean clearRepeatLoop) { 
 	    try { 
 	    	Log.i(TAG,"Starting music");
 	        // If the path has not changed, just start the media player 
@@ -434,7 +432,7 @@ public class SplashPlay extends Activity implements
 	        	Log.i(TAG,"Re-start music");
 	        	
 		        // Also reset the looping function:
-		        if (mRepeatState == REPEAT_LOOP && mp.isPlaying()) {
+		        if (clearRepeatLoop && mRepeatState == REPEAT_LOOP && mp.isPlaying()) {
 		        	// Actually we are already playing.
 		        	// Pressing Play then changes the loop status:
 		        	mRepeatState = REPEAT_NONE;
@@ -518,6 +516,16 @@ public class SplashPlay extends Activity implements
     		mNextTime = 0;
             
     	}
+    }
+    
+    /** Seek to new position */
+    public void seekToMusic(int newPos) {
+    	if (mp != null) {
+			mp.seekTo(newPos);
+
+			// Force update of song position at next event.
+			mNextTime = 0;
+		}
     }
     
     /**
