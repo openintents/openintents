@@ -56,7 +56,7 @@
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content" 
-				android:src="@drawable/bluetooth_icon1"
+				android:src="@drawable/bluetooth_icon2_48"
 				android:layout_gravity="center_vertical"
 			 	/>
 			<TextView

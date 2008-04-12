@@ -544,7 +544,7 @@ public class SplashPlay extends Activity implements
 		super.onCreateOptionsMenu(menu);
 		
 		// Standard menu
-		menu.add(0, MENU_BLUETOOTH, R.string.bluetooth, R.drawable.bluetooth_icon1)
+		menu.add(0, MENU_BLUETOOTH, R.string.bluetooth, R.drawable.bluetooth_icon2_48)
 			.setShortcut('0', 'b');
 		menu.add(1, MENU_ABOUT, R.string.about, R.drawable.about001a)
 		.setShortcut('1', 'a');
@@ -684,7 +684,7 @@ public class SplashPlay extends Activity implements
                                           // notification
                    new Notification(
                        this,                        // our context
-                       R.drawable.bluetooth_icon1_small_16,                      // the icon for the status bar
+                       R.drawable.bluetooth_classic_16,                      // the icon for the status bar
                        null,                  // the text to display in the ticker
                        System.currentTimeMillis(),  // the timestamp for the notification
                        getText(R.string.connect_bluetooth),
