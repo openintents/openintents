@@ -153,20 +153,6 @@ public class GTalkSender {
     public void sendList (String recipients, String shareListName) {
     	Log.i(TAG, "sendList(" + recipients + ", " + shareListName + ")");
     	
-    	
-    	 try {
-    		Log.i(TAG, "GTalk user name: " + mGTalkSession.getUsername());
-    		Log.i(TAG, "GTalk JID: " + mGTalkSession.getJid());
-    		Log.i(TAG, "GTalk Connection uptime: " + mGTalkSession.getConnectionUptime());
-    		
-    	} catch (DeadObjectException e) {
-    		Log.e(TAG, "DeadObjectException " + e.getStackTrace().toString());
-    		mGTalkSession = null;
-            bindGTalkService();
-            return;
-    	}
-    	
-    	
     	// First take out white spaces
     	String r = recipients.replace(" ", "");
     	// Then convert to list
@@ -215,6 +201,20 @@ public class GTalkSender {
     			// Recipient is remote address 
     			if (mGTalkSession != null) {
                     try {
+                    	
+                    	/*try {
+                    		Log.i(TAG, "GTalk user name: " + mGTalkSession.getUsername());
+                    		Log.i(TAG, "GTalk JID: " + mGTalkSession.getJid());
+                    		Log.i(TAG, "GTalk Connection uptime: " + mGTalkSession.getConnectionUptime());
+                    		
+                    	} catch (DeadObjectException e) {
+                    		Log.e(TAG, "DeadObjectException " + e.getStackTrace().toString());
+                    		mGTalkSession = null;
+                            bindGTalkService();
+                            return;
+                    	}*/
+                    	
+                    	
             			// Prepend the modified recipient list by information
             			// about the sender
         				modifiedRecipientList.insert(0, mGTalkSession.getJid());
@@ -239,8 +239,9 @@ public class GTalkSender {
 	                    bindGTalkService();
 	                }
     			} else {
-	                showMessage(mContext.getText(R.string.gtalk_service_not_connected));
-	                return;
+	                //showMessage(mContext.getText(R.string.gtalk_service_not_connected));
+    				showMessage(mContext.getText(R.string.gtalk_not_connected));
+            		return;
 	            }
 
     		}
@@ -272,8 +273,12 @@ public class GTalkSender {
     			// lists.
     			String newShareListName = recipient.substring("local/".length());
     			
-    			Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION,
-    					Shopping.Items.CONTENT_URI);
+    			//Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION,
+    			//		Shopping.Items.CONTENT_URI);
+
+    			// workaround for Anroid m5 issue: send content URI in bundle.
+				Intent intent = new Intent(OpenIntents.SHARE_INSERT_ACTION);
+				intent.putExtra(DATA, Shopping.Items.CONTENT_URI.toString());
     	        intent.putExtra(Shopping.Lists.SHARE_NAME, newShareListName);
     	        intent.putExtra(Shopping.Items.NAME, itemName);
 
@@ -325,12 +330,7 @@ public class GTalkSender {
     	
     	String itemSender = "";
     	
-    	try {
-    		itemSender = mGTalkSession.getUsername();
-        } catch (DeadObjectException e) {
-    		Log.e(TAG, "DeadObjectException " + e.getStackTrace().toString());
-    		return;
-    	}
+    	
         
     	// First take out white spaces
     	String r = recipients.replace(" ", "");
@@ -350,6 +350,9 @@ public class GTalkSender {
     			// lists.
     			String newShareListName = recipient.substring("local/".length());
     			
+    			// The item sender's name will be just the unique list id:
+    			itemSender = shareListName;
+    			
     			Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
     					Shopping.Items.CONTENT_URI);
     	        intent.putExtra(Shopping.Lists.SHARE_NAME, newShareListName);
@@ -367,7 +370,9 @@ public class GTalkSender {
             	
     			// Recipient is remote address 
     			if (mGTalkSession != null) {
-                    try {
+                    try {                    	
+                    	itemSender = mGTalkSession.getUsername();	
+                        
             			//Intent intent = new Intent(OpenIntents.SHARE_UPDATE_ACTION,
 	        			//		Shopping.Items.CONTENT_URI);
 	        	        
@@ -391,7 +396,8 @@ public class GTalkSender {
 	                    bindGTalkService();
 	                }
     			} else {
-	                showMessage(mContext.getText(R.string.gtalk_service_not_connected));
+	                // showMessage(mContext.getText(R.string.gtalk_service_not_connected));
+	                showMessage(mContext.getText(R.string.gtalk_not_connected));
 	                return;
 	            }
 

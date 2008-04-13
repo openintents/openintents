@@ -27,6 +27,9 @@ import android.content.pm.PackageManager.NameNotFoundException;
  * extend the standard Android specifiers.
  */
 public abstract class OpenIntents {
+	// !! CAREFUL !!
+	// If you change any of the string definitions, you have
+	// to change it in all Manifests that use them as well!
 
 	// -----------------------------------------------
 	// Tags

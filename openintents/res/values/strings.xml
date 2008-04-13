@@ -156,6 +156,7 @@ Earth Technology.
 	<string name="no_shopping_provider">No shopping provider available.</string>
 	<string name="pick_item">Pick an item</string>
 	<string name="shopping_name_description">Enter a unique identifier for this list.</string>
+	<string name="please_enter_description">Please enter a unique identifier</string>
 	<string name="shopping_name_hint">i.e. bob1</string>
 	<string name="shopping_share_description">Insert the email addresses of the contacts 
 		separated by comma
@@ -181,6 +182,8 @@ Earth Technology.
     <string name="gtalk_service_not_connected">GTalk service not connected.</string>
     <string name="gtalk_session_not_found">The default GTalk session cannot be found.</string>
     <string name="gtalk_found_stale_service">The GTalk service is stale. Rebinding...</string>
+    
+    <string name="gtalk_not_connected">GTalk service not connected. Please log into GTalk first.</string>
     
     <!-- Theme related -->
     <string name="theme_pick">Pick a theme</string>

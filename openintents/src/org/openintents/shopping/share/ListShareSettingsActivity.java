@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 /**
@@ -138,6 +139,12 @@ public class ListShareSettingsActivity extends Activity {
     void pressOK() {
     	String sharename = mShareName.getText().toString();
         String contacts = mContacts.getText().toString();
+        
+        if (! contacts.equals("") && sharename.equals("")) {
+        	mShareName.requestFocus();
+        	Toast.makeText(this, getString(R.string.please_enter_description), Toast.LENGTH_SHORT).show();
+        	return;
+        }
                 
        	// Write the text back into the cursor 
         if (mCursor != null) {
