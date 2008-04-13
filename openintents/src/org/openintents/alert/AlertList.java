@@ -204,10 +204,14 @@ public class AlertList extends ListActivity{
 		startActivity(intent);		
 	}
 	private void menuEdit(){
+		long i=0;
 		Intent intent = new Intent();
 		intent.setAction(org.openintents.OpenIntents.EDIT_GENERIC_ALERT);
 		intent.addCategory(Intent.DEFAULT_CATEGORY);
 		//intent.putExtras(b);
+		i=getSelectedItemId();
+		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,i);
+		intent.putExtra(Alert.EXTRA_URI, u.toString());
 		startActivity(intent);		
 	
 	}
