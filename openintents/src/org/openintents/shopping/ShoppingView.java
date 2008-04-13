@@ -745,8 +745,16 @@ public class ShoppingView
         // TODO: Add item-specific menu items (see NotesList.java example)
         // like edit, strike-through, delete.
 
+        // Selected list:
+        long listId = getSelectedListId();
+        
         // Delete list is possible, if we have more than one list:
-        menu.setItemShown(MENU_DELETE_LIST, mCursorListFilter.count() > 1);
+        // AND 
+        // the current list is not the default list (listId == 0) - issue #105
+        // TODO: Later, the default list should be user-selectable,
+        //       and not deletable.
+        menu.setItemShown(MENU_DELETE_LIST, mCursorListFilter.count() > 1
+        		&& listId != 1); // 1 is hardcoded number of default first list.
         
         // Set additional menu items that can be used with the 
         // currently selected list.
