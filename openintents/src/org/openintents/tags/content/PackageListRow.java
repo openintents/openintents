@@ -140,6 +140,7 @@ public class PackageListRow extends RelativeLayout {
 				String data = cursor.getString(2);
 				Uri uri = Uri.parse(data);
 				Intent intent = new Intent(Intent.PICK_ACTION, uri);
+				mAlertinfoString = "";
 				if (pm.resolveActivity(intent, 0) == null) {
 					intent.setAction(Intent.GET_CONTENT_ACTION);
 					if (pm.resolveActivity(intent, 0) == null) {
@@ -153,7 +154,7 @@ public class PackageListRow extends RelativeLayout {
 
 		mName.setText(name);
 		mPackageName.setText(packageName);
-
+		mAlertInfo.setText(mAlertinfoString);
 	}
 
 }
