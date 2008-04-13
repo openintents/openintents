@@ -71,6 +71,7 @@ import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -878,8 +879,10 @@ public class ShoppingView
                         .parseInt(getString(R.string.key_return)))
                 {
                     // User pressed "Enter"
-                    createNewList();
-                    mDialog.dismiss();
+                    if (createNewList()) {
+                    	// New list created. Exit:
+                    	mDialog.dismiss();
+                    }
                     return true;
                 }
                 return false;
@@ -893,8 +896,10 @@ public class ShoppingView
         {
             public void onClick(final View v)
             {
-                createNewList();
-                mDialog.dismiss();
+                if (createNewList()) {
+                	// New list created. Exit:
+                	mDialog.dismiss();
+                }
             }
         });
 
@@ -910,12 +915,24 @@ public class ShoppingView
         mDialog.show();
     }
 
-    private void createNewList()
+    /** 
+     * Creates a new list from dialog.
+     * @return true if new list was created. False if new list was not 
+     *  created, because user has not given any name.
+     */
+    private boolean createNewList()
     {
         EditText edittext = (EditText)
                 mDialog.findViewById(R.id.edittext);
+        String s = edittext.getText().toString();
 
-        int newId = (int) Shopping.getList(edittext.getText().toString());
+        if (s.equals("")) {
+        	// User has not provided any name
+        	Toast.makeText(this, getString(R.string.please_enter_name), Toast.LENGTH_SHORT).show();
+        	return false;
+        }
+        
+        int newId = (int) Shopping.getList(s);
 
         edittext.setText("");
         fillListFilter();
@@ -924,6 +941,7 @@ public class ShoppingView
         
         // Now set the theme based on the selected list:
         setListTheme(loadListTheme());
+        return true;
     }
 
     /**

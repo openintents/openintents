@@ -280,47 +280,47 @@ public final class R {
         public static final int shopping=0x7f040005;
     }
     public static final class string {
-        public static final int IP_address=0x7f060087;
+        public static final int IP_address=0x7f060088;
         public static final int about=0x7f060004;
         public static final int about_openintents=0x7f060003;
         public static final int about_openintents_text=0x7f060005;
         public static final int action_MAIN=0x7f060006;
         public static final int add=0x7f060022;
-        public static final int add_alert=0x7f06009a;
+        public static final int add_alert=0x7f06009b;
         public static final int add_current_location=0x7f060010;
-        public static final int add_location_alert=0x7f06006f;
-        public static final int add_location_alert_description=0x7f060070;
+        public static final int add_location_alert=0x7f060070;
+        public static final int add_location_alert_description=0x7f060071;
         public static final int add_tag=0x7f060023;
-        public static final int alert_add=0x7f060099;
-        public static final int alert_added=0x7f0600a4;
+        public static final int alert_add=0x7f06009a;
+        public static final int alert_added=0x7f0600a5;
         /**   alert related  
          */
-        public static final int alert_edit=0x7f060098;
-        public static final int alert_label_condition1=0x7f0600a2;
-        public static final int alert_label_condition2=0x7f0600a3;
-        public static final int alert_label_date_time=0x7f0600a0;
-        public static final int alert_label_location=0x7f06009e;
-        public static final int alert_label_range=0x7f06009f;
-        public static final int alert_label_unused=0x7f0600a1;
-        public static final int alert_not_added=0x7f0600a5;
-        public static final int alert_pick_action=0x7f06009c;
-        public static final int alert_pick_date_time=0x7f06009d;
-        public static final int alert_pick_location=0x7f06009b;
+        public static final int alert_edit=0x7f060099;
+        public static final int alert_label_condition1=0x7f0600a3;
+        public static final int alert_label_condition2=0x7f0600a4;
+        public static final int alert_label_date_time=0x7f0600a1;
+        public static final int alert_label_location=0x7f06009f;
+        public static final int alert_label_range=0x7f0600a0;
+        public static final int alert_label_unused=0x7f0600a2;
+        public static final int alert_not_added=0x7f0600a6;
+        public static final int alert_pick_action=0x7f06009d;
+        public static final int alert_pick_date_time=0x7f06009e;
+        public static final int alert_pick_location=0x7f06009c;
         /**  Main application  
          */
         public static final int app_name=0x7f060000;
         public static final int ask_new_list=0x7f060061;
-        public static final int ask_update_interval=0x7f06008f;
+        public static final int ask_update_interval=0x7f060090;
         public static final int audio=0x7f060051;
-        public static final int auto_update=0x7f06008c;
+        public static final int auto_update=0x7f06008d;
         public static final int button_ok=0x7f060042;
         /**      Dialog box    
          */
-        public static final int cancel=0x7f06007d;
+        public static final int cancel=0x7f06007e;
         public static final int clean_up_list=0x7f06005f;
-        public static final int confirm_delete_list=0x7f060063;
-        public static final int connect=0x7f060084;
-        public static final int connect_to_sensorsimulator=0x7f060091;
+        public static final int confirm_delete_list=0x7f060064;
+        public static final int connect=0x7f060085;
+        public static final int connect_to_sensorsimulator=0x7f060092;
         /**   Content Browser 
          */
         public static final int content_browser=0x7f060031;
@@ -333,18 +333,18 @@ public final class R {
         public static final int dialog_ok=0x7f060044;
         public static final int dialog_title_package_add=0x7f060046;
         public static final int dialog_title_package_del=0x7f060048;
-        public static final int disabled=0x7f06008d;
-        public static final int disconnect=0x7f060086;
+        public static final int disabled=0x7f06008e;
+        public static final int disconnect=0x7f060087;
         public static final int empty_tag=0x7f060039;
-        public static final int enable_sensors=0x7f06008b;
+        public static final int enable_sensors=0x7f06008c;
         public static final int external_content=0x7f060050;
         public static final int get_content_media_file=0x7f060058;
-        public static final int gtalk_found_stale_service=0x7f060077;
+        public static final int gtalk_found_stale_service=0x7f060078;
         /**  GTalk related 
          */
-        public static final int gtalk_invalid_username=0x7f060074;
-        public static final int gtalk_service_not_connected=0x7f060075;
-        public static final int gtalk_session_not_found=0x7f060076;
+        public static final int gtalk_invalid_username=0x7f060075;
+        public static final int gtalk_service_not_connected=0x7f060076;
+        public static final int gtalk_session_not_found=0x7f060077;
         public static final int images=0x7f060053;
         public static final int init_add_all_values=0x7f06000b;
         public static final int init_add_locations=0x7f060009;
@@ -365,7 +365,7 @@ public final class R {
         public static final int key=0x7f06001d;
         /**      Key codes     
          */
-        public static final int key_return=0x7f060096;
+        public static final int key_return=0x7f060097;
         public static final int label_package_add=0x7f060041;
         public static final int label_packages=0x7f06003f;
         public static final int label_packages_pick=0x7f060040;
@@ -377,7 +377,7 @@ public final class R {
         /**    Tags Provider   
          */
         public static final int list_of_tags=0x7f06001f;
-        public static final int location_alert_added=0x7f060071;
+        public static final int location_alert_added=0x7f060072;
         public static final int locations_about=0x7f06001b;
         public static final int locations_about_text=0x7f06001c;
         public static final int locations_add_extra=0x7f060018;
@@ -407,47 +407,48 @@ public final class R {
         public static final int new_list_hint=0x7f06005e;
         /**      Newsreader Service 
          */
-        public static final int news_service_settings=0x7f06007f;
-        public static final int no_items_marked=0x7f060062;
+        public static final int news_service_settings=0x7f060080;
+        public static final int no_items_marked=0x7f060063;
         public static final int no_packages=0x7f060043;
-        public static final int no_shopping_provider=0x7f060064;
+        public static final int no_shopping_provider=0x7f060065;
         public static final int no_tags=0x7f060038;
         public static final int no_types=0x7f06002c;
         public static final int nothing_found=0x7f06003b;
         public static final int nothing_selected=0x7f06003a;
         public static final int oi_acceptancetest=0x7f060007;
-        public static final int ok=0x7f06007e;
+        public static final int ok=0x7f06007f;
         public static final int open_audio=0x7f060059;
         public static final int open_video=0x7f06005a;
         public static final int openintents=0x7f060002;
-        public static final int pick_item=0x7f060065;
-        public static final int pick_location=0x7f060072;
+        public static final int pick_item=0x7f060066;
+        public static final int pick_location=0x7f060073;
         public static final int pick_media_file=0x7f060057;
-        public static final int real_device_data=0x7f060089;
+        public static final int please_enter_name=0x7f060062;
+        public static final int real_device_data=0x7f06008a;
         public static final int select=0x7f060021;
-        public static final int sensor_simulator_data=0x7f06008a;
+        public static final int sensor_simulator_data=0x7f06008b;
         /**   Sensor Simulator 
          */
-        public static final int sensorsimulator=0x7f060082;
-        public static final int sensorsimulator_settings=0x7f060090;
-        public static final int sensorsimulator_settings_description=0x7f060092;
-        public static final int sensorsimulator_testing_description=0x7f060093;
-        public static final int set_update_interval=0x7f06008e;
-        public static final int settings=0x7f060083;
-        public static final int share=0x7f06006a;
-        public static final int share_settings=0x7f06006b;
+        public static final int sensorsimulator=0x7f060083;
+        public static final int sensorsimulator_settings=0x7f060091;
+        public static final int sensorsimulator_settings_description=0x7f060093;
+        public static final int sensorsimulator_testing_description=0x7f060094;
+        public static final int set_update_interval=0x7f06008f;
+        public static final int settings=0x7f060084;
+        public static final int share=0x7f06006b;
+        public static final int share_settings=0x7f06006c;
         /**  Shopping list location alert related 
          */
-        public static final int shopping_add_alert=0x7f06006e;
+        public static final int shopping_add_alert=0x7f06006f;
         /**  Shopping Provider 
          */
         public static final int shopping_list=0x7f06005b;
-        public static final int shopping_name_description=0x7f060066;
-        public static final int shopping_name_hint=0x7f060067;
-        public static final int shopping_share_description=0x7f060068;
-        public static final int shopping_share_hint=0x7f060069;
-        public static final int socket=0x7f060088;
-        public static final int start_on_system_boot=0x7f060080;
+        public static final int shopping_name_description=0x7f060067;
+        public static final int shopping_name_hint=0x7f060068;
+        public static final int shopping_share_description=0x7f060069;
+        public static final int shopping_share_hint=0x7f06006a;
+        public static final int socket=0x7f060089;
+        public static final int start_on_system_boot=0x7f060081;
         public static final int tag_all=0x7f060024;
         public static final int tag_location=0x7f060014;
         public static final int tags_add_any_tag=0x7f060025;
@@ -461,24 +462,24 @@ public final class R {
         public static final int tags_unparsable_uri=0x7f060028;
         public static final int tags_view_content=0x7f060033;
         public static final int tags_view_tag=0x7f060037;
-        public static final int test=0x7f060097;
-        public static final int testing=0x7f060085;
-        public static final int theme=0x7f06006c;
-        public static final int theme_bugdroid=0x7f06007c;
-        public static final int theme_classic=0x7f06007b;
-        public static final int theme_default=0x7f06007a;
-        public static final int theme_description=0x7f060079;
+        public static final int test=0x7f060098;
+        public static final int testing=0x7f060086;
+        public static final int theme=0x7f06006d;
+        public static final int theme_bugdroid=0x7f06007d;
+        public static final int theme_classic=0x7f06007c;
+        public static final int theme_default=0x7f06007b;
+        public static final int theme_description=0x7f06007a;
         /**  Theme related 
          */
-        public static final int theme_pick=0x7f060078;
-        public static final int theme_settings=0x7f06006d;
+        public static final int theme_pick=0x7f060079;
+        public static final int theme_settings=0x7f06006e;
         public static final int todo=0x7f060036;
-        public static final int update_rate=0x7f060094;
-        public static final int update_rate_seconds=0x7f060095;
-        public static final int use_while_roaming=0x7f060081;
+        public static final int update_rate=0x7f060095;
+        public static final int update_rate_seconds=0x7f060096;
+        public static final int use_while_roaming=0x7f060082;
         public static final int value=0x7f06001e;
         public static final int video=0x7f060052;
-        public static final int view_alerts=0x7f060073;
+        public static final int view_alerts=0x7f060074;
         public static final int view_location=0x7f060011;
     }
     public static final class styleable {
