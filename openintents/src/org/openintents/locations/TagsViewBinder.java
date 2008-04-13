@@ -48,9 +48,13 @@ public class TagsViewBinder implements ViewBinder {
 						unit = "m";
 					}
 				}
-				if (dist >= 0) {
-					textView.setText(" (" + String.format("%.3f", dist) + unit
-							+ ")");
+				if (dist >= 10) {
+					// for numbers >= 10, digits after the decimal point are distracting
+					textView.setText(" (" + String.format("%.0f", dist) + " " + unit
+							+ " away)");
+				} else if (dist >= 0) {
+					textView.setText(" (" + String.format("%.1f", dist) + " " + unit
+							+ " away)");
 				} else {
 					textView.setText("");
 				}

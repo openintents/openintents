@@ -78,7 +78,8 @@ public class LocationsMapView extends MapActivity {
 		MapController controller = view.getController();
 		controller.centerMapTo(new Point(point.getLatitudeE6(), point
 				.getLongitudeE6()), true);
-		controller.zoomTo(9);
+		//controller.zoomTo(9);
+		controller.zoomTo(15);
 
 		mEditTags = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);
 
