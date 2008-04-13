@@ -35,7 +35,7 @@ public class RoamingWatcher extends IntentReceiver{
 	private boolean useWhileRoaming=false;
 	private boolean isRoaming=false;
 
-	private boolean didStop=false;
+	private static boolean didStop=false;
 
 	private static final String _TAG="org.openintents.news.services.RoamingWatcher";
 
@@ -59,8 +59,10 @@ public class RoamingWatcher extends IntentReceiver{
 		}else if( android.content.Intent.SERVICE_STATE_CHANGED_ACTION.equals( action ) ) 
 		{
 			Bundle b=intent.getExtras();
-			isRoaming=b.getBoolean("roaming");
-			Log.d(_TAG,"current roaming state of phone/data is >>"+b.getString("roaming")+"<<");
+			//isRoaming=b.getBoolean("roaming");
+			isRoaming= intent.getBooleanExtra("roaming",false);
+			Log.d(_TAG,"current roaming state of phone/data is >>"+isRoaming+"<<");
+			Log.d(_TAG,"did we stop? >>"+didStop+"<<");
 		//	android.telephony.ServiceState state=android.telephony.ServiceState.getServiceState();
 			if (isRoaming && ! useWhileRoaming)
 			{
