@@ -272,8 +272,7 @@ public class ShoppingView
         // Initialize the convenience functions:
         Shopping.mContentResolver = getContentResolver();
         
-        // Initialize GTalk:
-        // TODO: Only initialize the first time a shared shopping list is opened.
+        // Initialize GTalkSender (but don't bind yet!)
         mGTalkSender = new GTalkSender(this);
         
         // Automatic requeries (once a second)
@@ -367,6 +366,9 @@ public class ShoppingView
         // Set the theme based on the selected list:
         setListTheme(loadListTheme());
         
+        // Bind GTalk if currently selected shopping list needs it:
+        bindGTalkIfNeeded();
+        
         if (icicle != null)
         {
             String prevText = icicle.getString(ORIGINAL_ITEM);
@@ -410,7 +412,9 @@ public class ShoppingView
         }
         
         // Bind GTalk service
-        mGTalkSender.bindGTalkService();
+        if (mGTalkSender != null) {
+        	bindGTalkIfNeeded();
+        }
         
         // Register intent receiver for refresh intents:
         IntentFilter intentfilter = new IntentFilter(OpenIntents.REFRESH_ACTION);
@@ -442,8 +446,10 @@ public class ShoppingView
         
         mUpdating = false;
 
-        // Bind GTalk service
-        mGTalkSender.unbindGTalkService();
+        // Unbind GTalk service
+        if (mGTalkSender != null) {
+        	mGTalkSender.unbindGTalkService();
+        }
     }
 
     /**
@@ -464,6 +470,7 @@ public class ShoppingView
                         // Now set the theme based on the selected list:
                         setListTheme(loadListTheme());
                         checkListLength();
+                        bindGTalkIfNeeded();
                     }
 
                     public void onNothingSelected(AdapterView arg0)
@@ -941,6 +948,9 @@ public class ShoppingView
         
         // Now set the theme based on the selected list:
         setListTheme(loadListTheme());
+        
+        // A newly created list will not yet be shared via GTalk:
+        // bindGTalkIfNeeded();
         return true;
     }
 
@@ -1048,6 +1058,8 @@ public class ShoppingView
         
         // Now set the theme based on the selected list:
         setListTheme(loadListTheme());
+        
+        bindGTalkIfNeeded();
     }
 
     /** 
@@ -1060,7 +1072,11 @@ public class ShoppingView
     	Intent intent = new Intent(OpenIntents.SET_SHARE_SETTINGS_ACTION, 
 				mListUri);
 		startSubActivity(intent, SUBACTIVITY_LIST_SHARE_SETTINGS);
-    	
+		
+		// Also, start to bind as we will likely need it:
+		if (mGTalkSender != null) {
+			mGTalkSender.bindGTalkService();
+		}
     }
     
     /**
@@ -1663,6 +1679,39 @@ public class ShoppingView
 
     }
 
+    /** 
+     * Initialized GTalk if the currently selected list requires it.
+     */
+    void bindGTalkIfNeeded() {
+	    if (isCurrentListShared()) {
+	    	// Only bind the first time a shared shopping list is opened.
+	    	mGTalkSender.bindGTalkService();
+	    }
+    }
+    
+    /**
+     * Tests whether the current list is shared via GTalk.
+     * (not local sharing!)
+     * @return true if SHARE_CONTACTS contains the '@' character.
+     */
+    boolean isCurrentListShared() {
+    	long listId = getSelectedListId();
+        if (listId < 0) {
+        	// No valid list - probably view is not active
+        	// and no item is selected.
+        	return false;
+        }
+        
+        // mCursorListFilter has been set to correct position
+        // by calling getSelectedListId(),
+        // so we can read out further elements:
+        // String shareName = mCursorListFilter.getString(mStringListFilterSHARENAME);
+        String recipients = mCursorListFilter.getString(mStringListFilterSHARECONTACTS);
+        
+        // If recipients contains the '@' symbol, it is shared.
+        return recipients.contains("@");
+    }
+    
     /**
      * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
      * Shopping.Status.BOUGHT

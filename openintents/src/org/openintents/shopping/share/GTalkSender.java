@@ -49,6 +49,8 @@ public class GTalkSender {
     
     IGTalkSession mGTalkSession = null;
     
+    boolean mBound;
+    
     /**
      * Suffix for bundle items to mark them old.
      * 
@@ -71,28 +73,40 @@ public class GTalkSender {
     public static final String DATA = "data";
     
     /**
-     * Constructs a new sender and binds automatically to GTalk.
+     * Constructs a new sender GTalk.
+     * You have to manually bind before using GTalk.
      * 
      * @param mContext
      */
     public GTalkSender (Context context) {
     	mContext = context;
+    	mBound = false;
     	
-        bindGTalkService();
+        // bindGTalkService();
     }
 
     /**
      * Bind to GTalk service.
      */
     public void bindGTalkService() {
-    	Intent intent = new Intent();
-    	intent.setComponent(
-                com.google.android.gtalkservice.GTalkServiceConstants.GTALK_SERVICE_COMPONENT);
-        mContext.bindService(intent, mConnection, 0);
+    	if (!mBound) {
+	    	Intent intent = new Intent();
+	    	intent.setComponent(
+	                com.google.android.gtalkservice.GTalkServiceConstants.GTALK_SERVICE_COMPONENT);
+	        mContext.bindService(intent, mConnection, 0);
+	        mBound = true;
+    	} else {
+    		// already bound - do nothing.
+    	}
    }
     
     public void unbindGTalkService() {
-    	mContext.unbindService(mConnection);
+    	if (mBound) {
+    		mContext.unbindService(mConnection);
+    		mBound = false;
+    	} else {
+    		// have not been bound - do nothing.
+    	}
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -109,8 +123,9 @@ public class GTalkSender {
 
                 if (mGTalkSession == null) {
                     // this should not happen.
-                    showMessage(mContext.getText(R.string.gtalk_session_not_found));
-                    return;
+                    //showMessage(mContext.getText(R.string.gtalk_session_not_found));
+                    showMessage(mContext.getText(R.string.gtalk_not_connected));
+	                return;
                 }
             } catch (DeadObjectException ex) {
                 Log.e(TAG, "caught " + ex);
@@ -159,6 +174,10 @@ public class GTalkSender {
     	String[] recipientList = r.split(",");
     	
     	int max = recipientList.length;
+    	if (max == 1 && recipientList[0].equals("")) {
+    		// this is an empty list - nothing to send:
+    		return;
+    	}
     	for (int i = 0; i < max; i++) {
     		String recipient = recipientList[i];
     		
@@ -261,6 +280,10 @@ public class GTalkSender {
     	String[] recipientList = r.split(",");
     	
     	int max = recipientList.length;
+    	if (max == 1 && recipientList[0].equals("")) {
+    		// this is an empty list - nothing to send:
+    		return;
+    	}
     	for (int i = 0; i < max; i++) {
     		String recipient = recipientList[i];
     		
@@ -338,6 +361,10 @@ public class GTalkSender {
     	String[] recipientList = r.split(",");
     	
     	int max = recipientList.length;
+    	if (max == 1 && recipientList[0].equals("")) {
+    		// this is an empty list - nothing to send:
+    		return;
+    	}
     	for (int i = 0; i < max; i++) {
     		String recipient = recipientList[i];
     		
