@@ -34,6 +34,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.content.Intent;
+import android.util.Log;
+
+import java.io.*;
+
 
 /**
  * Init dialog
@@ -70,6 +74,7 @@ public class InitView extends Activity {
 			public void onClick(View view) {
 				addLocations();
 				addNewsFeeds();
+				addMusicFiles();
 				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
 			}
 
@@ -184,4 +189,32 @@ public class InitView extends Activity {
 		News.insert(News.RSSFeeds.CONTENT_URI, cv);
 				
 	}
+
+	public void addMusicFiles() {
+
+		int result=0;
+       // Load the sample file and put them into our data directory:
+       
+       try {
+			   InputStream is=getResources().openRawResource(R.raw.ack_syn);
+			   FileOutputStream fos=new FileOutputStream(new File("/sdcard/ack_syn.mp3"));
+               int size = is.available();
+               byte[] buffer = new byte[size];
+               is.read(buffer);
+               fos.write(buffer, 0, size);
+               fos.close();
+               is.close();
+			   result++;
+       } catch (IOException e) {
+		   Log.e("","not copy");
+		   Log.e("","reasong >"+e.toString());
+//		   e.printStackTrace();
+		   
+               // Should never happen
+ //          throw new RuntimeException(e);
+       }
+
+
+	}
+
 }
