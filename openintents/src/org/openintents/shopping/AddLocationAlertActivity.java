@@ -180,7 +180,7 @@ public class AddLocationAlertActivity extends Activity
 			case REQUEST_PICK_LOC:
 				
 				mLocation.setText(bundle.getString(Locations.EXTRA_GEO));
-				mTags.setText(mTag.findTags(data, " "));
+				mTags.setText(mTag.findTags(data, ", "));
 				addLocationAlert();
 				break;
 			}

@@ -250,7 +250,7 @@ public class Tag {
 			sb.append(separator);
 		}
 		if (sb.length() > 0){
-			sb.deleteCharAt(sb.length() - 1);
+			sb.deleteCharAt(sb.length() - separator.length());
 		}
 		return sb.toString();
 	}

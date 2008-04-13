@@ -27,7 +27,7 @@ public class TagsViewBinder implements ViewBinder {
 			if (view.getId() == R.id.tags) {
 				String tags = mTag.findTags(ContentUris.withAppendedId(
 						Location.Locations.CONTENT_URI, cursor.getLong(i))
-						.toString(), " ");
+						.toString(), ", ");
 				((TextView) view).setText(tags);
 				return true;
 			} else {

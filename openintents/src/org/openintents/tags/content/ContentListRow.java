@@ -211,7 +211,7 @@ public class ContentListRow extends RelativeLayout {
 		mNameString = text;
 
 		if (contentUri != null && !mHide) {
-			mTagsString = mTagHelper.findTags(uri, " ");
+			mTagsString = mTagHelper.findTags(uri, ", ");
 		}
 
 	}
