@@ -180,13 +180,13 @@ public class ShoppingView
      * Sets how many pixels the EditBox shall be away from the bottom of the
      * screen, when the height of the list-box is limited in checkListLength()
      */
-    private static final int mBottomPadding = 50;
+    private static int mBottomPadding = 50; // this is changed by 
 
     /**
      * Maximum number of lines on the screen. (should be calculated later, for now
      * hardcoded.)
      */
-    private static int mMaxListCount = 6;
+    private static int mMaxListCount = 6; // This value is changed by setListTheme()
 
     /**
      * Private members connected to Spinner ListFilter.
@@ -244,6 +244,7 @@ public class ShoppingView
     
     public boolean mUpperCaseFont;
     public int mTextColor;
+    public float mTextSize;
     public int mMarkTextColor;
     
     public int mMarkType;
@@ -1179,20 +1180,30 @@ public class ShoppingView
     		mTypeface = null;
     		mUpperCaseFont = false;
     		mTextColor = 0xffffffff; // white
+    		mTextSize = 23;
     		mMarkTextColor = 0xffcccccc; // white gray
     		mMarkType = mMarkCheckbox;
-
+    		
+    		mLinearLayoutBackground.setPadding(0, 0, 0, 0);
     		mLinearLayoutBackground.setBackground(null);
+    		
+    		mMaxListCount = 6;
+    		mBottomPadding = 50;
     		
     		break;
     	case 2:
     		mTypeface = mTypefaceHandwriting;
     		mUpperCaseFont = false;
     		mTextColor = 0xff000000; // black
+    		mTextSize = 20;
     		mMarkTextColor = 0xff008800; // dark green
     		mMarkType = mMarkStrikethrough;
     		
+    		// 9-patch drawable defines padding by itself
     		mLinearLayoutBackground.setBackground(R.drawable.shoppinglist01d);
+    		
+    		mMaxListCount = 5;
+    		mBottomPadding = 85;
     		
     		break;
     	case 3:
@@ -1201,11 +1212,16 @@ public class ShoppingView
     		// Digital only supports upper case fonts.
     		mUpperCaseFont = true;
     		mTextColor = 0xffff0000; // red
+    		mTextSize = 26;
     		mMarkTextColor = 0xff00ff00; // light green
     		mMarkType = mMarkAddtext;
     		
+    		mLinearLayoutBackground.setPadding(0, 0, 0, 0);
     		mLinearLayoutBackground.setBackground(R.drawable.theme_android);
             
+    		mMaxListCount = 7;
+    		mBottomPadding = 50;
+    		
     		break;
     	}
     	
@@ -1752,6 +1768,9 @@ public class ShoppingView
             
             // Set font
             t.setTypeface(mTypeface);
+            
+            // Set size
+            t.setTextSize(mTextSize);
             
             // Check for upper case:
             if (mUpperCaseFont) {

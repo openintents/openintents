@@ -23,6 +23,7 @@ import org.openintents.provider.News;
 import org.openintents.provider.Tag;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -88,7 +89,7 @@ public class InitView extends Activity {
 		t.setWidth(1);
 		
 		t = createTextView();
-		t.setText("Here you can create default entries for locations, "
+		t.setText("Here you can add default entries for locations, "
 				+ "newsfeed, and copy an MP3 song to the SD card.");
 		
 		Button button = createButton();
@@ -342,6 +343,7 @@ public class InitView extends Activity {
        // Load the sample file and put them into our data directory:
        boolean success = false;
        
+       
        try {
 			   InputStream is=getResources().openRawResource(R.raw.ack_syn);
 			   FileOutputStream fos=new FileOutputStream(new File("/sdcard/ack_syn.mp3"));
@@ -362,6 +364,14 @@ public class InitView extends Activity {
  //          throw new RuntimeException(e);
        }
 
+       if (success) {
+    	   // Start Media scanner:
+    	   Intent intent = new Intent(Intent.MAIN_ACTION);
+			ComponentName component = new ComponentName("com.google.android.development",
+					"com.google.android.development.MediaScannerActivity");
+			intent.setComponent(component);
+			startActivity(intent);
+       }
        return success;
 	}
 
