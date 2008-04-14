@@ -44,6 +44,7 @@
 		<provider android:name=".tags.TagsProvider"
 			android:authorities="org.openintents.tags" />
 		<provider android:name=".shopping.ShoppingProvider"
+			android:icon="@drawable/shoppinglist_application001a"
 			android:authorities="org.openintents.shopping" />
 
 		

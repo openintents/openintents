@@ -72,6 +72,13 @@ public class MediaBrowserActivity extends Activity {
 	 */
 	private static final int STATE_GET_CONTENT = 2;
 	
+	/**
+	 * STATE_VIEW performs the view activity.
+	 * If an item is clicked, the VIEW activity is invoked
+	 * (which starts the MediaPlayer).
+	 */
+	private static final int STATE_VIEW = 3;
+	
 	/** Current state of Activity. */
 	private int mState;
 	
@@ -137,6 +144,11 @@ public class MediaBrowserActivity extends Activity {
         final String action = intent.getAction();
         if (action.equals(Intent.MAIN_ACTION)) {
             mState = STATE_MAIN;
+        } else if (action.equals(Intent.VIEW_ACTION)) {
+            mState = STATE_VIEW;
+            
+            setMediaTypeFromIntent(intent);
+            
         } else if (action.equals(Intent.PICK_ACTION)) {
             mState = STATE_PICK;
             
@@ -200,7 +212,7 @@ public class MediaBrowserActivity extends Activity {
 		super.onResume();
 		
 		// Modify our overall title depending on the mode we are running in.
-        if (mState == STATE_MAIN) {
+        if (mState == STATE_MAIN || mState == STATE_VIEW) {
             setTitle(getText(R.string.media_browser));
         } else if (mState == STATE_PICK) {
             setTitle(getText(R.string.pick_media_file));
@@ -307,7 +319,7 @@ public class MediaBrowserActivity extends Activity {
 					public void onItemClick(AdapterView parent, 
 							View v, int pos, long id) {
 						Cursor c = (Cursor) parent.obtainItem(pos);
-						if (mState == STATE_PICK) {
+						if ((mState == STATE_PICK) || (mState == STATE_GET_CONTENT)) {
 							pickItem(mExternalUri,
 									c);
 						} else {
