@@ -37,7 +37,7 @@
 	
 	<string name="init_databases">Init default values</string>
 	<string name="init_add_locations">Add default locations</string>
-	<string name="init_add_news_feeds">Add default new feeds</string>	
+	<string name="init_add_news_feeds">Add default news feeds</string>	
 	<string name="init_add_all_values">Add all default values</string>
 	<string name="init_done">Values added</string>
 	<string name="init_view_locations">View Locations</string>

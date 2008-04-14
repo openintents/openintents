@@ -112,6 +112,9 @@ public class OpenIntentsView extends Activity {
 		// fill the list manually:
 		fillGrid(mGridMain, OpenIntents.MAIN_CATEGORY);
 		fillGrid(mGridSettings, OpenIntents.SETTINGS_CATEGORY);
+		
+		// Optionally call preferences:
+		OpenIntents.suggestInitDefaultValues(this);
 	}
 
 	void fillGrid(TableLayout table, String category) {

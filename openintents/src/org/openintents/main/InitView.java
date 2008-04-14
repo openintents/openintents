@@ -24,11 +24,13 @@ import org.openintents.provider.Tag;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -51,6 +53,8 @@ public class InitView extends Activity {
 	private Location mLocation;
 	private Tag mTag;
 	private LinearLayout mMainView;
+	private LinearLayout mRow;
+	private CheckBox mCheckbox;
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -67,6 +71,26 @@ public class InitView extends Activity {
 		mTag = new Tag(this);
 		News.mContentResolver = this.getContentResolver();
 
+		//////////////////////////////////////////////////////////////////////
+		//strange way to create a separator, i know ;) (zero)
+		TextView t = createTextView();
+		t.setHeight(20);
+		t.setWidth(1);
+		
+		t = createTextView();
+		t.setText("Welcome! To help you get started, we have "
+				+ "prepared a couple of default values.");
+		
+		//////////////////////////////////////////////////////////////////////
+		//strange way to create a separator, i know ;) (zero)
+		t = createTextView();
+		t.setHeight(20);
+		t.setWidth(1);
+		
+		t = createTextView();
+		t.setText("Here you can create default entries for locations, "
+				+ "newsfeed, and copy an MP3 song to the SD card.");
+		
 		Button button = createButton();
 		button.setText(R.string.init_add_all_values);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +104,9 @@ public class InitView extends Activity {
 
 		});
 		
-		button = createButton();
+		createRow();
+		
+		button = createButtonInRow();
 		button.setText(R.string.init_add_locations);
 		button.setOnClickListener(new View.OnClickListener() {
 
@@ -90,25 +116,50 @@ public class InitView extends Activity {
 			}
 
 		});
-
-		//strange way to create a separator, i know ;) (zero)
-		TextView t=new TextView(this);
-		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				android.widget.LinearLayout.LayoutParams.FILL_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
-		t.setLayoutParams(params);
-		t.setHeight(40);
-		t.setWidth(1);
-		mMainView.addView(t);
-		button = createButton();
-		button.setText(R.string.init_view_locations);
-		//button.setText(R.string.init_add_news_feeds);
+		
+		button = createButtonInRow();
+		button.setText(R.string.init_add_news_feeds);
 		button.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View view) {
-				//addNewsFeeds();
-				//Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
-				
+				addNewsFeeds();
+				Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+			}
+
+		});
+		
+		button = createButtonInRow();
+		button.setText("Add default mp3");
+		button.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View view) {
+				if (addMusicFiles()) {
+					Toast.makeText(InitView.this, R.string.init_done, Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(InitView.this, "Problem adding file to SD card. Is SD card installed?", 
+							Toast.LENGTH_LONG).show();
+				}
+			}
+
+		});
+
+		//////////////////////////////////////////////////////////////////////
+		//strange way to create a separator, i know ;) (zero)
+		t = createTextView();
+		t.setHeight(20);
+		t.setWidth(1);
+		
+		t = createTextView();
+		t.setText("Use the following buttons to check "
+				+ "whether the entries have been inserted:");
+		
+		createRow();
+		
+		button = createButtonInRow();
+		button.setText(R.string.init_view_locations);
+		button.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View view) {
 				Intent intent = new Intent();
 				intent.setClassName("org.openintents","org.openintents.locations.LocationsView");
 				intent.addCategory(Intent.DEFAULT_CATEGORY);
@@ -119,7 +170,7 @@ public class InitView extends Activity {
 		});
 
 
-		button = createButton();
+		button = createButtonInRow();
 		button.setText(R.string.init_view_news);
 		//button.setText(R.string.init_add_news_feeds);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +188,63 @@ public class InitView extends Activity {
 			}
 
 		});
+		
+		button = createButtonInRow();
+		button.setText("View SD card content");
+		//button.setText(R.string.init_add_news_feeds);
+		button.setOnClickListener(new View.OnClickListener() {
 
+			public void onClick(View view) {
+				Intent intent = new Intent(Intent.VIEW_ACTION,
+						android.provider.MediaStore.Audio.Media
+				        .EXTERNAL_CONTENT_URI);
+				//intent.setClassName("org.openintents","org.openintents.applications.newsreader.Newsreader");
+				//intent.setAction("org.openintents.action.SHOW_NEWSFEEDS");
+				//intent.addCategory(Intent.DEFAULT_CATEGORY);
+				startActivity(intent);
+			}
+
+		});
+		
+		mCheckbox = new CheckBox(this);
+		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				android.widget.LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		mCheckbox.setLayoutParams(params);
+		mMainView.addView(mCheckbox);
+		mCheckbox.setText("Don't show again.");
+		
+
+		t = createTextView();
+		t.setText("You can always access this activity from the "
+				+"Settings tab of OpenIntents.");
+		
+	}
+	
+	@Override    
+    protected void onResume() {
+    	super.onResume();
+    	
+    	SharedPreferences prefs = getSharedPreferences(
+    			org.openintents.OpenIntents.PREFERENCES_INIT_DEFAULT_VALUES, 0);
+    	boolean b = prefs.getBoolean(
+    			org.openintents.OpenIntents.PREFERENCES_DONT_SHOW_INIT_DEFAULT_VALUES, 
+    			false);
+    	mCheckbox.setChecked(b);
+    	
+	}
+	
+	@Override    
+    protected void
+    onPause() {
+    	super.onPause();
+    	SharedPreferences.Editor editor = getSharedPreferences(
+    			org.openintents.OpenIntents.PREFERENCES_INIT_DEFAULT_VALUES, 0)
+    			.edit();
+    	editor.putBoolean(
+    			org.openintents.OpenIntents.PREFERENCES_DONT_SHOW_INIT_DEFAULT_VALUES,
+    			mCheckbox.isChecked());
+    	editor.commit();
 	}
 
 	private Button createButton() {
@@ -149,7 +256,42 @@ public class InitView extends Activity {
 		mMainView.addView(button);
 		return button;
 	}
+	
+	private TextView createTextView() {
 
+		//strange way to create a separator, i know ;) (zero)
+		TextView t=new TextView(this);
+		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				android.widget.LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		t.setLayoutParams(params);
+		mMainView.addView(t);
+		return t;
+	}
+	
+	private void createRow() {
+		mRow = new LinearLayout(this);
+		mRow.setGravity(Gravity.LEFT);
+		mRow.setOrientation(LinearLayout.HORIZONTAL);
+		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.FILL_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		mRow.setLayoutParams(params);
+		mMainView.addView(mRow);
+	}
+	
+	private Button createButtonInRow() {
+		Button button = new Button(this);
+		android.widget.LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+				0,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		params.weight = 1;
+		button.setLayoutParams(params);
+		mRow.addView(button);
+		return button;
+	}
+	
+	
 	protected void addLocations() {
 
 		Object[] locations = new Object[] {//				
@@ -190,10 +332,15 @@ public class InitView extends Activity {
 				
 	}
 
-	public void addMusicFiles() {
+	/** 
+	 * 
+	 * @return true if successful.
+	 */
+	public boolean addMusicFiles() {
 
 		int result=0;
        // Load the sample file and put them into our data directory:
+       boolean success = false;
        
        try {
 			   InputStream is=getResources().openRawResource(R.raw.ack_syn);
@@ -205,6 +352,7 @@ public class InitView extends Activity {
                fos.close();
                is.close();
 			   result++;
+			   success = true;
        } catch (IOException e) {
 		   Log.e("","not copy");
 		   Log.e("","reasong >"+e.toString());
@@ -214,7 +362,7 @@ public class InitView extends Activity {
  //          throw new RuntimeException(e);
        }
 
-
+       return success;
 	}
 
 }

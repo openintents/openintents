@@ -18,8 +18,10 @@ package org.openintents;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager.NameNotFoundException;
 
 /**
@@ -130,4 +132,23 @@ public abstract class OpenIntents {
 
 		}
 	}
+	
+	/**
+	 * calls the InitDefaultValues activity (unless unchecked).
+	 * 
+	 */
+	public static final void suggestInitDefaultValues(final Activity activity) {
+		SharedPreferences prefs = activity.getSharedPreferences(PREFERENCES_INIT_DEFAULT_VALUES, 0);
+    	boolean b = prefs.getBoolean(PREFERENCES_DONT_SHOW_INIT_DEFAULT_VALUES, false);
+    	if (b == false) {
+    		// User does not want to see intro screen again.
+    		Intent intent = new Intent();
+    		intent.setClassName("org.openintents","org.openintents.main.InitView");
+    		activity.startActivity(intent);
+			
+    	}
+    	
+	}
+	public static final String PREFERENCES_INIT_DEFAULT_VALUES = "InitView";
+	public static final String PREFERENCES_DONT_SHOW_INIT_DEFAULT_VALUES = "dontShowInitDefaultValues";
 }
