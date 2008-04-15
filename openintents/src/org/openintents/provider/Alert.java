@@ -24,6 +24,7 @@ import android.util.Log;
 import android.provider.BaseColumns;
 import android.content.UriMatcher;
 import android.location.LocationManager;
+import android.app.AlarmManager;
 import android.content.Intent;
 import android.content.Context;
 import android.os.Bundle;
@@ -77,6 +78,8 @@ public class Alert{
 
 	
 	protected static  LocationManager locationManager;
+
+	protected static  AlarmManager alarmManager;
 
 	protected static Context context;
 
@@ -198,9 +201,18 @@ public class Alert{
 		public static final Uri CONTENT_URI=
 				Uri.parse("content://org.openintents.alert/datetime");
 		
-		public static final String DATE=Generic.CONDITION1;
+		/**
+		 *The point in time for the alarm, in format time:epoch1234456
+		 *number is time in millisecond sice 1970, like you get from System.getCurrentMillis
+		 */
+		public static final String TIME=Generic.CONDITION1;
+		
+		/**
+		 * the alert reocurs every n milliseconds, or not at all if set to 0.
+		 * reouccreny should be at least 1 minute.
+		 */
+		public static final String REOCCURENCE=Generic.CONDITION2;
 
-		public static final String TIME=Generic.CONDITION2;
 		public static final String TYPE=Generic.TYPE;
 
 		public static final String RULE=Generic.RULE;
@@ -224,8 +236,8 @@ public class Alert{
 		public static final String[] PROJECTION={
 			_ID,
 			_COUNT,
-			DATE,
 			TIME,
+			REOCCURENCE,
 			TYPE,
 			RULE,
 			NATURE,
@@ -351,18 +363,45 @@ public class Alert{
 		context=c;
 		locationManager=(LocationManager)context.getSystemService(Context.LOCATION_SERVICE);
 		mContentResolver=context.getContentResolver();
+		alarmManager=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
 	}
 
 
 	public static void registerDateTimeAlert(ContentValues cv){
 		
-		long myDate=cv.getAsLong(DateTime.DATE);
-		long myTime=cv.getAsLong(DateTime.TIME);
+		String myDate=cv.getAsString(DateTime.TIME);
+		String s[]=myDate.split(",");
+		Log.d(_TAG,"registerDateTimeAlert: s[0]>>"+s[0]+"<< s[1]>>+"+s[1]+"<<");
+		long time=0;
+		long myReoccurence=cv.getAsLong(DateTime.REOCCURENCE);
+		Intent i =new Intent();
+		Bundle b=new Bundle();
+		b.putString(DateTime.TIME,myDate);
+		b.putLong(DateTime.REOCCURENCE,myReoccurence);
+		i.setAction(org.openintents.OpenIntents.DATE_TIME_ALERT_DISPATCH);
+		try
+		{
+			time=Long.parseLong(s[1]);
+		}
+		catch (NumberFormatException nfe)
+		{
+			Log.e(_TAG,"registerDateTimeAlert: Date/Time couldn't be parsed, check time format of >"+myDate+"<");
+			return;
+		}
+		
 
-
-
-
+		if (myReoccurence==0)
+		{
+			alarmManager.set(AlarmManager.RTC,time,i);
+		}else{
+			alarmManager.setRepeating(AlarmManager.RTC,time,myReoccurence,i);
+		}
 	}
+
+
+
+
+	
 
 	static {
 		
