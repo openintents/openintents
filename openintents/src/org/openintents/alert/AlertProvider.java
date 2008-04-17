@@ -41,6 +41,7 @@ public class AlertProvider extends DatabaseContentProvider {
 	private static final int DATABASE_VERSION=2;
 
 	private static final String TABLE_ALERTS="alerts";
+	private static final String TABLE_SERVICES="services";
 
 	private static final String TAG="org.openintents.alert.AlertProvider";
 
@@ -55,8 +56,12 @@ public class AlertProvider extends DatabaseContentProvider {
 	private static final int ALERT_DATE_TIME=107;
 	private static final int ALERT_DATE_TIME_ID=108;
 
+	private static final int MANAGED_SERVICE=200;
+	private static final int MANAGED_SERVICE_ID=201;
+
 	private static final UriMatcher URL_MATCHER;
 	private static final HashMap<String,String> GENERIC_PROJECTION_MAP;
+	private static final HashMap<String,String> SERVICE_PROJECTION_MAP;
 
 
 	private static class AlertDBHelper extends SQLiteOpenHelper{
@@ -79,6 +84,14 @@ public class AlertProvider extends DatabaseContentProvider {
 				Alert.Generic.ACTIVE+" INTEGER,"+
 				Alert.Generic.ACTIVATE_ON_BOOT+" INTEGER"+
 				");");
+
+			db.execSQL("CREATE TABLE "+TABLE_SERVICES+" ("+
+				Alert.ManagedService._ID +" INTEGER PRIMARY KEY,"+
+				Alert.ManagedService._COUNT+" INTEGER,"+
+				Alert.ManagedService.SERVICE_CLASS+" STRING,"+
+				Alert.ManagedService.TIME_INTERVALL+" STRING,"+
+				Alert.ManagedService.DO_ROAMING+" STRING"+
+				");");
 		}
 
 		@Override
@@ -86,7 +99,16 @@ public class AlertProvider extends DatabaseContentProvider {
 
 			Log.w(TAG,"upgrade not supported");
 			//Log.v(TAG, "");
-			
+			if (newVersion>1)
+			{
+				db.execSQL("CREATE TABLE "+TABLE_SERVICES+" ("+
+					Alert.ManagedService._ID +" INTEGER PRIMARY KEY,"+
+					Alert.ManagedService._COUNT+" INTEGER,"+
+					Alert.ManagedService.SERVICE_CLASS+" STRING,"+
+					Alert.ManagedService.TIME_INTERVALL+" STRING,"+
+					Alert.ManagedService.DO_ROAMING+" STRING"+
+					");");
+			}
 			
 		}
 					
@@ -143,15 +165,17 @@ public class AlertProvider extends DatabaseContentProvider {
 		int match=URL_MATCHER.match(uri);
 		Log.d(this.TAG,"INSERT,URI MATCHER RETURNED >>"+match+"<<");
 		long rowID=0;
-		//if nature is not given, it's user.
-		if (!values.containsKey(Alert.Generic.NATURE))
-		{
-			values.put(Alert.Generic.NATURE,Alert.NATURE_USER);
-		}
+
 
 		switch (match){
 			case ALERT_GENERIC:
-				
+
+				//if nature is not given, it's user.
+				if (!values.containsKey(Alert.Generic.NATURE))
+				{
+					values.put(Alert.Generic.NATURE,Alert.NATURE_USER);
+				}			
+
 				rowID=getDatabase().insert(TABLE_ALERTS, "", values);			
 				if (rowID > 0) {
 					Uri nUri = ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,rowID);
@@ -162,6 +186,13 @@ public class AlertProvider extends DatabaseContentProvider {
 
 				
 			case ALERT_LOCATION:
+
+				//if nature is not given, it's user.
+				if (!values.containsKey(Alert.Generic.NATURE))
+				{
+					values.put(Alert.Generic.NATURE,Alert.NATURE_USER);
+				}			
+
 
 				if (!values.containsKey(Alert.Location.TYPE)){
 					values.put(Alert.Location.TYPE,Alert.TYPE_LOCATION);
@@ -176,6 +207,14 @@ public class AlertProvider extends DatabaseContentProvider {
 				}
 				throw new SQLException("Failed to insert row into " + uri);		
 
+			case MANAGED_SERVICE:
+				rowID=mDB.insert(TABLE_SERVICES,"",values);
+				if (rowID > 0) {
+					Uri nUri = ContentUris.withAppendedId(Alert.ManagedService.CONTENT_URI,rowID);
+					getContext().getContentResolver().notifyChange(nUri, null);
+					return nUri;
+				}
+				throw new SQLException("Failed to insert row into " + uri);		
 
 		}
 
@@ -198,6 +237,8 @@ public class AlertProvider extends DatabaseContentProvider {
 		switch (match){
 
 			case ALERT_GENERIC:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
 
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
@@ -206,6 +247,9 @@ public class AlertProvider extends DatabaseContentProvider {
 				}
 				break;
 			case ALERT_LOCATION:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
 				} else {
@@ -213,6 +257,9 @@ public class AlertProvider extends DatabaseContentProvider {
 				}
 				break;
 			case ALERT_COMBINED:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
 				} else {
@@ -220,6 +267,9 @@ public class AlertProvider extends DatabaseContentProvider {
 				}
 				break;
 			case ALERT_GENERIC_ID:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
 				qb.appendWhere("_id=" + uri.getLastPathSegment());
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
@@ -228,6 +278,9 @@ public class AlertProvider extends DatabaseContentProvider {
 				}        	
 				break;
 			case ALERT_LOCATION_ID:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
 				qb.appendWhere("_id=" + uri.getLastPathSegment());
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
@@ -236,6 +289,10 @@ public class AlertProvider extends DatabaseContentProvider {
 				}        	
 				break;
 			case ALERT_COMBINED_ID:
+
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
 				qb.appendWhere("_id=" + uri.getLastPathSegment());
 				if (TextUtils.isEmpty(sortOrder)) {
 					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
@@ -243,13 +300,32 @@ public class AlertProvider extends DatabaseContentProvider {
 					orderBy = sortOrder;
 				}        	
 				break;
+			case MANAGED_SERVICE:
+				qb.setTables(TABLE_SERVICES);
+				qb.setProjectionMap(SERVICE_PROJECTION_MAP);
+
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			case MANAGED_SERVICE_ID:
+				qb.setTables(TABLE_SERVICES);
+				qb.setProjectionMap(SERVICE_PROJECTION_MAP);
+
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			
 			default:
 				throw new IllegalArgumentException("Unknown URL " + uri);
 		}
 
-		qb.setTables(TABLE_ALERTS);
-							
-		qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
         Cursor c = qb.query(getDatabase(), projection, selection, selectionArgs, null,null, orderBy);
         Log.v(TAG, "query result for " + selection + " " + (selectionArgs != null  && selectionArgs.length > 0 ? selectionArgs[0]: selectionArgs) + ": " + c.count());
         c.setNotificationUri(getContext().getContentResolver(), uri);
@@ -292,6 +368,25 @@ public class AlertProvider extends DatabaseContentProvider {
 			case ALERT_LOCATION_ID:
 				alertID=uri.getPathSegments().get(1);
 				result= getDatabase()
+						.update(TABLE_ALERTS,
+								values,
+								"_id="+alertID
+								+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+								+ ')' : ""),
+								selectionArgs);
+					
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+
+			case MANAGED_SERVICE:
+				alertID=uri.getPathSegments().get(1);
+				result= mDB.update(TABLE_SERVICES, values, selection,selectionArgs);
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+			
+			case MANAGED_SERVICE_ID:
+				alertID=uri.getPathSegments().get(1);
+				result= mDB
 						.update(TABLE_ALERTS,
 								values,
 								"_id="+alertID
@@ -350,6 +445,23 @@ public class AlertProvider extends DatabaseContentProvider {
 					selectionArgs);
 				break;
 
+			case MANAGED_SERVICE:
+				res =  mDB.delete(
+					TABLE_SERVICES,
+					selection,
+					selectionArgs
+					);		
+				break;
+			case MANAGED_SERVICE_ID:
+				alertID=uri.getPathSegments().get(1);
+				res =  mDB.delete(
+					TABLE_SERVICES,
+					"_id="+alertID
+					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+					+ ')' : ""),
+					selectionArgs);
+				break;
+
 		}
 		getContext().getContentResolver().notifyChange(uri, null);
 		return res;
@@ -369,6 +481,10 @@ public class AlertProvider extends DatabaseContentProvider {
 		URL_MATCHER.addURI("org.openintents.alert","location/#",ALERT_LOCATION_ID);
 		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
 		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
+		URL_MATCHER.addURI("org.openintents.alert","managedservice",MANAGED_SERVICE);
+		URL_MATCHER.addURI("org.openintents.alert","managedservice/#",MANAGED_SERVICE_ID);
+
+		
 		URL_MATCHER.addURI("org.openintents.alert","",6000);
 		URL_MATCHER.addURI("org.openintents.alert","/",6001);
 		
@@ -386,6 +502,15 @@ public class AlertProvider extends DatabaseContentProvider {
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_CATEGORY,Alert.Generic.INTENT_CATEGORY);
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_URI,Alert.Generic.INTENT_URI);
 		GENERIC_PROJECTION_MAP.put(Alert.Generic.INTENT_MIME_TYPE,Alert.Generic.INTENT_MIME_TYPE);
+
+
+		SERVICE_PROJECTION_MAP=new HashMap<String,String>();
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService._ID,Alert.ManagedService._ID);
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService._COUNT,Alert.ManagedService._COUNT);
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.SERVICE_CLASS,Alert.ManagedService.SERVICE_CLASS);
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.TIME_INTERVALL,Alert.ManagedService.TIME_INTERVALL);
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.DO_ROAMING,Alert.ManagedService.DO_ROAMING);
+
 
 	}
 
