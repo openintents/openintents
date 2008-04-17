@@ -28,6 +28,7 @@ import android.app.AlarmManager;
 import android.content.Intent;
 import android.content.Context;
 import android.os.Bundle;
+import android.database.Cursor;
 
 import java.util.*;
 
@@ -250,9 +251,173 @@ public class Alert{
 		};			
 
 	};
+	
+	public static final class  ManagedService implements BaseColumns{
+
+		public static final Uri CONTENT_URI=
+			Uri.parse("content://org.openintents.alert/pollingservices");
+		public static final String SERVICE_CLASS="service_class";
+
+		public static final String TIME_INTERVALL="time_intervall";
+
+		public static final String DO_ROAMING="do_roaming";
+
+		public static final String[] PROJECTION={
+			_ID,
+			_COUNT,
+			SERVICE_CLASS,
+			TIME_INTERVALL,
+			DO_ROAMING
+		};
+	};
 
 
 
+	public static void registerManagedService(String serviceClassName,long timeIntervall,boolean useWhileRoaming){
+		long minTime=0;
+		ContentValues cv=new ContentValues();
+
+		Cursor c=mContentResolver.query(
+			ManagedService.CONTENT_URI,
+			ManagedService.PROJECTION,
+			ManagedService.SERVICE_CLASS+" like '"+serviceClassName+"'",
+			null,
+			null
+			);
+
+		if (c!=null && c.count()>0)
+		{//update
+			c.first();
+			c.updateString(c.getColumnIndex(ManagedService.TIME_INTERVALL),Long.toString(timeIntervall));
+			c.updateString(c.getColumnIndex(ManagedService.DO_ROAMING),Boolean.toString(useWhileRoaming));
+			c.commitUpdates();
+			c.close();
+		}else{
+			//insert
+
+		}
+		//get all entry && compute new minimum time intervall
+		//TODO: make this in sql.
+		c=mContentResolver.query(
+			ManagedService.CONTENT_URI,
+			ManagedService.PROJECTION,
+			null,
+			null,
+			null
+			);
+
+		c.first();
+		minTime=c.getLong(c.getColumnIndex(ManagedService.TIME_INTERVALL));
+		while (!c.isAfterLast())
+		{
+			long l=c.getLong(c.getColumnIndex(ManagedService.TIME_INTERVALL));
+
+			if (l<minTime)
+			{
+				minTime=l;
+			}
+		
+			c.next();
+		}
+		c.close();
+
+		c=mContentResolver.query(
+			DateTime.CONTENT_URI,
+			DateTime.PROJECTION,
+			DateTime.INTENT+" like '"+org.openintents.OpenIntents.SERVICE_MANAGER+"'",
+			null,
+			null
+			);
+		String now="time:epoch,"+System.currentTimeMillis();
+		cv.put(DateTime.TIME,now);
+		cv.put(DateTime.REOCCURENCE,minTime);
+		cv.put(DateTime.INTENT,org.openintents.OpenIntents.SERVICE_MANAGER);
+		cv.put(DateTime.NATURE,Alert.NATURE_SYSTEM);
+		cv.put(DateTime.ACTIVATE_ON_BOOT,true);
+		cv.put(DateTime.ACTIVE,true);
+		cv.put(DateTime.TYPE,Alert.TYPE_DATE_TIME);
+		if (c!=null && c.count()>0)
+		{
+			
+			update(DateTime.CONTENT_URI,cv,
+				DateTime.INTENT+" like '"+org.openintents.OpenIntents.SERVICE_MANAGER+"'",
+				null
+				);
+
+			alarmManager.cancel(new Intent().setAction(org.openintents.OpenIntents.SERVICE_MANAGER));
+			registerDateTimeAlert(cv);
+			//registerDateTimeAlert
+		}else{
+
+			insert(DateTime.CONTENT_URI,cv);
+
+		}		
+
+	}
+
+
+	public static void unregisterManagedService(String serviceClassName){
+		ContentValues cv = new ContentValues();
+		long minTime=0;
+
+		delete(ManagedService.CONTENT_URI,
+			ManagedService.SERVICE_CLASS+" like '"+serviceClassName+"'",
+			null);
+
+		//get all entry && compute new minimum time intervall
+		//TODO: make this in sql.
+		Cursor c=mContentResolver.query(
+			ManagedService.CONTENT_URI,
+			ManagedService.PROJECTION,
+			null,
+			null,
+			null
+			);
+
+		c.first();
+		minTime=c.getLong(c.getColumnIndex(ManagedService.TIME_INTERVALL));
+		while (!c.isAfterLast())
+		{
+			long l=c.getLong(c.getColumnIndex(ManagedService.TIME_INTERVALL));
+
+			if (l<minTime)
+			{
+				minTime=l;
+			}
+		
+			c.next();
+		}
+		c.close();
+
+		c=mContentResolver.query(
+			DateTime.CONTENT_URI,
+			DateTime.PROJECTION,
+			DateTime.INTENT+" like '"+org.openintents.OpenIntents.SERVICE_MANAGER+"'",
+			null,
+			null
+			);
+		String now="time:epoch,"+System.currentTimeMillis();
+		cv.put(DateTime.TIME,now);
+		cv.put(DateTime.REOCCURENCE,minTime);
+		cv.put(DateTime.INTENT,org.openintents.OpenIntents.SERVICE_MANAGER);
+		cv.put(DateTime.NATURE,Alert.NATURE_SYSTEM);
+		cv.put(DateTime.ACTIVATE_ON_BOOT,true);
+		cv.put(DateTime.ACTIVE,true);
+		cv.put(DateTime.TYPE,Alert.TYPE_DATE_TIME);
+		if (c!=null && c.count()>0)
+		{
+			
+			update(DateTime.CONTENT_URI,cv,
+				DateTime.INTENT+" like '"+org.openintents.OpenIntents.SERVICE_MANAGER+"'",
+				null
+				);
+
+			alarmManager.cancel(new Intent().setAction(org.openintents.OpenIntents.SERVICE_MANAGER));
+			registerDateTimeAlert(cv);
+			//registerDateTimeAlert
+		}
+
+	}
 
 
 
@@ -400,7 +565,36 @@ public class Alert{
 
 
 
+	public static void unregisterDateTimeAlert(ContentValues cv){
+/*
+		String myDate=cv.getAsString(DateTime.TIME);
+		String s[]=myDate.split(",");
+		Log.d(_TAG,"registerDateTimeAlert: s[0]>>"+s[0]+"<< s[1]>>+"+s[1]+"<<");
+		long time=0;
+		long myReoccurence=cv.getAsLong(DateTime.REOCCURENCE);
 
+		Cursor c=mContentResolver.query(
+			DateTime.CONTENT_URI,
+			DateTime.PROJECTION_MAP,
+			DateTime.TIME+" like '"+myDate+"'",
+			null
+			null		
+		);
+	
+		if (c==null||c.count()==0)
+		{//alert has been deleted
+
+		}else if (c!=null&&c.count()==1)
+		{//exactly out alert
+			alarmManager.
+
+		}
+		//TODO: check if there are now other alerts at this time.
+*/
+
+		//atm it would oly be possible to delete all dateTimeDispatch alerts
+		//and register the need a new. so we just leave them be, means some emtpy lookups, but hey! :/
+	}
 	
 
 	static {
