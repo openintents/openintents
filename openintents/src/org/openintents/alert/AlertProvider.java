@@ -90,7 +90,9 @@ public class AlertProvider extends DatabaseContentProvider {
 				Alert.ManagedService._COUNT+" INTEGER,"+
 				Alert.ManagedService.SERVICE_CLASS+" STRING,"+
 				Alert.ManagedService.TIME_INTERVALL+" STRING,"+
-				Alert.ManagedService.DO_ROAMING+" STRING"+
+				Alert.ManagedService.DO_ROAMING+" STRING,"+
+				Alert.ManagedService.LAST_TIME+" STRING"+
+
 				");");
 		}
 
@@ -106,7 +108,9 @@ public class AlertProvider extends DatabaseContentProvider {
 					Alert.ManagedService._COUNT+" INTEGER,"+
 					Alert.ManagedService.SERVICE_CLASS+" STRING,"+
 					Alert.ManagedService.TIME_INTERVALL+" STRING,"+
-					Alert.ManagedService.DO_ROAMING+" STRING"+
+					Alert.ManagedService.DO_ROAMING+" STRING,"+
+					Alert.ManagedService.LAST_TIME+" STRING"+
+					
 					");");
 			}
 			
@@ -208,7 +212,7 @@ public class AlertProvider extends DatabaseContentProvider {
 				throw new SQLException("Failed to insert row into " + uri);		
 
 			case MANAGED_SERVICE:
-				rowID=mDB.insert(TABLE_SERVICES,"",values);
+				rowID=getDatabase().insert(TABLE_SERVICES,"",values);
 				if (rowID > 0) {
 					Uri nUri = ContentUris.withAppendedId(Alert.ManagedService.CONTENT_URI,rowID);
 					getContext().getContentResolver().notifyChange(nUri, null);
@@ -380,13 +384,13 @@ public class AlertProvider extends DatabaseContentProvider {
 
 			case MANAGED_SERVICE:
 				alertID=uri.getPathSegments().get(1);
-				result= mDB.update(TABLE_SERVICES, values, selection,selectionArgs);
+				result= getDatabase().update(TABLE_SERVICES, values, selection,selectionArgs);
 				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 			
 			case MANAGED_SERVICE_ID:
 				alertID=uri.getPathSegments().get(1);
-				result= mDB
+				result= getDatabase()
 						.update(TABLE_ALERTS,
 								values,
 								"_id="+alertID
@@ -446,7 +450,7 @@ public class AlertProvider extends DatabaseContentProvider {
 				break;
 
 			case MANAGED_SERVICE:
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_SERVICES,
 					selection,
 					selectionArgs
@@ -454,7 +458,7 @@ public class AlertProvider extends DatabaseContentProvider {
 				break;
 			case MANAGED_SERVICE_ID:
 				alertID=uri.getPathSegments().get(1);
-				res =  mDB.delete(
+				res =  getDatabase().delete(
 					TABLE_SERVICES,
 					"_id="+alertID
 					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
