@@ -326,9 +326,27 @@ public class InitView extends Activity {
 		// add open intents forum updates
 		cv = new ContentValues();
 		cv.put(News.RSSFeeds.CHANNEL_LINK,
-				"http://www.openintents.org/en/taxonomy/term/3/0/feed");
+				"http://www.openintents.org/en/rss.xml"
+				//"http://www.openintents.org/en/taxonomy/term/3/0/feed"
+				);
 		cv.put(News.RSSFeeds.CHANNEL_NAME,
 		"OpenIntents News");		
+		News.insert(News.RSSFeeds.CONTENT_URI, cv);
+		
+		// add Vegetarian recipes feed
+		cv = new ContentValues();
+		cv.put(News.RSSFeeds.CHANNEL_LINK,
+				"http://feeds.feedburner.com/SimplyRecipesVegetarian");
+		cv.put(News.RSSFeeds.CHANNEL_NAME,
+		"Vegetarian recipes");		
+		News.insert(News.RSSFeeds.CONTENT_URI, cv);
+		
+		// add guitar lessons feed
+		cv = new ContentValues();
+		cv.put(News.RSSFeeds.CHANNEL_LINK,
+				"http://www.ultimate-guitar.com/modules/rss/lessons.xml.php");
+		cv.put(News.RSSFeeds.CHANNEL_NAME,
+		"Guitar lessons");		
 		News.insert(News.RSSFeeds.CONTENT_URI, cv);
 				
 	}

@@ -30,7 +30,6 @@ package org.openintents.samples.openglsensors;
  * and tab "Libraries". There "Add External JARs..." and select 
  * lib/openintents-lib-n.n.n.jar. 
  */
-
 import org.openintents.OpenIntents;
 import org.openintents.hardware.Sensors;
 import org.openintents.provider.Hardware;
@@ -39,6 +38,8 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.SubMenu;
@@ -81,6 +82,11 @@ public class OpenGLSensors extends Activity {
 	private static final int MENU_SHAPE_PYRAMID = Menu.FIRST + 202;
 	private static final int MENU_SHAPE_MAGNET = Menu.FIRST + 203;
 	
+	/** 
+	 * Constant for message handling.
+	 */
+	private static final int UPDATE_ANIMATION = 1;
+	
 	
 	private boolean mConnected;
 	
@@ -93,7 +99,16 @@ public class OpenGLSensors extends Activity {
 	public boolean mUseCompass;
 	public boolean mUseOrientation;
 	
-	private GLSurfaceView mGLSurfaceView;
+
+	private int mUpdateInterval;
+	
+	/**
+	 * Whether we currently automatically update the animation.
+	 */
+	boolean mUpdatingAnimation;
+	
+	//private GLSurfaceView mGLSurfaceView;
+	private GLSurfaceViewNoThread mGLSurfaceView;
 	
 	/**
 	 * Called when activity starts.
@@ -112,8 +127,13 @@ public class OpenGLSensors extends Activity {
         super.onCreate(icicle);   
         
         OpenIntents.requiresOpenIntents(this);
-        
-        mGLSurfaceView = new GLSurfaceView( getApplication() , this);
+
+        // Default timer interval
+   		mUpdateInterval = 100;
+   		mUpdatingAnimation = false;
+
+        //mGLSurfaceView = new GLSurfaceView( getApplication() , this);
+        mGLSurfaceView = new GLSurfaceViewNoThread( getApplication() , this);
         
         mGLSurfaceView.stopUseSensors();
         
@@ -127,6 +147,7 @@ public class OpenGLSensors extends Activity {
         // TODO: Sensors.isSimulatorConnected() should be implemented 
         // and used here.
         mConnected = false;
+        
         
         findSupportedSensors();
         
@@ -150,9 +171,15 @@ public class OpenGLSensors extends Activity {
         // after holdAnimation(), but a quickfix allows
         // us to call this method once at start
         // without consequences.
-        mGLSurfaceView.resumeAnimation();
+        //mGLSurfaceView.resumeAnimation();
+       	
+       	// We do this through handlers:
+       	mGLSurfaceView.init();
+        kickAnimation();
     	
     }
+
+    
     
 	/** 
 	 * Called when another activity is started.
@@ -166,7 +193,12 @@ public class OpenGLSensors extends Activity {
 		
 		// Hold the animation to save CPU consumtion
 		// when in background.
-		mGLSurfaceView.holdAnimation();
+		//mGLSurfaceView.holdAnimation();
+    	
+    	// stop the animation:
+    	mUpdatingAnimation = false;
+    	
+    	mGLSurfaceView.stopAnimation();
 	}
 
 	@Override
@@ -226,6 +258,12 @@ public class OpenGLSensors extends Activity {
 		super.onPrepareOptionsMenu(menu);
 				
         menu.setItemChecked(MENU_CONNECT_SIMULATOR, mConnected);
+        if (mConnected) {
+        	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Disconnect");
+        }else {
+        	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Connect");	
+        }
+        
 
         menu.setItemShown(MENU_SENSOR_NOT_AVAILABLE, 
         		!(mAccelerometerSupported
@@ -285,6 +323,7 @@ public class OpenGLSensors extends Activity {
 			enableAllSensors();
 			
 			mConnected = ! mConnected;
+			kickAnimation();
 			return true;
 			
 		case MENU_SENSOR_ACCELEROMETER:
@@ -292,6 +331,7 @@ public class OpenGLSensors extends Activity {
 			useSensorsReset();
 			mUseAccelerometer = true;
 			enableAllSensors();
+			kickAnimation();
 			return true;
 
 		case MENU_SENSOR_COMPASS:
@@ -299,6 +339,7 @@ public class OpenGLSensors extends Activity {
 			useSensorsReset();
 			mUseCompass = true;
 			enableAllSensors();
+			kickAnimation();
 			return true;
 
 		case MENU_SENSOR_ACCELEROMETER_COMPASS:
@@ -307,6 +348,7 @@ public class OpenGLSensors extends Activity {
 			mUseAccelerometer = true;
 			mUseCompass = true;
 			enableAllSensors();
+			kickAnimation();
 			return true;
 
 		case MENU_SENSOR_ORIENTATION:
@@ -314,6 +356,7 @@ public class OpenGLSensors extends Activity {
 			useSensorsReset();
 			mUseOrientation = true;
 			enableAllSensors();
+			kickAnimation();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -385,6 +428,27 @@ public class OpenGLSensors extends Activity {
 	    // use the best sensor available:
 	    useSensorsReset();
 	    
+	    // Quick fix for error message
+	    // that only appears with Orientation sensor:
+	    //    E/Sensors ( 2547): Couldn't open /dev/input/event3, error = -1
+	    
+	    
+	    if (mAccelerometerSupported) {
+	    	mUseAccelerometer = true;
+	    	return;
+	    }
+	    
+	    if (mCompassSupported) {
+	    	mUseCompass = true;
+	    	return;
+	    }
+	    
+	    if (mOrientationSupported) {
+	    	mUseOrientation = true;
+	    	return;
+	    }
+	    
+	    /*
 	    if (mOrientationSupported) {
 	    	// the best is orientation
 	    	mUseOrientation = true;
@@ -394,6 +458,7 @@ public class OpenGLSensors extends Activity {
 	    	if (mAccelerometerSupported) mUseAccelerometer = true;
 	       	if (mCompassSupported) mUseCompass = true;
 	    }
+	    */
     }
     
     /** 
@@ -424,6 +489,44 @@ public class OpenGLSensors extends Activity {
     	mUseCompass = false;
     	mUseOrientation = false;
     }
+    
+    
+    /**
+     * Start the animation if it has not started yet:
+     */
+	void kickAnimation() {
+		if (!mUpdatingAnimation) {
+        	mUpdatingAnimation = true;
+        	// Autoupdate
+        	mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_ANIMATION), mUpdateInterval);
+        }
+	}
+	
+	// Handle the process of automatically updating enabled sensors:
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == UPDATE_ANIMATION) {
+            	// Let us go through all sensors,
+            	// and only read out the data if it is time for
+            	// that particular sensor.
+            	
+            	//long current = SystemClock.uptimeMillis();
+                				
+            	boolean change = mGLSurfaceView.doAnimation();
+            	
+            	// Nothing changes: no need to waste CPU:
+            	if (! change) mUpdatingAnimation = false;
+            	
+            	
+                if (mUpdatingAnimation) {
+                	// Autoupdate
+                	sendMessageDelayed(obtainMessage(UPDATE_ANIMATION), mUpdateInterval);
+                }
+            }
+        }
+    };
+
 }
 
 

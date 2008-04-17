@@ -37,7 +37,7 @@ import org.openintents.news.*;
 			 
 public class NewsreaderService1 extends Service implements Runnable{
 
-	private boolean alive=false;
+	private static  boolean alive=false;
 	
 	public static final String PREFS_NAME="newsdaemon_prefs";
 	public static final String DO_ROAMING="doRoaming";
@@ -47,6 +47,8 @@ public class NewsreaderService1 extends Service implements Runnable{
 //	private NotificationManager mNM;
 	
 	private static final String _TAG="NewsReaderService";
+
+	private Thread t;
 
 	private static long now;
 	
@@ -100,8 +102,10 @@ public class NewsreaderService1 extends Service implements Runnable{
 		Log.d(_TAG,"startup: \nuseWhileRoaming>>"+useWhileRoaming+"<<\n startOnSystemBoot>>+"+startOnSystemBoot+"<< \n debugMode>>"+debugMode+"<<");
 
         this.alive=true;
-        Thread thr = new Thread(null, this, "NewsReaderService1");
-        thr.start();
+        //Thread thr = new Thread(null, this, "NewsReaderService1");
+        t= new Thread(null, this, "NewsReaderService1");
+        //thr.start();
+		t.start();
         
     }
 	
@@ -113,7 +117,11 @@ public class NewsreaderService1 extends Service implements Runnable{
 	@Override
 	public void onDestroy(){
 		Toast.makeText(this, "NewsReaderService stopping..", Toast.LENGTH_SHORT).show();
-		this.alive=false;
+		alive=false;
+		Log.d(_TAG,"Trying t.stop()");
+		Log.d(_TAG,"NOTinLoop:alive?"+alive);
+		//t.join();
+		t.stop();
 	//	mNM.notifyWithText(1, "thread stopping", NotificationManager.LENGTH_SHORT,null);
 	}
 	
@@ -125,9 +133,11 @@ public class NewsreaderService1 extends Service implements Runnable{
 			mATMCursor=News.mContentResolver.query(News.AtomFeeds.CONTENT_URI,ATOM_PROJECTION,null,null,null);
 			
 
+			Log.d(_TAG,"beforeLoop:alive?"+alive);
 
 		while (this.alive){
 			
+			Log.d(_TAG,"inLoop:alive?"+alive);
 			try{
 				Thread.sleep(60*1000);
 				//wake up cursor, see if data changed.
