@@ -16,9 +16,11 @@
 
 ---------------------------------------------------------
 release: 0.1.7
-date: 2008-04-14
+date: 2008-04-19
 
-- no changes
+- Implement AB repetition
+- Mark open strings (issue #67)
+- Reduce to one line of chords (issue #75)
 
 ---------------------------------------------------------
 release: 0.1.6

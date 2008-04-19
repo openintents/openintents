@@ -22,13 +22,21 @@ To obtain the current release, visit
   
 ---------------------------------------------------------
 release: 0.1.7
-date: 2008-04-14
+date: 2008-04-19
 
-- added default locations and news feeds )(issue #91)
+new features:
+- added new activity to insert default locations,
+  news feeds, and an mp3 at program start (issue #91, 97, 125)
 - added copyright notice for maps and shopping list font
   (issue #106)
+  
+changes:
+
+bug fixes:
 - shopping list - add alert shows tag (issue #115)
-- alert fixes (issues #92, 113, 114)
+- alert bug fixes (issues #92, 94, 113, 114, 120, 121)
+- shopping list bug fixes (issues #107, 115, 119)
+- Magnolia tagging bug fixes (issues #101, 102) 
 
 ---------------------------------------------------------
 release: 0.1.6

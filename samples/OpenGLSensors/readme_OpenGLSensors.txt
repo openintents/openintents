@@ -21,9 +21,9 @@ The bar magnet displayed will always point along the magnetic field.
 
 ---------------------------------------------------------
 release: 0.1.7
-date: 2008-04-14
+date: 2008-04-19
 
-- no changes
+- Fixed timer problem (issue #28)
 
 ---------------------------------------------------------
 release: 0.1.6

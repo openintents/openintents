@@ -28,9 +28,10 @@ It transmits the simulated sensor data to an Android emulator.
   
 ---------------------------------------------------------
 release: 0.1.7
-date: 2008-04-14
+date: 2008-04-19
 
 - Added Dale Thatcher's Wii mote patch.
+  http://blog.dalethatcher.com/2008/04/howto-get-wii-mote-data-into-android.html
 
 ---------------------------------------------------------
 release: 0.1.6
