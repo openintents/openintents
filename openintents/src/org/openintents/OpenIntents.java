@@ -86,6 +86,10 @@ public abstract class OpenIntents {
 	 */
 	public static final String ADD_LOCATION_ALERT_ACTION = "org.openintents.action.ADD_LOCATION_ALERT";
 
+	public static final String LOCATION_ALERT_DISPATCH="org.openintents.action.LOCATION_ALERT_DISPATCH";
+	public static final String DATE_TIME_ALERT_DISPATCH="org.openintents.action.DATE_TIME_ALERT_DISPATCH";
+	public static final String SERVICE_MANAGER="org.openintents.action.SERVICE_MANAGER";
+
 	// -----------------------------------------------
 	// Categories
 	// -----------------------------------------------
@@ -103,9 +107,16 @@ public abstract class OpenIntents {
 	 */
 	public static final String SETTINGS_CATEGORY = "org.openintents.category.SETTINGS";
 
-	/** identifier for adding generic alerts action. */
+	/** identifier for adding generic alerts action. 
+	*@deprecated will be removed by 0.2.1 latest
+	*/
 	public static final String ADD_GENERIC_ALERT = "org.openintents.action.ADD_GENERIC_ALERT";
+	/** identifier for adding generic alerts action. 
+	*@deprecated will be removed by 0.2.1 latest
+	*/
 	public static final String EDIT_GENERIC_ALERT = "org.openintents.action.EDIT_GENERIC_ALERT";
+
+
 
 	/**
 	 * shows an English message if open intents is not installed, finishes the activity after user clicked "ok". 
