@@ -16,30 +16,32 @@
 
 package org.openintents.main;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.openintents.R;
-import org.openintents.news.NewsProvider;
 import org.openintents.provider.Location;
 import org.openintents.provider.News;
 import org.openintents.provider.Tag;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
-import android.content.Intent;
-import android.util.Log;
-
-import java.io.*;
 
 
 /**
@@ -184,7 +186,12 @@ public class InitView extends Activity {
 				//intent.setClassName("org.openintents","org.openintents.applications.newsreader.Newsreader");
 				intent.setAction("org.openintents.action.SHOW_NEWSFEEDS");
 				intent.addCategory(Intent.DEFAULT_CATEGORY);
-				startActivity(intent);
+				try {
+					startActivity(intent);
+				} catch (ActivityNotFoundException e) {
+					Toast.makeText(InitView.this, "No Newsreader installed.", 
+							Toast.LENGTH_LONG).show();
+				}
 
 			}
 
