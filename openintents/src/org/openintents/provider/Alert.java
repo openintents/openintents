@@ -278,7 +278,7 @@ public class Alert{
 
 	public static void registerManagedService(String serviceClassName,long timeIntervall,boolean useWhileRoaming){
 		long minTime=0;
-		ContentValues cv=new ContentValues();
+		ContentValues cv=null;
 
 		Cursor c=mContentResolver.query(
 			ManagedService.CONTENT_URI,
@@ -297,6 +297,11 @@ public class Alert{
 			c.close();
 		}else{
 			//insert
+			cv=new ContentValues();
+			cv.put(ManagedService.SERVICE_CLASS,serviceClassName);
+			cv.put(ManagedService.TIME_INTERVALL,timeIntervall);
+			cv.put(ManagedService.DO_ROAMING,useWhileRoaming);
+			insert(ManagedService.CONTENT_URI,cv);
 
 		}
 		//get all entry && compute new minimum time intervall
@@ -332,6 +337,7 @@ public class Alert{
 			null
 			);
 		String now="time:epoch,"+System.currentTimeMillis();
+		cv=new ContentValues();
 		cv.put(DateTime.TIME,now);
 		cv.put(DateTime.REOCCURENCE,minTime);
 		cv.put(DateTime.INTENT,org.openintents.OpenIntents.SERVICE_MANAGER);
