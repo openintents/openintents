@@ -262,12 +262,15 @@ public class Alert{
 
 		public static final String DO_ROAMING="do_roaming";
 
+		public static final String LAST_TIME="last_time";
+
 		public static final String[] PROJECTION={
 			_ID,
 			_COUNT,
 			SERVICE_CLASS,
 			TIME_INTERVALL,
-			DO_ROAMING
+			DO_ROAMING,
+			LAST_TIME
 		};
 	};
 
