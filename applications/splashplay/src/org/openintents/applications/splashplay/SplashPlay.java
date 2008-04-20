@@ -49,9 +49,8 @@ public class SplashPlay extends Activity implements
 	private static final int MENU_BLUETOOTH = Menu.FIRST;
 	private static final int MENU_ABOUT = Menu.FIRST + 1;
 	
-	
-	private static final String mAppFileFolder = 
-		"/data/data/org.openintents.applications.splashplay/files/";
+	private String mDemoFileName = "OpenIntents01f.mid";
+	private String mDemoFilePath = "";
 	
 	/** Message for message handler. */
 	private static final int UPDATE_POSITION = 1;
@@ -353,14 +352,17 @@ public class SplashPlay extends Activity implements
     	
     	
     	try {
-    		InputStream is = getAssets().open("OpenIntents01f.mid");
-    		FileOutputStream fos = openFileOutput("OpenIntents01f.mid", MODE_WORLD_READABLE);
+    		InputStream is = getAssets().open(mDemoFileName);
+    		FileOutputStream fos = openFileOutput(mDemoFileName, MODE_WORLD_READABLE);
     		int size = is.available();
     		byte[] buffer = new byte[size];
     		is.read(buffer);
     		fos.write(buffer, 0, size);
     		fos.close();
     		is.close();
+    		
+    		// Finally we remember the file path:
+    		mDemoFilePath = getFileStreamPath(mDemoFileName).getAbsolutePath();
     	} catch (IOException e) {
     		// Should never happen
             throw new RuntimeException(e);
@@ -386,7 +388,8 @@ public class SplashPlay extends Activity implements
 	        mp.setAudioStreamType(2); 
 	        
 	        try { 
-	        	mp.setDataSource(mAppFileFolder + "OpenIntents01f.mid");
+	        	mp.setDataSource(mDemoFilePath);
+	        	// mp.setDataSource(mAppFileFolder + "OpenIntents01f.mid");
 	        	//mp.setDataSource("/sdcard/OpenIntentsBluesAudio01f.mp3"); 
 	        	//mp.setDataSource("/system/media/audio/ringtones/ringer.mp3"); 
 				//mp.setDataSource("/sdcard/OpenIntentsBluesAudio01f.mid"); 
