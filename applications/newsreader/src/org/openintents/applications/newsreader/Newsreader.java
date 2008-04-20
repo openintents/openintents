@@ -29,9 +29,11 @@ import android.widget.ListAdapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.AdapterView.ContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
@@ -135,6 +137,20 @@ public class Newsreader extends Activity {
 			
 			}
 		);
+		// Add context menu
+		mChannelsView.setOnPopulateContextMenuListener(
+			new View.OnPopulateContextMenuListener() {
+
+				public void onPopulateContextMenu(ContextMenu contextmenu,
+						View view, Object obj) {
+					contextmenu.add(0, MENU_EDIT,
+							"Edit Feed", R.drawable.feedsettings);
+					contextmenu.add(0, MENU_DELETE,
+							"Delete Feed", R.drawable.delfeed);
+				}
+
+			});
+
 		updateChannelsList();
 
 		
@@ -205,28 +221,43 @@ public class Newsreader extends Activity {
 		if (iID==MENU_CREATE)
 		{
 			menuCreate();
-		}else if (iID==MENU_EDIT)
+		}/*else if (iID==MENU_EDIT)
 		{
 			menuEdit();
 		}else if (iID==MENU_DELETE)
 		{
 			menuDelete();
-		}else if (iID==MENU_SERVICESETTINGS)
+		}*/else if (iID==MENU_SERVICESETTINGS)
 		{			
 			menuServiceSettings();
 		}
 
 		return super.onOptionsItemSelected(item);
 	}
-	
+
+	@Override
+	public boolean onContextItemSelected(Item item) {
+		super.onContextItemSelected(item);
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
+		switch (item.getId()) {
+		case MENU_EDIT:
+			menuEdit(menuInfo.position);
+			break;
+		case MENU_DELETE:
+			menuDelete(menuInfo.position);
+			break;
+		}
+
+		return true;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		boolean result= super.onCreateOptionsMenu(menu);
 		
 		menu.add(0,MENU_CREATE,"Add Feed",R.drawable.addfeed);
-		menu.add(0,MENU_EDIT,"Edit Feed",R.drawable.feedsettings);
-		menu.add(0,MENU_DELETE,"Delete Feed",R.drawable.delfeed);
+		//menu.add(0,MENU_EDIT,"Edit Feed",R.drawable.feedsettings);
+		//menu.add(0,MENU_DELETE,"Delete Feed",R.drawable.delfeed);
 		menu.add(0,MENU_SERVICESETTINGS, "ServiceSettings",R.drawable.settings001a);
 		
 		return result;
@@ -245,7 +276,8 @@ public class Newsreader extends Activity {
 		startActivity(i);
 	}
 
-	private void menuEdit() {
+	private void menuEdit(int position) {
+		mChannelsView.setSelection(position);
 		Object o=mChannelsView.getSelectedItem();
 		int res;
 		if (o!=null)
@@ -277,7 +309,8 @@ public class Newsreader extends Activity {
 	}
 	
 
-	private void menuDelete() {
+	private void menuDelete(int position) {
+		mChannelsView.setSelection(position);
 		// TODO Auto-generated method stub
 		Object o=mChannelsView.getSelectedItem();
 		int res;

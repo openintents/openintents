@@ -12,10 +12,13 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AdapterView.ContextMenuInfo;
 
 public class AFeedMessages extends ListActivity {
 
@@ -135,6 +138,46 @@ public class AFeedMessages extends ListActivity {
 		this.setTitle(feedName);
 		// Use our own list adapter
         setListAdapter(new MessageListAdapter(mCursor,this,feedType));
+        
+
+		// Add context menu
+		getListView().setOnPopulateContextMenuListener(
+			new View.OnPopulateContextMenuListener() {
+
+				public void onPopulateContextMenu(ContextMenu contextmenu,
+						View view, Object obj) {
+					contextmenu.add(0, AFeedMessages.SUBMENU_CHANNELITEM_FOLLOW,
+							"Open in Browser");
+					contextmenu.add(0, AFeedMessages.SUBMENU_CHANNELITEM_DELETE,
+							"Delete",R.drawable.shoppinglistdelete001b);
+					
+					//contextmenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
+					contextmenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia",R.drawable.tagging_magnolia_application001a);
+					
+					/*
+					android.view.SubMenu submenu;
+					submenu=contextmenu.addSubMenu(0,AFeedMessages.MENU_TAGS, "Tags",R.drawable.tagging_application001a);
+					//submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
+					submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia",R.drawable.tagging_magnolia_application001a);
+					 */
+				}
+
+			});
+		
+		/*
+		// Add click action
+		getListView().setOnItemClickListener(
+			new AdapterView.OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView parent, View v, int position,
+						long id) {
+					// Clicking an item starts editing it
+					followItemLink(position);
+				}
+				
+			});
+		*/
 	}
 
 
@@ -147,14 +190,14 @@ public class AFeedMessages extends ListActivity {
 
 		
 		boolean result= super.onCreateOptionsMenu(menu);
-		
+		/*
 		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_FOLLOW,"Open in Browser");
 		menu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_DELETE,"Delete",R.drawable.shoppinglistdelete001b);
 		
 		submenu=menu.addSubMenu(0,AFeedMessages.MENU_TAGS, "Tags",R.drawable.tagging_application001a);
 		//submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_TAG,"Tag Local",R.drawable.tagging_application001a);
 		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_MAGNOLIA,"Magnolia",R.drawable.tagging_magnolia_application001a);
-
+*/
 /*
 		submenu=menu.addSubMenu(0,AFeedMessages.MENU_CHANNELITEM, "Message");
 		submenu.add(0,AFeedMessages.SUBMENU_CHANNELITEM_FOLLOW,"Open in Browser");
@@ -190,7 +233,7 @@ public class AFeedMessages extends ListActivity {
 	public boolean onOptionsItemSelected(Item item){
 		Log.v(_TAG,"onOptionsItemSelected: item.id>>"+item.getId()+"<<");
 		int iID=item.getId();
-		if (iID==SUBMENU_CHANNELITEM_FOLLOW)
+		/*if (iID==SUBMENU_CHANNELITEM_FOLLOW)
 		{
 			followItemLink();
 		}else if (iID==SUBMENU_CHANNELITEM_DELETE)
@@ -202,14 +245,35 @@ public class AFeedMessages extends ListActivity {
 		}else if (iID==SUBMENU_CHANNELITEM_MAGNOLIA)
 		{			
 			menuMagnolia();
-		}
+		}*/
 
 		return super.onOptionsItemSelected(item);
 	}
 
+	@Override
+	public boolean onContextItemSelected(Item item) {
+		super.onContextItemSelected(item);
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
+		switch (item.getId()) {
+		case SUBMENU_CHANNELITEM_FOLLOW:
+			followItemLink(menuInfo.position);
+			break;
+		case SUBMENU_CHANNELITEM_DELETE:
+			menuDelete(menuInfo.position);
+			break;
+		case SUBMENU_CHANNELITEM_TAG:
+			menuTag(menuInfo.position);
+			break;
+		case SUBMENU_CHANNELITEM_MAGNOLIA:
+			menuMagnolia(menuInfo.position);
+			break;
+		}
 
+		return true;
+	}
 
-	private void followItemLink(){
+	private void followItemLink(int position) {
+		setSelection(position);
 		int pos=getSelectedItemPosition();
 		Log.d(_TAG,"followItemLink: pos>>"+pos+"<<");
 		if (pos>-1)
@@ -231,7 +295,8 @@ public class AFeedMessages extends ListActivity {
 		}
 	}
 
-	private void menuDelete(){
+	private void menuDelete(int position) {
+		setSelection(position);
 		boolean res=false;
 		int pos=getSelectedItemPosition();
 		if (pos>-1)
@@ -243,12 +308,14 @@ public class AFeedMessages extends ListActivity {
 		}
 	}
 
-	private void menuTag(){}
+	private void menuTag(int position) {
+	}
 
-	private void menuMagnolia(){
+	private void menuMagnolia(int pos) {
+		//setSelection(position);
 
 		Bundle b=new Bundle();
-		int pos=getSelectedItemPosition();
+		//int pos=getSelectedItemPosition();
 		if (pos>-1)
 		{
 			
