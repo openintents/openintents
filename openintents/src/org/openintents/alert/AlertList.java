@@ -39,9 +39,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.AdapterView.ContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.View;
 import android.view.Menu.Item;
@@ -51,6 +53,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Displays a list of alerts.
+ * 
+ */
 public class AlertList extends ListActivity{
 
 	private static final String _TAG="AlertList";
@@ -67,7 +73,12 @@ public class AlertList extends ListActivity{
 	private static final int MENU_DEBUG_START=201;
 	private static final int MENU_DEBUG_STOP=202;
 
-
+	/**
+     *  Definition of the requestCode for the subactivity. 
+     */
+    static final private int SUBACTIVITY_GENERIC_CREATE = 1;
+    static final private int SUBACTIVITY_GENERIC_EDIT = 2;
+    
 	@Override
 	protected void onFreeze(Bundle icicle){
 		stopManagingCursor(mCursor);
@@ -141,6 +152,32 @@ public class AlertList extends ListActivity{
 		this.setListAdapter(sca);
 
 
+		// Add context menu
+
+		getListView().setOnPopulateContextMenuListener(
+			new View.OnPopulateContextMenuListener() {
+
+				public void onPopulateContextMenu(ContextMenu contextmenu,
+						View view, Object obj) {
+					contextmenu.add(0, MENU_GENERIC_EDIT,
+							"Edit Generic", R.drawable.alert001a);
+					contextmenu.add(0, MENU_DELETE,
+							"Delete Generic", R.drawable.alert_delete001a);
+				}
+
+			});
+		
+		getListView().setOnItemClickListener(
+			new AdapterView.OnItemClickListener() {
+
+				@Override
+				public void onItemClick(AdapterView parent, View v, int position,
+						long id) {
+					// Clicking an item starts editing it
+					menuEdit(position);
+				}
+				
+			});
 
 
 	}
@@ -153,13 +190,13 @@ public class AlertList extends ListActivity{
 		if (iID==MENU_GENERIC_CREATE)
 		{
 			menuCreate();
-		}else if (iID==MENU_GENERIC_EDIT)
+		}/*else if (iID==MENU_GENERIC_EDIT)
 		{
 			menuEdit();
 		}else if (iID==MENU_DELETE)
 		{
 			menuDelete();
-		}else if (iID==MENU_DEBUG_START)
+		}*/else if (iID==MENU_DEBUG_START)
 		{
 			menuDebugStart();
 		}else if (iID==MENU_DEBUG_STOP)
@@ -171,14 +208,32 @@ public class AlertList extends ListActivity{
 		return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	public boolean onContextItemSelected(Item item) {
+		super.onContextItemSelected(item);
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
+		switch (item.getId()) {
+		case MENU_GENERIC_EDIT:
+			menuEdit(menuInfo.position);
+			break;
+		case MENU_DELETE:
+			menuDelete(menuInfo.position);
+			break;
+		}
+
+		return true;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu){
 		boolean result= super.onCreateOptionsMenu(menu);
 		
 		menu.add(0,MENU_GENERIC_CREATE,"Add Generic",R.drawable.alert_add001a);
+		/*
+		// Moved to context menu:
 		menu.add(0,MENU_GENERIC_EDIT,"Edit Generic",R.drawable.alert001a);
 		menu.add(0,MENU_DELETE,"Delete Generic",R.drawable.alert_delete001a);
+		*/
 //		menu.add(0,MENU_DEBUG,"Debug Locations",R.drawable.settings001a);
 		//menu.add(0,MENU_SERVICESETTINGS, "ServiceSettings",R.drawable.settings001a);
 				
@@ -201,30 +256,32 @@ public class AlertList extends ListActivity{
 		intent.setAction(org.openintents.OpenIntents.ADD_GENERIC_ALERT);
 		intent.addCategory(Intent.DEFAULT_CATEGORY);
 		//intent.putExtras(b);
-		startActivity(intent);		
+		startSubActivity(intent, SUBACTIVITY_GENERIC_CREATE);		
 	}
-	private void menuEdit(){
+	private void menuEdit(int position){
 		long i=0;
 		Intent intent = new Intent();
 		intent.setAction(org.openintents.OpenIntents.EDIT_GENERIC_ALERT);
 		intent.addCategory(Intent.DEFAULT_CATEGORY);
 		//intent.putExtras(b);
-		i=getSelectedItemId();
+		//i=getSelectedItemId();
+		i = ((Cursor) getListAdapter().getItem(position)).getLong(0); //0..id
 		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,i);
 		intent.putExtra(Alert.EXTRA_URI, u.toString());
-		startActivity(intent);		
+		startSubActivity(intent, SUBACTIVITY_GENERIC_EDIT);		
 	
 	}
-	private void menuDelete(){
+	private void menuDelete(int position){
 		long i=0;
 		int res=0;
 		
-		i=getSelectedItemId();
+		//i=getSelectedItemId();
+
+		i = ((Cursor) getListAdapter().getItem(position)).getLong(0); //0..id
+		
 		Uri u=ContentUris.withAppendedId(Alert.Generic.CONTENT_URI,i);
+		Log.i(_TAG, "Delete item: pos = " + position + ", id = " + i);
 		res=Alert.delete(u,null,null);
-
-
-	
 	}
 
 	private void menuDebugStart(){
@@ -239,5 +296,29 @@ public class AlertList extends ListActivity{
 					DebugGPSService.class)
 			);
 	}
+
+	/**
+	 * @see android.app.Activity#onActivityResult(int, int, java.lang.String, android.os.Bundle)
+	 */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			String data, Bundle extras) {
+		
+		switch (requestCode) {
+		case SUBACTIVITY_GENERIC_CREATE:
+			// Update list
+			mCursor.requery();
+			break;
+		case SUBACTIVITY_GENERIC_EDIT:
+			mCursor.requery();
+			break;
+		default:
+			Log.i(_TAG, "AlertList: Unknown activity result: " + requestCode);
+		}
+
+		super.onActivityResult(requestCode, resultCode, data, extras);
+	}
+	
+	
 
 }/*eoc*/
