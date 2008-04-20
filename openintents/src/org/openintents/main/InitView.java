@@ -364,7 +364,13 @@ public class InitView extends Activity {
        
        try {
 			   InputStream is=getResources().openRawResource(R.raw.ack_syn);
-			   FileOutputStream fos=new FileOutputStream(new File("/sdcard/ack_syn.mp3"));
+			   // Obtain path to SD card from environment:
+			   String sdcardpath = android.os.Environment
+			   		.getExternalStorageDirectory()
+			   		.getAbsolutePath();
+			   String filename = sdcardpath + "/" + "ack_syn.mp3";
+			   
+			   FileOutputStream fos=new FileOutputStream(new File(filename));
                int size = is.available();
                byte[] buffer = new byte[size];
                is.read(buffer);
