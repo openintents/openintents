@@ -123,7 +123,7 @@ public class PresentPicker extends Activity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.main);
+        setContentView(R.layout.presentpicker_main);
                 
        OpenIntents.requiresOpenIntents(this);
         
@@ -465,7 +465,7 @@ public class PresentPicker extends Activity {
     private void showAboutBox() {
     	mAboutDialog = new Dialog(PresentPicker.this);
 		
-    	mAboutDialog.setContentView(R.layout.about);
+    	mAboutDialog.setContentView(R.layout.presentpicker_about);
 		
     	mAboutDialog.setTitle(getString(R.string.about_title));
 				

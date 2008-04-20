@@ -16,9 +16,9 @@
  -->
  
 <resources>
-    <string name="app_name">OpenGL Sensors</string>
+    <string name="openglsensors_app_name">OpenGL Sensors</string>
     
-    <string name="settings">Settings...</string>
+    <string name="openglsensors_settings">Settings...</string>
     <string name="connect_simulator">Connect</string>
     <string name="sensor">Sensor</string>
     <string name="sensor_type">Sensor type</string>

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.applications.splashplay">
     <application android:icon="@drawable/splashplay_application001a">
-        <activity android:name=".SplashPlay" android:label="@string/app_name">
+        <activity android:name=".SplashPlay" android:label="@string/splashplay_app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

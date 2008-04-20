@@ -123,7 +123,7 @@ public class SplashPlay extends Activity implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        setContentView(R.layout.main);
+        setContentView(R.layout.splashplay_main);
         
         // Not needed yet, but will be required for tagging functionality.
         // OpenIntents.requiresOpenIntents(this);
@@ -861,7 +861,7 @@ public class SplashPlay extends Activity implements
                        "Connection to SplashPod",          // the details to display in the notification
                        contentIntent,               // the contentIntent (see above)
                        R.drawable.splashplay_application001a,  // the app icon
-                       getText(R.string.app_name), // the name of the app
+                       getText(R.string.splashplay_app_name), // the name of the app
                        appIntent));                 // the appIntent (see above)
     }
 

@@ -4,7 +4,7 @@
     <application android:icon="@drawable/news_application001a" >
 
         <activity android:name=".Newsreader" 
-					android:label="Newsreader"
+					android:label="@string/newsreader_app_name"
 		>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
 
-       <activity android:name=".AFeedSettings" android:label="@string/app_name">
+       <activity android:name=".AFeedSettings" android:label="@string/newsreader_app_name">
                     <!-- This filter says that we can create a new note inside
                  of a directory of notes. -->
             <intent-filter>
@@ -29,11 +29,11 @@
                 -->
             </intent-filter>
         </activity>        
-        <activity android:name=".ServiceSettings" android:label="@string/app_name">
+        <activity android:name=".ServiceSettings" android:label="@string/newsreader_app_name">
         </activity> 
-		<activity android:name=".AFeedMessages" android:label="@string/app_name">
+		<activity android:name=".AFeedMessages" android:label="@string/newsreader_app_name">
         </activity> 
-		<activity android:name=".FeedMessages" android:label="@string/app_name">
+		<activity android:name=".FeedMessages" android:label="@string/newsreader_app_name">
         </activity> 
 				<!-- news services -->
     </application>

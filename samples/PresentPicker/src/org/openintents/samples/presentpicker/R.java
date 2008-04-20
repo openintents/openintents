@@ -34,18 +34,16 @@ public final class R {
         public static final int girl_3=0x7f020014;
         public static final int girl_5=0x7f020015;
         public static final int ice_cream=0x7f020016;
-        public static final int icon=0x7f020017;
-        public static final int icon_openintents_sample=0x7f020018;
-        public static final int joystick=0x7f020019;
-        public static final int picture=0x7f02001a;
-        public static final int pipe=0x7f02001b;
-        public static final int present001b=0x7f02001c;
-        public static final int present_application001a=0x7f02001d;
-        public static final int roller=0x7f02001e;
-        public static final int shoppinglist001b=0x7f02001f;
-        public static final int shoppinglistadditem002a=0x7f020020;
-        public static final int skate=0x7f020021;
-        public static final int toy=0x7f020022;
+        public static final int joystick=0x7f020017;
+        public static final int picture=0x7f020018;
+        public static final int pipe=0x7f020019;
+        public static final int present001b=0x7f02001a;
+        public static final int present_application001a=0x7f02001b;
+        public static final int roller=0x7f02001c;
+        public static final int shoppinglist001b=0x7f02001d;
+        public static final int shoppinglistadditem002a=0x7f02001e;
+        public static final int skate=0x7f02001f;
+        public static final int toy=0x7f020020;
     }
     public static final class id {
         public static final int age=0x7f050009;
@@ -68,28 +66,30 @@ public final class R {
         public static final int tabhost=0x7f050002;
     }
     public static final class layout {
-        public static final int about=0x7f030000;
-        public static final int main=0x7f030001;
+        public static final int presentpicker_about=0x7f030000;
+        public static final int presentpicker_main=0x7f030001;
     }
     public static final class string {
-        public static final int about=0x7f04000f;
-        public static final int about_content=0x7f040011;
-        public static final int about_icons=0x7f040013;
-        public static final int about_title=0x7f040010;
+        /**  Strings that are also in core 
+         */
+        public static final int about=0x7f040015;
+        public static final int about_content=0x7f040010;
+        public static final int about_icons=0x7f040012;
+        public static final int about_title=0x7f04000f;
         public static final int add_item_to=0x7f040004;
         public static final int age=0x7f040008;
-        public static final int app_name=0x7f040000;
         public static final int autocomplete_hint=0x7f04000e;
-        public static final int copyright=0x7f040012;
+        public static final int copyright=0x7f040011;
         public static final int female=0x7f040007;
-        public static final int item_added_to_shopping=0x7f040015;
-        public static final int item_not_added_to_shopping=0x7f040016;
+        public static final int item_added_to_shopping=0x7f040013;
+        public static final int item_not_added_to_shopping=0x7f040014;
         public static final int male=0x7f040006;
         public static final int name=0x7f040002;
         public static final int occasion=0x7f04000a;
-        public static final int ok=0x7f040014;
+        public static final int ok=0x7f040016;
         public static final int personality=0x7f040009;
         public static final int pick_contact=0x7f040001;
+        public static final int presentpicker_app_name=0x7f040000;
         public static final int recommendation=0x7f040003;
         public static final int search=0x7f04000b;
         public static final int selection=0x7f04000c;

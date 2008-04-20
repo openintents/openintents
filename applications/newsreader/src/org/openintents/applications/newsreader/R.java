@@ -17,11 +17,10 @@ public final class R {
         public static final int icon=0x7f020003;
         public static final int newfeed=0x7f020004;
         public static final int news_application001a=0x7f020005;
-        public static final int openintents_icon=0x7f020006;
-        public static final int settings001a=0x7f020007;
-        public static final int shoppinglistdelete001b=0x7f020008;
-        public static final int tagging_application001a=0x7f020009;
-        public static final int tagging_magnolia_application001a=0x7f02000a;
+        public static final int settings001a=0x7f020006;
+        public static final int shoppinglistdelete001b=0x7f020007;
+        public static final int tagging_application001a=0x7f020008;
+        public static final int tagging_magnolia_application001a=0x7f020009;
     }
     public static final class id {
         public static final int CancelFeedSettings=0x7f050008;
@@ -46,14 +45,13 @@ public final class R {
     }
     public static final class layout {
         public static final int afeedsettings=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int newsmessage_items=0x7f030002;
-        public static final int newsmessage_row=0x7f030003;
-        public static final int newsreader=0x7f030004;
-        public static final int newsreader_feedrow=0x7f030005;
-        public static final int servicesettings=0x7f030006;
+        public static final int newsmessage_items=0x7f030001;
+        public static final int newsmessage_row=0x7f030002;
+        public static final int newsreader=0x7f030003;
+        public static final int newsreader_feedrow=0x7f030004;
+        public static final int servicesettings=0x7f030005;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
+        public static final int newsreader_app_name=0x7f040000;
     }
 }

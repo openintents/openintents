@@ -216,7 +216,7 @@ public class OpenGLSensors extends Activity {
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_SETTINGS, R.string.settings, R.drawable.mobile_shake_settings001a)
+		menu.add(0, MENU_SETTINGS, R.string.openglsensors_settings, R.drawable.mobile_shake_settings001a)
 			.setShortcut('0', 's');
 		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_simulator, R.drawable.mobile_shake001a)
 			.setShortcut('1', 'c');

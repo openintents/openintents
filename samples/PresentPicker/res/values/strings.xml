@@ -16,7 +16,7 @@
  -->
  
  <resources>
-    <string name="app_name">Present Picker</string>
+    <string name="presentpicker_app_name">Present Picker</string>
     <string name="pick_contact">Pick a contact</string>
     <string name="name">Name:</string>
     <string name="recommendation"><I>I recommend the following presents:</I></string>
@@ -32,13 +32,15 @@
 	<string name="selection_hint">Pick a present</string>
 	<string name="autocomplete_hint">Typing * will show all of your contacts.</string>
    
-    <string name="about">About</string>
     <string name="about_title">About Present Picker</string>
     <string name="about_content">Present Picker finds the right present for any occasion.</string>
     <string name="copyright">(c) 2008 OpenIntents.org</string>
     <string name="about_icons">The freeware icons are created by FastIcon.com and are subject to their license conditions.</string>
-    <string name="ok">OK</string>
     <string name="item_added_to_shopping">Item has been added to default shopping list</string>
     <string name="item_not_added_to_shopping">Item could NOT been added to list (see log)</string>
+    
+    <!-- Strings that are also in core -->
+    <string name="about">About</string>
+    <string name="ok">OK</string>
     
    </resources>
