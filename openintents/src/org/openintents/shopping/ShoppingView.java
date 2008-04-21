@@ -50,6 +50,7 @@ import android.os.Message;
 import android.text.Spannable;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Display;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -96,6 +97,8 @@ public class ShoppingView
     private static final int MENU_THEME = Menu.FIRST + 4;
     
     private static final int MENU_ADD_LOCATION_ALERT = Menu.FIRST + 5;
+    
+    private static final int MENU_RENAME_LIST = Menu.FIRST + 6;
 
     // TODO: Implement the following menu items
     private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
@@ -480,6 +483,7 @@ public class ShoppingView
                         checkListLength();
                     }
                 });
+        
 
         mEditText = (EditText) findViewById(R.id.edittext_add_item);
         mEditText.setOnKeyListener(new OnKeyListener()
@@ -555,7 +559,16 @@ public class ShoppingView
                 checkListLength();
             }
         });
+        mListItems.setOnPopulateContextMenuListener(
+			new View.OnPopulateContextMenuListener() {
 
+				public void onPopulateContextMenu(ContextMenu contextmenu,
+						View view, Object obj) {
+					
+					
+				}
+
+			});
     }
 
     /**
@@ -704,21 +717,24 @@ public class ShoppingView
         menu.add(0, MENU_CLEAN_UP_LIST, R.string.clean_up_list,
                 R.drawable.shoppinglistcleanup001b)
                 .setShortcut('1', 'c');
+        menu.add(0, MENU_RENAME_LIST, R.string.rename_list, 
+        		R.drawable.shoppinglistrename001b)
+        		.setShortcut('2', 'r');;
         menu.add(0, MENU_DELETE_LIST, R.string.delete_list,
                 R.drawable.shoppinglistdelete001b)
-                .setShortcut('2', 'd');
+                .setShortcut('3', 'd');
        
         menu.add(0, MENU_SHARE, R.string.share,
                 R.drawable.contact_share001a)
-                .setShortcut('3', 's');
+                .setShortcut('4', 's');
         
         menu.add(0, MENU_THEME, R.string.theme,
         		R.drawable.shoppinglisttheme001a)
-        		.setShortcut('4', 't');
+        		.setShortcut('5', 't');
         
         menu.add(0, MENU_ADD_LOCATION_ALERT, R.string.shopping_add_alert,
         		R.drawable.locations_add_alert001a)
-        		.setShortcut('5', 'l');
+        		.setShortcut('6', 'l');
                 
 
         /*
@@ -787,13 +803,17 @@ public class ShoppingView
         switch (item.getId())
         {
             case MENU_NEW_LIST:
-                newListDialog();
+                showListDialog(MENU_NEW_LIST);
                 return true;
 
             case MENU_CLEAN_UP_LIST:
                 cleanupList();
                 return true;
 
+            case MENU_RENAME_LIST:
+            	showListDialog(MENU_RENAME_LIST);
+            	return true;
+            	
             case MENU_DELETE_LIST:
                 deleteListConfirm();
                 return true;
@@ -854,9 +874,9 @@ public class ShoppingView
     //
 
     /**
-     * Opens a dialog to add a new shopping list.
+     * Opens a dialog to add a new shopping list or to rename it.
      */
-    private void newListDialog()
+    private void showListDialog(final int menuAction)
     {
 
         // TODO Shall we implement this as action?
@@ -865,13 +885,28 @@ public class ShoppingView
         mDialog = new Dialog(ShoppingView.this);
 
         mDialog.setContentView(R.layout.input_box);
-
-        mDialog.setTitle(getString(R.string.ask_new_list));
-
+        
         EditText et = (EditText) mDialog.findViewById(R.id.edittext);
         //et.setText(getString(R.string.new_list));
         et.setHint(getString(R.string.new_list_hint));
         et.selectAll();
+
+        switch(menuAction) {
+        case MENU_NEW_LIST:
+	        mDialog.setTitle(getString(R.string.ask_new_list));
+	        break;
+        case MENU_RENAME_LIST:
+	        mDialog.setTitle(getString(R.string.ask_rename_list));
+	        
+	        if (mCursorListFilter != null && mCursorListFilter.position() >= 0) {
+	    		et.setText(mCursorListFilter.getString(mStringListFilterNAME));
+	    	}
+	    	
+	        break;
+        }
+        
+
+        
 
         // Accept OK also when user hits "Enter"
         et.setOnKeyListener(new OnKeyListener()
@@ -882,15 +917,11 @@ public class ShoppingView
             {
                 //Log.i(TAG, "KeyCode: " + keyCode);
 
-                if (key.getAction() == key.ACTION_DOWN
+                if (key.getAction() == KeyEvent.ACTION_DOWN
                         && keyCode == Integer
                         .parseInt(getString(R.string.key_return)))
                 {
-                    // User pressed "Enter"
-                    if (createNewList()) {
-                    	// New list created. Exit:
-                    	mDialog.dismiss();
-                    }
+                	doListDialogAction(menuAction);
                     return true;
                 }
                 return false;
@@ -904,10 +935,7 @@ public class ShoppingView
         {
             public void onClick(final View v)
             {
-                if (createNewList()) {
-                	// New list created. Exit:
-                	mDialog.dismiss();
-                }
+            	doListDialogAction(menuAction);
             }
         });
 
@@ -921,6 +949,23 @@ public class ShoppingView
         });
 
         mDialog.show();
+    }
+    
+    void doListDialogAction(int menuAction) {
+    	switch(menuAction) {
+        case MENU_NEW_LIST:
+        	if (createNewList()) {
+            	// New list created. Exit:
+            	mDialog.dismiss();
+            }
+	        break;
+        case MENU_RENAME_LIST:
+        	if (renameList()) {
+            	// Rename successful. Exit:
+            	mDialog.dismiss();
+            }
+	        break;
+        }
     }
 
     /** 
@@ -952,6 +997,34 @@ public class ShoppingView
         
         // A newly created list will not yet be shared via GTalk:
         // bindGTalkIfNeeded();
+        return true;
+    }
+
+    /** 
+     * Rename list from dialog.
+     * @return true if new list was renamed. False if new list was not 
+     *  renamed, because user has not given any name.
+     */
+    private boolean renameList()
+    {
+        EditText edittext = (EditText)
+                mDialog.findViewById(R.id.edittext);
+        String s = edittext.getText().toString();
+
+        if (s.equals("")) {
+        	// User has not provided any name
+        	Toast.makeText(this, getString(R.string.please_enter_name), Toast.LENGTH_SHORT).show();
+        	return false;
+        }
+        
+        // Rename currently selected list:
+        mCursorListFilter.updateString(mStringListFilterNAME, s);
+        
+        mCursorListFilter.commitUpdates();
+        mCursorListFilter.requery();
+        
+        edittext.setText("");
+        
         return true;
     }
 
@@ -997,7 +1070,7 @@ public class ShoppingView
             checkListLength();
         }
     }
-
+    
     /**
      * Confirm 'delete list' command by AlertDialog.
      */
@@ -1935,6 +2008,7 @@ public class ShoppingView
             }
 
         }
+        //super.onActivityResult(requestCode, resultCode, data, extras);
 	}
 
 }
