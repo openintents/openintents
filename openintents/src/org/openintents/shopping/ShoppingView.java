@@ -73,6 +73,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.ContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -99,11 +100,13 @@ public class ShoppingView
     private static final int MENU_ADD_LOCATION_ALERT = Menu.FIRST + 5;
     
     private static final int MENU_RENAME_LIST = Menu.FIRST + 6;
-
+    
+    private static final int MENU_MARK_ITEM = Menu.FIRST + 7;
+    private static final int MENU_EDIT_ITEM = Menu.FIRST + 8; // includes rename
+    private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
+    
     // TODO: Implement the following menu items
     private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
-    private static final int MENU_EDIT_ITEM = Menu.FIRST + 4; // includes rename
-    private static final int MENU_DELETE_ITEM = Menu.FIRST + 5;
     private static final int MENU_SORT =
             Menu.FIRST + 6; // sort alphabetically or modified
     private static final int MENU_PICK_ITEMS =
@@ -564,8 +567,15 @@ public class ShoppingView
 
 				public void onPopulateContextMenu(ContextMenu contextmenu,
 						View view, Object obj) {
-					
-					
+					contextmenu.add(0, MENU_MARK_ITEM, R.string.mark_item,
+			                R.drawable.shoppinglistcleanup001b)
+			                .setShortcut('1', 'm');
+					contextmenu.add(0, MENU_EDIT_ITEM, R.string.edit_item,
+			                R.drawable.shoppinglistrename001b)
+			                .setShortcut('2', 'e');
+					contextmenu.add(0, MENU_DELETE_ITEM, R.string.delete_item,
+			                R.drawable.shoppinglistdelete001b)
+			                .setShortcut('3', 'd');
 				}
 
 			});
@@ -644,12 +654,14 @@ public class ShoppingView
      */
     private void toggleItemBought(Cursor c)
     {
+    	/*
     	long listId = getSelectedListId();
     	if (listId < 0) {
         	// No valid list - probably view is not active
         	// and no item is selected.
         	return;
         }
+        */
         
         // mCursorListFilter has been set to correct position
         // by calling getSelectedListId(),
@@ -868,6 +880,25 @@ public class ShoppingView
 
     }
 
+	@Override
+	public boolean onContextItemSelected(Item item) {
+		super.onContextItemSelected(item);
+		ContextMenuInfo menuInfo = (ContextMenuInfo) item.getMenuInfo();
+		switch (item.getId()) {
+		case MENU_MARK_ITEM:
+			markItem(menuInfo.position);
+			break;
+		case MENU_EDIT_ITEM:
+			editItem(menuInfo.position);
+			break;
+		case MENU_DELETE_ITEM:
+			deleteItem(menuInfo.position);
+			break;
+		}
+
+		return true;
+	}
+
     ///////////////////////////////////////////////////////
     //
     // Menu functions
@@ -901,8 +932,13 @@ public class ShoppingView
 	        if (mCursorListFilter != null && mCursorListFilter.position() >= 0) {
 	    		et.setText(mCursorListFilter.getString(mStringListFilterNAME));
 	    	}
-	    	
 	        break;
+        case MENU_EDIT_ITEM:
+        	mDialog.setTitle(getString(R.string.ask_rename_list));
+        	
+        	// Cursor is supposed to be set to correct row already:
+        	et.setText(mCursorItems.getString(mStringItemsITEMNAME));
+        	break;
         }
         
 
@@ -965,6 +1001,12 @@ public class ShoppingView
             	mDialog.dismiss();
             }
 	        break;
+        case MENU_EDIT_ITEM:
+        	if (renameItem()) {
+            	// Rename successful. Exit:
+            	mDialog.dismiss();
+            }
+        	break;
         }
     }
 
@@ -1024,6 +1066,49 @@ public class ShoppingView
         mCursorListFilter.requery();
         
         edittext.setText("");
+        
+        return true;
+    }
+    
+    /** 
+     * Rename item from dialog.
+     * @return true if new list was renamed. False if new list was not 
+     *  renamed, because user has not given any name.
+     */
+    private boolean renameItem()
+    {
+        EditText edittext = (EditText)
+                mDialog.findViewById(R.id.edittext);
+        String s = edittext.getText().toString();
+
+        if (s.equals("")) {
+        	// User has not provided any name
+        	Toast.makeText(this, getString(R.string.please_enter_name), Toast.LENGTH_SHORT).show();
+        	return false;
+        }
+        
+        String oldItemName = mCursorItems.getString(mStringItemsITEMNAME);
+        String newItemName = s;
+        
+        // Rename currently selected item:
+        mCursorItems.updateString(mStringItemsITEMNAME, newItemName);
+        
+    	mCursorItems.commitUpdates();
+    	mCursorItems.requery();
+        
+        edittext.setText("");
+        
+
+        // If we share items, send this item also to other lists:
+        String recipients = mCursorListFilter.getString(mStringListFilterSHARECONTACTS);
+        if (! recipients.equals("")) {
+    		String shareName = mCursorListFilter.getString(mStringListFilterSHARENAME);
+            long status = mCursorItems.getLong(mStringItemsSTATUS);
+            
+    		mGTalkSender.sendItemUpdate(recipients, shareName, 
+            	oldItemName, newItemName,
+            	status, status);
+        }
         
         return true;
     }
@@ -1135,7 +1220,26 @@ public class ShoppingView
         
         bindGTalkIfNeeded();
     }
-
+    
+    /** Mark item */
+    void markItem(int position) {
+    	mCursorItems.moveTo(position);
+    	toggleItemBought(mCursorItems);
+    }
+    
+    /** Edit item */
+    void editItem(int position) {
+    	mCursorItems.moveTo(position);
+    	showListDialog(MENU_EDIT_ITEM);
+    }
+    
+    /** Delete item */
+    void deleteItem(int position) {
+    	mCursorItems.moveTo(position);
+    	mCursorItems.deleteRow();
+    	mCursorItems.requery();
+    }
+    
     /** 
      * Calls the share settings with the currently selected list.
      */

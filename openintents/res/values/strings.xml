@@ -169,6 +169,9 @@ Earth Technology.
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
 	<string name="rename_list">Rename list</string>
+	<string name="mark_item">Mark item</string>
+	<string name="edit_item">Edit item</string>
+	<string name="delete_item">Delete item</string>
 	
 	<!-- Shopping list location alert related -->
 	<string name="shopping_add_alert">Add alert</string>
