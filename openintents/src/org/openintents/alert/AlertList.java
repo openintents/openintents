@@ -170,7 +170,7 @@ public class AlertList extends ListActivity{
 		getListView().setOnItemClickListener(
 			new AdapterView.OnItemClickListener() {
 
-				@Override
+
 				public void onItemClick(AdapterView parent, View v, int position,
 						long id) {
 					// Clicking an item starts editing it
