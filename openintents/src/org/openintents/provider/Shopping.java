@@ -90,6 +90,28 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+		
+		/**
+		 * Generic projection map.
+		 */
+		public static final String[] PROJECTION = {
+			_ID,
+			NAME,
+			IMAGE,
+			CREATED_DATE,
+			MODIFIED_DATE,
+			ACCESSED_DATE
+		};
+		
+		/**
+		 * Offset in PROJECTION array.
+		 */
+		public static final int PROJECTION_ID = 0;
+		public static final int PROJECTION_NAME = 1;
+		public static final int PROJECTION_IMAGE = 2;
+		public static final int PROJECTION_CREATED_DATE = 3;
+		public static final int PROJECTION_MODIFIED_DATE = 4;
+		public static final int PROJECTION_ACCESSED_DATE = 5;
 	}
 
 	/**

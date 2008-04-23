@@ -156,7 +156,7 @@ public class Alert{
 		/**
 		* Type must always be of Alert.TYPE_LOCATION
 		* any other values will result in your alert not
-		* beeing processed.
+		* being processed.
 		*/
 		public static final String TYPE=Generic.TYPE;
 

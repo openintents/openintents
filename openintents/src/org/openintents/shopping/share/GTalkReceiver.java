@@ -311,6 +311,9 @@ public class GTalkReceiver extends IntentReceiver {
 	        	// List exists, let us update item
 	        	c.first();
 	        	long listId = c.getLong(mProjectionListsID);
+	        	
+	        	Log.i(TAG, "Query: item name = " + itemNameOld 
+	        			+ ", status = " + itemStatusOld);
 
 	        	// Now look for item with old name and old status:
 	        	Cursor citem = mContentResolver.query(
@@ -329,6 +332,8 @@ public class GTalkReceiver extends IntentReceiver {
 	        		
 	        		// (Later, there should really be a hidden Item ID that is
 	        		// unique so that these issues of duplicates can not arise.
+	        		Log.i(TAG, "Re-Query: item name = " + itemNameOld);
+	        		
 	        		citem = mContentResolver.query(
 			                Shopping.ContainsFull.CONTENT_URI,
 			                mProjectionContainsFull,

@@ -23,6 +23,7 @@ import org.openintents.hardware.Sensors;
 import org.openintents.hardware.SensorsPlus;
 import org.openintents.provider.Hardware;
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Lists;
 import org.openintents.shopping.share.GTalkSender;
@@ -1091,13 +1092,28 @@ public class ShoppingView
         String newItemName = s;
         
         // Rename currently selected item:
+        /*
         mCursorItems.updateString(mStringItemsITEMNAME, newItemName);
         
     	mCursorItems.commitUpdates();
     	mCursorItems.requery();
         
         edittext.setText("");
+        */
+        // Can not work on ContainsFull table, have to work on items table:
+        long itemId = mCursorItems.getLong(mStringItemsITEMID);
         
+        Cursor cursor = getContentResolver().query(Shopping.Items.CONTENT_URI,
+				Shopping.Items.PROJECTION, Shopping.Items._ID + " = ?",
+				new String[] { "" + itemId }, Shopping.Items.DEFAULT_SORT_ORDER);
+		if (cursor != null && cursor.next()) {
+			// Rename item in items table
+			cursor.updateString(Shopping.Items.PROJECTION_NAME, newItemName);
+			cursor.commitUpdates();
+		} else {
+			Log.e(TAG, "ShoppingView: Could not rename item.");
+		}
+		mCursorItems.requery();
 
         // If we share items, send this item also to other lists:
         String recipients = mCursorListFilter.getString(mStringListFilterSHARECONTACTS);
@@ -1235,9 +1251,28 @@ public class ShoppingView
     
     /** Delete item */
     void deleteItem(int position) {
-    	mCursorItems.moveTo(position);
+    	// Remember old values before delete (for share below)
+    	String itemName = mCursorItems.getString(mStringItemsITEMNAME);
+        long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
+        
+        // Delete item
+        mCursorItems.moveTo(position);
     	mCursorItems.deleteRow();
     	mCursorItems.requery();
+    	
+        // If we share items, mark item on other lists:
+    	String recipients = mCursorListFilter.getString(mStringListFilterSHARECONTACTS);
+        if (! recipients.equals("")) {
+    		String shareName = mCursorListFilter.getString(mStringListFilterSHARENAME);
+            long newstatus = Shopping.Status.BOUGHT;
+
+    		Log.i(TAG, "Update shared item. "
+                + " recipients: " + recipients + ", shareName: " + shareName + ", status: " + newstatus);
+            mGTalkSender.sendItemUpdate(recipients, shareName, 
+            	itemName, itemName,
+            	oldstatus, newstatus);
+        }
+        
     }
     
     /** 
