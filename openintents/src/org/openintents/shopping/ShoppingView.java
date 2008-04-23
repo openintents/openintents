@@ -270,6 +270,8 @@ public class ShoppingView
     public void onCreate(Bundle icicle)
     {
         super.onCreate(icicle);
+        Log.i(TAG, "Shopping list onCreate()");
+		
         //setTheme(android.R.style.Theme_White);
         //setTheme(android.R.style.Theme_Dialog);
         //setTheme(android.R.style.Theme_Dark);
@@ -398,6 +400,7 @@ public class ShoppingView
     protected void onResume()
     {
         super.onResume();
+        Log.i(TAG, "Shopping list onResume()");
 
         // Modify our overall title depending on the mode we are running in.
         if (mState == STATE_MAIN ||
@@ -437,9 +440,15 @@ public class ShoppingView
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		Log.i(TAG, "Shopping list onPause()");
 		
 		// Unregister refresh intent receiver
 		unregisterReceiver(mIntentReceiver);
+		
+        // Unbind GTalk service
+        if (mGTalkSender != null) {
+        	mGTalkSender.unbindGTalkService();
+        }
 	}
 
 
@@ -447,17 +456,13 @@ public class ShoppingView
     protected void onFreeze(Bundle outState)
     {
         super.onFreeze(outState);
-
+        Log.i(TAG, "Shopping list onFreeze()");
+		
         // Save original text from edit box
         String s = mEditText.getText().toString();
         outState.putString(ORIGINAL_ITEM, s);
         
         mUpdating = false;
-
-        // Unbind GTalk service
-        if (mGTalkSender != null) {
-        	mGTalkSender.unbindGTalkService();
-        }
     }
 
     /**
