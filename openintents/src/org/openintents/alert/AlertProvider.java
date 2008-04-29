@@ -211,6 +211,28 @@ public class AlertProvider extends DatabaseContentProvider {
 				}
 				throw new SQLException("Failed to insert row into " + uri);		
 
+			case ALERT_DATE_TIME:
+
+				//if nature is not given, it's user.
+				if (!values.containsKey(Alert.Generic.NATURE))
+				{
+					values.put(Alert.Generic.NATURE,Alert.NATURE_USER);
+				}			
+
+
+				if (!values.containsKey(Alert.Location.TYPE)){
+					values.put(Alert.Location.TYPE,Alert.TYPE_LOCATION);
+					
+				}
+
+				rowID=getDatabase().insert(TABLE_ALERTS, "", values);			
+				if (rowID > 0) {
+					Uri nUri = ContentUris.withAppendedId(Alert.DateTime.CONTENT_URI,rowID);
+					getContext().getContentResolver().notifyChange(nUri, null);
+					return nUri;
+				}
+				throw new SQLException("Failed to insert row into " + uri);		
+
 			case MANAGED_SERVICE:
 				rowID=getDatabase().insert(TABLE_SERVICES,"",values);
 				if (rowID > 0) {
@@ -270,6 +292,16 @@ public class AlertProvider extends DatabaseContentProvider {
 					orderBy = sortOrder;
 				}
 				break;
+			case ALERT_DATE_TIME:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Generic.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}
+				break;
 			case ALERT_GENERIC_ID:
 				qb.setTables(TABLE_ALERTS);							
 				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
@@ -282,6 +314,17 @@ public class AlertProvider extends DatabaseContentProvider {
 				}        	
 				break;
 			case ALERT_LOCATION_ID:
+				qb.setTables(TABLE_ALERTS);							
+				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
+
+				qb.appendWhere("_id=" + uri.getLastPathSegment());
+				if (TextUtils.isEmpty(sortOrder)) {
+					orderBy = Alert.Location.DEFAULT_SORT_ORDER;
+				} else {
+					orderBy = sortOrder;
+				}        	
+				break;
+			case ALERT_DATE_TIME_ID:
 				qb.setTables(TABLE_ALERTS);							
 				qb.setProjectionMap(GENERIC_PROJECTION_MAP);            
 
@@ -382,6 +425,24 @@ public class AlertProvider extends DatabaseContentProvider {
 				getContext().getContentResolver().notifyChange(uri, null);
 				break;
 
+			case ALERT_DATE_TIME:
+				result= getDatabase().update(TABLE_ALERTS, values, selection,selectionArgs);
+				//getContext().getContentResolver().notifyChange(nUri, null);
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+			case ALERT_DATE_TIME_ID:
+				alertID=uri.getPathSegments().get(1);
+				result= getDatabase()
+						.update(TABLE_ALERTS,
+								values,
+								"_id="+alertID
+								+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+								+ ')' : ""),
+								selectionArgs);
+					
+				getContext().getContentResolver().notifyChange(uri, null);
+				break;
+
 			case MANAGED_SERVICE:
 				alertID=uri.getPathSegments().get(1);
 				result= getDatabase().update(TABLE_SERVICES, values, selection,selectionArgs);
@@ -448,6 +509,22 @@ public class AlertProvider extends DatabaseContentProvider {
 					+ ')' : ""),
 					selectionArgs);
 				break;
+			case ALERT_DATE_TIME:
+				res =  getDatabase().delete(
+					TABLE_ALERTS,
+					selection,
+					selectionArgs
+					);		
+				break;
+			case ALERT_DATE_TIME_ID:
+				alertID=uri.getPathSegments().get(1);
+				res =  getDatabase().delete(
+					TABLE_ALERTS,
+					"_id="+alertID
+					+(!TextUtils.isEmpty(selection) ? " AND (" + selection
+					+ ')' : ""),
+					selectionArgs);
+				break;
 
 			case MANAGED_SERVICE:
 				res =  getDatabase().delete(
@@ -485,6 +562,8 @@ public class AlertProvider extends DatabaseContentProvider {
 		URL_MATCHER.addURI("org.openintents.alert","location/#",ALERT_LOCATION_ID);
 		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
 		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
+		URL_MATCHER.addURI("org.openintents.alert","datetime",ALERT_DATE_TIME);
+		URL_MATCHER.addURI("org.openintents.alert","datetime/#",ALERT_DATE_TIME_ID);
 		URL_MATCHER.addURI("org.openintents.alert","managedservice",MANAGED_SERVICE);
 		URL_MATCHER.addURI("org.openintents.alert","managedservice/#",MANAGED_SERVICE_ID);
 
@@ -514,6 +593,7 @@ public class AlertProvider extends DatabaseContentProvider {
 		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.SERVICE_CLASS,Alert.ManagedService.SERVICE_CLASS);
 		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.TIME_INTERVALL,Alert.ManagedService.TIME_INTERVALL);
 		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.DO_ROAMING,Alert.ManagedService.DO_ROAMING);
+		SERVICE_PROJECTION_MAP.put(Alert.ManagedService.LAST_TIME,Alert.ManagedService.LAST_TIME);
 
 
 	}
