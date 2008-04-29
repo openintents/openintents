@@ -255,7 +255,7 @@ public class Alert{
 	public static final class  ManagedService implements BaseColumns{
 
 		public static final Uri CONTENT_URI=
-			Uri.parse("content://org.openintents.alert/pollingservices");
+			Uri.parse("content://org.openintents.alert/managedservice");
 		public static final String SERVICE_CLASS="service_class";
 
 		public static final String TIME_INTERVALL="time_intervall";
@@ -361,6 +361,7 @@ public class Alert{
 			insert(DateTime.CONTENT_URI,cv);
 
 		}		
+		Log.d(_TAG,"registerManagedService: finished");
 
 	}
 
@@ -567,8 +568,12 @@ public class Alert{
 		if (myReoccurence==0)
 		{
 			alarmManager.set(AlarmManager.RTC,time,i);
+			Log.d(_TAG,"registerDateTimeAlert: registerd single @>>"+time+"<<");
+
 		}else{
 			alarmManager.setRepeating(AlarmManager.RTC,time,myReoccurence,i);
+			Log.d(_TAG,"registerDateTimeAlert: registerd reoccuirng @>>"+time+"<< intervall>>"+myReoccurence+"<<");
+
 		}
 	}
 
@@ -616,6 +621,8 @@ public class Alert{
 		URL_MATCHER.addURI("org.openintents.alert","location/#",ALERT_LOCATION_ID);
 		URL_MATCHER.addURI("org.openintents.alert","combined",ALERT_COMBINED);
 		URL_MATCHER.addURI("org.openintents.alert","combined/#",ALERT_COMBINED_ID);
+		URL_MATCHER.addURI("org.openintents.alert","datetime",ALERT_DATE_TIME);
+		URL_MATCHER.addURI("org.openintents.alert","datetime/#",ALERT_DATE_TIME_ID);
 		URL_MATCHER.addURI("org.openintents.alert","",6000);
 		URL_MATCHER.addURI("org.openintents.alert","/",6001);
 	}
