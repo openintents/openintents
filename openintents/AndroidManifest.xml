@@ -457,6 +457,30 @@
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.hardware.preference"/>
 			</intent-filter>
 		</activity>
+		
+		<!-- Sensor service -->
+		
+        <service android:name=".hardware.services.SensorService" android:process=":remote">
+            <intent-filter>
+                <!-- The following interface is supported by the service. -->
+                <action android:name="org.openintents.hardware.services.ISensorService" />
+                <!-- This is an action code to select the service
+                     without explicitly supplying the implementation class. -->
+                <action android:name="org.openintents.hardware.services.SENSOR_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".hardware.SensorServiceSettingsActivity" 
+        	android:label="@string/sensor_service_settings"
+			android:icon="@drawable/mobile_shake_application001a">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+            </intent-filter>
+        </activity>
+
+		
 
 		<!-- news services -->
 

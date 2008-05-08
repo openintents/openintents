@@ -196,6 +196,9 @@ Earth Technology.
     <string name="theme_default">Default</string>
     <string name="theme_classic">Classic</string>
     <string name="theme_bugdroid">Android</string>
+    
+    <!-- Shake control related -->
+    <string name="shake_control">Shake control</string>
 	
 	<!--     Dialog box    -->
 	<string name="cancel">Cancel</string>
@@ -231,6 +234,16 @@ Earth Technology.
 		Disable the sensors and disconnect after testing.</string>
 	<string name="update_rate">update rate</string>
 	<string name="update_rate_seconds">update rate (1/s)</string>
+	
+	<!-- Sensor service -->
+	<string name="sensor_service">Sensor service</string>
+	<string name="sensor_service_settings">Sensor service settings</string>
+	<string name="bind_service">Bind</string>
+	<string name="unbind_service">Unbind</string>
+	<string name="sensor_service_started">Sensor service started</string>
+	<string name="sensor_service_stopped">Sensor service stopped</string>
+	<string name="sensor_service_connected">Sensor service connected</string>
+	<string name="sensor_service_disconnected">Sensor service disconnected</string>
 	
 	<!--     Key codes     -->
 	<string name="key_return">64</string>

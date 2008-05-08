@@ -19,8 +19,11 @@ package org.openintents.shopping;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
+import org.openintents.hardware.SensorEvent;
+import org.openintents.hardware.SensorListener;
 import org.openintents.hardware.Sensors;
 import org.openintents.hardware.SensorsPlus;
+import org.openintents.hardware.SensorListener.OnSensorListener;
 import org.openintents.provider.Hardware;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
@@ -105,6 +108,8 @@ public class ShoppingView
     private static final int MENU_MARK_ITEM = Menu.FIRST + 7;
     private static final int MENU_EDIT_ITEM = Menu.FIRST + 8; // includes rename
     private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
+    
+    private static final int MENU_SENSOR_SERVICE = Menu.FIRST + 10; // shake control
     
     // TODO: Implement the following menu items
     private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
@@ -262,6 +267,10 @@ public class ShoppingView
     
     // GTalk --------------------------
     private GTalkSender mGTalkSender;
+    
+    // Sensor service -----------------
+
+	private SensorListener mSensorListener;
 
     /**
      * Called when the activity is first created.
@@ -288,6 +297,9 @@ public class ShoppingView
         // Automatic requeries (once a second)
         mUpdateInterval = 2000;
         mUpdating = false;
+        
+        // Sensor service
+        mSensorListener = new SensorListener(this);
         
         // General Uris:
         mListUri = Shopping.Lists.CONTENT_URI;
@@ -753,7 +765,11 @@ public class ShoppingView
         menu.add(0, MENU_ADD_LOCATION_ALERT, R.string.shopping_add_alert,
         		R.drawable.locations_add_alert001a)
         		.setShortcut('6', 'l');
-                
+        
+        menu.add(0, MENU_SENSOR_SERVICE, R.string.shake_control,
+        		R.drawable.mobile_shake001a)
+        .setShortcut('0', 's');
+        
 
         /*
           menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
@@ -847,7 +863,12 @@ public class ShoppingView
             case MENU_ADD_LOCATION_ALERT:
             	addLocationAlert();
             	return true;
+            	
+            case MENU_SENSOR_SERVICE:
+            	toggleSensorService();
+            	return true;
 
+            	/*
             case MENU_SETTINGS:
                 Intent intent = new Intent(Intent.MAIN_ACTION,
                         Hardware.Preferences.CONTENT_URI);
@@ -881,6 +902,7 @@ public class ShoppingView
                 }
 
                 return true;
+                */
         }
         return super.onOptionsItemSelected(item);
 
@@ -1163,13 +1185,18 @@ public class ShoppingView
 
         if (nothingdeleted)
         {
+            // Show toast
+            Toast.makeText(this, R.string.no_items_marked, Toast.LENGTH_SHORT).show();
+            
             // Show dialog:
+        	/*
             AlertDialog.show(ShoppingView.this,
                     getString(R.string.clean_up_list),
                     0, // TODO choose IconID
                     getString(R.string.no_items_marked),
                     getString(R.string.ok),
                     false);
+            */
         }
         else
         {
@@ -1515,6 +1542,19 @@ public class ShoppingView
 				mListUri);
 		//startSubActivity(intent, SUBACTIVITY_ADD_LOCATION_ALERT);
     	startActivity(intent);
+    }
+    
+    /**
+     * Turns on or off sensor service (shake control).
+     */
+    void toggleSensorService() {
+    	if (! mSensorListener.isBound()) {
+    		mSensorListener.bindService();
+            mSensorListener.setOnSensorListener(mOnSensorListener);
+    	} else {
+    		mSensorListener.unbindService();
+        	mSensorListener.setOnSensorListener(null);
+    	}
     }
     
     ///////////////////////////////////////////////////////
@@ -2053,6 +2093,38 @@ public class ShoppingView
 	}
     
     
+    /**
+     * Sensor service callback
+     */
+    private OnSensorListener mOnSensorListener = new OnSensorListener() {
+
+		@Override
+		public boolean onSensorEvent(final SensorEvent event) {
+			Log.i(TAG, "onSensorEvent: " + event);
+            int action = event.getAction();
+			switch (action) {
+			case SensorEvent.ACTION_MOVE:
+				
+				return true;
+			case SensorEvent.ACTION_SHAKE:
+				
+				// Clean up list
+				cleanupList();
+				
+				// ToDo: Make this 
+				// 1) step by step
+				// 2) animate elements
+				// 3) more than 3 shakes -> remove all
+				
+				return true;
+			default:
+				assert false;
+			}
+			return false;
+		}
+    	
+    };
+
 
 	// Handle the process of automatically updating enabled sensors:
     private Handler mHandler = new Handler() {
