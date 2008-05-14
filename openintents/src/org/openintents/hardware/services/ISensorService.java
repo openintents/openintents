@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: C:\\Dokumente und Einstellungen\\Andi\\Eigene Dateien\\EclipseSVN\\openintents01i_trunk\\openintents\\src\\org\\openintents\\hardware\\services\\ISensorService.aidl
+ * Original file: /media/MMC-SD/partition1/OpenintentsWorkspace/core/src/org/openintents/hardware/services/ISensorService.aidl
  */
 package org.openintents.hardware.services;
 import java.lang.String;

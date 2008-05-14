@@ -80,7 +80,7 @@ public class SensorServiceSettingsActivity extends Activity {
     
     private OnSensorListener mOnSensorListener = new OnSensorListener() {
 
-		@Override
+
 		public boolean onSensorEvent(final SensorEvent event) {
 			Log.i(TAG, "onSensorEvent: " + event);
             int action = event.getAction();
