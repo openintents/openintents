@@ -92,11 +92,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenu.ContextMenuInfo obj) {
-						contextmenu.add(0, MENU_REMOVE_TAG,
-								R.string.tags_remove_tag,
+						contextmenu.add(0, MENU_REMOVE_TAG,0,
+								R.string.tags_remove_tag).setIcon(
 								R.drawable.tag_delete001a);
-						contextmenu.add(0, MENU_VIEW_CONTENT,
-								R.string.tags_view_content,
+						contextmenu.add(0, MENU_VIEW_CONTENT,0,
+								R.string.tags_view_content).setIcon(
 								R.drawable.view_001a);
 					}
 
@@ -218,12 +218,12 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		menu
-				.add(0, MENU_ADD_TAG, R.string.tags_add_tag,
+				.add(0, MENU_ADD_TAG, 0, R.string.tags_add_tag).setIcon(
 						R.drawable.tag_add001a);
-		menu.add(0, MENU_ADD_ANY_TAG, R.string.tags_add_any_tag,
+		menu.add(0, MENU_ADD_ANY_TAG, 0, R.string.tags_add_any_tag).setIcon(
 				R.drawable.tag_add001a);
 
-		menu.add(0, MENU_PACKAGES, R.string.menu_package_list,
+		menu.add(0, MENU_PACKAGES, 0, R.string.menu_package_list).setIcon(
 				R.drawable.tagging_packages001a);
 
 		return true;
