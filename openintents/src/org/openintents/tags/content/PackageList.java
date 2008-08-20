@@ -121,9 +121,8 @@ public class PackageList extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		
-		if (getCallingActivity() != null) {
-			l.setSelection(position);
-			setResult(RESULT_OK, new Intent(((Cursor) l.getSelectedItem()).getString(2)));
+		if (getCallingActivity() != null) {			
+			setResult(RESULT_OK, new Intent(((Cursor) l.getItemAtPosition(position)).getString(2)));
 			finish();
 		}
 	}

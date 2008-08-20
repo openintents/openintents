@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -52,7 +53,7 @@ public class PackageListRow extends RelativeLayout {
 	public PackageListRow(Context context) {
 		super(context);
 
-		setLayoutParams(new RelativeLayout.LayoutParams(
+		setLayoutParams(new AbsListView.LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 
 		mIcon = new ImageView(context);
