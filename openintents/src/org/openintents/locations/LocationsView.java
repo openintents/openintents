@@ -18,6 +18,7 @@ package org.openintents.locations;
 
 import java.util.List;
 
+import org.bouncycastle.asn1.OrderedTable;
 import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.provider.Alert;
@@ -196,7 +197,7 @@ public class LocationsView extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_CURRENT_LOCATION, R.string.add_current_location,
+		menu.add(0, MENU_ADD_CURRENT_LOCATION, 0, R.string.add_current_location).setIcon(
 				R.drawable.locations_add001a);
 		return true;
 	}
