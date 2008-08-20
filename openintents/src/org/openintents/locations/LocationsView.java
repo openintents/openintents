@@ -16,6 +16,8 @@
 
 package org.openintents.locations;
 
+import java.util.List;
+
 import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.provider.Alert;
@@ -79,7 +81,6 @@ public class LocationsView extends Activity {
 
 	private ListView mList;
 	private int mlastPosition;
-	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -129,14 +130,16 @@ public class LocationsView extends Activity {
 						contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
 								R.drawable.locations_add_alert001a);
 						contextmenu.add(0, MENU_MANAGE_EXTRAS,
-								R.string.locations_manage_extras, R.drawable.locations_application001a);
+								R.string.locations_manage_extras,
+								R.drawable.locations_application001a);
 
 					}
 
 				});
 
-		ListAdapter adapter = new ArrayAdapter<String>(this, R.layout.location_row, new String[0]);		
-		mList.setAdapter(adapter );
+		ListAdapter adapter = new ArrayAdapter<String>(this,
+				R.layout.location_row, new String[0]);
+		mList.setAdapter(adapter);
 		// init Alertprovider convenicen functions (zero)
 		Alert.init(this);
 
@@ -179,7 +182,8 @@ public class LocationsView extends Activity {
 				// The view defined in the XML template
 				new int[] { R.id.latitude, R.id.longitude, R.id.tags,
 						R.id.distance });
-		ViewBinder viewBinder = new TagsViewBinder(this, getCurrentLocation());
+		Location curLocation = getCurrentLocation();
+		ViewBinder viewBinder = new TagsViewBinder(this, curLocation);
 		adapter.setViewBinder(viewBinder);
 		mList.setAdapter(adapter);
 	}
@@ -198,7 +202,8 @@ public class LocationsView extends Activity {
 
 		super.onContextItemSelected(item);
 
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
+				.getMenuInfo();
 		switch (item.getItemId()) {
 		case MENU_VIEW:
 			Cursor cursor = (Cursor) mList.getAdapter().getItem(
@@ -268,15 +273,13 @@ public class LocationsView extends Activity {
 		// getContentResolver().insert(Alert.Location.CONTENT_URI, values);
 		// using alert.insert will register alerts automatically.
 		Uri result = Alert.insert(Alert.Location.CONTENT_URI, values);
-		int textId; 
-		if (uri != null){
+		int textId;
+		if (uri != null) {
 			textId = R.string.alert_added;
 		} else {
 			textId = R.string.alert_not_added;
 		}
-		Toast.makeText(this, textId, Toast.LENGTH_SHORT)
-		.show();
-
+		Toast.makeText(this, textId, Toast.LENGTH_SHORT).show();
 
 	}
 
@@ -289,7 +292,8 @@ public class LocationsView extends Activity {
 		Location location = getCurrentLocation();
 
 		if (location == null) {
-			new AlertDialog.Builder(this).setTitle("info").setMessage("curr. location could not be determined").show();
+			new AlertDialog.Builder(this).setTitle("info").setMessage(
+					"curr. location could not be determined").show();
 		} else {
 			mLocation.addLocation(location);
 			fillData();
@@ -300,14 +304,16 @@ public class LocationsView extends Activity {
 	private Location getCurrentLocation() {
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (locationManager != null) {
-			LocationProvider locationProvider = locationManager.getProvider(locationManager.getProviders(true)
-					.get(0));
-			Location location = locationManager
-					.getLastKnownLocation(locationProvider.getName());
-			return location;
-		} else {
-			return null;
+			List<String> providers = locationManager.getProviders(true);
+			if (providers != null && providers.size() > 0) {
+				LocationProvider locationProvider = locationManager
+						.getProvider(providers.get(0));
+				Location location = locationManager
+						.getLastKnownLocation(locationProvider.getName());
+				return location;
+			}
 		}
+		return null;
 	}
 
 	private void tagLocation(long id) {
@@ -320,7 +326,8 @@ public class LocationsView extends Activity {
 			startActivityForResult(intent, TAG_ACTIVITY);
 		} catch (Exception e) {
 			e.printStackTrace();
-			new AlertDialog.Builder(this).setTitle("info").setMessage("tag action failed: " +  e.toString()).show();		
+			new AlertDialog.Builder(this).setTitle("info").setMessage(
+					"tag action failed: " + e.toString()).show();
 		}
 
 	}
@@ -342,15 +349,16 @@ public class LocationsView extends Activity {
 			}
 
 			String locationUri = getGeoString(cursor);
-			addAlert(locationUri, resultIntent.getAction(), resultIntent.getStringExtra(Intents.EXTRA_ACTION), 
-					resultIntent.getStringExtra(Intents.EXTRA_TYPE),
-					resultIntent.getStringExtra(Intents.EXTRA_URI));
+			addAlert(locationUri, resultIntent.getAction(), resultIntent
+					.getStringExtra(Intents.EXTRA_ACTION), resultIntent
+					.getStringExtra(Intents.EXTRA_TYPE), resultIntent
+					.getStringExtra(Intents.EXTRA_URI));
 		}
 	}
 
 	@Override
-	protected void onSaveInstanceState (Bundle outState) {
-		super.onSaveInstanceState (outState);
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
 		outState.putInt(MLAST, mList.getSelectedItemPosition());
 		stopManagingCursor(c);
 	}
