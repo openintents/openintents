@@ -13,19 +13,14 @@ public class MultiWordAutoCompleteTextView extends AutoCompleteTextView {
 	public MultiWordAutoCompleteTextView(Context context) {
 		super(context);
 	}
-
-	@SuppressWarnings("unchecked")
-	public MultiWordAutoCompleteTextView(Context context, AttributeSet attrs,
-			Map inflateParams) {
+	
+	public MultiWordAutoCompleteTextView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		// TODO what happens with inflateParams
 	}
 
-	@SuppressWarnings("unchecked")
 	public MultiWordAutoCompleteTextView(Context context, AttributeSet attrs,
-			Map inflateParams, int defStyle) {
+			 int defStyle) {
 		super(context, attrs, defStyle);
-		// TODO what happens with inflateParams
 	}
 
 	/**
