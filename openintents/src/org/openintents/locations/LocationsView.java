@@ -120,17 +120,21 @@ public class LocationsView extends Activity {
 
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenu.ContextMenuInfo obj) {
-						contextmenu.add(0, MENU_VIEW, R.string.view_location,
-								R.drawable.locations_view001a);
-						contextmenu.add(0, MENU_TAG, R.string.tag_location,
-								R.drawable.locations_favorite_application001a);
-						contextmenu.add(0, MENU_DELETE,
-								R.string.delete_location,
+						contextmenu
+								.add(0, MENU_VIEW, 0, R.string.view_location)
+								.setIcon(R.drawable.locations_view001a);
+						contextmenu
+								.add(0, MENU_TAG, 0, R.string.tag_location)
+								.setIcon(
+										R.drawable.locations_favorite_application001a);
+						contextmenu.add(0, MENU_DELETE, 0,
+								R.string.delete_location).setIcon(
 								R.drawable.locations_delete001a);
-						contextmenu.add(0, MENU_ADD_ALERT, R.string.add_alert,
+						contextmenu.add(0, MENU_ADD_ALERT, 0,
+								R.string.add_alert).setIcon(
 								R.drawable.locations_add_alert001a);
-						contextmenu.add(0, MENU_MANAGE_EXTRAS,
-								R.string.locations_manage_extras,
+						contextmenu.add(0, MENU_MANAGE_EXTRAS, 0,
+								R.string.locations_manage_extras).setIcon(
 								R.drawable.locations_application001a);
 
 					}
