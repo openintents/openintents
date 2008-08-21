@@ -34,16 +34,14 @@ import org.openintents.OpenIntents;
 import org.openintents.provider.Shopping;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.Resources;
 import android.content.DialogInterface.OnCancelListener;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -52,10 +50,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.Contacts;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Menu.Item;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.widget.ArrayAdapter;
@@ -124,7 +123,7 @@ public class PresentPicker extends Activity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.presentpicker_main);
-                
+        
        OpenIntents.requiresOpenIntents(this);
         
 		// Initialize the convenience functions:
@@ -133,6 +132,7 @@ public class PresentPicker extends Activity {
 		Context context = this;
         // Get the Resources object from our context
         Resources res = context.getResources();
+        
     
 		mTabHost = (TabHost)findViewById(R.id.tabhost);
 		mTabHost.setup();
@@ -143,7 +143,7 @@ public class PresentPicker extends Activity {
 		mTabHost.addTab(tabspec);
 		
 		tabspec = mTabHost.newTabSpec("Results");
-		tabspec.setIndicator("Results", res.getDrawable(android.R.drawable.search_icon_default));
+		tabspec.setIndicator("Results", res.getDrawable(android.R.drawable.ic_menu_search));//android.R.drawable.search_icon_default));
 		tabspec.setContent(R.id.content2);
 		mTabHost.addTab(tabspec);
 		
@@ -151,7 +151,7 @@ public class PresentPicker extends Activity {
 		
 		//if (true) return;
 		
-/*
+		/*
         GridView g = (GridView) findViewById(R.id.myGrid);
         g.setAdapter(new ImageAdapter(this));
         */
@@ -246,7 +246,7 @@ public class PresentPicker extends Activity {
         Cursor cursor = content.query(Contacts.People.CONTENT_URI,
                 PEOPLE_PROJECTION, null, null, Contacts.People.DEFAULT_SORT_ORDER);
         ContactListAdapter adapter =
-                new ContactListAdapter(cursor, this);
+                new ContactListAdapter(this, cursor);
 
         mName = (AutoCompleteTextView)
                 findViewById(R.id.name);
@@ -326,14 +326,14 @@ public class PresentPicker extends Activity {
         mViewShoppingList.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View arg0) {
-				Intent intent = new Intent(Intent.VIEW_ACTION, Shopping.Lists.CONTENT_URI);
+				Intent intent = new Intent(Intent.ACTION_VIEW, Shopping.Lists.CONTENT_URI);
 				startActivity(intent);
 			}
         	
         });
         
         // Initial focus shall go to the name field:
-        mName.requestFocus();
+//        mName.requestFocus();
     }
     
     // Handle the process of searching for suitable present:
@@ -394,7 +394,7 @@ public class PresentPicker extends Activity {
 			/* (non-Javadoc)
 			 * @see android.view.View.OnFocusChangeListener#onFocusChanged(android.view.View, boolean)
 			 */		
-			public void onFocusChanged(View v, boolean hasFocus) {
+			public void onFocusChange(View v, boolean hasFocus) {
 				if (hasFocus) {
 					int id = v.getId();
 					mSelection.setText(mPresentStrings[id]);
@@ -420,7 +420,7 @@ public class PresentPicker extends Activity {
         bb.setTextSize(42);
         bb.setTextColor(0xffaa00aa);
         bb.setPadding(0, 0, 0, 0);
-        bb.setTypeface(Typeface.DEFAULT_BOLD_ITALIC);
+        bb.setTypeface(Typeface.DEFAULT_BOLD);
         mLayout.addView(bb);
     }
     
@@ -439,7 +439,8 @@ public class PresentPicker extends Activity {
 		super.onCreateOptionsMenu(menu);
 		
 		// Standard menu
-		menu.add(0, MENU_ABOUT, R.string.about, R.drawable.about001a)
+		menu.add(0, MENU_ABOUT, 0, R.string.about)
+			.setIcon(R.drawable.about001a)
 			.setShortcut('0', 'a');
 		
 		return true;
@@ -450,8 +451,8 @@ public class PresentPicker extends Activity {
 	 * @see android.app.Activity#onOptionsItemSelected(android.view.Menu.Item)
 	 */
 	@Override
-	public boolean onOptionsItemSelected(Item item) {
-		switch (item.getId()) {
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
 		case MENU_ABOUT:
 			showAboutBox();
 			return true;
@@ -473,7 +474,7 @@ public class PresentPicker extends Activity {
 		((ImageButton) mAboutDialog.findViewById(R.id.fasticon))
 			.setOnClickListener(new OnClickListener() {
 				public void onClick(final View v) {
-					Intent i = new Intent(Intent.VIEW_ACTION, 
+					Intent i = new Intent(Intent.ACTION_VIEW, 
 						Uri.parse("http://www.fasticon.com/commercial_license.html"));
 					startActivity(i);
 				}
@@ -499,30 +500,36 @@ public class PresentPicker extends Activity {
     // to make compilation work
     public static class ContactListAdapter
             extends CursorAdapter implements Filterable {
-        public ContactListAdapter(Cursor c, Context context) {
-            super(c, context);
+        public ContactListAdapter(Context context, Cursor c) {
+            super(context, c);
             mContent = context.getContentResolver();
         }
 
         @Override
         public View newView(Context context, Cursor cursor, ViewGroup parent) {
-            TextView view = new TextView(context);
-            view.setText(cursor, 5);
+        	final LayoutInflater inflater = LayoutInflater.from(mContext);
+            final TextView view = (TextView) inflater.inflate(
+                    android.R.layout.simple_dropdown_item_1line, parent, false);
+            view.setText(cursor.getString(5));
             return view;
         }
 
         @Override
         public void bindView(View view, Context context, Cursor cursor) {
-            ((TextView) view).setText(cursor, 5);
+            ((TextView) view).setText(cursor.getString(5));
         }
 
         @Override
-        protected String convertToString(Cursor cursor) {
+        public String convertToString(Cursor cursor) {
             return cursor.getString(5);
         }
 
         @Override
-        protected Cursor runQuery(CharSequence constraint) {
+        public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
+            if (mFilterQueryProvider != null) {
+                return mFilterQueryProvider.runQuery(constraint);
+            }
+
             StringBuilder buffer = null;
             String[] args = null;
             if (constraint != null) {
@@ -543,12 +550,11 @@ public class PresentPicker extends Activity {
 
     private static final String[] PEOPLE_PROJECTION = new String[] {
         Contacts.People._ID,
-        Contacts.People.PREFERRED_PHONE_ID,
+        Contacts.People.PRIMARY_PHONE_ID,
         Contacts.People.TYPE,
         Contacts.People.NUMBER,
         Contacts.People.LABEL,
-        Contacts.People.NAME,
-        Contacts.People.COMPANY
+        Contacts.People.NAME
     };
 	
 	private Integer[] mPresentIds = {

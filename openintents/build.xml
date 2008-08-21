@@ -14,6 +14,9 @@
     <!-- The intermediates directory -->
     <!-- Eclipse uses "bin" for its own output, so we do the same. -->
     <property name="outdir" value="bin" />
+	
+	<!-- Input file for source files to be included in lib javadoc --> 
+	<property file="build-lib-javadoc.txt" /> 
     
     <!-- ************************************************************************************* -->
     <!-- No user servicable parts below. -->
@@ -30,7 +33,7 @@
         <os family="windows"/>
     </condition>
 
-    <property name="external-libs" value="libs" />
+    <property name="external-libs" value="lib" />
     <condition property="external-libs-ospath"
             value="${basedir}\${external-libs}"
             else="${basedir}/${external-libs}" >
@@ -269,5 +272,18 @@
             <arg value="${application-package}" />
         </exec>
     </target>
+	
+	<!-- ############### optionally ####################### -->
+	<!-- ############### openintents-lib.jar ################ -->
+	
+	<!-- Create the library -->
+	<!-- Content is defined in "build-lib-content.txt" -->
+	<target name="lib"  depends="debug" >
+		<jar
+			destfile="${outdir}/openintents-lib.jar"
+			basedir="${outdir-classes}"
+			includesfile="build-lib-content.txt" >
+		</jar>
+	</target> 
 
 </project>

@@ -197,14 +197,14 @@
 						android:layout_height="64dip"
 						android:clickable="true"
 						android:focusable="true"
-						android:background="@android:drawable/button_background"
+						android:background="@android:drawable/btn_default"
 						android:layout_marginTop="10dip"
 						android:layout_marginLeft="90dip"
 						>
 						<ImageView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content" 
-							android:src="@android:drawable/search_icon_default"
+							android:src="@android:drawable/ic_menu_search"
 							android:layout_gravity="center_vertical"
 						 	/>
 						<TextView
@@ -284,7 +284,7 @@
 						android:layout_height="wrap_content"
 						android:clickable="true"
 						android:focusable="true"
-						android:background="@android:drawable/button_background"
+						android:background="@android:drawable/btn_default"
 						android:layout_gravity="center"
 						>
 						<ImageView
@@ -314,7 +314,7 @@
 						android:layout_height="wrap_content"
 						android:clickable="true"
 						android:focusable="true"
-						android:background="@android:drawable/button_background"
+						android:background="@android:drawable/btn_default"
 						android:layout_gravity="center"
 						android:layout_marginLeft="5dip"
 						>
