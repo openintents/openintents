@@ -47,7 +47,8 @@ import android.util.Log;
  */
 public class ShoppingProvider extends ContentProvider {
 
-	private SQLiteOpenHelper mOpenHelper;
+	//private SQLiteOpenHelper mOpenHelper;
+	private DatabaseHelper mOpenHelper;
 
 	private static final String TAG = "ShoppingProvider";
 	private static final String DATABASE_NAME = "shopping.db";
@@ -147,8 +148,8 @@ public class ShoppingProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		DatabaseHelper dbHelper = new DatabaseHelper(getContext());
-		return true;
+		mOpenHelper = new DatabaseHelper(getContext());
+        return true;
 	}
 
 	@Override
