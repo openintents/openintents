@@ -181,7 +181,7 @@ public class OpenIntentsView extends Activity {
         // Add label:
         TextView tv = new TextView(this);
         lp = new LinearLayout.LayoutParams(
-        		80,
+        		85,
         		35);
         lp.bottomMargin = 6;
         tv.setLayoutParams(lp);
@@ -210,7 +210,7 @@ public class OpenIntentsView extends Activity {
         ll.setOrientation(LinearLayout.VERTICAL);
         ll.addView(iv);
         ll.addView(tv);
-//        ll.setBackgroundResource(android.R.drawable.button_background);
+        ll.setBackgroundResource(android.R.drawable.btn_default);
         ll.setFocusable(true);
         ll.setClickable(true);
         ll.setGravity(Gravity.CENTER);
