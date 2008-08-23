@@ -588,14 +588,14 @@ public class ShoppingView
 
 				public void onCreateContextMenu(ContextMenu contextmenu,
 						View view, ContextMenuInfo info) {
-					contextmenu.add(0, MENU_MARK_ITEM, R.string.mark_item,
-			                R.drawable.shoppinglistcleanup001b)
+					contextmenu.add(0, MENU_MARK_ITEM, 0, R.string.mark_item)
+			                .setIcon(R.drawable.shoppinglistcleanup001b)
 			                .setShortcut('1', 'm');
-					contextmenu.add(0, MENU_EDIT_ITEM, R.string.edit_item,
-			                R.drawable.shoppinglistrename001b)
+					contextmenu.add(0, MENU_EDIT_ITEM, 0, R.string.edit_item)
+							.setIcon(R.drawable.shoppinglistrename001b)
 			                .setShortcut('2', 'e');
-					contextmenu.add(0, MENU_DELETE_ITEM, R.string.delete_item,
-			                R.drawable.shoppinglistdelete001b)
+					contextmenu.add(0, MENU_DELETE_ITEM, 0, R.string.delete_item)
+							.setIcon(R.drawable.shoppinglistdelete001b)
 			                .setShortcut('3', 'd');
 				}
 
@@ -754,34 +754,34 @@ public class ShoppingView
         super.onCreateOptionsMenu(menu);
 
         // Standard menu
-        menu.add(0, MENU_NEW_LIST, R.string.new_list,
-                R.drawable.shoppinglistnew001b)
+        menu.add(0, MENU_NEW_LIST, 0, R.string.new_list)
+        		.setIcon(R.drawable.shoppinglistnew001b)
                 .setShortcut('0', 'n');
-        menu.add(0, MENU_CLEAN_UP_LIST, R.string.clean_up_list,
-                R.drawable.shoppinglistcleanup001b)
+        menu.add(0, MENU_CLEAN_UP_LIST, 0, R.string.clean_up_list)
+				.setIcon(R.drawable.shoppinglistcleanup001b)
                 .setShortcut('1', 'c');
-        menu.add(0, MENU_RENAME_LIST, R.string.rename_list, 
-        		R.drawable.shoppinglistrename001b)
+        menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list)
+				.setIcon(R.drawable.shoppinglistrename001b)
         		.setShortcut('2', 'r');;
-        menu.add(0, MENU_DELETE_LIST, R.string.delete_list,
-                R.drawable.shoppinglistdelete001b)
+        menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list)
+				.setIcon(R.drawable.shoppinglistdelete001b)
                 .setShortcut('3', 'd');
        
-        menu.add(0, MENU_SHARE, R.string.share,
-                R.drawable.contact_share001a)
+        menu.add(0, MENU_SHARE, 0, R.string.share)
+				.setIcon(R.drawable.contact_share001a)
                 .setShortcut('4', 's');
         
-        menu.add(0, MENU_THEME, R.string.theme,
-        		R.drawable.shoppinglisttheme001a)
+        menu.add(0, MENU_THEME, 0, R.string.theme)
+				.setIcon(R.drawable.shoppinglisttheme001a)
         		.setShortcut('5', 't');
         
-        menu.add(0, MENU_ADD_LOCATION_ALERT, R.string.shopping_add_alert,
-        		R.drawable.locations_add_alert001a)
+        menu.add(0, MENU_ADD_LOCATION_ALERT, 0, R.string.shopping_add_alert)
+				.setIcon(R.drawable.locations_add_alert001a)
         		.setShortcut('6', 'l');
         
-        menu.add(0, MENU_SENSOR_SERVICE, R.string.shake_control,
-        		R.drawable.mobile_shake001a)
-        .setShortcut('0', 's');
+        menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
+				.setIcon(R.drawable.mobile_shake001a)
+					.setShortcut('0', 's');
         
 
         /*

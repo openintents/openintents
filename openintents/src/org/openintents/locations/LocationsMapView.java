@@ -203,12 +203,12 @@ public class LocationsMapView extends MapActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		boolean superResult = super.onCreateOptionsMenu(menu);
-		menu.add(0, MENU_USE_CENTER, R.string.locations_use_center,
-				R.drawable.location_center001a);
-		menu.add(0, MENU_RESTORE_VALUES, R.string.locations_restore_values,
-				R.drawable.restore001a);
-		menu.add(0, MENU_ABOUT, R.string.about,
-				R.drawable.about001a);
+		menu.add(0, MENU_USE_CENTER, 0, R.string.locations_use_center)
+				.setIcon(R.drawable.location_center001a);
+		menu.add(0, MENU_RESTORE_VALUES, 0, R.string.locations_restore_values)
+		.setIcon(R.drawable.restore001a);
+		menu.add(0, MENU_ABOUT, 0, R.string.about)
+		.setIcon(R.drawable.about001a);
 		return superResult;
 	}
 

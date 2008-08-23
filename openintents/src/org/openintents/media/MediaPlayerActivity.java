@@ -556,9 +556,11 @@ public class MediaPlayerActivity extends Activity implements
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_OPEN_AUDIO, R.string.open_audio, R.drawable.music001a)
+		menu.add(0, MENU_OPEN_AUDIO, 0, R.string.open_audio)
+			.setIcon(R.drawable.music001a)
 			.setShortcut('0', 'o');
-		menu.add(0, MENU_OPEN_VIDEO, R.string.open_video, R.drawable.video002a)
+		menu.add(0, MENU_OPEN_VIDEO, 0, R.string.open_video)
+			.setIcon(R.drawable.video002a)
 		.setShortcut('0', 'o');
 		
 	

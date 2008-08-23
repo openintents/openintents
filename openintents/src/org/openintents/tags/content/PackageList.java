@@ -84,7 +84,8 @@ public class PackageList extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(0, PACKAGE_ADD_ID, R.string.menu_package_add, R.drawable.new_doc).setShortcut('3', 'i');
+		menu.add(0, PACKAGE_ADD_ID, 0, R.string.menu_package_add)
+			.setIcon(R.drawable.new_doc).setShortcut('3', 'i');
 		return true;
 	}
 

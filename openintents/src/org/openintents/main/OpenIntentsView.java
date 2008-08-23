@@ -251,7 +251,8 @@ public class OpenIntentsView extends Activity {
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_ABOUT, R.string.about, R.drawable.about001a)
+		menu.add(0, MENU_ABOUT, 0, R.string.about)
+			.setIcon(R.drawable.about001a)
 			.setShortcut('0', 'a');
 	
 		// Generate any additional actions that can be performed.
