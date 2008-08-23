@@ -521,9 +521,10 @@ public class ShoppingView
 
                 // Shortcut: Instead of pressing the button,
                 // one can also press the "Enter" key.
-                if (key.getAction() == key.ACTION_DOWN &&
-                        keyCode == Integer.parseInt(
-                                getString(R.string.key_return)))
+            	Log.i(TAG, "Key action: " + key.getAction());
+            	Log.i(TAG, "Key code: " + keyCode);
+            	if (key.getAction() == KeyEvent.ACTION_DOWN &&
+                    	keyCode == KeyEvent.KEYCODE_ENTER)
                 {
                     insertNewItem();
                     return true;
@@ -1002,8 +1003,7 @@ public class ShoppingView
                 //Log.i(TAG, "KeyCode: " + keyCode);
 
                 if (key.getAction() == KeyEvent.ACTION_DOWN
-                        && keyCode == Integer
-                        .parseInt(getString(R.string.key_return)))
+                        && keyCode == KeyEvent.KEYCODE_ENTER)
                 {
                 	doListDialogAction(menuAction);
                     return true;

@@ -245,10 +245,6 @@ Earth Technology.
 	<string name="sensor_service_connected">Sensor service connected</string>
 	<string name="sensor_service_disconnected">Sensor service disconnected</string>
 	
-	<!--     Key codes     -->
-	<string name="key_return">64</string>
-	<string name="test">test</string>
-	
 	<!--  alert related  -->
 	<string name="alert_edit">Edit alert</string>
 	<string name="alert_add">Add alert</string>

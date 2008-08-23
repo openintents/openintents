@@ -430,8 +430,7 @@ public class SensorSimulatorView extends Activity {
 				}
 				*/
 				
-				if (key.getAction() == key.ACTION_DOWN && keyCode == Integer
-							.parseInt(getString(R.string.key_return))) {
+				if (key.getAction() == key.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
 					// User pressed "Enter" 
 					int value;
 					try {

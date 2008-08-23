@@ -108,8 +108,7 @@ public class TagsAddView extends Activity {
 				// Shortcut: Instead of pressing the button,
 				// one can also press the "Enter" key.
 				if (key.getAction() == KeyEvent.ACTION_DOWN
-						&& keyCode == Integer
-								.parseInt(getString(R.string.key_return))) {
+						&& keyCode == KeyEvent.KEYCODE_ENTER) {
 					setResult(Activity.RESULT_OK);
 					finish();
 					return true;
