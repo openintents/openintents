@@ -768,9 +768,11 @@ public class ShoppingView
 				.setIcon(R.drawable.shoppinglistdelete001b)
                 .setShortcut('3', 'd');
        
+        /*
         menu.add(0, MENU_SHARE, 0, R.string.share)
 				.setIcon(R.drawable.contact_share001a)
                 .setShortcut('4', 's');
+                */
         
         menu.add(0, MENU_THEME, 0, R.string.theme)
 				.setIcon(R.drawable.shoppinglisttheme001a)
@@ -1232,42 +1234,22 @@ public class ShoppingView
      */
     private void deleteListConfirm()
     {
-    	// TODO ???
-    	/*
-        AlertDialog.show(ShoppingView.this,
-                getString(R.string.delete_list),
-                0, // TODO IconID?
-                getString(R.string.confirm_delete_list),
-                getString(R.string.ok),
-                new DialogInterface.OnClickListener()
-                {
-
-                    public void onClick(DialogInterface di, int whichDialog)
-                    {
-                        Log.i(TAG, "Dialog click on:" + whichDialog);
-                        deleteList();
-                    }
-                },
-                getString(R.string.cancel),
-                new DialogInterface.OnClickListener()
-                {
-
-                    public void onClick(DialogInterface di, int whichDialog)
-                    {
-                        Log.i(TAG, "Dialog click on:" + whichDialog);
-                    }
-                },
-                true,
-                new DialogInterface.OnCancelListener()
-                {
-
-                    public void onCancel(DialogInterface di)
-                    {
-                        // TODO Auto-generated method stub
-                    }
-                });
-                */
-
+    	new AlertDialog.Builder(this)
+        //.setIcon(R.drawable.alert_dialog_icon)
+        .setTitle(R.string.delete_list)
+        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            	// click Ok
+            	deleteList();
+            }
+        })
+        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            	// click Cancel
+            }
+        })
+        //.create()
+        .show();
     }
 
     /**
