@@ -20,8 +20,8 @@ package org.openintents.shopping;
 import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.hardware.SensorEvent;
-import org.openintents.hardware.SensorListener;
-import org.openintents.hardware.SensorListener.OnSensorListener;
+import org.openintents.hardware.SensorEventListener;
+import org.openintents.hardware.SensorEventListener.OnSensorListener;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Lists;
@@ -264,7 +264,7 @@ public class ShoppingView
     
     // Sensor service -----------------
 
-	private SensorListener mSensorListener;
+	private SensorEventListener mSensorListener;
 
     /**
      * Called when the activity is first created.
@@ -293,7 +293,7 @@ public class ShoppingView
         mUpdating = false;
         
         // Sensor service
-        mSensorListener = new SensorListener(this);
+        mSensorListener = new SensorEventListener(this);
         
         // General Uris:
         mListUri = Shopping.Lists.CONTENT_URI;

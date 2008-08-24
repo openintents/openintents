@@ -430,7 +430,7 @@
 		</activity>	
 		
 		<!-- SensorSimulator -->
-		<activity android:name=".hardware.SensorSimulatorView"
+		<activity android:name=".hardware.SensorSimulatorSettingsActivity"
 			android:label="@string/sensorsimulator"
 			android:icon="@drawable/mobile_shake_application001a">
 			<intent-filter>

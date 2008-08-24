@@ -25,20 +25,15 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
+import android.hardware.SensorListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -48,7 +43,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TabHost.TabSpec;
 
@@ -60,21 +54,23 @@ import android.widget.TabHost.TabSpec;
  * @author Peli
  *
  */
-public class SensorSimulatorView extends Activity {
+public class SensorSimulatorSettingsActivity extends Activity implements SensorListener {
 	/**
 	 * TAG for logging.
 	 */
 	private static final String TAG = "Hardware";
 
+    private SensorManager mSensorManager;
+    
 	/**
 	 * Build the menu
 	 */
-	private static final int MENU_UPDATE_INTERVAL = Menu.FIRST;
+	//private static final int MENU_UPDATE_INTERVAL = Menu.FIRST;
 
 	/** 
 	 * Constant for message handling.
 	 */
-	private static final int UPDATE_SENSOR_DATA = 1;
+	//private static final int UPDATE_SENSOR_DATA = 1;
 	
 	// private EditText mEditText;
 	private EditText mEditTextIP;
@@ -101,16 +97,16 @@ public class SensorSimulatorView extends Activity {
 	//private LinearLayout mSettingsBackground;
 	//private LinearLayout mTestingBackground;
 	
-	private int mUpdateInterval;
+	//private int mUpdateInterval;
 	DecimalFormat mDecimalFormat;
 	
 	String[] mSupportedSensors;
-	String[][] mSensorUpdateRates;
+	//String[][] mSensorUpdateRates;
 	
 	/**
 	 * Whether we currently automatically update sensors.
 	 */
-	boolean mUpdatingSensors;
+	//boolean mUpdatingSensors;
 	
 	/**
 	 * Number of supported sensors.
@@ -129,13 +125,13 @@ public class SensorSimulatorView extends Activity {
 	 * (required for determining when enabled
 	 *  sensors have to be updated).
 	 */
-	float[] mSensorUpdateDuration;
+	//float[] mSensorUpdateDuration;
 	
 	/**
 	 * Next sensor update time for that sensor.
 	 * (compared to SystemClock.uptimeMillis().)
 	 */
-	long [] mNextSensorUpdate;
+	//long [] mNextSensorUpdate;
 	
 	/**
 	 * Keep pointers to SingleSensorView
@@ -147,8 +143,14 @@ public class SensorSimulatorView extends Activity {
 	 * If this is set true, then
 	 * SensorData should be read out again.
 	 */
-	boolean[] mInvalidateSensorData;
+	//boolean[] mInvalidateSensorData;
 	
+	String[] mDelayTypes = new String[] { "Fastest", "Game", "UI", "Normal" };
+	int[] mDelayValue = new int[] {
+			SensorManager.SENSOR_DELAY_FASTEST,
+			SensorManager.SENSOR_DELAY_GAME, 
+			SensorManager.SENSOR_DELAY_UI, 
+			SensorManager.SENSOR_DELAY_NORMAL};
     
 	/**
 	 * Dialog: setRefreshDelayDialog.
@@ -177,6 +179,10 @@ public class SensorSimulatorView extends Activity {
 		
 		setContentView(R.layout.sensorsimulator);
 		Hardware.mContentResolver = getContentResolver();
+		
+		// Start with Android's sensor manager
+		//mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		mSensorManager = (SensorManager) new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
 		
 		Context context = this;
         // Get the Resources object from our context
@@ -280,7 +286,7 @@ public class SensorSimulatorView extends Activity {
 		
 		readAllSensors(); // Basic sensor information
 		
-		readAllSensorsUpdate(); // initial reading
+		//readAllSensorsUpdate(); // initial reading
 		
 		mSensorsList = (LinearLayout) findViewById(R.id.sensordatalist);
 		/*
@@ -291,7 +297,7 @@ public class SensorSimulatorView extends Activity {
 		fillSensorList(); // Fills the sensor list manually, giving us more control
 		
 		// Default timer interval
-		mUpdateInterval = 100;
+		//mUpdateInterval = 100;
 		
 		/*
 		// Register all possible focus changes:
@@ -310,8 +316,20 @@ public class SensorSimulatorView extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        
+        mSensorManager.registerListener(this, 
+                SensorManager.SENSOR_ACCELEROMETER | 
+                SensorManager.SENSOR_MAGNETIC_FIELD | 
+                SensorManager.SENSOR_ORIENTATION,
+                SensorManager.SENSOR_DELAY_FASTEST);
     }
 
+    @Override
+    protected void onStop() {
+        mSensorManager.unregisterListener(this);
+        super.onStop();
+    }
+    
     /**
      * Called when another activity is started.
      */
@@ -335,7 +353,8 @@ public class SensorSimulatorView extends Activity {
 		
 		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
 			// new values
-			Sensors.mClient.disconnect();
+	        mSensorManager.unregisterListener(this);
+			SensorManagerSimulator.mClient.disconnect();
 			
 			// Save the values
 			Hardware.setPreference(Hardware.IPADDRESS, newIP);
@@ -372,8 +391,8 @@ public class SensorSimulatorView extends Activity {
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_UPDATE_INTERVAL, 0, R.string.set_update_interval)
-			.setShortcut('0', 'r');
+		//menu.add(0, MENU_UPDATE_INTERVAL, 0, R.string.set_update_interval)
+		//	.setShortcut('0', 'r');
 
 		return true;
 	}
@@ -388,9 +407,9 @@ public class SensorSimulatorView extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case MENU_UPDATE_INTERVAL:
-			setUpdateIntervalDialog();
-			return true;	
+		//case MENU_UPDATE_INTERVAL:
+		//	setUpdateIntervalDialog();
+		//	return true;	
 		}
 		return super.onOptionsItemSelected(item);		
 	}
@@ -401,12 +420,13 @@ public class SensorSimulatorView extends Activity {
 	/**
 	 * Opens a dialog to set the update interval.
 	 */
+	/*
 	private void setUpdateIntervalDialog() {
 		
 		// TODO Shall we implement this as action?
 		// Then other applications may call this as well.
 
-		mDialog = new Dialog(SensorSimulatorView.this);
+		mDialog = new Dialog(SensorSimulatorSettingsActivity.this);
 		
 		mDialog.setContentView(R.layout.input_box);
 		
@@ -428,7 +448,7 @@ public class SensorSimulatorView extends Activity {
 					// undo red marking of wrong number (if existed)
 					editText.setBackground(Color.WHITE);					
 				}
-				*/
+				* /
 				
 				if (key.getAction() == key.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
 					// User pressed "Enter" 
@@ -480,11 +500,11 @@ public class SensorSimulatorView extends Activity {
 		
 		mDialog.show();
 	}
-
+*/
 	///////////////////////////////////////
 	
 	public void connect() {
-		
+		Log.i(TAG, "Connect");
 		String newIP = mEditTextIP.getText().toString();
 		String newSocket = mEditTextSocket.getText().toString();
 		String oldIP = Hardware.getPreference(Hardware.IPADDRESS);
@@ -498,29 +518,32 @@ public class SensorSimulatorView extends Activity {
 		
 		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
 			// new values
-			Sensors.mClient.disconnect();
+	        mSensorManager.unregisterListener(this);
+			SensorManagerSimulator.mClient.disconnect();
 			
 			// Save the values
 			Hardware.setPreference(Hardware.IPADDRESS, newIP);
 			Hardware.setPreference(Hardware.SOCKET, newSocket);
 		}
 		
-		if (! Sensors.mClient.connected )
-			Sensors.mClient.connect();
+		if (! SensorManagerSimulator.mClient.connected ) {
+			Log.i(TAG, "Not connected yet -> Connect");
+			SensorManagerSimulator.mClient.connect();
+		}
 		
 		readAllSensors();
 		
 		//if (disableEnable) 
 		//enableAllSensors();
 		
-		readAllSensorsUpdate();
+		//readAllSensorsUpdate();
 		
 		// Hardware.mContentResolver = getContentResolver();
 		// Hardware.setPreference("remote IP", "1.2.3.4");
 		
 		setButtonState();
 		
- 		if (Sensors.mClient.connected) {
+ 		if (SensorManagerSimulator.mClient.connected) {
 			mTextSensorType.setText(R.string.sensor_simulator_data);
 		} else {
 			mTextSensorType.setText(R.string.real_device_data);
@@ -554,18 +577,19 @@ public class SensorSimulatorView extends Activity {
 		//if (disableEnable) 
 		//enableAllSensors();
 		
-		Sensors.mClient.disconnect();
+        mSensorManager.unregisterListener(this);
+		SensorManagerSimulator.mClient.disconnect();
 
 		//if (disableEnable)
 		//disableAllSensors();
 		
 		readAllSensors();
 		
-		readAllSensorsUpdate();
+		//readAllSensorsUpdate();
 		
 		setButtonState();
 		
- 		if (Sensors.mClient.connected) {
+ 		if (((SensorManagerSimulator) mSensorManager).mClient.connected) {
 			mTextSensorType.setText(R.string.sensor_simulator_data);
 		} else {
 			mTextSensorType.setText(R.string.real_device_data);
@@ -581,7 +605,7 @@ public class SensorSimulatorView extends Activity {
 	}
 	
 	public void setButtonState() {
-		boolean connected = Sensors.mClient.connected;
+		boolean connected = ((SensorManagerSimulator) mSensorManager).mClient.connected;
 		mButtonConnect.setEnabled(!connected);
 		
 		mButtonDisconnect.setEnabled(connected);
@@ -620,6 +644,23 @@ public class SensorSimulatorView extends Activity {
      * Reads information about which sensors are supported and what their rates and current rates are.
      */
 	public void readAllSensors() {
+		
+        //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		
+        //mSensorManager.getSensors();
+        Log.d(TAG, "Sensors: " + mSensorManager.getSensors());
+        Log.d(TAG, "Connected: " + SensorManagerSimulator.mClient.connected);
+        
+        int sensors = mSensorManager.getSensors();
+        Log.d(TAG, "sensors: " + sensors);
+        
+        mSupportedSensors = SensorSimulatorClient.getSensorNames(sensors);
+        Log.d(TAG, "mSupportedSensors: " + mSupportedSensors);
+        
+		// Now set values that are related to sensor updates:
+		mNumSensors = mSupportedSensors.length;
+        
+		/*
 		// Get current sensors
 		mSupportedSensors = Sensors.getSupportedSensors();
 		
@@ -663,10 +704,34 @@ public class SensorSimulatorView extends Activity {
 			mSingleSensorView[i] = null;
 			mInvalidateSensorData[i] = true;
 		}
+		*/
 		
 	}
 	
-
+	public void onSensorChanged(int sensor, float[] values) {
+        //Log.d(TAG, "onSensorChanged: " + sensor + ", x: " + values[0] + ", y: " + values[1] + ", z: " + values[2]);
+        
+        // Update the display
+        for (int i = 0; i < mNumSensors; i++) {
+        	if (mSingleSensorView[i].mSensorBit == sensor) {
+        		// Update this view
+        		String data = "";
+        		int num = SensorManagerSimulator.mClient.getNumSensorValues(sensor);
+        		
+        		for (int j = 0; j < num; j++) {
+        			data += mDecimalFormat.format(values[j]);
+        			if (j < num-1) data += ", ";
+        		}
+        		//Log.d(TAG, "onSensorChanged - setText: " + i + ": " + data);
+                	
+        		mSingleSensorView[i].mTextView.setText(data);
+        		break;
+        	}
+        }
+        
+	}
+	
+	/*
 	public String getSensorValuesString(String sensor, boolean isEnabled) {
 		String data;
 		if (isEnabled) {
@@ -686,14 +751,15 @@ public class SensorSimulatorView extends Activity {
 		}
 		return data;
 	}
+	*/
 	
 	/**
 	 * Updates the data read from the sensors.
-	 */
+	 *//*
 	public void readAllSensorsUpdate() {
 		Log.i(TAG, "readAllSensors()");
 		String data = "";
-/*
+
  		if (Sensors.mClient.connected) {
 			//data += getString(R.string.sensor_simulator_data) + "\n";
 			mTextSensorType.setText(R.string.sensor_simulator_data);
@@ -704,7 +770,7 @@ public class SensorSimulatorView extends Activity {
 			mTextSensorType.setText(R.string.real_device_data);
 			//mImageSensorType.setImageResource(R.drawable.realdevice01a);
 		}
-*/
+* /
 		/*
 		for (String sensor : mSupportedSensors) {
 			data += sensor + ":";
@@ -722,7 +788,7 @@ public class SensorSimulatorView extends Activity {
 			}
 			data += "\n";
 		}
-		*/
+		* /
 		
 		/*  /// COMMENTED OUT: May cause confusion...
 		// only update field if user is not trying to do anything in the text field.
@@ -730,12 +796,12 @@ public class SensorSimulatorView extends Activity {
 			// update info.
 			mEditText.setText(data);
 		}
-		*/
+		* /
 		/*
 		mEditText.setText(data);
-		*/
+		* /
 		
-	}
+	}*/
 
 	/*/*
 	 * Notification about corrupt table
@@ -764,6 +830,7 @@ public class SensorSimulatorView extends Activity {
 	*/
 	
 	// Handle the process of automatically updating enabled sensors:
+	/*
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -835,10 +902,12 @@ public class SensorSimulatorView extends Activity {
             }
         }
     };
+    */
 
     /** 
      * Fills the sensor list with currently active sensors.
      */
+	
     void fillSensorList() {
     	// First clean the list
     	mSensorsList.removeAllViews();
@@ -848,11 +917,14 @@ public class SensorSimulatorView extends Activity {
     	int max = mSupportedSensors.length;
     	mSingleSensorView = new SingleSensorView[max];
     	
+    	Log.i(TAG, "fillSensorList: " + max);
     	for (int i=0; i < max; i++) {
+    		int sensorbit = SensorSimulatorClient.getSensorsFromNames(new String[] {mSupportedSensors[i]});
     		SingleSensorView ssv = 
     			new SingleSensorView(this, 
     					mSupportedSensors[i], 
-    					mSensorUpdateRates[i], i);
+    					sensorbit,
+    					i);
     		ssv.setLayoutParams(new LinearLayout.LayoutParams(
     				LinearLayout.LayoutParams.FILL_PARENT,
     				LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -860,6 +932,7 @@ public class SensorSimulatorView extends Activity {
     		mSingleSensorView[i] = ssv;
     	}
     }
+    
     
 //    /**
 //     * Adapter for displaying information about single sensors.
@@ -967,7 +1040,8 @@ public class SensorSimulatorView extends Activity {
         
         int mSensorId;
         String mSensor;
-        String[] mUpdateRates;
+        int mSensorBit;
+        //String[] mUpdateRates;
         
         /**
          * Index of the default value in the list (spinner) for the 
@@ -976,14 +1050,15 @@ public class SensorSimulatorView extends Activity {
          */
         int mDefaultValueIndex;
 		
-    	public SingleSensorView(Context context, String sensor, String[] updateRates, int sensorId) {
+    	public SingleSensorView(Context context, String sensor, int sensorbit, /*String[] updateRates, */int sensorId) {
     		super(context);
     		Log.i(TAG, "SingleSensorView - constructor");
     		
     		mContext = context;
     		mSensorId = sensorId;
     		mSensor = sensor;
-    		mUpdateRates = updateRates;
+    		mSensorBit = sensorbit;
+    		//mUpdateRates = updateRates;
     		mDefaultValueIndex = -1;  // -1 means there is no default index.
     		
     		// Build child view from resource:
@@ -1005,16 +1080,16 @@ public class SensorSimulatorView extends Activity {
     		
     		mSpinner = (Spinner) rowView.findViewById(R.id.updaterate);
     		mUpdateRateAdapter = new ArrayAdapter<String>(
-                    context, android.R.layout.simple_spinner_item, updateRates);
+                    context, android.R.layout.simple_spinner_item, mDelayTypes);
             mUpdateRateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             mSpinner.setAdapter(mUpdateRateAdapter);
-            	        
+            
     		addView(rowView, new LinearLayout.LayoutParams(
         			LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
     		
     		updateSensorStateInformation();   
 
-    		updateSensorValues();
+    		//updateSensorValues();
     	}
     	
 //    	public void setSensor(String sensor, String[] updateRates, int sensorId) {
@@ -1070,9 +1145,11 @@ public class SensorSimulatorView extends Activity {
 //        }
     	
     	public void updateSensorStateInformation() {
+    		/*
     		boolean sensorEnabled = SensorsPlus.isEnabledSensor(mSensor);
     		mCheckBox.setChecked(sensorEnabled);
-    		
+    		*/
+    		/*
     		if (sensorEnabled) {
     			// Refresh: start with no default value.
     			mDefaultValueIndex = -1;
@@ -1114,14 +1191,15 @@ public class SensorSimulatorView extends Activity {
     			}
     			
     		}
-    		
+    		*/
+    		/*
     		// Now we set a new onSelectListener:
     		mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				/**
 				 * Select a new update rate for a sensor.
 				 * @see android.widget.AdapterView$OnItemSelectedListener#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
-				 */    			
+				 * /    			
 				public void onItemSelected(AdapterView parent, View v,
 						int position, long id) {
 					if (mSensorEnabled[mSensorId]) {
@@ -1168,23 +1246,29 @@ public class SensorSimulatorView extends Activity {
 				}
     			
     		});
-    		
+    		*/
     		// And we add a listener for the CheckBox:
     		mCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
     			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     				
     				if (isChecked) {
-    					Sensors.enableSensor(mSensor);
+    					//Sensors.enableSensor(mSensor);
+    					int pos = mSpinner.getSelectedItemPosition();
+    					int updateRate = mDelayValue[pos];
+    					mSensorManager.registerListener(SensorSimulatorSettingsActivity.this, mSensorBit, updateRate);
     				} else {
-    					Sensors.disableSensor(mSensor);
+    					//Sensors.disableSensor(mSensor);
+
+    					mSensorManager.unregisterListener(SensorSimulatorSettingsActivity.this, mSensorBit);
     				}
     				
-    				mSensorEnabled[mSensorId] = isChecked;
+    				//mSensorEnabled[mSensorId] = isChecked;
     				
     				updateSensorStateInformation();
     				
-    				updateSensorValues();
+    				//updateSensorValues();
     				
+    				/*
     				if (isChecked) {
     					// get the current Sensor update duration:
     					setSensorUpdateDuration();
@@ -1213,7 +1297,7 @@ public class SensorSimulatorView extends Activity {
     					mUpdatingSensors = testUpdate;
     					if (! mUpdatingSensors) Log.i(TAG,"Stopping timer");
     				}
-    			
+    			*/
     			}    			
     		});
     		
@@ -1223,15 +1307,17 @@ public class SensorSimulatorView extends Activity {
     		
     	}
 
+    	/*
     	public void updateSensorValues() {
     		// Update the values for the sensor text:
 			mTextView.setText(getSensorValuesString(mSensor, mCheckBox.isChecked()));
     	}
+    	*/
     	
     	/**
     	 * Determines the duration ( = 1000 ms /rate) to be used
     	 * in automatic data updates.
-    	 */
+    	 *//*
     	void setSensorUpdateDuration() {
 			// get the current Sensor rate:
     		float rate;
@@ -1250,7 +1336,7 @@ public class SensorSimulatorView extends Activity {
 				mSensorUpdateDuration[mSensorId] = 0;
 			}
 			
-    	}
+    	}*/
     }
 	
 }

@@ -17,7 +17,7 @@
 package org.openintents.hardware;
 
 import org.openintents.R;
-import org.openintents.hardware.SensorListener.OnSensorListener;
+import org.openintents.hardware.SensorEventListener.OnSensorListener;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class SensorServiceSettingsActivity extends Activity {
 	 */
 	private static final String TAG = "SensorServiceSettingsActivity";
 
-	SensorListener mSensorListener;
+	SensorEventListener mSensorListener;
 	
     TextView mCallbackText;
 
@@ -50,7 +50,7 @@ public class SensorServiceSettingsActivity extends Activity {
 
         setContentView(R.layout.sensor_service_settings);
         
-        mSensorListener = new SensorListener(this);
+        mSensorListener = new SensorEventListener(this);
 
         // Watch for button clicks.
         Button button = (Button)findViewById(R.id.bind);

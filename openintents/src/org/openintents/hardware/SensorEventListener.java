@@ -24,7 +24,7 @@ import android.widget.Toast;
  * @author Peli
  *
  */
-public class SensorListener {
+public class SensorEventListener {
 	
 	/**
 	 * TAG for logging.
@@ -49,7 +49,7 @@ public class SensorListener {
      */
     ConcurrentLinkedQueue<SensorEvent> mEventQueue;
     
-	public SensorListener(Context context) {
+	public SensorEventListener(Context context) {
 		mIsBound = false;
 		mContext = context;
 		mEventQueue = new ConcurrentLinkedQueue<SensorEvent>();
