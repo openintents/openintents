@@ -139,7 +139,7 @@ public class Sensors /*extends android.hardware.Sensors*/ {
 		if (mClient.connected) {
 			return mClient.getSupportedSensors();
 		} else {
-			return null; //android.hardware.Sensors.getSupportedSensors();
+			return new String[] {}; //android.hardware.Sensors.getSupportedSensors();
 		}
 	}
 
