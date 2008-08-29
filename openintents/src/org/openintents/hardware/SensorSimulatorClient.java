@@ -104,7 +104,11 @@ public class SensorSimulatorClient {
         	Log.e(TAG, "Connection time out: " + ipaddress + " : " + socket);
         	return;
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to: x.x.x.x.");
+            Log.e(TAG, "Couldn't get I/O for the connection to: " + ipaddress + " : " + socket);
+            Log.e(TAG, "---------------------------------------------------------------");
+            Log.e(TAG, "Do you have the following permission in your manifest?");
+            Log.e(TAG, "<uses-permission android:name=\"android.permission.INTERNET\"/>");
+            Log.e(TAG, "---------------------------------------------------------------");
             System.exit(1);
         }
 

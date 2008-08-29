@@ -3,12 +3,16 @@ package org.openintents.samples.openglsensors;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGL11;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 import javax.microedition.khronos.opengles.GL10;
 
-import org.openintents.hardware.Sensors;
-
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.OpenGLContext;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -50,6 +54,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
         // underlying surface is created and destroyed 
         mHolder = getHolder();
         mHolder.addCallback(this);
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
@@ -112,6 +117,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 
     class GLThread extends Thread {
         private boolean mDone;
+        private boolean mSizeChanged = true;
         private int mWidth;
         private int mHeight;
         
@@ -153,31 +159,48 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
     
         @Override
         public void run() {
-            /* 
-             * Create an OpenGL|ES context. This must be done only once, an
-             * OpenGL context is a somewhat heavy object.
+        	/*
+             * Get an EGL instance
              */
-            OpenGLContext glc = new OpenGLContext( OpenGLContext.DEPTH_BUFFER );
+            EGL10 egl = (EGL10)EGLContext.getEGL();
             
             /*
-             * Before we can issue GL commands, we need to make sure 
-             * the context is current and bound to a surface.
+             * Get to the default display.
              */
-            SurfaceHolder holder = mHolder;
-            glc.makeCurrent(holder);
-            
-            /*
-             * First, we need to get to the appropriate GL interface.
-             * This is simply done by casting the GL context to either
-             * GL10 or GL11.
-             */
-            GL10 gl = (GL10)(glc.getGL());
+            EGLDisplay dpy = egl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
 
             /*
-             * Some one-time OpenGL initialization can be made here
-             * probably based on features of this particular context
+             * We can now initialize EGL for that display
              */
-             gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_FASTEST);
+            int[] version = new int[2];
+            egl.eglInitialize(dpy, version);
+
+            /*
+             * Specify a configuration for our opengl session
+             * and grab the first configuration that matches is
+             */
+            int[] configSpec = {
+                    EGL10.EGL_RED_SIZE,      5,
+                    EGL10.EGL_GREEN_SIZE,    6,
+                    EGL10.EGL_BLUE_SIZE,     5,
+                    EGL10.EGL_DEPTH_SIZE,   16,
+                    EGL10.EGL_NONE
+            };
+            EGLConfig[] configs = new EGLConfig[1];
+            int[] num_config = new int[1];
+            egl.eglChooseConfig(dpy, configSpec, configs, 1, num_config);
+            EGLConfig config = configs[0];
+
+
+            /* 
+             * Create an OpenGL ES context. This must be done only once, an
+             * OpenGL context is a somewhat heavy object.
+             */
+            EGLContext context = egl.eglCreateContext(dpy, config,
+                    EGL10.EGL_NO_CONTEXT, null);
+            
+            EGLSurface surface = null;
+            GL10 gl = null;
 
 
             // This is our main acquisition thread's loop, we go until
@@ -214,64 +237,128 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
                 
                 // Update the asynchronous state (window size, key events)
                 int w, h;
+                boolean changed;
                 synchronized(this) {
+                	changed = mSizeChanged;
                     w = mWidth;
                     h = mHeight;
+                    mSizeChanged = false;
+                }
+
+                if (changed) {
+                    
+                    /*
+                     *  The window size has changed, so we need to create a new
+                     *  surface.
+                     */
+                    if (surface != null) {
+                        
+                        /*
+                         * Unbind and destroy the old EGL surface, if
+                         * there is one.
+                         */
+                        egl.eglMakeCurrent(dpy, EGL10.EGL_NO_SURFACE,
+                                EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+                        egl.eglDestroySurface(dpy, surface);
+                    }
+                    
+                    /* 
+                     * Create an EGL surface we can render into.
+                     */
+                    surface = egl.eglCreateWindowSurface(dpy, config, mHolder,
+                            null);
+        
+                    /*
+                     * Before we can issue GL commands, we need to make sure 
+                     * the context is current and bound to a surface.
+                     */
+                    egl.eglMakeCurrent(dpy, surface, surface, context);
+                    
+                    /*
+                     * Get to the appropriate GL interface.
+                     * This is simply done by casting the GL context to either
+                     * GL10 or GL11.
+                     */
+                    gl = (GL10)context.getGL();
+                   
+                    /*
+                     * By default, OpenGL enables features that improve quality
+                     * but reduce performance. One might want to tweak that
+                     * especially on software renderer.
+                     */
+                    gl.glDisable(GL10.GL_DITHER);
+        
+                    /*
+                     * Some one-time OpenGL initialization can be made here
+                     * probably based on features of this particular context
+                     */
+                     gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT,
+                             GL10.GL_FASTEST);
+        
+                     gl.glClearColor(1,1,1,1);
+                     gl.glEnable(GL10.GL_CULL_FACE);
+                     gl.glShadeModel(GL10.GL_SMOOTH);
+                     gl.glEnable(GL10.GL_DEPTH_TEST);
+ 
+                     gl.glViewport(0, 0, w, h);
+
+                     /*
+                      * Set our projection matrix. This doesn't have to be done
+                      * each time we draw, but usually a new projection needs to
+                      * be set when the viewport is resized.
+                      */
+
+                     float ratio = (float)w / h;
+                     gl.glMatrixMode(GL10.GL_PROJECTION);
+                     gl.glLoadIdentity();
+                     gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10);
                 }
 
                 /* draw a frame here */
-                drawFrame(gl, w, h);
+                drawFrame(gl);
 
                 /*
-                 * Once we're done with GL, we need to call post()
+                 * Once we're done with GL, we need to call swapBuffers()
+                 * to instruct the system to display the rendered frame
                  */
-                glc.post();
+                egl.eglSwapBuffers(dpy, surface);
+
+                /*
+                 * Always check for EGL_CONTEXT_LOST, which means the context
+                 * and all associated data were lost (For instance because
+                 * the device went to sleep). We need to quit immediately.
+                 */
+                if (egl.eglGetError() == EGL11.EGL_CONTEXT_LOST) {
+                    // we lost the gpu, quit immediately
+                    Context c = getContext();
+                    if (c instanceof Activity) {
+                        ((Activity)c).finish();
+                    }
+                }
+
             }
-            
-            glc.makeCurrent((SurfaceHolder)null);
+
+            /*
+             * clean-up everything...
+             */
+            egl.eglMakeCurrent(dpy, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE,
+                    EGL10.EGL_NO_CONTEXT);
+            egl.eglDestroySurface(dpy, surface);
+            egl.eglDestroyContext(dpy, context);
+            egl.eglTerminate(dpy);
         }
         
-        private void drawFrame(GL10 gl, int w, int h) {
-            gl.glViewport(0, 0, w, h);
-        
-            /*
-             * Set our projection matrix. This doesn't have to be done
-             * each time we draw, but usualy a new projection needs to be set
-             * when the viewport is resized.
-             */
-
-            float ratio = (float)w / h;
-            gl.glMatrixMode(GL10.GL_PROJECTION);
-            gl.glLoadIdentity();
-            gl.glFrustumf(-ratio, ratio, -1, 1, 2, 12);
-
-            /*
-             * By default, OpenGL enables features that improve quality
-             * but reduce performance. One might want to tweak that
-             * especially on software renderer.
-             */
-            gl.glDisable(GL10.GL_DITHER);
-            gl.glActiveTexture(GL10.GL_TEXTURE0);
-            gl.glBindTexture(GL10.GL_TEXTURE_2D, 0);
-            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
-            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
-            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MAG_FILTER, GL10.GL_NEAREST);
-            gl.glTexParameterx(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
-            gl.glTexEnvx(GL10.GL_TEXTURE_ENV, GL10.GL_TEXTURE_ENV_MODE, GL10.GL_REPLACE);
-
-            /*
+        private void drawFrame(GL10 gl) {
+        	/*
              * Usually, the first thing one might want to do is to clear
              * the screen. The most efficient way of doing this is to use
-             * glClear(). However we must make sure to set the scissor
-             * correctly first. The scissor is always specified in window
-             * coordinates:
+             * glClear().
              */
 
-            gl.glClearColor(1,1,1,1);
             gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 
             /*
-             * Now we're ready to draw some 3D object
+             * Now we're ready to draw some 3D objects
              */
 
             gl.glMatrixMode(GL10.GL_MODELVIEW);
@@ -281,10 +368,10 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             gl.glScalef(0.5f, 0.5f, 0.5f);
             
             gl.glColor4f(0.7f, 0.7f, 0.7f, 1.0f);
-            gl.glEnableClientState(gl.GL_VERTEX_ARRAY);
-            gl.glEnableClientState(gl.GL_COLOR_ARRAY);
-            gl.glEnable(gl.GL_CULL_FACE);
-            gl.glEnable(gl.GL_DEPTH_TEST);
+            gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+            gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
+            gl.glEnable(GL10.GL_CULL_FACE);
+            gl.glEnable(GL10.GL_DEPTH_TEST);
 
             synchronized(this) {
             	if (mUseSensors)
@@ -355,7 +442,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 	            final int num = 3; // we known that there are 3 values.
 				float[] val = new float[num];
 				try {
-					Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
+//TODO					Sensors.readSensor(Sensors.SENSOR_ORIENTATION, val);
             	} catch (IllegalStateException e) {
 					// Currently not enabled:
 					val[0] = 0;
@@ -386,7 +473,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 	            final int num = 3; // we known that there are 3 values.
 				float[] val = new float[num];
 				try {
-					Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
+//TODO					Sensors.readSensor(Sensors.SENSOR_ACCELEROMETER, val);
 				} catch (IllegalStateException e) {
 					// Currently not enabled:
 					val[0] = 0;
@@ -415,7 +502,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
 	            final int num = 3; // we known that there are 3 values.
 				float[] val = new float[num];
 				try {
-					Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
+//TODO					Sensors.readSensor(Sensors.SENSOR_COMPASS, val);
 	            } catch (IllegalStateException e) {
 					// Currently not enabled:
 					val[0] = 0;
@@ -445,6 +532,7 @@ public class GLSurfaceView extends SurfaceView implements SurfaceHolder.Callback
             synchronized(this) {
                 mWidth = w;
                 mHeight = h;
+                mSizeChanged = true;
             }
         }
         

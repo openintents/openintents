@@ -19,7 +19,7 @@ public class SensorManagerSimulator extends SensorManager {
 	
 	private SensorManager mSensorManager = null;
 	
-	SensorManagerSimulator(SensorManager systemsensormanager) {
+	public SensorManagerSimulator(SensorManager systemsensormanager) {
 		super((Looper) null);
 		mSensorManager = systemsensormanager;
 	}
@@ -67,6 +67,23 @@ public class SensorManagerSimulator extends SensorManager {
 		} else {
 			mSensorManager.unregisterListener(listener);
 		}
+	}
+	
+
+	//  Member function extensions:
+	/**
+	 * Connect to the Sensor Simulator.
+	 * (All the settings should have been set already.)
+	 */
+	public static void connectSimulator() {
+		mClient.connect();
+	};
+	
+	/**
+	 * Disconnect from the Sensor Simulator.
+	 */
+	public static void disconnectSimulator() {
+		mClient.disconnect();
 	}
 
 }

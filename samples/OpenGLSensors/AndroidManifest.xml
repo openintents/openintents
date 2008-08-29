@@ -17,6 +17,9 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.samples.openglsensors">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application android:icon="@drawable/openglsensors_application001a">
         <activity android:name=".OpenGLSensors" android:label="@string/openglsensors_app_name">
             <intent-filter>

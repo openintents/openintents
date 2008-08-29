@@ -31,19 +31,21 @@ package org.openintents.samples.openglsensors;
  * lib/openintents-lib-n.n.n.jar. 
  */
 import org.openintents.OpenIntents;
-import org.openintents.hardware.Sensors;
+import org.openintents.hardware.SensorManagerSimulator;
 import org.openintents.provider.Hardware;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.hardware.SensorListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.SubMenu;
-import android.view.Menu.Item;
 
 
 /**
@@ -60,7 +62,7 @@ import android.view.Menu.Item;
  *
  */
 
-public class OpenGLSensors extends Activity {
+public class OpenGLSensors extends Activity implements SensorListener {
 	/**
 	 * TAG for logging.
 	 */
@@ -87,7 +89,8 @@ public class OpenGLSensors extends Activity {
 	 */
 	private static final int UPDATE_ANIMATION = 1;
 	
-	
+    private SensorManager mSensorManager;
+    
 	private boolean mConnected;
 	
 	private boolean mAccelerometerSupported;
@@ -143,6 +146,9 @@ public class OpenGLSensors extends Activity {
         // Before calling any of the Simulator data,
         // the Content resolver has to be set !!
         Hardware.mContentResolver = getContentResolver();
+        
+        //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+		mSensorManager = (SensorManager) new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
 		
         // TODO: Sensors.isSimulatorConnected() should be implemented 
         // and used here.
@@ -167,6 +173,12 @@ public class OpenGLSensors extends Activity {
         super.onResume();
        	Log.i(TAG, "onResume()");
                
+        mSensorManager.registerListener(this, 
+                SensorManager.SENSOR_ACCELEROMETER | 
+                SensorManager.SENSOR_MAGNETIC_FIELD | 
+                SensorManager.SENSOR_ORIENTATION,
+                SensorManager.SENSOR_DELAY_FASTEST);
+        
         // Actually, the following should only be called
         // after holdAnimation(), but a quickfix allows
         // us to call this method once at start
@@ -187,8 +199,8 @@ public class OpenGLSensors extends Activity {
 	 * @see android.app.Activity#onFreeze(android.os.Bundle)
 	 */
 	@Override
-	protected void onFreeze(Bundle outState) {
-		super.onFreeze(outState);
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
     	Log.i(TAG, "onFreeze()");
 		
 		// Hold the animation to save CPU consumtion
@@ -204,6 +216,7 @@ public class OpenGLSensors extends Activity {
 	@Override
 	protected void onStop()
     {
+        mSensorManager.unregisterListener(this);
         super.onStop();
         
     }
@@ -216,39 +229,38 @@ public class OpenGLSensors extends Activity {
 		super.onCreateOptionsMenu(menu);
 
 		// Standard menu
-		menu.add(0, MENU_SETTINGS, R.string.openglsensors_settings, R.drawable.mobile_shake_settings001a)
+		menu.add(0, MENU_SETTINGS, 0, R.string.openglsensors_settings)
+			.setIcon(R.drawable.mobile_shake_settings001a)
 			.setShortcut('0', 's');
-		menu.add(0, MENU_CONNECT_SIMULATOR, R.string.connect_simulator, R.drawable.mobile_shake001a)
+		menu.add(1, MENU_CONNECT_SIMULATOR, 0, R.string.connect_simulator)
+			.setIcon(R.drawable.mobile_shake001a)
 			.setShortcut('1', 'c');
 		
 		
 		SubMenu menuSensor;
-		menuSensor = menu.addSubMenu(0, MENU_SENSOR, R.string.sensor_type, R.drawable.mobile_shake001a);
-		menuSensor.add(0, MENU_SENSOR_NOT_AVAILABLE, R.string.not_available);
-		menuSensor.add(0, MENU_SENSOR_ACCELEROMETER, R.string.accelerometer);
-		menuSensor.add(0, MENU_SENSOR_COMPASS, R.string.compass);
-		menuSensor.add(0, MENU_SENSOR_ACCELEROMETER_COMPASS, 
-				R.string.accelerometer_compass);
-		menuSensor.add(0, MENU_SENSOR_ORIENTATION, R.string.orientation);
+		menuSensor = menu.addSubMenu(2, MENU_SENSOR, 0, R.string.sensor_type)
+			.setIcon(R.drawable.mobile_shake001a);
+		menuSensor.add(0, MENU_SENSOR_NOT_AVAILABLE, 0, R.string.not_available).setCheckable(true);
+		menuSensor.add(0, MENU_SENSOR_ACCELEROMETER, 0, R.string.accelerometer).setCheckable(true);
+		menuSensor.add(0, MENU_SENSOR_COMPASS, 0, R.string.compass).setCheckable(true);
+		menuSensor.add(0, MENU_SENSOR_ACCELEROMETER_COMPASS, 0,
+				R.string.accelerometer_compass).setCheckable(true);
+		menuSensor.add(0, MENU_SENSOR_ORIENTATION, 0, R.string.orientation).setCheckable(true);
 		//menuSensor.add(0, MENU_SENSOR_ORIENTATION_COMPASS, R.string.orientation_compass);
 		
 		// Generate any additional actions that can be performed on the
         // overall list.  This allows other applications to extend
         // our menu with their own actions.
         Intent intent = new Intent(null, getIntent().getData());
-        intent.addCategory(Intent.ALTERNATIVE_CATEGORY);
+        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
         menu.addIntentOptions(
-            Menu.ALTERNATIVE, 0, new ComponentName(this, OpenGLSensors.class),
+            Menu.CATEGORY_ALTERNATIVE, 0, 0, new ComponentName(this, OpenGLSensors.class),
             null, intent, 0, null);
         
         // Set checkable items:
-        menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
+        menu.setGroupCheckable(1, true, false);
 
-		menu.setItemCheckable(MENU_SENSOR_ACCELEROMETER, true);
-		menu.setItemCheckable(MENU_SENSOR_COMPASS, true);
-		menu.setItemCheckable(MENU_SENSOR_ACCELEROMETER_COMPASS,  true);
-		menu.setItemCheckable(MENU_SENSOR_ORIENTATION, true);
-		menu.setItemCheckable(MENU_SENSOR_ORIENTATION_COMPASS, true);
+		menu.setGroupCheckable(2, true, false);
 
 		return true;
 	}
@@ -257,44 +269,35 @@ public class OpenGLSensors extends Activity {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
 				
-        menu.setItemChecked(MENU_CONNECT_SIMULATOR, mConnected);
+        //menu.setItemChecked(MENU_CONNECT_SIMULATOR, mConnected);
         if (mConnected) {
         	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Disconnect");
         }else {
         	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Connect");	
         }
         
-
-        menu.setItemShown(MENU_SENSOR_NOT_AVAILABLE, 
-        		!(mAccelerometerSupported
-        			|| mCompassSupported
-        			|| mOrientationSupported));
-		menu.setItemShown(MENU_SENSOR_ACCELEROMETER, mAccelerometerSupported);
-		menu.setItemShown(MENU_SENSOR_COMPASS, mCompassSupported);
-		menu.setItemShown(MENU_SENSOR_ACCELEROMETER_COMPASS, 
-				mAccelerometerSupported && mCompassSupported);
-		menu.setItemShown(MENU_SENSOR_ORIENTATION, mOrientationSupported);
-		//menu.setItemShown(MENU_SENSOR_ORIENTATION_COMPASS, 
-		//		mOrientationSupported && mCompassSupported);
+        menu.findItem(MENU_SENSOR_NOT_AVAILABLE).setVisible(!(mAccelerometerSupported
+    			|| mCompassSupported
+    			|| mOrientationSupported));
+        menu.findItem(MENU_SENSOR_ACCELEROMETER).setVisible(mAccelerometerSupported);
+		menu.findItem(MENU_SENSOR_COMPASS).setVisible(mCompassSupported);
+		menu.findItem(MENU_SENSOR_ACCELEROMETER_COMPASS)
+				.setVisible(mAccelerometerSupported && mCompassSupported);
+		menu.findItem(MENU_SENSOR_ORIENTATION).setVisible(mOrientationSupported);
         
-		menu.setItemChecked(MENU_SENSOR_ACCELEROMETER, 
-				mUseAccelerometer && !mUseCompass);
-		menu.setItemChecked(MENU_SENSOR_COMPASS, 
-				mUseCompass && !mUseAccelerometer);
-		menu.setItemChecked(MENU_SENSOR_ACCELEROMETER_COMPASS,  
-				mUseAccelerometer && mUseCompass);
-		menu.setItemChecked(MENU_SENSOR_ORIENTATION, 
-				mUseOrientation);
-		//menu.setItemChecked(MENU_SENSOR_ORIENTATION_COMPASS,  
-		//		mUseOrientation && mUseCompass);
+		menu.findItem(MENU_SENSOR_ACCELEROMETER).setChecked(mUseAccelerometer && !mUseCompass);
+		menu.findItem(MENU_SENSOR_COMPASS).setChecked(mUseCompass && !mUseAccelerometer);
+		menu.findItem(MENU_SENSOR_ACCELEROMETER_COMPASS).setChecked(mUseAccelerometer && mUseCompass);
+		menu.findItem(MENU_SENSOR_ORIENTATION).setChecked(mUseOrientation);
+        
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(Item item) {
-		switch (item.getId()) {
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
 		case MENU_SETTINGS:
-			Intent intent = new Intent(Intent.VIEW_ACTION, Hardware.Preferences.CONTENT_URI);
+			Intent intent = new Intent(Intent.ACTION_VIEW, Hardware.Preferences.CONTENT_URI);
 			startActivity(intent);
 			return true;
 			
@@ -304,10 +307,10 @@ public class OpenGLSensors extends Activity {
 			
 			if (!mConnected) {
 				// now connect to simulator
-				Sensors.connectSimulator();
+				SensorManagerSimulator.connectSimulator();
 			} else {
 				// or disconnect to simulator
-				Sensors.disconnectSimulator();				
+				SensorManagerSimulator.disconnectSimulator();				
 			}
 			
 			// check again which sensors are now supported:
@@ -367,24 +370,13 @@ public class OpenGLSensors extends Activity {
 	 * Get sensor capabilities
 	 */
 	public void findSupportedSensors() {
-		mAccelerometerSupported
-			= isSupportedSensor(Sensors.SENSOR_ACCELEROMETER);
-		mCompassSupported
-			= isSupportedSensor(Sensors.SENSOR_COMPASS);
-		mOrientationSupported
-			= isSupportedSensor(Sensors.SENSOR_ORIENTATION);
-	}
-	
-	// TODO: Use SensorPlus function
-	/**
-	 *  Check whether a specific sensor is supported.
-	 */
-	public boolean isSupportedSensor(String sensor) {
-		String[] sensors = Sensors.getSupportedSensors();
-		for (String s : sensors) {
-			if (s.contentEquals(sensor)) return true;
-		};
-		return false;
+		
+		int sensors = mSensorManager.getSensors();
+		
+		mOrientationSupported = ((sensors & SensorManager.SENSOR_ORIENTATION) != 0);
+		mAccelerometerSupported = ((sensors & SensorManager.SENSOR_ACCELEROMETER) != 0);
+		mCompassSupported = ((sensors & SensorManager.SENSOR_MAGNETIC_FIELD) != 0);
+		
 	}
 
 	/**
@@ -395,24 +387,19 @@ public class OpenGLSensors extends Activity {
 		// by GLSurfaceView
 		mGLSurfaceView.stopUseSensors();
         
-		if (mUseAccelerometer)
-			Sensors.disableSensor(Sensors.SENSOR_ACCELEROMETER);
-		if (mUseCompass)
-			Sensors.disableSensor(Sensors.SENSOR_COMPASS);
-		if (mUseOrientation)
-			Sensors.disableSensor(Sensors.SENSOR_ORIENTATION);
+        mSensorManager.unregisterListener(this);
 	}
 	
 	/**
 	 * Enable all sensors that we want to use.
 	 */
 	public void enableAllSensors() {
-		if (mUseAccelerometer)
-			Sensors.enableSensor(Sensors.SENSOR_ACCELEROMETER);
-		if (mUseCompass)
-			Sensors.enableSensor(Sensors.SENSOR_COMPASS);
-		if (mUseOrientation)
-			Sensors.enableSensor(Sensors.SENSOR_ORIENTATION);	
+
+        mSensorManager.registerListener(this, 
+                SensorManager.SENSOR_ACCELEROMETER | 
+                SensorManager.SENSOR_MAGNETIC_FIELD | 
+                SensorManager.SENSOR_ORIENTATION,
+                SensorManager.SENSOR_DELAY_FASTEST);
 		
 		// Now enable access to sensors
 		// by GLSurfaceView
@@ -428,10 +415,10 @@ public class OpenGLSensors extends Activity {
 	    // use the best sensor available:
 	    useSensorsReset();
 	    
+	    /*
 	    // Quick fix for error message
 	    // that only appears with Orientation sensor:
 	    //    E/Sensors ( 2547): Couldn't open /dev/input/event3, error = -1
-	    
 	    
 	    if (mAccelerometerSupported) {
 	    	mUseAccelerometer = true;
@@ -447,8 +434,9 @@ public class OpenGLSensors extends Activity {
 	    	mUseOrientation = true;
 	    	return;
 	    }
+	    */
 	    
-	    /*
+	    
 	    if (mOrientationSupported) {
 	    	// the best is orientation
 	    	mUseOrientation = true;
@@ -458,7 +446,7 @@ public class OpenGLSensors extends Activity {
 	    	if (mAccelerometerSupported) mUseAccelerometer = true;
 	       	if (mCompassSupported) mUseCompass = true;
 	    }
-	    */
+	    
     }
     
     /** 
@@ -526,6 +514,71 @@ public class OpenGLSensors extends Activity {
             }
         }
     };
+    
+
+	public void onSensorChanged(int sensor, float[] values) {
+        //Log.d(TAG, "onSensorChanged: " + sensor + ", x: " + values[0] + ", y: " + values[1] + ", z: " + values[2]);
+		boolean graphicsupdate = false;
+		
+		switch(sensor) {
+		case SensorManager.SENSOR_ORIENTATION:
+			// Assign mYaw, mPitch, and mRoll.
+			// Negative angles are used, because we have to
+			// "undo" the rotations that brought the mobile phone
+			// into its current position.
+			if (mUseOrientation) {
+				mGLSurfaceView.mYaw = -values[0];
+				mGLSurfaceView.mPitch = -values[1];
+				mGLSurfaceView.mRoll = -values[2];
+				graphicsupdate = true;
+			}
+			break;
+
+		case SensorManager.SENSOR_ACCELEROMETER:
+			// We can only let the pyramid point up,
+        	// but we can not obtain information about the mYaw.
+        	
+        	// (strictly speaking, we can only adjust two of the three
+        	//  variables (mYaw, mPitch, and mRoll). Since the
+        	//  standard orientation is to point down (-z), we
+        	//  choose to calculate mPitch and mRoll as the 
+        	//  deviation from that standard position.)
+			
+			// we can only adjust mPitch and mRoll:
+			if (mUseAccelerometer) {
+				double r = Math.sqrt(values[0]*values[0] + values[2]*values[2]);
+				mGLSurfaceView.mYaw = 0;
+				mGLSurfaceView.mPitch = (float) - Math.toDegrees(Math.atan2(-values[1], r));
+				mGLSurfaceView.mRoll = (float) - Math.toDegrees(Math.atan2(values[0], -values[2]));	
+				graphicsupdate = true;
+			}
+			break;
+
+		case SensorManager.SENSOR_MAGNETIC_FIELD:
+			// We can only adjust the compass to point
+        	// along the magnetic field, but we can not
+        	// say where "up" is.
+        	// Since the expected standard orientation is
+        	// to point north (that is in +y direction),
+        	// we use the information to adjust 
+        	// mCompassYaw and mCompassPitch,
+        	// but we don't know mCompassRoll.
+			
+			// we can only adjust mYaw and mPitch:
+			if (mUseCompass) {
+				double r = Math.sqrt(values[1]*values[1] + values[2]*values[2]);
+				mGLSurfaceView.mCompassYaw = (float) - Math.toDegrees(Math.atan2(-values[0], r));	
+				mGLSurfaceView.mCompassPitch = (float) - Math.toDegrees(Math.atan2(-values[2], values[1]));
+				graphicsupdate = true;
+			}
+			break;
+		}
+		
+		if (graphicsupdate) {
+			boolean change = mGLSurfaceView.doAnimation();
+		}
+        
+	}
 
 }
 

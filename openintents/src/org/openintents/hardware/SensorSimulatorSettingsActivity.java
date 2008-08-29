@@ -519,7 +519,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
 			// new values
 	        mSensorManager.unregisterListener(this);
-			SensorManagerSimulator.mClient.disconnect();
+			SensorManagerSimulator.disconnectSimulator();
 			
 			// Save the values
 			Hardware.setPreference(Hardware.IPADDRESS, newIP);
@@ -528,7 +528,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		if (! SensorManagerSimulator.mClient.connected ) {
 			Log.i(TAG, "Not connected yet -> Connect");
-			SensorManagerSimulator.mClient.connect();
+			SensorManagerSimulator.connectSimulator();
 		}
 		
 		readAllSensors();
@@ -578,7 +578,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		//enableAllSensors();
 		
         mSensorManager.unregisterListener(this);
-		SensorManagerSimulator.mClient.disconnect();
+		SensorManagerSimulator.disconnectSimulator();
 
 		//if (disableEnable)
 		//disableAllSensors();
@@ -605,7 +605,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	}
 	
 	public void setButtonState() {
-		boolean connected = ((SensorManagerSimulator) mSensorManager).mClient.connected;
+		boolean connected = SensorManagerSimulator.mClient.connected;
 		mButtonConnect.setEnabled(!connected);
 		
 		mButtonDisconnect.setEnabled(connected);
