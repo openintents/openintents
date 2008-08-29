@@ -62,51 +62,20 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 
     private SensorManager mSensorManager;
     
-	/**
-	 * Build the menu
-	 */
-	//private static final int MENU_UPDATE_INTERVAL = Menu.FIRST;
-
-	/** 
-	 * Constant for message handling.
-	 */
-	//private static final int UPDATE_SENSOR_DATA = 1;
-	
-	// private EditText mEditText;
 	private EditText mEditTextIP;
 	private EditText mEditTextSocket;
 	
 	// Indicators whether real device or sensor simulator is connected.
 	private TextView mTextSensorType;
 	
-	//private ImageView mImageSensorType;
-	
-	
 	private Button mButtonConnect;
 	private Button mButtonDisconnect;
 	
-	//private CheckBox mCheckBoxEnable;
-	//private CheckBox mCheckBoxAutoUpdate;
-	
 	private LinearLayout mSensorsList;
-	/*
-	private ListView mSensorsList;
-	private SensorListAdapter mSensorListAdapter;
-	*/
 	
-	//private LinearLayout mSettingsBackground;
-	//private LinearLayout mTestingBackground;
-	
-	//private int mUpdateInterval;
 	DecimalFormat mDecimalFormat;
 	
 	String[] mSupportedSensors;
-	//String[][] mSensorUpdateRates;
-	
-	/**
-	 * Whether we currently automatically update sensors.
-	 */
-	//boolean mUpdatingSensors;
 	
 	/**
 	 * Number of supported sensors.
@@ -121,29 +90,10 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	boolean[] mSensorEnabled;
 	
 	/**
-	 * Current sensor update duration (inverse of rate).
-	 * (required for determining when enabled
-	 *  sensors have to be updated).
-	 */
-	//float[] mSensorUpdateDuration;
-	
-	/**
-	 * Next sensor update time for that sensor.
-	 * (compared to SystemClock.uptimeMillis().)
-	 */
-	//long [] mNextSensorUpdate;
-	
-	/**
 	 * Keep pointers to SingleSensorView
 	 * so that we can update sensor data regularly.
 	 */
 	SingleSensorView[] mSingleSensorView;
-	
-	/**
-	 * If this is set true, then
-	 * SensorData should be read out again.
-	 */
-	//boolean[] mInvalidateSensorData;
 	
 	String[] mDelayTypes = new String[] { "Fastest", "Game", "UI", "Normal" };
 	int[] mDelayValue = new int[] {
@@ -223,44 +173,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		setButtonState();
 		
-		/*
-		mCheckBoxEnable = (CheckBox) findViewById(R.id.checkenable);
-		mCheckBoxEnable.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				
-				enableAllSensors(isChecked);
-				
-				readAllSensors();
-				
-				Log.i(TAG, "start" + isChecked);
-				if (isChecked) {
-					// start the timer for automatic update:
-					mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_SENSOR_DATA), mUpdateInterval);
-				}
-			}
-		});
-		*/
-		
-		/*
-		mCheckBoxAutoUpdate = (CheckBox) findViewById(R.id.checkautoupdate);
-		// default is on:
-		mCheckBoxAutoUpdate.setSelected(true);
-		mCheckBoxAutoUpdate.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if (isChecked) {
-					readAllSensors();
-					
-					// Start timer again:
-					mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_SENSOR_DATA), 50);
-					
-					// Check some exceptions here:
-					//Sensors.disableSensor(Sensors.SENSOR_ACCELEROMETER);
-					//Sensors.getNumSensorValues(Sensors.SENSOR_ACCELEROMETER);
-					//Sensors.getNumSensorValues("foo");
-				}
-			}
-		});
-		*/
 		
 		mEditTextIP.setText(Hardware.getPreference(Hardware.IPADDRESS));
 		String s = Hardware.getPreference(Hardware.SOCKET);
@@ -270,15 +182,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		mEditTextSocket.setText(s);
 		
 		mTextSensorType = (TextView) findViewById(R.id.datatype);
-		/*
-		mImageSensorType = (ImageView) findViewById(R.id.imagetype);
-		*/
-		
-		/*
-		mSettingsBackground = (LinearLayout) findViewById(R.id.settings_background);
-		mTestingBackground = (LinearLayout) findViewById(R.id.testing_background);
-		*/
-		
 		
 		// Format for output of data
 		mDecimalFormat = new DecimalFormat("#0.00");
@@ -286,28 +189,10 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		readAllSensors(); // Basic sensor information
 		
-		//readAllSensorsUpdate(); // initial reading
-		
 		mSensorsList = (LinearLayout) findViewById(R.id.sensordatalist);
-		/*
-		 * // Let' try without SensorListAdapter
-		mSensorListAdapter = new SensorListAdapter(this);
-		mSensorsList.setAdapter(mSensorListAdapter);
-		*/
+
 		fillSensorList(); // Fills the sensor list manually, giving us more control
 		
-		// Default timer interval
-		//mUpdateInterval = 100;
-		
-		/*
-		// Register all possible focus changes:
-		mEditText.setOnFocusChangeListener(this);
-		mEditTextIP.setOnFocusChangeListener(this);
-		mEditTextSocket.setOnFocusChangeListener(this);
-		mButtonConnect.setOnFocusChangeListener(this);
-		mButtonDisconnect.setOnFocusChangeListener(this);
-		mCheckBoxEnable.setOnFocusChangeListener(this);
-		*/
 	}
 	
 	/**
@@ -362,26 +247,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		}
 	}
-
-	
-	/**
-	 * Implement the OnFocusChangeListener interface
-	 */
-	/*
-	public void onFocusChanged(View v, boolean hasFocus) {
-		int id = v.getId();
-		if (id == R.id.ipaddress
-				|| id == R.id.socket) {
-			// Focus in settings area:
-			mSettingsBackground.setBackground(R.drawable.border_orange_01b);
-			mTestingBackground.setBackground(R.drawable.border_gray_01b);
-		} else {
-			// Focus in testing area:
-			mSettingsBackground.setBackground(R.drawable.border_gray_01b);
-			mTestingBackground.setBackground(R.drawable.border_orange_01b);
-		}
-	}
-	*/
 	
     ////////////////////////////////////////////////////////
     // The menu
@@ -389,10 +254,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-
-		// Standard menu
-		//menu.add(0, MENU_UPDATE_INTERVAL, 0, R.string.set_update_interval)
-		//	.setShortcut('0', 'r');
 
 		return true;
 	}
@@ -407,9 +268,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		//case MENU_UPDATE_INTERVAL:
-		//	setUpdateIntervalDialog();
-		//	return true;	
 		}
 		return super.onOptionsItemSelected(item);		
 	}
@@ -417,90 +275,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	///////////////////////////////////////
 	// Menu related functions
 
-	/**
-	 * Opens a dialog to set the update interval.
-	 */
-	/*
-	private void setUpdateIntervalDialog() {
-		
-		// TODO Shall we implement this as action?
-		// Then other applications may call this as well.
-
-		mDialog = new Dialog(SensorSimulatorSettingsActivity.this);
-		
-		mDialog.setContentView(R.layout.input_box);
-		
-		mDialog.setTitle(getString(R.string.ask_update_interval));
-		
-		EditText et = (EditText) mDialog.findViewById(R.id.edittext);
-		et.setText("" + mUpdateInterval);
-		et.selectAll();
-		
-		// Accept OK also when user hits "Enter"
-		et.setOnKeyListener(new OnKeyListener() {
-			
-			public boolean onKey(final View v, final int keyCode, 
-					final KeyEvent key) {
-				//Log.i(TAG, "KeyCode: " + keyCode);
-				EditText editText = (EditText) mDialog.findViewById(R.id.edittext);
-				/*
-				if (key.isDown()) {
-					// undo red marking of wrong number (if existed)
-					editText.setBackground(Color.WHITE);					
-				}
-				* /
-				
-				if (key.getAction() == key.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-					// User pressed "Enter" 
-					int value;
-					try {
-						value = Integer.parseInt(editText.getText().toString());
-					} catch (NumberFormatException e) {
-						// wrong user input in box - take default values.
-						//value = defaultValue;
-						//editText.setBackground(Color.RED);
-						//editText.setBackgroundColor(Color.RED);
-						return true; // no dismiss
-					}
-					mUpdateInterval = value;
-					mDialog.dismiss();
-					return true;	
-				}
-				return false;
-			}
-			
-		});
-		
-		
-		Button bOk = (Button) mDialog.findViewById(R.id.ok);
-		bOk.setOnClickListener(new OnClickListener() {
-			public void onClick(final View v) {
-				EditText editText = (EditText) mDialog.findViewById(R.id.edittext);
-				int value;
-				try {
-					value = Integer.parseInt(editText.getText().toString());
-				} catch (NumberFormatException e) {
-					// wrong user input in box - take default values.
-					//value = defaultValue;
-					editText.setBackgroundColor(Color.RED);
-					return; // no dismiss
-				}
-				mUpdateInterval = value;
-					
-				mDialog.dismiss();
-			}
-		});
-		
-		Button bCancel = (Button) mDialog.findViewById(R.id.cancel);
-		bCancel.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				mDialog.cancel();
-			}
-		});
-		
-		mDialog.show();
-	}
-*/
 	///////////////////////////////////////
 	
 	public void connect() {
@@ -509,12 +283,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		String newSocket = mEditTextSocket.getText().toString();
 		String oldIP = Hardware.getPreference(Hardware.IPADDRESS);
 		String oldSocket = Hardware.getPreference(Hardware.SOCKET);
-		
-		//boolean disableEnable = false; // first disable, then enable
-		// if (mCheckBoxEnable.isChecked()) disableEnable = true;
-		
-		//if (disableEnable) enableAllSensors(false);
-		//disableAllSensors();
 		
 		if (! (newIP.contentEquals(oldIP) && newSocket.contentEquals(oldSocket)) ) {
 			// new values
@@ -533,14 +301,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		readAllSensors();
 		
-		//if (disableEnable) 
-		//enableAllSensors();
-		
-		//readAllSensorsUpdate();
-		
-		// Hardware.mContentResolver = getContentResolver();
-		// Hardware.setPreference("remote IP", "1.2.3.4");
-		
 		setButtonState();
 		
  		if (SensorManagerSimulator.mClient.connected) {
@@ -548,7 +308,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		} else {
 			mTextSensorType.setText(R.string.real_device_data);
 		}
-
  		
  		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  		// TODO Is this an Android bug?? notifyDataSetChanged()
@@ -572,20 +331,11 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	
 	public void disconnect() {
 		boolean disableEnable = false; // first disable, then enable
-		// if (mCheckBoxEnable.isChecked()) disableEnable = true;
-		
-		//if (disableEnable) 
-		//enableAllSensors();
 		
         mSensorManager.unregisterListener(this);
 		SensorManagerSimulator.disconnectSimulator();
-
-		//if (disableEnable)
-		//disableAllSensors();
 		
 		readAllSensors();
-		
-		//readAllSensorsUpdate();
 		
 		setButtonState();
 		
@@ -595,12 +345,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 			mTextSensorType.setText(R.string.real_device_data);
 		}
 
- 		/*
-		// Now notify the ListAdapter of the changes:
-		mSensorListAdapter.notifyDataSetChanged();
-		//mSensorListAdapter.notifyDataSetInvalidated();
-		 */
- 		
  		fillSensorList();
 	}
 	
@@ -613,41 +357,12 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		mButtonConnect.invalidate();
 		mButtonDisconnect.invalidate();
 	}
-/*
-    public void enableAllSensors(boolean newEnabledState) {
-		// Enable all sensors:
-		for (String sensor : mSupportedSensors) {
-			if (newEnabledState) {
-				Sensors.enableSensor(sensor);
-			} else {
-				Sensors.disableSensor(sensor);
-			}
-		};
-	}
-    */
-	
-//    public void enableAllSensors() {
-//		// Enable all sensors:
-//		for (String sensor : mSupportedSensors) {
-//			Sensors.enableSensor(sensor);
-//		};
-//	}
-//    
-//    public void disableAllSensors() {
-//		// Enable all sensors:
-//		for (String sensor : mSupportedSensors) {
-//			Sensors.disableSensor(sensor);
-//		};
-//	}
     
     /**
      * Reads information about which sensors are supported and what their rates and current rates are.
      */
 	public void readAllSensors() {
 		
-        //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		
-        //mSensorManager.getSensors();
         Log.d(TAG, "Sensors: " + mSensorManager.getSensors());
         Log.d(TAG, "Connected: " + SensorManagerSimulator.mClient.connected);
         
@@ -660,52 +375,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		// Now set values that are related to sensor updates:
 		mNumSensors = mSupportedSensors.length;
         
-		/*
-		// Get current sensors
-		mSupportedSensors = Sensors.getSupportedSensors();
-		
-		// Now obtain the sensor rates:
-		int max = mSupportedSensors.length;
-		mSensorUpdateRates = new String[max][];
-		for (int i=0; i<max; i++) {
-			String sensor = mSupportedSensors[i];
-			float[] rate = Sensors.getSensorUpdateRates(sensor);
-			
-			if (rate == null) {
-				mSensorUpdateRates[i] = new String[1];
-				mSensorUpdateRates[i][0] = "N/A";  // TODO: from resource
-			} else {
-				// Convert the floats to strings:
-				int maxj = rate.length;
-				mSensorUpdateRates[i] = new String[maxj];
-				for (int j=0; j<maxj; j++) {
-					mSensorUpdateRates[i][j] = "" + rate[j];
-				}
-			}
-		}
-		
-		// Now set values that are related to sensor updates:
-		mNumSensors = mSupportedSensors.length;
-		
-		// Set all fields:
-		// (Hmmm.. probably this could all be packed into a single class...)
-		// (Maybe the SingleSensorView defined below?!?)
-		mSensorEnabled = new boolean[mNumSensors];
-		mSensorUpdateDuration = new float[mNumSensors];
-		mNextSensorUpdate = new long[mNumSensors];
-		mSingleSensorView = new SingleSensorView[mNumSensors];
-		mInvalidateSensorData = new boolean[mNumSensors];
-		
-		// Some default values:
-		for (int i=0; i < mNumSensors; i++) {
-			mSensorEnabled[i] = false;
-			mSensorUpdateDuration[i] = 0;
-			mNextSensorUpdate[i] = 0;
-			mSingleSensorView[i] = null;
-			mInvalidateSensorData[i] = true;
-		}
-		*/
-		
 	}
 	
 	public void onSensorChanged(int sensor, float[] values) {
@@ -731,178 +400,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
         
 	}
 	
-	/*
-	public String getSensorValuesString(String sensor, boolean isEnabled) {
-		String data;
-		if (isEnabled) {
-			data = "";
-			int num = Sensors.getNumSensorValues(sensor);
-			float[] val = new float[num];
-			Sensors.readSensor(sensor, val);
-			for (int j=0; j<num; j++) {
-				data += mDecimalFormat.format(val[j]);
-				if (j < num-1) data += ", ";
-			}
-			//Log.i(TAG, "mTextView: " + mTextView.getText());
-		} else {
-			// Sensor disabled:
-			// Mark it in the text:
-			data = getString(R.string.disabled);
-		}
-		return data;
-	}
-	*/
-	
-	/**
-	 * Updates the data read from the sensors.
-	 *//*
-	public void readAllSensorsUpdate() {
-		Log.i(TAG, "readAllSensors()");
-		String data = "";
-
- 		if (Sensors.mClient.connected) {
-			//data += getString(R.string.sensor_simulator_data) + "\n";
-			mTextSensorType.setText(R.string.sensor_simulator_data);
-			//mImageSensorType.setImageResource(R.drawable.sensorsimulator01b);
-			
-		} else {
-			//data += getString(R.string.real_device_data) + "\n";
-			mTextSensorType.setText(R.string.real_device_data);
-			//mImageSensorType.setImageResource(R.drawable.realdevice01a);
-		}
-* /
-		/*
-		for (String sensor : mSupportedSensors) {
-			data += sensor + ":";
-		
-			if (mCheckBoxEnable.isChecked()) {
-				int num = Sensors.getNumSensorValues(sensor);
-				float[] val = new float[num];
-				Sensors.readSensor(sensor, val);
-				for (int j=0; j<num; j++) {
-					data += " " + mDecimalFormat.format(val[j]);
-					if (j < num-1) data += ",";
-				}
-			} else {
-				data += " " + getString(R.string.disabled);
-			}
-			data += "\n";
-		}
-		* /
-		
-		/*  /// COMMENTED OUT: May cause confusion...
-		// only update field if user is not trying to do anything in the text field.
-		if (!mEditText.isFocused()) {
-			// update info.
-			mEditText.setText(data);
-		}
-		* /
-		/*
-		mEditText.setText(data);
-		* /
-		
-	}*/
-
-	/*/*
-	 * Notification about corrupt table
-	 *//*
-	private void notifyCorruptTable() {
-		AlertDialog.show(SensorSimulatorView.this, 
-			getString(R.string.delete_list),
-			getString(R.string.confirm_delete_list), 
-			getString(R.string.ok),
-			new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface di, int whichDialog) {
-				}
-			},
-			getString(R.string.cancel),
-			new DialogInterface.OnClickListener() {
-				
-				public void onClick(DialogInterface di, int whichDialog) {
-				}
-			},
-			true, 
-			new DialogInterface.OnCancelListener() {
-				public void onCancel(DialogInterface di) {
-				}				
-			});
-	}
-	*/
-	
-	// Handle the process of automatically updating enabled sensors:
-	/*
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == UPDATE_SENSOR_DATA) {
-            	// Let us go through all sensors,
-            	// and only read out the data if it is time for
-            	// that particular sensor.
-            	
-            	long current = SystemClock.uptimeMillis();
-                
-            	for (int i=0; i < mNumSensors; i++) {
-            		if (mSensorEnabled[i] 
-            		    && (current >= mNextSensorUpdate[i])) {
-            			// do the update:
-            			
-            			// We first look for the correct child
-            			//SingleSensorView ssv = (SingleSensorView) mSensorsList.findViewById(i);
-            			//SingleSensorView ssv = 
-            		//		(SingleSensorView) mSensorsList.findViewWithTag(mSupportedSensors[i]);
-            			SingleSensorView ssv = 
-            				(SingleSensorView) mSensorsList.getChildAt(i);
-            			
-            			if (ssv != null) {
-            				// in the child we update the text view
-                			TextView tv = (TextView) ssv.findViewById(R.id.sensordata);
-                			if (tv != null) {
-                				//tv.setText("OK" + current);
-                				ssv.updateSensorValues();
-                			}
-            			}
-            			
-            			
-            			if (mSingleSensorView[i] != null) {
-            				//mSingleSensorView[i].updateSensorValues();
-            				// Force a redraw of sensor data:
-            				//mSensorListAdapter
-            				//mSensorListAdapter.
-            				//mSensorsList.invalidate();
-            				//mSensorListAdapter.notifyDataSetChanged();
-            				
-
-                        	
-            			}
-            			
-            			// Update all:
-            			mInvalidateSensorData[i] = true;
-        				
-                    	//mSensorsList.invalidateViews();
-            			
-            			// Set next update time:
-            			mNextSensorUpdate[i] += mSensorUpdateDuration[i];
-            			//Log.i(TAG, "mSensorUpdateDuration[" + i + "] = " + mSensorUpdateDuration[i]);
-            			
-            			// Now in case we are already behind the schedule,
-            			// so the following update as soon as possible
-            			// (but don't drag behind schedule forever -
-            			//  i.e. skip the updates that are already past.)
-            			if (mNextSensorUpdate[i] < current) mNextSensorUpdate[i] = current;
-            		}
-            	}
-            	
-				
-                // readAllSensorsUpdate();
-            	
-                if (mUpdatingSensors) {
-                	// Autoupdate
-                	sendMessageDelayed(obtainMessage(UPDATE_SENSOR_DATA), mUpdateInterval);
-                }
-            }
-        }
-    };
-    */
 
     /** 
      * Fills the sensor list with currently active sensors.
@@ -933,91 +430,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
     	}
     }
     
-    
-//    /**
-//     * Adapter for displaying information about single sensors.
-//     * 
-//     */
-//    private class SensorListAdapter extends BaseAdapter {
-//
-//        /**
-//         * Remember our context so we can use it when constructing views.
-//         */
-//        private Context mContext;
-//        
-//        public SensorListAdapter(Context context) {
-//            mContext = context;
-//        }
-//
-//        public int getCount() {
-//        	Log.i(TAG, "SensorListAdapater - getCount()");
-//            return mSupportedSensors.length;
-//        }
-//
-//        public Object getItem(int position) {
-//        	Log.i(TAG, "SensorListAdapater - getItem()");
-//            return position;
-//        }
-//
-//        /**
-//         * We use the array index as a unique id.
-//         */
-//        public long getItemId(int position) {
-//        	Log.i(TAG, "SensorListAdapater - getItemId()");
-//            return position;
-//        }
-//
-//        /**
-//         * 
-//         */
-//        public View getView(int position, View convertView, ViewGroup parent) {
-//        	Log.i(TAG, "SensorListAdapater - getView(" + position + ")");
-//        	SingleSensorView sv;
-//            if (convertView == null) {
-//                sv = new SingleSensorView(mContext, mSupportedSensors[position], mSensorUpdateRates[position], position);
-//            } else {
-//                sv = (SingleSensorView) convertView;
-//                sv.setSensor(mSupportedSensors[position],  mSensorUpdateRates[position], position);               
-//            }
-//
-//            return sv;
-//        }
-//        
-//        
-//		@Override
-//		public void notifyDataSetChanged() {
-//			// TODO Auto-generated method stub
-//			Log.i(TAG,"notifyDataSetChanged called");
-//			super.notifyDataSetChanged();
-//			Log.i(TAG,"notifyDataSetChanged super called");
-//			/*
-//			// We can not call super as this will trigger
-//			// a strange mode.
-//			// We will update everything by hand:
-//
-//			for (int i=0; i<mNumSensors; i++) {
-//				SingleSensorView ssv = 
-//					(SingleSensorView) mSensorsList.getChildAt(i);
-//				
-//				getView(i, ssv, mSensorsList);
-//				
-//				//if (ssv != null) {
-//					
-//					
-//					// in the child we update the views
-//	    			//TextView tv = (TextView) ssv.findViewById(R.id.sensordata);
-//	    			//if (tv != null) {
-//	    				//tv.setText("OK" + current);
-//	    			//	ssv.updateSensorValues();
-//	    			//}
-//	    			
-//				// }
-//			}
-//			*/
-//		}
-//		
-//    }
-    
     /**
      * Layout for displaying single sensor.
      */
@@ -1041,7 +453,6 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
         int mSensorId;
         String mSensor;
         int mSensorBit;
-        //String[] mUpdateRates;
         
         /**
          * Index of the default value in the list (spinner) for the 
@@ -1058,17 +469,14 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
     		mSensorId = sensorId;
     		mSensor = sensor;
     		mSensorBit = sensorbit;
-    		//mUpdateRates = updateRates;
     		mDefaultValueIndex = -1;  // -1 means there is no default index.
     		
     		// Build child view from resource:
     		LayoutInflater inf = 
     			(LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE); 
     		View rowView = inf.inflate(R.layout.sensorsimulator_row, null); 
-    		//my_view.find
     		
     		// We set a tag, so that Handler can find this view
-    		// rowView.setId(sensorId);
     		rowView.setTag(mSensor);
     		
     		// Assign widgets
@@ -1089,254 +497,26 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
     		
     		updateSensorStateInformation();   
 
-    		//updateSensorValues();
     	}
     	
-//    	public void setSensor(String sensor, String[] updateRates, int sensorId) {
-//    		Log.i(TAG, "SingleSensorView - setSensor(" + sensor + ", " + updateRates + ")");
-//
-//    		if ((!mSensor.equals(sensor)) || mSensorId != sensorId) {
-//    			Log.i(TAG, "SensorListAdapter.setSensor() - update general information");
-//    			// Need to update general information:
-//	    		mSensorId = sensorId;
-//	    		mSensor = sensor;
-//	
-//	    		mCheckBox.setText(sensor);
-//	            mCheckBox.setChecked(SensorsPlus.isEnabledSensor(sensor));
-//    		}
-//    		
-//    		if (!mUpdateRates.equals(updateRates)) {
-//    			Log.i(TAG, "SensorListAdapter.setSensor() - update updateRates");
-//    			// Need to update updateRates:
-//	    		mUpdateRates = updateRates;
-//	
-//	    		/*
-//	            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-//	                    context, android.R.layout.simple_spinner_item, updateRates);
-//	            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//	            mSpinner.setAdapter(adapter);
-//	            */
-//	            
-//	           	mUpdateRateAdapter = new ArrayAdapter<String>(
-//	                    mContext, android.R.layout.simple_spinner_item, updateRates);
-//	            mUpdateRateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//	            mSpinner.setAdapter(mUpdateRateAdapter);
-//	
-//	             
-//	            /*
-//	            int max=updateRates.length;
-//	            for (int i=0; i<max; i++) {
-//	            	
-//	            	// TODO: How to adjust the adapter??
-//	            	// The following is brute force: Replace by a new adapter.
-//	            }
-//	            */
-//	            
-//	            updateSensorStateInformation();
-//    		}
-//    		
-//    		// The following should be done periodically anyway.
-//    		if (mInvalidateSensorData[mSensorId]) {
-//    			updateSensorValues();
-//
-//    			// Data are now up-to-date:
-//    			mInvalidateSensorData[mSensorId] = false;
-//    		}
-//        }
-    	
     	public void updateSensorStateInformation() {
-    		/*
-    		boolean sensorEnabled = SensorsPlus.isEnabledSensor(mSensor);
-    		mCheckBox.setChecked(sensorEnabled);
-    		*/
-    		/*
-    		if (sensorEnabled) {
-    			// Refresh: start with no default value.
-    			mDefaultValueIndex = -1;
-    			
-    			// We can get the default value and set this in the list:
-    			float defaultValue =
-    				SensorsPlus.getDefaultSensorUpdateRate(mSensor);
-    			int max = mUpdateRates.length;
-    			for (int i = 0; i < max; i++) {
-    				if (mUpdateRates[i].equals("" + defaultValue)) {
-    					// Now, this is the default value:
-    					// Mark it:
-    					mUpdateRates[i] += " (default)";
-    					mDefaultValueIndex = i;
-    					// Note that it can not be marked twice, even
-    					// if updateSensorStateInformation() is called
-    					// twice, because the string changes.
-    				}
-    			}
-    			
-    			// Now we mark the currently selected Sensor:
-    			float currentValue =
-    				SensorsPlus.getSensorUpdateRate(mSensor);
-    			
-    			for (int i = 0; i < max; i++) {
-    				if (mUpdateRates[i].equals("" + currentValue)) {
-    					// Now, this is the current value:
-    					// Select it:
-    					mSpinner.setSelection(i);
-    				}
-    			}
-    			
-    			// We have to treat the default value differently,
-    			// as its string may have been changed above:
-    			if ((currentValue == defaultValue) && 
-    					(mDefaultValueIndex >= 0)) {
-    				assert(mDefaultValueIndex >= 0);
-    				mSpinner.setSelection(mDefaultValueIndex);
-    			}
-    			
-    		}
-    		*/
-    		/*
-    		// Now we set a new onSelectListener:
-    		mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-				/**
-				 * Select a new update rate for a sensor.
-				 * @see android.widget.AdapterView$OnItemSelectedListener#onItemSelected(android.widget.AdapterView, android.view.View, int, long)
-				 * /    			
-				public void onItemSelected(AdapterView parent, View v,
-						int position, long id) {
-					if (mSensorEnabled[mSensorId]) {
-						// Only set or unset anything if the sensor
-						// is enabled. 
-						
-	    				if (id == mDefaultValueIndex) {
-	    					// The user selected the default value, so let's get
-	    					// that by unsetting:
-	    					Sensors.unsetSensorUpdateRate(mSensor);
-	    					setSensorUpdateDuration();
-	    				} else {
-	    					// User selected non-default value:
-	    					
-	        				// get again the float values
-	        				// (because currently only string values are stored).
-	        				// (I'm sure all this can be handled more efficiently
-	        				//  and cleanly...)
-		    				float[] rate = Sensors.getSensorUpdateRates(mSensor);
-		    				if (rate != null) {
-		    					if (id >= rate.length) {
-			    					/// uh uh, this should not happen.
-			    					Log.e(TAG, "Inconsistent list behavior (id >= rate.length) (" + id + " >= " + rate.length + ")");
-			    					Log.e(TAG, "in SensorSimulatorView - updateSensorStateInformation - onItemSelected");
-			    					
-			    					// We could refresh the list at this point,
-			    					// but for now we simply do nothing...
-			    				} else {
-			    					assert(id < rate.length);
-			    					
-			    					Sensors.setSensorUpdateRate(mSensor, rate[(int) id]);
-			    					setSensorUpdateDuration();
-			    				}
-		    				} else {
-		    					// Nothing to be set as updateRates are not supported.
-		    				}
-	    				}
-					}
-				}
-
-				
-				public void onNothingSelected(AdapterView arg0) {
-					// We don't have to do anything.
-				}
-    			
-    		});
-    		*/
-    		// And we add a listener for the CheckBox:
+    		// We add a listener for the CheckBox:
     		mCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
     			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
     				
     				if (isChecked) {
-    					//Sensors.enableSensor(mSensor);
     					int pos = mSpinner.getSelectedItemPosition();
     					int updateRate = mDelayValue[pos];
     					mSensorManager.registerListener(SensorSimulatorSettingsActivity.this, mSensorBit, updateRate);
     				} else {
-    					//Sensors.disableSensor(mSensor);
-
     					mSensorManager.unregisterListener(SensorSimulatorSettingsActivity.this, mSensorBit);
     				}
     				
-    				//mSensorEnabled[mSensorId] = isChecked;
-    				
     				updateSensorStateInformation();
     				
-    				//updateSensorValues();
-    				
-    				/*
-    				if (isChecked) {
-    					// get the current Sensor update duration:
-    					setSensorUpdateDuration();
-    					
-    					// start the timer for automatic update:
-    					// (first update can be right now)
-    					mNextSensorUpdate[mSensorId] = SystemClock.uptimeMillis();
-    					
-    					if (!mUpdatingSensors) {
-    						Log.i(TAG,"Starting timer");
-    						mUpdatingSensors = true;
-    						mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_SENSOR_DATA), mUpdateInterval);
-    					}
-    				} else {
-    					// If all sensors are turned off, we can also deactivate updating sensors:
-    					// (Creating new local variable testUpdate to avoid possibly 
-    					//  synchronization problems with Handler - although it should not happen
-    					//  as we run currently only in a single thread).
-    					boolean testUpdate = false;
-    					for (int i = 0; i < mNumSensors; i++) {
-    						if (mSensorEnabled[i]) {
-    							testUpdate = true;
-    							break;
-    						}
-    					}
-    					mUpdatingSensors = testUpdate;
-    					if (! mUpdatingSensors) Log.i(TAG,"Stopping timer");
-    				}
-    			*/
     			}    			
     		});
-    		
-    		// Now set information related to automatic sensor updates:
-    		//mSingleSensorView[mSensorId] = SingleSensorView.this;
-    		
-    		
     	}
-
-    	/*
-    	public void updateSensorValues() {
-    		// Update the values for the sensor text:
-			mTextView.setText(getSensorValuesString(mSensor, mCheckBox.isChecked()));
-    	}
-    	*/
-    	
-    	/**
-    	 * Determines the duration ( = 1000 ms /rate) to be used
-    	 * in automatic data updates.
-    	 *//*
-    	void setSensorUpdateDuration() {
-			// get the current Sensor rate:
-    		float rate;
-    		try {
-    			rate = Sensors.getSensorUpdateRate(mSensor);
-    		} catch (IllegalStateException e) {
-    			// Sensor not enabled: just return 0.
-    			rate = 0;
-    		}
-			if (rate > 0) {
-				mSensorUpdateDuration[mSensorId] = 1000 / rate;
-			} else
-			{
-				// No default update rate given:
-				// we go for minimum rate
-				mSensorUpdateDuration[mSensorId] = 0;
-			}
-			
-    	}*/
     }
 	
 }
