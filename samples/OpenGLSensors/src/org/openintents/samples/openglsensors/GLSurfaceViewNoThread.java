@@ -82,7 +82,6 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
 
     	initAnimation();
     	prepareAnimation();
-    	
     }
 
     public void surfaceDestroyed(SurfaceHolder holder) {
@@ -226,72 +225,7 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
                 mSizeChanged = false;
 
                 if (changed) {
-                    
-                    /*
-                     *  The window size has changed, so we need to create a new
-                     *  surface.
-                     */
-                    if (surface != null) {
-                        
-                        /*
-                         * Unbind and destroy the old EGL surface, if
-                         * there is one.
-                         */
-                        egl.eglMakeCurrent(dpy, EGL10.EGL_NO_SURFACE,
-                                EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-                        egl.eglDestroySurface(dpy, surface);
-                    }
-                    
-                    /* 
-                     * Create an EGL surface we can render into.
-                     */
-                    surface = egl.eglCreateWindowSurface(dpy, config, mHolder,
-                            null);
-        
-                    /*
-                     * Before we can issue GL commands, we need to make sure 
-                     * the context is current and bound to a surface.
-                     */
-                    egl.eglMakeCurrent(dpy, surface, surface, context);
-                    
-                    /*
-                     * Get to the appropriate GL interface.
-                     * This is simply done by casting the GL context to either
-                     * GL10 or GL11.
-                     */
-                    gl = (GL10)context.getGL();
-                   
-                    /*
-                     * By default, OpenGL enables features that improve quality
-                     * but reduce performance. One might want to tweak that
-                     * especially on software renderer.
-                     */
-                    gl.glDisable(GL10.GL_DITHER);
-        
-                    /*
-                     * Some one-time OpenGL initialization can be made here
-                     * probably based on features of this particular context
-                     */
-                     gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT,
-                             GL10.GL_FASTEST);
-        
-                     gl.glClearColor(1,1,1,1);
-                     gl.glEnable(GL10.GL_CULL_FACE);
-                     gl.glShadeModel(GL10.GL_SMOOTH);
-                     gl.glEnable(GL10.GL_DEPTH_TEST);
- 
-                     gl.glViewport(0, 0, w, h);
-
-                     /*
-                      * Set our projection matrix. This doesn't have to be done
-                      * each time we draw, but usually a new projection needs to
-                      * be set when the viewport is resized.
-                      */
-
-                     float ratio = (float)w / h;
-                     gl.glMatrixMode(GL10.GL_PROJECTION);
-                     gl.glLoadIdentity();
-                     gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10);
+                    recreateSurface(w, h);
                 }
                 
                 /* draw a frame here */
@@ -319,8 +253,84 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
                 
                 //Log.i(TAG, "doAnimation()" + mRoll + " , " + mYaw + " , " + mPitch);
             	// If any of the sensors is not == 0 then we continue to update.
-                return mRoll != -180.f || mYaw != 0 || mPitch != 0;
+                //return mRoll != -180.f || mYaw != 0 || mPitch != 0;
+                
+                // No need to check back if successfully drawn once.
+                // (OnSensorChange updates the view anyway).
+                return false;
         }
+
+		/**
+		 * @param w
+		 * @param h
+		 */
+		private void recreateSurface(int w, int h) {
+			/*
+			 *  The window size has changed, so we need to create a new
+			 *  surface.
+			 */
+			if (surface != null) {
+			    
+			    /*
+			     * Unbind and destroy the old EGL surface, if
+			     * there is one.
+			     */
+			    egl.eglMakeCurrent(dpy, EGL10.EGL_NO_SURFACE,
+			            EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
+			    egl.eglDestroySurface(dpy, surface);
+			}
+			
+			/* 
+			 * Create an EGL surface we can render into.
+			 */
+			surface = egl.eglCreateWindowSurface(dpy, config, mHolder,
+			        null);
+      
+			/*
+			 * Before we can issue GL commands, we need to make sure 
+			 * the context is current and bound to a surface.
+			 */
+			egl.eglMakeCurrent(dpy, surface, surface, context);
+			
+			/*
+			 * Get to the appropriate GL interface.
+			 * This is simply done by casting the GL context to either
+			 * GL10 or GL11.
+			 */
+			gl = (GL10)context.getGL();
+               
+			/*
+			 * By default, OpenGL enables features that improve quality
+			 * but reduce performance. One might want to tweak that
+			 * especially on software renderer.
+			 */
+			gl.glDisable(GL10.GL_DITHER);
+      
+			/*
+			 * Some one-time OpenGL initialization can be made here
+			 * probably based on features of this particular context
+			 */
+			 gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT,
+			         GL10.GL_FASTEST);
+      
+			 gl.glClearColor(1,1,1,1);
+			 gl.glEnable(GL10.GL_CULL_FACE);
+			 gl.glShadeModel(GL10.GL_SMOOTH);
+			 gl.glEnable(GL10.GL_DEPTH_TEST);
+ 
+			 gl.glViewport(0, 0, w, h);
+
+			 /*
+			  * Set our projection matrix. This doesn't have to be done
+			  * each time we draw, but usually a new projection needs to
+			  * be set when the viewport is resized.
+			  */
+
+			 float ratio = (float)w / h;
+			 gl.glMatrixMode(GL10.GL_PROJECTION);
+			 gl.glLoadIdentity();
+			 gl.glFrustumf(-ratio, ratio, -1, 1, 1, 10);
+		}
         
         void stopAnimation() {
             /*

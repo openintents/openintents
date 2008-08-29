@@ -415,28 +415,6 @@ public class OpenGLSensors extends Activity implements SensorListener {
 	    // use the best sensor available:
 	    useSensorsReset();
 	    
-	    /*
-	    // Quick fix for error message
-	    // that only appears with Orientation sensor:
-	    //    E/Sensors ( 2547): Couldn't open /dev/input/event3, error = -1
-	    
-	    if (mAccelerometerSupported) {
-	    	mUseAccelerometer = true;
-	    	return;
-	    }
-	    
-	    if (mCompassSupported) {
-	    	mUseCompass = true;
-	    	return;
-	    }
-	    
-	    if (mOrientationSupported) {
-	    	mUseOrientation = true;
-	    	return;
-	    }
-	    */
-	    
-	    
 	    if (mOrientationSupported) {
 	    	// the best is orientation
 	    	mUseOrientation = true;
@@ -514,7 +492,6 @@ public class OpenGLSensors extends Activity implements SensorListener {
             }
         }
     };
-    
 
 	public void onSensorChanged(int sensor, float[] values) {
         //Log.d(TAG, "onSensorChanged: " + sensor + ", x: " + values[0] + ", y: " + values[1] + ", z: " + values[2]);
