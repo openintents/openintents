@@ -14,8 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -530,11 +530,9 @@ public class MediaBrowserActivity extends Activity {
 			return true;
 		
 		case MENU_MEDIA_SCANNER:
-			Intent intent = new Intent(Intent.ACTION_MAIN);
-			ComponentName component = new ComponentName("com.google.android.development",
-					"com.google.android.development.MediaScannerActivity");
-			intent.setComponent(component);
-			startActivityForResult(intent, SUBACTIVITY_MEDIA_SCANNER);
+			MediaScannerEngine mediaScanner = new MediaScannerEngine(this);
+
+			mediaScanner.scanInThread();
 			
 			return true;
 		}
