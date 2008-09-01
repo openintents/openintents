@@ -39,6 +39,7 @@ import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -153,9 +154,9 @@ public class LocationsView extends Activity {
 
 	private String getGeoString(Cursor cursor) {
 		String latitude = String.valueOf(cursor.getDouble(cursor
-				.getColumnIndex(Locations.LATITUDE)));
+				.getColumnIndexOrThrow(Locations.LATITUDE)));
 		String longitude = String.valueOf(cursor.getString(cursor
-				.getColumnIndex(Locations.LONGITUDE)));
+				.getColumnIndexOrThrow(Locations.LONGITUDE)));
 		return "geo:" + latitude + "," + longitude;
 	}
 
@@ -197,8 +198,10 @@ public class LocationsView extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, MENU_ADD_CURRENT_LOCATION, 0, R.string.add_current_location).setIcon(
-				R.drawable.locations_add001a);
+		menu
+				.add(0, MENU_ADD_CURRENT_LOCATION, 0,
+						R.string.add_current_location).setIcon(
+						R.drawable.locations_add001a);
 		return true;
 	}
 
@@ -306,17 +309,43 @@ public class LocationsView extends Activity {
 
 	}
 
+	private void setTestLocation(double lat, double lng,
+			LocationManager locationManager) {
+		Location location = new Location("mock");
+		location.setLatitude(lat);
+		location.setLongitude(lng);
+		locationManager.setTestProviderLocation("mock", location);
+
+	}
+
 	private Location getCurrentLocation() {
+
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (locationManager != null) {
 			List<String> providers = locationManager.getProviders(true);
 			if (providers != null && providers.size() > 0) {
 				LocationProvider locationProvider = locationManager
 						.getProvider(providers.get(0));
+				Log.v(TAG, "using location provider '"
+						+ locationProvider.getName() + "'");
 				Location location = locationManager
 						.getLastKnownLocation(locationProvider.getName());
 				return location;
+			} else {
+				Log.v(TAG, "no location provider found." + providers
+						+ providers.size());
+				setTestLocation(40.738412973944534, -73.98468017578125,
+						locationManager);
+				
+				Log.v(TAG, "using mock location");
+				Location location = locationManager
+						.getLastKnownLocation("mock");
+				return location;
+
 			}
+		} else {
+
+			Log.v(TAG, "no location provider found." + locationManager);
 		}
 		return null;
 	}
