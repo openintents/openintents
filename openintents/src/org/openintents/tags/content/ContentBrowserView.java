@@ -303,8 +303,14 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			Intent resultIntent) {
 		super.onActivityResult(requestCode, resultCode, resultIntent);
 
+		
 		String tag = mTagFilter.getText().toString();
-		String data = resultIntent.getAction();
+		String data;
+		if (resultIntent != null){
+			data = resultIntent.getAction();
+		} else {
+			data = null;
+		}
 		switch (requestCode) {
 		case REQUEST_DIR_PICK:
 			if (data != null) {
