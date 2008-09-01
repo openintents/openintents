@@ -79,8 +79,7 @@ public class PackageListRow extends RelativeLayout {
 		mPackageName.setPadding(5, 0, 0, 0);
 
 		mAlertInfo = new TextView(context);
-		mAlertInfo.setGravity(RelativeLayout.CENTER_VERTICAL);
-		mAlertInfo.setId(PACKAGE_PACKAGE_NAME);
+		mAlertInfo.setGravity(RelativeLayout.CENTER_VERTICAL);		
 
 		// set some explicit values for now
 		mAlertInfo.setTextSize(12);
@@ -90,11 +89,14 @@ public class PackageListRow extends RelativeLayout {
 		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64,
 				64);
 		icon.addRule(ALIGN_PARENT_LEFT);
-		addView(mIcon, icon);
+		icon.addRule(ALIGN_PARENT_TOP);
+		// for now remove icon until the relative rules are setup correctly.
+		//addView(mIcon, icon);
 
 		RelativeLayout.LayoutParams name = new RelativeLayout.LayoutParams(
 				LayoutParams.FILL_PARENT, 40);
 		name.addRule(ALIGN_RIGHT, PACKAGE_ICON);
+		name.addRule(ALIGN_PARENT_TOP);
 		addView(mName, name);
 
 		RelativeLayout.LayoutParams packagename = new RelativeLayout.LayoutParams(
