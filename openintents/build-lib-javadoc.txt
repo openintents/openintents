@@ -17,6 +17,7 @@ lib-javadoc-include = \
     src/org/openintents/provider/Tag.java,\
     src/org/openintents/hardware/Sensors.java,\
 	src/org/openintents/hardware/SensorsPlus.java,\
+	src/org/openintents/hardware/SensorManagerSimulator.java,\
 	src/org/openintents/hardware/SensorSimulatorClient.java,\
 	src/org/openintents/tags/MagnoliaTagging.java,\
 	src/org/openintents/widget/Slider.java

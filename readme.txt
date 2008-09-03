@@ -26,9 +26,6 @@ OpenIntents
 
 The directory structure is organized as follows:
 
-applications/
-   contains applications using OpenIntents
-
 lib/
    contains the latest library JAR version
 

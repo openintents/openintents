@@ -25,7 +25,14 @@ It transmits the simulated sensor data to an Android emulator.
 * To launch it, open the sensorsimulator.jar file with your JRE
   (requires Java Runtime Environment 1.6.0 or higher).
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  
+
+---------------------------------------------------------
+release: 0.9.0
+date: 2008-09-03
+
+upgrade to Android SDK 0.9.
+- no changes were necessary in SensorSimulator application
+
 ---------------------------------------------------------
 release: 0.1.7
 date: 2008-04-19

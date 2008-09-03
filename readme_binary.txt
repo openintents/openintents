@@ -28,8 +28,6 @@ The directory structure is organized as follows:
 
 openintents.apk    the main program
 
-applications/      contains applications that use OpenIntents
-
 lib/               contains the latest library JAR version
 
 samples/           contains samples that use OpenIntents

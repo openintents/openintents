@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Ant-Version: Apache Ant 1.7.0
-Created-By: 10.0-b19 (Sun Microsystems Inc.)
+Created-By: 11.0-b11 (Sun Microsystems Inc.)
 Main-Class: org.openintents.tools.sensorsimulator.SensorSimulator
-Implementation-Version: 0.1.7-b44
-Built-Date: 2008-04-19 11:56:20
+Implementation-Version: 0.9.0-rc1-b46
+Built-Date: 2008-09-03 02:24:59
 

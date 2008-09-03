@@ -21,6 +21,13 @@ To obtain the current release, visit
   http://www.openintents.org
   
 ---------------------------------------------------------
+release: 0.9.0
+date: 2008-09-03
+
+upgrade to Android SDK 0.9.
+- updated Sensors class to SensorManager and SensorListener
+
+---------------------------------------------------------
 release: 0.1.7
 date: 2008-04-19
 

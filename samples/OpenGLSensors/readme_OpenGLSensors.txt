@@ -18,6 +18,12 @@ OpenGLSensors demonstrates accessing the sensors and the sensor simulator.
 The pyramid displayed will always show up, regardless how you hold the
 device.
 The bar magnet displayed will always point along the magnetic field.
+  
+---------------------------------------------------------
+release: 0.9.0
+date: 2008-09-03
+
+upgrade to Android SDK 0.9.
 
 ---------------------------------------------------------
 release: 0.1.7

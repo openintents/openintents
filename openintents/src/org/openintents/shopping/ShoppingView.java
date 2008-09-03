@@ -782,10 +782,11 @@ public class ShoppingView
 				.setIcon(R.drawable.locations_add_alert001a)
         		.setShortcut('6', 'l');
         
+        /*
         menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
 				.setIcon(R.drawable.mobile_shake001a)
 					.setShortcut('0', 's');
-        
+        */
 
         /*
           menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)

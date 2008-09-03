@@ -43,7 +43,6 @@
 	<property name="javadoc-dir" value="${release-dir}/${javadoc-name}" />
 		
 	<!-- subdirectories in the release-dir -->
-	<property name="binary-applications-dir" value="${binary-dir}/applications" />
 	<property name="binary-lib-dir" value="${binary-dir}/lib" />
 	<property name="binary-samples-dir" value="${binary-dir}/samples" />
 	<property name="binary-tools-dir" value="${binary-dir}/tools" />
@@ -53,8 +52,6 @@
 	<property name="base-dir" value="${build.properties.dir}" />
 	<property name="buildrelease-dir" value="." />
 	<property name="lib-dir" value="../lib" />
-	<property name="newsreader-dir" value="../applications/newsreader" />
-	<property name="splashplay-dir" value="../applications/splashplay" />
 	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
@@ -82,7 +79,6 @@
 		<delete dir="${release-dir}"/>
 		<mkdir dir="${release-dir}"/>
 		<mkdir dir="${binary-dir}"/>
-		<mkdir dir="${binary-applications-dir}"/>
 		<mkdir dir="${binary-lib-dir}"/>
 		<mkdir dir="${binary-samples-dir}"/>
 		<mkdir dir="${binary-tools-dir}"/>
@@ -278,86 +274,6 @@
 	</target>
 	
 
-	<target name="NewsReader"
-		depends="OpenIntents"
-		>
-		<echo>------------------------------NewsReader----------------------</echo>
-		<!-- Use most recent lib file -->
-		<mkdir dir="${newsreader-dir}/lib"/>
-		<copy
-			file="${binary-lib-file}"
-			todir="${newsreader-dir}/lib"
-			/>
-		<!-- Compile -->
-		<ant
-			dir="${newsreader-dir}"
-			antfile="build.xml"
-			target="all"
-			>
-		</ant>
-		<!-- Copy to binary release -->
-		<copy todir="${binary-applications-dir}" flatten="true">
-			<fileset dir="${newsreader-dir}">
-				<include name="bin/Newsreader.apk" />
-				<include name="readme_newsreader.txt" />				
-			</fileset>
-		</copy>
-		<!-- Copy to source release -->
-		<copy todir="${source-dir}/applications/newsreader">
-		    <fileset dir="${newsreader-dir}">
-		    	<exclude name="**/bin/**" />
-		    	<exclude name="**/doc/**" />
-	    		<exclude name="**/.svn" />
-		    </fileset>
-		</copy>
-		<!-- Copy to javadoc release -->
-		<copy todir="${javadoc-dir}/applications/newsreader">
-			<fileset dir="${newsreader-dir}/${doc-dir}">
-				<exclude name="**/.svn" />
-			</fileset>
-		</copy>
-	</target>	
-
-
-	<target name="SplashPlay"
-		depends="OpenIntents"
-		>
-		<echo>------------------------------NewsReader----------------------</echo>
-		<!-- Use most recent lib file -->
-		<mkdir dir="${splashplay-dir}/lib"/>
-		<copy
-			file="${binary-lib-file}"
-			todir="${splashplay-dir}/lib"
-			/>
-		<!-- Compile -->
-		<ant
-			dir="${splashplay-dir}"
-			antfile="build.xml"
-			target="all"
-			>
-		</ant>
-		<!-- Copy to binary release -->
-		<copy todir="${binary-applications-dir}" flatten="true">
-			<fileset dir="${splashplay-dir}">
-				<include name="bin/SplashPlay.apk" />
-				<include name="readme_splashplay.txt" />				
-			</fileset>
-		</copy>
-		<!-- Copy to source release -->
-		<copy todir="${source-dir}/applications/splashplay">
-		    <fileset dir="${splashplay-dir}">
-		    	<exclude name="**/bin/**" />
-		    	<exclude name="**/doc/**" />
-	    		<exclude name="**/.svn" />
-		    </fileset>
-		</copy>
-		<!-- Copy to javadoc release -->
-		<copy todir="${javadoc-dir}/applications/splashplay">
-			<fileset dir="${splashplay-dir}/${doc-dir}">
-				<exclude name="**/.svn" />
-			</fileset>
-		</copy>
-	</target>	
 
 	<target name="SensorSimulator">
 		<echo>------------------------------SensorSimulator----------------------</echo>
@@ -399,9 +315,7 @@
 		depends="
 			OpenGLSensors,
 			PresentPicker,
-			SensorSimulator,
-			NewsReader,
-			SplashPlay"
+			SensorSimulator"
 		>
 	</target>
 
