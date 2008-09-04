@@ -359,8 +359,8 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
             gl.glMatrixMode(GL10.GL_MODELVIEW);
             gl.glLoadIdentity();
             
-            gl.glTranslatef(0, 0, -3.0f);
-            gl.glScalef(0.5f, 0.5f, 0.5f);
+            gl.glTranslatef(0, 0, -4.0f);
+            //gl.glScalef(0.5f, 0.5f, 0.5f);
             
             gl.glColor4f(0.7f, 0.7f, 0.7f, 1.0f);
             gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
@@ -379,7 +379,7 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
             
 			// Now perform the rotation:
 			gl.glRotatef((int) mRoll, 0, 1, 0);
-			gl.glRotatef((int) mPitch, 1, 0, 0);
+			gl.glRotatef((int) mPitch, -1, 0, 0);
 			gl.glRotatef((int) mYaw, 0, 0, -1);
 
 			if (!(mOpenGLAccelerator.mUseAccelerometer
@@ -403,7 +403,7 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
                 // to the phone, not with respect to the pyramid.
                 // So we first have to undo the rotations from above:
                 gl.glRotatef((int) -mYaw, 0, 0, -1);
-                gl.glRotatef((int) -mPitch, 1, 0, 0);
+                gl.glRotatef((int) -mPitch, -1, 0, 0);
     			gl.glRotatef((int) -mRoll, 0, 1, 0);
     			
                 // Now we perform the compass rotations:

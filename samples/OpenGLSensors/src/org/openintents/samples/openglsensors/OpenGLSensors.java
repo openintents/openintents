@@ -525,7 +525,7 @@ public class OpenGLSensors extends Activity implements SensorListener {
 			if (mUseAccelerometer) {
 				double r = Math.sqrt(values[0]*values[0] + values[2]*values[2]);
 				mGLSurfaceView.mYaw = 0;
-				mGLSurfaceView.mPitch = (float) - Math.toDegrees(Math.atan2(-values[1], r));
+				mGLSurfaceView.mPitch = (float) + Math.toDegrees(Math.atan2(-values[1], r));
 				mGLSurfaceView.mRoll = (float) - Math.toDegrees(Math.atan2(values[0], -values[2]));	
 				graphicsupdate = true;
 			}
