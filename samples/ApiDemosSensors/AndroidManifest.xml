@@ -4,7 +4,7 @@
     
     <uses-permission android:name="android.permission.INTERNET" />
     
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    <application android:icon="@drawable/app_sample_code_sensors" android:label="@string/app_name">
     
         <uses-library android:name="com.google.android.maps" />
         
