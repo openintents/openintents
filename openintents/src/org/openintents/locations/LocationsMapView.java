@@ -25,6 +25,7 @@ import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapController;
 import com.google.android.maps.MapView;
 import com.google.android.maps.GeoPoint;
+import com.google.android.maps.Projection;
 
 public class LocationsMapView extends MapActivity {
 
@@ -89,7 +90,7 @@ public class LocationsMapView extends MapActivity {
 		StringBuffer idTags = new StringBuffer();
 		while (mIdTagCursor.moveToNext()) {
 			idTags.append(mIdTagCursor.getString(mIdTagCursor
-					.getColumnIndex(Tags.URI_1)));
+					.getColumnIndexOrThrow(Tags.URI_1)));
 			idTags.append(",");
 		}
 		// remove extract ","
@@ -106,7 +107,7 @@ public class LocationsMapView extends MapActivity {
 				R.layout.tag_row_simple, allTagsCursor,
 				new String[] { Contents.URI }, new int[] { R.id.tag_tag });
 		adapter.setStringConversionColumn(allTagsCursor
-				.getColumnIndex(Contents.URI));
+				.getColumnIndexOrThrow(Contents.URI));
 		mEditTags.setAdapter(adapter);
 
 		//old
@@ -272,5 +273,9 @@ public class LocationsMapView extends MapActivity {
 	@Override
 	protected boolean isRouteDisplayed() {		
 		return false;
+	}
+
+	public Projection getProjection() {
+		return view.getProjection();
 	}
 }

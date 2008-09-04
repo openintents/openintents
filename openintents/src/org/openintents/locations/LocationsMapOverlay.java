@@ -6,6 +6,7 @@ import android.graphics.Paint;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
+import com.google.android.maps.Projection;
 public class LocationsMapOverlay extends Overlay{
 	
 	private LocationsMapView mMap;
@@ -27,22 +28,18 @@ public class LocationsMapOverlay extends Overlay{
 
 
         GeoPoint location = mMap.getPoint();
-        if (location != null) {
-        	    int[] screenCoords = new int[2];
+        if (location != null) {        	    
                 GeoPoint point = new GeoPoint(location.getLatitudeE6(),
-                        location.getLongitudeE6());
-				android.graphics.Point graphPoint =new android.graphics.Point();
-				//TODO new SDK convert pixels
-				// pixelConverter.toPixels(point,graphPoint);
-				
-                //pixelConverter.getPointXY(point, screenCoords);
+                        location.getLongitudeE6());				
+				Projection projection = mMap.getProjection();
+				android.graphics.Point graphPoint = projection.toPixels(point, null);
                 canvas.drawCircle(graphPoint.x, graphPoint.y, 9, paint1);
                 canvas.drawText(Integer.toString(location.getLatitudeE6()),
-                        screenCoords[0] + 9,
-                        screenCoords[1] + 9, paint2);
+                		graphPoint.x + 9,
+                		graphPoint.y + 9, paint2);
                 canvas.drawText(Integer.toString(location.getLongitudeE6()),
-                		screenCoords[0] + 9,
-                		screenCoords[1] + 20, paint2);
+                		graphPoint.x + 9,
+                		graphPoint.y + 20, paint2);
             }
     }
 }

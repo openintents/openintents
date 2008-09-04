@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
+import org.openintents.locations.MockLocationService;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -111,6 +112,9 @@ public class OpenIntentsView extends Activity {
 		
 		// Optionally call preferences:
 		OpenIntents.suggestInitDefaultValues(this);
+		
+		Intent mockProvider = new Intent(this, MockLocationService.class);
+		startService(mockProvider );
 	}
 
 	void fillGrid(TableLayout table, String category) {

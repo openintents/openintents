@@ -309,15 +309,6 @@ public class LocationsView extends Activity {
 
 	}
 
-	private void setTestLocation(double lat, double lng,
-			LocationManager locationManager) {
-		Location location = new Location("mock");
-		location.setLatitude(lat);
-		location.setLongitude(lng);
-		locationManager.setTestProviderLocation("mock", location);
-
-	}
-
 	private Location getCurrentLocation() {
 
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -334,20 +325,15 @@ public class LocationsView extends Activity {
 			} else {
 				Log.v(TAG, "no location provider found." + providers
 						+ providers.size());
-				setTestLocation(40.738412973944534, -73.98468017578125,
-						locationManager);
-				
-				Log.v(TAG, "using mock location");
-				Location location = locationManager
-						.getLastKnownLocation("mock");
-				return location;
+				return null;
 
 			}
 		} else {
 
 			Log.v(TAG, "no location provider found." + locationManager);
+			return null;
 		}
-		return null;
+
 	}
 
 	private void tagLocation(long id) {
