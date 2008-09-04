@@ -505,7 +505,22 @@ public class SensorSimulatorClient {
     
     private void readSensor(int sensorbit, float[] sensorValues) {
     	String sensorname = getSensorName(sensorbit);
-    	readSensor(sensorname, sensorValues);
+    	try {
+    		readSensor(sensorname, sensorValues);
+    	} catch (IllegalStateException e) {
+    		// Sensor is currently not enabled.
+    		// For the new API (SDK 0.9 and higher) we catch this exception
+    		// and do not pass it further.
+    		Log.d(TAG, "Sensor not enabled -> enable it now");
+    		try {
+    			enableSensor(sensorname);
+    		} catch (IllegalArgumentException e2) {
+    			// Sensor is not supported
+        		// For the new API (SDK 0.9 and higher) we catch this exception
+        		// and do not pass it further.
+        		Log.d(TAG, "Sensor not supported.");
+    		}
+    	}
 	}
 
 	public int getNumSensorValues(int sensorbit) {
