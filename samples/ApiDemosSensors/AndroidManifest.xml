@@ -16,28 +16,28 @@
         </activity>
         
         
-        <activity android:name=".graphics.Compass" android:label="Graphics/Compass">
+        <activity android:name=".graphics.Compass" android:label="Graphics/Compass (OI)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         
-        <activity android:name=".graphics.SensorTest" android:label="Graphics/SensorTest">
+        <activity android:name=".graphics.SensorTest" android:label="Graphics/SensorTest (OI)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         
-        <activity android:name=".os.Sensors" android:label="OS/Sensors">
+        <activity android:name=".os.Sensors" android:label="OS/Sensors (OI)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
         
-        <activity android:name=".view.MapViewCompassDemo" android:label="Views/MapView and Compass">
+        <activity android:name=".view.MapViewCompassDemo" android:label="Views/MapView and Compass (OI)">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.SAMPLE_CODE" />

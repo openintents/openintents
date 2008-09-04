@@ -339,7 +339,7 @@ public class SensorSimulatorClient {
     private float[][] mValues = new float[MAX_SENSOR][];
     private boolean[] mValuesCached = new boolean[MAX_SENSOR];
     
-	/** Handle the process of kinetic scrolling */
+	/** Handle the process of updating sensors */
 	Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -356,6 +356,7 @@ public class SensorSimulatorClient {
             	for (int i = 0; i < MAX_SENSOR; i++) {
             		mValuesCached[i] = false;
             		if (mValues[i] == null) {
+            			Log.d(TAG, "Create cache for sensor " + i);
             			mValues[i] = new float[3];
             		}
             	}
