@@ -53,6 +53,7 @@
 	<property name="buildrelease-dir" value="." />
 	<property name="lib-dir" value="../lib" />
 	<property name="favoritelocations-dir" value="../samples/FavoriteLocations" />
+	<property name="apidemossensors-dir" value="../samples/ApiDemosSensors" />
 	<property name="openglsensors-dir" value="../samples/OpenGLSensors" />
 	<property name="presentpicker-dir" value="../samples/PresentPicker" />
 	<property name="sensorsimulator-dir" value="../tools/SensorSimulator" />
@@ -191,6 +192,46 @@
 			</fileset>
 		</copy>
 	</target>
+
+	<target name="ApiDemosSensors"
+		depends="OpenIntents"
+		>
+		<echo>------------------------------ApiDemosSensors----------------------</echo>
+		<!-- Use most recent lib file -->
+		<mkdir dir="${apidemossensors-dir}/lib"/>
+		<copy
+			file="${binary-lib-file}"
+			todir="${apidemossensors-dir}/lib"
+			/>
+		<!-- Compile -->
+		<ant
+			dir="${apidemossensors-dir}"
+			antfile="build.xml"
+			target="all"
+			>
+		</ant>
+		<!-- Copy to binary release -->
+		<copy todir="${binary-samples-dir}" flatten="true">
+			<fileset dir="${apidemossensors-dir}">
+				<include name="bin/ApiDemosSensors.apk" />
+				<include name="readme_ApiDemosSensors.txt" />				
+			</fileset>
+		</copy>
+		<!-- Copy to source release -->
+		<copy todir="${source-dir}/samples/ApiDemosSensors">
+		    <fileset dir="${apidemossensors-dir}">
+		    	<exclude name="**/bin/**" />
+		    	<exclude name="**/doc/**" />
+	    		<exclude name="**/.svn" />
+		    </fileset>
+		</copy>
+		<!-- Copy to javadoc release -->
+		<copy todir="${javadoc-dir}/samples/ApiDemosSensors">
+			<fileset dir="${apidemossensors-dir}/${doc-dir}">
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
+	</target>	
 	
 	<target name="OpenGLSensors"
 		depends="OpenIntents"
@@ -313,6 +354,7 @@
 	<target
 		name="release"		
 		depends="
+			ApiDemosSensors,
 			OpenGLSensors,
 			PresentPicker,
 			SensorSimulator"
