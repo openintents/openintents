@@ -68,7 +68,7 @@ public class TypesListView extends ListActivity {
 
 	final int flags = PackageManager.GET_RESOLVED_FILTER;
 
-	protected Dialog mDialog = new Dialog(this);
+	protected Dialog mDialog ;
 
 	// Need handler for callbacks to the UI thread
 	final Handler mHandler = new Handler();
@@ -88,7 +88,7 @@ public class TypesListView extends ListActivity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		setContentView(R.layout.intents_types_view);
-
+		mDialog = new Dialog(this);
 		
 		Thread t = new Thread() {
 			@Override
