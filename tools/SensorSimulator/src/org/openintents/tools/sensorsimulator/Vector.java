@@ -79,7 +79,7 @@ public class Vector {
 	
 	public void pitch(double pitch) {
     	Vector v = new Vector(this); // temporary vector
-    	double pitchRad = -Math.toRadians(pitch); // negative sign!
+    	double pitchRad = Math.toRadians(pitch); // negative sign => positive as defined in SDK.
     	double cos = Math.cos(pitchRad);
     	double sin = Math.sin(pitchRad);
     	x = v.x;

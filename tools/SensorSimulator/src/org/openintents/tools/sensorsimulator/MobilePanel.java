@@ -254,6 +254,9 @@ public class MobilePanel extends JPanel {
 	 * */
 	double g;
 	
+	/** 1/g (g-inverse) */
+	double ginverse;
+	
 	int mousedownx;
 	int mousedowny;
 	int mousedownyaw;
@@ -338,7 +341,8 @@ public class MobilePanel extends JPanel {
 		
 		dt = 0.1;
 		meterperpixel = 1/3000.; // meter per pixel
-		g = 9.8; // meter per second^2
+		g = 9.80665; // meter per second^2
+		ginverse = 1 / g;
 		
 		user_settings_duration = 500;  // Update every half second. This should be enough.
 		user_settings_next_update = System.currentTimeMillis(); // First update is now.
@@ -375,7 +379,7 @@ public class MobilePanel extends JPanel {
 		        	yawDegree = newyaw;
 		        	
 		        	// Control pitch
-		        	int newpitch = mousedownpitch + (e.getY() - mousedowny);
+		        	int newpitch = mousedownpitch - (e.getY() - mousedowny);
 		        	while (newpitch > 180) newpitch -= 360;
 		        	while (newpitch < -180) newpitch += 360;
 		        	pitchSlider.setValue((int) newpitch);
@@ -390,7 +394,7 @@ public class MobilePanel extends JPanel {
 		        	rollDegree = newroll;
 		        	
 		        	// Control pitch
-		        	int newpitch = mousedownpitch + (e.getY() - mousedowny);
+		        	int newpitch = mousedownpitch - (e.getY() - mousedowny);
 		        	while (newpitch > 180) newpitch -= 360;
 		        	while (newpitch < -180) newpitch += 360;
 		        	pitchSlider.setValue((int) newpitch);
@@ -433,7 +437,10 @@ public class MobilePanel extends JPanel {
 		}
 		
 		dt = 0.001 * mSensorSimulator.delay; // from ms to s
-		g = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityConstantText, 9.82);
+		g = mSensorSimulator.getSafeDouble(mSensorSimulator.mGravityConstantText, 9.80665);
+		if (g != 0) {
+			ginverse = 1 / g;
+		}
 		meterperpixel = 1 / mSensorSimulator.getSafeDouble(mSensorSimulator.mPixelPerMeterText, 3000);
 		k = mSensorSimulator.getSafeDouble(mSensorSimulator.mSpringConstantText, 500);
 		gamma = mSensorSimulator.getSafeDouble(mSensorSimulator.mDampingConstantText, 50);
@@ -521,9 +528,9 @@ public class MobilePanel extends JPanel {
 		
 		if (mSensorSimulator.mEnabledAccelerometer.isSelected()) {
 			if (mSensorSimulator.mRealDeviceWiimote.isSelected()) {
-				accelx = mSensorSimulator.wiiMoteData.getX();
-				accely = mSensorSimulator.wiiMoteData.getY();
-				accelz = mSensorSimulator.wiiMoteData.getZ();
+				accelx = mSensorSimulator.wiiMoteData.getX() * g;
+				accely = mSensorSimulator.wiiMoteData.getY() * g;
+				accelz = mSensorSimulator.wiiMoteData.getZ() * g;
 			}
 			else {
 				accelx = vec.x;
@@ -570,7 +577,7 @@ public class MobilePanel extends JPanel {
 				}
 				
 				// Add accelerometer limit:
-				double limit = mSensorSimulator.getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
+				double limit = g * mSensorSimulator.getSafeDouble(mSensorSimulator.mAccelerometerLimitText);
 				if (limit > 0) {
 					// limit on each component separately, as each is
 					// a separate sensor.
@@ -799,6 +806,33 @@ public class MobilePanel extends JPanel {
 				read_roll = roll;
 			}
 			
+			// Normalize values:
+			
+			// Restrict pitch value to -90 to +90
+			if (read_pitch < -90) {
+				read_pitch = -180 - read_pitch;
+				read_yaw += 180;
+				read_roll += 180;
+			} else if (read_pitch > 90) {
+				read_pitch = 180 - read_pitch;
+				read_yaw += 180;
+				read_roll += 180;
+				
+			}
+			
+			// yaw from 0 to 360
+			if (read_yaw < 0) {
+				read_yaw = read_yaw + 360;
+			}
+			if (read_yaw >= 360) {
+				read_yaw -= 360;
+			}
+			
+			// roll from -180 to + 180
+			if (read_roll >= 180) {
+				read_roll -= 360;
+			}
+			
 		}
 		
 		if (currentTime >= temperature_next_update) {
@@ -905,11 +939,11 @@ public class MobilePanel extends JPanel {
     /**
      * Draws the phone.
      */
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);       
+    protected void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);       
         // g.drawString("This is my custom Panel!",(int)yawDegree,(int)pitch);
         
-        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g2 = (Graphics2D) graphics;
         // draw Line2D.Double
         
         double centerx = 100;
@@ -935,7 +969,7 @@ public class MobilePanel extends JPanel {
 	        g2.setColor(Color.GREEN);
 	    	Vector v1 = new Vector(0,0,0);
 	    	Vector v2 = new Vector(accelx, accely, accelz);
-	    	v2.scale(20);
+	    	v2.scale(20 * ginverse);
 	        //Vector v2 = new Vector(1, 0, 0);
 	    	v1.rollpitchyaw(rollDegree, pitchDegree, yawDegree);
 	    	v2.rollpitchyaw(rollDegree, pitchDegree, yawDegree);

@@ -371,7 +371,7 @@ public class SensorSimulator extends JPanel
         
 	    //Create the slider.
         yawSlider = new JSlider(JSlider.HORIZONTAL, -180, 180, -20);
-        pitchSlider = new JSlider(JSlider.HORIZONTAL, -180, 180, 60);
+        pitchSlider = new JSlider(JSlider.HORIZONTAL, -180, 180, -60);
 	    rollSlider = new JSlider(JSlider.HORIZONTAL, -180, 180, 0);
 	    
 	    yawSlider.addChangeListener(this);
@@ -939,7 +939,7 @@ public class SensorSimulator extends JPanel
         accelerometerFieldPane.add(label, c3);
         
         mGravityConstantText = new JTextField(5);
-        mGravityConstantText.setText("9.82");
+        mGravityConstantText.setText("9.80665");
         c3.gridx = 1;
         accelerometerFieldPane.add(mGravityConstantText, c3);
         
@@ -1029,7 +1029,7 @@ public class SensorSimulator extends JPanel
         
         
         ////////////////////////////////
-        // Gravity (in g = 9.81 m/s^2)
+        // Gravity (in g = m/s^2)
         JPanel gravityFieldPane = new JPanel(new GridBagLayout());
         c3 = new GridBagConstraints();
         c3.fill = GridBagConstraints.HORIZONTAL;
@@ -1053,7 +1053,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         gravityFieldPane.add(mGravityXText, c3);
         
-        label = new JLabel(" g", JLabel.LEFT);
+        label = new JLabel(" m/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         gravityFieldPane.add(label, c3);
         
@@ -1069,7 +1069,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         gravityFieldPane.add(mGravityYText, c3);
         
-        label = new JLabel(" g", JLabel.LEFT);
+        label = new JLabel(" m/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         gravityFieldPane.add(label, c3);
         
@@ -1080,11 +1080,11 @@ public class SensorSimulator extends JPanel
         gravityFieldPane.add(label, c3);
         
         mGravityZText = new JTextField(5);
-        mGravityZText.setText("-1");
+        mGravityZText.setText("-9.80665");
         c3.gridx = 1;
         gravityFieldPane.add(mGravityZText, c3);
         
-        label = new JLabel(" g", JLabel.LEFT);
+        label = new JLabel(" m/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         gravityFieldPane.add(label, c3);
         
@@ -1235,7 +1235,7 @@ public class SensorSimulator extends JPanel
         c3.gridx = 1;
         randomFieldPane.add(mRandomAccelerometerText, c3);
         
-        label= new JLabel(" g", JLabel.LEFT);
+        label= new JLabel(" m/s" + SQUARED, JLabel.LEFT);
         c3.gridx = 2;
         randomFieldPane.add(label, c3);
         
