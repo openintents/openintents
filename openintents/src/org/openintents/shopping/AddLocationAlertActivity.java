@@ -181,10 +181,9 @@ public class AddLocationAlertActivity extends Activity
 				mLocation.setText(bundle.getString(Locations.EXTRA_GEO));
 				mTags.setText(mTag.findTags(data, ", "));
 				*/
-				
-				/// TODO ??? Is this correct ???
-				Bundle bundle = data.getBundleExtra(Locations.EXTRA_GEO);
-				mLocation.setText(bundle.getString(Locations.EXTRA_GEO));
+								
+				String geo = data.getStringExtra(Locations.EXTRA_GEO);
+				mLocation.setText(geo);
 				mTags.setText(mTag.findTags(data.getDataString(), ", "));
 				addLocationAlert();
 				break;
