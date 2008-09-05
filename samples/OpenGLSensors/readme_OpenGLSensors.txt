@@ -21,7 +21,7 @@ The bar magnet displayed will always point along the magnetic field.
   
 ---------------------------------------------------------
 release: 0.9.0
-date: 2008-09-03
+date: 2008-09-05
 
 upgrade to Android SDK 0.9.
 

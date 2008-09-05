@@ -22,9 +22,9 @@ To obtain the current release, visit
   
 ---------------------------------------------------------
 release: 0.9.0
-date: 2008-09-03
+date: 2008-09-05
 
-upgrade to Android SDK 0.9.
+- upgrade to Android SDK 0.9.
 - updated Sensors class to SensorManager and SensorListener
 
 ---------------------------------------------------------

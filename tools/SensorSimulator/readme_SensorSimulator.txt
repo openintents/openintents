@@ -28,10 +28,11 @@ It transmits the simulated sensor data to an Android emulator.
 
 ---------------------------------------------------------
 release: 0.9.0
-date: 2008-09-03
+date: 2008-09-05
 
 upgrade to Android SDK 0.9.
-- no changes were necessary in SensorSimulator application
+- adapt new conventions for accelerometer and orientation
+  sensors.
 
 ---------------------------------------------------------
 release: 0.1.7
