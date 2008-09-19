@@ -399,9 +399,12 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
         }
         
 	}
-	
 
-    /** 
+	public void onAccuracyChanged(int sensor, int accuracy) {
+		
+	}
+
+	/** 
      * Fills the sensor list with currently active sensors.
      */
 	
