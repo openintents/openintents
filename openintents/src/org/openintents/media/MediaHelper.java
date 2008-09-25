@@ -15,7 +15,7 @@ public class MediaHelper {
 	public static String getFilenameForUri(Activity activity, String uriString) {
 		Uri mURI = Uri.parse(uriString);
 
-		Cursor mCursor = activity.managedQuery(mURI, mProjection, null, null);
+		Cursor mCursor = activity.managedQuery(mURI, mProjection, null, null, null);
 		String mFilename = null;
 		if (mCursor != null && mCursor.moveToFirst()) {
 			int indexDATA = mCursor

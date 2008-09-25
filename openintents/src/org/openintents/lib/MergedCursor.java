@@ -113,12 +113,6 @@ public class MergedCursor implements Cursor {
 		return null;
 	}
 
-	public void abortUpdates() {
-		for (int i = 0; i < mCursors.length; i++) {
-			mCursors[i].abortUpdates();
-		}
-		init();
-	}
 
 	public void close() {
 		for (int i = 0; i < mCursors.length; i++) {

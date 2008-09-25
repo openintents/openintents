@@ -185,7 +185,7 @@ public class ContentListRow extends RelativeLayout {
 
 		if (contentUri != null) {
 			intent = new Intent(Intent.ACTION_VIEW, contentUri);
-			if (mContext.getPackageManager().resolveActivity(intent, 0) == null) {
+			if (getContext().getPackageManager().resolveActivity(intent, 0) == null) {
 				intent = null;
 			} else {
 				try {

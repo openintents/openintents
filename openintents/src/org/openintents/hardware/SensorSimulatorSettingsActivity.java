@@ -60,7 +60,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	 */
 	private static final String TAG = "Hardware";
 
-    private SensorManager mSensorManager;
+    private SensorManagerSimulator mSensorManager;
     
 	private EditText mEditTextIP;
 	private EditText mEditTextSocket;
@@ -132,7 +132,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		// Start with Android's sensor manager
 		//mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		mSensorManager = (SensorManager) new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
+		mSensorManager = new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
 		
 		Context context = this;
         // Get the Resources object from our context

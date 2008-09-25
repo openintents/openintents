@@ -84,7 +84,7 @@ public class ListShareSettingsActivity extends Activity {
         mUri = getIntent().getData();
 
         // Get a cursor to access the note
-        mCursor = managedQuery(mUri, mProjectionLists, null, null);
+        mCursor = managedQuery(mUri, mProjectionLists, null, null, null);
 
         // Set up click handlers for the text field and button
         mContacts = (EditText) this.findViewById(R.id.contacts);

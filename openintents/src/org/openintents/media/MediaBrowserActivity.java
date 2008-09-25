@@ -241,7 +241,7 @@ public class MediaBrowserActivity extends Activity {
 	    		mInternalUri,
 	    		mProjection, //Which columns to return. 
 	            null,       // WHERE clause--we won't specify.
-	            null); // Order-by clause.
+	            null, null); // Order-by clause.
 
 	    if (mInternalCursor.getCount() < 1) {
 	    	// No items in list
@@ -289,7 +289,7 @@ public class MediaBrowserActivity extends Activity {
 	    		mExternalUri,
 	            mProjection, //Which columns to return. 
 	            null,       // WHERE clause--we won't specify.
-	            null); // Order-by clause.
+	            null, null); // Order-by clause.
 
 	    if (mExternalCursor == null) {
 	    	// No SD card available

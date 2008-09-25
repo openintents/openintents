@@ -4,7 +4,7 @@ import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.os.Looper;
 
-public class SensorManagerSimulator extends SensorManager {
+public class SensorManagerSimulator {
 
 
 	/**
@@ -20,11 +20,10 @@ public class SensorManagerSimulator extends SensorManager {
 	private SensorManager mSensorManager = null;
 	
 	public SensorManagerSimulator(SensorManager systemsensormanager) {
-		super((Looper) null);
 		mSensorManager = systemsensormanager;
 	}
 	
-	@Override
+	
 	public int getSensors() {
 		if (mClient.connected) {
 			return mClient.getSensors();
@@ -33,7 +32,7 @@ public class SensorManagerSimulator extends SensorManager {
 		}
 	}
 
-	@Override
+	
 	public boolean registerListener(SensorListener listener, int sensors, int rate) {
 		if (mClient.connected) {
 			return mClient.registerListener(listener, sensors, rate);
@@ -42,7 +41,7 @@ public class SensorManagerSimulator extends SensorManager {
 		}
 	}
 
-	@Override
+	
 	public boolean registerListener(SensorListener listener, int sensors) {
 		if (mClient.connected) {
 			return mClient.registerListener(listener, sensors);
@@ -51,7 +50,7 @@ public class SensorManagerSimulator extends SensorManager {
 		}
 	}
 
-	@Override
+	
 	public void unregisterListener(SensorListener listener, int sensors) {
 		if (mClient.connected) {
 			mClient.unregisterListener(listener, sensors);
@@ -60,7 +59,7 @@ public class SensorManagerSimulator extends SensorManager {
 		}
 	}
 
-	@Override
+	
 	public void unregisterListener(SensorListener listener) {
 		if (mClient.connected) {
 			mClient.unregisterListener(listener);

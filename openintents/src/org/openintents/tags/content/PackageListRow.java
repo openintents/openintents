@@ -123,7 +123,7 @@ public class PackageListRow extends RelativeLayout {
 			@Override
 			public void run() {
 
-				PackageManager pm = mContext.getPackageManager();
+				PackageManager pm = getContext().getPackageManager();
 				try {
 					ProviderInfo providerInfo = pm.resolveContentProvider(
 							packageName, 0);

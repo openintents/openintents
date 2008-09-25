@@ -166,30 +166,16 @@ public class Tag {
 	}
 
 	public void removeTag(String tag, String uri) {
-		try {
-			mContext.getContentResolver().acquireProvider(Tags.CONTENT_URI).delete(
-					Tags.CONTENT_URI, Tag.DELETE_TAG_URI,
-					new String[] { tag, uri });
-		} catch (DeadObjectException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		mContext.getContentResolver().delete(Tags.CONTENT_URI,
+				Tag.DELETE_TAG_URI, new String[] { tag, uri });
 
 	}
 
 	public void removeAllTags(String uri) {
-		try {
-			mContext.getContentResolver().acquireProvider(Tags.CONTENT_URI).delete(
-					Tags.CONTENT_URI, Tag.DELETE_URI, new String[] { uri });
-		} catch (DeadObjectException e) {
-			Log.w(TAG, "removeAllTags " + e.getMessage());
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		mContext.getContentResolver().delete(Tags.CONTENT_URI, Tag.DELETE_URI,
+				new String[] { uri });
 
 	}
 
@@ -204,15 +190,16 @@ public class Tag {
 			Log.i(TAG, "insert failed", e);
 		}
 	}
-	
+
 	public void insertUniqueTag(String tag, String content) {
 		ContentValues values = new ContentValues(2);
 		values.put(Tags.URI_1, tag);
 		values.put(Tags.URI_2, content);
 
 		try {
-			Uri uri = Tags.CONTENT_URI.buildUpon().appendQueryParameter(Tags.QUERY_UNIQUE_TAG, "true").build();
-			mContext.getContentResolver().insert(uri , values);
+			Uri uri = Tags.CONTENT_URI.buildUpon().appendQueryParameter(
+					Tags.QUERY_UNIQUE_TAG, "true").build();
+			mContext.getContentResolver().insert(uri, values);
 		} catch (Exception e) {
 			Log.i(TAG, "insert failed", e);
 		}
@@ -247,7 +234,7 @@ public class Tag {
 				new String[] { contentUri }, "content1.uri");
 		return c;
 	}
-	
+
 	public String findTags(String uri, String separator) {
 		Cursor tags = findTags(uri);
 		StringBuffer sb = new StringBuffer();
@@ -256,7 +243,7 @@ public class Tag {
 			sb.append(tags.getString(colIndex));
 			sb.append(separator);
 		}
-		if (sb.length() > 0){
+		if (sb.length() > 0) {
 			sb.deleteCharAt(sb.length() - separator.length());
 		}
 		return sb.toString();
@@ -294,14 +281,20 @@ public class Tag {
 	}
 
 	/**
-	 * Get a cursor with all used tags, i.e. at least one content 
-	 * has been tagged with this tag. 
+	 * Get a cursor with all used tags, i.e. at least one content has been
+	 * tagged with this tag.
+	 * 
 	 * @return
 	 */
 	public Cursor findAllUsedTags() {
-		Cursor c = mContext.getContentResolver().query(Contents.CONTENT_URI,
-				new String[] { Contents._ID, Contents.URI, Contents.TYPE },
-				"type like 'TAG%' and (select count(*) from tag where tag.tag_id = content._id) > 0", null, Contents.DEFAULT_SORT_ORDER);
+		Cursor c = mContext
+				.getContentResolver()
+				.query(
+						Contents.CONTENT_URI,
+						new String[] { Contents._ID, Contents.URI,
+								Contents.TYPE },
+						"type like 'TAG%' and (select count(*) from tag where tag.tag_id = content._id) > 0",
+						null, Contents.DEFAULT_SORT_ORDER);
 		return c;
 	}
 
@@ -319,7 +312,5 @@ public class Tag {
 		mContext.startActivity(intent);
 
 	}
-
-
 
 }

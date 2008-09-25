@@ -159,7 +159,7 @@ public class AddGenericAlertActivity extends Activity {
 			cUri = Uri.parse(getIntent().getStringExtra(Alert.EXTRA_URI));
 			Log.v(_TAG, "edit " + cUri);
 			
-			mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null);
+			mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null, null);
 			cond1Row = mCursor.getColumnIndex(Alert.Generic.CONDITION1);
 			cond2Row = mCursor.getColumnIndex(Alert.Generic.CONDITION2);
 			intentRow = mCursor.getColumnIndex(Alert.Generic.INTENT);
@@ -208,7 +208,7 @@ public class AddGenericAlertActivity extends Activity {
 		cv.put(Alert.Generic.ACTIVATE_ON_BOOT, mOnBoot.isChecked());
 		
 		cUri = Alert.insert(typedUri, cv);
-		mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null);
+		mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null, null);
 		//Issue 113: pick action/location adds alert
 		// only allow to create an alert once, thereafter the state changes to edit.
 		mState = STATE_EDIT;

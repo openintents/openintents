@@ -324,7 +324,7 @@ public class MediaPlayerActivity extends Activity implements
 	private void loadFileFromUri() {
 		// Get the media content
         if (mURI != null) {
-	        mCursor = managedQuery(mURI, mProjection, null, null);
+	        mCursor = managedQuery(mURI, mProjection, null, null, null);
 	        if (mCursor != null && mCursor.moveToFirst()) {
 		        int indexDATA = mCursor.getColumnIndex(android.provider.MediaStore.MediaColumns.DATA);
 				mFilename = mCursor.getString(indexDATA);

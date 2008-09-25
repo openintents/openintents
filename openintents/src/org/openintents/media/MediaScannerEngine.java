@@ -6,8 +6,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.media.IMediaScannerService;
-import android.os.RemoteException;
 import android.util.Log;
 
 public class MediaScannerEngine {
@@ -15,7 +13,7 @@ public class MediaScannerEngine {
 	/** TAG for log messages. */
 	static final String TAG = "MediaScannerEngine";
 
-	private android.media.IMediaScannerService mScanner = null;
+	//private android.media.IMediaScannerService mScanner = null;
 	private MediaScannerConnection mScannerConnection = new MediaScannerConnection();
 	private boolean mScannerInitializing = false;
 	private boolean mScannerConnected = false;
@@ -33,20 +31,20 @@ public class MediaScannerEngine {
 			synchronized (MediaScannerEngine.this) {
 				Log.i(TAG, "Connected to MediaScanner");
 				mScannerInitializing = false;
-				mScanner = IMediaScannerService.Stub.asInterface(service);
-				if (mScanner != null) {
-					mScannerConnected = true;
-					scanTarget();
-				} else {
-					// something failed, handling is implementation specific
-				}
+//				mScanner = IMediaScannerService.Stub.asInterface(service);
+//				if (mScanner != null) {
+//					mScannerConnected = true;
+//					scanTarget();
+//				} else {
+//					// something failed, handling is implementation specific
+//				}
 			}
 		}
 
 		public void onServiceDisconnected(ComponentName name) {
 			synchronized (MediaScannerEngine.this) {
 				Log.i(TAG, "Disconnected from MediaScanner");
-				mScanner = null;
+				//mScanner = null;
 				mScannerConnected = false;
 			}
 		}
@@ -78,15 +76,15 @@ public class MediaScannerEngine {
 
 			for (String filename : filenames) {
 				String mimeType = MediaUtils.getMimeType(filename);
-				if (mScanner != null) {
-					Log.i(TAG, "Scanning file " + filename + ", " + mimeType);
-					try {
-						mScanner.scanFile(filename, mimeType);
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+//				if (mScanner != null) {
+//					Log.i(TAG, "Scanning file " + filename + ", " + mimeType);
+//					try {
+//						mScanner.scanFile(filename, mimeType);
+//					} catch (RemoteException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//				}
 			}
 			
 			// When we are done, unbind

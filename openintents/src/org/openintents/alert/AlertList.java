@@ -99,7 +99,7 @@ public class AlertList extends ListActivity{
 //		AlertProvider.test(Uri.parse("content://org.openintents.alert/"));
 //		AlertProvider.test(Alert.Location.CONTENT_URI);
 		
-		mCursor=managedQuery(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null);
+		mCursor=managedQuery(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null, null);
 		//new AlertProvider().query(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null,null);
 		//mCursor=Alert.mContentResolver.query(Alert.Generic.CONTENT_URI,Alert.Generic.PROJECTION,null,null,null);
 		Log.d(_TAG,"cursor is now>>"+mCursor+"<<");
