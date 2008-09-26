@@ -17,8 +17,10 @@ package org.openintents.alert;
  */
 
 import org.openintents.provider.Alert;
+import org.openintents.provider.Alert.ManagedService;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -69,19 +71,18 @@ import android.util.Log;
 						{
 							Log.e(_TAG,"couldnt start service >>"+className+"<<, reason>>"+e.getMessage()+"<<");
 						}
-
-
-
-						c.updateString(c.getColumnIndex(Alert.ManagedService.LAST_TIME),Long.toString(now));
-						c.commitUpdates();
+					
 					}
 
 					c.moveToNext();
 				}
 				c.close();
 			}
-
-
+			
+			// update time stamp
+			ContentValues values = new ContentValues();
+			values.put(ManagedService.LAST_TIME, now);	
+			context.getContentResolver().update(ManagedService.CONTENT_URI, values , "? + " + ManagedService.TIME_INTERVALL + " > " + ManagedService.LAST_TIME , new String[]{String.valueOf(now)});
 
 
 		}

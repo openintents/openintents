@@ -18,8 +18,10 @@ package org.openintents.shopping.share;
 
 import org.openintents.R;
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Lists;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -149,12 +151,10 @@ public class ListShareSettingsActivity extends Activity {
                 
        	// Write the text back into the cursor 
         if (mCursor != null) {
-            mCursor.updateString(mProjectionListsSHARENAME, sharename);
-            
-            mCursor.updateString(mProjectionListsSHARECONTACTS, contacts);
-            
-            mCursor.commitUpdates();
-            
+        	ContentValues values = new ContentValues();
+        	values.put(Lists.SHARE_NAME, sharename);
+        	values.put(Lists.SHARE_CONTACTS, contacts);
+			getContentResolver().update(mUri, values , "_id = ?", new String[]{mCursor.getString(0)});                     
             
         }
         

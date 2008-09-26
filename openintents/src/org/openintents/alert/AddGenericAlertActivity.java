@@ -17,6 +17,7 @@ package org.openintents.alert;
 
 import org.openintents.provider.Alert;
 import org.openintents.provider.Intents;
+import org.openintents.provider.Alert.Generic;
 import org.openintents.provider.Alert.Location;
 import org.openintents.provider.Location.Locations;
 import org.openintents.OpenIntents;
@@ -220,6 +221,8 @@ public class AddGenericAlertActivity extends Activity {
 	//	Log.v(_TAG, "next: " + mCursor.next());
 		Log.v(_TAG, "first: " + mCursor.moveToFirst());
 
+		ContentValues values = new ContentValues();
+
 		CharSequence c=null;
 		String s=new String();
 		//ugly hack following
@@ -230,7 +233,7 @@ public class AddGenericAlertActivity extends Activity {
 		}else{
 			s=c.toString();
 		}
-		mCursor.updateString(cond1Row, s);
+		values.put(Generic.CONDITION1, s);
 
 		c=mCond2.getText();
 		if (TextUtils.isEmpty(c))
@@ -241,14 +244,7 @@ public class AddGenericAlertActivity extends Activity {
 		}
 
 		Log.d(_TAG,"cond2row set 2 >>"+s+"<<");
-		try
-		{
-			mCursor.updateString(mCursor.getColumnIndex(Alert.Generic.CONDITION2), s);	
-		}
-		catch (Exception ex)
-		{
-			Log.e(_TAG,"once again, we have no plan.");
-		}
+		values.put(Generic.CONDITION2, s);
 		
 
 		c=mIntent.getText();
@@ -259,8 +255,7 @@ public class AddGenericAlertActivity extends Activity {
 			s=c.toString();
 		}
 
-
-		mCursor.updateString(intentRow, s);
+		values.put(Generic.INTENT, s);		
 
 		c=mIntentCat.getText();
 		if (TextUtils. isEmpty(c))
@@ -270,7 +265,7 @@ public class AddGenericAlertActivity extends Activity {
 			s=c.toString();
 		}
 
-		mCursor.updateString(intentCatRow, s);
+		values.put(Generic.INTENT_CATEGORY, s);
 		
 		c=mIntentUri.getText();
 		if (TextUtils. isEmpty(c))
@@ -279,20 +274,23 @@ public class AddGenericAlertActivity extends Activity {
 		}else{
 			s=c.toString();
 		}
-		mCursor.updateString(intentUriRow, s);
+		values.put(Generic.INTENT_URI, s);
+		
+		values.put(Generic.TYPE, ((String) mType.getSelectedItem()));
+		
+		values.put(Generic.ACTIVE, (mActive.isChecked() ? 1 : 0));
 
-		mCursor.updateString(typeRow, ((String) mType.getSelectedItem()));
-		if (mActive.isChecked()){
-			mCursor.updateInt(activeRow, 1);
+		values.put(Generic.ACTIVATE_ON_BOOT, (mOnBoot.isChecked() ? 1 : 0));
+		
+		Uri typedUri;
+		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())) {
+			typedUri = Alert.Location.CONTENT_URI;
+		} else if (Alert.TYPE_DATE_TIME.equals(mType.getSelectedItem())) {
+			typedUri = Alert.DateTime.CONTENT_URI;
 		} else {
-			mCursor.updateInt(activeRow, 0);
+			typedUri = Alert.Generic.CONTENT_URI;
 		}
-		if (mOnBoot.isChecked()){
-			mCursor.updateInt(onBootRow, 1);
-		} else {
-			mCursor.updateInt(onBootRow, 0);
-		}				
-		mCursor.commitUpdates();
+		Alert.update(typedUri, values, null, null);
 		
 		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())){		
 			ContentValues cv = new ContentValues();

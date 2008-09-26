@@ -232,12 +232,15 @@ public class Alert {
 
 		if (c != null && c.getCount() > 0) {// update
 			c.moveToFirst();
-			c.updateString(c
-					.getColumnIndexOrThrow(ManagedService.TIME_INTERVALL), Long
+			String id = c
+					.getString(c.getColumnIndexOrThrow(ManagedService._ID));
+			ContentValues values = new ContentValues();
+			values.put(ManagedService.TIME_INTERVALL, Long
 					.toString(timeIntervall));
-			c.updateString(c.getColumnIndexOrThrow(ManagedService.DO_ROAMING),
-					Boolean.toString(useWhileRoaming));
-			c.commitUpdates();
+			values.put(ManagedService.DO_ROAMING, Boolean
+					.toString(useWhileRoaming));
+			mContentResolver.update(Uri.withAppendedPath(
+					ManagedService.CONTENT_URI, id), values, null, null);
 			c.close();
 		} else {
 			// insert
@@ -429,13 +432,15 @@ public class Alert {
 			// TODO: find out how to handle this now
 			/*
 			 * PendingIntent i= new PendingIntent();
-			 * //i.setClassName("org.openintents.alert","LocationAlertDispatcher");
+			 * //i.setClassName("org.openintents.alert"
+			 * ,"LocationAlertDispatcher");
 			 * i.setAction("org.openintents.action.LOCATION_ALERT_DISPATCH");
 			 * //i.setData(gUri); i.putExtra(Location.POSITION,
 			 * cv.getAsString(Location.POSITION));
 			 * 
 			 * locationManager.addProximityAlert( latitude, longitude, dist,
-			 * LOCATION_EXPIRES, i ); Log.d(_TAG,"Registerd alert geo:"+geo+" dist:"+dist);
+			 * LOCATION_EXPIRES, i );
+			 * Log.d(_TAG,"Registerd alert geo:"+geo+" dist:"+dist);
 			 * Log.d(_TAG,"Registered alert intent:" + i);
 			 */
 		} catch (ArrayIndexOutOfBoundsException aioe) {
@@ -500,17 +505,20 @@ public class Alert {
 
 	public static void unregisterDateTimeAlert(ContentValues cv) {
 		/*
-		 * String myDate=cv.getAsString(DateTime.TIME); String s[]=myDate.split(",");
-		 * Log.d(_TAG,"registerDateTimeAlert: s[0]>>"+s[0]+"<< s[1]>>+"+s[1]+"<<");
-		 * long time=0; long myReoccurence=cv.getAsLong(DateTime.REOCCURENCE);
+		 * String myDate=cv.getAsString(DateTime.TIME); String
+		 * s[]=myDate.split(",");
+		 * Log.d(_TAG,"registerDateTimeAlert: s[0]>>"+s[0]
+		 * +"<< s[1]>>+"+s[1]+"<<"); long time=0; long
+		 * myReoccurence=cv.getAsLong(DateTime.REOCCURENCE);
 		 * 
 		 * Cursor c=mContentResolver.query( DateTime.CONTENT_URI,
-		 * DateTime.PROJECTION_MAP, DateTime.TIME+" like '"+myDate+"'", null null );
+		 * DateTime.PROJECTION_MAP, DateTime.TIME+" like '"+myDate+"'", null
+		 * null );
 		 * 
 		 * if (c==null||c.count()==0) {//alert has been deleted
 		 * 
-		 * }else if (c!=null&&c.count()==1) {//exactly out alert alarmManager.
-		 *  } //TODO: check if there are now other alerts at this time.
+		 * }else if (c!=null&&c.count()==1) {//exactly out alert alarmManager. }
+		 * //TODO: check if there are now other alerts at this time.
 		 */
 
 		// atm it would oly be possible to delete all dateTimeDispatch alerts

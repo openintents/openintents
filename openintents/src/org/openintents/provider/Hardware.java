@@ -168,8 +168,11 @@ public abstract class Hardware {
 				
 				// This is the key, so we can update it:
 				c.moveToFirst();
-				c.updateString(mProjectionPreferencesVALUE, value);
-				c.commitUpdates();
+				String id = c.getString(mProjectionPreferencesID);
+				ContentValues cv = new ContentValues();
+				cv.put(Preferences.VALUE, value);
+				mContentResolver.update(Uri.withAppendedPath(Preferences.CONTENT_URI, id), cv, null, null );
+				
 				// c.requery();
 				c.getString(mProjectionPreferencesVALUE);
 			} else {

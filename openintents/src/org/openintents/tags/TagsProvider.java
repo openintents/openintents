@@ -69,8 +69,8 @@ public class TagsProvider extends ContentProvider {
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 
 		DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
@@ -94,8 +94,8 @@ public class TagsProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-        mOpenHelper = new DatabaseHelper(getContext());
-        return true;
+		mOpenHelper = new DatabaseHelper(getContext());
+		return true;
 	}
 
 	public Cursor query(Uri url, String[] projection, String selection,
@@ -142,7 +142,7 @@ public class TagsProvider extends ContentProvider {
 			orderBy = sort;
 		}
 		SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-        Cursor c = qb.query(db, projection, selection, selectionArgs, null,
+		Cursor c = qb.query(db, projection, selection, selectionArgs, null,
 				null, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
@@ -151,7 +151,7 @@ public class TagsProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri url, ContentValues initialValues) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        long rowID = 0l;
+		long rowID = 0l;
 		ContentValues values;
 		if (initialValues != null) {
 			values = new ContentValues(initialValues);
@@ -200,17 +200,16 @@ public class TagsProvider extends ContentProvider {
 
 		Long tagId = values.getAsLong(Tags.TAG_ID);
 		Long contentId = values.getAsLong(Tags.CONTENT_ID);
-		if ( tagId == null || tagId == -1 || contentId == null || contentId == -1){
+		if (tagId == null || tagId == -1 || contentId == null
+				|| contentId == -1) {
 			return null;
 		}
-		
+
 		// check whether tag already exists
-		Cursor existingTag = db
-				.query("tag", new String[] { Tags._ID },
-						"tag_id = ? AND content_id = ?", new String[] {
-								String.valueOf(tagId),
-								String.valueOf(contentId) }, null,
-						null, null);
+		Cursor existingTag = db.query("tag", new String[] { Tags._ID },
+				"tag_id = ? AND content_id = ?", new String[] {
+						String.valueOf(tagId), String.valueOf(contentId) },
+				null, null, null);
 
 		if (!existingTag.moveToNext()) {
 
@@ -223,9 +222,10 @@ public class TagsProvider extends ContentProvider {
 							TAG_TYPE_UNIQUE_TAG }, null, null, null);
 			if (existingTag.moveToNext()) {
 				rowID = existingTag.getLong(0);
-				existingTag.updateString(1, String.valueOf(values
-						.get(Tags.CONTENT_ID)));
-				existingTag.commitUpdates();
+				ContentValues cv = new ContentValues();
+				cv.put(Tags.CONTENT_ID, values.getAsString(Tags.CONTENT_ID));
+				db.update("tag", cv, "tag_id = ?", new String[] { existingTag
+						.getString(0) });
 				inserted = true;
 			}
 
@@ -266,7 +266,7 @@ public class TagsProvider extends ContentProvider {
 				tagUri = defaultValue;
 			}
 			SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-	        Cursor existingTag = db.query("content",
+			Cursor existingTag = db.query("content",
 					new String[] { Contents._ID }, "uri = ?",
 					new String[] { tagUri }, null, null, null);
 
@@ -289,7 +289,7 @@ public class TagsProvider extends ContentProvider {
 	 */
 	private long insertContent(String uri, String type) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
+		ContentValues values = new ContentValues();
 		values.put(Contents.URI, uri);
 		if (type != null) {
 			values.put(Contents.TYPE, type);
@@ -305,7 +305,7 @@ public class TagsProvider extends ContentProvider {
 	@Override
 	public int delete(Uri url, String where, String[] whereArgs) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        int count;
+		int count;
 		long rowId = 0;
 		switch (URL_MATCHER.match(url)) {
 		case TAGS:
@@ -324,8 +324,7 @@ public class TagsProvider extends ContentProvider {
 				whereString = "";
 			}
 
-			count = db
-					.delete("tag", "_id=" + segment + whereString, whereArgs);
+			count = db.delete("tag", "_id=" + segment + whereString, whereArgs);
 
 			deleteUnrefContent();
 			break;
@@ -340,7 +339,7 @@ public class TagsProvider extends ContentProvider {
 
 	private void deleteUnrefContent() {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        db
+		db
 				.delete(
 						"content",
 						"type not like 'TAG%' and not exists(select content_id from tag where tag.content_id = content._id)",

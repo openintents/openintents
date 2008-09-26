@@ -20,21 +20,9 @@
 
 package org.openintents.shopping.share;
 
-import org.openintents.OpenIntents;
-import org.openintents.R;
-import org.openintents.provider.Shopping;
-
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.DeadObjectException;
-import android.os.IBinder;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.google.android.gtalkservice.IGTalkService;
 
 /**
  * Handles sending out information about changes in shared shopping lists.

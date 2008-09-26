@@ -110,7 +110,10 @@ public class MockLocationService extends Service {
     positionOffset = intent.getIntExtra(BUNDLE_OFFSET_KEY, 0);
     
     // okay, now we're ready to start sending updates, make sure we're enabled
-    lm.setTestProviderEnabled(PROVIDER_ID, true);
+    if (lm.isProviderEnabled(PROVIDER_ID)){
+    	// oh no
+    	Log.e(LOG_TAG, "provider " + PROVIDER_ID + " not enabled");
+    }
     updateThread = new PositionProvider(lm);
     Log.i(LOG_TAG, "Starting position sender thread.");
     updateThread.start();
@@ -180,7 +183,10 @@ public class MockLocationService extends Service {
         // set the time in the location. If the time on this location matches
         // the time on the one in the previous set call, it will be ignored
         l.setTime(System.currentTimeMillis());
-        locationService.setTestProviderLocation(PROVIDER_ID, l);
+        
+        // TODO not supported in SDK 1.0
+        // locationService.setTestProviderLocation(PROVIDER_ID, l);
+        
         try {
           Thread.sleep(500l);
         } catch (Exception e) {

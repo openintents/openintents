@@ -134,6 +134,10 @@ public class Location {
 		return mResolver.query(uri.build(), new String[] { Extras._ID,
 				Extras.KEY, Extras.VALUE}, null, null, Extras.KEY + "," + Extras.VALUE);
 	}
+	
+	public void updateExtras(long locationId, long extrasId, ContentValues values){
+		
+	}
 
 	public int deleteExtra(long extraId) {
 		return mResolver.delete(ContentUris.withAppendedId(Extras.CONTENT_URI,

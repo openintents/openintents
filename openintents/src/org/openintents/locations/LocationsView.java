@@ -18,7 +18,6 @@ package org.openintents.locations;
 
 import java.util.List;
 
-import org.bouncycastle.asn1.OrderedTable;
 import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.provider.Alert;
@@ -41,10 +40,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;

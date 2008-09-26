@@ -4,6 +4,7 @@ import org.openintents.provider.Location;
 import org.openintents.provider.Location.Extras;
 
 import android.app.ListActivity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -105,12 +106,14 @@ public class ExtrasView extends ListActivity {
 
 			mExtrasCursor.moveToPosition(i);
 			LinearLayout row = (LinearLayout) getListView().getChildAt(i);
-			mExtrasCursor.updateString(1, ((EditText) row.getChildAt(1))
+			ContentValues values = new ContentValues();
+			values.put(Extras.KEY, ((EditText) row.getChildAt(1))
 					.getText().toString());
-			mExtrasCursor.updateString(2, ((EditText) row.getChildAt(2))
+			values.put(Extras.VALUE, ((EditText) row.getChildAt(2))
 					.getText().toString());
+			mLocation.updateExtras(mLocationId, mExtrasCursor.getLong(mExtrasCursor.getColumnIndexOrThrow(Extras._ID)), values);
 		}
-		mExtrasCursor.commitUpdates();
+		
 		if (requery){
 			mExtrasCursor.requery();
 		}

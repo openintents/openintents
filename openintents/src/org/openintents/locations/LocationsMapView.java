@@ -32,7 +32,7 @@ public class LocationsMapView extends MapActivity {
 	private static final int MENU_USE_CENTER = 1;
 	private static final int MENU_RESTORE_VALUES = 2;
 	private static final int MENU_ABOUT = 3;
-	
+
 	private GeoPoint point;
 	private MapView view;
 	private long pointId;
@@ -79,7 +79,7 @@ public class LocationsMapView extends MapActivity {
 		MapController controller = view.getController();
 		controller.setCenter(new GeoPoint(point.getLatitudeE6(), point
 				.getLongitudeE6()));
-		//controller.setZoom(9);
+		// controller.setZoom(9);
 		controller.setZoom(15);
 
 		mEditTags = (MultiWordAutoCompleteTextView) findViewById(R.id.tag);
@@ -110,10 +110,11 @@ public class LocationsMapView extends MapActivity {
 				.getColumnIndexOrThrow(Contents.URI));
 		mEditTags.setAdapter(adapter);
 
-		//old
-		//view.getOverlayController().add(new LocationsMapOverlay(this), true);
-		java.util.List <com.google.android.maps.Overlay> overlays=view.getOverlays();
-		synchronized(overlays){
+		// old
+		// view.getOverlayController().add(new LocationsMapOverlay(this), true);
+		java.util.List<com.google.android.maps.Overlay> overlays = view
+				.getOverlays();
+		synchronized (overlays) {
 			overlays.clear();
 			overlays.add(new LocationsMapOverlay(this));
 		}
@@ -153,7 +154,8 @@ public class LocationsMapView extends MapActivity {
 
 		GeoPoint p = LocationsMapView.this.view.getMapCenter();
 
-		android.location.Location loc = new android.location.Location((String) null);
+		android.location.Location loc = new android.location.Location(
+				(String) null);
 		loc.setLatitude(p.getLatitudeE6() / 1E6);
 		loc.setLongitude(p.getLongitudeE6() / 1E6);
 
@@ -194,7 +196,11 @@ public class LocationsMapView extends MapActivity {
 					}
 				}
 				if (!found) {
-					mIdTagCursor.deleteRow();
+					String id = mIdTagCursor.getString(mIdTagCursor
+							.getColumnIndex(Tags._ID));
+					getContentResolver().delete(
+							Uri.withAppendedPath(Tags.CONTENT_URI, id), null,
+							null);
 				}
 			}
 		}
@@ -204,12 +210,12 @@ public class LocationsMapView extends MapActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		boolean superResult = super.onCreateOptionsMenu(menu);
-		menu.add(0, MENU_USE_CENTER, 0, R.string.locations_use_center)
-				.setIcon(R.drawable.location_center001a);
+		menu.add(0, MENU_USE_CENTER, 0, R.string.locations_use_center).setIcon(
+				R.drawable.location_center001a);
 		menu.add(0, MENU_RESTORE_VALUES, 0, R.string.locations_restore_values)
-		.setIcon(R.drawable.restore001a);
+				.setIcon(R.drawable.restore001a);
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
-		.setIcon(R.drawable.about001a);
+				.setIcon(R.drawable.about001a);
 		return superResult;
 	}
 
@@ -239,12 +245,13 @@ public class LocationsMapView extends MapActivity {
 	private void showAboutDialog() {
 		Intent intent = new Intent(this, About.class);
 		intent.putExtra(About.TITLE_ID, R.string.locations_about);
-		intent.putExtra(About.TEXT_ID, R.string.locations_about_text);		
+		intent.putExtra(About.TEXT_ID, R.string.locations_about_text);
 		startActivity(intent);
 	};
-	
+
 	private void updateUsingPoint(GeoPoint p) {
-		android.location.Location loc = new android.location.Location((String) null);
+		android.location.Location loc = new android.location.Location(
+				(String) null);
 		loc.setLatitude(p.getLatitudeE6() / 1E6);
 		loc.setLongitude(p.getLongitudeE6() / 1E6);
 
@@ -261,17 +268,18 @@ public class LocationsMapView extends MapActivity {
 		}
 		point = p;
 
-		//old
-		//view.getOverlayController().add(new LocationsMapOverlay(this), true);
-		java.util.List <com.google.android.maps.Overlay> overlays=view.getOverlays();
-		synchronized(overlays){
+		// old
+		// view.getOverlayController().add(new LocationsMapOverlay(this), true);
+		java.util.List<com.google.android.maps.Overlay> overlays = view
+				.getOverlays();
+		synchronized (overlays) {
 			overlays.clear();
 			overlays.add(new LocationsMapOverlay(this));
 		}
 	}
 
 	@Override
-	protected boolean isRouteDisplayed() {		
+	protected boolean isRouteDisplayed() {
 		return false;
 	}
 
