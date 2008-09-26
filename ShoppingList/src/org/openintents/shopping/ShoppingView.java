@@ -299,7 +299,8 @@ public class ShoppingView extends Activity { // implements
 		final Intent intent = getIntent();
 		final String type = intent.resolveType(this);
 		final String action = intent.getAction();
-		if (action.equals(Intent.ACTION_MAIN)) {
+		
+		if (Intent.ACTION_MAIN.equals(action)) {
 			// Main action
 			mState = STATE_MAIN;
 
@@ -308,7 +309,7 @@ public class ShoppingView extends Activity { // implements
 
 			intent.setData(mListUri);
 
-		} else if (action.equals(Intent.ACTION_VIEW)) {
+		} else if (Intent.ACTION_VIEW.equals(action)) {
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
@@ -318,12 +319,12 @@ public class ShoppingView extends Activity { // implements
 				mListUri = intent.getData();
 			}
 
-		} else if (action.equals(Intent.ACTION_PICK)) {
+		} else if (Intent.ACTION_PICK.equals(action)) {
 			mState = STATE_PICK_ITEM;
 
 			mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 					+ defaultShoppingList);
-		} else if (action.equals(Intent.ACTION_GET_CONTENT)) {
+		} else if (Intent.ACTION_GET_CONTENT.equals(action)) {
 			mState = STATE_GET_CONTENT_ITEM;
 
 			mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
