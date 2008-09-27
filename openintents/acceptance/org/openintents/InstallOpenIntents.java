@@ -57,7 +57,7 @@ public class InstallOpenIntents extends positron.TestCase {
 		click();		
 		
 		pause();
-		assertEquals(getString(R.string.shopping_list), activity().getTitle());
+		//assertEquals(getString(R.string.shopping_list), activity().getTitle());
 		resume();
 		finish();
 		

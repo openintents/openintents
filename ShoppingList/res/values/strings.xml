@@ -16,131 +16,6 @@
  -->
  
 <resources>
-    <!-- Main application  -->
-	<string name="app_name">Open Intents</string>
-	<string name="default_tag">DEFAULT</string>
-	
-	<string name="openintents">OpenIntents</string>
-	<string name="about_openintents">About OpenIntents</string>
-	<string name="about">About</string>
-	<string name="about_openintents_text">OpenIntents 
-		defines open intents and interfaces to make Android applications
-		work together.\n\n
-		For more information visit the OpenIntents developer home at \n
-		http://code.google.com/p/openintents/\n\n
-		For copyright notes of maps see the About menu of Location Map View.\n
-		3rd party fonts by www.anke-art.de have been included. 
-	</string>
-	<string name="action_MAIN">org.openintents.main.OpenIntentsView</string>
-
-	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
-	
-	<string name="init_databases">Init default values</string>
-	<string name="init_add_locations">Add default locations</string>
-	<string name="init_add_news_feeds">Add default news feeds</string>	
-	<string name="init_add_all_values">Add all default values</string>
-	<string name="init_done">Values added</string>
-	<string name="init_view_locations">View Locations</string>
-	<string name="init_view_news">View Newsfeeds</string>
-
-	<!-- Location Provider -->
-	<string name="list_of_locations">List of locations</string>
-	<string name="add_current_location">Add curr. loc.</string>
-	<string name="view_location">View</string>
-	<string name="list_is_empty">(end of list)</string>
-	<string name="locations_map">Map</string>
-	<string name="tag_location">Tag location</string>
-	<string name="delete_location">Delete loc.</string>
-	<string name="locations_manage_extras">Manage extras</string>
-	<string name="locations_delete_extra">Delete</string>
-	<string name="locations_add_extra">Add</string>
-	<string name="locations_use_center">Use center as new coord.</string>
-	<string name="locations_restore_values">Restore values</string>
-	<string name="locations_about">About Location Map View</string>
-	<string name="locations_about_text">Location Map View uses 3rd party data and imagery \n\n
-	Copyright Notice: Data: (c)2007 TeleAtlas, AND, Europa Technologies,
-Kingway, Map Data Sciences Pty Ltd, PSMA, ZENRIN, Geocentre,
-MapLink/TeleAtlas; Imagery: (c)2007 DigitalGlobe, EarthSat, Sanborn, NYGIS,
-Scankort, TerraMetrics, MassGIS Commonwealth of Massachusetts, Digital
-Earth Technology.
-	</string>
-	<string name="key">Key</string>
-	<string name="value">Value</string>
-	
-	<!--   Tags Provider   -->
-	<string name="list_of_tags">List of tags</string>
-	<string name="list_of_contents">List of contents</string>
-	<string name="select">Select</string>
-	<string name="add">Add</string>
-	<string name="add_tag">Add new tag/content</string>
-	<string name="tag_all">ALL</string>
-	<string name="tags_add_any_tag">add new tag (advanced)</string>
-	<string name="tags_unique">unique tag</string>
-	<string name="tags_security">Content is secured, privileges has not been granted.</string>
-	<string name="tags_unparsable_uri">Content URI could not be parsed</string>
-	<string name="tags_unknown_content">Content type is unknown, add package information using menu "packages".</string>
-	<!-- intent list  -->
-	<string name = "intents_list">List of Actions by Type</string>
-	<string name = "intents_types">Action list by Type</string>
-	<string name = "no_types">No types</string>
-	<string name="intents_list_of">List of %s</string>
-	<string name="intents_item_of">%s</string>
-	<string name="intents_list_pick_type">Pick type for action %s</string>
-	<string name="intents_list_pick_type_action">Pick type, thereafter an action</string>
-	
-	<!--  Content Browser -->
-	<string name = "content_browser">Tag browser</string>
-	<string name ="tags_add_tag">Add tag</string>
-	<string name="tags_view_content">View</string>
-	<string name="tags_remove_tag">Remove tag</string>
-	
-	<string name="message">Message</string>
-	<string name="todo">To do</string>
-	<string name="tags_view_tag">View</string>
-	
-	<string name="no_tags">No tagged content found.</string>
-	<string name="empty_tag">Please enter an existing tag or select one using the magnifier.</string>
-	<string name="nothing_selected">Nothing selected</string>
-	<string name="nothing_found">Nothing found (%s)</string>
-	
-    <string name="menu_package_add">Import</string>
-    <string name="menu_package_del">Unregister</string>
-    <string name="menu_package_list">Content types</string>
-    <string name="label_packages">Content types (%s)</string>
-    <string name="label_packages_pick">Content types (%s) - Pick a type</string>
-    <string name="label_package_add">Enter URL</string>
-    <string name="button_ok">OK</string>
-    <string name="no_packages">No content types</string>
-    <string name="dialog_ok">OK</string>
-    <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_title_package_add">Import</string>
-    <string name="dialog_message_package_add">Loading...</string>
-    <string name="dialog_title_package_del">Unregister</string>
-    <string name="dialog_message_package_del">Are you sure?</string>
-    
-    <string name="tags_cloud">Tag Cloud</string>
-	<string name="tags_cloud_pick">Tag Cloud - Pick a tag</string>    
-    
-    <!-- Magnolia tagging (Ma.Gnolia.com) -->
-    <string name="magnolia_settings">Ma.gnolia settings</string>
-    <string name="magnolia_tagging">Ma.gnolia tags</string>
-    		
-    <!-- Media Browser -->
-    <string name="media_browser">Media browser</string>
-    <string name="internal_content">Internal</string>
-    <string name="external_content">SD card</string>
-    <string name="audio">Audio</string>
-    <string name="video">Video</string>
-    <string name="images">Images</string>
-    <string name="media">Media</string>
-    <string name="media_scanner">Media scanner</string>
-    
-    <!-- Media Player -->
-    <string name="media_player">Media player</string>
-    <string name="pick_media_file">Pick a media file</string>
-    <string name="get_content_media_file">Pick a media file (get content)</string>
-    <string name="open_audio">Open audio</string>
-    <string name="open_video">Open video</string>
     
 	<!-- Shopping Provider -->
 	<string name="shopping_list">Shopping list</string>
@@ -172,6 +47,7 @@ Earth Technology.
 	<string name="mark_item">Mark item</string>
 	<string name="edit_item">Edit item</string>
 	<string name="delete_item">Delete item</string>
+	<string name="button_add_item">Add</string>
 	
 	<!-- Shopping list location alert related -->
 	<string name="shopping_add_alert">Add alert</string>
@@ -204,11 +80,6 @@ Earth Technology.
 	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
 	
-	<!--     Newsreader Service -->
-	<string name="news_service_settings">News Service</string>
-	<string name="start_on_system_boot">Start on system boot</string>
-	<string name="use_while_roaming">Use while roaming</string>
-
 	<!--  Sensor Simulator -->
 	<string name="sensorsimulator">Sensor Simulator</string>
 	<string name="settings">Settings</string>
@@ -261,87 +132,6 @@ Earth Technology.
 	<string name="alert_added">Alert has been added.</string>
 	<string name="alert_not_added">Alert could not be added (see log for information).</string>
 	
-	<!-- ########################################
-	     Newsreader
-	     ######################################## -->
-    <string name="newsreader_app_name">Newsreader</string>
-		
-	<!-- ########################################
-	     SplashPlay
-	     ######################################## -->
-	<string name="splashplay_app_name">SplashPlay</string>
-    <string name="connect_bluetooth">Bluetooth connection</string>
-    <string name="bluetooth">Bluetooth</string>
-    <string name="splashpod_connecting">Connecting to SplashPod...</string>
-    <string name="splashpod_connection_ok">Connection OK.</string>
-    <string name="splashpod_connect_description">Ensure the SplashPod is turned on and press connect.</string>
-    <string name="splashpod_disconnect_description">Disconnect from the SplashPod or press back to stay connected.</string>
-    <string name="open">Open</string>
-    <string name="full_screen">Full screen</string>
-    <string name="select_panels">Select panels</string>
-    <string name="splashplay_about">About SplashPlay</string>
-    <string name="upload">Upload</string>
-    <string name="jamsession">Jam session</string>
-    <string name="splashplay_sending">Sending chords to SplashPod...</string>
-    
-    <string name="splashplay_about_title">What is SplashPlay?</string>
-    <string name="splashplay_about_description"><p>SplashPlay aims to make it
-much easier to learn to play 
-music on different instruments. \n </p>
-<p> The <b>SplashPod</b> and paper-
-thin light panel attaches
-to your instrument and a 
-mobile phone is used to choose a song and send it 
-wirelessly to the pod via BlueTooth. The light panel wraps around the instrument and the flashing 
-segments can be controlled using your phone which
-in turn plays the song to help you learn.</p>
-<center>SplashPlay - Bridging technology and music ™</center></string>
-    <string name="sp_title">Title</string>
-    <string name="sp_album">Album</string>
-    <string name="sp_genre">Genre</string>
-    <string name="sp_artist">Artist</string>
-    <string name="sp_tags">Tags</string>
-    <string name="sp_rating">Rating</string>
-    
-    <!-- SplashPlay preferences -->
-    <string name="preferences">Preferences</string>
-    <string name="general_preferences">General preferences</string>
-    <string name="reset_all_hints">Show all hints</string>
-    <string name="summary_reset_all_hints">Displays all hints again.</string>
-    <string name="dialog_title_reset_all_hints">Show all hints again?</string>
-    <string name="battery_lifetime">Battery lifetime</string>
-    <string name="show_splash_screen">Show splash screen</string>
-    <string name="summary_show_splash_screen">Show splash screen at application start.</string>
-    <string name="server_settings">Server settings</string>
-    <string name="user_name">User name</string>
-    <string name="summary_user_name">User name for the SplashPlay web site.</string>
-    <string name="dialog_title_user_name">Enter user name</string>
-    <string name="password">Password</string>
-    <string name="summary_password">Password for the SplashPlay web site.</string>
-    <string name="dialog_title_password">Enter password</string>
-    <string name="server">Server</string>
-    <string name="summary_server">Choose a SplashPlay server to connect to.</string>
-    <string name="dialog_title_server">Choose a server</string>
-    
-    <!-- SplashPlay help -->
-    <string name="help">Help</string>
-    <string name="general_help">General help</string>
-    <string name="context_help">Context help</string>
-    <string name="summary_splashplay_about">General information about SplashPlay.</string>
-    <string name="record">Record</string>
-    <string name="summary_record">How to add chords to an existing song.</string>
-    <string name="loop">Loop</string>
-    <string name="summary_loop">How to set a loop.</string>
-    <string name="chord_view">Chords</string>
-    <string name="summary_chord_view">How to interact with the chord display.</string>
-    
-    
-	<string name="media_browser_my_songs">My Songs</string>
-	<string name="media_browser_downloads">Downloads</string>
-
-    <!-- Strings that are also in core -->
-    <!-- <string name="about">About</string>
-    <string name="connect">Connect</string>
-    <string name="disconnect">Disconnect</string>
-    -->
+	<string name="add">Add</string>
+	
 </resources> 

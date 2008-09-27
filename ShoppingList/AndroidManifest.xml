@@ -22,7 +22,7 @@
     <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />
 	
 	 
-	<application android:icon="@drawable/openintents002a" android:label="@string/app_name">
+	<application android:icon="@drawable/shoppinglist_application001a" android:label="@string/shopping_list">
 		<!-- Libraries needed since SDK 72264 -->
         <uses-library android:name="com.google.android.maps" />
         <uses-library android:name="com.google.android.gtalkservice" />
