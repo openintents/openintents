@@ -557,6 +557,11 @@ public class OpenGLSensors extends Activity implements SensorListener {
         
 	}
 
+	public void onAccuracyChanged(int sensor, int accuracy) {
+		
+	}
+
+
 }
 
 

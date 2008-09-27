@@ -5,14 +5,12 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 import org.openintents.R;
-import org.openintents.shopping.ShoppingView;
 import org.openintents.widget.Slider;
 import org.openintents.widget.Slider.OnPositionChangedListener;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
@@ -570,7 +568,7 @@ public class MediaPlayerActivity extends Activity implements
         Intent intent = new Intent(null, getIntent().getData());
         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
         menu.addIntentOptions(
-            Menu.CATEGORY_ALTERNATIVE, 0, 0, new ComponentName(this, ShoppingView.class),
+            Menu.CATEGORY_ALTERNATIVE, 0, 0, new ComponentName(this, MediaPlayerActivity.class),
             null, intent, 0, null);
         
 		return true;

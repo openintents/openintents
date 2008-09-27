@@ -1,7 +1,6 @@
 package org.openintents.media;
 
 import org.openintents.R;
-import org.openintents.shopping.ShoppingView;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -498,7 +497,7 @@ public class MediaBrowserActivity extends Activity {
         Intent intent = new Intent(null, getIntent().getData());
         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
         menu.addIntentOptions(
-            Menu.CATEGORY_ALTERNATIVE, 0, 0, new ComponentName(this, ShoppingView.class),
+            Menu.CATEGORY_ALTERNATIVE, 0, 0, new ComponentName(this, MediaBrowserActivity.class),
             null, intent, 0, null);
         
 		return true;
