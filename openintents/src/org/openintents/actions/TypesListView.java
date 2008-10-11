@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Map;
+import java.util.Set;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
@@ -18,8 +20,6 @@ import org.openintents.provider.Intents;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListActivity;
-import android.content.ComponentName;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -82,7 +82,7 @@ public class TypesListView extends ListActivity {
 
 	private MatrixCursor mTypesCursor = null;
 
-	private HashSet<String> mActionSet;
+	private Set<String> mActionSet;
 
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -189,11 +189,12 @@ public class TypesListView extends ListActivity {
 
 	private void createTypesList() {
 		if (mTypesCursor == null) {
-			HashMap<String, ArrayList<IntentFilter>> map = createIntentsMap();
+			Map<String, List<IntentFilter>> map = createIntentsMap();
 		
-			ArrayList<ArrayList> list = new ArrayList<ArrayList>();
+			List<List<Object>> list =
+                                new ArrayList<List<Object>>();
 
-			for (Entry<String, ArrayList<IntentFilter>> e : map.entrySet()) {
+			for (Entry<String, List<IntentFilter>> e : map.entrySet()) {
 				StringBuffer sb = new StringBuffer();
 				HashSet<String> actions = new HashSet<String>();
 				for (IntentFilter i : e.getValue()) {
@@ -211,7 +212,7 @@ public class TypesListView extends ListActivity {
 					}
 				}
 
-				ArrayList<Object> row = new ArrayList<Object>();
+				List<Object> row = new ArrayList<Object>();
 				row.add(e.getKey());
 				row.add(sb);
 				Log.v(LOG_TAG, e.getKey() + " " + sb + " added.");
@@ -220,8 +221,8 @@ public class TypesListView extends ListActivity {
 
 			// comparator for a list of rows containing only string as first
 			// element.
-			final Comparator<ArrayList> comparator = new Comparator<ArrayList>() {
-				public int compare(ArrayList object1, ArrayList object2) {
+			final Comparator<List> comparator = new Comparator<List>() {
+				public int compare(List object1, List object2) {
 					return ((String) object1.get(0))
 							.compareToIgnoreCase((String) object2.get(0));
 				}
@@ -231,7 +232,7 @@ public class TypesListView extends ListActivity {
 
 			mTypesCursor = new MatrixCursor(
 					new String[] { "type", "actions" });
-			for (ArrayList<Object> row: list)  {
+			for (List<Object> row: list)  {
 				mTypesCursor.addRow(row);
 			}
 		}
@@ -253,10 +254,10 @@ public class TypesListView extends ListActivity {
 		}
 	}
 
-	private HashMap<String, ArrayList<IntentFilter>> createIntentsMap() {
+	private Map<String, List<IntentFilter>> createIntentsMap() {
 
 		// inspect actions defined at Intent.class
-		HashMap<String, ArrayList<IntentFilter>> map = new HashMap<String, ArrayList<IntentFilter>>();
+		Map<String, List<IntentFilter>> map = new HashMap<String, List<IntentFilter>>();
 
 		mActionSet = new HashSet<String>();
 		if (getIntent() != null) {
@@ -298,7 +299,7 @@ public class TypesListView extends ListActivity {
 		return map;
 	}
 
-	private void addIntentsToMap(HashMap<String, ArrayList<IntentFilter>> map,
+	private void addIntentsToMap(Map<String, List<IntentFilter>> map,
 			String action) {
 
 		// prepare intent
@@ -314,7 +315,7 @@ public class TypesListView extends ListActivity {
 	}
 
 	private void resolveListToMap(Intent intent, List<ResolveInfo> activities,
-			HashMap<String, ArrayList<IntentFilter>> map) {
+			Map<String, List<IntentFilter>> map) {
 
 		for (ResolveInfo ri : activities) {
 			StringBuffer fi = new StringBuffer();
@@ -324,7 +325,7 @@ public class TypesListView extends ListActivity {
 					while (i.hasNext()) {
 						String type = i.next();
 						fi.append(type);
-						ArrayList<IntentFilter> set = map.get(type);
+						List<IntentFilter> set = map.get(type);
 						if (set == null) {
 							set = new ArrayList<IntentFilter>();
 							map.put(type, set);

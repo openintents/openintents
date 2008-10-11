@@ -164,11 +164,11 @@ public class ContentIndexProvider extends
 			e.printStackTrace();
 		}
 		if (bodyUris != null) {
-			ArrayList bodies = new ArrayList();
+			List<List<String>> bodies = new ArrayList<List<String>>();
 			for (String bodyUri : bodyUris) {
 				String[] bodyArray = getContentBody(Uri.parse(bodyUri));
 				if (bodyArray != null && bodyArray.length > 1) {					
-					ArrayList columns = new ArrayList();
+					List<String> columns = new ArrayList<String>();
 					
 					// add first column (not _id)
 					String body = bodyArray[1];

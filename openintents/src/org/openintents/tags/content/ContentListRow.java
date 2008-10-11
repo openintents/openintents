@@ -16,19 +16,14 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.Spannable;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewParent;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 /**
@@ -42,6 +37,7 @@ public class ContentListRow extends RelativeLayout {
 	private static final int CONTENT_TYPE = 3;
 	private static final int TAGS = 4;
 
+        private Context mContext;
 	private ImageView mIcon;
 	private TextView mName;
 	private ImageView mType;
@@ -96,6 +92,7 @@ public class ContentListRow extends RelativeLayout {
 	public ContentListRow(Context context) {
 		super(context);
 
+                mContext = context;
 		mContentIndex = new ContentIndex(context.getContentResolver());
 		mTagHelper = new Tag(context);
 

@@ -16,15 +16,12 @@
 
 package org.openintents.provider;
 
-import org.openintents.R;
-
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 
 /**
  * Definition for content provider related to hardware.

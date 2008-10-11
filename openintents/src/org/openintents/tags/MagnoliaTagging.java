@@ -216,7 +216,7 @@ public class MagnoliaTagging extends Activity {
 
 		if (c == null) {
 			Log.e(_TAG, "missing tag provider");
-			mTagFilter.setAdapter(new ArrayAdapter(this,
+			mTagFilter.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" }));
 			return;
@@ -255,7 +255,7 @@ public class MagnoliaTagging extends Activity {
 		Log.d(_TAG, "# of cursoritems>>" + c.getCount() + "<<");
 		if (c == null) {
 			Log.e(_TAG, "missing tag provider");
-			mTags.setAdapter(new ArrayAdapter(this,
+			mTags.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" }));
 			return;

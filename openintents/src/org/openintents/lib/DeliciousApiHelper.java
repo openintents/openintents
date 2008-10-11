@@ -22,27 +22,11 @@ import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.Scanner;
 import org.xml.sax.*;
-import org.xml.sax.ext.*;
-import org.xml.sax.helpers.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
 
-
 //import org.apache.commons.httpclient.HttpClient;
 //import org.apache.commons.httpclient.methods.GetMethod; 
-import org.apache.http.client.*;
-import org.apache.http.client.methods.*;
-//import org.apache.commons.httpclient.methods.*;
-
-import org.apache.http.*;
-import org.apache.http.conn.*;
-import org.apache.http.impl.*;
-import org.apache.http.impl.client.*;
-import org.apache.http.message.BasicHttpRequest;
-import org.apache.http.params.*;
-import org.apache.http.util.*;
-
-
 
 import android.util.Log;
 
@@ -178,8 +162,8 @@ public class  DeliciousApiHelper{
 			
 
 			rpcBuf.append("&url="+itemUrl);
-			rpcBuf.append("&description="+URLEncoder.encode(description));
-			rpcBuf.append("&extendend="+URLEncoder.encode(extended));
+			rpcBuf.append("&description="+URLEncoder.encode(description, "UTF8"));
+			rpcBuf.append("&extendend="+URLEncoder.encode(extended, "UTF8"));
 			int tagsLen=tags.length;
 			
 			if (mAPI.equals(MAGNOLIA_API))

@@ -1,9 +1,5 @@
 package org.openintents.actions;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
 import android.R;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -23,7 +19,7 @@ public class PickStringView extends ListActivity {
 		String list = getIntent().getExtras().getString(
 				PickStringView.EXTRA_LIST);
 		String[] actions = list.split(" ");
-		ArrayAdapter adapter = new ArrayAdapter(this,
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				R.layout.simple_list_item_1, actions);
 		setListAdapter(adapter);
 		getListView().setOnItemClickListener(

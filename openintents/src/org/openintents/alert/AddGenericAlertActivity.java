@@ -24,40 +24,23 @@ import org.openintents.OpenIntents;
 import org.openintents.R;
 import org.openintents.R.*;
 
-import android.app.ListActivity;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.NotificationManager;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ContentUris;
 import android.database.Cursor;
 import android.net.Uri;
 import android.content.ContentValues;
-
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.SimpleCursorAdapter;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.MenuItem;
-import android.view.View.OnClickListener;
-
-import android.text.TextUtils;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
 
 public class AddGenericAlertActivity extends Activity {
 
@@ -102,6 +85,7 @@ public class AddGenericAlertActivity extends Activity {
 	private int activeRow;
 	private int onBootRow;
 
+	@Override
 	public void onCreate(Bundle b) {
 
 		super.onCreate(b);
@@ -121,7 +105,7 @@ public class AddGenericAlertActivity extends Activity {
 		
 		Alert.init(this);
 
-		ArrayAdapter ad = new ArrayAdapter(this,
+		ArrayAdapter<String> ad = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, new String[] {
 						Alert.TYPE_GENERIC, Alert.TYPE_LOCATION,
 						Alert.TYPE_DATE_TIME });
@@ -179,7 +163,7 @@ public class AddGenericAlertActivity extends Activity {
 				mIntent.setText(mCursor.getString(intentRow));
 				mIntentCat.setText(mCursor.getString(intentCatRow));
 				mIntentUri.setText(mCursor.getString(intentUriRow));
-				mType.setSelection(((ArrayAdapter) mType.getAdapter()).getPosition(mCursor.getString(typeRow)));
+				mType.setSelection(((ArrayAdapter<String>) mType.getAdapter()).getPosition(mCursor.getString(typeRow)));
 				mActive.setChecked(!mCursor.isNull(activeRow) && mCursor.getInt(activeRow) == 1);
 				mOnBoot.setChecked(!mCursor.isNull(onBootRow) && mCursor.getInt(onBootRow) == 1);
 			}
@@ -301,6 +285,7 @@ public class AddGenericAlertActivity extends Activity {
 
 	}
 
+	@Override
 	public void onPause() {
 		super.onPause();
 		Log.d(_TAG,"onPause: state is >>"+mState+"<<");
@@ -316,6 +301,7 @@ public class AddGenericAlertActivity extends Activity {
 
 	}
 
+	@Override
 	public void onResume(){
 		super.onResume();
 		Log.d(_TAG,"onResume: state is >>"+mState+"<<");

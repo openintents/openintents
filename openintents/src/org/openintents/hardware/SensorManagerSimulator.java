@@ -2,7 +2,6 @@ package org.openintents.hardware;
 
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
-import android.os.Looper;
 
 public class SensorManagerSimulator {
 
@@ -17,7 +16,7 @@ public class SensorManagerSimulator {
 	 */
 	public static SensorSimulatorClient mClient = new SensorSimulatorClient();
 	
-	private SensorManager mSensorManager = null;
+	private SensorManager mSensorManager;
 	
 	public SensorManagerSimulator(SensorManager systemsensormanager) {
 		mSensorManager = systemsensormanager;

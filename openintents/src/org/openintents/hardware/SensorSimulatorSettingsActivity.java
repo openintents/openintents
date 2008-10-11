@@ -123,6 +123,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 	 * 
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
+	@Override
 	protected void onCreate(Bundle icicle) {
 		// TODO Auto-generated method stub
 		super.onCreate(icicle);
@@ -339,7 +340,7 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		
 		setButtonState();
 		
- 		if (((SensorManagerSimulator) mSensorManager).mClient.connected) {
+ 		if (SensorManagerSimulator.mClient.connected) {
 			mTextSensorType.setText(R.string.sensor_simulator_data);
 		} else {
 			mTextSensorType.setText(R.string.real_device_data);

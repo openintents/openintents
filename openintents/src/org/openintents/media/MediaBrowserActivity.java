@@ -135,6 +135,7 @@ public class MediaBrowserActivity extends Activity {
 
 	private TabHost mTabHost;
     
+	@Override
 	protected void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
@@ -416,11 +417,39 @@ public class MediaBrowserActivity extends Activity {
 		case MEDIA_TYPE_VIDEO:
 			mInternalUri = android.provider.MediaStore.Video.Media.INTERNAL_CONTENT_URI;
 		    mExternalUri = android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+			mProjection  = new String[] {
+				android.provider.MediaStore.Video.Media._ID,
+				android.provider.MediaStore.Video.Media.TITLE,
+				android.provider.MediaStore.Video.Media.DATA,
+			};
+			mDisplayProjection= new String[] {
+				android.provider.MediaStore.Video.Media.TITLE,
+				android.provider.MediaStore.Video.Media.DATA,
+			};
+			mViewList= new int[]{
+				android.R.id.text1, 
+				android.R.id.text2
+			};
+			mLayoutID=android.R.layout.simple_list_item_2;
 			break;
 			
 		case MEDIA_TYPE_IMAGES:
 			mInternalUri = android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI;
 		    mExternalUri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+			mProjection  = new String[] {
+				android.provider.MediaStore.Images.Media._ID,
+				android.provider.MediaStore.Images.Media.TITLE,
+				android.provider.MediaStore.Images.Media.DATA,
+			};
+			mDisplayProjection= new String[] {
+				android.provider.MediaStore.Images.Media.TITLE,
+				android.provider.MediaStore.Images.Media.DATA,
+			};
+			mViewList= new int[]{
+				android.R.id.text1, 
+				android.R.id.text2
+			};
+			mLayoutID=android.R.layout.simple_list_item_2;
 			break; 
 			
 		default:

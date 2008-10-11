@@ -69,11 +69,11 @@ public class TagsCloudView extends ListActivity {
 
 	}
 	
+    @Override
   protected void onListItemClick(ListView l, View v, int position, long id) {
-		
 		if (getCallingActivity() != null) {
-			l.setSelection(position);
-			setResult(RESULT_OK, new Intent(((Cursor) l.getSelectedItem()).getString(1)));
+            Cursor c = (Cursor) l.getItemAtPosition(position);
+            setResult(RESULT_OK, new Intent(c.getString(1)));
 			finish();
 		}
 	}

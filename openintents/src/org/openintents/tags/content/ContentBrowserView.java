@@ -162,7 +162,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 		if (c == null) {
 			Log.e(TAG, "missing tag provider");
-			mTagFilter.setAdapter(new ArrayAdapter(this,
+			mTagFilter.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" }));
 			return;
@@ -196,7 +196,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		ListAdapter result;
 		if (mContentCursor == null) {
 			Log.e(TAG, "missing tag provider");
-			result = new ArrayAdapter(this,
+			result = new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no tag provider" });
 

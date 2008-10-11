@@ -1,6 +1,5 @@
 package org.openintents.tags.content;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -27,6 +25,8 @@ public class PackageListRow extends RelativeLayout {
 	private static final int PACKAGE_NAME = 2;
 
 	private static final int PACKAGE_PACKAGE_NAME = 3;
+
+	private Context mContext;
 
 	private ImageView mIcon;
 
@@ -52,6 +52,8 @@ public class PackageListRow extends RelativeLayout {
 
 	public PackageListRow(Context context) {
 		super(context);
+
+                mContext = context;
 
 		setLayoutParams(new AbsListView.LayoutParams(
 				LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
