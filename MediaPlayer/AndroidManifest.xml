@@ -16,13 +16,13 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.openintents">
+	package="org.openintents.media">
 
 	<application android:icon="@drawable/mediaplayer_application001a" android:label="@string/media_player">
 
 
 		<!-- Media browser activity -->
-		<activity android:name=".media.MediaBrowserActivity"
+		<activity android:name=".MediaBrowserActivity"
 			android:label="@string/media_browser" 
 			android:icon="@drawable/mediaplayer_application001a">
 			<intent-filter>
@@ -50,7 +50,7 @@
 
 		
 		<!-- Media Player activity -->
-		<activity android:name=".media.MediaPlayerActivity"
+		<activity android:name=".MediaPlayerActivity"
 			android:label="@string/media_player" 
 			android:icon="@drawable/mediaplayer_application001a">
 			<intent-filter>

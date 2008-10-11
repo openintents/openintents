@@ -1,7 +1,5 @@
 package org.openintents.media;
 
-import org.openintents.R;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ContentUris;

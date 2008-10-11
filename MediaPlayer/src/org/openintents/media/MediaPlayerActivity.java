@@ -4,7 +4,6 @@ package org.openintents.media;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-import org.openintents.R;
 import org.openintents.widget.Slider;
 import org.openintents.widget.Slider.OnPositionChangedListener;
 
