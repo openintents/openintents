@@ -30,9 +30,8 @@ package org.openintents.samples.openglsensors;
  * and tab "Libraries". There "Add External JARs..." and select 
  * lib/openintents-lib-n.n.n.jar. 
  */
-import org.openintents.OpenIntents;
-import org.openintents.hardware.SensorManagerSimulator;
-import org.openintents.provider.Hardware;
+import org.openintents.sensorsimulator.db.SensorSimulator;
+import org.openintents.sensorsimulator.hardware.SensorManagerSimulator;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -89,7 +88,7 @@ public class OpenGLSensors extends Activity implements SensorListener {
 	 */
 	private static final int UPDATE_ANIMATION = 1;
 	
-    private SensorManager mSensorManager;
+    private SensorManagerSimulator mSensorManager;
     
 	private boolean mConnected;
 	
@@ -129,8 +128,6 @@ public class OpenGLSensors extends Activity implements SensorListener {
     {
         super.onCreate(icicle);   
         
-        OpenIntents.requiresOpenIntents(this);
-
         // Default timer interval
    		mUpdateInterval = 100;
    		mUpdatingAnimation = false;
@@ -142,13 +139,8 @@ public class OpenGLSensors extends Activity implements SensorListener {
         
         setContentView(mGLSurfaceView);
         
-        // !! Very important !!
-        // Before calling any of the Simulator data,
-        // the Content resolver has to be set !!
-        Hardware.mContentResolver = getContentResolver();
-        
         //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		mSensorManager = (SensorManager) new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
+		mSensorManager = new SensorManagerSimulator(this);
 		
         // TODO: Sensors.isSimulatorConnected() should be implemented 
         // and used here.
@@ -297,7 +289,7 @@ public class OpenGLSensors extends Activity implements SensorListener {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case MENU_SETTINGS:
-			Intent intent = new Intent(Intent.ACTION_VIEW, Hardware.Preferences.CONTENT_URI);
+			Intent intent = new Intent(Intent.ACTION_VIEW, SensorSimulator.Settings.CONTENT_URI);
 			startActivity(intent);
 			return true;
 			
@@ -307,10 +299,10 @@ public class OpenGLSensors extends Activity implements SensorListener {
 			
 			if (!mConnected) {
 				// now connect to simulator
-				SensorManagerSimulator.connectSimulator();
+				mSensorManager.connectSimulator();
 			} else {
 				// or disconnect to simulator
-				SensorManagerSimulator.disconnectSimulator();				
+				mSensorManager.disconnectSimulator();				
 			}
 			
 			// check again which sensors are now supported:
@@ -495,6 +487,34 @@ public class OpenGLSensors extends Activity implements SensorListener {
 
 	public void onSensorChanged(int sensor, float[] values) {
         //Log.d(TAG, "onSensorChanged: " + sensor + ", x: " + values[0] + ", y: " + values[1] + ", z: " + values[2]);
+		
+
+		// T-mobile G1 patch begins:
+		if (sensor == SensorManager.SENSOR_ORIENTATION) {
+			/*
+			if (values[1] < -90 || values[1] > 90) {
+				values[1] = -180 - values[1];
+			}
+			*/
+			/*
+			if (values[1] > 90 || values[1] < -90) {
+				values[2] = - values[2];
+				values[0] += 180 - 2 * values[1] + 2 * values[2];
+				//values[0] += 2 * values[2];
+				
+				//values[0] = - values[0] + 360;
+				//values[0] += 180;
+				//if (values[0] > 360) {
+				//	values[0] -= 360;
+				//}
+			}
+			*/
+		}
+		// T-mobile G1 patch ends.
+
+		
+		//Log.d(TAG, "onSensorChanged: " + sensor + ", x: " + values[0] + ", y: " + values[1] + ", z: " + values[2]);
+		
 		boolean graphicsupdate = false;
 		
 		switch(sensor) {

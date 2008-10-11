@@ -62,6 +62,7 @@ public class GLSurfaceViewNoThread extends SurfaceView implements SurfaceHolder.
         // underlying surface is created and destroyed 
         mHolder = getHolder();
         mHolder.addCallback(this);
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_GPU);
     }
 
     public void surfaceCreated(SurfaceHolder holder) {
