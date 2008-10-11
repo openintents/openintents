@@ -158,11 +158,15 @@ public class MediaPlayerActivity extends Activity implements
         // Handle the calling intent
         final Intent intent = getIntent();
         final String action = intent.getAction();
-        if (action.equals(Intent.ACTION_MAIN)) {
+        if (action == null) {
+        	// Default action
+        	mState = STATE_MAIN;
+            mURI = null;
+        } else if (action.equals(Intent.ACTION_MAIN)) {
             mState = STATE_MAIN;
             mURI = null;
             
-            // TODO: Here we could load a fild
+            // TODO: Here we could load a file
             // that the user watched last time.
         } else if (action.equals(Intent.ACTION_VIEW)) {
             mState = STATE_VIEW;
