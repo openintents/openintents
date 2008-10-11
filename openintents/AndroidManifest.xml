@@ -68,10 +68,6 @@
 			android:authorities="org.openintents.contentindices" />
 
 
-		<provider android:name=".hardware.HardwareProvider"
-			android:authorities="org.openintents.hardware" />
-
-
 		<!-- Main activity -->
 		<activity android:name=".main.OpenIntentsView"
 			android:label="@string/app_name">
@@ -319,46 +315,6 @@
 
 		</activity>	
 		
-		<!-- SensorSimulator -->
-		<activity android:name=".hardware.SensorSimulatorSettingsActivity"
-			android:label="@string/sensorsimulator"
-			android:icon="@drawable/mobile_shake_application001a">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="org.openintents.category.SETTINGS" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.hardware.preference"/>
-			</intent-filter>
-		</activity>
-		
-		<!-- Sensor service -->
-		
-        <service android:name=".hardware.services.SensorService" android:process=":remote">
-            <intent-filter>
-                <!-- The following interface is supported by the service. -->
-                <action android:name="org.openintents.hardware.services.ISensorService" />
-                <!-- This is an action code to select the service
-                     without explicitly supplying the implementation class. -->
-                <action android:name="org.openintents.hardware.services.SENSOR_SERVICE" />
-            </intent-filter>
-        </service>
-
-        <activity android:name=".hardware.SensorServiceSettingsActivity" 
-        	android:label="@string/sensor_service_settings"
-			android:icon="@drawable/mobile_shake_application001a">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <!-- 
-				<category android:name="org.openintents.category.SETTINGS" />
-				 -->
-            </intent-filter>
-        </activity>
-
 				
 		<!-- intents list  -->
 		<activity android:name=".actions.IntentsListView" android:label="@string/intents_list">
