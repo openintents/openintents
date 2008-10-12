@@ -30,7 +30,7 @@
 			android:authorities="org.openintents.shopping" />
 
 		<!-- Shopping activity -->
-		<activity android:name=".ShoppingView"
+		<activity android:name=".ShoppingActivity"
 			android:label="@string/shopping_list" 
 			android:icon="@drawable/shoppinglist_application001a">
 			<intent-filter>

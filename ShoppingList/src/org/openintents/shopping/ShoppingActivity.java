@@ -76,7 +76,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * Displays a shopping list.
  * 
  */
-public class ShoppingView extends Activity { // implements
+public class ShoppingActivity extends Activity { // implements
 												// AdapterView.OnItemClickListener
 												// {
 
@@ -667,9 +667,10 @@ public class ShoppingView extends Activity { // implements
 		}
 
 		ContentValues values = new ContentValues();
-		values.put(ContainsFull.STATUS, newstatus);
+		values.put(Shopping.Contains.STATUS, newstatus);
+		Log.d(TAG, "update row " + c.getString(0) + ", newstatus " + newstatus);
 		getContentResolver().update(
-				Uri.withAppendedPath(ContainsFull.CONTENT_URI, c.getString(0)),
+				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, c.getString(0)),
 				values, null, null);
 
 		// Log.i(TAG, "Requery now:");
@@ -895,7 +896,7 @@ public class ShoppingView extends Activity { // implements
 		// TODO Shall we implement this as action?
 		// Then other applications may call this as well.
 
-		mDialog = new Dialog(ShoppingView.this);
+		mDialog = new Dialog(ShoppingActivity.this);
 
 		mDialog.setContentView(R.layout.input_box);
 
@@ -1122,7 +1123,7 @@ public class ShoppingView extends Activity { // implements
 		// But as long as shopping lists stay small, it should not matter.
 		String listId = mCursorListFilter.getString(0);
 		boolean nothingdeleted = true;
-		nothingdeleted = getContentResolver().delete(Items.CONTENT_URI, "list_id = " + listId +" AND "+ ContainsFull.STATUS + " = "+ Shopping.Status.BOUGHT, null) == 0;
+		nothingdeleted = getContentResolver().delete(Shopping.Contains.CONTENT_URI, Shopping.Contains.LIST_ID + " = " + listId +" AND "+ Shopping.Contains.STATUS + " = "+ Shopping.Status.BOUGHT, null) == 0;
 		mCursorItems.requery();
 
 		if (nothingdeleted) {
@@ -1292,7 +1293,7 @@ public class ShoppingView extends Activity { // implements
 					}
 				});
 
-		new AlertDialog.Builder(ShoppingView.this).setIcon(
+		new AlertDialog.Builder(ShoppingActivity.this).setIcon(
 				R.drawable.shoppinglisttheme001a).setTitle(R.string.theme_pick)
 				.setView(view).setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
