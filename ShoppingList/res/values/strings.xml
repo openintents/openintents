@@ -116,19 +116,8 @@
 	<string name="sensor_service_connected">Sensor service connected</string>
 	<string name="sensor_service_disconnected">Sensor service disconnected</string>
 	
+	
 	<!--  alert related  -->
-	<string name="alert_edit">Edit alert</string>
-	<string name="alert_add">Add alert</string>
-	<string name="add_alert">add alert</string>
-	<string name="alert_pick_location">pick location</string>
-	<string name="alert_pick_action">pick action</string>
-	<string name="alert_pick_date_time">pick date/time</string>
-	<string name="alert_label_location">Location (geo:x,y)</string>
-	<string name="alert_label_range">Range (m)</string>
-	<string name="alert_label_date_time">Date/time</string>
-	<string name="alert_label_unused">Unused</string>
-	<string name="alert_label_condition1">Condition 1</string>
-	<string name="alert_label_condition2">Condition 2</string>
 	<string name="alert_added">Alert has been added.</string>
 	<string name="alert_not_added">Alert could not be added (see log for information).</string>
 	

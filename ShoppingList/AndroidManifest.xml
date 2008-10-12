@@ -19,13 +19,11 @@
 	package="org.openintents.shopping">
 
     <!-- required for gtalk (shopping list) -->
-    <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />
+    <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
 	
 	 
 	<application android:icon="@drawable/shoppinglist_application001a" android:label="@string/shopping_list">
-		<!-- Libraries needed since SDK 72264 -->
-        <uses-library android:name="com.google.android.maps" />
-        <uses-library android:name="com.google.android.gtalkservice" />
+		<!-- <uses-library android:name="com.google.android.gtalkservice" />   -->
         
 		<provider android:name=".ShoppingProvider"
 			android:icon="@drawable/shoppinglist_application001a"

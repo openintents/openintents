@@ -17,9 +17,6 @@
 package org.openintents.shopping;
 
 import org.openintents.OpenIntents;
-import org.openintents.hardware.SensorEvent;
-import org.openintents.hardware.SensorEventListener;
-import org.openintents.hardware.SensorEventListener.OnSensorListener;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
@@ -259,7 +256,7 @@ public class ShoppingView extends Activity { // implements
 
 	// Sensor service -----------------
 
-	private SensorEventListener mSensorListener;
+	//private SensorEventListener mSensorListener;
 
 	/**
 	 * Called when the activity is first created.
@@ -287,7 +284,7 @@ public class ShoppingView extends Activity { // implements
 		mUpdating = false;
 
 		// Sensor service
-		mSensorListener = new SensorEventListener(this);
+		//mSensorListener = new SensorEventListener(this);
 
 		// General Uris:
 		mListUri = Shopping.Lists.CONTENT_URI;
@@ -300,7 +297,15 @@ public class ShoppingView extends Activity { // implements
 		final String type = intent.resolveType(this);
 		final String action = intent.getAction();
 		
-		if (Intent.ACTION_MAIN.equals(action)) {
+		if (action == null) {
+			// Main action
+			mState = STATE_MAIN;
+
+			mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
+					+ defaultShoppingList);
+
+			intent.setData(mListUri);
+		} else if (Intent.ACTION_MAIN.equals(action)) {
 			// Main action
 			mState = STATE_MAIN;
 
@@ -827,7 +832,7 @@ public class ShoppingView extends Activity { // implements
 			return true;
 
 		case MENU_SENSOR_SERVICE:
-			toggleSensorService();
+			//toggleSensorService();
 			return true;
 
 			/*
@@ -1470,6 +1475,7 @@ public class ShoppingView extends Activity { // implements
 	/**
 	 * Turns on or off sensor service (shake control).
 	 */
+	/*
 	void toggleSensorService() {
 		if (!mSensorListener.isBound()) {
 			mSensorListener.bindService();
@@ -1479,6 +1485,7 @@ public class ShoppingView extends Activity { // implements
 			mSensorListener.setOnSensorListener(null);
 		}
 	}
+	*/
 
 	// /////////////////////////////////////////////////////
 	//
@@ -1960,6 +1967,7 @@ public class ShoppingView extends Activity { // implements
 	/**
 	 * Sensor service callback
 	 */
+	/*
 	private OnSensorListener mOnSensorListener = new OnSensorListener() {
 
 		public boolean onSensorEvent(final SensorEvent event) {
@@ -1987,6 +1995,7 @@ public class ShoppingView extends Activity { // implements
 		}
 
 	};
+	*/
 
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {
