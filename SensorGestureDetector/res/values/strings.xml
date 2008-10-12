@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detected_gestures">Detected gestures:</string>
+    <string name="app_name">Sensor Gesture Detector</string>
+    <string name="clear">Clear</string>
+</resources>
