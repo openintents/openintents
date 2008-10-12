@@ -16,20 +16,11 @@
 
 package org.openintents.main;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.openintents.R;
 import org.openintents.provider.Location;
-import org.openintents.provider.News;
 import org.openintents.provider.Tag;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -72,7 +63,6 @@ public class InitView extends Activity {
 
 		mLocation = new Location(this.getContentResolver());
 		mTag = new Tag(this);
-		News.mContentResolver = this.getContentResolver();
 
 		//////////////////////////////////////////////////////////////////////
 		//strange way to create a separator, i know ;) (zero)
