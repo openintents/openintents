@@ -185,7 +185,11 @@ public class ShakeDropDetector {
 			
         	break;
         case STATE_DROPPING:
-        	mState = STATE_IDLE;
+        	
+        	if (len2 > mDROP_THRESHOLD_SQUARE) {
+				mListener.onCatch(mIdleEvent, event);
+	        	mState = STATE_IDLE;
+        	}
         	break;
         }
         
@@ -194,13 +198,5 @@ public class ShakeDropDetector {
         }
         mLastEvent = event;
     }
-    
-    /*
-    private SensorEvent getSensorEvent(int sensor, float[] values) {
-    	long eventTime = SystemClock.uptimeMillis();
-    	SensorEvent event = SensorEvent.obtain(sensor, values, eventTime);
-    	return event;
-    }
-    */
     
 }

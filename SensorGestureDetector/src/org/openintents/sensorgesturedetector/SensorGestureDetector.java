@@ -54,10 +54,11 @@ public class SensorGestureDetector {
     	/**
     	 * Notified when the device is dropped, with the event that triggered the shake.
     	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the dropping started.
     	 * @param event Sensor Event when the threshold was reached.
     	 * @return true if the event is consumed, else false
     	 */
-        public abstract boolean onCatch(SensorEvent event);
+        public abstract boolean onCatch(SensorEvent idleEvent, SensorEvent event);
     }
     
     /**
@@ -83,7 +84,7 @@ public class SensorGestureDetector {
             return false;
         }
 
-        public boolean onCatch(SensorEvent event) {
+        public boolean onCatch(SensorEvent idleEvent, SensorEvent event) {
         	return false;
         }
     }

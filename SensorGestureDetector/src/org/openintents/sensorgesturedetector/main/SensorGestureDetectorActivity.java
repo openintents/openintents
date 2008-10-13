@@ -74,7 +74,7 @@ public class SensorGestureDetectorActivity extends Activity
 		mSensorGestureDetector.onSensorChanged(sensor, values);
 		
 		if (sensor == SensorManager.SENSOR_ACCELEROMETER) {
-			//mCurrent.setText(values[0] + ", " + values[1] + ", " + values[2]);
+			mCurrent.setText(values[0] + ", " + values[1] + ", " + values[2]);
 		}
 		
 	}
@@ -106,7 +106,7 @@ public class SensorGestureDetectorActivity extends Activity
 	}
 
 	@Override
-	public boolean onCatch(SensorEvent event) {
+	public boolean onCatch(SensorEvent idleEvent, SensorEvent event) {
 		
 		mText.append("\nCatch " + event.getValueLength());
 		
