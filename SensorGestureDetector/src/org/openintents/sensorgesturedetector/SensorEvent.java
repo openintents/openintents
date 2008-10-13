@@ -24,6 +24,14 @@ public class SensorEvent {
     private float[] mValues;
     private long mEventTime;
     
+    /**
+     * Internal conversion factor for faster processing.
+     */
+    public static final int FLOAT_TO_INT = 1024;
+    
+    /** Integer version of the values. */
+    private int[] mIntegerValues;
+    
 
     //private static Object gRecyclerLock = new Object();
     private static int gRecyclerUsed = 0;
@@ -66,6 +74,7 @@ public class SensorEvent {
     	ev.mSensor = e.mSensor;
         ev.copyValues(e.mValues);
         ev.mEventTime = e.mEventTime;
+        ev.copyIntegerValues(e.mIntegerValues);
         
     	return ev;
     }
@@ -92,6 +101,19 @@ public class SensorEvent {
     	}
    
     	System.arraycopy(values, 0, mValues, 0, values.length);
+    }
+
+    private void copyIntegerValues(int[] values) {
+    	if ((mIntegerValues != null) && (mIntegerValues.length != values.length)) {
+    		// dimensions don't fit, so let's drop
+    		mIntegerValues = null;
+    	}
+    	
+    	if (mIntegerValues == null) {
+    		mIntegerValues = new int[values.length];
+    	}
+   
+    	System.arraycopy(values, 0, mIntegerValues, 0, values.length);
     }
     
     /**
@@ -205,5 +227,78 @@ public class SensorEvent {
 	    	}
     	}
     	return direction;
+    }
+    
+
+    /////////////////////////////////////////////
+    // Integer values
+    
+    /**
+     * Converts the float values to integer values.
+     * This uses the scale factor FLOAT_TO_INT
+     * for faster processing.
+     */
+    public void toIntegerValues() {
+    	if (mValues == null) {
+    		throw new RuntimeException("toIntegerValues(): no values exist for conversion.");
+    	}
+    	
+    	if ((mIntegerValues != null) && (mIntegerValues.length != mValues.length)) {
+    		// dimensions don't fit, so let's drop
+    		mIntegerValues = null;
+    	}
+    	
+    	if (mIntegerValues == null) {
+    		mIntegerValues = new int[mValues.length];
+    	}
+
+    	//int max = mValues.length;
+    	final int max = 3;
+    	
+    	for (int i = 0; i < max; i++) {
+    		mIntegerValues[i] = (int) (FLOAT_TO_INT * mValues[i]);
+    	}
+    }
+    
+    /**
+     * Calculate lengths square of integer vectors.
+     */
+    public int getIntegerLen2() {
+    	final int max = 3;
+    	int len2 = 0;
+    	
+    	for (int i = 0; i < max; i++) {
+    		int v = mIntegerValues[i];
+    		len2 += v * v;
+    	}
+    	return len2;
+    }
+    
+    /**
+     * Calculate the difference between two vectors
+     */
+    public void getIntegerDifference(SensorEvent e1, SensorEvent e2) {
+    	final int max = 3;
+    	if (mIntegerValues == null) {
+    		mIntegerValues = new int[max];
+    	}
+    	
+    	for (int i = 0; i < max; i++) {
+    		mIntegerValues[i] = e1.mIntegerValues[i] - e2.mIntegerValues[i];
+    	}
+    }
+    
+    /**
+     * Calculate the dot product between two integer vectors.
+     */
+    public int getIntegerDotProduct(SensorEvent ev) {
+    	final int max = 3;
+    	int sum = 0;
+    	
+    	for (int i = 0; i < max; i++) {
+    		sum += mIntegerValues[i] * ev.mIntegerValues[i];
+    	}
+    	
+    	return sum;
     }
 }

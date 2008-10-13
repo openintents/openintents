@@ -31,6 +31,26 @@ public class SensorGestureDetector {
     {
 
     	/**
+    	 * Notified when the device is in idle position.
+    	 * 
+    	 * @param event Sensor Event with current idle position
+    	 * @return true if the event is consumed, else false
+    	 */
+        public abstract boolean onIdle(SensorEvent event);
+
+    	/**
+    	 * Notified when the device is rotated, with the event that triggered the shake.
+    	 * 
+    	 * A rotation is slow enough so that the value of acceleration is always given 
+    	 * by standard gravity.
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the shaking started.
+    	 * @param event Sensor Event when rotation started.
+    	 * @return true if the event is consumed, else false
+    	 */
+        public abstract boolean onRotate(SensorEvent idleEvent, SensorEvent event);
+
+    	/**
     	 * Notified when the device is shaken, with the event that triggered the shake.
     	 * 
     	 * @param idleEvent Sensor Event of the idle position before the shaking started.
@@ -75,15 +95,61 @@ public class SensorGestureDetector {
 
         public SimpleOnSensorGestureListener() {
         }
-        
+
+    	/**
+    	 * Notified when the device is in idle position.
+    	 * 
+    	 * @param event Sensor Event with current idle position
+    	 * @return true if the event is consumed, else false
+    	 */
+        public boolean onIdle(SensorEvent event) {
+        	return false;
+        }
+
+    	/**
+    	 * Notified when the device is rotated, with the event that triggered the shake.
+    	 * 
+    	 * A rotation is slow enough so that the value of acceleration is always given 
+    	 * by standard gravity.
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the shaking started.
+    	 * @param event Sensor Event when rotation started.
+    	 * @return true if the event is consumed, else false
+    	 */
+        public boolean onRotate(SensorEvent idleEvent, SensorEvent event){
+        	return false;
+        }
+
+        /**
+    	 * Notified when the device is shaken, with the event that triggered the shake.
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the shaking started.
+    	 * @param event Sensor Event when maximum acceleration was reached.
+    	 * @return true if the event is consumed, else false
+    	 */
         public boolean onShake(SensorEvent idleEvent, SensorEvent event) {
             return false;
         }
 
+        /**
+    	 * Notified when the device is dropped, with the event that triggered the shake.
+    	 * This event is followed by onCatch().
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the dropping started.
+    	 * @param event Sensor Event when the threshold was reached.
+    	 * @return true if the event is consumed, else false
+    	 */
         public boolean onDrop(SensorEvent idleEvent, SensorEvent event) {
             return false;
         }
 
+        /**
+    	 * Notified when the device is dropped, with the event that triggered the shake.
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the dropping started.
+    	 * @param event Sensor Event when the threshold was reached.
+    	 * @return true if the event is consumed, else false
+    	 */
         public boolean onCatch(SensorEvent idleEvent, SensorEvent event) {
         	return false;
         }

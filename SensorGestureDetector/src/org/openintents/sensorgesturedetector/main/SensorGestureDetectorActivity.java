@@ -86,7 +86,19 @@ public class SensorGestureDetectorActivity extends Activity
 	
 	//////////////////////////////////
     // OnSensorGestureListener
-    
+
+	@Override
+	public boolean onIdle(SensorEvent event) {
+		mText.append("\nIdle " + event.getValueLength());
+		return false;
+	}
+
+	@Override
+	public boolean onRotate(SensorEvent idleEvent, SensorEvent event) {
+		mText.append("\nRotate " + event.getValueLength());
+		return false;
+	}
+	
 	@Override
 	public boolean onShake(SensorEvent idleEvent, SensorEvent event) {
 		
@@ -131,5 +143,6 @@ public class SensorGestureDetectorActivity extends Activity
 			return "unknown";
 		}
 	}
+
 	
 }
