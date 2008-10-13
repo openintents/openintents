@@ -20,13 +20,15 @@ public class SensorGestureDetectorActivity extends Activity
 	SensorGestureDetector mSensorGestureDetector;
 	
 	TextView mText;
+	TextView mCurrent;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
+
+        mCurrent = (TextView) findViewById(R.id.current); 
         mText = (TextView) findViewById(R.id.text); 
         
         Button b = (Button) findViewById(R.id.clear);
@@ -54,6 +56,7 @@ public class SensorGestureDetectorActivity extends Activity
                 SensorManager.SENSOR_MAGNETIC_FIELD | 
                 SensorManager.SENSOR_ORIENTATION,
                 SensorManager.SENSOR_DELAY_FASTEST);
+                
 	}
 
     @Override
@@ -67,7 +70,13 @@ public class SensorGestureDetectorActivity extends Activity
     
 	@Override
 	public void onSensorChanged(int sensor, float[] values) {
+		
 		mSensorGestureDetector.onSensorChanged(sensor, values);
+		
+		if (sensor == SensorManager.SENSOR_ACCELEROMETER) {
+			//mCurrent.setText(values[0] + ", " + values[1] + ", " + values[2]);
+		}
+		
 	}
     
 	@Override
@@ -79,20 +88,48 @@ public class SensorGestureDetectorActivity extends Activity
     // OnSensorGestureListener
     
 	@Override
-	public boolean onShake(SensorEvent event) {
+	public boolean onShake(SensorEvent idleEvent, SensorEvent event) {
 		
-		mText.append("\nShake " + event.getValueLength());
+		String direction = getDirectionString(event.getRoughDirection(idleEvent));
+		mText.append("\nShake " + direction + " " + event.getValueLength());
 		
 		return false;
 	}
     
 
 	@Override
-	public boolean onDrop(SensorEvent event) {
+	public boolean onDrop(SensorEvent idleEvent, SensorEvent event) {
 		
-		mText.append("\nDrop" + event.getValueLength());
+		mText.append("\nDrop " + event.getValueLength());
 		
 		return false;
+	}
+
+	@Override
+	public boolean onCatch(SensorEvent event) {
+		
+		mText.append("\nCatch " + event.getValueLength());
+		
+		return false;
+	}
+	
+	public String getDirectionString(int direction) {
+		switch(direction) {
+		case SensorEvent.DIRECTION_UP:
+			return "up";
+		case SensorEvent.DIRECTION_DOWN:
+			return "down";
+		case SensorEvent.DIRECTION_LEFT:
+			return "left";
+		case SensorEvent.DIRECTION_RIGHT:
+			return "right";
+		case SensorEvent.DIRECTION_FORWARD:
+			return "forward";
+		case SensorEvent.DIRECTION_BACKWARD:
+			return "backward";
+		default:
+			return "unknown";
+		}
 	}
 	
 }

@@ -14,8 +14,9 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int clear=0x7f050001;
-        public static final int text=0x7f050000;
+        public static final int clear=0x7f050002;
+        public static final int current=0x7f050000;
+        public static final int text=0x7f050001;
     }
     public static final class layout {
         public static final int main=0x7f030000;

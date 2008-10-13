@@ -33,10 +33,22 @@ public class SensorGestureDetector {
     	/**
     	 * Notified when the device is shaken, with the event that triggered the shake.
     	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the shaking started.
+    	 * @param event Sensor Event when maximum acceleration was reached.
+    	 * @return true if the event is consumed, else false
+    	 */
+        public abstract boolean onShake(SensorEvent idleEvent, SensorEvent event);
+        
+
+    	/**
+    	 * Notified when the device is dropped, with the event that triggered the shake.
+    	 * This event is followed by onCatch().
+    	 * 
+    	 * @param idleEvent Sensor Event of the idle position before the dropping started.
     	 * @param event Sensor Event when the threshold was reached.
     	 * @return true if the event is consumed, else false
     	 */
-        public abstract boolean onShake(SensorEvent event);
+        public abstract boolean onDrop(SensorEvent idleEvent, SensorEvent event);
         
 
     	/**
@@ -45,7 +57,7 @@ public class SensorGestureDetector {
     	 * @param event Sensor Event when the threshold was reached.
     	 * @return true if the event is consumed, else false
     	 */
-        public abstract boolean onDrop(SensorEvent event);
+        public abstract boolean onCatch(SensorEvent event);
     }
     
     /**
@@ -60,18 +72,19 @@ public class SensorGestureDetector {
         implements OnSensorGestureListener
     {
 
-        public SimpleOnSensorGestureListener()
-        {
+        public SimpleOnSensorGestureListener() {
         }
         
-        public boolean onShake(SensorEvent event)
-        {
+        public boolean onShake(SensorEvent idleEvent, SensorEvent event) {
             return false;
         }
 
-        public boolean onDrop(SensorEvent event)
-        {
+        public boolean onDrop(SensorEvent idleEvent, SensorEvent event) {
             return false;
+        }
+
+        public boolean onCatch(SensorEvent event) {
+        	return false;
         }
     }
     
