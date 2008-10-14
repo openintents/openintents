@@ -89,13 +89,16 @@ public class SensorGestureDetectorActivity extends Activity
 
 	@Override
 	public boolean onIdle(SensorEvent event) {
-		mText.append("\nIdle " + event.getValueLength());
+		mText.append("\nIdle " /*+ event.getValueLength()*/);
 		return false;
 	}
 
 	@Override
 	public boolean onRotate(SensorEvent idleEvent, SensorEvent event) {
-		mText.append("\nRotate " + event.getValueLength());
+		String rotation = getRotationString(event.getRoughRotation(idleEvent));
+		mText.append("\nRotate " + rotation /*+ " " + event.getValueLength()*/);
+		//mText.append("\n" + getValueString(event.getValues()));
+		//mText.append("\n" + getValueString(idleEvent.getValues()));
 		return false;
 	}
 	
@@ -144,5 +147,28 @@ public class SensorGestureDetectorActivity extends Activity
 		}
 	}
 
+
+	public String getRotationString(int direction) {
+		switch(direction) {
+		case SensorEvent.ROTATION_YAW_LEFT:
+			return "yaw left";
+		case SensorEvent.ROTATION_YAW_RIGHT:
+			return "yaw right";
+		case SensorEvent.ROTATION_PITCH_UP:
+			return "pitch up";
+		case SensorEvent.ROTATION_PITCH_DOWN:
+			return "pitch down";
+		case SensorEvent.ROTATION_ROLL_LEFT:
+			return "roll left";
+		case SensorEvent.ROTATION_ROLL_RIGHT:
+			return "roll right";
+		default:
+			return "unknown";
+		}
+	}
+	
+	String getValueString(float[] values) {
+		return "" + values[0] + ", " + values[1] + ", " + values[2];
+	}
 	
 }

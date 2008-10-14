@@ -19,6 +19,15 @@ public class SensorEvent {
 	public static final int DIRECTION_RIGHT = 4;
 	public static final int DIRECTION_FORWARD = 5;
 	public static final int DIRECTION_BACKWARD = 6;
+	
+
+	public static final int ROTATION_UNKNOWN = 0;
+	public static final int ROTATION_YAW_LEFT = 1;
+	public static final int ROTATION_YAW_RIGHT = 2;
+	public static final int ROTATION_PITCH_UP = 3;
+	public static final int ROTATION_PITCH_DOWN = 4;
+	public static final int ROTATION_ROLL_LEFT = 5;
+	public static final int ROTATION_ROLL_RIGHT = 6;
 
     private int mSensor;
     private float[] mValues;
@@ -229,6 +238,88 @@ public class SensorEvent {
     	return direction;
     }
     
+    /**
+     * Obtain the rough rotation.
+     * The return value is one of the constants DIRECTION_UP,
+     * DIRECTION_DOWN, ...
+     * 
+     * 
+     * @param idleEvent Event when the device was last idle, otherwise null.
+     * @return
+     */
+    public final int getRoughRotation(SensorEvent idleEvent) {    	
+    	// Get starting position
+    	int position = idleEvent.getRoughDirection(null);
+    	int direction = getRoughDirection(idleEvent);
+    	
+    	switch (position) {
+    	case DIRECTION_DOWN:
+    	case DIRECTION_RIGHT:
+    	case DIRECTION_BACKWARD:
+    		// reverse position and direction, which will keep rotation the same.
+    		position = getOppositeDirection(position);
+    		direction = getOppositeDirection(direction);
+    	}
+    	
+    	// Note that rotations below are given for the device,
+    	// while position and rotation refer to the gravity vector motion.
+    	switch (position) {
+    	case DIRECTION_UP:
+    		switch (direction) {
+    		case DIRECTION_LEFT:
+    			return ROTATION_ROLL_RIGHT;
+    		case DIRECTION_RIGHT:
+    			return ROTATION_ROLL_LEFT;
+    		case DIRECTION_FORWARD:
+    			return ROTATION_PITCH_UP;
+    		case DIRECTION_BACKWARD:
+    			return ROTATION_PITCH_DOWN;
+    		}
+    	case DIRECTION_LEFT:
+    		switch (direction) {
+    		case DIRECTION_UP:
+    			return ROTATION_ROLL_LEFT;
+    		case DIRECTION_DOWN:
+    			return ROTATION_ROLL_RIGHT;
+    		case DIRECTION_FORWARD:
+    			return ROTATION_YAW_LEFT;
+    		case DIRECTION_BACKWARD:
+    			return ROTATION_YAW_RIGHT;
+    		}
+    	case DIRECTION_FORWARD:
+    		switch (direction) {
+    		case DIRECTION_LEFT:
+    			return ROTATION_YAW_RIGHT;
+    		case DIRECTION_RIGHT:
+    			return ROTATION_YAW_LEFT;
+    		case DIRECTION_UP:
+    			return ROTATION_PITCH_DOWN;
+    		case DIRECTION_DOWN:
+    			return ROTATION_PITCH_UP;
+    		}
+    	}
+    	
+    	return ROTATION_UNKNOWN;
+    }
+    
+    static int getOppositeDirection(int direction) {
+    	switch(direction) {
+    	case DIRECTION_UP:
+    		return DIRECTION_DOWN;
+    	case DIRECTION_DOWN:
+    		return DIRECTION_UP;
+    	case DIRECTION_LEFT:
+    		return DIRECTION_RIGHT;
+    	case DIRECTION_RIGHT:
+    		return DIRECTION_LEFT;
+    	case DIRECTION_FORWARD:
+    		return DIRECTION_BACKWARD;
+    	case DIRECTION_BACKWARD:
+    		return DIRECTION_FORWARD;
+    	default:
+    		return direction;
+    	}
+    }
 
     /////////////////////////////////////////////
     // Integer values
