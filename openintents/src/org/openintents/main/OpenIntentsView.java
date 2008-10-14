@@ -22,7 +22,6 @@ import java.util.List;
 
 import org.openintents.OpenIntents;
 import org.openintents.R;
-import org.openintents.locations.MockLocationService;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -37,8 +36,8 @@ import android.text.Spannable;
 import android.text.style.AlignmentSpan;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -111,10 +110,7 @@ public class OpenIntentsView extends Activity {
 		fillGrid(mGridSettings, OpenIntents.SETTINGS_CATEGORY);
 		
 		// Optionally call preferences:
-		OpenIntents.suggestInitDefaultValues(this);
-		
-		Intent mockProvider = new Intent(this, MockLocationService.class);
-		startService(mockProvider );
+		OpenIntents.suggestInitDefaultValues(this);		
 	}
 
 	void fillGrid(TableLayout table, String category) {
