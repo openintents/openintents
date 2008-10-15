@@ -12,6 +12,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.MatrixCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -19,8 +20,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class ContentIndexProvider extends
-		android.content.ContentProvider {
+public class ContentIndexProvider extends android.content.ContentProvider {
 
 	private static final String TAG = "Tables";
 
@@ -29,7 +29,6 @@ public class ContentIndexProvider extends
 	private static final int DATABASE_VERSION = 33;
 
 	private SQLiteOpenHelper mOpenHelper;
-
 
 	private static final UriMatcher URL_MATCHER;
 	private static final int DIRECTORIES = 1;
@@ -41,8 +40,8 @@ public class ContentIndexProvider extends
 	static class DatabaseHelper extends SQLiteOpenHelper {
 
 		DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
@@ -76,23 +75,21 @@ public class ContentIndexProvider extends
 	}
 
 	private final static String _TAG = "contentIndex";
-/*
-	public ContentIndexProvider() {
-		super(DATABASE_NAME, DATABASE_VERSION);
-	}
+
+	/*
+	 * public ContentIndexProvider() { super(DATABASE_NAME, DATABASE_VERSION); }
+	 * 
+	 * @Override protected void upgradeDatabase(int oldVersion, int newVersion)
+	 * { DatabaseHelper dbHelper = new DatabaseHelper(); dbHelper.onUpgrade(db,
+	 * oldVersion, newVersion);
+	 * 
+	 * }
+	 */
 
 	@Override
-	protected void upgradeDatabase(int oldVersion, int newVersion) {
-		DatabaseHelper dbHelper = new DatabaseHelper();
-		dbHelper.onUpgrade(db, oldVersion, newVersion);
-
-	}
-*/
-	
-	@Override
-	public boolean onCreate(){
-        mOpenHelper = new DatabaseHelper(getContext());
-        return true;
+	public boolean onCreate() {
+		mOpenHelper = new DatabaseHelper(getContext());
+		return true;
 	}
 
 	@Override
@@ -127,8 +124,8 @@ public class ContentIndexProvider extends
 		}
 
 		SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-        Cursor c = qb.query(db, projection, selection,
-				selectionArgs, null, null, orderBy);
+		Cursor c = qb.query(db, projection, selection, selectionArgs, null,
+				null, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
@@ -136,7 +133,7 @@ public class ContentIndexProvider extends
 	@Override
 	public Uri insert(Uri url, ContentValues initialValues) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        
+
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
 			if (initialValues.containsKey("_id")) {
@@ -164,32 +161,33 @@ public class ContentIndexProvider extends
 			e.printStackTrace();
 		}
 		if (bodyUris != null) {
-			List<List<String>> bodies = new ArrayList<List<String>>();
+			MatrixCursor cursor = new MatrixCursor(ContentIndex.ContentBody.COLUMNS);
 			for (String bodyUri : bodyUris) {
 				String[] bodyArray = getContentBody(Uri.parse(bodyUri));
-				if (bodyArray != null && bodyArray.length > 1) {					
-					List<String> columns = new ArrayList<String>();
-					
-					// add first column (not _id)
-					String body = bodyArray[1];
-					columns.add(body);
+				if (bodyArray != null && bodyArray.length > 1) {
+					String[] columns = new String[2];
 
-					// add second column if available					
-					if (bodyArray.length > 2){
-						body = bodyArray[2];
-						columns.add(body);
+					// add first column (not _id)
+					columns[0] = bodyArray[1];
+
+					// add second column if available
+					if (bodyArray.length > 2) {
+						columns[1] = bodyArray[2];
+					} else {
+						columns[1] = null;
 					}
-					bodies.add(columns);
+					cursor.addRow(columns);
 				}
 			}
-			
-			////// TODO ///////
+
+			// //// TODO ///////
 			// Don't know how to do this!!
-			//return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS, bodies);
-			
+			// return new ArrayListCursor(ContentIndex.ContentBody.COLUMNS,
+			// bodies);
+
 			// Have to use MatrixCursor - but how?
-			
-			return null;
+
+			return cursor;
 		} else {
 			return null;
 		}
@@ -210,19 +208,15 @@ public class ContentIndexProvider extends
 		}
 	}
 
-/*
-	@Override
-	protected void bootstrapDatabase() {
-		super.bootstrapDatabase();
-		DatabaseHelper dbHelper = new DatabaseHelper();
-		dbHelper.onCreate(db);
-	}
-*/
+	/*
+	 * @Override protected void bootstrapDatabase() { super.bootstrapDatabase();
+	 * DatabaseHelper dbHelper = new DatabaseHelper(); dbHelper.onCreate(db); }
+	 */
 
 	@Override
 	public int delete(Uri url, String where, String[] whereArgs) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        int count;
+		int count;
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
 			count = db.delete("dirs", where, whereArgs);
@@ -230,8 +224,7 @@ public class ContentIndexProvider extends
 
 		case DIRECTORY:
 			String id = url.getLastPathSegment();
-			count = db.delete(
-					"dirs",
+			count = db.delete("dirs",
 					"_id="
 							+ id
 							+ (!TextUtils.isEmpty(where) ? " AND (" + where
@@ -249,7 +242,7 @@ public class ContentIndexProvider extends
 	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        int count;
+		int count;
 		switch (URL_MATCHER.match(url)) {
 		case DIRECTORIES:
 			count = db.update("dirs", values, where, whereArgs);
@@ -257,9 +250,7 @@ public class ContentIndexProvider extends
 
 		case DIRECTORY:
 			String id = url.getLastPathSegment();
-			count = db.update(
-					"dirs",
-					values,
+			count = db.update("dirs", values,
 					"_id="
 							+ id
 							+ (!TextUtils.isEmpty(where) ? " AND (" + where
@@ -358,14 +349,14 @@ public class ContentIndexProvider extends
 
 	private Cursor getDirectories(String selection, String[] args,
 			String orderBy) {
-	
-		SQLiteQueryBuilder qb =new SQLiteQueryBuilder();
+
+		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 		qb.setTables("dirs");
 		String[] columns = new String[] { "_id", "parent_id", "uri", "package",
 				"name", "text_columns", "id_column", "time_column",
 				"intent_uri", "intent_action", "refreshed", "updated" };
 		SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-        return qb.query(db, columns, selection, args, null, null, orderBy);
+		return qb.query(db, columns, selection, args, null, null, orderBy);
 	}
 
 	private ArrayList<Directory> getDirectoryList(String selection,
@@ -411,14 +402,14 @@ public class ContentIndexProvider extends
 	}
 
 	private void getValues(Cursor cursor, int[] columnIndex, String[] values) {
-		for (int i = 0; i < columnIndex.length; i++) {			
+		for (int i = 0; i < columnIndex.length; i++) {
 			values[i] = cursor.getString(columnIndex[i]);
 			Log.v(_TAG, i + ":" + values[i]);
 		}
 	}
 
 	private int[] getColumnIndex(Cursor cursor, String[] projection) {
-		int[] index = new int[projection.length];		
+		int[] index = new int[projection.length];
 		for (int i = 0; i < projection.length; i++) {
 			index[i] = cursor.getColumnIndex(projection[i]);
 		}

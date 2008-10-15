@@ -50,6 +50,7 @@ public class PackageList extends ListActivity {
 		} catch (Exception e) {
 			Log.e(TAG, "onCreate", e);
 			finish();
+			return;
 		}
 
 		refreshPackages();
@@ -63,7 +64,7 @@ public class PackageList extends ListActivity {
 		} else {
 			label = getString(R.string.label_packages, String.valueOf(n));
 		}
-		
+
 		mLabel.setText(label);
 	}
 
@@ -84,8 +85,8 @@ public class PackageList extends ListActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(0, PACKAGE_ADD_ID, 0, R.string.menu_package_add)
-			.setIcon(R.drawable.new_doc).setShortcut('3', 'i');
+		menu.add(0, PACKAGE_ADD_ID, 0, R.string.menu_package_add).setIcon(
+				R.drawable.new_doc).setShortcut('3', 'i');
 		return true;
 	}
 
@@ -98,9 +99,10 @@ public class PackageList extends ListActivity {
 
 		if (haveItems) {
 			menu.add(Menu.CATEGORY_ALTERNATIVE, PACKAGE_DEL_ID,
-					R.string.menu_package_del, R.drawable.trash).setShortcut('5', 'u');
-			//TODO new sdk
-			//menu.setDefaultItem(PACKAGE_ADD_ID);
+					R.string.menu_package_del, R.drawable.trash).setShortcut(
+					'5', 'u');
+			// TODO new sdk
+			// menu.setDefaultItem(PACKAGE_ADD_ID);
 		}
 
 		return true;
@@ -121,9 +123,10 @@ public class PackageList extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		
-		if (getCallingActivity() != null) {			
-			setResult(RESULT_OK, new Intent(((Cursor) l.getItemAtPosition(position)).getString(2)));
+
+		if (getCallingActivity() != null) {
+			setResult(RESULT_OK, new Intent(((Cursor) l
+					.getItemAtPosition(position)).getString(2)));
 			finish();
 		}
 	}
@@ -133,7 +136,8 @@ public class PackageList extends ListActivity {
 
 			public void onClick(DialogInterface dialog, int whichButton) {
 				if (whichButton == AlertDialog.BUTTON2) {
-					mCursor.moveToPosition(PackageList.this.getSelectedItemPosition());
+					mCursor.moveToPosition(PackageList.this
+							.getSelectedItemPosition());
 					int packageIndex = mCursor.getColumnIndexOrThrow("package");
 					String packageName = mCursor.getString(packageIndex);
 					Log.d(TAG, "Delete package " + packageName);
@@ -156,8 +160,7 @@ public class PackageList extends ListActivity {
 		String cancel = getString(R.string.dialog_cancel);
 		String title = getString(R.string.dialog_title_package_del);
 		String msg = getString(R.string.dialog_message_package_del);
-		new AlertDialog.Builder(this).setTitle(title). 
-		setMessage(msg).show();				
+		new AlertDialog.Builder(this).setTitle(title).setMessage(msg).show();
 		// TODO new sdk (is the cancle button shown?
 	}
 

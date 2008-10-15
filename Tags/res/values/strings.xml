@@ -17,7 +17,7 @@
  
 <resources>
     <!-- Main application  -->
-	<string name="app_name">Open Intents</string>
+	<string name="app_name">Tag browser</string>
 	<string name="default_tag">DEFAULT</string>
 	
 	<string name="openintents">OpenIntents</string>

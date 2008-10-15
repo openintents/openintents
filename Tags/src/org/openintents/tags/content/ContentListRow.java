@@ -36,7 +36,7 @@ public class ContentListRow extends RelativeLayout {
 	private static final int CONTENT_TYPE = 3;
 	private static final int TAGS = 4;
 
-        private Context mContext;
+	private Context mContext;
 	private ImageView mIcon;
 	private TextView mName;
 	private ImageView mType;
@@ -71,9 +71,11 @@ public class ContentListRow extends RelativeLayout {
 					mType.setOnClickListener(new OnClickListener() {
 
 						public void onClick(View view) {
-							new AlertDialog.Builder(ContentListRow.this.getContext()).setTitle("info").setIcon(mTypeDrawable). 
-							setMessage(getResources()
-									.getString(mTypeString)).show();	
+							new AlertDialog.Builder(ContentListRow.this
+									.getContext()).setTitle("info").setIcon(
+									mTypeDrawable).setMessage(
+									getResources().getString(mTypeString))
+									.show();
 
 						}
 					});
@@ -91,7 +93,7 @@ public class ContentListRow extends RelativeLayout {
 	public ContentListRow(Context context) {
 		super(context);
 
-                mContext = context;
+		mContext = context;
 		mContentIndex = new ContentIndex(context.getContentResolver());
 		mTagHelper = new Tag(context);
 
@@ -121,16 +123,19 @@ public class ContentListRow extends RelativeLayout {
 		RelativeLayout.LayoutParams icon = new RelativeLayout.LayoutParams(64,
 				64);
 		icon.addRule(ALIGN_PARENT_LEFT);
+		icon.addRule(ALIGN_PARENT_TOP);
 		addView(mIcon, icon);
 
 		RelativeLayout.LayoutParams name = new RelativeLayout.LayoutParams(
-				LayoutParams.FILL_PARENT, 64);
-		name.addRule(ALIGN_RIGHT, CONTENT_ICON);
+				LayoutParams.WRAP_CONTENT, 64);
+		name.addRule(RIGHT_OF, CONTENT_ICON);
+		name.addRule(ALIGN_PARENT_TOP);
 		addView(mName, name);
 
 		RelativeLayout.LayoutParams type = new RelativeLayout.LayoutParams(
 				LayoutParams.WRAP_CONTENT, 64);
 		type.addRule(ALIGN_PARENT_RIGHT);
+		type.addRule(ALIGN_PARENT_TOP);
 		addView(mType, type);
 
 		RelativeLayout.LayoutParams tags = new RelativeLayout.LayoutParams(
@@ -243,8 +248,10 @@ public class ContentListRow extends RelativeLayout {
 					result = null;
 				} else {
 					cursor.moveToNext();
-					if (uri.toString().startsWith(Tag.Locations_CONTENT_URI.toString())){
-						result = cursor.getString(0) + "," + cursor.getString(1);
+					if (uri.toString().startsWith(
+							Tag.Locations_CONTENT_URI.toString())) {
+						result = cursor.getString(0) + ","
+								+ cursor.getString(1);
 					} else {
 						result = cursor.getString(0);
 					}

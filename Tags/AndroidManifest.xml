@@ -1,173 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-	* Copyright (C) 2007-2008 OpenIntents.org
-	*
-	* Licensed under the Apache License, Version 2.0 (the "License");
-	* you may not use this file except in compliance with the License.
-	* You may obtain a copy of the License at
-	*
-	*      http://www.apache.org/licenses/LICENSE-2.0
-	*
-	* Unless required by applicable law or agreed to in writing, software
-	* distributed under the License is distributed on an "AS IS" BASIS,
-	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	* See the License for the specific language governing permissions and
-	* limitations under the License.
--->
-
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.openintents.tags">
-
-	 
-	<application android:icon="@drawable/tagging_application001a" android:label="@string/app_name">
+	<!--
+		* Copyright (C) 2007-2008 OpenIntents.org * * Licensed under the
+		Apache License, Version 2.0 (the "License"); * you may not use this
+		file except in compliance with the License. * You may obtain a copy of
+		the License at * * http://www.apache.org/licenses/LICENSE-2.0 * *
+		Unless required by applicable law or agreed to in writing, software *
+		distributed under the License is distributed on an "AS IS" BASIS, *
+		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+		implied. * See the License for the specific language governing
+		permissions and * limitations under the License.
+	-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.openintents.tags">
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	
+	<application android:icon="@drawable/tagging_application001a"
+		android:label="@string/app_name">
 		
         
 		<!-- Providers -->
-	
-		<provider android:name=".TagsProvider"
-			android:authorities="org.openintents.tags" />
-	 
-
+		<provider android:name=".TagsProvider" android:authorities="org.openintents.tags" />
 		<provider android:name=".content.ContentIndexProvider"
 			android:authorities="org.openintents.contentindices" />
 
 
 		<!-- Tags activity -->
-		
 		<activity android:name=".content.ContentBrowserView"
-			android:label="@string/content_browser" 
-			android:icon="@drawable/tagging_application001a">
+			android:label="@string/content_browser" android:icon="@drawable/tagging_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-
-				<category
-					android:name="android.intent.category.LAUNCHER" />
+				<category android:name="android.intent.category.LAUNCHER" />
 				<category android:name="org.openintents.category.MAIN" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
-
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
-
-		<activity android:name=".TagsAddView"
-			android:label="@string/tags_add_tag">
-			<intent-filter android:icon="@drawable/tag_add001a">			    
+		<activity android:name=".TagsAddView" android:label="@string/tags_add_tag">
+			<intent-filter android:icon="@drawable/tag_add001a">
 				<action android:name="org.openintents.action.TAG" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
-				<category
-					android:name="android.intent.category.ALTERNATIVE" />
-				<category
-					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.ALTERNATIVE" />
+				<category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
-
-			<intent-filter android:icon="@drawable/tag_add001a">			    
+			<intent-filter android:icon="@drawable/tag_add001a">
 				<action android:name="android.intent.action.INSERT" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
-				<category
-					android:name="android.intent.category.ALTERNATIVE" />
-				<category
-					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.ALTERNATIVE" />
+				<category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
-
-		<activity android:name=".TagsCloudView"
-			android:label="@string/tags_cloud">
-			<intent-filter android:icon="@drawable/folder">			    
+		<activity android:name=".TagsCloudView" android:label="@string/tags_cloud">
+			<intent-filter android:icon="@drawable/folder">
 				<action android:name="android.intent.action.PICK" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
-				<category
-					android:name="android.intent.category.ALTERNATIVE" />
-				<category
-					android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.ALTERNATIVE" />
+				<category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
 		</activity>
-
 		<activity android:name=".content.PackageList">
 			<intent-filter>
 				<action android:name="android.intent.action.PICK" />
-				<category
-					android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.contentdirectory" />
 			</intent-filter>
 		</activity>
-		
 		<activity android:name=".content.PackageAdd" android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.INSERT" />
-                <category android:name="android.intent.category.DEFAULT" />
+			<intent-filter>
+				<action android:name="android.intent.action.INSERT" />
+				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.contentdirectory" />
-            </intent-filter>
-        </activity>
+			</intent-filter>
+		</activity>
         
 
 
 		<!-- Ma.Gnolia Tags activity -->
-		<activity android:name=".MagnoliaSettings"
-			android:label="@string/magnolia_settings"
-			android:icon="@drawable/tagging_magnolia_application001a" >
+		<activity android:name=".MagnoliaSettings" android:label="@string/magnolia_settings"
+			android:icon="@drawable/tagging_magnolia_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="org.openintents.category.SETTINGS" />            					
+				<category android:name="org.openintents.category.SETTINGS" />
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag"/>               					             					
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
-		</activity>		
-		<activity android:name=".MagnoliaTagging"
-			android:label="@string/magnolia_tagging"
+		</activity>
+		<activity android:name=".MagnoliaTagging" android:label="@string/magnolia_tagging"
 			android:icon="@drawable/tagging_magnolia_application001a">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="org.openintents.category.MAIN" />
-				<!-- 
-				<category
-					android:name="android.intent.category.LAUNCHER" />
-					 -->
-            					
+				<!--
+					<category android:name="android.intent.category.LAUNCHER" />
+				-->
 			</intent-filter>
-
 			<intent-filter>
 				<action android:name="org.openintents.action.TAGMAGNOLIA"
 					android:label="tag" />
-				<category android:name="android.intent.category.DEFAULT" />				
-				<category android:name="android.intent.category.ALTERNATIVE" />				
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.ALTERNATIVE" />
 			</intent-filter>
 			<intent-filter>
-				<action android:name="android.intent.EDIT"
-					android:label="tag" />
-				<category android:name="android.intent.category.DEFAULT" />				
-				<category android:name="android.intent.category.ALTERNATIVE" />				
+				<action android:name="android.intent.EDIT" android:label="tag" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.ALTERNATIVE" />
 			</intent-filter>
-
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag"/>               					           					
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.tag" />
 			</intent-filter>
-
-		</activity>	
-		
-		
-</application>	 
-	
-	
+		</activity>
+	</application>
 </manifest>
