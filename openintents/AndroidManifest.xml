@@ -1,178 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-	* Copyright (C) 2007-2008 OpenIntents.org
-	*
-	* Licensed under the Apache License, Version 2.0 (the "License");
-	* you may not use this file except in compliance with the License.
-	* You may obtain a copy of the License at
-	*
-	*      http://www.apache.org/licenses/LICENSE-2.0
-	*
-	* Unless required by applicable law or agreed to in writing, software
-	* distributed under the License is distributed on an "AS IS" BASIS,
-	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	* See the License for the specific language governing permissions and
-	* limitations under the License.
--->
-
+	<!--
+		* Copyright (C) 2007-2008 OpenIntents.org * * Licensed under the
+		Apache License, Version 2.0 (the "License"); * you may not use this
+		file except in compliance with the License. * You may obtain a copy of
+		the License at * * http://www.apache.org/licenses/LICENSE-2.0 * *
+		Unless required by applicable law or agreed to in writing, software *
+		distributed under the License is distributed on an "AS IS" BASIS, *
+		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+		implied. * See the License for the specific language governing
+		permissions and * limitations under the License.
+	-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents">
-
-    <!-- required for ContentBrowserView (in order to view tagged people) -->
-	<uses-permission id="android.permission.READ_CONTACTS" android:name="android.permission.READ_CONTACTS" />
-	<uses-permission id="android.permission.ACCESS_LOCATION" android:name="android.permission.ACCESS_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-	
-	<!-- required for Locations (in order to getCurrentLocation) -->
-	<uses-permission android:name="android.permission.ACCESS_GPS" />
-	<!-- Permission not available in SDJ 72264
-	<uses-permission android:name="android.permission.ACCESS_CELL_ID" />
-	 -->
-	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
-	
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	
-	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-
-	<!-- required for news service  -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    
-	<!-- required for AlertProvider??? (error message in SDK 72264) -->
-	<uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
-	
-	<!-- required for SplashPlay (error message in SDK 72264) -->
-	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-	
-	<!-- 
-	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
-	android:label="@string/oi_acceptancetest"/>
-	 -->
-	 
-	<application android:icon="@drawable/openintents002a" android:label="@string/app_name">
-		<!-- Libraries needed since SDK 72264 -->
-        <uses-library android:name="com.google.android.maps" />
-        <uses-library android:name="com.google.android.gtalkservice" />
+	<application android:icon="@drawable/openintents002a"
+		android:label="@string/app_name">		
         
-		<!-- Providers -->
-	 
-		<provider android:name=".alert.AlertProvider"
-			android:authorities="org.openintents.alert" />		
-		
 
 		<!-- Main activity -->
-		<activity android:name=".main.OpenIntentsView"
-			android:label="@string/app_name">
+		<activity android:name=".main.OpenIntentsView" android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-				
-				<category
-					android:name="android.intent.category.LAUNCHER" />
-					
+				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-
-		<activity android:name=".main.About"
-			android:label="@string/about_openintents">
+		<activity android:name=".main.About" android:label="@string/about_openintents">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-				<!-- <category
-					android:name="android.intent.category.LAUNCHER" />   -->
+				<!--
+					<category android:name="android.intent.category.LAUNCHER" />
+				-->
 			</intent-filter>
 		</activity>
-		
-
-
-		
-				
-		<!-- intents list  -->
-		<activity android:name=".actions.IntentsListView" android:label="@string/intents_list">
-		</activity>
-
-		<activity android:name=".actions.TypesListView" android:label="@string/intents_types">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN"></action>
-				<category android:name="android.intent.category.DEFAULT"></category>
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.PICK"></action>
-				<category android:name="android.intent.category.DEFAULT"></category>
-				<data android:scheme="openintents" android:host="intents"/>				
-			</intent-filter>
-		</activity>		
-		<activity android:name=".actions.PickStringView" android:label="@string/intents_list">
-		</activity>		
-
-
-	<!-- alert framework -->
-	<activity android:name=".alert.AddGenericAlertActivity"
-			android:label="@string/alert_add"
-			android:icon="@drawable/alert_application001a"
-			>
-
-			<intent-filter>
-				<action android:name="org.openintents.action.ADD_GENERIC_ALERT" />
-				<category android:name="android.intent.category.DEFAULT" />				
-				<category android:name="android.intent.category.ALTERNATIVE" />				
-				<category android:name="org.openintents.category.SETTINGS" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="org.openintents.action.EDIT_GENERIC_ALERT" />
-				<category android:name="android.intent.category.DEFAULT" />				
-				<category android:name="android.intent.category.ALTERNATIVE" />				
-				<category android:name="org.openintents.category.SETTINGS" />
-			</intent-filter>
-	</activity>
-	<activity android:name=".alert.AlertList"
-			android:label="Alert List"
-			android:icon="@drawable/alert_application001a"
-			>
-
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="org.openintents.category.SETTINGS" />
-			</intent-filter>
-
-	</activity>
-	<receiver android:name=".alert.LocationAlertDispatcher">
-	 <intent-filter>
-	   <action android:name="org.openintents.action.LOCATION_ALERT_DISPATCH" />
-	 </intent-filter>
-	</receiver>
-	<receiver android:name=".alert.AlertTest">
-	 <intent-filter>
-	   <action android:name="org.openintents.action.ALERT_TEST" />
-	 </intent-filter>
-	</receiver>
-		<service android:name=".alert.DebugGPSService"
-				 android:enabled="true"
-		>
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.DEFAULT" />
-				
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->              					
-			</intent-filter>
-		</service>
-		<!--  this will register all alerts after the device boots up		-->
-		<receiver android:name=".alert.services.OnBootRegisterAlerts">
-		 <intent-filter>
-		   <action android:name="android.intent.action.BOOT_COMPLETED" />
-		 </intent-filter>
-		</receiver>
-		<service android:name=".alert.services.RegisterAlertsService"
-				 android:enabled="true"
-		>
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.DEFAULT" />
-				
-				<!--  <category
-					android:name="android.intent.category.LAUNCHER" />  -->              					
-			</intent-filter>
-		</service>
-		
-</application>	 
-	
-	
+	</application>
 </manifest>
