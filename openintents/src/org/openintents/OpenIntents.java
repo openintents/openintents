@@ -151,7 +151,12 @@ public abstract class OpenIntents {
     		// User does not want to see intro screen again.
     		Intent intent = new Intent();
     		intent.setClassName("org.openintents","org.openintents.main.InitView");
-    		activity.startActivity(intent);
+    		try {
+    			activity.startActivity(intent);
+			} catch (Exception e) {
+				// ignore, InitView not installed.
+			}
+    		
 			
     	}
     	
