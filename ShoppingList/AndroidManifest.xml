@@ -39,20 +39,7 @@
 				<category android:name="org.openintents.category.MAIN" />
 				 <category android:name="android.intent.category.LAUNCHER" /> 
 			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<action android:name="android.intent.action.PICK" />
-				<action android:name="android.intent.action.INSERT" />
-                <category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.list" />
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<action android:name="android.intent.action.EDIT" />
-                <action android:name="android.intent.action.GET_CONTENT" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
-			</intent-filter>
+			
 			<intent-filter>
 				<action android:name="android.intent.action.VIEW" />
 				<action android:name="android.intent.action.PICK" />
@@ -66,6 +53,22 @@
                 <action android:name="android.intent.action.GET_CONTENT" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.item" />
+			</intent-filter>
+		</activity>
+		
+		<activity android:name=".ShoppingListsActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.PICK" />
+				<action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.list" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
 			</intent-filter>
 		</activity>
 		
