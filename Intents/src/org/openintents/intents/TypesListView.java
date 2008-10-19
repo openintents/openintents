@@ -30,6 +30,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore.Audio.Media;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -297,6 +298,9 @@ public class TypesListView extends ListActivity {
 						}
 					}
 				}
+				
+				mActionSet.add(Media.RECORD_SOUND_ACTION);
+				addIntentsToMap(map, Media.RECORD_SOUND_ACTION);
 			}
 
 			if (actionList != null) {
@@ -325,6 +329,15 @@ public class TypesListView extends ListActivity {
 		// Log.i(LOG_TAG, intent + ":" + activities.size());
 
 		resolveListToMap(intent, activities, map);
+		
+		// try without mime type
+		intent.setDataAndType(null, null);
+		
+		activities = this.getPackageManager()
+		.queryIntentActivities(intent, flags);
+		// Log.i(LOG_TAG, intent + ":" + activities.size());
+
+		resolveListToMap(intent, activities, map);
 	}
 
 	private void resolveListToMap(Intent intent, List<ResolveInfo> activities,
@@ -347,6 +360,15 @@ public class TypesListView extends ListActivity {
 						// Log.i("test", type + ": " + intent);
 
 					}
+				} else {
+					String type = "null";
+					fi.append(type);
+					List<IntentFilter> set = map.get(type);
+					if (set == null) {
+						set = new ArrayList<IntentFilter>();
+						map.put(type, set);
+					}
+					set.add(ri.filter);
 				}
 			}
 		}
@@ -410,8 +432,12 @@ public class TypesListView extends ListActivity {
 			if (uriString != null) {
 				uri = Uri.parse(uriString);
 			}
-			intent.setDataAndType(uri, resultIntent
-					.getStringExtra(Intents.EXTRA_TYPE));
+			String type = resultIntent
+			.getStringExtra(Intents.EXTRA_TYPE);
+			if ("null".equals(type)){
+				type = null;
+			}
+			intent.setDataAndType(uri,type );
 			try {
 				startActivity(intent);
 			} catch (Exception e) {

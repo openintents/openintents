@@ -17,6 +17,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.MediaStore.Audio.Media;
 import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ import android.widget.LinearLayout.LayoutParams;
  * shows simple, non-selectable list of actions and mime-types
  * 
  * @author openintents.org
- *
+ * 
  */
 public class IntentsListView extends Activity {
 
@@ -49,11 +50,13 @@ public class IntentsListView extends Activity {
 		HashMap<String, ArrayList<IntentFilter>> map = new HashMap<String, ArrayList<IntentFilter>>();
 
 		if (getIntent() != null) {
-			if (getIntent().getBooleanExtra(Intents.EXTRA_ANDROID_ACTIONS, false)) {
+			if (getIntent().getBooleanExtra(Intents.EXTRA_ANDROID_ACTIONS,
+					false)) {
 				addAllAndroidActions(flags, intent, map);
 			}
 
-			String actionList = getIntent().getStringExtra(Intents.EXTRA_ACTION_LIST);
+			String actionList = getIntent().getStringExtra(
+					Intents.EXTRA_ACTION_LIST);
 			if (actionList != null) {
 				String[] actions = actionList.split(",");
 				for (String action : actions) {
@@ -106,7 +109,7 @@ public class IntentsListView extends Activity {
 			HashMap<String, ArrayList<IntentFilter>> map) {
 		for (Field f : Intent.class.getFields()) {
 
-			if (f.getName().endsWith("ACTION")) {
+			if (f.getName().startsWith("ACTION_")) {
 				String action = null;
 				try {
 					action = (String) f.get(Intent.class);
@@ -114,7 +117,7 @@ public class IntentsListView extends Activity {
 					e.printStackTrace();
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();
-				} catch (ClassCastException e){
+				} catch (ClassCastException e) {
 					// ignore
 				}
 
@@ -128,6 +131,13 @@ public class IntentsListView extends Activity {
 				}
 			}
 		}
+
+		intent.setAction(Media.RECORD_SOUND_ACTION);
+		List<ResolveInfo> activities = this.getPackageManager()
+				.queryIntentActivities(intent, flags);
+		// Log.i(LOG_TAG, intent + ":" + activities.size());
+
+		resolveListToMap(intent, activities, map);
 	}
 
 	private void resolveListToMap(Intent intent, List<ResolveInfo> activities,

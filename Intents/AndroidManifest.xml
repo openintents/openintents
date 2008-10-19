@@ -36,7 +36,7 @@
 			<intent-filter>
 				<action android:name="android.intent.action.PICK"></action>
 				<category android:name="android.intent.category.DEFAULT"></category>
-				<data android:scheme="openintents" android:host="intents"/>				
+				<data android:scheme="content" android:host="org.openintents.intents"/>				
 			</intent-filter>
 		</activity>		
 		<activity android:name=".PickStringView" android:label="@string/intents_list">
