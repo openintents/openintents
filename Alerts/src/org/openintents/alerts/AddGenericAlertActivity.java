@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore.Audio.Media;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -61,9 +62,13 @@ public class AddGenericAlertActivity extends Activity {
 	private static final int MENU_PICK_LOC = 1;
 	private static final int MENU_PICK_ACTION = 2;
 	private static final int MENU_PICK_DATE_TIME = 3;
+	private static final int MENU_RECORD_MESSAGE_TO_PLAY = 4;
+	private static final int MENU_FIRE_ALERT = 5;
+
 	private static final int REQUEST_PICK_LOC = 1;
 	private static final int REQUEST_PICK_ACTION = 2;
 	private static final int REQUEST_PICK_DATE_TIME = 3;
+	private static final int REQUEST_RECORD_MESSAGE = 4;
 
 	private TextView mCond1;
 	private TextView mCond2;
@@ -99,8 +104,7 @@ public class AddGenericAlertActivity extends Activity {
 		mType = (Spinner) findViewById(R.id.alert_addgeneric_type);
 		mActive = (CheckBox) findViewById(R.id.alert_addgeneric_active);
 		mOnBoot = (CheckBox) findViewById(R.id.alert_addgeneric_onboot);
-			
-		
+
 		Alert.init(this);
 
 		ArrayAdapter<String> ad = new ArrayAdapter<String>(this,
@@ -116,13 +120,13 @@ public class AddGenericAlertActivity extends Activity {
 					int position, long id) {
 				Log.i("addGenericAlert", "select");
 				updateLabels();
-				
+
 			}
 
 			public void onNothingSelected(AdapterView arg0) {
 				Log.i("addGenericAlert", "nothing");
 				updateLabels();
-				
+
 			}
 
 		});
@@ -135,14 +139,16 @@ public class AddGenericAlertActivity extends Activity {
 			mType.setSelection(1);
 			// mChannelLink.setText("EHLO CREATOR!");
 			setTitle(R.string.alert_add);
-			
-		} else if (getIntent().getAction().equals(OpenIntents.EDIT_GENERIC_ALERT)) {
+
+		} else if (getIntent().getAction().equals(
+				OpenIntents.EDIT_GENERIC_ALERT)) {
 			mState = STATE_EDIT;
 			setTitle(R.string.alert_edit);
 			cUri = Uri.parse(getIntent().getStringExtra(Alert.EXTRA_URI));
 			Log.v(_TAG, "edit " + cUri);
-			
-			mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null, null);
+
+			mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null,
+					null);
 			cond1Row = mCursor.getColumnIndex(Alert.Generic.CONDITION1);
 			cond2Row = mCursor.getColumnIndex(Alert.Generic.CONDITION2);
 			intentRow = mCursor.getColumnIndex(Alert.Generic.INTENT);
@@ -152,7 +158,7 @@ public class AddGenericAlertActivity extends Activity {
 			typeRow = mCursor.getColumnIndex(Alert.Generic.TYPE);
 			activeRow = mCursor.getColumnIndex(Alert.Generic.ACTIVE);
 			onBootRow = mCursor.getColumnIndex(Alert.Generic.ACTIVATE_ON_BOOT);
-			
+
 			if (mCursor.getCount() > 0) {
 				mCursor.moveToFirst();
 
@@ -161,9 +167,12 @@ public class AddGenericAlertActivity extends Activity {
 				mIntent.setText(mCursor.getString(intentRow));
 				mIntentCat.setText(mCursor.getString(intentCatRow));
 				mIntentUri.setText(mCursor.getString(intentUriRow));
-				mType.setSelection(((ArrayAdapter<String>) mType.getAdapter()).getPosition(mCursor.getString(typeRow)));
-				mActive.setChecked(!mCursor.isNull(activeRow) && mCursor.getInt(activeRow) == 1);
-				mOnBoot.setChecked(!mCursor.isNull(onBootRow) && mCursor.getInt(onBootRow) == 1);
+				mType.setSelection(((ArrayAdapter<String>) mType.getAdapter())
+						.getPosition(mCursor.getString(typeRow)));
+				mActive.setChecked(!mCursor.isNull(activeRow)
+						&& mCursor.getInt(activeRow) == 1);
+				mOnBoot.setChecked(!mCursor.isNull(onBootRow)
+						&& mCursor.getInt(onBootRow) == 1);
 			}
 
 		}
@@ -189,81 +198,76 @@ public class AddGenericAlertActivity extends Activity {
 		cv.put(Alert.Generic.TYPE, sType);
 		cv.put(Alert.Generic.ACTIVE, mActive.isChecked());
 		cv.put(Alert.Generic.ACTIVATE_ON_BOOT, mOnBoot.isChecked());
-		
+
 		cUri = Alert.insert(typedUri, cv);
 		mCursor = managedQuery(cUri, Alert.Generic.PROJECTION, null, null, null);
-		//Issue 113: pick action/location adds alert
-		// only allow to create an alert once, thereafter the state changes to edit.
+		// Issue 113: pick action/location adds alert
+		// only allow to create an alert once, thereafter the state changes to
+		// edit.
 		mState = STATE_EDIT;
 	}
 
 	private void saveDataSet() {
-		Log.d(_TAG, "save dataset now");	
-		
-	//	Log.v(_TAG, "next: " + mCursor.next());
+		Log.d(_TAG, "save dataset now");
+
+		// Log.v(_TAG, "next: " + mCursor.next());
 		Log.v(_TAG, "first: " + mCursor.moveToFirst());
 
 		ContentValues values = new ContentValues();
 
-		CharSequence c=null;
-		String s=new String();
-		//ugly hack following
-		c=mCond1.getText();
-		if (TextUtils.isEmpty(c))
-		{
-			s="";
-		}else{
-			s=c.toString();
+		CharSequence c = null;
+		String s = new String();
+		// ugly hack following
+		c = mCond1.getText();
+		if (TextUtils.isEmpty(c)) {
+			s = "";
+		} else {
+			s = c.toString();
 		}
 		values.put(Generic.CONDITION1, s);
 
-		c=mCond2.getText();
-		if (TextUtils.isEmpty(c))
-		{
-			s="";
-		}else{
-			s=c.toString();
+		c = mCond2.getText();
+		if (TextUtils.isEmpty(c)) {
+			s = "";
+		} else {
+			s = c.toString();
 		}
 
-		Log.d(_TAG,"cond2row set 2 >>"+s+"<<");
+		Log.d(_TAG, "cond2row set 2 >>" + s + "<<");
 		values.put(Generic.CONDITION2, s);
-		
 
-		c=mIntent.getText();
-		if (TextUtils. isEmpty(c))
-		{
-			s="";
-		}else{
-			s=c.toString();
+		c = mIntent.getText();
+		if (TextUtils.isEmpty(c)) {
+			s = "";
+		} else {
+			s = c.toString();
 		}
 
-		values.put(Generic.INTENT, s);		
+		values.put(Generic.INTENT, s);
 
-		c=mIntentCat.getText();
-		if (TextUtils. isEmpty(c))
-		{
-			s="";
-		}else{
-			s=c.toString();
+		c = mIntentCat.getText();
+		if (TextUtils.isEmpty(c)) {
+			s = "";
+		} else {
+			s = c.toString();
 		}
 
 		values.put(Generic.INTENT_CATEGORY, s);
-		
-		c=mIntentUri.getText();
-		if (TextUtils. isEmpty(c))
-		{
-			s="";
-		}else{
-			s=c.toString();
+
+		c = mIntentUri.getText();
+		if (TextUtils.isEmpty(c)) {
+			s = "";
+		} else {
+			s = c.toString();
 		}
 		values.put(Generic.INTENT_URI, s);
-		
+
 		values.put(Generic.TYPE, ((String) mType.getSelectedItem()));
-		
+
 		values.put(Generic.ACTIVE, (mActive.isChecked() ? 1 : 0));
 
 		values.put(Generic.ACTIVATE_ON_BOOT, (mOnBoot.isChecked() ? 1 : 0));
-		
+
 		Uri typedUri;
 		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())) {
 			typedUri = Alert.Location.CONTENT_URI;
@@ -273,12 +277,12 @@ public class AddGenericAlertActivity extends Activity {
 			typedUri = Alert.Generic.CONTENT_URI;
 		}
 		Alert.update(typedUri, values, null, null);
-		
-		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())){		
+
+		if (Alert.TYPE_LOCATION.equals(mType.getSelectedItem())) {
 			ContentValues cv = new ContentValues();
 			cv.put(Location.POSITION, mCond1.getText().toString());
 			cv.put(Location.DISTANCE, mCond2.getText().toString());
-			Alert.registerLocationAlert(cv );
+			Alert.registerLocationAlert(cv);
 		}
 
 	}
@@ -286,50 +290,49 @@ public class AddGenericAlertActivity extends Activity {
 	@Override
 	public void onPause() {
 		super.onPause();
-		Log.d(_TAG,"onPause: state is >>"+mState+"<<");
+		Log.d(_TAG, "onPause: state is >>" + mState + "<<");
 
 		if (mState == STATE_CREATE) {
 			createDataSet();
 		} else if (mState == STATE_EDIT) {
 			saveDataSet();
 		}
-		if (mCursor != null) {
-			mCursor.close();
-		}
+		// don't close cursor, as it is managed.
 
 	}
 
 	@Override
-	public void onResume(){
+	public void onResume() {
 		super.onResume();
-		Log.d(_TAG,"onResume: state is >>"+mState+"<<");
-		
-		if (mState==STATE_EDIT)
-		{
-			Log.d(_TAG,"onResume: Edit State, reqeuiyn cursor>>"+mCursor+"<<");
-			//mCursor.requery();
-			//mCursor.first();
-			Log.d(_TAG,"onResume: Edit State, cursor has >>"+mCursor.getCount()+"<<  rows");
+		Log.d(_TAG, "onResume: state is >>" + mState + "<<");
+
+		if (mState == STATE_EDIT) {
+			Log.d(_TAG, "onResume: Edit State, reqeuiyn cursor>>" + mCursor
+					+ "<<");
+			// mCursor.requery();
+			// mCursor.first();
+			Log.d(_TAG, "onResume: Edit State, cursor has >>"
+					+ mCursor.getCount() + "<<  rows");
 
 		}
-		if (mState==STATE_SUB_CREATE)
-		{
-			mState=STATE_CREATE;
-		}else if (mState==STATE_SUB_EDIT)
-		{
-			mState=STATE_EDIT;
+		if (mState == STATE_SUB_CREATE) {
+			mState = STATE_CREATE;
+		} else if (mState == STATE_SUB_EDIT) {
+			mState = STATE_EDIT;
 		}
 
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, MENU_PICK_LOC, 0, R.string.alert_pick_location);
 		menu.add(0, MENU_PICK_ACTION, 0, R.string.alert_pick_action);
-		//descoped
-		//menu.add(0, MENU_PICK_DATE_TIME, R.string.alert_pick_date_time);
-		
+		menu.add(0, MENU_RECORD_MESSAGE_TO_PLAY, 0,
+				R.string.alert_record_message_to_play);
+		menu.add(0, MENU_FIRE_ALERT, 0, R.string.alert_fire_alert);
+		// descoped
+		// menu.add(0, MENU_PICK_DATE_TIME, 0, R.string.alert_pick_date_time);
+
 		return super.onCreateOptionsMenu(menu);
 	}
 
@@ -343,25 +346,21 @@ public class AddGenericAlertActivity extends Activity {
 		case MENU_PICK_LOC:
 			intent = new Intent(Intent.ACTION_PICK, Locations.CONTENT_URI);
 
-			if (mState==STATE_CREATE)
-			{
-				mState=STATE_SUB_CREATE;
-			}else if (mState==STATE_EDIT)
-			{
-				mState=STATE_SUB_EDIT;
+			if (mState == STATE_CREATE) {
+				mState = STATE_SUB_CREATE;
+			} else if (mState == STATE_EDIT) {
+				mState = STATE_SUB_EDIT;
 			}
-			
+
 			startActivityForResult(intent, REQUEST_PICK_LOC);
 			break;
 		case MENU_PICK_ACTION:
 			intent = new Intent(Intent.ACTION_PICK, Intents.CONTENT_URI);
 			intent.putExtra(Intents.EXTRA_ACTION_LIST, Intent.ACTION_VIEW);
-			if (mState==STATE_CREATE)
-			{
-				mState=STATE_SUB_CREATE;
-			}else if (mState==STATE_EDIT)
-			{
-				mState=STATE_SUB_EDIT;
+			if (mState == STATE_CREATE) {
+				mState = STATE_SUB_CREATE;
+			} else if (mState == STATE_EDIT) {
+				mState = STATE_SUB_EDIT;
 			}
 
 			startActivityForResult(intent, REQUEST_PICK_ACTION);
@@ -369,6 +368,18 @@ public class AddGenericAlertActivity extends Activity {
 		case MENU_PICK_DATE_TIME:
 
 			break;
+		case MENU_RECORD_MESSAGE_TO_PLAY:
+			intent = new Intent(Media.RECORD_SOUND_ACTION);
+			startActivityForResult(intent, REQUEST_RECORD_MESSAGE);
+			break;
+		case MENU_FIRE_ALERT:
+			intent = new Intent();
+			intent.setAction(mIntent.getText().toString());
+			if (!TextUtils.isEmpty(mIntentCat.getText())) {
+				intent.addCategory(mIntentCat.getText().toString());
+			}
+			intent.setData(Uri.parse(mIntentUri.getText().toString()));
+			startActivity(intent);
 		default:
 			result = false;
 		}
@@ -377,19 +388,27 @@ public class AddGenericAlertActivity extends Activity {
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent resultIntent) {
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent resultIntent) {
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
 			case REQUEST_PICK_ACTION:
-				mIntent.setText(resultIntent.getStringExtra(Intents.EXTRA_ACTION));
-				mIntentUri.setText(resultIntent.getStringExtra(Intents.EXTRA_URI));
+				mIntent.setText(resultIntent
+						.getStringExtra(Intents.EXTRA_ACTION));
+				mIntentUri.setText(resultIntent
+						.getStringExtra(Intents.EXTRA_URI));
 				break;
 			case REQUEST_PICK_LOC:
-				mCond1.setText(resultIntent.getStringExtra(Locations.EXTRA_GEO));				
+				mCond1
+						.setText(resultIntent
+								.getStringExtra(Locations.EXTRA_GEO));
 				break;
+			case REQUEST_RECORD_MESSAGE:
+				mIntent.setText(Intent.ACTION_VIEW);
+				mIntentUri.setText(resultIntent.getDataString());
 			}
 		}
-		//Log.v(_TAG, "onActivityResult:requery: " +mCursor.requery());
+		// Log.v(_TAG, "onActivityResult:requery: " +mCursor.requery());
 
 	}
 

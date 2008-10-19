@@ -4,9 +4,12 @@ import org.openintents.provider.Alert;
 
 import android.app.Service;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -74,6 +77,18 @@ public class RegisterAlertsService extends Service implements Runnable {
 			mCursor.moveToFirst();
 			while (!mCursor.isAfterLast()) {
 				mType = mCursor.getString(typeRow);
+				String action = mCursor.getString(intentRow);
+				String category = mCursor.getString(intentCatRow);
+				String uri = mCursor.getString(intentUriRow);
+				
+				// create intent
+				Intent intent = new Intent();
+				intent.setAction(action);
+				if (!TextUtils.isEmpty(category)){
+					intent.addCategory(category);
+				}
+				intent.setData(Uri.parse(uri));
+				
 				if (mType.equals(Alert.TYPE_LOCATION)) {
 					String geo = mCursor.getString(cond1Row);
 					String dist = mCursor.getString(cond2Row);
@@ -83,7 +98,10 @@ public class RegisterAlertsService extends Service implements Runnable {
 					Alert.registerLocationAlert(cv);
 
 				} else if (mType.equals(Alert.TYPE_DATE_TIME)) {
-					// TODO: register timed alerts.
+					String dateTime = mCursor.getString(cond1Row);
+					ContentValues cv = new ContentValues();
+					cv.put(Alert.DateTime.TIME, dateTime);
+					Alert.registerDateTimeAlert(cv);
 				}
 
 				mCursor.moveToNext();

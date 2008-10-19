@@ -16,7 +16,11 @@ package org.openintents.provider;
  * limitations under the License.
  */
 
+import org.openintents.alerts.LocationAlertDispatcher;
+
+import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -413,36 +417,34 @@ public class Alert {
 
 	public static void registerLocationAlert(ContentValues cv) {
 		Uri gUri = null;
-		String distStr = "";
-
-		String geo = "";
 		String loc[] = null;
-
+		String geo = "";
+		String distStr = "";
 		try {
-			gUri = Uri.parse(cv.getAsString(Location.POSITION));
+			gUri = Uri.parse(cv.getAsString(Alert.Location.POSITION));
 			// do this for easier debugging.
-			distStr = cv.getAsString(Location.DISTANCE);
+			distStr = cv.getAsString(Alert.Location.POSITION);
 			float dist = Float.parseFloat(distStr);
-			// float dist=cv.getAsFloat(Location.DISTANCE);
+
 			geo = gUri.getSchemeSpecificPart();
 			loc = geo.split(",");
 			double latitude = Double.parseDouble(loc[0]);
 			double longitude = Double.parseDouble(loc[1]);
 
-			// TODO: find out how to handle this now
-			/*
-			 * PendingIntent i= new PendingIntent();
-			 * //i.setClassName("org.openintents.alert"
-			 * ,"LocationAlertDispatcher");
-			 * i.setAction("org.openintents.action.LOCATION_ALERT_DISPATCH");
-			 * //i.setData(gUri); i.putExtra(Location.POSITION,
-			 * cv.getAsString(Location.POSITION));
-			 * 
-			 * locationManager.addProximityAlert( latitude, longitude, dist,
-			 * LOCATION_EXPIRES, i );
-			 * Log.d(_TAG,"Registerd alert geo:"+geo+" dist:"+dist);
-			 * Log.d(_TAG,"Registered alert intent:" + i);
-			 */
+			Intent i = new Intent();
+			i.setClass(context, LocationAlertDispatcher.class);
+			i.setAction("org.openintents.action.LOCATION_ALERT_DISPATCH");
+			i.setData(gUri);
+			i.putExtra(Location.POSITION, geo);
+
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+					1, i, PendingIntent.FLAG_ONE_SHOT);
+
+			locationManager.addProximityAlert(latitude, longitude, dist,
+					LOCATION_EXPIRES, pendingIntent);
+			Log.d(_TAG, "Registerd alert geo:" + geo + " dist:" + dist);
+			Log.d(_TAG, "Registered alert intent:" + i);
+
 		} catch (ArrayIndexOutOfBoundsException aioe) {
 			Log.e(_TAG, "Error parsing geo uri. not in format geo:lat,long");
 		} catch (NumberFormatException nfe) {
@@ -489,14 +491,14 @@ public class Alert {
 		}
 
 		if (myReoccurence == 0) {
-			// TODO new SDK cancle PendingIntent
-			// alarmManager.set(AlarmManager.RTC,time,i);
+			PendingIntent pi = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_ONE_SHOT);
+			alarmManager.set(AlarmManager.RTC,time,pi);
 			Log.d(_TAG, "registerDateTimeAlert: registerd single @>>" + time
 					+ "<<");
 
 		} else {
-			// TODO new SDK cancle PendingIntent
-			// alarmManager.setRepeating(AlarmManager.RTC,time,myReoccurence,i);
+			PendingIntent pi = PendingIntent.getBroadcast(context, 1, i, PendingIntent.FLAG_ONE_SHOT);
+			alarmManager.setRepeating(AlarmManager.RTC,time,myReoccurence,pi);
 			Log.d(_TAG, "registerDateTimeAlert: registerd reoccuirng @>>"
 					+ time + "<< intervall>>" + myReoccurence + "<<");
 

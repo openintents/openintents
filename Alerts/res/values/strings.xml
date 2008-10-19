@@ -35,5 +35,7 @@
 	<string name="alert_label_condition2">Condition 2</string>
 	<string name="alert_added">Alert has been added.</string>
 	<string name="alert_not_added">Alert could not be added (see log for information).</string>
+	<string name="alert_record_message_to_play">Record message</string>
+	<string name="alert_fire_alert">Fire alert</string>
 	
 </resources> 
