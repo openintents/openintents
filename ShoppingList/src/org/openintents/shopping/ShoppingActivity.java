@@ -18,6 +18,7 @@ package org.openintents.shopping;
 
 import org.openintents.OpenIntents;
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
@@ -736,10 +737,9 @@ public class ShoppingActivity extends Activity { // implements
 				.setIcon(R.drawable.locations_add_alert001a).setShortcut('6',
 						'l');
 
-		/*
-		 * menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
-		 * .setIcon(R.drawable.mobile_shake001a) .setShortcut('0', 's');
-		 */
+		 menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
+		  .setIcon(R.drawable.mobile_shake001a) .setShortcut('0', 's');
+		 
 
 		/*
 		 * menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
@@ -1173,10 +1173,10 @@ public class ShoppingActivity extends Activity { // implements
 	private void deleteList() {
 		String listId = mCursorListFilter.getString(0);
 		// First delete all items in list		
-		getContentResolver().delete(Items.CONTENT_URI, "list_id = " + listId, null);
+		getContentResolver().delete(Contains.CONTENT_URI, "list_id = " + listId, null);
 		
 		// Then delete currently selected list
-		getContentResolver().delete(Lists.CONTENT_URI, "list_id = " + listId, null);
+		getContentResolver().delete(Lists.CONTENT_URI, "_id = " + listId, null);
 
 		// Update view
 		fillListFilter();
