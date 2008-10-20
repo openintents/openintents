@@ -188,8 +188,8 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 
 		// Get a cursor with all content of the selected tag
 		mContentCursor = getContentResolver().query(Tags.CONTENT_URI,
-				new String[] { Tags._ID, Tags.URI_2 }, "content1.uri like ?",
-				new String[] { mTagFilter.getText().toString() },
+				new String[] { Tags._ID, Tags.URI_2 }, "upper(content1.uri) like upper('%" +  mTagFilter.getText().toString()  + "%')",
+				null,
 				"content1.uri");
 		startManagingCursor(mContentCursor);
 
