@@ -333,9 +333,11 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			}
 			if (data != null) {
 				// data is the picked content
+				Log.i(TAG, "pick returned " + data);
 				mTags.startAddTagActivity(tag, data);
 			} else {
 				// pick data was canceled
+				Log.i(TAG, "pick was canceled - no result data.");
 			}
 			break;
 		case REQUEST_TAG_PICK:
