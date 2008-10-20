@@ -700,11 +700,9 @@ public class ShoppingActivity extends Activity { // implements
 		Uri url = ContentUris
 				.withAppendedId(Shopping.Items.CONTENT_URI, itemId);
 
-		// TODO ???
-		/*
-		 * setResult(RESULT_OK, url.toString());
-		 */
-		setResult(RESULT_OK);
+		Intent intent = new Intent();
+		intent.setData(url);
+		setResult(RESULT_OK, intent);
 		finish();
 	}
 
