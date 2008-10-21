@@ -57,6 +57,7 @@
 	<string name="location_alert_added">A location alert has been added for the following location:</string>
 	<string name="pick_location">Pick a location</string>
 	<string name="view_alerts">View list of alerts</string>
+	<string name="locations_not_installed">No application installed for locations.</string>
 	
 	<!-- GTalk related -->
 	<string name="gtalk_invalid_username">Invalid username. Please enter your Gmail or Google apps. username.</string>
@@ -120,6 +121,7 @@
 	<!--  alert related  -->
 	<string name="alert_added">Alert has been added.</string>
 	<string name="alert_not_added">Alert could not be added (see log for information).</string>
+	<string name="alerts_not_installed">No application installed for alerts.</string>
 	
 	<string name="add">Add</string>
 	

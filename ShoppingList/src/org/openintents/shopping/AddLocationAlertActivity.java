@@ -21,6 +21,7 @@ import org.openintents.provider.Tag;
 import org.openintents.provider.Location.Locations;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -120,7 +121,12 @@ public class AddLocationAlertActivity extends Activity
     	Intent intent;
 		
     	intent = new Intent(Intent.ACTION_PICK, Locations.CONTENT_URI);
-		startActivityForResult(intent, REQUEST_PICK_LOC);
+    	try {
+    		startActivityForResult(intent, REQUEST_PICK_LOC);
+    	} catch (ActivityNotFoundException e) {
+    		Toast.makeText(this, R.string.locations_not_installed, Toast.LENGTH_SHORT).show();
+    		Log.e(TAG, "Locations not installed", e);
+    	}
     }
     
     public void addLocationAlert() {
@@ -133,7 +139,12 @@ public class AddLocationAlertActivity extends Activity
     	// View list of alerts
 
     	Intent intent = new Intent(Intent.ACTION_VIEW, Alert.Generic.CONTENT_URI);
-		startActivity(intent);
+		try {
+			startActivity(intent);
+    	} catch (ActivityNotFoundException e) {
+    		Toast.makeText(this, R.string.alerts_not_installed, Toast.LENGTH_SHORT).show();
+    		Log.e(TAG, "Alerts not installed", e);
+    	}
     }
     
     /// TODO: Simply copied this routine from LocationsView.java.
