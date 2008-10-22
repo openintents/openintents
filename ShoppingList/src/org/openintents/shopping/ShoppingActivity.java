@@ -714,14 +714,14 @@ public class ShoppingActivity extends Activity { // implements
 
 		// Standard menu
 		menu.add(0, MENU_NEW_LIST, 0, R.string.new_list).setIcon(
-				R.drawable.shoppinglistnew001b).setShortcut('0', 'n');
+				R.drawable.ic_menu_add_list).setShortcut('0', 'n');
 		menu.add(0, MENU_CLEAN_UP_LIST, 0, R.string.clean_up_list).setIcon(
-				R.drawable.shoppinglistcleanup001b).setShortcut('1', 'c');
+				R.drawable.ic_menu_clean_up).setShortcut('1', 'c');
 		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
-				R.drawable.shoppinglistrename001b).setShortcut('2', 'r');
+				android.R.drawable.ic_menu_edit).setShortcut('2', 'r');
 		;
 		menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list).setIcon(
-				R.drawable.shoppinglistdelete001b).setShortcut('3', 'd');
+				android.R.drawable.ic_menu_delete).setShortcut('3', 'd');
 
 		/*
 		 * menu.add(0, MENU_SHARE, 0, R.string.share)
@@ -729,10 +729,10 @@ public class ShoppingActivity extends Activity { // implements
 		 */
 
 		menu.add(0, MENU_THEME, 0, R.string.theme).setIcon(
-				R.drawable.shoppinglisttheme001a).setShortcut('5', 't');
+				android.R.drawable.ic_menu_manage).setShortcut('5', 't');
 
 		menu.add(0, MENU_ADD_LOCATION_ALERT, 0, R.string.shopping_add_alert)
-				.setIcon(R.drawable.locations_add_alert001a).setShortcut('6',
+				.setIcon(android.R.drawable.ic_menu_mylocation).setShortcut('6',
 						'l');
 
 		/*

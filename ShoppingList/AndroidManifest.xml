@@ -26,13 +26,13 @@
 		<!-- <uses-library android:name="com.google.android.gtalkservice" />   -->
         
 		<provider android:name=".ShoppingProvider"
-			android:icon="@drawable/shoppinglist_application001a"
+			android:icon="@drawable/icon_shoppinglist"
 			android:authorities="org.openintents.shopping" />
 
 		<!-- Shopping activity -->
 		<activity android:name=".ShoppingActivity"
 			android:label="@string/shopping_list" 
-			android:icon="@drawable/shoppinglist_application001a">
+			android:icon="@drawable/icon_shoppinglist">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
