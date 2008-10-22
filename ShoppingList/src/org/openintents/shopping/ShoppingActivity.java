@@ -59,6 +59,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -528,6 +530,7 @@ public class ShoppingActivity extends Activity { // implements
 		mListItems.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
+				Log.i(TAG, "onItemClick: pos = " + pos);
 				Cursor c = (Cursor) parent.getItemAtPosition(pos);
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
@@ -1294,7 +1297,7 @@ public class ShoppingActivity extends Activity { // implements
 				});
 
 		new AlertDialog.Builder(ShoppingActivity.this).setIcon(
-				R.drawable.shoppinglisttheme001a).setTitle(R.string.theme_pick)
+				android.R.drawable.ic_menu_manage).setTitle(R.string.theme_pick)
 				.setView(view).setPositiveButton(R.string.ok,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
@@ -1355,7 +1358,7 @@ public class ShoppingActivity extends Activity { // implements
 			mLinearLayoutBackground.setPadding(0, 0, 0, 0);
 			mLinearLayoutBackground.setBackgroundDrawable(null);
 
-			mMaxListCount = 6;
+			mMaxListCount = 5;
 			mBottomPadding = 50;
 
 			break;
@@ -1902,6 +1905,10 @@ public class ShoppingActivity extends Activity { // implements
 			TextView t = (TextView) view.findViewById(R.id.name);
 			// we have a check box now.. more visual and gets the point across
 			CheckBox c = (CheckBox) view.findViewById(R.id.check);
+			
+			Log.i(TAG, "bindview: pos = " + cursor.getPosition());
+			
+			c.setTag(new Integer(cursor.getPosition()));
 
 			// Set font
 			t.setTypeface(mTypeface);
@@ -1961,6 +1968,34 @@ public class ShoppingActivity extends Activity { // implements
 				}
 
 			}
+			/*
+			c.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					// TODO Auto-generated method stub
+					Log.d(TAG, "check clicked");
+					
+					int pos = (Integer) buttonView.getTag();
+
+					Log.i(TAG, "bindview: move to pos = " + pos);
+					AdapterView av = (AdapterView) buttonView.getParent().getParent();
+					Cursor c = (Cursor) av.getItemAtPosition(pos);
+					
+					if (mState == STATE_PICK_ITEM) {
+						pickItem(c);
+					} else {
+						toggleItemBought(c);
+					}
+					
+				}
+				
+			});
+			*/
+			
+			// The parent view knows how to deal with clicks.
+			// We just pass the click through.
+			c.setClickable(false);
 		}
 
 	}

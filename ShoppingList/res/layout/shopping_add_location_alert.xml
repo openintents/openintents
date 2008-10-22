@@ -28,14 +28,17 @@
 		android:layout_height="wrap_content">
 		
 		<View
-			android:layout_width="35dip"
+			android:layout_width="48dip"
 			android:layout_height="48dip" 				
-			android:background="@drawable/locations_add_alert001a"/>
+			android:background="@android:drawable/ic_menu_mylocation"
+			android:layout_marginLeft="3dip"
+			android:layout_marginRight="1dip" 
+			/>
 		<TextView
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 
 		    android:text="@string/add_location_alert_description"
-		    android:layout_marginTop="10dip"
+		    android:layout_marginTop="2dip"
 			/>
 		
 	</LinearLayout>
@@ -45,8 +48,8 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
 		android:text="@string/pick_location" 
-		android:layout_marginTop="10dip"
-		android:layout_marginBottom="10dip" />
+		android:layout_marginTop="3dip"
+		android:layout_marginBottom="1dip" />
 		<!-- 
 	<Button android:id="@+id/addlocationalert" 
 		android:layout_width="wrap_content"
@@ -68,6 +71,7 @@
 	<Button android:id="@+id/viewalerts" 
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:text="@string/view_alerts" />
+		android:text="@string/view_alerts"
+		android:layout_marginBottom="10dip" />
 		
 </LinearLayout>
