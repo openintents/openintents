@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	* Copyright (C) 2007-2008 OpenIntents.org
+	*
+	* Licensed under the Apache License, Version 2.0 (the "License");
+	* you may not use this file except in compliance with the License.
+	* You may obtain a copy of the License at
+	*
+	*      http://www.apache.org/licenses/LICENSE-2.0
+	*
+	* Unless required by applicable law or agreed to in writing, software
+	* distributed under the License is distributed on an "AS IS" BASIS,
+	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	* See the License for the specific language governing permissions and
+	* limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.openintents.pocketplay">
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+	
+	
+	<!-- required for SplashPlay (error message in SDK 72264) -->
+	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+	
+	<!-- 
+	<instrumentation android:name=".Positron" android:targetPackage="org.openintents" 
+	android:label="@string/oi_acceptancetest"/>
+	 -->
+	 
+	<application android:icon="@drawable/openintents002a" android:label="@string/app_name">
+		<!-- Libraries needed since SDK 72264 -->
+        <uses-library android:name="com.google.android.maps" />
+        <uses-library android:name="com.google.android.gtalkservice" />
+        
+    
+        <activity android:name="EulaActivity" android:label="@string/pocketplay_eula">
+        </activity> 
+        <activity android:name="About" android:label="@string/about_openintents_pocketplay">
+        </activity> 
+
+		<!-- Playlist browser activity -->
+		<activity android:name=".playlists.PlaylistBrowser"
+			android:label="@string/playlist_manager_title" 
+			android:icon="@drawable/mediaplayer_application001a">
+			<intent-filter>
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+				<!--  <category android:name="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.PICK" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/playlists" />
+				<data android:mimeType="vnd.android.cursor.dir/playlist" />
+				<data android:mimeType="vnd.android.cursor.item/playlist" />
+				<data android:mimeType="vnd.android.cursor.dir/video" />
+				<data android:mimeType="vnd.android.cursor.dir/image" />
+			</intent-filter>
+		</activity>
+
+
+		<!-- Playlist Editor activity -->
+		<activity android:name=".playlists.PlaylistEditor"
+			android:label="@string/playlist_manager_title" 
+			android:icon="@drawable/mediaplayer_application001a">
+			<intent-filter>
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+				<!--  <category android:name="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+				<!--  <category android:name="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.EDIT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/playlists" />
+				<data android:mimeType="vnd.android.cursor.dir/playlist" />
+				<data android:mimeType="vnd.android.cursor.item/playlist" />
+			</intent-filter>
+		</activity>
+
+
+		<!-- TrackBrowser activity -->
+		<activity android:name=".playlists.TrackBrowser"
+			android:label="TrackBrowser" 
+			android:icon="@drawable/mediaplayer_application001a">
+			<intent-filter>
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+				<!--  <category android:name="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			<!--	  <category android:name="android.intent.category.LAUNCHER" />   -->
+			</intent-filter>
+			<intent-filter>				
+				<action android:name="android.intent.action.PICK" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/track" />
+				<data android:mimeType="vnd.android.cursor.item/track" />
+				<data android:mimeType="vnd.android.cursor.dir/media" />
+				<data android:mimeType="vnd.android.cursor.item/media" />
+				<data android:mimeType="vnd.android.cursor.dir/audio" />
+
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.GET_CONTENT" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="audio/*" />
+				<data android:mimeType="video/*" />
+				<data android:mimeType="image/*" />
+			</intent-filter>
+		</activity>
+
+
+		<!-- Media Player activity -->
+		<activity android:name=".MediaPlayerActivity"
+			android:label="@string/pocketplay_title" 
+			android:icon="@drawable/mediaplayer_application001a">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.MAIN" />
+				 <category android:name="android.intent.category.LAUNCHER" /> 
+				 
+				 <!--  -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="audio/*" />
+				<data android:mimeType="video/*" />
+				<!--  <data android:mimeType="image/*" />  -->
+				<!--  audio/* contains audio/mpeg, audio/midi, and others -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/playlists" />
+				<data android:mimeType="vnd.android.cursor.dir/playlist" />
+				<data android:mimeType="vnd.android.cursor.item/playlist" />
+			</intent-filter>
+
+		</activity>
+
+		<service android:name=".playback.AudioPlayerService" android:process=":remote">
+		<intent-filter>
+			<!-- These are the interfaces supported by the service, which
+				 you can bind to. -->
+			<action android:name="org.openintents.pocketplay.playback.IAudioPlayerService" />
+			<action android:name="com.example.android.apis.app.ISecondary" />
+			<!-- This is an action code you can use to select the service
+				 without explicitly supplying the implementation class. -->
+			<action android:name="org.openintents.pocketplay.playback.REMOTE_SERVICE" />
+		</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+
+	</service>
+		
+		<service android:name=".playlists.PlaylistGeneratorService" android:process=":remote">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+
+	</service>
+
+		<!-- Settings activity -->
+		<activity android:name=".PocketplaySettings"
+			android:label="@string/pocketplay_title" 
+			android:icon="@drawable/mediaplayer_application001a">
+			<intent-filter>
+				<action android:name="org.openintents.preferences" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.MAIN" />
+				 
+				 <!--  -->
+			</intent-filter>
+		</activity>
+		
+</application>	 
+	
+	
+</manifest>

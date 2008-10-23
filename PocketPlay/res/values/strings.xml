@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ 
+<resources>
+    <!-- Main application  -->
+	<string name="app_name">Open Intents</string>
+	<string name="default_tag">DEFAULT</string>
+	
+	<string name="openintents">OpenIntents</string>
+	<string name="about_openintents">About OpenIntents</string>
+	<string name="about_openintents_pocketplay">About OpenIntents PocketPlay</string>
+	<string name="about">About</string>
+	<string name="about_openintents_text">OpenIntents 
+		defines open intents and interfaces to make Android applications
+		work together.\n\n
+		For more information visit the OpenIntents developer home at \n
+		http://code.google.com/p/openintents/\n\n
+Copyright 2008 OpenIntents.org Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.	</string>
+
+	<string name="action_MAIN">org.openintents.main.OpenIntentsView</string>
+
+	<string name="oi_acceptancetest">Acceptance Test for Open Intents</string>
+	
+	<string name="init_databases">Init default values</string>
+	<string name="init_add_locations">Add default locations</string>
+	<string name="init_add_news_feeds">Add default news feeds</string>	
+	<string name="init_add_all_values">Add all default values</string>
+	<string name="init_done">Values added</string>
+	<string name="init_view_locations">View Locations</string>
+	<string name="init_view_news">View Newsfeeds</string>
+
+	<string name="key">Key</string>
+	<string name="value">Value</string>
+	
+    <!-- Media Browser -->
+    <string name="media_browser">Media browser</string>
+    <string name="internal_content">Internal</string>
+    <string name="external_content">SD card</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="images">Images</string>
+    <string name="media">Media</string>
+    <string name="media_scanner">Media scanner</string>
+    
+    <!-- Media Player -->
+    <string name="media_player">Media player</string>
+    <string name="pick_media_file">Pick a media file</string>
+    <string name="get_content_media_file">Pick a media file (get content)</string>
+    <string name="open_audio">Open audio</string>
+    <string name="open_video">Open video</string>
+    
+	
+	
+	<!-- GTalk related -->
+	<string name="gtalk_invalid_username">Invalid username. Please enter your Gmail or Google apps. username.</string>
+    <string name="gtalk_service_not_connected">GTalk service not connected.</string>
+    <string name="gtalk_session_not_found">The default GTalk session cannot be found.</string>
+    <string name="gtalk_found_stale_service">The GTalk service is stale. Rebinding...</string>
+    
+    <string name="gtalk_not_connected">GTalk service not connected. Please log into GTalk first.</string>
+    
+    <!-- Theme related -->
+    <string name="theme_pick">Pick a theme</string>
+	<string name="theme_description">Choose a theme for this list</string>
+    <string name="theme_default">Default</string>
+    <string name="theme_classic">Classic</string>
+    <string name="theme_bugdroid">Android</string>
+    
+    <!-- Shake control related -->
+    <string name="shake_control">Shake control</string>
+	
+	<!--     Dialog box    -->
+	<string name="cancel">Cancel</string>
+	<string name="ok">OK</string>
+	
+
+		
+    
+    
+    
+	<string name="media_browser_my_songs">My Songs</string>
+	<string name="media_browser_downloads">Downloads</string>
+
+    <!-- Strings that are also in core -->
+    <!-- <string name="about">About</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    -->
+    <!-- PocketPLay Strings -->
+
+	<string name="playlist_manager_title">OpenIntents Playlist Manager</string>
+	<string name="playlist_editor_title">OpenIntents Playlist Editor</string>
+	<string name="pocketplay_title">OpenIntents PocketPlay</string>
+
+
+
+
+	<string name="pocketplay_eula">PocketPlay EULA</string>
+
+<string name="pocketplay_eula_description">
+Copyright 2008 OpenIntents.org Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.	
+
+</string>
+
+
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">No thanks</string>
+
+	<string name="prefs_cat_playlists">Playlist Settings</string>
+	<string name="create_alltracks">Generate "All" Playlist</string>
+	<string name="summary_create_alltracks">Automatically creates a Playlist with all files in it.</string>
+	<string name="load_last_list">Load last Playlist</string>
+	<string name="summary_load_last_list">Reload last used list on Startup</string>
+
+</resources> 
