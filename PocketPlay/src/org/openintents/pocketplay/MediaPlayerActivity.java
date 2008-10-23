@@ -498,6 +498,7 @@ public class MediaPlayerActivity extends Activity implements
 				if (mService!=null &&mService.isPlaying())
 				{
 					Log.d(TAG,"service is playing something");
+					switchToPlayMode();
 				}else if (mService!=null)
 				{
 					Log.d(TAG,"service is idle, looking up last list & starting");
