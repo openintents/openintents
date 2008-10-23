@@ -29,7 +29,7 @@
 		<View
 			android:layout_width="48dip"
 			android:layout_height="48dip" 				
-			android:background="@drawable/contact_share001a"/>
+			android:background="@android:drawable/ic_menu_share"/>
 		<TextView
 		    android:layout_width="wrap_content" 
 		    android:layout_height="wrap_content" 

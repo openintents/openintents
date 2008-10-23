@@ -23,8 +23,8 @@
     <ImageView android:id="@+id/image"
                android:layout_width="12px"
                android:layout_height="12px"
-               android:src="@drawable/openintents_icon"
                android:visibility="gone"/>
+               <!-- android:src="" -->
     <TextView android:id="@+id/image_URI"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"

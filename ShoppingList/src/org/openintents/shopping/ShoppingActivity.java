@@ -560,17 +560,14 @@ public class ShoppingActivity extends Activity { // implements
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenuInfo info) {
 						contextmenu.add(0, MENU_MARK_ITEM, 0,
-								R.string.mark_item).setIcon(
-								R.drawable.shoppinglistcleanup001b)
+								R.string.mark_item)
 								.setShortcut('1', 'm');
 						contextmenu.add(0, MENU_EDIT_ITEM, 0,
-								R.string.edit_item).setIcon(
-								R.drawable.shoppinglistrename001b).setShortcut(
-								'2', 'e');
+								R.string.edit_item)
+								.setShortcut('2', 'e');
 						contextmenu.add(0, MENU_DELETE_ITEM, 0,
-								R.string.delete_item).setIcon(
-								R.drawable.shoppinglistdelete001b).setShortcut(
-								'3', 'd');
+								R.string.delete_item)
+								.setShortcut('3', 'd');
 					}
 
 				});
