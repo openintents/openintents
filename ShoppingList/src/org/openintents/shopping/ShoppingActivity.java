@@ -16,8 +16,12 @@
 
 package org.openintents.shopping;
 
+import java.util.List;
+
 import org.openintents.OpenIntents;
+import org.openintents.provider.Alert;
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Location.Locations;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
@@ -33,6 +37,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -59,8 +65,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -734,9 +738,12 @@ public class ShoppingActivity extends Activity { // implements
 		menu.add(0, MENU_THEME, 0, R.string.theme).setIcon(
 				android.R.drawable.ic_menu_manage).setShortcut('5', 't');
 
-		menu.add(0, MENU_ADD_LOCATION_ALERT, 0, R.string.shopping_add_alert)
-				.setIcon(android.R.drawable.ic_menu_mylocation).setShortcut('6',
-						'l');
+		
+		if (addLocationAlertPossible()) {
+			menu.add(0, MENU_ADD_LOCATION_ALERT, 0, R.string.shopping_add_alert)
+					.setIcon(android.R.drawable.ic_menu_mylocation).setShortcut('6',
+							'l');
+		}
 
 		/*
 		 menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
@@ -764,6 +771,37 @@ public class ShoppingActivity extends Activity { // implements
 		// TODO SDK 0.9???
 		// menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
 		return true;
+	}
+	
+	/**
+	 * Check whether an application exists that handles the pick activity.
+	 * @return
+	 */
+	private boolean addLocationAlertPossible() {
+
+		// Test whether intent exists for picking a location:
+		PackageManager pm = getPackageManager();
+		Intent intent = new Intent(Intent.ACTION_PICK, Locations.CONTENT_URI);
+		List<ResolveInfo> resolve_pick_location = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		/*
+		for (int i = 0; i < resolve_pick_location.size(); i++) {
+			Log.d(TAG, "Activity name: " + resolve_pick_location.get(i).activityInfo.name);
+		}
+		*/
+		
+		// Check whether adding alerts is possible.
+		intent = new Intent(Intent.ACTION_VIEW, Alert.Generic.CONTENT_URI);
+		List<ResolveInfo> resolve_view_alerts = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		
+		boolean pick_location_possible = (resolve_pick_location.size() > 0);
+		boolean view_alerts_possible = (resolve_view_alerts.size() > 0);
+		Log.d(TAG, "Pick location possible: " + pick_location_possible);
+		Log.d(TAG, "View alerts possible: " + view_alerts_possible);
+		if (pick_location_possible && view_alerts_possible) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	@Override
