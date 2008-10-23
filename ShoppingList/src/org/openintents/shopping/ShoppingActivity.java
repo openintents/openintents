@@ -921,7 +921,7 @@ public class ShoppingActivity extends Activity { // implements
 			}
 			break;
 		case MENU_EDIT_ITEM:
-			mDialog.setTitle(getString(R.string.ask_rename_list));
+			mDialog.setTitle(getString(R.string.ask_edit_item));
 
 			// Cursor is supposed to be set to correct row already:
 			et.setText(mCursorItems.getString(mStringItemsITEMNAME));
@@ -1210,7 +1210,8 @@ public class ShoppingActivity extends Activity { // implements
 		long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
 
 		// Delete item
-		getContentResolver().delete(Items.CONTENT_URI, "_id = ?", new String[]{mCursorItems.getString(0)});
+		//getContentResolver().delete(Items.CONTENT_URI, "_id = ?", new String[]{mCursorItems.getString(0)});
+		getContentResolver().delete(Contains.CONTENT_URI, "_id = ?", new String[]{mCursorItems.getString(mStringItemsCONTAINSID)});
 		mCursorItems.requery();
 
 		// If we share items, mark item on other lists:

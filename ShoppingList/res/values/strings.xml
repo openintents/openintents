@@ -26,6 +26,7 @@
 	<string name="delete_list">Delete list</string>
 	<string name="ask_new_list">Enter name of new shopping list</string>
 	<string name="ask_rename_list">Rename shopping list</string>
+	<string name="ask_edit_item">Edit item</string>
 	<string name="please_enter_name">Please enter a name</string>
 	<string name="no_items_marked">No items are marked as crossed out.</string>
 	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
