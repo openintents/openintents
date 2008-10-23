@@ -625,12 +625,15 @@ public class ShoppingActivity extends Activity { // implements
 			// Answer?
 			//http://groups.google.com/group/android-developers/browse_frm/thread
 			// /3b2f4063a2221acb/36462ba1301a18c8
+			/*
 			int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 4;
 			if (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE) {
 				mListItems.setSelection(mListItems.getCount()
 						- NUMBER_OF_ELEMENTS_BELOW_MIDDLE);
 			}
 			;
+			*/
+			mListItems.setSelection(mListItems.getCount() - 1);
 
 			// mListItems.getChildAt(mListItems.getCount()-1).setSelected(true);
 
@@ -1741,6 +1744,8 @@ public class ShoppingActivity extends Activity { // implements
 	 * element will not drop out of the view.
 	 */
 	private void checkListLength() {
+		if (true) return;
+		
 		Log.i(TAG, "checkListLength()");
 		/*
 		 * // Now we check whether we reach the lower border already: int[]
