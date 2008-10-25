@@ -17,24 +17,21 @@ package org.openintents.pocketplay;
  * limitations under the License.
  -->*/
 
-import java.io.IOException;
 import java.text.DecimalFormat;
 
-import org.openintents.pocketplay.R;
-import org.openintents.pocketplay.playback.*;
+import org.openintents.pocketplay.playback.IAudioPlayerCallback;
+import org.openintents.pocketplay.playback.IAudioPlayerService;
 import org.openintents.pocketplay.playlists.PlaylistBrowser;
 import org.openintents.pocketplay.playlists.PlaylistGeneratorService;
 import org.openintents.widget.Slider;
-import org.openintents.widget.Slider.OnPositionChangedListener;
-import org.openintents.widget.textticker.TextTickerView;
 import org.openintents.widget.textticker.AutoTextTickerView;
 
+import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.ContentUris;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 import android.database.Cursor;
 import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
@@ -43,7 +40,11 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
+import android.os.RemoteException;
+import android.provider.MediaStore.Audio.Playlists;
+import android.provider.MediaStore.Audio.PlaylistsColumns;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -53,14 +54,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.app.Activity;
-import android.provider.MediaStore.Audio.*;
-import android.provider.MediaStore.Audio;
 import android.widget.Toast;
-import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.RemoteException;
-import android.os.IBinder;
 
 
 public class MediaPlayerActivity extends Activity implements 
@@ -255,7 +249,9 @@ public class MediaPlayerActivity extends Activity implements
         // Handle the calling intent
         final Intent intent = getIntent();
         String action = intent.getAction();
-		checkEULA();
+        
+		EulaActivity.checkEula(this);
+		
 		Log.d(TAG,"onCREATE: starting Service");
         startService(new Intent(
                     "org.openintents.pocketplay.playback.REMOTE_SERVICE"));
@@ -545,28 +541,6 @@ public class MediaPlayerActivity extends Activity implements
 		}
 		updateDisplay();
 	}
-
-
-	/**
-	 * Test whether EULA has been accepted. Otherwise display EULA.
-	 */
-	private void checkEULA() {
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-		boolean accepted = sp.getBoolean(EulaActivity.PREFERENCES_EULA_ACCEPTED, false);
-		
-		if (accepted) {
-			Log.i(TAG, "Eula has been accepted.");
-		} else {
-			Log.i(TAG, "Eula has not been accepted yet.");
-			Intent i = new Intent(this, EulaActivity.class);
-			startActivity(i);
-			finish();
-		}
-	}
-
-
-
-
 
 
 	/** Sets the media type from an intent. */
