@@ -273,6 +273,10 @@ public class ShoppingActivity extends Activity { // implements
 		super.onCreate(icicle);
 		Log.i(TAG, "Shopping list onCreate()");
 
+		if (!EulaActivity.checkEula(this)) {
+			return;
+		}
+		
 		// setTheme(android.R.style.Theme_White);
 		// setTheme(android.R.style.Theme_Dialog);
 		// setTheme(android.R.style.Theme_Dark);

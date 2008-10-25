@@ -1,4 +1,4 @@
-package org.openintents.pocketplay;
+package org.openintents.shopping;
 
 
 import android.app.Activity;
@@ -42,7 +42,7 @@ public class EulaActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
-		setContentView(R.layout.pocketplay_eula);
+		setContentView(R.layout.eula);
 		
 		// Extras are provided by checkEula() below.
 		Intent i = getIntent();

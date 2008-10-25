@@ -232,7 +232,11 @@ public class MediaPlayerActivity extends Activity implements
         Slider.R.styleable.Slider_background = R.styleable.Slider_background;
         Slider.R.styleable.Slider_knob = R.styleable.Slider_knob;
         */
-        
+
+		if (!EulaActivity.checkEula(this)) {
+			return;
+		}
+		
         setContentView(R.layout.mediaplayer);
         
         mp = null;
@@ -249,8 +253,6 @@ public class MediaPlayerActivity extends Activity implements
         // Handle the calling intent
         final Intent intent = getIntent();
         String action = intent.getAction();
-        
-		EulaActivity.checkEula(this);
 		
 		Log.d(TAG,"onCREATE: starting Service");
         startService(new Intent(

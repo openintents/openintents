@@ -33,7 +33,7 @@
 
 		<!-- Shopping activity -->
 		<activity android:name=".ShoppingActivity"
-			android:label="@string/shopping_list" 
+			android:label="@string/oi_shopping_list" 
 			android:icon="@drawable/icon_shoppinglist">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -138,6 +138,9 @@
          -->
 
 
+        <activity android:name="EulaActivity" android:label="@string/eula_title">
+        </activity> 
+        
 </application>	 
 	
 	
