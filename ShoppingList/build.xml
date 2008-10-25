@@ -207,8 +207,8 @@ storepass=*password of keystore*
 	     <arg value="-keep public class org.openintents.shopping.ShoppingListsActivity"/>
 	     <arg value="-keep public class org.openintents.shopping.share.ListShareSettingsActivity"/>
 	     <arg value="-keep public class org.openintents.shopping.AddLocationAlertActivity"/>
-		 <arg value="-keep public class org.openintents.shopping.EulaActivity"/>
-		 <arg value="-keep public class org.openintents.shopping.AboutActivity"/>
+		 <arg value="-keep public class org.openintents.distribution.EulaActivity"/>
+		 <arg value="-keep public class org.openintents.distribution.AboutActivity"/>
 	    	 <!-- <arg value="-keep public class org.openintents.splashplay.widget.LazyLinearLayout {
 	    	 	public LazyLinearLayout(android.content.Context,android.util.AttributeSet);
 	    		 public LazyLinearLayout(android.content.Context);
