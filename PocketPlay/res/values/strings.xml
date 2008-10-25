@@ -102,9 +102,9 @@ Copyright 2008 OpenIntents.org Licensed under the Apache License, Version 2.0 (t
     -->
     <!-- PocketPLay Strings -->
 
-	<string name="playlist_manager_title">OpenIntents Playlist Manager</string>
-	<string name="playlist_editor_title">OpenIntents Playlist Editor</string>
-	<string name="pocketplay_title">OpenIntents PocketPlay</string>
+	<string name="playlist_manager_title">OI Playlist Manager</string>
+	<string name="playlist_editor_title">OI Playlist Editor</string>
+	<string name="pocketplay_title">OI PocketPlay</string>
 
 
 

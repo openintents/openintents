@@ -41,6 +41,37 @@
         <activity android:name="About" android:label="@string/about_openintents_pocketplay">
         </activity> 
 
+
+		<!-- Media Player activity -->
+		<activity android:name=".MediaPlayerActivity"
+			android:label="@string/pocketplay_title" 
+			android:icon="@drawable/icon_pocketplay">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.MAIN" />
+				 <category android:name="android.intent.category.LAUNCHER" /> 
+				 
+				 <!--  -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="audio/*" />
+				<data android:mimeType="video/*" />
+				<!--  <data android:mimeType="image/*" />  -->
+				<!--  audio/* contains audio/mpeg, audio/midi, and others -->
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/playlists" />
+				<data android:mimeType="vnd.android.cursor.dir/playlist" />
+				<data android:mimeType="vnd.android.cursor.item/playlist" />
+			</intent-filter>
+
+		</activity>
+		
 		<!-- Playlist browser activity -->
 		<activity android:name=".playlists.PlaylistBrowser"
 			android:label="@string/playlist_manager_title" 
@@ -55,7 +86,7 @@
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
 				<category android:name="org.openintents.category.SETTINGS" />
-				<category android:name="android.intent.category.LAUNCHER" />
+				<!-- <category android:name="android.intent.category.LAUNCHER" />  -->
 			</intent-filter>
 			<intent-filter>
 				<action android:name="android.intent.action.PICK" />
@@ -131,36 +162,8 @@
 		</activity>
 
 
-		<!-- Media Player activity -->
-		<activity android:name=".MediaPlayerActivity"
-			android:label="@string/pocketplay_title" 
-			android:icon="@drawable/icon_pocketplay">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="org.openintents.category.MAIN" />
-				 <category android:name="android.intent.category.LAUNCHER" /> 
-				 
-				 <!--  -->
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="audio/*" />
-				<data android:mimeType="video/*" />
-				<!--  <data android:mimeType="image/*" />  -->
-				<!--  audio/* contains audio/mpeg, audio/midi, and others -->
-			</intent-filter>
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<data android:mimeType="vnd.android.cursor.dir/playlists" />
-				<data android:mimeType="vnd.android.cursor.dir/playlist" />
-				<data android:mimeType="vnd.android.cursor.item/playlist" />
-			</intent-filter>
 
-		</activity>
-
+		<!-- Service -->
 		<service android:name=".playback.AudioPlayerService" android:process=":remote">
 		<intent-filter>
 			<!-- These are the interfaces supported by the service, which
