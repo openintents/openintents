@@ -110,6 +110,8 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_SENSOR_SERVICE = Menu.FIRST + 10; // shake
 																	// control
 
+	private static final int MENU_ABOUT = Menu.FIRST + 11;
+
 	// TODO: Implement the following menu items
 	private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
 	private static final int MENU_SORT = Menu.FIRST + 6; // sort alphabetically
@@ -760,6 +762,9 @@ public class ShoppingActivity extends Activity { // implements
 		 * .setShortcut('0', 's'); menu.add(0, MENU_CONNECT_SIMULATOR,
 		 * R.string.connect_to_sensorsimulator) .setShortcut('1', 'c');
 		 */
+		
+		 menu.add(0, MENU_ABOUT, 0, R.string.about)
+		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
 		/*
 		 * // Generate any additional actions that can be performed on the //
@@ -879,6 +884,11 @@ public class ShoppingActivity extends Activity { // implements
 
 		case MENU_SENSOR_SERVICE:
 			//toggleSensorService();
+			return true;
+			
+
+		case MENU_ABOUT:
+			showAboutBox();
 			return true;
 
 			/*
@@ -1534,6 +1544,10 @@ public class ShoppingActivity extends Activity { // implements
 	}
 	*/
 
+	private void showAboutBox() {
+		startActivity(new Intent(this, AboutActivity.class));
+	}
+	
 	// /////////////////////////////////////////////////////
 	//
 	// Helper functions

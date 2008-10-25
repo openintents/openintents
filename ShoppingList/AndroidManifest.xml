@@ -24,7 +24,7 @@
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
 	
 	 
-	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/shopping_list">
+	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/oi_shopping_list">
 		<!-- <uses-library android:name="com.google.android.gtalkservice" />   -->
         
 		<provider android:name=".ShoppingProvider"
@@ -139,6 +139,8 @@
 
 
         <activity android:name="EulaActivity" android:label="@string/eula_title">
+        </activity> 
+        <activity android:name="AboutActivity" android:label="@string/eula_title">
         </activity> 
         
 </application>	 

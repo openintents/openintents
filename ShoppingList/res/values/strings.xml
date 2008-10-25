@@ -127,6 +127,16 @@
 	
 	<string name="add">Add</string>
 	
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="about_title">About %s</string>
+	<string name="about_text">Version %s \n\n
+OpenIntents allows different Android applications 
+to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at 
+www.openintents.org
+	</string>
+	
 	<!-- EULA -->
 	<string name="eula_title">OI Shopping List EULA</string>
 <string name="eula_description">
