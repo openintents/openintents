@@ -19,6 +19,9 @@ package org.openintents.shopping;
 import java.util.List;
 
 import org.openintents.OpenIntents;
+import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.EulaActivity;
+import org.openintents.distribution.Update;
 import org.openintents.provider.Alert;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Location.Locations;
@@ -278,6 +281,7 @@ public class ShoppingActivity extends Activity { // implements
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
+		Update.check(this);
 		
 		// setTheme(android.R.style.Theme_White);
 		// setTheme(android.R.style.Theme_Dialog);

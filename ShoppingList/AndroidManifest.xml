@@ -19,6 +19,9 @@
 	package="org.openintents.shopping"
 	android:versionName="1.0.0"
 	android:versionCode="10000">
+	
+    <!-- required for automatic update -->
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <!-- required for gtalk (shopping list) -->
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
@@ -138,9 +141,9 @@
          -->
 
 
-        <activity android:name="EulaActivity" android:label="@string/eula_title">
+        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
-        <activity android:name="AboutActivity" android:label="@string/eula_title">
+        <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
         </activity> 
         
 </application>	 

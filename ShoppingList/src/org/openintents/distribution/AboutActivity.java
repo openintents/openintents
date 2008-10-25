@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 
-package org.openintents.shopping;
+package org.openintents.distribution;
+
+import org.openintents.shopping.R;
+import org.openintents.shopping.R.id;
+import org.openintents.shopping.R.layout;
+import org.openintents.shopping.R.string;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;

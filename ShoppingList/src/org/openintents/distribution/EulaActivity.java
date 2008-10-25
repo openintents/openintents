@@ -1,5 +1,9 @@
-package org.openintents.shopping;
+package org.openintents.distribution;
 
+
+import org.openintents.shopping.R;
+import org.openintents.shopping.R.id;
+import org.openintents.shopping.R.layout;
 
 import android.app.Activity;
 import android.content.ComponentName;
