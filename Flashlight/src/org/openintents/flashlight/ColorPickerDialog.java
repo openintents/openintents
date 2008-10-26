@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2007-2008 Google Inc.
+/* 
+ * Copyright (C) 2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,22 @@
  * limitations under the License.
  */
 
+/*
+ * Original version: API Demos, Copyright (C) 2007-2008 Google Inc.
+ */
+
 package org.openintents.flashlight;
 
-import android.R;
-import android.os.Bundle;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorMatrix;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 

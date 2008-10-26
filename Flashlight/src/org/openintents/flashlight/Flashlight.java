@@ -1,3 +1,19 @@
+/* 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.flashlight;
 
 import org.openintents.distribution.AboutActivity;
@@ -16,14 +32,14 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-public class Flashlight extends Activity
-	implements ColorPickerDialog.OnColorChangedListener {
+public class Flashlight extends Activity {
 	
 	private static final String TAG = "Flashlight";
 
 	private static final int MENU_COLOR = Menu.FIRST + 1;
 	private static final int MENU_ABOUT = Menu.FIRST + 2;
-	
+
+    private static final int REQUEST_CODE_PICK_COLOR = 1;
 	
 	private LinearLayout mBackground;
 	
@@ -31,7 +47,7 @@ public class Flashlight extends Activity
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mWakeLockLocked = false;
 	
-	private Paint mPaint;
+	private int mColor;
 	
     /** Called when the activity is first created. */
     @Override
@@ -48,17 +64,16 @@ public class Flashlight extends Activity
 		
         setContentView(R.layout.main);
         
+        mColor = 0xffffffff;
+        
         mBackground = (LinearLayout) findViewById(R.id.background);
         
-        mBackground.setBackgroundColor(0xffffffff);
+        mBackground.setBackgroundColor(mColor);
         
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,
 				"Flashlight");
-		
-        mPaint = new Paint();
-        mPaint.setColor(0xffffffff);
     }
     
     
@@ -105,12 +120,9 @@ public class Flashlight extends Activity
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		mPaint.setXfermode(null);
-        mPaint.setAlpha(0xFF);
-
 		switch (item.getItemId()) {
 		case MENU_COLOR:
-            new ColorPickerDialog(this, this, mPaint.getColor()).show();
+            pickColor();
             return true;
         
 		case MENU_ABOUT:
@@ -146,13 +158,27 @@ public class Flashlight extends Activity
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 	
+	private void pickColor() {
+		Intent i = new Intent();
+		i.setAction(ColorPickerActivity.INTENT_PICK_COLOR);
+		i.putExtra(ColorPickerActivity.EXTRA_COLOR, mColor);
+		startActivityForResult(i, REQUEST_CODE_PICK_COLOR);
+	}
+	
 	/////////////////////////////////////////////////////
 	// Color changed listener:
 	
-    public void colorChanged(int color) {
-        mPaint.setColor(color);
-
-        mBackground.setBackgroundColor(color);
-    }
+    @Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		switch(requestCode) {
+		case REQUEST_CODE_PICK_COLOR:
+			if (resultCode == RESULT_OK) {
+				mColor = data.getIntExtra(ColorPickerActivity.EXTRA_COLOR, mColor);
+		        mBackground.setBackgroundColor(mColor);
+			}
+			break;
+		}
+	}
 	
 }

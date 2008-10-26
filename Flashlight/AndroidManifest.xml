@@ -18,6 +18,14 @@
             </intent-filter>
         </activity>
         
+        <activity android:name=".ColorPickerActivity"
+                  android:label="@string/color_picker">
+            <intent-filter>
+                <action android:name="org.openintents.action.PICK_COLOR" />
+				<category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
         <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
