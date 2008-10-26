@@ -12,15 +12,22 @@
 	    android:layout_height="0dip"
 	    android:layout_weight="1"
 	    />
+	<org.openintents.widget.ColorSlider
+			android:id="@+id/saturation" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_gravity="center"
+			/>
 	<org.openintents.widget.ColorCircle
 			android:id="@+id/colorcircle" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
 			android:layout_gravity="center"
+			android:layout_marginLeft="10dip"
 			android:layout_marginRight="10dip"
 			/>
 	<org.openintents.widget.ColorSlider
-			android:id="@+id/saturation" 
+			android:id="@+id/value" 
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
 			android:layout_gravity="center"

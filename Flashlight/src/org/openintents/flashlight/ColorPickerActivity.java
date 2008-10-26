@@ -22,6 +22,7 @@ import org.openintents.widget.OnColorChangedListener;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
@@ -33,10 +34,9 @@ public class ColorPickerActivity extends Activity
 
 	ColorCircle mColorCircle;
 	ColorSlider mSaturation;
+	ColorSlider mValue;
 	
 	Intent mIntent;
-	
-	int mColor;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,25 +51,40 @@ public class ColorPickerActivity extends Activity
         	mIntent = new Intent();
         }
         
-        mColor = mIntent.getIntExtra(EXTRA_COLOR, 0);
+        int color = mIntent.getIntExtra(EXTRA_COLOR, 0);
         
         mColorCircle = (ColorCircle) findViewById(R.id.colorcircle);
-        
         mColorCircle.setOnColorChangedListener(this);
-        mColorCircle.setColor(mColor);
+        mColorCircle.setColor(color);
         
         mSaturation = (ColorSlider) findViewById(R.id.saturation);
-        
         mSaturation.setOnColorChangedListener(this);
-		mSaturation.setColors(0xFFFFFFFF, mColor);
+		mSaturation.setColors(color, 0xff000000);
+
+        mValue = (ColorSlider) findViewById(R.id.value);
+        mValue.setOnColorChangedListener(this);
+		mValue.setColors(0xFFFFFFFF, color);
         
 	}
 
+	public int toGray(int color) {
+		int a = Color.alpha(color);
+		int r = Color.red(color);
+		int g = Color.green(color);
+		int b = Color.blue(color);
+		int gray = (r + g + b) / 3;
+		return Color.argb(a, gray, gray, gray);
+	}
+	
 	@Override
 	public void onColorChanged(View view, int newColor) {
 		if (view == mColorCircle) {
-			mSaturation.setColors(0xFFFFFFFF, newColor);
+			mValue.setColors(0xFFFFFFFF, newColor);
+	        mSaturation.setColors(newColor, 0xff000000);
 		} else if (view == mSaturation) {
+			mColorCircle.setColor(newColor);
+			mValue.setColors(0xFFFFFFFF, newColor);
+		} else if (view == mValue) {
 			mColorCircle.setColor(newColor);
 		}
 		
