@@ -61,6 +61,7 @@ storepass=*password of keystore*
 	</condition>
 		
 	<property name="docdir" value="doc" />
+	<property name="releasedir" value="release" />
     
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
@@ -100,6 +101,13 @@ storepass=*password of keystore*
 	<condition property="out-signed-package-ospath"
 	            value="${basedir}\${out-signed-package}"
 	            else="${basedir}/${out-signed-package}" >
+	        <os family="windows"/>
+	</condition>
+
+	<property name="out-release-source" value="${releasedir}/${ant.project.name}-source-${version}" />
+	<condition property="out-release-source-ospath"
+	            value="${basedir}\${out-release-source}"
+	            else="${basedir}/${out-release-source}" >
 	        <os family="windows"/>
 	</condition>
 	
@@ -189,16 +197,17 @@ storepass=*password of keystore*
 	
 
 	  <target name="optimize" depends="compile"> <!-- unless="debug" -->
-	    <jar basedir="${outdir-classes}" destfile="temp.jar"/>
+	  	<mkdir dir="tmp" />
+	  	<jar basedir="${outdir-classes}" destfile="tmp/temp.jar"/>
 	    <java jar="${proguard.jar}" fork="true" failonerror="true">
 	     <!-- <jvmarg value="-Dmaximum.inlined.code.length=32"/> -->
-	     <arg value="-injars temp.jar"/>
-	     <arg value="-outjars optimized.jar"/>
+	     <arg value="-injars tmp/temp.jar"/>
+	     <arg value="-outjars tmp/optimized.jar"/>
 	     <arg value="-libraryjars '${android-jar}'"/>
 	     <!-- <arg value="-dontpreverify"/> -->
 	     <!-- <arg value="-dontobfuscate"/> -->
-	     <arg value="-printmapping obfuscated.txt"/>
-	     <arg value="-printusage obfuscated_deadcode.txt"/>
+	     <arg value="-printmapping tmp/obfuscated.txt"/>
+	     <arg value="-printusage tmp/obfuscated_deadcode.txt"/>
 	     <arg value="-dontusemixedcaseclassnames"/>
 	     <arg value="-dontoptimize"/>
 	     <arg value="-dontshrink"/>
@@ -217,11 +226,11 @@ storepass=*password of keystore*
 	     <!-- <arg value="-overloadaggressively"/> -->
 	     <arg value="-verbose"/>
 	   </java>
-	   <delete file="temp.jar"/>
+	   <delete file="tmp/temp.jar"/>
 	   <delete dir="${outdir-classes}"/>
 	   <mkdir dir="${outdir-classes}"/>
-	   <unzip src="optimized.jar" dest="${outdir-classes}"/>
-	   <!-- <delete file="optimized.jar"/> -->
+	   <unzip src="tmp/optimized.jar" dest="${outdir-classes}"/>
+	   <delete file="tmp/optimized.jar"/>
 	  </target>
 
 
@@ -376,7 +385,28 @@ storepass=*password of keystore*
         	source="1.6" sourcepath="${srcdir}" splitindex="true" use="true" version="true">
         </javadoc>
     </target>
-		
+
+	<!-- ############### Release source ####################### -->
+	<!-- Copy to source release -->
+	<target name="release-source">
+    	<delete dir="${releasedir}"/>
+        <mkdir dir="${releasedir}" />
+		<copy todir="${out-release-source-ospath}">
+			<fileset dir=".">
+				<exclude name="**/bin/**" />
+				<exclude name="**/doc/**" />
+				<exclude name="**/release/**" />
+				<exclude name="**/tmp/**" />
+				<exclude name="**/.svn" />
+				<exclude name="**/build-private.properties" />
+			</fileset>
+		</copy>
+		<zip destfile="${out-release-source-ospath}.zip">
+			<zipfileset dir="${out-release-source-ospath}" prefix="${ant.project.name}-source-${version}"/>
+		</zip>
+		<delete dir="${out-release-source-ospath}"/>
+    </target>
+	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
 		depends="debug, javadoc" />
