@@ -61,7 +61,7 @@ storepass=*password of keystore*
 	</condition>
 		
 	<property name="docdir" value="doc" />
-	<property name="sourcezipdir" value="sourcezip" />
+	<property name="releasedir" value="release" />
     
     <!-- Create R.java in the source directory -->
     <property name="outdir-r" value="src" />
@@ -104,10 +104,10 @@ storepass=*password of keystore*
 	        <os family="windows"/>
 	</condition>
 	
-	<property name="out-sourcezip" value="${sourcezipdir}/${ant.project.name}-${version}" />
-	<condition property="out-sourcezip-ospath"
-	            value="${basedir}\${out-sourcezip}"
-	            else="${basedir}/${out-sourcezip}" >
+	<property name="out-release-source" value="${releasedir}/${ant.project.name}-source-${version}" />
+	<condition property="out-release-source-ospath"
+	            value="${basedir}\${out-release-source}"
+	            else="${basedir}/${out-release-source}" >
 	        <os family="windows"/>
 	</condition>
 	
@@ -387,25 +387,25 @@ storepass=*password of keystore*
         </javadoc>
     </target>
 	
-	<!-- ############### Source zip ####################### -->
+	<!-- ############### Release source ####################### -->
 	<!-- Copy to source release -->
-	<target name="sourcezip">
-    	<delete dir="${sourcezipdir}"/>
-        <mkdir dir="${sourcezipdir}" />
-		<copy todir="${out-sourcezip-ospath}">
+	<target name="release-source">
+    	<delete dir="${releasedir}"/>
+        <mkdir dir="${releasedir}" />
+		<copy todir="${out-release-source-ospath}">
 			<fileset dir=".">
 				<exclude name="**/bin/**" />
 				<exclude name="**/doc/**" />
-				<exclude name="**/sourcezip/**" />
+				<exclude name="**/release/**" />
 				<exclude name="**/tmp/**" />
 				<exclude name="**/.svn" />
 				<exclude name="**/build-private.properties" />
 			</fileset>
 		</copy>
-		<zip destfile="${out-sourcezip-ospath}.zip">
-			<zipfileset dir="${out-sourcezip-ospath}" prefix="${ant.project.name}-${version}"/>
+		<zip destfile="${out-release-source-ospath}.zip">
+			<zipfileset dir="${out-release-source-ospath}" prefix="${ant.project.name}-source-${version}"/>
 		</zip>
-		<delete dir="${out-sourcezip-ospath}"/>
+		<delete dir="${out-release-source-ospath}"/>
     </target>
 		
 	<!-- ############ Convencience target ############## -->
