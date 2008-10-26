@@ -17,6 +17,13 @@
 			android:layout_width="wrap_content" 
 			android:layout_height="wrap_content" 
 			android:layout_gravity="center"
+			android:layout_marginRight="10dip"
+			/>
+	<org.openintents.widget.ColorSlider
+			android:id="@+id/saturation" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_gravity="center"
 			/>
 	<LinearLayout
 	    android:orientation="vertical"

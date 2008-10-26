@@ -19,21 +19,20 @@ package org.openintents.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
-import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * ColorCircle.
+ * BrightnessSlider.
  * 
  * @author Peli, based on API demo code.
  * 
  */
-public class ColorCircle extends View {
+public class ColorSlider extends View {
 
 	/** Default widget width */
 	public int defaultWidth;
@@ -42,13 +41,12 @@ public class ColorCircle extends View {
 	public int defaultHeight;
 	
     private Paint mPaint;
-    private Paint mCenterPaint;
-    private int[] mColors;
+    private int mColor1;
+    private int mColor2;
     private OnColorChangedListener mListener;
     
-    private static final int CENTER_X = 100;
-    private static final int CENTER_Y = 100;
-    private static final int CENTER_RADIUS = 32;
+    private static final int WIDTH = 40;
+    private static final int HEIGHT = 200;
 
 	/**
 	 * Constructor. This version is only needed for instantiating the object
@@ -56,7 +54,7 @@ public class ColorCircle extends View {
 	 * 
 	 * @param context
 	 */
-	public ColorCircle(Context context) {
+	public ColorSlider(Context context) {
 		super(context);
 		init();
 	}
@@ -70,7 +68,7 @@ public class ColorCircle extends View {
 	 * @see android.view.View#View(android.content.Context,
 	 *      android.util.AttributeSet, java.util.Map)
 	 */
-	public ColorCircle(Context context, AttributeSet attrs) {
+	public ColorSlider(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO what happens with inflateParams
 		init();
@@ -80,52 +78,22 @@ public class ColorCircle extends View {
 	 * Initializes variables.
 	 */
 	void init() {
-		defaultWidth = CENTER_X * 2;
-		defaultHeight = CENTER_Y * 2;
+		defaultWidth = WIDTH;
+		defaultHeight = HEIGHT;
 		
-        mColors = new int[] {
-            0xFFFF0000, 0xFFFF00FF, 0xFF0000FF, 0xFF00FFFF, 0xFF00FF00,
-            0xFFFFFF00, 0xFFFF0000
-        };
-        Shader s = new SweepGradient(0, 0, mColors, null);
-        
+		mColor1 = 0xFFFFFFFF;
+		mColor2 = 0xFF000000;
+		Shader s = new LinearGradient(0, 0, 0, HEIGHT, mColor1, mColor2, Shader.TileMode.CLAMP);
+		
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setShader(s);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStyle(Paint.Style.FILL);
         mPaint.setStrokeWidth(32);
-        
-        mCenterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mCenterPaint.setStrokeWidth(5);
 	}
-    
-    private boolean mTrackingCenter;
-    private boolean mHighlightCenter;
 
     @Override 
     protected void onDraw(Canvas canvas) {
-        float r = CENTER_X - mPaint.getStrokeWidth()*0.5f;
-        
-        canvas.translate(CENTER_X, CENTER_X);
-        
-        canvas.drawOval(new RectF(-r, -r, r, r), mPaint);            
-        canvas.drawCircle(0, 0, CENTER_RADIUS, mCenterPaint);
-        
-        if (mTrackingCenter) {
-            int c = mCenterPaint.getColor();
-            mCenterPaint.setStyle(Paint.Style.STROKE);
-            
-            if (mHighlightCenter) {
-                mCenterPaint.setAlpha(0xFF);
-            } else {
-                mCenterPaint.setAlpha(0x80);
-            }
-            canvas.drawCircle(0, 0,
-                              CENTER_RADIUS + mCenterPaint.getStrokeWidth(),
-                              mCenterPaint);
-            
-            mCenterPaint.setStyle(Paint.Style.FILL);
-            mCenterPaint.setColor(c);
-        }
+    	canvas.drawRect(0, 0, WIDTH, HEIGHT, mPaint);
     }
     
 
@@ -192,8 +160,13 @@ public class ColorCircle extends View {
 		return result;
 	}
     
-	public void setColor(int color) {
-        mCenterPaint.setColor(color);
+	public void setColors(int color1, int color2) {
+		mColor1 = color1;
+		mColor2 = color2;
+
+		Shader s = new LinearGradient(0, 0, 0, HEIGHT, mColor1, mColor2, Shader.TileMode.CLAMP);
+        mPaint.setShader(s);
+        
         invalidate();
 	}
 
@@ -205,22 +178,20 @@ public class ColorCircle extends View {
     private int ave(int s, int d, float p) {
         return s + java.lang.Math.round(p * (d - s));
     }
-    
-    private int interpColor(int colors[], float unit) {
+
+    private int interpColor(int color1, int color2, float unit) {
         if (unit <= 0) {
-            return colors[0];
+            return color1;
         }
         if (unit >= 1) {
-            return colors[colors.length - 1];
+            return color2;
         }
         
-        float p = unit * (colors.length - 1);
-        int i = (int)p;
-        p -= i;
+        float p = unit;
 
         // now p is just the fractional part [0...1) and i is the index
-        int c0 = colors[i];
-        int c1 = colors[i+1];
+        int c0 = color1;
+        int c1 = color2;
         int a = ave(Color.alpha(c0), Color.alpha(c1), p);
         int r = ave(Color.red(c0), Color.red(c1), p);
         int g = ave(Color.green(c0), Color.green(c1), p);
@@ -228,55 +199,27 @@ public class ColorCircle extends View {
         
         return Color.argb(a, r, g, b);
     }
-    
-    private static final float PI = 3.1415926f;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX() - CENTER_X;
-        float y = event.getY() - CENTER_Y;
-        boolean inCenter = java.lang.Math.sqrt(x*x + y*y) <= CENTER_RADIUS;
+        float x = event.getX();
+        float y = event.getY();
         
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                mTrackingCenter = inCenter;
-                if (inCenter) {
-                    mHighlightCenter = true;
-                    invalidate();
-                    break;
-                }
             case MotionEvent.ACTION_MOVE:
-                if (mTrackingCenter) {
-                    if (mHighlightCenter != inCenter) {
-                        mHighlightCenter = inCenter;
-                        invalidate();
-                    }
-                } else {
-                    float angle = (float)java.lang.Math.atan2(y, x);
-                    // need to turn angle [-PI ... PI] into unit [0....1]
-                    float unit = angle/(2*PI);
-                    if (unit < 0) {
-                        unit += 1;
-                    }
-                    int newcolor = interpColor(mColors, unit);
-                    mCenterPaint.setColor(newcolor);
+            	
+            	float unit = (float) y / ((float) HEIGHT); 
+            	
+                int newcolor = interpColor(mColor1, mColor2, unit);
 
-                	if (mListener != null) {
-                		mListener.onColorChanged(this, newcolor);
-                	}
-                    invalidate();
-                }
+            	if (mListener != null) {
+            		mListener.onColorChanged(this, newcolor);
+            	}
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
-                if (mTrackingCenter) {
-                    if (inCenter) {
-                    	if (mListener != null) {
-                    		mListener.onColorPicked(this, mCenterPaint.getColor());
-                    	}
-                    }
-                    mTrackingCenter = false;    // so we draw w/o halo
-                    invalidate();
-                }
+                
                 break;
         }
         return true;
