@@ -7,6 +7,7 @@ import org.openintents.distribution.Update;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.util.Log;
@@ -15,11 +16,13 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.LinearLayout;
 
-public class Flashlight extends Activity {
+public class Flashlight extends Activity
+	implements ColorPickerDialog.OnColorChangedListener {
 	
 	private static final String TAG = "Flashlight";
 
-	private static final int MENU_ABOUT = Menu.FIRST + 1;
+	private static final int MENU_COLOR = Menu.FIRST + 1;
+	private static final int MENU_ABOUT = Menu.FIRST + 2;
 	
 	
 	private LinearLayout mBackground;
@@ -27,6 +30,8 @@ public class Flashlight extends Activity {
 
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mWakeLockLocked = false;
+	
+	private Paint mPaint;
 	
     /** Called when the activity is first created. */
     @Override
@@ -51,6 +56,9 @@ public class Flashlight extends Activity {
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,
 				"Flashlight");
+		
+        mPaint = new Paint();
+        mPaint.setColor(0xffffffff);
     }
     
     
@@ -79,7 +87,10 @@ public class Flashlight extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		 menu.add(0, MENU_ABOUT, 0, R.string.about)
+        menu.add(0, MENU_COLOR, 0,R.string.color)
+		  .setIcon(android.R.drawable.ic_menu_manage).setShortcut('3', 'c');
+        
+		menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
 		return true;
@@ -94,7 +105,14 @@ public class Flashlight extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		mPaint.setXfermode(null);
+        mPaint.setAlpha(0xFF);
+
 		switch (item.getItemId()) {
+		case MENU_COLOR:
+            new ColorPickerDialog(this, this, mPaint.getColor()).show();
+            return true;
+        
 		case MENU_ABOUT:
 			showAboutBox();
 			return true;
@@ -128,5 +146,13 @@ public class Flashlight extends Activity {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 	
+	/////////////////////////////////////////////////////
+	// Color changed listener:
+	
+    public void colorChanged(int color) {
+        mPaint.setColor(color);
+
+        mBackground.setBackgroundColor(color);
+    }
 	
 }

@@ -5,6 +5,9 @@
     <string name="flashlight_info">The backlight stays turned on.</string>
     
     
+    <string name="color">Color</string>
+    
+    
 	<!-- Update -->
 	<string name="update_available">A new version of OI Flashlight is available.\n%s\nWould you like to upgrade?</string>
 	<string name="market_not_available">Android Market not available.</string>
