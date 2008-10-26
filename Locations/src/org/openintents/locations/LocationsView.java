@@ -17,6 +17,7 @@
 package org.openintents.locations;
 
 import java.util.List;
+import java.util.Date;
 
 import org.openintents.OpenIntents;
 import org.openintents.provider.Alert;
@@ -35,6 +36,7 @@ import android.database.Cursor;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.location.Criteria;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -310,6 +312,48 @@ public class LocationsView extends Activity {
 
 		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		if (locationManager != null) {
+
+			long now=System.currentTimeMillis();
+			long before=now - 5*60*1000; //5 minutes in milliseconds
+
+			Criteria c = new Criteria();
+			c.setAccuracy(Criteria.ACCURACY_FINE);
+			String provider = locationManager.getBestProvider(c, true); 
+			Log.d(TAG, "requesting location provider '"
+					+ provider + "'");
+			LocationProvider locationProvider = locationManager
+					.getProvider(provider);
+			Log.v(TAG, "using location provider '"
+					+ locationProvider.getName() + "'");
+			Location location = locationManager
+					.getLastKnownLocation(locationProvider.getName());
+
+			Date d1=new Date(location.getTime());
+			Date d2=new Date(now);
+			Log.d(TAG,"location time>"+d1.toString()+"< now>"+d2.toString()+"<");
+			if (location.getTime()<before)
+			{
+					Log.v(TAG,"location is out of date, retry!");
+					c.setAccuracy(Criteria.ACCURACY_COARSE);
+					provider = locationManager.getBestProvider(c, true); 
+					Log.d(TAG, "retry, requesting location provider '"
+							+ provider + "'");
+					locationProvider = locationManager
+							.getProvider(provider);
+					Log.v(TAG, "using location provider '"
+							+ locationProvider.getName() + "'");
+					location = locationManager
+							.getLastKnownLocation(locationProvider.getName());
+
+					d1=new Date(location.getTime());
+					d2=new Date(now);
+					Log.d(TAG,"location time>"+d1.toString()+"< now>"+d2.toString()+"<");
+
+			}
+
+			return location;
+
+			/*
 			List<String> providers = locationManager.getProviders(true);
 			if (providers != null && providers.size() > 0) {
 				LocationProvider locationProvider = locationManager
@@ -325,6 +369,7 @@ public class LocationsView extends Activity {
 				return null;
 
 			}
+			*/
 		} else {
 
 			Log.v(TAG, "no location provider found." + locationManager);
