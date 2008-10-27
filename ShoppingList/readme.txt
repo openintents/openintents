@@ -20,7 +20,14 @@ lists or party guest lists.
 
 To obtain the current release, visit
   http://www.openintents.org
-  
+
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2008-10-27
+
+- fix bug with resources when uploading to Android Market
+
 ---------------------------------------------------------
 release: 1.0.0
 date: 2008-10-25
