@@ -33,6 +33,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -45,6 +46,9 @@ import android.net.Uri;
 import android.provider.MediaStore.Audio.*;
 import android.provider.MediaStore.Audio;
 import android.content.ContentValues;
+
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 
 import java.util.HashMap;
 
@@ -108,6 +112,9 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 
 		engine=new MediaPlayerEngine(this);
 		engine.setPlayerEngineListener(this);
+
+		registerPhoneListener();		
+
 	}
 
     @Override
@@ -115,10 +122,18 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
         // Select the interface to return.  If your service only implements
         // a single interface, you can just return it here without checking
         // the Intent.
-
+		registerPhoneListener();
         return mBinder;
     }
 
+
+	private void registerPhoneListener(){
+		Log.d(TAG,"REGISTERING TELEPHONY LISTENER");
+
+		TelephonyManager tm=(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+		tm.listen(new CallHandler(),CallHandler.LISTEN_CALL_STATE);
+
+	}
 
     /**
      * The IRemoteInterface is defined through IDL
@@ -522,6 +537,69 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 		
     } 
+
+	private boolean iwant2resume=false;
+
+	private class CallHandler extends PhoneStateListener	{
+
+		
+		public void onCallStateChanged(int state,String incomingNumber){
+                 Log.v(TAG, "onCallStateChanged(), Incoming Number: " +incomingNumber);
+
+                super.onCallStateChanged(state, incomingNumber);
+
+				try
+				{
+					
+
+                switch (state) {
+				// user hangup call
+                case TelephonyManager.CALL_STATE_IDLE:
+                        Log.i(TAG, "CALL_STATE_IDLE");
+						if (AudioPlayerService.this.iwant2resume)
+						{
+							AudioPlayerService.this.mBinder.play();
+						}
+                        break;
+                case TelephonyManager.CALL_STATE_OFFHOOK:
+				// user pickup call
+                        Log.i(TAG, "CALL_STATE_OFFHOOK");
+						if (AudioPlayerService.this.mBinder.isPlaying())
+						{
+							AudioPlayerService.this.iwant2resume=true;
+							AudioPlayerService.this.mBinder.pause();
+						}else{
+							AudioPlayerService.this.iwant2resume=false;
+						}
+                        break;
+                case TelephonyManager.CALL_STATE_RINGING:
+				// imcoming call
+                        Log.i(TAG, "CALL_STATE_RINGING");
+						if (AudioPlayerService.this.mBinder.isPlaying())
+						{
+							AudioPlayerService.this.iwant2resume=true;
+							AudioPlayerService.this.mBinder.pause();
+						}else{
+							AudioPlayerService.this.iwant2resume=false;
+						}
+						break;
+                default:
+                        Log.w(TAG, "unknown call state: " + state);
+                } 
+
+
+				}
+				catch (android.os.RemoteException re)
+				{//this should never happen.
+					Log.e(TAG,"REMOTE EXCEPTION HERE? why?");
+					re.printStackTrace();
+				}
+
+		}
+
+
+
+	};
 
 }
 

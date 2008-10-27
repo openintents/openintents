@@ -38,14 +38,14 @@
 
 
 
-		<LinearLayout
+		<RelativeLayout
 			android:id="@+id/info"
 			android:orientation="horizontal"
 			android:layout_centerVertical="true"
 			android:layout_alignParentRight="true"
 			android:background="#fff"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="260dip"
+			android:layout_height="60dip"
 			android:visibility="visible"
 			android:layout_weight="1" >
  	
@@ -55,26 +55,45 @@
 				android:id="@+id/listpos"
 				android:layout_width="30dip"
 				android:layout_height="wrap_content"
-				android:layout_gravity="left"
+				android:layout_alignParentLeft="true"
+				android:layout_centerVertical="true"
 				android:text="#00"
 
 				/>
-			<org.openintents.widget.textticker.AutoTextTickerView
+			<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_centerHorizontal="true"
+			android:layout_alignParentTop="true"
+
+			>
+			<TextView
 				android:id="@+id/name_field"
 				android:layout_width="180dip"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
+				android:gravity="center"
 				/>
+			<TextView
+				android:id="@+id/title_field"
+				android:layout_width="180dip"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:background="#0ff"
+
+				/>
+			</LinearLayout>
 			<TextView
 				android:textSize="20dp"
 				android:textColor="#000"
 				android:id="@+id/position" 
 				android:layout_width="wrap_content" 
 				android:layout_height="wrap_content" 
-				android:layout_gravity="right"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
 				/>
 
-			</LinearLayout>
+			</RelativeLayout>
 		
 
 <!--
@@ -120,7 +139,7 @@
 			android:layout_width="wrap_content" 
 			android:layout_centerHorizontal="true"
 			android:layout_below="@id/upright_song"
-			android:background="@drawable/up_right"
+			android:background="@drawable/grey_up_right"
 			android:layout_marginBottom="10dip"
 			android:layout_marginTop="8dip"
 

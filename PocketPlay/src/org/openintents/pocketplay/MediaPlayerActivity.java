@@ -22,6 +22,7 @@ import java.text.DecimalFormat;
 import org.openintents.pocketplay.playback.IAudioPlayerCallback;
 import org.openintents.pocketplay.playback.IAudioPlayerService;
 import org.openintents.pocketplay.playlists.PlaylistBrowser;
+import org.openintents.pocketplay.playlists.TrackInfoEditor;
 import org.openintents.pocketplay.playlists.PlaylistGeneratorService;
 import org.openintents.widget.Slider;
 import org.openintents.widget.textticker.AutoTextTickerView;
@@ -201,7 +202,8 @@ public class MediaPlayerActivity extends Activity implements
 	 * Info layout shows song name, artist, album, etc.
 	 */
 	private LinearLayout mInfoView;
-	private AutoTextTickerView mNameField;
+	private TextView mNameField;
+	private TextView mTitleField;
 	private TextView mPlaylistPos;
 	
 	private AutoTextTickerView mDownLeftSong;
@@ -383,14 +385,30 @@ public class MediaPlayerActivity extends Activity implements
 		});
 
 
+		mTrackInfo.setOnClickListener(new View.OnClickListener(){
+			public void onClick(View view){
+				
+				Intent intent=new Intent();
+				intent.setAction(Intent.ACTION_EDIT);
+				intent.setData(mURI);
+				intent.setClass(MediaPlayerActivity.this,TrackInfoEditor.class);
+				startActivity(intent);						
+			}
+		});
+
         mPositionText = (TextView) findViewById(R.id.position); 
         mPositionText.setText("00:00");
         //mPositionText.setTextColor(0xff000088);
         
-        mNameField = (AutoTextTickerView) findViewById(R.id.name_field); 
+        mNameField = (TextView) findViewById(R.id.name_field); 
         mNameField.setText("");
         mNameField.setTextSize(20);
-        mNameField.setLines(1);
+        
+
+        mTitleField = (TextView) findViewById(R.id.title_field); 
+        mTitleField.setText("");
+        mTitleField.setTextSize(20);
+
 
 		mListPosition=(TextView) findViewById(R.id.listpos);
 		mListPosition.setText("");
@@ -746,7 +764,8 @@ public class MediaPlayerActivity extends Activity implements
 			setTitle(mCurrentPlaylist + " : " + mCurrentTitle);
 			
 			// Set information in info view:
-			mNameField.setText(mCurrentArtist+" - "+ mCurrentTitle);
+			mNameField.setText(mCurrentArtist);
+			mTitleField.setText(mCurrentTitle);
 			//humans love 1 based indeces ;)
 			mListPosition.setText(String.valueOf(mPlaylistPosition+1));
 
@@ -1211,6 +1230,7 @@ public class MediaPlayerActivity extends Activity implements
 
 						mPlaylistCursor.moveToPosition(playlistPosition);
 					}
+					mURI=Uri.parse(args[0]);
 					mCurrentArtist=args[1];
 					mCurrentTitle=args[2];
 					mCurrentPlaylist=args[3];
