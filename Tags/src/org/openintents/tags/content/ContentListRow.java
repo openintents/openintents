@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openintents.provider.ContentIndex;
 import org.openintents.provider.Tag;
+import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 import org.openintents.tags.R;
 
@@ -14,6 +15,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
+import android.graphics.Path.FillType;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
@@ -149,12 +151,12 @@ public class ContentListRow extends RelativeLayout {
 	protected void deleteRow() {
 		mHide = true;
 		if (getContext() instanceof ContentBrowserView) {
-			((ContentBrowserView) getContext()).delete(mUri);
+			((ContentBrowserView) getContext()).delete(mUri);			
 		}
 	}
 
 	public void bindCursor(Cursor cursor) {
-		mUri = cursor.getString(cursor.getColumnIndex(Tags.URI_2));
+		mUri = cursor.getString(cursor.getColumnIndex(Contents.URI));
 		updateContentFrom(mUri);
 	}
 

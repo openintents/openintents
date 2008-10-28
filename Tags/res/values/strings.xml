@@ -43,29 +43,6 @@
 	<string name="init_view_locations">View Locations</string>
 	<string name="init_view_news">View Newsfeeds</string>
 
-	<!-- Location Provider -->
-	<string name="list_of_locations">List of locations</string>
-	<string name="add_current_location">Add curr. loc.</string>
-	<string name="view_location">View</string>
-	<string name="list_is_empty">(end of list)</string>
-	<string name="locations_map">Map</string>
-	<string name="tag_location">Tag location</string>
-	<string name="delete_location">Delete loc.</string>
-	<string name="locations_manage_extras">Manage extras</string>
-	<string name="locations_delete_extra">Delete</string>
-	<string name="locations_add_extra">Add</string>
-	<string name="locations_use_center">Use center as new coord.</string>
-	<string name="locations_restore_values">Restore values</string>
-	<string name="locations_about">About Location Map View</string>
-	<string name="locations_about_text">Location Map View uses 3rd party data and imagery \n\n
-	Copyright Notice: Data: (c)2007 TeleAtlas, AND, Europa Technologies,
-Kingway, Map Data Sciences Pty Ltd, PSMA, ZENRIN, Geocentre,
-MapLink/TeleAtlas; Imagery: (c)2007 DigitalGlobe, EarthSat, Sanborn, NYGIS,
-Scankort, TerraMetrics, MassGIS Commonwealth of Massachusetts, Digital
-Earth Technology.
-	</string>
-	<string name="key">Key</string>
-	<string name="value">Value</string>
 	
 	<!--   Tags Provider   -->
 	<string name="list_of_tags">List of tags</string>
@@ -75,7 +52,8 @@ Earth Technology.
 	<string name="add_tag">Add new tag/content</string>
 	<string name="tag_all">ALL</string>
 	<string name="tags_add_any_tag">add new tag (advanced)</string>
-	<string name="tags_unique">unique tag</string>
+	<string name="tag">Tag</string>
+	<string name="tags_unique">Unique tag</string>
 	<string name="tags_security">Content is secured, privileges has not been granted.</string>
 	<string name="tags_unparsable_uri">Content URI could not be parsed</string>
 	<string name="tags_unknown_content">Content type is unknown, add package information using menu "packages".</string>
@@ -104,7 +82,7 @@ Earth Technology.
 	<string name="nothing_found">Nothing found (%s)</string>
 	
     <string name="menu_package_add">Import</string>
-    <string name="menu_package_del">Unregister</string>
+    <string name="menu_package_del">Unregister %s</string>
     <string name="menu_package_list">Content types</string>
     <string name="label_packages">Content types (%s)</string>
     <string name="label_packages_pick">Content types (%s) - Pick a type</string>
@@ -116,7 +94,7 @@ Earth Technology.
     <string name="dialog_title_package_add">Import</string>
     <string name="dialog_message_package_add">Loading...</string>
     <string name="dialog_title_package_del">Unregister</string>
-    <string name="dialog_message_package_del">Are you sure?</string>
+    <string name="dialog_message_package_del">Are you sure to unregister type '%s' as taggable content?</string>
     
     <string name="tags_cloud">Tag Cloud</string>
 	<string name="tags_cloud_pick">Tag Cloud - Pick a tag</string>    
@@ -131,23 +109,9 @@ Earth Technology.
 	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
 	
-	<!--  alert related  -->
-	<string name="alert_edit">Edit alert</string>
-	<string name="alert_add">Add alert</string>
-	<string name="add_alert">add alert</string>
-	<string name="alert_pick_location">pick location</string>
-	<string name="alert_pick_action">pick action</string>
-	<string name="alert_pick_date_time">pick date/time</string>
-	<string name="alert_label_location">Location (geo:x,y)</string>
-	<string name="alert_label_range">Range (m)</string>
-	<string name="alert_label_date_time">Date/time</string>
-	<string name="alert_label_unused">Unused</string>
-	<string name="alert_label_condition1">Condition 1</string>
-	<string name="alert_label_condition2">Condition 2</string>
-	<string name="alert_added">Alert has been added.</string>
-	<string name="alert_not_added">Alert could not be added (see log for information).</string>
 	
 	<string name="new_item">New item</string>
 	
+	<string name="no_pick_activitiy">no pick activity available</string>
 	
 </resources> 

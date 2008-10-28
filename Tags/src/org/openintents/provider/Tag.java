@@ -150,6 +150,8 @@ public class Tag {
 
 		public static final String QUERY_BY_TYPE = "byType";
 
+		public static final String QUERY_WITH_TAG = "withTag";
+
 	}
 
 	private static final String TAG = "Tag.java";

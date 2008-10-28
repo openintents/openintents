@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import org.openintents.provider.Tag;
 import org.openintents.provider.ContentIndex.Dir;
+import org.openintents.provider.Tag.Contents;
 import org.openintents.provider.Tag.Tags;
 import org.openintents.tags.R;
 
@@ -174,9 +175,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		while (c.moveToNext()) {
 			list.add(c.getString(1));
 		}
+		Log.v(TAG, "list = " + list.size());
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, list);
-		adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+				android.R.layout.simple_dropdown_item_1line, list);
+		
 		mTagFilter.setAdapter(adapter);
 
 	}
@@ -187,10 +189,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	private void fillDataTaggedContent() {
 
 		// Get a cursor with all content of the selected tag
-		mContentCursor = getContentResolver().query(Tags.CONTENT_URI,
-				new String[] { Tags._ID, Tags.URI_2 }, "upper(content1.uri) like upper('%" +  mTagFilter.getText().toString()  + "%')",
-				null,
-				"content1.uri");
+		Uri uri = Contents.CONTENT_URI.buildUpon().appendQueryParameter(Contents.QUERY_WITH_TAG, mTagFilter.getText().toString()).build();
+		mContentCursor = getContentResolver().query(uri,
+				new String[] { Contents._ID, Contents.URI}, null, null,				
+				null);
 		startManagingCursor(mContentCursor);
 
 		ListAdapter result;
@@ -219,12 +221,10 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		super.onCreateOptionsMenu(menu);
 		menu
 				.add(0, MENU_ADD_TAG, 0, R.string.tags_add_tag).setIcon(
-						R.drawable.tag_add001a);
-		menu.add(0, MENU_ADD_ANY_TAG, 0, R.string.tags_add_any_tag).setIcon(
-				R.drawable.tag_add001a);
+						android.R.drawable.ic_menu_add);
 
 		menu.add(0, MENU_PACKAGES, 0, R.string.menu_package_list).setIcon(
-				R.drawable.tagging_packages001a);
+				android.R.drawable.ic_menu_info_details);
 
 		return true;
 	}
@@ -357,8 +357,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 		Resources res = getResources();
 		try {
 			r.fromXML(res.openRawResource(R.raw.browser));
-			r.fromXML(res.openRawResource(R.raw.contacts));
-			r.fromXML(res.openRawResource(R.raw.notepad));
+			r.fromXML(res.openRawResource(R.raw.contacts));			
 			r.fromXML(res.openRawResource(R.raw.media));
 			r.fromXML(res.openRawResource(R.raw.shopping));
 			r.fromXML(res.openRawResource(R.raw.location));
@@ -370,6 +369,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 	public void delete(String uri) {
 		Log.i("contentbrowser", "delete tags " + uri);
 		mTags.removeAllTags(uri);
+		fillDataTaggedContent();
 
 	}
 }

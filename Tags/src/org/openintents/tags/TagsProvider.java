@@ -124,8 +124,18 @@ public class TagsProvider extends ContentProvider {
 		case CONTENTS:
 
 			qb.setProjectionMap(CONTENT_PROJECTION_MAP);
-			qb.setTables("content");
 			qb.setDistinct(url.getQueryParameter(Tags.DISTINCT) != null);
+			
+			String tag = url.getQueryParameter(Contents.QUERY_WITH_TAG);
+			if (tag != null){
+				qb.setTables("content content2");
+				selection = "exists(select '' from tag, content content1 where upper(content1.uri) like upper('%" +  tag  + "%') and tag.tag_id = content1._id AND "
+					+ "tag.content_id = content2._id)";
+				selectionArgs = null;
+			} else {
+				qb.setTables("content");
+
+			}
 			defaultOrderBy = Contents.DEFAULT_SORT_ORDER;
 			break;
 

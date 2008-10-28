@@ -168,7 +168,8 @@ public class TagsAddView extends Activity {
 				if (getPackageManager().resolveActivity(intent, 0) != null) {
 					startActivity(intent);
 				} else {
-					new AlertDialog.Builder(TagsAddView.this).setTitle("info").setMessage("content can not be shown").show();
+					new AlertDialog.Builder(TagsAddView.this).setTitle("info")
+							.setMessage("content can not be shown").show();
 				}
 			}
 
@@ -194,8 +195,8 @@ public class TagsAddView extends Activity {
 
 		/*
 		 * SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-		 * android.R.layout.simple_list_item_1, c, new String[] { Contents.URI },
-		 * new int[] { android.R.id.text1 });
+		 * android.R.layout.simple_list_item_1, c, new String[] { Contents.URI
+		 * }, new int[] { android.R.id.text1 });
 		 */
 		TagsCursorAdapter adapter = new TagsCursorAdapter(c, this);
 		mTagFilter.setAdapter(adapter);
@@ -250,23 +251,19 @@ public class TagsAddView extends Activity {
 
 			LayoutInflater inf = (LayoutInflater) context
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			View rowView = inf.inflate(android.R.layout.simple_list_item_1,
-					null);
+			View rowView = inf.inflate(
+					android.R.layout.simple_dropdown_item_1line, null);
 
 			TextView view = (TextView) rowView.findViewById(android.R.id.text1);
-			
-			// TODO????
-			// view.setText(cursor, column_Contents_URI);
-			view.setText("TODO: SDK 0.9 issue");
+
+			view.setText(cursor.getString(column_Contents_URI));
+
 			return view;
 		}
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
-			// TODO????
-			//((TextView) view).setText(cursor, column_Contents_URI);
-			((TextView) view).setText("TODO: SDK 0.9 issue");
-			
+			((TextView) view).setText(cursor.getString(column_Contents_URI));
 		}
 
 		@Override
@@ -340,8 +337,8 @@ public class TagsAddView extends Activity {
 	 * super.onActivityResult(requestCode, resultCode, data, bundle);
 	 * 
 	 * switch (requestCode) { case REQUEST_DIR_PICK: if (data != null) { // data
-	 * is the picked content directory Uri uri = Uri.parse(data); Intent intent =
-	 * new Intent(Intent.PICK_ACTION, uri); if
+	 * is the picked content directory Uri uri = Uri.parse(data); Intent intent
+	 * = new Intent(Intent.PICK_ACTION, uri); if
 	 * (getPackageManager().resolveActivity(intent, 0) != null) {
 	 * startSubActivity(intent, REQUEST_CONTENT_PICK); } else {
 	 * AlertDialog.show(this, "info", 0, "no pick activity for " + data, "ok",

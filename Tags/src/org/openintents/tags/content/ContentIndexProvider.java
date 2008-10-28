@@ -2,7 +2,6 @@ package org.openintents.tags.content;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.openintents.provider.ContentIndex;
 import org.openintents.provider.ContentIndex.Dir;
@@ -22,9 +21,9 @@ import android.util.Log;
 
 public class ContentIndexProvider extends android.content.ContentProvider {
 
-	private static final String TAG = "Tables";
+	private static final String TAG = "ContentIndexProvider";
 
-	static final String DATABASE_NAME = "deepdroid.db";
+	static final String DATABASE_NAME = "tags.db";
 
 	private static final int DATABASE_VERSION = 33;
 
@@ -35,7 +34,6 @@ public class ContentIndexProvider extends android.content.ContentProvider {
 	private static final int DIRECTORY = 2;
 	private static final int INDEX_ENTRIES = 3;
 
-	private static final Map<String, String> DIRECTORY_PROJECTION_MAP = null;
 
 	static class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -59,6 +57,7 @@ public class ContentIndexProvider extends android.content.ContentProvider {
 			dirs.append("time_column TEXT,");
 			dirs.append("intent_uri TEXT,");
 			dirs.append("intent_action TEXT,");
+			dirs.append("flags INTEGER,");
 			dirs.append("refreshed LONG,");
 			dirs.append("updated LONG);");
 			db.execSQL(dirs.toString());

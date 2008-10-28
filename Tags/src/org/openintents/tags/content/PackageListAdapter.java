@@ -1,5 +1,7 @@
 package org.openintents.tags.content;
 
+import org.openintents.provider.ContentIndex;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
@@ -16,7 +18,16 @@ public class PackageListAdapter extends CursorAdapter implements Filterable {
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		PackageListRow row = (PackageListRow) view;
-		row.bindCursor(cursor);
+
+		final String packageName = cursor.getString(cursor
+				.getColumnIndexOrThrow(ContentIndex.Dir.PACKAGE));
+		String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+		// data is the picked content directory
+		final String data = cursor.getString(cursor
+				.getColumnIndexOrThrow(ContentIndex.Dir.URI));
+		int flags = cursor.getInt(cursor
+				.getColumnIndexOrThrow(ContentIndex.Dir.FLAGS));
+		row.bind(packageName, name , data, flags);
 	}
 
 	@Override

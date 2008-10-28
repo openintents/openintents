@@ -32,7 +32,6 @@ public class ContentIndex {
 		public static final String BODY_SPLIT = "\t";
 
 	}
-	
 
 	public static final class Dir implements BaseColumns {
 		/**
@@ -48,14 +47,21 @@ public class ContentIndex {
 
 		public static final String PACKAGE = "package";
 		public static final String URI = "uri";
-		private static final String NAME = "name";
+		public static final String NAME = "name";
+		public static final String FLAGS = "flags";
 
 		public static final String[] PROJECTION_PACKAGENAMES = new String[] {
-				_ID, PACKAGE, URI, NAME };
+				_ID, PACKAGE, URI, NAME, FLAGS };
 
 	}
 
 	public static final String QUERY_CONTENT_BODY_URI = "contentBodyUri";
+
+	public static final int FLAG_NO_PICK = 1;
+
+	public static final int FLAG_PICK_CHECKED = 2;
+
+	public static final int FLAG_APP_MISSING = 128;
 
 	public static final class ContentBody {
 
@@ -78,13 +84,13 @@ public class ContentIndex {
 	 * @return
 	 */
 	public Cursor getContentBody(Uri uri) {
-		Uri entryUri = Entry.CONTENT_URI.buildUpon().appendQueryParameter(QUERY_CONTENT_BODY_URI, uri
-				.toString()).build();
+		Uri entryUri = Entry.CONTENT_URI.buildUpon().appendQueryParameter(
+				QUERY_CONTENT_BODY_URI, uri.toString()).build();
 		return mResolver.query(entryUri, null, null, null, null);
 	}
 
 	public final int updateDirectory(Directory directory) {
-		Uri uri = ContentUris.withAppendedId( Dir.CONTENT_URI,directory.id);
+		Uri uri = ContentUris.withAppendedId(Dir.CONTENT_URI, directory.id);
 		return mResolver.update(uri, ContentIndexProvider
 				.getContentValues(directory), null, null);
 	}
@@ -103,21 +109,28 @@ public class ContentIndex {
 	}
 
 	/**
-	 * deletes the package with the given name
+	 * deletes the package with the given uri
 	 * 
-	 * @param packageName
+	 * @param uriData
 	 * @return
 	 */
-	public final int deletePackage(String packageName) {
+	public final int deleteContentType(String uriData) {
 		Uri uri = Dir.CONTENT_URI;
-		return mResolver.delete(uri, Dir.PACKAGE + " = ?",
-				new String[] { packageName });
+		return mResolver.delete(uri, Dir.URI + " = ?",
+				new String[] { uriData });
 	}
 
 	public final Cursor getPackageNames() {
 		Uri uri = Dir.CONTENT_URI;
-		return mResolver.query(uri, Dir.PROJECTION_PACKAGENAMES, null, null,
+		return mResolver.query(uri, Dir.PROJECTION_PACKAGENAMES, Dir.FLAGS + " is null or "  + Dir.FLAGS + " < " + ContentIndex.FLAG_APP_MISSING, null,
 				null);
+	}
+
+	public int deletePackage(String package_name) {
+		Uri uri = Dir.CONTENT_URI;
+		return mResolver.delete(uri, Dir.PACKAGE + " = ?",
+				new String[] { package_name });
+		
 	}
 
 }
