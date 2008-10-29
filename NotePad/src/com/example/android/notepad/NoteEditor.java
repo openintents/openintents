@@ -130,6 +130,7 @@ public class NoteEditor extends Activity {
             mState = STATE_INSERT;
             mUri = getContentResolver().insert(intent.getData(), null);
             intent.setAction(Intent.ACTION_EDIT);
+            intent.setData(mUri);
             setIntent(intent);
 
             // If we were unable to create a new note, then just finish
