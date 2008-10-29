@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -72,7 +73,19 @@ public class NotesList extends ListActivity {
         }
 
         // Inform the list we provide context menus for items
+        setContentView(R.layout.noteslist);
         getListView().setOnCreateContextMenuListener(this);
+        getListView().setEmptyView(findViewById(R.id.empty));
+        
+        Button b = (Button) findViewById(R.id.add);
+        b.setOnClickListener(new Button.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				insertNewNote();
+			}
+        	
+        });
         
         // Perform a managed query. The Activity will handle closing and requerying the cursor
         // when needed.
@@ -147,12 +160,19 @@ public class NotesList extends ListActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case MENU_ITEM_INSERT:
-            // Launch activity to insert a new item
-            startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+            insertNewNote();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+	/**
+	 * Launch activity to insert a new item.
+	 */
+	private void insertNewNote() {
+		// Launch activity to insert a new item
+		startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+	}
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {

@@ -20,7 +20,7 @@
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
     <string name="menu_discard">Discard</string>
-	<string name="no_notes">Use menu to add new notes.</string>
+	<!-- <string name="no_notes">Use menu to add new notes.</string>  -->
 
     <string name="resolve_edit">Edit note</string>
     <string name="resolve_title">Edit title</string>  
@@ -37,4 +37,5 @@
 	
 	<string name="error_title">Error</string>
 	<string name="error_message">Error loading note</string>
+	<string name="no_notes">Note list is empty.</string>
 </resources>
