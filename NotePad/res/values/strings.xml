@@ -39,7 +39,40 @@
 	<string name="error_message">Error loading note</string>
 	<!-- <string name="no_notes">Note list is empty.</string>  -->
 	
-	<string name="menu_send_by_email">Send by email</string>
+	<string name="menu_send_by_email">Send</string>
 	<string name="empty_note">Empty note</string>
-	<string name="email_not_available">Email client not available</string>
+	<string name="email_not_available">No application available for sending.</string>
+	
+	
+	<!-- Update -->
+	<string name="update_available">A new version of OI Notepad is available.\n%s\nWould you like to upgrade?</string>
+	<string name="market_not_available">Android Market not available.</string>
+	<string name="market_search_term">OI Notepad</string>
+
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="about_title">About %s</string>
+	<string name="about_text">Version %s \n\n
+The OpenIntents Notepad is based on Google\'s open source sample application Notepad 
+that is provided with the Android SDK. 
+OI Notepad allows to create, edit, and delete notes.\n
+	
+OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Notepad EULA</string>
+<string name="eula_description">
+"This application is based on Google\'s  open source sample application Notepad that is provided with the Android SDK, licensed under the Apache License, Version 2.0.\n\n
+* * * * *\n\n
+Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+	
 </resources>

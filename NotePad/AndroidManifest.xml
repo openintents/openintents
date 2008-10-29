@@ -15,7 +15,7 @@
  * limitations under the License.
  -->
  
-<!-- Version 0.0.2: Modifications by OpenIntents: see NoteEditor.java -->
+<!-- Version 1.0.0: Modifications by OpenIntents: see NoteEditor.java -->
 
 <!-- Declare the contents of this Android application.  The namespace
      attribute brings in the Android platform namespace, and the package
@@ -24,8 +24,8 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.notepad"
-	android:versionName="0.0.2"
-	android:versionCode="2"
+	android:versionName="1.0.0"
+	android:versionCode="10000"
 	>
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
@@ -102,6 +102,11 @@
             </intent-filter>
         </activity>
          -->
+         
+        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
+        </activity> 
+        <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
+        </activity> 
         
     </application>
 </manifest>
