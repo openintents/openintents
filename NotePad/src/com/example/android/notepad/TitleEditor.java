@@ -78,7 +78,7 @@ public class TitleEditor extends Activity implements View.OnClickListener {
 
         // Set up click handlers for the text field and button
         mText = (EditText) this.findViewById(R.id.title);
-        mText.setOnClickListener(this);
+        //mText.setOnClickListener(this);
         
         Button b = (Button) findViewById(R.id.ok);
         b.setOnClickListener(this);
