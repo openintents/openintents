@@ -38,4 +38,8 @@
 	<string name="error_title">Error</string>
 	<string name="error_message">Error loading note</string>
 	<string name="no_notes">Note list is empty.</string>
+	
+	<string name="menu_send_by_email">Send by email</string>
+	<string name="empty_note">Empty note</string>
+	<string name="email_not_available">Email client not available</string>
 </resources>

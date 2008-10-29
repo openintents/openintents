@@ -17,6 +17,7 @@
 package com.example.android.notepad;
 
 import android.app.ListActivity;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Intent;
@@ -33,6 +34,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.example.android.notepad.NotePad.Notes;
 
@@ -47,6 +49,7 @@ public class NotesList extends ListActivity {
     // Menu item ids
     public static final int MENU_ITEM_DELETE = Menu.FIRST;
     public static final int MENU_ITEM_INSERT = Menu.FIRST + 1;
+    public static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 
     /**
      * The columns we are interested in from the database
@@ -195,6 +198,9 @@ public class NotesList extends ListActivity {
 
         // Add a menu item to delete the note
         menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
+        
+        // Add a menu item to send the note
+        menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
     }
         
     @Override
@@ -214,10 +220,48 @@ public class NotesList extends ListActivity {
                 getContentResolver().delete(noteUri, null, null);
                 return true;
             }
+            case MENU_ITEM_SEND_BY_EMAIL: 
+            	sendNoteByEmail(info.id);
+            	return true;
         }
         return false;
     }
 
+    private void sendNoteByEmail(long  id) {
+        // Delete the note that the context menu is for
+        Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+        //getContentResolver().(noteUri, null, null);
+        
+        Cursor c = getContentResolver().query(noteUri, new String[]{NotePad.Notes.TITLE, NotePad.Notes.NOTE}, null, null,
+                Notes.DEFAULT_SORT_ORDER);
+        
+        String title = "";
+        String content = getString(R.string.empty_note);
+        if (c != null) {
+        	c.moveToFirst();
+        	title = c.getString(0);
+        	content = c.getString(1);
+        }
+        
+        Log.i(TAG, "Title to send: " + title);
+        Log.i(TAG, "Content to send: " + content);
+        
+        Intent i = new Intent();
+        i.setAction(Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(Intent.EXTRA_SUBJECT, title);
+        i.putExtra(Intent.EXTRA_TEXT, content);
+        
+        try {
+        	startActivity(i);
+        } catch (ActivityNotFoundException e) {
+			Toast.makeText(this,
+					R.string.email_not_available,
+					Toast.LENGTH_SHORT).show();
+			Log.e(TAG, "Email client not installed");
+        }
+    }
+    
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
