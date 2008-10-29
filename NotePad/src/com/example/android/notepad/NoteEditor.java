@@ -235,16 +235,21 @@ public class NoteEditor extends Activity {
 
                     // If we are creating a new note, then we want to also create
                     // an initial title for it.
-                    if (mState == STATE_INSERT) {
+                    //if (mState == STATE_INSERT) {
                         String title = text.substring(0, Math.min(30, length));
-                        if (length > 30) {
+                        // Break at newline:
+                        int firstNewline = title.indexOf('\n');
+                        if (firstNewline > 0) {
+                            title = title.substring(0, firstNewline);
+                        } else if (length > 30) {
+	                        // Break at space
                             int lastSpace = title.lastIndexOf(' ');
                             if (lastSpace > 0) {
                                 title = title.substring(0, lastSpace);
                             }
                         }
-                        values.put(Notes.TITLE, title);
-                    }
+	                    values.put(Notes.TITLE, title);
+                    //}
                 }
 
                 // Write our text back into the provider.
