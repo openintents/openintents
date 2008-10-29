@@ -23,13 +23,14 @@ import org.openintents.distribution.Update;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 
 public class Flashlight extends Activity {
@@ -49,6 +50,11 @@ public class Flashlight extends Activity {
 	
 	private int mColor;
 	
+	private int mUserBrightness;
+	
+	/** Not valid value of brightness */
+	private static final int NOT_VALID = -1;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +68,9 @@ public class Flashlight extends Activity {
 		// Turn off the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.main);
         
         mColor = 0xffffffff;
@@ -72,8 +81,12 @@ public class Flashlight extends Activity {
         
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK,
+		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
+				| PowerManager.ACQUIRE_CAUSES_WAKEUP
+				| PowerManager.ON_AFTER_RELEASE,
 				"Flashlight");
+		
+		mUserBrightness = NOT_VALID;
     }
     
     
@@ -142,6 +155,13 @@ public class Flashlight extends Activity {
 			Log.d(TAG, "WakeLock: locking");
 			mWakeLock.acquire();
 			mWakeLockLocked = true;
+			
+			// set screen brightness
+			mUserBrightness = Settings.System.getInt(getContentResolver(), 
+						Settings.System.SCREEN_BRIGHTNESS, NOT_VALID);
+			
+			Settings.System.putInt(getContentResolver(), 
+					Settings.System.SCREEN_BRIGHTNESS, 255);
 		}
 	}
 
@@ -150,6 +170,12 @@ public class Flashlight extends Activity {
 			Log.d(TAG, "WakeLock: unlocking");
 			mWakeLock.release();
 			mWakeLockLocked = false;
+			
+			// Unset screen brightness
+			if (mUserBrightness != NOT_VALID) {
+				Settings.System.putInt(getContentResolver(), 
+						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
+			}
 		}
 	}
 	

@@ -4,7 +4,11 @@
       android:versionCode="10000"
       android:versionName="1.0.0">
       
+    <!-- required to keep the backlight turned on -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    <!-- required to adjust the brightness -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
     
     <!-- required for automatic update -->
     <uses-permission android:name="android.permission.INTERNET"/>
