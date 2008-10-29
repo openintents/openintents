@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+/*
+ * Version 0.0.2: Modifications by OpenIntents:
+ *                * Make new note persistent when orientation changes.
+ *                * Make first line default title and remove title editor.
+ */
+
 package com.example.android.notepad;
 
 import com.example.android.notepad.NotePad.Notes;

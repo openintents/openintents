@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
+ 
+<!-- Version 0.0.2: Modifications by OpenIntents: see NoteEditor.java -->
 
 <!-- Declare the contents of this Android application.  The namespace
      attribute brings in the Android platform namespace, and the package
@@ -22,8 +24,8 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.notepad"
-	android:versionName="0.0.1"
-	android:versionCode="1"
+	android:versionName="0.0.2"
+	android:versionCode="2"
 	>
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
