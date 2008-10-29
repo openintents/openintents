@@ -19,7 +19,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent">
-    
+    <!-- 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent" 
@@ -32,7 +32,8 @@
             android:layout_gravity="center" />
             
     </LinearLayout>
-    
+     -->
+     
     <!-- The frame layout is here since we will be showing either
     the empty view or the list view.  -->
     <FrameLayout

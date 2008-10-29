@@ -20,24 +20,24 @@
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
     <string name="menu_discard">Discard</string>
-	<!-- <string name="no_notes">Use menu to add new notes.</string>  -->
+	<string name="no_notes">Use menu to add new notes.</string>
 
     <string name="resolve_edit">Edit note</string>
     <string name="resolve_title">Edit title</string>  
 
     <string name="title_create">Create note</string>
     <string name="title_edit">Edit note</string>
-	<string name="title_notes_list">Note pad</string>   
+	<string name="title_notes_list">OI Notepad</string>   
 	<string name="title_note">Note</string>  
 	<string name="title_edit_title">Note title:</string>  
 	
-	<string name="app_name">Notes List</string>  
+	<string name="app_name">OI Notepad</string>  
 	
 	<string name="button_ok">OK</string>  
 	
 	<string name="error_title">Error</string>
 	<string name="error_message">Error loading note</string>
-	<string name="no_notes">Note list is empty.</string>
+	<!-- <string name="no_notes">Note list is empty.</string>  -->
 	
 	<string name="menu_send_by_email">Send by email</string>
 	<string name="empty_note">Empty note</string>
