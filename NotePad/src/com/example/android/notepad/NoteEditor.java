@@ -123,6 +123,8 @@ public class NoteEditor extends Activity {
             // in the container.
             mState = STATE_INSERT;
             mUri = getContentResolver().insert(intent.getData(), null);
+            intent.setAction(Intent.ACTION_EDIT);
+            setIntent(intent);
 
             // If we were unable to create a new note, then just finish
             // this activity.  A RESULT_CANCELED will be sent back to the
