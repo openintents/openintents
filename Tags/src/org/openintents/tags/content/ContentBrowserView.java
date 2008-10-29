@@ -361,6 +361,7 @@ public class ContentBrowserView extends ListActivity implements Runnable {
 			r.fromXML(res.openRawResource(R.raw.media));
 			r.fromXML(res.openRawResource(R.raw.shopping));
 			r.fromXML(res.openRawResource(R.raw.location));
+			r.fromXML(res.openRawResource(R.raw.call_log));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

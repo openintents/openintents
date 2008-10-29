@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package name="com.google.android.contacts">
+	<dir
+		name="Calls"
+		uri="content://call_log/calls/"
+		text-columns="number,date,cached_name"
+		id-column="_id">
+		<intent
+			uri="content://call_log/calls/{_id}"
+			action="android.intent.action.VIEW"/>
+	</dir>
+</package>

@@ -2,6 +2,7 @@ package org.openintents.tags.content;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.Stack;
 
 import org.openintents.provider.ContentIndex;
@@ -9,6 +10,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import android.content.Context;
+import android.net.Uri;
 
 public class DirectoryRegister {
 
@@ -26,8 +28,7 @@ public class DirectoryRegister {
 	private static final String TAG = "DirectoryRegister";
 	private ContentIndex mContentIndex;
 
-
-	public DirectoryRegister(Context context) {		
+	public DirectoryRegister(Context context) {
 		mContentIndex = new ContentIndex(context.getContentResolver());
 	}
 
@@ -100,7 +101,10 @@ public class DirectoryRegister {
 
 		notBlank(xpp, ATTR_URI, dir.uri);
 
-		mContentIndex.addDirectory(dir);
+		Uri uri = mContentIndex.addDirectory(dir);
+		if (uri != null) {
+			dir.id = Long.parseLong(uri.getLastPathSegment());
+		}
 		stack.push(dir);
 	}
 
@@ -122,6 +126,5 @@ public class DirectoryRegister {
 					+ "' is required.");
 		}
 	}
-
 
 }

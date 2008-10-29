@@ -9,4 +9,13 @@
 			uri="content://contacts/people/{_id}"
 			action="android.intent.action.VIEW"/>
 	</dir>
+	<dir
+		name="Contact methods"
+		uri="content://contacts/contact_methods/"
+		text-columns="people.name,data"
+		id-column="contact_methods._id">
+		<intent
+			uri="content://contacts/contact_methods/{_id}"
+			action="android.intent.action.VIEW"/>
+	</dir>
 </package>
