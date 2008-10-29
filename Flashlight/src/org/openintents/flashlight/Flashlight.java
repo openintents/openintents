@@ -24,14 +24,19 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class Flashlight extends Activity {
 	
@@ -43,7 +48,8 @@ public class Flashlight extends Activity {
     private static final int REQUEST_CODE_PICK_COLOR = 1;
 	
 	private LinearLayout mBackground;
-	
+	private View mIcon;
+	private TextView mText;
 
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mWakeLockLocked = false;
@@ -54,6 +60,10 @@ public class Flashlight extends Activity {
 	
 	/** Not valid value of brightness */
 	private static final int NOT_VALID = -1;
+	
+	private static final int HIDE_ICON = 1;
+	
+	private static int mTimeout = 5000;
 	
     /** Called when the activity is first created. */
     @Override
@@ -67,17 +77,30 @@ public class Flashlight extends Activity {
 
 		// Turn off the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.main);
         
         mColor = 0xffffffff;
         
         mBackground = (LinearLayout) findViewById(R.id.background);
+        mIcon = (View) findViewById(R.id.icon);
+        mText = (TextView) findViewById(R.id.text);
         
         mBackground.setBackgroundColor(mColor);
+        
+        mBackground.setOnTouchListener(new View.OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View arg0, MotionEvent arg1) {
+				if (mIcon.getVisibility() == View.VISIBLE) {
+					hideIcon();
+				} else {
+					showIconForAWhile();
+				}
+				return false;
+			}
+        	
+        });
         
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
@@ -105,6 +128,8 @@ public class Flashlight extends Activity {
 		super.onResume();
 		
 		wakeLock();
+		
+		showIconForAWhile();
 	}
 
 	/////////////////////////////////////////////////////
@@ -206,5 +231,48 @@ public class Flashlight extends Activity {
 			break;
 		}
 	}
+    
+    ////////////////////
+    // Handler
+    
+    Handler mHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == HIDE_ICON) {
+				hideIcon();
+			}
+		}
+
+		
+	};
 	
+	/**
+	 * Hides icon and notification bar.
+	 */
+	private void hideIcon() {
+		mIcon.setVisibility(View.GONE);
+		mText.setVisibility(View.GONE);
+		
+
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	}
+	
+
+	/**
+	 * Shows icon and notification bar, and set timeout for hiding it.
+	 */
+	private void showIconForAWhile() {
+		mIcon.setVisibility(View.VISIBLE);
+		mText.setVisibility(View.VISIBLE);
+		
+		getWindow().setFlags(0,
+						WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+
+		mHandler.removeMessages(HIDE_ICON);
+		mHandler.sendMessageDelayed(mHandler
+				.obtainMessage(HIDE_ICON), mTimeout);
+	}
+
 }
