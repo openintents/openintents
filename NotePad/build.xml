@@ -55,6 +55,7 @@ storepass=*password of keystore*
 	</condition>
 
 	<property name="docdir" value="doc" />
+	<property name="releasedir" value="release" />
 
 	<!-- Create R.java in the source directory -->
 	<property name="outdir-r" value="src" />
@@ -87,6 +88,12 @@ storepass=*password of keystore*
 		<os family="windows" />
 	</condition>
 
+	<property name="out-release-source" value="${releasedir}/${ant.project.name}-source-${version}" />
+	<condition property="out-release-source-ospath"
+	            value="${basedir}\${out-release-source}"
+	            else="${basedir}/${out-release-source}" >
+	        <os family="windows"/>
+	</condition>
 
 	<!-- Tools -->
 	<condition property="aapt" value="${android-tools}/aapt.exe" else="${android-tools}/aapt">
@@ -365,6 +372,27 @@ storepass=*password of keystore*
 		</javadoc>
 	</target>
 
+	<!-- ############### Release source ####################### -->
+	<!-- Copy to source release -->
+	<target name="release-source">
+    	<delete dir="${releasedir}"/>
+        <mkdir dir="${releasedir}" />
+		<copy todir="${out-release-source-ospath}">
+			<fileset dir=".">
+				<exclude name="**/bin/**" />
+				<exclude name="**/doc/**" />
+				<exclude name="**/release/**" />
+				<exclude name="**/tmp/**" />
+				<exclude name="**/.svn" />
+				<exclude name="**/build-private.properties" />
+			</fileset>
+		</copy>
+		<zip destfile="${out-release-source-ospath}.zip">
+			<zipfileset dir="${out-release-source-ospath}" prefix="${ant.project.name}-source-${version}"/>
+		</zip>
+		<delete dir="${out-release-source-ospath}"/>
+    </target>
+	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" depends="debug, javadoc" />
 
