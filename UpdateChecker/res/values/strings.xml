@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, org.openintents.updatechecker.UpdateChecker</string>
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">A new version of OI Update is available.\n%s\nWould you like to upgrade?</string>
+	<string name="market_not_available">Android Market not available.</string>
+    <string name="market_search_term">OI Update</string>
+    
+</resources>
