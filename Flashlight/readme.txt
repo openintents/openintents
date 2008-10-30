@@ -21,6 +21,13 @@ To obtain the current release, visit
   http://www.openintents.org
   
 ---------------------------------------------------------
+release: 1.0.2
+date: 2008-10-30
+
+- Flashlight now uses HardwareService to set the 
+  brightness to maximum.
+  
+---------------------------------------------------------
 release: 1.0.1
 date: 2008-10-30
 
