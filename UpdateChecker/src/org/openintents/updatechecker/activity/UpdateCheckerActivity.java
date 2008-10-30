@@ -2,11 +2,13 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.Update;
+import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.R.id;
 import org.openintents.updatechecker.R.layout;
 import org.openintents.updatechecker.R.string;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -30,10 +32,28 @@ public class UpdateCheckerActivity extends Activity {
 		Update.check(this);
 
 		setContentView(R.layout.main);
-		TextView view = (TextView) findViewById(R.id.text);
+
+		TextView view = (TextView) findViewById(R.id.text_update);
+
+		view.setText(getString(R.string.update_available_2, getIntent()
+				.getStringExtra(UpdateChecker.EXTRA_APP_NAME), getIntent()
+				.getStringExtra(UpdateChecker.EXTRA_COMMENT)));
+
+		view = (TextView) findViewById(R.id.text);
 
 		view.setText(getString(R.string.about_text, getVersionNumber(),
 				getSDInfo(), getOSInfo()));
+	}
+
+	
+	@Override
+	protected void onNewIntent(Intent intent) {
+		TextView view = (TextView) findViewById(R.id.text_update);
+
+		view.setText(getString(R.string.update_available_2, intent
+				.getStringExtra(UpdateChecker.EXTRA_APP_NAME), intent
+				.getStringExtra(UpdateChecker.EXTRA_COMMENT)));
+
 	}
 
 	private String getSDInfo() {

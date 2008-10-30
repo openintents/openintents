@@ -42,7 +42,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 
 	private void showNotification() {
 		CharSequence text = mContext.getString(R.string.update_available,
-				mAppName, getLatestVersion(), getComment());
+				mAppName);
 
 		// Set the icon, scrolling text and timestamp
 		Notification notification = new Notification(R.drawable.icon, text,

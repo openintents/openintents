@@ -2,7 +2,8 @@
 <resources>
     <string name="app_name">OI Update</string>
     
-    <string name="update_available">A new version of OI Update is available.\n%s\nWould you like to upgrade?</string>
+    <string name="update_available">A new version of %s is available.\nWould you like to upgrade?</string>
+    <string name="update_available_2">A new version of %s is available.\n%s\n</string>
 	<string name="market_not_available">Android Market not available.</string>
     <string name="market_search_term">OI Update</string>
     
