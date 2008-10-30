@@ -56,7 +56,7 @@ public class Update {
 	private static long CHECK_PERIOD = 24 * 3600 * 1000;
 
 	public static void checkForUpdateInThread(final Context context) {
-		new CheckerThread(context).start();		
+		new CheckerThread(context).start();
 	}
 
 	public static void checkForUpdate(final Context context) {
@@ -70,42 +70,13 @@ public class Update {
 			Log.i(TAG, "Skipping update test.");
 			return;
 		}
+		
+		String link = "http://www.openintents.org/apks/"
+				+ context.getPackageName() + ".txt";
+		UpdateChecker checker = new UpdateChecker(link, null);
+		checker.checkForUpdate(link);
 
-		int latestVersion = -1;
-		String newApplicationId = null;
-		String comment = null;
-
-		try {
-			String link = "http://www.openintents.org/apks/"
-					+ context.getPackageName() + ".txt";
-			Log.d(TAG, "Looking for version at " + link);
-			URL u = new URL(link);
-			Object content = u.openConnection().getContent();
-			if (content instanceof InputStream) {
-				InputStream is = (InputStream) content;
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(is));
-				latestVersion = Integer.parseInt(reader.readLine());
-				Log.d(TAG, "Lastest version available: " + latestVersion);
-
-				newApplicationId = reader.readLine();
-				Log.d(TAG, "New version application ID: " + newApplicationId);
-
-				comment = reader.readLine();
-				Log.d(TAG, "comment: " + comment);
-				
-				storePendingUpdate(prefs, latestVersion, newApplicationId,
-						comment);
-
-			} else {
-				Log.d(TAG, "Unknown server format: "
-						+ ((String) content).substring(0, 100));
-			}
-		} catch (MalformedURLException e) {
-			Log.e(TAG, "MalformedURLException", e);
-		} catch (IOException e) {
-			Log.e(TAG, "IOException", e);
-		}
+		storePendingUpdate(prefs, checker.getLatestVersion(), checker.getApplicationId(), checker.getComment());
 
 	}
 
@@ -171,7 +142,7 @@ public class Update {
 												.parse("market://search?q="
 														+ context
 																.getString(R.string.market_search_term)));
-								
+
 								//intent.setData(Uri.parse("market://details?id="
 								// + applicationIdFinal));
 
@@ -234,9 +205,10 @@ public class Update {
 		// Do the check (don't skip).
 		return false;
 	}
-	
-	/** 
+
+	/**
 	 * Convenience function to check for update in the background.
+	 * 
 	 * @param context
 	 */
 	public static void check(final Context context) {

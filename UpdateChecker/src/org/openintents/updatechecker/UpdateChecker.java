@@ -39,8 +39,8 @@ public class UpdateChecker implements Runnable {
 		Log.v(TAG, "send result");
 		try {
 
-			mCallback
-					.onVersionChecked(mLatestVersion, mNewApplicationId, mComment);
+			mCallback.onVersionChecked(mLatestVersion, mNewApplicationId,
+					mComment);
 		} catch (DeadObjectException e) {
 			// The IUpdateCheckerServiceCallback will take care of
 			// removing
@@ -59,8 +59,6 @@ public class UpdateChecker implements Runnable {
 		mNewApplicationId = null;
 
 		try {
-			link = "http://www.openintents.org/apks/"
-				+ "org.openintents.news" + ".txt";
 			Log.d(TAG, "Looking for version at " + link);
 			URL u = new URL(link);
 			Object content = u.openConnection().getContent();
@@ -87,5 +85,17 @@ public class UpdateChecker implements Runnable {
 			Log.e(TAG, "IOException", e);
 		}
 
+	}
+
+	public int getLatestVersion() {
+		return mLatestVersion;
+	}
+
+	public String getApplicationId() {
+		return mNewApplicationId;
+	}
+
+	public String getComment() {
+		return mComment;
 	}
 }
