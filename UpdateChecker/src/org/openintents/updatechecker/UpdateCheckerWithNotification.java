@@ -53,6 +53,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		intent.putExtra(UpdateChecker.EXTRA_COMMENT, getComment());
 		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 
 		// The PendingIntent to launch our activity if the user selects this
 		// notification

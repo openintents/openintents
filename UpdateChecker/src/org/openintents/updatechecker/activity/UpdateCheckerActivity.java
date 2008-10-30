@@ -8,6 +8,7 @@ import org.openintents.updatechecker.R.layout;
 import org.openintents.updatechecker.R.string;
 
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -22,10 +23,12 @@ public class UpdateCheckerActivity extends Activity {
 	private static final String TAG = "UpdateChecker";
 	public static final String EXTRA_LATEST_VERSION = "latest_version";
 	public static final String EXTRA_COMMENT = "comment";
+	private String mPackageName = null;
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Log.v(TAG, "create");
 		super.onCreate(savedInstanceState);
 
 		// check for a new version of UpdateChecker
@@ -43,16 +46,30 @@ public class UpdateCheckerActivity extends Activity {
 
 		view.setText(getString(R.string.about_text, getVersionNumber(),
 				getSDInfo(), getOSInfo()));
+		
+		mPackageName = getIntent().getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
+
 	}
 
-	
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (mPackageName != null) {
+			((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+					.cancel(mPackageName.hashCode());
+		}
+	}
+
 	@Override
 	protected void onNewIntent(Intent intent) {
+		Log.v(TAG, "new intent");
 		TextView view = (TextView) findViewById(R.id.text_update);
 
 		view.setText(getString(R.string.update_available_2, intent
 				.getStringExtra(UpdateChecker.EXTRA_APP_NAME), intent
 				.getStringExtra(UpdateChecker.EXTRA_COMMENT)));
+		mPackageName = intent.getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
 
 	}
 
