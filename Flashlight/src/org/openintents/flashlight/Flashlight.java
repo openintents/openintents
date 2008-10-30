@@ -97,7 +97,7 @@ public class Flashlight extends Activity {
         
         mBackground.setOnTouchListener(new View.OnTouchListener() {
 
-			@Override
+			
 			public boolean onTouch(View arg0, MotionEvent arg1) {
 				if (mIcon.getVisibility() == View.VISIBLE) {
 					hideIcon();

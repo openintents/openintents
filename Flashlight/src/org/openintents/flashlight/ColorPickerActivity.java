@@ -76,7 +76,7 @@ public class ColorPickerActivity extends Activity
 		return Color.argb(a, gray, gray, gray);
 	}
 	
-	@Override
+	
 	public void onColorChanged(View view, int newColor) {
 		if (view == mColorCircle) {
 			mValue.setColors(0xFFFFFFFF, newColor);
@@ -90,7 +90,7 @@ public class ColorPickerActivity extends Activity
 		
 	}
 
-	@Override
+	
 	public void onColorPicked(View view, int newColor) {
 		// We can return result
 		mIntent.putExtra(EXTRA_COLOR, newColor);
