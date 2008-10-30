@@ -21,6 +21,14 @@ To obtain the current release, visit
   http://www.openintents.org
   
 ---------------------------------------------------------
+release: 1.0.1
+date: 2008-10-30
+
+- Set brightness to maximum.
+- Remove icon and notification bar by tapping the screen
+  or by timeout.
+
+---------------------------------------------------------
 release: 1.0.0
 date: 2008-10-27
 
