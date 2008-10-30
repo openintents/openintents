@@ -73,7 +73,7 @@ public class Update {
 		
 		String link = "http://www.openintents.org/apks/"
 				+ context.getPackageName() + ".txt";
-		UpdateChecker checker = new UpdateChecker(link, null);
+		UpdateChecker checker = new UpdateChecker();
 		checker.checkForUpdate(link);
 
 		storePendingUpdate(prefs, checker.getLatestVersion(), checker.getApplicationId(), checker.getComment());

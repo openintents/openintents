@@ -1,4 +1,10 @@
-package org.openintents.updatechecker;
+package org.openintents.updatechecker.activity;
+
+import org.openintents.updatechecker.R;
+import org.openintents.updatechecker.Update;
+import org.openintents.updatechecker.R.id;
+import org.openintents.updatechecker.R.layout;
+import org.openintents.updatechecker.R.string;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;

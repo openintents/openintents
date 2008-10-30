@@ -7,50 +7,19 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import android.os.DeadObjectException;
-import android.os.RemoteException;
 import android.util.Log;
 
-public class UpdateChecker implements Runnable {
-	private static final String TAG = "UpdateChecker";
+public class UpdateChecker {
+	protected static final String TAG = "UpdateChecker";
 	public static final String EXTRA_LATEST_VERSION = "latest_version";
 	public static final String EXTRA_COMMENT = "comment";
+	public static final String EXTRA_PACKAGE_NAME = "package_name";
+	public static final String EXTRA_APP_NAME = "app_name";
+	public static final String EXTRA_CURRENT_VERSION = "currrent_version";
 
-	private String mLink;
 	private int mLatestVersion;
 	private String mComment;
-	private IUpdateCheckerServiceCallback mCallback;
 	private String mNewApplicationId;
-
-	public UpdateChecker(String link, IUpdateCheckerServiceCallback cb) {
-
-		mLink = link;
-		mCallback = cb;
-	}
-
-	public void run() {
-		checkForUpdate(mLink);
-
-		sendResult();
-
-	}
-
-	private void sendResult() {
-		Log.v(TAG, "send result");
-		try {
-
-			mCallback.onVersionChecked(mLatestVersion, mNewApplicationId,
-					mComment);
-		} catch (DeadObjectException e) {
-			// The IUpdateCheckerServiceCallback will take care of
-			// removing
-			// the dead object for us.
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	public void checkForUpdate(String link) {
 

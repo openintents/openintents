@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
        
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".UpdateCheckerActivity"
+        <activity android:name=".activity.UpdateCheckerActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,7 +15,7 @@
             </intent-filter>
         </activity>
         
-        <service android:name=".UpdateCheckService" android:process=":remote">
+        <service android:name=".UpdateCheckService">
         <intent-filter>
                 <action android:name="org.openintents.intents.CHECK_VERSION" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -26,6 +26,7 @@ package org.openintents.notepad;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.Update;
+import org.openintents.distribution.Update2;
 import org.openintents.notepad.NotePad.Notes;
 
 import android.app.ListActivity;
@@ -83,7 +84,7 @@ public class NotesList extends ListActivity {
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		Update.check(this);
+		Update2.check(this);
 		
         setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
 

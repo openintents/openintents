@@ -13,6 +13,11 @@ public class UpdateCheckService extends Service {
 	@Override
 	public void onStart(Intent intent, int startId) {		
 		Log.d(TAG, "started");
+		String packageName = intent.getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
+		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
+		int currVersion = intent.getIntExtra(UpdateChecker.EXTRA_CURRENT_VERSION, 0);
+		UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(this, packageName, appName, currVersion);
+		updateChecker.checkForUpdateWithNotification(intent.getDataString());
 	}
 
 	@Override
@@ -30,7 +35,7 @@ public class UpdateCheckService extends Service {
 
 		public void checkForUpdate(String link,
 				IUpdateCheckerServiceCallback cb) {
-			new Thread(new UpdateChecker(link, cb)).start();
+			new Thread(new UpdateCheckerWithCallback(link, cb)).start();
 		}
 
 	};
