@@ -26,10 +26,7 @@
     package="org.openintents.notepad"
 	android:versionName="1.0.0"
 	android:versionCode="10000"
-	>
-	
-	 <!-- required for automatic update -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+	>	
     
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"

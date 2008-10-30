@@ -1,30 +1,92 @@
 package org.openintents.distribution;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.openintents.notepad.R;
+import org.openintents.updatechecker.IUpdateCheckerService;
+import org.openintents.updatechecker.IUpdateCheckerServiceCallback;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
 public class Update {
+	
+	
+	/**
+	 * client to update checker service
+	 * @author muef
+	 *
+	 */
+	public static class UpdateCheckerClient extends IUpdateCheckerServiceCallback.Stub implements ServiceConnection {
+
+		private String mLink;
+		private Context mContext;
+
+		public UpdateCheckerClient(String link, Context context) {
+			mLink = link;
+			mContext = context;
+		}
+
+		public void onServiceConnected(ComponentName componentname,
+				IBinder ibinder) {
+			Log.v("UpdateService", "try to connect");
+			
+			IUpdateCheckerService service = IUpdateCheckerService.Stub
+					.asInterface(ibinder);
+
+			try {
+				Log.v("UpdateService", "try to check");
+				service.checkForUpdate(mLink, this);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+
+			// TODO unbind
+		}
+
+		public void onServiceDisconnected(ComponentName componentname) {
+			// don't do anything
+			Log.v("UpdateService", "disconnected");
+		}
+
+		public void onVersionChecked(int latestVersion,
+				String newApplicationId, String comment) throws RemoteException {
+			SharedPreferences prefs = PreferenceManager
+					.getDefaultSharedPreferences(mContext);
+			
+			Log.v("Update", "store " + latestVersion + "  " + comment + " to " + prefs);
+			
+			storePendingUpdate(prefs, latestVersion, newApplicationId, comment);
+
+		}
+
+		public IBinder asBinder() {
+			return this;
+		}
+
+	}
+
+	/**
+	 * check for update in a thread
+	 * 
+	 * @author muef
+	 * 
+	 */
 	public static class CheckerThread extends Thread {
 
 		private Context mContext;
@@ -51,6 +113,7 @@ public class Update {
 	private static final String PREFERENCES_PENDING_UPDATE_VERSION = "org.openintents.update.pending_update_version";
 	private static final String PREFERENCES_PENDING_UPDATE_APPLICATION_ID = "org.openintents.update.pending_update_application_id";
 	private static final String PREFERENCES_PENDING_UPDATE_COMMENT = "org.openintents.update.pending_update_comment";
+	private static final String CHECK_VERSION = "org.openintents.intents.CHECK_VERSION";
 
 	/**
 	 * Period between checks. Currently set to 24 hours (in milliseconds).
@@ -58,7 +121,7 @@ public class Update {
 	private static long CHECK_PERIOD = 24 * 3600 * 1000;
 
 	public static void checkForUpdateInThread(final Context context) {
-		new CheckerThread(context).start();		
+		new CheckerThread(context).start();
 	}
 
 	public static void checkForUpdate(final Context context) {
@@ -73,42 +136,13 @@ public class Update {
 			return;
 		}
 
-		int latestVersion = -1;
-		String newApplicationId = null;
-		String comment = null;
-
-		try {
-			String link = "http://www.openintents.org/apks/"
-					+ context.getPackageName() + ".txt";
-			Log.d(TAG, "Looking for version at " + link);
-			URL u = new URL(link);
-			Object content = u.openConnection().getContent();
-			if (content instanceof InputStream) {
-				InputStream is = (InputStream) content;
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(is));
-				latestVersion = Integer.parseInt(reader.readLine());
-				Log.d(TAG, "Lastest version available: " + latestVersion);
-
-				newApplicationId = reader.readLine();
-				Log.d(TAG, "New version application ID: " + newApplicationId);
-
-				comment = reader.readLine();
-				Log.d(TAG, "comment: " + comment);
-
-				storePendingUpdate(prefs, latestVersion, newApplicationId,
-						comment);
-
-			} else {
-				Log.d(TAG, "Unknown server format: "
-						+ ((String) content).substring(0, 100));
-			}
-		} catch (MalformedURLException e) {
-			Log.e(TAG, "MalformedURLException", e);
-		} catch (IOException e) {
-			Log.e(TAG, "IOException", e);
-		}
-
+		Intent intent = new Intent();
+		String link = "http://www.openintents.org/apks/"
+				+ context.getPackageName() + ".txt";
+		intent.setData(Uri.parse(link));
+		intent.setAction(CHECK_VERSION);
+		context.bindService(intent, new UpdateCheckerClient(link, context),
+				Context.BIND_AUTO_CREATE);
 	}
 
 	private static void storePendingUpdate(SharedPreferences prefs,
@@ -173,10 +207,9 @@ public class Update {
 												.parse("market://search?q="
 														+ context
 																.getString(R.string.market_search_term)));
-
-								// TODO use applicationId
-								//intent.setData(Uri.parse("market://details?id="
-								// + applicationIdFinal));
+								
+								intent.setData(Uri.parse("market://details?id="
+								 + applicationIdFinal));
 
 								try {
 									context.startActivity(intent);
@@ -237,13 +270,15 @@ public class Update {
 		// Do the check (don't skip).
 		return false;
 	}
-	
-	/** 
+
+	/**
 	 * Convenience function to check for update in the background.
+	 * 
 	 * @param context
 	 */
 	public static void check(final Context context) {
 		Update.checkForPendingUpdate(context);
 		Update.checkForUpdateInThread(context);
 	}
+
 }

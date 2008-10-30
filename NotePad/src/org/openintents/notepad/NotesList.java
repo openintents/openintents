@@ -33,9 +33,11 @@ import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -62,6 +64,7 @@ public class NotesList extends ListActivity {
     private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
 	
+	private static final int REQUEST_CODE_VERSION_CHECK = 1;
     /**
      * The columns we are interested in from the database
      */
@@ -119,6 +122,7 @@ public class NotesList extends ListActivity {
         setListAdapter(adapter);
     }
 
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
