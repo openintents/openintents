@@ -38,6 +38,13 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import android.os.RemoteException;
+
+/** DIRTY HACK WARNING: you'll need a handcrafted android.jar for these imports*/
+import android.os.IHardwareService;
+
+import android.os.ServiceManager;
+
 public class Flashlight extends Activity {
 	
 	private static final String TAG = "Flashlight";
@@ -104,12 +111,16 @@ public class Flashlight extends Activity {
         
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
+		//mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
+		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK
 				| PowerManager.ACQUIRE_CAUSES_WAKEUP
 				| PowerManager.ON_AFTER_RELEASE,
 				"Flashlight");
 		
 		mUserBrightness = NOT_VALID;
+
+		
+
     }
     
     
@@ -180,14 +191,30 @@ public class Flashlight extends Activity {
 			Log.d(TAG, "WakeLock: locking");
 			mWakeLock.acquire();
 			mWakeLockLocked = true;
-			
+			boolean res=false;
 			// set screen brightness
 			mUserBrightness = Settings.System.getInt(getContentResolver(), 
 						Settings.System.SCREEN_BRIGHTNESS, NOT_VALID);
 			
-			Settings.System.putInt(getContentResolver(), 
+			res=Settings.System.putInt(getContentResolver(), 
 					Settings.System.SCREEN_BRIGHTNESS, 255);
+		//	Log.d(TAG,"res>"+res);
+			setBrightness(255);
+			//Log.d(TAG,"brightness>"+Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, NOT_VALID));
 		}
+	}
+
+
+	private void setBrightness(int brightness) {
+	  try {
+		   IHardwareService hardware = IHardwareService.Stub.asInterface(
+			   ServiceManager.getService("hardware"));
+		   if (hardware != null) {
+		   hardware.setScreenBacklight(brightness);
+		   }
+	   } catch (RemoteException doe) {
+			Log.d(TAG,"failed to call HardwareService");		 
+	  }        
 	}
 
 	private void wakeUnlock() {
@@ -200,6 +227,7 @@ public class Flashlight extends Activity {
 			if (mUserBrightness != NOT_VALID) {
 				Settings.System.putInt(getContentResolver(), 
 						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
+				setBrightness(mUserBrightness);
 			}
 		}
 	}

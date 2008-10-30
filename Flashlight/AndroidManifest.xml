@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.flashlight"
-      android:versionCode="10001"
-      android:versionName="1.0.1">
+      android:versionCode="10002"
+      android:versionName="1.0.2">
       
     <!-- required to keep the backlight turned on -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     
     <!-- required to adjust the brightness -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.HARDWARE_TEST"/>
     
     <!-- required for automatic update -->
     <uses-permission android:name="android.permission.INTERNET"/>
