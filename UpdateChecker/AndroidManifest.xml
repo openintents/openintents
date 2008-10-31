@@ -23,6 +23,9 @@
                 <data android:scheme="https"/>
             </intent-filter>
         </service>
+        
+        <provider android:name=".UpdateInfoProvider" android:authorities="org.openintents.updateinfo">      
+        </provider>
     </application>
     
 </manifest> 

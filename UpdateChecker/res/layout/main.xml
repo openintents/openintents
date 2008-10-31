@@ -15,7 +15,7 @@
 		android:layout_height="fill_parent">
 	<TextView android:id="@+id/text_update" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center_vertical"
-		android:autoLink="all" android:padding="5dip" android:text="@string/about_text" />
+		android:autoLink="all" android:padding="5dip" android:text="@string/update_available_2" />	
 	<TextView android:id="@+id/text" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:layout_weight="1" android:gravity="center_vertical"
 		android:autoLink="all" android:padding="5dip" android:text="@string/about_text" />

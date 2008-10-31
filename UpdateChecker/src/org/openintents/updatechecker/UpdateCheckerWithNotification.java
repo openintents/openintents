@@ -5,6 +5,7 @@ import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -40,6 +41,13 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 	public void checkForUpdateWithNotification(String uri) {
 		checkForUpdate(uri);
 		showNotificationIfRequired();
+		updateLastCheck();
+	}
+
+	private void updateLastCheck() {
+		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
+		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values , UpdateInfo.PACKAGE_NAME + " = ? ", new String[]{mPackageName});		
 	}
 
 	protected void showNotificationIfRequired() {

@@ -32,23 +32,32 @@ public class UpdateCheckerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// check for a new version of UpdateChecker
-		Update.check(this);
+		//Update.check(this);
 
 		setContentView(R.layout.main);
 
-		TextView view = (TextView) findViewById(R.id.text_update);
-
-		view.setText(getString(R.string.update_available_2, getIntent()
-				.getStringExtra(UpdateChecker.EXTRA_APP_NAME), getIntent()
-				.getStringExtra(UpdateChecker.EXTRA_COMMENT)));
+		TextView view;
+		updateText(getIntent());
 
 		view = (TextView) findViewById(R.id.text);
 
 		view.setText(getString(R.string.about_text, getVersionNumber(),
 				getSDInfo(), getOSInfo()));
-		
-		mPackageName = getIntent().getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
 
+		mPackageName = getIntent().getStringExtra(
+				UpdateChecker.EXTRA_PACKAGE_NAME);
+
+	}
+
+	private void updateText(Intent intent) {
+		TextView view = (TextView) findViewById(R.id.text_update);
+
+		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
+		String comment = intent.getStringExtra(UpdateChecker.EXTRA_COMMENT);
+		if (appName != null && comment != null) {
+			view.setText(getString(R.string.update_available_2, appName,
+					comment));
+		}
 	}
 
 	@Override
@@ -64,11 +73,7 @@ public class UpdateCheckerActivity extends Activity {
 	@Override
 	protected void onNewIntent(Intent intent) {
 		Log.v(TAG, "new intent");
-		TextView view = (TextView) findViewById(R.id.text_update);
-
-		view.setText(getString(R.string.update_available_2, intent
-				.getStringExtra(UpdateChecker.EXTRA_APP_NAME), intent
-				.getStringExtra(UpdateChecker.EXTRA_COMMENT)));
+		updateText(intent);
 		mPackageName = intent.getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
 
 	}
