@@ -10,4 +10,9 @@
     <string name="about_text">Version %s\nSD card %s\n\nOS\n%s</string>
     <string name="free_space">free space: %s</string>
     <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
+    
+    <string name="do_update">Perform update now!</string>
+    <string name="remind_me_later">Remind me later!</string>
+    <string name="ignore_this_update">Ignore this update</string>
+    <string name="ok">Ok</string>
 </resources>

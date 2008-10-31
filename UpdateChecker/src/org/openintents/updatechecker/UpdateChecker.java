@@ -19,8 +19,10 @@ public class UpdateChecker {
 	public static final String EXTRA_CURRENT_VERSION = "currrent_version";
 	public static final String EXTRA_CURRENT_VERSION_NAME = "current_version_name";
 	public static final String EXTRA_VEECHECK = "veecheck";
+	public static final String EXTRA_UPDATE_INTENT = "update_intent";
 
 	protected int mLatestVersion;
+	protected String mLatestVersionName;
 	protected String mComment;
 	protected String mNewApplicationId;
 
@@ -29,6 +31,7 @@ public class UpdateChecker {
 		mLatestVersion = -1;
 		mComment = null;
 		mNewApplicationId = null;
+		mLatestVersionName = null;
 
 		try {
 			Log.d(TAG, "Looking for version at " + link);
@@ -46,7 +49,7 @@ public class UpdateChecker {
 
 				mComment = reader.readLine();
 				Log.d(TAG, "comment: " + mComment);
-
+				
 			} else {
 				Log.d(TAG, "Unknown server format: "
 						+ ((String) content).substring(0, 100));
@@ -69,5 +72,9 @@ public class UpdateChecker {
 
 	public String getComment() {
 		return mComment;
+	}
+
+	public String getLatestVersionName() {
+		return mLatestVersionName;
 	}
 }

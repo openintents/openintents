@@ -87,7 +87,7 @@ public class UpdateCheckerWithNotificationVeecheck extends
 				
 				ResolveInfo info = mContext.getPackageManager().resolveActivity(intent, 0);
 				if (info != null){
-					mIntent = intent;
+					mUpdateIntent = intent;
 				}
 				
 			} else {

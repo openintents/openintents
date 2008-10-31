@@ -28,7 +28,7 @@ public class UpdateCheckerWithCallback extends UpdateChecker implements Runnable
 		Log.v(TAG, "send result");
 		try {
 
-			mCallback.onVersionChecked(getLatestVersion(), getApplicationId(), getComment());
+			mCallback.onVersionChecked(getLatestVersion(), getApplicationId(), getComment(), getLatestVersionName());
 		} catch (DeadObjectException e) {
 			// The IUpdateCheckerServiceCallback will take care of
 			// removing

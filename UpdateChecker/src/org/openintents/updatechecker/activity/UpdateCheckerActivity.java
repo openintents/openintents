@@ -1,11 +1,7 @@
 package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
-import org.openintents.updatechecker.Update;
 import org.openintents.updatechecker.UpdateChecker;
-import org.openintents.updatechecker.R.id;
-import org.openintents.updatechecker.R.layout;
-import org.openintents.updatechecker.R.string;
 
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -15,15 +11,20 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StatFs;
-import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class UpdateCheckerActivity extends Activity {
 	private static final String TAG = "UpdateChecker";
 	public static final String EXTRA_LATEST_VERSION = "latest_version";
 	public static final String EXTRA_COMMENT = "comment";
 	private String mPackageName = null;
+	private RadioGroup mRadioGroup;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -32,21 +33,51 @@ public class UpdateCheckerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		// check for a new version of UpdateChecker
-		//Update.check(this);
+		// Update.check(this);
 
 		setContentView(R.layout.main);
 
 		TextView view;
 		updateText(getIntent());
 
-		view = (TextView) findViewById(R.id.text);
-
-		view.setText(getString(R.string.about_text, getVersionNumber(),
-				getSDInfo(), getOSInfo()));
+		// view = (TextView) findViewById(R.id.text);
+		//
+		// view.setText(getString(R.string.about_text, getVersionNumber(),
+		// getSDInfo(), getOSInfo()));
 
 		mPackageName = getIntent().getStringExtra(
 				UpdateChecker.EXTRA_PACKAGE_NAME);
 
+		mRadioGroup = (RadioGroup) findViewById(R.id.action_choice);
+
+		Button button = (Button) findViewById(R.id.ok);
+		button.setOnClickListener(new OnClickListener() {
+
+			public void onClick(View arg0) {
+				switch (mRadioGroup.getCheckedRadioButtonId()) {
+				case R.id.do_update:
+					startActivity((Intent)getIntent().getParcelableExtra(UpdateChecker.EXTRA_UPDATE_INTENT));
+					break;
+				case R.id.remind_me_later:
+					updateUpdateTime();
+					break;
+				case R.id.ignore_this_update:
+					updateLastIgnoredVersion();
+					break;
+
+				}
+			}
+		});
+
+	}
+
+	protected void updateLastIgnoredVersion() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected void updateUpdateTime() {
+		// TODO Auto-generated method stub		
 	}
 
 	private void updateText(Intent intent) {

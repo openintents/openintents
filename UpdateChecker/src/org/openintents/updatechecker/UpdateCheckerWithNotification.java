@@ -8,12 +8,14 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
 /**
  * Update checker based on simple text file showing notifications
+ * 
  * @author muef
- *
+ * 
  */
 public class UpdateCheckerWithNotification extends UpdateChecker {
 
@@ -24,6 +26,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 	protected int mCurrentVersion;
 	protected String mCurrentVersionName;
 	protected Intent mIntent;
+	protected Intent mUpdateIntent;
 
 	public UpdateCheckerWithNotification(Context context, String packageName,
 			String appName, int currentVersionCode, String currentVersionName) {
@@ -31,6 +34,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		mPackageName = packageName;
 		mAppName = appName;
 		mCurrentVersion = currentVersionCode;
+		mCurrentVersionName = currentVersionName;
 
 		if (mNm == null) {
 			mNm = (NotificationManager) context
@@ -47,16 +51,21 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 	private void updateLastCheck() {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
-		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values , UpdateInfo.PACKAGE_NAME + " = ? ", new String[]{mPackageName});		
+		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
+				UpdateInfo.PACKAGE_NAME + " = ? ",
+				new String[] { mPackageName });
 	}
 
 	protected void showNotificationIfRequired() {
-		if (getLatestVersion() > mCurrentVersion && mCurrentVersion > 0) {
+		if ((getLatestVersion() > mCurrentVersion && mCurrentVersion > 0)
+				|| (getLatestVersionName() != null
+						&& mCurrentVersionName != null && getLatestVersionName()
+						.equals(mCurrentVersionName))) {
 			// maybe start intent immediately
 			showNotification();
 		} else {
-			Log.v(TAG, "up-to-date or no version: " + mPackageName + " (" + mCurrentVersion
-					+ ")");
+			Log.v(TAG, "up-to-date or no version: " + mPackageName + " ("
+					+ mCurrentVersion + ")");
 		}
 	}
 
@@ -68,16 +77,29 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		Notification notification = new Notification(R.drawable.icon, text,
 				System.currentTimeMillis());
 
-		if (mIntent == null) {
-			mIntent = new Intent(mContext, UpdateCheckerActivity.class);
-			mIntent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION,
-					getLatestVersion());
-			mIntent.putExtra(UpdateChecker.EXTRA_COMMENT, getComment());
-			mIntent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
-			mIntent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
-			mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-					| Intent.FLAG_ACTIVITY_NEW_TASK);
+		if (mUpdateIntent == null) {
+			mUpdateIntent = new Intent(Intent.ACTION_VIEW);
+			if (getApplicationId() != null) {
+				mUpdateIntent.setData(Uri.parse("market://details?id="
+						+ getApplicationId()));
+			} else if (mAppName != null) {
+				mUpdateIntent.setData(Uri.parse("market://search?q="
+						+ mContext.getString(R.string.market_search_term)));
+			} else {
+				//TODO
+			}
 		}
+
+		mIntent = new Intent(mContext, UpdateCheckerActivity.class);
+		mIntent
+				.putExtra(UpdateChecker.EXTRA_LATEST_VERSION,
+						getLatestVersion());
+		mIntent.putExtra(UpdateChecker.EXTRA_COMMENT, getComment());
+		mIntent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
+		mIntent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
+		mIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		mIntent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, mUpdateIntent);
 
 		// The PendingIntent to launch our activity if the user selects this
 		// notification

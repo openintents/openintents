@@ -9,5 +9,5 @@ oneway interface IUpdateCheckerServiceCallback {
     /**
      * Called when the version has been checked.
      */
-    void onVersionChecked(int latestVersion, String newApplicationId, String comment);
+    void onVersionChecked(int latestVersion, String newApplicationId, String comment, String latestVersionName);
 }
