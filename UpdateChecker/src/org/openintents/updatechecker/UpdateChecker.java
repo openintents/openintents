@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import android.content.Intent;
 import android.util.Log;
 
 public class UpdateChecker {
@@ -16,10 +17,12 @@ public class UpdateChecker {
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_APP_NAME = "app_name";
 	public static final String EXTRA_CURRENT_VERSION = "currrent_version";
+	public static final String EXTRA_CURRENT_VERSION_NAME = "current_version_name";
+	public static final String EXTRA_VEECHECK = "veecheck";
 
-	private int mLatestVersion;
-	private String mComment;
-	private String mNewApplicationId;
+	protected int mLatestVersion;
+	protected String mComment;
+	protected String mNewApplicationId;
 
 	public void checkForUpdate(String link) {
 
