@@ -45,12 +45,12 @@ public class UpdateCheckService extends Service {
 		boolean veecheck = intent.getBooleanExtra(UpdateChecker.EXTRA_VEECHECK,
 				false);
 
-		
-
 		long lastCheck;
 		lastCheck = getUpdateInfo(packageName);
 
-		if (lastCheck + CHECK_INTERVAL < System.currentTimeMillis()) {
+		Log.v(TAG, "last check for " + packageName + ": "
+				+ new java.util.Date(lastCheck));
+		if (true || lastCheck + CHECK_INTERVAL < System.currentTimeMillis()) {
 
 			// create update checker
 			final UpdateCheckerWithNotification updateChecker;
@@ -73,6 +73,8 @@ public class UpdateCheckService extends Service {
 							.getDataString());
 				}
 			}.start();
+		} else {
+			Log.v(TAG, "last check less than 24 hours ago");
 		}
 
 	}
@@ -90,7 +92,7 @@ public class UpdateCheckService extends Service {
 			} else {
 				insertUpdateInfo(packageName);
 				lastCheck = 0;
-				
+
 			}
 			cursor.close();
 		} else {
@@ -104,8 +106,8 @@ public class UpdateCheckService extends Service {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.PACKAGE_NAME, packageName);
 		values.put(UpdateInfo.LAST_CHECK, 0);
-		
-		getContentResolver().insert(UpdateInfo.CONTENT_URI, values );
+
+		getContentResolver().insert(UpdateInfo.CONTENT_URI, values);
 
 	}
 

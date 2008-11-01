@@ -61,6 +61,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 	}
 
 	public void checkForUpdateWithNotification(String uri) {
+		Log.v(TAG, "update with notification");
 		checkForUpdate(uri);
 		showNotificationIfRequired();
 		updateLastCheck();
@@ -84,6 +85,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		} else {
 			Log.v(TAG, "up-to-date or no version: " + mPackageName + " ("
 					+ mCurrentVersion + ")");
+			showNotification();
 		}
 	}
 
