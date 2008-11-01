@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class UpdateCheckerActivity extends Activity {
@@ -72,12 +73,12 @@ public class UpdateCheckerActivity extends Activity {
 	}
 
 	protected void updateLastIgnoredVersion() {
-		// TODO Auto-generated method stub
+		Toast.makeText(this, "TODO ignore this version", Toast.LENGTH_LONG).show();
 		
 	}
 
 	protected void updateUpdateTime() {
-		// TODO Auto-generated method stub		
+		Toast.makeText(this, "TODO remind me later", Toast.LENGTH_LONG).show();		
 	}
 
 	private void updateText(Intent intent) {

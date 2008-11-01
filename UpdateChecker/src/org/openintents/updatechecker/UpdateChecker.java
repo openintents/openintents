@@ -20,6 +20,7 @@ public class UpdateChecker {
 	public static final String EXTRA_CURRENT_VERSION_NAME = "current_version_name";
 	public static final String EXTRA_VEECHECK = "veecheck";
 	public static final String EXTRA_UPDATE_INTENT = "update_intent";
+	public static final String EXTRA_LATEST_VERSION_NAME = "latest_version_name";
 
 	protected int mLatestVersion;
 	protected String mLatestVersionName;

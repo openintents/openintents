@@ -94,6 +94,9 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		mIntent
 				.putExtra(UpdateChecker.EXTRA_LATEST_VERSION,
 						getLatestVersion());
+		mIntent
+		.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
+				getLatestVersionName());
 		mIntent.putExtra(UpdateChecker.EXTRA_COMMENT, getComment());
 		mIntent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		mIntent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
