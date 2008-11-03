@@ -39,7 +39,7 @@ public class UpdateInfoProvider extends ContentProvider {
 	private static final String TAG = "UpdateInfoProvider";
 
 	private static final String DATABASE_NAME = "updateinfo.db";
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 3;
 	private static final String UPDATE_INFO_TABLE = "update_info";
 
 	private static HashMap<String, String> sUpdateInfoProjectionMap;
@@ -66,7 +66,14 @@ public class UpdateInfoProvider extends ContentProvider {
 		private void createTable(SQLiteDatabase db, String tableName) {
 			db.execSQL("CREATE TABLE " + tableName + " (" + UpdateInfo._ID
 					+ " INTEGER PRIMARY KEY," + UpdateInfo.PACKAGE_NAME
-					+ " TEXT," + UpdateInfo.LAST_CHECK + " LONG" + ");");
+					+ " TEXT," +  
+					UpdateInfo.UPDATE_URL
+					+ " TEXT,"+ UpdateInfo.LAST_CHECK + " LONG," + 
+					UpdateInfo.LAST_CHECK_VERSION_CODE
+					+ " INTEGER,"+
+					UpdateInfo.LAST_CHECK_VERSION_NAME
+					+ " TEXT"+
+					");");
 		}
 
 		@Override
@@ -239,7 +246,13 @@ public class UpdateInfoProvider extends ContentProvider {
 		sUpdateInfoProjectionMap.put(UpdateInfo._ID, UpdateInfo._ID);
 		sUpdateInfoProjectionMap.put(UpdateInfo.PACKAGE_NAME,
 				UpdateInfo.PACKAGE_NAME);
+		sUpdateInfoProjectionMap.put(UpdateInfo.UPDATE_URL,
+				UpdateInfo.UPDATE_URL);
 		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK,
 				UpdateInfo.LAST_CHECK);
+		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK_VERSION_CODE,
+				UpdateInfo.LAST_CHECK_VERSION_CODE);
+		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK_VERSION_NAME,
+				UpdateInfo.LAST_CHECK_VERSION_NAME);
 	}
 }

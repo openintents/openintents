@@ -63,13 +63,27 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 	public void checkForUpdateWithNotification(String uri) {
 		Log.v(TAG, "update with notification");
 		checkForUpdate(uri);
+		setMarketUpdateIntent();
 		showNotificationIfRequired();
-		updateLastCheck();
+		updateLastCheck(uri);
+	}
+	
+
+	public void checkForUpdateWithOutNotification(String uri) {
+		Log.v(TAG, "update without notification");
+		checkForUpdate(uri);
+		setMarketUpdateIntent();
+		showNotificationIfRequired();
+		updateLastCheck(uri);
+		
 	}
 
-	private void updateLastCheck() {
+	private void updateLastCheck(String uri) {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
+		values.put(UpdateInfo.UPDATE_URL, uri);
+		values.put(UpdateInfo.LAST_CHECK_VERSION_CODE, getLatestVersion());
+		values.put(UpdateInfo.LAST_CHECK_VERSION_NAME, getLatestVersionName());
 		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
 				UpdateInfo.PACKAGE_NAME + " = ? ",
 				new String[] { mPackageName });
@@ -97,25 +111,11 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		Notification notification = new Notification(R.drawable.icon, text,
 				System.currentTimeMillis());
 
-		if (mUpdateIntent == null) {
-			mUpdateIntent = new Intent(Intent.ACTION_VIEW);
-			if (getApplicationId() != null) {
-				mUpdateIntent.setData(Uri.parse("market://details?id="
-						+ getApplicationId()));
-			} else if (mAppName != null) {
-				mUpdateIntent.setData(Uri.parse("market://search?q="
-						+ mContext.getString(R.string.market_search_term)));
-			} else {
-				//TODO
-			}
-		}
-
 		mIntent = new Intent(mContext, UpdateCheckerActivity.class);
 		mIntent
 				.putExtra(UpdateChecker.EXTRA_LATEST_VERSION,
 						getLatestVersion());
-		mIntent
-		.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
+		mIntent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
 				getLatestVersionName());
 		mIntent.putExtra(UpdateChecker.EXTRA_COMMENT, getComment());
 		mIntent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
@@ -139,4 +139,24 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 		// cancel.
 		mNm.notify(mPackageName.hashCode(), notification);
 	}
+
+	private void setMarketUpdateIntent() {
+		if (mUpdateIntent == null) {
+			mUpdateIntent = new Intent(Intent.ACTION_VIEW);
+			if (getApplicationId() != null) {
+				mUpdateIntent.setData(Uri.parse("market://details?id="
+						+ getApplicationId()));
+			} else if (mAppName != null) {
+				mUpdateIntent.setData(Uri.parse("market://search?q="
+						+ mContext.getString(R.string.market_search_term)));
+			} else {
+				// TODO
+			}
+		}
+	}
+
+	public Intent getUpdateIntent() {
+		return mUpdateIntent;
+	}
+
 }
