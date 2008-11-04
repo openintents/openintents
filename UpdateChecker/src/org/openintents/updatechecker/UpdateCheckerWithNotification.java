@@ -108,7 +108,7 @@ public class UpdateCheckerWithNotification extends UpdateChecker {
 				mAppName);
 
 		// Set the icon, scrolling text and timestamp
-		Notification notification = new Notification(R.drawable.icon, text,
+		Notification notification = new Notification(R.drawable.icon_update, text,
 				System.currentTimeMillis());
 
 		mIntent = new Intent(mContext, UpdateCheckerActivity.class);
