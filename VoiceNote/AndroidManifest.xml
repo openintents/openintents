@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.openintents.voicenotes"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".VoiceRecordNote"
+                  android:label="@string/app_name">            
+            <intent-filter>
+                <action android:name="org.openintents.voicenotes.RECORD" />                
+            </intent-filter> 
+            <intent-filter android:label="Record voice memo">
+                <action android:name="org.openintents.voicenotes.RECORD"/>                           
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VoicePlayNote"
+                  android:label="@string/app_name">                              
+            <intent-filter>
+                <action android:name="org.openintents.voicenotes.PLAY" />                
+            </intent-filter>            
+             <intent-filter android:label="Play Voice Memo">   
+                <action android:name="org.openintents.voicenotes.PLAY"/>                        
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
+            </intent-filter>
+        </activity>
+        <provider android:name=".VoiceNoteProvider" android:authorities="org.openintents.voicenotes"/>
+    </application>
+</manifest> 
