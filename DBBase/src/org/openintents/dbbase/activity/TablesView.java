@@ -1,7 +1,11 @@
-package org.openintents.dbbase;
+package org.openintents.dbbase.activity;
 
+import org.openintents.dbbase.R;
 import org.openintents.dbbase.DBBase.Columns;
 import org.openintents.dbbase.DBBase.Tables;
+import org.openintents.dbbase.R.id;
+import org.openintents.dbbase.R.layout;
+import org.openintents.dbbase.R.string;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;

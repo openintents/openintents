@@ -8,4 +8,6 @@
 <string name="add_column_dialog_title">Enter details of column</string>
 <string name="add_column">Add column</string>
 <string name="add_column_dialog_column_name">Column name</string>
+<string name="new_row">Add %s</string>
+<string name="create_table">Create table</string>
 </resources>

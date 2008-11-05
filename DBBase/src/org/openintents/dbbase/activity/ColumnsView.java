@@ -1,7 +1,11 @@
-package org.openintents.dbbase;
+package org.openintents.dbbase.activity;
 
+import org.openintents.dbbase.R;
 import org.openintents.dbbase.DBBase.Columns;
 import org.openintents.dbbase.DBBase.Tables;
+import org.openintents.dbbase.R.id;
+import org.openintents.dbbase.R.layout;
+import org.openintents.dbbase.R.string;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -22,6 +26,7 @@ public class ColumnsView extends ListActivity {
 
 	private static final String TAG = "ColumnsView";
 	private static final int MENU_ADD_COLUMN = Menu.FIRST;
+	private static final int MENU_CREATE_TABLE = Menu.FIRST + 1;
 	private long mTableId;
 
 	/** Called when the activity is first created. */
@@ -50,6 +55,8 @@ public class ColumnsView extends ListActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(0, MENU_ADD_COLUMN, 0, R.string.add_column).setIcon(
 				android.R.drawable.ic_menu_add);
+		menu.add(0, MENU_CREATE_TABLE, 0, R.string.create_table).setIcon(
+				android.R.drawable.ic_menu_save);
 		return true;
 	}
 
@@ -58,6 +65,9 @@ public class ColumnsView extends ListActivity {
 		switch (item.getItemId()) {
 		case MENU_ADD_COLUMN:
 			addColumnWithDialog();
+			break;
+		case MENU_CREATE_TABLE:
+			createTable();
 			break;
 		}
 		return true;

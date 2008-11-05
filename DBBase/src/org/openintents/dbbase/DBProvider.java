@@ -81,6 +81,7 @@ public class DBProvider extends ContentProvider {
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("DROP TABLE " + TABLE_META_TABLES);
+			db.execSQL("DROP TABLE " + TABLE_META_COLUMNS);
 			onCreate(db);
 
 		}// onupgrade
@@ -95,7 +96,7 @@ public class DBProvider extends ContentProvider {
 
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			Log.d(TAG, "Creating table " + TABLE_META_TABLES);
+			Log.d(TAG, "Creating user db");
 
 		}
 
@@ -156,8 +157,7 @@ public class DBProvider extends ContentProvider {
 	@Override
 	public boolean onCreate() {
 		mUserHelper = new UserHelper(getContext());
-		mMetaHelper = new MetaHelper(getContext(), mUserHelper);
-		mMetaHelper.onUpgrade(mMetaHelper.getWritableDatabase(), 3, 1);
+		mMetaHelper = new MetaHelper(getContext(), mUserHelper);		
 		return true;
 	}
 
@@ -185,6 +185,17 @@ public class DBProvider extends ContentProvider {
 			SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 			qb.setTables(TABLE_META_TABLES);
 			Cursor cursor = qb.query(db, projection, selection, selectionArgs,
+					null, null, sortOrder);
+
+			return cursor;
+			
+			
+		case COLUMNS:
+
+			db = mMetaHelper.getReadableDatabase();
+			qb = new SQLiteQueryBuilder();
+			qb.setTables(TABLE_META_COLUMNS);
+			cursor = qb.query(db, projection, selection, selectionArgs,
 					null, null, sortOrder);
 
 			return cursor;
@@ -221,14 +232,17 @@ public class DBProvider extends ContentProvider {
 
 			long id = db.insert(TABLE_META_TABLES, Tables.TABLE_NAME,
 					contentvalues);
-			return Uri.withAppendedPath(Tables.CONTENT_URI, String.valueOf(id));
+			Uri newUri = Uri.withAppendedPath(Tables.CONTENT_URI, String.valueOf(id));
+			getContext().getContentResolver().notifyChange(newUri, null);
+			return newUri;
 
 		case COLUMNS:
 			// TODO check for table_id
 			db = mMetaHelper.getWritableDatabase();
 			id = db.insert(TABLE_META_COLUMNS, Columns.COL_NAME, contentvalues);
-			Uri newUri = Uri.withAppendedPath(Columns.CONTENT_URI, String
+			newUri = Uri.withAppendedPath(Columns.CONTENT_URI, String
 					.valueOf(id));
+			getContext().getContentResolver().notifyChange(newUri, null);
 			return newUri;
 		}
 		return null;
