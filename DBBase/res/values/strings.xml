@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TablesView</string>
+    <string name="app_name">OI Base</string>
+<string name="add_table">Add table</string>
+<string name="add_table_dialog_title">Enter table name</string>
+<string name="add_table_dialog_table_name">Table name</string>
+<string name="add_column_dialog_title">Enter details of column</string>
+<string name="add_column">Add column</string>
+<string name="add_column_dialog_column_name">Column name</string>
+</resources>
