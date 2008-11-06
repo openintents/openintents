@@ -17,6 +17,7 @@
 package org.openintents.countdown;
 
 import org.openintents.countdown.db.Countdown;
+import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 
 import android.app.Notification;
@@ -26,7 +27,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.AudioManager;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * This is an example of implement an {@link BroadcastReceiver} for an alarm that
@@ -36,6 +39,8 @@ import android.net.Uri;
  */
 public class AlarmReceiver extends BroadcastReceiver
 {
+	private final static String TAG = "AlarmReceiver";
+	
 	Context mContext;
 	
     @Override
@@ -48,6 +53,7 @@ public class AlarmReceiver extends BroadcastReceiver
         // Toast.makeText(context, "R.string.alarm_received", Toast.LENGTH_SHORT).show();
         
         showNotification(mUri);
+        
     }
     
 
@@ -68,15 +74,28 @@ public class AlarmReceiver extends BroadcastReceiver
 
         // Get the data
 
-        Cursor c = mContext.getContentResolver().query(uri, new String[]{Countdown.Durations.TITLE, Countdown.Durations.DURATION}, null, null,
+        Cursor c = mContext.getContentResolver().query(uri, Durations.PROJECTION, null, null,
                 Countdown.Durations.DEFAULT_SORT_ORDER);
         
         String title = "";
         String text = "";
         if (c != null) {
         	c.moveToFirst();
-        	title = c.getString(0);
-        	text = CountdownUtils.getDurationString(c.getLong(1));
+        	title = c.getString(c.getColumnIndexOrThrow(Durations.TITLE));
+        	text = CountdownUtils.getDurationString(c.getColumnIndexOrThrow(Durations.DURATION));
+        }
+        
+        long ring = 0;
+        Uri ringtone = null;
+        long vibrate = 0;
+        if (c != null) {
+        	c.moveToFirst();
+        	ring = c.getLong(c.getColumnIndexOrThrow(Durations.RING));
+        	String ringstring = c.getString(c.getColumnIndexOrThrow(Durations.RINGTONE));
+        	if (ringstring != null) {
+        		ringtone = Uri.parse(ringstring);
+        	}
+        	vibrate = c.getLong(c.getColumnIndexOrThrow(Durations.VIBRATE));
         }
         
         // The PendingIntent to launch our activity if the user selects this notification
@@ -93,9 +112,21 @@ public class AlarmReceiver extends BroadcastReceiver
         // Set the info for the views that show in the notification panel.
         notif.setLatestEventInfo(mContext, title, text, contentIntent);
 
-        // after a 100ms delay, vibrate for 250ms, pause for 100 ms and
-        // then vibrate for 500ms.
-        notif.vibrate = new long[] { 100, 250, 100, 500};
+
+        if (ring != 0) {
+        	Log.i(TAG, "Notification: Set ringtone " + ringtone.toString());
+        	notif.sound = ringtone;
+
+        	notif.audioStreamType = AudioManager.STREAM_ALARM;
+        	notif.flags |= Notification.FLAG_INSISTENT;
+        }
+        
+        if (vibrate != 0) {
+        	Log.i(TAG, "Notification: Set vibration");
+            // after a 100ms delay, vibrate for 250ms, pause for 100 ms and
+            // then vibrate for 500ms.
+            notif.vibrate = new long[] { 100, 250, 100, 500};
+        }
         
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
 
@@ -106,5 +137,6 @@ public class AlarmReceiver extends BroadcastReceiver
         // application.
         nm.notify(notification_id, notif);
     }
+
 }
 
