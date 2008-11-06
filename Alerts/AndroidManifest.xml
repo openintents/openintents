@@ -41,7 +41,7 @@
 				<category android:name="org.openintents.category.SETTINGS" />
 			</intent-filter>
 		</activity>
-		<activity android:name=".AlertList" android:label="Alert List"
+		<activity android:name=".AlertList" android:label="@string/app_name"
 			android:icon="@drawable/icon_bell">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
