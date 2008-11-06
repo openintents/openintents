@@ -17,26 +17,50 @@
  */
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
+	android:layout_marginTop="8dip" android:layout_marginBottom="8dip"
+	android:layout_marginLeft="8dip" android:layout_marginRight="12dip"
+	android:minHeight="?android:attr/listPreferredItemHeight" 
     >
+    <LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="0dip"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+		android:layout_gravity="center_vertical"
+	    ><!-- android:layout_alignParentLeft="true"
+	     -->
+		<TextView
+		    android:id="@+id/text"
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+		/> 
+		<TextView
+		    android:id="@+id/duration"
+		    android:layout_height="wrap_content"
+		    android:layout_width="wrap_content"
+		/>
+		
+	<!-- android:paddingLeft="5dip"
+		    android:gravity="center_vertical"
+		    android:singleLine="true"
+		     -->
+		
+	</LinearLayout>
+	<!-- <LinearLayout
+		android:layout_height="wrap_content"
+		android:layout_width="0dip"
+		android:layout_weight="1"
+		/>  -->
 	<TextView
-	    android:id="@android:id/text1"
-	    android:layout_width="fill_parent"
-	    android:layout_height="?android:attr/listPreferredItemHeight"
+	    android:id="@+id/countdown"
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content"
+	    android:layout_gravity="center_vertical"
 	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:gravity="center_vertical"
-	    android:paddingLeft="5dip"
-	    android:singleLine="true"
 	/>
-	<TextView
-	    android:id="@android:id/text2"
-	    android:layout_width="fill_parent"
-	    android:layout_height="?android:attr/listPreferredItemHeight"
-	    android:textAppearance="?android:attr/textAppearanceLarge"
-	    android:gravity="center_vertical"
-	    android:paddingLeft="5dip"
-	    android:singleLine="true"
-	/>
+	
 </LinearLayout>

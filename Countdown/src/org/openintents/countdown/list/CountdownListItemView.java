@@ -3,6 +3,7 @@ package org.openintents.countdown.list;
 import org.openintents.countdown.R;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class CountdownListItemView extends LinearLayout {
 	private long mDeadline;
 	private TextView mTitle;
 	private TextView mDurationView;
+	private TextView mCountdownView;
 	
 	public CountdownListItemView(Context context) {
 		super(context);
@@ -27,8 +29,9 @@ public class CountdownListItemView extends LinearLayout {
 		inflater.inflate(
 				R.layout.countdownlist_item, this, true);
 		
-		mTitle = (TextView) findViewById(android.R.id.text1);
-		mDurationView = (TextView) findViewById(android.R.id.text2);
+		mTitle = (TextView) findViewById(R.id.text);
+		mDurationView = (TextView) findViewById(R.id.duration);
+		mCountdownView = (TextView) findViewById(R.id.countdown);
 	}
 
 	/**
@@ -51,15 +54,32 @@ public class CountdownListItemView extends LinearLayout {
 	public void updateCountdown() {
 		long now = System.currentTimeMillis();
 		
+		TypedArray a;
+		
 		long delta = mDeadline - now;
 		
+		mDurationView.setText("" + getDurationString(mDuration));
+		
 		if (delta > 0) {
-			mDurationView.setText("Countdown: " + getDurationString(delta));
+			//mDurationView.setText("");
+			mCountdownView.setText("" + getDurationString(delta));
+			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			//mDurationView.setTextColor(0xffff00ff);
+			//mDurationView.setTextSize(24);
 		} else if (delta > -3000) {
-			mDurationView.setText("Boom!" + getDurationString(0));
+			//mDurationView.setText("" + getDurationString(mDuration));
+			mCountdownView.setText("" + getDurationString(0));
+			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			//mDurationView.setTextColor(0xffff0000);
+			//mDurationView.setTextSize(24);
 		} else {
-			mDurationView.setText("Timer: " + getDurationString(mDuration));
+			//mDurationView.setText("" + getDurationString(mDuration));
+			mCountdownView.setText("");
+			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Small);
+			//mDurationView.setTextSize(24);
 		}
+		requestLayout();
+		invalidate();
 	}
 	
 	private String getDurationString(long duration) {
