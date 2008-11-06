@@ -20,6 +20,7 @@ import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -29,6 +30,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.media.AudioManager;
 import android.net.Uri;
+import android.os.Handler;
 import android.util.Log;
 
 /**
@@ -40,6 +42,9 @@ import android.util.Log;
 public class AlarmReceiver extends BroadcastReceiver
 {
 	private final static String TAG = "AlarmReceiver";
+	
+	private final static int ALARM_TIMEOUT_SECONDS = 5; // 300;
+	private Handler mTimeout;
 	
 	Context mContext;
 	
@@ -54,6 +59,9 @@ public class AlarmReceiver extends BroadcastReceiver
         
         showNotification(mUri);
         
+        // We don't use the following, as it also cancels the notification.
+        
+        //setAlarmCancel(mUri);
     }
     
 
@@ -64,7 +72,7 @@ public class AlarmReceiver extends BroadcastReceiver
     public void showNotification(Uri uri) {
     	
         // look up the notification manager service
-        NotificationManager nm = (NotificationManager)mContext.getSystemService(mContext.NOTIFICATION_SERVICE);
+        NotificationManager nm = (NotificationManager)mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
         //Intent intent = new Intent(mContext, NotificationReceiverActivity.class);
@@ -103,15 +111,15 @@ public class AlarmReceiver extends BroadcastReceiver
                 intent, 0);
 
         // The ticker text, this uses a formatted string so our message could be localized
-        String tickerText = mContext.getString(R.string.countdown_ended);
-
+        //String tickerText = mContext.getString(R.string.countdown_ended);
+        String tickerText = title;
+        	
         // construct the Notification object.
         Notification notif = new Notification(R.drawable.icon_hourglass, tickerText,
                 System.currentTimeMillis());
 
         // Set the info for the views that show in the notification panel.
         notif.setLatestEventInfo(mContext, title, text, contentIntent);
-
 
         if (ring != 0) {
         	Log.i(TAG, "Notification: Set ringtone " + ringtone.toString());
@@ -128,6 +136,8 @@ public class AlarmReceiver extends BroadcastReceiver
             notif.vibrate = new long[] { 100, 250, 100, 500};
         }
         
+        // notif.flags |= Notification.FLAG_SHOW_LIGHTS;
+        
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
 
         // Note that we use R.layout.incoming_message_panel as the ID for
@@ -136,6 +146,32 @@ public class AlarmReceiver extends BroadcastReceiver
         // the notification.  It will always be a unique number within your
         // application.
         nm.notify(notification_id, notif);
+    }
+    
+    /**
+     * Kills alarm audio after ALARM_TIMEOUT_SECONDS, so the alarm
+     * won't run all day.
+     */
+    public void setAlarmCancel(Uri uri) {
+    	long now = System.currentTimeMillis();
+    	long time = now + 1000 * ALARM_TIMEOUT_SECONDS;
+    	
+    	// When the alarm goes off, we want to broadcast an Intent to our
+        // BroadcastReceiver.  Here we make an Intent with an explicit class
+        // name to have our own receiver (which has been published in
+        // AndroidManifest.xml) instantiated and called, and then create an
+        // IntentSender to have the intent executed as a broadcast.
+        Intent intent = new Intent(mContext, AlarmCancelReceiver.class);
+        
+        intent.setData(uri);
+        
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext,
+                0, intent, 0);
+
+        // Schedule the alarm!
+        AlarmManager am = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+
     }
 
 }
