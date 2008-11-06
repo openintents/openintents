@@ -18,6 +18,8 @@
 	<string name="error_title">Error</string>
 	<string name="error_message">Error loading countdown</string>
 	
+	<string name="countdown_ended">Countdown ended</string>
+	
 	
 	<!-- Update -->
 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>

@@ -27,6 +27,9 @@ import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.widget.DurationPicker;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -81,6 +84,8 @@ public class CountdownEditorActivity extends Activity {
     
     private DurationPicker mDurationPicker;
     private Button mStart;
+    
+    private boolean mStartCountdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,8 @@ public class CountdownEditorActivity extends Activity {
 
         final Intent intent = getIntent();
 
+        mStartCountdown = false;
+        
         // Do some setup based on the action being performed.
 
         final String action = intent.getAction();
@@ -95,6 +102,10 @@ public class CountdownEditorActivity extends Activity {
             // Requested to edit: set that state, and the data being edited.
             mState = STATE_EDIT;
             mUri = intent.getData();
+            
+            // If we have been called by the notification, cancel it:
+            cancelNotification(mUri);
+            
         } else if (Intent.ACTION_INSERT.equals(action)) {
             // Requested to insert: set that state, and create a new entry
             // in the container.
@@ -239,8 +250,13 @@ public class CountdownEditorActivity extends Activity {
                 long duration = mDurationPicker.getDuration();
         		
         		values.put(Durations.DURATION, duration);
-        		values.put(Durations.DEADLINE_DATE, now + duration);
-
+        		
+        		if (mStartCountdown) {
+	        		values.put(Durations.DEADLINE_DATE, now + duration);
+	        		
+	            	setAlarm(now + duration);
+        		}
+        		
                 // Commit all of our changes to persistent storage. When the update completes
                 // the content provider will notify the cursor of the change, which will
                 // cause the UI to be updated.
@@ -333,6 +349,42 @@ public class CountdownEditorActivity extends Activity {
     }
     
     private final void start() {
+    	mStartCountdown = true;
     	finish();
     }
+    
+    public void setAlarm(long time) {
+    	// When the alarm goes off, we want to broadcast an Intent to our
+        // BroadcastReceiver.  Here we make an Intent with an explicit class
+        // name to have our own receiver (which has been published in
+        // AndroidManifest.xml) instantiated and called, and then create an
+        // IntentSender to have the intent executed as a broadcast.
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        
+        intent.setData(mUri);
+        
+        PendingIntent pendingintent = PendingIntent.getBroadcast(this,
+                0, intent, 0);
+
+        // Schedule the alarm!
+        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+        am.set(AlarmManager.RTC_WAKEUP, time, pendingintent);
+
+    }
+    
+    /**
+     * Cancel notification (if it exists).
+     * @param uri
+     */
+    public void cancelNotification(Uri uri) {
+
+        int notification_id = Integer.parseInt(uri.getLastPathSegment());
+        
+        // look up the notification manager service
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        // cancel the notification that we started in IncomingMessage
+        nm.cancel(notification_id);
+    }
+    
 }

@@ -3,11 +3,16 @@
       package="org.openintents.countdown"
       android:versionCode="10000"
       android:versionName="1.0.0">
+      
+    <!-- required for notifications -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    
     <application android:icon="@drawable/icon_hourglass" android:label="@string/app_name">
         <provider android:name=".db.CountdownProvider"
             android:authorities="org.openintents.countdown"
         />
-        
+    
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
         
         <activity android:name=".list.CountdownListActivity" 
         	android:icon="@drawable/icon_hourglass" 
@@ -54,6 +59,27 @@
         </activity>
          
          
+        <activity android:name="NotificationReceiverActivity"
+            android:icon="@drawable/icon_hourglass" 
+        	android:label="@string/title_setcountdown"
+        >
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
+            </intent-filter>
+            <!-- This filter says that we can view or edit the data of
+                 a single note -->
+            <!-- <intent-filter android:label="@string/menu_edit">
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
+            </intent-filter> -->
+
+        </activity>
+        
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
         <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">

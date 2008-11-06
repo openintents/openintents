@@ -63,14 +63,14 @@ public class CountdownListItemView extends LinearLayout {
 		if (delta > 0) {
 			//mDurationView.setText("");
 			mCountdownView.setText("" + getDurationString(delta));
-			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			//mDurationView.setTextColor(0xffff00ff);
 			//mDurationView.setTextSize(24);
 		} else if (delta > -3000) {
 			//mDurationView.setText("" + getDurationString(mDuration));
 			mCountdownView.setText("" + getDurationString(0));
 			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
-			//mDurationView.setTextColor(0xffff0000);
+			mCountdownView.setTextColor(0xffff0000);
 			//mDurationView.setTextSize(24);
 		} else {
 			//mDurationView.setText("" + getDurationString(mDuration));
@@ -82,7 +82,7 @@ public class CountdownListItemView extends LinearLayout {
 		invalidate();
 	}
 	
-	private String getDurationString(long duration) {
+	public static String getDurationString(long duration) {
 		int seconds = (int) (duration / 1000);
 		int minutes = seconds / 60;
 		seconds = seconds % 60;
