@@ -24,7 +24,6 @@
 package org.openintents.countdown;
 
 import org.openintents.countdown.db.Countdown.Durations;
-import org.openintents.countdown.list.CountdownListItemView;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.widget.DurationPicker;
 
@@ -46,7 +45,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 /**
@@ -96,9 +94,17 @@ public class CountdownEditorActivity extends Activity {
     
     private DurationPicker mDurationPicker;
     private Button mStart;
+    private Button mStop;
+    private Button mModify;
+    private Button mCont;
     private TextView mCountdownView;
     
     private boolean mStartCountdown;
+    
+    private int mCountdownState;
+    private static final int STATE_COUNTDOWN_IDLE = 1;
+    private static final int STATE_COUNTDOWN_RUNNING = 2;
+    private static final int STATE_COUNTDOWN_MODIFY = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +113,7 @@ public class CountdownEditorActivity extends Activity {
         final Intent intent = getIntent();
 
         mStartCountdown = false;
+        mCountdownState = STATE_COUNTDOWN_IDLE;
         
         // Do some setup based on the action being performed.
 
@@ -166,6 +173,36 @@ public class CountdownEditorActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				start();
+			}
+        	
+        });
+        
+        mStop = (Button) findViewById(R.id.stop);
+        mStop.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				stop();
+			}
+        	
+        });
+
+        mModify = (Button) findViewById(R.id.modify);
+        mModify.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				modify();
+			}
+        	
+        });
+
+        mCont = (Button) findViewById(R.id.cont);
+        mCont.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				cont();
 			}
         	
         });
@@ -267,15 +304,13 @@ public class CountdownEditorActivity extends Activity {
                 
 
         		// Set the current time.
-                long duration = mDurationPicker.getDuration();
+                
+        		values.put(Durations.DURATION, mDuration);
         		
-        		values.put(Durations.DURATION, duration);
-        		
-        		if (mStartCountdown) {
-	        		values.put(Durations.DEADLINE_DATE, now + duration);
+        		//if (mStartCountdown) {
+	        		values.put(Durations.DEADLINE_DATE, mDeadline);
 	        		
-	            	setAlarm(now + duration);
-        		}
+        		//}
         		
                 // Commit all of our changes to persistent storage. When the update completes
                 // the content provider will notify the cursor of the change, which will
@@ -369,8 +404,87 @@ public class CountdownEditorActivity extends Activity {
     }
     
     private final void start() {
+    	mCountdownState = STATE_COUNTDOWN_RUNNING;
+		
     	mStartCountdown = true;
-    	finish();
+    	
+    	long now = System.currentTimeMillis();
+        mDuration = mDurationPicker.getDuration();
+		
+    	mDeadline = now + mDuration;
+    	//finish();
+
+    	setAlarm(mDeadline);
+    	
+    	updateCountdown();
+    }
+
+    private final void stop() {
+    	mCountdownState = STATE_COUNTDOWN_IDLE;
+		
+    	//mStartCountdown = false;
+    	
+    	//long now = System.currentTimeMillis();
+        //mDuration = mDurationPicker.getDuration();
+		
+    	mDeadline = 0;
+    	//finish();
+
+    	cancelAlarm();
+    	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
+    	
+    	updateCountdown();
+    }
+
+    /**
+     * Modify the current time.
+     * Note that the countdown continues to run in the background.
+     * One can see this by pressing the "back" button, then entering again.
+     */
+    private final void modify() {
+    	mCountdownState = STATE_COUNTDOWN_MODIFY;
+		
+    	// Set current time to modify timer temporarily
+    	long now = System.currentTimeMillis();
+        
+    	long temporaryDuration = mDeadline - now;
+    	
+    	if (temporaryDuration < 0) {
+    		temporaryDuration = 0;
+    	}
+    	
+    	mOriginalDuration = mDuration;
+    	
+    	mDurationPicker.setDuration(temporaryDuration);
+    	
+    	mStartCountdown = true;
+
+    	
+    	updateCountdown();
+    }
+    
+    long mOriginalDuration;
+
+    private final void cont() {
+    	mCountdownState = STATE_COUNTDOWN_RUNNING;
+		
+    	mStartCountdown = true;
+    	
+    	long now = System.currentTimeMillis();
+        mDuration = mDurationPicker.getDuration();
+		
+    	mDeadline = now + mDuration;
+    	//finish();
+    	
+    	// Set original duration
+    	mDuration = mOriginalDuration;
+    	mDurationPicker.setDuration(mDuration);
+
+    	cancelAlarm();
+    	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
+    	
+    	setAlarm(mDeadline);
+    	updateCountdown();
     }
     
     public void setAlarm(long time) {
@@ -383,13 +497,24 @@ public class CountdownEditorActivity extends Activity {
         
         intent.setData(mUri);
         
-        PendingIntent pendingintent = PendingIntent.getBroadcast(this,
+        mPendingIntent = PendingIntent.getBroadcast(this,
                 0, intent, 0);
 
         // Schedule the alarm!
         AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, time, pendingintent);
+        am.set(AlarmManager.RTC_WAKEUP, time, mPendingIntent);
 
+    }
+    
+    PendingIntent mPendingIntent;
+    
+    public void cancelAlarm() {
+
+    	if (mPendingIntent != null) {
+	        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
+	        am.cancel(mPendingIntent);
+	        mPendingIntent = null;
+    	}
     }
     
     /**
@@ -415,8 +540,12 @@ public class CountdownEditorActivity extends Activity {
 		
 		//mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 		
-		if (delta > 0) {
+		if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
+			mDurationPicker.setVisibility(View.VISIBLE);
+			mCountdownView.setVisibility(View.INVISIBLE);
+		} else if (delta > 0) {
 			//mDurationView.setText("");
+			mCountdownState = STATE_COUNTDOWN_RUNNING;
 			mDurationPicker.setVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
 			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
@@ -425,6 +554,7 @@ public class CountdownEditorActivity extends Activity {
 
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
 		} else if (delta > -3000) {
+			mCountdownState = STATE_COUNTDOWN_RUNNING;
 			mDurationPicker.setVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
 			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
@@ -432,11 +562,36 @@ public class CountdownEditorActivity extends Activity {
 
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
 		} else {
+			mCountdownState = STATE_COUNTDOWN_IDLE;
 			mDurationPicker.setVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		}
+		
+		updateButtons();
     }
     
+    private void updateButtons() {
+    	switch (mCountdownState) {
+    	case STATE_COUNTDOWN_IDLE:
+    		mStart.setVisibility(View.VISIBLE);
+    		mStop.setVisibility(View.GONE);
+    		mModify.setVisibility(View.GONE);
+    		mCont.setVisibility(View.GONE);
+    		break;
+    	case STATE_COUNTDOWN_RUNNING:
+    		mStart.setVisibility(View.GONE);
+    		mStop.setVisibility(View.VISIBLE);
+    		mModify.setVisibility(View.VISIBLE);
+    		mCont.setVisibility(View.GONE);
+    		break;
+    	case STATE_COUNTDOWN_MODIFY:
+    		mStart.setVisibility(View.GONE);
+    		mStop.setVisibility(View.GONE);
+    		mModify.setVisibility(View.GONE);
+    		mCont.setVisibility(View.VISIBLE);
+    		break;
+    	}
+    }
 
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {

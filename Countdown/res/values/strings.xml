@@ -3,6 +3,9 @@
     <string name="app_name">OI Countdown</string>
     
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="modify">Modify</string>
+    <string name="cont">Continue</string>
     
 	<string name="no_durations">Use menu to add new countdown.</string>
 	<string name="countdown_list">Countdown list</string>

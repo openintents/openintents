@@ -15,17 +15,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+	>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     >
     <EditText android:id="@+id/title"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent" />
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dip"
+        android:layout_marginBottom="20dip" />
     <FrameLayout
     	android:layout_height="wrap_content"
-        android:layout_width="fill_parent" >
+        android:layout_width="fill_parent"
+        android:layout_marginBottom="20dip" >
 	    <org.openintents.countdown.widget.DurationPicker android:id="@+id/durationpicker"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
@@ -36,8 +43,31 @@
 		    android:textAppearance="?android:attr/textAppearanceLarge"
 	        android:layout_gravity="center" />
     </FrameLayout>
-    <Button android:id="@+id/start"
-    	android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-    	android:text="@string/start"/>
+    <LinearLayout
+	    android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="128dip"
+        android:layout_marginBottom="20dip" >
+	    <Button android:id="@+id/start"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	    	android:text="@string/start"/>
+	    <Button android:id="@+id/modify"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	    	android:text="@string/modify"/>
+	    <Button android:id="@+id/stop"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	    	android:text="@string/stop"/>
+	    <Button android:id="@+id/cont"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	    	android:text="@string/cont"/>
+	</LinearLayout>
 </LinearLayout>
+</ScrollView>
