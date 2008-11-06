@@ -46,7 +46,7 @@ public class CountdownProvider extends ContentProvider {
     private static final String TAG = "CountdownProvider";
 
     private static final String DATABASE_NAME = "countdown.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DURATIONS_TABLE_NAME = "durations";
 
     private static HashMap<String, String> sDurationsProjectionMap;
@@ -72,6 +72,9 @@ public class CountdownProvider extends ContentProvider {
                     + Durations.TITLE + " TEXT,"
                     + Durations.DURATION + " INTEGER,"
                     + Durations.DEADLINE_DATE + " INTEGER,"
+                    + Durations.RING + " INTEGER,"
+                    + Durations.RINGTONE + " TEXT,"
+                    + Durations.VIBRATE + " INTEGER,"
                     + Durations.CREATED_DATE + " INTEGER,"
                     + Durations.MODIFIED_DATE + " INTEGER"
                     + ");");
@@ -181,7 +184,19 @@ public class CountdownProvider extends ContentProvider {
         }
         
         if (values.containsKey(Countdown.Durations.DEADLINE_DATE) == false) {
-            values.put(Countdown.Durations.DEADLINE_DATE, now);
+            values.put(Countdown.Durations.DEADLINE_DATE, 0);
+        }
+
+        if (values.containsKey(Countdown.Durations.RING) == false) {
+            values.put(Countdown.Durations.RING, 0);
+        }
+
+        if (values.containsKey(Countdown.Durations.RINGTONE) == false) {
+            values.put(Countdown.Durations.RINGTONE, (String) null);
+        }
+
+        if (values.containsKey(Countdown.Durations.VIBRATE) == false) {
+            values.put(Countdown.Durations.VIBRATE, 0);
         }
 
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
@@ -251,6 +266,9 @@ public class CountdownProvider extends ContentProvider {
         sDurationsProjectionMap.put(Durations.TITLE, Durations.TITLE);
         sDurationsProjectionMap.put(Durations.DURATION, Durations.DURATION);
         sDurationsProjectionMap.put(Durations.DEADLINE_DATE, Durations.DEADLINE_DATE);
+        sDurationsProjectionMap.put(Durations.RING, Durations.RING);
+        sDurationsProjectionMap.put(Durations.RINGTONE, Durations.RINGTONE);
+        sDurationsProjectionMap.put(Durations.VIBRATE, Durations.VIBRATE);
         sDurationsProjectionMap.put(Durations.CREATED_DATE, Durations.CREATED_DATE);
         sDurationsProjectionMap.put(Durations.MODIFIED_DATE, Durations.MODIFIED_DATE);
     }

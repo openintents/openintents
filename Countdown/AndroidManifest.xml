@@ -7,6 +7,9 @@
     <!-- required for notifications -->
     <uses-permission android:name="android.permission.VIBRATE"/>
     
+    <!-- required for automatic update -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    
     <application android:icon="@drawable/icon_hourglass" android:label="@string/app_name">
         <provider android:name=".db.CountdownProvider"
             android:authorities="org.openintents.countdown"

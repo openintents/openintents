@@ -35,6 +35,7 @@ import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -57,20 +58,6 @@ import android.widget.TextView;
  */
 public class CountdownEditorActivity extends Activity {
     private static final String TAG = "Notes";
-
-    /**
-     * Standard projection for the interesting columns of a normal note.
-     */
-    private static final String[] PROJECTION = new String[] {
-            Durations._ID, // 0
-            Durations.TITLE, // 1
-            Durations.DURATION, // 2
-            Durations.DEADLINE_DATE
-    };
-    /** The index of the note column */
-    private static final int COLUMN_INDEX_NOTE = 1;
-
-    private static final int COLUMN_INDEX_DURATION = 2;
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -78,7 +65,8 @@ public class CountdownEditorActivity extends Activity {
     // Identifiers for our menu items.
     private static final int REVERT_ID = Menu.FIRST;
     private static final int DISCARD_ID = Menu.FIRST + 1;
-    private static final int DELETE_ID = Menu.FIRST + 2;
+    private static final int MENU_DELETE = Menu.FIRST + 2;
+    private static final int MENU_PICK_RINGTONE = Menu.FIRST + 3;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
@@ -104,8 +92,16 @@ public class CountdownEditorActivity extends Activity {
     private Button mCont;
     private TextView mCountdownView;
     
-    private CheckBox mRingtone;
-    private CheckBox mVibrate;
+    private CheckBox mRingtoneView;
+    private CheckBox mVibrateView;
+    
+    private long mRing;
+    private Uri mRingtoneUri;
+    private long mVibrate;
+    private int mRingtoneType;
+    
+    private long UNCHECKED = 0;
+    private long CHECKED = 1;
     
     private boolean mStartCountdown;
     
@@ -122,6 +118,7 @@ public class CountdownEditorActivity extends Activity {
 
         mStartCountdown = false;
         mCountdownState = STATE_COUNTDOWN_IDLE;
+        mRingtoneType = RingtoneManager.TYPE_ALL;
         
         // Do some setup based on the action being performed.
 
@@ -138,7 +135,14 @@ public class CountdownEditorActivity extends Activity {
             // Requested to insert: set that state, and create a new entry
             // in the container.
             mState = STATE_INSERT;
-            mUri = getContentResolver().insert(intent.getData(), null);
+            
+            // Prepare default values
+            ContentValues cv = new ContentValues();
+            cv.put(Durations.RING, CHECKED);
+            cv.put(Durations.RINGTONE, RingtoneManager.getDefaultUri(mRingtoneType).toString());
+            cv.put(Durations.VIBRATE, CHECKED);
+            
+            mUri = getContentResolver().insert(intent.getData(), cv);
             intent.setAction(Intent.ACTION_EDIT);
             intent.setData(mUri);
             setIntent(intent);
@@ -217,9 +221,9 @@ public class CountdownEditorActivity extends Activity {
         	
         });
         
-        mRingtone = (CheckBox) findViewById(R.id.ringtone);
+        mRingtoneView = (CheckBox) findViewById(R.id.ringtone);
         
-        mRingtone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mRingtoneView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 			@Override
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
@@ -228,10 +232,23 @@ public class CountdownEditorActivity extends Activity {
         	
         });
         
-        mVibrate = (CheckBox) findViewById(R.id.vibrate);
+        mVibrateView = (CheckBox) findViewById(R.id.vibrate);
+
+        mVibrateView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				if (checked) {
+					mVibrate = CHECKED;
+				} else {
+					mVibrate = UNCHECKED;
+				}
+			}
+        	
+        });
         
-        // Get the note!
-        mCursor = managedQuery(mUri, PROJECTION, null, null, null);
+        // Get the countdown!
+        mCursor = managedQuery(mUri, Durations.PROJECTION, null, null, null);
 
         // If an instance of this activity had previously stopped, we can
         // get the original text it started with.
@@ -262,23 +279,40 @@ public class CountdownEditorActivity extends Activity {
             // paused/stopped.  We want to put the new text in the text view,
             // but leave the user where they were (retain the cursor position
             // etc).  This version of setText does that for us.
-            String note = mCursor.getString(COLUMN_INDEX_NOTE);
-            mText.setTextKeepState(note);
+            String title = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.TITLE));
+            mText.setTextKeepState(title);
             
             // If we hadn't previously retrieved the original text, do so
             // now.  This allows the user to revert their changes.
             if (mOriginalContent == null) {
-                mOriginalContent = note;
+                mOriginalContent = title;
             }
             
-            mDuration = mCursor.getLong(COLUMN_INDEX_DURATION);
+            mDuration = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DURATION));
             
             mDurationPicker.setDuration(mDuration);
             
 
             mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
             
-            updateCountdown();
+
+            mRing = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.RING));
+            //Log.i(TAG, "onResume Ring: " + mRing);
+
+            String uristring = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.RINGTONE));
+            //Log.i(TAG, "onResume Ringtone: " + uristring);
+            if (uristring != null) {
+            	mRingtoneUri = Uri.parse(uristring);
+            } else {
+            	mRingtoneUri = null;
+            }
+            
+            mVibrate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.VIBRATE));
+
+            mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
+            
+            updateCheckboxes();
+            updateViews();
     		
         } else {
             setTitle(getText(R.string.error_title));
@@ -325,13 +359,26 @@ public class CountdownEditorActivity extends Activity {
                 
 
         		// Set the current time.
-                
+                mDuration = mDurationPicker.getDuration();
         		values.put(Durations.DURATION, mDuration);
         		
         		//if (mStartCountdown) {
 	        		values.put(Durations.DEADLINE_DATE, mDeadline);
 	        		
         		//}
+	        		
+	        	values.put(Durations.RING, mRing);
+	        	Log.i(TAG, "Ring: " + mRing);
+	        	
+	        	String uristring = null;
+	        	if (mRingtoneUri != null) {
+	        		uristring = mRingtoneUri.toString();
+	        	}
+	        	values.put(Durations.RINGTONE, uristring);
+	        	Log.i(TAG, "Ringtone: " + uristring);
+	        	
+	        	values.put(Durations.VIBRATE, mVibrate);
+	        	Log.i(TAG, "Vibrate: " + mVibrate);
         		
                 // Commit all of our changes to persistent storage. When the update completes
                 // the content provider will notify the cursor of the change, which will
@@ -345,16 +392,20 @@ public class CountdownEditorActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
+        menu.add(0, MENU_PICK_RINGTONE, 0, R.string.menu_pick_ringtone)
+                .setShortcut('1', 'd')
+                .setIcon(android.R.drawable.ic_menu_manage);
+        
         // Build the menus that are shown when editing.
         if (mState == STATE_EDIT) {
-            menu.add(0, DELETE_ID, 0, R.string.menu_delete)
+            menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
                     .setShortcut('1', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         
 
         // Build the menus that are shown when inserting.
         } else {
-            menu.add(0, DELETE_ID, 0, R.string.menu_delete)
+            menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
                     .setShortcut('0', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
@@ -376,7 +427,7 @@ public class CountdownEditorActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle all of the possible menu actions.
         switch (item.getItemId()) {
-        case DELETE_ID:
+        case MENU_DELETE:
             deleteNote();
             finish();
             break;
@@ -386,6 +437,9 @@ public class CountdownEditorActivity extends Activity {
         case REVERT_ID:
             cancelNote();
             break;
+        case MENU_PICK_RINGTONE:
+        	pickRingtone();
+        	break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -437,7 +491,7 @@ public class CountdownEditorActivity extends Activity {
 
     	setAlarm(mDeadline);
     	
-    	updateCountdown();
+    	updateViews();
     }
 
     private final void stop() {
@@ -454,7 +508,7 @@ public class CountdownEditorActivity extends Activity {
     	cancelAlarm();
     	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     	
-    	updateCountdown();
+    	updateViews();
     }
 
     /**
@@ -481,7 +535,7 @@ public class CountdownEditorActivity extends Activity {
     	mStartCountdown = true;
 
     	
-    	updateCountdown();
+    	updateViews();
     }
     
     long mOriginalDuration;
@@ -505,7 +559,7 @@ public class CountdownEditorActivity extends Activity {
     	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     	
     	setAlarm(mDeadline);
-    	updateCountdown();
+    	updateViews();
     }
     
     public void setAlarm(long time) {
@@ -554,8 +608,19 @@ public class CountdownEditorActivity extends Activity {
     }
     
     
-    public void updateCountdown() {
-    	long now = System.currentTimeMillis();
+    public void updateViews() {
+    	updateCountdown();
+		
+		updateButtons();
+		
+		//updateCheckboxes();
+    }
+
+	/**
+	 * 
+	 */
+	private void updateCountdown() {
+		long now = System.currentTimeMillis();
 		
 		long delta = mDeadline - now;
 		
@@ -587,9 +652,7 @@ public class CountdownEditorActivity extends Activity {
 			mDurationPicker.setVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		}
-		
-		updateButtons();
-    }
+	}
     
     private void updateButtons() {
     	switch (mCountdownState) {
@@ -614,13 +677,35 @@ public class CountdownEditorActivity extends Activity {
     	}
     }
 
+    private void updateCheckboxes() {
+    	mRingtoneView.setChecked(mRing == CHECKED);
+    	
+    	Ringtone ring = RingtoneManager.getRingtone(this, mRingtoneUri);
+    	String ringname = ring.getTitle(this);
+    	String s = getString(R.string.ringtone, ringname);
+    	mRingtoneView.setText(s);
+    	
+    	mVibrateView.setChecked(mVibrate == CHECKED);
+    	
+    }
+    
     private void setRingtone(boolean checked) {
     	if (checked) {
-    		Intent i = new Intent();
-    		i.setAction(RingtoneManager.ACTION_RINGTONE_PICKER);
-    		
-    		startActivityForResult(i, REQUEST_CODE_RINGTONE);
-    	}
+			mRing = CHECKED;
+		} else {
+			mRing = UNCHECKED;
+		}
+    }
+    
+    private void pickRingtone() {
+		Intent i = new Intent();
+		i.setAction(RingtoneManager.ACTION_RINGTONE_PICKER);
+		
+		i.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, mRingtoneUri);
+		i.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false);
+		i.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, mRingtoneType);
+		
+		startActivityForResult(i, REQUEST_CODE_RINGTONE);
     }
     
 	/** Handle the process of updating the timer */
@@ -629,7 +714,7 @@ public class CountdownEditorActivity extends Activity {
 		public void handleMessage(Message msg) {
 			if (msg.what == MSG_UPDATE_DISPLAY) {
 				// Update
-				updateCountdown();
+				updateViews();
 	            
 			}
 		}
@@ -640,17 +725,30 @@ public class CountdownEditorActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		
 
-		if (requestCode == REQUEST_CODE_RINGTONE) {
+		if (requestCode == REQUEST_CODE_RINGTONE
+				&& resultCode == RESULT_OK) {
+			Bundle bundle = data.getExtras();
+			mRingtoneUri = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+			Log.i(TAG, "New ringtone: " + mRingtoneUri);
+			
+            ContentValues values = new ContentValues();
 
-			if (resultCode == RESULT_CANCELED) {
-				// Don't do anything.
-			} else {
-				Bundle bundle = data.getExtras();
-				Uri ringtone = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-				Log.i(TAG, "New ringtone: " + ringtone);
-			}
+        	values.put(Durations.RING, CHECKED);
+        	
+        	String uristring = null;
+        	if (mRingtoneUri != null) {
+        		uristring = mRingtoneUri.toString();
+        	}
+        	values.put(Durations.RINGTONE, uristring);
+    		
+        	//Log.i(TAG, "Uri: " + mUri.toString());
+        	
+            // Commit all of our changes to persistent storage. When the update completes
+            // the content provider will notify the cursor of the change, which will
+            // cause the UI to be updated.
+            getContentResolver().update(mUri, values, null, null);
+            
+            mCursor.requery();
 		}
 	}
-	
-	
 }

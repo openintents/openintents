@@ -82,6 +82,24 @@ public final class Countdown {
         public static final String DEADLINE_DATE = "deadline";
         
         /**
+         * Ring (no = 0, 1 = yes).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String RING = "ring";
+
+        /**
+         * Ringtone URI
+         * <P>Type: TEXT</P>
+         */
+        public static final String RINGTONE = "ringtone";
+
+        /**
+         * Vibrate (no = 0, 1 = yes).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String VIBRATE = "vibrate";
+        
+        /**
          * The timestamp for when the note was created
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          */
@@ -99,5 +117,18 @@ public final class Countdown {
          */
         //public static final String DEFAULT_SORT_ORDER = DEADLINE_DATE + " DESC";
         public static final String DEFAULT_SORT_ORDER = MODIFIED_DATE + " DESC";
+        
+
+        public static final String[] PROJECTION = new String[] {
+                Durations._ID,
+                Durations.TITLE,
+                Durations.DURATION,
+                Durations.DEADLINE_DATE,
+                Durations.RING,
+                Durations.RINGTONE,
+                Durations.VIBRATE,
+                Durations.CREATED_DATE,
+                Durations.MODIFIED_DATE
+        };
     }
 }
