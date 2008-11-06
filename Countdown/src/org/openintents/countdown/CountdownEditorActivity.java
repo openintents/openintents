@@ -335,56 +335,44 @@ public class CountdownEditorActivity extends Activity {
         // changes are safely saved away in the provider.  We don't need
         // to do this if only editing.
         if (mCursor != null) {
+            
+            ContentValues values = new ContentValues();
+
+            long now = System.currentTimeMillis();
+            
+            // Bump the modification time to now.
+            values.put(Durations.MODIFIED_DATE, now);
+
             String text = mText.getText().toString();
-            int length = text.length();
+            values.put(Durations.TITLE, text);
+            
 
-            // If this activity is finished, and there is no text, then we
-            // do something a little special: simply delete the note entry.
-            // Note that we do this both for editing and inserting...  it
-            // would be reasonable to only do it when inserting.
-            if (isFinishing() && (length == 0)) {
-                setResult(RESULT_CANCELED);
-                deleteNote();
-
-            // Get out updates into the provider.
-            } else {
-                ContentValues values = new ContentValues();
-
-                long now = System.currentTimeMillis();
-                
-                    // Bump the modification time to now.
-                values.put(Durations.MODIFIED_DATE, now);
-
-                values.put(Durations.TITLE, text);
-                
-
-        		// Set the current time.
-                mDuration = mDurationPicker.getDuration();
-        		values.put(Durations.DURATION, mDuration);
+    		// Set the current time.
+            mDuration = mDurationPicker.getDuration();
+    		values.put(Durations.DURATION, mDuration);
+    		
+    		//if (mStartCountdown) {
+        		values.put(Durations.DEADLINE_DATE, mDeadline);
         		
-        		//if (mStartCountdown) {
-	        		values.put(Durations.DEADLINE_DATE, mDeadline);
-	        		
-        		//}
-	        		
-	        	values.put(Durations.RING, mRing);
-	        	Log.i(TAG, "Ring: " + mRing);
-	        	
-	        	String uristring = null;
-	        	if (mRingtoneUri != null) {
-	        		uristring = mRingtoneUri.toString();
-	        	}
-	        	values.put(Durations.RINGTONE, uristring);
-	        	Log.i(TAG, "Ringtone: " + uristring);
-	        	
-	        	values.put(Durations.VIBRATE, mVibrate);
-	        	Log.i(TAG, "Vibrate: " + mVibrate);
+    		//}
         		
-                // Commit all of our changes to persistent storage. When the update completes
-                // the content provider will notify the cursor of the change, which will
-                // cause the UI to be updated.
-                getContentResolver().update(mUri, values, null, null);
-            }
+        	values.put(Durations.RING, mRing);
+        	Log.i(TAG, "Ring: " + mRing);
+        	
+        	String uristring = null;
+        	if (mRingtoneUri != null) {
+        		uristring = mRingtoneUri.toString();
+        	}
+        	values.put(Durations.RINGTONE, uristring);
+        	Log.i(TAG, "Ringtone: " + uristring);
+        	
+        	values.put(Durations.VIBRATE, mVibrate);
+        	Log.i(TAG, "Vibrate: " + mVibrate);
+    		
+            // Commit all of our changes to persistent storage. When the update completes
+            // the content provider will notify the cursor of the change, which will
+            // cause the UI to be updated.
+            getContentResolver().update(mUri, values, null, null);
         }
     }
 

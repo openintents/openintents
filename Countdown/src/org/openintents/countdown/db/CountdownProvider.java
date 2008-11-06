@@ -176,7 +176,7 @@ public class CountdownProvider extends ContentProvider {
 
         if (values.containsKey(Countdown.Durations.TITLE) == false) {
             Resources r = Resources.getSystem();
-            values.put(Countdown.Durations.TITLE, r.getString(android.R.string.untitled));
+            values.put(Countdown.Durations.TITLE, "");//r.getString(android.R.string.untitled));
         }
 
         if (values.containsKey(Countdown.Durations.DURATION) == false) {

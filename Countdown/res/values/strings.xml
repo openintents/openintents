@@ -15,6 +15,8 @@
     <string name="menu_insert">Add countdown</string>
     <string name="menu_pick_ringtone">Ringtone</string>
     
+    <string name="hint_title">e.g. pizza</string>
+    
     <string name="title_setcountdown">Set countdown</string>
     <string name="title_create">Create countdown</string>
     <string name="title_edit">Edit countdown</string>
