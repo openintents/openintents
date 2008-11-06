@@ -23,6 +23,9 @@
 	
 	<string name="countdown_ended">Countdown ended</string>
 	
+	<string name="ringtone">Ringtone: %s</string>
+	<string name="vibrate">Vibrate</string>
+	
 	
 	<!-- Update -->
 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>

@@ -35,6 +35,7 @@ import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -44,6 +45,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -83,6 +86,8 @@ public class CountdownEditorActivity extends Activity {
 
     private static final int MSG_UPDATE_DISPLAY = 1;
     
+    private static final int REQUEST_CODE_RINGTONE = 1;
+    
     private int mState;
     private Uri mUri;
     private Cursor mCursor;
@@ -98,6 +103,9 @@ public class CountdownEditorActivity extends Activity {
     private Button mModify;
     private Button mCont;
     private TextView mCountdownView;
+    
+    private CheckBox mRingtone;
+    private CheckBox mVibrate;
     
     private boolean mStartCountdown;
     
@@ -167,6 +175,8 @@ public class CountdownEditorActivity extends Activity {
         mDurationPicker.setCurrentMinute(0);
         mDurationPicker.setCurrentSecond(0);
         
+        mCountdownView = (TextView) findViewById(R.id.countdown);
+
         mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
 
@@ -207,8 +217,19 @@ public class CountdownEditorActivity extends Activity {
         	
         });
         
-        mCountdownView = (TextView) findViewById(R.id.countdown);
+        mRingtone = (CheckBox) findViewById(R.id.ringtone);
+        
+        mRingtone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+			@Override
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				setRingtone(checked);
+			}
+        	
+        });
+        
+        mVibrate = (CheckBox) findViewById(R.id.vibrate);
+        
         // Get the note!
         mCursor = managedQuery(mUri, PROJECTION, null, null, null);
 
@@ -593,6 +614,15 @@ public class CountdownEditorActivity extends Activity {
     	}
     }
 
+    private void setRingtone(boolean checked) {
+    	if (checked) {
+    		Intent i = new Intent();
+    		i.setAction(RingtoneManager.ACTION_RINGTONE_PICKER);
+    		
+    		startActivityForResult(i, REQUEST_CODE_RINGTONE);
+    	}
+    }
+    
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
 		@Override
@@ -604,4 +634,23 @@ public class CountdownEditorActivity extends Activity {
 			}
 		}
 	};
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		
+
+		if (requestCode == REQUEST_CODE_RINGTONE) {
+
+			if (resultCode == RESULT_CANCELED) {
+				// Don't do anything.
+			} else {
+				Bundle bundle = data.getExtras();
+				Uri ringtone = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+				Log.i(TAG, "New ringtone: " + ringtone);
+			}
+		}
+	}
+	
+	
 }

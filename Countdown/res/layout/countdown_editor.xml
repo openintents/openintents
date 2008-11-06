@@ -27,12 +27,12 @@
     <EditText android:id="@+id/title"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="20dip"
-        android:layout_marginBottom="20dip" />
+        android:layout_marginTop="15dip"
+        android:layout_marginBottom="15dip" />
     <FrameLayout
     	android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginBottom="20dip" >
+        android:layout_marginBottom="15dip" >
 	    <org.openintents.countdown.widget.DurationPicker android:id="@+id/durationpicker"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
@@ -46,8 +46,8 @@
     <LinearLayout
 	    android:orientation="horizontal"
     	android:layout_width="fill_parent"
-    	android:layout_height="128dip"
-        android:layout_marginBottom="20dip" >
+    	android:layout_height="64dip"
+        android:layout_marginBottom="15dip" >
 	    <Button android:id="@+id/start"
 	    	android:layout_height="fill_parent"
 	        android:layout_width="0dip"
@@ -69,5 +69,16 @@
 	        android:layout_weight="1"
 	    	android:text="@string/cont"/>
 	</LinearLayout>
+	<CheckBox android:id="@+id/ringtone"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/ringtone"
+		/>
+	<CheckBox android:id="@+id/vibrate"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/vibrate"
+		/>
+		
 </LinearLayout>
 </ScrollView>
