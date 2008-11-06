@@ -296,7 +296,7 @@ public class CountdownListActivity extends ListActivity {
     }
     
 
-	/** Handle the process of kinetic scrolling */
+	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {

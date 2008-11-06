@@ -24,6 +24,8 @@
 package org.openintents.countdown;
 
 import org.openintents.countdown.db.Countdown.Durations;
+import org.openintents.countdown.list.CountdownListItemView;
+import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.widget.DurationPicker;
 
 import android.app.Activity;
@@ -36,12 +38,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * A generic activity for editing a note in a database.  This can be used
@@ -58,6 +64,7 @@ public class CountdownEditorActivity extends Activity {
             Durations._ID, // 0
             Durations.TITLE, // 1
             Durations.DURATION, // 2
+            Durations.DEADLINE_DATE
     };
     /** The index of the note column */
     private static final int COLUMN_INDEX_NOTE = 1;
@@ -76,14 +83,20 @@ public class CountdownEditorActivity extends Activity {
     private static final int STATE_EDIT = 0;
     private static final int STATE_INSERT = 1;
 
+    private static final int MSG_UPDATE_DISPLAY = 1;
+    
     private int mState;
     private Uri mUri;
     private Cursor mCursor;
     private EditText mText;
     private String mOriginalContent;
     
+	private long mDuration;
+	private long mDeadline;
+    
     private DurationPicker mDurationPicker;
     private Button mStart;
+    private TextView mCountdownView;
     
     private boolean mStartCountdown;
 
@@ -156,6 +169,8 @@ public class CountdownEditorActivity extends Activity {
 			}
         	
         });
+        
+        mCountdownView = (TextView) findViewById(R.id.countdown);
 
         // Get the note!
         mCursor = managedQuery(mUri, PROJECTION, null, null, null);
@@ -165,6 +180,7 @@ public class CountdownEditorActivity extends Activity {
         if (savedInstanceState != null) {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
         }
+        
     }
 
     @Override
@@ -197,11 +213,15 @@ public class CountdownEditorActivity extends Activity {
                 mOriginalContent = note;
             }
             
-            long duration = mCursor.getLong(COLUMN_INDEX_DURATION);
+            mDuration = mCursor.getLong(COLUMN_INDEX_DURATION);
             
-            mDurationPicker.setDuration(duration);
+            mDurationPicker.setDuration(mDuration);
             
 
+            mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
+            
+            updateCountdown();
+    		
         } else {
             setTitle(getText(R.string.error_title));
             mText.setText(getText(R.string.error_message));
@@ -387,4 +407,46 @@ public class CountdownEditorActivity extends Activity {
         nm.cancel(notification_id);
     }
     
+    
+    public void updateCountdown() {
+    	long now = System.currentTimeMillis();
+		
+		long delta = mDeadline - now;
+		
+		//mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
+		
+		if (delta > 0) {
+			//mDurationView.setText("");
+			mDurationPicker.setVisibility(View.INVISIBLE);
+			mCountdownView.setVisibility(View.VISIBLE);
+			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
+			mCountdownView.setTextAppearance(this, android.R.style.TextAppearance_Large);
+			mCountdownView.setTextSize(64);
+
+    		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+		} else if (delta > -3000) {
+			mDurationPicker.setVisibility(View.INVISIBLE);
+			mCountdownView.setVisibility(View.VISIBLE);
+			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
+			mCountdownView.setTextColor(0xffff0000);
+
+    		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+		} else {
+			mDurationPicker.setVisibility(View.VISIBLE);
+			mCountdownView.setVisibility(View.INVISIBLE);
+		}
+    }
+    
+
+	/** Handle the process of updating the timer */
+	Handler mHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == MSG_UPDATE_DISPLAY) {
+				// Update
+				updateCountdown();
+	            
+			}
+		}
+	};
 }

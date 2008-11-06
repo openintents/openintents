@@ -17,7 +17,7 @@
 package org.openintents.countdown;
 
 import org.openintents.countdown.db.Countdown;
-import org.openintents.countdown.list.CountdownListItemView;
+import org.openintents.countdown.util.CountdownUtils;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -76,7 +76,7 @@ public class AlarmReceiver extends BroadcastReceiver
         if (c != null) {
         	c.moveToFirst();
         	title = c.getString(0);
-        	text = CountdownListItemView.getDurationString(c.getLong(1));
+        	text = CountdownUtils.getDurationString(c.getLong(1));
         }
         
         // The PendingIntent to launch our activity if the user selects this notification

@@ -1,6 +1,7 @@
 package org.openintents.countdown.list;
 
 import org.openintents.countdown.R;
+import org.openintents.countdown.util.CountdownUtils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -54,21 +55,19 @@ public class CountdownListItemView extends LinearLayout {
 	public void updateCountdown() {
 		long now = System.currentTimeMillis();
 		
-		TypedArray a;
-		
 		long delta = mDeadline - now;
 		
-		mDurationView.setText("" + getDurationString(mDuration));
+		mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 		
 		if (delta > 0) {
 			//mDurationView.setText("");
-			mCountdownView.setText("" + getDurationString(delta));
+			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			//mDurationView.setTextColor(0xffff00ff);
 			//mDurationView.setTextSize(24);
 		} else if (delta > -3000) {
 			//mDurationView.setText("" + getDurationString(mDuration));
-			mCountdownView.setText("" + getDurationString(0));
+			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
 			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextColor(0xffff0000);
 			//mDurationView.setTextSize(24);
@@ -78,22 +77,8 @@ public class CountdownListItemView extends LinearLayout {
 			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Small);
 			//mDurationView.setTextSize(24);
 		}
-		requestLayout();
-		invalidate();
-	}
-	
-	public static String getDurationString(long duration) {
-		int seconds = (int) (duration / 1000);
-		int minutes = seconds / 60;
-		seconds = seconds % 60;
-		int hours = minutes / 60;
-		minutes = minutes % 60;
-		
-		return "" + hours + ":" 
-			+ (minutes < 10 ? "0" : "")
-			+ minutes + ":"
-			+ (seconds < 10 ? "0" : "")
-			+ seconds;
+		//requestLayout();
+		//invalidate();
 	}
 
 }

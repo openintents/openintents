@@ -23,11 +23,19 @@
     <EditText android:id="@+id/title"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent" />
-    <org.openintents.countdown.widget.DurationPicker android:id="@+id/durationpicker"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center" />
-        
+    <FrameLayout
+    	android:layout_height="wrap_content"
+        android:layout_width="fill_parent" >
+	    <org.openintents.countdown.widget.DurationPicker android:id="@+id/durationpicker"
+	        android:layout_height="wrap_content"
+	        android:layout_width="wrap_content"
+	        android:layout_gravity="center" />
+	    <TextView android:id="@+id/countdown"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="wrap_content"
+		    android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:layout_gravity="center" />
+    </FrameLayout>
     <Button android:id="@+id/start"
     	android:layout_height="wrap_content"
         android:layout_width="fill_parent"
