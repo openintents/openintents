@@ -50,10 +50,13 @@ public class UpdateCheckerWithNotification {
 	protected UpdateChecker mChecker;
 	private boolean mTempUri;
 	private String mUri;
+	private String mIgnoreVersionName;
+	private int mIgnoreVersion;
 
 	public UpdateCheckerWithNotification(Context context, String packageName,
 			String appName, int currentVersionCode, String currentVersionName,
-			String uri, boolean tempUri) {
+			String uri, boolean tempUri, String ignoreVersionName,
+			int ignoreVersion) {
 		mContext = context;
 		mPackageName = packageName;
 		mAppName = appName;
@@ -61,6 +64,8 @@ public class UpdateCheckerWithNotification {
 		mCurrentVersionName = currentVersionName;
 		mUri = uri;
 		mTempUri = tempUri;
+		mIgnoreVersionName = ignoreVersionName;
+		mIgnoreVersion = ignoreVersion;
 
 		if (mNm == null) {
 			mNm = (NotificationManager) context
@@ -92,11 +97,7 @@ public class UpdateCheckerWithNotification {
 		if (!mTempUri) {
 			// only update uri if requested
 			values.put(UpdateInfo.UPDATE_URL, uri);
-		}
-		values.put(UpdateInfo.LAST_CHECK_VERSION_CODE, mChecker
-				.getLatestVersion());
-		values.put(UpdateInfo.LAST_CHECK_VERSION_NAME, mChecker
-				.getLatestVersionName());
+		}		
 		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
 				UpdateInfo.PACKAGE_NAME + " = ? ",
 				new String[] { mPackageName });
@@ -113,10 +114,15 @@ public class UpdateCheckerWithNotification {
 	}
 
 	private boolean isUpdateRequired() {
-		return (mChecker.getLatestVersion() > mCurrentVersion && mCurrentVersion > 0)
+		boolean currentDiffer = (mChecker.getLatestVersion() > mCurrentVersion && mCurrentVersion > 0)
 				|| (mChecker.getLatestVersionName() != null
 						&& mCurrentVersionName != null && mChecker
 						.getLatestVersionName().equals(mCurrentVersionName));
+		boolean ignore = (mIgnoreVersion >= mChecker.getLatestVersion() && mChecker
+				.getLatestVersion() > 0)
+				|| (mIgnoreVersionName != null && mChecker.getLatestVersionName() != null && mIgnoreVersionName
+						.equals(mChecker.getLatestVersionName()));
+		return currentDiffer && !ignore;
 	}
 
 	private void showNotification() {
@@ -150,7 +156,8 @@ public class UpdateCheckerWithNotification {
 	}
 
 	public Intent createUpdateActivityIntent() {
-		return UpdateInfo.createUpdateActivityIntent(mContext, mChecker, mPackageName, mAppName);
+		return UpdateInfo.createUpdateActivityIntent(mContext, mChecker,
+				mPackageName, mAppName);
 	}
 
 	public String getLatestVersionName() {

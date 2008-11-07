@@ -103,8 +103,8 @@ public class UpdateCheckerActivity extends Activity {
 
 	protected void updateLastIgnoredVersion() {
 		ContentValues values = new ContentValues();
-		values.put(UpdateInfo.LAST_CHECK_VERSION_CODE, mLatestVersion);
-		values.put(UpdateInfo.LAST_CHECK_VERSION_NAME, mLatestVersionName);
+		values.put(UpdateInfo.IGNORE_VERSION_CODE, mLatestVersion);
+		values.put(UpdateInfo.IGNORE_VERSION_NAME, mLatestVersionName);
 		getContentResolver().update(UpdateInfo.CONTENT_URI, values,
 				UpdateInfo.PACKAGE_NAME + " = ? ",
 				new String[] { mPackageName });
@@ -151,10 +151,7 @@ public class UpdateCheckerActivity extends Activity {
 		} else {
 			visibility = View.GONE;
 
-		}
-
-		// ignore update currently not supported
-		visibility = View.GONE;
+		}		
 
 		findViewById(R.id.ignore_this_update).setVisibility(visibility);
 

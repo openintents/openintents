@@ -43,8 +43,8 @@ public class UpdateInfo implements BaseColumns {
 	public static final String AUTHORITY = "org.openintents.updateinfo";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
 			+ "/info");
-	public static final String LAST_CHECK_VERSION_CODE = "last_check_version_code";
-	public static final String LAST_CHECK_VERSION_NAME = "last_check_version_name";
+	public static final String IGNORE_VERSION_CODE = "ignore_version_code";
+	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
 
 	public static final String ORG_OPENINTENTS = "org.openintents";
 

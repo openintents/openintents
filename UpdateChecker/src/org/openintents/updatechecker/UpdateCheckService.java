@@ -74,14 +74,18 @@ public class UpdateCheckService extends Service {
 					Cursor cursor = getContentResolver().query(
 							UpdateInfo.CONTENT_URI,
 							new String[] { UpdateInfo.UPDATE_URL,
-									UpdateInfo.LAST_CHECK_VERSION_NAME,
-									UpdateInfo.LAST_CHECK_VERSION_CODE },
+									UpdateInfo.IGNORE_VERSION_NAME,
+									UpdateInfo.IGNORE_VERSION_CODE },
 							UpdateInfo.PACKAGE_NAME + " = ?",
 							new String[] { pi.packageName }, null);
 
 					String updateUrl = null;
+					String ignoreVersionName = null;
+					int ignoreVersion = 0;
 					if (cursor.moveToFirst()) {
 						updateUrl = cursor.getString(0);
+						ignoreVersionName = cursor.getString(1);
+						ignoreVersion = cursor.getInt(2);
 					} else {
 						if (pi.packageName
 								.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
@@ -101,7 +105,7 @@ public class UpdateCheckService extends Service {
 						UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 								UpdateCheckService.this, pi.packageName, name
 										.toString(), pi.versionCode,
-								versionName, updateUrl, false);
+								versionName, updateUrl, false, ignoreVersionName, ignoreVersion);
 						updateChecker.checkForUpdateWithNotification();
 					}
 
@@ -121,8 +125,32 @@ public class UpdateCheckService extends Service {
 		String versionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
 
-		long lastCheck;
-		lastCheck = getUpdateInfo(packageName);
+		
+		long lastCheck = 0;
+		String ignoreVersionName = null;
+		int ignoreVersion = 0;
+		
+		// get update info from db
+		Cursor cursor = getContentResolver().query(UpdateInfo.CONTENT_URI,
+				new String[] { UpdateInfo._ID, UpdateInfo.LAST_CHECK, UpdateInfo.IGNORE_VERSION_NAME , UpdateInfo.IGNORE_VERSION_CODE  },
+				UpdateInfo.PACKAGE_NAME + " = ?", new String[] { packageName },
+				null);
+		if (cursor != null) {
+			if (cursor.moveToFirst()) {
+				lastCheck = cursor.getLong(1);
+				ignoreVersionName = cursor.getString(2);
+				ignoreVersion = cursor.getInt(3);
+			} else {
+				insertUpdateInfo(packageName);
+				lastCheck = 0;
+
+			}
+			cursor.close();
+		} else {
+			insertUpdateInfo(packageName);
+			lastCheck = 0;
+		}
+				
 
 		Log.v(TAG, "last check for " + packageName + ": "
 				+ new java.util.Date(lastCheck));
@@ -133,7 +161,7 @@ public class UpdateCheckService extends Service {
 
 			updateChecker = new UpdateCheckerWithNotification(this,
 					packageName, appName, currVersion, versionName, intent
-							.getDataString(), false);
+							.getDataString(), false, ignoreVersionName, ignoreVersion);
 
 			// start in thread
 			new Thread() {
@@ -178,29 +206,7 @@ public class UpdateCheckService extends Service {
 
 	}
 
-	private long getUpdateInfo(String packageName) {
-		long lastCheck;
-		Cursor cursor = getContentResolver().query(UpdateInfo.CONTENT_URI,
-				new String[] { UpdateInfo._ID, UpdateInfo.LAST_CHECK },
-				UpdateInfo.PACKAGE_NAME + " = ?", new String[] { packageName },
-				null);
-		if (cursor != null) {
-
-			if (cursor.moveToFirst()) {
-				lastCheck = cursor.getLong(1);
-			} else {
-				insertUpdateInfo(packageName);
-				lastCheck = 0;
-
-			}
-			cursor.close();
-		} else {
-			insertUpdateInfo(packageName);
-			lastCheck = 0;
-		}
-		return lastCheck;
-	}
-
+	
 	private void insertUpdateInfo(String packageName) {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.PACKAGE_NAME, packageName);

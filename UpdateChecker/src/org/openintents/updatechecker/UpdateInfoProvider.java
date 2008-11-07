@@ -69,9 +69,9 @@ public class UpdateInfoProvider extends ContentProvider {
 					+ " TEXT," +  
 					UpdateInfo.UPDATE_URL
 					+ " TEXT,"+ UpdateInfo.LAST_CHECK + " LONG," + 
-					UpdateInfo.LAST_CHECK_VERSION_CODE
+					UpdateInfo.IGNORE_VERSION_CODE
 					+ " INTEGER,"+
-					UpdateInfo.LAST_CHECK_VERSION_NAME
+					UpdateInfo.IGNORE_VERSION_NAME
 					+ " TEXT"+
 					");");
 		}
@@ -252,9 +252,9 @@ public class UpdateInfoProvider extends ContentProvider {
 				UpdateInfo.UPDATE_URL);
 		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK,
 				UpdateInfo.LAST_CHECK);
-		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK_VERSION_CODE,
-				UpdateInfo.LAST_CHECK_VERSION_CODE);
-		sUpdateInfoProjectionMap.put(UpdateInfo.LAST_CHECK_VERSION_NAME,
-				UpdateInfo.LAST_CHECK_VERSION_NAME);
+		sUpdateInfoProjectionMap.put(UpdateInfo.IGNORE_VERSION_CODE,
+				UpdateInfo.IGNORE_VERSION_CODE);
+		sUpdateInfoProjectionMap.put(UpdateInfo.IGNORE_VERSION_NAME,
+				UpdateInfo.IGNORE_VERSION_NAME);
 	}
 }

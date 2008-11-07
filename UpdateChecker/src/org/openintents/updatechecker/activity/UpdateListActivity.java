@@ -46,8 +46,10 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.VERSION_NAME, AppListInfo.VERSION_CODE,
 				AppListInfo.UPDATE_URL, AppListInfo.INFO,
 				AppListInfo.UPDATE_INTENT, AppListInfo.COMMENT,
-				AppListInfo.LAST_CHECK_VERSION_NAME,
-				AppListInfo.LAST_CHECK_VERSION_CODE });
+				AppListInfo.LATEST_VERSION_NAME,
+				AppListInfo.LATEST_VERSION_CODE,
+				AppListInfo.IGNORE_VERSION_NAME,
+				AppListInfo.IGNORE_VERSION_CODE });
 		for (PackageInfo pi : getPackageManager().getInstalledPackages(0)) {
 			CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
@@ -59,8 +61,17 @@ public class UpdateListActivity extends ListActivity {
 				continue;
 			}
 
-			// determine update url
+			Intent updateIntent = null;
+			int latestVersion = 0;
+			String latestVersionName = null;
+			String comment = null;			
 			String updateUrl = null;
+			
+			
+			String ignoreVersionName = null;
+			int ignoreVersion = 0;
+			
+			// determine update url
 			if (useAndAppStore) {
 				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
 						+ pi.packageName;
@@ -69,13 +80,15 @@ public class UpdateListActivity extends ListActivity {
 				Cursor cursor = getContentResolver().query(
 						UpdateInfo.CONTENT_URI,
 						new String[] { UpdateInfo.UPDATE_URL,
-								UpdateInfo.LAST_CHECK_VERSION_NAME,
-								UpdateInfo.LAST_CHECK_VERSION_CODE },
+								UpdateInfo.IGNORE_VERSION_NAME,
+								UpdateInfo.IGNORE_VERSION_CODE },
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
 				if (!ignoreDbUrl && cursor.moveToFirst()) {
 					updateUrl = cursor.getString(0);
+					ignoreVersionName = cursor.getString(1);
+					ignoreVersion  = cursor.getInt(2);
 				} else {
 					if (pi.packageName.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
 						updateUrl = "http://www.openintents.org/apks/"
@@ -86,15 +99,12 @@ public class UpdateListActivity extends ListActivity {
 				info = getString(R.string.current_version, versionName);
 			}
 
-			Intent updateIntent = null;
-			int latestVersion = 0;
-			String latestVersionName = null;
-			String comment = null;
+			
 			// check for update if required
 			if (updateUrl != null && appsWithNewVersionOnly) {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
-						versionName, updateUrl, useAndAppStore);
+						versionName, updateUrl, useAndAppStore, ignoreVersionName, ignoreVersion);
 				boolean updateRequired = updateChecker
 						.checkForUpdateWithOutNotification();
 
@@ -133,7 +143,7 @@ public class UpdateListActivity extends ListActivity {
 				Object[] row = new Object[] { pi.packageName.hashCode(), name,
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info, updateIntent, comment, latestVersionName,
-						latestVersion };
+						latestVersion, ignoreVersionName, ignoreVersion };
 				c.addRow(row);
 			}
 		}
@@ -161,10 +171,16 @@ public class UpdateListActivity extends ListActivity {
 		int currVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_CODE));
 
+		int ignoreVersion = cursor.getInt(cursor
+				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_CODE));
+		String ignoreVersionName = cursor.getString(cursor
+				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_NAME));
+
+		
 		int latestVersion = cursor.getInt(cursor
-				.getColumnIndexOrThrow(AppListInfo.LAST_CHECK_VERSION_CODE));
+				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_CODE));
 		String latestVersionName = cursor.getString(cursor
-				.getColumnIndexOrThrow(AppListInfo.LAST_CHECK_VERSION_NAME));
+				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_NAME));
 		String comment = cursor.getString(cursor
 				.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
@@ -179,7 +195,7 @@ public class UpdateListActivity extends ListActivity {
 
 			final UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 					this, packageName, appName, currVersion, currVersionName,
-					updateUrl, false);
+					updateUrl, false, ignoreVersionName, ignoreVersion);
 
 			final ProgressDialog pb = ProgressDialog.show(this,
 					getString(R.string.app_name), getString(R.string.checking));
