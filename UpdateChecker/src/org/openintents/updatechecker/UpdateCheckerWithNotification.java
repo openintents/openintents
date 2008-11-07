@@ -20,6 +20,8 @@ package org.openintents.updatechecker;
 
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 
+import dalvik.system.TemporaryDirectory;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -87,7 +89,10 @@ public class UpdateCheckerWithNotification {
 	private void updateLastCheck(String uri) {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
-		values.put(UpdateInfo.UPDATE_URL, uri);
+		if (!mTempUri) {
+			// only update uri if requested
+			values.put(UpdateInfo.UPDATE_URL, uri);
+		}
 		values.put(UpdateInfo.LAST_CHECK_VERSION_CODE, mChecker
 				.getLatestVersion());
 		values.put(UpdateInfo.LAST_CHECK_VERSION_NAME, mChecker
@@ -104,7 +109,6 @@ public class UpdateCheckerWithNotification {
 		} else {
 			Log.v(TAG, "up-to-date or no version: " + mPackageName + " ("
 					+ mCurrentVersion + ")");
-			showNotification();
 		}
 	}
 
@@ -131,8 +135,8 @@ public class UpdateCheckerWithNotification {
 				mIntent, 0);
 
 		// Set the info for the views that show in the notification panel.
-		notification.setLatestEventInfo(mContext, mContext
-				.getText(R.string.app_name), text, contentIntent);
+		notification
+				.setLatestEventInfo(mContext, mAppName, text, contentIntent);
 
 		// Send the notification.
 		// We use the package name hash because it is a unique number for each

@@ -85,7 +85,7 @@ public class UpdateListActivity extends ListActivity {
 			}
 
 			// check for update if required
-			if (appsWithNewVersionOnly) {
+			if (updateUrl != null && appsWithNewVersionOnly) {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
 						versionName, updateUrl, useAndAppStore);
