@@ -20,7 +20,7 @@
             <intent-filter>
                 <action android:name="org.openintents.voicenotes.PLAY" />                
             </intent-filter>            
-             <intent-filter android:label="Play Voice Memo">   
+             <intent-filter android:label="@string/play_voice_memo">   
                 <action android:name="org.openintents.voicenotes.PLAY"/>                        
                 <category android:name="android.intent.category.ALTERNATIVE" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />

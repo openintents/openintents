@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore.Audio.Media;
 import android.util.Log;
+import android.widget.Toast;
 
 public class VoicePlayNote extends Activity {
 
@@ -22,6 +23,8 @@ public class VoicePlayNote extends Activity {
 		Log.v(TAG, "play " + uri);
 		if (uri != null) {
 			startActivity(intent);
+		} else {
+			Toast.makeText(this, getText(R.string.no_voice_memo), Toast.LENGTH_SHORT);
 		}
 		finish();
 	}

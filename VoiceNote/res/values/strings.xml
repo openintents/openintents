@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">OI Voice Notes</string>
+    <string name="play_voice_memo">Play voice memo</string>
+    <string name="record_voice_memo">Record voice memo</string>
+    <string name="no_voice_memo">No voice memo available</string>
 </resources>
