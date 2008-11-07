@@ -103,7 +103,7 @@ public class CountdownEditorActivity extends Activity {
     private long UNCHECKED = 0;
     private long CHECKED = 1;
     
-    private boolean mStartCountdown;
+    // private boolean mStartCountdown;
     
     private int mCountdownState;
     private static final int STATE_COUNTDOWN_IDLE = 1;
@@ -116,7 +116,6 @@ public class CountdownEditorActivity extends Activity {
 
         final Intent intent = getIntent();
 
-        mStartCountdown = false;
         mCountdownState = STATE_COUNTDOWN_IDLE;
         mRingtoneType = RingtoneManager.TYPE_ALL;
         
@@ -227,7 +226,7 @@ public class CountdownEditorActivity extends Activity {
 
 			@Override
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
-				setRingtone(checked);
+				setRing(checked);
 			}
         	
         });
@@ -238,12 +237,9 @@ public class CountdownEditorActivity extends Activity {
 
 			@Override
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
-				if (checked) {
-					mVibrate = CHECKED;
-				} else {
-					mVibrate = UNCHECKED;
-				}
+				setVibrate(checked);
 			}
+
         	
         });
         
@@ -374,6 +370,9 @@ public class CountdownEditorActivity extends Activity {
             // cause the UI to be updated.
             getContentResolver().update(mUri, values, null, null);
         }
+        
+        // Cancel notifications
+        mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     }
 
     @Override
@@ -469,8 +468,6 @@ public class CountdownEditorActivity extends Activity {
     private final void start() {
     	mCountdownState = STATE_COUNTDOWN_RUNNING;
 		
-    	mStartCountdown = true;
-    	
     	long now = System.currentTimeMillis();
         mDuration = mDurationPicker.getDuration();
 		
@@ -520,9 +517,6 @@ public class CountdownEditorActivity extends Activity {
     	
     	mDurationPicker.setDuration(temporaryDuration);
     	
-    	mStartCountdown = true;
-
-    	
     	updateViews();
     }
     
@@ -530,8 +524,6 @@ public class CountdownEditorActivity extends Activity {
 
     private final void cont() {
     	mCountdownState = STATE_COUNTDOWN_RUNNING;
-		
-    	mStartCountdown = true;
     	
     	long now = System.currentTimeMillis();
         mDuration = mDurationPicker.getDuration();
@@ -627,6 +619,15 @@ public class CountdownEditorActivity extends Activity {
 			mCountdownView.setTextSize(64);
 
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+    		
+    		if (delta < 2000) {
+    			// Save the text as the notification may go off soon:
+    	        ContentValues values = new ContentValues();
+    	    	values.put(Durations.TITLE, mText.getText().toString());
+    	    	
+    	        getContentResolver().update(mUri, values, null, null);
+    	        mCursor.requery();
+    		}
 		} else if (delta > -3000) {
 			mCountdownState = STATE_COUNTDOWN_RUNNING;
 			mDurationPicker.setVisibility(View.INVISIBLE);
@@ -677,13 +678,37 @@ public class CountdownEditorActivity extends Activity {
     	
     }
     
-    private void setRingtone(boolean checked) {
+    private void setRing(boolean checked) {
     	if (checked) {
 			mRing = CHECKED;
 		} else {
 			mRing = UNCHECKED;
 		}
+
+        ContentValues values = new ContentValues();
+    	values.put(Durations.RING, mRing);
+    	
+        getContentResolver().update(mUri, values, null, null);
+        mCursor.requery();
     }
+    
+
+	/**
+	 * @param checked
+	 */
+	private void setVibrate(boolean checked) {
+		if (checked) {
+			mVibrate = CHECKED;
+		} else {
+			mVibrate = UNCHECKED;
+		}
+
+        ContentValues values = new ContentValues();
+    	values.put(Durations.VIBRATE, mVibrate);
+    	
+        getContentResolver().update(mUri, values, null, null);
+        mCursor.requery();
+	}
     
     private void pickRingtone() {
 		Intent i = new Intent();
