@@ -150,19 +150,7 @@ public class UpdateCheckerWithNotification {
 	}
 
 	public Intent createUpdateActivityIntent() {
-		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
-		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, mChecker
-				.getLatestVersion());
-		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME, mChecker
-				.getLatestVersionName());
-		intent.putExtra(UpdateChecker.EXTRA_COMMENT, mChecker.getComment());
-		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
-		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-				| Intent.FLAG_ACTIVITY_NEW_TASK);
-		intent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, mChecker
-				.getUpdateIntent());
-		return intent;
+		return UpdateInfo.createUpdateActivityIntent(mContext, mChecker, mPackageName, mAppName);
 	}
 
 	public String getLatestVersionName() {
@@ -171,6 +159,10 @@ public class UpdateCheckerWithNotification {
 
 	public String getComment() {
 		return mChecker.getComment();
+	}
+
+	public int getLatestVersion() {
+		return mChecker.getLatestVersion();
 	}
 
 }

@@ -20,9 +20,13 @@ package org.openintents.updatechecker;
 
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 
 public class UpdateInfo implements BaseColumns {
@@ -42,4 +46,69 @@ public class UpdateInfo implements BaseColumns {
 	public static final String LAST_CHECK_VERSION_CODE = "last_check_version_code";
 	public static final String LAST_CHECK_VERSION_NAME = "last_check_version_name";
 
+	public static final String ORG_OPENINTENTS = "org.openintents";
+
+	public static Intent createUpdateActivityIntent(Context mContext,
+			UpdateChecker mChecker, String mPackageName, String mAppName) {
+		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
+		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, mChecker
+				.getLatestVersion());
+		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME, mChecker
+				.getLatestVersionName());
+		intent.putExtra(UpdateChecker.EXTRA_COMMENT, mChecker.getComment());
+		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
+		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, mChecker
+				.getUpdateIntent());
+		return intent;
+	}
+
+	public static Intent createUpdateActivityIntent(Context mContext,
+			int latestVersion, String latestVersionName, String comment,
+			String mPackageName, String mAppName, Intent updateIntent) {
+		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
+		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, latestVersion);
+		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
+				latestVersionName);
+		intent.putExtra(UpdateChecker.EXTRA_COMMENT, comment);
+		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
+		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, updateIntent);
+		return intent;
+	}
+
+	public static boolean isBlackListed(PackageInfo pi) {
+		return (pi.versionName == null && pi.versionCode == 0)
+				|| pi.packageName.startsWith("com.android");
+	}
+
+	public static void checkAlarm(Context context) {
+		Intent i = new Intent(context, UpdateCheckService.class);
+		i.setAction(UpdateCheckService.ACTION_CHECK_ALL);
+		PendingIntent pi = PendingIntent.getService(context, 0, i,
+				PendingIntent.FLAG_NO_CREATE);
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		
+		Intent intent = new Intent(context, UpdateCheckService.class);
+		if (prefs.getBoolean(
+				"auto_update", true)) {
+
+			if (pi == null) {
+				intent.setAction(UpdateCheckService.ACTION_SET_ALARM);
+				intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, Integer.parseInt(prefs.getString("update_interval", "604800000")));
+				context.startService(intent);
+			}
+		} else {
+			if (pi != null) {
+				intent.setAction(UpdateCheckService.ACTION_UNSET_ALARM);
+				context.startService(intent);
+			}
+		}
+
+	}
 }

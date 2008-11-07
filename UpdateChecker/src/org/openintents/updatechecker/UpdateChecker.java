@@ -115,9 +115,9 @@ public class UpdateChecker {
 						+ ((String) content).substring(0, 100));
 			}
 		} catch (MalformedURLException e) {
-			Log.e(TAG, "MalformedURLException", e);
+			Log.v(TAG, "MalformedURLException", e);
 		} catch (IOException e) {
-			Log.e(TAG, "IOException", e);
+			Log.v(TAG, "IOException", e);
 		}
 
 	}
@@ -179,7 +179,7 @@ public class UpdateChecker {
 			try {
 				result = performRequest(version, uri);
 			} catch (Exception e) {
-				Log.w(LOG_TAG, "Failed to process versions.", e);
+				Log.v(LOG_TAG, "Failed to process versions.", e);
 				return;
 			} finally {
 			}
@@ -187,9 +187,8 @@ public class UpdateChecker {
 			if (result.matched) {
 				Log.d(LOG_TAG, "Matching intent found.");
 				mLatestVersion = Integer.parseInt(result.latestVersion
-						.getVersionCode());
-				// TODO create better comment
-				mComment = result.latestVersion.getVersionName();
+						.getVersionCode());				
+				mComment = null;
 
 				// create intent
 				Intent intent = new Intent();

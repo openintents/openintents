@@ -46,7 +46,7 @@ public class UpdateCheckerActivity extends Activity {
 	public static final String EXTRA_COMMENT = "comment";
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
-	private String mLatestVersion;
+	private int mLatestVersion;
 	private String mLatestVersionName;
 
 	/** Called when the activity is first created. */
@@ -70,6 +70,8 @@ public class UpdateCheckerActivity extends Activity {
 		mPackageName = getIntent().getStringExtra(
 				UpdateChecker.EXTRA_PACKAGE_NAME);
 
+		((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).cancel(mPackageName.hashCode());
+		
 		mRadioGroup = (RadioGroup) findViewById(R.id.action_choice);
 
 		Button button = (Button) findViewById(R.id.ok);
@@ -122,18 +124,29 @@ public class UpdateCheckerActivity extends Activity {
 
 		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
 		String comment = intent.getStringExtra(UpdateChecker.EXTRA_COMMENT);
-		if (appName != null && comment != null) {
+		if (appName != null ) {
+			if (comment != null){
 			view.setText(getString(R.string.update_available_2, appName,
 					comment));
+			} else {
+				view.setText(getString(R.string.update_available_no_comment, appName));
+			}
 		}
 
 		mLatestVersion = intent
-				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION);
+				.getIntExtra(UpdateChecker.EXTRA_LATEST_VERSION, 0);
 		mLatestVersionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME);
 
+		
+		if (mLatestVersionName != null){
+			setTitle(getString(R.string.latest_version_2, mLatestVersionName));
+		} else {
+			setTitle(R.string.app_name);
+		}
+		
 		int visibility;
-		if (mLatestVersion != null || mLatestVersionName != null) {
+		if (mLatestVersion > 0 || mLatestVersionName != null) {
 			visibility = View.VISIBLE;
 		} else {
 			visibility = View.GONE;

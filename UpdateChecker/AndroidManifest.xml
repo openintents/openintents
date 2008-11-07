@@ -35,6 +35,9 @@
             </intent-filter>
         </activity>
         
+        <activity android:name=".activity.PreferencesActivity"
+                  android:label="@string/app_name"/>
+                  
          <activity android:name=".activity.UpdateListActivity"
                   android:label="@string/app_name">
             <intent-filter>
@@ -44,7 +47,7 @@
         </activity>
         
         <service android:name=".UpdateCheckService">
-        <intent-filter>
+        	<intent-filter>
                 <action android:name="org.openintents.intents.CHECK_VERSION" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="http"/>

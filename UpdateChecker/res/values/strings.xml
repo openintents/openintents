@@ -4,6 +4,7 @@
     
     <string name="update_available">A new version of %s is available.\nWould you like to upgrade?</string>
     <string name="update_available_2">A new version of %s is available.\n%s\n</string>
+    <string name="update_available_no_comment">A new version of %s is available.</string>
 	<string name="market_not_available">Android Market not available.</string>
     <string name="market_search_term">OI Update</string>
     
@@ -34,4 +35,14 @@
     <string name="title_list_new_versions_from_andappstore">OI Updater - New versions at AndAppStore</string>
     <string name="title_list_all_versions">OI Updater - List of managed applications</string>
     <string name="title_list_all_versions_from_andappstore">OI Updater - List of managed applications (check at AndAppStore)</string>
+    <string name="settings">Settings</string>
+    <string name="auto_update">Auto update</string>
+    <string name="latest_version_2">Version %s</string>
+    
+    <string name="preference_auto_update">Auto update</string>
+    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
+    <string name="title_update_interval">Update interval</string>
+    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
+    <string name="dialog_title_update_interval">Select interval</string>
+    <string name="default_update_interval">every_month</string>
 </resources>
