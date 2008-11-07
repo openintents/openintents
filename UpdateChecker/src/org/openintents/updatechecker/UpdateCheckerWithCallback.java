@@ -22,21 +22,25 @@ import android.os.DeadObjectException;
 import android.os.RemoteException;
 import android.util.Log;
 
-public class UpdateCheckerWithCallback extends UpdateChecker implements Runnable {
+public class UpdateCheckerWithCallback implements Runnable {
 	private static final String TAG = "UpdateCheckerWithCallback";
 	
 
 	private String mLink;	
 	private IUpdateCheckerServiceCallback mCallback;
 
+
+	private UpdateChecker mChecker;
+
 	public UpdateCheckerWithCallback(String link, IUpdateCheckerServiceCallback cb) {
 
 		mLink = link;
 		mCallback = cb;
+		mChecker = new UpdateChecker();
 	}
 
 	public void run() {
-		checkForUpdate(mLink);
+		mChecker.checkForUpdate(mLink);
 
 		sendResult();
 
@@ -46,7 +50,7 @@ public class UpdateCheckerWithCallback extends UpdateChecker implements Runnable
 		Log.v(TAG, "send result");
 		try {
 
-			mCallback.onVersionChecked(getLatestVersion(), getApplicationId(), getComment(), getLatestVersionName());
+			mCallback.onVersionChecked(mChecker.getLatestVersion(), mChecker.getApplicationId(), mChecker.getComment(), mChecker.getLatestVersionName());
 		} catch (DeadObjectException e) {
 			// The IUpdateCheckerServiceCallback will take care of
 			// removing

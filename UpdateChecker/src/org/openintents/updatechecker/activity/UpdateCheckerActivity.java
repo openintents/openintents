@@ -20,9 +20,12 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateChecker;
+import org.openintents.updatechecker.UpdateInfo;
 
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -36,7 +39,6 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class UpdateCheckerActivity extends Activity {
 	private static final String TAG = "UpdateChecker";
@@ -44,6 +46,8 @@ public class UpdateCheckerActivity extends Activity {
 	public static final String EXTRA_COMMENT = "comment";
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
+	private String mLatestVersion;
+	private String mLatestVersionName;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -56,8 +60,7 @@ public class UpdateCheckerActivity extends Activity {
 
 		setContentView(R.layout.main);
 
-		TextView view;
-		updateText(getIntent());
+		setFromIntent(getIntent());
 
 		// view = (TextView) findViewById(R.id.text);
 		//
@@ -75,7 +78,12 @@ public class UpdateCheckerActivity extends Activity {
 			public void onClick(View arg0) {
 				switch (mRadioGroup.getCheckedRadioButtonId()) {
 				case R.id.do_update:
-					startActivity((Intent)getIntent().getParcelableExtra(UpdateChecker.EXTRA_UPDATE_INTENT));
+					try {
+						startActivity((Intent) getIntent().getParcelableExtra(
+								UpdateChecker.EXTRA_UPDATE_INTENT));
+					} catch (ActivityNotFoundException e) {
+						Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
+					}
 					break;
 				case R.id.remind_me_later:
 					updateUpdateTime();
@@ -85,21 +93,31 @@ public class UpdateCheckerActivity extends Activity {
 					break;
 
 				}
+				finish();
 			}
 		});
 
 	}
 
 	protected void updateLastIgnoredVersion() {
-		Toast.makeText(this, "TODO ignore this version", Toast.LENGTH_LONG).show();
-		
+		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.LAST_CHECK_VERSION_CODE, mLatestVersion);
+		values.put(UpdateInfo.LAST_CHECK_VERSION_NAME, mLatestVersionName);
+		getContentResolver().update(UpdateInfo.CONTENT_URI, values,
+				UpdateInfo.PACKAGE_NAME + " = ? ",
+				new String[] { mPackageName });
+
 	}
 
 	protected void updateUpdateTime() {
-		Toast.makeText(this, "TODO remind me later", Toast.LENGTH_LONG).show();		
+		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
+		getContentResolver().update(UpdateInfo.CONTENT_URI, values,
+				UpdateInfo.PACKAGE_NAME + " = ? ",
+				new String[] { mPackageName });
 	}
 
-	private void updateText(Intent intent) {
+	private void setFromIntent(Intent intent) {
 		TextView view = (TextView) findViewById(R.id.text_update);
 
 		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
@@ -108,6 +126,25 @@ public class UpdateCheckerActivity extends Activity {
 			view.setText(getString(R.string.update_available_2, appName,
 					comment));
 		}
+
+		mLatestVersion = intent
+				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION);
+		mLatestVersionName = intent
+				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME);
+
+		int visibility;
+		if (mLatestVersion != null || mLatestVersionName != null) {
+			visibility = View.VISIBLE;
+		} else {
+			visibility = View.GONE;
+
+		}
+
+		// ignore update currently not supported
+		visibility = View.GONE;
+
+		findViewById(R.id.ignore_this_update).setVisibility(visibility);
+
 	}
 
 	@Override
@@ -123,7 +160,7 @@ public class UpdateCheckerActivity extends Activity {
 	@Override
 	protected void onNewIntent(Intent intent) {
 		Log.v(TAG, "new intent");
-		updateText(intent);
+		setFromIntent(intent);
 		mPackageName = intent.getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
 
 	}

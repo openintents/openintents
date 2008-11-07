@@ -41,9 +41,7 @@ public class UpdateCheckService extends Service {
 		int currVersion = intent.getIntExtra(
 				UpdateChecker.EXTRA_CURRENT_VERSION, 0);
 		String versionName = intent
-				.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
-		boolean veecheck = intent.getBooleanExtra(UpdateChecker.EXTRA_VEECHECK,
-				false);
+				.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);		
 
 		long lastCheck;
 		lastCheck = getUpdateInfo(packageName);
@@ -55,22 +53,15 @@ public class UpdateCheckService extends Service {
 			// create update checker
 			final UpdateCheckerWithNotification updateChecker;
 
-			if (!veecheck) {
-				updateChecker = new UpdateCheckerWithNotification(this,
-						packageName, appName, currVersion, versionName);
-
-			} else {
-				updateChecker = new UpdateCheckerWithNotificationVeecheck(this,
-						packageName, appName, currVersion, versionName);
-
-			}
+			updateChecker = new UpdateCheckerWithNotification(this,
+					packageName, appName, currVersion, versionName, intent
+					.getDataString(), false);
 
 			// start in thread
 			new Thread() {
 				@Override
 				public void run() {
-					updateChecker.checkForUpdateWithNotification(intent
-							.getDataString());
+					updateChecker.checkForUpdateWithNotification();
 				}
 			}.start();
 		} else {

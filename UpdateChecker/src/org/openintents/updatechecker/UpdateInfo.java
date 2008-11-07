@@ -18,6 +18,10 @@
 
 package org.openintents.updatechecker;
 
+import org.openintents.updatechecker.activity.UpdateCheckerActivity;
+
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.provider.BaseColumns;
 

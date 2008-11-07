@@ -15,4 +15,18 @@
     <string name="remind_me_later">Remind me later!</string>
     <string name="ignore_this_update">Ignore this update</string>
     <string name="ok">Ok</string>
+    
+    <string name="update_not_started">Update could not be started\nPlease contact application developer!\n%s</string>
+    <string name="app_up_to_date">No newer version available.</string>
+    <string name="checking">Checking for new version.</string>
+    <string name="building_app_list">Building list of applications.</string>
+    <string name="check_andappstore">Check AndAppStore.com</string>
+    <string name="check_versions">Check versions</string>
+    <string name="show_versions">Show all</string>
+    <string name="refresh">Refresh</string>
+    <string name="checked_against_andappstore">Checked against AndAppStore.com</string>
+    <string name="current_version">Current version: %s</string>
+    <string name="newer_version">Newer version: %s</string>
+    <string name="newer_version_available">Newer version available.</string>
+    <string name="no_update_info_found">No update information found.</string>
 </resources>
