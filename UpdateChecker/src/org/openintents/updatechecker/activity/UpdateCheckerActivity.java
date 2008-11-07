@@ -58,7 +58,7 @@ public class UpdateCheckerActivity extends Activity {
 		// check for a new version of UpdateChecker
 		// Update.check(this);
 
-		setContentView(R.layout.main);
+		setContentView(R.layout.update_available);
 
 		setFromIntent(getIntent());
 

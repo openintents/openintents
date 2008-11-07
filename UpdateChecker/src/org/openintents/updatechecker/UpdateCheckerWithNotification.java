@@ -165,4 +165,8 @@ public class UpdateCheckerWithNotification {
 		return mChecker.getLatestVersionName();
 	}
 
+	public String getComment() {
+		return mChecker.getComment();
+	}
+
 }

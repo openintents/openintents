@@ -11,6 +11,7 @@ import android.content.pm.PackageInfo;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,6 +34,8 @@ public class UpdateListActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		setContentView(R.layout.app_list);
+
 		final ProgressDialog pb = ProgressDialog.show(this,
 				getString(R.string.app_name),
 				getString(R.string.building_app_list));
@@ -51,15 +54,15 @@ public class UpdateListActivity extends ListActivity {
 								new String[] { "name", "info" },
 								new int[] { android.R.id.text1,
 										android.R.id.text2 });
-						setListAdapter(adapter);						
+						setListAdapter(adapter);
+
 					}
 
 				});
 			}
 		}.start();
-		
-		// TODO set empty list view
-	}	
+
+	}
 
 	private Cursor createList(boolean appsWithNewVersionOnly,
 			boolean useAndAppStore, boolean ignoreDbUrl) {
@@ -71,10 +74,11 @@ public class UpdateListActivity extends ListActivity {
 					pi.applicationInfo);
 			String versionName = pi.versionName;
 			String info = null;
-			
-			if ((versionName == null && pi.versionCode == 0) || pi.packageName.startsWith("com.android")) {
+
+			if ((versionName == null && pi.versionCode == 0)
+					|| pi.packageName.startsWith("com.android")) {
 				continue;
-			}		
+			}
 
 			String updateUrl = null;
 			if (useAndAppStore) {
@@ -111,18 +115,32 @@ public class UpdateListActivity extends ListActivity {
 				if (!updateRequired) {
 					updateUrl = null;
 				} else {
-					if (updateChecker.getLatestVersionName() == null){
-					info = getString(R.string.newer_version_available);
-					} else  {
-						info = getString(R.string.newer_version,updateChecker.getLatestVersionName());
+					if (updateChecker.getLatestVersionName() != null) {
+						if (updateChecker.getComment() != null) {
+							info = getString(R.string.newer_version,
+									updateChecker.getLatestVersionName(),
+									updateChecker.getComment());
+						} else {
+							info = getString(R.string.newer_version_comment,
+									updateChecker.getLatestVersionName());
+						}
+					} else {
+						if (updateChecker.getComment() != null) {
+							info = getString(R.string.newer_version,
+									updateChecker.getComment());
+						} else {
+							info = getString(R.string.newer_version_available);
+						}
+
 					}
 				}
 
 			}
 
-			if (updateUrl != null) {				
+			if (updateUrl != null) {
 				Object[] row = new Object[] { pi.packageName.hashCode(), name,
-						pi.packageName, versionName, pi.versionCode, updateUrl, info };
+						pi.packageName, versionName, pi.versionCode, updateUrl,
+						info };
 				c.addRow(row);
 			}
 		}
@@ -170,7 +188,8 @@ public class UpdateListActivity extends ListActivity {
 				} else {
 					runOnUiThread(new Runnable() {
 						public void run() {
-							// we don't know whether the lookup failed or no newer version available
+							// we don't know whether the lookup failed or no
+							// newer version available
 							Toast
 									.makeText(UpdateListActivity.this,
 											R.string.app_up_to_date,
@@ -234,7 +253,6 @@ public class UpdateListActivity extends ListActivity {
 								new int[] { android.R.id.text1,
 										android.R.id.text2 });
 						setListAdapter(adapter);
-
 					}
 
 				});
