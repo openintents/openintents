@@ -36,31 +36,7 @@ public class UpdateListActivity extends ListActivity {
 
 		setContentView(R.layout.app_list);
 
-		final ProgressDialog pb = ProgressDialog.show(this,
-				getString(R.string.app_name),
-				getString(R.string.building_app_list));
-
-		new Thread() {
-			@Override
-			public void run() {
-				final Cursor c = createList(false, false, false);
-				pb.dismiss();
-				runOnUiThread(new Runnable() {
-
-					public void run() {
-						ListAdapter adapter = new SimpleCursorAdapter(
-								UpdateListActivity.this,
-								android.R.layout.simple_list_item_2, c,
-								new String[] { "name", "info" },
-								new int[] { android.R.id.text1,
-										android.R.id.text2 });
-						setListAdapter(adapter);
-
-					}
-
-				});
-			}
-		}.start();
+		check(false, false, false);
 
 	}
 
@@ -75,11 +51,13 @@ public class UpdateListActivity extends ListActivity {
 			String versionName = pi.versionName;
 			String info = null;
 
+			// ignore apps from black list
 			if ((versionName == null && pi.versionCode == 0)
 					|| pi.packageName.startsWith("com.android")) {
 				continue;
 			}
 
+			// determine update url
 			String updateUrl = null;
 			if (useAndAppStore) {
 				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
@@ -106,13 +84,16 @@ public class UpdateListActivity extends ListActivity {
 				info = getString(R.string.current_version, versionName);
 			}
 
+			// check for update if required
 			if (appsWithNewVersionOnly) {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
 						versionName, updateUrl, useAndAppStore);
 				boolean updateRequired = updateChecker
 						.checkForUpdateWithOutNotification();
+				
 				if (!updateRequired) {
+					// null url implies "do not show"
 					updateUrl = null;
 				} else {
 					if (updateChecker.getLatestVersionName() != null) {
@@ -138,6 +119,7 @@ public class UpdateListActivity extends ListActivity {
 			}
 
 			if (updateUrl != null) {
+				// add application
 				Object[] row = new Object[] { pi.packageName.hashCode(), name,
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info };
@@ -234,8 +216,14 @@ public class UpdateListActivity extends ListActivity {
 
 	private void check(final boolean appsWithNewVersionOnly,
 			final boolean useAndAppStore, final boolean ignoreDbUrl) {
+		String msg;
+		if (appsWithNewVersionOnly){
+			msg = getString(R.string.checking);
+		} else {
+			msg = getString(R.string.building_app_list);
+		}
 		final ProgressDialog pb = ProgressDialog.show(this,
-				getString(R.string.app_name), getString(R.string.checking));
+				getString(R.string.app_name), msg);
 
 		new Thread() {
 			@Override
@@ -258,6 +246,20 @@ public class UpdateListActivity extends ListActivity {
 				});
 			}
 		}.start();
+		
+		if (!appsWithNewVersionOnly){
+			if (useAndAppStore){				
+				setTitle(R.string.title_list_all_versions_from_andappstore);
+			} else {
+				setTitle(R.string.title_list_all_versions);				
+			}
+		} else {
+			if (useAndAppStore){				
+				setTitle(R.string.title_list_new_versions_from_andappstore);
+			} else {
+				setTitle(R.string.title_list_new_versions);				
+			}
+		}
 
 	}
 }

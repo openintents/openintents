@@ -24,10 +24,14 @@
     <string name="check_versions">Check versions</string>
     <string name="show_versions">Show all</string>
     <string name="refresh">Refresh</string>
-    <string name="checked_against_andappstore">Checked against AndAppStore.com</string>
+    <string name="checked_against_andappstore">Checked AndAppStore</string>
     <string name="current_version">Current version: %s</string>
     <string name="newer_version">Newer version: %s</string>
     <string name="newer_version_comment">Newer version: %s - %s</string>
     <string name="newer_version_available">Newer version available.</string>
     <string name="no_update_info_found">No update information found.</string>
+    <string name="title_list_new_versions">OI Updater - List of new versions</string>
+    <string name="title_list_new_versions_from_andappstore">OI Updater - New versions at AndAppStore</string>
+    <string name="title_list_all_versions">OI Updater - List of managed applications</string>
+    <string name="title_list_all_versions_from_andappstore">OI Updater - List of managed applications (check at AndAppStore)</string>
 </resources>
