@@ -31,7 +31,6 @@ import android.util.Log;
 public class UpdateCheckService extends Service {
 
 	private static final String TAG = "UpdateCheckerService";
-	private static final long CHECK_INTERVAL = 86400000; // 24 hours
 
 	public static final String EXTRA_INTERVAL = "interval";
 	public static final String ACTION_SET_ALARM = "org.openintents.updatechecker.SET_ALARM";
@@ -75,23 +74,28 @@ public class UpdateCheckService extends Service {
 							UpdateInfo.CONTENT_URI,
 							new String[] { UpdateInfo.UPDATE_URL,
 									UpdateInfo.IGNORE_VERSION_NAME,
-									UpdateInfo.IGNORE_VERSION_CODE },
+									UpdateInfo.IGNORE_VERSION_CODE,
+									UpdateInfo.LAST_CHECK},
 							UpdateInfo.PACKAGE_NAME + " = ?",
 							new String[] { pi.packageName }, null);
 
 					String updateUrl = null;
 					String ignoreVersionName = null;
 					int ignoreVersion = 0;
+					int lastCheck = 0;
 					if (cursor.moveToFirst()) {
 						updateUrl = cursor.getString(0);
 						ignoreVersionName = cursor.getString(1);
 						ignoreVersion = cursor.getInt(2);
+						lastCheck  = cursor.getInt(3);
 					} else {
 						if (pi.packageName
 								.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
 							updateUrl = "http://www.openintents.org/apks/"
 									+ pi.packageName + ".txt";
 						}
+						
+						UpdateInfo.insertUpdateInfo(UpdateCheckService.this, pi.packageName);
 					}
 					cursor.close();
 
@@ -105,7 +109,7 @@ public class UpdateCheckService extends Service {
 						UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 								UpdateCheckService.this, pi.packageName, name
 										.toString(), pi.versionCode,
-								versionName, updateUrl, false, ignoreVersionName, ignoreVersion);
+								versionName, updateUrl, false, ignoreVersionName, ignoreVersion, lastCheck);
 						updateChecker.checkForUpdateWithNotification();
 					}
 
@@ -141,27 +145,27 @@ public class UpdateCheckService extends Service {
 				ignoreVersionName = cursor.getString(2);
 				ignoreVersion = cursor.getInt(3);
 			} else {
-				insertUpdateInfo(packageName);
+				UpdateInfo.insertUpdateInfo(this, packageName);
 				lastCheck = 0;
 
 			}
 			cursor.close();
 		} else {
-			insertUpdateInfo(packageName);
+			UpdateInfo.insertUpdateInfo(this, packageName);
 			lastCheck = 0;
 		}
 				
 
 		Log.v(TAG, "last check for " + packageName + ": "
 				+ new java.util.Date(lastCheck));
-		if (lastCheck + CHECK_INTERVAL < System.currentTimeMillis()) {
+		if (lastCheck + UpdateInfo.CHECK_INTERVAL < System.currentTimeMillis()) {
 
 			// create update checker
 			final UpdateCheckerWithNotification updateChecker;
 
 			updateChecker = new UpdateCheckerWithNotification(this,
 					packageName, appName, currVersion, versionName, intent
-							.getDataString(), false, ignoreVersionName, ignoreVersion);
+							.getDataString(), false, ignoreVersionName, ignoreVersion, 0);
 
 			// start in thread
 			new Thread() {
@@ -205,16 +209,7 @@ public class UpdateCheckService extends Service {
 		}
 
 	}
-
 	
-	private void insertUpdateInfo(String packageName) {
-		ContentValues values = new ContentValues();
-		values.put(UpdateInfo.PACKAGE_NAME, packageName);
-		values.put(UpdateInfo.LAST_CHECK, 0);
-
-		getContentResolver().insert(UpdateInfo.CONTENT_URI, values);
-
-	}
 
 	@Override
 	public void onDestroy() {

@@ -49,7 +49,8 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.LATEST_VERSION_NAME,
 				AppListInfo.LATEST_VERSION_CODE,
 				AppListInfo.IGNORE_VERSION_NAME,
-				AppListInfo.IGNORE_VERSION_CODE });
+				AppListInfo.IGNORE_VERSION_CODE,
+				AppListInfo.LAST_CHECK});
 		for (PackageInfo pi : getPackageManager().getInstalledPackages(0)) {
 			CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
@@ -71,6 +72,7 @@ public class UpdateListActivity extends ListActivity {
 			String ignoreVersionName = null;
 			int ignoreVersion = 0;
 			
+			long lastCheck = 0;
 			// determine update url
 			if (useAndAppStore) {
 				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
@@ -81,7 +83,8 @@ public class UpdateListActivity extends ListActivity {
 						UpdateInfo.CONTENT_URI,
 						new String[] { UpdateInfo.UPDATE_URL,
 								UpdateInfo.IGNORE_VERSION_NAME,
-								UpdateInfo.IGNORE_VERSION_CODE },
+								UpdateInfo.IGNORE_VERSION_CODE,
+								UpdateInfo.LAST_CHECK},
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
@@ -89,6 +92,7 @@ public class UpdateListActivity extends ListActivity {
 					updateUrl = cursor.getString(0);
 					ignoreVersionName = cursor.getString(1);
 					ignoreVersion  = cursor.getInt(2);
+					lastCheck   = cursor.getLong(3);
 				} else {
 					if (pi.packageName.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
 						updateUrl = "http://www.openintents.org/apks/"
@@ -104,7 +108,7 @@ public class UpdateListActivity extends ListActivity {
 			if (updateUrl != null && appsWithNewVersionOnly) {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
-						versionName, updateUrl, useAndAppStore, ignoreVersionName, ignoreVersion);
+						versionName, updateUrl, useAndAppStore, ignoreVersionName, ignoreVersion, lastCheck);
 				boolean updateRequired = updateChecker
 						.checkForUpdateWithOutNotification();
 
@@ -143,7 +147,7 @@ public class UpdateListActivity extends ListActivity {
 				Object[] row = new Object[] { pi.packageName.hashCode(), name,
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info, updateIntent, comment, latestVersionName,
-						latestVersion, ignoreVersionName, ignoreVersion };
+						latestVersion, ignoreVersionName, ignoreVersion, lastCheck };
 				c.addRow(row);
 			}
 		}
@@ -185,7 +189,8 @@ public class UpdateListActivity extends ListActivity {
 				.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
-
+		long lastCheck = cursor.getLong(cursor.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
+		
 		if (updateIntent instanceof Intent) {
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
 					latestVersion, latestVersionName, comment, packageName,
@@ -195,7 +200,7 @@ public class UpdateListActivity extends ListActivity {
 
 			final UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 					this, packageName, appName, currVersion, currVersionName,
-					updateUrl, false, ignoreVersionName, ignoreVersion);
+					updateUrl, false, ignoreVersionName, ignoreVersion, lastCheck);
 
 			final ProgressDialog pb = ProgressDialog.show(this,
 					getString(R.string.app_name), getString(R.string.checking));

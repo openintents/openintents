@@ -21,6 +21,7 @@ package org.openintents.updatechecker;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,7 +48,8 @@ public class UpdateInfo implements BaseColumns {
 	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
 
 	public static final String ORG_OPENINTENTS = "org.openintents";
-
+	public static final long CHECK_INTERVAL = 86400000; // 24 hours
+	
 	public static Intent createUpdateActivityIntent(Context mContext,
 			UpdateChecker mChecker, String mPackageName, String mAppName) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
@@ -92,15 +94,17 @@ public class UpdateInfo implements BaseColumns {
 		PendingIntent pi = PendingIntent.getService(context, 0, i,
 				PendingIntent.FLAG_NO_CREATE);
 
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+
 		Intent intent = new Intent(context, UpdateCheckService.class);
-		if (prefs.getBoolean(
-				"auto_update", true)) {
+		if (prefs.getBoolean("auto_update", true)) {
 
 			if (pi == null) {
 				intent.setAction(UpdateCheckService.ACTION_SET_ALARM);
-				intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, Integer.parseInt(prefs.getString("update_interval", "604800000")));
+				intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, Integer
+						.parseInt(prefs.getString("update_interval",
+								"604800000")));
 				context.startService(intent);
 			}
 		} else {
@@ -110,5 +114,13 @@ public class UpdateInfo implements BaseColumns {
 			}
 		}
 
+	}
+
+	public static void insertUpdateInfo(Context context, String packageName) {
+		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.PACKAGE_NAME, packageName);
+		values.put(UpdateInfo.LAST_CHECK, 0);
+		context.getContentResolver().insert(UpdateInfo.CONTENT_URI, values );
+		
 	}
 }

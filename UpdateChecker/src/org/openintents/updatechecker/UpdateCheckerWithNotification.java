@@ -52,11 +52,12 @@ public class UpdateCheckerWithNotification {
 	private String mUri;
 	private String mIgnoreVersionName;
 	private int mIgnoreVersion;
+	private long mLastCheck;
 
 	public UpdateCheckerWithNotification(Context context, String packageName,
 			String appName, int currentVersionCode, String currentVersionName,
 			String uri, boolean tempUri, String ignoreVersionName,
-			int ignoreVersion) {
+			int ignoreVersion, long lastCheck) {
 		mContext = context;
 		mPackageName = packageName;
 		mAppName = appName;
@@ -66,6 +67,7 @@ public class UpdateCheckerWithNotification {
 		mTempUri = tempUri;
 		mIgnoreVersionName = ignoreVersionName;
 		mIgnoreVersion = ignoreVersion;
+		mLastCheck = lastCheck;
 
 		if (mNm == null) {
 			mNm = (NotificationManager) context
@@ -76,12 +78,18 @@ public class UpdateCheckerWithNotification {
 
 	public void checkForUpdateWithNotification() {
 		Log.v(TAG, "update with notification");
-		mChecker.checkForUpdate(mUri);
-		mChecker.setMarketUpdateIntent(mAppName);
-		showNotificationIfRequired();
-		updateLastCheck(mUri);
+		if (mLastCheck + UpdateInfo.CHECK_INTERVAL < System.currentTimeMillis()) {
+			mChecker.checkForUpdate(mUri);
+			mChecker.setMarketUpdateIntent(mAppName);
+			showNotificationIfRequired();
+			updateLastCheck(mUri);
+		}
 	}
 
+	/**
+	 * ignores last check
+	 * @return
+	 */
 	public boolean checkForUpdateWithOutNotification() {
 		Log.v(TAG, "update without notification");
 		mChecker.checkForUpdate(mUri);
@@ -97,7 +105,7 @@ public class UpdateCheckerWithNotification {
 		if (!mTempUri) {
 			// only update uri if requested
 			values.put(UpdateInfo.UPDATE_URL, uri);
-		}		
+		}
 		mContext.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
 				UpdateInfo.PACKAGE_NAME + " = ? ",
 				new String[] { mPackageName });
@@ -120,7 +128,8 @@ public class UpdateCheckerWithNotification {
 						.getLatestVersionName().equals(mCurrentVersionName));
 		boolean ignore = (mIgnoreVersion >= mChecker.getLatestVersion() && mChecker
 				.getLatestVersion() > 0)
-				|| (mIgnoreVersionName != null && mChecker.getLatestVersionName() != null && mIgnoreVersionName
+				|| (mIgnoreVersionName != null
+						&& mChecker.getLatestVersionName() != null && mIgnoreVersionName
 						.equals(mChecker.getLatestVersionName()));
 		return currentDiffer && !ignore;
 	}
