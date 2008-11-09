@@ -1,5 +1,10 @@
 package org.openintents.updatechecker.activity;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
 import org.openintents.updatechecker.R;
@@ -10,8 +15,12 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html.TagHandler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +36,8 @@ public class UpdateListActivity extends ListActivity {
 	private static final int MENU_CHECK_VERSIONS = Menu.FIRST + 2;
 	private static final int MENU_SHOW_VERSIONS = Menu.FIRST + 3;
 	private static final int MENU_REFRESH = Menu.FIRST + 4;
-	private static final int MENU_PREFERENCES = Menu.FIRST + 5;;
+	private static final int MENU_PREFERENCES = Menu.FIRST + 5;
+	private static final String TAG = "UpdateListActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +59,9 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.LATEST_VERSION_NAME,
 				AppListInfo.LATEST_VERSION_CODE,
 				AppListInfo.IGNORE_VERSION_NAME,
-				AppListInfo.IGNORE_VERSION_CODE,
-				AppListInfo.LAST_CHECK});
-		for (PackageInfo pi : getPackageManager().getInstalledPackages(0)) {
+				AppListInfo.IGNORE_VERSION_CODE, AppListInfo.LAST_CHECK });
+		for (PackageInfo pi : getPackageManager().getInstalledPackages(
+				PackageManager.GET_META_DATA)) {
 			CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
 			String versionName = pi.versionName;
@@ -60,18 +70,17 @@ public class UpdateListActivity extends ListActivity {
 			// ignore apps from black list
 			if (UpdateInfo.isBlackListed(pi)) {
 				continue;
-			}
+			}			
 
 			Intent updateIntent = null;
 			int latestVersion = 0;
 			String latestVersionName = null;
-			String comment = null;			
+			String comment = null;
 			String updateUrl = null;
-			
-			
+
 			String ignoreVersionName = null;
 			int ignoreVersion = 0;
-			
+
 			long lastCheck = 0;
 			// determine update url
 			if (useAndAppStore) {
@@ -84,31 +93,28 @@ public class UpdateListActivity extends ListActivity {
 						new String[] { UpdateInfo.UPDATE_URL,
 								UpdateInfo.IGNORE_VERSION_NAME,
 								UpdateInfo.IGNORE_VERSION_CODE,
-								UpdateInfo.LAST_CHECK},
+								UpdateInfo.LAST_CHECK },
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
 				if (!ignoreDbUrl && cursor.moveToFirst()) {
 					updateUrl = cursor.getString(0);
 					ignoreVersionName = cursor.getString(1);
-					ignoreVersion  = cursor.getInt(2);
-					lastCheck   = cursor.getLong(3);
+					ignoreVersion = cursor.getInt(2);
+					lastCheck = cursor.getLong(3);
 				} else {
-					if (pi.packageName.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
-						updateUrl = "http://www.openintents.org/apks/"
-								+ pi.packageName + ".txt";
-					}
+					updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(this, pi);
 				}
 				cursor.close();
 				info = getString(R.string.current_version, versionName);
 			}
 
-			
 			// check for update if required
 			if (updateUrl != null && appsWithNewVersionOnly) {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
-						versionName, updateUrl, useAndAppStore, ignoreVersionName, ignoreVersion, lastCheck);
+						versionName, updateUrl, useAndAppStore,
+						ignoreVersionName, ignoreVersion, lastCheck);
 				boolean updateRequired = updateChecker
 						.checkForUpdateWithOutNotification();
 
@@ -147,7 +153,8 @@ public class UpdateListActivity extends ListActivity {
 				Object[] row = new Object[] { pi.packageName.hashCode(), name,
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info, updateIntent, comment, latestVersionName,
-						latestVersion, ignoreVersionName, ignoreVersion, lastCheck };
+						latestVersion, ignoreVersionName, ignoreVersion,
+						lastCheck };
 				c.addRow(row);
 			}
 		}
@@ -155,6 +162,7 @@ public class UpdateListActivity extends ListActivity {
 		return c;
 
 	}
+
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -180,7 +188,6 @@ public class UpdateListActivity extends ListActivity {
 		String ignoreVersionName = cursor.getString(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_NAME));
 
-		
 		int latestVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_CODE));
 		String latestVersionName = cursor.getString(cursor
@@ -189,8 +196,9 @@ public class UpdateListActivity extends ListActivity {
 				.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
-		long lastCheck = cursor.getLong(cursor.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
-		
+		long lastCheck = cursor.getLong(cursor
+				.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
+
 		if (updateIntent instanceof Intent) {
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
 					latestVersion, latestVersionName, comment, packageName,
@@ -200,7 +208,8 @@ public class UpdateListActivity extends ListActivity {
 
 			final UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 					this, packageName, appName, currVersion, currVersionName,
-					updateUrl, false, ignoreVersionName, ignoreVersion, lastCheck);
+					updateUrl, false, ignoreVersionName, ignoreVersion,
+					lastCheck);
 
 			final ProgressDialog pb = ProgressDialog.show(this,
 					getString(R.string.app_name), getString(R.string.checking));
@@ -238,10 +247,14 @@ public class UpdateListActivity extends ListActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_CHECK_ANDAPPSTORE, 0, R.string.check_andappstore).setIcon(android.R.drawable.ic_menu_search);
-		menu.add(0, MENU_CHECK_VERSIONS, 0, R.string.check_versions).setIcon(android.R.drawable.ic_menu_search);
-		menu.add(0, MENU_SHOW_VERSIONS, 0, R.string.show_versions).setIcon(android.R.drawable.ic_menu_agenda);
-		menu.add(0, MENU_PREFERENCES, 0, R.string.auto_update).setIcon(android.R.drawable.ic_menu_rotate);
+		menu.add(0, MENU_CHECK_ANDAPPSTORE, 0, R.string.check_andappstore)
+				.setIcon(android.R.drawable.ic_menu_search);
+		menu.add(0, MENU_CHECK_VERSIONS, 0, R.string.check_versions).setIcon(
+				android.R.drawable.ic_menu_search);
+		menu.add(0, MENU_SHOW_VERSIONS, 0, R.string.show_versions).setIcon(
+				android.R.drawable.ic_menu_agenda);
+		menu.add(0, MENU_PREFERENCES, 0, R.string.auto_update).setIcon(
+				android.R.drawable.ic_menu_rotate);
 		return true;
 	}
 

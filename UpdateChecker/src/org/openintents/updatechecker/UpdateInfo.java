@@ -18,6 +18,8 @@
 
 package org.openintents.updatechecker;
 
+import java.net.URL;
+
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 
 import android.app.PendingIntent;
@@ -26,9 +28,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 public class UpdateInfo implements BaseColumns {
 
@@ -49,7 +55,9 @@ public class UpdateInfo implements BaseColumns {
 
 	public static final String ORG_OPENINTENTS = "org.openintents";
 	public static final long CHECK_INTERVAL = 86400000; // 24 hours
-	
+	public static final String META_DATA_UPDATE_URL = "org.openintents.updatechecker.UPDATE_URL";
+	private static final String TAG = "UpdateInfo";
+
 	public static Intent createUpdateActivityIntent(Context mContext,
 			UpdateChecker mChecker, String mPackageName, String mAppName) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
@@ -85,7 +93,8 @@ public class UpdateInfo implements BaseColumns {
 
 	public static boolean isBlackListed(PackageInfo pi) {
 		return (pi.versionName == null && pi.versionCode == 0)
-				|| pi.packageName.startsWith("com.android");
+				|| pi.packageName.startsWith("com.android")
+				|| pi.packageName.startsWith("android");
 	}
 
 	public static void checkAlarm(Context context) {
@@ -120,7 +129,49 @@ public class UpdateInfo implements BaseColumns {
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.PACKAGE_NAME, packageName);
 		values.put(UpdateInfo.LAST_CHECK, 0);
-		context.getContentResolver().insert(UpdateInfo.CONTENT_URI, values );
+		context.getContentResolver().insert(UpdateInfo.CONTENT_URI, values);
+
+	}
+
+	public static String determineUpdateUrlFromPackageName(Context context,
+			PackageInfo pi) {
+
+		String updateUrl = null;
+
+		// try meta data
+		Bundle md = null;
+		try {
+			md = context.getPackageManager().getApplicationInfo(pi.packageName,
+					PackageManager.GET_META_DATA).metaData;
+		} catch (NameNotFoundException e) {
+			// ignore
+		}
+
+		if (md != null) {
+			updateUrl = md.getString(UpdateInfo.META_DATA_UPDATE_URL);
+		}
 		
+		// try OI url
+		if (updateUrl == null
+				&& pi.packageName.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
+			updateUrl = "http://www.openintents.org/apks/" + pi.packageName
+					+ ".txt";
+		}
+
+		// try andappstore url
+		if (updateUrl == null) {
+			updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
+					+ pi.packageName;
+			try {
+				// try connection
+				new URL(updateUrl).openConnection();
+			} catch (Exception e) {
+				Log.v(TAG, "AndAppStore url:" + e.getMessage());
+				updateUrl = null;
+			}
+		}
+
+		return updateUrl;
+
 	}
 }

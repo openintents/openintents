@@ -21,7 +21,6 @@ package org.openintents.updatechecker;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.database.Cursor;
@@ -48,8 +47,9 @@ public class UpdateCheckService extends Service {
 		} else if (ACTION_CHECK_ALL.equals(intent.getAction())) {
 			performAllUpdates();
 		} else {
-
-			performCheckForUpdates(intent);
+			// we don't want to allow arbitrary intents to manipulate the update urls
+			// 
+			//performCheckForUpdates(intent);
 		}
 
 	}
@@ -89,11 +89,7 @@ public class UpdateCheckService extends Service {
 						ignoreVersion = cursor.getInt(2);
 						lastCheck  = cursor.getInt(3);
 					} else {
-						if (pi.packageName
-								.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
-							updateUrl = "http://www.openintents.org/apks/"
-									+ pi.packageName + ".txt";
-						}
+						updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(UpdateCheckService.this, pi);
 						
 						UpdateInfo.insertUpdateInfo(UpdateCheckService.this, pi.packageName);
 					}
@@ -119,6 +115,10 @@ public class UpdateCheckService extends Service {
 
 	}
 
+	/**
+	 * currently not used, commented out in onStart due to spam issues.
+	 * @param intent
+	 */
 	private void performCheckForUpdates(final Intent intent) {
 		// get extras from intent
 		String packageName = intent

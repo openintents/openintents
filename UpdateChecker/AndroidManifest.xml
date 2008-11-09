@@ -22,12 +22,28 @@
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.updatechecker"
-      android:versionCode="1"
+      android:versionCode="2"
       android:versionName="1.0.0">
       
+    <meta-data android:name="org.openintents.updatechecker.UPDATE_URL"
+                       android:value="http://www.openintents.org/apks/org.openintents.updatechecker.txt" />
+    
     <uses-permission android:name="android.permission.INTERNET"/>
-       
+    
+    <permission android:name="org.openintents.updatechecker.READ_UPDATE_INFO"
+        android:label="@string/permission_read_update_info"
+        android:description="@string/permission_read_update_info_descr"
+        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+        android:protectionLevel="normal" />
+ 	<permission android:name="org.openintents.updatechecker.WRITE_UPDATE_INFO"
+        android:label="@string/permission_write_update_info"
+        android:description="@string/permission_write_update_info_descr"
+        android:permissionGroup="android.permission-group.SYSTEM_TOOLS"
+        android:protectionLevel="normal" />        
+    
+    
     <application android:icon="@drawable/icon_update" android:label="@string/app_name">
+    
         <activity android:name=".activity.UpdateCheckerActivity"
                   android:label="@string/app_name">
             <intent-filter>
@@ -55,7 +71,10 @@
             </intent-filter>
         </service>
         
-        <provider android:name=".UpdateInfoProvider" android:authorities="org.openintents.updateinfo">      
+        <provider android:name=".UpdateInfoProvider" 
+        android:authorities="org.openintents.updateinfo"
+        android:readPermission="org.openintents.updatechecker.READ_UPDATE_INFO"
+        android:writePermission="org.openintents.updatechecker.WRITE_UPDATE_INFO">      
         </provider>
     </application>
     
