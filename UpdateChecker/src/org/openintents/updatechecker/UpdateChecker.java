@@ -124,7 +124,7 @@ public class UpdateChecker {
 
 	private void parseTxt(String firstLine, BufferedReader reader) throws IOException {
 
-		mLatestVersion = Integer.parseInt(firstLine);
+		mLatestVersion = (firstLine != null?  Integer.parseInt(firstLine) : 0);
 		Log.d(TAG, "Lastest version available: " + mLatestVersion);
 
 		mNewApplicationId = reader.readLine();

@@ -100,6 +100,9 @@ public class UpdateCheckerActivity extends Activity {
 				finish();
 			}
 		});
+		
+		Log.v(TAG, "package name = " + mPackageName);
+
 
 	}
 
@@ -175,7 +178,11 @@ public class UpdateCheckerActivity extends Activity {
 		Log.v(TAG, "new intent");
 		setFromIntent(intent);
 		mPackageName = intent.getStringExtra(UpdateChecker.EXTRA_PACKAGE_NAME);
-
+		if (mPackageName != null) {
+			((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+					.cancel(mPackageName.hashCode());
+		}
+		Log.v(TAG, "package name = " + mPackageName);
 	}
 
 	private String getSDInfo() {

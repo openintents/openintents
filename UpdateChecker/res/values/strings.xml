@@ -28,6 +28,7 @@
     <string name="refresh">Refresh</string>
     <string name="checked_against_andappstore">Checked AndAppStore</string>
     <string name="current_version">Current version: %s</string>
+    <string name="current_version_code">Current version code: %s</string>
     <string name="newer_version">Newer version: %s</string>
     <string name="newer_version_comment">Newer version: %s - %s</string>
     <string name="newer_version_available">Newer version available.</string>

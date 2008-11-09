@@ -84,14 +84,14 @@ public class UpdateCheckService extends Service {
 					String updateUrl = null;
 					String ignoreVersionName = null;
 					int ignoreVersion = 0;
-					int lastCheck = 0;
+					long lastCheck = 0;
 					boolean noNotifications = false;
 					
 					if (cursor.moveToFirst()) {
 						updateUrl = cursor.getString(0);
 						ignoreVersionName = cursor.getString(1);
 						ignoreVersion = cursor.getInt(2);
-						lastCheck = cursor.getInt(3);
+						lastCheck = cursor.getLong(3);
 						noNotifications = cursor.getInt(4) > 0;
 					} else {
 						updateUrl = UpdateInfo

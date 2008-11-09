@@ -21,6 +21,7 @@ package org.openintents.updatechecker;
 import java.net.URL;
 
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
+import org.openintents.updatechecker.activity.UpdateListActivity;
 
 import android.app.PendingIntent;
 import android.content.ContentValues;
@@ -62,6 +63,7 @@ public class UpdateInfo implements BaseColumns {
 	public static Intent createUpdateActivityIntent(Context mContext,
 			UpdateChecker mChecker, String mPackageName, String mAppName) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
+		intent.setAction(mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, mChecker
 				.getLatestVersion());
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME, mChecker
@@ -115,11 +117,13 @@ public class UpdateInfo implements BaseColumns {
 				intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, Integer
 						.parseInt(prefs.getString("update_interval",
 								"604800000")));
+				Log.v(TAG, "check alarm start");
 				context.startService(intent);
 			}
 		} else {
 			if (pi != null) {
 				intent.setAction(UpdateCheckService.ACTION_UNSET_ALARM);
+				Log.v(TAG, "check alarm stop");
 				context.startService(intent);
 			}
 		}
@@ -127,7 +131,13 @@ public class UpdateInfo implements BaseColumns {
 	}
 
 	public static void insertUpdateInfo(Context context, String packageName) {
+		insertUpdateInfo(context, packageName, null);
+	}
+
+	public static void insertUpdateInfo(Context context, String packageName,
+			String updateUrl) {
 		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.UPDATE_URL, updateUrl);
 		values.put(UpdateInfo.PACKAGE_NAME, packageName);
 		values.put(UpdateInfo.LAST_CHECK, 0);
 		context.getContentResolver().insert(UpdateInfo.CONTENT_URI, values);
@@ -181,9 +191,11 @@ public class UpdateInfo implements BaseColumns {
 
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.NO_NOTIFICATIONS, noUpdates);
-		context.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
-				UpdateInfo.PACKAGE_NAME + " = ? ",
-				new String[] { packageName });
+		context.getContentResolver()
+				.update(UpdateInfo.CONTENT_URI, values,
+						UpdateInfo.PACKAGE_NAME + " = ? ",
+						new String[] { packageName });
 
 	}
+
 }

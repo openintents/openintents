@@ -39,7 +39,7 @@ public class UpdateInfoProvider extends ContentProvider {
 	private static final String TAG = "UpdateInfoProvider";
 
 	private static final String DATABASE_NAME = "updateinfo.db";
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 1;
 	private static final String UPDATE_INFO_TABLE = "update_info";
 
 	private static HashMap<String, String> sUpdateInfoProjectionMap;

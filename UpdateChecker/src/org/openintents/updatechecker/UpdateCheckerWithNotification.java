@@ -53,6 +53,7 @@ public class UpdateCheckerWithNotification {
 	private String mIgnoreVersionName;
 	private int mIgnoreVersion;
 	private long mLastCheck;
+	private boolean mNoNotifications;
 
 	public UpdateCheckerWithNotification(Context context, String packageName,
 			String appName, int currentVersionCode, String currentVersionName,
@@ -68,6 +69,7 @@ public class UpdateCheckerWithNotification {
 		mIgnoreVersionName = ignoreVersionName;
 		mIgnoreVersion = ignoreVersion;
 		mLastCheck = lastCheck;
+		mNoNotifications = noNotifications;
 
 		if (mNm == null) {
 			mNm = (NotificationManager) context
@@ -81,13 +83,16 @@ public class UpdateCheckerWithNotification {
 		if (mLastCheck + UpdateInfo.CHECK_INTERVAL < System.currentTimeMillis()) {
 			mChecker.checkForUpdate(mUri);
 			mChecker.setMarketUpdateIntent(mAppName);
-			showNotificationIfRequired();
+			if (!mNoNotifications) {
+				showNotificationIfRequired();
+			}
 			updateLastCheck(mUri);
 		}
 	}
 
 	/**
 	 * ignores last check
+	 * 
 	 * @return
 	 */
 	public boolean checkForUpdateWithOutNotification() {
@@ -147,7 +152,7 @@ public class UpdateCheckerWithNotification {
 		// The PendingIntent to launch our activity if the user selects this
 		// notification
 		PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
-				mIntent, 0);
+				mIntent, PendingIntent.FLAG_ONE_SHOT);
 
 		// Set the info for the views that show in the notification panel.
 		notification
