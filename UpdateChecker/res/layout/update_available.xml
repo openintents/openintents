@@ -28,6 +28,9 @@
 		<RadioButton android:id="@+id/ignore_this_update"
 			android:text="@string/ignore_this_update" android:layout_width="fill_parent"
 			android:layout_height="wrap_content"></RadioButton>
+		<RadioButton android:id="@+id/ignore_all_further_updates"
+			android:text="@string/ignore_all_further_updates" android:layout_width="fill_parent"
+			android:layout_height="wrap_content"></RadioButton>
 	</RadioGroup>
 	<Button android:id="@+id/ok" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="@string/ok"/>

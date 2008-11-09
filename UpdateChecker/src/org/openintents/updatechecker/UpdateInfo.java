@@ -41,6 +41,9 @@ public class UpdateInfo implements BaseColumns {
 	public static final String LAST_CHECK = "last_check";
 	public static final String PACKAGE_NAME = "package_name";
 	public static final String UPDATE_URL = "update_url";
+	public static final String IGNORE_VERSION_CODE = "ignore_version_code";
+	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
+	public static final String NO_NOTIFICATIONS = "no_notifications";
 
 	public static final String DEFAULT_SORT_ORDER = LAST_CHECK;
 
@@ -50,8 +53,6 @@ public class UpdateInfo implements BaseColumns {
 	public static final String AUTHORITY = "org.openintents.updateinfo";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
 			+ "/info");
-	public static final String IGNORE_VERSION_CODE = "ignore_version_code";
-	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
 
 	public static final String ORG_OPENINTENTS = "org.openintents";
 	public static final long CHECK_INTERVAL = 86400000; // 24 hours
@@ -138,7 +139,7 @@ public class UpdateInfo implements BaseColumns {
 
 		String updateUrl = null;
 
-		// try meta data
+		// try meta data of package
 		Bundle md = null;
 		try {
 			md = context.getPackageManager().getApplicationInfo(pi.packageName,
@@ -150,7 +151,7 @@ public class UpdateInfo implements BaseColumns {
 		if (md != null) {
 			updateUrl = md.getString(UpdateInfo.META_DATA_UPDATE_URL);
 		}
-		
+
 		// try OI url
 		if (updateUrl == null
 				&& pi.packageName.startsWith(UpdateInfo.ORG_OPENINTENTS)) {
@@ -172,6 +173,17 @@ public class UpdateInfo implements BaseColumns {
 		}
 
 		return updateUrl;
+
+	}
+
+	public static void setNoUpdates(Context context, String packageName,
+			boolean noUpdates) {
+
+		ContentValues values = new ContentValues();
+		values.put(UpdateInfo.NO_NOTIFICATIONS, noUpdates);
+		context.getContentResolver().update(UpdateInfo.CONTENT_URI, values,
+				UpdateInfo.PACKAGE_NAME + " = ? ",
+				new String[] { packageName });
 
 	}
 }

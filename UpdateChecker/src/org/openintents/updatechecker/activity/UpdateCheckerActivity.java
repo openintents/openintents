@@ -93,13 +93,16 @@ public class UpdateCheckerActivity extends Activity {
 				case R.id.ignore_this_update:
 					updateLastIgnoredVersion();
 					break;
-
+				case R.id.ignore_all_further_updates:
+					UpdateInfo.setNoUpdates(UpdateCheckerActivity.this, mPackageName, true);
+					break;					
 				}
 				finish();
 			}
 		});
 
 	}
+
 
 	protected void updateLastIgnoredVersion() {
 		ContentValues values = new ContentValues();

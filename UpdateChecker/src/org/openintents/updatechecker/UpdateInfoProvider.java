@@ -72,7 +72,9 @@ public class UpdateInfoProvider extends ContentProvider {
 					UpdateInfo.IGNORE_VERSION_CODE
 					+ " INTEGER,"+
 					UpdateInfo.IGNORE_VERSION_NAME
-					+ " TEXT"+
+					+ " TEXT,"+
+					UpdateInfo.NO_NOTIFICATIONS
+					+ " INTEGER"+
 					");");
 		}
 
@@ -89,8 +91,7 @@ public class UpdateInfoProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		mOpenHelper = new DatabaseHelper(getContext());
-		
+		mOpenHelper = new DatabaseHelper(getContext());		
 		UpdateInfo.checkAlarm(this.getContext());
 		return true;
 	}
@@ -256,5 +257,7 @@ public class UpdateInfoProvider extends ContentProvider {
 				UpdateInfo.IGNORE_VERSION_CODE);
 		sUpdateInfoProjectionMap.put(UpdateInfo.IGNORE_VERSION_NAME,
 				UpdateInfo.IGNORE_VERSION_NAME);
+		sUpdateInfoProjectionMap.put(UpdateInfo.NO_NOTIFICATIONS,
+				UpdateInfo.NO_NOTIFICATIONS);
 	}
 }

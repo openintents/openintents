@@ -41,20 +41,21 @@ public class UpdateCheckService extends Service {
 		Log.d(TAG, "started");
 
 		if (ACTION_SET_ALARM.equals(intent.getAction())) {
-			setAlarm(intent);
+			setAlarm(intent, startId);
 		} else if (ACTION_UNSET_ALARM.equals(intent.getAction())) {
-			unsetAlarm();
+			unsetAlarm(startId);
 		} else if (ACTION_CHECK_ALL.equals(intent.getAction())) {
-			performAllUpdates();
+			performAllUpdates(startId);
 		} else {
-			// we don't want to allow arbitrary intents to manipulate the update urls
+			// we don't want to allow arbitrary intents to manipulate the update
+			// urls
 			// 
-			//performCheckForUpdates(intent);
+			// performCheckForUpdates(intent);
 		}
 
 	}
 
-	private void performAllUpdates() {
+	private void performAllUpdates(final int startId) {
 		new Thread() {
 			@Override
 			public void run() {
@@ -75,7 +76,8 @@ public class UpdateCheckService extends Service {
 							new String[] { UpdateInfo.UPDATE_URL,
 									UpdateInfo.IGNORE_VERSION_NAME,
 									UpdateInfo.IGNORE_VERSION_CODE,
-									UpdateInfo.LAST_CHECK},
+									UpdateInfo.LAST_CHECK,
+									UpdateInfo.NO_NOTIFICATIONS },
 							UpdateInfo.PACKAGE_NAME + " = ?",
 							new String[] { pi.packageName }, null);
 
@@ -83,15 +85,21 @@ public class UpdateCheckService extends Service {
 					String ignoreVersionName = null;
 					int ignoreVersion = 0;
 					int lastCheck = 0;
+					boolean noNotifications = false;
+					
 					if (cursor.moveToFirst()) {
 						updateUrl = cursor.getString(0);
 						ignoreVersionName = cursor.getString(1);
 						ignoreVersion = cursor.getInt(2);
-						lastCheck  = cursor.getInt(3);
+						lastCheck = cursor.getInt(3);
+						noNotifications = cursor.getInt(4) > 0;
 					} else {
-						updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(UpdateCheckService.this, pi);
-						
-						UpdateInfo.insertUpdateInfo(UpdateCheckService.this, pi.packageName);
+						updateUrl = UpdateInfo
+								.determineUpdateUrlFromPackageName(
+										UpdateCheckService.this, pi);
+
+						UpdateInfo.insertUpdateInfo(UpdateCheckService.this,
+								pi.packageName);
 					}
 					cursor.close();
 
@@ -105,11 +113,14 @@ public class UpdateCheckService extends Service {
 						UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 								UpdateCheckService.this, pi.packageName, name
 										.toString(), pi.versionCode,
-								versionName, updateUrl, false, ignoreVersionName, ignoreVersion, lastCheck);
+								versionName, updateUrl, false,
+								ignoreVersionName, ignoreVersion, lastCheck,
+								noNotifications);
 						updateChecker.checkForUpdateWithNotification();
 					}
 
 				}
+				stopSelfResult(startId);
 			}
 		}.start();
 
@@ -117,6 +128,7 @@ public class UpdateCheckService extends Service {
 
 	/**
 	 * currently not used, commented out in onStart due to spam issues.
+	 * 
 	 * @param intent
 	 */
 	private void performCheckForUpdates(final Intent intent) {
@@ -129,21 +141,26 @@ public class UpdateCheckService extends Service {
 		String versionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
 
-		
 		long lastCheck = 0;
 		String ignoreVersionName = null;
 		int ignoreVersion = 0;
+		boolean noNotifications = false;
 		
 		// get update info from db
-		Cursor cursor = getContentResolver().query(UpdateInfo.CONTENT_URI,
-				new String[] { UpdateInfo._ID, UpdateInfo.LAST_CHECK, UpdateInfo.IGNORE_VERSION_NAME , UpdateInfo.IGNORE_VERSION_CODE  },
+		Cursor cursor = getContentResolver().query(
+				UpdateInfo.CONTENT_URI,
+				new String[] { UpdateInfo._ID, UpdateInfo.LAST_CHECK,
+						UpdateInfo.IGNORE_VERSION_NAME,
+						UpdateInfo.IGNORE_VERSION_CODE, UpdateInfo.NO_NOTIFICATIONS },
 				UpdateInfo.PACKAGE_NAME + " = ?", new String[] { packageName },
 				null);
+	
 		if (cursor != null) {
 			if (cursor.moveToFirst()) {
 				lastCheck = cursor.getLong(1);
 				ignoreVersionName = cursor.getString(2);
 				ignoreVersion = cursor.getInt(3);
+				noNotifications = cursor.getInt(4) > 0;
 			} else {
 				UpdateInfo.insertUpdateInfo(this, packageName);
 				lastCheck = 0;
@@ -154,7 +171,6 @@ public class UpdateCheckService extends Service {
 			UpdateInfo.insertUpdateInfo(this, packageName);
 			lastCheck = 0;
 		}
-				
 
 		Log.v(TAG, "last check for " + packageName + ": "
 				+ new java.util.Date(lastCheck));
@@ -165,7 +181,8 @@ public class UpdateCheckService extends Service {
 
 			updateChecker = new UpdateCheckerWithNotification(this,
 					packageName, appName, currVersion, versionName, intent
-							.getDataString(), false, ignoreVersionName, ignoreVersion, 0);
+							.getDataString(), false, ignoreVersionName,
+					ignoreVersion, 0, noNotifications);
 
 			// start in thread
 			new Thread() {
@@ -184,7 +201,7 @@ public class UpdateCheckService extends Service {
 		}
 	}
 
-	private void unsetAlarm() {
+	private void unsetAlarm(int startId) {
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		Intent i = new Intent(this, UpdateCheckService.class);
 		i.setAction(ACTION_CHECK_ALL);
@@ -192,9 +209,10 @@ public class UpdateCheckService extends Service {
 				PendingIntent.FLAG_CANCEL_CURRENT);
 		am.cancel(pi);
 		Log.v(TAG, "Unset alarm.");
+		stopSelfResult(startId);
 	}
 
-	private void setAlarm(Intent intent) {
+	private void setAlarm(Intent intent, int startId) {
 		int interval = intent.getIntExtra(EXTRA_INTERVAL, -1);
 		if (interval > 0) {
 			long time = System.currentTimeMillis();
@@ -207,9 +225,9 @@ public class UpdateCheckService extends Service {
 			am.setRepeating(AlarmManager.RTC, time + interval, interval, pi);
 			Log.v(TAG, "Set alarm.");
 		}
+		stopSelfResult(startId);
 
 	}
-	
 
 	@Override
 	public void onDestroy() {

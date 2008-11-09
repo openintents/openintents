@@ -45,12 +45,12 @@ public class UpdateListActivity extends ListActivity {
 
 		setContentView(R.layout.app_list);
 
-		check(false, false, false);
+		check(false, false);
 
 	}
 
 	private Cursor createList(boolean appsWithNewVersionOnly,
-			boolean useAndAppStore, boolean ignoreDbUrl) {
+			boolean useAndAppStore) {
 		OpenMatrixCursor c = new OpenMatrixCursor(new String[] {
 				AppListInfo._ID, AppListInfo.NAME, AppListInfo.PACKAGE_NAME,
 				AppListInfo.VERSION_NAME, AppListInfo.VERSION_CODE,
@@ -59,7 +59,9 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.LATEST_VERSION_NAME,
 				AppListInfo.LATEST_VERSION_CODE,
 				AppListInfo.IGNORE_VERSION_NAME,
-				AppListInfo.IGNORE_VERSION_CODE, AppListInfo.LAST_CHECK });
+				AppListInfo.IGNORE_VERSION_CODE,
+				AppListInfo.LAST_CHECK, 
+				AppListInfo.NO_NOTIFICATIONS});
 		for (PackageInfo pi : getPackageManager().getInstalledPackages(
 				PackageManager.GET_META_DATA)) {
 			CharSequence name = getPackageManager().getApplicationLabel(
@@ -82,6 +84,8 @@ public class UpdateListActivity extends ListActivity {
 			int ignoreVersion = 0;
 
 			long lastCheck = 0;
+			boolean noNotifications = false;
+			
 			// determine update url
 			if (useAndAppStore) {
 				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
@@ -93,15 +97,21 @@ public class UpdateListActivity extends ListActivity {
 						new String[] { UpdateInfo.UPDATE_URL,
 								UpdateInfo.IGNORE_VERSION_NAME,
 								UpdateInfo.IGNORE_VERSION_CODE,
-								UpdateInfo.LAST_CHECK },
+								UpdateInfo.LAST_CHECK, 
+								UpdateInfo.NO_NOTIFICATIONS },
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
-				if (!ignoreDbUrl && cursor.moveToFirst()) {
+				if (cursor != null && cursor.getCount() == 0){
+					UpdateInfo.insertUpdateInfo(this, pi.packageName);
+				}
+				
+				if (cursor.moveToFirst()) {
 					updateUrl = cursor.getString(0);
 					ignoreVersionName = cursor.getString(1);
 					ignoreVersion = cursor.getInt(2);
 					lastCheck = cursor.getLong(3);
+					noNotifications = cursor.getInt(4) > 0;
 				} else {
 					updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(this, pi);
 				}
@@ -114,7 +124,7 @@ public class UpdateListActivity extends ListActivity {
 				UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 						this, pi.packageName, name.toString(), pi.versionCode,
 						versionName, updateUrl, useAndAppStore,
-						ignoreVersionName, ignoreVersion, lastCheck);
+						ignoreVersionName, ignoreVersion, lastCheck, noNotifications);
 				boolean updateRequired = updateChecker
 						.checkForUpdateWithOutNotification();
 
@@ -154,7 +164,7 @@ public class UpdateListActivity extends ListActivity {
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info, updateIntent, comment, latestVersionName,
 						latestVersion, ignoreVersionName, ignoreVersion,
-						lastCheck };
+						lastCheck, noNotifications };
 				c.addRow(row);
 			}
 		}
@@ -198,6 +208,8 @@ public class UpdateListActivity extends ListActivity {
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
 		long lastCheck = cursor.getLong(cursor
 				.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
+		boolean noNotifications = cursor.getInt(cursor
+				.getColumnIndexOrThrow(AppListInfo.NO_NOTIFICATIONS)) > 0;
 
 		if (updateIntent instanceof Intent) {
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
@@ -209,7 +221,7 @@ public class UpdateListActivity extends ListActivity {
 			final UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
 					this, packageName, appName, currVersion, currVersionName,
 					updateUrl, false, ignoreVersionName, ignoreVersion,
-					lastCheck);
+					lastCheck, noNotifications);
 
 			final ProgressDialog pb = ProgressDialog.show(this,
 					getString(R.string.app_name), getString(R.string.checking));
@@ -247,8 +259,8 @@ public class UpdateListActivity extends ListActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, MENU_CHECK_ANDAPPSTORE, 0, R.string.check_andappstore)
-				.setIcon(android.R.drawable.ic_menu_search);
+//		menu.add(0, MENU_CHECK_ANDAPPSTORE, 0, R.string.check_andappstore)
+//				.setIcon(android.R.drawable.ic_menu_search);
 		menu.add(0, MENU_CHECK_VERSIONS, 0, R.string.check_versions).setIcon(
 				android.R.drawable.ic_menu_search);
 		menu.add(0, MENU_SHOW_VERSIONS, 0, R.string.show_versions).setIcon(
@@ -262,17 +274,14 @@ public class UpdateListActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case MENU_CHECK_ANDAPPSTORE:
-			check(true, true, false);
+			check(true, true);
 			break;
 		case MENU_CHECK_VERSIONS:
-			check(true, false, false);
+			check(true, false);
 			break;
 		case MENU_SHOW_VERSIONS:
-			check(false, false, false);
-			break;
-		case MENU_REFRESH:
-			check(false, false, true);
-			break;
+			check(false, false);
+			break;		
 		case MENU_PREFERENCES:
 			Intent intent = new Intent(this, PreferencesActivity.class);
 			startActivity(intent);
@@ -282,7 +291,7 @@ public class UpdateListActivity extends ListActivity {
 	}
 
 	private void check(final boolean appsWithNewVersionOnly,
-			final boolean useAndAppStore, final boolean ignoreDbUrl) {
+			final boolean useAndAppStore) {
 		String msg;
 		if (appsWithNewVersionOnly) {
 			msg = getString(R.string.checking);
@@ -297,7 +306,7 @@ public class UpdateListActivity extends ListActivity {
 			@Override
 			public void run() {
 				final Cursor c = createList(appsWithNewVersionOnly,
-						useAndAppStore, ignoreDbUrl);
+						useAndAppStore);
 				pb.dismiss();
 				runOnUiThread(new Runnable() {
 

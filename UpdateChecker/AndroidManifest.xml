@@ -29,6 +29,8 @@
                        android:value="http://www.openintents.org/apks/org.openintents.updatechecker.txt" />
     
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="org.openintents.updatechecker.READ_UPDATE_INFO"/>
+    <uses-permission android:name="org.openintents.updatechecker.WRITE_UPDATE_INFO"/>
     
     <permission android:name="org.openintents.updatechecker.READ_UPDATE_INFO"
         android:label="@string/permission_read_update_info"
@@ -56,6 +58,8 @@
                   
          <activity android:name=".activity.UpdateListActivity"
                   android:label="@string/app_name">
+
+        
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />            

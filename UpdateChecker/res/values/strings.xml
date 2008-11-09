@@ -15,6 +15,7 @@
     <string name="do_update">Perform update now!</string>
     <string name="remind_me_later">Remind me later!</string>
     <string name="ignore_this_update">Ignore this update</string>
+    <string name="ignore_all_further_updates">Ignore all further updates</string>
     <string name="ok">Ok</string>
     
     <string name="update_not_started">Update could not be started!\n\nPlease contact application developer!\n\n%s</string>

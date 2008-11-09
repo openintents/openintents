@@ -57,7 +57,7 @@ public class UpdateCheckerWithNotification {
 	public UpdateCheckerWithNotification(Context context, String packageName,
 			String appName, int currentVersionCode, String currentVersionName,
 			String uri, boolean tempUri, String ignoreVersionName,
-			int ignoreVersion, long lastCheck) {
+			int ignoreVersion, long lastCheck, boolean noNotifications) {
 		mContext = context;
 		mPackageName = packageName;
 		mAppName = appName;
