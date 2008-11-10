@@ -12,5 +12,6 @@ public class AppListInfo extends UpdateInfo {
 	public static final String NAME = "name";
 	public static final String LATEST_VERSION_CODE = "latest_version_code";
 	public static final String LATEST_VERSION_NAME = "latest_version_name";
+	public static final String IMAGE = "image";
 
 }

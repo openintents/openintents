@@ -1,10 +1,5 @@
 package org.openintents.updatechecker.activity;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
 import org.openintents.updatechecker.R;
@@ -16,17 +11,14 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html.TagHandler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class UpdateListActivity extends ListActivity {
@@ -60,12 +52,14 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.LATEST_VERSION_CODE,
 				AppListInfo.IGNORE_VERSION_NAME,
 				AppListInfo.IGNORE_VERSION_CODE, AppListInfo.LAST_CHECK,
-				AppListInfo.NO_NOTIFICATIONS });
+				AppListInfo.NO_NOTIFICATIONS,
+				AppListInfo.IMAGE});
 		for (PackageInfo pi : getPackageManager().getInstalledPackages(
 				PackageManager.GET_META_DATA)) {
 			CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
 			String versionName = pi.versionName;
+			Drawable image = getPackageManager().getApplicationIcon(pi.applicationInfo);
 			String info = null;
 
 			// ignore apps from black list
@@ -168,7 +162,7 @@ public class UpdateListActivity extends ListActivity {
 						pi.packageName, versionName, pi.versionCode, updateUrl,
 						info, updateIntent, comment, latestVersionName,
 						latestVersion, ignoreVersionName, ignoreVersion,
-						lastCheck, (noNotifications ? 1 : 0) };
+						lastCheck, (noNotifications ? 1 : 0), image };
 				c.addRow(row);
 			}
 		}
@@ -314,12 +308,16 @@ public class UpdateListActivity extends ListActivity {
 				runOnUiThread(new Runnable() {
 
 					public void run() {
+						/*
 						ListAdapter adapter = new SimpleCursorAdapter(
 								UpdateListActivity.this,
 								android.R.layout.simple_list_item_2, c,
 								new String[] { "name", "info" },
 								new int[] { android.R.id.text1,
 										android.R.id.text2 });
+										*/
+						
+						ListAdapter adapter = new UpdateListCursorAdapter(UpdateListActivity.this, c);
 						setListAdapter(adapter);
 					}
 
