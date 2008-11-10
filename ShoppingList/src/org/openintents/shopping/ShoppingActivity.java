@@ -30,10 +30,12 @@ import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
 import org.openintents.shopping.share.GTalkSender;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -779,7 +781,20 @@ public class ShoppingActivity extends Activity { // implements
 		 * menu.addIntentOptions( Menu.ALTERNATIVE, 0, new ComponentName(this,
 		 * ShoppingView.class), null, intent, 0, null);
 		 */
-
+		 
+		 // Generate any additional actions that can be performed on the
+		 // overall list. This allows other applications to extend
+		 // our menu with their own actions.
+		 Intent intent = new Intent(null, getIntent().getData());
+         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+         //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+         //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+         
+         // Workaround to add icons:
+         MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+         menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                         new ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
+         
 		// Set checkable items:
 		// TODO SDK 0.9???
 		// menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
