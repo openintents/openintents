@@ -2,6 +2,7 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
+import org.openintents.updatechecker.UpdateInfo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -36,9 +37,13 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		Drawable image = (Drawable) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.IMAGE));
 		
+		int no_notifications = cursor.getInt(cursor
+				.getColumnIndexOrThrow(AppListInfo.NO_NOTIFICATIONS));
+		
 		cliv.setName(name);
 		cliv.setInfo(info);
 		cliv.setImage(image);
+		cliv.setNoNotifications(no_notifications);
 		
 
 	}

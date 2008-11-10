@@ -52,23 +52,16 @@
 		    android:layout_width="wrap_content"
 		/>
 		
-	<!-- android:paddingLeft="5dip"
-		    android:gravity="center_vertical"
-		    android:singleLine="true"
-		     -->
-		
 	</LinearLayout>
-	<!-- <LinearLayout
-		android:layout_height="wrap_content"
-		android:layout_width="0dip"
-		android:layout_weight="1"
-		/>  -->
-	<TextView
-	    android:id="@+id/countdown"
-	    android:layout_height="wrap_content"
-	    android:layout_width="wrap_content"
-	    android:layout_gravity="center_vertical"
-	    android:textAppearance="?android:attr/textAppearanceLarge"
-	/>
+	
+	<ImageView
+    	android:id="@+id/ignore"
+    	android:src="@drawable/ic_ignore"
+    	android:layout_height="wrap_content"
+    	android:layout_width="wrap_content"
+    	android:scaleType="center"
+    	android:layout_gravity="center_vertical"
+    	/>
+    
 	
 </LinearLayout>
