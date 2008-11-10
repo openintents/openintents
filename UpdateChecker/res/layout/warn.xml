@@ -17,6 +17,8 @@
 		android:layout_height="wrap_content" android:gravity="center_vertical"
 		android:autoLink="all" android:padding="5dip" android:text="@string/warn"
 		android:textAppearance="?android:attr/textAppearanceLarge" />
-	<Button android:id="@+id/button" android:layout_width="fill_parent"
+	<Button android:id="@+id/cancle" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:text="@string/abort"/>
+	<Button android:id="@+id/ok" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text="@string/continue_anyway"/>
 </LinearLayout>

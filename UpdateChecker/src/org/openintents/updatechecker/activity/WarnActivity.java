@@ -10,23 +10,40 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class WarnActivity extends Activity implements OnClickListener {
+public class WarnActivity extends Activity {
 	private Intent mIntent;
+
+	private OnClickListener mOkListener = new OnClickListener() {
+
+		public void onClick(View v) {
+			startActivity(mIntent);
+			finish();
+		}
+
+	};
+
+	private OnClickListener mCancleListener = new OnClickListener() {
+
+		public void onClick(View v) {
+			finish();
+		}
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.warn);
-		Button button = (Button) findViewById(R.id.button);
-		button.setOnClickListener(this);
 		mIntent = (Intent) getIntent().getParcelableExtra(
 				UpdateInfo.EXTRA_WARN_INTENT);
 
+		Button button = (Button) findViewById(R.id.ok);
+		button.setOnClickListener(mOkListener);
+
+		button = (Button) findViewById(R.id.cancle);
+		button.setOnClickListener(mCancleListener);
+
 	}
 
-	public void onClick(View arg0) {
-		startActivity(mIntent);
-		finish();
-	}
 }

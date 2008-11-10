@@ -44,6 +44,8 @@ public class UpdateCheckerActivity extends Activity {
 	private static final String TAG = "UpdateChecker";
 	public static final String EXTRA_LATEST_VERSION = "latest_version";
 	public static final String EXTRA_COMMENT = "comment";
+	private static final String MARKET_PREFIX_1 = "market://";
+	private static final String MARKET_PREFIX_2 = "http://market.android.com/";
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
@@ -116,8 +118,8 @@ public class UpdateCheckerActivity extends Activity {
 
 
 	protected boolean isMarketIntent(Intent intent) {
-		// TODO Auto-generated method stub
-		return false;
+		return intent.getDataString() != null && (intent.getDataString().startsWith(MARKET_PREFIX_1) || intent.getDataString().startsWith(MARKET_PREFIX_2)); 
+		
 	}
 
 

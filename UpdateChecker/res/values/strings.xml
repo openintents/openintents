@@ -46,6 +46,7 @@
     exhibit a security risk. 
     </string>
     <string name="continue_anyway">Continue anyway</string>
+    <string name="abort">Abort</string>
     
     <string name="preference_auto_update">Auto update</string>
     <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
