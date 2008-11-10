@@ -191,21 +191,21 @@ public class UpdateListActivity extends ListActivity {
 		String packageName = cursor.getString(cursor
 				.getColumnIndexOrThrow(UpdateInfo.PACKAGE_NAME));
 		String appName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-		String currVersionName = cursor.getString(cursor
+		String currVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_NAME));
 		int currVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_CODE));
 
 		int ignoreVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_CODE));
-		String ignoreVersionName = cursor.getString(cursor
+		String ignoreVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_NAME));
 
 		int latestVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_CODE));
-		String latestVersionName = cursor.getString(cursor
+		String latestVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_NAME));
-		String comment = cursor.getString(cursor
+		String comment = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
