@@ -24,6 +24,7 @@
 package org.openintents.notepad;
 
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -301,8 +302,14 @@ public class NoteEditor extends Activity {
         if (!mNoteOnly) {
             Intent intent = new Intent(null, getIntent().getData());
             intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                    new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+            //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+            //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+            
+            // Workaround to add icons:
+            MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+            menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                            new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+            
         }
 
         return true;
