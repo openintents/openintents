@@ -183,7 +183,7 @@ public class CountdownEditorActivity extends Activity {
         mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
 
-			@Override
+			
 			public void onClick(View arg0) {
 				start();
 			}
@@ -193,7 +193,7 @@ public class CountdownEditorActivity extends Activity {
         mStop = (Button) findViewById(R.id.stop);
         mStop.setOnClickListener(new View.OnClickListener() {
 
-			@Override
+			
 			public void onClick(View arg0) {
 				stop();
 			}
@@ -203,7 +203,7 @@ public class CountdownEditorActivity extends Activity {
         mModify = (Button) findViewById(R.id.modify);
         mModify.setOnClickListener(new View.OnClickListener() {
 
-			@Override
+			
 			public void onClick(View arg0) {
 				modify();
 			}
@@ -213,7 +213,7 @@ public class CountdownEditorActivity extends Activity {
         mCont = (Button) findViewById(R.id.cont);
         mCont.setOnClickListener(new View.OnClickListener() {
 
-			@Override
+			
 			public void onClick(View arg0) {
 				cont();
 			}
@@ -224,7 +224,7 @@ public class CountdownEditorActivity extends Activity {
         
         mRingtoneView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-			@Override
+			
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
 				setRing(checked);
 			}
@@ -235,7 +235,7 @@ public class CountdownEditorActivity extends Activity {
 
         mVibrateView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-			@Override
+			
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
 				setVibrate(checked);
 			}
