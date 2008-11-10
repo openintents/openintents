@@ -48,7 +48,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		int ignoreversioncode = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_CODE));
 		
-		Log.i(TAG, name + " version: " + latestversioncode + ", " + versioncode + ", " + ignoreversioncode);
+		//Log.i(TAG, name + " version: " + latestversioncode + ", " + versioncode + ", " + ignoreversioncode);
 		
 		if (ignoreversioncode > versioncode) {
 			// Also show "Ignore" sign, if current version is being ignored.

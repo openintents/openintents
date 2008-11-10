@@ -4,6 +4,7 @@ import org.openintents.countdown.db.Countdown;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
@@ -29,6 +30,10 @@ public class CountdownCursorAdapter extends CursorAdapter {
 				.getColumnIndexOrThrow(Countdown.Durations.DURATION));
 		long deadline = cursor.getLong(cursor
 				.getColumnIndexOrThrow(Countdown.Durations.DEADLINE_DATE));
+		
+		if (TextUtils.isEmpty(title)) {
+			title = context.getString(android.R.string.untitled);
+		}
 		
 		cliv.setTitle(title);
 		cliv.setDuration(duration);

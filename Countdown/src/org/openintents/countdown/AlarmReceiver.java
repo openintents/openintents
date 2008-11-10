@@ -31,6 +31,7 @@ import android.database.Cursor;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 
 /**
@@ -93,6 +94,10 @@ public class AlarmReceiver extends BroadcastReceiver
         	text = CountdownUtils.getDurationString(c.getColumnIndexOrThrow(Durations.DURATION));
         }
         
+        if (TextUtils.isEmpty(title)) {
+        	title = mContext.getString(R.string.app_name);
+        }
+        
         long ring = 0;
         Uri ringtone = null;
         long vibrate = 0;
@@ -140,11 +145,6 @@ public class AlarmReceiver extends BroadcastReceiver
         
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
 
-        // Note that we use R.layout.incoming_message_panel as the ID for
-        // the notification.  It could be any integer you want, but we use
-        // the convention of using a resource id for a string related to
-        // the notification.  It will always be a unique number within your
-        // application.
         nm.notify(notification_id, notif);
     }
     
