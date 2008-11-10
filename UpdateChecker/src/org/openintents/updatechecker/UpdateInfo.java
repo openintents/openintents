@@ -59,6 +59,7 @@ public class UpdateInfo implements BaseColumns {
 	public static final long CHECK_INTERVAL = 86400000; // 24 hours
 	public static final String META_DATA_UPDATE_URL = "org.openintents.updatechecker.UPDATE_URL";
 	private static final String TAG = "UpdateInfo";
+	public static final String EXTRA_WARN_INTENT = "warn_intent";
 
 	public static Intent createUpdateActivityIntent(Context mContext,
 			UpdateChecker mChecker, String mPackageName, String mAppName) {

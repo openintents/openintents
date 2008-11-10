@@ -41,6 +41,12 @@
     <string name="auto_update">Auto check</string>
     <string name="latest_version_2">Version %s</string>
     
+    <string name="warn">The update process of this application directs to
+    a different site than Android Market. Applications installed from unknown sources might
+    exhibit a security risk. 
+    </string>
+    <string name="continue_anyway">Continue anyway</string>
+    
     <string name="preference_auto_update">Auto update</string>
     <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
     <string name="title_update_interval">Update interval</string>

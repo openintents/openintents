@@ -81,8 +81,16 @@ public class UpdateCheckerActivity extends Activity {
 				switch (mRadioGroup.getCheckedRadioButtonId()) {
 				case R.id.do_update:
 					try {
-						startActivity((Intent) getIntent().getParcelableExtra(
-								UpdateChecker.EXTRA_UPDATE_INTENT));
+						Intent intent = (Intent) getIntent().getParcelableExtra(
+								UpdateChecker.EXTRA_UPDATE_INTENT);
+						if (isMarketIntent(intent)){
+							startActivity(intent);	
+						} else {
+							Intent warnIntent = new Intent(UpdateCheckerActivity.this, WarnActivity.class);
+							warnIntent.putExtra(UpdateInfo.EXTRA_WARN_INTENT, intent);
+							startActivity(warnIntent);
+						}
+						
 					} catch (ActivityNotFoundException e) {
 						Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
 					}
@@ -104,6 +112,12 @@ public class UpdateCheckerActivity extends Activity {
 		Log.v(TAG, "package name = " + mPackageName);
 
 
+	}
+
+
+	protected boolean isMarketIntent(Intent intent) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

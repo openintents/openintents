@@ -104,7 +104,7 @@ public class UpdateChecker {
 						new InputStreamReader(is));
 
 				String firstLine = reader.readLine();
-				if (firstLine != null && firstLine.indexOf("<") >= 0) {
+				if (firstLine != null && firstLine.indexOf("<") >= 0) {					
 					parseVeeCheck(link);
 				} else {
 					parseTxt(firstLine, reader);
