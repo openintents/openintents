@@ -26,6 +26,8 @@
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
     <string name="menu_discard">Discard</string>
+    <string name="update">Check updates</string>
+    
 	<string name="no_notes">Use menu to add new notes.</string>
 
     <string name="resolve_edit">Edit note</string>
@@ -80,5 +82,14 @@ Unless required by applicable law or agreed to in writing, software distributed 
 </string>
 	<string name="eula_accept">Accept</string>
 	<string name="eula_refuse">Cancel</string>
+	
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="check_now">Check now.</string>
+	<string name="get_updater">Get OI Updater.</string>
+	<string name="noteslist_url">market://details?id=-8955630993562256959</string>
+	<string name="updatechecker_url">market://details?id=-282734404850313838</string>
 	
 </resources>

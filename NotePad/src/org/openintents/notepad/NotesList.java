@@ -25,20 +25,22 @@ package org.openintents.notepad;
 
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.Update;
-import org.openintents.distribution.Update2;
 import org.openintents.notepad.NotePad.Notes;
 
+import android.app.Dialog;
 import android.app.ListActivity;
+import android.app.AlertDialog.Builder;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -50,153 +52,192 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
-
 /**
- * Displays a list of notes. Will display notes from the {@link Uri}
- * provided in the intent if there is one, otherwise defaults to displaying the
- * contents of the {@link NotePadProvider}
+ * Displays a list of notes. Will display notes from the {@link Uri} provided in
+ * the intent if there is one, otherwise defaults to displaying the contents of
+ * the {@link NotePadProvider}
  */
 public class NotesList extends ListActivity {
-    private static final String TAG = "NotesList";
+	private static final String TAG = "NotesList";
 
-    // Menu item ids
-    private static final int MENU_ITEM_DELETE = Menu.FIRST;
-    private static final int MENU_ITEM_INSERT = Menu.FIRST + 1;
-    private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
+	// Menu item ids
+	private static final int MENU_ITEM_DELETE = Menu.FIRST;
+	private static final int MENU_ITEM_INSERT = Menu.FIRST + 1;
+	private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
-	
-	private static final int REQUEST_CODE_VERSION_CHECK = 1;
-    /**
-     * The columns we are interested in from the database
-     */
-    private static final String[] PROJECTION = new String[] {
-            Notes._ID, // 0
-            Notes.TITLE, // 1
-    };
+	private static final int MENU_UPDATE = Menu.FIRST + 4;
 
-    /** The index of the title column */
-    private static final int COLUMN_INDEX_TITLE = 1;
-    
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	private static final int REQUEST_CODE_VERSION_CHECK = 1;
+	/**
+	 * The columns we are interested in from the database
+	 */
+	private static final String[] PROJECTION = new String[] { Notes._ID, // 0
+			Notes.TITLE, // 1
+	};
+
+	/** The index of the title column */
+	private static final int COLUMN_INDEX_TITLE = 1;
+
+	private static final String UPDATE_CHECKER = "org.openintents.updatechecker";
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		Update2.check(this);
-		
-        setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
 
-        // If no data was given in the intent (because we were started
-        // as a MAIN activity), then use our default content provider.
-        Intent intent = getIntent();
-        if (intent.getData() == null) {
-            intent.setData(Notes.CONTENT_URI);
-        }
+		setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
 
-        // Inform the list we provide context menus for items
-        setContentView(R.layout.noteslist);
-        getListView().setOnCreateContextMenuListener(this);
-        getListView().setEmptyView(findViewById(R.id.empty));
-        
-        /*
-        Button b = (Button) findViewById(R.id.add);
-        b.setOnClickListener(new Button.OnClickListener() {
+		// If no data was given in the intent (because we were started
+		// as a MAIN activity), then use our default content provider.
+		Intent intent = getIntent();
+		if (intent.getData() == null) {
+			intent.setData(Notes.CONTENT_URI);
+		}
 
-			@Override
-			public void onClick(View arg0) {
-				insertNewNote();
+		// Inform the list we provide context menus for items
+		setContentView(R.layout.noteslist);
+		getListView().setOnCreateContextMenuListener(this);
+		getListView().setEmptyView(findViewById(R.id.empty));
+
+		/*
+		 * Button b = (Button) findViewById(R.id.add); b.setOnClickListener(new
+		 * Button.OnClickListener() {
+		 * 
+		 * @Override public void onClick(View arg0) { insertNewNote(); }
+		 * 
+		 * });
+		 */
+
+		// Perform a managed query. The Activity will handle closing and
+		// requerying the cursor
+		// when needed.
+		Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		// Used to map notes entries from the database to views
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
+				new int[] { android.R.id.text1 });
+		setListAdapter(adapter);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+
+		// This is our one standard application action -- inserting a
+		// new note into the list.
+		menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert).setShortcut('3',
+				'a').setIcon(android.R.drawable.ic_menu_add);
+
+		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
+				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
+
+		PackageInfo pi = null;
+		try {
+			pi = getPackageManager().getPackageInfo(UPDATE_CHECKER, 0);
+		} catch (NameNotFoundException e) {
+			// ignore
+		}
+		if (pi == null) {
+			menu.add(0, MENU_UPDATE, 0, R.string.update).setIcon(
+					android.R.drawable.ic_menu_info_details).setShortcut('0',
+					'u');
+		}
+		// Generate any additional actions that can be performed on the
+		// overall list. In a normal install, there are no additional
+		// actions found here, but this allows other applications to extend
+		// our menu with their own actions.
+		Intent intent = new Intent(null, getIntent().getData());
+		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		menu
+				.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+						new ComponentName(this, NotesList.class), null, intent,
+						0, null);
+
+		return true;
+	}
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+		final boolean haveItems = getListAdapter().getCount() > 0;
+
+		// If there are any notes in the list (which implies that one of
+		// them is selected), then we need to generate the actions that
+		// can be performed on the current selection. This will be a combination
+		// of our own specific actions along with any extensions that can be
+		// found.
+		if (haveItems) {
+			// This is the selected item.
+			Uri uri = ContentUris.withAppendedId(getIntent().getData(),
+					getSelectedItemId());
+
+			// Build menu... always starts with the EDIT action...
+			Intent[] specifics = new Intent[1];
+			specifics[0] = new Intent(Intent.ACTION_EDIT, uri);
+			MenuItem[] items = new MenuItem[1];
+
+			// ... is followed by whatever other actions are available...
+			Intent intent = new Intent(null, uri);
+			intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+			menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, null,
+					specifics, intent, 0, items);
+
+			// Give a shortcut to the edit action.
+			if (items[0] != null) {
+				items[0].setShortcut('1', 'e');
 			}
-        	
-        });
-        */
-        
-        // Perform a managed query. The Activity will handle closing and requerying the cursor
-        // when needed.
-        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null,
-                Notes.DEFAULT_SORT_ORDER);
+		} else {
+			menu.removeGroup(Menu.CATEGORY_ALTERNATIVE);
+		}
 
-        // Used to map notes entries from the database to views
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noteslist_item, cursor,
-                new String[] { Notes.TITLE }, new int[] { android.R.id.text1 });
-        setListAdapter(adapter);
-    }
+		return true;
+	}
 
-    
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        // This is our one standard application action -- inserting a
-        // new note into the list.
-        menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert)
-                .setShortcut('3', 'a')
-                .setIcon(android.R.drawable.ic_menu_add);
-        
-		 menu.add(0, MENU_ABOUT, 0, R.string.about)
-		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
-
-        // Generate any additional actions that can be performed on the
-        // overall list.  In a normal install, there are no additional
-        // actions found here, but this allows other applications to extend
-        // our menu with their own actions.
-        Intent intent = new Intent(null, getIntent().getData());
-        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-        menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                new ComponentName(this, NotesList.class), null, intent, 0, null);
-
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-        final boolean haveItems = getListAdapter().getCount() > 0;
-
-        // If there are any notes in the list (which implies that one of
-        // them is selected), then we need to generate the actions that
-        // can be performed on the current selection.  This will be a combination
-        // of our own specific actions along with any extensions that can be
-        // found.
-        if (haveItems) {
-            // This is the selected item.
-            Uri uri = ContentUris.withAppendedId(getIntent().getData(), getSelectedItemId());
-
-            // Build menu...  always starts with the EDIT action...
-            Intent[] specifics = new Intent[1];
-            specifics[0] = new Intent(Intent.ACTION_EDIT, uri);
-            MenuItem[] items = new MenuItem[1];
-
-            // ... is followed by whatever other actions are available...
-            Intent intent = new Intent(null, uri);
-            intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, null, specifics, intent, 0,
-                    items);
-
-            // Give a shortcut to the edit action.
-            if (items[0] != null) {
-                items[0].setShortcut('1', 'e');
-            }
-        } else {
-            menu.removeGroup(Menu.CATEGORY_ALTERNATIVE);
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case MENU_ITEM_INSERT:
-            insertNewNote();
-            return true;
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_ITEM_INSERT:
+			insertNewNote();
+			return true;
 		case MENU_ABOUT:
 			showAboutBox();
 			return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+		case MENU_UPDATE:
+			showUpdateBox();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	private void showUpdateBox() {
+		String version = null;
+		try {
+			version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		final Intent intent  = new Intent(Intent.ACTION_VIEW);
+		new Builder(this).setMessage(getString(R.string.update_box_text, version)).setPositiveButton(R.string.check_now, new OnClickListener(){
+
+			public void onClick(DialogInterface arg0, int arg1) {
+				intent.setData(Uri.parse(getString(R.string.noteslist_url)));
+				startActivity(intent);
+			}
+			
+		}).setNegativeButton(R.string.get_updater, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+				intent.setData(Uri.parse(getString(R.string.updatechecker_url)));
+				startActivity(intent);
+			}
+			
+		}).show();		
+	}
 
 	/**
 	 * Launch activity to insert a new item.
@@ -206,107 +247,110 @@ public class NotesList extends ListActivity {
 		startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
 	}
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo menuInfo) {
-        AdapterView.AdapterContextMenuInfo info;
-        try {
-             info = (AdapterView.AdapterContextMenuInfo) menuInfo;
-        } catch (ClassCastException e) {
-            Log.e(TAG, "bad menuInfo", e);
-            return;
-        }
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View view,
+			ContextMenuInfo menuInfo) {
+		AdapterView.AdapterContextMenuInfo info;
+		try {
+			info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+		} catch (ClassCastException e) {
+			Log.e(TAG, "bad menuInfo", e);
+			return;
+		}
 
-        Cursor cursor = (Cursor) getListAdapter().getItem(info.position);
-        if (cursor == null) {
-            // For some reason the requested item isn't available, do nothing
-            return;
-        }
+		Cursor cursor = (Cursor) getListAdapter().getItem(info.position);
+		if (cursor == null) {
+			// For some reason the requested item isn't available, do nothing
+			return;
+		}
 
-        // Setup the menu header
-        menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
-        
-        // Add a menu item to send the note
-        menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
+		// Setup the menu header
+		menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
 
-        // Add a menu item to delete the note
-        menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
-    }
-        
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info;
-        try {
-             info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        } catch (ClassCastException e) {
-            Log.e(TAG, "bad menuInfo", e);
-            return false;
-        }
+		// Add a menu item to send the note
+		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
-        switch (item.getItemId()) {
-            case MENU_ITEM_DELETE: {
-                // Delete the note that the context menu is for
-                Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), info.id);
-                getContentResolver().delete(noteUri, null, null);
-                return true;
-            }
-            case MENU_ITEM_SEND_BY_EMAIL: 
-            	sendNoteByEmail(info.id);
-            	return true;
-        }
-        return false;
-    }
+		// Add a menu item to delete the note
+		menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
+	}
 
-    private void sendNoteByEmail(long  id) {
-        // Delete the note that the context menu is for
-        Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
-        //getContentResolver().(noteUri, null, null);
-        
-        Cursor c = getContentResolver().query(noteUri, new String[]{NotePad.Notes.TITLE, NotePad.Notes.NOTE}, null, null,
-                Notes.DEFAULT_SORT_ORDER);
-        
-        String title = "";
-        String content = getString(R.string.empty_note);
-        if (c != null) {
-        	c.moveToFirst();
-        	title = c.getString(0);
-        	content = c.getString(1);
-        }
-        
-        Log.i(TAG, "Title to send: " + title);
-        Log.i(TAG, "Content to send: " + content);
-        
-        Intent i = new Intent();
-        i.setAction(Intent.ACTION_SEND);
-        i.setType("text/plain");
-        i.putExtra(Intent.EXTRA_SUBJECT, title);
-        i.putExtra(Intent.EXTRA_TEXT, content);
-        
-        try {
-        	startActivity(i);
-        } catch (ActivityNotFoundException e) {
-			Toast.makeText(this,
-					R.string.email_not_available,
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterView.AdapterContextMenuInfo info;
+		try {
+			info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+		} catch (ClassCastException e) {
+			Log.e(TAG, "bad menuInfo", e);
+			return false;
+		}
+
+		switch (item.getItemId()) {
+		case MENU_ITEM_DELETE: {
+			// Delete the note that the context menu is for
+			Uri noteUri = ContentUris.withAppendedId(getIntent().getData(),
+					info.id);
+			getContentResolver().delete(noteUri, null, null);
+			return true;
+		}
+		case MENU_ITEM_SEND_BY_EMAIL:
+			sendNoteByEmail(info.id);
+			return true;
+		}
+		return false;
+	}
+
+	private void sendNoteByEmail(long id) {
+		// Delete the note that the context menu is for
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+		// getContentResolver().(noteUri, null, null);
+
+		Cursor c = getContentResolver().query(noteUri,
+				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		String title = "";
+		String content = getString(R.string.empty_note);
+		if (c != null) {
+			c.moveToFirst();
+			title = c.getString(0);
+			content = c.getString(1);
+		}
+
+		Log.i(TAG, "Title to send: " + title);
+		Log.i(TAG, "Content to send: " + content);
+
+		Intent i = new Intent();
+		i.setAction(Intent.ACTION_SEND);
+		i.setType("text/plain");
+		i.putExtra(Intent.EXTRA_SUBJECT, title);
+		i.putExtra(Intent.EXTRA_TEXT, content);
+
+		try {
+			startActivity(i);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(this, R.string.email_not_available,
 					Toast.LENGTH_SHORT).show();
 			Log.e(TAG, "Email client not installed");
-        }
-    }
+		}
+	}
 
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
-	
-    @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
-        
-        String action = getIntent().getAction();
-        if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_GET_CONTENT.equals(action)) {
-            // The caller is waiting for us to return a note selected by
-            // the user.  The have clicked on one, so return it now.
-            setResult(RESULT_OK, new Intent().setData(uri));
-        } else {
-            // Launch activity to view/edit the currently selected item
-            startActivity(new Intent(Intent.ACTION_EDIT, uri));
-        }
-    }
+
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+
+		String action = getIntent().getAction();
+		if (Intent.ACTION_PICK.equals(action)
+				|| Intent.ACTION_GET_CONTENT.equals(action)) {
+			// The caller is waiting for us to return a note selected by
+			// the user. The have clicked on one, so return it now.
+			setResult(RESULT_OK, new Intent().setData(uri));
+		} else {
+			// Launch activity to view/edit the currently selected item
+			startActivity(new Intent(Intent.ACTION_EDIT, uri));
+		}
+	}
 }
