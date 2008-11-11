@@ -36,7 +36,8 @@ public class UpdateCheckerWithCallback implements Runnable {
 
 		mLink = link;
 		mCallback = cb;
-		mChecker = new UpdateChecker();
+		// TODO 
+		mChecker = new UpdateChecker(null, null, 0, null);
 	}
 
 	public void run() {

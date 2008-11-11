@@ -121,7 +121,7 @@ public class VeecheckVersion {
 			PackageManager manager = context.getPackageManager();
 			PackageInfo info = manager.getPackageInfo(context.getPackageName(),
 					0);
-			packageName = info.packageName;
+			packageName = info.packageName;			
 			versionCode = Integer.toString(info.versionCode);
 			versionName = info.versionName;
 		} catch (NameNotFoundException e) {
@@ -214,6 +214,29 @@ public class VeecheckVersion {
 			return false;
 		if (required.buildModel != null
 				&& !required.buildModel.equals(this.buildModel))
+			return false;
+		return true;
+	}
+	
+	
+	/**
+	 * Check version of this {@link VeecheckVersion} against another
+	 * {@link VeecheckVersion}. This version is greater than the required version if
+	 * their version code is greater or the version name differs from the current
+	 * version.
+	 * 
+	 * @param current
+	 *            the version against which this version is being checked
+	 * 
+	 * @return true iff this version is greater than the given version
+	 */
+
+	public boolean greater(VeecheckVersion currentVersion) {		
+		if (currentVersion.versionCode != null && this.versionCode != null
+				&& Long.parseLong(currentVersion.versionCode) >= Long.parseLong(this.versionCode))
+			return false;
+		if (currentVersion.versionName != null
+				&& currentVersion.versionName.equals(this.versionName))
 			return false;
 		return true;
 	}

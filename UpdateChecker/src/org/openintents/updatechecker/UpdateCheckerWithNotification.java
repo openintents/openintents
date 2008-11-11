@@ -75,7 +75,7 @@ public class UpdateCheckerWithNotification {
 			mNm = (NotificationManager) context
 					.getSystemService(Context.NOTIFICATION_SERVICE);
 		}
-		mChecker = new UpdateChecker();
+		mChecker = new UpdateChecker(context, mPackageName, mCurrentVersion, mCurrentVersionName);
 	}
 
 	public void checkForUpdateWithNotification() {

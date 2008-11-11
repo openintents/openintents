@@ -88,13 +88,26 @@ public class Update {
 			Log.i(TAG, "Skipping update test.");
 			return;
 		}
-		
+
 		String link = "http://www.openintents.org/apks/"
 				+ context.getPackageName() + ".txt";
-		UpdateChecker checker = new UpdateChecker();
+
+		PackageInfo pi = null;
+		try {
+			pi = context.getPackageManager().getPackageInfo(
+					context.getPackageName(), 0);
+		} catch (NameNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		UpdateChecker checker = new UpdateChecker(context, context
+				.getPackageName(), pi.versionCode,
+				pi.versionName);
 		checker.checkForUpdate(link);
 
-		storePendingUpdate(prefs, checker.getLatestVersion(), checker.getApplicationId(), checker.getComment());
+		storePendingUpdate(prefs, checker.getLatestVersion(), checker
+				.getApplicationId(), checker.getComment());
 
 	}
 

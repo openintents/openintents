@@ -26,6 +26,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -86,6 +87,14 @@ public class UpdateChecker {
 	private int mCurrentVersion;
 	private String mCurrentVersionName;
 
+	public UpdateChecker(Context context, String packageName,
+			int currentVersion, String currentVersionName) {
+		mContext = context;
+		mPackageName = packageName;
+		mCurrentVersion = currentVersion;
+		mCurrentVersionName = currentVersionName;
+	}
+
 	public void checkForUpdate(String link) {
 
 		mLatestVersion = -1;
@@ -95,24 +104,32 @@ public class UpdateChecker {
 
 		try {
 			Log.d(TAG, "Looking for version at " + link);
-			URL u = new URL(link);
-			Object content = u.openConnection().getContent();
-			if (content instanceof InputStream) {
-				InputStream is = (InputStream) content;
+			parseVeeCheck(link);
 
-				BufferedReader reader = new BufferedReader(
-						new InputStreamReader(is));
-
-				String firstLine = reader.readLine();
-				if (firstLine != null && firstLine.indexOf("<") >= 0) {					
-					parseVeeCheck(link);
-				} else {
-					parseTxt(firstLine, reader);
-				}
-
+			if (mLatestVersion > 0 || mLatestVersionName != null) {
+				return;
 			} else {
-				Log.d(TAG, "Unknown server format: "
-						+ ((String) content).substring(0, 100));
+				URL u = new URL(link);
+				URLConnection connection = u.openConnection();
+				Object content = connection.getContent();
+				if (content instanceof InputStream) {
+					InputStream is = (InputStream) content;
+
+					BufferedReader reader = new BufferedReader(
+							new InputStreamReader(is));
+
+					String firstLine = reader.readLine();
+					if (firstLine != null && firstLine.indexOf("<") >= 0) {
+						// already done!
+						//parseVeeCheck(link);
+					} else {
+						parseTxt(firstLine, reader);
+					}
+
+				} else {
+					Log.d(TAG, "Unknown server format: "
+							+ ((String) content).substring(0, 100));
+				}
 			}
 		} catch (MalformedURLException e) {
 			Log.v(TAG, "MalformedURLException", e);
@@ -122,9 +139,10 @@ public class UpdateChecker {
 
 	}
 
-	private void parseTxt(String firstLine, BufferedReader reader) throws IOException {
+	private void parseTxt(String firstLine, BufferedReader reader)
+			throws IOException {
 
-		mLatestVersion = (firstLine != null?  Integer.parseInt(firstLine) : 0);
+		mLatestVersion = (firstLine != null ? Integer.parseInt(firstLine) : 0);
 		Log.d(TAG, "Lastest version available: " + mLatestVersion);
 
 		mNewApplicationId = reader.readLine();
@@ -186,8 +204,13 @@ public class UpdateChecker {
 
 			if (result.matched) {
 				Log.d(LOG_TAG, "Matching intent found.");
-				mLatestVersion = Integer.parseInt(result.latestVersion
-						.getVersionCode());				
+				if (result.latestVersion.getVersionCode() != null) {
+					mLatestVersion = Integer.parseInt(result.latestVersion
+							.getVersionCode());
+				} else {
+					mLatestVersion = 0;
+				}
+				mLatestVersionName = result.latestVersion.getVersionName();
 				mComment = null;
 
 				// create intent

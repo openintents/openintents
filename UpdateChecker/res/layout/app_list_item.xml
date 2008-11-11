@@ -26,11 +26,10 @@
     >
     <ImageView
     	android:id="@+id/icon"
-    	android:layout_height="wrap_content"
-    	android:layout_width="wrap_content"
-    	android:scaleType="center"
+    	android:layout_height="48dip"
+    	android:layout_width="48dip"
     	android:layout_gravity="center_vertical"
-    	/>
+    	android:scaleType="fitCenter"/>
     <LinearLayout
 	    android:orientation="vertical"
 	    android:layout_width="0dip"

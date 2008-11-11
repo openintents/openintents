@@ -149,6 +149,8 @@ public class VeecheckResult extends DefaultHandler {
 
 	public VeecheckVersion latestVersion;
 
+	public boolean greater;
+
 	/**
 	 * Constructs a new {@link ContentHandler} that can be supplied to a SAX
 	 * parser for the purpose of identifying intent information for a given
@@ -180,10 +182,10 @@ public class VeecheckResult extends DefaultHandler {
 		} else {
 			if (!localName.equals(VERSION_TAG))
 				return;
-			VeecheckVersion version = new VeecheckVersion(attrs);
-			recordNext = this.version.matches(version);
+			VeecheckVersion v = new VeecheckVersion(attrs);
+			recordNext = v.greater(version);
 			if (recordNext) {
-				latestVersion = version;
+				latestVersion = v;
 			}
 		}
 	}

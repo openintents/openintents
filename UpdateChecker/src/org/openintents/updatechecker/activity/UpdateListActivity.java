@@ -203,8 +203,7 @@ public class UpdateListActivity extends ListActivity {
 				.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
-		long lastCheck = cursor.getLong(cursor
-				.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
+		long lastCheck = 0; // always check, do not use stored value cursor.getLong(cursor.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
 		boolean noNotifications = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.NO_NOTIFICATIONS)) > 0;
 
