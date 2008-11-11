@@ -112,7 +112,7 @@ public class Flashlight extends Activity {
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		//mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
-		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK
+		mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
 				| PowerManager.ACQUIRE_CAUSES_WAKEUP
 				| PowerManager.ON_AFTER_RELEASE,
 				"Flashlight");
