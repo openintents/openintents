@@ -10,7 +10,7 @@
             <intent-filter>
                 <action android:name="org.openintents.voicenotes.RECORD" />                
             </intent-filter> 
-            <intent-filter android:label="Record voice memo">
+            <intent-filter android:label="@string/record_voice_memo">
                 <action android:name="org.openintents.voicenotes.RECORD"/>                           
                 <category android:name="android.intent.category.ALTERNATIVE" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
@@ -30,6 +30,14 @@
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
             </intent-filter>
         </activity>
+        <activity android:name=".VoiceNoteActivity"
+                  android:label="@string/app_name"
+                  android:icon="@drawable/ic_menu_voice">                              
+            <intent-filter>
+                <action android:name="org.openintents.voicenotes.VOICE_NOTE" />                
+            </intent-filter>                        
+        </activity>
+        
         <provider android:name=".VoiceNoteProvider" android:authorities="org.openintents.voicenotes"/>
     </application>
 </manifest> 
