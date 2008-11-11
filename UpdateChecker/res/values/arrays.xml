@@ -1,13 +1,11 @@
 <resources>
 	<string-array name="entries_update_interval">
-	    <item>every 10 secs</item>
         <item>every 2 days</item>
         <item>every 7 days</item>
         <item>every 30 days</item>
     </string-array>
     
     <string-array name="entryvalues_update_interval">
-        <item>10000</item>
         <item>172800000</item>
         <item>604800000</item>
         <item>2592000000</item>
