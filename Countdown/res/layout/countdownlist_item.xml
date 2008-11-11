@@ -18,21 +18,24 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:focusable="false"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
 	android:minHeight="?android:attr/listPreferredItemHeight" 
     ><!-- android:layout_marginTop="8dip" android:layout_marginBottom="8dip"
+    android:focusable="false"
 	 -->
     <LinearLayout
     	android:id="@+id/countdownpanel"
     	android:layout_width="0dip"
     	android:layout_height="fill_parent"
     	android:layout_weight="1"
+    	android:layout_gravity="center_vertical"
     	android:focusable="true"
-    	android:clickable="true"
-        android:layout_gravity="center_vertical"
+    	android:longClickable="true"
 	    android:background="@android:drawable/menuitem_background">
+	    <!-- 
+    	android:clickable="true"
+         -->
     <LinearLayout
 	    android:orientation="vertical"
 	    android:layout_width="0dip"
@@ -79,6 +82,8 @@
 	    android:layout_height="fill_parent"
 	    android:layout_width="100dip"
 	    android:layout_gravity="center"
+	    android:layout_marginTop="2dip" 
+	    android:layout_marginBottom="2dip"
 	/>
 	
 </LinearLayout>

@@ -5,6 +5,8 @@ import org.openintents.countdown.list.CountdownCursorAdapter.OnCountdownClickLis
 import org.openintents.countdown.util.CountdownUtils;
 
 import android.content.Context;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -60,7 +62,13 @@ public class CountdownListItemView extends LinearLayout {
 		updateCountdown();
 	}
 	
-	public void updateCountdown() {
+	
+	/**
+	 * Update countdown.
+	 * 
+	 * @return True if another update is necessary in a second.
+	 */
+	public boolean updateCountdown() {
 		long now = System.currentTimeMillis();
 		
 		long delta = mDeadline - now;
@@ -68,30 +76,22 @@ public class CountdownListItemView extends LinearLayout {
 		mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 		
 		if (delta > 0) {
-			//mDurationView.setText("");
 			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mStart.setVisibility(View.GONE);
-			//mDurationView.setTextColor(0xffff00ff);
-			//mDurationView.setTextSize(24);
+			return true;
 		} else if (delta > -3000) {
-			//mDurationView.setText("" + getDurationString(mDuration));
 			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
-			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextColor(0xffff0000);
-			//mDurationView.setTextSize(24);
 			mStart.setVisibility(View.GONE);
+			return true;
 			
 		} else {
-			//mDurationView.setText("" + getDurationString(mDuration));
 			mCountdownView.setText("");
-			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Small);
-			//mDurationView.setTextSize(24);
 			mStart.setVisibility(View.VISIBLE);
-			
+			return false;
 		}
-		//requestLayout();
-		//invalidate();
 	}
 	
 	public void setListeners(OnCountdownClickListener listener, long id) {
@@ -112,6 +112,14 @@ public class CountdownListItemView extends LinearLayout {
 				mListener.onCountdownPanelClick(mId);
 			}
 		});
+		/*
+		mCountdownPanel.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
+				mListener.onCoundownPanelCreateContextMenu(mId, menu, view, info);
+			}
+		});
+		*/
 	}
 
 }

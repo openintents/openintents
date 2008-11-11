@@ -5,8 +5,10 @@ import org.openintents.countdown.db.Countdown;
 import android.content.Context;
 import android.database.Cursor;
 import android.text.TextUtils;
+import android.view.ContextMenu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.CursorAdapter;
 
 public class CountdownCursorAdapter extends CursorAdapter {
@@ -55,6 +57,8 @@ public class CountdownCursorAdapter extends CursorAdapter {
 	
 	public interface OnCountdownClickListener {
 		public void onCountdownPanelClick(long id);
+		
+		public void onCoundownPanelCreateContextMenu(long id, ContextMenu menu, View view, ContextMenuInfo info);
 		
 		public void onStartClick(long id);
 	}

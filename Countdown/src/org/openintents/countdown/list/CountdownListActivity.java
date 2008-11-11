@@ -108,6 +108,10 @@ public class CountdownListActivity extends ListActivity
         getListView().setOnCreateContextMenuListener(this);
         getListView().setEmptyView(findViewById(R.id.empty));
         
+        getListView().setAddStatesFromChildren(false);
+        getListView().setItemsCanFocus(true);
+        
+        
         /*
         getListView().setOnItemClickListener(new ListView.OnItemClickListener() {
 
@@ -301,21 +305,23 @@ public class CountdownListActivity extends ListActivity
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 	
-    @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         editCountdown(id);
     }
 
-
-    
-    
-    
-
-	@Override
 	public void onCountdownPanelClick(long id) {
         editCountdown(id);
 	}
 
+	public void onCoundownPanelCreateContextMenu(long id, ContextMenu menu, View view, ContextMenuInfo info) {
+
+        // Setup the menu header
+        //menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
+        menu.setHeaderTitle("aaa");
+
+        // Add a menu item to delete the note
+        menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
+	}
 
 	@Override
 	public void onStartClick(long id) {
@@ -375,18 +381,24 @@ public class CountdownListActivity extends ListActivity
 	Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
+			Log.i(TAG, "Handle message");
 			if (msg.what == MSG_UPDATE_DISPLAY) {
 				// Update all visible views.
 				ListView view = getListView();
 				
 	            int first = view.getFirstVisiblePosition();
 	            int count = view.getChildCount();
+	            
+	            boolean update = false;
+	            
 	            for (int i=0; i<count; i++) {
 	            	CountdownListItemView cliv = (CountdownListItemView) view.getChildAt(i);
-	            	cliv.updateCountdown();
+	            	update |= cliv.updateCountdown();
 	            }
 	            
-	    		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+	            if (update) {
+	            	mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+	            }
 			}
 		}
 	};
