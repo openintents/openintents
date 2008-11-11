@@ -21,12 +21,21 @@ import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.Update;
 
 import android.app.Activity;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IHardwareService;
 import android.os.Message;
 import android.os.PowerManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
@@ -37,13 +46,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import android.os.RemoteException;
-
-/** DIRTY HACK WARNING: you'll need a handcrafted android.jar for these imports*/
-import android.os.IHardwareService;
-
-import android.os.ServiceManager;
 
 public class Flashlight extends Activity {
 	
@@ -69,6 +71,10 @@ public class Flashlight extends Activity {
 	private static final int NOT_VALID = -1;
 	
 	private static final int HIDE_ICON = 1;
+
+	private static final int MENU_UPDATE = 0;
+
+	private static final String UPDATE_CHECKER = null;
 	
 	private static int mTimeout = 5000;
 	
@@ -157,6 +163,17 @@ public class Flashlight extends Activity {
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
+		PackageInfo pi = null;
+		try {
+			pi = getPackageManager().getPackageInfo(UPDATE_CHECKER, 0);
+		} catch (NameNotFoundException e) {
+			// ignore
+		}
+		if (pi == null) {
+			menu.add(0, MENU_UPDATE, 0, R.string.update).setIcon(
+					android.R.drawable.ic_menu_info_details).setShortcut('1',
+					'u');
+		}
 		return true;
 	}
 
@@ -178,6 +195,10 @@ public class Flashlight extends Activity {
 			showAboutBox();
 			return true;
 
+			
+		case MENU_UPDATE:
+			showUpdateBox();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -233,6 +254,32 @@ public class Flashlight extends Activity {
 	}
 	
 
+
+	private void showUpdateBox() {
+		String version = null;
+		try {
+			version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		final Intent intent  = new Intent(Intent.ACTION_VIEW);
+		new Builder(this).setMessage(getString(R.string.update_box_text, version)).setPositiveButton(R.string.check_now, new OnClickListener(){
+
+			public void onClick(DialogInterface arg0, int arg1) {
+				intent.setData(Uri.parse(getString(R.string.flashlight_url)));
+				startActivity(intent);
+			}
+			
+		}).setNegativeButton(R.string.get_updater, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+				intent.setData(Uri.parse(getString(R.string.updatechecker_url)));
+				startActivity(intent);
+			}
+			
+		}).show();		
+	}
+	
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
