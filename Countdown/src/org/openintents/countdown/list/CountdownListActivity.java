@@ -112,33 +112,6 @@ public class CountdownListActivity extends ListActivity
         getListView().setItemsCanFocus(true);
         
         
-        /*
-        getListView().setOnItemClickListener(new ListView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				Log.i(TAG, "Clicked");
-				
-			}
-
-        	
-        });
-        */
-        
-        //getListView().setClickable(true);
-        
-        /*
-        Button b = (Button) findViewById(R.id.add);
-        b.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				insertNewNote();
-			}
-        	
-        });
-        */
         
         // Perform a managed query. The Activity will handle closing and requerying the cursor
         // when needed.
@@ -292,9 +265,13 @@ public class CountdownListActivity extends ListActivity
 
         switch (item.getItemId()) {
             case MENU_ITEM_DELETE: {
-                // Delete the note that the context menu is for
-                Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), info.id);
-                getContentResolver().delete(noteUri, null, null);
+            	Uri uri = ContentUris.withAppendedId(getIntent().getData(), info.id);
+                
+            	// Cancel an ongoing alarm (if any)
+            	CountdownUtils.cancelAlarm(this, uri);
+            	
+                // Delete the alarm that the context menu is for
+                getContentResolver().delete(uri, null, null);
                 return true;
             }
         }
@@ -313,16 +290,6 @@ public class CountdownListActivity extends ListActivity
         editCountdown(id);
 	}
 
-	public void onCoundownPanelCreateContextMenu(long id, ContextMenu menu, View view, ContextMenuInfo info) {
-
-        // Setup the menu header
-        //menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
-        menu.setHeaderTitle("aaa");
-
-        // Add a menu item to delete the note
-        menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
-	}
-
 	@Override
 	public void onStartClick(long id) {
 		startCountdown(id);
@@ -337,8 +304,8 @@ public class CountdownListActivity extends ListActivity
         
         String action = getIntent().getAction();
         if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_GET_CONTENT.equals(action)) {
-            // The caller is waiting for us to return a note selected by
-            // the user.  The have clicked on one, so return it now.
+            // The caller is waiting for us to return an alarm selected by
+            // the user.  They have clicked on one, so return it now.
             setResult(RESULT_OK, new Intent().setData(uri));
         } else {
             // Launch activity to view/edit the currently selected item
@@ -349,7 +316,6 @@ public class CountdownListActivity extends ListActivity
 	private void startCountdown(long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		
-
         // Get the data
         Cursor c = getContentResolver().query(uri, Durations.PROJECTION, null, null,
                 Countdown.Durations.DEFAULT_SORT_ORDER);

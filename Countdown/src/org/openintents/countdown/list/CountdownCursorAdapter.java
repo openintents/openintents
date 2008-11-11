@@ -58,8 +58,6 @@ public class CountdownCursorAdapter extends CursorAdapter {
 	public interface OnCountdownClickListener {
 		public void onCountdownPanelClick(long id);
 		
-		public void onCoundownPanelCreateContextMenu(long id, ContextMenu menu, View view, ContextMenuInfo info);
-		
 		public void onStartClick(long id);
 	}
 

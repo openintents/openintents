@@ -543,18 +543,11 @@ public class CountdownEditorActivity extends Activity {
     }
     
     public void setAlarm(long time) {
-    	mPendingIntent = CountdownUtils.setAlarm(this, mUri, time);
+    	CountdownUtils.setAlarm(this, mUri, time);
     }
     
-    PendingIntent mPendingIntent;
-    
     public void cancelAlarm() {
-
-    	if (mPendingIntent != null) {
-	        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-	        am.cancel(mPendingIntent);
-	        mPendingIntent = null;
-    	}
+    	CountdownUtils.cancelAlarm(this, mUri);
     }
     
     /**

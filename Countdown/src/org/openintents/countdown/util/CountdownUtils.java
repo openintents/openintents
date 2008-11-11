@@ -32,30 +32,51 @@ public class CountdownUtils {
 	}
 
 	/**
-	 * Sets an alarm for a speficied time.
+	 * Sets an alarm for a specified time.
 	 * 
 	 * @param context
 	 * @param uri
 	 * @param time
 	 * @return
 	 */
-	public static PendingIntent setAlarm(Context context, Uri uri, long time) {
-		// When the alarm goes off, we want to broadcast an Intent to our
-	    // BroadcastReceiver.  Here we make an Intent with an explicit class
-	    // name to have our own receiver (which has been published in
-	    // AndroidManifest.xml) instantiated and called, and then create an
-	    // IntentSender to have the intent executed as a broadcast.
-	    Intent intent = new Intent(context, AlarmReceiver.class);
+	public static void setAlarm(Context context, Uri uri, long time) {
+		PendingIntent pendingIntent = getAlarmPendingIntent(context, uri);
+		
+	    // Schedule the alarm!
+	    AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+	    am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+	}
+
+	/**
+	 * Cancels an alarm for a specified time.
+	 * 
+	 * @param context
+	 * @param uri
+	 * @param time
+	 * @return
+	 */
+	public static void cancelAlarm(Context context, Uri uri) {
+	    PendingIntent pendingIntent = getAlarmPendingIntent(context, uri);
+	
+	    // Cancel the alarm!
+	    AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(pendingIntent);
+	}
+	
+	/**
+	 * Get the pending intent for setting or cancelling the alarm.
+	 * @param context
+	 * @param uri
+	 * @return
+	 */
+	public static PendingIntent getAlarmPendingIntent(Context context, Uri uri) {
+		Intent intent = new Intent(context, AlarmReceiver.class);
 	    
 	    intent.setData(uri);
 	    
 	    PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
 	            0, intent, 0);
 	
-	    // Schedule the alarm!
-	    AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-	    am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
-	    
 	    return pendingIntent;
 	}
 

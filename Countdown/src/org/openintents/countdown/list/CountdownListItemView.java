@@ -112,14 +112,6 @@ public class CountdownListItemView extends LinearLayout {
 				mListener.onCountdownPanelClick(mId);
 			}
 		});
-		/*
-		mCountdownPanel.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
-			@Override
-			public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
-				mListener.onCoundownPanelCreateContextMenu(mId, menu, view, info);
-			}
-		});
-		*/
 	}
 
 }
