@@ -104,7 +104,6 @@ public class UpdateChecker {
 
 		try {
 			Log.d(TAG, "Looking for version at " + link);
-			parseVeeCheck(link);
 
 			if (mLatestVersion > 0 || mLatestVersionName != null) {
 				return;
@@ -120,8 +119,8 @@ public class UpdateChecker {
 
 					String firstLine = reader.readLine();
 					if (firstLine != null && firstLine.indexOf("<") >= 0) {
-						// already done!
-						//parseVeeCheck(link);
+
+						parseVeeCheck(link);
 					} else {
 						parseTxt(firstLine, reader);
 					}
@@ -215,22 +214,33 @@ public class UpdateChecker {
 
 				// create intent
 				Intent intent = new Intent();
-				intent.setAction(result.action);
-				if (result.data != null) {
-					Uri intentUri = Uri.parse(result.data);
-					intent.setData(intentUri);
-				}
-				intent.setType(result.type);
-				if (result.extras != null) {
-					for (Entry<String, String> e : result.extras.entrySet()) {
-						intent.putExtra(e.getKey(), e.getValue());
+				if (Intent.ACTION_VIEW.equals(result.action)) {
+					intent.setAction(result.action);
+					if (result.data != null) {
+						Uri intentUri = Uri.parse(result.data);
+						if (result.type != null) {
+							intent.setDataAndType(intentUri, result.type);
+						} else {
+							intent.setData(intentUri);
+						}
+					} else {
+						if (result.type != null) {
+							intent.setType(result.type);
+						}
 					}
-				}
 
-				ResolveInfo info = mContext.getPackageManager()
-						.resolveActivity(intent, 0);
-				if (info != null) {
-					mUpdateIntent = intent;
+					if (result.extras != null) {
+						for (Entry<String, String> e : result.extras.entrySet()) {
+							intent.putExtra(e.getKey(), e.getValue());
+						}
+					}
+					ResolveInfo info = mContext.getPackageManager()
+							.resolveActivity(intent, 0);
+					if (info != null) {
+						mUpdateIntent = intent;
+					}
+				} else {
+					Log.v(TAG, "no view action but " + result.action);
 				}
 
 			} else {
