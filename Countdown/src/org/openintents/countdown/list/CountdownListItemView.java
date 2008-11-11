@@ -1,11 +1,13 @@
 package org.openintents.countdown.list;
 
 import org.openintents.countdown.R;
+import org.openintents.countdown.list.CountdownCursorAdapter.OnCountdownClickListener;
 import org.openintents.countdown.util.CountdownUtils;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +20,8 @@ public class CountdownListItemView extends LinearLayout {
 	private TextView mTitle;
 	private TextView mDurationView;
 	private TextView mCountdownView;
+	private Button mStart;
+	private LinearLayout mCountdownPanel;
 	
 	public CountdownListItemView(Context context) {
 		super(context);
@@ -33,6 +37,9 @@ public class CountdownListItemView extends LinearLayout {
 		mTitle = (TextView) findViewById(R.id.text);
 		mDurationView = (TextView) findViewById(R.id.duration);
 		mCountdownView = (TextView) findViewById(R.id.countdown);
+		mStart = (Button) findViewById(R.id.start);
+		mCountdownPanel = (LinearLayout) findViewById(R.id.countdownpanel);
+		
 	}
 
 	/**
@@ -44,6 +51,7 @@ public class CountdownListItemView extends LinearLayout {
 
 	public void setDuration(long duration) {
 		mDuration = duration;
+		mStart.setText(mContext.getText(R.string.start) + "\n" + CountdownUtils.getDurationString(mDuration));
 		updateCountdown();
 	}
 	
@@ -63,6 +71,7 @@ public class CountdownListItemView extends LinearLayout {
 			//mDurationView.setText("");
 			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			mStart.setVisibility(View.GONE);
 			//mDurationView.setTextColor(0xffff00ff);
 			//mDurationView.setTextSize(24);
 		} else if (delta > -3000) {
@@ -71,14 +80,38 @@ public class CountdownListItemView extends LinearLayout {
 			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextColor(0xffff0000);
 			//mDurationView.setTextSize(24);
+			mStart.setVisibility(View.GONE);
+			
 		} else {
 			//mDurationView.setText("" + getDurationString(mDuration));
 			mCountdownView.setText("");
 			//mDurationView.setTextAppearance(mContext, android.R.style.TextAppearance_Small);
 			//mDurationView.setTextSize(24);
+			mStart.setVisibility(View.VISIBLE);
+			
 		}
 		//requestLayout();
 		//invalidate();
+	}
+	
+	public void setListeners(OnCountdownClickListener listener, long id) {
+		
+		final OnCountdownClickListener mListener = listener;
+		final long mId = id;
+
+		mStart.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mListener.onStartClick(mId);
+			}
+		});
+		
+		mCountdownPanel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				mListener.onCountdownPanelClick(mId);
+			}
+		});
 	}
 
 }

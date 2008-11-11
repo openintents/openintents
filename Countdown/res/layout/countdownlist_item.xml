@@ -18,19 +18,29 @@
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
+    android:focusable="false"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-	android:layout_marginTop="8dip" android:layout_marginBottom="8dip"
-	android:layout_marginLeft="8dip" android:layout_marginRight="12dip"
 	android:minHeight="?android:attr/listPreferredItemHeight" 
-    >
+    ><!-- android:layout_marginTop="8dip" android:layout_marginBottom="8dip"
+	 -->
+    <LinearLayout
+    	android:id="@+id/countdownpanel"
+    	android:layout_width="0dip"
+    	android:layout_height="fill_parent"
+    	android:layout_weight="1"
+    	android:focusable="true"
+    	android:clickable="true"
+        android:layout_gravity="center_vertical"
+	    android:background="@android:drawable/menuitem_background">
     <LinearLayout
 	    android:orientation="vertical"
 	    android:layout_width="0dip"
 	    android:layout_height="wrap_content"
 	    android:layout_weight="1"
 		android:layout_gravity="center_vertical"
-	    ><!-- android:layout_alignParentLeft="true"
+	    android:layout_marginLeft="8dip" android:layout_marginRight="12dip"
+		><!-- android:layout_alignParentLeft="true"
 	     -->
 		<TextView
 		    android:id="@+id/text"
@@ -61,6 +71,14 @@
 	    android:layout_width="wrap_content"
 	    android:layout_gravity="center_vertical"
 	    android:textAppearance="?android:attr/textAppearanceLarge"
+	/>
+	</LinearLayout>
+	<Button
+	    android:id="@+id/start"
+	    android:text="@string/start"
+	    android:layout_height="fill_parent"
+	    android:layout_width="100dip"
+	    android:layout_gravity="center"
 	/>
 	
 </LinearLayout>

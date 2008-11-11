@@ -13,10 +13,12 @@ public class CountdownCursorAdapter extends CursorAdapter {
 
 
 	Context mContext;
+	OnCountdownClickListener mListener;
 	
-	public CountdownCursorAdapter(Context context, Cursor c) {
+	public CountdownCursorAdapter(Context context, Cursor c, OnCountdownClickListener listener) {
 		super(context, c);
 		mContext = context;
+		mListener = listener;
 	}
 	
 	@Override
@@ -24,6 +26,8 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		CountdownListItemView cliv = (CountdownListItemView) view;
 		
 
+		long id = cursor.getLong(cursor
+				.getColumnIndexOrThrow(Countdown.Durations._ID));
 		String title = cursor.getString(cursor
 				.getColumnIndexOrThrow(Countdown.Durations.TITLE));
 		long duration = cursor.getLong(cursor
@@ -39,12 +43,20 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		cliv.setDuration(duration);
 		cliv.setDeadline(deadline);
 		
+		cliv.setListeners(mListener, id);
+		
 
 	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
 		return new CountdownListItemView(context);
+	}
+	
+	public interface OnCountdownClickListener {
+		public void onCountdownPanelClick(long id);
+		
+		public void onStartClick(long id);
 	}
 
 }

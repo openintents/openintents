@@ -24,7 +24,9 @@
 package org.openintents.countdown.list;
 
 import org.openintents.countdown.R;
+import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
+import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.Update;
@@ -32,6 +34,7 @@ import org.openintents.distribution.Update;
 import android.app.ListActivity;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -46,7 +49,6 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
 /**
@@ -54,7 +56,8 @@ import android.widget.TextView;
  * provided in the intent if there is one, otherwise defaults to displaying the
  * contents of the {@link NotePadProvider}
  */
-public class CountdownListActivity extends ListActivity {
+public class CountdownListActivity extends ListActivity 
+	implements CountdownCursorAdapter.OnCountdownClickListener {
     private static final String TAG = "NotesList";
 
     // Menu item ids
@@ -80,6 +83,8 @@ public class CountdownListActivity extends ListActivity {
     
     private static final int MSG_UPDATE_DISPLAY = 1;
     
+    private Cursor mCursor;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +109,22 @@ public class CountdownListActivity extends ListActivity {
         getListView().setEmptyView(findViewById(R.id.empty));
         
         /*
+        getListView().setOnItemClickListener(new ListView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Log.i(TAG, "Clicked");
+				
+			}
+
+        	
+        });
+        */
+        
+        //getListView().setClickable(true);
+        
+        /*
         Button b = (Button) findViewById(R.id.add);
         b.setOnClickListener(new Button.OnClickListener() {
 
@@ -117,14 +138,14 @@ public class CountdownListActivity extends ListActivity {
         
         // Perform a managed query. The Activity will handle closing and requerying the cursor
         // when needed.
-        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null,
+        mCursor = managedQuery(getIntent().getData(), PROJECTION, null, null,
                 Durations.DEFAULT_SORT_ORDER);
 
         // Used to map notes entries from the database to views
         //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.countdownlist_item, cursor,
         //        new String[] { Durations.TITLE , Durations.DURATION }, new int[] { android.R.id.text1 , android.R.id.text2 });
         
-        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, cursor);
+        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this);
         
         setListAdapter(adapter);
     }
@@ -282,7 +303,31 @@ public class CountdownListActivity extends ListActivity {
 	
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+        editCountdown(id);
+    }
+
+
+    
+    
+    
+
+	@Override
+	public void onCountdownPanelClick(long id) {
+        editCountdown(id);
+	}
+
+
+	@Override
+	public void onStartClick(long id) {
+		startCountdown(id);
+	}
+
+	/**
+	 * Show the Countdown editor activity.
+	 * @param id
+	 */
+	private void editCountdown(long id) {
+		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
         
         String action = getIntent().getAction();
         if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_GET_CONTENT.equals(action)) {
@@ -293,9 +338,39 @@ public class CountdownListActivity extends ListActivity {
             // Launch activity to view/edit the currently selected item
             startActivity(new Intent(Intent.ACTION_EDIT, uri));
         }
-    }
-    
+	}
 
+	private void startCountdown(long id) {
+		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+		
+
+        // Get the data
+        Cursor c = getContentResolver().query(uri, Durations.PROJECTION, null, null,
+                Countdown.Durations.DEFAULT_SORT_ORDER);
+		
+    	long now = System.currentTimeMillis();
+    	
+    	long duration = 0;
+    	
+    	if (c != null) {
+        	c.moveToFirst();
+        	duration = c.getLong(c.getColumnIndexOrThrow(Durations.DURATION));
+    	}
+		
+    	long deadline = now + duration;
+    	
+    	CountdownUtils.setAlarm(this, uri, deadline);
+    	
+    	// Write back modification
+    	ContentValues values = new ContentValues();
+    	values.put(Durations.DEADLINE_DATE, deadline);
+    	
+        getContentResolver().update(uri, values, null, null);
+        mCursor.requery();
+    	
+		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));
+	}
+	
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
 		@Override

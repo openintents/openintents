@@ -543,22 +543,7 @@ public class CountdownEditorActivity extends Activity {
     }
     
     public void setAlarm(long time) {
-    	// When the alarm goes off, we want to broadcast an Intent to our
-        // BroadcastReceiver.  Here we make an Intent with an explicit class
-        // name to have our own receiver (which has been published in
-        // AndroidManifest.xml) instantiated and called, and then create an
-        // IntentSender to have the intent executed as a broadcast.
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        
-        intent.setData(mUri);
-        
-        mPendingIntent = PendingIntent.getBroadcast(this,
-                0, intent, 0);
-
-        // Schedule the alarm!
-        AlarmManager am = (AlarmManager)getSystemService(ALARM_SERVICE);
-        am.set(AlarmManager.RTC_WAKEUP, time, mPendingIntent);
-
+    	mPendingIntent = CountdownUtils.setAlarm(this, mUri, time);
     }
     
     PendingIntent mPendingIntent;
