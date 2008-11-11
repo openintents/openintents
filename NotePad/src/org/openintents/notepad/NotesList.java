@@ -26,6 +26,7 @@ package org.openintents.notepad;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -153,11 +154,16 @@ public class NotesList extends ListActivity {
 		// our menu with their own actions.
 		Intent intent = new Intent(null, getIntent().getData());
 		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-		menu
-				.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-						new ComponentName(this, NotesList.class), null, intent,
-						0, null);
+		//menu
+		//		.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+		//				new ComponentName(this, NotesList.class), null, intent,
+		//				0, null);
 
+        // Workaround to add icons:
+        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                        new ComponentName(this, NotesList.class), null, intent, 0, null);
+        
 		return true;
 	}
 
@@ -184,9 +190,14 @@ public class NotesList extends ListActivity {
 			// ... is followed by whatever other actions are available...
 			Intent intent = new Intent(null, uri);
 			intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-			menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, null,
-					specifics, intent, 0, items);
-
+			//menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, null,
+			//		specifics, intent, 0, items);
+			
+			// Workaround to add icons:
+	        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+	        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+	                        null, specifics, intent, 0, items);
+	        
 			// Give a shortcut to the edit action.
 			if (items[0] != null) {
 				items[0].setShortcut('1', 'e');

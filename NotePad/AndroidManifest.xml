@@ -57,6 +57,7 @@
         <activity android:name="NoteEditor"
             android:theme="@android:style/Theme.Light"
             android:label="@string/title_note"
+            android:icon="@drawable/ic_menu_edit"
         >
             <!-- This filter says that we can view or edit the data of
                  a single note -->
