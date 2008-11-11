@@ -151,6 +151,8 @@ public class VeecheckResult extends DefaultHandler {
 
 	public boolean greater;
 
+	private VeecheckVersion currentVersion;
+
 	/**
 	 * Constructs a new {@link ContentHandler} that can be supplied to a SAX
 	 * parser for the purpose of identifying intent information for a given
@@ -167,8 +169,8 @@ public class VeecheckResult extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attrs) throws SAXException {
-		if (skip)
-			return; // nothing else to do
+		// if (skip)
+		// return; // nothing else to do
 		if (!uri.equals(XML_NAMESPACE))
 			return;
 		if (recordNext) {
@@ -183,8 +185,15 @@ public class VeecheckResult extends DefaultHandler {
 			if (!localName.equals(VERSION_TAG))
 				return;
 			VeecheckVersion v = new VeecheckVersion(attrs);
-			recordNext = v.greater(version);
-			if (recordNext) {
+
+			// try to find current version (= first matching version)
+			recordNext = version.matches(v);
+			if (recordNext && currentVersion == null) {
+				currentVersion = v;
+			}
+
+			// try to find update version
+			if (latestVersion == null || v.greater(latestVersion)) {
 				latestVersion = v;
 			}
 		}

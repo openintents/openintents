@@ -233,12 +233,12 @@ public class VeecheckVersion {
 
 	public boolean greater(VeecheckVersion currentVersion) {		
 		if (currentVersion.versionCode != null && this.versionCode != null
-				&& Long.parseLong(currentVersion.versionCode) >= Long.parseLong(this.versionCode))
-			return false;
-		if (currentVersion.versionName != null
-				&& currentVersion.versionName.equals(this.versionName))
-			return false;
-		return true;
+				&& Long.parseLong(currentVersion.versionCode) < Long.parseLong(this.versionCode))
+			return true;
+		if (currentVersion.versionName != null && this.versionName != null 
+				&& !currentVersion.versionName.equals(this.versionName))
+			return true;
+		return false;
 	}
 
 	public String getVersionCode() {
