@@ -21,6 +21,13 @@ countdown finished.
 To obtain the current release, visit
   http://www.openintents.org
 
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2008-11-11
+
+- Include Start button on list of countdowns.
+
 ---------------------------------------------------------
 release: 1.0.0
 date: 2008-11-07

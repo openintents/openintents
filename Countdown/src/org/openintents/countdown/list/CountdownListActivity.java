@@ -14,13 +14,6 @@
  * limitations under the License.
  */
 
-/*
- * Original copyright:
- * Based on the Android SDK sample application NotePad.
- * Copyright (C) 2007 Google Inc.
- * Licensed under the Apache License, Version 2.0.
- */
-
 package org.openintents.countdown.list;
 
 import org.openintents.countdown.R;
@@ -117,6 +110,11 @@ public class CountdownListActivity extends ListActivity
         // when needed.
         mCursor = managedQuery(getIntent().getData(), PROJECTION, null, null,
                 Durations.DEFAULT_SORT_ORDER);
+        
+        if (mCursor.getCount() == 0) {
+        	// Create a new timer immediately
+        	insertNewNote();
+        }
 
         // Used to map notes entries from the database to views
         //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.countdownlist_item, cursor,

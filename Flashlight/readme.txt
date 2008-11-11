@@ -19,6 +19,12 @@ The display backlight is kept turned on while this application is running.
 
 To obtain the current release, visit
   http://www.openintents.org
+
+---------------------------------------------------------
+release: 1.0.3
+date: 2008-11-12
+
+- Bugfix: Set wake lock to bright instead of dim.
   
 ---------------------------------------------------------
 release: 1.0.2

@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007 Google Inc.
+ * Copyright (C) 2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,12 +35,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * This is an example of implement an {@link BroadcastReceiver} for an alarm that
- * should occur once.
- * <p>
- * When the alarm goes off, we show a <i>Toast</i>, a quick message.
- */
-public class AlarmReceiver extends BroadcastReceiver
+ * Alarm receiver for countdown events.
+ * 
+ * @author Peli
+ *
+ */public class AlarmReceiver extends BroadcastReceiver
 {
 	private final static String TAG = "AlarmReceiver";
 	
