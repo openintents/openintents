@@ -10,4 +10,7 @@
 <string name="add_column_dialog_column_name">Column name</string>
 <string name="new_row">Add %s</string>
 <string name="create_table">Create table</string>
+<string name="admin_table">Admin table</string>
+<string name="edit_content">Edit content</string>
+<string name="delete_table">Delete table</string>
 </resources>

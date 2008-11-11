@@ -157,7 +157,7 @@ public class DBProvider extends ContentProvider {
 	@Override
 	public boolean onCreate() {
 		mUserHelper = new UserHelper(getContext());
-		mMetaHelper = new MetaHelper(getContext(), mUserHelper);		
+		mMetaHelper = new MetaHelper(getContext(), mUserHelper);
 		return true;
 	}
 
@@ -188,16 +188,30 @@ public class DBProvider extends ContentProvider {
 					null, null, sortOrder);
 
 			return cursor;
-			
-			
+
 		case COLUMNS:
 
 			db = mMetaHelper.getReadableDatabase();
 			qb = new SQLiteQueryBuilder();
 			qb.setTables(TABLE_META_COLUMNS);
-			cursor = qb.query(db, projection, selection, selectionArgs,
-					null, null, sortOrder);
+			cursor = qb.query(db, projection, selection, selectionArgs, null,
+					null, sortOrder);
 
+			return cursor;
+
+		case ROWS_ID:
+			String tableId = uri.getPathSegments().get(1);
+			cursor = mMetaHelper.getReadableDatabase().query(TABLE_META_TABLES,
+					new String[] { Tables.TABLE_NAME }, Tables._ID + " = ?",
+					new String[] { tableId }, null, null, null);
+			String tableName = null;
+			if (cursor.moveToFirst()) {
+				tableName = cursor.getString(0);
+			}
+			cursor.close();
+			db = mUserHelper.getReadableDatabase();
+			cursor = db.query(tableName, new String[] { "*" }, selection,
+					selectionArgs, null, null, sortOrder);
 			return cursor;
 		}
 
@@ -232,7 +246,8 @@ public class DBProvider extends ContentProvider {
 
 			long id = db.insert(TABLE_META_TABLES, Tables.TABLE_NAME,
 					contentvalues);
-			Uri newUri = Uri.withAppendedPath(Tables.CONTENT_URI, String.valueOf(id));
+			Uri newUri = Uri.withAppendedPath(Tables.CONTENT_URI, String
+					.valueOf(id));
 			getContext().getContentResolver().notifyChange(newUri, null);
 			return newUri;
 
@@ -243,6 +258,39 @@ public class DBProvider extends ContentProvider {
 			newUri = Uri.withAppendedPath(Columns.CONTENT_URI, String
 					.valueOf(id));
 			getContext().getContentResolver().notifyChange(newUri, null);
+			return newUri;
+		case ROWS:
+			String tableId = uri.getPathSegments().get(1);
+			Cursor cursor = mMetaHelper.getReadableDatabase().query(
+					TABLE_META_TABLES, new String[] { Tables.TABLE_NAME },
+					Tables._ID + " = ?", new String[] { tableId }, null, null,
+					null);
+			String tableName = null;
+			if (cursor.moveToFirst()) {
+				tableName = cursor.getString(0);
+			}
+			cursor.close();
+
+			cursor = mMetaHelper.getReadableDatabase().query(
+					TABLE_META_COLUMNS, new String[] { Columns.COL_NAME },
+					Tables._ID + " = ?", new String[] { tableId }, null, null,
+					null);
+			String nullColumn = null;
+			if (cursor.moveToFirst()) {
+				nullColumn = cursor.getString(0);
+			}
+			cursor.close();
+
+			if (tableName != null) {
+				db = mUserHelper.getWritableDatabase();
+				long newId = db.insert(tableName, nullColumn, contentvalues);
+				newUri = Tables.CONTENT_URI.buildUpon().appendPath(
+						String.valueOf(tableId)).appendPath("rows").appendPath(
+						String.valueOf(newId)).build();
+			} else {
+				newUri = null;
+			}
+
 			return newUri;
 		}
 		return null;
@@ -271,7 +319,7 @@ public class DBProvider extends ContentProvider {
 									Columns.TABLE_ID + " = ?",
 									new String[] { uri.getLastPathSegment() },
 									null, null, null);
-					while (cursor.moveToNext()) {
+					while (colCursor.moveToNext()) {
 						sb.append(colCursor.getString(0) + " "
 								+ colCursor.getString(1) + ",");
 					}
