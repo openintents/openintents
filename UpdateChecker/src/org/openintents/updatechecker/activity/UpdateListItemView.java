@@ -4,22 +4,30 @@ import org.openintents.updatechecker.R;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class UpdateListListItemView extends LinearLayout {
+public class UpdateListItemView extends LinearLayout {
+	
+	private static final String TAG = "UpdateListListItemView";
 
 	Context mContext;
 	
 	private TextView mName;
 	private TextView mInfo;
 	private ImageView mImage;
-	private ImageView mIgnore;
+	private ImageView mStatus;
 	
-	public UpdateListListItemView(Context context) {
+	public static final int STATUS_OK = 1;
+	public static final int STATUS_DOWNLOAD = 2;
+	public static final int STATUS_UNKNOWN = 3;
+	public static final int STATUS_IGNORE = 4;
+	
+	
+	public UpdateListItemView(Context context) {
 		super(context);
 		mContext = context;
 
@@ -33,7 +41,7 @@ public class UpdateListListItemView extends LinearLayout {
 		mName = (TextView) findViewById(R.id.name);
 		mInfo = (TextView) findViewById(R.id.info);
 		mImage = (ImageView) findViewById(R.id.icon);
-		mIgnore = (ImageView) findViewById(R.id.ignore);
+		mStatus = (ImageView) findViewById(R.id.status);
 	}
 
 	/**
@@ -51,11 +59,23 @@ public class UpdateListListItemView extends LinearLayout {
 		mImage.setImageDrawable(image);
 	}
 	
-	public void setNoNotifications(int no_notifications) {
-		if (no_notifications == 1) {
-			mIgnore.setVisibility(View.VISIBLE);
-		} else {
-			mIgnore.setVisibility(View.GONE);
+	public void setStatus(int status) {
+		switch(status) {
+		case STATUS_OK:
+			mStatus.setImageResource(R.drawable.ic_ok);
+			break;
+		case STATUS_DOWNLOAD:
+			mStatus.setImageResource(R.drawable.ic_download);
+			break;
+		case STATUS_UNKNOWN:
+			mStatus.setImageResource(R.drawable.ic_question);
+			break;
+		case STATUS_IGNORE:
+			mStatus.setImageResource(R.drawable.ic_ignore);
+			break;
+		default:
+			Log.e(TAG, "Unknown status " + status);
+			mStatus.setImageResource(R.drawable.ic_question);
 		}
 	}
 }

@@ -24,7 +24,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 	
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
-		UpdateListListItemView cliv = (UpdateListListItemView) view;
+		UpdateListItemView cliv = (UpdateListItemView) view;
 		
 
 		String name = cursor.getString(cursor
@@ -58,14 +58,19 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		cliv.setName(name);
 		cliv.setInfo(info);
 		cliv.setImage(image);
-		cliv.setNoNotifications(no_notifications);
+		
+		if (no_notifications == 1) {
+			cliv.setStatus(UpdateListItemView.STATUS_IGNORE);
+		} else {
+			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
+		}
 		
 
 	}
 
 	@Override
 	public View newView(Context context, Cursor cursor, ViewGroup parent) {
-		return new UpdateListListItemView(context);
+		return new UpdateListItemView(context);
 	}
 
 }
