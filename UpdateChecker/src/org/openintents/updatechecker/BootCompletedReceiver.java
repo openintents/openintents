@@ -36,8 +36,8 @@ public class BootCompletedReceiver extends BroadcastReceiver
     public void onReceive(Context context, Intent intent)
     {
     	Log.d(TAG, "Received BootCompleted");
-    	
-    	AlarmUtils.refreshUpdateAlarm(context);
+    	Log.i(TAG, "Refresh update alarm");
+		AlarmUtils.refreshUpdateAlarm(context);
         
     }
 

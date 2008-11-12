@@ -3,13 +3,15 @@
      Just use the Easter egg. :-)
      (Click on Auto Update check mark and select Cancel - at least 5 times) -->
 	<string-array name="entries_update_interval">
-        <item>every 2 days</item>
-        <item>every 7 days</item>
-        <item>every 30 days</item>
+		<item>every day</item>
+        <!-- <item>every 2 days</item>  -->
+        <item>every week</item>
+        <item>every month</item>
     </string-array>
     
     <string-array name="entryvalues_update_interval">
-        <item>172800000</item>
+    	<item>86400000</item>
+        <!-- <item>172800000</item> -->
         <item>604800000</item>
         <item>2592000000</item>
     </string-array>

@@ -34,13 +34,22 @@ public class AlarmUtils {
 		// Look up preferences
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		boolean autoupdate = prefs.getBoolean(PreferencesActivity.PREFERENCE_AUTO_UPDATE, true);
-		long updateinterval = Long.parseLong(prefs.getString(PreferencesActivity.PREFERENCE_UPDATE_INTERVAL, "172800000"));
+		long updateinterval = Long.parseLong(prefs.getString(PreferencesActivity.PREFERENCE_UPDATE_INTERVAL, "0"));
 		long lastupdate = prefs.getLong(PreferencesActivity.PREFERENCE_LAST_UPDATE, 0);
 	
+		if (updateinterval <= 0) {
+			// Set to minimum interval
+			updateinterval = MINIMUM_INTERVAL;
+			SharedPreferences.Editor editor = prefs.edit();
+			Log.d(TAG, "Setting new update interval: " + updateinterval);
+			editor.putBoolean(PreferencesActivity.PREFERENCE_AUTO_UPDATE, true);
+			editor.putString(PreferencesActivity.PREFERENCE_UPDATE_INTERVAL, "" + updateinterval);
+			editor.commit();
+		}
 		
 		long firstinterval = getFirstInterval(context, lastupdate, updateinterval);
 		
-		Log.d(TAG, "Autoupdate preference: " + autoupdate);
+		Log.d(TAG, "Autoupdate preference: " + autoupdate + ", interval: " + updateinterval + ", last update: " + lastupdate);
 		
 		if (autoupdate) {
 			setAlarm(context, firstinterval, updateinterval);

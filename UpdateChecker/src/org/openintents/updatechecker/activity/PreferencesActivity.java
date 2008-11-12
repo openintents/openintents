@@ -93,6 +93,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 		(new Handler()).postDelayed(new Runnable() {
 			@Override
 			public void run() {
+				Log.i(TAG, "Refresh update alarm");
 				AlarmUtils.refreshUpdateAlarm(PreferencesActivity.this);
 			}
 		}, 500);

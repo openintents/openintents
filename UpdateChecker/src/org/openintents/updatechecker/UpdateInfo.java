@@ -99,6 +99,7 @@ public class UpdateInfo implements BaseColumns {
 	}
 
 	public static void checkAlarm(Context context) {
+		Log.i(TAG, "Refresh update alarm");
 		
 		AlarmUtils.refreshUpdateAlarm(context);
 		
