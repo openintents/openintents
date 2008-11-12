@@ -92,7 +92,7 @@ public class UpdateInfoProvider extends ContentProvider {
 	@Override
 	public boolean onCreate() {
 		mOpenHelper = new DatabaseHelper(getContext());		
-		UpdateInfo.checkAlarm(this.getContext());
+		// UpdateInfo.checkAlarm(this.getContext());
 		return true;
 	}
 

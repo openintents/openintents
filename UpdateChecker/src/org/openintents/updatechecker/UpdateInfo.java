@@ -20,20 +20,17 @@ package org.openintents.updatechecker;
 
 import java.net.URL;
 
+import org.openintents.updatechecker.activity.PreferencesActivity;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
-import org.openintents.updatechecker.activity.UpdateListActivity;
 
-import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 import android.util.Log;
 
@@ -102,6 +99,15 @@ public class UpdateInfo implements BaseColumns {
 	}
 
 	public static void checkAlarm(Context context) {
+		
+		
+		// TODO: Friedger, sorry, I don't understand the code below...
+		// What do you check with Pending Intent?
+		
+		// Is the following not enough?
+		// PreferencesActivity.setAlarmIfDesired(context, -1);
+		
+		/*
 		Intent i = new Intent(context, UpdateCheckService.class);
 		i.setAction(UpdateCheckService.ACTION_CHECK_ALL);
 		PendingIntent pi = PendingIntent.getService(context, 0, i,
@@ -128,6 +134,8 @@ public class UpdateInfo implements BaseColumns {
 				context.startService(intent);
 			}
 		}
+		
+		*/
 
 	}
 

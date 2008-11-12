@@ -31,7 +31,19 @@ public class UpdateCheckService extends Service {
 
 	private static final String TAG = "UpdateCheckerService";
 
+	/**
+	 * Regular interval.
+	 */
 	public static final String EXTRA_INTERVAL = "interval";
+	
+	/**
+	 * First interval.
+	 * Used after reboot to set a shorter first interval.
+	 * e.g. 1 day, 7 days, 7 days, 7 days, etc.
+	 * 
+	 * Otherwise many reboots can prevent the alarm from ever starting.
+	 */
+	public static final String EXTRA_FIRST_INTERVAL = "firstinterval";
 	public static final String ACTION_SET_ALARM = "org.openintents.updatechecker.SET_ALARM";
 	public static final String ACTION_UNSET_ALARM = "org.openintents.updatechecker.UNSET_ALARM";
 	static final String ACTION_CHECK_ALL = "org.openintents.updatechecker.CHECK_ALL";
@@ -140,6 +152,10 @@ public class UpdateCheckService extends Service {
 
 	private void setAlarm(Intent intent, int startId) {
 		int interval = intent.getIntExtra(EXTRA_INTERVAL, -1);
+		int firstinterval = intent.getIntExtra(EXTRA_FIRST_INTERVAL, -1);
+		if (firstinterval < 0) {
+			firstinterval = interval;
+		}
 		if (interval > 0) {
 			long time = System.currentTimeMillis();
 
@@ -148,8 +164,8 @@ public class UpdateCheckService extends Service {
 			PendingIntent pi = PendingIntent.getService(this, 0, i,
 					PendingIntent.FLAG_CANCEL_CURRENT);
 			AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-			am.setRepeating(AlarmManager.RTC, time + interval, interval, pi);
-			Log.v(TAG, "Set alarm.");
+			am.setRepeating(AlarmManager.RTC, time + firstinterval, interval, pi);
+			Log.v(TAG, "Set repeating alarm. First interval: " + firstinterval + ", repeated interval: " + interval);
 		}
 		stopSelfResult(startId);
 

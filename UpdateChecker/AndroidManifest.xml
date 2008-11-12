@@ -26,6 +26,7 @@
       android:versionName="1.0.0">
           
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="org.openintents.updatechecker.READ_UPDATE_INFO"/>
     <uses-permission android:name="org.openintents.updatechecker.WRITE_UPDATE_INFO"/>
     
@@ -80,6 +81,13 @@
         android:readPermission="org.openintents.updatechecker.READ_UPDATE_INFO"
         android:writePermission="org.openintents.updatechecker.WRITE_UPDATE_INFO">      
         </provider>
+        
+        <receiver android:name=".BootCompletedReceiver">
+        	<intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        
     </application>
     
 </manifest> 
