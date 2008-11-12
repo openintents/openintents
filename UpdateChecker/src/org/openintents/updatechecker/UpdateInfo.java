@@ -100,6 +100,7 @@ public class UpdateInfo implements BaseColumns {
 
 	public static void checkAlarm(Context context) {
 		
+		PreferencesActivity.refreshUpdateAlarm(context);
 		
 		// TODO: Friedger, sorry, I don't understand the code below...
 		// What do you check with Pending Intent?

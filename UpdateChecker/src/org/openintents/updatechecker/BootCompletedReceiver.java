@@ -36,11 +36,8 @@ public class BootCompletedReceiver extends BroadcastReceiver
     public void onReceive(Context context, Intent intent)
     {
     	Log.d(TAG, "Received BootCompleted");
-
-    	// Quick-Fix: Check 1 hour after reboot
-    	int firstinterval = 3600000;
     	
-    	PreferencesActivity.setAlarmIfDesired(context, firstinterval);
+    	PreferencesActivity.refreshUpdateAlarm(context);
         
     }
 

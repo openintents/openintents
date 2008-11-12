@@ -25,6 +25,11 @@ public class PreferencesActivity extends PreferenceActivity implements
 	
 	public final static String PREFERENCE_AUTO_UPDATE = "auto_update";
 	public final static String PREFERENCE_UPDATE_INTERVAL = "update_interval";
+	
+	/**
+	 * Timestamp of last update.
+	 */
+	public final static String PREFERENCE_LAST_UPDATE = "last_update";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,24 +81,48 @@ public class PreferencesActivity extends PreferenceActivity implements
 	}
 	
 	/**
-	 * Firstinterval is required for the following case:
-    	// TODO: We have to handle booting better.
-    	// If interval is set to 7 days, and user reboots every 3 days, then Update is *never* performed..
+	 * Sets the alarm if desired by the preferences.
+	 * 
 	 * @param context
 	 * @param firstinterval (if set to -1, then standard interval is taken)
 	 */
-	public static void setAlarmIfDesired(Context context, int firstinterval) {
+	public static void refreshUpdateAlarm(Context context) {
 
     	// Look up preferences
     	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
     	boolean autoupdate = prefs.getBoolean(PREFERENCE_AUTO_UPDATE, true);
     	int updateinterval = Integer.parseInt(prefs.getString(PREFERENCE_UPDATE_INTERVAL, "172800000"));
+    	long lastupdate = prefs.getLong(PREFERENCE_LAST_UPDATE, 0);
+
+		long now = System.currentTimeMillis();
+		
+    	long firstinterval = lastupdate - now + updateinterval;
     	
+    	if (firstinterval < 5000) {
+    		Log.d(TAG, "Limit first interval from " + firstinterval + " to " + 5000);
+    		firstinterval = 5000;
+    	} else if (firstinterval > updateinterval) {
+    		Log.d(TAG, "Limit first interval from " + firstinterval + " to " + updateinterval);
+    		firstinterval = updateinterval;
+    	}
     	Log.d(TAG, "Autoupdate preference: " + autoupdate);
     	
     	if (autoupdate) {
-    		setAlarm(context, firstinterval, updateinterval);
+    		setAlarm(context, (int) firstinterval, updateinterval);
     	}
+	}
+	
+	/**
+	 * Sets the update timestamp to now.
+	 */
+	public static void setUpdateTimestamp(Context context) {
+		long now = System.currentTimeMillis();
+		
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putLong(PREFERENCE_LAST_UPDATE, now);
+		editor.commit();
 	}
 
 }
