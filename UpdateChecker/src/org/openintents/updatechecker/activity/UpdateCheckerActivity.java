@@ -20,7 +20,7 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateChecker;
-import org.openintents.updatechecker.UpdateInfo;
+import org.openintents.updatechecker.db.UpdateInfo;
 
 import android.app.Activity;
 import android.app.NotificationManager;

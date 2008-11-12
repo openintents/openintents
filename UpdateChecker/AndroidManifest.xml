@@ -76,7 +76,7 @@
             </intent-filter>
         </service>
         
-        <provider android:name=".UpdateInfoProvider" 
+        <provider android:name=".db.UpdateInfoProvider" 
         android:authorities="org.openintents.updateinfo"
         android:readPermission="org.openintents.updatechecker.READ_UPDATE_INFO"
         android:writePermission="org.openintents.updatechecker.WRITE_UPDATE_INFO">      

@@ -16,10 +16,11 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-package org.openintents.updatechecker;
+package org.openintents.updatechecker.db;
 
 import java.net.URL;
 
+import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 import org.openintents.updatechecker.util.AlarmUtils;
 

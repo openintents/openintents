@@ -19,6 +19,7 @@
 package org.openintents.updatechecker;
 
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
+import org.openintents.updatechecker.db.UpdateInfo;
 
 import dalvik.system.TemporaryDirectory;
 

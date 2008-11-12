@@ -18,6 +18,7 @@
 
 package org.openintents.updatechecker;
 
+import org.openintents.updatechecker.db.UpdateInfo;
 import org.openintents.updatechecker.util.AlarmUtils;
 
 import android.app.AlarmManager;

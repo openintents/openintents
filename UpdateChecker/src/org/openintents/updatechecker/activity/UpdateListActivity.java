@@ -4,7 +4,7 @@ import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateCheckerWithNotification;
-import org.openintents.updatechecker.UpdateInfo;
+import org.openintents.updatechecker.db.UpdateInfo;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -37,8 +37,14 @@ public class UpdateListActivity extends ListActivity {
 
 		setContentView(R.layout.app_list);
 
-		check(false, false);
 
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		check(false, false);
 	}
 
 	private Cursor createList(boolean appsWithNewVersionOnly,

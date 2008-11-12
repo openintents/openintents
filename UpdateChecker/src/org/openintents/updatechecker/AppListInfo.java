@@ -1,5 +1,7 @@
 package org.openintents.updatechecker;
 
+import org.openintents.updatechecker.db.UpdateInfo;
+
 
 public class AppListInfo extends UpdateInfo {
 
