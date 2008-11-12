@@ -101,7 +101,7 @@ public class CountdownListActivity extends ListActivity
         getListView().setOnCreateContextMenuListener(this);
         getListView().setEmptyView(findViewById(R.id.empty));
         
-        getListView().setAddStatesFromChildren(false);
+        //getListView().setAddStatesFromChildren(false);
         getListView().setItemsCanFocus(true);
         
         
