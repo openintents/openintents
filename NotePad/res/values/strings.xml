@@ -87,9 +87,9 @@ Unless required by applicable law or agreed to in writing, software distributed 
 for automatic notifications.
 Current version: %s
 	</string>
-	<string name="check_now">Check now.</string>
-	<string name="get_updater">Get OI Updater.</string>
-	<string name="noteslist_url">market://details?id=-8955630993562256959</string>
-	<string name="updatechecker_url">market://details?id=-282734404850313838</string>
-	
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_app_url">market://details?id=-8955630993562256959</string>
+	<string name="update_checker_url">market://details?id=-282734404850313838</string>
+	<string name="update_error">Download application not available.</string>
 </resources>

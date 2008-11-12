@@ -25,20 +25,15 @@ package org.openintents.notepad;
 
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
+import org.openintents.distribution.UpdateMenu;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
-import android.app.Dialog;
 import android.app.ListActivity;
-import android.app.AlertDialog.Builder;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -78,8 +73,6 @@ public class NotesList extends ListActivity {
 
 	/** The index of the title column */
 	private static final int COLUMN_INDEX_TITLE = 1;
-
-	private static final String UPDATE_CHECKER = "org.openintents.updatechecker";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -134,20 +127,11 @@ public class NotesList extends ListActivity {
 		menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert).setShortcut('3',
 				'a').setIcon(android.R.drawable.ic_menu_add);
 
+		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+		
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 
-		PackageInfo pi = null;
-		try {
-			pi = getPackageManager().getPackageInfo(UPDATE_CHECKER, 0);
-		} catch (NameNotFoundException e) {
-			// ignore
-		}
-		if (pi == null) {
-			menu.add(0, MENU_UPDATE, 0, R.string.update).setIcon(
-					android.R.drawable.ic_menu_info_details).setShortcut('0',
-					'u');
-		}
 		// Generate any additional actions that can be performed on the
 		// overall list. In a normal install, there are no additional
 		// actions found here, but this allows other applications to extend
@@ -223,31 +207,6 @@ public class NotesList extends ListActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	private void showUpdateBox() {
-		String version = null;
-		try {
-			version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		final Intent intent  = new Intent(Intent.ACTION_VIEW);
-		new Builder(this).setMessage(getString(R.string.update_box_text, version)).setPositiveButton(R.string.check_now, new OnClickListener(){
-
-			public void onClick(DialogInterface arg0, int arg1) {
-				intent.setData(Uri.parse(getString(R.string.noteslist_url)));
-				startActivity(intent);
-			}
-			
-		}).setNegativeButton(R.string.get_updater, new OnClickListener(){
-
-			public void onClick(DialogInterface dialog, int which) {
-				intent.setData(Uri.parse(getString(R.string.updatechecker_url)));
-				startActivity(intent);
-			}
-			
-		}).show();		
 	}
 
 	/**
@@ -349,6 +308,17 @@ public class NotesList extends ListActivity {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 
+	/**
+	 * 
+	 */
+	private void showUpdateBox() {
+		UpdateMenu.showUpdateBox(this, R.string.update_box_text,
+				R.string.update_check_now, R.string.update_app_url,
+				R.string.update_get_updater, R.string.update_checker_url,
+				R.string.update_error
+				);
+	}
+	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
