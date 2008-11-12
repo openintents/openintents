@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -39,23 +40,38 @@ public class PreferencesActivity extends PreferenceActivity implements
 
 		mAutoUpdate = (CheckBoxPreference) getPreferenceScreen()
 				.findPreference(PREFERENCE_AUTO_UPDATE);
+		mAutoUpdate.setOnPreferenceChangeListener(this);
+		
 		mInterval = (ListPreference) getPreferenceScreen().findPreference(
 				PREFERENCE_UPDATE_INTERVAL);
-		mAutoUpdate.setOnPreferenceChangeListener(this);
+		mInterval.setOnPreferenceChangeListener(this);
 	}
 
 	public boolean onPreferenceChange(Preference preference, Object obj) {
-		
-		// Todo: Check if it is PREFERENCE_AUTO_UPDATE
-		
-		if (obj instanceof Boolean) {
-			if (((Boolean) obj).booleanValue()) {
-				int interval = Integer.parseInt(mInterval.getValue());
-				setAlarm(this, interval, interval);
-			} else {
-				unsetAlarm(this);
+
+		/*
+		if (PREFERENCE_AUTO_UPDATE.equals(preference.getKey())) {
+			if (obj instanceof Boolean) {
+				if (((Boolean) obj).booleanValue()) {
+					long interval = Long.parseLong(mInterval.getValue());
+					setAlarm(this, interval, interval);
+				} else {
+					unsetAlarm(this);
+				}
 			}
+		} else if (PREFERENCE_UPDATE_INTERVAL.equals(preference.getKey())) {
+			
 		}
+		*/
+		
+		// After a delay, set the timer according to new preferences.
+		(new Handler()).postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				refreshUpdateAlarm(PreferencesActivity.this);
+			}
+		}, 500);
+		
 		return true;
 	}
 
@@ -63,7 +79,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 	/**
 	 * 
 	 */
-	public static void setAlarm(Context context, int firstinterval, int interval) {
+	public static void setAlarm(Context context, long firstinterval, long interval) {
 		Intent intent = new Intent(context, UpdateCheckService.class);
 		intent.setAction(UpdateCheckService.ACTION_SET_ALARM);
 		intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, interval);
@@ -81,19 +97,12 @@ public class PreferencesActivity extends PreferenceActivity implements
 	}
 	
 	/**
-	 * Sets the alarm if desired by the preferences.
+	 * Gets the first interval for setting an alarm.
 	 * 
 	 * @param context
-	 * @param firstinterval (if set to -1, then standard interval is taken)
+	 * @return
 	 */
-	public static void refreshUpdateAlarm(Context context) {
-
-    	// Look up preferences
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    	boolean autoupdate = prefs.getBoolean(PREFERENCE_AUTO_UPDATE, true);
-    	int updateinterval = Integer.parseInt(prefs.getString(PREFERENCE_UPDATE_INTERVAL, "172800000"));
-    	long lastupdate = prefs.getLong(PREFERENCE_LAST_UPDATE, 0);
-
+	private static long getFirstInterval(Context context, long lastupdate, long updateinterval) {
 		long now = System.currentTimeMillis();
 		
     	long firstinterval = lastupdate - now + updateinterval;
@@ -105,10 +114,31 @@ public class PreferencesActivity extends PreferenceActivity implements
     		Log.d(TAG, "Limit first interval from " + firstinterval + " to " + updateinterval);
     		firstinterval = updateinterval;
     	}
+    	
+    	return firstinterval;
+	}
+	
+	/**
+	 * Sets the alarm if desired by the preferences.
+	 * 
+	 * @param context
+	 * @param firstinterval (if set to -1, then standard interval is taken)
+	 */
+	public static void refreshUpdateAlarm(Context context) {
+
+    	// Look up preferences
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+    	boolean autoupdate = prefs.getBoolean(PREFERENCE_AUTO_UPDATE, true);
+    	long updateinterval = Long.parseLong(prefs.getString(PREFERENCE_UPDATE_INTERVAL, "172800000"));
+    	long lastupdate = prefs.getLong(PREFERENCE_LAST_UPDATE, 0);
+
+		
+		long firstinterval = getFirstInterval(context, lastupdate, updateinterval);
+		
     	Log.d(TAG, "Autoupdate preference: " + autoupdate);
     	
     	if (autoupdate) {
-    		setAlarm(context, (int) firstinterval, updateinterval);
+    		setAlarm(context, firstinterval, updateinterval);
     	}
 	}
 	

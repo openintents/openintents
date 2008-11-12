@@ -156,8 +156,8 @@ public class UpdateCheckService extends Service {
 	}
 
 	private void setAlarm(Intent intent, int startId) {
-		int interval = intent.getIntExtra(EXTRA_INTERVAL, -1);
-		int firstinterval = intent.getIntExtra(EXTRA_FIRST_INTERVAL, -1);
+		long interval = intent.getLongExtra(EXTRA_INTERVAL, -1);
+		long firstinterval = intent.getLongExtra(EXTRA_FIRST_INTERVAL, -1);
 		if (firstinterval < 0) {
 			firstinterval = interval;
 		}
