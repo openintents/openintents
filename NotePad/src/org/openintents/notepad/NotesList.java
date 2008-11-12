@@ -203,7 +203,7 @@ public class NotesList extends ListActivity {
 			showAboutBox();
 			return true;
 		case MENU_UPDATE:
-			showUpdateBox();
+			UpdateMenu.showUpdateBox(this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -306,17 +306,6 @@ public class NotesList extends ListActivity {
 
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
-	}
-
-	/**
-	 * 
-	 */
-	private void showUpdateBox() {
-		UpdateMenu.showUpdateBox(this, R.string.update_box_text,
-				R.string.update_check_now, R.string.update_app_url,
-				R.string.update_get_updater, R.string.update_checker_url,
-				R.string.update_error
-				);
 	}
 	
 	@Override

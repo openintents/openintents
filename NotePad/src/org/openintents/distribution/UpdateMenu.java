@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-// Version Nov 12, 2008
-
 package org.openintents.distribution;
+
+// Version Nov 12, 2008
 
 import android.app.AlertDialog.Builder;
 import android.content.ActivityNotFoundException;
@@ -72,17 +72,8 @@ public class UpdateMenu {
 	 * Shows dialog box with option to upgrade.
 	 * 
 	 * @param context
-	 * @param textRes
-	 * @param checkRes1
-	 * @param urlRes1
-	 * @param checkRes2
-	 * @param urlRes2
 	 */
-	public static void showUpdateBox(final Context context,
-			final int textRes, 
-			final int checkRes1, final int urlRes1, 
-			final int checkRes2, final int urlRes2,
-			final int errorRes) {
+	public static void showUpdateBox(final Context context) {
 		String version = null;
 		try {
 			version = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
@@ -90,19 +81,19 @@ public class UpdateMenu {
 			e.printStackTrace();
 		}
 		final Intent intent  = new Intent(Intent.ACTION_VIEW);
-		new Builder(context).setMessage(context.getString(textRes, version))
-		.setPositiveButton(checkRes1, new OnClickListener(){
+		new Builder(context).setMessage(context.getString(RD.string.update_box_text, version))
+		.setPositiveButton(RD.string.update_check_now, new OnClickListener(){
 
 			public void onClick(DialogInterface arg0, int arg1) {
-				intent.setData(Uri.parse(context.getString(urlRes1)));
-				startSaveActivity(context, intent, errorRes);
+				intent.setData(Uri.parse(context.getString(RD.string.update_app_url)));
+				startSaveActivity(context, intent);
 			}
 			
-		}).setNegativeButton(checkRes2, new OnClickListener(){
+		}).setNegativeButton(RD.string.update_get_updater, new OnClickListener(){
 
 			public void onClick(DialogInterface dialog, int which) {
-				intent.setData(Uri.parse(context.getString(urlRes2)));
-				startSaveActivity(context, intent, errorRes);
+				intent.setData(Uri.parse(context.getString(RD.string.update_checker_url)));
+				startSaveActivity(context, intent);
 			}
 			
 		}).show();		
@@ -114,14 +105,13 @@ public class UpdateMenu {
 	 * 
 	 * @param context
 	 * @param intent
-	 * @param errorRes
 	 */
-	private static void startSaveActivity(Context context, Intent intent, int errorRes) {
+	private static void startSaveActivity(Context context, Intent intent) {
 		try {
 			context.startActivity(intent);
 		} catch (ActivityNotFoundException e) {
 			Toast.makeText(context,
-					errorRes,
+					RD.string.update_error,
 					Toast.LENGTH_SHORT).show();
 			Log.e(TAG, "Error starting activity.", e);
 		}
