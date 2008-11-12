@@ -97,7 +97,9 @@ public class UpdateListActivity extends ListActivity {
 								UpdateInfo.IGNORE_VERSION_NAME,
 								UpdateInfo.IGNORE_VERSION_CODE,
 								UpdateInfo.LAST_CHECK,
-								UpdateInfo.NO_NOTIFICATIONS },
+								UpdateInfo.NO_NOTIFICATIONS,
+								UpdateInfo.LATEST_VERSION,
+								UpdateInfo.LATEST_COMMENT},
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
@@ -107,6 +109,8 @@ public class UpdateListActivity extends ListActivity {
 					ignoreVersion = cursor.getInt(2);
 					lastCheck = cursor.getLong(3);
 					noNotifications = cursor.getInt(4) > 0;
+					latestVersion = cursor.getInt(5);
+					comment = cursor.getString(6);
 				} else {
 
 					updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(

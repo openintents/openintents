@@ -47,6 +47,8 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_CODE));
 		int ignoreversioncode = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_CODE));
+
+		String comment = cursor.getString(cursor.getColumnIndexOrThrow(AppListInfo.COMMENT));
 		
 		//Log.i(TAG, name + " version: " + latestversioncode + ", " + versioncode + ", " + ignoreversioncode);
 		
@@ -61,6 +63,13 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		
 		if (no_notifications == 1) {
 			cliv.setStatus(UpdateListItemView.STATUS_IGNORE);
+		} else if (latestversioncode == 0) {
+			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
+		} else if (latestversioncode > versioncode) {
+			cliv.setStatus(UpdateListItemView.STATUS_DOWNLOAD);
+			cliv.setInfo(comment);
+		} else if (latestversioncode == versioncode) {
+			cliv.setStatus(UpdateListItemView.STATUS_OK);
 		} else {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
 		}

@@ -43,6 +43,8 @@ public class UpdateInfo implements BaseColumns {
 	public static final String IGNORE_VERSION_CODE = "ignore_version_code";
 	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
 	public static final String NO_NOTIFICATIONS = "no_notifications";
+	public static final String LATEST_VERSION = "latest_version";
+	public static final String LATEST_COMMENT = "latest_comment";
 
 	public static final String DEFAULT_SORT_ORDER = LAST_CHECK;
 

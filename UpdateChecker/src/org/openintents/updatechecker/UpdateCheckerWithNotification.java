@@ -106,8 +106,12 @@ public class UpdateCheckerWithNotification {
 	}
 
 	private void updateLastCheck(String uri) {
+		//Log.d(TAG, "update table: " + mChecker.getComment());
+		
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
+		values.put(UpdateInfo.LATEST_VERSION, mChecker.getLatestVersion());
+		values.put(UpdateInfo.LATEST_COMMENT, mChecker.getComment());
 		if (!mTempUri) {
 			// only update uri if requested
 			values.put(UpdateInfo.UPDATE_URL, uri);
