@@ -16,7 +16,7 @@
 
 package org.openintents.updatechecker;
 
-import org.openintents.updatechecker.activity.PreferencesActivity;
+import org.openintents.updatechecker.util.AlarmUtils;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -37,7 +37,7 @@ public class BootCompletedReceiver extends BroadcastReceiver
     {
     	Log.d(TAG, "Received BootCompleted");
     	
-    	PreferencesActivity.refreshUpdateAlarm(context);
+    	AlarmUtils.refreshUpdateAlarm(context);
         
     }
 

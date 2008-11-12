@@ -54,6 +54,8 @@
     <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
     <string name="dialog_title_update_interval">Select interval</string>
     <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">Warning</string>
+    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
     
     <string name="permission_read_update_info">Read update information</string>
     <string name="permission_write_update_info">Write update information</string>

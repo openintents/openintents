@@ -1,11 +1,12 @@
 package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
-import org.openintents.updatechecker.UpdateCheckService;
+import org.openintents.updatechecker.util.AlarmUtils;
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.CheckBoxPreference;
@@ -14,7 +15,6 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.util.Log;
 
 public class PreferencesActivity extends PreferenceActivity implements
 		OnPreferenceChangeListener {
@@ -49,110 +49,52 @@ public class PreferencesActivity extends PreferenceActivity implements
 
 	public boolean onPreferenceChange(Preference preference, Object obj) {
 
-		/*
 		if (PREFERENCE_AUTO_UPDATE.equals(preference.getKey())) {
-			if (obj instanceof Boolean) {
-				if (((Boolean) obj).booleanValue()) {
-					long interval = Long.parseLong(mInterval.getValue());
-					setAlarm(this, interval, interval);
-				} else {
-					unsetAlarm(this);
-				}
+			boolean autoupdate = (Boolean) obj;
+			if (! autoupdate) {
+				showWarningDialog();
+				
+				// Don't set preference yet..
+				return false;
 			}
-		} else if (PREFERENCE_UPDATE_INTERVAL.equals(preference.getKey())) {
-			
 		}
-		*/
 		
-		// After a delay, set the timer according to new preferences.
-		(new Handler()).postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				refreshUpdateAlarm(PreferencesActivity.this);
-			}
-		}, 500);
+		refreshUpdateAlarm();
 		
 		return true;
 	}
 
 	
-	/**
-	 * 
-	 */
-	public static void setAlarm(Context context, long firstinterval, long interval) {
-		Intent intent = new Intent(context, UpdateCheckService.class);
-		intent.setAction(UpdateCheckService.ACTION_SET_ALARM);
-		intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, interval);
-		intent.putExtra(UpdateCheckService.EXTRA_FIRST_INTERVAL, firstinterval);
-		context.startService(intent);
-	}
-	
-	/**
-	 * 
-	 */
-	public static void unsetAlarm(Context context) {
-		Intent intent = new Intent(context, UpdateCheckService.class);
-		intent.setAction(UpdateCheckService.ACTION_UNSET_ALARM);
-		context.startService(intent);
-	}
-	
-	/**
-	 * Gets the first interval for setting an alarm.
-	 * 
-	 * @param context
-	 * @return
-	 */
-	private static long getFirstInterval(Context context, long lastupdate, long updateinterval) {
-		long now = System.currentTimeMillis();
-		
-    	long firstinterval = lastupdate - now + updateinterval;
-    	
-    	if (firstinterval < 5000) {
-    		Log.d(TAG, "Limit first interval from " + firstinterval + " to " + 5000);
-    		firstinterval = 5000;
-    	} else if (firstinterval > updateinterval) {
-    		Log.d(TAG, "Limit first interval from " + firstinterval + " to " + updateinterval);
-    		firstinterval = updateinterval;
-    	}
-    	
-    	return firstinterval;
-	}
-	
-	/**
-	 * Sets the alarm if desired by the preferences.
-	 * 
-	 * @param context
-	 * @param firstinterval (if set to -1, then standard interval is taken)
-	 */
-	public static void refreshUpdateAlarm(Context context) {
+	private void showWarningDialog() {
+		new Builder(this).setMessage(R.string.preference_warning_text)
+		.setTitle(R.string.preference_warning_title)
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setPositiveButton(android.R.string.ok, new OnClickListener(){
 
-    	// Look up preferences
-    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-    	boolean autoupdate = prefs.getBoolean(PREFERENCE_AUTO_UPDATE, true);
-    	long updateinterval = Long.parseLong(prefs.getString(PREFERENCE_UPDATE_INTERVAL, "172800000"));
-    	long lastupdate = prefs.getLong(PREFERENCE_LAST_UPDATE, 0);
+			public void onClick(DialogInterface dialog, int which) {
+				// Set preference
+				mAutoUpdate.setChecked(false);
+				refreshUpdateAlarm();
+			}
+			
+		}).setNegativeButton(android.R.string.cancel, new OnClickListener(){
 
-		
-		long firstinterval = getFirstInterval(context, lastupdate, updateinterval);
-		
-    	Log.d(TAG, "Autoupdate preference: " + autoupdate);
-    	
-    	if (autoupdate) {
-    		setAlarm(context, firstinterval, updateinterval);
-    	}
-	}
-	
-	/**
-	 * Sets the update timestamp to now.
-	 */
-	public static void setUpdateTimestamp(Context context) {
-		long now = System.currentTimeMillis();
-		
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-		
-		SharedPreferences.Editor editor = prefs.edit();
-		editor.putLong(PREFERENCE_LAST_UPDATE, now);
-		editor.commit();
+			public void onClick(DialogInterface dialog, int which) {
+			}
+			
+		}).show();		
 	}
 
+	/**
+	 * Refresh the update alarm after a short delay.
+	 */
+	private void refreshUpdateAlarm() {
+		// After a delay, set the timer according to new preferences.
+		(new Handler()).postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				AlarmUtils.refreshUpdateAlarm(PreferencesActivity.this);
+			}
+		}, 500);
+	}
 }

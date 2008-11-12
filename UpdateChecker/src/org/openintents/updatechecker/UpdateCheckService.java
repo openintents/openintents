@@ -18,7 +18,7 @@
 
 package org.openintents.updatechecker;
 
-import org.openintents.updatechecker.activity.PreferencesActivity;
+import org.openintents.updatechecker.util.AlarmUtils;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -135,7 +135,7 @@ public class UpdateCheckService extends Service {
 
 				}
 				
-				PreferencesActivity.setUpdateTimestamp(UpdateCheckService.this);
+				AlarmUtils.setUpdateTimestamp(UpdateCheckService.this);
 				
 				stopSelfResult(startId);
 			}
