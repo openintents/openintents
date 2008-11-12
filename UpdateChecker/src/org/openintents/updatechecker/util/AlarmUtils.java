@@ -19,6 +19,11 @@ public class AlarmUtils {
 	public static final String TAG = "AlarmUtils";
 
 	/**
+	 * Minimum interval: one day.
+	 */
+	private static final long MINIMUM_INTERVAL = 24 * 3600 * 1000;
+		
+	/**
 	 * Sets the alarm if desired by the preferences.
 	 * 
 	 * @param context
@@ -55,10 +60,38 @@ public class AlarmUtils {
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putLong(PreferencesActivity.PREFERENCE_LAST_UPDATE, now);
 		editor.commit();
+		
+		checkMinimumInterval(context);
 	}
 
 	///////////////////////////////////////////////////////////////
 	// Private members
+	
+	/**
+	 * This is a safety measure - if the timestamp is set too low,
+	 * it will be doubled until MINIMUM_INTERVAL is reached.
+	 * If it is less than a second, it will be set to a second.
+	 */
+	private static void checkMinimumInterval(Context context) {
+
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		
+		long updateInterval = Long.parseLong(prefs.getString(PreferencesActivity.PREFERENCE_UPDATE_INTERVAL, "0"));
+		
+		if (updateInterval < MINIMUM_INTERVAL) {
+			Log.d(TAG, "Update interval too short: " + updateInterval);
+			SharedPreferences.Editor editor = prefs.edit();
+			updateInterval *= 2;
+			if (updateInterval < 1000) {
+				updateInterval = 1000;
+			}
+			Log.d(TAG, "Setting new update interval: " + updateInterval);
+			editor.putString(PreferencesActivity.PREFERENCE_UPDATE_INTERVAL, "" + updateInterval);
+			editor.commit();
+			
+			refreshUpdateAlarm(context);
+		}
+	}
 	
 	/**
 	 * Gets the first interval for setting an alarm.
