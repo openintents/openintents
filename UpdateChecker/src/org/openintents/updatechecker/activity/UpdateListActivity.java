@@ -1,5 +1,7 @@
 package org.openintents.updatechecker.activity;
 
+import java.util.List;
+
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.updatechecker.AppListInfo;
@@ -12,7 +14,6 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.app.AlertDialog.Builder;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -73,8 +74,9 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo.IGNORE_VERSION_CODE, AppListInfo.LAST_CHECK,
 				AppListInfo.NO_NOTIFICATIONS,
 				AppListInfo.IMAGE});
-		for (PackageInfo pi : getPackageManager().getInstalledPackages(
-				PackageManager.GET_META_DATA)) {
+		List<PackageInfo> installedPackagesList = getPackageManager().getInstalledPackages(
+				PackageManager.GET_META_DATA);
+		for (PackageInfo pi : installedPackagesList) {
 			CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
 			String versionName = pi.versionName;
@@ -188,6 +190,7 @@ public class UpdateListActivity extends ListActivity {
 						lastCheck, (noNotifications ? 1 : 0), image };
 				c.addRow(row);
 			}
+			
 		}
 
 		return c;
@@ -343,35 +346,53 @@ public class UpdateListActivity extends ListActivity {
 		} else {
 			msg = getString(R.string.building_app_list);
 		}
-
-		final ProgressDialog pb = ProgressDialog.show(this,
-				getString(R.string.app_name), msg);
-
-		new Thread() {
+		
+		Log.i(TAG, "Create progress dialog");
+		mProgressDialog = ProgressDialog.show(this,
+				getString(R.string.app_name), msg, true, true, 
+				new DialogInterface.OnCancelListener() {
+					@Override
+					public void onCancel(DialogInterface arg0) {
+						// TODO Auto-generated method stub
+						mThread.stop();
+						mDisplayUpdate = false;
+					}
+				});
+		
+		
+		Log.i(TAG, "Create thread");
+		mThread = new Thread() {
 			@Override
 			public void run() {
+				mDisplayUpdate = true;
+				// mDisplayUpdate is set false when progress dialog is canceled.
 				final Cursor c = createList(appsWithNewVersionOnly,
 						useAndAppStore);
-				pb.dismiss();
-				runOnUiThread(new Runnable() {
-
-					public void run() {
-						/*
-						ListAdapter adapter = new SimpleCursorAdapter(
-								UpdateListActivity.this,
-								android.R.layout.simple_list_item_2, c,
-								new String[] { "name", "info" },
-								new int[] { android.R.id.text1,
-										android.R.id.text2 });
-										*/
-						
-						ListAdapter adapter = new UpdateListCursorAdapter(UpdateListActivity.this, c);
-						setListAdapter(adapter);
-					}
-
-				});
+				mProgressDialog.dismiss();
+				if (mDisplayUpdate) {
+					runOnUiThread(new Runnable() {
+	
+						public void run() {
+							/*
+							ListAdapter adapter = new SimpleCursorAdapter(
+									UpdateListActivity.this,
+									android.R.layout.simple_list_item_2, c,
+									new String[] { "name", "info" },
+									new int[] { android.R.id.text1,
+											android.R.id.text2 });
+											*/
+							
+							ListAdapter adapter = new UpdateListCursorAdapter(UpdateListActivity.this, c);
+							setListAdapter(adapter);
+						}
+	
+					});
+				}
 			}
-		}.start();
+		};
+		
+		Log.i(TAG, "Start thread");
+		mThread.start();
 
 		if (!appsWithNewVersionOnly) {
 			if (useAndAppStore) {
@@ -388,6 +409,10 @@ public class UpdateListActivity extends ListActivity {
 		}
 
 	}
+	
+	private ProgressDialog mProgressDialog;
+	private Thread mThread;
+	private boolean mDisplayUpdate;
 	
 	private void showIgnoredDialog(final String packageName) {
 
