@@ -110,7 +110,8 @@ public class UpdateCheckerWithNotification {
 		
 		ContentValues values = new ContentValues();
 		values.put(UpdateInfo.LAST_CHECK, System.currentTimeMillis());
-		values.put(UpdateInfo.LATEST_VERSION, mChecker.getLatestVersion());
+		values.put(UpdateInfo.LATEST_VERSION_CODE, mChecker.getLatestVersion());
+		values.put(UpdateInfo.LATEST_VERSION_NAME, mChecker.getLatestVersionName());
 		values.put(UpdateInfo.LATEST_COMMENT, mChecker.getComment());
 		if (!mTempUri) {
 			// only update uri if requested

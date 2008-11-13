@@ -75,7 +75,7 @@ public class UpdateInfoProvider extends ContentProvider {
 					+ " TEXT,"+
 					UpdateInfo.NO_NOTIFICATIONS
 					+ " INTEGER,"+
-					UpdateInfo.LATEST_VERSION
+					UpdateInfo.LATEST_VERSION_CODE
 					+ " INTEGER,"+
 					UpdateInfo.LATEST_COMMENT
 					+ " TEXT"+
@@ -263,8 +263,8 @@ public class UpdateInfoProvider extends ContentProvider {
 				UpdateInfo.IGNORE_VERSION_NAME);
 		sUpdateInfoProjectionMap.put(UpdateInfo.NO_NOTIFICATIONS,
 				UpdateInfo.NO_NOTIFICATIONS);
-		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_VERSION,
-				UpdateInfo.LATEST_VERSION);
+		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_VERSION_CODE,
+				UpdateInfo.LATEST_VERSION_CODE);
 		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_COMMENT,
 				UpdateInfo.LATEST_COMMENT);
 	}

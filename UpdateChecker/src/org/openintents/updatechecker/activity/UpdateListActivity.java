@@ -68,7 +68,7 @@ public class UpdateListActivity extends ListActivity {
 				AppListInfo._ID, AppListInfo.NAME, AppListInfo.PACKAGE_NAME,
 				AppListInfo.VERSION_NAME, AppListInfo.VERSION_CODE,
 				AppListInfo.UPDATE_URL, AppListInfo.INFO,
-				AppListInfo.UPDATE_INTENT, AppListInfo.COMMENT,
+				AppListInfo.UPDATE_INTENT, AppListInfo.LATEST_COMMENT,
 				AppListInfo.LATEST_VERSION_NAME,
 				AppListInfo.LATEST_VERSION_CODE,
 				AppListInfo.IGNORE_VERSION_NAME,
@@ -119,7 +119,7 @@ public class UpdateListActivity extends ListActivity {
 								UpdateInfo.IGNORE_VERSION_CODE,
 								UpdateInfo.LAST_CHECK,
 								UpdateInfo.NO_NOTIFICATIONS,
-								UpdateInfo.LATEST_VERSION,
+								UpdateInfo.LATEST_VERSION_CODE,
 								UpdateInfo.LATEST_COMMENT},
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
@@ -168,11 +168,11 @@ public class UpdateListActivity extends ListActivity {
 				} else {
 					if (updateChecker.getLatestVersionName() != null) {
 						if (updateChecker.getComment() != null) {
-							info = getString(R.string.newer_version,
+							info = getString(R.string.newer_version_comment,
 									updateChecker.getLatestVersionName(),
 									updateChecker.getComment());
 						} else {
-							info = getString(R.string.newer_version_comment,
+							info = getString(R.string.newer_version,
 									updateChecker.getLatestVersionName());
 						}
 					} else {
@@ -237,7 +237,7 @@ public class UpdateListActivity extends ListActivity {
 		String latestVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_NAME));
 		String comment = (String)cursor.get(cursor
-				.getColumnIndexOrThrow(AppListInfo.COMMENT));
+				.getColumnIndexOrThrow(AppListInfo.LATEST_COMMENT));
 		Intent updateIntent = (Intent) cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.UPDATE_INTENT));
 		long lastCheck = 0; // always check, do not use stored value cursor.getLong(cursor.getColumnIndexOrThrow(AppListInfo.LAST_CHECK));
