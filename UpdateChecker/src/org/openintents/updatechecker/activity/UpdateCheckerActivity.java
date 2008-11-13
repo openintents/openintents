@@ -26,9 +26,11 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StatFs;
@@ -46,6 +48,9 @@ public class UpdateCheckerActivity extends Activity {
 	public static final String EXTRA_COMMENT = "comment";
 	private static final String MARKET_PREFIX_1 = "market://";
 	private static final String MARKET_PREFIX_2 = "http://market.android.com/";
+	private static final String MARKET_PACKAGE_SEARCH_PREFIX 
+				= "market://search?q=pname:";
+	//			= "http://market.android.com/search?q=pname:";
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
@@ -82,20 +87,25 @@ public class UpdateCheckerActivity extends Activity {
 			public void onClick(View arg0) {
 				switch (mRadioGroup.getCheckedRadioButtonId()) {
 				case R.id.do_update:
-					try {
-						Intent intent = (Intent) getIntent().getParcelableExtra(
-								UpdateChecker.EXTRA_UPDATE_INTENT);
-						if (isMarketIntent(intent)){
+					Intent intent = (Intent) getIntent().getParcelableExtra(
+							UpdateChecker.EXTRA_UPDATE_INTENT);
+					if (isMarketIntent(intent)){
+						try {
 							startActivity(intent);	
-						} else {
-							Intent warnIntent = new Intent(UpdateCheckerActivity.this, WarnActivity.class);
-							warnIntent.putExtra(UpdateInfo.EXTRA_WARN_INTENT, intent);
-							startActivity(warnIntent);
+						} catch (ActivityNotFoundException e) {
+							Toast.makeText(UpdateCheckerActivity.this, R.string.market_not_available, Toast.LENGTH_SHORT).show();
 						}
-						
-					} catch (ActivityNotFoundException e) {
-						Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
+					} else {
+						Intent warnIntent = new Intent(UpdateCheckerActivity.this, WarnActivity.class);
+						warnIntent.putExtra(UpdateInfo.EXTRA_WARN_INTENT, intent);
+						try {
+							startActivity(warnIntent);
+						} catch (ActivityNotFoundException e) {
+							Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
+						}
 					}
+						
+					
 					break;
 				case R.id.remind_me_later:
 					updateUpdateTime();
@@ -116,6 +126,17 @@ public class UpdateCheckerActivity extends Activity {
 
 	}
 
+	public static void searchMarketForPackage(Context context, String packageName) {
+		Intent intent = new Intent();
+		intent.setAction(Intent.ACTION_VIEW);
+		Uri uri = Uri.parse(MARKET_PACKAGE_SEARCH_PREFIX + packageName);
+		intent.setData(uri);
+		try {
+			context.startActivity(intent);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(context, R.string.market_not_available, Toast.LENGTH_SHORT).show();
+		}
+	}
 
 	protected boolean isMarketIntent(Intent intent) {
 		return intent.getDataString() != null && (intent.getDataString().startsWith(MARKET_PREFIX_1) || intent.getDataString().startsWith(MARKET_PREFIX_2)); 

@@ -82,7 +82,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 				easterEgg();
 			}
 			
-		}).show();		
+		}).show();
 	}
 
 	/**

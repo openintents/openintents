@@ -8,12 +8,18 @@ import org.openintents.updatechecker.db.UpdateInfo;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.app.AlertDialog.Builder;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -192,12 +198,12 @@ public class UpdateListActivity extends ListActivity {
 
 		final String updateUrl = cursor.getString(cursor
 				.getColumnIndexOrThrow(UpdateInfo.UPDATE_URL));
-		String packageName = cursor.getString(cursor
+		final String packageName = cursor.getString(cursor
 				.getColumnIndexOrThrow(UpdateInfo.PACKAGE_NAME));
 		String appName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
 		String currVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_NAME));
-		int currVersion = cursor.getInt(cursor
+		final int currVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_CODE));
 
 		int ignoreVersion = cursor.getInt(cursor
@@ -217,6 +223,13 @@ public class UpdateListActivity extends ListActivity {
 		boolean noNotifications = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.NO_NOTIFICATIONS)) > 0;
 
+		if (noNotifications || (ignoreVersion > currVersion)) {
+			// Show dialog
+			showIgnoredDialog(packageName);
+			return;
+		}
+				
+				
 		if (updateIntent instanceof Intent) {
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
 					latestVersion, latestVersionName, comment, packageName,
@@ -245,15 +258,24 @@ public class UpdateListActivity extends ListActivity {
 								.createUpdateActivityIntent();
 						startActivity(intent);
 					} else {
-						runOnUiThread(new Runnable() {
-							public void run() {
-								// we don't know whether the lookup failed or no
-								// newer version available
-								Toast.makeText(UpdateListActivity.this,
-										R.string.app_up_to_date,
-										Toast.LENGTH_SHORT).show();
-							};
-						});
+						if (updateChecker.getLatestVersion() == currVersion) {
+							// No new version exists.
+							runOnUiThread(new Runnable() {
+								public void run() {
+									// Application up to date
+									Toast.makeText(UpdateListActivity.this,
+											R.string.app_up_to_date,
+											Toast.LENGTH_SHORT).show();
+								};
+							});
+						} else {
+							// No information available
+							runOnUiThread(new Runnable() {
+								public void run() {
+									showUnknownDialog(packageName);
+								};
+							});
+						}
 
 					}
 
@@ -348,5 +370,57 @@ public class UpdateListActivity extends ListActivity {
 			}
 		}
 
+	}
+	
+	private void showIgnoredDialog(final String packageName) {
+
+		new Builder(this).setMessage(R.string.ignore_text)
+		.setTitle(R.string.ignore_title)
+		.setIcon(R.drawable.ic_ignore)
+		.setPositiveButton(android.R.string.ok, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+				// Undo ignore:
+
+				UpdateInfo.setNoUpdates(UpdateListActivity.this, packageName, false);
+
+				ContentValues values = new ContentValues();
+				values.put(UpdateInfo.IGNORE_VERSION_CODE, 0);
+				values.put(UpdateInfo.IGNORE_VERSION_NAME, "");
+				getContentResolver().update(UpdateInfo.CONTENT_URI, values,
+						UpdateInfo.PACKAGE_NAME + " = ? ",
+						new String[] { packageName });
+				
+				check(false, false);
+			}
+			
+		}).setNegativeButton(android.R.string.cancel, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+			}
+			
+		}).show();		
+	}
+	
+
+	private void showUnknownDialog(final String packageName) {
+
+		new Builder(this).setMessage(R.string.unknown_text)
+		.setTitle(R.string.unknown_title)
+		.setIcon(R.drawable.ic_question)
+		.setPositiveButton(R.string.search_on_market, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+				UpdateCheckerActivity.searchMarketForPackage(UpdateListActivity.this, 
+						packageName);
+				
+			}
+			
+		}).setNegativeButton(android.R.string.cancel, new OnClickListener(){
+
+			public void onClick(DialogInterface dialog, int which) {
+			}
+			
+		}).show();		
 	}
 }
