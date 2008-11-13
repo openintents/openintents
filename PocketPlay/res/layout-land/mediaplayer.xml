@@ -38,57 +38,117 @@
 
 
 
-		<LinearLayout
+		<RelativeLayout
 			android:id="@+id/info"
 			android:orientation="horizontal"
 			android:layout_centerVertical="true"
 			android:layout_centerHorizontal="true"
 			android:background="#fff"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="260dip"
+			android:layout_height="60dip"
 			android:visibility="visible"
 			android:layout_weight="1" >
  	
 			<TextView
-				android:textSize="20dp"
+				android:textSize="18dp"
 				android:textColor="#000"
 				android:id="@+id/listpos"
 				android:layout_width="30dip"
 				android:layout_height="wrap_content"
-				android:layout_gravity="left"
+				android:layout_alignParentLeft="true"
+				android:layout_centerVertical="true"
 				android:text="#00"
-				/>
-			<LinearLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
 
-			>
+				/>
+			<View
+				android:id="@+id/listposborder"
+				android:layout_width="2dip"
+				android:layout_height="22dip"
+				android:background="#000"
+				android:layout_alignRight="@id/listpos"
+				android:layout_centerVertical="true"
+			/>
+			<View
+				android:layout_width="15dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_alignLeft="@id/listposborder"
+				android:layout_centerVertical="true"				
+			/>
+			<View
+				android:layout_width="30dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_alignTop="@id/listpos"				
+			/>
+			<View
+				android:layout_width="30dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_alignBottom="@id/listpos"				
+			/>
+
 			<TextView
 				android:id="@+id/name_field"
-				android:layout_width="180dip"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
+				android:textColor="#000"
+				android:layout_width="175dip"
+				android:layout_height="28dip"
+				android:gravity="center"
+				android:layout_alignParentTop="true"
+				android:layout_centerHorizontal="true"				
 				/>
+			<View
+				android:layout_width="175dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_centerHorizontal="true"				
+				android:layout_centerVertical="true"				
+			/>
 			<TextView
 				android:id="@+id/title_field"
-				android:layout_width="180dip"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
-				android:background="#0ff"
+				android:textColor="#000"
+				android:layout_width="175dip"
+				android:layout_height="28dip"
+				android:gravity="center"
+				android:layout_alignParentBottom="true"
+				android:layout_centerHorizontal="true"				
+				
 
 				/>
-			</LinearLayout>
+			
+
+
 			<TextView
-				android:textSize="20dp"
+				android:textSize="18dp"
 				android:textColor="#000"
 				android:id="@+id/position" 
 				android:layout_width="wrap_content" 
 				android:layout_height="wrap_content" 
-				android:layout_gravity="right"
+				android:layout_alignParentRight="true"
+				android:layout_centerVertical="true"
 				/>
-
-			</LinearLayout>
+			<View
+				android:layout_width="2dip"
+				android:layout_height="22dip"
+				android:background="#000"
+				android:layout_alignLeft="@id/position"
+				android:layout_centerVertical="true"
+			/>
+			<View
+				android:layout_width="44dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_alignTop="@id/position"				
+				android:layout_alignParentRight="true"				
+			/>
+			<View
+				android:layout_width="44dip"
+				android:layout_height="2dip"
+				android:background="#000"
+				android:layout_alignBottom="@id/position"				
+				android:layout_alignParentRight="true"				
+			/>
+			</RelativeLayout>
 		
 
 <!--
@@ -123,7 +183,7 @@
 			android:layout_marginLeft="4dip"
 			android:layout_marginRight="4dip"
 			android:layout_centerHorizontal="true"
-
+			android:visibility="gone"
 			
 		/>
 <!-- ########################### UP/FORWARD Button ##################################### -->
@@ -173,7 +233,7 @@
 			android:layout_marginRight="4dip"
 			android:layout_centerHorizontal="true"
 			android:layout_alignParentBottom="true"
-			
+			android:visibility="gone"
 		/>
 
 		<Button 
