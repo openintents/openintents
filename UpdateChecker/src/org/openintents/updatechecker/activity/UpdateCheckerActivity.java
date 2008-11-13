@@ -89,11 +89,13 @@ public class UpdateCheckerActivity extends Activity {
 				case R.id.do_update:
 					Intent intent = (Intent) getIntent().getParcelableExtra(
 							UpdateChecker.EXTRA_UPDATE_INTENT);
+					Log.d(TAG, "Do update: " + intent.getAction() + ", " + intent.getDataString());
 					if (isMarketIntent(intent)){
 						try {
 							startActivity(intent);	
 						} catch (ActivityNotFoundException e) {
 							Toast.makeText(UpdateCheckerActivity.this, R.string.market_not_available, Toast.LENGTH_SHORT).show();
+							Log.e(TAG, "Market not found", e);
 						}
 					} else {
 						Intent warnIntent = new Intent(UpdateCheckerActivity.this, WarnActivity.class);
@@ -102,6 +104,7 @@ public class UpdateCheckerActivity extends Activity {
 							startActivity(warnIntent);
 						} catch (ActivityNotFoundException e) {
 							Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
+							Log.e(TAG, "Update not started", e);
 						}
 					}
 						
