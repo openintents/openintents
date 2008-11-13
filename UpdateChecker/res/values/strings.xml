@@ -8,7 +8,7 @@
 	<string name="market_not_available">Android Market not available.</string>
     <string name="market_search_term">OI Update</string>
     
-    <string name="about_text">Version %s\nSD card %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Version %s\nSD card %s\n\nOS\n%s</string>
     <string name="free_space">free space: %s</string>
     <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
     
@@ -66,4 +66,27 @@
     <string name="permission_write_update_info">Write update information</string>
     <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
     <string name="permission_write_update_info_descr">Write information about installed applications, update locations and requests.</string>
+
+
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="about_title">About %s</string>
+	<string name="about_text">Version %s \n\n
+OI Update keeps you informed on new application versions.\n
+	
+OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA</string>
+<string name="eula_description">
+"Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
 </resources>

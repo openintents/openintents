@@ -88,6 +88,12 @@
             </intent-filter>
         </receiver>
         
+        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
+        </activity> 
+        <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
+        </activity> 
+        
+        
     </application>
     
 </manifest> 

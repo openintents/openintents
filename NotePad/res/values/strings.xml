@@ -53,9 +53,11 @@
 	
 	
 	<!-- Update -->
+	<!-- 
 	<string name="update_available">A new version of OI Notepad is available.\n%s\nWould you like to upgrade?</string>
 	<string name="market_not_available">Android Market not available.</string>
 	<string name="market_search_term">OI Notepad</string>
+	-->
 
 	<!-- About -->
 	<string name="about">About</string>

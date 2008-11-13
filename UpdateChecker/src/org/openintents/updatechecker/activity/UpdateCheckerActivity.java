@@ -71,7 +71,7 @@ public class UpdateCheckerActivity extends Activity {
 
 		// view = (TextView) findViewById(R.id.text);
 		//
-		// view.setText(getString(R.string.about_text, getVersionNumber(),
+		// view.setText(getString(R.string.about_text_extended, getVersionNumber(),
 		// getSDInfo(), getOSInfo()));
 
 		mPackageName = getIntent().getStringExtra(

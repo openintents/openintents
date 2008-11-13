@@ -1,5 +1,7 @@
 package org.openintents.updatechecker.activity;
 
+import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.EulaActivity;
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
 import org.openintents.updatechecker.R;
@@ -35,12 +37,17 @@ public class UpdateListActivity extends ListActivity {
 	private static final int MENU_SHOW_VERSIONS = Menu.FIRST + 3;
 	private static final int MENU_REFRESH = Menu.FIRST + 4;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 5;
+	private static final int MENU_ABOUT = Menu.FIRST + 6;
 	private static final String TAG = "UpdateListActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		if (!EulaActivity.checkEula(this)) {
+			return;
+		}
+		
 		setContentView(R.layout.app_list);
 
 
@@ -295,6 +302,9 @@ public class UpdateListActivity extends ListActivity {
 				android.R.drawable.ic_menu_agenda);
 		menu.add(0, MENU_PREFERENCES, 0, R.string.auto_update).setIcon(
 				android.R.drawable.ic_menu_rotate);
+
+		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
+				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 		return true;
 	}
 
@@ -314,10 +324,17 @@ public class UpdateListActivity extends ListActivity {
 			Intent intent = new Intent(this, PreferencesActivity.class);
 			startActivity(intent);
 			break;
+		case MENU_ABOUT:
+			showAboutBox();
+			return true;
 		}
 		return true;
 	}
 
+	private void showAboutBox() {
+		startActivity(new Intent(this, AboutActivity.class));
+	}
+	
 	private void check(final boolean appsWithNewVersionOnly,
 			final boolean useAndAppStore) {
 		String msg;
