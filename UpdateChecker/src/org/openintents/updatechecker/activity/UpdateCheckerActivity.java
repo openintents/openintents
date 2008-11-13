@@ -19,6 +19,7 @@
 package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.R;
+import org.openintents.updatechecker.UpdateApplication;
 import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.db.UpdateInfo;
 
@@ -48,9 +49,10 @@ public class UpdateCheckerActivity extends Activity {
 	public static final String EXTRA_COMMENT = "comment";
 	private static final String MARKET_PREFIX_1 = "market://";
 	private static final String MARKET_PREFIX_2 = "http://market.android.com/";
-	private static final String MARKET_PACKAGE_SEARCH_PREFIX 
-				= "market://search?q=pname:";
-	//			= "http://market.android.com/search?q=pname:";
+	private static final String MARKET_PACKAGE_SEARCH_PREFIX = "market://search?q=pname:";
+	// = "http://market.android.com/search?q=pname:";
+	private static final String ANDAPPSTORE_PACKAGE_SEARCH_PREFIX = "http://andappstore.com/AndroidPhoneApplications/apps/!search?s=";
+	
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
@@ -71,14 +73,16 @@ public class UpdateCheckerActivity extends Activity {
 
 		// view = (TextView) findViewById(R.id.text);
 		//
-		// view.setText(getString(R.string.about_text_extended, getVersionNumber(),
+		// view.setText(getString(R.string.about_text_extended,
+		// getVersionNumber(),
 		// getSDInfo(), getOSInfo()));
 
 		mPackageName = getIntent().getStringExtra(
 				UpdateChecker.EXTRA_PACKAGE_NAME);
 
-		((NotificationManager)getSystemService(NOTIFICATION_SERVICE)).cancel(mPackageName.hashCode());
-		
+		((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
+				.cancel(mPackageName.hashCode());
+
 		mRadioGroup = (RadioGroup) findViewById(R.id.action_choice);
 
 		Button button = (Button) findViewById(R.id.ok);
@@ -89,26 +93,35 @@ public class UpdateCheckerActivity extends Activity {
 				case R.id.do_update:
 					Intent intent = (Intent) getIntent().getParcelableExtra(
 							UpdateChecker.EXTRA_UPDATE_INTENT);
-					Log.d(TAG, "Do update: " + intent.getAction() + ", " + intent.getDataString());
-					if (isMarketIntent(intent)){
+					Log.d(TAG, "Do update: " + intent.getAction() + ", "
+							+ intent.getDataString());
+					if (UpdateApplication.AND_APP_STORE
+							|| isMarketIntent(intent)) {
 						try {
-							startActivity(intent);	
+							startActivity(intent);
 						} catch (ActivityNotFoundException e) {
-							Toast.makeText(UpdateCheckerActivity.this, R.string.market_not_available, Toast.LENGTH_SHORT).show();
+							Toast.makeText(UpdateCheckerActivity.this,
+									R.string.market_not_available,
+									Toast.LENGTH_SHORT).show();
 							Log.e(TAG, "Market not found", e);
 						}
 					} else {
-						Intent warnIntent = new Intent(UpdateCheckerActivity.this, WarnActivity.class);
-						warnIntent.putExtra(UpdateInfo.EXTRA_WARN_INTENT, intent);
+						Intent warnIntent = new Intent(
+								UpdateCheckerActivity.this, WarnActivity.class);
+						warnIntent.putExtra(UpdateInfo.EXTRA_WARN_INTENT,
+								intent);
 						try {
 							startActivity(warnIntent);
 						} catch (ActivityNotFoundException e) {
-							Toast.makeText(UpdateCheckerActivity.this, getString(R.string.update_not_started, e.toString()), Toast.LENGTH_LONG).show();
+							Toast.makeText(
+									UpdateCheckerActivity.this,
+									getString(R.string.update_not_started, e
+											.toString()), Toast.LENGTH_LONG)
+									.show();
 							Log.e(TAG, "Update not started", e);
 						}
 					}
-						
-					
+
 					break;
 				case R.id.remind_me_later:
 					updateUpdateTime();
@@ -117,35 +130,43 @@ public class UpdateCheckerActivity extends Activity {
 					updateLastIgnoredVersion();
 					break;
 				case R.id.ignore_all_further_updates:
-					UpdateInfo.setNoUpdates(UpdateCheckerActivity.this, mPackageName, true);
-					break;					
+					UpdateInfo.setNoUpdates(UpdateCheckerActivity.this,
+							mPackageName, true);
+					break;
 				}
 				finish();
 			}
 		});
-		
-		Log.v(TAG, "package name = " + mPackageName);
 
+		Log.v(TAG, "package name = " + mPackageName);
 
 	}
 
-	public static void searchMarketForPackage(Context context, String packageName) {
+	public static void searchMarketForPackage(Context context,
+			String packageName, String appName) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_VIEW);
-		Uri uri = Uri.parse(MARKET_PACKAGE_SEARCH_PREFIX + packageName);
+		Uri uri;
+		if (UpdateApplication.AND_APP_STORE) {
+			uri = Uri.parse(ANDAPPSTORE_PACKAGE_SEARCH_PREFIX + Uri.decode(appName));
+		} else {
+			uri = Uri.parse(MARKET_PACKAGE_SEARCH_PREFIX + packageName);
+		}
 		intent.setData(uri);
 		try {
 			context.startActivity(intent);
 		} catch (ActivityNotFoundException e) {
-			Toast.makeText(context, R.string.market_not_available, Toast.LENGTH_SHORT).show();
+			Toast.makeText(context, R.string.market_not_available,
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
 	protected boolean isMarketIntent(Intent intent) {
-		return intent.getDataString() != null && (intent.getDataString().startsWith(MARKET_PREFIX_1) || intent.getDataString().startsWith(MARKET_PREFIX_2)); 
-		
-	}
+		return intent.getDataString() != null
+				&& (intent.getDataString().startsWith(MARKET_PREFIX_1) || intent
+						.getDataString().startsWith(MARKET_PREFIX_2));
 
+	}
 
 	protected void updateLastIgnoredVersion() {
 		ContentValues values = new ContentValues();
@@ -170,34 +191,34 @@ public class UpdateCheckerActivity extends Activity {
 
 		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
 		String comment = intent.getStringExtra(UpdateChecker.EXTRA_COMMENT);
-		if (appName != null ) {
-			if (comment != null){
-			view.setText(getString(R.string.update_available_2, appName,
-					comment));
+		if (appName != null) {
+			if (comment != null) {
+				view.setText(getString(R.string.update_available_2, appName,
+						comment));
 			} else {
-				view.setText(getString(R.string.update_available_no_comment, appName));
+				view.setText(getString(R.string.update_available_no_comment,
+						appName));
 			}
 		}
 
-		mLatestVersion = intent
-				.getIntExtra(UpdateChecker.EXTRA_LATEST_VERSION, 0);
+		mLatestVersion = intent.getIntExtra(UpdateChecker.EXTRA_LATEST_VERSION,
+				0);
 		mLatestVersionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME);
 
-		
-		if (mLatestVersionName != null){
+		if (mLatestVersionName != null) {
 			setTitle(getString(R.string.latest_version_2, mLatestVersionName));
 		} else {
 			setTitle(R.string.app_name);
 		}
-		
+
 		int visibility;
 		if (mLatestVersion > 0 || mLatestVersionName != null) {
 			visibility = View.VISIBLE;
 		} else {
 			visibility = View.GONE;
 
-		}		
+		}
 
 		findViewById(R.id.ignore_this_update).setVisibility(visibility);
 

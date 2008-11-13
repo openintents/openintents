@@ -7,6 +7,7 @@ import org.openintents.distribution.EulaActivity;
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
 import org.openintents.updatechecker.R;
+import org.openintents.updatechecker.UpdateApplication;
 import org.openintents.updatechecker.UpdateCheckerWithNotification;
 import org.openintents.updatechecker.db.UpdateInfo;
 
@@ -62,7 +63,7 @@ public class UpdateListActivity extends ListActivity {
 	}
 
 	private Cursor createList(boolean appsWithNewVersionOnly,
-			boolean useAndAppStore) {
+			boolean useAndAppStore, final ProgressDialog pb) {
 		OpenMatrixCursor c = new OpenMatrixCursor(new String[] {
 				AppListInfo._ID, AppListInfo.NAME, AppListInfo.PACKAGE_NAME,
 				AppListInfo.VERSION_NAME, AppListInfo.VERSION_CODE,
@@ -77,8 +78,13 @@ public class UpdateListActivity extends ListActivity {
 		List<PackageInfo> installedPackagesList = getPackageManager().getInstalledPackages(
 				PackageManager.GET_META_DATA);
 		for (PackageInfo pi : installedPackagesList) {
-			CharSequence name = getPackageManager().getApplicationLabel(
+			final CharSequence name = getPackageManager().getApplicationLabel(
 					pi.applicationInfo);
+			runOnUiThread(new Runnable(){
+				public void run() {
+					pb.setMessage(getString(R.string.processing, name));	
+				}
+			})	;		
 			String versionName = pi.versionName;
 			Drawable image = getPackageManager().getApplicationIcon(pi.applicationInfo);
 			String info = null;
@@ -118,8 +124,14 @@ public class UpdateListActivity extends ListActivity {
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
+				// we always use the meta data
+				updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(
+						this, pi);
+				
 				if (cursor.moveToFirst()) {
-					updateUrl = cursor.getString(0);
+					if (updateUrl == null){
+						updateUrl = cursor.getString(0);
+					}
 					ignoreVersionName = cursor.getString(1);
 					ignoreVersion = cursor.getInt(2);
 					lastCheck = cursor.getLong(3);
@@ -128,8 +140,7 @@ public class UpdateListActivity extends ListActivity {
 					comment = cursor.getString(6);
 				} else {
 
-					updateUrl = UpdateInfo.determineUpdateUrlFromPackageName(
-							this, pi);
+					
 					UpdateInfo
 							.insertUpdateInfo(this, pi.packageName, updateUrl);
 				}
@@ -210,7 +221,7 @@ public class UpdateListActivity extends ListActivity {
 				.getColumnIndexOrThrow(UpdateInfo.UPDATE_URL));
 		final String packageName = cursor.getString(cursor
 				.getColumnIndexOrThrow(UpdateInfo.PACKAGE_NAME));
-		String appName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+		final String appName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
 		String currVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_NAME));
 		final int currVersion = cursor.getInt(cursor
@@ -253,7 +264,7 @@ public class UpdateListActivity extends ListActivity {
 					lastCheck, noNotifications);
 
 			final ProgressDialog pb = ProgressDialog.show(this,
-					getString(R.string.app_name), getString(R.string.checking));
+					appName, getString(R.string.checking));
 
 			new Thread() {
 				@Override
@@ -282,7 +293,7 @@ public class UpdateListActivity extends ListActivity {
 							// No information available
 							runOnUiThread(new Runnable() {
 								public void run() {
-									showUnknownDialog(packageName);
+									showUnknownDialog(packageName, appName);
 								};
 							});
 						}
@@ -351,9 +362,8 @@ public class UpdateListActivity extends ListActivity {
 		mProgressDialog = ProgressDialog.show(this,
 				getString(R.string.app_name), msg, true, true, 
 				new DialogInterface.OnCancelListener() {
-					@Override
-					public void onCancel(DialogInterface arg0) {
-						// TODO Auto-generated method stub
+					
+					public void onCancel(DialogInterface arg0) {						
 						mThread.stop();
 						mDisplayUpdate = false;
 					}
@@ -367,7 +377,7 @@ public class UpdateListActivity extends ListActivity {
 				mDisplayUpdate = true;
 				// mDisplayUpdate is set false when progress dialog is canceled.
 				final Cursor c = createList(appsWithNewVersionOnly,
-						useAndAppStore);
+						useAndAppStore, mProgressDialog);
 				mProgressDialog.dismiss();
 				if (mDisplayUpdate) {
 					runOnUiThread(new Runnable() {
@@ -393,6 +403,7 @@ public class UpdateListActivity extends ListActivity {
 		
 		Log.i(TAG, "Start thread");
 		mThread.start();
+			
 
 		if (!appsWithNewVersionOnly) {
 			if (useAndAppStore) {
@@ -445,16 +456,19 @@ public class UpdateListActivity extends ListActivity {
 	}
 	
 
-	private void showUnknownDialog(final String packageName) {
+	private void showUnknownDialog(final String packageName, final String appName) {
 
+		int searchButton = (UpdateApplication.AND_APP_STORE ?
+				R.string.search_on_andappstore :R.string.search_on_market);
+		
 		new Builder(this).setMessage(R.string.unknown_text)
 		.setTitle(R.string.unknown_title)
 		.setIcon(R.drawable.ic_question)
-		.setPositiveButton(R.string.search_on_market, new OnClickListener(){
+		.setPositiveButton(searchButton, new OnClickListener(){
 
 			public void onClick(DialogInterface dialog, int which) {
 				UpdateCheckerActivity.searchMarketForPackage(UpdateListActivity.this, 
-						packageName);
+						packageName, appName);
 				
 			}
 			

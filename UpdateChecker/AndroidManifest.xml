@@ -42,7 +42,8 @@
         android:protectionLevel="normal" />        
     
     
-    <application android:icon="@drawable/icon_update" android:label="@string/app_name">
+    <application android:name=".UpdateApplication"
+    android:icon="@drawable/icon_update" android:label="@string/app_name">
     
         <activity android:name=".activity.UpdateCheckerActivity"
                   android:label="@string/app_name">

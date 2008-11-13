@@ -45,6 +45,8 @@
     <string name="unknown_title">Unknown</string>
     <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
     <string name="search_on_market">Search on Market</string>
+    <string name="search_on_andappstore">Search on AndAppStore</string>
+    <string name="processing">Processing %s</string>
     
     <string name="warn">The update process of this application directs to
     a different site than Android Market. Applications installed from unknown sources might

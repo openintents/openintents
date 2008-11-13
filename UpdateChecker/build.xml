@@ -35,6 +35,8 @@ storepass=*password of keystore*
 
 	<property name="android-framework" value="${android-tools}/lib/framework.aidl" />
 
+	<property name="and-app-store-definition" value=""/>
+	
 	<!-- Input directories -->
 	<property name="resource-dir" value="res" />
 	<property name="asset-dir" value="assets" />
@@ -150,6 +152,7 @@ storepass=*password of keystore*
 			<arg value="${resource-dir}" />
 			<arg value="-I" />
 			<arg value="${android-jar}" />
+			<arg value="${and-app-store-definition}"/>
 		</exec>
 	</target>
 
@@ -298,7 +301,7 @@ storepass=*password of keystore*
 
 	<!-- Package the application without signing it.
     	 This allows for the application to be signed later with an official publishing key. -->
-	<target name="release" depends="dex, package-res">
+	<target name="release-market" depends="dex, package-res">
 		<echo>Packaging ${out-unsigned-package} for release...</echo>
 		<exec executable="${apk-builder}" failonerror="true">
 			<arg value="${out-unsigned-package-ospath}" />
@@ -313,7 +316,36 @@ storepass=*password of keystore*
 			<arg value="${external-libs-ospath}" />
 		</exec>
 		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}" />
+		<move toFile="${outdir}/${ant.project.name}-${version}-market.apk" file="${outdir}/${ant.project.name}-${version}.apk"/>
 	</target>
+
+	<!-- NOTE do not call directly, but using release
+	or you have to make sure that the andAppStore.xml file is located in res/ -->
+	<target name="release-andAppStore" depends="dex, package-res">
+		<echo>Packaging ${out-unsigned-package} for release...</echo>
+		<exec executable="${apk-builder}" failonerror="true">
+			<arg value="${out-unsigned-package-ospath}" />
+			<arg value="-u" />
+			<arg value="-z" />
+			<arg value="${resources-package-ospath}" />
+			<arg value="-f" />
+			<arg value="${intermediate-dex-ospath}" />
+			<arg value="-rf" />
+			<arg value="${srcdir-ospath}" />
+			<arg value="-rj" />
+			<arg value="${external-libs-ospath}" />
+		</exec>
+		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}" />
+		<move toFile="${outdir}/${ant.project.name}-${version}-andAppStore.apk" file="${outdir}/${ant.project.name}-${version}.apk"/>
+	</target>
+	
+	<target name="release">		
+		<antcall target="release-market"></antcall>
+		<copy toFile="res/values/andAppStore.xml" file="andAppStore/andAppStore.xm_"/>
+		<antcall target="release-andAppStore"></antcall>
+		<delete file="res/values/andAppStore.xml" failonerror="false" />
+	</target>
+
 
 	<!-- Install the package on the default emulator -->
 	<target name="install" depends="debug">

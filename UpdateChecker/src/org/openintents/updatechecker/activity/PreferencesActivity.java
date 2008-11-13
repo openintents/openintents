@@ -91,7 +91,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 	private void refreshUpdateAlarm() {
 		// After a delay, set the timer according to new preferences.
 		(new Handler()).postDelayed(new Runnable() {
-			@Override
+			
 			public void run() {
 				Log.i(TAG, "Refresh update alarm");
 				AlarmUtils.refreshUpdateAlarm(PreferencesActivity.this);

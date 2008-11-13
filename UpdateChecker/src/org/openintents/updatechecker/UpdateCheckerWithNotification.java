@@ -134,7 +134,7 @@ public class UpdateCheckerWithNotification {
 	private boolean isUpdateRequired() {
 		boolean currentDiffer = (mChecker.getLatestVersion() > mCurrentVersion && mCurrentVersion > 0)
 				|| (mChecker.getLatestVersionName() != null
-						&& mCurrentVersionName != null && mChecker
+						&& mCurrentVersionName != null && !mChecker
 						.getLatestVersionName().equals(mCurrentVersionName));
 		boolean ignore = (mIgnoreVersion >= mChecker.getLatestVersion() && mChecker
 				.getLatestVersion() > 0)

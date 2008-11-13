@@ -102,17 +102,21 @@ public class UpdateCheckService extends Service {
 					long lastCheck = 0;
 					boolean noNotifications = false;
 					
-					if (cursor.moveToFirst()) {
-						updateUrl = cursor.getString(0);
+					// we always use the meta data
+					updateUrl = UpdateInfo
+					.determineUpdateUrlFromPackageName(
+							UpdateCheckService.this, pi);
+
+					if (cursor.moveToFirst()) {	
+						if (updateUrl == null){
+							updateUrl = cursor.getString(0);
+						}
 						ignoreVersionName = cursor.getString(1);
 						ignoreVersion = cursor.getInt(2);
 						lastCheck = cursor.getLong(3);
 						noNotifications = cursor.getInt(4) > 0;
 					} else {
-						updateUrl = UpdateInfo
-								.determineUpdateUrlFromPackageName(
-										UpdateCheckService.this, pi);
-
+						
 						UpdateInfo.insertUpdateInfo(UpdateCheckService.this,
 								pi.packageName);
 					}

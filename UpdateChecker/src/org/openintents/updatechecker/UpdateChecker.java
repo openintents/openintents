@@ -204,8 +204,12 @@ public class UpdateChecker {
 			if (result.matched) {
 				Log.d(LOG_TAG, "Matching intent found.");
 				if (result.latestVersion.getVersionCode() != null) {
-					mLatestVersion = Integer.parseInt(result.latestVersion
-							.getVersionCode());
+					try {
+						mLatestVersion = Integer.parseInt(result.latestVersion
+								.getVersionCode());
+					} catch (NumberFormatException e) {
+						mLatestVersion = 0;
+					}
 				} else {
 					mLatestVersion = 0;
 				}
