@@ -110,6 +110,7 @@ public class UpdateChecker {
 			} else {
 				URL u = new URL(link);
 				URLConnection connection = u.openConnection();
+				connection.setReadTimeout(CONNECTION_TIMEOUT);
 				Object content = connection.getContent();
 				if (content instanceof InputStream) {
 					InputStream is = (InputStream) content;
@@ -134,6 +135,8 @@ public class UpdateChecker {
 			Log.v(TAG, "MalformedURLException", e);
 		} catch (IOException e) {
 			Log.v(TAG, "IOException", e);
+		}catch (Exception e) {
+			Log.v(TAG, "Exception", e);
 		}
 
 	}

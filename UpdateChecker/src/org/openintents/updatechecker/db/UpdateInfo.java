@@ -20,6 +20,7 @@ package org.openintents.updatechecker.db;
 
 import java.net.URL;
 
+import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 import org.openintents.updatechecker.util.AlarmUtils;
@@ -212,5 +213,29 @@ public class UpdateInfo implements BaseColumns {
 						new String[] { packageName });
 
 	}
+	
+	public static String getInfo(Context context, String latestVersionName, String comment) {
+		String info;
+		if (latestVersionName != null) {
+			if (comment != null) {
+				info = context.getString(R.string.newer_version_comment,
+						latestVersionName,
+						comment);
+			} else {
+				info = context.getString(R.string.newer_version,
+						latestVersionName);
+			}
+		} else {
+			if (comment != null) {
+				info = context.getString(R.string.newer_version,
+						comment);
+			} else {
+				info = context.getString(R.string.newer_version_available);
+			}
+
+		}
+		return info;
+	}
+
 
 }

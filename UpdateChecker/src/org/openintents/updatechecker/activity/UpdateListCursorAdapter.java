@@ -2,6 +2,8 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
+import org.openintents.updatechecker.R;
+import org.openintents.updatechecker.db.UpdateInfo;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -51,7 +53,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		String ignoreversionName = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_NAME));
 
-		String comment = cursor.getString(cursor
+		String comment = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_COMMENT));
 
 		// Log.i(TAG, name + " version: " + latestversioncode + ", " +
@@ -73,8 +75,8 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		} else if ((latestversioncode > versioncode && versioncode > 0)
 				|| (latestVersionName != null && versionName != null && !latestVersionName.equals(versionName))) {
 			cliv.setStatus(UpdateListItemView.STATUS_DOWNLOAD);
-			cliv.setInfo(comment);
-		} else if (latestversioncode == versioncode && ((latestVersionName == null && versionName == null) || (latestVersionName != null && latestVersionName.equals(versionName)))) {
+			cliv.setInfo(UpdateInfo.getInfo(context, latestVersionName, comment));
+		} else if ((latestversioncode != 0 && latestversioncode == versioncode) ||  (latestVersionName != null && latestVersionName.equals(versionName))) {
 			cliv.setStatus(UpdateListItemView.STATUS_OK);
 		} else {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);

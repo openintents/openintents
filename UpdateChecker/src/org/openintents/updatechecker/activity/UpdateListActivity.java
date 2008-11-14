@@ -120,7 +120,8 @@ public class UpdateListActivity extends ListActivity {
 								UpdateInfo.LAST_CHECK,
 								UpdateInfo.NO_NOTIFICATIONS,
 								UpdateInfo.LATEST_VERSION_CODE,
-								UpdateInfo.LATEST_COMMENT},
+								UpdateInfo.LATEST_COMMENT,
+								UpdateInfo.LATEST_VERSION_NAME},
 						UpdateInfo.PACKAGE_NAME + " = ?",
 						new String[] { pi.packageName }, null);
 
@@ -138,6 +139,7 @@ public class UpdateListActivity extends ListActivity {
 					noNotifications = cursor.getInt(4) > 0;
 					latestVersion = cursor.getInt(5);
 					comment = cursor.getString(6);
+					latestVersionName = cursor.getString(7);
 				} else {
 
 					
@@ -166,24 +168,7 @@ public class UpdateListActivity extends ListActivity {
 					// null url implies "do not show"
 					updateUrl = null;
 				} else {
-					if (updateChecker.getLatestVersionName() != null) {
-						if (updateChecker.getComment() != null) {
-							info = getString(R.string.newer_version_comment,
-									updateChecker.getLatestVersionName(),
-									updateChecker.getComment());
-						} else {
-							info = getString(R.string.newer_version,
-									updateChecker.getLatestVersionName());
-						}
-					} else {
-						if (updateChecker.getComment() != null) {
-							info = getString(R.string.newer_version,
-									updateChecker.getComment());
-						} else {
-							info = getString(R.string.newer_version_available);
-						}
-
-					}
+					info = UpdateInfo.getInfo(this, updateChecker.getLatestVersionName(), updateChecker.getComment());
 					comment = updateChecker.getComment();
 					latestVersion = updateChecker.getLatestVersion();
 					latestVersionName = updateChecker.getLatestVersionName();
@@ -207,6 +192,7 @@ public class UpdateListActivity extends ListActivity {
 		return c;
 
 	}
+
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {

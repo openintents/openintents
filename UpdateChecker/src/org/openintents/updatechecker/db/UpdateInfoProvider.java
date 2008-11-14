@@ -77,6 +77,8 @@ public class UpdateInfoProvider extends ContentProvider {
 					+ " INTEGER,"+
 					UpdateInfo.LATEST_VERSION_CODE
 					+ " INTEGER,"+
+					UpdateInfo.LATEST_VERSION_NAME
+					+ " TEXT,"+
 					UpdateInfo.LATEST_COMMENT
 					+ " TEXT"+
 					");");
@@ -95,7 +97,7 @@ public class UpdateInfoProvider extends ContentProvider {
 
 	@Override
 	public boolean onCreate() {
-		mOpenHelper = new DatabaseHelper(getContext());		
+		mOpenHelper = new DatabaseHelper(getContext());	
 		UpdateInfo.checkAlarm(this.getContext());
 		return true;
 	}
@@ -265,6 +267,8 @@ public class UpdateInfoProvider extends ContentProvider {
 				UpdateInfo.NO_NOTIFICATIONS);
 		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_VERSION_CODE,
 				UpdateInfo.LATEST_VERSION_CODE);
+		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_VERSION_NAME,
+				UpdateInfo.LATEST_VERSION_NAME);
 		sUpdateInfoProjectionMap.put(UpdateInfo.LATEST_COMMENT,
 				UpdateInfo.LATEST_COMMENT);
 	}
