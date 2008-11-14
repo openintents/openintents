@@ -59,7 +59,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		// Log.i(TAG, name + " version: " + latestversioncode + ", " +
 		// versioncode + ", " + ignoreversioncode);
 
-		if (ignoreversioncode > versioncode || (ignoreversionName != null && latestVersionName != null && ignoreversionName.equals(versionName))) {
+		if (ignoreversioncode > versioncode || (ignoreversionName != null && latestVersionName != null && ignoreversionName.equals(latestVersionName))) {
 			// Also show "Ignore" sign, if current version is being ignored.
 			no_notifications = 1;
 		}

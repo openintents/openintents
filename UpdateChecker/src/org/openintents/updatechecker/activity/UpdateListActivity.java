@@ -208,7 +208,7 @@ public class UpdateListActivity extends ListActivity {
 		final String packageName = cursor.getString(cursor
 				.getColumnIndexOrThrow(UpdateInfo.PACKAGE_NAME));
 		final String appName = cursor.getString(cursor.getColumnIndexOrThrow("name"));
-		String currVersionName = (String)cursor.get(cursor
+		final String currVersionName = (String)cursor.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_NAME));
 		final int currVersion = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_CODE));
@@ -265,8 +265,10 @@ public class UpdateListActivity extends ListActivity {
 								.createUpdateActivityIntent();
 						startActivity(intent);
 					} else {
-						if (updateChecker.getLatestVersion() == currVersion) {
-							// No new version exists.
+						//  No new version exists,
+						
+						if (updateChecker.getLatestVersion() >0 || updateChecker.getLatestVersionName() != null) {
+							// but information found
 							runOnUiThread(new Runnable() {
 								public void run() {
 									// Application up to date
