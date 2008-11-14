@@ -84,7 +84,7 @@ Current version: %s
 	</string>
 	<string name="update_check_now">Check now.</string>
 	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market:///search?q=pname:org.openintents.notepad</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
 	
