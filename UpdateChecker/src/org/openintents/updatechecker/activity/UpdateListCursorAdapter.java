@@ -40,15 +40,15 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 
 		int versioncode = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_CODE));
-		String versionName = cursor.getString(cursor
+		String versionName = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.VERSION_NAME));
 		int latestversioncode = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_CODE));
-		String latestVersionName = cursor.getString(cursor
+		String latestVersionName = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_VERSION_NAME));
 		int ignoreversioncode = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_CODE));
-		String ignoreversionName = cursor.getString(cursor
+		String ignoreversionName = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.IGNORE_VERSION_NAME));
 
 		String comment = cursor.getString(cursor
@@ -74,7 +74,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 				|| (latestVersionName != null && versionName != null && !latestVersionName.equals(versionName))) {
 			cliv.setStatus(UpdateListItemView.STATUS_DOWNLOAD);
 			cliv.setInfo(comment);
-		} else if (latestversioncode == versioncode && ((latestVersionName == null && versionName == null) || latestVersionName.equals(versionName))) {
+		} else if (latestversioncode == versioncode && ((latestVersionName == null && versionName == null) || (latestVersionName != null && latestVersionName.equals(versionName)))) {
 			cliv.setStatus(UpdateListItemView.STATUS_OK);
 		} else {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
