@@ -22,7 +22,7 @@ import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.Update;
+import org.openintents.distribution.UpdateMenu;
 
 import android.app.ListActivity;
 import android.content.ComponentName;
@@ -58,6 +58,7 @@ public class CountdownListActivity extends ListActivity
     private static final int MENU_ITEM_INSERT = Menu.FIRST + 1;
     private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
+	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
     /**
@@ -85,7 +86,6 @@ public class CountdownListActivity extends ListActivity
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		Update.check(this);
 		
         setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
 
@@ -156,7 +156,9 @@ public class CountdownListActivity extends ListActivity
                 .setShortcut('3', 'a')
                 .setIcon(android.R.drawable.ic_menu_add);
         
-		 menu.add(0, MENU_ABOUT, 0, R.string.about)
+        UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
+		
+        menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
         // Generate any additional actions that can be performed on the
@@ -215,6 +217,9 @@ public class CountdownListActivity extends ListActivity
             return true;
 		case MENU_ABOUT:
 			showAboutBox();
+			return true;
+		case MENU_UPDATE:
+			UpdateMenu.showUpdateBox(this);
 			return true;
         }
         return super.onOptionsItemSelected(item);
