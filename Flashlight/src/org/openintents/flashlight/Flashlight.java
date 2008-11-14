@@ -22,6 +22,7 @@ import org.openintents.distribution.Update;
 
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,6 +47,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Flashlight extends Activity {
 	
@@ -267,14 +269,28 @@ public class Flashlight extends Activity {
 
 			public void onClick(DialogInterface arg0, int arg1) {
 				intent.setData(Uri.parse(getString(R.string.flashlight_url)));
-				startActivity(intent);
+				try {
+					startActivity(intent);
+				} catch (ActivityNotFoundException e) {
+					Toast.makeText(Flashlight.this,
+							R.string.market_not_available,
+							Toast.LENGTH_SHORT).show();
+					Log.e(TAG, "Market not installed");
+				}
 			}
 			
 		}).setNegativeButton(R.string.get_updater, new OnClickListener(){
 
 			public void onClick(DialogInterface dialog, int which) {
 				intent.setData(Uri.parse(getString(R.string.updatechecker_url)));
-				startActivity(intent);
+				try {
+					startActivity(intent);
+				} catch (ActivityNotFoundException e) {
+					Toast.makeText(Flashlight.this,
+							R.string.market_not_available,
+							Toast.LENGTH_SHORT).show();
+					Log.e(TAG, "Market not installed");
+				}
 			}
 			
 		}).show();		
