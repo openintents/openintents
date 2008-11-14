@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, ConvertCsvActivity</string>
+    <string name="app_name">OI Convert CSV</string>
+    <string name="convert_csv">Convert CSV</string>
+    <string name="file_path">File path</string>
+    <string name="file_import">Import</string>
+    <string name="file_export">Export</string>
+    <string name="error_writing_file">Error writing to file</string>
+    
+    
+    <string name="default_path">/sdcard/shoppinglist.csv</string>
+    
+</resources>
