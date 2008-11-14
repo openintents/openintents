@@ -50,14 +50,6 @@
 	<string name="menu_send_by_email">Send</string>
 	<string name="empty_note">Empty note</string>
 	<string name="email_not_available">No application available for sending.</string>
-	
-	
-	<!-- Update -->
-	<!-- 
-	<string name="update_available">A new version of OI Notepad is available.\n%s\nWould you like to upgrade?</string>
-	<string name="market_not_available">Android Market not available.</string>
-	<string name="market_search_term">OI Notepad</string>
-	-->
 
 	<!-- About -->
 	<string name="about">About</string>
@@ -85,13 +77,15 @@ Unless required by applicable law or agreed to in writing, software distributed 
 	<string name="eula_accept">Accept</string>
 	<string name="eula_refuse">Cancel</string>
 	
+	<!-- Update -->
 	<string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
 	<string name="update_check_now">Check now.</string>
 	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market://details?id=-8955630993562256959</string>
-	<string name="update_checker_url">market://details?id=-282734404850313838</string>
+	<string name="update_app_url">market:///search?q=pname:org.openintents.notepad</string>
+	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
+	
 </resources>
