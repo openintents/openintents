@@ -48,4 +48,6 @@ interface IAudioPlayerService {
 	String[] getNext5();
 	String[] getPrevious5();
 
+	String[] getStatus();
+
 }

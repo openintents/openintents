@@ -166,6 +166,7 @@
 		<!-- TrackInfo Editor activity -->
 		<activity android:name=".playlists.TrackInfoEditor"
 			android:label="TrackEditor" 
+			android:theme="@android:style/Theme.Dialog"
 			android:icon="@drawable/icon_pocketplay">
 			<intent-filter>
 				<category android:name="android.intent.category.DEFAULT" />

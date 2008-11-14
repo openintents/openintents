@@ -21,6 +21,7 @@ import java.text.DecimalFormat;
 
 import org.openintents.pocketplay.playback.IAudioPlayerCallback;
 import org.openintents.pocketplay.playback.IAudioPlayerService;
+import org.openintents.pocketplay.playback.AudioPlayerService;
 import org.openintents.pocketplay.playlists.PlaylistBrowser;
 import org.openintents.pocketplay.playlists.TrackInfoEditor;
 import org.openintents.pocketplay.playlists.PlaylistGeneratorService;
@@ -514,6 +515,15 @@ public class MediaPlayerActivity extends Activity implements
 				if (mService!=null &&mService.isPlaying())
 				{
 					Log.d(TAG,"service is playing something");
+					String[] info=mService.getStatus();
+					mPlaylistBaseURI=Uri.parse(info[AudioPlayerService.INFO_PLAYLIST_URI]);
+					mURI=Uri.parse(info[AudioPlayerService.INFO_TRACK_URI]);
+					mCurrentArtist=info[AudioPlayerService.INFO_TRACK_ARTIST];
+					mCurrentTitle=info[AudioPlayerService.INFO_TRACK_TITLE];
+					mCurrentPlaylist=info[AudioPlayerService.INFO_PLAYLIST_NAME];
+					mPlaylistPosition=Integer.parseInt(info[AudioPlayerService.INFO_PLAYLIST_POS]);
+
+
 					switchToPlayMode();
 				}else if (mService!=null)
 				{
@@ -756,7 +766,7 @@ public class MediaPlayerActivity extends Activity implements
 	private void updateDisplay(){
 			Log.d(TAG,"updateDisplay: entering");
 		
-		if (mPlaylistBaseURI!=null)
+		if (mPlaylistBaseURI!=null && ! mPlaylistBaseURI.equals(""))
 		{
 			Log.d(TAG,"updateDisplay: Playlist loaded");
 			//using a playlist

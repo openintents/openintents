@@ -108,6 +108,14 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 
 	private MediaPlayerEngine engine;
 
+
+	public static final int INFO_PLAYLIST_URI	=0;
+	public static final int INFO_PLAYLIST_NAME	=1;
+	public static final int INFO_PLAYLIST_POS	=2;
+	public static final int INFO_TRACK_URI		=3;
+	public static final int INFO_TRACK_TITLE	=4;
+	public static final int INFO_TRACK_ARTIST	=5;
+
 	public void onCreate(Bundle bundle){
 
 		engine=new MediaPlayerEngine(this);
@@ -324,7 +332,7 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 
 			if (!mPlaylistCursor.isLast())
 			{	//return 5 or less entrys
-				int len= Math.min(mPlaylistCursor.getCount(),5);
+				int len= Math.min(mPlaylistCursor.getCount()-1,5);
 				result=new String[len];	
 
 				int titleIndex=mPlaylistCursor.getColumnIndexOrThrow(Playlists.Members.AUDIO_ID);
@@ -378,6 +386,8 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			if (!mPlaylistCursor.isFirst())
 			{
 				int len= Math.min(cpos,5);
+				Log.d(TAG,"cpos-1>"+(cpos-1)+"< len>"+len);		
+
 				result=new String[len];	
 				while (!mPlaylistCursor.isBeforeFirst() && count<len)
 				{
@@ -411,6 +421,26 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			mPlaylistCursor.moveToPosition(cpos);				
 
 			return result;		
+		}
+
+		public String[] getStatus(){
+
+			String[] res= new String[6];
+			if (mPlaylistBaseURI!=null)
+			{
+				res[INFO_PLAYLIST_URI]	= mPlaylistBaseURI.toString();
+			}else{
+
+				res[INFO_PLAYLIST_URI]	="";
+			}
+			res[INFO_PLAYLIST_NAME]	= mCurrentPlaylist;
+			res[INFO_PLAYLIST_POS]	= String.valueOf(mCurrentPlaylistPosition);
+			res[INFO_TRACK_URI]		= mURI.toString();
+			res[INFO_TRACK_TITLE]	= mCurrentTitle;
+			res[INFO_TRACK_ARTIST]	= mCurrentArtist;
+			Log.d(TAG,"returning status info>"+res);
+			return res;
+
 		}
 
 
