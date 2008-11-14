@@ -61,7 +61,7 @@ public class UpdateListActivity extends ListActivity {
 		
 		check(false, false);
 	}
-
+	
 	private Cursor createList(boolean appsWithNewVersionOnly,
 			boolean useAndAppStore, final ProgressDialog pb) {
 		OpenMatrixCursor c = new OpenMatrixCursor(new String[] {
