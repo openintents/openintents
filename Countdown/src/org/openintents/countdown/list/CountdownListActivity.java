@@ -287,8 +287,7 @@ public class CountdownListActivity extends ListActivity
 	public void onCountdownPanelClick(long id) {
         editCountdown(id);
 	}
-
-	@Override
+	
 	public void onStartClick(long id) {
 		startCountdown(id);
 	}

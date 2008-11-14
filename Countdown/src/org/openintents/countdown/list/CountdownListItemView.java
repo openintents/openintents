@@ -116,14 +116,14 @@ public class CountdownListItemView extends LinearLayout {
 		final long mId = id;
 
 		mStart.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View view) {
 				mListener.onStartClick(mId);
 			}
 		});
 		
 		mCountdownPanel.setOnClickListener(new OnClickListener() {
-			@Override
+			
 			public void onClick(View view) {
 				mListener.onCountdownPanelClick(mId);
 			}
