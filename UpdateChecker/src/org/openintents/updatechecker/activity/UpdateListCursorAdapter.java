@@ -71,7 +71,7 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		} else if (latestversioncode == 0 && latestVersionName == null) {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
 		} else if ((latestversioncode > versioncode && versioncode > 0)
-				|| (latestVersionName != null && versionName != null && latestVersionName != versionName)) {
+				|| (latestVersionName != null && versionName != null && !latestVersionName.equals(versionName))) {
 			cliv.setStatus(UpdateListItemView.STATUS_DOWNLOAD);
 			cliv.setInfo(comment);
 		} else if (latestversioncode == versioncode && ((latestVersionName == null && versionName == null) || latestVersionName.equals(versionName))) {
