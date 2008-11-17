@@ -21,12 +21,14 @@ OI Notepad allows to create, edit, and delete notes.
 
 To obtain the current release, visit
   http://www.openintents.org
+
 ---------------------------------------------------------
 release: 1.0.1
 date: 2008-11-17
 
 - removed Internet permission
 - fix for lost note on screen lock
+- revert twice to undo last revert
 
 ---------------------------------------------------------
 release: 1.0.0
