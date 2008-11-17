@@ -63,6 +63,7 @@ public class NoteEditor extends Activity {
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
+    private static final String ORIGINAL_STATE = "origState";
 
     // Identifiers for our menu items.
     private static final int REVERT_ID = Menu.FIRST;
@@ -168,6 +169,7 @@ public class NoteEditor extends Activity {
         // get the original text it started with.
         if (savedInstanceState != null) {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
+            mState = savedInstanceState.getInt(ORIGINAL_STATE);
         }
     }
 
@@ -213,6 +215,7 @@ public class NoteEditor extends Activity {
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
         outState.putString(ORIGINAL_CONTENT, mOriginalContent);
+        outState.putInt(ORIGINAL_STATE, mState);
     }
 
     @Override
@@ -279,22 +282,38 @@ public class NoteEditor extends Activity {
         super.onCreateOptionsMenu(menu);
 
         // Build the menus that are shown when editing.
-        if (mState == STATE_EDIT) {
+        
+        //if (!mOriginalContent.equals(mText.getText().toString())) {
+
             menu.add(0, REVERT_ID, 0, R.string.menu_revert)
                     .setShortcut('0', 'r')
                     .setIcon(android.R.drawable.ic_menu_revert);
+        //}
+        
+        menu.add(1, DELETE_ID, 0, R.string.menu_delete)
+            .setShortcut('1', 'd')
+            .setIcon(android.R.drawable.ic_menu_delete);
+        
+        /*
+        if (mState == STATE_EDIT) {
+        	
+            menu.add(0, REVERT_ID, 0, R.string.menu_revert)
+                    .setShortcut('0', 'r')
+                    .setIcon(android.R.drawable.ic_menu_revert);
+                   
             if (!mNoteOnly) {
-                menu.add(0, DELETE_ID, 0, R.string.menu_delete)
+                menu.add(1, DELETE_ID, 0, R.string.menu_delete)
                         .setShortcut('1', 'd')
                         .setIcon(android.R.drawable.ic_menu_delete);
             }
 
         // Build the menus that are shown when inserting.
         } else {
-            menu.add(0, DISCARD_ID, 0, R.string.menu_discard)
+            menu.add(1, DISCARD_ID, 0, R.string.menu_discard)
                     .setShortcut('0', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
+        */
 
         // If we are working on a full note, then append to the
         // menu items for any other activities that can do stuff with it
@@ -318,6 +337,16 @@ public class NoteEditor extends Activity {
     }
 
     @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+
+    	// Show "revert" menu item only if content has changed.
+    	boolean contentChanged = !mOriginalContent.equals(mText.getText().toString());
+    	menu.setGroupVisible(0, contentChanged);
+    	
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle all of the possible menu actions.
         switch (item.getItemId()) {
@@ -342,7 +371,7 @@ public class NoteEditor extends Activity {
     private final void cancelNote() {
         if (mCursor != null) {
         	String tmp = mText.getText().toString();
-        	if (mState == STATE_EDIT) {
+        	//if (mState == STATE_EDIT) {
                 // Put the original note text back into the database
                 //mCursor.close();
                 //mCursor = null;
@@ -350,11 +379,11 @@ public class NoteEditor extends Activity {
                 //values.put(Notes.NOTE, mOriginalContent);
                 //getContentResolver().update(mUri, values, null, null);
             	mText.setText(mOriginalContent);
-            } else if (mState == STATE_INSERT) {
+            //} else if (mState == STATE_INSERT) {
                 // We inserted an empty note, make sure to delete it
                 //deleteNote();
-                mText.setText("");
-            }
+                //mText.setText("");
+            //}
         	mOriginalContent = tmp;
         }
         //mCursor.requery();
@@ -373,4 +402,16 @@ public class NoteEditor extends Activity {
             mText.setText("");
         }
     }
+    /*
+    private final void discardNote() {
+        //if (mCursor != null) {
+        //    mCursor.close();
+        //    mCursor = null;
+        //    getContentResolver().delete(mUri, null, null);
+        //    mText.setText("");
+        //}
+    	mOriginalContent = mText.getText().toString();
+    	mText.setText("");
+    }
+    */
 }
