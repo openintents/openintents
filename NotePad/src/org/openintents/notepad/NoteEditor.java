@@ -269,6 +269,7 @@ public class NoteEditor extends Activity {
                 // the content provider will notify the cursor of the change, which will
                 // cause the UI to be updated.
                 getContentResolver().update(mUri, values, null, null);
+                
             }
         }
     }
@@ -340,20 +341,25 @@ public class NoteEditor extends Activity {
      */
     private final void cancelNote() {
         if (mCursor != null) {
-            if (mState == STATE_EDIT) {
+        	String tmp = mText.getText().toString();
+        	if (mState == STATE_EDIT) {
                 // Put the original note text back into the database
-                mCursor.close();
-                mCursor = null;
-                ContentValues values = new ContentValues();
-                values.put(Notes.NOTE, mOriginalContent);
-                getContentResolver().update(mUri, values, null, null);
+                //mCursor.close();
+                //mCursor = null;
+                //ContentValues values = new ContentValues();
+                //values.put(Notes.NOTE, mOriginalContent);
+                //getContentResolver().update(mUri, values, null, null);
+            	mText.setText(mOriginalContent);
             } else if (mState == STATE_INSERT) {
                 // We inserted an empty note, make sure to delete it
-                deleteNote();
+                //deleteNote();
+                mText.setText("");
             }
+        	mOriginalContent = tmp;
         }
-        setResult(RESULT_CANCELED);
-        finish();
+        //mCursor.requery();
+        //setResult(RESULT_CANCELED);
+        //finish();
     }
 
     /**
