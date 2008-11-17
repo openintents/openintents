@@ -65,6 +65,7 @@ public class ConvertCsvActivity extends Activity {
 	private static final String[] PROJECTION_CONTAINS_FULL = new String[] {
 			ContainsFull._ID, ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
 			ContainsFull.STATUS, ContainsFull.ITEM_ID,
+			ContainsFull.LIST_ID, 
 			ContainsFull.SHARE_CREATED_BY, ContainsFull.SHARE_MODIFIED_BY };
 	
     private void startExport() {
@@ -81,6 +82,8 @@ public class ConvertCsvActivity extends Activity {
 				DataOutputStream dos = new DataOutputStream(fos);
 				
 				//dos.writeBytes("test, test2\ntest3, test4");
+
+	        	dos.writeBytes("Subject" + "," + "% Complete" + "," + "Categories" + "\n");
 			
 		        Cursor c = getContentResolver().query(Shopping.Lists.CONTENT_URI, PROJECTION_LISTS, null, null,
 		                Shopping.Lists.DEFAULT_SORT_ORDER);
@@ -91,11 +94,28 @@ public class ConvertCsvActivity extends Activity {
 		        	Log.i(TAG, "Number of lists: " + listcount);
 		        	
 		        	while (c.moveToNext()) {
-			        	String name = c.getString(c.getColumnIndexOrThrow(Shopping.Lists.NAME));
+			        	String listname = c.getString(c.getColumnIndexOrThrow(Shopping.Lists.NAME));
+			        	long id = c.getLong(c.getColumnIndexOrThrow(Shopping.Lists._ID));
 			        	
-			        	Log.i(TAG, "List: " + name);
+			        	Log.i(TAG, "List: " + listname);
 			        	
-			        	dos.writeBytes(name + "\n");
+			        	Cursor ci = getContentResolver().query(Shopping.ContainsFull.CONTENT_URI, 
+			        			PROJECTION_CONTAINS_FULL, Shopping.ContainsFull.LIST_ID + " = ?", 
+			        			new String[] {""+id}, Shopping.ContainsFull.DEFAULT_SORT_ORDER);
+			        	
+
+				        if (ci != null) {
+				        	int itemcount = ci.getCount();
+
+				        	while (ci.moveToNext()) {
+				        		String itemname = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
+				        		int status = ci.getInt(ci.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
+					        	int percentage = (status == Shopping.Status.BOUGHT) ? 1 : 0;
+
+					        	dos.writeBytes(itemname + "," + percentage + "," + listname + "\n");
+				        	}
+				        }
+			        	//dos.writeBytes("\n");
 		        	}
 		        }
 	
