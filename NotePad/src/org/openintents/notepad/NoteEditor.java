@@ -178,6 +178,7 @@ public class NoteEditor extends Activity {
         // If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
         if (mCursor != null) {
+        	mCursor.requery();
             // Make sure we are at the one and only row in the cursor.
             mCursor.moveToFirst();
 
