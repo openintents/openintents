@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2008 OpenIntents.org                                  *
+ * Copyright (C) 2008 OpenIntents.org                                       *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -14,35 +14,18 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-The OpenIntents Shopping list lets you keep track of your shopping items. 
-You can also use it for other kinds of check lists, for example for ToDo 
-lists or party guest lists.
+The OpenIntents ConvertCSV is an extension for OI shopping list
+that lets you import and export the lists to CSV files.
 
 To obtain the current release, visit
   http://www.openintents.org
 
-
----------------------------------------------------------
-release: 1.0.2
-date: 2008-11-??
-
-- allow for extensions with menu icon
-- support OI Update and drop internet permission (TODO)
-
----------------------------------------------------------
-release: 1.0.1
-date: 2008-10-27
-
-- fix bug with resources when uploading to Android Market
-
 ---------------------------------------------------------
 release: 1.0.0
-date: 2008-10-25
+date: 2008-11-??
 
 - First public release on Android SDK 1.0.
 
 Features: 
-- Add items, mark them, clean up list.
-- New list, rename list, delete list.
-- Choose one of three themes (default, classic, Android).
+- Import / export CSV files compatible with MS Outlook.
 
