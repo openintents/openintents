@@ -172,7 +172,7 @@ public class UpdateCheckerWithNotification {
 		Notification notification = new Notification(R.drawable.icon_update,
 				text, System.currentTimeMillis());
 
-		mIntent = createUpdateActivityIntent();
+		mIntent = createUpdateActivityIntent(true);
 
 		// The PendingIntent to launch our activity if the user selects this
 		// notification
@@ -194,9 +194,9 @@ public class UpdateCheckerWithNotification {
 		return mChecker.getUpdateIntent();
 	}
 
-	public Intent createUpdateActivityIntent() {
+	public Intent createUpdateActivityIntent(boolean setNewFlag) {
 		return UpdateInfo.createUpdateActivityIntent(mContext, mChecker,
-				mPackageName, mAppName);
+				mPackageName, mAppName, setNewFlag);
 	}
 
 	public String getLatestVersionName() {

@@ -30,6 +30,9 @@ To obtain the current release, visit
 release: 1.0.1
 date: 2008-11-??
 
+- Only notify if version code or version name increases.
+  (Previously there was an update notification also 
+   if version name decreased.)
 
 ---------------------------------------------------------
 release: 1.0.0

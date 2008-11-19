@@ -121,17 +121,22 @@ public class UpdateCheckerActivity extends Activity {
 							Log.e(TAG, "Update not started", e);
 						}
 					}
-
+					setResult(RESULT_OK);
 					break;
 				case R.id.remind_me_later:
 					updateUpdateTime();
+
+					// Cancelling result means that no list refresh is required by the calling activity.
+					setResult(RESULT_CANCELED);
 					break;
 				case R.id.ignore_this_update:
 					updateLastIgnoredVersion();
+					setResult(RESULT_OK);
 					break;
 				case R.id.ignore_all_further_updates:
 					UpdateInfo.setNoUpdates(UpdateCheckerActivity.this,
 							mPackageName, true);
+					setResult(RESULT_OK);
 					break;
 				}
 				finish();

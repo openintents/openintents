@@ -10,6 +10,7 @@ import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateApplication;
 import org.openintents.updatechecker.UpdateCheckerWithNotification;
 import org.openintents.updatechecker.db.UpdateInfo;
+import org.openintents.updatechecker.util.CompareVersions;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -41,6 +42,11 @@ public class UpdateListActivity extends ListActivity {
 	private static final int MENU_PREFERENCES = Menu.FIRST + 5;
 	private static final int MENU_ABOUT = Menu.FIRST + 6;
 	private static final String TAG = "UpdateListActivity";
+	
+	private static final int REQUEST_CODE_UPDATE = 1;
+	
+	private boolean mLastAppsWithNewVersionOnly;
+	private boolean mLastUseAndAppstore;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,14 +58,12 @@ public class UpdateListActivity extends ListActivity {
 		
 		setContentView(R.layout.app_list);
 
-
+		check(false, false);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
-		check(false, false);
 	}
 	
 	private Cursor createList(boolean appsWithNewVersionOnly,
@@ -172,7 +176,7 @@ public class UpdateListActivity extends ListActivity {
 					comment = updateChecker.getComment();
 					latestVersion = updateChecker.getLatestVersion();
 					latestVersionName = updateChecker.getLatestVersionName();
-					updateIntent = updateChecker.createUpdateActivityIntent();
+					updateIntent = updateChecker.createUpdateActivityIntent(false);
 				}
 
 			}
@@ -230,18 +234,21 @@ public class UpdateListActivity extends ListActivity {
 		boolean noNotifications = cursor.getInt(cursor
 				.getColumnIndexOrThrow(AppListInfo.NO_NOTIFICATIONS)) > 0;
 
-		if (noNotifications || (ignoreVersion > currVersion)) {
+		if (noNotifications || CompareVersions.isIgnoredVersion(currVersion, ignoreVersion, 
+					currVersionName, ignoreVersionName)) {
 			// Show dialog
+			Log.d(TAG, "Show ignore dialog");
 			showIgnoredDialog(packageName);
 			return;
 		}
 				
 				
 		if (updateIntent instanceof Intent) {
+			Log.d(TAG, "Show update activity");
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
 					latestVersion, latestVersionName, comment, packageName,
 					appName, updateIntent);
-			startActivity(intent);
+			startActivityForResult(intent, REQUEST_CODE_UPDATE);
 		} else {
 
 			final UpdateCheckerWithNotification updateChecker = new UpdateCheckerWithNotification(
@@ -255,16 +262,19 @@ public class UpdateListActivity extends ListActivity {
 			new Thread() {
 				@Override
 				public void run() {
+					Log.d(TAG, "Check for updates");
 					boolean updateRequired = updateChecker
 							.checkForUpdateWithOutNotification();
 
 					pb.dismiss();
 
 					if (updateRequired) {
+						Log.d(TAG, "Updates required");
 						Intent intent = updateChecker
-								.createUpdateActivityIntent();
-						startActivity(intent);
+								.createUpdateActivityIntent(false);
+						startActivityForResult(intent, REQUEST_CODE_UPDATE);
 					} else {
+						Log.d(TAG, "No new version exists");
 						//  No new version exists,
 						
 						if (updateChecker.getLatestVersion() >0 || updateChecker.getLatestVersionName() != null) {
@@ -337,8 +347,14 @@ public class UpdateListActivity extends ListActivity {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 	
+	private void checkAsLastTime() {
+		check(mLastAppsWithNewVersionOnly, mLastUseAndAppstore);
+	}
+	
 	private void check(final boolean appsWithNewVersionOnly,
 			final boolean useAndAppStore) {
+		mLastAppsWithNewVersionOnly = appsWithNewVersionOnly;
+		mLastUseAndAppstore = useAndAppStore;
 		String msg;
 		if (appsWithNewVersionOnly) {
 			msg = getString(R.string.checking);
@@ -432,7 +448,7 @@ public class UpdateListActivity extends ListActivity {
 						UpdateInfo.PACKAGE_NAME + " = ? ",
 						new String[] { packageName });
 				
-				check(false, false);
+				checkAsLastTime();
 			}
 			
 		}).setNegativeButton(android.R.string.cancel, new OnClickListener(){
@@ -467,4 +483,20 @@ public class UpdateListActivity extends ListActivity {
 			
 		}).show();		
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		
+		if (requestCode == REQUEST_CODE_UPDATE) {
+			// refresh list
+			if (resultCode == RESULT_OK) {
+				Log.d(TAG, "Refresh!");
+				checkAsLastTime();
+			}
+		}
+	}
+	
+	
 }

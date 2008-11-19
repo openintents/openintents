@@ -47,6 +47,27 @@ public class CompareVersions {
 		return compareVersions(currentVersionCode, latestVersionCode,
 			currentVersionName, latestVersionName) == COMPARISON_LESS;
 	}
+
+	/**
+	 * If version is ignored.
+	 * @param currentVersionCode
+	 * @param latestVersionCode
+	 * @param currentVersionName
+	 * @param latestVersionName
+	 * @return
+	 */
+	public static boolean isIgnoredVersion(int currentVersionCode, int ignoreVersionCode,
+			String currentVersionName, String ignoreVersionName) {
+
+		int result = compareVersions(currentVersionCode, ignoreVersionCode,
+				currentVersionName, ignoreVersionName);
+		
+		if (result == COMPARISON_LESS || result == COMPARISON_EQUAL) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Compare versions.

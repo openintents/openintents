@@ -8,6 +8,7 @@ import org.openintents.updatechecker.util.CompareVersions;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
@@ -55,10 +56,11 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 		String comment = (String) omc.get(cursor
 				.getColumnIndexOrThrow(AppListInfo.LATEST_COMMENT));
 
-		// Log.i(TAG, name + " version: " + latestversioncode + ", " +
-		// versioncode + ", " + ignoreversioncode);
+		Log.i(TAG, name + " version: " + latestversioncode + ", " +
+		versioncode + ", " + ignoreversioncode + ", " + versionName + ", " + ignoreversionName);
 
-		if (ignoreversioncode > versioncode || (ignoreversionName != null && versionName != null && !ignoreversionName.equals(versionName))) {
+		//if (ignoreversioncode > versioncode || (ignoreversionName != null && versionName != null && !ignoreversionName.equals(versionName))) {
+		if (CompareVersions.isIgnoredVersion(versioncode, ignoreversioncode, versionName, ignoreversionName)) {
 			// Also show "Ignore" sign, if current version is being ignored.
 			no_notifications = 1;
 		}

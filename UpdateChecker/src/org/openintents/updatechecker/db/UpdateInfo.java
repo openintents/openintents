@@ -64,7 +64,7 @@ public class UpdateInfo implements BaseColumns {
 	public static final String EXTRA_WARN_INTENT = "warn_intent";
 
 	public static Intent createUpdateActivityIntent(Context mContext,
-			UpdateChecker mChecker, String mPackageName, String mAppName) {
+			UpdateChecker mChecker, String mPackageName, String mAppName, boolean setNewFlag) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
 		intent.setAction(mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, mChecker
@@ -74,8 +74,10 @@ public class UpdateInfo implements BaseColumns {
 		intent.putExtra(UpdateChecker.EXTRA_COMMENT, mChecker.getComment());
 		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+		if (setNewFlag) {
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 				| Intent.FLAG_ACTIVITY_NEW_TASK);
+		}
 		intent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, mChecker
 				.getUpdateIntent());
 		return intent;
