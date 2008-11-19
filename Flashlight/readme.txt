@@ -22,9 +22,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2008-11-12
+date: 2008-11-19
 
 - Bugfix: Set wake lock to bright instead of dim.
+- removed Internet permission
   
 ---------------------------------------------------------
 release: 1.0.2
