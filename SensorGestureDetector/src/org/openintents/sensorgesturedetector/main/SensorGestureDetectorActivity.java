@@ -35,7 +35,7 @@ public class SensorGestureDetectorActivity extends Activity
         
         b.setOnClickListener(new View.OnClickListener() {
 
-			@Override
+			
 			public void onClick(View view) {
 				mText.setText("");
 			}
@@ -68,7 +68,7 @@ public class SensorGestureDetectorActivity extends Activity
     //////////////////////////////////
     // SensorListener
     
-	@Override
+	
 	public void onSensorChanged(int sensor, float[] values) {
 		
 		mSensorGestureDetector.onSensorChanged(sensor, values);
@@ -79,7 +79,7 @@ public class SensorGestureDetectorActivity extends Activity
 		
 	}
     
-	@Override
+	
 	public void onAccuracyChanged(int sensor, int accuracy) {
 		mSensorGestureDetector.onAccuracyChanged(sensor, accuracy);
 	}
@@ -87,13 +87,13 @@ public class SensorGestureDetectorActivity extends Activity
 	//////////////////////////////////
     // OnSensorGestureListener
 
-	@Override
+	
 	public boolean onIdle(SensorEvent event) {
 		mText.append("\nIdle " /*+ event.getValueLength()*/);
 		return false;
 	}
 
-	@Override
+	
 	public boolean onRotate(SensorEvent idleEvent, SensorEvent event) {
 		String rotation = getRotationString(event.getRoughRotation(idleEvent));
 		mText.append("\nRotate " + rotation /*+ " " + event.getValueLength()*/);
@@ -102,7 +102,7 @@ public class SensorGestureDetectorActivity extends Activity
 		return false;
 	}
 	
-	@Override
+	
 	public boolean onShake(SensorEvent idleEvent, SensorEvent event) {
 		
 		String direction = getDirectionString(event.getRoughDirection(idleEvent));
@@ -112,7 +112,7 @@ public class SensorGestureDetectorActivity extends Activity
 	}
     
 
-	@Override
+	
 	public boolean onDrop(SensorEvent idleEvent, SensorEvent event) {
 		
 		mText.append("\nDrop " + event.getValueLength());
@@ -120,7 +120,7 @@ public class SensorGestureDetectorActivity extends Activity
 		return false;
 	}
 
-	@Override
+	
 	public boolean onCatch(SensorEvent idleEvent, SensorEvent event) {
 		
 		mText.append("\nCatch " + event.getValueLength());
