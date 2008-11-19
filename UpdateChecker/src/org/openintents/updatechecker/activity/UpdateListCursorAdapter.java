@@ -2,13 +2,12 @@ package org.openintents.updatechecker.activity;
 
 import org.openintents.updatechecker.AppListInfo;
 import org.openintents.updatechecker.OpenMatrixCursor;
-import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.db.UpdateInfo;
+import org.openintents.updatechecker.util.CompareVersions;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
@@ -72,11 +71,12 @@ public class UpdateListCursorAdapter extends CursorAdapter {
 			cliv.setStatus(UpdateListItemView.STATUS_IGNORE);
 		} else if (latestversioncode == 0 && latestVersionName == null) {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);
-		} else if ((latestversioncode > versioncode && versioncode > 0)
-				|| (latestVersionName != null && versionName != null && !latestVersionName.equals(versionName))) {
+		} else if (CompareVersions.isNewerVersionAvailable(versioncode, latestversioncode,
+				versionName, latestVersionName)) {
 			cliv.setStatus(UpdateListItemView.STATUS_DOWNLOAD);
 			cliv.setInfo(UpdateInfo.getInfo(context, latestVersionName, comment));
-		} else if ((latestversioncode != 0 && latestversioncode == versioncode) ||  (latestVersionName != null && latestVersionName.equals(versionName))) {
+		} else if (CompareVersions.isUpToDate(versioncode, latestversioncode,
+				versionName, latestVersionName)) {
 			cliv.setStatus(UpdateListItemView.STATUS_OK);
 		} else {
 			cliv.setStatus(UpdateListItemView.STATUS_UNKNOWN);

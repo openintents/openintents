@@ -15,3 +15,35 @@
  * License along with this application; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  */
+ 
+The OpenIntents Update manages update information of applications. 
+Lists version information of all mananged applications and allows 
+to check for new versions periodically or on user request.
+
+More information available at http://www.openintents.org/en/node/136
+
+To obtain the current release, visit
+  http://www.openintents.org
+
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2008-11-??
+
+
+---------------------------------------------------------
+release: 1.0.0
+date: 2008-11-13
+
+- First public release on Android SDK 1.0.
+
+Features: 
+- Show list of managed applications with version numbers.
+- Choose interval for notification: daily, weekly, monthly.
+- Notification if update is available.
+- Supports text version file and VeeCheck.
+- Support for the Android Market and AndAppStore
+
+
+
+ 

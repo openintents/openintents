@@ -18,10 +18,8 @@
 
 package org.openintents.updatechecker;
 
-import org.openintents.updatechecker.activity.UpdateCheckerActivity;
 import org.openintents.updatechecker.db.UpdateInfo;
-
-import dalvik.system.TemporaryDirectory;
+import org.openintents.updatechecker.util.CompareVersions;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -132,17 +130,38 @@ public class UpdateCheckerWithNotification {
 		}
 	}
 
+	/**
+	 * Whether update is required:
+	 *  - either larger version code
+	 *  - or larger version name
+	 *  - and not ignored.
+	 * @return
+	 */
 	private boolean isUpdateRequired() {
+		/*
+		Log.d(TAG, "Application: " + mAppName);
+		Log.d(TAG, " - current version: " + mCurrentVersion);
+		Log.d(TAG, " - latest version: " + mChecker.getLatestVersion());
+		Log.d(TAG, " - current version name: " + mCurrentVersionName);
+		Log.d(TAG, " - latest version name: " + mChecker.getLatestVersionName());
+		*/
+		
+		/*
 		boolean currentDiffer = (mChecker.getLatestVersion() > mCurrentVersion && mCurrentVersion > 0)
 				|| (mChecker.getLatestVersionName() != null
 						&& mCurrentVersionName != null && !mChecker
 						.getLatestVersionName().equals(mCurrentVersionName));
+		*/
+		boolean newerVersionAvailable = CompareVersions.isNewerVersionAvailable(
+				mCurrentVersion, mChecker.getLatestVersion(),
+				mCurrentVersionName, mChecker.getLatestVersionName());
+		
 		boolean ignore = (mIgnoreVersion >= mChecker.getLatestVersion() && mChecker
 				.getLatestVersion() > 0)
 				|| (mIgnoreVersionName != null
 						&& mChecker.getLatestVersionName() != null && mIgnoreVersionName
 						.equals(mChecker.getLatestVersionName()));
-		return currentDiffer && !ignore;
+		return newerVersionAvailable && !ignore;
 	}
 
 	private void showNotification() {
