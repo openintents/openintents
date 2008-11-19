@@ -18,18 +18,11 @@ package org.openintents.flashlight;
 
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.Update;
+import org.openintents.distribution.UpdateMenu;
 
 import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IHardwareService;
@@ -47,7 +40,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Flashlight extends Activity {
 	
@@ -55,6 +47,7 @@ public class Flashlight extends Activity {
 
 	private static final int MENU_COLOR = Menu.FIRST + 1;
 	private static final int MENU_ABOUT = Menu.FIRST + 2;
+	private static final int MENU_UPDATE = Menu.FIRST + 3;
 
     private static final int REQUEST_CODE_PICK_COLOR = 1;
 	
@@ -73,10 +66,6 @@ public class Flashlight extends Activity {
 	private static final int NOT_VALID = -1;
 	
 	private static final int HIDE_ICON = 1;
-
-	private static final int MENU_UPDATE = 0;
-
-	private static final String UPDATE_CHECKER = null;
 	
 	private static int mTimeout = 5000;
 	
@@ -88,7 +77,6 @@ public class Flashlight extends Activity {
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		Update.check(this);
 
 		// Turn off the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -162,20 +150,11 @@ public class Flashlight extends Activity {
         menu.add(0, MENU_COLOR, 0,R.string.color)
 		  .setIcon(android.R.drawable.ic_menu_manage).setShortcut('3', 'c');
         
+        UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update_menu);
+		
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
-		PackageInfo pi = null;
-		try {
-			pi = getPackageManager().getPackageInfo(UPDATE_CHECKER, 0);
-		} catch (NameNotFoundException e) {
-			// ignore
-		}
-		if (pi == null) {
-			menu.add(0, MENU_UPDATE, 0, R.string.update).setIcon(
-					android.R.drawable.ic_menu_info_details).setShortcut('1',
-					'u');
-		}
 		return true;
 	}
 
@@ -197,9 +176,8 @@ public class Flashlight extends Activity {
 			showAboutBox();
 			return true;
 
-			
 		case MENU_UPDATE:
-			showUpdateBox();
+			UpdateMenu.showUpdateBox(this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -255,46 +233,6 @@ public class Flashlight extends Activity {
 		}
 	}
 	
-
-
-	private void showUpdateBox() {
-		String version = null;
-		try {
-			version = getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		final Intent intent  = new Intent(Intent.ACTION_VIEW);
-		new Builder(this).setMessage(getString(R.string.update_box_text, version)).setPositiveButton(R.string.check_now, new OnClickListener(){
-
-			public void onClick(DialogInterface arg0, int arg1) {
-				intent.setData(Uri.parse(getString(R.string.flashlight_url)));
-				try {
-					startActivity(intent);
-				} catch (ActivityNotFoundException e) {
-					Toast.makeText(Flashlight.this,
-							R.string.market_not_available,
-							Toast.LENGTH_SHORT).show();
-					Log.e(TAG, "Market not installed");
-				}
-			}
-			
-		}).setNegativeButton(R.string.get_updater, new OnClickListener(){
-
-			public void onClick(DialogInterface dialog, int which) {
-				intent.setData(Uri.parse(getString(R.string.updatechecker_url)));
-				try {
-					startActivity(intent);
-				} catch (ActivityNotFoundException e) {
-					Toast.makeText(Flashlight.this,
-							R.string.market_not_available,
-							Toast.LENGTH_SHORT).show();
-					Log.e(TAG, "Market not installed");
-				}
-			}
-			
-		}).show();		
-	}
 	
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));

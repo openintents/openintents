@@ -16,7 +16,7 @@
 
 package org.openintents.distribution;
 
-import org.openintents.flashlight.R;
+//Version Nov 12, 2008
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;
@@ -40,15 +40,15 @@ public class AboutActivity extends Activity {
 		super.onCreate(icicle);
 
 		setTheme(android.R.style.Theme_Dialog);
-		setContentView(R.layout.about);
+		setContentView(RD.layout.about);
 		
 		String version = getVersionNumber();
 		String name = getApplicationName();
 
-		setTitle(getString(R.string.about_title, name));
+		setTitle(getString(RD.string.about_title, name));
 		
-		TextView text = (TextView)findViewById(R.id.text);
-		text.setText(getString(R.string.about_text, version));
+		TextView text = (TextView)findViewById(RD.id.text);
+		text.setText(getString(RD.string.about_text, version));
 	}
 	
 	/**

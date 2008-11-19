@@ -37,14 +37,15 @@ Unless required by applicable law or agreed to in writing, software distributed 
 	<string name="eula_accept">Accept</string>
 	<string name="eula_refuse">Cancel</string>
 	
-	<string name="update">Update</string>
-	<string name="update_box_text">Please check manually for updates or install OI Update
+	<!-- Update -->
+	<string name="update_menu">Check updates</string>
+    <string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
-	<string name="check_now">Check now.</string>
-	<string name="get_updater">Get OI Updater.</string>
-	<string name="flashlight_url">market://details?id=1469535635868186751</string>
-	<string name="updatechecker_url">market://details?id=-282734404850313838</string>
-
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.flashlight</string>
+	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
+	<string name="update_error">Download application not available.</string>
 </resources>
