@@ -39,5 +39,15 @@
         </activity>
         
         <provider android:name=".VoiceNoteProvider" android:authorities="org.openintents.voicenotes"/>
+        
+        <receiver android:name=".VoiceNoteReceiver">
+             <intent-filter>   
+                <action android:name="org.openintents.action.DELETED"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.notepad.note" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.shopping.list" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest> 

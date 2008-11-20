@@ -17,10 +17,16 @@
 package org.openintents.notepad;
 
 
+import java.util.HashMap;
+
+import org.openintents.intents.ProviderIntents;
+import org.openintents.notepad.NotePad.Notes;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -31,10 +37,6 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
-
-import java.util.HashMap;
-
-import org.openintents.notepad.NotePad.Notes;
 
 /**
  * Provides access to a database of notes. Each note has a title, the note
@@ -183,6 +185,11 @@ public class NotePadProvider extends ContentProvider {
         if (rowId > 0) {
             Uri noteUri = ContentUris.withAppendedId(NotePad.Notes.CONTENT_URI, rowId);
             getContext().getContentResolver().notifyChange(noteUri, null);
+
+            Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
+            intent.setData(noteUri);
+            getContext().sendBroadcast(intent);
+            
             return noteUri;
         }
 
@@ -209,6 +216,11 @@ public class NotePadProvider extends ContentProvider {
         }
 
         getContext().getContentResolver().notifyChange(uri, null);
+        
+        Intent intent = new Intent(ProviderIntents.ACTION_DELETED);
+        intent.setData(uri);
+        getContext().sendBroadcast(intent);
+        
         return count;
     }
 
@@ -232,6 +244,11 @@ public class NotePadProvider extends ContentProvider {
         }
 
         getContext().getContentResolver().notifyChange(uri, null);
+
+        Intent intent = new Intent(ProviderIntents.ACTION_MODIFIED);
+        intent.setData(uri);
+        getContext().sendBroadcast(intent);
+        
         return count;
     }
 
