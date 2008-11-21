@@ -24,7 +24,7 @@ public class VoicePlayNote extends Activity {
 		if (uri != null) {
 			startActivity(intent);
 		} else {
-			Toast.makeText(this, getText(R.string.no_voice_memo), Toast.LENGTH_SHORT);
+			Toast.makeText(this, getText(R.string.no_voice_memo), Toast.LENGTH_SHORT).show();
 		}
 		finish();
 	}
