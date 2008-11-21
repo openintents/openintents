@@ -21,7 +21,7 @@ import java.util.List;
 import org.openintents.OpenIntents;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.Update;
+import org.openintents.distribution.UpdateMenu;
 import org.openintents.provider.Alert;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Location.Locations;
@@ -118,24 +118,29 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
 	// TODO: Implement the following menu items
-	private static final int MENU_EDIT_LIST = Menu.FIRST + 3; // includes rename
-	private static final int MENU_SORT = Menu.FIRST + 6; // sort alphabetically
+	private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes rename
+	private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
 															// or modified
-	private static final int MENU_PICK_ITEMS = Menu.FIRST + 7; // pick from
+	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
 																// previously
 																// used items
 
 	// TODO: Implement "select list" action
 	// that can be called by other programs.
-	private static final int MENU_SELECT_LIST = Menu.FIRST + 8; // select a
+	private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
 																// shopping list
+	private static final int MENU_UPDATE = Menu.FIRST + 16;
 
 	// TODO: Further possible actions to implement:
 	// * Move items to some other shopping list
 
+	
+	
 	//
 	private static final int MENU_SETTINGS = Menu.FIRST + 100;
 	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 101;
+
+	
 
 	/**
 	 * The main activity.
@@ -265,6 +270,7 @@ public class ShoppingActivity extends Activity { // implements
 	public static final int mMarkStrikethrough = 2;
 	public static final int mMarkAddtext = 3;
 
+
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
 
@@ -283,8 +289,6 @@ public class ShoppingActivity extends Activity { // implements
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		Update.check(this);
-		
 		// setTheme(android.R.style.Theme_White);
 		// setTheme(android.R.style.Theme_Dialog);
 		// setTheme(android.R.style.Theme_Dark);
@@ -769,6 +773,7 @@ public class ShoppingActivity extends Activity { // implements
 		 * R.string.connect_to_sensorsimulator) .setShortcut('1', 'c');
 		 */
 		
+		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 		 menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
@@ -972,6 +977,8 @@ public class ShoppingActivity extends Activity { // implements
 		case MENU_DELETE_ITEM:
 			deleteItem(menuInfo.position);
 			break;
+		case MENU_UPDATE:
+			UpdateMenu.showUpdateBox(this);
 		}
 
 		return true;
