@@ -71,6 +71,9 @@ public class UpdateInfo implements BaseColumns {
 				.getLatestVersion());
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME, mChecker
 				.getLatestVersionName());
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION, mChecker.getCurrentVersion());
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME,
+				mChecker.getCurrentVersionName());
 		intent.putExtra(UpdateChecker.EXTRA_COMMENT, mChecker.getComment());
 		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
@@ -85,11 +88,14 @@ public class UpdateInfo implements BaseColumns {
 
 	public static Intent createUpdateActivityIntent(Context mContext,
 			int latestVersion, String latestVersionName, String comment,
-			String mPackageName, String mAppName, Intent updateIntent) {
+			String mPackageName, String mAppName, Intent updateIntent, int currentVersion, String currentVersionName) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, latestVersion);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
 				latestVersionName);
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION, currentVersion);
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME,
+				currentVersionName);
 		intent.putExtra(UpdateChecker.EXTRA_COMMENT, comment);
 		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);

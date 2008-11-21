@@ -173,6 +173,14 @@ public class UpdateChecker {
 	public Intent getUpdateIntent() {
 		return mUpdateIntent;
 	}
+	
+	public int getCurrentVersion() {
+		return mCurrentVersion;
+	}
+	
+	public String getCurrentVersionName() {
+		return mCurrentVersionName;
+	}
 
 	public void setMarketUpdateIntent(String appName) {
 

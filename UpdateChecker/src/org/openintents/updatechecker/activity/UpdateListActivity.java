@@ -1,5 +1,6 @@
 package org.openintents.updatechecker.activity;
 
+import java.util.Currency;
 import java.util.List;
 
 import org.openintents.distribution.AboutActivity;
@@ -247,7 +248,7 @@ public class UpdateListActivity extends ListActivity {
 			Log.d(TAG, "Show update activity");
 			Intent intent = UpdateInfo.createUpdateActivityIntent(this,
 					latestVersion, latestVersionName, comment, packageName,
-					appName, updateIntent);
+					appName, updateIntent, currVersion, currVersionName);
 			startActivityForResult(intent, REQUEST_CODE_UPDATE);
 		} else {
 

@@ -22,6 +22,10 @@
 		android:layout_height="wrap_content" android:gravity="center_vertical"
 		android:autoLink="all" android:padding="5dip" android:text="@string/update_available_2"
 		android:textAppearance="?android:attr/textAppearanceLarge" />
+	<TextView android:id="@+id/current_version" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:gravity="center_vertical"
+		android:autoLink="all" android:padding="5dip" android:text="@string/current_version"
+		android:textAppearance="?android:attr/textAppearanceMedium" />
 	<RadioGroup android:id="@+id/action_choice"
 		android:checkedButton="@+id/do_update" android:layout_width="wrap_content"
 		android:layout_height="wrap_content">

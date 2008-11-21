@@ -211,4 +211,5 @@ public class UpdateCheckerWithNotification {
 		return mChecker.getLatestVersion();
 	}
 
+	
 }

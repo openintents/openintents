@@ -57,6 +57,8 @@ public class UpdateCheckerActivity extends Activity {
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
 	private String mLatestVersionName;
+	private Object mCurrentVersion;
+	private String mCurrentVersionName;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -206,13 +208,26 @@ public class UpdateCheckerActivity extends Activity {
 			}
 		}
 
+		mCurrentVersion = intent.getIntExtra(UpdateChecker.EXTRA_CURRENT_VERSION,
+				0);
+		mCurrentVersionName = intent.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
+
+		view = (TextView) findViewById(R.id.current_version);
+		if (mCurrentVersionName != null){
+			view.setText(getString(R.string.current_version, mCurrentVersion));
+			view.setVisibility(View.VISIBLE);
+		} else {
+			view.setVisibility(View.GONE);
+		}
+		
 		mLatestVersion = intent.getIntExtra(UpdateChecker.EXTRA_LATEST_VERSION,
 				0);
 		mLatestVersionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME);
 
+		
 		if (mLatestVersionName != null) {
-			setTitle(getString(R.string.latest_version_2, mLatestVersionName));
+			setTitle(getString(R.string.newer_version, mLatestVersionName));
 		} else {
 			setTitle(R.string.app_name);
 		}
