@@ -28,6 +28,8 @@ date: 2008-11-??
 
 - allow for extensions with menu icon
 - support OI Update and drop internet permission (TODO)
+- broadcast changes to database so that extensions
+  like VoiceNotes can listen.
 
 ---------------------------------------------------------
 release: 1.0.1

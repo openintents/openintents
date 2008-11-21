@@ -18,6 +18,8 @@ package org.openintents.shopping;
 
 import java.util.HashMap;
 
+import org.openintents.intents.ProviderIntents;
+import org.openintents.intents.ProviderUtils;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
@@ -29,6 +31,7 @@ import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -289,7 +292,12 @@ public class ShoppingProvider extends ContentProvider {
 		if (rowID > 0) {
 			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
-			return uri;
+			
+			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
+            intent.setData(uri);
+            getContext().sendBroadcast(intent);
+            
+            return uri;
 		}
 		
 		// If everything works, we should not reach the following line:
@@ -353,7 +361,12 @@ public class ShoppingProvider extends ContentProvider {
 		if (rowID > 0) {
 			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
-			return uri;
+
+			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
+            intent.setData(uri);
+            getContext().sendBroadcast(intent);
+            
+            return uri;
 		}
 		
 		// If everything works, we should not reach the following line:
@@ -421,7 +434,12 @@ public class ShoppingProvider extends ContentProvider {
 		if (rowId > 0) {
 			Uri uri = ContentUris.withAppendedId(Contains.CONTENT_URI,rowId);
 			getContext().getContentResolver().notifyChange(uri, null);
-			return uri;
+
+			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
+            intent.setData(uri);
+            getContext().sendBroadcast(intent);
+            
+            return uri;
 		}
 		
 		// If everything works, we should not reach the following line:
@@ -432,9 +450,11 @@ public class ShoppingProvider extends ContentProvider {
 	public int delete(Uri url, String where, String[] whereArgs) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         int count;
+        long[] affectedRows = null;
 		//long rowId;
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
+			affectedRows = ProviderUtils.getAffectedRows(db, "items", where, whereArgs);
 			count = db.delete("items", where, whereArgs);
 			break;
 
@@ -448,11 +468,13 @@ public class ShoppingProvider extends ContentProvider {
 				whereString = "";
 			}
 
+			affectedRows = ProviderUtils.getAffectedRows(db, "items", "_id=" + segment + whereString, whereArgs);
 			count = db
 					.delete("items", "_id=" + segment + whereString, whereArgs);
 			break;
 
 		case LISTS:
+			affectedRows = ProviderUtils.getAffectedRows(db, "lists", where, whereArgs);
 			count = db.delete("lists", where, whereArgs);
 			break;
 
@@ -465,11 +487,13 @@ public class ShoppingProvider extends ContentProvider {
 				whereString = "";
 			}
 
+			affectedRows = ProviderUtils.getAffectedRows(db, "lists", "_id=" + segment + whereString, whereArgs);
 			count = db
 					.delete("lists", "_id=" + segment + whereString, whereArgs);
 			break;
 
 		case CONTAINS:
+			affectedRows = ProviderUtils.getAffectedRows(db, "contains", where, whereArgs);
 			count = db.delete("contains", where, whereArgs);
 			break;
 
@@ -482,6 +506,7 @@ public class ShoppingProvider extends ContentProvider {
 				whereString = "";
 			}
 
+			affectedRows = ProviderUtils.getAffectedRows(db, "contains", "_id=" + segment + whereString, whereArgs);
 			count = db
 					.delete("contains", "_id=" + segment + whereString, whereArgs);
 			break;
@@ -491,9 +516,15 @@ public class ShoppingProvider extends ContentProvider {
 		}
 
 		getContext().getContentResolver().notifyChange(url, null);
-		return count;
-	}
 
+		Intent intent = new Intent(ProviderIntents.ACTION_DELETED);
+        intent.setData(url);
+        intent.putExtra(ProviderIntents.EXTRA_AFFECTED_ROWS, affectedRows);
+        getContext().sendBroadcast(intent);
+        
+        return count;
+	}
+	
 	@Override
 	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
@@ -561,7 +592,12 @@ public class ShoppingProvider extends ContentProvider {
 		}
 
 		getContext().getContentResolver().notifyChange(url, null);
-		return count;
+
+        Intent intent = new Intent(ProviderIntents.ACTION_MODIFIED);
+        intent.setData(url);
+        getContext().sendBroadcast(intent);
+        
+        return count;
 	}
 
 	@Override

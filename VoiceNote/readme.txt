@@ -21,9 +21,13 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2008-11-14
+date: 2008-11-??
 
 - First public release on Android SDK 1.0.
 
 Features: 
 - Record, play voice memo attached to a note of OI Notepad
+- Also attach a note to a shopping list.
+- Delete link if original item is deleted, but keep
+  recorded file on SD card.
+

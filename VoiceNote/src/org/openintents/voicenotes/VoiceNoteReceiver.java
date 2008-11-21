@@ -23,14 +23,15 @@ public class VoiceNoteReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		
-		Log.i(TAG, "Received intent: " + intent.getAction() + ", " + intent.getDataString());
+		Log.i(TAG, "Received intent: " + intent.getAction() + ", " 
+				+ intent.getDataString() + ", "
+				+ intent.getLongArrayExtra(ProviderIntents.EXTRA_AFFECTED_ROWS));
 		
 		String action = intent.getAction();
-		Uri data = intent.getData();
 		
 		if (action.equals(ProviderIntents.ACTION_DELETED)) {
 			
-			delete(context, data);
+			delete(context, intent);
 		}
 
 	}
@@ -41,27 +42,52 @@ public class VoiceNoteReceiver extends BroadcastReceiver {
 	 * @param context
 	 * @param data
 	 */
-	private void delete(Context context, Uri data) {
-
+	private void delete(Context context, Intent intent) {
+		Uri data = intent.getData();
+		long[] affectedRows = intent.getLongArrayExtra(
+				ProviderIntents.EXTRA_AFFECTED_ROWS);
+		
         switch (sUriMatcher.match(data)) {
         case NOTES:
         case SHOPPINGLISTS:
         	
-    		// delete all notes associated with this URI directory:
-    		context.getContentResolver().delete(
-    				VoiceNote.CONTENT_URI, 
-    				VoiceNote.DATA_URI + " LIKE ?", 
-    				new String[] { data.toString() + "/%" });
+        	if (affectedRows == null) {
+	    		// delete all notes associated with this URI directory:
+	    		context.getContentResolver().delete(
+	    				VoiceNote.CONTENT_URI, 
+	    				VoiceNote.DATA_URI + " LIKE ?", 
+	    				new String[] { data.toString() + "/%" });
+        	} else {
+        		// Delete selected rows
+        		for (int i = 0; i < affectedRows.length; i++) {
+        			Uri specificdata = Uri.withAppendedPath(data, "" + affectedRows[i]);
+        			
+            		// delete all notes associated with this URI item:
+            		context.getContentResolver().delete(
+            				VoiceNote.CONTENT_URI, 
+            				VoiceNote.DATA_URI + " = ?", 
+            				new String[] { specificdata.toString()});
+        		}
+        	}
         	break;
         case NOTE_ID:
         case SHOPPINGLIST_ID:
 
-    		// delete all notes associated with this URI item:
-    		context.getContentResolver().delete(
-    				VoiceNote.CONTENT_URI, 
-    				VoiceNote.DATA_URI + " = ?", 
-    				new String[] { data.toString()});
-			break;
+        	if (affectedRows == null || affectedRows.length >= 1) {
+        		// One could check that:
+        		//  1. affectedRows.length == 1
+        		//  2. affectedRows[0] == last segment of data URI.
+        		
+	    		// delete all notes associated with this URI item:
+	    		context.getContentResolver().delete(
+	    				VoiceNote.CONTENT_URI, 
+	    				VoiceNote.DATA_URI + " = ?", 
+	    				new String[] { data.toString()});
+        	} else {
+        		// The where clause did not select this one item,
+        		// so it has not been deleted.
+        	}
+        	break;
         }
 	}
 

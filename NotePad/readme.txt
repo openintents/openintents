@@ -24,11 +24,13 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2008-11-17
+date: 2008-11-??
 
 - removed Internet permission
 - fix for lost note on screen lock
 - revert twice to undo last revert
+- broadcast changes to database so that extensions
+  like VoiceNotes can listen.
 
 ---------------------------------------------------------
 release: 1.0.0

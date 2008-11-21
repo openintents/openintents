@@ -782,6 +782,7 @@ public class ShoppingActivity extends Activity { // implements
 		 * ShoppingView.class), null, intent, 0, null);
 		 */
 		 
+		 /*
 		 // Generate any additional actions that can be performed on the
 		 // overall list. This allows other applications to extend
 		 // our menu with their own actions.
@@ -794,7 +795,8 @@ public class ShoppingActivity extends Activity { // implements
          MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
          menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
                          new ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
-         
+         */
+		 
 		// Set checkable items:
 		// TODO SDK 0.9???
 		// menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
@@ -867,6 +869,24 @@ public class ShoppingActivity extends Activity { // implements
 		 * SensorsPlus.isConnectedSimulator());
 		 */
 
+		// The following code is put from onCreateOptionsMenu to onPrepareOptionsMenu, 
+		// because the URI of the shopping list can change if the user switches to
+		// another list.
+		
+		// Generate any additional actions that can be performed on the
+		 // overall list. This allows other applications to extend
+		 // our menu with their own actions.
+		 Intent intent = new Intent(null, getIntent().getData());
+        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+        //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+        //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+        
+        // Workaround to add icons:
+        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                        new ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
+     
+        
 		return true;
 	}
 
