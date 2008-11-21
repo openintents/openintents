@@ -24,7 +24,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2008-11-??
+date: 2008-11-21
 
 - removed Internet permission
 - fix for lost note on screen lock
