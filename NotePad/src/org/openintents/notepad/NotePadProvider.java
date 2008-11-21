@@ -20,6 +20,7 @@ package org.openintents.notepad;
 import java.util.HashMap;
 
 import org.openintents.intents.ProviderIntents;
+import org.openintents.intents.ProviderUtils;
 import org.openintents.notepad.NotePad.Notes;
 
 import android.content.ContentProvider;
@@ -200,15 +201,20 @@ public class NotePadProvider extends ContentProvider {
     public int delete(Uri uri, String where, String[] whereArgs) {
         SQLiteDatabase db = mOpenHelper.getWritableDatabase();
         int count;
-        switch (sUriMatcher.match(uri)) {
+        long[] affectedRows = null;
+		switch (sUriMatcher.match(uri)) {
         case NOTES:
-            count = db.delete(NOTES_TABLE_NAME, where, whereArgs);
+        	affectedRows = ProviderUtils.getAffectedRows(db, NOTES_TABLE_NAME, where, whereArgs);
+			count = db.delete(NOTES_TABLE_NAME, where, whereArgs);
             break;
 
         case NOTE_ID:
             String noteId = uri.getPathSegments().get(1);
-            count = db.delete(NOTES_TABLE_NAME, Notes._ID + "=" + noteId
-                    + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
+            String whereString = Notes._ID + "=" + noteId
+            	+ (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : "");
+            
+            affectedRows = ProviderUtils.getAffectedRows(db, NOTES_TABLE_NAME, whereString, whereArgs);
+			count = db.delete(NOTES_TABLE_NAME, whereString, whereArgs);
             break;
 
         default:
@@ -219,6 +225,7 @@ public class NotePadProvider extends ContentProvider {
         
         Intent intent = new Intent(ProviderIntents.ACTION_DELETED);
         intent.setData(uri);
+        intent.putExtra(ProviderIntents.EXTRA_AFFECTED_ROWS, affectedRows);
         getContext().sendBroadcast(intent);
         
         return count;
