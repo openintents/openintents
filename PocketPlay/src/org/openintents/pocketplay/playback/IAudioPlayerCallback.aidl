@@ -29,7 +29,7 @@ interface IAudioPlayerCallback {
 
 	void onTrackChange(String trackUri,String artist, String title,String playlist, int playlistPosition);
 
-	void onPositionChange();
+	void onPositionChange(int time);
 
 
 }

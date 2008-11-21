@@ -233,6 +233,14 @@ public class MediaPlayerEngine implements
 		}
     }
 
+	public int getCurrentPosition(){
+		if (mp!=null)
+		{
+			return mp.getCurrentPosition();
+		}
+		return 0;
+	}
+
     /**
      * Load file from URI if it has been set by the calling activity.
      */
@@ -308,8 +316,6 @@ public class MediaPlayerEngine implements
 	}
 
 
-
-
 	public interface PlayerEngineListener{
 
 		public void onPlayerPlay(Uri mURI,String mCurrentArtist,String mCurrentTitle);
@@ -317,6 +323,7 @@ public class MediaPlayerEngine implements
 		public void onPlayerStop();
 		public void onPlayerReset();
 		public void onPlayerCompletion();
+		public void onIncrementalChange(int time);
 
 
 	};

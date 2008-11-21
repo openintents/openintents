@@ -1173,6 +1173,8 @@ public class MediaPlayerActivity extends Activity implements
 	}
 
 
+
+
 	
 	/* *******************callback Methods from IAudioPlayerCallback (see aidl file)***********/
 
@@ -1217,7 +1219,11 @@ public class MediaPlayerActivity extends Activity implements
 			Log.d(TAG,":mServiceCallback::onTrackChange: leaving_____________");
 		}
 
-		public void onPositionChange(){}
+		public void onPositionChange(int time){
+			String s=formatTime(time);
+			String[] args=new String[]{s};
+			mServiceHandler.sendMessage(mServiceHandler.obtainMessage(TRACK_POS_CHANGE, args));						
+		}
 
 
     };
@@ -1230,9 +1236,9 @@ public class MediaPlayerActivity extends Activity implements
     
     private Handler mServiceHandler = new Handler() {
         @Override public void handleMessage(Message msg) {
+			String[] args=(String[])msg.obj;
             switch (msg.what) {
                 case TRACK_CHANGE:
-					String[] args=(String[])msg.obj;
 					if (mPlaylistCursor!=null)
 					{
 						int playlistPosition=-1;
@@ -1255,6 +1261,9 @@ public class MediaPlayerActivity extends Activity implements
 					break;
 				case TRACK_PAUSE:
 					switchToPauseMode();
+					break;
+				case TRACK_POS_CHANGE:
+					mPositionText.setText(args[0]);
 					break;
                 default:
                     super.handleMessage(msg);

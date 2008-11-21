@@ -321,6 +321,10 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 
 		public String[] getNext5(){
+			if (mPlaylistCursor==null)
+			{
+				return null;
+			}
 			Log.d(TAG,"calculating next 5 tracks");		
 			int cpos=mPlaylistCursor.getPosition();
 			int count=0;
@@ -378,6 +382,10 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 
 		public String[] getPrevious5(){
+			if (mPlaylistCursor==null)
+			{
+				return null;
+			}
 			Log.d(TAG,"calculating previous 5 tracks");		
 			int cpos=mPlaylistCursor.getPosition();
 			int count=0;
@@ -533,7 +541,10 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			}
 		}
 		mCallbacks.finishBroadcast();
-	
+
+//		android.os.Looper.prepare();
+		mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_POSITION), 100);
+		
 	}
 	public void onPlayerPause(){
 		// Broadcast to all clients the new value.
@@ -567,6 +578,66 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 		
     } 
+
+	public void onIncrementalChange(int time){
+		// Broadcast to all clients the new value.
+		final int N = mCallbacks.beginBroadcast();
+		for (int i=0; i<N; i++) {
+			try {
+				mCallbacks.getBroadcastItem(i).onPositionChange(time);
+			} catch (RemoteException e) {
+				// The RemoteCallbackList will take care of removing
+				// the dead object for us.
+			}
+		}
+		mCallbacks.finishBroadcast();
+
+	}
+
+
+	int UPDATE_POSITION=100;
+
+	// Handle the process of updating music position:
+	Handler mHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == UPDATE_POSITION) {
+
+				//TODO: crop code. afaik i'll only need periodic updates/ zero
+				if (engine == null) {
+					
+					onIncrementalChange(0);
+					
+					
+					//mOnUpdateViewListener.onPlayPauseStateChange();
+				} else {
+					int time = engine.getCurrentPosition();
+			
+					onIncrementalChange(time);
+			
+
+					if (engine.isPlaying()) {
+						sendMessageDelayed(obtainMessage(UPDATE_POSITION), 100);
+					}
+				}
+			}
+		}
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	private boolean iwant2resume=false;
 
