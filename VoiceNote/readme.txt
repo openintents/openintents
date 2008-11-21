@@ -21,7 +21,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2008-11-??
+date: 2008-11-21
 
 - First public release on Android SDK 1.0.
 
