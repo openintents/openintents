@@ -929,7 +929,10 @@ public class ShoppingActivity extends Activity { // implements
 		case MENU_SENSOR_SERVICE:
 			//toggleSensorService();
 			return true;
-			
+
+		case MENU_UPDATE:
+			UpdateMenu.showUpdateBox(this);
+			return true;
 
 		case MENU_ABOUT:
 			showAboutBox();
@@ -976,9 +979,7 @@ public class ShoppingActivity extends Activity { // implements
 			break;
 		case MENU_DELETE_ITEM:
 			deleteItem(menuInfo.position);
-			break;
-		case MENU_UPDATE:
-			UpdateMenu.showUpdateBox(this);
+			break;		
 		}
 
 		return true;
