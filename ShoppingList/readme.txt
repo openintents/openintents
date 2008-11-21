@@ -24,7 +24,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.2
-date: 2008-11-??
+date: 2008-11-21
 
 - allow for extensions with menu icon
 - support OI Update and drop internet permission (TODO)
