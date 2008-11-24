@@ -16,8 +16,15 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.openintents.pocketplay">
+	package="org.openintents.pocketplay"
+	android:versionCode="00009"
+    android:versionName="0.0.9"
+	>
 
+
+
+<meta-data android:name="org.openintents.updatechecker.UPDATE_URL"
+                       android:value="fixme" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>

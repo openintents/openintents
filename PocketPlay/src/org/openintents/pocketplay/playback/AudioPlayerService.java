@@ -109,6 +109,15 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 	private MediaPlayerEngine engine;
 
 
+
+	private static final String PREFS_NAME="pocketplay_preferences";
+	private static final String PREFS_PREFIX="pldata_";
+	private static final String PREFS_LAST_PLAYLIST	="prefs_last_playlist";
+	private static final String PREFS_LOAD_LAST_LIST="prefs_load_last_list";
+	private String DEFAULT_PLAYLIST="all"; //name is language dependent
+
+
+
 	public static final int INFO_PLAYLIST_URI	=0;
 	public static final int INFO_PLAYLIST_NAME	=1;
 	public static final int INFO_PLAYLIST_POS	=2;
@@ -313,6 +322,12 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 
 		public void invalidatePlaylist(){
+			Log.d(TAG,"saving active playlist position");
+			SharedPreferences prefs=getSharedPreferences(PREFS_NAME,0);
+			SharedPreferences.Editor editor=prefs.edit();
+			editor.putInt(PREFS_PREFIX+mPlaylistURI,mCurrentPlaylistPosition);
+			editor.commit();
+
 			Log.d(TAG,"invalidating Playlist. Hopefully Single File mode");
 			mPlaylistBaseURI = null;
 			mPlaylistURI = null;
@@ -334,8 +349,9 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			
 			mPlaylistCursor.moveToPosition(cpos+1);
 
-			if (!mPlaylistCursor.isLast())
-			{	//return 5 or less entrys
+			//if (!mPlaylistCursor.isLast())
+			//{	
+				//return 5 or less entrys
 				int len= Math.min(mPlaylistCursor.getCount()-1,5);
 				result=new String[len];	
 
@@ -366,9 +382,11 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 					count++;
 				}
 
+			/*
 			}else{
 				result=new String[0];
 			}
+			*/
 			//restore
 			mPlaylistCursor.moveToPosition(cpos);
 
@@ -391,8 +409,8 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			int count=0;
 			String[] result=null;
 			mPlaylistCursor.moveToPosition(cpos-1);
-			if (!mPlaylistCursor.isFirst())
-			{
+			//if (!mPlaylistCursor.isFirst())
+		//	{
 				int len= Math.min(cpos,5);
 				Log.d(TAG,"cpos-1>"+(cpos-1)+"< len>"+len);		
 
@@ -422,9 +440,12 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 					count++;
 				}
 
+/*
 			}else{
+				Log.d(TAG,"playing first track, nothing before");
 				result=new String[0];
 			}
+			*/
 			//restore
 			mPlaylistCursor.moveToPosition(cpos);				
 
@@ -450,6 +471,18 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 			return res;
 
 		}
+		
+		public int getTrackPosition(){
+				if (engine == null) 
+				{					
+					return 0;										
+					//mOnUpdateViewListener.onPlayPauseStateChange();
+				} else {
+					return engine.getCurrentPosition();
+			
+				}
+		}
+			
 
 
     };
@@ -468,8 +501,11 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 
 
 	protected void determinePlaylistPosition(){
+		SharedPreferences prefs=getSharedPreferences(PREFS_NAME,0);
+		int ppos=prefs.getInt(PREFS_PREFIX+mPlaylistURI,0);
+		Log.d(TAG,"retrived playlist position>"+ppos);
 		//TODO: look up position in prefs if playlist has been run before
-		mCurrentPlaylistPosition=0;
+		mCurrentPlaylistPosition=ppos;
 	}
 
 	public void onPlayerPlay(Uri turi,String currentArtist,String currentTitle){
@@ -542,8 +578,6 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		}
 		mCallbacks.finishBroadcast();
 
-//		android.os.Looper.prepare();
-		mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_POSITION), 100);
 		
 	}
 	public void onPlayerPause(){
@@ -593,44 +627,6 @@ public class AudioPlayerService extends Service implements MediaPlayerEngine.Pla
 		mCallbacks.finishBroadcast();
 
 	}
-
-
-	int UPDATE_POSITION=100;
-
-	// Handle the process of updating music position:
-	Handler mHandler = new Handler() {
-		@Override
-		public void handleMessage(Message msg) {
-			if (msg.what == UPDATE_POSITION) {
-
-				//TODO: crop code. afaik i'll only need periodic updates/ zero
-				if (engine == null) {
-					
-					onIncrementalChange(0);
-					
-					
-					//mOnUpdateViewListener.onPlayPauseStateChange();
-				} else {
-					int time = engine.getCurrentPosition();
-			
-					onIncrementalChange(time);
-			
-
-					if (engine.isPlaying()) {
-						sendMessageDelayed(obtainMessage(UPDATE_POSITION), 100);
-					}
-				}
-			}
-		}
-	};
-
-
-
-
-
-
-
-
 
 
 

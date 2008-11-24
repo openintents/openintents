@@ -381,7 +381,11 @@ public class MediaPlayerActivity extends Activity implements
 
 		mHelp.setOnClickListener(new View.OnClickListener(){
 			public void onClick(View view){
-				mUpRightSong.triggerAutoScrolling();
+
+				Intent intent=new Intent();
+				intent.setAction(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse("http://code.google.com/p/openintents/wiki/PocketPlay"));
+				startActivity(intent);
 			}
 		});
 
@@ -874,11 +878,6 @@ public class MediaPlayerActivity extends Activity implements
     public void onCompletion(MediaPlayer arg0) { 
     	Log.d(TAG, "onCompletion called"); 
     	
-    	// Let us clean up
-    	if (mp != null) {
-	    	mp.release();
-	    	mp = null;
-    	}
     	mPlaying = false;
 		//this will move to next track if playlist is loaded
 		nextTrack();
@@ -918,31 +917,41 @@ public class MediaPlayerActivity extends Activity implements
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == UPDATE_POSITION) {
-            	if (mp == null) {
-					/*
-            		mPositionText.setText("00:00 / 00:00");
-            		mSlider.min = 0;
-	            	mSlider.max = 100;
-	            	mSlider.setPosition(0);
-					*/
-	            	mPlaying = false;
-            	} else {
-					/*
-	            	int time = mp.getCurrentPosition();
-	            	int timeMax = mp.getDuration();
-	            	if (mSlider.mTouchState == Slider.STATE_RELEASED) {
-		            	mPositionText.setText("" 
-		            			+ formatTime(time) + " / " 
-		            			+ formatTime(timeMax));
-	            	}
+            	if (!checkConnection()) {
+
+
 	            	
-	            	mSlider.min = 0;
-	            	mSlider.max = timeMax;
-	            	mSlider.setPosition(time);
-	            	*/
-	            	if (mPlaying) {
-	            		sendMessageDelayed(obtainMessage(UPDATE_POSITION), 200);
-	            	}
+            	} else {
+
+					try
+					{					
+						int time=mService.getTrackPosition();
+		
+
+						mPositionText.setText(formatTime(time));
+
+						/*
+						int time = mp.getCurrentPosition();
+						int timeMax = mp.getDuration();
+						if (mSlider.mTouchState == Slider.STATE_RELEASED) {
+							mPositionText.setText("" 
+									+ formatTime(time) + " / " 
+									+ formatTime(timeMax));
+						}
+						
+						mSlider.min = 0;
+						mSlider.max = timeMax;
+						mSlider.setPosition(time);
+						*/
+						if (mService.isPlaying()) {
+							sendMessageDelayed(obtainMessage(UPDATE_POSITION), 200);
+						}
+
+					}
+					catch (RemoteException re)
+					{
+						Log.e(TAG,"Remote Exception while updating track postion");
+					}
             	}
             }
         }
@@ -1258,12 +1267,14 @@ public class MediaPlayerActivity extends Activity implements
                     break;
 				case TRACK_PLAY:
 					switchToPlayMode();
+					mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_POSITION), 200);
 					break;
 				case TRACK_PAUSE:
 					switchToPauseMode();
+					//mHandler.sendMessageDelayed(mHandler.obtainMessage(UPDATE_POSITION), 200);
 					break;
 				case TRACK_POS_CHANGE:
-					mPositionText.setText(args[0]);
+				//	mPositionText.setText(args[0]);
 					break;
                 default:
                     super.handleMessage(msg);

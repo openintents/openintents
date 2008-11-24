@@ -50,4 +50,6 @@ interface IAudioPlayerService {
 
 	String[] getStatus();
 
+	int getTrackPosition();
+
 }
