@@ -944,7 +944,7 @@ public class MediaPlayerActivity extends Activity implements
 						mSlider.setPosition(time);
 						*/
 						if (mService.isPlaying()) {
-							sendMessageDelayed(obtainMessage(UPDATE_POSITION), 200);
+							sendMessageDelayed(obtainMessage(UPDATE_POSITION), 1000);
 						}
 
 					}
