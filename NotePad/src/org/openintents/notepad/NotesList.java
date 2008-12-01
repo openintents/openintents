@@ -64,6 +64,12 @@ public class NotesList extends ListActivity {
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
+	
+	/**
+	 * A group id for alternative menu items.
+	 */
+	private final static int CATEGORY_ALTERNATIVE_GLOBAL = 1;
+	
 	/**
 	 * The columns we are interested in from the database
 	 */
@@ -137,15 +143,16 @@ public class NotesList extends ListActivity {
 		// actions found here, but this allows other applications to extend
 		// our menu with their own actions.
 		Intent intent = new Intent(null, getIntent().getData());
-		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		Log.i(TAG, "Building options menu for: " + intent.getDataString());
+        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
 		//menu
-		//		.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+		//		.addIntentOptions(CATEGORY_ALTERNATIVE_GLOBAL, 0, 0,
 		//				new ComponentName(this, NotesList.class), null, intent,
 		//				0, null);
 
         // Workaround to add icons:
         MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
-        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+        menu2.addIntentOptions(CATEGORY_ALTERNATIVE_GLOBAL, 0, 0,
                         new ComponentName(this, NotesList.class), null, intent, 0, null);
         
 		return true;
