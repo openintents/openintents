@@ -9,8 +9,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.openintents.convertcsv.R;
-import org.openintents.convertcsv.shoppinglist.ExportCsv;
-import org.openintents.convertcsv.shoppinglist.ImportCsv;
 import org.openintents.provider.Shopping;
 
 import android.app.Activity;
@@ -34,6 +32,8 @@ public class ConvertCsvActivity extends Activity {
         setContentView(R.layout.convert);
         
         mEditText = (EditText) findViewById(R.id.file_path);
+        
+        mEditText.setText("/sdcard/notepad.csv");
         
         Button buttonImport = (Button) findViewById(R.id.file_import);
         
@@ -63,7 +63,7 @@ public class ConvertCsvActivity extends Activity {
 
     	String fileName = mEditText.getText().toString();
     	
-    	Log.i(TAG, "Exporting...");
+    	Log.i(TAG, "Importing...");
     	
     	File file = new File(fileName);
 		if (true) { // (!file.exists()) {
