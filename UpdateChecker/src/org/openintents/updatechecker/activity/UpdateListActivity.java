@@ -192,8 +192,7 @@ public class UpdateListActivity extends ListActivity {
 				c.addRow(row);
 			}
 			
-		}
-
+		}		
 		return c;
 
 	}

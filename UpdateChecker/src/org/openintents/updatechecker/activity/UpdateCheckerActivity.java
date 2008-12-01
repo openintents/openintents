@@ -214,7 +214,7 @@ public class UpdateCheckerActivity extends Activity {
 
 		view = (TextView) findViewById(R.id.current_version);
 		if (mCurrentVersionName != null){
-			view.setText(getString(R.string.current_version, mCurrentVersion));
+			view.setText(getString(R.string.current_version, mCurrentVersionName));
 			view.setVisibility(View.VISIBLE);
 		} else {
 			view.setVisibility(View.GONE);

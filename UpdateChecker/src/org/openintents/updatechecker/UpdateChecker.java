@@ -182,10 +182,13 @@ public class UpdateChecker {
 		return mCurrentVersionName;
 	}
 
-	public void setMarketUpdateIntent(String appName) {
+	public void setMarketUpdateIntent(String packageName, String appName) {
 
 		if (mUpdateIntent == null) {
 			mUpdateIntent = new Intent(Intent.ACTION_VIEW);
+			if (packageName != null){
+				mUpdateIntent.setData(Uri.parse("market://search?pname=" + packageName));
+			}
 			if (getApplicationId() != null) {
 				mUpdateIntent.setData(Uri.parse("market://details?id="
 						+ getApplicationId()));

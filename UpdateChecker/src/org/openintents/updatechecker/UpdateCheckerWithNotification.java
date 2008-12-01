@@ -81,7 +81,7 @@ public class UpdateCheckerWithNotification {
 		Log.v(TAG, "update with notification");
 		if (mLastCheck + UpdateInfo.CHECK_INTERVAL < System.currentTimeMillis()) {
 			mChecker.checkForUpdate(mUri);
-			mChecker.setMarketUpdateIntent(mAppName);
+			mChecker.setMarketUpdateIntent(mPackageName, mAppName);
 			if (!mNoNotifications) {
 				showNotificationIfRequired();
 			}
@@ -97,7 +97,7 @@ public class UpdateCheckerWithNotification {
 	public boolean checkForUpdateWithOutNotification() {
 		Log.v(TAG, "update without notification");
 		mChecker.checkForUpdate(mUri);
-		mChecker.setMarketUpdateIntent(mAppName);
+		mChecker.setMarketUpdateIntent(mPackageName, mAppName);
 		updateLastCheck(mUri);
 		return isUpdateRequired();
 
