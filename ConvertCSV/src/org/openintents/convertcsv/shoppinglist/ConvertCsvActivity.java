@@ -1,4 +1,4 @@
-package org.openintents.convertcsv;
+package org.openintents.convertcsv.shoppinglist;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -8,8 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.openintents.convertcsv.shoppinglist.ExportCsv;
-import org.openintents.convertcsv.shoppinglist.ImportCsv;
+import org.openintents.convertcsv.R;
+import org.openintents.convertcsv.R.id;
+import org.openintents.convertcsv.R.layout;
+import org.openintents.convertcsv.R.string;
 import org.openintents.provider.Shopping;
 
 import android.app.Activity;
@@ -30,7 +32,7 @@ public class ConvertCsvActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.convert);
         
         mEditText = (EditText) findViewById(R.id.file_path);
         

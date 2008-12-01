@@ -1,6 +1,5 @@
 package org.openintents.convertcsv.shoppinglist;
 
-import org.openintents.convertcsv.ConvertCsvActivity;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;

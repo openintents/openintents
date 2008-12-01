@@ -22,6 +22,14 @@ OI Notepad allows to create, edit, and delete notes.
 To obtain the current release, visit
   http://www.openintents.org
 
+
+---------------------------------------------------------
+release: 1.0.2
+date: 2008-12-??
+
+- allow alternative menus that affect the whole list
+  of notes
+
 ---------------------------------------------------------
 release: 1.0.1
 date: 2008-11-21

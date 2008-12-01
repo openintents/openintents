@@ -3,7 +3,6 @@ package org.openintents.convertcsv.shoppinglist;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import org.openintents.convertcsv.ConvertCsvActivity;
 import org.openintents.provider.Shopping;
 
 import android.content.Context;
