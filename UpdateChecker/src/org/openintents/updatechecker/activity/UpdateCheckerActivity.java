@@ -52,13 +52,16 @@ public class UpdateCheckerActivity extends Activity {
 	private static final String MARKET_PACKAGE_SEARCH_PREFIX = "market://search?q=pname:";
 	// = "http://market.android.com/search?q=pname:";
 	private static final String ANDAPPSTORE_PACKAGE_SEARCH_PREFIX = "http://andappstore.com/AndroidPhoneApplications/apps/!search?s=";
-	
+	private static final String ANDAPPSTORE_PREFIX = "http://andappstore.com";
+
 	private String mPackageName = null;
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
 	private String mLatestVersionName;
 	private Object mCurrentVersion;
 	private String mCurrentVersionName;
+	private boolean mIsMarketIntent;
+	private boolean mIsAppandstoreIntent;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -97,8 +100,7 @@ public class UpdateCheckerActivity extends Activity {
 							UpdateChecker.EXTRA_UPDATE_INTENT);
 					Log.d(TAG, "Do update: " + intent.getAction() + ", "
 							+ intent.getDataString());
-					if (UpdateApplication.AND_APP_STORE
-							|| isMarketIntent(intent)) {
+					if (UpdateApplication.AND_APP_STORE || mIsMarketIntent) {
 						try {
 							startActivity(intent);
 						} catch (ActivityNotFoundException e) {
@@ -128,7 +130,8 @@ public class UpdateCheckerActivity extends Activity {
 				case R.id.remind_me_later:
 					updateUpdateTime();
 
-					// Cancelling result means that no list refresh is required by the calling activity.
+					// Cancelling result means that no list refresh is required
+					// by the calling activity.
 					setResult(RESULT_CANCELED);
 					break;
 				case R.id.ignore_this_update:
@@ -155,7 +158,8 @@ public class UpdateCheckerActivity extends Activity {
 		intent.setAction(Intent.ACTION_VIEW);
 		Uri uri;
 		if (UpdateApplication.AND_APP_STORE) {
-			uri = Uri.parse(ANDAPPSTORE_PACKAGE_SEARCH_PREFIX + Uri.decode(appName));
+			uri = Uri.parse(ANDAPPSTORE_PACKAGE_SEARCH_PREFIX
+					+ Uri.decode(appName));
 		} else {
 			uri = Uri.parse(MARKET_PACKAGE_SEARCH_PREFIX + packageName);
 		}
@@ -173,6 +177,11 @@ public class UpdateCheckerActivity extends Activity {
 				&& (intent.getDataString().startsWith(MARKET_PREFIX_1) || intent
 						.getDataString().startsWith(MARKET_PREFIX_2));
 
+	}
+
+	protected boolean isAndAppIntent(Intent intent) {
+		return intent.getDataString() != null
+				&& intent.getDataString().startsWith(ANDAPPSTORE_PREFIX);
 	}
 
 	protected void updateLastIgnoredVersion() {
@@ -198,34 +207,58 @@ public class UpdateCheckerActivity extends Activity {
 
 		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
 		String comment = intent.getStringExtra(UpdateChecker.EXTRA_COMMENT);
+
+		Intent updateIntent = (Intent) getIntent().getParcelableExtra(
+				UpdateChecker.EXTRA_UPDATE_INTENT);
+		mIsMarketIntent = isMarketIntent(updateIntent);
+		mIsAppandstoreIntent = isAndAppIntent(updateIntent);
+
+		String location = null;
+		if (mIsMarketIntent || mIsAppandstoreIntent) {
+			location = (mIsMarketIntent ? getString(R.string.android_market)
+					: getString(R.string.andappstore));
+		}
+
 		if (appName != null) {
 			if (comment != null) {
-				view.setText(getString(R.string.update_available_2, appName,
-						comment));
+				if (location != null) {
+					view.setText(getString(R.string.update_available_3,
+							appName, location, comment));
+				} else {
+					view.setText(getString(R.string.update_available_2,
+							appName, comment));
+				}
 			} else {
-				view.setText(getString(R.string.update_available_no_comment,
-						appName));
+				if (location != null) {
+					view.setText(getString(
+							R.string.update_available_location_no_comment,
+							appName, location));
+				} else {
+					view.setText(getString(
+							R.string.update_available_no_comment, appName));
+				}
 			}
 		}
 
-		mCurrentVersion = intent.getIntExtra(UpdateChecker.EXTRA_CURRENT_VERSION,
-				0);
-		mCurrentVersionName = intent.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
+		mCurrentVersion = intent.getIntExtra(
+				UpdateChecker.EXTRA_CURRENT_VERSION, 0);
+		mCurrentVersionName = intent
+				.getStringExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME);
 
 		view = (TextView) findViewById(R.id.current_version);
-		if (mCurrentVersionName != null){
-			view.setText(getString(R.string.current_version, mCurrentVersionName));
+		if (mCurrentVersionName != null) {
+			view.setText(getString(R.string.current_version,
+					mCurrentVersionName));
 			view.setVisibility(View.VISIBLE);
 		} else {
 			view.setVisibility(View.GONE);
 		}
-		
+
 		mLatestVersion = intent.getIntExtra(UpdateChecker.EXTRA_LATEST_VERSION,
 				0);
 		mLatestVersionName = intent
 				.getStringExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME);
 
-		
 		if (mLatestVersionName != null) {
 			setTitle(getString(R.string.newer_version, mLatestVersionName));
 		} else {
@@ -266,53 +299,5 @@ public class UpdateCheckerActivity extends Activity {
 		Log.v(TAG, "package name = " + mPackageName);
 	}
 
-	private String getSDInfo() {
-		StatFs stats = new StatFs("/sdcard");
-		int space = stats.getAvailableBlocks() * stats.getBlockSize();
-		return getString(R.string.free_space, String.valueOf(space));
-	}
-
-	private String getOSInfo() {
-
-		return getString(R.string.os_info, Build.BOARD, Build.BRAND,
-				Build.DEVICE, Build.ID, Build.MODEL);
-
-	}
-
-	/**
-	 * Get current version number.
-	 * 
-	 * @return
-	 */
-	private String getVersionNumber() {
-		String version = "?";
-		try {
-			PackageInfo pi = getPackageManager().getPackageInfo(
-					getPackageName(), 0);
-			version = pi.versionName;
-		} catch (PackageManager.NameNotFoundException e) {
-			Log.e(TAG, "Package name not found", e);
-		}
-		;
-		return version;
-	}
-
-	/**
-	 * Get application name.
-	 * 
-	 * @return
-	 */
-	private String getApplicationName() {
-		String name = "?";
-		try {
-			PackageInfo pi = getPackageManager().getPackageInfo(
-					getPackageName(), 0);
-			name = getString(pi.applicationInfo.labelRes);
-		} catch (PackageManager.NameNotFoundException e) {
-			Log.e(TAG, "Package name not found", e);
-		}
-		;
-		return name;
-	}
 
 }

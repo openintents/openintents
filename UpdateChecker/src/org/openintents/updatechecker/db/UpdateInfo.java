@@ -33,6 +33,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 import android.util.Log;
 
@@ -44,10 +45,10 @@ public class UpdateInfo implements BaseColumns {
 	public static final String IGNORE_VERSION_CODE = "ignore_version_code";
 	public static final String IGNORE_VERSION_NAME = "ignore_version_name";
 	public static final String NO_NOTIFICATIONS = "no_notifications";
-	public static final String LATEST_VERSION_CODE = "latest_version";	
+	public static final String LATEST_VERSION_CODE = "latest_version";
 	public static final String LATEST_VERSION_NAME = "latest_version_name";
 	public static final String LATEST_COMMENT = "latest_comment";
-	
+
 	public static final String DEFAULT_SORT_ORDER = LAST_CHECK;
 
 	public static final String CONTENT_TYPE = "vnd.android.cursor.dir/org.openintents.updates";
@@ -62,24 +63,27 @@ public class UpdateInfo implements BaseColumns {
 	public static final String META_DATA_UPDATE_URL = "org.openintents.updatechecker.UPDATE_URL";
 	private static final String TAG = "UpdateInfo";
 	public static final String EXTRA_WARN_INTENT = "warn_intent";
+	private static final String PREF_ANDAPPSTORE = "andappstore";
 
 	public static Intent createUpdateActivityIntent(Context mContext,
-			UpdateChecker mChecker, String mPackageName, String mAppName, boolean setNewFlag) {
+			UpdateChecker mChecker, String mPackageName, String mAppName,
+			boolean setNewFlag) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
 		intent.setAction(mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, mChecker
 				.getLatestVersion());
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME, mChecker
 				.getLatestVersionName());
-		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION, mChecker.getCurrentVersion());
-		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME,
-				mChecker.getCurrentVersionName());
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION, mChecker
+				.getCurrentVersion());
+		intent.putExtra(UpdateChecker.EXTRA_CURRENT_VERSION_NAME, mChecker
+				.getCurrentVersionName());
 		intent.putExtra(UpdateChecker.EXTRA_COMMENT, mChecker.getComment());
 		intent.putExtra(UpdateChecker.EXTRA_PACKAGE_NAME, mPackageName);
 		intent.putExtra(UpdateChecker.EXTRA_APP_NAME, mAppName);
 		if (setNewFlag) {
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-				| Intent.FLAG_ACTIVITY_NEW_TASK);
+					| Intent.FLAG_ACTIVITY_NEW_TASK);
 		}
 		intent.putExtra(UpdateChecker.EXTRA_UPDATE_INTENT, mChecker
 				.getUpdateIntent());
@@ -88,7 +92,8 @@ public class UpdateInfo implements BaseColumns {
 
 	public static Intent createUpdateActivityIntent(Context mContext,
 			int latestVersion, String latestVersionName, String comment,
-			String mPackageName, String mAppName, Intent updateIntent, int currentVersion, String currentVersionName) {
+			String mPackageName, String mAppName, Intent updateIntent,
+			int currentVersion, String currentVersionName) {
 		Intent intent = new Intent(mContext, UpdateCheckerActivity.class);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION, latestVersion);
 		intent.putExtra(UpdateChecker.EXTRA_LATEST_VERSION_NAME,
@@ -109,49 +114,6 @@ public class UpdateInfo implements BaseColumns {
 		return (pi.versionName == null && pi.versionCode == 0)
 				|| pi.packageName.startsWith("com.android")
 				|| pi.packageName.startsWith("android");
-	}
-
-	public static void checkAlarm(Context context) {
-		Log.i(TAG, "Refresh update alarm");
-		
-		AlarmUtils.refreshUpdateAlarm(context);
-		
-		// TODO: Friedger, sorry, I don't understand the code below...
-		// What do you check with Pending Intent?
-		
-		// Is the following not enough?
-		// PreferencesActivity.setAlarmIfDesired(context, -1);
-		
-		/*
-		Intent i = new Intent(context, UpdateCheckService.class);
-		i.setAction(UpdateCheckService.ACTION_CHECK_ALL);
-		PendingIntent pi = PendingIntent.getService(context, 0, i,
-				PendingIntent.FLAG_NO_CREATE);
-
-		SharedPreferences prefs = PreferenceManager
-				.getDefaultSharedPreferences(context);
-
-		Intent intent = new Intent(context, UpdateCheckService.class);
-		if (prefs.getBoolean("auto_update", true)) {
-
-			if (pi == null) {
-				intent.setAction(UpdateCheckService.ACTION_SET_ALARM);
-				intent.putExtra(UpdateCheckService.EXTRA_INTERVAL, Integer
-						.parseInt(prefs.getString("update_interval",
-								"604800000")));
-				Log.v(TAG, "check alarm start");
-				context.startService(intent);
-			}
-		} else {
-			if (pi != null) {
-				intent.setAction(UpdateCheckService.ACTION_UNSET_ALARM);
-				Log.v(TAG, "check alarm stop");
-				context.startService(intent);
-			}
-		}
-		
-		*/
-
 	}
 
 	public static void insertUpdateInfo(Context context, String packageName) {
@@ -195,14 +157,19 @@ public class UpdateInfo implements BaseColumns {
 
 		// try andappstore url
 		if (updateUrl == null) {
-			updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
-					+ pi.packageName;
-			try {
-				// try connection
-				new URL(updateUrl).openConnection();
-			} catch (Exception e) {
-				Log.v(TAG, "AndAppStore url:" + e.getMessage());
-				updateUrl = null;
+			boolean useAndAppStore = PreferenceManager
+					.getDefaultSharedPreferences(context).getBoolean(
+							PREF_ANDAPPSTORE, true);
+			if (useAndAppStore) {
+				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
+						+ pi.packageName;
+				try {
+					// try connection
+					new URL(updateUrl).openConnection();
+				} catch (Exception e) {
+					Log.v(TAG, "AndAppStore url:" + e.getMessage());
+					updateUrl = null;
+				}
 			}
 		}
 
@@ -221,22 +188,21 @@ public class UpdateInfo implements BaseColumns {
 						new String[] { packageName });
 
 	}
-	
-	public static String getInfo(Context context, String latestVersionName, String comment) {
+
+	public static String getInfo(Context context, String latestVersionName,
+			String comment) {
 		String info;
 		if (latestVersionName != null) {
 			if (comment != null) {
 				info = context.getString(R.string.newer_version_comment,
-						latestVersionName,
-						comment);
+						latestVersionName, comment);
 			} else {
 				info = context.getString(R.string.newer_version,
 						latestVersionName);
 			}
 		} else {
 			if (comment != null) {
-				info = context.getString(R.string.newer_version,
-						comment);
+				info = context.getString(R.string.newer_version, comment);
 			} else {
 				info = context.getString(R.string.newer_version_available);
 			}
@@ -244,6 +210,5 @@ public class UpdateInfo implements BaseColumns {
 		}
 		return info;
 	}
-
 
 }

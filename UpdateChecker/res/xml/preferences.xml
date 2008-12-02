@@ -18,4 +18,10 @@
             android:entryValues="@array/entryvalues_update_interval"
             android:dialogTitle="@string/dialog_title_update_interval" />
 
+    <CheckBoxPreference
+            android:key="andappstore"
+            android:defaultValue="true"
+            android:title="@string/preference_andappstore"
+            android:summary="@string/preference_andappstore_summary" />
+
 </PreferenceScreen>

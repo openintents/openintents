@@ -135,7 +135,7 @@ public class UpdateChecker {
 			Log.v(TAG, "MalformedURLException", e);
 		} catch (IOException e) {
 			Log.v(TAG, "IOException", e);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Log.v(TAG, "Exception", e);
 		}
 
@@ -173,11 +173,11 @@ public class UpdateChecker {
 	public Intent getUpdateIntent() {
 		return mUpdateIntent;
 	}
-	
+
 	public int getCurrentVersion() {
 		return mCurrentVersion;
 	}
-	
+
 	public String getCurrentVersionName() {
 		return mCurrentVersionName;
 	}
@@ -186,10 +186,10 @@ public class UpdateChecker {
 
 		if (mUpdateIntent == null) {
 			mUpdateIntent = new Intent(Intent.ACTION_VIEW);
-			if (packageName != null){
-				mUpdateIntent.setData(Uri.parse("market://search?pname=" + packageName));
-			}
-			if (getApplicationId() != null) {
+			if (packageName != null) {
+				mUpdateIntent.setData(Uri.parse("market://search?q=pname:"
+						+ packageName));
+			} else if (getApplicationId() != null) {
 				mUpdateIntent.setData(Uri.parse("market://details?id="
 						+ getApplicationId()));
 			} else if (appName != null) {

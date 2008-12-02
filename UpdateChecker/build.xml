@@ -367,20 +367,20 @@ storepass=*password of keystore*
 
 
 	<!-- Install the package on the default emulator -->
-	<target name="install-signed" depends="release">
+	<target name="install-signed-market" depends="release">
 		<echo>Installing ${out-signed-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
-			<arg value="${out-signed-package}" />
+			<arg value="${outdir}/${ant.project.name}-${version}-market.apk" />
 		</exec>
 	</target>
 
-	<target name="reinstall-signed" depends="release">
+	<target name="reinstall-signed-market" depends="release">
 		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-signed-package}" />
+			<arg value="${outdir}/${ant.project.name}-${version}-market.apk" />
 		</exec>
 	</target>
 			

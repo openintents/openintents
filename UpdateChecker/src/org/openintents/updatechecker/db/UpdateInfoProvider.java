@@ -20,6 +20,8 @@ package org.openintents.updatechecker.db;
 
 import java.util.HashMap;
 
+import org.openintents.updatechecker.util.AlarmUtils;
+
 import android.content.ContentProvider;
 import android.content.ContentUris;
 import android.content.ContentValues;
@@ -98,7 +100,7 @@ public class UpdateInfoProvider extends ContentProvider {
 	@Override
 	public boolean onCreate() {
 		mOpenHelper = new DatabaseHelper(getContext());	
-		UpdateInfo.checkAlarm(this.getContext());
+		AlarmUtils.refreshUpdateAlarm(getContext());
 		return true;
 	}
 

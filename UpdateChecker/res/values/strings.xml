@@ -3,11 +3,15 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">A new version of %s is available.\nWould you like to upgrade?</string>
+    <string name="update_available_3">A new version of %s is available at %s.\n%s\n</string>
     <string name="update_available_2">A new version of %s is available.\n%s\n</string>
+    <string name="update_available_location_no_comment">A new version of %s is available at %s.</string>
     <string name="update_available_no_comment">A new version of %s is available.</string>
 	<string name="market_not_available">Android Market not available.</string>
     <string name="market_search_term">OI Update</string>
-    
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
     <string name="about_text_extended">Version %s\nSD card %s\n\nOS\n%s</string>
     <string name="free_space">free space: %s</string>
     <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
@@ -62,6 +66,9 @@
     <string name="default_update_interval">every_month</string>
     <string name="preference_warning_title">Warning</string>
     <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    
+    <string name="preference_andappstore">Use AndAppStore</string>
+    <string name="preference_andappstore_summary">Use version information provided by AndAppStore.com</string>
     
     <string name="permission_read_update_info">Read update information</string>
     <string name="permission_write_update_info">Write update information</string>

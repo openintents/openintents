@@ -28,11 +28,14 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2008-11-??
+date: 2008-12-02
 
 - Only notify if version code or version name increases.
   (Previously there was an update notification also 
    if version name decreased.)
+- Preference to exclude AndAppStore
+- Application ids not supported anymore in txt version files.
+- Sort by Application name
 
 ---------------------------------------------------------
 release: 1.0.0
