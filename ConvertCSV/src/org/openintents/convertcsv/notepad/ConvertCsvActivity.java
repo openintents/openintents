@@ -1,11 +1,11 @@
 package org.openintents.convertcsv.notepad;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import org.openintents.convertcsv.R;
@@ -68,14 +68,12 @@ public class ConvertCsvActivity extends Activity {
     	File file = new File(fileName);
 		if (true) { // (!file.exists()) {
 			try{
-				FileInputStream fis = new FileInputStream(file);
-				
-				DataInputStream dis = new DataInputStream(fis);
+				FileReader reader = new FileReader(file);
 				
 				ImportCsv ic = new ImportCsv(this);
-				ic.importCsv(dis);
+				ic.importCsv(reader);
 				
-				dis.close();
+				reader.close();
 			} catch (FileNotFoundException e) {
 				Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
 				Log.i(TAG, "File not found", e);
@@ -96,16 +94,12 @@ public class ConvertCsvActivity extends Activity {
     	File file = new File(fileName);
 		if (true) { // (!file.exists()) {
 			try{
-				FileOutputStream fos = new FileOutputStream(file);
+				FileWriter writer = new FileWriter(file);
 				
-				DataOutputStream dos = new DataOutputStream(fos);
-				
-				//dos.writeBytes("test, test2\ntest3, test4");
-
 				ExportCsv ec = new ExportCsv(this);
-				ec.exportCsv(dos);
+				ec.exportCsv(writer);
 	
-				dos.close();
+				writer.close();
 			} catch (FileNotFoundException e) {
 				Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
 				Log.i(TAG, "File not found", e);
