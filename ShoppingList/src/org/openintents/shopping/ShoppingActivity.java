@@ -41,6 +41,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -52,6 +53,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
@@ -89,8 +91,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * 
  */
 public class ShoppingActivity extends Activity { // implements
-												// AdapterView.OnItemClickListener
-												// {
+	// AdapterView.OnItemClickListener
+	// {
 
 	/**
 	 * TAG for logging.
@@ -113,34 +115,25 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
 
 	private static final int MENU_SENSOR_SERVICE = Menu.FIRST + 10; // shake
-																	// control
+	// control
 
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
 	// TODO: Implement the following menu items
-	private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes rename
+	private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes
+																// rename
 	private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
-															// or modified
+	// or modified
 	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
-																// previously
-																// used items
+	// previously
+	// used items
 
 	// TODO: Implement "select list" action
 	// that can be called by other programs.
 	private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
-																// shopping list
+	// shopping list
 	private static final int MENU_UPDATE = Menu.FIRST + 16;
-
-	// TODO: Further possible actions to implement:
-	// * Move items to some other shopping list
-
-	
-	
-	//
-	private static final int MENU_SETTINGS = Menu.FIRST + 100;
-	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 101;
-
-	
+	private static final int MENU_PREFERENCES = Menu.FIRST + 17;
 
 	/**
 	 * The main activity.
@@ -211,7 +204,7 @@ public class ShoppingActivity extends Activity { // implements
 	 * now hardcoded.)
 	 */
 	private static int mMaxListCount = 6; // This value is changed by
-											// setListTheme()
+	// setListTheme()
 
 	/**
 	 * Private members connected to Spinner ListFilter.
@@ -270,13 +263,16 @@ public class ShoppingActivity extends Activity { // implements
 	public static final int mMarkStrikethrough = 2;
 	public static final int mMarkAddtext = 3;
 
+	private static final String PREFS_SORTORDER = "sortorder";
+
+	private static final String PREFS_FONTSIZE = "fontsize";
 
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
 
 	// Sensor service -----------------
 
-	//private SensorEventListener mSensorListener;
+	// private SensorEventListener mSensorListener;
 
 	/**
 	 * Called when the activity is first created.
@@ -307,7 +303,7 @@ public class ShoppingActivity extends Activity { // implements
 		mUpdating = false;
 
 		// Sensor service
-		//mSensorListener = new SensorEventListener(this);
+		// mSensorListener = new SensorEventListener(this);
 
 		// General Uris:
 		mListUri = Shopping.Lists.CONTENT_URI;
@@ -319,7 +315,7 @@ public class ShoppingActivity extends Activity { // implements
 		final Intent intent = getIntent();
 		final String type = intent.resolveType(this);
 		final String action = intent.getAction();
-		
+
 		if (action == null) {
 			// Main action
 			mState = STATE_MAIN;
@@ -416,11 +412,6 @@ public class ShoppingActivity extends Activity { // implements
 		// set focus to the edit line:
 		mEditText.requestFocus();
 
-		// Create Intent receiver:
-		// TODO ???
-		/*
-		 * mIntentReceiver = new ListIntentReceiver();
-		 */
 	}
 
 	@Override
@@ -580,14 +571,11 @@ public class ShoppingActivity extends Activity { // implements
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenuInfo info) {
 						contextmenu.add(0, MENU_MARK_ITEM, 0,
-								R.string.mark_item)
-								.setShortcut('1', 'm');
+								R.string.mark_item).setShortcut('1', 'm');
 						contextmenu.add(0, MENU_EDIT_ITEM, 0,
-								R.string.edit_item)
-								.setShortcut('2', 'e');
+								R.string.edit_item).setShortcut('2', 'e');
 						contextmenu.add(0, MENU_DELETE_ITEM, 0,
-								R.string.delete_item)
-								.setShortcut('3', 'd');
+								R.string.delete_item).setShortcut('3', 'd');
 					}
 
 				});
@@ -643,13 +631,11 @@ public class ShoppingActivity extends Activity { // implements
 			//http://groups.google.com/group/android-developers/browse_frm/thread
 			// /3b2f4063a2221acb/36462ba1301a18c8
 			/*
-			int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 4;
-			if (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE) {
-				mListItems.setSelection(mListItems.getCount()
-						- NUMBER_OF_ELEMENTS_BELOW_MIDDLE);
-			}
-			;
-			*/
+			 * int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 4; if
+			 * (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE) {
+			 * mListItems.setSelection(mListItems.getCount() -
+			 * NUMBER_OF_ELEMENTS_BELOW_MIDDLE); } ;
+			 */
 			mListItems.setSelection(mListItems.getCount() - 1);
 
 			// mListItems.getChildAt(mListItems.getCount()-1).setSelected(true);
@@ -694,8 +680,8 @@ public class ShoppingActivity extends Activity { // implements
 		values.put(Shopping.Contains.STATUS, newstatus);
 		Log.d(TAG, "update row " + c.getString(0) + ", newstatus " + newstatus);
 		getContentResolver().update(
-				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, c.getString(0)),
-				values, null, null);
+				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, c
+						.getString(0)), values, null, null);
 
 		// Log.i(TAG, "Requery now:");
 		c.requery();
@@ -754,28 +740,31 @@ public class ShoppingActivity extends Activity { // implements
 		menu.add(0, MENU_THEME, 0, R.string.theme).setIcon(
 				android.R.drawable.ic_menu_manage).setShortcut('5', 't');
 
+		menu.add(0, MENU_PREFERENCES, 0, R.string.preferences).setIcon(android.R.drawable.ic_menu_preferences);
 		
 		if (addLocationAlertPossible()) {
-			menu.add(0, MENU_ADD_LOCATION_ALERT, 0, R.string.shopping_add_alert)
-					.setIcon(android.R.drawable.ic_menu_mylocation).setShortcut('6',
-							'l');
+			menu
+					.add(0, MENU_ADD_LOCATION_ALERT, 0,
+							R.string.shopping_add_alert).setIcon(
+							android.R.drawable.ic_menu_mylocation).setShortcut(
+							'6', 'l');
 		}
 
 		/*
-		 menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
-		  .setIcon(R.drawable.mobile_shake001a) .setShortcut('0', 's');
-		  */
-		 
+		 * menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
+		 * .setIcon(R.drawable.mobile_shake001a) .setShortcut('0', 's');
+		 */
 
 		/*
 		 * menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
 		 * .setShortcut('0', 's'); menu.add(0, MENU_CONNECT_SIMULATOR,
 		 * R.string.connect_to_sensorsimulator) .setShortcut('1', 'c');
 		 */
-		
-		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
-		 menu.add(0, MENU_ABOUT, 0, R.string.about)
-		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
+
+		UpdateMenu
+				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
+				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 
 		/*
 		 * // Generate any additional actions that can be performed on the //
@@ -786,30 +775,31 @@ public class ShoppingActivity extends Activity { // implements
 		 * menu.addIntentOptions( Menu.ALTERNATIVE, 0, new ComponentName(this,
 		 * ShoppingView.class), null, intent, 0, null);
 		 */
-		 
-		 /*
-		 // Generate any additional actions that can be performed on the
-		 // overall list. This allows other applications to extend
-		 // our menu with their own actions.
-		 Intent intent = new Intent(null, getIntent().getData());
-         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-         //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-         //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
-         
-         // Workaround to add icons:
-         MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
-         menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                         new ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
-         */
-		 
+
+		/*
+		 * // Generate any additional actions that can be performed on the //
+		 * overall list. This allows other applications to extend // our menu
+		 * with their own actions. Intent intent = new Intent(null,
+		 * getIntent().getData());
+		 * intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		 * //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, // new
+		 * ComponentName(this, NoteEditor.class), null, intent, 0, null);
+		 * 
+		 * // Workaround to add icons: MenuIntentOptionsWithIcons menu2 = new
+		 * MenuIntentOptionsWithIcons(this, menu);
+		 * menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, new
+		 * ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
+		 */
+
 		// Set checkable items:
 		// TODO SDK 0.9???
 		// menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
 		return true;
 	}
-	
+
 	/**
 	 * Check whether an application exists that handles the pick activity.
+	 * 
 	 * @return
 	 */
 	private boolean addLocationAlertPossible() {
@@ -817,17 +807,19 @@ public class ShoppingActivity extends Activity { // implements
 		// Test whether intent exists for picking a location:
 		PackageManager pm = getPackageManager();
 		Intent intent = new Intent(Intent.ACTION_PICK, Locations.CONTENT_URI);
-		List<ResolveInfo> resolve_pick_location = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		List<ResolveInfo> resolve_pick_location = pm.queryIntentActivities(
+				intent, PackageManager.MATCH_DEFAULT_ONLY);
 		/*
-		for (int i = 0; i < resolve_pick_location.size(); i++) {
-			Log.d(TAG, "Activity name: " + resolve_pick_location.get(i).activityInfo.name);
-		}
-		*/
-		
+		 * for (int i = 0; i < resolve_pick_location.size(); i++) { Log.d(TAG,
+		 * "Activity name: " + resolve_pick_location.get(i).activityInfo.name);
+		 * }
+		 */
+
 		// Check whether adding alerts is possible.
 		intent = new Intent(Intent.ACTION_VIEW, Alert.Generic.CONTENT_URI);
-		List<ResolveInfo> resolve_view_alerts = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-		
+		List<ResolveInfo> resolve_view_alerts = pm.queryIntentActivities(
+				intent, PackageManager.MATCH_DEFAULT_ONLY);
+
 		boolean pick_location_possible = (resolve_pick_location.size() > 0);
 		boolean view_alerts_possible = (resolve_view_alerts.size() > 0);
 		Log.d(TAG, "Pick location possible: " + pick_location_possible);
@@ -835,7 +827,7 @@ public class ShoppingActivity extends Activity { // implements
 		if (pick_location_possible && view_alerts_possible) {
 			return true;
 		}
-		
+
 		return false;
 	}
 
@@ -874,29 +866,32 @@ public class ShoppingActivity extends Activity { // implements
 		 * SensorsPlus.isConnectedSimulator());
 		 */
 
-		// The following code is put from onCreateOptionsMenu to onPrepareOptionsMenu, 
-		// because the URI of the shopping list can change if the user switches to
+		// The following code is put from onCreateOptionsMenu to
+		// onPrepareOptionsMenu,
+		// because the URI of the shopping list can change if the user switches
+		// to
 		// another list.
-		
 		// Generate any additional actions that can be performed on the
-		 // overall list. This allows other applications to extend
-		 // our menu with their own actions.
-		 Intent intent = new Intent(null, getIntent().getData());
-        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-        //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-        //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
-        
-        // Workaround to add icons:
-        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
-        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                        new ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
-     
-        
+		// overall list. This allows other applications to extend
+		// our menu with their own actions.
+		Intent intent = new Intent(null, getIntent().getData());
+		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		// menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+		// new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+
+		// Workaround to add icons:
+		MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this,
+				menu);
+		menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+				new ComponentName(this, ShoppingActivity.class), null, intent,
+				0, null);
+
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent;
 		switch (item.getItemId()) {
 		case MENU_NEW_LIST:
 			showListDialog(MENU_NEW_LIST);
@@ -927,7 +922,7 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 
 		case MENU_SENSOR_SERVICE:
-			//toggleSensorService();
+			// toggleSensorService();
 			return true;
 
 		case MENU_UPDATE:
@@ -938,6 +933,10 @@ public class ShoppingActivity extends Activity { // implements
 			showAboutBox();
 			return true;
 
+		case MENU_PREFERENCES:
+			intent = new Intent(this, PreferenceActivity.class);
+			startActivity(intent);
+			return true;
 			/*
 			 * case MENU_SETTINGS: Intent intent = new
 			 * Intent(Intent.MAIN_ACTION, Hardware.Preferences.CONTENT_URI);
@@ -979,7 +978,7 @@ public class ShoppingActivity extends Activity { // implements
 			break;
 		case MENU_DELETE_ITEM:
 			deleteItem(menuInfo.position);
-			break;		
+			break;
 		}
 
 		return true;
@@ -1225,7 +1224,11 @@ public class ShoppingActivity extends Activity { // implements
 		// But as long as shopping lists stay small, it should not matter.
 		String listId = mCursorListFilter.getString(0);
 		boolean nothingdeleted = true;
-		nothingdeleted = getContentResolver().delete(Shopping.Contains.CONTENT_URI, Shopping.Contains.LIST_ID + " = " + listId +" AND "+ Shopping.Contains.STATUS + " = "+ Shopping.Status.BOUGHT, null) == 0;
+		nothingdeleted = getContentResolver().delete(
+				Shopping.Contains.CONTENT_URI,
+				Shopping.Contains.LIST_ID + " = " + listId + " AND "
+						+ Shopping.Contains.STATUS + " = "
+						+ Shopping.Status.BOUGHT, null) == 0;
 		mCursorItems.requery();
 
 		if (nothingdeleted) {
@@ -1274,9 +1277,10 @@ public class ShoppingActivity extends Activity { // implements
 	 */
 	private void deleteList() {
 		String listId = mCursorListFilter.getString(0);
-		// First delete all items in list		
-		getContentResolver().delete(Contains.CONTENT_URI, "list_id = " + listId, null);
-		
+		// First delete all items in list
+		getContentResolver().delete(Contains.CONTENT_URI,
+				"list_id = " + listId, null);
+
 		// Then delete currently selected list
 		getContentResolver().delete(Lists.CONTENT_URI, "_id = " + listId, null);
 
@@ -1309,8 +1313,14 @@ public class ShoppingActivity extends Activity { // implements
 		long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
 
 		// Delete item
-		//getContentResolver().delete(Items.CONTENT_URI, "_id = ?", new String[]{mCursorItems.getString(0)});
-		getContentResolver().delete(Contains.CONTENT_URI, "_id = ?", new String[]{mCursorItems.getString(mStringItemsCONTAINSID)});
+		// getContentResolver().delete(Items.CONTENT_URI, "_id = ?", new
+		// String[]{mCursorItems.getString(0)});
+		getContentResolver()
+				.delete(
+						Contains.CONTENT_URI,
+						"_id = ?",
+						new String[] { mCursorItems
+								.getString(mStringItemsCONTAINSID) });
 		mCursorItems.requery();
 
 		// If we share items, mark item on other lists:
@@ -1397,9 +1407,9 @@ public class ShoppingActivity extends Activity { // implements
 				});
 
 		new AlertDialog.Builder(ShoppingActivity.this).setIcon(
-				android.R.drawable.ic_menu_manage).setTitle(R.string.theme_pick)
-				.setView(view).setPositiveButton(R.string.ok,
-						new DialogInterface.OnClickListener() {
+				android.R.drawable.ic_menu_manage)
+				.setTitle(R.string.theme_pick).setView(view).setPositiveButton(
+						R.string.ok, new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int whichButton) {
 
@@ -1446,12 +1456,21 @@ public class ShoppingActivity extends Activity { // implements
 	 * @param themeId
 	 */
 	void setListTheme(int themeId) {
+		int textSize = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(PREFS_FONTSIZE, "2"));
 		switch (themeId) {
 		case 1:
 			mTypeface = null;
 			mUpperCaseFont = false;
 			mTextColor = 0xffffffff; // white
-			mTextSize = 23;
+			
+			if (textSize == 1){
+				mTextSize = 18;
+			} else if (textSize == 2) {
+				mTextSize = 23;	
+			} else {
+				mTextSize = 28;
+			}
+			
 			mMarkTextColor = 0xffcccccc; // white gray
 			mMarkType = mMarkCheckbox;
 
@@ -1466,7 +1485,14 @@ public class ShoppingActivity extends Activity { // implements
 			mTypeface = mTypefaceHandwriting;
 			mUpperCaseFont = false;
 			mTextColor = 0xff000000; // black
-			mTextSize = 20;
+			if (textSize == 1){
+				mTextSize = 15;
+			} else if (textSize == 2) {
+				mTextSize = 20;	
+			} else {
+				mTextSize = 25;
+			}
+
 			mMarkTextColor = 0xff008800; // dark green
 			mMarkType = mMarkStrikethrough;
 
@@ -1484,7 +1510,14 @@ public class ShoppingActivity extends Activity { // implements
 			// Digital only supports upper case fonts.
 			mUpperCaseFont = true;
 			mTextColor = 0xffff0000; // red
-			mTextSize = 26;
+			if (textSize == 1){
+				mTextSize = 21;
+			} else if (textSize == 2) {
+				mTextSize = 26;	
+			} else {
+				mTextSize = 31;
+			}
+
 			mMarkTextColor = 0xff00ff00; // light green
 			mMarkType = mMarkAddtext;
 
@@ -1580,21 +1613,17 @@ public class ShoppingActivity extends Activity { // implements
 	 * Turns on or off sensor service (shake control).
 	 */
 	/*
-	void toggleSensorService() {
-		if (!mSensorListener.isBound()) {
-			mSensorListener.bindService();
-			mSensorListener.setOnSensorListener(mOnSensorListener);
-		} else {
-			mSensorListener.unbindService();
-			mSensorListener.setOnSensorListener(null);
-		}
-	}
-	*/
+	 * void toggleSensorService() { if (!mSensorListener.isBound()) {
+	 * mSensorListener.bindService();
+	 * mSensorListener.setOnSensorListener(mOnSensorListener); } else {
+	 * mSensorListener.unbindService();
+	 * mSensorListener.setOnSensorListener(null); } }
+	 */
 
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
-	
+
 	// /////////////////////////////////////////////////////
 	//
 	// Helper functions
@@ -1772,11 +1801,12 @@ public class ShoppingActivity extends Activity { // implements
 			return;
 		}
 
+		String sortOrder = PreferenceManager.getDefaultSharedPreferences(this)
+				.getString(PREFS_SORTORDER, ContainsFull.DEFAULT_SORT_ORDER);
 		// Get a cursor for all items that are contained
 		// in currently selected shopping list.
 		mCursorItems = getContentResolver().query(ContainsFull.CONTENT_URI,
-				mStringItems, "list_id = " + listId, null,
-				ContainsFull.DEFAULT_SORT_ORDER);
+				mStringItems, "list_id = " + listId, null, sortOrder);
 		startManagingCursor(mCursorItems);
 
 		// Activate the following for a striped list.
@@ -1802,8 +1832,6 @@ public class ShoppingActivity extends Activity { // implements
 				new int[] { R.id.name, R.id.image_URI });
 		mListItems.setAdapter(adapter);
 
-		// strikeItems();
-		// checkListLength();
 	}
 
 	/**
@@ -1844,8 +1872,9 @@ public class ShoppingActivity extends Activity { // implements
 	 * element will not drop out of the view.
 	 */
 	private void checkListLength() {
-		if (true) return;
-		
+		if (true)
+			return;
+
 		Log.i(TAG, "checkListLength()");
 		/*
 		 * // Now we check whether we reach the lower border already: int[]
@@ -2011,9 +2040,9 @@ public class ShoppingActivity extends Activity { // implements
 			TextView t = (TextView) view.findViewById(R.id.name);
 			// we have a check box now.. more visual and gets the point across
 			CheckBox c = (CheckBox) view.findViewById(R.id.check);
-			
+
 			Log.i(TAG, "bindview: pos = " + cursor.getPosition());
-			
+
 			c.setTag(new Integer(cursor.getPosition()));
 
 			// Set font
@@ -2075,30 +2104,26 @@ public class ShoppingActivity extends Activity { // implements
 
 			}
 			/*
-			c.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			 * c.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			 * 
+			 * @Override public void onCheckedChanged(CompoundButton buttonView,
+			 * boolean isChecked) { // TODO Auto-generated method stub
+			 * Log.d(TAG, "check clicked");
+			 * 
+			 * int pos = (Integer) buttonView.getTag();
+			 * 
+			 * Log.i(TAG, "bindview: move to pos = " + pos); AdapterView av =
+			 * (AdapterView) buttonView.getParent().getParent(); Cursor c =
+			 * (Cursor) av.getItemAtPosition(pos);
+			 * 
+			 * if (mState == STATE_PICK_ITEM) { pickItem(c); } else {
+			 * toggleItemBought(c); }
+			 * 
+			 * }
+			 * 
+			 * });
+			 */
 
-				@Override
-				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-					// TODO Auto-generated method stub
-					Log.d(TAG, "check clicked");
-					
-					int pos = (Integer) buttonView.getTag();
-
-					Log.i(TAG, "bindview: move to pos = " + pos);
-					AdapterView av = (AdapterView) buttonView.getParent().getParent();
-					Cursor c = (Cursor) av.getItemAtPosition(pos);
-					
-					if (mState == STATE_PICK_ITEM) {
-						pickItem(c);
-					} else {
-						toggleItemBought(c);
-					}
-					
-				}
-				
-			});
-			*/
-			
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
 			c.setClickable(false);
@@ -2110,34 +2135,23 @@ public class ShoppingActivity extends Activity { // implements
 	 * Sensor service callback
 	 */
 	/*
-	private OnSensorListener mOnSensorListener = new OnSensorListener() {
-
-		public boolean onSensorEvent(final SensorEvent event) {
-			Log.i(TAG, "onSensorEvent: " + event);
-			int action = event.getAction();
-			switch (action) {
-			case SensorEvent.ACTION_MOVE:
-
-				return true;
-			case SensorEvent.ACTION_SHAKE:
-
-				// Clean up list
-				cleanupList();
-
-				// ToDo: Make this
-				// 1) step by step
-				// 2) animate elements
-				// 3) more than 3 shakes -> remove all
-
-				return true;
-			default:
-				assert false;
-			}
-			return false;
-		}
-
-	};
-	*/
+	 * private OnSensorListener mOnSensorListener = new OnSensorListener() {
+	 * 
+	 * public boolean onSensorEvent(final SensorEvent event) { Log.i(TAG,
+	 * "onSensorEvent: " + event); int action = event.getAction(); switch
+	 * (action) { case SensorEvent.ACTION_MOVE:
+	 * 
+	 * return true; case SensorEvent.ACTION_SHAKE:
+	 * 
+	 * // Clean up list cleanupList();
+	 * 
+	 * // ToDo: Make this // 1) step by step // 2) animate elements // 3) more
+	 * than 3 shakes -> remove all
+	 * 
+	 * return true; default: assert false; } return false; }
+	 * 
+	 * };
+	 */
 
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {

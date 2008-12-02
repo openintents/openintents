@@ -21,6 +21,11 @@ lists or party guest lists.
 To obtain the current release, visit
   http://www.openintents.org
 
+---------------------------------------------------------
+release: 1.0.3
+date: 2008-??-??
+
+- preference for sorting and font size added
 
 ---------------------------------------------------------
 release: 1.0.2

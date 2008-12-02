@@ -215,6 +215,7 @@ storepass=*password of keystore*
 	     <arg value="-keep public class org.openintents.shopping.ShoppingActivity"/>
 	     <arg value="-keep public class org.openintents.shopping.ShoppingListsActivity"/>
 	     <arg value="-keep public class org.openintents.shopping.share.ListShareSettingsActivity"/>
+     	 <arg value="-keep public class org.openintents.shopping.PreferenceActivity"/>
 	     <arg value="-keep public class org.openintents.shopping.AddLocationAlertActivity"/>
 		 <arg value="-keep public class org.openintents.distribution.EulaActivity"/>
 		 <arg value="-keep public class org.openintents.distribution.AboutActivity"/>
