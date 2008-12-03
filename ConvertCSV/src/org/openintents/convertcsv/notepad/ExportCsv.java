@@ -38,10 +38,12 @@ public class ExportCsv {
 		        NotePad.Notes.DEFAULT_SORT_ORDER);
 		
 		if (c != null) {
+			int COLUMN_INDEX_NOTE = c.getColumnIndexOrThrow(NotePad.Notes.NOTE);
+			int COLUMN_INDEX_ID = c.getColumnIndexOrThrow(NotePad.Notes._ID);
 			
 			while (c.moveToNext()) {
-		    	String note = c.getString(c.getColumnIndexOrThrow(NotePad.Notes.NOTE));
-		    	long id = c.getLong(c.getColumnIndexOrThrow(NotePad.Notes._ID));
+		    	String note = c.getString(COLUMN_INDEX_NOTE);
+		    	long id = c.getLong(COLUMN_INDEX_ID);
 		    	
 		    	String encrypted = "0"; // Not encrypted
 		    	

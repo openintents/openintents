@@ -9,6 +9,10 @@
     <string name="file_import">Import</string>
     <string name="file_export">Export</string>
     <string name="error_writing_file">Error writing to file</string>
+    <string name="error_reading_file">Error reading to file</string>
+    <string name="error_file_not_found">File not found</string>
+    <string name="import_finished">Import finished</string>
+    <string name="export_finished">Export finished</string>
     
     <string name="file_exists">The file exists. Do you want to overwrite?</string>
     <string name="dont_ask_again">Don't ask again. Always overwrite!</string>
@@ -32,7 +36,12 @@
     <string name="preference_shoppinglist">OI Shopping list</string>
     <string name="preference_shoppinglist_summary">Import/export settings for OI Shopping list.</string>
     
+    <!-- Header -->
+    <string name="header_subject">Subject</string>
+    <string name="header_percent_complete">% Complete</string>
+    <string name="header_categories">Categories</string>
     
+    <!-- File path -->
     <string name="default_notepad_path">/sdcard/notepad.csv</string>
     <string name="default_shoppinglist_path">/sdcard/shoppinglist.csv</string>
     <string name="default_path">/sdcard/output.csv</string>

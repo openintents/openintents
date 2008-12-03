@@ -97,11 +97,14 @@ public class ConvertCsvBaseActivity extends Activity {
 				doImport(reader);
 				
 				reader.close();
+				Toast.makeText(this, R.string.import_finished, Toast.LENGTH_SHORT).show();
+				finish();
+				
 			} catch (FileNotFoundException e) {
-				Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
+				Toast.makeText(this, R.string.error_file_not_found, Toast.LENGTH_SHORT).show();
 				Log.i(TAG, "File not found", e);
 			} catch (IOException e) {
-				Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
+				Toast.makeText(this, R.string.error_reading_file, Toast.LENGTH_SHORT).show();
 				Log.i(TAG, "IO exception", e);
 				
 			}
@@ -131,7 +134,7 @@ public class ConvertCsvBaseActivity extends Activity {
 			showDialog(DIALOG_ID_WARN_OVERWRITE);
 		} else {
 			doExport();
-			finish();
+			//finish();
 		}
     }
 
@@ -148,11 +151,11 @@ public class ConvertCsvBaseActivity extends Activity {
 			doExport(writer);
 
 			writer.close();
-		} catch (FileNotFoundException e) {
-			Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
-			Log.i(TAG, "File not found", e);
+
+			Toast.makeText(this, R.string.export_finished, Toast.LENGTH_SHORT).show();
+			finish();
 		} catch (IOException e) {
-			Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT);
+			Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT).show();
 			Log.i(TAG, "IO exception", e);
 			
 		}
