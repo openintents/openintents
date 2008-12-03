@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dip"
+    >
+	<TextView  
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="@string/file_exists"
+	    android:layout_marginTop="10dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    />
+    <CheckBox android:id="@+id/dont_ask_again"
+    	android:text="@string/dont_ask_again"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"/>	      
+</LinearLayout>

@@ -22,8 +22,9 @@ package org.openintents.convertcsv.opencsv;
 
 /**
  * Modifications: 
- *   - Dec 2, 2008: Add possibility to write mixed output through new functions
+ *   - Peli: Dec 2, 2008: Add possibility to write mixed output through new functions
  *     write() and writeNewline().
+ *   - Peli: Dec 3, 2008: Add writeValue() function.
  */
 
 import java.io.IOException;
@@ -397,7 +398,6 @@ public class CSVWriter {
 
     }
     
-
     /**
      * Write a single item.
      * A complete line has to be finished by calling writeNewline().
@@ -438,21 +438,43 @@ public class CSVWriter {
         if ((quotechar != NO_QUOTE_CHARACTER) && usingQuotes)
         	stringBuffer.append(quotechar);
 	}
-	
+
+	/**
+	 * Write a string. Quote chars are used.
+	 * @param string
+	 */
 	public void write (String string) {
 		write (string, true);
 	}
-	
-	public void write (int i) {
-		write ("" + i, false);
+
+	/**
+	 * Write a value. Quote chars are only used if necessary.
+	 * 
+	 * @param string
+	 */
+	public void writeValue (String string) {
+		write (string, false);
 	}
 	
+	/**
+	 * Write an integer value. Quote chars are only used if necessary.
+	 * 
+	 * @param i
+	 */
+	public void write (int i) {
+		write (String.valueOf(i), false);
+	}
+	
+	/**
+	 * End a line of items that have been added through write().
+	 */
 	public void writeNewline() {
 		stringBuffer.append(lineEnd);
         pw.write(stringBuffer.toString());
         stringBuffer.delete(0, stringBuffer.length());
         currentColumn = 0;
 	}
+
 
     /**
      * Flush underlying stream to writer.

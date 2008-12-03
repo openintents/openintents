@@ -33,5 +33,9 @@
                 <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.notepad.note" />
             </intent-filter>
         </activity>
+        
+		<activity android:name=".PreferenceActivity"
+			android:label="@string/menu_settings">
+		</activity>
     </application>
 </manifest> 

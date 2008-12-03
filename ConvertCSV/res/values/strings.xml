@@ -10,7 +10,32 @@
     <string name="file_export">Export</string>
     <string name="error_writing_file">Error writing to file</string>
     
+    <string name="file_exists">The file exists. Do you want to overwrite?</string>
+    <string name="dont_ask_again">Don't ask again. Always overwrite!</string>
     
-    <string name="default_path">/sdcard/shoppinglist.csv</string>
+    <string name="menu_settings">Settings</string>
+    
+    <!-- Preferences -->
+    <string name="preference_common">Common settings</string>
+    <string name="preference_common_summary">Import/export settings that apply to Notepad and Shopping list.</string>
+    <string name="preference_ask_if_file_exists">Ask if file exists</string>
+    <string name="preference_ask_if_file_exists_summary">If checked a dialog appears to confirm overwriting if the export file already exists.</string>
+    
+    <string name="preference_application_specific">Application specific settings</string>
+    <string name="preference_filename">Filename</string>
+    <string name="preference_filename_summary">Full path for file.</string>
+    
+    <string name="preference_notepad">OI Notepad</string>
+    <string name="preference_notepad_summary">Import/export settings for OI Notepad.</string>
+    
+    
+    <string name="preference_shoppinglist">OI Shopping list</string>
+    <string name="preference_shoppinglist_summary">Import/export settings for OI Shopping list.</string>
+    
+    
+    <string name="default_notepad_path">/sdcard/notepad.csv</string>
+    <string name="default_shoppinglist_path">/sdcard/shoppinglist.csv</string>
+    <string name="default_path">/sdcard/output.csv</string>
+    
     
 </resources>

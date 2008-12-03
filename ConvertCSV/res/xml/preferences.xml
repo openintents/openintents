@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	
+	<PreferenceCategory android:title="@string/preference_application_specific">
+	    
+		<PreferenceScreen
+                android:key="preference_screen_notepad"
+                android:title="@string/preference_notepad"
+                android:summary="@string/preference_notepad_summary">
+                
+    		<PreferenceCategory android:title="@string/preference_shoppinglist">
+			    <EditTextPreference
+			            android:key="notepad_filename"
+			            android:defaultValue="@string/default_notepad_path"
+			            android:title="@string/preference_filename"
+			            android:summary="@string/preference_filename_summary"/>
+			</PreferenceCategory>		     
+	    </PreferenceScreen>
+	    
+	
+		<PreferenceScreen
+                android:key="preference_screen_shoppinglist"
+                android:title="@string/preference_shoppinglist"
+                android:summary="@string/preference_shoppinglist_summary">
+                
+    		<PreferenceCategory android:title="@string/preference_shoppinglist">
+			    <EditTextPreference
+			            android:key="shoppinglist_filename"
+			            android:defaultValue="@string/default_shoppinglist_path"
+			            android:title="@string/preference_filename"
+			            android:summary="@string/preference_filename_summary"/>
+			</PreferenceCategory>		        
+	    </PreferenceScreen>
+	    <!-- 
+	    <ListPreference android:key="export_date_format"
+				android:defaultValue="" 
+				android:title="@string/preference_date_format"
+				android:summary="@string/preference_date_format_summary"
+				android:entries="@array/entries_date_format"
+        		android:entryValues="@array/entries_date_format_values"
+        		android:dialogTitle="@string/preference_date_format_dialog_title" />
+		
+	    <ListPreference android:key="export_time_format"
+				android:defaultValue="" 
+				android:title="@string/preference_time_format"
+				android:summary="@string/preference_time_format_summary"
+				android:entries="@array/entries_time_format"
+        		android:entryValues="@array/entries_time_format_values"
+        		android:dialogTitle="@string/preference_time_format_dialog_title" />
+        		 -->
+	
+	</PreferenceCategory>
+	
+	<PreferenceCategory android:title="@string/preference_common">
+	
+	
+		<PreferenceScreen
+                android:key="preference_screen_common"
+                android:title="@string/preference_common"
+                android:summary="@string/preference_common_summary">
+                
+    		<PreferenceCategory android:title="@string/preference_shoppinglist">
+    		
+			    <CheckBoxPreference
+			            android:key="ask_if_file_exists"
+			            android:defaultValue="true"
+			            android:title="@string/preference_ask_if_file_exists"
+			            android:summary="@string/preference_ask_if_file_exists_summary" />
+			            
+			</PreferenceCategory>		    
+	    </PreferenceScreen>
+	    
+	</PreferenceCategory>
+
+</PreferenceScreen>
