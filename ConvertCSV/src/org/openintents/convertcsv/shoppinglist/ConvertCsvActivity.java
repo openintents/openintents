@@ -8,58 +8,26 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
-import org.openintents.convertcsv.R.id;
-import org.openintents.convertcsv.R.layout;
-import org.openintents.convertcsv.R.string;
-import org.openintents.provider.Shopping;
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-public class ConvertCsvActivity extends Activity {
+public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	
 	public static final String TAG = "ConvertCsvActivity";
 	
-	EditText mEditText;
-	
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.convert);
-        
-        mEditText = (EditText) findViewById(R.id.file_path);
-        
-        Button buttonImport = (Button) findViewById(R.id.file_import);
-        
-        buttonImport.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				startImport();
-			}
-        });
-        
-        Button buttonExport = (Button) findViewById(R.id.file_export);
-        
-        buttonExport.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				startExport();
-			}
-        });
+    public void setPreferencesUsed() {
+    	PREFERENCE_FILENAME = PreferenceActivity.PREFS_SHOPPINGLIST_FILENAME;
     }
     
-    private void startImport() {
+    public void startImport() {
     	// First delete old lists
-    	getContentResolver().delete(Shopping.Contains.CONTENT_URI, null, null);
-    	getContentResolver().delete(Shopping.Items.CONTENT_URI, null, null);
-    	getContentResolver().delete(Shopping.Lists.CONTENT_URI, null, null);
+    	//getContentResolver().delete(Shopping.Contains.CONTENT_URI, null, null);
+    	//getContentResolver().delete(Shopping.Items.CONTENT_URI, null, null);
+    	//getContentResolver().delete(Shopping.Lists.CONTENT_URI, null, null);
     	
 
     	String fileName = mEditText.getText().toString();
@@ -88,7 +56,7 @@ public class ConvertCsvActivity extends Activity {
 		}
     }
 
-	private void startExport() {
+	public void startExport() {
     	
     	String fileName = mEditText.getText().toString();
     	
