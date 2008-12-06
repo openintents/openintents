@@ -57,7 +57,7 @@ public class ConvertCsvBaseActivity extends Activity {
         Button buttonImport = (Button) findViewById(R.id.file_import);
         
         buttonImport.setOnClickListener(new View.OnClickListener() {
-			@Override
+			
 			public void onClick(View arg0) {
 				startImport();
 			}
@@ -66,7 +66,7 @@ public class ConvertCsvBaseActivity extends Activity {
         Button buttonExport = (Button) findViewById(R.id.file_export);
         
         buttonExport.setOnClickListener(new View.OnClickListener() {
-			@Override
+			
 			public void onClick(View arg0) {
 				startExport();
 			}
