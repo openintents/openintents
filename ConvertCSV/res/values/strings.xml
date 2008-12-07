@@ -21,6 +21,14 @@
     
     <string name="menu_settings">Settings</string>
     
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
+    
+    <!-- Update -->
+	<string name="update_error">Download application not available.</string>
+	
     <!-- Preferences -->
     <string name="preference_common">Common settings</string>
     <string name="preference_common_summary">Import/export settings that apply to Notepad and Shopping list.</string>

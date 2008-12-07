@@ -5,14 +5,24 @@
     android:layout_height="fill_parent"
     >
 	<TextView  
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
 	    android:text="@string/file_path"
 	    />
-    <EditText android:id="@+id/file_path"
-    	android:text="@string/default_path"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"/>
+    <LinearLayout android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+	    <EditText android:id="@+id/file_path"
+	    	android:text="@string/default_path"
+		    android:layout_width="0dip" 
+		    android:layout_height="wrap_content" 
+		    android:layout_weight="1"/>
+		<ImageButton android:id="@+id/file_manager"
+			android:src="@drawable/ic_launcher_folder_small"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" />
+	</LinearLayout>
 		
 	<LinearLayout
 		android:orientation="horizontal"

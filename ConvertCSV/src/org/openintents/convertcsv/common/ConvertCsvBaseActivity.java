@@ -8,15 +8,19 @@ import java.io.IOException;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
+import org.openintents.distribution.LaunchFileManager;
+import org.openintents.intents.FileManagerIntents;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.Editor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -27,6 +31,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class ConvertCsvBaseActivity extends Activity {
@@ -36,6 +41,9 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected static final int MENU_SETTINGS = Menu.FIRST + 1;
 	
 	protected static final int DIALOG_ID_WARN_OVERWRITE = 1;
+	protected static final int DIALOG_ID_NO_FILE_MANAGER_AVAILABLE = 2;
+	
+	protected static final int REQUEST_CODE_PICK_FILE = 1;
 
 	protected EditText mEditText;
 
@@ -54,6 +62,15 @@ public class ConvertCsvBaseActivity extends Activity {
         SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
         mEditText.setText(pm.getString(PREFERENCE_FILENAME, getString(R.string.default_path)));
 
+        ImageButton buttonFileManager = (ImageButton) findViewById(R.id.file_manager);
+        
+        buttonFileManager.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View arg0) {
+				openFileManager();
+			}
+        });
+        
         Button buttonImport = (Button) findViewById(R.id.file_import);
         
         buttonImport.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +92,8 @@ public class ConvertCsvBaseActivity extends Activity {
         Intent intent = getIntent();
         String type = intent.getType();
         if (type != null && type.equals("text/csv")) {
-        	// Someone wants to import a CSV document. Set the path accordingly:
+        	// Someone wants to import a CSV document through the file manager. 
+        	// Set the path accordingly:
         	String path = getIntent().getDataString();
         	if (path != null) {
 	        	if (path.startsWith("file://")) {
@@ -251,6 +269,9 @@ public class ConvertCsvBaseActivity extends Activity {
 				}
 
 			}).create();
+			
+		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
+			return LaunchFileManager.createDialog(this);
 		}
 		return null;
 	}
@@ -267,5 +288,43 @@ public class ConvertCsvBaseActivity extends Activity {
 		editor.putBoolean(preference, value);
 		editor.commit();
 		doExport();
+	}
+	
+	private void openFileManager() {
+		String fileName = mEditText.getText().toString();
+		
+		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
+		intent.setData(Uri.parse("file://" + fileName));
+		
+		try {
+			startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
+		} catch (ActivityNotFoundException e) {
+			showDialog(DIALOG_ID_NO_FILE_MANAGER_AVAILABLE);
+		}
+	}
+	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		Log.i(TAG, "onActivityResult");
+
+		switch (requestCode) {
+		case REQUEST_CODE_PICK_FILE:
+			if (resultCode == RESULT_OK) {
+				// obtain the filename
+				String filename = data.getDataString();
+				if (filename != null) {
+					if (filename.startsWith("file://")) {
+						filename = filename.substring(7);
+					}
+					
+					mEditText.setText(filename);
+				}				
+				
+			}
+			break;
+		}
 	}
 }
