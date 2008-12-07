@@ -312,7 +312,7 @@ public class ConvertCsvBaseActivity extends Activity {
 
 		switch (requestCode) {
 		case REQUEST_CODE_PICK_FILE:
-			if (resultCode == RESULT_OK) {
+			if (resultCode == RESULT_OK && data != null) {
 				// obtain the filename
 				String filename = data.getDataString();
 				if (filename != null) {

@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.openintents.filemanager.util.FileUtils;
 import org.openintents.filemanager.util.MimeTypeParser;
 import org.openintents.filemanager.util.MimeTypes;
+import org.openintents.intents.FileManagerIntents;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.ListActivity;
@@ -21,12 +23,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 public class FileManagerActivity extends ListActivity { 
 	private static final String TAG = "FileManagerActivity";
 
+	private int mState;
+	
+	private static final int STATE_BROWSE = 1;
+	private static final int STATE_PICK = 2;
+	
+	
 	/** Contains directries and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
 
@@ -39,19 +49,69 @@ public class FileManagerActivity extends ListActivity {
      private File currentDirectory = new File("/sdcard"); 
      
      private MimeTypes mMimeTypes;
+     
+     private EditText mEditFilename;
+     private Button mButtonPick;
 
      /** Called when the activity is first created. */ 
      @Override 
      public void onCreate(Bundle icicle) { 
           super.onCreate(icicle); 
           
+          setContentView(R.layout.filelist);
+          
+          mEditFilename = (EditText) findViewById(R.id.filename);
+          
+
+          mButtonPick = (Button) findViewById(R.id.button_pick);
+          
+          mButtonPick.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View arg0) {
+					pickFile();
+				}
+          });
+          
           // Create map of extensions:
           getMimeTypes();
-			
-          //browseToRoot(); 
-          browseToSdCard(); 
+          
+          mState = STATE_BROWSE;
+          
+          Intent intent = getIntent();
+          String action = intent.getAction();
+          
+          File browseto = new File("/");
+          
+          if (action != null && action.equals(FileManagerIntents.ACTION_PICK_FILE)) {
+        	  mState = STATE_PICK;
+        	  
+        	  File file = FileUtils.getFile(intent.getData());
+        	  if (file != null) {
+        		  
+        		  browseto = FileUtils.getPathWithoutFilename(file);
+        		  
+        		  mEditFilename.setText(file.getName());
+        	  } else {
+        		  
+        	  }
+          } else {
+        	  mState = STATE_BROWSE;
+         	 
+          }
+          
+          browseTo(browseto);
      }
 
+     private void pickFile() {
+    	 String filename = mEditFilename.getText().toString();
+    	 File file = FileUtils.getFile(currentDirectory.getAbsolutePath(), filename);
+    	 
+    	 Intent intent = getIntent();
+    	 intent.setData(FileUtils.getUri(file));
+    	 setResult(RESULT_OK, intent);
+    	 finish();
+     }
+     
 	/**
 	 * 
 	 */
@@ -80,18 +140,10 @@ public class FileManagerActivity extends ListActivity {
      /** 
       * Browses to the 
       * root-directory of the file-system. 
-      */ 
+      */ /*
      private void browseToRoot() { 
           browseTo(new File("/")); 
-    } 
-     
-     /** 
-      * Browses to the 
-      * sd-card of the file-system. 
-      */ 
-     private void browseToSdCard() { 
-          browseTo(new File("/sdcard")); 
-    } 
+    } */
       
      /** 
       * This function browses up one level 
@@ -105,21 +157,27 @@ public class FileManagerActivity extends ListActivity {
      private void browseTo(final File aDirectory){ 
           this.setTitle(aDirectory.getAbsolutePath()); 
           
+          Log.i(TAG, "browse to: " + aDirectory.getAbsoluteFile());
+          
           if (aDirectory.isDirectory()){ 
                this.currentDirectory = aDirectory; 
                fill(aDirectory.listFiles()); 
           }else{ 
 
-              // Lets start an intent to View the file, that was clicked... 
-        	  FileManagerActivity.this.openFile(aDirectory); 
-        	 
+        	  if (mState == STATE_BROWSE) {
+	              // Lets start an intent to View the file, that was clicked... 
+	        	  openFile(aDirectory); 
+        	  } else if (mState == STATE_PICK) {
+        		  // Pick the file
+        		  mEditFilename.setText(aDirectory.getName());
+        	  }
           } 
      } 
       
      private void openFile(File aFile) { 
           Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
 
-          Uri data = Uri.parse("file://" + aFile.getAbsolutePath());
+          Uri data = FileUtils.getUri(aFile);
           String type = mMimeTypes.getMimeType(aFile.getName());
           intent.setDataAndType(data, type);
           
@@ -199,19 +257,13 @@ public class FileManagerActivity extends ListActivity {
               .getAbsolutePath() ;
         	  String file = this.directoryEntries.get(position) 
               .getText();
-        	  String separator = "/";
-        	  if (curdir.endsWith("/")) {
-        		  separator = "";
-        	  }
-               File clickedFile = new File(curdir + separator
-                                   + file);
+        	  File clickedFile = FileUtils.getFile(curdir, file);
                if (clickedFile != null) 
                     this.browseTo(clickedFile); 
           } 
-     } 
+     }
 
-     
-     /**
+	/**
       * Return the Drawable that is associated with a specific mime type
       * for the VIEW action.
       * 

@@ -1,43 +1,14 @@
 package org.openintents.filemanager.util;
 
+import java.io.File;
+
+import android.net.Uri;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Video;
-import android.util.Log;
 
 public class FileUtils {
 	/** TAG for log messages. */
 	static final String TAG = "FileUtils";
-
-	
-	static final String[] mExtensionToMimeType = new String[] {};
-	
-	/**
-	 * Returns the MIME type for a given file name, based on its extension.
-	 * 
-	 * @param filename
-	 * @return MIME type; "" if unknown; null if filename is null.
-	 */
-	/*
-	public static String getMimeType(String filename) {
-		String mimeType = null;
-
-		if (filename == null) {
-			return mimeType;
-		}
-		if (filename.endsWith(".3gp")) {
-			mimeType = "video/3gpp";
-		} else if (filename.endsWith(".mid")) {
-			mimeType = "audio/mid";
-		} else if (filename.endsWith(".mp3")) {
-			mimeType = "audio/mpeg";
-		} else if (filename.endsWith(".xml")) {
-			mimeType = "text/xml";
-		} else {
-			Log.i("TAG", "Unknown media type");
-			mimeType = "";
-		}
-		return mimeType;
-	} */
 
 	/**
 	 * Whether the filename is a video file.
@@ -103,5 +74,68 @@ public class FileUtils {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Convert File into Uri.
+	 * @param file
+	 * @return uri
+	 */
+	public static Uri getUri(File file) {
+		return Uri.parse("file://" + file.getAbsolutePath());
+	}
+	
+	/**
+	 * Convert Uri into File.
+	 * @param uri
+	 * @return file
+	 */
+	public static File getFile(Uri uri) {
+		if (uri != null) {
+			String filepath = uri.toString();
+			if (filepath.startsWith("file://")) {
+				filepath = filepath.substring(7);
+	  		}
+			return new File(filepath);
+		}
+		return null;
+	}
+	
+	/**
+	 * Returns the path only (without file name).
+	 * @param file
+	 * @return
+	 */
+	public static File getPathWithoutFilename(File file) {
+		 if (file != null) {
+   		  
+			 String filename = file.getName();
+			 String filepath = file.getAbsolutePath();
+  
+			 // Construct path without file name.
+			 String pathwithoutname = filepath.substring(0, filepath.length() - filename.length());
+			 if (pathwithoutname.endsWith("/")) {
+				 pathwithoutname = pathwithoutname.substring(0, pathwithoutname.length() - 1);
+			 }
+			 return new File(pathwithoutname);
+		 }
+		 return null;
+	}
+
+	/**
+	 * Constructs a file from a path and file name.
+	 * 
+	 * @param curdir
+	 * @param file
+	 * @return
+	 */
+	public static File getFile(String curdir, String file) {
+		String separator = "/";
+		  if (curdir.endsWith("/")) {
+			  separator = "";
+		  }
+		   File clickedFile = new File(curdir + separator
+		                       + file);
+		return clickedFile;
 	}
 }
