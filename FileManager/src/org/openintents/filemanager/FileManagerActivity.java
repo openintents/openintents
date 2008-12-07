@@ -25,6 +25,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -52,6 +54,7 @@ public class FileManagerActivity extends ListActivity {
      
      private EditText mEditFilename;
      private Button mButtonPick;
+     private LinearLayout mDirectoryButtons;
 
      /** Called when the activity is first created. */ 
      @Override 
@@ -60,6 +63,7 @@ public class FileManagerActivity extends ListActivity {
           
           setContentView(R.layout.filelist);
           
+          mDirectoryButtons = (LinearLayout) findViewById(R.id.directory_buttons);
           mEditFilename = (EditText) findViewById(R.id.filename);
           
 
@@ -125,7 +129,7 @@ public class FileManagerActivity extends ListActivity {
      private void getMimeTypes() {
     	 MimeTypeParser mtp = new MimeTypeParser();
 
-    	 XmlResourceParser in = this.getResources().getXml(R.xml.mimetypes);
+    	 XmlResourceParser in = getResources().getXml(R.xml.mimetypes);
 
     	 try {
     		 mMimeTypes = mtp.fromXmlResource(in);
@@ -145,30 +149,23 @@ public class FileManagerActivity extends ListActivity {
      } 
       
      /** 
-      * Browses to the 
-      * root-directory of the file-system. 
-      */ /*
-     private void browseToRoot() { 
-          browseTo(new File("/")); 
-    } */
-      
-     /** 
       * This function browses up one level 
       * according to the field: currentDirectory 
       */ 
      private void upOneLevel(){ 
-          if(this.currentDirectory.getParent() != null) 
-               this.browseTo(this.currentDirectory.getParentFile()); 
+          if(currentDirectory.getParent() != null) 
+               browseTo(currentDirectory.getParentFile()); 
      } 
       
      private void browseTo(final File aDirectory){ 
-          this.setTitle(aDirectory.getAbsolutePath()); 
+          setTitle(aDirectory.getAbsolutePath());
           
           Log.i(TAG, "browse to: " + aDirectory.getAbsoluteFile());
           
-          if (aDirectory.isDirectory()){ 
-               this.currentDirectory = aDirectory; 
-               fill(aDirectory.listFiles()); 
+          if (aDirectory.isDirectory()){
+               currentDirectory = aDirectory;
+               fill(aDirectory.listFiles());
+               setDirectoryButtons();
           }else{ 
 
         	  if (mState == STATE_BROWSE) {
@@ -198,20 +195,22 @@ public class FileManagerActivity extends ListActivity {
      
      
      private void fill(File[] files) { 
-          this.directoryEntries.clear(); 
+          directoryEntries.clear(); 
           mListDir.clear();
           mListFile.clear();
           
            
           // Add the "." == "current directory" 
-          /*this.directoryEntries.add(new IconifiedText( 
+          /*directoryEntries.add(new IconifiedText( 
                     getString(R.string.current_dir), 
                     getResources().getDrawable(R.drawable.ic_launcher_folder)));        */
           // and the ".." == 'Up one level' 
-          if(this.currentDirectory.getParent() != null) 
-               this.directoryEntries.add(new IconifiedText( 
+          /*
+          if(currentDirectory.getParent() != null) 
+               directoryEntries.add(new IconifiedText( 
                          getString(R.string.up_one_level), 
                          getResources().getDrawable(R.drawable.ic_launcher_folder_open))); 
+          */
            
           Drawable currentIcon = null; 
           for (File currentFile : files){ 
@@ -240,8 +239,8 @@ public class FileManagerActivity extends ListActivity {
           addAllElements(directoryEntries, mListFile);
            
           IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
-          itla.setListItems(this.directoryEntries);          
-          this.setListAdapter(itla); 
+          itla.setListItems(directoryEntries);          
+          setListAdapter(itla); 
      } 
      
      private void addAllElements(List<IconifiedText> addTo, List<IconifiedText> addFrom) {
@@ -250,23 +249,62 @@ public class FileManagerActivity extends ListActivity {
     		 addTo.add(addFrom.get(i));
     	 }
      }
+     
+     private void setDirectoryButtons() {
+    	 String[] parts = currentDirectory.getAbsolutePath().split("/");
+    	 
+    	 mDirectoryButtons.removeAllViews();
+    	 
+    	 int WRAP_CONTENT = LinearLayout.LayoutParams.WRAP_CONTENT;
+    	 
+    	 
+    	 // Add home button separately
+    	 ImageButton ib = new ImageButton(this);
+    	 ib.setImageResource(R.drawable.ic_launcher_home_small);
+		 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+		 ib.setOnClickListener(new View.OnClickListener() {
+				public void onClick(View view) {
+					browseTo(new File("/"));
+				}
+		 });
+		 mDirectoryButtons.addView(ib);
+		 
+    	 // Add other buttons
+    	 
+    	 String dir = "";
+    	 
+    	 for (int i = 1; i < parts.length; i++) {
+    		 Button b = new Button(this);
+    		 b.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+    		 b.setText(parts[i]);
+    		 dir += "/" + parts[i];
+    		 b.setTag(dir);
+    		 b.setOnClickListener(new View.OnClickListener() {
+ 				public void onClick(View view) {
+ 					String dir = (String) view.getTag();
+ 					browseTo(new File(dir));
+ 				}
+    		 });
+    		 mDirectoryButtons.addView(b);
+    	 }
+     }
 
      @Override 
      protected void onListItemClick(ListView l, View v, int position, long id) { 
           super.onListItemClick(l, v, position, id); 
 
-          String selectedFileString = this.directoryEntries.get(position) 
+          String selectedFileString = directoryEntries.get(position) 
                     .getText(); 
           if (selectedFileString.equals(getString(R.string.up_one_level))) { 
-               this.upOneLevel(); 
+               upOneLevel(); 
           } else { 
-        	  String curdir = this.currentDirectory 
+        	  String curdir = currentDirectory 
               .getAbsolutePath() ;
-        	  String file = this.directoryEntries.get(position) 
+        	  String file = directoryEntries.get(position) 
               .getText();
         	  File clickedFile = FileUtils.getFile(curdir, file);
                if (clickedFile != null) 
-                    this.browseTo(clickedFile); 
+                    browseTo(clickedFile); 
           } 
      }
 
