@@ -27,7 +27,15 @@ import android.widget.Toast;
 public class FileManagerActivity extends ListActivity { 
 	private static final String TAG = "FileManagerActivity";
 
-     private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>(); 
+	/** Contains directries and files together */
+     private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
+
+     /** Dir separate for sorting */
+     List<IconifiedText> mListDir = new ArrayList<IconifiedText>();
+     
+     /** Files separate for sorting */
+     List<IconifiedText> mListFile = new ArrayList<IconifiedText>();
+     
      private File currentDirectory = new File("/sdcard"); 
      
      private MimeTypes mMimeTypes;
@@ -113,8 +121,13 @@ public class FileManagerActivity extends ListActivity {
           };
      } 
 
+     
+     
      private void fill(File[] files) { 
           this.directoryEntries.clear(); 
+          mListDir.clear();
+          mListFile.clear();
+          
            
           // Add the "." == "current directory" 
           /*this.directoryEntries.add(new IconifiedText( 
@@ -130,6 +143,8 @@ public class FileManagerActivity extends ListActivity {
           for (File currentFile : files){ 
                if (currentFile.isDirectory()) { 
                     currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
+                    mListDir.add(new IconifiedText( 
+                     		 currentFile.getName(), currentIcon)); 
                }else{ 
                     String fileName = currentFile.getName(); 
                     
@@ -139,16 +154,28 @@ public class FileManagerActivity extends ListActivity {
                     if (currentIcon == null) {
                     	currentIcon = getResources().getDrawable(R.drawable.icon_file);
                     }
+                    mListFile.add(new IconifiedText( 
+                     		 currentFile.getName(), currentIcon)); 
                } 
-               this.directoryEntries.add(new IconifiedText( 
-              		 currentFile.getName(), currentIcon)); 
+               
           } 
-          Collections.sort(this.directoryEntries); 
+          Collections.sort(mListDir); 
+          Collections.sort(mListFile); 
+          
+          addAllElements(directoryEntries, mListDir);
+          addAllElements(directoryEntries, mListFile);
            
           IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
           itla.setListItems(this.directoryEntries);          
           this.setListAdapter(itla); 
      } 
+     
+     private void addAllElements(List<IconifiedText> addTo, List<IconifiedText> addFrom) {
+    	 int size = addFrom.size();
+    	 for (int i = 0; i < size; i++) {
+    		 addTo.add(addFrom.get(i));
+    	 }
+     }
 
      @Override 
      protected void onListItemClick(ListView l, View v, int position, long id) { 
