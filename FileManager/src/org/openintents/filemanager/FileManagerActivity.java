@@ -94,9 +94,16 @@ public class FileManagerActivity extends ListActivity {
         	  } else {
         		  
         	  }
+        	  
+        	  String title = intent.getStringExtra(FileManagerIntents.EXTRA_TITLE);
+        	  if (title != null) {
+        		  setTitle(title);
+        	  }
           } else {
         	  mState = STATE_BROWSE;
          	 
+        	  mEditFilename.setVisibility(View.GONE);
+        	  mButtonPick.setVisibility(View.GONE);
           }
           
           browseTo(browseto);
