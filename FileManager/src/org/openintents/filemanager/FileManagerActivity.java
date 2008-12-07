@@ -113,7 +113,7 @@ public class FileManagerActivity extends ListActivity {
                          currentIcon = getResources().getDrawable(R.drawable.ic_launcher_gallery); 
                     }else if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingWebText))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_drm_file); 
+                         currentIcon = getResources().getDrawable(R.drawable.icon_file); 
                     }else if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingPackage))){ 
                          currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
@@ -121,7 +121,7 @@ public class FileManagerActivity extends ListActivity {
                                         getStringArray(R.array.fileEndingAudio))){ 
                          currentIcon = getResources().getDrawable(R.drawable.app_music); 
                     }else{ 
-                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_drm_file); 
+                         currentIcon = getResources().getDrawable(R.drawable.icon_file); 
                     }                    
                } 
                switch (this.displayMode) { 
