@@ -21,6 +21,7 @@ import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -92,6 +93,10 @@ public class FileManagerActivity extends ListActivity {
           String action = intent.getAction();
           
           File browseto = new File("/");
+          
+          if (!TextUtils.isEmpty(mSdCardPath)) {
+        	  browseto = new File(mSdCardPath);
+          }
           
           if (action != null && action.equals(FileManagerIntents.ACTION_PICK_FILE)) {
         	  mState = STATE_PICK;
@@ -315,7 +320,7 @@ public class FileManagerActivity extends ListActivity {
 	 					browseTo(new File(dir));
 	 				}
 	    		 });
-	    		 mDirectoryButtons.addView(b);
+    			 mDirectoryButtons.addView(b);
     		 }
     	 }
      }
