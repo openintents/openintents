@@ -13,11 +13,12 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -25,10 +26,7 @@ import android.widget.Toast;
 
 public class FileManagerActivity extends ListActivity { 
 	private static final String TAG = "FileManagerActivity";
-      
-     private enum DISPLAYMODE{ ABSOLUTE, RELATIVE; } 
 
-     private final DISPLAYMODE displayMode = DISPLAYMODE.RELATIVE; 
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>(); 
      private File currentDirectory = new File("/sdcard"); 
      
@@ -88,10 +86,8 @@ public class FileManagerActivity extends ListActivity {
      } 
       
      private void browseTo(final File aDirectory){ 
-          // On relative we display the full path in the title. 
-          if(this.displayMode == DISPLAYMODE.RELATIVE) 
-               this.setTitle(aDirectory.getAbsolutePath() + " :: " + 
-                         getString(R.string.app_name)); 
+          this.setTitle(aDirectory.getAbsolutePath()); 
+          
           if (aDirectory.isDirectory()){ 
                this.currentDirectory = aDirectory; 
                fill(aDirectory.listFiles()); 
@@ -105,12 +101,9 @@ public class FileManagerActivity extends ListActivity {
       
      private void openFile(File aFile) { 
           Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-          /*, 
-                    Uri.parse("file://" + aFile.getAbsolutePath())); */
-          
 
           Uri data = Uri.parse("file://" + aFile.getAbsolutePath());
-          String type = "audio/*";
+          String type = mMimeTypes.getMimeType(aFile.getName());
           intent.setDataAndType(data, type);
           
           try {
@@ -142,55 +135,13 @@ public class FileManagerActivity extends ListActivity {
                     
                     String mimetype = mMimeTypes.getMimeType(fileName);
                     
-                    int id = R.drawable.icon_file;
-                    if (TextUtils.isEmpty(mimetype)) {
-                    	// this avoids null-pointer exceptions in the following.
-                    } else if (mimetype.startsWith("audio/")) {
-                    	id = R.drawable.app_music;
-                    } else if (mimetype.startsWith("image/")) {
-                    	id = R.drawable.ic_launcher_gallery;
+                    currentIcon = getDrawableForMimetype(mimetype);
+                    if (currentIcon == null) {
+                    	currentIcon = getResources().getDrawable(R.drawable.icon_file);
                     }
-                    
-                    currentIcon = getResources().getDrawable(id);
-                    /* Determine the Icon to be used, 
-                     * depending on the FileEndings defined in: 
-                     * res/values/fileendings.xml. */ 
-                    /*
-                    if(checkEndsWithInStringArray(fileName, getResources(). 
-                                        getStringArray(R.array.fileEndingImage))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_gallery); 
-                    }else if(checkEndsWithInStringArray(fileName, getResources(). 
-                                        getStringArray(R.array.fileEndingWebText))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.icon_file); 
-                    }else if(checkEndsWithInStringArray(fileName, getResources(). 
-                                        getStringArray(R.array.fileEndingPackage))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
-                    }else if(checkEndsWithInStringArray(fileName, getResources(). 
-                                        getStringArray(R.array.fileEndingAudio))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.app_music); 
-                    }else{ 
-                         currentIcon = getResources().getDrawable(R.drawable.icon_file); 
-                    }                   
-                    */ 
                } 
-               switch (this.displayMode) { 
-                    case ABSOLUTE: 
-                         /* On absolute Mode, we show the full path */ 
-                         this.directoryEntries.add(new IconifiedText(currentFile 
-                                   .getPath(), currentIcon)); 
-                         break; 
-                    case RELATIVE: 
-                         /* On relative Mode, we have to cut the 
-                          * current-path at the beginning */ 
-                         int currentPathStringLenght = this.currentDirectory. 
-                                                                 getAbsolutePath().length(); 
-                         this.directoryEntries.add(new IconifiedText( 
-                                   currentFile.getAbsolutePath(). 
-                                   substring(currentPathStringLenght), 
-                                   currentIcon)); 
-
-                         break; 
-               } 
+               this.directoryEntries.add(new IconifiedText( 
+              		 currentFile.getName(), currentIcon)); 
           } 
           Collections.sort(this.directoryEntries); 
            
@@ -205,40 +156,46 @@ public class FileManagerActivity extends ListActivity {
 
           String selectedFileString = this.directoryEntries.get(position) 
                     .getText(); 
-          if (selectedFileString.equals(getString(R.string.current_dir))) { 
-               // Refresh 
-               this.browseTo(this.currentDirectory); 
-          } else if (selectedFileString.equals(getString(R.string.up_one_level))) { 
+          if (selectedFileString.equals(getString(R.string.up_one_level))) { 
                this.upOneLevel(); 
           } else { 
-               File clickedFile = null; 
-               switch (this.displayMode) { 
-                    case RELATIVE: 
-                         clickedFile = new File(this.currentDirectory 
-                                   .getAbsolutePath() 
-                                   + this.directoryEntries.get(position) 
-                                             .getText()); 
-                         break; 
-                    case ABSOLUTE: 
-                         clickedFile = new File(this.directoryEntries.get( 
-                                   position).getText()); 
-                         break; 
-               } 
+        	  String curdir = this.currentDirectory 
+              .getAbsolutePath() ;
+        	  String file = this.directoryEntries.get(position) 
+              .getText();
+        	  String separator = "/";
+        	  if (curdir.endsWith("/")) {
+        		  separator = "";
+        	  }
+               File clickedFile = new File(curdir + separator
+                                   + file);
                if (clickedFile != null) 
                     this.browseTo(clickedFile); 
           } 
      } 
 
-     /** Checks whether checkItsEnd ends with 
-      * one of the Strings from fileEndings */ 
-     /*
-     private boolean checkEndsWithInStringArray(String checkItsEnd, 
-                         String[] fileEndings){ 
-          for(String aEnd : fileEndings){ 
-               if(checkItsEnd.endsWith(aEnd)) 
-                    return true; 
-          } 
-          return false; 
-     } 
-     */
+     
+     /**
+      * Return the Drawable that is associated with a specific mime type
+      * for the VIEW action.
+      * 
+      * @param mimetype
+      * @return
+      */
+     Drawable getDrawableForMimetype(String mimetype) {
+    	 PackageManager pm = getPackageManager();
+    	 
+    	 Intent intent = new Intent(Intent.ACTION_VIEW);
+    	 intent.setType(mimetype);
+    	 
+    	 final List<ResolveInfo> lri = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+    	 
+    	 if (lri != null && lri.size() > 0) {
+    		 // return first element
+    		 final ResolveInfo ri = lri.get(0);
+    		 return ri.loadIcon(pm);
+    	 }
+    	 
+    	 return null;
+     }
 }
