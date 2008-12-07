@@ -16,6 +16,8 @@ public final class R {
         public static final int ic_launcher_home=0x7f020002;
         public static final int ic_launcher_home_small=0x7f020003;
         public static final int icon_file=0x7f020004;
+        public static final int icon_sdcard=0x7f020005;
+        public static final int icon_sdcard_small=0x7f020006;
     }
     public static final class id {
         public static final int button_pick=0x7f060002;

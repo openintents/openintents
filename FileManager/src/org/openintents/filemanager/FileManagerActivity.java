@@ -48,7 +48,12 @@ public class FileManagerActivity extends ListActivity {
      /** Files separate for sorting */
      List<IconifiedText> mListFile = new ArrayList<IconifiedText>();
      
-     private File currentDirectory = new File("/sdcard"); 
+     /** SD card separate for sorting */
+     List<IconifiedText> mListSdCard = new ArrayList<IconifiedText>();
+     
+     private File currentDirectory = new File(""); 
+     
+     private String mSdCardPath = "";
      
      private MimeTypes mMimeTypes;
      
@@ -78,6 +83,8 @@ public class FileManagerActivity extends ListActivity {
           
           // Create map of extensions:
           getMimeTypes();
+          
+          getSdCardPath();
           
           mState = STATE_BROWSE;
           
@@ -158,7 +165,7 @@ public class FileManagerActivity extends ListActivity {
      } 
       
      private void browseTo(final File aDirectory){ 
-          setTitle(aDirectory.getAbsolutePath());
+          // setTitle(aDirectory.getAbsolutePath());
           
           Log.i(TAG, "browse to: " + aDirectory.getAbsoluteFile());
           
@@ -198,6 +205,7 @@ public class FileManagerActivity extends ListActivity {
           directoryEntries.clear(); 
           mListDir.clear();
           mListFile.clear();
+          mListSdCard.clear();
           
            
           // Add the "." == "current directory" 
@@ -215,9 +223,17 @@ public class FileManagerActivity extends ListActivity {
           Drawable currentIcon = null; 
           for (File currentFile : files){ 
                if (currentFile.isDirectory()) { 
-                    currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
-                    mListDir.add(new IconifiedText( 
-                     		 currentFile.getName(), currentIcon)); 
+            	   if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
+            		   currentIcon = getResources().getDrawable(R.drawable.icon_sdcard);
+            		   
+                       mListSdCard.add(new IconifiedText( 
+                       		 currentFile.getName(), currentIcon)); 
+            	   } else {
+            		   currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder);
+
+                       mListDir.add(new IconifiedText( 
+                         		 currentFile.getName(), currentIcon)); 
+            	   }
                }else{ 
                     String fileName = currentFile.getName(); 
                     
@@ -232,9 +248,11 @@ public class FileManagerActivity extends ListActivity {
                } 
                
           } 
+          //Collections.sort(mListSdCard); 
           Collections.sort(mListDir); 
           Collections.sort(mListFile); 
-          
+
+          addAllElements(directoryEntries, mListSdCard);
           addAllElements(directoryEntries, mListDir);
           addAllElements(directoryEntries, mListFile);
            
@@ -274,18 +292,31 @@ public class FileManagerActivity extends ListActivity {
     	 String dir = "";
     	 
     	 for (int i = 1; i < parts.length; i++) {
-    		 Button b = new Button(this);
-    		 b.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
-    		 b.setText(parts[i]);
     		 dir += "/" + parts[i];
-    		 b.setTag(dir);
-    		 b.setOnClickListener(new View.OnClickListener() {
- 				public void onClick(View view) {
- 					String dir = (String) view.getTag();
- 					browseTo(new File(dir));
- 				}
-    		 });
-    		 mDirectoryButtons.addView(b);
+    		 if (dir.equals(mSdCardPath)) {
+    			 // Add SD card button
+    			 ib = new ImageButton(this);
+    	    	 ib.setImageResource(R.drawable.icon_sdcard_small);
+    			 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+    			 ib.setOnClickListener(new View.OnClickListener() {
+    					public void onClick(View view) {
+    						browseTo(new File(mSdCardPath));
+    					}
+    			 });
+    			 mDirectoryButtons.addView(ib);
+    		 } else {
+	    		 Button b = new Button(this);
+	    		 b.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+	    		 b.setText(parts[i]);
+	    		 b.setTag(dir);
+	    		 b.setOnClickListener(new View.OnClickListener() {
+	 				public void onClick(View view) {
+	 					String dir = (String) view.getTag();
+	 					browseTo(new File(dir));
+	 				}
+	    		 });
+	    		 mDirectoryButtons.addView(b);
+    		 }
     	 }
      }
 
@@ -330,5 +361,10 @@ public class FileManagerActivity extends ListActivity {
     	 }
     	 
     	 return null;
+     }
+     
+     private void getSdCardPath() {
+    	 mSdCardPath = android.os.Environment
+			.getExternalStorageDirectory().getAbsolutePath();
      }
 }
