@@ -27,9 +27,20 @@ public final class R {
         public static final int uponelevel=0x7f020007;
         public static final int webtext=0x7f020008;
     }
+    public static final class id {
+        public static final int break_info=0x7f060004;
+        public static final int duration_info=0x7f060001;
+        public static final int icon=0x7f060006;
+        public static final int info=0x7f060008;
+        public static final int info_panel2=0x7f060000;
+        public static final int info_panel3=0x7f060003;
+        public static final int job_count_info=0x7f060005;
+        public static final int text=0x7f060007;
+        public static final int total_info=0x7f060002;
+    }
     public static final class layout {
-        public static final int file_row=0x7f030000;
-        public static final int main=0x7f030001;
+        public static final int filelist=0x7f030000;
+        public static final int filelist_item=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

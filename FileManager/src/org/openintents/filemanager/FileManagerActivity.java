@@ -22,7 +22,7 @@ public class FileManagerActivity extends ListActivity {
 
      private final DISPLAYMODE displayMode = DISPLAYMODE.RELATIVE; 
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>(); 
-     private File currentDirectory = new File("/"); 
+     private File currentDirectory = new File("/sdcard"); 
 
      /** Called when the activity is first created. */ 
      @Override 

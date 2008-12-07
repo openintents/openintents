@@ -71,9 +71,9 @@ public class IconifiedTextListAdapter extends BaseAdapter {
           } else { // Reuse/Overwrite the View passed 
                // We are assuming(!) that it is castable! 
                btv = (IconifiedTextView) convertView; 
-               btv.setText(mItems.get(position).getText()); 
-               btv.setIcon(mItems.get(position).getIcon()); 
           } 
+          btv.setText(mItems.get(position).getText()); 
+          btv.setIcon(mItems.get(position).getIcon()); 
           return btv; 
      } 
 }

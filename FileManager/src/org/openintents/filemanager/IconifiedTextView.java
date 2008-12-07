@@ -19,6 +19,7 @@ package org.openintents.filemanager;
 
 import android.content.Context; 
 import android.graphics.drawable.Drawable; 
+import android.view.LayoutInflater;
 import android.widget.ImageView; 
 import android.widget.LinearLayout; 
 import android.widget.TextView; 
@@ -30,26 +31,16 @@ public class IconifiedTextView extends LinearLayout {
       
      public IconifiedTextView(Context context, IconifiedText aIconifiedText) { 
           super(context); 
-
-          /* First Icon and the Text to the right (horizontal), 
-           * not above and below (vertical) */ 
-          this.setOrientation(HORIZONTAL); 
-
-          mIcon = new ImageView(context); 
-          mIcon.setImageDrawable(aIconifiedText.getIcon()); 
-          // left, top, right, bottom 
-          mIcon.setPadding(0, 2, 5, 0); // 5px to the right 
-           
-          /* At first, add the Icon to ourself 
-           * (! we are extending LinearLayout) */ 
-          addView(mIcon,  new LinearLayout.LayoutParams( 
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)); 
-           
-          mText = new TextView(context); 
-          mText.setText(aIconifiedText.getText()); 
-          /* Now the text (after the icon) */ 
-          addView(mText, new LinearLayout.LayoutParams( 
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)); 
+		
+		// inflate rating
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		inflater.inflate(
+				R.layout.filelist_item, this, true);
+		
+		mIcon = (ImageView) findViewById(R.id.icon);
+		mText = (TextView) findViewById(R.id.text);
      } 
 
      public void setText(String words) { 
