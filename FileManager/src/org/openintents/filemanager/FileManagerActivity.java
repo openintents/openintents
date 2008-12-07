@@ -92,17 +92,17 @@ public class FileManagerActivity extends ListActivity {
           // Add the "." == "current directory" 
           this.directoryEntries.add(new IconifiedText( 
                     getString(R.string.current_dir), 
-                    getResources().getDrawable(R.drawable.folder)));        
+                    getResources().getDrawable(R.drawable.ic_launcher_folder)));        
           // and the ".." == 'Up one level' 
           if(this.currentDirectory.getParent() != null) 
                this.directoryEntries.add(new IconifiedText( 
                          getString(R.string.up_one_level), 
-                         getResources().getDrawable(R.drawable.uponelevel))); 
+                         getResources().getDrawable(R.drawable.ic_launcher_folder_open))); 
            
           Drawable currentIcon = null; 
           for (File currentFile : files){ 
                if (currentFile.isDirectory()) { 
-                    currentIcon = getResources().getDrawable(R.drawable.folder); 
+                    currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
                }else{ 
                     String fileName = currentFile.getName(); 
                     /* Determine the Icon to be used, 
@@ -110,18 +110,18 @@ public class FileManagerActivity extends ListActivity {
                      * res/values/fileendings.xml. */ 
                     if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingImage))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.image); 
+                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_gallery); 
                     }else if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingWebText))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.webtext); 
+                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_drm_file); 
                     }else if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingPackage))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.packed); 
+                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
                     }else if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingAudio))){ 
-                         currentIcon = getResources().getDrawable(R.drawable.audio); 
+                         currentIcon = getResources().getDrawable(R.drawable.app_music); 
                     }else{ 
-                         currentIcon = getResources().getDrawable(R.drawable.text); 
+                         currentIcon = getResources().getDrawable(R.drawable.ic_launcher_drm_file); 
                     }                    
                } 
                switch (this.displayMode) { 
