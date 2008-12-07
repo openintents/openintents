@@ -48,7 +48,8 @@ public class FileManagerActivity extends ListActivity {
           // Create map of extensions:
           getMimeTypes();
 			
-          browseToRoot(); 
+          //browseToRoot(); 
+          browseToSdCard(); 
      }
 
 	/**
@@ -77,11 +78,19 @@ public class FileManagerActivity extends ListActivity {
      } 
       
      /** 
-      * This function browses to the 
+      * Browses to the 
       * root-directory of the file-system. 
       */ 
      private void browseToRoot() { 
           browseTo(new File("/")); 
+    } 
+     
+     /** 
+      * Browses to the 
+      * sd-card of the file-system. 
+      */ 
+     private void browseToSdCard() { 
+          browseTo(new File("/sdcard")); 
     } 
       
      /** 

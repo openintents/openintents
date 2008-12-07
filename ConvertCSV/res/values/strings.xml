@@ -3,6 +3,8 @@
     <string name="hello">Hello World, ConvertCsvActivity</string>
     <string name="app_name">OI Convert CSV</string>
     <string name="convert_csv">Convert CSV</string>
+    <string name="convert_csv_notepad">Convert CSV to Notepad</string>
+    <string name="convert_csv_shoppinglist">Convert CSV to Shopping list</string>
     <string name="convert_notepad_to_csv">Convert notepad to CSV</string>
     <string name="convert_shoppinglist_to_csv">Convert shopping list to CSV</string>
     <string name="file_path">File path</string>

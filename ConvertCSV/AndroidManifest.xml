@@ -17,6 +17,12 @@
                 <category android:name="android.intent.category.ALTERNATIVE" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
             </intent-filter>
+            <!-- The following intent makes it viewable in a file browser. -->
+            <intent-filter android:label="@string/convert_csv_shoppinglist">   
+                <action android:name="android.intent.action.VIEW"/>                        
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/csv" />
+            </intent-filter>
         </activity>
         <activity android:name=".notepad.ConvertCsvActivity"
                   android:label="@string/app_name">
@@ -31,6 +37,13 @@
                 <category android:name="android.intent.category.ALTERNATIVE" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.notepad.note" />
+            </intent-filter>
+            
+            <!-- The following intent makes it viewable in a file browser. -->
+            <intent-filter android:label="@string/convert_csv_notepad">   
+                <action android:name="android.intent.action.VIEW"/>                        
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/csv" />
             </intent-filter>
         </activity>
         

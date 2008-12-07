@@ -71,6 +71,19 @@ public class ConvertCsvBaseActivity extends Activity {
 				startExport();
 			}
         });
+        
+        Intent intent = getIntent();
+        String type = intent.getType();
+        if (type != null && type.equals("text/csv")) {
+        	// Someone wants to import a CSV document. Set the path accordingly:
+        	String path = getIntent().getDataString();
+        	if (path != null) {
+	        	if (path.startsWith("file://")) {
+	        		path = path.substring(7);
+	        	}
+	        	mEditText.setText(path);
+        	}
+        }
     }
     
     public void setPreferencesUsed() {
