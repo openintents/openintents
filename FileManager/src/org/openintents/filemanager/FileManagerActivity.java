@@ -144,7 +144,17 @@ public class FileManagerActivity extends ListActivity {
           browseTo(browseto);
      }
 
-     private void pickFile() {
+     
+     /*
+     @Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	}
+*/
+
+
+	private void pickFile() {
     	 String filename = mEditFilename.getText().toString();
     	 File file = FileUtils.getFile(currentDirectory.getAbsolutePath(), filename);
     	 
@@ -345,8 +355,55 @@ public class FileManagerActivity extends ListActivity {
     			 mDirectoryButtons.addView(b);
     		 }
     	 }
+    	 
+    	 checkButtonLayout();
      }
 
+     private void checkButtonLayout() {
+    	 
+    	 // Let's measure how much space we need:
+    	 //int spec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+    	 int spec = View.MeasureSpec.UNSPECIFIED;
+    	 mDirectoryButtons.measure(spec, spec);
+    	 int count = mDirectoryButtons.getChildCount();
+    	 
+    	 int requiredwidth = mDirectoryButtons.getMeasuredWidth();
+    	 int width = getWindowManager().getDefaultDisplay().getWidth();
+    	 //Log.i(TAG, "more: " + );
+    	 //Log.i(TAG, "more: " + mDirectoryButtons.getChildAt(count - 1).getMeasuredWidth());
+    	 //Log.i(TAG, "lastpos: " + lastpos + ", width: " + width);
+    	 
+    	 if (requiredwidth > width) {
+        	 int WRAP_CONTENT = LinearLayout.LayoutParams.WRAP_CONTENT;
+        	 
+        	 // Create a new button that shows that there is more to the left:
+        	 ImageButton ib = new ImageButton(this);
+        	 ib.setImageResource(R.drawable.ic_menu_back_small);
+    		 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+    		 // 
+    		 ib.setOnClickListener(new View.OnClickListener() {
+    				public void onClick(View view) {
+    					// Up one directory.
+    					browseTo(currentDirectory.getParentFile());
+    				}
+    		 });
+    		 mDirectoryButtons.addView(ib, 0);
+    		 
+    		 // New button needs even more space
+    		 ib.measure(spec, spec);
+    		 requiredwidth += ib.getMeasuredWidth();
+
+    		 // Need to take away some buttons
+    		 // but leave at least "back" button and one directory button.
+    		 while (requiredwidth > width && mDirectoryButtons.getChildCount() > 2) {
+    			 View view = mDirectoryButtons.getChildAt(1);
+    			 requiredwidth -= view.getMeasuredWidth();
+    			 
+	    		 mDirectoryButtons.removeViewAt(1);
+    		 }
+    	 }
+     }
+     
      @Override 
      protected void onListItemClick(ListView l, View v, int position, long id) { 
           super.onListItemClick(l, v, position, id); 
