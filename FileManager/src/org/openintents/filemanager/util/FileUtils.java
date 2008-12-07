@@ -138,4 +138,8 @@ public class FileUtils {
 		                       + file);
 		return clickedFile;
 	}
+	
+	public static File getFile(File curdir, String file) {
+		return getFile(curdir.getAbsolutePath(), file);
+	}
 }

@@ -20,26 +20,56 @@ public final class R {
         public static final int icon_sdcard_small=0x7f020006;
     }
     public static final class id {
-        public static final int button_pick=0x7f060002;
-        public static final int directory_buttons=0x7f060000;
-        public static final int filename=0x7f060001;
-        public static final int icon=0x7f060003;
-        public static final int info=0x7f060005;
-        public static final int text=0x7f060004;
+        public static final int button1=0x7f060004;
+        public static final int button2=0x7f060005;
+        public static final int button_pick=0x7f060008;
+        public static final int container2=0x7f060003;
+        public static final int directory_buttons=0x7f060006;
+        public static final int filename=0x7f060007;
+        public static final int foldername=0x7f060001;
+        public static final int icon=0x7f060009;
+        public static final int info=0x7f06000a;
+        public static final int text=0x7f060000;
+        public static final int text1=0x7f060002;
     }
     public static final class layout {
-        public static final int filelist=0x7f030000;
-        public static final int filelist_item=0x7f030001;
+        public static final int about=0x7f030000;
+        public static final int dialog_new_folder=0x7f030001;
+        public static final int eula=0x7f030002;
+        public static final int filelist=0x7f030003;
+        public static final int filelist_item=0x7f030004;
     }
     public static final class string {
+        /**  About 
+         */
+        public static final int about=0x7f05000a;
+        public static final int about_text=0x7f05000c;
+        public static final int about_title=0x7f05000b;
         public static final int app_name=0x7f050000;
-        public static final int application_not_available=0x7f050007;
-        public static final int current_dir=0x7f050006;
+        public static final int application_not_available=0x7f050009;
+        public static final int create_new_folder=0x7f050006;
+        public static final int current_dir=0x7f050005;
         public static final int dirname_app_name=0x7f050001;
-        public static final int dirnameinput_cmd_return=0x7f050003;
-        public static final int dirnameinput_hint=0x7f050004;
-        public static final int menu_new_folder=0x7f050002;
-        public static final int up_one_level=0x7f050005;
+        public static final int dirnameinput_cmd_return=0x7f050002;
+        public static final int dirnameinput_hint=0x7f050003;
+        public static final int eula_accept=0x7f05000f;
+        public static final int eula_description=0x7f05000e;
+        public static final int eula_refuse=0x7f050010;
+        /**  EULA 
+         */
+        public static final int eula_title=0x7f05000d;
+        public static final int folder_name=0x7f050007;
+        public static final int menu_new_folder=0x7f050008;
+        public static final int up_one_level=0x7f050004;
+        public static final int update=0x7f050017;
+        public static final int update_app_url=0x7f050014;
+        /**  Update 
+         */
+        public static final int update_box_text=0x7f050011;
+        public static final int update_check_now=0x7f050012;
+        public static final int update_checker_url=0x7f050015;
+        public static final int update_error=0x7f050016;
+        public static final int update_get_updater=0x7f050013;
     }
     public static final class xml {
         public static final int mimetypes=0x7f040000;

@@ -6,15 +6,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.UpdateMenu;
 import org.openintents.filemanager.util.FileUtils;
 import org.openintents.filemanager.util.MimeTypeParser;
 import org.openintents.filemanager.util.MimeTypes;
 import org.openintents.intents.FileManagerIntents;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.XmlResourceParser;
@@ -23,6 +31,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +41,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class FileManagerActivity extends ListActivity { 
 	private static final String TAG = "FileManagerActivity";
@@ -39,6 +51,13 @@ public class FileManagerActivity extends ListActivity {
 	private static final int STATE_BROWSE = 1;
 	private static final int STATE_PICK = 2;
 	
+
+	private static final int MENU_ABOUT = Menu.FIRST + 1;
+	private static final int MENU_UPDATE = Menu.FIRST + 2;
+	private static final int MENU_PREFERENCES = Menu.FIRST + 3;
+	private static final int MENU_NEW_FOLDER = Menu.FIRST + 4;
+	
+	private static final int DIALOG_ID_NEW_FOLDER = 1;
 	
 	/** Contains directries and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
@@ -176,7 +195,7 @@ public class FileManagerActivity extends ListActivity {
           
           if (aDirectory.isDirectory()){
                currentDirectory = aDirectory;
-               fill(aDirectory.listFiles());
+               refreshList();
                setDirectoryButtons();
           }else{ 
 
@@ -206,8 +225,11 @@ public class FileManagerActivity extends ListActivity {
 
      
      
-     private void fill(File[] files) { 
-          directoryEntries.clear(); 
+     private void refreshList() {
+    	 
+    	  File[] files = currentDirectory.listFiles();
+          
+    	  directoryEntries.clear(); 
           mListDir.clear();
           mListFile.clear();
           mListSdCard.clear();
@@ -372,4 +394,182 @@ public class FileManagerActivity extends ListActivity {
     	 mSdCardPath = android.os.Environment
 			.getExternalStorageDirectory().getAbsolutePath();
      }
+     
+
+ 	@Override
+ 	public boolean onCreateOptionsMenu(Menu menu) {
+ 		super.onCreateOptionsMenu(menu);
+
+ 		menu.add(0, MENU_NEW_FOLDER, 0, R.string.menu_new_folder).setIcon(
+ 				android.R.drawable.ic_menu_add).setShortcut('0', 'f');
+ 		
+ 		UpdateMenu
+ 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+ 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
+ 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
+
+ 		return true;
+ 	}
+
+
+	@Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		super.onPrepareOptionsMenu(menu);
+
+		// Generate any additional actions that can be performed on the
+		// overall list. This allows other applications to extend
+		// our menu with their own actions.
+		Intent intent = new Intent(null, getIntent().getData());
+		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		// menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+		// new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+
+		// Workaround to add icons:
+		MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this,
+				menu);
+		menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+				new ComponentName(this, FileManagerActivity.class), null, intent,
+				0, null);
+
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Intent intent;
+		switch (item.getItemId()) {
+		case MENU_NEW_FOLDER:
+			showDialog(DIALOG_ID_NEW_FOLDER);
+			return true;
+			
+		case MENU_UPDATE:
+			UpdateMenu.showUpdateBox(this);
+			return true;
+
+		case MENU_ABOUT:
+			showAboutBox();
+			return true;
+/*
+		case MENU_PREFERENCES:
+			intent = new Intent(this, PreferenceActivity.class);
+			startActivity(intent);
+			return true;
+			*/
+		}
+		return super.onOptionsItemSelected(item);
+
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		super.onContextItemSelected(item);
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
+				.getMenuInfo();
+		switch (item.getItemId()) {
+		/*
+		case MENU_MARK_ITEM:
+			markItem(menuInfo.position);
+			break;
+		case MENU_EDIT_ITEM:
+			editItem(menuInfo.position);
+			break;
+		case MENU_DELETE_ITEM:
+			deleteItem(menuInfo.position);
+			break;
+			*/
+		}
+
+		return true;
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ID_NEW_FOLDER:
+			LayoutInflater inflater = LayoutInflater.from(this);
+			View view = inflater.inflate(R.layout.dialog_new_folder, null);
+			final EditText et = (EditText) view
+					.findViewById(R.id.foldername);
+			et.setText("");
+			return new AlertDialog.Builder(this)
+            	.setIcon(android.R.drawable.ic_dialog_alert)
+            	.setTitle(R.string.create_new_folder).setView(view).setPositiveButton(
+					android.R.string.yes, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							createNewFolder(et.getText().toString());
+						}
+						
+					}).setNegativeButton(android.R.string.no, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							// Cancel should not do anything.
+						}
+						
+					}).create();
+			
+		}
+		return null;
+	}
+
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		super.onPrepareDialog(id, dialog);
+		
+		switch (id) {
+		case DIALOG_ID_NEW_FOLDER:
+			EditText et = (EditText) dialog.findViewById(R.id.foldername);
+			et.setText("");
+			break;
+		}
+	}
+
+	/*@Override
+	protected Dialog onPrepareDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ID_NEW_FOLDER:
+			LayoutInflater inflater = LayoutInflater.from(this);
+			View view = inflater.inflate(R.layout.dialog_new_folder, null);
+			final EditText et = (EditText) view
+					.findViewById(R.id.foldername);
+			et.setText("");
+			return new AlertDialog.Builder(this)
+            	.setIcon(android.R.drawable.ic_dialog_alert)
+            	.setTitle(R.string.create_new_folder).setView(view).setPositiveButton(
+					android.R.string.yes, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							createNewFolder(et.getText().toString());
+						}
+						
+					}).setNegativeButton(android.R.string.no, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							// Cancel should not do anything.
+						}
+						
+					}).create();
+			
+		}
+		return null;
+	}
+
+*/
+	private void showAboutBox() {
+		startActivity(new Intent(this, AboutActivity.class));
+	}
+	
+	private void createNewFolder(String foldername) {
+		if (!TextUtils.isEmpty(foldername)) {
+			File file = FileUtils.getFile(currentDirectory, foldername);
+			file.mkdirs();
+			
+			// Change into new directory:
+			browseTo(file);
+		}
+	}
+
 }
