@@ -7,4 +7,6 @@
     <string name="dirnameinput_hint">Enter a directory-name:</string>
     <string name="up_one_level">..</string>
     <string name="current_dir">.</string>
+    
+    <string name="application_not_available">Application not available</string>
 </resources>

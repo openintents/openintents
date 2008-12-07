@@ -1,34 +1,73 @@
 package org.openintents.filemanager;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import android.app.AlertDialog;
+import org.openintents.filemanager.util.MimeTypeParser;
+import org.openintents.filemanager.util.MimeTypes;
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.app.ListActivity;
-import android.content.DialogInterface;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
+import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class FileManagerActivity extends ListActivity { 
+	private static final String TAG = "FileManagerActivity";
       
      private enum DISPLAYMODE{ ABSOLUTE, RELATIVE; } 
 
      private final DISPLAYMODE displayMode = DISPLAYMODE.RELATIVE; 
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>(); 
      private File currentDirectory = new File("/sdcard"); 
+     
+     private MimeTypes mMimeTypes;
 
      /** Called when the activity is first created. */ 
      @Override 
      public void onCreate(Bundle icicle) { 
           super.onCreate(icicle); 
+          
+          // Create map of extensions:
+          getMimeTypes();
+			
           browseToRoot(); 
+     }
+
+	/**
+	 * 
+	 */
+     private void getMimeTypes() {
+    	 MimeTypeParser mtp = new MimeTypeParser();
+
+    	 XmlResourceParser in = this.getResources().getXml(R.xml.mimetypes);
+
+    	 try {
+    		 mMimeTypes = mtp.fromXmlResource(in);
+    	 } catch (XmlPullParserException e) {
+    		 Log
+    		 .e(
+    				 TAG,
+    				 "PreselectedChannelsActivity: XmlPullParserException",
+    				 e);
+    		 throw new RuntimeException(
+    		 "PreselectedChannelsActivity: XmlPullParserException");
+    	 } catch (IOException e) {
+    		 Log.e(TAG, "PreselectedChannelsActivity: IOException", e);
+    		 throw new RuntimeException(
+    		 "PreselectedChannelsActivity: IOException");
+    	 }
      } 
       
      /** 
@@ -57,42 +96,37 @@ public class FileManagerActivity extends ListActivity {
                this.currentDirectory = aDirectory; 
                fill(aDirectory.listFiles()); 
           }else{ 
-               OnClickListener okButtonListener = new OnClickListener(){ 
-                    // @Override 
-                    public void onClick(DialogInterface arg0, int arg1) { 
-                              // Lets start an intent to View the file, that was clicked... 
-                    	FileManagerActivity.this.openFile(aDirectory); 
-                    } 
-               }; 
-               OnClickListener cancelButtonListener = new OnClickListener(){ 
-                    // @Override 
-                    public void onClick(DialogInterface arg0, int arg1) { 
-                         // Do nothing ^^ 
-                    } 
-               }; 
-               
-               /*
-               AlertDialog.show(this,"Question", R.drawable.folder, "Do you want to open that file?\n" 
-                                        + aDirectory.getName(), 
-                                        "OK", okButtonListener, 
-                                        "Cancel", cancelButtonListener, false, null); 
-                                        */
+
+              // Lets start an intent to View the file, that was clicked... 
+        	  FileManagerActivity.this.openFile(aDirectory); 
+        	 
           } 
      } 
       
      private void openFile(File aFile) { 
-          Intent myIntent = new Intent(android.content.Intent.ACTION_VIEW, 
-                    Uri.parse("file://" + aFile.getAbsolutePath())); 
-          startActivity(myIntent); 
+          Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
+          /*, 
+                    Uri.parse("file://" + aFile.getAbsolutePath())); */
+          
+
+          Uri data = Uri.parse("file://" + aFile.getAbsolutePath());
+          String type = "audio/*";
+          intent.setDataAndType(data, type);
+          
+          try {
+        	  startActivity(intent); 
+          } catch (ActivityNotFoundException e) {
+        	  Toast.makeText(this, R.string.application_not_available, Toast.LENGTH_SHORT).show();
+          };
      } 
 
      private void fill(File[] files) { 
           this.directoryEntries.clear(); 
            
           // Add the "." == "current directory" 
-          this.directoryEntries.add(new IconifiedText( 
+          /*this.directoryEntries.add(new IconifiedText( 
                     getString(R.string.current_dir), 
-                    getResources().getDrawable(R.drawable.ic_launcher_folder)));        
+                    getResources().getDrawable(R.drawable.ic_launcher_folder)));        */
           // and the ".." == 'Up one level' 
           if(this.currentDirectory.getParent() != null) 
                this.directoryEntries.add(new IconifiedText( 
@@ -105,9 +139,23 @@ public class FileManagerActivity extends ListActivity {
                     currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder); 
                }else{ 
                     String fileName = currentFile.getName(); 
+                    
+                    String mimetype = mMimeTypes.getMimeType(fileName);
+                    
+                    int id = R.drawable.icon_file;
+                    if (TextUtils.isEmpty(mimetype)) {
+                    	// this avoids null-pointer exceptions in the following.
+                    } else if (mimetype.startsWith("audio/")) {
+                    	id = R.drawable.app_music;
+                    } else if (mimetype.startsWith("image/")) {
+                    	id = R.drawable.ic_launcher_gallery;
+                    }
+                    
+                    currentIcon = getResources().getDrawable(id);
                     /* Determine the Icon to be used, 
                      * depending on the FileEndings defined in: 
                      * res/values/fileendings.xml. */ 
+                    /*
                     if(checkEndsWithInStringArray(fileName, getResources(). 
                                         getStringArray(R.array.fileEndingImage))){ 
                          currentIcon = getResources().getDrawable(R.drawable.ic_launcher_gallery); 
@@ -122,7 +170,8 @@ public class FileManagerActivity extends ListActivity {
                          currentIcon = getResources().getDrawable(R.drawable.app_music); 
                     }else{ 
                          currentIcon = getResources().getDrawable(R.drawable.icon_file); 
-                    }                    
+                    }                   
+                    */ 
                } 
                switch (this.displayMode) { 
                     case ABSOLUTE: 
@@ -182,6 +231,7 @@ public class FileManagerActivity extends ListActivity {
 
      /** Checks whether checkItsEnd ends with 
       * one of the Strings from fileEndings */ 
+     /*
      private boolean checkEndsWithInStringArray(String checkItsEnd, 
                          String[] fileEndings){ 
           for(String aEnd : fileEndings){ 
@@ -190,4 +240,5 @@ public class FileManagerActivity extends ListActivity {
           } 
           return false; 
      } 
+     */
 }
