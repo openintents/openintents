@@ -59,6 +59,8 @@ public class FileManagerActivity extends ListActivity {
 	
 	private static final int DIALOG_ID_NEW_FOLDER = 1;
 	
+	private static final String BUNDLE_CURRENT_DIRECTORY = "current_directory";
+	
 	/** Contains directries and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
 
@@ -141,6 +143,10 @@ public class FileManagerActivity extends ListActivity {
         	  mButtonPick.setVisibility(View.GONE);
           }
           
+          if (icicle != null) {
+        	  browseto = new File(icicle.getString(BUNDLE_CURRENT_DIRECTORY));
+          }
+          
           browseTo(browseto);
      }
 
@@ -152,7 +158,16 @@ public class FileManagerActivity extends ListActivity {
 		super.onResume();
 	}
 */
+     
 
+ 	@Override
+ 	protected void onSaveInstanceState(Bundle outState) {
+ 		// TODO Auto-generated method stub
+ 		super.onSaveInstanceState(outState);
+ 		
+ 		// remember file name
+ 		outState.putString(BUNDLE_CURRENT_DIRECTORY, currentDirectory.getAbsolutePath());
+ 	}
 
 	private void pickFile() {
     	 String filename = mEditFilename.getText().toString();
@@ -628,5 +643,7 @@ public class FileManagerActivity extends ListActivity {
 			browseTo(file);
 		}
 	}
+
+
 
 }
