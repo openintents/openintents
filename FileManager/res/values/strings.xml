@@ -36,7 +36,7 @@
 	<string name="about">About</string>
 	<string name="about_title">About %s</string>
 	<string name="about_text">Version %s \n\n
-OI File Manager is an open file manager which seemlessly works together with other applications. \n\n
+OI File Manager is an open file manager that seamlessly cooperates with other applications. \n\n
 OpenIntents allows different Android applications 
 to share data using intents and open interfaces.\n\n
 For more information and other great applications visit OpenIntents at 
