@@ -49,6 +49,6 @@
 	<type extension=".xml" mimetype="text/xml" />
 	
 	<!-- Android specific -->
-	<type extention=".apk" mimetype="application/vnd.android.package-archive" />
+	<type extension=".apk" mimetype="application/vnd.android.package-archive" />
 	
 </MimeTypes>
