@@ -44,6 +44,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
@@ -61,11 +62,15 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_PREFERENCES = Menu.FIRST + 3;
 	private static final int MENU_NEW_FOLDER = Menu.FIRST + 4;
 	private static final int MENU_DELETE = Menu.FIRST + 5;
+	private static final int MENU_RENAME = Menu.FIRST + 6;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
+	private static final int DIALOG_RENAME = 3;
 	
 	private static final String BUNDLE_CURRENT_DIRECTORY = "current_directory";
+	private static final String BUNDLE_CONTEXT_FILE = "context_file";
+	private static final String BUNDLE_CONTEXT_TEXT = "context_text";
 	
 	/** Contains directories and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
@@ -84,8 +89,10 @@ public class FileManagerActivity extends ListActivity {
      private String mSdCardPath = "";
      
      private MimeTypes mMimeTypes;
-     
-     private File mContextFile;
+
+     private String mContextText;
+     private File mContextFile = new File("");
+     private Drawable mContextIcon;
      
      private EditText mEditFilename;
      private Button mButtonPick;
@@ -156,6 +163,8 @@ public class FileManagerActivity extends ListActivity {
           
           if (icicle != null) {
         	  browseto = new File(icicle.getString(BUNDLE_CURRENT_DIRECTORY));
+        	  mContextFile = new File(icicle.getString(BUNDLE_CONTEXT_FILE));
+        	  mContextText = icicle.getString(BUNDLE_CONTEXT_TEXT);
           }
           
           browseTo(browseto);
@@ -178,6 +187,8 @@ public class FileManagerActivity extends ListActivity {
  		
  		// remember file name
  		outState.putString(BUNDLE_CURRENT_DIRECTORY, currentDirectory.getAbsolutePath());
+ 		outState.putString(BUNDLE_CONTEXT_FILE, mContextFile.getAbsolutePath());
+ 		outState.putString(BUNDLE_CONTEXT_TEXT, mContextText);
  	}
 
 	private void pickFile() {
@@ -565,7 +576,7 @@ public class FileManagerActivity extends ListActivity {
 		menu.setHeaderIcon(it.getIcon());
 		// Setup the menu header
 
-		// Add a menu item to delete the note
+		menu.add(0, MENU_RENAME, 0, R.string.menu_rename);
 		menu.add(0, MENU_DELETE, 0, R.string.menu_delete);
 	}
 
@@ -574,22 +585,25 @@ public class FileManagerActivity extends ListActivity {
 		super.onContextItemSelected(item);
 		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
 				.getMenuInfo();
+		
+		// Remember current selection
+		IconifiedText ic = directoryEntries.get(menuInfo.position);
+		mContextText = ic.getText();
+		mContextIcon = ic.getIcon();
+		mContextFile = FileUtils.getFile(currentDirectory, ic.getText());
+		
 		switch (item.getItemId()) {
 
 		case MENU_DELETE:
-			showDeleteDialog(menuInfo.position);
+			showDialog(DIALOG_DELETE);
+			return true;
+
+		case MENU_RENAME:
+			showDialog(DIALOG_RENAME);
 			return true;
 		}
 
 		return true;
-	}
-
-	
-	private void showDeleteDialog(int pos) {
-		// Remember current selection
-		mContextFile = FileUtils.getFile(currentDirectory, directoryEntries.get(pos).getText());
-		
-		showDialog(DIALOG_DELETE);
 	}
 	
 	@Override
@@ -605,13 +619,13 @@ public class FileManagerActivity extends ListActivity {
 			return new AlertDialog.Builder(this)
             	.setIcon(android.R.drawable.ic_dialog_alert)
             	.setTitle(R.string.create_new_folder).setView(view).setPositiveButton(
-					android.R.string.yes, new OnClickListener() {
+					android.R.string.ok, new OnClickListener() {
 						
 						public void onClick(DialogInterface dialog, int which) {
 							createNewFolder(et.getText().toString());
 						}
 						
-					}).setNegativeButton(android.R.string.no, new OnClickListener() {
+					}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
 						
 						public void onClick(DialogInterface dialog, int which) {
 							// Cancel should not do anything.
@@ -621,13 +635,34 @@ public class FileManagerActivity extends ListActivity {
 		
 
 		case DIALOG_DELETE:
-			return new AlertDialog.Builder(this)
-            	.setIcon(android.R.drawable.ic_dialog_alert)
-            	.setTitle(getString(R.string.really_delete, mContextFile)).setPositiveButton(
+			return new AlertDialog.Builder(this).setTitle(getString(R.string.really_delete, mContextText))
+            	.setIcon(android.R.drawable.ic_dialog_alert).setPositiveButton(
 					android.R.string.ok, new OnClickListener() {
 						
 						public void onClick(DialogInterface dialog, int which) {
 							deleteFileOrFolder(mContextFile);
+						}
+						
+					}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							// Cancel should not do anything.
+						}
+						
+					}).create();
+
+		case DIALOG_RENAME:
+			inflater = LayoutInflater.from(this);
+			view = inflater.inflate(R.layout.dialog_new_folder, null);
+			final EditText et2 = (EditText) view
+				.findViewById(R.id.foldername);
+			return new AlertDialog.Builder(this)
+            	.setTitle(R.string.menu_rename).setView(view).setPositiveButton(
+					android.R.string.ok, new OnClickListener() {
+						
+						public void onClick(DialogInterface dialog, int which) {
+							
+							renameFileOrFolder(mContextFile, et2.getText().toString());
 						}
 						
 					}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
@@ -652,6 +687,22 @@ public class FileManagerActivity extends ListActivity {
 		case DIALOG_NEW_FOLDER:
 			EditText et = (EditText) dialog.findViewById(R.id.foldername);
 			et.setText("");
+			break;
+
+		case DIALOG_DELETE:
+			((AlertDialog) dialog).setTitle(getString(R.string.really_delete, mContextText));
+			break;
+			
+		case DIALOG_RENAME:
+			et = (EditText) dialog.findViewById(R.id.foldername);
+			et.setText(mContextText);
+			TextView tv = (TextView) dialog.findViewById(R.id.foldernametext);
+			if (mContextFile.isDirectory()) {
+				tv.setText(R.string.file_name);
+			} else {
+				tv.setText(R.string.file_name);
+			}
+			((AlertDialog) dialog).setIcon(mContextIcon);
 			break;
 		}
 	}
@@ -692,5 +743,22 @@ public class FileManagerActivity extends ListActivity {
 			}
 		}
 	}
-
+	
+	private void renameFileOrFolder(File file, String newFileName) {
+		
+		File newFile = FileUtils.getFile(currentDirectory, newFileName);
+		
+		if (file.renameTo(newFile)) {
+			// Rename was successful.
+			refreshList();
+			if (file.isDirectory()) {
+				Toast.makeText(this, R.string.folder_renamed, Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this, R.string.file_renamed, Toast.LENGTH_SHORT).show();
+			}
+		} else {
+			Toast.makeText(this, R.string.error_renaming_file, Toast.LENGTH_SHORT).show();
+		}
+	}
+	
 }
