@@ -217,18 +217,26 @@ public class FileManagerActivity extends ListActivity {
     		 if (mDirectoryInput == null) {
         		 onCreateDirectoryInput();
         	 }
-        	 
-    		 // Set directory path
-    		 mEditDirectory.setText(currentDirectory.getAbsolutePath());
-    	 } else {
-    		 setDirectoryButtons();
     	 }
     	 if (mDirectoryInput != null) {
 	    	 mDirectoryInput.setVisibility(show ? View.VISIBLE : View.GONE);
 	    	 mDirectoryButtons.setVisibility(show ? View.GONE : View.VISIBLE);
     	 }
+    	 
+    	 refreshDirectoryPanel();
      }
-     
+
+ 	/**
+ 	 * 
+ 	 */
+ 	private void refreshDirectoryPanel() {
+ 		if (isDirectoryInputVisible()) {
+ 			// Set directory path
+ 			mEditDirectory.setText(currentDirectory.getAbsolutePath());
+ 		} else {
+ 			setDirectoryButtons();
+ 		}
+ 	} 
      /*
      @Override
 	protected void onResume() {
@@ -309,15 +317,12 @@ public class FileManagerActivity extends ListActivity {
           
           if (aDirectory.isDirectory()){
         	  if (aDirectory.equals(currentDirectory)) {
+        		  // Switch from button to directory input
         		  showDirectoryInput(true);
         	  } else {
 	               currentDirectory = aDirectory;
 	               refreshList();
-	               if (isDirectoryInputVisible()) {
-	            	   showDirectoryInput(true);
-	               } else {
-	            	   setDirectoryButtons();
-	               }
+	               refreshDirectoryPanel();
         	  }
           }else{ 
 
@@ -329,7 +334,8 @@ public class FileManagerActivity extends ListActivity {
         		  mEditFilename.setText(aDirectory.getName());
         	  }
           } 
-     } 
+     }
+
       
      private void openFile(File aFile) { 
     	 if (!aFile.exists()) {
