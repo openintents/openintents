@@ -42,6 +42,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -324,8 +325,10 @@ public class FileManagerActivity extends ListActivity {
         		  // Switch from button to directory input
         		  showDirectoryInput(true);
         	  } else {
+        		   File previousDirectory = currentDirectory;
 	               currentDirectory = aDirectory;
 	               refreshList();
+	               selectInList(previousDirectory);
 	               refreshDirectoryPanel();
         	  }
           }else{ 
@@ -360,8 +363,6 @@ public class FileManagerActivity extends ListActivity {
           };
      } 
 
-     
-     
      private void refreshList() {
     	 
     	  File[] files = currentDirectory.listFiles();
@@ -386,7 +387,7 @@ public class FileManagerActivity extends ListActivity {
            
           Drawable currentIcon = null; 
           for (File currentFile : files){ 
-               if (currentFile.isDirectory()) { 
+        	   if (currentFile.isDirectory()) { 
             	   if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
             		   currentIcon = getResources().getDrawable(R.drawable.icon_sdcard);
             		   
@@ -423,7 +424,21 @@ public class FileManagerActivity extends ListActivity {
           IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
           itla.setListItems(directoryEntries);          
           setListAdapter(itla); 
+          
      } 
+     
+     private void selectInList(File selectFile) {
+    	 String filename = selectFile.getName();
+    	 IconifiedTextListAdapter la = (IconifiedTextListAdapter) getListAdapter();
+    	 int count = la.getCount();
+    	 for (int i = 0; i < count; i++) {
+    		 IconifiedText it = (IconifiedText) la.getItem(i);
+    		 if (it.getText().equals(filename)) {
+    			 getListView().setSelection(i);
+    			 break;
+    		 }
+    	 }
+     }
      
      private void addAllElements(List<IconifiedText> addTo, List<IconifiedText> addFrom) {
     	 int size = addFrom.size();
