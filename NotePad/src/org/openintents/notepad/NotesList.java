@@ -277,7 +277,7 @@ public class NotesList extends ListActivity {
 	}
 
 	private void sendNoteByEmail(long id) {
-		// Delete the note that the context menu is for
+		// Obtain Uri for the context menu
 		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
 		// getContentResolver().(noteUri, null, null);
 

@@ -26,7 +26,6 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.XmlResourceParser;
-import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -63,6 +62,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_NEW_FOLDER = Menu.FIRST + 4;
 	private static final int MENU_DELETE = Menu.FIRST + 5;
 	private static final int MENU_RENAME = Menu.FIRST + 6;
+	private static final int MENU_SEND = Menu.FIRST + 7;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
@@ -574,8 +574,11 @@ public class FileManagerActivity extends ListActivity {
 		IconifiedText it = directoryEntries.get(info.position);
 		menu.setHeaderTitle(it.getText());
 		menu.setHeaderIcon(it.getIcon());
-		// Setup the menu header
+		File file = FileUtils.getFile(currentDirectory, it.getText());
 
+		if (!file.isDirectory()) {
+			menu.add(0, MENU_SEND, 0, R.string.menu_send);
+		}
 		menu.add(0, MENU_RENAME, 0, R.string.menu_rename);
 		menu.add(0, MENU_DELETE, 0, R.string.menu_delete);
 	}
@@ -600,6 +603,10 @@ public class FileManagerActivity extends ListActivity {
 
 		case MENU_RENAME:
 			showDialog(DIALOG_RENAME);
+			return true;
+			
+		case MENU_SEND:
+			sendFile(mContextFile);
 			return true;
 		}
 
@@ -751,7 +758,7 @@ public class FileManagerActivity extends ListActivity {
 		if (file.renameTo(newFile)) {
 			// Rename was successful.
 			refreshList();
-			if (file.isDirectory()) {
+			if (newFile.isDirectory()) {
 				Toast.makeText(this, R.string.folder_renamed, Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(this, R.string.file_renamed, Toast.LENGTH_SHORT).show();
@@ -761,4 +768,28 @@ public class FileManagerActivity extends ListActivity {
 		}
 	}
 	
+	private void sendFile(File file) {
+
+		String filename = file.getName();
+		String content = "hh";
+		
+		Log.i(TAG, "Title to send: " + filename);
+		Log.i(TAG, "Content to send: " + content);
+
+		Intent i = new Intent();
+		i.setAction(Intent.ACTION_SEND);
+		i.setType(mMimeTypes.getMimeType(file.getName()));
+		i.putExtra(Intent.EXTRA_SUBJECT, filename);
+		i.putExtra(Intent.EXTRA_STREAM, FileUtils.getUri(file));
+
+		i = Intent.createChooser(i, getString(R.string.menu_send));
+		
+		try {
+			startActivity(i);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(this, R.string.send_not_available,
+					Toast.LENGTH_SHORT).show();
+			Log.e(TAG, "Email client not installed");
+		}
+	}
 }
