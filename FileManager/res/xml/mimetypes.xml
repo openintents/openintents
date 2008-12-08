@@ -48,4 +48,7 @@
 	<type extension=".csv" mimetype="text/csv" />
 	<type extension=".xml" mimetype="text/xml" />
 	
+	<!-- Android specific -->
+	<type extention=".apk" mimetype="application/vnd.android.package-archive" />
+	
 </MimeTypes>
