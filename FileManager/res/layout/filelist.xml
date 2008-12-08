@@ -19,12 +19,34 @@
     android:orientation="vertical"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent">
-    <LinearLayout android:id="@+id/directory_buttons"
-	    android:orientation="horizontal"
-	    android:layout_width="wrap_content" 
-	    android:layout_height="wrap_content">
-	    <!-- Buttons added here dynamically -->
-	</LinearLayout>
+    <FrameLayout
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content">
+	    <LinearLayout android:id="@+id/directory_buttons"
+		    android:orientation="horizontal"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content">
+		    <!-- Buttons added here dynamically -->
+		</LinearLayout>
+		<LinearLayout android:id="@+id/directory_input"
+		    android:orientation="horizontal"
+		    android:layout_width="fill_parent" 
+		    android:layout_height="wrap_content"
+		    android:visibility="gone">
+			<ImageButton android:id="@+id/button_directory_back"
+					android:src="@drawable/ic_menu_back_small"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content" />
+		    <EditText android:id="@+id/directory_text"
+				    android:layout_width="0dip"
+				    android:layout_weight="1" 
+				    android:layout_height="wrap_content" />
+			<Button android:id="@+id/button_directory_pick"
+					android:text="@android:string/ok"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content" />
+		</LinearLayout>
+	</FrameLayout>
     <LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent" 

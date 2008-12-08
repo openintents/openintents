@@ -71,6 +71,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final String BUNDLE_CURRENT_DIRECTORY = "current_directory";
 	private static final String BUNDLE_CONTEXT_FILE = "context_file";
 	private static final String BUNDLE_CONTEXT_TEXT = "context_text";
+	private static final String BUNDLE_SHOW_DIRECTORY_INPUT = "show_directory_input";
 	
 	/** Contains directories and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
@@ -97,6 +98,11 @@ public class FileManagerActivity extends ListActivity {
      private EditText mEditFilename;
      private Button mButtonPick;
      private LinearLayout mDirectoryButtons;
+     
+     private LinearLayout mDirectoryInput;
+     private ImageButton mButtonDirectoryBack;
+     private EditText mEditDirectory;
+     private Button mButtonDirectoryPick;
 
      /** Called when the activity is first created. */ 
      @Override 
@@ -120,6 +126,9 @@ public class FileManagerActivity extends ListActivity {
 					pickFile();
 				}
           });
+          
+          // Initialize only when necessary:
+          mDirectoryInput = null;
           
           // Create map of extensions:
           getMimeTypes();
@@ -165,11 +174,60 @@ public class FileManagerActivity extends ListActivity {
         	  browseto = new File(icicle.getString(BUNDLE_CURRENT_DIRECTORY));
         	  mContextFile = new File(icicle.getString(BUNDLE_CONTEXT_FILE));
         	  mContextText = icicle.getString(BUNDLE_CONTEXT_TEXT);
+        	  
+        	  boolean show = icicle.getBoolean(BUNDLE_SHOW_DIRECTORY_INPUT);
+        	  showDirectoryInput(show);
           }
           
           browseTo(browseto);
      }
 
+     private void onCreateDirectoryInput() {
+    	 mDirectoryInput = (LinearLayout) findViewById(R.id.directory_input);
+         mEditDirectory = (EditText) findViewById(R.id.directory_text);
+         
+         mButtonDirectoryBack = (ImageButton) findViewById(R.id.button_directory_back);
+         
+         mButtonDirectoryBack.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View arg0) {
+					showDirectoryInput(false);
+				}
+         });
+
+         mButtonPick = (Button) findViewById(R.id.button_directory_pick);
+         
+         mButtonPick.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View arg0) {
+					browseTo(new File(mEditDirectory.getText().toString()));
+				}
+         });
+     }
+     
+     /**
+      * Show the directory line as input box instead of button row.
+      * If Directory input does not exist yet, it is created.
+      * Since the default is show == false, nothing is created if
+      * it is not necessary (like after icicle).
+      * @param show
+      */
+     private void showDirectoryInput(boolean show) {
+    	 if (show) {
+    		 if (mDirectoryInput == null) {
+        		 onCreateDirectoryInput();
+        	 }
+        	 
+    		 // Set directory path
+    		 mEditDirectory.setText(currentDirectory.getAbsolutePath());
+    	 } else {
+    		 setDirectoryButtons();
+    	 }
+    	 if (mDirectoryInput != null) {
+	    	 mDirectoryInput.setVisibility(show ? View.VISIBLE : View.GONE);
+	    	 mDirectoryButtons.setVisibility(show ? View.GONE : View.VISIBLE);
+    	 }
+     }
      
      /*
      @Override
@@ -189,7 +247,16 @@ public class FileManagerActivity extends ListActivity {
  		outState.putString(BUNDLE_CURRENT_DIRECTORY, currentDirectory.getAbsolutePath());
  		outState.putString(BUNDLE_CONTEXT_FILE, mContextFile.getAbsolutePath());
  		outState.putString(BUNDLE_CONTEXT_TEXT, mContextText);
+ 		boolean show = isDirectoryInputVisible();
+ 		outState.putBoolean(BUNDLE_SHOW_DIRECTORY_INPUT, show);
  	}
+
+	/**
+	 * @return
+	 */
+	private boolean isDirectoryInputVisible() {
+		return ((mDirectoryInput != null) && (mDirectoryInput.getVisibility() == View.VISIBLE));
+	}
 
 	private void pickFile() {
     	 String filename = mEditFilename.getText().toString();
@@ -241,9 +308,17 @@ public class FileManagerActivity extends ListActivity {
           Log.i(TAG, "browse to: " + aDirectory.getAbsoluteFile());
           
           if (aDirectory.isDirectory()){
-               currentDirectory = aDirectory;
-               refreshList();
-               setDirectoryButtons();
+        	  if (aDirectory.equals(currentDirectory)) {
+        		  showDirectoryInput(true);
+        	  } else {
+	               currentDirectory = aDirectory;
+	               refreshList();
+	               if (isDirectoryInputVisible()) {
+	            	   showDirectoryInput(true);
+	               } else {
+	            	   setDirectoryButtons();
+	               }
+        	  }
           }else{ 
 
         	  if (mState == STATE_BROWSE) {
@@ -257,6 +332,11 @@ public class FileManagerActivity extends ListActivity {
      } 
       
      private void openFile(File aFile) { 
+    	 if (!aFile.exists()) {
+    		 Toast.makeText(this, R.string.error_file_does_not_exists, Toast.LENGTH_SHORT).show();
+    		 return;
+    	 }
+    	 
           Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
 
           Uri data = FileUtils.getUri(aFile);
@@ -355,9 +435,9 @@ public class FileManagerActivity extends ListActivity {
     	 ib.setImageResource(R.drawable.ic_launcher_home_small);
 		 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
 		 ib.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					browseTo(new File("/"));
-				}
+			public void onClick(View view) {
+				browseTo(new File("/"));
+			}
 		 });
 		 mDirectoryButtons.addView(ib);
 		 

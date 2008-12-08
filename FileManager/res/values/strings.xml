@@ -25,6 +25,7 @@
     <string name="error_deleting_file">Could not delete file.</string>
     <string name="error_folder_not_empty">Folder is not empty.</string>
     <string name="error_renaming_file">Could not rename file.</string>
+    <string name="error_file_does_not_exists">File does not exist.</string>
     
     <string name="send_not_available">No application available for sending.</string>
     
