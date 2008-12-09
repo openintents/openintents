@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestFileManager</string>
+    <string name="app_name">TestFileManager</string>
+    <string name="no_filemanager_installed">No compatible file manager found</string>
+    <string name="open_title">Select file to open</string>
+    <string name="open_button">Open</string>
+</resources>
