@@ -34,5 +34,7 @@ Features:
   buttons.
 - Alternatively, the current path can be displayed
   in an input field.
-- Supports PICK_FILE.
+- Supports PICK_FILE and PICK_DIRECTORY intents.
 - Support for many file endings and mime types.
+- "Back" key works for directories clicked in the
+  list.
