@@ -52,6 +52,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -95,6 +96,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final String BUNDLE_CONTEXT_FILE = "context_file";
 	private static final String BUNDLE_CONTEXT_TEXT = "context_text";
 	private static final String BUNDLE_SHOW_DIRECTORY_INPUT = "show_directory_input";
+	private static final String BUNDLE_STEPS_BACK = "steps_back";
 	
 	/** Contains directories and files together */
      private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
@@ -117,6 +119,9 @@ public class FileManagerActivity extends ListActivity {
      private String mContextText;
      private File mContextFile = new File("");
      private Drawable mContextIcon;
+     
+     /** How many steps one can make back using the back key. */
+     private int mStepsBack;
      
      private EditText mEditFilename;
      private Button mButtonPick;
@@ -175,11 +180,12 @@ public class FileManagerActivity extends ListActivity {
         	  File file = FileUtils.getFile(intent.getData());
         	  if (file != null) {
         		  File dir = FileUtils.getPathWithoutFilename(file);
-        		  if (file.isDirectory()) {
+        		  if (dir.isDirectory()) {
         			  browseto = dir;
         		  }
-        		  
-        		  mEditFilename.setText(file.getName());
+        		  if (!file.isDirectory()) {
+        			  mEditFilename.setText(file.getName());
+        		  }
         	  } else {
         		  
         	  }
@@ -200,6 +206,8 @@ public class FileManagerActivity extends ListActivity {
         	  mButtonPick.setVisibility(View.GONE);
           }
           
+          mStepsBack = 0;
+          
           if (icicle != null) {
         	  browseto = new File(icicle.getString(BUNDLE_CURRENT_DIRECTORY));
         	  mContextFile = new File(icicle.getString(BUNDLE_CONTEXT_FILE));
@@ -207,6 +215,8 @@ public class FileManagerActivity extends ListActivity {
         	  
         	  boolean show = icicle.getBoolean(BUNDLE_SHOW_DIRECTORY_INPUT);
         	  showDirectoryInput(show);
+        	  
+        	  mStepsBack = icicle.getInt(BUNDLE_STEPS_BACK);
           }
           
           browseTo(browseto);
@@ -291,6 +301,7 @@ public class FileManagerActivity extends ListActivity {
  		outState.putString(BUNDLE_CONTEXT_TEXT, mContextText);
  		boolean show = isDirectoryInputVisible();
  		outState.putBoolean(BUNDLE_SHOW_DIRECTORY_INPUT, show);
+ 		outState.putInt(BUNDLE_STEPS_BACK, mStepsBack);
  	}
 
 	/**
@@ -339,11 +350,31 @@ public class FileManagerActivity extends ListActivity {
       * This function browses up one level 
       * according to the field: currentDirectory 
       */ 
-     private void upOneLevel(){ 
-          if(currentDirectory.getParent() != null) 
+     private void upOneLevel(){
+    	 if (mStepsBack > 0) {
+    		 mStepsBack--;
+    	 }
+         if(currentDirectory.getParent() != null) 
                browseTo(currentDirectory.getParentFile()); 
      } 
       
+     /**
+      * Jump to some location by clicking on a 
+      * directory button.
+      * 
+      * This resets the counter for "back" actions.
+      * 
+      * @param aDirectory
+      */
+     private void jumpTo(final File aDirectory) {
+    	 mStepsBack = 0;
+    	 browseTo(aDirectory);
+     }
+     
+     /**
+      * Browse to some location by clicking on a list item.
+      * @param aDirectory
+      */
      private void browseTo(final File aDirectory){ 
           // setTitle(aDirectory.getAbsolutePath());
           
@@ -486,7 +517,7 @@ public class FileManagerActivity extends ListActivity {
 		 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
 		 ib.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				browseTo(new File("/"));
+				jumpTo(new File("/"));
 			}
 		 });
 		 mDirectoryButtons.addView(ib);
@@ -504,7 +535,7 @@ public class FileManagerActivity extends ListActivity {
     			 ib.setLayoutParams(new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
     			 ib.setOnClickListener(new View.OnClickListener() {
     					public void onClick(View view) {
-    						browseTo(new File(mSdCardPath));
+    						jumpTo(new File(mSdCardPath));
     					}
     			 });
     			 mDirectoryButtons.addView(ib);
@@ -516,7 +547,7 @@ public class FileManagerActivity extends ListActivity {
 	    		 b.setOnClickListener(new View.OnClickListener() {
 	 				public void onClick(View view) {
 	 					String dir = (String) view.getTag();
-	 					browseTo(new File(dir));
+	 					jumpTo(new File(dir));
 	 				}
 	    		 });
     			 mDirectoryButtons.addView(b);
@@ -547,7 +578,7 @@ public class FileManagerActivity extends ListActivity {
     		 ib.setOnClickListener(new View.OnClickListener() {
     				public void onClick(View view) {
     					// Up one directory.
-    					browseTo(currentDirectory.getParentFile());
+    					upOneLevel();
     				}
     		 });
     		 mDirectoryButtons.addView(ib, 0);
@@ -581,8 +612,13 @@ public class FileManagerActivity extends ListActivity {
         	  String file = directoryEntries.get(position) 
               .getText();
         	  File clickedFile = FileUtils.getFile(curdir, file);
-               if (clickedFile != null) 
-                    browseTo(clickedFile); 
+               if (clickedFile != null) {
+            	   if (clickedFile.isDirectory()) {
+            		   // If we click on folders, we can return later by the "back" key.
+            		   mStepsBack++;
+            	   }
+                    browseTo(clickedFile);
+               }
           } 
      }
 
@@ -926,4 +962,19 @@ public class FileManagerActivity extends ListActivity {
 			Log.e(TAG, "Email client not installed");
 		}
 	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (mStepsBack > 0) {
+				upOneLevel();
+				return true;
+			}
+		}
+		
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	
 }
