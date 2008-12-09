@@ -68,6 +68,8 @@ public class ConvertCsvBaseActivity extends Activity {
 
 	protected String PREFERENCE_FILENAME;
 	protected String DEFAULT_FILENAME;
+	protected int RES_STRING_FILEMANAGER_TITLE = 0;
+	protected int RES_STRING_FILEMANAGER_BUTTON_TEXT = 0;
 
 	/** Called when the activity is first created. */
     @Override
@@ -321,6 +323,14 @@ public class ConvertCsvBaseActivity extends Activity {
 		
 		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
 		intent.setData(Uri.parse("file://" + fileName));
+		
+		if (RES_STRING_FILEMANAGER_TITLE != 0) {
+			intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(RES_STRING_FILEMANAGER_TITLE));
+		}
+		if (RES_STRING_FILEMANAGER_BUTTON_TEXT != 0) {
+			intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(RES_STRING_FILEMANAGER_BUTTON_TEXT));
+		}
+		
 		
 		try {
 			startActivityForResult(intent, REQUEST_CODE_PICK_FILE);

@@ -33,6 +33,9 @@
     <string name="error_file_not_found">File not found</string>
     <string name="import_finished">Import finished</string>
     <string name="export_finished">Export finished</string>
+    <string name="filemanager_title_notepad">Select notepad CSV file</string>
+    <string name="filemanager_title_shoppinglist">Select shopping list CSV file</string>
+    <!--  <string name="filemanager_buttontext">Export finished</string>  -->
     
     <string name="file_exists">The file exists. Do you want to overwrite?</string>
     <string name="dont_ask_again">Don't ask again. Always overwrite!</string>
