@@ -74,7 +74,8 @@ public class FileManagerActivity extends ListActivity {
 	private int mState;
 	
 	private static final int STATE_BROWSE = 1;
-	private static final int STATE_PICK = 2;
+	private static final int STATE_PICK_FILE = 2;
+	private static final int STATE_PICK_DIRECTORY = 2;
 	
 
 	private static final int MENU_ABOUT = Menu.FIRST + 1;
@@ -84,6 +85,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_DELETE = Menu.FIRST + 5;
 	private static final int MENU_RENAME = Menu.FIRST + 6;
 	private static final int MENU_SEND = Menu.FIRST + 7;
+	private static final int MENU_OPEN = Menu.FIRST + 8;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
@@ -168,7 +170,7 @@ public class FileManagerActivity extends ListActivity {
           }
           
           if (action != null && action.equals(FileManagerIntents.ACTION_PICK_FILE)) {
-        	  mState = STATE_PICK;
+        	  mState = STATE_PICK_FILE;
         	  
         	  File file = FileUtils.getFile(intent.getData());
         	  if (file != null) {
@@ -360,7 +362,7 @@ public class FileManagerActivity extends ListActivity {
         	  if (mState == STATE_BROWSE) {
 	              // Lets start an intent to View the file, that was clicked... 
 	        	  openFile(aDirectory); 
-        	  } else if (mState == STATE_PICK) {
+        	  } else if (mState == STATE_PICK_FILE) {
         		  // Pick the file
         		  mEditFilename.setText(aDirectory.getName());
         	  }
@@ -700,7 +702,12 @@ public class FileManagerActivity extends ListActivity {
 		menu.setHeaderIcon(it.getIcon());
 		File file = FileUtils.getFile(currentDirectory, it.getText());
 
+		
 		if (!file.isDirectory()) {
+			if (mState == STATE_PICK_FILE || mState == STATE_PICK_DIRECTORY) {
+				// Show "open" menu
+				menu.add(0, MENU_OPEN, 0, R.string.menu_open);
+			}
 			menu.add(0, MENU_SEND, 0, R.string.menu_send);
 		}
 		menu.add(0, MENU_RENAME, 0, R.string.menu_rename);
@@ -720,7 +727,10 @@ public class FileManagerActivity extends ListActivity {
 		mContextFile = FileUtils.getFile(currentDirectory, ic.getText());
 		
 		switch (item.getItemId()) {
-
+		case MENU_OPEN:
+            openFile(mContextFile); 
+			return true;
+			
 		case MENU_DELETE:
 			showDialog(DIALOG_DELETE);
 			return true;
