@@ -4,12 +4,8 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.openintents.convertcsv.opencsv.CSVReader;
-import org.openintents.provider.Shopping.Items;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.net.Uri;
-import android.util.Log;
 
 public class ImportCsv {
 

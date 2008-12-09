@@ -1,11 +1,5 @@
 package org.openintents.convertcsv.shoppinglist;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,8 +8,7 @@ import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 
-import android.util.Log;
-import android.widget.Toast;
+import android.os.Bundle;
 
 public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	
@@ -25,6 +18,14 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     	PREFERENCE_FILENAME = PreferenceActivity.PREFS_SHOPPINGLIST_FILENAME;
     }
 
+    /** Called when the activity is first created. */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+    	mConvertInfo.setText(R.string.convert_all_shoppinglists);
+    }
+    
 	/**
 	 * @param reader
 	 * @throws IOException

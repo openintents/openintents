@@ -1,6 +1,5 @@
 package org.openintents.convertcsv.notepad;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -9,7 +8,6 @@ import org.openintents.provider.NotePad;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.util.Log;
 
 public class ExportCsv {
 

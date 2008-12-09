@@ -2,7 +2,6 @@ package org.openintents.convertcsv.notepad;
 
 import org.openintents.provider.NotePad;
 import org.openintents.provider.NotePad.Notes;
-import org.openintents.provider.Shopping.Items;
 
 import android.content.ContentValues;
 import android.content.Context;

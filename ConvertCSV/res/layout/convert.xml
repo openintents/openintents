@@ -8,10 +8,15 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 	    android:text="@string/file_path"
+	    android:layout_marginLeft="20dip"
+	    android:layout_marginTop="20dip"
+	    android:layout_marginBottom="5dip"
+		android:textAppearance="?android:attr/textAppearanceMedium"
 	    />
     <LinearLayout android:orientation="horizontal"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dip"
 	    >
 	    <EditText android:id="@+id/file_path"
 	    	android:text="@string/default_path"
@@ -23,7 +28,17 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
 	</LinearLayout>
-		
+	
+	<TextView  
+		android:id="@+id/convert_info"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:layout_marginLeft="20dip"
+	    android:layout_marginTop="20dip"
+	    android:layout_marginBottom="5dip"
+	    />
+	
 	<LinearLayout
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"

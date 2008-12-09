@@ -32,6 +32,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ConvertCsvBaseActivity extends Activity {
@@ -46,6 +47,8 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected static final int REQUEST_CODE_PICK_FILE = 1;
 
 	protected EditText mEditText;
+
+	protected TextView mConvertInfo;
 
 	protected String PREFERENCE_FILENAME;
 
@@ -70,6 +73,8 @@ public class ConvertCsvBaseActivity extends Activity {
 				openFileManager();
 			}
         });
+        
+        mConvertInfo = (TextView) findViewById(R.id.convert_info);
         
         Button buttonImport = (Button) findViewById(R.id.file_import);
         
@@ -102,6 +107,8 @@ public class ConvertCsvBaseActivity extends Activity {
 	        	mEditText.setText(path);
         	}
         }
+        
+        
     }
     
     public void setPreferencesUsed() {

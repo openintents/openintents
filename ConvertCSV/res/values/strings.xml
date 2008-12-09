@@ -7,6 +7,8 @@
     <string name="convert_csv_shoppinglist">Convert CSV to Shopping list</string>
     <string name="convert_notepad_to_csv">Convert notepad to CSV</string>
     <string name="convert_shoppinglist_to_csv">Convert shopping list to CSV</string>
+    <string name="convert_all_notes">Convert all notes</string>
+    <string name="convert_all_shoppinglists">Convert all shopping lists</string>
     <string name="file_path">File path</string>
     <string name="file_import">Import</string>
     <string name="file_export">Export</string>
