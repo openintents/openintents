@@ -17,6 +17,10 @@ package org.openintents.filemanager;
  * limitations under the License. 
  */ 
 
+/**
+ * Dec 7, 2008: Peli: Use inflated layout.
+ */
+
 import android.content.Context; 
 import android.graphics.drawable.Drawable; 
 import android.view.LayoutInflater;

@@ -22,10 +22,15 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2008-11-??
+date: 2008-12-09
 
 - First public release on Android SDK 1.0.
 
 Features: 
-- Import / export CSV files compatible with MS Outlook.
+- Import / export all shopping lists to CSV file
+  compatible with MS Outlook.
+- Import / export all notepad notes to CSV file
+  compatible with Palm CSV format.
+- Open OI File Manager to select file location.
+
 
