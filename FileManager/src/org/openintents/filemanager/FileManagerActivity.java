@@ -172,8 +172,10 @@ public class FileManagerActivity extends ListActivity {
         	  
         	  File file = FileUtils.getFile(intent.getData());
         	  if (file != null) {
-        		  
-        		  browseto = FileUtils.getPathWithoutFilename(file);
+        		  File dir = FileUtils.getPathWithoutFilename(file);
+        		  if (file.isDirectory()) {
+        			  browseto = dir;
+        		  }
         		  
         		  mEditFilename.setText(file.getName());
         	  } else {
@@ -343,8 +345,6 @@ public class FileManagerActivity extends ListActivity {
      private void browseTo(final File aDirectory){ 
           // setTitle(aDirectory.getAbsolutePath());
           
-          Log.i(TAG, "browse to: " + aDirectory.getAbsoluteFile());
-          
           if (aDirectory.isDirectory()){
         	  if (aDirectory.equals(currentDirectory)) {
         		  // Switch from button to directory input
@@ -357,7 +357,6 @@ public class FileManagerActivity extends ListActivity {
 	               refreshDirectoryPanel();
         	  }
           }else{ 
-
         	  if (mState == STATE_BROWSE) {
 	              // Lets start an intent to View the file, that was clicked... 
 	        	  openFile(aDirectory); 
@@ -479,7 +478,6 @@ public class FileManagerActivity extends ListActivity {
     	 
     	 int WRAP_CONTENT = LinearLayout.LayoutParams.WRAP_CONTENT;
     	 
-    	 
     	 // Add home button separately
     	 ImageButton ib = new ImageButton(this);
     	 ib.setImageResource(R.drawable.ic_launcher_home_small);
@@ -529,16 +527,12 @@ public class FileManagerActivity extends ListActivity {
      private void checkButtonLayout() {
     	 
     	 // Let's measure how much space we need:
-    	 //int spec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
     	 int spec = View.MeasureSpec.UNSPECIFIED;
     	 mDirectoryButtons.measure(spec, spec);
     	 int count = mDirectoryButtons.getChildCount();
     	 
     	 int requiredwidth = mDirectoryButtons.getMeasuredWidth();
     	 int width = getWindowManager().getDefaultDisplay().getWidth();
-    	 //Log.i(TAG, "more: " + );
-    	 //Log.i(TAG, "more: " + mDirectoryButtons.getChildAt(count - 1).getMeasuredWidth());
-    	 //Log.i(TAG, "lastpos: " + lastpos + ", width: " + width);
     	 
     	 if (requiredwidth > width) {
         	 int WRAP_CONTENT = LinearLayout.LayoutParams.WRAP_CONTENT;
