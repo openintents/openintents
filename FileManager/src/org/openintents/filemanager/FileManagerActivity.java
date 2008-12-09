@@ -66,7 +66,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AbsoluteLayout.LayoutParams;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class FileManagerActivity extends ListActivity { 
@@ -78,6 +77,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int STATE_PICK_FILE = 2;
 	private static final int STATE_PICK_DIRECTORY = 3;
 	
+	protected static final int REQUEST_CODE_MOVE = 1;
 
 	private static final int MENU_ABOUT = Menu.FIRST + 1;
 	private static final int MENU_UPDATE = Menu.FIRST + 2;
@@ -87,6 +87,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_RENAME = Menu.FIRST + 6;
 	private static final int MENU_SEND = Menu.FIRST + 7;
 	private static final int MENU_OPEN = Menu.FIRST + 8;
+	private static final int MENU_MOVE = Menu.FIRST + 9;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
@@ -459,6 +460,11 @@ public class FileManagerActivity extends ListActivity {
            
           Drawable currentIcon = null; 
           for (File currentFile : files){ 
+        	  /*
+        	  if (currentFile.isHidden()) {
+        		  continue;
+        	  }
+        	  */
         	   if (currentFile.isDirectory()) { 
             	   if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
             		   currentIcon = getResources().getDrawable(R.drawable.icon_sdcard);
@@ -761,6 +767,7 @@ public class FileManagerActivity extends ListActivity {
 			}
 			menu.add(0, MENU_SEND, 0, R.string.menu_send);
 		}
+		menu.add(0, MENU_MOVE, 0, R.string.menu_move);
 		menu.add(0, MENU_RENAME, 0, R.string.menu_rename);
 		menu.add(0, MENU_DELETE, 0, R.string.menu_delete);
 	}
@@ -780,6 +787,10 @@ public class FileManagerActivity extends ListActivity {
 		switch (item.getItemId()) {
 		case MENU_OPEN:
             openFile(mContextFile); 
+			return true;
+			
+		case MENU_MOVE:
+			promptDestinationAndMoveFile();
 			return true;
 			
 		case MENU_DELETE:
@@ -903,6 +914,18 @@ public class FileManagerActivity extends ListActivity {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
 	
+	private void promptDestinationAndMoveFile() {
+
+		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_DIRECTORY);
+		
+		intent.setData(FileUtils.getUri(currentDirectory));
+		
+		intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(R.string.move_title));
+		intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(R.string.move_button));
+		
+		startActivityForResult(intent, REQUEST_CODE_MOVE);
+	}
+	
 	private void createNewFolder(String foldername) {
 		if (!TextUtils.isEmpty(foldername)) {
 			File file = FileUtils.getFile(currentDirectory, foldername);
@@ -940,17 +963,55 @@ public class FileManagerActivity extends ListActivity {
 		
 		File newFile = FileUtils.getFile(currentDirectory, newFileName);
 		
-		if (file.renameTo(newFile)) {
+		rename(file, newFile);
+	}
+
+	/**
+	 * @param oldFile
+	 * @param newFile
+	 */
+	private void rename(File oldFile, File newFile) {
+		int toast = 0;
+		if (oldFile.renameTo(newFile)) {
 			// Rename was successful.
 			refreshList();
 			if (newFile.isDirectory()) {
-				Toast.makeText(this, R.string.folder_renamed, Toast.LENGTH_SHORT).show();
+				toast = R.string.folder_renamed;
 			} else {
-				Toast.makeText(this, R.string.file_renamed, Toast.LENGTH_SHORT).show();
+				toast = R.string.file_renamed;
 			}
 		} else {
-			Toast.makeText(this, R.string.error_renaming_file, Toast.LENGTH_SHORT).show();
+			if (newFile.isDirectory()) {
+				toast = R.string.error_renaming_folder;
+			} else {
+				toast = R.string.error_renaming_file;
+			}
 		}
+		Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+	}
+
+	/**
+	 * @param oldFile
+	 * @param newFile
+	 */
+	private void move(File oldFile, File newFile) {
+		int toast = 0;
+		if (oldFile.renameTo(newFile)) {
+			// Rename was successful.
+			refreshList();
+			if (newFile.isDirectory()) {
+				toast = R.string.folder_moved;
+			} else {
+				toast = R.string.file_moved;
+			}
+		} else {
+			if (newFile.isDirectory()) {
+				toast = R.string.error_moving_folder;
+			} else {
+				toast = R.string.error_moving_file;
+			}
+		}
+		Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
 	}
 	
 	private void sendFile(File file) {
@@ -991,5 +1052,28 @@ public class FileManagerActivity extends ListActivity {
 		return super.onKeyDown(keyCode, event);
 	}
 	
+
+    /**
+     * This is called after the file manager finished.
+     */
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		switch (requestCode) {
+		case REQUEST_CODE_MOVE:
+			if (resultCode == RESULT_OK && data != null) {
+				// obtain the filename
+				File movefrom = mContextFile;
+				File moveto = FileUtils.getFile(data.getData());
+				if (moveto != null) {
+					moveto = FileUtils.getFile(moveto, movefrom.getName());
+					move(movefrom, moveto);
+				}				
+				
+			}
+			break;
+		}
+	}
 	
 }
