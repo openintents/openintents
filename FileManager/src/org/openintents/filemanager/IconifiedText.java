@@ -55,7 +55,7 @@ public class IconifiedText implements Comparable<IconifiedText>{
      } 
 
      /** Make IconifiedText comparable by its name */ 
-     @Override 
+     
      public int compareTo(IconifiedText other) { 
           if(this.mText != null) 
                return this.mText.compareTo(other.getText()); 
