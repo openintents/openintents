@@ -32,19 +32,14 @@
 		    android:layout_width="fill_parent" 
 		    android:layout_height="wrap_content"
 		    android:visibility="gone">
-			<ImageButton android:id="@+id/button_directory_back"
-					android:src="@drawable/ic_menu_back_small"
-				    android:layout_width="wrap_content" 
-				    android:layout_height="wrap_content" />
 		    <EditText android:id="@+id/directory_text"
 				    android:layout_width="0dip"
 				    android:layout_weight="1" 
 				    android:layout_height="wrap_content" />
-			<Button android:id="@+id/button_directory_pick"
-					android:text="@android:string/ok"
+			<ImageButton android:id="@+id/button_directory_pick"
+					android:src="@drawable/ic_menu_forward_small"
 				    android:layout_width="wrap_content" 
-				    android:layout_height="wrap_content"
-			    	android:minWidth="64dip"  />
+				    android:layout_height="wrap_content" />
 		</LinearLayout>
 	</FrameLayout>
     <LinearLayout

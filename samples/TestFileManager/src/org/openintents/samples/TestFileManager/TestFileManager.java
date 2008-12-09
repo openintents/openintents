@@ -61,13 +61,13 @@ public class TestFileManager extends Activity {
 		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
 		
 		// Alternative:
-		intent.setAction(FileManagerIntents.ACTION_PICK_DIRECTORY);
+		//intent.setAction(FileManagerIntents.ACTION_PICK_DIRECTORY);
 		
 		// Construct URI from file name.
 		// We *can* provide the current file name, but we don't have to.
 		intent.setData(Uri.parse("file://" + fileName));
 		
-		// Set fancy title and button
+		// Set fancy title and button (optional)
 		intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(R.string.open_title));
 		intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(R.string.open_button));
 		

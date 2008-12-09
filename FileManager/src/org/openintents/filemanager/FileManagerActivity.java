@@ -128,9 +128,8 @@ public class FileManagerActivity extends ListActivity {
      private LinearLayout mDirectoryButtons;
      
      private LinearLayout mDirectoryInput;
-     private ImageButton mButtonDirectoryBack;
      private EditText mEditDirectory;
-     private Button mButtonDirectoryPick;
+     private ImageButton mButtonDirectoryPick;
 
      /** Called when the activity is first created. */ 
      @Override 
@@ -235,24 +234,25 @@ public class FileManagerActivity extends ListActivity {
      private void onCreateDirectoryInput() {
     	 mDirectoryInput = (LinearLayout) findViewById(R.id.directory_input);
          mEditDirectory = (EditText) findViewById(R.id.directory_text);
-         
-         mButtonDirectoryBack = (ImageButton) findViewById(R.id.button_directory_back);
-         
-         mButtonDirectoryBack.setOnClickListener(new View.OnClickListener() {
-				
-				public void onClick(View arg0) {
-					showDirectoryInput(false);
-				}
-         });
 
-         mButtonPick = (Button) findViewById(R.id.button_directory_pick);
+         mButtonDirectoryPick = (ImageButton) findViewById(R.id.button_directory_pick);
          
-         mButtonPick.setOnClickListener(new View.OnClickListener() {
+         mButtonDirectoryPick.setOnClickListener(new View.OnClickListener() {
 				
 				public void onClick(View arg0) {
-					browseTo(new File(mEditDirectory.getText().toString()));
+					goToDirectoryInEditText();
 				}
          });
+     }
+     
+     private void goToDirectoryInEditText() {
+    	 File browseto = new File(mEditDirectory.getText().toString());
+    	 
+    	 if (browseto.equals(currentDirectory)) {
+    		 showDirectoryInput(false);
+    	 } else {
+			browseTo(browseto);
+    	 }
      }
      
      /**
