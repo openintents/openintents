@@ -38,3 +38,5 @@ Features:
 - Support for many file endings and mime types.
 - "Back" key works for directories clicked in the
   list.
+- Create directory, rename, delete files.
+- Move files.

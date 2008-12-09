@@ -49,6 +49,7 @@ import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Contacts.Intents;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -174,6 +175,9 @@ public class FileManagerActivity extends ListActivity {
         	  browseto = new File(mSdCardPath);
           }
           
+          // Default state
+          mState = STATE_BROWSE;
+          
           if (action != null) {
         	  if (action.equals(FileManagerIntents.ACTION_PICK_FILE)) {
         		  mState = STATE_PICK_FILE;
@@ -186,9 +190,9 @@ public class FileManagerActivity extends ListActivity {
         				  LinearLayout.LayoutParams.FILL_PARENT,
         				  LinearLayout.LayoutParams.WRAP_CONTENT));
         	  }
-          } else {
-        	  mState = STATE_BROWSE;
-         	 
+          }
+          
+          if (mState == STATE_BROWSE) {
         	  // Remove edit text and button.
         	  mEditFilename.setVisibility(View.GONE);
         	  mButtonPick.setVisibility(View.GONE);
@@ -246,13 +250,29 @@ public class FileManagerActivity extends ListActivity {
          });
      }
      
+     //private boolean mHaveShownErrorMessage;
+     private File mHaveShownErrorMessageForFile = null;
+     
      private void goToDirectoryInEditText() {
     	 File browseto = new File(mEditDirectory.getText().toString());
     	 
     	 if (browseto.equals(currentDirectory)) {
     		 showDirectoryInput(false);
     	 } else {
-			browseTo(browseto);
+    		 if (mHaveShownErrorMessageForFile != null 
+    				 && mHaveShownErrorMessageForFile.equals(browseto)) {
+    			 // Don't let user get stuck in wrong directory.
+    			 mHaveShownErrorMessageForFile = null;
+        		 showDirectoryInput(false);
+    		 } else {
+	    		 if (!browseto.exists()) {
+	    			 // browseTo() below will show an error message,
+	    			 // because file does not exist.
+	    			 // It is ok to show this the first time.
+	    			 mHaveShownErrorMessageForFile = browseto;
+	    		 }
+				 browseTo(browseto);
+    		 }
     	 }
      }
      
