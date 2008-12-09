@@ -1,6 +1,22 @@
+/* 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.intents;
 
-// Version Dec 7, 2008
+// Version Dec 9, 2008
 
 
 /**
@@ -13,11 +29,21 @@ public final class FileManagerIntents {
 	 * Activity Action: Pick a file through the file manager, or let user
 	 * specify a custom file name.
 	 * Data is the current file name or file name suggestion.
-	 * Returns a new file name in data.
+	 * Returns a new file name as file URI in data.
 	 * 
 	 * <p>Constant Value: "org.openintents.action.PICK_FILE"</p>
 	 */
 	public static final String ACTION_PICK_FILE = "org.openintents.action.PICK_FILE";
+
+	/**
+	 * Activity Action: Pick a directory through the file manager, or let user
+	 * specify a custom file name.
+	 * Data is the current directory name or directory name suggestion.
+	 * Returns a new directory name as file URI in data.
+	 * 
+	 * <p>Constant Value: "org.openintents.action.PICK_DIRECTORY"</p>
+	 */
+	public static final String ACTION_PICK_DIRECTORY = "org.openintents.action.PICK_DIRECTORY";
 	
 	/**
 	 * The title to display.
@@ -29,13 +55,12 @@ public final class FileManagerIntents {
 	public static final String EXTRA_TITLE = "org.openintents.extra.TITLE";
 
 	/**
-	 * Whether the file manager should allow the user to enter a new file name.
+	 * The text on the button to display.
 	 * 
-	 * <p>Boolean value: true: Allow user to enter a file name. 
-	 * false: Allow user only to pick from existing files.</p>
+	 * <p>Depending on the use, it makes sense to set this to "Open" or "Save".</p>
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.ALLOW_NEW_FILENAME"</p>
+	 * <p>Constant Value: "org.openintents.extra.BUTTON_TEXT"</p>
 	 */
-	public static final String EXTRA_ALLOW_NEW_FILENAME = "org.openintents.extra.ALLOW_NEW_FILENAME";
+	public static final String EXTRA_BUTTON_TEXT = "org.openintents.extra.BUTTON_TEXT";
 
 }
