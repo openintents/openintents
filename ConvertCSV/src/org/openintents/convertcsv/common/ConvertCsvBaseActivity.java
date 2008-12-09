@@ -67,6 +67,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected TextView mConvertInfo;
 
 	protected String PREFERENCE_FILENAME;
+	protected String DEFAULT_FILENAME;
 
 	/** Called when the activity is first created. */
     @Override
@@ -74,12 +75,14 @@ public class ConvertCsvBaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.convert);
         
+        DEFAULT_FILENAME = getString(R.string.default_path);
+        
         setPreferencesUsed();
          
         mEditText = (EditText) findViewById(R.id.file_path);
         
         SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditText.setText(pm.getString(PREFERENCE_FILENAME, getString(R.string.default_path)));
+        mEditText.setText(pm.getString(PREFERENCE_FILENAME, DEFAULT_FILENAME));
 
         ImageButton buttonFileManager = (ImageButton) findViewById(R.id.file_manager);
         

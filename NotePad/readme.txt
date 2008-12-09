@@ -28,7 +28,7 @@ release: 1.0.2
 date: 2008-12-??
 
 - allow alternative menus that affect the whole list
-  of notes
+  of notes. Allows support for ConvertCSV.
 
 ---------------------------------------------------------
 release: 1.0.1

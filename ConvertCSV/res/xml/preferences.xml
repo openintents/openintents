@@ -26,7 +26,7 @@
                 android:title="@string/preference_notepad"
                 android:summary="@string/preference_notepad_summary">
                 
-    		<PreferenceCategory android:title="@string/preference_shoppinglist">
+    		<PreferenceCategory android:title="@string/preference_notepad">
 			    <EditTextPreference
 			            android:key="notepad_filename"
 			            android:defaultValue="@string/default_notepad_path"

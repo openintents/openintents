@@ -32,6 +32,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	
     public void setPreferencesUsed() {
     	PREFERENCE_FILENAME = PreferenceActivity.PREFS_NOTEPAD_FILENAME;
+    	DEFAULT_FILENAME = getString(R.string.default_notepad_path);
     }
     
     /** Called when the activity is first created. */
