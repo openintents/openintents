@@ -22,6 +22,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.1
+date: 2008-12-??
+- Added support for following extensions:
+  .amr, .3gp
+
+---------------------------------------------------------
 release: 1.0.0
 date: 2008-12-10
 

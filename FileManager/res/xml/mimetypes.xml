@@ -28,9 +28,11 @@
 	<type extension=".ogg" mimetype="audio/x-ogg" />
 	<type extension=".mid" mimetype="audio/mid" />
 	<type extension=".midi" mimetype="audio/midi" />
+	<type extension=".amr" mimetype="audio/AMR" />
 	
 	<!-- Video types -->
 	<type extension=".mpeg" mimetype="video/mpeg" />
+	<type extension=".3gp" mimetype="video/3gpp" />
 	
 	<!-- Package types -->
 	<type extension=".jar" mimetype="application/java-archive" />
