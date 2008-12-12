@@ -26,6 +26,8 @@ release: 1.0.1
 date: 2008-12-??
 - Added support for following extensions:
   .amr, .3gp
+- Added support for upper case or mixed case letter
+  extensions (like .png and .PNG)
 
 ---------------------------------------------------------
 release: 1.0.0

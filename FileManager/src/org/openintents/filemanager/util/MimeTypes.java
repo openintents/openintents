@@ -28,12 +28,18 @@ public class MimeTypes {
 	}
 	
 	public void put(String type, String extension) {
+		// Convert extensions to lower case letters for easier comparison
+		extension = extension.toLowerCase();
+		
 		mMimeTypes.put(type, extension);
 	}
 	
 	public String getMimeType(String filename) {
 		
 		String extension = FileUtils.getExtension(filename);
+		
+		// Convert extensions to lower case letters for easier comparison
+		extension = extension.toLowerCase();
 		
 		String mimetype = mMimeTypes.get(extension);
 		
