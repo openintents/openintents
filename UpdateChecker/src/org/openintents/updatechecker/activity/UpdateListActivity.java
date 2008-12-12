@@ -526,7 +526,7 @@ public class UpdateListActivity extends ListActivity {
 				.setPositiveButton(searchButton, new OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int which) {
-						UpdateCheckerActivity.searchMarketForPackage(
+						UpdateCheckerActivity.searchDefaultStoreForPackage(
 								UpdateListActivity.this, packageName, appName);
 
 					}

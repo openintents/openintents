@@ -31,6 +31,8 @@
 		android:layout_height="wrap_content">
 		<RadioButton android:id="@+id/do_update" android:text="@string/do_update"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"></RadioButton>
+		<RadioButton android:id="@+id/do_update_defaultStore" android:text="@string/do_update_market"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"></RadioButton>
 		<RadioButton android:id="@+id/remind_me_later"
 			android:text="@string/remind_me_later" android:layout_width="fill_parent"
 			android:layout_height="wrap_content"></RadioButton>

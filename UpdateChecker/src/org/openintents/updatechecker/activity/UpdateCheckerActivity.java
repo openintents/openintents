@@ -62,6 +62,7 @@ public class UpdateCheckerActivity extends Activity {
 	private String mCurrentVersionName;
 	private boolean mIsMarketIntent;
 	private boolean mIsAppandstoreIntent;
+	private String mAppName;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -127,6 +128,12 @@ public class UpdateCheckerActivity extends Activity {
 					}
 					setResult(RESULT_OK);
 					break;
+				case R.id.do_update_defaultStore:
+					searchDefaultStoreForPackage(UpdateCheckerActivity.this,
+							mPackageName, mAppName);
+
+					setResult(RESULT_OK);
+					break;
 				case R.id.remind_me_later:
 					updateUpdateTime();
 
@@ -152,7 +159,7 @@ public class UpdateCheckerActivity extends Activity {
 
 	}
 
-	public static void searchMarketForPackage(Context context,
+	public static void searchDefaultStoreForPackage(Context context,
 			String packageName, String appName) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_VIEW);
@@ -205,7 +212,7 @@ public class UpdateCheckerActivity extends Activity {
 	private void setFromIntent(Intent intent) {
 		TextView view = (TextView) findViewById(R.id.text_update);
 
-		String appName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
+		mAppName = intent.getStringExtra(UpdateChecker.EXTRA_APP_NAME);
 		String comment = intent.getStringExtra(UpdateChecker.EXTRA_COMMENT);
 
 		Intent updateIntent = (Intent) getIntent().getParcelableExtra(
@@ -219,23 +226,23 @@ public class UpdateCheckerActivity extends Activity {
 					: getString(R.string.andappstore));
 		}
 
-		if (appName != null) {
+		if (mAppName != null) {
 			if (comment != null) {
 				if (location != null) {
 					view.setText(getString(R.string.update_available_3,
-							appName, location, comment));
+							mAppName, location, comment));
 				} else {
 					view.setText(getString(R.string.update_available_2,
-							appName, comment));
+							mAppName, comment));
 				}
 			} else {
 				if (location != null) {
 					view.setText(getString(
 							R.string.update_available_location_no_comment,
-							appName, location));
+							mAppName, location));
 				} else {
 					view.setText(getString(
-							R.string.update_available_no_comment, appName));
+							R.string.update_available_no_comment, mAppName));
 				}
 			}
 		}
@@ -265,6 +272,7 @@ public class UpdateCheckerActivity extends Activity {
 			setTitle(R.string.app_name);
 		}
 
+		// visibility for ignore this update
 		int visibility;
 		if (mLatestVersion > 0 || mLatestVersionName != null) {
 			visibility = View.VISIBLE;
@@ -274,6 +282,18 @@ public class UpdateCheckerActivity extends Activity {
 		}
 
 		findViewById(R.id.ignore_this_update).setVisibility(visibility);
+
+		// visibility for do update market
+		view = (TextView) findViewById(R.id.do_update_defaultStore);
+		if (!mIsMarketIntent && !UpdateApplication.AND_APP_STORE) {
+			visibility = View.VISIBLE;
+		} else if (!mIsAppandstoreIntent && UpdateApplication.AND_APP_STORE) {
+			visibility = View.VISIBLE;
+			view.setText(R.string.do_update_andAppStore);
+		} else {
+			visibility = View.GONE;
+		}
+		view.setVisibility(visibility);
 
 	}
 
@@ -298,6 +318,5 @@ public class UpdateCheckerActivity extends Activity {
 		}
 		Log.v(TAG, "package name = " + mPackageName);
 	}
-
 
 }
