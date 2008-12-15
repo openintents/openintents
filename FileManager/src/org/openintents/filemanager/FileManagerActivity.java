@@ -21,6 +21,7 @@
 package org.openintents.filemanager;
 
 import java.io.File;
+import java.io.FilePermission;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1046,7 +1047,8 @@ public class FileManagerActivity extends ListActivity {
 		i.setAction(Intent.ACTION_SEND);
 		i.setType(mMimeTypes.getMimeType(file.getName()));
 		i.putExtra(Intent.EXTRA_SUBJECT, filename);
-		i.putExtra(Intent.EXTRA_STREAM, FileUtils.getUri(file));
+		//i.putExtra(Intent.EXTRA_STREAM, FileUtils.getUri(file));
+		i.putExtra(Intent.EXTRA_STREAM, Uri.parse("content://" + FileManagerProvider.AUTHORITY + "/mimetype/" + file.getAbsolutePath()));
 
 		i = Intent.createChooser(i, getString(R.string.menu_send));
 		

@@ -28,6 +28,7 @@ date: 2008-12-??
   .amr, .3gp
 - Added support for upper case or mixed case letter
   extensions (like .png and .PNG)
+- Fix for send files via MMS.
 
 ---------------------------------------------------------
 release: 1.0.0

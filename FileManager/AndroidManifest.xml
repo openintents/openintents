@@ -51,5 +51,6 @@
         <!-- 
         <activity android:name=".PreferenceActivity" android:label="@string/preferences">
         </activity>  -->
-    </application>
+    <provider android:name=".FileManagerProvider" android:authorities="org.openintents.filemanager"></provider>
+</application>
 </manifest> 
