@@ -30,6 +30,7 @@ release: 1.0.2
 date: 200?-??-??
 
 - perform update from default store.
+- new url for and app store
 
 ---------------------------------------------------------
 release: 1.0.1

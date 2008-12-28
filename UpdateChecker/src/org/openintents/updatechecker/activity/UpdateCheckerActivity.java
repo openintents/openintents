@@ -58,7 +58,7 @@ public class UpdateCheckerActivity extends Activity {
 	private RadioGroup mRadioGroup;
 	private int mLatestVersion;
 	private String mLatestVersionName;
-	private Object mCurrentVersion;
+	private int mCurrentVersion;
 	private String mCurrentVersionName;
 	private boolean mIsMarketIntent;
 	private boolean mIsAppandstoreIntent;

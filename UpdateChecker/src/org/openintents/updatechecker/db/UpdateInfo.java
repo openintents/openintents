@@ -18,13 +18,9 @@
 
 package org.openintents.updatechecker.db;
 
-import java.net.URL;
-
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
-import org.openintents.updatechecker.activity.UpdateListActivity;
-import org.openintents.updatechecker.util.AlarmUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -36,7 +32,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
-import android.util.Log;
 
 public class UpdateInfo implements BaseColumns {
 
@@ -62,7 +57,6 @@ public class UpdateInfo implements BaseColumns {
 	public static final String ORG_OPENINTENTS = "org.openintents";
 	public static final long CHECK_INTERVAL = 86400000; // 24 hours
 	public static final String META_DATA_UPDATE_URL = "org.openintents.updatechecker.UPDATE_URL";
-	private static final String TAG = "UpdateInfo";
 	public static final String EXTRA_WARN_INTENT = "warn_intent";
 	private static final String PREF_ANDAPPSTORE = "andappstore";
 
@@ -111,7 +105,6 @@ public class UpdateInfo implements BaseColumns {
 		return intent;
 	}
 
-	
 	public static String createAndAppStoreUrl(String packageName) {
 		String updateUrl;
 		StringBuilder updateUrlBuilder = new StringBuilder(128);
@@ -123,7 +116,6 @@ public class UpdateInfo implements BaseColumns {
 		return updateUrl;
 	}
 
-	
 	public static boolean isBlackListed(PackageInfo pi) {
 		return (pi.versionName == null && pi.versionCode == 0)
 				|| pi.packageName.startsWith("com.android")
@@ -174,7 +166,7 @@ public class UpdateInfo implements BaseColumns {
 			boolean useAndAppStore = PreferenceManager
 					.getDefaultSharedPreferences(context).getBoolean(
 							PREF_ANDAPPSTORE, true);
-			if (useAndAppStore) {				
+			if (useAndAppStore) {
 				updateUrl = UpdateInfo.createAndAppStoreUrl(pi.packageName);
 			}
 		}
