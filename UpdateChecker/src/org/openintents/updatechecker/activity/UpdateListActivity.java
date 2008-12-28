@@ -2,7 +2,6 @@ package org.openintents.updatechecker.activity;
 
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Currency;
 import java.util.List;
 
 import org.openintents.distribution.AboutActivity;
@@ -37,11 +36,11 @@ import android.widget.Toast;
 
 public class UpdateListActivity extends ListActivity {
 
-	private static final int MENU_CHECK_ALL = Menu.FIRST;
+	//private static final int MENU_CHECK_ALL = Menu.FIRST;
 	private static final int MENU_CHECK_ANDAPPSTORE = Menu.FIRST + 1;
 	private static final int MENU_CHECK_VERSIONS = Menu.FIRST + 2;
 	private static final int MENU_SHOW_VERSIONS = Menu.FIRST + 3;
-	private static final int MENU_REFRESH = Menu.FIRST + 4;
+	//private static final int MENU_REFRESH = Menu.FIRST + 4;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 5;
 	private static final int MENU_ABOUT = Menu.FIRST + 6;
 	private static final String TAG = "UpdateListActivity";
@@ -141,8 +140,7 @@ public class UpdateListActivity extends ListActivity {
 
 			// determine update url
 			if (useAndAppStore) {
-				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
-						+ pi.packageName;
+				updateUrl = UpdateInfo.createAndAppStoreUrl(pi.packageName);
 				info = getString(R.string.checked_against_andappstore);
 			} else {
 				Cursor cursor = getContentResolver().query(
@@ -228,6 +226,7 @@ public class UpdateListActivity extends ListActivity {
 		return c;
 
 	}
+
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -543,7 +542,6 @@ public class UpdateListActivity extends ListActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
 
 		if (requestCode == REQUEST_CODE_UPDATE) {

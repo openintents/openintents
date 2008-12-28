@@ -23,6 +23,7 @@ import java.net.URL;
 import org.openintents.updatechecker.R;
 import org.openintents.updatechecker.UpdateChecker;
 import org.openintents.updatechecker.activity.UpdateCheckerActivity;
+import org.openintents.updatechecker.activity.UpdateListActivity;
 import org.openintents.updatechecker.util.AlarmUtils;
 
 import android.content.ContentValues;
@@ -110,6 +111,19 @@ public class UpdateInfo implements BaseColumns {
 		return intent;
 	}
 
+	
+	public static String createAndAppStoreUrl(String packageName) {
+		String updateUrl;
+		StringBuilder updateUrlBuilder = new StringBuilder(128);
+		updateUrlBuilder
+				.append("http://veecheck.andappstore.com/veecheck/packages/");
+		updateUrlBuilder.append(packageName);
+		updateUrlBuilder.append(".xml");
+		updateUrl = updateUrlBuilder.toString();
+		return updateUrl;
+	}
+
+	
 	public static boolean isBlackListed(PackageInfo pi) {
 		return (pi.versionName == null && pi.versionCode == 0)
 				|| pi.packageName.startsWith("com.android")
@@ -161,15 +175,7 @@ public class UpdateInfo implements BaseColumns {
 					.getDefaultSharedPreferences(context).getBoolean(
 							PREF_ANDAPPSTORE, true);
 			if (useAndAppStore) {
-				updateUrl = "http://andappstore.com/AndroidPhoneApplications/updates/!veecheck?p="
-						+ pi.packageName;
-				try {
-					// try connection
-					new URL(updateUrl).openConnection();
-				} catch (Exception e) {
-					Log.v(TAG, "AndAppStore url:" + e.getMessage());
-					updateUrl = null;
-				}
+				UpdateInfo.createAndAppStoreUrl(pi.packageName);
 			}
 		}
 
