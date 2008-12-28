@@ -174,8 +174,8 @@ public class UpdateInfo implements BaseColumns {
 			boolean useAndAppStore = PreferenceManager
 					.getDefaultSharedPreferences(context).getBoolean(
 							PREF_ANDAPPSTORE, true);
-			if (useAndAppStore) {
-				UpdateInfo.createAndAppStoreUrl(pi.packageName);
+			if (useAndAppStore) {				
+				updateUrl = UpdateInfo.createAndAppStoreUrl(pi.packageName);
 			}
 		}
 
