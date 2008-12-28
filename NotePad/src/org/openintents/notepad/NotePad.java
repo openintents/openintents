@@ -85,5 +85,25 @@ public final class NotePad {
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          */
         public static final String MODIFIED_DATE = "modified";
+        
+        /**
+         * Tags associated with a note.
+         * Multiple tags are separated by commas.
+         * <P>Type: TEXT</P>
+         */
+        public static final String TAGS = "tags";
+
+        /**
+         * Whether the note is encrypted.
+         * 0 = not encrypted. 1 = encrypted.
+         * <P>Type: INTEGER</P>
+         */
+        public static final String ENCRYPTED = "encrypted";
+
+        /**
+         * A theme URI.
+         * <P>Type: TEXT</P>
+         */
+        public static final String THEME = "theme";
     }
 }

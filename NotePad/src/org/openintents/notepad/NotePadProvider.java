@@ -48,7 +48,15 @@ public class NotePadProvider extends ContentProvider {
     private static final String TAG = "NotePadProvider";
 
     private static final String DATABASE_NAME = "note_pad.db";
-    private static final int DATABASE_VERSION = 2;
+    
+    /**
+     * Database version.
+     * <ul>
+     * <li>Version 2 (1.0.0 - 1.0.2): title, note, created_date, modified_date</li>
+     * <li>Version 3 (1.1.0 - ): tags, encrypted, theme</li>
+     * </ul>
+     */
+    private static final int DATABASE_VERSION = 3;
     private static final String NOTES_TABLE_NAME = "notes";
 
     private static HashMap<String, String> sNotesProjectionMap;
@@ -70,20 +78,59 @@ public class NotePadProvider extends ContentProvider {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + NOTES_TABLE_NAME + " ("
+            		// Version 2:
                     + Notes._ID + " INTEGER PRIMARY KEY,"
                     + Notes.TITLE + " TEXT,"
                     + Notes.NOTE + " TEXT,"
                     + Notes.CREATED_DATE + " INTEGER,"
-                    + Notes.MODIFIED_DATE + " INTEGER"
+                    + Notes.MODIFIED_DATE + " INTEGER,"
+                    // Version 3:
+                    + Notes.TAGS + " TEXT,"
+                    + Notes.ENCRYPTED + " INTEGER,"
+                    + Notes.THEME + " TEXT"
                     + ");");
         }
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS notes");
-            onCreate(db);
+                    + newVersion + ".");
+            if (newVersion > oldVersion) {
+            	// Upgrade
+	            switch(oldVersion) {
+	            case 2:
+	            	// Upgrade from version 2 to 3.
+	            	// It seems SQLite3 only allows to add one column at a time,
+	            	// so we need three SQL statements:
+	            	try {
+		            	db.execSQL("ALTER TABLE " + NOTES_TABLE_NAME + " ADD COLUMN "
+		                        + Notes.TAGS + " TEXT;");
+		            	db.execSQL("ALTER TABLE " + NOTES_TABLE_NAME + " ADD COLUMN "
+		                        + Notes.ENCRYPTED + " INTEGER;");
+		            	db.execSQL("ALTER TABLE " + NOTES_TABLE_NAME + " ADD COLUMN "
+		                        + Notes.THEME + " TEXT;");
+	            	} catch (SQLException e) {
+	            		Log.e(TAG, "Error executing SQL: ", e);
+	            		// If the error is "duplicate column name" then everything is fine,
+	            		// as this happens after upgrading 2->3, then downgrading 3->2, 
+	            		// and then upgrading again 2->3.
+	            	}
+	            	// fall through for further upgrades.
+	            /*
+	            case 3:
+	            	// add more columns
+	            */
+	            	break;
+	            default:
+	            	Log.w(TAG, "Unknown version " + oldVersion + ". Creating new database.");
+	                db.execSQL("DROP TABLE IF EXISTS notes");
+	            	onCreate(db);
+	            }
+            } else { // newVersion <= oldVersion
+            	// Downgrade
+            	Log.w(TAG, "Don't know how to downgrade. Will not touch database and hope they are compatible.");
+                // Do nothing.
+            }
         }
     }
 
