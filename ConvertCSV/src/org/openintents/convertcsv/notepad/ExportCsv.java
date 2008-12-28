@@ -41,6 +41,11 @@ public class ExportCsv {
 
 		CSVWriter csvwriter = new CSVWriter(writer);
 		
+		//csvwriter.setLineEnd("\r\n");
+		
+		//String lineEnd = "\r\r\n"; 
+		//csvwriter.setLineEnd(lineEnd);
+		
 		/*
 		csvwriter.write("Note");
 		csvwriter.write("Encrypted");
@@ -62,6 +67,11 @@ public class ExportCsv {
 		    	String encrypted = "0"; // Not encrypted
 		    	
 		    	String category = "";
+		    	
+		    	// TODO: Only if Setting == Palm Windows.		    	
+		    	// Palm Windows specific line ending
+				// that is only used within notes.
+				note = note.replaceAll("\n", "\r\r\n");
 		    	
 		    	csvwriter.write(note);
 		    	csvwriter.write(encrypted);

@@ -45,6 +45,12 @@ public class ImportCsv {
 	    	// We use the first column as note
 	    	String note = nextLine[0];
 	    	
+	    	// TODO: Only if Setting == Palm Windows.		    	
+	    	// Palm windows inserts double carriage returns, 
+	    	// so we try to get rid of them:
+	    	note = note.replaceAll("\n\n", "\n");
+	    	
+	    	
 	    	// And ignore the other columns
 	    	
 	    	// Third column would be category.

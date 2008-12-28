@@ -21,6 +21,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.1
+date: 2009-??
+
+- Fix line feed problem with Palm CSV Windows files.
+
+---------------------------------------------------------
 release: 1.0.0
 date: 2008-12-09
 

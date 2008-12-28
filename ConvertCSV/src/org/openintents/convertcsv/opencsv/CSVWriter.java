@@ -41,6 +41,7 @@ package org.openintents.convertcsv.opencsv;
  *   - Peli: Dec 2, 2008: Add possibility to write mixed output through new functions
  *     write() and writeNewline().
  *   - Peli: Dec 3, 2008: Add writeValue() function.
+ *   - Peli: Dec 12, 2008: Add setLineEnd().
  */
 
 import java.io.IOException;
@@ -207,6 +208,10 @@ public class CSVWriter {
         
 		this.currentColumn = 0;
 		this.stringBuffer = new StringBuffer();
+    }
+    
+    public void setLineEnd(String lineEnd) {
+    	this.lineEnd = lineEnd;
     }
     
     /**

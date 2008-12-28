@@ -36,6 +36,11 @@ package org.openintents.convertcsv.opencsv;
  * The project is available at http://sourceforge.net/projects/opencsv/
  */
 
+/**
+ * Modifications: 
+ *   - Peli: Dec 12, 2008: Remove "this.".
+ */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -178,11 +183,11 @@ public class CSVReader {
      *             if bad things happen during the read
      */
     private String getNextLine() throws IOException {
-    	if (!this.linesSkiped) {
+    	if (!linesSkiped) {
             for (int i = 0; i < skipLines; i++) {
                 br.readLine();
             }
-            this.linesSkiped = true;
+            linesSkiped = true;
         }
         String nextLine = br.readLine();
         if (nextLine == null) {
@@ -233,9 +238,9 @@ public class CSVReader {
                 		inQuotes = !inQuotes;
                 		// the tricky case of an embedded quote in the middle: a,bc"d"ef,g
                 		if(i>2 //not on the begining of the line
-                				&& nextLine.charAt(i-1) != this.separator //not at the begining of an escape sequence 
+                				&& nextLine.charAt(i-1) != separator //not at the begining of an escape sequence 
                 				&& nextLine.length()>(i+1) &&
-                				nextLine.charAt(i+1) != this.separator //not at the	end of an escape sequence
+                				nextLine.charAt(i+1) != separator //not at the	end of an escape sequence
                 		){
                 			sb.append(c);
                 		}
