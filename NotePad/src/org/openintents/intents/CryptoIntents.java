@@ -24,6 +24,9 @@ public class CryptoIntents {
 	 * Activity Action: Encrypt the string given in the extra TEXT.
 	 * Returns the encrypted string in the extra TEXT.
 	 * 
+	 * Additional extras may be defined in a private namespace to define
+	 * extra values that are returned unmodified.
+	 * 
 	 * <p>Constant Value: "org.openintents.action.ENCRYPT"</p>
 	 */
 	public static final String ACTION_ENCRYPT = "org.openintents.action.ENCRYPT";
@@ -31,6 +34,9 @@ public class CryptoIntents {
 	/**
 	 * Activity Action: Decrypt the string given in the extra TEXT.
 	 * Returns the decrypted string in the extra TEXT.
+	 *
+	 * Additional extras may be defined in a private namespace to define
+	 * extra values that are returned unmodified.
 	 * 
 	 * <p>Constant Value: "org.openintents.action.DECRYPT"</p>
 	 */

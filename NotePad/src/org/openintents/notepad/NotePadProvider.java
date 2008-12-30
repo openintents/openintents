@@ -317,5 +317,8 @@ public class NotePadProvider extends ContentProvider {
         sNotesProjectionMap.put(Notes.NOTE, Notes.NOTE);
         sNotesProjectionMap.put(Notes.CREATED_DATE, Notes.CREATED_DATE);
         sNotesProjectionMap.put(Notes.MODIFIED_DATE, Notes.MODIFIED_DATE);
+        sNotesProjectionMap.put(Notes.TAGS, Notes.TAGS);
+        sNotesProjectionMap.put(Notes.ENCRYPTED, Notes.ENCRYPTED);
+        sNotesProjectionMap.put(Notes.THEME, Notes.THEME);
     }
 }

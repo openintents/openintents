@@ -26,6 +26,7 @@ package org.openintents.notepad;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
+import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -33,6 +34,7 @@ import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -44,6 +46,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
@@ -62,8 +65,14 @@ public class NotesList extends ListActivity {
 	private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
-
-	private static final int REQUEST_CODE_VERSION_CHECK = 1;
+	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
+	
+	private static final int REQUEST_CODE_ENCRYPT = 1;
+	
+	/* 
+	 * Private extra.
+	 */
+	private static final String EXTRA_ID = "org.openintents.notepad.extra.id";
 	
 	/**
 	 * A group id for alternative menu items.
@@ -247,6 +256,9 @@ public class NotesList extends ListActivity {
 		// Add a menu item to send the note
 		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
+		// Add a menu item to send the note
+		menu.add(0, MENU_ITEM_ENCRYPT, 0, R.string.menu_encrypt);
+		
 		// Add a menu item to delete the note
 		menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
 	}
@@ -271,6 +283,9 @@ public class NotesList extends ListActivity {
 		}
 		case MENU_ITEM_SEND_BY_EMAIL:
 			sendNoteByEmail(info.id);
+			return true;
+		case MENU_ITEM_ENCRYPT:
+			encryptNote(info.id);
 			return true;
 		}
 		return false;
@@ -311,6 +326,47 @@ public class NotesList extends ListActivity {
 		}
 	}
 
+	private void encryptNote(long id) {
+		// Obtain Uri for the context menu
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+		// getContentResolver().(noteUri, null, null);
+
+		Cursor c = getContentResolver().query(noteUri,
+				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.ENCRYPTED }, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		String title = "";
+		String content = getString(R.string.empty_note);
+		int encrypted = 0;
+		if (c != null) {
+			c.moveToFirst();
+			title = c.getString(0);
+			content = c.getString(1);
+			encrypted = c.getInt(2);
+		}
+
+		if (encrypted != 0) {
+			Toast.makeText(this,
+					R.string.already_encrypted,
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
+		Intent i = new Intent();
+		i.setAction(CryptoIntents.ACTION_ENCRYPT);
+		i.putExtra(CryptoIntents.EXTRA_TEXT, content);
+		i.putExtra(EXTRA_ID, id);
+        
+        try {
+        	startActivityForResult(i, REQUEST_CODE_ENCRYPT);
+        } catch (ActivityNotFoundException e) {
+			Toast.makeText(this,
+					R.string.encryption_failed,
+					Toast.LENGTH_SHORT).show();
+			Log.e(TAG, "failed to invoke encrypt");
+        }
+	}
+	
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
@@ -330,4 +386,40 @@ public class NotesList extends ListActivity {
 			startActivity(new Intent(Intent.ACTION_EDIT, uri));
 		}
 	}
+	
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+    	Log.i(TAG, "Received requestCode" + requestCode + ", resultCode " + resultCode);
+    	switch(requestCode) {
+    	case REQUEST_CODE_ENCRYPT:
+    		if (resultCode == RESULT_OK && data != null) {
+    			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
+    			long id = data.getLongExtra(EXTRA_ID, -1);
+    			
+    			if (id == -1) {
+        	    	Log.i(TAG, "Wrong extra id");
+    				Toast.makeText(this,
+        					"Failed to invoke encrypt",
+        					Toast.LENGTH_SHORT).show();
+    			}
+
+    	    	Log.i(TAG, "Updating" + id + ", encrypted text " + encryptedText);
+    			// Write this to content provider:
+
+                ContentValues values = new ContentValues();
+                values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+                values.put(Notes.TITLE, "ENCRYPTED");
+                values.put(Notes.NOTE, encryptedText);
+                values.put(Notes.ENCRYPTED, 1);
+                
+                Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+                getContentResolver().update(noteUri, values, null, null);
+    		} else {
+    			Toast.makeText(this,
+    					"Failed to invoke encrypt",
+    					Toast.LENGTH_SHORT).show();
+    		}
+    		break;
+    	}
+    }
 }
