@@ -23,11 +23,14 @@
 
 package org.openintents.notepad;
 
+import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +45,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A generic activity for editing a note in a database.  This can be used
@@ -57,9 +61,12 @@ public class NoteEditor extends Activity {
     private static final String[] PROJECTION = new String[] {
             Notes._ID, // 0
             Notes.NOTE, // 1
+            Notes.ENCRYPTED, // 2
     };
     /** The index of the note column */
+    private static final int COLUMN_INDEX_ID = 0;
     private static final int COLUMN_INDEX_NOTE = 1;
+    private static final int COLUMN_INDEX_ENCRYPTED = 2;
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -69,6 +76,9 @@ public class NoteEditor extends Activity {
     private static final int REVERT_ID = Menu.FIRST;
     private static final int DISCARD_ID = Menu.FIRST + 1;
     private static final int DELETE_ID = Menu.FIRST + 2;
+
+	private static final int REQUEST_CODE_ENCRYPT = 1;
+	private static final int REQUEST_CODE_DECRYPT = 2;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
@@ -80,6 +90,8 @@ public class NoteEditor extends Activity {
     private Cursor mCursor;
     private EditText mText;
     private String mOriginalContent;
+    
+    private String mDecryptedText;
 
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
@@ -117,6 +129,8 @@ public class NoteEditor extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        mDecryptedText = null;
 
         final Intent intent = getIntent();
 
@@ -176,6 +190,7 @@ public class NoteEditor extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume");
 
         // If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
@@ -191,12 +206,40 @@ public class NoteEditor extends Activity {
                 setTitle(getText(R.string.title_create));
             }
 
-            // This is a little tricky: we may be resumed after previously being
-            // paused/stopped.  We want to put the new text in the text view,
-            // but leave the user where they were (retain the cursor position
-            // etc).  This version of setText does that for us.
+            long id = mCursor.getLong(COLUMN_INDEX_ID);
             String note = mCursor.getString(COLUMN_INDEX_NOTE);
-            mText.setTextKeepState(note);
+            long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+            
+            if (encrypted == 0) {
+            	// Not encrypted
+
+	            // This is a little tricky: we may be resumed after previously being
+	            // paused/stopped.  We want to put the new text in the text view,
+	            // but leave the user where they were (retain the cursor position
+	            // etc).  This version of setText does that for us.
+	            mText.setTextKeepState(note);
+            } else {
+            	if (mDecryptedText != null) {
+            		// Text had already been decrypted, use that:
+            		mText.setTextKeepState(mDecryptedText);
+            	} else {
+            	// Decrypt note
+	
+	        		Intent i = new Intent();
+	        		i.setAction(CryptoIntents.ACTION_DECRYPT);
+	        		i.putExtra(CryptoIntents.EXTRA_TEXT, note);
+	        		i.putExtra(NotePadIntents.EXTRA_ID, id);
+	                
+	                try {
+	                	startActivityForResult(i, REQUEST_CODE_DECRYPT);
+	                } catch (ActivityNotFoundException e) {
+	        			Toast.makeText(this,
+	        					R.string.encryption_failed,
+	        					Toast.LENGTH_SHORT).show();
+	        			Log.e(TAG, "failed to invoke encrypt");
+	                }
+            	}
+            }
             
             // If we hadn't previously retrieved the original text, do so
             // now.  This allows the user to revert their changes.
@@ -221,58 +264,86 @@ public class NoteEditor extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause");
 
         // The user is going somewhere else, so make sure their current
         // changes are safely saved away in the provider.  We don't need
         // to do this if only editing.
         if (mCursor != null) {
+
+        	long id = mCursor.getLong(COLUMN_INDEX_ID);
+            long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
             String text = mText.getText().toString();
-            int length = text.length();
-
-            // If this activity is finished, and there is no text, then we
-            // do something a little special: simply delete the note entry.
-            // Note that we do this both for editing and inserting...  it
-            // would be reasonable to only do it when inserting.
-            if (isFinishing() && (length == 0) && !mNoteOnly) {
-                setResult(RESULT_CANCELED);
-                deleteNote();
-
-            // Get out updates into the provider.
+            
+            if (encrypted == 0) {
+	            int length = text.length();
+	
+	            // If this activity is finished, and there is no text, then we
+	            // do something a little special: simply delete the note entry.
+	            // Note that we do this both for editing and inserting...  it
+	            // would be reasonable to only do it when inserting.
+	            if (isFinishing() && (length == 0) && !mNoteOnly) {
+	                setResult(RESULT_CANCELED);
+	                deleteNote();
+	
+	            // Get out updates into the provider.
+	            } else {
+	                ContentValues values = new ContentValues();
+	
+	                // This stuff is only done when working with a full-fledged note.
+	                if (!mNoteOnly) {
+	                    // Bump the modification time to now.
+	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+	
+	                    // If we are creating a new note, then we want to also create
+	                    // an initial title for it.
+	                    //if (mState == STATE_INSERT) {
+	                        String title = text.substring(0, Math.min(30, length));
+	                        // Break at newline:
+	                        int firstNewline = title.indexOf('\n');
+	                        if (firstNewline > 0) {
+	                            title = title.substring(0, firstNewline);
+	                        } else if (length > 30) {
+		                        // Break at space
+	                            int lastSpace = title.lastIndexOf(' ');
+	                            if (lastSpace > 0) {
+	                                title = title.substring(0, lastSpace);
+	                            }
+	                        }
+		                    values.put(Notes.TITLE, title);
+	                    //}
+	                }
+	
+	                // Write our text back into the provider.
+	                values.put(Notes.NOTE, text);
+	
+	                // Commit all of our changes to persistent storage. When the update completes
+	                // the content provider will notify the cursor of the change, which will
+	                // cause the UI to be updated.
+	                getContentResolver().update(mUri, values, null, null);
+	                
+	            }
             } else {
-                ContentValues values = new ContentValues();
+            	// encrypted note: First encrypt and store encrypted note:
 
-                // This stuff is only done when working with a full-fledged note.
-                if (!mNoteOnly) {
-                    // Bump the modification time to now.
-                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-
-                    // If we are creating a new note, then we want to also create
-                    // an initial title for it.
-                    //if (mState == STATE_INSERT) {
-                        String title = text.substring(0, Math.min(30, length));
-                        // Break at newline:
-                        int firstNewline = title.indexOf('\n');
-                        if (firstNewline > 0) {
-                            title = title.substring(0, firstNewline);
-                        } else if (length > 30) {
-	                        // Break at space
-                            int lastSpace = title.lastIndexOf(' ');
-                            if (lastSpace > 0) {
-                                title = title.substring(0, lastSpace);
-                            }
-                        }
-	                    values.put(Notes.TITLE, title);
-                    //}
-                }
-
-                // Write our text back into the provider.
-                values.put(Notes.NOTE, text);
-
-                // Commit all of our changes to persistent storage. When the update completes
-                // the content provider will notify the cursor of the change, which will
-                // cause the UI to be updated.
-                getContentResolver().update(mUri, values, null, null);
-                
+	            if (mDecryptedText != null) {
+	            	// Decrypted had been decrypted.
+	            	// We take the current version from 'text' and encrypt it.
+	            	
+	        		Intent i = new Intent();
+	        		i.setAction(CryptoIntents.ACTION_ENCRYPT);
+	        		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
+	        		i.putExtra(NotePadIntents.EXTRA_ID, id);
+	                
+	                try {
+	                	startActivityForResult(i, REQUEST_CODE_ENCRYPT);
+	                } catch (ActivityNotFoundException e) {
+	        			Toast.makeText(this,
+	        					R.string.encryption_failed,
+	        					Toast.LENGTH_SHORT).show();
+	        			Log.e(TAG, "failed to invoke encrypt");
+	                }
+	            }
             }
         }
     }
@@ -414,4 +485,76 @@ public class NoteEditor extends Activity {
     	mText.setText("");
     }
     */
+
+    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+    	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
+    	switch(requestCode) {
+    	case REQUEST_CODE_DECRYPT:
+    		if (resultCode == RESULT_OK && data != null) {
+    			String decryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
+    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
+    			
+    			// TODO: Check that id corresponds to current intent.
+    			
+    			if (id == -1) {
+        	    	Log.i(TAG, "Wrong extra id");
+    				Toast.makeText(this,
+        					"Encrypted information incomplete",
+        					Toast.LENGTH_SHORT).show();
+    				return;
+    			}
+
+    	    	Log.i(TAG, "Updating" + id + ", decrypted text " + decryptedText);
+
+    	    	mDecryptedText = decryptedText;
+	            
+    		} else {
+    			Toast.makeText(this,
+    					"Failed to invoke encrypt",
+    					Toast.LENGTH_SHORT).show();
+    		}
+    		break;
+    	case REQUEST_CODE_ENCRYPT:
+    		if (resultCode == RESULT_OK && data != null) {
+    			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
+    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
+    			
+    			if (id == -1) {
+        	    	Log.i(TAG, "Wrong extra id");
+    				Toast.makeText(this,
+        					"Encrypted information incomplete",
+        					Toast.LENGTH_SHORT).show();
+    				return;
+    			}
+
+    	    	Log.i(TAG, "Updating" + id + ", encrypted text " + encryptedText);
+    			// Write this to content provider:
+
+                ContentValues values = new ContentValues();
+                values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+                values.put(Notes.TITLE, "ENCRYPTED");
+                values.put(Notes.NOTE, encryptedText);
+                values.put(Notes.ENCRYPTED, 1);
+                
+                //Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+                Uri noteUri = getIntent().getData();
+                
+                if (noteUri.getLastPathSegment().equals("" + id)) {
+
+                    getContentResolver().update(noteUri, values, null, null);
+                } else {
+                	Log.i(TAG, "Expected URI:" + noteUri + " but obtaind id " + id);
+        			Toast.makeText(this,
+        					"Wrong information returned.",
+        					Toast.LENGTH_SHORT).show();
+                }
+                
+    		} else {
+    			Toast.makeText(this,
+    					"Failed to invoke encrypt",
+    					Toast.LENGTH_SHORT).show();
+    		}
+    		break;
+    	}
+    }
 }

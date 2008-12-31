@@ -69,11 +69,6 @@ public class NotesList extends ListActivity {
 	
 	private static final int REQUEST_CODE_ENCRYPT = 1;
 	
-	/* 
-	 * Private extra.
-	 */
-	private static final String EXTRA_ID = "org.openintents.notepad.extra.id";
-	
 	/**
 	 * A group id for alternative menu items.
 	 */
@@ -355,7 +350,7 @@ public class NotesList extends ListActivity {
 		Intent i = new Intent();
 		i.setAction(CryptoIntents.ACTION_ENCRYPT);
 		i.putExtra(CryptoIntents.EXTRA_TEXT, content);
-		i.putExtra(EXTRA_ID, id);
+		i.putExtra(NotePadIntents.EXTRA_ID, id);
         
         try {
         	startActivityForResult(i, REQUEST_CODE_ENCRYPT);
@@ -394,13 +389,14 @@ public class NotesList extends ListActivity {
     	case REQUEST_CODE_ENCRYPT:
     		if (resultCode == RESULT_OK && data != null) {
     			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			long id = data.getLongExtra(EXTRA_ID, -1);
+    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
     			
     			if (id == -1) {
         	    	Log.i(TAG, "Wrong extra id");
     				Toast.makeText(this,
-        					"Failed to invoke encrypt",
+        					"Encrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
+    				return;
     			}
 
     	    	Log.i(TAG, "Updating" + id + ", encrypted text " + encryptedText);
