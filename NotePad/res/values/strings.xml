@@ -51,6 +51,7 @@
 	<string name="empty_note">Empty note</string>
 	<string name="email_not_available">No application available for sending.</string>
 	
+	<string name="encrypting_note">Encrypting note</string>
 	<string name="menu_encrypt">Encrypt</string>
 	<string name="menu_decrypt">Decrypt</string>
 	<string name="menu_do_not_encrypt">Do not encrypt</string>

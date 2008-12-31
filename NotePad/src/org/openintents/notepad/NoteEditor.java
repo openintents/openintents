@@ -25,12 +25,12 @@ package org.openintents.notepad;
 
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -330,6 +330,13 @@ public class NoteEditor extends Activity {
 	            	// Decrypted had been decrypted.
 	            	// We take the current version from 'text' and encrypt it.
 	            	
+	            	Intent i = new Intent(this, EncryptActivity.class);
+	        		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
+	        		//i.putExtra(NotePadIntents.EXTRA_ID, id);
+	        		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+	        		startActivity(i);
+	        		
+	            	/*
 	        		Intent i = new Intent();
 	        		i.setAction(CryptoIntents.ACTION_ENCRYPT);
 	        		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
@@ -343,6 +350,7 @@ public class NoteEditor extends Activity {
 	        					Toast.LENGTH_SHORT).show();
 	        			Log.e(TAG, "failed to invoke encrypt");
 	                }
+	                */
 	            }
             }
         }
