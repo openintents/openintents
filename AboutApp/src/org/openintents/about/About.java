@@ -26,7 +26,10 @@ package org.openintents.about;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.openintents.intents.AboutIntents;
 
 import android.app.TabActivity;
 import android.content.ComponentName;
@@ -41,6 +44,7 @@ import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.util.Linkify;
+import android.text.util.Linkify.TransformFilter;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -59,95 +63,10 @@ import com.tomgibara.android.veecheck.util.PrefSettings;
 
 public class About extends TabActivity {
 	//TODO packaging
-	//TODO change version file url
 	//TODO BUG rotating screen broken due to TabHost?? Cannot test without sensor.
-	//TODO Link doesn't work!!!!!
-	//TODO Intent extras namespace aren't correct yet. Suggestions made in the openintents.org intents db. Need to agree on this with OI and need to know how they do it (constants and such) in their other apps.
-
+	
 	private static final String TAG = "About";
 	
-	/**
-	 * The intent action to use. This and some of the intent extras with the keys below is everything you need.
-	 */
-	public static final String INTENT_ACTION="org.openintents.action.SHOW_ABOUT_DIALOG";
-	
-    /**
-     * Intent extra key for:
-     * A logo for the about box.
-     * There are 3 ways to supply an image via the intent:
-     * 		1. Put the resource id (an integer) as a String in "logo". This won't help you much since it can only be a resource of OI About itself (does not work across packages).
-     * 		2. Put the content uri of the image as a String in "logo". For instance: "content://images/1". As content provider you can use: a) your own small content provider just for the image, b) the System-wide MediaProvider (but your image will become public and might be duplicated each time showing the About dialog).
-     * 		3. Put the name of the image resource as a String in "logo". This is the part you would append after "R.drawable." but with type and package as a prefix also. Actually it's good to use the result from "getResources().getResourceName(R.drawable.icon)". If you do this, you also need to put the package of your application (and thus the package containing the image resource) in "logo package" (see KEY_LOGO_PACKAGE below) as a String.
-     */
-    public static final String KEY_LOGO = "logo";
-    /**
-     * Intent extra key for:
-     * The name of the package containing the image resource. Has no use but to support KEY_LOGO alternative 3, see above. You can put the result of "getResources().getResourcePackageName(R.drawable.icon)". Should not be added to the intent otherwise.
-     */
-    public static final String KEY_LOGO_PACKAGE = "logo package";
-    /**
-     * Intent extra key for:
-     * The name of the program.
-     */
-    public static final String KEY_PROGRAM_NAME = "program name";
-    /**
-     * Intent extra key for:
-     * The version of the program.
-     */
-    public static final String KEY_PROGRAM_VERSION = "program version";
-    
-    /**
-     * Intent extra key for:
-     * Comments about the program. This string is displayed in a label in the main dialog, thus it should be a short explanation of the main purpose of the program, not a detailed list of features.
-     */
-    public static final String KEY_COMMENTS_TEXT = "comments text";
-    /**
-     * Intent extra key for:
-     * Copyright information for the program.
-     */
-    public static final String KEY_COPYRIGHT_TEXT = "copyright text";
-    /**
-     * Intent extra key for:
-     * The URL for the link to the website of the program. This should be a string starting with "http://".
-     */
-    public static final String KEY_WEBSITE_URL = "website url";
-    /**
-     * Intent extra key for:
-     * The label for the link to the website of the program. If this is not set, it defaults to the URL specified in the website url property.
-     */
-    public static final String KEY_WEBSITE_LABEL = "website label";
-    /**
-     * Intent extra key for:
-     * The authors of the program, as an array of strings. Each string may contain email addresses and URLs, which will be displayed as links.
-     */
-    public static final String KEY_AUTHORS_TEXT_ARRAY = "authors text array";
-    /**
-     * Intent extra key for:
-     * The people documenting the program, as an array of strings. Each string may contain email addresses and URLs, which will be displayed as links.
-     */
-    public static final String KEY_DOCUMENTERS_TEXT_ARRAY = "documenters text array";
-    /**
-     * Intent extra key for:
-     * The people who made the translation for the current localization, as an array of strings. Each string may contain email addresses and URLs, which will be displayed as links.
-     */
-    public static final String KEY_TRANSLATORS_TEXT_ARRAY_FOR_THIS_L10N = "translators text array for this L10n";
-
-    /**
-     * Intent extra key for:
-     * The people who contributed artwork to the program, as an array of strings. Each string may contain email addresses and URLs, which will be displayed as links.
-     */
-    public static final String KEY_ARTISTS_TEXT_ARRAY = "artists text array";
-    /**
-     * Intent extra key for:
-     * The license of the program. This string is displayed in a text view in a secondary dialog, therefore it is fine to use a long multi-paragraph text. Still, not too long as it's sent through an intent and may cause delay. Note that the text is only wrapped in the text view if the "wrap license" property (see KEY_WRAP_LICENSE below) is set to TRUE; otherwise the text itself must contain the intended linebreaks.
-     */
-    public static final String KEY_LICENSE_TEXT = "license text";
-    /**
-     * Intent extra key for:
-     * Whether to wrap the text in the license dialog.
-     */
-    public static final String KEY_WRAP_LICENSE = "wrap license";
-    
 	/**
 	 * The views.
 	 */
@@ -280,94 +199,103 @@ public class About extends TabActivity {
         }
     	setResult(RESULT_OK);
     	
-    	if(intent.hasExtra(KEY_LOGO) && intent.getStringExtra(KEY_LOGO)!=null
-    			&& intent.hasExtra(KEY_LOGO_PACKAGE) && intent.getStringExtra(KEY_LOGO_PACKAGE)!=null){
+    	if(intent.hasExtra(AboutIntents.EXTRA_LOGO) && intent.getStringExtra(AboutIntents.EXTRA_LOGO)!=null
+    			&& intent.hasExtra(AboutIntents.EXTRA_LOGO_PACKAGE) && intent.getStringExtra(AboutIntents.EXTRA_LOGO_PACKAGE)!=null){
     		try{
-    			changeLogoImage(intent.getStringExtra(KEY_LOGO), intent.getStringExtra(KEY_LOGO_PACKAGE));
+    			changeLogoImage(intent.getStringExtra(AboutIntents.EXTRA_LOGO), intent.getStringExtra(AboutIntents.EXTRA_LOGO_PACKAGE));
     		}catch(IllegalArgumentException e){
     			mLogoImage.setImageURI(Uri.EMPTY);
     		}
-    	}else if(intent.hasExtra(KEY_LOGO) && intent.getStringExtra(KEY_LOGO)!=null){
+    	}else if(intent.hasExtra(AboutIntents.EXTRA_LOGO) && intent.getStringExtra(AboutIntents.EXTRA_LOGO)!=null){
     		try{
-    			changeLogoImage(intent.getStringExtra(KEY_LOGO));
+    			changeLogoImage(intent.getStringExtra(AboutIntents.EXTRA_LOGO));
     		}catch(IllegalArgumentException e){
     			mLogoImage.setImageURI(Uri.EMPTY);
     		}
     	}else{
     		mLogoImage.setImageURI(Uri.EMPTY);
     	}
-        if(intent.hasExtra(KEY_PROGRAM_NAME) && intent.getStringExtra(KEY_PROGRAM_NAME)!=null){
-        	String programText=intent.getStringExtra(KEY_PROGRAM_NAME);
-        	setTitle(getString(R.string.about_activity_title)+" "+intent.getStringExtra(KEY_PROGRAM_NAME));
-        	if(intent.hasExtra(KEY_PROGRAM_VERSION) && intent.getStringExtra(KEY_PROGRAM_VERSION)!=null){
-        		programText+=" "+intent.getStringExtra(KEY_PROGRAM_VERSION);
+        if(intent.hasExtra(AboutIntents.EXTRA_PROGRAM_NAME) && intent.getStringExtra(AboutIntents.EXTRA_PROGRAM_NAME)!=null){
+        	String programText=intent.getStringExtra(AboutIntents.EXTRA_PROGRAM_NAME);
+        	setTitle(getString(R.string.about_activity_title)+" "+intent.getStringExtra(AboutIntents.EXTRA_PROGRAM_NAME));
+        	if(intent.hasExtra(AboutIntents.EXTRA_PROGRAM_VERSION) && intent.getStringExtra(AboutIntents.EXTRA_PROGRAM_VERSION)!=null){
+        		programText+=" "+intent.getStringExtra(AboutIntents.EXTRA_PROGRAM_VERSION);
         	}
     		mProgramNameAndVersionText.setText(programText);
         }else{
         	refuseToShow();
         	return;
         }
-    	if(intent.hasExtra(KEY_COMMENTS_TEXT) && intent.getStringExtra(KEY_COMMENTS_TEXT)!=null){
-    		mCommentsText.setText(intent.getStringExtra(KEY_COMMENTS_TEXT));
+    	if(intent.hasExtra(AboutIntents.EXTRA_COMMENTS) && intent.getStringExtra(AboutIntents.EXTRA_COMMENTS)!=null){
+    		mCommentsText.setText(intent.getStringExtra(AboutIntents.EXTRA_COMMENTS));
     	}else{
     		mCommentsText.setText("");
     	}
-    	if(intent.hasExtra(KEY_COPYRIGHT_TEXT) && intent.getStringExtra(KEY_COPYRIGHT_TEXT)!=null){
-    		mCopyrightText.setText(intent.getStringExtra(KEY_COPYRIGHT_TEXT));
+    	if(intent.hasExtra(AboutIntents.EXTRA_COPYRIGHT) && intent.getStringExtra(AboutIntents.EXTRA_COPYRIGHT)!=null){
+    		mCopyrightText.setText(intent.getStringExtra(AboutIntents.EXTRA_COPYRIGHT));
     	}else{
     		mCopyrightText.setText("");
     	}
-    	if(intent.hasExtra(KEY_WEBSITE_URL) && intent.getStringExtra(KEY_WEBSITE_URL)!=null
-    			&& intent.hasExtra(KEY_WEBSITE_LABEL) && intent.getStringExtra(KEY_WEBSITE_LABEL)!=null){
-    		mWebsiteText.setText(intent.getStringExtra(KEY_WEBSITE_LABEL));
+    	if(intent.hasExtra(AboutIntents.EXTRA_WEBSITE_URL) && intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_URL)!=null
+    			&& intent.hasExtra(AboutIntents.EXTRA_WEBSITE_LABEL) && intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_LABEL)!=null){
+    		mWebsiteText.setText(intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_LABEL));
+    		
+    		//Create TransformFilter
+    		TransformFilter tf=new TransformFilter(){
+
+				public String transformUrl(Matcher matcher, String url) {
+					return intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_URL);
+				}
+    			
+    		};
     		
     		//Allow a label and url through Linkify
-    		Linkify.addLinks((TextView)mWebsiteText.getChildAt(0), Pattern.compile(".*"), intent.getStringExtra(KEY_WEBSITE_URL));
-    		Linkify.addLinks((TextView)mWebsiteText.getChildAt(1), Pattern.compile(".*"), intent.getStringExtra(KEY_WEBSITE_URL));
-    	}else if(intent.hasExtra(KEY_WEBSITE_URL) && intent.getStringExtra(KEY_WEBSITE_URL)!=null){
-    		mWebsiteText.setText(intent.getStringExtra(KEY_WEBSITE_URL));
+    		Linkify.addLinks((TextView)mWebsiteText.getChildAt(0), Pattern.compile(".*"), "", null, tf);
+    		Linkify.addLinks((TextView)mWebsiteText.getChildAt(1), Pattern.compile(".*"), "", null, tf);
+    	}else if(intent.hasExtra(AboutIntents.EXTRA_WEBSITE_URL) && intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_URL)!=null){
+    		mWebsiteText.setText(intent.getStringExtra(AboutIntents.EXTRA_WEBSITE_URL));
     	}else{
     		mWebsiteText.setText("");
     	}
-    	if(intent.hasExtra(KEY_AUTHORS_TEXT_ARRAY) && intent.getStringArrayExtra(KEY_AUTHORS_TEXT_ARRAY)!=null){
+    	if(intent.hasExtra(AboutIntents.EXTRA_AUTHORS) && intent.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS)!=null){
     		String text="";
-    		for(String person: intent.getStringArrayExtra(KEY_AUTHORS_TEXT_ARRAY)){
+    		for(String person: intent.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS)){
     			text+=person+"\n";
     		}
     		mAuthorsText.setText(text);
     	}else{
     		mAuthorsText.setText("");
     	}
-    	if(intent.hasExtra(KEY_DOCUMENTERS_TEXT_ARRAY) && intent.getStringArrayExtra(KEY_DOCUMENTERS_TEXT_ARRAY)!=null){
+    	if(intent.hasExtra(AboutIntents.EXTRA_DOCUMENTERS) && intent.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS)!=null){
     		String text="";
-    		for(String person: intent.getStringArrayExtra(KEY_DOCUMENTERS_TEXT_ARRAY)){
+    		for(String person: intent.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS)){
     			text+=person+"\n";
     		}
     		mDocumentersText.setText(text);
     	}else{
     		mDocumentersText.setText("");
     	}
-    	if(intent.hasExtra(KEY_TRANSLATORS_TEXT_ARRAY_FOR_THIS_L10N) && intent.getStringArrayExtra(KEY_TRANSLATORS_TEXT_ARRAY_FOR_THIS_L10N)!=null){
+    	if(intent.hasExtra(AboutIntents.EXTRA_TRANSLATORS) && intent.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS)!=null){
     		String text="";
-    		for(String person: intent.getStringArrayExtra(KEY_TRANSLATORS_TEXT_ARRAY_FOR_THIS_L10N)){
+    		for(String person: intent.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS)){
     			text+=person+"\n";
     		}
     		mTranslatorsText.setText(text);
     	}else{
     		mTranslatorsText.setText("");
     	}
-    	if(intent.hasExtra(KEY_ARTISTS_TEXT_ARRAY) && intent.getStringArrayExtra(KEY_ARTISTS_TEXT_ARRAY)!=null){
+    	if(intent.hasExtra(AboutIntents.EXTRA_ARTISTS) && intent.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS)!=null){
     		String text="";
-    		for(String person: intent.getStringArrayExtra(KEY_ARTISTS_TEXT_ARRAY)){
+    		for(String person: intent.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS)){
     			text+=person+"\n";
     		}
     		mArtistsText.setText(text);
     	}else{
     		mArtistsText.setText("");
     	}
-    	mLicenseText.setHorizontallyScrolling(!intent.getBooleanExtra(KEY_WRAP_LICENSE, false));
-    	if(intent.hasExtra(KEY_LICENSE_TEXT) && intent.getStringExtra(KEY_LICENSE_TEXT)!=null){
-    		mLicenseText.setText(intent.getStringExtra(KEY_LICENSE_TEXT));
+    	mLicenseText.setHorizontallyScrolling(!intent.getBooleanExtra(AboutIntents.EXTRA_WRAP_LICENSE, false));
+    	if(intent.hasExtra(AboutIntents.EXTRA_LICENSE) && intent.getStringExtra(AboutIntents.EXTRA_LICENSE)!=null){
+    		mLicenseText.setText(intent.getStringExtra(AboutIntents.EXTRA_LICENSE));
     	}else{
     		mLicenseText.setText("");
     	}
@@ -471,7 +399,7 @@ public class About extends TabActivity {
 	}
 
 	protected void showAboutDialog() {
-		Intent intent=new Intent(About.INTENT_ACTION);
+		Intent intent=new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
 		
 		//Supply the image.
 		/*//alternative 2b: Put the image resId into the provider.
@@ -481,10 +409,10 @@ public class About extends TabActivity {
 		intent.putExtra(About.KEY_LOGO, uri);*/
 		
 		//alternative 3: Supply the image name and package.
-		intent.putExtra(About.KEY_LOGO, getResources().getResourceName(R.drawable.icon));
-		intent.putExtra(About.KEY_LOGO_PACKAGE, getResources().getResourcePackageName(R.drawable.icon));
+		intent.putExtra(AboutIntents.EXTRA_LOGO, getResources().getResourceName(R.drawable.icon));
+		intent.putExtra(AboutIntents.EXTRA_LOGO_PACKAGE, getResources().getResourcePackageName(R.drawable.icon));
 		
-		intent.putExtra(About.KEY_PROGRAM_NAME, getString(R.string.app_name));
+		intent.putExtra(AboutIntents.EXTRA_PROGRAM_NAME, getString(R.string.app_name));
 		
 		//Get the app version
 		String version = "?";
@@ -494,15 +422,15 @@ public class About extends TabActivity {
 		} catch (PackageManager.NameNotFoundException e) {
 		        Log.e(TAG, "Package name not found", e);
 		};
-		intent.putExtra(About.KEY_PROGRAM_VERSION, version);
-		intent.putExtra(About.KEY_COMMENTS_TEXT, getString(R.string.about_comments));
-		intent.putExtra(About.KEY_COPYRIGHT_TEXT, getString(R.string.about_copyright));
-		intent.putExtra(About.KEY_WEBSITE_LABEL, getString(R.string.about_website_label));
-		intent.putExtra(About.KEY_WEBSITE_URL, getString(R.string.about_website_url));
-		intent.putExtra(About.KEY_AUTHORS_TEXT_ARRAY, getResources().getStringArray(R.array.about_authors));
-		intent.putExtra(About.KEY_DOCUMENTERS_TEXT_ARRAY, getResources().getStringArray(R.array.about_documenters));
-		intent.putExtra(About.KEY_TRANSLATORS_TEXT_ARRAY_FOR_THIS_L10N, getResources().getStringArray(R.array.about_translators));
-		intent.putExtra(About.KEY_ARTISTS_TEXT_ARRAY, getResources().getStringArray(R.array.about_artists));
+		intent.putExtra(AboutIntents.EXTRA_PROGRAM_VERSION, version);
+		intent.putExtra(AboutIntents.EXTRA_COMMENTS, getString(R.string.about_comments));
+		intent.putExtra(AboutIntents.EXTRA_COPYRIGHT, getString(R.string.about_copyright));
+		intent.putExtra(AboutIntents.EXTRA_WEBSITE_LABEL, getString(R.string.about_website_label));
+		intent.putExtra(AboutIntents.EXTRA_WEBSITE_URL, getString(R.string.about_website_url));
+		intent.putExtra(AboutIntents.EXTRA_AUTHORS, getResources().getStringArray(R.array.about_authors));
+		intent.putExtra(AboutIntents.EXTRA_DOCUMENTERS, getResources().getStringArray(R.array.about_documenters));
+		intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources().getStringArray(R.array.about_translators));
+		intent.putExtra(AboutIntents.EXTRA_ARTISTS, getResources().getStringArray(R.array.about_artists));
 		
 		//Read in the license file as a big String
 		BufferedReader in
@@ -517,8 +445,8 @@ public class About extends TabActivity {
 			//Should not happen.
 			e.printStackTrace();
 		}
-		intent.putExtra(About.KEY_LICENSE_TEXT, license);
-		intent.putExtra(About.KEY_WRAP_LICENSE, false);
+		intent.putExtra(AboutIntents.EXTRA_LICENSE, license);
+		intent.putExtra(AboutIntents.EXTRA_WRAP_LICENSE, false);
 		
 		startActivity(Intent.createChooser(intent, getString(R.string.about_chooser_title)));
 	}

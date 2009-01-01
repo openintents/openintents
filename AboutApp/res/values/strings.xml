@@ -53,7 +53,7 @@
 	<string name="vc_confirm_title">Confirm OI About Update</string>
 	<string name="vc_confirm_text">Would you like to update this application to the newest version?</string>
 	<string name="vc_confirm_stop">Don\'t notify me of this update again</string>
-	<string name="version_file_url">http://where/will/we/keep/the/version/file?/oi_about.xml</string>
+	<string name="version_file_url">http://code.google.com/p/openintents/source/browse/trunk/AboutApp/res/raw/oi_about_versions.xml</string>
     
 	<string name="l_authors">Written by</string>
 	<string name="l_documenters">Documented by</string>
