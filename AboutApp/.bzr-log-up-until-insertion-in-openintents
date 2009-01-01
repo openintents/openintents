@@ -1,0 +1,64 @@
+------------------------------------------------------------
+revno: 8
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Thu 2009-01-01 15:36:23 +0100
+message:
+  Small documentation improvements, renames. Added README. All after listing the intent on openintents.org.
+------------------------------------------------------------
+revno: 7
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Thu 2009-01-01 01:52:00 +0100
+message:
+  Minor changes
+------------------------------------------------------------
+revno: 6
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 21:13:39 +0100
+message:
+  Changed text style. Other minor stuff.
+------------------------------------------------------------
+revno: 5
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 20:30:11 +0100
+message:
+  Version checking. License completion.
+------------------------------------------------------------
+revno: 4
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 18:43:54 +0100
+message:
+  Solved TabHost onTouchModeChanged() bug.
+------------------------------------------------------------
+revno: 3
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 17:34:47 +0100
+message:
+  Bugs solved with Linkify website, license wrapping.
+  Added alternative to supply image.
+------------------------------------------------------------
+revno: 2
+author: pjv <ezelspinguin@gmail.com>
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 03:24:39 +0100
+message:
+  Nearly works.
+------------------------------------------------------------
+revno: 1
+committer: pjv <ezelspinguin@gmail.com>
+branch nick: OI About
+timestamp: Wed 2008-12-31 00:24:38 +0100
+message:
+  Initial import, fiddling with TextSwitcher

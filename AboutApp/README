@@ -1,0 +1,41 @@
+===Usage===
+
+OI About application, see http://www.openintents.org/en/node/191: "Show about dialog" intent, see http://www.openintents.org/en/node/190:
+
+Action: 
+org.openintents.action.SHOW_ABOUT_DIALOG
+Intent Extra: 
+Artists
+Intent Extra: 
+Authors
+Intent Extra: 
+Comments
+Intent Extra: 
+Copyright
+Intent Extra: 
+Documenters
+Intent Extra: 
+License
+Intent Extra: 
+Logo
+Intent Extra: 
+Program name
+Intent Extra: 
+Program version
+Intent Extra: 
+Translators
+Intent Extra: 
+Website url
+
+
+Show an about dialog to display information about your application. Send along extras with information to display. Only the PROGRAM_NAME extra is obligatory.
+
+Original use is with OI About: OI About is a standalone about dialog that is shared between apps. OI About is based on the GtkAboutDialog and for the bigger part has the same fields and layout.
+
+As an app developer you use it in the following way, in short:
+- The user that installs your app also installs OI About or already has it because he installed it before (for another app).
+- From your "about" menu option you start an activity with this specific intent action and several elements in the extras. These elements are the data to be displayed in the About dialog, specific to your app, like app name, app version, license, logo, ...
+
+And that's it really! No (real) need to import a lib into your project or anything. One shared application that handles all the "abouts" for apps, with a rather simple (and expandable) intent interface.
+
+To code by example (recommended): OI About is a meta-example since it has a meta-about dialog about itself (and all the code to go with it). From About.java copy showAboutDialog() to your main activity. You can also copy some of the onCreateOptionsMenu(), OnOptionsItemSelected(), ... if you like. The showAboutDialog() method has dependencies on some strings, arrays and other resources, and uses constants for the extras keys and intent action. You can either make OI About a dependency of your java project (so the constants hold), or you can replace the constants with the key/action strings themselves. You can copy the necessary elements from strings.xml, arrays.xml and other resources to your project and adapt them so they represent the information concerning your application. Also copy the about.png icon for any buttons/menus you create, and fix the imports ofcourse. Not too hard, right?
