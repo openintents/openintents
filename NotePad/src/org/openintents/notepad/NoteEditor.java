@@ -509,17 +509,20 @@ public class NoteEditor extends Activity {
     				Toast.makeText(this,
         					"Encrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
+
+            		finish();
     				return;
     			}
-
-    	    	Log.i(TAG, "Updating" + id + ", decrypted text " + decryptedText);
 
     	    	mDecryptedText = decryptedText;
 	            
     		} else {
     			Toast.makeText(this,
-    					"Failed to invoke encrypt",
+    					R.string.decryption_failed,
     					Toast.LENGTH_SHORT).show();
+    			Log.e(TAG, "decryption failed");
+    			
+        		finish();
     		}
     		break;
     	case REQUEST_CODE_ENCRYPT:

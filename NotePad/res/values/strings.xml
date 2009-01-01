@@ -57,6 +57,7 @@
 	<string name="menu_do_not_encrypt">Do not encrypt</string>
 	<string name="already_encrypted">Already encrypted.</string>
 	<string name="encryption_failed">Encryption failed.</string>
+	<string name="decryption_failed">Decryption failed.</string>
 
 	<!-- About -->
 	<string name="about">About</string>
