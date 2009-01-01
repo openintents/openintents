@@ -77,7 +77,6 @@ public class NoteEditor extends Activity {
     private static final int DISCARD_ID = Menu.FIRST + 1;
     private static final int DELETE_ID = Menu.FIRST + 2;
 
-	private static final int REQUEST_CODE_ENCRYPT = 1;
 	private static final int REQUEST_CODE_DECRYPT = 2;
 
     // The different distinct states the activity can be run in.
@@ -523,47 +522,6 @@ public class NoteEditor extends Activity {
     			Log.e(TAG, "decryption failed");
     			
         		finish();
-    		}
-    		break;
-    	case REQUEST_CODE_ENCRYPT:
-    		if (resultCode == RESULT_OK && data != null) {
-    			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
-    			
-    			if (id == -1) {
-        	    	Log.i(TAG, "Wrong extra id");
-    				Toast.makeText(this,
-        					"Encrypted information incomplete",
-        					Toast.LENGTH_SHORT).show();
-    				return;
-    			}
-
-    	    	Log.i(TAG, "Updating" + id + ", encrypted text " + encryptedText);
-    			// Write this to content provider:
-
-                ContentValues values = new ContentValues();
-                values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-                values.put(Notes.TITLE, "ENCRYPTED");
-                values.put(Notes.NOTE, encryptedText);
-                values.put(Notes.ENCRYPTED, 1);
-                
-                //Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
-                Uri noteUri = getIntent().getData();
-                
-                if (noteUri.getLastPathSegment().equals("" + id)) {
-
-                    getContentResolver().update(noteUri, values, null, null);
-                } else {
-                	Log.i(TAG, "Expected URI:" + noteUri + " but obtaind id " + id);
-        			Toast.makeText(this,
-        					"Wrong information returned.",
-        					Toast.LENGTH_SHORT).show();
-                }
-                
-    		} else {
-    			Toast.makeText(this,
-    					"Failed to invoke encrypt",
-    					Toast.LENGTH_SHORT).show();
     		}
     		break;
     	}
