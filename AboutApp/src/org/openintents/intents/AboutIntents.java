@@ -3,7 +3,7 @@ package org.openintents.intents;
 public class AboutIntents {
 
 	/**
-	 * The intent action to use. This and some of the intent extras with the keys below is everything you need.
+	 * The only intent action for OI About: Show an about dialog to display information about your application. Send along extras with information to display. Only the PROGRAM_NAME extra is obligatory.
 	 * 
 	 * <p>Constant Value: "org.openintents.action.SHOW_ABOUT_DIALOG"</p>
 	 */
@@ -23,7 +23,7 @@ public class AboutIntents {
 	 * Intent extra key for:
 	 * The name of the package containing the image resource. Has no use but to support EXTRA_LOGO alternative 3, see above. You can put the result of "getResources().getResourcePackageName(R.drawable.icon)". Should not be added to the intent otherwise.
 	 * 
-	 * <p>Constant Value: "org.openintents.extran.LOGO_PACKAGE"</p>
+	 * <p>Constant Value: "org.openintents.extra.LOGO_PACKAGE"</p>
 	 */
 	public static final String EXTRA_LOGO_PACKAGE = "org.openintents.extra.LOGO_PACKAGE";
 	/**
