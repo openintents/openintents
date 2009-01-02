@@ -1,0 +1,11 @@
+bin
+*.class
+*.apk
+*.dex
+*.ap_
+R.java
+R.class
+R.class
+.settings
+../.bzrignore
+../.bzr

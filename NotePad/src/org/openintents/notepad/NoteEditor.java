@@ -26,6 +26,7 @@ package org.openintents.notepad;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
+import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
@@ -73,9 +74,10 @@ public class NoteEditor extends Activity {
     private static final String ORIGINAL_STATE = "origState";
 
     // Identifiers for our menu items.
-    private static final int REVERT_ID = Menu.FIRST;
-    private static final int DISCARD_ID = Menu.FIRST + 1;
-    private static final int DELETE_ID = Menu.FIRST + 2;
+    private static final int MENU_REVERT = Menu.FIRST;
+    private static final int MENU_DISCARD = Menu.FIRST + 1;
+    private static final int MENU_DELETE = Menu.FIRST + 2;
+    private static final int MENU_ENCRYPT = Menu.FIRST + 3;
 
 	private static final int REQUEST_CODE_DECRYPT = 2;
 
@@ -270,11 +272,10 @@ public class NoteEditor extends Activity {
         // to do this if only editing.
         if (mCursor != null) {
 
-        	long id = mCursor.getLong(COLUMN_INDEX_ID);
             long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
-            String text = mText.getText().toString();
             
             if (encrypted == 0) {
+                String text = mText.getText().toString();
 	            int length = text.length();
 	
 	            // If this activity is finished, and there is no text, then we
@@ -293,24 +294,9 @@ public class NoteEditor extends Activity {
 	                if (!mNoteOnly) {
 	                    // Bump the modification time to now.
 	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-	
-	                    // If we are creating a new note, then we want to also create
-	                    // an initial title for it.
-	                    //if (mState == STATE_INSERT) {
-	                        String title = text.substring(0, Math.min(30, length));
-	                        // Break at newline:
-	                        int firstNewline = title.indexOf('\n');
-	                        if (firstNewline > 0) {
-	                            title = title.substring(0, firstNewline);
-	                        } else if (length > 30) {
-		                        // Break at space
-	                            int lastSpace = title.lastIndexOf(' ');
-	                            if (lastSpace > 0) {
-	                                title = title.substring(0, lastSpace);
-	                            }
-	                        }
-		                    values.put(Notes.TITLE, title);
-	                    //}
+	                    
+	                    String title = ExtractTitle.extractTitle(text);
+		                values.put(Notes.TITLE, title);
 	                }
 	
 	                // Write our text back into the provider.
@@ -329,31 +315,25 @@ public class NoteEditor extends Activity {
 	            	// Decrypted had been decrypted.
 	            	// We take the current version from 'text' and encrypt it.
 	            	
-	            	Intent i = new Intent(this, EncryptActivity.class);
-	        		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
-	        		//i.putExtra(NotePadIntents.EXTRA_ID, id);
-	        		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
-	        		startActivity(i);
-	        		
-	            	/*
-	        		Intent i = new Intent();
-	        		i.setAction(CryptoIntents.ACTION_ENCRYPT);
-	        		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
-	        		i.putExtra(NotePadIntents.EXTRA_ID, id);
-	                
-	                try {
-	                	startActivityForResult(i, REQUEST_CODE_ENCRYPT);
-	                } catch (ActivityNotFoundException e) {
-	        			Toast.makeText(this,
-	        					R.string.encryption_failed,
-	        					Toast.LENGTH_SHORT).show();
-	        			Log.e(TAG, "failed to invoke encrypt");
-	                }
-	                */
+	            	encryptNote();
 	            }
             }
         }
     }
+
+	/**
+	 * Encrypt the current note.
+	 * @param text
+	 */
+	private void encryptNote() {
+        String text = mText.getText().toString();
+        String title = ExtractTitle.extractTitle(text);
+        
+		Intent i = new Intent(this, EncryptActivity.class);
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
+		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+		startActivity(i);
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -363,12 +343,16 @@ public class NoteEditor extends Activity {
         
         //if (!mOriginalContent.equals(mText.getText().toString())) {
 
-            menu.add(0, REVERT_ID, 0, R.string.menu_revert)
+            menu.add(0, MENU_REVERT, 0, R.string.menu_revert)
                     .setShortcut('0', 'r')
                     .setIcon(android.R.drawable.ic_menu_revert);
         //}
-        
-        menu.add(1, DELETE_ID, 0, R.string.menu_delete)
+
+        menu.add(1, MENU_ENCRYPT, 0, R.string.menu_encrypt)
+                .setShortcut('0', 'e')
+                .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
+            
+        menu.add(1, MENU_DELETE, 0, R.string.menu_delete)
             .setShortcut('1', 'd')
             .setIcon(android.R.drawable.ic_menu_delete);
         
@@ -428,16 +412,19 @@ public class NoteEditor extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle all of the possible menu actions.
         switch (item.getItemId()) {
-        case DELETE_ID:
+        case MENU_DELETE:
             deleteNote();
             finish();
             break;
-        case DISCARD_ID:
+        case MENU_DISCARD:
             cancelNote();
             break;
-        case REVERT_ID:
+        case MENU_REVERT:
             cancelNote();
             break;
+        case MENU_ENCRYPT:
+        	encryptNote();
+        	break;
         }
         return super.onOptionsItemSelected(item);
     }

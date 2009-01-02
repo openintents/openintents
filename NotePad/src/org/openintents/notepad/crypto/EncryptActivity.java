@@ -31,8 +31,8 @@ public class EncryptActivity extends Activity {
 
 		i.setComponent(null);
 		i.setAction(CryptoIntents.ACTION_ENCRYPT);
-		//i.putExtra(CryptoIntents.EXTRA_TEXT, text);
-		//i.putExtra(NotePadIntents.EXTRA_ID, id);
+		// Extras should have been set properly by the calling activity
+		// and are not changed here.
         
         try {
     		Log.i(TAG, "EncryptActivity: startActivity");
@@ -55,7 +55,10 @@ public class EncryptActivity extends Activity {
     	switch(requestCode) {
     	case REQUEST_CODE_ENCRYPT:
     		if (resultCode == RESULT_OK && data != null) {
-    			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
+    			String[] encryptedTextArray = data.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
+    			String encryptedText = encryptedTextArray[0];
+    			String encryptedTitle = encryptedTextArray[1];
+    			
     			String uristring = data.getStringExtra(NotePadIntents.EXTRA_URI);
     			Uri uri = null;
     			if (uristring != null) {
@@ -73,7 +76,7 @@ public class EncryptActivity extends Activity {
 
                 ContentValues values = new ContentValues();
                 values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-                values.put(Notes.TITLE, "ENCRYPTED");
+                values.put(Notes.TITLE, encryptedTitle);
                 values.put(Notes.NOTE, encryptedText);
                 values.put(Notes.ENCRYPTED, 1);
                 
