@@ -68,8 +68,6 @@ public class NotesList extends ListActivity {
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
 	
-	private static final int REQUEST_CODE_ENCRYPT = 1;
-	
 	/**
 	 * A group id for alternative menu items.
 	 */
@@ -352,21 +350,6 @@ public class NotesList extends ListActivity {
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
-		/*
-		Intent i = new Intent();
-		i.setAction(CryptoIntents.ACTION_ENCRYPT);
-		i.putExtra(CryptoIntents.EXTRA_TEXT, content);
-		i.putExtra(NotePadIntents.EXTRA_ID, id);
-        
-        try {
-        	startActivityForResult(i, REQUEST_CODE_ENCRYPT);
-        } catch (ActivityNotFoundException e) {
-			Toast.makeText(this,
-					R.string.encryption_failed,
-					Toast.LENGTH_SHORT).show();
-			Log.e(TAG, "failed to invoke encrypt");
-        }
-        */
 	}
 	
 	private void showAboutBox() {
@@ -389,40 +372,4 @@ public class NotesList extends ListActivity {
 		}
 	}
 	
-
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-    	Log.i(TAG, "Received requestCode" + requestCode + ", resultCode " + resultCode);
-    	switch(requestCode) {
-    	case REQUEST_CODE_ENCRYPT:
-    		if (resultCode == RESULT_OK && data != null) {
-    			String encryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
-    			
-    			if (id == -1) {
-        	    	Log.i(TAG, "Wrong extra id");
-    				Toast.makeText(this,
-        					"Encrypted information incomplete",
-        					Toast.LENGTH_SHORT).show();
-    				return;
-    			}
-
-    	    	Log.i(TAG, "Updating" + id + ", encrypted text " + encryptedText);
-    			// Write this to content provider:
-
-                ContentValues values = new ContentValues();
-                values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-                values.put(Notes.TITLE, "ENCRYPTED");
-                values.put(Notes.NOTE, encryptedText);
-                values.put(Notes.ENCRYPTED, 1);
-                
-                Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
-                getContentResolver().update(noteUri, values, null, null);
-    		} else {
-    			Toast.makeText(this,
-    					"Failed to invoke encrypt",
-    					Toast.LENGTH_SHORT).show();
-    		}
-    		break;
-    	}
-    }
 }
