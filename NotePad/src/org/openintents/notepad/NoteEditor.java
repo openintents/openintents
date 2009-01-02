@@ -362,7 +362,7 @@ public class NoteEditor extends Activity {
                     .setIcon(android.R.drawable.ic_menu_revert);
         //}
 
-        menu.add(0, MENU_ENCRYPT, 0, R.string.menu_encrypt)
+        menu.add(1, MENU_ENCRYPT, 0, R.string.menu_encrypt)
                 .setShortcut('0', 'e')
                 .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
             
