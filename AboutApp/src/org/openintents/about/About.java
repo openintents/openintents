@@ -158,12 +158,8 @@ public class About extends TabActivity {
 		if (intent.hasExtra(AboutIntents.EXTRA_ARTISTS)
 				&& intent.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS) 
 					!= null) {
-			String text = "";
-			for (String person : intent
-					.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS)) {
-				text += person + "\n";
-    		}
-    		mArtistsText.setText(text);
+    		setTextFromArrayForPersons(intent
+    				.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS), mArtistsText);
     	} else {
             //Try meta data of package
             Bundle md = null;
@@ -175,10 +171,9 @@ public class About extends TabActivity {
             }
 
             if (md != null
-					&& !TextUtils.isEmpty(md
-							.getString(AboutMetaData.METADATA_ARTISTS))) {
-            	mArtistsText.setText(md
-						.getString(AboutMetaData.METADATA_ARTISTS));
+					&& md.getStringArray(AboutMetaData.METADATA_ARTISTS) != null) {
+        		setTextFromArrayForPersons(md
+						.getStringArray(AboutMetaData.METADATA_ARTISTS), mArtistsText);
             } else {
             	mArtistsText.setText("");
             }
@@ -194,12 +189,8 @@ public class About extends TabActivity {
 		if (intent.hasExtra(AboutIntents.EXTRA_AUTHORS)
 				&& intent.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS) 
 					!= null) {
-			String text = "";
-			for (String person : intent
-					.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS)) {
-				text += person + "\n";
-    		}
-    		mAuthorsText.setText(text);
+    		setTextFromArrayForPersons(intent
+    				.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS), mAuthorsText);
     	} else {
             //Try meta data of package
             Bundle md = null;
@@ -211,10 +202,9 @@ public class About extends TabActivity {
             }
 
             if (md != null
-					&& !TextUtils.isEmpty(md
-							.getString(AboutMetaData.METADATA_AUTHORS))) {
-            	mAuthorsText.setText(md
-						.getString(AboutMetaData.METADATA_AUTHORS));
+					&& md.getStringArray(AboutMetaData.METADATA_AUTHORS) != null) {
+        		setTextFromArrayForPersons(md
+						.getStringArray(AboutMetaData.METADATA_AUTHORS), mAuthorsText);
             } else {
             	mAuthorsText.setText("");
             }
@@ -293,12 +283,8 @@ public class About extends TabActivity {
 		if (intent.hasExtra(AboutIntents.EXTRA_DOCUMENTERS)
 				&& intent.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS) 
 					!= null) {
-    		String text = "";
-    		for (String person : intent
-					.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS)) {
-    			text += person + "\n";
-    		}
-    		mDocumentersText.setText(text);
+    		setTextFromArrayForPersons(intent
+    				.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS), mDocumentersText);
     	} else {
             //Try meta data of package
             Bundle md = null;
@@ -310,14 +296,21 @@ public class About extends TabActivity {
             }
 
             if (md != null
-					&& !TextUtils.isEmpty(md
-							.getString(AboutMetaData.METADATA_DOCUMENTERS))) {
-            	mDocumentersText.setText(md
-						.getString(AboutMetaData.METADATA_DOCUMENTERS));
+					&& md.getStringArray(AboutMetaData.METADATA_DOCUMENTERS) != null) {
+        		setTextFromArrayForPersons(md
+						.getStringArray(AboutMetaData.METADATA_DOCUMENTERS), mDocumentersText);
             } else {
             	mDocumentersText.setText("");
             }
     	}
+	}
+
+	protected void setTextFromArrayForPersons(final String[] personsArray, TextView view) {
+		String text = "";
+		for (String person : personsArray) {
+			text += person + "\n";
+		}
+		view.setText(text);
 	}
 
 	/**
@@ -446,12 +439,9 @@ public class About extends TabActivity {
 		if (intent.hasExtra(AboutIntents.EXTRA_TRANSLATORS)
 				&& intent.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS) 
 					!= null) {
-			String text = "";
-			for (String person : intent
-					.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS)) {
-				text += person + "\n";
-    		}
-    		mTranslatorsText.setText(text);
+    		setTextFromArrayForPersons(intent
+    				.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS),
+					mTranslatorsText);
     	} else {
             //Try meta data of package
             Bundle md = null;
@@ -461,17 +451,17 @@ public class About extends TabActivity {
             } catch (NameNotFoundException e) {
                 Log.e(TAG, "Package name not found", e);
             }
-
+          
             if (md != null
-					&& !TextUtils.isEmpty(md
-							.getString(AboutMetaData.METADATA_TRANSLATORS))) {
-        		mTranslatorsText.setText(md
-						.getString(AboutMetaData.METADATA_TRANSLATORS));
+					&& md.getStringArray(AboutMetaData.METADATA_TRANSLATORS) != null) {
+        		setTextFromArrayForPersons(md
+						.getStringArray(AboutMetaData.METADATA_TRANSLATORS),
+						mTranslatorsText);
             } else {
         		mTranslatorsText.setText("");
             }
     	}
-	}
+	} //TODO md.getStringArray() is null for some reason
 
 	/**
 	 * Fetch and display website link information.
