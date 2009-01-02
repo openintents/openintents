@@ -18,13 +18,12 @@
 **   You should have received a copy of the GNU General Public License
 **   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
 **
-**	 Some elements based on veecheck-sample.
 */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.about"
-      android:versionCode="1"
-      android:versionName="0.1.0">
+      android:versionCode="2"
+      android:versionName="0.1.1">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         <meta-data android:name="org.openintents.updatechecker.UPDATE_URL"
                        android:value="@string/version_file_url" />
@@ -42,37 +41,5 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
-    	<activity android:name=".Preferences" android:label="@string/preferences_activity_name" android:screenOrientation="sensor">
-    	</activity>
-        
-        <activity android:name=".versioncheck.VersioncheckActivity" android:label="@string/vc_confirm_title" android:screenOrientation="sensor">
-		</activity>
-
-		<receiver android:name=".versioncheck.VersioncheckBroadcastReceiver">
-			<intent-filter>
-				<action android:name="org.openintents.about.VEECHECK_RESCHEDULE_CHECKS">
-				</action>
-			</intent-filter>
-
-			<intent-filter>
-				<action android:name="org.openintents.about.VEECHECK_CONSIDER_CHECK">
-				</action>
-			</intent-filter>
-			
-			<intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-            </intent-filter>
-		</receiver>
-
-		<service android:name=".versioncheck.VersioncheckService">
-			<intent-filter>
-				<action android:name="org.openintents.about.VEECHECK_PERFORM_CHECK">
-				</action>
-				<data android:scheme="http"/>
-			</intent-filter>
-		</service>
 	</application>
-	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest> 
