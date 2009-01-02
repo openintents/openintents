@@ -28,6 +28,7 @@ import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.ListActivity;
@@ -331,12 +332,12 @@ public class NotesList extends ListActivity {
 				null, Notes.DEFAULT_SORT_ORDER);
 
 		String title = "";
-		String content = getString(R.string.empty_note);
+		String text = getString(R.string.empty_note);
 		int encrypted = 0;
 		if (c != null) {
 			c.moveToFirst();
 			title = c.getString(0);
-			content = c.getString(1);
+			text = c.getString(1);
 			encrypted = c.getInt(2);
 		}
 
@@ -346,7 +347,12 @@ public class NotesList extends ListActivity {
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
-		
+
+		Intent i = new Intent(this, EncryptActivity.class);
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
+		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
+		startActivity(i);
+		/*
 		Intent i = new Intent();
 		i.setAction(CryptoIntents.ACTION_ENCRYPT);
 		i.putExtra(CryptoIntents.EXTRA_TEXT, content);
@@ -360,6 +366,7 @@ public class NotesList extends ListActivity {
 					Toast.LENGTH_SHORT).show();
 			Log.e(TAG, "failed to invoke encrypt");
         }
+        */
 	}
 	
 	private void showAboutBox() {

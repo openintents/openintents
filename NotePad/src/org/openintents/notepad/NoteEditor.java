@@ -26,6 +26,7 @@ package org.openintents.notepad;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
+import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
@@ -293,24 +294,9 @@ public class NoteEditor extends Activity {
 	                if (!mNoteOnly) {
 	                    // Bump the modification time to now.
 	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-	
-	                    // If we are creating a new note, then we want to also create
-	                    // an initial title for it.
-	                    //if (mState == STATE_INSERT) {
-	                        String title = text.substring(0, Math.min(30, length));
-	                        // Break at newline:
-	                        int firstNewline = title.indexOf('\n');
-	                        if (firstNewline > 0) {
-	                            title = title.substring(0, firstNewline);
-	                        } else if (length > 30) {
-		                        // Break at space
-	                            int lastSpace = title.lastIndexOf(' ');
-	                            if (lastSpace > 0) {
-	                                title = title.substring(0, lastSpace);
-	                            }
-	                        }
-		                    values.put(Notes.TITLE, title);
-	                    //}
+	                    
+	                    String title = ExtractTitle.extractTitle(text);
+		                values.put(Notes.TITLE, title);
 	                }
 	
 	                // Write our text back into the provider.
@@ -341,10 +327,10 @@ public class NoteEditor extends Activity {
 	 */
 	private void encryptNote() {
         String text = mText.getText().toString();
+        String title = ExtractTitle.extractTitle(text);
         
 		Intent i = new Intent(this, EncryptActivity.class);
-		i.putExtra(CryptoIntents.EXTRA_TEXT, text);
-		//i.putExtra(NotePadIntents.EXTRA_ID, id);
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
 		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
 	}
