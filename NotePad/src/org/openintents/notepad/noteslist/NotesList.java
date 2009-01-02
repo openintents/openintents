@@ -21,13 +21,20 @@
  * Licensed under the Apache License, Version 2.0.
  */
 
-package org.openintents.notepad;
+package org.openintents.notepad.noteslist;
 
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
+import org.openintents.notepad.NotePad;
+import org.openintents.notepad.NotePadIntents;
+import org.openintents.notepad.NotePadProvider;
+import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.R.id;
+import org.openintents.notepad.R.layout;
+import org.openintents.notepad.R.string;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -76,12 +83,16 @@ public class NotesList extends ListActivity {
 	/**
 	 * The columns we are interested in from the database
 	 */
-	private static final String[] PROJECTION = new String[] { Notes._ID, // 0
+	protected static final String[] PROJECTION = new String[] { Notes._ID, // 0
 			Notes.TITLE, // 1
+			Notes.TAGS, // 2
+			Notes.ENCRYPTED // 3
 	};
 
 	/** The index of the title column */
-	private static final int COLUMN_INDEX_TITLE = 1;
+	protected static final int COLUMN_INDEX_TITLE = 1;
+	protected static final int COLUMN_INDEX_TAGS = 2;
+	protected static final int COLUMN_INDEX_ENCRYPTED = 3;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -120,10 +131,13 @@ public class NotesList extends ListActivity {
 		Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null,
 				null, Notes.DEFAULT_SORT_ORDER);
 
+		/*
 		// Used to map notes entries from the database to views
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
 				new int[] { android.R.id.text1 });
+				*/
+		NotesListCursorAdapter adapter = new NotesListCursorAdapter(this, cursor);
 		setListAdapter(adapter);
 	}
 

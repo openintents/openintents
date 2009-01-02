@@ -35,7 +35,7 @@
             android:authorities="org.openintents.notepad"
         />
 
-        <activity android:name="NotesList" android:label="@string/title_notes_list">
+        <activity android:name=".noteslist.NotesList" android:label="@string/title_notes_list">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
