@@ -235,9 +235,9 @@ public class NoteEditor extends Activity {
 	                	startActivityForResult(i, REQUEST_CODE_DECRYPT);
 	                } catch (ActivityNotFoundException e) {
 	        			Toast.makeText(this,
-	        					R.string.encryption_failed,
+	        					R.string.decryption_failed,
 	        					Toast.LENGTH_SHORT).show();
-	        			Log.e(TAG, "failed to invoke encrypt");
+	        			Log.e(TAG, "failed to invoke decrypt");
 	                }
             	}
             }
@@ -493,7 +493,7 @@ public class NoteEditor extends Activity {
     			if (id == -1) {
         	    	Log.i(TAG, "Wrong extra id");
     				Toast.makeText(this,
-        					"Encrypted information incomplete",
+        					"Decrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
 
             		finish();
