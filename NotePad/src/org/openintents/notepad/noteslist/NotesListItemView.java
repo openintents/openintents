@@ -3,9 +3,7 @@ package org.openintents.notepad.noteslist;
 import org.openintents.notepad.R;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,12 +43,7 @@ public class NotesListItemView extends LinearLayout {
 	}
 	
 	public void setTags(String tags) {
-		if (!TextUtils.isEmpty(tags)) {
-			mInfo.setVisibility(View.VISIBLE);
-			mInfo.setText(tags);
-		} else {
-			mInfo.setVisibility(View.GONE);
-		}
+		mInfo.setText(tags);
 	}
 	
 	public void setEncrypted(long encrypted) {

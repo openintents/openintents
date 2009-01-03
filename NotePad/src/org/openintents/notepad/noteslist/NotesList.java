@@ -23,8 +23,6 @@
 
 package org.openintents.notepad.noteslist;
 
-import java.util.HashMap;
-
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
@@ -34,6 +32,9 @@ import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.NotePadProvider;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.R.id;
+import org.openintents.notepad.R.layout;
+import org.openintents.notepad.R.string;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -41,6 +42,7 @@ import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -51,18 +53,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
-import android.widget.AbsListView.OnScrollListener;
 
 /**
  * Displays a list of notes. Will display notes from the {@link Uri} provided in
  * the intent if there is one, otherwise defaults to displaying the contents of
  * the {@link NotePadProvider}
  */
-public class NotesList extends ListActivity implements ListView.OnScrollListener {
+public class NotesList extends ListActivity {
 	private static final String TAG = "NotesList";
 
 	// Menu item ids
@@ -92,12 +94,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected static final int COLUMN_INDEX_TAGS = 2;
 	protected static final int COLUMN_INDEX_ENCRYPTED = 3;
 
-	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
-	
-	NotesListCursorAdapter mAdapter;
-	
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -141,10 +137,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
 				new int[] { android.R.id.text1 });
 				*/
-		mAdapter = new NotesListCursorAdapter(this, cursor);
-		setListAdapter(mAdapter);
-
-        getListView().setOnScrollListener(this);
+		NotesListCursorAdapter adapter = new NotesListCursorAdapter(this, cursor);
+		setListAdapter(adapter);
 	}
 
 	@Override
@@ -375,60 +369,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
-
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-            int totalItemCount) {
-    }
-    
-    
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        switch (scrollState) {
-        case OnScrollListener.SCROLL_STATE_IDLE:
-        	Log.i(TAG, "idle");
-            mAdapter.mBusy = false;
-            
-            int first = view.getFirstVisiblePosition();
-            int count = view.getChildCount();
-            for (int i=0; i<count; i++) {
-                NotesListItemView t = (NotesListItemView)view.getChildAt(i);
-            	String encryptedTitle = (String) t.getTag();
-                if (encryptedTitle != null) {
-                	// Retrieve decrypted title
-                	decryptTitle(encryptedTitle);
-                    t.setTag(null);
-                    
-                	// decrypt one item at a time.
-                	break;
-                }
-            }
-            
-            break;
-        case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-        	mAdapter.mBusy = true;
-            break;
-        case OnScrollListener.SCROLL_STATE_FLING:
-        	mAdapter.mBusy = true;
-            break;
-        }
-    }
-
-    public void decryptTitle(String encryptedTitle) {
-
-		Intent intent = new Intent();
-		intent.setAction(CryptoIntents.ACTION_DECRYPT);
-		intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
-		intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
-        
-        try {
-        	startActivityForResult(intent, REQUEST_CODE_DECRYPT_TITLE);
-        } catch (ActivityNotFoundException e) {
-			Toast.makeText(this,
-					R.string.decryption_failed,
-					Toast.LENGTH_SHORT).show();
-			Log.e(TAG, "failed to invoke encrypt");
-        }
-    }
-    
+	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
@@ -444,32 +385,5 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			startActivity(new Intent(Intent.ACTION_EDIT, uri));
 		}
 	}
-
-    
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-    	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
-    	switch(requestCode) {
-    	case REQUEST_CODE_DECRYPT_TITLE:
-    		if (resultCode == RESULT_OK && data != null) {
-    			String decryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			String encryptedText = data.getStringExtra (NotePadIntents.EXTRA_ENCRYPTED_TEXT);
-    			
-    			if (encryptedText == null) {
-        	    	Log.i(TAG, "Encrypted text is not passed properly.");
-    				return;
-    			}
-
-    			// Add decrypted text to hash:
-    			mAdapter.mTitleHashMap.put(encryptedText, decryptedText);
-    			getListView().invalidate();
-	            
-    		} else {
-    			Toast.makeText(this,
-    					R.string.decryption_failed,
-    					Toast.LENGTH_SHORT).show();
-    			Log.e(TAG, "decryption failed");
-    		}
-    		break;
-    	}
-    }
+	
 }

@@ -1,9 +1,5 @@
 package org.openintents.notepad.noteslist;
 
-import java.util.HashMap;
-
-import org.openintents.notepad.R;
-
 import android.content.Context;
 import android.database.Cursor;
 import android.view.View;
@@ -15,21 +11,9 @@ public class NotesListCursorAdapter extends CursorAdapter {
 
 	Context mContext;
 
-	/**
-	 * Map encrypted titles to decrypted ones.
-	 */
-	public static HashMap<String,String> mTitleHashMap = new HashMap<String,String>();
-	
-	/**
-	 * Flag for slow list adapter.
-	 */
-    public boolean mBusy;
-    
 	public NotesListCursorAdapter(Context context, Cursor c) {
 		super(context, c);
 		mContext = context;
-		
-		mBusy = false;
 	}
 
 	@Override
@@ -40,42 +24,9 @@ public class NotesListCursorAdapter extends CursorAdapter {
 		String tags = cursor.getString(NotesList.COLUMN_INDEX_TAGS);
 		long encrypted = cursor.getLong(NotesList.COLUMN_INDEX_ENCRYPTED);
 		
+		nliv.setTitle(title);
+		nliv.setTags(tags);
 		nliv.setEncrypted(encrypted);
-		if (encrypted == 0) {
-			// Not encrypted:
-			nliv.setTitle(title);
-			nliv.setTags(tags);
-			// Null tag means the view has the correct data
-            nliv.setTag(null);
-		} else {
-			// encrypted
-			String decrypted = mTitleHashMap.get(title);
-			if (decrypted != null) {
-				nliv.setTitle(decrypted);
-				nliv.setTags(tags);
-				// Null tag means the view has the correct data
-	            nliv.setTag(null);
-			} else {
-				nliv.setTitle(mContext.getString(R.string.encrypted));
-				nliv.setTags(tags);
-				// Non-null tag means the view still needs to load it's data
-				// Tag contains a pointer to a string with the encrypted title.
-	            nliv.setTag(title);
-			}
-			/*
-			if (!mBusy) {
-				nliv.setTitle("set");
-				nliv.setTitle("wow");
-				// Null tag means the view has the correct data
-	            nliv.setTag(null);
-			} else {
-				nliv.setTitle(mContext.getString(R.string.encrypted));
-				nliv.setTags(tags);
-				// Non-null tag means the view still needs to load it's data
-	            nliv.setTag(this);
-			}
-			*/
-		}
 	}
 
 	@Override
@@ -83,7 +34,4 @@ public class NotesListCursorAdapter extends CursorAdapter {
 		return new NotesListItemView(context);
 	}	
 
-    public void flushTitleHashMap() {
-    	mTitleHashMap = new HashMap<String,String>();
-    }
 }
