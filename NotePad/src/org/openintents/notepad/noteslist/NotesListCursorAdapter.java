@@ -1,5 +1,7 @@
 package org.openintents.notepad.noteslist;
 
+import java.util.HashMap;
+
 import org.openintents.notepad.R;
 
 import android.content.Context;
@@ -12,8 +14,12 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	private static final String TAG = "NotesListCursorAdapter";
 
 	Context mContext;
-	public TitleHash mTitleHash;
 
+	/**
+	 * Map encrypted titles to decrypted ones.
+	 */
+	public static HashMap<String,String> mTitleHashMap = new HashMap<String,String>();
+	
 	/**
 	 * Flag for slow list adapter.
 	 */
@@ -22,7 +28,6 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	public NotesListCursorAdapter(Context context, Cursor c) {
 		super(context, c);
 		mContext = context;
-		mTitleHash = new TitleHash(mContext);
 		
 		mBusy = false;
 	}
@@ -44,7 +49,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
             nliv.setTag(null);
 		} else {
 			// encrypted
-			String decrypted = mTitleHash.getDecryptedTitle(title);
+			String decrypted = mTitleHashMap.get(title);
 			if (decrypted != null) {
 				nliv.setTitle(decrypted);
 				nliv.setTags(tags);
@@ -78,4 +83,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
 		return new NotesListItemView(context);
 	}	
 
+    public void flushTitleHashMap() {
+    	mTitleHashMap = new HashMap<String,String>();
+    }
 }

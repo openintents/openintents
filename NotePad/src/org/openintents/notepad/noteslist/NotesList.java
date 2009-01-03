@@ -460,7 +460,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			}
 
     			// Add decrypted text to hash:
-    			mAdapter.mTitleHash.put(encryptedText, decryptedText);
+    			mAdapter.mTitleHashMap.put(encryptedText, decryptedText);
     			getListView().invalidate();
 	            
     		} else {
@@ -468,8 +468,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     					R.string.decryption_failed,
     					Toast.LENGTH_SHORT).show();
     			Log.e(TAG, "decryption failed");
-    			
-        		finish();
     		}
     		break;
     	}
