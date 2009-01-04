@@ -641,7 +641,7 @@ public class About extends TabActivity {
 
 		//About action
 		menu.add(ContextMenu.NONE, MENU_ITEM_ABOUT, ContextMenu.NONE,
-				R.string.menu_about).setIcon(R.drawable.about);
+				R.string.menu_about).setIcon(R.drawable.ic_menu_info_details);
 
 		// Generate any additional actions that can be performed on the
 		// overall list. In a normal install, there are no additional
@@ -750,7 +750,7 @@ public class About extends TabActivity {
 		
 		//alternative 2: Supply the image name and package.
 		intent.putExtra(AboutIntents.EXTRA_ICON_RESOURCE, getResources()
-				.getResourceName(R.drawable.icon));
+				.getResourceName(R.drawable.ic_menu_info_details));
 		
 		intent.putExtra(AboutIntents.EXTRA_APPLICATION_LABEL,
 				getString(R.string.app_name));
