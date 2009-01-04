@@ -40,8 +40,6 @@
     <string name="preferences_activity_name">OI About Preferences</string>
     <string name="about_activity_title">About</string>
     
-    <!--Versioncheck-->
-    <string name="version_file_url">http://code.google.com/p/openintents/source/browse/trunk/AboutApp/res/raw/oi_about_versions.xml</string>
     
 	<string name="l_authors">Written by</string>
 	<string name="l_documenters">Documented by</string>
