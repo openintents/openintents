@@ -44,6 +44,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_COMMENTS = 
 		"org.openintents.metadata.COMMENTS";
+	
 	/**
 	 * Metadata key matching with METADATA_COPYRIGHT.
 	 * 
@@ -53,6 +54,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_COPYRIGHT = 
 		"org.openintents.metadata.COPYRIGHT";
+	
 	/**
 	 * Metadata key matching with METADATA_WEBSITE_URL.
 	 * 
@@ -62,6 +64,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_WEBSITE_URL = 
 		"org.openintents.metadata.WEBSITE_URL";
+	
 	/**
 	 * Metadata key matching with METADATA_WEBSITE_LABEL.
 	 * 
@@ -71,6 +74,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_WEBSITE_LABEL = 
 		"org.openintents.metadata.WEBSITE_LABEL";
+	
 	/**
 	 * Metadata key matching with METADATA_AUTHORS.
 	 * 
@@ -79,6 +83,7 @@ public final class AboutMetaData {
 	 * </p>
 	 */
 	public static final String METADATA_AUTHORS = "org.openintents.metadata.AUTHORS";
+	
 	/**
 	 * Metadata key matching with METADATA_DOCUMENTERS.
 	 * 
@@ -88,6 +93,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_DOCUMENTERS = 
 		"org.openintents.metadata.DOCUMENTERS";
+	
 	/**
 	 * Metadata key matching with METADATA_TRANSLATORS.
 	 * 
@@ -97,6 +103,7 @@ public final class AboutMetaData {
 	 */
 	public static final String METADATA_TRANSLATORS = 
 		"org.openintents.metadata.TRANSLATORS";
+	
 	/**
 	 * Metadata key matching with METADATA_ARTISTS.
 	 * 
@@ -105,6 +112,7 @@ public final class AboutMetaData {
 	 * </p>
 	 */
 	public static final String METADATA_ARTISTS = "org.openintents.metadata.ARTISTS";
+	
 /*	*//**
 	 * Metadata key matching with METADATA_LICENSE.
 	 * 
