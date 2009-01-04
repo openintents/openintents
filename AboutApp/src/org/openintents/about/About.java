@@ -186,29 +186,8 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayArtists(final String packagename, final Intent intent) {
-		if (intent.hasExtra(AboutIntents.EXTRA_ARTISTS)
-				&& intent.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS) 
-					!= null) {
-    		setTextFromArrayForPersons(intent
-    				.getStringArrayExtra(AboutIntents.EXTRA_ARTISTS), mArtistsText);
-    	} else {
-            //Try meta data of package
-            Bundle md = null;
-            try {
-                    md = getPackageManager().getApplicationInfo(
-                    		packagename, PackageManager.GET_META_DATA).metaData;
-            } catch (NameNotFoundException e) {
-                Log.e(TAG, "Package name not found", e);
-            }
-
-            if (md != null
-					&& md.getStringArray(AboutMetaData.METADATA_ARTISTS) != null) {
-        		setTextFromArrayForPersons(md
-						.getStringArray(AboutMetaData.METADATA_ARTISTS), mArtistsText);
-            } else {
-            	mArtistsText.setText("");
-            }
-    	}
+		String text = getExtraOrMetadataArray(packagename, intent, AboutIntents.EXTRA_ARTISTS, AboutMetaData.METADATA_ARTISTS);
+		mArtistsText.setText(text);
 	}
 
 	/**
@@ -216,12 +195,24 @@ public class About extends TabActivity {
 	 * 
 	 * @param intent The intent from which to fetch the information.
 	 */
-	protected void displayAuthors(final String packagename, final Intent intent) {
-		if (intent.hasExtra(AboutIntents.EXTRA_AUTHORS)
-				&& intent.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS) 
+	private void displayAuthors(final String packagename, final Intent intent) {
+		String text = getExtraOrMetadataArray(packagename, intent, AboutIntents.EXTRA_AUTHORS, AboutMetaData.METADATA_AUTHORS);
+		mAuthorsText.setText(text);
+	}
+
+	/**
+	 * @param packagename
+	 * @param intent
+	 * @param extra
+	 * @param metadata
+	 */
+	private String getExtraOrMetadataArray(final String packagename,
+			final Intent intent, String extra, String metadata) {
+		if (intent.hasExtra(extra)
+				&& intent.getStringArrayExtra(extra) 
 					!= null) {
-    		setTextFromArrayForPersons(intent
-    				.getStringArrayExtra(AboutIntents.EXTRA_AUTHORS), mAuthorsText);
+    		return getTextFromArray(intent
+    				.getStringArrayExtra(extra));
     	} else {
             //Try meta data of package
             Bundle md = null;
@@ -233,11 +224,30 @@ public class About extends TabActivity {
             }
 
             if (md != null
-					&& md.getStringArray(AboutMetaData.METADATA_AUTHORS) != null) {
-        		setTextFromArrayForPersons(md
-						.getStringArray(AboutMetaData.METADATA_AUTHORS), mAuthorsText);
+					&& md.getString(metadata) != null) {
+            	
+            	String extravalue = md.getString(metadata);
+            	if (extravalue.startsWith("array/")) {
+	            	String[] array = null;
+	            	try {
+	            		Resources resources = getPackageManager()
+	    					.getResourcesForApplication(packagename);
+	            		Log.i(TAG, "arrayname:" + extravalue);
+	            		int id = resources.getIdentifier(extravalue, null, packagename);
+	            		array = resources.getStringArray(id);
+	            	} catch (NameNotFoundException e) {
+	            		Log.e(TAG, "Package name not found ", e);
+	            	}
+	            	if (array != null) {
+	            		return getTextFromArray(array);
+	            	} else {
+	            		return "";
+	            	}
+            	} else {
+            		return extravalue;
+            	}
             } else {
-            	mAuthorsText.setText("");
+            	return "";
             }
     	}
 	}
@@ -248,29 +258,9 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayComments(final String packagename, final Intent intent) {
-		if (intent.hasExtra(AboutIntents.EXTRA_COMMENTS)
-				&& intent.getStringExtra(AboutIntents.EXTRA_COMMENTS) != null) {
-			mCommentsText.setText(intent
-					.getStringExtra(AboutIntents.EXTRA_COMMENTS));
-    	} else {
-            //Try meta data of package
-            Bundle md = null;
-            try {
-                    md = getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-            } catch (NameNotFoundException e) {
-                Log.e(TAG, "Package name not found", e);
-            }
-
-            if (md != null
-					&& !TextUtils.isEmpty(md
-							.getString(AboutMetaData.METADATA_COMMENTS))) {
-            	mCommentsText.setText(md
-						.getString(AboutMetaData.METADATA_COMMENTS));
-            } else {
-            	mCommentsText.setText("");
-            }
-    	}
+		String text = getExtraOrMetadataArray(packagename, intent, AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
+		
+		mCommentsText.setText(text);
 	}
 
 	/**
@@ -311,31 +301,23 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayDocumenters(final String packagename, final Intent intent) {
-		if (intent.hasExtra(AboutIntents.EXTRA_DOCUMENTERS)
-				&& intent.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS) 
-					!= null) {
-    		setTextFromArrayForPersons(intent
-    				.getStringArrayExtra(AboutIntents.EXTRA_DOCUMENTERS), mDocumentersText);
-    	} else {
-            //Try meta data of package
-            Bundle md = null;
-            try {
-                    md = getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-            } catch (NameNotFoundException e) {
-                Log.e(TAG, "Package name not found", e);
-            }
 
-            if (md != null
-					&& md.getStringArray(AboutMetaData.METADATA_DOCUMENTERS) != null) {
-        		setTextFromArrayForPersons(md
-						.getStringArray(AboutMetaData.METADATA_DOCUMENTERS), mDocumentersText);
-            } else {
-            	mDocumentersText.setText("");
-            }
-    	}
+		String text = getExtraOrMetadataArray(packagename, intent, AboutIntents.EXTRA_DOCUMENTERS, AboutMetaData.METADATA_DOCUMENTERS);
+		
+		mDocumentersText.setText(text);
 	}
 
+
+	protected String getTextFromArray(final String[] array) {
+		String text = "";
+		for (String person : array) {
+			text += person + "\n";
+		}
+		text = text.substring(0, text.length() - 1); // delete last "\n"
+		return text;
+	}
+	
+	/*
 	protected void setTextFromArrayForPersons(final String[] personsArray, TextView view) {
 		String text = "";
 		for (String person : personsArray) {
@@ -344,6 +326,7 @@ public class About extends TabActivity {
 		text = text.substring(0, text.length() - 1); // delete last "\n"
 		view.setText(text);
 	}
+	*/
 
 	/**
 	 * Fetch and display license information.
@@ -478,32 +461,11 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayTranslators(final String packagename, final Intent intent) {
-		if (intent.hasExtra(AboutIntents.EXTRA_TRANSLATORS)
-				&& intent.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS) 
-					!= null) {
-    		setTextFromArrayForPersons(intent
-    				.getStringArrayExtra(AboutIntents.EXTRA_TRANSLATORS),
-					mTranslatorsText);
-    	} else {
-            //Try meta data of package
-            Bundle md = null;
-            try {
-                    md = getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-            } catch (NameNotFoundException e) {
-                Log.e(TAG, "Package name not found", e);
-            }
-          
-            if (md != null
-					&& md.getStringArray(AboutMetaData.METADATA_TRANSLATORS) != null) {
-        		setTextFromArrayForPersons(md
-						.getStringArray(AboutMetaData.METADATA_TRANSLATORS),
-						mTranslatorsText);
-            } else {
-        		mTranslatorsText.setText("");
-            }
-    	}
-	} //TODO md.getStringArray() is null for some reason
+
+		String text = getExtraOrMetadataArray(packagename, intent, AboutIntents.EXTRA_TRANSLATORS, AboutMetaData.METADATA_TRANSLATORS);
+		mTranslatorsText.setText(text);
+		
+	}
 
 	/**
 	 * Fetch and display website link information.
