@@ -183,7 +183,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display artists information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayArtists(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_ARTISTS)
@@ -214,7 +214,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display authors information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayAuthors(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_AUTHORS)
@@ -245,7 +245,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display comments information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayComments(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_COMMENTS)
@@ -276,7 +276,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display copyright information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayCopyright(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_COPYRIGHT)
@@ -308,7 +308,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display documenters information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayDocumenters(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_DOCUMENTERS)
@@ -348,7 +348,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display license information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayLicense(final String packagename, final Intent intent) {
 		mLicenseText.setHorizontallyScrolling(!intent.getBooleanExtra(
@@ -367,7 +367,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display logo information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayLogo(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_ICON_RESOURCE)
@@ -409,67 +409,73 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display program name and version information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayProgramNameAndVersion(final String packagename, final Intent intent) {
-		String programText;
-		if (intent.hasExtra(AboutIntents.EXTRA_APPLICATION_LABEL)
-				&& intent.getStringExtra(AboutIntents.EXTRA_APPLICATION_LABEL) 
-					!= null) {
-			programText = intent
-					.getStringExtra(AboutIntents.EXTRA_APPLICATION_LABEL);
-			setTitle(getString(R.string.about_activity_title) + " "
-					+ intent.getStringExtra(AboutIntents.EXTRA_APPLICATION_LABEL));
-        } else {
-            try {
-                    PackageInfo pi = getPackageManager().getPackageInfo(
-						packagename, 0);
-                    programText = getString(pi.applicationInfo.labelRes);
-                    if (TextUtils.isEmpty(programText)) {
-                    	refuseToShow();
-                    	return;
-                    }
-            } catch (PackageManager.NameNotFoundException e) {
-                    Log.e(TAG, "Package name not found", e);
-                	refuseToShow();
-                	return;
-            }
-        }
-        programText = displayProgramVersion(intent, programText);
-        mProgramNameAndVersionText.setText(programText);
+		String applicationlabel = getApplicationLabel(packagename, intent);
+		String versionname = getVersionName(packagename, intent);
+		
+		String combined = applicationlabel;
+		if (!TextUtils.isEmpty(versionname)) {
+			combined += " " + versionname;
+		}
+		
+        mProgramNameAndVersionText.setText(combined);
 	}
 
 	/**
-	 * Fetch and display program version information.
+	 * Get application label.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
-	protected String displayProgramVersion(final Intent intent, String programText) {
-		if (intent.hasExtra(AboutIntents.EXTRA_VERSION_NAME)
-				&& intent.getStringExtra(AboutIntents.EXTRA_VERSION_NAME) 
+	protected String getApplicationLabel(final String packagename, final Intent intent) {
+		String applicationlabel = null;
+		if (intent.hasExtra(AboutIntents.EXTRA_APPLICATION_LABEL)
+				&& intent.getStringExtra(AboutIntents.EXTRA_APPLICATION_LABEL) 
 					!= null) {
-			programText += " "
-				+ intent.getStringExtra(AboutIntents.EXTRA_VERSION_NAME);
+			applicationlabel = intent.getStringExtra(AboutIntents.EXTRA_APPLICATION_LABEL);
 		} else {
-			String version = "";
             try {
                     PackageInfo pi = getPackageManager().getPackageInfo(
-                    		getCallingPackage(), 0);
-                    version = pi.versionName;
+                    		packagename, 0);
+                    int labelid = pi.applicationInfo.labelRes;
+         			Resources resources = getPackageManager()
+         					.getResourcesForApplication(packagename);
+         			applicationlabel = resources.getString(labelid);
             } catch (PackageManager.NameNotFoundException e) {
                     Log.e(TAG, "Package name not found", e);
             }
-            if (!TextUtils.isEmpty(version)) {
-                programText += " " + version;
+		}
+		return applicationlabel;
+	}
+	
+	/**
+	 * Get version information.
+	 * 
+	 * @param intent The intent from which to fetch the information.
+	 */
+	protected String getVersionName(final String packagename, final Intent intent) {
+		String versionname = null;
+		if (intent.hasExtra(AboutIntents.EXTRA_VERSION_NAME)
+				&& intent.getStringExtra(AboutIntents.EXTRA_VERSION_NAME) 
+					!= null) {
+			versionname = intent.getStringExtra(AboutIntents.EXTRA_VERSION_NAME);
+		} else {
+            try {
+                    PackageInfo pi = getPackageManager().getPackageInfo(
+                    		packagename, 0);
+                    versionname = pi.versionName;
+            } catch (PackageManager.NameNotFoundException e) {
+                    Log.e(TAG, "Package name not found", e);
             }
 		}
-		return programText;
+		return versionname;
 	}
 
 	/**
 	 * Fetch and display translators information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayTranslators(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_TRANSLATORS)
@@ -502,7 +508,7 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display website link information.
 	 * 
-	 * @param intent The intent from which to tru to fetch the information.
+	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayWebsiteLink(final String packagename, final Intent intent) {
 		if (intent.hasExtra(AboutIntents.EXTRA_WEBSITE_URL)
@@ -734,19 +740,17 @@ public class About extends TabActivity {
 		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, getPackageName());
 		
 		//Supply the image.
-		/*//alternative 2b: Put the image resId into the provider.
+		/*//alternative 1: Put the image resId into the provider.
 		Bitmap image = BitmapFactory.decodeResource(getResources(), 
 				R.drawable.icon);//lossy
 		String uri = Images.Media.insertImage(getContentResolver(), image,
 				getString(R.string.about_logo_title), 
 				getString(R.string.about_logo_description));
-		intent.putExtra(AboutIntents.EXTRA_LOGO, uri);*/
+		intent.putExtra(AboutIntents.EXTRA_ICON_URI, uri);*/
 		
-		//alternative 3: Supply the image name and package.
+		//alternative 2: Supply the image name and package.
 		intent.putExtra(AboutIntents.EXTRA_ICON_RESOURCE, getResources()
 				.getResourceName(R.drawable.icon));
-		//intent.putExtra(AboutIntents.EXTRA_PACKAGE, getResources()
-		//		.getResourcePackageName(R.drawable.icon));
 		
 		intent.putExtra(AboutIntents.EXTRA_APPLICATION_LABEL,
 				getString(R.string.app_name));

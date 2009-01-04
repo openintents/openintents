@@ -69,6 +69,7 @@ public class TestAboutApp extends Activity {
 
 		// Show About screen for a different package:
 		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, "com.android.contacts");
+		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, "org.openintents.notepad");
 		
 		startActivity(intent);
     }
