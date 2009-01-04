@@ -62,9 +62,9 @@
 
 		<TextSwitcher android:id="@+id/t_copyright" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:paddingBottom="15sp">
-			<TextView android:layout_width="fill_parent" android:gravity="center" android:autoLink="all" android:linksClickable="true" android:selectAllOnFocus="true"
+			<TextView android:layout_width="fill_parent" android:gravity="center" android:autoLink="web|email|map" android:linksClickable="true" android:selectAllOnFocus="true"
 			android:layout_height="wrap_content" style="@android:style/TextAppearance.Small"/>
-			<TextView android:layout_width="fill_parent" android:gravity="center" android:autoLink="all" android:linksClickable="true" android:selectAllOnFocus="true"
+			<TextView android:layout_width="fill_parent" android:gravity="center" android:autoLink="web|email|map" android:linksClickable="true" android:selectAllOnFocus="true"
 			android:layout_height="wrap_content" style="@android:style/TextAppearance.Small"/>
 		</TextSwitcher>
 

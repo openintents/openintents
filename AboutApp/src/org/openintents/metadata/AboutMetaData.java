@@ -36,7 +36,7 @@ public final class AboutMetaData {
 	}
 
 	/**
-	 * Metadata key matching with METADATA_COMMENTS.
+	 * Metadata key matching with AboutIntents.EXTRA_COMMENTS.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.COMMENTS"
@@ -46,7 +46,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.COMMENTS";
 	
 	/**
-	 * Metadata key matching with METADATA_COPYRIGHT.
+	 * Metadata key matching with AboutIntents.EXTRA_COPYRIGHT.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.COPYRIGHT"
@@ -56,7 +56,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.COPYRIGHT";
 	
 	/**
-	 * Metadata key matching with METADATA_WEBSITE_URL.
+	 * Metadata key matching with AboutIntents.EXTRA_WEBSITE_URL.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.WEBSITE_URL"
@@ -66,7 +66,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.WEBSITE_URL";
 	
 	/**
-	 * Metadata key matching with METADATA_WEBSITE_LABEL.
+	 * Metadata key matching with AboutIntents.EXTRA_WEBSITE_LABEL.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.WEBSITE_LABEL"
@@ -76,7 +76,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.WEBSITE_LABEL";
 	
 	/**
-	 * Metadata key matching with METADATA_AUTHORS.
+	 * Metadata key matching with AboutIntents.EXTRA_AUTHORS.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.AUTHORS"
@@ -85,7 +85,7 @@ public final class AboutMetaData {
 	public static final String METADATA_AUTHORS = "org.openintents.metadata.AUTHORS";
 	
 	/**
-	 * Metadata key matching with METADATA_DOCUMENTERS.
+	 * Metadata key matching with AboutIntents.EXTRA_DOCUMENTERS.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.DOCUMENTERS"
@@ -95,7 +95,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.DOCUMENTERS";
 	
 	/**
-	 * Metadata key matching with METADATA_TRANSLATORS.
+	 * Metadata key matching with AboutIntents.EXTRA_TRANSLATORS.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.TRANSLATORS"
@@ -105,7 +105,7 @@ public final class AboutMetaData {
 		"org.openintents.metadata.TRANSLATORS";
 	
 	/**
-	 * Metadata key matching with METADATA_ARTISTS.
+	 * Metadata key matching with AboutIntents.EXTRA_ARTISTS.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.ARTISTS"
@@ -114,7 +114,7 @@ public final class AboutMetaData {
 	public static final String METADATA_ARTISTS = "org.openintents.metadata.ARTISTS";
 	
 /*	*//**
-	 * Metadata key matching with METADATA_LICENSE.
+	 * Metadata key matching with AboutIntents.EXTRA_LICENSE.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.LICENSE"
@@ -122,7 +122,7 @@ public final class AboutMetaData {
 	 *//*
 	public static final String METADATA_LICENSE = "org.openintents.metadata.LICENSE";*/
 	/**
-	 * Metadata key matching with EXTRA_WRAP_LICENSE.
+	 * Metadata key matching with AboutIntents.EXTRA_WRAP_LICENSE.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.metadata.WRAP_LICENSE"

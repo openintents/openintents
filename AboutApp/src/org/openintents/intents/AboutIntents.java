@@ -127,6 +127,9 @@ public final class AboutIntents {
 	 * thus it should be a short explanation of the main purpose 
 	 * of the program, not a detailed list of features.
 	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_COMMENTS name.
+	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.COMMENTS"
 	 * </p>
@@ -136,6 +139,9 @@ public final class AboutIntents {
 	
 	/**
 	 * Optional intent extra: Copyright information for the program.
+	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_COPYRIGHT name.
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.COPYRIGHT"</p>
 	 */
@@ -147,6 +153,9 @@ public final class AboutIntents {
 	 * 
 	 * This should be a string starting with "http://".
 	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_WEBSITE_URL name.
+	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.WEBSITE_URL"
 	 * </p>
@@ -157,6 +166,9 @@ public final class AboutIntents {
 	/**
 	 * Optional intent extra: The label for the link to the website of the
 	 * program. 
+	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_WEBSITE_LABEL name.
 	 * 
 	 * If this is not set, it defaults to the URL specified in the
 	 * "org.openintents.extra.WEBSITE_URL" property.
@@ -175,6 +187,9 @@ public final class AboutIntents {
 	 * Each string may contain email addresses and URLs, which will be displayed
 	 * as links.
 	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_AUTHORS name.
+	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.AUTHORS"
 	 * </p>
@@ -188,6 +203,9 @@ public final class AboutIntents {
 	 * 
 	 * Each string may contain email addresses and URLs, which will be
 	 * displayed as links.
+	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_DOCUMENTERS name.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.DOCUMENTERS"
@@ -205,6 +223,9 @@ public final class AboutIntents {
 	 * addresses and URLs, which will be displayed as links. Only list those for
 	 * the currently used/shown L10n.
 	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_TRANSLATORS name.
+	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.TRANSLATORS"
 	 * </p>
@@ -219,6 +240,9 @@ public final class AboutIntents {
 	 * 
 	 * Each string may contain email addresses and URLs,
 	 * which will be displayed as links.
+	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_ARTISTS name.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.ARTISTS"
@@ -239,6 +263,9 @@ public final class AboutIntents {
 	 * property is set to "true" (default); 
 	 * otherwise the text itself must contain the intended linebreaks.
 	 * 
+	 * 
+	 * 
+	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.LICENSE"
 	 * </p>
@@ -251,6 +278,9 @@ public final class AboutIntents {
 	 * 
 	 * Possible values: "true" (wrap automatically) or "false".
 	 * Default value: "false".
+	 * 
+	 * 
+	 * 
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.WRAP_LICENSE"</p>
 	 */
