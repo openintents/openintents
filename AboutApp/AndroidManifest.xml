@@ -45,9 +45,10 @@
                        android:value="@string/about_website_url" />
         <!-- TODO add LICENSE and WRAP_LICENSE meta-tags -->
         
-        <activity android:name=".About" android:screenOrientation="sensor"
+        <activity android:name=".About"
                   android:label="@string/about_activity_name"
-                  android:launchMode="singleTop">
+                  >
+                  <!-- android:launchMode="singleTop" android:screenOrientation="sensor" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.MONKEY" />
