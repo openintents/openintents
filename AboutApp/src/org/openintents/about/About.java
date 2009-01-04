@@ -803,7 +803,10 @@ public class About extends TabActivity {
 		// Start about activity. Needs to be "forResult" with requestCode>=0
 		// because the About dialog may call elements from your Manifest by your
 		// package name.
-		startActivityForResult(Intent.createChooser(intent,
-				getString(R.string.about_chooser_title)), 0);
+		startActivityForResult(intent, 0);
+		
+		// Don't need a chooser here:
+		//startActivityForResult(Intent.createChooser(intent,
+		//		getString(R.string.about_chooser_title)), 0);
 	}
 }
