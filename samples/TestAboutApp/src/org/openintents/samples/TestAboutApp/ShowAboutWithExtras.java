@@ -18,6 +18,8 @@ public class ShowAboutWithExtras {
 	public static void showAboutWithExtras(Activity activity) {
 
 		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
+
+		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, activity.getPackageName());
 		
 		//Supply the image.
 		/*//alternative 2b: Put the image resId into the provider.
@@ -29,12 +31,12 @@ public class ShowAboutWithExtras {
 		intent.putExtra(AboutIntents.EXTRA_LOGO, uri);*/
 		
 		//alternative 3: Supply the image name and package.
-		intent.putExtra(AboutIntents.EXTRA_LOGO, activity.getResources()
+		intent.putExtra(AboutIntents.EXTRA_ICON_RESOURCE, activity.getResources()
 				.getResourceName(R.drawable.icon));
-		intent.putExtra(AboutIntents.EXTRA_LOGO_PACKAGE, activity.getResources()
+		Log.i(TAG, "package for icon: " + activity.getResources()
 				.getResourcePackageName(R.drawable.icon));
 
-		intent.putExtra(AboutIntents.EXTRA_PROGRAM_NAME,
+		intent.putExtra(AboutIntents.EXTRA_APPLICATION_LABEL,
 				activity.getString(R.string.app_name));
 		
 		//Get the app version
@@ -46,7 +48,7 @@ public class ShowAboutWithExtras {
 		} catch (PackageManager.NameNotFoundException e) {
 		        Log.e(TAG, "Package name not found", e);
 		}
-		intent.putExtra(AboutIntents.EXTRA_PROGRAM_VERSION, version);
+		intent.putExtra(AboutIntents.EXTRA_VERSION_NAME, version);
 		
 		intent.putExtra(AboutIntents.EXTRA_COMMENTS,
 				activity.getString(R.string.about_comments));

@@ -1,21 +1,17 @@
-/*   
- * 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
- * 
- * 	 This file is part of OI About.
+/* 
+ * Copyright (C) 2008-2009 OpenIntents.org
  *
- *   OI About is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *   OI About is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
- *   You should have received a copy of the GNU General Public License
- *   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
- *   
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.openintents.intents;
@@ -23,7 +19,10 @@ package org.openintents.intents;
 /**
  * Intents definition belonging to OI About.
  * 
+ * @version 2009-Jan-04
+ * 
  * @author pjv
+ * @author Peli
  *
  */
 public final class AboutIntents {
@@ -36,9 +35,18 @@ public final class AboutIntents {
 	}
 
 	/**
-	 * The only intent action for OI About: Show an about dialog to display
-	 * information about your application. Send along extras with information to
-	 * display. Only the PROGRAM_NAME extra is obligatory.
+	 * Activity Action: Show an about dialog to display
+	 * information about the application.
+	 * 
+	 * The application information is retrieved from the
+	 * application's manifest. In order to send the package
+	 * you have to launch this activity through
+	 * startActivityForResult().
+	 * 
+	 * Alternatively, you can specify the package name 
+	 * manually through the extra EXTRA_PACKAGE.
+	 * 
+	 * All data can be replaced using optional intent extras.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.action.SHOW_ABOUT_DIALOG"
@@ -46,69 +54,78 @@ public final class AboutIntents {
 	 */
 	public static final String ACTION_SHOW_ABOUT_DIALOG = 
 		"org.openintents.action.SHOW_ABOUT_DIALOG";
+
 	/**
-	 * Intent extra key for: 
-	 * A logo for the about box. There are 3 ways to
-	 * supply an image via the intent: 
-	 * 	1. Put the resource id (an integer) as a
-	 * String in "logo". This won't help you much since it can only be a
-	 * resource of OI About itself (does not work across packages).
+	 * Optional intent extra: Specify your application package name.
 	 * 
-	 * 	2. Put the content uri of the image as a String in "logo". For instance:
+	 * If you start the About dialog through startActivityForResult()
+	 * then the application package is sent automatically and does
+	 * not need to be supplied here.
+	 * 
+	 * <p>
+	 * Constant Value: "org.openintents.extra.PACKAGE_NAME"
+	 * </p>
+	 */
+	public static final String EXTRA_PACKAGE_NAME = 
+		"org.openintents.extra.PACKAGE_NAME";
+	
+	/**
+	 * Optional intent extra: A logo for the about box from an image URI.
+	 * 
+	 * Alternatively you can set the EXTRA_ICON_RESOURCE.
+	 * 
+	 * LOGO_URI specifies the content uri of the image as a String. For instance:
 	 * "content://images/1". As content provider you can use: a) your own small
 	 * content provider just for the image, b) the System-wide MediaProvider
-	 * (but your image will become public and might be duplicated each time
-	 * showing the About dialog).
-	 * 
-	 * 	3. Put the name of the image resource as a String in "logo". This is the
-	 * part you would append after "R.drawable." but with type and package as a
-	 * prefix also. Actually it's good to use the result from
-	 * "getResources().getResourceName(R.drawable.icon)". If you do this, you
-	 * also need to put the package of your application (and thus the package
-	 * containing the image resource) in "org.openintents.extra.LOGO_PACKAGE"
-	 * (see EXTRA_LOGO_PACKAGE below) as a String.
 	 * 
 	 * <p>
-	 * Constant Value: "org.openintents.extra.LOGO"
+	 * Constant Value: "org.openintents.extra.ICON_URI"
 	 * </p>
 	 */
-	public static final String EXTRA_LOGO = "org.openintents.extra.LOGO";
+	public static final String EXTRA_ICON_URI = "org.openintents.extra.ICON_URI";
+	
 	/**
-	 * Intent extra key for: 
-	 * The name of the package containing the image
-	 * resource. Has no use but to support EXTRA_LOGO alternative 3, see above.
-	 * You can put the result of
-	 * "getResources().getResourcePackageName(R.drawable.icon)". Should not be
-	 * added to the intent otherwise.
+	 * Optional intent extra: A logo for the about box from a resource.
+	 * 
+	 * Alternatively you can set the EXTRA_ICON_URI.
+	 * 
+	 * Specify the name of the image resource as a String.
+	 * Use the result from "getResources().getResourceName(R.drawable.icon)".
 	 * 
 	 * <p>
-	 * Constant Value: "org.openintents.extra.LOGO_PACKAGE"
+	 * Constant Value: "org.openintents.extra.ICON_RESOURCE"
 	 * </p>
 	 */
-	public static final String EXTRA_LOGO_PACKAGE = 
-		"org.openintents.extra.LOGO_PACKAGE";
+	public static final String EXTRA_ICON_RESOURCE = "org.openintents.extra.ICON_RESOURCE";
+	
 	/**
-	 * Intent extra key for:
-	 * The name of the program.
+	 * Optional intent extra: The name of the program.
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.PROGRAM_NAME"</p>
-	 */
-	public static final String EXTRA_PROGRAM_NAME = 
-		"org.openintents.extra.PROGRAM_NAME";
-	/**
-	 * Intent extra key for:
-	 * The version of the program.
+	 * By default, this is retrieved from the Manifest tag
+	 * "application android:label".
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.PROGRAM_VERSION"</p>
+	 * <p>Constant Value: "org.openintents.extra.APPLICATION_LABEL"</p>
 	 */
-	public static final String EXTRA_PROGRAM_VERSION = 
-		"org.openintents.extra.PROGRAM_VERSION";
+	public static final String EXTRA_APPLICATION_LABEL = 
+		"org.openintents.extra.APPLICATION_LABEL";
+	
 	/**
-	 * Intent extra key for: 
-	 * Comments about the program. This string is
-	 * displayed in a label in the main dialog, thus it should be a short
-	 * explanation of the main purpose of the program, not a detailed list of
-	 * features.
+	 * Optional intent extra: The version of the program.
+	 * 
+	 * By default, this is retrieved from the Manifest tag
+	 * "manifest android:versionName".
+	 * 
+	 * <p>Constant Value: "org.openintents.extra.VERSION_NAME"</p>
+	 */
+	public static final String EXTRA_VERSION_NAME = 
+		"org.openintents.extra.VERSION_NAME";
+	
+	/**
+	 * Optional intent extra: Comments about the program.
+	 * 
+	 * This string is displayed in a label in the main dialog, 
+	 * thus it should be a short explanation of the main purpose 
+	 * of the program, not a detailed list of features.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.COMMENTS"
@@ -116,17 +133,18 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_COMMENTS = 
 		"org.openintents.extra.COMMENTS";
+	
 	/**
-	 * Intent extra key for:
-	 * Copyright information for the program.
+	 * Optional intent extra: Copyright information for the program.
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.COPYRIGHT"</p>
 	 */
 	public static final String EXTRA_COPYRIGHT = 
 		"org.openintents.extra.COPYRIGHT";
+	
 	/**
-	 * Intent extra key for: 
-	 * The URL for the link to the website of the program.
+	 * Optional intent extra: The URL for the link to the website of the program.
+	 * 
 	 * This should be a string starting with "http://".
 	 * 
 	 * <p>
@@ -135,10 +153,12 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_WEBSITE_URL = 
 		"org.openintents.extra.WEBSITE_URL";
+	
 	/**
-	 * Intent extra key for: 
-	 * The label for the link to the website of the
-	 * program. If this is not set, it defaults to the URL specified in the
+	 * Optional intent extra: The label for the link to the website of the
+	 * program. 
+	 * 
+	 * If this is not set, it defaults to the URL specified in the
 	 * "org.openintents.extra.WEBSITE_URL" property.
 	 * 
 	 * <p>
@@ -147,9 +167,11 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_WEBSITE_LABEL = 
 		"org.openintents.extra.WEBSITE_LABEL";
+	
 	/**
-	 * Intent extra key for: 
+	 * Optional intent extra:
 	 * The authors of the program, as an array of strings.
+	 * 
 	 * Each string may contain email addresses and URLs, which will be displayed
 	 * as links.
 	 * 
@@ -158,10 +180,13 @@ public final class AboutIntents {
 	 * </p>
 	 */
 	public static final String EXTRA_AUTHORS = "org.openintents.extra.AUTHORS";
+
 	/**
-	 * Intent extra key for: 
+	 * Optional intent extra:
 	 * The people documenting the program, as an array of
-	 * strings. Each string may contain email addresses and URLs, which will be
+	 * strings. 
+	 * 
+	 * Each string may contain email addresses and URLs, which will be
 	 * displayed as links.
 	 * 
 	 * <p>
@@ -170,10 +195,13 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_DOCUMENTERS = 
 		"org.openintents.extra.DOCUMENTERS";
+	
 	/**
-	 * Intent extra key for: 
+	 * Optional intent extra:
 	 * The people who made the translation for the current
-	 * localization, as an array of strings. Each string may contain email
+	 * localization, as an array of strings. 
+	 * 
+	 * Each string may contain email
 	 * addresses and URLs, which will be displayed as links. Only list those for
 	 * the currently used/shown L10n.
 	 * 
@@ -183,10 +211,13 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_TRANSLATORS = 
 		"org.openintents.extra.TRANSLATORS";
+	
 	/**
-	 * Intent extra key for: 
+	 * Optional intent extra:
 	 * The people who contributed artwork to the program,
-	 * as an array of strings. Each string may contain email addresses and URLs,
+	 * as an array of strings. 
+	 * 
+	 * Each string may contain email addresses and URLs,
 	 * which will be displayed as links.
 	 * 
 	 * <p>
@@ -194,24 +225,32 @@ public final class AboutIntents {
 	 * </p>
 	 */
 	public static final String EXTRA_ARTISTS = "org.openintents.extra.ARTISTS";
+	
 	/**
-	 * Intent extra key for: 
-	 * The license of the program. This string is
+	 * Optional intent extra:
+	 * The license of the program. 
+	 * 
+	 * This string is
 	 * displayed in a text view in a secondary dialog, therefore it is fine to
 	 * use a long multi-paragraph text. Still, not too long as it's sent through
-	 * an intent and may cause delay. Note that the text is only wrapped in the
-	 * text view if the "org.openintents.action.WRAP_LICENSE" property (see
-	 * EXTRA_WRAP_LICENSE below) is set to TRUE; otherwise the text itself must
-	 * contain the intended linebreaks.
+	 * an intent and may cause delay. 
+	 * 
+	 * Note that the text is wrapped in the text view if the EXTRA_WRAP_LICENSE
+	 * property is set to "true" (default); 
+	 * otherwise the text itself must contain the intended linebreaks.
 	 * 
 	 * <p>
 	 * Constant Value: "org.openintents.extra.LICENSE"
 	 * </p>
 	 */
 	public static final String EXTRA_LICENSE = "org.openintents.extra.LICENSE";
+	
 	/**
-	 * Intent extra key for:
+	 * Optional intent extra:
 	 * Whether to wrap the text in the license dialog.
+	 * 
+	 * Possible values: "true" (wrap automatically) or "false".
+	 * Default value: "false".
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.WRAP_LICENSE"</p>
 	 */

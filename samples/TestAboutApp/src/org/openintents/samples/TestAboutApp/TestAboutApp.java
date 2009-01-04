@@ -64,6 +64,12 @@ public class TestAboutApp extends Activity {
     }
     
     void showAboutForOtherPackage() {
-    	
+
+		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
+
+		// Show About screen for a different package:
+		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, "com.android.contacts");
+		
+		startActivity(intent);
     }
 }

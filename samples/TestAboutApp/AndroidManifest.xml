@@ -4,6 +4,27 @@
       android:versionCode="1"
       android:versionName="1.0.0">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <meta-data android:name="org.openintents.metadata.COMMENTS"
+                       android:value="@string/about_comments" />
+        <meta-data android:name="org.openintents.metadata.COPYRIGHT"
+                       android:value="@string/about_copyright" />
+        <meta-data android:name="org.openintents.metadata.AUTHORS"
+                       android:value="@array/about_authors" />
+        <meta-data android:name="org.openintents.metadata.DOCUMENTERS"
+                       android:value="@array/about_documenters" />
+        <meta-data android:name="org.openintents.metadata.TRANSLATORS"
+                       android:value="@array/about_translators" />
+        <meta-data android:name="org.openintents.metadata.ARTISTS"
+                       android:value="@array/about_artists" />
+        <meta-data android:name="org.openintents.metadata.WEBSITE_LABEL"
+                       android:value="@string/about_website_label" />
+        <meta-data android:name="org.openintents.metadata.WEBSITE_URL"
+                       android:value="@string/about_website_url" />
+        <!-- TODO add LICENSE and WRAP_LICENSE meta-tags -->
+        
+        <meta-data android:name="org.openintents.metadata.DOCUMENTERS"
+                       android:value="@string/app_name" />
+                       
         <activity android:name=".TestAboutApp"
                   android:label="@string/app_name">
             <intent-filter>
