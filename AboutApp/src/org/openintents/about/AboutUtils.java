@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -50,33 +51,29 @@ public class AboutUtils {
 	            Log.e(TAG, "Package name not found", e);
 	        }
 	
-	        if (md != null
-					&& md.getString(metadata) != null) {
-	        	
-	        	String extravalue = md.getString(metadata);
-	        	Log.d(TAG, "Metadata: " + metadata + ", value: " + extravalue);
-    			
-	        	if (extravalue.startsWith("array/")) {
-	            	String[] array = null;
-	            	try {
-	            		Resources resources = context.getPackageManager()
-	    					.getResourcesForApplication(packagename);
-	            		int id = resources.getIdentifier(extravalue, null, packagename);
-	            		array = resources.getStringArray(id);
-	            	} catch (NameNotFoundException e) {
-	            		Log.e(TAG, "Package name not found ", e);
-	            	}
-	            	if (array != null) {
-
-	        			String text = getTextFromArray(array);
-	        			Log.d(TAG, "Metadata: " + metadata + ", text: " + text);
-	        			return text;
-	            	} else {
-	            		return "";
-	            	}
-	        	} else {
-	        		return extravalue;
+	        if (md != null) {
+	        	String[] array = null;
+            	try {
+            		int id = md.getInt(metadata);
+            		Resources resources = context.getPackageManager()
+						.getResourcesForApplication(packagename);
+            		array = resources.getStringArray(id);
+	        	} catch (NameNotFoundException e) {
+            		Log.e(TAG, "Package name not found ", e);
+	        	} catch (NumberFormatException e) {
+            		Log.e(TAG, "Metadata not valid id.", e);
+	        	} catch (Resources.NotFoundException e) {
+            		Log.e(TAG, "Resource not found.", e);
 	        	}
+	        	
+	        	if (array != null) {
+
+        			String text = getTextFromArray(array);
+        			Log.d(TAG, "Metadata: " + metadata + ", text: " + text);
+        			return text;
+            	} else {
+            		return "";
+            	}
 	        } else {
 	        	return "";
 	        }

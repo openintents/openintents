@@ -206,7 +206,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayComments(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataArray(this, packagename, intent, AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
+		String text = AboutUtils.getExtraOrMetadataString(this, packagename, intent, AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
 		
 		mCommentsText.setText(text);
 	}
