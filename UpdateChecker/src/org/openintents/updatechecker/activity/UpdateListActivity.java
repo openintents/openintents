@@ -122,7 +122,7 @@ public class UpdateListActivity extends ListActivity {
 			String info = null;
 
 			// ignore apps from black list
-			if (UpdateInfo.isBlackListed(pi)) {
+			if (UpdateInfo.isBlackListed(this, pi)) {
 				continue;
 			}
 

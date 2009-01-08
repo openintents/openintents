@@ -116,10 +116,44 @@ public class UpdateInfo implements BaseColumns {
 		return updateUrl;
 	}
 
-	public static boolean isBlackListed(PackageInfo pi) {
+	public static boolean isBlackListed(Context context, PackageInfo pi) {
+		Bundle md;
+		try {
+			md = context.
+							getPackageManager().
+								getApplicationInfo(
+									pi.packageName,
+									PackageManager.GET_META_DATA
+							).metaData;
+			
+			// Check for the public release flag
+			Boolean betaTest = md.getBoolean("publicRelease");
+			if( betaTest != null && betaTest.equals(Boolean.FALSE)) {
+				return true;
+			}
+			
+			// aTrackDog compatibility, if developers want to use it
+			// we should honour it.
+			String aTrackDogAttribute = md.getString("com.a0soft.gphone.aTrackDog.testVersion");
+			if( aTrackDogAttribute != null ) {
+				try {
+					int unreleasedVersionCode = Integer.valueOf(aTrackDogAttribute);
+					if(pi.versionCode == unreleasedVersionCode) {
+						return true;
+					}
+				} catch( NumberFormatException nfe ) {
+					// An NFE just means bad data in the aTrackDog manifest entry
+					// and can be ignored.
+				}
+			}
+		} catch (NameNotFoundException e) {
+			// If the meta data can't be found then
+			// continue without checking attributes.
+		}
+	          
 		return (pi.versionName == null && pi.versionCode == 0)
-				|| pi.packageName.startsWith("com.android")
-				|| pi.packageName.startsWith("android");
+			|| pi.packageName.startsWith("com.android")
+			|| pi.packageName.startsWith("android");
 	}
 
 	public static void insertUpdateInfo(Context context, String packageName) {

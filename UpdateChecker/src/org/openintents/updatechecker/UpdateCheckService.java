@@ -82,7 +82,7 @@ public class UpdateCheckService extends Service {
 					String versionName = pi.versionName;
 
 					// ignore apps from black list
-					if (UpdateInfo.isBlackListed(pi)) {
+					if (UpdateInfo.isBlackListed(UpdateCheckService.this, pi)) {
 						continue;
 					}
 
