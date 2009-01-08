@@ -19,7 +19,7 @@ package org.openintents.intents;
 /**
  * Intents definition belonging to OI About.
  * 
- * @version 2009-Jan-04
+ * @version 2009-Jan-08
  * 
  * @author pjv
  * @author Peli
@@ -72,6 +72,9 @@ public final class AboutIntents {
 	/**
 	 * Optional intent extra: A logo for the about box from an image URI.
 	 * 
+	 * By default, this is retrieved from the Manifest tag
+	 * "application android:icon".
+	 * 
 	 * Alternatively you can set the EXTRA_ICON_RESOURCE.
 	 * 
 	 * LOGO_URI specifies the content uri of the image as a String. For instance:
@@ -86,6 +89,9 @@ public final class AboutIntents {
 	
 	/**
 	 * Optional intent extra: A logo for the about box from a resource.
+	 * 
+	 * By default, this is retrieved from the Manifest tag
+	 * "application android:icon".
 	 * 
 	 * Alternatively you can set the EXTRA_ICON_URI.
 	 * 
@@ -199,7 +205,7 @@ public final class AboutIntents {
 	/**
 	 * Optional intent extra:
 	 * The people documenting the program, as an array of
-	 * strings. 
+	 * strings.
 	 * 
 	 * Each string may contain email addresses and URLs, which will be
 	 * displayed as links.
@@ -217,7 +223,7 @@ public final class AboutIntents {
 	/**
 	 * Optional intent extra:
 	 * The people who made the translation for the current
-	 * localization, as an array of strings. 
+	 * localization, as an array of strings.
 	 * 
 	 * Each string may contain email
 	 * addresses and URLs, which will be displayed as links. Only list those for
@@ -236,7 +242,7 @@ public final class AboutIntents {
 	/**
 	 * Optional intent extra:
 	 * The people who contributed artwork to the program,
-	 * as an array of strings. 
+	 * as an array of strings.
 	 * 
 	 * Each string may contain email addresses and URLs,
 	 * which will be displayed as links.
@@ -252,39 +258,29 @@ public final class AboutIntents {
 	
 	/**
 	 * Optional intent extra:
-	 * The license of the program. 
+	 * The name of the raw resource containing the license of the program.
 	 * 
-	 * This string is
-	 * displayed in a text view in a secondary dialog, therefore it is fine to
-	 * use a long multi-paragraph text. Still, not too long as it's sent through
-	 * an intent and may cause delay. 
-	 * 
-	 * Note that the text is wrapped in the text view if the EXTRA_WRAP_LICENSE
-	 * property is set to "true" (default); 
-	 * otherwise the text itself must contain the intended linebreaks.
-	 * 
-	 * 
-	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_LICENSE name.
 	 * 
 	 * <p>
-	 * Constant Value: "org.openintents.extra.LICENSE"
+	 * Constant Value: "org.openintents.extra.LICENSE_RESOURCE"
 	 * </p>
 	 */
-	public static final String EXTRA_LICENSE = "org.openintents.extra.LICENSE";
-	
+	public static final String EXTRA_LICENSE_RESOURCE = "org.openintents.extra.LICENSE_RESOURCE";
+
 	/**
 	 * Optional intent extra:
-	 * Whether to wrap the text in the license dialog.
+	 * The primary email address for this application.
 	 * 
-	 * Possible values: "true" (wrap automatically) or "false".
-	 * Default value: "false".
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_EMAIL name.
 	 * 
-	 * 
-	 * 
-	 * 
-	 * <p>Constant Value: "org.openintents.extra.WRAP_LICENSE"</p>
+	 * <p>
+	 * Constant Value: "org.openintents.extra.EMAIL"
+	 * </p>
 	 */
-	public static final String EXTRA_WRAP_LICENSE = 
-		"org.openintents.extra.WRAP_LICENSE";
+	public static final String EXTRA_EMAIL = "org.openintents.extra.EMAIL";
+	
 
 }

@@ -50,9 +50,9 @@ import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.TabHost;
 import android.widget.TextSwitcher;
@@ -75,15 +75,22 @@ public class About extends TabActivity {
 	 * The views.
 	 */
 	protected ImageSwitcher mLogoImage;
+	protected ImageSwitcher mEmailImage;
 	protected TextSwitcher mProgramNameAndVersionText;
 	protected TextSwitcher mCommentsText;
 	protected TextSwitcher mCopyrightText;
 	protected TextSwitcher mWebsiteText;
-	protected EditText mAuthorsText;
-	protected EditText mDocumentersText;
-	protected EditText mTranslatorsText;
-	protected EditText mArtistsText;
-	protected EditText mLicenseText;
+	protected TextSwitcher mEmailText;
+	protected TextView mAuthorsLabel;
+	protected TextView mAuthorsText;
+	protected TextView mDocumentersLabel;
+	protected TextView mDocumentersText;
+	protected TextView mTranslatorsLabel;
+	protected TextView mTranslatorsText;
+	protected TextView mArtistsLabel;
+	protected TextView mArtistsText;
+	protected TextView mNoInformationText;
+	protected TextView mLicenseText;
 
 	protected TabHost tabHost;
 
@@ -186,8 +193,18 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayArtists(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataArray(this, packagename, intent, AboutIntents.EXTRA_ARTISTS, AboutMetaData.METADATA_ARTISTS);
-		mArtistsText.setText(text);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_ARTISTS, AboutMetaData.METADATA_ARTISTS);
+
+		String text = AboutUtils.getTextFromArray(textarray);
+		
+		if (!TextUtils.isEmpty(text)) {
+			mArtistsText.setText(text);
+			mArtistsLabel.setVisibility(View.VISIBLE);
+			mArtistsText.setVisibility(View.VISIBLE);
+		} else {
+			mArtistsLabel.setVisibility(View.GONE);
+			mArtistsText.setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -196,8 +213,18 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	private void displayAuthors(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataArray(this, packagename, intent, AboutIntents.EXTRA_AUTHORS, AboutMetaData.METADATA_AUTHORS);
-		mAuthorsText.setText(text);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_AUTHORS, AboutMetaData.METADATA_AUTHORS);
+		
+		String text = AboutUtils.getTextFromArray(textarray);
+		
+		if (!TextUtils.isEmpty(text)) {
+			mAuthorsText.setText(text);
+			mAuthorsLabel.setVisibility(View.VISIBLE);
+			mAuthorsText.setVisibility(View.VISIBLE);
+		} else {
+			mAuthorsLabel.setVisibility(View.GONE);
+			mAuthorsText.setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -206,9 +233,15 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayComments(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataString(this, packagename, intent, AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
+		String text = AboutUtils.getStringExtraOrMetadata(this, packagename, intent, 
+				AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
 		
-		mCommentsText.setText(text);
+		if (!TextUtils.isEmpty(text)) {
+			mCommentsText.setText(text);
+			mCommentsText.setVisibility(View.VISIBLE);
+		} else {
+			mCommentsText.setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -217,9 +250,15 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayCopyright(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataString(this, packagename, intent, 
+		String text = AboutUtils.getStringExtraOrMetadata(this, packagename, intent, 
 				AboutIntents.EXTRA_COPYRIGHT, AboutMetaData.METADATA_COPYRIGHT);
-		mCopyrightText.setText(text);
+		
+		if (!TextUtils.isEmpty(text)) {
+			mCopyrightText.setText(text);
+			mCopyrightText.setVisibility(View.VISIBLE);
+		} else {
+			mCopyrightText.setVisibility(View.GONE);
+		}
 	}
 
 	/**
@@ -228,10 +267,18 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayDocumenters(final String packagename, final Intent intent) {
-		String text = AboutUtils.getExtraOrMetadataArray(this, packagename, intent, 
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, 
 				AboutIntents.EXTRA_DOCUMENTERS, AboutMetaData.METADATA_DOCUMENTERS);
-		Log.i(TAG, "Documenters: " + text);
-		mDocumentersText.setText(text);
+		String text = AboutUtils.getTextFromArray(textarray);
+		
+		if (!TextUtils.isEmpty(text)) {
+			mDocumentersText.setText(text);
+			mDocumentersLabel.setVisibility(View.VISIBLE);
+			mDocumentersText.setVisibility(View.VISIBLE);
+		} else {
+			mDocumentersLabel.setVisibility(View.GONE);
+			mDocumentersText.setVisibility(View.GONE);
+		}
 	}
 
 
@@ -241,6 +288,50 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayLicense(final String packagename, final Intent intent) {
+		
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+				AboutIntents.EXTRA_LICENSE_RESOURCE, AboutMetaData.METADATA_LICENSE);
+		
+		if (resourceid == 0) {
+			mLicenseText.setText(R.string.no_information_available);
+			return;
+		}
+		
+		
+		// Retrieve license from resource:
+		String license = "";
+		try {
+    		Resources resources = getPackageManager()
+				.getResourcesForApplication(packagename);
+    		
+    		//Read in the license file as a big String
+    		BufferedReader in
+    		   = new BufferedReader(new InputStreamReader(
+    				resources.openRawResource(resourceid)));
+    		String line;
+    		StringBuilder sb = new StringBuilder();
+    		try {
+    			while ((line = in.readLine()) != null) { // Read line per line.
+    				if (TextUtils.isEmpty(line)) {
+    					// Empty line: Leave line break
+    					sb.append("\n\n");
+    				} else {
+    					sb.append(line);
+    					sb.append(" ");
+    				}
+    			}
+    			license = sb.toString();
+    		} catch (IOException e) {
+    			//Should not happen.
+    			e.printStackTrace();
+    		}
+    		
+    	} catch (NameNotFoundException e) {
+            Log.e(TAG, "Package name not found", e);
+    	}
+    	
+    	mLicenseText.setText(license);
+		/*
 		mLicenseText.setHorizontallyScrolling(!intent.getBooleanExtra(
 				AboutIntents.EXTRA_WRAP_LICENSE, false));
 		mLicenseText.setHorizontalScrollBarEnabled(!intent.getBooleanExtra(
@@ -251,7 +342,8 @@ public class About extends TabActivity {
 					.getStringExtra(AboutIntents.EXTRA_LICENSE));
 		} else {
     		mLicenseText.setText("");
-    	}//TODO from metadata
+    	}
+    	*/
 	}
 
 	/**
@@ -369,8 +461,17 @@ public class About extends TabActivity {
 	 */
 	protected void displayTranslators(final String packagename, final Intent intent) {
 
-		String text = AboutUtils.getExtraOrMetadataArray(this, packagename, intent, AboutIntents.EXTRA_TRANSLATORS, AboutMetaData.METADATA_TRANSLATORS);
-		mTranslatorsText.setText(text);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_TRANSLATORS, AboutMetaData.METADATA_TRANSLATORS);
+		String text = AboutUtils.getTextFromArray(textarray);
+
+		if (!TextUtils.isEmpty(text)) {
+			mTranslatorsText.setText(text);
+			mTranslatorsLabel.setVisibility(View.VISIBLE);
+			mTranslatorsText.setVisibility(View.VISIBLE);
+		} else {
+			mTranslatorsLabel.setVisibility(View.GONE);
+			mTranslatorsText.setVisibility(View.GONE);
+		}
 		
 	}
 
@@ -380,9 +481,9 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayWebsiteLink(final String packagename, final Intent intent) {
-		String websitelabel = AboutUtils.getExtraOrMetadataString(this, packagename,
+		String websitelabel = AboutUtils.getStringExtraOrMetadata(this, packagename,
 			intent, AboutIntents.EXTRA_WEBSITE_LABEL, AboutMetaData.METADATA_WEBSITE_LABEL);
-		String websiteurl = AboutUtils.getExtraOrMetadataString(this, packagename,
+		String websiteurl = AboutUtils.getStringExtraOrMetadata(this, packagename,
 				intent, AboutIntents.EXTRA_WEBSITE_URL, AboutMetaData.METADATA_WEBSITE_URL);
 		
 		setAndLinkifyWebsiteLink(websitelabel, websiteurl);
@@ -401,6 +502,8 @@ public class About extends TabActivity {
 			} else {
 				mWebsiteText.setText(websiteLabel);
 			}
+			mWebsiteText.setVisibility(View.VISIBLE);
+			
 			//Create TransformFilter
 			TransformFilter tf = new TransformFilter() {
 	
@@ -416,9 +519,44 @@ public class About extends TabActivity {
 					.compile(".*"), "", null, tf);
 			Linkify.addLinks((TextView) mWebsiteText.getChildAt(1), Pattern
 					.compile(".*"), "", null, tf);
+		} else {
+			mWebsiteText.setVisibility(View.GONE);
 		}
 	}
 
+	/**
+	 * Fetch and display website link information.
+	 * 
+	 * @param intent The intent from which to fetch the information.
+	 */
+	protected void displayEmail(final String packagename, final Intent intent) {
+		String email = AboutUtils.getStringExtraOrMetadata(this, packagename,
+			intent, AboutIntents.EXTRA_EMAIL, AboutMetaData.METADATA_EMAIL);
+		
+		if (!TextUtils.isEmpty(email)) {
+			mEmailImage.setImageResource(android.R.drawable.ic_dialog_email);
+			mEmailText.setText(email);
+		} else {
+			mEmailImage.setImageURI(null);
+		}
+	}
+
+	/**
+	 * Check whether any credits are available.
+	 * If not, display "no information available".
+	 */
+	void checkCreditsAvailable() {
+		if (mAuthorsLabel.getVisibility() == View.GONE
+				&& mAuthorsLabel.getVisibility() == View.GONE
+				&& mAuthorsLabel.getVisibility() == View.GONE
+				&& mAuthorsLabel.getVisibility() == View.GONE ) {
+			mNoInformationText.setVisibility(View.VISIBLE);
+		} else {
+			mNoInformationText.setVisibility(View.GONE);
+		}
+				
+	}
+	
 	/* (non-Javadoc)
      * @see android.app.ActivityGroup#onCreate(android.os.Bundle)
      */
@@ -452,6 +590,10 @@ public class About extends TabActivity {
         mLogoImage = (ImageSwitcher) findViewById(R.id.i_logo);
         mLogoImage.setInAnimation(in);
         mLogoImage.setOutAnimation(out);
+
+        mEmailImage = (ImageSwitcher) findViewById(R.id.i_email);
+        mEmailImage.setInAnimation(in);
+        mEmailImage.setOutAnimation(out);
 		
         mProgramNameAndVersionText = (TextSwitcher) 
         		findViewById(R.id.t_program_name_and_version);
@@ -470,15 +612,25 @@ public class About extends TabActivity {
 		mWebsiteText.setInAnimation(in);
 		mWebsiteText.setOutAnimation(out);
 		
-		mAuthorsText = (EditText) findViewById(R.id.et_authors);
+		mEmailText = (TextSwitcher) findViewById(R.id.t_email);
+		mEmailText.setInAnimation(in);
+		mEmailText.setOutAnimation(out);
+
+		mAuthorsLabel = (TextView) findViewById(R.id.l_authors);
+		mAuthorsText = (TextView) findViewById(R.id.et_authors);
+
+		mDocumentersLabel = (TextView) findViewById(R.id.l_documenters);
+		mDocumentersText = (TextView) findViewById(R.id.et_documenters);
+
+		mTranslatorsLabel = (TextView) findViewById(R.id.l_translators);
+		mTranslatorsText = (TextView) findViewById(R.id.et_translators);
+
+		mArtistsLabel = (TextView) findViewById(R.id.l_artists);
+		mArtistsText = (TextView) findViewById(R.id.et_artists);
 		
-		mDocumentersText = (EditText) findViewById(R.id.et_documenters);
-		
-		mTranslatorsText = (EditText) findViewById(R.id.et_translators);
-		
-		mArtistsText = (EditText) findViewById(R.id.et_artists);
-		
-		mLicenseText = (EditText) findViewById(R.id.et_license);
+		mNoInformationText = (TextView) findViewById(R.id.tv_no_information);
+
+		mLicenseText = (TextView) findViewById(R.id.et_license);
     }
 
 	/* (non-Javadoc)
@@ -532,6 +684,7 @@ public class About extends TabActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+
 	/* (non-Javadoc)
 	 * @see android.app.ActivityGroup#onResume()
 	 */
@@ -539,7 +692,7 @@ public class About extends TabActivity {
 	protected void onResume() {
 		super.onResume();
 		
-        tabHost.setCurrentTabByTag(getString(R.string.l_info));
+        // tabHost.setCurrentTabByTag(getString(R.string.l_info));
 		
 		//Decode the intent, if any
 		final Intent intent = getIntent();
@@ -567,23 +720,17 @@ public class About extends TabActivity {
     	displayTranslators(packagename, intent);
     	displayArtists(packagename, intent);
     	displayLicense(packagename, intent);
+    	displayEmail(packagename, intent);
+    	
+    	checkCreditsAvailable();
     	
     	setResult(RESULT_OK);
-	}
-	
-	/**
-	 * There wasn't enough data, so notify we canceled and finish the Activity.
-	 */
-	protected void refuseToShow() {
-		Log.e(TAG, "No program name specified.");
-		setResult(RESULT_CANCELED);
-		finish();
 	}
 
 	/**
 	 * Show an about dialog for this application.
 	 */
-	protected void showAboutDialog() {
+	private void showAboutDialogUsingExtras() {
 		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
 
 		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, getPackageName());
@@ -632,6 +779,11 @@ public class About extends TabActivity {
 		intent.putExtra(AboutIntents.EXTRA_ARTISTS, getResources()
 				.getStringArray(R.array.about_artists));
 		
+		// Supply resource name of raw resource that contains the license:
+		intent.putExtra(AboutIntents.EXTRA_LICENSE_RESOURCE, getResources()
+				.getResourceName(R.raw.license_short));
+		
+		/*
 		//Read in the license file as a big String
 		BufferedReader in
 		   = new BufferedReader(new InputStreamReader(
@@ -648,6 +800,7 @@ public class About extends TabActivity {
 		}
 		intent.putExtra(AboutIntents.EXTRA_LICENSE, license);
 		intent.putExtra(AboutIntents.EXTRA_WRAP_LICENSE, false);
+		*/
 		
 		// Start about activity. Needs to be "forResult" with requestCode>=0
 		// because the About dialog may call elements from your Manifest by your
@@ -657,5 +810,20 @@ public class About extends TabActivity {
 		// Don't need a chooser here:
 		//startActivityForResult(Intent.createChooser(intent,
 		//		getString(R.string.about_chooser_title)), 0);
+	}
+	
+
+	/**
+	 * Show an about dialog for this application.
+	 */
+	protected void showAboutDialog() {
+		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
+		
+		// Start about activity. Needs to be "forResult" with requestCode>=0
+		// so the the package name is passed properly.
+		//
+		// The details are obtained from the Manifest through
+		// default tags and metadata.
+		startActivityForResult(intent, 0);
 	}
 }

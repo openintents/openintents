@@ -30,6 +30,7 @@
 	<string name="about_website_url">http://www.openintents.org</string>
 	<string name="about_logo_title">OI About logo</string>
 	<string name="about_logo_description">logo of OI About</string>
+	<string name="about_email">support@openintents.org</string>
 	
     <string name="about_chooser_title">About dialog to use:</string>
 	
@@ -48,4 +49,7 @@
 	<string name="l_credits">Credits</string>
 	<string name="l_license">License</string>
 	<string name="l_info">General Info</string>
+	
+	
+	<string name="no_information_available">No information available.</string>
 </resources>
