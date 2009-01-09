@@ -3,17 +3,22 @@ package org.openintents.notepad.noteslist;
 import java.util.HashMap;
 
 import org.openintents.notepad.R;
+import org.openintents.notepad.NotePad.Notes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.Filter;
 
 public class NotesListCursorAdapter extends CursorAdapter {
 	private static final String TAG = "NotesListCursorAdapter";
 
 	Context mContext;
+	Intent mIntent;
 
 	/**
 	 * Map encrypted titles to decrypted ones.
@@ -25,9 +30,10 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	 */
     public boolean mBusy;
     
-	public NotesListCursorAdapter(Context context, Cursor c) {
+	public NotesListCursorAdapter(Context context, Cursor c, Intent intent) {
 		super(context, c);
 		mContext = context;
+		mIntent = intent;
 		
 		mBusy = false;
 	}
@@ -86,4 +92,43 @@ public class NotesListCursorAdapter extends CursorAdapter {
     public void flushTitleHashMap() {
     	mTitleHashMap = new HashMap<String,String>();
     }
+
+	@Override
+	public Filter getFilter() {
+		Log.i(TAG, "Request filter");
+		
+		return super.getFilter();
+	}
+
+	@Override
+	public CharSequence convertToString(Cursor cursor) {
+		//return super.convertToString(cursor);
+
+		Log.i(TAG, "convertToString" + cursor.getPosition() + " / " + cursor.getCount());
+		
+		return cursor.getString(NotesList.COLUMN_INDEX_TITLE);
+	}
+
+	@Override
+	public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
+		Log.i(TAG, "runQueryOnBackgroundThread " + constraint + ", " + mIntent.getData());
+
+		Log.i(TAG, Notes.TITLE + " = ?");
+		/*
+		Cursor cursor = mContext.getContentResolver().query(mIntent.getData(), NotesList.PROJECTION, 
+				Notes.TITLE + " = ?",
+				new String[] { constraint.toString() }, Notes.DEFAULT_SORT_ORDER);
+				*/
+		Cursor cursor = mContext.getContentResolver().query(mIntent.getData(), NotesList.PROJECTION, 
+				"(" + Notes.TITLE + " like '" + constraint.toString() + "%' ) or ("
+				 + Notes.TITLE + " like '% " + constraint.toString() + "%' )",
+				new String[] { }, Notes.DEFAULT_SORT_ORDER);
+		
+		Log.i(TAG, "cursor: " + cursor.getCount());
+		
+		//return super.runQueryOnBackgroundThread(constraint);
+		return cursor;
+	}
+    
+    
 }

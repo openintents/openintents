@@ -119,6 +119,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		setContentView(R.layout.noteslist);
 		getListView().setOnCreateContextMenuListener(this);
 		getListView().setEmptyView(findViewById(R.id.empty));
+		getListView().setTextFilterEnabled(true);
 
 		/*
 		 * Button b = (Button) findViewById(R.id.add); b.setOnClickListener(new
@@ -141,7 +142,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
 				new int[] { android.R.id.text1 });
 				*/
-		mAdapter = new NotesListCursorAdapter(this, cursor);
+		mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
 		setListAdapter(mAdapter);
 
         getListView().setOnScrollListener(this);
