@@ -19,6 +19,8 @@ public class NotesListCursorAdapter extends CursorAdapter {
 
 	Context mContext;
 	Intent mIntent;
+	
+	public String mLastFilter;
 
 	/**
 	 * Map encrypted titles to decrypted ones.
@@ -93,13 +95,16 @@ public class NotesListCursorAdapter extends CursorAdapter {
     	mTitleHashMap = new HashMap<String,String>();
     }
 
+    /*
 	@Override
 	public Filter getFilter() {
 		Log.i(TAG, "Request filter");
 		
 		return super.getFilter();
 	}
-
+*/
+    
+	/*
 	@Override
 	public CharSequence convertToString(Cursor cursor) {
 		//return super.convertToString(cursor);
@@ -108,25 +113,19 @@ public class NotesListCursorAdapter extends CursorAdapter {
 		
 		return cursor.getString(NotesList.COLUMN_INDEX_TITLE);
 	}
-
+*/
+	
 	@Override
 	public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
 		Log.i(TAG, "runQueryOnBackgroundThread " + constraint + ", " + mIntent.getData());
 
-		Log.i(TAG, Notes.TITLE + " = ?");
-		/*
-		Cursor cursor = mContext.getContentResolver().query(mIntent.getData(), NotesList.PROJECTION, 
-				Notes.TITLE + " = ?",
-				new String[] { constraint.toString() }, Notes.DEFAULT_SORT_ORDER);
-				*/
+		mLastFilter = constraint.toString();
+		
 		Cursor cursor = mContext.getContentResolver().query(mIntent.getData(), NotesList.PROJECTION, 
 				"(" + Notes.TITLE + " like '" + constraint.toString() + "%' ) or ("
 				 + Notes.TITLE + " like '% " + constraint.toString() + "%' )",
 				new String[] { }, Notes.DEFAULT_SORT_ORDER);
 		
-		Log.i(TAG, "cursor: " + cursor.getCount());
-		
-		//return super.runQueryOnBackgroundThread(constraint);
 		return cursor;
 	}
     

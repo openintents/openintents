@@ -73,6 +73,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
 	
+	private static final String BUNDLE_LAST_FILTER = "last_filter";
+	
 	/**
 	 * A group id for alternative menu items.
 	 */
@@ -96,7 +98,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	NotesListCursorAdapter mAdapter;
 	
-	
+	String mLastFilter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -130,6 +132,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		 * });
 		 */
 
+		/*
 		// Perform a managed query. The Activity will handle closing and
 		// requerying the cursor
 		// when needed.
@@ -141,12 +144,71 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
 				new int[] { android.R.id.text1 });
+				* /
+		mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
+		setListAdapter(mAdapter);
+		*/
+
+        getListView().setOnScrollListener(this);
+        
+        mLastFilter = null;
+        
+        if (savedInstanceState != null) {
+        	mLastFilter = savedInstanceState.getString(BUNDLE_LAST_FILTER);
+        }
+	}
+
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		// Perform a managed query. The Activity will handle closing and
+		// requerying the cursor
+		// when needed.
+		Cursor cursor = getContentResolver().query(getIntent().getData(), PROJECTION, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		/*
+		// Used to map notes entries from the database to views
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
+				new int[] { android.R.id.text1 });
 				*/
 		mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
 		setListAdapter(mAdapter);
-
-        getListView().setOnScrollListener(this);
+		
+		Log.i(TAG, "Lastfilter: " + mLastFilter);
+		
+		if (mLastFilter != null) {
+			cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
+			mAdapter.changeCursor(cursor);
+		}
 	}
+
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		mLastFilter = mAdapter.mLastFilter;
+		
+		Cursor c = mAdapter.getCursor();
+		if (c != null) {
+			c.close();
+		}
+		
+	}
+	
+	
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		
+		outState.putString(BUNDLE_LAST_FILTER, mAdapter.mLastFilter);
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
