@@ -52,6 +52,7 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -112,6 +113,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			intent.setData(Notes.CONTENT_URI);
 		}
 
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        
 		// Inform the list we provide context menus for items
 		setContentView(R.layout.noteslist);
 		getListView().setOnCreateContextMenuListener(this);
@@ -509,7 +512,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     public void decryptDelayed() {
     	String encryptedString = NotesListCursor.getNextEncryptedString();
     	if (encryptedString != null) {
+            setProgressBarIndeterminateVisibility(true);
         	decryptDelayed(encryptedString, DECRYPT_DELAY);
+    	} else {
+    		// Done with decryption
+            setProgressBarIndeterminateVisibility(false);
     	}
     }
     
@@ -585,6 +592,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	            
     		} else {
     			mDecryptionFailed = true;
+    	        setProgressBarIndeterminateVisibility(false);
     		}
     		break;
     	}
@@ -594,6 +602,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
+			Log.i(TAG, "flush decrypted data");
 			NotesListCursor.flushDecryptedStringHashMap();
 			mAdapter.getCursor().requery();
 		}

@@ -45,6 +45,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -171,6 +172,8 @@ public class NoteEditor extends Activity {
             return;
         }
 
+        requestWindowFeature(Window.FEATURE_RIGHT_ICON);
+        
         // Set the layout for this activity.  You can find it in res/layout/note_editor.xml
         setContentView(R.layout.note_editor);
         
@@ -223,6 +226,7 @@ public class NoteEditor extends Activity {
             	if (mDecryptedText != null) {
             		// Text had already been decrypted, use that:
             		mText.setTextKeepState(mDecryptedText);
+            		setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_lock_idle_lock);
             	} else {
             	// Decrypt note
 	
