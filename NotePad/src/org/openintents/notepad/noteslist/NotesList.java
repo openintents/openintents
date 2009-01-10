@@ -46,6 +46,7 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -83,10 +84,16 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	
-	NotesListCursorUtils mCursorUtils;
+	private final int DECRYPT_DELAY = 300;
+	
+	NotesListCursor mCursorUtils;
 	NotesListCursorAdapter mAdapter;
 	
 	String mLastFilter;
+	
+	private Handler mHandler = new Handler();
+	
+	private boolean mDecryptionFailed;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +156,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 		registerReceiver(mBroadcastReceiver, filter);
 		
-		mCursorUtils = new NotesListCursorUtils(this, getIntent());
+		mCursorUtils = new NotesListCursor(this, getIntent());
+		
+		mDecryptionFailed = false;
 	}
 
 	
@@ -185,6 +194,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			mAdapter.getCursor().requery();
 		}
 		
+		if (!mDecryptionFailed) {
+			decryptDelayed();
+		} else {
+			// Reset
+			mDecryptionFailed = false;
+		}
 	}
 
 	@Override
@@ -337,7 +352,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		}
 
 		// Setup the menu header
-		menu.setHeaderTitle(cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TITLE));
+		menu.setHeaderTitle(cursor.getString(NotesListCursor.COLUMN_INDEX_TITLE));
 
 		// Add a menu item to send the note
 		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
@@ -459,8 +474,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         	Log.i(TAG, "idle");
             mAdapter.mBusy = false;
             
-            if (!NotesListCursorUtils.mEncryptedStringList.isEmpty()) {
-            	String encryptedString = NotesListCursorUtils.mEncryptedStringList.remove(0);
+            if (!NotesListCursor.mEncryptedStringList.isEmpty()) {
+            	String encryptedString = NotesListCursor.mEncryptedStringList.remove(0);
             	Log.i(TAG, "Decrypt idle: " + encryptedString);
             	decryptTitle(encryptedString);
             }
@@ -491,6 +506,24 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         }
     }
 
+    public void decryptDelayed() {
+    	String encryptedString = NotesListCursor.getNextEncryptedString();
+    	if (encryptedString != null) {
+        	decryptDelayed(encryptedString, DECRYPT_DELAY);
+    	}
+    }
+    
+    public void decryptDelayed(final String encryptedTitle, long delayMillis) {
+		mHandler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				decryptTitle(encryptedTitle);
+			}
+			
+		}, delayMillis);
+    }
+    
     public void decryptTitle(String encryptedTitle) {
 
 		Intent intent = new Intent();
@@ -541,26 +574,17 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			}
 
     			// Add decrypted text to hash:
-    			NotesListCursorUtils.mEncryptedStringHashMap.put(encryptedText, decryptedText);
+    			NotesListCursor.mEncryptedStringHashMap.put(encryptedText, decryptedText);
 
             	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
 
     			// decrypt the next string.
-                if (!NotesListCursorUtils.mEncryptedStringList.isEmpty()) {
-                	String encryptedString = NotesListCursorUtils.mEncryptedStringList.remove(0);
-                	Log.i(TAG, "Decrypt again: " + encryptedString);
-                	decryptTitle(encryptedString);
-                } else {
-                	Log.i(TAG, "Decrypt done");
-                	getListView().invalidate();
-                }
+            	
+                decryptDelayed();
+                
 	            
-    		} else {/*
-    			Toast.makeText(this,
-    					R.string.decryption_failed,
-    					Toast.LENGTH_SHORT).show();
-    			Log.e(TAG, "decryption failed");
-    			*/
+    		} else {
+    			mDecryptionFailed = true;
     		}
     		break;
     	}
@@ -570,9 +594,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			NotesListCursorUtils.flushDecryptedStringHashMap();
+			NotesListCursor.flushDecryptedStringHashMap();
 			mAdapter.getCursor().requery();
 		}
 		
 	};
+
+
 }

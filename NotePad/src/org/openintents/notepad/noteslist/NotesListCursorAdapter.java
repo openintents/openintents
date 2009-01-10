@@ -10,7 +10,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	private static final String TAG = "NotesListCursorAdapter";
 
 	Context mContext;
-	NotesListCursorUtils mCursorUtils;
+	NotesListCursor mCursorUtils;
 	
 	
 	/**
@@ -18,7 +18,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	 */
     public boolean mBusy;
     
-	public NotesListCursorAdapter(Context context, Cursor c, NotesListCursorUtils cursorUtils) {
+	public NotesListCursorAdapter(Context context, Cursor c, NotesListCursor cursorUtils) {
 		super(context, c);
 		mContext = context;
 		mCursorUtils = cursorUtils;
@@ -30,11 +30,11 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	public void bindView(View view, Context context, Cursor cursor) {
 		NotesListItemView nliv = (NotesListItemView) view;
 
-		String title = cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TITLE);
-		String tags = cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TAGS);
-		long encrypted = cursor.getLong(NotesListCursorUtils.COLUMN_INDEX_ENCRYPTED);
-		String titleEncrypted = cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TITLE_ENCRYPTED);
-		String tagsEncrypted = cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TAGS_ENCRYPTED);
+		String title = cursor.getString(NotesListCursor.COLUMN_INDEX_TITLE);
+		String tags = cursor.getString(NotesListCursor.COLUMN_INDEX_TAGS);
+		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
+		String titleEncrypted = cursor.getString(NotesListCursor.COLUMN_INDEX_TITLE_ENCRYPTED);
+		String tagsEncrypted = cursor.getString(NotesListCursor.COLUMN_INDEX_TAGS_ENCRYPTED);
 		
 		nliv.setEncrypted(encrypted);
 		

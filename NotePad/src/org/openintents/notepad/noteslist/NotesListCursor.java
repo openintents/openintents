@@ -11,11 +11,12 @@ import org.openintents.notepad.util.OpenMatrixCursor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.AbstractCursor;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class NotesListCursorUtils {
+public class NotesListCursor extends OpenMatrixCursor {
 
 	private static final String TAG = "NotesListCursorUtils";
 	
@@ -56,7 +57,8 @@ public class NotesListCursorUtils {
 	
 	Context mContext;
 	Intent mIntent;
-
+	//OpenMatrixCursor mCursor;
+	
 	public String mCurrentFilter;
 	
 	/**
@@ -70,24 +72,45 @@ public class NotesListCursorUtils {
 	 */
 	public static List<String> mEncryptedStringList = Collections.synchronizedList(new LinkedList<String>());
 	
-	public NotesListCursorUtils(Context context, Intent intent) {
+	public NotesListCursor(Context context, Intent intent) {
+		super(PROJECTION);
 		mContext = context;
 		mIntent = intent;
+		mCurrentFilter = null;
 	}
 
+	@Override
+	public boolean requery() {
+		runQuery(mCurrentFilter);
+		
+		return super.requery();
+	}
+
+
 	/** 
-	 * Return a cursor with decrypted information.
+	 * Return a new cursor with decrypted information.
 	 * 
 	 * @param constraint
 	 */
 	public Cursor query(CharSequence constraint) {
+		NotesListCursor cursor = new NotesListCursor(mContext, mIntent);
+		cursor.runQuery(constraint);
+		return cursor;
+	}
+	
+	/** 
+	 * Return a query with decrypted information on the current cursor.
+	 * 
+	 * @param constraint
+	 */
+	public void runQuery(CharSequence constraint) {
 
 		// We have to query all items and return a new object, because notes may be encrypted.
 
 		if (constraint != null) {
 			mCurrentFilter = constraint.toString();
 		} else {
-			mCurrentFilter = "";
+			mCurrentFilter = null;
 		}
 		
 		Cursor dbcursor = mContext.getContentResolver().query(mIntent.getData(), PROJECTION_DB, 
@@ -95,7 +118,9 @@ public class NotesListCursorUtils {
 		
 		Log.i(TAG, "Cursor count: " + dbcursor.getCount());
 		
-		OpenMatrixCursor cursor = new OpenMatrixCursor(PROJECTION, dbcursor.getCount());
+		//mCursor = new OpenMatrixCursor(PROJECTION, dbcursor.getCount());
+		
+		reset();
 		
 		String encryptedlabel = mContext.getString(R.string.encrypted);
 		
@@ -120,7 +145,7 @@ public class NotesListCursorUtils {
 					title_encrypted = title;
 					title = encryptedlabel;
 					// decrypt later
-					mEncryptedStringList.add(title_encrypted);
+					addForEncryption(title_encrypted);
 					skipEncrypted = true;
 				}
 			}
@@ -133,14 +158,28 @@ public class NotesListCursorUtils {
 				}
 				
 				Object[] row = new Object[] {id, title, tags, encrypted, title_encrypted, tags_encrypted};
-				cursor.addRow(row);
+				addRow(row);
 			}
 		}
-		
-		return cursor;
 	}
 
     public static void flushDecryptedStringHashMap() {
     	mEncryptedStringHashMap = new HashMap<String,String>();
+    }
+
+    public static void addForEncryption(String encryptedString) {
+    	// Check whether it does not already exist:
+    	if (!mEncryptedStringList.contains(encryptedString)) {
+    		mEncryptedStringList.add(encryptedString);
+    	}
+    }
+    
+    public static String getNextEncryptedString() {
+    	if (!NotesListCursor.mEncryptedStringList.isEmpty()) {
+	    	String encryptedString = NotesListCursor.mEncryptedStringList.remove(0);
+	    	return encryptedString;
+	    } else {
+	    	return null;
+	    }
     }
 }

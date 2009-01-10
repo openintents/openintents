@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * Change by OpenIntents - method made public: Object get(int) 
+ * Change by OpenIntents:
+ *  - method made public: Object get(int) 
+ *  - new method: reset()
  */
 
 package org.openintents.notepad.util;
@@ -268,5 +270,22 @@ public class OpenMatrixCursor extends AbstractCursor {
 
     public boolean isNull(int column) {
         return get(column) == null;
+    }
+    
+    public void reset(int initialCapacity) {
+    	/* fill all Objects with null */
+
+        if (initialCapacity < 1) {
+            initialCapacity = 1;
+        }
+        
+        this.data = new Object[columnCount * initialCapacity];
+    	
+    	rowCount = 0;
+    	mPos = -1;
+    }
+    
+    public void reset() {
+    	reset(16);
     }
 }
