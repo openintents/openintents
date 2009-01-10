@@ -84,12 +84,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	/**
 	 * The columns we are interested in from the database
 	 */
-	protected static final String[] PROJECTION = new String[] { Notes._ID, // 0
+	protected static final String[] PROJECTION = new String[] { 
+			Notes._ID, // 0
 			Notes.TITLE, // 1
 			Notes.TAGS, // 2
 			Notes.ENCRYPTED // 3
 	};
 
+	protected static final int COLUMN_INDEX_ID = 0;
 	/** The index of the title column */
 	protected static final int COLUMN_INDEX_TITLE = 1;
 	protected static final int COLUMN_INDEX_TAGS = 2;
@@ -200,7 +202,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected void onPause() {
 		super.onPause();
 		
-		mLastFilter = mAdapter.mLastFilter;
+		mLastFilter = mAdapter.mCurrentFilter;
 		
 		Cursor c = mAdapter.getCursor();
 		//if (c != null) {
@@ -224,7 +226,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		
-		outState.putString(BUNDLE_LAST_FILTER, mAdapter.mLastFilter);
+		outState.putString(BUNDLE_LAST_FILTER, mAdapter.mCurrentFilter);
 	}
 
 
@@ -468,6 +470,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         	Log.i(TAG, "idle");
             mAdapter.mBusy = false;
             
+            if (!NotesListCursorAdapter.mEncryptedStringList.isEmpty()) {
+            	String encryptedString = NotesListCursorAdapter.mEncryptedStringList.remove(0);
+            	Log.i(TAG, "Decrypt idle: " + encryptedString);
+            	decryptTitle(encryptedString);
+            }
+            /*
             int first = view.getFirstVisiblePosition();
             int count = view.getChildCount();
             for (int i=0; i<count; i++) {
@@ -482,6 +490,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
                 	break;
                 }
             }
+            */
             
             break;
         case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
@@ -543,8 +552,19 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			}
 
     			// Add decrypted text to hash:
-    			mAdapter.mTitleHashMap.put(encryptedText, decryptedText);
-    			getListView().invalidate();
+    			NotesListCursorAdapter.mEncryptedStringHashMap.put(encryptedText, decryptedText);
+
+            	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
+
+    			// decrypt the next string.
+                if (!NotesListCursorAdapter.mEncryptedStringList.isEmpty()) {
+                	String encryptedString = NotesListCursorAdapter.mEncryptedStringList.remove(0);
+                	Log.i(TAG, "Decrypt again: " + encryptedString);
+                	decryptTitle(encryptedString);
+                } else {
+                	Log.i(TAG, "Decrypt done");
+                	getListView().invalidate();
+                }
 	            
     		} else {/*
     			Toast.makeText(this,
