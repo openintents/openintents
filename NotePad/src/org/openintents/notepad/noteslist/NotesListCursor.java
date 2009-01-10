@@ -55,6 +55,8 @@ public class NotesListCursor extends OpenMatrixCursor {
 	protected static final int COLUMN_INDEX_TITLE_ENCRYPTED = 4;
 	protected static final int COLUMN_INDEX_TAGS_ENCRYPTED = 5;
 	
+	static boolean mLoggedIn = true;
+	
 	Context mContext;
 	Intent mIntent;
 	//OpenMatrixCursor mCursor;
@@ -148,6 +150,11 @@ public class NotesListCursor extends OpenMatrixCursor {
 					addForEncryption(title_encrypted);
 					skipEncrypted = true;
 				}
+
+				if (!mLoggedIn) {
+					// suppress all decrypted output
+					title = encryptedlabel;
+				}
 			}
 			
 			// apply filter:
@@ -165,6 +172,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 
     public static void flushDecryptedStringHashMap() {
     	mEncryptedStringHashMap = new HashMap<String,String>();
+    	mLoggedIn = false;
     }
 
     public static void addForEncryption(String encryptedString) {

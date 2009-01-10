@@ -85,7 +85,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	
-	private final int DECRYPT_DELAY = 300;
+	private final int DECRYPT_DELAY = 100;
 	
 	NotesListCursor mCursorUtils;
 	NotesListCursorAdapter mAdapter;
@@ -95,6 +95,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private Handler mHandler = new Handler();
 	
 	private boolean mDecryptionFailed;
+	private boolean mDecryptionSucceeded;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -154,14 +155,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         if (savedInstanceState != null) {
         	mLastFilter = savedInstanceState.getString(BUNDLE_LAST_FILTER);
         }
-
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
-		registerReceiver(mBroadcastReceiver, filter);
 		
 		mCursorUtils = new NotesListCursor(this, getIntent());
 		
 		mDecryptionFailed = false;
+		mDecryptionSucceeded = false;
 	}
 
 	
@@ -203,6 +201,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// Reset
 			mDecryptionFailed = false;
 		}
+
+		if (mDecryptionSucceeded) {
+			NotesListCursor.mLoggedIn = true;
+		}
+
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+		registerReceiver(mBroadcastReceiver, filter);
 	}
 
 	@Override
@@ -215,7 +221,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		//if (c != null) {
 		//	c.deactivate();
 		//}
+
+		unregisterReceiver(mBroadcastReceiver);
 		
+		// After unregistering broadcastreceiver, the logged in state is not clear.
+		NotesListCursor.mLoggedIn = false;
+		mDecryptionFailed = false;
+		mDecryptionSucceeded = false;
 	}
 	
 	
@@ -225,7 +237,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		
-		unregisterReceiver(mBroadcastReceiver);
 	}
 
 
@@ -514,6 +525,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     	if (encryptedString != null) {
             setProgressBarIndeterminateVisibility(true);
         	decryptDelayed(encryptedString, DECRYPT_DELAY);
+    	} else if (!mDecryptionFailed && !mDecryptionSucceeded) {
+    		// If neither failed not succeeded yet, we send a test intent.
+            setProgressBarIndeterminateVisibility(true);
+        	decryptDelayed(null, 0);
     	} else {
     		// Done with decryption
             setProgressBarIndeterminateVisibility(false);
@@ -535,17 +550,22 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		Intent intent = new Intent();
 		intent.setAction(CryptoIntents.ACTION_DECRYPT);
-		intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
-		intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+		if (encryptedTitle != null) {
+			intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
+			intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+		}
 		
 		intent.putExtra(CryptoIntents.EXTRA_PROMPT, false);
         
         try {
         	startActivityForResult(intent, REQUEST_CODE_DECRYPT_TITLE);
         } catch (ActivityNotFoundException e) {
+        	mDecryptionFailed = true;
+        	/*
 			Toast.makeText(this,
 					R.string.decryption_failed,
 					Toast.LENGTH_SHORT).show();
+			*/
 			Log.e(TAG, "failed to invoke encrypt");
         }
     }
@@ -575,16 +595,19 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			String decryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
     			String encryptedText = data.getStringExtra (NotePadIntents.EXTRA_ENCRYPTED_TEXT);
     			
-    			if (encryptedText == null) {
-        	    	Log.i(TAG, "Encrypted text is not passed properly.");
-    				return;
+    			if (encryptedText != null) {
+        	    	//Log.i(TAG, "Encrypted text is not passed properly.");
+    				//return;
+    			
+	
+	    			// Add decrypted text to hash:
+	    			NotesListCursor.mEncryptedStringHashMap.put(encryptedText, decryptedText);
+	
+	            	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
     			}
-
-    			// Add decrypted text to hash:
-    			NotesListCursor.mEncryptedStringHashMap.put(encryptedText, decryptedText);
-
-            	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
-
+            	mDecryptionSucceeded = true;
+    			NotesListCursor.mLoggedIn = true;
+    			
     			// decrypt the next string.
             	
                 decryptDelayed();
