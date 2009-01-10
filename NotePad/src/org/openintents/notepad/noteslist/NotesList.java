@@ -81,24 +81,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	 */
 	private final static int CATEGORY_ALTERNATIVE_GLOBAL = 1;
 	
-	/**
-	 * The columns we are interested in from the database
-	 */
-	protected static final String[] PROJECTION = new String[] { 
-			Notes._ID, // 0
-			Notes.TITLE, // 1
-			Notes.TAGS, // 2
-			Notes.ENCRYPTED // 3
-	};
-
-	protected static final int COLUMN_INDEX_ID = 0;
-	/** The index of the title column */
-	protected static final int COLUMN_INDEX_TITLE = 1;
-	protected static final int COLUMN_INDEX_TAGS = 2;
-	protected static final int COLUMN_INDEX_ENCRYPTED = 3;
-
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	
+	NotesListCursorUtils mCursorUtils;
 	NotesListCursorAdapter mAdapter;
 	
 	String mLastFilter;
@@ -163,6 +148,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 		registerReceiver(mBroadcastReceiver, filter);
+		
+		mCursorUtils = new NotesListCursorUtils(this, getIntent());
 	}
 
 	
@@ -174,16 +161,18 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// Perform a managed query. The Activity will handle closing and
 			// requerying the cursor
 			// when needed.
-			Cursor cursor = getContentResolver().query(getIntent().getData(), PROJECTION, null,
-					null, Notes.DEFAULT_SORT_ORDER);
+			//Cursor cursor = getContentResolver().query(getIntent().getData(), NotesListCursorUtils.PROJECTION, null,
+			//		null, Notes.DEFAULT_SORT_ORDER);
 	
+			Cursor cursor = mCursorUtils.query(null);
+			
 			/*
 			// Used to map notes entries from the database to views
 			SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 					R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
 					new int[] { android.R.id.text1 });
 					*/
-			mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
+			mAdapter = new NotesListCursorAdapter(this, cursor, mCursorUtils);
 			setListAdapter(mAdapter);
 			
 			Log.i(TAG, "Lastfilter: " + mLastFilter);
@@ -202,7 +191,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected void onPause() {
 		super.onPause();
 		
-		mLastFilter = mAdapter.mCurrentFilter;
+		mLastFilter = mCursorUtils.mCurrentFilter;
 		
 		Cursor c = mAdapter.getCursor();
 		//if (c != null) {
@@ -226,7 +215,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		
-		outState.putString(BUNDLE_LAST_FILTER, mAdapter.mCurrentFilter);
+		outState.putString(BUNDLE_LAST_FILTER, mCursorUtils.mCurrentFilter);
 	}
 
 
@@ -348,7 +337,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		}
 
 		// Setup the menu header
-		menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
+		menu.setHeaderTitle(cursor.getString(NotesListCursorUtils.COLUMN_INDEX_TITLE));
 
 		// Add a menu item to send the note
 		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
@@ -470,8 +459,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         	Log.i(TAG, "idle");
             mAdapter.mBusy = false;
             
-            if (!NotesListCursorAdapter.mEncryptedStringList.isEmpty()) {
-            	String encryptedString = NotesListCursorAdapter.mEncryptedStringList.remove(0);
+            if (!NotesListCursorUtils.mEncryptedStringList.isEmpty()) {
+            	String encryptedString = NotesListCursorUtils.mEncryptedStringList.remove(0);
             	Log.i(TAG, "Decrypt idle: " + encryptedString);
             	decryptTitle(encryptedString);
             }
@@ -552,13 +541,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			}
 
     			// Add decrypted text to hash:
-    			NotesListCursorAdapter.mEncryptedStringHashMap.put(encryptedText, decryptedText);
+    			NotesListCursorUtils.mEncryptedStringHashMap.put(encryptedText, decryptedText);
 
             	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
 
     			// decrypt the next string.
-                if (!NotesListCursorAdapter.mEncryptedStringList.isEmpty()) {
-                	String encryptedString = NotesListCursorAdapter.mEncryptedStringList.remove(0);
+                if (!NotesListCursorUtils.mEncryptedStringList.isEmpty()) {
+                	String encryptedString = NotesListCursorUtils.mEncryptedStringList.remove(0);
                 	Log.i(TAG, "Decrypt again: " + encryptedString);
                 	decryptTitle(encryptedString);
                 } else {
@@ -581,7 +570,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			mAdapter.flushTitleHashMap();
+			NotesListCursorUtils.flushDecryptedStringHashMap();
 			mAdapter.getCursor().requery();
 		}
 		

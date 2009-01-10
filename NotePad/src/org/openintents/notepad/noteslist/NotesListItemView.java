@@ -17,8 +17,11 @@ public class NotesListItemView extends LinearLayout {
 	Context mContext;
 	
 	private TextView mTitle;
-	private TextView mInfo;
+	private TextView mTags;
 	private ImageView mStatus;
+	
+	protected String mTitleEncrypted;
+	protected String mTagsEncrypted;
 	
 	
 	public NotesListItemView(Context context) {
@@ -33,7 +36,7 @@ public class NotesListItemView extends LinearLayout {
 				R.layout.noteslist_item, this, true);
 		
 		mTitle = (TextView) findViewById(R.id.title);
-		mInfo = (TextView) findViewById(R.id.info);
+		mTags = (TextView) findViewById(R.id.info);
 		mStatus = (ImageView) findViewById(R.id.status);
 	}
 
@@ -46,10 +49,10 @@ public class NotesListItemView extends LinearLayout {
 	
 	public void setTags(String tags) {
 		if (!TextUtils.isEmpty(tags)) {
-			mInfo.setVisibility(View.VISIBLE);
-			mInfo.setText(tags);
+			mTags.setVisibility(View.VISIBLE);
+			mTags.setText(tags);
 		} else {
-			mInfo.setVisibility(View.GONE);
+			mTags.setVisibility(View.GONE);
 		}
 	}
 	
