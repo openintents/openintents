@@ -394,6 +394,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			Uri noteUri = ContentUris.withAppendedId(getIntent().getData(),
 					info.id);
 			getContentResolver().delete(noteUri, null, null);
+			
+			mAdapter.getCursor().requery();
 			return true;
 		}
 		case MENU_ITEM_SEND_BY_EMAIL:
