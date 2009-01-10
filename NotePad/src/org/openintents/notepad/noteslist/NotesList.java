@@ -86,7 +86,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private final static int CATEGORY_ALTERNATIVE_GLOBAL = 1;
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
-	private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
+	//private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -409,10 +409,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			sendNoteByEmail(info.id);
 			return true;
 		case MENU_ITEM_ENCRYPT:
-			encryptNote(info.id);
+			encryptNote(info.id, CryptoIntents.ACTION_ENCRYPT);
 			return true;
 		case MENU_ITEM_UNENCRYPT:
-			unencryptNote(info.id);
+			encryptNote(info.id, CryptoIntents.ACTION_DECRYPT);
 			return true;
 		}
 		return false;
@@ -453,7 +453,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		}
 	}
 
-	private void encryptNote(long id) {
+	/**
+	 * Encrypt or unencrypt a note.
+	 * 
+	 * @param id
+	 * @param action
+	 */
+	private void encryptNote(long id, String action) {
 		// Obtain Uri for the context menu
 		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
 		// getContentResolver().(noteUri, null, null);
@@ -472,19 +478,28 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			encrypted = c.getInt(2);
 		}
 
-		if (encrypted != 0) {
+		if (action.equals(CryptoIntents.ACTION_ENCRYPT) && encrypted != 0) {
 			Toast.makeText(this,
 					R.string.already_encrypted,
 					Toast.LENGTH_SHORT).show();
 			return;
 		}
 
+		if (action.equals(CryptoIntents.ACTION_DECRYPT) && encrypted == 0) {
+			Toast.makeText(this,
+					R.string.not_encrypted,
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
 		Intent i = new Intent(this, EncryptActivity.class);
+		i.putExtra(NotePadIntents.EXTRA_ACTION, action);
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
 	}
 
+	/*
 	private void unencryptNote(long id) {
 		// Obtain Uri for the context menu
 		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
@@ -518,6 +533,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivityForResult(i, REQUEST_CODE_UNENCRYPT_NOTE);
 	}
+	*/
 	
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
@@ -664,6 +680,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     	        setProgressBarIndeterminateVisibility(false);
     		}
     		break;
+    		/*
     	case REQUEST_CODE_UNENCRYPT_NOTE:
     		if (resultCode == RESULT_OK && data != null) {
     			String[] decryptedTextArray = data.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
@@ -700,6 +717,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     	        setProgressBarIndeterminateVisibility(false);
     		}
     		break;
+    		*/
     	}
     }
 

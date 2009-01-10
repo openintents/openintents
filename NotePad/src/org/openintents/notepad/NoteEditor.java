@@ -79,6 +79,7 @@ public class NoteEditor extends Activity {
     private static final int MENU_DISCARD = Menu.FIRST + 1;
     private static final int MENU_DELETE = Menu.FIRST + 2;
     private static final int MENU_ENCRYPT = Menu.FIRST + 3;
+	private static final int MENU_UNENCRYPT = Menu.FIRST + 4;
 
 	private static final int REQUEST_CODE_DECRYPT = 2;
 
@@ -276,6 +277,8 @@ public class NoteEditor extends Activity {
         // to do this if only editing.
         if (mCursor != null) {
 
+        	mCursor.moveToFirst();
+        	
             long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
             
             if (encrypted == 0) {
@@ -334,9 +337,30 @@ public class NoteEditor extends Activity {
         String title = ExtractTitle.extractTitle(text);
         
 		Intent i = new Intent(this, EncryptActivity.class);
+		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
 		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
+	}
+	
+	/**
+	 * Unencrypt the current note.
+	 * @param text
+	 */
+	private void unencryptNote() {
+        String text = mText.getText().toString();
+        String title = ExtractTitle.extractTitle(text);
+        
+        ContentValues values = new ContentValues();
+        values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+        values.put(Notes.TITLE, title);
+        values.put(Notes.NOTE, text);
+       	values.put(Notes.ENCRYPTED, 0);
+        
+        getContentResolver().update(mUri, values, null, null);
+        mCursor.requery();
+        
+		setFeatureDrawable(Window.FEATURE_RIGHT_ICON, null);
 	}
 
     @Override
@@ -355,7 +379,11 @@ public class NoteEditor extends Activity {
         menu.add(1, MENU_ENCRYPT, 0, R.string.menu_encrypt)
                 .setShortcut('0', 'e')
                 .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
-            
+
+        menu.add(1, MENU_UNENCRYPT, 0, R.string.menu_undo_encryption)
+                .setShortcut('0', 'e')
+                .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
+        
         menu.add(1, MENU_DELETE, 0, R.string.menu_delete)
             .setShortcut('1', 'd')
             .setIcon(android.R.drawable.ic_menu_delete);
@@ -409,6 +437,13 @@ public class NoteEditor extends Activity {
     	boolean contentChanged = !mOriginalContent.equals(mText.getText().toString());
     	menu.setGroupVisible(0, contentChanged);
     	
+    	mCursor.moveToFirst();
+    	long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+    	boolean showEnrypt = (encrypted == 0);
+    	
+    	menu.findItem(MENU_ENCRYPT).setVisible(showEnrypt);
+    	menu.findItem(MENU_UNENCRYPT).setVisible(!showEnrypt);
+    	
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -428,6 +463,9 @@ public class NoteEditor extends Activity {
             break;
         case MENU_ENCRYPT:
         	encryptNote();
+        	break;
+        case MENU_UNENCRYPT:
+        	unencryptNote();
         	break;
         }
         return super.onOptionsItemSelected(item);
