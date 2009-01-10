@@ -23,8 +23,6 @@
 
 package org.openintents.notepad.noteslist;
 
-import java.util.HashMap;
-
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
@@ -39,9 +37,12 @@ import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -156,6 +157,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         if (savedInstanceState != null) {
         	mLastFilter = savedInstanceState.getString(BUNDLE_LAST_FILTER);
         }
+
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+		registerReceiver(mBroadcastReceiver, filter);
 	}
 
 	
@@ -188,8 +193,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		} else {
 			mAdapter.getCursor().requery();
 		}
+		
 	}
-
 
 	@Override
 	protected void onPause() {
@@ -205,6 +210,15 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 	
 	
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+		unregisterReceiver(mBroadcastReceiver);
+	}
+
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
@@ -542,4 +556,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		break;
     	}
     }
+
+	BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			mAdapter.flushTitleHashMap();
+			mAdapter.getCursor().requery();
+		}
+		
+	};
 }

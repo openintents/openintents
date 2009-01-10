@@ -61,6 +61,19 @@ public class CryptoIntents {
 	 * <p>Constant Value: "org.openintents.action.SET_PASSWORD"</p>
 	 */
 	public static final String ACTION_SET_PASSWORD = "org.openintents.action.SET_PASSWORD";
+
+	/**
+	 * Broadcast Action: Sent when the user got logged out of the
+	 * crypto session.
+	 * 
+	 * This can happen after the user logs out actively, 
+	 * or through a time-out.
+	 * 
+	 * Activities that show decrypted content should hide that content again.
+	 * 
+	 * <p>Constant Value: "org.openintents.action.CRYPTO_LOGGED_OUT"</p>
+	 */
+	public static final String ACTION_CRYPTO_LOGGED_OUT = "org.openintents.action.CRYPTO_LOGGED_OUT";
 	
 	/**
 	 * The text to encrypt or decrypt, or the location for the return result.
