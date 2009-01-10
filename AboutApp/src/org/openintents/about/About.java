@@ -593,7 +593,9 @@ public class About extends TabActivity {
 
         mEmailImage = (ImageSwitcher) findViewById(R.id.i_email);
         mEmailImage.setInAnimation(in);
-        mEmailImage.setOutAnimation(out);
+        //mEmailImage.setOutAnimation(out);
+            // Strange bug: setting the out animation results in the envelope image
+        	// appearing and disappearing if one clicks on the email link repeatedly.
 		
         mProgramNameAndVersionText = (TextSwitcher) 
         		findViewById(R.id.t_program_name_and_version);
