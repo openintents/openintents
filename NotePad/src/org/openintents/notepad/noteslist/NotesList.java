@@ -40,6 +40,7 @@ import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -75,6 +76,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
+	private static final int MENU_ITEM_UNENCRYPT = Menu.FIRST + 6;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
 	
@@ -84,6 +86,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private final static int CATEGORY_ALTERNATIVE_GLOBAL = 1;
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
+	private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -371,9 +374,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		// Add a menu item to send the note
 		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
-		// Add a menu item to send the note
-		menu.add(0, MENU_ITEM_ENCRYPT, 0, R.string.menu_encrypt);
-		
+		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
+		if (encrypted <= 0) {
+			menu.add(0, MENU_ITEM_ENCRYPT, 0, R.string.menu_encrypt);
+		} else {
+			menu.add(0, MENU_ITEM_UNENCRYPT, 0, R.string.menu_undo_encryption);
+		}
+			
 		// Add a menu item to delete the note
 		menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
 	}
@@ -403,6 +410,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			return true;
 		case MENU_ITEM_ENCRYPT:
 			encryptNote(info.id);
+			return true;
+		case MENU_ITEM_UNENCRYPT:
+			unencryptNote(info.id);
 			return true;
 		}
 		return false;
@@ -473,6 +483,40 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
+	}
+
+	private void unencryptNote(long id) {
+		// Obtain Uri for the context menu
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+		// getContentResolver().(noteUri, null, null);
+
+		Cursor c = getContentResolver().query(noteUri,
+				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.ENCRYPTED }, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		String title = "";
+		String text = getString(R.string.empty_note);
+		int encrypted = 0;
+		if (c != null) {
+			c.moveToFirst();
+			title = c.getString(0);
+			text = c.getString(1);
+			encrypted = c.getInt(2);
+		}
+
+		if (encrypted <= 0) {
+			Toast.makeText(this,
+					R.string.not_encrypted,
+					Toast.LENGTH_SHORT).show();
+			return;
+		}
+
+		String[] textarray =  new String[] {text, title};
+		
+		Intent i = new Intent(CryptoIntents.ACTION_DECRYPT);
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, textarray);
+		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
+		startActivityForResult(i, REQUEST_CODE_UNENCRYPT_NOTE);
 	}
 	
 	private void showAboutBox() {
@@ -617,6 +661,42 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	            
     		} else {
     			mDecryptionFailed = true;
+    	        setProgressBarIndeterminateVisibility(false);
+    		}
+    		break;
+    	case REQUEST_CODE_UNENCRYPT_NOTE:
+    		if (resultCode == RESULT_OK && data != null) {
+    			String[] decryptedTextArray = data.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
+    			String decryptedText = decryptedTextArray[0];
+    			String decryptedTitle = decryptedTextArray[1];
+    			
+    			String uristring = data.getStringExtra(NotePadIntents.EXTRA_URI);
+
+    			Uri uri = null;
+    			if (uristring != null) {
+    				uri = Uri.parse(uristring);
+    			} else {
+        	    	Log.i(TAG, "Wrong extra uri");
+    				Toast.makeText(this,
+        					"Encrypted information incomplete",
+        					Toast.LENGTH_SHORT).show();
+    				return;
+    			}
+
+    			// Write this to content provider:
+
+                ContentValues values = new ContentValues();
+                values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+                values.put(Notes.TITLE, decryptedTitle);
+                values.put(Notes.NOTE, decryptedText);
+                values.put(Notes.ENCRYPTED, 0);
+                
+                //Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+                Uri noteUri = getIntent().getData();
+                
+                getContentResolver().update(uri, values, null, null);
+                
+    		} else {
     	        setProgressBarIndeterminateVisibility(false);
     		}
     		break;

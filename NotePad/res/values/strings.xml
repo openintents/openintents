@@ -55,8 +55,10 @@
 	<string name="encrypted">Encrypted</string>
 	<string name="menu_encrypt">Encrypt</string>
 	<string name="menu_decrypt">Decrypt</string>
+	<string name="menu_undo_encryption">Undo encryption</string>
 	<string name="menu_do_not_encrypt">Do not encrypt</string>
 	<string name="already_encrypted">Already encrypted.</string>
+	<string name="not_encrypted">Not encrypted.</string>
 	<string name="encryption_failed">Encryption failed.</string>
 	<string name="decryption_failed">Decryption failed.</string>
 
