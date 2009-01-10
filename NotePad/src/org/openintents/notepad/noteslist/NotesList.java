@@ -163,26 +163,30 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected void onResume() {
 		super.onResume();
 		
-		// Perform a managed query. The Activity will handle closing and
-		// requerying the cursor
-		// when needed.
-		Cursor cursor = getContentResolver().query(getIntent().getData(), PROJECTION, null,
-				null, Notes.DEFAULT_SORT_ORDER);
-
-		/*
-		// Used to map notes entries from the database to views
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-				R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
-				new int[] { android.R.id.text1 });
-				*/
-		mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
-		setListAdapter(mAdapter);
-		
-		Log.i(TAG, "Lastfilter: " + mLastFilter);
-		
-		if (mLastFilter != null) {
-			cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
-			mAdapter.changeCursor(cursor);
+		if (mAdapter == null) {
+			// Perform a managed query. The Activity will handle closing and
+			// requerying the cursor
+			// when needed.
+			Cursor cursor = getContentResolver().query(getIntent().getData(), PROJECTION, null,
+					null, Notes.DEFAULT_SORT_ORDER);
+	
+			/*
+			// Used to map notes entries from the database to views
+			SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+					R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
+					new int[] { android.R.id.text1 });
+					*/
+			mAdapter = new NotesListCursorAdapter(this, cursor, getIntent());
+			setListAdapter(mAdapter);
+			
+			Log.i(TAG, "Lastfilter: " + mLastFilter);
+			
+			if (mLastFilter != null) {
+				cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
+				mAdapter.changeCursor(cursor);
+			}
+		} else {
+			mAdapter.getCursor().requery();
 		}
 	}
 
@@ -194,9 +198,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		mLastFilter = mAdapter.mLastFilter;
 		
 		Cursor c = mAdapter.getCursor();
-		if (c != null) {
-			c.close();
-		}
+		//if (c != null) {
+		//	c.deactivate();
+		//}
 		
 	}
 	
@@ -481,6 +485,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		intent.setAction(CryptoIntents.ACTION_DECRYPT);
 		intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
 		intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+		
+		intent.putExtra(CryptoIntents.EXTRA_PROMPT, false);
         
         try {
         	startActivityForResult(intent, REQUEST_CODE_DECRYPT_TITLE);
@@ -526,11 +532,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			mAdapter.mTitleHashMap.put(encryptedText, decryptedText);
     			getListView().invalidate();
 	            
-    		} else {
+    		} else {/*
     			Toast.makeText(this,
     					R.string.decryption_failed,
     					Toast.LENGTH_SHORT).show();
     			Log.e(TAG, "decryption failed");
+    			*/
     		}
     		break;
     	}

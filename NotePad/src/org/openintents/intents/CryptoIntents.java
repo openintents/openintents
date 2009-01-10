@@ -1,5 +1,5 @@
 /* 
- * Copyright 2008 OpenIntents.org
+ * Copyright 2008 Isaac Potoczny-Jones
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,9 @@
  */
 package org.openintents.intents;
 
-// Keeping version information in this file is important, because it has to be
-// copied between various projects and repositories manually.
-//
-// Version: 2009 Jan 2: added EXTRA_TEXT_ARRAY
-
 /**
+ * @version Jan 10, 2008
+ * 
  * @author Isaac Potoczny-Jones
  *
  */
@@ -82,22 +79,12 @@ public class CryptoIntents {
 	
 	/**
 	 * Required input parameter to GET_PASSWORD and SET_PASSWORD. Corresponds to the "description"
-	 * field in passwordsafe. Should be a descriptive name for the password you're using,
-	 * and will already be specific to your application.
+	 * field in passwordsafe. Should be a unique name for the password you're using,
+	 * and will already be specific to your application, ie "org.syntaxpolice.opensocial"
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.DESCRIPTION"</p>
+	 * <p>Constant Value: "org.openintents.extra.UNIQUE_NAME"</p>
 	 */
-	public static final String EXTRA_DESCRIPTION = "org.openintents.extra.DESCRIPTION";
-	
-	/**
-	 * Optional input parameter to GET_PASSWORD and SET_PASSWORD. Corresponds to the "category"
-	 * field in passwordsafe. If null, will be assumed to be the fully-qualified package
-	 * name of your application. If non-null (and not == the package name) the user should
-	 * be asked whether it's permissable to get or set this password.
-	 * 
-	 * <p>Constant Value: "org.openintents.extra.CATEGORY"</p>
-	 */
-	public static final String EXTRA_CATEGORY = "org.openintents.extra.CATEGORY";
+	public static final String EXTRA_UNIQUE_NAME = "org.openintents.extra.UNIQUE_NAME";
 
 	/**
 	 * Output parameter from GET_PASSWORD and optional input parameter to SET_PASSWORD.
@@ -114,4 +101,14 @@ public class CryptoIntents {
 	 * <p>Constant Value: "org.openintents.extra.PASSWORD"</p>
 	 */
 	public static final String EXTRA_PASSWORD = "org.openintents.extra.PASSWORD";
+
+	/**
+	 * Whether to prompt for the password if the service is not running yet.
+	 * 
+	 * Default value is 'true'. Set to 'false' if you want to suppress prompting for
+	 * a password.
+	 * 
+	 * <p>Constant Value: "org.openintents.extra.PROMPT"</p>
+	 */
+	public static final String EXTRA_PROMPT = "org.openintents.extra.PROMPT";
 }
