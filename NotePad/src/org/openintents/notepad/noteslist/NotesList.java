@@ -282,7 +282,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 				'a').setIcon(android.R.drawable.ic_menu_add);
 		
 		menu.add(0, MENU_OPEN, 0, R.string.menu_open_from_sdcard).setShortcut('4',
-				'o').setIcon(android.R.drawable.ic_menu_set_as);
+				'o').setIcon(R.drawable.ic_menu_folder);
 
 		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 		
