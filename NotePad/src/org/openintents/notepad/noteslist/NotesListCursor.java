@@ -231,9 +231,11 @@ public class NotesListCursor extends OpenMatrixCursor {
 					StringBuilder sb = new StringBuilder();
 					sb.append(" ");
 					sb.append(title.toUpperCase());
-					sb.append(" ");
-					String spacetags = tags.replace(",", " ");
-					sb.append(spacetags.toUpperCase());
+					if (!TextUtils.isEmpty(tags)) {
+						sb.append(" ");
+						String spacetags = tags.replace(",", " ");
+						sb.append(spacetags.toUpperCase());
+					}
 					searchstring = sb.toString();
 				}
 				
