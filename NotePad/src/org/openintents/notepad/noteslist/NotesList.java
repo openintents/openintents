@@ -35,13 +35,15 @@ import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
@@ -77,6 +79,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
 	private static final int MENU_ITEM_UNENCRYPT = Menu.FIRST + 6;
+	private static final int MENU_ITEM_EDIT_TAGS = Menu.FIRST + 7;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
 	
@@ -87,6 +90,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	//private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
+	
+	private static final int DIALOG_ID_TAGS = 1;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -381,6 +386,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			menu.add(0, MENU_ITEM_UNENCRYPT, 0, R.string.menu_undo_encryption);
 		}
 			
+
+		menu.add(0, MENU_ITEM_EDIT_TAGS, 0, R.string.menu_edit_tags);
+		
 		// Add a menu item to delete the note
 		menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
 	}
@@ -413,6 +421,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			return true;
 		case MENU_ITEM_UNENCRYPT:
 			encryptNote(info.id, CryptoIntents.ACTION_DECRYPT);
+			return true;
+		case MENU_ITEM_EDIT_TAGS:
+			editTags(info.id);
 			return true;
 		}
 		return false;
@@ -534,6 +545,26 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		startActivityForResult(i, REQUEST_CODE_UNENCRYPT_NOTE);
 	}
 	*/
+
+	private void editTags(long id) {
+		// Obtain Uri for the context menu
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+		// getContentResolver().(noteUri, null, null);
+
+		Cursor c = getContentResolver().query(noteUri,
+				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
+				null, Notes.DEFAULT_SORT_ORDER);
+
+		String title = "";
+		String content = getString(R.string.empty_note);
+		if (c != null) {
+			c.moveToFirst();
+			title = c.getString(0);
+			content = c.getString(1);
+		}
+
+		showDialog(DIALOG_ID_TAGS);
+	}
 	
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
@@ -632,6 +663,54 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         }
     }
     
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ID_TAGS:
+			return new TagsDialog(this);
+			/*
+			return new AlertDialog.Builder(this).setIcon(
+					android.R.drawable.ic_dialog_alert).setMessage(
+					R.string.menu_edit_tags).setPositiveButton(
+					android.R.string.ok, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+						}
+					}).setNegativeButton(android.R.string.cancel,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+
+						}
+					}).create();
+					*/
+
+		}
+		return null;
+	}
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		//long startDate = mCursor.getLong(COLUMN_INDEX_START);
+		//long endDate = mCursor.getLong(COLUMN_INDEX_END);
+		//long plannedDate = mCursor.getLong(COLUMN_INDEX_PLANNED_DATE);
+
+		switch (id) {
+		case DIALOG_ID_TAGS:
+			/*
+			mCalendar.setTimeInMillis(startDate);
+
+			((DatePickerDialog) dialog).updateDate(
+					mCalendar.get(Calendar.YEAR),
+					mCalendar.get(Calendar.MONTH), mCalendar
+							.get(Calendar.DAY_OF_MONTH));
+							*/
+			break;
+		}
+	}
+	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
