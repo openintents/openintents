@@ -105,7 +105,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private boolean mDecryptionFailed;
 	private boolean mDecryptionSucceeded;
 
-	Uri mSelectedNoteUri;
+	AdapterView.AdapterContextMenuInfo mContextMenuInfo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -397,35 +397,34 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		AdapterView.AdapterContextMenuInfo info;
 		try {
-			info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+			mContextMenuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 		} catch (ClassCastException e) {
 			Log.e(TAG, "bad menuInfo", e);
 			return false;
 		}
-
+		
 		switch (item.getItemId()) {
 		case MENU_ITEM_DELETE: {
 			// Delete the note that the context menu is for
 			Uri noteUri = ContentUris.withAppendedId(getIntent().getData(),
-					info.id);
+					mContextMenuInfo.id);
 			getContentResolver().delete(noteUri, null, null);
 			
-			mAdapter.getCursor().requery();
+			//mAdapter.getCursor().requery();
 			return true;
 		}
 		case MENU_ITEM_SEND_BY_EMAIL:
-			sendNoteByEmail(info.id);
+			sendNoteByEmail(mContextMenuInfo.id);
 			return true;
 		case MENU_ITEM_ENCRYPT:
-			encryptNote(info.id, CryptoIntents.ACTION_ENCRYPT);
+			encryptNote(mContextMenuInfo.id, CryptoIntents.ACTION_ENCRYPT);
 			return true;
 		case MENU_ITEM_UNENCRYPT:
-			encryptNote(info.id, CryptoIntents.ACTION_DECRYPT);
+			encryptNote(mContextMenuInfo.id, CryptoIntents.ACTION_DECRYPT);
 			return true;
 		case MENU_ITEM_EDIT_TAGS:
-			editTags(info.id);
+			editTags();
 			return true;
 		}
 		return false;
@@ -549,11 +548,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	*/
 
 	
-	private void editTags(long id) {
+	private void editTags() {
 		// Obtain Uri for the context menu
-		mSelectedNoteUri = ContentUris.withAppendedId(getIntent().getData(), id);
-		// getContentResolver().(noteUri, null, null);
-
+		
+		/*
 		Cursor c = getContentResolver().query(mSelectedNoteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
 				null, Notes.DEFAULT_SORT_ORDER);
@@ -565,6 +563,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			title = c.getString(0);
 			content = c.getString(1);
 		}
+		*/
 
 		showDialog(DIALOG_ID_TAGS);
 	}
@@ -686,17 +685,16 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		switch (id) {
 		case DIALOG_ID_TAGS:
 			TagsDialog d = (TagsDialog) dialog;
-			
-			d.setUri(mSelectedNoteUri);
-			
-			/*
-			mCalendar.setTimeInMillis(startDate);
 
-			((DatePickerDialog) dialog).updateDate(
-					mCalendar.get(Calendar.YEAR),
-					mCalendar.get(Calendar.MONTH), mCalendar
-							.get(Calendar.DAY_OF_MONTH));
-							*/
+			Uri uri = ContentUris.withAppendedId(getIntent().getData(), mContextMenuInfo.id);
+			
+			Cursor c = mAdapter.getCursor();
+			c.moveToPosition(mContextMenuInfo.position);
+			String tags = c.getString(NotesListCursor.COLUMN_INDEX_TAGS);
+			
+			d.setUri(uri);
+			d.setTags(tags);
+			
 			break;
 		}
 	}
