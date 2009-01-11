@@ -107,6 +107,10 @@
          
         <activity android:name="org.openintents.notepad.crypto.EncryptActivity" android:label="@string/encrypting_note">
         </activity> 
+        
+        <activity android:name="org.openintents.notepad.filename.DialogHostingActivity" android:label="@string/filename"
+    		android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        </activity> 
          
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 

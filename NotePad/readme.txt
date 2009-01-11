@@ -29,6 +29,13 @@ date: 2009-?
 
 - upgrade Content Provider with new fields:
   tags, encrypted, theme
+- support for encrypted notes through CryptoIntents
+  (requires Android Password Safe or compatible)
+- tags for notes.
+- quickly filter notes by typing the first letters;
+  searches through title and tags.
+- open .txt files from SD card and save .txt files
+  to SD card.
 
 ---------------------------------------------------------
 release: 1.0.2

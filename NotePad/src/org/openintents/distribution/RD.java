@@ -44,5 +44,11 @@ public class RD {
 		public static final int update_checker_url = R.string.update_checker_url;
 		public static final int update_error = R.string.update_error;
 
+		///////////////////////////////////////
+		// GetFileManagerFromMarketDialog
+		public static final int filemanager_not_available = R.string.filemanager_not_available;
+		public static final int filemanager_get_oi_filemanager = R.string.filemanager_get_oi_filemanager;
+		public static final int filemanager_market_uri = R.string.filemanager_market_uri;
+		
 	}
 }

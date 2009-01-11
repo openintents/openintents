@@ -33,9 +33,10 @@ import org.openintents.notepad.NotePadProvider;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
+import org.openintents.notepad.filename.DialogHostingActivity;
+import org.openintents.notepad.filename.FilenameDialog;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
@@ -43,7 +44,6 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
@@ -80,6 +80,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
 	private static final int MENU_ITEM_UNENCRYPT = Menu.FIRST + 6;
 	private static final int MENU_ITEM_EDIT_TAGS = Menu.FIRST + 7;
+	private static final int MENU_ITEM_SAVE = Menu.FIRST + 8;
+	private static final int MENU_OPEN = Menu.FIRST + 9;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
 	
@@ -269,6 +271,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		// new note into the list.
 		menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert).setShortcut('3',
 				'a').setIcon(android.R.drawable.ic_menu_add);
+		
+		menu.add(0, MENU_OPEN, 0, R.string.menu_open_from_sdcard).setShortcut('4',
+				'o').setIcon(android.R.drawable.ic_menu_set_as);
 
 		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 		
@@ -343,6 +348,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		case MENU_ITEM_INSERT:
 			insertNewNote();
 			return true;
+		case MENU_OPEN:
+			openFromSdCard();
+			return true;
 		case MENU_ABOUT:
 			showAboutBox();
 			return true;
@@ -359,6 +367,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private void insertNewNote() {
 		// Launch activity to insert a new item
 		startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+	}
+	
+	private void openFromSdCard() {
+		Intent i = new Intent(this, DialogHostingActivity.class);
+		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_OPEN);
+		startActivity(i);
 	}
 
 	@Override
@@ -385,6 +399,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
 		menu.add(0, MENU_ITEM_EDIT_TAGS, 0, R.string.menu_edit_tags);
+		
+		menu.add(0, MENU_ITEM_SAVE, 0, R.string.menu_save_to_sdcard);
 		
 		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
 		if (encrypted <= 0) {
@@ -427,6 +443,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			return true;
 		case MENU_ITEM_EDIT_TAGS:
 			editTags();
+			return true;
+		case MENU_ITEM_SAVE:
+			saveToSdCard();
 			return true;
 		}
 		return false;
@@ -514,62 +533,15 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
 	}
-
-	/*
-	private void unencryptNote(long id) {
-		// Obtain Uri for the context menu
-		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
-		// getContentResolver().(noteUri, null, null);
-
-		Cursor c = getContentResolver().query(noteUri,
-				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.ENCRYPTED }, null,
-				null, Notes.DEFAULT_SORT_ORDER);
-
-		String title = "";
-		String text = getString(R.string.empty_note);
-		int encrypted = 0;
-		if (c != null) {
-			c.moveToFirst();
-			title = c.getString(0);
-			text = c.getString(1);
-			encrypted = c.getInt(2);
-		}
-
-		if (encrypted <= 0) {
-			Toast.makeText(this,
-					R.string.not_encrypted,
-					Toast.LENGTH_SHORT).show();
-			return;
-		}
-
-		String[] textarray =  new String[] {text, title};
-		
-		Intent i = new Intent(CryptoIntents.ACTION_DECRYPT);
-		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, textarray);
-		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
-		startActivityForResult(i, REQUEST_CODE_UNENCRYPT_NOTE);
-	}
-	*/
-
 	
 	private void editTags() {
-		// Obtain Uri for the context menu
-		
-		/*
-		Cursor c = getContentResolver().query(mSelectedNoteUri,
-				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
-				null, Notes.DEFAULT_SORT_ORDER);
-
-		String title = "";
-		String content = getString(R.string.empty_note);
-		if (c != null) {
-			c.moveToFirst();
-			title = c.getString(0);
-			content = c.getString(1);
-		}
-		*/
-
 		showDialog(DIALOG_ID_TAGS);
+	}
+	
+	private void saveToSdCard() {
+		Intent i = new Intent(this, DialogHostingActivity.class);
+		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_SAVE);
+		startActivity(i);
 	}
 	
 	private void showAboutBox() {
@@ -682,10 +654,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
-		//long startDate = mCursor.getLong(COLUMN_INDEX_START);
-		//long endDate = mCursor.getLong(COLUMN_INDEX_END);
-		//long plannedDate = mCursor.getLong(COLUMN_INDEX_PLANNED_DATE);
-
+		FilenameDialog fd;
+		
 		switch (id) {
 		case DIALOG_ID_TAGS:
 			TagsDialog d = (TagsDialog) dialog;

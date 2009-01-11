@@ -65,6 +65,15 @@
 	<string name="menu_edit_tags">Edit tags</string>
     <string name="dropdown_hint">Touch to see list</string>
     <string name="tags_hint">Enter tags, separated by comma</string>
+    
+    <string name="menu_save_to_sdcard">Save to SD card</string>
+    <string name="menu_open_from_sdcard">Open from SD card</string>
+    <string name="filename">File name</string>
+    
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
 	
 	<!-- About -->
 	<string name="about">About</string>
