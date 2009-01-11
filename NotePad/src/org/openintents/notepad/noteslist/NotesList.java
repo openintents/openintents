@@ -104,6 +104,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private boolean mDecryptionFailed;
 	private boolean mDecryptionSucceeded;
+
+	Uri mSelectedNoteUri;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -226,9 +228,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		mLastFilter = mCursorUtils.mCurrentFilter;
 		
 		Cursor c = mAdapter.getCursor();
-		//if (c != null) {
-		//	c.deactivate();
-		//}
+		if (c != null) {
+			c.deactivate();
+		}
 
 		unregisterReceiver(mBroadcastReceiver);
 		
@@ -546,12 +548,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 	*/
 
+	
 	private void editTags(long id) {
 		// Obtain Uri for the context menu
-		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
+		mSelectedNoteUri = ContentUris.withAppendedId(getIntent().getData(), id);
 		// getContentResolver().(noteUri, null, null);
 
-		Cursor c = getContentResolver().query(noteUri,
+		Cursor c = getContentResolver().query(mSelectedNoteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
 				null, Notes.DEFAULT_SORT_ORDER);
 
@@ -670,23 +673,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		switch (id) {
 		case DIALOG_ID_TAGS:
 			return new TagsDialog(this);
-			/*
-			return new AlertDialog.Builder(this).setIcon(
-					android.R.drawable.ic_dialog_alert).setMessage(
-					R.string.menu_edit_tags).setPositiveButton(
-					android.R.string.ok, new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog,
-								int whichButton) {
-						}
-					}).setNegativeButton(android.R.string.cancel,
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog,
-								int whichButton) {
-
-						}
-					}).create();
-					*/
-
 		}
 		return null;
 	}
@@ -699,6 +685,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		switch (id) {
 		case DIALOG_ID_TAGS:
+			TagsDialog d = (TagsDialog) dialog;
+			
+			d.setUri(mSelectedNoteUri);
+			
 			/*
 			mCalendar.setTimeInMillis(startDate);
 

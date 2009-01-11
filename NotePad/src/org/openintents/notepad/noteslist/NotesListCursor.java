@@ -11,8 +11,9 @@ import org.openintents.notepad.util.OpenMatrixCursor;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.AbstractCursor;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -60,6 +61,12 @@ public class NotesListCursor extends OpenMatrixCursor {
 	Context mContext;
 	Intent mIntent;
 	//OpenMatrixCursor mCursor;
+
+	/**
+	 * A database cursor that corresponds to the encrypted data of
+	 * the current cursor (that contains also decrypted information).
+	 */
+	Cursor mDbCursor;
 	
 	public String mCurrentFilter;
 	
@@ -79,7 +86,29 @@ public class NotesListCursor extends OpenMatrixCursor {
 		mContext = context;
 		mIntent = intent;
 		mCurrentFilter = null;
+		
+		
 	}
+	
+	
+	// TODO: Replace new Handler() by mHandler from NotesList somehow.
+	ContentObserver mContentObserver = new ContentObserver(new Handler()) {
+		
+		@Override
+		public boolean deliverSelfNotifications() {
+			return super.deliverSelfNotifications();
+		}
+
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			Log.i(TAG, "NoteListCursor changed" + selfChange);
+			
+			requery();
+		}
+		
+	};
+	
 
 	@Override
 	public boolean requery() {
@@ -100,12 +129,13 @@ public class NotesListCursor extends OpenMatrixCursor {
 		return cursor;
 	}
 	
+	
 	/** 
 	 * Return a query with decrypted information on the current cursor.
 	 * 
 	 * @param constraint
 	 */
-	public void runQuery(CharSequence constraint) {
+	private void runQuery(CharSequence constraint) {
 
 		// We have to query all items and return a new object, because notes may be encrypted.
 
@@ -115,10 +145,19 @@ public class NotesListCursor extends OpenMatrixCursor {
 			mCurrentFilter = null;
 		}
 		
-		Cursor dbcursor = mContext.getContentResolver().query(mIntent.getData(), PROJECTION_DB, 
-				null, null, Notes.DEFAULT_SORT_ORDER);
+		if (mDbCursor != null) {
+			mDbCursor.unregisterContentObserver(mContentObserver);
+			mDbCursor.close();
+			mDbCursor = null;
+		}
 		
-		Log.i(TAG, "Cursor count: " + dbcursor.getCount());
+		mDbCursor = mContext.getContentResolver().query(mIntent.getData(), PROJECTION_DB, 
+				null, null, Notes.DEFAULT_SORT_ORDER);
+
+		// Register content observer
+		mDbCursor.registerContentObserver(mContentObserver);
+		
+		Log.i(TAG, "Cursor count: " + mDbCursor.getCount());
 		
 		//mCursor = new OpenMatrixCursor(PROJECTION, dbcursor.getCount());
 		
@@ -126,12 +165,12 @@ public class NotesListCursor extends OpenMatrixCursor {
 		
 		String encryptedlabel = mContext.getString(R.string.encrypted);
 		
-		dbcursor.moveToPosition(-1);
-		while (dbcursor.moveToNext()) {
-			long id = dbcursor.getLong(COLUMN_INDEX_ID);
-			String title = dbcursor.getString(COLUMN_INDEX_TITLE);
-			String tags = dbcursor.getString(COLUMN_INDEX_TAGS);
-			long encrypted = dbcursor.getLong(COLUMN_INDEX_ENCRYPTED);
+		mDbCursor.moveToPosition(-1);
+		while (mDbCursor.moveToNext()) {
+			long id = mDbCursor.getLong(COLUMN_INDEX_ID);
+			String title = mDbCursor.getString(COLUMN_INDEX_TITLE);
+			String tags = mDbCursor.getString(COLUMN_INDEX_TAGS);
+			long encrypted = mDbCursor.getLong(COLUMN_INDEX_ENCRYPTED);
 			String title_encrypted = null;
 			String tags_encrypted = null;
 			
@@ -190,4 +229,37 @@ public class NotesListCursor extends OpenMatrixCursor {
 	    	return null;
 	    }
     }
+
+	@Override
+	public void close() {
+		Log.i(TAG, "Close NotesListCursor");
+		super.close();
+	}
+
+
+	@Override
+	public void deactivate() {
+		Log.i(TAG, "Deactivate NotesListCursor");
+		if (mDbCursor != null) {
+			mDbCursor.deactivate();
+		}
+		super.deactivate();
+	}
+
+
+	@Override
+	protected void finalize() {
+		Log.i(TAG, "Finalize NotesListCursor");
+
+		if (mDbCursor != null) {
+			mDbCursor.unregisterContentObserver(mContentObserver);
+			//mDbCursor.close();
+			mDbCursor.deactivate();
+			mDbCursor = null;
+		}
+		
+		super.finalize();
+	}
+    
+    
 }

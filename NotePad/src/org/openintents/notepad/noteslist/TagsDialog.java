@@ -1,20 +1,30 @@
 package org.openintents.notepad.noteslist;
 
 import org.openintents.notepad.R;
+import org.openintents.notepad.NotePad.Notes;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.MultiAutoCompleteTextView;
 
 public class TagsDialog extends AlertDialog implements OnClickListener {
+	private static final String TAG = "TagsDialog";
 
     private static final String BUNDLE_TAGS = "tags";
+    
+    Context mContext;
+    Uri mUri;
+    
+    MultiAutoCompleteTextView mTextView;
     
     /**
      * @param context Parent.
@@ -26,6 +36,8 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
      */
     public TagsDialog(Context context) {
         super(context);
+        mContext = context;
+        
         setTitle(context.getText(R.string.menu_edit_tags));
         setButton(context.getText(android.R.string.ok), this);
         setButton2(context.getText(android.R.string.cancel), (OnClickListener) null);
@@ -38,24 +50,36 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        final MultiAutoCompleteTextView textView = (MultiAutoCompleteTextView) view.findViewById(R.id.edit);
-        textView.setAdapter(adapter);
-        textView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
-        textView.setThreshold(0);
-        textView.setOnClickListener(new View.OnClickListener() {
+        mTextView = (MultiAutoCompleteTextView) view.findViewById(R.id.edit);
+        mTextView.setAdapter(adapter);
+        mTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+        mTextView.setThreshold(0);
+        mTextView.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				if (textView.isPopupShowing()) {
-					textView.dismissDropDown();
+				if (mTextView.isPopupShowing()) {
+					mTextView.dismissDropDown();
 				} else {
-					textView.showDropDown();
+					mTextView.showDropDown();
 				}
 			}
 		});
         String[] mTagList = new String[0];
 		if (mTagList.length < 1) {
-			textView.setHint(R.string.tags_hint);
+			mTextView.setHint(R.string.tags_hint);
 		}
+    }
+    
+    public void setUri(Uri uri) {
+    	mUri = uri;
+    }
+    
+    public void setTagList(String[] tags) {
+    	
+    }
+    
+    public void setTags() {
+    	
     }
     
 
@@ -106,12 +130,26 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     @Override
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
-    		
-    		// Save new tags
-    		
+    		saveTags();
     	}
 		
 	}
+    
+    void saveTags() {
+    	if (mTextView == null) {
+    		Log.e(TAG, "mTextView is null.");
+    		return;
+    	}
+    	
+    	String tags = mTextView.getText().toString();
+    	
+    	ContentValues values = new ContentValues(1);
+        values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+        values.put(Notes.TAGS, tags);
+
+        mContext.getContentResolver().update(mUri, values, null, null);
+        mContext.getContentResolver().notifyChange(mUri, null);
+    }
 
 
 	@Override
