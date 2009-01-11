@@ -105,6 +105,8 @@ public class NoteEditor extends Activity {
     private String mOriginalContent;
     
     private String mDecryptedText;
+    
+    private String mFilename;
 
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
@@ -157,6 +159,8 @@ public class NoteEditor extends Activity {
 
             if (mUri.getScheme().equals("file")) {
             	// Load the file into a new note.
+            	
+            	mFilename = FileUriUtils.getFilename(mUri);
             	
             	String text = readFile(FileUriUtils.getFile(mUri));
             	
@@ -273,7 +277,9 @@ public class NoteEditor extends Activity {
           // this statement reads the line from the file and print it to
             // the console.
         	  sb.append(dis.readLine());
-        	  sb.append("\n");
+        	  if (dis.available() != 0) {
+        		  sb.append("\n");
+        	  }
           }
 
           // dispose all the resources after using them.
@@ -309,10 +315,18 @@ public class NoteEditor extends Activity {
             mCursor.moveToFirst();
 
             // Modify our overall title depending on the mode we are running in.
-            if (mState == STATE_EDIT) {
-                setTitle(getText(R.string.title_edit));
-            } else if (mState == STATE_INSERT) {
-                setTitle(getText(R.string.title_create));
+            if (mFilename == null) {
+	            if (mState == STATE_EDIT) {
+	                setTitle(getText(R.string.title_edit));
+	            } else if (mState == STATE_INSERT) {
+	                setTitle(getText(R.string.title_create));
+	            }
+            } else {
+            	if (mState == STATE_EDIT) {
+	                setTitle(getString(R.string.title_edit_file, mFilename));
+	            } else if (mState == STATE_INSERT) {
+	                setTitle(getString(R.string.title_create_file, mFilename));
+	            }
             }
 
             long id = mCursor.getLong(COLUMN_INDEX_ID);

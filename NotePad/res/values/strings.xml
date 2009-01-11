@@ -38,6 +38,8 @@
 	<string name="title_notes_list">OI Notepad</string>   
 	<string name="title_note">Note</string>  
 	<string name="title_edit_title">Note title:</string>  
+    <string name="title_create_file">%s (new note imported)</string>
+    <string name="title_edit_file">%s (note already imported)</string>
 	
 	<string name="app_name">OI Notepad</string>  
 	
