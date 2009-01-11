@@ -16,9 +16,10 @@
 package org.openintents.intents;
 
 /**
- * @version Jan 10, 2008
+ * @version Jan 11, 2008, 11:50 UTC
  * 
  * @author Isaac Potoczny-Jones
+ * @author Peli
  *
  */
 public class CryptoIntents {
@@ -85,6 +86,9 @@ public class CryptoIntents {
 	/**
 	 * An array of text to encrypt or decrypt, or the location for the return result.
 	 * Use this to encrypt several strings at once.
+	 * 
+	 * Entries of the array that are null will be simply ignored and not
+	 * encrypted or decrypted.
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.TEXT_ARRAY"</p>
 	 */
