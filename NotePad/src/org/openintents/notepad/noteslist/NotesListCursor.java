@@ -196,9 +196,33 @@ public class NotesListCursor extends OpenMatrixCursor {
 				}
 			}
 			
-			// apply filter:
-			if (TextUtils.isEmpty(mCurrentFilter) ||
-					(!skipEncrypted && ((" " + title.toUpperCase()).contains(" " + mCurrentFilter.toUpperCase())))) {
+			boolean addrow = false;
+			
+			if (TextUtils.isEmpty(mCurrentFilter)) {
+				// Add all rows if there is no filter.
+				addrow = true;
+			} else if (skipEncrypted) {
+				addrow = false;
+			} else {
+				// test the filter
+
+				// Build search string from title and tags.
+				String searchstring = null;
+				if (!TextUtils.isEmpty(mCurrentFilter)) {
+					StringBuilder sb = new StringBuilder();
+					sb.append(" ");
+					sb.append(title.toUpperCase());
+					sb.append(" ");
+					String spacetags = tags.replace(",", " ");
+					sb.append(spacetags.toUpperCase());
+					searchstring = sb.toString();
+				}
+				
+				// apply filter:
+				addrow = searchstring.contains(" " + mCurrentFilter.toUpperCase());
+			}
+			
+			if (addrow) {
 				if (tags == null) {
 					tags = "";
 				}
