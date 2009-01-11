@@ -1,7 +1,10 @@
 package org.openintents.notepad.filename;
 
 import org.openintents.distribution.GetFileManagerFromMarketDialog;
+import org.openintents.intents.FileManagerIntents;
+import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
+import org.openintents.notepad.util.IntentUtils;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -34,7 +37,7 @@ public class DialogHostingActivity extends Activity {
 			switch (dialogId) {
 			case DIALOG_ID_SAVE:
 				Log.i(TAG, "Show Save dialog");
-				showDialog(DIALOG_ID_SAVE);
+				saveFile();
 				break;
 			case DIALOG_ID_OPEN:
 				Log.i(TAG, "Show Save dialog");
@@ -48,6 +51,27 @@ public class DialogHostingActivity extends Activity {
 		}
 		
 		
+	}
+
+
+	/**
+	 * 
+	 */
+	private void saveFile() {
+		
+		// Check whether intent exists
+		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
+		intent.setData(getIntent().getData());
+		if (IntentUtils.isIntentAvailable(this, intent)) {
+			intent.putExtra(NotePadIntents.EXTRA_URI, getIntent().getStringExtra(NotePadIntents.EXTRA_URI));
+			intent.putExtra(FileManagerIntents.EXTRA_TITLE, getText(R.string.menu_save_to_sdcard));
+			intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getText(R.string.save));
+			intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+			startActivity(intent);
+			finish();
+		} else {
+			showDialog(DIALOG_ID_SAVE);
+		}
 	}
 	
 

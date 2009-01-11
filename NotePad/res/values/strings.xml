@@ -69,6 +69,11 @@
     <string name="menu_save_to_sdcard">Save to SD card</string>
     <string name="menu_open_from_sdcard">Open from SD card</string>
     <string name="filename">File name</string>
+    <string name="save">Save</string>
+    <string name="open">Open</string>
+    <string name="error_writing_file">Error while writing file</string>
+    <string name="error_reading_file">Error while reading file</string>
+    <string name="note_saved">Note saved</string>
     
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>

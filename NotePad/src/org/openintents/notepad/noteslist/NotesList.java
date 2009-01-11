@@ -23,6 +23,11 @@
 
 package org.openintents.notepad.noteslist;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
@@ -35,6 +40,7 @@ import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.filename.DialogHostingActivity;
 import org.openintents.notepad.filename.FilenameDialog;
+import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Dialog;
@@ -92,6 +98,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	//private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
+	private static final int REQUEST_CODE_OPEN = 5;
+	private static final int REQUEST_CODE_SAVE = 6;
 	
 	private static final int DIALOG_ID_TAGS = 1;
 	
@@ -539,11 +547,26 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 	
 	private void saveToSdCard() {
+		Cursor c = mAdapter.getCursor();
+		c.moveToPosition(mContextMenuInfo.position);
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), mContextMenuInfo.id);
+		
+		File sdcard = getSdCardPath();
+		String filename = c.getString(NotesListCursor.COLUMN_INDEX_TITLE) + ".txt";
+		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, filename));
+		
 		Intent i = new Intent(this, DialogHostingActivity.class);
 		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_SAVE);
-		startActivity(i);
+		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
+		i.setData(uri);
+		startActivityForResult(i, REQUEST_CODE_SAVE);
 	}
-	
+
+    private File getSdCardPath() {
+    	return android.os.Environment
+			.getExternalStorageDirectory();
+    }
+    
 	private void showAboutBox() {
 		startActivity(new Intent(this, AboutActivity.class));
 	}
@@ -692,13 +715,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 
     
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
     	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_DECRYPT_TITLE:
-    		if (resultCode == RESULT_OK && data != null) {
-    			String decryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			String encryptedText = data.getStringExtra (NotePadIntents.EXTRA_ENCRYPTED_TEXT);
+    		if (resultCode == RESULT_OK && intent != null) {
+    			String decryptedText = intent.getStringExtra (CryptoIntents.EXTRA_TEXT);
+    			String encryptedText = intent.getStringExtra (NotePadIntents.EXTRA_ENCRYPTED_TEXT);
     			
     			if (encryptedText != null) {
         	    	//Log.i(TAG, "Encrypted text is not passed properly.");
@@ -721,6 +744,26 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		} else {
     			mDecryptionFailed = true;
     	        setProgressBarIndeterminateVisibility(false);
+    		}
+    		break;
+    	case REQUEST_CODE_OPEN:
+    		break;
+    		
+    	case REQUEST_CODE_SAVE:
+    		if (resultCode == RESULT_OK && intent != null) {
+    			// File name should be in Uri:
+    			File filename = FileUriUtils.getFile(intent.getData());
+    			Uri uri = Uri.parse(intent.getStringExtra(NotePadIntents.EXTRA_URI));
+    			
+    			if (filename.exists()) {
+    				// TODO Warning dialog
+
+    				Toast.makeText(this, "File exists already",
+    						Toast.LENGTH_SHORT).show();
+    			} else {
+    				// save file
+    				saveFile(uri, filename);
+    			}
     		}
     		break;
     		/*
@@ -762,6 +805,43 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		break;
     		*/
     	}
+    }
+    
+    private void saveFile(Uri uri, File file) {
+    	Log.i(TAG, "Saving file: uri: " + uri + ", file: " + file);
+    	Cursor c = getContentResolver().query(uri, new String[] {Notes.ENCRYPTED, Notes.NOTE}, null, null, null);
+    	
+    	if (c != null && c.getCount() > 0) {
+    		c.moveToFirst();
+    		long encrypted = c.getLong(0);
+    		String note = c.getString(1);
+    		if (encrypted == 0) {
+    			// Save to file
+    			Log.d(TAG, "Save unencrypted file.");
+    			writeToFile(file, note);
+    		} else {
+    			// decrypt first, then save to file
+
+    			Log.d(TAG, "Save encrypted file.");
+    		}
+    	} else {
+    		Log.e(TAG, "Error saving file: Uri not valid: " + uri);
+    	}
+    }
+    
+    void writeToFile(File file, String text) {
+	    try {
+	    	FileWriter fstream = new FileWriter(file);
+	        BufferedWriter out = new BufferedWriter(fstream);
+		    out.write(text);
+		    out.close();
+			Toast.makeText(this, R.string.note_saved,
+					Toast.LENGTH_SHORT).show();
+	    } catch (IOException e) {
+			Toast.makeText(this, R.string.error_writing_file,
+					Toast.LENGTH_SHORT).show();
+	    	Log.e(TAG, "Error writing file");
+	    }
     }
 
 	BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
