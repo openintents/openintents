@@ -41,7 +41,7 @@ public class DialogHostingActivity extends Activity {
 				break;
 			case DIALOG_ID_OPEN:
 				Log.i(TAG, "Show Save dialog");
-				showDialog(DIALOG_ID_OPEN);
+				openFile();
 				break;
 			case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 				Log.i(TAG, "Show no file manager dialog");
@@ -74,6 +74,23 @@ public class DialogHostingActivity extends Activity {
 		}
 	}
 	
+
+	private void openFile() {
+		
+		// Check whether intent exists
+		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
+		intent.setData(getIntent().getData());
+		if (IntentUtils.isIntentAvailable(this, intent)) {
+			intent.putExtra(NotePadIntents.EXTRA_URI, getIntent().getStringExtra(NotePadIntents.EXTRA_URI));
+			intent.putExtra(FileManagerIntents.EXTRA_TITLE, getText(R.string.menu_open_from_sdcard));
+			intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getText(R.string.open));
+			intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+			startActivity(intent);
+			finish();
+		} else {
+			showDialog(DIALOG_ID_OPEN);
+		}
+	}
 
 	@Override
 	protected Dialog onCreateDialog(int id) {

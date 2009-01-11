@@ -32,6 +32,7 @@ import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
+import org.openintents.notepad.NoteEditor;
 import org.openintents.notepad.NotePad;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.NotePadProvider;
@@ -378,9 +379,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 	
 	private void openFromSdCard() {
+
+		File sdcard = getSdCardPath();
+		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, ""));
+		
 		Intent i = new Intent(this, DialogHostingActivity.class);
 		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_OPEN);
-		startActivity(i);
+		i.setData(uri);
+		startActivityForResult(i, REQUEST_CODE_OPEN);
 	}
 
 	@Override
@@ -747,6 +753,21 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		}
     		break;
     	case REQUEST_CODE_OPEN:
+    		if (resultCode == RESULT_OK && intent != null) {
+    			// File name should be in Uri:
+    			File filename = FileUriUtils.getFile(intent.getData());
+    			
+    			if (filename.exists()) {
+    				// Open file in note editor
+    				Intent i = new Intent(this, NoteEditor.class);
+    				i.setAction(Intent.ACTION_VIEW);
+    				i.setData(intent.getData());
+    				startActivity(i);
+    			} else {
+    				Toast.makeText(this, R.string.file_not_found,
+    						Toast.LENGTH_SHORT).show();
+    			}
+    		}
     		break;
     		
     	case REQUEST_CODE_SAVE:
