@@ -73,6 +73,7 @@
     <string name="open">Open</string>
     <string name="error_writing_file">Error while writing file</string>
     <string name="error_reading_file">Error while reading file</string>
+    <string name="file_not_found">File not found</string>
     <string name="note_saved">Note saved</string>
     
     <!-- File Manager -->

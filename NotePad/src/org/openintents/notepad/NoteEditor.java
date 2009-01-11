@@ -23,15 +23,24 @@
 
 package org.openintents.notepad;
 
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.util.ExtractTitle;
+import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -86,6 +95,7 @@ public class NoteEditor extends Activity {
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
     private static final int STATE_INSERT = 1;
+    //private static final int STATE_NOTE_FROM_SDCARD = 2;
 
     private int mState;
     private boolean mNoteOnly = false;
@@ -144,6 +154,55 @@ public class NoteEditor extends Activity {
             // Requested to edit: set that state, and the data being edited.
             mState = STATE_EDIT;
             mUri = intent.getData();
+
+            if (mUri.getScheme().equals("file")) {
+            	// Load the file into a new note.
+            	
+            	String text = readFile(FileUriUtils.getFile(mUri));
+            	
+            	if (text == null) {
+            		Log.e(TAG, "Error reading file");
+                    finish();
+                    return;
+            	}
+            	
+            	// Let's check whether the exactly same note already exists or not:
+            	Cursor c = getContentResolver().query(Notes.CONTENT_URI, 
+            			new String[] {Notes._ID},
+            			Notes.NOTE + " = ?", new String[] {text}, null);
+            	if (c != null && c.getCount() > 0) {
+            		// Same note exists already:
+            		c.moveToFirst();
+            		long id = c.getLong(0);
+            		mUri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
+            	} else {
+	            	
+	            	// Add new note
+	            	// Requested to insert: set that state, and create a new entry
+	                // in the container.
+	                mState = STATE_INSERT;
+	                ContentValues values = new ContentValues();
+	                values.put(Notes.NOTE, text);
+	                mUri = getContentResolver().insert(Notes.CONTENT_URI, values);
+	                intent.setAction(Intent.ACTION_EDIT);
+	                intent.setData(mUri);
+	                setIntent(intent);
+	
+	                // If we were unable to create a new note, then just finish
+	                // this activity.  A RESULT_CANCELED will be sent back to the
+	                // original activity if they requested a result.
+	                if (mUri == null) {
+	                    Log.e(TAG, "Failed to insert new note into " + getIntent().getData());
+	                    finish();
+	                    return;
+	                }
+	
+	                // The new entry was created, so assume all will end well and
+	                // set the result to be returned.
+	                //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+	                setResult(RESULT_OK, intent);
+            	}
+        	}
         } else if (Intent.ACTION_INSERT.equals(action)) {
             // Requested to insert: set that state, and create a new entry
             // in the container.
@@ -164,7 +223,8 @@ public class NoteEditor extends Activity {
 
             // The new entry was created, so assume all will end well and
             // set the result to be returned.
-            setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+            //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+            setResult(RESULT_OK, intent);
 
         } else {
             // Whoops, unknown action!  Bail.
@@ -180,6 +240,7 @@ public class NoteEditor extends Activity {
         
         // The text view for our note, identified by its ID in the XML file.
         mText = (EditText) findViewById(R.id.note);
+        
 
         // Get the note!
         mCursor = managedQuery(mUri, PROJECTION, null, null, null);
@@ -190,6 +251,49 @@ public class NoteEditor extends Activity {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
             mState = savedInstanceState.getInt(ORIGINAL_STATE);
         }
+    }
+    
+    public String readFile(File file) {
+
+        FileInputStream fis = null;
+        BufferedInputStream bis = null;
+        DataInputStream dis = null;
+        StringBuffer sb = new StringBuffer();
+
+        try {
+          fis = new FileInputStream(file);
+
+          // Here BufferedInputStream is added for fast reading.
+          bis = new BufferedInputStream(fis);
+          dis = new DataInputStream(bis);
+
+          // dis.available() returns 0 if the file does not have more lines.
+          while (dis.available() != 0) {
+
+          // this statement reads the line from the file and print it to
+            // the console.
+        	  sb.append(dis.readLine());
+        	  sb.append("\n");
+          }
+
+          // dispose all the resources after using them.
+          fis.close();
+          bis.close();
+          dis.close();
+
+        } catch (FileNotFoundException e) {
+        	Log.e(TAG, "File not found", e);
+			Toast.makeText(this, R.string.file_not_found,
+					Toast.LENGTH_SHORT).show();
+			return null;
+        } catch (IOException e) {
+        	Log.e(TAG, "File not found", e);
+			Toast.makeText(this, R.string.error_reading_file,
+					Toast.LENGTH_SHORT).show();
+			return null;
+        }
+        
+        return sb.toString();
     }
 
     @Override
