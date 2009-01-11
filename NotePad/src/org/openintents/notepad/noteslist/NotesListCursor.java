@@ -56,7 +56,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 	protected static final int COLUMN_INDEX_TITLE_ENCRYPTED = 4;
 	protected static final int COLUMN_INDEX_TAGS_ENCRYPTED = 5;
 	
-	static boolean mLoggedIn = true;
+	static boolean mLoggedIn = false;
 	
 	Context mContext;
 	Intent mIntent;
@@ -171,8 +171,8 @@ public class NotesListCursor extends OpenMatrixCursor {
 			String title = mDbCursor.getString(COLUMN_INDEX_TITLE);
 			String tags = mDbCursor.getString(COLUMN_INDEX_TAGS);
 			long encrypted = mDbCursor.getLong(COLUMN_INDEX_ENCRYPTED);
-			String titleEncrypted = null;
-			String tagsEncrypted = null;
+			String titleEncrypted = "";
+			String tagsEncrypted = "";
 			
 			// Skip encrypted notes in filter.
 			boolean skipEncrypted = false;

@@ -57,6 +57,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -706,6 +707,50 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
+		
+		// First see if note is encrypted
+		Cursor c = mAdapter.getCursor();
+		c.moveToPosition(position);
+		
+		long encrypted = c.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
+
+		if (encrypted != 0) {
+			String encryptedTitle = c.getString(NotesListCursor.COLUMN_INDEX_TITLE_ENCRYPTED);
+			// are we in decrypted mode?
+			Log.i(TAG, "Encrypted title: " + encryptedTitle);
+			
+			String title = c.getString(NotesListCursor.COLUMN_INDEX_TITLE);
+			Log.i(TAG, "title: " + title);
+
+			Log.i(TAG, "Encrypted title is null : " + (encryptedTitle == null));
+			Log.i(TAG, "Encrypted title is 'null' : " + (encryptedTitle.equals("null")));
+			
+			if (!TextUtils.isEmpty(encryptedTitle)) {
+				// Try to decrypt first
+				Log.i(TAG, "Decrypt first");
+				
+				Intent intent = new Intent();
+				intent.setAction(CryptoIntents.ACTION_DECRYPT);
+				intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
+				intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+				
+				intent.putExtra(CryptoIntents.EXTRA_PROMPT, true);
+		        
+		        try {
+		        	startActivityForResult(intent, REQUEST_CODE_DECRYPT_TITLE);
+		        } catch (ActivityNotFoundException e) {
+		        	mDecryptionFailed = true;
+		        	
+					Toast.makeText(this,
+							R.string.decryption_failed,
+							Toast.LENGTH_SHORT).show();
+					
+					Log.e(TAG, "failed to invoke encrypt");
+		        }
+		        return;
+			}
+		}
+		
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 
 		String action = getIntent().getAction();
