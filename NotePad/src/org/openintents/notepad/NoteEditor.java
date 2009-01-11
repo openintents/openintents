@@ -338,7 +338,7 @@ public class NoteEditor extends Activity {
         
 		Intent i = new Intent(this, EncryptActivity.class);
 		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
-		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, null));
 		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
 	}

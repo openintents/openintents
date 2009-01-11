@@ -1,12 +1,16 @@
 package org.openintents.notepad.noteslist;
 
+import org.openintents.intents.CryptoIntents;
+import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.crypto.EncryptActivity;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +27,7 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     
     Context mContext;
     Uri mUri;
+    long mEncrypted;
     
     MultiAutoCompleteTextView mTextView;
     String[] mTagList;
@@ -86,6 +91,10 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     	mTextView.setText(tags);
     }
     
+    public void setEncrypted(long encrypted) {
+    	mEncrypted = encrypted;
+    }
+    
     @Override
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
@@ -102,12 +111,23 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     	
     	String tags = mTextView.getText().toString();
     	
-    	ContentValues values = new ContentValues(1);
-        values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-        values.put(Notes.TAGS, tags);
+    	if (mEncrypted == 0) {
+    		// Simply store the value
+	    	ContentValues values = new ContentValues(1);
+	        values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+	        values.put(Notes.TAGS, tags);
+	
+	        mContext.getContentResolver().update(mUri, values, null, null);
+	        mContext.getContentResolver().notifyChange(mUri, null);
+    	} else {
+    		// Encrypt the tag
 
-        mContext.getContentResolver().update(mUri, values, null, null);
-        mContext.getContentResolver().notifyChange(mUri, null);
+    		Intent i = new Intent(mContext, EncryptActivity.class);
+    		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
+    		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(null, null, tags));
+    		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+    		mContext.startActivity(i);
+    	}
     }
 
 

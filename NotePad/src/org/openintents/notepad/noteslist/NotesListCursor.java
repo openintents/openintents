@@ -171,28 +171,47 @@ public class NotesListCursor extends OpenMatrixCursor {
 			String title = mDbCursor.getString(COLUMN_INDEX_TITLE);
 			String tags = mDbCursor.getString(COLUMN_INDEX_TAGS);
 			long encrypted = mDbCursor.getLong(COLUMN_INDEX_ENCRYPTED);
-			String title_encrypted = null;
-			String tags_encrypted = null;
+			String titleEncrypted = null;
+			String tagsEncrypted = null;
 			
 			// Skip encrypted notes in filter.
 			boolean skipEncrypted = false;
 			
 			if (encrypted > 0) {
 				// get decrypted title:
-				String decrypted = mEncryptedStringHashMap.get(title);
-				if (decrypted != null) {
-					title = decrypted;
+				String titleDecrypted = mEncryptedStringHashMap.get(title);
+				
+				if (titleDecrypted != null) {
+					title = titleDecrypted;
 				} else {
-					title_encrypted = title;
-					title = encryptedlabel;
 					// decrypt later
-					addForEncryption(title_encrypted);
+					addForEncryption(title);
+					
+					// Set encrypt title
+					titleEncrypted = title;
+					title = encryptedlabel;
+					
 					skipEncrypted = true;
+				}
+				
+				if (tags != null) {
+					String tagsDecrypted = mEncryptedStringHashMap.get(tags);
+					if (tagsDecrypted != null) {
+						tags = tagsDecrypted;
+					} else {
+						// decrypt later
+						addForEncryption(tags);
+						
+						// Set encrypt title
+						tagsEncrypted = tags;
+						tags = "";
+					}
 				}
 
 				if (!mLoggedIn) {
 					// suppress all decrypted output
 					title = encryptedlabel;
+					tags = "";
 				}
 			}
 			
@@ -227,7 +246,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 					tags = "";
 				}
 				
-				Object[] row = new Object[] {id, title, tags, encrypted, title_encrypted, tags_encrypted};
+				Object[] row = new Object[] {id, title, tags, encrypted, titleEncrypted, tagsEncrypted};
 				addRow(row);
 			}
 		}

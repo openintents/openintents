@@ -227,10 +227,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		mLastFilter = mCursorUtils.mCurrentFilter;
 		
-		Cursor c = mAdapter.getCursor();
-		if (c != null) {
-			c.deactivate();
-		}
+		
+		// Deactivating the cursor leads to flickering whenever some
+		// encrypted information is retrieved.
+		// Cursor c = mAdapter.getCursor();
+		//if (c != null) {
+		//	c.deactivate();
+		//}
 
 		unregisterReceiver(mBroadcastReceiver);
 		
@@ -477,17 +480,19 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		// getContentResolver().(noteUri, null, null);
 
 		Cursor c = getContentResolver().query(noteUri,
-				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.ENCRYPTED }, null,
+				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.TAGS, NotePad.Notes.ENCRYPTED }, null,
 				null, Notes.DEFAULT_SORT_ORDER);
 
 		String title = "";
 		String text = getString(R.string.empty_note);
+		String tags = "";
 		int encrypted = 0;
 		if (c != null) {
 			c.moveToFirst();
 			title = c.getString(0);
 			text = c.getString(1);
-			encrypted = c.getInt(2);
+			tags = c.getString(2);
+			encrypted = c.getInt(3);
 		}
 
 		if (action.equals(CryptoIntents.ACTION_ENCRYPT) && encrypted != 0) {
@@ -506,7 +511,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		Intent i = new Intent(this, EncryptActivity.class);
 		i.putExtra(NotePadIntents.EXTRA_ACTION, action);
-		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, new String[] {text, title});
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
 		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
 	}
@@ -691,9 +696,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			Cursor c = mAdapter.getCursor();
 			c.moveToPosition(mContextMenuInfo.position);
 			String tags = c.getString(NotesListCursor.COLUMN_INDEX_TAGS);
+			long encrypted = c.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
 			
 			d.setUri(uri);
 			d.setTags(tags);
+			d.setEncrypted(encrypted);
 			
 			break;
 		}

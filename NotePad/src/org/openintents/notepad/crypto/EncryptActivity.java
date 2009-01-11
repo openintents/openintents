@@ -66,16 +66,29 @@ public class EncryptActivity extends Activity {
 		Log.i(TAG, "EncryptActivity: startActivity OK");
 	}
 	
-	
+	/**
+	 * Returns an object to be used in EXTRA_TEXT_ARRAY in a well-defined order.
+	 * 
+	 * @param text
+	 * @param title
+	 * @param tags
+	 * @return
+	 */
+	public static String[] getCryptoStringArray(String text, String title, String tags) {
+		return new String[] {text, title, tags};
+	}
 
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	Log.i(TAG, "EncryptActivity: Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_ENCRYPT_OR_UNENCRYPT:
     		if (resultCode == RESULT_OK && data != null) {
-    			String[] encryptedTextArray = data.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
-    			String encryptedText = encryptedTextArray[0];
-    			String encryptedTitle = encryptedTextArray[1];
+    			// Depending on the action, textArray contains either encrypted or 
+    			// decrypted information.
+    			String[] textArray = data.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
+    			String text = textArray[0];
+    			String title = textArray[1];
+    			String tags = textArray[2];
     			String action = data.getAction();
     			
     			String uristring = data.getStringExtra(NotePadIntents.EXTRA_URI);
@@ -90,13 +103,21 @@ public class EncryptActivity extends Activity {
     				return;
     			}
 
-    	    	Log.i(TAG, "Updating" + uri + ", encrypted text " + encryptedText);
+    	    	Log.i(TAG, "Updating" + uri + ", encrypted text " + text + ", tags " + tags);
     			// Write this to content provider:
 
                 ContentValues values = new ContentValues();
                 values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
-                values.put(Notes.TITLE, encryptedTitle);
-                values.put(Notes.NOTE, encryptedText);
+                // Only update values that have been specifically set
+                if (title != null) {
+                	values.put(Notes.TITLE, title);
+                }
+                if (text != null) {
+                	values.put(Notes.NOTE, text);
+                }
+                if (tags != null) {
+                	values.put(Notes.TAGS, tags);
+                }
                 if (action.equals(CryptoIntents.ACTION_ENCRYPT)) {
                 	values.put(Notes.ENCRYPTED, 1);
                 } else if (action.equals(CryptoIntents.ACTION_DECRYPT)) {
