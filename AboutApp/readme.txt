@@ -30,7 +30,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2009-?
+date: 2009-01-12
 
 - First public release.
 

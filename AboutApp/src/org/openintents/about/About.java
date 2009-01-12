@@ -826,7 +826,7 @@ public class About extends TabActivity {
 		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
 		
 		// Start about activity. Needs to be "forResult" with requestCode>=0
-		// so the the package name is passed properly.
+		// so that the package name is passed properly.
 		//
 		// The details are obtained from the Manifest through
 		// default tags and metadata.
