@@ -77,7 +77,7 @@ public final class AboutIntents {
 	 * 
 	 * Alternatively you can set the EXTRA_ICON_RESOURCE.
 	 * 
-	 * LOGO_URI specifies the content uri of the image as a String. For instance:
+	 * ICON_URI specifies the content uri of the image as a String. For instance:
 	 * "content://images/1". As content provider you can use: a) your own small
 	 * content provider just for the image, b) the System-wide MediaProvider
 	 * 
