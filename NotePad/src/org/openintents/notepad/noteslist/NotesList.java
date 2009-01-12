@@ -717,17 +717,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		if (encrypted != 0) {
 			String encryptedTitle = c.getString(NotesListCursor.COLUMN_INDEX_TITLE_ENCRYPTED);
 			// are we in decrypted mode?
-			Log.i(TAG, "Encrypted title: " + encryptedTitle);
+			//Log.i(TAG, "Encrypted title: " + encryptedTitle);
 			
 			String title = c.getString(NotesListCursor.COLUMN_INDEX_TITLE);
-			Log.i(TAG, "title: " + title);
-
-			Log.i(TAG, "Encrypted title is null : " + (encryptedTitle == null));
-			Log.i(TAG, "Encrypted title is 'null' : " + (encryptedTitle.equals("null")));
+			//Log.i(TAG, "title: " + title);
 			
 			if (!TextUtils.isEmpty(encryptedTitle)) {
 				// Try to decrypt first
-				Log.i(TAG, "Decrypt first");
+				//Log.i(TAG, "Decrypt first");
 				
 				Intent intent = new Intent();
 				intent.setAction(CryptoIntents.ACTION_DECRYPT);
