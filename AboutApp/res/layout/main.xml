@@ -21,7 +21,7 @@
 -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"><!-- Having the tabs at the bottom would be better but it seems this is not easily possible. pjv -->
+    android:layout_height="fill_parent"><!-- Having the tabs at the bottom would be better but it seems this is not easily possible. pjv 2008-12-31-->
     
 <ScrollView android:id="@+id/sv_info" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:padding="5dip"
@@ -84,7 +84,6 @@
 			
 			<ImageSwitcher android:id="@+id/i_email" android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_gravity="center"
 				android:layout_marginRight="10dip">
 				<ImageView
 					android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -168,22 +167,13 @@
 </ScrollView>
     
 <ScrollView android:id="@+id/sv_license" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:padding="5dip"
+	android:layout_height="fill_parent" android:padding="5dip" android:fadingEdge="vertical"
 	>
-	<!-- android:scrollbars="vertical" android:fadingEdge="vertical"
-	android:gravity="top" -->
-	<LinearLayout android:id="@+id/ll_license" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:orientation="vertical"
-		android:layout_marginRight="5dip"
-		android:layout_marginBottom="15dip">
-
 		<TextView android:id="@+id/et_license"
 			android:textAppearance="?android:attr/textAppearanceSmall"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:autoLink="web|email|map"
-			android:layout_marginBottom="10dip">
+			android:paddingBottom="20dip">
 		</TextView>
-		<!-- android:linksClickable="true" android:selectAllOnFocus="false" -->
-	</LinearLayout>
 </ScrollView>
 </FrameLayout>

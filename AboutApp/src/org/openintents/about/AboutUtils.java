@@ -20,10 +20,7 @@ public class AboutUtils {
 		for (String person : array) {
 			text += person + "\n";
 		}
-		if (text.length() > 0) {
-			// delete last "\n"
-			text = text.substring(0, text.length() - 1);
-		}
+		text = text.substring(0, text.length() - 1); // delete last "\n"
 		return text;
 	}
 

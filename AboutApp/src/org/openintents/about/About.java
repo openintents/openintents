@@ -613,6 +613,10 @@ public class About extends TabActivity {
 		mWebsiteText = (TextSwitcher) findViewById(R.id.t_website);
 		mWebsiteText.setInAnimation(in);
 		mWebsiteText.setOutAnimation(out);
+
+        mEmailImage = (ImageSwitcher) findViewById(R.id.i_email);
+        mEmailImage.setInAnimation(in);
+        mEmailImage.setOutAnimation(out);
 		
 		mEmailText = (TextSwitcher) findViewById(R.id.t_email);
 		mEmailText.setInAnimation(in);
