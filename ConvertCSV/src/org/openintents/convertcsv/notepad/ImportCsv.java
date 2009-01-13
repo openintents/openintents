@@ -22,9 +22,11 @@ import java.io.Reader;
 import org.openintents.convertcsv.opencsv.CSVReader;
 
 import android.content.Context;
+import android.util.Log;
 
 public class ImportCsv {
-
+	private final static String TAG = "ImportCsv";
+	
 	Context mContext;
 	
 	public ImportCsv(Context context) {
@@ -50,12 +52,19 @@ public class ImportCsv {
 	    	// so we try to get rid of them:
 	    	note = note.replaceAll("\n\n", "\n");
 	    	
-	    	
-	    	// And ignore the other columns
+
+	    	// Second column is encrypted
+	    	long encrypted = 0;
+	    	try {
+	    		encrypted = Long.parseLong(nextLine[1]);
+	    	} catch (NumberFormatException e) {
+	    		Log.e(TAG, "Error parsing 'encrypted' input: " + nextLine[1]);
+	    	}
 	    	
 	    	// Third column would be category.
+	    	String tags = nextLine[2];
 
-	    	NotepadUtils.addNote(mContext, note);
+	    	NotepadUtils.addNote(mContext, note, encrypted, tags);
 	    }
 	}
 

@@ -53,20 +53,33 @@ public class ExportCsv {
 		csvwriter.writeNewline();
 		*/
 		
-		Cursor c = mContext.getContentResolver().query(NotePad.Notes.CONTENT_URI, NotepadUtils.PROJECTION_NOTES, null, null,
+		Cursor c = mContext.getContentResolver().query(NotePad.Notes.CONTENT_URI, null, null, null,
 		        NotePad.Notes.DEFAULT_SORT_ORDER);
 		
 		if (c != null) {
 			int COLUMN_INDEX_NOTE = c.getColumnIndexOrThrow(NotePad.Notes.NOTE);
 			int COLUMN_INDEX_ID = c.getColumnIndexOrThrow(NotePad.Notes._ID);
+			int COLUMN_INDEX_ENCRYPTED = c.getColumnIndex(NotePad.Notes.ENCRYPTED); // Introduced in 1.1.0
+			int COLUMN_INDEX_TAGS = c.getColumnIndex(NotePad.Notes.TAGS); // Introduced in 1.1.0
 			
 			while (c.moveToNext()) {
 		    	String note = c.getString(COLUMN_INDEX_NOTE);
 		    	long id = c.getLong(COLUMN_INDEX_ID);
-		    	
+
 		    	String encrypted = "0"; // Not encrypted
 		    	
 		    	String category = "";
+		    	
+		    	if (COLUMN_INDEX_ENCRYPTED > -1) {
+		    		encrypted = "" + c.getLong(COLUMN_INDEX_ENCRYPTED);
+		    	}
+		    	
+		    	if (COLUMN_INDEX_TAGS > -1) {
+		    		category = c.getString(COLUMN_INDEX_TAGS);
+		    		if (category == null) {
+		    			category = "";
+		    		}
+		    	}
 		    	
 		    	// TODO: Only if Setting == Palm Windows.		    	
 		    	// Palm Windows specific line ending

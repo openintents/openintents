@@ -28,6 +28,8 @@ import android.provider.BaseColumns;
 
 /**
  * Convenience definitions for NotePadProvider
+ * 
+ * @version 2009-01-12, 23:09 UTC
  */
 public final class NotePad {
     public static final String AUTHORITY = "org.openintents.notepad";
@@ -90,6 +92,7 @@ public final class NotePad {
          * Tags associated with a note.
          * Multiple tags are separated by commas.
          * <P>Type: TEXT</P>
+         * @since 1.1.0
          */
         public static final String TAGS = "tags";
 
@@ -97,12 +100,14 @@ public final class NotePad {
          * Whether the note is encrypted.
          * 0 = not encrypted. 1 = encrypted.
          * <P>Type: INTEGER</P>
+         * @since 1.1.0
          */
         public static final String ENCRYPTED = "encrypted";
 
         /**
          * A theme URI.
          * <P>Type: TEXT</P>
+         * @since 1.1.0
          */
         public static final String THEME = "theme";
     }

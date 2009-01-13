@@ -19,8 +19,10 @@ package org.openintents.convertcsv.notepad;
 import org.openintents.provider.NotePad;
 import org.openintents.provider.NotePad.Notes;
 
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
@@ -31,13 +33,29 @@ public class NotepadUtils {
 	public static final String[] PROJECTION_NOTES = new String[] { Notes._ID,
 			Notes.TITLE, Notes.NOTE, Notes.CREATED_DATE, Notes.MODIFIED_DATE};
 	
-	public static long addNote(Context context, String note) {
+	public static long addNote(Context context, String note, long encrypted, String tags) {
 
+		// First check which columns are available:
+		Uri testuri = ContentUris.withAppendedId(NotePad.Notes.CONTENT_URI, 0);
+		Cursor c = context.getContentResolver().query(testuri, null, null, null,
+		        NotePad.Notes.DEFAULT_SORT_ORDER);
+		
+		int COLUMN_INDEX_ENCRYPTED = c.getColumnIndex(NotePad.Notes.ENCRYPTED); // Introduced in 1.1.0
+		int COLUMN_INDEX_TAGS = c.getColumnIndex(NotePad.Notes.TAGS); // Introduced in 1.1.0
+		
+		
 		// Add item to list:
 		ContentValues values = new ContentValues(1);
 		values.put(NotePad.Notes.NOTE, note);
 		String title = extractTitle(note);
 		values.put(NotePad.Notes.TITLE, title);
+		
+		if (COLUMN_INDEX_ENCRYPTED > -1) {
+			values.put(NotePad.Notes.ENCRYPTED, encrypted);
+		}
+		if (COLUMN_INDEX_TAGS > -1) {
+			values.put(NotePad.Notes.TAGS, tags);
+		}
 		
 		try {
 			Uri uri = context.getContentResolver().insert(NotePad.Notes.CONTENT_URI,

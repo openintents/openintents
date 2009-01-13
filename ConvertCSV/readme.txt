@@ -22,9 +22,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2009-??
+date: 2009-01-14
 
 - Fix line feed problem with Palm CSV Windows files.
+- Add support for new fields in NotePad 1.1.0.
 
 ---------------------------------------------------------
 release: 1.0.0
