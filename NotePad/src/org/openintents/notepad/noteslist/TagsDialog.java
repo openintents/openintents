@@ -95,7 +95,6 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     	mEncrypted = encrypted;
     }
     
-    @Override
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
     		saveTags();

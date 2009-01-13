@@ -59,9 +59,7 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
 
     }
     
-    
-    
-    @Override
+          
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
     		openOrSave();

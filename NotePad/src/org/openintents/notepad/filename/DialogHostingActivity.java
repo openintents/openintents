@@ -140,8 +140,7 @@ public class DialogHostingActivity extends Activity {
 	}
 	
 	OnDismissListener mDismissListener = new OnDismissListener() {
-
-		@Override
+		
 		public void onDismiss(DialogInterface dialoginterface) {
 			DialogHostingActivity.this.finish();
 		}

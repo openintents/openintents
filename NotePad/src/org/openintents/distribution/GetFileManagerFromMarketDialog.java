@@ -23,8 +23,7 @@ public class GetFileManagerFromMarketDialog extends AlertDialog implements OnCli
         
     }
 
-    
-    @Override
+        
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
     		Uri uri = Uri.parse(mContext.getString(RD.string.filemanager_market_uri));

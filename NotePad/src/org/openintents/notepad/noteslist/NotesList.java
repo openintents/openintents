@@ -639,7 +639,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     public void decryptDelayed(final String encryptedTitle, long delayMillis) {
 		mHandler.postDelayed(new Runnable() {
 			
-			@Override
 			public void run() {
 				decryptTitle(encryptedTitle);
 			}
