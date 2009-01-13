@@ -60,6 +60,7 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -231,6 +232,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 		registerReceiver(mBroadcastReceiver, filter);
+		
+
+        // getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 	}
 
 	@Override
@@ -917,5 +921,20 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 	};
 
-
+	/*
+	
+	// Note: onKeyDown is never called, because the 
+	//       list filter consumes the event before.
+	
+	@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_DEL) {
+        	// Delete the currently selected item (if any).
+        	Log.i(TAG, "Selected item: " + getSelectedItemId());
+        	
+        	return true;
+        }
+        return false;
+    }
+    */
 }

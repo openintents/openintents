@@ -39,9 +39,11 @@
 		    android:layout_height="wrap_content"
 		    android:layout_width="wrap_content"
 		    android:textAppearance="?android:attr/textAppearanceLarge"
-		    android:singleLine="true"
+			android:singleLine="true"
 		    android:ellipsize="end"
 		/> 
+		<!-- CheckedTextView: android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+		     -->
 		<TextView
 		    android:id="@+id/info"
 		    android:layout_height="wrap_content"
