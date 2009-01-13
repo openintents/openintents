@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
@@ -44,10 +45,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,12 +68,19 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected EditText mEditText;
 
 	protected TextView mConvertInfo;
+	protected Spinner mSpinner;
 
 	protected String PREFERENCE_FILENAME;
 	protected String DEFAULT_FILENAME;
+	protected String PREFERENCE_FORMAT;
+	protected String DEFAULT_FORMAT = null;
 	protected int RES_STRING_FILEMANAGER_TITLE = 0;
 	protected int RES_STRING_FILEMANAGER_BUTTON_TEXT = 0;
-
+	protected int RES_ARRAY_CSV_FILE_FORMAT = 0;
+	protected int RES_ARRAY_CSV_FILE_FORMAT_VALUE = 0;
+	
+	String[] mFormatValues;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +125,16 @@ public class ConvertCsvBaseActivity extends Activity {
 			}
         });
         
+        mSpinner = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, RES_ARRAY_CSV_FILE_FORMAT, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinner.setAdapter(adapter);
+        
+        mFormatValues = getResources().getStringArray(RES_ARRAY_CSV_FILE_FORMAT_VALUE);
+        
+        setSpinner(pm.getString(PREFERENCE_FORMAT, DEFAULT_FORMAT));
+        
         Intent intent = getIntent();
         String type = intent.getType();
         if (type != null && type.equals("text/csv")) {
@@ -132,6 +152,25 @@ public class ConvertCsvBaseActivity extends Activity {
         
     }
     
+    public void setSpinner(String value) {
+    	// get the ID:
+    	int id = findString(mFormatValues, value);
+    	
+    	if (id != -1) {
+    		mSpinner.setSelection(id);
+    	}
+    }
+    
+    private static int findString(String[] array, String string) {
+    	int length = array.length;
+    	for (int i = 0; i < length; i++) {
+    		if (string.equals(array[i])) {
+    			return i;
+    		}
+    	}
+    	return -1;
+    }
+    
     public void setPreferencesUsed() {
     	
     }
@@ -144,7 +183,7 @@ public class ConvertCsvBaseActivity extends Activity {
     	//getContentResolver().delete(Shopping.Lists.CONTENT_URI, null, null);
     	
 
-    	String fileName = getAndSaveFilename();
+    	String fileName = getFilenameAndSavePreferences();
     	
     	Log.i(TAG, "Importing...");
     	
@@ -165,7 +204,9 @@ public class ConvertCsvBaseActivity extends Activity {
 			} catch (IOException e) {
 				Toast.makeText(this, R.string.error_reading_file, Toast.LENGTH_SHORT).show();
 				Log.i(TAG, "IO exception", e);
-				
+			} catch (WrongFormatException e) {
+				Toast.makeText(this, R.string.wrong_csv_format, Toast.LENGTH_SHORT).show();
+				Log.i(TAG, "array index out of bounds", e);
 			}
 		}
     }
@@ -174,7 +215,8 @@ public class ConvertCsvBaseActivity extends Activity {
 	 * @param reader
 	 * @throws IOException
 	 */
-	public void doImport(FileReader reader) throws IOException {
+	public void doImport(FileReader reader) throws IOException,
+				WrongFormatException {
 	
 	}
     
@@ -201,7 +243,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	 * @param file
 	 */
 	public void doExport() {
-		String fileName = getAndSaveFilename();
+		String fileName = getFilenameAndSavePreferences();
     	final File file = new File(fileName);
     	
 		try{
@@ -216,7 +258,6 @@ public class ConvertCsvBaseActivity extends Activity {
 		} catch (IOException e) {
 			Toast.makeText(this, R.string.error_writing_file, Toast.LENGTH_SHORT).show();
 			Log.i(TAG, "IO exception", e);
-			
 		}
 	}
     
@@ -231,7 +272,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	/**
 	 * @return
 	 */
-	public String getAndSaveFilename() {
+	public String getFilenameAndSavePreferences() {
 
 		String fileName = mEditText.getText().toString();
 		
@@ -239,11 +280,19 @@ public class ConvertCsvBaseActivity extends Activity {
 		.getDefaultSharedPreferences(this);
 		Editor editor = prefs.edit();
 		editor.putString(PREFERENCE_FILENAME, fileName);
+		editor.putString(PREFERENCE_FORMAT, getFormat());
 		editor.commit();
 
-		return mEditText.getText().toString();
+		return fileName;
 	}
 	
+	public String getFormat() {
+		int id = mSpinner.getSelectedItemPosition();
+		if (id != Spinner.INVALID_POSITION) {
+			return mFormatValues[id];
+		}
+		return DEFAULT_FORMAT;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

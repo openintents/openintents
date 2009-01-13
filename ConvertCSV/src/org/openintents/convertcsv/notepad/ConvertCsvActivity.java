@@ -23,6 +23,7 @@ import java.io.IOException;
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
+import org.openintents.convertcsv.common.WrongFormatException;
 
 import android.os.Bundle;
 
@@ -33,7 +34,11 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     public void setPreferencesUsed() {
     	PREFERENCE_FILENAME = PreferenceActivity.PREFS_NOTEPAD_FILENAME;
     	DEFAULT_FILENAME = getString(R.string.default_notepad_path);
+    	PREFERENCE_FORMAT = PreferenceActivity.PREFS_NOTEPAD_FORMAT;
+    	DEFAULT_FORMAT = "palm";
     	RES_STRING_FILEMANAGER_TITLE = R.string.filemanager_title_notepad;
+    	RES_ARRAY_CSV_FILE_FORMAT = R.array.notepad_format;
+    	RES_ARRAY_CSV_FILE_FORMAT_VALUE = R.array.notepad_format_value;
     }
     
     /** Called when the activity is first created. */
@@ -48,9 +53,10 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param reader
 	 * @throws IOException
 	 */
-	public void doImport(FileReader reader) throws IOException {
+	public void doImport(FileReader reader) throws IOException,
+				WrongFormatException {
 		ImportCsv ic = new ImportCsv(this);
-		ic.importCsv(reader);
+		ic.importCsv(reader, getFormat());
 	}
     
 	/**
@@ -59,7 +65,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 */
 	public void doExport(FileWriter writer) throws IOException {
 		ExportCsv ec = new ExportCsv(this);
-		ec.exportCsv(writer);
+		ec.exportCsv(writer, getFormat());
 	}
 
 

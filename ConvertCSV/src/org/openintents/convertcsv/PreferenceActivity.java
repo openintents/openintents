@@ -20,7 +20,9 @@ import android.os.Bundle;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_NOTEPAD_FILENAME = "notepad_filename";
+	public static final String PREFS_NOTEPAD_FORMAT = "notepad_format";
 	public static final String PREFS_SHOPPINGLIST_FILENAME = "shoppinglist_filename";
+	public static final String PREFS_SHOPPINGLIST_FORMAT = "shoppinglist_format";
 	public static final String PREFS_ASK_IF_FILE_EXISTS = "ask_if_file_exists";
 
 	@Override

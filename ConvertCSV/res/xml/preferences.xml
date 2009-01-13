@@ -32,6 +32,14 @@
 			            android:defaultValue="@string/default_notepad_path"
 			            android:title="@string/preference_filename"
 			            android:summary="@string/preference_filename_summary"/>
+			    <ListPreference android:key="notepad_format"
+					android:defaultValue="palm" 
+					android:title="@string/csv_file_format"
+					android:summary="@string/preferences_select_csv_file_format"
+					android:entries="@array/notepad_format" 
+					android:entryValues="@array/notepad_format_value"
+					android:dialogTitle="@string/select_csv_file_format" />
+				
 			</PreferenceCategory>		     
 	    </PreferenceScreen>
 	    
@@ -47,6 +55,14 @@
 			            android:defaultValue="@string/default_shoppinglist_path"
 			            android:title="@string/preference_filename"
 			            android:summary="@string/preference_filename_summary"/>
+			            
+			    <ListPreference android:key="shoppinglist_format"
+					android:defaultValue="outlook tasks" 
+					android:title="@string/csv_file_format"
+					android:summary="@string/preferences_select_csv_file_format"
+					android:entries="@array/shoppinglist_format" 
+					android:entryValues="@array/shoppinglist_format_value"
+					android:dialogTitle="@string/select_csv_file_format" />
 			</PreferenceCategory>		        
 	    </PreferenceScreen>
 	    <!-- 

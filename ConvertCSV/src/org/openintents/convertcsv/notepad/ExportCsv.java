@@ -37,8 +37,11 @@ public class ExportCsv {
 	 * @param dos
 	 * @throws IOException
 	 */
-	public void exportCsv(Writer writer) throws IOException {
+	public void exportCsv(Writer writer, String format) throws IOException {
 
+		//boolean isPalm = format.equals(FORMAT_PALM_CSV); // Palm is default.
+		boolean isOutlookNotes = format.equals(ImportCsv.FORMAT_OUTLOOK_NOTES);
+		
 		CSVWriter csvwriter = new CSVWriter(writer);
 		
 		//csvwriter.setLineEnd("\r\n");
@@ -46,12 +49,22 @@ public class ExportCsv {
 		//String lineEnd = "\r\r\n"; 
 		//csvwriter.setLineEnd(lineEnd);
 		
-		/*
-		csvwriter.write("Note");
-		csvwriter.write("Encrypted");
-		csvwriter.write("Category");
-		csvwriter.writeNewline();
-		*/
+		if (isOutlookNotes) {
+			csvwriter.writeValue("Note Body");
+			csvwriter.writeValue("Categories");
+			csvwriter.writeValue("Note Color");
+			csvwriter.writeValue("Priority");
+			csvwriter.writeValue("Sensitivity");
+			csvwriter.writeNewline();
+		} else {
+			// No header line for Palm
+			/*
+			csvwriter.write("Note");
+			csvwriter.write("Encrypted");
+			csvwriter.write("Category");
+			csvwriter.writeNewline();
+			*/
+		}
 		
 		Cursor c = mContext.getContentResolver().query(NotePad.Notes.CONTENT_URI, null, null, null,
 		        NotePad.Notes.DEFAULT_SORT_ORDER);
@@ -81,14 +94,29 @@ public class ExportCsv {
 		    		}
 		    	}
 		    	
-		    	// TODO: Only if Setting == Palm Windows.		    	
-		    	// Palm Windows specific line ending
-				// that is only used within notes.
-				note = note.replaceAll("\n", "\r\r\n");
-		    	
-		    	csvwriter.write(note);
-		    	csvwriter.write(encrypted);
-		    	csvwriter.write(category);
+		    	if (isOutlookNotes) {
+		    		String notecolor = "3";
+		    		String priority = "Normal";
+		    		String sensitivity = "Normal";
+		    		if (!encrypted.equals("0")) {
+		    			sensitivity = "Encrypted " + encrypted;
+		    		}
+			    	csvwriter.write(note);
+			    	csvwriter.writeValue(category);
+			    	csvwriter.writeValue(notecolor);
+			    	csvwriter.writeValue(priority);
+			    	csvwriter.writeValue(sensitivity);
+		    	} else {
+		    		// Palm CSV format
+		    		
+			    	// Palm Windows specific line ending
+					// that is only used within notes.
+					note = note.replaceAll("\n", "\r\r\n");
+			    	
+			    	csvwriter.write(note);
+			    	csvwriter.write(encrypted);
+			    	csvwriter.write(category);
+		    	}
 		    	csvwriter.writeNewline();
 			}
 		}
