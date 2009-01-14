@@ -122,6 +122,7 @@
 		</TextView>
 		<TextView android:id="@+id/et_authors"
 			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#ffffffff"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:autoLink="all" android:layout_marginBottom="15dip">
 		</TextView>
@@ -132,6 +133,7 @@
 		</TextView>
 		<TextView android:id="@+id/et_documenters"
 			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#ffffffff"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:autoLink="all" android:layout_marginBottom="15dip">
 		</TextView>
@@ -142,6 +144,7 @@
 		</TextView>
 		<TextView android:id="@+id/et_translators"
 			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#ffffffff"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:autoLink="all" android:layout_marginBottom="15dip">
 		</TextView>
@@ -152,6 +155,7 @@
 		</TextView>
 		<TextView android:id="@+id/et_artists"
 			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#ffffffff"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:autoLink="all" android:layout_marginBottom="15dip">
 			<!-- android:editable="false" android:linksClickable="true" android:selectAllOnFocus="false" -->
@@ -170,10 +174,14 @@
 	android:layout_height="fill_parent" android:padding="5dip" android:fadingEdge="vertical"
 	>
 		<TextView android:id="@+id/et_license"
-			android:textAppearance="?android:attr/textAppearanceSmall"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textColor="#ffffffff"
 			android:autoLink="web|email|map"
 			android:paddingBottom="20dip">
+			<!-- 
+			android:textColor="?android:attr/textColorPrimary"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			 -->
 		</TextView>
 </ScrollView>
 </FrameLayout>
