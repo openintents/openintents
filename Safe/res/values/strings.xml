@@ -21,7 +21,6 @@
 <resources>
     <string name="app_name">OI Safe</string>
     <string name="authors">Steven Osborn, Randy McEoin</string>
-    <string name="version">0.6.0</string>
     <string name="empty_safe">No Passwords present for this category.</string>
     <string name="empty_category">No categories present.  Please add one via Menu->Add</string>
     <string name="password_lock">Lock</string>

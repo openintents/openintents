@@ -1,6 +1,7 @@
 package org.openintents.safe;
 
 import org.openintents.safe.service.ServiceDispatchImpl;
+import org.openintents.util.VersionUtils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,8 +20,8 @@ public class LogOffActivity extends Activity {
 			ImageView icon = (ImageView) findViewById(R.id.logoff_icon);
 			icon.setImageResource(R.drawable.passicon);
 			TextView header = (TextView) findViewById(R.id.logoff_header);
-			String version = getString(R.string.version);
-			String appName = getString(R.string.app_name);
+			String version = VersionUtils.getVersionNumber(this);
+			String appName = VersionUtils.getApplicationName(this);
 			String head = appName + " " + version + "\n";
 			header.setText(head);
 	        Button logoffButton = (Button) findViewById(R.id.logoff_button);

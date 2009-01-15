@@ -16,6 +16,8 @@
  */
 package org.openintents.safe;
 
+import org.openintents.util.VersionUtils;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -83,8 +85,8 @@ public class AskPassword extends Activity {
 		ImageView icon = (ImageView) findViewById(R.id.entry_icon);
 		icon.setImageResource(R.drawable.passicon);
 		TextView header = (TextView) findViewById(R.id.entry_header);
-		String version = getString(R.string.version);
-		String appName = getString(R.string.app_name);
+		String version = VersionUtils.getVersionNumber(this);
+		String appName = VersionUtils.getApplicationName(this);
 		String head = appName + " " + version + "\n";
 		header.setText(head);
 
