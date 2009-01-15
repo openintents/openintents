@@ -20,12 +20,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent">
-	
-	<TableLayout android:id="@+id/entry_head" 
+	<LinearLayout android:id="@+id/entry_head"
 		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content">
-		
-		<TableRow>
+		android:layout_height="wrap_content"
+		android:orientation = "vertical"
+		android:layout_marginTop="5dip">
+		<LinearLayout 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_gravity="center">
 			<ImageView android:id="@+id/entry_icon"
 				android:layout_height="wrap_content"
 				android:layout_width="wrap_content"
@@ -33,12 +37,12 @@
 			<TextView android:id="@+id/entry_header"
 				android:paddingBottom="10px"
 				android:paddingTop="10px"
-				android:textSize="20px" 
-				android:layout_width="fill_parent"
-				android:layout_weight="1"
+				android:textSize="24px" 
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 			/>
-		</TableRow>
-	</TableLayout>
+		</LinearLayout>
+	</LinearLayout>
 	<TextView android:id="@+id/first_time"
 		android:layout_below="@id/entry_head"
 		android:text="@string/first_time" 

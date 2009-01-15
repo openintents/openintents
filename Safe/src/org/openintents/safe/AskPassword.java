@@ -83,7 +83,7 @@ public class AskPassword extends Activity {
 		// Setup layout
 		setContentView(R.layout.front_door);
 		ImageView icon = (ImageView) findViewById(R.id.entry_icon);
-		icon.setImageResource(R.drawable.passicon);
+		icon.setImageResource(R.drawable.icon_safe);
 		TextView header = (TextView) findViewById(R.id.entry_header);
 		String version = VersionUtils.getVersionNumber(this);
 		String appName = VersionUtils.getApplicationName(this);
