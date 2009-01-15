@@ -10,19 +10,19 @@
 		        <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             
-            <intent-filter android:label="org.openintents.action.ENCRYPT">
+            <intent-filter android:label="@string/intent_encrypt">
                 <action android:name="org.openintents.action.ENCRYPT" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
-        	<intent-filter android:label="org.openintents.action.DECRYPT">
+        	<intent-filter android:label="@string/intent_decrypt">
                 <action android:name="org.openintents.action.DECRYPT" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
-        	<intent-filter android:label="org.openintents.action.GET_PASSWORD">
+        	<intent-filter android:label="@string/intent_get_password">
                 <action android:name="org.openintents.action.GET_PASSWORD" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
-        	<intent-filter android:label="org.openintents.action.SET_PASSWORD">
+        	<intent-filter android:label="@string/intent_set_password">
                 <action android:name="org.openintents.action.SET_PASSWORD" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>

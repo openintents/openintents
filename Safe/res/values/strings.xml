@@ -126,4 +126,8 @@
 	<string name="pref_title_lock_timeout">Lock timeout</string>
 	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked.</string>
 	<string name="pref_dialog_title_lock_timeout">Lock timeout</string>
+	<string name="intent_decrypt">Decrypt (OI Safe)</string>
+	<string name="intent_encrypt">Encrypt (OI Safe)</string>
+	<string name="intent_get_password">Get password (OI Safe)</string>
+	<string name="intent_set_password">Set password (OI Safe)</string>
 </resources>
