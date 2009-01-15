@@ -1,0 +1,8 @@
+To perform import testing, execute the following one at a time, 
+doing an Import each time.
+
+adb push passwordsafe-test1.csv /sdcard/passwordsafe.csv
+adb push passwordsafe-test2.csv /sdcard/passwordsafe.csv
+adb push passwordsafe-test3.csv /sdcard/passwordsafe.csv
+adb push passwordsafe-test4.csv /sdcard/passwordsafe.csv
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+* $Id: pass_edit.xml 30 2008-10-31 22:40:13Z osborn.steven $
+* 
+* Copyright 2007 Steven Osborn
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+    
+<LinearLayout 
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	
+	<TableLayout android:layout_width="fill_parent" 
+		android:layout_height="wrap_content">
+			<TableRow>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Password Length" />
+				<EditText android:id="@+id/pass_length"
+				 	android:singleLine="true"
+					android:layout_width="3pt"
+					android:layout_height="wrap_content" 
+					android:layout_weight="0"
+					android:text="8"/>
+			</TableRow>
+			<TableRow>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="Uppercase [A-Z]" />
+				<CheckBox
+					android:id="@+id/pass_upper"
+					android:layout_height="wrap_content"
+					android:layout_width="wrap_content" android:enabled="true" android:checked="false"/>
+			</TableRow>
+			<TableRow>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="Lowercase [a-z]" />
+				<CheckBox android:id="@+id/pass_lower" 
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:checked="true"/>
+			</TableRow>
+			
+			<TableRow>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="Numbers [0-9]" />
+				<CheckBox android:id="@+id/pass_num" 
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:checked="true"/>
+			</TableRow>
+			
+			<TableRow>
+				<TextView android:layout_width="wrap_content"
+					android:layout_height="wrap_content" 
+					android:text="Symbols [!@#$%^\*]" />
+				<CheckBox android:id="@+id/pass_symbol" 
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content" />
+			</TableRow>
+	</TableLayout>
+	
+	<EditText android:layout_width="fill_parent"
+		android:id="@+id/pass_view"
+		android:layout_height="wrap_content"
+		android:singleLine="true"
+		android:editable="false"/>
+		
+	<Button android:id="@+id/copy_entry" 
+	  	android:text="Copy to Current Entry"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+		
+	<Button android:id="@+id/copy_clip" 
+	  	android:text="Copy to Clipboard"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+		
+	<Button android:id="@+id/cancel" 
+	  	android:text="Cancel"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>
+</ScrollView>
