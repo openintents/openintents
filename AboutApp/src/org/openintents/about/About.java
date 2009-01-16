@@ -403,6 +403,9 @@ public class About extends TabActivity {
 		}
 		
         mProgramNameAndVersionText.setText(combined);
+        
+        String title = getString(R.string.about_activity_name_extended, applicationlabel);
+        setTitle(title);
 	}
 
 	/**

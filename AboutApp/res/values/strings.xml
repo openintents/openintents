@@ -38,6 +38,7 @@
     <string name="menu_about">About OI About itself</string>
     
     <string name="about_activity_name">About</string>
+    <string name="about_activity_name_extended">About %s</string>
     <string name="preferences_activity_name">OI About Preferences</string>
     <string name="about_activity_title">About</string>
     
