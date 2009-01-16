@@ -1,6 +1,7 @@
 package org.openintents.notepad.filename;
 
-import org.openintents.distribution.GetFileManagerFromMarketDialog;
+import org.openintents.distribution.GetFromMarketDialog;
+import org.openintents.distribution.RD;
 import org.openintents.intents.FileManagerIntents;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
@@ -102,7 +103,10 @@ public class DialogHostingActivity extends Activity {
 			return new FilenameDialog(this);
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 			Log.i(TAG, "fmd - create");
-			return new GetFileManagerFromMarketDialog(this);
+			return new GetFromMarketDialog(this, 
+					RD.string.filemanager_not_available,
+					RD.string.filemanager_get_oi_filemanager,
+					RD.string.filemanager_market_uri);
 
 		}
 		return null;
