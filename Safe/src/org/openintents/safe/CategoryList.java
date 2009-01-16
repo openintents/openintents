@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.openintents.intents.CryptoIntents;
 import org.openintents.safe.service.ServiceDispatchImpl;
 
 
@@ -117,8 +118,11 @@ public class CategoryList extends ListActivity {
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
-                if (debug) Log.d(TAG,"caught ACTION_SCREEN_OFF");
-                masterKey=null;
+            	 if (debug) Log.d(TAG,"caught ACTION_SCREEN_OFF");
+            	 masterKey=null;
+            } else if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 lockAndShutFrontDoor();
             }
         }
     };
@@ -200,6 +204,7 @@ public class CategoryList extends ListActivity {
 		
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction (CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
 
 		fillData();
@@ -459,14 +464,7 @@ public class CategoryList extends ListActivity {
 		}
 		switch(item.getItemId()) {
 		case LOCK_CATEGORY_INDEX:
-			Intent serviceIntent = new Intent();
-			serviceIntent.setClass(this, ServiceDispatchImpl.class );
-		    stopService(serviceIntent);
-			masterKey=null;
-		    Intent frontdoor = new Intent(this, FrontDoor.class);
-		    frontdoor.setAction(Intent.ACTION_MAIN);
-		    startActivity(frontdoor);
-		    finish();
+			lockAndShutFrontDoor();
 			break;
 		case OPEN_CATEGORY_INDEX:
 			launchPassList(rows.get(info.position).id);
@@ -536,6 +534,18 @@ public class CategoryList extends ListActivity {
     	return backup.getResult();
     }
 
+    
+    private void lockAndShutFrontDoor () {
+    	Intent serviceIntent = new Intent();
+		serviceIntent.setClass(this, ServiceDispatchImpl.class );
+	    stopService(serviceIntent);
+		masterKey=null;
+	    Intent frontdoor = new Intent(this, FrontDoor.class);
+	    frontdoor.setAction(Intent.ACTION_MAIN);
+	    startActivity(frontdoor);
+	    finish();
+    }
+    
 	/**
 	 * Start a separate thread to backup the database.   By running
 	 * the backup in a thread it allows the main UI thread to return
