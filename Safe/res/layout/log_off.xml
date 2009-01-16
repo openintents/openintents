@@ -53,13 +53,13 @@
 		android:layout_height="wrap_content"
 		android:orientation="horizontal">
 		<Button android:id="@+id/logoff_button" 
-		  	android:text="Lock"
+		  	android:text="@string/lock"
 			android:layout_width="0dip"
 			android:layout_weight="1"
 			android:layout_height="wrap_content" />
 			
 	    <Button android:id="@+id/goto_pws" 
-		  	android:text="Open Password Safe"
+		  	android:text="@string/open_safe"
 			android:layout_width="0dip"
 			android:layout_weight="1"
 			android:layout_height="wrap_content" />	
@@ -73,7 +73,7 @@
 		android:layout_height="wrap_content" />
 		
     <Button android:id="@+id/goto_pws" 
-	  	android:text="Continue"
+	  	android:text="@string/continue"
 		android:layout_width="wrap_content"
         android:layout_toRightOf="@id/logoff_button"
         android:layout_alignTop="@id/logoff_button"

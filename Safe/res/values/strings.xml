@@ -82,7 +82,7 @@
 	<string name="dialog_delete_password_title">Delete Password</string>
 	<string name="dialog_delete_password_msg">Are you sure you want to delete this password?</string>
 	<string name="change_password">Change Master Password</string>
-	<string name="chg_pass_explaination">Use this to change the password you use to unlock Password Safe.   Your data will be re-encrypted with the new password.  The more complex your password is, the safer your data will be.</string>
+	<string name="chg_pass_explaination">Use this to change the password you use to unlock OI Safe.   Your data will be re-encrypted with the new password.  The more complex your password is, the safer your data will be.</string>
 	<string name="old_password">Old password</string>
 	<string name="new_password">New password</string>
 	<string name="verify_password">Verify password</string>
@@ -129,4 +129,15 @@
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
 	<string name="intent_get_password">Get password (OI Safe)</string>
 	<string name="intent_set_password">Set password (OI Safe)</string>
+	<string name="open_safe">Open OI Safe</string>
+	<string name="lock">Lock</string>
+	<string name="continue_text">Continue</string>
+	<string name="pass_gen_length">Password Length</string>
+	<string name="pass_gen_uppercase">Uppercase [A-Z]</string>
+	<string name="pass_gen_lowercase">Lowercase [a-z]</string>
+	<string name="pass_gen_numbers">Numbers [0-9]</string>
+	<string name="pass_gen_symbols">Symbols [!@#$%^\*]</string>
+	<string name="pass_gen_copy_to_current_entry">Copy to Current Entry</string>
+	<string name="pass_gen_copy_to_clipboard">Copy to Clipboard</string>
+	<string name="cancel">Cancel</string>
 </resources>

@@ -33,7 +33,7 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Password Length" />
+					android:text="@string/pass_gen_length" />
 				<EditText android:id="@+id/pass_length"
 				 	android:singleLine="true"
 					android:layout_width="3pt"
@@ -44,7 +44,7 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
-					android:text="Uppercase [A-Z]" />
+					android:text="@string/pass_gen_uppercase" />
 				<CheckBox
 					android:id="@+id/pass_upper"
 					android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
-					android:text="Lowercase [a-z]" />
+					android:text="@string/pass_gen_lowercase" />
 				<CheckBox android:id="@+id/pass_lower" 
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:checked="true"/>
@@ -62,7 +62,7 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
-					android:text="Numbers [0-9]" />
+					android:text="@string/pass_gen_numbers" />
 				<CheckBox android:id="@+id/pass_num" 
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" android:checked="true"/>
@@ -71,7 +71,7 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
-					android:text="Symbols [!@#$%^\*]" />
+					android:text="@string/pass_gen_symbols" />
 				<CheckBox android:id="@+id/pass_symbol" 
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" />
@@ -85,17 +85,17 @@
 		android:editable="false"/>
 		
 	<Button android:id="@+id/copy_entry" 
-	  	android:text="Copy to Current Entry"
+	  	android:text="@string/pass_gen_copy_to_current_entry"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
 		
 	<Button android:id="@+id/copy_clip" 
-	  	android:text="Copy to Clipboard"
+	  	android:text="@string/pass_gen_copy_to_clipboard"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
 		
 	<Button android:id="@+id/cancel" 
-	  	android:text="Cancel"
+	  	android:text="@string/cancel"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content" />
 
