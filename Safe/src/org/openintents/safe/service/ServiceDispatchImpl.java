@@ -68,6 +68,7 @@ public class ServiceDispatchImpl extends Service {
     }
     
     private void startTimer () {
+		Log.d(TAG,"startTimer with timeoutUntilStop="+timeoutUntilStop);
     	t = new CountDownTimer(timeoutUntilStop, timeoutUntilStop) {
     		public void onTick(long millisUntilFinished) {
     			//doing nothing.
@@ -75,7 +76,7 @@ public class ServiceDispatchImpl extends Service {
     		}
 
     		public void onFinish() {
-    			Log.d( "ServieDispatchImpl","timer onFinish" );
+    			Log.d(TAG,"onFinish()");
     			stopSelf(); // countdown is over, stop the service.
     		}
     	};
@@ -135,6 +136,7 @@ public class ServiceDispatchImpl extends Service {
 		
 		public void setTimeoutMinutes (int timeoutMinutesIn){
 			timeoutMinutes = timeoutMinutesIn;
+			timeoutUntilStop = timeoutMinutes * 60000;
 			Log.d(TAG,"set timeout to "+timeoutMinutes);
 		}
     };
