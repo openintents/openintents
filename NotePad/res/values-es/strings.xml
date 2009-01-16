@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ <!-- 
+ * Original copyright:
+ * Based on the Android SDK sample application NotePad.
+ * Copyright (C) 2007 Google Inc.
+ * Licensed under the Apache License, Version 2.0.
+  -->
+
+<resources>
+    <string name="menu_delete">Borrar</string>
+    <string name="menu_insert">Añadir nota</string>
+    <string name="menu_revert">Deshacer</string>
+    <string name="menu_discard">Deshechar</string>
+    <string name="update">Comprobar actualizaciones</string>
+    
+	<string name="no_notes">Pulse 'menu' para añadir notas.</string>
+
+    <string name="resolve_edit">Editar nota</string>
+    <string name="resolve_title">Editar título</string>
+
+    <string name="title_create">Crear nota</string>
+    <string name="title_edit">Editar nota</string>
+	<string name="title_notes_list">OI Bloc de Notas</string>
+	<string name="title_note">Nota</string>
+	<string name="title_edit_title">Título de la nota:</string>
+    <string name="title_create_file">%s (nueva nota)</string>
+    <string name="title_edit_file">%s (editar nota)</string>
+	
+	<string name="app_name">OI Bloc de Notas</string>
+	
+	<string name="button_ok">Aceptar</string>
+	
+	<string name="error_title">Error</string>
+	<string name="error_message">Error al cargar la nota</string>
+	<!-- <string name="no_notes">Note list is empty.</string>  -->
+	
+	<string name="menu_send_by_email">Enviar</string>
+	<string name="empty_note">Nota vacía</string>
+	<string name="email_not_available">No se encontró ninguna aplicación para realizar el envío.</string>
+	
+	<string name="encrypting_note">Cifrando nota</string>
+	<string name="encrypted">Cifrada</string>
+	<string name="menu_encrypt">Cifrar</string>
+	<string name="menu_decrypt">Descifrar</string>
+	<string name="menu_undo_encryption">Deshacer cifrado</string>
+	<string name="menu_do_not_encrypt">No cifrar</string>
+	<string name="already_encrypted">Ya cifrada.</string>
+	<string name="not_encrypted">No cifrada.</string>
+	<string name="encryption_failed">Error al cifrar.</string>
+	<string name="decryption_failed">Error al descifrar.</string>
+
+	<string name="menu_edit_tags">Editar etiquetas</string>
+    <string name="dropdown_hint">Pulsar la pantalla para ver la lista</string>
+    <string name="tags_hint">Introducir las etiquetas, separadas por comas</string>
+    
+    <string name="menu_save_to_sdcard">Guarda en la tarjeta de memoria</string>
+    <string name="menu_open_from_sdcard">Abrir de la tarjeta de memoria</string>
+    <string name="filename">Nombre del fichero</string>
+    <string name="save">Guardar</string>
+    <string name="open">Abrir</string>
+    <string name="error_writing_file">Error al escribir el fichero</string>
+    <string name="error_reading_file">Error al leer el fichero</string>
+    <string name="file_not_found">Fichero no encontrado</string>
+    <string name="note_saved">Se ha guardado la nota</string>
+    
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No se encontró ningún gestor de ficheros compatible.</string>
+    <string name="filemanager_get_oi_filemanager">Obtener IO Gestor de Ficheros</string>
+    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
+	
+	<!-- About -->
+	<string name="about">Acerca de</string>
+	<string name="about_title">Acerca de %s</string>
+	<string name="about_text">Versión %s \n\n
+La aplicación OpenIntents Bloc de Notas está basada en la aplicación de ejemplo
+de código abierto 'Notepad' de Google, que se proporciona con el SDK de Android.
+OI Bloc de Notas permite crear, editar y eliminar notas.\n
+	
+OpenIntents permite a las aplicaciones diseñadas para Android compartir datos
+usando Intents y interfícies abiertas.\n\n
+Para más información y otras aplicaciones interesantes, visite OpenIntents en www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">ALUF para OI Bloc de Notas</string>
+<string name="eula_description">
+"Esta aplicación está basada en la aplicación de ejemplo de código abierto 'Notepad' de Google, que se proporciona con el SDK de Android, licenciada bajo Licencia Apache, Versión 2.0.\n\n
+* * * * *\n\n
+Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">Aceptar</string>
+	<string name="eula_refuse">Cancelar</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Por favor, compruebe de forma manual si existen actualizaciones, o instale OI Update para
+recibir notificaciones de forma automática.
+Versión actual: %s
+	</string>
+	<string name="update_check_now">Comprobar ahora.</string>
+	<string name="update_get_updater">Instalar OI Update.</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
+	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
+	<string name="update_error">No se encuentra una aplicación de descarga de aplicaciones</string>
+	
+</resources>
