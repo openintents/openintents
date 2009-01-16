@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.filemanager.util.FileUtils;
@@ -95,6 +95,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
 	private static final int DIALOG_RENAME = 3;
+	private static final int DIALOG_ABOUT = 4;
 	
 	private static final String BUNDLE_CURRENT_DIRECTORY = "current_directory";
 	private static final String BUNDLE_CONTEXT_FILE = "context_file";
@@ -901,6 +902,9 @@ public class FileManagerActivity extends ListActivity {
 						}
 						
 					}).create();
+		
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
 			
 		}
 		return null;
@@ -933,11 +937,15 @@ public class FileManagerActivity extends ListActivity {
 			}
 			((AlertDialog) dialog).setIcon(mContextIcon);
 			break;
+
+		case DIALOG_ABOUT:
+			break;
 		}
 	}
 
 	private void showAboutBox() {
-		startActivity(new Intent(this, AboutActivity.class));
+		//startActivity(new Intent(this, AboutDialog.class));
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 	
 	private void promptDestinationAndMoveFile() {

@@ -57,32 +57,4 @@
     
     <string name="application_not_available">Application not available</string>
 
-	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-OI File Manager is an open file manager that seamlessly cooperates with other applications. \n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
-	
-	<!-- EULA -->
-	<string name="eula_title">OI File Manager EULA</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
-	
-	<!-- Update -->
-		<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.filemanager</string>
-	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
-	<string name="update_error">Download application not available.</string>
-	<string name="update">Check updates</string>
-	
 </resources>
