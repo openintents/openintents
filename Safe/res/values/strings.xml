@@ -40,7 +40,7 @@
     <string name="notify_blank_desc">Description cannot be blank</string>
     <string name="notify_blank_name">Name cannot be blank</string>
     <string name="first_time">Please enter a password below, which will be used to keep your passwords safe.</string>
-    <string name="logoff_explanation">You are currently logged into Android Passwordsafe, meaning that other applications can request their passwords and decrypt/encrypt data. Lock to prevent further access until you type in your password again.</string>
+    <string name="logoff_explanation">You are currently logged into OI Safe, meaning that other applications can request their passwords and decrypt/encrypt data. Lock to prevent further access until you type in your password again.</string>
     <string name="remote_ask">Another application is asking to use the master key. Please type in your password to unlock it.</string>
     <string name="categories">Categories</string>
 	<string name="category">Category</string>
@@ -115,7 +115,7 @@
     <string name="database_version_error_title">Database Version Error</string>
     <string name="database_version_error_msg">Sorry, but the version of the database is not supported.   You must install the version associated with this database.</string>
 	<string name="permlab_service">access stored password</string>
-    <string name="permdesc_service">Allows the application to encrypt and decrypt text, and access the passwords stored by Android Passwordsafe.</string>	
+    <string name="permdesc_service">Allows the application to encrypt and decrypt text, and access the passwords stored by OI Safe.</string>	
 	<string name="move">Move</string>
 	<string name="move_select">Select Category</string>
 	<string name="moved_to">Moved to</string>

@@ -36,7 +36,7 @@ import android.util.Log;
  */
 public class DBHelper {
 
-    private static final String DATABASE_NAME = "passwordsafe";
+    private static final String DATABASE_NAME = "safe";
     private static final String TABLE_DBVERSION = "dbversion";
     private static final String TABLE_PASSWORDS = "passwords";
     private static final String TABLE_CATEGORIES = "categories";

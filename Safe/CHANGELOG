@@ -25,3 +25,6 @@
  a master password that decrypts the master key.  The master key is used
  to encrypt/decrypt the password entries.
  Database is now version 3.   No upgrade path provided, user must export/import. 
+0.7.0 [Jan 16, 2009]
+ Rename APWS to OI Safe.
+ 
