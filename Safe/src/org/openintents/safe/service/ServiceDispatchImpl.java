@@ -32,6 +32,7 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
+	private static String TAG = "ServiceDispatchIMPL";
 	private CryptoHelper ch;
 	private String masterKey;
     private CountDownTimer t;
@@ -50,7 +51,7 @@ public class ServiceDispatchImpl extends Service {
     public void onCreate() {
       super.onCreate();
       
-	  Log.d( "ServieDispatchImpl","onCreate" );
+	  Log.d( TAG,"onCreate" );
     }
     
     @Override
@@ -63,19 +64,23 @@ public class ServiceDispatchImpl extends Service {
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 	  sendBroadcast(intent);
 	  
-	  Log.d( "ADDERSERVICEIMPL","onDestroy" );
+	  Log.d( TAG,"onDestroy" );
     }
     
     private void startTimer () {
     	t = new CountDownTimer(timeoutUntilStop, timeoutUntilStop) {
     		public void onTick(long millisUntilFinished) {
     			//doing nothing.
+    			  Log.d(TAG, "tick: " + millisUntilFinished );
     		}
 
     		public void onFinish() {
+    			Log.d( "ServieDispatchImpl","timer onFinish" );
     			stopSelf(); // countdown is over, stop the service.
     		}
     	};
+    	t.start();
+		Log.d(TAG, "Timer started with: " + timeoutUntilStop );
     }
     
     private void restartTimer () {
