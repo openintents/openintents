@@ -28,6 +28,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.filemanager.util.FileUtils;
 import org.openintents.filemanager.util.MimeTypeParser;
@@ -138,7 +139,11 @@ public class FileManagerActivity extends ListActivity {
      @Override 
      public void onCreate(Bundle icicle) { 
           super.onCreate(icicle); 
-          
+
+          if (!EulaActivity.checkEula(this)) {
+             return;
+          }
+  		
           setContentView(R.layout.filelist);
 
 		  getListView().setOnCreateContextMenuListener(this);

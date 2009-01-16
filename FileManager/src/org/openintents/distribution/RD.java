@@ -46,4 +46,11 @@ public class RD {
 		public static final int update_error = R.string.update_error;
 
 	}
+
+	public class raw {
+		///////////////////////////////////////
+		// Eula activity
+		public static final int license_short = R.raw.license_short;
+		
+	}
 }
