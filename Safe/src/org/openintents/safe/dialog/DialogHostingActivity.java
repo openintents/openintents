@@ -3,7 +3,6 @@ package org.openintents.safe.dialog;
 import org.openintents.distribution.GetFromMarketDialog;
 import org.openintents.distribution.RD;
 import org.openintents.intents.FileManagerIntents;
-import org.openintents.safe.R;
 import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
@@ -22,6 +21,7 @@ public class DialogHostingActivity extends Activity {
 	public static final int DIALOG_ID_SAVE = 1;
 	public static final int DIALOG_ID_OPEN = 2;
 	public static final int DIALOG_ID_NO_FILE_MANAGER_AVAILABLE = 3;
+	public static final int DIALOG_ID_ALLOW_EXTERNAL_ACCESS = 4;
 	
 	public static final String EXTRA_DIALOG_ID = "org.openintents.notepad.extra.dialog_id";
 	
@@ -46,6 +46,9 @@ public class DialogHostingActivity extends Activity {
 			case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 				Log.i(TAG, "Show no file manager dialog");
 				showDialog(DIALOG_ID_NO_FILE_MANAGER_AVAILABLE);
+			case DIALOG_ID_ALLOW_EXTERNAL_ACCESS:
+				Log.i(TAG, "Show allow access dialog");
+				showDialog(DIALOG_ID_ALLOW_EXTERNAL_ACCESS);
 				break;
 			}
 		}
@@ -110,7 +113,8 @@ public class DialogHostingActivity extends Activity {
 					RD.string.filemanager_not_available,
 					RD.string.filemanager_get_oi_filemanager,
 					RD.string.filemanager_market_uri);
-
+		case DIALOG_ID_ALLOW_EXTERNAL_ACCESS:
+			return new AllowExternalAccessDialog(this);
 		}
 		return null;
 	}

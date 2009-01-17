@@ -5,6 +5,8 @@ import android.preference.PreferenceActivity;
 
 public class Preferences extends PreferenceActivity {
 
+	public static final String PREFERENCE_ALLOW_EXTERNAL_ACCESS = "external_access";
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

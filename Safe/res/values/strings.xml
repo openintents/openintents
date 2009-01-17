@@ -122,6 +122,9 @@
 	<string name="preferences">Preferences</string>
 	<string name="pref_title_external_access">Allow external access</string>
 	<string name="pref_summary_external_access">Allow other applications to access safe.</string>
+	<string name="dialog_title_external_access">External application tries to access OI Safe</string>
+	<string name="dialog_summary_external_access">Allow other applications to access OI Safe.</string>
+	<string name="dialog_comment_external_access">This can also be set in Menu / Preferences.</string>
 	<string name="pref_title_lock_timeout">Lock timeout</string>
 	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked.</string>
 	<string name="pref_dialog_title_lock_timeout">Lock timeout</string>

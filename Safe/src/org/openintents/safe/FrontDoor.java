@@ -20,6 +20,7 @@ package org.openintents.safe;
 import java.util.ArrayList;
 
 import org.openintents.intents.CryptoIntents;
+import org.openintents.safe.dialog.DialogHostingActivity;
 import org.openintents.safe.service.ServiceDispatch;
 import org.openintents.safe.service.ServiceDispatchImpl;
 
@@ -51,7 +52,7 @@ public class FrontDoor extends Activity {
 	private static String TAG = "FrontDoor";
 	
 	private static final int REQUEST_CODE_ASK_PASSWORD = 1;
-	private static final int REQUEST_CODE_GRANT_EXTERNAL_ACCESS = 2;
+	private static final int REQUEST_CODE_ALLOW_EXTERNAL_ACCESS = 2;
 	
 
 	private DBHelper dbHelper;
@@ -93,10 +94,20 @@ public class FrontDoor extends Activity {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				actionDispatch();
+
+		        boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
+		        boolean isLocal = isIntentLocal();
+		        
+		        if (isLocal || externalAccess) {
+		        	actionDispatch();
+		        } else {
+		        	// ask first
+		        	showDialogAllowExternalAccess();
+		        }
 				break;
-			case REQUEST_CODE_GRANT_EXTERNAL_ACCESS:
-				
+			case REQUEST_CODE_ALLOW_EXTERNAL_ACCESS:
+
+	        	actionDispatch();
 				break;
 			}
 			
@@ -104,6 +115,15 @@ public class FrontDoor extends Activity {
 			setResult(RESULT_CANCELED);
 			finish();
 		}
+	}
+
+	/**
+	 * 
+	 */
+	private void showDialogAllowExternalAccess() {
+		Intent i = new Intent(this, DialogHostingActivity.class);
+		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_ALLOW_EXTERNAL_ACCESS);
+		this.startActivityForResult(i, REQUEST_CODE_ALLOW_EXTERNAL_ACCESS);
 	}
 	
 	protected void actionDispatch () {    
@@ -118,7 +138,7 @@ public class FrontDoor extends Activity {
     		ch.setPassword(masterKey);
         }
 
-        boolean externalAccess = mPreferences.getBoolean("external_access", false);
+        boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
 
         if (action == null || action.equals(Intent.ACTION_MAIN)){
         	//TODO: When launched from debugger, action is null. Other such cases?
@@ -356,13 +376,21 @@ public class FrontDoor extends Activity {
 	//--------------------------- service stuff ------------
 	private void initService() {
 
-        String action = getIntent().getAction();
-        boolean isLocal = action == null || action.equals(Intent.ACTION_MAIN);
+        boolean isLocal = isIntentLocal();
 		conn = new ServiceDispatchConnection(isLocal);
 		Intent i = new Intent();
 		i.setClass(this, ServiceDispatchImpl.class);
 		startService(i);
 		bindService( i, conn, Context.BIND_AUTO_CREATE);
+	}
+
+	/**
+	 * @return
+	 */
+	private boolean isIntentLocal() {
+		String action = getIntent().getAction();
+        boolean isLocal = action == null || action.equals(Intent.ACTION_MAIN);
+		return isLocal;
 	}
 
 	private void releaseService() {
@@ -410,8 +438,15 @@ public class FrontDoor extends Activity {
 				} else {
 					if (debug) Log.d(TAG, "service already started");
 					//service already started, so don't need to ask pw.
-					masterKey = service.getPassword();
-					actionDispatch();
+
+			        boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
+			        
+			        if (askPassIsLocal || externalAccess) {
+						masterKey = service.getPassword();
+						actionDispatch();
+			        } else {
+			        	showDialogAllowExternalAccess();
+			        }
 				}
 			} catch (RemoteException e) {
 				Log.d(TAG, e.toString());
