@@ -28,6 +28,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.openintents.distribution.AboutDialog;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.safe.service.ServiceDispatchImpl;
 
@@ -80,6 +81,7 @@ public class CategoryList extends ListActivity {
     public static final int BACKUP_INDEX = Menu.FIRST + 9;
     public static final int RESTORE_INDEX = Menu.FIRST + 10;
     public static final int PREFERENCES_INDEX = Menu.FIRST + 11;
+    public static final int ABOUT_INDEX = Menu.FIRST + 12;
     
     public static final int REQUEST_ONCREATE = 0;
     public static final int REQUEST_EDIT_CATEGORY = 1;
@@ -93,6 +95,7 @@ public class CategoryList extends ListActivity {
     
     private static final int IMPORT_PROGRESS_KEY = 0;
     private static final int BACKUP_PROGRESS_KEY = IMPORT_PROGRESS_KEY + 1;
+    private static final int ABOUT_KEY = IMPORT_PROGRESS_KEY + 2;
 
     public static final int MAX_CATEGORIES = 256;
 
@@ -309,6 +312,8 @@ public class CategoryList extends ListActivity {
                 dialog.setCancelable(false);
                 return dialog;
             }
+            case ABOUT_KEY:
+            	return new AboutDialog(this);
         }
         return null;
     }
@@ -425,6 +430,8 @@ public class CategoryList extends ListActivity {
 		menu.add(0, RESTORE_INDEX, 0, R.string.restore);
 
 		menu.add(0, PREFERENCES_INDEX, 0, R.string.preferences);
+		menu.add(0, ABOUT_INDEX, 0, R.string.about).setIcon(
+ 				android.R.drawable.ic_menu_info_details);
 
 		return super.onCreateOptionsMenu(menu);
     }
@@ -513,6 +520,9 @@ public class CategoryList extends ListActivity {
 		case PREFERENCES_INDEX:
 			Intent preferences = new Intent(this, Preferences.class);
 			startActivity(preferences);
+			break;
+		case ABOUT_INDEX:
+			AboutDialog.showDialogOrStartActivity(this, ABOUT_KEY);
 			break;
 		default:
 			Log.e(TAG,"Unknown itemId");

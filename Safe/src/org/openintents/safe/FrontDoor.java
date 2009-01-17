@@ -49,6 +49,10 @@ public class FrontDoor extends Activity {
 
 	private static final boolean debug = !false;
 	private static String TAG = "FrontDoor";
+	
+	private static final int REQUEST_CODE_ASK_PASSWORD = 1;
+	private static final int REQUEST_CODE_GRANT_EXTERNAL_ACCESS = 2;
+	
 
 	private DBHelper dbHelper;
 	private String masterKey;
@@ -71,29 +75,34 @@ public class FrontDoor extends Activity {
 
 	//currently only handles result from askPassword function.
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-		switch (resultCode) {
-		case RESULT_OK:
-			masterKey = data.getStringExtra("masterKey");
-			String timeout = mPreferences.getString("lock_timeout", "5"); 
-			int timeoutMinutes=5; // default to 5
-			try {
-				timeoutMinutes = Integer.valueOf(timeout);
-			} catch (NumberFormatException e) {
-				Log.d(TAG,"why is lock_timeout busted?");
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
+			case REQUEST_CODE_ASK_PASSWORD:
+				masterKey = data.getStringExtra("masterKey");
+				String timeout = mPreferences.getString("lock_timeout", "5"); 
+				int timeoutMinutes=5; // default to 5
+				try {
+					timeoutMinutes = Integer.valueOf(timeout);
+				} catch (NumberFormatException e) {
+					Log.d(TAG,"why is lock_timeout busted?");
+				}
+				try {
+					service.setTimeoutMinutes(timeoutMinutes);
+					service.setPassword(masterKey); // should already be connected.
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				actionDispatch();
+				break;
+			case REQUEST_CODE_GRANT_EXTERNAL_ACCESS:
+				
+				break;
 			}
-			try {
-				service.setTimeoutMinutes(timeoutMinutes);
-				service.setPassword(masterKey); // should already be connected.
-			} catch (RemoteException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			actionDispatch();
-			break;
-		case RESULT_CANCELED:
+			
+		} else { // resultCode == RESULT_CANCELED
 			setResult(RESULT_CANCELED);
 			finish();
-			break;
 		}
 	}
 	
@@ -390,7 +399,7 @@ public class FrontDoor extends Activity {
 						askPass.putExtra (CryptoIntents.EXTRA_TEXT, inputBody);
 						askPass.putExtra (AskPassword.EXTRA_IS_LOCAL, askPassIsLocal);
 						//TODO: Is there a way to make sure all the extras are set?	
-						startActivityForResult (askPass, 0);
+						startActivityForResult (askPass, REQUEST_CODE_ASK_PASSWORD);
 					} else {
 						if (debug) Log.d(TAG, "ask for password");
 						// Don't prompt but cancel
