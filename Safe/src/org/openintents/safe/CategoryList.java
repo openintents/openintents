@@ -29,8 +29,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.openintents.distribution.AboutDialog;
+import org.openintents.intents.AboutMiniIntents;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.safe.service.ServiceDispatchImpl;
+import org.openintents.util.IntentUtils;
 
 
 import android.app.AlertDialog;
@@ -430,9 +432,13 @@ public class CategoryList extends ListActivity {
 		menu.add(0, RESTORE_INDEX, 0, R.string.restore);
 
 		menu.add(0, PREFERENCES_INDEX, 0, R.string.preferences);
-		menu.add(0, ABOUT_INDEX, 0, R.string.about).setIcon(
- 				android.R.drawable.ic_menu_info_details);
-
+		
+		if (IntentUtils.isIntentAvailable(this, new Intent(AboutMiniIntents.ACTION_SHOW_ABOUT_DIALOG))) {
+			// Only show "About" dialog, if OI About (or compatible) is installed.
+			menu.add(0, ABOUT_INDEX, 0, R.string.about).setIcon(
+	 				android.R.drawable.ic_menu_info_details);
+		}
+		
 		return super.onCreateOptionsMenu(menu);
     }
 
