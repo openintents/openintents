@@ -129,12 +129,12 @@ public class FrontDoor extends Activity {
         			callbackIntent = getSetPassword (thisIntent, callbackIntent);
                 	callbackResult = RESULT_OK;
         		} catch (CryptoHelperException e) {
-        			Log.e(TAG, e.toString());
+        			Log.e(TAG, e.toString(), e);
         			Toast.makeText(FrontDoor.this,
         					"There was a crypto error while retreiving the requested password: " + e.getMessage(),
         					Toast.LENGTH_SHORT).show();
         		} catch (Exception e) {
-        			Log.e(TAG, e.toString());
+        			Log.e(TAG, e.toString(), e);
         			//TODO: Turn this into a proper error dialog.
         			Toast.makeText(FrontDoor.this,
         					"There was an error in retreiving the requested password: " + e.getMessage(),
@@ -237,6 +237,12 @@ public class FrontDoor extends Activity {
         String clearUniqueName = thisIntent.getStringExtra (CryptoIntents.EXTRA_UNIQUE_NAME);
 
         if (clearUniqueName == null) throw new Exception ("EXTRA_UNIQUE_NAME not set.");
+        
+		if (dbHelper == null) {
+	        // Need to open DBHelper here, because
+			// onResume() is called after onActivityResult()
+			dbHelper = new DBHelper(this);
+		}
 
         String uniqueName = ch.encrypt(clearUniqueName);
     	PassEntry row = dbHelper.fetchPassword(uniqueName);
