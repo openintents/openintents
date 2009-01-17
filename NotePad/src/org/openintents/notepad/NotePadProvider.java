@@ -20,8 +20,8 @@ package org.openintents.notepad;
 import java.util.HashMap;
 
 import org.openintents.intents.ProviderIntents;
-import org.openintents.intents.ProviderUtils;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.util.ProviderUtils;
 
 import android.content.ContentProvider;
 import android.content.ContentUris;

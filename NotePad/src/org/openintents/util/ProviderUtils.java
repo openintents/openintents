@@ -1,4 +1,4 @@
-package org.openintents.intents;
+package org.openintents.util;
 
 // Version Nov 21, 2008
 
