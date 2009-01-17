@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Comparison"
+    android:textSize="20sp"
+    android:id="@+id/lbl_comparison"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Provide a file to collect data from for encryption purposes.   The file will not be modified."
+    android:id="@+id/info"/>
+<EditText  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/file_path"/>
+<Button  
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="Browse"
+    android:id="@+id/browse_button"/>
+<Button  
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:text="Compare"
+    android:id="@+id/compare_button"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="results"
+    android:id="@+id/results"/>
+
+</LinearLayout>
+</ScrollView>

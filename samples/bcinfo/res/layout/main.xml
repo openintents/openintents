@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/info"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/name"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/version"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Service Types"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_service_types"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/service_types"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Below are the algorithms supported by the Bouncy Castle provider 'BC'."
+    android:id="@+id/header"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="Cipher"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_cipher"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/cipher"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="KeyAgreement"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_keyagreement"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/keyagreement"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="KeyFactory"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_keyfactory"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/keyfactory"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="KeyStore"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_keystore"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/keystore"/>
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="MessageDigest"
+	android:textSize="20sp"
+	android:textColor="#f22"
+	android:shadowColor="#f99"
+	android:shadowDx="1.2"
+	android:shadowDy="1.2"
+	android:shadowRadius="1.2" 
+    android:id="@+id/label_messagedigest"/>
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text=""
+    android:id="@+id/messagedigest"/>
+    
+</LinearLayout>
+
+</ScrollView>
