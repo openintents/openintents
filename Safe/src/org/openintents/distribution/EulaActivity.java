@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,7 +22,7 @@ import android.widget.TextView;
 /**
  * Displays the Eula for the first time, reading it from a raw resource.
  * 
- * @version 2009-01-17
+ * @version 2009-01-17, 13:00 UTC
  * @author Peli
  *
  */
@@ -38,12 +39,14 @@ public class EulaActivity extends Activity {
 	 */
 	private static final String EXTRA_LAUNCH_ACTIVITY_PACKAGE = "org.openintents.extra.launch_activity_package";
 	private static final String EXTRA_LAUNCH_ACTIVITY_CLASS = "org.openintents.extra.launch_activity_class";
+	private static final String EXTRA_LAUNCH_ACTIVITY_INTENT = "org.openintents.extra.launch_activity_intent";
 	
 	private Button mAgree;
 	private Button mDisagree;
 	
 	private String mLaunchPackage;
 	private String mLaunchClass;
+	private Intent mLaunchIntent;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -57,6 +60,8 @@ public class EulaActivity extends Activity {
 		Bundle b = i.getExtras();
 		mLaunchPackage = b.getString(EXTRA_LAUNCH_ACTIVITY_PACKAGE);
 		mLaunchClass = b.getString(EXTRA_LAUNCH_ACTIVITY_CLASS);
+		//mLaunchIntent 
+		mLaunchIntent = b.getParcelable(EXTRA_LAUNCH_ACTIVITY_INTENT);
 		
 		//mIntroContinue = (Button) findViewById(R.id.intro_continue);
 		mAgree = (Button) findViewById(RD.id.button1);
@@ -88,8 +93,14 @@ public class EulaActivity extends Activity {
 		e.commit();
 		
 		// Call the activity that originally called checkEula()
-		Intent i = new Intent();
-		i.setClassName(mLaunchPackage, mLaunchClass);
+		Intent i;
+		if (mLaunchIntent != null) {
+			i = mLaunchIntent;
+		} else {
+			i = new Intent();
+			i.setClassName(mLaunchPackage, mLaunchClass);
+		}
+		i.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
 		startActivity(i);
 		finish();
 	}
@@ -106,12 +117,16 @@ public class EulaActivity extends Activity {
 		finish();
 	}
 
+	public static boolean checkEula(Activity activity) {
+		return checkEula(activity, null);
+	}
+	
 	/**
 	 * Test whether EULA has been accepted. Otherwise display EULA.
 	 * 
 	 * @return True if Eula has been accepted.
 	 */
-	public static boolean checkEula(Activity activity) {
+	public static boolean checkEula(Activity activity, Intent intent) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
 		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
 		
@@ -131,6 +146,10 @@ public class EulaActivity extends Activity {
 			Log.d(TAG, "Local class name: " + ci.getClassName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_PACKAGE, ci.getPackageName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_CLASS, ci.getClassName());
+			if (intent != null) {
+				i.putExtra(EXTRA_LAUNCH_ACTIVITY_INTENT, intent);
+			}
+			i.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
 			activity.startActivity(i);
 			activity.finish();
 			return false;

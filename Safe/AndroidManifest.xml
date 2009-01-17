@@ -63,6 +63,8 @@
         <activity class=".Preferences" android:name="Preferences" android:label="@string/app_name" />
         <activity class=".LogOffActivity" android:name="LogOffActivity" android:label="@string/app_name" />
         
+        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title" />
+        
         <service class=".service.ServiceDispatchImpl" android:name=".service.ServiceDispatchImpl"
             android:label="@string/app_name"
 			android:permission="org.openintents.safe.ACCESS_SERVICE">

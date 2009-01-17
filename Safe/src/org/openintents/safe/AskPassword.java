@@ -16,6 +16,7 @@
  */
 package org.openintents.safe;
 
+import org.openintents.distribution.EulaActivity;
 import org.openintents.util.VersionUtils;
 
 import android.app.Activity;
@@ -63,6 +64,11 @@ public class AskPassword extends Activity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
+        
+		if (!EulaActivity.checkEula(this, getIntent())) {
+            return;
+        }
+        
 		Intent thisIntent = getIntent();
 		
 		boolean isLocal = thisIntent.getBooleanExtra (EXTRA_IS_LOCAL, false);
