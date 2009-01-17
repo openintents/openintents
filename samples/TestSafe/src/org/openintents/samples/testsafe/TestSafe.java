@@ -1,15 +1,23 @@
 package org.openintents.samples.testsafe;
 
 import org.openintents.intents.CryptoIntents;
+import org.openintents.safe.service.ServiceDispatch;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class TestSafe extends Activity {
 	public final String TAG="SERVICE_TEST";
@@ -64,8 +72,52 @@ public class TestSafe extends Activity {
 			}});	
 		
     }//oncreate
-    
+
     private void clickMaster (Integer request) {
+    	CheckBox checkbox = (CheckBox) findViewById(R.id.check_service);
+    	if (checkbox.isChecked()) {
+    		clickMasterService(request);
+    	} else {
+    		clickMasterIntent(request);
+    	}
+    }
+
+    private int serviceRequest;
+    
+    private void clickMasterService (Integer request) {
+    	serviceRequest = request;
+    	
+    	initService(); // calls clickMasterServiceDispatch() upon connection
+    	
+    	//releaseService();
+    }
+    
+    private void clickMasterServiceDispatch () {
+		EditText inputText = (EditText) findViewById(R.id.input_entry);
+		String inputStr = inputText.getText().toString();
+		
+		try {
+			String masterKey = service.getPassword();
+			String resultText = "?";
+			
+			if (serviceRequest == ENCRYPT_REQUEST) {
+				resultText = service.encrypt(inputStr);
+	    	} else if (serviceRequest == DECRYPT_REQUEST) {
+				resultText = service.decrypt(inputStr);
+	    	} else {
+				Toast.makeText(TestSafe.this,
+						"This is not yet supported!",
+						Toast.LENGTH_SHORT).show();
+	    	}
+	
+			EditText outputText = (EditText) findViewById(R.id.output_entry);
+			outputText.setText(resultText, android.widget.TextView.BufferType.EDITABLE);
+		} catch (RemoteException e) {
+			Log.e(TAG, "Remote exception", e);
+		}
+	}
+    
+    private void clickMasterIntent (Integer request) {
 		EditText inputText = (EditText) findViewById(R.id.input_entry);
 		String inputStr = inputText.getText().toString();
 		
@@ -101,7 +153,7 @@ public class TestSafe extends Activity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	String resultText = "";
     	if (resultCode != RESULT_OK) {
-    		resultText = "An error occured while contacting apws.";
+    		resultText = "An error occured while contacting OI Safe.";
     	} else {
     		if (requestCode == ENCRYPT_REQUEST || requestCode == DECRYPT_REQUEST) {
     			resultText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
@@ -116,4 +168,73 @@ public class TestSafe extends Activity {
 		EditText outputText = (EditText) findViewById(R.id.output_entry);
 		outputText.setText(resultText, android.widget.TextView.BufferType.EDITABLE);
     }
+    
+
+
+	//--------------------------- service stuff ------------
+
+	// service elements
+    private ServiceDispatch service;
+    private ServiceDispatchConnection conn;
+    
+	private void initService() {
+
+        String action = getIntent().getAction();
+        boolean isLocal = action == null || action.equals(Intent.ACTION_MAIN);
+		conn = new ServiceDispatchConnection(isLocal);
+		Intent i = new Intent();
+		i.setClassName("org.openintents.safe", "org.openintents.safe.service.ServiceDispatchImpl");
+		try {
+			startService(i);
+			bindService( i, conn, Context.BIND_AUTO_CREATE);
+		} catch (SecurityException e) {
+			Log.e(TAG, "SecurityException", e);
+			Toast.makeText(TestSafe.this,
+					"SecurityException: Not allowed to connect!",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	private void releaseService() {
+		if (conn != null ) {
+			unbindService( conn );
+			conn = null;
+		}
+	}
+
+	class ServiceDispatchConnection implements ServiceConnection
+	{
+		boolean askPassIsLocal = false;
+		public ServiceDispatchConnection (Boolean isLocal) {
+			askPassIsLocal = isLocal;
+		}
+		public void onServiceConnected(ComponentName className, 
+				IBinder boundService )
+		{
+			service = ServiceDispatch.Stub.asInterface((IBinder)boundService);
+			
+			boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
+			
+			try {
+				if (service.getPassword() == null) {
+
+        			Toast.makeText(TestSafe.this,
+        					"Service not running.",
+        					Toast.LENGTH_SHORT).show();
+				} else {
+					//service already started, so don't need to ask pw.
+					clickMasterServiceDispatch();
+				}
+			} catch (RemoteException e) {
+				Log.d(TAG, e.toString());
+			}
+			Log.d( TAG,"onServiceConnected" );
+		}
+		
+		public void onServiceDisconnected(ComponentName className)
+		{
+			service = null;
+			Log.d( TAG,"onServiceDisconnected" );
+		}
+	};
 }

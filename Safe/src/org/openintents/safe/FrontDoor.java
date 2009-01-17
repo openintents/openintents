@@ -47,7 +47,7 @@ import android.widget.Toast;
  */
 public class FrontDoor extends Activity {
 
-	private boolean debug = false;
+	private static final boolean debug = !false;
 	private static String TAG = "FrontDoor";
 
 	private DBHelper dbHelper;
@@ -155,6 +155,9 @@ public class FrontDoor extends Activity {
 	 * @return callbackResult
 	 */
 	private int encryptIntent(final Intent thisIntent, Intent callbackIntent) {
+		if (debug)
+			Log.d(TAG, "encryptIntent()");
+		
 		int callbackResult = RESULT_CANCELED;
 		try {
 			if (thisIntent.hasExtra(CryptoIntents.EXTRA_TEXT)) {
@@ -372,10 +375,11 @@ public class FrontDoor extends Activity {
 			service = ServiceDispatch.Stub.asInterface((IBinder)boundService);
 			
 			boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
-			
+			if (debug) Log.d(TAG, "Prompt for password: " + promptforpassword);
 			try {
 				if (service.getPassword() == null) {
 					if (promptforpassword) {
+						if (debug) Log.d(TAG, "ask for password");
 						// the service isn't running
 						Intent askPass = new Intent(getApplicationContext(),
 								AskPassword.class);
@@ -388,12 +392,14 @@ public class FrontDoor extends Activity {
 						//TODO: Is there a way to make sure all the extras are set?	
 						startActivityForResult (askPass, 0);
 					} else {
+						if (debug) Log.d(TAG, "ask for password");
 						// Don't prompt but cancel
 						setResult(RESULT_CANCELED);
 				        finish();
 					}
 
 				} else {
+					if (debug) Log.d(TAG, "service already started");
 					//service already started, so don't need to ask pw.
 					masterKey = service.getPassword();
 					actionDispatch();
