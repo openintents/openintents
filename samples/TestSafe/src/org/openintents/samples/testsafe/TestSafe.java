@@ -25,6 +25,7 @@ public class TestSafe extends Activity {
 	public final Integer DECRYPT_REQUEST = 2;
 	public final Integer GET_PASSWORD_REQUEST = 3;
 	public final Integer SET_PASSWORD_REQUEST = 4;
+	public final Integer SPOOF_REQUEST = 5;
 	public final String desc = "opensocial";
 	
 	
@@ -44,6 +45,7 @@ public class TestSafe extends Activity {
 		Button getButton           = (Button) findViewById(R.id.get);
 		Button setButton           = (Button) findViewById(R.id.set);
 		Button outToInButton       = (Button) findViewById(R.id.outToIn);
+		Button spoofme             = (Button) findViewById(R.id.spoof_me);
 		
 		encryptIntentButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
@@ -69,6 +71,13 @@ public class TestSafe extends Activity {
 				String newInputStr = outputText.getText().toString();
 				inputText.setText(newInputStr, android.widget.TextView.BufferType.EDITABLE);
 				
+			}});	
+		spoofme.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				Intent i = new Intent();
+				i.setAction(Intent.ACTION_MAIN);
+				i.setClassName("org.openintents.safe", "org.openintents.safe.AskPassword");
+				startActivityForResult(i, SPOOF_REQUEST);
 			}});	
 		
     }//oncreate
@@ -153,16 +162,18 @@ public class TestSafe extends Activity {
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	String resultText = "";
     	if (resultCode != RESULT_OK) {
-    		resultText = "An error occured while contacting OI Safe.";
+    		resultText = "An error occured while contacting OI Safe. Does it allow remote access? (Please check in the settings of OI Safe).";
     	} else {
     		if (requestCode == ENCRYPT_REQUEST || requestCode == DECRYPT_REQUEST) {
     			resultText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
     		} else if (requestCode == SET_PASSWORD_REQUEST) {
     			resultText = "Request to set password sent.";
-    		} else {
+    		} else if (requestCode == GET_PASSWORD_REQUEST){
     			String uname = data.getStringExtra (CryptoIntents.EXTRA_USERNAME);
     			String pwd = data.getStringExtra (CryptoIntents.EXTRA_PASSWORD);
     			resultText = uname + ":" + pwd;
+    		} else if (requestCode == SPOOF_REQUEST) {
+    			resultText = data.getStringExtra("masterKey");
     		}
     	}
 		EditText outputText = (EditText) findViewById(R.id.output_entry);

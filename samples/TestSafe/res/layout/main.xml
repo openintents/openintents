@@ -104,5 +104,15 @@
      		android:layout_below="@id/set"
      		android:text="Connect to service directly" />  
             
+    <!-- Spoof_me calls AskPassword directly. Luckily this throws a
+         security exception, because AskPassword had not specified the
+         MAIN action intent filter. -->
+    <Button android:id="@+id/spoof_me" 
+    	    android:visibility="gone"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/set"
+            android:layout_alignTop="@id/set"
+            android:text="Spoof me" />
   
 </RelativeLayout>
