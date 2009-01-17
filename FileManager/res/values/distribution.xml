@@ -15,17 +15,6 @@
  * limitations under the License.
  -->
 <resources>
-
-	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-OI File Manager is an open file manager that seamlessly cooperates with other applications. \n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
 	
 	<!-- EULA -->
 	<string name="eula_title">OI File Manager EULA</string>
@@ -45,7 +34,8 @@ Current version: %s
 	<string name="update">Check updates</string>
 	
     <!-- About -->
-    <string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
     <string name="aboutapp_get">Get OI About</string>
     <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
 </resources>

@@ -69,8 +69,6 @@
         
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
-        <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
-        </activity> 
         <!-- 
         <activity android:name=".PreferenceActivity" android:label="@string/preferences">
         </activity>  -->
