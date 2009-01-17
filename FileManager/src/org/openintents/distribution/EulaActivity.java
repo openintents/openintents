@@ -19,9 +19,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Displays the Eula for the first time.
+ * Displays the Eula for the first time, reading it from a raw resource.
  * 
- * @version 2009-01-16
+ * @version 2009-01-17
  * @author Peli
  *
  */
