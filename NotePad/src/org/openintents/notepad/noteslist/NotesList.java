@@ -626,14 +626,21 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     }
 
     public void decryptDelayed() {
+    	// Poll the next string that has not been decrypted yet.
     	String encryptedString = NotesListCursor.getNextEncryptedString();
     	if (encryptedString != null) {
             setProgressBarIndeterminateVisibility(true);
         	decryptDelayed(encryptedString, DECRYPT_DELAY);
     	} else if (!mDecryptionFailed && !mDecryptionSucceeded) {
-    		// If neither failed not succeeded yet, we send a test intent.
-            setProgressBarIndeterminateVisibility(true);
-        	decryptDelayed(null, 0);
+    		// If neither failed nor succeeded yet, we send a test intent.
+    		// This is to ensure that the service is still running
+    		// even if we may serve all decrypted strings from the cache.
+    		NotesListCursor nlc = (NotesListCursor) mAdapter.getCursor();
+    		if (nlc.mContainsEncryptedStrings) {
+    			// Of course only if there is at least one encrypted string.
+	            setProgressBarIndeterminateVisibility(true);
+	        	decryptDelayed(null, 0);
+    		}
     	} else {
     		// Done with decryption
             setProgressBarIndeterminateVisibility(false);

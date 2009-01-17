@@ -81,12 +81,14 @@ public class NotesListCursor extends OpenMatrixCursor {
 	 */
 	public static List<String> mEncryptedStringList = Collections.synchronizedList(new LinkedList<String>());
 	
+	public boolean mContainsEncryptedStrings;
+	
 	public NotesListCursor(Context context, Intent intent) {
 		super(PROJECTION);
 		mContext = context;
 		mIntent = intent;
 		mCurrentFilter = null;
-		
+		mContainsEncryptedStrings = false;
 		
 	}
 	
@@ -162,6 +164,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 		//mCursor = new OpenMatrixCursor(PROJECTION, dbcursor.getCount());
 		
 		reset();
+		mContainsEncryptedStrings = false;
 		
 		String encryptedlabel = mContext.getString(R.string.encrypted);
 		
@@ -246,6 +249,10 @@ public class NotesListCursor extends OpenMatrixCursor {
 			if (addrow) {
 				if (tags == null) {
 					tags = "";
+				}
+				
+				if (encrypted != 0) {
+					mContainsEncryptedStrings = true;
 				}
 				
 				Object[] row = new Object[] {id, title, tags, encrypted, titleEncrypted, tagsEncrypted};
