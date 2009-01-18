@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.openintents.convertcsv.R;
+import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
 import org.openintents.provider.Shopping;
 
@@ -37,17 +38,22 @@ public class ImportCsv {
 	 * @param dis
 	 * @throws IOException
 	 */
-	public void importCsv(Reader reader) throws IOException {
+	public void importCsv(Reader reader) throws IOException,
+		WrongFormatException {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
 	    while ((nextLine = csvreader.readNext()) != null) {
-	        // nextLine[] is an array of values from the line
-	    	if (nextLine[1].equals(mContext.getString(R.string.header_percent_complete))) {
+	    	if (nextLine.length != 3) {
+	    		throw new WrongFormatException();
+	    	}
+	    	// nextLine[] is an array of values from the line
+	    	String statusstring = nextLine[1];
+	    	if (statusstring.equals(mContext.getString(R.string.header_percent_complete))) {
 	    		// First line is just subject, so let us skip it
 	    		continue;
 	    	}
 	    	String itemname = nextLine[0];
-			long status = (nextLine[1].equals("1")) ? 1 : 0;
+			long status = (statusstring.equals("1")) ? 1 : 0;
 			String listname = nextLine[2];
 
 			// Add item to list

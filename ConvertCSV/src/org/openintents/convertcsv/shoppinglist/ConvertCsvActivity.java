@@ -23,6 +23,7 @@ import java.io.IOException;
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
+import org.openintents.convertcsv.common.WrongFormatException;
 
 import android.os.Bundle;
 
@@ -33,7 +34,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     public void setPreferencesUsed() {
     	PREFERENCE_FILENAME = PreferenceActivity.PREFS_SHOPPINGLIST_FILENAME;
     	DEFAULT_FILENAME = getString(R.string.default_shoppinglist_path);
-    	PREFERENCE_FORMAT = PreferenceActivity.PREFS_SHOPPINGLIST_FILENAME;
+    	PREFERENCE_FORMAT = PreferenceActivity.PREFS_SHOPPINGLIST_FORMAT;
     	DEFAULT_FORMAT = "outlook tasks";
     	RES_STRING_FILEMANAGER_TITLE = R.string.filemanager_title_shoppinglist;
     	RES_ARRAY_CSV_FILE_FORMAT = R.array.shoppinglist_format;
@@ -52,7 +53,8 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param reader
 	 * @throws IOException
 	 */
-	public void doImport(FileReader reader) throws IOException {
+	public void doImport(FileReader reader) throws IOException,
+				WrongFormatException {
 		ImportCsv ic = new ImportCsv(this);
 		ic.importCsv(reader);
 	}
