@@ -148,17 +148,7 @@ public class FrontDoor extends Activity {
         } else if (externalAccess){
 
         	// which action?
-        	 if (action.equals (CryptoIntents.ACTION_RESTART_TIMER)) {
-        		 if (service != null) {
-        			 try {
-						service.restartTimer();
-						callbackResult = RESULT_OK;
-					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
-						Log.e (TAG, "remoteException in Restart Timer");
-					}
-        		 }
-        	} else if (action.equals (CryptoIntents.ACTION_ENCRYPT)) {
+        	if (action.equals (CryptoIntents.ACTION_ENCRYPT)) {
         		callbackResult = encryptIntent(thisIntent, callbackIntent);
         	} else if (action.equals (CryptoIntents.ACTION_DECRYPT)) {
         		callbackResult = decryptIntent(thisIntent, callbackIntent);

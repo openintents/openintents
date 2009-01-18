@@ -26,7 +26,10 @@ import org.openintents.safe.CryptoHelperException;
 
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.IBinder;
 import android.util.Log;
 import android.os.CountDownTimer;
@@ -50,6 +53,18 @@ public class ServiceDispatchImpl extends Service {
     @Override
     public void onCreate() {
       super.onCreate();
+      
+      BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+          public void onReceive(Context context, Intent intent) {
+              if (intent.getAction().equals(CryptoIntents.ACTION_RESTART_TIMER)) {
+	              	restartTimer();
+              }
+          }
+      };
+
+      IntentFilter filter = new IntentFilter();
+      filter.addAction (CryptoIntents.ACTION_RESTART_TIMER);
+      registerReceiver(mIntentReceiver, filter);
       
 	  Log.d( TAG,"onCreate" );
     }
@@ -83,7 +98,15 @@ public class ServiceDispatchImpl extends Service {
     	t.start();
 		Log.d(TAG, "Timer started with: " + timeoutUntilStop );
     }
-    
+	
+	public void restartTimer () {
+    	// must be started with startTimer first.
+		Log.d(TAG,"timer restarted");
+    	if (t != null) {
+    		t.cancel();
+    		t.start();
+    	}
+    }
 
     /**
      * The ServiceDispatch is defined through IDL
@@ -132,14 +155,7 @@ public class ServiceDispatchImpl extends Service {
 			timeoutUntilStop = timeoutMinutes * 60000;
 			Log.d(TAG,"set timeout to "+timeoutMinutes);
 		}
-		
-		public void restartTimer () {
-	    	// must be started with startTimer first.
-	    	if (t != null) {
-	    		t.cancel();
-	    		t.start();
-	    	}
-	    }
+
     };
 
 }

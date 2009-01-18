@@ -469,7 +469,7 @@ public class CategoryList extends ListActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity (restartTimerIntent);
+		sendBroadcast (restartTimerIntent);
 
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
@@ -602,7 +602,7 @@ public class CategoryList extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 
-		startActivity (restartTimerIntent);
+		sendBroadcast (restartTimerIntent);
 		launchPassList(rows.get(position).id);
     }
 
@@ -629,7 +629,7 @@ public class CategoryList extends ListActivity {
     	if ((name==null) || (name=="")) return -1;
 		CategoryEntry entry =  new CategoryEntry();
 
-		startActivity (restartTimerIntent);
+		sendBroadcast (restartTimerIntent);
 		String namePlain = name;
 
 		try {

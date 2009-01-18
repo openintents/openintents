@@ -347,7 +347,7 @@ public class PassList extends ListActivity {
     }
     
     public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity (restartTimerIntent);
+		sendBroadcast (restartTimerIntent);
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
 		if (info==null) {
