@@ -35,8 +35,8 @@ Versió actual: %s
 	
     <!-- About -->
     <string name="about">Sobre</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+    <string name="aboutapp_not_available">Versió %s\n\nNo s'ha trobat una extensió compatible per a mostrar tota la informació. (Contacte, crédits, llicència).</string>
+    <string name="aboutapp_get">Obtingueu OI About</string>
     <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
 
     <!-- File Manager -->
