@@ -132,6 +132,7 @@
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
 	<string name="intent_get_password">Get password (OI Safe)</string>
 	<string name="intent_set_password">Set password (OI Safe)</string>
+	<string name="intent_restart_timer">Restart timer (OI Safe)</string>
 	<string name="open_safe">Open OI Safe</string>
 	<string name="lock">Lock</string>
 	<string name="continue_text">Continue</string>

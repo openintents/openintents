@@ -84,13 +84,6 @@ public class ServiceDispatchImpl extends Service {
 		Log.d(TAG, "Timer started with: " + timeoutUntilStop );
     }
     
-    private void restartTimer () {
-    	// must be started with startTimer first.
-    	if (t != null) {
-    		t.cancel();
-    		t.start();
-    	}
-    }
 
     /**
      * The ServiceDispatch is defined through IDL
@@ -139,6 +132,14 @@ public class ServiceDispatchImpl extends Service {
 			timeoutUntilStop = timeoutMinutes * 60000;
 			Log.d(TAG,"set timeout to "+timeoutMinutes);
 		}
+		
+		public void restartTimer () {
+	    	// must be started with startTimer first.
+	    	if (t != null) {
+	    		t.cancel();
+	    		t.start();
+	    	}
+	    }
     };
 
 }

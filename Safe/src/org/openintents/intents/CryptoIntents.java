@@ -62,6 +62,16 @@ public class CryptoIntents {
 	 * <p>Constant Value: "org.openintents.action.SET_PASSWORD"</p>
 	 */
 	public static final String ACTION_SET_PASSWORD = "org.openintents.action.SET_PASSWORD";
+	
+	/**
+	 * Activity Action: Restarts the timer for the Crypto intent service.
+	 * The timer gets reset when using GET or set password anyway, but this is
+	 * a way to reset the timer for other kinds of actions. Use sparingly since
+	 * we do actually want the timer to time out eventually!
+	 * 
+	 * <p>Constant Value: "org.openintents.action.RESTART_TIMER"</p>
+	 */
+	public static final String ACTION_RESTART_TIMER = "org.openintents.action.RESTART_TIMER";
 
 	/**
 	 * Broadcast Action: Sent when the user got logged out of the

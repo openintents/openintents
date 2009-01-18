@@ -24,6 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.openintents.intents.CryptoIntents;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -72,6 +74,7 @@ public class PassList extends ListActivity {
     private CryptoHelper ch;
     private DBHelper dbHelper=null;
     private static Long CategoryId=null;
+    private Intent restartTimerIntent;
 
     private static String masterKey;			
 
@@ -85,6 +88,7 @@ public class PassList extends ListActivity {
 		super.onCreate(icicle);
 		
 		if (debug) Log.d(TAG,"onCreate()");
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 		setContentView(R.layout.pass_list);
 		
 		if (dbHelper==null) {
@@ -343,7 +347,7 @@ public class PassList extends ListActivity {
     }
     
     public boolean onOptionsItemSelected(MenuItem item) {
-    	
+		startActivity (restartTimerIntent);
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
 		if (info==null) {

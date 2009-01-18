@@ -119,6 +119,7 @@ public class CategoryList extends ListActivity {
     private static String masterKey;			
 
     private List<CategoryEntry> rows;
+    private Intent restartTimerIntent;
     
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -187,6 +188,8 @@ public class CategoryList extends ListActivity {
 
 		if (debug) Log.d(TAG,"onCreate()");
 
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+		
 		if (!isSignedIn()) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
@@ -239,7 +242,7 @@ public class CategoryList extends ListActivity {
     @Override
     protected void onPause() {
 		super.onPause();
-		
+
 		if (debug) Log.d(TAG,"onPause()");
 		
 		if ((importThread != null) && (importThread.isAlive())) {
@@ -466,7 +469,8 @@ public class CategoryList extends ListActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-    	
+		startActivity (restartTimerIntent);
+
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
 		if (info==null) {
@@ -597,7 +601,8 @@ public class CategoryList extends ListActivity {
     
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		
+
+		startActivity (restartTimerIntent);
 		launchPassList(rows.get(position).id);
     }
 
@@ -623,7 +628,8 @@ public class CategoryList extends ListActivity {
     	if (debug) Log.d(TAG,"addCategory("+name+")");
     	if ((name==null) || (name=="")) return -1;
 		CategoryEntry entry =  new CategoryEntry();
-	
+
+		startActivity (restartTimerIntent);
 		String namePlain = name;
 
 		try {
