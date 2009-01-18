@@ -8,12 +8,26 @@
       1.0.0 [1]: Dec 9, 2008. -->
 	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
 	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
+	<uses-permission android:name="org.openintents.shopping.READ_PERMISSION" />
+	<uses-permission android:name="org.openintents.shopping.WRITE_PERMISSION" />
 	<permission android:name="org.openintents.notepad.READ_PERMISSION"
-		android:label="@string/permission_read" android:description="@string/permission_read_descr"
+		android:label="@string/oi_notepad_permission_read" 
+		android:description="@string/oi_notepad_permission_read_descr"
 		android:permissionGroup="android.permission-group.PERSONAL_INFO"
 		android:protectionLevel="normal" />
 	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
-		android:label="@string/permission_write" android:description="@string/permission_write_descr"
+		android:label="@string/oi_notepad_permission_write"
+		android:description="@string/oi_notepad_permission_write_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.shopping.READ_PERMISSION"
+		android:label="@string/oi_shopping_permission_read"
+		android:description="@string/oi_shopping_permission_read_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.shopping.WRITE_PERMISSION"
+		android:label="@string/oi_shopping_permission_write"
+		android:description="@string/oi_shopping_permission_write_descr"
 		android:permissionGroup="android.permission-group.PERSONAL_INFO"
 		android:protectionLevel="normal" />
     <application android:icon="@drawable/ic_menu_convert_csv" android:label="@string/app_name">

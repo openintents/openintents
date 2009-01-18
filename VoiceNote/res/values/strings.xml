@@ -6,9 +6,4 @@
     <string name="no_voice_memo">No voice notes available</string>
     <string name="voice_memo">Voice notes</string>
     
-    <string name="permission_read">read notes</string>
-    <string name="permission_read_descr">Allows an application to access all notes. Note that encrypted notes are provided in the encrypted format.</string>
-    <string name="permission_write">write notes</string>
-    <string name="permission_write_descr">Allows an application to create new notes or change existing notes.</string>
-    
 </resources>

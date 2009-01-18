@@ -32,11 +32,13 @@
 	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
 	
 	<permission android:name="org.openintents.notepad.READ_PERMISSION"
-		android:label="@string/permission_read" android:description="@string/permission_read_descr"
+		android:label="@string/oi_notepad_permission_read"
+		android:description="@string/oi_notepad_permission_read_descr"
 		android:permissionGroup="android.permission-group.PERSONAL_INFO"
 		android:protectionLevel="normal" />
 	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
-		android:label="@string/permission_write" android:description="@string/permission_write_descr"
+		android:label="@string/oi_notepad_permission_write"
+		android:description="@string/oi_notepad_permission_write_descr"
 		android:permissionGroup="android.permission-group.PERSONAL_INFO"
 		android:protectionLevel="normal" />
 	

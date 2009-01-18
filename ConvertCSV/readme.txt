@@ -26,7 +26,7 @@ date: 2009-01-14
 
 - Fix line feed problem with Palm CSV Windows files.
 - Add support for new fields in NotePad 1.1.0.
-- Prepare for Notepad permissions.
+- Prepare for OI Notepad and OI Shopping list permissions.
 
 ---------------------------------------------------------
 release: 1.0.0

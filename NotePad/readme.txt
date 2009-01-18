@@ -36,7 +36,7 @@ date: 2009-?
   searches through title and tags.
 - open .txt files from SD card and save .txt files
   to SD card.
-- prepare for permissions to access note
+- prepare for permissions to access notes
   (but don't activate them yet).
 
 ---------------------------------------------------------

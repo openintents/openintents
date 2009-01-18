@@ -20,6 +20,18 @@
 	android:versionName="1.0.2"
 	android:versionCode="10002">
 	
+	<uses-permission android:name="org.openintents.shopping.READ_PERMISSION" />
+	<uses-permission android:name="org.openintents.shopping.WRITE_PERMISSION" />
+	<permission android:name="org.openintents.shopping.READ_PERMISSION"
+		android:label="@string/oi_shopping_permission_read"
+		android:description="@string/oi_shopping_permission_read_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.shopping.WRITE_PERMISSION"
+		android:label="@string/oi_shopping_permission_write"
+		android:description="@string/oi_shopping_permission_write_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
 
     <!-- required for gtalk (shopping list) -->
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
@@ -31,6 +43,11 @@
 		<provider android:name=".ShoppingProvider"
 			android:icon="@drawable/icon_shoppinglist"
 			android:authorities="org.openintents.shopping" />
+        <!-- Permissions not yet active! Activate permissions in one of the following releases.
+        	(Give time to extensions to implement permissions.)
+        	android:readPermission="org.openintents.shopping.READ_PERMISSION"
+			android:writePermission="org.openintents.shopping.WRITE_PERMISSION"
+         -->
 
 		<!-- Shopping activity -->
 		<activity android:name=".ShoppingActivity"

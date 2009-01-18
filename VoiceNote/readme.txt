@@ -19,10 +19,11 @@ OI VoiceNotes
 To obtain the current release, visit
   http://www.openintents.org
 
+---------------------------------------------------------
 release: 1.0.1
 date: 2009-??
 
-- Prepare for Notepad permissions.
+- 
 
 ---------------------------------------------------------
 release: 1.0.0
