@@ -339,7 +339,7 @@ public class ShoppingActivity extends Activity { // implements
 			if (Shopping.ITEM_TYPE.equals(type)) {
 				mListUri = Shopping.getListForItem(intent.getData()
 						.getLastPathSegment());
-			} else {
+			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
 			}
 
