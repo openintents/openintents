@@ -143,6 +143,7 @@ public class PassEdit extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+		saveState();
 		dbHelper.close();
 		dbHelper = null;
 	}
