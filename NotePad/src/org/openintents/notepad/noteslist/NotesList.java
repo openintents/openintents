@@ -772,6 +772,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// The caller is waiting for us to return a note selected by
 			// the user. The have clicked on one, so return it now.
 			setResult(RESULT_OK, new Intent().setData(uri));
+			finish ();
 		} else {
 			// Launch activity to view/edit the currently selected item
 			startActivity(new Intent(Intent.ACTION_EDIT, uri));
