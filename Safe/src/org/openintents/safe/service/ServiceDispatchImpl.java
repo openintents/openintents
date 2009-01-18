@@ -41,6 +41,7 @@ public class ServiceDispatchImpl extends Service {
     private CountDownTimer t;
     private int timeoutMinutes = 5;
 	private long timeoutUntilStop = timeoutMinutes * 60000;
+	private BroadcastReceiver mIntentReceiver;
     
     @Override
     public IBinder onBind(Intent intent) {
@@ -54,7 +55,7 @@ public class ServiceDispatchImpl extends Service {
     public void onCreate() {
       super.onCreate();
       
-      BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+      mIntentReceiver = new BroadcastReceiver() {
           public void onReceive(Context context, Intent intent) {
               if (intent.getAction().equals(CryptoIntents.ACTION_RESTART_TIMER)) {
 	              	restartTimer();
@@ -74,6 +75,7 @@ public class ServiceDispatchImpl extends Service {
 	  super.onDestroy();
 	  masterKey = null;
 	  ch = null;
+	  unregisterReceiver(mIntentReceiver);
 	  ServiceNotification.clearNotification(ServiceDispatchImpl.this);
 	  
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
