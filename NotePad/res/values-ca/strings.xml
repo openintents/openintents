@@ -26,7 +26,6 @@
     <string name="menu_insert">Afegeix nota</string>
     <string name="menu_revert">Desfer</string>
     <string name="menu_discard">Descartar</string>
-    <string name="update">Comproba si hi ha actualitzacions</string>
     
 	<string name="no_notes">Useu la tecla 'menu' per afegir notes.</string>
 
@@ -78,47 +77,5 @@
     <string name="file_not_found">No s'ha trobat el fitxer</string>
     <string name="note_saved">S'ha desat la nota</string>
     
-    <!-- File Manager -->
-    <string name="filemanager_not_available">No s'ha trobat cap gestor de fitxers compatible.</string>
-    <string name="filemanager_get_oi_filemanager">Obtindre OI Gestor de Fitxers</string>
-    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
-	
-	<!-- About -->
-	<string name="about">Sobre</string>
-	<string name="about_title">Sobre %s</string>
-	<string name="about_text">Versió %s \n\n
-La aplicació OI Bloc de Notes està basada en la aplicació d'exemple de codi obert 'Notepad',
-inclosa en el kit de desenvolupament d'Android.
-OI Bloc de Notes us permet crear, editar i eliminar notes.\n
-	
-OpenIntents permet a les aplicacions disenyades per Android compartir dades fent servir
-Intents i interfícies obertes.\n\n
-Per a més informació i altres aplicacions interessants, visiteu OpenIntents a www.openintents.org
-	</string>
-	
-	<!-- EULA -->
-	<string name="eula_title">ALUF OI Bloc de Notes</string>
-<string name="eula_description">
-Aquesta aplicació està basada en la aplicació d'exemple de codi obert 'Notepad',inclosa en el kit de desenvolupament d'Android, llicenciada sota Llicència Apache, Versió 2.0.\n\n
-* * * * *\n\n
-Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
-	<string name="eula_accept">Accepta</string>
-	<string name="eula_refuse">Cancel·la</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Si us plau, comproveu de forma manual si existeixen actualitzacions, o
-instal·leu OI Update per rebre notificacions de forma automática.
-Versió actual: %s
-	</string>
-	<string name="update_check_now">Comprobar ara.</string>
-	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
-	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
-	<string name="update_error">No s'ha trobat cap aplicacioó de descàrrega.</string>
 	
 </resources>

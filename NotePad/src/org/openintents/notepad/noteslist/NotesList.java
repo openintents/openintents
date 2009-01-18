@@ -28,7 +28,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
@@ -104,7 +104,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int REQUEST_CODE_OPEN = 5;
 	private static final int REQUEST_CODE_SAVE = 6;
 	
-	private static final int DIALOG_ID_TAGS = 1;
+	private static final int DIALOG_TAGS = 1;
+	private static final int DIALOG_ABOUT = 2;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -554,7 +555,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 	
 	private void editTags() {
-		showDialog(DIALOG_ID_TAGS);
+		showDialog(DIALOG_TAGS);
 	}
 	
 	private void saveToSdCard() {
@@ -579,7 +580,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     }
     
 	private void showAboutBox() {
-		startActivity(new Intent(this, AboutActivity.class));
+		//startActivity(new Intent(this, AboutActivity.class));
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
@@ -686,8 +688,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	protected Dialog onCreateDialog(int id) {
 
 		switch (id) {
-		case DIALOG_ID_TAGS:
+		case DIALOG_TAGS:
 			return new TagsDialog(this);
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
 		}
 		return null;
 	}
@@ -697,7 +701,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		FilenameDialog fd;
 		
 		switch (id) {
-		case DIALOG_ID_TAGS:
+		case DIALOG_TAGS:
 			TagsDialog d = (TagsDialog) dialog;
 
 			Uri uri = ContentUris.withAppendedId(getIntent().getData(), mContextMenuInfo.id);
@@ -711,6 +715,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			d.setTags(tags);
 			d.setEncrypted(encrypted);
 			
+			break;
+		case DIALOG_ABOUT:
 			break;
 		}
 	}

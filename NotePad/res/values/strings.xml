@@ -26,7 +26,6 @@
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
     <string name="menu_discard">Discard</string>
-    <string name="update">Check updates</string>
     
 	<string name="no_notes">Use menu to add new notes.</string>
 
@@ -78,46 +77,5 @@
     <string name="file_not_found">File not found</string>
     <string name="note_saved">Note saved</string>
     
-    <!-- File Manager -->
-    <string name="filemanager_not_available">No compatible file manager is available.</string>
-    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
-    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
-	
-	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-The OpenIntents Notepad is based on Google\'s open source sample application Notepad 
-that is provided with the Android SDK. 
-OI Notepad allows to create, edit, and delete notes.\n
-	
-OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at www.openintents.org
-	</string>
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Notepad EULA</string>
-<string name="eula_description">
-"This application is based on Google\'s  open source sample application Notepad that is provided with the Android SDK, licensed under the Apache License, Version 2.0.\n\n
-* * * * *\n\n
-Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
-	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
-	<string name="update_error">Download application not available.</string>
 	
 </resources>
