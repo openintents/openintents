@@ -46,6 +46,11 @@
     <string name="select_csv_file_format">Select CSV file format</string>
     <string name="preferences_select_csv_file_format">Select a CSV file format</string>
     
+    <string name="permission_read">read notes</string>
+    <string name="permission_read_descr">Allows an application to access all notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="permission_write">write notes</string>
+    <string name="permission_write_descr">Allows an application to create new notes or change existing notes.</string>
+    
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>
     <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>

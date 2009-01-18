@@ -28,6 +28,19 @@
 	android:versionCode="10100"
 	>	
     
+	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
+	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
+	
+	<permission android:name="org.openintents.notepad.READ_PERMISSION"
+		android:label="@string/permission_read" android:description="@string/permission_read_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
+		android:label="@string/permission_write" android:description="@string/permission_write_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	
+	
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
     >
@@ -52,9 +65,14 @@
         <meta-data android:name="org.openintents.metadata.EMAIL"
                        android:value="@string/about_email" />
                        
-        <provider android:name="NotePadProvider"
+        <provider android:name="NotePadProvider" 
             android:authorities="org.openintents.notepad"
         />
+        <!-- Permissions not yet active! Activate permissions in one of the following releases.
+        	(Give time to extensions to implement permissions.)
+        	android:readPermission="org.openintents.notepad.READ_PERMISSION"
+			android:writePermission="org.openintents.notepad.WRITE_PERMISSION"
+         -->
 
         <activity android:name=".noteslist.NotesList" android:label="@string/title_notes_list">
             <intent-filter>

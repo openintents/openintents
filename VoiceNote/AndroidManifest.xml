@@ -3,6 +3,16 @@
       package="org.openintents.voicenotes"
       android:versionCode="1"
       android:versionName="1.0.0">
+	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
+	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
+	<permission android:name="org.openintents.notepad.READ_PERMISSION"
+		android:label="@string/permission_read" android:description="@string/permission_read_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
+		android:label="@string/permission_write" android:description="@string/permission_write_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
     <application android:icon="@drawable/ic_menu_voice" android:label="@string/app_name">
         <activity android:name=".VoiceRecordNote"
                   android:label="@string/app_name"
