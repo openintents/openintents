@@ -26,7 +26,9 @@
             
         <CheckBoxPreference
                 android:title="@string/pref_title_external_access"
-                android:summary="@string/pref_summary_external_access" android:key="external_access"/>
+                android:summary="@string/pref_summary_external_access"
+                android:key="external_access"
+            	android:defaultValue="false"/>
                 
         <ListPreference
                 android:key="lock_timeout"
@@ -34,7 +36,8 @@
                 android:summary="@string/pref_summary_lock_timeout"
                 android:entries="@array/pref_entries_lock_timeout"
                 android:entryValues="@array/pref_entryvalues_lock_timeout"
-                android:dialogTitle="@string/pref_dialog_title_lock_timeout" />    
+                android:dialogTitle="@string/pref_dialog_title_lock_timeout"
+            	android:defaultValue="5" />    
 
     </PreferenceCategory>
 </PreferenceScreen>

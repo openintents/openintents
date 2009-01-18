@@ -80,7 +80,7 @@ public class FrontDoor extends Activity {
 			switch (requestCode) {
 			case REQUEST_CODE_ASK_PASSWORD:
 				masterKey = data.getStringExtra("masterKey");
-				String timeout = mPreferences.getString("lock_timeout", "5"); 
+				String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
 				int timeoutMinutes=5; // default to 5
 				try {
 					timeoutMinutes = Integer.valueOf(timeout);
