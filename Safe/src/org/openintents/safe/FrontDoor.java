@@ -1,4 +1,4 @@
-/* $Id: FrontDoor.java 98 2009-01-15 04:33:59Z rmceoin $
+/* $Id$
  * 
  * Copyright 2007-2008 Steven Osborn
  *

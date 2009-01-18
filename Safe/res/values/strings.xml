@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 98 2009-01-15 04:33:59Z rmceoin $
+* $Id$
 * 
 * Copyright 2007 Steven Osborn
 *
@@ -144,4 +144,6 @@
 	<string name="pass_gen_copy_to_current_entry">Copy to Current Entry</string>
 	<string name="pass_gen_copy_to_clipboard">Copy to Clipboard</string>
 	<string name="cancel">Cancel</string>
+	<string name="discard_changes">Discard changes</string>
+	<string name="entry_saved">Entry saved</string>
 </resources>

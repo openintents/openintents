@@ -1,4 +1,4 @@
-/* $Id: CSVReader.java 71 2008-12-28 19:42:48Z peli0101 $
+/* $Id$
  */
 package org.openintents.safe;
 

@@ -1,4 +1,4 @@
-/* $Id: PassEntry.java 93 2009-01-05 08:14:22Z isaac.jones $
+/* $Id$
  * 
  * Copyright 2007-2008 Steven Osborn
  *

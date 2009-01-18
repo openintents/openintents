@@ -1,4 +1,4 @@
-/* $Id: AskPassword.java 95 2009-01-11 11:37:59Z peli0101 $
+/* $Id$
  * 
  * Copyright 2007-2008 Steven Osborn
  *

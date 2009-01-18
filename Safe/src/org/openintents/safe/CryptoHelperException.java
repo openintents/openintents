@@ -1,4 +1,4 @@
-/* $Id: CryptoHelperException.java 71 2008-12-28 19:42:48Z peli0101 $
+/* $Id$
  * 
  * Copyright 2007-2008 Steven Osborn
  *

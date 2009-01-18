@@ -1,4 +1,4 @@
-/* $Id: CategoryList.java 98 2009-01-15 04:33:59Z rmceoin $
+/* $Id$
  * 
  * Copyright 2008 Randy McEoin
  *

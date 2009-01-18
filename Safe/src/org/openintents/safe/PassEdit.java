@@ -1,4 +1,4 @@
-/* $Id: PassEdit.java 93 2009-01-05 08:14:22Z isaac.jones $
+/* $Id$
  * 
  * Copyright 2007-2008 Steven Osborn
  *
@@ -46,7 +46,8 @@ public class PassEdit extends Activity {
 
 	public static final int SAVE_PASSWORD_INDEX = Menu.FIRST;
 	public static final int DEL_PASSWORD_INDEX = Menu.FIRST + 1;
-	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 2;
+	public static final int DISCARD_PASSWORD_INDEX = Menu.FIRST + 2;
+	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 3;
 
 	private EditText descriptionText;
 	private EditText passwordText;
@@ -144,6 +145,8 @@ public class PassEdit extends Activity {
 	protected void onPause() {
 		super.onPause();
 		saveState();
+		Toast.makeText(PassEdit.this, R.string.entry_saved,
+			Toast.LENGTH_SHORT).show();
 		dbHelper.close();
 		dbHelper = null;
 	}
@@ -201,7 +204,9 @@ public class PassEdit extends Activity {
 		menu.add(0, SAVE_PASSWORD_INDEX, 0, R.string.save).setIcon(
 				android.R.drawable.ic_menu_save).setShortcut('1', 's');
 		menu.add(0, DEL_PASSWORD_INDEX, 0, R.string.password_delete).setIcon(
-				android.R.drawable.ic_menu_delete).setShortcut('3', 'd');
+				android.R.drawable.ic_menu_delete);
+		menu.add(0, DISCARD_PASSWORD_INDEX, 0, R.string.discard_changes).setIcon(
+				android.R.drawable.ic_notification_clear_all);
 		menu.add(0, GEN_PASSWORD_INDEX, 0, "Generate").setIcon(
 				android.R.drawable.ic_menu_set_as).setShortcut('4', 'g');
 
@@ -213,6 +218,8 @@ public class PassEdit extends Activity {
 	 */
 	private void savePassword() {
 		saveState();
+		Toast.makeText(PassEdit.this, R.string.entry_saved,
+			Toast.LENGTH_SHORT).show();
 		setResult(RESULT_OK);
 		finish();
 	}
@@ -275,6 +282,9 @@ public class PassEdit extends Activity {
 			break;
 		case DEL_PASSWORD_INDEX:
 			deletePassword();
+			break;
+		case DISCARD_PASSWORD_INDEX:
+			finish();
 			break;
 		case GEN_PASSWORD_INDEX:
 			Intent i = new Intent(getApplicationContext(), PassGen.class);
