@@ -58,6 +58,7 @@ public class PassEdit extends Activity {
 	private DBHelper dbHelper = null;
 	private CryptoHelper ch;
 	private boolean pass_gen_ret = false;
+	private boolean discardEntry = false;
 	
 	private static boolean debug = false;
 	private static String TAG = "PassEdit";
@@ -144,9 +145,9 @@ public class PassEdit extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		saveState();
-		Toast.makeText(PassEdit.this, R.string.entry_saved,
-			Toast.LENGTH_SHORT).show();
+		if (discardEntry==false) {
+			savePassword();
+		}
 		dbHelper.close();
 		dbHelper = null;
 	}
@@ -221,7 +222,6 @@ public class PassEdit extends Activity {
 		Toast.makeText(PassEdit.this, R.string.entry_saved,
 			Toast.LENGTH_SHORT).show();
 		setResult(RESULT_OK);
-		finish();
 	}
 
 	/**
@@ -279,11 +279,13 @@ public class PassEdit extends Activity {
 		switch (item.getItemId()) {
 		case SAVE_PASSWORD_INDEX:
 			savePassword();
+			finish();
 			break;
 		case DEL_PASSWORD_INDEX:
 			deletePassword();
 			break;
 		case DISCARD_PASSWORD_INDEX:
+			discardEntry=true;
 			finish();
 			break;
 		case GEN_PASSWORD_INDEX:
