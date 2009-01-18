@@ -21,6 +21,7 @@
  * Licensed under the Apache License, Version 2.0.
   -->
 
+<!-- Translation by Sergi Velez -->
 <resources>
     <string name="menu_delete">Borrar</string>
     <string name="menu_insert">Añadir nota</string>
