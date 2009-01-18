@@ -68,8 +68,8 @@
     <string name="dropdown_hint">Berühren um Liste zu sehen</string>
     <string name="tags_hint">Stichworte eingeben, durch Komma getrennt</string>
     
-    <string name="menu_save_to_sdcard">Auf SD Karte speichern</string>
-    <string name="menu_open_from_sdcard">Von SD Karte öffnen</string>
+    <string name="menu_save_to_sdcard">Speichern auf SD Karte</string>
+    <string name="menu_open_from_sdcard">Öffnen von SD Karte</string>
     <string name="filename">Dateiname</string>
     <string name="save">Speichern</string>
     <string name="open">Öffnen</string>
