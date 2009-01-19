@@ -28,6 +28,8 @@ date: 2009-??-??
 - preference for sorting and font size added
 - prepare for permissions to access shopping lists
   (but don't activate them yet).
+- fix bux when opened through AnyCut from homepage.
+- create shortcut from home screen to arbitrary list.
 
 ---------------------------------------------------------
 release: 1.0.2
