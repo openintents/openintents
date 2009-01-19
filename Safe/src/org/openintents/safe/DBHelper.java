@@ -17,9 +17,9 @@
 package org.openintents.safe;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
@@ -532,6 +532,40 @@ public class DBHelper {
 		return pkgs;
 	}
 	
+	/**
+	 * Fetch all the package access data into one HashMap.
+	 * 
+	 * @return  HashMap&lt;Long id, ArrayList&lt;String> package>
+	 */
+	public HashMap<Long, ArrayList<String>> fetchPackageAccessAll() {
+		HashMap<Long, ArrayList<String>> pkgsAll=new HashMap<Long, ArrayList<String>>();
+
+		Cursor c = null;
+		try {
+			c =
+				db.query(true, TABLE_PACKAGE_ACCESS, new String[] {
+					"id"}, null, null, null, null, null, null);
+			if (c.getCount() > 0) {
+				c.moveToFirst();
+				while (! c.isAfterLast()) {
+					Long id=c.getLong(0);
+					ArrayList <String> pkgs = fetchPackageAccess(id);
+					if (pkgs!=null) {
+						pkgsAll.put(id, pkgs);
+					}
+					c.moveToNext();
+				}
+			}
+		} catch (SQLException e)
+		{
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		} finally {
+			if (c != null) c.close();
+		}
+		
+		return pkgsAll;
+	}
+	
 	public void addPackageAccess (long passwordID, String packageToAdd) {
 		ContentValues packageAccessValues = new ContentValues ();
 		packageAccessValues.put("id", passwordID);
@@ -556,10 +590,11 @@ public class DBHelper {
 	    args.put("website", entry.website);
 	    args.put("note", entry.note);
 	    args.put("unique_name", entry.uniqueName);
-	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z"); 
-	    Date date = new Date();
-        String timeNow = dateFormat.format(date); 
-	    args.put("lastdatetimeedit", timeNow);
+		DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,
+				DateFormat.FULL);
+		Date today = new Date();
+		String dateOut = dateFormatter.format(today);
+	    args.put("lastdatetimeedit", dateOut);
 	    try {
 			db.update(TABLE_PASSWORDS, args, "id=" + Id, null);
 		} catch (SQLException e)

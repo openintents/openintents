@@ -19,7 +19,9 @@ package org.openintents.safe;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import android.content.Context;
 import android.util.Log;
@@ -73,7 +75,8 @@ public class Backup {
 			
 			List<CategoryEntry> crows;
 			crows = dbHelper.fetchAllCategoryRows();
-
+			HashMap<Long, ArrayList<String>> packageAccess=dbHelper.fetchPackageAccessAll();
+			
 			int totalPasswords=0;
 
 			for (CategoryEntry crow : crows) {
@@ -88,7 +91,11 @@ public class Backup {
 					totalPasswords++;
 					
 					serializer.startTag(null, "Entry");
-					
+
+					serializer.startTag(null, "RowID");
+					serializer.text(Long.toString(row.id));
+					serializer.endTag(null, "RowID");
+
 					serializer.startTag(null, "Description");
 					serializer.text(row.description);
 					serializer.endTag(null, "Description");
@@ -109,9 +116,17 @@ public class Backup {
 					serializer.text(row.note);
 					serializer.endTag(null, "Note");
 
-					serializer.startTag(null, "UniqueName");
-					serializer.text(row.uniqueName);
-					serializer.endTag(null, "UniqueName");
+					if (row.uniqueName!=null) {
+						serializer.startTag(null, "UniqueName");
+						serializer.text(row.uniqueName);
+						serializer.endTag(null, "UniqueName");
+					}
+					
+					if(packageAccess.containsKey(row.id)) {
+						serializer.startTag(null, "PackageAccess");
+						serializer.text(packageAccess.get(row.id).toString());
+						serializer.endTag(null, "PackageAccess");
+					}
 
 					serializer.endTag(null, "Entry");
 				}
