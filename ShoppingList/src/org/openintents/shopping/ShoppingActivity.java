@@ -423,7 +423,8 @@ public class ShoppingActivity extends Activity { // implements
 
 		// Modify our overall title depending on the mode we are running in.
 		if (mState == STATE_MAIN || mState == STATE_VIEW_LIST) {
-			setTitle(getText(R.string.shopping_list));
+			// App name is default
+			//setTitle(getText(R.string.app_name));
 		} else if ((mState == STATE_PICK_ITEM)
 				|| (mState == STATE_GET_CONTENT_ITEM)) {
 			setTitle(getText(R.string.pick_item));

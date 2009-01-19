@@ -66,6 +66,9 @@ public class ShoppingListsActivity extends ListActivity {
 		if (c != null && c.moveToFirst()) {
 			return c.getString(0);
 		}
-		return getString(R.string.oi_shopping_list);
+		
+		// If there was a problem retrieving the note title
+		// simply use the application name
+		return getString(R.string.app_name);
 	}
 }

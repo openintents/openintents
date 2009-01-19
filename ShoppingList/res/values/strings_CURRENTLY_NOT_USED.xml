@@ -16,7 +16,17 @@
  -->
  
 <resources>
-    
+	<!-- Share shopping list -->
+	<string name="shopping_name_description">Enter a unique identifier for this list.</string>
+	<string name="please_enter_description">Please enter a unique identifier</string>
+	<string name="shopping_name_hint">i.e. bob1</string>
+	<string name="shopping_share_description">Insert the email addresses of the contacts 
+		separated by comma
+		with who you want to share this list 
+		(use 'local/new_id' to test locally).</string>
+	<string name="shopping_share_hint">i.e. local/bob2, alice@gmail.com</string>
+	<string name="share">Share</string>
+	
 	<!-- Shopping list location alert related -->
 	<string name="shopping_add_alert">Add alert</string>
 	<string name="add_location_alert">Add location alert</string>

@@ -16,10 +16,9 @@
  -->
  
 <resources>
-    
+	<string name="app_name">OI Shopping list</string>
+	
 	<!-- Shopping Provider -->
-	<string name="shopping_list">Shopping list</string>
-	<string name="oi_shopping_list">OI Shopping list</string>
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
 	<string name="new_list_hint">i.e. wishlist, family list</string>
@@ -33,15 +32,6 @@
 	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
 	<string name="no_shopping_provider">No shopping provider available.</string>
 	<string name="pick_item">Pick an item</string>
-	<string name="shopping_name_description">Enter a unique identifier for this list.</string>
-	<string name="please_enter_description">Please enter a unique identifier</string>
-	<string name="shopping_name_hint">i.e. bob1</string>
-	<string name="shopping_share_description">Insert the email addresses of the contacts 
-		separated by comma
-		with who you want to share this list 
-		(use 'local/new_id' to test locally).</string>
-	<string name="shopping_share_hint">i.e. local/bob2, alice@gmail.com</string>
-	<string name="share">Share</string>
 	<string name="share_settings">Share settings</string>
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
@@ -49,12 +39,10 @@
 	<string name="mark_item">Mark item</string>
 	<string name="edit_item">Edit item</string>
 	<string name="delete_item">Delete item</string>
-	<!-- <string name="button_add_item">Add</string> -->
 	<string name="add">Add</string>
 	
 	<!-- Shortcut -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
-	
 	
     <!-- Theme related -->
     <string name="theme_pick">Pick a theme</string>
@@ -64,9 +52,8 @@
     <string name="theme_bugdroid">Android</string>
     
 	<!--     Dialog box    -->
-	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
-	
+	<string name="cancel">Cancel</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Preferences</string>
@@ -79,5 +66,4 @@
 	<string name="preference_sortorder_summary">Change sort order of list items</string>
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
 
-	
 </resources> 

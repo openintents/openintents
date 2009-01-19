@@ -37,7 +37,7 @@
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
 	
 	 
-	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/oi_shopping_list">
+	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name">
 		<!-- <uses-library android:name="com.google.android.gtalkservice" />   -->
         		
         <meta-data android:name="org.openintents.metadata.COMMENTS"
@@ -72,7 +72,7 @@
 
 		<!-- Shopping activity -->
 		<activity android:name=".ShoppingActivity"
-			android:label="@string/oi_shopping_list" 
+			android:label="@string/app_name" 
 			android:icon="@drawable/icon_shoppinglist">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
