@@ -151,7 +151,7 @@ public class AskPassword extends Activity {
 						return;
 					}
 					masterKey = CryptoHelper.generateMasterKey();
-					Log.i(TAG, "Saving Password: " + masterKey);
+					if (debug) Log.i(TAG, "Saving Password: " + masterKey);
 					try {
 						String encryptedMasterKey = ch.encrypt(masterKey);
 						dbHelper.storeMasterKey(encryptedMasterKey);

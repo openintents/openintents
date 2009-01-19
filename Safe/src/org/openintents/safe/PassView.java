@@ -1,6 +1,6 @@
 /* $Id$
  * 
- * Copyright 2007-2008 Steven Osborn
+ * Copyright (C) 2009 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 package org.openintents.safe;
-
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,43 +31,42 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * PassEdit Activity
+ * PassView Activity
  * 
- * @author Steven Osborn - http://steven.bitsetters.com
  * @author Randy McEoin
  */
-public class PassEdit extends Activity {
+public class PassView extends Activity {
 
 	private static boolean debug = true;
-	private static String TAG = "PassEdit";
+	private static String TAG = "PassView";
 
-	public static final int REQUEST_GEN_PASS = 10;
-
-	public static final int SAVE_PASSWORD_INDEX = Menu.FIRST;
+	public static final int EDIT_PASSWORD_INDEX = Menu.FIRST;
 	public static final int DEL_PASSWORD_INDEX = Menu.FIRST + 1;
-	public static final int DISCARD_PASSWORD_INDEX = Menu.FIRST + 2;
-	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 3;
 
+	public static final int REQUEST_EDIT_PASS = 1;
+	
 	private EditText descriptionText;
 	private EditText passwordText;
 	private EditText usernameText;
 	private EditText websiteText;
 	private EditText noteText;
+	private TextView lastEditedText;
 	private Long RowId;
+	private Long CategoryId;
 	private DBHelper dbHelper = null;
 	private CryptoHelper ch;
-	private boolean pass_gen_ret = false;
-	private boolean discardEntry = false;
+	public static boolean entryEdited=false;
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		if (debug) Log.d(TAG,"onCreate()");
 		String title = getResources().getString(R.string.app_name) + " - "
-				+ getResources().getString(R.string.edit_entry);
+				+ getResources().getString(R.string.view_entry);
 		setTitle(title);
 
 		ch = new CryptoHelper();
@@ -78,13 +76,16 @@ public class PassEdit extends Activity {
 			dbHelper = new DBHelper(this);
 		}
 
-		setContentView(R.layout.pass_edit);
+		setContentView(R.layout.pass_view);
 
 		descriptionText = (EditText) findViewById(R.id.description);
-		passwordText = (EditText) findViewById(R.id.password);
-		usernameText = (EditText) findViewById(R.id.username);
-		noteText = (EditText) findViewById(R.id.note);
 		websiteText = (EditText) findViewById(R.id.website);
+		usernameText = (EditText) findViewById(R.id.username);
+		passwordText = (EditText) findViewById(R.id.password);
+		noteText = (EditText) findViewById(R.id.note);
+		lastEditedText = (TextView) findViewById(R.id.last_edited);
+		
+		entryEdited=false;
 
 		Button goButton = (Button) findViewById(R.id.go);
 
@@ -93,13 +94,16 @@ public class PassEdit extends Activity {
 			Bundle extras = getIntent().getExtras();
 			RowId = extras != null ? extras.getLong(PassList.KEY_ID) : null;
 		}
-
-//		populateFields();
+		CategoryId = icicle != null ? icicle.getLong(PassList.KEY_CATEGORY_ID) : null;
+		if (CategoryId == null) {
+			Bundle extras = getIntent().getExtras();
+			CategoryId = extras != null ? extras.getLong(PassList.KEY_CATEGORY_ID) : null;
+		}
 
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 
-				Toast.makeText(PassEdit.this, R.string.copy_to_clipboard,
+				Toast.makeText(PassView.this, R.string.copy_to_clipboard,
 						Toast.LENGTH_SHORT).show();
 
 				ClipboardManager cb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
@@ -111,7 +115,7 @@ public class PassEdit extends Activity {
 				try {
 					startActivity(i);
 				} catch (ActivityNotFoundException e) {
-					Toast.makeText(PassEdit.this, R.string.invalid_website,
+					Toast.makeText(PassView.this, R.string.invalid_website,
 						Toast.LENGTH_SHORT).show();
 				}
 			}
@@ -127,14 +131,12 @@ public class PassEdit extends Activity {
 		} else {
 			outState.putLong(PassList.KEY_ID, -1);
 		}
+		outState.putLong(PassList.KEY_CATEGORY_ID, CategoryId);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		if (discardEntry==false) {
-			savePassword();
-		}
 		dbHelper.close();
 		dbHelper = null;
 	}
@@ -149,66 +151,21 @@ public class PassEdit extends Activity {
 			dbHelper = new DBHelper(this);
 		}
 		if (CategoryList.isSignedIn() == false) {
-			saveState();
 			finish();
 		}
 		populateFields();
-	}
-
-	private void saveState() {
-		PassEntry entry = new PassEntry();
-
-		String passwordPlain = passwordText.getText().toString();
-		String notePlain = noteText.getText().toString();
-		String usernamePlain = usernameText.getText().toString();
-		String websitePlain = websiteText.getText().toString();
-		String descPlain = descriptionText.getText().toString();
-
-		try {
-			entry.category = PassList.getCategoryId();
-			entry.description = ch.encrypt(descPlain);
-			entry.username = ch.encrypt(usernamePlain);
-			entry.password = ch.encrypt(passwordPlain);
-			entry.note = ch.encrypt(notePlain);
-			entry.website = ch.encrypt(websitePlain);
-		} catch (CryptoHelperException e) {
-			Log.e(TAG, e.toString());
-		}
-
-		if (RowId == null || RowId == -1) {
-			RowId = dbHelper.addPassword(entry);
-		} else {
-			PassEntry storedEntry = dbHelper.fetchPassword (RowId);
-			//update fields that aren't set in the UI:
-			entry.uniqueName = storedEntry.uniqueName;
-			dbHelper.updatePassword(RowId, entry);
-		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
-		menu.add(0, SAVE_PASSWORD_INDEX, 0, R.string.save).setIcon(
-				android.R.drawable.ic_menu_save).setShortcut('1', 's');
-		menu.add(0, DEL_PASSWORD_INDEX, 0, R.string.password_delete).setIcon(
-				android.R.drawable.ic_menu_delete);
-		menu.add(0, DISCARD_PASSWORD_INDEX, 0, R.string.discard_changes).setIcon(
-				android.R.drawable.ic_notification_clear_all);
-		menu.add(0, GEN_PASSWORD_INDEX, 0, "Generate").setIcon(
-				android.R.drawable.ic_menu_set_as).setShortcut('4', 'g');
+		menu.add(0, EDIT_PASSWORD_INDEX, 0, R.string.password_edit)
+			.setIcon(android.R.drawable.ic_menu_edit).setShortcut('1', 'e');
+		menu.add(0, DEL_PASSWORD_INDEX, 0, R.string.password_delete)
+			.setIcon(android.R.drawable.ic_menu_delete).setShortcut('2', 'd');
 
 		return super.onCreateOptionsMenu(menu);
-	}
-
-	/**
-	 * Save the password entry and finish the activity.
-	 */
-	private void savePassword() {
-		saveState();
-		Toast.makeText(PassEdit.this, R.string.entry_saved,
-			Toast.LENGTH_SHORT).show();
-		setResult(RESULT_OK);
 	}
 
 	/**
@@ -264,20 +221,15 @@ public class PassEdit extends Activity {
 	 */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case SAVE_PASSWORD_INDEX:
-			savePassword();
-			finish();
+		case EDIT_PASSWORD_INDEX:
+			Intent i = new Intent(getApplicationContext(), PassEdit.class);
+			i.putExtra(PassList.KEY_ID, RowId);
+			i.putExtra(PassList.KEY_CATEGORY_ID, CategoryId);
+			startActivityForResult(i, REQUEST_EDIT_PASS);
 			break;
 		case DEL_PASSWORD_INDEX:
 			deletePassword();
 			break;
-		case DISCARD_PASSWORD_INDEX:
-			discardEntry=true;
-			finish();
-			break;
-		case GEN_PASSWORD_INDEX:
-			Intent i = new Intent(getApplicationContext(), PassGen.class);
-			startActivityForResult(i, REQUEST_GEN_PASS);
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -289,13 +241,10 @@ public class PassEdit extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent i) {
 		super.onActivityResult(requestCode, resultCode, i);
 
-		if (requestCode == REQUEST_GEN_PASS) {
-			if(resultCode == PassGen.CHANGE_ENTRY_RESULT) {
-				String new_pass = i.getStringExtra(PassGen.NEW_PASS_KEY);
-				Log.d(TAG,new_pass);
-				passwordText.setText(new_pass);
-				pass_gen_ret = true;
-			}
+		if (debug) Log.d(TAG,"onActivityResult()");
+		if (resultCode == RESULT_OK) {
+			populateFields();
+			entryEdited=true;
 		}
 	}
 
@@ -304,11 +253,10 @@ public class PassEdit extends Activity {
 	 */
 	private void populateFields() {
 		if (debug) Log.d(TAG,"populateFields()");
-		if(pass_gen_ret == true){
-			pass_gen_ret = false;
-			return;
-		}
 		if (RowId != null) {
+			if (dbHelper == null) {
+				dbHelper = new DBHelper(this);
+			}
 			PassEntry row = dbHelper.fetchPassword(RowId);
 			if (row.id > -1) {
 				String cryptDesc = row.description;
@@ -322,6 +270,7 @@ public class PassEdit extends Activity {
 					usernameText.setText(ch.decrypt(cryptUsername));
 					passwordText.setText(ch.decrypt(cryptPass));
 					noteText.setText(ch.decrypt(cryptNote));
+					lastEditedText.setText(getString(R.string.last_edited)+" "+row.lastEdited);
 				} catch (CryptoHelperException e) {
 					Log.e(TAG, e.toString());
 				}

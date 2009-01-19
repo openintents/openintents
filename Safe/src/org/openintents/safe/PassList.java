@@ -55,18 +55,20 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug= false;
+	private static final boolean debug= true;
     private static final String TAG = "PassList";
 
     // Menu Item order
-    public static final int EDIT_PASSWORD_INDEX = Menu.FIRST;
-    public static final int ADD_PASSWORD_INDEX = Menu.FIRST + 1;
-    public static final int DEL_PASSWORD_INDEX = Menu.FIRST + 2;   
-    public static final int MOVE_PASSWORD_INDEX = Menu.FIRST + 3;
+    public static final int VIEW_PASSWORD_INDEX = Menu.FIRST;
+    public static final int EDIT_PASSWORD_INDEX = Menu.FIRST + 1;
+    public static final int ADD_PASSWORD_INDEX = Menu.FIRST + 2;
+    public static final int DEL_PASSWORD_INDEX = Menu.FIRST + 3;   
+    public static final int MOVE_PASSWORD_INDEX = Menu.FIRST + 4;
     
-    public static final int REQUEST_EDIT_PASSWORD = 1;
-    public static final int REQUEST_ADD_PASSWORD = 2;
-    public static final int REQUEST_MOVE_PASSWORD = 3;
+    public static final int REQUEST_VIEW_PASSWORD = 1;
+    public static final int REQUEST_EDIT_PASSWORD = 2;
+    public static final int REQUEST_ADD_PASSWORD = 3;
+    public static final int REQUEST_MOVE_PASSWORD = 4;
     
     public static final String KEY_ID = "id";  // Intent keys
     public static final String KEY_CATEGORY_ID = "categoryId";  // Intent keys
@@ -172,6 +174,9 @@ public class PassList extends ListActivity {
 		info = (AdapterView.AdapterContextMenuInfo) menuInfo;
 
 		menu.setHeaderTitle(rows.get(info.position).plainDescription);
+		menu.add(0, VIEW_PASSWORD_INDEX, 0, R.string.password_view)
+			.setIcon(android.R.drawable.ic_menu_view)
+			.setAlphabeticShortcut('v');
 		menu.add(0, EDIT_PASSWORD_INDEX, 0, R.string.password_edit)
 			.setIcon(android.R.drawable.ic_menu_edit)
 			.setAlphabeticShortcut('e');
@@ -361,6 +366,12 @@ public class PassList extends ListActivity {
 		case ADD_PASSWORD_INDEX:
 		    addPassword();
 		    break;
+		case VIEW_PASSWORD_INDEX:
+			Intent vi = new Intent(this, PassView.class);
+			vi.putExtra(KEY_ID, rows.get(position).id);
+			vi.putExtra(KEY_CATEGORY_ID, CategoryId);
+			startActivityForResult(vi,REQUEST_VIEW_PASSWORD);
+		    break;
 		case EDIT_PASSWORD_INDEX:
 			Intent i = new Intent(this, PassEdit.class);
 			i.putExtra(KEY_ID, rows.get(position).id);
@@ -380,26 +391,29 @@ public class PassList extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 	
-		Intent i = new Intent(this, PassEdit.class);
+		Intent i = new Intent(this, PassView.class);
 		i.putExtra(KEY_ID, rows.get(position).id);
 		i.putExtra(KEY_CATEGORY_ID, CategoryId);
-	    startActivityForResult(i,REQUEST_EDIT_PASSWORD);
+	    startActivityForResult(i,REQUEST_VIEW_PASSWORD);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent i) {
     	super.onActivityResult(requestCode, resultCode, i);
 
+    	if (debug) Log.d(TAG,"onActivityResult: requestCode="+requestCode+", resultCode="+resultCode+
+    			", entryEdited="+PassView.entryEdited);
     	if (dbHelper == null) {
 		    dbHelper = new DBHelper(this);
 		}
-    	if (resultCode==RESULT_OK) {
+    	if (((requestCode==REQUEST_VIEW_PASSWORD)&&(PassView.entryEdited)) ||
+    			(resultCode==RESULT_OK)) {
     		fillData();
     	}
     }
     
     /**
-     * Retreive the decrypted category name based on the provided id.
+     * Retrieve the decrypted category name based on the provided id.
      *  
      * @param Id category id
      * @return decrypted category name

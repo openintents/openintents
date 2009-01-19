@@ -24,6 +24,7 @@
     <string name="empty_safe">No Passwords present for this category.</string>
     <string name="empty_category">No categories present.  Please add one via Menu->Add</string>
     <string name="password_lock">Lock</string>
+    <string name="password_view">View</string>
     <string name="password_edit">Edit</string>
     <string name="password_add">Add</string>
     <string name="password_delete">Delete</string>
@@ -77,6 +78,7 @@
 	<string name="import_complete">Import complete</string>
 	<string name="import_delete_csv">Since it is not secure to keep passwords in clear text CSV files, would you like to delete</string>
 	<string name="edit_entry">Edit Entry</string>
+	<string name="view_entry">View Entry</string>
 	<string name="help">Help</string>
 	<string name="close">Close</string>
 	<string name="go">Go</string>
@@ -147,4 +149,5 @@
 	<string name="cancel">Cancel</string>
 	<string name="discard_changes">Discard changes</string>
 	<string name="entry_saved">Entry saved</string>
+	<string name="last_edited">Last edited</string>
 </resources>

@@ -2,7 +2,7 @@
 <!-- 
 * $Id$
 * 
-* Copyright 2007 Steven Osborn
+* Copyright (C) 2009 OpenIntents.org
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -33,10 +33,11 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
- 
-					android:text="@string/description" />
+					android:layout_marginRight="2sp"
+					android:layout_marginBottom="1sp"
+ 					android:text="@string/description" />
 				<EditText android:id="@+id/description"
-				 	android:singleLine="true"
+					android:editable="false"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -44,24 +45,26 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
+					android:layout_marginRight="2sp"
 					android:text="@string/website" />
 				<EditText android:id="@+id/website"
+					android:editable="false"
 				    android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:singleLine="true" 
 					android:layout_weight="1"/>
 				<Button android:id="@+id/go" 
-	  					android:text="@string/go"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
+  					android:text="@string/go"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 				/>
 			</TableRow>
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
+					android:layout_marginRight="2sp"
 					android:text="@string/username" />
 				<EditText android:id="@+id/username" 
-				 	android:singleLine="true"
+					android:editable="false"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -70,10 +73,10 @@
 			<TableRow>
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
-					android:autoText="false"
+					android:layout_marginRight="2sp"
 					android:text="@string/password" />
 				<EditText android:id="@+id/password"
-				 	android:singleLine="true"
+					android:editable="false"
 				  	android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -84,10 +87,16 @@
 		android:layout_height="wrap_content" 
 		android:text="@string/notes" />
 	<EditText android:id="@+id/note" android:layout_width="fill_parent"
+		android:editable="false"
 		android:gravity="top" 
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
 		android:scrollbars="vertical" />
-	
+
+	<TextView android:id="@+id/last_edited"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="@string/last_edited" />
+
 </LinearLayout>
 </ScrollView>

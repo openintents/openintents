@@ -38,6 +38,7 @@ public class PassEntry extends Object {
     public String plainUsername;
     public String plainWebsite;
     public String plainNote;
+    public String lastEdited;
     
     public static boolean checkPackageAccess (ArrayList<String> packageAccess, String packageName) {
     	return (packageAccess.contains(packageName));

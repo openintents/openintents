@@ -53,6 +53,7 @@
         </activity>
         <activity class=".PassGen" android:name="PassGen" android:label="@string/app_name" />
         <activity class=".CategoryEdit" android:name="CategoryEdit" android:label="@string/app_name" />
+        <activity class=".PassView" android:name="PassView" android:label="@string/app_name" />
         <activity class=".PassList" android:name="PassList" android:label="@string/app_name" />
         <activity class=".PassEdit" android:name="PassEdit" android:label="@string/app_name" />
         <activity class=".CategoryList" android:name="CategoryList" android:label="@string/app_name" />

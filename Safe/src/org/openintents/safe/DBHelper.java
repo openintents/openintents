@@ -406,11 +406,13 @@ public class DBHelper {
 	        if (CategoryId==0)
 	        {
 		        c = db.query(TABLE_PASSWORDS, new String[] {
-	                "id", "password", "description", "username", "website", "note", "category", "unique_name"},
+	                "id", "password", "description", "username", "website",
+	                "note", "category", "unique_name", "lastdatetimeedit"},
 	                null, null, null, null, null);
 	        } else {
 		        c = db.query(TABLE_PASSWORDS, new String[] {
-		                "id", "password", "description", "username", "website", "note", "category", "unique_name"},
+		                "id", "password", "description", "username", "website",
+		                "note", "category", "unique_name", "lastdatetimeedit"},
 		                "category="+CategoryId, null, null, null, null);
 	        }
 	        int numRows = c.getCount();
@@ -427,6 +429,7 @@ public class DBHelper {
 	            
 	            row.category = c.getLong(6);
 	            row.uniqueName = c.getString(7);
+	            row.lastEdited = c.getString(8);
 	            
 	            ret.add(row);
 	            c.moveToNext();
@@ -450,7 +453,8 @@ public class DBHelper {
 	        Cursor c =
 	            db.query(true, TABLE_PASSWORDS, new String[] {
 	                "id", "password", "description", "username", "website",
-	                "note", "category, unique_name"}, "id=" + Id, null, null, null, null, null);
+	                "note", "category, unique_name", "lastdatetimeedit"},
+	                "id=" + Id, null, null, null, null, null);
 	        if (c.getCount() > 0) {
 	            c.moveToFirst();
 	            row.id = c.getLong(0);
@@ -463,6 +467,7 @@ public class DBHelper {
 	            
 	            row.category = c.getLong(6);
 	            row.uniqueName = c.getString(7);
+	            row.lastEdited = c.getString(8);
 	        } else {
 	            row.id = -1;
 	            row.description = row.password = null;
@@ -483,7 +488,8 @@ public class DBHelper {
 	        Cursor c =
 	        	db.query(true, TABLE_PASSWORDS, new String[] {
 					"id", "password", "description", "username", "website",
-					"note", "category", "unique_name"}, "unique_name='" + uniqueName + "'",
+					"note", "category", "unique_name", "lastdatetimeedit"},
+					"unique_name='" + uniqueName + "'",
 					null, null, null, null, null);
 			if (c.getCount() > 0) {
 				c.moveToFirst();
@@ -497,6 +503,7 @@ public class DBHelper {
 
 				row.category = c.getLong(6);
 	            row.uniqueName = c.getString(7);
+	            row.lastEdited = c.getString(8);
 			}
 			c.close();
 		} catch (SQLException e)
