@@ -17,8 +17,8 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.0.2"
-	android:versionCode="10002">
+	android:versionName="1.0.3-rc1"
+	android:versionCode="10003">
 	
 	<uses-permission android:name="org.openintents.shopping.READ_PERMISSION" />
 	<uses-permission android:name="org.openintents.shopping.WRITE_PERMISSION" />
@@ -39,7 +39,28 @@
 	 
 	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/oi_shopping_list">
 		<!-- <uses-library android:name="com.google.android.gtalkservice" />   -->
-        
+        		
+        <meta-data android:name="org.openintents.metadata.COMMENTS"
+                       android:value="@string/about_comments" />
+        <meta-data android:name="org.openintents.metadata.COPYRIGHT"
+                       android:value="@string/about_copyright" />
+        <meta-data android:name="org.openintents.metadata.AUTHORS"
+                       android:resource="@array/about_authors" />
+        <meta-data android:name="org.openintents.metadata.DOCUMENTERS"
+                       android:resource="@array/about_documenters" />
+        <meta-data android:name="org.openintents.metadata.TRANSLATORS"
+                       android:resource="@array/about_translators" />
+        <meta-data android:name="org.openintents.metadata.ARTISTS"
+                       android:resource="@array/about_artists" />
+        <meta-data android:name="org.openintents.metadata.WEBSITE_LABEL"
+                       android:value="@string/about_website_label" />
+        <meta-data android:name="org.openintents.metadata.WEBSITE_URL"
+                       android:value="@string/about_website_url" />
+        <meta-data android:name="org.openintents.metadata.LICENSE"
+                       android:resource="@raw/license_short" />
+        <meta-data android:name="org.openintents.metadata.EMAIL"
+                       android:value="@string/about_email" />
+                       
 		<provider android:name=".ShoppingProvider"
 			android:icon="@drawable/icon_shoppinglist"
 			android:authorities="org.openintents.shopping" />
@@ -165,8 +186,6 @@
 
 
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
-        </activity> 
-        <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
         </activity> 
         <activity android:name=".PreferenceActivity" android:label="@string/preferences">
         </activity> 

@@ -38,6 +38,7 @@ date: 2009-?
   to SD card.
 - prepare for permissions to access notes
   (but don't activate them yet).
+- support for OI About.
 
 ---------------------------------------------------------
 release: 1.0.2

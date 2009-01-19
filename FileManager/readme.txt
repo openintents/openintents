@@ -29,6 +29,7 @@ date: 2008-12-??
 - Added support for upper case or mixed case letter
   extensions (like .png and .PNG)
 - Fix for send files via MMS.
+- support for OI About.
 
 ---------------------------------------------------------
 release: 1.0.0

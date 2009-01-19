@@ -19,7 +19,7 @@ package org.openintents.shopping;
 import java.util.List;
 
 import org.openintents.OpenIntents;
-import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.provider.Alert;
@@ -135,6 +135,8 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_UPDATE = Menu.FIRST + 16;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 17;
 
+	private static final int DIALOG_ABOUT = 1;
+	
 	/**
 	 * The main activity.
 	 * 
@@ -1640,8 +1642,30 @@ public class ShoppingActivity extends Activity { // implements
 	 * mSensorListener.setOnSensorListener(null); } }
 	 */
 
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
+		}
+		return null;
+		
+	}
+
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		super.onPrepareDialog(id, dialog);
+		
+		switch (id) {
+		case DIALOG_ABOUT:
+			break;
+		}
+	}
+	
 	private void showAboutBox() {
-		startActivity(new Intent(this, AboutActivity.class));
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 
 	// /////////////////////////////////////////////////////
