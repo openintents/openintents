@@ -19,7 +19,6 @@
               android:orientation="horizontal"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-			  android:minHeight="?android:attr/listPreferredItemHeight" 
               >
               <!-- android:layout_weight="1" -->
     <ImageView android:id="@+id/image"

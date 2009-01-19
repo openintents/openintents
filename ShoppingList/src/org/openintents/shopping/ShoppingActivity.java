@@ -430,12 +430,16 @@ public class ShoppingActivity extends Activity { // implements
 
 		checkListLength();
 
+		setListTheme(loadListTheme());
+
 		if (!mUpdating) {
 			mUpdating = true;
 			// mHandler.sendMessageDelayed(mHandler.obtainMessage(
 			// MESSAGE_UPDATE_CURSORS), mUpdateInterval);
 		}
 
+		// fillItems();
+		
 		// TODO ???
 		/*
 		 * ??? // Bind GTalk service if (mGTalkSender != null) {
@@ -1820,10 +1824,17 @@ public class ShoppingActivity extends Activity { // implements
 			return;
 		}
 
+		int layout_row = R.layout.shopping_item_row;
+		
+		int textSize = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(PREFS_FONTSIZE, "2"));
+		if (textSize < 3) {
+			layout_row = R.layout.shopping_item_row_small;
+		}
+		
 		ListAdapter adapter = new mSimpleCursorAdapter(
 				this,
 				// Use a template that displays a text view
-				R.layout.shopping_item_row,
+				layout_row,
 				// Give the cursor to the list adapter
 				mCursorItems,
 				// Map the IMAGE and NAME to...
