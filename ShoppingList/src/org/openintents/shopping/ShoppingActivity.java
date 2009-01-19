@@ -640,9 +640,25 @@ public class ShoppingActivity extends Activity { // implements
 			 * mListItems.setSelection(mListItems.getCount() -
 			 * NUMBER_OF_ELEMENTS_BELOW_MIDDLE); } ;
 			 */
-			mListItems.setSelection(mListItems.getCount() - 1);
+			//mListItems.setSelection(mListItems.getCount() - 1);
 
 			// mListItems.getChildAt(mListItems.getCount()-1).setSelected(true);
+			
+			// Set the item that we have just selected:
+			// Get position of ID:
+			mCursorItems.moveToPosition(-1);
+			while (mCursorItems.moveToNext()) {
+				if (mCursorItems.getLong(mStringItemsITEMID) == itemId) {
+					int pos = mCursorItems.getPosition();
+					if (pos > 0) {
+						// Set selection one before, so that the item is fully visible.
+						mListItems.setSelection(pos-1);
+					} else {
+						mListItems.setSelection(pos);
+					}
+					break;
+				}
+			}
 
 			// If we share items, send this item also to other lists:
 			// TODO ??

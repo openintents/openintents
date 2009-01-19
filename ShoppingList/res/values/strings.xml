@@ -55,15 +55,6 @@
 	<!-- Shortcut -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	
-	<!-- Shopping list location alert related -->
-	<string name="shopping_add_alert">Add alert</string>
-	<string name="add_location_alert">Add location alert</string>
-	<string name="add_location_alert_description">This shopping list can be opened automatically
-	when you reach the following location.</string>
-	<string name="location_alert_added">A location alert has been added for the following location:</string>
-	<string name="pick_location">Pick a location</string>
-	<string name="view_alerts">View list of alerts</string>
-	<string name="locations_not_installed">No application installed for locations.</string>
 	
     <!-- Theme related -->
     <string name="theme_pick">Pick a theme</string>
@@ -76,10 +67,6 @@
 	<string name="cancel">Cancel</string>
 	<string name="ok">OK</string>
 	
-	<!--  alert related  -->
-	<string name="alert_added">Alert has been added.</string>
-	<string name="alert_not_added">Alert could not be added (see log for information).</string>
-	<string name="alerts_not_installed">No application installed for alerts.</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Preferences</string>
@@ -92,11 +79,11 @@
 	<string name="preference_sortorder_summary">Change sort order of list items</string>
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
 	
-	<!-- Update -->
+	<!-- Update --><!-- 
 	<string name="update_available">A new version of OI Shopping list is available.\n%s\nWould you like to upgrade?</string>
 	<string name="market_not_available">Android Market not available.</string>
 	<string name="market_search_term">OI Shopping list</string>
-
+ -->
 	<!-- About -->
 	<string name="about">About</string>
 	<string name="about_title">About %s</string>

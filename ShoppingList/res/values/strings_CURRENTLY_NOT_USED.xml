@@ -17,6 +17,21 @@
  
 <resources>
     
+	<!-- Shopping list location alert related -->
+	<string name="shopping_add_alert">Add alert</string>
+	<string name="add_location_alert">Add location alert</string>
+	<string name="add_location_alert_description">This shopping list can be opened automatically
+	when you reach the following location.</string>
+	<string name="location_alert_added">A location alert has been added for the following location:</string>
+	<string name="pick_location">Pick a location</string>
+	<string name="view_alerts">View list of alerts</string>
+	<string name="locations_not_installed">No application installed for locations.</string>
+	
+	<!--  alert related  -->
+	<string name="alert_added">Alert has been added.</string>
+	<string name="alert_not_added">Alert could not be added (see log for information).</string>
+	<string name="alerts_not_installed">No application installed for alerts.</string>
+	
 	<!-- GTalk related -->
 	<!-- 
 	<string name="gtalk_invalid_username">Invalid username. Please enter your Gmail or Google apps. username.</string>

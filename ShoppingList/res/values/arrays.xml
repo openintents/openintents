@@ -21,7 +21,7 @@
     	<item>unchecked first, alphabetical</item>
         <item>alphabetical</item>
         <item>newest first</item>
-        <item>latest first</item>
+        <item>oldest first</item>
     </string-array>
     
     <string-array name="preference_sortorder_entryvalues">
