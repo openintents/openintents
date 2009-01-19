@@ -109,6 +109,10 @@ public class Backup {
 					serializer.text(row.note);
 					serializer.endTag(null, "Note");
 
+					serializer.startTag(null, "UniqueName");
+					serializer.text(row.uniqueName);
+					serializer.endTag(null, "UniqueName");
+
 					serializer.endTag(null, "Entry");
 				}
 				serializer.endTag(null, "Category");

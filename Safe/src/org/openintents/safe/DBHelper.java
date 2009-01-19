@@ -16,7 +16,10 @@
  */
 package org.openintents.safe;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import android.content.ContentValues;
 import android.content.Context;
@@ -40,7 +43,6 @@ public class DBHelper {
     private static final String TABLE_DBVERSION = "dbversion";
     private static final String TABLE_PASSWORDS = "passwords";
     private static final String TABLE_CATEGORIES = "categories";
-    private static final String TABLE_VERIFY = "verify_crypto";
     private static final String TABLE_MASTER_KEY = "master_key";
     private static final String TABLE_PACKAGE_ACCESS = "package_access";
     private static final int DATABASE_VERSION = 4;
@@ -213,22 +215,6 @@ public class DBHelper {
 		return version;
     }
 
-    public String fetchOldConfirm() {
-    	String key="";
-        try {
-			Cursor c = db.query(true, TABLE_VERIFY, new String[] {"confirm"},
-				null, null, null, null, null,null);
-			if(c.getCount() > 0) {
-			    c.moveToFirst();
-			    key=c.getString(0);
-			}
-			c.close();
-		} catch (SQLException e)
-		{
-			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
-		}
-		return key;
-    }
     /**
      * 
      * @return
@@ -570,6 +556,10 @@ public class DBHelper {
 	    args.put("website", entry.website);
 	    args.put("note", entry.note);
 	    args.put("unique_name", entry.uniqueName);
+	    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss z"); 
+	    Date date = new Date();
+        String timeNow = dateFormat.format(date); 
+	    args.put("lastdatetimeedit", timeNow);
 	    try {
 			db.update(TABLE_PASSWORDS, args, "id=" + Id, null);
 		} catch (SQLException e)
