@@ -30,7 +30,7 @@
 	<string name="please_enter_name">Please enter a name</string>
 	<string name="no_items_marked">No items are marked as crossed out.</string>
 	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
-	<string name="no_shopping_provider">No shopping provider available.</string>
+	<string name="no_shopping_provider">Error while accessing shopping lists.</string>
 	<string name="pick_item">Pick an item</string>
 	<string name="share_settings">Share settings</string>
 	<string name="theme">Theme</string>
