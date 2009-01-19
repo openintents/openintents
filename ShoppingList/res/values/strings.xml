@@ -17,7 +17,7 @@
  
 <resources>
 	<string name="app_name">OI Shopping list</string>
-	
+
 	<!-- Shopping Provider -->
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
@@ -40,17 +40,17 @@
 	<string name="edit_item">Edit item</string>
 	<string name="delete_item">Delete item</string>
 	<string name="add">Add</string>
-	
+
 	<!-- Shortcut -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	
-    <!-- Theme related -->
-    <string name="theme_pick">Pick a theme</string>
-	<string name="theme_description">Choose a theme for this list</string>
-    <string name="theme_default">Default</string>
-    <string name="theme_classic">Classic</string>
-    <string name="theme_bugdroid">Android</string>
-    
+	<!-- Theme related -->
+	<string name="theme_pick">Pick a theme</string>
+    <string name="theme_description">Choose a theme for this list</string>
+	<string name="theme_default">Default</string>
+	<string name="theme_classic">Classic</string>
+	<string name="theme_bugdroid">Android</string>
+
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>

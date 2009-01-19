@@ -20,9 +20,9 @@
 	<string name="eula_title">OI Shopping List EULA</string>
 	<string name="eula_accept">Accept</string>
 	<string name="eula_refuse">Cancel</string>
-	
+
 	<!-- Update -->
-		<string name="update_box_text">Please check manually for updates or install OI Update
+	<string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
@@ -32,11 +32,11 @@ Current version: %s
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
 	<string name="update">Check updates</string>
-	
-    <!-- About -->
-    <string name="about">About</string>
+
+	<!-- About -->
+	<string name="about">About</string>
 	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
-    <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
+	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
 
 </resources>
