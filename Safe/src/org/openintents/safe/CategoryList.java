@@ -101,8 +101,8 @@ public class CategoryList extends ListActivity {
 
     public static final int MAX_CATEGORIES = 256;
 
-    private static final String EXPORT_FILENAME = "/sdcard/passwordsafe.csv";
-    public static final String BACKUP_FILENAME = "/sdcard/passwordsafe.xml";
+    private static final String EXPORT_FILENAME = "/sdcard/oisafe.csv";
+    public static final String BACKUP_FILENAME = "/sdcard/oisafe.xml";
     
     public static final String KEY_ID = "id";  // Intent keys
 
@@ -113,6 +113,7 @@ public class CategoryList extends ListActivity {
 	private int importedEntries=0;
 	private Thread importThread=null;
 	private boolean importDeletedDatabase=false;
+	private String importedFilename="";
 
 	private Thread backupThread=null;
 
@@ -148,24 +149,27 @@ public class CategoryList extends ListActivity {
              			Toast.makeText(CategoryList.this, importMessage,
              				Toast.LENGTH_LONG).show();
              		}
-             		String deleteMsg=getString(R.string.import_delete_csv) +
-             			" " + EXPORT_FILENAME + "?";
-	         		Dialog about = new AlertDialog.Builder(CategoryList.this)
-		    			.setIcon(R.drawable.passicon)
-		    			.setTitle(R.string.import_complete)
-		    			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-		    				public void onClick(DialogInterface dialog, int whichButton) {
-		    					File csvFile=new File(EXPORT_FILENAME);
-		    					csvFile.delete();
-		    				}
-		    			})
-		    			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-		    				public void onClick(DialogInterface dialog, int whichButton) {
-		    				}
-		    			}) 
-		    			.setMessage(deleteMsg)
-		    			.create();
-	         		about.show();
+             		if (importedFilename != "") {
+	             		String deleteMsg=getString(R.string.import_delete_csv) +
+	             			" " + importedFilename + "?";
+		         		Dialog about = new AlertDialog.Builder(CategoryList.this)
+			    			.setIcon(R.drawable.passicon)
+			    			.setTitle(R.string.import_complete)
+			    			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+			    				public void onClick(DialogInterface dialog, int whichButton) {
+			    					File csvFile=new File(importedFilename);
+			    					csvFile.delete();
+			    					importedFilename="";
+			    				}
+			    			})
+			    			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+			    				public void onClick(DialogInterface dialog, int whichButton) {
+			    				}
+			    			}) 
+			    			.setMessage(deleteMsg)
+			    			.create();
+		         		about.show();
+             		}
 	         		
              		if ((importedEntries!=0) || (importDeletedDatabase))
              		{
@@ -647,8 +651,9 @@ public class CategoryList extends ListActivity {
     }
     
 	public boolean exportDatabase(){
+		String filename=EXPORT_FILENAME;
 		try {
-			CSVWriter writer = new CSVWriter(new FileWriter(EXPORT_FILENAME), ',');
+			CSVWriter writer = new CSVWriter(new FileWriter(filename), ',');
 
 			String[] header = { getString(R.string.category),
 					getString(R.string.description), 
@@ -726,7 +731,9 @@ public class CategoryList extends ListActivity {
 	                Toast.LENGTH_SHORT).show();
 			return false;
 		}
-        Toast.makeText(CategoryList.this, R.string.export_success,
+		String msg=getString(R.string.export_success)+filename+
+			getString(R.string.export_success2);
+        Toast.makeText(CategoryList.this, msg,
                 Toast.LENGTH_LONG).show();
 		return true;
 	}
@@ -735,7 +742,7 @@ public class CategoryList extends ListActivity {
 		dbHelper.deleteDatabase();
 	}
 
-	public void deleteDatabase4Import(){
+	public void deleteDatabase4Import(final String filename){
 //		Log.i(TAG,"deleteDatabase4Import");
 		Dialog about = new AlertDialog.Builder(this)
 			.setIcon(R.drawable.passicon)
@@ -744,7 +751,7 @@ public class CategoryList extends ListActivity {
 				public void onClick(DialogInterface dialog, int whichButton) {
 					deleteDatabaseNow();
 					importDeletedDatabase=true;
-					importDatabaseThreadStart();
+					importDatabaseThreadStart(filename);
 				}
 			})
 			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -757,10 +764,11 @@ public class CategoryList extends ListActivity {
 	}
 		
 	public void importDatabase(){
-		File csvFile=new File(EXPORT_FILENAME);
+		final String filename=EXPORT_FILENAME;
+		File csvFile=new File(filename);
 		if (!csvFile.exists()) {
 			String msg=getString(R.string.import_file_missing) + " " +
-				EXPORT_FILENAME;
+				filename;
 	        Toast.makeText(CategoryList.this, msg,
 	                Toast.LENGTH_LONG).show();
 			return;
@@ -770,13 +778,13 @@ public class CategoryList extends ListActivity {
 			.setTitle(R.string.dialog_import_title)
 			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					deleteDatabase4Import();
+					deleteDatabase4Import(filename);
 				}
 			})
 			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
 					importDeletedDatabase=false;
-					importDatabaseThreadStart();
+					importDatabaseThreadStart(filename);
 				}
 			}) 
 			.setMessage(R.string.dialog_import_msg)
@@ -789,11 +797,11 @@ public class CategoryList extends ListActivity {
 	 * the import in a thread it allows the main UI thread to return
 	 * and permit the updating of the progress dialog.
 	 */
-	private void importDatabaseThreadStart(){
+	private void importDatabaseThreadStart(final String filename){
 		showDialog(IMPORT_PROGRESS_KEY);
 		importThread = new Thread(new Runnable() {
 			public void run() {
-				importDatabaseFromCSV();
+				importDatabaseFromCSV(filename);
 				dismissDialog(IMPORT_PROGRESS_KEY);
 				
 				Message m = new Message();
@@ -810,13 +818,13 @@ public class CategoryList extends ListActivity {
 	 * While running inside a thread, read from a CSV and import
 	 * into the database.
 	 */
-	private void importDatabaseFromCSV(){
+	private void importDatabaseFromCSV(String filename){
 		try {
 			importMessage="";
 			importedEntries=0;
 			
 			final int recordLength=6;
-			CSVReader reader= new CSVReader(new FileReader(EXPORT_FILENAME));
+			CSVReader reader= new CSVReader(new FileReader(filename));
 		    String [] nextLine;
 		    nextLine = reader.readNext();
 		    if (nextLine==null) {
@@ -888,7 +896,7 @@ public class CategoryList extends ListActivity {
 		    //
 		    // read the whole file again to import the actual fields
 		    //
-			reader = new CSVReader(new FileReader(EXPORT_FILENAME));
+			reader = new CSVReader(new FileReader(filename));
 		    nextLine = reader.readNext();
 		    int newEntries=0;
 		    int lineNumber=0;
@@ -972,6 +980,7 @@ public class CategoryList extends ListActivity {
 		    }else{
 		    	importMessage=getString(R.string.added)+ " "+ newEntries +
 		    		" "+ getString(R.string.entries);
+		    	importedFilename=filename;
 		    }
 		} catch (IOException e) {
 			e.printStackTrace();

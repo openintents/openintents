@@ -31,7 +31,7 @@ public class RestoreHandler extends DefaultHandler {
     // Fields
     // ===========================================================
     
-    private boolean in_apws = false;
+    private boolean in_oisafe = false;
     private boolean in_masterkey = false;
     private boolean in_category = false;
     private boolean in_entry = false;
@@ -73,8 +73,8 @@ public class RestoreHandler extends DefaultHandler {
 	public void startElement(String namespaceURI, String localName,
 		String qName, Attributes atts) throws SAXException {
 		
-		if (localName.equals("AndroidPasswordSafe")) {
-			in_apws = true;
+		if (localName.equals("OISafe")) {
+			in_oisafe = true;
 			String attrValue = atts.getValue("version");
 			int version = Integer.parseInt(attrValue);
 
@@ -83,14 +83,14 @@ public class RestoreHandler extends DefaultHandler {
 			myRestoreDataSet.setVersion(version);
 			myRestoreDataSet.setDate(date);
 
-			if (debug) Log.d(TAG,"found APWS "+version+" date "+date);
+			if (debug) Log.d(TAG,"found OISafe "+version+" date "+date);
 			
-		}else if (in_apws && localName.equals("MasterKey")) {
+		}else if (in_oisafe && localName.equals("MasterKey")) {
 			in_masterkey = true;
 
 			if (debug) Log.d(TAG,"found MasterKey");
 
-		}else if (in_apws && localName.equals("Category")) {
+		}else if (in_oisafe && localName.equals("Category")) {
 			in_category = true;
 
 			String name = atts.getValue("name");
@@ -125,11 +125,11 @@ public class RestoreHandler extends DefaultHandler {
 	public void endElement(String namespaceURI, String localName, String qName)
 		throws SAXException {
 	
-		if (localName.equals("AndroidPasswordSafe")) {
-			in_apws = false;
-		}else if (in_apws && localName.equals("MasterKey")) {
+		if (localName.equals("OISafe")) {
+			in_oisafe = false;
+		}else if (in_oisafe && localName.equals("MasterKey")) {
 			in_masterkey = false;
-		}else if (in_apws && localName.equals("Category")) {
+		}else if (in_oisafe && localName.equals("Category")) {
 			in_category = false;
 			
 			myRestoreDataSet.storyCategory();

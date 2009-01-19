@@ -30,7 +30,7 @@ public class Backup {
 	private static boolean debug = false;
 	private static final String TAG = "Backup";
 	
-	public static int CURRENT_VERSION = 2;
+	public static int CURRENT_VERSION = 1;
 	
 	private String result="";
 	
@@ -49,7 +49,7 @@ public class Backup {
             serializer.setOutput(str, "utf-8");
             serializer.startDocument(null, Boolean.valueOf(true));
             serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true);
-            serializer.startTag(null, "AndroidPasswordSafe");
+            serializer.startTag(null, "OISafe");
             
             serializer.attribute(null, "version", Integer.toString(CURRENT_VERSION));
             
@@ -114,7 +114,7 @@ public class Backup {
 				serializer.endTag(null, "Category");
 			}
 
-			serializer.endTag(null, "AndroidPasswordSafe");
+			serializer.endTag(null, "OISafe");
 			serializer.endDocument();
 
 			dbHelper.close();

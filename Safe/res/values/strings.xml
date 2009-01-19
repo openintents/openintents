@@ -52,7 +52,8 @@
 	<string name="cannot_decrypt_password">Cannot decrypt password</string>
 	<string name="error_export">Error exporting database</string>
 	<string name="export_database">Export Database</string>
-	<string name="export_success">Export to 'passwordsafe.csv' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_success">Export to '</string>
+	<string name="export_success2">' successful.   Warning!   The file is not encrypted.</string>
 	<string name="export_file_error">Unable to create export file 'passwordsafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Import Database</string>
 	<string name="import_file_missing">Import file is missing:</string>
@@ -125,9 +126,9 @@
 	<string name="dialog_title_external_access">OI Safe: Another application requests access.</string>
 	<string name="dialog_summary_external_access">Allow other applications to secure your data with OI Safe.</string>
 	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Preferences.</string>
-	<string name="pref_title_lock_timeout">Lock timeout</string>
+	<string name="pref_title_lock_timeout">Auto lock timeout</string>
 	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked.</string>
-	<string name="pref_dialog_title_lock_timeout">Lock timeout</string>
+	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
 	<string name="intent_get_password">Get password (OI Safe)</string>
