@@ -16,6 +16,8 @@
  */
 package org.openintents.safe;
 
+import java.io.File;
+
 import org.openintents.distribution.EulaActivity;
 import org.openintents.util.VersionUtils;
 
@@ -48,6 +50,8 @@ public class AskPassword extends Activity {
 	private boolean debug = false;
 	private static String TAG = "AskPassword";
 	public static String EXTRA_IS_LOCAL = "org.openintents.safe.bundle.EXTRA_IS_REMOTE";
+
+    public static final int REQUEST_RESTORE = 0;
 
 	private EditText pbeKey;
 	private DBHelper dbHelper;
@@ -107,6 +111,7 @@ public class AskPassword extends Activity {
 			introText.setVisibility(View.VISIBLE);
 			confirmText.setVisibility(View.VISIBLE);
 			confirmPass.setVisibility(View.VISIBLE);
+			checkForBackup();
 		}
 		if (! isLocal) {
 			if (remoteAsk != null) {
@@ -181,6 +186,24 @@ public class AskPassword extends Activity {
 			}
 		});
 	}
+	
+	private void checkForBackup() {
+		String filename=CategoryList.BACKUP_FILENAME;
+		File restoreFile=new File(filename);
+		if (!restoreFile.exists()) {
+			return;
+		}
+		Button restoreButton = (Button) findViewById(R.id.restore_button);
+		restoreButton.setVisibility(View.VISIBLE);
+		restoreButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View arg0) {
+				Intent restore = new Intent(AskPassword.this, Restore.class);
+				restore.putExtra(Restore.KEY_FIRST_TIME, true);
+				startActivityForResult(restore,REQUEST_RESTORE);		
+			}
+		});
+	}
 
 	@Override
 	protected void onPause() {
@@ -239,4 +262,18 @@ public class AskPassword extends Activity {
 		masterKey=null;
 		return false;
 	}
+	
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent i) {
+    	super.onActivityResult(requestCode, resultCode, i);
+
+    	if ((requestCode== REQUEST_RESTORE) && (resultCode == RESULT_OK)) {
+    		Log.d(TAG,"returning masterkey: "+CategoryList.getMasterKey());
+			Intent callbackIntent = new Intent();
+			callbackIntent.putExtra("masterKey", CategoryList.getMasterKey());
+			setResult(RESULT_OK, callbackIntent);
+    		finish();
+    	}
+    }
+
 }

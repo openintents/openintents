@@ -52,6 +52,9 @@ public class Restore extends Activity {
 	private String masterKey="";
 	private String filename=null;
 	private RestoreDataSet restoreDataSet=null;
+	private boolean firstTime=false;
+
+    public static final String KEY_FIRST_TIME = "first_time";  // Intent keys
 
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -59,7 +62,13 @@ public class Restore extends Activity {
 
 		if (debug) Log.d(TAG,"onCreate()");
 
-		if (!CategoryList.isSignedIn()) {
+		firstTime = icicle != null ? icicle.getBoolean(Restore.KEY_FIRST_TIME) : false;
+		if (firstTime == false) {
+		    Bundle extras = getIntent().getExtras();            
+		    firstTime = extras != null ? extras.getBoolean(Restore.KEY_FIRST_TIME) : false;
+		}
+
+		if ((!firstTime) && (!CategoryList.isSignedIn())) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
@@ -116,7 +125,7 @@ public class Restore extends Activity {
 		
 		if (debug) Log.d(TAG,"onResume()");
 		
-		if (!CategoryList.isSignedIn()) {
+		if ((!firstTime) && (!CategoryList.isSignedIn())) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
