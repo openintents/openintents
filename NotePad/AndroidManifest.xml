@@ -163,7 +163,7 @@
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
         
-    <activity android:name=".noteslist.NotesListSettings" android:label="@string/settings"></activity>
+    <activity android:name=".PreferenceActivity" android:label="@string/settings"></activity>
 </application>
 </manifest>
 

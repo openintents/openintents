@@ -36,6 +36,7 @@ import org.openintents.notepad.NoteEditor;
 import org.openintents.notepad.NotePad;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.NotePadProvider;
+import org.openintents.notepad.PreferenceActivity;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
@@ -485,7 +486,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		Cursor c = getContentResolver().query(noteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
-				null, NotesListCursor.getSortOrderFromPrefs(this));
+				null, PreferenceActivity.getSortOrderFromPrefs(this));
 
 		String title = "";
 		String content = getString(R.string.empty_note);
@@ -526,7 +527,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		Cursor c = getContentResolver().query(noteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.TAGS, NotePad.Notes.ENCRYPTED }, null,
-				null, NotesListCursor.getSortOrderFromPrefs(this));
+				null, PreferenceActivity.getSortOrderFromPrefs(this));
 
 		String title = "";
 		String text = getString(R.string.empty_note);
@@ -592,7 +593,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	}
 
 	private void showNotesListSettings() {
-		startActivity(new Intent(this, NotesListSettings.class));
+		startActivity(new Intent(this, PreferenceActivity.class));
 	}
 	
 	

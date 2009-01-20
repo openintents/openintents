@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.openintents.notepad.PreferenceActivity;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.util.OpenMatrixCursor;
@@ -14,15 +15,12 @@ import android.content.Intent;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
 public class NotesListCursor extends OpenMatrixCursor {
 
 	private static final String TAG = "NotesListCursorUtils";
-	private static final String PREFS_SORTORDER = "sortorder";
-	
 	static final String TITLE_DECRYPTED = "title_decrypted";
 	static final String TAGS_DECRYPTED = "tags_decrypted";
 	
@@ -133,31 +131,6 @@ public class NotesListCursor extends OpenMatrixCursor {
 		return cursor;
 	}
 	
-	/**
-	 * Returns the sort order for the notes list based on the user preferences.
-	 * Performs error-checking.
-	 * 
-	 * @param context The context to grab the preferences from.
-	 */
-	static public String getSortOrderFromPrefs(Context context) {
-		int sortOrder = 0;
-		try {
-			sortOrder = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(context)
-			.getString(PREFS_SORTORDER, "0"));
-		} catch (NumberFormatException e) {
-			// Guess somebody messed with the preferences and put a string into this
-			// field. We'll use the default value then.
-		}
-		
-		if (sortOrder >= 0 && sortOrder < Notes.SORT_ORDERS.length)
-		{
-			return Notes.SORT_ORDERS[sortOrder];
-		}
-		
-		// Value out of range - somebody messed with the preferences.
-		return Notes.SORT_ORDERS[0];
-	}
-	
 	/** 
 	 * Return a query with decrypted information on the current cursor.
 	 * 
@@ -179,7 +152,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 			mDbCursor = null;
 		}
 		mDbCursor = mContext.getContentResolver().query(mIntent.getData(), PROJECTION_DB, 
-				null, null, getSortOrderFromPrefs(mContext));
+				null, null, PreferenceActivity.getSortOrderFromPrefs(mContext));
 		
 
 		// Register content observer

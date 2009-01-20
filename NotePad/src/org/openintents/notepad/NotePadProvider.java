@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 import org.openintents.intents.ProviderIntents;
 import org.openintents.notepad.NotePad.Notes;
-import org.openintents.notepad.noteslist.NotesListCursor;
 import org.openintents.util.ProviderUtils;
 
 import android.content.ContentProvider;
@@ -167,7 +166,7 @@ public class NotePadProvider extends ContentProvider {
         // If no sort order is specified use the default
         String orderBy;
         if (TextUtils.isEmpty(sortOrder)) {
-            orderBy = NotesListCursor.getSortOrderFromPrefs(getContext());
+            orderBy = PreferenceActivity.getSortOrderFromPrefs(getContext());
         } else {
             orderBy = sortOrder;
         }
