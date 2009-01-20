@@ -66,9 +66,9 @@ body {
 <h2>Backup and Restore</h2>
 
 <p>You should backup your database of passwords from time to time.  To do this
-   use Menu -> Backup.   This will create a file named 'passwordsafe.xml' on
+   use Menu -> Backup.   This will create a file named 'oisafe.xml' on
    the sdcard.  Connect your phone to a computer and allow the USB mounting.
-   Look for 'passwordsafe.xml' and copy that to a safe location on your computer.
+   Look for 'oisafe.xml' and copy that to a safe location on your computer.
    The file is encrypted using the same encryption as the database on your phone.</p>
 
 <h2>Import and Export</h2>
@@ -94,8 +94,8 @@ body {
    put some data into the OI Safe and perform an export first, so
    that you can see what the CSV should look like.</p>
    
-<p>Use the name 'passwordsafe.csv' for your filename.   Connect the
-   phone to your computer and copy 'passwordsafe.csv' onto the phone.
+<p>Use the name 'oisafe.csv' for your filename.   Connect the
+   phone to your computer and copy 'oisafe.csv' onto the phone.
    The file must be in the base directory of the phone's USB storage.</p>
    
 <p>Once the CSV file is in place, use Menu -> Import to import the file.
@@ -104,7 +104,7 @@ body {
    the same time.</p>
 
 <p>Exporting is a snap.  Just use Menu -> Export.  This will create the
-   file 'passwordsafe.csv'.  Connect your phone to a computer to retrieve
+   file 'oisafe.csv'.  Connect your phone to a computer to retrieve
    this file.  
    <div class="warning">WARNING: The exported file is not encrypted!!
    After exporting and working with the file, you should delete it
@@ -128,19 +128,22 @@ body {
 <p>Any of the following actions will cause OI Safe to lock:</p>
 
 <ul>
+  <li>The auto lock timer expires.  This may be set to 1, 5 or 30 minutes.
+   The default is 5 minutes.</li>
+<!--
   <li>The screen turns off.  This is a default behavior of the phone and is controlled
    in the phone's Settings -&gt; Sound &amp; display -> Screen timeout.   
    The default timeout is 1 minute.
    After 1 minute the phone will go to sleep.   When this happens, OI Safe will 
    lock itself.</li>
+-->
   <li>You select <i>Lock</i> from the Menu on the Categories screen.</li>
-  <li>Android only allows six active applications.  Once you launch the seventh,
-   the oldest used application will be killed.  If OI Safe is killed, than
-   the next time you launch it, it will be locked.</li>
 </ul>
 
+<!--
 <p>Really, the easiest way to lock is to just hit the power button on the phone briefly and
  turn off the screen.</p>
+-->
 
 <h2>Credits</h2>
 

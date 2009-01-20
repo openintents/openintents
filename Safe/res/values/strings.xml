@@ -124,12 +124,12 @@
 	<string name="moved_to">Moved to</string>
 	<string name="preferences">Preferences</string>
 	<string name="pref_title_external_access">Allow external access</string>
-	<string name="pref_summary_external_access">Allow other applications to secure your data with OI Safe?</string>
+	<string name="pref_summary_external_access">Allow other applications to secure your data with OI Safe</string>
 	<string name="dialog_title_external_access">OI Safe: Another application requests access.</string>
 	<string name="dialog_summary_external_access">Allow other applications to secure your data with OI Safe.</string>
 	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Preferences.</string>
 	<string name="pref_title_lock_timeout">Auto lock timeout</string>
-	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked.</string>
+	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked</string>
 	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
