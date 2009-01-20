@@ -265,10 +265,6 @@ public class ShoppingActivity extends Activity { // implements
 	public static final int mMarkStrikethrough = 2;
 	public static final int mMarkAddtext = 3;
 
-	private static final String PREFS_SORTORDER = "sortorder";
-
-	private static final String PREFS_FONTSIZE = "fontsize";
-
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
 
@@ -1479,7 +1475,7 @@ public class ShoppingActivity extends Activity { // implements
 	 * @param themeId
 	 */
 	void setListTheme(int themeId) {
-		int textSize = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(PREFS_FONTSIZE, "2"));
+		int textSize = getDefaultTextSize();
 		switch (themeId) {
 		case 1:
 			mTypeface = null;
@@ -1558,6 +1554,15 @@ public class ShoppingActivity extends Activity { // implements
 		if (mCursorItems != null) {
 			mCursorItems.requery();
 		}
+	}
+
+	/**
+	 * @return
+	 */
+	private int getDefaultTextSize() {
+		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).
+				getString(PreferenceActivity.PREFS_FONTSIZE, 
+						PreferenceActivity.PREFS_FONTSIZE_DEFAULT));
 	}
 
 	/**
@@ -1847,7 +1852,9 @@ public class ShoppingActivity extends Activity { // implements
 		}
 
 		String sortOrder = PreferenceManager.getDefaultSharedPreferences(this)
-				.getString(PREFS_SORTORDER, ContainsFull.DEFAULT_SORT_ORDER);
+				.getString(PreferenceActivity.PREFS_SORTORDER, PreferenceActivity.PREFS_SORTORDER_DEFAULT);
+		// Older default: ContainsFull.DEFAULT_SORT_ORDER
+		
 		// Get a cursor for all items that are contained
 		// in currently selected shopping list.
 		mCursorItems = getContentResolver().query(ContainsFull.CONTENT_URI,
@@ -1867,7 +1874,7 @@ public class ShoppingActivity extends Activity { // implements
 
 		int layout_row = R.layout.shopping_item_row;
 		
-		int textSize = Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(this).getString(PREFS_FONTSIZE, "2"));
+		int textSize = getDefaultTextSize();
 		if (textSize < 3) {
 			layout_row = R.layout.shopping_item_row_small;
 		}

@@ -14,7 +14,7 @@
                 
     <ListPreference
             android:key="sortorder"
-            android:defaultValue="contains.status ASC, items.name ASC"
+            android:defaultValue="contains.modified ASC"
             android:title="@string/preference_sortorder_title"
             android:summary="@string/preference_sortorder_summary"
             android:entries="@array/preference_sortorder_entries"

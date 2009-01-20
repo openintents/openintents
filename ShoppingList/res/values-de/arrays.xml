@@ -25,24 +25,10 @@
         <item>älteste Einträge zuerst</item>
     </string-array>
     
-    <string-array name="preference_sortorder_entryvalues">
-    	<item>contains.status ASC, items.name ASC</item>
-        <item>items.name ASC</item>
-        <item>contains.modified DESC</item>
-        <item>contains.modified ASC</item>
-    </string-array>
-    
-    
     <string-array name="preference_fontsize_entries">
         <item>Klein</item>
     	<item>Standard</item>
         <item>Groß</item>
-    </string-array>
-    
-    <string-array name="preference_fontsize_entryvalues">
-    	<item>1</item>
-        <item>2</item>
-        <item>3</item>
     </string-array>
     
 </resources>
