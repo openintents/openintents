@@ -76,4 +76,13 @@
     <string name="error_reading_file">Error while reading file</string>
     <string name="file_not_found">File not found</string>
     <string name="note_saved">Note saved</string>
+
+    <!-- Settings -->
+    <string name="noteslist_preferences">Notes List</string>
+    <string name="preference_sortorder_title">List Sorting Order</string>
+    <string name="preference_sortorder_dialog_title">List Sorting Order</string>
+    <string name="preference_sortorder_summary">The order in which notes are shown in the notes list</string>
+
+	<string name="settings">Settings</string>
+	<string name="settings_sortorder">Sort Order</string>
 </resources>

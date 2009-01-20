@@ -60,11 +60,6 @@ public final class NotePad {
         public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.openintents.notepad.note";
 
         /**
-         * The default sort order for this table
-         */
-        public static final String DEFAULT_SORT_ORDER = "modified DESC";
-
-        /**
          * The title of the note
          * <P>Type: TEXT</P>
          */
@@ -110,5 +105,11 @@ public final class NotePad {
          * @since 1.1.0
          */
         public static final String THEME = "theme";
+        
+        /**
+         * Support sort orders. The "sort order" in the preferences
+         * is an index into this array.
+         */
+        public static final String[] SORT_ORDERS = {"title ASC", "title DESC", "modified DESC", "modified ASC"};
     }
 }

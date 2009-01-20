@@ -91,6 +91,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_ITEM_EDIT_TAGS = Menu.FIRST + 7;
 	private static final int MENU_ITEM_SAVE = Menu.FIRST + 8;
 	private static final int MENU_OPEN = Menu.FIRST + 9;
+ 	private static final int MENU_SETTINGS = Menu.FIRST + 10;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
 	
@@ -291,6 +292,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 				'o').setIcon(R.drawable.ic_menu_folder);
 
 		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+
+		menu.add(0, MENU_SETTINGS, 0, R.string.settings).setIcon(
+				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
 		
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
@@ -371,6 +375,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			return true;
 		case MENU_UPDATE:
 			UpdateMenu.showUpdateBox(this);
+			return true;
+		case MENU_SETTINGS:
+			showNotesListSettings();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -478,7 +485,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		Cursor c = getContentResolver().query(noteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE }, null,
-				null, Notes.DEFAULT_SORT_ORDER);
+				null, NotesListCursor.getSortOrderFromPrefs(this));
 
 		String title = "";
 		String content = getString(R.string.empty_note);
@@ -519,7 +526,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		Cursor c = getContentResolver().query(noteUri,
 				new String[] { NotePad.Notes.TITLE, NotePad.Notes.NOTE, NotePad.Notes.TAGS, NotePad.Notes.ENCRYPTED }, null,
-				null, Notes.DEFAULT_SORT_ORDER);
+				null, NotesListCursor.getSortOrderFromPrefs(this));
 
 		String title = "";
 		String text = getString(R.string.empty_note);
@@ -584,6 +591,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 
+	private void showNotesListSettings() {
+		startActivity(new Intent(this, NotesListSettings.class));
+	}
+	
+	
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
             int totalItemCount) {
     }
