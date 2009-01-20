@@ -150,4 +150,5 @@
 	<string name="discard_changes">Discard changes</string>
 	<string name="entry_saved">Entry saved</string>
 	<string name="last_edited">Last edited</string>
+	<string name="last_edited_unknown">unknown</string>
 </resources>

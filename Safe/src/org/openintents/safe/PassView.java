@@ -274,7 +274,13 @@ public class PassView extends Activity {
 					usernameText.setText(ch.decrypt(cryptUsername));
 					passwordText.setText(ch.decrypt(cryptPass));
 					noteText.setText(ch.decrypt(cryptNote));
-					lastEditedText.setText(getString(R.string.last_edited)+" "+row.lastEdited);
+					String lastEdited;
+					if (row.lastEdited!=null) {
+						lastEdited=row.lastEdited;
+					} else {
+						lastEdited=getString(R.string.last_edited_unknown);
+					}
+					lastEditedText.setText(getString(R.string.last_edited)+" "+lastEdited);
 				} catch (CryptoHelperException e) {
 					Log.e(TAG, e.toString());
 				}

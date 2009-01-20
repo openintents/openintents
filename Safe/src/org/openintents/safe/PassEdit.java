@@ -42,7 +42,7 @@ import android.widget.Toast;
  */
 public class PassEdit extends Activity {
 
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "PassEdit";
 
 	public static final int REQUEST_GEN_PASS = 10;

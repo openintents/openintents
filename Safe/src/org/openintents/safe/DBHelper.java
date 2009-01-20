@@ -622,6 +622,7 @@ public class DBHelper {
 			return;
 		}
 	    ContentValues args = new ContentValues();
+	    
 	    args.put("category", newCategoryId);
 	    
 	    try {
@@ -646,6 +647,11 @@ public class DBHelper {
 	    initialValues.put("website", entry.website);
 	    initialValues.put("note", entry.note);
 	    initialValues.put("unique_name", entry.uniqueName);
+		DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,
+			DateFormat.FULL);
+		Date today = new Date();
+		String dateOut = dateFormatter.format(today);
+	    initialValues.put("lastdatetimeedit", dateOut);
 
 	    try {
 	        id = db.insert(TABLE_PASSWORDS, null, initialValues);
