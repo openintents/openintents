@@ -62,6 +62,7 @@ public class PassEdit extends Activity {
 	private CryptoHelper ch;
 	private boolean pass_gen_ret = false;
 	private boolean discardEntry = false;
+	public static boolean entryEdited = false;
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -94,7 +95,7 @@ public class PassEdit extends Activity {
 			RowId = extras != null ? extras.getLong(PassList.KEY_ID) : null;
 		}
 
-//		populateFields();
+		entryEdited = false;
 
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
@@ -174,6 +175,8 @@ public class PassEdit extends Activity {
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());
 		}
+
+		entryEdited = true;
 
 		if (RowId == null || RowId == -1) {
 			RowId = dbHelper.addPassword(entry);

@@ -401,12 +401,11 @@ public class PassList extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent i) {
     	super.onActivityResult(requestCode, resultCode, i);
 
-    	if (debug) Log.d(TAG,"onActivityResult: requestCode="+requestCode+", resultCode="+resultCode+
-    			", entryEdited="+PassView.entryEdited);
     	if (dbHelper == null) {
 		    dbHelper = new DBHelper(this);
 		}
     	if (((requestCode==REQUEST_VIEW_PASSWORD)&&(PassView.entryEdited)) ||
+    	    	((requestCode==REQUEST_EDIT_PASSWORD)&&(PassEdit.entryEdited)) ||
     			(resultCode==RESULT_OK)) {
     		fillData();
     	}

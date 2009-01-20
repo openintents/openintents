@@ -100,6 +100,8 @@ public class PassView extends Activity {
 			CategoryId = extras != null ? extras.getLong(PassList.KEY_CATEGORY_ID) : null;
 		}
 
+		populateFields();
+
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 
@@ -153,7 +155,7 @@ public class PassView extends Activity {
 		if (CategoryList.isSignedIn() == false) {
 			finish();
 		}
-		populateFields();
+//		populateFields();
 	}
 
 	@Override
@@ -242,9 +244,11 @@ public class PassView extends Activity {
 		super.onActivityResult(requestCode, resultCode, i);
 
 		if (debug) Log.d(TAG,"onActivityResult()");
-		if (resultCode == RESULT_OK) {
-			populateFields();
-			entryEdited=true;
+		if (requestCode == REQUEST_EDIT_PASS) {
+			if ((resultCode == RESULT_OK) || (PassEdit.entryEdited)){
+				populateFields();
+				entryEdited=true;
+			}
 		}
 	}
 
