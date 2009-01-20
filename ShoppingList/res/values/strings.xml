@@ -21,6 +21,7 @@
 	<!-- Shopping Provider -->
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
+	<string name="my_shopping_list">My shopping list</string>
 	<string name="new_list_hint">i.e. wishlist, family list</string>
 	<string name="clean_up_list">Clean up list</string>
 	<string name="delete_list">Delete list</string>
@@ -32,7 +33,6 @@
 	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
 	<string name="no_shopping_provider">Error while accessing shopping lists.</string>
 	<string name="pick_item">Pick an item</string>
-	<string name="share_settings">Share settings</string>
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
 	<string name="rename_list">Rename list</string>
@@ -46,7 +46,7 @@
 	
 	<!-- Theme related -->
 	<string name="theme_pick">Pick a theme</string>
-    <string name="theme_description">Choose a theme for this list</string>
+	<string name="theme_description">Choose a theme for this list</string>
 	<string name="theme_default">Default</string>
 	<string name="theme_classic">Classic</string>
 	<string name="theme_bugdroid">Android</string>

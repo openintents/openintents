@@ -20,12 +20,12 @@
     <string name="oi_notepad_permission_read">read notes</string>
     <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
     <string name="oi_notepad_permission_write">write notes</string>
-    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or change existing notes.</string>
+    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
     
 	<!-- OI Shopping list -->
     <string name="oi_shopping_permission_read">read shopping lists</string>
     <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
     <string name="oi_shopping_permission_write">write shopping lists</string>
-    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or change existing ones.</string>
+    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
     
 </resources> 

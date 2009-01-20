@@ -26,6 +26,7 @@
 		(use 'local/new_id' to test locally).</string>
 	<string name="shopping_share_hint">i.e. local/bob2, alice@gmail.com</string>
 	<string name="share">Share</string>
+	<string name="share_settings">Share settings</string>
 	
 	<!-- Shopping list location alert related -->
 	<string name="shopping_add_alert">Add alert</string>

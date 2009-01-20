@@ -1752,7 +1752,7 @@ public class ShoppingActivity extends Activity { // implements
 		if (mCursorListFilter.getCount() < 1) {
 			// We have to create default shopping list:
 			// TODO Put the following string into resource my_shopping_list
-			long listId = Shopping.getList("My shopping list");
+			long listId = Shopping.getList(getText(R.string.my_shopping_list).toString());
 
 			// Check if insertion really worked. Otherwise
 			// we may end up in infinite recursion.
