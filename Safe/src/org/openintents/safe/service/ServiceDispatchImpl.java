@@ -35,6 +35,7 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
+	private static boolean debug = false;
 	private static String TAG = "ServiceDispatchIMPL";
 	private CryptoHelper ch;
 	private String masterKey;
@@ -57,7 +58,10 @@ public class ServiceDispatchImpl extends Service {
       
       mIntentReceiver = new BroadcastReceiver() {
           public void onReceive(Context context, Intent intent) {
-              if (intent.getAction().equals(CryptoIntents.ACTION_RESTART_TIMER)) {
+              if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+             	 if (debug) Log.d(TAG,"caught ACTION_SCREEN_OFF");
+             	 stopSelf();
+              } else if (intent.getAction().equals(CryptoIntents.ACTION_RESTART_TIMER)) {
 	              	restartTimer();
               }
           }
@@ -65,9 +69,10 @@ public class ServiceDispatchImpl extends Service {
 
       IntentFilter filter = new IntentFilter();
       filter.addAction (CryptoIntents.ACTION_RESTART_TIMER);
+      filter.addAction (Intent.ACTION_SCREEN_OFF);
       registerReceiver(mIntentReceiver, filter);
       
-	  Log.d( TAG,"onCreate" );
+	  if (debug) Log.d( TAG,"onCreate" );
     }
     
     @Override
@@ -81,29 +86,29 @@ public class ServiceDispatchImpl extends Service {
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 	  sendBroadcast(intent);
 	  
-	  Log.d( TAG,"onDestroy" );
+	  if (debug) Log.d( TAG,"onDestroy" );
     }
     
     private void startTimer () {
-		Log.d(TAG,"startTimer with timeoutUntilStop="+timeoutUntilStop);
+		if (debug) Log.d(TAG,"startTimer with timeoutUntilStop="+timeoutUntilStop);
     	t = new CountDownTimer(timeoutUntilStop, timeoutUntilStop) {
     		public void onTick(long millisUntilFinished) {
     			//doing nothing.
-    			  Log.d(TAG, "tick: " + millisUntilFinished );
+    			  if (debug) Log.d(TAG, "tick: " + millisUntilFinished );
     		}
 
     		public void onFinish() {
-    			Log.d(TAG,"onFinish()");
+    			if (debug) Log.d(TAG,"onFinish()");
     			stopSelf(); // countdown is over, stop the service.
     		}
     	};
     	t.start();
-		Log.d(TAG, "Timer started with: " + timeoutUntilStop );
+		if (debug) Log.d(TAG, "Timer started with: " + timeoutUntilStop );
     }
 	
 	public void restartTimer () {
     	// must be started with startTimer first.
-		Log.d(TAG,"timer restarted");
+		if (debug) Log.d(TAG,"timer restarted");
     	if (t != null) {
     		t.cancel();
     		t.start();

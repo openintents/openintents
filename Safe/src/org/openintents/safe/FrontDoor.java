@@ -262,7 +262,7 @@ public class FrontDoor extends Activity {
 		String action = thisIntent.getAction();
         //TODO: Consider moving this elsewhere. Maybe DBHelper? Also move strings to resource.
         //DBHelper dbHelper = new DBHelper(this);
-        Log.d(TAG, "GET_or_SET_PASSWORD");
+        if (debug) Log.d(TAG, "GET_or_SET_PASSWORD");
         String username = null;
         String password = null;
 
@@ -451,13 +451,13 @@ public class FrontDoor extends Activity {
 			} catch (RemoteException e) {
 				Log.d(TAG, e.toString());
 			}
-			Log.d( TAG,"onServiceConnected" );
+			if (debug) Log.d( TAG,"onServiceConnected" );
 		}
 		
 		public void onServiceDisconnected(ComponentName className)
 		{
 			service = null;
-			Log.d( TAG,"onServiceDisconnected" );
+			if (debug) Log.d( TAG,"onServiceDisconnected" );
 		}
 	};
 
