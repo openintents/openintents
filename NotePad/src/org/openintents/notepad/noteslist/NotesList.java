@@ -30,6 +30,8 @@ import java.io.IOException;
 
 import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
+import org.openintents.distribution.GetFromMarketDialog;
+import org.openintents.distribution.RD;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NoteEditor;
@@ -108,6 +110,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	
 	private static final int DIALOG_TAGS = 1;
 	private static final int DIALOG_ABOUT = 2;
+	private static final int DIALOG_GET_FROM_MARKET = 3;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -705,6 +708,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			return new TagsDialog(this);
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
+		case DIALOG_GET_FROM_MARKET:
+			return new GetFromMarketDialog(this, 
+					RD.string.safe_not_available_decrypt,
+					RD.string.safe_get_oi_filemanager,
+					RD.string.safe_market_uri,
+					RD.string.safe_developer_uri);
 		}
 		return null;
 	}
@@ -767,10 +776,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		        } catch (ActivityNotFoundException e) {
 		        	mDecryptionFailed = true;
 		        	
-					Toast.makeText(this,
+					/*Toast.makeText(this,
 							R.string.decryption_failed,
-							Toast.LENGTH_SHORT).show();
-					
+							Toast.LENGTH_SHORT).show();*/
+					showDialog(DIALOG_GET_FROM_MARKET);
 					Log.e(TAG, "failed to invoke encrypt");
 		        }
 		        return;

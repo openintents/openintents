@@ -42,11 +42,17 @@ Current version: %s
     <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
     <string name="aboutapp_developer_uri">http://www.openintents.org/en/node/202</string><!-- 202 = OI About -->
 
-
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>
     <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
     <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
     <string name="filemanager_developer_uri">http://www.openintents.org/en/node/159</string><!-- 159 = OI File Manager -->
+	
+    <!-- Safe -->
+    <string name="safe_not_available">No compatible application for encryption is available.</string>
+    <string name="safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="safe_get_oi_filemanager">Get OI Safe</string>
+    <string name="safe_market_uri">market://search?q=pname:org.openintents.safe</string>
+    <string name="safe_developer_uri">http://www.openintents.org/en/node/205</string><!-- 205 = OI Safe -->
 	
 </resources>

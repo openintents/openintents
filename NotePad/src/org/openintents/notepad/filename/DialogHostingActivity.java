@@ -5,7 +5,7 @@ import org.openintents.distribution.RD;
 import org.openintents.intents.FileManagerIntents;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
-import org.openintents.notepad.util.IntentUtils;
+import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
 import android.app.Dialog;

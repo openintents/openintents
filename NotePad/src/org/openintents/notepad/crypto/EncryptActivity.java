@@ -1,14 +1,22 @@
 package org.openintents.notepad.crypto;
 
+import org.openintents.distribution.GetFromMarketDialog;
+import org.openintents.distribution.RD;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.filename.DialogHostingActivity;
+import org.openintents.notepad.filename.FilenameDialog;
+import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnDismissListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +31,8 @@ import android.widget.Toast;
 public class EncryptActivity extends Activity {
 
     private static final String TAG = "EncryptActivity";
+    
+	public static final int DIALOG_ID_GET_FROM_MARKET = 1;
     
 	private static final int REQUEST_CODE_ENCRYPT_OR_UNENCRYPT = 1;
 	
@@ -51,16 +61,22 @@ public class EncryptActivity extends Activity {
 		i.setAction(action);
 		// Extras should have been set properly by the calling activity
 		// and are not changed here.
+		
+		if (IntentUtils.isIntentAvailable(this, i)) {
+	        try {
+	    		Log.i(TAG, "EncryptActivity: startActivity");
+	        	startActivityForResult(i, REQUEST_CODE_ENCRYPT_OR_UNENCRYPT);
+	        } catch (ActivityNotFoundException e) {
+				Toast.makeText(this,
+						R.string.encryption_failed,
+						Toast.LENGTH_SHORT).show();
+				Log.e(TAG, "failed to invoke encrypt");
+	        }
+		} else {
+			// Intent does not exist.
+        	showDialog(DIALOG_ID_GET_FROM_MARKET);
+		}
         
-        try {
-    		Log.i(TAG, "EncryptActivity: startActivity");
-        	startActivityForResult(i, REQUEST_CODE_ENCRYPT_OR_UNENCRYPT);
-        } catch (ActivityNotFoundException e) {
-			Toast.makeText(this,
-					R.string.encryption_failed,
-					Toast.LENGTH_SHORT).show();
-			Log.e(TAG, "failed to invoke encrypt");
-        }
         
 
 		Log.i(TAG, "EncryptActivity: startActivity OK");
@@ -143,5 +159,41 @@ public class EncryptActivity extends Activity {
     		break;
     	}
     }
+    
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ID_GET_FROM_MARKET:
+			return new GetFromMarketDialog(this, 
+					RD.string.safe_not_available,
+					RD.string.safe_get_oi_filemanager,
+					RD.string.safe_market_uri,
+					RD.string.safe_developer_uri);
+
+		}
+		return null;
+	}
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		FilenameDialog fd;
+		
+		dialog.setOnDismissListener(mDismissListener);
+		
+		switch (id) {
+		case DIALOG_ID_GET_FROM_MARKET:
+			break;
+		}
+	}
+	
+	OnDismissListener mDismissListener = new OnDismissListener() {
+		
+		public void onDismiss(DialogInterface dialoginterface) {
+			finish();
+		}
+		
+	};
 
 }
