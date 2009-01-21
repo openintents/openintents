@@ -106,7 +106,8 @@ public class DialogHostingActivity extends Activity {
 			return new GetFromMarketDialog(this, 
 					RD.string.filemanager_not_available,
 					RD.string.filemanager_get_oi_filemanager,
-					RD.string.filemanager_market_uri);
+					RD.string.filemanager_market_uri,
+					RD.string.filemanager_developer_uri);
 
 		}
 		return null;

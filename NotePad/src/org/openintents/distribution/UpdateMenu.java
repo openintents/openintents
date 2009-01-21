@@ -81,40 +81,25 @@ public class UpdateMenu {
 			e.printStackTrace();
 		}
 		final Intent intent  = new Intent(Intent.ACTION_VIEW);
+		final Intent intent2  = new Intent(Intent.ACTION_VIEW);
 		new Builder(context).setMessage(context.getString(RD.string.update_box_text, version))
 		.setPositiveButton(RD.string.update_check_now, new OnClickListener(){
 
 			public void onClick(DialogInterface arg0, int arg1) {
 				intent.setData(Uri.parse(context.getString(RD.string.update_app_url)));
-				startSaveActivity(context, intent);
+				intent2.setData(Uri.parse(context.getString(RD.string.update_app_developer_url)));
+				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
 			}
 			
 		}).setNegativeButton(RD.string.update_get_updater, new OnClickListener(){
 
 			public void onClick(DialogInterface dialog, int which) {
 				intent.setData(Uri.parse(context.getString(RD.string.update_checker_url)));
-				startSaveActivity(context, intent);
+				intent2.setData(Uri.parse(context.getString(RD.string.update_checker_developer_url)));
+				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
 			}
 			
 		}).show();		
-	}
-	
-	/**
-	 * Start an activity but prompt a toast if activity is not found
-	 * (instead of crashing).
-	 * 
-	 * @param context
-	 * @param intent
-	 */
-	private static void startSaveActivity(Context context, Intent intent) {
-		try {
-			context.startActivity(intent);
-		} catch (ActivityNotFoundException e) {
-			Toast.makeText(context,
-					RD.string.update_error,
-					Toast.LENGTH_SHORT).show();
-			Log.e(TAG, "Error starting activity.", e);
-		}
 	}
 
 }

@@ -28,8 +28,10 @@ Current version: %s
 	</string>
 	<string name="update_check_now">Check now.</string>
 	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.filemanager</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
+    <string name="update_app_developer_url">http://www.openintents.org/en/node/129</string><!-- 129 = OI Notepad -->
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
+    <string name="update_checker_developer_url">http://www.openintents.org/en/node/203</string><!-- 203 = OI Update -->
 	<string name="update_error">Download application not available.</string>
 	<string name="update">Check updates</string>
 	
@@ -38,11 +40,13 @@ Current version: %s
 	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
     <string name="aboutapp_get">Get OI About</string>
     <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
+    <string name="aboutapp_developer_uri">http://www.openintents.org/en/node/202</string><!-- 202 = OI About -->
 
 
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>
     <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
     <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
+    <string name="filemanager_developer_uri">http://www.openintents.org/en/node/159</string><!-- 159 = OI File Manager -->
 	
 </resources>
