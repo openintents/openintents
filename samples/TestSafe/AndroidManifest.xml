@@ -15,4 +15,5 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="org.openintents.safe.ACCESS_INTENTS" />
 </manifest> 

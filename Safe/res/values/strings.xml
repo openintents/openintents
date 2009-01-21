@@ -117,8 +117,10 @@
     <string name="open">Open</string>
     <string name="database_version_error_title">Database Version Error</string>
     <string name="database_version_error_msg">Sorry, but the version of the database is not supported.   You must install the version associated with this database.</string>
-	<string name="permlab_service">access stored password</string>
-    <string name="permdesc_service">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+	<string name="permlab_service">access the master password</string>
+	<string name="permdesc_service">Allows the application to access the master key used for encryption and decryption. Should never be used except by OI Safe.</string>	
+	<string name="permlab_intents">access stored password</string>
+    <string name="permdesc_intents">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
 	<string name="move">Move</string>
 	<string name="move_select">Select Category</string>
 	<string name="moved_to">Moved to</string>
