@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ 
+<resources>
+	<string name="app_name">OI Lista Zakupów</string>
+
+	<!-- Shopping Provider -->
+	<string name="new_item">Nowy element</string>
+	<string name="new_list">Nowa lista</string>
+	<string name="my_shopping_list">Moja lista zakupów</string>
+	<string name="new_list_hint">tj. lista życzeń, lista osób</string>
+	<string name="clean_up_list">Wyczyść listę</string>
+	<string name="delete_list">Usuń listę</string>
+	<string name="ask_new_list">Wstaw nazwę nowej listy</string>
+	<string name="ask_rename_list">Zmień nazwę listy zakupów</string>
+	<string name="ask_edit_item">Edytuj element</string>
+	<string name="please_enter_name">Wstaw nazwę</string>
+	<string name="no_items_marked">Nie ma elementów wybranych jako zakreślone.</string>
+	<string name="confirm_delete_list">Czy na pewno chcesz usunąć tę listę zakupów?</string>
+	<string name="no_shopping_provider">Błąd dostępu do list zakupów.</string>
+	<string name="pick_item">Wybierz element</string>
+	<string name="theme">Motyw</string>
+	<string name="theme_settings">Ustawienia motywu</string>
+	<string name="rename_list">Zmień nazwę listy</string>
+	<string name="mark_item">Zaznacz element</string>
+	<string name="edit_item">Edytuj element</string>
+	<string name="delete_item">Usuń element</string>
+	<string name="add">Dodaj</string>
+
+	<!-- Shortcut -->
+	<string name="pick_list_for_shortcut">Wybierz listę dla skrótu</string>
+	
+	<!-- Theme related -->
+	<string name="theme_pick">Wybierz motyw</string>
+	<string name="theme_description">Wybierz  motyw dla tej listy</string>
+	<string name="theme_default">Domyślny</string>
+	<string name="theme_classic">Klasyczny</string>
+	<string name="theme_bugdroid">Android</string>
+
+	<!--     Dialog box    -->
+	<string name="ok">OK</string>
+	<string name="cancel">Anuluj</string>
+	
+	<!-- preferences -->
+	<string name="preferences">Ustawienia</string>
+	<string name="preference_unchecked_on_top">Niezaznaczone na górze</string>
+	<string name="preference_unchecked_on_top_summary">Zawsze pokazuj niezaznaczone elementy jako pierwsze</string>
+	<string name="preference_fontsize">Rozmiar czcionki</string>
+	<string name="preference_fontsize_summary">Zmień rozmiar czcionki</string>
+	<string name="preference_fontsize_dialog_title">Wybierz rozmiar czcionki</string>
+	<string name="preference_sortorder_title">Porządek sortowania</string>
+	<string name="preference_sortorder_summary">Zmień porządek sortowania elementów listy</string>
+	<string name="preference_sortorder_dialog_title">Wybierz porządek sortowania</string>
+
+</resources> 
