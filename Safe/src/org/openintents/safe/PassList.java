@@ -78,6 +78,7 @@ public class PassList extends ListActivity {
     private static Long CategoryId=null;
     private Intent restartTimerIntent;
 
+    private static String salt;
     private static String masterKey;			
 
     private List<PassEntry> rows;
@@ -203,7 +204,13 @@ public class PassList extends ListActivity {
 		if(masterKey == null) {
 		    masterKey = "";
 		}
-		ch.setPassword(masterKey);
+		try {
+			ch.setSalt(salt);
+			ch.setPassword(masterKey);
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+			return;
+		}
 	
 		List<String> items = new ArrayList<String>();
 		rows = dbHelper.fetchAllRows(CategoryId);
@@ -261,6 +268,14 @@ public class PassList extends ListActivity {
 			.setShortcut('4', 'm');
 	
 		return super.onCreateOptionsMenu(menu);
+    }
+
+    static void setSalt(String saltIn) {
+		salt = saltIn;
+    }
+
+    static String getSalt() {
+		return salt;
     }
 
     static void setMasterKey(String key) {
@@ -423,8 +438,9 @@ public class PassList extends ListActivity {
 		if (ch==null) {
 			ch=new CryptoHelper();
 		}
-		ch.setPassword(masterKey);
-	    try {
+		try {
+			ch.setSalt(salt);
+			ch.setPassword(masterKey);
 			category.plainName = ch.decrypt(category.name);
 	    } catch (CryptoHelperException e) {
 			Log.e(TAG,e.toString());

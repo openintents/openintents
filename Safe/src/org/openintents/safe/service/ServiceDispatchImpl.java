@@ -35,9 +35,10 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
-	private static boolean debug = false;
+	private static boolean debug = true;
 	private static String TAG = "ServiceDispatchIMPL";
 	private CryptoHelper ch;
+	private String salt;
 	private String masterKey;
     private CountDownTimer t;
     private int timeoutMinutes = 5;
@@ -143,9 +144,23 @@ public class ServiceDispatchImpl extends Service {
     		return (clearText);
     	}
 
+    	public void setSalt (String saltIn){
+			salt = saltIn;
+    	}
+
+		public String getSalt() {
+			return salt;
+		}
+
     	public void setPassword (String masterKeyIn){
     		startTimer(); //should be initial timer start
 			ch = new CryptoHelper(CryptoHelper.EncryptionMedium);
+			try {
+				ch.setSalt(salt);
+			} catch (CryptoHelperException e) {
+				e.printStackTrace();
+				return;
+			}
 			ch.setPassword(masterKeyIn);
 			masterKey = masterKeyIn;
 			

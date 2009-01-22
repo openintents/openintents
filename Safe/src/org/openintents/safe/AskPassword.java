@@ -17,6 +17,7 @@
 package org.openintents.safe;
 
 import java.io.File;
+import java.security.NoSuchAlgorithmException;
 
 import org.openintents.distribution.EulaActivity;
 import org.openintents.util.VersionUtils;
@@ -47,7 +48,7 @@ import android.widget.Toast;
  */
 public class AskPassword extends Activity {
 
-	private boolean debug = false;
+	private boolean debug = true;
 	private static String TAG = "AskPassword";
 	public static String EXTRA_IS_LOCAL = "org.openintents.safe.bundle.EXTRA_IS_REMOTE";
 
@@ -60,6 +61,7 @@ public class AskPassword extends Activity {
 	private TextView remoteAsk;
 	private EditText confirmPass;
 	private String PBEKey;
+	private String salt;
 	private String masterKey;
 	private CryptoHelper ch;
 	private boolean firstTime = false;
@@ -105,6 +107,7 @@ public class AskPassword extends Activity {
 		remoteAsk = (TextView) findViewById(R.id.remote);
 		confirmPass = (EditText) findViewById(R.id.pass_confirm);
 		confirmText = (TextView) findViewById(R.id.confirm_lbl);
+		salt = dbHelper.fetchSalt();
 		masterKey = dbHelper.fetchMasterKey();
 		if (masterKey.length() == 0) {
 			firstTime = true;
@@ -127,7 +130,13 @@ public class AskPassword extends Activity {
 				// For this version of CryptoHelper, we use the user-entered password.
 				// All other versions should be instantiated with the generated master
 				// password.
-				ch.setPassword(PBEKey);
+				try {
+					ch.setSalt(dbHelper.fetchSalt());
+					ch.setPassword(PBEKey);
+				} catch (CryptoHelperException e2) {
+					e2.printStackTrace();
+					return;
+				}
 
 				// Password must be at least 4 characters
 				if (PBEKey.length() < 4) {
@@ -155,10 +164,17 @@ public class AskPassword extends Activity {
 								.show();
 						return;
 					}
-					masterKey = CryptoHelper.generateMasterKey();
+					try {
+						salt = CryptoHelper.generateSalt();
+						masterKey = CryptoHelper.generateMasterKey();
+					} catch (NoSuchAlgorithmException e1) {
+						e1.printStackTrace();
+					}
 					if (debug) Log.i(TAG, "Saving Password: " + masterKey);
 					try {
+						ch.setSalt(salt);
 						String encryptedMasterKey = ch.encrypt(masterKey);
+						dbHelper.storeSalt(salt);
 						dbHelper.storeMasterKey(encryptedMasterKey);
 					} catch (CryptoHelperException e) {
 						Log.e(TAG, e.toString());
@@ -180,7 +196,9 @@ public class AskPassword extends Activity {
 				// Return the master key to our caller.  We no longer need the
 				// user-entered PBEKey. The master key is used for everything
 				// from here on out.
+				if (debug) Log.d(TAG,"calbackintent: masterKey="+masterKey+" salt="+salt);
 				callbackIntent.putExtra("masterKey", masterKey);
+				callbackIntent.putExtra("salt", salt);
 				setResult(RESULT_OK, callbackIntent);
 				finish();
 			}
@@ -252,6 +270,7 @@ public class AskPassword extends Activity {
 		String decryptedMasterKey = "";
 		try {
 			decryptedMasterKey = ch.decrypt(encryptedMasterKey);
+			if (debug) Log.d(TAG,"decryptedMasterKey="+decryptedMasterKey);
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());
 		}
@@ -270,6 +289,7 @@ public class AskPassword extends Activity {
     	if ((requestCode== REQUEST_RESTORE) && (resultCode == RESULT_OK)) {
     		Log.d(TAG,"returning masterkey: "+CategoryList.getMasterKey());
 			Intent callbackIntent = new Intent();
+			callbackIntent.putExtra("salt", CategoryList.getSalt());
 			callbackIntent.putExtra("masterKey", CategoryList.getMasterKey());
 			setResult(RESULT_OK, callbackIntent);
     		finish();

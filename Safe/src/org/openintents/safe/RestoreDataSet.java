@@ -27,6 +27,7 @@ public class RestoreDataSet {
 
 	private int version = 0;
 	private String date = null;
+	private String salt = null;
 	private String masterKeyEncrypted = null;
 	private Long currentCategoryId = new Long(0);
 	private CategoryEntry currentCategory = null;
@@ -46,6 +47,12 @@ public class RestoreDataSet {
 	}
 	public void setDate(String extractedDate) {
 		date = extractedDate;
+	}
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String extractedSalt) {
+		salt = extractedSalt;
 	}
 	public String getMasterKeyEncrypted() {
 		return masterKeyEncrypted;

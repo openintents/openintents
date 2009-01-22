@@ -44,6 +44,7 @@ public class DBHelper {
     private static final String TABLE_PASSWORDS = "passwords";
     private static final String TABLE_CATEGORIES = "categories";
     private static final String TABLE_MASTER_KEY = "master_key";
+    private static final String TABLE_SALT = "salt";
     private static final String TABLE_PACKAGE_ACCESS = "package_access";
     private static final int DATABASE_VERSION = 4;
     private static String TAG = "DBHelper";
@@ -88,6 +89,10 @@ public class DBHelper {
     private static final String MASTER_KEY_CREATE = 
     	"create table " + TABLE_MASTER_KEY + " ("
     		+ "encryptedkey text not null);";
+
+    private static final String SALT_CREATE = 
+    	"create table " + TABLE_SALT + " ("
+    		+ "salt text not null);";
 
     private SQLiteDatabase db;
     private static boolean needsPrePopulation=false;
@@ -148,6 +153,7 @@ public class DBHelper {
 			db.execSQL(PASSWORDS_CREATE);
 			db.execSQL(PACKAGE_ACCESS_CREATE);
 			db.execSQL(MASTER_KEY_CREATE);
+			db.execSQL(SALT_CREATE);
 		} catch (SQLException e)
 		{
 			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
@@ -214,6 +220,49 @@ public class DBHelper {
 		}
 		return version;
     }
+    
+////////// Salt Functions ////////////////
+
+    /**
+     * Store the salt
+     * 
+     * @return String version of salt
+     */
+    public String fetchSalt() {
+    	String salt="";
+        try {
+			Cursor c = db.query(true, TABLE_SALT, new String[] {"salt"},
+				null, null, null, null, null,null);
+			if(c.getCount() > 0) {
+			    c.moveToFirst();
+			    salt=c.getString(0);
+			}
+			c.close();
+		} catch (SQLException e)
+		{
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		}
+		return salt;
+    }
+    
+    /**
+     * Store the salt into the database.
+     * 
+     * @param salt String version of the salt
+     */
+    public void storeSalt(String salt) {
+		ContentValues args = new ContentValues();
+        try {
+			db.delete(TABLE_SALT, "1=1", null);
+			args.put("salt", salt);
+			db.insert(TABLE_SALT, null, args);
+		} catch (SQLException e)
+		{
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		}
+    }
+    
+////////// Master Key Functions ////////////////
 
     /**
      * 

@@ -117,6 +117,7 @@ public class CategoryList extends ListActivity {
 
 	private Thread backupThread=null;
 
+	private static String salt;
     private static String masterKey;			
 
     private List<CategoryEntry> rows;
@@ -360,7 +361,12 @@ public class CategoryList extends ListActivity {
 		if(masterKey == null) {
 		    masterKey = "";
 		}
-		ch.setPassword(masterKey);
+		try {
+			ch.setSalt(salt);
+			ch.setPassword(masterKey);
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+		}
 	
 		List<String> items = new ArrayList<String>();
 		if (dbHelper==null) {
@@ -447,6 +453,14 @@ public class CategoryList extends ListActivity {
 		}
 		
 		return super.onCreateOptionsMenu(menu);
+    }
+
+    static void setSalt(String saltIn) {
+		salt = saltIn;
+    }
+
+    static String getSalt() {
+		return salt;
     }
 
     static void setMasterKey(String key) {
@@ -641,6 +655,7 @@ public class CategoryList extends ListActivity {
 			if(masterKey == null) {
 			    masterKey = "";
 			}
+			ch.setSalt(salt);
 			ch.setPassword(masterKey);
 
 		    entry.name = ch.encrypt(namePlain);
@@ -668,7 +683,13 @@ public class CategoryList extends ListActivity {
 			if(masterKey == null) {
 			    masterKey = "";
 			}
-			ch.setPassword(masterKey);
+			try {
+				ch.setSalt(salt);
+				ch.setPassword(masterKey);
+			} catch (CryptoHelperException e1) {
+				e1.printStackTrace();
+				return false;
+			}
 		
 			HashMap<Long, String> categories = new HashMap<Long, String>();
 			
@@ -994,7 +1015,13 @@ public class CategoryList extends ListActivity {
 		if(masterKey == null) {
 		    masterKey = "";
 		}
-		ch.setPassword(masterKey);
+		try {
+			ch.setSalt(salt);
+			ch.setPassword(masterKey);
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+			return null;
+		}
 	
 		HashMap<String,Long> categories = new HashMap<String,Long>();
 		List<CategoryEntry> rows;

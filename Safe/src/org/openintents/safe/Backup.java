@@ -72,7 +72,12 @@ public class Backup {
 			serializer.startTag(null, "MasterKey");
 			serializer.text(masterKeyEncrypted);
 			serializer.endTag(null, "MasterKey");
-			
+
+			String salt = dbHelper.fetchSalt();
+			serializer.startTag(null, "Salt");
+			serializer.text(salt);
+			serializer.endTag(null, "Salt");
+
 			List<CategoryEntry> crows;
 			crows = dbHelper.fetchAllCategoryRows();
 			HashMap<Long, ArrayList<String>> packageAccess=dbHelper.fetchPackageAccessAll();

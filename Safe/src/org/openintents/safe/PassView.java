@@ -41,7 +41,7 @@ import android.widget.Toast;
  */
 public class PassView extends Activity {
 
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "PassView";
 
 	public static final int EDIT_PASSWORD_INDEX = Menu.FIRST;
@@ -70,7 +70,12 @@ public class PassView extends Activity {
 		setTitle(title);
 
 		ch = new CryptoHelper();
-		ch.setPassword(PassList.getMasterKey());
+		try {
+			ch.setSalt(PassList.getSalt());
+			ch.setPassword(PassList.getMasterKey());
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+		}
 
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);

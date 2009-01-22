@@ -56,6 +56,7 @@ public class IntentHandler extends Activity {
 	
 
 	private DBHelper dbHelper;
+	private String salt;
 	private String masterKey;
 	private CryptoHelper ch;
 
@@ -79,6 +80,7 @@ public class IntentHandler extends Activity {
 		if (resultCode == RESULT_OK) {
 			switch (requestCode) {
 			case REQUEST_CODE_ASK_PASSWORD:
+				salt = data.getStringExtra("salt");
 				masterKey = data.getStringExtra("masterKey");
 				String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
 				int timeoutMinutes=5; // default to 5
@@ -89,6 +91,7 @@ public class IntentHandler extends Activity {
 				}
 				try {
 					service.setTimeoutMinutes(timeoutMinutes);
+					service.setSalt(salt);
 					service.setPassword(masterKey); // should already be connected.
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
@@ -131,12 +134,23 @@ public class IntentHandler extends Activity {
         final String action = thisIntent.getAction();
     	Intent callbackIntent = getIntent(); 
     	int callbackResult = RESULT_CANCELED;
+		PassList.setSalt(salt);
+        CategoryList.setSalt(salt);
 		PassList.setMasterKey(masterKey);
         CategoryList.setMasterKey(masterKey);
         if (ch == null) {
     		ch = new CryptoHelper(CryptoHelper.EncryptionMedium);
-    		ch.setPassword(masterKey);
         }
+        try {
+			ch.setSalt(salt);
+    		ch.setPassword(masterKey);
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+			Toast.makeText(IntentHandler.this,
+				"There was a crypto error: " + e1.getMessage(),
+				Toast.LENGTH_SHORT).show();
+			return;
+		}
 
         boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
 
@@ -444,6 +458,7 @@ public class IntentHandler extends Activity {
 			        boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
 			        
 			        if (askPassIsLocal || externalAccess) {
+			        	salt = service.getSalt();
 						masterKey = service.getPassword();
 						actionDispatch();
 			        } else {

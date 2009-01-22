@@ -32,6 +32,7 @@ public class RestoreHandler extends DefaultHandler {
     // ===========================================================
     
     private boolean in_oisafe = false;
+    private boolean in_salt = false;
     private boolean in_masterkey = false;
     private boolean in_category = false;
     private boolean in_entry = false;
@@ -85,6 +86,11 @@ public class RestoreHandler extends DefaultHandler {
 
 			if (debug) Log.d(TAG,"found OISafe "+version+" date "+date);
 			
+		}else if (in_oisafe && localName.equals("Salt")) {
+			in_salt = true;
+
+			if (debug) Log.d(TAG,"found Salt");
+
 		}else if (in_oisafe && localName.equals("MasterKey")) {
 			in_masterkey = true;
 
@@ -127,6 +133,8 @@ public class RestoreHandler extends DefaultHandler {
 	
 		if (localName.equals("OISafe")) {
 			in_oisafe = false;
+		}else if (in_oisafe && localName.equals("Salt")) {
+			in_salt = false;
 		}else if (in_oisafe && localName.equals("MasterKey")) {
 			in_masterkey = false;
 		}else if (in_oisafe && localName.equals("Category")) {
@@ -156,6 +164,9 @@ public class RestoreHandler extends DefaultHandler {
 	 * &lt;tag>characters&lt;/tag> */
 	@Override
 	public void characters(char ch[], int start, int length) {
+		if (in_salt){
+			myRestoreDataSet.setSalt(new String(ch, start, length));
+		}
 		if (in_masterkey){
 			myRestoreDataSet.setMasterKeyEncrypted(new String(ch, start, length));
 		}

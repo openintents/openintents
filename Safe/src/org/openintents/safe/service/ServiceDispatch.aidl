@@ -17,6 +17,8 @@
 package org.openintents.safe.service;
 
 interface ServiceDispatch {
+  void setSalt (String saltIn);
+  String getSalt ();
   void setPassword (String masterPasswordIn);
   String getPassword ();
   String encrypt (String clearText);

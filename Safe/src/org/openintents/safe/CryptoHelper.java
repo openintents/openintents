@@ -24,6 +24,7 @@ import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
+import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
 import javax.crypto.BadPaddingException;
@@ -53,6 +54,7 @@ import android.util.Log;
  */
 public class CryptoHelper {
 
+	private static final boolean debug = true;
     private static String TAG = "CryptoHelper";
     protected static PBEKeySpec pbeKeySpec;
     protected static PBEParameterSpec pbeParamSpec;
@@ -71,7 +73,8 @@ public class CryptoHelper {
     protected static Cipher pbeCipher;
     private boolean status=false;	// status of the last encrypt/decrypt
 
-    private static final byte[] salt = {
+    private static boolean saltIsSet = false;  // has the salt been set?
+    private static byte[] salt = {
 		(byte)0xfc, (byte)0x76, (byte)0x80, (byte)0xae,
 		(byte)0xfd, (byte)0x82, (byte)0xbe, (byte)0xee,
     };
@@ -117,12 +120,32 @@ public class CryptoHelper {
 		    Log.e(TAG,"CryptoHelper(): "+e.toString());		
 		}
     }
+
+    /**
+     * Generate a random salt for use with the cipher.
+     * 
+     * @author Randy McEoin
+     * @return String version of the 8 byte salt
+     */
+    public static String generateSalt() throws NoSuchAlgorithmException {
+    	byte[] salt = new byte[8];
+    	SecureRandom sr;
+		try {
+			sr = SecureRandom.getInstance("SHA1PRNG");
+			sr.nextBytes(salt);
+			if (debug) Log.d(TAG,"generateSalt: salt="+salt.toString());
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			throw e;
+		}
+		return toHexString(salt);
+    }
     /**
      * @author Isaac Potoczny-Jones
      * 
      * @return null if failure, otherwise hex string version of key
      */
-	public static String generateMasterKey () {
+	public static String generateMasterKey () throws NoSuchAlgorithmException {
 		try {
 			KeyGenerator keygen;
 			keygen = KeyGenerator.getInstance("AES");
@@ -131,8 +154,8 @@ public class CryptoHelper {
 			return toHexString(genDesKey.getEncoded());
 		} catch (NoSuchAlgorithmException e) {
 			Log.e(TAG,"generateMasterKey(): "+e.toString());
+			throw e;
 		}
-		return null; //error case.
 	}
 
     /**
@@ -218,6 +241,7 @@ public class CryptoHelper {
      * @throws Exception
      */
     public void setPassword(String pass) {
+    	if (debug) Log.d(TAG,"setPassword("+pass+")");
 		password = pass;
 		pbeKeySpec = new PBEKeySpec(password.toCharArray());
 		try {
@@ -235,6 +259,21 @@ public class CryptoHelper {
 		}
     }
 
+    public void setSalt(String saltIn) throws CryptoHelperException {
+    	if (saltIn==null) {
+			String msg = "Salt must not be null.";
+		    throw new CryptoHelperException(msg);
+    	}
+		byte[] byteSaltIn=hexStringToBytes(saltIn);
+
+		if (byteSaltIn.length != 8) {
+			String msg = "Salt must be 8 bytes in length.";
+		    throw new CryptoHelperException(msg);
+		}
+		salt=byteSaltIn;
+		if (debug) Log.d(TAG,"setSalt: salt="+toHexString(salt));
+		saltIsSet=true;
+    }
     /**
      * encrypt a string
      * 
@@ -245,7 +284,11 @@ public class CryptoHelper {
     public String encrypt(String plaintext) throws CryptoHelperException {
 		status=false; // assume failure
 		if(password == null) {
-		    String msg = "Must call setPassword before runing encrypt.";
+		    String msg = "Must call setPassword before running encrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+		if (saltIsSet==false) {
+		    String msg = "Must call setSalt before running encrypt.";
 		    throw new CryptoHelperException(msg);
 		}
 		byte[] ciphertext = {};
@@ -279,6 +322,10 @@ public class CryptoHelper {
 		status=false; // assume failure
 		if(password == null) {
 		    String msg = "Must call setPassword before running decrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+		if (saltIsSet==false) {
+		    String msg = "Must call setSalt before running decrypt.";
 		    throw new CryptoHelperException(msg);
 		}
 	

@@ -32,19 +32,26 @@ import android.widget.Toast;
  */
 public class CategoryEdit extends Activity {
 
+	private static final boolean debug = false;
+    private static String TAG = "CategoryEdit";
+
     private EditText nameText;
     private Long RowId;
     private DBHelper dbHelper=null;
     private CryptoHelper ch;
 
-    private static String TAG = "CategoryEdit";
 
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Log.d(TAG, "onCreate");
+		if (debug) Log.d(TAG, "onCreate");
 		
 		ch = new CryptoHelper();
-		ch.setPassword(PassList.getMasterKey());
+		try {
+			ch.setSalt(PassList.getSalt());
+			ch.setPassword(PassList.getMasterKey());
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+		}
 
 		if (dbHelper == null){
 			dbHelper = new DBHelper(this);
@@ -98,7 +105,7 @@ public class CategoryEdit extends Activity {
     @Override
     protected void onPause() {
 		super.onPause();
-		Log.d(TAG, "onPause");
+		if (debug) Log.d(TAG, "onPause");
 		dbHelper.close();
 		dbHelper = null;
     }
@@ -106,7 +113,7 @@ public class CategoryEdit extends Activity {
     @Override
     protected void onResume() {
 		super.onResume();
-		Log.d(TAG, "onResume");
+		if (debug) Log.d(TAG, "onResume");
 		if (dbHelper == null) {
 		    dbHelper = new DBHelper(this);
 		}
@@ -119,11 +126,11 @@ public class CategoryEdit extends Activity {
     }
 
     private void saveState() {
-    	Log.d(TAG, "saveState");
+    	if (debug) Log.d(TAG, "saveState");
 		CategoryEntry entry =  new CategoryEntry();
 	
 		String namePlain = nameText.getText().toString();
-		Log.d(TAG, "name: " + namePlain);
+		if (debug) Log.d(TAG, "name: " + namePlain);
 		
 		try {
 		    entry.name = ch.encrypt(namePlain);
@@ -133,11 +140,11 @@ public class CategoryEdit extends Activity {
 	
 	
 		if(RowId == null || RowId == -1) {
-			Log.d(TAG, "addCategory");
+			if (debug) Log.d(TAG, "addCategory");
 		    dbHelper.addCategory(entry);
 		} else {
-			Log.d(TAG, "updateCategory");
-			Log.d(TAG, "RowId: " + String.valueOf(RowId));
+			if (debug) Log.d(TAG, "updateCategory");
+			if (debug) Log.d(TAG, "RowId: " + String.valueOf(RowId));
 		    dbHelper.updateCategory(RowId, entry);
 		}
     }
@@ -146,7 +153,7 @@ public class CategoryEdit extends Activity {
      * 
      */
     private void populateFields() {
-    	Log.d(TAG, "populateFields");
+    	if (debug) Log.d(TAG, "populateFields");
 		if (RowId != null) {
 		    CategoryEntry row = dbHelper.fetchCategory(RowId);
 		    if (row.id > -1) {

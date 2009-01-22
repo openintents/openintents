@@ -73,7 +73,12 @@ public class PassEdit extends Activity {
 		setTitle(title);
 
 		ch = new CryptoHelper();
-		ch.setPassword(PassList.getMasterKey());
+		try {
+			ch.setSalt(PassList.getSalt());
+			ch.setPassword(PassList.getMasterKey());
+		} catch (CryptoHelperException e1) {
+			e1.printStackTrace();
+		}
 
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);
