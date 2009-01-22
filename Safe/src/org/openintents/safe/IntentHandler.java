@@ -179,6 +179,8 @@ public class IntentHandler extends Activity {
 	/**
 	 * Encrypt all supported fields in the intent and return the result in callbackIntent.
 	 * 
+	 * This is supposed to be called by outside functions, so we encrypt using a random session key.
+	 * 
 	 * @param thisIntent
 	 * @param callbackIntent
 	 * @return callbackResult
@@ -193,7 +195,7 @@ public class IntentHandler extends Activity {
 				// get the body text out of the extras.
 				String inputBody = thisIntent.getStringExtra (CryptoIntents.EXTRA_TEXT);
 				String outputBody = "";
-				outputBody = ch.encrypt (inputBody);
+				outputBody = ch.encryptWithSessionKey (inputBody);
 				// stash the encrypted text in the extra
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT, outputBody);
 			}
@@ -203,7 +205,7 @@ public class IntentHandler extends Activity {
 				String[] out = new String[in.length];
 				for (int i = 0; i < in.length; i++) {
 					if (in[i] != null) {
-						out[i] = ch.encrypt(in[i]);
+						out[i] = ch.encryptWithSessionKey(in[i]);
 					}
 				}
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
@@ -233,7 +235,7 @@ public class IntentHandler extends Activity {
 				// get the body text out of the extras.
 				String inputBody = thisIntent.getStringExtra (CryptoIntents.EXTRA_TEXT);
 				String outputBody = "";
-				outputBody = ch.decrypt (inputBody);
+				outputBody = ch.decryptWithSessionKey (inputBody);
 				// stash the encrypted text in the extra
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT, outputBody);
 			}
@@ -243,7 +245,7 @@ public class IntentHandler extends Activity {
 				String[] out = new String[in.length];
 				for (int i = 0; i < in.length; i++) {
 					if (in[i] != null) {
-						out[i] = ch.decrypt(in[i]);
+						out[i] = ch.decryptWithSessionKey(in[i]);
 					}
 				}
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);

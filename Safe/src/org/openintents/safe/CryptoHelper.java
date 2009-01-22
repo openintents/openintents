@@ -313,4 +313,164 @@ public class CryptoHelper {
     public boolean getStatus() {
     	return status;
     }
+    
+
+    /**
+     * encrypt a string using a random session key
+     * 
+     * @author Peli
+     * 
+     * @param plaintext
+     * @return encrypted String
+     * @throws Exception
+     */
+    public String encryptWithSessionKey(String plaintext) throws CryptoHelperException {
+    	Log.i(TAG, "Encrypt with session key");
+		status=false; // assume failure
+		if(password == null) {
+		    String msg = "Must call setPassword before runing encrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+		byte[] cipherSessionKey = {};
+		byte[] ciphertext = {};
+		
+		// First create a session key
+		SecretKey sessionKey = null;
+		byte[] sessionKeyEncoded = null;
+		String sessionKeyString = null;
+		try {
+			KeyGenerator keygen;
+			keygen = KeyGenerator.getInstance("AES");
+			keygen.init(256); // needs 96 bytes
+			//keygen.init(128); // needs 64 bytes
+			sessionKey = keygen.generateKey();
+			sessionKeyEncoded = sessionKey.getEncoded();
+			sessionKeyString = new String(sessionKeyEncoded);
+		} catch (NoSuchAlgorithmException e) {
+			Log.e(TAG,"generateMasterKey(): "+e.toString());
+		}
+
+		// Convert this to a Pbe key
+		PBEKeySpec sessionPbeKeySpec = new PBEKeySpec(sessionKeyString.toCharArray());
+		SecretKey sessionPbeKey = null;
+		try {
+		    sessionPbeKey = keyFac.generateSecret(sessionPbeKeySpec);
+		} catch (InvalidKeySpecException e) {
+		    Log.e(TAG,"setPassword(): "+e.toString());
+		}
+		    
+		// Encrypt the session key using the master key
+	    try {
+			pbeCipher.init(Cipher.ENCRYPT_MODE, pbeKey, pbeParamSpec);
+		    cipherSessionKey = pbeCipher.doFinal(sessionKeyEncoded);
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+		}
+		
+		// Now encrypt the text using the session key
+	    try {
+			pbeCipher.init(Cipher.ENCRYPT_MODE, sessionPbeKey, pbeParamSpec);
+		    ciphertext = pbeCipher.doFinal(plaintext.getBytes());
+		    status=true;
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"encryptWithSessionKey2(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"encryptWithSessionKey2(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"encryptWithSessionKey2(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"encryptWithSessionKey2(): "+e.toString());
+		}
+	
+		String stringCipherSessionKey = toHexString(cipherSessionKey);
+		String stringCiphertext=toHexString(ciphertext);
+		Log.i(TAG, "Length: " + stringCipherSessionKey.length() + ", " + stringCipherSessionKey);
+		return stringCipherSessionKey + stringCiphertext;
+    }
+
+    /**
+     * unencrypt encrypted string previously encrypted with
+     * encryptWithSessionKey()
+     * 
+     * @author Peli
+     * 
+     * @param ciphertext
+     * @return decrypted String
+     * @throws Exception
+     */
+    public String decryptWithSessionKey(String ciphertext) throws CryptoHelperException {
+		status=false; // assume failure
+		if(password == null) {
+		    String msg = "Must call setPassword before running decrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+	
+		if ((ciphertext==null) || (ciphertext=="")) {
+			return "";
+		}
+		String cipherSessionKey = null;
+		
+		// Split cipher into session key and text
+		try {
+			cipherSessionKey = ciphertext.substring(0,96); // 64 if init(128) had been chosen
+			ciphertext = ciphertext.substring(96);
+		} catch (IndexOutOfBoundsException e) {
+			Log.e(TAG, "Invalid ciphertext (with session key)");
+			return "";
+		}
+		
+		// Decrypt the session key
+		byte[] byteCipherSessionKey=hexStringToBytes(cipherSessionKey);
+		byte[] byteSessionKey = {};
+		
+		try {
+		    pbeCipher.init(Cipher.DECRYPT_MODE, pbeKey, pbeParamSpec);
+		    byteSessionKey = pbeCipher.doFinal(byteCipherSessionKey);
+		    status=true;
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		}
+
+		// Convert the session key into a Pbe key
+		String stringSessionKey = new String(byteSessionKey);
+		PBEKeySpec sessionPbeKeySpec = new PBEKeySpec(stringSessionKey.toCharArray());
+		SecretKey sessionPbeKey = null;
+		try {
+		    sessionPbeKey = keyFac.generateSecret(sessionPbeKeySpec);
+		} catch (InvalidKeySpecException e) {
+		    Log.e(TAG,"setPassword(): "+e.toString());
+		}
+
+		// Use the session key to decrypt the text
+		byte[] byteCiphertext=hexStringToBytes(ciphertext);
+		byte[] plaintext = {};
+		
+		try {
+		    pbeCipher.init(Cipher.DECRYPT_MODE, sessionPbeKey, pbeParamSpec);
+		    plaintext = pbeCipher.doFinal(byteCiphertext);
+		    status=true;
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		}
+		
+		return new String(plaintext);
+    }
 }
