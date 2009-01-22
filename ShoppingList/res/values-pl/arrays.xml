@@ -15,6 +15,7 @@
  * limitations under the License.
  -->
 
+<!-- Translation by szeldon -->
 <resources>
 
     <string-array name="preference_sortorder_entries">
@@ -24,24 +25,11 @@
         <item>najpierw najstarsze</item>
     </string-array>
     
-    <string-array name="preference_sortorder_entryvalues">
-    	<item>contains.status ASC, items.name ASC</item>
-        <item>items.name ASC</item>
-        <item>contains.modified DESC</item>
-        <item>contains.modified ASC</item>
-    </string-array>
-    
     
     <string-array name="preference_fontsize_entries">
         <item>Mały</item>
     	<item>Domyślny</item>
         <item>Duży</item>
-    </string-array>
-    
-    <string-array name="preference_fontsize_entryvalues">
-    	<item>1</item>
-        <item>2</item>
-        <item>3</item>
     </string-array>
     
 </resources>
