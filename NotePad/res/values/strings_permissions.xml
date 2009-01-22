@@ -28,4 +28,7 @@
     <string name="oi_shopping_permission_write">write shopping lists</string>
     <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
     
+	<!-- OI Safe -->
+	<string name="oi_safe_permission_intents">access stored password</string>
+    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
 </resources> 
