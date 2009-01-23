@@ -130,14 +130,16 @@ public class AskPassword extends Activity {
 				// For this version of CryptoHelper, we use the user-entered password.
 				// All other versions should be instantiated with the generated master
 				// password.
-				try {
-					ch.setSalt(dbHelper.fetchSalt());
-					ch.setPassword(PBEKey);
-				} catch (CryptoHelperException e2) {
-					e2.printStackTrace();
-					return;
+				if (!firstTime) {
+					try {
+						ch.setSalt(dbHelper.fetchSalt());
+						ch.setPassword(PBEKey);
+					} catch (CryptoHelperException e2) {
+						e2.printStackTrace();
+						return;
+					}
 				}
-
+				
 				// Password must be at least 4 characters
 				if (PBEKey.length() < 4) {
 					Toast.makeText(AskPassword.this, R.string.notify_blank_pass,
