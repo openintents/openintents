@@ -56,7 +56,7 @@
 	<string name="cancel">Cancel</string>
 	
 	<!-- preferences -->
-	<string name="preferences">Preferences</string>
+	<string name="preferences">Settings</string>
 	<string name="preference_unchecked_on_top">Unchecked on top</string>
 	<string name="preference_unchecked_on_top_summary">Always show unchecked items first</string>
 	<string name="preference_fontsize">Font size</string>
