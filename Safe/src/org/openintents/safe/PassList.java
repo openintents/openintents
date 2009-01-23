@@ -205,10 +205,12 @@ public class PassList extends ListActivity {
 		    masterKey = "";
 		}
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium, salt);
 			ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
+			Toast.makeText(this,getString(R.string.crypto_error)
+					+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 			return;
 		}
 	
@@ -439,11 +441,13 @@ public class PassList extends ListActivity {
 			ch=new CryptoHelper();
 		}
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium, salt);
 			ch.setPassword(masterKey);
 			category.plainName = ch.decrypt(category.name);
 	    } catch (CryptoHelperException e) {
 			Log.e(TAG,e.toString());
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
 	    }
 	    return category.plainName;
     }

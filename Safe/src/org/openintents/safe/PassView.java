@@ -71,10 +71,12 @@ public class PassView extends Activity {
 
 		ch = new CryptoHelper();
 		try {
-			ch.setSalt(PassList.getSalt());
+			ch.init(CryptoHelper.EncryptionMedium, PassList.getSalt());
 			ch.setPassword(PassList.getMasterKey());
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 
 		if (dbHelper == null) {

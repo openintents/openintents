@@ -154,14 +154,14 @@ public class ServiceDispatchImpl extends Service {
 
     	public void setPassword (String masterKeyIn){
     		startTimer(); //should be initial timer start
-			ch = new CryptoHelper(CryptoHelper.EncryptionMedium);
+			ch = new CryptoHelper();
 			try {
-				ch.setSalt(salt);
+				ch.init(CryptoHelper.EncryptionMedium, salt);
+				ch.setPassword(masterKeyIn);
 			} catch (CryptoHelperException e) {
 				e.printStackTrace();
 				return;
 			}
-			ch.setPassword(masterKeyIn);
 			masterKey = masterKeyIn;
 			
 			ServiceNotification.setNotification(ServiceDispatchImpl.this);

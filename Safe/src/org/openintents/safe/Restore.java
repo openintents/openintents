@@ -205,17 +205,19 @@ public class Restore extends Activity {
 				Toast.LENGTH_LONG).show();
 			return false;
 		}
-		CryptoHelper ch=new CryptoHelper(CryptoHelper.EncryptionStrong);
+		CryptoHelper ch=new CryptoHelper();
 		ch.setPassword(masterPassword);
 		
 		String salt=restoreDataSet.getSalt();
 		String masterKeyEncrypted=restoreDataSet.getMasterKeyEncrypted();
 		masterKey="";
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionStrong, salt);
 			masterKey = ch.decrypt(masterKeyEncrypted);
 		} catch (CryptoHelperException e) {
 			Log.e(TAG,e.toString());
+			Toast.makeText(this, getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		if (ch.getStatus()==false) {
@@ -227,12 +229,14 @@ public class Restore extends Activity {
 
 			return false;
 		}
-		ch=new CryptoHelper(CryptoHelper.EncryptionMedium);
+		ch=new CryptoHelper();
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium, salt);
 			ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
+			Toast.makeText(this, getString(R.string.crypto_error)
+				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 			return false;
 		}
 		

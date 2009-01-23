@@ -362,7 +362,7 @@ public class CategoryList extends ListActivity {
 		    masterKey = "";
 		}
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium,salt);
 			ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
@@ -655,7 +655,7 @@ public class CategoryList extends ListActivity {
 			if(masterKey == null) {
 			    masterKey = "";
 			}
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium,salt);
 			ch.setPassword(masterKey);
 
 		    entry.name = ch.encrypt(namePlain);
@@ -684,7 +684,7 @@ public class CategoryList extends ListActivity {
 			    masterKey = "";
 			}
 			try {
-				ch.setSalt(salt);
+				ch.init(CryptoHelper.EncryptionMedium,salt);
 				ch.setPassword(masterKey);
 			} catch (CryptoHelperException e1) {
 				e1.printStackTrace();
@@ -1016,7 +1016,7 @@ public class CategoryList extends ListActivity {
 		    masterKey = "";
 		}
 		try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium,salt);
 			ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();

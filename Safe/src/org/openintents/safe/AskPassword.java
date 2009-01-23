@@ -84,7 +84,7 @@ public class AskPassword extends Activity {
 
 		dbHelper = new DBHelper(this);
 			
-		ch = new CryptoHelper(CryptoHelper.EncryptionStrong);
+		ch = new CryptoHelper();
 		if (dbHelper.needsUpgrade()) {
 			switch (dbHelper.fetchVersion()) {
 			case 2:
@@ -130,16 +130,7 @@ public class AskPassword extends Activity {
 				// For this version of CryptoHelper, we use the user-entered password.
 				// All other versions should be instantiated with the generated master
 				// password.
-				if (!firstTime) {
-					try {
-						ch.setSalt(dbHelper.fetchSalt());
-						ch.setPassword(PBEKey);
-					} catch (CryptoHelperException e2) {
-						e2.printStackTrace();
-						return;
-					}
-				}
-				
+
 				// Password must be at least 4 characters
 				if (PBEKey.length() < 4) {
 					Toast.makeText(AskPassword.this, R.string.notify_blank_pass,
@@ -171,17 +162,20 @@ public class AskPassword extends Activity {
 						masterKey = CryptoHelper.generateMasterKey();
 					} catch (NoSuchAlgorithmException e1) {
 						e1.printStackTrace();
+						return;
 					}
 					if (debug) Log.i(TAG, "Saving Password: " + masterKey);
 					try {
-						ch.setSalt(salt);
+						ch.init(CryptoHelper.EncryptionStrong,salt);
+						ch.setPassword(PBEKey);
 						String encryptedMasterKey = ch.encrypt(masterKey);
 						dbHelper.storeSalt(salt);
 						dbHelper.storeMasterKey(encryptedMasterKey);
 					} catch (CryptoHelperException e) {
 						Log.e(TAG, e.toString());
+						return;
 					}
-				} else if (!checkUserPassword()) {
+				} else if (!checkUserPassword(PBEKey)) {
 					// Check the user's password and display a
 					// message if it's wrong
 					Toast.makeText(AskPassword.this, R.string.invalid_password,
@@ -267,10 +261,13 @@ public class AskPassword extends Activity {
 	 * 
 	 * @return
 	 */
-	private boolean checkUserPassword() {
+	private boolean checkUserPassword(String password) {
 		String encryptedMasterKey = dbHelper.fetchMasterKey();
 		String decryptedMasterKey = "";
+		if (debug) Log.d(TAG,"checkUserPassword: encryptedMasterKey="+encryptedMasterKey);
 		try {
+			ch.init(CryptoHelper.EncryptionStrong,salt);
+			ch.setPassword(password);
 			decryptedMasterKey = ch.decrypt(encryptedMasterKey);
 			if (debug) Log.d(TAG,"decryptedMasterKey="+decryptedMasterKey);
 		} catch (CryptoHelperException e) {

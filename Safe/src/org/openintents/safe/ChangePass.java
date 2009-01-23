@@ -191,11 +191,12 @@ public class ChangePass extends Activity {
     	
 		DBHelper dbHelper= new DBHelper(this);
 
-		CryptoHelper ch = new CryptoHelper(CryptoHelper.EncryptionStrong);
+		CryptoHelper ch = new CryptoHelper();
 
 		String encryptedMasterKey = dbHelper.fetchMasterKey();
 		String decryptedMasterKey = "";
 		try {
+			ch.init(CryptoHelper.EncryptionStrong, dbHelper.fetchSalt());
 			ch.setPassword(oldPass);
 			decryptedMasterKey = ch.decrypt(encryptedMasterKey);
 			if (ch.getStatus()==true) {	// successful decryption?
@@ -214,6 +215,8 @@ public class ChangePass extends Activity {
 
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());
+			Toast.makeText(ChangePass.this, R.string.error_changing_password,
+					Toast.LENGTH_LONG).show();
 		}
 
 		dbHelper.close();
@@ -359,10 +362,11 @@ public class ChangePass extends Activity {
 		DBHelper dbHelper= new DBHelper(this);
 		String confirmKey = dbHelper.fetchMasterKey();
 
-		CryptoHelper ch = new CryptoHelper(CryptoHelper.EncryptionStrong);
-		ch.setPassword(pass);
+		CryptoHelper ch = new CryptoHelper();
 
 		try {
+			ch.init(CryptoHelper.EncryptionStrong, dbHelper.fetchSalt());
+			ch.setPassword(pass);
 			ch.decrypt(confirmKey);
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());

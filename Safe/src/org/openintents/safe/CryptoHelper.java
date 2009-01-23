@@ -37,8 +37,6 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
-//import org.bouncycastle.jce.provider.BouncyCastleProvider;
-
 import android.util.Log;
 
 /**
@@ -73,11 +71,7 @@ public class CryptoHelper {
     protected static Cipher pbeCipher;
     private boolean status=false;	// status of the last encrypt/decrypt
 
-    private static boolean saltIsSet = false;  // has the salt been set?
-    private static byte[] salt = {
-		(byte)0xfc, (byte)0x76, (byte)0x80, (byte)0xae,
-		(byte)0xfd, (byte)0x82, (byte)0xbe, (byte)0xee,
-    };
+    private static byte[] salt = null; 
 
     private static final int count = 20;
 
@@ -85,15 +79,22 @@ public class CryptoHelper {
      * Constructor which defaults to a medium encryption level.
      */
     public CryptoHelper() {
-    	initialize(EncryptionMedium);
+//    	initialize(EncryptionMedium);
     }
     /**
      * Constructor which allows the specification of the encryption level.
      * 
-     * @param Strength encryption strength
+     * @param strength encryption strength
+     * @param salt salt to be used
      */
-    public CryptoHelper(int Strength) {
-        initialize(Strength);
+    public void init(int strength, String salt) throws CryptoHelperException {
+    	try {
+			setSalt(salt);
+	        initialize(strength);
+		} catch (CryptoHelperException e) {
+			e.printStackTrace();
+			throw e;
+		}
     }
     /**
      * Initialize the class.  Sets the encryption level for the instance
@@ -259,7 +260,7 @@ public class CryptoHelper {
 		}
     }
 
-    public void setSalt(String saltIn) throws CryptoHelperException {
+    private void setSalt(String saltIn) throws CryptoHelperException {
     	if (saltIn==null) {
 			String msg = "Salt must not be null.";
 		    throw new CryptoHelperException(msg);
@@ -272,7 +273,6 @@ public class CryptoHelper {
 		}
 		salt=byteSaltIn;
 		if (debug) Log.d(TAG,"setSalt: salt="+toHexString(salt));
-		saltIsSet=true;
     }
     /**
      * encrypt a string
@@ -287,7 +287,7 @@ public class CryptoHelper {
 		    String msg = "Must call setPassword before running encrypt.";
 		    throw new CryptoHelperException(msg);
 		}
-		if (saltIsSet==false) {
+		if (salt==null) {
 		    String msg = "Must call setSalt before running encrypt.";
 		    throw new CryptoHelperException(msg);
 		}
@@ -324,7 +324,7 @@ public class CryptoHelper {
 		    String msg = "Must call setPassword before running decrypt.";
 		    throw new CryptoHelperException(msg);
 		}
-		if (saltIsSet==false) {
+		if (salt==null) {
 		    String msg = "Must call setSalt before running decrypt.";
 		    throw new CryptoHelperException(msg);
 		}

@@ -47,7 +47,7 @@ public class CategoryEdit extends Activity {
 		
 		ch = new CryptoHelper();
 		try {
-			ch.setSalt(PassList.getSalt());
+			ch.init(CryptoHelper.EncryptionMedium,PassList.getSalt());
 			ch.setPassword(PassList.getMasterKey());
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();

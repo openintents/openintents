@@ -139,16 +139,15 @@ public class IntentHandler extends Activity {
 		PassList.setMasterKey(masterKey);
         CategoryList.setMasterKey(masterKey);
         if (ch == null) {
-    		ch = new CryptoHelper(CryptoHelper.EncryptionMedium);
+    		ch = new CryptoHelper();
         }
         try {
-			ch.setSalt(salt);
+			ch.init(CryptoHelper.EncryptionMedium,salt);
     		ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
-			Toast.makeText(IntentHandler.this,
-				"There was a crypto error: " + e1.getMessage(),
-				Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, getString(R.string.crypto_error)
+				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 			return;
 		}
 
