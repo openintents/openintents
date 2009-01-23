@@ -112,6 +112,7 @@ public abstract class Shopping {
 		public static final int PROJECTION_CREATED_DATE = 3;
 		public static final int PROJECTION_MODIFIED_DATE = 4;
 		public static final int PROJECTION_ACCESSED_DATE = 5;
+
 	}
 
 	/**
@@ -325,6 +326,17 @@ public abstract class Shopping {
 		 * Available since release 0.1.6.
 		 */
 		public static final String SHARE_MODIFIED_BY = "share_modified_by";
+		
+
+        /**
+         * Support sort orders. The "sort order" in the preferences
+         * is an index into this array.
+         */
+        public static final String[] SORT_ORDERS = {
+        	"contains.status ASC, items.name ASC", 
+        	"items.name ASC", 
+        	"contains.modified DESC", 
+        	"contains.modified ASC"};
 	}
 
 	/**

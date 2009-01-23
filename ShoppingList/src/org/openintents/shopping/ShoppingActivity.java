@@ -1851,8 +1851,7 @@ public class ShoppingActivity extends Activity { // implements
 			return;
 		}
 
-		String sortOrder = PreferenceManager.getDefaultSharedPreferences(this)
-				.getString(PreferenceActivity.PREFS_SORTORDER, PreferenceActivity.PREFS_SORTORDER_DEFAULT);
+		String sortOrder = PreferenceActivity.getSortOrderFromPrefs(this);
 		// Older default: ContainsFull.DEFAULT_SORT_ORDER
 		
 		// Get a cursor for all items that are contained

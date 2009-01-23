@@ -25,10 +25,10 @@
     </string-array>
     
     <string-array name="preference_sortorder_entryvalues">
-    	<item>contains.status ASC, items.name ASC</item>
-        <item>items.name ASC</item>
-        <item>contains.modified DESC</item>
-        <item>contains.modified ASC</item>
+    	<item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
     
     

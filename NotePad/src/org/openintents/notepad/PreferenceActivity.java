@@ -58,5 +58,5 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		
 		// Value out of range - somebody messed with the preferences.
 		return Notes.SORT_ORDERS[0];
-	}		
+	}
 }
