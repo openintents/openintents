@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.convertcsv"
-      android:versionCode="2"
-      android:versionName="1.0.1-rc1">
+      android:versionCode="3"
+      android:versionName="1.0.1">
     <!-- History: 
+      1.0.1 [3]: Jan 22, 2009
       1.0.1-rc1 [2]: Jan 19, 2009
       1.0.0 [1]: Dec 9, 2008. -->
 	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
