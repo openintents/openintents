@@ -366,6 +366,9 @@ public class CategoryList extends ListActivity {
 			ch.setPassword(masterKey);
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
+			return;
 		}
 	
 		List<String> items = new ArrayList<String>();
@@ -661,6 +664,8 @@ public class CategoryList extends ListActivity {
 		    entry.name = ch.encrypt(namePlain);
 		} catch(CryptoHelperException e) {
 		    Log.e(TAG,e.toString());
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 	    return dbHelper.addCategory(entry);
     }
@@ -688,6 +693,8 @@ public class CategoryList extends ListActivity {
 				ch.setPassword(masterKey);
 			} catch (CryptoHelperException e1) {
 				e1.printStackTrace();
+				Toast.makeText(this,getString(R.string.crypto_error)
+					+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		

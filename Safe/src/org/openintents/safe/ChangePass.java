@@ -215,8 +215,8 @@ public class ChangePass extends Activity {
 
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());
-			Toast.makeText(ChangePass.this, R.string.error_changing_password,
-					Toast.LENGTH_LONG).show();
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 
 		dbHelper.close();
@@ -258,8 +258,8 @@ public class ChangePass extends Activity {
 				row.plainName = ch.decrypt(row.name);
 		    } catch (CryptoHelperException e) {
 				if (debug) Log.e(TAG,e.toString());
-	            Toast.makeText(ChangePass.this, e.toString(),
-	                    Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,getString(R.string.crypto_error)
+					+ e.getMessage(), Toast.LENGTH_SHORT).show();
 				return;
 		    }
 		}
@@ -273,8 +273,8 @@ public class ChangePass extends Activity {
 				row.plainNote = ch.decrypt(row.note);
 		    } catch (CryptoHelperException e) {
 				if (debug) Log.e(TAG,e.toString());
-	            Toast.makeText(ChangePass.this, e.toString(),
-	                    Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,getString(R.string.crypto_error)
+					+ e.getMessage(), Toast.LENGTH_SHORT).show();
 				return;
 		    }
 		}
@@ -290,8 +290,8 @@ public class ChangePass extends Activity {
 				row.name = ch.encrypt(row.plainName);
 		    } catch (CryptoHelperException e) {
 				if (debug) Log.e(TAG,e.toString());
-	            Toast.makeText(ChangePass.this, e.toString(),
-	                    Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,getString(R.string.crypto_error)
+					+ e.getMessage(), Toast.LENGTH_SHORT).show();
 				return;
 		    }
 		}
@@ -305,8 +305,8 @@ public class ChangePass extends Activity {
 				row.note = ch.encrypt(row.plainNote);
 		    } catch (CryptoHelperException e) {
 				if (debug) Log.e(TAG,e.toString());
-	            Toast.makeText(ChangePass.this, e.toString(),
-	                    Toast.LENGTH_SHORT).show();
+				Toast.makeText(this,getString(R.string.crypto_error)
+					+ e.getMessage(), Toast.LENGTH_SHORT).show();
 				return;
 		    }
 		}
@@ -334,8 +334,8 @@ public class ChangePass extends Activity {
 			dbHelper.storeMasterKey(cryptKey);
 		} catch (CryptoHelperException e) {
 			Log.e(TAG, e.toString());
-            Toast.makeText(ChangePass.this, e.toString(),
-                    Toast.LENGTH_SHORT).show();
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
 			dbHelper.rollback();
 			dbHelper.close();
 			return;

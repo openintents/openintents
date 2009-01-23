@@ -48,7 +48,7 @@ import android.widget.Toast;
  */
 public class AskPassword extends Activity {
 
-	private boolean debug = true;
+	private boolean debug = false;
 	private static String TAG = "AskPassword";
 	public static String EXTRA_IS_LOCAL = "org.openintents.safe.bundle.EXTRA_IS_REMOTE";
 
@@ -162,6 +162,8 @@ public class AskPassword extends Activity {
 						masterKey = CryptoHelper.generateMasterKey();
 					} catch (NoSuchAlgorithmException e1) {
 						e1.printStackTrace();
+						Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
+							+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 						return;
 					}
 					if (debug) Log.i(TAG, "Saving Password: " + masterKey);
@@ -173,6 +175,8 @@ public class AskPassword extends Activity {
 						dbHelper.storeMasterKey(encryptedMasterKey);
 					} catch (CryptoHelperException e) {
 						Log.e(TAG, e.toString());
+						Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
+							+ e.getMessage(), Toast.LENGTH_SHORT).show();
 						return;
 					}
 				} else if (!checkUserPassword(PBEKey)) {

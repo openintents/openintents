@@ -51,6 +51,8 @@ public class CategoryEdit extends Activity {
 			ch.setPassword(PassList.getMasterKey());
 		} catch (CryptoHelperException e1) {
 			e1.printStackTrace();
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
 		}
 
 		if (dbHelper == null){
