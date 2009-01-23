@@ -1,3 +1,3 @@
-1
+3
 123456
-Version 1.0.0: First public release 
+Version 1.0.1: Support for Outlook Notes Format
