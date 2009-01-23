@@ -435,10 +435,18 @@ public class CryptoHelper {
 		    Log.e(TAG,"encryptWithSessionKey2(): "+e.toString());
 		}
 	
+		String stringCipherVersion = "A";
 		String stringCipherSessionKey = toHexString(cipherSessionKey);
 		String stringCiphertext=toHexString(ciphertext);
 		Log.i(TAG, "Length: " + stringCipherSessionKey.length() + ", " + stringCipherSessionKey);
-		return stringCipherSessionKey + stringCiphertext;
+		
+		StringBuilder sb = new StringBuilder(stringCipherVersion.length() 
+				+ stringCipherSessionKey.length() 
+				+ stringCiphertext.length());
+		sb.append(stringCipherVersion);
+		sb.append(stringCipherSessionKey);
+		sb.append(stringCiphertext);
+		return sb.toString();
     }
 
     /**
@@ -461,12 +469,19 @@ public class CryptoHelper {
 		if ((ciphertext==null) || (ciphertext=="")) {
 			return "";
 		}
+		String cipherVersion = null;
 		String cipherSessionKey = null;
 		
 		// Split cipher into session key and text
 		try {
-			cipherSessionKey = ciphertext.substring(0,96); // 64 if init(128) had been chosen
-			ciphertext = ciphertext.substring(96);
+			cipherVersion = ciphertext.substring(0,1);
+			if (cipherVersion.equals("A")) {
+				cipherSessionKey = ciphertext.substring(1,97); // 64 if init(128) had been chosen
+				ciphertext = ciphertext.substring(97);
+			} else {
+				Log.e(TAG, "Unknown cipher version" + cipherVersion);
+				return "";
+			}
 		} catch (IndexOutOfBoundsException e) {
 			Log.e(TAG, "Invalid ciphertext (with session key)");
 			return "";
