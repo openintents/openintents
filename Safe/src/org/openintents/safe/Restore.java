@@ -49,7 +49,6 @@ public class Restore extends Activity {
 	private static final String TAG = "Restore";
 	
 	private DBHelper dbHelper=null;
-	private String salt="";
 	private String masterKey="";
 	private String filename=null;
 	private RestoreDataSet restoreDataSet=null;
@@ -206,13 +205,13 @@ public class Restore extends Activity {
 			return false;
 		}
 		CryptoHelper ch=new CryptoHelper();
-		ch.setPassword(masterPassword);
 		
 		String salt=restoreDataSet.getSalt();
 		String masterKeyEncrypted=restoreDataSet.getMasterKeyEncrypted();
 		masterKey="";
 		try {
 			ch.init(CryptoHelper.EncryptionStrong, salt);
+			ch.setPassword(masterPassword);
 			masterKey = ch.decrypt(masterKeyEncrypted);
 		} catch (CryptoHelperException e) {
 			Log.e(TAG,e.toString());
@@ -284,10 +283,10 @@ public class Restore extends Activity {
 		dbHelper.beginTransaction();
 		dbHelper.deleteDatabase();
 
-		dbHelper.storeSalt(salt);
+		dbHelper.storeSalt(restoreDataSet.getSalt());
 		dbHelper.storeMasterKey(restoreDataSet.getMasterKeyEncrypted());
-		CategoryList.setSalt(salt);
-		PassList.setSalt(salt);
+		CategoryList.setSalt(restoreDataSet.getSalt());
+		PassList.setSalt(restoreDataSet.getSalt());
 		CategoryList.setMasterKey(masterKey);
 		PassList.setMasterKey(masterKey);
 		for (CategoryEntry category : restoreDataSet.getCategories()) {
@@ -308,11 +307,5 @@ public class Restore extends Activity {
 
 		setResult(RESULT_OK);
 		finish();
-
-		/*
-		Message m = new Message();
-		m.what = CategoryList.MSG_FILLDATA;
-		myViewHandler.sendMessage(m);
-		*/
 	}
 }
