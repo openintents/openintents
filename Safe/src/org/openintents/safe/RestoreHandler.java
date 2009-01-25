@@ -41,6 +41,8 @@ public class RestoreHandler extends DefaultHandler {
     private boolean in_username = false;
     private boolean in_password = false;
     private boolean in_note = false;
+    private boolean in_uniquename = false;
+    private boolean in_packageaccess = false;
     
     private RestoreDataSet myRestoreDataSet = new RestoreDataSet();
 
@@ -121,6 +123,10 @@ public class RestoreHandler extends DefaultHandler {
 			in_password = true;
 		}else if (in_entry && localName.equals("Note")) {
 			in_note = true;
+		}else if (in_entry && localName.equals("UniqueName")) {
+			in_uniquename = true;
+		}else if (in_entry && localName.equals("PackageAccess")) {
+			in_packageaccess = true;
 		}
 	}
     
@@ -157,6 +163,10 @@ public class RestoreHandler extends DefaultHandler {
 			in_password = false;
 		}else if (in_entry && localName.equals("Note")) {
 			in_note = false;
+		}else if (in_entry && localName.equals("UniqueName")) {
+			in_uniquename = false;
+		}else if (in_entry && localName.equals("PackageAccess")) {
+			in_packageaccess = false;
 		}
 	}
 
@@ -184,6 +194,9 @@ public class RestoreHandler extends DefaultHandler {
 		}
 		if (in_note){
 			myRestoreDataSet.setNote(new String(ch, start, length));
+		}
+		if (in_uniquename){
+			myRestoreDataSet.setUniqueName(new String(ch, start, length));
 		}
 	} 
 }

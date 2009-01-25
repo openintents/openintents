@@ -93,11 +93,7 @@ public class RestoreDataSet {
 				currentEntry.username+" "+currentEntry.password+" "+
 				currentEntry.note);
 		if ((currentEntry != null) &&
-			(currentEntry.description!="") &&
-			(currentEntry.website!="") &&
-			(currentEntry.username!="") &&
-			(currentEntry.password!="") &&
-			(currentEntry.note!="")) {
+			(currentEntry.description!="")) {
 			passEntries.add(currentEntry);
 			totalEntries++;
 		}
@@ -131,6 +127,11 @@ public class RestoreDataSet {
 	public void setNote(String extractedNote) {
 		if (currentEntry != null) {
 			currentEntry.note += extractedNote;
+		}
+	}
+	public void setUniqueName(String extractedUniqueName) {
+		if (currentEntry != null) {
+			currentEntry.uniqueName += extractedUniqueName;
 		}
 	}
 }
