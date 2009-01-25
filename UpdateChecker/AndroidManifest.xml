@@ -22,8 +22,11 @@
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.updatechecker"
-      android:versionCode="4"
-      android:versionName="1.0.1">
+      android:versionCode="5"
+      android:versionName="1.0.2">
+      <!-- 
+      1.0.2 [#5]: Jan 25, 2009
+      -->
           
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>

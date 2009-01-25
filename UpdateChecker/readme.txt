@@ -27,7 +27,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.2
-date: 200?-??-??
+date: 2009-01-25
 
 - perform update from default store.
 - new url for AndAppStore
