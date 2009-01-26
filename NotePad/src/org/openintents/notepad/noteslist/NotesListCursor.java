@@ -58,6 +58,9 @@ public class NotesListCursor extends OpenMatrixCursor {
 	
 	static boolean mLoggedIn = false;
 	
+	// If true, we will not requery if a change occurs.
+	static boolean mSuspendQueries = false;
+	
 	Context mContext;
 	Intent mIntent;
 	//OpenMatrixCursor mCursor;
@@ -105,8 +108,10 @@ public class NotesListCursor extends OpenMatrixCursor {
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
 			Log.i(TAG, "NoteListCursor changed" + selfChange);
-			
-			requery();
+
+			if (!mSuspendQueries) {
+				requery();
+			}
 		}
 		
 	};

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import org.openintents.convertcsv.R;
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.opencsv.CSVWriter;
 import org.openintents.provider.Shopping;
 
@@ -52,6 +53,8 @@ public class ExportCsv {
 		
 		if (c != null) {
 			
+			
+			
 			while (c.moveToNext()) {
 				
 				String listname = c.getString(c.getColumnIndexOrThrow(Shopping.Lists.NAME));
@@ -66,8 +69,11 @@ public class ExportCsv {
 	
 		        if (ci != null) {
 		        	int itemcount = ci.getCount();
+					ConvertCsvBaseActivity.dispatchSetMaxProgress(itemcount);
+					int progress = 0;
 	
 		        	while (ci.moveToNext()) {
+						ConvertCsvBaseActivity.dispatchConversionProgress(progress++);
 		        		String itemname = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
 		        		int status = ci.getInt(ci.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
 			        	int percentage = (status == Shopping.Status.BOUGHT) ? 1 : 0;

@@ -82,4 +82,6 @@
     <string name="default_path">/sdcard/output.csv</string>
     
     
+<string name="converting">Converting...</string>
+<string name="dialog_ok">Ok.</string>
 </resources>

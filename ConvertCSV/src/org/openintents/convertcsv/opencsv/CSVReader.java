@@ -47,6 +47,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
+
 /**
  * A very simple CSV reader released under a commercial-friendly license.
  * 
@@ -64,6 +66,8 @@ public class CSVReader {
     private char quotechar;
     
     private int skipLines;
+    
+    private int readSoFar;
 
     private boolean linesSkiped;
 
@@ -136,6 +140,7 @@ public class CSVReader {
         this.separator = separator;
         this.quotechar = quotechar;
         this.skipLines = line;
+        this.readSoFar = 0;
     }
 
     /**
@@ -185,7 +190,12 @@ public class CSVReader {
     private String getNextLine() throws IOException {
     	if (!linesSkiped) {
             for (int i = 0; i < skipLines; i++) {
-                br.readLine();
+                String skippedLine = br.readLine();
+                
+                if (skippedLine != null) {
+                	readSoFar += skippedLine.length() + 1;	// This is an approximation, CR/LF might count as 2
+                	ConvertCsvBaseActivity.dispatchConversionProgress(readSoFar);
+                }
             }
             linesSkiped = true;
         }
@@ -193,6 +203,10 @@ public class CSVReader {
         if (nextLine == null) {
             hasNext = false;
         }
+        else {
+            readSoFar += nextLine.length() + 1;	// This is an approximation, CR/LF might count as 2
+            ConvertCsvBaseActivity.dispatchConversionProgress(readSoFar);
+        }        	
         return hasNext ? nextLine : null;
     }
 

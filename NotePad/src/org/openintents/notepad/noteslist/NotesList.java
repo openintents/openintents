@@ -195,6 +195,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		NotesListCursor.mSuspendQueries = false;
 		
 		if (mAdapter == null) {
 			// Perform a managed query. The Activity will handle closing and
@@ -261,6 +263,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		// After unregistering broadcastreceiver, the logged in state is not clear.
 		NotesListCursor.mLoggedIn = false;
+		// No need wasting a lot of time doing queries when external applications change the
+		// database - we requery in onResume anyway.
+		NotesListCursor.mSuspendQueries = true;
 		mDecryptionFailed = false;
 		mDecryptionSucceeded = false;
 	}

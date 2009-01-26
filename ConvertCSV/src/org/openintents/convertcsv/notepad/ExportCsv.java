@@ -19,6 +19,7 @@ package org.openintents.convertcsv.notepad;
 import java.io.IOException;
 import java.io.Writer;
 
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.opencsv.CSVWriter;
 import org.openintents.provider.NotePad;
 
@@ -75,7 +76,12 @@ public class ExportCsv {
 			int COLUMN_INDEX_ENCRYPTED = c.getColumnIndex(NotePad.Notes.ENCRYPTED); // Introduced in 1.1.0
 			int COLUMN_INDEX_TAGS = c.getColumnIndex(NotePad.Notes.TAGS); // Introduced in 1.1.0
 			
+			ConvertCsvBaseActivity.dispatchSetMaxProgress(c.getCount());
+			int progress = 0;
+			
 			while (c.moveToNext()) {
+				ConvertCsvBaseActivity.dispatchConversionProgress(progress++);
+				
 		    	String note = c.getString(COLUMN_INDEX_NOTE);
 		    	long id = c.getLong(COLUMN_INDEX_ID);
 
