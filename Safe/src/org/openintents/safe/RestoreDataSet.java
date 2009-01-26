@@ -22,7 +22,7 @@ import android.util.Log;
 
 public class RestoreDataSet {
 
-	private static boolean debug = false;
+	private static boolean debug = true;
 	private static final String TAG = "RestoreDataSet";
 
 	private int version = 0;
@@ -86,6 +86,7 @@ public class RestoreDataSet {
 		currentEntry.username="";
 		currentEntry.password="";
 		currentEntry.note="";
+		currentEntry.uniqueName="";
 	}
 	public void storeEntry() {
 		// only add an entry if we had all the fields
@@ -130,6 +131,7 @@ public class RestoreDataSet {
 		}
 	}
 	public void setUniqueName(String extractedUniqueName) {
+		if (debug) Log.d(TAG,"setUniqueName("+extractedUniqueName+")");
 		if (currentEntry != null) {
 			currentEntry.uniqueName += extractedUniqueName;
 		}

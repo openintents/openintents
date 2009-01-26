@@ -16,12 +16,17 @@
  */
 package org.openintents.safe;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
@@ -55,6 +60,8 @@ public class PassView extends Activity {
 	private EditText websiteText;
 	private EditText noteText;
 	private TextView lastEditedText;
+	private TextView uniqueNameText;
+	private TextView packageAccessText;
 	private Long RowId;
 	private Long CategoryId;
 	private DBHelper dbHelper = null;
@@ -91,6 +98,8 @@ public class PassView extends Activity {
 		passwordText = (EditText) findViewById(R.id.password);
 		noteText = (EditText) findViewById(R.id.note);
 		lastEditedText = (TextView) findViewById(R.id.last_edited);
+		uniqueNameText = (TextView) findViewById(R.id.uniquename);
+		packageAccessText = (TextView) findViewById(R.id.packageaccess);
 		
 		entryEdited=false;
 
@@ -275,6 +284,8 @@ public class PassView extends Activity {
 				String cryptUsername = row.username;
 				String cryptPass = row.password;
 				String cryptNote = row.note;
+				String cryptUniqueName = row.uniqueName;
+	    		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);
 				try {
 					descriptionText.setText(ch.decrypt(cryptDesc));
 					websiteText.setText(ch.decrypt(cryptWebsite));
@@ -287,7 +298,33 @@ public class PassView extends Activity {
 					} else {
 						lastEdited=getString(R.string.last_edited_unknown);
 					}
-					lastEditedText.setText(getString(R.string.last_edited)+" "+lastEdited);
+					lastEditedText.setText(getString(R.string.last_edited)+": "+lastEdited);
+					if (cryptUniqueName!=null) {
+						String plainUniqueName=ch.decrypt(cryptUniqueName);
+						if (plainUniqueName!="") {
+							uniqueNameText.setText(getString(R.string.uniquename)+
+									": "+plainUniqueName);
+						}
+					}
+					String packages="";
+					if (packageAccess!=null) {
+						for (String packageName : packageAccess) {
+							String plainPackageName=ch.decrypt(packageName);
+							PackageManager pm=getPackageManager();
+							String appLabel="";
+							try {
+								ApplicationInfo ai=pm.getApplicationInfo(plainPackageName,0);
+								appLabel=pm.getApplicationLabel(ai).toString();
+							} catch (NameNotFoundException e) {
+								appLabel="("+getString(R.string.not_found)+")";
+							}
+							packages+=plainPackageName+" "+appLabel+" ";
+						}
+					}
+					if (packages!="") {
+						packageAccessText.setText(getString(R.string.package_access)+
+								": "+packages);
+					}
 				} catch (CryptoHelperException e) {
 					Log.e(TAG, e.toString());
 				}

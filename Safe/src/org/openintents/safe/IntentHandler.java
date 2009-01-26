@@ -351,7 +351,10 @@ public class IntentHandler extends Activity {
 	            row.category = dbHelper.addCategory(c); //doesn't add category if it already exists
 	            row.id = dbHelper.addPassword(row);
         	}  
-        	dbHelper.addPackageAccess(row.id, callingPackage);//already encrypted
+    		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);
+    		if (! PassEntry.checkPackageAccess(packageAccess, callingPackage)) {
+            	dbHelper.addPackageAccess(row.id, callingPackage);
+    		}
     
         }
         return (callbackIntent);

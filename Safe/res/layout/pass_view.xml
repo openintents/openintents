@@ -98,5 +98,15 @@
 		android:layout_height="wrap_content" 
 		android:text="@string/last_edited" />
 
+	<TextView android:id="@+id/uniquename"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="" />
+
+	<TextView android:id="@+id/packageaccess"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" 
+		android:text="" />
+
 </LinearLayout>
 </ScrollView>

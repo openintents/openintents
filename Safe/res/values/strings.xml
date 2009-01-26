@@ -150,4 +150,7 @@
 	<string name="last_edited">Last edited</string>
 	<string name="last_edited_unknown">unknown</string>
 	<string name="crypto_error">Crypto error:</string>
+	<string name="uniquename">Unique name</string>
+	<string name="package_access">Package access</string>
+	<string name="not_found">not found</string>
 </resources>
