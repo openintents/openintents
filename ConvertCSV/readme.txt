@@ -21,6 +21,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.2
+date: 2009-??
+
+- Add progress bar during conversion.
+
+---------------------------------------------------------
 release: 1.0.1
 date: 2009-01-19
 
