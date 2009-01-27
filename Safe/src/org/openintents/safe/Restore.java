@@ -296,7 +296,13 @@ public class Restore extends Activity {
 		int totalPasswords=0;
 		for (PassEntry password : restoreDataSet.getPass()) {
 			totalPasswords++;
-			dbHelper.addPassword(password);
+			long rowid=dbHelper.addPassword(password);
+			if (password.packageAccess!=null) {
+				for (String packageName : password.packageAccess) {
+					if (debug) Log.d(TAG,"packageName="+packageName);
+					dbHelper.addPackageAccess(rowid, packageName);
+				}
+			}
 		}
 		dbHelper.commit();
 		dbHelper.close();

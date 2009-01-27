@@ -36,6 +36,7 @@ public class RestoreHandler extends DefaultHandler {
     private boolean in_masterkey = false;
     private boolean in_category = false;
     private boolean in_entry = false;
+    private boolean in_rowid = false;
     private boolean in_description = false;
     private boolean in_website = false;
     private boolean in_username = false;
@@ -113,6 +114,8 @@ public class RestoreHandler extends DefaultHandler {
 
 			if (debug) Log.d(TAG,"found Entry");
 
+		}else if (in_entry && localName.equals("RowID")) {
+			in_rowid = true;
 		}else if (in_entry && localName.equals("Description")) {
 			in_description = true;
 		}else if (in_entry && localName.equals("Website")) {
@@ -153,6 +156,8 @@ public class RestoreHandler extends DefaultHandler {
 
 			myRestoreDataSet.storeEntry();
 			
+		}else if (in_entry && localName.equals("RowID")) {
+			in_rowid = false;
 		}else if (in_entry && localName.equals("Description")) {
 			in_description = false;
 		}else if (in_entry && localName.equals("Website")) {
@@ -176,27 +181,24 @@ public class RestoreHandler extends DefaultHandler {
 	public void characters(char ch[], int start, int length) {
 		if (in_salt){
 			myRestoreDataSet.setSalt(new String(ch, start, length));
-		}
-		if (in_masterkey){
+		} else if (in_masterkey){
 			myRestoreDataSet.setMasterKeyEncrypted(new String(ch, start, length));
-		}
-		if (in_description){
+		} else if (in_rowid){
+			myRestoreDataSet.setRowID(new String(ch, start, length));
+		} else if (in_description){
 			myRestoreDataSet.setDescription(new String(ch, start, length));
-		}
-		if (in_website){
+		} else if (in_website){
 			myRestoreDataSet.setWebsite(new String(ch, start, length));
-		}
-		if (in_username){
+		} else if (in_username){
 			myRestoreDataSet.setUsername(new String(ch, start, length));
-		}
-		if (in_password){
+		} else if (in_password){
 			myRestoreDataSet.setPassword(new String(ch, start, length));
-		}
-		if (in_note){
+		} else if (in_note){
 			myRestoreDataSet.setNote(new String(ch, start, length));
-		}
-		if (in_uniquename){
+		} else if (in_uniquename){
 			myRestoreDataSet.setUniqueName(new String(ch, start, length));
+		} else if (in_packageaccess){
+			myRestoreDataSet.setPackageAccess(new String(ch, start, length));
 		}
 	} 
 }

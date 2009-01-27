@@ -17,12 +17,13 @@
 package org.openintents.safe;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.util.Log;
 
 public class RestoreDataSet {
 
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static final String TAG = "RestoreDataSet";
 
 	private int version = 0;
@@ -33,6 +34,8 @@ public class RestoreDataSet {
 	private CategoryEntry currentCategory = null;
 	private ArrayList<CategoryEntry> categoryEntries = new ArrayList<CategoryEntry>();
 	private PassEntry currentEntry = null;
+	private String currentRowID;
+	private String currentPackageAccess;
 	private ArrayList<PassEntry> passEntries = new ArrayList<PassEntry>();
 	private int totalEntries = 0;
 	
@@ -81,20 +84,36 @@ public class RestoreDataSet {
 	public void newEntry() {
 		currentEntry = new PassEntry();
 		currentEntry.category = currentCategoryId;
+		currentRowID="";
 		currentEntry.description="";
 		currentEntry.website="";
 		currentEntry.username="";
 		currentEntry.password="";
 		currentEntry.note="";
 		currentEntry.uniqueName="";
+		currentEntry.packageAccess=null;
+		currentPackageAccess="";
 	}
 	public void storeEntry() {
 		// only add an entry if we had all the fields
 		if (debug) Log.d(TAG,currentEntry.description+" "+currentEntry.website+" "+
 				currentEntry.username+" "+currentEntry.password+" "+
-				currentEntry.note);
+				currentEntry.note+" "+currentPackageAccess);
 		if ((currentEntry != null) &&
 			(currentEntry.description!="")) {
+			try {
+				currentEntry.id=Long.parseLong(currentRowID);
+			} catch (NumberFormatException e) {
+				currentEntry.id=0;
+			}
+			if (currentPackageAccess!="") {
+				// strip the brackets [ and ]
+				String packageList = currentPackageAccess.substring(1,
+						currentPackageAccess.length()-1);
+				String[] packages = packageList.split(",");
+				currentEntry.packageAccess=new ArrayList<String>(Arrays.asList(packages));
+				if (debug) Log.d(TAG,"packageAccess="+currentEntry.packageAccess.toString());
+			}
 			passEntries.add(currentEntry);
 			totalEntries++;
 		}
@@ -102,6 +121,12 @@ public class RestoreDataSet {
 	}
 	public int getTotalEntries() {
 		return totalEntries;
+	}
+	public void setRowID(String extractedRowID) {
+		if (debug) Log.d(TAG,"setRowID("+extractedRowID+")");
+		if (currentEntry != null) {
+			currentRowID += extractedRowID;
+		}
 	}
 	public void setDescription(String extractedDescription) {
 		if (debug) Log.d(TAG,"setDescription("+extractedDescription+")");
@@ -131,9 +156,14 @@ public class RestoreDataSet {
 		}
 	}
 	public void setUniqueName(String extractedUniqueName) {
-		if (debug) Log.d(TAG,"setUniqueName("+extractedUniqueName+")");
 		if (currentEntry != null) {
 			currentEntry.uniqueName += extractedUniqueName;
+		}
+	}
+	public void setPackageAccess(String extractedPackageAccess) {
+		if (debug) Log.d(TAG,"setPackageAccess("+extractedPackageAccess+")");
+		if (currentPackageAccess != null) {
+			currentPackageAccess += extractedPackageAccess;
 		}
 	}
 }

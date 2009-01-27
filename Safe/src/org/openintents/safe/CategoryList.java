@@ -992,6 +992,7 @@ public class CategoryList extends ListActivity {
 				    Log.e(TAG,e.toString());
 				    continue;
 				}
+				entry.id=0;
 			    dbHelper.addPassword(entry);
 		        newEntries++;
 		    }

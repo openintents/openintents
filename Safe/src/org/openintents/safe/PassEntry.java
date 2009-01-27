@@ -31,7 +31,7 @@ public class PassEntry extends Object {
     public String username;
     public String website;
     public String uniqueName;
-   // public ArrayList<String> packageAccess;
+    public ArrayList<String> packageAccess;
     public String note;
     public String plainPassword;
     public String plainDescription;

@@ -349,6 +349,7 @@ public class IntentHandler extends Activity {
 	            CategoryEntry c = new CategoryEntry();
 	            c.name = category;
 	            row.category = dbHelper.addCategory(c); //doesn't add category if it already exists
+	            row.id = 0;	// entry is truly new
 	            row.id = dbHelper.addPassword(row);
         	}  
     		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);

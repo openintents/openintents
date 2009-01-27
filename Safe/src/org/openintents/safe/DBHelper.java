@@ -683,12 +683,19 @@ public class DBHelper {
 	}
 
 	/**
+	 * Add a password entry to the database.
+	 * PassEntry.id should be set to 0, unless a specific
+	 * row id is desired.
 	 * 
-	 * @param entry
+	 * @param entry PassEntry
+	 * @return long row id of newly added entry 
 	 */
 	public long addPassword(PassEntry entry) {
 		long id = -1;
 	    ContentValues initialValues = new ContentValues();
+	    if (entry.id!=0) {
+			initialValues.put("id", entry.id);
+	    }
 		initialValues.put("category", entry.category);
 		initialValues.put("password", entry.password);
 	    initialValues.put("description", entry.description);
