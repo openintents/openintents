@@ -21,6 +21,9 @@
 	<!-- Shopping Provider -->
 	<string name="new_item">New item</string>
 	<string name="new_list">New list</string>
+	<string name="send">Send list</string>
+	<string name="empty_list_not_sent">Empty list not sent.</string>
+	<string name="email_not_available">No application available for sending.</string>
 	<string name="my_shopping_list">My shopping list</string>
 	<string name="new_list_hint">i.e. wishlist, family list</string>
 	<string name="clean_up_list">Clean up list</string>

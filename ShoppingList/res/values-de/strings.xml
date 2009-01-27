@@ -22,6 +22,9 @@
 	<!-- Shopping Provider -->
 	<string name="new_item">Neuer Posten</string>
 	<string name="new_list">Neue Liste</string>
+	<string name="send">Liste senden</string>
+	<string name="empty_list_not_sent">Leere Liste nicht gesendet.</string>	
+	<string name="email_not_available">Keine Anwendung zum Senden vorhanden.</string>
 	<string name="my_shopping_list">Meine Einkaufsliste</string>
 	<string name="new_list_hint">z.B. Wunschliste, Familienliste</string>
 	<string name="clean_up_list">Liste aufräumen</string>
