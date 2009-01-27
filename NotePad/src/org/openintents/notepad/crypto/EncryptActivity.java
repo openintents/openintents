@@ -155,6 +155,8 @@ public class EncryptActivity extends Activity {
     			Toast.makeText(this,
     					"Failed to invoke encrypt",
     					Toast.LENGTH_SHORT).show();
+    			
+    			finish();
     		}
     		break;
     	}
