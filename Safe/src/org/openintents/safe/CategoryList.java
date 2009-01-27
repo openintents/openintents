@@ -31,6 +31,7 @@ import java.util.Set;
 import org.openintents.distribution.AboutDialog;
 import org.openintents.intents.AboutMiniIntents;
 import org.openintents.intents.CryptoIntents;
+import org.openintents.safe.dialog.DialogHostingActivity;
 import org.openintents.safe.service.ServiceDispatchImpl;
 import org.openintents.util.IntentUtils;
 
@@ -44,9 +45,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -242,7 +245,27 @@ public class CategoryList extends ListActivity {
 			startActivity(frontdoor);		
 			finish();
     	}
+
+        showFirstTimeWarningDialog();
     }
+
+	/**
+	 * 
+	 */
+	private void showFirstTimeWarningDialog() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean firstTimeWarning = sp.getBoolean(Preferences.PREFERENCE_FIRST_TIME_WARNING, false);
+        
+		if (!firstTimeWarning) {
+			Intent i = new Intent(this, DialogHostingActivity.class);
+			i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_FIRST_TIME_WARNING);
+			startActivity(i);
+			
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(Preferences.PREFERENCE_FIRST_TIME_WARNING, true);
+            editor.commit();
+		}
+	}
     
     @Override
     protected void onPause() {

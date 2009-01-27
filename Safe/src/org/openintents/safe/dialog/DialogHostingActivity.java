@@ -22,8 +22,17 @@ public class DialogHostingActivity extends Activity {
 	public static final int DIALOG_ID_OPEN = 2;
 	public static final int DIALOG_ID_NO_FILE_MANAGER_AVAILABLE = 3;
 	public static final int DIALOG_ID_ALLOW_EXTERNAL_ACCESS = 4;
+	public static final int DIALOG_ID_FIRST_TIME_WARNING = 5;
 	
 	public static final String EXTRA_DIALOG_ID = "org.openintents.notepad.extra.dialog_id";
+
+	/**
+	 * Whether dialog is simply pausing while hidden by another activity
+	 * or when configuration changes.
+	 * If this is false, then we can safely finish this activity if a dialog
+	 * gets dismissed.
+	 */
+	private boolean mIsPausing = false;
 	
     EditText mEditText;
     
@@ -32,7 +41,7 @@ public class DialogHostingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		Intent i = getIntent();
-		if (i != null) {
+		if (i != null && savedInstanceState == null) {
 			int dialogId = i.getIntExtra(EXTRA_DIALOG_ID, 0);
 			switch (dialogId) {
 			case DIALOG_ID_SAVE:
@@ -50,10 +59,12 @@ public class DialogHostingActivity extends Activity {
 				Log.i(TAG, "Show allow access dialog");
 				showDialog(DIALOG_ID_ALLOW_EXTERNAL_ACCESS);
 				break;
+			case DIALOG_ID_FIRST_TIME_WARNING:
+				Log.i(TAG, "Show first time warning dialog");
+				showDialog(DIALOG_ID_FIRST_TIME_WARNING);
+				break;
 			}
 		}
-		
-		
 	}
 
 
@@ -115,6 +126,8 @@ public class DialogHostingActivity extends Activity {
 					RD.string.filemanager_market_uri);
 		case DIALOG_ID_ALLOW_EXTERNAL_ACCESS:
 			return new AllowExternalAccessDialog(this);
+		case DIALOG_ID_FIRST_TIME_WARNING:
+			return new FirstTimeWarningDialog(this);
 		}
 		return null;
 	}
@@ -153,9 +166,32 @@ public class DialogHostingActivity extends Activity {
 	OnDismissListener mDismissListener = new OnDismissListener() {
 		
 		public void onDismiss(DialogInterface dialoginterface) {
-			DialogHostingActivity.this.finish();
+			Log.i(TAG, "Dialog dismissed");
+			if (!mIsPausing) {
+				// Dialog has been dismissed by user.
+				DialogHostingActivity.this.finish();
+			} else {
+				// Probably just a screen orientation change. Don't finish yet.
+				// Dialog has been dismissed by system.
+			}
 		}
 		
 	};
+
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		mIsPausing = false;
+	}
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		mIsPausing = true;
+	}
+	
+	
 	
 }

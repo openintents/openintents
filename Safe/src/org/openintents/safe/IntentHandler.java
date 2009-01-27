@@ -91,6 +91,19 @@ public class IntentHandler extends Activity {
 				} catch (NumberFormatException e) {
 					Log.d(TAG,"why is lock_timeout busted?");
 				}
+				
+				if (service == null) {
+					Log.d(TAG, "Service not yet connected! Don't know how to handle this case!");
+
+					// TODO:
+					// In rare cases, service is null.
+					// This happens if onActivityResult is called before
+					// onServiceConnected.
+					setResult(RESULT_CANCELED);
+					finish();
+					return;
+				}
+				
 				try {
 					service.setTimeoutMinutes(timeoutMinutes);
 					service.setSalt(salt);

@@ -88,4 +88,11 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />	
 
+	<Button android:id="@+id/restore_button" 
+		android:layout_below="@id/pass_confirm"
+		android:layout_toRightOf="@id/continue_button"
+		android:visibility="invisible" 
+	  	android:text="@string/restore"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />	
 </RelativeLayout>	

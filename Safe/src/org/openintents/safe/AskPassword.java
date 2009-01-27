@@ -20,6 +20,7 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 
 import org.openintents.distribution.EulaActivity;
+import org.openintents.safe.dialog.DialogHostingActivity;
 import org.openintents.util.VersionUtils;
 
 import android.app.Activity;
@@ -200,7 +201,9 @@ public class AskPassword extends Activity {
 				callbackIntent.putExtra("masterKey", masterKey);
 				callbackIntent.putExtra("salt", salt);
 				setResult(RESULT_OK, callbackIntent);
+				
 				finish();
+				
 			}
 		});
 	}
@@ -212,6 +215,10 @@ public class AskPassword extends Activity {
 			return;
 		}
 		Button restoreButton = (Button) findViewById(R.id.restore_button);
+		if (restoreButton == null) {
+			if (debug) Log.d(TAG, "layout not created yet");
+			return;
+		}
 		restoreButton.setVisibility(View.VISIBLE);
 		restoreButton.setOnClickListener(new View.OnClickListener() {
 
