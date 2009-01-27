@@ -50,6 +50,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -72,12 +73,14 @@ public class NoteEditor extends Activity {
     private static final String[] PROJECTION = new String[] {
             Notes._ID, // 0
             Notes.NOTE, // 1
-            Notes.ENCRYPTED, // 2
+            Notes.TAGS, // 2
+            Notes.ENCRYPTED, // 3
     };
     /** The index of the note column */
     private static final int COLUMN_INDEX_ID = 0;
     private static final int COLUMN_INDEX_NOTE = 1;
-    private static final int COLUMN_INDEX_ENCRYPTED = 2;
+    private static final int COLUMN_INDEX_TAGS = 2;
+    private static final int COLUMN_INDEX_ENCRYPTED = 3;
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -107,6 +110,8 @@ public class NoteEditor extends Activity {
     private String mDecryptedText;
     
     private String mFilename;
+    
+    private String mTags;
 
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
@@ -440,7 +445,7 @@ public class NoteEditor extends Activity {
 	            	// Decrypted had been decrypted.
 	            	// We take the current version from 'text' and encrypt it.
 	            	
-	            	encryptNote();
+	            	encryptNote(false);
 	            }
             }
         }
@@ -450,13 +455,19 @@ public class NoteEditor extends Activity {
 	 * Encrypt the current note.
 	 * @param text
 	 */
-	private void encryptNote() {
+	private void encryptNote(boolean encryptTags) {
         String text = mText.getText().toString();
         String title = ExtractTitle.extractTitle(text);
+        String tags = getTags();
+		Log.i(TAG, "encrypt tags: " + tags);
+		
+		if (!encryptTags) {
+			tags = null;
+		}
         
 		Intent i = new Intent(this, EncryptActivity.class);
 		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
-		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, null));
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
 		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
 	}
@@ -468,6 +479,8 @@ public class NoteEditor extends Activity {
 	private void unencryptNote() {
         String text = mText.getText().toString();
         String title = ExtractTitle.extractTitle(text);
+        String tags = getTags();
+		Log.i(TAG, "unencrypt tags: " + tags);
         
         ContentValues values = new ContentValues();
         values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
@@ -479,6 +492,23 @@ public class NoteEditor extends Activity {
         mCursor.requery();
         
 		setFeatureDrawable(Window.FEATURE_RIGHT_ICON, null);
+		
+		// Small trick: Tags have not been converted properly yet. Let's do it now:
+		Intent i = new Intent(this, EncryptActivity.class);
+		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_DECRYPT);
+		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(null, null, tags));
+		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+		startActivity(i);
+	}
+	
+	private String getTags() {
+		String tags = mCursor.getString(COLUMN_INDEX_TAGS);
+		
+		if (!TextUtils.isEmpty(tags)) {
+			return tags;
+		} else {
+			return "";
+		}
 	}
 
     @Override
@@ -580,7 +610,7 @@ public class NoteEditor extends Activity {
             cancelNote();
             break;
         case MENU_ENCRYPT:
-        	encryptNote();
+        	encryptNote(true);
         	break;
         case MENU_UNENCRYPT:
         	unencryptNote();
