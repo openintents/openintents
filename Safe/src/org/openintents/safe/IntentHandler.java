@@ -77,9 +77,11 @@ public class IntentHandler extends Activity {
 
 	//currently only handles result from askPassword function.
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_OK) {
-			switch (requestCode) {
-			case REQUEST_CODE_ASK_PASSWORD:
+		if (debug) Log.d(TAG, "onActivityResult: requestCode == " + requestCode + ", resultCode == " + resultCode);
+	
+		switch (requestCode) {
+		case REQUEST_CODE_ASK_PASSWORD:
+			if (resultCode == RESULT_OK) {
 				salt = data.getStringExtra("salt");
 				masterKey = data.getStringExtra("masterKey");
 				String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
@@ -105,19 +107,22 @@ public class IntentHandler extends Activity {
 		        	actionDispatch();
 		        } else {
 		        	// ask first
+		        	if (debug) Log.d(TAG, "onActivityResult: showDialogAllowExternalAccess()");
 		        	showDialogAllowExternalAccess();
 		        }
-				break;
-			case REQUEST_CODE_ALLOW_EXTERNAL_ACCESS:
-
-	        	actionDispatch();
-				break;
+			} else { // resultCode == RESULT_CANCELED
+				setResult(RESULT_CANCELED);
+				finish();
 			}
-			
-		} else { // resultCode == RESULT_CANCELED
-			setResult(RESULT_CANCELED);
-			finish();
+			break;
+		case REQUEST_CODE_ALLOW_EXTERNAL_ACCESS:
+			// Check again, regardless whether user pressed "OK" or "Cancel".
+			// Also, DialogHostingActivity never returns a resultCode different than
+			// RESULT_CANCELED.
+        	actionDispatch();
+			break;
 		}
+			
 	}
 
 	/**
@@ -465,6 +470,7 @@ public class IntentHandler extends Activity {
 						masterKey = service.getPassword();
 						actionDispatch();
 			        } else {
+			        	if (debug) Log.d(TAG, "onServiceConnected: showDialogAllowExternalAccess()");
 			        	showDialogAllowExternalAccess();
 			        }
 				}
