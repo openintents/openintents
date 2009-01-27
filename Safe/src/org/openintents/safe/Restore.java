@@ -33,9 +33,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -312,14 +310,6 @@ public class Restore extends Activity {
 		Toast.makeText(Restore.this, getString(R.string.restore_complete)+
 			" "+Integer.toString(totalPasswords),
 			Toast.LENGTH_LONG).show();
-		
-
-		// Don't need to show warning anymore to back up, because user has used
-		// restore already.
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean(Preferences.PREFERENCE_FIRST_TIME_WARNING, true);
-        editor.commit();
 
 		setResult(RESULT_OK);
 		finish();
