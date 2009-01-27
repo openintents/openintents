@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-01-27 21:35+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../res/values/strings.xml:25(string) 
+msgid "OI About"
+msgstr ""
+
+#: ../res/values/strings.xml:27(string) 
+msgid "A standalone about dialog that is shared between apps."
+msgstr ""
+
+#: ../res/values/strings.xml:28(string) 
+msgid "Copyright © 2008-2009 pjv"
+msgstr ""
+
+#. Add your name here, separated with comma's, if you helped out
+#: ../res/values/strings.xml:29(string) 
+msgid "OI About at OpenIntents"
+msgstr ""
+
+#: ../res/values/strings.xml:30(string) 
+msgid "http://www.openintents.org"
+msgstr ""
+
+#: ../res/values/strings.xml:31(string) 
+msgid "OI About logo"
+msgstr ""
+
+#: ../res/values/strings.xml:32(string) 
+msgid "logo of OI About"
+msgstr ""
+
+#: ../res/values/strings.xml:33(string) 
+msgid "support@openintents.org"
+msgstr ""
+
+#: ../res/values/strings.xml:35(string) 
+msgid "About dialog to use:"
+msgstr ""
+
+#: ../res/values/strings.xml:37(string) 
+msgid "Preferences"
+msgstr ""
+
+#: ../res/values/strings.xml:38(string) 
+msgid "About OI About itself"
+msgstr ""
+
+#: ../res/values/strings.xml:40(string) ../res/values/strings.xml:43(string) 
+msgid "About"
+msgstr ""
+
+#: ../res/values/strings.xml:41(string) 
+msgid "About %s"
+msgstr ""
+
+#: ../res/values/strings.xml:42(string) 
+msgid "OI About Preferences"
+msgstr ""
+
+#: ../res/values/strings.xml:46(string) 
+msgid "Written by"
+msgstr ""
+
+#: ../res/values/strings.xml:47(string) 
+msgid "Documented by"
+msgstr ""
+
+#: ../res/values/strings.xml:48(string) 
+msgid "Translated by"
+msgstr ""
+
+#: ../res/values/strings.xml:49(string) 
+msgid "Artwork by"
+msgstr ""
+
+#: ../res/values/strings.xml:50(string) 
+msgid "Credits"
+msgstr ""
+
+#: ../res/values/strings.xml:51(string) 
+msgid "License"
+msgstr ""
+
+#: ../res/values/strings.xml:52(string) 
+msgid "General Info"
+msgstr ""
+
+#: ../res/values/strings.xml:55(string) 
+msgid "No information available."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: ../res/values/strings.xml:57(string) ../res/values/strings.xml:0(None) 
+msgid "translator-credits"
+msgstr ""
+

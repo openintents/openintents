@@ -1,0 +1,302 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-01-27 21:29+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../res/values/strings.xml:3(string) ../res/values/strings.xml:11(string) 
+msgid "OI Update"
+msgstr ""
+
+#: ../res/values/strings.xml:5(string) 
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr ""
+
+#: ../res/values/strings.xml:6(string) 
+msgid "A new version of %s is available at %s.\\n%s\\n"
+msgstr ""
+
+#: ../res/values/strings.xml:7(string) 
+msgid "A new version of %s is available.\\n%s\\n"
+msgstr ""
+
+#: ../res/values/strings.xml:8(string) 
+msgid "A new version of %s is available at %s."
+msgstr ""
+
+#: ../res/values/strings.xml:9(string) 
+msgid "A new version of %s is available."
+msgstr ""
+
+#: ../res/values/strings.xml:10(string) 
+msgid "Android Market not available."
+msgstr ""
+
+#: ../res/values/strings.xml:12(string) 
+msgid "Android Market"
+msgstr ""
+
+#: ../res/values/strings.xml:13(string) 
+msgid "AndAppStore.com"
+msgstr ""
+
+#: ../res/values/strings.xml:15(string) 
+msgid "Version %s\\nSD card %s\\n\\nOS\\n%s"
+msgstr ""
+
+#: ../res/values/strings.xml:16(string) 
+msgid "free space: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:17(string) 
+msgid "Board %s\\nBrand %s\\nDevice %s\\nID %s\\nModel %s"
+msgstr ""
+
+#: ../res/values/strings.xml:19(string) 
+msgid "Perform update now!"
+msgstr ""
+
+#: ../res/values/strings.xml:20(string) 
+msgid "Try update from Market now!"
+msgstr ""
+
+#: ../res/values/strings.xml:21(string) 
+msgid "Try update from AndAppStore now!"
+msgstr ""
+
+#: ../res/values/strings.xml:22(string) 
+msgid "Remind me later!"
+msgstr ""
+
+#: ../res/values/strings.xml:23(string) 
+msgid "Ignore this update"
+msgstr ""
+
+#: ../res/values/strings.xml:24(string) 
+msgid "Ignore all further updates"
+msgstr ""
+
+#: ../res/values/strings.xml:25(string) 
+msgid "Ok"
+msgstr ""
+
+#: ../res/values/strings.xml:27(string) 
+msgid "Update could not be started!\\n\\nPlease contact application developer!\\n\\n%s"
+msgstr ""
+
+#: ../res/values/strings.xml:28(string) 
+msgid "Application is up-to-date."
+msgstr ""
+
+#: ../res/values/strings.xml:29(string) 
+msgid "Checking for new version."
+msgstr ""
+
+#: ../res/values/strings.xml:30(string) 
+msgid "Building list of applications."
+msgstr ""
+
+#: ../res/values/strings.xml:31(string) 
+msgid "Check AndAppStore.com"
+msgstr ""
+
+#: ../res/values/strings.xml:32(string) 
+msgid "Check versions"
+msgstr ""
+
+#: ../res/values/strings.xml:33(string) 
+msgid "Show all"
+msgstr ""
+
+#: ../res/values/strings.xml:34(string) 
+msgid "Refresh"
+msgstr ""
+
+#: ../res/values/strings.xml:35(string) 
+msgid "Checked AndAppStore"
+msgstr ""
+
+#: ../res/values/strings.xml:36(string) 
+msgid "Current version: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:37(string) 
+msgid "Current version code: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:38(string) 
+msgid "Newer version: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:39(string) 
+msgid "Newer version: %s - %s"
+msgstr ""
+
+#: ../res/values/strings.xml:40(string) 
+msgid "Newer version available."
+msgstr ""
+
+#: ../res/values/strings.xml:41(string) 
+msgid "No update information found."
+msgstr ""
+
+#: ../res/values/strings.xml:42(string) 
+msgid "OI Update - List of new versions"
+msgstr ""
+
+#: ../res/values/strings.xml:43(string) 
+msgid "OI Update - New versions at AndAppStore"
+msgstr ""
+
+#: ../res/values/strings.xml:44(string) 
+msgid "OI Update - List of managed applications"
+msgstr ""
+
+#: ../res/values/strings.xml:45(string) 
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr ""
+
+#: ../res/values/strings.xml:46(string) 
+msgid "Settings"
+msgstr ""
+
+#: ../res/values/strings.xml:47(string) 
+msgid "Auto check"
+msgstr ""
+
+#: ../res/values/strings.xml:48(string) 
+msgid "Ignored"
+msgstr ""
+
+#: ../res/values/strings.xml:49(string) 
+msgid "Updates are currently ignored. Would you like to receive updates again?"
+msgstr ""
+
+#: ../res/values/strings.xml:50(string) 
+msgid "Unknown"
+msgstr ""
+
+#: ../res/values/strings.xml:51(string) 
+msgid "No update information available. Please check manually and ask the developer to support OI Update in the future."
+msgstr ""
+
+#: ../res/values/strings.xml:52(string) 
+msgid "Search on Market"
+msgstr ""
+
+#: ../res/values/strings.xml:53(string) 
+msgid "Search on AndAppStore"
+msgstr ""
+
+#: ../res/values/strings.xml:54(string) 
+msgid "Processing %s"
+msgstr ""
+
+#: ../res/values/strings.xml:56(string) 
+msgid "The update process of this application directs to a different site than Android Market. Applications installed from unknown sources might exhibit a security risk."
+msgstr ""
+
+#: ../res/values/strings.xml:60(string) 
+msgid "Continue anyway"
+msgstr ""
+
+#: ../res/values/strings.xml:61(string) 
+msgid "Abort"
+msgstr ""
+
+#: ../res/values/strings.xml:63(string) 
+msgid "Auto update"
+msgstr ""
+
+#: ../res/values/strings.xml:64(string) 
+msgid "If checked, search for updates is performed regularly"
+msgstr ""
+
+#: ../res/values/strings.xml:65(string) 
+msgid "Update interval"
+msgstr ""
+
+#: ../res/values/strings.xml:66(string) 
+msgid "Set the interval how often the update search should be performed."
+msgstr ""
+
+#: ../res/values/strings.xml:67(string) 
+msgid "Select interval"
+msgstr ""
+
+#: ../res/values/strings.xml:68(string) 
+msgid "every_month"
+msgstr ""
+
+#: ../res/values/strings.xml:69(string) 
+msgid "Warning"
+msgstr ""
+
+#: ../res/values/strings.xml:70(string) 
+msgid "If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?"
+msgstr ""
+
+#: ../res/values/strings.xml:72(string) 
+msgid "Use AndAppStore"
+msgstr ""
+
+#: ../res/values/strings.xml:73(string) 
+msgid "Use version information provided by AndAppStore.com"
+msgstr ""
+
+#: ../res/values/strings.xml:75(string) 
+msgid "Read update information"
+msgstr ""
+
+#: ../res/values/strings.xml:76(string) 
+msgid "Write update information"
+msgstr ""
+
+#: ../res/values/strings.xml:77(string) 
+msgid "Read information about installed applications, update locations and requests."
+msgstr ""
+
+#: ../res/values/strings.xml:78(string) 
+msgid "Write information about installed applications, update locations and requests."
+msgstr ""
+
+#. About
+#: ../res/values/strings.xml:82(string) 
+msgid "About"
+msgstr ""
+
+#: ../res/values/strings.xml:83(string) 
+msgid "About %s"
+msgstr ""
+
+#: ../res/values/strings.xml:84(string) 
+msgid "Version %s \\n\\n OI Update keeps you informed on new application versions.\\n OpenIntents allows different Android applications to share data using intents and open interfaces.\\n\\n For more information and other great applications visit OpenIntents at www.openintents.org"
+msgstr ""
+
+#. EULA
+#: ../res/values/strings.xml:92(string) 
+msgid "OI Update EULA"
+msgstr ""
+
+#: ../res/values/strings.xml:93(string) 
+msgid "\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, Version 2.0 (the \\\"License\\\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\\n http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+
+#: ../res/values/strings.xml:100(string) 
+msgid "Accept"
+msgstr ""
+
+#: ../res/values/strings.xml:101(string) 
+msgid "Cancel"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: ../res/values/strings.xml:103(string) ../res/values/strings.xml:0(None) 
+msgid "translator-credits"
+msgstr ""
+
