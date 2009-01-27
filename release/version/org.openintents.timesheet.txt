@@ -1,3 +1,3 @@
-5
+9
 1234567
-Version 1.0.1: Bug fixes, more options, reduced price.
+Version 1.0.2: Scheduled jobs, reminder, expenses.
