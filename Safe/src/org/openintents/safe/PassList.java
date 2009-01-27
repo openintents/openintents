@@ -417,12 +417,14 @@ public class PassList extends ListActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent i) {
     	super.onActivityResult(requestCode, resultCode, i);
+    	//Log.d(TAG, "onActivityResult. requestCode: " + requestCode + ", resultCode: " + resultCode);
 
     	if (dbHelper == null) {
 		    dbHelper = new DBHelper(this);
 		}
     	if (((requestCode==REQUEST_VIEW_PASSWORD)&&(PassView.entryEdited)) ||
     	    	((requestCode==REQUEST_EDIT_PASSWORD)&&(PassEdit.entryEdited)) ||
+    	    	((requestCode==REQUEST_ADD_PASSWORD)&&(PassEdit.entryEdited)) ||
     			(resultCode==RESULT_OK)) {
     		fillData();
     	}
