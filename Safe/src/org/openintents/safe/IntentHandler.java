@@ -48,8 +48,8 @@ import android.widget.Toast;
  */
 public class IntentHandler extends Activity {
 
-	private static final boolean debug = false;
-	private static String TAG = "FrontDoor";
+	private static final boolean debug = !false;
+	private static String TAG = "IntentHandler";
 	
 	private static final int REQUEST_CODE_ASK_PASSWORD = 1;
 	private static final int REQUEST_CODE_ALLOW_EXTERNAL_ACCESS = 2;
@@ -63,6 +63,7 @@ public class IntentHandler extends Activity {
 	// service elements
     private ServiceDispatch service;
     private ServiceDispatchConnection conn;
+	private Intent mServiceIntent;
 
     SharedPreferences mPreferences;
 	//public static String SERVICE_NAME = "org.openintents.safe.service.ServiceDispatchImpl";
@@ -71,10 +72,12 @@ public class IntentHandler extends Activity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
+		mServiceIntent = null;
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 		initService(); // start up the PWS service so other applications can query.
 	}
 
+	
 	//currently only handles result from askPassword function.
 	protected void onActivityResult (int requestCode, int resultCode, Intent data) {
 		if (debug) Log.d(TAG, "onActivityResult: requestCode == " + requestCode + ", resultCode == " + resultCode);
@@ -82,47 +85,15 @@ public class IntentHandler extends Activity {
 		switch (requestCode) {
 		case REQUEST_CODE_ASK_PASSWORD:
 			if (resultCode == RESULT_OK) {
-				salt = data.getStringExtra("salt");
-				masterKey = data.getStringExtra("masterKey");
-				String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
-				int timeoutMinutes=5; // default to 5
-				try {
-					timeoutMinutes = Integer.valueOf(timeout);
-				} catch (NumberFormatException e) {
-					Log.d(TAG,"why is lock_timeout busted?");
-				}
-				
-				if (service == null) {
-					Log.d(TAG, "Service not yet connected! Don't know how to handle this case!");
 
-					// TODO:
-					// In rare cases, service is null.
-					// This happens if onActivityResult is called before
-					// onServiceConnected.
-					setResult(RESULT_CANCELED);
-					finish();
+				if (service == null) {
+					mServiceIntent = data;
+					// setServiceParametersFromExtrasAndDispatchAction() is called in onServiceConnected.
 					return;
 				}
 				
-				try {
-					service.setTimeoutMinutes(timeoutMinutes);
-					service.setSalt(salt);
-					service.setPassword(masterKey); // should already be connected.
-				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-		        boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
-		        boolean isLocal = isIntentLocal();
-		        
-		        if (isLocal || externalAccess) {
-		        	actionDispatch();
-		        } else {
-		        	// ask first
-		        	if (debug) Log.d(TAG, "onActivityResult: showDialogAllowExternalAccess()");
-		        	showDialogAllowExternalAccess();
-		        }
+				setServiceParametersFromExtrasAndDispatchAction(data);
+				
 			} else { // resultCode == RESULT_CANCELED
 				setResult(RESULT_CANCELED);
 				finish();
@@ -132,10 +103,61 @@ public class IntentHandler extends Activity {
 			// Check again, regardless whether user pressed "OK" or "Cancel".
 			// Also, DialogHostingActivity never returns a resultCode different than
 			// RESULT_CANCELED.
-        	actionDispatch();
+			if (service == null) {
+				if (debug) Log.i(TAG, "actionDispatch called later");
+				// actionDispatch() is called in onServiceConnected.
+			} else if (salt == null) {
+				try {
+		        	salt = service.getSalt();
+					masterKey = service.getPassword();
+					actionDispatch();
+				} catch (RemoteException e) {
+					Log.d(TAG, e.toString());
+					// Not successful...
+					finish();
+				}
+			} else {
+				if (debug) Log.i(TAG, "actionDispatch called right now");
+				actionDispatch();
+			}
 			break;
 		}
 			
+	}
+
+	/**
+	 * @param data
+	 */
+	private void setServiceParametersFromExtrasAndDispatchAction(Intent data) {
+		salt = data.getStringExtra("salt");
+		masterKey = data.getStringExtra("masterKey");
+		String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
+		int timeoutMinutes=5; // default to 5
+		try {
+			timeoutMinutes = Integer.valueOf(timeout);
+		} catch (NumberFormatException e) {
+			Log.d(TAG,"why is lock_timeout busted?");
+		}
+		
+		try {
+			service.setTimeoutMinutes(timeoutMinutes);
+			service.setSalt(salt);
+			service.setPassword(masterKey); // should already be connected.
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		boolean externalAccess = mPreferences.getBoolean(Preferences.PREFERENCE_ALLOW_EXTERNAL_ACCESS, false);
+		boolean isLocal = isIntentLocal();
+		
+		if (isLocal || externalAccess) {
+			actionDispatch();
+		} else {
+			// ask first
+			if (debug) Log.d(TAG, "onActivityResult: showDialogAllowExternalAccess()");
+			showDialogAllowExternalAccess();
+		}
 	}
 
 	/**
@@ -447,6 +469,12 @@ public class IntentHandler extends Activity {
 				IBinder boundService )
 		{
 			service = ServiceDispatch.Stub.asInterface((IBinder)boundService);
+			
+			if (mServiceIntent != null) {
+				setServiceParametersFromExtrasAndDispatchAction(mServiceIntent);
+				mServiceIntent = null;
+				return;
+			}
 			
 			boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
 			if (debug) Log.d(TAG, "Prompt for password: " + promptforpassword);
