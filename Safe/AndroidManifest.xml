@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.safe" 
-    android:versionCode="1" 
-    android:versionName="1.0.0-beta1">
+    android:versionCode="2" 
+    android:versionName="1.0.0-rc1">
     <application android:icon="@drawable/icon_safe" android:allowClearUserData="true" android:debuggable="true" android:label="@string/app_name">
-    
+    	
+        <!-- aTrackDog metadata -->
+        <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
+           android:value="2" />
+        
+        <!-- OI About metadata -->
 		<meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />
         <meta-data android:name="org.openintents.metadata.COPYRIGHT"
