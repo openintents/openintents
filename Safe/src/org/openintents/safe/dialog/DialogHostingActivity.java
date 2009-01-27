@@ -16,7 +16,8 @@ import android.widget.EditText;
 
 public class DialogHostingActivity extends Activity {
 
-	private static final String TAG = "FilenameActivity";
+	private static final String TAG = "DialogHostingActivity";
+	private static final boolean debug = false;
 
 	public static final int DIALOG_ID_SAVE = 1;
 	public static final int DIALOG_ID_OPEN = 2;
@@ -39,9 +40,11 @@ public class DialogHostingActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (debug) Log.d(TAG, "onCreate");
 		
 		Intent i = getIntent();
 		if (i != null && savedInstanceState == null) {
+			if (debug) Log.d(TAG, "new dialog");
 			int dialogId = i.getIntExtra(EXTRA_DIALOG_ID, 0);
 			switch (dialogId) {
 			case DIALOG_ID_SAVE:
@@ -112,53 +115,54 @@ public class DialogHostingActivity extends Activity {
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
+		if (debug) Log.d(TAG, "onCreateDialog");
 
+		Dialog dialog = null;
+		
 		switch (id) {
 		case DIALOG_ID_SAVE:
-			return new FilenameDialog(this);
+			dialog = new FilenameDialog(this);
+			break;
 		case DIALOG_ID_OPEN:
-			return new FilenameDialog(this);
+			dialog = new FilenameDialog(this);
+			break;
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 			Log.i(TAG, "fmd - create");
-			return new GetFromMarketDialog(this, 
+			dialog = new GetFromMarketDialog(this, 
 					RD.string.filemanager_not_available,
 					RD.string.filemanager_get_oi_filemanager,
 					RD.string.filemanager_market_uri);
+			break;
 		case DIALOG_ID_ALLOW_EXTERNAL_ACCESS:
-			return new AllowExternalAccessDialog(this);
+			dialog = new AllowExternalAccessDialog(this);
+			break;
 		case DIALOG_ID_FIRST_TIME_WARNING:
-			return new FirstTimeWarningDialog(this);
+			dialog = new FirstTimeWarningDialog(this);
+			break;
 		}
-		return null;
+		if (dialog == null) {
+			dialog = super.onCreateDialog(id);
+		}
+		if (dialog != null) {
+			dialog.setOnDismissListener(mDismissListener);
+		}
+		return dialog;
 	}
 
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
-		FilenameDialog fd;
+		super.onPrepareDialog(id, dialog);
 		
-		dialog.setOnDismissListener(mDismissListener);
+		if (debug) Log.d(TAG, "onPrepareDialog");
+		
+		//dialog.setOnDismissListener(mDismissListener);
 		
 		switch (id) {
 		case DIALOG_ID_SAVE:
-			fd = (FilenameDialog) dialog;
-			//fd.setTitle(R.string.menu_save_to_sdcard);
-			
 			break;
 		case DIALOG_ID_OPEN:
-			fd = (FilenameDialog) dialog;
-			//fd.setTitle(R.string.menu_open_from_sdcard);
 			break;
-			
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
-			Log.i(TAG, "fmd - prepare");
-			/*
-			GetFileManagerFromMarketDialog gd = (GetFileManagerFromMarketDialog) dialog;
-			gd.setMessageResource(R.string.filemanager_not_available);
-			gd.setInfoResources(R.string.filemanager_get_oi_filemanager, 
-					R.string.filemanager_market_uri, 
-					R.drawable.ic_launcher_folder_small, 
-					R.string.update_error);
-					*/
 			break;
 		}
 	}
@@ -166,8 +170,9 @@ public class DialogHostingActivity extends Activity {
 	OnDismissListener mDismissListener = new OnDismissListener() {
 		
 		public void onDismiss(DialogInterface dialoginterface) {
-			Log.i(TAG, "Dialog dismissed");
+			if (debug) Log.d(TAG, "Dialog dismissed. Pausing: " + mIsPausing);
 			if (!mIsPausing) {
+				if (debug) Log.d(TAG, "finish");
 				// Dialog has been dismissed by user.
 				DialogHostingActivity.this.finish();
 			} else {
@@ -178,18 +183,12 @@ public class DialogHostingActivity extends Activity {
 		
 	};
 
-	
-	@Override
-	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		super.onRestoreInstanceState(savedInstanceState);
-		mIsPausing = false;
-	}
-
-
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
+		if (debug) Log.d(TAG, "onSaveInstanceState");
 		mIsPausing = true;
+		if (debug) Log.d(TAG, "onSaveInstanceState. Pausing: " + mIsPausing);
 	}
 	
 	
