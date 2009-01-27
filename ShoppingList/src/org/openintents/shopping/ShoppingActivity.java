@@ -138,6 +138,7 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_SEND = Menu.FIRST + 18;
 
 	private static final int DIALOG_ABOUT = 1;
+	private static final int DIALOG_TEXT_ENTRY = 2;
 
 	/**
 	 * The main activity.
@@ -246,7 +247,6 @@ public class ShoppingActivity extends Activity { // implements
 	private EditText mEditText;
 
 	protected Context mDialogContext;
-	protected Dialog mDialog;
 
 	// TODO: Set up state information for onFreeze(), ...
 	// State data to be stored when freezing:
@@ -269,6 +269,8 @@ public class ShoppingActivity extends Activity { // implements
 
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
+
+	private int mTextEntryMenu;
 
 	// Sensor service -----------------
 
@@ -1020,90 +1022,46 @@ public class ShoppingActivity extends Activity { // implements
 	 */
 	private void showListDialog(final int menuAction) {
 
-		// TODO Shall we implement this as action?
-		// Then other applications may call this as well.
-
-		mDialog = new Dialog(ShoppingActivity.this);
-
-		mDialog.setContentView(R.layout.input_box);
-
-		EditText et = (EditText) mDialog.findViewById(R.id.edittext);
-		// et.setText(getString(R.string.new_list));
-		et.setHint(getString(R.string.new_list_hint));
-		et.selectAll();
-
 		switch (menuAction) {
 		case MENU_NEW_LIST:
-			mDialog.setTitle(getString(R.string.ask_new_list));
+			mTextEntryMenu = MENU_NEW_LIST;
+			showDialog(DIALOG_TEXT_ENTRY);
 			break;
 		case MENU_RENAME_LIST:
-			mDialog.setTitle(getString(R.string.ask_rename_list));
-
-			if (mCursorListFilter != null
-					&& mCursorListFilter.getPosition() >= 0) {
-				et.setText(mCursorListFilter.getString(mStringListFilterNAME));
-			}
+			mTextEntryMenu = MENU_RENAME_LIST;
+			showDialog(DIALOG_TEXT_ENTRY);
 			break;
 		case MENU_EDIT_ITEM:
-			mDialog.setTitle(getString(R.string.ask_edit_item));
+			mTextEntryMenu = MENU_EDIT_ITEM;
+			showDialog(DIALOG_TEXT_ENTRY);
 
-			// Cursor is supposed to be set to correct row already:
-			et.setText(mCursorItems.getString(mStringItemsITEMNAME));
 			break;
 		}
-
-		// Accept OK also when user hits "Enter"
-		et.setOnKeyListener(new OnKeyListener() {
-
-			public boolean onKey(final View v, final int keyCode,
-					final KeyEvent key) {
-				// Log.i(TAG, "KeyCode: " + keyCode);
-
-				if (key.getAction() == KeyEvent.ACTION_DOWN
-						&& keyCode == KeyEvent.KEYCODE_ENTER) {
-					doListDialogAction(menuAction);
-					return true;
-				}
-				return false;
-			}
-
-		});
-
-		Button bOk = (Button) mDialog.findViewById(R.id.ok);
-		bOk.setOnClickListener(new OnClickListener() {
-			public void onClick(final View v) {
-				doListDialogAction(menuAction);
-			}
-		});
-
-		Button bCancel = (Button) mDialog.findViewById(R.id.cancel);
-		bCancel.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				mDialog.cancel();
-			}
-		});
-
-		mDialog.show();
 	}
 
-	void doListDialogAction(int menuAction) {
+	void doListDialogAction(int menuAction, Dialog dialog) {
+		EditText et = (EditText)((Dialog)dialog).findViewById(R.id.edittext);
+		String newName = et.getText().toString();
 		switch (menuAction) {
 		case MENU_NEW_LIST:
-			if (createNewList()) {
+			if (createNewList(newName)) {
 				// New list created. Exit:
-				mDialog.dismiss();
+				dialog.dismiss();
+				et.setText("");
 			}
 			break;
 		case MENU_RENAME_LIST:
-			if (renameList()) {
+			if (renameList(newName)) {
 				// Rename successful. Exit:
-				mDialog.dismiss();
+				dialog.dismiss();
+				et.setText("");
 			}
 			break;
 		case MENU_EDIT_ITEM:
-			if (renameItem()) {
+			if (renameItem(newName)) {
 				// Rename successful. Exit:
-				mDialog.dismiss();
+				dialog.dismiss();
+				et.setText("");
 			}
 			break;
 		}
@@ -1115,20 +1073,16 @@ public class ShoppingActivity extends Activity { // implements
 	 * @return true if new list was created. False if new list was not created,
 	 *         because user has not given any name.
 	 */
-	private boolean createNewList() {
-		EditText edittext = (EditText) mDialog.findViewById(R.id.edittext);
-		String s = edittext.getText().toString();
+	private boolean createNewList(String name) {
 
-		if (s.equals("")) {
+		if (name.equals("")) {
 			// User has not provided any name
 			Toast.makeText(this, getString(R.string.please_enter_name),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		}
 
-		int newId = (int) Shopping.getList(s);
-
-		edittext.setText("");
+		int newId = (int) Shopping.getList(name);
 		fillListFilter();
 
 		setSelectedListId(newId);
@@ -1147,11 +1101,9 @@ public class ShoppingActivity extends Activity { // implements
 	 * @return true if new list was renamed. False if new list was not renamed,
 	 *         because user has not given any name.
 	 */
-	private boolean renameList() {
-		EditText edittext = (EditText) mDialog.findViewById(R.id.edittext);
-		String s = edittext.getText().toString();
+	private boolean renameList(String newName) {
 
-		if (s.equals("")) {
+		if (newName.equals("")) {
 			// User has not provided any name
 			Toast.makeText(this, getString(R.string.please_enter_name),
 					Toast.LENGTH_SHORT).show();
@@ -1160,15 +1112,12 @@ public class ShoppingActivity extends Activity { // implements
 
 		// Rename currently selected list:
 		ContentValues values = new ContentValues();
-		values.put(Lists.NAME, "" + s);
+		values.put(Lists.NAME, "" + newName);
 		getContentResolver().update(
 				Uri.withAppendedPath(Lists.CONTENT_URI, mCursorListFilter
 						.getString(0)), values, null, null);
 
 		mCursorListFilter.requery();
-
-		edittext.setText("");
-
 		return true;
 	}
 
@@ -1178,11 +1127,9 @@ public class ShoppingActivity extends Activity { // implements
 	 * @return true if new list was renamed. False if new list was not renamed,
 	 *         because user has not given any name.
 	 */
-	private boolean renameItem() {
-		EditText edittext = (EditText) mDialog.findViewById(R.id.edittext);
-		String s = edittext.getText().toString();
+	private boolean renameItem(String newName) {
 
-		if (s.equals("")) {
+		if (newName.equals("")) {
 			// User has not provided any name
 			Toast.makeText(this, getString(R.string.please_enter_name),
 					Toast.LENGTH_SHORT).show();
@@ -1190,7 +1137,7 @@ public class ShoppingActivity extends Activity { // implements
 		}
 
 		String oldItemName = mCursorItems.getString(mStringItemsITEMNAME);
-		String newItemName = s;
+		String newItemName = newName;
 
 		// Rename currently selected item:
 		/*
@@ -1251,11 +1198,12 @@ public class ShoppingActivity extends Activity { // implements
 				sb.append(item.getString(mStringItemsITEMNAME));
 				sb.append("\n");
 			}
-			
+
 			Intent i = new Intent();
 			i.setAction(Intent.ACTION_SEND);
 			i.setType("text/plain");
-			i.putExtra(Intent.EXTRA_SUBJECT, ((Cursor)mSpinnerListFilter.getSelectedItem()).getString(mStringListFilterNAME));
+			i.putExtra(Intent.EXTRA_SUBJECT, ((Cursor) mSpinnerListFilter
+					.getSelectedItem()).getString(mStringListFilterNAME));
 			i.putExtra(Intent.EXTRA_TEXT, sb.toString());
 
 			try {
@@ -1266,7 +1214,8 @@ public class ShoppingActivity extends Activity { // implements
 				Log.e(TAG, "Email client not installed");
 			}
 		} else {
-			Toast.makeText(this, R.string.empty_list_not_sent, Toast.LENGTH_SHORT);
+			Toast.makeText(this, R.string.empty_list_not_sent,
+					Toast.LENGTH_SHORT);
 		}
 
 	}
@@ -1694,6 +1643,49 @@ public class ShoppingActivity extends Activity { // implements
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
+		case DIALOG_TEXT_ENTRY:
+			LayoutInflater factory = LayoutInflater.from(this);
+			final View textEntryView = factory
+					.inflate(R.layout.input_box, null);
+			final Dialog dlg = new AlertDialog.Builder(this).setIcon(
+					android.R.drawable.edit_text).setView(textEntryView)
+					.setPositiveButton(R.string.ok,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int whichButton) {
+
+									dialog.dismiss();
+									doListDialogAction(mTextEntryMenu, (Dialog)dialog);
+
+								}
+							}).setNegativeButton(R.string.cancel,
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int whichButton) {
+
+									dialog.cancel();
+								}
+							}).create();
+
+			// Accept OK also when user hits "Enter"
+			EditText et = (EditText) textEntryView.findViewById(R.id.edittext);
+			et.setOnKeyListener(new OnKeyListener() {
+
+				public boolean onKey(final View v, final int keyCode,
+						final KeyEvent key) {
+					// Log.i(TAG, "KeyCode: " + keyCode);
+
+					if (key.getAction() == KeyEvent.ACTION_DOWN
+							&& keyCode == KeyEvent.KEYCODE_ENTER) {
+						doListDialogAction(mTextEntryMenu, dlg);
+						return true;
+					}
+					return false;
+				}
+
+			});
+			return dlg;
+
 		}
 		return null;
 
@@ -1706,6 +1698,30 @@ public class ShoppingActivity extends Activity { // implements
 		switch (id) {
 		case DIALOG_ABOUT:
 			break;
+		case DIALOG_TEXT_ENTRY:
+			EditText et = (EditText) dialog.findViewById(R.id.edittext);
+			et.selectAll();
+
+			switch (mTextEntryMenu) {
+
+			case MENU_NEW_LIST:
+				dialog.setTitle(R.string.ask_new_list);
+				break;
+			case MENU_RENAME_LIST:
+				dialog.setTitle(R.string.ask_rename_list);
+				if (mCursorListFilter != null
+						&& mCursorListFilter.getPosition() >= 0) {
+					et.setText(mCursorListFilter
+							.getString(mStringListFilterNAME));
+				}
+				break;
+			case MENU_EDIT_ITEM:
+				dialog.setTitle(R.string.ask_edit_item);
+				// Cursor is supposed to be set to correct row already:
+				et.setText(mCursorItems.getString(mStringItemsITEMNAME));
+
+				break;
+			}
 		}
 	}
 
