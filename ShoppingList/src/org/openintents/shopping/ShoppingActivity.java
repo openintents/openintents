@@ -1648,7 +1648,7 @@ public class ShoppingActivity extends Activity { // implements
 			final View textEntryView = factory
 					.inflate(R.layout.input_box, null);
 			final Dialog dlg = new AlertDialog.Builder(this).setIcon(
-					android.R.drawable.edit_text).setView(textEntryView)
+					android.R.drawable.ic_menu_edit).setTitle(R.string.ask_new_list).setView(textEntryView)
 					.setPositiveButton(R.string.ok,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
