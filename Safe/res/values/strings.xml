@@ -154,5 +154,5 @@
 	<string name="package_access">Package access</string>
 	<string name="not_found">not found</string>
 	<string name="dialog_title_first_time_warning">New master key</string>
-	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu > backup and store this key in a safe place. Without this key you may loose encrypted data.</string>
+	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu > backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
 </resources>

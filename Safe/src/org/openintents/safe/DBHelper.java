@@ -46,6 +46,7 @@ public class DBHelper {
     private static final String TABLE_MASTER_KEY = "master_key";
     private static final String TABLE_SALT = "salt";
     private static final String TABLE_PACKAGE_ACCESS = "package_access";
+    private static final String TABLE_CIPHER_ACCESS = "cipher_access";
     private static final int DATABASE_VERSION = 4;
     private static String TAG = "DBHelper";
     Context myCtx;
@@ -93,6 +94,16 @@ public class DBHelper {
     private static final String SALT_CREATE = 
     	"create table " + TABLE_SALT + " ("
     		+ "salt text not null);";
+
+    private static final String CIPHER_ACCESS_CREATE =
+		"create table " + TABLE_CIPHER_ACCESS + " ("
+			+ "id integer primary key autoincrement, "
+			+ "packagename text not null, "
+			+ "expires integer not null, "
+			+ "dateadded text not null);";
+
+    private static final String CIPHER_ACCESS_DROP =
+    	"drop table " + TABLE_CIPHER_ACCESS + ";";
 
     private SQLiteDatabase db;
     private static boolean needsPrePopulation=false;
@@ -152,6 +163,7 @@ public class DBHelper {
 			
 			db.execSQL(PASSWORDS_CREATE);
 			db.execSQL(PACKAGE_ACCESS_CREATE);
+			db.execSQL(CIPHER_ACCESS_CREATE);
 			db.execSQL(MASTER_KEY_CREATE);
 			db.execSQL(SALT_CREATE);
 		} catch (SQLException e)
@@ -730,6 +742,55 @@ public class DBHelper {
 		{
 			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
 		}
+	}
+
+//////////Cipher Access Functions ////////////////
+
+	/**
+	 * Add a package to the list of packages allowed to use the encrypt/decrypt
+	 * cipher services.
+	 * 
+	 * @param packageToAdd
+	 * @param expiration set to 0 if no expiration, otherwise epoch time
+	 */
+	public void addCipherAccess (String packageToAdd, long expiration) {
+		ContentValues initialValues = new ContentValues ();
+		initialValues.put("packagename", packageToAdd);
+		initialValues.put("expires", expiration);
+		DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,
+			DateFormat.FULL);
+		Date today = new Date();
+		String dateOut = dateFormatter.format(today);
+		initialValues.put("dateadded", dateOut);
+		try {
+			db.insert(TABLE_CIPHER_ACCESS, null, initialValues);
+		} catch (SQLException e) {
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		}
+	}
+
+	/**
+	 * Fetch the cipher access for a package.   This determines if the package
+	 * is allowed to use encrypt/decrypt services.
+	 * 
+	 * @param packageName
+	 * @return -1 if not found, 0 if no expiration, otherwise epoch date of expiration
+	 */
+	public long fetchCipherAccess(String packageName) {
+		long expires=-1;	// default to not found
+		try {
+			Cursor c = db.query(true, TABLE_CIPHER_ACCESS, new String[] {"expires"},
+			"packagename="+packageName, null, null, null, null,null);
+			if(c.getCount() > 0) {
+				c.moveToFirst();
+				expires=c.getLong(0);
+			}
+			c.close();
+		} catch (SQLException e)
+		{
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		}
+		return expires;
 	}
 	/**
 	 * Begin a transaction on an open database.
