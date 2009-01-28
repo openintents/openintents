@@ -23,8 +23,7 @@
 	<string name="new_item">Nowy element</string>
 	<string name="new_list">Nowa lista</string>
 	<string name="send">Wyślij listę</string>
-	<!-- TODO Is the line below correct? -->
-	<string name="empty_list_not_sent">Pusta listę ni wyślij.</string>
+	<string name="empty_list_not_sent">Nie wysłano pustej listy.</string>
 	<string name="email_not_available">Brak aplikacji służącej wysłaniu.</string>
 	<string name="my_shopping_list">Moja lista zakupów</string>
 	<string name="new_list_hint">tj. lista życzeń, lista osób</string>
