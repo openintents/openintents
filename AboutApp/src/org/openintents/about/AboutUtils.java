@@ -107,10 +107,25 @@ public class AboutUtils {
 							.getString(metadata))) {
 	        	return md
 				.getString(metadata);
-	        } else {
-	    		return "";
-	        }
-	
+	        } else if (md != null) {
+	        	//Still try metadata but don't expect a ready string (get it from the resources).
+	        		try {
+		        		int id = md.getInt(metadata);
+		        		Resources resources = context.getPackageManager()
+							.getResourcesForApplication(packagename);
+		        		String text = resources.getString(id);
+		        		if (!TextUtils.isEmpty(text)) {
+		        			return text;
+		        		}
+		        	} catch (NameNotFoundException e) {
+	            		Log.e(TAG, "Package name not found ", e);
+		        	} catch (NumberFormatException e) {
+	            		Log.e(TAG, "Metadata not valid id.", e);
+		        	} catch (Resources.NotFoundException e) {
+	            		Log.e(TAG, "Resource not found.", e);
+		        	}
+		    }
+	        return "";
 		}
 	}
 

@@ -69,6 +69,11 @@ public class About extends TabActivity {
 	//TODO BUG rotating screen broken due to TabHost?
 	//TODO BUG OI Updater does not find OI About.
 	
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR = ";";
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX = "("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+" )|("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+")";
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_HEADER = "Launchpad Contributions: ";
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_TAG = "translator-credits";
+
 	private static final String TAG = "About";
 	
 	/**
@@ -460,22 +465,42 @@ public class About extends TabActivity {
 	/**
 	 * Fetch and display translators information.
 	 * 
-	 * @param intent The intent from which to fetch the information.
+	 * @param intent
+	 *            The intent from which to fetch the information.
 	 */
-	protected void displayTranslators(final String packagename, final Intent intent) {
+	protected void displayTranslators(final String packagename,
+			final Intent intent) {
 
-		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_TRANSLATORS, AboutMetaData.METADATA_TRANSLATORS);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this,
+				packagename, intent, AboutIntents.EXTRA_TRANSLATORS,
+				AboutMetaData.METADATA_TRANSLATORS);
 		String text = AboutUtils.getTextFromArray(textarray);
-
+		
 		if (!TextUtils.isEmpty(text)) {
 			mTranslatorsText.setText(text);
 			mTranslatorsLabel.setVisibility(View.VISIBLE);
 			mTranslatorsText.setVisibility(View.VISIBLE);
 		} else {
-			mTranslatorsLabel.setVisibility(View.GONE);
-			mTranslatorsText.setVisibility(View.GONE);
+			text = AboutUtils.getStringExtraOrMetadata(this,
+					packagename, intent, AboutIntents.EXTRA_TRANSLATORS,
+					AboutMetaData.METADATA_TRANSLATORS);
+
+			// Create string array of translators from translated string
+			// from Launchpad or (for English) from the array.
+			if (!text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) && !TextUtils.isEmpty(text)) {
+				textarray = text.replaceFirst(
+						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
+				text = AboutUtils.getTextFromArray(textarray);
+
+				mTranslatorsText.setText(text);
+				mTranslatorsLabel.setVisibility(View.VISIBLE);
+				mTranslatorsText.setVisibility(View.VISIBLE);
+			} else {
+				mTranslatorsLabel.setVisibility(View.GONE);
+				mTranslatorsText.setVisibility(View.GONE);
+			}
 		}
-		
+
 	}
 
 	/**
@@ -783,8 +808,16 @@ public class About extends TabActivity {
 				.getStringArray(R.array.about_authors));
 		intent.putExtra(AboutIntents.EXTRA_DOCUMENTERS, getResources()
 				.getStringArray(R.array.about_documenters));
-		intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources()
-				.getStringArray(R.array.about_translators));
+		
+		//Create string array of translators from translated string from Launchpad or (for English) from the array.
+		String translatorsString=getString(R.string.about_translators);
+		if(translatorsString.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG)){
+			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources().getStringArray(R.array.about_translators));
+		}else{
+			String[] translatorsArray=translatorsString.replaceFirst(LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
+			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, translatorsArray);
+		}
+		
 		intent.putExtra(AboutIntents.EXTRA_ARTISTS, getResources()
 				.getStringArray(R.array.about_artists));
 		
@@ -827,15 +860,6 @@ public class About extends TabActivity {
 	 */
 	protected void showAboutDialog() {
 		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
-		
-		//Create string array of translators from translated string from Launchpad or (for English) from the array.
-		String translatorsString=getString(R.string.about_translators);
-		if(translatorsString.equals("translator-credits")){
-			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources().getStringArray(R.array.about_translators));
-		}else{
-			String[] translatorsArray=translatorsString.replaceFirst("Launchpad Contributions: ", "").split("(; )|(;)");
-			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, translatorsArray);
-		}
 		
 		// Start about activity. Needs to be "forResult" with requestCode>=0
 		// so that the package name is passed properly.

@@ -36,7 +36,7 @@
         <meta-data android:name="org.openintents.metadata.DOCUMENTERS"
                        android:resource="@array/about_documenters" />
         <meta-data android:name="org.openintents.metadata.TRANSLATORS"
-                       android:resource="@array/about_translators" />
+                       android:resource="@string/about_translators" />
         <meta-data android:name="org.openintents.metadata.ARTISTS"
                        android:resource="@array/about_artists" />
         <meta-data android:name="org.openintents.metadata.WEBSITE_LABEL"
