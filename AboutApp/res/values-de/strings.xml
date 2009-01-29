@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+    <string name="app_name">OI Info</string> 
+	 
+	<string name="about_comments">Informationen über diverse Anwendungen</string>  
+	<string name="about_copyright">Copyright © 2008-2009 pjv</string><!-- Add your name here, separated with comma's, if you helped out --> 
+	<string name="about_website_label">OI Info auf OpenIntents.org</string> 
+	<string name="about_website_url">http://www.openintents.org</string>
+	<string name="about_email">support@openintents.org</string>
+	
+    <string name="menu_preferences">Einstellungen</string>
+    <string name="menu_about">Über OI Info</string>
+    
+    <string name="about_activity_name">Info</string>
+    <string name="about_activity_name_extended">Info zu %s</string>
+    <string name="preferences_activity_name">OI Info Einstellungen</string>
+    <string name="about_activity_title">Info</string>
+    
+    
+	<string name="l_authors">Geschrieben von</string>
+	<string name="l_documenters">Dokumentiert von</string>
+	<string name="l_translators">Übersetzt von</string>
+	<string name="l_artists">Grafiken von</string>
+	<string name="l_credits">Mitwirkende</string>
+	<string name="l_license">Lizenz</string>
+	<string name="l_info">Allgemeine Informationen</string>
+	
+	
+	<string name="no_information_available">Keine Informationen verfügbar.</string>
+	
+<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101;</string>
+</resources>
