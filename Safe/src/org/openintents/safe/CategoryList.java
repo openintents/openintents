@@ -846,7 +846,7 @@ public class CategoryList extends ListActivity {
 					importDatabaseThreadStart(filename);
 				}
 			}) 
-			.setMessage(R.string.dialog_import_msg)
+			.setMessage(getString(R.string.dialog_import_msg, filename))
 			.create();
 		about.show();
 	}
