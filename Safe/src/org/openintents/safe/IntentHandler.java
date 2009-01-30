@@ -74,7 +74,8 @@ public class IntentHandler extends Activity {
 		super.onCreate(icicle);
 		mServiceIntent = null;
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		initService(); // start up the PWS service so other applications can query.
+		
+		// The service is launched in onResume()
 	}
 
 	
@@ -422,7 +423,8 @@ public class IntentHandler extends Activity {
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);
 		}
-
+		
+		initService(); // start up the PWS service so other applications can query.
 	}
 	
 	@Override
@@ -476,10 +478,10 @@ public class IntentHandler extends Activity {
 				return;
 			}
 			
-			boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
-			if (debug) Log.d(TAG, "Prompt for password: " + promptforpassword);
 			try {
 				if (service.getPassword() == null) {
+					boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
+					if (debug) Log.d(TAG, "Prompt for password: " + promptforpassword);
 					if (promptforpassword) {
 						if (debug) Log.d(TAG, "ask for password");
 						// the service isn't running
