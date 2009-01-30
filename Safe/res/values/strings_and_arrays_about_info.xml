@@ -18,9 +18,9 @@
 
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe keeps all your private data encrypted.</string>  
-	<string name="about_copyright">Copyright © 2008-2009 Steven Osborn and Randy McEoin</string> 
+	<string name="about_copyright">Copyright © 2008-2009 OpenIntents.org</string> 
 	<string name="about_website_label">OI Safe at OpenIntents</string> 
-	<string name="about_website_url">http://www.openintents.org</string>
+	<string name="about_website_url">http://www.openintents.org/en/node/205</string>
 	<string name="about_email">support@openintents.org</string>
 	
     <string-array name="about_authors"><!-- Add your name here if you helped out -->
