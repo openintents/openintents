@@ -128,13 +128,21 @@ public class PassView extends Activity {
 				cb.setText(passwordText.getText().toString());
 
 				Intent i = new Intent(Intent.ACTION_VIEW);
-				Uri u = Uri.parse(websiteText.getText().toString());
+				String link = websiteText.getText().toString();
+				Uri u = Uri.parse(link);
 				i.setData(u);
 				try {
 					startActivity(i);
 				} catch (ActivityNotFoundException e) {
-					Toast.makeText(PassView.this, R.string.invalid_website,
-						Toast.LENGTH_SHORT).show();
+					// Let's try to catch the most common mistake: omitting http:
+					u = Uri.parse("http://" + link);
+					i.setData(u);
+					try {
+						startActivity(i);
+					} catch (ActivityNotFoundException e2) {
+						Toast.makeText(PassView.this, R.string.invalid_website,
+							Toast.LENGTH_SHORT).show();
+					}
 				}
 			}
 		});
