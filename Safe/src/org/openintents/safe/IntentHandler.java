@@ -48,7 +48,7 @@ import android.widget.Toast;
  */
 public class IntentHandler extends Activity {
 
-	private static final boolean debug = !false;
+	private static final boolean debug = false;
 	private static String TAG = "IntentHandler";
 	
 	private static final int REQUEST_CODE_ASK_PASSWORD = 1;

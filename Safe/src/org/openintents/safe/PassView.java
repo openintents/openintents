@@ -54,11 +54,11 @@ public class PassView extends Activity {
 
 	public static final int REQUEST_EDIT_PASS = 1;
 	
-	private EditText descriptionText;
-	private EditText passwordText;
-	private EditText usernameText;
-	private EditText websiteText;
-	private EditText noteText;
+	private TextView descriptionText;
+	private TextView passwordText;
+	private TextView usernameText;
+	private TextView websiteText;
+	private TextView noteText;
 	private TextView lastEditedText;
 	private TextView uniqueNameText;
 	private TextView packageAccessText;
@@ -92,11 +92,11 @@ public class PassView extends Activity {
 
 		setContentView(R.layout.pass_view);
 
-		descriptionText = (EditText) findViewById(R.id.description);
-		websiteText = (EditText) findViewById(R.id.website);
-		usernameText = (EditText) findViewById(R.id.username);
-		passwordText = (EditText) findViewById(R.id.password);
-		noteText = (EditText) findViewById(R.id.note);
+		descriptionText = (TextView) findViewById(R.id.description);
+		websiteText = (TextView) findViewById(R.id.website);
+		usernameText = (TextView) findViewById(R.id.username);
+		passwordText = (TextView) findViewById(R.id.password);
+		noteText = (TextView) findViewById(R.id.note);
 		lastEditedText = (TextView) findViewById(R.id.last_edited);
 		uniqueNameText = (TextView) findViewById(R.id.uniquename);
 		packageAccessText = (TextView) findViewById(R.id.packageaccess);

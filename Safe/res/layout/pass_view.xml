@@ -36,8 +36,12 @@
 					android:layout_marginRight="2sp"
 					android:layout_marginBottom="1sp"
  					android:text="@string/description" />
-				<EditText android:id="@+id/description"
-					android:editable="false"
+				<TextView android:id="@+id/description"
+					android:textColor="#eee"
+					android:background="#445"
+					android:textSize="18sp"
+					android:padding="2sp"
+					android:layout_margin="1sp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -47,8 +51,12 @@
 					android:layout_height="wrap_content" 
 					android:layout_marginRight="2sp"
 					android:text="@string/website" />
-				<EditText android:id="@+id/website"
-					android:editable="false"
+				<TextView android:id="@+id/website"
+					android:textColor="#eee"
+					android:background="#445"
+					android:textSize="18sp"
+					android:padding="2sp"
+					android:layout_margin="1sp"
 				    android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_weight="1"/>
@@ -63,8 +71,12 @@
 					android:layout_height="wrap_content" 
 					android:layout_marginRight="2sp"
 					android:text="@string/username" />
-				<EditText android:id="@+id/username" 
-					android:editable="false"
+				<TextView android:id="@+id/username" 
+					android:textColor="#eee"
+					android:background="#445"
+					android:textSize="18sp"
+					android:padding="2sp"
+					android:layout_margin="1sp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -75,8 +87,12 @@
 					android:layout_height="wrap_content" 
 					android:layout_marginRight="2sp"
 					android:text="@string/password" />
-				<EditText android:id="@+id/password"
-					android:editable="false"
+				<TextView android:id="@+id/password"
+					android:textColor="#eee"
+					android:background="#445"
+					android:textSize="18sp"
+					android:padding="2sp"
+					android:layout_margin="1sp"
 				  	android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -86,9 +102,13 @@
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
 		android:text="@string/notes" />
-	<EditText android:id="@+id/note" android:layout_width="fill_parent"
-		android:editable="false"
+	<TextView android:id="@+id/note" android:layout_width="fill_parent"
+		android:textColor="#eee"
+		android:background="#445"
+		android:textSize="18sp"
+		android:padding="2sp"
 		android:gravity="top" 
+		android:layout_margin="1sp"
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
 		android:scrollbars="vertical" />

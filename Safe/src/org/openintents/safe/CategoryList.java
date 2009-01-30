@@ -106,6 +106,7 @@ public class CategoryList extends ListActivity {
 
     private static final String EXPORT_FILENAME = "/sdcard/oisafe.csv";
     public static final String BACKUP_FILENAME = "/sdcard/oisafe.xml";
+    private static final String PASSWORDSAFE_IMPORT_FILENAME = "/sdcard/passwordsafe.csv";
     
     public static final String KEY_ID = "id";  // Intent keys
 
@@ -815,7 +816,14 @@ public class CategoryList extends ListActivity {
 	}
 		
 	public void importDatabase(){
-		final String filename=EXPORT_FILENAME;
+		final String filename;
+		File oiImport=new File(EXPORT_FILENAME);
+		File pwsImport=new File(PASSWORDSAFE_IMPORT_FILENAME);
+		if (oiImport.exists() || !pwsImport.exists()) {
+			filename=EXPORT_FILENAME;
+		}else{
+			filename=PASSWORDSAFE_IMPORT_FILENAME;
+		}
 		File csvFile=new File(filename);
 		if (!csvFile.exists()) {
 			String msg=getString(R.string.import_file_missing) + " " +

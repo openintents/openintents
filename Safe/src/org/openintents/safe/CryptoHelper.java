@@ -52,7 +52,7 @@ import android.util.Log;
  */
 public class CryptoHelper {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
     private static String TAG = "CryptoHelper";
     protected static PBEKeySpec pbeKeySpec;
     protected static PBEParameterSpec pbeParamSpec;

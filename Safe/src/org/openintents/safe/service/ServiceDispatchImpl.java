@@ -35,7 +35,7 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "ServiceDispatchIMPL";
 	private CryptoHelper ch;
 	private String salt;
