@@ -69,5 +69,7 @@
 	<string name="preference_sortorder_title">Sortierung</string>
 	<string name="preference_sortorder_summary">Sortierung der Posten wählen</string>
 	<string name="preference_sortorder_dialog_title">Wählen Sie eine Sortierung</string>
+	<string name="preference_loadlastused_title">Verwendete Liste merken</string>
+	<string name="preference_loadlastused_summary">Immer die zuletzt benutzte Liste verwenden</string>
 
 </resources> 

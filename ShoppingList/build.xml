@@ -153,9 +153,15 @@ storepass=*password of keystore*
 			<fileset dir="." includes="**/*.bak"/>
 		</delete>
 	</target>
+	<target name="clear_bak">
+		<echo>purging .bak files </echo>
+		<delete>
+			<fileset dir="." includes="**/*.bak" />
+		</delete>
+	</target>
 	
     <!-- Generate the R.java file for this project's resources. -->
-    <target name="resource-src" depends="dirs">
+    <target name="resource-src" depends="dirs,clear_bak">
         <echo>Generating R.java / Manifest.java from the resources...</echo>
         <exec executable="${aapt}" failonerror="true">
             <arg value="package" />

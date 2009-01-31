@@ -68,5 +68,7 @@
 	<string name="preference_sortorder_title">Sort order</string>
 	<string name="preference_sortorder_summary">Change sort order of list items</string>
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
+	<string name="preference_loadlastused_title">Load last used</string>
+	<string name="preference_loadlastused_summary">Always start with the last viewed List</string>
 
 </resources> 

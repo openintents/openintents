@@ -13,7 +13,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_SORTORDER_DEFAULT = "3";
 	public static final String PREFS_FONTSIZE = "fontsize";
 	public static final String PREFS_FONTSIZE_DEFAULT = "2";
-	
+	public static final String PREFS_LOADLASTUSED="loadlastused";
+	public static final String PREFS_LASTUSED="lastused";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

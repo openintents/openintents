@@ -45,6 +45,8 @@ import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -311,7 +313,18 @@ public class ShoppingActivity extends Activity { // implements
 		mListUri = Shopping.Lists.CONTENT_URI;
 		mItemUri = Shopping.Items.CONTENT_URI;
 
-		int defaultShoppingList = (int) Shopping.getDefaultList();
+		//if set to "last used", override the default list.
+		SharedPreferences sp=getSharedPreferences("org.openintents.shopping_preferences",MODE_PRIVATE);
+		final boolean loadLastUsed=sp.getBoolean(PreferenceActivity.PREFS_LOADLASTUSED,false);
+		Log.e(TAG,"load last used ?"+loadLastUsed);
+		int defaultShoppingList = 1;
+		if (loadLastUsed )
+		{
+			defaultShoppingList=sp.getInt(PreferenceActivity.PREFS_LASTUSED,1);
+		}else
+		{
+			defaultShoppingList=(int) Shopping.getDefaultList();
+		}
 
 		// Handle the calling intent
 		final Intent intent = getIntent();
@@ -465,6 +478,10 @@ public class ShoppingActivity extends Activity { // implements
 		super.onPause();
 		Log.i(TAG, "Shopping list onPause()");
 
+		SharedPreferences sp=getSharedPreferences("org.openintents.shopping_preferences",MODE_PRIVATE);
+		SharedPreferences.Editor editor=sp.edit();
+		editor.putInt(PreferenceActivity.PREFS_LASTUSED, new Long(getSelectedListId()).intValue());
+		editor.commit();
 		// TODO ???
 		/*
 		 * // Unregister refresh intent receiver

@@ -17,7 +17,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.0.3-rc1"
+	android:versionName="1.0.3-rc2"
 	android:versionCode="10003">
 	
 	<uses-permission android:name="org.openintents.shopping.READ_PERMISSION" />
