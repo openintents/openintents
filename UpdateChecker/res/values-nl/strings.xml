@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">Een nieuwe versie van %s is beschikbaar.\nWilt u upgraden?</string>
+    <string name="update_available_3">Een nieuwe versie van %s is beschikbaar op %s.\n%s\n</string>
+    <string name="update_available_2">Een nieuwe versie van %s is beschikbaar.\n%s\n</string>
+    <string name="update_available_location_no_comment">Een nieuwe versie van %s is beschikbaar op %s.</string>
+    <string name="update_available_no_comment">Een nieuwe versie van %s is beschikbaar.</string>
+	<string name="market_not_available">Android Market is niet beschikbaar.</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Versie %s\nSD-kaart %s\n\nOS\n%s</string>
+    <string name="free_space">vrije ruimte: %s</string>
+    <string name="os_info">Bord %s\nMerk %s\nApparaat %s\nID %s\nModel %s</string>
+    
+    <string name="do_update">Nu updaten!</string>
+    <string name="do_update_market">Nu proberen te updaten via Market!</string>
+    <string name="do_update_andAppStore">Nu proberen te updaten via AndAppStore!</string>
+    <string name="remind_me_later">Later eraan herinneren!</string>
+    <string name="ignore_this_update">Negeer deze update</string>
+    <string name="ignore_all_further_updates">Negeer alle verdere updates</string>
+    <string name="ok">Ok</string>
+    
+    <string name="update_not_started">Update kon niet worden gestart!\n\nGelieve de applicatie-ontwikkelaar te contacteren!\n\n%s</string>
+    <string name="app_up_to_date">Applicatie is up-to-date.</string>
+    <string name="checking">Bezig met zoeken naar nieuwe versie.</string>
+    <string name="building_app_list">Bezig met het maken van een lijst van applicaties.</string>
+    <string name="check_andappstore">Controleer AndAppStore.com</string>
+    <string name="check_versions">Controleer versies</string>
+    <string name="show_versions">Toon alles</string>
+    <string name="refresh">Verversen</string>
+    <string name="checked_against_andappstore">AndAppStore gecontroleerd</string>
+    <string name="current_version">Huidige versie: %s</string>
+    <string name="current_version_code">Huidige versiecode: %s</string>
+    <string name="newer_version">Nieuwere versie: %s</string>
+    <string name="newer_version_comment">Nieuwere versie: %s - %s</string>
+    <string name="newer_version_available">Nieuwere versie beschikbaar.</string>
+    <string name="no_update_info_found">Geen update-informatie gevonden.</string>
+    <string name="title_list_new_versions">OI Update - Lijst van nieuwe versies</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - Nieuwe versies op AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - Lijst van applicaties in beheer</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
+    <string name="settings">Voorkeuren</string>
+    <string name="auto_update">Automatische controle</string>
+    <string name="ignore_title">Genegeerd</string>
+    <string name="ignore_text">Updates worden momenteel genegeerd. Wilt u terug update-infomatie ontvangen?</string>
+    <string name="unknown_title">Onbekend</string>
+    <string name="unknown_text">Geen update-informatie beschikbaar. Gelieve manueel te controleren en de ontwikkelaar te vragen OI Update in de toekomst te ondersteunen.</string>
+    <string name="search_on_market">Zoeken op de Market</string>
+    <string name="search_on_andappstore">Zoeken op AndAppStore</string>
+    <string name="processing">Bezig met het verwerken van %s</string>
+    
+    <string name="warn">De update-richtlijnen van deze applicatie leiden naar een andere website dan de Android Market. Applicaties die geïnstalleerd worden via onbekende bronnen houden mogelijk een beveiligingsrisico in.</string>
+    <string name="continue_anyway">Toch doorgaan</string>
+    <string name="abort">Afbreken</string>
+    
+    <string name="preference_auto_update">Automatische updates</string>
+    <string name="preference_auto_update_summary">Regelmatig zoeken naar updates</string>
+    <string name="title_update_interval">Verversingsinterval</string>
+    <string name="summary_update_interval">Het interval waarmee de controle naar updates moet worden uitgevoerd.</string>
+    <string name="dialog_title_update_interval">Selecteer interval</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">Waarschuwing</string>
+    <string name="preference_warning_text">Als u dit item uitzet dan zal u niet langer meldingen ontvangen voor updates. Wilt u zeker automatische updates uitzetten?</string>
+    
+    <string name="preference_andappstore">Gebruik AndAppStore</string>
+    <string name="preference_andappstore_summary">Gebruik versie-informatie geleverd door AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Update-informatie lezen</string>
+    <string name="permission_write_update_info">Update-informatie schrijven</string>
+    <string name="permission_read_update_info_descr">Informatie over geïnstalleerde applicaties, update-locaties en -verzoeken lezen.</string>
+    <string name="permission_write_update_info_descr">Informatie over geïnstalleerde applicaties, update-locaties en -verzoeken schrijven.</string>
+
+
+	<!-- About -->
+	<string name="about">Info</string>
+	<string name="about_title">Info over %s</string>
+	<string name="about_text">Versie %s \n\n OI Update houdt u geïnformeerd over nieuwe applicatieversies.\n OpenIntents laat Android applicaties data delen via intents en open interfaces.\n\n Voor meer informatie en andere geweldige applicaties bezoek OpenIntents op www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA</string>
+<string name="eula_description">
+"Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">Accepteren</string>
+	<string name="eula_refuse">Annuleren</string>
+	
+<string name="about_translators">Launchpad Contributions:
+  pjv https://launchpad.net/~pjv</string>
+</resources>

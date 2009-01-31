@@ -1,12 +1,16 @@
-#, fuzzy
+# Dutch translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-01-27 21:29+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-01-30 19:36+0000\n"
+"Last-Translator: pjv <Unknown>\n"
+"Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,153 +19,155 @@ msgstr ""
 
 #: ../res/values/strings.xml:3(string) ../res/values/strings.xml:11(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI Update"
 
 #: ../res/values/strings.xml:5(string)
 msgid "A new version of %s is available.\\nWould you like to upgrade?"
-msgstr ""
+msgstr "Een nieuwe versie van %s is beschikbaar.\\nWilt u upgraden?"
 
 #: ../res/values/strings.xml:6(string)
 msgid "A new version of %s is available at %s.\\n%s\\n"
-msgstr ""
+msgstr "Een nieuwe versie van %s is beschikbaar op %s.\\n%s\\n"
 
 #: ../res/values/strings.xml:7(string)
 msgid "A new version of %s is available.\\n%s\\n"
-msgstr ""
+msgstr "Een nieuwe versie van %s is beschikbaar.\\n%s\\n"
 
 #: ../res/values/strings.xml:8(string)
 msgid "A new version of %s is available at %s."
-msgstr ""
+msgstr "Een nieuwe versie van %s is beschikbaar op %s."
 
 #: ../res/values/strings.xml:9(string)
 msgid "A new version of %s is available."
-msgstr ""
+msgstr "Een nieuwe versie van %s is beschikbaar."
 
 #: ../res/values/strings.xml:10(string)
 msgid "Android Market not available."
-msgstr ""
+msgstr "Android Market is niet beschikbaar."
 
 #: ../res/values/strings.xml:12(string)
 msgid "Android Market"
-msgstr ""
+msgstr "Android Market"
 
 #: ../res/values/strings.xml:13(string)
 msgid "AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com"
 
 #: ../res/values/strings.xml:15(string)
 msgid "Version %s\\nSD card %s\\n\\nOS\\n%s"
-msgstr ""
+msgstr "Versie %s\\nSD-kaart %s\\n\\nOS\\n%s"
 
 #: ../res/values/strings.xml:16(string)
 msgid "free space: %s"
-msgstr ""
+msgstr "vrije ruimte: %s"
 
 #: ../res/values/strings.xml:17(string)
 msgid "Board %s\\nBrand %s\\nDevice %s\\nID %s\\nModel %s"
-msgstr ""
+msgstr "Bord %s\\nMerk %s\\nApparaat %s\\nID %s\\nModel %s"
 
 #: ../res/values/strings.xml:19(string)
 msgid "Perform update now!"
-msgstr ""
+msgstr "Nu updaten!"
 
 #: ../res/values/strings.xml:20(string)
 msgid "Try update from Market now!"
-msgstr ""
+msgstr "Nu proberen te updaten via Market!"
 
 #: ../res/values/strings.xml:21(string)
 msgid "Try update from AndAppStore now!"
-msgstr ""
+msgstr "Nu proberen te updaten via AndAppStore!"
 
 #: ../res/values/strings.xml:22(string)
 msgid "Remind me later!"
-msgstr ""
+msgstr "Later eraan herinneren!"
 
 #: ../res/values/strings.xml:23(string)
 msgid "Ignore this update"
-msgstr ""
+msgstr "Negeer deze update"
 
 #: ../res/values/strings.xml:24(string)
 msgid "Ignore all further updates"
-msgstr ""
+msgstr "Negeer alle verdere updates"
 
 #: ../res/values/strings.xml:25(string)
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: ../res/values/strings.xml:27(string)
 msgid ""
 "Update could not be started!\\n\\nPlease contact application developer!\\n\\"
 "n%s"
 msgstr ""
+"Update kon niet worden gestart!\\n\\nGelieve de applicatie-ontwikkelaar te "
+"contacteren!\\n\\n%s"
 
 #: ../res/values/strings.xml:28(string)
 msgid "Application is up-to-date."
-msgstr ""
+msgstr "Applicatie is up-to-date."
 
 #: ../res/values/strings.xml:29(string)
 msgid "Checking for new version."
-msgstr ""
+msgstr "Bezig met zoeken naar nieuwe versie."
 
 #: ../res/values/strings.xml:30(string)
 msgid "Building list of applications."
-msgstr ""
+msgstr "Bezig met het maken van een lijst van applicaties."
 
 #: ../res/values/strings.xml:31(string)
 msgid "Check AndAppStore.com"
-msgstr ""
+msgstr "Controleer AndAppStore.com"
 
 #: ../res/values/strings.xml:32(string)
 msgid "Check versions"
-msgstr ""
+msgstr "Controleer versies"
 
 #: ../res/values/strings.xml:33(string)
 msgid "Show all"
-msgstr ""
+msgstr "Toon alles"
 
 #: ../res/values/strings.xml:34(string)
 msgid "Refresh"
-msgstr ""
+msgstr "Verversen"
 
 #: ../res/values/strings.xml:35(string)
 msgid "Checked AndAppStore"
-msgstr ""
+msgstr "AndAppStore gecontroleerd"
 
 #: ../res/values/strings.xml:36(string)
 msgid "Current version: %s"
-msgstr ""
+msgstr "Huidige versie: %s"
 
 #: ../res/values/strings.xml:37(string)
 msgid "Current version code: %s"
-msgstr ""
+msgstr "Huidige versiecode: %s"
 
 #: ../res/values/strings.xml:38(string)
 msgid "Newer version: %s"
-msgstr ""
+msgstr "Nieuwere versie: %s"
 
 #: ../res/values/strings.xml:39(string)
 msgid "Newer version: %s - %s"
-msgstr ""
+msgstr "Nieuwere versie: %s - %s"
 
 #: ../res/values/strings.xml:40(string)
 msgid "Newer version available."
-msgstr ""
+msgstr "Nieuwere versie beschikbaar."
 
 #: ../res/values/strings.xml:41(string)
 msgid "No update information found."
-msgstr ""
+msgstr "Geen update-informatie gevonden."
 
 #: ../res/values/strings.xml:42(string)
 msgid "OI Update - List of new versions"
-msgstr ""
+msgstr "OI Update - Lijst van nieuwe versies"
 
 #: ../res/values/strings.xml:43(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr ""
+msgstr "OI Update - Nieuwe versies op AndAppStore"
 
 #: ../res/values/strings.xml:44(string)
 msgid "OI Update - List of managed applications"
-msgstr ""
+msgstr "OI Update - Lijst van applicaties in beheer"
 
 #: ../res/values/strings.xml:45(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
@@ -169,42 +175,45 @@ msgstr ""
 
 #: ../res/values/strings.xml:46(string)
 msgid "Settings"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: ../res/values/strings.xml:47(string)
 msgid "Auto check"
-msgstr ""
+msgstr "Automatische controle"
 
 #: ../res/values/strings.xml:48(string)
 msgid "Ignored"
-msgstr ""
+msgstr "Genegeerd"
 
 #: ../res/values/strings.xml:49(string)
 msgid ""
 "Updates are currently ignored. Would you like to receive updates again?"
 msgstr ""
+"Updates worden momenteel genegeerd. Wilt u terug update-infomatie ontvangen?"
 
 #: ../res/values/strings.xml:50(string)
 msgid "Unknown"
-msgstr ""
+msgstr "Onbekend"
 
 #: ../res/values/strings.xml:51(string)
 msgid ""
 "No update information available. Please check manually and ask the developer "
 "to support OI Update in the future."
 msgstr ""
+"Geen update-informatie beschikbaar. Gelieve manueel te controleren en de "
+"ontwikkelaar te vragen OI Update in de toekomst te ondersteunen."
 
 #: ../res/values/strings.xml:52(string)
 msgid "Search on Market"
-msgstr ""
+msgstr "Zoeken op de Market"
 
 #: ../res/values/strings.xml:53(string)
 msgid "Search on AndAppStore"
-msgstr ""
+msgstr "Zoeken op AndAppStore"
 
 #: ../res/values/strings.xml:54(string)
 msgid "Processing %s"
-msgstr ""
+msgstr "Bezig met het verwerken van %s"
 
 #: ../res/values/strings.xml:56(string)
 msgid ""
@@ -212,34 +221,38 @@ msgid ""
 "Android Market. Applications installed from unknown sources might exhibit a "
 "security risk."
 msgstr ""
+"De update-richtlijnen van deze applicatie leiden naar een andere website dan "
+"de Android Market. Applicaties die geïnstalleerd worden via onbekende "
+"bronnen houden mogelijk een beveiligingsrisico in."
 
 #: ../res/values/strings.xml:60(string)
 msgid "Continue anyway"
-msgstr ""
+msgstr "Toch doorgaan"
 
 #: ../res/values/strings.xml:61(string)
 msgid "Abort"
-msgstr ""
+msgstr "Afbreken"
 
 #: ../res/values/strings.xml:63(string)
 msgid "Auto update"
-msgstr ""
+msgstr "Automatische updates"
 
 #: ../res/values/strings.xml:64(string)
 msgid "If checked, search for updates is performed regularly"
-msgstr ""
+msgstr "Regelmatig zoeken naar updates"
 
 #: ../res/values/strings.xml:65(string)
 msgid "Update interval"
-msgstr ""
+msgstr "Verversingsinterval"
 
 #: ../res/values/strings.xml:66(string)
 msgid "Set the interval how often the update search should be performed."
 msgstr ""
+"Het interval waarmee de controle naar updates moet worden uitgevoerd."
 
 #: ../res/values/strings.xml:67(string)
 msgid "Select interval"
-msgstr ""
+msgstr "Selecteer interval"
 
 #: ../res/values/strings.xml:68(string)
 msgid "every_month"
@@ -247,49 +260,55 @@ msgstr ""
 
 #: ../res/values/strings.xml:69(string)
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 #: ../res/values/strings.xml:70(string)
 msgid ""
 "If you uncheck this item, you will no longer receive notifications for "
 "updates. Do you still want to uncheck auto update?"
 msgstr ""
+"Als u dit item uitzet dan zal u niet langer meldingen ontvangen voor "
+"updates. Wilt u zeker automatische updates uitzetten?"
 
 #: ../res/values/strings.xml:72(string)
 msgid "Use AndAppStore"
-msgstr ""
+msgstr "Gebruik AndAppStore"
 
 #: ../res/values/strings.xml:73(string)
 msgid "Use version information provided by AndAppStore.com"
-msgstr ""
+msgstr "Gebruik versie-informatie geleverd door AndAppStore.com"
 
 #: ../res/values/strings.xml:75(string)
 msgid "Read update information"
-msgstr ""
+msgstr "Update-informatie lezen"
 
 #: ../res/values/strings.xml:76(string)
 msgid "Write update information"
-msgstr ""
+msgstr "Update-informatie schrijven"
 
 #: ../res/values/strings.xml:77(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
 msgstr ""
+"Informatie over geïnstalleerde applicaties, update-locaties en -verzoeken "
+"lezen."
 
 #: ../res/values/strings.xml:78(string)
 msgid ""
 "Write information about installed applications, update locations and "
 "requests."
 msgstr ""
+"Informatie over geïnstalleerde applicaties, update-locaties en -verzoeken "
+"schrijven."
 
 #. About
 #: ../res/values/strings.xml:82(string)
 msgid "About"
-msgstr ""
+msgstr "Info"
 
 #: ../res/values/strings.xml:83(string)
 msgid "About %s"
-msgstr ""
+msgstr "Info over %s"
 
 #: ../res/values/strings.xml:84(string)
 msgid ""
@@ -298,6 +317,10 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
+"Versie %s \\n\\n OI Update houdt u geïnformeerd over nieuwe "
+"applicatieversies.\\n OpenIntents laat Android applicaties data delen via "
+"intents en open interfaces.\\n\\n Voor meer informatie en andere geweldige "
+"applicaties bezoek OpenIntents op www.openintents.org"
 
 #. EULA
 #: ../res/values/strings.xml:92(string)
@@ -318,13 +341,15 @@ msgstr ""
 
 #: ../res/values/strings.xml:100(string)
 msgid "Accept"
-msgstr ""
+msgstr "Accepteren"
 
 #: ../res/values/strings.xml:101(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Annuleren"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
 #: ../res/values/strings.xml:103(string) ../res/values/strings.xml:0(None)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  pjv https://launchpad.net/~pjv"
