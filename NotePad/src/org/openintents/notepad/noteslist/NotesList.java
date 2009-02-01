@@ -427,19 +427,20 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// For some reason the requested item isn't available, do nothing
 			return;
 		}
-
+		
+		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
+		
 		// Setup the menu header
 		menu.setHeaderTitle(cursor.getString(NotesListCursor.COLUMN_INDEX_TITLE));
 
-		// Add a menu item to send the note
-		menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
-
 		menu.add(0, MENU_ITEM_EDIT_TAGS, 0, R.string.menu_edit_tags);
 		
-		menu.add(0, MENU_ITEM_SAVE, 0, R.string.menu_save_to_sdcard);
-		
-		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
-		if (encrypted <= 0) {
+		if (encrypted == 0) {
+			// Add a menu item to send the note
+			menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
+
+			menu.add(0, MENU_ITEM_SAVE, 0, R.string.menu_save_to_sdcard);
+			
 			menu.add(0, MENU_ITEM_ENCRYPT, 0, R.string.menu_encrypt);
 		} else {
 			menu.add(0, MENU_ITEM_UNENCRYPT, 0, R.string.menu_undo_encryption);
