@@ -156,8 +156,10 @@ public class IntentHandler extends Activity {
 			actionDispatch();
 		} else {
 			// ask first
-			if (debug) Log.d(TAG, "onActivityResult: showDialogAllowExternalAccess()");
-			showDialogAllowExternalAccess();
+			//if (debug) Log.d(TAG, "onActivityResult: showDialogAllowExternalAccess()");
+			//showDialogAllowExternalAccess();
+			
+			// This is called in onServiceConnected().
 		}
 	}
 
