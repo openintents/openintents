@@ -42,6 +42,7 @@
 	<EditText android:id="@+id/share_name"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
+		android:capitalize="sentences"
 		/>
 	<TextView
 	    android:layout_width="wrap_content" 
@@ -52,6 +53,7 @@
 	<EditText android:id="@+id/contacts"
 					android:layout_width="fill_parent"
 					android:layout_height="wrap_content"
+					android:capitalize="sentences"
 					/>
 	<LinearLayout
 		android:orientation="horizontal"

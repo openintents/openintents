@@ -30,6 +30,19 @@
     	<item>Standard</item>
         <item>Groß</item>
     </string-array>
-    
+
+    <string-array name="preference_capitalization_entries">
+        <item>Keine</item>
+       <item>Per Satz</item>
+        <item>Per Wort</item>
+    </string-array>
+
+    <string-array name="preference_capitalization_entryvalues">
+       <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array> 
+	
+
 </resources>
     

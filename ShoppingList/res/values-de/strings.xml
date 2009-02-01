@@ -71,5 +71,8 @@
 	<string name="preference_sortorder_dialog_title">Wählen Sie eine Sortierung</string>
 	<string name="preference_loadlastused_title">Verwendete Liste merken</string>
 	<string name="preference_loadlastused_summary">Immer die zuletzt benutzte Liste verwenden</string>
+	<string name="preference_capitalization_title">Grossschreibung</string>
+	<string name="preference_capitalization_summary">Automatisch setzen</string>
+	<string name="preference_capitalization_dialog_title">Auswaehlen</string> 
 
 </resources> 

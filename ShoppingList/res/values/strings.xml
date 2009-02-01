@@ -70,5 +70,8 @@
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
 	<string name="preference_loadlastused_title">Load last used</string>
 	<string name="preference_loadlastused_summary">Always start with the last viewed List</string>
+	<string name="preference_capitalization_title">Capitalization</string>
+	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
+	<string name="preference_capitalization_dialog_title">Choose capitalization</string> 
 
 </resources> 

@@ -447,6 +447,8 @@ public class ShoppingActivity extends Activity { // implements
 		checkListLength();
 
 		setListTheme(loadListTheme());
+		mEditText.setKeyListener(
+			PreferenceActivity.getCapitalizationKeyListenerFromPrefs(getApplicationContext())); 
 
 		if (!mUpdating) {
 			mUpdating = true;
@@ -1686,6 +1688,10 @@ public class ShoppingActivity extends Activity { // implements
 
 			// Accept OK also when user hits "Enter"
 			EditText et = (EditText) textEntryView.findViewById(R.id.edittext);
+
+			et.setKeyListener(PreferenceActivity.getCapitalizationKeyListenerFromPrefs(getApplicationContext())); 
+			//et.setKeyListener(PreferenceActivity.getCapitalizationKeyListenerFromPrefs(this)); 
+
 			et.setOnKeyListener(new OnKeyListener() {
 
 				public boolean onKey(final View v, final int keyCode,
