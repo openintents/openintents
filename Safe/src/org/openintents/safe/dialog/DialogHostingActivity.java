@@ -48,22 +48,22 @@ public class DialogHostingActivity extends Activity {
 			int dialogId = i.getIntExtra(EXTRA_DIALOG_ID, 0);
 			switch (dialogId) {
 			case DIALOG_ID_SAVE:
-				Log.i(TAG, "Show Save dialog");
+				if (debug) Log.i(TAG, "Show Save dialog");
 				saveFile();
 				break;
 			case DIALOG_ID_OPEN:
-				Log.i(TAG, "Show Save dialog");
+				if (debug) Log.i(TAG, "Show Save dialog");
 				openFile();
 				break;
 			case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
-				Log.i(TAG, "Show no file manager dialog");
+				if (debug) Log.i(TAG, "Show no file manager dialog");
 				showDialog(DIALOG_ID_NO_FILE_MANAGER_AVAILABLE);
 			case DIALOG_ID_ALLOW_EXTERNAL_ACCESS:
-				Log.i(TAG, "Show allow access dialog");
+				if (debug) Log.i(TAG, "Show allow access dialog");
 				showDialog(DIALOG_ID_ALLOW_EXTERNAL_ACCESS);
 				break;
 			case DIALOG_ID_FIRST_TIME_WARNING:
-				Log.i(TAG, "Show first time warning dialog");
+				if (debug) Log.i(TAG, "Show first time warning dialog");
 				showDialog(DIALOG_ID_FIRST_TIME_WARNING);
 				break;
 			}
@@ -127,7 +127,7 @@ public class DialogHostingActivity extends Activity {
 			dialog = new FilenameDialog(this);
 			break;
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
-			Log.i(TAG, "fmd - create");
+			if (debug) Log.i(TAG, "fmd - create");
 			dialog = new GetFromMarketDialog(this, 
 					RD.string.filemanager_not_available,
 					RD.string.filemanager_get_oi_filemanager,
