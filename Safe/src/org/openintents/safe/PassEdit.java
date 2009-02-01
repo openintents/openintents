@@ -148,7 +148,7 @@ public class PassEdit extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		if (discardEntry==false) {
+		if (isFinishing() && discardEntry==false) {
 			savePassword();
 		}
 		dbHelper.close();
