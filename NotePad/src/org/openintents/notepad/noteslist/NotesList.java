@@ -582,6 +582,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		File sdcard = getSdCardPath();
 		String filename = c.getString(NotesListCursor.COLUMN_INDEX_TITLE) + ".txt";
+		
+		// Avoid dangerous characters:
+		filename = filename.replace("/", "");
+		filename = filename.replace("\\", "");
+		filename = filename.replace(":", "");
+		filename = filename.replace("?", "");
+		filename = filename.replace("*", "");
 		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, filename));
 		
 		Intent i = new Intent(this, DialogHostingActivity.class);

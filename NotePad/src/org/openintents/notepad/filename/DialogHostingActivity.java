@@ -1,10 +1,14 @@
 package org.openintents.notepad.filename;
 
+import java.io.File;
+
 import org.openintents.distribution.GetFromMarketDialog;
 import org.openintents.distribution.RD;
 import org.openintents.intents.FileManagerIntents;
 import org.openintents.notepad.NotePadIntents;
 import org.openintents.notepad.R;
+import org.openintents.notepad.filename.FilenameDialog.OnFilenamePickedListener;
+import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
@@ -12,6 +16,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnDismissListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
@@ -36,6 +41,8 @@ public class DialogHostingActivity extends Activity {
 	private boolean mIsPausing = false;
 	
     EditText mEditText;
+    
+    String mFilename;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,7 @@ public class DialogHostingActivity extends Activity {
 			startActivity(intent);
 			finish();
 		} else {
+			mFilename = FileUriUtils.getFilename(getIntent().getData());
 			showDialog(DIALOG_ID_SAVE);
 		}
 	}
@@ -107,8 +115,11 @@ public class DialogHostingActivity extends Activity {
 		
 		switch (id) {
 		case DIALOG_ID_SAVE:
-			dialog = new FilenameDialog(this);
-			dialog.setTitle(R.string.menu_save_to_sdcard);
+			FilenameDialog fd = new FilenameDialog(this);
+			fd.setTitle(R.string.menu_save_to_sdcard);
+			fd.setFilename(mFilename);
+			fd.setOnFilenamePickedListener(mFilenamePickedListener);
+			dialog = fd;
 			break;
 		case DIALOG_ID_OPEN:
 			dialog = new FilenameDialog(this);
@@ -157,6 +168,20 @@ public class DialogHostingActivity extends Activity {
 				// Probably just a screen orientation change. Don't finish yet.
 				// Dialog has been dismissed by system.
 			}
+		}
+		
+	};
+
+	OnFilenamePickedListener mFilenamePickedListener = new OnFilenamePickedListener() {
+		
+		public void onFilenamePicked(String filename) {
+			if (debug) Log.d(TAG, "Filename picked: " + filename);
+			
+			Intent intent = getIntent();
+			Uri uri = FileUriUtils.getUri(new File(filename));
+			intent.setData(uri);
+			
+			setResult(RESULT_OK, intent);
 		}
 		
 	};

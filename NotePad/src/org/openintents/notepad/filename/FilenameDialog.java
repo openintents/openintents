@@ -1,18 +1,13 @@
 package org.openintents.notepad.filename;
 
-import org.openintents.intents.FileManagerIntents;
 import org.openintents.notepad.R;
 
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -28,7 +23,13 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
     Context mContext;
     
     EditText mEditText;
+
+	public interface OnFilenamePickedListener {
+		void onFilenamePicked(String filename);
+	}
     
+	OnFilenamePickedListener mListener;
+	
     public FilenameDialog(Context context) {
         super(context);
         mContext = context;
@@ -45,7 +46,7 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
 
         mEditText = (EditText) view.findViewById(R.id.file_path);
         
-        //SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
+        //SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(context);
         //mEditText.setText(pm.getString(PREFERENCE_FILENAME, DEFAULT_FILENAME));
 
         ImageButton buttonFileManager = (ImageButton) view.findViewById(R.id.file_manager);
@@ -59,6 +60,13 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
 
     }
     
+    public void setFilename(String filename) {
+    	mEditText.setText(filename);
+    }
+    
+    public void setOnFilenamePickedListener(OnFilenamePickedListener listener) {
+    	mListener = listener;
+    }
           
 	public void onClick(DialogInterface dialog, int which) {
     	if (which == BUTTON1) {
@@ -68,6 +76,10 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
 	}
     
     void openOrSave() {
+    	if (mListener != null) {
+    		String filename = mEditText.getText().toString();
+    		mListener.onFilenamePicked(filename);
+    	}
     }
 
 	private void openFileManager() {
@@ -111,4 +123,5 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
         super.onRestoreInstanceState(savedInstanceState);
         String tags = savedInstanceState.getString(BUNDLE_TAGS);
     }
+    
 }
