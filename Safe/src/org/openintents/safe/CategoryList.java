@@ -426,6 +426,9 @@ public class CategoryList extends ListActivity {
 
 	@Override
 	public boolean onMenuOpened(int featureId, Menu menu) {
+		if (menu == null) {
+			return super.onMenuOpened(featureId, menu);
+		}
 		MenuItem miDelete = menu.findItem(DEL_CATEGORY_INDEX);
 		MenuItem miEdit = menu.findItem(EDIT_CATEGORY_INDEX);
 		if (getSelectedItemPosition() > -1) {
@@ -1064,6 +1067,10 @@ public class CategoryList extends ListActivity {
 	
 		HashMap<String,Long> categories = new HashMap<String,Long>();
 		List<CategoryEntry> rows;
+		if (dbHelper==null) {
+			if (debug) Log.d(TAG, "getCategoryToId: dbHelper is null");
+			return categories;
+		}
 		rows = dbHelper.fetchAllCategoryRows();
 
 		for (CategoryEntry row : rows) {

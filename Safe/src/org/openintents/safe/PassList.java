@@ -242,6 +242,9 @@ public class PassList extends ListActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
+    	if (menu == null) {
+        	return super.onMenuOpened(featureId, menu);
+    	}
 		MenuItem miDel  = menu.findItem(DEL_PASSWORD_INDEX);
 		MenuItem miMove = menu.findItem(MOVE_PASSWORD_INDEX);
     	if (getSelectedItemPosition() > -1) {
