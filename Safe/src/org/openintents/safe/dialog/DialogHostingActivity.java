@@ -187,10 +187,19 @@ public class DialogHostingActivity extends Activity {
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		if (debug) Log.d(TAG, "onSaveInstanceState");
+		// It is important to set mIsPausing here, so that
+		// the dialog does not get closed on orientation changes.
 		mIsPausing = true;
 		if (debug) Log.d(TAG, "onSaveInstanceState. Pausing: " + mIsPausing);
 	}
 	
-	
+	@Override
+	protected void onResume() {
+		if (debug) Log.d(TAG, "onResume");
+		super.onResume();
+		// In case another activity is called, and we are resumed,
+		// mIsPausing should be reset to its original state.
+		mIsPausing = false;
+	}
 	
 }
