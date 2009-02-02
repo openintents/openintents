@@ -25,7 +25,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.0
-date: 2009-?
+date: 2009-02-02
 
 - upgrade Content Provider with new fields:
   tags, encrypted, theme
