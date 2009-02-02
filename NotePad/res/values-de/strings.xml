@@ -79,4 +79,12 @@
     <string name="note_saved">Notiz gespeichert</string>
     
 	
+    <!-- Settings -->
+    <string name="noteslist_preferences">List von Notizen</string>
+    <string name="preference_sortorder_title">Sortierung</string>
+    <string name="preference_sortorder_dialog_title">Sortierung</string>
+    <string name="preference_sortorder_summary">Bestimmt die Reihenfolge, in der Notizen angezeigt werden.</string>
+
+	<string name="settings">Einstellungen</string>
+	<string name="settings_sortorder">Sortierung</string>
 </resources>
