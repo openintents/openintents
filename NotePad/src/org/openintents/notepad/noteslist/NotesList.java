@@ -403,7 +403,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private void openFromSdCard() {
 
 		File sdcard = getSdCardPath();
-		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, ""));
+		String directory = sdcard.getAbsolutePath();
+		if (!directory.endsWith("/")) {
+			directory += "/";
+		}
+		Uri uri = FileUriUtils.getUri(directory);
 		
 		Intent i = new Intent(this, DialogHostingActivity.class);
 		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_OPEN);
@@ -851,7 +855,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			// File name should be in Uri:
     			File filename = FileUriUtils.getFile(intent.getData());
     			
-    			if (filename.exists()) {
+    			if (filename.exists() && !filename.isDirectory()) {
     				// Open file in note editor
     				Intent i = new Intent(this, NoteEditor.class);
     				i.setAction(Intent.ACTION_VIEW);

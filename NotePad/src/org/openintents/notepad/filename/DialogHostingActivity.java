@@ -105,6 +105,7 @@ public class DialogHostingActivity extends Activity {
 			startActivity(intent);
 			finish();
 		} else {
+			mFilename = FileUriUtils.getFilename(getIntent().getData());
 			showDialog(DIALOG_ID_OPEN);
 		}
 	}
@@ -122,8 +123,11 @@ public class DialogHostingActivity extends Activity {
 			dialog = fd;
 			break;
 		case DIALOG_ID_OPEN:
-			dialog = new FilenameDialog(this);
-			dialog.setTitle(R.string.menu_open_from_sdcard);
+			fd = new FilenameDialog(this);
+			fd.setTitle(R.string.menu_open_from_sdcard);
+			fd.setFilename(mFilename);
+			fd.setOnFilenamePickedListener(mFilenamePickedListener);
+			dialog = fd;
 			break;
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 			Log.i(TAG, "fmd - create");
