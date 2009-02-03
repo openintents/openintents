@@ -35,7 +35,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -269,6 +268,10 @@ public class PassView extends Activity {
 
 		if (debug) Log.d(TAG,"onActivityResult()");
 		if (requestCode == REQUEST_EDIT_PASS) {
+	    	if (resultCode==PassEdit.RESULT_DELETED) {
+				entryEdited=true;
+	    		finish();
+	    	}
 			if ((resultCode == RESULT_OK) || (PassEdit.entryEdited)){
 				populateFields();
 				entryEdited=true;

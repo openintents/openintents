@@ -52,6 +52,8 @@ public class PassEdit extends Activity {
 	public static final int DISCARD_PASSWORD_INDEX = Menu.FIRST + 2;
 	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 3;
 
+	public static final int RESULT_DELETED = RESULT_FIRST_USER;
+	
 	private EditText descriptionText;
 	private EditText passwordText;
 	private EditText usernameText;
@@ -274,7 +276,8 @@ public class PassEdit extends Activity {
 	 */
 	private void delPassword(long Id) {
 		dbHelper.deletePassword(Id);
-		setResult(RESULT_OK);
+		discardEntry=true;
+		setResult(RESULT_DELETED);
 		finish();
 	}
 
