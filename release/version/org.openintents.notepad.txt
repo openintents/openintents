@@ -1,3 +1,3 @@
-10002
+10052
 123456
-Version 1.0.2: Support for OI ConvertCSV.
+Version 1.1.0: Sort lists, filter, encrypt notes.
