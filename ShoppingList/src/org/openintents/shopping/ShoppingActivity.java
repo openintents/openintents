@@ -101,6 +101,7 @@ public class ShoppingActivity extends Activity { // implements
 	 * TAG for logging.
 	 */
 	private static final String TAG = "ShoppingView";
+	private static final boolean debug = !false;
 
 	private static final int MENU_NEW_LIST = Menu.FIRST;
 	private static final int MENU_CLEAN_UP_LIST = Menu.FIRST + 1;
@@ -253,6 +254,8 @@ public class ShoppingActivity extends Activity { // implements
 	// TODO: Set up state information for onFreeze(), ...
 	// State data to be stored when freezing:
 	private final String ORIGINAL_ITEM = "original item";
+	
+	private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
 
 	// Skins --------------------------
 	public Typeface mTypeface;
@@ -420,8 +423,9 @@ public class ShoppingActivity extends Activity { // implements
 		if (icicle != null) {
 			String prevText = icicle.getString(ORIGINAL_ITEM);
 			if (prevText != null) {
-				mEditText.setText(prevText);
+				mEditText.setTextKeepState(prevText);
 			}
+			mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
 		}
 
 		// set focus to the edit line:
@@ -502,6 +506,7 @@ public class ShoppingActivity extends Activity { // implements
 		// Save original text from edit box
 		String s = mEditText.getText().toString();
 		outState.putString(ORIGINAL_ITEM, s);
+		outState.putInt(BUNDLE_TEXT_ENTRY_MENU, mTextEntryMenu);
 
 		mUpdating = false;
 	}
@@ -1059,6 +1064,7 @@ public class ShoppingActivity extends Activity { // implements
 	}
 
 	void doListDialogAction(int menuAction, Dialog dialog) {
+		if (debug) Log.i(TAG, "doListDialogAction: menuAction: " + menuAction);
 		EditText et = (EditText)((Dialog)dialog).findViewById(R.id.edittext);
 		String newName = et.getText().toString();
 		switch (menuAction) {
@@ -1658,6 +1664,7 @@ public class ShoppingActivity extends Activity { // implements
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
+		if (debug) Log.d(TAG, "onCreateDialog: mTextEntryMenu: " + mTextEntryMenu);
 
 		switch (id) {
 		case DIALOG_ABOUT:
@@ -1722,6 +1729,7 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_ABOUT:
 			break;
 		case DIALOG_TEXT_ENTRY:
+			if (debug) Log.d(TAG, "onPrepareDialog: mTextEntryMenu: " + mTextEntryMenu);
 			EditText et = (EditText) dialog.findViewById(R.id.edittext);
 			et.selectAll();
 
