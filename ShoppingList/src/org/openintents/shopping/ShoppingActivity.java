@@ -1219,9 +1219,9 @@ public class ShoppingActivity extends Activity { // implements
 			for (int i = 0; i < mListItems.getAdapter().getCount(); i++) {
 				Cursor item = (Cursor) mListItems.getAdapter().getItem(i);
 				if (item.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
-					sb.append("[X]");
+					sb.append("[X] ");
 				} else {
-					sb.append("[ ]");
+					sb.append("[ ] ");
 				}
 				sb.append(item.getString(mStringItemsITEMNAME));
 				sb.append("\n");
