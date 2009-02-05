@@ -26,7 +26,7 @@
 	<string-array name="about_authors"><!-- Add your name here if you helped out -->
 		<item>Peli</item>
 		<item>Friedger</item>
-		<item>Ronan 'Zero' Schwarz</item>
+		<item>"Ronan 'Zero' Schwarz"</item>
 		<item>Michael A. Krehan</item>
 	</string-array>
 
@@ -40,5 +40,7 @@
 
 	<string-array name="about_artists"><!-- Add your name here if you helped out -->
 		<item>Peli</item>
+		<item>Anke-Art http://www.anke-art.de</item><!-- For the hand-writing font -->
+		<item></item>
 	</string-array>
 </resources>
