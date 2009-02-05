@@ -16,10 +16,7 @@
 
 package org.openintents.distribution;
 
-// Version Nov 12, 2008
-
 import android.app.AlertDialog.Builder;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,11 +24,14 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+/**
+ * @version 2009-02-04
+ * @author Peli
+ *
+ */
 public class UpdateMenu {
 	
 	private static final String TAG = "UpdateMenu";

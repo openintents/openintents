@@ -27,7 +27,7 @@ import android.content.Intent;
 /**
  * About dialog
  *
- * @version 2009-01-16
+ * @version 2009-02-04
  * @author Peli
  *
  */

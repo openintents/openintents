@@ -775,8 +775,6 @@ public class ShoppingActivity extends Activity { // implements
 		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
 				android.R.drawable.ic_menu_edit).setShortcut('2', 'r');
 		;
-		menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list).setIcon(
-				android.R.drawable.ic_menu_delete).setShortcut('3', 'd');
 
 		/*
 		 * menu.add(0, MENU_SHARE, 0, R.string.share)
@@ -784,20 +782,24 @@ public class ShoppingActivity extends Activity { // implements
 		 */
 
 		menu.add(0, MENU_THEME, 0, R.string.theme).setIcon(
-				android.R.drawable.ic_menu_manage).setShortcut('5', 't');
+				android.R.drawable.ic_menu_manage).setShortcut('3', 't');
+
 
 		menu.add(0, MENU_PREFERENCES, 0, R.string.preferences).setIcon(
-				android.R.drawable.ic_menu_preferences);
+				android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
+
+		menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list).setIcon(
+				android.R.drawable.ic_menu_delete).setShortcut('5', 'd');
 
 		menu.add(0, MENU_SEND, 0, R.string.send).setIcon(
-				android.R.drawable.ic_menu_send);
+				android.R.drawable.ic_menu_send).setShortcut('6', 's');
 
 		if (addLocationAlertPossible()) {
 			menu
 					.add(0, MENU_ADD_LOCATION_ALERT, 0,
 							R.string.shopping_add_alert).setIcon(
 							android.R.drawable.ic_menu_mylocation).setShortcut(
-							'6', 'l');
+							'7', 'l');
 		}
 
 		/*
@@ -813,6 +815,7 @@ public class ShoppingActivity extends Activity { // implements
 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+		
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 

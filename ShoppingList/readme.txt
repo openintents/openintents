@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2009-01-19
+date: 2009-02-04
 
 - preference for sorting and font size added
 - prepare for permissions to access shopping lists
@@ -32,6 +32,7 @@ date: 2009-01-19
 - create shortcut from home screen to arbitrary list.
 - support for OI About.
 - send list.
+- fix issue with dialogs on screen orientation change.
 
 ---------------------------------------------------------
 release: 1.0.2

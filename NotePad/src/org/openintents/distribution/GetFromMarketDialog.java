@@ -10,6 +10,11 @@ import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * @version 2009-02-04
+ * @author Peli
+ *
+ */
 public class GetFromMarketDialog extends AlertDialog implements OnClickListener {
 	private static final String TAG = "StartSaveActivity";
 
