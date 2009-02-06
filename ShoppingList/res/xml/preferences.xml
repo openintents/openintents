@@ -31,7 +31,13 @@
             android:dialogTitle="@string/preference_capitalization_dialog_title" 
 	/> 
 
-
+    <CheckBoxPreference
+            android:key="hidechecked"
+            android:defaultValue="true"
+            android:title="@string/preference_hidechecked_title"
+            android:summary="@string/preference_hidechecked_summary"
+			/>
+			
     <CheckBoxPreference
             android:key="loadlastused"
             android:defaultValue="true"

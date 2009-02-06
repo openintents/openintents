@@ -44,25 +44,24 @@ import android.text.TextUtils;
 import android.util.Log;
 
 /**
- * Provides access to a database of shopping items and shopping lists. 
+ * Provides access to a database of shopping items and shopping lists.
  * 
  */
 public class ShoppingProvider extends ContentProvider {
 
-	//private SQLiteOpenHelper mOpenHelper;
+	// private SQLiteOpenHelper mOpenHelper;
 	private DatabaseHelper mOpenHelper;
 
 	private static final String TAG = "ShoppingProvider";
 	private static final String DATABASE_NAME = "shopping.db";
-	
+
 	/**
 	 * Version of database.
 	 * 
-	 * The various versions were introduced in the following releases:
-	 * 1: Release 0.1.1
-	 * 2: Release 0.1.6
+	 * The various versions were introduced in the following releases: 1:
+	 * Release 0.1.1 2: Release 0.1.6 3: Release 1.0.4
 	 */
-	private static final int DATABASE_VERSION = 2;
+	private static final int DATABASE_VERSION = 3;
 
 	private static HashMap<String, String> ITEMS_PROJECTION_MAP;
 	private static HashMap<String, String> LISTS_PROJECTION_MAP;
@@ -76,41 +75,44 @@ public class ShoppingProvider extends ContentProvider {
 	private static final int LIST_ID = 4;
 	private static final int CONTAINS = 5;
 	private static final int CONTAINS_ID = 6;
-	
+
 	// Derived tables
-	private static final int CONTAINS_FULL = 101; // combined with items and lists
+	private static final int CONTAINS_FULL = 101; // combined with items and
+	// lists
 	private static final int CONTAINS_FULL_ID = 102;
-	
+
 	private static final UriMatcher URL_MATCHER;
 
 	/**
-	 * ShoppingProvider maintains the following tables:
-	 *  * items: items you want to buy
-	 *  * lists: shopping lists ("My shopping list", "Bob's shopping list")
-	 *  * contains: which item/list/(recipe) is contained 
-	 *              in which shopping list.
+	 * ShoppingProvider maintains the following tables: * items: items you want
+	 * to buy * lists: shopping lists ("My shopping list",
+	 * "Bob's shopping list") * contains: which item/list/(recipe) is contained
+	 * in which shopping list.
 	 */
 	private static class DatabaseHelper extends SQLiteOpenHelper {
 
 		DatabaseHelper(Context context) {
-            super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        }
+			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		}
 
 		/**
 		 * Creates tables "items", "lists", and "contains".
 		 */
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			db.execSQL("CREATE TABLE items ("
-					+ "_id INTEGER PRIMARY KEY," // Database Version 1
+			db.execSQL("CREATE TABLE items (" + "_id INTEGER PRIMARY KEY," // Database
+					// Version
+					// 1
 					+ "name VARCHAR," // V1
 					+ "image VARCHAR," // V1
+					+ "price INTEGER," // V3
 					+ "created INTEGER," // V1
 					+ "modified INTEGER," // V1
 					+ "accessed INTEGER" // V1
 					+ ");");
-			db.execSQL("CREATE TABLE lists ("
-					+ "_id INTEGER PRIMARY KEY," // Database Version 1
+			db.execSQL("CREATE TABLE lists (" + "_id INTEGER PRIMARY KEY," // Database
+					// Version
+					// 1
 					+ "name VARCHAR," // V1
 					+ "image VARCHAR," // V1
 					+ "created INTEGER," // V1
@@ -123,8 +125,9 @@ public class ShoppingProvider extends ContentProvider {
 					+ "skin_color INTEGER," // V2
 					+ "skin_color_strikethrough INTEGER" // V2
 					+ ");");
-			db.execSQL("CREATE TABLE contains ("
-					+ "_id INTEGER PRIMARY KEY," // Database Version 1
+			db.execSQL("CREATE TABLE contains (" + "_id INTEGER PRIMARY KEY," // Database
+					// Version
+					// 1
 					+ "item_id INTEGER," // V1
 					+ "list_id INTEGER," // V1
 					+ "quantity VARCHAR," // V1
@@ -139,19 +142,56 @@ public class ShoppingProvider extends ContentProvider {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
 			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-					+ newVersion + ", which will destroy all old data");
-			db.execSQL("DROP TABLE IF EXISTS items");
-			db.execSQL("DROP TABLE IF EXISTS lists");
-			db.execSQL("DROP TABLE IF EXISTS contains");
-			onCreate(db);
+					+ newVersion + ".");
+			if (newVersion > oldVersion) {
+				// Upgrade
+				switch (oldVersion) {
+				case 2:
+					// Upgrade from version 2 to 3.
+					// It seems SQLite3 only allows to add one column at a time,
+					// so we need three SQL statements:
+					try {
+						db.execSQL("ALTER TABLE items ADD COLUMN "
+								+ Items.PRICE + " INTEGER;");
+					} catch (SQLException e) {
+						Log.e(TAG, "Error executing SQL: ", e);
+						// If the error is "duplicate column name" then
+						// everything is fine,
+						// as this happens after upgrading 2->3, then
+						// downgrading 3->2,
+						// and then upgrading again 2->3.
+					}
+					// fall through for further upgrades.
+					/*
+					 * case 3: // add more columns
+					 */
+					break;
+				default:
+					Log.w(TAG, "Unknown version " + oldVersion
+							+ ". Creating new database.");
+					db.execSQL("DROP TABLE IF EXISTS items");
+					db.execSQL("DROP TABLE IF EXISTS lists");
+					db.execSQL("DROP TABLE IF EXISTS contains");
+					onCreate(db);
+				}
+			} else { // newVersion <= oldVersion
+				// Downgrade
+				Log
+						.w(
+								TAG,
+								"Don't know how to downgrade. Will not touch database and hope they are compatible.");
+				// Do nothing.
+			}
+
 		}
 	}
 
 	@Override
 	public boolean onCreate() {
 		mOpenHelper = new DatabaseHelper(getContext());
-        return true;
+		return true;
 	}
 
 	@Override
@@ -160,8 +200,9 @@ public class ShoppingProvider extends ContentProvider {
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
 		Log.i(TAG, "Query for URL: " + url);
-		
-		String defaultOrderBy = null;
+
+		String defaultOrderBy = null;		
+
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			qb.setTables("items");
@@ -179,12 +220,12 @@ public class ShoppingProvider extends ContentProvider {
 			qb.setProjectionMap(LISTS_PROJECTION_MAP);
 			defaultOrderBy = Lists.DEFAULT_SORT_ORDER;
 			break;
-			
+
 		case LIST_ID:
 			qb.setTables("lists");
 			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
-			
+
 		case CONTAINS:
 			qb.setTables("contains");
 			qb.setProjectionMap(CONTAINS_PROJECTION_MAP);
@@ -195,18 +236,20 @@ public class ShoppingProvider extends ContentProvider {
 			qb.setTables("contains");
 			qb.appendWhere("_id=" + url.getPathSegments().get(1));
 			break;
-		
+
 		case CONTAINS_FULL:
 			qb.setTables("contains, items, lists");
 			qb.setProjectionMap(CONTAINS_FULL_PROJECTION_MAP);
-			qb.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
-			defaultOrderBy = ContainsFull.DEFAULT_SORT_ORDER;
+			qb
+					.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
+			defaultOrderBy = ContainsFull.DEFAULT_SORT_ORDER;			
 			break;
 
 		case CONTAINS_FULL_ID:
 			qb.setTables("contains, items, lists");
 			qb.appendWhere("_id=" + url.getPathSegments().get(1));
-			qb.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
+			qb
+					.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
@@ -222,7 +265,8 @@ public class ShoppingProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = mOpenHelper.getReadableDatabase();
-        Cursor c = qb.query(db, projection, selection, selectionArgs,null,null,orderBy);
+		Cursor c = qb.query(db, projection, selection, selectionArgs, null,
+				null, orderBy);
 		c.setNotificationUri(getContext().getContentResolver(), url);
 		return c;
 	}
@@ -235,44 +279,43 @@ public class ShoppingProvider extends ContentProvider {
 		} else {
 			values = new ContentValues();
 		}
-		
+
 		// insert is supported for items or lists
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			return insertItem(url, values);
-			
+
 		case LISTS:
 			return insertList(url, values);
-			
+
 		case CONTAINS:
 			return insertContains(url, values);
-			
+
 		case CONTAINS_FULL:
-			throw new IllegalArgumentException("Insert not supported for " + url
-					+ ", use CONTAINS instead of CONTAINS_FULL.");
-			
+			throw new IllegalArgumentException("Insert not supported for "
+					+ url + ", use CONTAINS instead of CONTAINS_FULL.");
+
 		default:
 			throw new IllegalArgumentException("Unknown URL " + url);
 		}
 	}
-	
+
 	public Uri insertItem(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        long rowID;
-		
+		long rowID;
+
 		Long now = Long.valueOf(System.currentTimeMillis());
 		Resources r = Resources.getSystem();
-		
 
 		// Make sure that the fields are all set
 		if (!values.containsKey(Items.NAME)) {
 			values.put(Items.NAME, r.getString(R.string.new_item));
 		}
-		
+
 		if (!values.containsKey(Items.IMAGE)) {
 			values.put(Items.IMAGE, "");
 		}
-		
+
 		if (!values.containsKey(Items.CREATED_DATE)) {
 			values.put(Items.CREATED_DATE, now);
 		}
@@ -284,43 +327,42 @@ public class ShoppingProvider extends ContentProvider {
 		if (!values.containsKey(Items.ACCESSED_DATE)) {
 			values.put(Items.ACCESSED_DATE, now);
 		}
-				
-		// TODO: Here we should check, whether item exists already. 
+
+		// TODO: Here we should check, whether item exists already.
 		// (see TagsProvider)
-		// insert the item. 
+		// insert the item.
 		rowID = db.insert("items", "items", values);
 		if (rowID > 0) {
-			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
+			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI, rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
-			
+
 			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
-            intent.setData(uri);
-            getContext().sendBroadcast(intent);
-            
-            return uri;
+			intent.setData(uri);
+			getContext().sendBroadcast(intent);
+
+			return uri;
 		}
-		
+
 		// If everything works, we should not reach the following line:
 		throw new SQLException("Failed to insert row into " + url);
 	}
 
 	public Uri insertList(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        long rowID;
-		
+		long rowID;
+
 		Long now = Long.valueOf(System.currentTimeMillis());
 		Resources r = Resources.getSystem();
-		
 
 		// Make sure that the fields are all set
 		if (!values.containsKey(Lists.NAME)) {
 			values.put(Lists.NAME, r.getString(R.string.new_list));
 		}
-		
+
 		if (!values.containsKey(Lists.IMAGE)) {
 			values.put(Lists.IMAGE, "");
 		}
-		
+
 		if (!values.containsKey(Lists.CREATED_DATE)) {
 			values.put(Lists.CREATED_DATE, now);
 		}
@@ -332,80 +374,76 @@ public class ShoppingProvider extends ContentProvider {
 		if (!values.containsKey(Lists.ACCESSED_DATE)) {
 			values.put(Lists.ACCESSED_DATE, now);
 		}
-		
+
 		if (!values.containsKey(Lists.SHARE_CONTACTS)) {
 			values.put(Lists.SHARE_CONTACTS, "");
 		}
-		
+
 		if (!values.containsKey(Lists.SKIN_BACKGROUND)) {
 			values.put(Lists.SKIN_BACKGROUND, "");
 		}
-		
+
 		if (!values.containsKey(Lists.SKIN_FONT)) {
 			values.put(Lists.SKIN_FONT, "");
 		}
-		
+
 		if (!values.containsKey(Lists.SKIN_COLOR)) {
 			values.put(Lists.SKIN_COLOR, 0);
 		}
-		
+
 		if (!values.containsKey(Lists.SKIN_COLOR_STRIKETHROUGH)) {
 			values.put(Lists.SKIN_COLOR_STRIKETHROUGH, 0xFF006600);
 		}
 
 		// TODO: Here we should check, whether item exists already.
 		// (see TagsProvider)
-		
-		// insert the tag. 
+
+		// insert the tag.
 		rowID = db.insert("lists", "lists", values);
 		if (rowID > 0) {
-			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI,rowID);
+			Uri uri = ContentUris.withAppendedId(Items.CONTENT_URI, rowID);
 			getContext().getContentResolver().notifyChange(uri, null);
 
 			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
-            intent.setData(uri);
-            getContext().sendBroadcast(intent);
-            
-            return uri;
+			intent.setData(uri);
+			getContext().sendBroadcast(intent);
+
+			return uri;
 		}
-		
+
 		// If everything works, we should not reach the following line:
 		throw new SQLException("Failed to insert row into " + url);
-		
+
 	}
-	
-	public Uri insertContains(Uri url, ContentValues values) {		
+
+	public Uri insertContains(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        Long now = Long.valueOf(System.currentTimeMillis());
+		Long now = Long.valueOf(System.currentTimeMillis());
 		Resources r = Resources.getSystem();
 
 		// Make sure that the fields are all set
-		if (!(values.containsKey(Contains.ITEM_ID)
-				&& values.containsKey(Contains.LIST_ID))) {
+		if (!(values.containsKey(Contains.ITEM_ID) && values
+				.containsKey(Contains.LIST_ID))) {
 			// At least these values should exist.
-			throw new SQLException("Failed to insert row into " + url 
+			throw new SQLException("Failed to insert row into " + url
 					+ ": ITEM_ID and LIST_ID must be given.");
 		}
-		
+
 		// TODO: Check here that ITEM_ID and LIST_ID
-		//       actually exist in the tables. 
-		
-		if (!values.containsKey(Contains.QUANTITY)) {
-			values.put(Contains.QUANTITY, "");
-		}
-		
+		// actually exist in the tables.
+
 		if (!values.containsKey(Contains.STATUS)) {
 			values.put(Contains.STATUS, Status.WANT_TO_BUY);
 		} else {
 			// Check here that STATUS is valid.
 			long s = values.getAsInteger(Contains.STATUS);
-			
+
 			if (!Status.isValid(s)) {
 				throw new SQLException("Failed to insert row into " + url
 						+ ": Status " + s + " is not valid.");
 			}
 		}
-		
+
 		if (!values.containsKey(Contains.CREATED_DATE)) {
 			values.put(Contains.CREATED_DATE, now);
 		}
@@ -417,31 +455,31 @@ public class ShoppingProvider extends ContentProvider {
 		if (!values.containsKey(Contains.ACCESSED_DATE)) {
 			values.put(Contains.ACCESSED_DATE, now);
 		}
-		
+
 		if (!values.containsKey(Contains.SHARE_CREATED_BY)) {
 			values.put(Contains.SHARE_CREATED_BY, "");
 		}
-		
+
 		if (!values.containsKey(Contains.SHARE_MODIFIED_BY)) {
 			values.put(Contains.SHARE_MODIFIED_BY, "");
 		}
-		
-		// TODO: Here we should check, whether item exists already. 
+
+		// TODO: Here we should check, whether item exists already.
 		// (see TagsProvider)
-		
-		// insert the item. 
+
+		// insert the item.
 		long rowId = db.insert("contains", "contains", values);
 		if (rowId > 0) {
-			Uri uri = ContentUris.withAppendedId(Contains.CONTENT_URI,rowId);
+			Uri uri = ContentUris.withAppendedId(Contains.CONTENT_URI, rowId);
 			getContext().getContentResolver().notifyChange(uri, null);
 
 			Intent intent = new Intent(ProviderIntents.ACTION_INSERTED);
-            intent.setData(uri);
-            getContext().sendBroadcast(intent);
-            
-            return uri;
+			intent.setData(uri);
+			getContext().sendBroadcast(intent);
+
+			return uri;
 		}
-		
+
 		// If everything works, we should not reach the following line:
 		throw new SQLException("Failed to insert row into " + url);
 	}
@@ -449,18 +487,19 @@ public class ShoppingProvider extends ContentProvider {
 	@Override
 	public int delete(Uri url, String where, String[] whereArgs) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        int count;
-        long[] affectedRows = null;
-		//long rowId;
+		int count;
+		long[] affectedRows = null;
+		// long rowId;
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
-			affectedRows = ProviderUtils.getAffectedRows(db, "items", where, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "items", where,
+					whereArgs);
 			count = db.delete("items", where, whereArgs);
 			break;
 
 		case ITEM_ID:
 			String segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -468,47 +507,52 @@ public class ShoppingProvider extends ContentProvider {
 				whereString = "";
 			}
 
-			affectedRows = ProviderUtils.getAffectedRows(db, "items", "_id=" + segment + whereString, whereArgs);
-			count = db
-					.delete("items", "_id=" + segment + whereString, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "items", "_id="
+					+ segment + whereString, whereArgs);
+			count = db.delete("items", "_id=" + segment + whereString,
+					whereArgs);
 			break;
 
 		case LISTS:
-			affectedRows = ProviderUtils.getAffectedRows(db, "lists", where, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "lists", where,
+					whereArgs);
 			count = db.delete("lists", where, whereArgs);
 			break;
 
 		case LIST_ID:
 			segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
 				whereString = "";
 			}
 
-			affectedRows = ProviderUtils.getAffectedRows(db, "lists", "_id=" + segment + whereString, whereArgs);
-			count = db
-					.delete("lists", "_id=" + segment + whereString, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "lists", "_id="
+					+ segment + whereString, whereArgs);
+			count = db.delete("lists", "_id=" + segment + whereString,
+					whereArgs);
 			break;
 
 		case CONTAINS:
-			affectedRows = ProviderUtils.getAffectedRows(db, "contains", where, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "contains", where,
+					whereArgs);
 			count = db.delete("contains", where, whereArgs);
 			break;
 
 		case CONTAINS_ID:
 			segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
 				whereString = "";
 			}
 
-			affectedRows = ProviderUtils.getAffectedRows(db, "contains", "_id=" + segment + whereString, whereArgs);
-			count = db
-					.delete("contains", "_id=" + segment + whereString, whereArgs);
+			affectedRows = ProviderUtils.getAffectedRows(db, "contains", "_id="
+					+ segment + whereString, whereArgs);
+			count = db.delete("contains", "_id=" + segment + whereString,
+					whereArgs);
 			break;
 
 		default:
@@ -518,20 +562,20 @@ public class ShoppingProvider extends ContentProvider {
 		getContext().getContentResolver().notifyChange(url, null);
 
 		Intent intent = new Intent(ProviderIntents.ACTION_DELETED);
-        intent.setData(url);
-        intent.putExtra(ProviderIntents.EXTRA_AFFECTED_ROWS, affectedRows);
-        getContext().sendBroadcast(intent);
-        
-        return count;
+		intent.setData(url);
+		intent.putExtra(ProviderIntents.EXTRA_AFFECTED_ROWS, affectedRows);
+		getContext().sendBroadcast(intent);
+
+		return count;
 	}
-	
+
 	@Override
 	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
 		Log.i(TAG, "update called for: " + url);
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-        int count;
-		//long rowId;
+		int count;
+		// long rowId;
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
 			count = db.update("items", values, where, whereArgs);
@@ -539,7 +583,7 @@ public class ShoppingProvider extends ContentProvider {
 
 		case ITEM_ID:
 			String segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			String whereString;
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
@@ -547,9 +591,8 @@ public class ShoppingProvider extends ContentProvider {
 				whereString = "";
 			}
 
-			count = db
-					.update("items", values, 
-							"_id=" + segment + whereString, whereArgs);
+			count = db.update("items", values, "_id=" + segment + whereString,
+					whereArgs);
 			break;
 
 		case LISTS:
@@ -558,15 +601,15 @@ public class ShoppingProvider extends ContentProvider {
 
 		case LIST_ID:
 			segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
 				whereString = "";
 			}
 
-			count = db
-					.update("lists", values, "_id=" + segment + whereString, whereArgs);
+			count = db.update("lists", values, "_id=" + segment + whereString,
+					whereArgs);
 			break;
 
 		case CONTAINS:
@@ -575,15 +618,15 @@ public class ShoppingProvider extends ContentProvider {
 
 		case CONTAINS_ID:
 			segment = url.getPathSegments().get(1); // contains rowId
-			//rowId = Long.parseLong(segment);
+			// rowId = Long.parseLong(segment);
 			if (!TextUtils.isEmpty(where)) {
 				whereString = " AND (" + where + ')';
 			} else {
 				whereString = "";
 			}
 
-			count = db
-					.update("contains", values, "_id=" + segment + whereString, whereArgs);
+			count = db.update("contains", values, "_id=" + segment
+					+ whereString, whereArgs);
 			break;
 
 		default:
@@ -593,11 +636,11 @@ public class ShoppingProvider extends ContentProvider {
 
 		getContext().getContentResolver().notifyChange(url, null);
 
-        Intent intent = new Intent(ProviderIntents.ACTION_MODIFIED);
-        intent.setData(url);
-        getContext().sendBroadcast(intent);
-        
-        return count;
+		Intent intent = new Intent(ProviderIntents.ACTION_MODIFIED);
+		intent.setData(url);
+		getContext().sendBroadcast(intent);
+
+		return count;
 	}
 
 	@Override
@@ -638,23 +681,23 @@ public class ShoppingProvider extends ContentProvider {
 		URL_MATCHER.addURI("org.openintents.shopping", "items/#", ITEM_ID);
 		URL_MATCHER.addURI("org.openintents.shopping", "lists", LISTS);
 		URL_MATCHER.addURI("org.openintents.shopping", "lists/#", LIST_ID);
-		URL_MATCHER.addURI(
-				"org.openintents.shopping", "contains", CONTAINS);
-		URL_MATCHER.addURI(
-				"org.openintents.shopping", "contains/#", CONTAINS_ID);
-		URL_MATCHER.addURI(
-				"org.openintents.shopping", "containsfull", CONTAINS_FULL);
-		URL_MATCHER.addURI(
-				"org.openintents.shopping", "containsfull/#", CONTAINS_FULL_ID);
+		URL_MATCHER.addURI("org.openintents.shopping", "contains", CONTAINS);
+		URL_MATCHER.addURI("org.openintents.shopping", "contains/#",
+				CONTAINS_ID);
+		URL_MATCHER.addURI("org.openintents.shopping", "containsfull",
+				CONTAINS_FULL);
+		URL_MATCHER.addURI("org.openintents.shopping", "containsfull/#",
+				CONTAINS_FULL_ID);
 
 		ITEMS_PROJECTION_MAP = new HashMap<String, String>();
 		ITEMS_PROJECTION_MAP.put(Items._ID, "items._id");
 		ITEMS_PROJECTION_MAP.put(Items.NAME, "items.name");
 		ITEMS_PROJECTION_MAP.put(Items.IMAGE, "items.image");
+		ITEMS_PROJECTION_MAP.put(Items.PRICE, "items.price");
 		ITEMS_PROJECTION_MAP.put(Items.CREATED_DATE, "items.created");
 		ITEMS_PROJECTION_MAP.put(Items.MODIFIED_DATE, "items.modified");
 		ITEMS_PROJECTION_MAP.put(Items.ACCESSED_DATE, "items.accessed");
-		
+
 		LISTS_PROJECTION_MAP = new HashMap<String, String>();
 		LISTS_PROJECTION_MAP.put(Lists._ID, "lists._id");
 		LISTS_PROJECTION_MAP.put(Lists.NAME, "lists.name");
@@ -664,11 +707,13 @@ public class ShoppingProvider extends ContentProvider {
 		LISTS_PROJECTION_MAP.put(Lists.ACCESSED_DATE, "lists.accessed");
 		LISTS_PROJECTION_MAP.put(Lists.SHARE_NAME, "lists.share_name");
 		LISTS_PROJECTION_MAP.put(Lists.SHARE_CONTACTS, "lists.share_contacts");
-		LISTS_PROJECTION_MAP.put(Lists.SKIN_BACKGROUND, "lists.skin_background");
+		LISTS_PROJECTION_MAP
+				.put(Lists.SKIN_BACKGROUND, "lists.skin_background");
 		LISTS_PROJECTION_MAP.put(Lists.SKIN_FONT, "lists.skin_font");
 		LISTS_PROJECTION_MAP.put(Lists.SKIN_COLOR, "lists.skin_color");
-		LISTS_PROJECTION_MAP.put(Lists.SKIN_COLOR_STRIKETHROUGH, "lists.skin_color_strikethrough");
-		
+		LISTS_PROJECTION_MAP.put(Lists.SKIN_COLOR_STRIKETHROUGH,
+				"lists.skin_color_strikethrough");
+
 		CONTAINS_PROJECTION_MAP = new HashMap<String, String>();
 		CONTAINS_PROJECTION_MAP.put(Contains._ID, "contains._id");
 		CONTAINS_PROJECTION_MAP.put(Contains.ITEM_ID, "contains.item_id");
@@ -676,44 +721,45 @@ public class ShoppingProvider extends ContentProvider {
 		CONTAINS_PROJECTION_MAP.put(Contains.QUANTITY, "contains.quantity");
 		CONTAINS_PROJECTION_MAP.put(Contains.STATUS, "contains.status");
 		CONTAINS_PROJECTION_MAP.put(Contains.CREATED_DATE, "contains.created");
-		CONTAINS_PROJECTION_MAP.put(
-				Contains.MODIFIED_DATE, "contains.modified");
-		CONTAINS_PROJECTION_MAP.put(
-				Contains.ACCESSED_DATE, "contains.accessed");
-		CONTAINS_PROJECTION_MAP.put(
-				Contains.SHARE_CREATED_BY, "contains.share_created_by");
-		CONTAINS_PROJECTION_MAP.put(
-				Contains.SHARE_MODIFIED_BY, "contains.share_modified_by");
-		
+		CONTAINS_PROJECTION_MAP
+				.put(Contains.MODIFIED_DATE, "contains.modified");
+		CONTAINS_PROJECTION_MAP
+				.put(Contains.ACCESSED_DATE, "contains.accessed");
+		CONTAINS_PROJECTION_MAP.put(Contains.SHARE_CREATED_BY,
+				"contains.share_created_by");
+		CONTAINS_PROJECTION_MAP.put(Contains.SHARE_MODIFIED_BY,
+				"contains.share_modified_by");
+
 		CONTAINS_FULL_PROJECTION_MAP = new HashMap<String, String>();
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull._ID, "contains._id");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.ITEM_ID, "contains.item_id");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.LIST_ID, "contains.list_id");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.QUANTITY, "contains.quantity");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.STATUS, "contains.status");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.CREATED_DATE, "contains.created");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.MODIFIED_DATE, "contains.modified");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.ACCESSED_DATE, "contains.accessed");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.SHARE_CREATED_BY, "contains.share_created_by");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.SHARE_MODIFIED_BY, "contains.share_modified_by");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.ITEM_NAME, "items.name as item_name");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.ITEM_IMAGE, "items.image as item_image");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.LIST_NAME, "lists.name as list_name");
-		CONTAINS_FULL_PROJECTION_MAP.put(
-				ContainsFull.LIST_IMAGE, "lists.image as list_image");
-		
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull._ID, "contains._id");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_ID,
+				"contains.item_id");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.LIST_ID,
+				"contains.list_id");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.QUANTITY,
+				"contains.quantity");
+		CONTAINS_FULL_PROJECTION_MAP
+				.put(ContainsFull.STATUS, "contains.status");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.CREATED_DATE,
+				"contains.created");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.MODIFIED_DATE,
+				"contains.modified");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ACCESSED_DATE,
+				"contains.accessed");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.SHARE_CREATED_BY,
+				"contains.share_created_by");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.SHARE_MODIFIED_BY,
+				"contains.share_modified_by");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_NAME,
+				"items.name as item_name");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_IMAGE,
+				"items.image as item_image");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_PRICE,
+				"items.price as item_price");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.LIST_NAME,
+				"lists.name as list_name");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.LIST_IMAGE,
+				"lists.image as list_image");
+
 	}
 }

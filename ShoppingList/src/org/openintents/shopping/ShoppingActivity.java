@@ -42,15 +42,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,24 +58,23 @@ import android.text.Spannable;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
@@ -171,6 +168,21 @@ public class ShoppingActivity extends Activity { // implements
 	private int mState;
 
 	/**
+	 * mode: add items from existing list
+	 */
+	private static final int MODE_ADD_ITEMS = 2;
+
+	/**
+	 * mode: I am in the shop
+	 */
+	private static final int MODE_IN_SHOP = 1;
+
+	/**
+	 * current mode, in shop, or adding items
+	 */
+	private int mMode = MODE_ADD_ITEMS;
+
+	/**
 	 * URI of current list
 	 */
 	private Uri mListUri;
@@ -191,7 +203,7 @@ public class ShoppingActivity extends Activity { // implements
 	static final private int MESSAGE_UPDATE_CURSORS = 1;
 
 	/**
-	 * Update interval for automatic requeries.
+	 * Update interval for automatic requires.
 	 * 
 	 * (Workaround since ContentObserver does not work.)
 	 */
@@ -201,17 +213,6 @@ public class ShoppingActivity extends Activity { // implements
 
 	private LinearLayout mLinearLayoutBackground;
 
-	/**
-	 * Sets how many pixels the EditBox shall be away from the bottom of the
-	 * screen, when the height of the list-box is limited in checkListLength()
-	 */
-	private static int mBottomPadding = 50; // this is changed by
-
-	/**
-	 * Maximum number of lines on the screen. (should be calculated later, for
-	 * now hardcoded.)
-	 */
-	private static int mMaxListCount = 6; // This value is changed by
 	// setListTheme()
 
 	/**
@@ -247,14 +248,14 @@ public class ShoppingActivity extends Activity { // implements
 	private LinearLayout.LayoutParams mLayoutParamsItems;
 	private int mAllowedListHeight; // Height for the list allowed in this view.
 
-	private EditText mEditText;
+	private AutoCompleteTextView mEditText;
 
 	protected Context mDialogContext;
 
 	// TODO: Set up state information for onFreeze(), ...
 	// State data to be stored when freezing:
 	private final String ORIGINAL_ITEM = "original item";
-	
+
 	private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
 
 	// Skins --------------------------
@@ -276,6 +277,7 @@ public class ShoppingActivity extends Activity { // implements
 	private GTalkSender mGTalkSender;
 
 	private int mTextEntryMenu;
+	private Cursor mItemsCursor;
 
 	// Sensor service -----------------
 
@@ -287,7 +289,7 @@ public class ShoppingActivity extends Activity { // implements
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		Log.i(TAG, "Shopping list onCreate()");
+		// Log.i(TAG, "Shopping list onCreate()");
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
@@ -316,17 +318,18 @@ public class ShoppingActivity extends Activity { // implements
 		mListUri = Shopping.Lists.CONTENT_URI;
 		mItemUri = Shopping.Items.CONTENT_URI;
 
-		//if set to "last used", override the default list.
-		SharedPreferences sp=getSharedPreferences("org.openintents.shopping_preferences",MODE_PRIVATE);
-		final boolean loadLastUsed=sp.getBoolean(PreferenceActivity.PREFS_LOADLASTUSED,false);
-		Log.e(TAG,"load last used ?"+loadLastUsed);
+		// if set to "last used", override the default list.
+		SharedPreferences sp = getSharedPreferences(
+				"org.openintents.shopping_preferences", MODE_PRIVATE);
+		final boolean loadLastUsed = sp.getBoolean(
+				PreferenceActivity.PREFS_LOADLASTUSED, false);
+		Log.e(TAG, "load last used ?" + loadLastUsed);
 		int defaultShoppingList = 1;
-		if (loadLastUsed )
-		{
-			defaultShoppingList=sp.getInt(PreferenceActivity.PREFS_LASTUSED,1);
-		}else
-		{
-			defaultShoppingList=(int) Shopping.getDefaultList();
+		if (loadLastUsed) {
+			defaultShoppingList = sp.getInt(PreferenceActivity.PREFS_LASTUSED,
+					1);
+		} else {
+			defaultShoppingList = (int) Shopping.getDefaultList();
 		}
 
 		// Handle the calling intent
@@ -448,11 +451,10 @@ public class ShoppingActivity extends Activity { // implements
 			setTitleColor(0xFFAAAAFF);
 		}
 
-		checkListLength();
-
 		setListTheme(loadListTheme());
-		mEditText.setKeyListener(
-			PreferenceActivity.getCapitalizationKeyListenerFromPrefs(getApplicationContext())); 
+		mEditText
+				.setKeyListener(PreferenceActivity
+						.getCapitalizationKeyListenerFromPrefs(getApplicationContext()));
 
 		if (!mUpdating) {
 			mUpdating = true;
@@ -484,9 +486,11 @@ public class ShoppingActivity extends Activity { // implements
 		super.onPause();
 		Log.i(TAG, "Shopping list onPause()");
 
-		SharedPreferences sp=getSharedPreferences("org.openintents.shopping_preferences",MODE_PRIVATE);
-		SharedPreferences.Editor editor=sp.edit();
-		editor.putInt(PreferenceActivity.PREFS_LASTUSED, new Long(getSelectedListId()).intValue());
+		SharedPreferences sp = getSharedPreferences(
+				"org.openintents.shopping_preferences", MODE_PRIVATE);
+		SharedPreferences.Editor editor = sp.edit();
+		editor.putInt(PreferenceActivity.PREFS_LASTUSED, new Long(
+				getSelectedListId()).intValue());
 		editor.commit();
 		// TODO ???
 		/*
@@ -525,37 +529,54 @@ public class ShoppingActivity extends Activity { // implements
 						fillItems();
 						// Now set the theme based on the selected list:
 						setListTheme(loadListTheme());
-						checkListLength();
+
 						bindGTalkIfNeeded();
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
 						fillItems();
-						checkListLength();
+
 					}
 				});
 
-		mEditText = (EditText) findViewById(R.id.edittext_add_item);
-		mEditText.setOnKeyListener(new OnKeyListener() {
+		mEditText = (AutoCompleteTextView) findViewById(R.id.autocomplete_add_item);
+		mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
+				Items._ID, Items.NAME }, null, null, "name desc");
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+				android.R.layout.simple_dropdown_item_1line, mItemsCursor,
+				new String[] { Items.NAME }, new int[] { android.R.id.text1 });
+		adapter.setStringConversionColumn(1);
+		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 
-			public boolean onKey(View v, int keyCode, KeyEvent key) {
-				// Log.i(TAG, "KeyCode: " + keyCode
-				// + " =?= "
-				// +Integer.parseInt(getString(R.string.key_return)) );
-
-				// Shortcut: Instead of pressing the button,
-				// one can also press the "Enter" key.
-				Log.i(TAG, "Key action: " + key.getAction());
-				Log.i(TAG, "Key code: " + keyCode);
-				if (key.getAction() == KeyEvent.ACTION_DOWN
-						&& keyCode == KeyEvent.KEYCODE_ENTER) {
-					insertNewItem();
-					return true;
-				}
-				;
-				return false;
+			public Cursor runQuery(CharSequence constraint) {				
+				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
+						Items._ID, Items.NAME }, "upper(name) like '%"
+						+ (constraint == null ? "" : constraint.toString().toUpperCase()) + "%'", null, "name desc");
+				return mItemsCursor;
 			}
+
 		});
+		mEditText.setAdapter(adapter);
+		 mEditText.setOnKeyListener(new OnKeyListener() {
+		
+		 public boolean onKey(View v, int keyCode, KeyEvent key) {
+		 // Log.i(TAG, "KeyCode: " + keyCode
+		 // + " =?= "
+		 // +Integer.parseInt(getString(R.string.key_return)) );
+		
+		 // Shortcut: Instead of pressing the button,
+		 // one can also press the "Enter" key.
+		 Log.i(TAG, "Key action: " + key.getAction());
+		 Log.i(TAG, "Key code: " + keyCode);
+		 if (key.getAction() == KeyEvent.ACTION_DOWN
+		 && keyCode == KeyEvent.KEYCODE_ENTER) {
+		 insertNewItem();
+		 return true;
+		 }
+		 ;
+		 return false;
+		 }
+		 });
 
 		Button button = (Button) findViewById(R.id.button_add_item);
 		button.setOnClickListener(new OnClickListener() {
@@ -572,7 +593,6 @@ public class ShoppingActivity extends Activity { // implements
 		mListItems.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
-				Log.i(TAG, "onItemClick: pos = " + pos);
 				Cursor c = (Cursor) parent.getItemAtPosition(pos);
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
@@ -582,20 +602,7 @@ public class ShoppingActivity extends Activity { // implements
 			}
 
 		});
-		mListItems.setOnItemSelectedListener(new OnItemSelectedListener() {
 
-			public void onItemSelected(AdapterView parent, View v,
-					int position, long id) {
-				// Log.i(TAG, "mListItems selected: pos:"
-				// + position + ", id:" + id);
-				checkListLength();
-			}
-
-			public void onNothingSelected(AdapterView arg0) {
-				// TODO Auto-generated method stub
-				checkListLength();
-			}
-		});
 		mListItems
 				.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
 
@@ -644,8 +651,6 @@ public class ShoppingActivity extends Activity { // implements
 			mEditText.setText("");
 
 			fillItems();
-
-			checkListLength();
 
 			// TODO:
 			// Now scroll the list to the end, where
@@ -729,7 +734,6 @@ public class ShoppingActivity extends Activity { // implements
 				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, c
 						.getString(0)), values, null, null);
 
-		// Log.i(TAG, "Requery now:");
 		c.requery();
 
 		// fillItems();
@@ -784,7 +788,6 @@ public class ShoppingActivity extends Activity { // implements
 		menu.add(0, MENU_THEME, 0, R.string.theme).setIcon(
 				android.R.drawable.ic_menu_manage).setShortcut('3', 't');
 
-
 		menu.add(0, MENU_PREFERENCES, 0, R.string.preferences).setIcon(
 				android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
 
@@ -815,38 +818,10 @@ public class ShoppingActivity extends Activity { // implements
 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
-		
+
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 
-		/*
-		 * // Generate any additional actions that can be performed on the //
-		 * overall list. This allows other applications to extend // our menu
-		 * with their own actions. Intent intent = new Intent(null,
-		 * getIntent().getData());
-		 * intent.addCategory(Intent.ALTERNATIVE_CATEGORY);
-		 * menu.addIntentOptions( Menu.ALTERNATIVE, 0, new ComponentName(this,
-		 * ShoppingView.class), null, intent, 0, null);
-		 */
-
-		/*
-		 * // Generate any additional actions that can be performed on the //
-		 * overall list. This allows other applications to extend // our menu
-		 * with their own actions. Intent intent = new Intent(null,
-		 * getIntent().getData());
-		 * intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-		 * //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, // new
-		 * ComponentName(this, NoteEditor.class), null, intent, 0, null);
-		 * 
-		 * // Workaround to add icons: MenuIntentOptionsWithIcons menu2 = new
-		 * MenuIntentOptionsWithIcons(this, menu);
-		 * menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0, new
-		 * ComponentName(this, ShoppingActivity.class), null, intent, 0, null);
-		 */
-
-		// Set checkable items:
-		// TODO SDK 0.9???
-		// menu.setItemCheckable(MENU_CONNECT_SIMULATOR, true);
 		return true;
 	}
 
@@ -906,8 +881,6 @@ public class ShoppingActivity extends Activity { // implements
 		 * listId != 1); // 1 is hardcoded number of default first list.
 		 */
 
-		// Set additional menu items that can be used with the
-		// currently selected list.
 		// TODO ???
 		/*
 		 * Intent intent = new Intent(null, mListUri);
@@ -1067,8 +1040,9 @@ public class ShoppingActivity extends Activity { // implements
 	}
 
 	void doListDialogAction(int menuAction, Dialog dialog) {
-		if (debug) Log.i(TAG, "doListDialogAction: menuAction: " + menuAction);
-		EditText et = (EditText)((Dialog)dialog).findViewById(R.id.edittext);
+		if (debug)
+			Log.i(TAG, "doListDialogAction: menuAction: " + menuAction);
+		EditText et = (EditText) ((Dialog) dialog).findViewById(R.id.edittext);
 		String newName = et.getText().toString();
 		switch (menuAction) {
 		case MENU_NEW_LIST:
@@ -1279,8 +1253,6 @@ public class ShoppingActivity extends Activity { // implements
 			 * getString(R.string.no_items_marked), getString(R.string.ok),
 			 * false);
 			 */
-		} else {
-			checkListLength();
 		}
 	}
 
@@ -1513,9 +1485,6 @@ public class ShoppingActivity extends Activity { // implements
 			mLinearLayoutBackground.setPadding(0, 0, 0, 0);
 			mLinearLayoutBackground.setBackgroundDrawable(null);
 
-			mMaxListCount = 5;
-			mBottomPadding = 50;
-
 			break;
 		case 2:
 			mTypeface = mTypefaceHandwriting;
@@ -1535,9 +1504,6 @@ public class ShoppingActivity extends Activity { // implements
 			// 9-patch drawable defines padding by itself
 			mLinearLayoutBackground
 					.setBackgroundResource(R.drawable.shoppinglist01d);
-
-			mMaxListCount = 5;
-			mBottomPadding = 85;
 
 			break;
 		case 3:
@@ -1560,9 +1526,6 @@ public class ShoppingActivity extends Activity { // implements
 			mLinearLayoutBackground.setPadding(0, 0, 0, 0);
 			mLinearLayoutBackground
 					.setBackgroundResource(R.drawable.theme_android);
-
-			mMaxListCount = 7;
-			mBottomPadding = 50;
 
 			break;
 		}
@@ -1667,7 +1630,8 @@ public class ShoppingActivity extends Activity { // implements
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
-		if (debug) Log.d(TAG, "onCreateDialog: mTextEntryMenu: " + mTextEntryMenu);
+		if (debug)
+			Log.d(TAG, "onCreateDialog: mTextEntryMenu: " + mTextEntryMenu);
 
 		switch (id) {
 		case DIALOG_ABOUT:
@@ -1677,14 +1641,16 @@ public class ShoppingActivity extends Activity { // implements
 			final View textEntryView = factory
 					.inflate(R.layout.input_box, null);
 			final Dialog dlg = new AlertDialog.Builder(this).setIcon(
-					android.R.drawable.ic_menu_edit).setTitle(R.string.ask_new_list).setView(textEntryView)
+					android.R.drawable.ic_menu_edit).setTitle(
+					R.string.ask_new_list).setView(textEntryView)
 					.setPositiveButton(R.string.ok,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int whichButton) {
 
 									dialog.dismiss();
-									doListDialogAction(mTextEntryMenu, (Dialog)dialog);
+									doListDialogAction(mTextEntryMenu,
+											(Dialog) dialog);
 
 								}
 							}).setNegativeButton(R.string.cancel,
@@ -1699,8 +1665,11 @@ public class ShoppingActivity extends Activity { // implements
 			// Accept OK also when user hits "Enter"
 			EditText et = (EditText) textEntryView.findViewById(R.id.edittext);
 
-			et.setKeyListener(PreferenceActivity.getCapitalizationKeyListenerFromPrefs(getApplicationContext())); 
-			//et.setKeyListener(PreferenceActivity.getCapitalizationKeyListenerFromPrefs(this)); 
+			et
+					.setKeyListener(PreferenceActivity
+							.getCapitalizationKeyListenerFromPrefs(getApplicationContext()));
+			// et.setKeyListener(PreferenceActivity.
+			// getCapitalizationKeyListenerFromPrefs(this));
 
 			et.setOnKeyListener(new OnKeyListener() {
 
@@ -1732,7 +1701,10 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_ABOUT:
 			break;
 		case DIALOG_TEXT_ENTRY:
-			if (debug) Log.d(TAG, "onPrepareDialog: mTextEntryMenu: " + mTextEntryMenu);
+			if (debug)
+				Log
+						.d(TAG, "onPrepareDialog: mTextEntryMenu: "
+								+ mTextEntryMenu);
 			EditText et = (EditText) dialog.findViewById(R.id.edittext);
 			et.selectAll();
 
@@ -1932,7 +1904,6 @@ public class ShoppingActivity extends Activity { // implements
 	}
 
 	private void fillItems() {
-		// Log.i(TAG, "Starting fillItems()");
 
 		long listId = getSelectedListId();
 		if (listId < 0) {
@@ -1942,12 +1913,21 @@ public class ShoppingActivity extends Activity { // implements
 		}
 
 		String sortOrder = PreferenceActivity.getSortOrderFromPrefs(this);
-		// Older default: ContainsFull.DEFAULT_SORT_ORDER
+		boolean hideBought = PreferenceActivity
+				.getHideCheckedItemsFromPrefs(this);
+		String selection;
+		if (hideBought && mMode == MODE_IN_SHOP) {
+			selection = "list_id = ? AND " + Shopping.Contains.STATUS + " <> "
+					+ Shopping.Status.BOUGHT;
+		} else {
+			selection = "list_id = ? ";
+		}
 
 		// Get a cursor for all items that are contained
 		// in currently selected shopping list.
 		mCursorItems = getContentResolver().query(ContainsFull.CONTENT_URI,
-				mStringItems, "list_id = " + listId, null, sortOrder);
+				mStringItems, selection,
+				new String[] { String.valueOf(listId) }, sortOrder);
 		startManagingCursor(mCursorItems);
 
 		// Activate the following for a striped list.
@@ -1955,7 +1935,7 @@ public class ShoppingActivity extends Activity { // implements
 
 		if (mCursorItems == null) {
 			Log.e(TAG, "missing shopping provider");
-			mListItems.setAdapter(new ArrayAdapter(this,
+			mListItems.setAdapter(new ArrayAdapter<String>(this,
 					android.R.layout.simple_list_item_1,
 					new String[] { "no shopping provider" }));
 			return;
@@ -1968,7 +1948,7 @@ public class ShoppingActivity extends Activity { // implements
 			layout_row = R.layout.shopping_item_row_small;
 		}
 
-		ListAdapter adapter = new mSimpleCursorAdapter(
+		mSimpleCursorAdapter adapter = new mSimpleCursorAdapter(
 				this,
 				// Use a template that displays a text view
 				layout_row,
@@ -1979,136 +1959,6 @@ public class ShoppingActivity extends Activity { // implements
 				// the view defined in the XML template
 				new int[] { R.id.name, R.id.image_URI });
 		mListItems.setAdapter(adapter);
-
-	}
-
-	/**
-	 * Add stripes to the a list view.
-	 * 
-	 * @param listView
-	 * @param activity
-	 */
-	public static void setupListStripes(ListView listView, Activity activity) {
-		// Get Drawables for alternating stripes
-		Drawable[] lineBackgrounds = new Drawable[2];
-
-		lineBackgrounds[0] = activity.getResources().getDrawable(
-				R.drawable.gold);
-		lineBackgrounds[1] = activity.getResources().getDrawable(
-				R.drawable.yellow_green);
-
-		// Make and measure a sample TextView of the sort our adapter will
-		// return
-		View view = activity.getLayoutInflater().inflate(
-				android.R.layout.simple_list_item_1, null);
-
-		TextView v = (TextView) view.findViewById(android.R.id.text1);
-		v.setText("X");
-		// Make it 100 pixels wide, and let it choose its own height.
-		v.measure(View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.EXACTLY,
-				100), View.MeasureSpec.makeMeasureSpec(
-				View.MeasureSpec.UNSPECIFIED, 0));
-		int height = v.getMeasuredHeight();
-
-		// TODO SDK 0.9?
-		// listView.setStripes(lineBackgrounds, height);
-	}
-
-	/**
-	 * This function checks the length of the list. If the number of items is
-	 * too large, the height of the list is limited, such that the EditText
-	 * element will not drop out of the view.
-	 */
-	private void checkListLength() {
-		if (true)
-			return;
-
-		Log.i(TAG, "checkListLength()");
-		/*
-		 * // Now we check whether we reach the lower border already: int[]
-		 * locEditText = new int[2];
-		 * mEditText.getAbsoluteLocationOnScreen(locEditText); int bottomEdit =
-		 * locEditText[1] + mEditText.getBottom();
-		 * 
-		 * int[] locBackground = new int[2];
-		 * mLinearLayoutBackground.getAbsoluteLocationOnScreen(locBackground);
-		 * int bottomBackground = locBackground[1] +
-		 * mLinearLayoutBackground.getBottom();
-		 */
-		// number of items in the list
-		// int count = mListItems.getCount();
-		int count = mCursorItems.getCount();
-
-		// Let's hardcode the number of items:
-		if (count <= mMaxListCount) {
-			mLayoutParamsItems.height = LinearLayout.LayoutParams.WRAP_CONTENT;
-			// mEditText.append("l");
-		} else {
-			// mEditText.append("m");
-			WindowManager w = getWindowManager();
-			Display d = w.getDefaultDisplay();
-			int width = d.getWidth();
-			int height = d.getHeight();
-
-			mAllowedListHeight =
-			// mLinearLayoutBackground.getHeight()
-			height
-					// - mListItems.getTop()
-					- mSpinnerListFilter.getHeight() - mEditText.getHeight()
-					- mBottomPadding;
-			if (mAllowedListHeight < 0) {
-				mAllowedListHeight = 0;
-			}
-			// we have to limit the height:
-			mLayoutParamsItems.height = mAllowedListHeight;
-		}
-
-		mListItems.setLayoutParams(mLayoutParamsItems);
-
-		/*
-		 * 
-		 * if (count < 1) { mLayoutParamsItems.height =
-		 * LinearLayout.LayoutParams.WRAP_CONTENT; } else { // for now, let us
-		 * take the height of // the first element and multiply by count. //
-		 * TODO later: Some items may be larger // (if they contain images). //
-		 * How can we best determine the size // there? //int singleHeight =
-		 * mListItems.getChildAt(0).getHeight(); int listHeight =
-		 * mListItems.getHeight(); Log.i(TAG, "listHeight: " + listHeight);
-		 * 
-		 * int editTextHeight = mEditText.getHeight();
-		 * 
-		 * // calculate the allowed height of the list // TODO: could be moved
-		 * to initialization after freeze? mAllowedListHeight =
-		 * mLinearLayoutBackground.getHeight() - mListItems.getTop() -
-		 * editTextHeight - mBottomPadding;
-		 * 
-		 * if ((mAllowedListHeight < 1) || (listHeight + editTextHeight <
-		 * mAllowedListHeight)) { mLayoutParamsItems.height =
-		 * LinearLayout.LayoutParams.WRAP_CONTENT; } else { // we have to limit
-		 * the height: mLayoutParamsItems.height = mAllowedListHeight; } }
-		 * Log.i(TAG, "Items.height: " + mLayoutParamsItems.height); if
-		 * (mLayoutParamsItems.height > 0) {
-		 * mListItems.setLayoutParams(mLayoutParamsItems); };
-		 */
-		/*
-		 * int listLen =
-		 * 
-		 * if (bottomEdit > bottomBackground) { // The list is too long, the
-		 * edit text field // would fall off the screen, so we have // to limit
-		 * the height of the list: int[] locList = new int[2];
-		 * mListItems.getAbsoluteLocationOnScreen(locList); int topList =
-		 * locList[1];
-		 * 
-		 * int newListSize = bottomBackground - topList - mEditText.getHeight();
-		 * 
-		 * Log.i(TAG, "newListSize : " + newListSize);
-		 * 
-		 * LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-		 * LinearLayout.LayoutParams.FILL_PARENT, newListSize);
-		 * //LinearLayout.LayoutParams.WRAP_CONTENT);
-		 * //mLinearLayoutBackground.updateViewLayout(mListItems, params);
-		 * mListItems.setLayoutParams(params); }
-		 */
 
 	}
 
@@ -2182,7 +2032,6 @@ public class ShoppingActivity extends Activity { // implements
 		@Override
 		public void bindView(final View view, final Context context,
 				final Cursor cursor) {
-			// Log.i(TAG, "bindView " + view.toString());
 			super.bindView(view, context, cursor);
 
 			TextView t = (TextView) view.findViewById(R.id.name);
@@ -2210,7 +2059,9 @@ public class ShoppingActivity extends Activity { // implements
 
 			if (mMarkType == mMarkCheckbox) {
 				c.setVisibility(CheckBox.VISIBLE);
-				if (cursor.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
+				if ((cursor.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT && mMode == MODE_IN_SHOP)
+						|| (cursor.getLong(mStringItemsSTATUS) == Shopping.Status.WANT_TO_BUY)
+						&& mMode == MODE_ADD_ITEMS) {
 					c.setChecked(true);
 				} else {
 					c.setChecked(false);
@@ -2251,26 +2102,6 @@ public class ShoppingActivity extends Activity { // implements
 				}
 
 			}
-			/*
-			 * c.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			 * 
-			 * @Override public void onCheckedChanged(CompoundButton buttonView,
-			 * boolean isChecked) { // TODO Auto-generated method stub
-			 * Log.d(TAG, "check clicked");
-			 * 
-			 * int pos = (Integer) buttonView.getTag();
-			 * 
-			 * Log.i(TAG, "bindview: move to pos = " + pos); AdapterView av =
-			 * (AdapterView) buttonView.getParent().getParent(); Cursor c =
-			 * (Cursor) av.getItemAtPosition(pos);
-			 * 
-			 * if (mState == STATE_PICK_ITEM) { pickItem(c); } else {
-			 * toggleItemBought(c); }
-			 * 
-			 * }
-			 * 
-			 * });
-			 */
 
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
@@ -2420,7 +2251,6 @@ public class ShoppingActivity extends Activity { // implements
 			}
 
 		}
-		// super.onActivityResult(requestCode, resultCode, data, extras);
 	}
 
 }

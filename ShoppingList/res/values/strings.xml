@@ -73,5 +73,8 @@
 	<string name="preference_capitalization_title">Capitalization</string>
 	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
 	<string name="preference_capitalization_dialog_title">Choose capitalization</string> 
-
+	<string name="preference_hidechecked_title">Hide checked items</string>
+	<string name="preference_hidechecked_summary">Only applies if in a shop.</string>
+	<string name="preference_showprice_title">Show price</string>
+	<string name="preference_showprice_summary">Extra column in list.</string>	
 </resources> 

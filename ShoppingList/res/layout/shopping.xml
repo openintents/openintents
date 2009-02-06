@@ -44,7 +44,7 @@
  		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
-		<EditText android:id="@+id/edittext_add_item"
+		<AutoCompleteTextView android:id="@+id/autocomplete_add_item"
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="20dip"
