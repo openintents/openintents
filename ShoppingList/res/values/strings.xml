@@ -39,10 +39,18 @@
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
 	<string name="rename_list">Rename list</string>
-	<string name="mark_item">Mark item</string>
-	<string name="edit_item">Edit item</string>
-	<string name="delete_item">Delete item</string>
+	<string name="menu_mark_item">Mark item</string>
+	<string name="menu_edit_item">Edit item</string>
+	<string name="menu_remove_item">Remove item</string>
+	<string name="menu_delete_item">Delete item</string>
 	<string name="add">Add</string>
+	<string name="menu_pick_items">Pick items</string>
+	<string name="menu_start_shopping">Shopping</string>
+	<string name="pick_items_titel">%s - Pick items</string>
+	<string name="shopping_title">%s - Shopping</string>
+	<string name="tags">Tags</string>
+	<string name="price">Price</string>
+	
 
 	<!-- Shortcut -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
@@ -76,5 +84,7 @@
 	<string name="preference_hidechecked_title">Hide checked items</string>
 	<string name="preference_hidechecked_summary">Only applies if in a shop.</string>
 	<string name="preference_showprice_title">Show price</string>
-	<string name="preference_showprice_summary">Extra column in list.</string>	
+	<string name="preference_showprice_summary">Shown as extra column in list.</string>
+	<string name="preference_showtags_title">Show tags</string>
+	<string name="preference_showtags_summary">Shown as extra column in list.</string>
 </resources> 

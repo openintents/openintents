@@ -37,16 +37,22 @@
               android:layout_marginLeft="27dip"
               android:layout_marginTop="-10dip"
               android:layout_marginBottom="-10dip"
-              android:layout_marginRight="-18dip"
+              android:layout_marginRight="0dip"
               android:textStyle="normal"
               android:bufferType="spannable"
               android:focusable="false"
-              android:visibility="gone"
+              android:visibility="visible"
               android:layout_gravity="center"
             />
             <!-- 
               android:layout_marginTop="8dip"
               android:layout_marginBottom="8dip" -->
+   <TextView android:id="@+id/quantity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:visibility="visible"
+              android:layout_gravity="center"
+              android:text="1" android:longClickable="true"/>
    <TextView android:id="@+id/name"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="wrap_content"
@@ -56,7 +62,21 @@
             android:textStyle="normal"
             android:bufferType="spannable"
             android:layout_gravity="center"
+            android:text="name"
              />
+    <TextView android:id="@+id/tags"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:visibility="visible"
+              android:layout_gravity="center"
+              android:text=""/>
+    <TextView android:id="@+id/price"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:visibility="visible"
+              android:layout_gravity="center"
+              android:text=""/>
+             
              <!-- 
             android:layout_marginTop="8dip"
             android:layout_marginBottom="8dip" -->

@@ -19,6 +19,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_LASTUSED = "lastused";
 	public static final String PREFS_HIDECHECKED = "hidechecked";
 	public static final String PREFS_CAPITALIZATION = "capitalization";
+	public static final String PREFS_SHOW_PRICE = "showprice";
+	public static final String PREFS_SHOW_TAGS = "showtags";
 
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 

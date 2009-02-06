@@ -40,7 +40,7 @@
 		android:stackFromBottom="true"
 		android:layout_height="wrap_content" -->
   		<!--  android:layout_weight="0"  -->
- 	<LinearLayout 
+ 	<LinearLayout android:id="@+id/add_panel"
  		android:orientation="horizontal"
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">

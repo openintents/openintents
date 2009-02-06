@@ -29,6 +29,7 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
+import org.openintents.provider.Shopping.Status;
 import org.openintents.shopping.share.GTalkSender;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -49,12 +50,15 @@ import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.hardware.SensorListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.text.Spannable;
+import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -63,6 +67,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -84,6 +89,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.SimpleCursorAdapter.ViewBinder;
 
 /**
  * 
@@ -125,7 +131,7 @@ public class ShoppingActivity extends Activity { // implements
 	// rename
 	private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
 	// or modified
-	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
+	private static final int MENU_CHANGE_MODE = Menu.FIRST + 14; // pick from
 	// previously
 	// used items
 
@@ -136,10 +142,10 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_UPDATE = Menu.FIRST + 16;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 17;
 	private static final int MENU_SEND = Menu.FIRST + 18;
+	private static final int MENU_REMOVE_ITEM_FROM_LIST = Menu.FIRST + 19;
 
 	private static final int DIALOG_ABOUT = 1;
 	private static final int DIALOG_TEXT_ENTRY = 2;
-
 	/**
 	 * The main activity.
 	 * 
@@ -235,15 +241,19 @@ public class ShoppingActivity extends Activity { // implements
 
 	private static final String[] mStringItems = new String[] {
 			ContainsFull._ID, ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
-			ContainsFull.STATUS, ContainsFull.ITEM_ID,
+			ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
+			ContainsFull.QUANTITY, ContainsFull.STATUS, ContainsFull.ITEM_ID,
 			ContainsFull.SHARE_CREATED_BY, ContainsFull.SHARE_MODIFIED_BY };
 	private static final int mStringItemsCONTAINSID = 0;
 	private static final int mStringItemsITEMNAME = 1;
 	private static final int mStringItemsITEMIMAGE = 2;
-	private static final int mStringItemsSTATUS = 3;
-	private static final int mStringItemsITEMID = 4;
-	private static final int mStringItemsSHARECREATEDBY = 5;
-	private static final int mStringItemsSHAREMODIFIEDBY = 6;
+	private static final int mStringItemsITEMTAGS = 3;
+	private static final int mStringItemsITEMPRICE = 4;
+	private static final int mStringItemsQUANTITY = 5;
+	private static final int mStringItemsSTATUS = 6;
+	private static final int mStringItemsITEMID = 7;
+	private static final int mStringItemsSHARECREATEDBY = 8;
+	private static final int mStringItemsSHAREMODIFIEDBY = 9;
 
 	private LinearLayout.LayoutParams mLayoutParamsItems;
 	private int mAllowedListHeight; // Height for the list allowed in this view.
@@ -279,6 +289,42 @@ public class ShoppingActivity extends Activity { // implements
 	private int mTextEntryMenu;
 	private Cursor mItemsCursor;
 
+	public int mPriceVisiblity;
+	private int mTagsVisiblity;
+	private SensorManager mSensorManager;
+	private SensorListener mMySensorListener = new SensorListener() {
+
+		private double mTotalForcePrev; // stores the previous total force value
+
+		public void onAccuracyChanged(int i, int j) {
+			// ignore
+
+		}
+
+		public void onSensorChanged(int sensor, float[] values) {
+			if (sensor == SensorManager.SENSOR_ACCELEROMETER) {
+				double forceThreshHold = 1.5f;
+
+				double totalForce = 0.0f;
+				totalForce += Math.pow(values[SensorManager.DATA_X]
+						/ SensorManager.GRAVITY_EARTH, 2.0);
+				totalForce += Math.pow(values[SensorManager.DATA_Y]
+						/ SensorManager.GRAVITY_EARTH, 2.0);
+				totalForce += Math.pow(values[SensorManager.DATA_Z]
+						/ SensorManager.GRAVITY_EARTH, 2.0);
+				totalForce = Math.sqrt(totalForce);
+
+				if ((totalForce < forceThreshHold)
+						&& (mTotalForcePrev > forceThreshHold)) {
+					cleanupList();
+				}
+
+				mTotalForcePrev = totalForce;
+			}
+		}
+
+	};
+
 	// Sensor service -----------------
 
 	// private SensorEventListener mSensorListener;
@@ -294,11 +340,6 @@ public class ShoppingActivity extends Activity { // implements
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		// setTheme(android.R.style.Theme_White);
-		// setTheme(android.R.style.Theme_Dialog);
-		// setTheme(android.R.style.Theme_Dark);
-		// setTheme(android.R.style.Theme_Black);
-		// setTheme(android.R.style.Theme_Dark);
 		setContentView(R.layout.shopping);
 
 		// Initialize the convenience functions:
@@ -318,19 +359,7 @@ public class ShoppingActivity extends Activity { // implements
 		mListUri = Shopping.Lists.CONTENT_URI;
 		mItemUri = Shopping.Items.CONTENT_URI;
 
-		// if set to "last used", override the default list.
-		SharedPreferences sp = getSharedPreferences(
-				"org.openintents.shopping_preferences", MODE_PRIVATE);
-		final boolean loadLastUsed = sp.getBoolean(
-				PreferenceActivity.PREFS_LOADLASTUSED, false);
-		Log.e(TAG, "load last used ?" + loadLastUsed);
-		int defaultShoppingList = 1;
-		if (loadLastUsed) {
-			defaultShoppingList = sp.getInt(PreferenceActivity.PREFS_LASTUSED,
-					1);
-		} else {
-			defaultShoppingList = (int) Shopping.getDefaultList();
-		}
+		int defaultShoppingList = initFromPreferences();
 
 		// Handle the calling intent
 		final Intent intent = getIntent();
@@ -386,15 +415,9 @@ public class ShoppingActivity extends Activity { // implements
 				"fonts/AnkeHand.ttf");
 		mTypefaceDigital = Typeface.createFromAsset(getAssets(),
 				"fonts/Crysta.ttf");
-		mTypeface = null;
-		mTypeface = mTypefaceHandwriting;
 
 		// hook up all buttons, lists, edit text:
 		createView();
-
-		// Called after createView
-		// (as we need the view already retrieved from the ids.
-		setListTheme(1);
 
 		// populate the lists
 		fillListFilter();
@@ -409,16 +432,8 @@ public class ShoppingActivity extends Activity { // implements
 
 		// select the default shopping list at the beginning:
 		setSelectedListId(selectList);
-		// TODO: Select the last shopping list viewed
-		// instead of the default shopping list.
-		// (requires saving that information as
-		// preference).
 
-		// now fill all items
-		fillItems();
-
-		// Set the theme based on the selected list:
-		setListTheme(loadListTheme());
+		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
 		// Bind GTalk if currently selected shopping list needs it:
 		bindGTalkIfNeeded();
@@ -434,6 +449,54 @@ public class ShoppingActivity extends Activity { // implements
 		// set focus to the edit line:
 		mEditText.requestFocus();
 
+		// TODO remove initFromPreferences from onCreate
+		// we need it in resume to update after settings have changed
+		initFromPreferences();
+		// now update title and fill all items
+		onModeChanged();
+	}
+
+	private int initFromPreferences() {
+		// if set to "last used", override the default list.
+		SharedPreferences sp = getSharedPreferences(
+				"org.openintents.shopping_preferences", MODE_PRIVATE);
+		final boolean loadLastUsed = sp.getBoolean(
+				PreferenceActivity.PREFS_LOADLASTUSED, false);
+
+		Log.e(TAG, "load last used ?" + loadLastUsed);
+		int defaultShoppingList = 1;
+		if (loadLastUsed) {
+			defaultShoppingList = sp.getInt(PreferenceActivity.PREFS_LASTUSED,
+					1);
+		} else {
+			defaultShoppingList = (int) Shopping.getDefaultList();
+		}
+
+		if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, false)) {
+			mPriceVisiblity = View.VISIBLE;
+		} else {
+			mPriceVisiblity = View.GONE;
+		}
+
+		if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, false)) {
+			mTagsVisiblity = View.VISIBLE;
+		} else {
+			mTagsVisiblity = View.GONE;
+		}
+		return defaultShoppingList;
+	}
+
+	private void registerSensor() {
+		if (mMode == MODE_IN_SHOP) {
+			mSensorManager.registerListener(mMySensorListener,
+					SensorManager.SENSOR_ACCELEROMETER,
+					SensorManager.SENSOR_DELAY_UI);
+		}
+
+	}
+
+	private void unregisterSensor() {
+		mSensorManager.unregisterListener(mMySensorListener);
 	}
 
 	@Override
@@ -473,6 +536,8 @@ public class ShoppingActivity extends Activity { // implements
 		 * intentfilter = new IntentFilter(OpenIntents.REFRESH_ACTION);
 		 * registerReceiver(mIntentReceiver, intentfilter);
 		 */
+
+		registerSensor();
 	}
 
 	/*
@@ -485,6 +550,8 @@ public class ShoppingActivity extends Activity { // implements
 		// TODO Auto-generated method stub
 		super.onPause();
 		Log.i(TAG, "Shopping list onPause()");
+
+		unregisterSensor();
 
 		SharedPreferences sp = getSharedPreferences(
 				"org.openintents.shopping_preferences", MODE_PRIVATE);
@@ -500,6 +567,7 @@ public class ShoppingActivity extends Activity { // implements
 		 * // Unbind GTalk service if (mGTalkSender != null) {
 		 * mGTalkSender.unbindGTalkService(); }
 		 */
+
 	}
 
 	@Override
@@ -548,35 +616,36 @@ public class ShoppingActivity extends Activity { // implements
 		adapter.setStringConversionColumn(1);
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 
-			public Cursor runQuery(CharSequence constraint) {				
+			public Cursor runQuery(CharSequence constraint) {
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
 						Items._ID, Items.NAME }, "upper(name) like '%"
-						+ (constraint == null ? "" : constraint.toString().toUpperCase()) + "%'", null, "name desc");
+						+ (constraint == null ? "" : constraint.toString()
+								.toUpperCase()) + "%'", null, "name desc");
 				return mItemsCursor;
 			}
 
 		});
 		mEditText.setAdapter(adapter);
-		 mEditText.setOnKeyListener(new OnKeyListener() {
-		
-		 public boolean onKey(View v, int keyCode, KeyEvent key) {
-		 // Log.i(TAG, "KeyCode: " + keyCode
-		 // + " =?= "
-		 // +Integer.parseInt(getString(R.string.key_return)) );
-		
-		 // Shortcut: Instead of pressing the button,
-		 // one can also press the "Enter" key.
-		 Log.i(TAG, "Key action: " + key.getAction());
-		 Log.i(TAG, "Key code: " + keyCode);
-		 if (key.getAction() == KeyEvent.ACTION_DOWN
-		 && keyCode == KeyEvent.KEYCODE_ENTER) {
-		 insertNewItem();
-		 return true;
-		 }
-		 ;
-		 return false;
-		 }
-		 });
+		mEditText.setOnKeyListener(new OnKeyListener() {
+
+			public boolean onKey(View v, int keyCode, KeyEvent key) {
+				// Log.i(TAG, "KeyCode: " + keyCode
+				// + " =?= "
+				// +Integer.parseInt(getString(R.string.key_return)) );
+
+				// Shortcut: Instead of pressing the button,
+				// one can also press the "Enter" key.
+				Log.i(TAG, "Key action: " + key.getAction());
+				Log.i(TAG, "Key code: " + keyCode);
+				if (key.getAction() == KeyEvent.ACTION_DOWN
+						&& keyCode == KeyEvent.KEYCODE_ENTER) {
+					insertNewItem();
+					return true;
+				}
+				;
+				return false;
+			}
+		});
 
 		Button button = (Button) findViewById(R.id.button_add_item);
 		button.setOnClickListener(new OnClickListener() {
@@ -609,11 +678,15 @@ public class ShoppingActivity extends Activity { // implements
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenuInfo info) {
 						contextmenu.add(0, MENU_MARK_ITEM, 0,
-								R.string.mark_item).setShortcut('1', 'm');
+								R.string.menu_mark_item).setShortcut('1', 'm');
 						contextmenu.add(0, MENU_EDIT_ITEM, 0,
-								R.string.edit_item).setShortcut('2', 'e');
+								R.string.menu_edit_item).setShortcut('2', 'e');
+						contextmenu.add(0, MENU_REMOVE_ITEM_FROM_LIST, 0,
+								R.string.menu_remove_item)
+								.setShortcut('3', 'r');
 						contextmenu.add(0, MENU_DELETE_ITEM, 0,
-								R.string.delete_item).setShortcut('3', 'd');
+								R.string.menu_delete_item)
+								.setShortcut('4', 'd');
 					}
 
 				});
@@ -706,10 +779,6 @@ public class ShoppingActivity extends Activity { // implements
 	 * strike item through or undo this.
 	 */
 	private void toggleItemBought(Cursor c) {
-		/*
-		 * long listId = getSelectedListId(); if (listId < 0) { // No valid list
-		 * - probably view is not active // and no item is selected. return; }
-		 */
 
 		// mCursorListFilter has been set to correct position
 		// by calling getSelectedListId(),
@@ -722,9 +791,12 @@ public class ShoppingActivity extends Activity { // implements
 		long oldstatus = c.getLong(mStringItemsSTATUS);
 
 		// Toggle status:
-		long newstatus = Shopping.Status.BOUGHT;
-		if (oldstatus == Shopping.Status.BOUGHT) {
-			newstatus = Shopping.Status.WANT_TO_BUY;
+		// bought -> want_to_buy
+		// want_to_buy -> bought
+		// removed_from_list -> want_to_buy
+		long newstatus = Shopping.Status.WANT_TO_BUY;
+		if (oldstatus == Shopping.Status.WANT_TO_BUY) {
+			newstatus = Shopping.Status.BOUGHT;
 		}
 
 		ContentValues values = new ContentValues();
@@ -778,6 +850,10 @@ public class ShoppingActivity extends Activity { // implements
 				R.drawable.ic_menu_clean_up).setShortcut('1', 'c');
 		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
 				android.R.drawable.ic_menu_edit).setShortcut('2', 'r');
+		;
+
+		menu.add(0, MENU_CHANGE_MODE, 0, R.string.menu_pick_items).setIcon(
+				android.R.drawable.ic_menu_add).setShortcut('2', 'p');
 		;
 
 		/*
@@ -869,6 +945,21 @@ public class ShoppingActivity extends Activity { // implements
 		// Selected list:
 		long listId = getSelectedListId();
 
+		// set menu title for change mode
+		MenuItem menuItem = menu.findItem(MENU_CHANGE_MODE);
+		if (mMode == MODE_ADD_ITEMS) {
+			menuItem.setTitle(R.string.menu_start_shopping);
+			menuItem.setIcon(android.R.drawable.ic_menu_myplaces);
+
+		} else {
+			menu.findItem(MENU_CHANGE_MODE).setTitle(R.string.menu_pick_items);
+			menuItem.setIcon(android.R.drawable.ic_menu_add);
+		}
+
+		// set menu title for change mode
+		menuItem = menu.findItem(MENU_CLEAN_UP_LIST).setVisible(
+				mMode == MODE_IN_SHOP);
+
 		// Delete list is possible, if we have more than one list:
 		// AND
 		// the current list is not the default list (listId == 0) - issue #105
@@ -933,6 +1024,15 @@ public class ShoppingActivity extends Activity { // implements
 
 		case MENU_DELETE_LIST:
 			deleteListConfirm();
+			return true;
+
+		case MENU_CHANGE_MODE:
+			if (mMode == MODE_IN_SHOP) {
+				mMode = MODE_ADD_ITEMS;
+			} else {
+				mMode = MODE_IN_SHOP;
+			}
+			onModeChanged();
 			return true;
 
 		case MENU_SHARE:
@@ -1004,6 +1104,9 @@ public class ShoppingActivity extends Activity { // implements
 		case MENU_EDIT_ITEM:
 			editItem(menuInfo.position);
 			break;
+		case MENU_REMOVE_ITEM_FROM_LIST:
+			removeItemFromList(menuInfo.position);
+			break;
 		case MENU_DELETE_ITEM:
 			deleteItem(menuInfo.position);
 			break;
@@ -1039,10 +1142,10 @@ public class ShoppingActivity extends Activity { // implements
 		}
 	}
 
-	void doListDialogAction(int menuAction, Dialog dialog) {
+	void doTextEntryDialogAction(int menuAction, Dialog dialog) {
 		if (debug)
 			Log.i(TAG, "doListDialogAction: menuAction: " + menuAction);
-		EditText et = (EditText) ((Dialog) dialog).findViewById(R.id.edittext);
+		EditText et = (EditText) dialog.findViewById(R.id.edittext);
 		String newName = et.getText().toString();
 		switch (menuAction) {
 		case MENU_NEW_LIST:
@@ -1060,7 +1163,21 @@ public class ShoppingActivity extends Activity { // implements
 			}
 			break;
 		case MENU_EDIT_ITEM:
-			if (renameItem(newName)) {
+			et = (EditText) dialog.findViewById(R.id.edittags);
+			String tags = et.getText().toString();
+			et = (EditText) dialog.findViewById(R.id.editprice);
+			String price = et.getText().toString();
+			Long priceLong;
+			if (TextUtils.isEmpty(price)) {
+				priceLong = 0L;
+			} else {
+				try {
+					priceLong = (long) (100 * Double.parseDouble(price));
+				} catch (NumberFormatException e) {
+					priceLong = null;
+				}
+			}
+			if (updateItem(newName, tags, priceLong)) {
 				// Rename successful. Exit:
 				dialog.dismiss();
 				et.setText("");
@@ -1126,10 +1243,13 @@ public class ShoppingActivity extends Activity { // implements
 	/**
 	 * Rename item from dialog.
 	 * 
+	 * @param price
+	 * @param tags
+	 * 
 	 * @return true if new list was renamed. False if new list was not renamed,
 	 *         because user has not given any name.
 	 */
-	private boolean renameItem(String newName) {
+	private boolean updateItem(String newName, String tags, Long price) {
 
 		if (newName.equals("")) {
 			// User has not provided any name
@@ -1161,6 +1281,10 @@ public class ShoppingActivity extends Activity { // implements
 			// Rename item in items table
 			ContentValues values = new ContentValues();
 			values.put(Items.NAME, newItemName);
+			values.put(Items.TAGS, tags);
+			if (price != null) {
+				values.put(Items.PRICE, price);
+			}
 			getContentResolver().update(
 					Uri
 							.withAppendedPath(Items.CONTENT_URI, cursor
@@ -1204,8 +1328,7 @@ public class ShoppingActivity extends Activity { // implements
 			Intent i = new Intent();
 			i.setAction(Intent.ACTION_SEND);
 			i.setType("text/plain");
-			i.putExtra(Intent.EXTRA_SUBJECT, ((Cursor) mSpinnerListFilter
-					.getSelectedItem()).getString(mStringListFilterNAME));
+			i.putExtra(Intent.EXTRA_SUBJECT, getCurrentListName());
 			i.putExtra(Intent.EXTRA_TEXT, sb.toString());
 
 			try {
@@ -1227,32 +1350,41 @@ public class ShoppingActivity extends Activity { // implements
 	 * that are marked BOUGHT.
 	 */
 	private void cleanupList() {
-		// Delete all items from current list
+		// Remove all items from current list
 		// which have STATUS = Status.BOUGHT
 
 		// TODO One could write one SQL statement to delete all at once.
 		// But as long as shopping lists stay small, it should not matter.
 		String listId = mCursorListFilter.getString(0);
+
 		boolean nothingdeleted = true;
-		nothingdeleted = getContentResolver().delete(
-				Shopping.Contains.CONTENT_URI,
-				Shopping.Contains.LIST_ID + " = " + listId + " AND "
-						+ Shopping.Contains.STATUS + " = "
-						+ Shopping.Status.BOUGHT, null) == 0;
+		if (false) {
+			// by deleteing items
+
+			nothingdeleted = getContentResolver().delete(
+					Shopping.Contains.CONTENT_URI,
+					Shopping.Contains.LIST_ID + " = " + listId + " AND "
+							+ Shopping.Contains.STATUS + " = "
+							+ Shopping.Status.BOUGHT, null) == 0;
+
+		} else {
+			// by changing state
+			ContentValues values = new ContentValues();
+			values.put(Contains.STATUS, Status.REMOVED_FROM_LIST);
+			nothingdeleted = getContentResolver().update(
+					Contains.CONTENT_URI,
+					values,
+					Shopping.Contains.LIST_ID + " = " + listId + " AND "
+							+ Shopping.Contains.STATUS + " = "
+							+ Shopping.Status.BOUGHT, null) == 0;
+		}
+
 		mCursorItems.requery();
 
 		if (nothingdeleted) {
 			// Show toast
 			Toast.makeText(this, R.string.no_items_marked, Toast.LENGTH_SHORT)
 					.show();
-
-			// Show dialog:
-			/*
-			 * AlertDialog.show(ShoppingView.this,
-			 * getString(R.string.clean_up_list), 0, // TODO choose IconID
-			 * getString(R.string.no_items_marked), getString(R.string.ok),
-			 * false);
-			 */
 		}
 	}
 
@@ -1314,21 +1446,35 @@ public class ShoppingActivity extends Activity { // implements
 		showListDialog(MENU_EDIT_ITEM);
 	}
 
-	/** Delete item */
+	/** delete item */
 	void deleteItem(int position) {
+		// Delete item from all lists
+		// by deleting contains row
+		getContentResolver().delete(Contains.CONTENT_URI, "item_id = ?",
+				new String[] { mCursorItems.getString(mStringItemsITEMID) });
+
+		// and delete item
+		getContentResolver().delete(Items.CONTENT_URI, "_id = ?",
+				new String[] { mCursorItems.getString(mStringItemsITEMID) });
+
+		mCursorItems.requery();
+	}
+
+	/** removeItemFromList */
+	void removeItemFromList(int position) {
 		// Remember old values before delete (for share below)
 		String itemName = mCursorItems.getString(mStringItemsITEMNAME);
 		long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
 
-		// Delete item
-		// getContentResolver().delete(Items.CONTENT_URI, "_id = ?", new
-		// String[]{mCursorItems.getString(0)});
+		// Delete item from list
+		// by deleting contains row
 		getContentResolver()
 				.delete(
 						Contains.CONTENT_URI,
 						"_id = ?",
 						new String[] { mCursorItems
 								.getString(mStringItemsCONTAINSID) });
+
 		mCursorItems.requery();
 
 		// If we share items, mark item on other lists:
@@ -1345,7 +1491,6 @@ public class ShoppingActivity extends Activity { // implements
 		 * mGTalkSender.sendItemUpdate(recipients, shareName, itemName,
 		 * itemName, oldstatus, newstatus); }
 		 */
-
 	}
 
 	/**
@@ -1649,7 +1794,7 @@ public class ShoppingActivity extends Activity { // implements
 										int whichButton) {
 
 									dialog.dismiss();
-									doListDialogAction(mTextEntryMenu,
+									doTextEntryDialogAction(mTextEntryMenu,
 											(Dialog) dialog);
 
 								}
@@ -1677,9 +1822,10 @@ public class ShoppingActivity extends Activity { // implements
 						final KeyEvent key) {
 					// Log.i(TAG, "KeyCode: " + keyCode);
 
-					if (key.getAction() == KeyEvent.ACTION_DOWN
+					if (mTextEntryMenu != MENU_EDIT_ITEM
+							&& key.getAction() == KeyEvent.ACTION_DOWN
 							&& keyCode == KeyEvent.KEYCODE_ENTER) {
-						doListDialogAction(mTextEntryMenu, dlg);
+						doTextEntryDialogAction(mTextEntryMenu, dlg);
 						return true;
 					}
 					return false;
@@ -1707,11 +1853,20 @@ public class ShoppingActivity extends Activity { // implements
 								+ mTextEntryMenu);
 			EditText et = (EditText) dialog.findViewById(R.id.edittext);
 			et.selectAll();
+			EditText tags = (EditText) dialog.findViewById(R.id.edittags);
+			tags.selectAll();
+			EditText price = (EditText) dialog.findViewById(R.id.editprice);
+			price.selectAll();
+
+			View tagsPanel = dialog.findViewById(R.id.tags_panel);
+			View pricePanel = dialog.findViewById(R.id.price_panel);
 
 			switch (mTextEntryMenu) {
 
 			case MENU_NEW_LIST:
 				dialog.setTitle(R.string.ask_new_list);
+				tagsPanel.setVisibility(View.GONE);
+				pricePanel.setVisibility(View.GONE);
 				break;
 			case MENU_RENAME_LIST:
 				dialog.setTitle(R.string.ask_rename_list);
@@ -1720,12 +1875,18 @@ public class ShoppingActivity extends Activity { // implements
 					et.setText(mCursorListFilter
 							.getString(mStringListFilterNAME));
 				}
+				tagsPanel.setVisibility(View.GONE);
+				pricePanel.setVisibility(View.GONE);
 				break;
 			case MENU_EDIT_ITEM:
 				dialog.setTitle(R.string.ask_edit_item);
 				// Cursor is supposed to be set to correct row already:
 				et.setText(mCursorItems.getString(mStringItemsITEMNAME));
-
+				tags.setText(mCursorItems.getString(mStringItemsITEMTAGS));
+				price.setText(String.valueOf(mCursorItems
+						.getLong(mStringItemsITEMPRICE) * 0.01d));
+				tagsPanel.setVisibility(View.VISIBLE);
+				pricePanel.setVisibility(View.VISIBLE);
 				break;
 			}
 		}
@@ -1903,6 +2064,26 @@ public class ShoppingActivity extends Activity { // implements
 
 	}
 
+	private void onModeChanged() {
+
+		fillItems();
+
+		if (mMode == MODE_IN_SHOP) {
+			setTitle(getString(R.string.shopping_title, getCurrentListName()));
+			findViewById(R.id.add_panel).setVisibility(View.GONE);
+			registerSensor();
+		} else {
+			setTitle(getString(R.string.pick_items_titel, getCurrentListName()));
+			findViewById(R.id.add_panel).setVisibility(View.VISIBLE);
+			unregisterSensor();
+		}
+	}
+
+	private String getCurrentListName() {
+		return ((Cursor) mSpinnerListFilter.getSelectedItem())
+				.getString(mStringListFilterNAME);
+	}
+
 	private void fillItems() {
 
 		long listId = getSelectedListId();
@@ -1916,9 +2097,14 @@ public class ShoppingActivity extends Activity { // implements
 		boolean hideBought = PreferenceActivity
 				.getHideCheckedItemsFromPrefs(this);
 		String selection;
-		if (hideBought && mMode == MODE_IN_SHOP) {
-			selection = "list_id = ? AND " + Shopping.Contains.STATUS + " <> "
-					+ Shopping.Status.BOUGHT;
+		if (mMode == MODE_IN_SHOP) {
+			if (hideBought) {
+				selection = "list_id = ? AND " + Shopping.Contains.STATUS
+						+ " == " + Shopping.Status.WANT_TO_BUY;
+			} else {
+				selection = "list_id = ? AND " + Shopping.Contains.STATUS
+						+ " <> " + Shopping.Status.REMOVED_FROM_LIST;
+			}
 		} else {
 			selection = "list_id = ? ";
 		}
@@ -1948,16 +2134,18 @@ public class ShoppingActivity extends Activity { // implements
 			layout_row = R.layout.shopping_item_row_small;
 		}
 
-		mSimpleCursorAdapter adapter = new mSimpleCursorAdapter(
-				this,
-				// Use a template that displays a text view
+		mSimpleCursorAdapter adapter = new mSimpleCursorAdapter(this,
+		// Use a template that displays a text view
 				layout_row,
 				// Give the cursor to the list adapter
 				mCursorItems,
 				// Map the IMAGE and NAME to...
-				new String[] { ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE },
+				new String[] { ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
+						ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
+						ContainsFull.QUANTITY },
 				// the view defined in the XML template
-				new int[] { R.id.name, R.id.image_URI });
+				new int[] { R.id.name, R.id.image_URI, R.id.tags, R.id.price,
+						R.id.quantity });
 		mListItems.setAdapter(adapter);
 
 	}
@@ -2004,7 +2192,8 @@ public class ShoppingActivity extends Activity { // implements
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
 	 * Shopping.Status.BOUGHT
 	 */
-	public class mSimpleCursorAdapter extends SimpleCursorAdapter {
+	public class mSimpleCursorAdapter extends SimpleCursorAdapter implements
+			ViewBinder {
 
 		/**
 		 * Constructor simply calls super class.
@@ -2023,6 +2212,15 @@ public class ShoppingActivity extends Activity { // implements
 		mSimpleCursorAdapter(final Context context, final int layout,
 				final Cursor c, final String[] from, final int[] to) {
 			super(context, layout, c, from, to);
+			super.setViewBinder(this);
+		}
+
+		@Override
+		public View newView(Context context, Cursor cursor, ViewGroup parent) {
+			View view = super.newView(context, cursor, parent);
+			view.findViewById(R.id.price).setVisibility(mPriceVisiblity);
+			view.findViewById(R.id.tags).setVisibility(mTagsVisiblity);
+			return view;
 		}
 
 		/**
@@ -2057,10 +2255,11 @@ public class ShoppingActivity extends Activity { // implements
 
 			t.setTextColor(mTextColor);
 
+			long status = cursor.getLong(mStringItemsSTATUS);
 			if (mMarkType == mMarkCheckbox) {
 				c.setVisibility(CheckBox.VISIBLE);
-				if ((cursor.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT && mMode == MODE_IN_SHOP)
-						|| (cursor.getLong(mStringItemsSTATUS) == Shopping.Status.WANT_TO_BUY)
+				if ((status == Shopping.Status.BOUGHT && mMode == MODE_IN_SHOP)
+						|| (status == Shopping.Status.WANT_TO_BUY)
 						&& mMode == MODE_ADD_ITEMS) {
 					c.setChecked(true);
 				} else {
@@ -2070,7 +2269,7 @@ public class ShoppingActivity extends Activity { // implements
 				c.setVisibility(CheckBox.GONE);
 			}
 
-			if (cursor.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
+			if (status == Shopping.Status.BOUGHT) {
 				t.setTextColor(mMarkTextColor);
 
 				if (mMarkType == mMarkStrikethrough) {
@@ -2103,9 +2302,29 @@ public class ShoppingActivity extends Activity { // implements
 
 			}
 
+			t = (TextView) view.findViewById(R.id.quantity);
+			if (t != null && TextUtils.isEmpty(t.getText())) {
+				t.setText("1");
+			}
+
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
 			c.setClickable(false);
+		}
+
+		public boolean setViewValue(View view, Cursor cursor, int i) {
+			if (view.getId() == R.id.price) {
+				long price = cursor.getLong(mStringItemsITEMPRICE);
+				((TextView) view).setText(String.valueOf(price * 0.01d));
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		@Override
+		public void setViewBinder(ViewBinder viewBinder) {
+			throw new RuntimeException("this adapter implements setViewValue");
 		}
 
 	}

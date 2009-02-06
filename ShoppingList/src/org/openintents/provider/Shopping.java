@@ -77,6 +77,13 @@ public abstract class Shopping {
 		public static final String PRICE = "price";
 
 		/**
+		 * Tags for the item
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String TAGS = "tags";
+		/**
 		 * The timestamp for when the item was created.
 		 * <P>
 		 * Type: INTEGER (long)
@@ -116,6 +123,8 @@ public abstract class Shopping {
 		public static final int PROJECTION_CREATED_DATE = 4;
 		public static final int PROJECTION_MODIFIED_DATE = 5;
 		public static final int PROJECTION_ACCESSED_DATE = 6;
+
+
 
 	}
 
@@ -331,6 +340,14 @@ public abstract class Shopping {
 		 */
 		public static final String SHARE_MODIFIED_BY = "share_modified_by";
 
+		
+		/**
+		 * sort key with in the list
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String SORT_KEY = "sort_key";
 		/**
 		 * Support sort orders. The "sort order" in the preferences is an index
 		 * into this array.
@@ -338,6 +355,8 @@ public abstract class Shopping {
 		public static final String[] SORT_ORDERS = {
 				"contains.status ASC, items.name ASC", "items.name ASC",
 				"contains.modified DESC", "contains.modified ASC" };
+
+		
 	}
 
 	/**
@@ -462,6 +481,14 @@ public abstract class Shopping {
 		 */
 		public static final String ITEM_PRICE = "item_price";
 
+		/**
+		 * tags of the item.
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String ITEM_TAGS = "item_tags";
+		
 		// Elements from Lists
 
 		/**
@@ -479,6 +506,8 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String LIST_IMAGE = "list_image";
+
+	
 	}
 
 	/**
@@ -495,6 +524,12 @@ public abstract class Shopping {
 		 * Have bought this item.
 		 */
 		public static final long BOUGHT = 2;
+		
+		/**
+		 * Have removed it from the list.
+		 * Won't be deleted, in oder to keep reference for later suggestions.
+		 */
+		public static final long REMOVED_FROM_LIST = 3;
 
 		/**
 		 * Checks whether a status is a valid possibility.
@@ -504,7 +539,7 @@ public abstract class Shopping {
 		 * @return true if status is a valid possibility.
 		 */
 		public static boolean isValid(final long s) {
-			return s == WANT_TO_BUY || s == BOUGHT;
+			return s == WANT_TO_BUY || s == BOUGHT || s == REMOVED_FROM_LIST;
 		}
 
 	}

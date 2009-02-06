@@ -58,8 +58,13 @@ public class ShoppingProvider extends ContentProvider {
 	/**
 	 * Version of database.
 	 * 
-	 * The various versions were introduced in the following releases: 1:
-	 * Release 0.1.1 2: Release 0.1.6 3: Release 1.0.4
+	 * The various versions were introduced in the following releases:
+	 * 
+	 * 1: Release 0.1.1
+	 * 
+	 * 2: Release 0.1.6
+	 * 
+	 * 3: Release 1.0.4
 	 */
 	private static final int DATABASE_VERSION = 3;
 
@@ -100,19 +105,16 @@ public class ShoppingProvider extends ContentProvider {
 		 */
 		@Override
 		public void onCreate(SQLiteDatabase db) {
-			db.execSQL("CREATE TABLE items (" + "_id INTEGER PRIMARY KEY," // Database
-					// Version
-					// 1
+			db.execSQL("CREATE TABLE items (" + "_id INTEGER PRIMARY KEY," // V1
 					+ "name VARCHAR," // V1
 					+ "image VARCHAR," // V1
 					+ "price INTEGER," // V3
+					+ "tags VARCHAR," // V3
 					+ "created INTEGER," // V1
 					+ "modified INTEGER," // V1
-					+ "accessed INTEGER" // V1
+					+ "accessed INTEGER" // V1					
 					+ ");");
-			db.execSQL("CREATE TABLE lists (" + "_id INTEGER PRIMARY KEY," // Database
-					// Version
-					// 1
+			db.execSQL("CREATE TABLE lists (" + "_id INTEGER PRIMARY KEY," // V1
 					+ "name VARCHAR," // V1
 					+ "image VARCHAR," // V1
 					+ "created INTEGER," // V1
@@ -123,11 +125,9 @@ public class ShoppingProvider extends ContentProvider {
 					+ "skin_background VARCHAR," // V2
 					+ "skin_font VARCHAR," // V2
 					+ "skin_color INTEGER," // V2
-					+ "skin_color_strikethrough INTEGER" // V2
+					+ "skin_color_strikethrough INTEGER" // V2					
 					+ ");");
-			db.execSQL("CREATE TABLE contains (" + "_id INTEGER PRIMARY KEY," // Database
-					// Version
-					// 1
+			db.execSQL("CREATE TABLE contains (" + "_id INTEGER PRIMARY KEY," // V1
 					+ "item_id INTEGER," // V1
 					+ "list_id INTEGER," // V1
 					+ "quantity VARCHAR," // V1
@@ -136,7 +136,8 @@ public class ShoppingProvider extends ContentProvider {
 					+ "modified INTEGER," // V1
 					+ "accessed INTEGER," // V1
 					+ "share_created_by VARCHAR," // V2
-					+ "share_modified_by VARCHAR" // V2
+					+ "share_modified_by VARCHAR," // V2
+					+ "sort_key INTEGER" // V3
 					+ ");");
 		}
 
@@ -155,6 +156,10 @@ public class ShoppingProvider extends ContentProvider {
 					try {
 						db.execSQL("ALTER TABLE items ADD COLUMN "
 								+ Items.PRICE + " INTEGER;");
+						db.execSQL("ALTER TABLE items ADD COLUMN "
+								+ Items.TAGS + " VARCHAR;");
+						db.execSQL("ALTER TABLE contains ADD COLUMN "
+								+ Contains.SORT_KEY + " INTEGER;");
 					} catch (SQLException e) {
 						Log.e(TAG, "Error executing SQL: ", e);
 						// If the error is "duplicate column name" then
@@ -201,7 +206,7 @@ public class ShoppingProvider extends ContentProvider {
 
 		Log.i(TAG, "Query for URL: " + url);
 
-		String defaultOrderBy = null;		
+		String defaultOrderBy = null;
 
 		switch (URL_MATCHER.match(url)) {
 		case ITEMS:
@@ -242,7 +247,7 @@ public class ShoppingProvider extends ContentProvider {
 			qb.setProjectionMap(CONTAINS_FULL_PROJECTION_MAP);
 			qb
 					.appendWhere("contains.item_id = items._id AND contains.list_id = lists._id");
-			defaultOrderBy = ContainsFull.DEFAULT_SORT_ORDER;			
+			defaultOrderBy = ContainsFull.DEFAULT_SORT_ORDER;
 			break;
 
 		case CONTAINS_FULL_ID:
@@ -756,6 +761,8 @@ public class ShoppingProvider extends ContentProvider {
 				"items.image as item_image");
 		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_PRICE,
 				"items.price as item_price");
+		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.ITEM_TAGS,
+		"items.tags as item_tags");
 		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.LIST_NAME,
 				"lists.name as list_name");
 		CONTAINS_FULL_PROJECTION_MAP.put(ContainsFull.LIST_IMAGE,

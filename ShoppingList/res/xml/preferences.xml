@@ -1,48 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<PreferenceScreen
-        xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <ListPreference
-            android:key="fontsize"
-            android:defaultValue="2"
-            android:title="@string/preference_fontsize"
-            android:summary="@string/preference_fontsize_summary"             
-            android:entries="@array/preference_fontsize_entries"
-            android:entryValues="@array/preference_fontsize_entryvalues"
-            android:dialogTitle="@string/preference_fontsize_dialog_title" />
-                
-    <ListPreference
-            android:key="sortorder"
-            android:defaultValue="3"
-            android:title="@string/preference_sortorder_title"
-            android:summary="@string/preference_sortorder_summary"
-            android:entries="@array/preference_sortorder_entries"
-            android:entryValues="@array/preference_sortorder_entryvalues"
-            android:dialogTitle="@string/preference_sortorder_dialog_title" />
-
-	<ListPreference
-            android:key="capitalization"
-            android:defaultValue="1"
-            android:title="@string/preference_capitalization_title"
-            android:summary="@string/preference_capitalization_summary"
-            android:entries="@array/preference_capitalization_entries"
-            android:entryValues="@array/preference_capitalization_entryvalues"
-            android:dialogTitle="@string/preference_capitalization_dialog_title" 
-	/> 
-
-    <CheckBoxPreference
-            android:key="hidechecked"
-            android:defaultValue="true"
-            android:title="@string/preference_hidechecked_title"
-            android:summary="@string/preference_hidechecked_summary"
-			/>
-			
-    <CheckBoxPreference
-            android:key="loadlastused"
-            android:defaultValue="true"
-            android:title="@string/preference_loadlastused_title"
-            android:summary="@string/preference_loadlastused_summary"
-			/>
-
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<ListPreference android:key="fontsize"
+		android:defaultValue="2" android:title="@string/preference_fontsize"
+		android:summary="@string/preference_fontsize_summary" android:entries="@array/preference_fontsize_entries"
+		android:entryValues="@array/preference_fontsize_entryvalues"
+		android:dialogTitle="@string/preference_fontsize_dialog_title" />
+	<ListPreference android:key="sortorder"
+		android:defaultValue="3" android:title="@string/preference_sortorder_title"
+		android:summary="@string/preference_sortorder_summary"
+		android:entries="@array/preference_sortorder_entries"
+		android:entryValues="@array/preference_sortorder_entryvalues"
+		android:dialogTitle="@string/preference_sortorder_dialog_title" />
+	<ListPreference android:key="capitalization"
+		android:defaultValue="1" android:title="@string/preference_capitalization_title"
+		android:summary="@string/preference_capitalization_summary"
+		android:entries="@array/preference_capitalization_entries"
+		android:entryValues="@array/preference_capitalization_entryvalues"
+		android:dialogTitle="@string/preference_capitalization_dialog_title" />
+	<CheckBoxPreference android:key="hidechecked"
+		android:defaultValue="true" android:title="@string/preference_hidechecked_title"
+		android:summary="@string/preference_hidechecked_summary" />
+	<CheckBoxPreference android:key="loadlastused"
+		android:defaultValue="true" android:title="@string/preference_loadlastused_title"
+		android:summary="@string/preference_loadlastused_summary" />
+	<CheckBoxPreference android:key="showprice"
+		android:defaultValue="true" android:title="@string/preference_showprice_title"
+		android:summary="@string/preference_showprice_summary" />
+	<CheckBoxPreference android:key="showtags"
+		android:defaultValue="true" android:title="@string/preference_showtags_title"
+		android:summary="@string/preference_showtags_summary" />
 </PreferenceScreen>
