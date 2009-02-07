@@ -23,7 +23,8 @@ import android.widget.MultiAutoCompleteTextView;
 public class TagsDialog extends AlertDialog implements OnClickListener {
 	private static final String TAG = "TagsDialog";
 
-    private static final String BUNDLE_TAGS = "tags";
+    private static final String BUNDLE_URI = "uri";
+    private static final String BUNDLE_ENCRYPTED = "encrypted";
     
     Context mContext;
     Uri mUri;
@@ -112,7 +113,7 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     	
     	if (mEncrypted == 0) {
     		// Simply store the value
-	    	ContentValues values = new ContentValues(1);
+	    	ContentValues values = new ContentValues(2);
 	        values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
 	        values.put(Notes.TAGS, tags);
 	
@@ -133,13 +134,15 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
 	@Override
     public Bundle onSaveInstanceState() {
         Bundle state = super.onSaveInstanceState();
-        state.putString(BUNDLE_TAGS, "");
+        state.putString(BUNDLE_URI, mUri.toString());
+        state.putLong(BUNDLE_ENCRYPTED, mEncrypted);
         return state;
     }
     
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String tags = savedInstanceState.getString(BUNDLE_TAGS);
+        mUri = Uri.parse(savedInstanceState.getString(BUNDLE_URI));
+        mEncrypted = savedInstanceState.getLong(BUNDLE_ENCRYPTED);
     }
 }
