@@ -22,6 +22,21 @@
   -->
 
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Notepad allows to create, edit, and delete notes.</string>
+	<string name="about_website_label">OI Notepad at OpenIntents</string>
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+
     <string name="menu_delete">Delete</string>
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
@@ -85,4 +100,74 @@
 
 	<string name="settings">Settings</string>
 	<string name="settings_sortorder">Sort Order</string>
+	
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	     
+	<!-- EULA -->
+	<string name="eula_title">OI Notepad EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+	
+	<!-- Update -->
+		<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+	
+    <!-- About -->
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+    
+    <!-- Safe -->
+    <string name="safe_not_available">No compatible application for encryption is available.</string>
+    <string name="safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="safe_get_oi_filemanager">Get OI Safe</string>
+    
+	
+	<!-- ***************************
+	     Permissions
+	     *************************** -->
+
+	<!-- OI Notepad -->
+    <string name="oi_notepad_permission_read">read notes</string>
+    <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="oi_notepad_permission_write">write notes</string>
+    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
+    
+	<!-- OI Shopping list -->
+    <string name="oi_shopping_permission_read">read shopping lists</string>
+    <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+    <string name="oi_shopping_permission_write">write shopping lists</string>
+    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
+    
+	<!-- OI Safe -->
+	<string name="oi_safe_permission_intents">encrypt and decrypt data</string>
+    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+
+
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string-array name="preference_sortorder_entries">
+        <item>Alphabetical</item>
+        <item>Reverse Alphabetical</item>
+        <item>Newest to Oldest</item>  
+        <item>Oldest to Newest</item>
+    </string-array>
+
+
+	     
 </resources>

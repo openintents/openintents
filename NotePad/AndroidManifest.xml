@@ -30,25 +30,6 @@
 	<!-- History:
 	1.1.0 [10052]: 2009-02-02 -->
     
-	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
-	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
-    <uses-permission android:name="org.openintents.safe.ACCESS_INTENTS" />
-	
-	<permission android:name="org.openintents.notepad.READ_PERMISSION"
-		android:label="@string/oi_notepad_permission_read"
-		android:description="@string/oi_notepad_permission_read_descr"
-		android:permissionGroup="android.permission-group.PERSONAL_INFO"
-		android:protectionLevel="normal" />
-	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
-		android:label="@string/oi_notepad_permission_write"
-		android:description="@string/oi_notepad_permission_write_descr"
-		android:permissionGroup="android.permission-group.PERSONAL_INFO"
-		android:protectionLevel="normal" />
-    <permission android:name="org.openintents.safe.ACCESS_INTENTS"
-			android:protectionLevel="dangerous"
-			android:label="@string/oi_safe_permission_intents"
-        	android:description="@string/oi_safe_permission_intents_descr" />
-	
 	
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
@@ -67,7 +48,7 @@
         <meta-data android:name="org.openintents.metadata.DOCUMENTERS"
                        android:resource="@array/about_documenters" />
         <meta-data android:name="org.openintents.metadata.TRANSLATORS"
-                       android:resource="@array/about_translators" />
+                       android:resource="@string/about_translators" />
         <meta-data android:name="org.openintents.metadata.ARTISTS"
                        android:resource="@array/about_artists" />
         <meta-data android:name="org.openintents.metadata.WEBSITE_LABEL"
@@ -175,8 +156,27 @@
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
         
-    <activity android:name=".PreferenceActivity" android:label="@string/settings"></activity>
-</application>
+    	<activity android:name=".PreferenceActivity" android:label="@string/settings"></activity>
+	</application>
 
+	<uses-permission android:name="org.openintents.notepad.READ_PERMISSION" />
+	<uses-permission android:name="org.openintents.notepad.WRITE_PERMISSION" />
+    <uses-permission android:name="org.openintents.safe.ACCESS_INTENTS" />
+	
+	<permission android:name="org.openintents.notepad.READ_PERMISSION"
+		android:label="@string/oi_notepad_permission_read"
+		android:description="@string/oi_notepad_permission_read_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+	<permission android:name="org.openintents.notepad.WRITE_PERMISSION"
+		android:label="@string/oi_notepad_permission_write"
+		android:description="@string/oi_notepad_permission_write_descr"
+		android:permissionGroup="android.permission-group.PERSONAL_INFO"
+		android:protectionLevel="normal" />
+    <permission android:name="org.openintents.safe.ACCESS_INTENTS"
+			android:protectionLevel="dangerous"
+			android:label="@string/oi_safe_permission_intents"
+        	android:description="@string/oi_safe_permission_intents_descr" />
+	
 </manifest>
 
