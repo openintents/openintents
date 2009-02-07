@@ -121,9 +121,6 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_EDIT_ITEM = Menu.FIRST + 8; // includes rename
 	private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
 
-	private static final int MENU_SENSOR_SERVICE = Menu.FIRST + 10; // shake
-	// control
-
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
 	// TODO: Implement the following menu items
@@ -325,10 +322,6 @@ public class ShoppingActivity extends Activity { // implements
 
 	};
 
-	// Sensor service -----------------
-
-	// private SensorEventListener mSensorListener;
-
 	/**
 	 * Called when the activity is first created.
 	 */
@@ -351,9 +344,6 @@ public class ShoppingActivity extends Activity { // implements
 		// Automatic requeries (once a second)
 		mUpdateInterval = 2000;
 		mUpdating = false;
-
-		// Sensor service
-		// mSensorListener = new SensorEventListener(this);
 
 		// General Uris:
 		mListUri = Shopping.Lists.CONTENT_URI;
@@ -881,16 +871,6 @@ public class ShoppingActivity extends Activity { // implements
 							'7', 'l');
 		}
 
-		/*
-		 * menu.add(0, MENU_SENSOR_SERVICE, 0, R.string.shake_control)
-		 * .setIcon(R.drawable.mobile_shake001a) .setShortcut('0', 's');
-		 */
-
-		/*
-		 * menu.add(0, MENU_SETTINGS, R.string.sensorsimulator_settings)
-		 * .setShortcut('0', 's'); menu.add(0, MENU_CONNECT_SIMULATOR,
-		 * R.string.connect_to_sensorsimulator) .setShortcut('1', 'c');
-		 */
 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
@@ -972,17 +952,7 @@ public class ShoppingActivity extends Activity { // implements
 		 * listId != 1); // 1 is hardcoded number of default first list.
 		 */
 
-		// TODO ???
-		/*
-		 * Intent intent = new Intent(null, mListUri);
-		 * intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-		 * menu.addIntentOptions( Menu.CATEGORY_ALTERNATIVE, 0, new
-		 * ComponentName(this, ShoppingView.class), null, intent, 0, null);
-		 * 
-		 * menu.setItemChecked(MENU_CONNECT_SIMULATOR,
-		 * SensorsPlus.isConnectedSimulator());
-		 */
-
+		
 		// The following code is put from onCreateOptionsMenu to
 		// onPrepareOptionsMenu,
 		// because the URI of the shopping list can change if the user switches
@@ -1047,10 +1017,6 @@ public class ShoppingActivity extends Activity { // implements
 			addLocationAlert();
 			return true;
 
-		case MENU_SENSOR_SERVICE:
-			// toggleSensorService();
-			return true;
-
 		case MENU_UPDATE:
 			UpdateMenu.showUpdateBox(this);
 			return true;
@@ -1065,28 +1031,7 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 		case MENU_SEND:
 			sendList();
-			/*
-			 * case MENU_SETTINGS: Intent intent = new
-			 * Intent(Intent.MAIN_ACTION, Hardware.Preferences.CONTENT_URI);
-			 * startActivity(intent); return true;
-			 * 
-			 * case MENU_CONNECT_SIMULATOR: // check if accelerometer is
-			 * supported: if
-			 * (SensorsPlus.isSupportedSensor(Sensors.SENSOR_ACCELEROMETER)) {
-			 * // first disable the current sensors:
-			 * Sensors.disableSensor(Sensors.SENSOR_ACCELEROMETER); }
-			 * 
-			 * if (!SensorsPlus.isConnectedSimulator()) { // now connect to
-			 * simulator Sensors.connectSimulator(); } else { // or disconnect
-			 * to simulator Sensors.disconnectSimulator(); }
-			 * 
-			 * // check if accelerometer is supported: if
-			 * (SensorsPlus.isSupportedSensor(Sensors.SENSOR_ACCELEROMETER)) {
-			 * // enable the sensor:
-			 * Sensors.enableSensor(Sensors.SENSOR_ACCELEROMETER); }
-			 * 
-			 * return true;
-			 */
+			
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -1761,17 +1706,7 @@ public class ShoppingActivity extends Activity { // implements
 		// startSubActivity(intent, SUBACTIVITY_ADD_LOCATION_ALERT);
 		startActivity(intent);
 	}
-
-	/**
-	 * Turns on or off sensor service (shake control).
-	 */
-	/*
-	 * void toggleSensorService() { if (!mSensorListener.isBound()) {
-	 * mSensorListener.bindService();
-	 * mSensorListener.setOnSensorListener(mOnSensorListener); } else {
-	 * mSensorListener.unbindService();
-	 * mSensorListener.setOnSensorListener(null); } }
-	 */
+	
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -1978,7 +1913,6 @@ public class ShoppingActivity extends Activity { // implements
 
 		if (mCursorListFilter.getCount() < 1) {
 			// We have to create default shopping list:
-			// TODO Put the following string into resource my_shopping_list
 			long listId = Shopping.getList(getText(R.string.my_shopping_list)
 					.toString());
 
@@ -2329,27 +2263,7 @@ public class ShoppingActivity extends Activity { // implements
 
 	}
 
-	/**
-	 * Sensor service callback
-	 */
-	/*
-	 * private OnSensorListener mOnSensorListener = new OnSensorListener() {
-	 * 
-	 * public boolean onSensorEvent(final SensorEvent event) { Log.i(TAG,
-	 * "onSensorEvent: " + event); int action = event.getAction(); switch
-	 * (action) { case SensorEvent.ACTION_MOVE:
-	 * 
-	 * return true; case SensorEvent.ACTION_SHAKE:
-	 * 
-	 * // Clean up list cleanupList();
-	 * 
-	 * // ToDo: Make this // 1) step by step // 2) animate elements // 3) more
-	 * than 3 shakes -> remove all
-	 * 
-	 * return true; default: assert false; } return false; }
-	 * 
-	 * };
-	 */
+	
 
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {
