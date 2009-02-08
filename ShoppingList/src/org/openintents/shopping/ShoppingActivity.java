@@ -32,6 +32,7 @@ import org.openintents.provider.Shopping.Lists;
 import org.openintents.provider.Shopping.Status;
 import org.openintents.shopping.share.GTalkSender;
 import org.openintents.util.MenuIntentOptionsWithIcons;
+import org.openintents.util.ShakeSensorListener;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -173,17 +174,17 @@ public class ShoppingActivity extends Activity { // implements
 	/**
 	 * mode: add items from existing list
 	 */
-	private static final int MODE_ADD_ITEMS = 2;
+	static final int MODE_ADD_ITEMS = 2;
 
 	/**
 	 * mode: I am in the shop
 	 */
-	private static final int MODE_IN_SHOP = 1;
+	static final int MODE_IN_SHOP = 1;
 
 	/**
 	 * current mode, in shop, or adding items
 	 */
-	private int mMode = MODE_ADD_ITEMS;
+	private int mMode = MODE_IN_SHOP;
 
 	/**
 	 * URI of current list
@@ -214,10 +215,6 @@ public class ShoppingActivity extends Activity { // implements
 
 	private boolean mUpdating;
 
-	private LinearLayout mLinearLayoutBackground;
-
-	// setListTheme()
-
 	/**
 	 * Private members connected to Spinner ListFilter.
 	 */
@@ -233,11 +230,11 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int mStringListFilterSHARECONTACTS = 4;
 	private static final int mStringListFilterSKINBACKGROUND = 5;
 
-	private ListView mListItems;
+	private ShoppingListView mListItems;
 	private Cursor mCursorItems;
 
-	private static final String[] mStringItems = new String[] {
-			ContainsFull._ID, ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
+	static final String[] mStringItems = new String[] { ContainsFull._ID,
+			ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
 			ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
 			ContainsFull.QUANTITY, ContainsFull.STATUS, ContainsFull.ITEM_ID,
 			ContainsFull.SHARE_CREATED_BY, ContainsFull.SHARE_MODIFIED_BY };
@@ -245,10 +242,10 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int mStringItemsITEMNAME = 1;
 	private static final int mStringItemsITEMIMAGE = 2;
 	private static final int mStringItemsITEMTAGS = 3;
-	private static final int mStringItemsITEMPRICE = 4;
+	static final int mStringItemsITEMPRICE = 4;
 	private static final int mStringItemsQUANTITY = 5;
-	private static final int mStringItemsSTATUS = 6;
-	private static final int mStringItemsITEMID = 7;
+	static final int mStringItemsSTATUS = 6;
+	static final int mStringItemsITEMID = 7;
 	private static final int mStringItemsSHARECREATEDBY = 8;
 	private static final int mStringItemsSHAREMODIFIEDBY = 9;
 
@@ -266,19 +263,6 @@ public class ShoppingActivity extends Activity { // implements
 	private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
 
 	// Skins --------------------------
-	public Typeface mTypeface;
-	public Typeface mTypefaceHandwriting;
-	public Typeface mTypefaceDigital;
-
-	public boolean mUpperCaseFont;
-	public int mTextColor;
-	public float mTextSize;
-	public int mMarkTextColor;
-
-	public int mMarkType;
-	public static final int mMarkCheckbox = 1;
-	public static final int mMarkStrikethrough = 2;
-	public static final int mMarkAddtext = 3;
 
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
@@ -289,35 +273,11 @@ public class ShoppingActivity extends Activity { // implements
 	public int mPriceVisiblity;
 	private int mTagsVisiblity;
 	private SensorManager mSensorManager;
-	private SensorListener mMySensorListener = new SensorListener() {
+	private SensorListener mMySensorListener = new ShakeSensorListener() {
 
-		private double mTotalForcePrev; // stores the previous total force value
-
-		public void onAccuracyChanged(int i, int j) {
-			// ignore
-
-		}
-
-		public void onSensorChanged(int sensor, float[] values) {
-			if (sensor == SensorManager.SENSOR_ACCELEROMETER) {
-				double forceThreshHold = 1.5f;
-
-				double totalForce = 0.0f;
-				totalForce += Math.pow(values[SensorManager.DATA_X]
-						/ SensorManager.GRAVITY_EARTH, 2.0);
-				totalForce += Math.pow(values[SensorManager.DATA_Y]
-						/ SensorManager.GRAVITY_EARTH, 2.0);
-				totalForce += Math.pow(values[SensorManager.DATA_Z]
-						/ SensorManager.GRAVITY_EARTH, 2.0);
-				totalForce = Math.sqrt(totalForce);
-
-				if ((totalForce < forceThreshHold)
-						&& (mTotalForcePrev > forceThreshHold)) {
-					cleanupList();
-				}
-
-				mTotalForcePrev = totalForce;
-			}
+		@Override
+		public void onShake() {
+			cleanupList();
 		}
 
 	};
@@ -399,12 +359,6 @@ public class ShoppingActivity extends Activity { // implements
 			finish();
 			return;
 		}
-
-		// Read fonts
-		mTypefaceHandwriting = Typeface.createFromAsset(getAssets(),
-				"fonts/AnkeHand.ttf");
-		mTypefaceDigital = Typeface.createFromAsset(getAssets(),
-				"fonts/Crysta.ttf");
 
 		// hook up all buttons, lists, edit text:
 		createView();
@@ -504,7 +458,7 @@ public class ShoppingActivity extends Activity { // implements
 			setTitleColor(0xFFAAAAFF);
 		}
 
-		setListTheme(loadListTheme());
+		mListItems.setListTheme(loadListTheme());
 		mEditText
 				.setKeyListener(PreferenceActivity
 						.getCapitalizationKeyListenerFromPrefs(getApplicationContext()));
@@ -577,8 +531,8 @@ public class ShoppingActivity extends Activity { // implements
 	 * Hook up buttons, lists, and edittext with functionality.
 	 */
 	private void createView() {
-		mLinearLayoutBackground = (LinearLayout) findViewById(R.id.background);
 
+		
 		mSpinnerListFilter = (Spinner) findViewById(R.id.spinner_listfilter);
 		mSpinnerListFilter
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -586,7 +540,7 @@ public class ShoppingActivity extends Activity { // implements
 							int position, long id) {
 						fillItems();
 						// Now set the theme based on the selected list:
-						setListTheme(loadListTheme());
+						mListItems.setListTheme(loadListTheme());
 
 						bindGTalkIfNeeded();
 					}
@@ -648,7 +602,9 @@ public class ShoppingActivity extends Activity { // implements
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 
-		mListItems = (ListView) findViewById(R.id.list_items);
+		mListItems = (ShoppingListView) findViewById(R.id.list_items);
+		mListItems.setThemedBackground(findViewById(R.id.background));
+		
 		mListItems.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
@@ -656,7 +612,7 @@ public class ShoppingActivity extends Activity { // implements
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
 				} else {
-					toggleItemBought(c);
+					mListItems.toggleItemBought(pos);
 				}
 			}
 
@@ -697,121 +653,11 @@ public class ShoppingActivity extends Activity { // implements
 				return;
 			}
 
-			// mCursorListFilter has been set to correct position
-			// by calling getSelectedListId(),
-			// so we can read out further elements:
-			String shareName = mCursorListFilter
-					.getString(mStringListFilterSHARENAME);
-			String recipients = mCursorListFilter
-					.getString(mStringListFilterSHARECONTACTS);
-
-			long itemId = Shopping.getItem(newItem);
-
-			Log.i(TAG, "Insert new item. " + " itemId = " + itemId
-					+ ", listId = " + listId);
-			Shopping.addItemToList(itemId, listId);
-
+			mListItems.insertNewItem(newItem);
 			mEditText.setText("");
-
-			fillItems();
-
-			// TODO:
-			// Now scroll the list to the end, where
-			// the new item has been inserted:
-			// Can these functions be of use?
-			// mListItems.scrollTo(x, y)
-			// mListItems.requestChildRectangleOnScreen(child, rectangle)
-
-			// now select the new item (which will be at the bottom
-			// TODO: THIS IS REALLY A CHEAP FIX:
-			// This only works for one specific view size and font size.
-
-			// Answer?
-			//http://groups.google.com/group/android-developers/browse_frm/thread
-			// /3b2f4063a2221acb/36462ba1301a18c8
-			/*
-			 * int NUMBER_OF_ELEMENTS_BELOW_MIDDLE = 4; if
-			 * (mListItems.getCount() > NUMBER_OF_ELEMENTS_BELOW_MIDDLE) {
-			 * mListItems.setSelection(mListItems.getCount() -
-			 * NUMBER_OF_ELEMENTS_BELOW_MIDDLE); } ;
-			 */
-			// mListItems.setSelection(mListItems.getCount() - 1);
-			// mListItems.getChildAt(mListItems.getCount()-1).setSelected(true);
-			// Set the item that we have just selected:
-			// Get position of ID:
-			mCursorItems.moveToPosition(-1);
-			while (mCursorItems.moveToNext()) {
-				if (mCursorItems.getLong(mStringItemsITEMID) == itemId) {
-					int pos = mCursorItems.getPosition();
-					if (pos > 0) {
-						// Set selection one before, so that the item is fully
-						// visible.
-						mListItems.setSelection(pos - 1);
-					} else {
-						mListItems.setSelection(pos);
-					}
-					break;
-				}
-			}
-
-			// If we share items, send this item also to other lists:
-			// TODO ??
-			/*
-			 * if (! recipients.equals("")) { Log.i(TAG, "Share new item. " +
-			 * " recipients: " + recipients + ", shareName: " + shareName +
-			 * ", newItem: " + newItem); mGTalkSender.sendItem(recipients,
-			 * shareName, newItem); }
-			 */
 		}
 	}
 
-	/**
-	 * strike item through or undo this.
-	 */
-	private void toggleItemBought(Cursor c) {
-
-		// mCursorListFilter has been set to correct position
-		// by calling getSelectedListId(),
-		// so we can read out further elements:
-		String shareName = mCursorListFilter
-				.getString(mStringListFilterSHARENAME);
-		String recipients = mCursorListFilter
-				.getString(mStringListFilterSHARECONTACTS);
-		String itemName = c.getString(mStringItemsITEMNAME);
-		long oldstatus = c.getLong(mStringItemsSTATUS);
-
-		// Toggle status:
-		// bought -> want_to_buy
-		// want_to_buy -> bought
-		// removed_from_list -> want_to_buy
-		long newstatus = Shopping.Status.WANT_TO_BUY;
-		if (oldstatus == Shopping.Status.WANT_TO_BUY) {
-			newstatus = Shopping.Status.BOUGHT;
-		}
-
-		ContentValues values = new ContentValues();
-		values.put(Shopping.Contains.STATUS, newstatus);
-		Log.d(TAG, "update row " + c.getString(0) + ", newstatus " + newstatus);
-		getContentResolver().update(
-				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, c
-						.getString(0)), values, null, null);
-
-		c.requery();
-
-		// fillItems();
-
-		mListItems.invalidate();
-
-		// If we share items, send this item also to other lists:
-		// TODO ???
-		/*
-		 * if (! recipients.equals("")) { Log.i(TAG, "Update shared item. " +
-		 * " recipients: " + recipients + ", shareName: " + shareName +
-		 * ", status: " + newstatus); mGTalkSender.sendItemUpdate(recipients,
-		 * shareName, itemName, itemName, oldstatus, newstatus); }
-		 */
-
-	}
 
 	/**
 	 * Picks an item and returns to calling activity.
@@ -870,7 +716,6 @@ public class ShoppingActivity extends Activity { // implements
 							android.R.drawable.ic_menu_mylocation).setShortcut(
 							'7', 'l');
 		}
-
 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
@@ -952,7 +797,6 @@ public class ShoppingActivity extends Activity { // implements
 		 * listId != 1); // 1 is hardcoded number of default first list.
 		 */
 
-		
 		// The following code is put from onCreateOptionsMenu to
 		// onPrepareOptionsMenu,
 		// because the URI of the shopping list can change if the user switches
@@ -997,12 +841,15 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 
 		case MENU_CHANGE_MODE:
-			if (mMode == MODE_IN_SHOP) {
-				mMode = MODE_ADD_ITEMS;
-			} else {
-				mMode = MODE_IN_SHOP;
-			}
-			onModeChanged();
+//			if (mMode == MODE_IN_SHOP) {
+//				mMode = MODE_ADD_ITEMS;
+//			} else {
+//				mMode = MODE_IN_SHOP;
+//			}
+//			onModeChanged();
+			intent = new Intent(this, PickItemsActivity.class);
+			intent.setData(mListUri);
+			startActivity(intent);
 			return true;
 
 		case MENU_SHARE:
@@ -1031,7 +878,7 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 		case MENU_SEND:
 			sendList();
-			
+
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -1152,7 +999,7 @@ public class ShoppingActivity extends Activity { // implements
 		setSelectedListId(newId);
 
 		// Now set the theme based on the selected list:
-		setListTheme(loadListTheme());
+		mListItems.setListTheme(loadListTheme());
 
 		// A newly created list will not yet be shared via GTalk:
 		// bindGTalkIfNeeded();
@@ -1298,35 +1145,7 @@ public class ShoppingActivity extends Activity { // implements
 		// Remove all items from current list
 		// which have STATUS = Status.BOUGHT
 
-		// TODO One could write one SQL statement to delete all at once.
-		// But as long as shopping lists stay small, it should not matter.
-		String listId = mCursorListFilter.getString(0);
-
-		boolean nothingdeleted = true;
-		if (false) {
-			// by deleteing items
-
-			nothingdeleted = getContentResolver().delete(
-					Shopping.Contains.CONTENT_URI,
-					Shopping.Contains.LIST_ID + " = " + listId + " AND "
-							+ Shopping.Contains.STATUS + " = "
-							+ Shopping.Status.BOUGHT, null) == 0;
-
-		} else {
-			// by changing state
-			ContentValues values = new ContentValues();
-			values.put(Contains.STATUS, Status.REMOVED_FROM_LIST);
-			nothingdeleted = getContentResolver().update(
-					Contains.CONTENT_URI,
-					values,
-					Shopping.Contains.LIST_ID + " = " + listId + " AND "
-							+ Shopping.Contains.STATUS + " = "
-							+ Shopping.Status.BOUGHT, null) == 0;
-		}
-
-		mCursorItems.requery();
-
-		if (nothingdeleted) {
+		if (!mListItems.cleanupList()) {
 			// Show toast
 			Toast.makeText(this, R.string.no_items_marked, Toast.LENGTH_SHORT)
 					.show();
@@ -1374,15 +1193,14 @@ public class ShoppingActivity extends Activity { // implements
 		fillItems();
 
 		// Now set the theme based on the selected list:
-		setListTheme(loadListTheme());
+		mListItems.setListTheme(loadListTheme());
 
 		bindGTalkIfNeeded();
 	}
 
 	/** Mark item */
-	void markItem(int position) {
-		mCursorItems.moveToPosition(position);
-		toggleItemBought(mCursorItems);
+	void markItem(int position) {		
+		mListItems.toggleItemBought(position);
 	}
 
 	/** Edit item */
@@ -1491,13 +1309,13 @@ public class ShoppingActivity extends Activity { // implements
 					public void onCheckedChanged(RadioGroup group, int checkedId) {
 						switch (checkedId) {
 						case R.id.radio1:
-							setListTheme(1);
+							mListItems.setListTheme(1);
 							break;
 						case R.id.radio2:
-							setListTheme(2);
+							mListItems.setListTheme(2);
 							break;
 						case R.id.radio3:
-							setListTheme(3);
+							mListItems.setListTheme(3);
 							break;
 
 						}
@@ -1526,7 +1344,7 @@ public class ShoppingActivity extends Activity { // implements
 									break;
 								}
 								saveListTheme(themeId);
-								setListTheme(themeId);
+								mListItems.setListTheme(themeId);
 
 							}
 						}).setNegativeButton(R.string.cancel,
@@ -1536,103 +1354,16 @@ public class ShoppingActivity extends Activity { // implements
 
 								/* User clicked No so do some stuff */
 								int themeId = loadListTheme();
-								setListTheme(themeId);
+								mListItems.setListTheme(themeId);
 							}
 						}).setOnCancelListener(new OnCancelListener() {
 
 					public void onCancel(DialogInterface arg0) {
 						int themeId = loadListTheme();
-						setListTheme(themeId);
+						mListItems.setListTheme(themeId);
 					}
 				}).show();
 
-	}
-
-	/**
-	 * Set theme according to Id.
-	 * 
-	 * @param themeId
-	 */
-	void setListTheme(int themeId) {
-		int textSize = getDefaultTextSize();
-		switch (themeId) {
-		case 1:
-			mTypeface = null;
-			mUpperCaseFont = false;
-			mTextColor = 0xffffffff; // white
-
-			if (textSize == 1) {
-				mTextSize = 18;
-			} else if (textSize == 2) {
-				mTextSize = 23;
-			} else {
-				mTextSize = 28;
-			}
-
-			mMarkTextColor = 0xffcccccc; // white gray
-			mMarkType = mMarkCheckbox;
-
-			mLinearLayoutBackground.setPadding(0, 0, 0, 0);
-			mLinearLayoutBackground.setBackgroundDrawable(null);
-
-			break;
-		case 2:
-			mTypeface = mTypefaceHandwriting;
-			mUpperCaseFont = false;
-			mTextColor = 0xff000000; // black
-			if (textSize == 1) {
-				mTextSize = 15;
-			} else if (textSize == 2) {
-				mTextSize = 20;
-			} else {
-				mTextSize = 25;
-			}
-
-			mMarkTextColor = 0xff008800; // dark green
-			mMarkType = mMarkStrikethrough;
-
-			// 9-patch drawable defines padding by itself
-			mLinearLayoutBackground
-					.setBackgroundResource(R.drawable.shoppinglist01d);
-
-			break;
-		case 3:
-			mTypeface = mTypefaceDigital;
-
-			// Digital only supports upper case fonts.
-			mUpperCaseFont = true;
-			mTextColor = 0xffff0000; // red
-			if (textSize == 1) {
-				mTextSize = 21;
-			} else if (textSize == 2) {
-				mTextSize = 26;
-			} else {
-				mTextSize = 31;
-			}
-
-			mMarkTextColor = 0xff00ff00; // light green
-			mMarkType = mMarkAddtext;
-
-			mLinearLayoutBackground.setPadding(0, 0, 0, 0);
-			mLinearLayoutBackground
-					.setBackgroundResource(R.drawable.theme_android);
-
-			break;
-		}
-
-		mListItems.invalidate();
-		if (mCursorItems != null) {
-			mCursorItems.requery();
-		}
-	}
-
-	/**
-	 * @return
-	 */
-	private int getDefaultTextSize() {
-		return Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(
-				this).getString(PreferenceActivity.PREFS_FONTSIZE,
-				PreferenceActivity.PREFS_FONTSIZE_DEFAULT));
 	}
 
 	/**
@@ -1706,7 +1437,6 @@ public class ShoppingActivity extends Activity { // implements
 		// startSubActivity(intent, SUBACTIVITY_ADD_LOCATION_ALERT);
 		startActivity(intent);
 	}
-	
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
@@ -2003,12 +1733,10 @@ public class ShoppingActivity extends Activity { // implements
 		fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
-			setTitle(getString(R.string.shopping_title, getCurrentListName()));
-			findViewById(R.id.add_panel).setVisibility(View.GONE);
+			setTitle(getString(R.string.shopping_title, getCurrentListName()));		
 			registerSensor();
 		} else {
-			setTitle(getString(R.string.pick_items_titel, getCurrentListName()));
-			findViewById(R.id.add_panel).setVisibility(View.VISIBLE);
+			setTitle(getString(R.string.pick_items_titel, getCurrentListName()));		
 			unregisterSensor();
 		}
 	}
@@ -2026,61 +1754,7 @@ public class ShoppingActivity extends Activity { // implements
 			// and no item is selected.
 			return;
 		}
-
-		String sortOrder = PreferenceActivity.getSortOrderFromPrefs(this);
-		boolean hideBought = PreferenceActivity
-				.getHideCheckedItemsFromPrefs(this);
-		String selection;
-		if (mMode == MODE_IN_SHOP) {
-			if (hideBought) {
-				selection = "list_id = ? AND " + Shopping.Contains.STATUS
-						+ " == " + Shopping.Status.WANT_TO_BUY;
-			} else {
-				selection = "list_id = ? AND " + Shopping.Contains.STATUS
-						+ " <> " + Shopping.Status.REMOVED_FROM_LIST;
-			}
-		} else {
-			selection = "list_id = ? ";
-		}
-
-		// Get a cursor for all items that are contained
-		// in currently selected shopping list.
-		mCursorItems = getContentResolver().query(ContainsFull.CONTENT_URI,
-				mStringItems, selection,
-				new String[] { String.valueOf(listId) }, sortOrder);
-		startManagingCursor(mCursorItems);
-
-		// Activate the following for a striped list.
-		// setupListStripes(mListItems, this);
-
-		if (mCursorItems == null) {
-			Log.e(TAG, "missing shopping provider");
-			mListItems.setAdapter(new ArrayAdapter<String>(this,
-					android.R.layout.simple_list_item_1,
-					new String[] { "no shopping provider" }));
-			return;
-		}
-
-		int layout_row = R.layout.shopping_item_row;
-
-		int textSize = getDefaultTextSize();
-		if (textSize < 3) {
-			layout_row = R.layout.shopping_item_row_small;
-		}
-
-		mSimpleCursorAdapter adapter = new mSimpleCursorAdapter(this,
-		// Use a template that displays a text view
-				layout_row,
-				// Give the cursor to the list adapter
-				mCursorItems,
-				// Map the IMAGE and NAME to...
-				new String[] { ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
-						ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
-						ContainsFull.QUANTITY },
-				// the view defined in the XML template
-				new int[] { R.id.name, R.id.image_URI, R.id.tags, R.id.price,
-						R.id.quantity });
-		mListItems.setAdapter(adapter);
+		startManagingCursor(mListItems.fillItems(listId));
 
 	}
 
@@ -2121,149 +1795,6 @@ public class ShoppingActivity extends Activity { // implements
 		// If recipients contains the '@' symbol, it is shared.
 		return recipients.contains("@");
 	}
-
-	/**
-	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
-	 * Shopping.Status.BOUGHT
-	 */
-	public class mSimpleCursorAdapter extends SimpleCursorAdapter implements
-			ViewBinder {
-
-		/**
-		 * Constructor simply calls super class.
-		 * 
-		 * @param context
-		 *            Context.
-		 * @param layout
-		 *            Layout.
-		 * @param c
-		 *            Cursor.
-		 * @param from
-		 *            Projection from.
-		 * @param to
-		 *            Projection to.
-		 */
-		mSimpleCursorAdapter(final Context context, final int layout,
-				final Cursor c, final String[] from, final int[] to) {
-			super(context, layout, c, from, to);
-			super.setViewBinder(this);
-		}
-
-		@Override
-		public View newView(Context context, Cursor cursor, ViewGroup parent) {
-			View view = super.newView(context, cursor, parent);
-			view.findViewById(R.id.price).setVisibility(mPriceVisiblity);
-			view.findViewById(R.id.tags).setVisibility(mTagsVisiblity);
-			return view;
-		}
-
-		/**
-		 * Additionally to the standard bindView, we also check for STATUS, and
-		 * strike the item through if BOUGHT.
-		 */
-		@Override
-		public void bindView(final View view, final Context context,
-				final Cursor cursor) {
-			super.bindView(view, context, cursor);
-
-			TextView t = (TextView) view.findViewById(R.id.name);
-			// we have a check box now.. more visual and gets the point across
-			CheckBox c = (CheckBox) view.findViewById(R.id.check);
-
-			Log.i(TAG, "bindview: pos = " + cursor.getPosition());
-
-			c.setTag(new Integer(cursor.getPosition()));
-
-			// Set font
-			t.setTypeface(mTypeface);
-
-			// Set size
-			t.setTextSize(mTextSize);
-
-			// Check for upper case:
-			if (mUpperCaseFont) {
-				// Only upper case should be displayed
-				CharSequence cs = t.getText();
-				t.setText(cs.toString().toUpperCase());
-			}
-
-			t.setTextColor(mTextColor);
-
-			long status = cursor.getLong(mStringItemsSTATUS);
-			if (mMarkType == mMarkCheckbox) {
-				c.setVisibility(CheckBox.VISIBLE);
-				if ((status == Shopping.Status.BOUGHT && mMode == MODE_IN_SHOP)
-						|| (status == Shopping.Status.WANT_TO_BUY)
-						&& mMode == MODE_ADD_ITEMS) {
-					c.setChecked(true);
-				} else {
-					c.setChecked(false);
-				}
-			} else {
-				c.setVisibility(CheckBox.GONE);
-			}
-
-			if (status == Shopping.Status.BOUGHT) {
-				t.setTextColor(mMarkTextColor);
-
-				if (mMarkType == mMarkStrikethrough) {
-					// We have bought the item,
-					// so we strike it through:
-
-					// First convert text to 'spannable'
-					t.setText(t.getText(), TextView.BufferType.SPANNABLE);
-					Spannable str = (Spannable) t.getText();
-
-					// Strikethrough
-					str.setSpan(new StrikethroughSpan(), 0, str.length(),
-							Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-					// apply color
-					// TODO: How to get color from resource?
-					// Drawable colorStrikethrough = context
-					// .getResources().getDrawable(R.drawable.strikethrough);
-					// str.setSpan(new ForegroundColorSpan(0xFF006600), 0,
-					// str.setSpan(new ForegroundColorSpan
-					// (getResources().getColor(R.color.darkgreen)), 0,
-					// str.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-					// color: 0x33336600
-				}
-
-				if (mMarkType == mMarkAddtext) {
-					// very simple
-					t.append("... OK");
-				}
-
-			}
-
-			t = (TextView) view.findViewById(R.id.quantity);
-			if (t != null && TextUtils.isEmpty(t.getText())) {
-				t.setText("1");
-			}
-
-			// The parent view knows how to deal with clicks.
-			// We just pass the click through.
-			c.setClickable(false);
-		}
-
-		public boolean setViewValue(View view, Cursor cursor, int i) {
-			if (view.getId() == R.id.price) {
-				long price = cursor.getLong(mStringItemsITEMPRICE);
-				((TextView) view).setText(String.valueOf(price * 0.01d));
-				return true;
-			} else {
-				return false;
-			}
-		}
-		
-		@Override
-		public void setViewBinder(ViewBinder viewBinder) {
-			throw new RuntimeException("this adapter implements setViewValue");
-		}
-
-	}
-
-	
 
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {

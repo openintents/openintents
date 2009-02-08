@@ -567,6 +567,7 @@ public abstract class Shopping {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
 			existingItems.close();
+						
 		} else {
 			existingItems.close();
 			// Add item to list:
@@ -642,6 +643,18 @@ public abstract class Shopping {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
 			existingItems.close();
+			
+			// set status to want_to_buy:
+			ContentValues values = new ContentValues(1);
+			values.put(Contains.STATUS, Status.WANT_TO_BUY);
+			try {
+				Uri uri = Uri.withAppendedPath(Contains.CONTENT_URI, String.valueOf(id));
+				mContentResolver.update(uri, values, null, null);
+				Log.i(TAG, "updated item: " + uri);				
+			} catch (Exception e) {
+				Log.i(TAG, "Insert item failed", e);				
+			}
+			
 		} else {
 			existingItems.close();
 			// Add item to list:

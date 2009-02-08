@@ -191,6 +191,10 @@
         </activity> 
         <activity android:name=".PreferenceActivity" android:label="@string/preferences">
         </activity> 
+        <activity android:name=".PickItemsActivity" 
+        android:label="@string/menu_pick_items"
+        android:theme="@android:style/Theme.Dialog">
+        </activity> 
         
 </application>	 
 	
