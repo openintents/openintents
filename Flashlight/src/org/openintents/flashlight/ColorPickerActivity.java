@@ -16,6 +16,7 @@
 
 package org.openintents.flashlight;
 
+import org.openintents.intents.FlashlightIntents;
 import org.openintents.widget.ColorCircle;
 import org.openintents.widget.ColorSlider;
 import org.openintents.widget.OnColorChangedListener;
@@ -29,9 +30,6 @@ import android.view.View;
 public class ColorPickerActivity extends Activity 
 	implements OnColorChangedListener {
 	
-	public final static String INTENT_PICK_COLOR = "org.openintents.action.PICK_COLOR";
-	public final static String EXTRA_COLOR = "org.openintents.extra.color";
-
 	ColorCircle mColorCircle;
 	ColorSlider mSaturation;
 	ColorSlider mValue;
@@ -51,7 +49,7 @@ public class ColorPickerActivity extends Activity
         	mIntent = new Intent();
         }
         
-        int color = mIntent.getIntExtra(EXTRA_COLOR, 0);
+        int color = mIntent.getIntExtra(FlashlightIntents.EXTRA_COLOR, 0);
         
         mColorCircle = (ColorCircle) findViewById(R.id.colorcircle);
         mColorCircle.setOnColorChangedListener(this);
@@ -93,7 +91,7 @@ public class ColorPickerActivity extends Activity
 	
 	public void onColorPicked(View view, int newColor) {
 		// We can return result
-		mIntent.putExtra(EXTRA_COLOR, newColor);
+		mIntent.putExtra(FlashlightIntents.EXTRA_COLOR, newColor);
 
 		setResult(RESULT_OK, mIntent);
 		finish();

@@ -19,10 +19,13 @@ package org.openintents.flashlight;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
+import org.openintents.intents.FlashlightIntents;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IHardwareService;
@@ -44,6 +47,7 @@ import android.widget.TextView;
 public class Flashlight extends Activity {
 	
 	private static final String TAG = "Flashlight";
+	private static final boolean debug = true;
 
 	private static final int MENU_COLOR = Menu.FIRST + 1;
 	private static final int MENU_ABOUT = Menu.FIRST + 2;
@@ -115,12 +119,11 @@ public class Flashlight extends Activity {
 		
 		mUserBrightness = NOT_VALID;
 
-		
+		IntentFilter i = new IntentFilter(FlashlightIntents.ACTION_SET_FLASHLIGHT);
+		registerReceiver(mReceiver, i);
 
     }
     
-    
-
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -139,6 +142,14 @@ public class Flashlight extends Activity {
 		showIconForAWhile();
 	}
 
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		
+		unregisterReceiver(mReceiver);
+	}
+	
 	/////////////////////////////////////////////////////
 	// Menu
 	
@@ -240,11 +251,28 @@ public class Flashlight extends Activity {
 	
 	private void pickColor() {
 		Intent i = new Intent();
-		i.setAction(ColorPickerActivity.INTENT_PICK_COLOR);
-		i.putExtra(ColorPickerActivity.EXTRA_COLOR, mColor);
+		i.setAction(FlashlightIntents.ACTION_PICK_COLOR);
+		i.putExtra(FlashlightIntents.EXTRA_COLOR, mColor);
 		startActivityForResult(i, REQUEST_CODE_PICK_COLOR);
 	}
-	
+
+	/**
+	 * Broadcast receiver for ACTION_SET_FLASHLIGHT
+	 */
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			if (intent != null) {
+				mColor = intent.getIntExtra(FlashlightIntents.EXTRA_COLOR, mColor);
+				mBackground.setBackgroundColor(mColor);
+				
+				if (debug) Log.d(TAG, "Receive color " + mColor);
+			}
+		}
+    	
+    };
+
 	/////////////////////////////////////////////////////
 	// Color changed listener:
 	
@@ -254,7 +282,7 @@ public class Flashlight extends Activity {
 		switch(requestCode) {
 		case REQUEST_CODE_PICK_COLOR:
 			if (resultCode == RESULT_OK) {
-				mColor = data.getIntExtra(ColorPickerActivity.EXTRA_COLOR, mColor);
+				mColor = data.getIntExtra(FlashlightIntents.EXTRA_COLOR, mColor);
 		        mBackground.setBackgroundColor(mColor);
 			}
 			break;
