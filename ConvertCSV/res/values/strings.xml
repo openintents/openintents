@@ -75,6 +75,7 @@
     <string name="header_subject">Subject</string>
     <string name="header_percent_complete">% Complete</string>
     <string name="header_categories">Categories</string>
+    <string name="header_tags">Tags</string>
     
     <!-- File path -->
     <string name="default_notepad_path">/sdcard/notepad.csv</string>

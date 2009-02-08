@@ -25,6 +25,7 @@ release: 1.0.2
 date: 2009-??
 
 - Add progress bar during conversion.
+- Shopping list export with tags
 
 ---------------------------------------------------------
 release: 1.0.1

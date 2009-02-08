@@ -460,11 +460,11 @@ public class ShoppingListView extends ListView {
 
 	public void insertNewItem(String newItem) {		
 
-		long itemId = Shopping.getItem(newItem);
+		long itemId = Shopping.getItem(getContext(), newItem, null);
 
 		Log.i(TAG, "Insert new item. " + " itemId = " + itemId
 				+ ", listId = " + mListId);
-		Shopping.addItemToList(itemId, mListId);
+		Shopping.addItemToList(getContext(), itemId, mListId, Status.WANT_TO_BUY);
 
 		fillItems(mListId);
 		// Set the item that we have just selected:

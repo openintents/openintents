@@ -18,7 +18,7 @@ package org.openintents.provider;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Intent;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -35,6 +35,7 @@ public abstract class Shopping {
 	 */
 	private static final String TAG = "Shopping";
 	public static final String ITEM_TYPE = "vnd.android.cursor.item/vnd.openintents.shopping.item";
+	public static final String QUERY_ITEMS_WITH_STATE = "itemsWithState";
 
 	/**
 	 * Items that can be put into shopping lists.
@@ -68,6 +69,21 @@ public abstract class Shopping {
 		public static final String IMAGE = "image";
 
 		/**
+		 * A price for the item (in cent)
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String PRICE = "price";
+
+		/**
+		 * Tags for the item
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String TAGS = "tags";
+		/**
 		 * The timestamp for when the item was created.
 		 * <P>
 		 * Type: INTEGER (long)
@@ -90,28 +106,26 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
-		
+
 		/**
 		 * Generic projection map.
 		 */
-		public static final String[] PROJECTION = {
-			_ID,
-			NAME,
-			IMAGE,
-			CREATED_DATE,
-			MODIFIED_DATE,
-			ACCESSED_DATE
-		};
-		
+		public static final String[] PROJECTION = { _ID, NAME, IMAGE, PRICE,
+				CREATED_DATE, MODIFIED_DATE, ACCESSED_DATE };
+
 		/**
 		 * Offset in PROJECTION array.
 		 */
 		public static final int PROJECTION_ID = 0;
 		public static final int PROJECTION_NAME = 1;
 		public static final int PROJECTION_IMAGE = 2;
-		public static final int PROJECTION_CREATED_DATE = 3;
-		public static final int PROJECTION_MODIFIED_DATE = 4;
-		public static final int PROJECTION_ACCESSED_DATE = 5;
+		public static final int PROJECTION_PRICE = 3;
+		public static final int PROJECTION_CREATED_DATE = 4;
+		public static final int PROJECTION_MODIFIED_DATE = 5;
+		public static final int PROJECTION_ACCESSED_DATE = 6;
+
+
+
 	}
 
 	/**
@@ -325,6 +339,24 @@ public abstract class Shopping {
 		 * Available since release 0.1.6.
 		 */
 		public static final String SHARE_MODIFIED_BY = "share_modified_by";
+
+		
+		/**
+		 * sort key with in the list
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String SORT_KEY = "sort_key";
+		/**
+		 * Support sort orders. The "sort order" in the preferences is an index
+		 * into this array.
+		 */
+		public static final String[] SORT_ORDERS = {
+				"contains.status ASC, items.name ASC", "items.name ASC",
+				"contains.modified DESC", "contains.modified ASC" };
+
+		
 	}
 
 	/**
@@ -441,6 +473,22 @@ public abstract class Shopping {
 		 */
 		public static final String ITEM_IMAGE = "item_image";
 
+		/**
+		 * A price of the item (in cent).
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String ITEM_PRICE = "item_price";
+
+		/**
+		 * tags of the item.
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String ITEM_TAGS = "item_tags";
+		
 		// Elements from Lists
 
 		/**
@@ -458,6 +506,8 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String LIST_IMAGE = "list_image";
+
+	
 	}
 
 	/**
@@ -474,6 +524,12 @@ public abstract class Shopping {
 		 * Have bought this item.
 		 */
 		public static final long BOUGHT = 2;
+		
+		/**
+		 * Have removed it from the list.
+		 * Won't be deleted, in oder to keep reference for later suggestions.
+		 */
+		public static final long REMOVED_FROM_LIST = 3;
 
 		/**
 		 * Checks whether a status is a valid possibility.
@@ -483,16 +539,12 @@ public abstract class Shopping {
 		 * @return true if status is a valid possibility.
 		 */
 		public static boolean isValid(final long s) {
-			return s == WANT_TO_BUY || s == BOUGHT;
+			return s == WANT_TO_BUY || s == BOUGHT || s == REMOVED_FROM_LIST;
 		}
 
 	}
 
-	// Some convenience functions follow
-
-	// The content resolver has to be set before accessing
-	// any of these functions.
-	public static ContentResolver mContentResolver;
+	// Some convenience functions follow	
 
 	/**
 	 * Gets or creates a new item and returns its id. If the item exists
@@ -502,20 +554,33 @@ public abstract class Shopping {
 	 *            New name of the item.
 	 * @return id of the new or existing item.
 	 */
-	public static long getItem(final String name) {
-		// TODO check whether item exists
-
-		// Add item to list:
-		ContentValues values = new ContentValues(1);
-		values.put(Items.NAME, name);
-		try {
-			Uri uri = mContentResolver.insert(Items.CONTENT_URI, values);
-			Log.i(TAG, "Insert new item: " + uri);
-			return Long.parseLong(uri.getPathSegments().get(1));
-		} catch (Exception e) {
-			Log.i(TAG, "Insert item failed", e);
-			return -1;
+	public static long getItem(Context context, String name, String tags) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver().query(Items.CONTENT_URI,
+				new String[] { Items._ID }, "upper(name) = ?",
+				new String[] { name.toUpperCase() }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+			existingItems.close();
+						
+		} else {
+			existingItems.close();
+			// Add item to list:
+			ContentValues values = new ContentValues(1);
+			values.put(Items.NAME, name);
+			values.put(Items.TAGS, tags);
+			try {
+				Uri uri = context.getContentResolver().insert(Items.CONTENT_URI, values);
+				Log.i(TAG, "Insert new item: " + uri);
+				id = Long.parseLong(uri.getPathSegments().get(1));
+			} catch (Exception e) {
+				Log.i(TAG, "Insert item failed", e);
+				// return -1
+			}
 		}
+		return id;
+
 	}
 
 	/**
@@ -523,24 +588,34 @@ public abstract class Shopping {
 	 * exists already, the existing id is returned. Otherwise a new list is
 	 * created.
 	 * 
+	 * @param context 
 	 * @param name
 	 *            New name of the list.
 	 * @return id of the new or existing list.
 	 */
-	public static long getList(final String name) {
-		// TODO check whether list exists
-
-		// Add item to list:
-		ContentValues values = new ContentValues(1);
-		values.put(Lists.NAME, name);
-		try {
-			Uri uri = mContentResolver.insert(Lists.CONTENT_URI, values);
-			Log.i(TAG, "Insert new list: " + uri);
-			return Long.parseLong(uri.getPathSegments().get(1));
-		} catch (Exception e) {
-			Log.i(TAG, "insert list failed", e);
-			return -1;
+	public static long getList(Context context, final String name) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver().query(Lists.CONTENT_URI,
+				new String[] { Items._ID }, "upper(name) = ?",
+				new String[] { name.toUpperCase() }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+			existingItems.close();
+		} else {
+			// Add list to list:
+			ContentValues values = new ContentValues(1);
+			values.put(Lists.NAME, name);
+			try {
+				Uri uri = context.getContentResolver().insert(Lists.CONTENT_URI, values);
+				Log.i(TAG, "Insert new list: " + uri);
+				id = Long.parseLong(uri.getPathSegments().get(1));
+			} catch (Exception e) {
+				Log.i(TAG, "insert list failed", e);
+				return -1;
+			}
 		}
+		return id;
 	}
 
 	/**
@@ -555,21 +630,46 @@ public abstract class Shopping {
 	 *            The type of the new item
 	 * @return id of the "contains" table entry, or -1 if insert failed.
 	 */
-	public static long addItemToList(final long itemId, final long listId) {
-		// TODO check whether "contains" entry exists
-
-		// Add item to list:
-		ContentValues values = new ContentValues(2);
-		values.put(Contains.ITEM_ID, itemId);
-		values.put(Contains.LIST_ID, listId);
-		try {
-			Uri uri = mContentResolver.insert(Contains.CONTENT_URI, values);
-			Log.i(TAG, "Insert new entry in 'contains': " + uri);
-			return Long.parseLong(uri.getPathSegments().get(1));
-		} catch (Exception e) {
-			Log.i(TAG, "insert into table 'contains' failed", e);
-			return -1;
+	public static long addItemToList(Context context, final long itemId, final long listId, final long status) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver()
+				.query(Contains.CONTENT_URI, new String[] { Contains._ID },
+						"list_id = ? AND item_id = ?",
+						new String[] { String.valueOf(listId),
+								String.valueOf(itemId) }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+			existingItems.close();
+			
+			// set status to want_to_buy:
+			ContentValues values = new ContentValues(1);
+			values.put(Contains.STATUS, status);
+			try {
+				Uri uri = Uri.withAppendedPath(Contains.CONTENT_URI, String.valueOf(id));
+				context.getContentResolver().update(uri, values, null, null);
+				Log.i(TAG, "updated item: " + uri);				
+			} catch (Exception e) {
+				Log.i(TAG, "Insert item failed", e);				
+			}
+			
+		} else {
+			existingItems.close();
+			// Add item to list:
+			ContentValues values = new ContentValues(2);
+			values.put(Contains.ITEM_ID, itemId);
+			values.put(Contains.LIST_ID, listId);
+			values.put(Contains.STATUS, status);
+			try {
+				Uri uri = context.getContentResolver().insert(Contains.CONTENT_URI, values);
+				Log.i(TAG, "Insert new entry in 'contains': " + uri);
+				id = Long.parseLong(uri.getPathSegments().get(1));
+			} catch (Exception e) {
+				Log.i(TAG, "insert into table 'contains' failed", e);
+				id = -1;
+			}
 		}
+		return id;
 	}
 
 	/**
@@ -582,23 +682,24 @@ public abstract class Shopping {
 		// the shopping list that is tagged as "default"
 		// should be returned here.
 		return 1;
-	}
+	}	
 
-	// TODO: Can we write a convenience function like this?
-	// How can we store information about Activity?
-	public static void showList(long listId) {
-		// Intent intent = new Intent(Intent.MAIN_ACTION,
-		// Shopping.Lists.CONTENT_URI);
-		// startActivity(intent);
-	}
-
-	public static Uri getListForItem(String itemId) {
-		Cursor cursor = mContentResolver.query(Contains.CONTENT_URI,
+	public static Uri getListForItem(Context context, String itemId) {
+		Cursor cursor = context.getContentResolver().query(Contains.CONTENT_URI,
 				new String[] { Contains.LIST_ID }, Contains.ITEM_ID + " = ?",
 				new String[] { itemId }, Contains.DEFAULT_SORT_ORDER);
-		if (cursor != null && cursor.moveToNext()) {
-			return Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
-					+ cursor.getString(0));
+		if (cursor != null) {
+			Uri uri;
+			if (cursor.moveToFirst()) {
+
+				uri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, cursor
+						.getString(0));
+
+			} else {
+				uri = null;
+			}
+			cursor.close();
+			return uri;
 		} else {
 			return null;
 		}

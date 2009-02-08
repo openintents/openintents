@@ -293,10 +293,7 @@ public class ShoppingActivity extends Activity { // implements
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		setContentView(R.layout.shopping);
-
-		// Initialize the convenience functions:
-		Shopping.mContentResolver = getContentResolver();
+		setContentView(R.layout.shopping);		
 
 		// Initialize GTalkSender (but don't bind yet!)
 		mGTalkSender = new GTalkSender(this);
@@ -337,7 +334,7 @@ public class ShoppingActivity extends Activity { // implements
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
-				mListUri = Shopping.getListForItem(intent.getData()
+				mListUri = Shopping.getListForItem(this,intent.getData()
 						.getLastPathSegment());
 			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
@@ -993,7 +990,7 @@ public class ShoppingActivity extends Activity { // implements
 			return false;
 		}
 
-		int newId = (int) Shopping.getList(name);
+		int newId = (int) Shopping.getList(this, name);
 		fillListFilter();
 
 		setSelectedListId(newId);
@@ -1643,7 +1640,7 @@ public class ShoppingActivity extends Activity { // implements
 
 		if (mCursorListFilter.getCount() < 1) {
 			// We have to create default shopping list:
-			long listId = Shopping.getList(getText(R.string.my_shopping_list)
+			long listId = Shopping.getList(this, getText(R.string.my_shopping_list)
 					.toString());
 
 			// Check if insertion really worked. Otherwise

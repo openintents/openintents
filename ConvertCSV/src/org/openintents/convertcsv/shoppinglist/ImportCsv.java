@@ -23,17 +23,18 @@ import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Status;
 
 import android.content.Context;
 
 public class ImportCsv {
 
 	Context mContext;
-	
+
 	public ImportCsv(Context context) {
 		mContext = context;
 	}
-	
+
 	/**
 	 * @param dis
 	 * @throws IOException
@@ -43,7 +44,7 @@ public class ImportCsv {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
 	    while ((nextLine = csvreader.readNext()) != null) {
-	    	if (nextLine.length != 3) {
+	    	if (nextLine.length != 4) {
 	    		throw new WrongFormatException();
 	    	}
 	    	// nextLine[] is an array of values from the line
@@ -53,22 +54,30 @@ public class ImportCsv {
 	    		continue;
 	    	}
 	    	String itemname = nextLine[0];
-			long status = (statusstring.equals("1")) ? 1 : 0;
+			long status;
+			try {
+				status = Long.parseLong(statusstring);
+			} catch (NumberFormatException e) {
+				status = 0;
+			}
 			String listname = nextLine[2];
-
+			String tags = nextLine[3];
+			
 			// Add item to list
-			long listId = ShoppingUtils.getOrCreateListId(mContext, listname);
-			long itemId = ShoppingUtils.getItemId(mContext, itemname);
+			long listId = Shopping.getList(mContext, listname);
+			long itemId = Shopping.getItem(mContext, itemname, tags);
 			
 			if (status == 1) {
-				status = Shopping.Status.BOUGHT;
+				status = Status.BOUGHT;
+			} else if (status == 0) {
+				status = Status.WANT_TO_BUY;
 			} else {
-				status = Shopping.Status.WANT_TO_BUY;
+				status = Status.REMOVED_FROM_LIST;
 			}
 			
-			ShoppingUtils.addItemToList(mContext, itemId, listId, status);
+			
+			Shopping.addItemToList(mContext, itemId, listId, status);
 	    }
 	    
 	}
-
 }
