@@ -39,5 +39,17 @@
                 android:dialogTitle="@string/pref_dialog_title_lock_timeout"
             	android:defaultValue="5" />    
 
+		<CheckBoxPreference
+			android:title="@string/pref_title_keypad"
+			android:summary="@string/pref_summary_keypad"
+			android:key="keypad"
+			android:defaultValue="false"/>
+		<CheckBoxPreference
+			android:title="@string/pref_title_keypad_mute"
+			android:summary="@string/pref_summary_keypad_mute"
+			android:key="keypad_mute"
+			android:defaultValue="false"
+			android:dependency="keypad"/>
+
     </PreferenceCategory>
 </PreferenceScreen>

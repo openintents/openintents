@@ -129,6 +129,10 @@
 	<string name="pref_title_lock_timeout">Auto lock timeout</string>
 	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked</string>
 	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
+	<string name="pref_title_keypad">Keypad</string>
+	<string name="pref_summary_keypad">Use a keypad to enter Master Password</string>
+	<string name="pref_title_keypad_mute">Keypad Mute</string>
+	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
 	<string name="intent_get_password">Get password (OI Safe)</string>
@@ -155,4 +159,5 @@
 	<string name="not_found">not found</string>
 	<string name="dialog_title_first_time_warning">New master key</string>
 	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu > backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
+	<string name="switch_mode">Switch mode</string>
 </resources>

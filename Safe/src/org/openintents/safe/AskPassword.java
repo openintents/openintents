@@ -20,7 +20,6 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 
 import org.openintents.distribution.EulaActivity;
-import org.openintents.safe.dialog.DialogHostingActivity;
 import org.openintents.util.VersionUtils;
 
 import android.app.Activity;
@@ -28,8 +27,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -55,6 +59,14 @@ public class AskPassword extends Activity {
 
     public static final int REQUEST_RESTORE = 0;
 
+    // Menu Item order
+    public static final int SWITCH_MODE_INDEX = Menu.FIRST;
+    
+    public static final int VIEW_NORMAL = 0;
+    public static final int VIEW_KEYPAD = 1;
+    
+    private int viewMode = VIEW_NORMAL;
+
 	private EditText pbeKey;
 	private DBHelper dbHelper;
 	private TextView introText;
@@ -67,6 +79,14 @@ public class AskPassword extends Activity {
 	private CryptoHelper ch;
 	private boolean firstTime = false;
 
+	// Keypad variables
+	private String keypadPassword="";
+	
+	private MediaPlayer mpDigitBeep = null;
+	private MediaPlayer mpErrorBeep = null;
+	private MediaPlayer mpSuccessBeep = null;
+	private boolean mute=false;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -75,13 +95,8 @@ public class AskPassword extends Activity {
 		if (!EulaActivity.checkEula(this, getIntent())) {
             return;
         }
-        
-		Intent thisIntent = getIntent();
-		
-		boolean isLocal = thisIntent.getBooleanExtra (EXTRA_IS_LOCAL, false);
 			
-		if (debug)
-			Log.d(TAG, "onCreate()");
+		if (debug) Log.d(TAG, "onCreate()");
 
 		dbHelper = new DBHelper(this);
 			
@@ -92,7 +107,28 @@ public class AskPassword extends Activity {
 				databaseVersionError();
 			}
 		}
+		salt = dbHelper.fetchSalt();
+		masterKey = dbHelper.fetchMasterKey();
 
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean prefKeypad = sp.getBoolean(Preferences.PREFERENCE_KEYPAD, false);
+        boolean prefKeypadMute = sp.getBoolean(Preferences.PREFERENCE_KEYPAD_MUTE, false);
+        mute=prefKeypadMute;
+        
+        if (prefKeypad) {
+        	viewMode=VIEW_KEYPAD;
+        }
+		if (masterKey.length() == 0) {
+			firstTime=true;
+		}		
+		if ((viewMode==VIEW_NORMAL) || (firstTime)) {
+			normalInit();
+		} else {
+			keypadInit();
+		}
+	}
+	
+	private void normalInit() {
 		// Setup layout
 		setContentView(R.layout.front_door);
 		ImageView icon = (ImageView) findViewById(R.id.entry_icon);
@@ -103,13 +139,14 @@ public class AskPassword extends Activity {
 		String head = appName + " " + version + "\n";
 		header.setText(head);
 
+		Intent thisIntent = getIntent();
+		boolean isLocal = thisIntent.getBooleanExtra (EXTRA_IS_LOCAL, false);
+
 		pbeKey = (EditText) findViewById(R.id.password);
 		introText = (TextView) findViewById(R.id.first_time);
 		remoteAsk = (TextView) findViewById(R.id.remote);
 		confirmPass = (EditText) findViewById(R.id.pass_confirm);
 		confirmText = (TextView) findViewById(R.id.confirm_lbl);
-		salt = dbHelper.fetchSalt();
-		masterKey = dbHelper.fetchMasterKey();
 		if (masterKey.length() == 0) {
 			firstTime = true;
 			introText.setVisibility(View.VISIBLE);
@@ -191,21 +228,23 @@ public class AskPassword extends Activity {
 			        findViewById(R.id.password).startAnimation(shake);
 					return;
 				}
-
-				Intent callbackIntent = new Intent();
-				
-				// Return the master key to our caller.  We no longer need the
-				// user-entered PBEKey. The master key is used for everything
-				// from here on out.
-				if (debug) Log.d(TAG,"calbackintent: masterKey="+masterKey+" salt="+salt);
-				callbackIntent.putExtra("masterKey", masterKey);
-				callbackIntent.putExtra("salt", salt);
-				setResult(RESULT_OK, callbackIntent);
-				
-				finish();
-				
+				gotPassword();
 			}
 		});
+	}
+	
+	private void gotPassword() {
+		Intent callbackIntent = new Intent();
+		
+		// Return the master key to our caller.  We no longer need the
+		// user-entered PBEKey. The master key is used for everything
+		// from here on out.
+		if (debug) Log.d(TAG,"calbackintent: masterKey="+masterKey+" salt="+salt);
+		callbackIntent.putExtra("masterKey", masterKey);
+		callbackIntent.putExtra("salt", salt);
+		setResult(RESULT_OK, callbackIntent);
+		
+		finish();
 	}
 	
 	private void checkForBackup() {
@@ -234,24 +273,78 @@ public class AskPassword extends Activity {
 	protected void onPause() {
 		super.onPause();
 
-		if (debug)
-			Log.d(TAG, "onPause()");
+		if (debug) Log.d(TAG, "onPause()");
 
 		dbHelper.close();
 		dbHelper = null;
 	}
 
 	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		
+		if (debug) Log.d(TAG,"onDestroy()");
+		keypadOnDestroy();
+	}
+
+	@Override
 	protected void onResume() {
 		super.onPause();
 
-		if (debug)
-			Log.d(TAG, "onResume()");
+		if (debug) Log.d(TAG, "onResume()");
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);
 		}
 
 	}
+
+	@Override
+	public boolean onMenuOpened(int featureId, Menu menu) {
+		if (menu != null) {
+			MenuItem miSwitch = menu.findItem(SWITCH_MODE_INDEX);
+			if (firstTime) {
+				miSwitch.setEnabled(false);
+			} else {
+				miSwitch.setEnabled(true);
+			}
+		}
+		return super.onMenuOpened(featureId, menu);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+	
+		menu.add(0, SWITCH_MODE_INDEX, 0, R.string.switch_mode)
+			.setIcon(android.R.drawable.ic_menu_directions);
+		
+		return super.onCreateOptionsMenu(menu);
+    }
+	
+    public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case SWITCH_MODE_INDEX:
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences.Editor spe=sp.edit();
+			if (viewMode==VIEW_NORMAL) {
+				viewMode=VIEW_KEYPAD;
+				spe.putBoolean(Preferences.PREFERENCE_KEYPAD, true);
+				keypadInit();
+			} else {
+				viewMode=VIEW_NORMAL;
+				spe.putBoolean(Preferences.PREFERENCE_KEYPAD, false);
+				normalInit();
+			}
+			if (spe.commit()) {
+				if (debug) Log.d(TAG,"commitment issues");
+			}
+			break;
+		default:
+			Log.e(TAG,"Unknown itemId");
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+    }
 
 	private void databaseVersionError() {
 		Dialog about = new AlertDialog.Builder(this)
@@ -306,4 +399,145 @@ public class AskPassword extends Activity {
     	}
     }
 
+	/////////////// Keypad Functions /////////////////////
+
+	private void keypadInit() {
+		if (mpDigitBeep==null) {
+			mpDigitBeep = MediaPlayer.create(this, R.raw.dtmf2a);
+			mpErrorBeep = MediaPlayer.create(this, R.raw.click6a);
+			mpSuccessBeep = MediaPlayer.create(this, R.raw.dooropening1);
+		}
+
+		keypadPassword="";
+    	
+		setContentView(R.layout.keypad);
+
+		TextView header = (TextView) findViewById(R.id.entry_header);
+		String version = VersionUtils.getVersionNumber(this);
+		String appName = VersionUtils.getApplicationName(this);
+		String head = appName + " " + version;
+		header.setText(head);
+
+		Button keypad1 = (Button) findViewById(R.id.keypad1);
+		keypad1.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "1";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad2 = (Button) findViewById(R.id.keypad2);
+		keypad2.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "2";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad3 = (Button) findViewById(R.id.keypad3);
+		keypad3.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "3";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad4 = (Button) findViewById(R.id.keypad4);
+		keypad4.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "4";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad5 = (Button) findViewById(R.id.keypad5);
+		keypad5.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "5";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad6 = (Button) findViewById(R.id.keypad6);
+		keypad6.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "6";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad7 = (Button) findViewById(R.id.keypad7);
+		keypad7.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "7";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad8 = (Button) findViewById(R.id.keypad8);
+		keypad8.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "8";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad9 = (Button) findViewById(R.id.keypad9);
+		keypad9.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "9";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypadStar = (Button) findViewById(R.id.keypad_star);
+		keypadStar.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "*";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypad0 = (Button) findViewById(R.id.keypad0);
+		keypad0.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "0";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypadPound = (Button) findViewById(R.id.keypad_pound);
+		keypadPound.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadPassword += "#";
+				if (!mute) { mpDigitBeep.start(); }
+			}
+		});
+		Button keypadContinue = (Button) findViewById(R.id.keypad_continue);
+		keypadContinue.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+				keypadTryPassword(keypadPassword);
+			}
+		});
+	}
+    
+	private void keypadOnDestroy() {
+		if (mpDigitBeep!=null) {
+			mpDigitBeep.release();
+			mpErrorBeep.release();
+			mpSuccessBeep.release();
+			mpDigitBeep=null;
+			mpErrorBeep=null;
+			mpSuccessBeep=null;
+		}
+	}
+	
+	private void keypadTryPassword(String password) {
+		if (checkUserPassword(password)){
+			if (debug) Log.d(TAG,"match!!");
+			if (!mute) {
+				mpSuccessBeep.start();
+			}
+			gotPassword();
+		}else{
+			if (debug) Log.d(TAG,"bad password");
+			if (!mute) {
+				mpErrorBeep.start();
+			}
+		    Animation shake = AnimationUtils
+	        	.loadAnimation(AskPassword.this, R.anim.shake);
+	        findViewById(R.id.keypad_continue).startAnimation(shake);
+
+	        keypadPassword="";
+		}
+	}
 }
