@@ -65,6 +65,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	
 	protected static final int DIALOG_ID_WARN_OVERWRITE = 1;
 	protected static final int DIALOG_ID_NO_FILE_MANAGER_AVAILABLE = 2;
+	protected static final int DIALOG_ID_WARN_RESTORE_POLICY = 3;
 	
 	protected static final int REQUEST_CODE_PICK_FILE = 1;
 
@@ -81,6 +82,13 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected int RES_STRING_FILEMANAGER_BUTTON_TEXT = 0;
 	protected int RES_ARRAY_CSV_FILE_FORMAT = 0;
 	protected int RES_ARRAY_CSV_FILE_FORMAT_VALUE = 0;
+	
+	static final public int IMPORT_POLICY_DUPLICATE = 0;
+	static final public int IMPORT_POLICY_KEEP = 1;
+	static final public int IMPORT_POLICY_OVERWRITE = 2;
+	static final public int IMPORT_POLICY_RESTORE = 3;
+	static final public int IMPORT_POLICY_MAX = IMPORT_POLICY_RESTORE;
+	
 	
 	String[] mFormatValues;
 	
@@ -244,8 +252,73 @@ public class ConvertCsvBaseActivity extends Activity {
     	
     }
     
+    /**
+     * Display the current import policy.
+     * 
+     * @param prefString The key in the shared preferences that contains
+     * the import policy value.
+     */
+    public void displayImportPolicy() {
+    	int importPolicy = getValidatedImportPolicy();
+    	
+    	String[] policyStrings = getResources().getStringArray(R.array.import_policy_detail);
+
+    	TextView policyView = ((TextView) findViewById(R.id.import_policy_detail));
+    	
+    	if (policyView != null) {
+    		policyView.setText(policyStrings[importPolicy]);
+    	}
+    }
+    
+    public int getValidatedImportPolicy() {
+    	String prefKey = getImportPolicyPrefString();
+    	
+    	if (prefKey == null) {
+    		// This activity does not support import policies.
+    		return IMPORT_POLICY_DUPLICATE;
+    	}
+    	
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    	
+    	String importPolicy = prefs.getString(prefKey, "0");
+    	
+    	try
+    	{
+    		int policy = Integer.parseInt(importPolicy);
+    		
+    		if (policy < 0 || policy > IMPORT_POLICY_MAX)
+    		{
+    			return 0;
+    		}
+    		
+    		return policy;
+    	}
+    	catch(NumberFormatException e)
+    	{
+    		// Invalid prefs.
+    		return 0;
+    	}
+    }
+    
+    /**
+     * @return The string that identifies the import policy for this importer.
+     * null if this derived activity does not support import policies.
+     */
+    public String getImportPolicyPrefString() {
+    	return null;
+    }
 
     public void startImport() {
+		int importPolicy = getValidatedImportPolicy();
+		
+		if (importPolicy == IMPORT_POLICY_RESTORE) {
+			showDialog(DIALOG_ID_WARN_RESTORE_POLICY);
+		} else {
+			startImportPostCheck();
+		}
+    }
+    
+    public void startImportPostCheck() {
     	// First delete old lists
     	//getContentResolver().delete(Shopping.Contains.CONTENT_URI, null, null);
     	//getContentResolver().delete(Shopping.Items.CONTENT_URI, null, null);
@@ -258,7 +331,9 @@ public class ConvertCsvBaseActivity extends Activity {
     	
     	final File file = new File(fileName);
 		if (true) { // (!file.exists()) {
-
+			
+			// If this is the RESTORE policy, make sure we let the user know
+			// what kind of trouble he's getting himself into.
 			switchToConvertLayout();
 			smHasWorkerThread = true;
 			
@@ -351,7 +426,7 @@ public class ConvertCsvBaseActivity extends Activity {
 				WrongFormatException {
 	
 	}
-    
+	
     public void startExport() {
 
 		String fileName = mEditText.getText().toString();
@@ -448,6 +523,12 @@ public class ConvertCsvBaseActivity extends Activity {
 		return true;
 	}
 	
+    @Override
+    public void onResume() {
+    	super.onResume();
+    	
+    	displayImportPolicy();
+    }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -491,6 +572,18 @@ public class ConvertCsvBaseActivity extends Activity {
 
 			}).create();
 			
+		case DIALOG_ID_WARN_RESTORE_POLICY:
+			return new AlertDialog.Builder(this)
+					.setTitle(R.string.warn_restore_policy_title)
+					.setMessage(R.string.warn_restore_policy)
+					.setPositiveButton(android.R.string.yes, new OnClickListener() {
+						public void onClick(DialogInterface dialog, int which) {
+							startImportPostCheck();
+						}
+					})
+					.setNegativeButton(android.R.string.no, null)
+					.create();
+					
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
 			return LaunchFileManager.createDialog(this);
 		}

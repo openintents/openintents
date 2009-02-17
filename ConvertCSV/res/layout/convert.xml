@@ -94,5 +94,21 @@
         android:prompt="@string/select_csv_file_format"
 	    android:layout_marginBottom="10dip"
     />
+    
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/current_import_policy"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+	    android:layout_marginLeft="20dip"
+		android:text="@string/current_import_policy">
+	</TextView>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceSmall"
+		android:id="@+id/import_policy_detail">
+	</TextView>
 </LinearLayout>
 </ScrollView>

@@ -49,6 +49,11 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     	mConvertInfo.setText(R.string.convert_all_notes);
     }
     
+    @Override
+    public String getImportPolicyPrefString() {
+    	return "notepad_import_policy";
+    }
+    
 	/**
 	 * @param reader
 	 * @throws IOException
@@ -56,7 +61,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	public void doImport(FileReader reader) throws IOException,
 				WrongFormatException {
 		ImportCsv ic = new ImportCsv(this);
-		ic.importCsv(reader, getFormat());
+		ic.importCsv(reader, getFormat(), getValidatedImportPolicy());
 	}
     
 	/**

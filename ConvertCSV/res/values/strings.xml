@@ -36,15 +36,22 @@
     <string name="export_finished">Export finished</string>
     <string name="filemanager_title_notepad">Select notepad CSV file</string>
     <string name="filemanager_title_shoppinglist">Select shopping list CSV file</string>
+	<string name="current_import_policy">Current Import Policy:</string>
+	<string name="import_policy">Import Policy</string>
+	<string name="select_import_policy">Select the import policy to use</string>
     <!--  <string name="filemanager_buttontext">Export finished</string>  -->
     
     <string name="file_exists">The file exists. Do you want to overwrite?</string>
     <string name="dont_ask_again">Don't ask again. Always overwrite!</string>
     
+    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
+    <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
+    
     <string name="menu_settings">Settings</string>
     <string name="csv_file_format">CSV file format</string>
     <string name="select_csv_file_format">Select CSV file format</string>
     <string name="preferences_select_csv_file_format">Select a CSV file format</string>
+    <string name="preferences_select_import_policy">Select the import policy to use</string>
     
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>

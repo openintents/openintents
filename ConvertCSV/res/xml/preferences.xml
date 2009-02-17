@@ -39,6 +39,13 @@
 					android:entries="@array/notepad_format" 
 					android:entryValues="@array/notepad_format_value"
 					android:dialogTitle="@string/select_csv_file_format" />
+			    <ListPreference android:key="notepad_import_policy"
+					android:defaultValue="0" 
+					android:title="@string/import_policy"
+					android:summary="@string/preferences_select_import_policy"
+					android:entries="@array/import_policy" 
+					android:entryValues="@array/import_policy_value"
+					android:dialogTitle="@string/select_import_policy" />
 				
 			</PreferenceCategory>		     
 	    </PreferenceScreen>

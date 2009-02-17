@@ -43,6 +43,7 @@ public class NotepadUtils {
 		int COLUMN_INDEX_ENCRYPTED = c.getColumnIndex(NotePad.Notes.ENCRYPTED); // Introduced in 1.1.0
 		int COLUMN_INDEX_TAGS = c.getColumnIndex(NotePad.Notes.TAGS); // Introduced in 1.1.0
 		
+		c.close();
 		
 		// Add item to list:
 		ContentValues values = new ContentValues(1);
@@ -83,5 +84,38 @@ public class NotepadUtils {
             }
         }
         return title;
+	}
+	
+	public static void deleteAllNotes(Context context) {
+		try {
+			Log.i(TAG, "Deleting ALL notes");
+			context.getContentResolver().delete(NotePad.Notes.CONTENT_URI, "", null);
+			Log.i(TAG, "ALL notes deleted");
+		} catch (Exception e) {
+			Log.i(TAG, "Failed to delete all notes", e);
+		}
+	}
+	
+	public static void deleteNoteById(Context context, int noteId) {
+		Log.i(TAG, "Deleting note " + noteId);
+		String[] args = { Integer.toString(noteId) };
+		
+		context.getContentResolver().delete(NotePad.Notes.CONTENT_URI, Notes._ID + " =?", args);
+	}
+	
+	public static int findNoteByTitle(Context context, String title) {
+		String[] projection = { Notes._ID, Notes._ID };
+		String[] args = { title };
+		int result = -1;
+		
+		Cursor cursor = context.getContentResolver().query(NotePad.Notes.CONTENT_URI, projection, Notes.TITLE + " =?", args, null);
+		
+		// Did we get any results?
+		if (cursor.moveToFirst()) {
+			result = cursor.getInt(0);
+		}
+		
+		cursor.close();
+		return result;		
 	}
 }

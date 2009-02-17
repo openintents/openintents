@@ -19,6 +19,7 @@ package org.openintents.convertcsv.notepad;
 import java.io.IOException;
 import java.io.Reader;
 
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
 
@@ -41,11 +42,18 @@ public class ImportCsv {
 	 * @param dis
 	 * @throws IOException
 	 */
-	public void importCsv(Reader reader, String format) throws IOException, 
+	public void importCsv(Reader reader, String format, int importPolicy) throws IOException, 
 		WrongFormatException {
+		
+		// If we're in restore mode, delete everything. EVERYTHING.
+		if (importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_RESTORE) {
+			NotepadUtils.deleteAllNotes(mContext);
+		}
 		
 		//boolean isPalm = format.equals(FORMAT_PALM_CSV); // Palm is default.
 		boolean isOutlookNotes = format.equals(FORMAT_OUTLOOK_NOTES);
+		
+		boolean needToValidate = ((importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_KEEP) || (importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_OVERWRITE));
 		
 		String note;
 		long encrypted;
@@ -102,7 +110,25 @@ public class ImportCsv {
 		    	// Third column would be category.
 		    	tags = nextLine[2];
 	    	}
-	    	
+
+	    	// Do we need to overwrite or ignore this?
+	    	if (needToValidate) {
+	    		// We need to identify it by title.
+	    		String title = NotepadUtils.extractTitle(note);
+		    	int existingNoteId = NotepadUtils.findNoteByTitle(mContext, title);
+		    	
+		    	if (existingNoteId != -1) {
+		    		if (importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_KEEP) {
+		    			// Already exists - don't touch it.
+		    			Log.v(TAG, "Skipping note " + existingNoteId);
+		    			continue;
+		    		}
+		    		
+		    		// Need to delete the existing one first.
+		    		NotepadUtils.deleteNoteById(mContext, existingNoteId);
+		    	}
+	    	}
+		    	
 
 	    	NotepadUtils.addNote(mContext, note, encrypted, tags);
 	    }
