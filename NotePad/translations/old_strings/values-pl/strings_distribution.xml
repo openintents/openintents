@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<!-- Translation by szeldon -->
+<resources>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Notepad EULA</string>
+	<string name="eula_accept">Zatwierdź</string>
+	<string name="eula_refuse">Anuluj</string>
+	
+	<!-- Update -->
+		<string name="update_box_text">Sprawdź ręcznie aktualizacje lub zainstaluj OI Update, aby aktualizować automatycznie.
+Wersja aktualna: %s
+	</string>
+	<string name="update_check_now">Sprawdź teraz.</string>
+	<string name="update_get_updater">Pobierz OI Updater.</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.filemanager</string>
+	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
+	<string name="update_error">Ściąganie aplikacji niedostępne.</string>
+	<string name="update">Sprawdź aktualizacje</string>
+	
+    <!-- About -->
+    <string name="about">O nas</string>
+	<string name="aboutapp_not_available">Wersja %s\n\nBrak kompatybilnej aplikacji do wyświetlenia pełnych informacji (kontakt, dane o autorach, licencja).</string>
+    <string name="aboutapp_get">Pobierz OI About</string>
+    <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
+
+
+    <!-- File Manager -->
+    <string name="filemanager_not_available">Brak kompatybilnego menedżera plików.</string>
+    <string name="filemanager_get_oi_filemanager">Pobierz OI File Manager</string>
+    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
+	
+</resources>

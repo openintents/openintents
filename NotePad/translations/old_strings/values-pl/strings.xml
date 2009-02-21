@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ <!-- 
+ * Original copyright:
+ * Based on the Android SDK sample application NotePad.
+ * Copyright (C) 2007 Google Inc.
+ * Licensed under the Apache License, Version 2.0.
+  -->
+
+<!-- Translation by szeldon -->
+<resources>
+    <string name="menu_delete">Usuń</string>
+    <string name="menu_insert">Dodaj notatkę</string>
+    <string name="menu_revert">Cofnij</string>
+    <string name="menu_discard">Anuluj</string>
+    
+	<string name="no_notes">Użyj menu, aby dodać nowe notatki.</string>
+
+    <string name="resolve_edit">Edytuj notatkę</string>
+    <string name="resolve_title">Edytuj tytuł</string>  
+
+    <string name="title_create">Stwórz notatkę</string>
+    <string name="title_edit">Edytuj notatkę</string>
+	<string name="title_notes_list">OI Notepad</string>   
+	<string name="title_note">Notatka</string>  
+	<string name="title_edit_title">Tytuł notatki:</string>  
+    <string name="title_create_file">%s (nowa notatka)</string>
+    <string name="title_edit_file">%s (edytuj notatkę)</string>
+	
+	<string name="app_name">OI Notepad</string>  
+	
+	<string name="button_ok">OK</string>  
+	
+	<string name="error_title">Błąd</string>
+	<string name="error_message">Błąd przy ładowaniu notatki</string>
+	<!-- <string name="no_notes">Note list is empty.</string>  -->
+	
+	<string name="menu_send_by_email">Wyślij</string>
+	<string name="empty_note">Pusta notatka</string>
+	<string name="email_not_available">Brak aplikacji służącej wysłaniu.</string>
+	
+	<string name="encrypting_note">Szyfrowanie notatki</string>
+	<string name="encrypted">Zaszyfrowana</string>
+	<string name="menu_encrypt">Zaszyfruj</string>
+	<string name="menu_decrypt">Odszyfruj</string>
+	<string name="menu_undo_encryption">Cofnij szyfrowanie</string>
+	<string name="menu_do_not_encrypt">Nie szyfruj</string>
+	<string name="already_encrypted">Uprzednio zaszyfrowana.</string>
+	<string name="not_encrypted">Nie zaszyfrowana.</string>
+	<string name="encryption_failed">Szyfrowanie nie udało się.</string>
+	<string name="decryption_failed">Odszyfrowanie nie udało się.</string>
+
+	<string name="menu_edit_tags">Edytuj znaczniki</string>
+    <string name="dropdown_hint">Dotknij, aby zobaczyć listę</string>
+    <string name="tags_hint">Dodaj znaczniki oddzielone przecinkami</string>
+    
+    <string name="menu_save_to_sdcard">Zapisz na karcie SD</string>
+    <string name="menu_open_from_sdcard">Otwórz z karty SD</string>
+    <string name="filename">Nazwa pliku</string>
+    <string name="save">Zapisz</string>
+    <string name="open">Otwórz</string>
+    <string name="error_writing_file">Błąd podczas pisania do pliku</string>
+    <string name="error_reading_file">Błąd podczas czytania z pliku</string>
+    <string name="file_not_found">Plik nie znaleziony</string>
+    <string name="note_saved">Notatka zapisana</string>
+    
+    <string name="permission_read">czytanie notatek</string>
+    <string name="permission_read_descr">Pozwala aplikacji na dostęp do wszystkich notatek. Zwróć uwagę, że notatki zaszyfrowane dostępne są w formie zaszyfrowanej.</string>
+    <string name="permission_write">pisanie notatek</string>
+    <string name="permission_write_descr">Pozwala aplikacji tworzyć nowe notatki lub edytować istniejące.</string>
+</resources>
