@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OI Zaklamp</string>
+    
+    <string name="flashlight_info">De achtergrondverlichting blijft aan.</string>
+    
+    
+    <string name="color">Kleur</string>
+    <string name="color_picker">Kleurenkiezer</string>
+    
+    
+	<!-- Update -->
+	<string name="update_available">Een nieuwe versie van OI Zaklamp is beschikbaar.\n%s\nWilt u upgraden?</string>
+	<string name="market_not_available">Android Market is niet beschikbaar.</string>
+	<string name="market_search_term">OI Zaklamp</string>
+
+	<!-- About -->
+	<string name="about">Info</string>
+	<string name="about_title">Info over %s</string>
+	<string name="about_text">Versie %s \n\n OenIntents Zaklamp helpt de weg te vinden in het donker. De achtergrondverlichting van het scherm blijft aan zolang de applicatie draait.\n\n OpenIntents laat Android applicaties data delen via intents en open interfaces.\n\n Voor meer informatie en andere geweldige applicaties bezoek OpenIntents op www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Zaklamp EULA</string>
+<string name="eula_description">
+"Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+</string>
+	<string name="eula_accept">Accepteren</string>
+	<string name="eula_refuse">Annuleren</string>
+	
+	<!-- Update -->
+	<string name="update_menu">Controleer op updates</string>
+    <string name="update_box_text">Gelieve manueel naar updates te controleren of OI Update te installeren voor automatische meldingen over updates. Huidige versie: %s</string>
+	<string name="update_check_now">Controleer nu.</string>
+	<string name="update_get_updater">Haal OI Updater.</string>
+	<string name="update_app_url">market://search?q=pname:org.openintents.flashlight</string>
+	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
+	<string name="update_error">Applicatiedownload niet beschikbaar.</string>
+</resources>
