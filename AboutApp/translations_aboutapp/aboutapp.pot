@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-01-29 22:29+0100\n"
+"POT-Creation-Date: 2009-02-21 22:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,8 +86,7 @@ msgstr ""
 msgid "No information available."
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
-#: ../res/values/strings.xml:53(string) ../res/values/strings.xml:0(None) 
+#: ../res/values/strings.xml:53(string) 
 msgid "translator-credits"
 msgstr ""
 
