@@ -22,22 +22,24 @@
 -->
 <resources>
     
-    <string name="app_name">OI About</string> 
-	 
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>  
-	<string name="about_copyright">Copyright © 2008-2009 pjv</string><!-- Add your name here, separated with comma's, if you helped out --> 
-	<string name="about_website_label">OI About at OpenIntents</string> 
-	<string name="about_website_url">http://www.openintents.org</string>
-	<string name="about_email">support@openintents.org</string>
+	<!-- ***************************
+	     About information
+	     *************************** -->
 	
-    <string name="menu_preferences">Preferences</string>
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_website_label">OI About at OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI About</string>
+	
     <string name="menu_about">About OI About itself</string>
     
-    <string name="about_activity_name">About</string>
     <string name="about_activity_name_extended">About %s</string>
-    <string name="preferences_activity_name">OI About Preferences</string>
-    <string name="about_activity_title">About</string>
-    
     
 	<string name="l_authors">Written by</string>
 	<string name="l_documenters">Documented by</string>
@@ -47,8 +49,5 @@
 	<string name="l_license">License</string>
 	<string name="l_info">General Info</string>
 	
-	
 	<string name="no_information_available">No information available.</string>
-	
-<string name="about_translators">translator-credits</string>
 </resources>
