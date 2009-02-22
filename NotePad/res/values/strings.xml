@@ -26,17 +26,19 @@
 	     About information
 	     *************************** -->
 
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Notepad allows to create, edit, and delete notes.</string>
 	<string name="about_website_label">OI Notepad at OpenIntents</string>
 	
-	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
-
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 
+	<string name="app_name">OI Notepad</string>
+	
     <string name="menu_delete">Delete</string>
     <string name="menu_insert">Add note</string>
     <string name="menu_revert">Revert</string>
@@ -54,8 +56,6 @@
 	<string name="title_edit_title">Note title:</string>  
     <string name="title_create_file">%s (new note)</string>
     <string name="title_edit_file">%s (edit note)</string>
-	
-	<string name="app_name">OI Notepad</string>  
 	
 	<string name="button_ok">OK</string>  
 	

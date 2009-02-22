@@ -786,8 +786,7 @@ public class CategoryList extends ListActivity {
 	                Toast.LENGTH_SHORT).show();
 			return false;
 		}
-		String msg=getString(R.string.export_success)+filename+
-			getString(R.string.export_success2);
+		String msg=getString(R.string.export_success, filename);
         Toast.makeText(CategoryList.this, msg,
                 Toast.LENGTH_LONG).show();
 		return true;

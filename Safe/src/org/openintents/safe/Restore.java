@@ -256,10 +256,10 @@ public class Restore extends Activity {
 
 		dbHelper=new DBHelper(Restore.this);
 
-		String msg=getString(R.string.restore_found)+" "+
-        	Integer.toString(restoreDataSet.getTotalEntries())+" "+
-        	getString(R.string.restore_passwords)+" "+
-        	restoreDataSet.getDate()+".\n"+
+		String msg=getString(R.string.restore_found, 
+				Integer.toString(restoreDataSet.getTotalEntries()),
+				restoreDataSet.getDate())
+        	+"\n"+
 			getString(R.string.dialog_restore_database_msg);
 		Dialog confirm = new AlertDialog.Builder(Restore.this)
 		.setIcon(android.R.drawable.ic_menu_manage)
@@ -309,8 +309,8 @@ public class Restore extends Activity {
 		dbHelper.commit();
 		dbHelper.close();
 
-		Toast.makeText(Restore.this, getString(R.string.restore_complete)+
-			" "+Integer.toString(totalPasswords),
+		Toast.makeText(Restore.this, getString(R.string.restore_complete, 
+				Integer.toString(totalPasswords)),
 			Toast.LENGTH_LONG).show();
 		
 

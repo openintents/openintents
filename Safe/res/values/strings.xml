@@ -2,7 +2,7 @@
 <!-- 
 * $Id$
 * 
-* Copyright 2007 Steven Osborn
+* Copyright 2007-2009 OpenIntents.org
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
@@ -19,8 +19,21 @@
 -->
 
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Safe keeps all your private data encrypted.</string>  
+	<string name="about_website_label">OI Safe at OpenIntents</string> 
+    
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">OI Safe</string>
-    <string name="authors">Steven Osborn, Randy McEoin</string>
     <string name="empty_safe">No Passwords present for this category.</string>
     <string name="empty_category">No categories present.  Please add one via Menu->Add</string>
     <string name="password_lock">Lock</string>
@@ -53,12 +66,11 @@
 	<string name="cannot_decrypt_password">Cannot decrypt password</string>
 	<string name="error_export">Error exporting database</string>
 	<string name="export_database">Export Database</string>
-	<string name="export_success">Export to '</string>
-	<string name="export_success2">' successful.   Warning!   The file is not encrypted.</string>
-	<string name="export_file_error">Unable to create export file 'passwordsafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="export_success">Export to '%s' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_file_error">Unable to create export file 'oisafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Import Database</string>
 	<string name="import_file_missing">Import file is missing:</string>
-	<string name="import_file_error">Unable to import file 'passwordsafe.csv' from SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="import_file_error">Unable to import file 'oisafe.csv' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">First line is missing fields.</string>
 	<string name="dialog_import_title">Import</string>
 	<string name="dialog_import_msg">Do you want to replace the database (import from %s)?</string>
@@ -109,9 +121,8 @@
     <string name="restore_decrypt_error">Bad password.</string>
     <string name="dialog_restore_database_title">Restore Database</string>
     <string name="dialog_restore_database_msg">Are you sure you want to replace the current data?</string>
-    <string name="restore_found">Found</string>
-    <string name="restore_passwords">passwords from backup dated </string>
-    <string name="restore_complete">Complete.  Passwords restored: </string>
+    <string name="restore_found">Found %s passwords from backup dated %s.</string>
+    <string name="restore_complete">Complete.  Passwords restored: %s</string>
     <string name="copy_to_clipboard">Copying Password to Clipboard</string>
     <string name="invalid_website">Invalid website</string>
     <string name="open">Open</string>
@@ -120,7 +131,7 @@
 	<string name="move">Move</string>
 	<string name="move_select">Select Category</string>
 	<string name="moved_to">Moved to</string>
-	<string name="preferences">Preferences</string>
+	<string name="preferences">Settings</string>
 	<string name="pref_title_external_access">Allow external access</string>
 	<string name="pref_summary_external_access">Allow other applications to secure your data with OI Safe</string>
 	<string name="dialog_title_external_access">OI Safe: Another application requests access.</string>
@@ -160,4 +171,56 @@
 	<string name="dialog_title_first_time_warning">New master key</string>
 	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu > backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
 	<string name="switch_mode">Switch mode</string>
+	
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Safe EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+	
+	<!-- Update -->
+		<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+	
+    <!-- About -->
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+
+	
+	<!-- ***************************
+	     Permissions
+	     *************************** -->
+
+	<!-- OI Safe -->
+	<string name="oi_safe_permission_service">access the master password</string>
+	<string name="oi_safe_permission_service_descr">Allows the application to access the master key used for encryption and decryption. Should never be used except by OI Safe.</string>	
+	<string name="oi_safe_permission_intents">access stored password</string>
+    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string-array name="pref_entries_lock_timeout">
+        <item>1 minute</item>
+        <item>5 minutes</item>
+        <item>30 minutes</item>  
+    </string-array>
+
+        
 </resources>
