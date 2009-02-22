@@ -652,9 +652,11 @@ public class FileManagerActivity extends ListActivity {
 
           String selectedFileString = directoryEntries.get(position) 
                     .getText(); 
+          /*
           if (selectedFileString.equals(getString(R.string.up_one_level))) { 
                upOneLevel(); 
           } else { 
+          */
         	  String curdir = currentDirectory 
               .getAbsolutePath() ;
         	  String file = directoryEntries.get(position) 
@@ -667,7 +669,9 @@ public class FileManagerActivity extends ListActivity {
             	   }
                     browseTo(clickedFile);
                }
+          /*
           } 
+          */
      }
 
 	/**

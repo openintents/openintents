@@ -15,12 +15,18 @@
  * limitations under the License.
  -->
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI File Manager is an open file manager that seamlessly cooperates with other applications.</string>  
+	<string name="about_website_label">OI File Manager at OpenIntents</string> 
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">OI File Manager</string>
-    <string name="dirname_app_name">OI File Manager</string>
-    <string name="dirnameinput_cmd_return">Save</string>
-    <string name="dirnameinput_hint">Enter a directory-name:</string>
-    <string name="up_one_level">..</string>
-    <string name="current_dir">.</string>
     
     <string name="menu_new_folder">New Folder</string>
     <string name="menu_delete">Delete</string>
@@ -54,7 +60,31 @@
     
     <string name="send_not_available">No application available for sending.</string>
     
-    
     <string name="application_not_available">Application not available</string>
 
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI File Manager EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+	
+    <!-- About -->
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
+    
 </resources>
