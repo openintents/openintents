@@ -16,6 +16,20 @@
  -->
  
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OI Shopping list lets you keep track of your shopping items. You can also use it for other kinds of check lists, for example for ToDo lists or party guest lists.</string>
+	<string name="about_website_label">OI Shopping list at OpenIntents</string>
+
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
 	<string name="app_name">OI Shopping list</string>
 
 	<!-- Shopping Provider -->
@@ -87,4 +101,64 @@
 	<string name="preference_showprice_summary">Shown as extra column in list.</string>
 	<string name="preference_showtags_title">Show tags</string>
 	<string name="preference_showtags_summary">Shown as extra column in list.</string>
+	
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Shopping List EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
+
+	<!-- Update -->
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
+	<!-- ***************************
+	     Permissions
+	     *************************** -->
+	
+	<!-- OI Shopping list -->
+	<string name="oi_shopping_permission_read">read shopping lists</string>
+	<string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+	<string name="oi_shopping_permission_write">write shopping lists</string>
+	<string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or change existing ones.</string>
+	
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+    <string-array name="preference_sortorder_entries">
+    	<item>unchecked first, alphabetical</item>
+        <item>alphabetical</item>
+        <item>newest first</item>
+        <item>oldest first</item>
+    </string-array>
+    
+    <string-array name="preference_fontsize_entries">
+        <item>Small</item>
+    	<item>Default</item>
+        <item>Large</item>
+    </string-array>
+    
+    <string-array name="preference_capitalization_entries">
+        <item>None</item>
+        <item>Per Sentence</item>
+        <item>Per Word</item>
+    </string-array>
+
 </resources> 
