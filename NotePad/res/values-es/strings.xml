@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+<!-- 
+ * Original copyright:
+ * Based on the Android SDK sample application NotePad.
+ * Copyright (C) 2007 Google Inc.
+ * Licensed under the Apache License, Version 2.0.
+  -->
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+
+    <!-- Strings for OI About -->
+	<string name="about_comments">Bloc de Notas OI permite crear, editar, y eliminar notas.</string>
+	<string name="about_website_label">Bloc de Notas OI en OpenIntents</string>
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Feder Sáiz https://launchpad.net/~federsaiz</string>
+
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_insert">Añadir nota</string>
+    <string name="menu_revert">Revert</string>
+    <string name="menu_discard">Descartar</string>
+    
+	<string name="no_notes">Utilizar menú para añadir notas nuevas.</string>
+
+    <string name="resolve_edit">Editar nota</string>
+    <string name="resolve_title">Editar título</string>  
+
+    <string name="title_create">Crear nota</string>
+    <string name="title_edit">Editar nota</string>
+	<string name="title_notes_list">Bloc de Notas OI</string>   
+	<string name="title_note">Nota</string>  
+	<string name="title_edit_title">Título de nota:</string>  
+    <string name="title_create_file">%s (nota nueva)</string>
+    <string name="title_edit_file">%s (editar note)</string>
+	
+	<string name="app_name">Bloc de Notas OI</string>  
+	
+	<string name="button_ok">De Acuerdo</string>  
+	
+	<string name="error_title">Error</string>
+	<string name="error_message">Error cargando nota</string>
+	<!-- <string name="no_notes">Note list is empty.</string>  -->
+	
+	<string name="menu_send_by_email">Enviar</string>
+	<string name="empty_note">Vaciar nota</string>
+	<string name="email_not_available">Aplicación no disponible para enviar.</string>
+	
+	<string name="encrypting_note">Cifrando nota</string>
+	<string name="encrypted">Cifrado</string>
+	<string name="menu_encrypt">Cifrar</string>
+	<string name="menu_decrypt">Descifrar</string>
+	<string name="menu_undo_encryption">Deshacer cifrado</string>
+	<string name="menu_do_not_encrypt">No cifrar</string>
+	<string name="already_encrypted">Ya cifrado.</string>
+	<string name="not_encrypted">No cifrado.</string>
+	<string name="encryption_failed">Cifrado fallido.</string>
+	<string name="decryption_failed">Descifrado fallido.</string>
+
+	<string name="menu_edit_tags">Editar etiquetas</string>
+    <string name="dropdown_hint">Touch to see list</string>
+    <string name="tags_hint">Introducir etiquetas, separas por coma</string>
+    
+    <string name="menu_save_to_sdcard">Guardar a tarjeta SD</string>
+    <string name="menu_open_from_sdcard">Abrir desde tarjeta SD</string>
+    <string name="filename">Nombre de archivo</string>
+    <string name="save">Guardar</string>
+    <string name="open">Abrir</string>
+    <string name="error_writing_file">Error while writing file</string>
+    <string name="error_reading_file">Error while reading file</string>
+    <string name="file_not_found">Archivo no encontrado</string>
+    <string name="note_saved">Nota guardada</string>
+
+    <!-- Settings -->
+    <string name="noteslist_preferences">Lista de Notas</string>
+    <string name="preference_sortorder_title">Orden de Clasificación de Lista</string>
+    <string name="preference_sortorder_dialog_title">Orden de Clasificación de Lista</string>
+    <string name="preference_sortorder_summary">El orden en el que las notas son mostradas en la lista de notas</string>
+
+	<string name="settings">Ajustes</string>
+	<string name="settings_sortorder">Sort Order</string>
+	
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	     
+	<!-- EULA -->
+	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Notepad</string>
+	<string name="eula_accept">Aceptar</string>
+	<string name="eula_refuse">Cancelar</string>
+	
+	<!-- Update -->
+		<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Comprobar ahora.</string>
+	<string name="update_get_updater">Obtenga el Actualizador de OI</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Comprobar actualizaciones</string>
+	
+    <!-- About -->
+    <string name="about">Acerca de</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Obtenga Acerca de OI</string>
+    
+    <!-- File Manager -->
+    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_get_oi_filemanager">Obtenga el Administrador de Archivos de OI</string>
+    
+    <!-- Safe -->
+    <string name="safe_not_available">No compatible application for encryption is available.</string>
+    <string name="safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="safe_get_oi_filemanager">Get OI Safe</string>
+    
+	
+	<!-- ***************************
+	     Permissions
+	     *************************** -->
+
+	<!-- OI Notepad -->
+    <string name="oi_notepad_permission_read">leer notas</string>
+    <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="oi_notepad_permission_write">escribir notas</string>
+    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
+    
+	<!-- OI Shopping list -->
+    <string name="oi_shopping_permission_read">leer listas de compra</string>
+    <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+    <string name="oi_shopping_permission_write">escribir listas de compra</string>
+    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
+    
+	<!-- OI Safe -->
+	<string name="oi_safe_permission_intents">cifrar y descifrar datos</string>
+    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+
+
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string-array name="preference_sortorder_entries">
+        <item>Alfabético</item>
+        <item>Invertir Alfabético</item>
+        <item>De Más Nuevo a Más Viejo</item>  
+        <item>De Más Viejo a Más Nuevo</item>
+    </string-array>
+
+
+	     
+</resources>
