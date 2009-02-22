@@ -255,6 +255,19 @@ storepass=*password of keystore*
         </apply>
     </target>
 
+    <!-- Convert this project's .class files into .dex files.
+		 does not optimize code for full human readable debug output
+	-->
+    <target name="dex.debug" depends="compile">
+        <echo>Converting compiled files and external libraries into ${outdir}/${dex-file}...</echo>
+        <apply executable="${dx}" failonerror="true" parallel="true">
+            <arg value="--dex" />
+            <arg value="--output=${intermediate-dex-ospath}" />
+            <arg path="${outdir-classes-ospath}" />
+            <fileset dir="${external-libs}" includes="*.jar"/>
+        </apply>
+    </target>
+
     <!-- Put the project's resources into the output package file. -->
     <target name="package-res-and-assets">
         <echo>Packaging resources and assets...</echo>
@@ -305,7 +318,7 @@ storepass=*password of keystore*
 
     <!-- Package the application and sign it with a debug key.
 		 This is the default target when building. It is used for debug. -->
-    <target name="debug" depends="dex, package-res">
+    <target name="debug" depends="dex.debug, package-res">
         <echo>Packaging ${out-debug-package}, and signing it with a debug key...</echo>
         <exec executable="${apk-builder}" failonerror="true">
             <arg value="${out-debug-package-ospath}" />
@@ -338,6 +351,23 @@ storepass=*password of keystore*
         </exec>
     	<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}"/>
     	
+    </target>
+
+    <target name="debug.sign" depends="dex.debug, package-res">
+        <echo>Packaging ${out-debug-package}, and signing it with a debug key...</echo>
+        <exec executable="${apk-builder}" failonerror="true">
+            <arg value="${out-unsigned-package-ospath}" />
+            <arg value="-u" />
+            <arg value="-z" />
+            <arg value="${resources-package-ospath}" />
+            <arg value="-f" />
+            <arg value="${intermediate-dex-ospath}" />
+            <arg value="-rf" />
+            <arg value="${srcdir-ospath}" />
+            <arg value="-rj" />
+            <arg value="${external-libs-ospath}" />
+		</exec>
+		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}"/>
     </target>
 
     <!-- Install the package on the default emulator -->

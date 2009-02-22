@@ -53,23 +53,31 @@
               android:visibility="visible"
               android:layout_gravity="center"
               android:text="1" android:longClickable="true"/>
-   <TextView android:id="@+id/name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="27dip"
-            android:layout_marginRight="27dip"
-            android:textStyle="normal"
-            android:bufferType="spannable"
-            android:layout_gravity="center"
-            android:text="name"
-             />
-    <TextView android:id="@+id/tags"
+	<LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:visibility="visible"
-              android:layout_gravity="center"
-              android:text=""/>
+              android:orientation="vertical"
+
+			>
+	   <TextView android:id="@+id/name"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="27dip"
+				android:layout_marginRight="27dip"
+				android:layout_marginTop="13dip"
+				android:textStyle="normal"
+				android:bufferType="spannable"
+				android:layout_gravity="center"
+				android:text="name"
+				 />
+		<TextView android:id="@+id/tags"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:visibility="visible"
+				  android:layout_gravity="center"
+				  android:text=""/>
+	</LinearLayout>
     <TextView android:id="@+id/price"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"

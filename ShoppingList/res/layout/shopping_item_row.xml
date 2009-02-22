@@ -19,7 +19,7 @@
               android:orientation="horizontal"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-			  android:minHeight="?android:attr/listPreferredItemHeight" 
+                          android:minHeight="?android:attr/listPreferredItemHeight" 
               >
               <!-- android:layout_weight="1" -->
     <ImageView android:id="@+id/image"
@@ -53,23 +53,31 @@
               android:layout_height="wrap_content"
               android:visibility="visible"
               android:layout_gravity="center"              
-              android:text="1" android:longClickable="true"/>              
-   <TextView android:id="@+id/name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="27dip"
-            android:layout_marginRight="27dip"
-            android:textStyle="normal"
-            android:bufferType="spannable"
-            android:layout_gravity="center"
-             />
-             
-    <TextView android:id="@+id/tags"
+              android:text="1" android:longClickable="true"/>            
+	<LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="center"
-              android:visibility="gone"/>
+              android:orientation="vertical"
+
+			>
+			  
+	   <TextView android:id="@+id/name"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="27dip"
+				android:layout_marginRight="27dip"
+				android:textStyle="normal"
+				android:bufferType="spannable"
+				android:layout_gravity="center"
+				 />
+				 
+		<TextView android:id="@+id/tags"
+				  android:layout_width="wrap_content"
+				  android:layout_height="wrap_content"
+				  android:layout_gravity="center"
+				  android:visibility="gone"/>
+	</LinearLayout>
     <TextView android:id="@+id/price"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
@@ -79,3 +87,4 @@
             android:layout_marginTop="8dip"
             android:layout_marginBottom="8dip" -->
 </LinearLayout>
+

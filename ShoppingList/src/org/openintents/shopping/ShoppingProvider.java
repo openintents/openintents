@@ -66,7 +66,7 @@ public class ShoppingProvider extends ContentProvider {
 	 * 
 	 * 3: Release 1.0.4
 	 */
-	private static final int DATABASE_VERSION = 3;
+	private static final int DATABASE_VERSION = 4;
 
 	private static HashMap<String, String> ITEMS_PROJECTION_MAP;
 	private static HashMap<String, String> LISTS_PROJECTION_MAP;
@@ -110,6 +110,9 @@ public class ShoppingProvider extends ContentProvider {
 					+ "image VARCHAR," // V1
 					+ "price INTEGER," // V3
 					+ "tags VARCHAR," // V3
+					+ "barcode INTEGER," // V4
+					+ "location VARCHAR," // V4
+					+ "due INTEGER," // V4
 					+ "created INTEGER," // V1
 					+ "modified INTEGER," // V1
 					+ "accessed INTEGER" // V1					
@@ -150,7 +153,7 @@ public class ShoppingProvider extends ContentProvider {
 				// Upgrade
 				switch (oldVersion) {
 				case 2:
-					// Upgrade from version 2 to 3.
+					// Upgrade from version 2
 					// It seems SQLite3 only allows to add one column at a time,
 					// so we need three SQL statements:
 					try {
@@ -169,9 +172,27 @@ public class ShoppingProvider extends ContentProvider {
 						// and then upgrading again 2->3.
 					}
 					// fall through for further upgrades.
-					/*
-					 * case 3: // add more columns
-					 */
+				case 3:
+					try {
+						db.execSQL("ALTER TABLE items ADD COLUMN "
+								+ Items.BARCODE + " INTEGER;");
+						db.execSQL("ALTER TABLE items ADD COLUMN "
+								+ Items.LOCATION + " VARCHAR;");
+						db.execSQL("ALTER TABLE items ADD COLUMN "
+								+ Items.DUE_DATE + " INTEGER;");
+
+					} catch (SQLException e) {
+						Log.e(TAG, "Error executing SQL: ", e);
+						// If the error is "duplicate column name" then
+						// everything is fine,
+						// as this happens after upgrading 2->3, then
+						// downgrading 3->2,
+						// and then upgrading again 2->3.
+					}
+					// fall through for further upgrades.
+					/**
+					* case 4:
+					*/
 					break;
 				default:
 					Log.w(TAG, "Unknown version " + oldVersion

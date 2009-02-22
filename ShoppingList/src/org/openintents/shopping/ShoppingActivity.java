@@ -268,6 +268,7 @@ public class ShoppingActivity extends Activity { // implements
 	private GTalkSender mGTalkSender;
 
 	private int mTextEntryMenu;
+	/* NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for items in list */
 	private Cursor mItemsCursor;
 
 	public int mPriceVisiblity;
@@ -336,6 +337,17 @@ public class ShoppingActivity extends Activity { // implements
 			if (Shopping.ITEM_TYPE.equals(type)) {
 				mListUri = Shopping.getListForItem(this,intent.getData()
 						.getLastPathSegment());
+			} else if (intent.getData() != null) {
+				mListUri = intent.getData();
+			}
+		} else if (Intent.ACTION_INSERT.equals(action)) {
+			//TODO: insert items from extras ????
+			mState = STATE_VIEW_LIST;
+
+			if (Shopping.ITEM_TYPE.equals(type)) {
+				mListUri = Shopping.getListForItem(
+					getApplicationContext(),
+					intent.getData().getLastPathSegment());
 			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
 			}
@@ -549,14 +561,13 @@ public class ShoppingActivity extends Activity { // implements
 				});
 
 		mEditText = (AutoCompleteTextView) findViewById(R.id.autocomplete_add_item);
-		mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
+		mItemsCursor= managedQuery(Items.CONTENT_URI, new String[] {
 				Items._ID, Items.NAME }, null, null, "name desc");
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				android.R.layout.simple_dropdown_item_1line, mItemsCursor,
 				new String[] { Items.NAME }, new int[] { android.R.id.text1 });
 		adapter.setStringConversionColumn(1);
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
-
 			public Cursor runQuery(CharSequence constraint) {
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
 						Items._ID, Items.NAME }, "upper(name) like '%"
@@ -1208,6 +1219,7 @@ public class ShoppingActivity extends Activity { // implements
 
 	/** delete item */
 	void deleteItem(int position) {
+		mCursorItems.moveToPosition(position);
 		// Delete item from all lists
 		// by deleting contains row
 		getContentResolver().delete(Contains.CONTENT_URI, "item_id = ?",
@@ -1222,10 +1234,14 @@ public class ShoppingActivity extends Activity { // implements
 
 	/** removeItemFromList */
 	void removeItemFromList(int position) {
+		mCursorItems.moveToPosition(position);
 		// Remember old values before delete (for share below)
+//***************************************************************************
+		//TODO getCursor from ListView or somehow itemid from listview
+//***************************************************************************
 		String itemName = mCursorItems.getString(mStringItemsITEMNAME);
 		long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
-
+		
 		// Delete item from list
 		// by deleting contains row
 		getContentResolver()
@@ -1751,7 +1767,9 @@ public class ShoppingActivity extends Activity { // implements
 			// and no item is selected.
 			return;
 		}
-		startManagingCursor(mListItems.fillItems(listId));
+		mCursorItems=mListItems.fillItems(listId);
+		startManagingCursor(mCursorItems);
+		mCursorItems.moveToFirst();
 
 	}
 

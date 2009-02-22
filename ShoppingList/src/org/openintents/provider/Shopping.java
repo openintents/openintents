@@ -84,6 +84,22 @@ public abstract class Shopping {
 		 */
 		public static final String TAGS = "tags";
 		/**
+		 * A barcode (EAN or QR)
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String BARCODE = "barcode";
+
+		/**
+		 * a location where to find it, as geo:lat,long uri
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String LOCATION = "location";
+
+		/**
 		 * The timestamp for when the item was created.
 		 * <P>
 		 * Type: INTEGER (long)
@@ -106,6 +122,14 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+
+		/**
+		 * The timestamp for when the item was last accessed.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String DUE_DATE = "due";
 
 		/**
 		 * Generic projection map.
@@ -506,7 +530,28 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String LIST_IMAGE = "list_image";
+		/**
+		 * A barcode (EAN or QR)
+		 * <P>
+		 * Type: INTEGER
+		 * </P>
+		 */
+		public static final String BARCODE = "barcode";
 
+		/**
+		 * a location where to find it, as geo:lat,long uri
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String LOCATION = "location";	
+		/**
+		 * The timestamp for when the item was last accessed.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String DUE_DATE = "due";
 	
 	}
 

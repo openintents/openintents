@@ -17,11 +17,11 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.0.3"
-	android:versionCode="10004">
+	android:versionName="1.0.5 BETA 1"
+	android:versionCode="10005">
 	<!-- History:
-	1.0.3 [10004]: 2009-02-04 -->
-	
+	1.0.3 [10004]: 2009-02-04 
+	1.0.5 [10005]: beta release -->
 	<uses-permission android:name="org.openintents.shopping.READ_PERMISSION" />
 	<uses-permission android:name="org.openintents.shopping.WRITE_PERMISSION" />
 	<permission android:name="org.openintents.shopping.READ_PERMISSION"
