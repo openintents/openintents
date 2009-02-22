@@ -28,12 +28,6 @@ www.openintents.org
 	
 	<!-- EULA -->
 	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
-</string>
 	<string name="eula_accept">Aceptar</string>
 	<string name="eula_refuse">Cancelar</string>
 	
@@ -45,7 +39,5 @@ Current version: %s
 	</string>
 	<string name="update_check_now">Comprobar ahora.</string>
 	<string name="update_get_updater">Obtenga el Actualizador OI.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.flashlight</string>
-	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
 </resources>
