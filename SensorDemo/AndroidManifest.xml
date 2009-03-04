@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="org.openintents.sensordemo"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+      
+     <uses-permission android:name="android.permission.INTERNET"/>
+      
+      
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+    
+    	<provider android:name="org.openintents.hardware.HardwareProvider"
+			android:authorities="org.openintents.hardware" />
+    
+    
+        <activity android:name=".SensorDemo"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        
+        
+        <activity android:name="org.openintents.hardware.SensorSimulatorSettingsActivity"
+			android:label="sensorsimulator"
+			android:icon="@drawable/mobile_shake001a_32">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<data android:mimeType="vnd.android.cursor.dir/vnd.openintents.hardware.preference"/>
+			</intent-filter>
+		</activity>
+		
+		<!-- Sensor service -->
+		
+        <service android:name="org.openintents.hardware.services.SensorService" android:process=":remote">
+            <intent-filter>
+                <!-- The following interface is supported by the service. -->
+                <action android:name="org.openintents.hardware.services.ISensorService" />
+                <!-- This is an action code to select the service
+                     without explicitly supplying the implementation class. -->
+                <action android:name="org.openintents.hardware.services.SENSOR_SERVICE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="org.openintents.hardware.SensorServiceSettingsActivity" 
+        	android:label="sensor_service_settings"
+			android:icon="@drawable/mobile_shake001a_32">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+				<category android:name="org.openintents.category.SETTINGS" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
+ 
