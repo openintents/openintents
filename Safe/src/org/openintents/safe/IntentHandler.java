@@ -54,8 +54,6 @@ public class IntentHandler extends Activity {
 	private static final int REQUEST_CODE_ASK_PASSWORD = 1;
 	private static final int REQUEST_CODE_ALLOW_EXTERNAL_ACCESS = 2;
 	
-
-	private DBHelper dbHelper;
 	private String salt;
 	private String masterKey;
 	private CryptoHelper ch;
@@ -74,7 +72,9 @@ public class IntentHandler extends Activity {
 		super.onCreate(icicle);
 		mServiceIntent = null;
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		
+
+		Passwords.Initialize(this);
+
 		// The service is launched in onResume()
 	}
 
@@ -181,6 +181,9 @@ public class IntentHandler extends Activity {
         CategoryList.setSalt(salt);
 		PassList.setMasterKey(masterKey);
         CategoryList.setMasterKey(masterKey);
+        if ((salt==null) || (salt=="")) {
+        	return;
+        }
         if (ch == null) {
     		ch = new CryptoHelper();
         }
@@ -328,21 +331,14 @@ public class IntentHandler extends Activity {
 
         if (clearUniqueName == null) throw new Exception ("EXTRA_UNIQUE_NAME not set.");
         
-		if (dbHelper == null) {
-	        // Need to open DBHelper here, because
-			// onResume() is called after onActivityResult()
-			dbHelper = new DBHelper(this);
-		}
+    	PassEntry row = Passwords.findPassWithUniqueName(clearUniqueName);
+    	boolean passExists = (row!=null);
 
-        String uniqueName = ch.encrypt(clearUniqueName);
-    	PassEntry row = dbHelper.fetchPassword(uniqueName);
-    	boolean passExists = row.id > 1;
-
-        String clearCallingPackage = getCallingPackage();
-        String callingPackage = ch.encrypt (clearCallingPackage);
+        String callingPackage = getCallingPackage();
     	if (passExists) { // check for permission to access this password.
-    		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);
-    		if (! PassEntry.checkPackageAccess(packageAccess, callingPackage)) {
+    		ArrayList<String> packageAccess = Passwords.getPackageAccess(row.id);
+    		if ((packageAccess==null) ||
+    			(! PassEntry.checkPackageAccess(packageAccess, callingPackage))) {
     			throw new Exception ("It is currently not permissible for this application to request this password.");
     		}
             /*TODO: check if this package is in the package_access table corresponding to this password:
@@ -353,12 +349,14 @@ public class IntentHandler extends Activity {
     				[ ] Always grant access to all passwords in org.syntaxpolice.ServiceTest category?
     				[ ] Don't grant access"
              */
+    	} else {
+    		row = new PassEntry();
     	}
     	
         if (action.equals (CryptoIntents.ACTION_GET_PASSWORD)) {
         	if (passExists) {
-        		username = ch.decrypt(row.username);
-        		password = ch.decrypt(row.password);
+        		username = row.plainUsername;
+        		password = row.plainPassword;
         	} else throw new Exception ("Could not find password with the unique name: " + clearUniqueName);
 
         	// stashing the return values:
@@ -370,34 +368,39 @@ public class IntentHandler extends Activity {
             if (clearPassword == null) {
             		throw new Exception ("PASSWORD extra must be set.");
             }  
-            row.username = ch.encrypt(clearUsername == null ? "" : clearUsername);
-            row.password = ch.encrypt(clearPassword);
+            row.plainUsername = clearUsername == null ? "" : clearUsername;
+            row.plainPassword = clearPassword;
             // since this package is setting the password, it automatically gets access to it:
         	if (passExists) { //exists already 
         		if (clearUsername.equals("") && clearPassword.equals("")) {
-        			dbHelper.deletePassword(row.id);
+        			Passwords.deletePassEntry(row.id);
         		} else {
-        			dbHelper.updatePassword(row.id, row);
+        			Passwords.putPassEntry(row);
         		}
         	} else {// add a new one
-                row.uniqueName = uniqueName;
-	            row.description=uniqueName; //for display purposes
+                row.plainUniqueName = clearUniqueName;
+	            row.plainDescription=clearUniqueName; //for display purposes
                 // TODO: Should we send these fields in extras also?  If so, probably not using 
                 // the openintents namespace?  If another application were to implement a keystore
                 // they might not want to use these.
-	            row.website = ""; 
-	            row.note = "";
+	            row.plainWebsite = ""; 
+	            row.plainNote = "";
 
-	            String category = ch.encrypt("Application Data");
-	            CategoryEntry c = new CategoryEntry();
-	            c.name = category;
-	            row.category = dbHelper.addCategory(c); //doesn't add category if it already exists
+	            String category="Application Data";
+	            CategoryEntry c = Passwords.getCategoryEntryByName(category);
+	            if (c==null) {
+	            	c = new CategoryEntry();
+		            c.plainName = "Application Data";
+		            c.id = Passwords.putCategoryEntry(c); //doesn't add category if it already exists
+	            }
+	            row.category = c.id;
 	            row.id = 0;	// entry is truly new
-	            row.id = dbHelper.addPassword(row);
+	            row.id = Passwords.putPassEntry(row);
         	}  
-    		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);
-    		if (! PassEntry.checkPackageAccess(packageAccess, callingPackage)) {
-            	dbHelper.addPackageAccess(row.id, callingPackage);
+    		ArrayList<String> packageAccess = Passwords.getPackageAccess(row.id);
+    		if ((packageAccess==null) ||
+    			(! PassEntry.checkPackageAccess(packageAccess, callingPackage))) {
+            	Passwords.addPackageAccess(row.id, callingPackage);
     		}
     
         }
@@ -412,8 +415,6 @@ public class IntentHandler extends Activity {
 			Log.d(TAG, "onPause()");
 
 		releaseService();
-		dbHelper.close();
-		dbHelper = null;
 	}
 
 	@Override
@@ -422,9 +423,6 @@ public class IntentHandler extends Activity {
 
 		if (debug)
 			Log.d(TAG, "onResume()");
-		if (dbHelper == null) {
-			dbHelper = new DBHelper(this);
-		}
 		
 		initService(); // start up the PWS service so other applications can query.
 	}

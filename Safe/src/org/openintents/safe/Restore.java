@@ -308,6 +308,7 @@ public class Restore extends Activity {
 		}
 		dbHelper.commit();
 		dbHelper.close();
+		Passwords.Reset();
 
 		Toast.makeText(Restore.this, getString(R.string.restore_complete, 
 				Integer.toString(totalPasswords)),

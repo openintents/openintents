@@ -20,9 +20,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -110,9 +107,6 @@ public class CategoryList extends ListActivity {
     
     public static final String KEY_ID = "id";  // Intent keys
 
-    private CryptoHelper ch=null;
-    private DBHelper dbHelper=null;
-	
 	private String importMessage="";
 	private int importedEntries=0;
 	private Thread importThread=null;
@@ -126,6 +120,7 @@ public class CategoryList extends ListActivity {
 
     private List<CategoryEntry> rows;
     private Intent restartTimerIntent;
+    private int lastPosition=0;
     
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
@@ -205,18 +200,23 @@ public class CategoryList extends ListActivity {
 			finish();
     	}
 		
+		try {
+			Passwords.InitCrypto(CryptoHelper.EncryptionMedium, salt, masterKey);
+		} catch (Exception e) {
+			e.printStackTrace();
+            Toast.makeText(CategoryList.this, "CategoryList: " + getString(R.string.crypto_error),
+                    Toast.LENGTH_SHORT).show();
+		}
+		
 		setContentView(R.layout.cat_list);
 		String title = getResources().getString(R.string.app_name) + " - " +
 			getResources().getString(R.string.categories);
 		setTitle(title);
 
-		if (dbHelper==null) {
-			dbHelper = new DBHelper(this);
-			if (dbHelper.getPrePopulate()==true)
-			{
-				prePopulate();
-				dbHelper.clearPrePopulate();
-			}
+		if (Passwords.getPrePopulate()==true)
+		{
+			prePopulate();
+			Passwords.clearPrePopulate();
 		}
 		
         IntentFilter filter = new IntentFilter();
@@ -237,9 +237,6 @@ public class CategoryList extends ListActivity {
 		super.onResume();
 
 		if (debug) Log.d(TAG,"onResume()");
-		if (dbHelper == null) {
-		    dbHelper = new DBHelper(this);
-		}
 
 		if (!isSignedIn()) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
@@ -286,8 +283,6 @@ public class CategoryList extends ListActivity {
 			try { backupThread.join(maxWaitToDie); } 
 			catch(InterruptedException e){} //  ignore 
 		}
-		dbHelper.close();
-		dbHelper = null;
     }
 
     @Override
@@ -358,7 +353,7 @@ public class CategoryList extends ListActivity {
      * @return	True if signed in
      */
     public static boolean isSignedIn() {
-    	if (masterKey != null) {
+    	if ((salt != null) && (masterKey != null)) {
     		return true;
     	}
     	return false;
@@ -379,47 +374,13 @@ public class CategoryList extends ListActivity {
      */
     private void fillData() {
     	if (debug) Log.d(TAG,"fillData()");
-		// initialize crypto so that we can display readable descriptions in
-		// the list view
-		ch = new CryptoHelper();
-		if(masterKey == null) {
-		    masterKey = "";
-		}
-		try {
-			ch.init(CryptoHelper.EncryptionMedium,salt);
-			ch.setPassword(masterKey);
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-			return;
-		}
-	
-		List<String> items = new ArrayList<String>();
-		if (dbHelper==null) {
-			return;
-		}
-		rows = dbHelper.fetchAllCategoryRows();
-
-		for (CategoryEntry row : rows) {
-		    String cryptDesc = row.name;
-		    row.plainName = "";
-		    try {
-				row.plainName = ch.decrypt(cryptDesc);
-		    } catch (CryptoHelperException e) {
-				Log.e(TAG,e.toString());
-		    }
-		}
-		Collections.sort(rows, new Comparator<CategoryEntry>() {
-		    public int compare(CategoryEntry o1, CategoryEntry o2) {
-		        return o1.plainName.compareToIgnoreCase(o2.plainName);
-		    }});
-		for (CategoryEntry row : rows) {
-			items.add(row.plainName);
-		}
-
+		List<String> categoryNames=Passwords.getCategoryNames();
+		
+		rows=Passwords.getCategoryEntries();
+		
 		ArrayAdapter<String> entries = 
-		    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
+		    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+		    		categoryNames);
 		setListAdapter(entries);
 		
     }
@@ -507,12 +468,12 @@ public class CategoryList extends ListActivity {
     }
 
     private void delCategory(long Id) {
-    	if (dbHelper.countPasswords(Id)>0) {
+    	if (Passwords.countPasswords(Id)>0) {
             Toast.makeText(CategoryList.this, R.string.category_not_empty,
                     Toast.LENGTH_SHORT).show();
     		return;
     	}
-		dbHelper.deleteCategory(Id);
+    	Passwords.deleteCategoryEntry(Id);
 		fillData();
     }
 
@@ -535,10 +496,12 @@ public class CategoryList extends ListActivity {
 			launchPassList(rows.get(info.position).id);
 			break;
 		case EDIT_CATEGORY_INDEX:
-			Intent i = new Intent(this, CategoryEdit.class);
 			if (position > -1) {
+				Intent i = new Intent(this, CategoryEdit.class);
 				i.putExtra(KEY_ID, rows.get(position).id);
 				startActivityForResult(i,REQUEST_EDIT_CATEGORY);
+				
+				lastPosition=position;
 			}
 		    break;
 		case ADD_CATEGORY_INDEX:
@@ -548,6 +511,9 @@ public class CategoryList extends ListActivity {
 		    try {
 				if (position > -1) {
 					delCategory(rows.get(position).id);
+					if (position>2) {
+						setSelection(position-1);
+					}
 				}
 		    } catch (IndexOutOfBoundsException e) {
 				// This should only happen when there are no
@@ -658,12 +624,11 @@ public class CategoryList extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent i) {
     	super.onActivityResult(requestCode, resultCode, i);
 
-    	if (dbHelper == null) {
-		    dbHelper = new DBHelper(this);
-		}
-
     	if (resultCode == RESULT_OK) {
     		fillData();
+    		if (requestCode==REQUEST_EDIT_CATEGORY) {
+    			setSelection(lastPosition);
+    		}
     	}
     }
 
@@ -676,28 +641,13 @@ public class CategoryList extends ListActivity {
     	if (debug) Log.d(TAG,"addCategory("+name+")");
     	if ((name==null) || (name=="")) return -1;
 		CategoryEntry entry =  new CategoryEntry();
+		entry.plainName=name;
 
-		sendBroadcast (restartTimerIntent);
-		String namePlain = name;
-
-		try {
-			ch = new CryptoHelper();
-			if(masterKey == null) {
-			    masterKey = "";
-			}
-			ch.init(CryptoHelper.EncryptionMedium,salt);
-			ch.setPassword(masterKey);
-
-		    entry.name = ch.encrypt(namePlain);
-		} catch(CryptoHelperException e) {
-		    Log.e(TAG,e.toString());
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e.getMessage(), Toast.LENGTH_SHORT).show();
-		}
-	    return dbHelper.addCategory(entry);
+	    return Passwords.putCategoryEntry(entry);
     }
     
 	public boolean exportDatabase(){
+		sendBroadcast (restartTimerIntent);
 		String filename=EXPORT_FILENAME;
 		try {
 			CSVWriter writer = new CSVWriter(new FileWriter(filename), ',');
@@ -711,65 +661,12 @@ public class CategoryList extends ListActivity {
 			};
 			writer.writeNext(header);
 			
-			ch = new CryptoHelper();
-			if(masterKey == null) {
-			    masterKey = "";
-			}
-			try {
-				ch.init(CryptoHelper.EncryptionMedium,salt);
-				ch.setPassword(masterKey);
-			} catch (CryptoHelperException e1) {
-				e1.printStackTrace();
-				Toast.makeText(this,getString(R.string.crypto_error)
-					+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		
-			HashMap<Long, String> categories = new HashMap<Long, String>();
+			HashMap<Long, String> categories = Passwords.getCategoryIdToName();
 			
-			List<CategoryEntry> crows;
-			crows = dbHelper.fetchAllCategoryRows();
-		
-			for (CategoryEntry row : crows) {
-			    String cryptDesc = row.name;
-			    row.plainName = "";
-			    try {
-					row.plainName = ch.decrypt(cryptDesc);
-					categories.put(row.id, row.plainName);
-			    } catch (CryptoHelperException e) {
-					Log.e(TAG,e.toString());
-		            Toast.makeText(CategoryList.this, R.string.cannot_decrypt_category,
-		                    Toast.LENGTH_SHORT).show();
-		            return false;
-			    }
-			}
-		
 			List<PassEntry> rows;
-			rows = dbHelper.fetchAllRows(new Long(0));
+			rows = Passwords.getPassEntries(new Long(0), true, false);
 		
 			for (PassEntry row : rows) {
-			    String cryptDesc = row.description;
-			    String cryptWebsite = row.website;
-			    String cryptUsername = row.username;
-			    String cryptPassword = row.password;
-			    String cryptNote = row.note;
-			    row.plainDescription = "";
-			    row.plainWebsite = "";
-			    row.plainUsername = "";
-			    row.plainPassword = "";
-			    row.plainNote = "";
-			    try {
-					row.plainDescription = ch.decrypt(cryptDesc);
-					row.plainWebsite     = ch.decrypt(cryptWebsite);
-					row.plainUsername    = ch.decrypt(cryptUsername);
-					row.plainPassword    = ch.decrypt(cryptPassword);
-					row.plainNote        = ch.decrypt(cryptNote);
-			    } catch (CryptoHelperException e) {
-					Log.e(TAG,e.toString());
-		            Toast.makeText(CategoryList.this, R.string.cannot_decrypt_password,
-		                    Toast.LENGTH_SHORT).show();
-		            return false;
-			    }
 			    String[] rowEntries = { categories.get(row.category),
 			    		row.plainDescription,
 			    		row.plainWebsite,
@@ -793,7 +690,7 @@ public class CategoryList extends ListActivity {
 	}
 
 	private void deleteDatabaseNow(){
-		dbHelper.deleteDatabase();
+		Passwords.deleteAll();
 	}
 
 	public void deleteDatabase4Import(final String filename){
@@ -860,6 +757,7 @@ public class CategoryList extends ListActivity {
 	 */
 	private void importDatabaseThreadStart(final String filename){
 		showDialog(IMPORT_PROGRESS_KEY);
+
 		importThread = new Thread(new Runnable() {
 			public void run() {
 				importDatabaseFromCSV(filename);
@@ -880,6 +778,7 @@ public class CategoryList extends ListActivity {
 	 * into the database.
 	 */
 	private void importDatabaseFromCSV(String filename){
+		sendBroadcast (restartTimerIntent);
 		try {
 			importMessage="";
 			importedEntries=0;
@@ -908,7 +807,7 @@ public class CategoryList extends ListActivity {
 		    }
 //		    Log.i(TAG,"first line is valid");
 		    
-		    HashMap<String, Long> categoryToId=getCategoryToId(dbHelper);
+		    HashMap<String, Long> categoryToId=Passwords.getCategoryNameToId();
 		    //
 		    // take a pass through the CSV and collect any new Categories
 		    //
@@ -953,7 +852,8 @@ public class CategoryList extends ListActivity {
 		    }
 		    reader.close();
 
-		    categoryToId=getCategoryToId(dbHelper);	// re-read the categories to get id's of new categories
+		    // re-read the categories to get id's of new categories
+		    categoryToId=Passwords.getCategoryNameToId();
 		    //
 		    // read the whole file again to import the actual fields
 		    //
@@ -1012,21 +912,16 @@ public class CategoryList extends ListActivity {
 			    	}
 		        	continue;
 		        }
-		        
+
 		        PassEntry entry=new PassEntry();
-				try {
-					entry.category = categoryToId.get(nextLine[0]);
-				    entry.description = ch.encrypt(description);
-				    entry.website = ch.encrypt(nextLine[2]);
-				    entry.username = ch.encrypt(nextLine[3]);
-				    entry.password = ch.encrypt(nextLine[4]);
-				    entry.note = ch.encrypt(nextLine[5]);
-				} catch(CryptoHelperException e) {
-				    Log.e(TAG,e.toString());
-				    continue;
-				}
+				entry.category = categoryToId.get(nextLine[0]);
+			    entry.plainDescription = description;
+			    entry.plainWebsite = nextLine[2];
+			    entry.plainUsername = nextLine[3];
+			    entry.plainPassword = nextLine[4];
+			    entry.plainNote = nextLine[5];
 				entry.id=0;
-			    dbHelper.addPassword(entry);
+			    Passwords.putPassEntry(entry);
 		        newEntries++;
 		    }
 			reader.close();
@@ -1048,40 +943,5 @@ public class CategoryList extends ListActivity {
 			e.printStackTrace();
 			importMessage=getString(R.string.import_file_error);
 		}
-	}
-
-	public static HashMap<String, Long> getCategoryToId(DBHelper dbHelper)
-	{
-		CryptoHelper ch = new CryptoHelper();
-		if(masterKey == null) {
-		    masterKey = "";
-		}
-		try {
-			ch.init(CryptoHelper.EncryptionMedium,salt);
-			ch.setPassword(masterKey);
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			return null;
-		}
-	
-		HashMap<String,Long> categories = new HashMap<String,Long>();
-		List<CategoryEntry> rows;
-		if (dbHelper==null) {
-			if (debug) Log.d(TAG, "getCategoryToId: dbHelper is null");
-			return categories;
-		}
-		rows = dbHelper.fetchAllCategoryRows();
-
-		for (CategoryEntry row : rows) {
-		    String cryptDesc = row.name;
-		    row.plainName = "";
-		    try {
-				row.plainName = ch.decrypt(cryptDesc);
-				categories.put(row.plainName, row.id);
-		    } catch (CryptoHelperException e) {
-				Log.e(TAG,e.toString());
-		    }
-		}
-		return categories;
 	}
 }

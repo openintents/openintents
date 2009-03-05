@@ -143,6 +143,7 @@ public class AskPassword extends Activity {
 		boolean isLocal = thisIntent.getBooleanExtra (EXTRA_IS_LOCAL, false);
 
 		pbeKey = (EditText) findViewById(R.id.password);
+		pbeKey.requestFocus();
 		introText = (TextView) findViewById(R.id.first_time);
 		remoteAsk = (TextView) findViewById(R.id.remote);
 		confirmPass = (EditText) findViewById(R.id.pass_confirm);
@@ -295,6 +296,12 @@ public class AskPassword extends Activity {
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);
 		}
+		if (viewMode==VIEW_NORMAL) {
+			// clear pbeKey in case user had typed it, strayed
+			// to something else, then another person opened
+			// the app.   Wouldn't want the password already typed
+			pbeKey.setText("");
+		}
 
 	}
 
@@ -381,7 +388,6 @@ public class AskPassword extends Activity {
 			masterKey=decryptedMasterKey;
 			return true;
 		}
-		masterKey=null;
 		return false;
 	}
 	

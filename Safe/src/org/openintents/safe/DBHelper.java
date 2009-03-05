@@ -102,8 +102,8 @@ public class DBHelper {
 			+ "expires integer not null, "
 			+ "dateadded text not null);";
 
-    private static final String CIPHER_ACCESS_DROP =
-    	"drop table " + TABLE_CIPHER_ACCESS + ";";
+//    private static final String CIPHER_ACCESS_DROP =
+//    	"drop table " + TABLE_CIPHER_ACCESS + ";";
 
     private SQLiteDatabase db;
     private static boolean needsPrePopulation=false;

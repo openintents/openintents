@@ -63,31 +63,19 @@ public class PassView extends Activity {
 	private TextView packageAccessText;
 	private Long RowId;
 	private Long CategoryId;
-	private DBHelper dbHelper = null;
-	private CryptoHelper ch;
 	public static boolean entryEdited=false;
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		if (debug) Log.d(TAG,"onCreate()");
+		if (!CategoryList.isSignedIn()) {
+			finish();
+    	}
+
 		String title = getResources().getString(R.string.app_name) + " - "
 				+ getResources().getString(R.string.view_entry);
 		setTitle(title);
-
-		ch = new CryptoHelper();
-		try {
-			ch.init(CryptoHelper.EncryptionMedium, PassList.getSalt());
-			ch.setPassword(PassList.getMasterKey());
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-		}
-
-		if (dbHelper == null) {
-			dbHelper = new DBHelper(this);
-		}
 
 		setContentView(R.layout.pass_view);
 
@@ -162,8 +150,6 @@ public class PassView extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		dbHelper.close();
-		dbHelper = null;
 	}
 
 	@Override
@@ -172,13 +158,9 @@ public class PassView extends Activity {
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (dbHelper == null) {
-			dbHelper = new DBHelper(this);
-		}
 		if (CategoryList.isSignedIn() == false) {
 			finish();
 		}
-//		populateFields();
 	}
 
 	@Override
@@ -236,7 +218,7 @@ public class PassView extends Activity {
 	 * @param Id
 	 */
 	private void delPassword(long Id) {
-		dbHelper.deletePassword(Id);
+		Passwords.deletePassEntry(Id);
 		setResult(RESULT_OK);
 		finish();
 	}
@@ -285,60 +267,42 @@ public class PassView extends Activity {
 	private void populateFields() {
 		if (debug) Log.d(TAG,"populateFields()");
 		if (RowId != null) {
-			if (dbHelper == null) {
-				dbHelper = new DBHelper(this);
+			PassEntry row = Passwords.getPassEntry(RowId, true, false);
+    		ArrayList<String> packageAccess = Passwords.getPackageAccess(RowId);
+			descriptionText.setText(row.plainDescription);
+			websiteText.setText(row.plainWebsite);
+			usernameText.setText(row.plainUsername);
+			passwordText.setText(row.plainPassword);
+			noteText.setText(row.plainNote);
+			String lastEdited;
+			if (row.lastEdited!=null) {
+				lastEdited=row.lastEdited;
+			} else {
+				lastEdited=getString(R.string.last_edited_unknown);
 			}
-			PassEntry row = dbHelper.fetchPassword(RowId);
-			if (row.id > -1) {
-				String cryptDesc = row.description;
-				String cryptWebsite = row.website;
-				String cryptUsername = row.username;
-				String cryptPass = row.password;
-				String cryptNote = row.note;
-				String cryptUniqueName = row.uniqueName;
-	    		ArrayList<String> packageAccess = dbHelper.fetchPackageAccess(row.id);
-				try {
-					descriptionText.setText(ch.decrypt(cryptDesc));
-					websiteText.setText(ch.decrypt(cryptWebsite));
-					usernameText.setText(ch.decrypt(cryptUsername));
-					passwordText.setText(ch.decrypt(cryptPass));
-					noteText.setText(ch.decrypt(cryptNote));
-					String lastEdited;
-					if (row.lastEdited!=null) {
-						lastEdited=row.lastEdited;
-					} else {
-						lastEdited=getString(R.string.last_edited_unknown);
+			lastEditedText.setText(getString(R.string.last_edited)+": "+lastEdited);
+			if (row.plainUniqueName!=null) {
+				uniqueNameText.setText(getString(R.string.uniquename)+
+						": "+row.plainUniqueName);
+			}
+			String packages="";
+			if (packageAccess!=null) {
+				for (String packageName : packageAccess) {
+					if (debug) Log.d(TAG,"packageName="+packageName);
+					PackageManager pm=getPackageManager();
+					String appLabel="";
+					try {
+						ApplicationInfo ai=pm.getApplicationInfo(packageName,0);
+						appLabel=pm.getApplicationLabel(ai).toString();
+					} catch (NameNotFoundException e) {
+						appLabel="("+getString(R.string.not_found)+")";
 					}
-					lastEditedText.setText(getString(R.string.last_edited)+": "+lastEdited);
-					if (cryptUniqueName!=null) {
-						String plainUniqueName=ch.decrypt(cryptUniqueName);
-						if (plainUniqueName!="") {
-							uniqueNameText.setText(getString(R.string.uniquename)+
-									": "+plainUniqueName);
-						}
-					}
-					String packages="";
-					if (packageAccess!=null) {
-						for (String packageName : packageAccess) {
-							String plainPackageName=ch.decrypt(packageName);
-							PackageManager pm=getPackageManager();
-							String appLabel="";
-							try {
-								ApplicationInfo ai=pm.getApplicationInfo(plainPackageName,0);
-								appLabel=pm.getApplicationLabel(ai).toString();
-							} catch (NameNotFoundException e) {
-								appLabel="("+getString(R.string.not_found)+")";
-							}
-							packages+=plainPackageName+" "+appLabel+" ";
-						}
-					}
-					if (packages!="") {
-						packageAccessText.setText(getString(R.string.package_access)+
-								": "+packages);
-					}
-				} catch (CryptoHelperException e) {
-					Log.e(TAG, e.toString());
+					packages+=packageName+" "+appLabel+" ";
 				}
+			}
+			if (packages!="") {
+				packageAccessText.setText(getString(R.string.package_access)+
+						": "+packages);
 			}
 		}
 	}

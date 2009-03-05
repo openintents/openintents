@@ -292,6 +292,9 @@ public class CryptoHelper {
 		    throw new CryptoHelperException(msg);
 		}
 		byte[] ciphertext = {};
+		if (plaintext==null) {
+			return "";
+		}
 	
 		try {
 		    pbeCipher.init(Cipher.ENCRYPT_MODE, pbeKey, pbeParamSpec);
@@ -329,7 +332,7 @@ public class CryptoHelper {
 		    throw new CryptoHelperException(msg);
 		}
 	
-		if ((ciphertext==null) || (ciphertext=="")) {
+		if ((ciphertext==null) || (ciphertext.length()==0)) {
 			return "";
 		}
 		byte[] byteCiphertext=hexStringToBytes(ciphertext);

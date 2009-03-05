@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import android.content.Context;
 import android.util.Log;
@@ -66,21 +66,18 @@ public class Backup {
 
             serializer.attribute(null, "date", dateOut);
             
-			DBHelper dbHelper=new DBHelper(myCtx);
-			
-			String masterKeyEncrypted = dbHelper.fetchMasterKey();
+			String masterKeyEncrypted = Passwords.fetchMasterKeyEncrypted();
 			serializer.startTag(null, "MasterKey");
 			serializer.text(masterKeyEncrypted);
 			serializer.endTag(null, "MasterKey");
 
-			String salt = dbHelper.fetchSalt();
+			String salt = Passwords.fetchSalt();
 			serializer.startTag(null, "Salt");
 			serializer.text(salt);
 			serializer.endTag(null, "Salt");
 
 			List<CategoryEntry> crows;
-			crows = dbHelper.fetchAllCategoryRows();
-			HashMap<Long, ArrayList<String>> packageAccess=dbHelper.fetchPackageAccessAll();
+			crows = Passwords.getCategoryEntries();
 			
 			int totalPasswords=0;
 
@@ -90,7 +87,7 @@ public class Backup {
 				serializer.attribute(null, "name", crow.name);
 
 				List<PassEntry> rows;
-				rows = dbHelper.fetchAllRows(crow.id);
+				rows = Passwords.getPassEntries(crow.id, false, false);
 	
 				for (PassEntry row : rows) {
 					totalPasswords++;
@@ -127,9 +124,19 @@ public class Backup {
 						serializer.endTag(null, "UniqueName");
 					}
 					
-					if(packageAccess.containsKey(row.id)) {
+					ArrayList<PackageAccessEntry> packageAccess=Passwords.getPackageAccessEntries(row.id);
+					if(packageAccess!=null) {
 						serializer.startTag(null, "PackageAccess");
-						serializer.text(packageAccess.get(row.id).toString());
+						String entry="";
+						Iterator<PackageAccessEntry> packIter=packageAccess.iterator();
+						while (packIter.hasNext()) {
+							if (entry.length()!=0) {
+								entry += ",";
+							}
+							entry += packIter.next().packageAccess;
+						}
+						entry = "[" + entry + "]";
+						serializer.text(entry);
 						serializer.endTag(null, "PackageAccess");
 					}
 
@@ -140,8 +147,6 @@ public class Backup {
 
 			serializer.endTag(null, "OISafe");
 			serializer.endDocument();
-
-			dbHelper.close();
 
 			result=myCtx.getString(R.string.backup_complete)+" "+
 				Integer.toString(totalPasswords);

@@ -37,27 +37,10 @@ public class CategoryEdit extends Activity {
 
     private EditText nameText;
     private Long RowId;
-    private DBHelper dbHelper=null;
-    private CryptoHelper ch;
-
 
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		if (debug) Log.d(TAG, "onCreate");
-		
-		ch = new CryptoHelper();
-		try {
-			ch.init(CryptoHelper.EncryptionMedium,PassList.getSalt());
-			ch.setPassword(PassList.getMasterKey());
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-		}
-
-		if (dbHelper == null){
-			dbHelper = new DBHelper(this);
-		}
 		
 		String title = getResources().getString(R.string.app_name) + " - " +
 		getResources().getString(R.string.edit_entry);
@@ -108,17 +91,12 @@ public class CategoryEdit extends Activity {
     protected void onPause() {
 		super.onPause();
 		if (debug) Log.d(TAG, "onPause");
-		dbHelper.close();
-		dbHelper = null;
     }
 
     @Override
     protected void onResume() {
 		super.onResume();
 		if (debug) Log.d(TAG, "onResume");
-		if (dbHelper == null) {
-		    dbHelper = new DBHelper(this);
-		}
 		if (!CategoryList.isSignedIn()) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
@@ -133,22 +111,15 @@ public class CategoryEdit extends Activity {
 	
 		String namePlain = nameText.getText().toString();
 		if (debug) Log.d(TAG, "name: " + namePlain);
+		entry.plainName=namePlain;
 		
-		try {
-		    entry.name = ch.encrypt(namePlain);
-		} catch(CryptoHelperException e) {
-		    Log.e(TAG,e.toString());
-		}
-	
-	
 		if(RowId == null || RowId == -1) {
-			if (debug) Log.d(TAG, "addCategory");
-		    dbHelper.addCategory(entry);
+			entry.id=-1;
 		} else {
-			if (debug) Log.d(TAG, "updateCategory");
-			if (debug) Log.d(TAG, "RowId: " + String.valueOf(RowId));
-		    dbHelper.updateCategory(RowId, entry);
+			entry.id=RowId;
 		}
+		if (debug) Log.d(TAG, "addCategory");
+	    RowId=Passwords.putCategoryEntry(entry);
     }
 
     /**
@@ -157,15 +128,8 @@ public class CategoryEdit extends Activity {
     private void populateFields() {
     	if (debug) Log.d(TAG, "populateFields");
 		if (RowId != null) {
-		    CategoryEntry row = dbHelper.fetchCategory(RowId);
-		    if (row.id > -1) {
-				String cryptName = row.name;
-				try {
-				    nameText.setText(ch.decrypt(cryptName));
-				} catch (CryptoHelperException e) {
-				    Log.e(TAG,e.toString());
-				}
-		    }            
+		    CategoryEntry catEntry = Passwords.getCategoryEntry(RowId);
+		    nameText.setText(catEntry.plainName);
 		}
     }
 }

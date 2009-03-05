@@ -17,10 +17,14 @@
 package org.openintents.safe;
 
 
+import org.openintents.intents.CryptoIntents;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -53,40 +57,49 @@ public class PassEdit extends Activity {
 	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 3;
 
 	public static final int RESULT_DELETED = RESULT_FIRST_USER;
-	
+
+    private Intent restartTimerIntent;
+
 	private EditText descriptionText;
 	private EditText passwordText;
 	private EditText usernameText;
 	private EditText websiteText;
 	private EditText noteText;
 	private Long RowId;
-	private DBHelper dbHelper = null;
-	private CryptoHelper ch;
 	private boolean pass_gen_ret = false;
 	private boolean discardEntry = false;
 	public static boolean entryEdited = false;
+	boolean populated = false;
+	Intent frontdoor;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 frontdoor.setAction(Intent.ACTION_MAIN);
+            	 startActivity(frontdoor);
+            }
+        }
+    };
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		if (debug) Log.d(TAG,"onCreate()");
+		
+		frontdoor = new Intent(this, FrontDoor.class);
+		if (!CategoryList.isSignedIn()) {
+			startActivity(frontdoor);
+			// normally we'd do a finish() here, but
+			// by starting frontdoor from here the user could
+			// potentially find this activity and continue editing
+    	}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
 		String title = getResources().getString(R.string.app_name) + " - "
 				+ getResources().getString(R.string.edit_entry);
 		setTitle(title);
 
-		ch = new CryptoHelper();
-		try {
-			ch.init(CryptoHelper.EncryptionMedium,PassList.getSalt());
-			ch.setPassword(PassList.getMasterKey());
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-		}
-
-		if (dbHelper == null) {
-			dbHelper = new DBHelper(this);
-		}
 
 		setContentView(R.layout.pass_edit);
 
@@ -134,7 +147,9 @@ public class PassEdit extends Activity {
 				}
 			}
 		});
+		restoreMe();
 
+		sendBroadcast (restartTimerIntent);
 	}
 
 	@Override
@@ -153,8 +168,6 @@ public class PassEdit extends Activity {
 		if (isFinishing() && discardEntry==false) {
 			savePassword();
 		}
-		dbHelper.close();
-		dbHelper = null;
 	}
 
 	@Override
@@ -163,9 +176,6 @@ public class PassEdit extends Activity {
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (dbHelper == null) {
-			dbHelper = new DBHelper(this);
-		}
 		if (CategoryList.isSignedIn() == false) {
 			saveState();
 			finish();
@@ -176,33 +186,24 @@ public class PassEdit extends Activity {
 	private void saveState() {
 		PassEntry entry = new PassEntry();
 
-		String passwordPlain = passwordText.getText().toString();
-		String notePlain = noteText.getText().toString();
-		String usernamePlain = usernameText.getText().toString();
-		String websitePlain = websiteText.getText().toString();
-		String descPlain = descriptionText.getText().toString();
-
-		try {
-			entry.category = PassList.getCategoryId();
-			entry.description = ch.encrypt(descPlain);
-			entry.username = ch.encrypt(usernamePlain);
-			entry.password = ch.encrypt(passwordPlain);
-			entry.note = ch.encrypt(notePlain);
-			entry.website = ch.encrypt(websitePlain);
-		} catch (CryptoHelperException e) {
-			Log.e(TAG, e.toString());
-		}
+		entry.category = PassList.getCategoryId();
+		entry.plainDescription = descriptionText.getText().toString();
+		entry.plainWebsite = websiteText.getText().toString();
+		entry.plainUsername = usernameText.getText().toString();
+		entry.plainPassword = passwordText.getText().toString();
+		entry.plainNote = noteText.getText().toString();
 
 		entryEdited = true;
 
 		if (RowId == null || RowId == -1) {
 			entry.id = 0;	// brand new entry
-			RowId = dbHelper.addPassword(entry);
+			RowId = Passwords.putPassEntry(entry);
 		} else {
-			PassEntry storedEntry = dbHelper.fetchPassword (RowId);
+			entry.id=RowId;
+			PassEntry storedEntry = Passwords.getPassEntry(RowId, true, false);
 			//update fields that aren't set in the UI:
 			entry.uniqueName = storedEntry.uniqueName;
-			dbHelper.updatePassword(RowId, entry);
+			Passwords.putPassEntry(entry);
 		}
 	}
 
@@ -275,7 +276,7 @@ public class PassEdit extends Activity {
 	 * @param Id
 	 */
 	private void delPassword(long Id) {
-		dbHelper.deletePassword(Id);
+		Passwords.deletePassEntry(Id);
 		discardEntry=true;
 		setResult(RESULT_DELETED);
 		finish();
@@ -330,24 +331,40 @@ public class PassEdit extends Activity {
 			pass_gen_ret = false;
 			return;
 		}
-		if (RowId != null) {
-			PassEntry row = dbHelper.fetchPassword(RowId);
-			if (row.id > -1) {
-				String cryptDesc = row.description;
-				String cryptWebsite = row.website;
-				String cryptUsername = row.username;
-				String cryptPass = row.password;
-				String cryptNote = row.note;
-				try {
-					descriptionText.setText(ch.decrypt(cryptDesc));
-					websiteText.setText(ch.decrypt(cryptWebsite));
-					usernameText.setText(ch.decrypt(cryptUsername));
-					passwordText.setText(ch.decrypt(cryptPass));
-					noteText.setText(ch.decrypt(cryptNote));
-				} catch (CryptoHelperException e) {
-					Log.e(TAG, e.toString());
-				}
-			}
+		if (debug) Log.d(TAG,"populateFields: populated="+populated);
+		if (populated) {
+			return;
 		}
+		if ((RowId != null) && (RowId != -1)) {
+			PassEntry passEntry = Passwords.getPassEntry(RowId, true, false);
+			descriptionText.setText(passEntry.plainDescription);
+			websiteText.setText(passEntry.plainWebsite);
+			usernameText.setText(passEntry.plainUsername);
+			passwordText.setText(passEntry.plainPassword);
+			noteText.setText(passEntry.plainNote);
+		}
+		populated=true;
 	}
+	
+	@Override  
+	public Object onRetainNonConfigurationInstance() {  
+		String nonConfig;
+		if (populated==true) {
+			nonConfig="true";
+		}else {
+			nonConfig="false";
+		}
+		return(nonConfig);  
+	}  
+	
+	private void restoreMe() {  
+		String nonConfig;
+	
+		if (getLastNonConfigurationInstance()!=null) {  
+			nonConfig=(String) getLastNonConfigurationInstance();
+			if (nonConfig.compareTo("true")==0) {
+				populated=true;
+			}
+		}  
+	}  
 }

@@ -1,6 +1,6 @@
 /* $Id$
  * 
- * Copyright 2008 Randy McEoin
+ * Copyright (C) 2009 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,9 @@
  */
 package org.openintents.safe;
 
-/**
- * @author Randy McEoin
- */
-public class CategoryEntry extends Object {
-    public long id=-1;
-    public String name;
-    public boolean nameNeedsDecrypt;
-    public String plainName;
-    public boolean plainNameNeedsEncrypt=true;
+public class PackageAccessEntry extends Object {
+    public boolean needsDecrypt;
+    public boolean needsEncrypt=true;
+    public String packageAccess;
+    public String plainPackageAccess;
 }

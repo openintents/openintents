@@ -18,9 +18,8 @@ package org.openintents.safe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -29,9 +28,12 @@ import org.openintents.intents.CryptoIntents;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -55,7 +57,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug= false;
+	private static final boolean debug = false;
     private static final String TAG = "PassList";
 
     // Menu Item order
@@ -69,20 +71,47 @@ public class PassList extends ListActivity {
     public static final int REQUEST_EDIT_PASSWORD = 2;
     public static final int REQUEST_ADD_PASSWORD = 3;
     public static final int REQUEST_MOVE_PASSWORD = 4;
+
+    protected static final int MSG_UPDATE_LIST = 0x101; 
+
+    private static final int DECRYPT_PROGRESS_KEY = 0;
     
     public static final String KEY_ID = "id";  // Intent keys
     public static final String KEY_CATEGORY_ID = "categoryId";  // Intent keys
 
-    private CryptoHelper ch;
-    private DBHelper dbHelper=null;
     private static Long CategoryId=null;
     private Intent restartTimerIntent;
 
     private static String salt;
-    private static String masterKey;			
+    private static String masterKey;
+    
+	private Thread fillerThread=null;
 
     private List<PassEntry> rows;
-    
+    private int lastPosition=0;
+	List<String> passDescriptions=new ArrayList<String>();
+
+	public Handler myViewUpdateHandler = new Handler(){
+		// @Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+				case PassList.MSG_UPDATE_LIST:
+					ArrayAdapter<String> entries = 
+					    new ArrayAdapter<String>(PassList.this, android.R.layout.simple_list_item_1,
+					    		passDescriptions);
+					setListAdapter(entries);
+
+					if (debug) Log.d(TAG,"lastPosition="+lastPosition);
+					if (lastPosition>2) {
+						setSelection(lastPosition-1);
+						lastPosition=0;
+					}
+					break;
+			}
+			super.handleMessage(msg);
+		}
+	}; 
+
     /** 
      * Called when the activity is first created. 
      */
@@ -91,12 +120,13 @@ public class PassList extends ListActivity {
 		super.onCreate(icicle);
 		
 		if (debug) Log.d(TAG,"onCreate()");
+		if (!CategoryList.isSignedIn()) {
+			finish();
+    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
 		setContentView(R.layout.pass_list);
 		
-		if (dbHelper==null) {
-			dbHelper = new DBHelper(this);
-		}
 		CategoryId = icicle != null ? icicle.getLong(CategoryList.KEY_ID) : null;
 		if (CategoryId == null) {
 		    Bundle extras = getIntent().getExtras();            
@@ -106,7 +136,7 @@ public class PassList extends ListActivity {
 			finish();	// no valid category less than one
 		}
 		
-		String categoryName=getCategoryName(CategoryId);
+		String categoryName=Passwords.getCategoryEntry(CategoryId).plainName;
 		String title = getResources().getString(R.string.app_name) + " - " +
 			getResources().getString(R.string.passwords) + " -" +
 			categoryName;
@@ -118,6 +148,8 @@ public class PassList extends ListActivity {
 		list.setFocusable(true);
 		list.setOnCreateContextMenuListener(this);
 		registerForContextMenu(list);
+		
+		sendBroadcast (restartTimerIntent);
     }
     
 	@Override
@@ -137,9 +169,11 @@ public class PassList extends ListActivity {
 		super.onPause();
 		
 		if (debug) Log.d(TAG,"onPause()");
-		if (dbHelper != null) {
-			dbHelper.close();
-			dbHelper = null;
+		if ((fillerThread != null) && (fillerThread.isAlive())) {
+			if (debug) Log.d(TAG,"wait for thread");
+			int maxWaitToDie=500000;
+			try { fillerThread.join(maxWaitToDie); } 
+			catch(InterruptedException e){} //  ignore 
 		}
     }
 
@@ -152,9 +186,6 @@ public class PassList extends ListActivity {
 		if (CategoryList.isSignedIn()==false) {
 			finish();
 		}
-		if (dbHelper == null) {
-		    dbHelper = new DBHelper(this);
-		}
     }
     
     @Override
@@ -162,10 +193,6 @@ public class PassList extends ListActivity {
 		super.onStop();
 		
 		if (debug) Log.d(TAG,"onStop()");
-		if (dbHelper != null) {
-			dbHelper.close();
-			dbHelper=null;
-		}
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view,
@@ -194,54 +221,53 @@ public class PassList extends ListActivity {
 		return true;
     }
 
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        switch (id) {
+	        case DECRYPT_PROGRESS_KEY: {
+	            ProgressDialog dialog = new ProgressDialog(this);
+	            dialog.setMessage(getString(R.string.decrypt_progress));
+	            dialog.setIndeterminate(false);
+	            dialog.setCancelable(true);
+	            return dialog;
+	        }
+        }
+        return null;
+    }
+
     /**
      * Populates the password ListView
      */
-    private void fillData() {
-		// initialize crypto so that we can display readable descriptions in
-		// the list view
-		ch = new CryptoHelper();
-		if(masterKey == null) {
-		    masterKey = "";
-		}
-		try {
-			ch.init(CryptoHelper.EncryptionMedium, salt);
-			ch.setPassword(masterKey);
-		} catch (CryptoHelperException e1) {
-			e1.printStackTrace();
-			Toast.makeText(this,getString(R.string.crypto_error)
-					+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-			return;
-		}
-	
-		List<String> items = new ArrayList<String>();
-		rows = dbHelper.fetchAllRows(CategoryId);
+	private void fillData() {
+		showDialog(DECRYPT_PROGRESS_KEY);
 
-		for (PassEntry row : rows) {
-		    String cryptDesc = row.description;
-		    row.plainDescription = "";
-		    try {
-				row.plainDescription = ch.decrypt(cryptDesc);
-		    } catch (CryptoHelperException e) {
-				Log.e(TAG,e.toString());
-		    }
-		}
-		Collections.sort(rows, new Comparator<PassEntry>() {
-		    public int compare(PassEntry o1, PassEntry o2) {
-		        return o1.plainDescription.compareToIgnoreCase(o2.plainDescription);
-		    }});
-		for (PassEntry row : rows) {
-			items.add(row.plainDescription);
-		}
+		fillerThread = new Thread(new Runnable() {
+			public void run(){
+				rows=Passwords.getPassEntries(CategoryId, true, true);
+				passDescriptions.clear();
+				Iterator<PassEntry> passIter=rows.iterator();
+				while (passIter.hasNext()) {
+					PassEntry passEntry=passIter.next();
+					passDescriptions.add(passEntry.plainDescription);
+				}
+//				dismissDialog(DECRYPT_PROGRESS_KEY);
+				// forced to removeDialog(), without it
+				// after an orientation change dismissDialog()
+				// would crash
+				removeDialog(DECRYPT_PROGRESS_KEY);
 
-		ArrayAdapter<String> entries = 
-		    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-		setListAdapter(entries);
-		
-    }
+				Message mu = new Message();
+				mu.what = PassList.MSG_UPDATE_LIST;
+				PassList.this.myViewUpdateHandler.sendMessage(mu); 
+			}
+		});
+		fillerThread.start();
+	}
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
+		sendBroadcast (restartTimerIntent);
+
     	if (menu == null) {
         	return super.onMenuOpened(featureId, menu);
     	}
@@ -328,6 +354,7 @@ public class PassList extends ListActivity {
 	 */
 	public void deletePassword2(int position){
 	    try {
+	    	lastPosition=position;
 	    	delPassword(rows.get(position).id);
 	    } catch (IndexOutOfBoundsException e) {
 			// This should only happen when there are no
@@ -337,7 +364,7 @@ public class PassList extends ListActivity {
 	}
 
     private void delPassword(long Id) {
-		dbHelper.deletePassword(Id);
+		Passwords.deletePassEntry(Id);
 		fillData();
     }
     
@@ -348,8 +375,8 @@ public class PassList extends ListActivity {
      * @param passwordId
      */
     private void movePassword(final long passwordId) {
-        final HashMap<String, Long> categoryToId=CategoryList.getCategoryToId(dbHelper);
-        String categoryName=getCategoryName(CategoryId);
+        final HashMap<String, Long> categoryToId=Passwords.getCategoryNameToId();
+        String categoryName=Passwords.getCategoryEntry(CategoryId).plainName;
         categoryToId.remove(categoryName);
         Set<String> categories=categoryToId.keySet();
         final String[] items=(String[])categories.toArray(new String[categories.size()]);
@@ -361,7 +388,7 @@ public class PassList extends ListActivity {
 			public void onClick(DialogInterface dialog, int which) {
 
 				long newCategoryId=categoryToId.get(items[which]);
-				dbHelper.updatePasswordCategory(passwordId, newCategoryId);
+				Passwords.updatePassCategory(passwordId, newCategoryId);
 				String result=getString(R.string.moved_to) + " " + items[which];
      			Toast.makeText(PassList.this, result,
          				Toast.LENGTH_LONG).show();
@@ -391,18 +418,21 @@ public class PassList extends ListActivity {
 			vi.putExtra(KEY_ID, rows.get(position).id);
 			vi.putExtra(KEY_CATEGORY_ID, CategoryId);
 			startActivityForResult(vi,REQUEST_VIEW_PASSWORD);
+			lastPosition=position;
 		    break;
 		case EDIT_PASSWORD_INDEX:
 			Intent i = new Intent(this, PassEdit.class);
 			i.putExtra(KEY_ID, rows.get(position).id);
 			i.putExtra(KEY_CATEGORY_ID, CategoryId);
 			startActivityForResult(i,REQUEST_EDIT_PASSWORD);
+			lastPosition=position;
 			break;
 		case DEL_PASSWORD_INDEX:
 			deletePassword(position);
 		    break;
 		case MOVE_PASSWORD_INDEX:
 			movePassword(rows.get(position).id);
+			lastPosition=position;
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -422,38 +452,11 @@ public class PassList extends ListActivity {
     	super.onActivityResult(requestCode, resultCode, i);
     	//Log.d(TAG, "onActivityResult. requestCode: " + requestCode + ", resultCode: " + resultCode);
 
-    	if (dbHelper == null) {
-		    dbHelper = new DBHelper(this);
-		}
     	if (((requestCode==REQUEST_VIEW_PASSWORD)&&(PassView.entryEdited)) ||
     	    	((requestCode==REQUEST_EDIT_PASSWORD)&&(PassEdit.entryEdited)) ||
     	    	((requestCode==REQUEST_ADD_PASSWORD)&&(PassEdit.entryEdited)) ||
     			(resultCode==RESULT_OK)) {
     		fillData();
     	}
-    }
-    
-    /**
-     * Retrieve the decrypted category name based on the provided id.
-     *  
-     * @param Id category id
-     * @return decrypted category name
-     */
-    private String getCategoryName(long Id) {
-		CategoryEntry category=dbHelper.fetchCategory(Id);
-		category.plainName="";
-		if (ch==null) {
-			ch=new CryptoHelper();
-		}
-		try {
-			ch.init(CryptoHelper.EncryptionMedium, salt);
-			ch.setPassword(masterKey);
-			category.plainName = ch.decrypt(category.name);
-	    } catch (CryptoHelperException e) {
-			Log.e(TAG,e.toString());
-			Toast.makeText(this,getString(R.string.crypto_error)
-				+ e.getMessage(), Toast.LENGTH_SHORT).show();
-	    }
-	    return category.plainName;
     }
 }

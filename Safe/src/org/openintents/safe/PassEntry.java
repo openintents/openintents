@@ -23,8 +23,11 @@ import java.util.ArrayList;
  * @author Steven Osborn - http://steven.bitsetters.com
  */
 public class PassEntry extends Object {
+    public long id=-1;
+    public boolean needsDecryptDescription;
+    public boolean needsDecrypt;
+    public boolean needsEncrypt=true;
     public String password;
-    public long id;
     public long category;
     public String categoryName;
     public String description;
@@ -38,6 +41,7 @@ public class PassEntry extends Object {
     public String plainUsername;
     public String plainWebsite;
     public String plainNote;
+    public String plainUniqueName;
     public String lastEdited;
     
     public static boolean checkPackageAccess (ArrayList<String> packageAccess, String packageName) {
