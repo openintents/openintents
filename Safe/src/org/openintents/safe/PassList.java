@@ -120,8 +120,9 @@ public class PassList extends ListActivity {
 		super.onCreate(icicle);
 		
 		if (debug) Log.d(TAG,"onCreate()");
-		if (!CategoryList.isSignedIn()) {
+		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
     	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
@@ -134,6 +135,7 @@ public class PassList extends ListActivity {
 		}
 		if (CategoryId<1) {
 			finish();	// no valid category less than one
+			return;
 		}
 		
 		String categoryName=Passwords.getCategoryEntry(CategoryId).plainName;
@@ -185,6 +187,7 @@ public class PassList extends ListActivity {
 
 		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
 		}
     }
     

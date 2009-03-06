@@ -69,8 +69,9 @@ public class PassView extends Activity {
 		super.onCreate(icicle);
 
 		if (debug) Log.d(TAG,"onCreate()");
-		if (!CategoryList.isSignedIn()) {
+		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
     	}
 
 		String title = getResources().getString(R.string.app_name) + " - "
@@ -158,8 +159,9 @@ public class PassView extends Activity {
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (CategoryList.isSignedIn() == false) {
+		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
 		}
 	}
 

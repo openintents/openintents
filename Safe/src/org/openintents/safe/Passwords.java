@@ -199,6 +199,9 @@ public class Passwords {
 	
 	public static CategoryEntry getCategoryEntry(Long id) {
 		CategoryEntry catEntry=categoryEntries.get(id);
+		if (catEntry==null) {
+			return null;
+		}
 		if (catEntry.nameNeedsDecrypt) {
 			if (debug) Log.d(TAG,"decrypt cat");
 		    try {

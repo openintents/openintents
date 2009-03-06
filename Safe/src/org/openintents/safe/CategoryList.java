@@ -194,10 +194,11 @@ public class CategoryList extends ListActivity {
 
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 		
-		if (!isSignedIn()) {
+		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
+			return;
     	}
 		
 		try {
@@ -238,10 +239,11 @@ public class CategoryList extends ListActivity {
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (!isSignedIn()) {
+		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
+			return;
     	}
 
         showFirstTimeWarningDialog();

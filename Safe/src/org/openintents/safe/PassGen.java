@@ -106,6 +106,11 @@ public class PassGen extends Activity {
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
+		if (CategoryList.isSignedIn()==false) {
+			finish();
+			return;
+		}
+
 		setContentView(R.layout.pass_gen);
 		
 		String title = getResources().getString(R.string.app_name) + " - Generate Password";
@@ -193,8 +198,9 @@ public class PassGen extends Activity {
     protected void onResume() {
 		super.onResume();
 
-		if (!CategoryList.isSignedIn()) {
+		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
 		}
     }
 

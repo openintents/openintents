@@ -70,10 +70,11 @@ public class Restore extends Activity {
 		    firstTime = extras != null ? extras.getBoolean(Restore.KEY_FIRST_TIME) : false;
 		}
 
-		if ((!firstTime) && (!CategoryList.isSignedIn())) {
+		if ((!firstTime) && (CategoryList.isSignedIn()==false)) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
+			return;
 		}
 
 		setContentView(R.layout.restore);
@@ -127,10 +128,11 @@ public class Restore extends Activity {
 		
 		if (debug) Log.d(TAG,"onResume()");
 		
-		if ((!firstTime) && (!CategoryList.isSignedIn())) {
+		if ((!firstTime) && (CategoryList.isSignedIn()==false)) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
+			return;
 		}
 	}
 

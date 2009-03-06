@@ -16,8 +16,23 @@ public class Preferences extends PreferenceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+		if (CategoryList.isSignedIn()==false) {
+			finish();
+			return;
+		}
+
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.preferences);
     }
+
+    @Override
+	protected void onResume() {
+		super.onResume();
+
+		if (CategoryList.isSignedIn()==false) {
+			finish();
+			return;
+		}
+	}
 
 }

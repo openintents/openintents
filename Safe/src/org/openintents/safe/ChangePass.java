@@ -76,6 +76,7 @@ public class ChangePass extends Activity {
 
 		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
 		}
 		
 		setContentView(R.layout.chg_pass);
@@ -108,6 +109,18 @@ public class ChangePass extends Activity {
 		}
     }
 
+    @Override
+    protected void onResume() {
+		super.onResume();
+
+		if (debug) Log.d(TAG,"onResume()");
+
+		if (CategoryList.isSignedIn()==false) {
+			finish();
+			return;
+    	}
+    }
+    
     @Override
     protected Dialog onCreateDialog(int id) {
         switch (id) {

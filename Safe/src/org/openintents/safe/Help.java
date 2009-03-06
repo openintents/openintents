@@ -42,6 +42,11 @@ public class Help extends Activity {
     public void onCreate(Bundle icicle) {
     	super.onCreate(icicle);
 
+		if (CategoryList.isSignedIn()==false) {
+			finish();
+			return;
+		}
+
 		//Setup layout
 		setContentView(R.layout.help);
 		String title = getResources().getString(R.string.app_name) + " - " +
@@ -80,14 +85,16 @@ public class Help extends Activity {
         }
 
     }
+
 	@Override
 	protected void onResume() {
 		super.onResume();
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (CategoryList.isSignedIn() == false) {
+		if (CategoryList.isSignedIn()==false) {
 			finish();
+			return;
 		}
 	}
 

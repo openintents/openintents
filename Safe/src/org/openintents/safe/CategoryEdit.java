@@ -101,6 +101,7 @@ public class CategoryEdit extends Activity {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			finish();
+			return;
 		}
 		populateFields();
     }
@@ -127,8 +128,11 @@ public class CategoryEdit extends Activity {
      */
     private void populateFields() {
     	if (debug) Log.d(TAG, "populateFields");
-		if (RowId != null) {
+		if ((RowId != null) && (RowId > 0)) {
 		    CategoryEntry catEntry = Passwords.getCategoryEntry(RowId);
+		    if (catEntry==null) {
+		    	return;
+		    }
 		    nameText.setText(catEntry.plainName);
 		}
     }

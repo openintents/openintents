@@ -88,7 +88,7 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"onCreate()");
 		
 		frontdoor = new Intent(this, FrontDoor.class);
-		if (!CategoryList.isSignedIn()) {
+		if (CategoryList.isSignedIn()==false) {
 			startActivity(frontdoor);
 			// normally we'd do a finish() here, but
 			// by starting frontdoor from here the user could
@@ -176,9 +176,10 @@ public class PassEdit extends Activity {
 
 		if (debug) Log.d(TAG,"onResume()");
 
-		if (CategoryList.isSignedIn() == false) {
+		if (CategoryList.isSignedIn()==false) {
 			saveState();
 			finish();
+			return;
 		}
 		populateFields();
 	}
