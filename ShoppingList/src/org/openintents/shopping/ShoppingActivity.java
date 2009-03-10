@@ -129,7 +129,7 @@ public class ShoppingActivity extends Activity { // implements
 	// rename
 	private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
 	// or modified
-	private static final int MENU_CHANGE_MODE = Menu.FIRST + 14; // pick from
+	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
 	// previously
 	// used items
 
@@ -663,6 +663,9 @@ public class ShoppingActivity extends Activity { // implements
 
 			mListItems.insertNewItem(newItem);
 			mEditText.setText("");
+		} else {
+			// Open list to select item from
+			pickItems();
 		}
 	}
 
@@ -692,11 +695,9 @@ public class ShoppingActivity extends Activity { // implements
 				R.drawable.ic_menu_add_list).setShortcut('0', 'n');
 		menu.add(0, MENU_CLEAN_UP_LIST, 0, R.string.clean_up_list).setIcon(
 				R.drawable.ic_menu_clean_up).setShortcut('1', 'c');
-		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
-				android.R.drawable.ic_menu_edit).setShortcut('2', 'r');
 		;
 
-		menu.add(0, MENU_CHANGE_MODE, 0, R.string.menu_pick_items).setIcon(
+		menu.add(0, MENU_PICK_ITEMS, 0, R.string.menu_pick_items).setIcon(
 				android.R.drawable.ic_menu_add).setShortcut('2', 'p');
 		;
 
@@ -711,18 +712,21 @@ public class ShoppingActivity extends Activity { // implements
 		menu.add(0, MENU_PREFERENCES, 0, R.string.preferences).setIcon(
 				android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
 
+		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
+				android.R.drawable.ic_menu_edit).setShortcut('5', 'r');
+		
 		menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list).setIcon(
-				android.R.drawable.ic_menu_delete).setShortcut('5', 'd');
+				android.R.drawable.ic_menu_delete).setShortcut('6', 'd');
 
 		menu.add(0, MENU_SEND, 0, R.string.send).setIcon(
-				android.R.drawable.ic_menu_send).setShortcut('6', 's');
+				android.R.drawable.ic_menu_send).setShortcut('7', 's');
 
 		if (addLocationAlertPossible()) {
 			menu
 					.add(0, MENU_ADD_LOCATION_ALERT, 0,
 							R.string.shopping_add_alert).setIcon(
 							android.R.drawable.ic_menu_mylocation).setShortcut(
-							'7', 'l');
+							'8', 'l');
 		}
 
 		UpdateMenu
@@ -779,13 +783,14 @@ public class ShoppingActivity extends Activity { // implements
 		long listId = getSelectedListId();
 
 		// set menu title for change mode
-		MenuItem menuItem = menu.findItem(MENU_CHANGE_MODE);
+		MenuItem menuItem = menu.findItem(MENU_PICK_ITEMS);
+		/*
 		if (mMode == MODE_ADD_ITEMS) {
 			menuItem.setTitle(R.string.menu_start_shopping);
 			menuItem.setIcon(android.R.drawable.ic_menu_myplaces);
 
-		} else {
-			menu.findItem(MENU_CHANGE_MODE).setTitle(R.string.menu_pick_items);
+		} else */{
+			menu.findItem(MENU_PICK_ITEMS).setTitle(R.string.menu_pick_items);
 			menuItem.setIcon(android.R.drawable.ic_menu_add);
 		}
 
@@ -848,16 +853,14 @@ public class ShoppingActivity extends Activity { // implements
 			deleteListConfirm();
 			return true;
 
-		case MENU_CHANGE_MODE:
+		case MENU_PICK_ITEMS:
 //			if (mMode == MODE_IN_SHOP) {
 //				mMode = MODE_ADD_ITEMS;
 //			} else {
 //				mMode = MODE_IN_SHOP;
 //			}
 //			onModeChanged();
-			intent = new Intent(this, PickItemsActivity.class);
-			intent.setData(mListUri);
-			startActivity(intent);
+			pickItems();
 			return true;
 
 		case MENU_SHARE:
@@ -890,6 +893,16 @@ public class ShoppingActivity extends Activity { // implements
 		}
 		return super.onOptionsItemSelected(item);
 
+	}
+
+	/**
+	 * 
+	 */
+	private void pickItems() {
+		Intent intent;
+		intent = new Intent(this, PickItemsActivity.class);
+		intent.setData(mListUri);
+		startActivity(intent);
 	}
 
 	@Override

@@ -61,10 +61,9 @@ public class ShoppingProvider extends ContentProvider {
 	 * The various versions were introduced in the following releases:
 	 * 
 	 * 1: Release 0.1.1
-	 * 
 	 * 2: Release 0.1.6
-	 * 
 	 * 3: Release 1.0.4
+	 * 4: Release 1.0.5-beta
 	 */
 	private static final int DATABASE_VERSION = 4;
 
