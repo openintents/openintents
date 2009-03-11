@@ -1,5 +1,8 @@
 package org.openintents.shopping;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
@@ -7,6 +10,7 @@ import org.openintents.provider.Shopping.Status;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -34,8 +38,8 @@ public class ShoppingListView extends ListView {
 	public Typeface mTypefaceHandwriting;
 	public Typeface mTypefaceDigital;
 
-	public int mPriceVisiblity;
-	public int mTagsVisiblity;
+	public int mPriceVisibility;
+	public int mTagsVisibility;
 	public Typeface mTypeface;
 	public float mTextSize;
 	public boolean mUpperCaseFont;
@@ -43,6 +47,8 @@ public class ShoppingListView extends ListView {
 	public int mMarkType;
 	public int mMarkTextColor;
 
+	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
+    
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
 	 * Shopping.Status.BOUGHT
@@ -73,8 +79,8 @@ public class ShoppingListView extends ListView {
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
 			View view = super.newView(context, cursor, parent);
-			view.findViewById(R.id.price).setVisibility(mPriceVisiblity);
-			view.findViewById(R.id.tags).setVisibility(mTagsVisiblity);
+			view.findViewById(R.id.price).setVisibility(mPriceVisibility);
+			view.findViewById(R.id.tags).setVisibility(mTagsVisibility);
 			return view;
 		}
 
@@ -157,10 +163,12 @@ public class ShoppingListView extends ListView {
 
 			}
 
+			/*
 			t = (TextView) view.findViewById(R.id.quantity);
 			if (t != null && TextUtils.isEmpty(t.getText())) {
 				t.setText("1");
 			}
+			*/
 
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
@@ -171,7 +179,25 @@ public class ShoppingListView extends ListView {
 			if (view.getId() == R.id.price) {
 				long price = cursor
 						.getLong(ShoppingActivity.mStringItemsITEMPRICE);
-				((TextView) view).setText(String.valueOf(price * 0.01d));
+				TextView tv = (TextView) view;
+				if (mPriceVisibility == View.VISIBLE && price != 0) {
+					tv.setVisibility(View.VISIBLE);
+				    String s = mPriceFormatter.format(price * 0.01d);           
+					tv.setText(s);
+				} else {
+					tv.setVisibility(View.GONE);
+				}
+				return true;
+			} else if (view.getId() == R.id.tags) {
+				String tags = cursor
+						.getString(ShoppingActivity.mStringItemsITEMTAGS);
+				TextView tv = (TextView) view;
+				if (mTagsVisibility == View.VISIBLE && !TextUtils.isEmpty(tags)) {
+					tv.setVisibility(View.VISIBLE);      
+					tv.setText(tags);
+				} else {
+					tv.setVisibility(View.GONE);
+				}
 				return true;
 			} else {
 				return false;
@@ -193,16 +219,20 @@ public class ShoppingListView extends ListView {
 
 	public ShoppingListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		readFonts();
+		init();
 	}
 
 	public ShoppingListView(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		readFonts();
+		init();
 	}
 
 	public ShoppingListView(Context context) {
 		super(context);
+		init();
+	}
+	
+	private void init() {
 		readFonts();
 	}
 
@@ -214,7 +244,7 @@ public class ShoppingListView extends ListView {
 				"fonts/Crysta.ttf");
 
 	}
-
+	
 	Cursor fillItems(long listId) {
 
 		mListId = listId;
@@ -266,12 +296,12 @@ public class ShoppingListView extends ListView {
 				// Give the cursor to the list adapter
 				mCursorItems,
 				// Map the IMAGE and NAME to...
-				new String[] { ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
-						ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
-						ContainsFull.QUANTITY },
+				new String[] { ContainsFull.ITEM_NAME, /*ContainsFull.ITEM_IMAGE,*/
+						ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE/*,
+						ContainsFull.QUANTITY */},
 				// the view defined in the XML template
-				new int[] { R.id.name, R.id.image_URI, R.id.tags, R.id.price,
-						R.id.quantity });
+				new int[] { R.id.name, /*R.id.image_URI, */R.id.tags, R.id.price/*,
+						R.id.quantity*/ });
 		setAdapter(adapter);
 		return mCursorItems;
 	}

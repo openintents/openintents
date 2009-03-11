@@ -241,7 +241,7 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int mStringItemsCONTAINSID = 0;
 	private static final int mStringItemsITEMNAME = 1;
 	private static final int mStringItemsITEMIMAGE = 2;
-	private static final int mStringItemsITEMTAGS = 3;
+	static final int mStringItemsITEMTAGS = 3;
 	static final int mStringItemsITEMPRICE = 4;
 	private static final int mStringItemsQUANTITY = 5;
 	static final int mStringItemsSTATUS = 6;
@@ -271,8 +271,8 @@ public class ShoppingActivity extends Activity { // implements
 	/* NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for items in list */
 	private Cursor mItemsCursor;
 
-	public int mPriceVisiblity;
-	private int mTagsVisiblity;
+	//public int mPriceVisibility;
+	//private int mTagsVisibility;
 	private SensorManager mSensorManager;
 	private SensorListener mMySensorListener = new ShakeSensorListener() {
 
@@ -425,16 +425,18 @@ public class ShoppingActivity extends Activity { // implements
 			defaultShoppingList = (int) Shopping.getDefaultList();
 		}
 
-		if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, false)) {
-			mPriceVisiblity = View.VISIBLE;
-		} else {
-			mPriceVisiblity = View.GONE;
-		}
-
-		if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, false)) {
-			mTagsVisiblity = View.VISIBLE;
-		} else {
-			mTagsVisiblity = View.GONE;
+		if (mListItems != null) {
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, false)) {
+				mListItems.mPriceVisibility = View.VISIBLE;
+			} else {
+				mListItems.mPriceVisibility = View.GONE;
+			}
+		
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, false)) {
+				mListItems.mTagsVisibility = View.VISIBLE;
+			} else {
+				mListItems.mTagsVisibility = View.GONE;
+			}
 		}
 		return defaultShoppingList;
 	}
@@ -489,7 +491,10 @@ public class ShoppingActivity extends Activity { // implements
 		 * intentfilter = new IntentFilter(OpenIntents.REFRESH_ACTION);
 		 * registerReceiver(mIntentReceiver, intentfilter);
 		 */
-
+		
+		// Reload preferences, in case something changed
+		initFromPreferences();
+		
 		registerSensor();
 	}
 
