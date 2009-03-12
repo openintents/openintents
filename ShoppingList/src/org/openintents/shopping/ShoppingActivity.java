@@ -1528,6 +1528,9 @@ public class ShoppingActivity extends Activity { // implements
 				}
 
 			});
+
+			prepareTextDialog(dlg, textEntryView);
+			
 			return dlg;
 
 		}
@@ -1543,48 +1546,80 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_ABOUT:
 			break;
 		case DIALOG_TEXT_ENTRY:
-			if (debug)
-				Log
-						.d(TAG, "onPrepareDialog: mTextEntryMenu: "
-								+ mTextEntryMenu);
-			EditText et = (EditText) dialog.findViewById(R.id.edittext);
-			et.selectAll();
-			EditText tags = (EditText) dialog.findViewById(R.id.edittags);
-			tags.selectAll();
-			EditText price = (EditText) dialog.findViewById(R.id.editprice);
-			price.selectAll();
+			prepareTextDialog(dialog, null);
+		}
+	}
 
-			View tagsPanel = dialog.findViewById(R.id.tags_panel);
-			View pricePanel = dialog.findViewById(R.id.price_panel);
+	/**
+	 * Prepare the text dialog for one of the three cases:
+	 * new list, rename list, or edit item.
+	 * 
+	 * After re-creation, onPrepareDialog is not called, so 
+	 * this routine has to be called from onCreateDialog.
+	 * But the dialog view is not accessible yet in onCreateDialog,
+	 * so that the second parameter 'view' has to be set in that case.
+	 * 
+	 * @param dialog
+	 * @param view
+	 */
+	private void prepareTextDialog(Dialog dialog, View view) {
+		if (debug)
+			Log
+					.d(TAG, "onPrepareDialog: mTextEntryMenu: "
+							+ mTextEntryMenu);
 
-			switch (mTextEntryMenu) {
+		EditText et;
+		EditText tags;
+		EditText price;
+		View tagsPanel;
+		View pricePanel;
+		
+		if (view == null) {
+			et = (EditText) dialog.findViewById(R.id.edittext);
+			tags = (EditText) dialog.findViewById(R.id.edittags);
+			price = (EditText) dialog.findViewById(R.id.editprice);
+			tagsPanel = dialog.findViewById(R.id.tags_panel);
+			pricePanel = dialog.findViewById(R.id.price_panel);
+		} else {
+			et = (EditText) view.findViewById(R.id.edittext);
+			tags = (EditText) view.findViewById(R.id.edittags);
+			price = (EditText) view.findViewById(R.id.editprice);
+			tagsPanel = view.findViewById(R.id.tags_panel);
+			pricePanel = view.findViewById(R.id.price_panel);
+		}
+		
+		et.selectAll();
+		tags.selectAll();
+		price.selectAll();
 
-			case MENU_NEW_LIST:
-				dialog.setTitle(R.string.ask_new_list);
-				tagsPanel.setVisibility(View.GONE);
-				pricePanel.setVisibility(View.GONE);
-				break;
-			case MENU_RENAME_LIST:
-				dialog.setTitle(R.string.ask_rename_list);
-				if (mCursorListFilter != null
-						&& mCursorListFilter.getPosition() >= 0) {
-					et.setText(mCursorListFilter
-							.getString(mStringListFilterNAME));
-				}
-				tagsPanel.setVisibility(View.GONE);
-				pricePanel.setVisibility(View.GONE);
-				break;
-			case MENU_EDIT_ITEM:
-				dialog.setTitle(R.string.ask_edit_item);
-				// Cursor is supposed to be set to correct row already:
-				et.setText(mCursorItems.getString(mStringItemsITEMNAME));
-				tags.setText(mCursorItems.getString(mStringItemsITEMTAGS));
-				price.setText(String.valueOf(mCursorItems
-						.getLong(mStringItemsITEMPRICE) * 0.01d));
-				tagsPanel.setVisibility(View.VISIBLE);
-				pricePanel.setVisibility(View.VISIBLE);
-				break;
+		
+		switch (mTextEntryMenu) {
+
+		case MENU_NEW_LIST:
+			dialog.setTitle(R.string.ask_new_list);
+			tagsPanel.setVisibility(View.GONE);
+			pricePanel.setVisibility(View.GONE);
+			break;
+		case MENU_RENAME_LIST:
+			dialog.setTitle(R.string.ask_rename_list);
+			if (mCursorListFilter != null
+					&& mCursorListFilter.getPosition() >= 0) {
+				et.setText(mCursorListFilter
+						.getString(mStringListFilterNAME));
 			}
+			tagsPanel.setVisibility(View.GONE);
+			pricePanel.setVisibility(View.GONE);
+			break;
+		case MENU_EDIT_ITEM:
+			dialog.setTitle(R.string.ask_edit_item);
+			// Cursor is supposed to be set to correct row already:
+			et.setText(mCursorItems.getString(mStringItemsITEMNAME));
+			tags.setText(mCursorItems.getString(mStringItemsITEMTAGS));
+			price.setText(String.valueOf(mCursorItems
+					.getLong(mStringItemsITEMPRICE) * 0.01d));
+			tagsPanel.setVisibility(View.VISIBLE);
+			pricePanel.setVisibility(View.VISIBLE);
+			break;
 		}
 	}
 
