@@ -25,6 +25,13 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.1
+date: 2009-03-??
+
+- New touch keypad to unlock screen.
+- Fixed "salt" error.
+
+---------------------------------------------------------
 release: 1.0.0
 date: 2009-02-02
 
