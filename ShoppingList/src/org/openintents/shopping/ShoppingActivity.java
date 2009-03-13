@@ -104,7 +104,7 @@ public class ShoppingActivity extends Activity { // implements
 	/**
 	 * TAG for logging.
 	 */
-	private static final String TAG = "ShoppingView";
+	private static final String TAG = "ShoppingActivity";
 	private static final boolean debug = !false;
 
 	private static final int MENU_NEW_LIST = Menu.FIRST;
@@ -261,6 +261,7 @@ public class ShoppingActivity extends Activity { // implements
 	private final String ORIGINAL_ITEM = "original item";
 
 	private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
+	private static final String BUNDLE_CURSOR_ITEMS_POSITION = "cursor items position";
 
 	// Skins --------------------------
 
@@ -270,6 +271,11 @@ public class ShoppingActivity extends Activity { // implements
 	private int mTextEntryMenu;
 	/* NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for items in list */
 	private Cursor mItemsCursor;
+	
+	/**
+	 * Remember position for screen orientation change.
+	 */
+	int mEditItemPosition = -1;
 
 	//public int mPriceVisibility;
 	//private int mTagsVisibility;
@@ -296,6 +302,8 @@ public class ShoppingActivity extends Activity { // implements
 		}
 		setContentView(R.layout.shopping);		
 
+		mEditItemPosition = -1;
+		
 		// Initialize GTalkSender (but don't bind yet!)
 		mGTalkSender = new GTalkSender(this);
 
@@ -397,6 +405,7 @@ public class ShoppingActivity extends Activity { // implements
 				mEditText.setTextKeepState(prevText);
 			}
 			mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
+			mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
 		}
 
 		// set focus to the edit line:
@@ -537,6 +546,13 @@ public class ShoppingActivity extends Activity { // implements
 		String s = mEditText.getText().toString();
 		outState.putString(ORIGINAL_ITEM, s);
 		outState.putInt(BUNDLE_TEXT_ENTRY_MENU, mTextEntryMenu);
+		
+		//int pos = mCursorItems.getPosition();
+		// The cursor has been closed by the time we reach here,
+		// so we have to save the result from a member variable.
+		int pos = mEditItemPosition;
+		Log.d(TAG, "Save position: " + pos);
+		outState.putInt(BUNDLE_CURSOR_ITEMS_POSITION, pos);
 
 		mUpdating = false;
 	}
@@ -552,6 +568,7 @@ public class ShoppingActivity extends Activity { // implements
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 					public void onItemSelected(AdapterView parent, View v,
 							int position, long id) {
+						Log.d(TAG, "Spinner: onItemSelected");
 						fillItems();
 						// Now set the theme based on the selected list:
 						mListItems.setListTheme(loadListTheme());
@@ -560,6 +577,7 @@ public class ShoppingActivity extends Activity { // implements
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
+						Log.d(TAG, "Spinner: onNothingSelected");
 						fillItems();
 
 					}
@@ -1069,16 +1087,24 @@ public class ShoppingActivity extends Activity { // implements
 	 */
 	private boolean updateItem(String newName, String tags, Long price) {
 
+		Log.d(TAG, "updateItems()");
+		
 		if (newName.equals("")) {
 			// User has not provided any name
 			Toast.makeText(this, getString(R.string.please_enter_name),
 					Toast.LENGTH_SHORT).show();
 			return false;
 		}
+		
+		// ??? Strangely, the cursor position seems to change.
+		// Reset it manually here.
+		mCursorItems.moveToPosition(mEditItemPosition);
 
 		String oldItemName = mCursorItems.getString(mStringItemsITEMNAME);
 		String newItemName = newName;
 
+		dumpCursorItems();
+		
 		// Rename currently selected item:
 		/*
 		 * mCursorItems.updateString(mStringItemsITEMNAME, newItemName);
@@ -1089,6 +1115,9 @@ public class ShoppingActivity extends Activity { // implements
 		 */
 		// Can not work on ContainsFull table, have to work on items table:
 		long itemId = mCursorItems.getLong(mStringItemsITEMID);
+		Log.d(TAG, "Position: " + mCursorItems.getPosition());
+		Log.d(TAG, "Name: " + mCursorItems.getString(mStringItemsITEMNAME));
+		Log.d(TAG, "ItemID: " + itemId);
 
 		Cursor cursor = getContentResolver()
 				.query(Shopping.Items.CONTENT_URI, Shopping.Items.PROJECTION,
@@ -1229,9 +1258,12 @@ public class ShoppingActivity extends Activity { // implements
 		mListItems.toggleItemBought(position);
 	}
 
+	
 	/** Edit item */
 	void editItem(int position) {
+		Log.d(TAG, "EditItems: Position: " + position);
 		mCursorItems.moveToPosition(position);
+		mEditItemPosition = position;
 		showListDialog(MENU_EDIT_ITEM);
 	}
 
@@ -1473,6 +1505,12 @@ public class ShoppingActivity extends Activity { // implements
 	protected Dialog onCreateDialog(int id) {
 		if (debug)
 			Log.d(TAG, "onCreateDialog: mTextEntryMenu: " + mTextEntryMenu);
+		/*
+		if (mEditItemPosition != -1) {
+			Log.d(TAG, "Set position to " + mEditItemPosition);
+			mCursorItems.moveToPosition(mEditItemPosition);
+		}
+		*/
 
 		switch (id) {
 		case DIALOG_ABOUT:
@@ -1530,6 +1568,16 @@ public class ShoppingActivity extends Activity { // implements
 			});
 
 			prepareTextDialog(dlg, textEntryView);
+			
+			dlg.setOnDismissListener(new Dialog.OnDismissListener() {
+
+				@Override
+				public void onDismiss(DialogInterface dialog) {
+					Log.i(TAG, "Dismiss dialog");
+					mEditItemPosition = -1;
+				}
+				
+			});
 			
 			return dlg;
 
@@ -1796,6 +1844,7 @@ public class ShoppingActivity extends Activity { // implements
 
 	private void onModeChanged() {
 
+		Log.d(TAG, "onModeChanged()");
 		fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
@@ -1814,6 +1863,8 @@ public class ShoppingActivity extends Activity { // implements
 
 	private void fillItems() {
 
+		Log.d(TAG, "fillItems()");
+		
 		long listId = getSelectedListId();
 		if (listId < 0) {
 			// No valid list - probably view is not active
@@ -1822,8 +1873,34 @@ public class ShoppingActivity extends Activity { // implements
 		}
 		mCursorItems=mListItems.fillItems(listId);
 		startManagingCursor(mCursorItems);
+		
+		dumpCursorItems();
+		
 		mCursorItems.moveToFirst();
+		
+		if (mEditItemPosition != -1) {
+			// Currently the Edit Dialog is in the front, so
+			// the position is set to the currently edited item.
+			Log.d(TAG, "fillItems: Move to pos: " + mEditItemPosition);
+			mCursorItems.moveToPosition(mEditItemPosition);
+		}
 
+	}
+
+	/**
+	 * 
+	 */
+	private void dumpCursorItems() {
+		int pos = mCursorItems.getPosition();
+		Log.d(TAG, "dumpCursor. Current pos: " + pos);
+		mCursorItems.moveToPosition(-1);
+		while (mCursorItems.moveToNext()) {
+			Log.d(TAG, " - " + mCursorItems.getString(mStringItemsITEMNAME));
+			Log.d(TAG, " --- " + mCursorItems.getLong(mStringItemsITEMID));
+		}
+		mCursorItems.moveToPosition(pos);
+		pos = mCursorItems.getPosition();
+		Log.d(TAG, "dumpCursor ends. Current pos: " + pos);
 	}
 
 	/**
