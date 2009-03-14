@@ -219,7 +219,13 @@ public class ShoppingListView extends ListView {
 			super.onChange(selfChange);
 			
 			if (mCursorItems != null) {
-				mCursorItems.requery();
+				try {
+					mCursorItems.requery();
+				} catch (IllegalStateException e) {
+					Log.e(TAG, "IllegalStateException ", e);
+					// Somehow the logic is not completely right yet...
+					mCursorItems = null;
+				}
 			}
 		}
 		
