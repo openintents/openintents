@@ -29,7 +29,10 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
-import org.openintents.provider.Shopping.Status;
+import org.openintents.shopping.dialog.DialogActionListener;
+import org.openintents.shopping.dialog.EditItemDialog;
+import org.openintents.shopping.dialog.NewListDialog;
+import org.openintents.shopping.dialog.RenameListDialog;
 import org.openintents.shopping.share.GTalkSender;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.ShakeSensorListener;
@@ -50,17 +53,12 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.graphics.Typeface;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.preference.PreferenceManager;
-import android.text.Spannable;
-import android.text.TextUtils;
-import android.text.style.StrikethroughSpan;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
@@ -68,7 +66,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
@@ -76,21 +73,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.SimpleCursorAdapter.ViewBinder;
 
 /**
  * 
@@ -125,9 +117,9 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
 	// TODO: Implement the following menu items
-	private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes
+	//private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes
 	// rename
-	private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
+	//private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
 	// or modified
 	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
 	// previously
@@ -135,7 +127,7 @@ public class ShoppingActivity extends Activity { // implements
 
 	// TODO: Implement "select list" action
 	// that can be called by other programs.
-	private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
+	//private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
 	// shopping list
 	private static final int MENU_UPDATE = Menu.FIRST + 16;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 17;
@@ -143,7 +135,11 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_REMOVE_ITEM_FROM_LIST = Menu.FIRST + 19;
 
 	private static final int DIALOG_ABOUT = 1;
-	private static final int DIALOG_TEXT_ENTRY = 2;
+	//private static final int DIALOG_TEXT_ENTRY = 2;
+	private static final int DIALOG_NEW_LIST = 2;
+	private static final int DIALOG_RENAME_LIST = 3;
+	private static final int DIALOG_EDIT_ITEM = 4;
+	
 	/**
 	 * The main activity.
 	 * 
@@ -230,8 +226,8 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int mStringListFilterSHARECONTACTS = 4;
 	private static final int mStringListFilterSKINBACKGROUND = 5;
 
-	private ShoppingListView mListItems;
-	private Cursor mCursorItems;
+	private ShoppingListView mListItemsView;
+	//private Cursor mCursorItems;
 
 	static final String[] mStringItems = new String[] { ContainsFull._ID,
 			ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
@@ -260,22 +256,23 @@ public class ShoppingActivity extends Activity { // implements
 	// State data to be stored when freezing:
 	private final String ORIGINAL_ITEM = "original item";
 
-	private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
-	private static final String BUNDLE_CURSOR_ITEMS_POSITION = "cursor items position";
-
+	//private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
+	//private static final String BUNDLE_CURSOR_ITEMS_POSITION = "cursor items position";
+	private static final String BUNDLE_ITEM_URI = "item uri";
+	
 	// Skins --------------------------
 
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
 
-	private int mTextEntryMenu;
+	//private int mTextEntryMenu;
 	/* NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for items in list */
 	private Cursor mItemsCursor;
 	
 	/**
 	 * Remember position for screen orientation change.
 	 */
-	int mEditItemPosition = -1;
+	//int mEditItemPosition = -1;
 
 	//public int mPriceVisibility;
 	//private int mTagsVisibility;
@@ -302,7 +299,7 @@ public class ShoppingActivity extends Activity { // implements
 		}
 		setContentView(R.layout.shopping);		
 
-		mEditItemPosition = -1;
+		//mEditItemPosition = -1;
 		
 		// Initialize GTalkSender (but don't bind yet!)
 		mGTalkSender = new GTalkSender(this);
@@ -404,8 +401,9 @@ public class ShoppingActivity extends Activity { // implements
 			if (prevText != null) {
 				mEditText.setTextKeepState(prevText);
 			}
-			mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
-			mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
+			//mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
+			//mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
+			mItemUri = Uri.parse(icicle.getString(BUNDLE_ITEM_URI));
 		}
 
 		// set focus to the edit line:
@@ -434,17 +432,17 @@ public class ShoppingActivity extends Activity { // implements
 			defaultShoppingList = (int) Shopping.getDefaultList();
 		}
 
-		if (mListItems != null) {
+		if (mListItemsView != null) {
 			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, false)) {
-				mListItems.mPriceVisibility = View.VISIBLE;
+				mListItemsView.mPriceVisibility = View.VISIBLE;
 			} else {
-				mListItems.mPriceVisibility = View.GONE;
+				mListItemsView.mPriceVisibility = View.GONE;
 			}
 		
 			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, false)) {
-				mListItems.mTagsVisibility = View.VISIBLE;
+				mListItemsView.mTagsVisibility = View.VISIBLE;
 			} else {
-				mListItems.mTagsVisibility = View.GONE;
+				mListItemsView.mTagsVisibility = View.GONE;
 			}
 		}
 		return defaultShoppingList;
@@ -478,7 +476,9 @@ public class ShoppingActivity extends Activity { // implements
 			setTitleColor(0xFFAAAAFF);
 		}
 
-		mListItems.setListTheme(loadListTheme());
+		mListItemsView.setListTheme(loadListTheme());
+		mListItemsView.onResume();
+		
 		mEditText
 				.setKeyListener(PreferenceActivity
 						.getCapitalizationKeyListenerFromPrefs(getApplicationContext()));
@@ -535,6 +535,7 @@ public class ShoppingActivity extends Activity { // implements
 		 * mGTalkSender.unbindGTalkService(); }
 		 */
 
+		mListItemsView.onPause();
 	}
 
 	@Override
@@ -545,15 +546,9 @@ public class ShoppingActivity extends Activity { // implements
 		// Save original text from edit box
 		String s = mEditText.getText().toString();
 		outState.putString(ORIGINAL_ITEM, s);
-		outState.putInt(BUNDLE_TEXT_ENTRY_MENU, mTextEntryMenu);
-		
-		//int pos = mCursorItems.getPosition();
-		// The cursor has been closed by the time we reach here,
-		// so we have to save the result from a member variable.
-		int pos = mEditItemPosition;
-		Log.d(TAG, "Save position: " + pos);
-		outState.putInt(BUNDLE_CURSOR_ITEMS_POSITION, pos);
 
+		outState.putString(BUNDLE_ITEM_URI, mItemUri.toString());
+		
 		mUpdating = false;
 	}
 
@@ -571,7 +566,7 @@ public class ShoppingActivity extends Activity { // implements
 						Log.d(TAG, "Spinner: onItemSelected");
 						fillItems();
 						// Now set the theme based on the selected list:
-						mListItems.setListTheme(loadListTheme());
+						mListItemsView.setListTheme(loadListTheme());
 
 						bindGTalkIfNeeded();
 					}
@@ -633,23 +628,23 @@ public class ShoppingActivity extends Activity { // implements
 				LinearLayout.LayoutParams.FILL_PARENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 
-		mListItems = (ShoppingListView) findViewById(R.id.list_items);
-		mListItems.setThemedBackground(findViewById(R.id.background));
+		mListItemsView = (ShoppingListView) findViewById(R.id.list_items);
+		mListItemsView.setThemedBackground(findViewById(R.id.background));
 		
-		mListItems.setOnItemClickListener(new OnItemClickListener() {
+		mListItemsView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
 				Cursor c = (Cursor) parent.getItemAtPosition(pos);
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
 				} else {
-					mListItems.toggleItemBought(pos);
+					mListItemsView.toggleItemBought(pos);
 				}
 			}
 
 		});
 
-		mListItems
+		mListItemsView
 				.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
 
 					public void onCreateContextMenu(ContextMenu contextmenu,
@@ -684,7 +679,7 @@ public class ShoppingActivity extends Activity { // implements
 				return;
 			}
 
-			mListItems.insertNewItem(newItem);
+			mListItemsView.insertNewItem(newItem);
 			mEditText.setText("");
 		} else {
 			// Open list to select item from
@@ -861,7 +856,7 @@ public class ShoppingActivity extends Activity { // implements
 		Intent intent;
 		switch (item.getItemId()) {
 		case MENU_NEW_LIST:
-			showListDialog(MENU_NEW_LIST);
+			showDialog(DIALOG_NEW_LIST);
 			return true;
 
 		case MENU_CLEAN_UP_LIST:
@@ -869,7 +864,7 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 
 		case MENU_RENAME_LIST:
-			showListDialog(MENU_RENAME_LIST);
+			showDialog(DIALOG_RENAME_LIST);
 			return true;
 
 		case MENU_DELETE_LIST:
@@ -956,71 +951,6 @@ public class ShoppingActivity extends Activity { // implements
 	// Menu functions
 	//
 
-	/**
-	 * Opens a dialog to add a new shopping list or to rename it.
-	 */
-	private void showListDialog(final int menuAction) {
-
-		switch (menuAction) {
-		case MENU_NEW_LIST:
-			mTextEntryMenu = MENU_NEW_LIST;
-			showDialog(DIALOG_TEXT_ENTRY);
-			break;
-		case MENU_RENAME_LIST:
-			mTextEntryMenu = MENU_RENAME_LIST;
-			showDialog(DIALOG_TEXT_ENTRY);
-			break;
-		case MENU_EDIT_ITEM:
-			mTextEntryMenu = MENU_EDIT_ITEM;
-			showDialog(DIALOG_TEXT_ENTRY);
-
-			break;
-		}
-	}
-
-	void doTextEntryDialogAction(int menuAction, Dialog dialog) {
-		if (debug)
-			Log.i(TAG, "doListDialogAction: menuAction: " + menuAction);
-		EditText et = (EditText) dialog.findViewById(R.id.edittext);
-		String newName = et.getText().toString();
-		switch (menuAction) {
-		case MENU_NEW_LIST:
-			if (createNewList(newName)) {
-				// New list created. Exit:
-				dialog.dismiss();
-				et.setText("");
-			}
-			break;
-		case MENU_RENAME_LIST:
-			if (renameList(newName)) {
-				// Rename successful. Exit:
-				dialog.dismiss();
-				et.setText("");
-			}
-			break;
-		case MENU_EDIT_ITEM:
-			et = (EditText) dialog.findViewById(R.id.edittags);
-			String tags = et.getText().toString();
-			et = (EditText) dialog.findViewById(R.id.editprice);
-			String price = et.getText().toString();
-			Long priceLong;
-			if (TextUtils.isEmpty(price)) {
-				priceLong = 0L;
-			} else {
-				try {
-					priceLong = (long) (100 * Double.parseDouble(price));
-				} catch (NumberFormatException e) {
-					priceLong = null;
-				}
-			}
-			if (updateItem(newName, tags, priceLong)) {
-				// Rename successful. Exit:
-				dialog.dismiss();
-				et.setText("");
-			}
-			break;
-		}
-	}
 
 	/**
 	 * Creates a new list from dialog.
@@ -1043,7 +973,7 @@ public class ShoppingActivity extends Activity { // implements
 		setSelectedListId(newId);
 
 		// Now set the theme based on the selected list:
-		mListItems.setListTheme(loadListTheme());
+		mListItemsView.setListTheme(loadListTheme());
 
 		// A newly created list will not yet be shared via GTalk:
 		// bindGTalkIfNeeded();
@@ -1076,93 +1006,11 @@ public class ShoppingActivity extends Activity { // implements
 		return true;
 	}
 
-	/**
-	 * Rename item from dialog.
-	 * 
-	 * @param price
-	 * @param tags
-	 * 
-	 * @return true if new list was renamed. False if new list was not renamed,
-	 *         because user has not given any name.
-	 */
-	private boolean updateItem(String newName, String tags, Long price) {
-
-		Log.d(TAG, "updateItems()");
-		
-		if (newName.equals("")) {
-			// User has not provided any name
-			Toast.makeText(this, getString(R.string.please_enter_name),
-					Toast.LENGTH_SHORT).show();
-			return false;
-		}
-		
-		// ??? Strangely, the cursor position seems to change.
-		// Reset it manually here.
-		mCursorItems.moveToPosition(mEditItemPosition);
-
-		String oldItemName = mCursorItems.getString(mStringItemsITEMNAME);
-		String newItemName = newName;
-
-		dumpCursorItems();
-		
-		// Rename currently selected item:
-		/*
-		 * mCursorItems.updateString(mStringItemsITEMNAME, newItemName);
-		 * 
-		 * mCursorItems.commitUpdates(); mCursorItems.requery();
-		 * 
-		 * edittext.setText("");
-		 */
-		// Can not work on ContainsFull table, have to work on items table:
-		long itemId = mCursorItems.getLong(mStringItemsITEMID);
-		Log.d(TAG, "Position: " + mCursorItems.getPosition());
-		Log.d(TAG, "Name: " + mCursorItems.getString(mStringItemsITEMNAME));
-		Log.d(TAG, "ItemID: " + itemId);
-
-		Cursor cursor = getContentResolver()
-				.query(Shopping.Items.CONTENT_URI, Shopping.Items.PROJECTION,
-						Shopping.Items._ID + " = ?",
-						new String[] { "" + itemId },
-						Shopping.Items.DEFAULT_SORT_ORDER);
-		if (cursor != null && cursor.moveToNext()) {
-			// Rename item in items table
-			ContentValues values = new ContentValues();
-			values.put(Items.NAME, newItemName);
-			values.put(Items.TAGS, tags);
-			if (price != null) {
-				values.put(Items.PRICE, price);
-			}
-			getContentResolver().update(
-					Uri
-							.withAppendedPath(Items.CONTENT_URI, cursor
-									.getString(0)), values, null, null);
-
-		} else {
-			Log.e(TAG, "ShoppingView: Could not rename item.");
-		}
-		mCursorItems.requery();
-
-		// If we share items, send this item also to other lists:
-		// TODO ???
-		/*
-		 * String recipients =
-		 * mCursorListFilter.getString(mStringListFilterSHARECONTACTS); if (!
-		 * recipients.equals("")) { String shareName =
-		 * mCursorListFilter.getString(mStringListFilterSHARENAME); long status
-		 * = mCursorItems.getLong(mStringItemsSTATUS);
-		 * 
-		 * mGTalkSender.sendItemUpdate(recipients, shareName, oldItemName,
-		 * newItemName, status, status); }
-		 */
-
-		return true;
-	}
-
 	private void sendList() {
-		if (mListItems.getAdapter() instanceof CursorAdapter) {
+		if (mListItemsView.getAdapter() instanceof CursorAdapter) {
 			StringBuffer sb = new StringBuffer();
-			for (int i = 0; i < mListItems.getAdapter().getCount(); i++) {
-				Cursor item = (Cursor) mListItems.getAdapter().getItem(i);
+			for (int i = 0; i < mListItemsView.getAdapter().getCount(); i++) {
+				Cursor item = (Cursor) mListItemsView.getAdapter().getItem(i);
 				if (item.getLong(mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
 					sb.append("[X] ");
 				} else {
@@ -1200,7 +1048,7 @@ public class ShoppingActivity extends Activity { // implements
 		// Remove all items from current list
 		// which have STATUS = Status.BOUGHT
 
-		if (!mListItems.cleanupList()) {
+		if (!mListItemsView.cleanupList()) {
 			// Show toast
 			Toast.makeText(this, R.string.no_items_marked, Toast.LENGTH_SHORT)
 					.show();
@@ -1248,49 +1096,54 @@ public class ShoppingActivity extends Activity { // implements
 		fillItems();
 
 		// Now set the theme based on the selected list:
-		mListItems.setListTheme(loadListTheme());
+		mListItemsView.setListTheme(loadListTheme());
 
 		bindGTalkIfNeeded();
 	}
 
 	/** Mark item */
 	void markItem(int position) {		
-		mListItems.toggleItemBought(position);
+		mListItemsView.toggleItemBought(position);
 	}
 
 	
 	/** Edit item */
 	void editItem(int position) {
 		Log.d(TAG, "EditItems: Position: " + position);
-		mCursorItems.moveToPosition(position);
-		mEditItemPosition = position;
-		showListDialog(MENU_EDIT_ITEM);
+		mListItemsView.mCursorItems.moveToPosition(position);
+		//mEditItemPosition = position;
+		
+		long itemId = mListItemsView.mCursorItems.getLong(mStringItemsITEMID);
+
+		mItemUri = Uri.withAppendedPath(Shopping.Items.CONTENT_URI, ""
+				+ itemId);
+		
+		showDialog(DIALOG_EDIT_ITEM);
 	}
 
 	/** delete item */
 	void deleteItem(int position) {
-		mCursorItems.moveToPosition(position);
+		Cursor c = mListItemsView.mCursorItems;
+		c.moveToPosition(position);
 		// Delete item from all lists
 		// by deleting contains row
 		getContentResolver().delete(Contains.CONTENT_URI, "item_id = ?",
-				new String[] { mCursorItems.getString(mStringItemsITEMID) });
+				new String[] { c.getString(mStringItemsITEMID) });
 
 		// and delete item
 		getContentResolver().delete(Items.CONTENT_URI, "_id = ?",
-				new String[] { mCursorItems.getString(mStringItemsITEMID) });
+				new String[] { c.getString(mStringItemsITEMID) });
 
-		mCursorItems.requery();
+		c.requery();
 	}
 
 	/** removeItemFromList */
 	void removeItemFromList(int position) {
-		mCursorItems.moveToPosition(position);
+		Cursor c = mListItemsView.mCursorItems;
+		c.moveToPosition(position);
 		// Remember old values before delete (for share below)
-//***************************************************************************
-		//TODO getCursor from ListView or somehow itemid from listview
-//***************************************************************************
-		String itemName = mCursorItems.getString(mStringItemsITEMNAME);
-		long oldstatus = mCursorItems.getLong(mStringItemsSTATUS);
+		String itemName = c.getString(mStringItemsITEMNAME);
+		long oldstatus = c.getLong(mStringItemsSTATUS);
 		
 		// Delete item from list
 		// by deleting contains row
@@ -1298,10 +1151,10 @@ public class ShoppingActivity extends Activity { // implements
 				.delete(
 						Contains.CONTENT_URI,
 						"_id = ?",
-						new String[] { mCursorItems
+						new String[] { c
 								.getString(mStringItemsCONTAINSID) });
 
-		mCursorItems.requery();
+		c.requery();
 
 		// If we share items, mark item on other lists:
 		// TODO ???
@@ -1372,13 +1225,13 @@ public class ShoppingActivity extends Activity { // implements
 					public void onCheckedChanged(RadioGroup group, int checkedId) {
 						switch (checkedId) {
 						case R.id.radio1:
-							mListItems.setListTheme(1);
+							mListItemsView.setListTheme(1);
 							break;
 						case R.id.radio2:
-							mListItems.setListTheme(2);
+							mListItemsView.setListTheme(2);
 							break;
 						case R.id.radio3:
-							mListItems.setListTheme(3);
+							mListItemsView.setListTheme(3);
 							break;
 
 						}
@@ -1407,7 +1260,7 @@ public class ShoppingActivity extends Activity { // implements
 									break;
 								}
 								saveListTheme(themeId);
-								mListItems.setListTheme(themeId);
+								mListItemsView.setListTheme(themeId);
 
 							}
 						}).setNegativeButton(R.string.cancel,
@@ -1417,13 +1270,13 @@ public class ShoppingActivity extends Activity { // implements
 
 								/* User clicked No so do some stuff */
 								int themeId = loadListTheme();
-								mListItems.setListTheme(themeId);
+								mListItemsView.setListTheme(themeId);
 							}
 						}).setOnCancelListener(new OnCancelListener() {
 
 					public void onCancel(DialogInterface arg0) {
 						int themeId = loadListTheme();
-						mListItems.setListTheme(themeId);
+						mListItemsView.setListTheme(themeId);
 					}
 				}).show();
 
@@ -1503,84 +1356,31 @@ public class ShoppingActivity extends Activity { // implements
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
-		if (debug)
-			Log.d(TAG, "onCreateDialog: mTextEntryMenu: " + mTextEntryMenu);
-		/*
-		if (mEditItemPosition != -1) {
-			Log.d(TAG, "Set position to " + mEditItemPosition);
-			mCursorItems.moveToPosition(mEditItemPosition);
-		}
-		*/
 
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
-		case DIALOG_TEXT_ENTRY:
-			LayoutInflater factory = LayoutInflater.from(this);
-			final View textEntryView = factory
-					.inflate(R.layout.input_box, null);
-			final Dialog dlg = new AlertDialog.Builder(this).setIcon(
-					android.R.drawable.ic_menu_edit).setTitle(
-					R.string.ask_new_list).setView(textEntryView)
-					.setPositiveButton(R.string.ok,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int whichButton) {
-
-									dialog.dismiss();
-									doTextEntryDialogAction(mTextEntryMenu,
-											(Dialog) dialog);
-
-								}
-							}).setNegativeButton(R.string.cancel,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int whichButton) {
-
-									dialog.cancel();
-								}
-							}).create();
-
-			// Accept OK also when user hits "Enter"
-			EditText et = (EditText) textEntryView.findViewById(R.id.edittext);
-
-			et
-					.setKeyListener(PreferenceActivity
-							.getCapitalizationKeyListenerFromPrefs(getApplicationContext()));
-			// et.setKeyListener(PreferenceActivity.
-			// getCapitalizationKeyListenerFromPrefs(this));
-
-			et.setOnKeyListener(new OnKeyListener() {
-
-				public boolean onKey(final View v, final int keyCode,
-						final KeyEvent key) {
-					// Log.i(TAG, "KeyCode: " + keyCode);
-
-					if (mTextEntryMenu != MENU_EDIT_ITEM
-							&& key.getAction() == KeyEvent.ACTION_DOWN
-							&& keyCode == KeyEvent.KEYCODE_ENTER) {
-						doTextEntryDialogAction(mTextEntryMenu, dlg);
-						return true;
-					}
-					return false;
-				}
-
-			});
-
-			prepareTextDialog(dlg, textEntryView);
 			
-			dlg.setOnDismissListener(new Dialog.OnDismissListener() {
-
+		case DIALOG_NEW_LIST:
+			return new NewListDialog(this,
+					new DialogActionListener() {
 				@Override
-				public void onDismiss(DialogInterface dialog) {
-					Log.i(TAG, "Dismiss dialog");
-					mEditItemPosition = -1;
+				public void onAction(String name) {
+					createNewList(name);
 				}
-				
 			});
 			
-			return dlg;
-
+		case DIALOG_RENAME_LIST:
+			return new RenameListDialog(this, getCurrentListName(),
+					new DialogActionListener() {
+						@Override
+						public void onAction(String name) {
+							renameList(name);
+						}
+			});
+			
+		case DIALOG_EDIT_ITEM:
+			return new EditItemDialog(this, mItemUri);
 		}
 		return null;
 
@@ -1593,80 +1393,13 @@ public class ShoppingActivity extends Activity { // implements
 		switch (id) {
 		case DIALOG_ABOUT:
 			break;
-		case DIALOG_TEXT_ENTRY:
-			prepareTextDialog(dialog, null);
-		}
-	}
 
-	/**
-	 * Prepare the text dialog for one of the three cases:
-	 * new list, rename list, or edit item.
-	 * 
-	 * After re-creation, onPrepareDialog is not called, so 
-	 * this routine has to be called from onCreateDialog.
-	 * But the dialog view is not accessible yet in onCreateDialog,
-	 * so that the second parameter 'view' has to be set in that case.
-	 * 
-	 * @param dialog
-	 * @param view
-	 */
-	private void prepareTextDialog(Dialog dialog, View view) {
-		if (debug)
-			Log
-					.d(TAG, "onPrepareDialog: mTextEntryMenu: "
-							+ mTextEntryMenu);
-
-		EditText et;
-		EditText tags;
-		EditText price;
-		View tagsPanel;
-		View pricePanel;
-		
-		if (view == null) {
-			et = (EditText) dialog.findViewById(R.id.edittext);
-			tags = (EditText) dialog.findViewById(R.id.edittags);
-			price = (EditText) dialog.findViewById(R.id.editprice);
-			tagsPanel = dialog.findViewById(R.id.tags_panel);
-			pricePanel = dialog.findViewById(R.id.price_panel);
-		} else {
-			et = (EditText) view.findViewById(R.id.edittext);
-			tags = (EditText) view.findViewById(R.id.edittags);
-			price = (EditText) view.findViewById(R.id.editprice);
-			tagsPanel = view.findViewById(R.id.tags_panel);
-			pricePanel = view.findViewById(R.id.price_panel);
-		}
-		
-		et.selectAll();
-		tags.selectAll();
-		price.selectAll();
-
-		
-		switch (mTextEntryMenu) {
-
-		case MENU_NEW_LIST:
-			dialog.setTitle(R.string.ask_new_list);
-			tagsPanel.setVisibility(View.GONE);
-			pricePanel.setVisibility(View.GONE);
+		case DIALOG_RENAME_LIST:
+			((RenameListDialog) dialog).setName(getCurrentListName());
 			break;
-		case MENU_RENAME_LIST:
-			dialog.setTitle(R.string.ask_rename_list);
-			if (mCursorListFilter != null
-					&& mCursorListFilter.getPosition() >= 0) {
-				et.setText(mCursorListFilter
-						.getString(mStringListFilterNAME));
-			}
-			tagsPanel.setVisibility(View.GONE);
-			pricePanel.setVisibility(View.GONE);
-			break;
-		case MENU_EDIT_ITEM:
-			dialog.setTitle(R.string.ask_edit_item);
-			// Cursor is supposed to be set to correct row already:
-			et.setText(mCursorItems.getString(mStringItemsITEMNAME));
-			tags.setText(mCursorItems.getString(mStringItemsITEMTAGS));
-			price.setText(String.valueOf(mCursorItems
-					.getLong(mStringItemsITEMPRICE) * 0.01d));
-			tagsPanel.setVisibility(View.VISIBLE);
-			pricePanel.setVisibility(View.VISIBLE);
+			
+		case DIALOG_EDIT_ITEM:
+			((EditItemDialog) dialog).setItemUri(mItemUri);
 			break;
 		}
 	}
@@ -1871,37 +1604,11 @@ public class ShoppingActivity extends Activity { // implements
 			// and no item is selected.
 			return;
 		}
-		mCursorItems=mListItems.fillItems(listId);
-		startManagingCursor(mCursorItems);
-		
-		dumpCursorItems();
-		
-		mCursorItems.moveToFirst();
-		
-		if (mEditItemPosition != -1) {
-			// Currently the Edit Dialog is in the front, so
-			// the position is set to the currently edited item.
-			Log.d(TAG, "fillItems: Move to pos: " + mEditItemPosition);
-			mCursorItems.moveToPosition(mEditItemPosition);
-		}
+		mListItemsView.fillItems(listId);
+		startManagingCursor(mListItemsView.mCursorItems);
 
 	}
 
-	/**
-	 * 
-	 */
-	private void dumpCursorItems() {
-		int pos = mCursorItems.getPosition();
-		Log.d(TAG, "dumpCursor. Current pos: " + pos);
-		mCursorItems.moveToPosition(-1);
-		while (mCursorItems.moveToNext()) {
-			Log.d(TAG, " - " + mCursorItems.getString(mStringItemsITEMNAME));
-			Log.d(TAG, " --- " + mCursorItems.getLong(mStringItemsITEMID));
-		}
-		mCursorItems.moveToPosition(pos);
-		pos = mCursorItems.getPosition();
-		Log.d(TAG, "dumpCursor ends. Current pos: " + pos);
-	}
 
 	/**
 	 * Initialized GTalk if the currently selected list requires it.
@@ -2043,6 +1750,7 @@ public class ShoppingActivity extends Activity { // implements
 				// content only to the new recipients, as the
 				// old ones should be in sync already.
 				// First delete all items in list
+				/*
 				mCursorItems.moveToPosition(-1);
 				while (mCursorItems.moveToNext()) {
 					String itemName = mCursorItems
@@ -2055,8 +1763,9 @@ public class ShoppingActivity extends Activity { // implements
 					/*
 					 * mGTalkSender.sendItemUpdate(contacts, sharename,
 					 * itemName, itemName, status, status);
-					 */
+					 * /
 				}
+			*/
 			}
 
 		}

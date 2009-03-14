@@ -10,10 +10,11 @@ import org.openintents.provider.Shopping.Status;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.TextUtils;
@@ -211,9 +212,22 @@ public class ShoppingListView extends ListView {
 
 	}
 
+	ContentObserver mContentObserver = new ContentObserver(new Handler()) {
+
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			
+			if (mCursorItems != null) {
+				mCursorItems.requery();
+			}
+		}
+		
+	};
+	
 	private static final String TAG = "ShoppingListView";
 	int mMode = ShoppingActivity.MODE_IN_SHOP;
-	private Cursor mCursorItems;
+	Cursor mCursorItems;
 	private View mThemedBackground;
 	private long mListId;
 
@@ -236,6 +250,14 @@ public class ShoppingListView extends ListView {
 		readFonts();
 	}
 
+	public void onResume() {
+		registerContentObserver();
+	}
+	
+	public void onPause() {
+		unregisterContentObserver();
+	}
+	
 	private void readFonts() {
 		// Read fonts
 		mTypefaceHandwriting = Typeface.createFromAsset(getContext()
@@ -270,6 +292,8 @@ public class ShoppingListView extends ListView {
 		mCursorItems = getContext().getContentResolver().query(
 				ContainsFull.CONTENT_URI, ShoppingActivity.mStringItems,
 				selection, new String[] { String.valueOf(listId) }, sortOrder);
+		
+		registerContentObserver();
 
 		// Activate the following for a striped list.
 		// setupListStripes(mListItems, this);
@@ -304,6 +328,18 @@ public class ShoppingListView extends ListView {
 						R.id.quantity*/ });
 		setAdapter(adapter);
 		return mCursorItems;
+	}
+
+	/**
+	 * 
+	 */
+	private void registerContentObserver() {
+		getContext().getContentResolver().registerContentObserver(
+				Shopping.Items.CONTENT_URI, true, mContentObserver);
+	}
+	
+	private void unregisterContentObserver() {
+		getContext().getContentResolver().unregisterContentObserver(mContentObserver);
 	}
 
 	private int getSizeFromPrefs() {
@@ -497,6 +533,7 @@ public class ShoppingListView extends ListView {
 		Shopping.addItemToList(getContext(), itemId, mListId, Status.WANT_TO_BUY);
 
 		fillItems(mListId);
+		
 		// Set the item that we have just selected:
 		// Get position of ID:
 		mCursorItems.moveToPosition(-1);
