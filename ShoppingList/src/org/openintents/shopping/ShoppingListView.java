@@ -257,7 +257,9 @@ public class ShoppingListView extends ListView {
 	}
 
 	public void onResume() {
-		registerContentObserver();
+		
+		// Content observer registered at fillItems()
+		//registerContentObserver();
 	}
 	
 	public void onPause() {
