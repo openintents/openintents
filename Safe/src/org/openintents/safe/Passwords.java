@@ -104,11 +104,7 @@ public class Passwords {
 	}
 	
 	public static boolean getPrePopulate() {
-		if (dbHelper != null) {
-			return dbHelper.getPrePopulate();
-		} else {
-			return false;
-		}
+		return dbHelper.getPrePopulate();
 	}
 	
 	public static void clearPrePopulate() {
