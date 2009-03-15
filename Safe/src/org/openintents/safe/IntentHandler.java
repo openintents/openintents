@@ -419,7 +419,7 @@ public class IntentHandler extends Activity {
 
 	@Override
 	protected void onResume() {
-		super.onPause();
+		super.onResume();
 
 		if (debug)
 			Log.d(TAG, "onResume()");
