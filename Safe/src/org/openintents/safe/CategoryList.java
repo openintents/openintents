@@ -90,6 +90,7 @@ public class CategoryList extends ListActivity {
     public static final int REQUEST_ADD_CATEGORY = 2;
     public static final int REQUEST_OPEN_CATEGORY = 3;
     public static final int REQUEST_RESTORE = 4;
+    public static final int REQUEST_ASK_PASSWORD = 5;
     
     protected static final int MSG_IMPORT = 0x101; 
     protected static final int MSG_FILLDATA = MSG_IMPORT + 1; 
@@ -133,6 +134,7 @@ public class CategoryList extends ListActivity {
             }
         }
     };
+    boolean mIntentReceiverRegistered = false;
 
     public Handler myViewUpdateHandler = new Handler(){
     	// @Override
@@ -196,9 +198,9 @@ public class CategoryList extends ListActivity {
 		
 		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
-			startActivity(frontdoor);		
-			finish();
-			return;
+			startActivityForResult(frontdoor, REQUEST_ASK_PASSWORD);		
+			//finish();
+			//return;
     	}
 		
 		try {
@@ -224,6 +226,7 @@ public class CategoryList extends ListActivity {
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction (CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
+        mIntentReceiverRegistered = true;
 
 		fillData();
 
@@ -241,12 +244,13 @@ public class CategoryList extends ListActivity {
 
 		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
-			startActivity(frontdoor);		
-			finish();
-			return;
-    	}
+			startActivityForResult(frontdoor, REQUEST_ASK_PASSWORD);		
+			//finish();
+			//return;
+    	} else {
 
-        showFirstTimeWarningDialog();
+    		showFirstTimeWarningDialog();
+    	}
     }
 
 	/**
@@ -298,7 +302,10 @@ public class CategoryList extends ListActivity {
     @Override
     public void onDestroy() {
 		super.onDestroy();
-		unregisterReceiver(mIntentReceiver);
+		if (mIntentReceiverRegistered) {
+			unregisterReceiver(mIntentReceiver);
+			mIntentReceiverRegistered = false;
+		}
 		if (debug) Log.d(TAG,"onDestroy()");
     }
     @Override
@@ -578,8 +585,8 @@ public class CategoryList extends ListActivity {
 		masterKey=null;
 	    Intent frontdoor = new Intent(this, FrontDoor.class);
 	    frontdoor.setAction(Intent.ACTION_MAIN);
-	    startActivity(frontdoor);
-	    finish();
+	    startActivityForResult(frontdoor, REQUEST_ASK_PASSWORD);
+	    //finish();
     }
     
 	/**
@@ -626,12 +633,34 @@ public class CategoryList extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent i) {
     	super.onActivityResult(requestCode, resultCode, i);
 
+    	switch (requestCode) {
+    	case REQUEST_ADD_CATEGORY:
+    	case REQUEST_OPEN_CATEGORY:
+    	case REQUEST_RESTORE:
+    		if (resultCode == RESULT_OK) {
+        		fillData();
+    		}
+    		break;
+    	case REQUEST_EDIT_CATEGORY:
+    		if (resultCode == RESULT_OK) {
+        		fillData();
+    			setSelection(lastPosition);
+    		}
+    		break;
+    	case REQUEST_ASK_PASSWORD:
+    		if (isSignedIn()==false) {		
+    			finish();
+        	}
+    		break;
+    	}
+    	/*
     	if (resultCode == RESULT_OK) {
     		fillData();
     		if (requestCode==REQUEST_EDIT_CATEGORY) {
     			setSelection(lastPosition);
     		}
     	}
+    	*/
     }
 
     private void prePopulate() {
