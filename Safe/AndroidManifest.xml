@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.safe" 
-    android:versionName="1.1.0-rc1" android:versionCode="5">
+    android:versionName="1.1.0" android:versionCode="6">
     <!-- History:
-    1.0.0 [4]: 2009-02-02 -->
+    1.1.0 [6]: 2009-03-17
+    1.0.0 [4]: 2009-02-02
+     -->
     <application android:icon="@drawable/icon_safe" android:allowClearUserData="true" android:debuggable="true" android:label="@string/app_name">
     	
         <!-- aTrackDog metadata -->

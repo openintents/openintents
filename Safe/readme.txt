@@ -26,7 +26,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2009-03-??
+date: 2009-03-17
 
 - New touch keypad to unlock screen.
 - Fixed "salt" error.
