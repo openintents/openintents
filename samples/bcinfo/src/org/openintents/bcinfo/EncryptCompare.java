@@ -64,6 +64,119 @@ public class EncryptCompare extends Activity {
 	
 	private static String TAG = "EncryptCompare";
 	private static boolean debug = true;
+	/*
+	 * XTEA.java Copyright (c) 2005-2007 Thomas Dixon
+	 * 
+	 * Permission is hereby granted, free of charge, to any person obtaining a
+	 * copy of this software and associated documentation files (the
+	 * "Software"), to deal in the Software without restriction, including
+	 * without limitation the rights to use, copy, modify, merge, publish,
+	 * distribute, sublicense, and/or sell copies of the Software, and to permit
+	 * persons to whom the Software is furnished to do so, subject to the
+	 * following conditions:
+	 * 
+	 * The above copyright notice and this permission notice shall be included
+	 * in all copies or substantial portions of the Software.
+	 * 
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	 * OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	 * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+	 * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	 * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	 * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+	 * USE OR OTHER DEALINGS IN THE SOFTWARE.
+	 */
+
+	public static class XTEA {
+
+		public final int rounds = 32, keySize = 16, blockSize = 8;
+
+		private final int delta = 0x9e3779b9, decryptSum = 0xc6ef3720;
+
+		private int[] subKeys = new int[4];
+
+		public void init(byte[] key) throws InvalidKeyException {
+			if (key == null)
+				throw new InvalidKeyException("Null key");
+
+			if (key.length != keySize)
+				throw new InvalidKeyException(
+						"Invalid key length (req. 16 bytes got " + key.length
+								+ ")");
+
+			subKeys[0] = bytesToIntBig(key, 0);
+			subKeys[1] = bytesToIntBig(key, 4);
+			subKeys[2] = bytesToIntBig(key, 8);
+			subKeys[3] = bytesToIntBig(key, 12);
+		}
+
+		// Expects valid parameters only
+		public void encrypt(byte[] in, int inOff, byte[] out, int outOff) {
+			int v0 = bytesToIntBig(in, inOff), v1 = bytesToIntBig(in, inOff + 4);
+
+			int n = rounds, sum = 0;
+
+			while (n-- > 0) {
+				v0 += ((v1 << 4 ^ v1 >>> 5) + v1) ^ (sum + subKeys[sum & 3]);
+				sum += delta;
+				v1 += ((v0 << 4 ^ v0 >>> 5) + v0)
+						^ (sum + subKeys[sum >>> 11 & 3]);
+			}
+
+			intToBytesBig(v0, out, outOff);
+			intToBytesBig(v1, out, outOff + 4);
+		}
+
+		public void decrypt(byte[] in, int inOff, byte[] out, int outOff) {
+			int v0 = bytesToIntBig(in, inOff), v1 = bytesToIntBig(in, inOff + 4);
+
+			int n = rounds, sum = decryptSum;
+
+			while (n-- > 0) {
+				v1 -= ((v0 << 4 ^ v0 >>> 5) + v0)
+						^ (sum + subKeys[sum >>> 11 & 3]);
+				sum -= delta;
+				v0 -= ((v1 << 4 ^ v1 >>> 5) + v1) ^ (sum + subKeys[sum & 3]);
+			}
+
+			intToBytesBig(v0, out, outOff);
+			intToBytesBig(v1, out, outOff + 4);
+		}
+
+		public byte[] encrypt(byte[] in) {
+			int length=in.length;
+			if ((length % 8)!=0) {
+				// add padding to the next 8
+				length += (8-(length%8));
+			}
+			byte[] out = new byte[in.length];
+			int offset=0;
+			while (offset < in.length) {
+				encrypt(in, offset, out, offset);
+				offset+=8;
+			}
+			return out;
+		}
+
+		public byte[] decrypt(byte[] in) {
+			byte[] out = new byte[blockSize];
+			decrypt(in, 0, out, 0);
+			return out;
+		}
+
+		// Helpers
+		private int bytesToIntBig(byte[] in, int off) {
+			return ((in[off++]) << 24) | ((in[off++] & 0xff) << 16)
+					| ((in[off++] & 0xff) << 8) | ((in[off] & 0xff));
+		}
+
+		private void intToBytesBig(int x, byte[] out, int off) {
+			out[off++] = (byte) (x >>> 24);
+			out[off++] = (byte) (x >>> 16);
+			out[off++] = (byte) (x >>> 8);
+			out[off] = (byte) (x);
+		}
+	}
 
 	protected static final int REQUEST_CODE_PICK_FILE_OR_DIRECTORY = 1;
 
@@ -80,6 +193,7 @@ public class EncryptCompare extends Activity {
     private static final int count = 20;
 
     private String cipherAlgorithms[] = {
+    		"XTEA",
 //    		"AES",	// no such implementation
 //    		"AESCBC",	// implemention not found
     		"PBEWithMD5And128BitAES-CBC-OpenSSL",
@@ -158,6 +272,7 @@ public class EncryptCompare extends Activity {
 		
 		if ((compareThread != null) && (compareThread.isAlive())) {
 			if (debug) Log.d(TAG,"wait for thread");
+			compareThread.interrupt();
 			int maxWaitToDie=500000;
 			try { compareThread.join(maxWaitToDie); } 
 			catch(InterruptedException e){} //  ignore 
@@ -171,7 +286,7 @@ public class EncryptCompare extends Activity {
                 ProgressDialog dialog = new ProgressDialog(this);
                 dialog.setMessage(getString(R.string.compare_progress));
                 dialog.setIndeterminate(false);
-                dialog.setCancelable(false);
+                dialog.setCancelable(true);
                 return dialog;
             }
         }
@@ -196,98 +311,142 @@ public class EncryptCompare extends Activity {
     private void PerformTests(String filename) {
         String results="";
     	
-		TextView resultsView = (TextView)findViewById(R.id.results);
-
 		File file=new File(filename);
     	if (!file.exists()) {
     		results="File does not exist.";
-        	resultsView.setText(results);
+    		sendResults(results);
         	return;
     	}
-    	char[] buf=new char[1024];
-    	try {
-			FileReader reader=new FileReader(filename);
-			reader.read(buf, 0, 1024);
-			reader.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			results=e.getLocalizedMessage();
-        	resultsView.setText(results);
+    	int maxLength=10000000;
+    	int fileSize=(int)file.length();
+    	if (fileSize > maxLength) {
+    		results="File larger than "+maxLength+" bytes.";
+    		sendResults(results);
         	return;
-		} catch (IOException e) {
-			e.printStackTrace();
-			results=e.getLocalizedMessage();
-        	resultsView.setText(results);
-        	return;
-		}
+    	}
+    	int chunkSize=262144;
+    	if (debug) Log.d(TAG,"PerformTests: fileSize="+fileSize+", chunkSize="+chunkSize);
+    	results+="fileSize="+fileSize+", chunkSize="+chunkSize+"\n";
+    	char[] buf=new char[chunkSize];
         for (int i=0; i<cipherAlgorithms.length; i++) {
-        	results += "Testing "+cipherAlgorithms[i]+"\n";
-//        	resultsView.setText(results);
-        	results += encryptTest(cipherAlgorithms[i],buf,"1234567890");
-        	results += "\n";
-//        	resultsView.setText(results);
-        	
-			Message m = new Message();
-			m.what = EncryptCompare.MSG_COMPARE;
-			Bundle b = new Bundle();
-			b.putString("results", results);
-			m.setData(b);
-			EncryptCompare.this.myViewUpdateHandler.sendMessage(m); 
+        	try {
+    			FileReader reader=new FileReader(filename);
+    			int offset=0;
+    			int numRead=0;
+    			boolean result=true;
+            	results += "Testing "+cipherAlgorithms[i]+"\n";
+            	long startTime=System.currentTimeMillis();
+            	
+    			while ((numRead=reader.read(buf, 0, chunkSize))!=-1) {
+    		    	if (debug) Log.d(TAG,"PerformTests: offset="+offset);
+                	result = encryptTest(cipherAlgorithms[i],buf,"1234567890123456");
+                	offset+=numRead;
+                	if (result==false) {
+                		results += "encryption failed";
+                		break;
+                	}
+        	    	if (compareThread.isInterrupted()) {
+        	    		return;
+        	    	}
+    			}
 
+    			long endTime=System.currentTimeMillis();
+    	    	long runTime=endTime-startTime;
+    	    	results += "\nRun time: "+runTime+"ms\n";
+
+            	results += "\n";
+    			reader.close();
+    		} catch (FileNotFoundException e) {
+    			e.printStackTrace();
+    			results=e.getLocalizedMessage();
+        		sendResults(results);
+            	return;
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    			results=e.getLocalizedMessage();
+        		sendResults(results);
+            	return;
+    		}
+
+    		sendResults(results);
+        	
+	    	if (compareThread.isInterrupted()) {
+	    		return;
+	    	}
         }
     }
+    
+    private void sendResults(String results) {
+		Message m = new Message();
+		m.what = EncryptCompare.MSG_COMPARE;
+		Bundle b = new Bundle();
+		b.putString("results", results);
+		m.setData(b);
+		EncryptCompare.this.myViewUpdateHandler.sendMessage(m); 
+    }
+    
 
-    private String encryptTest(String algorithm, char[] buf, String password) {
-    	String results="";
-    	Log.d(TAG,"EncryptTest("+algorithm+")");
+    private boolean encryptTest(String algorithm, char[] buf, String password) {
+    	if (debug) Log.d(TAG,"EncryptTest("+algorithm+")");
     	
-    	long startTime=System.currentTimeMillis();
-    	
-        PBEKeySpec pbeKeySpec;
-        PBEParameterSpec pbeParamSpec;
-        SecretKey pbeKey;
-        Cipher pbeCipher;
+	    int repetitions=1;
+	    boolean result=false;;
 
-        pbeParamSpec = new PBEParameterSpec(salt,count);
-		pbeKeySpec = new PBEKeySpec(password.toCharArray());
-		
-		byte[] plaintext = charsToBytes(buf);
-    	try {
-		    keyFac = SecretKeyFactory
-		    .getInstance(algorithm,"BC");
-		    pbeKey = keyFac.generateSecret(pbeKeySpec);
-		    pbeCipher = Cipher
-		    .getInstance(algorithm,"BC");
+	    if (algorithm.compareTo("XTEA")==0) {
+			XTEA x = new XTEA();
+			try {
+				x.init(password.getBytes());
+				byte[] plaintext = charsToBytes(buf);
+				result=true;  // assume success
+			    for (int i=0; i<repetitions; i++) {
+			    	byte[] out = x.encrypt(plaintext);
+			    	if (out.length != plaintext.length) {
+			    		result=false;
+			    	}
+			    }
+			} catch (InvalidKeyException e) {
+				e.printStackTrace();
+			}
 
-		    int repetitions=100;
-		    boolean result=false;;
-		    for (int i=0; i<repetitions; i++) {
-		        result=encryptBuffer(pbeCipher, pbeKey,pbeParamSpec, plaintext);
-		    }
-		    if (result==true) {
-		    	results="OK";
-		    }else{
-		    	results="Fail";
-		    }
-		} catch (NoSuchAlgorithmException e) {
-			results=e.getLocalizedMessage();
-			e.printStackTrace();
-		} catch (NoSuchProviderException e) {
-			results=e.getLocalizedMessage();
-			e.printStackTrace();
-		} catch (InvalidKeySpecException e) {
-			results=e.getLocalizedMessage();
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			results=e.getLocalizedMessage();
-			e.printStackTrace();
-		}
+    	} else {
+	        PBEKeySpec pbeKeySpec;
+	        PBEParameterSpec pbeParamSpec;
+	        SecretKey pbeKey;
+	        Cipher pbeCipher;
+	
+	        pbeParamSpec = new PBEParameterSpec(salt,count);
+			pbeKeySpec = new PBEKeySpec(password.toCharArray());
+			
+			byte[] plaintext = charsToBytes(buf);
+	    	try {
+			    keyFac = SecretKeyFactory
+			    .getInstance(algorithm,"BC");
+			    pbeKey = keyFac.generateSecret(pbeKeySpec);
+			    pbeCipher = Cipher
+			    .getInstance(algorithm,"BC");
+	
+			    for (int i=0; i<repetitions; i++) {
+			        result=encryptBuffer(pbeCipher, pbeKey,pbeParamSpec, plaintext);
+			    	if (compareThread.isInterrupted()) {
+			    		return false;
+			    	}
+			    }
+			} catch (NoSuchAlgorithmException e) {
+				result=false;
+				e.printStackTrace();
+			} catch (NoSuchProviderException e) {
+				result=false;
+				e.printStackTrace();
+			} catch (InvalidKeySpecException e) {
+				result=false;
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				result=false;
+				e.printStackTrace();
+			}
+    	}
 
-    	long endTime=System.currentTimeMillis();
-    	long runTime=endTime-startTime;
-    	results += "\nRun time: "+runTime+"ms\n";
-
-		return results;
+		return result;
     }
 
     private boolean encryptBuffer(Cipher pbeCipher, SecretKey pbeKey,
