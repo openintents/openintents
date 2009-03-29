@@ -16,7 +16,7 @@
 package org.openintents.intents;
 
 /**
- * @version Jan 11, 2008, 11:50 UTC
+ * @version March 29, 2009, 22:26 UTC
  * 
  * @author Isaac Potoczny-Jones
  * @author Peli
@@ -27,6 +27,10 @@ public class CryptoIntents {
 	/**
 	 * Activity Action: Encrypt all strings given in the extra(s) EXTRA_TEXT or
 	 * EXTRA_TEXT_ARRAY.
+	 * 
+	 * If a file URI is given, the file is encrypted.
+	 * The new file URI is returned.
+	 * 
 	 * Returns all encrypted string in the same extra(s).
 	 * 
 	 * <p>Constant Value: "org.openintents.action.ENCRYPT"</p>
@@ -36,6 +40,10 @@ public class CryptoIntents {
 	/**
 	 * Activity Action: Decrypt all strings given in the extra TEXT or
 	 * EXTRA_TEXT_ARRAY.
+	 * 
+	 * If a file URI is given, the file is decrypted.
+	 * The new file URI is returned.
+	 * 
 	 * Returns all decrypted string in the same extra(s).
 	 * 
 	 * <p>Constant Value: "org.openintents.action.DECRYPT"</p>

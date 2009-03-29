@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.safe" 
-    android:versionName="1.1.0" android:versionCode="6">
+    android:versionName="1.1.1" android:versionCode="7">
     <!-- History:
     1.1.0 [6]: 2009-03-17
     1.0.0 [4]: 2009-02-02
@@ -10,7 +10,7 @@
     	
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="5" />
+           android:value="7" />
         
         <!-- OI About metadata -->
 		<meta-data android:name="org.openintents.metadata.COMMENTS"
@@ -48,10 +48,20 @@
                 <action android:name="org.openintents.action.ENCRYPT" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
+        	<intent-filter android:label="@string/intent_encrypt">
+                <action android:name="org.openintents.action.ENCRYPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+        		<data android:scheme="file" />
+            </intent-filter>
         	<intent-filter android:label="@string/intent_decrypt">
                 <action android:name="org.openintents.action.DECRYPT" />
                 <category android:name="android.intent.category.DEFAULT" />
         	</intent-filter>
+        	<intent-filter android:label="@string/intent_decrypt">
+                <action android:name="org.openintents.action.DECRYPT" />
+                <category android:name="android.intent.category.DEFAULT" />
+        		<data android:scheme="file" />
+            </intent-filter>
         	<intent-filter android:label="@string/intent_get_password">
                 <action android:name="org.openintents.action.GET_PASSWORD" />
                 <category android:name="android.intent.category.DEFAULT" />

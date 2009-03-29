@@ -17,7 +17,11 @@
 package org.openintents.safe;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.security.DigestInputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -37,7 +41,12 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
+import android.content.ContentResolver;
+import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
+import estreamj.ciphers.trivium.Trivium;
+import estreamj.framework.ESJException;
 
 /**
  * Crypto helper class.
@@ -537,5 +546,216 @@ public class CryptoHelper {
 		}
 		
 		return new String(plaintext);
+    }
+    
+
+    /**
+     * encrypt a string using a random session key
+     * 
+     * @author Peli
+     * 
+     * @param plaintext
+     * @return encrypted String
+     * @throws Exception
+     */
+    public Uri encryptFileWithSessionKey(ContentResolver contentResolver, Uri fileUri) throws CryptoHelperException {
+    	Log.i(TAG, "Encrypt with session key");
+		status=false; // assume failure
+		if(password == null) {
+		    String msg = "Must call setPassword before runing encrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+		
+		String outputPath = "";
+		try {
+			InputStream is;
+			if (fileUri.getScheme().equals("file")) {
+				is = new java.io.FileInputStream(fileUri.getPath());
+				outputPath = fileUri.getPath() + ".oisafe";
+			} else {
+				is = contentResolver.openInputStream(fileUri);
+				outputPath = Environment
+				.getExternalStorageDirectory().toString() + "/test.abc";
+			}
+			
+			FileOutputStream os = new FileOutputStream(outputPath);
+	
+			
+			byte[] cipherSessionKey = {};
+			byte[] ciphertext = {};
+			
+			// First create a session key
+			SecretKey sessionKey = null;
+			byte[] sessionKeyEncoded = null;
+			String sessionKeyString = null;
+			try {
+				KeyGenerator keygen;
+				keygen = KeyGenerator.getInstance("AES");
+				keygen.init(256); // needs 96 bytes
+				//keygen.init(128); // needs 64 bytes
+				sessionKey = keygen.generateKey();
+				sessionKeyEncoded = sessionKey.getEncoded();
+				sessionKeyString = new String(sessionKeyEncoded);
+			} catch (NoSuchAlgorithmException e) {
+				Log.e(TAG,"generateMasterKey(): "+e.toString());
+			}
+			    
+			// Encrypt the session key using the master key
+		    try {
+				pbeCipher.init(Cipher.ENCRYPT_MODE, pbeKey, pbeParamSpec);
+			    cipherSessionKey = pbeCipher.doFinal(sessionKeyEncoded);
+			} catch (IllegalBlockSizeException e) {
+			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+			} catch (BadPaddingException e) {
+			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+			} catch (InvalidKeyException e) {
+			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+			} catch (InvalidAlgorithmParameterException e) {
+			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
+			}
+	
+			String stringCipherVersion = "A";
+			byte[] bytesCipherVersion = stringCipherVersion.getBytes();
+			os.write(bytesCipherVersion, 0, bytesCipherVersion.length);
+	
+			os.write(cipherSessionKey, 0, cipherSessionKey.length);
+	
+			Log.d(TAG, "bytesCipherVersion.length: " + bytesCipherVersion.length);
+			Log.d(TAG, "cipherSessionKey.length: " + cipherSessionKey.length);
+			
+			Trivium tri = new Trivium();
+			try {
+			    tri.setupKey(Trivium.MODE_ENCRYPT,
+			    		sessionKeyEncoded, 0);
+				tri.setupNonce(sessionKeyEncoded, 10);
+				
+				// Create the byte array to hold the data
+				final int bytesLen = 4096; // buffer length
+				byte[] bytesIn = new byte[bytesLen];
+				byte[] bytesOut = new byte[bytesLen];
+	
+				int offset = 0;
+				int numRead = 0;
+				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
+					if ((numRead | 3) != 0) {
+						Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
+					}
+					
+				    tri.process(bytesIn, 0,
+				    		bytesOut, 0, numRead);
+				    
+					os.write(bytesOut, 0, numRead);
+					offset += numRead;
+				}
+				
+				// Ensure all the bytes have been read in
+				if (offset < is.available()) {
+					throw new IOException("Could not completely read file ");
+				}
+	
+				// Close the input stream and return bytes
+				is.close();
+				os.close();
+				
+		    } catch (ESJException e) {
+				Log.e(TAG, "Error encrypting file", e);
+	    	}
+		} catch (FileNotFoundException e) {
+			Log.e(TAG, "File not found", e);
+		} catch (IOException e) {
+			Log.e(TAG, "IO Exception", e);
+		}
+		    
+		return Uri.parse("file://" + outputPath);
+    }
+
+    /**
+     * unencrypt encrypted string previously encrypted with
+     * encryptWithSessionKey()
+     * 
+     * @author Peli
+     * 
+     * @param ciphertext
+     * @return decrypted String
+     * @throws Exception
+     */
+    public Uri decryptFileWithSessionKey(Uri fileUri) throws CryptoHelperException {
+		/*
+    	status=false; // assume failure
+		if(password == null) {
+		    String msg = "Must call setPassword before running decrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+	
+		if ((ciphertext==null) || (ciphertext=="")) {
+			return "";
+		}
+		String cipherVersion = null;
+		String cipherSessionKey = null;
+		
+		// Split cipher into session key and text
+		try {
+			cipherVersion = ciphertext.substring(0,1);
+			if (cipherVersion.equals("A")) {
+				cipherSessionKey = ciphertext.substring(1,97); // 64 if init(128) had been chosen
+				ciphertext = ciphertext.substring(97);
+			} else {
+				Log.e(TAG, "Unknown cipher version" + cipherVersion);
+				return "";
+			}
+		} catch (IndexOutOfBoundsException e) {
+			Log.e(TAG, "Invalid ciphertext (with session key)");
+			return "";
+		}
+		
+		// Decrypt the session key
+		byte[] byteCipherSessionKey=hexStringToBytes(cipherSessionKey);
+		byte[] byteSessionKey = {};
+		
+		try {
+		    pbeCipher.init(Cipher.DECRYPT_MODE, pbeKey, pbeParamSpec);
+		    byteSessionKey = pbeCipher.doFinal(byteCipherSessionKey);
+		    status=true;
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		}
+
+		// Convert the session key into a Pbe key
+		String stringSessionKey = new String(byteSessionKey);
+		PBEKeySpec sessionPbeKeySpec = new PBEKeySpec(stringSessionKey.toCharArray());
+		SecretKey sessionPbeKey = null;
+		try {
+		    sessionPbeKey = keyFac.generateSecret(sessionPbeKeySpec);
+		} catch (InvalidKeySpecException e) {
+		    Log.e(TAG,"setPassword(): "+e.toString());
+		}
+
+		// Use the session key to decrypt the text
+		byte[] byteCiphertext=hexStringToBytes(ciphertext);
+		byte[] plaintext = {};
+		
+		try {
+		    pbeCipher.init(Cipher.DECRYPT_MODE, sessionPbeKey, pbeParamSpec);
+		    plaintext = pbeCipher.doFinal(byteCiphertext);
+		    status=true;
+		} catch (IllegalBlockSizeException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (BadPaddingException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidKeyException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		} catch (InvalidAlgorithmParameterException e) {
+		    Log.e(TAG,"decrypt(): "+e.toString());
+		}
+		
+		return new String(plaintext);
+		*/
+    	return null;
     }
 }

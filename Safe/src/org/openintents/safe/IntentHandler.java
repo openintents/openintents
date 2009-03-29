@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -270,6 +271,14 @@ public class IntentHandler extends Activity {
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
 			
+			if (thisIntent.getData() != null) {
+				// Encrypt file
+				Uri fileUri = thisIntent.getData();
+				
+				Uri newFileUri = ch.encryptFileWithSessionKey(getContentResolver(), fileUri);
+				
+				callbackIntent.setData(newFileUri);
+			}
 			// Support for binary fields could be added here (like images?)
 			
 			callbackResult = RESULT_OK;

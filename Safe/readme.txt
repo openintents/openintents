@@ -25,7 +25,14 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.1
+release: 1.1.1
+date: 2009-??
+
+- Add support for file encryption.
+- Add Trivium stream cipher.
+
+---------------------------------------------------------
+release: 1.1.0
 date: 2009-03-17
 
 - New touch keypad to unlock screen.
