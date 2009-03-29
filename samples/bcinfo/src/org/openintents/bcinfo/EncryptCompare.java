@@ -16,9 +16,6 @@
  */
 package org.openintents.bcinfo;
 
-import org.openintents.intents.FileManagerIntents;
-
-import java.lang.System;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -39,6 +36,8 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
+import org.openintents.intents.FileManagerIntents;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -47,7 +46,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -59,6 +57,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import estreamj.ciphers.trivium.Trivium;
+import estreamj.framework.ESJException;
 
 public class EncryptCompare extends Activity {
 	
@@ -194,6 +194,7 @@ public class EncryptCompare extends Activity {
 
     private String cipherAlgorithms[] = {
     		"XTEA",
+    		"Trivium",
 //    		"AES",	// no such implementation
 //    		"AESCBC",	// implemention not found
     		"PBEWithMD5And128BitAES-CBC-OpenSSL",
@@ -324,7 +325,7 @@ public class EncryptCompare extends Activity {
     		sendResults(results);
         	return;
     	}
-    	int chunkSize=262144;
+    	int chunkSize=262144;//1024;//262144;
     	if (debug) Log.d(TAG,"PerformTests: fileSize="+fileSize+", chunkSize="+chunkSize);
     	results+="fileSize="+fileSize+", chunkSize="+chunkSize+"\n";
     	char[] buf=new char[chunkSize];
@@ -407,6 +408,25 @@ public class EncryptCompare extends Activity {
 			} catch (InvalidKeyException e) {
 				e.printStackTrace();
 			}
+
+    	} else if (algorithm.compareTo("Trivium")==0) {
+			Trivium tri = new Trivium();
+			try {
+			    tri.setupKey(Trivium.MODE_ENCRYPT,
+					password.getBytes(), 0);
+				byte[] nonce = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }; // just for testing
+				tri.setupNonce(nonce, 0);
+				byte[] plaintext = charsToBytes(buf);
+				result=true;  // assume success
+			    for (int i=0; i<repetitions; i++) {
+			    	byte[] out = new byte[plaintext.length];
+			    		tri.process(plaintext, 0,
+			    			out, 0, plaintext.length);
+			    	
+			    }
+		    } catch (ESJException e) {
+	    		result=false;
+	    	}
 
     	} else {
 	        PBEKeySpec pbeKeySpec;
