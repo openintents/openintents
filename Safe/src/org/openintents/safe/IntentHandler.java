@@ -272,7 +272,7 @@ public class IntentHandler extends Activity {
 			}
 			
 			if (thisIntent.getData() != null) {
-				// Encrypt file
+				// Encrypt file from file URI
 				Uri fileUri = thisIntent.getData();
 				
 				Uri newFileUri = ch.encryptFileWithSessionKey(getContentResolver(), fileUri);
@@ -318,7 +318,15 @@ public class IntentHandler extends Activity {
 				}
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
-			
+
+			if (thisIntent.getData() != null) {
+				// Decrypt file from file URI
+				Uri fileUri = thisIntent.getData();
+				
+				Uri newFileUri = ch.decryptFileWithSessionKey(getContentResolver(), fileUri);
+				
+				callbackIntent.setData(newFileUri);
+			}
 			// Support for binary fields could be added here (like images?)
 			
 			callbackResult = RESULT_OK;
