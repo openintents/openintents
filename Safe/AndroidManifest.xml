@@ -96,6 +96,8 @@
                 <action android:name="org.openintents.safe.service.ServiceDispatchImpl" />
             </intent-filter> 
         </service>    
+        
+    	<provider android:name=".CryptoContentProvider" android:authorities="org.openintents.safe"></provider>
     </application> 
 
     <permission android:name="org.openintents.safe.ACCESS_INTENTS"
