@@ -1,7 +1,11 @@
 
 package estreamj.ciphers.trivium;
 
-import estreamj.framework.*;
+import estreamj.framework.ESJException;
+import estreamj.framework.Engine;
+import estreamj.framework.ICipher;
+import estreamj.framework.ICipherMaker;
+import estreamj.framework.Utils;
 
 public class Trivium implements ICipher 
 {
@@ -81,7 +85,8 @@ public class Trivium implements ICipher
         // NOTE: could save some code memory by merging the two blocks, but that
         // would decrease the speed because of additional conditional jumps...
         outEnd = outOfs + (len & 3);
-        if (0 < outEnd)
+        //if (0 < outEnd)
+        if (outOfs < outEnd) // Peli: Apr 3, 2009: BUGFIX
         {
         	int t1, t2, t3, reg;
         	

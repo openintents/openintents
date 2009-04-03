@@ -637,8 +637,8 @@ public class CryptoHelper {
 				int offset = 0;
 				int numRead = 0;
 				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
-					if ((numRead | 3) != 0) {
-						Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
+					if ((numRead & 3) != 0) {
+						Log.d(TAG, "Bytes read is inappropriate number: " + numRead + " : " + (numRead | 3));
 					}
 					
 				    tri.process(bytesIn, 0,
@@ -777,7 +777,7 @@ public class CryptoHelper {
 				int offset = 0;
 				numRead = 0;
 				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
-					if ((numRead | 3) != 0) {
+					if ((numRead & 3) != 0) {
 						Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
 					}
 					
