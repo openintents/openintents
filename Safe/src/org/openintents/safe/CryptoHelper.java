@@ -41,6 +41,8 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
+import org.openintents.util.SecureDelete;
+
 import android.content.ContentResolver;
 import android.net.Uri;
 import android.os.Environment;
@@ -657,6 +659,9 @@ public class CryptoHelper {
 				is.close();
 				os.close();
 				
+				// Securely delete the original file:
+				SecureDelete.delete(new File(fileUri.getPath()));
+				
 		    } catch (ESJException e) {
 				Log.e(TAG, "Error encrypting file", e);
 	    	}
@@ -796,6 +801,9 @@ public class CryptoHelper {
 				// Close the input stream and return bytes
 				is.close();
 				os.close();
+
+				// Securely delete the original file:
+				SecureDelete.delete(new File(fileUri.getPath()));
 				
 		    } catch (ESJException e) {
 				Log.e(TAG, "Error encrypting file", e);
