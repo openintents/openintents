@@ -28,6 +28,7 @@ To obtain the current release, visit
 release: 1.1.1
 date: 2009-??
 
+- Secure deletion of CSV files after import.
 - Add support for file encryption.
 - Add Trivium stream cipher.
 

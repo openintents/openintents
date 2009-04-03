@@ -31,7 +31,7 @@ import org.openintents.intents.CryptoIntents;
 import org.openintents.safe.dialog.DialogHostingActivity;
 import org.openintents.safe.service.ServiceDispatchImpl;
 import org.openintents.util.IntentUtils;
-
+import org.openintents.util.SecureDelete;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -50,8 +50,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.View;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -158,7 +158,8 @@ public class CategoryList extends ListActivity {
 			    			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 			    				public void onClick(DialogInterface dialog, int whichButton) {
 			    					File csvFile=new File(importedFilename);
-			    					csvFile.delete();
+			    					//csvFile.delete();
+			    					SecureDelete.delete(csvFile);
 			    					importedFilename="";
 			    				}
 			    			})
