@@ -44,6 +44,7 @@ import javax.crypto.spec.PBEParameterSpec;
 import org.openintents.util.SecureDelete;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
@@ -63,7 +64,7 @@ import estreamj.framework.ESJException;
  */
 public class CryptoHelper {
 
-	private static final boolean debug = false;
+	private static final boolean debug = true;
     private static String TAG = "CryptoHelper";
     protected static PBEKeySpec pbeKeySpec;
     protected static PBEParameterSpec pbeParamSpec;
@@ -684,33 +685,39 @@ public class CryptoHelper {
      * @return decrypted String
      * @throws Exception
      */
-    public Uri decryptFileWithSessionKey(ContentResolver contentResolver, Uri fileUri) throws CryptoHelperException {
+    public Uri decryptFileWithSessionKey(Context ctx, ContentResolver contentResolver, Uri fileUri) throws CryptoHelperException {
 		Log.d(TAG, "decryptFileWithSessionKey");
+		Log.d(TAG, "fileUri="+fileUri.toString());
     	status=false; // assume failure
 		if(password == null) {
 		    String msg = "Must call setPassword before running decrypt.";
 		    throw new CryptoHelperException(msg);
 		}
 
-		String outputPath = "";
+		String decryptSession;
+		try {
+			decryptSession=generateSalt();
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		    String msg = "Decrypt error: "+e1.getLocalizedMessage();
+		    throw new CryptoHelperException(msg);
+		}
+		String outputFile = "";
 		try {
 			InputStream is;
 			if (fileUri.getScheme().equals("file")) {
 				is = new java.io.FileInputStream(fileUri.getPath());
-				String encryptedFile = fileUri.getPath();
-				outputPath = fileUri.getPath() + ".decrypted";
-				if (encryptedFile.endsWith(".oisafe")) {
-					outputPath = encryptedFile.substring(0, encryptedFile.length() - 7);
-				}
-				Log.d(TAG, "Decrypt: Input from " + fileUri.getPath());
-				Log.d(TAG, "Decrypt: Output to " + outputPath);
+				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.getPath());
 			} else {
 				is = contentResolver.openInputStream(fileUri);
-				outputPath = Environment
-				.getExternalStorageDirectory().toString() + "/tmp.decrypted";
+				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.toString());
 			}
-			
-			FileOutputStream os = new FileOutputStream(outputPath);
+			outputFile = CryptoContentProvider.SESSION_FILE+"."+decryptSession;
+			if (debug) Log.d(TAG, "Decrypt: Output to " + outputFile);
+			String cache=Environment.getDownloadCacheDirectory().getAbsolutePath();
+			if (debug) Log.d(TAG, "Decrypt: cache=" + cache);
+			FileOutputStream os = ctx.openFileOutput(outputFile,
+					Context.MODE_PRIVATE);
 	
 			int numReadTotal = 0;
 			int numRead = 0;
@@ -719,7 +726,7 @@ public class CryptoHelper {
 			while ((numRead = is.read(byteCipherVersion, numRead, 
 					byteCipherVersion.length - numRead)) >= 0
 					&& numReadTotal < byteCipherVersion.length) {
-				Log.d(TAG, "read bytes: " + numRead);
+				if (debug) Log.d(TAG, "read bytes: " + numRead);
 				numReadTotal += numRead;
 			}
 			String cipherVersion = new String(byteCipherVersion);
@@ -728,7 +735,7 @@ public class CryptoHelper {
 				
 			// Split cipher into session key and text
 			try {
-				Log.d(TAG, "cipherVersion : " + cipherVersion);
+				if (debug) Log.d(TAG, "cipherVersion : " + cipherVersion);
 				if (cipherVersion.equals("A")) {
 	
 					numRead = 0;
@@ -738,7 +745,7 @@ public class CryptoHelper {
 					while ((numRead = is.read(byteCipherSessionKey, numRead, 
 							byteCipherSessionKey.length - numRead)) >= 0
 							&& numReadTotal < byteCipherSessionKey.length) {
-						Log.d(TAG, "read bytes sessionKey: " + numRead);
+						if (debug) Log.d(TAG, "read bytes sessionKey: " + numRead);
 						numReadTotal += numRead;
 					}
 				} else {
@@ -783,7 +790,7 @@ public class CryptoHelper {
 				numRead = 0;
 				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
 					if ((numRead & 3) != 0) {
-						Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
+						if (debug) Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
 					}
 					
 				    tri.process(bytesIn, 0,
@@ -803,7 +810,7 @@ public class CryptoHelper {
 				os.close();
 
 				// Securely delete the original file:
-				SecureDelete.delete(new File(fileUri.getPath()));
+//				SecureDelete.delete(new File(fileUri.getPath()));
 				
 		    } catch (ESJException e) {
 				Log.e(TAG, "Error encrypting file", e);
@@ -814,6 +821,8 @@ public class CryptoHelper {
 		} catch (IOException e) {
 			Log.e(TAG, "IOException", e);
 		}
-		return Uri.parse("file://" + outputPath); // TODO: UUEncode
+//		return Uri.parse("file://" + outputPath); // TODO: UUEncode
+		Uri uri=Uri.withAppendedPath(CryptoContentProvider.CONTENT_URI, "decrypt/" + decryptSession);
+		return uri;
     }
 }

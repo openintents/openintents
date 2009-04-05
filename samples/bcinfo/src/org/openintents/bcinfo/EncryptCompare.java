@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
+import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.spec.InvalidKeySpecException;
@@ -30,6 +31,7 @@ import java.util.List;
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -193,8 +195,10 @@ public class EncryptCompare extends Activity {
     private static final int count = 20;
 
     private String cipherAlgorithms[] = {
-    		"XTEA",
     		"Trivium",
+    		"Blowfish",
+    		"DES",
+    		"XTEA",
 //    		"AES",	// no such implementation
 //    		"AESCBC",	// implemention not found
     		"PBEWithMD5And128BitAES-CBC-OpenSSL",
@@ -408,7 +412,64 @@ public class EncryptCompare extends Activity {
 			} catch (InvalidKeyException e) {
 				e.printStackTrace();
 			}
+	    }else if (algorithm.compareTo("DES")==0) {
+	        KeyGenerator kg;
+			try {
+				result=false;
+				kg = KeyGenerator.getInstance("DES");
+		        Cipher c = Cipher.getInstance("DES/CBC/PKCS5Padding");
+		        Key key = kg.generateKey();
+	
+		        c.init(Cipher.ENCRYPT_MODE, key);
+		        byte input[] = charsToBytes(buf);
+		        byte encrypted[] = c.doFinal(input);
+		        byte iv[] = c.getIV();
+		        result=true;
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }else if (algorithm.compareTo("Blowfish")==0) {
+	    	try {
+				result=false;
+		    	KeyGenerator keyGenerator = KeyGenerator.getInstance("Blowfish");
+		        keyGenerator.init(128);
+	
+		        Key key = keyGenerator.generateKey();
+	
+		        Cipher cipher = Cipher.getInstance("Blowfish/ECB/PKCS5Padding");
+		        cipher.init(Cipher.ENCRYPT_MODE, key);
+				result=true;
 
+	        byte[] ciphertext = cipher.doFinal(charsToBytes(buf));
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     	} else if (algorithm.compareTo("Trivium")==0) {
 			Trivium tri = new Trivium();
 			try {
@@ -427,7 +488,6 @@ public class EncryptCompare extends Activity {
 		    } catch (ESJException e) {
 	    		result=false;
 	    	}
-
     	} else {
 	        PBEKeySpec pbeKeySpec;
 	        PBEParameterSpec pbeParamSpec;
