@@ -57,8 +57,8 @@ public class IntentHandler extends Activity {
 	
 	private String salt;
 	private String masterKey;
-	public static CryptoHelper ch; // TODO Peli: Could clean this up by moving it into a singleton? Or at least a separate static class?
-
+	private CryptoHelper ch;
+	
 	// service elements
     private ServiceDispatch service;
     private ServiceDispatchConnection conn;
@@ -543,6 +543,7 @@ public class IntentHandler extends Activity {
 		public void onServiceDisconnected(ComponentName className)
 		{
 			service = null;
+			
 			if (debug) Log.d( TAG,"onServiceDisconnected" );
 		}
 	};

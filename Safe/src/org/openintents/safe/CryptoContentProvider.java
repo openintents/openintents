@@ -19,6 +19,8 @@ package org.openintents.safe;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+import org.openintents.safe.service.ServiceDispatchImpl;
+
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -133,7 +135,7 @@ public class CryptoContentProvider extends ContentProvider {
 			        // TODO: Check that sessionKey is valid.
 			        
 			        // Decrypt file
-			        CryptoHelper ch = IntentHandler.ch; // Use the global crypto helper that is connected to the single service we have.
+			        CryptoHelper ch = ServiceDispatchImpl.ch; // Use the global crypto helper that is connected to the single service we have.
 			        
 			        Log.d(TAG, "Original file path: " + originalFile);
 			        
