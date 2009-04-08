@@ -40,6 +40,7 @@ public class CryptoContentProvider extends ContentProvider {
 	
 	private static final int ENCRYPT_ID = 2;
 	private static final int DECRYPT_ID = 3;
+	private static final int DECRYPT_FILE_ID = 4;
 
 	private static final UriMatcher sUriMatcher;
 
@@ -47,6 +48,7 @@ public class CryptoContentProvider extends ContentProvider {
 		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		sUriMatcher.addURI(AUTHORITY, "encrypt/*", ENCRYPT_ID);
 		sUriMatcher.addURI(AUTHORITY, "decrypt/*", DECRYPT_ID);
+		sUriMatcher.addURI(AUTHORITY, "decryptfile", DECRYPT_FILE_ID); // [Peli] can be renamed to "decrypt/*" if first two options are made obsolete
 	}
 	
 	@Override
@@ -105,6 +107,7 @@ public class CryptoContentProvider extends ContentProvider {
 			String path=filesDir;
 			String cryptSession;
 			String sessionFile;
+			String originalFile;
 	        int modeBits = 0;
 			switch (sUriMatcher.match(uri)) {
 				case ENCRYPT_ID:
@@ -121,6 +124,28 @@ public class CryptoContentProvider extends ContentProvider {
 			        cryptSession = uri.getPathSegments().get(1);
 			        sessionFile=SESSION_FILE+"."+cryptSession;
 			        path += "/"+sessionFile;
+					break;
+				case DECRYPT_FILE_ID:
+					if (debug) Log.d(TAG,"openFile: DECRYPT_FILE");
+			        modeBits = ParcelFileDescriptor.MODE_READ_ONLY;
+			        originalFile = "file://" + uri.getQueryParameter("file");
+			        String sessionKey = uri.getQueryParameter("sessionkey");
+			        // TODO: Check that sessionKey is valid.
+			        
+			        // Decrypt file
+			        CryptoHelper ch = IntentHandler.ch; // Use the global crypto helper that is connected to the single service we have.
+			        
+			        Log.d(TAG, "Original file path: " + originalFile);
+			        
+			        if (ch == null) {
+			        	throw new CryptoHelperException("CryptoHelper not available. Are you logged in?");
+			        }
+			        Log.d(TAG, "Decrypt..");
+			        Uri newuri = ch.decryptFileWithSessionKey(this.getContext(), Uri.parse(originalFile));
+			        cryptSession = newuri.getPathSegments().get(1);
+			        sessionFile=SESSION_FILE+"."+cryptSession;
+			        path += "/"+sessionFile;
+			        Log.d(TAG, "New path: " + path);
 					break;
 				default:
 					throw new IllegalArgumentException("Unknown URI " + uri);
@@ -143,6 +168,10 @@ public class CryptoContentProvider extends ContentProvider {
 			throw e;
 		} catch (IllegalArgumentException e) {
 			throw e;
+		} catch (CryptoHelperException e) {
+			if (debug) Log.d(TAG,"openFile: CryptoHelperException");
+			pfd = null;
+			//throw e;
 		}
 
 		return pfd;

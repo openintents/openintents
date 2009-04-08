@@ -822,7 +822,9 @@ public class CryptoHelper {
 				os.close();
 
 				// Securely delete the original file:
-				SecureDelete.delete(new File(fileUri.getPath()));
+				
+				// TODO Peli: Only delete if this is not a decryption through ContentProvider.
+				// SecureDelete.delete(new File(fileUri.getPath()));
 
 				status=true;
 				

@@ -57,7 +57,7 @@ public class IntentHandler extends Activity {
 	
 	private String salt;
 	private String masterKey;
-	private CryptoHelper ch;
+	public static CryptoHelper ch; // TODO Peli: Could clean this up by moving it into a singleton? Or at least a separate static class?
 
 	// service elements
     private ServiceDispatch service;
