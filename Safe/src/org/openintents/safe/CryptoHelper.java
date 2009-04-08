@@ -553,16 +553,18 @@ public class CryptoHelper {
     
 
     /**
-     * encrypt a string using a random session key
+     * encrypt a file using a random session key
      * 
      * @author Peli
      * 
-     * @param plaintext
-     * @return encrypted String
+     * @param contentResolver is used to be able to read the stream
+     * @param fileUri is the stream or file to read from
+     * @return Uri to the created plaintext file
      * @throws Exception
      */
-    public Uri encryptFileWithSessionKey(ContentResolver contentResolver, Uri fileUri) throws CryptoHelperException {
-    	Log.i(TAG, "Encrypt with session key");
+    public Uri encryptFileWithSessionKey(ContentResolver contentResolver, Uri fileUri)
+    	throws CryptoHelperException {
+    	if (debug) Log.d(TAG, "Encrypt with session key");
 		status=false; // assume failure
 		if(password == null) {
 		    String msg = "Must call setPassword before runing encrypt.";
@@ -582,15 +584,14 @@ public class CryptoHelper {
 			}
 			
 			FileOutputStream os = new FileOutputStream(outputPath);
-	
 			
 			byte[] cipherSessionKey = {};
-			byte[] ciphertext = {};
+//			byte[] ciphertext = {};
 			
 			// First create a session key
 			SecretKey sessionKey = null;
 			byte[] sessionKeyEncoded = null;
-			String sessionKeyString = null;
+//			String sessionKeyString = null;
 			try {
 				KeyGenerator keygen;
 				keygen = KeyGenerator.getInstance("AES");
@@ -598,15 +599,17 @@ public class CryptoHelper {
 				//keygen.init(128); // needs 64 bytes
 				sessionKey = keygen.generateKey();
 				sessionKeyEncoded = sessionKey.getEncoded();
-				sessionKeyString = new String(sessionKeyEncoded);
+//				sessionKeyString = new String(sessionKeyEncoded);
 			} catch (NoSuchAlgorithmException e) {
 				Log.e(TAG,"generateMasterKey(): "+e.toString());
+				return null;
 			}
 			    
 			// Encrypt the session key using the master key
 		    try {
 				pbeCipher.init(Cipher.ENCRYPT_MODE, pbeKey, pbeParamSpec);
 			    cipherSessionKey = pbeCipher.doFinal(sessionKeyEncoded);
+			    status=true;
 			} catch (IllegalBlockSizeException e) {
 			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
 			} catch (BadPaddingException e) {
@@ -616,6 +619,10 @@ public class CryptoHelper {
 			} catch (InvalidAlgorithmParameterException e) {
 			    Log.e(TAG,"encryptWithSessionKey(): "+e.toString());
 			}
+			if (status==false) {
+				return null;
+			}
+			status=false;
 	
 			String stringCipherVersion = "A";
 			byte[] bytesCipherVersion = stringCipherVersion.getBytes();
@@ -623,8 +630,8 @@ public class CryptoHelper {
 	
 			os.write(cipherSessionKey, 0, cipherSessionKey.length);
 	
-			Log.d(TAG, "bytesCipherVersion.length: " + bytesCipherVersion.length);
-			Log.d(TAG, "cipherSessionKey.length: " + cipherSessionKey.length);
+			if (debug) Log.d(TAG, "bytesCipherVersion.length: " + bytesCipherVersion.length);
+			if (debug) Log.d(TAG, "cipherSessionKey.length: " + cipherSessionKey.length);
 			
 			Trivium tri = new Trivium();
 			try {
@@ -640,10 +647,6 @@ public class CryptoHelper {
 				int offset = 0;
 				int numRead = 0;
 				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
-					if ((numRead & 3) != 0) {
-						Log.d(TAG, "Bytes read is inappropriate number: " + numRead + " : " + (numRead | 3));
-					}
-					
 				    tri.process(bytesIn, 0,
 				    		bytesOut, 0, numRead);
 				    
@@ -662,6 +665,7 @@ public class CryptoHelper {
 				
 				// Securely delete the original file:
 				SecureDelete.delete(new File(fileUri.getPath()));
+				status=true;
 				
 		    } catch (ESJException e) {
 				Log.e(TAG, "Error encrypting file", e);
@@ -671,23 +675,30 @@ public class CryptoHelper {
 		} catch (IOException e) {
 			Log.e(TAG, "IO Exception", e);
 		}
-		    
+		
+		if (status==false) {
+			return null;
+		}
 		return Uri.parse("file://" + outputPath); // TODO: UUEncode
     }
 
     /**
-     * unencrypt encrypted string previously encrypted with
-     * encryptWithSessionKey()
+     * Unencrypt a file previously encrypted with
+     * encryptFileWithSessionKey().
      * 
      * @author Peli
      * 
-     * @param ciphertext
-     * @return decrypted String
+     * @param ctx Context of activity in order to store temp file
+     * @param fileUri Uri to either a stream or a file to read from
+     * @return If decryption is successful, returns Uri of a content 
+     * 		provider to read the plaintext file.  Upon failure,
+     * 		return null.
      * @throws Exception
      */
-    public Uri decryptFileWithSessionKey(Context ctx, ContentResolver contentResolver, Uri fileUri) throws CryptoHelperException {
+    public Uri decryptFileWithSessionKey(Context ctx, Uri fileUri) throws CryptoHelperException {
 		Log.d(TAG, "decryptFileWithSessionKey");
 		Log.d(TAG, "fileUri="+fileUri.toString());
+		ContentResolver contentResolver = ctx.getContentResolver();
     	status=false; // assume failure
 		if(password == null) {
 		    String msg = "Must call setPassword before running decrypt.";
@@ -696,13 +707,14 @@ public class CryptoHelper {
 
 		String decryptSession;
 		try {
+			// create a random session name
 			decryptSession=generateSalt();
 		} catch (NoSuchAlgorithmException e1) {
 			e1.printStackTrace();
 		    String msg = "Decrypt error: "+e1.getLocalizedMessage();
 		    throw new CryptoHelperException(msg);
 		}
-		String outputFile = "";
+		String sessionFile = "";
 		try {
 			InputStream is;
 			if (fileUri.getScheme().equals("file")) {
@@ -712,11 +724,13 @@ public class CryptoHelper {
 				is = contentResolver.openInputStream(fileUri);
 				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.toString());
 			}
-			outputFile = CryptoContentProvider.SESSION_FILE+"."+decryptSession;
-			if (debug) Log.d(TAG, "Decrypt: Output to " + outputFile);
-			String cache=Environment.getDownloadCacheDirectory().getAbsolutePath();
-			if (debug) Log.d(TAG, "Decrypt: cache=" + cache);
-			FileOutputStream os = ctx.openFileOutput(outputFile,
+			sessionFile = CryptoContentProvider.SESSION_FILE+"."+decryptSession;
+			if (debug) Log.d(TAG, "Decrypt: Output to " + sessionFile);
+			
+			// openFileOutput creates a file in /data/data/{packagename}/files/
+			// In our case, /data/data/org.openintents.safe/files/
+			// This file is owned and only readable by our application
+			FileOutputStream os = ctx.openFileOutput(sessionFile,
 					Context.MODE_PRIVATE);
 	
 			int numReadTotal = 0;
@@ -750,10 +764,12 @@ public class CryptoHelper {
 					}
 				} else {
 					Log.e(TAG, "Unknown cipher version" + cipherVersion);
+					ctx.deleteFile(sessionFile);
 					return null;
 				}
 			} catch (IndexOutOfBoundsException e) {
 				Log.e(TAG, "Invalid ciphertext (with session key)");
+				ctx.deleteFile(sessionFile);
 				return null;
 			}
 			
@@ -789,10 +805,6 @@ public class CryptoHelper {
 				int offset = 0;
 				numRead = 0;
 				while ((numRead = is.read(bytesIn, 0, bytesLen)) >= 0) {
-					if ((numRead & 3) != 0) {
-						if (debug) Log.d(TAG, "Bytes read is inappropriate number: " + numRead);
-					}
-					
 				    tri.process(bytesIn, 0,
 				    		bytesOut, 0, numRead);
 				    
@@ -810,18 +822,28 @@ public class CryptoHelper {
 				os.close();
 
 				// Securely delete the original file:
-//				SecureDelete.delete(new File(fileUri.getPath()));
+				SecureDelete.delete(new File(fileUri.getPath()));
+
+				status=true;
 				
 		    } catch (ESJException e) {
-				Log.e(TAG, "Error encrypting file", e);
+				Log.e(TAG, "Error decrypting file", e);
 	    	}
 		    
 		} catch (FileNotFoundException e) {
-			Log.e(TAG, "File not found", e);
+//			Log.e(TAG, "File not found", e);
 		} catch (IOException e) {
 			Log.e(TAG, "IOException", e);
 		}
-//		return Uri.parse("file://" + outputPath); // TODO: UUEncode
+		if (status==false) {
+			if (sessionFile.length()!=0) {
+				if (debug) Log.d(TAG,"status==false, deleting sessionFile:"+sessionFile);
+				ctx.deleteFile(sessionFile);
+			}
+			return null;
+		}
+		// after writing the decrypted content to a temporary file,
+		// pass back a Uri that can be used to read back the contents
 		Uri uri=Uri.withAppendedPath(CryptoContentProvider.CONTENT_URI, "decrypt/" + decryptSession);
 		return uri;
     }

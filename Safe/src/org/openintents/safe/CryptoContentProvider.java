@@ -1,3 +1,19 @@
+/* $Id$
+ * 
+ * Copyright (C) 2009 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.openintents.safe;
 
 import java.io.File;
@@ -82,8 +98,9 @@ public class CryptoContentProvider extends ContentProvider {
 
 		ParcelFileDescriptor pfd = null;
 		try {
+			// get the /files/ directory for our application, which
+			// for us is /data/data/org.openintents.safe/files/
 			String filesDir=getContext().getFilesDir().toString();
-			if (debug) Log.d(TAG,"openFile: filesDir="+filesDir);
 
 			String path=filesDir;
 			String cryptSession;
@@ -111,6 +128,13 @@ public class CryptoContentProvider extends ContentProvider {
 
 			if (debug) Log.d(TAG,"openFile: path="+path);
 	        pfd=ParcelFileDescriptor.open(new File(path), modeBits);
+	        // This is pretty sneaky.  After opening the file,
+	        // we'll immediately delete the file.
+	        // Files are not truly deleted if there is an open file
+	        // handle.   The file will not be deleted until the
+	        // file handle is closed.   And then it magically
+	        // disappears.   This makes for a one time use
+	        // content provider.
 	        if (!getContext().deleteFile(sessionFile)) {
 	        	Log.e(TAG,"openFile: unable to delete: "+sessionFile);
 	        }

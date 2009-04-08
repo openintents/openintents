@@ -323,7 +323,7 @@ public class IntentHandler extends Activity {
 				// Decrypt file from file URI
 				Uri fileUri = thisIntent.getData();
 				
-				Uri newFileUri = ch.decryptFileWithSessionKey(this,getContentResolver(), fileUri);
+				Uri newFileUri = ch.decryptFileWithSessionKey(this, fileUri);
 				
 				callbackIntent.setData(newFileUri);
 			}
