@@ -21,6 +21,7 @@ package org.openintents.safe.service;
 // if there are still clients attached.  Should be fixed.
 
 import org.openintents.intents.CryptoIntents;
+import org.openintents.safe.CategoryList;
 import org.openintents.safe.CryptoHelper;
 import org.openintents.safe.CryptoHelperException;
 
@@ -86,6 +87,7 @@ public class ServiceDispatchImpl extends Service {
 	  
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 	  sendBroadcast(intent);
+	  CategoryList.setSignedOut();
 	  
 	  if (debug) Log.d( TAG,"onDestroy" );
     }

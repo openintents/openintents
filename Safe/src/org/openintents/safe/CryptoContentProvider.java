@@ -23,6 +23,7 @@ import org.openintents.safe.service.ServiceDispatchImpl;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
@@ -138,7 +139,13 @@ public class CryptoContentProvider extends ContentProvider {
 			        CryptoHelper ch = ServiceDispatchImpl.ch; // Use the global crypto helper that is connected to the single service we have.
 			        
 			        Log.d(TAG, "Original file path: " + originalFile);
-			        
+					if (CategoryList.isSignedIn()==false) {
+						Intent frontdoor = new Intent(getContext(), FrontDoor.class);
+						frontdoor.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						getContext().startActivity(frontdoor);		
+			        	throw new CryptoHelperException("Not logged in.");
+			    	}
+
 			        if (ch == null) {
 			        	throw new CryptoHelperException("CryptoHelper not available. Are you logged in?");
 			        }
@@ -171,7 +178,7 @@ public class CryptoContentProvider extends ContentProvider {
 		} catch (IllegalArgumentException e) {
 			throw e;
 		} catch (CryptoHelperException e) {
-			if (debug) Log.d(TAG,"openFile: CryptoHelperException");
+			if (debug) Log.d(TAG,"openFile: CryptoHelperException:"+e.getLocalizedMessage());
 			pfd = null;
 			//throw e;
 		}

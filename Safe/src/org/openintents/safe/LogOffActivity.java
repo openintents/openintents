@@ -33,6 +33,7 @@ public class LogOffActivity extends Activity {
 					Intent serviceIntent = new Intent();
 					serviceIntent.setClass(LogOffActivity.this, ServiceDispatchImpl.class );
 					stopService(serviceIntent);
+					CategoryList.setSignedOut();
 					
 					/*
 					Intent intent = new Intent(LogOffActivity.this, FrontDoor.class);
