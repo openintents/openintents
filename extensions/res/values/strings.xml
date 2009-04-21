@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OI Delete All</string>
+    <string name="delete_all_notes">Delete all notes</string>
+    <string name="delete_all_lists">Delete all lists</string>
+    <string name="delete_all_notes_confirm">Are you sure you want to <b>delete <i>all</i> notes</b>? (This operation can not be undone!)</string>
+    <string name="delete_all_lists_confirm">Are you sure you want to <b>delete <i>all</i> shopping lists</b>? (This operation can not be undone!)</string>
+</resources>
