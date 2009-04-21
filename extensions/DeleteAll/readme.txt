@@ -22,9 +22,9 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2009-?
+date: 2009-04-?
 
-- First public release on Android SDK 1.1.
+- First public release targeted for Android SDK 1.0.
 
 Features: 
 - Delete all notes from OI Notepad.
