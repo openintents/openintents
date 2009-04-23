@@ -31,6 +31,8 @@ import android.widget.TextView;
 import android.widget.SimpleCursorAdapter.ViewBinder;
 
 public class ShoppingListView extends ListView {
+	private final static String TAG = "ShoppingListView";
+	private final static boolean debug = true;
 
 	public static final int MARK_CHECKBOX = 1;
 	public static final int MARK_STRIKETHROUGH = 2;
@@ -49,6 +51,11 @@ public class ShoppingListView extends ListView {
 	public int mMarkTextColor;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
+
+	int mMode = ShoppingActivity.MODE_IN_SHOP;
+	Cursor mCursorItems;
+	private View mThemedBackground;
+	private long mListId;
     
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
@@ -231,11 +238,6 @@ public class ShoppingListView extends ListView {
 		
 	};
 	
-	private static final String TAG = "ShoppingListView";
-	int mMode = ShoppingActivity.MODE_IN_SHOP;
-	Cursor mCursorItems;
-	private View mThemedBackground;
-	private long mListId;
 
 	public ShoppingListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);

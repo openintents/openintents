@@ -285,6 +285,11 @@ public class ShoppingActivity extends Activity { // implements
 		}
 
 	};
+	
+	/**
+	 * isActive is true only after onResume() and before onPause().
+	 */
+	private boolean mIsActive = false;
 
 	/**
 	 * Called when the activity is first created.
@@ -463,8 +468,11 @@ public class ShoppingActivity extends Activity { // implements
 
 	@Override
 	protected void onResume() {
+		Log.i(TAG, "Shopping list onResume() 1");
 		super.onResume();
-		Log.i(TAG, "Shopping list onResume()");
+		Log.i(TAG, "Shopping list onResume() 2");
+		
+		mIsActive = true;
 
 		// Modify our overall title depending on the mode we are running in.
 		if (mState == STATE_MAIN || mState == STATE_VIEW_LIST) {
@@ -517,6 +525,9 @@ public class ShoppingActivity extends Activity { // implements
 		// TODO Auto-generated method stub
 		super.onPause();
 		Log.i(TAG, "Shopping list onPause()");
+		Log.i(TAG, "Spinner: onPause: " + mIsActive);
+		mIsActive = false;
+		Log.i(TAG, "Spinner: onPause: " + mIsActive);
 
 		unregisterSensor();
 
@@ -572,13 +583,21 @@ public class ShoppingActivity extends Activity { // implements
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
-						Log.d(TAG, "Spinner: onNothingSelected");
-						fillItems();
-
+						Log.d(TAG, "Spinner: onNothingSelected: " + mIsActive);
+						Log.i(TAG, "Spinner: onNothingSelected: " + mIsActive);
+						if (mIsActive) {
+							fillItems();
+						}
 					}
 				});
 
 		mEditText = (AutoCompleteTextView) findViewById(R.id.autocomplete_add_item);
+		if (mItemsCursor != null) {
+			Log.d(TAG, "mItemsCursor managedQuery 1");
+			stopManagingCursor(mItemsCursor);
+			mItemsCursor.close();
+			mItemsCursor = null;
+		}
 		mItemsCursor= managedQuery(Items.CONTENT_URI, new String[] {
 				Items._ID, Items.NAME }, null, null, "name desc");
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
@@ -587,6 +606,12 @@ public class ShoppingActivity extends Activity { // implements
 		adapter.setStringConversionColumn(1);
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 			public Cursor runQuery(CharSequence constraint) {
+				if (mItemsCursor != null) {
+					Log.d(TAG, "mItemsCursor managedQuery 2");
+					stopManagingCursor(mItemsCursor);
+					mItemsCursor.close();
+					mItemsCursor = null;
+				}
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
 						Items._ID, Items.NAME }, "upper(name) like '%"
 						+ (constraint == null ? "" : constraint.toString()
