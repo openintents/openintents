@@ -47,6 +47,7 @@ public class ShoppingListView extends ListView {
 	public float mTextSize;
 	public boolean mUpperCaseFont;
 	public int mTextColor;
+	public int mPriceTextColor;
 	public int mMarkType;
 	public int mMarkTextColor;
 
@@ -193,7 +194,8 @@ public class ShoppingListView extends ListView {
 				TextView tv = (TextView) view;
 				if (mPriceVisibility == View.VISIBLE && price != 0) {
 					tv.setVisibility(View.VISIBLE);
-				    String s = mPriceFormatter.format(price * 0.01d);           
+				    String s = mPriceFormatter.format(price * 0.01d);
+					tv.setTextColor(mPriceTextColor);
 					tv.setText(s);
 				} else {
 					tv.setVisibility(View.GONE);
@@ -204,7 +206,8 @@ public class ShoppingListView extends ListView {
 						.getString(ShoppingActivity.mStringItemsITEMTAGS);
 				TextView tv = (TextView) view;
 				if (mTagsVisibility == View.VISIBLE && !TextUtils.isEmpty(tags)) {
-					tv.setVisibility(View.VISIBLE);      
+					tv.setVisibility(View.VISIBLE);
+					tv.setTextColor(mPriceTextColor);
 					tv.setText(tags);
 				} else {
 					tv.setVisibility(View.GONE);
@@ -379,6 +382,7 @@ public class ShoppingListView extends ListView {
 			mTypeface = null;
 			mUpperCaseFont = false;
 			mTextColor = 0xffffffff; // white
+			mPriceTextColor = 0xffcccccc; // white gray
 
 			if (size == 1) {
 				mTextSize = 18;
@@ -401,6 +405,7 @@ public class ShoppingListView extends ListView {
 			mTypeface = mTypefaceHandwriting;
 			mUpperCaseFont = false;
 			mTextColor = 0xff000000; // black
+			mPriceTextColor = 0xff444444; // black gray
 			if (size == 1) {
 				mTextSize = 15;
 			} else if (size == 2) {
@@ -425,6 +430,7 @@ public class ShoppingListView extends ListView {
 			// Digital only supports upper case fonts.
 			mUpperCaseFont = true;
 			mTextColor = 0xffff0000; // red
+			mPriceTextColor = 0xffcccccc; // white gray
 			if (size == 1) {
 				mTextSize = 21;
 			} else if (size == 2) {
@@ -583,6 +589,10 @@ public class ShoppingListView extends ListView {
 		mTotalCheckedTextView = tv;
 	}
 	
+	/**
+	 * Update the text fields for "Total:" and "Checked:" with 
+	 * corresponding price information.
+	 */
 	public void updateTotal() {
 		if (mTotalTextView == null || mTotalCheckedTextView == null) {
 			// Most probably in "Add item" mode where no total is displayed.
@@ -600,6 +610,10 @@ public class ShoppingListView extends ListView {
 			}
 		}
 		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked);
+		
+		mTotalTextView.setTextColor(mPriceTextColor);
+		mTotalCheckedTextView.setTextColor(mPriceTextColor);
+		
 		
 		if (total != 0) {
 			String s = mPriceFormatter.format(total * 0.01d);           
