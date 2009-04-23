@@ -79,6 +79,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -611,8 +612,12 @@ public class ShoppingActivity extends Activity { // implements
 				if (mItemsCursor != null) {
 					Log.d(TAG, "mItemsCursor managedQuery 2");
 					stopManagingCursor(mItemsCursor);
-					mItemsCursor.close();
-					mItemsCursor = null;
+					
+					// For some reason, closing the cursor seems to post
+					// an invalidation on the background thread and a crash...
+					// so we keep it open.
+					//mItemsCursor.close();
+					//mItemsCursor = null;
 				}
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
 						Items._ID, Items.NAME }, "upper(name) like '%"
@@ -657,6 +662,12 @@ public class ShoppingActivity extends Activity { // implements
 
 		mListItemsView = (ShoppingListView) findViewById(R.id.list_items);
 		mListItemsView.setThemedBackground(findViewById(R.id.background));
+		
+		TextView tv = (TextView) findViewById(R.id.total_1);
+		mListItemsView.setTotalCheckedTextView(tv);
+		
+		tv = (TextView) findViewById(R.id.total_2);
+		mListItemsView.setTotalTextView(tv);
 		
 		mListItemsView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -1161,7 +1172,8 @@ public class ShoppingActivity extends Activity { // implements
 		getContentResolver().delete(Items.CONTENT_URI, "_id = ?",
 				new String[] { c.getString(mStringItemsITEMID) });
 
-		c.requery();
+		//c.requery();
+		mListItemsView.requery();
 	}
 
 	/** removeItemFromList */
@@ -1181,7 +1193,9 @@ public class ShoppingActivity extends Activity { // implements
 						new String[] { c
 								.getString(mStringItemsCONTAINSID) });
 
-		c.requery();
+		//c.requery();
+		
+		mListItemsView.requery();
 
 		// If we share items, mark item on other lists:
 		// TODO ???
@@ -1674,7 +1688,7 @@ public class ShoppingActivity extends Activity { // implements
 		// If recipients contains the '@' symbol, it is shared.
 		return recipients.contains("@");
 	}
-
+	
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {
 		@Override

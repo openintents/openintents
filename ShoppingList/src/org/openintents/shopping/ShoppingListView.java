@@ -56,6 +56,9 @@ public class ShoppingListView extends ListView {
 	Cursor mCursorItems;
 	private View mThemedBackground;
 	private long mListId;
+	
+	private TextView mTotalTextView;
+	private TextView mTotalCheckedTextView;
     
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
@@ -227,13 +230,14 @@ public class ShoppingListView extends ListView {
 			
 			if (mCursorItems != null) {
 				try {
-					mCursorItems.requery();
+					requery();
 				} catch (IllegalStateException e) {
 					Log.e(TAG, "IllegalStateException ", e);
 					// Somehow the logic is not completely right yet...
 					mCursorItems = null;
 				}
 			}
+			
 		}
 		
 	};
@@ -337,6 +341,9 @@ public class ShoppingListView extends ListView {
 				new int[] { R.id.name, /*R.id.image_URI, */R.id.tags, R.id.price/*,
 						R.id.quantity*/ });
 		setAdapter(adapter);
+		
+		updateTotal();
+		
 		return mCursorItems;
 	}
 
@@ -440,7 +447,7 @@ public class ShoppingListView extends ListView {
 
 		invalidate();
 		if (mCursorItems != null) {
-			mCursorItems.requery();
+			requery();
 		}
 	}
 
@@ -470,10 +477,9 @@ public class ShoppingListView extends ListView {
 				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI,
 						mCursorItems.getString(0)), values, null, null);
 
-		mCursorItems.requery();
+		requery();
 
 		invalidate();
-
 	}
 
 	public boolean cleanupList() {
@@ -500,7 +506,7 @@ public class ShoppingListView extends ListView {
 							+ Shopping.Status.BOUGHT, null) == 0;
 		}
 
-		mCursorItems.requery();
+		requery();
 		
 		return !nothingdeleted;
 		
@@ -527,7 +533,7 @@ public class ShoppingListView extends ListView {
 				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI,
 						mCursorItems.getString(0)), values, null, null);
 
-		mCursorItems.requery();
+		requery();
 
 		//invalidate();
 
@@ -562,6 +568,56 @@ public class ShoppingListView extends ListView {
 		}
 
 		
+	}
+	
+	public void requery() {
+		mCursorItems.requery();
+		updateTotal();
+	}
+	
+	public void setTotalTextView(TextView tv) {
+		mTotalTextView = tv;
+	}
+	
+	public void setTotalCheckedTextView(TextView tv) {
+		mTotalCheckedTextView = tv;
+	}
+	
+	public void updateTotal() {
+		if (mTotalTextView == null || mTotalCheckedTextView == null) {
+			// Most probably in "Add item" mode where no total is displayed.
+			return;
+		}
+		
+		mCursorItems.moveToPosition(-1);
+		long total = 0;
+		long totalchecked = 0;
+		while (mCursorItems.moveToNext()) {
+			long price = mCursorItems.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+			total += price;
+			if (mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
+				totalchecked += price;
+			}
+		}
+		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked);
+		
+		if (total != 0) {
+			String s = mPriceFormatter.format(total * 0.01d);           
+			s = getContext().getString(R.string.total, s);
+			mTotalTextView.setText(s);
+			mTotalTextView.setVisibility(View.VISIBLE);
+		} else {
+			mTotalTextView.setVisibility(View.GONE);
+		}
+		
+		if (totalchecked != 0) {
+			String s = mPriceFormatter.format(totalchecked * 0.01d);           
+			s = getContext().getString(R.string.total_checked, s);
+			mTotalCheckedTextView.setText(s);
+			mTotalCheckedTextView.setVisibility(View.VISIBLE);
+		} else {
+			mTotalCheckedTextView.setVisibility(View.GONE);
+		}
 	}
 
 }

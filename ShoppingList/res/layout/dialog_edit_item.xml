@@ -19,7 +19,7 @@ android:layout_width="fill_parent">
 	android:layout_height="wrap_content" android:padding="5dip">
 	<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text=""
-		android:layout_weight="1" android:hint="@string/new_list_hint" 
+		android:layout_weight="1" android:hint="@string/item" 
 		android:capitalize="words"/>
 	<LinearLayout android:id="@+id/tags_panel"
 		android:orientation="vertical" android:layout_width="fill_parent"

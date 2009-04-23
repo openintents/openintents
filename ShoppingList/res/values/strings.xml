@@ -64,6 +64,9 @@
 	<string name="shopping_title">%s - Shopping</string>
 	<string name="tags">Tags</string>
 	<string name="price">Price</string>
+	<string name="item">Item</string>
+	<string name="total">Total: %s</string>
+	<string name="total_checked">Checked: %s</string>
 	
 
 	<!-- Shortcut -->

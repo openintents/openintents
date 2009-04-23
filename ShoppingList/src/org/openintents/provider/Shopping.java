@@ -71,7 +71,7 @@ public abstract class Shopping {
 		/**
 		 * A price for the item (in cent)
 		 * <P>
-		 * Type: INTEGER
+		 * Type: INTEGER (long)
 		 * </P>
 		 */
 		public static final String PRICE = "price";
@@ -83,10 +83,11 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String TAGS = "tags";
+		
 		/**
 		 * A barcode (EAN or QR)
 		 * <P>
-		 * Type: INTEGER
+		 * Type: INTEGER (long)
 		 * </P>
 		 */
 		public static final String BARCODE = "barcode";
