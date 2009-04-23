@@ -426,7 +426,7 @@ public class ShoppingActivity extends Activity { // implements
 		SharedPreferences sp = getSharedPreferences(
 				"org.openintents.shopping_preferences", MODE_PRIVATE);
 		final boolean loadLastUsed = sp.getBoolean(
-				PreferenceActivity.PREFS_LOADLASTUSED, false);
+				PreferenceActivity.PREFS_LOADLASTUSED, PreferenceActivity.PREFS_LOADLASTUSED_DEFAULT);
 
 		Log.e(TAG, "load last used ?" + loadLastUsed);
 		int defaultShoppingList = 1;
@@ -438,13 +438,15 @@ public class ShoppingActivity extends Activity { // implements
 		}
 
 		if (mListItemsView != null) {
-			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, false)) {
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, 
+					PreferenceActivity.PREFS_SHOW_PRICE_DEFAULT)) {
 				mListItemsView.mPriceVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mPriceVisibility = View.GONE;
 			}
 		
-			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, false)) {
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, 
+					PreferenceActivity.PREFS_SHOW_TAGS_DEFAULT)) {
 				mListItemsView.mTagsVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mTagsVisibility = View.GONE;
@@ -674,10 +676,10 @@ public class ShoppingActivity extends Activity { // implements
 
 					public void onCreateContextMenu(ContextMenu contextmenu,
 							View view, ContextMenuInfo info) {
-						contextmenu.add(0, MENU_MARK_ITEM, 0,
-								R.string.menu_mark_item).setShortcut('1', 'm');
 						contextmenu.add(0, MENU_EDIT_ITEM, 0,
-								R.string.menu_edit_item).setShortcut('2', 'e');
+								R.string.menu_edit_item).setShortcut('1', 'e');
+						contextmenu.add(0, MENU_MARK_ITEM, 0,
+								R.string.menu_mark_item).setShortcut('2', 'm');
 						contextmenu.add(0, MENU_REMOVE_ITEM_FROM_LIST, 0,
 								R.string.menu_remove_item)
 								.setShortcut('3', 'r');

@@ -16,11 +16,15 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_ROWSIZE = "fontsize";
 	public static final String PREFS_ROWSIZE_DEFAULT = "2";
 	public static final String PREFS_LOADLASTUSED = "loadlastused";
+	public static final boolean PREFS_LOADLASTUSED_DEFAULT = true;
 	public static final String PREFS_LASTUSED = "lastused";
 	public static final String PREFS_HIDECHECKED = "hidechecked";
+	public static final boolean PREFS_HIDECHECKED_DEFAULT = false;
 	public static final String PREFS_CAPITALIZATION = "capitalization";
 	public static final String PREFS_SHOW_PRICE = "showprice";
+	public static final boolean PREFS_SHOW_PRICE_DEFAULT = true;
 	public static final String PREFS_SHOW_TAGS = "showtags";
+	public static final boolean PREFS_SHOW_TAGS_DEFAULT = true;
 
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 
@@ -66,7 +70,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static boolean getHideCheckedItemsFromPrefs(Context context) {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
-		return prefs.getBoolean(PREFS_HIDECHECKED, true);
+		return prefs.getBoolean(PREFS_HIDECHECKED, PREFS_HIDECHECKED_DEFAULT);
 	}
 
 	/**

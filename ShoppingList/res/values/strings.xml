@@ -91,12 +91,12 @@
 	<string name="preference_sortorder_summary">Change sort order of list items</string>
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
 	<string name="preference_loadlastused_title">Load last used</string>
-	<string name="preference_loadlastused_summary">Always start with the last viewed List</string>
+	<string name="preference_loadlastused_summary">Always start with the list viewed last time.</string>
 	<string name="preference_capitalization_title">Capitalization</string>
 	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
 	<string name="preference_capitalization_dialog_title">Choose capitalization</string> 
 	<string name="preference_hidechecked_title">Hide checked items</string>
-	<string name="preference_hidechecked_summary">Only applies if in a shop.</string>
+	<string name="preference_hidechecked_summary">Immediately hide items checked off.</string>
 	<string name="preference_showprice_title">Show price</string>
 	<string name="preference_showprice_summary">Shown as extra column in list.</string>
 	<string name="preference_showtags_title">Show tags</string>
