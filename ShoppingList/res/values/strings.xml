@@ -55,8 +55,8 @@
 	<string name="rename_list">Rename list</string>
 	<string name="menu_mark_item">Mark item</string>
 	<string name="menu_edit_item">Edit item</string>
-	<string name="menu_remove_item">Remove item</string>
-	<string name="menu_delete_item">Delete item</string>
+	<string name="menu_remove_item">Remove item from list</string>
+	<string name="menu_delete_item">Delete item permanently</string>
 	<string name="add">Add</string>
 	<string name="menu_pick_items">Pick items</string>
 	<string name="menu_start_shopping">Shopping</string>
@@ -67,6 +67,8 @@
 	<string name="item">Item</string>
 	<string name="total">Total: %s</string>
 	<string name="total_checked">Checked: %s</string>
+	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>
+	<string name="delete">Delete</string>
 	
 
 	<!-- Shortcut -->

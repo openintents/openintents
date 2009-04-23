@@ -29,6 +29,7 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
+import org.openintents.provider.Shopping.Status;
 import org.openintents.shopping.dialog.DialogActionListener;
 import org.openintents.shopping.dialog.EditItemDialog;
 import org.openintents.shopping.dialog.NewListDialog;
@@ -140,6 +141,7 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int DIALOG_NEW_LIST = 2;
 	private static final int DIALOG_RENAME_LIST = 3;
 	private static final int DIALOG_EDIT_ITEM = 4;
+	private static final int DIALOG_DELETE_ITEM = 5;
 	
 	/**
 	 * The main activity.
@@ -977,7 +979,7 @@ public class ShoppingActivity extends Activity { // implements
 			removeItemFromList(menuInfo.position);
 			break;
 		case MENU_DELETE_ITEM:
-			deleteItem(menuInfo.position);
+			deleteItemDialog(menuInfo.position);
 			break;
 		}
 
@@ -1159,6 +1161,17 @@ public class ShoppingActivity extends Activity { // implements
 		showDialog(DIALOG_EDIT_ITEM);
 	}
 
+	int mDeleteItemPosition;
+	
+	/** delete item */
+	void deleteItemDialog(int position) {
+		Log.d(TAG, "EditItems: Position: " + position);
+		mListItemsView.mCursorItems.moveToPosition(position);
+		mDeleteItemPosition = position;
+		
+		showDialog(DIALOG_DELETE_ITEM);
+	}
+	
 	/** delete item */
 	void deleteItem(int position) {
 		Cursor c = mListItemsView.mCursorItems;
@@ -1185,6 +1198,7 @@ public class ShoppingActivity extends Activity { // implements
 		long oldstatus = c.getLong(mStringItemsSTATUS);
 		
 		// Delete item from list
+		/*
 		// by deleting contains row
 		getContentResolver()
 				.delete(
@@ -1193,6 +1207,18 @@ public class ShoppingActivity extends Activity { // implements
 						new String[] { c
 								.getString(mStringItemsCONTAINSID) });
 
+		 */
+		
+		// Delete item by changing its state
+		ContentValues values = new ContentValues();
+		values.put(Contains.STATUS, Status.REMOVED_FROM_LIST);
+		getContentResolver()
+			.update(
+				Contains.CONTENT_URI, values,
+				"_id = ?",
+				new String[] { c
+						.getString(mStringItemsCONTAINSID) });
+		
 		//c.requery();
 		
 		mListItemsView.requery();
@@ -1422,6 +1448,22 @@ public class ShoppingActivity extends Activity { // implements
 			
 		case DIALOG_EDIT_ITEM:
 			return new EditItemDialog(this, mItemUri);
+			
+		case DIALOG_DELETE_ITEM:
+			return new AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setTitle(R.string.menu_delete_item)
+            .setMessage(R.string.delete_item_confirm)
+            .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                	deleteItem(mDeleteItemPosition);
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                	// Don't do anything
+                }
+            }).create();
 		}
 		return null;
 
