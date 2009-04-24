@@ -34,7 +34,7 @@
 	</LinearLayout>
 	<view android:id="@+id/mapview"
 		class="com.google.android.maps.MapView"
-		android:apiKey="myapikey"
+		android:apiKey="0ezoH_49FjisRpGaVfPLIsFRSLzxkBMUp577ntA"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent" />
 </LinearLayout>
