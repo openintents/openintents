@@ -22,6 +22,20 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.4
+date: 2009-??
+
+- add price and tag fields
+- automatic display of total price / total checked price
+- hide/unhide checked items
+- archive items for later use
+- new menu > pick items to pick previously used items
+  (can also be accessed by pressing "Add" button)
+- settings include link to extensions from Market and
+  developer homepage
+- shake the phone to clean up the list
+
+---------------------------------------------------------
 release: 1.0.3
 date: 2009-02-04
 
