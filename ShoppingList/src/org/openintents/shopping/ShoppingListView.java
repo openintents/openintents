@@ -595,7 +595,14 @@ public class ShoppingListView extends ListView {
 	 */
 	public void updateTotal() {
 		if (mTotalTextView == null || mTotalCheckedTextView == null) {
-			// Most probably in "Add item" mode where no total is displayed.
+			// Most probably in "Add item" mode where no total is displayed
+			return;
+		}
+		
+		if (mPriceVisibility != View.VISIBLE) {
+			// If price is not displayed, do not display total
+			mTotalTextView.setVisibility(View.GONE);
+			mTotalCheckedTextView.setVisibility(View.GONE);
 			return;
 		}
 		
