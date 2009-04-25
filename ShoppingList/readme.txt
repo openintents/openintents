@@ -33,6 +33,7 @@ date: 2009-??
   (can also be accessed by pressing "Add" button)
 - settings include link to extensions from Market and
   developer homepage
+- setting to show last list used (true by default)
 - shake the phone to clean up the list
 
 ---------------------------------------------------------
