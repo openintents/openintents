@@ -80,5 +80,11 @@
         <item>1</item>
         <item>2</item>
     </string-array> 
+    
+    <!-- URL to OI Shopping list extensions on Market -->
+    <string name="preference_extensions_market_link">market://search?q=extension+oi+shopping+list</string>
+    
+    <!-- URL to OI Shopping list -->
+    <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/19#extensions</string>
 	
 </resources> 

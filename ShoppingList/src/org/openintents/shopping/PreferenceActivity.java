@@ -1,15 +1,21 @@
 package org.openintents.shopping;
 
 import org.openintents.provider.Shopping.Contains;
+import org.openintents.util.IntentUtils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.text.method.KeyListener;
 import android.text.method.TextKeyListener;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
+	
+	private static final String TAG = "PreferenceActivity";
 
 	public static final String PREFS_SORTORDER = "sortorder";
 	public static final String PREFS_SORTORDER_DEFAULT = "3";
@@ -25,6 +31,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final boolean PREFS_SHOW_PRICE_DEFAULT = true;
 	public static final String PREFS_SHOW_TAGS = "showtags";
 	public static final boolean PREFS_SHOW_TAGS_DEFAULT = true;
+	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";
 
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 
@@ -38,8 +45,22 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		// Load the preferences from an XML resource
 		addPreferencesFromResource(R.xml.preferences);
+		
+		// Set enabled state of Market preference
+		PreferenceScreen sp = (PreferenceScreen) findPreference(PREFS_EXTENSIONS_MARKET);
+		sp.setEnabled(isMarketAvailable());
 	}
 
+	/**
+	 * Check whether Market is available.
+	 * @return true if Market is available
+	 */
+	private boolean isMarketAvailable() {
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.setData(Uri.parse(getString(R.string.preference_extensions_market_link)));
+		return IntentUtils.isIntentAvailable(this, i);
+	}
+	
 	/**
 	 * Returns the sort order for the notes list based on the user preferences.
 	 * Performs error-checking.

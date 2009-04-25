@@ -87,6 +87,9 @@
 	
 	<!-- preferences -->
 	<string name="preferences">Settings</string>
+	
+    <string name="preference_application">Application settings</string>
+    
 	<string name="preference_unchecked_on_top">Unchecked on top</string>
 	<string name="preference_unchecked_on_top_summary">Always show unchecked items first</string>
 	<string name="preference_fontsize">Font size</string>
@@ -95,7 +98,7 @@
 	<string name="preference_sortorder_title">Sort order</string>
 	<string name="preference_sortorder_summary">Change sort order of list items</string>
 	<string name="preference_sortorder_dialog_title">Choose sort order</string>
-	<string name="preference_loadlastused_title">Load last used</string>
+	<string name="preference_loadlastused_title">Load last list used</string>
 	<string name="preference_loadlastused_summary">Always start with the list viewed last time.</string>
 	<string name="preference_capitalization_title">Capitalization</string>
 	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
@@ -107,6 +110,19 @@
 	<string name="preference_showtags_title">Show tags</string>
 	<string name="preference_showtags_summary">Shown as extra column in list.</string>
 	
+    <string name="preference_advanced">Advanced settings</string>
+    <string name="preference_advanced_summary">Additional settings regarding the appearance.</string>
+    <string name="preference_general">General</string>
+    <string name="preference_appearance">Appearance</string>
+    
+    <string name="preference_extensions">Extensions</string>
+    <string name="preference_get_extensions">Get new extensions</string>
+    <string name="preference_get_extensions_summary">Search for extensions online.</string>
+    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
 	
 	<!-- ***************************
 	     Distribution
