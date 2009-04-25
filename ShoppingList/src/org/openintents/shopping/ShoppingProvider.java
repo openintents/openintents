@@ -62,8 +62,8 @@ public class ShoppingProvider extends ContentProvider {
 	 * 
 	 * 1: Release 0.1.1
 	 * 2: Release 0.1.6
-	 * 3: Release 1.0.4
-	 * 4: Release 1.0.5-beta
+	 * 3: Release 1.0.4-beta
+	 * 4: Release 1.0.4-beta
 	 */
 	private static final int DATABASE_VERSION = 4;
 
@@ -109,7 +109,7 @@ public class ShoppingProvider extends ContentProvider {
 					+ "image VARCHAR," // V1
 					+ "price INTEGER," // V3
 					+ "tags VARCHAR," // V3
-					+ "barcode INTEGER," // V4
+					+ "barcode VARCHAR," // V4
 					+ "location VARCHAR," // V4
 					+ "due INTEGER," // V4
 					+ "created INTEGER," // V1
@@ -174,7 +174,7 @@ public class ShoppingProvider extends ContentProvider {
 				case 3:
 					try {
 						db.execSQL("ALTER TABLE items ADD COLUMN "
-								+ Items.BARCODE + " INTEGER;");
+								+ Items.BARCODE + " VARCHAR;");
 						db.execSQL("ALTER TABLE items ADD COLUMN "
 								+ Items.LOCATION + " VARCHAR;");
 						db.execSQL("ALTER TABLE items ADD COLUMN "

@@ -27,6 +27,7 @@ import android.util.Log;
 /**
  * Definition for content provider related to shopping.
  * 
+ * @version 1.0.4
  */
 public abstract class Shopping {
 
@@ -87,7 +88,7 @@ public abstract class Shopping {
 		/**
 		 * A barcode (EAN or QR)
 		 * <P>
-		 * Type: INTEGER (long)
+		 * Type: VARCHAR
 		 * </P>
 		 */
 		public static final String BARCODE = "barcode";
@@ -125,7 +126,7 @@ public abstract class Shopping {
 		public static final String ACCESSED_DATE = "accessed";
 
 		/**
-		 * The timestamp for when the item was last accessed.
+		 * The timestamp for when the item is due.
 		 * <P>
 		 * Type: INTEGER (long)
 		 * </P>
@@ -531,10 +532,11 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String LIST_IMAGE = "list_image";
+		
 		/**
 		 * A barcode (EAN or QR)
 		 * <P>
-		 * Type: INTEGER
+		 * Type: VARCHAR
 		 * </P>
 		 */
 		public static final String BARCODE = "barcode";
@@ -545,9 +547,10 @@ public abstract class Shopping {
 		 * Type: VARCHAR
 		 * </P>
 		 */
-		public static final String LOCATION = "location";	
+		public static final String LOCATION = "location";
+		
 		/**
-		 * The timestamp for when the item was last accessed.
+		 * The timestamp for when the item is due.
 		 * <P>
 		 * Type: INTEGER (long)
 		 * </P>
