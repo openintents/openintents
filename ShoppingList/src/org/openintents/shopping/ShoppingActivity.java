@@ -1431,7 +1431,7 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_NEW_LIST:
 			return new NewListDialog(this,
 					new DialogActionListener() {
-				@Override
+				
 				public void onAction(String name) {
 					createNewList(name);
 				}
@@ -1440,7 +1440,7 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_RENAME_LIST:
 			return new RenameListDialog(this, getCurrentListName(),
 					new DialogActionListener() {
-						@Override
+						
 						public void onAction(String name) {
 							renameList(name);
 						}
