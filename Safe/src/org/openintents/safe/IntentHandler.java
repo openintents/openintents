@@ -270,6 +270,11 @@ public class IntentHandler extends Activity {
 				}
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
+
+			if (thisIntent.hasExtra(CryptoIntents.EXTRA_SESSION_KEY)) {
+				String sessionkey = ch.getCurrentSessionKey();
+				callbackIntent.putExtra(CryptoIntents.EXTRA_SESSION_KEY, sessionkey);
+			}
 			
 			if (thisIntent.getData() != null) {
 				// Encrypt file from file URI

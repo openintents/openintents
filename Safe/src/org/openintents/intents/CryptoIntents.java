@@ -113,6 +113,17 @@ public class CryptoIntents {
 	public static final String EXTRA_TEXT_ARRAY = "org.openintents.extra.TEXT_ARRAY";
 	
 	/**
+	 * A session key for encryption or decryption through a content provider.
+	 * 
+	 * Include this extra with non-empty value to the ENCRYPT or DECRYPT action,
+	 * and the resulting intent will contain the current session key, valid until
+	 * OI Safe logs out.
+	 * 
+	 * <p>Constant Value: "org.openintents.extra.SESSION_KEY"</p>
+	 */
+	public static final String EXTRA_SESSION_KEY = "org.openintents.extra.SESSION_KEY";
+	
+	/**
 	 * Required input parameter to GET_PASSWORD and SET_PASSWORD. Corresponds to the "description"
 	 * field in passwordsafe. Should be a unique name for the password you're using,
 	 * and will already be specific to your application, ie "org.syntaxpolice.opensocial"

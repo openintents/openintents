@@ -138,6 +138,16 @@ public class CryptoContentProvider extends ContentProvider {
 			        // Decrypt file
 			        CryptoHelper ch = ServiceDispatchImpl.ch; // Use the global crypto helper that is connected to the single service we have.
 			        
+			        if (ch == null) {
+			        	if (debug) Log.d(TAG, "OI Safe currently logged out.");
+			        	return null;
+			        }
+			        
+			        if (!sessionKey.equals(ch.getCurrentSessionKey())) {
+			        	if (debug) Log.d(TAG, "Session keys do not match! " + sessionKey + " != " + ch.getCurrentSessionKey());
+			        	return null;
+			        }
+			        
 			        Log.d(TAG, "Original file path: " + originalFile);
 					if (CategoryList.isSignedIn()==false) {
 						Intent frontdoor = new Intent(getContext(), FrontDoor.class);

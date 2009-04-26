@@ -86,6 +86,12 @@ public class CryptoHelper {
     private static byte[] salt = null; 
 
     private static final int count = 20;
+    
+    /**
+     * Session key for content provider.
+     */
+    private String sessionKey = null;
+    
 
     /**
      * Constructor which defaults to a medium encryption level.
@@ -270,6 +276,9 @@ public class CryptoHelper {
 		} catch (NoSuchPaddingException e) {
 		    Log.e(TAG,"setPassword(): "+e.toString());
 		}
+		
+		// Every time we set a new password, also the session key changes:
+		sessionKey = createNewSessionKey();
     }
 
     private void setSalt(String saltIn) throws CryptoHelperException {
@@ -286,6 +295,33 @@ public class CryptoHelper {
 		salt=byteSaltIn;
 		if (debug) Log.d(TAG,"setSalt: salt="+toHexString(salt));
     }
+    
+    /**
+     * Returns the current session key, which is only valid until the
+     * user logs out of OI Safe.
+     * 
+     * The session key is used when encrypting or decrypting files
+     * through the content provider.
+     * 
+     * @return current session key.
+     */
+    public String getCurrentSessionKey() {
+    	return sessionKey;
+    }
+    
+    /**
+     * Creates a new random session key
+     * @return
+     */
+    private String createNewSessionKey() {
+    	try {
+    		// simply create a new salt:
+    		return generateSalt();
+    	} catch (NoSuchAlgorithmException e) {
+    		return "12345"; // better than nothing... :-/
+    	}
+    }
+    
     /**
      * encrypt a string
      * 
