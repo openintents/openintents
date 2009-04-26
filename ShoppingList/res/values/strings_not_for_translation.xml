@@ -82,7 +82,7 @@
     </string-array> 
     
     <!-- URL to OI Shopping list extensions on Market -->
-    <string name="preference_extensions_market_link">market://search?q=extension+oi+shopping+list</string>
+    <string name="preference_extensions_market_link">market://search?q=extension%20oi%20shopping%20list</string>
     
     <!-- URL to OI Shopping list -->
     <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/19#extensions</string>
