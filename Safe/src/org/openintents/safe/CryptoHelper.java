@@ -41,6 +41,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
+import org.openintents.safe.service.ServiceDispatchImpl;
 import org.openintents.util.SecureDelete;
 
 import android.content.ContentResolver;
@@ -306,7 +307,11 @@ public class CryptoHelper {
      * @return current session key.
      */
     public String getCurrentSessionKey() {
-    	return sessionKey;
+    	//return sessionKey;
+    	
+    	return ServiceDispatchImpl.ch.sessionKey;  // Return a global session key created in ServiceDispatchImpl
+    	// This should be the same session key as is used in CryptoContentProvider.
+    	// TODO: Clean up the code above?
     }
     
     /**

@@ -16,7 +16,7 @@
 package org.openintents.intents;
 
 /**
- * @version March 29, 2009, 22:26 UTC
+ * @version 1.1.1
  * 
  * @author Isaac Potoczny-Jones
  * @author Peli
