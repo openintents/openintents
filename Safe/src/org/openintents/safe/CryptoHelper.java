@@ -68,6 +68,9 @@ public class CryptoHelper {
 
 	private static final boolean debug = true;
     private static String TAG = "CryptoHelper";
+    
+    public static final String OISAFE_EXTENSION = ".oisafe";
+    
     protected static PBEKeySpec pbeKeySpec;
     protected static PBEParameterSpec pbeParamSpec;
     protected static SecretKeyFactory keyFac;
@@ -618,11 +621,10 @@ public class CryptoHelper {
 			InputStream is;
 			if (fileUri.getScheme().equals("file")) {
 				is = new java.io.FileInputStream(fileUri.getPath());
-				outputPath = fileUri.getPath() + ".oisafe";
+				outputPath = fileUri.getPath() + OISAFE_EXTENSION;
 			} else {
 				is = contentResolver.openInputStream(fileUri);
-				outputPath = Environment
-				.getExternalStorageDirectory().toString() + "/tmp.oisafe";
+				outputPath = getTemporaryFileName();
 			}
 			
 			FileOutputStream os = new FileOutputStream(outputPath);
@@ -721,26 +723,118 @@ public class CryptoHelper {
 		if (status==false) {
 			return null;
 		}
-		return Uri.parse("file://" + outputPath); // TODO: UUEncode
+		return Uri.fromFile(new File(outputPath)); //Uri.parse("file://" + outputPath); // TODO: UUEncode
     }
+	/**
+	 * @return
+	 */
+	private String getTemporaryFileName() throws CryptoHelperException {
+		String randomPart;
+		try {
+			// create a random session name
+			randomPart=generateSalt();
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		    String msg = "Decrypt error: "+e1.getLocalizedMessage();
+		    throw new CryptoHelperException(msg);
+		}
+		
+		return Environment
+		.getExternalStorageDirectory().toString() + "/tmp-" + randomPart;
+	}
 
     /**
-     * Unencrypt a file previously encrypted with
+     * Dencrypt a file previously encrypted with
      * encryptFileWithSessionKey().
+     * 
+     * Creates a new file without the .oisafe extension.
      * 
      * @author Peli
      * 
      * @param ctx Context of activity in order to store temp file
      * @param fileUri Uri to either a stream or a file to read from
-     * @param useContentProvider true for using Content Provider,
-     *        false for creating a file without ".oisafe" extension and
-     *        deleting the original file.
      * @return If decryption is successful, returns Uri of a content 
      * 		provider to read the plaintext file.  Upon failure,
      * 		return null.
      * @throws Exception
      */
     public Uri decryptFileWithSessionKey(Context ctx, Uri fileUri) throws CryptoHelperException {
+    	Log.d(TAG, "fileUri="+fileUri.toString());
+    	ContentResolver contentResolver = ctx.getContentResolver();
+
+		String outputPath = null;
+		Uri resultUri = null;
+    	boolean result = false;
+    	
+    	try {
+	    	InputStream is;
+			if (fileUri.getScheme().equals("file")) {
+				String inputPath = fileUri.getPath();
+				is = new java.io.FileInputStream(inputPath);
+				if (debug) Log.d(TAG, "Decrypt: Input from " + inputPath);
+				if (inputPath.endsWith(OISAFE_EXTENSION)) {
+					outputPath = inputPath.substring(0, inputPath.length() - OISAFE_EXTENSION.length());
+				}
+			} else {
+				is = contentResolver.openInputStream(fileUri);
+				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.toString());
+			}
+
+			if (outputPath == null) {
+				outputPath = getTemporaryFileName();
+			}
+			
+			FileOutputStream os = new FileOutputStream(outputPath);
+	
+			// after writing the decrypted content to a temporary file,
+			// pass back a Uri that can be used to read back the contents
+			resultUri = Uri.fromFile(new File(outputPath)); //Uri.parse("file://" + outputPath); // TODO: UUEncode?
+			
+			result = decryptStreamWithSessionKey(ctx, is, os);
+	
+			// Close the input stream
+			is.close();
+			os.close();
+
+		} catch (FileNotFoundException e) {
+			Log.e(TAG, "File not found", e);
+		} catch (IOException e) {
+			Log.e(TAG, "IOException", e);
+		}
+
+
+		if (result == true) {
+			// Successful
+
+			// Securely delete the original file:
+			
+			SecureDelete.delete(new File(fileUri.getPath()));
+		} else {
+			resultUri = null;
+			
+			// Unsuccessful. Clean up
+			//ctx.deleteFile(sessionFile);
+		}
+		
+    	return resultUri;
+    }
+    
+    /**
+     * Dencrypt a file previously encrypted with
+     * encryptFileWithSessionKey().
+     * 
+     * The original file is not modified
+     * 
+     * @author Peli
+     * 
+     * @param ctx Context of activity in order to store temp file
+     * @param fileUri Uri to either a stream or a file to read from
+     * @return If decryption is successful, returns Uri of a content 
+     * 		provider to read the plaintext file.  Upon failure,
+     * 		return null.
+     * @throws Exception
+     */
+    public Uri decryptFileWithSessionKeyThroughContentProvider(Context ctx, Uri fileUri) throws CryptoHelperException {
     	Log.d(TAG, "fileUri="+fileUri.toString());
     	ContentResolver contentResolver = ctx.getContentResolver();
     	
