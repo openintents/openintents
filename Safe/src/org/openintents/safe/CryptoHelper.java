@@ -762,14 +762,15 @@ public class CryptoHelper {
     	Log.d(TAG, "fileUri="+fileUri.toString());
     	ContentResolver contentResolver = ctx.getContentResolver();
 
+    	String inputPath = null;
 		String outputPath = null;
 		Uri resultUri = null;
     	boolean result = false;
     	
     	try {
 	    	InputStream is;
-			if (fileUri.getScheme().equals("file")) {
-				String inputPath = fileUri.getPath();
+	    	if (fileUri.getScheme().equals("file")) {
+				inputPath = fileUri.getPath();
 				is = new java.io.FileInputStream(inputPath);
 				if (debug) Log.d(TAG, "Decrypt: Input from " + inputPath);
 				if (inputPath.endsWith(OISAFE_EXTENSION)) {
@@ -807,8 +808,9 @@ public class CryptoHelper {
 			// Successful
 
 			// Securely delete the original file:
-			
-			SecureDelete.delete(new File(fileUri.getPath()));
+			if (inputPath != null) {
+				SecureDelete.delete(new File(inputPath));
+			}
 		} else {
 			resultUri = null;
 			
@@ -886,12 +888,6 @@ public class CryptoHelper {
 		} catch (IOException e) {
 			Log.e(TAG, "IOException", e);
 		}
-
-		// Securely delete the original file:
-		
-		// TODO Peli: Only delete if this is not a decryption through ContentProvider.
-		// SecureDelete.delete(new File(fileUri.getPath()));
-
 
 		if (result == false) {
 			resultUri = null;
