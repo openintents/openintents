@@ -22,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.DigestInputStream;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -731,33 +732,24 @@ public class CryptoHelper {
      * 
      * @param ctx Context of activity in order to store temp file
      * @param fileUri Uri to either a stream or a file to read from
+     * @param useContentProvider true for using Content Provider,
+     *        false for creating a file without ".oisafe" extension and
+     *        deleting the original file.
      * @return If decryption is successful, returns Uri of a content 
      * 		provider to read the plaintext file.  Upon failure,
      * 		return null.
      * @throws Exception
      */
     public Uri decryptFileWithSessionKey(Context ctx, Uri fileUri) throws CryptoHelperException {
-		Log.d(TAG, "decryptFileWithSessionKey");
-		Log.d(TAG, "fileUri="+fileUri.toString());
-		ContentResolver contentResolver = ctx.getContentResolver();
-    	status=false; // assume failure
-		if(password == null) {
-		    String msg = "Must call setPassword before running decrypt.";
-		    throw new CryptoHelperException(msg);
-		}
-
-		String decryptSession;
-		try {
-			// create a random session name
-			decryptSession=generateSalt();
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		    String msg = "Decrypt error: "+e1.getLocalizedMessage();
-		    throw new CryptoHelperException(msg);
-		}
-		String sessionFile = "";
-		try {
-			InputStream is;
+    	Log.d(TAG, "fileUri="+fileUri.toString());
+    	ContentResolver contentResolver = ctx.getContentResolver();
+    	
+    	String sessionFile = "";
+		Uri resultUri = null;
+    	boolean result = false;
+    	
+    	try {
+	    	InputStream is;
 			if (fileUri.getScheme().equals("file")) {
 				is = new java.io.FileInputStream(fileUri.getPath());
 				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.getPath());
@@ -765,15 +757,82 @@ public class CryptoHelper {
 				is = contentResolver.openInputStream(fileUri);
 				if (debug) Log.d(TAG, "Decrypt: Input from " + fileUri.toString());
 			}
+			FileOutputStream os = null;
+			
+			String decryptSession;
+			try {
+				// create a random session name
+				decryptSession=generateSalt();
+			} catch (NoSuchAlgorithmException e1) {
+				e1.printStackTrace();
+			    String msg = "Decrypt error: "+e1.getLocalizedMessage();
+			    throw new CryptoHelperException(msg);
+			}
 			sessionFile = CryptoContentProvider.SESSION_FILE+"."+decryptSession;
 			if (debug) Log.d(TAG, "Decrypt: Output to " + sessionFile);
-			
+				
 			// openFileOutput creates a file in /data/data/{packagename}/files/
 			// In our case, /data/data/org.openintents.safe/files/
 			// This file is owned and only readable by our application
-			FileOutputStream os = ctx.openFileOutput(sessionFile,
-					Context.MODE_PRIVATE);
+			os = ctx.openFileOutput(sessionFile,
+						Context.MODE_PRIVATE);
 	
+			// after writing the decrypted content to a temporary file,
+			// pass back a Uri that can be used to read back the contents
+			resultUri = Uri.withAppendedPath(CryptoContentProvider.CONTENT_URI, "decrypt/" + decryptSession);
+			
+			result = decryptStreamWithSessionKey(ctx, is, os);
+	
+			// Close the input stream
+			is.close();
+			os.close();
+
+		} catch (FileNotFoundException e) {
+			Log.e(TAG, "File not found", e);
+		} catch (IOException e) {
+			Log.e(TAG, "IOException", e);
+		}
+
+		// Securely delete the original file:
+		
+		// TODO Peli: Only delete if this is not a decryption through ContentProvider.
+		// SecureDelete.delete(new File(fileUri.getPath()));
+
+
+		if (result == false) {
+			resultUri = null;
+			
+			// Unsuccessful. Clean up
+			ctx.deleteFile(sessionFile);
+		}
+		
+    	return resultUri;
+    }
+    
+    /**
+     * Unencrypt a file previously encrypted with
+     * encryptFileWithSessionKey().
+     * 
+     * @author Peli
+     * 
+     * @param ctx Context of activity in order to store temp file
+     * @param fileUri Uri to either a stream or a file to read from
+     * @param useContentProvider true for using Content Provider,
+     *        false for creating a file without ".oisafe" extension and
+     *        deleting the original file.
+     * @return True if successful, otherwise false.
+     * @throws Exception
+     */
+    public boolean decryptStreamWithSessionKey(Context ctx, InputStream is, OutputStream os) throws CryptoHelperException {
+		if (debug) Log.d(TAG, "decryptStreamWithSessionKey");
+		status=false; // assume failure
+		if(password == null) {
+		    String msg = "Must call setPassword before running decrypt.";
+		    throw new CryptoHelperException(msg);
+		}
+
+		try {
+			
 			int numReadTotal = 0;
 			int numRead = 0;
 			
@@ -805,13 +864,11 @@ public class CryptoHelper {
 					}
 				} else {
 					Log.e(TAG, "Unknown cipher version" + cipherVersion);
-					ctx.deleteFile(sessionFile);
-					return null;
+					return false;
 				}
 			} catch (IndexOutOfBoundsException e) {
 				Log.e(TAG, "Invalid ciphertext (with session key)");
-				ctx.deleteFile(sessionFile);
-				return null;
+				return false;
 			}
 			
 			// Decrypt the session key
@@ -857,37 +914,16 @@ public class CryptoHelper {
 				if (offset < is.available()) {
 					throw new IOException("Could not completely read file ");
 				}
-	
-				// Close the input stream and return bytes
-				is.close();
-				os.close();
-
-				// Securely delete the original file:
-				
-				// TODO Peli: Only delete if this is not a decryption through ContentProvider.
-				// SecureDelete.delete(new File(fileUri.getPath()));
-
 				status=true;
 				
 		    } catch (ESJException e) {
 				Log.e(TAG, "Error decrypting file", e);
 	    	}
 		    
-		} catch (FileNotFoundException e) {
-//			Log.e(TAG, "File not found", e);
 		} catch (IOException e) {
 			Log.e(TAG, "IOException", e);
 		}
-		if (status==false) {
-			if (sessionFile.length()!=0) {
-				if (debug) Log.d(TAG,"status==false, deleting sessionFile:"+sessionFile);
-				ctx.deleteFile(sessionFile);
-			}
-			return null;
-		}
-		// after writing the decrypted content to a temporary file,
-		// pass back a Uri that can be used to read back the contents
-		Uri uri=Uri.withAppendedPath(CryptoContentProvider.CONTENT_URI, "decrypt/" + decryptSession);
-		return uri;
+		
+		return status;
     }
 }
