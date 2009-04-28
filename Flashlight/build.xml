@@ -12,6 +12,19 @@ storepass=*password of keystore*
 	<property file="build.properties" />
 	<!-- <property file="${build.properties.dir}/build.properties" /> -->
 	
+<!-- 1.5 Changes START -->
+    <!-- Custom Android task to deal with the project target, and import the proper rules.
+         This requires ant 1.6.0 or above. -->
+    <path id="android.antlibs">
+        <pathelement path="${sdk-location}/tools/lib/anttasks.jar" />
+        <pathelement path="${sdk-location}/tools/lib/sdklib.jar" />
+        <pathelement path="${sdk-location}/tools/lib/androidprefs.jar" />
+        <pathelement path="${sdk-location}/tools/lib/apkbuilder.jar" />
+        <pathelement path="${sdk-location}/tools/lib/jarutils.jar" />
+    </path>
+
+<!-- 1.5 Changes END -->
+
 	<!-- Read manifest properties , e.g. manifest(android:versionName) or manifest.package -->
 	<xmlproperty file="AndroidManifest.xml" />
 
@@ -140,8 +153,24 @@ storepass=*password of keystore*
 	</condition>
 
     <!-- Rules -->
+    <!-- Custom tasks -->
+<!-- 1.5 Changes START -->
+    <taskdef name="setup"
+        classname="com.android.ant.SetupTask"
+        classpathref="android.antlibs"/>
+	<setup import="false" />
+    <taskdef name="aaptexec"
+        classname="com.android.ant.AaptExecLoopTask"
+        classpathref="android.antlibs"/>
 
-    <!-- Create the output directories if they don't exist yet. -->
+    <taskdef name="apkbuilder"
+        classname="com.android.ant.ApkBuilderTask"
+        classpathref="android.antlibs"/>
+		
+<!-- 1.5 Changes END -->
+
+
+		<!-- Create the output directories if they don't exist yet. -->
     <target name="dirs">
         <mkdir dir="${outdir}" />
     	<delete dir="${outdir-classes}"/>
