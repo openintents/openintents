@@ -16,7 +16,10 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.flashlight"
-      android:versionName="1.0.3" android:versionCode="10003">
+      
+
+android:versionName="1.0.4-RC1" 
+android:versionCode="10004">
       
     <!-- required to keep the backlight turned on -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -53,6 +56,9 @@
         </activity> 
         <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
         </activity> 
+
+<uses-sdk android:minSdkVersion="3" />
+	
         
     </application>
 </manifest> 

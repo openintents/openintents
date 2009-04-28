@@ -211,22 +211,17 @@ public class Flashlight extends Activity {
 			res=Settings.System.putInt(getContentResolver(), 
 					Settings.System.SCREEN_BRIGHTNESS, 255);
 		//	Log.d(TAG,"res>"+res);
-			setBrightness(255);
+			//android 1.5 magic number meaning "full brightness"
+			setBrightness(1f);
 			//Log.d(TAG,"brightness>"+Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, NOT_VALID));
 		}
 	}
 
 
-	private void setBrightness(int brightness) {
-	  try {
-		   IHardwareService hardware = IHardwareService.Stub.asInterface(
-			   ServiceManager.getService("hardware"));
-		   if (hardware != null) {
-		   hardware.setScreenBacklight(brightness);
-		   }
-	   } catch (RemoteException doe) {
-			Log.d(TAG,"failed to call HardwareService");		 
-	  }        
+	private void setBrightness(float brightness) {
+		WindowManager.LayoutParams lp=getWindow().getAttributes();
+		lp.screenBrightness=brightness;
+		getWindow().setAttributes(lp);
 	}
 
 	private void wakeUnlock() {
@@ -239,8 +234,10 @@ public class Flashlight extends Activity {
 			if (mUserBrightness != NOT_VALID) {
 				Settings.System.putInt(getContentResolver(), 
 						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
-				setBrightness(mUserBrightness);
+				//setBrightness(mUserBrightness);
 			}
+			//android 1.5 magic number meaning "default user setting"
+			setBrightness(-1f);
 		}
 	}
 	

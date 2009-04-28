@@ -246,6 +246,7 @@ storepass=*password of keystore*
 	     <arg value="-dontshrink"/>
 	     <arg value="-keep public class org.openintents.flashlight.ColorPickerActivity"/>
 	     <arg value="-keep public class org.openintents.flashlight.Flashlight"/>
+	     <arg value="-keep public class android.content.BroadcastReceiver"/>
 	     <arg value="-keep public class org.openintents.widget.ColorCircle"/>
 	     <arg value="-keep public class org.openintents.widget.ColorSlider"/>
 		 <arg value="-keep public class org.openintents.distribution.EulaActivity"/>
