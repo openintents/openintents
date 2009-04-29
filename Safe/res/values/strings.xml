@@ -201,8 +201,7 @@ Current version: %s
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>
     <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
-
-	
+    
 	<!-- ***************************
 	     Permissions
 	     *************************** -->

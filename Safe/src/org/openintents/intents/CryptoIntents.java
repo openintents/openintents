@@ -157,4 +157,11 @@ public class CryptoIntents {
 	 * <p>Constant Value: "org.openintents.extra.PROMPT"</p>
 	 */
 	public static final String EXTRA_PROMPT = "org.openintents.extra.PROMPT";
+	
+	/**
+	 * Set if the activity handles encrypted content.
+	 * 
+	 * <p>Constant Value: "org.openintents.category.SAFE"</p>
+	 */
+	public static final String CATEGORY_SAFE = "org.openintents.category.SAFE";
 }
