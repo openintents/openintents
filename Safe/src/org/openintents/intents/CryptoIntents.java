@@ -31,6 +31,9 @@ public class CryptoIntents {
 	 * If a file URI is given, the file is encrypted.
 	 * The new file URI is returned.
 	 * 
+	 * If the extra EXTRA_SESSION_KEY is provided, the session key is returned,
+	 * and the content URI is returned in the data field.
+	 * 
 	 * Returns all encrypted string in the same extra(s).
 	 * 
 	 * <p>Constant Value: "org.openintents.action.ENCRYPT"</p>
@@ -43,6 +46,9 @@ public class CryptoIntents {
 	 * 
 	 * If a file URI is given, the file is decrypted.
 	 * The new file URI is returned.
+	 * 
+	 * If the extra EXTRA_SESSION_KEY is provided, the session key is returned,
+	 * and the content URI is returned in the data field.
 	 * 
 	 * Returns all decrypted string in the same extra(s).
 	 * 
@@ -117,7 +123,7 @@ public class CryptoIntents {
 	 * 
 	 * Include this extra with non-empty value to the ENCRYPT or DECRYPT action,
 	 * and the resulting intent will contain the current session key, valid until
-	 * OI Safe logs out.
+	 * OI Safe logs out, and the content URI as data.
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.SESSION_KEY"</p>
 	 */

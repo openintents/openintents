@@ -270,11 +270,6 @@ public class IntentHandler extends Activity {
 				}
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
-
-			if (thisIntent.hasExtra(CryptoIntents.EXTRA_SESSION_KEY)) {
-				String sessionkey = ch.getCurrentSessionKey();
-				callbackIntent.putExtra(CryptoIntents.EXTRA_SESSION_KEY, sessionkey);
-			}
 			
 			if (thisIntent.getData() != null) {
 				// Encrypt file from file URI
@@ -284,7 +279,14 @@ public class IntentHandler extends Activity {
 				
 				callbackIntent.setData(newFileUri);
 			}
-			// Support for binary fields could be added here (like images?)
+
+			if (thisIntent.hasExtra(CryptoIntents.EXTRA_SESSION_KEY)) {
+				String sessionkey = ch.getCurrentSessionKey();
+				callbackIntent.putExtra(CryptoIntents.EXTRA_SESSION_KEY, sessionkey);
+				
+				// Warning! This overwrites any data intent set previously.
+				callbackIntent.setData(CryptoContentProvider.CONTENT_URI);
+			}
 			
 			callbackResult = RESULT_OK;
 		} catch (CryptoHelperException e) {
@@ -324,11 +326,6 @@ public class IntentHandler extends Activity {
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
 
-			if (thisIntent.hasExtra(CryptoIntents.EXTRA_SESSION_KEY)) {
-				String sessionkey = ch.getCurrentSessionKey();
-				callbackIntent.putExtra(CryptoIntents.EXTRA_SESSION_KEY, sessionkey);
-			}
-			
 			if (thisIntent.getData() != null) {
 				// Decrypt file from file URI
 				Uri fileUri = thisIntent.getData();
@@ -337,7 +334,14 @@ public class IntentHandler extends Activity {
 				
 				callbackIntent.setData(newFileUri);
 			}
-			// Support for binary fields could be added here (like images?)
+			
+			if (thisIntent.hasExtra(CryptoIntents.EXTRA_SESSION_KEY)) {
+				String sessionkey = ch.getCurrentSessionKey();
+				callbackIntent.putExtra(CryptoIntents.EXTRA_SESSION_KEY, sessionkey);
+				
+				// Warning! This overwrites any data intent set previously.
+				callbackIntent.setData(CryptoContentProvider.CONTENT_URI);
+			}
 			
 			callbackResult = RESULT_OK;
 		} catch (CryptoHelperException e) {
