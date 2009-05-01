@@ -202,11 +202,14 @@ public class Restore extends Activity {
 				Toast.LENGTH_LONG).show();
         	return false;
 		}
-		CategoryEntry firstCatEntry=restoreDataSet.getCategories().get(0);
-		if (firstCatEntry==null) {
-			Toast.makeText(Restore.this, getString(R.string.restore_error),
-				Toast.LENGTH_LONG).show();
-			return false;
+		CategoryEntry firstCatEntry= null;
+		if (restoreDataSet.getCategories().size() > 0) {
+			firstCatEntry = restoreDataSet.getCategories().get(0);
+			if (firstCatEntry==null) {
+				Toast.makeText(Restore.this, getString(R.string.restore_error),
+					Toast.LENGTH_LONG).show();
+				return false;
+			}
 		}
 		CryptoHelper ch=new CryptoHelper();
 		
@@ -243,19 +246,21 @@ public class Restore extends Activity {
 			return false;
 		}
 		
-		String firstCategory="";
-		try {
-			firstCategory = ch.decrypt(firstCatEntry.name);
-		} catch (CryptoHelperException e) {
-			Log.e(TAG,e.toString());
+		if (firstCatEntry != null) {
+			String firstCategory="";
+			try {
+				firstCategory = ch.decrypt(firstCatEntry.name);
+			} catch (CryptoHelperException e) {
+				Log.e(TAG,e.toString());
+			}
+			if (ch.getStatus() == false) {
+				Toast.makeText(Restore.this, getString(R.string.restore_decrypt_error),
+					Toast.LENGTH_LONG).show();
+				return false;
+			}
+			if (debug) Log.d(TAG,"firstCategory="+firstCategory);
 		}
-		if (ch.getStatus() == false) {
-			Toast.makeText(Restore.this, getString(R.string.restore_decrypt_error),
-				Toast.LENGTH_LONG).show();
-			return false;
-		}
-		if (debug) Log.d(TAG,"firstCategory="+firstCategory);
-
+		
 		dbHelper=new DBHelper(Restore.this);
 
 		String msg=getString(R.string.restore_found, 
