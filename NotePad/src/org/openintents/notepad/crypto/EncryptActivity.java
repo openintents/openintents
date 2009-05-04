@@ -3,7 +3,7 @@ package org.openintents.notepad.crypto;
 import org.openintents.distribution.GetFromMarketDialog;
 import org.openintents.distribution.RD;
 import org.openintents.intents.CryptoIntents;
-import org.openintents.notepad.NotePadIntents;
+import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.filename.DialogHostingActivity;
@@ -46,7 +46,7 @@ public class EncryptActivity extends Activity {
 		Intent i = getIntent();
 
 		i.setComponent(null);
-		String action = i.getStringExtra(NotePadIntents.EXTRA_ACTION);
+		String action = i.getStringExtra(PrivateNotePadIntents.EXTRA_ACTION);
 		
 		// action should be either ENCRYPT or DECRYPT
 		if (!action.equals(CryptoIntents.ACTION_ENCRYPT) 
@@ -107,7 +107,7 @@ public class EncryptActivity extends Activity {
     			String tags = textArray[2];
     			String action = data.getAction();
     			
-    			String uristring = data.getStringExtra(NotePadIntents.EXTRA_URI);
+    			String uristring = data.getStringExtra(PrivateNotePadIntents.EXTRA_URI);
     			Uri uri = null;
     			if (uristring != null) {
     				uri = Uri.parse(uristring);

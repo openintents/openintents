@@ -1,6 +1,6 @@
 package org.openintents.notepad;
 
-public class NotePadIntents {
+public class PrivateNotePadIntents {
 
 	/* 
 	 * Content Provider ID.

@@ -36,7 +36,7 @@ import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NoteEditor;
 import org.openintents.notepad.NotePad;
-import org.openintents.notepad.NotePadIntents;
+import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.NotePadProvider;
 import org.openintents.notepad.PreferenceActivity;
 import org.openintents.notepad.R;
@@ -569,9 +569,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		}
 		
 		Intent i = new Intent(this, EncryptActivity.class);
-		i.putExtra(NotePadIntents.EXTRA_ACTION, action);
+		i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, action);
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
-		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
+		i.putExtra(PrivateNotePadIntents.EXTRA_URI, noteUri.toString());
 		startActivity(i);
 	}
 	
@@ -597,7 +597,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		Intent i = new Intent(this, DialogHostingActivity.class);
 		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_SAVE);
-		i.putExtra(NotePadIntents.EXTRA_URI, noteUri.toString());
+		i.putExtra(PrivateNotePadIntents.EXTRA_URI, noteUri.toString());
 		i.setData(uri);
 		startActivityForResult(i, REQUEST_CODE_SAVE);
 	}
@@ -698,7 +698,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		intent.setAction(CryptoIntents.ACTION_DECRYPT);
 		if (encryptedTitle != null) {
 			intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
-			intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+			intent.putExtra(PrivateNotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
 		}
 		
 		intent.putExtra(CryptoIntents.EXTRA_PROMPT, false);
@@ -784,7 +784,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 				Intent intent = new Intent();
 				intent.setAction(CryptoIntents.ACTION_DECRYPT);
 				intent.putExtra(CryptoIntents.EXTRA_TEXT, encryptedTitle);
-				intent.putExtra(NotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
+				intent.putExtra(PrivateNotePadIntents.EXTRA_ENCRYPTED_TEXT, encryptedTitle);
 				
 				intent.putExtra(CryptoIntents.EXTRA_PROMPT, true);
 		        
@@ -825,7 +825,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     	case REQUEST_CODE_DECRYPT_TITLE:
     		if (resultCode == RESULT_OK && intent != null) {
     			String decryptedText = intent.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			String encryptedText = intent.getStringExtra (NotePadIntents.EXTRA_ENCRYPTED_TEXT);
+    			String encryptedText = intent.getStringExtra (PrivateNotePadIntents.EXTRA_ENCRYPTED_TEXT);
     			
     			if (encryptedText != null) {
         	    	//Log.i(TAG, "Encrypted text is not passed properly.");
@@ -872,7 +872,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		if (resultCode == RESULT_OK && intent != null) {
     			// File name should be in Uri:
     			File filename = FileUriUtils.getFile(intent.getData());
-    			Uri uri = Uri.parse(intent.getStringExtra(NotePadIntents.EXTRA_URI));
+    			Uri uri = Uri.parse(intent.getStringExtra(PrivateNotePadIntents.EXTRA_URI));
     			
     			if (filename.exists()) {
     				// TODO Warning dialog

@@ -5,7 +5,7 @@ import java.io.File;
 import org.openintents.distribution.GetFromMarketDialog;
 import org.openintents.distribution.RD;
 import org.openintents.intents.FileManagerIntents;
-import org.openintents.notepad.NotePadIntents;
+import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.filename.FilenameDialog.OnFilenamePickedListener;
 import org.openintents.notepad.util.FileUriUtils;
@@ -79,7 +79,7 @@ public class DialogHostingActivity extends Activity {
 		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
 		intent.setData(getIntent().getData());
 		if (IntentUtils.isIntentAvailable(this, intent)) {
-			intent.putExtra(NotePadIntents.EXTRA_URI, getIntent().getStringExtra(NotePadIntents.EXTRA_URI));
+			intent.putExtra(PrivateNotePadIntents.EXTRA_URI, getIntent().getStringExtra(PrivateNotePadIntents.EXTRA_URI));
 			intent.putExtra(FileManagerIntents.EXTRA_TITLE, getText(R.string.menu_save_to_sdcard));
 			intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getText(R.string.save));
 			intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
@@ -98,7 +98,7 @@ public class DialogHostingActivity extends Activity {
 		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_FILE);
 		intent.setData(getIntent().getData());
 		if (IntentUtils.isIntentAvailable(this, intent)) {
-			intent.putExtra(NotePadIntents.EXTRA_URI, getIntent().getStringExtra(NotePadIntents.EXTRA_URI));
+			intent.putExtra(PrivateNotePadIntents.EXTRA_URI, getIntent().getStringExtra(PrivateNotePadIntents.EXTRA_URI));
 			intent.putExtra(FileManagerIntents.EXTRA_TITLE, getText(R.string.menu_open_from_sdcard));
 			intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getText(R.string.open));
 			intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);

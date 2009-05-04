@@ -31,6 +31,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.openintents.intents.CryptoIntents;
+import org.openintents.intents.NotepadIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.util.ExtractTitle;
@@ -94,11 +95,14 @@ public class NoteEditor extends Activity {
 	private static final int MENU_UNENCRYPT = Menu.FIRST + 4;
 
 	private static final int REQUEST_CODE_DECRYPT = 2;
+	private static final int REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE = 3;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
     private static final int STATE_INSERT = 1;
     //private static final int STATE_NOTE_FROM_SDCARD = 2;
+    
+    private static final int GROUP_ID_TEXT_SELECTION_ALTERNATIVE = 1234; // some number that must not collide with others
 
     private int mState;
     private boolean mNoteOnly = false;
@@ -357,7 +361,7 @@ public class NoteEditor extends Activity {
 	        		Intent i = new Intent();
 	        		i.setAction(CryptoIntents.ACTION_DECRYPT);
 	        		i.putExtra(CryptoIntents.EXTRA_TEXT, note);
-	        		i.putExtra(NotePadIntents.EXTRA_ID, id);
+	        		i.putExtra(PrivateNotePadIntents.EXTRA_ID, id);
 	                
 	                try {
 	                	startActivityForResult(i, REQUEST_CODE_DECRYPT);
@@ -466,9 +470,9 @@ public class NoteEditor extends Activity {
 		}
         
 		Intent i = new Intent(this, EncryptActivity.class);
-		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
+		i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
-		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+		i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
 	}
 	
@@ -495,9 +499,9 @@ public class NoteEditor extends Activity {
 		
 		// Small trick: Tags have not been converted properly yet. Let's do it now:
 		Intent i = new Intent(this, EncryptActivity.class);
-		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_DECRYPT);
+		i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_DECRYPT);
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(null, null, tags));
-		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+		i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
 	}
 	
@@ -556,7 +560,7 @@ public class NoteEditor extends Activity {
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
         */
-
+        
         // If we are working on a full note, then append to the
         // menu items for any other activities that can do stuff with it
         // as well.  This does a query on the system for any activities that
@@ -571,6 +575,14 @@ public class NoteEditor extends Activity {
             // Workaround to add icons:
             MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
             menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                            new ComponentName(this, NoteEditor.class), null, intent, 0, null);
+            
+            // Add menu items for category CATEGORY_TEXT_SELECTION_ALTERNATIVE
+            intent = new Intent(); // Don't pass data for this intent
+            intent.addCategory(NotepadIntents.CATEGORY_TEXT_SELECTION_ALTERNATIVE);
+            intent.setType("text/plain");
+            // Workaround to add icons:
+            menu2.addIntentOptions(GROUP_ID_TEXT_SELECTION_ALTERNATIVE, 0, 0,
                             new ComponentName(this, NoteEditor.class), null, intent, 0, null);
             
         }
@@ -616,8 +628,34 @@ public class NoteEditor extends Activity {
         	unencryptNote();
         	break;
         }
+        if (item.getGroupId() == GROUP_ID_TEXT_SELECTION_ALTERNATIVE) {
+        	// Process manually:
+        	// We pass the current selection along with the intent
+        	startTextSelectionActivity(item.getIntent());
+        	
+        	// Consume event
+        	return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
+	/**
+	 * Modifies an activity to pass along the currently selected text.
+	 * @param intent
+	 */
+	private void startTextSelectionActivity(Intent intent) {
+		Intent newIntent = new Intent(intent);
+		
+		String text = mText.getText().toString();
+		int start = mText.getSelectionStart();
+		int end = mText.getSelectionEnd();
+		
+		newIntent.putExtra(NotepadIntents.EXTRA_TEXT, text.substring(start, end));
+		newIntent.putExtra(NotepadIntents.EXTRA_TEXT_BEFORE_SELECTION, text.substring(0, start));
+		newIntent.putExtra(NotepadIntents.EXTRA_TEXT_AFTER_SELECTION, text.substring(end));
+		
+		startActivityForResult(newIntent, REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE);
+	}
 
     /**
      * Take care of canceling work on a note.  Deletes the note if we
@@ -670,13 +708,70 @@ public class NoteEditor extends Activity {
     }
     */
 
+    /**
+     * Insert textToInsert at current position.
+     * Optionally, if textBefore or textAfter are non-null,
+     * replace the text before or after the current selection.
+     * 
+     * @author isaac
+     * @author Peli
+     */
+    private void insertAtPoint (String textBefore, String textToInsert, String textAfter) {
+    	String originalText = mText.getText().toString(); 
+        int startPos = mText.getSelectionStart(); 
+        int endPos = mText.getSelectionEnd();
+        int newStartPos = startPos;
+        int newEndPos = endPos;
+        ContentValues values = new ContentValues(); 
+        String newNote = "";
+        StringBuffer sb = new StringBuffer();
+        if (textBefore != null) {
+        	sb.append(textBefore);
+        	newStartPos = textBefore.length();
+        } else {
+        	sb.append(originalText.substring(0, startPos));
+        }
+        if (textToInsert != null) {
+        	sb.append(textToInsert);
+        	newEndPos = newStartPos + textToInsert.length();
+        } else {
+        	String text = originalText.substring(startPos, endPos);
+        	sb.append(text);
+        	newEndPos = newStartPos + text.length();
+        }
+        if (textAfter != null) {
+        	sb.append(textAfter);
+        } else {
+        	sb.append(originalText.substring(endPos));
+        }
+        newNote = sb.toString();
+        
+        // This stuff is only done when working with a full-fledged note. 
+        if (!mNoteOnly) { 
+            // Bump the modification time to now. 
+            values.put(Notes.MODIFIED_DATE, System.currentTimeMillis()); 
+            String title = ExtractTitle.extractTitle(newNote); 
+            values.put(Notes.TITLE, title); 
+        } 
+        // Write our text back into the provider.
+        values.put(Notes.NOTE, newNote);
+        // Commit all of our changes to persistent storage. When the update completes 
+        // the content provider will notify the cursor of the change, which will 
+        // cause the UI to be updated. 
+        getContentResolver().update(mUri, values, null, null);
+        //ijones: notification doesn't seem to trigger for some reason :( 
+        mText.setTextKeepState(newNote);
+        // Adjust cursor position according to new length:
+        mText.setSelection(newStartPos, newEndPos);
+    } 
+
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_DECRYPT:
     		if (resultCode == RESULT_OK && data != null) {
     			String decryptedText = data.getStringExtra (CryptoIntents.EXTRA_TEXT);
-    			long id = data.getLongExtra(NotePadIntents.EXTRA_ID, -1);
+    			long id = data.getLongExtra(PrivateNotePadIntents.EXTRA_ID, -1);
     			
     			// TODO: Check that id corresponds to current intent.
     			
@@ -699,6 +794,16 @@ public class NoteEditor extends Activity {
     			Log.e(TAG, "decryption failed");
     			
         		finish();
+    		}
+    		break;
+    	case REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE:
+    		if (resultCode == RESULT_OK && data != null) {
+    			// Insert result at current cursor position:
+    			String text = data.getStringExtra(NotepadIntents.EXTRA_TEXT);
+    			String textBefore = data.getStringExtra(NotepadIntents.EXTRA_TEXT_BEFORE_SELECTION);
+    			String textAfter = data.getStringExtra(NotepadIntents.EXTRA_TEXT_AFTER_SELECTION);
+    			
+    			insertAtPoint(textBefore, text, textAfter);
     		}
     		break;
     	}

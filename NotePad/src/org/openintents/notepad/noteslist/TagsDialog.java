@@ -1,7 +1,7 @@
 package org.openintents.notepad.noteslist;
 
 import org.openintents.intents.CryptoIntents;
-import org.openintents.notepad.NotePadIntents;
+import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
@@ -123,9 +123,9 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     		// Encrypt the tag
 
     		Intent i = new Intent(mContext, EncryptActivity.class);
-    		i.putExtra(NotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
+    		i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
     		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(null, null, tags));
-    		i.putExtra(NotePadIntents.EXTRA_URI, mUri.toString());
+    		i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
     		mContext.startActivity(i);
     	}
     }
