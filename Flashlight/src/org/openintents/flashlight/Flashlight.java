@@ -211,17 +211,67 @@ public class Flashlight extends Activity {
 			res=Settings.System.putInt(getContentResolver(), 
 					Settings.System.SCREEN_BRIGHTNESS, 255);
 		//	Log.d(TAG,"res>"+res);
-			//android 1.5 magic number meaning "full brightness"
-			setBrightness(1f);
+			setBrightness(true,255);
 			//Log.d(TAG,"brightness>"+Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, NOT_VALID));
 		}
 	}
 
 
-	private void setBrightness(float brightness) {
-		WindowManager.LayoutParams lp=getWindow().getAttributes();
-		lp.screenBrightness=brightness;
-		getWindow().setAttributes(lp);
+	private void setBrightness(boolean on,int userBrightness) {
+		if (on && !mOldClassAvailable && mNewClassAvailable)
+		{
+			
+			//android 1.5 magic number meaning "full brightness"
+			setBrightnessSDK3(1f);
+		}else if (on && mOldClassAvailable && !mNewClassAvailable)
+		{
+			setBrightnessSDK2(userBrightness);
+		
+		}else if(!on && ! mOldClassAvailable && mNewClassAvailable)
+		{
+			//android 1.5 magic number meaning "default/user brightness"
+			setBrightnessSDK3(-1f);
+		}else if (!on && mOldClassAvailable && !mNewClassAvailable)
+		{
+			setBrightnessSDK2(userBrightness);
+		}
+
+	}
+
+	private void setBrightnessSDK3(float brightness){
+
+		BrightnessNew bn=new BrightnessNew(this);
+		bn.setBrightness(brightness);
+
+	}
+
+
+   private static boolean mOldClassAvailable;
+   private static boolean mNewClassAvailable;
+
+   /* establish whether the "new" class is available to us */
+   static {
+       try {
+           BrightnessOld.checkAvailable();
+           mOldClassAvailable = true;
+       } catch (Throwable t) {
+           mOldClassAvailable = false;
+       }
+       try {
+           BrightnessNew.checkAvailable();
+           mNewClassAvailable = true;
+       } catch (Throwable t) {
+           mNewClassAvailable = false;
+       }
+
+
+   }
+
+
+
+	private void setBrightnessSDK2(int brightness){
+		BrightnessOld bo=new BrightnessOld();
+		bo.setBrightness(brightness);
 	}
 
 	private void wakeUnlock() {
@@ -237,7 +287,7 @@ public class Flashlight extends Activity {
 				//setBrightness(mUserBrightness);
 			}
 			//android 1.5 magic number meaning "default user setting"
-			setBrightness(-1f);
+			setBrightness(false,mUserBrightness);
 		}
 	}
 	
