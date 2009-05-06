@@ -24,6 +24,13 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.1.1
+date: 2009-05-06
+
+- add support for CATEGORY_TEXT_SELECTION_ALTERNATIVE
+  intents.
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2009-02-02
 

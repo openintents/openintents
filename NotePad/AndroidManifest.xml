@@ -24,19 +24,21 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.notepad"
-	android:versionName="1.1.0"
-	android:versionCode="10052"
+	android:versionName="1.1.1-rc1"
+	android:versionCode="10053"
 	>
+    <uses-sdk android:minSdkVersion="2" />
 	<!-- History:
+	1.1.1-rc1 [10053]: 2009-05-06
 	1.1.0 [10052]: 2009-02-02 -->
     
 	
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
-    >
+    ><!-- android:debuggable="true" -->
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10051" />
+           android:value="10053" />
         
         <!-- OI About metadata -->
 		<meta-data android:name="org.openintents.metadata.COMMENTS"
@@ -60,7 +62,7 @@
         <meta-data android:name="org.openintents.metadata.EMAIL"
                        android:value="@string/about_email" />
                        
-        <provider android:name="NotePadProvider" 
+        <provider android:name=".NotePadProvider" 
             android:authorities="org.openintents.notepad"
         />
         <!-- Permissions not yet active! Activate permissions in one of the following releases.
