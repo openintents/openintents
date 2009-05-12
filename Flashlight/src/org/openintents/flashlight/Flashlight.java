@@ -204,45 +204,33 @@ public class Flashlight extends Activity {
 			Log.d(TAG, "WakeLock: locking");
 			mWakeLock.acquire();
 			mWakeLockLocked = true;
-			boolean res=false;
-			// set screen brightness
-			mUserBrightness = Settings.System.getInt(getContentResolver(), 
-						Settings.System.SCREEN_BRIGHTNESS, NOT_VALID);
 			
-			res=Settings.System.putInt(getContentResolver(), 
-					Settings.System.SCREEN_BRIGHTNESS, 255);
-		//	Log.d(TAG,"res>"+res);
-			setBrightness(true,255);
+			setBrightness(true);
 			//Log.d(TAG,"brightness>"+Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, NOT_VALID));
 		}
 	}
 
 
-	private void setBrightness(boolean on,int userBrightness) {
-		if (on && !mOldClassAvailable && mNewClassAvailable)
-		{
-			
-			//android 1.5 magic number meaning "full brightness"
-			setBrightnessSDK3(1f);
-		}else if (on && mOldClassAvailable && !mNewClassAvailable)
-		{
-			setBrightnessSDK2(userBrightness);
-		
-		}else if(!on && ! mOldClassAvailable && mNewClassAvailable)
-		{
-			//android 1.5 magic number meaning "default/user brightness"
-			setBrightnessSDK3(-1f);
-		}else if (!on && mOldClassAvailable && !mNewClassAvailable)
-		{
-			setBrightnessSDK2(userBrightness);
+	private void setBrightness(boolean on) {
+		if (mNewClassAvailable)	{
+			setBrightnessSDK3(on);
+		} else if (mOldClassAvailable) {
+			setBrightnessSDK2(on);
+		} else {
+			Log.d(TAG, "No way to change brightness");
 		}
-
 	}
 
-	private void setBrightnessSDK3(float brightness){
-
+	private void setBrightnessSDK3(boolean on){
 		BrightnessNew bn=new BrightnessNew(this);
-		bn.setBrightness(brightness);
+		
+		if (on) {
+			//android 1.5 magic number meaning "full brightness"
+			bn.setBrightness(1f);
+		} else {
+			//android 1.5 magic number meaning "default/user brightness"
+			bn.setBrightness(-1f);
+		}
 
 	}
 
@@ -270,9 +258,29 @@ public class Flashlight extends Activity {
 
 
 
-	private void setBrightnessSDK2(int brightness){
+	private void setBrightnessSDK2(boolean on){
 		BrightnessOld bo=new BrightnessOld();
-		bo.setBrightness(brightness);
+		
+		if (on) {
+//			boolean res=false;
+			// set screen brightness
+			mUserBrightness = Settings.System.getInt(getContentResolver(), 
+						Settings.System.SCREEN_BRIGHTNESS, NOT_VALID);
+			
+//			res=Settings.System.putInt(getContentResolver(), 
+//					Settings.System.SCREEN_BRIGHTNESS, 255);
+		//	Log.d(TAG,"res>"+res);
+			
+			bo.setBrightness(255);
+		} else {
+
+			// Unset screen brightness
+			if (mUserBrightness != NOT_VALID) {
+				Settings.System.putInt(getContentResolver(), 
+						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
+				bo.setBrightness(mUserBrightness);
+			}
+		}
 	}
 
 	private void wakeUnlock() {
@@ -281,14 +289,7 @@ public class Flashlight extends Activity {
 			mWakeLock.release();
 			mWakeLockLocked = false;
 			
-			// Unset screen brightness
-			if (mUserBrightness != NOT_VALID) {
-				Settings.System.putInt(getContentResolver(), 
-						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
-				//setBrightness(mUserBrightness);
-			}
-			//android 1.5 magic number meaning "default user setting"
-			setBrightness(false,mUserBrightness);
+			setBrightness(false);
 		}
 	}
 	

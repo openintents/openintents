@@ -11,7 +11,8 @@ class BrightnessOld {
    static {
 		try
 		{
-		   Class.forName("android.os.IHardwareService.Stub");
+			Class.forName("android.os.IHardwareService");
+		   Class.forName("android.os.IHardwareService$Stub");
 		} catch (Exception ex) {
 		   throw new RuntimeException(ex);
 		}

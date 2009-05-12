@@ -10,13 +10,14 @@ import android.util.Log;
 class BrightnessNew {
 
 	private Activity activity;
+	static private java.lang.reflect.Field fieldScreenBrightness;
 	
    /* class initialization fails when this throws an exception */
    static {
 		try
 		{
 
-		java.lang.reflect.Field field = WindowManager.LayoutParams.class.getField("screenBrightness");
+			fieldScreenBrightness = WindowManager.LayoutParams.class.getField("screenBrightness");
 		
 		} catch (Exception ex) {
 		   throw new RuntimeException(ex);
@@ -35,7 +36,16 @@ class BrightnessNew {
    public void setBrightness(float val) {
 	   Log.d("BrightnessNew for SDK 1.5","brightness set to >"+val);
 		WindowManager.LayoutParams lp=this.activity.getWindow().getAttributes();
-		lp.screenBrightness=val;
+		
+		// SDK 1.5 call:
+		//lp.screenBrightness=val;
+		
+		try {
+			fieldScreenBrightness.setFloat(lp, val);
+		} catch (IllegalAccessException e) {
+			Log.d("BrightnessNew for SDK 1.5", "Setting brightness failed");
+		}
+	
 		this.activity.getWindow().setAttributes(lp);
    }
 }
