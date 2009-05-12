@@ -119,8 +119,6 @@ public class Flashlight extends Activity {
 		
 		mUserBrightness = NOT_VALID;
 
-		IntentFilter i = new IntentFilter(FlashlightIntents.ACTION_SET_FLASHLIGHT);
-		registerReceiver(mReceiver, i);
 
     }
     
@@ -136,6 +134,9 @@ public class Flashlight extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		IntentFilter i = new IntentFilter(FlashlightIntents.ACTION_SET_FLASHLIGHT);
+		registerReceiver(mReceiver, i);
 		
 		wakeLock();
 		

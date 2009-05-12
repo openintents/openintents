@@ -18,7 +18,7 @@
       package="org.openintents.flashlight"
       
 
-android:versionName="1.0.4-RC1" 
+android:versionName="1.0.4-RC2" 
 android:versionCode="10004">
       
     <!-- required to keep the backlight turned on -->
