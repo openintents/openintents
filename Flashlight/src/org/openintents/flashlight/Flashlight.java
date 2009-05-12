@@ -69,6 +69,29 @@ public class Flashlight extends Activity {
 	
 	private static int mTimeout = 5000;
 	
+	private Brightness mBrightness;
+	
+	   private static boolean mOldClassAvailable;
+	   private static boolean mNewClassAvailable;
+	
+	   /* establish whether the "new" class is available to us */
+	   static {
+	       try {
+	           BrightnessOld.checkAvailable();
+	           mOldClassAvailable = true;
+	       } catch (Throwable t) {
+	           mOldClassAvailable = false;
+	       }
+	       try {
+	           BrightnessNew.checkAvailable();
+	           mNewClassAvailable = true;
+	       } catch (Throwable t) {
+	           mNewClassAvailable = false;
+	       }
+	
+	
+	   }
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -114,6 +137,16 @@ public class Flashlight extends Activity {
 				"Flashlight");
 		
 
+		if (mNewClassAvailable)	{
+			Log.d(TAG, "Using SDK 1.5 brightness adjustment");
+			mBrightness = new BrightnessNew(this);
+		} else if (mOldClassAvailable) {
+			Log.d(TAG, "Using SDK 1.1 brightness adjustment");
+			mBrightness = new BrightnessOld(this);
+		} else {
+			Log.d(TAG, "No way to change brightness");
+			mBrightness = new Brightness();
+		}
 
     }
     
@@ -201,54 +234,9 @@ public class Flashlight extends Activity {
 			mWakeLockLocked = true;
 
 			//android 1.5 magic number meaning "full brightness"
-			setBrightness(1f);
+			mBrightness.setBrightness(1f);
 			//Log.d(TAG,"brightness>"+Settings.System.getInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, NOT_VALID));
 		}
-	}
-
-
-	private void setBrightness(float val) {
-		if (mNewClassAvailable)	{
-			setBrightnessSDK3(val);
-		} else if (mOldClassAvailable) {
-			setBrightnessSDK2(val);
-		} else {
-			Log.d(TAG, "No way to change brightness");
-		}
-	}
-
-	private void setBrightnessSDK3(float val){
-		BrightnessNew bn=new BrightnessNew(this);
-		bn.setBrightness(val);
-	}
-
-
-   private static boolean mOldClassAvailable;
-   private static boolean mNewClassAvailable;
-
-   /* establish whether the "new" class is available to us */
-   static {
-       try {
-           BrightnessOld.checkAvailable();
-           mOldClassAvailable = true;
-       } catch (Throwable t) {
-           mOldClassAvailable = false;
-       }
-       try {
-           BrightnessNew.checkAvailable();
-           mNewClassAvailable = true;
-       } catch (Throwable t) {
-           mNewClassAvailable = false;
-       }
-
-
-   }
-
-
-
-	private void setBrightnessSDK2(float val){
-		BrightnessOld bo=new BrightnessOld(this);
-		bo.setBrightness(val);
 	}
 
 	private void wakeUnlock() {
@@ -258,7 +246,7 @@ public class Flashlight extends Activity {
 			mWakeLockLocked = false;
 
 			//android 1.5 magic number meaning "default/user brightness"
-			setBrightness(-1f);
+			mBrightness.setBrightness(-1f);
 		}
 	}
 	
@@ -282,10 +270,18 @@ public class Flashlight extends Activity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			if (intent != null) {
-				mColor = intent.getIntExtra(FlashlightIntents.EXTRA_COLOR, mColor);
-				mBackground.setBackgroundColor(mColor);
+				if (intent.hasExtra(FlashlightIntents.EXTRA_COLOR)) {
+					mColor = intent.getIntExtra(FlashlightIntents.EXTRA_COLOR, mColor);
+					mBackground.setBackgroundColor(mColor);
 				
-				if (debug) Log.d(TAG, "Receive color " + mColor);
+					if (debug) Log.d(TAG, "Receive color " + mColor);
+				}
+				if (intent.hasExtra(FlashlightIntents.EXTRA_BRIGHTNESS)) {
+					float brightness = intent.getFloatExtra(FlashlightIntents.EXTRA_BRIGHTNESS, 1f);
+					mBrightness.setBrightness(brightness);
+					
+					if (debug) Log.d(TAG, "Receive brightness " + mBrightness);
+				}
 			}
 		}
     	

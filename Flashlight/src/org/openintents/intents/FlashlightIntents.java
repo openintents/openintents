@@ -63,7 +63,7 @@ public final class FlashlightIntents {
 	/**
 	 * Brightness.
 	 * 
-	 * <p>Brightness as integer value, from 0 to 255.</p>
+	 * <p>Brightness as float value, from 0 to 1. Use value < 0 for user setting.</p>
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.BRIGHTNESS"</p>
 	 */

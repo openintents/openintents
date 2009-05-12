@@ -7,7 +7,7 @@ import android.os.ServiceManager;
 import android.provider.Settings;
 import android.util.Log;
 
-class BrightnessOld {
+class BrightnessOld extends Brightness {
 
 	/** Not valid value of brightness */
 	private static final int NOT_VALID = -1;

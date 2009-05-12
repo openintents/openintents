@@ -7,7 +7,7 @@ import android.view.WindowManager;
 
 import android.util.Log;
 
-class BrightnessNew {
+class BrightnessNew extends Brightness {
 
 	private Activity activity;
 	static private java.lang.reflect.Field fieldScreenBrightness;
