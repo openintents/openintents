@@ -149,7 +149,16 @@ public class Flashlight extends Activity {
 		}
 
     }
-    
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		wakeLock();
+		
+		showIconForAWhile();
+	}
+	
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -157,20 +166,13 @@ public class Flashlight extends Activity {
 		wakeUnlock();
 	}
 
-
-
 	@Override
-	protected void onResume() {
-		super.onResume();
-
+	protected void onStart() {
+		super.onStart();
+		
 		IntentFilter i = new IntentFilter(FlashlightIntents.ACTION_SET_FLASHLIGHT);
 		registerReceiver(mReceiver, i);
-		
-		wakeLock();
-		
-		showIconForAWhile();
 	}
-
 
 	@Override
 	protected void onStop() {
