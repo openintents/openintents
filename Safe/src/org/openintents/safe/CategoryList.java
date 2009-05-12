@@ -529,7 +529,21 @@ public class CategoryList extends ListActivity {
 		    startActivity(help);
 			break;
 		case EXPORT_INDEX:
-			exportDatabase();
+			Dialog exportDialog = new AlertDialog.Builder(CategoryList.this)
+			.setIcon(R.drawable.passicon)
+			.setTitle(R.string.export_database)
+			.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					exportDatabase();
+				}
+			})
+			.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+				}
+			}) 
+			.setMessage(R.string.export_msg)
+			.create();
+			exportDialog.show();
 			break;
 		case IMPORT_INDEX:
 			importDatabase();
