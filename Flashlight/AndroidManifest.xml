@@ -20,6 +20,8 @@
 
 android:versionName="1.0.4-RC2" 
 android:versionCode="10004">
+
+	<uses-sdk android:minSdkVersion="2" />
       
     <!-- required to keep the backlight turned on -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
@@ -57,7 +59,6 @@ android:versionCode="10004">
         <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">
         </activity> 
 
-<uses-sdk android:minSdkVersion="3" />
 	
         
     </application>
