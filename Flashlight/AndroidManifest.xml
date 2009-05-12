@@ -27,7 +27,7 @@ android:versionCode="10004">
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     
     <!-- required to adjust the brightness -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!-- <uses-permission android:name="android.permission.WRITE_SETTINGS"/>  -->
     <uses-permission android:name="android.permission.HARDWARE_TEST"/>
     
     <!-- required for automatic update -->

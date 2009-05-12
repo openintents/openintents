@@ -60,8 +60,8 @@ class BrightnessOld extends Brightness {
 
 			// Unset screen brightness
 			if (mUserBrightness != NOT_VALID) {
-				Settings.System.putInt(mContext.getContentResolver(), 
-						Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
+				//Settings.System.putInt(mContext.getContentResolver(), 
+				//		Settings.System.SCREEN_BRIGHTNESS, mUserBrightness);
 				setBrightnessOld(mUserBrightness);
 				mUserBrightness = NOT_VALID;
 			}
