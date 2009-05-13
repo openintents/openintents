@@ -214,7 +214,7 @@ storepass=*password of keystore*
     </target>
 
     <!-- Compile this project's .java files into .class files. -->
-    <target name="compile" depends="dirs, resource-src, aidl">
+    <target name="compile" depends="dirs,clear_layout, resource-src, aidl">
 		<echo>using sdk --|${android-jar}|--</echo>
 		
         <javac encoding="ascii" target="1.5" debug="true" extdirs=""

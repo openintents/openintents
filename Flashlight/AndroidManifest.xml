@@ -18,7 +18,7 @@
       package="org.openintents.flashlight"
       
 
-android:versionName="1.0.4-RC2" 
+android:versionName="1.0.4" 
 android:versionCode="10004">
 
 	<uses-sdk android:minSdkVersion="2" />
