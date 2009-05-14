@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                  *
+ * Copyright (C) 2008-2009 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -19,6 +19,14 @@ The display backlight is kept turned on while this application is running.
 
 To obtain the current release, visit
   http://www.openintents.org
+
+---------------------------------------------------------
+release: 1.0.4
+date: 2009-05-13
+
+- Make compatible with SDK 1.5 (Cupcake)
+  and maintain backward compatibility with 1.0 and 1.1
+- Introduce new intents to invoke Flashlight
 
 ---------------------------------------------------------
 release: 1.0.3
