@@ -380,6 +380,7 @@ storepass=*password of keystore*
         <mkdir dir="${releasedir}" />
 		<copy todir="${out-release-source-ospath}">
 			<fileset dir=".">
+				<exclude name="**/.settings/**" />
 				<exclude name="**/bin/**" />
 				<exclude name="**/doc/**" />
 				<exclude name="**/gen/**" />

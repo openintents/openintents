@@ -76,4 +76,10 @@
         <item>3</item>  
     </string-array>
     
+    <!-- URL to OI Notepad extensions on Market -->
+    <string name="preference_extensions_market_link">market://search?q=extension%20oi%20notepad</string>
+    
+    <!-- URL to OI Notepad -->
+    <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/129#extensions</string>
+	
 </resources>

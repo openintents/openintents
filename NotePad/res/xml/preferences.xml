@@ -32,5 +32,27 @@
                 android:dialogTitle="@string/preference_sortorder_dialog_title" />
 
     </PreferenceCategory>
+    
+	<PreferenceCategory android:title="@string/preference_extensions">
+		<PreferenceScreen android:key="preference_screen_extensions"
+			android:title="@string/preference_get_extensions" android:summary="@string/preference_get_extensions_summary">
+			<PreferenceCategory android:title="@string/preference_get_extensions_from">
+					
+				<PreferenceScreen
+						android:key="preference_extensions_market"
+		                android:title="@string/preference_extensions_market"
+		                android:summary="@string/preference_extensions_market_summary">
+		            <intent android:action="android.intent.action.VIEW"
+		            		android:data="@string/preference_extensions_market_link" />
+		        </PreferenceScreen>
+				<PreferenceScreen
+		                android:title="@string/preference_extensions_developer"
+		                android:summary="@string/preference_extensions_developer_summary">
+		            <intent android:action="android.intent.action.VIEW"
+		            		android:data="@string/preference_extensions_developer_link" /> 
+		        </PreferenceScreen>
+			</PreferenceCategory>
+		</PreferenceScreen>
+	</PreferenceCategory>
 </PreferenceScreen>
     

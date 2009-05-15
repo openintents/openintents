@@ -17,15 +17,20 @@
 package org.openintents.notepad;
 
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.util.IntentUtils;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 	public static final String PREFS_SORTORDER = "sortorder";
 	public static final String PREFS_SORTORDER_DEFAULT = "2";
+	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";
 
 	@Override
 	protected void onCreate(Bundle icicle) {
@@ -33,6 +38,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		super.onCreate(icicle);
 
 		addPreferencesFromResource(R.xml.preferences);
+
+		// Set enabled state of Market preference
+		PreferenceScreen sp = (PreferenceScreen) findPreference(PREFS_EXTENSIONS_MARKET);
+		sp.setEnabled(isMarketAvailable());
 	}
 
 	/**
@@ -58,5 +67,15 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		
 		// Value out of range - somebody messed with the preferences.
 		return Notes.SORT_ORDERS[0];
+	}
+
+	/**
+	 * Check whether Market is available.
+	 * @return true if Market is available
+	 */
+	private boolean isMarketAvailable() {
+		Intent i = new Intent(Intent.ACTION_VIEW);
+		i.setData(Uri.parse(getString(R.string.preference_extensions_market_link)));
+		return IntentUtils.isIntentAvailable(this, i);
 	}
 }
