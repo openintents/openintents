@@ -32,7 +32,8 @@ android:layout_width="fill_parent">
 				android:layout_height="wrap_content" android:hint="@string/tags" />
 			<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:text="" android:hint="@string/tags"
-				android:singleLine="true"/> <!-- android:capitalize="words" -->
+				android:singleLine="true"
+				android:nextFocusDown="@+id/editprice"/> <!-- android:capitalize="words" -->
 		</LinearLayout>
 		<LinearLayout android:id="@+id/price_panel"
 			android:orientation="vertical" android:layout_width="0dip"
@@ -43,7 +44,9 @@ android:layout_width="fill_parent">
 			<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
 				android:layout_height="wrap_content" android:text="" android:hint="@string/price" 
 				android:numeric="signed|decimal"
-				android:singleLine="true"/>
+				android:singleLine="true"
+				android:nextFocusUp="@+id/edittags"
+				android:nextFocusDown="@android:id/button1"/>
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>
