@@ -1,11 +1,13 @@
 package org.openintents.shopping.dialog;
 
+import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -43,6 +45,10 @@ public class RenameListDialog extends AlertDialog implements OnClickListener {
 
 		mEditText = (EditText) view.findViewById(R.id.edittext);
 
+		KeyListener kl = PreferenceActivity
+			.getCapitalizationKeyListenerFromPrefs(mContext);
+		mEditText.setKeyListener(kl);
+		
 		setIcon(android.R.drawable.ic_menu_edit);
 		setTitle(R.string.ask_rename_list);
 		

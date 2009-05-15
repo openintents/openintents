@@ -20,7 +20,8 @@ android:layout_width="fill_parent">
 	<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text=""
 		android:layout_weight="1" android:hint="@string/item" 
-		android:capitalize="words"/>
+		android:singleLine="true"
+		/><!-- android:capitalize="words" -->
 	<LinearLayout android:id="@+id/tags_panel"
 		android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:padding="5dip">
@@ -30,7 +31,8 @@ android:layout_width="fill_parent">
 		<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
 			android:layout_weight="1" android:hint="@string/tags" 
-			android:capitalize="words"/>
+			android:singleLine="true"
+			/><!-- android:capitalize="words" -->
 	</LinearLayout>
 	<LinearLayout android:id="@+id/price_panel"
 		android:orientation="vertical" android:layout_width="fill_parent"
@@ -40,8 +42,9 @@ android:layout_width="fill_parent">
 			android:layout_weight="1" android:hint="@string/price" />
 		<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/price" 
-			android:capitalize="words"/>
+			android:layout_weight="1" android:hint="@string/price"
+			android:singleLine="true"
+			android:numeric="signed|decimal"/>
 	</LinearLayout>
 </LinearLayout>
 </ScrollView>

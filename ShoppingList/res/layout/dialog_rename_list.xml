@@ -16,5 +16,5 @@
 	<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:text=""
 		android:layout_weight="1" android:hint="@string/new_list_hint" 
-		android:capitalize="words"/>
+		android:singleLine="true"/><!-- android:capitalize="words" -->
 </LinearLayout>

@@ -1,7 +1,11 @@
 package org.openintents.shopping.dialog;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Items;
+import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
 
 import android.app.AlertDialog;
@@ -12,6 +16,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +29,8 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	EditText mEditText;
 	EditText mTags;
 	EditText mPrice;
+
+	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 	
 	public EditItemDialog(Context context, Uri itemUri) {
 		super(context);
@@ -37,6 +44,11 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mEditText = (EditText) view.findViewById(R.id.edittext);
 		mTags = (EditText) view.findViewById(R.id.edittags);
 		mPrice = (EditText) view.findViewById(R.id.editprice);
+
+		KeyListener kl = PreferenceActivity
+			.getCapitalizationKeyListenerFromPrefs(context);
+		mEditText.setKeyListener(kl);
+		mTags.setKeyListener(kl);
 		
 		setIcon(android.R.drawable.ic_menu_edit);
 		setTitle(R.string.ask_edit_item);
@@ -83,7 +95,13 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		if (c != null && c.moveToFirst()) {
 			String text = c.getString(0);
 			String tags = c.getString(1);
-			String price = String.valueOf(c.getLong(2) * 0.01d);
+			long pricecent = c.getLong(2);
+			String price = mPriceFormatter.format(pricecent * 0.01d);
+			if (pricecent == 0) {
+				// Empty field for easier editing
+				// (Otherwise "0.00" has to be deleted manually first)
+				price = "";
+			}
 			
 			mEditText.setText(text);
 			mTags.setText(tags);
@@ -107,7 +125,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			priceLong = 0L;
 		} else {
 			try {
-				priceLong = (long) (100 * Double.parseDouble(price));
+				priceLong = (long) Math.round(100 * Double.parseDouble(price));
 			} catch (NumberFormatException e) {
 				priceLong = null;
 			}
