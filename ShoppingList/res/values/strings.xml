@@ -109,6 +109,8 @@
 	<string name="preference_showprice_summary">Shown as extra column in list.</string>
 	<string name="preference_showtags_title">Show tags</string>
 	<string name="preference_showtags_summary">Shown as extra column in list.</string>
+	<string name="preference_shake_title">Shake to clean up</string>
+	<string name="preference_shake_summary">Shake the phone to clean up the list.</string>
 	
     <string name="preference_advanced">Advanced settings</string>
     <string name="preference_advanced_summary">Additional settings regarding the appearance.</string>

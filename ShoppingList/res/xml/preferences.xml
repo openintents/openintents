@@ -29,6 +29,9 @@
 				<CheckBoxPreference android:key="loadlastused"
 					android:defaultValue="true" android:title="@string/preference_loadlastused_title"
 					android:summary="@string/preference_loadlastused_summary" />
+				<CheckBoxPreference android:key="shake"
+					android:defaultValue="false" android:title="@string/preference_shake_title"
+					android:summary="@string/preference_shake_summary" />
 			</PreferenceCategory>
 			<PreferenceCategory android:title="@string/preference_appearance">
 				<CheckBoxPreference android:key="showprice"

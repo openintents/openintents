@@ -293,6 +293,11 @@ public class ShoppingActivity extends Activity { // implements
 	 * isActive is true only after onResume() and before onPause().
 	 */
 	private boolean mIsActive = false;
+	
+	/** 
+	 * Whether to use the sensor for shake.
+	 */
+	private boolean mUseSensor = false;
 
 	/**
 	 * Called when the activity is first created.
@@ -399,8 +404,6 @@ public class ShoppingActivity extends Activity { // implements
 		// select the default shopping list at the beginning:
 		setSelectedListId(selectList);
 
-		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
 		// Bind GTalk if currently selected shopping list needs it:
 		bindGTalkIfNeeded();
 
@@ -455,11 +458,22 @@ public class ShoppingActivity extends Activity { // implements
 				mListItemsView.mTagsVisibility = View.GONE;
 			}
 		}
+		
+		mUseSensor = sp.getBoolean(PreferenceActivity.PREFS_SHAKE, PreferenceActivity.PREFS_SHAKE_DEFAULT);
+		
 		return defaultShoppingList;
 	}
 
 	private void registerSensor() {
+		if (!mUseSensor) {
+			// Don't use sensors
+			return;
+		}
+		
 		if (mMode == MODE_IN_SHOP) {
+			if (mSensorManager == null) {
+				mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+			}
 			mSensorManager.registerListener(mMySensorListener,
 					SensorManager.SENSOR_ACCELEROMETER,
 					SensorManager.SENSOR_DELAY_UI);
@@ -468,7 +482,10 @@ public class ShoppingActivity extends Activity { // implements
 	}
 
 	private void unregisterSensor() {
-		mSensorManager.unregisterListener(mMySensorListener);
+		if (mSensorManager != null) {
+			mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+			mSensorManager.unregisterListener(mMySensorListener);
+		}
 	}
 
 	@Override

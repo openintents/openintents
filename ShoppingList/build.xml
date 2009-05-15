@@ -195,7 +195,8 @@ storepass=*password of keystore*
                 srcdir="."
                 destdir="${outdir-classes}"
                 bootclasspath="${android-jar}">
-            <classpath>
+        	<exclude name="gen/**" /> <!-- SDK 1.5: backward compatibility with SDK 1.1 -->
+        	<classpath>
                 <fileset dir="${external-libs}" includes="*.jar"/>
             </classpath>
          </javac>
@@ -433,8 +434,10 @@ storepass=*password of keystore*
         <mkdir dir="${releasedir}" />
 		<copy todir="${out-release-source-ospath}">
 			<fileset dir=".">
+				<exclude name="**/.settings/**" />
 				<exclude name="**/bin/**" />
 				<exclude name="**/doc/**" />
+				<exclude name="**/gen/**" />
 				<exclude name="**/release/**" />
 				<exclude name="**/tmp/**" />
 				<exclude name="**/.svn" />
