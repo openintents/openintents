@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.0
-date: 2009-??
+date: 2009-05-16
 
 - add price and tag fields
 - automatic display of total price / total checked price
@@ -35,6 +35,7 @@ date: 2009-??
   developer homepage
 - setting to show last list used (true by default)
 - shake the phone to clean up the list
+  (turned off by default)
 
 ---------------------------------------------------------
 release: 1.0.3
