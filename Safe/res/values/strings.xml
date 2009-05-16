@@ -210,7 +210,7 @@ Current version: %s
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_service">access the master password</string>
 	<string name="oi_safe_permission_service_descr">Allows the application to access the master key used for encryption and decryption. Should never be used except by OI Safe.</string>	
-	<string name="oi_safe_permission_intents">access stored password</string>
+	<string name="oi_safe_permission_intents">encrypt and decrypt data</string>
     <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
 
 	<!-- ***************************
