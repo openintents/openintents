@@ -639,9 +639,11 @@ public class ShoppingActivity extends Activity { // implements
 					//mItemsCursor = null;
 				}
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
-						Items._ID, Items.NAME }, "upper(name) like '%"
-						+ (constraint == null ? "" : constraint.toString()
-								.toUpperCase()) + "%'", null, "name desc");
+						Items._ID, Items.NAME }, 
+						"upper(name) like ?",
+						new String[] {"%" + (constraint == null ? "" : constraint.toString()
+								.toUpperCase()) + "%"}
+						, "name desc");
 				return mItemsCursor;
 			}
 
