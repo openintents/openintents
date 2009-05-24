@@ -22,6 +22,16 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.1.1
+date: 2009-05-25
+
+- fix bug when entering apostrophe
+- new sort orders for tags and price
+- in default list theme, clicking anywhere outside
+  checkbox means to edit the item
+- switch back to multiline display for items and tags
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2009-05-16
 
