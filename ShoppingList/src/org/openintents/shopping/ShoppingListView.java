@@ -60,6 +60,8 @@ public class ShoppingListView extends ListView {
 	
 	private TextView mTotalTextView;
 	private TextView mTotalCheckedTextView;
+	
+	public boolean mClickMeansEdit;
     
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
@@ -184,7 +186,19 @@ public class ShoppingListView extends ListView {
 
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
-			c.setClickable(false);
+			//c.setClickable(false);
+			
+			final int cursorpos = cursor.getPosition();
+			
+			c.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Log.d(TAG, "Click: ");
+					toggleItemBought(cursorpos);
+				}
+				
+			});
 		}
 
 		public boolean setViewValue(View view, Cursor cursor, int i) {
@@ -399,6 +413,8 @@ public class ShoppingListView extends ListView {
 				mThemedBackground.setPadding(0, 0, 0, 0);
 				mThemedBackground.setBackgroundDrawable(null);
 			}
+			
+			mClickMeansEdit = true;
 
 			break;
 		case 2:
@@ -422,6 +438,8 @@ public class ShoppingListView extends ListView {
 				mThemedBackground
 						.setBackgroundResource(R.drawable.shoppinglist01d);
 			}
+			
+			mClickMeansEdit = false;
 
 			break;
 		case 3:
@@ -447,6 +465,8 @@ public class ShoppingListView extends ListView {
 				mThemedBackground
 						.setBackgroundResource(R.drawable.theme_android);
 			}
+			
+			mClickMeansEdit = false;
 
 			break;
 		}

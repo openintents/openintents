@@ -697,7 +697,16 @@ public class ShoppingActivity extends Activity { // implements
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
 				} else {
-					mListItemsView.toggleItemBought(pos);
+					if (mListItemsView.mClickMeansEdit) {
+						// In default theme, there is an extra check box,
+						// so clicking on anywhere else means to edit the
+						// item.
+						editItem(pos);
+					} else {
+						// For the other two themes, clicking anywhere means
+						// to toggle the item.
+						mListItemsView.toggleItemBought(pos);
+					}
 				}
 			}
 
