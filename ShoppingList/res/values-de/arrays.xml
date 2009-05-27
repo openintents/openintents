@@ -23,6 +23,8 @@
         <item>alphabetisch</item>
         <item>neueste Einträge zuerst</item>
         <item>älteste Einträge zuerst</item>
+        <item>Tags alphabetisch</item>
+        <item>teuerstes zuerst</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

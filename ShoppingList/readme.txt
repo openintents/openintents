@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.1
-date: 2009-05-25
+date: 2009-05-28
 
 - fix bug when entering apostrophe
 - new sort orders for tags and price
