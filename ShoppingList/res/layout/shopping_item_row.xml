@@ -50,6 +50,7 @@
               android:visibility="gone"
               android:layout_gravity="center"
 			  android:layout_centerHorizontal="true"
+			  android:layout_alignParentLeft="true"
             />
             <!-- 
               android:layout_marginTop="-10dip"
