@@ -32,7 +32,7 @@ import android.util.Log;
 
 public class CryptoContentProvider extends ContentProvider {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
 	private static final String TAG = "CryptoContentProvider";
 
 	public static final String AUTHORITY = "org.openintents.safe";
@@ -148,7 +148,7 @@ public class CryptoContentProvider extends ContentProvider {
 			        	return null;
 			        }
 			        
-			        Log.d(TAG, "Original file path: " + originalFile);
+			        if (debug) Log.d(TAG, "Original file path: " + originalFile);
 					if (CategoryList.isSignedIn()==false) {
 						Intent frontdoor = new Intent(getContext(), FrontDoor.class);
 						frontdoor.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -159,12 +159,12 @@ public class CryptoContentProvider extends ContentProvider {
 			        if (ch == null) {
 			        	throw new CryptoHelperException("CryptoHelper not available. Are you logged in?");
 			        }
-			        Log.d(TAG, "Decrypt..");
+			        if (debug) Log.d(TAG, "Decrypt..");
 			        Uri newuri = ch.decryptFileWithSessionKeyThroughContentProvider(this.getContext(), Uri.parse(originalFile));
 			        cryptSession = newuri.getPathSegments().get(1);
 			        sessionFile=SESSION_FILE+"."+cryptSession;
 			        path += "/"+sessionFile;
-			        Log.d(TAG, "New path: " + path);
+			        if (debug) Log.d(TAG, "New path: " + path);
 					break;
 				default:
 					throw new IllegalArgumentException("Unknown URI " + uri);
@@ -180,7 +180,7 @@ public class CryptoContentProvider extends ContentProvider {
 	        // disappears.   This makes for a one time use
 	        // content provider.
 	        if (!getContext().deleteFile(sessionFile)) {
-	        	Log.e(TAG,"openFile: unable to delete: "+sessionFile);
+	        	if (debug) Log.e(TAG,"openFile: unable to delete: "+sessionFile);
 	        }
 		} catch (FileNotFoundException e) {
 			if (debug) Log.d(TAG,"openFile: FileNotFound");

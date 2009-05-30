@@ -66,7 +66,7 @@ import estreamj.framework.ESJException;
  */
 public class CryptoHelper {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
     private static String TAG = "CryptoHelper";
     
     public static final String OISAFE_EXTENSION = ".oisafe";
@@ -432,7 +432,7 @@ public class CryptoHelper {
      * @throws Exception
      */
     public String encryptWithSessionKey(String plaintext) throws CryptoHelperException {
-    	Log.i(TAG, "Encrypt with session key");
+    	if (debug) Log.i(TAG, "Encrypt with session key");
 		status=false; // assume failure
 		if(password == null) {
 		    String msg = "Must call setPassword before runing encrypt.";
@@ -498,7 +498,7 @@ public class CryptoHelper {
 		String stringCipherVersion = "A";
 		String stringCipherSessionKey = toHexString(cipherSessionKey);
 		String stringCiphertext=toHexString(ciphertext);
-		Log.i(TAG, "Length: " + stringCipherSessionKey.length() + ", " + stringCipherSessionKey);
+		if (debug) Log.i(TAG, "Length: " + stringCipherSessionKey.length() + ", " + stringCipherSessionKey);
 		
 		StringBuilder sb = new StringBuilder(stringCipherVersion.length() 
 				+ stringCipherSessionKey.length() 
@@ -759,7 +759,7 @@ public class CryptoHelper {
      * @throws Exception
      */
     public Uri decryptFileWithSessionKey(Context ctx, Uri fileUri) throws CryptoHelperException {
-    	Log.d(TAG, "fileUri="+fileUri.toString());
+    	if (debug) Log.d(TAG, "fileUri="+fileUri.toString());
     	ContentResolver contentResolver = ctx.getContentResolver();
 
     	String inputPath = null;
@@ -837,7 +837,7 @@ public class CryptoHelper {
      * @throws Exception
      */
     public Uri decryptFileWithSessionKeyThroughContentProvider(Context ctx, Uri fileUri) throws CryptoHelperException {
-    	Log.d(TAG, "fileUri="+fileUri.toString());
+    	if (debug) Log.d(TAG, "fileUri="+fileUri.toString());
     	ContentResolver contentResolver = ctx.getContentResolver();
     	
     	String sessionFile = "";

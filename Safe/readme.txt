@@ -26,10 +26,11 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.1
-date: 2009-??
+date: 2009-05-30
 
 - Secure deletion of CSV files after import.
-- Add support for file encryption.
+- Add support for file stream encryption,
+  to be used by Obscura.
 - Add Trivium stream cipher.
 
 ---------------------------------------------------------
