@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-22 01:47+0100\n"
+"POT-Creation-Date: 2009-05-31 22:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,72 +9,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Strings for OI About
+#. Automatically filled in by Launchpad:
 #: ../res/values/strings.xml:30(string) 
+msgid "translator-credits"
+msgstr ""
+
+#. Strings for OI About
+#: ../res/values/strings.xml:33(string) 
 msgid "OI Notepad allows to create, edit, and delete notes."
 msgstr ""
 
-#: ../res/values/strings.xml:31(string) 
-msgid "OI Notepad at OpenIntents"
-msgstr ""
-
-#. Automatically filled in by Launchpad:
 #: ../res/values/strings.xml:34(string) 
-msgid "translator-credits"
+msgid "OI Notepad at OpenIntents"
 msgstr ""
 
 #. ***************************
 #. 	     Applicatio-specific strings
 #. 	     ***************************
-#: ../res/values/strings.xml:40(string) 
-msgid "Delete"
-msgstr ""
-
-#: ../res/values/strings.xml:41(string) 
-msgid "Add note"
-msgstr ""
-
-#: ../res/values/strings.xml:42(string) 
-msgid "Revert"
-msgstr ""
-
-#: ../res/values/strings.xml:43(string) 
-msgid "Discard"
-msgstr ""
-
-#: ../res/values/strings.xml:45(string) 
-msgid "Use menu to add new notes."
-msgstr ""
-
-#: ../res/values/strings.xml:47(string) ../res/values/strings.xml:51(string) 
-msgid "Edit note"
-msgstr ""
-
-#: ../res/values/strings.xml:48(string) 
-msgid "Edit title"
-msgstr ""
-
-#: ../res/values/strings.xml:50(string) 
-msgid "Create note"
-msgstr ""
-
-#: ../res/values/strings.xml:52(string) ../res/values/strings.xml:58(string) 
+#: ../res/values/strings.xml:40(string) ../res/values/strings.xml:54(string) 
 msgid "OI Notepad"
 msgstr ""
 
-#: ../res/values/strings.xml:53(string) 
-msgid "Note"
+#: ../res/values/strings.xml:42(string) 
+msgid "Delete"
 msgstr ""
 
-#: ../res/values/strings.xml:54(string) 
-msgid "Note title:"
+#: ../res/values/strings.xml:43(string) 
+msgid "Add note"
+msgstr ""
+
+#: ../res/values/strings.xml:44(string) 
+msgid "Revert"
+msgstr ""
+
+#: ../res/values/strings.xml:45(string) 
+msgid "Discard"
+msgstr ""
+
+#: ../res/values/strings.xml:47(string) 
+msgid "Use menu to add new notes."
+msgstr ""
+
+#: ../res/values/strings.xml:49(string) ../res/values/strings.xml:53(string) 
+msgid "Edit note"
+msgstr ""
+
+#: ../res/values/strings.xml:50(string) 
+msgid "Edit title"
+msgstr ""
+
+#: ../res/values/strings.xml:52(string) 
+msgid "Create note"
 msgstr ""
 
 #: ../res/values/strings.xml:55(string) 
-msgid "%s (new note)"
+msgid "Note"
 msgstr ""
 
 #: ../res/values/strings.xml:56(string) 
+msgid "Note title:"
+msgstr ""
+
+#: ../res/values/strings.xml:57(string) 
+msgid "%s (new note)"
+msgstr ""
+
+#: ../res/values/strings.xml:58(string) 
 msgid "%s (edit note)"
 msgstr ""
 
@@ -338,5 +338,37 @@ msgstr ""
 
 #: ../res/values/strings.xml:168(item) 
 msgid "Oldest to Newest"
+msgstr ""
+
+#: ../res/values/strings.xml:172(string) 
+msgid "Extensions"
+msgstr ""
+
+#: ../res/values/strings.xml:173(string) 
+msgid "Get new extensions"
+msgstr ""
+
+#: ../res/values/strings.xml:174(string) 
+msgid "Search for extensions online."
+msgstr ""
+
+#: ../res/values/strings.xml:175(string) 
+msgid "Get extensions from"
+msgstr ""
+
+#: ../res/values/strings.xml:176(string) 
+msgid "Android Market"
+msgstr ""
+
+#: ../res/values/strings.xml:177(string) 
+msgid "Search for extensions at Android Market."
+msgstr ""
+
+#: ../res/values/strings.xml:178(string) 
+msgid "OpenIntents"
+msgstr ""
+
+#: ../res/values/strings.xml:179(string) 
+msgid "Get extensions from the OpenIntents homepage."
 msgstr ""
 

@@ -1,4 +1,4 @@
-# Spanish translation for openintents
+# Dutch translation for openintents
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the openintents package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-02-22 01:47+0100\n"
-"PO-Revision-Date: 2009-02-22 01:18+0000\n"
-"Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2009-02-23 23:11+0000\n"
+"Last-Translator: pjv <Unknown>\n"
+"Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,287 +20,214 @@ msgstr ""
 #. Strings for OI About
 #: ../res/values/strings.xml:30(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr "Bloc de Notas OI permite crear, editar, y eliminar notas."
+msgstr ""
+"OI Notitieblok laat het creëren, bewerken en verwijderen van notities toe"
 
 #: ../res/values/strings.xml:31(string)
 msgid "OI Notepad at OpenIntents"
-msgstr "Bloc de Notas OI en OpenIntents"
-
-#. Automatically filled in by Launchpad:
-#: ../res/values/strings.xml:34(string)
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Feder Sáiz https://launchpad.net/~federsaiz\n"
-"\n"
-"Launchpad Contributions:\n"
-"  Feder Sáiz https://launchpad.net/~federsaiz"
+msgstr "OI Notitieblok op OpenIntents"
 
 #. ***************************
 #. Applicatio-specific strings
 #. ***************************
 #: ../res/values/strings.xml:40(string)
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Verwijderen"
 
 #: ../res/values/strings.xml:41(string)
 msgid "Add note"
-msgstr "Añadir nota"
+msgstr "Notitie toevoegen"
+
+#: ../res/values/strings.xml:42(string)
+msgid "Revert"
+msgstr "Ongedaan maken"
 
 #: ../res/values/strings.xml:43(string)
 msgid "Discard"
-msgstr "Descartar"
+msgstr "Annuleren"
 
 #: ../res/values/strings.xml:45(string)
 msgid "Use menu to add new notes."
-msgstr "Utilizar menú para añadir notas nuevas."
+msgstr "Gebruik menu om nieuwe notities toe te voegen."
 
 #: ../res/values/strings.xml:47(string) ../res/values/strings.xml:51(string)
 msgid "Edit note"
-msgstr "Editar nota"
+msgstr "Notitie bewerken"
 
 #: ../res/values/strings.xml:48(string)
 msgid "Edit title"
-msgstr "Editar título"
+msgstr "Titel bewerken"
 
 #: ../res/values/strings.xml:50(string)
 msgid "Create note"
-msgstr "Crear nota"
+msgstr "Notitie creëren"
 
 #: ../res/values/strings.xml:52(string) ../res/values/strings.xml:58(string)
 msgid "OI Notepad"
-msgstr "Bloc de Notas OI"
+msgstr "OI Notitieblok"
 
 #: ../res/values/strings.xml:53(string)
 msgid "Note"
-msgstr "Nota"
+msgstr "Notitie"
 
 #: ../res/values/strings.xml:54(string)
 msgid "Note title:"
-msgstr "Título de nota:"
+msgstr "Notitietitel:"
 
 #: ../res/values/strings.xml:55(string)
 msgid "%s (new note)"
-msgstr "%s (nota nueva)"
+msgstr "%s (nieuwe notitie)"
 
 #: ../res/values/strings.xml:56(string)
 msgid "%s (edit note)"
-msgstr "%s (editar note)"
+msgstr "%s (bewerken van notitie)"
 
 #: ../res/values/strings.xml:60(string)
 msgid "OK"
-msgstr "De Acuerdo"
+msgstr "OK"
 
 #: ../res/values/strings.xml:62(string)
 msgid "Error"
-msgstr "Error"
+msgstr "Fout"
 
 #: ../res/values/strings.xml:63(string)
 msgid "Error loading note"
-msgstr "Error cargando nota"
+msgstr "Fout bij laden van notitie"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: ../res/values/strings.xml:66(string)
 msgid "Send"
-msgstr "Enviar"
+msgstr "Verzenden"
 
 #: ../res/values/strings.xml:67(string)
 msgid "Empty note"
-msgstr "Vaciar nota"
+msgstr "Lege notitie"
 
 #: ../res/values/strings.xml:68(string)
 msgid "No application available for sending."
-msgstr "Aplicación no disponible para enviar."
+msgstr "Geen toepassing beschikbaar om te verzenden."
 
 #: ../res/values/strings.xml:70(string)
 msgid "Encrypting note"
-msgstr "Cifrando nota"
+msgstr "Bezig met versleutelen van notitie"
 
 #: ../res/values/strings.xml:71(string)
 msgid "Encrypted"
-msgstr "Cifrado"
+msgstr "Versleuteld"
 
 #: ../res/values/strings.xml:72(string)
 msgid "Encrypt"
-msgstr "Cifrar"
+msgstr "Versleutelen"
 
 #: ../res/values/strings.xml:73(string)
 msgid "Decrypt"
-msgstr "Descifrar"
+msgstr "Ontsleutelen"
 
 #: ../res/values/strings.xml:74(string)
 msgid "Undo encryption"
-msgstr "Deshacer cifrado"
+msgstr "Versleuteling ongedaan maken"
 
 #: ../res/values/strings.xml:75(string)
 msgid "Do not encrypt"
-msgstr "No cifrar"
+msgstr "Niet versleutelen"
 
 #: ../res/values/strings.xml:76(string)
 msgid "Already encrypted."
-msgstr "Ya cifrado."
+msgstr "Is reeds versleuteld."
 
 #: ../res/values/strings.xml:77(string)
 msgid "Not encrypted."
-msgstr "No cifrado."
+msgstr "Niet versleuteld."
 
 #: ../res/values/strings.xml:78(string)
 msgid "Encryption failed."
-msgstr "Cifrado fallido."
+msgstr "Versleutelen is mislukt."
 
 #: ../res/values/strings.xml:79(string)
 msgid "Decryption failed."
-msgstr "Descifrado fallido."
+msgstr "Ontsleuteling is mislukt."
 
 #: ../res/values/strings.xml:81(string)
 msgid "Edit tags"
-msgstr "Editar etiquetas"
+msgstr "Tags aanpassen"
+
+#: ../res/values/strings.xml:82(string)
+msgid "Touch to see list"
+msgstr "Aanraken om lijst te zien"
 
 #: ../res/values/strings.xml:83(string)
 msgid "Enter tags, separated by comma"
-msgstr "Introducir etiquetas, separas por coma"
+msgstr "Voer tags in, gescheiden door een komma"
 
 #: ../res/values/strings.xml:85(string)
 msgid "Save to SD card"
-msgstr "Guardar a tarjeta SD"
+msgstr "Opslaan op SD-kaart"
 
 #: ../res/values/strings.xml:86(string)
 msgid "Open from SD card"
-msgstr "Abrir desde tarjeta SD"
+msgstr "Openen vanop SD-kaart"
 
 #: ../res/values/strings.xml:87(string)
 msgid "File name"
-msgstr "Nombre de archivo"
+msgstr "Bestandsnaam"
 
 #: ../res/values/strings.xml:88(string)
 msgid "Save"
-msgstr "Guardar"
+msgstr "Opslaan"
 
 #: ../res/values/strings.xml:89(string)
 msgid "Open"
-msgstr "Abrir"
+msgstr "Openen"
+
+#: ../res/values/strings.xml:90(string)
+msgid "Error while writing file"
+msgstr "Fout bij het schrijven van het bestand"
+
+#: ../res/values/strings.xml:91(string)
+msgid "Error while reading file"
+msgstr "Fout bij het lezen van het bestand"
 
 #: ../res/values/strings.xml:92(string)
 msgid "File not found"
-msgstr "Archivo no encontrado"
+msgstr "Bestand niet gevonden"
 
 #: ../res/values/strings.xml:93(string)
 msgid "Note saved"
-msgstr "Nota guardada"
+msgstr "Notitie opgeslagen"
 
 #. Settings
 #: ../res/values/strings.xml:96(string)
 msgid "Notes List"
-msgstr "Lista de Notas"
+msgstr "Notitielijst"
 
 #: ../res/values/strings.xml:97(string) ../res/values/strings.xml:98(string)
 msgid "List Sorting Order"
-msgstr "Orden de Clasificación de Lista"
+msgstr "Sorteervolgorde van lijst"
 
 #: ../res/values/strings.xml:99(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr "El orden en el que las notas son mostradas en la lista de notas"
+msgstr "De volgorde waarin notities in de notitielijst worden getoond"
 
 #: ../res/values/strings.xml:101(string)
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Voorkeuren"
+
+#: ../res/values/strings.xml:102(string)
+msgid "Sort Order"
+msgstr "Sorteervolgorde"
 
 #. EULA
 #: ../res/values/strings.xml:110(string)
 msgid "OI Notepad EULA"
-msgstr "Acuerdo de Licencia de Usuario Final (EULA) de OI Notepad"
+msgstr "OI Notitieblok EULA"
 
 #: ../res/values/strings.xml:111(string)
 msgid "Accept"
-msgstr "Aceptar"
+msgstr "Accepteren"
 
 #: ../res/values/strings.xml:112(string)
 msgid "Cancel"
-msgstr "Cancelar"
-
-#: ../res/values/strings.xml:119(string)
-msgid "Check now."
-msgstr "Comprobar ahora."
-
-#: ../res/values/strings.xml:120(string)
-msgid "Get OI Updater."
-msgstr "Obtenga el Actualizador de OI"
-
-#: ../res/values/strings.xml:122(string)
-msgid "Check updates"
-msgstr "Comprobar actualizaciones"
-
-#. About
-#: ../res/values/strings.xml:125(string)
-msgid "About"
-msgstr "Acerca de"
-
-#: ../res/values/strings.xml:127(string)
-msgid "Get OI About"
-msgstr "Obtenga Acerca de OI"
-
-#: ../res/values/strings.xml:131(string)
-msgid "Get OI File Manager"
-msgstr "Obtenga el Administrador de Archivos de OI"
-
-#. OI Notepad
-#: ../res/values/strings.xml:144(string)
-msgid "read notes"
-msgstr "leer notas"
-
-#: ../res/values/strings.xml:146(string)
-msgid "write notes"
-msgstr "escribir notas"
-
-#. OI Shopping list
-#: ../res/values/strings.xml:150(string)
-msgid "read shopping lists"
-msgstr "leer listas de compra"
-
-#: ../res/values/strings.xml:152(string)
-msgid "write shopping lists"
-msgstr "escribir listas de compra"
-
-#. OI Safe
-#: ../res/values/strings.xml:156(string)
-msgid "encrypt and decrypt data"
-msgstr "cifrar y descifrar datos"
-
-#: ../res/values/strings.xml:165(item)
-msgid "Alphabetical"
-msgstr "Alfabético"
-
-#: ../res/values/strings.xml:166(item)
-msgid "Reverse Alphabetical"
-msgstr "Invertir Alfabético"
-
-#: ../res/values/strings.xml:167(item)
-msgid "Newest to Oldest"
-msgstr "De Más Nuevo a Más Viejo"
-
-#: ../res/values/strings.xml:168(item)
-msgid "Oldest to Newest"
-msgstr "De Más Viejo a Más Nuevo"
-
-#: ../res/values/strings.xml:42(string)
-msgid "Revert"
-msgstr ""
-
-#: ../res/values/strings.xml:82(string)
-msgid "Touch to see list"
-msgstr ""
-
-#: ../res/values/strings.xml:90(string)
-msgid "Error while writing file"
-msgstr ""
-
-#: ../res/values/strings.xml:91(string)
-msgid "Error while reading file"
-msgstr ""
-
-#: ../res/values/strings.xml:102(string)
-msgid "Sort Order"
-msgstr ""
+msgstr "Annuleren"
 
 #. Update
 #: ../res/values/strings.xml:115(string)
@@ -308,26 +235,55 @@ msgid ""
 "Please check manually for updates or install OI Update for automatic "
 "notifications. Current version: %s"
 msgstr ""
+"Gelieve manueel naar updates te controleren of OI Update te installeren voor "
+"automatische meldingen over updates. Huidige versie: %s"
+
+#: ../res/values/strings.xml:119(string)
+msgid "Check now."
+msgstr "Controleer nu."
+
+#: ../res/values/strings.xml:120(string)
+msgid "Get OI Updater."
+msgstr "Haal OI Updater."
 
 #: ../res/values/strings.xml:121(string)
 msgid "Download application not available."
-msgstr ""
+msgstr "Applicatiedownload niet beschikbaar."
+
+#: ../res/values/strings.xml:122(string)
+msgid "Check updates"
+msgstr "Controleer op updates"
+
+#. About
+#: ../res/values/strings.xml:125(string)
+msgid "About"
+msgstr "Info"
 
 #: ../res/values/strings.xml:126(string)
 msgid ""
 "Version %s\\n\\nNo compatible extension available to display full info "
 "(contact, credits, license)."
 msgstr ""
+"Versie %s\\n\\nGeen compatibele extensie beschikbaar om volledige info weer "
+"te geven (contactinformatie, dankbetuigingen, licentie)."
+
+#: ../res/values/strings.xml:127(string)
+msgid "Get OI About"
+msgstr "Haal OI About"
 
 #. File Manager
 #: ../res/values/strings.xml:130(string)
 msgid "No compatible file manager is available."
-msgstr ""
+msgstr "Er is geen compatibele bestandsbeheerder beschikbaar."
+
+#: ../res/values/strings.xml:131(string)
+msgid "Get OI File Manager"
+msgstr "Haal OI Bestandsbeheerder"
 
 #. Safe
 #: ../res/values/strings.xml:134(string)
 msgid "No compatible application for encryption is available."
-msgstr ""
+msgstr "Er is geen compatibele toepassing voor versleuteling beschikbaar."
 
 #: ../res/values/strings.xml:135(string)
 msgid ""
@@ -335,34 +291,94 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Er is geen compatibele toepassing voor ontsleuteling beschikbaar.\\n\\"
+"nOPmerking: U moet de master key herstellen van een backupbestand als u "
+"voorheen versleutelde data wil openen."
 
 #: ../res/values/strings.xml:136(string)
 msgid "Get OI Safe"
-msgstr ""
+msgstr "Haal OI Kluis"
+
+#. OI Notepad
+#: ../res/values/strings.xml:144(string)
+msgid "read notes"
+msgstr "notities lezen"
 
 #: ../res/values/strings.xml:145(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"Laat een toepassing toe om notities te lezen. Merk op dat versleutelde "
+"notities ter beschikking worden gesteld in het versleutelde formaat."
+
+#: ../res/values/strings.xml:146(string)
+msgid "write notes"
+msgstr "notities schrijven"
 
 #: ../res/values/strings.xml:147(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"Laat een toepassing toe om nieuwe notities te creëren of bestaande notites "
+"te wijzigen."
+
+#. OI Shopping list
+#: ../res/values/strings.xml:150(string)
+msgid "read shopping lists"
+msgstr "boodschappenlijstjes lezen"
 
 #: ../res/values/strings.xml:151(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Laat een toepassing toe om boodschappenlijstjes te lezen. Merk op dat "
+"versleutelde lijsten en elementen ter beschikking worden gesteld in het "
+"versleutelde formaat."
+
+#: ../res/values/strings.xml:152(string)
+msgid "write shopping lists"
+msgstr "boodschappenlijstjes schrijven"
 
 #: ../res/values/strings.xml:153(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Laat een toepassing toe om nieuwe lijsten en elementen te creëren of "
+"bestaande te wijzigen."
+
+#. OI Safe
+#: ../res/values/strings.xml:156(string)
+msgid "encrypt and decrypt data"
+msgstr "versleutelen en ontsleutelen van data"
 
 #: ../res/values/strings.xml:157(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Laat een toepassing toe om tekst te versleutelen en ontsleutelen, en om "
+"toegang te verkrijgen tot wachtwoorden die werden opgeslagen in OI Kluis."
+
+#: ../res/values/strings.xml:165(item)
+msgid "Alphabetical"
+msgstr "Alfabetisch"
+
+#: ../res/values/strings.xml:166(item)
+msgid "Reverse Alphabetical"
+msgstr "Omgekeerd alfabetisch"
+
+#: ../res/values/strings.xml:167(item)
+msgid "Newest to Oldest"
+msgstr "Van nieuw naar oud"
+
+#: ../res/values/strings.xml:168(item)
+msgid "Oldest to Newest"
+msgstr "Van oud naar nieuw"
+
+#. Automatically filled in by Launchpad:
+#: ../res/values/strings.xml:34(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  pjv https://launchpad.net/~pjv"

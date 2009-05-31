@@ -25,18 +25,20 @@
 	     About information
 	     *************************** -->
 
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Feder Sáiz https://launchpad.net/~federsaiz;</string>
+	
     <!-- Strings for OI About -->
 	<string name="about_comments">Bloc de Notas OI permite crear, editar, y eliminar notas.</string>
 	<string name="about_website_label">Bloc de Notas OI en OpenIntents</string>
 	
-	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz</string>
-
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 
+	<string name="app_name">Bloc de Notas OI</string>
+	
     <string name="menu_delete">Eliminar</string>
     <string name="menu_insert">Añadir nota</string>
     <string name="menu_revert">Revert</string>
@@ -54,8 +56,6 @@
 	<string name="title_edit_title">Título de nota:</string>  
     <string name="title_create_file">%s (nota nueva)</string>
     <string name="title_edit_file">%s (editar note)</string>
-	
-	<string name="app_name">Bloc de Notas OI</string>  
 	
 	<string name="button_ok">De Acuerdo</string>  
 	
@@ -169,5 +169,14 @@ Current version: %s
     </string-array>
 
 
+    <string name="preference_extensions">Extensions</string>
+    <string name="preference_get_extensions">Get new extensions</string>
+    <string name="preference_get_extensions_summary">Search for extensions online.</string>
+    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+	
 	     
 </resources>
