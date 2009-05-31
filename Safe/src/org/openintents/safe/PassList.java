@@ -392,7 +392,7 @@ public class PassList extends ListActivity {
 
 				long newCategoryId=categoryToId.get(items[which]);
 				Passwords.updatePassCategory(passwordId, newCategoryId);
-				String result=getString(R.string.moved_to) + " " + items[which];
+				String result=getString(R.string.moved_to, items[which]);
      			Toast.makeText(PassList.this, result,
          				Toast.LENGTH_LONG).show();
 				fillData();

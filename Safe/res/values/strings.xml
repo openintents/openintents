@@ -116,8 +116,13 @@
     <string name="filename">Filename</string>
     <string name="restore_no_file">Backup file not found.  You need to perform a backup first to create it.  Or copy a backup from your PC.</string>
     <string name="restore_set_password">Please provide the password used by the backup file.  Your master password will be set to this.</string>
-    <string name="restore_unable_to_open">Unable to open file:</string>
-    <string name="restore_bad_version">Version not supported:</string>
+    
+    <!-- Toast message. '%s' contains a more detailed error message. -->
+    <string name="restore_unable_to_open">Unable to open file: %s</string>
+    
+    <!-- Toast message. '%s' contains the version number of the database. -->
+    <string name="restore_bad_version">Version not supported: %s</string>
+    
     <string name="restore_error">Restore error.</string>
     <string name="restore_decrypt_error">Bad password.</string>
     <string name="dialog_restore_database_title">Restore Database</string>
@@ -126,25 +131,49 @@
     <string name="restore_complete">Complete.  Passwords restored: %s</string>
     <string name="copy_to_clipboard">Copying Password to Clipboard</string>
     <string name="invalid_website">Invalid website</string>
+    
+    <!-- Menu label to open a category -->
     <string name="open">Open</string>
+    
     <string name="database_version_error_title">Database Version Error</string>
     <string name="database_version_error_msg">Sorry, but the version of the database is not supported.   You must install the version associated with this database.</string>
+	
+	<!-- Menu label to move a password to another category -->
 	<string name="move">Move</string>
+	
 	<string name="move_select">Select Category</string>
-	<string name="moved_to">Moved to</string>
+	
+	<!-- Toast that password has been moved to another category -->
+	<string name="moved_to">Moved to %s</string>
+	
 	<string name="preferences">Settings</string>
 	<string name="pref_title_external_access">Allow external access</string>
 	<string name="pref_summary_external_access">Allow other applications to secure your data with OI Safe</string>
 	<string name="dialog_title_external_access">OI Safe: Another application requests access.</string>
 	<string name="dialog_summary_external_access">Allow other applications to secure your data with OI Safe.</string>
-	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Preferences.</string>
+	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Settings.</string>
+	
+	<!-- Preference title -->
 	<string name="pref_title_lock_timeout">Auto lock timeout</string>
-	<string name="pref_summary_lock_timeout">Minutes before timeout occurs and safe is locked</string>
+	
+	<!-- Preference summary for auto lock timeout -->
+	<string name="pref_summary_lock_timeout">Number of minutes before timeout occurs and safe is locked</string>
+	
 	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
+	
+	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Keypad</string>
+	
+	<!-- Preference summary: for a numeric keypad -->
 	<string name="pref_summary_keypad">Use a keypad to enter Master Password</string>
+	
+	<!-- Preference title -->
 	<string name="pref_title_keypad_mute">Keypad Mute</string>
+	
+	<!-- Preference summary: Make the 'keypad sounds' mute. 
+	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
+	
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
 	<string name="intent_get_password">Get password (OI Safe)</string>

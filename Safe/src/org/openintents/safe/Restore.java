@@ -157,8 +157,8 @@ public class Restore extends Activity {
 			fr = new FileReader(filename);
 		} catch (FileNotFoundException e1) {
 			// e1.printStackTrace();
-			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open)+
-				" "+e1.getLocalizedMessage(),
+			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open,
+				e1.getLocalizedMessage()),
 				Toast.LENGTH_LONG).show();
 			return false;
 		}
@@ -178,27 +178,27 @@ public class Restore extends Activity {
 
 		} catch (ParserConfigurationException e) {
 			//e.printStackTrace();
-			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open)+
-				" "+e.getLocalizedMessage(),
+			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open,
+				e.getLocalizedMessage()),
 				Toast.LENGTH_LONG).show();
 			return false;
 		} catch (SAXException e) {
 			//e.printStackTrace();
-			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open)+
-				" "+e.getLocalizedMessage(),
+			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open,
+				e.getLocalizedMessage()),
 				Toast.LENGTH_LONG).show();
 			return false;
 		} catch (IOException e) {
 			//e.printStackTrace();
-			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open)+
-				" "+e.getLocalizedMessage(),
+			Toast.makeText(Restore.this, getString(R.string.restore_unable_to_open,
+				e.getLocalizedMessage()),
 				Toast.LENGTH_LONG).show();
 			return false;
 		} 
 
 		if (restoreDataSet.getVersion() != Backup.CURRENT_VERSION) {
-			Toast.makeText(Restore.this, getString(R.string.restore_bad_version)+
-				" "+Integer.toString(restoreDataSet.getVersion()),
+			Toast.makeText(Restore.this, getString(R.string.restore_bad_version,
+				Integer.toString(restoreDataSet.getVersion())),
 				Toast.LENGTH_LONG).show();
         	return false;
 		}
