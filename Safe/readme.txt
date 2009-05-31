@@ -25,6 +25,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.1.2
+date: 2009-?
+- translations: French, German
+
+---------------------------------------------------------
 release: 1.1.1
 date: 2009-05-30
 

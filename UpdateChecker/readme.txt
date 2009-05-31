@@ -29,7 +29,7 @@ To obtain the current release, visit
 release: 1.0.3
 date: 2009-??-??
 
-- translations: German, Spanish
+- translations: Dutch, French, Spanish
 
 ---------------------------------------------------------
 release: 1.0.2

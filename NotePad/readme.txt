@@ -24,6 +24,11 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.1.2
+date: 2009-?
+- translations: Dutch, French, German, Spanish
+
+---------------------------------------------------------
 release: 1.1.1
 date: 2009-05-16
 

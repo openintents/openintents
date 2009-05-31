@@ -33,7 +33,7 @@ release: 1.0.1
 date: 2009-01-??
 
 - Fix blackening of license text while touching.
-- translations: German, Spanish
+- translations: Dutch, French, German, Spanish
 
 ---------------------------------------------------------
 release: 1.0.0
