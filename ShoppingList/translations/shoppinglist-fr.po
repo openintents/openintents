@@ -1,0 +1,380 @@
+# French translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-02-22 02:27+0100\n"
+"PO-Revision-Date: 2009-05-19 10:12+0000\n"
+"Last-Translator: Abdessamad Derraz <derraz.abdessamad@gmail.com>\n"
+"Language-Team: French <fr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-05-31 19:48+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#. Automatically filled in by Launchpad:
+#: ../res/values/strings.xml:24(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Abdessamad Derraz https://launchpad.net/~derraz"
+
+#. Strings for OI About
+#: ../res/values/strings.xml:27(string)
+msgid ""
+"OI Shopping list lets you keep track of your shopping items. You can also "
+"use it for other kinds of check lists, for example for ToDo lists or party "
+"guest lists."
+msgstr ""
+
+#: ../res/values/strings.xml:28(string)
+msgid "OI Shopping list at OpenIntents"
+msgstr ""
+
+#. ***************************
+#. Applicatio-specific strings
+#. ***************************
+#: ../res/values/strings.xml:33(string)
+msgid "OI Shopping list"
+msgstr "OI Shopping list"
+
+#. Shopping Provider
+#: ../res/values/strings.xml:36(string)
+msgid "New item"
+msgstr "Nouvel article"
+
+#: ../res/values/strings.xml:37(string)
+msgid "New list"
+msgstr "Nouvelle liste"
+
+#: ../res/values/strings.xml:38(string)
+msgid "Send list"
+msgstr "Envoyer la liste"
+
+#: ../res/values/strings.xml:39(string)
+msgid "Empty list not sent."
+msgstr ""
+
+#: ../res/values/strings.xml:40(string)
+msgid "No application available for sending."
+msgstr "Non disponible pour l'envoi."
+
+#: ../res/values/strings.xml:41(string)
+msgid "My shopping list"
+msgstr "Ma liste d'achats"
+
+#: ../res/values/strings.xml:42(string)
+msgid "i.e. wishlist, family list"
+msgstr ""
+
+#: ../res/values/strings.xml:43(string)
+msgid "Clean up list"
+msgstr "Nettoyer la liste"
+
+#: ../res/values/strings.xml:44(string)
+msgid "Delete list"
+msgstr "Supprimer la liste"
+
+#: ../res/values/strings.xml:45(string)
+msgid "Enter name of new shopping list"
+msgstr "Entrez le nom de la nouvelle liste d'achats"
+
+#: ../res/values/strings.xml:46(string)
+msgid "Rename shopping list"
+msgstr "Renommer la liste d'achats"
+
+#: ../res/values/strings.xml:47(string) ../res/values/strings.xml:57(string)
+msgid "Edit item"
+msgstr ""
+
+#: ../res/values/strings.xml:48(string)
+msgid "Please enter a name"
+msgstr "S'il vous plaît, entrez un nom"
+
+#: ../res/values/strings.xml:49(string)
+msgid "No items are marked as crossed out."
+msgstr ""
+
+#: ../res/values/strings.xml:50(string)
+msgid "Do you really want to delete this shopping list?"
+msgstr "Voulez-vous vraiment supprimer cette liste?"
+
+#: ../res/values/strings.xml:51(string)
+msgid "Error while accessing shopping lists."
+msgstr "Erreur lors de l'accès aux listes d'achats."
+
+#: ../res/values/strings.xml:52(string)
+msgid "Pick an item"
+msgstr "Choisissez un article"
+
+#: ../res/values/strings.xml:53(string)
+msgid "Theme"
+msgstr "Thème"
+
+#: ../res/values/strings.xml:54(string)
+msgid "Theme settings"
+msgstr ""
+
+#: ../res/values/strings.xml:55(string)
+msgid "Rename list"
+msgstr "Renommer la liste"
+
+#: ../res/values/strings.xml:56(string)
+msgid "Mark item"
+msgstr ""
+
+#: ../res/values/strings.xml:58(string)
+msgid "Remove item"
+msgstr "Retirer l'élément"
+
+#: ../res/values/strings.xml:59(string)
+msgid "Delete item"
+msgstr "Supprimer l'élément"
+
+#: ../res/values/strings.xml:60(string)
+msgid "Add"
+msgstr "Ajouter"
+
+#: ../res/values/strings.xml:61(string)
+msgid "Pick items"
+msgstr ""
+
+#: ../res/values/strings.xml:62(string)
+msgid "Shopping"
+msgstr ""
+
+#: ../res/values/strings.xml:63(string)
+msgid "%s - Pick items"
+msgstr ""
+
+#: ../res/values/strings.xml:64(string)
+msgid "%s - Shopping"
+msgstr ""
+
+#: ../res/values/strings.xml:65(string)
+msgid "Tags"
+msgstr ""
+
+#: ../res/values/strings.xml:66(string)
+msgid "Price"
+msgstr "Prix"
+
+#. Shortcut
+#: ../res/values/strings.xml:70(string)
+msgid "Pick list for shortcut"
+msgstr ""
+
+#. Theme related
+#: ../res/values/strings.xml:73(string)
+msgid "Pick a theme"
+msgstr "Choisissez un thème"
+
+#: ../res/values/strings.xml:74(string)
+msgid "Choose a theme for this list"
+msgstr "Choisir un thème pour cette liste"
+
+#: ../res/values/strings.xml:75(string) ../res/values/strings.xml:154(item)
+msgid "Default"
+msgstr "Défaut"
+
+#: ../res/values/strings.xml:76(string)
+msgid "Classic"
+msgstr ""
+
+#: ../res/values/strings.xml:77(string)
+msgid "Android"
+msgstr ""
+
+#. Dialog box
+#: ../res/values/strings.xml:80(string)
+msgid "OK"
+msgstr "OK"
+
+#: ../res/values/strings.xml:81(string) ../res/values/strings.xml:113(string)
+msgid "Cancel"
+msgstr ""
+
+#. preferences
+#: ../res/values/strings.xml:84(string)
+msgid "Settings"
+msgstr "Paramètres"
+
+#: ../res/values/strings.xml:85(string)
+msgid "Unchecked on top"
+msgstr ""
+
+#: ../res/values/strings.xml:86(string)
+msgid "Always show unchecked items first"
+msgstr ""
+
+#: ../res/values/strings.xml:87(string)
+msgid "Font size"
+msgstr ""
+
+#: ../res/values/strings.xml:88(string)
+msgid "Change font size"
+msgstr ""
+
+#: ../res/values/strings.xml:89(string)
+msgid "Choose font size"
+msgstr ""
+
+#: ../res/values/strings.xml:90(string)
+msgid "Sort order"
+msgstr ""
+
+#: ../res/values/strings.xml:91(string)
+msgid "Change sort order of list items"
+msgstr ""
+
+#: ../res/values/strings.xml:92(string)
+msgid "Choose sort order"
+msgstr ""
+
+#: ../res/values/strings.xml:93(string)
+msgid "Load last used"
+msgstr ""
+
+#: ../res/values/strings.xml:94(string)
+msgid "Always start with the last viewed List"
+msgstr ""
+
+#: ../res/values/strings.xml:95(string)
+msgid "Capitalization"
+msgstr ""
+
+#: ../res/values/strings.xml:96(string)
+msgid "Automatic capitalization of entries"
+msgstr ""
+
+#: ../res/values/strings.xml:97(string)
+msgid "Choose capitalization"
+msgstr ""
+
+#: ../res/values/strings.xml:98(string)
+msgid "Hide checked items"
+msgstr ""
+
+#: ../res/values/strings.xml:99(string)
+msgid "Only applies if in a shop."
+msgstr ""
+
+#: ../res/values/strings.xml:100(string)
+msgid "Show price"
+msgstr ""
+
+#: ../res/values/strings.xml:101(string) ../res/values/strings.xml:103(string)
+msgid "Shown as extra column in list."
+msgstr ""
+
+#: ../res/values/strings.xml:102(string)
+msgid "Show tags"
+msgstr ""
+
+#. EULA
+#: ../res/values/strings.xml:111(string)
+msgid "OI Shopping List EULA"
+msgstr ""
+
+#: ../res/values/strings.xml:112(string)
+msgid "Accept"
+msgstr ""
+
+#. Update
+#: ../res/values/strings.xml:116(string)
+msgid ""
+"Please check manually for updates or install OI Update for automatic "
+"notifications. Current version: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:120(string)
+msgid "Check now."
+msgstr ""
+
+#: ../res/values/strings.xml:121(string)
+msgid "Get OI Updater."
+msgstr ""
+
+#: ../res/values/strings.xml:122(string)
+msgid "Download application not available."
+msgstr ""
+
+#: ../res/values/strings.xml:123(string)
+msgid "Check updates"
+msgstr ""
+
+#. About
+#: ../res/values/strings.xml:126(string)
+msgid "About"
+msgstr ""
+
+#: ../res/values/strings.xml:127(string)
+msgid ""
+"Version %s\\n\\nNo compatible extension available to display full info "
+"(contact, credits, license)."
+msgstr ""
+
+#: ../res/values/strings.xml:128(string)
+msgid "Get OI About"
+msgstr ""
+
+#. OI Shopping list
+#: ../res/values/strings.xml:135(string)
+msgid "read shopping lists"
+msgstr ""
+
+#: ../res/values/strings.xml:136(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+
+#: ../res/values/strings.xml:137(string)
+msgid "write shopping lists"
+msgstr ""
+
+#: ../res/values/strings.xml:138(string)
+msgid ""
+"Allows an application to create new lists and items or change existing ones."
+msgstr ""
+
+#: ../res/values/strings.xml:146(item)
+msgid "unchecked first, alphabetical"
+msgstr ""
+
+#: ../res/values/strings.xml:147(item)
+msgid "alphabetical"
+msgstr ""
+
+#: ../res/values/strings.xml:148(item)
+msgid "newest first"
+msgstr ""
+
+#: ../res/values/strings.xml:149(item)
+msgid "oldest first"
+msgstr ""
+
+#: ../res/values/strings.xml:153(item)
+msgid "Small"
+msgstr ""
+
+#: ../res/values/strings.xml:155(item)
+msgid "Large"
+msgstr ""
+
+#: ../res/values/strings.xml:159(item)
+msgid "None"
+msgstr ""
+
+#: ../res/values/strings.xml:160(item)
+msgid "Per Sentence"
+msgstr ""
+
+#: ../res/values/strings.xml:161(item)
+msgid "Per Word"
+msgstr ""
