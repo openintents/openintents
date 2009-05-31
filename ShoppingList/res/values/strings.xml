@@ -55,23 +55,43 @@
 	<string name="rename_list">Rename list</string>
 	<string name="menu_mark_item">Mark item</string>
 	<string name="menu_edit_item">Edit item</string>
+	
+	<!-- Remove item from this list, but keep it internally, so that the user
+	     can choose it later for inclusion again. Information like
+	     tags or price will be kept. -->
 	<string name="menu_remove_item">Remove item from list</string>
+	
+	<!-- Delete this item completely. If the user wants to add it again, they
+	     have to enter all the information again. -->
 	<string name="menu_delete_item">Delete item permanently</string>
+	
+	<!-- Button label to add an item to the list. -->
 	<string name="add">Add</string>
+	
 	<string name="menu_pick_items">Pick items</string>
 	<string name="menu_start_shopping">Shopping</string>
+	
+	<!-- Title supplement. '%s' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Pick items</string>
+	
+	<!-- Title supplement. '%s' is the name of the current list. -->
 	<string name="shopping_title">%s - Shopping</string>
+	
 	<string name="tags">Tags</string>
 	<string name="price">Price</string>
 	<string name="item">Item</string>
+	
+	<!-- Total sum of all prices. '%s' is the sum -->
 	<string name="total">Total: %s</string>
+	
+	<!-- Sum of all prices of the checked items. '%s' is the sum -->
 	<string name="total_checked">Checked: %s</string>
+	
 	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>
 	<string name="delete">Delete</string>
 	
 
-	<!-- Shortcut -->
+	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	
 	<!-- Theme related -->
@@ -109,12 +129,19 @@
 	<string name="preference_showprice_summary">Shown as extra column in list.</string>
 	<string name="preference_showtags_title">Show tags</string>
 	<string name="preference_showtags_summary">Shown as extra column in list.</string>
+	
+	<!-- Preference title: Shake the phone to clean up the list. -->
 	<string name="preference_shake_title">Shake to clean up</string>
+	
+	<!-- Preference summary: Shake the phone to clean up the list. -->
 	<string name="preference_shake_summary">Shake the phone to clean up the list.</string>
 	
     <string name="preference_advanced">Advanced settings</string>
     <string name="preference_advanced_summary">Additional settings regarding the appearance.</string>
+    
+    <!-- Preference category: General settings -->
     <string name="preference_general">General</string>
+    
     <string name="preference_appearance">Appearance</string>
     
     <string name="preference_extensions">Extensions</string>
@@ -166,23 +193,35 @@ Current version: %s
 	     *************************** -->
 	
     <string-array name="preference_sortorder_entries">
+    	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
     	<item>unchecked first, alphabetical</item>
-        <item>alphabetical</item>
-        <item>newest first</item>
-        <item>oldest first</item>
-        <item>tags alphabetical</item>
-        <item>most expensive first</item>
+        <!-- Preference sort order: Sort by item name -->
+    	<item>alphabetical</item>
+        <!-- Preference sort order: Newest item first -->
+    	<item>newest first</item>
+        <!-- Preference sort order: Oldest item first -->
+    	<item>oldest first</item>
+        <!-- Preference sort order: Sort alphabetically by tags -->
+    	<item>tags alphabetical</item>
+        <!-- Preference sort order: Sort by price, the most expensive first -->
+    	<item>most expensive first</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: small font size -->
         <item>Small</item>
+    	<!-- Preference fontsize: default font size-->
     	<item>Default</item>
+    	<!-- Preference fontsize: large font size -->
         <item>Large</item>
     </string-array>
     
     <string-array name="preference_capitalization_entries">
+    	<!-- Preference capitalization: No capitalization -->
         <item>None</item>
+    	<!-- Preference capitalization: Automatically capitalize first letter of a sentence. -->
         <item>Per Sentence</item>
+    	<!-- Preference capitalization: Automatically capitalize first letter of each word. -->
         <item>Per Word</item>
     </string-array>
 
