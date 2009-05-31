@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-22 12:11+0100\n"
+"POT-Creation-Date: 2009-05-31 22:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,75 +9,83 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../res/values/strings.xml:3(string) ../res/values/strings.xml:15(string) 
+#. Automatically filled in by Launchpad:
+#: ../res/values/strings.xml:8(string) 
+msgid "translator-credits"
+msgstr ""
+
+#. ***************************
+#. 	     Applicatio-specific strings
+#. 	     ***************************
+#: ../res/values/strings.xml:13(string) ../res/values/strings.xml:25(string) 
 msgid "OI Flashlight"
 msgstr ""
 
-#: ../res/values/strings.xml:5(string) 
+#: ../res/values/strings.xml:15(string) 
 msgid "The backlight stays turned on."
 msgstr ""
 
-#: ../res/values/strings.xml:8(string) 
+#: ../res/values/strings.xml:18(string) 
 msgid "Color"
 msgstr ""
 
-#: ../res/values/strings.xml:9(string) 
+#: ../res/values/strings.xml:19(string) 
 msgid "Color picker"
 msgstr ""
 
 #. Update
-#: ../res/values/strings.xml:13(string) 
+#: ../res/values/strings.xml:23(string) 
 msgid "A new version of OI Flashlight is available.\\n%s\\nWould you like to upgrade?"
 msgstr ""
 
-#: ../res/values/strings.xml:14(string) 
+#: ../res/values/strings.xml:24(string) 
 msgid "Android Market not available."
 msgstr ""
 
 #. About
-#: ../res/values/strings.xml:18(string) 
+#: ../res/values/strings.xml:28(string) 
 msgid "About"
 msgstr ""
 
-#: ../res/values/strings.xml:19(string) 
+#: ../res/values/strings.xml:29(string) 
 msgid "About %s"
 msgstr ""
 
-#: ../res/values/strings.xml:20(string) 
+#: ../res/values/strings.xml:30(string) 
 msgid "Version %s \\n\\n OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.\\n\\n OpenIntents allows different Android applications to share data using intents and open interfaces.\\n\\n For more information and other great applications visit OpenIntents at www.openintents.org"
 msgstr ""
 
 #. EULA
-#: ../res/values/strings.xml:30(string) 
+#: ../res/values/strings.xml:40(string) 
 msgid "OI Flashlight EULA"
 msgstr ""
 
-#: ../res/values/strings.xml:31(string) 
+#: ../res/values/strings.xml:41(string) 
 msgid "Accept"
 msgstr ""
 
-#: ../res/values/strings.xml:32(string) 
+#: ../res/values/strings.xml:42(string) 
 msgid "Cancel"
 msgstr ""
 
 #. Update
-#: ../res/values/strings.xml:35(string) 
+#: ../res/values/strings.xml:45(string) 
 msgid "Check updates"
 msgstr ""
 
-#: ../res/values/strings.xml:36(string) 
+#: ../res/values/strings.xml:46(string) 
 msgid "Please check manually for updates or install OI Update for automatic notifications. Current version: %s"
 msgstr ""
 
-#: ../res/values/strings.xml:40(string) 
+#: ../res/values/strings.xml:50(string) 
 msgid "Check now."
 msgstr ""
 
-#: ../res/values/strings.xml:41(string) 
+#: ../res/values/strings.xml:51(string) 
 msgid "Get OI Updater."
 msgstr ""
 
-#: ../res/values/strings.xml:42(string) 
+#: ../res/values/strings.xml:52(string) 
 msgid "Download application not available."
 msgstr ""
 

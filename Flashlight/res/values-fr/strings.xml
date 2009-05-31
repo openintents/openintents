@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    
+    <string name="flashlight_info">Le rétro-éclairage est activé.</string>
+    
+    
+    <string name="color">Couleur</string>
+    <string name="color_picker">Sélecteur de couleur</string>
+    
+    
+	<!-- Update -->
+	<string name="update_available">Une nouvelle version d'OI Flashlight est disponible.\n%s\nVoulez-vous la mettre à jour?</string>
+	<string name="market_not_available">Le marché Android n'est pas disponible.</string>
+	<string name="market_search_term">OI Flashlight</string>
+
+	<!-- About -->
+	<string name="about">À propos de</string>
+	<string name="about_title">À propos de %s</string>
+	<string name="about_text">La version %s \n\n d'OpenIntents Flashlight vous permet de trouver votre chemin dans l'obscurité. Le rétro-éclairage est maintenu sous tension alors que l'application est en cours..\n\n OpenIntents permet à différentes applications Android de partager des données avec des des interfaces ouvertes.\n\n Pour plus d'informations et d'autres superbes applications visitez OpenIntents sur www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	<string name="eula_accept">Accepter</string>
+	<string name="eula_refuse">Quitter</string>
+	
+	<!-- Update -->
+	<string name="update_menu">Vérifier les mises à jour</string>
+    <string name="update_box_text">S'il vous plaît vérifier manuellement les mises à jour ou installer OI Update pour avoir des notifications automatique. Version actuelle: %s</string>
+	<string name="update_check_now">Vérifier maintenant.</string>
+	<string name="update_get_updater">Obtenir OI Updater.</string>
+	<string name="update_error">Télécharger l'application indisponible.</string>
+</resources>

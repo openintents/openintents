@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">OI Taschenlampe</string>
     
     <string name="flashlight_info">Die Hintergrundbeleuchtung bleibt eingeschaltet</string>
@@ -17,14 +27,7 @@
 	<!-- About -->
 	<string name="about">Info</string>
 	<string name="about_title">Info zu %s</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
-while this application is running.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<string name="about_text">Version %s \n\n OpenIntents Taschenlampe hilft, den Weg in der Dunkelheit zu finden. Die Hintergrundbeleuchtung bleibt eingeschaltet, solange die Anwendung aktiv ist.</string>
 	
 	<!-- EULA -->
 	<string name="eula_title">EULA - OI Taschenlampe</string>

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">OI Torcia</string>
     
     <string name="flashlight_info">La luce dello schermo rimane accesa.</string>

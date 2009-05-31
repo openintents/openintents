@@ -7,38 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-01-31 16:25+0100\n"
+"POT-Creation-Date: 2009-02-22 12:11+0100\n"
 "PO-Revision-Date: 2009-02-20 18:02+0000\n"
 "Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-21 20:36+0000\n"
+"X-Launchpad-Export-Date: 2009-05-31 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
-
-#: ../res/values/strings.xml:3(string) ../res/values/strings.xml:15(string)
-msgid "OI Flashlight"
-msgstr ""
-
-#: ../res/values/strings.xml:5(string)
-msgid "The backlight stays turned on."
-msgstr ""
 
 #: ../res/values/strings.xml:8(string)
 msgid "Color"
 msgstr "Color"
-
-#: ../res/values/strings.xml:9(string)
-msgid "Color picker"
-msgstr ""
-
-#. Update
-#: ../res/values/strings.xml:13(string)
-msgid ""
-"A new version of OI Flashlight is available.\\n%s\\nWould you like to "
-"upgrade?"
-msgstr ""
 
 #: ../res/values/strings.xml:14(string)
 msgid "Android Market not available."
@@ -53,6 +34,51 @@ msgstr "Acerca de"
 msgid "About %s"
 msgstr "Acerca de %"
 
+#. EULA
+#: ../res/values/strings.xml:30(string)
+msgid "OI Flashlight EULA"
+msgstr "Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight"
+
+#: ../res/values/strings.xml:31(string)
+msgid "Accept"
+msgstr "Aceptar"
+
+#: ../res/values/strings.xml:32(string)
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. Update
+#: ../res/values/strings.xml:35(string)
+msgid "Check updates"
+msgstr "Comprobar actualizaciones"
+
+#: ../res/values/strings.xml:40(string)
+msgid "Check now."
+msgstr "Comprobar ahora."
+
+#: ../res/values/strings.xml:41(string)
+msgid "Get OI Updater."
+msgstr "Obtenga el Actualizador OI."
+
+#: ../res/values/strings.xml:3(string) ../res/values/strings.xml:15(string)
+msgid "OI Flashlight"
+msgstr ""
+
+#: ../res/values/strings.xml:5(string)
+msgid "The backlight stays turned on."
+msgstr ""
+
+#: ../res/values/strings.xml:9(string)
+msgid "Color picker"
+msgstr ""
+
+#. Update
+#: ../res/values/strings.xml:13(string)
+msgid ""
+"A new version of OI Flashlight is available.\\n%s\\nWould you like to "
+"upgrade?"
+msgstr ""
+
 #: ../res/values/strings.xml:20(string)
 msgid ""
 "Version %s \\n\\n OpenIntents Flashlight helps you find your way in the "
@@ -62,58 +88,12 @@ msgid ""
 "great applications visit OpenIntents at www.openintents.org"
 msgstr ""
 
-#. EULA
-#: ../res/values/strings.xml:30(string)
-msgid "OI Flashlight EULA"
-msgstr "Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight"
-
-#: ../res/values/strings.xml:31(string)
-msgid ""
-"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
-"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
-"compliance with the License. You may obtain a copy of the License at\\n "
-"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
-"law or agreed to in writing, software distributed under the License is "
-"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
-"KIND, either express or implied. See the License for the specific language "
-"governing permissions and limitations under the License.\""
-msgstr ""
-
-#: ../res/values/strings.xml:37(string)
-msgid "Accept"
-msgstr "Aceptar"
-
-#: ../res/values/strings.xml:38(string)
-msgid "Cancel"
-msgstr "Cancelar"
-
-#. Update
-#: ../res/values/strings.xml:41(string)
-msgid "Check updates"
-msgstr "Comprobar actualizaciones"
-
-#: ../res/values/strings.xml:42(string)
+#: ../res/values/strings.xml:36(string)
 msgid ""
 "Please check manually for updates or install OI Update for automatic "
 "notifications. Current version: %s"
 msgstr ""
 
-#: ../res/values/strings.xml:46(string)
-msgid "Check now."
-msgstr "Comprobar ahora."
-
-#: ../res/values/strings.xml:47(string)
-msgid "Get OI Updater."
-msgstr "Obtenga el Actualizador OI."
-
-#: ../res/values/strings.xml:48(string)
-msgid "market://search?q=pname:org.openintents.flashlight"
-msgstr "market://search?q=pname:org.openintents.flashlight"
-
-#: ../res/values/strings.xml:49(string)
-msgid "market://search?q=pname:org.openintents.updatechecker"
-msgstr "market://search?q=pname:org.openintents.updatechecker"
-
-#: ../res/values/strings.xml:50(string)
+#: ../res/values/strings.xml:42(string)
 msgid "Download application not available."
 msgstr ""
