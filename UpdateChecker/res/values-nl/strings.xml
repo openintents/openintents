@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  pjv https://launchpad.net/~pjv;</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Een nieuwe versie van %s is beschikbaar.\nWilt u upgraden?</string>
@@ -92,6 +103,4 @@ Unless required by applicable law or agreed to in writing, software distributed 
 	<string name="eula_accept">Accepteren</string>
 	<string name="eula_refuse">Annuleren</string>
 	
-<string name="about_translators">Launchpad Contributions:
-  pjv https://launchpad.net/~pjv</string>
 </resources>

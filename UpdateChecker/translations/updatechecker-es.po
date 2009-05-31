@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-01-27 21:29+0100\n"
-"PO-Revision-Date: 2009-02-20 18:43+0000\n"
+"POT-Creation-Date: 2009-02-22 00:24+0100\n"
+"PO-Revision-Date: 2009-02-21 23:54+0000\n"
 "Last-Translator: Feder Sáiz <federsaiz@googlemail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-02-21 20:36+0000\n"
+"X-Launchpad-Export-Date: 2009-05-31 19:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../res/values/strings.xml:3(string) ../res/values/strings.xml:11(string)
@@ -53,21 +53,9 @@ msgstr "Android Market"
 msgid "AndAppStore.com"
 msgstr "AndAppStore.com"
 
-#: ../res/values/strings.xml:15(string)
-msgid "Version %s\\nSD card %s\\n\\nOS\\n%s"
-msgstr ""
-
 #: ../res/values/strings.xml:16(string)
 msgid "free space: %s"
 msgstr "espacio libre: %s"
-
-#: ../res/values/strings.xml:17(string)
-msgid "Board %s\\nBrand %s\\nDevice %s\\nID %s\\nModel %s"
-msgstr ""
-
-#: ../res/values/strings.xml:19(string)
-msgid "Perform update now!"
-msgstr ""
 
 #: ../res/values/strings.xml:20(string)
 msgid "Try update from Market now!"
@@ -85,19 +73,9 @@ msgstr "¡Recordarme más tarde!"
 msgid "Ignore this update"
 msgstr "Ignorar esta actualización"
 
-#: ../res/values/strings.xml:24(string)
-msgid "Ignore all further updates"
-msgstr ""
-
 #: ../res/values/strings.xml:25(string)
 msgid "Ok"
 msgstr "De acuerdo"
-
-#: ../res/values/strings.xml:27(string)
-msgid ""
-"Update could not be started!\\n\\nPlease contact application developer!\\n\\"
-"n%s"
-msgstr ""
 
 #: ../res/values/strings.xml:28(string)
 msgid "Application is up-to-date."
@@ -139,14 +117,6 @@ msgstr "Versión actual: %s"
 msgid "Current version code: %s"
 msgstr "Código de versión actual: %s"
 
-#: ../res/values/strings.xml:38(string)
-msgid "Newer version: %s"
-msgstr ""
-
-#: ../res/values/strings.xml:39(string)
-msgid "Newer version: %s - %s"
-msgstr ""
-
 #: ../res/values/strings.xml:40(string)
 msgid "Newer version available."
 msgstr "Nueva versión disponible."
@@ -184,20 +154,9 @@ msgstr "Comprobar automáticamente"
 msgid "Ignored"
 msgstr "Ignorado"
 
-#: ../res/values/strings.xml:49(string)
-msgid ""
-"Updates are currently ignored. Would you like to receive updates again?"
-msgstr ""
-
 #: ../res/values/strings.xml:50(string)
 msgid "Unknown"
 msgstr "Desconocido"
-
-#: ../res/values/strings.xml:51(string)
-msgid ""
-"No update information available. Please check manually and ask the developer "
-"to support OI Update in the future."
-msgstr ""
 
 #: ../res/values/strings.xml:52(string)
 msgid "Search on Market"
@@ -211,13 +170,6 @@ msgstr "Buscar en AndAppStore"
 msgid "Processing %s"
 msgstr "Procesando %s"
 
-#: ../res/values/strings.xml:56(string)
-msgid ""
-"The update process of this application directs to a different site than "
-"Android Market. Applications installed from unknown sources might exhibit a "
-"security risk."
-msgstr ""
-
 #: ../res/values/strings.xml:60(string)
 msgid "Continue anyway"
 msgstr "Continuar de todos modos"
@@ -230,35 +182,17 @@ msgstr "Abortar"
 msgid "Auto update"
 msgstr "Actualizar automáticamente"
 
-#: ../res/values/strings.xml:64(string)
-msgid "If checked, search for updates is performed regularly"
-msgstr ""
-
 #: ../res/values/strings.xml:65(string)
 msgid "Update interval"
 msgstr "Intervalo de actualización"
-
-#: ../res/values/strings.xml:66(string)
-msgid "Set the interval how often the update search should be performed."
-msgstr ""
 
 #: ../res/values/strings.xml:67(string)
 msgid "Select interval"
 msgstr "Seleccionar intervalo"
 
-#: ../res/values/strings.xml:68(string)
-msgid "every_month"
-msgstr ""
-
 #: ../res/values/strings.xml:69(string)
 msgid "Warning"
 msgstr "Advertencia"
-
-#: ../res/values/strings.xml:70(string)
-msgid ""
-"If you uncheck this item, you will no longer receive notifications for "
-"updates. Do you still want to uncheck auto update?"
-msgstr ""
 
 #: ../res/values/strings.xml:72(string)
 msgid "Use AndAppStore"
@@ -276,6 +210,103 @@ msgstr "Leer informaión de actualización"
 msgid "Write update information"
 msgstr "Escribir informaión de actualización"
 
+#. About
+#: ../res/values/strings.xml:82(string)
+msgid "About"
+msgstr "Acerca de"
+
+#: ../res/values/strings.xml:83(string)
+msgid "About %s"
+msgstr "Acerca de %s"
+
+#. EULA
+#: ../res/values/strings.xml:92(string)
+msgid "OI Update EULA"
+msgstr "Acuerdo de Licencia de Usuario Final (EULA) de OI Update"
+
+#: ../res/values/strings.xml:100(string)
+msgid "Accept"
+msgstr "Aceptar"
+
+#: ../res/values/strings.xml:101(string)
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../res/values/strings.xml:103(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Feder Sáiz https://launchpad.net/~federsaiz\n"
+"\n"
+"Launchpad Contributions:\n"
+"  Feder Sáiz https://launchpad.net/~federsaiz"
+
+#: ../res/values/strings.xml:15(string)
+msgid "Version %s\\nSD card %s\\n\\nOS\\n%s"
+msgstr ""
+
+#: ../res/values/strings.xml:17(string)
+msgid "Board %s\\nBrand %s\\nDevice %s\\nID %s\\nModel %s"
+msgstr ""
+
+#: ../res/values/strings.xml:19(string)
+msgid "Perform update now!"
+msgstr ""
+
+#: ../res/values/strings.xml:24(string)
+msgid "Ignore all further updates"
+msgstr ""
+
+#: ../res/values/strings.xml:27(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\"
+"n%s"
+msgstr ""
+
+#: ../res/values/strings.xml:38(string)
+msgid "Newer version: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:39(string)
+msgid "Newer version: %s - %s"
+msgstr ""
+
+#: ../res/values/strings.xml:49(string)
+msgid ""
+"Updates are currently ignored. Would you like to receive updates again?"
+msgstr ""
+
+#: ../res/values/strings.xml:51(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+
+#: ../res/values/strings.xml:56(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+
+#: ../res/values/strings.xml:64(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr ""
+
+#: ../res/values/strings.xml:66(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr ""
+
+#: ../res/values/strings.xml:68(string)
+msgid "every_month"
+msgstr ""
+
+#: ../res/values/strings.xml:70(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+
 #: ../res/values/strings.xml:77(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
@@ -287,15 +318,6 @@ msgid ""
 "requests."
 msgstr ""
 
-#. About
-#: ../res/values/strings.xml:82(string)
-msgid "About"
-msgstr "Acerca de"
-
-#: ../res/values/strings.xml:83(string)
-msgid "About %s"
-msgstr "Acerca de %s"
-
 #: ../res/values/strings.xml:84(string)
 msgid ""
 "Version %s \\n\\n OI Update keeps you informed on new application versions.\\"
@@ -303,11 +325,6 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
-
-#. EULA
-#: ../res/values/strings.xml:92(string)
-msgid "OI Update EULA"
-msgstr "Acuerdo de Licencia de Usuario Final (EULA) de OI Update"
 
 #: ../res/values/strings.xml:93(string)
 msgid ""
@@ -320,18 +337,3 @@ msgid ""
 "KIND, either express or implied. See the License for the specific language "
 "governing permissions and limitations under the License.\\n \\n\""
 msgstr ""
-
-#: ../res/values/strings.xml:100(string)
-msgid "Accept"
-msgstr "Aceptar"
-
-#: ../res/values/strings.xml:101(string)
-msgid "Cancel"
-msgstr "Cancelar"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
-#: ../res/values/strings.xml:103(string) ../res/values/strings.xml:0(None)
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Feder Sáiz https://launchpad.net/~federsaiz"

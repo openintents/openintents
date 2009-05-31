@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Feder Sáiz https://launchpad.net/~federsaiz;</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
     <string name="app_name">Actualización OI</string>
     
     <string name="update_available">Una versión nueva de %s está disponible. \n¿Quiere actualizar?</string>
@@ -100,6 +111,4 @@ Unless required by applicable law or agreed to in writing, software distributed 
 	<string name="eula_accept">Aceptar</string>
 	<string name="eula_refuse">Cancelar</string>
 	
-<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz</string>
 </resources>
