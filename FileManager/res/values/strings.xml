@@ -19,8 +19,10 @@
 	     About information
 	     *************************** -->
 	
-    <!-- Strings for OI About -->
-	<string name="about_comments">OI File Manager is an open file manager that seamlessly cooperates with other applications.</string>  
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+    <string name="about_comments">OI File Manager is an open file manager that seamlessly cooperates with other applications.</string>  
 	<string name="about_website_label">OI File Manager at OpenIntents</string> 
 	
 	<!-- ***************************

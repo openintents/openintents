@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-22 02:50+0100\n"
+"POT-Creation-Date: 2009-05-31 22:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,178 +9,182 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. Strings for OI About
+#. Automatically filled in by Launchpad:
 #: ../res/values/strings.xml:23(string) 
+msgid "translator-credits"
+msgstr ""
+
+#: ../res/values/strings.xml:25(string) 
 msgid "OI File Manager is an open file manager that seamlessly cooperates with other applications."
 msgstr ""
 
-#: ../res/values/strings.xml:24(string) 
+#: ../res/values/strings.xml:26(string) 
 msgid "OI File Manager at OpenIntents"
 msgstr ""
 
 #. ***************************
 #. 	     Applicatio-specific strings
 #. 	     ***************************
-#: ../res/values/strings.xml:29(string) 
+#: ../res/values/strings.xml:31(string) 
 msgid "OI File Manager"
 msgstr ""
 
-#: ../res/values/strings.xml:31(string) 
+#: ../res/values/strings.xml:33(string) 
 msgid "New Folder"
 msgstr ""
 
-#: ../res/values/strings.xml:32(string) 
+#: ../res/values/strings.xml:34(string) 
 msgid "Delete"
 msgstr ""
 
-#: ../res/values/strings.xml:33(string) 
+#: ../res/values/strings.xml:35(string) 
 msgid "Rename"
 msgstr ""
 
-#: ../res/values/strings.xml:34(string) 
+#: ../res/values/strings.xml:36(string) 
 msgid "Send"
 msgstr ""
 
-#: ../res/values/strings.xml:35(string) 
+#: ../res/values/strings.xml:37(string) 
 msgid "Open"
 msgstr ""
 
-#: ../res/values/strings.xml:36(string) 
+#: ../res/values/strings.xml:38(string) 
 msgid "Move"
 msgstr ""
 
-#: ../res/values/strings.xml:38(string) 
+#: ../res/values/strings.xml:40(string) 
 msgid "Create new folder"
 msgstr ""
 
-#: ../res/values/strings.xml:39(string) ../res/values/strings.xml:40(string) 
+#: ../res/values/strings.xml:41(string) ../res/values/strings.xml:42(string) 
 msgid "Folder name"
 msgstr ""
 
-#: ../res/values/strings.xml:41(string) 
+#: ../res/values/strings.xml:43(string) 
 msgid "This folder is empty."
 msgstr ""
 
-#: ../res/values/strings.xml:42(string) 
+#: ../res/values/strings.xml:44(string) 
 msgid "Do you really want to delete %s?"
 msgstr ""
 
-#: ../res/values/strings.xml:43(string) 
+#: ../res/values/strings.xml:45(string) 
 msgid "File deleted."
 msgstr ""
 
-#: ../res/values/strings.xml:44(string) 
+#: ../res/values/strings.xml:46(string) 
 msgid "Folder deleted."
 msgstr ""
 
-#: ../res/values/strings.xml:45(string) 
+#: ../res/values/strings.xml:47(string) 
 msgid "File renamed."
 msgstr ""
 
-#: ../res/values/strings.xml:46(string) 
+#: ../res/values/strings.xml:48(string) 
 msgid "Folder renamed."
 msgstr ""
 
-#: ../res/values/strings.xml:47(string) 
+#: ../res/values/strings.xml:49(string) 
 msgid "File moved."
 msgstr ""
 
-#: ../res/values/strings.xml:48(string) 
+#: ../res/values/strings.xml:50(string) 
 msgid "Folder moved."
 msgstr ""
 
-#: ../res/values/strings.xml:49(string) 
+#: ../res/values/strings.xml:51(string) 
 msgid "Select folder to move to"
 msgstr ""
 
-#: ../res/values/strings.xml:50(string) 
+#: ../res/values/strings.xml:52(string) 
 msgid "Move here"
 msgstr ""
 
-#: ../res/values/strings.xml:52(string) 
+#: ../res/values/strings.xml:54(string) 
 msgid "Could not create new folder."
 msgstr ""
 
-#: ../res/values/strings.xml:53(string) 
+#: ../res/values/strings.xml:55(string) 
 msgid "Could not delete file."
 msgstr ""
 
-#: ../res/values/strings.xml:54(string) 
+#: ../res/values/strings.xml:56(string) 
 msgid "Folder is not empty."
 msgstr ""
 
-#: ../res/values/strings.xml:55(string) 
+#: ../res/values/strings.xml:57(string) 
 msgid "Could not rename file."
 msgstr ""
 
-#: ../res/values/strings.xml:56(string) 
+#: ../res/values/strings.xml:58(string) 
 msgid "Could not rename folder."
 msgstr ""
 
-#: ../res/values/strings.xml:57(string) 
+#: ../res/values/strings.xml:59(string) 
 msgid "Could not move file."
 msgstr ""
 
-#: ../res/values/strings.xml:58(string) 
+#: ../res/values/strings.xml:60(string) 
 msgid "Could not move folder."
 msgstr ""
 
-#: ../res/values/strings.xml:59(string) 
+#: ../res/values/strings.xml:61(string) 
 msgid "File does not exist."
 msgstr ""
 
-#: ../res/values/strings.xml:61(string) 
+#: ../res/values/strings.xml:63(string) 
 msgid "No application available for sending."
 msgstr ""
 
-#: ../res/values/strings.xml:63(string) 
+#: ../res/values/strings.xml:65(string) 
 msgid "Application not available"
 msgstr ""
 
 #. EULA
-#: ../res/values/strings.xml:70(string) 
+#: ../res/values/strings.xml:72(string) 
 msgid "OI File Manager EULA"
 msgstr ""
 
-#: ../res/values/strings.xml:71(string) 
+#: ../res/values/strings.xml:73(string) 
 msgid "Accept"
 msgstr ""
 
-#: ../res/values/strings.xml:72(string) 
+#: ../res/values/strings.xml:74(string) 
 msgid "Cancel"
 msgstr ""
 
 #. Update
-#: ../res/values/strings.xml:75(string) 
+#: ../res/values/strings.xml:77(string) 
 msgid "Please check manually for updates or install OI Update for automatic notifications. Current version: %s"
 msgstr ""
 
-#: ../res/values/strings.xml:79(string) 
+#: ../res/values/strings.xml:81(string) 
 msgid "Check now."
 msgstr ""
 
-#: ../res/values/strings.xml:80(string) 
+#: ../res/values/strings.xml:82(string) 
 msgid "Get OI Updater."
 msgstr ""
 
-#: ../res/values/strings.xml:81(string) 
+#: ../res/values/strings.xml:83(string) 
 msgid "Download application not available."
 msgstr ""
 
-#: ../res/values/strings.xml:82(string) 
+#: ../res/values/strings.xml:84(string) 
 msgid "Check updates"
 msgstr ""
 
 #. About
-#: ../res/values/strings.xml:85(string) 
+#: ../res/values/strings.xml:87(string) 
 msgid "About"
 msgstr ""
 
-#: ../res/values/strings.xml:86(string) 
+#: ../res/values/strings.xml:88(string) 
 msgid "Version %s\\n\\nNo compatible extension available to display full info (contact, credits, license)."
 msgstr ""
 
-#: ../res/values/strings.xml:87(string) 
+#: ../res/values/strings.xml:89(string) 
 msgid "Get OI About"
 msgstr ""
 
