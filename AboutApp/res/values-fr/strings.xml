@@ -28,27 +28,27 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz;</string>
 	
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
-	<string name="about_website_label">Acerca de OI en OpenIntents</string>
+	<string name="about_comments">Un standalone à propos d'une boîte de dialogue qui est partagé entre les applications.</string>
+	<string name="about_website_label">OI About chez OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">Acerca de OI</string>
+    <string name="app_name">OI About</string>
 	
-    <string name="menu_about">Acerca de Acerca de OI</string>
+    <string name="menu_about">À propos d'OI About lui-même</string>
     
-    <string name="about_activity_name_extended">Acerca de %s</string>
+    <string name="about_activity_name_extended">À propos de %s</string>
     
-	<string name="l_authors">Escrito por</string>
-	<string name="l_documenters">Documentado por</string>
-	<string name="l_translators">Traducido por</string>
-	<string name="l_artists">Trabajo Artístico por</string>
-	<string name="l_credits">Creditos</string>
-	<string name="l_license">Licencia</string>
-	<string name="l_info">Información General</string>
+	<string name="l_authors">Ecrit par</string>
+	<string name="l_documenters">Documentées par</string>
+	<string name="l_translators">Traduit par</string>
+	<string name="l_artists">Artwork par</string>
+	<string name="l_credits">Crédits</string>
+	<string name="l_license">Licence</string>
+	<string name="l_info">Infos Générales</string>
 	
-	<string name="no_information_available">Información no disponible</string>
+	<string name="no_information_available">Aucune information disponible.</string>
 </resources>

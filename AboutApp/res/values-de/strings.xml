@@ -28,10 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101;
-
-Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101;</string>
 	
 	<string name="about_comments">Informationen über diverse Anwendungen</string>
 	<string name="about_website_label">OI Info auf OpenIntents.org</string>
