@@ -36,7 +36,7 @@ date: 2009-05-30
 - Secure deletion of CSV files after import.
 - Add support for file stream encryption,
   to be used by Obscura.
-- Add Trivium stream cipher.
+- Add Trivium stream cipher (estreamJ implementation).
 
 ---------------------------------------------------------
 release: 1.1.0
