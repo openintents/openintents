@@ -27,23 +27,34 @@
     
     <string name="hint_title">e.g. pizza</string>
     
+    <!-- Title of the activity for setting (editing) the countdown. -->
     <string name="title_setcountdown">Set countdown</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
     <string name="title_create">Create countdown</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
     <string name="title_edit">Edit countdown</string>
     
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">Error</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
 	<string name="error_message">Error loading countdown</string>
 	
-	<string name="countdown_ended">Countdown ended</string>
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
+	<!-- Checkbox label whether to have a ringtone at the end of the countdown. '%s' is the name of the currently selected ringtone. -->
 	<string name="ringtone">Ringtone: %s</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">Vibrate</string>
 	
 	
 	<!-- Update -->
-	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>
+<!-- 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>
 	<string name="market_not_available">Android Market not available.</string>
-	<string name="market_search_term">OI Countdown</string>
+	<string name="market_search_term">OI Countdown</string> -->
 
 	<!-- About -->
 	<string name="about">About</string>
