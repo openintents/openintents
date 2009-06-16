@@ -16,19 +16,24 @@
 
 package org.openintents.countdown.list;
 
+import org.openintents.countdown.CountdownEditorActivity;
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 
 import android.app.ListActivity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -120,9 +125,13 @@ public class CountdownListActivity extends ListActivity
         //SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.countdownlist_item, cursor,
         //        new String[] { Durations.TITLE , Durations.DURATION }, new int[] { android.R.id.text1 , android.R.id.text2 });
         
-        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this);
+        Uri baseUri = getIntent().getData();
+        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this, baseUri);
         
         setListAdapter(adapter);
+
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(mReceiver, filter);
     }
 
 
@@ -143,6 +152,13 @@ public class CountdownListActivity extends ListActivity
 
 
 
+    @Override
+	protected void onDestroy() {
+		super.onDestroy();
+
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(null, filter);
+	}
 
 
 
@@ -296,6 +312,10 @@ public class CountdownListActivity extends ListActivity
 	public void onStartClick(long id) {
 		startCountdown(id);
 	}
+	
+	public void onDismissClick(long id) {
+		dismissCountdown(id);
+	}
 
 	/**
 	 * Show the Countdown editor activity.
@@ -344,6 +364,19 @@ public class CountdownListActivity extends ListActivity
     	
 		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));
 	}
+
+	/**
+	 * Dismiss the notification for the countdown.
+	 * @param id
+	 */
+	private void dismissCountdown(long id) {
+		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+		
+		CountdownEditorActivity.cancelNotification(this, uri);
+        NotificationState.stop(uri);
+
+		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));
+	}
 	
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
@@ -351,23 +384,40 @@ public class CountdownListActivity extends ListActivity
 		public void handleMessage(Message msg) {
 			Log.i(TAG, "Handle message");
 			if (msg.what == MSG_UPDATE_DISPLAY) {
-				// Update all visible views.
-				ListView view = getListView();
-				
-	            int first = view.getFirstVisiblePosition();
-	            int count = view.getChildCount();
-	            
-	            boolean update = false;
-	            
-	            for (int i=0; i<count; i++) {
-	            	CountdownListItemView cliv = (CountdownListItemView) view.getChildAt(i);
-	            	update |= cliv.updateCountdown();
-	            }
-	            
-	            if (update) {
-	            	mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
-	            }
+				updateViews();
 			}
 		}
+
+	};
+
+	private void updateViews() {
+		// Update all visible views.
+		ListView view = getListView();
+		
+		int first = view.getFirstVisiblePosition();
+		int count = view.getChildCount();
+		
+		boolean update = false;
+		
+		for (int i=0; i<count; i++) {
+			CountdownListItemView cliv = (CountdownListItemView) view.getChildAt(i);
+			update |= cliv.updateCountdown();
+		}
+		
+		if (update) {
+			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
+		}
+	}
+	
+	BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// Update internal state:
+			Log.v(TAG, "onReceive()");
+
+			updateViews();
+		}
+		
 	};
 }

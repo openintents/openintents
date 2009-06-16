@@ -54,8 +54,6 @@ import android.widget.TextView;
 public class CountdownEditorActivity extends Activity {
     private static final String TAG = "Notes";
     
-    public static final String ACTION_NOTIFICATION_STATE_CHANGED = "org.openintents.countdown.intent.NOTIFICATION_STATE_CHANGED";
-    
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
 
@@ -260,7 +258,7 @@ public class CountdownEditorActivity extends Activity {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
         }
         
-        IntentFilter filter = new IntentFilter(ACTION_NOTIFICATION_STATE_CHANGED);
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
         
     }
@@ -390,8 +388,18 @@ public class CountdownEditorActivity extends Activity {
         // Cancel sound or vibrator notifications
         cancelThisNotification();
     }
+    
+    
 
     @Override
+	protected void onDestroy() {
+		super.onDestroy();
+
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(null, filter);
+	}
+
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
@@ -567,7 +575,7 @@ public class CountdownEditorActivity extends Activity {
     }
 
 	private void cancelThisNotification() {
-		cancelNotification(mUri);
+		cancelNotification(this, mUri);
         NotificationState.stop(mUri);
 	}
     
@@ -583,19 +591,19 @@ public class CountdownEditorActivity extends Activity {
      * Cancel notification (if it exists).
      * @param uri
      */
-    public void cancelNotification(Uri uri) {
+    public static void cancelNotification(Context context, Uri uri) {
 
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
         
         // look up the notification manager service
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
 
         // cancel the notification that we started in IncomingMessage
         nm.cancel(notification_id);
         
         // stop service for wake lock:
-        Intent serviceIntent = new Intent(this, AlarmService.class);
-        this.stopService(serviceIntent);
+        Intent serviceIntent = new Intent(context, AlarmService.class);
+        context.stopService(serviceIntent);
     }
     
     

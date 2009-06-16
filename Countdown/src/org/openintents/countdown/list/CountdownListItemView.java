@@ -19,10 +19,11 @@ package org.openintents.countdown.list;
 import org.openintents.countdown.R;
 import org.openintents.countdown.list.CountdownCursorAdapter.OnCountdownClickListener;
 import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
 
 import android.content.Context;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -39,7 +40,9 @@ public class CountdownListItemView extends LinearLayout {
 	private TextView mDurationView;
 	private TextView mCountdownView;
 	private Button mStart;
+	private Button mDismiss;
 	private LinearLayout mCountdownPanel;
+	private Uri mUri;
 	
 	public CountdownListItemView(Context context) {
 		super(context);
@@ -56,6 +59,7 @@ public class CountdownListItemView extends LinearLayout {
 		mDurationView = (TextView) findViewById(R.id.duration);
 		mCountdownView = (TextView) findViewById(R.id.countdown);
 		mStart = (Button) findViewById(R.id.start);
+		mDismiss = (Button) findViewById(R.id.dismiss);
 		mCountdownPanel = (LinearLayout) findViewById(R.id.countdownpanel);
 		
 	}
@@ -77,6 +81,11 @@ public class CountdownListItemView extends LinearLayout {
 		mDeadline = deadline;
 		updateCountdown();
 	}
+
+	public void setUri(Uri uri) {
+		mUri = uri;
+		updateCountdown();
+	}
 	
 	
 	/**
@@ -91,21 +100,34 @@ public class CountdownListItemView extends LinearLayout {
 		
 		mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 		
-		if (delta > 0) {
+
+		if (NotificationState.isActive(mUri)) {
+			// Show dismiss button
+			// show red 0:00:00
+			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
+			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
+			mCountdownView.setTextColor(0xffff0000);
+			mStart.setVisibility(View.GONE);
+			mDismiss.setVisibility(View.VISIBLE);
+			return false;
+
+		} else if (delta > 0) {
 			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mStart.setVisibility(View.GONE);
+			mDismiss.setVisibility(View.GONE);
 			return true;
-		} else if (delta > -3000) {
+		} /*else if (delta > -3000) {
 			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextColor(0xffff0000);
 			mStart.setVisibility(View.GONE);
 			return true;
 			
-		} else {
+		} */else {
 			mCountdownView.setText("");
 			mStart.setVisibility(View.VISIBLE);
+			mDismiss.setVisibility(View.GONE);
 			return false;
 		}
 	}
@@ -119,6 +141,13 @@ public class CountdownListItemView extends LinearLayout {
 			
 			public void onClick(View view) {
 				mListener.onStartClick(mId);
+			}
+		});
+
+		mDismiss.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View view) {
+				mListener.onDismissClick(mId);
 			}
 		});
 		

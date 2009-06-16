@@ -83,5 +83,14 @@
 	    android:layout_marginTop="2dip" 
 	    android:layout_marginBottom="2dip"
 	/>
+	<Button
+	    android:id="@+id/dismiss"
+	    android:text="@string/dismiss"
+	    android:layout_height="fill_parent"
+	    android:layout_width="100dip"
+	    android:layout_gravity="center"
+	    android:layout_marginTop="2dip" 
+	    android:layout_marginBottom="2dip"
+	/>
 	
 </LinearLayout>

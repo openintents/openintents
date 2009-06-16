@@ -18,8 +18,10 @@ package org.openintents.countdown.list;
 
 import org.openintents.countdown.db.Countdown;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.View;
@@ -32,11 +34,13 @@ public class CountdownCursorAdapter extends CursorAdapter {
 
 	Context mContext;
 	OnCountdownClickListener mListener;
+	Uri mBaseUri;
 	
-	public CountdownCursorAdapter(Context context, Cursor c, OnCountdownClickListener listener) {
+	public CountdownCursorAdapter(Context context, Cursor c, OnCountdownClickListener listener, Uri baseUri) {
 		super(context, c);
 		mContext = context;
 		mListener = listener;
+		mBaseUri = baseUri;
 	}
 	
 	@Override
@@ -56,10 +60,13 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		if (TextUtils.isEmpty(title)) {
 			title = context.getString(android.R.string.untitled);
 		}
-		
+
+		Uri uri = ContentUris.withAppendedId(mBaseUri, id);
+		cliv.setUri(uri);
 		cliv.setTitle(title);
 		cliv.setDuration(duration);
 		cliv.setDeadline(deadline);
+
 		
 		cliv.setListeners(mListener, id);
 		
@@ -75,6 +82,8 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		public void onCountdownPanelClick(long id);
 		
 		public void onStartClick(long id);
+		
+		public void onDismissClick(long id);
 	}
 
 }
