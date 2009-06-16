@@ -23,6 +23,14 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.1.0
+date: 2009-06-?
+
+- Auto-turn off alarm after 10 minutes.
+- Use ringer volume stream for sound.
+- Fix vibrate only notification.
+ 
+---------------------------------------------------------
 release: 1.0.1
 date: 2008-11-11
 

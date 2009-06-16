@@ -57,6 +57,14 @@ public class AlarmCancelReceiver extends BroadcastReceiver
         
         cancelNotification(mUri);
         
+        long time = intent.getLongExtra(AlarmReceiver.EXTRA_TIME, 
+        		System.currentTimeMillis());
+        
+        // Canceling sound and vibration also cancels the notification.
+        // Too keep the notification there, we set the notification
+        // again with the original time, but this time a silent version.
+        AlarmReceiver.showNotification(context, mUri, AlarmReceiver.SILENT, time);
+        
     }
     
 

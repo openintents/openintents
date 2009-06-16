@@ -21,6 +21,8 @@
       
     <!-- required for notifications -->
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
     
     <application android:icon="@drawable/icon_hourglass" android:label="@string/app_name">
         <provider android:name=".db.CountdownProvider"

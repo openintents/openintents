@@ -43,8 +43,16 @@ import android.util.Log;
 {
 	private final static String TAG = "AlarmReceiver";
 	
-	private final static int ALARM_TIMEOUT_SECONDS = 5; // 300;
+	private final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
 	private Handler mTimeout;
+	
+	final static boolean RING_AND_VIBRATE = true;
+	final static boolean SILENT = false;
+
+	/**
+	 * Time of the original notification.
+	 */
+	public final static String EXTRA_TIME = "time";
 	
 	Context mContext;
 	
@@ -57,11 +65,13 @@ import android.util.Log;
     	
         // Toast.makeText(context, "R.string.alarm_received", Toast.LENGTH_SHORT).show();
         
-        showNotification(mUri);
+    	long time = System.currentTimeMillis();
+        
+    	showNotification(context, mUri, RING_AND_VIBRATE, time);
         
         // We don't use the following, as it also cancels the notification.
         
-        //setAlarmCancel(mUri);
+        setAlarmCancel(mUri);
     }
     
 
@@ -69,10 +79,10 @@ import android.util.Log;
      * The notification is the icon and associated expanded entry in the
      * status bar.
      */
-    public void showNotification(Uri uri) {
+    public static void showNotification(Context context, Uri uri, boolean ringAndVibrate, long time) {
     	
         // look up the notification manager service
-        NotificationManager nm = (NotificationManager)mContext.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
         //Intent intent = new Intent(mContext, NotificationReceiverActivity.class);
@@ -82,7 +92,7 @@ import android.util.Log;
 
         // Get the data
 
-        Cursor c = mContext.getContentResolver().query(uri, Durations.PROJECTION, null, null,
+        Cursor c = context.getContentResolver().query(uri, Durations.PROJECTION, null, null,
                 Countdown.Durations.DEFAULT_SORT_ORDER);
         
         String title = "";
@@ -94,7 +104,7 @@ import android.util.Log;
         }
         
         if (TextUtils.isEmpty(title)) {
-        	title = mContext.getString(R.string.app_name);
+        	title = context.getString(R.string.app_name);
         }
         
         long ring = 0;
@@ -111,33 +121,35 @@ import android.util.Log;
         }
         
         // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(mContext, 0,
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                 intent, 0);
 
         // The ticker text, this uses a formatted string so our message could be localized
         //String tickerText = mContext.getString(R.string.countdown_ended);
         String tickerText = title;
-        	
+        
+        
         // construct the Notification object.
         Notification notif = new Notification(R.drawable.icon_hourglass, tickerText,
-                System.currentTimeMillis());
+                time);
 
         // Set the info for the views that show in the notification panel.
-        notif.setLatestEventInfo(mContext, title, text, contentIntent);
+        notif.setLatestEventInfo(context, title, text, contentIntent);
 
-        if (ring != 0) {
+        if (ringAndVibrate && ring != 0) {
         	Log.i(TAG, "Notification: Set ringtone " + ringtone.toString());
         	notif.sound = ringtone;
 
-        	notif.audioStreamType = AudioManager.STREAM_ALARM;
+        	notif.audioStreamType = AudioManager.STREAM_RING;//AudioManager.STREAM_ALARM;
         	notif.flags |= Notification.FLAG_INSISTENT;
         }
         
-        if (vibrate != 0) {
+        if (ringAndVibrate && vibrate != 0) {
         	Log.i(TAG, "Notification: Set vibration");
             // after a 100ms delay, vibrate for 250ms, pause for 100 ms and
             // then vibrate for 500ms.
             notif.vibrate = new long[] { 100, 250, 100, 500};
+            notif.flags |= Notification.FLAG_INSISTENT;
         }
         
         // notif.flags |= Notification.FLAG_SHOW_LIGHTS;
@@ -163,6 +175,7 @@ import android.util.Log;
         Intent intent = new Intent(mContext, AlarmCancelReceiver.class);
         
         intent.setData(uri);
+        intent.putExtra(EXTRA_TIME, now);
         
         PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext,
                 0, intent, 0);
