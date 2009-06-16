@@ -51,7 +51,7 @@ import android.widget.ListView;
  */
 public class CountdownListActivity extends ListActivity 
 	implements CountdownCursorAdapter.OnCountdownClickListener {
-    private static final String TAG = "NotesList";
+    private static final String TAG = "CountdownListActivity";
 
     // Menu item ids
     private static final int MENU_ITEM_DELETE = Menu.FIRST;

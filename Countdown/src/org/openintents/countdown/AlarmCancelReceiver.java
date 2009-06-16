@@ -39,7 +39,7 @@ import android.util.Log;
  */
 public class AlarmCancelReceiver extends BroadcastReceiver
 {
-	private final static String TAG = "AlarmReceiver";
+	private final static String TAG = "AlarmCancelReceiver";
 	
 	private final static int ALARM_TIMEOUT_SECONDS = 5; // 300;
 	private Handler mTimeout;
@@ -64,6 +64,11 @@ public class AlarmCancelReceiver extends BroadcastReceiver
         // Too keep the notification there, we set the notification
         // again with the original time, but this time a silent version.
         AlarmReceiver.showNotification(context, mUri, AlarmReceiver.SILENT, time);
+        
+
+        // stop service for wake lock:
+        Intent serviceIntent = new Intent(mContext, AlarmService.class);
+        mContext.stopService(serviceIntent);
         
     }
     

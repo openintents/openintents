@@ -251,6 +251,8 @@ public class CountdownEditorActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
+        Log.v(TAG, "onResmue()");
+        
         // If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
         if (mCursor != null) {
@@ -556,6 +558,10 @@ public class CountdownEditorActivity extends Activity {
 
         // cancel the notification that we started in IncomingMessage
         nm.cancel(notification_id);
+        
+        // stop service for wake lock:
+        Intent serviceIntent = new Intent(this, AlarmService.class);
+        this.stopService(serviceIntent);
     }
     
     

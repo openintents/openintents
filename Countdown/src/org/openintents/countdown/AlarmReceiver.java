@@ -33,6 +33,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import org.openintents.countdown.util.AlarmAlertWakeLock;
 
 /**
  * Alarm receiver for countdown events.
@@ -43,7 +44,7 @@ import android.util.Log;
 {
 	private final static String TAG = "AlarmReceiver";
 	
-	private final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
+	public final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
 	private Handler mTimeout;
 	
 	final static boolean RING_AND_VIBRATE = true;
@@ -60,6 +61,7 @@ import android.util.Log;
     public void onReceive(Context context, Intent intent)
     {
     	mContext = context;
+    	AlarmAlertWakeLock.acquire(context);
     	
     	Uri mUri = intent.getData();
     	
@@ -72,6 +74,10 @@ import android.util.Log;
         // We don't use the following, as it also cancels the notification.
         
         setAlarmCancel(mUri);
+        
+        // start a service for the duration of the lock:
+        Intent serviceIntent = new Intent(mContext, AlarmService.class);
+        mContext.startService(serviceIntent);
     }
     
 
