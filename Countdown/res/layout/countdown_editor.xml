@@ -68,6 +68,11 @@
 	        android:layout_width="0dip"
 	        android:layout_weight="1"
 	    	android:text="@string/cont"/>
+	    <Button android:id="@+id/dismiss"
+	    	android:layout_height="fill_parent"
+	        android:layout_width="0dip"
+	        android:layout_weight="1"
+	    	android:text="@string/dismiss"/>
 	</LinearLayout>
 	<CheckBox android:id="@+id/ringtone"
 		android:layout_height="wrap_content"

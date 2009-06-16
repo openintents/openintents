@@ -19,6 +19,7 @@ package org.openintents.countdown;
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -163,6 +164,7 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
 
         nm.notify(notification_id, notif);
+        NotificationState.start(context, uri);
     }
     
     /**

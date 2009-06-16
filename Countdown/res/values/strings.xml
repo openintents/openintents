@@ -50,6 +50,8 @@
 	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">Vibrate</string>
 	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Dismiss</string>
 	
 	<!-- Update -->
 <!-- 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>

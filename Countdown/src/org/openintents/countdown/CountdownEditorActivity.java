@@ -18,15 +18,17 @@ package org.openintents.countdown;
 
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -51,6 +53,8 @@ import android.widget.TextView;
  */
 public class CountdownEditorActivity extends Activity {
     private static final String TAG = "Notes";
+    
+    public static final String ACTION_NOTIFICATION_STATE_CHANGED = "org.openintents.countdown.intent.NOTIFICATION_STATE_CHANGED";
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -83,6 +87,7 @@ public class CountdownEditorActivity extends Activity {
     private Button mStop;
     private Button mModify;
     private Button mCont;
+    private Button mDismiss;
     private TextView mCountdownView;
     
     private CheckBox mRingtoneView;
@@ -102,6 +107,7 @@ public class CountdownEditorActivity extends Activity {
     private static final int STATE_COUNTDOWN_IDLE = 1;
     private static final int STATE_COUNTDOWN_RUNNING = 2;
     private static final int STATE_COUNTDOWN_MODIFY = 3;
+    private static final int STATE_COUNTDOWN_DISMISS = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +126,7 @@ public class CountdownEditorActivity extends Activity {
             mState = STATE_EDIT;
             mUri = intent.getData();
             
-            // If we have been called by the notification, cancel it:
-            cancelNotification(mUri);
+            cancelThisNotification();
             
         } else if (Intent.ACTION_INSERT.equals(action)) {
             // Requested to insert: set that state, and create a new entry
@@ -212,6 +217,16 @@ public class CountdownEditorActivity extends Activity {
 			}
         	
         });
+
+        mDismiss = (Button) findViewById(R.id.dismiss);
+        mDismiss.setOnClickListener(new View.OnClickListener() {
+
+			
+			public void onClick(View arg0) {
+				dismiss();
+			}
+        	
+        });
         
         mRingtoneView = (CheckBox) findViewById(R.id.ringtone);
         
@@ -244,6 +259,9 @@ public class CountdownEditorActivity extends Activity {
         if (savedInstanceState != null) {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
         }
+        
+        IntentFilter filter = new IntentFilter(ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(mReceiver, filter);
         
     }
 
@@ -368,6 +386,9 @@ public class CountdownEditorActivity extends Activity {
         
         // Cancel notifications
         mHandler.removeMessages(MSG_UPDATE_DISPLAY);
+        
+        // Cancel sound or vibrator notifications
+        cancelThisNotification();
     }
 
     @Override
@@ -537,6 +558,19 @@ public class CountdownEditorActivity extends Activity {
     	updateViews();
     }
     
+    private final void dismiss() {
+    	mCountdownState = STATE_COUNTDOWN_IDLE;
+    	
+        cancelThisNotification();
+
+    	updateViews();
+    }
+
+	private void cancelThisNotification() {
+		cancelNotification(mUri);
+        NotificationState.stop(mUri);
+	}
+    
     public void setAlarm(long time) {
     	CountdownUtils.setAlarm(this, mUri, time);
     }
@@ -582,8 +616,19 @@ public class CountdownEditorActivity extends Activity {
 		long delta = mDeadline - now;
 		
 		//mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
-		
-		if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
+
+		if (NotificationState.isActive(mUri)) {
+			Log.v(TAG, "isActive");
+			// Show dismiss button
+			mCountdownState = STATE_COUNTDOWN_DISMISS;
+			
+			// show red 0:00:00
+			mDurationPicker.setVisibility(View.INVISIBLE);
+			mCountdownView.setVisibility(View.VISIBLE);
+			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
+			mCountdownView.setTextColor(0xffff0000);
+
+		} else if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
 			mDurationPicker.setVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		} else if (delta > 0) {
@@ -605,7 +650,7 @@ public class CountdownEditorActivity extends Activity {
     	        getContentResolver().update(mUri, values, null, null);
     	        mCursor.requery();
     		}
-		} else if (delta > -3000) {
+		}/* else if (delta > -3000) {
 			mCountdownState = STATE_COUNTDOWN_RUNNING;
 			mDurationPicker.setVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
@@ -613,32 +658,33 @@ public class CountdownEditorActivity extends Activity {
 			mCountdownView.setTextColor(0xffff0000);
 
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
-		} else {
+		} */else {
 			mCountdownState = STATE_COUNTDOWN_IDLE;
 			mDurationPicker.setVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		}
+
 	}
     
     private void updateButtons() {
+		mStart.setVisibility(View.GONE);
+		mStop.setVisibility(View.GONE);
+		mModify.setVisibility(View.GONE);
+		mCont.setVisibility(View.GONE);
+		mDismiss.setVisibility(View.GONE);
     	switch (mCountdownState) {
     	case STATE_COUNTDOWN_IDLE:
     		mStart.setVisibility(View.VISIBLE);
-    		mStop.setVisibility(View.GONE);
-    		mModify.setVisibility(View.GONE);
-    		mCont.setVisibility(View.GONE);
     		break;
     	case STATE_COUNTDOWN_RUNNING:
-    		mStart.setVisibility(View.GONE);
     		mStop.setVisibility(View.VISIBLE);
     		mModify.setVisibility(View.VISIBLE);
-    		mCont.setVisibility(View.GONE);
     		break;
     	case STATE_COUNTDOWN_MODIFY:
-    		mStart.setVisibility(View.GONE);
-    		mStop.setVisibility(View.GONE);
-    		mModify.setVisibility(View.GONE);
     		mCont.setVisibility(View.VISIBLE);
+    		break;
+    	case STATE_COUNTDOWN_DISMISS:
+    		mDismiss.setVisibility(View.VISIBLE);
     		break;
     	}
     }
@@ -708,6 +754,18 @@ public class CountdownEditorActivity extends Activity {
 	            
 			}
 		}
+	};
+	
+	BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// Update internal state:
+			Log.v(TAG, "onReceive()");
+
+			updateViews();
+		}
+		
 	};
 
 	@Override
