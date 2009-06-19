@@ -63,6 +63,9 @@
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
 	<string name="action">Action: %s</string>
 	
+	<!-- Button to test an action. -->
+	<string name="test">Test</string>
+	
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Dismiss</string>
 	

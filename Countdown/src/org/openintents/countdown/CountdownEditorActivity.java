@@ -32,6 +32,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.NotificationManager;
 import android.app.TimePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentValues;
@@ -121,6 +122,7 @@ public class CountdownEditorActivity extends Activity {
     private CheckBox mRingtoneView;
     private CheckBox mVibrateView;
     private CheckBox mAutomateView;
+    private Button mAutomateTest;
     
     private long mRing;
     private Uri mRingtoneUri;
@@ -323,6 +325,18 @@ public class CountdownEditorActivity extends Activity {
 
         	
         });
+        
+        mAutomateTest = (Button) findViewById(R.id.automate_test);
+
+        mAutomateTest.setOnClickListener(new View.OnClickListener() {
+
+			
+			public void onClick(View arg0) {
+				startAutomateTest();
+			}
+        	
+        });
+        
         
         // Get the countdown!
         mCursor = managedQuery(mUri, Durations.PROJECTION, null, null, null);
@@ -788,6 +802,16 @@ public class CountdownEditorActivity extends Activity {
 		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
 	}
 
+	void startAutomateTest() {
+		if (mAutomateIntent != null) {
+			try {
+				startActivity(mAutomateIntent);
+			} catch (ActivityNotFoundException e) {
+				// TODO
+			}
+		}
+	}
+
 	private void cancelThisNotification() {
 		cancelNotification(this, mUri);
         NotificationState.stop(mUri);
@@ -827,6 +851,8 @@ public class CountdownEditorActivity extends Activity {
 		updateButtons();
 		
 		//updateCheckboxes();
+		
+		updateAutomate();
     }
 
 	/**
@@ -942,6 +968,26 @@ public class CountdownEditorActivity extends Activity {
     	s = getString(R.string.action, "");
     	mAutomateView.setText(s);
     	
+    }
+    
+    void updateAutomate() {
+    	PackageManager pm = getPackageManager();
+    	
+    	if (mAutomateIntent != null) {
+    		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, PackageManager.MATCH_DEFAULT_ONLY);
+
+    		if (ri != null && ri.size() > 0) {
+    			String name = ri.get(0).activityInfo.loadLabel(pm).toString();
+    			
+        		mAutomateView.setText(getString(R.string.action, name));
+        		mAutomateTest.setVisibility(View.VISIBLE);
+        		return;
+    		}
+    	}
+    	
+    	// if we arrive here, no valid intent is specified.
+    	mAutomateView.setText(getString(R.string.action, ""));
+    	mAutomateTest.setVisibility(View.GONE);
     }
     
     private void setRing(boolean checked) {
@@ -1194,4 +1240,5 @@ public class CountdownEditorActivity extends Activity {
 			setAutomate(false);
 		}
 	}
+	
 }
