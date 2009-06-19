@@ -25,6 +25,7 @@ import org.openintents.countdown.util.NotificationState;
 import org.openintents.distribution.AboutActivity;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
+import org.openintents.utils.DateTimeFormater;
 
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
@@ -73,7 +74,8 @@ public class CountdownListActivity extends ListActivity
             Durations._ID, // 0
             Durations.TITLE, // 1
             Durations.DURATION, // 2
-            Durations.DEADLINE_DATE // 3
+            Durations.DEADLINE_DATE, // 3
+            Durations.USER_DEADLINE_DATE // 4
     };
 
     /** The index of the title column */
@@ -138,6 +140,8 @@ public class CountdownListActivity extends ListActivity
 	@Override
 	protected void onResume() {
 		super.onResume();
+
+		DateTimeFormater.getFormatFromPreferences(this);
 		
 		// Start periodic update
 		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
@@ -345,13 +349,19 @@ public class CountdownListActivity extends ListActivity
     	long now = System.currentTimeMillis();
     	
     	long duration = 0;
+    	long userdeadline = 0;
     	
     	if (c != null) {
         	c.moveToFirst();
         	duration = c.getLong(c.getColumnIndexOrThrow(Durations.DURATION));
+        	userdeadline = c.getLong(c.getColumnIndexOrThrow(Durations.USER_DEADLINE_DATE));
     	}
 		
     	long deadline = now + duration;
+    	
+    	if (userdeadline > 0) {
+    		deadline = userdeadline;
+    	}
     	
     	CountdownUtils.setAlarm(this, uri, deadline);
     	

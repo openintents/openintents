@@ -33,7 +33,8 @@
 		    style="?android:attr/textAppearanceLargeInverse"
 		    android:textSize="30sp"
 		    android:background="@drawable/timepicker_input"
-		    />
+		    android:numeric="integer"
+			/>
 		    <!--  -->
         
     <org.openintents.com.android.internal.widget.NumberPickerButton android:id="@+id/decrement"

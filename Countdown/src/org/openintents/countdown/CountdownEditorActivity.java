@@ -16,19 +16,30 @@
 
 package org.openintents.countdown;
 
+import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.List;
+
+import org.openintents.com.android.internal.widget.NumberPicker;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
+import org.openintents.utils.DateTimeFormater;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.NotificationManager;
+import android.app.TimePickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -40,11 +51,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 /**
  * A generic activity for editing a note in a database.  This can be used
@@ -62,6 +77,8 @@ public class CountdownEditorActivity extends Activity {
     private static final int DISCARD_ID = Menu.FIRST + 1;
     private static final int MENU_DELETE = Menu.FIRST + 2;
     private static final int MENU_PICK_RINGTONE = Menu.FIRST + 3;
+    private static final int MENU_CHANGE_COUNTDOWN_MODE = Menu.FIRST + 4;
+    private static final int MENU_SET_AUTOMATION = Menu.FIRST + 5;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
@@ -70,6 +87,10 @@ public class CountdownEditorActivity extends Activity {
     private static final int MSG_UPDATE_DISPLAY = 1;
     
     private static final int REQUEST_CODE_RINGTONE = 1;
+	private static final int REQUEST_CODE_SET_AUTOMATION = 2;
+
+	static final int DIALOG_ID_SET_DATE = 1;
+	static final int DIALOG_ID_SET_TIME = 2;
     
     private int mState;
     private Uri mUri;
@@ -79,6 +100,11 @@ public class CountdownEditorActivity extends Activity {
     
 	private long mDuration;
 	private long mDeadline;
+	private long mUserDeadline;
+	private long mUserDeadlineTemporary;
+	private long mDurationOld;
+	private boolean mDurationModified;
+	private boolean mUserDeadlineModified;
     
     private DurationPicker mDurationPicker;
     private Button mStart;
@@ -88,13 +114,21 @@ public class CountdownEditorActivity extends Activity {
     private Button mDismiss;
     private TextView mCountdownView;
     
+    private LinearLayout mDateSetter;
+	private Button mSetDate;
+	private Button mSetTime;
+    
     private CheckBox mRingtoneView;
     private CheckBox mVibrateView;
+    private CheckBox mAutomateView;
     
     private long mRing;
     private Uri mRingtoneUri;
     private long mVibrate;
     private int mRingtoneType;
+    private long mAutomate;
+    private Intent mAutomateIntent;
+    private String mAutomateText;
     
     private long UNCHECKED = 0;
     private long CHECKED = 1;
@@ -106,6 +140,16 @@ public class CountdownEditorActivity extends Activity {
     private static final int STATE_COUNTDOWN_RUNNING = 2;
     private static final int STATE_COUNTDOWN_MODIFY = 3;
     private static final int STATE_COUNTDOWN_DISMISS = 4;
+    
+    /**
+     * Whether to set a specific date (deadline) or
+     * a duration to set the countdown.
+     */
+    private int mCountdownMode;
+    private static final int MODE_SET_DATE = 11;
+    private static final int MODE_SET_DURATION = 12;
+    
+	private Calendar mCalendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +158,7 @@ public class CountdownEditorActivity extends Activity {
         final Intent intent = getIntent();
 
         mCountdownState = STATE_COUNTDOWN_IDLE;
+        mCountdownMode = MODE_SET_DURATION;
         mRingtoneType = RingtoneManager.TYPE_ALL;
         
         // Do some setup based on the action being performed.
@@ -175,6 +220,24 @@ public class CountdownEditorActivity extends Activity {
         mDurationPicker.setCurrentSecond(0);
         
         mCountdownView = (TextView) findViewById(R.id.countdown);
+        
+        mDateSetter = (LinearLayout) findViewById(R.id.datesetter);
+
+		mSetDate = (Button) findViewById(R.id.set_date);
+		mSetDate.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				showDialog(DIALOG_ID_SET_DATE);
+			}
+		});
+
+		mSetTime = (Button) findViewById(R.id.set_time);
+		mSetTime.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				showDialog(DIALOG_ID_SET_TIME);
+			}
+		});
 
         mStart = (Button) findViewById(R.id.start);
         mStart.setOnClickListener(new View.OnClickListener() {
@@ -248,6 +311,18 @@ public class CountdownEditorActivity extends Activity {
 
         	
         });
+
+        mAutomateView = (CheckBox) findViewById(R.id.automate);
+
+        mAutomateView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				setAutomate(checked);
+			}
+
+        	
+        });
         
         // Get the countdown!
         mCursor = managedQuery(mUri, Durations.PROJECTION, null, null, null);
@@ -267,7 +342,9 @@ public class CountdownEditorActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        Log.v(TAG, "onResmue()");
+        Log.v(TAG, "onResume()");
+
+		DateTimeFormater.getFormatFromPreferences(this);
         
         // If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
@@ -296,13 +373,18 @@ public class CountdownEditorActivity extends Activity {
             }
             
             mDuration = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DURATION));
+            mUserDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.USER_DEADLINE_DATE));
             
-            mDurationPicker.setDuration(mDuration);
-            
-
+            if (mUserDeadline > 0) {
+            	mCountdownMode = MODE_SET_DATE;
+            	mUserDeadlineTemporary = mUserDeadline;
+            } else {
+            	mCountdownMode = MODE_SET_DURATION;
+                mDurationPicker.setDuration(mDuration);
+            }
+    		
             mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
             
-
             mRing = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.RING));
             //Log.i(TAG, "onResume Ring: " + mRing);
 
@@ -313,6 +395,23 @@ public class CountdownEditorActivity extends Activity {
             } else {
             	mRingtoneUri = null;
             }
+
+            mAutomate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE));
+            //Log.i(TAG, "onResume Ring: " + mRing);
+
+            uristring = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
+            //Log.i(TAG, "onResume Ringtone: " + uristring);
+            if (uristring != null) {
+            	try {
+					mAutomateIntent = Intent.getIntent(uristring);
+				} catch (URISyntaxException e) {
+					mAutomateIntent = null;
+				}
+            } else {
+            	mAutomateIntent = null;
+            }
+
+            mAutomateText = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
             
             mVibrate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.VIBRATE));
 
@@ -355,8 +454,15 @@ public class CountdownEditorActivity extends Activity {
             
 
     		// Set the current time.
-            mDuration = mDurationPicker.getDuration();
+            if (mCountdownMode == MODE_SET_DURATION) {
+            	mDuration = mDurationPicker.getDuration();
+            	mUserDeadline = 0;
+            } else {
+            	mDuration = 0;
+            	mUserDeadline = mUserDeadlineTemporary;
+            }
     		values.put(Durations.DURATION, mDuration);
+    		values.put(Durations.USER_DEADLINE_DATE, mUserDeadline);
     		
     		//if (mStartCountdown) {
         		values.put(Durations.DEADLINE_DATE, mDeadline);
@@ -403,21 +509,29 @@ public class CountdownEditorActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
-        menu.add(0, MENU_PICK_RINGTONE, 0, R.string.menu_pick_ringtone)
-                .setShortcut('1', 'd')
+        menu.add(0, MENU_CHANGE_COUNTDOWN_MODE, 0, R.string.menu_set_date)
+                .setShortcut('1', 'c')
+                .setIcon(android.R.drawable.ic_menu_recent_history);
+        
+        menu.add(1, MENU_PICK_RINGTONE, 0, R.string.menu_pick_ringtone)
+                .setShortcut('2', 'd')
                 .setIcon(android.R.drawable.ic_menu_manage);
         
+        menu.add(0, MENU_SET_AUTOMATION, 0, R.string.menu_set_action)
+	        .setShortcut('3', 's')
+	        .setIcon(android.R.drawable.ic_menu_set_as);
+
         // Build the menus that are shown when editing.
         if (mState == STATE_EDIT) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                    .setShortcut('1', 'd')
+                    .setShortcut('3', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         
 
         // Build the menus that are shown when inserting.
         } else {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                    .setShortcut('0', 'd')
+                    .setShortcut('3', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
 
@@ -434,7 +548,27 @@ public class CountdownEditorActivity extends Activity {
         return true;
     }
 
+	
     @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+    	
+    	MenuItem item = menu.findItem(MENU_CHANGE_COUNTDOWN_MODE);
+    	if (mCountdownMode == MODE_SET_DURATION) {
+    		item.setTitle(R.string.menu_set_date);
+    	} else {
+    		item.setTitle(R.string.menu_set_duration);
+    	}
+    	
+    	if (mCountdownState == STATE_COUNTDOWN_IDLE || mCountdownState == STATE_COUNTDOWN_MODIFY) {
+    		item.setEnabled(true);
+    	} else {
+    		item.setEnabled(false);
+    	}
+    	
+		return super.onPrepareOptionsMenu(menu);
+	}
+
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle all of the possible menu actions.
         switch (item.getItemId()) {
@@ -450,6 +584,12 @@ public class CountdownEditorActivity extends Activity {
             break;
         case MENU_PICK_RINGTONE:
         	pickRingtone();
+        	break;
+        case MENU_CHANGE_COUNTDOWN_MODE:
+        	changeCountdownMode();
+        	break;
+        case MENU_SET_AUTOMATION:
+        	setAutomation();
         	break;
         }
         return super.onOptionsItemSelected(item);
@@ -493,9 +633,18 @@ public class CountdownEditorActivity extends Activity {
     	mCountdownState = STATE_COUNTDOWN_RUNNING;
 		
     	long now = System.currentTimeMillis();
-        mDuration = mDurationPicker.getDuration();
-		
-    	mDeadline = now + mDuration;
+    	
+    	if (mCountdownMode == MODE_SET_DURATION) {
+    		mDuration = mDurationPicker.getDuration();
+    		mUserDeadline = 0;
+        	mDeadline = now + mDuration;
+    	} else {
+    		//mDuration = mDurationPicker.getDuration();
+    		mDuration = 0;
+    		mUserDeadline = mUserDeadlineTemporary;
+        	mDeadline = mUserDeadlineTemporary;
+        	mUserDeadlineModified = true;
+    	}
     	//finish();
 
     	setAlarm(mDeadline);
@@ -531,33 +680,54 @@ public class CountdownEditorActivity extends Activity {
     	// Set current time to modify timer temporarily
     	long now = System.currentTimeMillis();
         
-    	long temporaryDuration = mDeadline - now;
-    	
-    	if (temporaryDuration < 0) {
-    		temporaryDuration = 0;
-    	}
+    	//if (mCountdownMode == MODE_SET_DURATION) {
+	    	long temporaryDuration = mDeadline - now;
+	    	
+	    	if (temporaryDuration < 0) {
+	    		temporaryDuration = 0;
+	    	}
+	    	
+	    	
+	    	mDurationPicker.setDuration(temporaryDuration);
+    	//} else {
+    		// nothing to change for 
+    	//}
     	
     	mOriginalDuration = mDuration;
-    	
-    	mDurationPicker.setDuration(temporaryDuration);
+    	mOriginalUserDeadline = mUserDeadline;
     	
     	updateViews();
     }
     
     long mOriginalDuration;
+    long mOriginalUserDeadline;
 
     private final void cont() {
     	mCountdownState = STATE_COUNTDOWN_RUNNING;
     	
     	long now = System.currentTimeMillis();
-        mDuration = mDurationPicker.getDuration();
-		
-    	mDeadline = now + mDuration;
-    	//finish();
+    	if (mCountdownMode == MODE_SET_DURATION) {
+	        mDuration = mDurationPicker.getDuration();
+			
+	    	mDeadline = now + mDuration;
+    	} else {
+    		mDeadline = mUserDeadlineTemporary;
+    	}
     	
     	// Set original duration
     	mDuration = mOriginalDuration;
     	mDurationPicker.setDuration(mDuration);
+    	
+    	if (mOriginalUserDeadline > 0) {
+    		// If user was in User mode before, we modify the deadline:
+    		mUserDeadline = mDeadline;
+    		mUserDeadlineTemporary = mDeadline;
+    		
+    		// switch back to original mode
+    		mCountdownMode = MODE_SET_DATE;
+    	} else {
+    		mCountdownMode = MODE_SET_DURATION;
+    	}
 
     	cancelAlarm();
     	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
@@ -573,6 +743,50 @@ public class CountdownEditorActivity extends Activity {
 
     	updateViews();
     }
+    
+    private final void changeCountdownMode() {
+		long now = System.currentTimeMillis();
+		
+    	if (mCountdownMode == MODE_SET_DURATION) {
+    		mCountdownMode = MODE_SET_DATE;
+    		
+    		if (mDurationOld != mDurationPicker.getDuration()) {
+    			mDurationModified = true;
+    		}
+    		
+    		if (mDurationModified || mUserDeadlineTemporary <= 0) {
+	    		long duration = mDurationPicker.getDuration();
+	    		// Convert duration to date:
+	    		mUserDeadlineTemporary = now + duration;
+	    		mUserDeadlineModified = false;
+    		}
+    		
+    	} else {
+    		mCountdownMode = MODE_SET_DURATION;
+    		
+    		mDurationOld = mDurationPicker.getDuration();
+    		
+    		if (mUserDeadlineModified || mDurationOld <= 0) {
+	    		// Convert date to duration:
+	    		long duration = mUserDeadlineTemporary - now;
+	    		if (duration < 0) {
+	    			duration = 0;
+	    		}
+	
+	            mDurationPicker.setDuration(duration);
+    		}
+    		mDurationModified = false;
+    	}
+    	
+    	updateViews();
+    }
+
+	void setAutomation() {
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("*/*");
+        
+		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
+	}
 
 	private void cancelThisNotification() {
 		cancelNotification(this, mUri);
@@ -631,18 +845,18 @@ public class CountdownEditorActivity extends Activity {
 			mCountdownState = STATE_COUNTDOWN_DISMISS;
 			
 			// show red 0:00:00
-			mDurationPicker.setVisibility(View.INVISIBLE);
+			setSettingVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
 			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
 			mCountdownView.setTextColor(0xffff0000);
 
 		} else if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
-			mDurationPicker.setVisibility(View.VISIBLE);
+			setSettingVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		} else if (delta > 0) {
 			//mDurationView.setText("");
 			mCountdownState = STATE_COUNTDOWN_RUNNING;
-			mDurationPicker.setVisibility(View.INVISIBLE);
+			setSettingVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
 			mCountdownView.setText("" + CountdownUtils.getDurationString(delta));
 			mCountdownView.setTextAppearance(this, android.R.style.TextAppearance_Large);
@@ -668,10 +882,27 @@ public class CountdownEditorActivity extends Activity {
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
 		} */else {
 			mCountdownState = STATE_COUNTDOWN_IDLE;
-			mDurationPicker.setVisibility(View.VISIBLE);
+			setSettingVisibility(View.VISIBLE);
 			mCountdownView.setVisibility(View.INVISIBLE);
 		}
 
+	}
+	
+	private void setSettingVisibility(int visible) {
+		if (mCountdownMode == MODE_SET_DURATION) {
+			mDurationPicker.setVisibility(visible);
+			mDateSetter.setVisibility(View.INVISIBLE);
+		} else {
+			// MODE_SET_DATE
+			mDurationPicker.setVisibility(View.INVISIBLE);
+			mDateSetter.setVisibility(visible);
+			if (visible == View.VISIBLE) {
+				mSetDate.setText(DateTimeFormater.mDateFormater
+						.format(mUserDeadlineTemporary));
+				mSetTime.setText(DateTimeFormater.mTimeFormater
+						.format(mUserDeadlineTemporary));
+			}
+		}
 	}
     
     private void updateButtons() {
@@ -707,6 +938,10 @@ public class CountdownEditorActivity extends Activity {
     	
     	mVibrateView.setChecked(mVibrate == CHECKED);
     	
+    	mAutomateView.setChecked(mAutomate == CHECKED);
+    	s = getString(R.string.action, "");
+    	mAutomateView.setText(s);
+    	
     }
     
     private void setRing(boolean checked) {
@@ -740,6 +975,28 @@ public class CountdownEditorActivity extends Activity {
         getContentResolver().update(mUri, values, null, null);
         mCursor.requery();
 	}
+
+	/**
+	 * @param checked
+	 */
+	private void setAutomate(boolean checked) {
+		if (checked) {
+			mAutomate = CHECKED;
+		} else {
+			mAutomate = UNCHECKED;
+		}
+
+        ContentValues values = new ContentValues();
+    	values.put(Durations.AUTOMATE, mAutomate);
+    	
+        getContentResolver().update(mUri, values, null, null);
+        mCursor.requery();
+        
+        if (mAutomate == CHECKED && mAutomateIntent == null) {
+        	// Ask for suitable action.
+        	setAutomation();
+        }
+	}
     
     private void pickRingtone() {
 		Intent i = new Intent();
@@ -752,6 +1009,101 @@ public class CountdownEditorActivity extends Activity {
 		startActivityForResult(i, REQUEST_CODE_RINGTONE);
     }
     
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		// We have to provide a current date on creation, otherwise
+		// random dates are shown when the dialog first appears.
+		mCalendar.setTimeInMillis(System.currentTimeMillis());
+		int year = mCalendar.get(Calendar.YEAR);
+		int month = mCalendar.get(Calendar.MONTH);
+		int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+		int hour = mCalendar.get(Calendar.HOUR_OF_DAY);
+		int minute = mCalendar.get(Calendar.MINUTE);
+
+		switch (id) {
+		case DIALOG_ID_SET_DATE:
+			return new DatePickerDialog(this, mDateSetListener, year,
+					month, day);
+		case DIALOG_ID_SET_TIME:
+			return new TimePickerDialog(this, mTimeSetListener, hour,
+					minute, DateTimeFormater.mUse24hour);
+		}
+		return null;
+	}
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		
+		switch (id) {
+		case DIALOG_ID_SET_DATE:
+			mCalendar.setTimeInMillis(mUserDeadlineTemporary);
+
+			((DatePickerDialog) dialog).updateDate(
+					mCalendar.get(Calendar.YEAR),
+					mCalendar.get(Calendar.MONTH), mCalendar
+							.get(Calendar.DAY_OF_MONTH));
+			break;
+		case DIALOG_ID_SET_TIME:
+			mCalendar.setTimeInMillis(mUserDeadlineTemporary);
+
+			((TimePickerDialog) dialog).updateTime(mCalendar
+					.get(Calendar.HOUR_OF_DAY), mCalendar.get(Calendar.MINUTE));
+			break;
+		}
+	}
+
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+		public void onDateSet(DatePicker view, int year, int monthOfYear,
+				int dayOfMonth) {
+			//long startDate = mCursor.getLong(COLUMN_INDEX_START);
+			mCalendar.setTimeInMillis(mUserDeadlineTemporary);
+			int hour = mCalendar.get(Calendar.HOUR_OF_DAY);
+			int minute = mCalendar.get(Calendar.MINUTE);
+			mCalendar.setTimeInMillis(0); // Reset milliseconds
+			mCalendar.set(year, monthOfYear, dayOfMonth, hour, minute);
+			mUserDeadlineTemporary = mCalendar.getTimeInMillis();
+			
+			mUserDeadlineModified = true;
+			
+			updateViews();
+/*
+			updateDatabase();
+			ContentValues values = new ContentValues();
+			values.put(Job.START_DATE, millis);
+			getContentResolver().update(mUri, values, null, null);
+			updateFromCursor();
+			*/
+		}
+	};
+
+	private TimePickerDialog.OnTimeSetListener mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+
+		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+			//long startDate = mCursor.getLong(COLUMN_INDEX_START);
+			mCalendar.setTimeInMillis(mUserDeadlineTemporary);
+			int year = mCalendar.get(Calendar.YEAR);
+			int month = mCalendar.get(Calendar.MONTH);
+			int day = mCalendar.get(Calendar.DAY_OF_MONTH);
+			mCalendar.setTimeInMillis(0); // Reset milliseconds
+			mCalendar.set(year, month, day, hourOfDay, minute);
+			mUserDeadlineTemporary = mCalendar.getTimeInMillis();
+
+			mUserDeadlineModified = true;
+			
+			updateViews();
+/*
+			ContentValues values = getContentValues();
+			values.put(Job.START_DATE, millis);
+			updateDatabase(values);
+			updateFromCursor();
+			*/
+		}
+	};
+
+	
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
 		@Override
@@ -805,6 +1157,41 @@ public class CountdownEditorActivity extends Activity {
             getContentResolver().update(mUri, values, null, null);
             
             mCursor.requery();
+		} else if (requestCode == REQUEST_CODE_SET_AUTOMATION) {
+			if (resultCode == RESULT_OK) {
+	
+	            ContentValues values = new ContentValues();
+	
+	        	values.put(Durations.AUTOMATE, CHECKED);
+	        	
+	        	if (data != null) {
+		        	mAutomateIntent = new Intent(data);
+		        	mAutomateIntent.setAction(Intent.ACTION_VIEW);
+		        	values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+		    		
+		        	//Log.i(TAG, "Uri: " + mUri.toString());
+		        	
+		            // Commit all of our changes to persistent storage. When the update completes
+		            // the content provider will notify the cursor of the change, which will
+		            // cause the UI to be updated.
+		            getContentResolver().update(mUri, values, null, null);
+		            
+		            mCursor.requery();
+	        	} else {
+	        		// Not a valid intent
+	        		checkValidAutomateIntent();
+	        	}
+			} else {
+				// Change cancelled.
+        		checkValidAutomateIntent();
+			}
+		}
+	}
+	
+	void checkValidAutomateIntent() {
+		if (mAutomateIntent == null) {
+			// Unset check box.
+			setAutomate(false);
 		}
 	}
 }

@@ -26,25 +26,55 @@ import android.net.Uri;
 
 public class CountdownUtils {
 
+	public static String textDay = "day";
+	public static String textDays = "days";
+	
+	static StringBuilder sb = new StringBuilder();
+	
 	/**
 	 * Given a duration in milliseconds, returns a string in
-	 * hours, minutes, and seconds.
+	 * days, hours, minutes, and seconds.
 	 * 
 	 * @param duration in milliseconds
 	 * @return
 	 */
 	public static String getDurationString(long duration) {
-		int seconds = (int) (duration / 1000);
-		int minutes = seconds / 60;
+		long seconds = (long) (duration / 1000);
+		long minutes = seconds / 60;
 		seconds = seconds % 60;
-		int hours = minutes / 60;
+		long hours = minutes / 60;
 		minutes = minutes % 60;
+		long days = hours / 24;
+		hours = hours % 24;
 		
-		return "" + hours + ":" 
-			+ (minutes < 10 ? "0" : "")
-			+ minutes + ":"
-			+ (seconds < 10 ? "0" : "")
-			+ seconds;
+		sb.setLength(0);
+		
+		if (days > 1) {
+			sb.append(days);
+			sb.append(" ");
+			sb.append(textDays);
+			sb.append(" ");
+		} else if (days == 1) {
+			sb.append("1 ");
+			sb.append(textDay);
+			sb.append(" ");
+		}
+		
+		sb.append(hours);
+		sb.append(":");
+		if (minutes < 10) sb.append("0");
+		sb.append(minutes);
+		sb.append(":");
+		if (seconds < 10) sb.append("0");
+		sb.append(seconds);
+		
+		return sb.toString();
+		
+		//return "" + hours + ":" 
+		//	+ (minutes < 10 ? "0" : "")
+		//	+ minutes + ":"
+		//	+ (seconds < 10 ? "0" : "")
+		//	+ seconds;
 	}
 
 	/**

@@ -22,11 +22,32 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <!-- day -->
+    <Button
+        android:id="@+id/showday"
+        android:text="+"
+		style="?android:attr/textAppearanceLargeInverse"
+        android:layout_width="44dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" 
+        />
+        
+    <!-- day -->
+    <org.openintents.com.android.internal.widget.NumberPicker
+        android:id="@+id/day"
+        android:layout_width="90dip"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone"
+        />
+        
     <!-- hour -->
     <org.openintents.com.android.internal.widget.NumberPicker
         android:id="@+id/hour"
         android:layout_width="70dip"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
         android:focusable="true"
         android:focusableInTouchMode="true"
         />

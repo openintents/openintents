@@ -16,9 +16,6 @@
 
 package org.openintents.countdown.widget;
 
-import java.text.DateFormatSymbols;
-import java.util.Calendar;
-
 import org.openintents.com.android.internal.widget.NumberPicker;
 import org.openintents.countdown.R;
 
@@ -42,16 +39,19 @@ public class DurationPicker extends FrameLayout {
      * later in the code.
      */
     private static final OnDurationChangedListener NO_OP_CHANGE_LISTENER = new OnDurationChangedListener() {
-        public void onDurationChanged(DurationPicker view, int hourOfDay, int minute, int second) {
+        public void onDurationChanged(DurationPicker view, int day, int hourOfDay, int minute, int second) {
         }
     };
     
     // state
+    private int mCurrentDay = 0; // 0-99999 (300 years)
     private int mCurrentHour = 0; // 0-23
     private int mCurrentMinute = 0; // 0-59
     private int mCurrentSecond = 0; // 0-59
 
     // ui components
+    private final Button mShowDay;
+    private final NumberPicker mDayPicker;
     private final NumberPicker mHourPicker;
     private final NumberPicker mMinutePicker;
     private final NumberPicker mSecondPicker;
@@ -70,7 +70,7 @@ public class DurationPicker extends FrameLayout {
          * @param minute The current minute.
          * @param second The current second.
          */
-        void onDurationChanged(DurationPicker view, int hour, int minute, int second);
+        void onDurationChanged(DurationPicker view, int day, int hour, int minute, int second);
     }
 
     public DurationPicker(Context context) {
@@ -90,6 +90,28 @@ public class DurationPicker extends FrameLayout {
             this, // we are the parent
             true);
 
+        mShowDay = (Button) findViewById(R.id.showday);
+        mShowDay.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				showDayPicker();
+			}
+        	
+        });
+        
+        // day
+        mDayPicker = (NumberPicker) findViewById(R.id.day);
+        mDayPicker.setRange(0, 99999);
+        mDayPicker.setSpeed(100);
+        //mHourPicker.setFormatter(NumberPicker.TWO_DIGIT_FORMATTER);
+        mDayPicker.setOnChangeListener(new NumberPicker.OnChangedListener() {
+            public void onChanged(NumberPicker spinner, int oldVal, int newVal) {
+                mCurrentDay = newVal;
+                onDurationChanged();
+            }
+        });
+        
         // hour
         mHourPicker = (NumberPicker) findViewById(R.id.hour);
         mHourPicker.setRange(0, 23);
@@ -135,9 +157,15 @@ public class DurationPicker extends FrameLayout {
         }
     }
     
+    public void showDayPicker() {
+    	mShowDay.setVisibility(View.GONE);
+    	mDayPicker.setVisibility(View.VISIBLE);
+    }
+    
     @Override
     public void setEnabled(boolean enabled) {
         super.setEnabled(enabled);
+        mDayPicker.setEnabled(enabled);
         mHourPicker.setEnabled(enabled);
         mMinutePicker.setEnabled(enabled);
         mSecondPicker.setEnabled(enabled);
@@ -148,12 +176,14 @@ public class DurationPicker extends FrameLayout {
      */
     private static class SavedState extends BaseSavedState {
 
+        private final int mDay;
         private final int mHour;
         private final int mMinute;
         private final int mSecond;
 
-        private SavedState(Parcelable superState, int hour, int minute, int second) {
+        private SavedState(Parcelable superState, int day, int hour, int minute, int second) {
             super(superState);
+            mDay = day;
             mHour = hour;
             mMinute = minute;
             mSecond = second;
@@ -161,11 +191,16 @@ public class DurationPicker extends FrameLayout {
         
         private SavedState(Parcel in) {
             super(in);
+            mDay = in.readInt();
             mHour = in.readInt();
             mMinute = in.readInt();
             mSecond = in.readInt();
         }
 
+        public int getDay() {
+            return mDay;
+        }
+        
         public int getHour() {
             return mHour;
         }
@@ -181,6 +216,7 @@ public class DurationPicker extends FrameLayout {
         @Override
         public void writeToParcel(Parcel dest, int flags) {
             super.writeToParcel(dest, flags);
+            dest.writeInt(mDay);
             dest.writeInt(mHour);
             dest.writeInt(mMinute);
             dest.writeInt(mSecond);
@@ -201,13 +237,14 @@ public class DurationPicker extends FrameLayout {
     @Override
     protected Parcelable onSaveInstanceState() {
         Parcelable superState = super.onSaveInstanceState();
-        return new SavedState(superState, mCurrentHour, mCurrentMinute, mCurrentSecond);
+        return new SavedState(superState, mCurrentDay, mCurrentHour, mCurrentMinute, mCurrentSecond);
     }
 
     @Override
     protected void onRestoreInstanceState(Parcelable state) {
         SavedState ss = (SavedState) state;
         super.onRestoreInstanceState(ss.getSuperState());
+        setCurrentDay(ss.getDay());
         setCurrentHour(ss.getHour());
         setCurrentMinute(ss.getMinute());
         setCurrentSecond(ss.getSecond());
@@ -221,6 +258,21 @@ public class DurationPicker extends FrameLayout {
         mOnDurationChangedListener = onDurationChangedListener;
     }
 
+    /**
+     * @return The current day (0-99999).
+     */
+    public Integer getCurrentDay() {
+        return mCurrentDay;
+    }
+
+    /**
+     * Set the current hour.
+     */
+    public void setCurrentDay(Integer currentDay) {
+        this.mCurrentDay = currentDay;
+        updateDayDisplay();
+    }
+    
     /**
      * @return The current hour (0-23).
      */
@@ -272,6 +324,18 @@ public class DurationPicker extends FrameLayout {
     }
 
     /**
+     * Set the state of the spinners appropriate to the current day.
+     */
+    private void updateDayDisplay() {
+        int currentDay = mCurrentDay;
+        mDayPicker.setCurrent(currentDay);
+        if (mCurrentDay > 0 && mDayPicker.getVisibility() == View.GONE) {
+        	showDayPicker();
+        }
+        onDurationChanged();
+    }
+    
+    /**
      * Set the state of the spinners appropriate to the current hour.
      */
     private void updateHourDisplay() {
@@ -297,7 +361,8 @@ public class DurationPicker extends FrameLayout {
     }
 
     private void onDurationChanged() {
-        mOnDurationChangedListener.onDurationChanged(this, getCurrentHour(), 
+        mOnDurationChangedListener.onDurationChanged(this, getCurrentDay(), 
+        		getCurrentHour(), 
         		getCurrentMinute(), getCurrentSecond());
     }
     
@@ -307,7 +372,14 @@ public class DurationPicker extends FrameLayout {
      */
     public long getDuration() {
 
-		long duration = 1000 * ((((mCurrentHour * 60) + mCurrentMinute) * 60) + mCurrentSecond);
+        // The text views may still have focus so clear theirs focus which will
+        // trigger the on focus changed and any typed values to be pulled.
+    	mDayPicker.clearFocus();
+    	mHourPicker.clearFocus();
+    	mMinutePicker.clearFocus();
+    	mSecondPicker.clearFocus();
+
+		long duration = 1000 * (((((mCurrentDay * 24l + mCurrentHour) * 60) + mCurrentMinute) * 60) + mCurrentSecond);
 		
 		return duration;
     }
@@ -317,15 +389,18 @@ public class DurationPicker extends FrameLayout {
      * @return
      */
     public void setDuration(long duration) {
-    	int seconds = (int) (duration / 1000);
-    	int minutes = seconds / 60;
+    	long seconds = (long) (duration / 1000);
+    	long minutes = seconds / 60;
     	seconds = seconds % 60;
-    	int hours = minutes / 60;
+    	long hours = minutes / 60;
     	minutes = minutes % 60;
-    	
-    	setCurrentHour(hours);
-    	setCurrentMinute(minutes);
-    	setCurrentSecond(seconds);
+    	long days = hours / 24;
+    	hours = hours % 24;
+
+    	setCurrentDay((int)days);
+    	setCurrentHour((int)hours);
+    	setCurrentMinute((int)minutes);
+    	setCurrentSecond((int)seconds);
     	
     }
 

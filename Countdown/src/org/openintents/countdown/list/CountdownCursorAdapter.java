@@ -54,6 +54,8 @@ public class CountdownCursorAdapter extends CursorAdapter {
 				.getColumnIndexOrThrow(Countdown.Durations.TITLE));
 		long duration = cursor.getLong(cursor
 				.getColumnIndexOrThrow(Countdown.Durations.DURATION));
+		long userdeadline = cursor.getLong(cursor
+				.getColumnIndexOrThrow(Countdown.Durations.USER_DEADLINE_DATE));
 		long deadline = cursor.getLong(cursor
 				.getColumnIndexOrThrow(Countdown.Durations.DEADLINE_DATE));
 		
@@ -64,7 +66,11 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		Uri uri = ContentUris.withAppendedId(mBaseUri, id);
 		cliv.setUri(uri);
 		cliv.setTitle(title);
-		cliv.setDuration(duration);
+		if (userdeadline > 0) {
+			cliv.setUserDeadline(userdeadline);
+		} else {
+			cliv.setDuration(duration);
+		}
 		cliv.setDeadline(deadline);
 
 		

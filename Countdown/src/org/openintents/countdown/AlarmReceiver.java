@@ -16,6 +16,8 @@
 
 package org.openintents.countdown;
 
+import java.net.URISyntaxException;
+
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
@@ -107,6 +109,8 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
         if (c != null) {
         	c.moveToFirst();
         	title = c.getString(c.getColumnIndexOrThrow(Durations.TITLE));
+        	
+        	// TODO: something fishy here:
         	text = CountdownUtils.getDurationString(c.getColumnIndexOrThrow(Durations.DURATION));
         }
         
@@ -117,6 +121,8 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
         long ring = 0;
         Uri ringtone = null;
         long vibrate = 0;
+        long automate = 0;
+        Intent automateIntent = null;
         if (c != null) {
         	c.moveToFirst();
         	ring = c.getLong(c.getColumnIndexOrThrow(Durations.RING));
@@ -125,6 +131,24 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
         		ringtone = Uri.parse(ringstring);
         	}
         	vibrate = c.getLong(c.getColumnIndexOrThrow(Durations.VIBRATE));
+        	automate = c.getLong(c.getColumnIndexOrThrow(Durations.AUTOMATE));
+        	String automateIntentUri = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
+        	Log.v(TAG, "automateUri: " + automateIntentUri);
+        	if (automateIntentUri != null) {
+        		try {
+					automateIntent = Intent.getIntent(automateIntentUri);
+				} catch (URISyntaxException e) {
+					e.printStackTrace();
+					automateIntent = null;
+				}
+        	}
+        }
+
+        if (automate != 0) {
+        	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        	Log.v(TAG, "Launching intent " + automateIntent.getAction());
+        	Log.v(TAG, "Launching intent data " + automateIntent.getData());
+        	context.startActivity(automateIntent);
         }
         
         // The PendingIntent to launch our activity if the user selects this notification
@@ -165,6 +189,7 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
 
         nm.notify(notification_id, notif);
         NotificationState.start(context, uri);
+        
     }
     
     /**

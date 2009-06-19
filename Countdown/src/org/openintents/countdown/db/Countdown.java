@@ -93,17 +93,46 @@ public final class Countdown {
         public static final String VIBRATE = "vibrate";
         
         /**
-         * The timestamp for when the note was created
+         * The timestamp for when the countdown was created
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          */
         public static final String CREATED_DATE = "created";
 
         /**
-         * The timestamp for when the note was last modified
+         * The timestamp for when the countdown was last modified
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          */
         public static final String MODIFIED_DATE = "modified";
+
+        /**
+         * The deadline for this timer.
+         * (If this is in the past, timer is inactive)
+         * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
+         * @version Database version 2
+         */
+        public static final String USER_DEADLINE_DATE = "userdeadline";
+
+        /**
+         * Perform automation action at end of timer.
+         * (no = 0, 1 = yes).
+         * <P>Type: INTEGER</P>
+         * @version Database version 2
+         */
+        public static final String AUTOMATE = "automate";
         
+        /**
+         * Intent to launch the settings for an automation.
+         * <P>Type: TEXT</P>
+         * @version Database version 2
+         */
+        public static final String AUTOMATE_INTENT = "automateintent";
+
+        /**
+         * Text to be displayed to represent the automation.
+         * <P>Type: TEXT</P>
+         * @version Database version 2
+         */
+        public static final String AUTOMATE_TEXT = "automatetext";
 
         /**
          * The default sort order for this table
@@ -121,7 +150,11 @@ public final class Countdown {
                 Durations.RINGTONE,
                 Durations.VIBRATE,
                 Durations.CREATED_DATE,
-                Durations.MODIFIED_DATE
+                Durations.MODIFIED_DATE,
+                Durations.USER_DEADLINE_DATE,
+                Durations.AUTOMATE,
+                Durations.AUTOMATE_INTENT,
+                Durations.AUTOMATE_TEXT
         };
     }
 }

@@ -23,9 +23,12 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.1.0
-date: 2009-06-?
+release: 1.1.0-beta1
+date: 2009-06-19
 
+- Increase maximum duration from 24 hours to 100000 days.
+- Alternatively set countdown through due date.
+- Set action when countdown is done.
 - Auto-turn off alarm after 10 minutes.
 - Use ringer volume stream for sound.
 - Fix vibrate only notification.

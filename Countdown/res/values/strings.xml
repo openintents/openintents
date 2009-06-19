@@ -10,6 +10,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
+	<!-- Name of application -->
     <string name="app_name">OI Countdown</string>
     
     <string name="start">Start</string>
@@ -24,6 +25,15 @@
     <string name="menu_edit">Edit</string>
     <string name="menu_insert">Add countdown</string>
     <string name="menu_pick_ringtone">Ringtone</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Set date</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Set duration</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Set action</string>
     
     <string name="hint_title">e.g. pizza</string>
     
@@ -49,6 +59,9 @@
 	
 	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">Vibrate</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="action">Action: %s</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Dismiss</string>

@@ -46,7 +46,17 @@ public class CountdownProvider extends ContentProvider {
     private static final String TAG = "CountdownProvider";
 
     private static final String DATABASE_NAME = "countdown.db";
-    private static final int DATABASE_VERSION = 1;
+    
+    /**
+     * Database version.
+     * <ul>
+     * <li>Version 1 (1.0.0 - 1.0.1): title, duration, deadline, 
+     *     ring, ringtone, vibrate, created, modified</li>
+     * <li>Version 3 (1.1.0 - ): tags, encrypted, theme</li>
+     * </ul>
+     */
+    private static final int DATABASE_VERSION = 2;
+    
     private static final String DURATIONS_TABLE_NAME = "durations";
 
     private static HashMap<String, String> sDurationsProjectionMap;
@@ -68,6 +78,7 @@ public class CountdownProvider extends ContentProvider {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + DURATIONS_TABLE_NAME + " ("
+            		// Version 1:
                     + Durations._ID + " INTEGER PRIMARY KEY,"
                     + Durations.TITLE + " TEXT,"
                     + Durations.DURATION + " INTEGER,"
@@ -76,7 +87,12 @@ public class CountdownProvider extends ContentProvider {
                     + Durations.RINGTONE + " TEXT,"
                     + Durations.VIBRATE + " INTEGER,"
                     + Durations.CREATED_DATE + " INTEGER,"
-                    + Durations.MODIFIED_DATE + " INTEGER"
+                    + Durations.MODIFIED_DATE + " INTEGER,"
+                    // Version 2:
+                    + Durations.USER_DEADLINE_DATE + " INTEGER,"
+                    + Durations.AUTOMATE + " INTEGER,"
+                    + Durations.AUTOMATE_INTENT + " TEXT,"
+                    + Durations.AUTOMATE_TEXT + " TEXT"
                     + ");");
         }
 
@@ -84,8 +100,44 @@ public class CountdownProvider extends ContentProvider {
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS notes");
-            onCreate(db);
+            if (newVersion > oldVersion) {
+            	// Upgrade
+	            switch(oldVersion) {
+	            case 1:
+	            	// Upgrade from version 1 to 2.
+	            	// It seems SQLite3 only allows to add one column at a time,
+	            	// so we need three SQL statements:
+	            	try {
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.USER_DEADLINE_DATE + " INTEGER;");
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.AUTOMATE + " INTEGER;");
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.AUTOMATE_INTENT + " TEXT;");
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.AUTOMATE_TEXT + " TEXT;");
+	            	} catch (SQLException e) {
+	            		Log.e(TAG, "Error executing SQL: ", e);
+	            		// If the error is "duplicate column name" then everything is fine,
+	            		// as this happens after upgrading 1->2, then downgrading 2->1, 
+	            		// and then upgrading again 1->2.
+	            	}
+	            	// fall through for further upgrades.
+	            /*
+	            case 2:
+	            	// add more columns
+	            */
+	            	break;
+	            default:
+	            	Log.w(TAG, "Unknown version " + oldVersion + ". Creating new database.");
+	                db.execSQL("DROP TABLE IF EXISTS " + DURATIONS_TABLE_NAME);
+	            	onCreate(db);
+	            }
+            } else { // newVersion <= oldVersion
+            	// Downgrade
+            	Log.w(TAG, "Don't know how to downgrade. Will not touch database and hope they are compatible.");
+                // Do nothing.
+            }
         }
     }
 
@@ -271,5 +323,9 @@ public class CountdownProvider extends ContentProvider {
         sDurationsProjectionMap.put(Durations.VIBRATE, Durations.VIBRATE);
         sDurationsProjectionMap.put(Durations.CREATED_DATE, Durations.CREATED_DATE);
         sDurationsProjectionMap.put(Durations.MODIFIED_DATE, Durations.MODIFIED_DATE);
+        sDurationsProjectionMap.put(Durations.USER_DEADLINE_DATE, Durations.USER_DEADLINE_DATE);
+        sDurationsProjectionMap.put(Durations.AUTOMATE, Durations.AUTOMATE);
+        sDurationsProjectionMap.put(Durations.AUTOMATE_INTENT, Durations.AUTOMATE_INTENT);
+        sDurationsProjectionMap.put(Durations.AUTOMATE_TEXT, Durations.AUTOMATE_TEXT);
     }
 }

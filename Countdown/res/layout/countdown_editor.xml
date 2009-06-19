@@ -26,13 +26,13 @@
     <EditText android:id="@+id/title"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="15dip"
-        android:layout_marginBottom="15dip"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
         android:hint="@string/hint_title" />
     <FrameLayout
     	android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginBottom="15dip" >
+        android:layout_marginBottom="10dip" >
 	    <org.openintents.countdown.widget.DurationPicker android:id="@+id/durationpicker"
 	        android:layout_height="wrap_content"
 	        android:layout_width="wrap_content"
@@ -41,13 +41,34 @@
 	    	android:layout_height="fill_parent"
 	        android:layout_width="wrap_content"
 		    android:textAppearance="?android:attr/textAppearanceLarge"
+		    android:gravity="center"
 	        android:layout_gravity="center" />
+        <LinearLayout android:id="@+id/datesetter"
+        	android:layout_width="fill_parent"
+			android:layout_height="wrap_content" 
+			android:orientation="horizontal"
+	        android:layout_gravity="center" >
+			<Button android:id="@+id/set_date"
+				android:layout_width="0dip" android:layout_height="wrap_content"
+				android:paddingTop="12dip"
+				android:paddingBottom="16dip"
+				android:gravity="center"
+				android:layout_weight="1" android:text=""
+				style="?android:attr/textAppearanceLargeInverse" />
+			<Button android:id="@+id/set_time"
+				android:layout_width="0dip" android:layout_height="wrap_content"
+				android:paddingTop="12dip"
+				android:paddingBottom="16dip"
+				android:gravity="center"
+				android:layout_weight="1" android:text=""
+				style="?android:attr/textAppearanceLargeInverse" />
+		</LinearLayout>
     </FrameLayout>
     <LinearLayout
 	    android:orientation="horizontal"
     	android:layout_width="fill_parent"
-    	android:layout_height="64dip"
-        android:layout_marginBottom="15dip" >
+    	android:layout_height="56dip"
+        android:layout_marginBottom="10dip" >
 	    <Button android:id="@+id/start"
 	    	android:layout_height="fill_parent"
 	        android:layout_width="0dip"
@@ -83,6 +104,11 @@
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:text="@string/vibrate"
+		/>
+	<CheckBox android:id="@+id/automate"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@string/action"
 		/>
 		
 </LinearLayout>

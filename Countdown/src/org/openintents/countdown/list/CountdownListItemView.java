@@ -20,6 +20,7 @@ import org.openintents.countdown.R;
 import org.openintents.countdown.list.CountdownCursorAdapter.OnCountdownClickListener;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
+import org.openintents.utils.DateTimeFormater;
 
 import android.content.Context;
 import android.net.Uri;
@@ -35,6 +36,7 @@ public class CountdownListItemView extends LinearLayout {
 	Context mContext;
 	
 	private long mDuration;
+	private long mUserDeadline;
 	private long mDeadline;
 	private TextView mTitle;
 	private TextView mDurationView;
@@ -73,7 +75,17 @@ public class CountdownListItemView extends LinearLayout {
 
 	public void setDuration(long duration) {
 		mDuration = duration;
+		mUserDeadline = 0;
 		mStart.setText(mContext.getText(R.string.start) + "\n" + CountdownUtils.getDurationString(mDuration));
+		updateCountdown();
+	}
+	
+	public void setUserDeadline(long deadline) {
+		mDuration = 0;
+		mUserDeadline = deadline;
+		mStart.setText(mContext.getText(R.string.start) + "\n" + DateTimeFormater.mDateFormater
+				.format(deadline) + " " + DateTimeFormater.mTimeFormater
+				.format(deadline));
 		updateCountdown();
 	}
 	
@@ -98,7 +110,13 @@ public class CountdownListItemView extends LinearLayout {
 		
 		long delta = mDeadline - now;
 		
-		mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
+		if (mUserDeadline > 0) {
+			mDurationView.setText(DateTimeFormater.mDateFormater
+			.format(mUserDeadline) + " " + DateTimeFormater.mTimeFormater
+			.format(mUserDeadline));
+		} else {
+			mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
+		}
 		
 
 		if (NotificationState.isActive(mUri)) {
