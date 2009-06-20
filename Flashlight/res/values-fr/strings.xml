@@ -5,7 +5,8 @@
 	     *************************** -->
 	     
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Abdessamad Derraz https://launchpad.net/~derraz</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

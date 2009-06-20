@@ -7,34 +7,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-02-22 12:11+0100\n"
+"POT-Creation-Date: 2009-05-31 22:39+0200\n"
 "PO-Revision-Date: 2009-05-16 21:11+0000\n"
 "Last-Translator: Abdessamad Derraz <derraz.abdessamad@gmail.com>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-31 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 20:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
-#: ../res/values/strings.xml:3(string) ../res/values/strings.xml:15(string)
+#. Automatically filled in by Launchpad:
+#: ../res/values/strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Abdessamad Derraz https://launchpad.net/~derraz"
+
+#. ***************************
+#. Applicatio-specific strings
+#. ***************************
+#: ../res/values/strings.xml:13(string) ../res/values/strings.xml:25(string)
 msgid "OI Flashlight"
 msgstr "OI Flashlight"
 
-#: ../res/values/strings.xml:5(string)
+#: ../res/values/strings.xml:15(string)
 msgid "The backlight stays turned on."
 msgstr "Le rétro-éclairage est activé."
 
-#: ../res/values/strings.xml:8(string)
+#: ../res/values/strings.xml:18(string)
 msgid "Color"
 msgstr "Couleur"
 
-#: ../res/values/strings.xml:9(string)
+#: ../res/values/strings.xml:19(string)
 msgid "Color picker"
 msgstr "Sélecteur de couleur"
 
 #. Update
-#: ../res/values/strings.xml:13(string)
+#: ../res/values/strings.xml:23(string)
 msgid ""
 "A new version of OI Flashlight is available.\\n%s\\nWould you like to "
 "upgrade?"
@@ -42,20 +52,20 @@ msgstr ""
 "Une nouvelle version d'OI Flashlight est disponible.\\n%s\\nVoulez-vous la "
 "mettre à jour?"
 
-#: ../res/values/strings.xml:14(string)
+#: ../res/values/strings.xml:24(string)
 msgid "Android Market not available."
 msgstr "Le marché Android n'est pas disponible."
 
 #. About
-#: ../res/values/strings.xml:18(string)
+#: ../res/values/strings.xml:28(string)
 msgid "About"
 msgstr "À propos de"
 
-#: ../res/values/strings.xml:19(string)
+#: ../res/values/strings.xml:29(string)
 msgid "About %s"
 msgstr "À propos de %s"
 
-#: ../res/values/strings.xml:20(string)
+#: ../res/values/strings.xml:30(string)
 msgid ""
 "Version %s \\n\\n OpenIntents Flashlight helps you find your way in the "
 "dark. The display backlight is kept turned on while this application is "
@@ -71,24 +81,24 @@ msgstr ""
 "visitez OpenIntents sur www.openintents.org"
 
 #. EULA
-#: ../res/values/strings.xml:30(string)
+#: ../res/values/strings.xml:40(string)
 msgid "OI Flashlight EULA"
 msgstr "OI Flashlight EULA"
 
-#: ../res/values/strings.xml:31(string)
+#: ../res/values/strings.xml:41(string)
 msgid "Accept"
 msgstr "Accepter"
 
-#: ../res/values/strings.xml:32(string)
+#: ../res/values/strings.xml:42(string)
 msgid "Cancel"
 msgstr "Quitter"
 
 #. Update
-#: ../res/values/strings.xml:35(string)
+#: ../res/values/strings.xml:45(string)
 msgid "Check updates"
 msgstr "Vérifier les mises à jour"
 
-#: ../res/values/strings.xml:36(string)
+#: ../res/values/strings.xml:46(string)
 msgid ""
 "Please check manually for updates or install OI Update for automatic "
 "notifications. Current version: %s"
@@ -96,14 +106,14 @@ msgstr ""
 "S'il vous plaît vérifier manuellement les mises à jour ou installer OI "
 "Update pour avoir des notifications automatique. Version actuelle: %s"
 
-#: ../res/values/strings.xml:40(string)
+#: ../res/values/strings.xml:50(string)
 msgid "Check now."
 msgstr "Vérifier maintenant."
 
-#: ../res/values/strings.xml:41(string)
+#: ../res/values/strings.xml:51(string)
 msgid "Get OI Updater."
 msgstr "Obtenir OI Updater."
 
-#: ../res/values/strings.xml:42(string)
+#: ../res/values/strings.xml:52(string)
 msgid "Download application not available."
 msgstr "Télécharger l'application indisponible."

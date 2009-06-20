@@ -6,7 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz</string>
+  Anousak https://launchpad.net/~anousak</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -16,18 +16,18 @@
     <string name="flashlight_info">The backlight stays turned on.</string>
     
     
-    <string name="color">Color</string>
+    <string name="color">ສີ</string>
     <string name="color_picker">Color picker</string>
     
     
 	<!-- Update -->
 	<string name="update_available">A new version of OI Flashlight is available.\n%s\nWould you like to upgrade?</string>
-	<string name="market_not_available">Android Market no disponible.</string>
+	<string name="market_not_available">ຕະລາດ ແອນດຣອຍ ຍັງບໍ່ມີ</string>
 	<string name="market_search_term">OI Flashlight</string>
 
 	<!-- About -->
-	<string name="about">Acerca de</string>
-	<string name="about_title">Acerca de %</string>
+	<string name="about">ກ່ຽວກັບ</string>
+	<string name="about_title">ກ່ຽວກັບ %s</string>
 	<string name="about_text">Version %s \n\n
 OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
 while this application is running.\n\n
@@ -38,17 +38,17 @@ www.openintents.org
 	</string>
 	
 	<!-- EULA -->
-	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
-	<string name="eula_accept">Aceptar</string>
-	<string name="eula_refuse">Cancelar</string>
+	<string name="eula_title">OI Flashlight EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Comprobar actualizaciones</string>
+	<string name="update_menu">Check updates</string>
     <string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
-	<string name="update_check_now">Comprobar ahora.</string>
-	<string name="update_get_updater">Obtenga el Actualizador OI.</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
 	<string name="update_error">Download application not available.</string>
 </resources>
