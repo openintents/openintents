@@ -157,6 +157,8 @@ public class CountdownEditorActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+		CountdownUtils.setLocalizedStrings(this);
+		
         final Intent intent = getIntent();
 
         mCountdownState = STATE_COUNTDOWN_IDLE;

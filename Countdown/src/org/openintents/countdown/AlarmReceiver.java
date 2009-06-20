@@ -65,6 +65,8 @@ import org.openintents.countdown.util.AlarmAlertWakeLock;
     {
     	mContext = context;
     	AlarmAlertWakeLock.acquire(context);
+
+		CountdownUtils.setLocalizedStrings(context);
     	
     	Uri mUri = intent.getData();
     	

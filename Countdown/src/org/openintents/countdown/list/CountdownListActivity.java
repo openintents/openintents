@@ -94,6 +94,8 @@ public class CountdownListActivity extends ListActivity
 			return;
 		}
 		
+		CountdownUtils.setLocalizedStrings(this);
+		
         setDefaultKeyMode(DEFAULT_KEYS_SHORTCUT);
 
         // If no data was given in the intent (because we were started

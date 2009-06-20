@@ -17,6 +17,7 @@
 package org.openintents.countdown.util;
 
 import org.openintents.countdown.AlarmReceiver;
+import org.openintents.countdown.R;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -26,10 +27,15 @@ import android.net.Uri;
 
 public class CountdownUtils {
 
-	public static String textDay = "day";
-	public static String textDays = "days";
+	public static String textDay;
+	public static String textDays;
 	
 	static StringBuilder sb = new StringBuilder();
+	
+	public static void setLocalizedStrings(Context context) {
+		textDay = context.getString(R.string.day);
+		textDays = context.getString(R.string.days);
+	}
 	
 	/**
 	 * Given a duration in milliseconds, returns a string in
