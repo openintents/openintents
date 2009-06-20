@@ -27,7 +27,7 @@
 
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Notepad permet de créer, modifier et supprimer des notes.</string>

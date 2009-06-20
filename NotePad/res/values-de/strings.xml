@@ -27,7 +27,7 @@
 
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101;</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Notizblock erlaubt das Erstellen und Bearbeiten von Notizen.</string>
@@ -167,14 +167,14 @@ Aktuelle Version: %s</string>
     </string-array>
 
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions">Erweiterungen</string>
+    <string name="preference_get_extensions">Neue Erweiterungen erhalten</string>
+    <string name="preference_get_extensions_summary">Nach Erweiterungen online suchen</string>
+    <string name="preference_get_extensions_from">Erweiterungen erhalten von</string>
     <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions_market_summary">Nach Erweiterungen auf Android Market suchen</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">Erweiterungen von der OpenIntents Homepage herunterladen</string>
 	
 	     
 </resources>

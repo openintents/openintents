@@ -7,78 +7,78 @@ msgid ""
 msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2009-02-22 01:47+0100\n"
+"POT-Creation-Date: 2009-05-31 22:44+0200\n"
 "PO-Revision-Date: 2009-02-23 23:11+0000\n"
 "Last-Translator: pjv <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2009-05-31 19:48+0000\n"
+"X-Launchpad-Export-Date: 2009-06-20 20:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #. Strings for OI About
-#: ../res/values/strings.xml:30(string)
+#: ../res/values/strings.xml:33(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
 msgstr ""
 "OI Notitieblok laat het creëren, bewerken en verwijderen van notities toe"
 
-#: ../res/values/strings.xml:31(string)
+#: ../res/values/strings.xml:34(string)
 msgid "OI Notepad at OpenIntents"
 msgstr "OI Notitieblok op OpenIntents"
 
 #. ***************************
 #. Applicatio-specific strings
 #. ***************************
-#: ../res/values/strings.xml:40(string)
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: ../res/values/strings.xml:41(string)
-msgid "Add note"
-msgstr "Notitie toevoegen"
-
-#: ../res/values/strings.xml:42(string)
-msgid "Revert"
-msgstr "Ongedaan maken"
-
-#: ../res/values/strings.xml:43(string)
-msgid "Discard"
-msgstr "Annuleren"
-
-#: ../res/values/strings.xml:45(string)
-msgid "Use menu to add new notes."
-msgstr "Gebruik menu om nieuwe notities toe te voegen."
-
-#: ../res/values/strings.xml:47(string) ../res/values/strings.xml:51(string)
-msgid "Edit note"
-msgstr "Notitie bewerken"
-
-#: ../res/values/strings.xml:48(string)
-msgid "Edit title"
-msgstr "Titel bewerken"
-
-#: ../res/values/strings.xml:50(string)
-msgid "Create note"
-msgstr "Notitie creëren"
-
-#: ../res/values/strings.xml:52(string) ../res/values/strings.xml:58(string)
+#: ../res/values/strings.xml:40(string) ../res/values/strings.xml:54(string)
 msgid "OI Notepad"
 msgstr "OI Notitieblok"
 
-#: ../res/values/strings.xml:53(string)
+#: ../res/values/strings.xml:42(string)
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: ../res/values/strings.xml:43(string)
+msgid "Add note"
+msgstr "Notitie toevoegen"
+
+#: ../res/values/strings.xml:44(string)
+msgid "Revert"
+msgstr "Ongedaan maken"
+
+#: ../res/values/strings.xml:45(string)
+msgid "Discard"
+msgstr "Annuleren"
+
+#: ../res/values/strings.xml:47(string)
+msgid "Use menu to add new notes."
+msgstr "Gebruik menu om nieuwe notities toe te voegen."
+
+#: ../res/values/strings.xml:49(string) ../res/values/strings.xml:53(string)
+msgid "Edit note"
+msgstr "Notitie bewerken"
+
+#: ../res/values/strings.xml:50(string)
+msgid "Edit title"
+msgstr "Titel bewerken"
+
+#: ../res/values/strings.xml:52(string)
+msgid "Create note"
+msgstr "Notitie creëren"
+
+#: ../res/values/strings.xml:55(string)
 msgid "Note"
 msgstr "Notitie"
 
-#: ../res/values/strings.xml:54(string)
+#: ../res/values/strings.xml:56(string)
 msgid "Note title:"
 msgstr "Notitietitel:"
 
-#: ../res/values/strings.xml:55(string)
+#: ../res/values/strings.xml:57(string)
 msgid "%s (new note)"
 msgstr "%s (nieuwe notitie)"
 
-#: ../res/values/strings.xml:56(string)
+#: ../res/values/strings.xml:58(string)
 msgid "%s (edit note)"
 msgstr "%s (bewerken van notitie)"
 
@@ -377,8 +377,40 @@ msgid "Oldest to Newest"
 msgstr "Van oud naar nieuw"
 
 #. Automatically filled in by Launchpad:
-#: ../res/values/strings.xml:34(string)
+#: ../res/values/strings.xml:30(string)
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  pjv https://launchpad.net/~pjv"
+
+#: ../res/values/strings.xml:172(string)
+msgid "Extensions"
+msgstr ""
+
+#: ../res/values/strings.xml:173(string)
+msgid "Get new extensions"
+msgstr ""
+
+#: ../res/values/strings.xml:174(string)
+msgid "Search for extensions online."
+msgstr ""
+
+#: ../res/values/strings.xml:175(string)
+msgid "Get extensions from"
+msgstr ""
+
+#: ../res/values/strings.xml:176(string)
+msgid "Android Market"
+msgstr ""
+
+#: ../res/values/strings.xml:177(string)
+msgid "Search for extensions at Android Market."
+msgstr ""
+
+#: ../res/values/strings.xml:178(string)
+msgid "OpenIntents"
+msgstr ""
+
+#: ../res/values/strings.xml:179(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr ""

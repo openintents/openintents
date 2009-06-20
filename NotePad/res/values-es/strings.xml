@@ -27,7 +27,7 @@
 
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz;</string>
+  Feder Sáiz https://launchpad.net/~federsaiz</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">Bloc de Notas OI permite crear, editar, y eliminar notas.</string>
