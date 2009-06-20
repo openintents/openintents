@@ -20,9 +20,11 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Abdessamad Derraz https://launchpad.net/~derraz;
+  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz;</string>
 	
-    <string name="about_comments">OI File Manager est un gestionnaire de fichiers qui coopère de façon transparente avec d'autres applications.</string>  
+    <string name="about_comments">OI File Manager est un gestionnaire de fichiers qui interagit avec les autres applications.</string>  
 	<string name="about_website_label">OI File Manager chez OpenIntents</string> 
 	
 	<!-- ***************************
@@ -48,7 +50,7 @@
     <string name="folder_renamed">Dossier renommé.</string>
     <string name="file_moved">Fichier déplacé.</string>
     <string name="folder_moved">Dossier déplacé.</string>
-    <string name="move_title">Sélectionner le dossier pour le déplacer vers</string>
+    <string name="move_title">Sélectionner un dossier vers lequel déplacer</string>
     <string name="move_button">Déplacer ici</string>
     
     <string name="error_creating_new_folder">Impossible de créer le nouveau dossier.</string>
@@ -60,7 +62,7 @@
     <string name="error_moving_folder">Impossible de déplacer le dossier.</string>
     <string name="error_file_does_not_exists">Le fichier n'existe pas.</string>
     
-    <string name="send_not_available">Non disponible pour l'envoi.</string>
+    <string name="send_not_available">Pas d'application disponible pour l'envoi</string>
     
     <string name="application_not_available">Application non disponible</string>
 
@@ -71,18 +73,18 @@
 	<!-- EULA -->
 	<string name="eula_title">OI File Manager EULA</string>
 	<string name="eula_accept">Accepter</string>
-	<string name="eula_refuse">Quitter</string>
+	<string name="eula_refuse">Annuler</string>
 	
 	<!-- Update -->
-	<string name="update_box_text">S'il vous plaît vérifier manuellement les mises à jour ou installer OI Update pour les notifications automatique. Version actuelle: %s</string>
+	<string name="update_box_text">Veuillez vérifier manuellement les mises à jour ou installer OI Update pour les notifications automatique. Version actuelle: %s</string>
 	<string name="update_check_now">Vérifier maintenant.</string>
 	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Télécharger l'application indisponible.</string>
+	<string name="update_error">Download application not available.</string>
 	<string name="update">Vérifier les mises à jour</string>
 	
     <!-- About -->
     <string name="about">À propos de</string>
-	<string name="aboutapp_not_available">Version %s\n\nAucune extension compatible disponible pour afficher la totalité des informations (contact, crédits, licence).</string>
+	<string name="aboutapp_not_available">Version %s\n\nAucune extension disponible pour afficher la totalité des informations (contact, crédits, licence).</string>
     <string name="aboutapp_get">Obtenir OI About</string>
     
     

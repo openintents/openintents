@@ -20,7 +20,8 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101</string>
 	
     <string name="about_comments">OI Dateimanager ist ein offener Dateimanager, der nahtlos mit anderen Anwendungen zusammenarbeitet.</string>  
 	<string name="about_website_label">OI Dateimanager auf OpenIntents</string> 

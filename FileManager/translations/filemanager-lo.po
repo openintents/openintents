@@ -1,4 +1,4 @@
-# French translation for openintents
+# Lao translation for openintents
 # Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
 # This file is distributed under the same license as the openintents package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2009-05-31 22:24+0200\n"
-"PO-Revision-Date: 2009-06-18 13:26+0000\n"
-"Last-Translator: kawazzzzzz@yahoo.fr <Unknown>\n"
-"Language-Team: French <fr@li.org>\n"
+"PO-Revision-Date: 2009-06-06 11:33+0000\n"
+"Last-Translator: Anousak <anousak@gmail.com>\n"
+"Language-Team: Lao <lo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,152 +22,149 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Abdessamad Derraz https://launchpad.net/~derraz\n"
-"  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz"
+"  Anousak https://launchpad.net/~anousak"
 
 #: ../res/values/strings.xml:25(string)
 msgid ""
 "OI File Manager is an open file manager that seamlessly cooperates with "
 "other applications."
 msgstr ""
-"OI File Manager est un gestionnaire de fichiers qui interagit avec les "
-"autres applications."
 
 #: ../res/values/strings.xml:26(string)
 msgid "OI File Manager at OpenIntents"
-msgstr "OI File Manager chez OpenIntents"
+msgstr "OI ແຟ້ມ ບໍລີຫານຂອງ OpenIntents"
 
 #. ***************************
 #. Applicatio-specific strings
 #. ***************************
 #: ../res/values/strings.xml:31(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI ແຟ້ມ ບໍລີຫານ"
 
 #: ../res/values/strings.xml:33(string)
 msgid "New Folder"
-msgstr "Nouveau dossier"
+msgstr ""
 
 #: ../res/values/strings.xml:34(string)
 msgid "Delete"
-msgstr "Supprimer"
+msgstr "ລຶບ"
 
 #: ../res/values/strings.xml:35(string)
 msgid "Rename"
-msgstr "Renommer"
+msgstr "ປ່ຽນຊື່"
 
 #: ../res/values/strings.xml:36(string)
 msgid "Send"
-msgstr "Envoyer"
+msgstr "ສົ່ງ"
 
 #: ../res/values/strings.xml:37(string)
 msgid "Open"
-msgstr "Ouvrir"
+msgstr "ເປີດ"
 
 #: ../res/values/strings.xml:38(string)
 msgid "Move"
-msgstr "Déplacer"
+msgstr "ຍ້າຍ"
 
 #: ../res/values/strings.xml:40(string)
 msgid "Create new folder"
-msgstr "Créer un nouveau dossier"
+msgstr "ສ້າງໂຟເດີໃຫມ່"
 
 #: ../res/values/strings.xml:41(string) ../res/values/strings.xml:42(string)
 msgid "Folder name"
-msgstr "Nom du dossier"
+msgstr "ຊື່ໂຟເດີ"
 
 #: ../res/values/strings.xml:43(string)
 msgid "This folder is empty."
-msgstr "Ce dossier est vide."
+msgstr "ໂຟເດີນີ້ແມ່ນວ່າງ"
 
 #: ../res/values/strings.xml:44(string)
 msgid "Do you really want to delete %s?"
-msgstr "Voulez-vous vraiment supprimer %s?"
+msgstr ""
 
 #: ../res/values/strings.xml:45(string)
 msgid "File deleted."
-msgstr "Fichier supprimé."
+msgstr "ແຟ້ມລຶບແລ້ວ"
 
 #: ../res/values/strings.xml:46(string)
 msgid "Folder deleted."
-msgstr "Dossier supprimé."
+msgstr ""
 
 #: ../res/values/strings.xml:47(string)
 msgid "File renamed."
-msgstr "Fichier renommé."
+msgstr ""
 
 #: ../res/values/strings.xml:48(string)
 msgid "Folder renamed."
-msgstr "Dossier renommé."
+msgstr ""
 
 #: ../res/values/strings.xml:49(string)
 msgid "File moved."
-msgstr "Fichier déplacé."
+msgstr ""
 
 #: ../res/values/strings.xml:50(string)
 msgid "Folder moved."
-msgstr "Dossier déplacé."
+msgstr ""
 
 #: ../res/values/strings.xml:51(string)
 msgid "Select folder to move to"
-msgstr "Sélectionner un dossier vers lequel déplacer"
+msgstr ""
 
 #: ../res/values/strings.xml:52(string)
 msgid "Move here"
-msgstr "Déplacer ici"
+msgstr ""
 
 #: ../res/values/strings.xml:54(string)
 msgid "Could not create new folder."
-msgstr "Impossible de créer le nouveau dossier."
+msgstr ""
 
 #: ../res/values/strings.xml:55(string)
 msgid "Could not delete file."
-msgstr "Impossible de supprimer le fichier."
+msgstr ""
 
 #: ../res/values/strings.xml:56(string)
 msgid "Folder is not empty."
-msgstr "Le dossier n'est pas vide."
+msgstr ""
 
 #: ../res/values/strings.xml:57(string)
 msgid "Could not rename file."
-msgstr "Impossible de renommer le fichier."
+msgstr ""
 
 #: ../res/values/strings.xml:58(string)
 msgid "Could not rename folder."
-msgstr "Impossible de renommer le dossier."
+msgstr ""
 
 #: ../res/values/strings.xml:59(string)
 msgid "Could not move file."
-msgstr "Impossible de déplacer le fichier."
+msgstr ""
 
 #: ../res/values/strings.xml:60(string)
 msgid "Could not move folder."
-msgstr "Impossible de déplacer le dossier."
+msgstr ""
 
 #: ../res/values/strings.xml:61(string)
 msgid "File does not exist."
-msgstr "Le fichier n'existe pas."
+msgstr ""
 
 #: ../res/values/strings.xml:63(string)
 msgid "No application available for sending."
-msgstr "Pas d'application disponible pour l'envoi"
+msgstr ""
 
 #: ../res/values/strings.xml:65(string)
 msgid "Application not available"
-msgstr "Application non disponible"
+msgstr ""
 
 #. EULA
 #: ../res/values/strings.xml:72(string)
 msgid "OI File Manager EULA"
-msgstr "OI File Manager EULA"
+msgstr ""
 
 #: ../res/values/strings.xml:73(string)
 msgid "Accept"
-msgstr "Accepter"
+msgstr ""
 
 #: ../res/values/strings.xml:74(string)
 msgid "Cancel"
-msgstr "Annuler"
+msgstr ""
 
 #. Update
 #: ../res/values/strings.xml:77(string)
@@ -175,16 +172,14 @@ msgid ""
 "Please check manually for updates or install OI Update for automatic "
 "notifications. Current version: %s"
 msgstr ""
-"Veuillez vérifier manuellement les mises à jour ou installer OI Update pour "
-"les notifications automatique. Version actuelle: %s"
 
 #: ../res/values/strings.xml:81(string)
 msgid "Check now."
-msgstr "Vérifier maintenant."
+msgstr ""
 
 #: ../res/values/strings.xml:82(string)
 msgid "Get OI Updater."
-msgstr "Obtenir OI Updater."
+msgstr ""
 
 #: ../res/values/strings.xml:83(string)
 msgid "Download application not available."
@@ -192,21 +187,19 @@ msgstr ""
 
 #: ../res/values/strings.xml:84(string)
 msgid "Check updates"
-msgstr "Vérifier les mises à jour"
+msgstr ""
 
 #. About
 #: ../res/values/strings.xml:87(string)
 msgid "About"
-msgstr "À propos de"
+msgstr ""
 
 #: ../res/values/strings.xml:88(string)
 msgid ""
 "Version %s\\n\\nNo compatible extension available to display full info "
 "(contact, credits, license)."
 msgstr ""
-"Version %s\\n\\nAucune extension disponible pour afficher la totalité des "
-"informations (contact, crédits, licence)."
 
 #: ../res/values/strings.xml:89(string)
 msgid "Get OI About"
-msgstr "Obtenir OI About"
+msgstr ""
