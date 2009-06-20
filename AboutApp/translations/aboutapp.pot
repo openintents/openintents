@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-05-31 22:05+0200\n"
+"POT-Creation-Date: 2009-06-20 22:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,58 +14,60 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: ../res/values/strings.xml:32(string) 
+#. Explanation what this application does. It is a menu extension for other applications.
+#: ../res/values/strings.xml:33(string) 
 msgid "A standalone about dialog that is shared between apps."
 msgstr ""
 
-#: ../res/values/strings.xml:33(string) 
+#. This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 )
+#: ../res/values/strings.xml:36(string) 
 msgid "OI About at OpenIntents"
 msgstr ""
 
-#. ***************************
-#. 	     Applicatio-specific strings
-#. 	     ***************************
-#: ../res/values/strings.xml:38(string) 
+#. Application name. Can be localized, like 'OI About', or 'OI Info'. 
+#. 	   This is an extension that shows an about dialog or info dialog.
+#: ../res/values/strings.xml:43(string) 
 msgid "OI About"
 msgstr ""
 
-#: ../res/values/strings.xml:40(string) 
+#: ../res/values/strings.xml:45(string) 
 msgid "About OI About itself"
 msgstr ""
 
-#: ../res/values/strings.xml:42(string) 
+#. About some application, where '%s' is the name of another application.
+#: ../res/values/strings.xml:48(string) 
 msgid "About %s"
 msgstr ""
 
-#: ../res/values/strings.xml:44(string) 
+#: ../res/values/strings.xml:50(string) 
 msgid "Written by"
 msgstr ""
 
-#: ../res/values/strings.xml:45(string) 
+#: ../res/values/strings.xml:51(string) 
 msgid "Documented by"
 msgstr ""
 
-#: ../res/values/strings.xml:46(string) 
+#: ../res/values/strings.xml:52(string) 
 msgid "Translated by"
 msgstr ""
 
-#: ../res/values/strings.xml:47(string) 
+#: ../res/values/strings.xml:53(string) 
 msgid "Artwork by"
 msgstr ""
 
-#: ../res/values/strings.xml:48(string) 
+#: ../res/values/strings.xml:54(string) 
 msgid "Credits"
 msgstr ""
 
-#: ../res/values/strings.xml:49(string) 
+#: ../res/values/strings.xml:55(string) 
 msgid "License"
 msgstr ""
 
-#: ../res/values/strings.xml:50(string) 
+#: ../res/values/strings.xml:56(string) 
 msgid "General Info"
 msgstr ""
 
-#: ../res/values/strings.xml:52(string) 
+#: ../res/values/strings.xml:58(string) 
 msgid "No information available."
 msgstr ""
 

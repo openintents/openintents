@@ -30,16 +30,22 @@
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101;</string>
 	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Informationen über diverse Anwendungen</string>
+	
+	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">OI Info auf OpenIntents.org</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
+	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI Info</string>
 	
     <string name="menu_about">Über OI Info</string>
     
+    <!-- About some application, where '%s' is the name of another application. -->
     <string name="about_activity_name_extended">Info zu %s</string>
     
 	<string name="l_authors">Geschrieben von</string>
