@@ -1,0 +1,191 @@
+# Lao translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2009-05-31 23:17+0200\n"
+"PO-Revision-Date: 2009-06-06 11:35+0000\n"
+"Last-Translator: Anousak <anousak@gmail.com>\n"
+"Language-Team: Lao <lo@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2009-06-20 20:12+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#. Automatically filled in by Launchpad:
+#: ../res/values/strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Anousak https://launchpad.net/~anousak"
+
+#. ***************************
+#. Applicatio-specific strings
+#. ***************************
+#: ../res/values/strings.xml:13(string) ../res/values/strings.xml:46(string)
+msgid "OI Countdown"
+msgstr "IO ໄລກັບ"
+
+#: ../res/values/strings.xml:15(string)
+msgid "Start"
+msgstr "ເລີ້ມ"
+
+#: ../res/values/strings.xml:16(string)
+msgid "Stop"
+msgstr "ຢຸດ"
+
+#: ../res/values/strings.xml:17(string)
+msgid "Modify"
+msgstr "ແປງ"
+
+#: ../res/values/strings.xml:18(string)
+msgid "Continue"
+msgstr "ຕໍ່ໄປ"
+
+#: ../res/values/strings.xml:20(string)
+msgid "Use menu to add new countdown."
+msgstr ""
+
+#: ../res/values/strings.xml:21(string)
+msgid "Countdown list"
+msgstr ""
+
+#: ../res/values/strings.xml:23(string)
+msgid "Delete"
+msgstr "ລຶບ"
+
+#: ../res/values/strings.xml:24(string)
+msgid "Edit"
+msgstr "ປັບ"
+
+#: ../res/values/strings.xml:25(string)
+msgid "Add countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:26(string)
+msgid "Ringtone"
+msgstr ""
+
+#: ../res/values/strings.xml:28(string)
+msgid "e.g. pizza"
+msgstr ""
+
+#: ../res/values/strings.xml:30(string)
+msgid "Set countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:31(string)
+msgid "Create countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:32(string)
+msgid "Edit countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:34(string)
+msgid "Error"
+msgstr ""
+
+#: ../res/values/strings.xml:35(string)
+msgid "Error loading countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:37(string)
+msgid "Countdown ended"
+msgstr ""
+
+#: ../res/values/strings.xml:39(string)
+msgid "Ringtone: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:40(string)
+msgid "Vibrate"
+msgstr ""
+
+#. Update
+#: ../res/values/strings.xml:44(string)
+msgid ""
+"A new version of OI Countdown is available.\\n%s\\nWould you like to upgrade?"
+msgstr ""
+
+#: ../res/values/strings.xml:45(string)
+msgid "Android Market not available."
+msgstr ""
+
+#. About
+#: ../res/values/strings.xml:49(string)
+msgid "About"
+msgstr ""
+
+#: ../res/values/strings.xml:50(string)
+msgid "About %s"
+msgstr ""
+
+#: ../res/values/strings.xml:51(string)
+msgid ""
+"Version %s \\n\\n OpenIntents Countdown.\\n\\n OpenIntents allows different "
+"Android applications to share data using intents and open interfaces.\\n\\n "
+"For more information and other great applications visit OpenIntents at "
+"www.openintents.org"
+msgstr ""
+
+#. EULA
+#: ../res/values/strings.xml:60(string)
+msgid "OI Countdown EULA"
+msgstr ""
+
+#: ../res/values/strings.xml:61(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\""
+msgstr ""
+
+#: ../res/values/strings.xml:67(string)
+msgid "Accept"
+msgstr ""
+
+#: ../res/values/strings.xml:68(string)
+msgid "Cancel"
+msgstr ""
+
+#. Update
+#: ../res/values/strings.xml:71(string)
+msgid "Check updates"
+msgstr ""
+
+#: ../res/values/strings.xml:72(string)
+msgid ""
+"Please check manually for updates or install OI Update for automatic "
+"notifications. Current version: %s"
+msgstr ""
+
+#: ../res/values/strings.xml:76(string)
+msgid "Check now."
+msgstr ""
+
+#: ../res/values/strings.xml:77(string)
+msgid "Get OI Updater."
+msgstr ""
+
+#: ../res/values/strings.xml:78(string)
+msgid "market://search?q=pname:org.openintents.countdown"
+msgstr ""
+
+#: ../res/values/strings.xml:79(string)
+msgid "market://search?q=pname:org.openintents.updatechecker"
+msgstr ""
+
+#: ../res/values/strings.xml:80(string)
+msgid "Download application not available."
+msgstr ""
