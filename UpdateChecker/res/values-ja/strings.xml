@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  maimuzo https://launchpad.net/~maimuzo</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">%sの新バージョンが利用可能となりました。\nアップグレードしたいですか?</string>
+    <string name="update_available_3">%sの新バージョンが %s で利用可能となりました。\n%s\n</string>
+    <string name="update_available_2">%sの新バージョンが利用可能となりました。\n%s\n</string>
+    <string name="update_available_location_no_comment">%sの新バージョンが %s で利用可能となりました。</string>
+    <string name="update_available_no_comment">%sの新バージョンが利用可能となりました。</string>
+	<string name="market_not_available">Android Marketが利用できません。</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">バージョン %s\nSDカード %s\n\nOS\n%s</string>
+    <string name="free_space">空き容量: %s</string>
+    <string name="os_info">基盤 %s\nブランド %s\nデバイス %s\nID %s\nモデル %s</string>
+    
+    <string name="do_update">すぐにアップデートする!</string>
+    <string name="do_update_market">すぐにAndroid Marketからアップデートしてみる!</string>
+    <string name="do_update_andAppStore">すぐにAndAppStoreからアップデートしてみる!</string>
+    <string name="remind_me_later">後で通知</string>
+    <string name="ignore_this_update">このアップデートを無視する</string>
+    <string name="ignore_all_further_updates">これ以上のアップデートを全て無視する</string>
+    <string name="ok">Ok</string>
+    
+    <string name="update_not_started">アップデートを開始できませんでした!\n\nアプリの開発者に連絡してみてください!</string>
+    <string name="app_up_to_date">Application is up-to-date.</string>
+    <string name="checking">新バージョンを確認中。</string>
+    <string name="building_app_list">アプリのリストを作成中。</string>
+    <string name="check_andappstore">AndAppStore.comを確認</string>
+    <string name="check_versions">バージョンを確認</string>
+    <string name="show_versions">全て表示</string>
+    <string name="refresh">再表示</string>
+    <string name="checked_against_andappstore">AndAppStoreを確認しました</string>
+    <string name="current_version">現在のバージョン: %s</string>
+    <string name="current_version_code">Current version code: %s</string>
+    <string name="newer_version">最新バージョン: %s</string>
+    <string name="newer_version_comment">最新バージョン: %s - %s</string>
+    <string name="newer_version_available">最新バージョンが利用可能です。</string>
+    <string name="no_update_info_found">アップデート情報が見つかりませんでした。</string>
+    <string name="title_list_new_versions">OI Update - 新バージョンのリスト</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - AndAppStoreの新バージョン</string>
+    <string name="title_list_all_versions">OI Update - List of managed applications</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - 管理対象のアプリリスト(AndAppStoreで確認)</string>
+    <string name="settings">設定</string>
+    <string name="auto_update">自動確認</string>
+    <string name="ignore_title">無視する</string>
+    <string name="ignore_text">更新機能は現在無効です。もう一度更新情報を受信したいですか?</string>
+    <string name="unknown_title">不明</string>
+    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
+    <string name="search_on_market">Android Marketを検索</string>
+    <string name="search_on_andappstore">AndAppStoreを検索</string>
+    <string name="processing">%s 処理中</string>
+    
+    <string name="warn">The update process of this application directs to
+    a different site than Android Market. Applications installed from unknown sources might
+    exhibit a security risk. 
+    </string>
+    <string name="continue_anyway">Continue anyway</string>
+    <string name="abort">このアプリについて</string>
+    
+    <string name="preference_auto_update">自動更新</string>
+    <string name="preference_auto_update_summary">チェックすると、定期的に更新情報を検索します</string>
+    <string name="title_update_interval">更新間隔</string>
+    <string name="summary_update_interval">更新情報の検索をどの程度の頻度で行うか指定する。</string>
+    <string name="dialog_title_update_interval">間隔を選択</string>
+    <string name="default_update_interval">every_month</string>
+    <string name="preference_warning_title">警告</string>
+    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    
+    <string name="preference_andappstore">AndAppStoreを使う</string>
+    <string name="preference_andappstore_summary">バージョン情報を提供元としてAndAppStore.comを使う</string>
+    
+    <string name="permission_read_update_info">更新情報を読む</string>
+    <string name="permission_write_update_info">更新情報を書く</string>
+    <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
+    <string name="permission_write_update_info_descr">インストールされているアプリの情報を書き、提供元とリクエストを更新する。</string>
+
+
+	<!-- About -->
+	<string name="about">このアプリについて</string>
+	<string name="about_title">%s について</string>
+	<string name="about_text">Version %s \n\n
+OI Update keeps you informed on new application versions.\n
+	
+OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update利用者規約</string>
+<string name="eula_description">"(訳者注:日本語訳を示しますが、正式には英文を参照ください)Copyright 2008 OpenIntents.org\nApache License Version 2.0（「本ライセンス」）に基づいてライセンスされます。あなたがこのファイルを使用するためには、本ライセンスに従わなければなりません。本ライセンスのコピーは下記の場所から入手できます。
+http://www.apache.org/licenses/LICENSE-2.0\n適用される法律または書面での同意によって命じられない限り、本ライセンスに基づいて頒布されるソフトウェアは、明示黙示を問わず、いかなる保証も条件もなしに「現状のまま」頒布されます。本ライセンスでの権利と制限を規定した文言については、本ライセンスを参照してください。\n\n"</string>
+	<string name="eula_accept">承諾する</string>
+	<string name="eula_refuse">キャンセル</string>
+	
+</resources>
