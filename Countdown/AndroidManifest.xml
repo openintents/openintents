@@ -79,6 +79,23 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="vnd.android.cursor.dir/vnd.openintents.countdown.duration" />
             </intent-filter>
+        </activity>
+            
+        <activity android:name=".activity.SetCountdownActivity"
+            android:icon="@drawable/icon_hourglass" 
+        	android:label="@string/title_setcountdown"
+        >
+            <!-- This filter says that any other application can set a countdown on
+                 an arbitrary URI by calling this intent. -->
+                 <!-- 
+            <intent-filter
+            	android:icon="@drawable/icon_hourglass" 
+        		android:label="@string/title_setcountdown">
+            	<action android:name="org.openintents.countdown.action.SET_COUNTDOWN" />
+            	<category android:name="android.intent.category.ALTERNATIVE" />
+            	<data android:mimeType="*/*" />
+            </intent-filter>
+             -->
 
         </activity>
          
@@ -103,6 +120,24 @@
             </intent-filter> -->
 
         </activity>
+        
+        <activity android:name=".automation.AutomationSettings"
+            android:icon="@drawable/icon_hourglass" 
+        	android:label="@string/title_setcountdown">
+            <intent-filter>
+        		<action android:name="org.openintents.countdown.action.EDIT_AUTOMATION" />
+	            <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <receiver android:name=".automation.AutomationReceiver">
+        	<!-- Perform actions on individual countdowns: -->
+        	<intent-filter>
+        		<action android:name="org.openintents.countdown.action.START" />
+        		<action android:name="org.openintents.countdown.action.STOP" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
+        	</intent-filter>
+        </receiver>
         
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 

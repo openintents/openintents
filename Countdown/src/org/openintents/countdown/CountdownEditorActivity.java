@@ -20,11 +20,12 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.List;
 
-import org.openintents.com.android.internal.widget.NumberPicker;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
+import org.openintents.intents.AutomationIntents;
+import org.openintents.intents.CountdownIntents;
 import org.openintents.utils.DateTimeFormater;
 
 import android.app.Activity;
@@ -35,6 +36,7 @@ import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -52,7 +54,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -164,10 +165,12 @@ public class CountdownEditorActivity extends Activity {
         mCountdownState = STATE_COUNTDOWN_IDLE;
         mCountdownMode = MODE_SET_DURATION;
         mRingtoneType = RingtoneManager.TYPE_ALL;
+        mAutomate = UNCHECKED;
         
         // Do some setup based on the action being performed.
 
         final String action = intent.getAction();
+        
         if (Intent.ACTION_EDIT.equals(action) || Intent.ACTION_VIEW.equals(action)) {
             // Requested to edit: set that state, and the data being edited.
             mState = STATE_EDIT;
@@ -185,6 +188,15 @@ public class CountdownEditorActivity extends Activity {
             cv.put(Durations.RING, CHECKED);
             cv.put(Durations.RINGTONE, RingtoneManager.getDefaultUri(mRingtoneType).toString());
             cv.put(Durations.VIBRATE, CHECKED);
+            
+
+            if (intent.hasExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT)) {
+            	// Set default action from extra:
+            	// (this has been set in SetCountdownActivity)
+            	cv.put(Durations.AUTOMATE, CHECKED);
+            	mAutomateIntent = (Intent) intent.getParcelableExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT);
+            	cv.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+            }
             
             mUri = getContentResolver().insert(intent.getData(), cv);
             intent.setAction(Intent.ACTION_EDIT);
