@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2087 2009-05-16 18:18:17Z peli0101 $
+* $Id: strings.xml 2124 2009-05-31 20:57:02Z peli0101 $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -24,7 +24,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101;</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe verwahrt Ihre privaten Daten sicher verschlüsselt.</string>  
@@ -66,7 +66,7 @@
 	<string name="cannot_decrypt_password">Passwort kann nicht entschlüsselt werden.</string>
 	<string name="error_export">Fehler beim Exportieren der Datenbank</string>
 	<string name="export_database">Datenbank exportieren</string>
-	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
+	<string name="export_msg">Hiermit wird die Passwort Datenbank in eine Klartext Datei exportiert. DAS IST SEHR GEFÄHRLICH. Löschen Sie diese Datei, sobald Sie fertig sind. Sind Sie sicher, dass Sie exportieren wollen?</string>
 	<string name="export_success">Export nach '%s' erfolgreich. Achtung! Die Datei ist nicht verschlüsselt.</string>
 	<string name="export_file_error">Die Datei 'oisafe.csv' kann auf der SD Karte nicht erstellt werden. Eventuell muss die USB Verbindung zum Computer getrennt werden.</string>
 	<string name="import_database">Datenbank importieren</string>
@@ -118,10 +118,10 @@
     <string name="restore_set_password">Passwort der Wiederherstellungsdatei eingeben. Das neue Hauptpasswort wird auf dieses Passwort gesetzt.</string>
     
     <!-- Toast message. '%s' contains a more detailed error message. -->
-    <string name="restore_unable_to_open">Unable to open file: %s</string>
+    <string name="restore_unable_to_open">Datei kann nicht geöffnet werden: %s</string>
     
     <!-- Toast message. '%s' contains the version number of the database. -->
-    <string name="restore_bad_version">Version not supported: %s</string>
+    <string name="restore_bad_version">Version wird nicht unterstützt: %s</string>
     
     <string name="restore_error">Fehler beim Wiederherstellen.</string>
     <string name="restore_decrypt_error">Schlechtes Passwort</string>
@@ -144,64 +144,64 @@
 	<string name="move_select">Kategorie auswählen</string>
 	
 	<!-- Toast that password has been moved to another category -->
-	<string name="moved_to">Moved to %s</string>
+	<string name="moved_to">Verschoben nach %s</string>
 	
 	<string name="preferences">Einstellungen</string>
 	<string name="pref_title_external_access">Externen Zugriff erlauben</string>
 	<string name="pref_summary_external_access">Anderen Anwendungen erlauben, die Daten mit OI Safe zu sichern</string>
 	<string name="dialog_title_external_access">OI Safe: Eine andere Anwendung verlangt Zugriff.</string>
 	<string name="dialog_summary_external_access">Anderen Anwendungen erlauben, die Daten mit OI Safe zu sichern.</string>
-	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Settings.</string>
+	<string name="dialog_comment_external_access">Das kann auch in OI Safe unter Menü / Einstellungen gesetzt werden.</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_timeout">Auto lock timeout</string>
+	<string name="pref_title_lock_timeout">Zeit bis zum automatischen sperren</string>
 	
 	<!-- Preference summary for auto lock timeout -->
-	<string name="pref_summary_lock_timeout">Number of minutes before timeout occurs and safe is locked</string>
+	<string name="pref_summary_lock_timeout">Dauer in Minuten bevor der Safe automatisch gesperrt wird</string>
 	
-	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
+	<string name="pref_dialog_title_lock_timeout">Zeit bis zum automatischen sperren</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
-	<string name="pref_title_keypad">Keypad</string>
+	<string name="pref_title_keypad">Ziffernblock</string>
 	
 	<!-- Preference summary: for a numeric keypad -->
-	<string name="pref_summary_keypad">Use a keypad to enter Master Password</string>
+	<string name="pref_summary_keypad">Ziffernblock verwenden um Passwort einzugeben</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_keypad_mute">Keypad Mute</string>
+	<string name="pref_title_keypad_mute">Ziffernblock stumm</string>
 	
 	<!-- Preference summary: Make the 'keypad sounds' mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
-	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
+	<string name="pref_summary_keypad_mute">Ziffernblock stumm schalten</string>
 	
-	<string name="intent_decrypt">Decrypt (OI Safe)</string>
-	<string name="intent_encrypt">Encrypt (OI Safe)</string>
-	<string name="intent_get_password">Get password (OI Safe)</string>
-	<string name="intent_set_password">Set password (OI Safe)</string>
-	<string name="intent_restart_timer">Restart timer (OI Safe)</string>
-	<string name="open_safe">Open OI Safe</string>
+	<string name="intent_decrypt">Entschlüsseln (OI Safe)</string>
+	<string name="intent_encrypt">Verschlüsseln (OI Safe)</string>
+	<string name="intent_get_password">Password erhalten (OI Safe)</string>
+	<string name="intent_set_password">Passwort setzen (OI Safe)</string>
+	<string name="intent_restart_timer">Timer neu starten (OI Safe)</string>
+	<string name="open_safe">OI Safe öffnen</string>
 	<string name="lock">Sperren</string>
-	<string name="continue_text">Continue</string>
-	<string name="pass_gen_length">Password Length</string>
-	<string name="pass_gen_uppercase">Uppercase [A-Z]</string>
-	<string name="pass_gen_lowercase">Lowercase [a-z]</string>
-	<string name="pass_gen_numbers">Numbers [0-9]</string>
-	<string name="pass_gen_symbols">Symbols [!@#$%^\*]</string>
-	<string name="pass_gen_copy_to_current_entry">Copy to Current Entry</string>
-	<string name="pass_gen_copy_to_clipboard">Copy to Clipboard</string>
-	<string name="cancel">Cancel</string>
-	<string name="discard_changes">Discard changes</string>
-	<string name="entry_saved">Entry saved</string>
-	<string name="last_edited">Last edited</string>
-	<string name="last_edited_unknown">unknown</string>
-	<string name="crypto_error">Crypto error:</string>
-	<string name="uniquename">Unique name</string>
-	<string name="package_access">Package access</string>
-	<string name="not_found">not found</string>
-	<string name="dialog_title_first_time_warning">New master key</string>
-	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu &gt; backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
-	<string name="switch_mode">Switch mode</string>
-	<string name="decrypt_progress">Decrypting...</string>
+	<string name="continue_text">Fortsetzen</string>
+	<string name="pass_gen_length">Passwort Länge</string>
+	<string name="pass_gen_uppercase">Großbuchstaben [A-Z]</string>
+	<string name="pass_gen_lowercase">Kleinbuchstaben [a-z]</string>
+	<string name="pass_gen_numbers">Zahlen [0-9]</string>
+	<string name="pass_gen_symbols">Sonderzeichen [!@#$%^\*]</string>
+	<string name="pass_gen_copy_to_current_entry">In den aktuellen Eintrag kopieren</string>
+	<string name="pass_gen_copy_to_clipboard">In die Zwischenablage kopieren</string>
+	<string name="cancel">Abbrechen</string>
+	<string name="discard_changes">Änderungen verwerfen</string>
+	<string name="entry_saved">Eintrag gespeichert</string>
+	<string name="last_edited">Zuletzt bearbeitet</string>
+	<string name="last_edited_unknown">unbekannt</string>
+	<string name="crypto_error">Verschlüsselungsfehler:</string>
+	<string name="uniquename">Eindeutiger Name</string>
+	<string name="package_access">Zugriff auf Package</string>
+	<string name="not_found">nicht gefunden</string>
+	<string name="dialog_title_first_time_warning">Neuer Hauptschlüssel</string>
+	<string name="dialog_summary_first_time_warning">Ein neuer Hauptschlüssel wurde generiert. Verwenden Sie Menü &gt; Sicherungskopie und speichern Sie den Schlüssel an einem sicheren Ort. Ohne diesen Schlüssel könnten Sie verschlüsselte Daten verlieren.</string>
+	<string name="switch_mode">Modus wechseln</string>
+	<string name="decrypt_progress">Entschlüsseln...</string>
 	
 	
 	<!-- ***************************
@@ -210,46 +210,43 @@
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Safe EULA</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
+	<string name="eula_accept">Zustimmen</string>
+	<string name="eula_refuse">Abbrechen</string>
 	
 	<!-- Update -->
-		<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
-	<string name="update">Check updates</string>
+		<string name="update_box_text">Bitte prüfen Sie ob eine aktualisierte Version vorhanden ist, oder installieren Sie OI Update um automatisch benachrichtigt zu werden. Aktuelle Version: %s</string>
+	<string name="update_check_now">Jetzt prüfen</string>
+	<string name="update_get_updater">OI Update herunterladen</string>
+	<string name="update_error">Anwendung zum Herunterladen nicht vorhanden</string>
+	<string name="update">Suche nach Updates</string>
 	
     <!-- About -->
-    <string name="about">About</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+    <string name="about">Info</string>
+	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung vorhanden um vollständige Information anzuzeigen (Kontakt, Mitwirkende, Lizenz).</string>
+    <string name="aboutapp_get">OI Info herunterladen</string>
     
     <!-- File Manager -->
-    <string name="filemanager_not_available">No compatible file manager is available.</string>
-    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+    <string name="filemanager_not_available">Kein kompatibler Dateimanager vorhanden</string>
+    <string name="filemanager_get_oi_filemanager">OI Dateimanager herunterladen</string>
     
 	<!-- ***************************
 	     Permissions
 	     *************************** -->
 
 	<!-- OI Safe -->
-	<string name="oi_safe_permission_service">access the master password</string>
-	<string name="oi_safe_permission_service_descr">Allows the application to access the master key used for encryption and decryption. Should never be used except by OI Safe.</string>	
-	<string name="oi_safe_permission_intents">encrypt and decrypt data</string>
-    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+	<string name="oi_safe_permission_service">auf Hauptpasswort zugreifen</string>
+	<string name="oi_safe_permission_service_descr">Erlaubt einer Anwendung auf das Hauptpasswort für Verschlüsselung und Entschlüsselung zuzugreifen. Sollte niemals verwendet werden, außer durch OI Safe selber.</string>	
+	<string name="oi_safe_permission_intents">Daten ver- und entschlüsseln</string>
+    <string name="oi_safe_permission_intents_descr">Erlaubt einer Anwendung, Daten zu verschlüsseln und zu entschlüsseln, und auf Passwörter, die in OI Safe gespeichert wurden, zuzugreifen.</string>	
 
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 
     <string-array name="pref_entries_lock_timeout">
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>30 minutes</item>  
+        <item>1 Minute</item>
+        <item>5 Minuten</item>
+        <item>30 Minuten</item>  
     </string-array>
 
         

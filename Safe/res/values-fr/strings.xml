@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2087 2009-05-16 18:18:17Z peli0101 $
+* $Id: strings.xml 2124 2009-05-31 20:57:02Z peli0101 $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -24,7 +24,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe conserve toutes vos données privées cryptées.</string>  
