@@ -18,7 +18,7 @@ package org.openintents.countdown.list;
 
 import org.openintents.countdown.CountdownEditorActivity;
 import org.openintents.countdown.R;
-import org.openintents.countdown.db.Countdown;
+import org.openintents.countdown.automation.AutomationActions;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
@@ -31,7 +31,6 @@ import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -83,6 +82,11 @@ public class CountdownListActivity extends ListActivity
     private static final int COLUMN_INDEX_DURATION = 2;
     
     private static final int MSG_UPDATE_DISPLAY = 1;
+
+    // The different distinct states the activity can be run in.
+    private int mState;
+    protected static final int STATE_VIEW = 0;
+    protected static final int STATE_PICK = 1;
     
     private Cursor mCursor;
     
@@ -100,9 +104,16 @@ public class CountdownListActivity extends ListActivity
 
         // If no data was given in the intent (because we were started
         // as a MAIN activity), then use our default content provider.
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         if (intent.getData() == null) {
             intent.setData(Durations.CONTENT_URI);
+        }
+        
+        mState = STATE_VIEW;
+
+        final String action = intent.getAction();
+        if (Intent.ACTION_PICK.equals(action) || Intent.ACTION_GET_CONTENT.equals(action)) {
+        	mState = STATE_PICK;
         }
 
         // Inform the list we provide context menus for items
@@ -113,7 +124,9 @@ public class CountdownListActivity extends ListActivity
         //getListView().setAddStatesFromChildren(false);
         getListView().setItemsCanFocus(true);
         
-        
+        if (mState == STATE_PICK) {
+        	setTitle(R.string.title_pick);
+        }
         
         // Perform a managed query. The Activity will handle closing and requerying the cursor
         // when needed.
@@ -130,7 +143,8 @@ public class CountdownListActivity extends ListActivity
         //        new String[] { Durations.TITLE , Durations.DURATION }, new int[] { android.R.id.text1 , android.R.id.text2 });
         
         Uri baseUri = getIntent().getData();
-        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this, baseUri);
+        boolean showButton = (mState == STATE_VIEW);
+        CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this, baseUri, showButton);
         
         setListAdapter(adapter);
 
@@ -335,6 +349,7 @@ public class CountdownListActivity extends ListActivity
             // The caller is waiting for us to return an alarm selected by
             // the user.  They have clicked on one, so return it now.
             setResult(RESULT_OK, new Intent().setData(uri));
+            finish();
         } else {
             // Launch activity to view/edit the currently selected item
             startActivity(new Intent(Intent.ACTION_EDIT, uri));
@@ -344,6 +359,8 @@ public class CountdownListActivity extends ListActivity
 	private void startCountdown(long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		
+		AutomationActions.startCountdown(this, uri);
+		/*
         // Get the data
         Cursor c = getContentResolver().query(uri, Durations.PROJECTION, null, null,
                 Countdown.Durations.DEFAULT_SORT_ORDER);
@@ -372,6 +389,8 @@ public class CountdownListActivity extends ListActivity
     	values.put(Durations.DEADLINE_DATE, deadline);
     	
         getContentResolver().update(uri, values, null, null);
+        */
+        
         mCursor.requery();
     	
 		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));

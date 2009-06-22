@@ -810,9 +810,12 @@ public class CountdownEditorActivity extends Activity {
     }
 
 	void setAutomation() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("*/*");
+		
+        //Intent intent = new Intent(Intent.ACTION_PICK);
+        //intent.setType("*/*");
         
+		Intent intent = new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS);
+		
 		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
 	}
 
@@ -1192,6 +1195,8 @@ public class CountdownEditorActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
+		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		Log.i(TAG, "data: " + data.toString());
 
 		if (requestCode == REQUEST_CODE_RINGTONE
 				&& resultCode == RESULT_OK) {
@@ -1218,6 +1223,34 @@ public class CountdownEditorActivity extends Activity {
             
             mCursor.requery();
 		} else if (requestCode == REQUEST_CODE_SET_AUTOMATION) {
+			if (resultCode == RESULT_OK) {
+	
+	            ContentValues values = new ContentValues();
+	
+	        	values.put(Durations.AUTOMATE, CHECKED);
+	        	
+	        	if (data != null) {
+		        	mAutomateIntent = new Intent(data);
+		        	//mAutomateIntent.setAction(Intent.ACTION_VIEW);
+		        	values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+		    		
+		        	Log.i(TAG, "Uri: " + mAutomateIntent.toURI().toString());
+		        	
+		            // Commit all of our changes to persistent storage. When the update completes
+		            // the content provider will notify the cursor of the change, which will
+		            // cause the UI to be updated.
+		            getContentResolver().update(mUri, values, null, null);
+		            
+		            mCursor.requery();
+	        	} else {
+	        		// Not a valid intent
+	        		checkValidAutomateIntent();
+	        	}
+			} else {
+				// Change cancelled.
+        		checkValidAutomateIntent();
+			}
+		} else if (requestCode == REQUEST_CODE_SET_AUTOMATION + 99999) {
 			if (resultCode == RESULT_OK) {
 	
 	            ContentValues values = new ContentValues();

@@ -46,6 +46,12 @@
     <!-- Title of the activity for editing the countdown. -->
     <string name="title_edit">Edit countdown</string>
     
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Pick countdown</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">Set countdown action</string>
+    
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">Error</string>
 	
@@ -113,4 +119,13 @@ Current version: %s
 	<string name="update_app_url">market://search?q=pname:org.openintents.countdown</string>
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
+	
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Start countdown</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Stop countdown</item>
+    </string-array>
 </resources>

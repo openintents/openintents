@@ -45,6 +45,7 @@ public class CountdownListItemView extends LinearLayout {
 	private Button mDismiss;
 	private LinearLayout mCountdownPanel;
 	private Uri mUri;
+	private boolean mShowButton;
 	
 	public CountdownListItemView(Context context) {
 		super(context);
@@ -63,7 +64,7 @@ public class CountdownListItemView extends LinearLayout {
 		mStart = (Button) findViewById(R.id.start);
 		mDismiss = (Button) findViewById(R.id.dismiss);
 		mCountdownPanel = (LinearLayout) findViewById(R.id.countdownpanel);
-		
+		mShowButton = true;
 	}
 
 	/**
@@ -99,6 +100,10 @@ public class CountdownListItemView extends LinearLayout {
 		updateCountdown();
 	}
 	
+	public void setShowButton(boolean showbutton) {
+		mShowButton = showbutton;
+	}
+	
 	
 	/**
 	 * Update countdown.
@@ -126,7 +131,7 @@ public class CountdownListItemView extends LinearLayout {
 			mCountdownView.setTextAppearance(mContext, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextColor(0xffff0000);
 			mStart.setVisibility(View.GONE);
-			mDismiss.setVisibility(View.VISIBLE);
+			mDismiss.setVisibility(mShowButton ? View.VISIBLE : View.GONE);
 			return false;
 
 		} else if (delta > 0) {
@@ -144,7 +149,7 @@ public class CountdownListItemView extends LinearLayout {
 			
 		} */else {
 			mCountdownView.setText("");
-			mStart.setVisibility(View.VISIBLE);
+			mStart.setVisibility(mShowButton ? View.VISIBLE : View.GONE);
 			mDismiss.setVisibility(View.GONE);
 			return false;
 		}

@@ -35,12 +35,14 @@ public class CountdownCursorAdapter extends CursorAdapter {
 	Context mContext;
 	OnCountdownClickListener mListener;
 	Uri mBaseUri;
+	boolean mShowButton;
 	
-	public CountdownCursorAdapter(Context context, Cursor c, OnCountdownClickListener listener, Uri baseUri) {
+	public CountdownCursorAdapter(Context context, Cursor c, OnCountdownClickListener listener, Uri baseUri, boolean showButton) {
 		super(context, c);
 		mContext = context;
 		mListener = listener;
 		mBaseUri = baseUri;
+		mShowButton = showButton;
 	}
 	
 	@Override
@@ -73,10 +75,10 @@ public class CountdownCursorAdapter extends CursorAdapter {
 		}
 		cliv.setDeadline(deadline);
 
-		
+		cliv.setShowButton(mShowButton);
 		cliv.setListeners(mListener, id);
 		
-
+		cliv.updateCountdown();
 	}
 
 	@Override
