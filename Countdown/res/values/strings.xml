@@ -50,7 +50,7 @@
     <string name="title_pick">Pick countdown</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">Set countdown action</string>
+    <string name="title_setcountdown_action">OI Countdown action</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">Error</string>
