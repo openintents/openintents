@@ -32,6 +32,7 @@ import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
 import org.openintents.intents.AutomationIntents;
 import org.openintents.utils.DateTimeFormater;
+import org.openintents.utils.SDKVersion;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -76,7 +77,8 @@ import android.widget.TimePicker;
  * {@link Intent#ACTION_EDIT}, or create a new note {@link Intent#ACTION_INSERT}.  
  */
 public class CountdownEditorActivity extends Activity {
-    private static final String TAG = "Notes";
+    private static final String TAG = "CountdownEditorActivity";
+    private static final boolean debug = true;
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -1341,12 +1343,17 @@ public class CountdownEditorActivity extends Activity {
 			
 			Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
 			pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
-			
-			// SDK 1.1 backward compatibility:
-            // We launch our own version of ActivityPicker:
-            pickIntent.setClass(this, DialogHostingActivity.class);
-            pickIntent.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, 
-            			DialogHostingActivity.DIALOG_ID_ACTIVITY_PICKER);
+
+            if (SDKVersion.SDKVersion < 3) {
+            	if (debug) Log.i(TAG, "Compatibility mode for ActivityPicker");
+                // SDK 1.1 backward compatibility:
+                // We launch our own version of ActivityPicker:
+                pickIntent.setClass(this, DialogHostingActivity.class);
+                pickIntent.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, 
+                			DialogHostingActivity.DIALOG_ID_ACTIVITY_PICKER);
+            } else {
+            	if (debug) Log.i(TAG, "Call system ActivityPicker");
+            }
             
 			startActivityForResult(pickIntent, REQUEST_CODE_SET_APPLICATION);
 		} else {
