@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-package org.openintents.countdown;
+package org.openintents.countdown.activity;
 
 import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.List;
 
+import org.openintents.countdown.AlarmService;
+import org.openintents.countdown.R;
+import org.openintents.countdown.R.id;
+import org.openintents.countdown.R.layout;
+import org.openintents.countdown.R.string;
+import org.openintents.countdown.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
@@ -89,11 +95,16 @@ public class CountdownEditorActivity extends Activity {
 
     private static final int MSG_UPDATE_DISPLAY = 1;
     
-    private static final int REQUEST_CODE_RINGTONE = 1;
-	private static final int REQUEST_CODE_SET_AUTOMATION = 2;
+    static final int REQUEST_CODE_RINGTONE = 1;
+	static final int REQUEST_CODE_PICK_AUTOMATION_TASK = 2;
+    static final int REQUEST_CODE_PICK_SHORTCUT = 3;
+	static final int REQUEST_CODE_SET_AUTOMATION_TASK = 4;
+    static final int REQUEST_CODE_SET_SHORTCUT = 5;
+    static final int REQUEST_CODE_SET_APPLICATION = 6;
 
 	static final int DIALOG_ID_SET_DATE = 1;
 	static final int DIALOG_ID_SET_TIME = 2;
+    static final int DIALOG_CREATE_SHORTCUT = 3;
     
     private int mState;
     private Uri mUri;
@@ -831,9 +842,12 @@ public class CountdownEditorActivity extends Activity {
         //Intent intent = new Intent(Intent.ACTION_PICK);
         //intent.setType("*/*");
         
-		Intent intent = new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS);
+//		Intent intent = new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS);
 		
-		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
+//		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
+		
+
+        showDialog(DIALOG_CREATE_SHORTCUT);
 	}
 
 	void startAutomateTest() {
@@ -843,7 +857,7 @@ public class CountdownEditorActivity extends Activity {
 				//startActivity(mAutomateIntent);
 				
 				// For Settings:
-				startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION);
+				startActivityForResult(mAutomateIntent, REQUEST_CODE_PICK_AUTOMATION_TASK);
 			} catch (ActivityNotFoundException e) {
 				// TODO
 			}
@@ -1124,6 +1138,9 @@ public class CountdownEditorActivity extends Activity {
 		case DIALOG_ID_SET_TIME:
 			return new TimePickerDialog(this, mTimeSetListener, hour,
 					minute, DateTimeFormater.mUse24hour);
+
+        case DIALOG_CREATE_SHORTCUT:
+            return new SelectTaskDialog().createDialog(this);
 		}
 		return null;
 	}
@@ -1230,93 +1247,178 @@ public class CountdownEditorActivity extends Activity {
 		//Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
 		//Log.i(TAG, "data: " + data.toString());
 
-		if (requestCode == REQUEST_CODE_RINGTONE
-				&& resultCode == RESULT_OK) {
-			Bundle bundle = data.getExtras();
-			mRingtoneUri = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-			Log.i(TAG, "New ringtone: " + mRingtoneUri);
-			
-            ContentValues values = new ContentValues();
+		if (resultCode == RESULT_OK) {
+			switch(requestCode) {
+			case REQUEST_CODE_RINGTONE:
+				setRingtone(data);
+				break;
+			case REQUEST_CODE_PICK_AUTOMATION_TASK:
+				startActivityForResult(data, REQUEST_CODE_SET_AUTOMATION_TASK);
+				break;
+			case REQUEST_CODE_PICK_SHORTCUT:
+				addShortcut(data);
+				break;
+			case REQUEST_CODE_SET_AUTOMATION_TASK:
+	            addAutomationTask(data);
+	            break;
+			case REQUEST_CODE_SET_SHORTCUT:
+				addShortcutTask(data);
+				break;
+			case REQUEST_CODE_SET_APPLICATION:
+				addApplicationTask(data);
+	            break;
+			}
+		}
 
-        	values.put(Durations.RING, CHECKED);
-        	
-        	String uristring = null;
-        	if (mRingtoneUri != null) {
-        		uristring = mRingtoneUri.toString();
-        	}
-        	values.put(Durations.RINGTONE, uristring);
-    		
-        	//Log.i(TAG, "Uri: " + mUri.toString());
-        	
-            // Commit all of our changes to persistent storage. When the update completes
-            // the content provider will notify the cursor of the change, which will
-            // cause the UI to be updated.
-            getContentResolver().update(mUri, values, null, null);
+		checkValidAutomateIntent();
+		
+	}
+
+	private void setRingtone(Intent intent) {
+		Bundle bundle = intent.getExtras();
+		mRingtoneUri = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+		Log.i(TAG, "New ringtone: " + mRingtoneUri);
+		
+		ContentValues values = new ContentValues();
+
+		values.put(Durations.RING, CHECKED);
+		
+		String uristring = null;
+		if (mRingtoneUri != null) {
+			uristring = mRingtoneUri.toString();
+		}
+		values.put(Durations.RINGTONE, uristring);
+		
+		//Log.i(TAG, "Uri: " + mUri.toString());
+		
+		// Commit all of our changes to persistent storage. When the update completes
+		// the content provider will notify the cursor of the change, which will
+		// cause the UI to be updated.
+		getContentResolver().update(mUri, values, null, null);
+		
+		mCursor.requery();
+	}
+
+	private void addAutomationTask(Intent intent) {
+		ContentValues values = new ContentValues();
+
+		values.put(Durations.AUTOMATE, CHECKED);
+		
+		if (intent != null) {
+			mAutomateIntent = new Intent(intent);
+			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
+			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
+			
+			if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_DESCRIPTION)) {
+				mAutomateText = mAutomateIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
+				Log.i(TAG, "Received description: " + mAutomateText);
+				values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+			}
+			
+			Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
+			
+		    // Commit all of our changes to persistent storage. When the update completes
+		    // the content provider will notify the cursor of the change, which will
+		    // cause the UI to be updated.
+		    getContentResolver().update(mUri, values, null, null);
+		    
+		    mCursor.requery();
+		} else {
+			// Not a valid intent
+			checkValidAutomateIntent();
+		}
+	}
+	
+	void addShortcut(Intent intent) {
+		// Handle case where user selected "Applications"
+		String applicationName = getResources().getString(R.string.group_applications);
+		String shortcutName = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
+		
+		if (applicationName != null && applicationName.equals(shortcutName)) {
+			Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+			mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+			
+			Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
+			pickIntent.putExtra(Intent.EXTRA_INTENT, mainIntent);
+			
+			// SDK 1.1 backward compatibility:
+            // We launch our own version of ActivityPicker:
+            pickIntent.setClass(this, DialogHostingActivity.class);
+            pickIntent.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, 
+            			DialogHostingActivity.DIALOG_ID_ACTIVITY_PICKER);
             
-            mCursor.requery();
-		} else if (requestCode == REQUEST_CODE_SET_AUTOMATION) {
-			if (resultCode == RESULT_OK) {
-	
-	            ContentValues values = new ContentValues();
-	
-	        	values.put(Durations.AUTOMATE, CHECKED);
-	        	
-	        	if (data != null) {
-		        	mAutomateIntent = new Intent(data);
-		        	//mAutomateIntent.setAction(Intent.ACTION_VIEW);
-		        	values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-	        		Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
-		        	
-		        	if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_DESCRIPTION)) {
-		        		mAutomateText = mAutomateIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
-		        		Log.i(TAG, "Received description: " + mAutomateText);
-		        		values.put(Durations.AUTOMATE_TEXT, mAutomateText);
-		        	}
-		    		
-		        	Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
-		        	
-		            // Commit all of our changes to persistent storage. When the update completes
-		            // the content provider will notify the cursor of the change, which will
-		            // cause the UI to be updated.
-		            getContentResolver().update(mUri, values, null, null);
-		            
-		            mCursor.requery();
-	        	} else {
-	        		// Not a valid intent
-	        		checkValidAutomateIntent();
-	        	}
-			} else {
-				// Change cancelled.
-        		checkValidAutomateIntent();
-			}
-		} else if (requestCode == REQUEST_CODE_SET_AUTOMATION + 99999) {
-			if (resultCode == RESULT_OK) {
-	
-	            ContentValues values = new ContentValues();
-	
-	        	values.put(Durations.AUTOMATE, CHECKED);
-	        	
-	        	if (data != null) {
-		        	mAutomateIntent = new Intent(data);
-		        	mAutomateIntent.setAction(Intent.ACTION_VIEW);
-		        	values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-		    		
-		        	//Log.i(TAG, "Uri: " + mUri.toString());
-		        	
-		            // Commit all of our changes to persistent storage. When the update completes
-		            // the content provider will notify the cursor of the change, which will
-		            // cause the UI to be updated.
-		            getContentResolver().update(mUri, values, null, null);
-		            
-		            mCursor.requery();
-	        	} else {
-	        		// Not a valid intent
-	        		checkValidAutomateIntent();
-	        	}
-			} else {
-				// Change cancelled.
-        		checkValidAutomateIntent();
-			}
+			startActivityForResult(pickIntent, REQUEST_CODE_SET_APPLICATION);
+		} else {
+			startActivityForResult(intent, REQUEST_CODE_SET_SHORTCUT);
+		}
+	}
+
+	private void addShortcutTask(Intent intent) {
+		ContentValues values = new ContentValues();
+
+		values.put(Durations.AUTOMATE, CHECKED);
+		
+		if (intent != null) {
+			mAutomateIntent = intent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
+			mAutomateText = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
+			
+			/// TODO: Save bitmap somewhere?
+			// Bitmap bitmap = data.getParcelableExtra(Intent.EXTRA_SHORTCUT_ICON);
+			 
+			//mAutomateIntent = new Intent(intent);
+			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
+			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+			
+			Log.i(TAG, "automate intent: " + mAutomateIntent.toURI());
+			//Log.i(TAG, "Uri: " + mUri.toString());
+			
+		    // Commit all of our changes to persistent storage. When the update completes
+		    // the content provider will notify the cursor of the change, which will
+		    // cause the UI to be updated.
+		    getContentResolver().update(mUri, values, null, null);
+		    
+		    mCursor.requery();
+		} else {
+			// Not a valid intent
+			checkValidAutomateIntent();
+		}
+	}
+
+	private void addApplicationTask(Intent intent) {
+		ContentValues values = new ContentValues();
+
+		values.put(Durations.AUTOMATE, CHECKED);
+		
+		if (intent != null) {
+			mAutomateIntent = new Intent(intent);
+			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
+			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			
+
+			PackageManager pm = getPackageManager();
+    		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, 0);
+    		
+    		mAutomateText = "";
+    		if (ri != null && ri.size() > 0) {
+    			mAutomateText = ri.get(0).activityInfo.loadLabel(pm).toString();
+    		}
+    		
+    		values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+			
+			Log.i(TAG, "addApplicationTask: " + mAutomateIntent.toURI());
+			//Log.i(TAG, "Uri: " + mUri.toString());
+			
+		    // Commit all of our changes to persistent storage. When the update completes
+		    // the content provider will notify the cursor of the change, which will
+		    // cause the UI to be updated.
+		    getContentResolver().update(mUri, values, null, null);
+		    
+		    mCursor.requery();
+		} else {
+			// Not a valid intent
+			checkValidAutomateIntent();
 		}
 	}
 	

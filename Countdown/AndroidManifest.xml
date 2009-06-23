@@ -18,6 +18,7 @@
       package="org.openintents.countdown"
       android:versionCode="10002"
       android:versionName="1.1.0-beta1">
+    <uses-sdk android:minSdkVersion="2" />
     <!-- History:
     1.1.0-beta1 [10002]: ?
     1.0.1 [10001]: 2008-11-11 -->
@@ -59,7 +60,7 @@
             </intent-filter>
         </activity>
         
-        <activity android:name="CountdownEditorActivity"
+        <activity android:name=".activity.CountdownEditorActivity"
             android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
         >
@@ -139,6 +140,16 @@
         	</intent-filter>
         </receiver>
         
+        <!-- For backward compatibility with SDK 1.1 -->
+		<activity android:name=".activitypicker.DialogHostingActivity"
+			android:label="@string/activity_picker_label"
+			android:theme="@*android:style/Theme.Dialog.Alert">
+			<!-- <intent-filter>
+				<action android:name="android.intent.action.PICK_ACTIVITY" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>  -->
+		</activity>
+ 
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
         <activity android:name="org.openintents.distribution.AboutActivity" android:label="@string/about_title">

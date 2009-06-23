@@ -16,8 +16,8 @@
 
 package org.openintents.countdown.list;
 
-import org.openintents.countdown.CountdownEditorActivity;
 import org.openintents.countdown.R;
+import org.openintents.countdown.activity.CountdownEditorActivity;
 import org.openintents.countdown.automation.AutomationActions;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;

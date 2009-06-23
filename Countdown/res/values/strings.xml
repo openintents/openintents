@@ -90,6 +90,22 @@
 	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
 	<string name="day">day</string>
 	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Applications</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Shortcuts</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Automation tasks</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Select shortcut</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Select activity</string>
+ 
 	<!-- Update -->
 <!-- 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>
 	<string name="market_not_available">Android Market not available.</string>
