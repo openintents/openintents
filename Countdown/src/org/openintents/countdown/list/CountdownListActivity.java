@@ -147,9 +147,6 @@ public class CountdownListActivity extends ListActivity
         CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this, baseUri, showButton);
         
         setListAdapter(adapter);
-
-        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
-        registerReceiver(mReceiver, filter);
     }
 
 
@@ -157,6 +154,9 @@ public class CountdownListActivity extends ListActivity
 	protected void onResume() {
 		super.onResume();
 
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(mReceiver, filter);
+        
 		DateTimeFormater.getFormatFromPreferences(this);
 		
 		// Start periodic update
@@ -166,7 +166,9 @@ public class CountdownListActivity extends ListActivity
     @Override
 	protected void onPause() {
 		super.onPause();
-		
+
+        unregisterReceiver(mReceiver);
+        
 		mHandler.removeMessages(MSG_UPDATE_DISPLAY);
 	}
 
@@ -175,9 +177,6 @@ public class CountdownListActivity extends ListActivity
     @Override
 	protected void onDestroy() {
 		super.onDestroy();
-
-        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
-        registerReceiver(null, filter);
 	}
 
 

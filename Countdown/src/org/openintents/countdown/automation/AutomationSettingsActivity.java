@@ -1,5 +1,7 @@
 package org.openintents.countdown.automation;
 
+import java.net.URISyntaxException;
+
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.intents.AutomationIntents;
@@ -10,9 +12,11 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -24,8 +28,15 @@ public class AutomationSettingsActivity extends Activity {
 	
 	private static final int REQUEST_CODE_PICK_COUNTDOWN = 1;
 	
-	TextView mText;
+	TextView mTextCommand;
+	TextView mTextSelectAction;
+	TextView mTextSelectCountdown;
 	Spinner mSpinnerAction;
+	Button mButtonOk;
+	Button mButtonCountdown;
+	
+	String mDescriptionAction;
+	String mDescriptionCountdown;
 	
 	private Uri mUri;
 
@@ -35,14 +46,34 @@ public class AutomationSettingsActivity extends Activity {
 		
 		setContentView(R.layout.automation_settings);
 		
+		mUri = null;
+		mDescriptionCountdown = "?";
+		
         mSpinnerAction = (Spinner) findViewById(R.id.spinner_action);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.automation_actions, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerAction.setAdapter(adapter);
         
-        Button b = (Button) findViewById(R.id.button_countdown);
-        b.setOnClickListener(new OnClickListener() {
+        mSpinnerAction.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				mDescriptionAction = getResources().getStringArray(R.array.automation_actions)[position];
+				
+				updateTextViews();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				
+			}
+        	
+        });
+        
+        mButtonCountdown = (Button) findViewById(R.id.button_countdown);
+        mButtonCountdown.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -51,8 +82,8 @@ public class AutomationSettingsActivity extends Activity {
         	
         });
         
-        b = (Button) findViewById(R.id.button_ok);
-        b.setOnClickListener(new OnClickListener() {
+        mButtonOk = (Button) findViewById(R.id.button_ok);
+        mButtonOk.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
@@ -61,7 +92,9 @@ public class AutomationSettingsActivity extends Activity {
         	
         });
         
-        b = (Button) findViewById(R.id.button_cancel);
+        mButtonOk.setEnabled(false);
+        
+        Button b = (Button) findViewById(R.id.button_cancel);
         b.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -71,8 +104,47 @@ public class AutomationSettingsActivity extends Activity {
         	
         });
         
-        mText = (TextView) findViewById(R.id.countdown);
-        
+        mTextCommand = (TextView) findViewById(R.id.command);
+        mTextSelectAction = (TextView) findViewById(R.id.select_action);
+        mTextSelectCountdown = (TextView) findViewById(R.id.select_countdown);
+
+		final Intent intent = getIntent();
+		
+		if (intent != null && intent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
+			
+			// Get action
+			try {
+				Intent broadcastIntent = Intent.getIntent(
+						intent.getStringExtra(AutomationIntents.EXTRA_BROADCAST_INTENT));
+				Log.i(TAG, "Broadcast intent: " + broadcastIntent.toURI());
+				
+				String action = broadcastIntent.getAction();
+				Log.i(TAG, "Broadcast action: " + broadcastIntent.getAction());
+				
+				if (CountdownIntents.ACTION_START_COUNTDOWN.equals(action)) {
+					mSpinnerAction.setSelection(0);
+				} else if  (CountdownIntents.ACTION_STOP_COUNTDOWN.equals(action)) {
+					mSpinnerAction.setSelection(1);
+				} else {
+					// set default
+					mSpinnerAction.setSelection(0);
+				}
+				
+
+				// Get countdown:
+				mUri = broadcastIntent.getData();
+				setCountdownFromUri();
+				
+				Log.i(TAG, "Received intent: " + mUri.toString());
+			} catch (URISyntaxException e) {
+				// Not a valid action
+				// Choose default action
+				mSpinnerAction.setSelection(0);
+			}
+			
+		}
+		
+        updateTextViews();
 	}
 	
 	@Override
@@ -104,15 +176,28 @@ public class AutomationSettingsActivity extends Activity {
 				&& resultCode == RESULT_OK) {
 			mUri = intent.getData();
 			
-			// Set the name
-			String title = "";
+			setCountdownFromUri();
+		}
+		
+		updateTextViews();
+	}
+
+	private void setCountdownFromUri() {
+		mDescriptionCountdown = "";
+		
+		if (mUri != null) {
+			mButtonOk.setEnabled(true);
+			
+			// Get name of countdown from content provider
 			Cursor c = getContentResolver().query(mUri, new String[] {Durations._ID, Durations.TITLE}, null, null, null);
 			
 			if (c != null & c.moveToFirst()) {
-				title = c.getString(1);
+				mDescriptionCountdown = c.getString(1);
 			}
-			
-			mText.setText(title);
+		} 
+
+		if (TextUtils.isEmpty(mDescriptionCountdown)) {
+			mDescriptionCountdown = getString(android.R.string.untitled);
 		}
 	}
 	
@@ -142,11 +227,21 @@ public class AutomationSettingsActivity extends Activity {
 		
 		intent.putExtra(AutomationIntents.EXTRA_BROADCAST_INTENT, broadcastIntent.toURI());
 		
-		intent.putExtra(AutomationIntents.EXTRA_DESCRIPTION, mText.getText().toString());
+		String description = mDescriptionAction + ": " + mDescriptionCountdown;
+		intent.putExtra(AutomationIntents.EXTRA_DESCRIPTION, description);
 		
 		Log.i(TAG, "Created intent (URI)   : " + intent.toURI());
 		Log.i(TAG, "Created intent (String): " + intent.toString());
 		
 		setResult(RESULT_OK, intent);
+	}
+	
+	void updateTextViews() {
+		mTextCommand.setText(mDescriptionAction + ": " + mDescriptionCountdown);
+		//mTextSelectAction.setText(getString(R.string.select_action, mDescriptionAction));
+		//mTextSelectCountdown.setText(getString(R.string.select_countdown, mDescriptionCountdown));
+		mTextSelectAction.setText(getString(R.string.select_action, ""));
+		mTextSelectCountdown.setText(getString(R.string.select_countdown, ""));
+		mButtonCountdown.setText(mDescriptionCountdown);
 	}
 }

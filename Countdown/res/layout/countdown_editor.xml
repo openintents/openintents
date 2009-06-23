@@ -110,15 +110,28 @@
     	android:layout_width="fill_parent"
     	android:layout_height="56dip"
         android:layout_marginBottom="10dip" >
-		<CheckBox android:id="@+id/automate"
+		<CheckBox android:id="@+id/automate_checkbox"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
-			android:text="@string/action"
+			android:layout_gravity="center_vertical"
 			/>
-		<Button android:id="@+id/automate_test"
+		<ImageView android:id="@+id/automate_image"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center_vertical"
+			/>
+		<TextView android:id="@+id/automate_text"
+			android:layout_height="wrap_content"
+			android:layout_width="0dip"
+			android:layout_weight="1"
+			android:layout_gravity="center_vertical"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			/>
+		<Button android:id="@+id/automate_button"
 			android:layout_height="wrap_content"
 			android:layout_width="wrap_content"
 			android:text="@string/test"
+			android:layout_gravity="center_vertical"
 			/>
 	</LinearLayout>
 		

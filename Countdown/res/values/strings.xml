@@ -69,8 +69,17 @@
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
 	<string name="action">Action: %s</string>
 	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_action">Select action: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_countdown">Select countdown: %s</string>
+	
 	<!-- Button to test an action. -->
 	<string name="test">Test</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Settings</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Dismiss</string>

@@ -25,7 +25,6 @@ import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
 import org.openintents.intents.AutomationIntents;
-import org.openintents.intents.CountdownIntents;
 import org.openintents.utils.DateTimeFormater;
 
 import android.app.Activity;
@@ -36,7 +35,6 @@ import android.app.TimePickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
-import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -44,12 +42,14 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -59,6 +59,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -122,8 +123,10 @@ public class CountdownEditorActivity extends Activity {
     
     private CheckBox mRingtoneView;
     private CheckBox mVibrateView;
-    private CheckBox mAutomateView;
-    private Button mAutomateTest;
+    private CheckBox mAutomateCheckBox;
+    private Button mAutomateButton;
+    private ImageView mAutomateImage;
+    private TextView mAutomateTextView;
     
     private long mRing;
     private Uri mRingtoneUri;
@@ -328,9 +331,9 @@ public class CountdownEditorActivity extends Activity {
         	
         });
 
-        mAutomateView = (CheckBox) findViewById(R.id.automate);
+        mAutomateCheckBox = (CheckBox) findViewById(R.id.automate_checkbox);
 
-        mAutomateView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        mAutomateCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 			
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
@@ -340,9 +343,9 @@ public class CountdownEditorActivity extends Activity {
         	
         });
         
-        mAutomateTest = (Button) findViewById(R.id.automate_test);
+        mAutomateButton = (Button) findViewById(R.id.automate_button);
 
-        mAutomateTest.setOnClickListener(new View.OnClickListener() {
+        mAutomateButton.setOnClickListener(new View.OnClickListener() {
 
 			
 			public void onClick(View arg0) {
@@ -351,6 +354,19 @@ public class CountdownEditorActivity extends Activity {
         	
         });
         
+        mAutomateTextView = (TextView) findViewById(R.id.automate_text);
+        
+        mAutomateImage = (ImageView) findViewById(R.id.automate_image);
+        
+        // Extend clickable area of checkbox to image and description:
+        View.OnClickListener listener = new View.OnClickListener() {
+			public void onClick(View arg0) {
+				mAutomateCheckBox.performClick();
+			}
+        };
+        
+        mAutomateImage.setOnClickListener(listener);
+        mAutomateTextView.setOnClickListener(listener);
         
         // Get the countdown!
         mCursor = managedQuery(mUri, Durations.PROJECTION, null, null, null);
@@ -361,8 +377,6 @@ public class CountdownEditorActivity extends Activity {
             mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
         }
         
-        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
-        registerReceiver(mReceiver, filter);
         
     }
 
@@ -371,6 +385,9 @@ public class CountdownEditorActivity extends Activity {
         super.onResume();
 
         Log.v(TAG, "onResume()");
+
+        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
+        registerReceiver(mReceiver, filter);
 
 		DateTimeFormater.getFormatFromPreferences(this);
         
@@ -465,6 +482,8 @@ public class CountdownEditorActivity extends Activity {
     protected void onPause() {
         super.onPause();
 
+        unregisterReceiver(mReceiver);
+
         // The user is going somewhere else, so make sure their current
         // changes are safely saved away in the provider.  We don't need
         // to do this if only editing.
@@ -529,8 +548,6 @@ public class CountdownEditorActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 
-        IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
-        registerReceiver(null, filter);
 	}
 
 	@Override
@@ -822,7 +839,11 @@ public class CountdownEditorActivity extends Activity {
 	void startAutomateTest() {
 		if (mAutomateIntent != null) {
 			try {
-				startActivity(mAutomateIntent);
+				Log.i(TAG, "Start intent: " + mAutomateIntent.toURI());
+				//startActivity(mAutomateIntent);
+				
+				// For Settings:
+				startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION);
 			} catch (ActivityNotFoundException e) {
 				// TODO
 			}
@@ -981,10 +1002,7 @@ public class CountdownEditorActivity extends Activity {
     	
     	mVibrateView.setChecked(mVibrate == CHECKED);
     	
-    	mAutomateView.setChecked(mAutomate == CHECKED);
-    	s = getString(R.string.action, "");
-    	mAutomateView.setText(s);
-    	
+    	mAutomateCheckBox.setChecked(mAutomate == CHECKED);
     }
     
     void updateAutomate() {
@@ -994,17 +1012,31 @@ public class CountdownEditorActivity extends Activity {
     		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, PackageManager.MATCH_DEFAULT_ONLY);
 
     		if (ri != null && ri.size() > 0) {
-    			String name = ri.get(0).activityInfo.loadLabel(pm).toString();
-    			
-        		mAutomateView.setText(getString(R.string.action, name));
-        		mAutomateTest.setVisibility(View.VISIBLE);
+    			String description = ri.get(0).activityInfo.loadLabel(pm).toString();
+        		
+        		if (!TextUtils.isEmpty(mAutomateText)) {
+        			description = mAutomateText;
+        		}
+
+    			//mAutomateTextView.setText(getString(R.string.action, description));
+    			mAutomateTextView.setText(description);
+
+    			Drawable icon = ri.get(0).activityInfo.loadIcon(pm);
+        		mAutomateImage.setBackgroundDrawable(icon);
+        		
+        		if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
+        			mAutomateButton.setText(R.string.settings);
+        		} else {
+        			mAutomateButton.setText(R.string.test);
+        		}
+        		mAutomateButton.setVisibility(View.VISIBLE);
         		return;
     		}
     	}
     	
     	// if we arrive here, no valid intent is specified.
-    	mAutomateView.setText(getString(R.string.action, ""));
-    	mAutomateTest.setVisibility(View.GONE);
+    	mAutomateTextView.setText(getString(R.string.action, ""));
+    	mAutomateButton.setVisibility(View.GONE);
     }
     
     private void setRing(boolean checked) {
@@ -1195,8 +1227,8 @@ public class CountdownEditorActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
-		Log.i(TAG, "data: " + data.toString());
+		//Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		//Log.i(TAG, "data: " + data.toString());
 
 		if (requestCode == REQUEST_CODE_RINGTONE
 				&& resultCode == RESULT_OK) {
@@ -1233,8 +1265,15 @@ public class CountdownEditorActivity extends Activity {
 		        	mAutomateIntent = new Intent(data);
 		        	//mAutomateIntent.setAction(Intent.ACTION_VIEW);
 		        	values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+	        		Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
+		        	
+		        	if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_DESCRIPTION)) {
+		        		mAutomateText = mAutomateIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
+		        		Log.i(TAG, "Received description: " + mAutomateText);
+		        		values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+		        	}
 		    		
-		        	Log.i(TAG, "Uri: " + mAutomateIntent.toURI().toString());
+		        	Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
 		        	
 		            // Commit all of our changes to persistent storage. When the update completes
 		            // the content provider will notify the cursor of the change, which will

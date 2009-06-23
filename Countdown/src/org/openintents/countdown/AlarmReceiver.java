@@ -147,7 +147,7 @@ import org.openintents.intents.AutomationIntents;
         	}
         }
 
-        if (automate != 0) {
+        if (automate != 0 && automateIntent != null) {
         	boolean containsAutomationIntent = false;
         	
         	if (automateIntent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
