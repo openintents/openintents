@@ -1,8 +1,10 @@
 package org.openintents.countdown.automation;
 
+import org.openintents.countdown.activity.CountdownEditorActivity;
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -45,4 +47,18 @@ public class AutomationActions {
 		cr.update(uri, values, null, null);
 	}
 
+	public static void stopCountdown(Context context, Uri uri) {
+
+		CountdownEditorActivity.cancelNotification(context, uri);
+		
+        NotificationState.stop(uri);
+
+		ContentResolver cr = context.getContentResolver();
+		
+		// Write back modification
+		ContentValues values = new ContentValues();
+		values.put(Durations.DEADLINE_DATE, 0);
+		
+		cr.update(uri, values, null, null);
+	}
 }

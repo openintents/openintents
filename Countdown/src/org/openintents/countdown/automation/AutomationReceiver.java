@@ -25,7 +25,15 @@ public class AutomationReceiver extends BroadcastReceiver {
 				// Launch that countdown:
 				Log.i(TAG, "Launch countdown " + data);
 				AutomationActions.startCountdown(context, data);
-				
+			}
+		}
+
+		if (CountdownIntents.ACTION_STOP_COUNTDOWN.equals(action)) {
+			// Start countdown.
+			if (data != null) {
+				// Launch that countdown:
+				Log.i(TAG, "Stop countdown " + data);
+				AutomationActions.stopCountdown(context, data);
 			}
 		}
 		

@@ -62,14 +62,18 @@ public final class Countdown {
         public static final String TITLE = "title";
 
         /**
-         * Duration in seconds
+         * Duration in seconds for this countdown.
+         * 
+         * Alternatively USER_DEADLINE_DATE can be set below
+         * which has precedence.
+         * 
          * <P>Type: INTEGER</P>
          */
         public static final String DURATION = "duration";
 
         /**
          * The deadline for this timer.
-         * (If this is in the past, timer is inactive).
+         * (If this is 0, timer is inactive).
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          */
         public static final String DEADLINE_DATE = "deadline";
@@ -105,8 +109,11 @@ public final class Countdown {
         public static final String MODIFIED_DATE = "modified";
 
         /**
-         * The deadline for this timer.
-         * (If this is in the past, timer is inactive)
+         * The deadline set to a specific date.
+         * This is an alternative way to set a countdown
+         * instead of specifying 'DURATION'.
+         * If this is > 0, it overrides the 'DURATION' value.
+         * 
          * <P>Type: INTEGER (long from System.curentTimeMillis())</P>
          * @version Database version 2
          */

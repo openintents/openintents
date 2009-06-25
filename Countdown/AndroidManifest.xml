@@ -157,6 +157,15 @@
         
         <receiver android:name=".AlarmReceiver" />
         <receiver android:name=".AlarmCancelReceiver" />
+        
+		<receiver android:name=".AlarmInitReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+				<action android:name="android.intent.action.TIME_SET" />
+				<action android:name="android.intent.action.TIMEZONE_CHANGED" />
+			</intent-filter>
+		</receiver>
+		
         <service android:name=".AlarmService" />
         <!--  android:process=":remote" -->
         

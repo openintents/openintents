@@ -122,6 +122,15 @@ public class CountdownProvider extends ContentProvider {
 	            		// as this happens after upgrading 1->2, then downgrading 2->1, 
 	            		// and then upgrading again 1->2.
 	            	}
+	            	
+	            	// Set Durations to 0 for all old tasks
+	            	// Otherwise with the next reboot, all old countdowns are started again.
+	            	long now = System.currentTimeMillis();
+	            	ContentValues values = new ContentValues();
+	            	values.put(Durations.DEADLINE_DATE, 0);
+	                db.update(DURATIONS_TABLE_NAME, values, Durations.DEADLINE_DATE + " < " + now, null);
+	                
+	            	
 	            	// fall through for further upgrades.
 	            /*
 	            case 2:
@@ -141,6 +150,7 @@ public class CountdownProvider extends ContentProvider {
         }
     }
 
+    
     private DatabaseHelper mOpenHelper;
 
     @Override

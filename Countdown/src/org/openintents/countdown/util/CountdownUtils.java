@@ -116,7 +116,7 @@ public class CountdownUtils {
 	}
 	
 	/**
-	 * Get the pending intent for setting or cancelling the alarm.
+	 * Get the pending intent for setting or canceling the alarm.
 	 * @param context
 	 * @param uri
 	 * @return

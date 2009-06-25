@@ -359,36 +359,6 @@ public class CountdownListActivity extends ListActivity
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		
 		AutomationActions.startCountdown(this, uri);
-		/*
-        // Get the data
-        Cursor c = getContentResolver().query(uri, Durations.PROJECTION, null, null,
-                Countdown.Durations.DEFAULT_SORT_ORDER);
-		
-    	long now = System.currentTimeMillis();
-    	
-    	long duration = 0;
-    	long userdeadline = 0;
-    	
-    	if (c != null) {
-        	c.moveToFirst();
-        	duration = c.getLong(c.getColumnIndexOrThrow(Durations.DURATION));
-        	userdeadline = c.getLong(c.getColumnIndexOrThrow(Durations.USER_DEADLINE_DATE));
-    	}
-		
-    	long deadline = now + duration;
-    	
-    	if (userdeadline > 0) {
-    		deadline = userdeadline;
-    	}
-    	
-    	CountdownUtils.setAlarm(this, uri, deadline);
-    	
-    	// Write back modification
-    	ContentValues values = new ContentValues();
-    	values.put(Durations.DEADLINE_DATE, deadline);
-    	
-        getContentResolver().update(uri, values, null, null);
-        */
         
         mCursor.requery();
     	
@@ -402,8 +372,7 @@ public class CountdownListActivity extends ListActivity
 	private void dismissCountdown(long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		
-		CountdownEditorActivity.cancelNotification(this, uri);
-        NotificationState.stop(uri);
+		AutomationActions.stopCountdown(this, uri);
 
 		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));
 	}

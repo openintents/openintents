@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2007 The Android Open Source Project
+/* 
+ * Copyright (C) 2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// Code partly based on 
+// Copyright (C) 2007 The Android Open Source Project
+// licensed under the same license.
 
 package org.openintents.countdown;
 
