@@ -141,7 +141,7 @@
         </receiver>
         
         <!-- For backward compatibility with SDK 1.1 -->
-		<activity android:name=".activitypicker.DialogHostingActivity"
+		<activity android:name="org.openintents.compatibility.activitypicker.DialogHostingActivity"
 			android:label="@string/activity_picker_label"
 			android:theme="@*android:style/Theme.Dialog.Alert">
 			<!-- <intent-filter>

@@ -2,8 +2,8 @@ package org.openintents.countdown.activity;
 
 import java.util.ArrayList;
 
+import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.R;
-import org.openintents.countdown.activitypicker.DialogHostingActivity;
 import org.openintents.intents.AutomationIntents;
 import org.openintents.utils.SDKVersion;
 
@@ -30,6 +30,13 @@ public class SelectTaskDialog implements DialogInterface.OnClickListener,
     private AddAdapter mAdapter;
     private Activity mActivity;
 
+
+	/**
+	 * Show the option to choose either "Shortcuts"
+	 * or "Automation tasks".
+	 * 
+	 * @param intent
+	 */
     Dialog createDialog(Activity activity) {
     	mActivity = activity;
         mAdapter = new AddAdapter(mActivity);
@@ -51,7 +58,7 @@ public class SelectTaskDialog implements DialogInterface.OnClickListener,
     }
 
     private void cleanup() {
-        mActivity.dismissDialog(CountdownEditorActivity.DIALOG_CREATE_SHORTCUT);
+        mActivity.dismissDialog(CountdownEditorActivity.DIALOG_SET_AUTOMATION);
     }
 
     /**
@@ -103,7 +110,7 @@ public class SelectTaskDialog implements DialogInterface.OnClickListener,
                 pickIntent.putExtra(Intent.EXTRA_INTENT,
                         new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS));
                 pickIntent.putExtra(Intent.EXTRA_TITLE,
-                        mActivity.getText(R.string.title_select_shortcut));
+                        mActivity.getText(R.string.title_select_automation_task));
 
                 if (SDKVersion.SDKVersion < 3) {
                 	if (debug) Log.i(TAG, "Compatibility mode for ActivityPicker");

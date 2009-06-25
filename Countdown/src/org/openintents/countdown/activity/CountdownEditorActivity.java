@@ -20,12 +20,12 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.List;
 
+import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.AlarmService;
 import org.openintents.countdown.R;
 import org.openintents.countdown.R.id;
 import org.openintents.countdown.R.layout;
 import org.openintents.countdown.R.string;
-import org.openintents.countdown.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
@@ -106,7 +106,7 @@ public class CountdownEditorActivity extends Activity {
 
 	static final int DIALOG_ID_SET_DATE = 1;
 	static final int DIALOG_ID_SET_TIME = 2;
-    static final int DIALOG_CREATE_SHORTCUT = 3;
+    static final int DIALOG_SET_AUTOMATION = 3;
     
     private int mState;
     private Uri mUri;
@@ -350,7 +350,7 @@ public class CountdownEditorActivity extends Activity {
 
 			
 			public void onCheckedChanged(CompoundButton view, boolean checked) {
-				setAutomate(checked);
+				setAutomateChecked(checked);
 			}
 
         	
@@ -839,6 +839,9 @@ public class CountdownEditorActivity extends Activity {
     	updateViews();
     }
 
+    /**
+     * Pick a new automation from a list of choices.
+     */
 	void setAutomation() {
 		
         //Intent intent = new Intent(Intent.ACTION_PICK);
@@ -849,7 +852,7 @@ public class CountdownEditorActivity extends Activity {
 //		startActivityForResult(intent, REQUEST_CODE_SET_AUTOMATION);
 		
 
-        showDialog(DIALOG_CREATE_SHORTCUT);
+        showDialog(DIALOG_SET_AUTOMATION);
 	}
 
 	void startAutomateTest() {
@@ -859,7 +862,7 @@ public class CountdownEditorActivity extends Activity {
 				//startActivity(mAutomateIntent);
 				
 				// For Settings:
-				startActivityForResult(mAutomateIntent, REQUEST_CODE_PICK_AUTOMATION_TASK);
+				startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION_TASK);
 			} catch (ActivityNotFoundException e) {
 				// TODO
 			}
@@ -1021,6 +1024,10 @@ public class CountdownEditorActivity extends Activity {
     	mAutomateCheckBox.setChecked(mAutomate == CHECKED);
     }
     
+    /**
+     * Update the display of icon and text for the currently
+     * selected automation task.
+     */
     void updateAutomate() {
     	PackageManager pm = getPackageManager();
     	
@@ -1088,9 +1095,11 @@ public class CountdownEditorActivity extends Activity {
 	}
 
 	/**
+	 * Set the internal state after user clicked the
+	 * checkbox.
 	 * @param checked
 	 */
-	private void setAutomate(boolean checked) {
+	private void setAutomateChecked(boolean checked) {
 		if (checked) {
 			mAutomate = CHECKED;
 		} else {
@@ -1141,7 +1150,7 @@ public class CountdownEditorActivity extends Activity {
 			return new TimePickerDialog(this, mTimeSetListener, hour,
 					minute, DateTimeFormater.mUse24hour);
 
-        case DIALOG_CREATE_SHORTCUT:
+        case DIALOG_SET_AUTOMATION:
             return new SelectTaskDialog().createDialog(this);
 		}
 		return null;
@@ -1301,6 +1310,12 @@ public class CountdownEditorActivity extends Activity {
 		mCursor.requery();
 	}
 
+	/**
+	 * Add a new automation task based on the details
+	 * provided in the intent.
+	 * 
+	 * @param intent
+	 */
 	private void addAutomationTask(Intent intent) {
 		ContentValues values = new ContentValues();
 
@@ -1332,6 +1347,19 @@ public class CountdownEditorActivity extends Activity {
 		}
 	}
 	
+	/**
+	 * From the list of shortcuts, user selected either
+	 * "Application" or a shortcut.
+	 * 
+	 * In the case of application, launch a PICK_ACTIVITY
+	 * over all available applications.
+	 * 
+	 * In the case of a shortcut, launch the shortcut
+	 * receiver to obtain the more detailed shortcut
+	 * extras.
+	 * 
+	 * @param intent
+	 */
 	void addShortcut(Intent intent) {
 		// Handle case where user selected "Applications"
 		String applicationName = getResources().getString(R.string.group_applications);
@@ -1361,6 +1389,11 @@ public class CountdownEditorActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Add a new shortcut task from the shortcut picked
+	 * in the intent.
+	 * @param intent
+	 */
 	private void addShortcutTask(Intent intent) {
 		ContentValues values = new ContentValues();
 
@@ -1393,6 +1426,11 @@ public class CountdownEditorActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Add a new application task from the application
+	 * picked in the intent.
+	 * @param intent
+	 */
 	private void addApplicationTask(Intent intent) {
 		ContentValues values = new ContentValues();
 
@@ -1432,7 +1470,7 @@ public class CountdownEditorActivity extends Activity {
 	void checkValidAutomateIntent() {
 		if (mAutomateIntent == null) {
 			// Unset check box.
-			setAutomate(false);
+			setAutomateChecked(false);
 		}
 	}
 	
