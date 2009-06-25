@@ -2,11 +2,19 @@
 <resources>
     <string name="hello">Hello World, LocaleBridge!</string>
     <string name="app_name">OI Locale bridge</string>
+    
+    <!-- Title of the OI Locale bridge when being shown to include a Locale setting -->
     <string name="locale_setting">Locale setting</string>
+    
+    <!-- Title of the OI Locale bridge when being shown to include an automation task -->
+    <string name="automation_task">Automation task</string>
     
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Select activity</string>
  
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
 	<string name="title_select_locale_setting">Select locale setting</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Select automation task</string>
 </resources>

@@ -13,6 +13,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+/**
+ * Present Locale settings to applications that only understand OI automation tasks.
+ * 
+ * @author Peli
+ *
+ */
 public class LocaleBridge extends Activity {
 	private static final String TAG = "LocaleBridge";
 	private static final boolean debug = true;
@@ -103,8 +109,8 @@ public class LocaleBridge extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
-		Log.i(TAG, "data: " + data.toURI());
+		//Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		//Log.i(TAG, "data: " + data.toURI());
 
 		if (resultCode == RESULT_OK) {
 			switch(requestCode) {
