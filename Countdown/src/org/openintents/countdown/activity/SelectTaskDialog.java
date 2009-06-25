@@ -55,6 +55,9 @@ public class SelectTaskDialog implements DialogInterface.OnClickListener,
 
     public void onCancel(DialogInterface dialog) {
         cleanup();
+        
+        // The following is not so nice - codewise...
+        ((CountdownEditorActivity) mActivity).checkValidAutomateIntent();
     }
 
     private void cleanup() {

@@ -23,9 +23,6 @@ import java.util.List;
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.AlarmService;
 import org.openintents.countdown.R;
-import org.openintents.countdown.R.id;
-import org.openintents.countdown.R.layout;
-import org.openintents.countdown.R.string;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
@@ -48,6 +45,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.media.Ringtone;
@@ -84,8 +82,8 @@ public class CountdownEditorActivity extends Activity {
     private static final String ORIGINAL_CONTENT = "origContent";
 
     // Identifiers for our menu items.
-    private static final int REVERT_ID = Menu.FIRST;
-    private static final int DISCARD_ID = Menu.FIRST + 1;
+    //private static final int REVERT_ID = Menu.FIRST;
+    //private static final int DISCARD_ID = Menu.FIRST + 1;
     private static final int MENU_DELETE = Menu.FIRST + 2;
     private static final int MENU_PICK_RINGTONE = Menu.FIRST + 3;
     private static final int MENU_CHANGE_COUNTDOWN_MODE = Menu.FIRST + 4;
@@ -403,19 +401,32 @@ public class CountdownEditorActivity extends Activity {
         registerReceiver(mReceiver, filter);
 
 		DateTimeFormater.getFormatFromPreferences(this);
+
+        // Modify our overall title depending on the mode we are running in.
+        if (mState == STATE_EDIT) {
+            setTitle(getText(R.string.title_edit));
+        } else if (mState == STATE_INSERT) {
+            setTitle(getText(R.string.title_create));
+        }
         
-        // If we didn't have any trouble retrieving the data, it is now
+        if (mCursor != null) {
+        	mCursor.requery();
+            readFieldsFromCursor();
+        }
+        
+        // Register a content observer
+        getContentResolver().registerContentObserver(mUri, true, mContentObserver);
+    }
+
+	private void readFieldsFromCursor() {
+		
+		// If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
         if (mCursor != null) {
+        	if (debug) Log.i(TAG, "readFieldsFromCursor");
+    		
             // Make sure we are at the one and only row in the cursor.
             mCursor.moveToFirst();
-
-            // Modify our overall title depending on the mode we are running in.
-            if (mState == STATE_EDIT) {
-                setTitle(getText(R.string.title_edit));
-            } else if (mState == STATE_INSERT) {
-                setTitle(getText(R.string.title_create));
-            }
 
             // This is a little tricky: we may be resumed after previously being
             // paused/stopped.  We want to put the new text in the text view,
@@ -459,6 +470,8 @@ public class CountdownEditorActivity extends Activity {
 
             uristring = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
             //Log.i(TAG, "onResume Ringtone: " + uristring);
+            
+            Log.i(TAG, "mAutomateIntent before read: " + mAutomateIntent);
             if (uristring != null) {
             	try {
 					mAutomateIntent = Intent.getIntent(uristring);
@@ -468,6 +481,7 @@ public class CountdownEditorActivity extends Activity {
             } else {
             	mAutomateIntent = null;
             }
+            Log.i(TAG, "mAutomateIntent after read:  " + mAutomateIntent);
 
             mAutomateText = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
             
@@ -482,8 +496,8 @@ public class CountdownEditorActivity extends Activity {
             setTitle(getText(R.string.error_title));
             mText.setText(getText(R.string.error_message));
         }
-    }
-
+	}
+    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         // Save away the original text, so we still have it if the activity
@@ -496,11 +510,25 @@ public class CountdownEditorActivity extends Activity {
         super.onPause();
 
         unregisterReceiver(mReceiver);
+        
+        getContentResolver().unregisterContentObserver(mContentObserver);
 
-        // The user is going somewhere else, so make sure their current
+        writeFieldsToCursor();
+        
+        // Cancel notifications
+        mHandler.removeMessages(MSG_UPDATE_DISPLAY);
+        
+        // Cancel sound or vibrator notifications
+        cancelThisNotification();
+    }
+
+	private void writeFieldsToCursor() {
+		// The user is going somewhere else, so make sure their current
         // changes are safely saved away in the provider.  We don't need
         // to do this if only editing.
         if (mCursor != null) {
+        	
+        	if (debug) Log.i(TAG, "writeFieldsToCursor");
             
             ContentValues values = new ContentValues();
 
@@ -541,19 +569,19 @@ public class CountdownEditorActivity extends Activity {
         	
         	values.put(Durations.VIBRATE, mVibrate);
         	Log.i(TAG, "Vibrate: " + mVibrate);
-    		
+        	
+        	values.put(Durations.AUTOMATE, mAutomate);
+        	if (mAutomateIntent != null) {
+        		values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+        	}
+    		values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+
             // Commit all of our changes to persistent storage. When the update completes
             // the content provider will notify the cursor of the change, which will
             // cause the UI to be updated.
             getContentResolver().update(mUri, values, null, null);
         }
-        
-        // Cancel notifications
-        mHandler.removeMessages(MSG_UPDATE_DISPLAY);
-        
-        // Cancel sound or vibrator notifications
-        cancelThisNotification();
-    }
+	}
     
     
 
@@ -634,12 +662,12 @@ public class CountdownEditorActivity extends Activity {
             deleteNote();
             finish();
             break;
-        case DISCARD_ID:
-            cancelNote();
-            break;
-        case REVERT_ID:
-            cancelNote();
-            break;
+        //case DISCARD_ID:
+        //    cancelNote();
+        //    break;
+        //case REVERT_ID:
+        //    cancelNote();
+        //    break;
         case MENU_PICK_RINGTONE:
         	pickRingtone();
         	break;
@@ -657,6 +685,7 @@ public class CountdownEditorActivity extends Activity {
      * Take care of canceling work on a note.  Deletes the note if we
      * had created it, otherwise reverts to the original text.
      */
+	/*
     private final void cancelNote() {
         if (mCursor != null) {
             if (mState == STATE_EDIT) {
@@ -674,6 +703,7 @@ public class CountdownEditorActivity extends Activity {
         setResult(RESULT_CANCELED);
         finish();
     }
+    */
 
     /**
      * Take care of deleting a note.  Simply deletes the entry.
@@ -949,11 +979,14 @@ public class CountdownEditorActivity extends Activity {
     		
     		if (delta < 2000) {
     			// Save the text as the notification may go off soon:
+    			/*
     	        ContentValues values = new ContentValues();
     	    	values.put(Durations.TITLE, mText.getText().toString());
     	    	
     	        getContentResolver().update(mUri, values, null, null);
-    	        mCursor.requery();
+    	        */
+    			writeFieldsToCursor();
+    	        //mCursor.requery();
     		}
 		}/* else if (delta > -3000) {
 			mCountdownState = STATE_COUNTDOWN_RUNNING;
@@ -1030,13 +1063,15 @@ public class CountdownEditorActivity extends Activity {
      */
     void updateAutomate() {
     	PackageManager pm = getPackageManager();
+    	if (debug) Log.i(TAG, "updateAutomate display: " + mAutomateIntent);
     	
     	if (mAutomateIntent != null) {
     		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, PackageManager.MATCH_DEFAULT_ONLY);
 
     		if (ri != null && ri.size() > 0) {
     			String description = ri.get(0).activityInfo.loadLabel(pm).toString();
-        		
+    			if (debug) Log.i(TAG, "label: " + description);
+    	    	
         		if (!TextUtils.isEmpty(mAutomateText)) {
         			description = mAutomateText;
         		}
@@ -1069,11 +1104,14 @@ public class CountdownEditorActivity extends Activity {
 			mRing = UNCHECKED;
 		}
 
+    	/*
         ContentValues values = new ContentValues();
     	values.put(Durations.RING, mRing);
     	
         getContentResolver().update(mUri, values, null, null);
-        mCursor.requery();
+        */
+    	writeFieldsToCursor();
+        //mCursor.requery();
     }
     
 
@@ -1087,11 +1125,14 @@ public class CountdownEditorActivity extends Activity {
 			mVibrate = UNCHECKED;
 		}
 
+		/*
         ContentValues values = new ContentValues();
     	values.put(Durations.VIBRATE, mVibrate);
     	
         getContentResolver().update(mUri, values, null, null);
         mCursor.requery();
+        */
+    	writeFieldsToCursor();
 	}
 
 	/**
@@ -1106,11 +1147,14 @@ public class CountdownEditorActivity extends Activity {
 			mAutomate = UNCHECKED;
 		}
 
+		/*
         ContentValues values = new ContentValues();
     	values.put(Durations.AUTOMATE, mAutomate);
     	
         getContentResolver().update(mUri, values, null, null);
         mCursor.requery();
+        */
+    	writeFieldsToCursor();
         
         if (mAutomate == CHECKED && mAutomateIntent == null) {
         	// Ask for suitable action.
@@ -1251,11 +1295,31 @@ public class CountdownEditorActivity extends Activity {
 		
 	};
 
+    ContentObserver mContentObserver = new ContentObserver(mHandler) {
+
+		@Override
+		public boolean deliverSelfNotifications() {
+			return super.deliverSelfNotifications();
+		}
+
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			Log.i(TAG, "Content changed. " + selfChange);
+			
+			if (mCursor != null && !mCursor.isClosed()) {
+				mCursor.requery();
+				readFieldsFromCursor();
+			}
+		}
+    	
+    };
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		//Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
 		//Log.i(TAG, "data: " + data.toString());
 
 		if (resultCode == RESULT_OK) {
@@ -1290,6 +1354,7 @@ public class CountdownEditorActivity extends Activity {
 		mRingtoneUri = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
 		Log.i(TAG, "New ringtone: " + mRingtoneUri);
 		
+		/*
 		ContentValues values = new ContentValues();
 
 		values.put(Durations.RING, CHECKED);
@@ -1308,6 +1373,8 @@ public class CountdownEditorActivity extends Activity {
 		getContentResolver().update(mUri, values, null, null);
 		
 		mCursor.requery();
+		*/
+    	writeFieldsToCursor();
 	}
 
 	/**
@@ -1317,20 +1384,20 @@ public class CountdownEditorActivity extends Activity {
 	 * @param intent
 	 */
 	private void addAutomationTask(Intent intent) {
-		ContentValues values = new ContentValues();
+		//ContentValues values = new ContentValues();
 
-		values.put(Durations.AUTOMATE, CHECKED);
+		//values.put(Durations.AUTOMATE, CHECKED);
 		
 		if (intent != null) {
 			mAutomateIntent = new Intent(intent);
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
-			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
 			Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
 			
 			if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_DESCRIPTION)) {
 				mAutomateText = mAutomateIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
 				Log.i(TAG, "Received description: " + mAutomateText);
-				values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+				//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			}
 			
 			Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
@@ -1338,9 +1405,11 @@ public class CountdownEditorActivity extends Activity {
 		    // Commit all of our changes to persistent storage. When the update completes
 		    // the content provider will notify the cursor of the change, which will
 		    // cause the UI to be updated.
-		    getContentResolver().update(mUri, values, null, null);
+		    //getContentResolver().update(mUri, values, null, null);
 		    
-		    mCursor.requery();
+		    //mCursor.requery();
+
+	    	writeFieldsToCursor();
 		} else {
 			// Not a valid intent
 			checkValidAutomateIntent();
@@ -1395,9 +1464,9 @@ public class CountdownEditorActivity extends Activity {
 	 * @param intent
 	 */
 	private void addShortcutTask(Intent intent) {
-		ContentValues values = new ContentValues();
+		//ContentValues values = new ContentValues();
 
-		values.put(Durations.AUTOMATE, CHECKED);
+		//values.put(Durations.AUTOMATE, CHECKED);
 		
 		if (intent != null) {
 			mAutomateIntent = intent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
@@ -1408,8 +1477,8 @@ public class CountdownEditorActivity extends Activity {
 			 
 			//mAutomateIntent = new Intent(intent);
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
-			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-			values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			
 			Log.i(TAG, "automate intent: " + mAutomateIntent.toURI());
 			//Log.i(TAG, "Uri: " + mUri.toString());
@@ -1417,9 +1486,11 @@ public class CountdownEditorActivity extends Activity {
 		    // Commit all of our changes to persistent storage. When the update completes
 		    // the content provider will notify the cursor of the change, which will
 		    // cause the UI to be updated.
-		    getContentResolver().update(mUri, values, null, null);
+		    //getContentResolver().update(mUri, values, null, null);
 		    
-		    mCursor.requery();
+		    //mCursor.requery();
+
+	    	writeFieldsToCursor();
 		} else {
 			// Not a valid intent
 			checkValidAutomateIntent();
@@ -1432,14 +1503,14 @@ public class CountdownEditorActivity extends Activity {
 	 * @param intent
 	 */
 	private void addApplicationTask(Intent intent) {
-		ContentValues values = new ContentValues();
+		//ContentValues values = new ContentValues();
 
-		values.put(Durations.AUTOMATE, CHECKED);
+		//values.put(Durations.AUTOMATE, CHECKED);
 		
 		if (intent != null) {
 			mAutomateIntent = new Intent(intent);
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
-			values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
+			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
 			
 
 			PackageManager pm = getPackageManager();
@@ -1450,17 +1521,20 @@ public class CountdownEditorActivity extends Activity {
     			mAutomateText = ri.get(0).activityInfo.loadLabel(pm).toString();
     		}
     		
-    		values.put(Durations.AUTOMATE_TEXT, mAutomateText);
+    		//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			
 			Log.i(TAG, "addApplicationTask: " + mAutomateIntent.toURI());
+			Log.i(TAG, "addApplicationTask: " + mAutomateText);
 			//Log.i(TAG, "Uri: " + mUri.toString());
 			
 		    // Commit all of our changes to persistent storage. When the update completes
 		    // the content provider will notify the cursor of the change, which will
 		    // cause the UI to be updated.
-		    getContentResolver().update(mUri, values, null, null);
+		    //getContentResolver().update(mUri, values, null, null);
 		    
-		    mCursor.requery();
+		    //mCursor.requery();
+
+	    	writeFieldsToCursor();
 		} else {
 			// Not a valid intent
 			checkValidAutomateIntent();
@@ -1468,6 +1542,7 @@ public class CountdownEditorActivity extends Activity {
 	}
 	
 	void checkValidAutomateIntent() {
+		Log.i(TAG, "checkValidAutomateIntent; " + mAutomateIntent);
 		if (mAutomateIntent == null) {
 			// Unset check box.
 			setAutomateChecked(false);
