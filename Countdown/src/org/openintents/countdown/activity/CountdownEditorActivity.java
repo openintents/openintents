@@ -190,7 +190,7 @@ public class CountdownEditorActivity extends Activity {
             mState = STATE_EDIT;
             mUri = intent.getData();
             
-            cancelThisNotification();
+            //cancelThisNotification();
             
         } else if (Intent.ACTION_INSERT.equals(action)) {
             // Requested to insert: set that state, and create a new entry
@@ -519,7 +519,7 @@ public class CountdownEditorActivity extends Activity {
         mHandler.removeMessages(MSG_UPDATE_DISPLAY);
         
         // Cancel sound or vibrator notifications
-        cancelThisNotification();
+        //cancelThisNotification();
     }
 
 	private void writeFieldsToCursor() {
@@ -737,6 +737,7 @@ public class CountdownEditorActivity extends Activity {
 
     	setAlarm(mDeadline);
     	
+    	writeFieldsToCursor();
     	updateViews();
     }
 
@@ -752,8 +753,10 @@ public class CountdownEditorActivity extends Activity {
     	//finish();
 
     	cancelAlarm();
+        cancelThisNotification();
     	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     	
+    	writeFieldsToCursor();
     	updateViews();
     }
 
@@ -821,14 +824,19 @@ public class CountdownEditorActivity extends Activity {
     	mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     	
     	setAlarm(mDeadline);
+
+    	writeFieldsToCursor();
     	updateViews();
     }
     
     private final void dismiss() {
     	mCountdownState = STATE_COUNTDOWN_IDLE;
-    	
+
+    	mDeadline = 0;
+    	cancelAlarm();
         cancelThisNotification();
 
+    	writeFieldsToCursor();
     	updateViews();
     }
     
@@ -952,7 +960,7 @@ public class CountdownEditorActivity extends Activity {
 		
 		//mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 
-		if (NotificationState.isActive(mUri)) {
+		if (NotificationState.isActive(mUri) || (delta < 0 && mDeadline > 0)) {
 			Log.v(TAG, "isActive");
 			// Show dismiss button
 			mCountdownState = STATE_COUNTDOWN_DISMISS;
@@ -961,6 +969,8 @@ public class CountdownEditorActivity extends Activity {
 			setSettingVisibility(View.INVISIBLE);
 			mCountdownView.setVisibility(View.VISIBLE);
 			mCountdownView.setText("" + CountdownUtils.getDurationString(0));
+			mCountdownView.setTextAppearance(this, android.R.style.TextAppearance_Large);
+			mCountdownView.setTextSize(64);
 			mCountdownView.setTextColor(0xffff0000);
 
 		} else if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
