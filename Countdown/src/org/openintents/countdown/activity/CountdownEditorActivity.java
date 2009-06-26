@@ -1402,6 +1402,7 @@ public class CountdownEditorActivity extends Activity {
 		//ContentValues values = new ContentValues();
 
 		//values.put(Durations.AUTOMATE, CHECKED);
+		mAutomate = CHECKED;
 		
 		if (intent != null) {
 			mAutomateIntent = new Intent(intent);
@@ -1482,6 +1483,7 @@ public class CountdownEditorActivity extends Activity {
 		//ContentValues values = new ContentValues();
 
 		//values.put(Durations.AUTOMATE, CHECKED);
+		mAutomate = CHECKED;
 		
 		if (intent != null) {
 			mAutomateIntent = intent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
@@ -1521,6 +1523,7 @@ public class CountdownEditorActivity extends Activity {
 		//ContentValues values = new ContentValues();
 
 		//values.put(Durations.AUTOMATE, CHECKED);
+		mAutomate = CHECKED;
 		
 		if (intent != null) {
 			mAutomateIntent = new Intent(intent);
