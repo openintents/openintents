@@ -433,7 +433,9 @@ public class CountdownEditorActivity extends Activity {
             // but leave the user where they were (retain the cursor position
             // etc).  This version of setText does that for us.
             String title = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.TITLE));
-            mText.setTextKeepState(title);
+            if (!title.equals(mText.getText().toString())) {
+            	mText.setTextKeepState(title);
+            }
             
             // If we hadn't previously retrieved the original text, do so
             // now.  This allows the user to revert their changes.
@@ -484,7 +486,7 @@ public class CountdownEditorActivity extends Activity {
             Log.i(TAG, "mAutomateIntent after read:  " + mAutomateIntent);
 
             mAutomateText = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
-            if (!TextUtils.isEmpty(mAutomateText)) {
+            if (!TextUtils.isEmpty(mAutomateText) && !mAutomateText.equals(mText.getHint())) {
             	mText.setHint(mAutomateText);
             }
             
