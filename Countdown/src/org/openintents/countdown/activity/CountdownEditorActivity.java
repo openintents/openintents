@@ -484,6 +484,9 @@ public class CountdownEditorActivity extends Activity {
             Log.i(TAG, "mAutomateIntent after read:  " + mAutomateIntent);
 
             mAutomateText = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
+            if (!TextUtils.isEmpty(mAutomateText)) {
+            	mText.setHint(mAutomateText);
+            }
             
             mVibrate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.VIBRATE));
 

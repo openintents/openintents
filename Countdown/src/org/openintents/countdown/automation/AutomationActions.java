@@ -15,7 +15,13 @@ import android.net.Uri;
 public class AutomationActions {
 
 	public static void startCountdown(Context context, Uri uri) {
-	
+
+		// Stop any notifications
+		CountdownEditorActivity.cancelNotification(context, uri);
+		
+        NotificationState.stop(uri);
+        
+        // Now start again
 		ContentResolver cr = context.getContentResolver();
 		
 	    Cursor c = cr.query(uri, Durations.PROJECTION, null, null,

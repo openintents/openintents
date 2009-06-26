@@ -74,7 +74,8 @@ public class CountdownListActivity extends ListActivity
             Durations.TITLE, // 1
             Durations.DURATION, // 2
             Durations.DEADLINE_DATE, // 3
-            Durations.USER_DEADLINE_DATE // 4
+            Durations.USER_DEADLINE_DATE, // 4
+            Durations.AUTOMATE_TEXT // 5
     };
 
     /** The index of the title column */

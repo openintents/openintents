@@ -60,6 +60,12 @@ public class CountdownCursorAdapter extends CursorAdapter {
 				.getColumnIndexOrThrow(Countdown.Durations.USER_DEADLINE_DATE));
 		long deadline = cursor.getLong(cursor
 				.getColumnIndexOrThrow(Countdown.Durations.DEADLINE_DATE));
+		String automateText = cursor.getString(cursor
+				.getColumnIndexOrThrow(Countdown.Durations.AUTOMATE_TEXT));
+
+		if (TextUtils.isEmpty(title)) {
+			title = automateText;
+		}
 		
 		if (TextUtils.isEmpty(title)) {
 			title = context.getString(android.R.string.untitled);
