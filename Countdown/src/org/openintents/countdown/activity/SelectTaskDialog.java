@@ -111,7 +111,7 @@ public class SelectTaskDialog implements DialogInterface.OnClickListener,
             case AddAdapter.ITEM_AUTOMATION_TASK: {
                 Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
                 pickIntent.putExtra(Intent.EXTRA_INTENT,
-                        new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS));
+                        new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION));
                 pickIntent.putExtra(Intent.EXTRA_TITLE,
                         mActivity.getText(R.string.title_select_automation_task));
 

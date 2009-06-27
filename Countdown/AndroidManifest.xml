@@ -122,21 +122,18 @@
 
         </activity>
         
-        <activity android:name=".automation.AutomationSettingsActivity"
+        <activity android:name=".automation.EditAutomationActivity"
             android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown_action">
             <intent-filter>
-        		<action android:name="org.openintents.action.EDIT_AUTOMATION_SETTINGS" />
+        		<action android:name="org.openintents.action.EDIT_AUTOMATION" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         
         <receiver android:name=".automation.AutomationReceiver">
-        	<!-- Perform actions on individual countdowns: -->
         	<intent-filter>
-        		<action android:name="org.openintents.countdown.action.START_COUNTDOWN" />
-        		<action android:name="org.openintents.countdown.action.STOP_COUNTDOWN" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
+        		<action android:name="org.openintents.action.RUN_AUTOMATION" />
         	</intent-filter>
         </receiver>
         

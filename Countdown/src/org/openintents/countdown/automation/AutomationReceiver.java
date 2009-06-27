@@ -16,10 +16,15 @@ public class AutomationReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		Log.i(TAG, "Receive intent: " + intent.toString());
 		
-		final String action = intent.getAction();
-		final Uri data = intent.getData();
+		final String action = intent.getStringExtra(CountdownIntents.EXTRA_ACTION);
+		final String dataString = intent.getStringExtra(CountdownIntents.EXTRA_DATA);
+		Uri data = null;
+		if (dataString != null) {
+			data = Uri.parse(dataString);
+		}
+		Log.i(TAG, "action: " + action + ", data: " + dataString);
 		
-		if (CountdownIntents.ACTION_START_COUNTDOWN.equals(action)) {
+		if (CountdownIntents.TASK_START_COUNTDOWN.equals(action)) {
 			// Start countdown.
 			if (data != null) {
 				// Launch that countdown:
@@ -28,7 +33,7 @@ public class AutomationReceiver extends BroadcastReceiver {
 			}
 		}
 
-		if (CountdownIntents.ACTION_STOP_COUNTDOWN.equals(action)) {
+		if (CountdownIntents.TASK_STOP_COUNTDOWN.equals(action)) {
 			// Start countdown.
 			if (data != null) {
 				// Launch that countdown:

@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
+import org.openintents.countdown.util.AutomationUtils;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 
@@ -27,6 +28,7 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -148,52 +150,27 @@ import org.openintents.intents.AutomationIntents;
         }
 
         if (automate != 0 && automateIntent != null) {
-        	boolean containsAutomationIntent = false;
         	
-        	if (automateIntent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
-        		// Send broadcast intent
-        		Intent broadcastIntent;
+        	Intent runIntent = AutomationUtils.getRunAutomationIntent(automateIntent);
+        	
+        	if (runIntent != null) {
+        		// Send broadcast intent (automation task)
+        		Log.v(TAG, "Run automation " + runIntent.getComponent());
+	            context.sendBroadcast(runIntent);
+        	} else {
+        		// Send activity intent (application or shortcut)
 				try {
-					broadcastIntent = Intent.getIntent(automateIntent.getStringExtra(AutomationIntents.EXTRA_BROADCAST_INTENT));
+	            	Log.v(TAG, "Launching intent " + automateIntent.getAction());
+	            	Log.v(TAG, "Launching intent data " + automateIntent.getData());
 
-	            	Log.v(TAG, "Launching intent " + broadcastIntent.getAction());
-	            	Log.v(TAG, "Launching intent data " + broadcastIntent.getData());
-	            	
-	            	context.sendBroadcast(broadcastIntent);
-	            	containsAutomationIntent = true;
-				} catch (URISyntaxException e) {
+	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	            	context.startActivity(automateIntent);
+				} catch (ActivityNotFoundException e) {
 					// Error launching intent
-	            	Log.d(TAG, "Error in broadcast intent.");
+	            	Log.d(TAG, "Error launching activity intent.");
 				}
-
-        	}
-        	if (automateIntent.hasExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT)) {
-        		// Send activity intent
-        		Intent activityIntent;
-				try {
-					activityIntent = Intent.getIntent(automateIntent.getStringExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT));
-
-	            	Log.v(TAG, "Launching intent " + activityIntent.getAction());
-	            	Log.v(TAG, "Launching intent data " + activityIntent.getData());
-
-	            	activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	            	context.startActivity(activityIntent);
-	            	containsAutomationIntent = true;
-				} catch (URISyntaxException e) {
-					// Error launching intent
-	            	Log.d(TAG, "Error in activity intent.");
-				}
-
         	}
         	
-        	if (!containsAutomationIntent) {
-        		// If neither activity intent nor broadcast intent had been specified,
-        		// we simply launch the default intent.
-	        	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	        	Log.v(TAG, "Launching intent " + automateIntent.getAction());
-	        	Log.v(TAG, "Launching intent data " + automateIntent.getData());
-	        	context.startActivity(automateIntent);
-        	}
         }
         
         // The PendingIntent to launch our activity if the user selects this notification

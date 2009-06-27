@@ -1,7 +1,6 @@
 package org.openintents.countdown.automation;
 
-import java.net.URISyntaxException;
-
+import org.openintents.countdown.LogConstants;
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.intents.AutomationIntents;
@@ -22,9 +21,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class AutomationSettingsActivity extends Activity {
+public class EditAutomationActivity extends Activity {
 	
-	private static final String TAG = "AutomationSettings";
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
 	
 	private static final int REQUEST_CODE_PICK_COUNTDOWN = 1;
 	
@@ -110,40 +110,27 @@ public class AutomationSettingsActivity extends Activity {
 
 		final Intent intent = getIntent();
 		
-		if (intent != null && intent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
+		if (intent != null) {
+			String action = intent.getStringExtra(CountdownIntents.EXTRA_ACTION);
 			
-			// Get action
-			try {
-				Intent broadcastIntent = Intent.getIntent(
-						intent.getStringExtra(AutomationIntents.EXTRA_BROADCAST_INTENT));
-				Log.i(TAG, "Broadcast intent: " + broadcastIntent.toURI());
-				
-				String action = broadcastIntent.getAction();
-				Log.i(TAG, "Broadcast action: " + broadcastIntent.getAction());
-				
-				if (CountdownIntents.ACTION_START_COUNTDOWN.equals(action)) {
-					mSpinnerAction.setSelection(0);
-				} else if  (CountdownIntents.ACTION_STOP_COUNTDOWN.equals(action)) {
-					mSpinnerAction.setSelection(1);
-				} else {
-					// set default
-					mSpinnerAction.setSelection(0);
-				}
-				
-
-				// Get countdown:
-				mUri = broadcastIntent.getData();
-				setCountdownFromUri();
-				
-				Log.i(TAG, "Received intent: " + mUri.toString());
-			} catch (URISyntaxException e) {
-				// Not a valid action
-				// Choose default action
+			if (CountdownIntents.TASK_START_COUNTDOWN.equals(action)) {
+				mSpinnerAction.setSelection(0);
+			} else if  (CountdownIntents.TASK_STOP_COUNTDOWN.equals(action)) {
+				mSpinnerAction.setSelection(1);
+			} else {
+				// set default
 				mSpinnerAction.setSelection(0);
 			}
 			
+			// Get countdown:
+
+			final String dataString = intent.getStringExtra(CountdownIntents.EXTRA_DATA);
+			if (dataString != null) {
+				mUri = Uri.parse(dataString);
+			}
+			setCountdownFromUri();
 		}
-		
+				
         updateTextViews();
 	}
 	
@@ -218,25 +205,21 @@ public class AutomationSettingsActivity extends Activity {
 	
 	void updateResult() {
 		// Call back exactly this class:
-		Intent intent = new Intent(this, AutomationSettingsActivity.class);
-		
-		Intent broadcastIntent = new Intent();
+		Intent intent = new Intent(this, EditAutomationActivity.class);
 		
 		long id = mSpinnerAction.getSelectedItemId();
 		if (id == 0) {
-			broadcastIntent.setAction(CountdownIntents.ACTION_START_COUNTDOWN);
+			intent.putExtra(CountdownIntents.EXTRA_ACTION, CountdownIntents.TASK_START_COUNTDOWN);
 		} else if (id == 1) {
-			broadcastIntent.setAction(CountdownIntents.ACTION_STOP_COUNTDOWN);
+			intent.putExtra(CountdownIntents.EXTRA_ACTION, CountdownIntents.TASK_STOP_COUNTDOWN);
 		}
-		broadcastIntent.setData(mUri);
-		
-		intent.putExtra(AutomationIntents.EXTRA_BROADCAST_INTENT, broadcastIntent.toURI());
+		intent.putExtra(CountdownIntents.EXTRA_DATA, mUri.toString());
 		
 		String description = mDescriptionAction + ": " + mDescriptionCountdown;
 		intent.putExtra(AutomationIntents.EXTRA_DESCRIPTION, description);
 		
-		Log.i(TAG, "Created intent (URI)   : " + intent.toURI());
-		Log.i(TAG, "Created intent (String): " + intent.toString());
+		if (debug) Log.i(TAG, "Created intent (URI)   : " + intent.toURI());
+		if (debug) Log.i(TAG, "Created intent (String): " + intent.toString());
 		
 		setResult(RESULT_OK, intent);
 	}

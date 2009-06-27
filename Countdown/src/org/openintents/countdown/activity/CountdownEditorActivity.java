@@ -24,6 +24,7 @@ import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.AlarmService;
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown.Durations;
+import org.openintents.countdown.util.AutomationUtils;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
@@ -203,14 +204,14 @@ public class CountdownEditorActivity extends Activity {
             cv.put(Durations.RINGTONE, RingtoneManager.getDefaultUri(mRingtoneType).toString());
             cv.put(Durations.VIBRATE, CHECKED);
             
-
+/*
             if (intent.hasExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT)) {
             	// Set default action from extra:
             	// (this has been set in SetCountdownActivity)
             	cv.put(Durations.AUTOMATE, CHECKED);
             	mAutomateIntent = (Intent) intent.getParcelableExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT);
             	cv.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-            }
+            }*/
             
             mUri = getContentResolver().insert(intent.getData(), cv);
             intent.setAction(Intent.ACTION_EDIT);
@@ -1097,7 +1098,7 @@ public class CountdownEditorActivity extends Activity {
     			Drawable icon = ri.get(0).activityInfo.loadIcon(pm);
         		mAutomateImage.setBackgroundDrawable(icon);
         		
-        		if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_BROADCAST_INTENT)) {
+        		if (AutomationUtils.isRunAutomationIntent(mAutomateIntent)) {
         			mAutomateButton.setText(R.string.settings);
         		} else {
         			mAutomateButton.setText(R.string.test);
@@ -1405,7 +1406,11 @@ public class CountdownEditorActivity extends Activity {
 		mAutomate = CHECKED;
 		
 		if (intent != null) {
+			
 			mAutomateIntent = new Intent(intent);
+
+			AutomationUtils.setRunAutomationComponent(this, mAutomateIntent);
+			
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
 			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
 			Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());

@@ -1,8 +1,7 @@
 package org.openintents.countdown.activity;
 
 import org.openintents.countdown.db.Countdown.Durations;
-import org.openintents.intents.AutomationIntents;
-import org.openintents.intents.CountdownIntents;
+import org.openintents.intents.CountdownIntents2;
 
 import android.app.Activity;
 import android.content.ContentResolver;
@@ -11,6 +10,11 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 
+/**
+ * @deprecated Should be moved in separate apk.
+ * @author Peli
+ *
+ */
 public class SetCountdownActivity extends Activity {
 
     @Override
@@ -21,7 +25,7 @@ public class SetCountdownActivity extends Activity {
 	
 	    final String action = intent.getAction();
 	    
-	    if ((CountdownIntents.ACTION_SET_COUNTDOWN.equals(action)
+	    if ((CountdownIntents2.ACTION_SET_COUNTDOWN.equals(action)
 	    		// menu.addIntentOptions() does not provide the action in the intent returned,
 	    		// only the data.
 	    		|| action == null) && intent.getData() != null) {
@@ -64,7 +68,7 @@ public class SetCountdownActivity extends Activity {
 	        	Intent automationIntent = new Intent(Intent.ACTION_VIEW);
 	        	automationIntent.setData(intent.getData());
 	        	
-	        	newIntent.putExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT, automationIntent);
+//	        	newIntent.putExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT, automationIntent);
 	        	
 	        	startActivity(newIntent);
 	        }

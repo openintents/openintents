@@ -8,27 +8,31 @@ package org.openintents.intents;
 public class CountdownIntents {
 
 	/**
-	 * Activity action: Set a countdown for the specified URI.
+	 * String extra containing the action to be performed.
 	 * 
-	 * <p>Constant Value: "org.openintents.countdown.action.SET_COUNTDOWN"</p>
+	 * <p>Constant Value: "org.openintents.extra.ACTION"</p>
 	 */
-	public static final String ACTION_SET_COUNTDOWN = "org.openintents.countdown.action.SET_COUNTDOWN";
-	
+	public static final String EXTRA_ACTION = "org.openintents.extra.ACTION";
 
 	/**
-	 * Broadcast action: Start the countdown with specified URI.
+	 * String extra containing the data on which to perform the action.
 	 * 
-	 * <p>Constant Value: "org.openintents.countdown.action.SET_COUNTDOWN"</p>
+	 * <p>Constant Value: "org.openintents.extra.DATA"</p>
 	 */
-	public static final String ACTION_START_COUNTDOWN = "org.openintents.countdown.action.START_COUNTDOWN";
-	
+	public static final String EXTRA_DATA = "org.openintents.extra.DATA";
 
 	/**
+	 * Task to be used in EXTRA_ACTION.
 	 * 
-	 * Broadcast action: Stop the countdown with specified URI.
-	 * 
-	 * <p>Constant Value: "org.openintents.countdown.action.SET_COUNTDOWN"</p>
+	 * <p>Constant Value: "STOP_COUNTDOWN"</p>
 	 */
-	public static final String ACTION_STOP_COUNTDOWN = "org.openintents.countdown.action.STOP_COUNTDOWN";
+	public static final String TASK_START_COUNTDOWN = "start";
+	
+	/**
+	 * Task to be used in EXTRA_ACTION.
+	 * 
+	 * <p>Constant Value: "STOP_COUNTDOWN"</p>
+	 */
+	public static final String TASK_STOP_COUNTDOWN = "stop";
 	
 }
