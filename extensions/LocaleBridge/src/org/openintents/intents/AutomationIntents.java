@@ -9,33 +9,25 @@ package org.openintents.intents;
 public class AutomationIntents {
 
 	/**
-	 * Activity Action.
+	 * Activity Action: This activity is called to create or edit
+	 * automation settings.
+	 * 
+	 * There can be several activities in an apk package that implement this intent.
 	 * 
 	 * <p>Constant Value: "org.openintents.action.EDIT_AUTOMATION_SETTINGS"</p>
 	 */
-	public static final String ACTION_EDIT_AUTOMATION_SETTINGS = "org.openintents.action.EDIT_AUTOMATION_SETTINGS";
+	public static final String ACTION_EDIT_AUTOMATION = "org.openintents.action.EDIT_AUTOMATION";
 
 	/**
-	 * String extra for an activity intent to be performed.
+	 * Broadcast Action: This broadcast is sent to the same package in order to
+	 * activate an automation.
 	 * 
-	 * IMPORTANT: Encode the Intent to a String using toURI()
-	 * before using putExtra().
-	 * Convert the String extra back to an Intent using Intent.getIntent().
+	 * There can only be one broadcast receiver per package that implements this intent.
+	 * Any differentiation should be done through intent extras.
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.ACTIVITY_INTENT"</p>
+	 * <p>Constant Value: "org.openintents.action.EDIT_AUTOMATION_SETTINGS"</p>
 	 */
-	public static final String EXTRA_ACTIVITY_INTENT = "org.openintents.extra.ACTIVITY_INTENT";
-	
-	/**
-	 * String extra for a broadcast intent to be performed.
-	 * 
-	 * IMPORTANT: Encode the Intent to a String using toURI()
-	 * before using putExtra().
-	 * Convert the String extra back to an Intent using Intent.getIntent().
-	 * 
-	 * <p>Constant Value: "org.openintents.extra.BROADCAST_INTENT"</p>
-	 */
-	public static final String EXTRA_BROADCAST_INTENT = "org.openintents.extra.BROADCAST_INTENT";
+	public static final String ACTION_RUN_AUTOMATION = "org.openintents.action.RUN_AUTOMATION";
 	
 	/**
 	 * String extra containing a human readable description of the action to be performed.
@@ -44,10 +36,4 @@ public class AutomationIntents {
 	 */
 	public static final String EXTRA_DESCRIPTION = "org.openintents.extra.DESCRIPTION";
 
-	/**
-	 * Category for various kinds of settings for automation.
-	 * 
-	 * <p>Constant Value: "org.openintents.category.AUTOMATION_SETTING"</p>
-	 */
-	public static final String CATEGORY_AUTOMATION_SETTING = "org.openintents.category.AUTOMATION_SETTING";
 }

@@ -15,7 +15,7 @@ public class LocaleBridgeIntents {
 	 * before using putExtra().
 	 * Convert the String extra back to an Intent using Intent.getIntent().
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.BROADCAST_INTENT"</p>
+	 * <p>Constant Value: "org.openintents.localebridge.extra.LOCALE_BRIDGE_INTENT"</p>
 	 */
 	public static final String EXTRA_LOCALE_BRIDGE_INTENT = "org.openintents.localebridge.extra.LOCALE_BRIDGE_INTENT";
 
@@ -23,8 +23,15 @@ public class LocaleBridgeIntents {
 	/**
 	 * String extra for component name of the setting activity.
 	 * 
-	 * <p>Constant Value: "org.openintents.extra.BROADCAST_INTENT"</p>
+	 * <p>Constant Value: "org.openintents.localebridge.extra.LOCALE_BRIDGE_COMPONENT"</p>
 	 */
 	public static final String EXTRA_LOCALE_BRIDGE_COMPONENT = "org.openintents.localebridge.extra.LOCALE_BRIDGE_COMPONENT";
+
+	/**
+	 * String extra for component name of the run automation (fire setting) broadcast intent.
+	 * 
+	 * <p>Constant Value: "org.openintents.localebridge.extra.LOCALE_BRIDGE_COMPONENT"</p>
+	 */
+	public static final String EXTRA_LOCALE_BRIDGE_RUN_COMPONENT = "org.openintents.localebridge.extra.LOCALE_BRIDGE_RUN_COMPONENT";
 	
 }

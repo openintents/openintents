@@ -9,6 +9,11 @@ public class Intent {
 	public static final String ACTION_EDIT_SETTING = "com.twofortyfouram.locale.intent.action.EDIT_SETTING";
 	
 	/**
+	 * Default action for firing a setting.
+	 */
+	public static final String ACTION_FIRE_SETTING = "com.twofortyfouram.locale.intent.action.FIRE_SETTING";
+	
+	/**
 	 * Type: String
 	 * <br/>
 	 * Maps to a String that represents the action String when a setting is applied.

@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.intents.AutomationIntents;
 import org.openintents.intents.LocaleBridgeIntents;
+import org.openintents.localebridge.util.LocaleUtils;
 import org.openintents.utils.SDKVersion;
 
 import android.app.Activity;
@@ -14,19 +15,21 @@ import android.os.Bundle;
 import android.util.Log;
 
 /**
- * Present OI Automation tasks to Locale.
+ * Present Locale settings to applications that only understand OI automation tasks.
  * 
  * @author Peli
  *
  */
 public class AutomationBridge extends Activity {
-	private static final String TAG = "LocaleBridge";
-	private static final boolean debug = true;
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
 	
-	final static int REQUEST_PICK_AUTOMATION_TASK = 1;
-	final static int REQUEST_SET_AUTOMATION_TASK = 2;
+	final static int REQUEST_PICK_LOCALE_SETTING = 1;
+	final static int REQUEST_SET_LOCALE_SETTING = 2;
 	
-	ComponentName mAutomationTaskActivity;
+	final static String BUNDLE_COMPONENT_NAME = "component";
+	
+	ComponentName mLocaleSettingActivity;
 	
     /** Called when the activity is first created. */
     @Override
@@ -36,17 +39,20 @@ public class AutomationBridge extends Activity {
         Log.i(TAG, "onCreate()");
         
         if (savedInstanceState != null) {
-        	
+        	if (savedInstanceState.containsKey(BUNDLE_COMPONENT_NAME)) {
+	        	String componentString = savedInstanceState.getString(BUNDLE_COMPONENT_NAME);
+	        	mLocaleSettingActivity = ComponentName.unflattenFromString(componentString);
+        	}
         } else {
         	// New instance.
 
             final Intent intent = getIntent();
             
             if (intent.hasExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT)) {
-            	Intent automationIntent = convertLocaleIntent2AutomationIntent(intent);
-            	if (automationIntent != null) {
+            	Intent localeIntent = convertAutomationIntent2LocaleIntent(intent);
+            	if (localeIntent != null) {
             		Log.i(TAG, "Start activity for result 1");
-            		startActivityForResult(automationIntent, REQUEST_SET_AUTOMATION_TASK);
+            		startActivityForResult(localeIntent, REQUEST_SET_LOCALE_SETTING);
             	} else {
             		// Some error occured
             		setResult(RESULT_CANCELED);
@@ -55,7 +61,7 @@ public class AutomationBridge extends Activity {
             	}
             } else {
             	// Select new locale intent
-            	selectAutomationTask();
+            	selectLocaleSetting();
             }
         }
         
@@ -66,17 +72,22 @@ public class AutomationBridge extends Activity {
 		super.onSaveInstanceState(outState);
 
         Log.i(TAG, "onSaveInstanceState()");
+		
+		if (mLocaleSettingActivity != null) {
+			String componentString = mLocaleSettingActivity.flattenToString();
+			outState.putString(BUNDLE_COMPONENT_NAME, componentString);
+		}
 	}
 
 	/**
      * Show PICK_ACTIVITY dialog with all possible Locale settings 
      */
-	private void selectAutomationTask() {
+	private void selectLocaleSetting() {
 		Intent pickIntent = new Intent(Intent.ACTION_PICK_ACTIVITY);
         pickIntent.putExtra(Intent.EXTRA_INTENT,
-                new Intent(AutomationIntents.ACTION_EDIT_AUTOMATION_SETTINGS));
+                new Intent(com.twofortyfouram.Intent.ACTION_EDIT_SETTING));
         pickIntent.putExtra(Intent.EXTRA_TITLE,
-                getText(R.string.title_select_automation_task));
+                getText(R.string.title_select_locale_setting));
 
         if (SDKVersion.SDKVersion < 3) {
         	if (debug) Log.i(TAG, "Compatibility mode for ActivityPicker");
@@ -90,7 +101,7 @@ public class AutomationBridge extends Activity {
         }
         
 		Log.i(TAG, "Start activity for result 2");
-        startActivityForResult(pickIntent, REQUEST_PICK_AUTOMATION_TASK);
+        startActivityForResult(pickIntent, REQUEST_PICK_LOCALE_SETTING);
 	}
     
     
@@ -99,28 +110,35 @@ public class AutomationBridge extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		//Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
 		//Log.i(TAG, "data: " + data.toURI());
 
 		if (resultCode == RESULT_OK) {
 			switch(requestCode) {
-			case REQUEST_PICK_AUTOMATION_TASK:
+			case REQUEST_PICK_LOCALE_SETTING:
+				// Remember setting activity for later
+				mLocaleSettingActivity = data.getComponent();
+				
+				// Add Locale specific breadcrumb:
+				Intent intent = new Intent(data);
+				intent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_BREADCRUMB, getString(R.string.app_name));
         		Log.i(TAG, "Start activity for result 3");
-				startActivityForResult(data, REQUEST_SET_AUTOMATION_TASK);
+				startActivityForResult(intent, REQUEST_SET_LOCALE_SETTING);
 				break;
-			case REQUEST_SET_AUTOMATION_TASK:
+			case REQUEST_SET_LOCALE_SETTING:
 				convertAndReturnIntent(data);
 				break;
 			}
 		}
 		
 		// If we reach this point, some error occured
-		if (requestCode == REQUEST_SET_AUTOMATION_TASK) {
+		if (requestCode == REQUEST_SET_LOCALE_SETTING) {
 			switch (resultCode) {
 			case RESULT_OK:
 				// see above.
 				break;
 			case RESULT_CANCELED:
+			case com.twofortyfouram.Intent.RESULT_REMOVE:
 			default:
 				setResult(RESULT_CANCELED);
     			Log.i(TAG, "finish 2");
@@ -137,63 +155,90 @@ public class AutomationBridge extends Activity {
 	 */
 	void convertAndReturnIntent(Intent intent) {
 		Log.i(TAG, "Converting and returning");
-		Intent automationIntent = convertAutomationIntent2LocaleIntent(intent);
+		Intent automationIntent = convertLocaleIntent2AutomationIntent(intent);
 		setResult(RESULT_OK, automationIntent);
 		Log.i(TAG, "finish 3");
 		finish();
 	}
 	
-	public Intent convertAutomationIntent2LocaleIntent(Intent automationIntent) {
-		Log.i(TAG, "Converting automation intent: " + automationIntent.toURI());
+	public Intent convertLocaleIntent2AutomationIntent(Intent localeIntent) {
+		Log.i(TAG, "Converting locale intent: " + localeIntent.toURI());
 		
-		// Return new intent for Locale, starting from the broadcast intent
-		Intent broadcastIntent;
-		try {
-			broadcastIntent = Intent.getIntent(automationIntent.getStringExtra(AutomationIntents.EXTRA_BROADCAST_INTENT));
-		} catch (URISyntaxException e) {
-			// if it did not work, return null
-			return null;
+		// Call again this bridge class when modifying settings:
+		Intent automationIntent = new Intent(this, AutomationBridge.class);
+		
+		// Store the original locale intent safely:
+		final String storedLocaleIntent = localeIntent.toURI();
+		automationIntent.putExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT, storedLocaleIntent);
+		
+		// Extract the broadcast action:
+		String actionFire = localeIntent.getStringExtra(com.twofortyfouram.Intent.EXTRA_STRING_ACTION_FIRE);
+		
+		ComponentName cn = null;
+		if (actionFire != null) {
+			// Compatibility with old Locale intent definition
+			cn = LocaleUtils.getRunAutomationComponent(this, localeIntent, mLocaleSettingActivity, actionFire);
+		} else {
+			// New Locale intent definition
+			cn = LocaleUtils.getRunAutomationComponent(this, localeIntent, mLocaleSettingActivity);
 		}
-		// No need to create new, because getIntent() above does this already.
-		Intent localeIntent = broadcastIntent;
+		if (cn != null) {
+			automationIntent.putExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_RUN_COMPONENT, 
+					cn.flattenToString());
+		}
 		
-		// Use the action to set the broadcast action
-		String actionFire = broadcastIntent.getAction();
-		localeIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_ACTION_FIRE, actionFire);
+		/*
+		// Create a copy of localeIntent, but with the new action
+		Intent broadcastIntent = new Intent(localeIntent);
+		broadcastIntent.setAction(actionFire);
 		
-		// Store the original automation intent safely:
-		final String storedAutomationIntent = automationIntent.toURI();
-		localeIntent.putExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT, storedAutomationIntent);
+		// Set this as the action to be performed:
+		automationIntent.putExtra(AutomationIntents.EXTRA_BROADCAST_INTENT, broadcastIntent.toURI());
+		*/
 		
-		// Convert description to blurb
-		String description = automationIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
-		localeIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_BLURB, description);
+		// Convert blurb to description
+		String blurb = localeIntent.getStringExtra(com.twofortyfouram.Intent.EXTRA_STRING_BLURB);
+		automationIntent.putExtra(AutomationIntents.EXTRA_DESCRIPTION, blurb);
 		
 		// Extract icon:
 		
 
-		Log.i(TAG, "into automation intent: " + localeIntent.toURI());
+		// Store the component name to the locale intent:
+		automationIntent.putExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_COMPONENT, 
+				mLocaleSettingActivity.flattenToString());
+
+		Log.i(TAG, "into automation intent: " + automationIntent.toURI());
 		
-		return localeIntent;
+		return automationIntent;
 	}
 	
-	public Intent convertLocaleIntent2AutomationIntent(Intent localeIntent) {
+	public Intent convertAutomationIntent2LocaleIntent(Intent automationIntent) {
 		
 		// Extract the original Locale intent:
-		String encodedIntent = localeIntent.getStringExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT);
+		String encodedIntent = automationIntent.getStringExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT);
 		Log.i(TAG, "Converting automation intent: " + encodedIntent);
 		
-		Intent automationIntent;
+		Intent localeIntent;
 		try {
-			automationIntent = Intent.getIntent(encodedIntent);
+			localeIntent = Intent.getIntent(encodedIntent);
 		} catch (URISyntaxException e) {
 			// Error decoding the original intent
 			return null;
 		}
 
-		Log.i(TAG, "into Locale intent: " + automationIntent.toURI());
+		// Add Locale-specific breadcrumb
+		localeIntent.putExtra(com.twofortyfouram.Intent.EXTRA_STRING_BREADCRUMB, getString(R.string.app_name));
+
+		// Extract the component
+		mLocaleSettingActivity = ComponentName.unflattenFromString(
+				automationIntent.getStringExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_COMPONENT));
 		
-		return automationIntent;
+		// Set this component in the newly created intent:
+		localeIntent.setComponent(mLocaleSettingActivity);
+
+		Log.i(TAG, "into Locale intent: " + localeIntent.toURI());
+		
+		return localeIntent;
 	}
 	
 }
