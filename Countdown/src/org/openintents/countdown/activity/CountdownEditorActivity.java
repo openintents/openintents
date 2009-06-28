@@ -135,18 +135,22 @@ public class CountdownEditorActivity extends Activity {
     private LinearLayout mDateSetter;
 	private Button mSetDate;
 	private Button mSetTime;
-    
+
+    private CheckBox mNotificationView;
     private CheckBox mRingtoneView;
     private CheckBox mVibrateView;
+    private CheckBox mLightView;
     private CheckBox mAutomateCheckBox;
     private Button mAutomateButton;
     private ImageView mAutomateImage;
     private TextView mAutomateTextView;
     
+    private long mNotification;
     private long mRing;
     private Uri mRingtoneUri;
     private long mVibrate;
     private int mRingtoneType;
+    private long mLight;
     private long mAutomate;
     private Intent mAutomateIntent;
     private String mAutomateText;
@@ -213,9 +217,11 @@ public class CountdownEditorActivity extends Activity {
             
             // Prepare default values
             ContentValues cv = new ContentValues();
+            cv.put(Durations.NOTIFICATION, CHECKED);
             cv.put(Durations.RING, CHECKED);
             cv.put(Durations.RINGTONE, RingtoneManager.getDefaultUri(mRingtoneType).toString());
             cv.put(Durations.VIBRATE, CHECKED);
+            cv.put(Durations.LIGHT, CHECKED);
             
 /*
             if (intent.hasExtra(AutomationIntents.EXTRA_ACTIVITY_INTENT)) {
@@ -332,8 +338,19 @@ public class CountdownEditorActivity extends Activity {
 			}
         	
         });
+
+        mNotificationView = (CheckBox) findViewById(R.id.notification);
         
-        mRingtoneView = (CheckBox) findViewById(R.id.ringtone);
+        mNotificationView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				setNotification(checked);
+			}
+        	
+        });
+        
+        mRingtoneView = (CheckBox) findViewById(R.id.ring);
         
         mRingtoneView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -356,6 +373,17 @@ public class CountdownEditorActivity extends Activity {
         	
         });
 
+        mLightView = (CheckBox) findViewById(R.id.light);
+        
+        mLightView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				setLight(checked);
+			}
+        	
+        });
+        
         mAutomateCheckBox = (CheckBox) findViewById(R.id.automate_checkbox);
 
         mAutomateCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -469,6 +497,8 @@ public class CountdownEditorActivity extends Activity {
             }
     		
             mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
+
+            mNotification = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.NOTIFICATION));
             
             mRing = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.RING));
             //Log.i(TAG, "onResume Ring: " + mRing);
@@ -481,6 +511,10 @@ public class CountdownEditorActivity extends Activity {
             	mRingtoneUri = null;
             }
 
+            mVibrate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.VIBRATE));
+            
+            mLight = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.LIGHT));
+            
             mAutomate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE));
             //Log.i(TAG, "onResume Ring: " + mRing);
 
@@ -504,7 +538,6 @@ public class CountdownEditorActivity extends Activity {
             	mText.setHint(mAutomateText);
             }
             
-            mVibrate = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.VIBRATE));
 
             mDeadline = mCursor.getLong(mCursor.getColumnIndexOrThrow(Durations.DEADLINE_DATE));
             
@@ -580,7 +613,10 @@ public class CountdownEditorActivity extends Activity {
         		values.put(Durations.DEADLINE_DATE, mDeadline);
         		
     		//}
-        		
+
+            values.put(Durations.NOTIFICATION, mNotification);
+            Log.i(TAG, "Notification: " + mNotification);
+            	
         	values.put(Durations.RING, mRing);
         	Log.i(TAG, "Ring: " + mRing);
         	
@@ -593,6 +629,9 @@ public class CountdownEditorActivity extends Activity {
         	
         	values.put(Durations.VIBRATE, mVibrate);
         	Log.i(TAG, "Vibrate: " + mVibrate);
+        	
+            values.put(Durations.LIGHT, mLight);
+            Log.i(TAG, "Light: " + mLight);
         	
         	values.put(Durations.AUTOMATE, mAutomate);
         	if (mAutomateIntent != null) {
@@ -1104,14 +1143,30 @@ public class CountdownEditorActivity extends Activity {
     }
 
     private void updateCheckboxes() {
+    	mNotificationView.setChecked(mNotification == CHECKED);
+    	
+    	if (mNotification == CHECKED) {
+    		mRingtoneView.setVisibility(View.VISIBLE);
+    		mVibrateView.setVisibility(View.VISIBLE);
+    		mLightView.setVisibility(View.VISIBLE);
+    	} else {
+    		mRingtoneView.setVisibility(View.GONE);
+    		mVibrateView.setVisibility(View.GONE);
+    		mLightView.setVisibility(View.GONE);
+    	}
+    	
     	mRingtoneView.setChecked(mRing == CHECKED);
     	
+    	/*
     	Ringtone ring = RingtoneManager.getRingtone(this, mRingtoneUri);
     	String ringname = ring.getTitle(this);
     	String s = getString(R.string.ringtone, ringname);
     	mRingtoneView.setText(s);
+    	*/
     	
     	mVibrateView.setChecked(mVibrate == CHECKED);
+    	
+    	mLightView.setChecked(mLight == CHECKED);
     	
     	mAutomateCheckBox.setChecked(mAutomate == CHECKED);
     }
@@ -1155,6 +1210,16 @@ public class CountdownEditorActivity extends Activity {
     	mAutomateTextView.setText(getString(R.string.action, ""));
     	mAutomateButton.setVisibility(View.GONE);
     }
+
+    private void setNotification(boolean checked) {
+    	if (checked) {
+			mNotification = CHECKED;
+		} else {
+			mNotification = UNCHECKED;
+		}
+
+    	writeFieldsToCursor();
+    }
     
     private void setRing(boolean checked) {
     	if (checked) {
@@ -1194,6 +1259,16 @@ public class CountdownEditorActivity extends Activity {
     	writeFieldsToCursor();
 	}
 
+    private void setLight(boolean checked) {
+    	if (checked) {
+			mLight = CHECKED;
+		} else {
+			mLight = UNCHECKED;
+		}
+
+    	writeFieldsToCursor();
+    }
+    
 	/**
 	 * Set the internal state after user clicked the
 	 * checkbox.

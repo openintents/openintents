@@ -142,6 +142,18 @@ public final class Countdown {
         public static final String AUTOMATE_TEXT = "automatetext";
 
         /**
+         * Status bar notification (no = 0, 1 = yes).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String NOTIFICATION = "notification";
+
+        /**
+         * Light notification (LED) (no = 0, 1 = yes).
+         * <P>Type: INTEGER</P>
+         */
+        public static final String LIGHT = "light";
+        
+        /**
          * The default sort order for this table
          */
         //public static final String DEFAULT_SORT_ORDER = DEADLINE_DATE + " DESC";
@@ -161,7 +173,9 @@ public final class Countdown {
                 Durations.USER_DEADLINE_DATE,
                 Durations.AUTOMATE,
                 Durations.AUTOMATE_INTENT,
-                Durations.AUTOMATE_TEXT
+                Durations.AUTOMATE_TEXT,
+                Durations.NOTIFICATION,
+                Durations.LIGHT
         };
     }
 }

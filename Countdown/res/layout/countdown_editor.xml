@@ -95,20 +95,39 @@
 	        android:layout_weight="1"
 	    	android:text="@string/dismiss"/>
 	</LinearLayout>
-	<CheckBox android:id="@+id/ringtone"
+	<CheckBox android:id="@+id/notification"
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:text="@string/ringtone"
+		android:text="@string/notification_in_status_bar"
 		/>
-	<CheckBox android:id="@+id/vibrate"
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="@string/vibrate"
-		/>
+    <LinearLayout android:id="@+id/notification_types"
+	    android:orientation="horizontal"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+        android:layout_marginBottom="5dip" >
+		<CheckBox android:id="@+id/ring"
+			android:layout_height="wrap_content"
+			android:layout_width="0dip"
+			android:layout_weight="1"
+			android:text="@string/ring"
+			/>
+		<CheckBox android:id="@+id/vibrate"
+			android:layout_height="wrap_content"
+			android:layout_width="0dip"
+			android:layout_weight="1"
+			android:text="@string/vibrate"
+			/>
+		<CheckBox android:id="@+id/light"
+			android:layout_height="wrap_content"
+			android:layout_width="0dip"
+			android:layout_weight="1"
+			android:text="@string/light"
+			/>
+	</LinearLayout>
     <LinearLayout
 	    android:orientation="horizontal"
     	android:layout_width="fill_parent"
-    	android:layout_height="56dip"
+    	android:layout_height="wrap_content"
         android:layout_marginBottom="10dip" >
 		<CheckBox android:id="@+id/automate_checkbox"
 			android:layout_height="wrap_content"

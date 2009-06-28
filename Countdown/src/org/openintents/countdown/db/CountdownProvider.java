@@ -52,10 +52,11 @@ public class CountdownProvider extends ContentProvider {
      * <ul>
      * <li>Version 1 (1.0.0 - 1.0.1): title, duration, deadline, 
      *     ring, ringtone, vibrate, created, modified</li>
-     * <li>Version 3 (1.1.0 - ): tags, encrypted, theme</li>
+     * <li>Version 2 (1.1.0-beta1): tags, encrypted, theme</li>
+     * <li>Version 3 (1.1.0-rc1 - ): notification, light</li>
      * </ul>
      */
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     
     private static final String DURATIONS_TABLE_NAME = "durations";
 
@@ -92,7 +93,10 @@ public class CountdownProvider extends ContentProvider {
                     + Durations.USER_DEADLINE_DATE + " INTEGER,"
                     + Durations.AUTOMATE + " INTEGER,"
                     + Durations.AUTOMATE_INTENT + " TEXT,"
-                    + Durations.AUTOMATE_TEXT + " TEXT"
+                    + Durations.AUTOMATE_TEXT + " TEXT,"
+                    // Version 3:
+                    + Durations.NOTIFICATION + " INTEGER,"
+                    + Durations.LIGHT + " INTEGER"
                     + ");");
         }
 
@@ -116,6 +120,13 @@ public class CountdownProvider extends ContentProvider {
 		                        + Durations.AUTOMATE_INTENT + " TEXT;");
 		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
 		                        + Durations.AUTOMATE_TEXT + " TEXT;");
+
+		            	// Set Durations to 0 for all old tasks
+		            	// Otherwise with the next reboot, all old countdowns are started again.
+		            	long now = System.currentTimeMillis();
+		            	ContentValues values = new ContentValues();
+		            	values.put(Durations.DEADLINE_DATE, 0);
+		                db.update(DURATIONS_TABLE_NAME, values, Durations.DEADLINE_DATE + " < " + now, null);
 	            	} catch (SQLException e) {
 	            		Log.e(TAG, "Error executing SQL: ", e);
 	            		// If the error is "duplicate column name" then everything is fine,
@@ -123,19 +134,33 @@ public class CountdownProvider extends ContentProvider {
 	            		// and then upgrading again 1->2.
 	            	}
 	            	
-	            	// Set Durations to 0 for all old tasks
-	            	// Otherwise with the next reboot, all old countdowns are started again.
-	            	long now = System.currentTimeMillis();
-	            	ContentValues values = new ContentValues();
-	            	values.put(Durations.DEADLINE_DATE, 0);
-	                db.update(DURATIONS_TABLE_NAME, values, Durations.DEADLINE_DATE + " < " + now, null);
 	                
 	            	
 	            	// fall through for further upgrades.
-	            /*
 	            case 2:
-	            	// add more columns
-	            */
+	            	// Upgrade from version 2 to 3.
+	            	// It seems SQLite3 only allows to add one column at a time,
+	            	// so we need three SQL statements:
+	            	try {
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.NOTIFICATION + " INTEGER;");
+		            	db.execSQL("ALTER TABLE " + DURATIONS_TABLE_NAME + " ADD COLUMN "
+		                        + Durations.LIGHT + " INTEGER;");
+
+		            	// Set Notification and light to 1 for all old tasks
+		            	ContentValues values = new ContentValues();
+		            	values.put(Durations.NOTIFICATION, 1);
+		            	values.put(Durations.LIGHT, 1);
+		                db.update(DURATIONS_TABLE_NAME, values, null, null);
+	            	} catch (SQLException e) {
+	            		Log.e(TAG, "Error executing SQL: ", e);
+	            		// If the error is "duplicate column name" then everything is fine,
+	            		// as this happens after upgrading 2->3, then downgrading 3->2, 
+	            		// and then upgrading again 2->3.
+	            	}
+	                
+	            	// fall through for further upgrades.
+	            	
 	            	break;
 	            default:
 	            	Log.w(TAG, "Unknown version " + oldVersion + ". Creating new database.");
@@ -337,5 +362,7 @@ public class CountdownProvider extends ContentProvider {
         sDurationsProjectionMap.put(Durations.AUTOMATE, Durations.AUTOMATE);
         sDurationsProjectionMap.put(Durations.AUTOMATE_INTENT, Durations.AUTOMATE_INTENT);
         sDurationsProjectionMap.put(Durations.AUTOMATE_TEXT, Durations.AUTOMATE_TEXT);
+        sDurationsProjectionMap.put(Durations.NOTIFICATION, Durations.NOTIFICATION);
+        sDurationsProjectionMap.put(Durations.LIGHT, Durations.LIGHT);
     }
 }

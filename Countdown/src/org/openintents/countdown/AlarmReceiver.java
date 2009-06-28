@@ -20,6 +20,7 @@ import java.net.URISyntaxException;
 
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
+import org.openintents.countdown.util.AlarmAlertWakeLock;
 import org.openintents.countdown.util.AutomationUtils;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
@@ -33,13 +34,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
-import org.openintents.countdown.util.AlarmAlertWakeLock;
-import org.openintents.intents.AutomationIntents;
 
 /**
  * Alarm receiver for countdown events.
@@ -124,19 +124,23 @@ import org.openintents.intents.AutomationIntents;
         	title = context.getString(R.string.app_name);
         }
         
+        long notification = 0;
         long ring = 0;
         Uri ringtone = null;
         long vibrate = 0;
+        long light = 0;
         long automate = 0;
         Intent automateIntent = null;
         if (c != null) {
         	c.moveToFirst();
+        	notification = c.getLong(c.getColumnIndexOrThrow(Durations.NOTIFICATION));
         	ring = c.getLong(c.getColumnIndexOrThrow(Durations.RING));
         	String ringstring = c.getString(c.getColumnIndexOrThrow(Durations.RINGTONE));
         	if (ringstring != null) {
         		ringtone = Uri.parse(ringstring);
         	}
         	vibrate = c.getLong(c.getColumnIndexOrThrow(Durations.VIBRATE));
+        	light = c.getLong(c.getColumnIndexOrThrow(Durations.LIGHT));
         	automate = c.getLong(c.getColumnIndexOrThrow(Durations.AUTOMATE));
         	String automateIntentUri = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
         	Log.v(TAG, "automateUri: " + automateIntentUri);
@@ -207,12 +211,25 @@ import org.openintents.intents.AutomationIntents;
             notif.flags |= Notification.FLAG_INSISTENT;
         }
         
-        // notif.flags |= Notification.FLAG_SHOW_LIGHTS;
+        if (ringAndVibrate && notification != 0) {
+        	//notif.ledARGB = 0xFFFFFFFF;
+        	//notif.ledOffMS = 500;
+        	//notif.ledOnMS = 500;
+        	//notif.flags |= Notification.FLAG_SHOW_LIGHTS;
+	        //notif.flags = Notification.FLAG_AUTO_CANCEL |   	Notification.FLAG_SHOW_LIGHTS;
+	        //notif.ledARGB = 0;
+	        //notif.ledOffMS = 400;
+	        //notif.ledOnMS = 300;
+        	notif.defaults = Notification.DEFAULT_LIGHTS;
+        }
         
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
 
-        nm.notify(notification_id, notif);
-        NotificationState.start(context, uri);
+        if (notification != 0) {
+        	// Show countdown notification
+        	nm.notify(notification_id, notif);
+        	NotificationState.start(context, uri);
+        }
         
     }
     

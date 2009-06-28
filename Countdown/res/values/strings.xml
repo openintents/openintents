@@ -66,11 +66,17 @@
 	
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
-	<!-- Checkbox label whether to have a ringtone at the end of the countdown. '%s' is the name of the currently selected ringtone. -->
-	<string name="ringtone">Ringtone: %s</string>
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Notification in status bar</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Ring</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">Vibrate</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Light</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
 	<string name="action">Action: %s</string>
