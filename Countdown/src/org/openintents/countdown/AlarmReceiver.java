@@ -48,9 +48,10 @@ import org.openintents.intents.AutomationIntents;
  *
  */public class AlarmReceiver extends BroadcastReceiver
 {
-	private final static String TAG = "AlarmReceiver";
+	private final static String TAG = LogConstants.TAG;
+	private final static boolean debug = LogConstants.debug;
 	
-	public final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
+	//public final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
 	private Handler mTimeout;
 	
 	final static boolean RING_AND_VIBRATE = true;
@@ -221,6 +222,8 @@ import org.openintents.intents.AutomationIntents;
      */
     public void setAlarmCancel(Uri uri) {
     	long now = System.currentTimeMillis();
+    	long ALARM_TIMEOUT_SECONDS = PreferenceActivity.getNotificationTimeoutFromPrefs(mContext);
+    	if (debug) Log.i(TAG, "Timeout in seconds: " + ALARM_TIMEOUT_SECONDS);
     	long time = now + 1000 * ALARM_TIMEOUT_SECONDS;
     	
     	// When the alarm goes off, we want to broadcast an Intent to our

@@ -21,7 +21,15 @@
     <PreferenceCategory
             android:title="@string/preference_countdown">
 
-
+        <ListPreference
+                android:key="notification_timeout"
+                android:defaultValue="300"
+                android:title="@string/preference_notification_timeout_title"
+                android:summary="@string/preference_notification_timeout_summary"
+                android:entries="@array/preference_notification_timeout_entries"
+                android:entryValues="@array/preference_notification_timeout_entryvalues"
+                android:dialogTitle="@string/preference_notification_timeout_dialog_title" />
+                
     </PreferenceCategory>
     
 	<PreferenceCategory android:title="@string/preference_extensions">

@@ -163,4 +163,22 @@ Current version: %s
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
 	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Notification timeout</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+                
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 seconds</item>
+        <item>5 seconds</item>
+        <item>10 seconds</item>
+        <item>30 seconds</item>
+        <item>1 minute</item>
+        <item>5 minutes</item>
+        <item>10 minutes</item>
+    </string-array>
 </resources>

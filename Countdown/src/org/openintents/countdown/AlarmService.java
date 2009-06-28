@@ -72,8 +72,9 @@ public class AlarmService extends Service {
             // Normally we would do some work here...  for our sample, we will
             // just sleep for 30 seconds.
         	Log.v(TAG, "Starting service...");
-        	
-            mEndTime = System.currentTimeMillis() + AlarmReceiver.ALARM_TIMEOUT_SECONDS * 1000;
+
+        	long ALARM_TIMEOUT_SECONDS = PreferenceActivity.getNotificationTimeoutFromPrefs(AlarmService.this);
+            mEndTime = System.currentTimeMillis() + ALARM_TIMEOUT_SECONDS * 1000;
             while (System.currentTimeMillis() < mEndTime) {
                 synchronized (mBinder) {
                     try {

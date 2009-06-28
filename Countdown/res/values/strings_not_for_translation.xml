@@ -62,4 +62,15 @@
     <!-- URL to OI Countdown -->
     <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/204#extensions</string><!-- 204 = OI Countdown -->
 	
+	<!-- Notification timeout in seconds -->
+    <string-array name="preference_notification_timeout_entryvalues">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>60</item>
+        <item>300</item>
+        <item>600</item>
+    </string-array>
+    
 </resources>
