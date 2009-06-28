@@ -50,6 +50,7 @@
 	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
 	<string name="no_shopping_provider">Error while accessing shopping lists.</string>
 	<string name="pick_item">Pick an item</string>
+	<string name="pick_list">Pick a list</string>
 	<string name="theme">Theme</string>
 	<string name="theme_settings">Theme settings</string>
 	<string name="rename_list">Rename list</string>
@@ -225,4 +226,21 @@ Current version: %s
         <item>Per Word</item>
     </string-array>
 
+
+	<!-- ***************************
+	     Automation
+	     *************************** -->
+	<!-- Label above spinner for all actions (automation tasks) that can be performed. -->
+	<string name="label_select_action">Select action:</string>
+	
+	<!-- Label above button that opens a list of all shopping lists to choose from. -->
+	<string name="label_select_list">Select list:</string>
+	
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to clean up a list. -->
+    	<item>Clean up list</item>
+    </string-array>
+    
 </resources> 
