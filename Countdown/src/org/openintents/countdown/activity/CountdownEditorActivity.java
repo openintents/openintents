@@ -448,6 +448,31 @@ public class CountdownEditorActivity extends Activity {
     }
 
     @Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		
+		Log.i(TAG, "----------------------------------");
+		Log.i(TAG, "New intent: " + intent.toURI());
+		Log.i(TAG, "Old intent: " + getIntent().toURI());
+		Log.i(TAG, "----------------------------------");
+		
+		if (intent.filterEquals(getIntent())) {
+			Log.i(TAG, "same intent!");
+			
+			// Called most probably through status bar notification.
+			
+		} else {
+
+			Log.i(TAG, "different intent!");
+
+			// Launch a separate instance
+			intent.setFlags(intent.getFlags() & ~Intent.FLAG_ACTIVITY_SINGLE_TOP);
+			startActivity(intent);
+		}
+		
+	}
+
+	@Override
     protected void onResume() {
         super.onResume();
 

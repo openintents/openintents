@@ -1,6 +1,7 @@
 package org.openintents.countdown.automation;
 
 import org.openintents.countdown.AlarmReceiver;
+import org.openintents.countdown.LogConstants;
 import org.openintents.countdown.activity.CountdownEditorActivity;
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
@@ -12,8 +13,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.util.Log;
 
 public class AutomationActions {
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
 
 	public static void startCountdown(Context context, Uri uri) {
 		// Stop any alarms
@@ -36,10 +40,14 @@ public class AutomationActions {
 		long duration = 0;
 		long userdeadline = 0;
 		
-		if (c != null) {
-	    	c.moveToFirst();
+		if (c != null && c.moveToFirst()) {
 	    	duration = c.getLong(c.getColumnIndexOrThrow(Durations.DURATION));
 	    	userdeadline = c.getLong(c.getColumnIndexOrThrow(Durations.USER_DEADLINE_DATE));
+		} else {
+			// TODO
+			// Problem retrieving what to do.
+			Log.d(TAG, "No Countdown at URI - maybe deleted? " + uri);
+			return;
 		}
 		
 		long deadline = now + duration;

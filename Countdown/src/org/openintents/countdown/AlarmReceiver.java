@@ -99,11 +99,11 @@ import android.util.Log;
         NotificationManager nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        Intent intent = new Intent(context, NotificationReceiverActivity.class);
+        Intent intent = new Intent(context, NotificationReceiver.class);
         intent.setData(uri);
         
         Intent launchIntent = new Intent();
-        launchIntent.setAction(Intent.ACTION_VIEW);
+        launchIntent.setAction(Intent.ACTION_EDIT);
         launchIntent.setData(uri);
         
         // launchIntent is optionally over-written by an automation intent, 
@@ -200,12 +200,12 @@ import android.util.Log;
         }
         
 
-        intent.putExtra(NotificationReceiverActivity.EXTRA_LAUNCH_INTENT, launchIntent.toURI());
+        intent.putExtra(NotificationReceiver.EXTRA_LAUNCH_INTENT, launchIntent.toURI());
         
         if (debug) Log.i(TAG, "Launch intent " + launchIntent.toURI());
         
         // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
+        PendingIntent contentIntent = PendingIntent.getBroadcast(context, 0,
                 intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         // construct the Notification object.

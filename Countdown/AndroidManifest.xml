@@ -87,8 +87,11 @@
         <activity android:name=".activity.CountdownEditorActivity"
             android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
-        	android:launchMode="singleTop"
-        >
+        ><!-- 
+        	android:launchMode="singleTop":
+        	SINGLE_TOP is set programmatically in NotificationReceiver.
+        	In this way, the activity can decide in onNewIntent() to launch
+        	a new instance after all. -->
             <!-- This filter says that we can view or edit the data of
                  a single note -->
             <intent-filter android:label="@string/menu_edit">
@@ -126,27 +129,8 @@
         </activity>
          
          
-        <activity android:name="NotificationReceiverActivity"
-            android:icon="@drawable/icon_hourglass" 
-        	android:label="@string/title_setcountdown"
-			android:theme="@*android:style/Theme.Translucent.NoTitleBar"
-        >
-            
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
-            </intent-filter>
-            <!-- This filter says that we can view or edit the data of
-                 a single note -->
-            <!-- <intent-filter android:label="@string/menu_edit">
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.EDIT" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.countdown.duration" />
-            </intent-filter> -->
-
-        </activity>
+        <receiver android:name=".NotificationReceiver">
+        </receiver>
         
         <activity android:name=".automation.EditAutomationActivity"
             android:icon="@drawable/icon_hourglass" 
