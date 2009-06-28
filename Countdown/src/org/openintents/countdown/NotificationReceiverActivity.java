@@ -16,26 +16,56 @@
 
 package org.openintents.countdown;
 
+import java.net.URISyntaxException;
+
+import org.openintents.countdown.activity.CountdownEditorActivity;
+import org.openintents.countdown.automation.AutomationActions;
+import org.openintents.countdown.util.CountdownUtils;
+import org.openintents.countdown.util.NotificationState;
+
 import android.app.Activity;
 import android.app.NotificationManager;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 public class NotificationReceiverActivity extends Activity {
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
+	
+	
+	public static final String EXTRA_LAUNCH_INTENT = "org.openintents.countdown.internal.LAUNCH_INTENT";
 	
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.countdown_notificationreceiver);
+        //setContentView(R.layout.countdown_notificationreceiver);
         
         Intent i = getIntent();
         Uri uri = i.getData();
-        int notification_id = Integer.parseInt(uri.getLastPathSegment());
         
-        // look up the notification manager service
-        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Intent launchIntent = null;
+        try {
+			launchIntent = Intent.getIntent(i.getStringExtra(EXTRA_LAUNCH_INTENT));
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 
-        // cancel the notification that we started in IncomingMessage
-        nm.cancel(notification_id);
+		if (debug) Log.i(TAG, "Launch intent: " + launchIntent.toURI());
+		
+        AutomationActions.stopCountdown(this, uri);
+
+        
+        if (launchIntent != null) {
+        	try {
+        		startActivity(launchIntent);
+        	} catch (ActivityNotFoundException e) {
+        		// Error launching activity
+        		Log.e(TAG, "Error launching activity " + e);
+        	}
+        }
+        
+        finish();
     }
 }

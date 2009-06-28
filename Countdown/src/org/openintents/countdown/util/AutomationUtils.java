@@ -18,6 +18,7 @@ public class AutomationUtils {
 
 //	public static String EXTRA_EDIT_AUTOMATION_COMPONENT = "org.openintents.internal.extra.EDIT_AUTOMATION_COMPONENT";
 	public static String EXTRA_RUN_AUTOMATION_COMPONENT = "org.openintents.internal.extra.RUN_AUTOMATION_COMPONENT";
+	public static String EXTRA_LAUNCH_THROUGH_STATUS_BAR = "org.openintents.internal.extra.LAUNCH_THROUGH_STATUS_BAR";
 
 //	public static String ACTION_EDIT_AUTOMATION = AutomationIntents.ACTION_EDIT_AUTOMATION;
 	public static String ACTION_RUN_AUTOMATION = AutomationIntents.ACTION_RUN_AUTOMATION;
@@ -69,8 +70,9 @@ public class AutomationUtils {
 	public static final void clearInternalExtras(Intent intent) {
 	//	intent.putExtra(EXTRA_EDIT_AUTOMATION_COMPONENT, (String) null);
 		intent.putExtra(EXTRA_RUN_AUTOMATION_COMPONENT, (String) null);
+		intent.putExtra(EXTRA_LAUNCH_THROUGH_STATUS_BAR, (long) 0);
 	}
-
+	
 	/**
 	 * Returns the activity intent whose component has been stored previously.
 	 * 
@@ -123,5 +125,13 @@ public class AutomationUtils {
 	 */
 	public static final boolean isRunAutomationIntent(Intent intent) {
 		return intent.hasExtra(EXTRA_RUN_AUTOMATION_COMPONENT);
+	}
+	
+	public static final void setLaunchThroughStatusBar(Intent intent, long launchThroughStatusBar) {
+		intent.putExtra(EXTRA_LAUNCH_THROUGH_STATUS_BAR, launchThroughStatusBar);
+	}
+	
+	public static final long getLaunchThroughStatusBar(Intent intent) {
+		return intent.getLongExtra(EXTRA_LAUNCH_THROUGH_STATUS_BAR, 0);
 	}
 }

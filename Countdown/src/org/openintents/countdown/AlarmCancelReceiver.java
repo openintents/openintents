@@ -16,21 +16,12 @@
 
 package org.openintents.countdown;
 
-import org.openintents.countdown.db.Countdown;
-import org.openintents.countdown.db.Countdown.Durations;
-import org.openintents.countdown.util.CountdownUtils;
-
-import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
-import android.util.Log;
 
 /**
  * Cancels playing the sound.

@@ -21,6 +21,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
+import org.openintents.countdown.AlarmReceiver;
 import org.openintents.countdown.AlarmService;
 import org.openintents.countdown.PreferenceActivity;
 import org.openintents.countdown.R;
@@ -144,6 +145,7 @@ public class CountdownEditorActivity extends Activity {
     private Button mAutomateButton;
     private ImageView mAutomateImage;
     private TextView mAutomateTextView;
+    private CheckBox mAutomateStatusBar;
     
     private long mNotification;
     private long mRing;
@@ -406,10 +408,22 @@ public class CountdownEditorActivity extends Activity {
 			}
         	
         });
-        
+
         mAutomateTextView = (TextView) findViewById(R.id.automate_text);
         
         mAutomateImage = (ImageView) findViewById(R.id.automate_image);
+
+        mAutomateStatusBar = (CheckBox) findViewById(R.id.automate_status_bar);
+
+        mAutomateStatusBar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+			
+			public void onCheckedChanged(CompoundButton view, boolean checked) {
+				setAutomateStatusBarChecked(checked);
+			}
+
+        	
+        });
         
         // Extend clickable area of checkbox to image and description:
         View.OnClickListener listener = new View.OnClickListener() {
@@ -980,12 +994,15 @@ public class CountdownEditorActivity extends Activity {
 				Log.i(TAG, "Start intent: " + mAutomateIntent.toURI());
 				//startActivity(mAutomateIntent);
 				
+				Intent cleanIntent = new Intent(mAutomateIntent);
+				AutomationUtils.clearInternalExtras(cleanIntent);
+				
 				if (AutomationUtils.isRunAutomationIntent(mAutomateIntent)) {
 					// start Settings:
-					startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION_TASK);
+					startActivityForResult(cleanIntent, REQUEST_CODE_SET_AUTOMATION_TASK);
 				} else {
 					// start Test
-					Intent i = new Intent(mAutomateIntent);
+					Intent i = new Intent(cleanIntent);
 					AutomationUtils.clearInternalExtras(i);
 					startActivity(i);
 				}
@@ -1006,6 +1023,7 @@ public class CountdownEditorActivity extends Activity {
     
     public void cancelAlarm() {
     	CountdownUtils.cancelAlarm(this, mUri);
+    	AlarmReceiver.cancelAlarmCancel(this, mUri);
     }
     
     /**
@@ -1198,8 +1216,12 @@ public class CountdownEditorActivity extends Activity {
         		
         		if (AutomationUtils.isRunAutomationIntent(mAutomateIntent)) {
         			mAutomateButton.setText(R.string.settings);
+        			mAutomateStatusBar.setVisibility(View.GONE);
         		} else {
         			mAutomateButton.setText(R.string.test);
+        			mAutomateStatusBar.setVisibility(mAutomate == CHECKED && mNotification == CHECKED ? View.VISIBLE : View.GONE);
+        			
+        			mAutomateStatusBar.setChecked(AutomationUtils.getLaunchThroughStatusBar(mAutomateIntent) == CHECKED);
         		}
         		mAutomateButton.setVisibility(View.VISIBLE);
         		return;
@@ -1209,6 +1231,7 @@ public class CountdownEditorActivity extends Activity {
     	// if we arrive here, no valid intent is specified.
     	mAutomateTextView.setText(getString(R.string.action, ""));
     	mAutomateButton.setVisibility(View.GONE);
+		mAutomateStatusBar.setVisibility(View.GONE);
     }
 
     private void setNotification(boolean checked) {
@@ -1295,7 +1318,22 @@ public class CountdownEditorActivity extends Activity {
         	setAutomation();
         }
 	}
-    
+
+	void setAutomateStatusBarChecked(boolean checked) {
+		if (mAutomateIntent == null) {
+			// should not happen
+			return;
+		}
+		
+		if (checked) {
+			AutomationUtils.setLaunchThroughStatusBar(mAutomateIntent, CHECKED);
+		} else {
+			AutomationUtils.setLaunchThroughStatusBar(mAutomateIntent, UNCHECKED);
+		}
+
+    	writeFieldsToCursor();
+	}
+	
     private void pickRingtone() {
 		Intent i = new Intent();
 		i.setAction(RingtoneManager.ACTION_RINGTONE_PICKER);
@@ -1618,6 +1656,9 @@ public class CountdownEditorActivity extends Activity {
 			mAutomateIntent = intent.getParcelableExtra(Intent.EXTRA_SHORTCUT_INTENT);
 			mAutomateText = intent.getStringExtra(Intent.EXTRA_SHORTCUT_NAME);
 			
+			// Default is to launch through notification:
+			AutomationUtils.setLaunchThroughStatusBar(mAutomateIntent, CHECKED);
+			
 			/// TODO: Save bitmap somewhere?
 			// Bitmap bitmap = data.getParcelableExtra(Intent.EXTRA_SHORTCUT_ICON);
 			 
@@ -1658,7 +1699,9 @@ public class CountdownEditorActivity extends Activity {
 			mAutomateIntent = new Intent(intent);
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
 			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-			
+
+			// Default is to launch through notification:
+			AutomationUtils.setLaunchThroughStatusBar(mAutomateIntent, CHECKED);
 
 			PackageManager pm = getPackageManager();
     		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, 0);

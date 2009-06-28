@@ -127,7 +127,7 @@ public class CountdownUtils {
 	    intent.setData(uri);
 	    
 	    PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
-	            0, intent, 0);
+	            0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 	
 	    return pendingIntent;
 	}

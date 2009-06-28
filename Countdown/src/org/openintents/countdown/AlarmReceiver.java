@@ -34,7 +34,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
@@ -80,9 +79,9 @@ import android.util.Log;
         
     	showNotification(context, mUri, RING_AND_VIBRATE, time);
         
-        // We don't use the following, as it also cancels the notification.
-        
-        setAlarmCancel(mUri);
+    	// This starts a second alarm that turns off the first alarm after a
+    	// timeout
+        setAlarmCancel(context, mUri);
         
         // start a service for the duration of the lock:
         Intent serviceIntent = new Intent(mContext, AlarmService.class);
@@ -100,10 +99,15 @@ import android.util.Log;
         NotificationManager nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 
-        //Intent intent = new Intent(mContext, NotificationReceiverActivity.class);
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
+        Intent intent = new Intent(context, NotificationReceiverActivity.class);
         intent.setData(uri);
+        
+        Intent launchIntent = new Intent();
+        launchIntent.setAction(Intent.ACTION_VIEW);
+        launchIntent.setData(uri);
+        
+        // launchIntent is optionally over-written by an automation intent, 
+        // and attached further below to intent.
 
         // Get the data
 
@@ -131,6 +135,7 @@ import android.util.Log;
         long light = 0;
         long automate = 0;
         Intent automateIntent = null;
+        String automateDescription = null;
         if (c != null) {
         	c.moveToFirst();
         	notification = c.getLong(c.getColumnIndexOrThrow(Durations.NOTIFICATION));
@@ -152,9 +157,13 @@ import android.util.Log;
 					automateIntent = null;
 				}
         	}
+        	automateDescription = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
         }
 
         if (automate != 0 && automateIntent != null) {
+        	if (!TextUtils.isEmpty(automateDescription)) {
+        		title = automateDescription;
+        	}
         	
         	Intent runIntent = AutomationUtils.getRunAutomationIntent(automateIntent);
         	
@@ -164,32 +173,43 @@ import android.util.Log;
 	            context.sendBroadcast(runIntent);
         	} else {
         		// Send activity intent (application or shortcut)
-				try {
-	            	Log.v(TAG, "Launching intent " + automateIntent.getAction());
-	            	Log.v(TAG, "Launching intent data " + automateIntent.getData());
 
-					AutomationUtils.clearInternalExtras(automateIntent);
-	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-	            	context.startActivity(automateIntent);
-				} catch (ActivityNotFoundException e) {
-					// Error launching intent
-	            	Log.d(TAG, "Error launching activity intent.");
-				}
+            	if (AutomationUtils.getLaunchThroughStatusBar(automateIntent) != 0
+            			&& notification != 0) {
+            		// Launch intent through status bar
+            		launchIntent = automateIntent;
+            		
+            	} else {
+            		// Launch intent directly
+
+    				try {
+    	            	Log.v(TAG, "Launching intent " + automateIntent.getAction());
+    	            	Log.v(TAG, "Launching intent data " + automateIntent.getData());
+    	            	
+
+    					AutomationUtils.clearInternalExtras(automateIntent);
+    	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	            	context.startActivity(automateIntent);
+    				} catch (ActivityNotFoundException e) {
+    					// Error launching intent
+    	            	Log.d(TAG, "Error launching activity intent.");
+    				}
+            	}
         	}
         	
         }
         
+
+        intent.putExtra(NotificationReceiverActivity.EXTRA_LAUNCH_INTENT, launchIntent.toURI());
+        
+        if (debug) Log.i(TAG, "Launch intent " + launchIntent.toURI());
+        
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
-                intent, 0);
+                intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        // The ticker text, this uses a formatted string so our message could be localized
-        //String tickerText = mContext.getString(R.string.countdown_ended);
-        String tickerText = title;
-        
-        
         // construct the Notification object.
-        Notification notif = new Notification(R.drawable.icon_hourglass, tickerText,
+        Notification notif = new Notification(R.drawable.icon_hourglass, title,
                 time);
 
         // Set the info for the views that show in the notification panel.
@@ -211,7 +231,7 @@ import android.util.Log;
             notif.flags |= Notification.FLAG_INSISTENT;
         }
         
-        if (ringAndVibrate && notification != 0) {
+        if (ringAndVibrate && light != 0) {
         	//notif.ledARGB = 0xFFFFFFFF;
         	//notif.ledOffMS = 500;
         	//notif.ledOnMS = 500;
@@ -224,7 +244,7 @@ import android.util.Log;
         }
         
         int notification_id = Integer.parseInt(uri.getLastPathSegment());
-
+        
         if (notification != 0) {
         	// Show countdown notification
         	nm.notify(notification_id, notif);
@@ -237,9 +257,9 @@ import android.util.Log;
      * Kills alarm audio after ALARM_TIMEOUT_SECONDS, so the alarm
      * won't run all day.
      */
-    public void setAlarmCancel(Uri uri) {
+    public static void setAlarmCancel(Context context, Uri uri) {
     	long now = System.currentTimeMillis();
-    	long ALARM_TIMEOUT_SECONDS = PreferenceActivity.getNotificationTimeoutFromPrefs(mContext);
+    	long ALARM_TIMEOUT_SECONDS = PreferenceActivity.getNotificationTimeoutFromPrefs(context);
     	if (debug) Log.i(TAG, "Timeout in seconds: " + ALARM_TIMEOUT_SECONDS);
     	long time = now + 1000 * ALARM_TIMEOUT_SECONDS;
     	
@@ -248,18 +268,30 @@ import android.util.Log;
         // name to have our own receiver (which has been published in
         // AndroidManifest.xml) instantiated and called, and then create an
         // IntentSender to have the intent executed as a broadcast.
-        Intent intent = new Intent(mContext, AlarmCancelReceiver.class);
+        Intent intent = new Intent(context, AlarmCancelReceiver.class);
         
         intent.setData(uri);
         intent.putExtra(EXTRA_TIME, now);
         
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(mContext,
-                0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         // Schedule the alarm!
-        AlarmManager am = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);
+        AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         am.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
 
+    }
+    
+    public static void cancelAlarmCancel(Context context, Uri uri) {
+        Intent intent = new Intent(context, AlarmCancelReceiver.class);
+        intent.setData(uri);
+        
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,
+                0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        // Cancel the alarm!
+        AlarmManager am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        am.cancel(pendingIntent);
     }
 
 }

@@ -104,7 +104,8 @@
 	    android:orientation="horizontal"
     	android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
-        android:layout_marginBottom="5dip" >
+        android:layout_marginBottom="5dip"
+         ><!-- android:layout_marginLeft="12dip" -->
 		<CheckBox android:id="@+id/ring"
 			android:layout_height="wrap_content"
 			android:layout_width="0dip"
@@ -154,6 +155,12 @@
 			android:layout_gravity="center_vertical"
 			/>
 	</LinearLayout>
+
+	<CheckBox android:id="@+id/automate_status_bar"
+		android:text="@string/launch_through_status_bar"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		/><!-- android:layout_gravity="center_horizontal" -->
 		
 </LinearLayout>
 </ScrollView>

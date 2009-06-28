@@ -1,5 +1,6 @@
 package org.openintents.countdown.automation;
 
+import org.openintents.countdown.AlarmReceiver;
 import org.openintents.countdown.activity.CountdownEditorActivity;
 import org.openintents.countdown.db.Countdown;
 import org.openintents.countdown.db.Countdown.Durations;
@@ -15,7 +16,10 @@ import android.net.Uri;
 public class AutomationActions {
 
 	public static void startCountdown(Context context, Uri uri) {
-
+		// Stop any alarms
+    	CountdownUtils.cancelAlarm(context, uri);
+    	AlarmReceiver.cancelAlarmCancel(context, uri);
+    	
 		// Stop any notifications
 		CountdownEditorActivity.cancelNotification(context, uri);
 		
@@ -55,6 +59,9 @@ public class AutomationActions {
 
 	public static void stopCountdown(Context context, Uri uri) {
 
+    	CountdownUtils.cancelAlarm(context, uri);
+    	AlarmReceiver.cancelAlarmCancel(context, uri);
+    	
 		CountdownEditorActivity.cancelNotification(context, uri);
 		
         NotificationState.stop(uri);

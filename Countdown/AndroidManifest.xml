@@ -87,6 +87,7 @@
         <activity android:name=".activity.CountdownEditorActivity"
             android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
+        	android:launchMode="singleTop"
         >
             <!-- This filter says that we can view or edit the data of
                  a single note -->
@@ -128,6 +129,7 @@
         <activity android:name="NotificationReceiverActivity"
             android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
+			android:theme="@*android:style/Theme.Translucent.NoTitleBar"
         >
             
             <intent-filter>

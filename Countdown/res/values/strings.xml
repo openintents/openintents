@@ -69,6 +69,9 @@
 	<!-- Checkbox label whether to notifications. -->
 	<string name="notification_in_status_bar">Notification in status bar</string>
 	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Launch through status bar</string>
+	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
 	<string name="ring">Ring</string>
 	
