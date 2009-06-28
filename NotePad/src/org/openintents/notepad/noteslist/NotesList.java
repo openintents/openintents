@@ -186,6 +186,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         }
 		
 		mCursorUtils = new NotesListCursor(this, getIntent());
+
+		if (Intent.ACTION_CREATE_SHORTCUT.equals(intent.getAction())) {
+			setTitle(R.string.title_pick_note_for_shortcut);
+		}
 		
 		mDecryptionFailed = false;
 		mDecryptionSucceeded = false;
@@ -769,14 +773,14 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		long encrypted = c.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
 
+		String encryptedTitle = c.getString(NotesListCursor.COLUMN_INDEX_TITLE_ENCRYPTED);
+		// are we in decrypted mode?
+		//Log.i(TAG, "Encrypted title: " + encryptedTitle);
+		
+		String title = c.getString(NotesListCursor.COLUMN_INDEX_TITLE);
+		//Log.i(TAG, "title: " + title);
+		
 		if (encrypted != 0) {
-			String encryptedTitle = c.getString(NotesListCursor.COLUMN_INDEX_TITLE_ENCRYPTED);
-			// are we in decrypted mode?
-			//Log.i(TAG, "Encrypted title: " + encryptedTitle);
-			
-			String title = c.getString(NotesListCursor.COLUMN_INDEX_TITLE);
-			//Log.i(TAG, "title: " + title);
-			
 			if (!TextUtils.isEmpty(encryptedTitle)) {
 				// Try to decrypt first
 				//Log.i(TAG, "Decrypt first");
@@ -812,6 +816,27 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// the user. The have clicked on one, so return it now.
 			setResult(RESULT_OK, new Intent().setData(uri));
 			finish ();
+		} else if (Intent.ACTION_CREATE_SHORTCUT.equals(action)) {
+			Intent data = new Intent(Intent.ACTION_VIEW);
+			data.setData(uri);
+			
+			String useTitle = title;
+			if (encrypted != 0) {
+				// Small security risk: The title is shown.
+				// But ok, if someone wants to set a shortcut, they can choose
+				// a good title.
+				useTitle = encryptedTitle;
+			}
+			
+			Intent shortcut = new Intent(Intent.ACTION_CREATE_SHORTCUT);
+			shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, title);
+			shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, data);
+			Intent.ShortcutIconResource sir = Intent.ShortcutIconResource.fromContext(this, R.drawable.app_notes);
+			shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, sir);
+			
+			
+			setResult(RESULT_OK, shortcut);
+			finish();
 		} else {
 			// Launch activity to view/edit the currently selected item
 			startActivity(new Intent(Intent.ACTION_EDIT, uri));

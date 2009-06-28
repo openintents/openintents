@@ -56,6 +56,9 @@
 	<string name="title_edit_title">Note title:</string>  
     <string name="title_create_file">%s (new note)</string>
     <string name="title_edit_file">%s (edit note)</string>
+    
+    <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
 	
 	<string name="button_ok">OK</string>  
 	

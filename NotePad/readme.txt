@@ -27,6 +27,7 @@ To obtain the current release, visit
 release: 1.1.2
 date: 2009-?
 - translations: Dutch, French, German, Spanish
+- create shortcut for a note from Launcher
 
 ---------------------------------------------------------
 release: 1.1.1
