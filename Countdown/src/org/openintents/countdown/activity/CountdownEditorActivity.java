@@ -29,8 +29,8 @@ import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
 import org.openintents.intents.AutomationIntents;
-import org.openintents.utils.DateTimeFormater;
-import org.openintents.utils.SDKVersion;
+import org.openintents.util.DateTimeFormater;
+import org.openintents.util.SDKVersion;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;

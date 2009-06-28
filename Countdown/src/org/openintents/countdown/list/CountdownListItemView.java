@@ -20,7 +20,7 @@ import org.openintents.countdown.R;
 import org.openintents.countdown.list.CountdownCursorAdapter.OnCountdownClickListener;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
-import org.openintents.utils.DateTimeFormater;
+import org.openintents.util.DateTimeFormater;
 
 import android.content.Context;
 import android.net.Uri;

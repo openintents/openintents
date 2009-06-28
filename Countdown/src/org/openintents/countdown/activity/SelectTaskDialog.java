@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.R;
 import org.openintents.intents.AutomationIntents;
-import org.openintents.utils.SDKVersion;
+import org.openintents.util.SDKVersion;
 
 import android.app.Activity;
 import android.app.AlertDialog;

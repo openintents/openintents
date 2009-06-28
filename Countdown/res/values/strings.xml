@@ -3,9 +3,15 @@
 	<!-- ***************************
 	     About information
 	     *************************** -->
-	
+    
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">translator-credits</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	
+	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
+	<string name="about_website_label">OI Countdown at OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -50,7 +56,7 @@
     <string name="title_pick">Pick countdown</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown action</string>
+    <string name="title_setcountdown_action">OI Countdown</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
 	<string name="error_title">Error</string>
@@ -109,30 +115,12 @@
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Select activity</string>
  
-	<!-- Update -->
-<!-- 	<string name="update_available">A new version of OI Countdown is available.\n%s\nWould you like to upgrade?</string>
-	<string name="market_not_available">Android Market not available.</string>
-	<string name="market_search_term">OI Countdown</string> -->
-
-	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Countdown.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Countdown EULA</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
-</string>
 	<string name="eula_accept">Accept</string>
 	<string name="eula_refuse">Cancel</string>
 	
@@ -144,10 +132,13 @@ Current version: %s
 	</string>
 	<string name="update_check_now">Check now.</string>
 	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_app_url">market://search?q=pname:org.openintents.countdown</string>
-	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
 	<string name="update_error">Download application not available.</string>
 	
+    <!-- About -->
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

@@ -17,16 +17,16 @@
 package org.openintents.countdown.list;
 
 import org.openintents.countdown.R;
-import org.openintents.countdown.activity.CountdownEditorActivity;
 import org.openintents.countdown.automation.AutomationActions;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
-import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
-import org.openintents.utils.DateTimeFormater;
+import org.openintents.util.DateTimeFormater;
 
+import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -66,6 +66,9 @@ public class CountdownListActivity extends ListActivity
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
+
+	private static final int DIALOG_ABOUT = 1;
+	
     /**
      * The columns we are interested in from the database
      */
@@ -317,8 +320,26 @@ public class CountdownListActivity extends ListActivity
         return false;
     }
 
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
+		}
+		return null;
+	}
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		switch (id) {
+		case DIALOG_ABOUT:
+			break;
+		}
+	}
+	
 	private void showAboutBox() {
-		startActivity(new Intent(this, AboutActivity.class));
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 	
     protected void onListItemClick(ListView l, View v, int position, long id) {
