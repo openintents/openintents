@@ -22,6 +22,7 @@ import java.util.List;
 
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.AlarmService;
+import org.openintents.countdown.PreferenceActivity;
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.AutomationUtils;
@@ -30,6 +31,7 @@ import org.openintents.countdown.util.NotificationState;
 import org.openintents.countdown.widget.DurationPicker;
 import org.openintents.intents.AutomationIntents;
 import org.openintents.util.DateTimeFormater;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.SDKVersion;
 
 import android.app.Activity;
@@ -89,6 +91,7 @@ public class CountdownEditorActivity extends Activity {
     private static final int MENU_PICK_RINGTONE = Menu.FIRST + 3;
     private static final int MENU_CHANGE_COUNTDOWN_MODE = Menu.FIRST + 4;
     private static final int MENU_SET_AUTOMATION = Menu.FIRST + 5;
+ 	private static final int MENU_SETTINGS = Menu.FIRST + 6;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
@@ -642,6 +645,9 @@ public class CountdownEditorActivity extends Activity {
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
 
+		menu.add(0, MENU_SETTINGS, 0, R.string.settings).setIcon(
+				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
+		
         // If we are working on a full note, then append to the
         // menu items for any other activities that can do stuff with it
         // as well.  This does a query on the system for any activities that
@@ -649,9 +655,14 @@ public class CountdownEditorActivity extends Activity {
         // for each one that is found.
         Intent intent = new Intent(null, getIntent().getData());
         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-        menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                new ComponentName(this, CountdownEditorActivity.class), null, intent, 0, null);
-    
+        //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+        //        new ComponentName(this, CountdownEditorActivity.class), null, intent, 0, null);
+
+        // Workaround to add icons:
+        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                        new ComponentName(this, CountdownEditorActivity.class), null, intent, 0, null);
+        
         return true;
     }
 
@@ -698,10 +709,17 @@ public class CountdownEditorActivity extends Activity {
         case MENU_SET_AUTOMATION:
         	setAutomation();
         	break;
+		case MENU_SETTINGS:
+			showNotesListSettings();
+			return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+	private void showNotesListSettings() {
+		startActivity(new Intent(this, PreferenceActivity.class));
+	}
+	
     /**
      * Take care of canceling work on a note.  Deletes the note if we
      * had created it, otherwise reverts to the original text.

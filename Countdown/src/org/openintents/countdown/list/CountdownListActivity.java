@@ -195,7 +195,7 @@ public class CountdownListActivity extends ListActivity
         // This is our one standard application action -- inserting a
         // new note into the list.
         menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert)
-                .setShortcut('3', 'a')
+                .setShortcut('3', 'c')
                 .setIcon(android.R.drawable.ic_menu_add);
         
         UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
