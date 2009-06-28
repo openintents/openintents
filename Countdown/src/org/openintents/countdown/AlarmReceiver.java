@@ -163,6 +163,7 @@ import org.openintents.intents.AutomationIntents;
 	            	Log.v(TAG, "Launching intent " + automateIntent.getAction());
 	            	Log.v(TAG, "Launching intent data " + automateIntent.getData());
 
+					AutomationUtils.clearInternalExtras(automateIntent);
 	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 	            	context.startActivity(automateIntent);
 				} catch (ActivityNotFoundException e) {

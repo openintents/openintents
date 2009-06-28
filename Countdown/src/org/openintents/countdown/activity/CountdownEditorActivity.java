@@ -166,6 +166,9 @@ public class CountdownEditorActivity extends Activity {
     private int mCountdownMode;
     private static final int MODE_SET_DATE = 11;
     private static final int MODE_SET_DURATION = 12;
+
+	final static String BUNDLE_COMPONENT_NAME = "component";
+	ComponentName mEditAutomationComponent;
     
 	private Calendar mCalendar = Calendar.getInstance();
 
@@ -174,7 +177,14 @@ public class CountdownEditorActivity extends Activity {
         super.onCreate(savedInstanceState);
 
 		CountdownUtils.setLocalizedStrings(this);
-		
+
+        if (savedInstanceState != null) {
+        	if (savedInstanceState.containsKey(BUNDLE_COMPONENT_NAME)) {
+	        	String componentString = savedInstanceState.getString(BUNDLE_COMPONENT_NAME);
+	        	mEditAutomationComponent = ComponentName.unflattenFromString(componentString);
+        	}
+        }
+        
         final Intent intent = getIntent();
 
         mCountdownState = STATE_COUNTDOWN_IDLE;
@@ -361,7 +371,7 @@ public class CountdownEditorActivity extends Activity {
 
 			
 			public void onClick(View arg0) {
-				startAutomateTest();
+				startAutomateTestOrSetting();
 			}
         	
         });
@@ -509,6 +519,11 @@ public class CountdownEditorActivity extends Activity {
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
         outState.putString(ORIGINAL_CONTENT, mOriginalContent);
+
+		if (mEditAutomationComponent != null) {
+			String componentString = mEditAutomationComponent.flattenToString();
+			outState.putString(BUNDLE_COMPONENT_NAME, componentString);
+		}
     }
 
     @Override
@@ -899,14 +914,24 @@ public class CountdownEditorActivity extends Activity {
         showDialog(DIALOG_SET_AUTOMATION);
 	}
 
-	void startAutomateTest() {
+	void startAutomateTestOrSetting() {
 		if (mAutomateIntent != null) {
+			// Remember the current component for later:
+			mEditAutomationComponent = mAutomateIntent.getComponent();
+			
 			try {
 				Log.i(TAG, "Start intent: " + mAutomateIntent.toURI());
 				//startActivity(mAutomateIntent);
 				
-				// For Settings:
-				startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION_TASK);
+				if (AutomationUtils.isRunAutomationIntent(mAutomateIntent)) {
+					// start Settings:
+					startActivityForResult(mAutomateIntent, REQUEST_CODE_SET_AUTOMATION_TASK);
+				} else {
+					// start Test
+					Intent i = new Intent(mAutomateIntent);
+					AutomationUtils.clearInternalExtras(i);
+					startActivity(i);
+				}
 			} catch (ActivityNotFoundException e) {
 				// TODO
 			}
@@ -1344,6 +1369,9 @@ public class CountdownEditorActivity extends Activity {
 				setRingtone(data);
 				break;
 			case REQUEST_CODE_PICK_AUTOMATION_TASK:
+				// Remember component for later
+				mEditAutomationComponent = data.getComponent();
+				
 				startActivityForResult(data, REQUEST_CODE_SET_AUTOMATION_TASK);
 				break;
 			case REQUEST_CODE_PICK_SHORTCUT:
@@ -1408,8 +1436,11 @@ public class CountdownEditorActivity extends Activity {
 		if (intent != null) {
 			
 			mAutomateIntent = new Intent(intent);
+			
+			// Set the component
+			mAutomateIntent.setComponent(mEditAutomationComponent);
 
-			AutomationUtils.setRunAutomationComponent(this, mAutomateIntent);
+			AutomationUtils.setRunAutomationComponent(this, mAutomateIntent, mEditAutomationComponent);
 			
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
 			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());

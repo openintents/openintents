@@ -15,9 +15,13 @@ import android.util.Log;
 public class AutomationUtils {
 	private static final String TAG = LogConstants.TAG;
 	private static final boolean debug = LogConstants.debug;
-	
-	public static final String EXTRA_RUN_AUTOMATION_COMPONENT = "org.openintents.internal.extra.RUN_AUTOMATION_COMPONENT";
 
+//	public static String EXTRA_EDIT_AUTOMATION_COMPONENT = "org.openintents.internal.extra.EDIT_AUTOMATION_COMPONENT";
+	public static String EXTRA_RUN_AUTOMATION_COMPONENT = "org.openintents.internal.extra.RUN_AUTOMATION_COMPONENT";
+
+//	public static String ACTION_EDIT_AUTOMATION = AutomationIntents.ACTION_EDIT_AUTOMATION;
+	public static String ACTION_RUN_AUTOMATION = AutomationIntents.ACTION_RUN_AUTOMATION;
+	
 	/**
 	 * Adds the component used for running the automation to the existing intent.
 	 * 
@@ -25,14 +29,15 @@ public class AutomationUtils {
 	 * @param intent
 	 * @return
 	 */
-	public static void setRunAutomationComponent(Context context, Intent intent) {
-		ComponentName component = intent.getComponent();
+	public static void setRunAutomationComponent(Context context, Intent intent, ComponentName component) {
+	//	intent.putExtra(EXTRA_EDIT_AUTOMATION_COMPONENT, component.flattenToString());
+		
 		String packageName = component.getPackageName();
 		
 		if (packageName != null) {
 			
 			PackageManager pm = context.getPackageManager();
-			Intent runAutomationIntent = new Intent(AutomationIntents.ACTION_RUN_AUTOMATION);
+			Intent runAutomationIntent = new Intent(ACTION_RUN_AUTOMATION);
 			
 			List<ResolveInfo> rilist = pm.queryBroadcastReceivers(runAutomationIntent, 0);
 			for (ResolveInfo ri : rilist) {
@@ -44,7 +49,7 @@ public class AutomationUtils {
 					// Let's use this intent
 					ComponentName cn = new ComponentName(ri.activityInfo.packageName, ri.activityInfo.name);
 					
-					intent.putExtra(EXTRA_RUN_AUTOMATION_COMPONENT, (String) cn.flattenToString());
+					intent.putExtra(EXTRA_RUN_AUTOMATION_COMPONENT, cn.flattenToString());
 					return;
 				}
 			}
@@ -62,8 +67,31 @@ public class AutomationUtils {
 	 * @param intent
 	 */
 	public static final void clearInternalExtras(Intent intent) {
+	//	intent.putExtra(EXTRA_EDIT_AUTOMATION_COMPONENT, (String) null);
 		intent.putExtra(EXTRA_RUN_AUTOMATION_COMPONENT, (String) null);
 	}
+
+	/**
+	 * Returns the activity intent whose component has been stored previously.
+	 * 
+	 * @param intent
+	 * @return
+	 *//*
+	public static final Intent getEditAutomationIntent(Intent intent) {
+		Intent editIntent = null;
+		
+		if (intent.hasExtra(EXTRA_EDIT_AUTOMATION_COMPONENT)) {
+			editIntent = new Intent(intent);
+	
+			ComponentName component = ComponentName.unflattenFromString(intent.getStringExtra(EXTRA_EDIT_AUTOMATION_COMPONENT));
+			editIntent.setAction(ACTION_EDIT_AUTOMATION);
+			editIntent.setComponent(component);
+			editIntent.setData(null);
+			clearInternalExtras(editIntent);
+			
+		}
+		return editIntent;
+	}*/
 	
 	/**
 	 * Returns the broadcast intent whose component has been stored previously.
@@ -78,7 +106,7 @@ public class AutomationUtils {
 			runIntent = new Intent(intent);
 	
 			ComponentName component = ComponentName.unflattenFromString(intent.getStringExtra(EXTRA_RUN_AUTOMATION_COMPONENT));
-			runIntent.setAction(AutomationIntents.ACTION_RUN_AUTOMATION);
+			runIntent.setAction(ACTION_RUN_AUTOMATION);
 			runIntent.setComponent(component);
 			runIntent.setData(null);
 			clearInternalExtras(runIntent);

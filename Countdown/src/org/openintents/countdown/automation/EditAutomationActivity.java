@@ -205,7 +205,9 @@ public class EditAutomationActivity extends Activity {
 	
 	void updateResult() {
 		// Call back exactly this class:
-		Intent intent = new Intent(this, EditAutomationActivity.class);
+		//Intent intent = new Intent(this, EditAutomationActivity.class);
+		
+		Intent intent = new Intent();
 		
 		long id = mSpinnerAction.getSelectedItemId();
 		if (id == 0) {
