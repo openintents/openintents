@@ -40,8 +40,10 @@ public class RD {
 		public static final int update_box_text = R.string.update_box_text;
 		public static final int update_check_now = R.string.update_check_now;
 		public static final int update_app_url = R.string.update_app_url;
+		public static final int update_app_developer_url = R.string.update_app_developer_url;
 		public static final int update_get_updater = R.string.update_get_updater;
 		public static final int update_checker_url = R.string.update_checker_url;
+		public static final int update_checker_developer_url = R.string.update_checker_developer_url;
 		public static final int update_error = R.string.update_error;
 
 		///////////////////////////////////////

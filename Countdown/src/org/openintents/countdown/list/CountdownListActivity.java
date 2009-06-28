@@ -16,6 +16,7 @@
 
 package org.openintents.countdown.list;
 
+import org.openintents.countdown.PreferenceActivity;
 import org.openintents.countdown.R;
 import org.openintents.countdown.automation.AutomationActions;
 import org.openintents.countdown.db.Countdown.Durations;
@@ -25,6 +26,7 @@ import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.util.DateTimeFormater;
+import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Dialog;
 import android.app.ListActivity;
@@ -64,6 +66,7 @@ public class CountdownListActivity extends ListActivity
     private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
+ 	private static final int MENU_SETTINGS = Menu.FIRST + 5;
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
 
@@ -196,6 +199,9 @@ public class CountdownListActivity extends ListActivity
                 .setIcon(android.R.drawable.ic_menu_add);
         
         UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
+
+		menu.add(0, MENU_SETTINGS, 0, R.string.settings).setIcon(
+				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
 		
         menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
@@ -206,9 +212,13 @@ public class CountdownListActivity extends ListActivity
         // our menu with their own actions.
         Intent intent = new Intent(null, getIntent().getData());
         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-        menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-                new ComponentName(this, CountdownListActivity.class), null, intent, 0, null);
+        //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+        //        new ComponentName(this, CountdownListActivity.class), null, intent, 0, null);
 
+        // Workaround to add icons:
+        MenuIntentOptionsWithIcons menu2 = new MenuIntentOptionsWithIcons(this, menu);
+        menu2.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+                        new ComponentName(this, CountdownListActivity.class), null, intent, 0, null);
         return true;
     }
 
@@ -259,6 +269,9 @@ public class CountdownListActivity extends ListActivity
 			return true;
 		case MENU_UPDATE:
 			UpdateMenu.showUpdateBox(this);
+			return true;
+		case MENU_SETTINGS:
+			showNotesListSettings();
 			return true;
         }
         return super.onOptionsItemSelected(item);
@@ -340,6 +353,10 @@ public class CountdownListActivity extends ListActivity
 	
 	private void showAboutBox() {
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
+	}
+
+	private void showNotesListSettings() {
+		startActivity(new Intent(this, PreferenceActivity.class));
 	}
 	
     protected void onListItemClick(ListView l, View v, int position, long id) {

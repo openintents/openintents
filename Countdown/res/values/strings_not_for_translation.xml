@@ -56,10 +56,10 @@
 	     Preferences
 	     *************************** -->
     
-    <!-- URL to OI Notepad extensions on Market -->
+    <!-- URL to OI Countdown extensions on Market -->
     <string name="preference_extensions_market_link">market://search?q=extension%20oi%20countdown</string>
     
-    <!-- URL to OI Notepad -->
+    <!-- URL to OI Countdown -->
     <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/204#extensions</string><!-- 204 = OI Countdown -->
 	
 </resources>

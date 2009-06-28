@@ -147,4 +147,20 @@ Current version: %s
         <!-- Automation action to stop a countdown. -->
     	<item>Stop countdown</item>
     </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string name="preference_countdown">Countdown</string>
+
+    <string name="preference_extensions">Extensions</string>
+    <string name="preference_get_extensions">Get new extensions</string>
+    <string name="preference_get_extensions_summary">Search for extensions online.</string>
+    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+	
 </resources>
