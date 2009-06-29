@@ -77,8 +77,7 @@ public class SensorSimulatorClient {
         
         String ipaddress = Hardware.getPreference(Hardware.IPADDRESS);
         String socket = Hardware.getPreference(Hardware.SOCKET);
-        socket = "8010";        
-        ipaddress = "192.168.178.26";
+        
         Log.i(TAG, "Connecting to " + ipaddress + " : " + socket);
         
         try {
@@ -544,7 +543,7 @@ public class SensorSimulatorClient {
 	 * A constant describing a compass. 
 	 * Constant Value: "compass" 
 	 */
-	public static final String SENSOR_COMPASS = "compass";
+	public static final String SENSOR_COMPASS = "magnetic field";
 	
 	/**
 	 * A constant describing an orientation sensor. 

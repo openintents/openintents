@@ -1,13 +1,17 @@
 package org.openintents.hardware;
 
+import android.content.Context;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Looper;
 import android.text.style.SuperscriptSpan;
+import android.widget.Toast;
 
 public class SensorManagerSimulator {
 
-
+	private static SensorManagerSimulator instance;
+	
 	/**
 	 * TAG for logging.
 	 */
@@ -20,23 +24,59 @@ public class SensorManagerSimulator {
 	
 	private SensorManager mSensorManager = null;
 	
-	public SensorManagerSimulator(SensorManager systemsensormanager) {
-		
+	private SensorManagerSimulator(SensorManager systemsensormanager) {
 		mSensorManager = systemsensormanager;
 	}
+	
+	public static SensorManagerSimulator getSystemService(Context context, String sensorManager) {
+		if (instance == null) {
+			if (sensorManager.equals(Context.SENSOR_SERVICE)) {
+				if (SensorManagerSimulator.isRealSensorsAvailable()) {
+					instance = new SensorManagerSimulator((SensorManager)context.getSystemService(sensorManager));
+				}
+				else {
+					instance = new SensorManagerSimulator(null);
+					Toast.makeText(
+							context, "Android SensorManager disabled, 1.5 SDK emulator crashes when using it... Make sure to connect SensorSimulator", Toast.LENGTH_LONG).show();	
+				
+				}
+				
+			}
+		}
+		return instance;
+	}
+	
 	
 	public int getSensors() {
 		if (mClient.connected) {
 			return mClient.getSensors();
 		} else {
-			return mSensorManager.getSensors();
+			if (mSensorManager != null) {
+				return mSensorManager.getSensors();
+			}
+			return 0;
 		}
+	}
+	
+    // Method that checks for the 1.5 SDK Emulator bug...
+	private static boolean isRealSensorsAvailable() {
+		if (Build.VERSION.SDK.equals("3")) {
+			// We are on 1.5 SDK
+			if (Build.MODEL.contains("sdk")) {
+				// We are on Emulator
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public boolean registerListener(SensorListener listener, int sensors, int rate) {
 		if (mClient.connected) {
 			return mClient.registerListener(listener, sensors, rate);
 		} else {
+			if (mSensorManager == null) {
+				return false;
+			}
 			return mSensorManager.registerListener(listener, sensors, rate);
 		}
 	}
@@ -46,6 +86,9 @@ public class SensorManagerSimulator {
 		if (mClient.connected) {
 			return mClient.registerListener(listener, sensors);
 		} else {
+			if (mSensorManager == null) {
+				return false;
+			}
 			return mSensorManager.registerListener(listener, sensors);
 		}
 	}
@@ -55,7 +98,9 @@ public class SensorManagerSimulator {
 		if (mClient.connected) {
 			mClient.unregisterListener(listener, sensors);
 		} else {
-			mSensorManager.unregisterListener(listener, sensors);
+			if (mSensorManager == null) {
+				mSensorManager.unregisterListener(listener, sensors);
+			}
 		}
 	}
 
@@ -64,7 +109,9 @@ public class SensorManagerSimulator {
 		if (mClient.connected) {
 			mClient.unregisterListener(listener);
 		} else {
-			mSensorManager.unregisterListener(listener);
+			if (mSensorManager != null) {
+				mSensorManager.unregisterListener(listener);
+			}
 		}
 	}
 	

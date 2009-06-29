@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class SensorDemo extends Activity implements SensorListener {
 
-	SensorManager sensorManager;
+	SensorManagerSimulator sensorManager;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,10 +21,16 @@ public class SensorDemo extends Activity implements SensorListener {
 		/* start open intents code */
 
 		Hardware.mContentResolver = getContentResolver();
-		sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		Intent intent = new Intent(Intent.ACTION_VIEW,
+		sensorManager = SensorManagerSimulator.getSystemService(this, SENSOR_SERVICE);
+		Intent intent = new Intent(Intent.ACTION_EDIT,
 				Hardware.Preferences.CONTENT_URI);
-		startActivity(intent);
+		startActivityForResult(intent, 1);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
 		sensorManager.unregisterListener(this);
 		SensorManagerSimulator.connectSimulator();
 
@@ -35,7 +41,6 @@ public class SensorDemo extends Activity implements SensorListener {
 				| SensorManager.SENSOR_ORIENTATION,
 				SensorManager.SENSOR_DELAY_FASTEST);
 	}
-
 	@Override
 	protected void onResume() {
 		super.onResume();

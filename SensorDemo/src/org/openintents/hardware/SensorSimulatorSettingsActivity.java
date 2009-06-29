@@ -128,11 +128,12 @@ public class SensorSimulatorSettingsActivity extends Activity implements SensorL
 		super.onCreate(icicle);
 		
 		setContentView(R.layout.sensorsimulator);
+		
 		Hardware.mContentResolver = getContentResolver();
 		
 		// Start with Android's sensor manager
 		//mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-		mSensorManager = new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
+		mSensorManager = SensorManagerSimulator.getSystemService(this, SENSOR_SERVICE);
 		
 		Context context = this;
         // Get the Resources object from our context
