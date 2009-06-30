@@ -8,7 +8,7 @@
 	<string name="about_translators">translator-credits</string>
 	
     <!-- Strings for OI About -->
-	<string name="about_comments">OI Locale Bridge lets you use Locale settings in OI Countdown, and OI automation tasks in Locale.</string>
+	<string name="about_comments">OI Locale Bridge lets you use Locale plug-ins in OI Countdown, and OI automation tasks in Locale.</string>
 	
 	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
 	<string name="about_website_label">OI Locale Bridge at OpenIntents</string>
@@ -20,7 +20,7 @@
     <string name="app_name">OI Locale bridge</string>
     
     <!-- Title of the OI Locale bridge when being shown to include a Locale setting -->
-    <string name="locale_setting">Locale setting</string>
+    <string name="locale_setting">Locale plug-in</string>
     
     <!-- Title of the OI Locale bridge when being shown to include an automation task -->
     <string name="automation_task">Automation task</string>
@@ -32,7 +32,7 @@
 	<string name="activity_picker_label">Select activity</string>
  
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_locale_setting">Select locale setting</string>
+	<string name="title_select_locale_setting">Select locale plug-in</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
 	<string name="title_select_automation_task">Select automation task</string>
@@ -50,7 +50,7 @@
 	<string name="update_error">Download application not available.</string>
     
     <!-- Info -->
-    <string name="info_text">To add a Locale setting to OI Countdown, edit a countdown and press menu > Set action > Automation tasks > Locale setting.</string>
+    <string name="info_text">To add a Locale plug-in to OI Countdown, edit a countdown and press menu > Set action > Automation tasks > Locale plug-in.</string>
 	<string name="info_launch">Launch OI countdown</string>
     
     <!-- Countdown -->
