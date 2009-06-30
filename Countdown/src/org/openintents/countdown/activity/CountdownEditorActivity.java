@@ -1489,7 +1489,8 @@ public class CountdownEditorActivity extends Activity {
 		public void handleMessage(Message msg) {
 			if (msg.what == MSG_UPDATE_DISPLAY) {
 				// Update
-				updateViews();
+				//updateViews();
+				updateCountdown();
 	            
 			}
 		}
