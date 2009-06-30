@@ -66,6 +66,10 @@ public class AutomationActions {
 			return;
 		}
 		
+		if (c != null) {
+			c.close();
+		}
+		
 		long deadline = now + duration;
 		
 		if (userdeadline > 0) {

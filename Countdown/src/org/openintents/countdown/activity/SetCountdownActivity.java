@@ -88,6 +88,10 @@ public class SetCountdownActivity extends Activity {
 	        	
 	        	startActivity(newIntent);
 	        }
+	        
+	        if (c != null) {
+	        	c.close();
+	        }
 	    }
 	    
 	    finish();

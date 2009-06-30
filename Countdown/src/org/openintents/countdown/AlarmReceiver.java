@@ -120,8 +120,7 @@ import android.util.Log;
         
         String title = "";
         String text = "";
-        if (c != null) {
-        	c.moveToFirst();
+        if (c != null && c.moveToFirst()) {
         	title = c.getString(c.getColumnIndexOrThrow(Durations.TITLE));
         	
         	// TODO: something fishy here:
@@ -140,8 +139,7 @@ import android.util.Log;
         long automate = 0;
         Intent automateIntent = null;
         String automateDescription = null;
-        if (c != null) {
-        	c.moveToFirst();
+        if (c != null && c.moveToFirst()) {
         	notification = c.getLong(c.getColumnIndexOrThrow(Durations.NOTIFICATION));
         	ring = c.getLong(c.getColumnIndexOrThrow(Durations.RING));
         	String ringstring = c.getString(c.getColumnIndexOrThrow(Durations.RINGTONE));
@@ -162,6 +160,11 @@ import android.util.Log;
 				}
         	}
         	automateDescription = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
+        } else {
+        	Log.w(TAG, "Error retrieving data");
+        }
+        if (c != null) {
+        	c.close();
         }
 
         if (automate != 0 && automateIntent != null && startNotification) {

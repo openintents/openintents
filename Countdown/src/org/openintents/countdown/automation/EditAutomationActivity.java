@@ -193,13 +193,16 @@ public class EditAutomationActivity extends Activity {
 			// Get name of countdown from content provider
 			Cursor c = getContentResolver().query(mUri, new String[] {Durations._ID, Durations.TITLE, Durations.AUTOMATE_TEXT}, null, null, null);
 			
-			if (c != null & c.moveToFirst()) {
+			if (c != null && c.moveToFirst()) {
 				mDescriptionCountdown = c.getString(1);
 				
 				if (TextUtils.isEmpty(mDescriptionCountdown)) {
 					// Use automation command as alternative title
 					mDescriptionCountdown = c.getString(2);
 				}
+			}
+			if (c != null) {
+				c.close();
 			}
 		} 
 

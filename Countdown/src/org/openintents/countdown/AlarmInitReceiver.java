@@ -97,6 +97,7 @@ public class AlarmInitReceiver extends BroadcastReceiver {
     	    		*/
     	    	}
         	}
+        	c.close();
         }
     }
 }

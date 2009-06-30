@@ -180,6 +180,11 @@ public class CountdownEditorActivity extends Activity {
 	ComponentName mEditAutomationComponent;
     
 	private Calendar mCalendar = Calendar.getInstance();
+	
+	/**
+	 * Save the state 2 seconds before the countdown goes off.
+	 */
+	private boolean mSaveStateBeforeCountdownEnds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -497,6 +502,8 @@ public class CountdownEditorActivity extends Activity {
         
         // Register a content observer
         getContentResolver().registerContentObserver(mUri, true, mContentObserver);
+        
+        mSaveStateBeforeCountdownEnds = true;
     }
 
 	private void readFieldsFromCursor() {
@@ -608,6 +615,10 @@ public class CountdownEditorActivity extends Activity {
         unregisterReceiver(mReceiver);
         
         getContentResolver().unregisterContentObserver(mContentObserver);
+        
+        if (mCursor != null) {
+        	mCursor.deactivate();
+        }
 
         writeFieldsToCursor();
         
@@ -836,6 +847,7 @@ public class CountdownEditorActivity extends Activity {
     
     private final void start() {
     	mCountdownState = STATE_COUNTDOWN_RUNNING;
+    	mSaveStateBeforeCountdownEnds = true;
 		
     	long now = System.currentTimeMillis();
     	
@@ -1126,7 +1138,10 @@ public class CountdownEditorActivity extends Activity {
     	    	
     	        getContentResolver().update(mUri, values, null, null);
     	        */
-    			writeFieldsToCursor();
+    			if (mSaveStateBeforeCountdownEnds) {
+    				mSaveStateBeforeCountdownEnds = false;
+    				writeFieldsToCursor();
+    			}
     	        //mCursor.requery();
     		}
 		}/* else if (delta > -3000) {
