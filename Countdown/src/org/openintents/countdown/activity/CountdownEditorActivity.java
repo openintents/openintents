@@ -1097,6 +1097,8 @@ public class CountdownEditorActivity extends Activity {
 	 * 
 	 */
 	private void updateCountdown() {
+    	if (debug) Log.i(TAG, "updateCountdown()");
+    	
 		long now = System.currentTimeMillis();
 		
 		long delta = mDeadline - now;
@@ -1115,6 +1117,9 @@ public class CountdownEditorActivity extends Activity {
 			mCountdownView.setTextAppearance(this, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextSize(64);
 			mCountdownView.setTextColor(0xffff0000);
+			
+			// Manually update buttons to show the "Dismiss" button.
+			updateButtons();
 
 		} else if (mCountdownState == STATE_COUNTDOWN_MODIFY) {
 			setSettingVisibility(View.VISIBLE);
@@ -1128,6 +1133,7 @@ public class CountdownEditorActivity extends Activity {
 			mCountdownView.setTextAppearance(this, android.R.style.TextAppearance_Large);
 			mCountdownView.setTextSize(64);
 
+			mHandler.removeMessages(MSG_UPDATE_DISPLAY);
     		mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
     		
     		if (delta < 2000) {
@@ -1178,6 +1184,8 @@ public class CountdownEditorActivity extends Activity {
 	}
     
     private void updateButtons() {
+    	if (debug) Log.i(TAG, "updateButtons()");
+    	
 		mStart.setVisibility(View.GONE);
 		mStop.setVisibility(View.GONE);
 		mModify.setVisibility(View.GONE);
@@ -1201,6 +1209,8 @@ public class CountdownEditorActivity extends Activity {
     }
 
     private void updateCheckboxes() {
+    	if (debug) Log.i(TAG, "updateCheckboxes()");
+    	
     	mNotificationView.setChecked(mNotification == CHECKED);
     	
     	if (mNotification == CHECKED) {
@@ -1235,7 +1245,7 @@ public class CountdownEditorActivity extends Activity {
      */
     void updateAutomate() {
     	PackageManager pm = getPackageManager();
-    	if (debug) Log.i(TAG, "updateAutomate display: " + mAutomateIntent);
+    	if (debug) Log.i(TAG, "updateAutomate(): " + mAutomateIntent);
     	
     	if (mAutomateIntent != null) {
     		List<ResolveInfo> ri = pm.queryIntentActivities(mAutomateIntent, PackageManager.MATCH_DEFAULT_ONLY);
