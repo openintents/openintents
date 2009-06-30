@@ -23,6 +23,7 @@ import java.util.List;
 import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.countdown.AlarmReceiver;
 import org.openintents.countdown.AlarmService;
+import org.openintents.countdown.LogConstants;
 import org.openintents.countdown.PreferenceActivity;
 import org.openintents.countdown.R;
 import org.openintents.countdown.db.Countdown.Durations;
@@ -52,7 +53,6 @@ import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
-import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -80,7 +80,7 @@ import android.widget.TimePicker;
  */
 public class CountdownEditorActivity extends Activity {
     private static final String TAG = "CountdownEditorActivity";
-    private static final boolean debug = true;
+    private static final boolean debug = LogConstants.debug;
     
     // This is our state data that is stored when freezing.
     private static final String ORIGINAL_CONTENT = "origContent";
@@ -451,19 +451,19 @@ public class CountdownEditorActivity extends Activity {
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		
-		Log.i(TAG, "----------------------------------");
-		Log.i(TAG, "New intent: " + intent.toURI());
-		Log.i(TAG, "Old intent: " + getIntent().toURI());
-		Log.i(TAG, "----------------------------------");
+		if (debug) Log.i(TAG, "----------------------------------");
+		if (debug) Log.i(TAG, "New intent: " + intent.toURI());
+		if (debug) Log.i(TAG, "Old intent: " + getIntent().toURI());
+		if (debug) Log.i(TAG, "----------------------------------");
 		
 		if (intent.filterEquals(getIntent())) {
-			Log.i(TAG, "same intent!");
+			if (debug) Log.i(TAG, "same intent!");
 			
 			// Called most probably through status bar notification.
 			
 		} else {
 
-			Log.i(TAG, "different intent!");
+			if (debug) Log.i(TAG, "different intent!");
 
 			// Launch a separate instance
 			intent.setFlags(intent.getFlags() & ~Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -476,7 +476,7 @@ public class CountdownEditorActivity extends Activity {
     protected void onResume() {
         super.onResume();
 
-        Log.v(TAG, "onResume()");
+        if (debug) Log.v(TAG, "onResume()");
 
         IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
@@ -560,7 +560,7 @@ public class CountdownEditorActivity extends Activity {
             uristring = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
             //Log.i(TAG, "onResume Ringtone: " + uristring);
             
-            Log.i(TAG, "mAutomateIntent before read: " + mAutomateIntent);
+            if (debug) Log.i(TAG, "mAutomateIntent before read: " + mAutomateIntent);
             if (uristring != null) {
             	try {
 					mAutomateIntent = Intent.getIntent(uristring);
@@ -570,7 +570,7 @@ public class CountdownEditorActivity extends Activity {
             } else {
             	mAutomateIntent = null;
             }
-            Log.i(TAG, "mAutomateIntent after read:  " + mAutomateIntent);
+            if (debug) Log.i(TAG, "mAutomateIntent after read:  " + mAutomateIntent);
 
             mAutomateText = mCursor.getString(mCursor.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
             if (!TextUtils.isEmpty(mAutomateText) && !mAutomateText.equals(mText.getHint())) {
@@ -654,23 +654,23 @@ public class CountdownEditorActivity extends Activity {
     		//}
 
             values.put(Durations.NOTIFICATION, mNotification);
-            Log.i(TAG, "Notification: " + mNotification);
+            if (debug) Log.i(TAG, "Notification: " + mNotification);
             	
         	values.put(Durations.RING, mRing);
-        	Log.i(TAG, "Ring: " + mRing);
+        	if (debug) Log.i(TAG, "Ring: " + mRing);
         	
         	String uristring = null;
         	if (mRingtoneUri != null) {
         		uristring = mRingtoneUri.toString();
         	}
         	values.put(Durations.RINGTONE, uristring);
-        	Log.i(TAG, "Ringtone: " + uristring);
+        	if (debug) Log.i(TAG, "Ringtone: " + uristring);
         	
         	values.put(Durations.VIBRATE, mVibrate);
-        	Log.i(TAG, "Vibrate: " + mVibrate);
+        	if (debug) Log.i(TAG, "Vibrate: " + mVibrate);
         	
             values.put(Durations.LIGHT, mLight);
-            Log.i(TAG, "Light: " + mLight);
+            if (debug) Log.i(TAG, "Light: " + mLight);
         	
         	values.put(Durations.AUTOMATE, mAutomate);
         	if (mAutomateIntent != null) {
@@ -1016,7 +1016,7 @@ public class CountdownEditorActivity extends Activity {
 			mEditAutomationComponent = mAutomateIntent.getComponent();
 			
 			try {
-				Log.i(TAG, "Start intent: " + mAutomateIntent.toURI());
+				if (debug) Log.i(TAG, "Start intent: " + mAutomateIntent.toURI());
 				//startActivity(mAutomateIntent);
 				
 				Intent cleanIntent = new Intent(mAutomateIntent);
@@ -1092,7 +1092,7 @@ public class CountdownEditorActivity extends Activity {
 		//mDurationView.setText("" + CountdownUtils.getDurationString(mDuration));
 
 		if (NotificationState.isActive(mUri) || (delta < 0 && mDeadline > 0)) {
-			Log.v(TAG, "isActive");
+			if (debug) Log.v(TAG, "isActive");
 			// Show dismiss button
 			mCountdownState = STATE_COUNTDOWN_DISMISS;
 			
@@ -1485,7 +1485,7 @@ public class CountdownEditorActivity extends Activity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// Update internal state:
-			Log.v(TAG, "onReceive()");
+			if (debug) Log.v(TAG, "onReceive()");
 
 			updateViews();
 		}
@@ -1502,7 +1502,7 @@ public class CountdownEditorActivity extends Activity {
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			Log.i(TAG, "Content changed. " + selfChange);
+			if (debug) Log.i(TAG, "Content changed. " + selfChange);
 			
 			if (mCursor != null && !mCursor.isClosed()) {
 				mCursor.requery();
@@ -1516,7 +1516,7 @@ public class CountdownEditorActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		if (debug) Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
 		//Log.i(TAG, "data: " + data.toString());
 
 		if (resultCode == RESULT_OK) {
@@ -1552,7 +1552,7 @@ public class CountdownEditorActivity extends Activity {
 	private void setRingtone(Intent intent) {
 		Bundle bundle = intent.getExtras();
 		mRingtoneUri = (Uri) bundle.get(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
-		Log.i(TAG, "New ringtone: " + mRingtoneUri);
+		if (debug) Log.i(TAG, "New ringtone: " + mRingtoneUri);
 		
 		/*
 		ContentValues values = new ContentValues();
@@ -1600,15 +1600,15 @@ public class CountdownEditorActivity extends Activity {
 			
 			//mAutomateIntent.setAction(Intent.ACTION_VIEW);
 			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
-			Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
+			if (debug) Log.i(TAG, "Received automation intent: " + mAutomateIntent.toURI());
 			
 			if (mAutomateIntent.hasExtra(AutomationIntents.EXTRA_DESCRIPTION)) {
 				mAutomateText = mAutomateIntent.getStringExtra(AutomationIntents.EXTRA_DESCRIPTION);
-				Log.i(TAG, "Received description: " + mAutomateText);
+				if (debug) Log.i(TAG, "Received description: " + mAutomateText);
 				//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			}
 			
-			Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
+			if (debug) Log.i(TAG, "Uri: " + mAutomateIntent.toURI());
 			
 		    // Commit all of our changes to persistent storage. When the update completes
 		    // the content provider will notify the cursor of the change, which will
@@ -1692,7 +1692,7 @@ public class CountdownEditorActivity extends Activity {
 			//values.put(Durations.AUTOMATE_INTENT, mAutomateIntent.toURI());
 			//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			
-			Log.i(TAG, "automate intent: " + mAutomateIntent.toURI());
+			if (debug) Log.i(TAG, "automate intent: " + mAutomateIntent.toURI());
 			//Log.i(TAG, "Uri: " + mUri.toString());
 			
 		    // Commit all of our changes to persistent storage. When the update completes
@@ -1738,8 +1738,8 @@ public class CountdownEditorActivity extends Activity {
     		
     		//values.put(Durations.AUTOMATE_TEXT, mAutomateText);
 			
-			Log.i(TAG, "addApplicationTask: " + mAutomateIntent.toURI());
-			Log.i(TAG, "addApplicationTask: " + mAutomateText);
+    		if (debug) Log.i(TAG, "addApplicationTask: " + mAutomateIntent.toURI());
+    		if (debug) Log.i(TAG, "addApplicationTask: " + mAutomateText);
 			//Log.i(TAG, "Uri: " + mUri.toString());
 			
 		    // Commit all of our changes to persistent storage. When the update completes
@@ -1757,7 +1757,7 @@ public class CountdownEditorActivity extends Activity {
 	}
 	
 	void checkValidAutomateIntent() {
-		Log.i(TAG, "checkValidAutomateIntent; " + mAutomateIntent);
+		if (debug) Log.i(TAG, "checkValidAutomateIntent; " + mAutomateIntent);
 		if (mAutomateIntent == null) {
 			// Unset check box.
 			setAutomateChecked(false);

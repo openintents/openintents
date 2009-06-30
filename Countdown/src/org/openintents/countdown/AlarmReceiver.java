@@ -53,8 +53,8 @@ import android.util.Log;
 	//public final static int ALARM_TIMEOUT_SECONDS = 10 * 60; //5; // 300;
 	private Handler mTimeout;
 	
-	final static boolean RING_AND_VIBRATE = true;
-	final static boolean SILENT = false;
+	final static boolean START_NOTIFICATION = true;
+	final static boolean CANCEL_NOTIFICATION = false;
 
 	/**
 	 * Time of the original notification.
@@ -77,7 +77,7 @@ import android.util.Log;
         
     	long time = System.currentTimeMillis();
         
-    	showNotification(context, mUri, RING_AND_VIBRATE, time);
+    	showNotification(context, mUri, START_NOTIFICATION, time);
         
     	// This starts a second alarm that turns off the first alarm after a
     	// timeout
@@ -92,8 +92,12 @@ import android.util.Log;
     /**
      * The notification is the icon and associated expanded entry in the
      * status bar.
+     * 
+     * @param startNotification true to start a notification, false to cancel
+     *                          a notification's sound & vibrate (but with
+     *                          showing the text again)
      */
-    public static void showNotification(Context context, Uri uri, boolean ringAndVibrate, long time) {
+    public static void showNotification(Context context, Uri uri, boolean startNotification, long time) {
     	
         // look up the notification manager service
         NotificationManager nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -148,7 +152,7 @@ import android.util.Log;
         	light = c.getLong(c.getColumnIndexOrThrow(Durations.LIGHT));
         	automate = c.getLong(c.getColumnIndexOrThrow(Durations.AUTOMATE));
         	String automateIntentUri = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_INTENT));
-        	Log.v(TAG, "automateUri: " + automateIntentUri);
+        	if (debug) Log.v(TAG, "automateUri: " + automateIntentUri);
         	if (automateIntentUri != null) {
         		try {
 					automateIntent = Intent.getIntent(automateIntentUri);
@@ -160,7 +164,7 @@ import android.util.Log;
         	automateDescription = c.getString(c.getColumnIndexOrThrow(Durations.AUTOMATE_TEXT));
         }
 
-        if (automate != 0 && automateIntent != null) {
+        if (automate != 0 && automateIntent != null && startNotification) {
         	if (!TextUtils.isEmpty(automateDescription)) {
         		title = automateDescription;
         	}
@@ -169,7 +173,7 @@ import android.util.Log;
         	
         	if (runIntent != null) {
         		// Send broadcast intent (automation task)
-        		Log.v(TAG, "Run automation " + runIntent.getComponent());
+        		if (debug) Log.v(TAG, "Run automation " + runIntent.getComponent());
 	            context.sendBroadcast(runIntent);
         	} else {
         		// Send activity intent (application or shortcut)
@@ -183,8 +187,8 @@ import android.util.Log;
             		// Launch intent directly
 
     				try {
-    	            	Log.v(TAG, "Launching intent " + automateIntent.getAction());
-    	            	Log.v(TAG, "Launching intent data " + automateIntent.getData());
+    					if (debug) Log.v(TAG, "Launching intent " + automateIntent.getAction());
+    					if (debug) Log.v(TAG, "Launching intent data " + automateIntent.getData());
     	            	
 
     					AutomationUtils.clearInternalExtras(automateIntent);
@@ -215,23 +219,23 @@ import android.util.Log;
         // Set the info for the views that show in the notification panel.
         notif.setLatestEventInfo(context, title, text, contentIntent);
 
-        if (ringAndVibrate && ring != 0) {
-        	Log.i(TAG, "Notification: Set ringtone " + ringtone.toString());
+        if (startNotification && ring != 0) {
+        	if (debug) Log.i(TAG, "Notification: Set ringtone " + ringtone.toString());
         	notif.sound = ringtone;
 
         	notif.audioStreamType = AudioManager.STREAM_RING;//AudioManager.STREAM_ALARM;
         	notif.flags |= Notification.FLAG_INSISTENT;
         }
         
-        if (ringAndVibrate && vibrate != 0) {
-        	Log.i(TAG, "Notification: Set vibration");
+        if (startNotification && vibrate != 0) {
+        	if (debug) Log.i(TAG, "Notification: Set vibration");
             // after a 100ms delay, vibrate for 250ms, pause for 100 ms and
             // then vibrate for 500ms.
             notif.vibrate = new long[] { 100, 250, 100, 500};
             notif.flags |= Notification.FLAG_INSISTENT;
         }
         
-        if (ringAndVibrate && light != 0) {
+        if (startNotification && light != 0) {
         	//notif.ledARGB = 0xFFFFFFFF;
         	//notif.ledOffMS = 500;
         	//notif.ledOnMS = 500;

@@ -40,7 +40,8 @@ import android.util.Log;
  * @see AlarmService_Alarm
  */
 public class AlarmService extends Service {
-    private static final String TAG = "AlarmService";
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
     
     Thread mThread;
     long mEndTime;
@@ -71,7 +72,7 @@ public class AlarmService extends Service {
         public void run() {
             // Normally we would do some work here...  for our sample, we will
             // just sleep for 30 seconds.
-        	Log.v(TAG, "Starting service...");
+        	if (debug) Log.v(TAG, "Starting service...");
 
         	long ALARM_TIMEOUT_SECONDS = PreferenceActivity.getNotificationTimeoutFromPrefs(AlarmService.this);
             mEndTime = System.currentTimeMillis() + ALARM_TIMEOUT_SECONDS * 1000;
@@ -84,7 +85,7 @@ public class AlarmService extends Service {
                 }
             }
             
-            Log.v(TAG, "Stopping service.");
+            if (debug) Log.v(TAG, "Stopping service.");
 
             // Done with our work...  stop the service!
             AlarmService.this.stopSelf();

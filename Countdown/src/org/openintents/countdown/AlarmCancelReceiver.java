@@ -54,7 +54,7 @@ public class AlarmCancelReceiver extends BroadcastReceiver
         // Canceling sound and vibration also cancels the notification.
         // Too keep the notification there, we set the notification
         // again with the original time, but this time a silent version.
-        AlarmReceiver.showNotification(context, mUri, AlarmReceiver.SILENT, time);
+        AlarmReceiver.showNotification(context, mUri, AlarmReceiver.CANCEL_NOTIFICATION, time);
         
 
         // stop service for wake lock:

@@ -16,8 +16,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.countdown"
-      android:versionCode="10002"
-      android:versionName="1.1.0-beta1">
+      android:versionCode="10003"
+      android:versionName="1.1.0-rc1">
     <uses-sdk android:minSdkVersion="2" />
     <!-- History:
     1.1.0-beta1 [10002]: ?
@@ -32,7 +32,7 @@
     
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10002" />
+           android:value="10003" />
            
         <!-- OI About metadata -->
 		<meta-data android:name="org.openintents.metadata.COMMENTS"

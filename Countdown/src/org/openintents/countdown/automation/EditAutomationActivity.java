@@ -22,7 +22,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class EditAutomationActivity extends Activity {
-	
 	private static final String TAG = LogConstants.TAG;
 	private static final boolean debug = LogConstants.debug;
 	
@@ -142,7 +141,7 @@ public class EditAutomationActivity extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.i(TAG, "onPause");
+		if (debug) Log.i(TAG, "onPause");
 		
 	}
 

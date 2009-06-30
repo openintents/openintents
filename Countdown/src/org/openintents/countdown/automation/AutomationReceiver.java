@@ -1,5 +1,6 @@
 package org.openintents.countdown.automation;
 
+import org.openintents.countdown.LogConstants;
 import org.openintents.intents.CountdownIntents;
 
 import android.content.BroadcastReceiver;
@@ -11,10 +12,11 @@ import android.util.Log;
 public class AutomationReceiver extends BroadcastReceiver {
 
 	private final static String TAG = "AutomationReceiver";
+    private static final boolean debug = LogConstants.debug;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Log.i(TAG, "Receive intent: " + intent.toString());
+		if (debug) Log.i(TAG, "Receive intent: " + intent.toString());
 		
 		final String action = intent.getStringExtra(CountdownIntents.EXTRA_ACTION);
 		final String dataString = intent.getStringExtra(CountdownIntents.EXTRA_DATA);
@@ -22,13 +24,13 @@ public class AutomationReceiver extends BroadcastReceiver {
 		if (dataString != null) {
 			data = Uri.parse(dataString);
 		}
-		Log.i(TAG, "action: " + action + ", data: " + dataString);
+		if (debug) Log.i(TAG, "action: " + action + ", data: " + dataString);
 		
 		if (CountdownIntents.TASK_START_COUNTDOWN.equals(action)) {
 			// Start countdown.
 			if (data != null) {
 				// Launch that countdown:
-				Log.i(TAG, "Launch countdown " + data);
+				if (debug) Log.i(TAG, "Launch countdown " + data);
 				AutomationActions.startCountdown(context, data);
 			}
 		}
@@ -37,7 +39,7 @@ public class AutomationReceiver extends BroadcastReceiver {
 			// Start countdown.
 			if (data != null) {
 				// Launch that countdown:
-				Log.i(TAG, "Stop countdown " + data);
+				if (debug) Log.i(TAG, "Stop countdown " + data);
 				AutomationActions.stopCountdown(context, data);
 			}
 		}

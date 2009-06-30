@@ -18,6 +18,8 @@ package org.openintents.distribution;
 
 //Version Nov 12, 2008
 
+import org.openintents.countdown.LogConstants;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -35,9 +37,9 @@ import android.widget.Button;
  *
  */
 public class EulaActivity extends Activity {
-
 	/** TAG for log messages. */
-	private static final String TAG = "EulaActivity";
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
 	
 	static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
 	
@@ -122,10 +124,10 @@ public class EulaActivity extends Activity {
 		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
 		
 		if (accepted) {
-			Log.i(TAG, "Eula has been accepted.");
+			if (debug) Log.i(TAG, "Eula has been accepted.");
 			return true;
 		} else {
-			Log.i(TAG, "Eula has not been accepted yet.");
+			if (debug) Log.i(TAG, "Eula has not been accepted yet.");
 			
 			// Launch Eula activity
 			Intent i = new Intent(activity, EulaActivity.class);
@@ -133,8 +135,8 @@ public class EulaActivity extends Activity {
 			
 			// Specify in intent extras which activity should be called
 			// after Eula has been accepted.
-			Log.d(TAG, "Local package name: " + ci.getPackageName());
-			Log.d(TAG, "Local class name: " + ci.getClassName());
+			if (debug) Log.d(TAG, "Local package name: " + ci.getPackageName());
+			if (debug) Log.d(TAG, "Local class name: " + ci.getClassName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_PACKAGE, ci.getPackageName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_CLASS, ci.getClassName());
 			activity.startActivity(i);

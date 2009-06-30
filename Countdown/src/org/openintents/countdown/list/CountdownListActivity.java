@@ -16,6 +16,7 @@
 
 package org.openintents.countdown.list;
 
+import org.openintents.countdown.LogConstants;
 import org.openintents.countdown.PreferenceActivity;
 import org.openintents.countdown.R;
 import org.openintents.countdown.automation.AutomationActions;
@@ -47,8 +48,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AbsListView.OnScrollListener;
 
 
 /**
@@ -57,8 +60,10 @@ import android.widget.ListView;
  * contents of the {@link NotePadProvider}
  */
 public class CountdownListActivity extends ListActivity 
-	implements CountdownCursorAdapter.OnCountdownClickListener {
+	implements CountdownCursorAdapter.OnCountdownClickListener,
+	ListView.OnScrollListener{
     private static final String TAG = "CountdownListActivity";
+    private static final boolean debug = LogConstants.debug;
 
     // Menu item ids
     private static final int MENU_ITEM_DELETE = Menu.FIRST;
@@ -67,6 +72,7 @@ public class CountdownListActivity extends ListActivity
 	private static final int MENU_ABOUT = Menu.FIRST + 3;
 	private static final int MENU_UPDATE = Menu.FIRST + 4;
  	private static final int MENU_SETTINGS = Menu.FIRST + 5;
+    private static final int MENU_ITEM_EDIT = Menu.FIRST + 6;
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
 
@@ -154,6 +160,8 @@ public class CountdownListActivity extends ListActivity
         CountdownCursorAdapter adapter = new CountdownCursorAdapter(this, mCursor, this, baseUri, showButton);
         
         setListAdapter(adapter);
+
+        getListView().setOnScrollListener(this);
     }
 
 
@@ -305,6 +313,9 @@ public class CountdownListActivity extends ListActivity
         menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
 
         // Add a menu item to delete the note
+        menu.add(0, MENU_ITEM_EDIT, 0, R.string.menu_edit);
+        
+        // Add a menu item to delete the note
         menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
     }
         
@@ -319,11 +330,14 @@ public class CountdownListActivity extends ListActivity
         }
 
         switch (item.getItemId()) {
+	        case MENU_ITEM_EDIT:
+	        	editCountdown(info.id);
+	            return true;
             case MENU_ITEM_DELETE: {
             	Uri uri = ContentUris.withAppendedId(getIntent().getData(), info.id);
                 
             	// Cancel an ongoing alarm (if any)
-            	CountdownUtils.cancelAlarm(this, uri);
+            	AutomationActions.stopCountdown(this, uri);
             	
                 // Delete the alarm that the context menu is for
                 getContentResolver().delete(uri, null, null);
@@ -360,11 +374,11 @@ public class CountdownListActivity extends ListActivity
 	}
 	
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        editCountdown(id);
+        pickOrEditCountdown(id);
     }
 
 	public void onCountdownPanelClick(long id) {
-        editCountdown(id);
+        pickOrEditCountdown(id);
 	}
 	
 	public void onStartClick(long id) {
@@ -379,7 +393,7 @@ public class CountdownListActivity extends ListActivity
 	 * Show the Countdown editor activity.
 	 * @param id
 	 */
-	private void editCountdown(long id) {
+	private void pickOrEditCountdown(long id) {
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
         
         String action = getIntent().getAction();
@@ -392,6 +406,17 @@ public class CountdownListActivity extends ListActivity
             // Launch activity to view/edit the currently selected item
             startActivity(new Intent(Intent.ACTION_EDIT, uri));
         }
+	}
+	
+	/**
+	 * Show the Countdown editor activity.
+	 * @param id
+	 */
+	private void editCountdown(long id) {
+		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
+        
+        // Launch activity to view/edit the currently selected item
+        startActivity(new Intent(Intent.ACTION_EDIT, uri));
 	}
 
 	private void startCountdown(long id) {
@@ -416,11 +441,30 @@ public class CountdownListActivity extends ListActivity
 		mHandler.sendMessage(mHandler.obtainMessage(MSG_UPDATE_DISPLAY));
 	}
 	
+
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+            int totalItemCount) {
+    }
+    
+
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+        switch (scrollState) {
+        case OnScrollListener.SCROLL_STATE_IDLE:
+        	// Touch the views again
+        	updateViews();
+            break;
+        case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+            break;
+        case OnScrollListener.SCROLL_STATE_FLING:
+            break;
+        }
+    }
+    
 	/** Handle the process of updating the timer */
 	Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			Log.i(TAG, "Handle message");
+			if (debug) Log.i(TAG, "Handle message");
 			if (msg.what == MSG_UPDATE_DISPLAY) {
 				updateViews();
 			}
@@ -442,6 +486,8 @@ public class CountdownListActivity extends ListActivity
 			update |= cliv.updateCountdown();
 		}
 		
+		mHandler.removeMessages(MSG_UPDATE_DISPLAY);
+		
 		if (update) {
 			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
 		}
@@ -452,7 +498,7 @@ public class CountdownListActivity extends ListActivity
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// Update internal state:
-			Log.v(TAG, "onReceive()");
+			if (debug) Log.v(TAG, "onReceive()");
 
 			updateViews();
 		}

@@ -17,6 +17,8 @@
 // package com.android.alarmclock;
 package org.openintents.countdown.util;
 
+import org.openintents.countdown.LogConstants;
+
 import android.content.Context;
 import android.os.PowerManager;
 import android.util.Log;
@@ -26,14 +28,15 @@ import android.util.Log;
  * released in the AlarmAlert activity
  */
 public class AlarmAlertWakeLock {
-	public final static String LOGTAG = "AlarmAlertWakeLock";
+	private static final String TAG = LogConstants.TAG;
+	private static final boolean debug = LogConstants.debug;
 	
     private static PowerManager.WakeLock sWakeLock;
 
     public static void acquire(Context context) {
-        Log.v(LOGTAG, "Acquiring wake lock");
+    	if (debug) Log.v(TAG, "Acquiring wake lock");
         if (sWakeLock != null) {
-            Log.v(LOGTAG, " - releaseing first old wake lock");
+        	if (debug) Log.v(TAG, " - releaseing first old wake lock");
             sWakeLock.release();
         }
 
@@ -44,15 +47,15 @@ public class AlarmAlertWakeLock {
                 PowerManager.FULL_WAKE_LOCK |
                 PowerManager.ACQUIRE_CAUSES_WAKEUP |
                 PowerManager.ON_AFTER_RELEASE,
-                LOGTAG
+                TAG
                 );
         sWakeLock.acquire();
     }
 
     public static void release() {
-        Log.v(LOGTAG, "Releasing wake lock");
+    	if (debug)  Log.v(TAG, "Releasing wake lock");
         if (sWakeLock != null) {
-            Log.v(LOGTAG, " - releaseing wake lock now");
+        	if (debug) Log.v(TAG, " - releasing wake lock now");
             sWakeLock.release();
             sWakeLock = null;
         }
