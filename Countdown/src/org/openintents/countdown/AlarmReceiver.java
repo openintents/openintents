@@ -127,10 +127,6 @@ import android.util.Log;
         	text = CountdownUtils.getDurationString(c.getColumnIndexOrThrow(Durations.DURATION));
         }
         
-        if (TextUtils.isEmpty(title)) {
-        	title = context.getString(R.string.app_name);
-        }
-        
         long notification = 0;
         long ring = 0;
         Uri ringtone = null;
@@ -166,11 +162,16 @@ import android.util.Log;
         if (c != null) {
         	c.close();
         }
+        
+        if (TextUtils.isEmpty(title)) {
+    		title = automateDescription;
+    	}
 
+        if (TextUtils.isEmpty(title)) {
+        	title = context.getString(R.string.app_name);
+        }
+        
         if (automate != 0 && automateIntent != null && startNotification) {
-        	if (!TextUtils.isEmpty(automateDescription)) {
-        		title = automateDescription;
-        	}
         	
         	Intent runIntent = AutomationUtils.getRunAutomationIntent(automateIntent);
         	
@@ -206,7 +207,6 @@ import android.util.Log;
         	
         }
         
-
         intent.putExtra(NotificationReceiver.EXTRA_LAUNCH_INTENT, launchIntent.toURI());
         
         if (debug) Log.i(TAG, "Launch intent " + launchIntent.toURI());
