@@ -6,7 +6,7 @@ import org.openintents.compatibility.activitypicker.DialogHostingActivity;
 import org.openintents.intents.AutomationIntents;
 import org.openintents.intents.LocaleBridgeIntents;
 import org.openintents.localebridge.util.LocaleUtils;
-import org.openintents.utils.SDKVersion;
+import org.openintents.util.SDKVersion;
 
 import android.app.Activity;
 import android.content.ComponentName;
