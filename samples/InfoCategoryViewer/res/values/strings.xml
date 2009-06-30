@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">View all activities in the category CATEGORY_INFO.</string>
+    <string name="app_name">Info Category Viewer</string>
+    <string name="view_category_info">View CATEGORY_INFO</string>
+    <string name="title_select_activity">Select activity</string>
+</resources>
