@@ -37,6 +37,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -172,6 +173,8 @@ public class CountdownListActivity extends ListActivity
         IntentFilter filter = new IntentFilter(NotificationState.ACTION_NOTIFICATION_STATE_CHANGED);
         registerReceiver(mReceiver, filter);
         
+        getContentResolver().registerContentObserver(Durations.CONTENT_URI, true, mObserver);
+        
 		DateTimeFormater.getFormatFromPreferences(this);
 		
 		// Start periodic update
@@ -182,6 +185,8 @@ public class CountdownListActivity extends ListActivity
 	protected void onPause() {
 		super.onPause();
 
+		getContentResolver().unregisterContentObserver(mObserver);
+		
         unregisterReceiver(mReceiver);
         
 		mHandler.removeMessages(MSG_UPDATE_DISPLAY);
@@ -451,7 +456,7 @@ public class CountdownListActivity extends ListActivity
         switch (scrollState) {
         case OnScrollListener.SCROLL_STATE_IDLE:
         	// Touch the views again
-        	updateViews();
+        	updateViews(false);
             break;
         case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
             break;
@@ -466,13 +471,13 @@ public class CountdownListActivity extends ListActivity
 		public void handleMessage(Message msg) {
 			if (debug) Log.i(TAG, "Handle message");
 			if (msg.what == MSG_UPDATE_DISPLAY) {
-				updateViews();
+				updateViews(false);
 			}
 		}
 
 	};
 
-	private void updateViews() {
+	private void updateViews(boolean forceAnotherUpdate) {
 		// Update all visible views.
 		ListView view = getListView();
 		
@@ -488,7 +493,7 @@ public class CountdownListActivity extends ListActivity
 		
 		mHandler.removeMessages(MSG_UPDATE_DISPLAY);
 		
-		if (update) {
+		if (update || forceAnotherUpdate) {
 			mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_UPDATE_DISPLAY), 1000);
 		}
 	}
@@ -500,7 +505,25 @@ public class CountdownListActivity extends ListActivity
 			// Update internal state:
 			if (debug) Log.v(TAG, "onReceive()");
 
-			updateViews();
+			// Force another update, because in the first
+			// a view may still be in the old state,
+			// so we check again a second later.
+			updateViews(true);
+		}
+		
+	};
+	
+	ContentObserver mObserver = new ContentObserver(mHandler) {
+
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			if (debug) Log.v(TAG, "onChange()");
+			
+			// Force another update, because in the first
+			// a view may still be in the old state,
+			// so we check again a second later.
+			updateViews(true);
 		}
 		
 	};
