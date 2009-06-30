@@ -48,7 +48,7 @@ public class AutomationReceiver extends BroadcastReceiver {
 				localeIntent.setAction(com.twofortyfouram.Intent.ACTION_FIRE_SETTING);
 			}
 
-			Log.i(TAG, "into Locale intent: " + localeIntent.toURI());
+			if (debug) Log.i(TAG, "into Locale intent: " + localeIntent.toURI());
 			
 			// Launch this intent
 			context.sendBroadcast(localeIntent);

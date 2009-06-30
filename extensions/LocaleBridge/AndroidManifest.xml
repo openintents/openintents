@@ -2,9 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.localebridge"
       android:versionCode="1"
-      android:versionName="1.0.0">
+      android:versionName="1.0.0-rc1">
     <uses-sdk android:minSdkVersion="2" />
+    <!-- History:
+    1.1.0-rc1 [1]: 2009-06-30 -->
+    
     <application android:icon="@drawable/ic_launcher_appwidget" android:label="@string/app_name">
+    
+        <!-- aTrackDog metadata -->
+        <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
+           android:value="1" />
+           
         <activity android:name=".AutomationBridge"
                   android:label="@string/app_name"
 			android:theme="@*android:style/Theme.Translucent.NoTitleBar">

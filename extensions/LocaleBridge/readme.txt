@@ -28,3 +28,4 @@ date: 2009-06-30
 - First public release on Android SDK 1.1 and 1.5
 - Convert OI automation tasks into Locale settings
   and vice versa.
+- Info dialog if launched by Market application.

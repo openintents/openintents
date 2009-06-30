@@ -45,7 +45,7 @@ public class LocaleReceiver extends BroadcastReceiver {
 			
 			localeIntent.setAction(AutomationIntents.ACTION_RUN_AUTOMATION);
 
-			Log.i(TAG, "into Locale intent: " + localeIntent.toURI());
+			if (debug) Log.i(TAG, "into Locale intent: " + localeIntent.toURI());
 			
 			// Launch this intent
 			context.sendBroadcast(localeIntent);

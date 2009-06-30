@@ -36,7 +36,7 @@ public class LocaleBridge extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        Log.i(TAG, "onCreate()");
+        if (debug) Log.i(TAG, "onCreate()");
         
         if (savedInstanceState != null) {
         	if (savedInstanceState.containsKey(BUNDLE_COMPONENT_NAME)) {
@@ -51,12 +51,12 @@ public class LocaleBridge extends Activity {
             if (intent.hasExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT)) {
             	Intent automationIntent = convertLocaleIntent2AutomationIntent(intent);
             	if (automationIntent != null) {
-            		Log.i(TAG, "Start activity for result 1");
+            		if (debug) Log.i(TAG, "Start activity for result 1");
             		startActivityForResult(automationIntent, REQUEST_SET_AUTOMATION_TASK);
             	} else {
             		// Some error occured
             		setResult(RESULT_CANCELED);
-            		Log.i(TAG, "finish 1");
+            		if (debug) Log.i(TAG, "finish 1");
             		finish();
             	}
             } else {
@@ -71,7 +71,7 @@ public class LocaleBridge extends Activity {
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
-        Log.i(TAG, "onSaveInstanceState()");
+		if (debug) Log.i(TAG, "onSaveInstanceState()");
 
 		if (mEditAutomationActivity != null) {
 			String componentString = mEditAutomationActivity.flattenToString();
@@ -100,7 +100,7 @@ public class LocaleBridge extends Activity {
         	if (debug) Log.i(TAG, "Call system ActivityPicker");
         }
         
-		Log.i(TAG, "Start activity for result 2");
+        if (debug) Log.i(TAG, "Start activity for result 2");
         startActivityForResult(pickIntent, REQUEST_PICK_AUTOMATION_TASK);
 	}
     
@@ -110,7 +110,7 @@ public class LocaleBridge extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
-		Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
+		if (debug) Log.i(TAG, "onActivityResult: " + requestCode + ", " + resultCode);
 		//Log.i(TAG, "data: " + data.toURI());
 
 		if (resultCode == RESULT_OK) {
@@ -119,7 +119,7 @@ public class LocaleBridge extends Activity {
 				// Remember setting activity for later
 				mEditAutomationActivity = data.getComponent();
 				
-        		Log.i(TAG, "Start activity for result 3");
+				if (debug) Log.i(TAG, "Start activity for result 3");
 				startActivityForResult(data, REQUEST_SET_AUTOMATION_TASK);
 				break;
 			case REQUEST_SET_AUTOMATION_TASK:
@@ -137,7 +137,7 @@ public class LocaleBridge extends Activity {
 			case RESULT_CANCELED:
 			default:
 				setResult(RESULT_CANCELED);
-    			Log.i(TAG, "finish 2");
+				if (debug) Log.i(TAG, "finish 2");
 				finish();
 				break;
 			}
@@ -150,15 +150,15 @@ public class LocaleBridge extends Activity {
 	 * @param intent
 	 */
 	void convertAndReturnIntent(Intent intent) {
-		Log.i(TAG, "Converting and returning");
+		if (debug) Log.i(TAG, "Converting and returning");
 		Intent automationIntent = convertAutomationIntent2LocaleIntent(intent);
 		setResult(RESULT_OK, automationIntent);
-		Log.i(TAG, "finish 3");
+		if (debug) Log.i(TAG, "finish 3");
 		finish();
 	}
 	
 	public Intent convertAutomationIntent2LocaleIntent(Intent automationIntent) {
-		Log.i(TAG, "Converting automation intent: " + automationIntent.toURI());
+		if (debug) Log.i(TAG, "Converting automation intent: " + automationIntent.toURI());
 		
 		Intent localeIntent = new Intent();
 		
@@ -191,9 +191,9 @@ public class LocaleBridge extends Activity {
 		localeIntent.putExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_COMPONENT, 
 				mEditAutomationActivity.flattenToString());
 		
-		Log.i(TAG, "Storing: " + mEditAutomationActivity.flattenToString());
+		if (debug) Log.i(TAG, "Storing: " + mEditAutomationActivity.flattenToString());
 
-		Log.i(TAG, "into locale intent: " + localeIntent.toURI());
+		if (debug) Log.i(TAG, "into locale intent: " + localeIntent.toURI());
 		
 		return localeIntent;
 	}
@@ -202,7 +202,7 @@ public class LocaleBridge extends Activity {
 		
 		// Extract the original Locale intent:
 		String encodedIntent = localeIntent.getStringExtra(LocaleBridgeIntents.EXTRA_LOCALE_BRIDGE_INTENT);
-		Log.i(TAG, "Converting automation intent: " + encodedIntent);
+		if (debug) Log.i(TAG, "Converting automation intent: " + encodedIntent);
 		
 		Intent automationIntent;
 		try {
@@ -219,7 +219,7 @@ public class LocaleBridge extends Activity {
 		// Set this component in the newly created intent:
 		automationIntent.setComponent(mEditAutomationActivity);
 
-		Log.i(TAG, "into Locale intent: " + automationIntent.toURI());
+		if (debug) Log.i(TAG, "into Locale intent: " + automationIntent.toURI());
 		
 		return automationIntent;
 	}
