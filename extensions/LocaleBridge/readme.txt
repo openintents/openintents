@@ -14,7 +14,7 @@
  * limitations under the License.                                           *
  ****************************************************************************
 
-The OpenIntents Locale Bridge lets you use Locale settings
+The OpenIntents Locale Bridge lets you use Locale plug-ins
 in OI Countdown, and OI automation tasks in Locale.
 
 To obtain the current release, visit
