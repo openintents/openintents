@@ -314,6 +314,7 @@ storepass=*password of keystore*
 			<arg value="${external-libs-ospath}" />
 		</exec>
 		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}" />
+		<delete file="${srcdir-ospath}/org/openintents/countdown/R.java" />
 	</target>
 
 	<!-- Install the package on the default emulator -->

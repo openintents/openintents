@@ -1,3 +1,19 @@
+/* 
+ * Copyright (C) 2007-2009 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.distribution;
 
 import org.openintents.countdown.R;
@@ -52,6 +68,13 @@ public class RD {
 		public static final int aboutapp_get = R.string.aboutapp_get;
 		public static final int aboutapp_market_uri = R.string.aboutapp_market_uri;
 		public static final int aboutapp_developer_uri = R.string.aboutapp_developer_uri;
+		
+	}
+
+	public class raw {
+		///////////////////////////////////////
+		// Eula activity
+		public static final int license_short = R.raw.license_short;
 		
 	}
 }

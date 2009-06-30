@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2008 OpenIntents.org
+ * Copyright (C) 2007-2009 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,30 +16,35 @@
 
 package org.openintents.distribution;
 
-//Version Nov 12, 2008
 
-import org.openintents.countdown.LogConstants;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
- * Displays the Eula for the first time.
+ * Displays the Eula for the first time, reading it from a raw resource.
  * 
+ * @version 2009-01-17
  * @author Peli
  *
  */
 public class EulaActivity extends Activity {
+
 	/** TAG for log messages. */
-	private static final String TAG = LogConstants.TAG;
-	private static final boolean debug = LogConstants.debug;
+	private static final String TAG = "EulaActivity";
 	
 	static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
 	
@@ -84,6 +89,9 @@ public class EulaActivity extends Activity {
 			}
 		});
 		
+		TextView text = (TextView) findViewById(RD.id.text);
+		text.setText(readLicenseFromRawResource(RD.raw.license_short));
+		
 	}
 	
 	/**
@@ -124,10 +132,10 @@ public class EulaActivity extends Activity {
 		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
 		
 		if (accepted) {
-			if (debug) Log.i(TAG, "Eula has been accepted.");
+			Log.i(TAG, "Eula has been accepted.");
 			return true;
 		} else {
-			if (debug) Log.i(TAG, "Eula has not been accepted yet.");
+			Log.i(TAG, "Eula has not been accepted yet.");
 			
 			// Launch Eula activity
 			Intent i = new Intent(activity, EulaActivity.class);
@@ -135,13 +143,50 @@ public class EulaActivity extends Activity {
 			
 			// Specify in intent extras which activity should be called
 			// after Eula has been accepted.
-			if (debug) Log.d(TAG, "Local package name: " + ci.getPackageName());
-			if (debug) Log.d(TAG, "Local class name: " + ci.getClassName());
+			Log.d(TAG, "Local package name: " + ci.getPackageName());
+			Log.d(TAG, "Local class name: " + ci.getClassName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_PACKAGE, ci.getPackageName());
 			i.putExtra(EXTRA_LAUNCH_ACTIVITY_CLASS, ci.getClassName());
 			activity.startActivity(i);
 			activity.finish();
 			return false;
 		}
+	}
+	
+	/**
+	 * Read license from raw resource.
+	 * @param resourceid ID of the raw resource.
+	 * @return
+	 */
+	private String readLicenseFromRawResource(int resourceid) {
+
+		// Retrieve license from resource:
+		String license = "";
+		Resources resources = getResources();
+    		
+		//Read in the license file as a big String
+		BufferedReader in
+		   = new BufferedReader(new InputStreamReader(
+				resources.openRawResource(resourceid)));
+		String line;
+		StringBuilder sb = new StringBuilder();
+		try {
+			while ((line = in.readLine()) != null) { // Read line per line.
+				if (TextUtils.isEmpty(line)) {
+					// Empty line: Leave line break
+					sb.append("\n\n");
+				} else {
+					sb.append(line);
+					sb.append(" ");
+				}
+			}
+			license = sb.toString();
+		} catch (IOException e) {
+			//Should not happen.
+			e.printStackTrace();
+		}
+		
+    	
+    	return license;
 	}
 }
