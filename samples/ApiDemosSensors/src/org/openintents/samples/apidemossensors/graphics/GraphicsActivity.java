@@ -29,7 +29,7 @@ class GraphicsActivity extends Activity {
         
         // enable this to test drawing with GL
         if (false) {
-            requestWindowFeature(Window.FEATURE_OPENGL);
+            //requestWindowFeature(Window.FEATURE_OPENGL);
         }
     }
 

@@ -18,19 +18,9 @@ package org.openintents.samples.apidemossensors.view;
 
 import javax.microedition.khronos.opengles.GL;
 
-import org.openintents.OpenIntents;
-import org.openintents.hardware.SensorManagerSimulator;
-import org.openintents.provider.Hardware;
 import org.openintents.samples.apidemossensors.R;
+import org.openintents.sensorsimulator.hardware.SensorManagerSimulator;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -44,8 +34,15 @@ import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Region;
-import android.hardware.SensorManager;
 import android.hardware.SensorListener;
+import android.hardware.SensorManager;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 
 import com.google.android.maps.MapActivity;
 import com.google.android.maps.MapView;
@@ -69,7 +66,8 @@ import com.google.android.maps.MyLocationOverlay;
 public class MapViewCompassDemo extends MapActivity {
 
     private static final String TAG = "MapViewCompassDemo";
-    private SensorManager mSensorManager;
+    //private SensorManager mSensorManager;
+    private SensorManagerSimulator mSensorManager;
     private RotateView mRotateView;
     private MapView mMapView;
     private MyLocationOverlay mMyLocationOverlay;
@@ -83,6 +81,10 @@ public class MapViewCompassDemo extends MapActivity {
             super(context);
         }
 
+    	public void onAccuracyChanged(int sensor, int accuracy) {
+    		
+    	}
+    	
         public void onSensorChanged(int sensor, float[] values) {
             //Log.d(TAG, "x: " + values[0] + "y: " + values[1] + "z: " + values[2]);
             synchronized (this) {
@@ -94,6 +96,10 @@ public class MapViewCompassDemo extends MapActivity {
         @Override
         protected void dispatchDraw(Canvas canvas) {
             canvas.save(Canvas.MATRIX_SAVE_FLAG);
+            int mLeft = getLeft();
+            int mRight = getLeft();
+            int mBottom = getLeft();
+            int mTop = getLeft();
             canvas.rotate(-mHeading, (mRight - mLeft) * 0.5f, (mBottom - mTop) * 0.5f);
             mCanvas.delegate = canvas;
             super.dispatchDraw(mCanvas);
@@ -102,6 +108,10 @@ public class MapViewCompassDemo extends MapActivity {
 
         @Override
         protected void onLayout(boolean changed, int l, int t, int r, int b) {
+            int mLeft = getLeft();
+            int mRight = getLeft();
+            int mBottom = getLeft();
+            int mTop = getLeft();
             final int width = mRight - mLeft;
             final int height = mBottom - mTop;
             final int count = getChildCount();
@@ -143,22 +153,41 @@ public class MapViewCompassDemo extends MapActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_OPENGL);
+        //requestWindowFeature(Window.FEATURE_OPENGL);
 
-        ////////////////////////////////////////////////////////
-        // Test if OpenIntents is present (for sensor settings)
-        OpenIntents.requiresOpenIntents(this);
+        ////////////////////////////////////////////////////////////////
+        // INSTRUCTIONS
+        // ============
 
-        // !! Very important !!
-        // Before calling any of the Simulator data,
-        // the Content resolver has to be set !!
-        Hardware.mContentResolver = getContentResolver();
-        
-        // Link sensor manager to OpenIntents Sensor simulator
-        // mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mSensorManager = (SensorManager) new SensorManagerSimulator((SensorManager) getSystemService(SENSOR_SERVICE));
-		////////////////////////////////////////////////////////
-        
+        // 1) Use the separate application SensorSimulatorSettings
+        //    to enter the correct IP address of the SensorSimulator.
+        //    This should work before you proceed, because the same
+        //    settings are used for your custom sensor application.
+
+        // 2) Include sensorsimulator-lib.jar in your project.
+        //    Put that file into the 'lib' folder.
+        //    In Eclipse, right-click on your project in the 
+        //    Package Explorer, select
+        //    Properties > Java Build Path > (tab) Libraries
+        //    then click Add JARs to add this jar.
+
+        // 3) You need the permission
+        //    <uses-permission android:name="android.permission.INTERNET"/>
+        //    in your Manifest file!
+
+        // 4) Instead of calling the system service to obtain the Sensor manager,
+        //    you should obtain it from the SensorManagerSimulator:
+
+        //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        mSensorManager = SensorManagerSimulator.getSystemService(this, SENSOR_SERVICE);
+
+        // 5) Connect to the sensor simulator, using the settings
+        //    that have been set previously with SensorSimulatorSettings
+        mSensorManager.connectSimulator();
+
+        // The rest of your application can stay unmodified.
+        ////////////////////////////////////////////////////////////////
+
         mRotateView = new RotateView(this);
         mMapView = new MapView(this, "MapViewCompassDemo_DummyAPIKey");
         mRotateView.addView(mMapView);
@@ -569,74 +598,5 @@ public class MapViewCompassDemo extends MapActivity {
             delegate.drawPicture(picture, dst);
         }
     }
-    
 
-    ////////////////////////////////////////////////////////
-    // Add some menus for connecting to sensor simulator
-
-	private static final int MENU_SETTINGS = Menu.FIRST;
-	private static final int MENU_CONNECT_SIMULATOR = Menu.FIRST + 1;
-	private boolean mConnected = false;
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-
-		// Standard menu
-		menu.add(0, MENU_SETTINGS, 0, "Settings")
-			.setIcon(R.drawable.mobile_shake_settings001a)
-			.setShortcut('0', 's');
-		menu.add(1, MENU_CONNECT_SIMULATOR, 0, "Connect")
-			.setIcon(R.drawable.mobile_shake001a)
-			.setShortcut('1', 'c');
-
-		return true;
-	}
-	
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		super.onPrepareOptionsMenu(menu);
-				
-        //menu.setItemChecked(MENU_CONNECT_SIMULATOR, mConnected);
-        if (mConnected) {
-        	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Disconnect");
-        }else {
-        	menu.findItem(MENU_CONNECT_SIMULATOR).setTitle("Connect");	
-        }
-        
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case MENU_SETTINGS:
-			Intent intent = new Intent(Intent.ACTION_VIEW, Hardware.Preferences.CONTENT_URI);
-			startActivity(intent);
-			return true;
-			
-		case MENU_CONNECT_SIMULATOR:
-			
-			// first disable the current sensors:
-	        mSensorManager.unregisterListener(mRotateView);
-			
-			if (!mConnected) {
-				// now connect to simulator
-				SensorManagerSimulator.connectSimulator();
-			} else {
-				// or disconnect to simulator
-				SensorManagerSimulator.disconnectSimulator();				
-			}
-			
-			// now enable the new sensors
-	        mSensorManager.registerListener(mRotateView,
-	                SensorManager.SENSOR_ORIENTATION,
-	                SensorManager.SENSOR_DELAY_UI);
-	        
-			mConnected = ! mConnected;
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-		
-	}
 }

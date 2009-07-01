@@ -93,6 +93,10 @@ public class PictureLayout extends ViewGroup {
             }
         }
 
+    	int mPaddingLeft = getPaddingLeft();
+    	int mPaddingRight = getPaddingRight();
+    	int mPaddingTop = getPaddingTop();
+    	int mPaddingBottom = getPaddingBottom();
         maxWidth += mPaddingLeft + mPaddingRight;
         maxHeight += mPaddingTop + mPaddingBottom;
 
@@ -137,6 +141,10 @@ public class PictureLayout extends ViewGroup {
 
     @Override
     public ViewParent invalidateChildInParent(int[] location, Rect dirty) {
+        int mLeft = getLeft();
+        int mRight = getLeft();
+        int mBottom = getLeft();
+        int mTop = getLeft();
         location[0] = mLeft;
         location[1] = mTop;
         dirty.set(0, 0, mRight - mLeft, mBottom - mTop);
@@ -150,6 +158,8 @@ public class PictureLayout extends ViewGroup {
         for (int i = 0; i < count; i++) {
             final View child = getChildAt(i);
             if (child.getVisibility() != GONE) {
+            	int mPaddingLeft = getPaddingLeft();
+            	int mPaddingTop = getPaddingTop();
                 final int childLeft = mPaddingLeft;
                 final int childTop = mPaddingTop;
                 child.layout(childLeft, childTop,
