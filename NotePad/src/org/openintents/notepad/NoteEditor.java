@@ -599,10 +599,13 @@ public class NoteEditor extends Activity {
     	
     	mCursor.moveToFirst();
     	long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
-    	boolean showEnrypt = (encrypted == 0);
+    	boolean isNoteUnencrypted = (encrypted == 0);
     	
-    	menu.findItem(MENU_ENCRYPT).setVisible(showEnrypt);
-    	menu.findItem(MENU_UNENCRYPT).setVisible(!showEnrypt);
+    	menu.findItem(MENU_ENCRYPT).setVisible(isNoteUnencrypted);
+    	menu.findItem(MENU_UNENCRYPT).setVisible(!isNoteUnencrypted);
+    	
+    	// Show comands on the URI only if the note is not encrypted
+    	menu.setGroupVisible(Menu.CATEGORY_ALTERNATIVE, isNoteUnencrypted);
     	
 		return super.onPrepareOptionsMenu(menu);
 	}
