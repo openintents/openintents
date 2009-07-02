@@ -31,6 +31,10 @@ date: 2009-?
 - save to SD card possible directly from note
 - when saving to SD card, show a warning dialog
   before overwriting an existing file.
+- keep cursor position (or selection) when
+  changing screen orientation.
+- don't automatically import notes from SD card
+  but edit in place.
 
 ---------------------------------------------------------
 release: 1.1.1

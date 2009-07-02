@@ -84,8 +84,14 @@ public class NoteEditor extends Activity {
     private static final int COLUMN_INDEX_ENCRYPTED = 3;
     
     // This is our state data that is stored when freezing.
-    private static final String ORIGINAL_CONTENT = "origContent";
-    private static final String ORIGINAL_STATE = "origState";
+    private static final String BUNDLE_ORIGINAL_CONTENT = "original_content";
+    private static final String BUNDLE_STATE = "state";
+    private static final String BUNDLE_URI = "uri";
+    private static final String BUNDLE_SELECTION_START = "selection_start";
+    private static final String BUNDLE_SELECTION_STOP = "selection_stop";
+    private static final String BUNDLE_FILENAME = "filename";
+    private static final String BUNDLE_FILE_CONTENT = "file_content";
+    
 
     // Identifiers for our menu items.
     private static final int MENU_REVERT = Menu.FIRST;
@@ -100,7 +106,7 @@ public class NoteEditor extends Activity {
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
     private static final int STATE_INSERT = 1;
-    //private static final int STATE_NOTE_FROM_SDCARD = 2;
+    private static final int STATE_EDIT_NOTE_FROM_SDCARD = 2;
     
     private static final int GROUP_ID_TEXT_SELECTION_ALTERNATIVE = 1234; // some number that must not collide with others
 
@@ -110,10 +116,12 @@ public class NoteEditor extends Activity {
     private Cursor mCursor;
     private EditText mText;
     private String mOriginalContent;
+    private int mSelectionStart;
+    private int mSelectionStop;
     
     private String mDecryptedText;
     
-    private String mFilename;
+    private String mFileContent;
     
     private String mTags;
 
@@ -155,95 +163,120 @@ public class NoteEditor extends Activity {
         super.onCreate(savedInstanceState);
         
         mDecryptedText = null;
+        mSelectionStart = 0;
+        mSelectionStop = 0;
 
-        final Intent intent = getIntent();
-
-        // Do some setup based on the action being performed.
-
-        final String action = intent.getAction();
-        if (Intent.ACTION_EDIT.equals(action) || Intent.ACTION_VIEW.equals(action)) {
-            // Requested to edit: set that state, and the data being edited.
-            mState = STATE_EDIT;
-            mUri = intent.getData();
-
-            if (mUri.getScheme().equals("file")) {
-            	// Load the file into a new note.
-            	
-            	mFilename = FileUriUtils.getFilename(mUri);
-            	
-            	String text = readFile(FileUriUtils.getFile(mUri));
-            	
-            	if (text == null) {
-            		Log.e(TAG, "Error reading file");
-                    finish();
-                    return;
-            	}
-            	
-            	// Let's check whether the exactly same note already exists or not:
-            	Cursor c = getContentResolver().query(Notes.CONTENT_URI, 
-            			new String[] {Notes._ID},
-            			Notes.NOTE + " = ?", new String[] {text}, null);
-            	if (c != null && c.getCount() > 0) {
-            		// Same note exists already:
-            		c.moveToFirst();
-            		long id = c.getLong(0);
-            		mUri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
-            	} else {
-	            	
-	            	// Add new note
-	            	// Requested to insert: set that state, and create a new entry
-	                // in the container.
-	                mState = STATE_INSERT;
-	                ContentValues values = new ContentValues();
-	                values.put(Notes.NOTE, text);
-	                mUri = getContentResolver().insert(Notes.CONTENT_URI, values);
-	                intent.setAction(Intent.ACTION_EDIT);
-	                intent.setData(mUri);
-	                setIntent(intent);
+        // If an instance of this activity had previously stopped, we can
+        // get the original text it started with.
+        if (savedInstanceState != null) {
+            mOriginalContent = savedInstanceState.getString(BUNDLE_ORIGINAL_CONTENT);
+            mState = savedInstanceState.getInt(BUNDLE_STATE);
+            mUri = Uri.parse(savedInstanceState.getString(BUNDLE_URI));
+            mSelectionStart = savedInstanceState.getInt(BUNDLE_SELECTION_START);
+            mSelectionStop = savedInstanceState.getInt(BUNDLE_SELECTION_STOP);
+            mFileContent = savedInstanceState.getString(BUNDLE_FILE_CONTENT);
+        } else {
+            // Do some setup based on the action being performed.
+	        final Intent intent = getIntent();
 	
-	                // If we were unable to create a new note, then just finish
-	                // this activity.  A RESULT_CANCELED will be sent back to the
-	                // original activity if they requested a result.
-	                if (mUri == null) {
-	                    Log.e(TAG, "Failed to insert new note into " + getIntent().getData());
+	
+	        final String action = intent.getAction();
+	        if (Intent.ACTION_EDIT.equals(action) || Intent.ACTION_VIEW.equals(action)) {
+	            // Requested to edit: set that state, and the data being edited.
+	            mState = STATE_EDIT;
+	            mUri = intent.getData();
+	            
+	            if (mUri.getScheme().equals("file")) {
+	            	mState = STATE_EDIT_NOTE_FROM_SDCARD;
+	            	// Load the file into a new note.
+	            	
+	            	mFileContent = readFile(FileUriUtils.getFile(mUri));
+	            }
+	            /*
+	            if (mUri.getScheme().equals("file")) {
+	            	// Load the file into a new note.
+	            	
+	            	mFilename = FileUriUtils.getFilename(mUri);
+	            	
+	            	String text = readFile(FileUriUtils.getFile(mUri));
+	            	
+	            	if (text == null) {
+	            		Log.e(TAG, "Error reading file");
 	                    finish();
 	                    return;
-	                }
+	            	}
+	            	
+	            	
+	            	
+	            	// Let's check whether the exactly same note already exists or not:
+	            	Cursor c = getContentResolver().query(Notes.CONTENT_URI, 
+	            			new String[] {Notes._ID},
+	            			Notes.NOTE + " = ?", new String[] {text}, null);
+	            	if (c != null && c.getCount() > 0) {
+	            		// Same note exists already:
+	            		c.moveToFirst();
+	            		long id = c.getLong(0);
+	            		mUri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
+	            	} else {
+		            	
+		            	// Add new note
+		            	// Requested to insert: set that state, and create a new entry
+		                // in the container.
+		                mState = STATE_INSERT;
+		                ContentValues values = new ContentValues();
+		                values.put(Notes.NOTE, text);
+		                mUri = getContentResolver().insert(Notes.CONTENT_URI, values);
+		                intent.setAction(Intent.ACTION_EDIT);
+		                intent.setData(mUri);
+		                setIntent(intent);
+		
+		                // If we were unable to create a new note, then just finish
+		                // this activity.  A RESULT_CANCELED will be sent back to the
+		                // original activity if they requested a result.
+		                if (mUri == null) {
+		                    Log.e(TAG, "Failed to insert new note into " + getIntent().getData());
+		                    finish();
+		                    return;
+		                }
+		
+		                // The new entry was created, so assume all will end well and
+		                // set the result to be returned.
+		                //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+		                setResult(RESULT_OK, intent);
+	            	}
+	            	
+	        	}*/
+	        } else if (Intent.ACTION_INSERT.equals(action)) {
+	            // Requested to insert: set that state, and create a new entry
+	            // in the container.
+	            mState = STATE_INSERT;
+	            mUri = getContentResolver().insert(intent.getData(), null);
+	            /*
+	            intent.setAction(Intent.ACTION_EDIT);
+	            intent.setData(mUri);
+	            setIntent(intent);
+				*/
+	            
+	            // If we were unable to create a new note, then just finish
+	            // this activity.  A RESULT_CANCELED will be sent back to the
+	            // original activity if they requested a result.
+	            if (mUri == null) {
+	                Log.e(TAG, "Failed to insert new note into " + getIntent().getData());
+	                finish();
+	                return;
+	            }
 	
-	                // The new entry was created, so assume all will end well and
-	                // set the result to be returned.
-	                //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
-	                setResult(RESULT_OK, intent);
-            	}
-        	}
-        } else if (Intent.ACTION_INSERT.equals(action)) {
-            // Requested to insert: set that state, and create a new entry
-            // in the container.
-            mState = STATE_INSERT;
-            mUri = getContentResolver().insert(intent.getData(), null);
-            intent.setAction(Intent.ACTION_EDIT);
-            intent.setData(mUri);
-            setIntent(intent);
-
-            // If we were unable to create a new note, then just finish
-            // this activity.  A RESULT_CANCELED will be sent back to the
-            // original activity if they requested a result.
-            if (mUri == null) {
-                Log.e(TAG, "Failed to insert new note into " + getIntent().getData());
-                finish();
-                return;
-            }
-
-            // The new entry was created, so assume all will end well and
-            // set the result to be returned.
-            //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
-            setResult(RESULT_OK, intent);
-
-        } else {
-            // Whoops, unknown action!  Bail.
-            Log.e(TAG, "Unknown action, exiting");
-            finish();
-            return;
+	            // The new entry was created, so assume all will end well and
+	            // set the result to be returned.
+	            //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+	            setResult(RESULT_OK, intent);
+	
+	        } else {
+	            // Whoops, unknown action!  Bail.
+	            Log.e(TAG, "Unknown action, exiting");
+	            finish();
+	            return;
+	        }
         }
 
         requestWindowFeature(Window.FEATURE_RIGHT_ICON);
@@ -255,14 +288,11 @@ public class NoteEditor extends Activity {
         mText = (EditText) findViewById(R.id.note);
         
 
-        // Get the note!
-        mCursor = managedQuery(mUri, PROJECTION, null, null, null);
-
-        // If an instance of this activity had previously stopped, we can
-        // get the original text it started with.
-        if (savedInstanceState != null) {
-            mOriginalContent = savedInstanceState.getString(ORIGINAL_CONTENT);
-            mState = savedInstanceState.getInt(ORIGINAL_STATE);
+        if (mState != STATE_EDIT_NOTE_FROM_SDCARD) {
+	        // Get the note!
+	        mCursor = managedQuery(mUri, PROJECTION, null, null, null);
+        } else {
+        	mCursor = null;
         }
     }
     
@@ -316,7 +346,15 @@ public class NoteEditor extends Activity {
         super.onResume();
         Log.d(TAG, "onResume");
 
-        // If we didn't have any trouble retrieving the data, it is now
+        if (mState == STATE_EDIT || mState == STATE_INSERT) {
+        	getNoteFromContentProvider();
+        } else if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
+        	getNoteFromFile();
+        }
+    }
+
+	private void getNoteFromContentProvider() {
+		// If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
         if (mCursor != null) {
         	mCursor.requery();
@@ -324,18 +362,10 @@ public class NoteEditor extends Activity {
             mCursor.moveToFirst();
 
             // Modify our overall title depending on the mode we are running in.
-            if (mFilename == null) {
-	            if (mState == STATE_EDIT) {
-	                setTitle(getText(R.string.title_edit));
-	            } else if (mState == STATE_INSERT) {
-	                setTitle(getText(R.string.title_create));
-	            }
-            } else {
-            	if (mState == STATE_EDIT) {
-	                setTitle(getString(R.string.title_edit_file, mFilename));
-	            } else if (mState == STATE_INSERT) {
-	                setTitle(getString(R.string.title_create_file, mFilename));
-	            }
+             if (mState == STATE_EDIT) {
+                setTitle(getText(R.string.title_edit));
+            } else if (mState == STATE_INSERT) {
+                setTitle(getText(R.string.title_create));
             }
 
             long id = mCursor.getLong(COLUMN_INDEX_ID);
@@ -349,11 +379,18 @@ public class NoteEditor extends Activity {
 	            // paused/stopped.  We want to put the new text in the text view,
 	            // but leave the user where they were (retain the cursor position
 	            // etc).  This version of setText does that for us.
-	            mText.setTextKeepState(note);
+            	if (!note.equals(mText.getText().toString())) {
+            		mText.setTextKeepState(note);
+            		// keep state does not work, so we have to do it manually:
+            		mText.setSelection(mSelectionStart, mSelectionStop);
+            	}
             } else {
             	if (mDecryptedText != null) {
             		// Text had already been decrypted, use that:
             		mText.setTextKeepState(mDecryptedText);
+            		// keep state does not work, so we have to do it manually:
+            		mText.setSelection(mSelectionStart, mSelectionStop);
+            		
             		setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_lock_idle_lock);
             	} else {
             	// Decrypt note
@@ -384,14 +421,45 @@ public class NoteEditor extends Activity {
             setTitle(getText(R.string.error_title));
             mText.setText(getText(R.string.error_message));
         }
-    }
+	}
+	
+	private void getNoteFromFile() {
+
+		mText.setTextKeepState(mFileContent);
+		// keep state does not work, so we have to do it manually:
+		mText.setSelection(mSelectionStart, mSelectionStop);
+
+        // If we hadn't previously retrieved the original text, do so
+        // now.  This allows the user to revert their changes.
+        if (mOriginalContent == null) {
+            mOriginalContent = mFileContent;
+        }
+        
+        String modified = "";
+        if (!mOriginalContent.equals(mFileContent)) {
+        	modified = "* ";
+        }
+        String filename = FileUriUtils.getFilename(mUri);
+        setTitle(modified + filename);
+        //setTitle(getString(R.string.title_edit_file, modified + filename));
+		//setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_menu_save);
+		
+	}
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
-        outState.putString(ORIGINAL_CONTENT, mOriginalContent);
-        outState.putInt(ORIGINAL_STATE, mState);
+    	mSelectionStart = mText.getSelectionStart();
+    	mSelectionStop = mText.getSelectionEnd();
+    	mFileContent = mText.getText().toString();
+    	
+        outState.putString(BUNDLE_ORIGINAL_CONTENT, mOriginalContent);
+        outState.putInt(BUNDLE_STATE, mState);
+        outState.putString(BUNDLE_URI, mUri.toString());
+        outState.putInt(BUNDLE_SELECTION_START, mSelectionStart);
+        outState.putInt(BUNDLE_SELECTION_STOP, mSelectionStop);
+        outState.putString(BUNDLE_FILE_CONTENT, mFileContent);
     }
 
     @Override
@@ -597,8 +665,10 @@ public class NoteEditor extends Activity {
     	boolean contentChanged = !mOriginalContent.equals(mText.getText().toString());
     	menu.setGroupVisible(0, contentChanged);
     	
-    	mCursor.moveToFirst();
-    	long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+    	long encrypted = 0;
+    	if (mCursor != null && mCursor.moveToFirst()) {
+	    	encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+    	}
     	boolean isNoteUnencrypted = (encrypted == 0);
     	
     	menu.findItem(MENU_ENCRYPT).setVisible(isNoteUnencrypted);
