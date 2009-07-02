@@ -28,6 +28,9 @@ release: 1.1.2
 date: 2009-?
 - translations: Dutch, French, German, Spanish
 - create shortcut for a note from Launcher
+- save to SD card possible directly from note
+- when saving to SD card, show a warning dialog
+  before overwriting an existing file.
 
 ---------------------------------------------------------
 release: 1.1.1

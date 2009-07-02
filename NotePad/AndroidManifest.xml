@@ -156,6 +156,19 @@
         </activity>
          -->
          
+		<activity android:name=".activity.SaveFileActivity"
+				android:label="@string/menu_save_to_sdcard"
+				android:icon="@android:drawable/ic_menu_save"
+				android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="org.openintents.notepad.action.SAVE_FILE_TO_SD_CARD" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
+            </intent-filter>
+        </activity>
+        
         <activity android:name="org.openintents.notepad.crypto.EncryptActivity" android:label="@string/encrypting_note">
         </activity> 
         

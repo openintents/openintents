@@ -94,7 +94,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int MENU_ITEM_ENCRYPT = Menu.FIRST + 5;
 	private static final int MENU_ITEM_UNENCRYPT = Menu.FIRST + 6;
 	private static final int MENU_ITEM_EDIT_TAGS = Menu.FIRST + 7;
-	private static final int MENU_ITEM_SAVE = Menu.FIRST + 8;
+	//private static final int MENU_ITEM_SAVE = Menu.FIRST + 8;
 	private static final int MENU_OPEN = Menu.FIRST + 9;
  	private static final int MENU_SETTINGS = Menu.FIRST + 10;
 	
@@ -108,12 +108,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int REQUEST_CODE_DECRYPT_TITLE = 3;
 	//private static final int REQUEST_CODE_UNENCRYPT_NOTE = 4;
 	private static final int REQUEST_CODE_OPEN = 5;
-	private static final int REQUEST_CODE_SAVE = 6;
 	
 	private static final int DIALOG_TAGS = 1;
 	private static final int DIALOG_ABOUT = 2;
 	private static final int DIALOG_GET_FROM_MARKET = 3;
-	private static final int DIALOG_OVERWRITE_WARNING = 4;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -129,8 +127,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 	AdapterView.AdapterContextMenuInfo mContextMenuInfo;
 	
-	Uri mSaveUri;
-	File mSaveFilename;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -441,6 +437,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// For some reason the requested item isn't available, do nothing
 			return;
 		}
+
+		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(),
+				info.id);
 		
 		long encrypted = cursor.getLong(NotesListCursor.COLUMN_INDEX_ENCRYPTED);
 		
@@ -453,7 +452,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			// Add a menu item to send the note
 			menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
-			menu.add(0, MENU_ITEM_SAVE, 0, R.string.menu_save_to_sdcard);
+			// Added automatically through manifest:
+			//menu.add(0, MENU_ITEM_SAVE, 0, R.string.menu_save_to_sdcard);
 			
 			menu.add(0, MENU_ITEM_ENCRYPT, 0, R.string.menu_encrypt);
 		} else {
@@ -462,6 +462,16 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		// Add a menu item to delete the note
 		menu.add(0, MENU_ITEM_DELETE, 0, R.string.menu_delete);
+		
+		// Add additional items only if note is not encrypted:
+
+		if (encrypted == 0) {
+	        Intent intent = new Intent(null, noteUri);
+	        intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+	        menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+	                new ComponentName(this, NotesList.class), null, intent, 0, null);
+		}
+        
 	}
 
 	@Override
@@ -495,9 +505,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		case MENU_ITEM_EDIT_TAGS:
 			editTags();
 			return true;
-		case MENU_ITEM_SAVE:
-			saveToSdCard();
-			return true;
+		//case MENU_ITEM_SAVE:
+		//	saveToSdCard();
+		//	return true;
 		}
 		return false;
 	}
@@ -589,28 +599,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		showDialog(DIALOG_TAGS);
 	}
 	
-	private void saveToSdCard() {
-		Cursor c = mAdapter.getCursor();
-		c.moveToPosition(mContextMenuInfo.position);
-		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), mContextMenuInfo.id);
-		
-		File sdcard = getSdCardPath();
-		String filename = c.getString(NotesListCursor.COLUMN_INDEX_TITLE) + ".txt";
-		
-		// Avoid dangerous characters:
-		filename = filename.replace("/", "");
-		filename = filename.replace("\\", "");
-		filename = filename.replace(":", "");
-		filename = filename.replace("?", "");
-		filename = filename.replace("*", "");
-		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, filename));
-		
-		Intent i = new Intent(this, DialogHostingActivity.class);
-		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_SAVE);
-		i.putExtra(PrivateNotePadIntents.EXTRA_URI, noteUri.toString());
-		i.setData(uri);
-		startActivityForResult(i, REQUEST_CODE_SAVE);
-	}
 
     private File getSdCardPath() {
     	return android.os.Environment
@@ -741,35 +729,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 					RD.string.safe_get_oi_filemanager,
 					RD.string.safe_market_uri,
 					RD.string.safe_developer_uri);
-		case DIALOG_OVERWRITE_WARNING:
-			return getOverwriteWarningDialog();
 		}
 		return null;
 	}
 	
-	Dialog getOverwriteWarningDialog() {
-		return new AlertDialog.Builder(this)
-		.setIcon(android.R.drawable.ic_dialog_alert)
-		.setTitle(R.string.warning_file_exists_title)
-		.setMessage(R.string.warning_file_exists_message)
-		.setPositiveButton(android.R.string.ok,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,
-							int whichButton) {
-						// click Ok
-	    				// save file
-	    				saveFile(mSaveUri, mSaveFilename);
-					}
-				})
-		.setNegativeButton(android.R.string.cancel,
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog,
-							int whichButton) {
-						// click Cancel
-					}
-				})
-		.create();
-	}
 
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
@@ -925,30 +888,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		}
     		break;
     		
-    	case REQUEST_CODE_SAVE:
-    		if (resultCode == RESULT_OK && intent != null) {
-    			// File name should be in Uri:
-    			File filename = FileUriUtils.getFile(intent.getData());
-    			Uri uri = Uri.parse(intent.getStringExtra(PrivateNotePadIntents.EXTRA_URI));
-    			
-    			if (filename.exists()) {
-    				// TODO Warning dialog
-
-    				//Toast.makeText(this, "File exists already",
-    				//		Toast.LENGTH_SHORT).show();
-    				
-    				// Remember for later:
-    				// TODO: Store to bundle!
-    				mSaveUri = uri;
-    				mSaveFilename = filename;
-    				
-    				showDialog(DIALOG_OVERWRITE_WARNING);
-    			} else {
-    				// save file
-    				saveFile(uri, filename);
-    			}
-    		}
-    		break;
     		/*
     	case REQUEST_CODE_UNENCRYPT_NOTE:
     		if (resultCode == RESULT_OK && data != null) {
