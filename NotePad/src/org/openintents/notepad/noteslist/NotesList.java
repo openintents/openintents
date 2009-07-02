@@ -47,6 +47,7 @@ import org.openintents.notepad.filename.FilenameDialog;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
@@ -54,6 +55,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
@@ -111,6 +113,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private static final int DIALOG_TAGS = 1;
 	private static final int DIALOG_ABOUT = 2;
 	private static final int DIALOG_GET_FROM_MARKET = 3;
+	private static final int DIALOG_OVERWRITE_WARNING = 4;
 	
 	private final int DECRYPT_DELAY = 100;
 	
@@ -125,6 +128,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private boolean mDecryptionSucceeded;
 
 	AdapterView.AdapterContextMenuInfo mContextMenuInfo;
+	
+	Uri mSaveUri;
+	File mSaveFilename;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -735,8 +741,34 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 					RD.string.safe_get_oi_filemanager,
 					RD.string.safe_market_uri,
 					RD.string.safe_developer_uri);
+		case DIALOG_OVERWRITE_WARNING:
+			return getOverwriteWarningDialog();
 		}
 		return null;
+	}
+	
+	Dialog getOverwriteWarningDialog() {
+		return new AlertDialog.Builder(this)
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setTitle(R.string.warning_file_exists_title)
+		.setMessage(R.string.warning_file_exists_message)
+		.setPositiveButton(android.R.string.ok,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// click Ok
+	    				// save file
+	    				saveFile(mSaveUri, mSaveFilename);
+					}
+				})
+		.setNegativeButton(android.R.string.cancel,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// click Cancel
+					}
+				})
+		.create();
 	}
 
 	@Override
@@ -902,8 +934,15 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			if (filename.exists()) {
     				// TODO Warning dialog
 
-    				Toast.makeText(this, "File exists already",
-    						Toast.LENGTH_SHORT).show();
+    				//Toast.makeText(this, "File exists already",
+    				//		Toast.LENGTH_SHORT).show();
+    				
+    				// Remember for later:
+    				// TODO: Store to bundle!
+    				mSaveUri = uri;
+    				mSaveFilename = filename;
+    				
+    				showDialog(DIALOG_OVERWRITE_WARNING);
     			} else {
     				// save file
     				saveFile(uri, filename);

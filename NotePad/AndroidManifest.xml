@@ -24,14 +24,15 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.notepad"
-	android:versionName="1.1.1"
-	android:versionCode="10054"
+	android:versionName="1.1.2"
+	android:versionCode="10055"
 	>
     <uses-sdk android:minSdkVersion="2" />
 	<!-- History:
-	1.1.1 [10054]: 2009-05-16
-	1.1.1-rc2 [10053]: 2009-05-15
-	1.1.0 [10052]: 2009-02-02 -->
+	[10055] 1.1.2-beta1: ?
+	[10054] 1.1.1:       2009-05-16
+	[10053] 1.1.1-rc2:   2009-05-15
+	[10052] 1.1.0:       2009-02-02 -->
     
 	
     <application android:icon="@drawable/app_notes"
@@ -39,7 +40,7 @@
     ><!-- android:debuggable="true" -->
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10053" />
+           android:value="10055" />
         
         <!-- OI About metadata -->
 		<meta-data android:name="org.openintents.metadata.COMMENTS"

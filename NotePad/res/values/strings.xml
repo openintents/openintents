@@ -37,6 +37,7 @@
 	     Applicatio-specific strings
 	     *************************** -->
 
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
 	<string name="app_name">OI Notepad</string>
 	
     <string name="menu_delete">Delete</string>
@@ -94,6 +95,8 @@
     <string name="error_reading_file">Error while reading file</string>
     <string name="file_not_found">File not found</string>
     <string name="note_saved">Note saved</string>
+    <string name="warning_file_exists_title">File exists already</string>
+    <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Notes List</string>
