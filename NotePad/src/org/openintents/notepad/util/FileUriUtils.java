@@ -20,6 +20,11 @@ import java.io.File;
 
 import android.net.Uri;
 
+/**
+ * @version 2009-07-03
+ * 
+ * @author Peli
+ */
 public class FileUriUtils {
 
 	/**
@@ -28,7 +33,10 @@ public class FileUriUtils {
 	 * @return uri
 	 */
 	public static Uri getUri(File file) {
-		return Uri.parse("file://" + file.getAbsolutePath());
+		if (file != null) {
+			return Uri.fromFile(file);
+		}
+		return null;
 	}
 
 
@@ -39,11 +47,10 @@ public class FileUriUtils {
 	 */
 	public static File getFile(Uri uri) {
 		if (uri != null) {
-			String filepath = uri.toString();
-			if (filepath.startsWith("file://")) {
-				filepath = filepath.substring(7);
-	  		}
-			return new File(filepath);
+			String filepath = uri.getPath();
+			if (filepath != null) {
+				return new File(filepath);
+			}
 		}
 		return null;
 	}
@@ -54,7 +61,7 @@ public class FileUriUtils {
 	 * @return uri
 	 */
 	public static Uri getUri(String filename) {
-		return Uri.parse("file://" + filename);
+		return getUri(new File(filename));
 	}
 
 	/**
@@ -63,12 +70,9 @@ public class FileUriUtils {
 	 * @return file
 	 */
 	public static String getFilename(Uri uri) {
-		if (uri != null) {
-			String filepath = uri.toString();
-			if (filepath.startsWith("file://")) {
-				filepath = filepath.substring(7);
-	  		}
-			return filepath;
+		File file = getFile(uri);
+		if (file != null) {
+			return file.getAbsolutePath();
 		}
 		return null;
 	}

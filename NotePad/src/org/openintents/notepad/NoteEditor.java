@@ -75,6 +75,7 @@ import android.widget.Toast;
  */
 public class NoteEditor extends Activity {
     private static final String TAG = "Notes";
+    private static final boolean debug = true;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -175,6 +176,8 @@ public class NoteEditor extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        if (debug) Log.i(TAG, "onCreate()");
         
         mDecryptedText = null;
         mSelectionStart = 0;
@@ -319,6 +322,7 @@ public class NoteEditor extends Activity {
 		@Override
 		public void afterTextChanged(Editable s) {
 			Log.i(TAG, "after");
+			mFileContent = s.toString();
 			updateTitleSdCard();
 		}
 
@@ -384,7 +388,7 @@ public class NoteEditor extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume");
+        if (debug) Log.d(TAG, "onResume");
 
         if (mState == STATE_EDIT || mState == STATE_INSERT) {
         	getNoteFromContentProvider();
@@ -464,10 +468,15 @@ public class NoteEditor extends Activity {
 	}
 	
 	private void getNoteFromFile() {
+		if (debug) Log.i(TAG, "file: " + mFileContent);
 
 		mText.setTextKeepState(mFileContent);
 		// keep state does not work, so we have to do it manually:
-		mText.setSelection(mSelectionStart, mSelectionStop);
+		try {
+			mText.setSelection(mSelectionStart, mSelectionStop);
+		} catch (IndexOutOfBoundsException e) {
+			// Then let's not adjust the selection.
+		}
 
         // If we hadn't previously retrieved the original text, do so
         // now.  This allows the user to revert their changes.
@@ -479,8 +488,6 @@ public class NoteEditor extends Activity {
 	}
 	
 	private void updateTitleSdCard() {
-		mFileContent = mText.getText().toString();
-
         String modified = "";
         if (!mOriginalContent.equals(mFileContent)) {
         	modified = "* ";
@@ -493,6 +500,9 @@ public class NoteEditor extends Activity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+    	if (debug) Log.i(TAG, "onSaveInstanceState");
+    	if (debug) Log.i(TAG, "file content: " + mFileContent);
+    	
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
     	mSelectionStart = mText.getSelectionStart();
@@ -897,19 +907,26 @@ public class NoteEditor extends Activity {
         }
         newNote = sb.toString();
         
-        // This stuff is only done when working with a full-fledged note. 
-        if (!mNoteOnly) { 
-            // Bump the modification time to now. 
-            values.put(Notes.MODIFIED_DATE, System.currentTimeMillis()); 
-            String title = ExtractTitle.extractTitle(newNote); 
-            values.put(Notes.TITLE, title); 
-        } 
-        // Write our text back into the provider.
-        values.put(Notes.NOTE, newNote);
-        // Commit all of our changes to persistent storage. When the update completes 
-        // the content provider will notify the cursor of the change, which will 
-        // cause the UI to be updated. 
-        getContentResolver().update(mUri, values, null, null);
+        if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
+        	mFileContent = newNote;
+        	mSelectionStart = newStartPos;
+        	mSelectionStop = newEndPos;
+        } else {
+	        // This stuff is only done when working with a full-fledged note. 
+	        if (!mNoteOnly) { 
+	            // Bump the modification time to now. 
+	            values.put(Notes.MODIFIED_DATE, System.currentTimeMillis()); 
+	            String title = ExtractTitle.extractTitle(newNote); 
+	            values.put(Notes.TITLE, title); 
+	        } 
+	        // Write our text back into the provider.
+	        values.put(Notes.NOTE, newNote);
+	        // Commit all of our changes to persistent storage. When the update completes 
+	        // the content provider will notify the cursor of the change, which will 
+	        // cause the UI to be updated. 
+	        getContentResolver().update(mUri, values, null, null);
+        }
+        
         //ijones: notification doesn't seem to trigger for some reason :( 
         mText.setTextKeepState(newNote);
         // Adjust cursor position according to new length:
@@ -1054,7 +1071,7 @@ public class NoteEditor extends Activity {
 	}
 	
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-    	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
+    	if (debug) Log.i(TAG, "onActivityResult: Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_DECRYPT:
     		if (resultCode == RESULT_OK && data != null) {
@@ -1098,6 +1115,7 @@ public class NoteEditor extends Activity {
     		if (resultCode == RESULT_OK && data != null) {
     			// Set the new file name
     			mUri = data.getData();
+    			if (debug) Log.i(TAG, "original: " + mOriginalContent + ", file: " + mFileContent);
     			mOriginalContent = mFileContent;
     			
     			updateTitleSdCard();
