@@ -811,6 +811,13 @@ public class NoteEditor extends Activity {
 		int start = mText.getSelectionStart();
 		int end = mText.getSelectionEnd();
 		
+		//if (debug) Log.i(TAG, "len: " + text.length() + ", start: " + start + ", end: " + end);
+		if (end < start) {
+			int swap = end;
+			end = start;
+			start = swap;
+		}
+		
 		newIntent.putExtra(NotepadIntents.EXTRA_TEXT, text.substring(start, end));
 		newIntent.putExtra(NotepadIntents.EXTRA_TEXT_BEFORE_SELECTION, text.substring(0, start));
 		newIntent.putExtra(NotepadIntents.EXTRA_TEXT_AFTER_SELECTION, text.substring(end));
