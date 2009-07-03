@@ -41,11 +41,14 @@ import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Canvas;
@@ -58,6 +61,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -115,6 +119,8 @@ public class NoteEditor extends Activity {
     private static final int STATE_EDIT = 0;
     private static final int STATE_INSERT = 1;
     private static final int STATE_EDIT_NOTE_FROM_SDCARD = 2;
+    
+    private static final int DIALOG_UNSAVED_CHANGES = 1;
     
     private static final int GROUP_ID_TEXT_SELECTION_ALTERNATIVE = 1234; // some number that must not collide with others
 
@@ -714,7 +720,6 @@ public class NoteEditor extends Activity {
 
     	// Show "revert" menu item only if content has changed.
     	boolean contentChanged = !mOriginalContent.equals(mText.getText().toString());
-    	menu.setGroupVisible(0, contentChanged);
     	
     	long encrypted = 0;
     	if (mCursor != null && mCursor.moveToFirst()) {
@@ -730,11 +735,13 @@ public class NoteEditor extends Activity {
     	
     	if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
     		// Menus for editing from SD card
+        	menu.setGroupVisible(0, false);
     		menu.setGroupVisible(1, false);
     		menu.setGroupVisible(2, true);
     		menu.findItem(MENU_SAVE).setEnabled(contentChanged);
     	} else {
     		// Menus for internal notes
+        	menu.setGroupVisible(0, contentChanged);
     		menu.setGroupVisible(1, true);
     		menu.setGroupVisible(2, false);
     	}
@@ -987,6 +994,65 @@ public class NoteEditor extends Activity {
     	startActivityForResult(intent, REQUEST_CODE_SAVE_AS);
     }
 
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_UNSAVED_CHANGES:
+			return getUnsavedChangesWarningDialog();
+		}
+		return null;
+	}
+
+	Dialog getUnsavedChangesWarningDialog() {
+		return new AlertDialog.Builder(this)
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setTitle(R.string.warning_unsaved_changes_title)
+		.setMessage(R.string.warning_unsaved_changes_message)
+		.setPositiveButton(R.string.button_save,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// Save
+						saveNote();
+						finish();
+					}
+				})
+		.setNeutralButton(R.string.button_dont_save,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// Don't save
+						finish();
+					}
+				})
+		.setNegativeButton(android.R.string.cancel,
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog,
+							int whichButton) {
+						// Cancel
+					}
+				})
+		.create();
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
+				mFileContent = mText.getText().toString();
+				if (! mFileContent.equals(mOriginalContent)) {
+					// Show a dialog
+					showDialog(DIALOG_UNSAVED_CHANGES);
+					return true;
+				}
+			}
+		}
+		
+		return super.onKeyDown(keyCode, event);
+	}
+	
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
