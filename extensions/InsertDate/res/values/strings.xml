@@ -2,4 +2,25 @@
 <resources>
     <string name="app_name">OI Insert date</string>
     <string name="insert_date">Insert date</string>
+    
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <!-- About -->
+    <string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
+	<string name="update_error">Download application not available.</string>
+    
+    <!-- Info -->
+    <string name="info_text">To insert a date, edit a note and press menu > (more >) Insert date.</string>
+	<string name="info_launch">Launch OI Notepad</string>
+    
+    <!-- Notepad -->
+	<string name="notepad_not_available">This extension requires OI Notepad.</string>
+	<string name="notepad_get">Get OI Notepad</string>
+	
 </resources>
