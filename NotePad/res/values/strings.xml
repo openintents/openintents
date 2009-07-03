@@ -97,6 +97,11 @@
     <string name="note_saved">Note saved</string>
     <string name="warning_file_exists_title">File exists already</string>
     <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
+    
+    <!-- Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes. -->
+    <string name="menu_import">Import</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_save_as">Save as</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Notes List</string>

@@ -160,12 +160,21 @@
 				android:label="@string/menu_save_to_sdcard"
 				android:icon="@android:drawable/ic_menu_save"
 				android:theme="@android:style/Theme.Translucent.NoTitleBar">
+			<!-- This intent filter allows to save an internal note from
+			     various menus. -->
             <intent-filter>
-                <action android:name="org.openintents.notepad.action.SAVE_FILE_TO_SD_CARD" />
+                <action android:name="org.openintents.notepad.action.SAVE_TO_SD_CARD" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.ALTERNATIVE" />
                 <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
                 <data android:mimeType="vnd.android.cursor.item/vnd.openintents.notepad.note" />
+            </intent-filter>
+			<!-- This intent filter is used for the "Save as" menu command when editing
+			     a file from the SD card. -->
+            <intent-filter>
+                <action android:name="org.openintents.notepad.action.SAVE_TO_SD_CARD" />
+                <data android:scheme="file" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         

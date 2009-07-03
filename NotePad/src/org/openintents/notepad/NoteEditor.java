@@ -33,7 +33,9 @@ import java.io.IOException;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.intents.NotepadIntents;
 import org.openintents.notepad.NotePad.Notes;
+import org.openintents.notepad.activity.SaveFileActivity;
 import org.openintents.notepad.crypto.EncryptActivity;
+import org.openintents.notepad.intents.NotepadInternalIntents;
 import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
@@ -51,7 +53,9 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
@@ -99,9 +103,13 @@ public class NoteEditor extends Activity {
     private static final int MENU_DELETE = Menu.FIRST + 2;
     private static final int MENU_ENCRYPT = Menu.FIRST + 3;
 	private static final int MENU_UNENCRYPT = Menu.FIRST + 4;
+	private static final int MENU_IMPORT = Menu.FIRST + 5;
+	private static final int MENU_SAVE = Menu.FIRST + 6;
+	private static final int MENU_SAVE_AS = Menu.FIRST + 7;
 
 	private static final int REQUEST_CODE_DECRYPT = 2;
 	private static final int REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE = 3;
+	private static final int REQUEST_CODE_SAVE_AS = 4;
 
     // The different distinct states the activity can be run in.
     private static final int STATE_EDIT = 0;
@@ -286,7 +294,12 @@ public class NoteEditor extends Activity {
         
         // The text view for our note, identified by its ID in the XML file.
         mText = (EditText) findViewById(R.id.note);
-        
+
+		if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
+			// We add a text watcher, so that the title can be updated
+			// to indicate a small "*" if modified.
+			mText.addTextChangedListener(mTextWatcherSdCard);
+		}
 
         if (mState != STATE_EDIT_NOTE_FROM_SDCARD) {
 	        // Get the note!
@@ -295,6 +308,27 @@ public class NoteEditor extends Activity {
         	mCursor = null;
         }
     }
+
+	private TextWatcher mTextWatcherSdCard = new TextWatcher() {
+		@Override
+		public void afterTextChanged(Editable s) {
+			Log.i(TAG, "after");
+			updateTitleSdCard();
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			Log.i(TAG, "before");
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			Log.i(TAG, "on");
+		}
+    	
+    };
     
     public String readFile(File file) {
 
@@ -435,6 +469,12 @@ public class NoteEditor extends Activity {
             mOriginalContent = mFileContent;
         }
         
+		updateTitleSdCard();
+	}
+	
+	private void updateTitleSdCard() {
+		mFileContent = mText.getText().toString();
+
         String modified = "";
         if (!mOriginalContent.equals(mFileContent)) {
         	modified = "* ";
@@ -443,7 +483,6 @@ public class NoteEditor extends Activity {
         setTitle(modified + filename);
         //setTitle(getString(R.string.title_edit_file, modified + filename));
 		//setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_menu_save);
-		
 	}
 
     @Override
@@ -597,16 +636,28 @@ public class NoteEditor extends Activity {
         //}
 
         menu.add(1, MENU_ENCRYPT, 0, R.string.menu_encrypt)
-                .setShortcut('0', 'e')
+                .setShortcut('1', 'e')
                 .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
 
         menu.add(1, MENU_UNENCRYPT, 0, R.string.menu_undo_encryption)
-                .setShortcut('0', 'e')
-                .setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
+        	.setShortcut('1', 'e')
+        	.setIcon(android.R.drawable.ic_lock_lock); // TODO: better icon
         
         menu.add(1, MENU_DELETE, 0, R.string.menu_delete)
-            .setShortcut('1', 'd')
+            .setShortcut('9', 'd')
             .setIcon(android.R.drawable.ic_menu_delete);
+        
+        menu.add(2, MENU_IMPORT, 0, R.string.menu_import)
+        	.setShortcut('1', 'i')
+        	.setIcon(android.R.drawable.ic_menu_add);
+        
+        menu.add(2, MENU_SAVE, 0, R.string.menu_save)
+			.setShortcut('2', 's')
+			.setIcon(android.R.drawable.ic_menu_save);
+        
+        menu.add(2, MENU_SAVE_AS, 0, R.string.menu_save_as)
+			.setShortcut('3', 'a')
+			.setIcon(android.R.drawable.ic_menu_save);
         
         /*
         if (mState == STATE_EDIT) {
@@ -677,6 +728,17 @@ public class NoteEditor extends Activity {
     	// Show comands on the URI only if the note is not encrypted
     	menu.setGroupVisible(Menu.CATEGORY_ALTERNATIVE, isNoteUnencrypted);
     	
+    	if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
+    		// Menus for editing from SD card
+    		menu.setGroupVisible(1, false);
+    		menu.setGroupVisible(2, true);
+    		menu.findItem(MENU_SAVE).setEnabled(contentChanged);
+    	} else {
+    		// Menus for internal notes
+    		menu.setGroupVisible(1, true);
+    		menu.setGroupVisible(2, false);
+    	}
+    	
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -699,6 +761,15 @@ public class NoteEditor extends Activity {
         	break;
         case MENU_UNENCRYPT:
         	unencryptNote();
+        	break;
+        case MENU_IMPORT:
+        	importNote();
+        	break;
+        case MENU_SAVE:
+        	saveNote();
+        	break;
+        case MENU_SAVE_AS:
+        	saveAsNote();
         	break;
         }
         if (item.getGroupId() == GROUP_ID_TEXT_SELECTION_ALTERNATIVE) {
@@ -837,6 +908,84 @@ public class NoteEditor extends Activity {
         // Adjust cursor position according to new length:
         mText.setSelection(newStartPos, newEndPos);
     } 
+    
+    private void importNote() {
+    	// Load the file into a new note.
+    	
+    	mFileContent = mText.getText().toString();
+    	
+    	Uri newUri = null;
+    	
+    	// Let's check whether the exactly same note already exists or not:
+    	Cursor c = getContentResolver().query(Notes.CONTENT_URI, 
+    			new String[] {Notes._ID},
+    			Notes.NOTE + " = ?", new String[] {mFileContent}, null);
+    	if (c != null && c.moveToFirst()) {
+    		// Same note exists already:
+    		long id = c.getLong(0);
+    		newUri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
+    	} else {
+        	
+        	// Add new note
+        	// Requested to insert: set that state, and create a new entry
+            // in the container.
+            //mState = STATE_INSERT;
+            ContentValues values = new ContentValues();
+            values.put(Notes.NOTE, mFileContent);
+            newUri = getContentResolver().insert(Notes.CONTENT_URI, values);
+            
+
+            // If we were unable to create a new note, then just finish
+            // this activity.  A RESULT_CANCELED will be sent back to the
+            // original activity if they requested a result.
+            if (newUri == null) {
+                Log.e(TAG, "Failed to insert new note.");
+                finish();
+                return;
+            }
+
+            // The new entry was created, so assume all will end well and
+            // set the result to be returned.
+            //setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
+            //setResult(RESULT_OK, intent);
+    	}
+    	
+        
+        // Start a new editor:
+    	Intent intent = new Intent();
+    	intent.setAction(Intent.ACTION_EDIT);
+        intent.setData(newUri);
+        intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+        setIntent(intent);
+        startActivity(intent);
+        
+        // and finish this editor
+        finish();
+        
+    }
+    
+    private void saveNote() {
+    	mFileContent = mText.getText().toString();
+    	
+    	File file = FileUriUtils.getFile(mUri);
+    	SaveFileActivity.writeToFile(this, file, mFileContent);
+    	
+    	mOriginalContent = mFileContent;
+    }
+    
+    /**
+     * Show the "Save as" dialog.
+     */
+    private void saveAsNote() {
+    	mFileContent = mText.getText().toString();
+    	
+    	Intent intent = new Intent();
+    	intent.setAction(NotepadInternalIntents.ACTION_SAVE_TO_SD_CARD);
+    	intent.setData(mUri);
+    	intent.putExtra(NotepadInternalIntents.EXTRA_TEXT, mFileContent);
+    	
+    	startActivityForResult(intent, REQUEST_CODE_SAVE_AS);
+    }
 
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
     	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
@@ -879,6 +1028,14 @@ public class NoteEditor extends Activity {
     			insertAtPoint(textBefore, text, textAfter);
     		}
     		break;
+    	case REQUEST_CODE_SAVE_AS:
+    		if (resultCode == RESULT_OK && data != null) {
+    			// Set the new file name
+    			mUri = data.getData();
+    			mOriginalContent = mFileContent;
+    			
+    			updateTitleSdCard();
+    		}
     	}
     }
 }

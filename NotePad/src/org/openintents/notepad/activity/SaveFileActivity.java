@@ -6,15 +6,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import org.openintents.notepad.NotePad;
-import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.filename.DialogHostingActivity;
+import org.openintents.notepad.intents.NotepadInternalIntents;
 import org.openintents.notepad.util.FileUriUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -30,11 +31,11 @@ public class SaveFileActivity extends Activity {
 
 	private static final int DIALOG_OVERWRITE_WARNING = 1;
 	
-	private static final String BUNDLE_SAVE_URI = "save_uri";
 	private static final String BUNDLE_SAVE_FILENAME = "save_filename";
+	private static final String BUNDLE_SAVE_CONTENT = "save_content";
 	
-	Uri mSaveUri;
 	File mSaveFilename;
+	String mSaveContent;
 	
 	
 	
@@ -45,23 +46,41 @@ public class SaveFileActivity extends Activity {
 		
 		if (savedInstanceState != null) {
 			// retrieve data from saved instance
-			if (savedInstanceState.containsKey(BUNDLE_SAVE_URI)) {
-				mSaveUri = Uri.parse(savedInstanceState.getString(BUNDLE_SAVE_URI));
-			}
 			if (savedInstanceState.containsKey(BUNDLE_SAVE_FILENAME)) {
 				mSaveFilename = new File(savedInstanceState.getString(BUNDLE_SAVE_FILENAME));
+			}
+			if (savedInstanceState.containsKey(BUNDLE_SAVE_CONTENT)) {
+				mSaveContent = savedInstanceState.getString(BUNDLE_SAVE_CONTENT);
 			}
 		} else {
 			// start new activity
 			final Intent intent = getIntent();
 			final Uri uri = intent.getData();
+			Uri fileUri = null;
 			if (uri != null) {
-				saveToSdCard(uri);
+				if (uri.getScheme().equals("file")) {
+	            	// Save file provided in extras
+	            	fileUri = uri;
+	            	mSaveContent = intent.getStringExtra(NotepadInternalIntents.EXTRA_TEXT);
+	            } else {
+	            	// Save a note specified by the note URI
+	            	fileUri = getFilenameFromNoteTitle(uri);
+	            	mSaveContent = getNote(uri);
+	            }
+	            if (mSaveContent != null && fileUri != null) {
+	            	askForFilename(fileUri);
+	            } else {
+	            	// Nothing to save
+	            	finish();
+	            }
 			} else {
 				Log.w(TAG, "Invalid URI");
 				finish();
 			}
 		}
+		
+		// Default answer:
+		setResult(RESULT_CANCELED);
 	}
 
 
@@ -69,17 +88,40 @@ public class SaveFileActivity extends Activity {
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 
-		if (mSaveUri != null) {
-			outState.putString(BUNDLE_SAVE_URI, mSaveUri.toString());
-		}
 		if (mSaveFilename != null) {
 			outState.putString(BUNDLE_SAVE_FILENAME, mSaveFilename.getAbsolutePath());
 		}
+		if (mSaveContent != null) {
+			outState.putString(BUNDLE_SAVE_CONTENT, mSaveContent);
+		}
+	}
+	
+	private String getNote(Uri uri) {
+		String note = null;
+		
+    	Cursor c = getContentResolver().query(uri, new String[] {Notes.ENCRYPTED, Notes.NOTE}, null, null, null);
+    	
+    	if (c != null && c.moveToFirst()) {
+    		long encrypted = c.getLong(0);
+    		if (encrypted == 0) {
+        		note = c.getString(1);
+    		} else {
+    			// TODO: decrypt first, then save to file
+    			Log.d(TAG, "Save encrypted file not possible.");
+    		}
+    	} else {
+    		Log.e(TAG, "Error saving file: Uri not valid: " + uri);
+    	}
+
+    	if (c != null) {
+    		c.close();
+    	}
+    	
+    	return note;
 	}
 
+	private Uri getFilenameFromNoteTitle(Uri noteUri) {
 
-	private void saveToSdCard(Uri noteUri) {
-		
 		File sdcard = getSdCardPath();
 		
 		// Construct file name:
@@ -90,7 +132,7 @@ public class SaveFileActivity extends Activity {
 		} else {
 			Log.w(TAG, "Unvalid note URI");
 			finish();
-			return;
+			return null;
 		}
 		if (c != null) {
 			c.close();
@@ -102,12 +144,17 @@ public class SaveFileActivity extends Activity {
 		filename = filename.replace(":", "");
 		filename = filename.replace("?", "");
 		filename = filename.replace("*", "");
-		Uri uri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, filename));
+		Uri fileUri = FileUriUtils.getUri(FileUriUtils.getFile(sdcard, filename));
+		
+		return fileUri;
+		
+	}
+	
+	private void askForFilename(Uri fileUri) {
 		
 		Intent i = new Intent(this, DialogHostingActivity.class);
 		i.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, DialogHostingActivity.DIALOG_ID_SAVE);
-		i.putExtra(PrivateNotePadIntents.EXTRA_URI, noteUri.toString());
-		i.setData(uri);
+		i.setData(fileUri);
 		startActivityForResult(i, REQUEST_CODE_SAVE);
 	}
 	
@@ -118,24 +165,12 @@ public class SaveFileActivity extends Activity {
     	case REQUEST_CODE_SAVE:
     		if (resultCode == RESULT_OK && intent != null) {
     			// File name should be in Uri:
-    			File filename = FileUriUtils.getFile(intent.getData());
-    			Uri uri = Uri.parse(intent.getStringExtra(PrivateNotePadIntents.EXTRA_URI));
+    			mSaveFilename = FileUriUtils.getFile(intent.getData());
     			
-    			if (filename.exists()) {
-    				// TODO Warning dialog
-
-    				//Toast.makeText(this, "File exists already",
-    				//		Toast.LENGTH_SHORT).show();
-    				
-    				// Remember for later:
-    				// TODO: Store to bundle!
-    				mSaveUri = uri;
-    				mSaveFilename = filename;
-    				
+    			if (mSaveFilename.exists()) {
     				showDialog(DIALOG_OVERWRITE_WARNING);
     			} else {
-    				// save file
-    				saveFile(uri, filename);
+    				writeToFileAndFinish();
     			}
     		} else {
     			// nothing to do.
@@ -148,46 +183,34 @@ public class SaveFileActivity extends Activity {
     	}
     }
 
+
+	private void writeToFileAndFinish() {
+		// save file
+		writeToFile(this, mSaveFilename, mSaveContent);
+
+		// Return the new file name
+		Intent i = new Intent();
+		Uri uri = FileUriUtils.getUri(mSaveFilename);
+		i.setData(uri);
+		setResult(RESULT_OK, i);
+		finish();
+	}
+
     private File getSdCardPath() {
     	return android.os.Environment
 			.getExternalStorageDirectory();
     }
     
-    private void saveFile(Uri uri, File file) {
-    	Log.i(TAG, "Saving file: uri: " + uri + ", file: " + file);
-    	Cursor c = getContentResolver().query(uri, new String[] {Notes.ENCRYPTED, Notes.NOTE}, null, null, null);
-    	
-    	if (c != null && c.getCount() > 0) {
-    		c.moveToFirst();
-    		long encrypted = c.getLong(0);
-    		String note = c.getString(1);
-    		if (encrypted == 0) {
-    			// Save to file
-    			Log.d(TAG, "Save unencrypted file.");
-    			writeToFile(file, note);
-    		} else {
-    			// TODO: decrypt first, then save to file
-
-    			Log.d(TAG, "Save encrypted file.");
-    		}
-    	} else {
-    		Log.e(TAG, "Error saving file: Uri not valid: " + uri);
-    	}
-    	
-    	// Saving is the final step of this activity, so we can finish:
-    	finish();
-    }
-    
-    void writeToFile(File file, String text) {
+    public static void writeToFile(Context context, File file, String text) {
 	    try {
 	    	FileWriter fstream = new FileWriter(file);
 	        BufferedWriter out = new BufferedWriter(fstream);
 		    out.write(text);
 		    out.close();
-			Toast.makeText(this, R.string.note_saved,
+			Toast.makeText(context, R.string.note_saved,
 					Toast.LENGTH_SHORT).show();
 	    } catch (IOException e) {
-			Toast.makeText(this, R.string.error_writing_file,
+			Toast.makeText(context, R.string.error_writing_file,
 					Toast.LENGTH_SHORT).show();
 	    	Log.e(TAG, "Error writing file");
 	    }
@@ -220,8 +243,7 @@ public class SaveFileActivity extends Activity {
 					public void onClick(DialogInterface dialog,
 							int whichButton) {
 						// click Ok
-	    				// save file
-	    				saveFile(mSaveUri, mSaveFilename);
+						writeToFileAndFinish();
 					}
 				})
 		.setNegativeButton(android.R.string.cancel,
