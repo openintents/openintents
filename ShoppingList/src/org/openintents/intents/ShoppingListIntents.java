@@ -26,6 +26,6 @@ public class ShoppingListIntents {
 	 * 
 	 * <p>Constant Value: "CLEAN_UP_LIST"</p>
 	 */
-	public static final String TASK_CLEAN_UP_LIST = "clean_up_list";
+	public static final String TASK_CLEAN_UP_LIST = "org.openintents.shopping.task.clean_up_list";
 	
 }

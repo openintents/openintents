@@ -28,6 +28,9 @@ public class EditAutomationActivity extends Activity {
 	
 	private static final int REQUEST_CODE_PICK_LIST = 1;
 	
+	private static final String BUNDLE_ACTION = "action";
+	private static final String BUNDLE_LIST_URI = "list";
+	
 	TextView mTextCommand;
 //	TextView mTextSelectAction;
 //	TextView mTextSelectCountdown;
@@ -77,7 +80,7 @@ public class EditAutomationActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				pickCountdown();
+				pickList();
 			}
         	
         });
@@ -108,26 +111,37 @@ public class EditAutomationActivity extends Activity {
  //       mTextSelectAction = (TextView) findViewById(R.id.select_action);
  //       mTextSelectCountdown = (TextView) findViewById(R.id.select_countdown);
 
-		final Intent intent = getIntent();
-		
-		if (intent != null) {
-			String action = intent.getStringExtra(ShoppingListIntents.EXTRA_ACTION);
+        if (savedInstanceState != null) {
+        	if (savedInstanceState.containsKey(BUNDLE_ACTION)) {
+        		int i = savedInstanceState.getInt(BUNDLE_ACTION);
+        		mSpinnerAction.setSelection(i);
+        	}
+        	if (savedInstanceState.containsKey(BUNDLE_LIST_URI)) {
+        		mUri = Uri.parse(savedInstanceState.getString(BUNDLE_LIST_URI));
+        		setListNameFromUri();
+        	}
+        } else {
+			final Intent intent = getIntent();
 			
-			if (ShoppingListIntents.TASK_CLEAN_UP_LIST.equals(action)) {
-				mSpinnerAction.setSelection(0);
-			} else {
-				// set default
-				mSpinnerAction.setSelection(0);
+			if (intent != null) {
+				String action = intent.getStringExtra(ShoppingListIntents.EXTRA_ACTION);
+				
+				if (ShoppingListIntents.TASK_CLEAN_UP_LIST.equals(action)) {
+					mSpinnerAction.setSelection(0);
+				} else {
+					// set default
+					mSpinnerAction.setSelection(0);
+				}
+				
+				// Get list:
+	
+				final String dataString = intent.getStringExtra(ShoppingListIntents.EXTRA_DATA);
+				if (dataString != null) {
+					mUri = Uri.parse(dataString);
+				}
+				setListNameFromUri();
 			}
-			
-			// Get list:
-
-			final String dataString = intent.getStringExtra(ShoppingListIntents.EXTRA_DATA);
-			if (dataString != null) {
-				mUri = Uri.parse(dataString);
-			}
-			setListNameFromUri();
-		}
+	    }
 				
         updateTextViews();
 	}
@@ -144,7 +158,16 @@ public class EditAutomationActivity extends Activity {
 		
 	}
 
-	void pickCountdown() {
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(BUNDLE_ACTION, mSpinnerAction.getSelectedItemPosition());
+		if (mUri != null) {
+			outState.putString(BUNDLE_LIST_URI, mUri.toString());
+		}
+	}
+
+	void pickList() {
 		Intent i = new Intent(Intent.ACTION_PICK);
 		i.setData(Shopping.Lists.CONTENT_URI);
 		
