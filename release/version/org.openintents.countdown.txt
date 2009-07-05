@@ -1,3 +1,3 @@
-10001
-3715175930154930085
-Version 1.0.1: First release.
+10004
+0
+Version 1.1.0: Unlimited hours. Launch arbitrary task.
