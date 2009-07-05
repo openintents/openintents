@@ -171,37 +171,42 @@ import android.util.Log;
         	title = context.getString(R.string.app_name);
         }
         
-        if (automate != 0 && automateIntent != null && startNotification) {
+        if (automate != 0 && automateIntent != null) {
         	
         	Intent runIntent = AutomationUtils.getRunAutomationIntent(automateIntent);
         	
         	if (runIntent != null) {
         		// Send broadcast intent (automation task)
-        		if (debug) Log.v(TAG, "Run automation " + runIntent.getComponent());
-	            context.sendBroadcast(runIntent);
+        		// Only send this the first time (startNotification == true)
+        		if (startNotification) {
+        			if (debug) Log.v(TAG, "Run automation " + runIntent.getComponent());
+        			context.sendBroadcast(runIntent);
+        		}
         	} else {
         		// Send activity intent (application or shortcut)
 
             	if (AutomationUtils.getLaunchThroughStatusBar(automateIntent) != 0
             			&& notification != 0) {
             		// Launch intent through status bar
+            		// Do this also if startNotification == false
             		launchIntent = automateIntent;
             		
             	} else {
             		// Launch intent directly
-
-    				try {
-    					if (debug) Log.v(TAG, "Launching intent " + automateIntent.getAction());
-    					if (debug) Log.v(TAG, "Launching intent data " + automateIntent.getData());
-    	            	
-
-    					AutomationUtils.clearInternalExtras(automateIntent);
-    	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    	            	context.startActivity(automateIntent);
-    				} catch (ActivityNotFoundException e) {
-    					// Error launching intent
-    	            	Log.d(TAG, "Error launching activity intent.");
-    				}
+            		if (startNotification) {
+                		// Only launch activity the first time (startNotification == true)
+	    				try {
+	    					if (debug) Log.v(TAG, "Launching intent " + automateIntent.getAction());
+	    					if (debug) Log.v(TAG, "Launching intent data " + automateIntent.getData());
+	    	            	
+	    					AutomationUtils.clearInternalExtras(automateIntent);
+	    	            	automateIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	    	            	context.startActivity(automateIntent);
+	    				} catch (ActivityNotFoundException e) {
+	    					// Error launching intent
+	    	            	Log.d(TAG, "Error launching activity intent.");
+	    				}
+            		}
             	}
         	}
         	

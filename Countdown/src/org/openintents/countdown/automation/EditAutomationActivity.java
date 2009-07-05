@@ -43,6 +43,9 @@ public class EditAutomationActivity extends Activity {
 	
 	private static final int REQUEST_CODE_PICK_COUNTDOWN = 1;
 	
+	private static final String BUNDLE_ACTION = "action";
+	private static final String BUNDLE_COUNTDOWN_URI = "countdown";
+	
 	TextView mTextCommand;
 	TextView mTextSelectAction;
 	TextView mTextSelectCountdown;
@@ -123,29 +126,41 @@ public class EditAutomationActivity extends Activity {
         mTextSelectAction = (TextView) findViewById(R.id.select_action);
         mTextSelectCountdown = (TextView) findViewById(R.id.select_countdown);
 
-		final Intent intent = getIntent();
-		
-		if (intent != null) {
-			String action = intent.getStringExtra(CountdownIntents.EXTRA_ACTION);
+        if (savedInstanceState != null) {
+        	if (savedInstanceState.containsKey(BUNDLE_ACTION)) {
+        		int i = savedInstanceState.getInt(BUNDLE_ACTION);
+        		mSpinnerAction.setSelection(i);
+        	}
+        	if (savedInstanceState.containsKey(BUNDLE_COUNTDOWN_URI)) {
+        		mUri = Uri.parse(savedInstanceState.getString(BUNDLE_COUNTDOWN_URI));
+        		setCountdownFromUri();
+        	}
+        	
+        } else {
+			final Intent intent = getIntent();
 			
-			if (CountdownIntents.TASK_START_COUNTDOWN.equals(action)) {
-				mSpinnerAction.setSelection(0);
-			} else if  (CountdownIntents.TASK_STOP_COUNTDOWN.equals(action)) {
-				mSpinnerAction.setSelection(1);
-			} else {
-				// set default
-				mSpinnerAction.setSelection(0);
-			}
-			
-			// Get countdown:
-
-			final String dataString = intent.getStringExtra(CountdownIntents.EXTRA_DATA);
-			if (dataString != null) {
-				mUri = Uri.parse(dataString);
-			}
-			setCountdownFromUri();
-		}
+			if (intent != null) {
+				String action = intent.getStringExtra(CountdownIntents.EXTRA_ACTION);
 				
+				if (CountdownIntents.TASK_START_COUNTDOWN.equals(action)) {
+					mSpinnerAction.setSelection(0);
+				} else if  (CountdownIntents.TASK_STOP_COUNTDOWN.equals(action)) {
+					mSpinnerAction.setSelection(1);
+				} else {
+					// set default
+					mSpinnerAction.setSelection(0);
+				}
+				
+				// Get countdown:
+	
+				final String dataString = intent.getStringExtra(CountdownIntents.EXTRA_DATA);
+				if (dataString != null) {
+					mUri = Uri.parse(dataString);
+				}
+				setCountdownFromUri();
+			}
+        }
+        
         updateTextViews();
 	}
 	
@@ -159,6 +174,15 @@ public class EditAutomationActivity extends Activity {
 		super.onPause();
 		if (debug) Log.i(TAG, "onPause");
 		
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(BUNDLE_ACTION, mSpinnerAction.getSelectedItemPosition());
+		if (mUri != null) {
+			outState.putString(BUNDLE_COUNTDOWN_URI, mUri.toString());
+		}
 	}
 
 	void pickCountdown() {
@@ -222,9 +246,6 @@ public class EditAutomationActivity extends Activity {
 	}
 	
 	void updateResult() {
-		// Call back exactly this class:
-		//Intent intent = new Intent(this, EditAutomationActivity.class);
-		
 		Intent intent = new Intent();
 		
 		long id = mSpinnerAction.getSelectedItemId();

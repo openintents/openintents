@@ -42,13 +42,13 @@ public class CountdownIntents {
 	 * 
 	 * <p>Constant Value: "STOP_COUNTDOWN"</p>
 	 */
-	public static final String TASK_START_COUNTDOWN = "start";
+	public static final String TASK_START_COUNTDOWN = "org.openintents.countdown.task.start";
 	
 	/**
 	 * Task to be used in EXTRA_ACTION.
 	 * 
 	 * <p>Constant Value: "STOP_COUNTDOWN"</p>
 	 */
-	public static final String TASK_STOP_COUNTDOWN = "stop";
+	public static final String TASK_STOP_COUNTDOWN = "org.openintents.countdown.task.stop";
 	
 }
