@@ -16,8 +16,8 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.countdown"
-      android:versionCode="10003"
-      android:versionName="1.1.0-rc1">
+      android:versionCode="10004"
+      android:versionName="1.1.0">
     <uses-sdk android:minSdkVersion="2" />
     <!-- History:
     1.1.0-rc1 [10003]: 2009-06-30
