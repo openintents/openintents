@@ -22,6 +22,12 @@ import android.net.Uri;
 import android.provider.MediaStore.Audio;
 import android.provider.MediaStore.Video;
 
+/**
+ * @version 2009-07-03
+ * 
+ * @author Peli
+ *
+ */
 public class FileUtils {
 	/** TAG for log messages. */
 	static final String TAG = "FileUtils";
@@ -98,7 +104,10 @@ public class FileUtils {
 	 * @return uri
 	 */
 	public static Uri getUri(File file) {
-		return Uri.parse("file://" + file.getAbsolutePath());
+		if (file != null) {
+			return Uri.fromFile(file);
+		}
+		return null;
 	}
 	
 	/**
@@ -108,11 +117,10 @@ public class FileUtils {
 	 */
 	public static File getFile(Uri uri) {
 		if (uri != null) {
-			String filepath = uri.toString();
-			if (filepath.startsWith("file://")) {
-				filepath = filepath.substring(7);
-	  		}
-			return new File(filepath);
+			String filepath = uri.getPath();
+			if (filepath != null) {
+				return new File(filepath);
+			}
 		}
 		return null;
 	}

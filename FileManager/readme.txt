@@ -30,6 +30,7 @@ date: 2008-12-??
   extensions (like .png and .PNG)
 - Fix for send files via MMS.
 - support for OI About.
+- encode file URIs properly
 - translations: French, German
 
 ---------------------------------------------------------
