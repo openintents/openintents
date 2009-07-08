@@ -16,7 +16,7 @@
 	<string name="update_error">Download application not available.</string>
     
     <!-- Info -->
-    <string name="info_text">To insert a date, edit a note and press menu > (more >) Insert date.</string>
+    <string name="info_text">To insert a date, edit a note and press menu > Insert date.</string>
 	<string name="info_launch">Launch OI Notepad</string>
     
     <!-- Notepad -->

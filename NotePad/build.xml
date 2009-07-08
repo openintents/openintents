@@ -173,6 +173,9 @@ storepass=*password of keystore*
 				<fileset dir="${external-libs}" includes="*.jar" />
 			</classpath>
 		</javac>
+		<!-- Deleted generated files of SDK 1.1 -->
+		<delete file="./src/org/openintents/notepad/Manifest.java" />
+		<delete file="./src/org/openintents/notepad/R.java" />
 	</target>
 
 
