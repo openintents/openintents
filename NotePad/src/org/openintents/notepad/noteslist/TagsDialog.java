@@ -154,5 +154,6 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
         mUri = Uri.parse(savedInstanceState.getString(BUNDLE_URI));
         mEncrypted = savedInstanceState.getLong(BUNDLE_ENCRYPTED);
         mTagList = savedInstanceState.getStringArray(BUNDLE_TAGLIST);
+        setTagList(mTagList);
     }
 }
