@@ -702,7 +702,10 @@ public class NoteEditor extends Activity {
         // implement the ALTERNATIVE_ACTION for our data, adding a menu item
         // for each one that is found.
         if (!mNoteOnly) {
-            Intent intent = new Intent(null, getIntent().getData());
+        	// We use mUri instead of getIntent().getData() in the
+        	// following line, because mUri may have changed when inserting
+        	// a new note.
+            Intent intent = new Intent(null, mUri);
             intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
             //menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
             //        new ComponentName(this, NoteEditor.class), null, intent, 0, null);
