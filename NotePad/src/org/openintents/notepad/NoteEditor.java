@@ -489,7 +489,7 @@ public class NoteEditor extends Activity {
 	
 	private void updateTitleSdCard() {
         String modified = "";
-        if (!mOriginalContent.equals(mFileContent)) {
+        if (mOriginalContent != null && !mOriginalContent.equals(mFileContent)) {
         	modified = "* ";
         }
         String filename = FileUriUtils.getFilename(mUri);
@@ -737,8 +737,6 @@ public class NoteEditor extends Activity {
     	}
     	boolean isNoteUnencrypted = (encrypted == 0);
     	
-    	menu.findItem(MENU_ENCRYPT).setVisible(isNoteUnencrypted);
-    	menu.findItem(MENU_UNENCRYPT).setVisible(!isNoteUnencrypted);
     	
     	// Show comands on the URI only if the note is not encrypted
     	menu.setGroupVisible(Menu.CATEGORY_ALTERNATIVE, isNoteUnencrypted);
@@ -754,6 +752,9 @@ public class NoteEditor extends Activity {
         	menu.setGroupVisible(0, contentChanged);
     		menu.setGroupVisible(1, true);
     		menu.setGroupVisible(2, false);
+    		
+        	menu.findItem(MENU_ENCRYPT).setVisible(isNoteUnencrypted);
+        	menu.findItem(MENU_UNENCRYPT).setVisible(!isNoteUnencrypted);
     	}
     	
 		return super.onPrepareOptionsMenu(menu);
