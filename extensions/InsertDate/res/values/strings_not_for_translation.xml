@@ -27,6 +27,7 @@
 	
 	
     <string-array name="about_authors"><!-- Add your name here if you helped out -->
+        <item>Isaac Potoczny-Jones - http://www.syntaxpolice.org</item>
         <item>Peli</item>
     </string-array>
     
