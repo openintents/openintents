@@ -27,6 +27,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
@@ -36,9 +39,9 @@ import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.CryptoIntents;
 import org.openintents.notepad.NoteEditor;
 import org.openintents.notepad.NotePad;
-import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.NotePadProvider;
 import org.openintents.notepad.PreferenceActivity;
+import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
@@ -47,7 +50,6 @@ import org.openintents.notepad.filename.FilenameDialog;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
@@ -55,7 +57,6 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
@@ -65,7 +66,6 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -449,6 +449,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		menu.add(0, MENU_ITEM_EDIT_TAGS, 0, R.string.menu_edit_tags);
 		
 		if (encrypted == 0) {
+			
 			// Add a menu item to send the note
 			menu.add(0, MENU_ITEM_SEND_BY_EMAIL, 0, R.string.menu_send_by_email);
 
@@ -753,10 +754,48 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			d.setTags(tags);
 			d.setEncrypted(encrypted);
 			
+			String[] taglist = getTaglist(c);
+			d.setTagList(taglist);
+			
 			break;
 		case DIALOG_ABOUT:
 			break;
 		}
+	}
+	
+	/**
+	 * Create list of tags.
+	 * 
+	 * Tags for notes can be comma-separated. Here we create a list of the unique tags.
+	 * 
+	 * @param c
+	 * @return
+	 */
+	String[] getTaglist(Cursor c) {
+		// Create a set of all tags (every tag should only appear once).
+		HashSet<String> tagset = new HashSet<String>();
+		c.moveToPosition(-1);
+		while (c.moveToNext()) {
+			String tags = c.getString(NotesListCursor.COLUMN_INDEX_TAGS);
+			if (tags != null) {
+				// Split several tas in a line, separated by comma
+				String[] smalltaglist = tags.split(",");
+				for (String tag : smalltaglist) {
+					if (!tag.equals("")) {
+						tagset.add(tag.trim());
+					}
+				}
+			}
+		}
+		
+		// Sort the list
+		// 1. Convert HashSet to String list.
+		ArrayList<String> list = new ArrayList<String>();
+		list.addAll(tagset);
+		// 2. Sort the String list 
+		Collections.sort(list);
+		// 3. Convert it to String array
+		return list.toArray(new String[0]);
 	}
 	
 	@Override

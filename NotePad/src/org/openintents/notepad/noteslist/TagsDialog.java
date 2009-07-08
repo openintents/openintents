@@ -25,6 +25,7 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
 
     private static final String BUNDLE_URI = "uri";
     private static final String BUNDLE_ENCRYPTED = "encrypted";
+    private static final String BUNDLE_TAGLIST = "taglist";
     
     Context mContext;
     Uri mUri;
@@ -110,6 +111,13 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
     	}
     	
     	String tags = mTextView.getText().toString();
+
+    	tags = tags.trim();
+    	// Remove trailing ","
+    	if (tags.endsWith(",")) {
+    		tags = tags.substring(0, tags.length() - 1);
+    	}
+    	tags = tags.trim();
     	
     	if (mEncrypted == 0) {
     		// Simply store the value
@@ -136,6 +144,7 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
         Bundle state = super.onSaveInstanceState();
         state.putString(BUNDLE_URI, mUri.toString());
         state.putLong(BUNDLE_ENCRYPTED, mEncrypted);
+        state.putStringArray(BUNDLE_TAGLIST, mTagList);
         return state;
     }
     
@@ -144,5 +153,6 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
         super.onRestoreInstanceState(savedInstanceState);
         mUri = Uri.parse(savedInstanceState.getString(BUNDLE_URI));
         mEncrypted = savedInstanceState.getLong(BUNDLE_ENCRYPTED);
+        mTagList = savedInstanceState.getStringArray(BUNDLE_TAGLIST);
     }
 }
