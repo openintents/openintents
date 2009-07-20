@@ -1,5 +1,6 @@
 package org.openintents.shopping;
 
+import org.openintents.intents.GeneralIntents;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Lists;
 
@@ -27,13 +28,16 @@ public class ShoppingListsActivity extends ListActivity {
 		if (intent.getAction().equals(Intent.ACTION_CREATE_SHORTCUT)) {
 			setTitle(R.string.pick_list_for_shortcut);
 		}
+		if (intent.getAction().equals(GeneralIntents.ACTION_INSERT_FROM_EXTRAS)) {
+			setTitle(R.string.pick_list_to_insert_items);
+		}
 	}
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		String action = getIntent().getAction();
 		
-		if (getCallingActivity() != null) {
+		//if (getCallingActivity() != null) {
 			if (Intent.ACTION_PICK.equals(action)) {
 				Intent data = new Intent();
 				data.setData(Uri.withAppendedPath(Lists.CONTENT_URI, String
@@ -57,8 +61,24 @@ public class ShoppingListsActivity extends ListActivity {
 				
 				setResult(RESULT_OK, shortcut);
 				finish();
+			} else if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(action)) {
+				// Forward the intent to the shopping activity
+				Intent intent = new Intent(getIntent());
+				
+				// Add the selected list
+				intent.setClass(this, ShoppingActivity.class);
+				Uri uri = Uri.withAppendedPath(Lists.CONTENT_URI, String
+						.valueOf(id));
+				intent.setData(uri);
+				
+				// After the user had a chance to look at the list, return to the calling activity.
+				intent.setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
+				
+				startActivity(intent);
+				
+				finish();
 			}
-		}
+		//}
 	}
 	
 	private String getTitle(Uri uri) {

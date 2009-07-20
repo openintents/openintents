@@ -22,6 +22,8 @@ import org.openintents.OpenIntents;
 import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
+import org.openintents.intents.GeneralIntents;
+import org.openintents.intents.ShoppingListIntents;
 import org.openintents.provider.Alert;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Location.Locations;
@@ -389,15 +391,24 @@ public class ShoppingActivity extends Activity { // implements
 
 			mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 					+ defaultShoppingList);
-		} else if (org.openintents.intents.GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(action)) {
-			if (org.openintents.intents.ShoppingListIntents.TYPE_STRING_ARRAYLIST_SHOPPING.equals(type)) {
+		} else if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(action)) {
+			if (ShoppingListIntents.TYPE_STRING_ARRAYLIST_SHOPPING.equals(type)) {
 				/* Need to insert new items from a string array in the intent extras
 				 * Use main action but add an item to the options menu for adding extra items
 				 */
-				mExtraItems = intent.getExtras().getStringArrayList(org.openintents.intents.ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
 				mState = STATE_MAIN;
 				mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 						+ defaultShoppingList);
+				intent.setData(mListUri);
+			} else if (intent.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString())) {
+				// Somewhat quick fix to pass data from ShoppingListsActivity to this activity.
+				
+				// We received a valid shopping list URI:
+				mListUri = intent.getData();
+
+				mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				mState = STATE_MAIN;
 				intent.setData(mListUri);
 			}
 		} else {
@@ -553,6 +564,13 @@ public class ShoppingActivity extends Activity { // implements
 		
 		// Reload preferences, in case something changed
 		initFromPreferences();
+		
+		// Insert items received through intent:
+		if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent().getAction())
+				&& getIntent().getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString())) {
+			// Insert items into shopping list now:
+			insertItemsFromExtras();
+		}
 		
 		registerSensor();
 	}

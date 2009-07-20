@@ -96,6 +96,9 @@
 	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	
+	<!-- Shown if external application wants to insert new items. -->
+	<string name="pick_list_to_insert_items">Pick list to insert items</string>
+	
 	<!-- Theme related -->
 	<string name="theme_pick">Pick a theme</string>
 	<string name="theme_description">Choose a theme for this list</string>

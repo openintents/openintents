@@ -95,12 +95,13 @@
 				<category android:name="android.intent.category.DEFAULT" />
 				<data android:mimeType="vnd.android.cursor.item/vnd.openintents.shopping.list" />
 			</intent-filter>
+			<!-- 
 			<intent-filter>
                 <action android:name="org.openintents.action.INSERT_FROM_EXTRAS" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <!-- <category android:name="android.intent.category.ALTERNATIVE" /> -->
                 <data android:mimeType="org.openintents.type/string.arraylist.shopping" />
             </intent-filter>
+             -->
 		</activity>
 		
 		<activity android:name=".ShoppingListsActivity">
@@ -115,6 +116,12 @@
 				<action android:name="android.intent.action.CREATE_SHORTCUT" />
                 <category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
+			<intent-filter>
+                <action android:name="org.openintents.action.INSERT_FROM_EXTRAS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <!-- <category android:name="android.intent.category.ALTERNATIVE" /> -->
+                <data android:mimeType="org.openintents.type/string.arraylist.shopping" />
+            </intent-filter>
 		</activity>
 		
 		<activity android:name=".share.ListShareSettingsActivity" 
