@@ -115,6 +115,8 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int MENU_MARK_ITEM = Menu.FIRST + 7;
 	private static final int MENU_EDIT_ITEM = Menu.FIRST + 8; // includes rename
 	private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
+	
+	private static final int MENU_INSERT_FROM_EXTRAS = Menu.FIRST + 10; //insert from string array in intent extras
 
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
@@ -213,6 +215,13 @@ public class ShoppingActivity extends Activity { // implements
 	private int mUpdateInterval;
 
 	private boolean mUpdating;
+
+	/**
+	 * The items to add to the shopping list.
+	 * 
+	 *  Received as a string array list in the intent extras.
+	 */
+	private List<String> mExtraItems;
 
 	/**
 	 * Private members connected to Spinner ListFilter.
@@ -380,6 +389,17 @@ public class ShoppingActivity extends Activity { // implements
 
 			mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 					+ defaultShoppingList);
+		} else if (org.openintents.intents.GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(action)) {
+			if (org.openintents.intents.ShoppingListIntents.TYPE_STRING_ARRAYLIST_SHOPPING.equals(type)) {
+				/* Need to insert new items from a string array in the intent extras
+				 * Use main action but add an item to the options menu for adding extra items
+				 */
+				mExtraItems = intent.getExtras().getStringArrayList(org.openintents.intents.ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				mState = STATE_MAIN;
+				mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
+						+ defaultShoppingList);
+				intent.setData(mListUri);
+			}
 		} else {
 			// Unknown action.
 			Log.e(TAG, "Shopping: Unknown action, exiting");
@@ -755,6 +775,16 @@ public class ShoppingActivity extends Activity { // implements
 		}
 	}
 
+	/**
+	 * Inserts new item from string array received in intent extras.
+	 */
+	private void insertItemsFromExtras() {
+		for (String item : mExtraItems) {
+			mListItemsView.insertNewItem(item);
+		}
+		//delete the string array list of extra items so it can't be inserted twice
+		mExtraItems = null;
+	}
 
 	/**
 	 * Picks an item and returns to calling activity.
@@ -775,7 +805,13 @@ public class ShoppingActivity extends Activity { // implements
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-
+		
+		//Add menu option for auto adding items from string array in intent extra if they exist
+		if (mExtraItems != null) {
+			menu.add(0, MENU_INSERT_FROM_EXTRAS, 0, R.string.menu_auto_add).setIcon(
+					android.R.drawable.ic_menu_upload);
+		}
+		
 		// Standard menu
 		menu.add(0, MENU_NEW_LIST, 0, R.string.new_list).setIcon(
 				R.drawable.ic_menu_add_list).setShortcut('0', 'n');
@@ -865,6 +901,11 @@ public class ShoppingActivity extends Activity { // implements
 		// TODO: Add item-specific menu items (see NotesList.java example)
 		// like edit, strike-through, delete.
 
+		//Add menu option for auto adding items from string array in intent extra if they exist
+		if (mExtraItems == null) {
+			menu.removeItem(MENU_INSERT_FROM_EXTRAS);
+		}
+		
 		// Selected list:
 		long listId = getSelectedListId();
 
@@ -975,6 +1016,10 @@ public class ShoppingActivity extends Activity { // implements
 			return true;
 		case MENU_SEND:
 			sendList();
+			return true;
+		case MENU_INSERT_FROM_EXTRAS:
+			insertItemsFromExtras();
+			return true;
 
 		}
 		return super.onOptionsItemSelected(item);

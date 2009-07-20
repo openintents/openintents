@@ -28,4 +28,12 @@ public class ShoppingListIntents {
 	 */
 	public static final String TASK_CLEAN_UP_LIST = "org.openintents.shopping.task.clean_up_list";
 	
+	/**
+	 * Inserts shopping list items from a string array in intent extras.
+	 * 
+	 */
+	public static final String TYPE_STRING_ARRAYLIST_SHOPPING = "org.openintents.type/string.arraylist.shopping";
+	public static final String EXTRA_STRING_ARRAYLIST_SHOPPING = "org.openintents.extra.STRING_ARRAYLIST_SHOPPING";
+
+	
 }
