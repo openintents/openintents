@@ -31,6 +31,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_SORTORDER = "sortorder";
 	public static final String PREFS_SORTORDER_DEFAULT = "2";
 	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";
+	public static final String PREFS_AUTOLINK = "autolink";
 
 	@Override
 	protected void onCreate(Bundle icicle) {

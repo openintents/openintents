@@ -32,6 +32,19 @@
                 android:dialogTitle="@string/preference_sortorder_dialog_title" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="@string/note_editor_preferences">
+
+               
+        <CheckBoxPreference
+                android:key="autolink"
+                android:defaultValue="true"
+                android:title="@string/preference_autolink_title"
+                android:summaryOn="@string/preference_autolink_summary_on"
+                android:summaryOff="@string/preference_autolink_summary_off" />
+
+    </PreferenceCategory>
     
 	<PreferenceCategory android:title="@string/preference_extensions">
 		<PreferenceScreen android:key="preference_screen_extensions"

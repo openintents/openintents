@@ -56,16 +56,23 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.ArrowKeyMovementMethod;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -389,12 +396,29 @@ public class NoteEditor extends Activity {
     protected void onResume() {
         super.onResume();
         if (debug) Log.d(TAG, "onResume");
+        
+        // Set auto-link on or off, based on the current setting.
+        int autoLink = PreferenceManager.getDefaultSharedPreferences(this)
+					.getBoolean(PreferenceActivity.PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
+     
+        mText.setAutoLinkMask(autoLink);
 
         if (mState == STATE_EDIT || mState == STATE_INSERT) {
         	getNoteFromContentProvider();
         } else if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
         	getNoteFromFile();
         }
+        
+        // Make sure that we don't use the link movement method.
+        // Instead, we need a blend between the arrow key movement (for regular navigation) and
+        // the link movement (so the user can click on links).
+        mText.setMovementMethod(new ArrowKeyMovementMethod() {
+        	public boolean onTouchEvent(TextView widget, Spannable buffer, MotionEvent event) {
+        		LinkMovementMethod.getInstance().onTouchEvent(widget, buffer, event);
+        		return super.onTouchEvent(widget, buffer, event);
+        	}        	
+        }
+        );
     }
 
 	private void getNoteFromContentProvider() {
