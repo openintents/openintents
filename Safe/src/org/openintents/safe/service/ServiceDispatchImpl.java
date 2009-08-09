@@ -45,6 +45,7 @@ public class ServiceDispatchImpl extends Service {
     private int timeoutMinutes = 5;
 	private long timeoutUntilStop = timeoutMinutes * 60000;
 	private BroadcastReceiver mIntentReceiver;
+    private boolean lockOnScreenLock=true;
     
     @Override
     public IBinder onBind(Intent intent) {
@@ -62,7 +63,9 @@ public class ServiceDispatchImpl extends Service {
           public void onReceive(Context context, Intent intent) {
               if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
              	 if (debug) Log.d(TAG,"caught ACTION_SCREEN_OFF");
-             	 stopSelf();
+             	 if (lockOnScreenLock) {
+             		 stopSelf();
+             	 }
               } else if (intent.getAction().equals(CryptoIntents.ACTION_RESTART_TIMER)) {
 	              	restartTimer();
               }
@@ -179,6 +182,11 @@ public class ServiceDispatchImpl extends Service {
 			timeoutUntilStop = timeoutMinutes * 60000;
 			Log.d(TAG,"set timeout to "+timeoutMinutes);
 		}
+
+		public void setLockOnScreenLock (boolean lock){
+			lockOnScreenLock = lock;
+    	}
+
 
     };
 

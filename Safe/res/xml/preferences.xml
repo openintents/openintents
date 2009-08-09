@@ -38,7 +38,11 @@
                 android:entryValues="@array/pref_entryvalues_lock_timeout"
                 android:dialogTitle="@string/pref_dialog_title_lock_timeout"
             	android:defaultValue="5" />    
-
+		<CheckBoxPreference
+			android:title="@string/pref_title_lock_on_screen_lock"
+			android:summary="@string/pref_summary_lock_on_screen_lock"
+			android:key="lock_on_screen_lock"
+			android:defaultValue="true"/>
 		<CheckBoxPreference
 			android:title="@string/pref_title_keypad"
 			android:summary="@string/pref_summary_keypad"

@@ -122,11 +122,15 @@ public class CategoryList extends ListActivity {
     private Intent restartTimerIntent;
     private int lastPosition=0;
     
+    private boolean lockOnScreenLock=true;
+    
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             	 if (debug) Log.d(TAG,"caught ACTION_SCREEN_OFF");
-            	 masterKey=null;
+            	 if (lockOnScreenLock) {
+            		 masterKey=null;
+            	 }
             } else if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
             	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
             	 lockAndShutFrontDoor();
@@ -248,6 +252,8 @@ public class CategoryList extends ListActivity {
     	}
 
         showFirstTimeWarningDialog();
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		lockOnScreenLock = sp.getBoolean(Preferences.PREFERENCE_LOCK_ON_SCREEN_LOCK, true);
     }
 
 	/**

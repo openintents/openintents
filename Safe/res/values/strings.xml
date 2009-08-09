@@ -161,6 +161,12 @@
 	
 	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
 	
+	<!-- Preference title -->
+	<string name="pref_title_lock_on_screen_lock">Lock on screen lock</string>
+	
+	<!-- Preference summary for lock on screen lock -->
+	<string name="pref_summary_lock_on_screen_lock">Lock when the screen locks</string>
+	
 	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Keypad</string>
 	

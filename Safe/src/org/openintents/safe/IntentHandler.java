@@ -60,7 +60,7 @@ public class IntentHandler extends Activity {
 	private CryptoHelper ch;
 	
 	// service elements
-    private ServiceDispatch service;
+    private static ServiceDispatch service=null;
     private ServiceDispatchConnection conn;
 	private Intent mServiceIntent;
 
@@ -133,7 +133,9 @@ public class IntentHandler extends Activity {
 	private void setServiceParametersFromExtrasAndDispatchAction(Intent data) {
 		salt = data.getStringExtra("salt");
 		masterKey = data.getStringExtra("masterKey");
-		String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE); 
+		String timeout = mPreferences.getString(Preferences.PREFERENCE_LOCK_TIMEOUT, Preferences.PREFERENCE_LOCK_TIMEOUT_DEFAULT_VALUE);
+		boolean lockOnScreenLock = mPreferences.getBoolean(Preferences.PREFERENCE_LOCK_ON_SCREEN_LOCK, true);
+
 		int timeoutMinutes=5; // default to 5
 		try {
 			timeoutMinutes = Integer.valueOf(timeout);
@@ -143,6 +145,7 @@ public class IntentHandler extends Activity {
 		
 		try {
 			service.setTimeoutMinutes(timeoutMinutes);
+			service.setLockOnScreenLock(lockOnScreenLock);
 			service.setSalt(salt);
 			service.setPassword(masterKey); // should already be connected.
 		} catch (RemoteException e1) {
@@ -560,6 +563,18 @@ public class IntentHandler extends Activity {
 			
 			if (debug) Log.d( TAG,"onServiceDisconnected" );
 		}
+		
 	};
+
+	public static void setLockOnScreenLock(boolean lock)
+	{
+		if (service!=null) {
+			try {
+				service.setLockOnScreenLock(lock);
+			} catch (RemoteException e) {
+				Log.d(TAG, e.toString());
+			}
+		}
+	}
 
 }
