@@ -58,11 +58,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.Layout;
+import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -414,7 +417,33 @@ public class NoteEditor extends Activity {
         // the link movement (so the user can click on links).
         mText.setMovementMethod(new ArrowKeyMovementMethod() {
         	public boolean onTouchEvent(TextView widget, Spannable buffer, MotionEvent event) {
-        		LinkMovementMethod.getInstance().onTouchEvent(widget, buffer, event);
+        		// This block is copied and pasted from LinkMovementMethod's
+        		// onTouchEvent (without the part that actually changes the
+        		// selection).
+        		int action = event.getAction();
+
+        		if (action == MotionEvent.ACTION_UP) {
+        			int x = (int) event.getX();
+        			int y = (int) event.getY();
+
+        			x -= widget.getTotalPaddingLeft();
+        			y -= widget.getTotalPaddingTop();
+
+        			x += widget.getScrollX();
+        			y += widget.getScrollY();
+
+        			Layout layout = widget.getLayout();
+        			int line = layout.getLineForVertical(y);
+        			int off = layout.getOffsetForHorizontal(line, x);
+
+        			ClickableSpan[] link = buffer.getSpans(off, off, ClickableSpan.class);
+
+        			if (link.length != 0) {
+        				link[0].onClick(widget);
+        				return true;
+        			}
+        		}
+        		
         		return super.onTouchEvent(widget, buffer, event);
         	}        	
         }
