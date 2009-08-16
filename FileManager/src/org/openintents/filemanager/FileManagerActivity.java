@@ -23,6 +23,7 @@ package org.openintents.filemanager;
 import java.io.File;
 import java.io.FilePermission;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,6 +43,7 @@ import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
@@ -135,6 +137,9 @@ public class FileManagerActivity extends ListActivity {
      private LinearLayout mDirectoryInput;
      private EditText mEditDirectory;
      private ImageButton mButtonDirectoryPick;
+     
+     // Cupcake-specific methods
+     Method formatter_formatFileSize;
 
      /** Called when the activity is first created. */ 
      @Override 
@@ -144,6 +149,8 @@ public class FileManagerActivity extends ListActivity {
           if (!EulaActivity.checkEula(this)) {
              return;
           }
+          
+          initializeCupcakeInterface();
   		
           setContentView(R.layout.filelist);
 
@@ -241,6 +248,15 @@ public class FileManagerActivity extends ListActivity {
           }
           
           browseTo(browseto);
+     }
+     
+     private void initializeCupcakeInterface() {
+         try {
+             formatter_formatFileSize = Class.forName("android.text.format.Formatter").getMethod("formatFileSize", Context.class, long.class);
+         } catch (Exception ex) {
+        	 // This is not cupcake.
+        	 return;
+         }
      }
 
      private void onCreateDirectoryInput() {
@@ -497,12 +513,12 @@ public class FileManagerActivity extends ListActivity {
             		   currentIcon = getResources().getDrawable(R.drawable.icon_sdcard);
             		   
                        mListSdCard.add(new IconifiedText( 
-                       		 currentFile.getName(), currentIcon)); 
+                       		 currentFile.getName(), "", currentIcon)); 
             	   } else {
             		   currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder);
 
                        mListDir.add(new IconifiedText( 
-                         		 currentFile.getName(), currentIcon)); 
+                         		 currentFile.getName(), "", currentIcon)); 
             	   }
                }else{ 
                     String fileName = currentFile.getName(); 
@@ -513,8 +529,26 @@ public class FileManagerActivity extends ListActivity {
                     if (currentIcon == null) {
                     	currentIcon = getResources().getDrawable(R.drawable.icon_file);
                     }
+                    
+                    String size = "";
+                    
+                    try {
+                    	size = (String) formatter_formatFileSize.invoke(null, this, currentFile.length());
+                    } catch (Exception e) {
+                    	// The file size method is probably null (this is most
+                    	// likely not a Cupcake phone), or something else went wrong.
+                    	// Let's fall back to something primitive, like just the number
+                    	// of KB.
+                    	size = Long.toString(currentFile.length() / 1024);
+                    	size +=" KB";
+                    	
+                    	// Technically "KB" should come from a string resource,
+                    	// but this is just a Cupcake 1.1 fallback, and KB is universal
+                    	// enough.
+                    }
+                    
                     mListFile.add(new IconifiedText( 
-                     		 currentFile.getName(), currentIcon)); 
+                     		 currentFile.getName(), size, currentIcon)); 
                } 
                
           } 
