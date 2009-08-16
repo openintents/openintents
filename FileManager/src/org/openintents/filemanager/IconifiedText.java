@@ -22,12 +22,14 @@ import android.graphics.drawable.Drawable;
 public class IconifiedText implements Comparable<IconifiedText>{ 
     
      private String mText = ""; 
+     private String mInfo = "";
      private Drawable mIcon; 
      private boolean mSelectable = true; 
 
-     public IconifiedText(String text, Drawable bullet) { 
+     public IconifiedText(String text, String info, Drawable bullet) { 
           mIcon = bullet; 
           mText = text; 
+          mInfo = info;
      } 
       
      public boolean isSelectable() { 
@@ -39,13 +41,21 @@ public class IconifiedText implements Comparable<IconifiedText>{
      } 
       
      public String getText() { 
-          return mText; 
-     } 
-      
-     public void setText(String text) { 
-          mText = text; 
-     } 
-      
+         return mText; 
+    } 
+     
+    public void setText(String text) { 
+         mText = text; 
+    } 
+     
+    public String getInfo() { 
+        return mInfo; 
+   } 
+    
+   public void setInfo(String info) { 
+        mInfo = info; 
+   } 
+    
      public void setIcon(Drawable icon) { 
           mIcon = icon; 
      } 

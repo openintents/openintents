@@ -73,6 +73,7 @@ public class IconifiedTextListAdapter extends BaseAdapter {
                btv = (IconifiedTextView) convertView; 
           } 
           btv.setText(mItems.get(position).getText()); 
+          btv.setInfo(mItems.get(position).getInfo()); 
           btv.setIcon(mItems.get(position).getIcon()); 
           return btv; 
      } 

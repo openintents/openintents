@@ -30,7 +30,8 @@ import android.widget.TextView;
 
 public class IconifiedTextView extends LinearLayout { 
       
-     private TextView mText; 
+    private TextView mText; 
+    private TextView mInfo; 
      private ImageView mIcon; 
       
      public IconifiedTextView(Context context, IconifiedText aIconifiedText) { 
@@ -45,12 +46,17 @@ public class IconifiedTextView extends LinearLayout {
 		
 		mIcon = (ImageView) findViewById(R.id.icon);
 		mText = (TextView) findViewById(R.id.text);
+		mInfo = (TextView) findViewById(R.id.info);
      } 
 
      public void setText(String words) { 
-          mText.setText(words); 
-     } 
-      
+         mText.setText(words); 
+    } 
+     
+     public void setInfo(String info) { 
+         mInfo.setText(info);
+    } 
+     
      public void setIcon(Drawable bullet) { 
           mIcon.setImageDrawable(bullet); 
      } 
