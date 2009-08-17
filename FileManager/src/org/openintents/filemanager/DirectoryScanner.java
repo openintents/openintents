@@ -15,6 +15,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SystemClock;
 import android.util.Log;
 
 public class DirectoryScanner extends Thread {
@@ -28,6 +29,7 @@ public class DirectoryScanner extends Thread {
 	private Context context;
     private MimeTypes mMimeTypes;
 	private Handler handler;
+	private long operationStartTime;
 	
 	// Update progress bar every n files
 	static final private int PROGRESS_STEPS = 50;
@@ -72,13 +74,14 @@ public class DirectoryScanner extends Thread {
 			return;
 		}
 		
+		operationStartTime = SystemClock.uptimeMillis();
+		
 		totalCount = files.length;
 		Log.v(TAG, "Counting files... (total count=" + totalCount + ")");
 
 		// We'll do two passes.
 		totalCount *= 2;
 		int progress = 0;
-		int filesUntilNextProgressUpdate = PROGRESS_STEPS;
 		
 		// First, pre-create the arrays.
 		for (File currentFileCount : files){ 
@@ -89,15 +92,7 @@ public class DirectoryScanner extends Thread {
 			}
 
 			progress++;
-			
-			if (--filesUntilNextProgressUpdate == 0) {
-				filesUntilNextProgressUpdate = PROGRESS_STEPS;
-				
-				Message msg = handler.obtainMessage(FileManagerActivity.MESSAGE_SET_PROGRESS);
-				msg.arg1 = progress;
-				msg.arg2 = totalCount;
-				msg.sendToTarget();
-			}
+			updateProgress(progress, totalCount);
 
 			if (currentFileCount.isDirectory()) { 
 				if (currentFileCount.getAbsolutePath().equals(mSdCardPath)) {
@@ -142,16 +137,7 @@ public class DirectoryScanner extends Thread {
 			}
 			
 			progress++;
-			
-			if (--filesUntilNextProgressUpdate == 0) {
-				filesUntilNextProgressUpdate = PROGRESS_STEPS;
-				
-				Message msg = handler.obtainMessage(FileManagerActivity.MESSAGE_SET_PROGRESS);
-				msg.arg1 = progress;
-				msg.arg2 = totalCount;
-				msg.sendToTarget();
-			}
-			
+			updateProgress(progress, totalCount);
 			
 			/*
         	  if (currentFile.isHidden()) {
@@ -223,6 +209,24 @@ public class DirectoryScanner extends Thread {
 		}
 
 		clearData();
+	}
+	
+	private void updateProgress(int progress, int maxProgress) {
+		// Only update the progress bar every n steps...
+		if ((progress % PROGRESS_STEPS) == 0) {
+			// Also don't update for the first second.
+			long curTime = SystemClock.uptimeMillis();
+			
+			if (curTime - operationStartTime < 1000L) {
+				return;
+			}
+			
+			// Okay, send an update.
+			Message msg = handler.obtainMessage(FileManagerActivity.MESSAGE_SET_PROGRESS);
+			msg.arg1 = progress;
+			msg.arg2 = maxProgress;
+			msg.sendToTarget();
+		}
 	}
 
 	/**
