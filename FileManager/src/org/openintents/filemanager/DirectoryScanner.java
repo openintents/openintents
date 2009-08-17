@@ -183,7 +183,7 @@ public class DirectoryScanner extends Thread {
 				String size = "";
 
 				try {
-					size = (String) formatter_formatFileSize.invoke(null, this, currentFile.length());
+					size = (String) formatter_formatFileSize.invoke(null, context, currentFile.length());
 				} catch (Exception e) {
 					// The file size method is probably null (this is most
 					// likely not a Cupcake phone), or something else went wrong.
