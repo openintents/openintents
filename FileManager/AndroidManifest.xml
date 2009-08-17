@@ -65,6 +65,12 @@
                 <action android:name="org.openintents.action.PICK_DIRECTORY"/>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter>
+				<action android:name="android.intent.action.GET_CONTENT" />
+				<data android:mimeType="*/*" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.OPENABLE" />
+            </intent-filter>
         </activity>
         
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">

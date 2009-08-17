@@ -569,6 +569,18 @@ public class FileManagerActivity extends ListActivity {
           Uri data = FileUtils.getUri(aFile);
           String type = mMimeTypes.getMimeType(aFile.getName());
           intent.setDataAndType(data, type);
+
+     	 // Were we in GET_CONTENT mode?
+     	 Intent originalIntent = getIntent();
+     	 
+     	 if (originalIntent != null && originalIntent.getAction().equals(Intent.ACTION_GET_CONTENT)) {
+    		 // In that case, we should probably just return the requested data.
+     		 setResult(RESULT_OK, intent);
+     		 finish();
+    		 return;
+    	 }
+    	 
+
           
           try {
         	  startActivity(intent); 
