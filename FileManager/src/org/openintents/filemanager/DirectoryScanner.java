@@ -79,48 +79,16 @@ public class DirectoryScanner extends Thread {
 		totalCount = files.length;
 		Log.v(TAG, "Counting files... (total count=" + totalCount + ")");
 
-		// We'll do two passes.
-		totalCount *= 2;
 		int progress = 0;
 		
-		// First, pre-create the arrays.
-		for (File currentFileCount : files){ 
-			if (cancel) {
-				Log.v(TAG, "Counting files aborted");
-				clearData();
-				return;
-			}
-
-			progress++;
-			updateProgress(progress, totalCount);
-
-			if (currentFileCount.isDirectory()) { 
-				if (currentFileCount.getAbsolutePath().equals(mSdCardPath)) {
-					sdCount++;
-				} else {
-					dirCount++;
-				}
-			}else{ 
-				fileCount++;
-			}
-		}
-		
-		Log.v(TAG, "Files=" + fileCount + ", Dirs=" + dirCount + ", SDs=" + sdCount);
-		
-		if (cancel) {
-			Log.v(TAG, "Scan aborted");
-			clearData();
-			return;
-		}
-
 		/** Dir separate for sorting */
-		List<IconifiedText> listDir = new ArrayList<IconifiedText>(dirCount);
+		List<IconifiedText> listDir = new ArrayList<IconifiedText>(totalCount);
 
 		/** Files separate for sorting */
-		List<IconifiedText> listFile = new ArrayList<IconifiedText>(fileCount);
+		List<IconifiedText> listFile = new ArrayList<IconifiedText>(totalCount);
 
 		/** SD card separate for sorting */
-		List<IconifiedText> listSdCard = new ArrayList<IconifiedText>(sdCount);
+		List<IconifiedText> listSdCard = new ArrayList<IconifiedText>(3);
 
 		// Cache some commonly used icons.
 		Drawable sdIcon = context.getResources().getDrawable(R.drawable.icon_sdcard);
