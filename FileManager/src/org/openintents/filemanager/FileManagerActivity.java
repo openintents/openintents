@@ -71,6 +71,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -155,11 +156,13 @@ public class FileManagerActivity extends ListActivity {
      
      private DirectoryScanner mDirectoryScanner;
      private File mPreviousDirectory;
+     private ThumbnailLoader mThumbnailLoader;
      
      private Handler currentHandler;
 
  	 static final public int MESSAGE_SHOW_DIRECTORY_CONTENTS = 500;	// List of contents is ready, obj = DirectoryContents
      static final public int MESSAGE_SET_PROGRESS = 501;	// Set progress bar, arg1 = current value, arg2 = max value
+     static final public int MESSAGE_ICON_CHANGED = 502;	// View needs to be redrawn, obj = IconifiedText
      
      /** Called when the activity is first created. */ 
      @Override 
@@ -289,6 +292,13 @@ public class FileManagerActivity extends ListActivity {
     	 }
     	 
     	 mDirectoryScanner = null;
+    	 
+    	 ThumbnailLoader loader = mThumbnailLoader;
+    	 
+    	 if (loader != null) {
+    		 loader.cancel = true;
+    		 mThumbnailLoader = null;
+    	 }
      }
      
      private void handleMessage(Message message) {
@@ -301,6 +311,17 @@ public class FileManagerActivity extends ListActivity {
     		 
     	 case MESSAGE_SET_PROGRESS:
     		 setProgress(message.arg1, message.arg2);
+    		 break;
+    		 
+    	 case MESSAGE_ICON_CHANGED:
+    		 notifyIconChanged((IconifiedText) message.obj);
+    		 break;
+    	 }
+     }
+     
+     private void notifyIconChanged(IconifiedText text) {
+    	 if (getListAdapter() != null) {
+    		 ((BaseAdapter) getListAdapter()).notifyDataSetChanged();
     	 }
      }
      
@@ -331,6 +352,9 @@ public class FileManagerActivity extends ListActivity {
 
     	 mProgressBar.setVisibility(View.GONE);
     	 mEmptyText.setVisibility(View.VISIBLE);
+    	 
+    	 mThumbnailLoader = new ThumbnailLoader(currentDirectory, mListFile, currentHandler);
+    	 mThumbnailLoader.start();
      }
      
      private void onCreateDirectoryInput() {
@@ -562,6 +586,13 @@ public class FileManagerActivity extends ListActivity {
     		  scanner.cancel = true;
     	  }
 
+    	  ThumbnailLoader loader = mThumbnailLoader;
+    	  
+    	  if (loader != null) {
+    		  loader.cancel = true;
+    		  mThumbnailLoader = null;
+    	  }
+    	  
     	  directoryEntries.clear(); 
           mListDir.clear();
           mListFile.clear();
