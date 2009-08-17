@@ -50,9 +50,13 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Contacts.Intents;
 import android.text.TextUtils;
 import android.util.Log;
@@ -62,6 +66,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -69,6 +74,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -138,9 +144,17 @@ public class FileManagerActivity extends ListActivity {
      private EditText mEditDirectory;
      private ImageButton mButtonDirectoryPick;
      
-     // Cupcake-specific methods
-     Method formatter_formatFileSize;
+     private TextView mEmptyText;
+     private ProgressBar mProgressBar;
+     
+     private DirectoryScanner mDirectoryScanner;
+     private File mPreviousDirectory;
+     
+     private Handler currentHandler;
 
+ 	 static final public int MESSAGE_SHOW_DIRECTORY_CONTENTS = 500;	// List of contents is ready, obj = DirectoryContents
+     static final public int MESSAGE_SET_PROGRESS = 501;	// Set progress bar, arg1 = current value, arg2 = max value
+     
      /** Called when the activity is first created. */ 
      @Override 
      public void onCreate(Bundle icicle) { 
@@ -149,10 +163,18 @@ public class FileManagerActivity extends ListActivity {
           if (!EulaActivity.checkEula(this)) {
              return;
           }
-          
-          initializeCupcakeInterface();
-  		
+
+          currentHandler = new Handler() {
+			public void handleMessage(Message msg) {
+				FileManagerActivity.this.handleMessage(msg);
+			}
+		};
+
+		  requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
           setContentView(R.layout.filelist);
+          
+          mEmptyText = (TextView) findViewById(R.id.empty_text);
+          mProgressBar = (ProgressBar) findViewById(R.id.scan_progress);
 
 		  getListView().setOnCreateContextMenuListener(this);
 		  getListView().setEmptyView(findViewById(R.id.empty));
@@ -250,15 +272,61 @@ public class FileManagerActivity extends ListActivity {
           browseTo(browseto);
      }
      
-     private void initializeCupcakeInterface() {
-         try {
-             formatter_formatFileSize = Class.forName("android.text.format.Formatter").getMethod("formatFileSize", Context.class, long.class);
-         } catch (Exception ex) {
-        	 // This is not cupcake.
-        	 return;
-         }
+     public void onDestroy() {
+    	 super.onDestroy();
+    	 
+    	 // Stop the scanner.
+    	 DirectoryScanner scanner = mDirectoryScanner;
+    	 
+    	 if (scanner != null) {
+    		 scanner.cancel = true;
+    	 }
+    	 
+    	 mDirectoryScanner = null;
      }
+     
+     private void handleMessage(Message message) {
+//    	 Log.v(TAG, "Received message " + message.what);
+    	 
+    	 switch (message.what) {
+    	 case MESSAGE_SHOW_DIRECTORY_CONTENTS:
+    		 showDirectoryContents((DirectoryContents) message.obj);
+    		 break;
+    		 
+    	 case MESSAGE_SET_PROGRESS:
+    		 setProgress(message.arg1, message.arg2);
+    	 }
+     }
+     
+     private void setProgress(int progress, int maxProgress) {
+    	 mProgressBar.setMax(maxProgress);
+    	 mProgressBar.setProgress(progress);
+    	 mProgressBar.setVisibility(View.VISIBLE);
+     }
+     
+     private void showDirectoryContents(DirectoryContents contents) {
+    	 mDirectoryScanner = null;
+    	 
+    	 mListSdCard = contents.listSdCard;
+    	 mListDir = contents.listDir;
+    	 mListFile = contents.listFile;
+    	 
+         addAllElements(directoryEntries, mListSdCard);
+         addAllElements(directoryEntries, mListDir);
+         addAllElements(directoryEntries, mListFile);
+          
+         IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
+         itla.setListItems(directoryEntries);          
+         setListAdapter(itla); 
 
+         selectInList(mPreviousDirectory);
+         refreshDirectoryPanel();
+         setProgressBarIndeterminateVisibility(false);
+
+    	 mProgressBar.setVisibility(View.GONE);
+    	 mEmptyText.setVisibility(View.VISIBLE);
+     }
+     
      private void onCreateDirectoryInput() {
     	 mDirectoryInput = (LinearLayout) findViewById(R.id.directory_input);
          mEditDirectory = (EditText) findViewById(R.id.directory_text);
@@ -442,11 +510,11 @@ public class FileManagerActivity extends ListActivity {
         		  // Switch from button to directory input
         		  showDirectoryInput(true);
         	  } else {
-        		   File previousDirectory = currentDirectory;
+        		   mPreviousDirectory = currentDirectory;
 	               currentDirectory = aDirectory;
 	               refreshList();
-	               selectInList(previousDirectory);
-	               refreshDirectoryPanel();
+//	               selectInList(previousDirectory);
+	//               refreshDirectoryPanel();
         	  }
           }else{ 
         	  if (mState == STATE_BROWSE || mState == STATE_PICK_DIRECTORY) {
@@ -481,13 +549,32 @@ public class FileManagerActivity extends ListActivity {
 
      private void refreshList() {
     	 
-    	  File[] files = currentDirectory.listFiles();
-          
+    	  // Cancel an existing scanner, if applicable.
+    	  DirectoryScanner scanner = mDirectoryScanner;
+    	  
+    	  if (scanner != null) {
+    		  scanner.cancel = true;
+    	  }
+
     	  directoryEntries.clear(); 
           mListDir.clear();
           mListFile.clear();
           mListSdCard.clear();
           
+          setProgressBarIndeterminateVisibility(true);
+          
+          // Don't show the "folder empty" text since we're scanning.
+          mEmptyText.setVisibility(View.GONE);
+          
+          // Also DON'T show the progress bar - it's kind of lame to show that
+          // for less than a second.
+          mProgressBar.setVisibility(View.GONE);
+          setListAdapter(null); 
+          
+		  mDirectoryScanner = new DirectoryScanner(currentDirectory, this, currentHandler, mMimeTypes);
+		  mDirectoryScanner.start();
+		  
+		  
            
           // Add the "." == "current directory" 
           /*directoryEntries.add(new IconifiedText( 
@@ -500,70 +587,6 @@ public class FileManagerActivity extends ListActivity {
                          getString(R.string.up_one_level), 
                          getResources().getDrawable(R.drawable.ic_launcher_folder_open))); 
           */
-           
-          Drawable currentIcon = null; 
-          for (File currentFile : files){ 
-        	  /*
-        	  if (currentFile.isHidden()) {
-        		  continue;
-        	  }
-        	  */
-        	   if (currentFile.isDirectory()) { 
-            	   if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
-            		   currentIcon = getResources().getDrawable(R.drawable.icon_sdcard);
-            		   
-                       mListSdCard.add(new IconifiedText( 
-                       		 currentFile.getName(), "", currentIcon)); 
-            	   } else {
-            		   currentIcon = getResources().getDrawable(R.drawable.ic_launcher_folder);
-
-                       mListDir.add(new IconifiedText( 
-                         		 currentFile.getName(), "", currentIcon)); 
-            	   }
-               }else{ 
-                    String fileName = currentFile.getName(); 
-                    
-                    String mimetype = mMimeTypes.getMimeType(fileName);
-                    
-                    currentIcon = getDrawableForMimetype(mimetype);
-                    if (currentIcon == null) {
-                    	currentIcon = getResources().getDrawable(R.drawable.icon_file);
-                    }
-                    
-                    String size = "";
-                    
-                    try {
-                    	size = (String) formatter_formatFileSize.invoke(null, this, currentFile.length());
-                    } catch (Exception e) {
-                    	// The file size method is probably null (this is most
-                    	// likely not a Cupcake phone), or something else went wrong.
-                    	// Let's fall back to something primitive, like just the number
-                    	// of KB.
-                    	size = Long.toString(currentFile.length() / 1024);
-                    	size +=" KB";
-                    	
-                    	// Technically "KB" should come from a string resource,
-                    	// but this is just a Cupcake 1.1 fallback, and KB is universal
-                    	// enough.
-                    }
-                    
-                    mListFile.add(new IconifiedText( 
-                     		 currentFile.getName(), size, currentIcon)); 
-               } 
-               
-          } 
-          //Collections.sort(mListSdCard); 
-          Collections.sort(mListDir); 
-          Collections.sort(mListFile); 
-
-          addAllElements(directoryEntries, mListSdCard);
-          addAllElements(directoryEntries, mListDir);
-          addAllElements(directoryEntries, mListFile);
-           
-          IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
-          itla.setListItems(directoryEntries);          
-          setListAdapter(itla); 
-          
      } 
      
      private void selectInList(File selectFile) {
@@ -708,30 +731,6 @@ public class FileManagerActivity extends ListActivity {
           */
      }
 
-	/**
-      * Return the Drawable that is associated with a specific mime type
-      * for the VIEW action.
-      * 
-      * @param mimetype
-      * @return
-      */
-     Drawable getDrawableForMimetype(String mimetype) {
-    	 PackageManager pm = getPackageManager();
-    	 
-    	 Intent intent = new Intent(Intent.ACTION_VIEW);
-    	 intent.setType(mimetype);
-    	 
-    	 final List<ResolveInfo> lri = pm.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
-    	 
-    	 if (lri != null && lri.size() > 0) {
-    		 // return first element
-    		 final ResolveInfo ri = lri.get(0);
-    		 return ri.loadIcon(pm);
-    	 }
-    	 
-    	 return null;
-     }
-     
      private void getSdCardPath() {
     	 mSdCardPath = android.os.Environment
 			.getExternalStorageDirectory().getAbsolutePath();

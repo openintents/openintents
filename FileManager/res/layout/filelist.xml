@@ -85,13 +85,34 @@
             android:layout_height="fill_parent"
             android:drawSelectorOnTop="false"/>
         
-        <!-- Here is the view to show if the list is emtpy -->
+        <!-- Here is the view to show if the list is empty -->
         
-        <TextView android:id="@+id/empty"
+        <LinearLayout android:id="@+id/empty"
+            android:layout_width="fill_parent" 
+            android:layout_height="fill_parent">
+
+		<!--  If the list is empty because there are no files... -->
+        
+        <TextView android:id="@+id/empty_text"
             android:layout_width="fill_parent" 
             android:layout_height="fill_parent"
             android:text="@string/this_folder_is_empty"
-        	android:textAppearance="?android:attr/textAppearanceMedium"/>
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+        	android:gravity="center" />
+        	
+        <!--  If the list is empty because we're still scanning... -->
+
+		<ProgressBar android:id="@+id/scan_progress" 
+			android:layout_height="wrap_content"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="fill_parent"
+			android:progress="0"
+			android:max="10"
+			android:secondaryProgress="0"
+			android:layout_gravity="center"
+			android:visibility="gone"/>
+        	
+        </LinearLayout>
             
     </FrameLayout>
 </LinearLayout>
