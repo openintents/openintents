@@ -21,6 +21,8 @@
 package org.openintents.filemanager;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FilePermission;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -89,6 +91,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final int STATE_PICK_DIRECTORY = 3;
 	
 	protected static final int REQUEST_CODE_MOVE = 1;
+	protected static final int REQUEST_CODE_COPY = 2;
 
 	private static final int MENU_ABOUT = Menu.FIRST + 1;
 	private static final int MENU_UPDATE = Menu.FIRST + 2;
@@ -99,11 +102,14 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_SEND = Menu.FIRST + 7;
 	private static final int MENU_OPEN = Menu.FIRST + 8;
 	private static final int MENU_MOVE = Menu.FIRST + 9;
+	private static final int MENU_COPY = Menu.FIRST + 10;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
 	private static final int DIALOG_RENAME = 3;
 	private static final int DIALOG_ABOUT = 4;
+	
+	private static final int COPY_BUFFER_SIZE = 32 * 1024;
 	
 	private static final String BUNDLE_CURRENT_DIRECTORY = "current_directory";
 	private static final String BUNDLE_CONTEXT_FILE = "context_file";
@@ -832,6 +838,11 @@ public class FileManagerActivity extends ListActivity {
 			menu.add(0, MENU_SEND, 0, R.string.menu_send);
 		}
 		menu.add(0, MENU_MOVE, 0, R.string.menu_move);
+		
+		if (!file.isDirectory()) {
+			menu.add(0, MENU_COPY, 0, R.string.menu_copy);
+		}
+		
 		menu.add(0, MENU_RENAME, 0, R.string.menu_rename);
 		menu.add(0, MENU_DELETE, 0, R.string.menu_delete);
 
@@ -867,6 +878,10 @@ public class FileManagerActivity extends ListActivity {
 			
 		case MENU_MOVE:
 			promptDestinationAndMoveFile();
+			return true;
+			
+		case MENU_COPY:
+			promptDestinationAndCopyFile();
 			return true;
 			
 		case MENU_DELETE:
@@ -1009,6 +1024,18 @@ public class FileManagerActivity extends ListActivity {
 		startActivityForResult(intent, REQUEST_CODE_MOVE);
 	}
 	
+	private void promptDestinationAndCopyFile() {
+
+		Intent intent = new Intent(FileManagerIntents.ACTION_PICK_DIRECTORY);
+		
+		intent.setData(FileUtils.getUri(currentDirectory));
+		
+		intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(R.string.copy_title));
+		intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(R.string.copy_button));
+		
+		startActivityForResult(intent, REQUEST_CODE_COPY);
+	}
+	
 	private void createNewFolder(String foldername) {
 		if (!TextUtils.isEmpty(foldername)) {
 			File file = FileUtils.getFile(currentDirectory, foldername);
@@ -1097,6 +1124,81 @@ public class FileManagerActivity extends ListActivity {
 		Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
 	}
 	
+	/*@ RETURNS: A file name that is guaranteed to not exist yet.
+	 * 
+	 * PARAMS:
+	 *   context - Application context.
+	 *   path - The path that the file is supposed to be in.
+	 *   fileName - Desired file name. This name will be modified to
+	 *     create a unique file if necessary.
+	 * 
+	 */
+	private File createUniqueCopyName(Context context, File path, String fileName) {
+		// Does that file exist?
+		File file = FileUtils.getFile(path, fileName);
+		
+		if (!file.exists()) {
+			// Nope - we can take that.
+			return file;
+		}
+		
+		// Try a simple "copy of".
+		file = FileUtils.getFile(path, context.getString(R.string.copied_file_name, fileName));
+		
+		if (!file.exists()) {
+			// Nope - we can take that.
+			return file;
+		}
+		
+		int copyIndex = 2;
+		
+		// Well, we gotta find a unique name at some point.
+		while (copyIndex < 500) {
+			file = FileUtils.getFile(path, context.getString(R.string.copied_file_name_2, copyIndex, fileName));
+			
+			if (!file.exists()) {
+				// Nope - we can take that.
+				return file;
+			}
+
+			copyIndex++;
+		}
+	
+		// I GIVE UP.
+		return null;
+	}
+	
+	private void copy(File oldFile, File newFile) {
+		int toast = 0;
+		
+		try {
+			FileInputStream input = new FileInputStream(oldFile);
+			FileOutputStream output = new FileOutputStream(newFile);
+		
+			byte[] buffer = new byte[COPY_BUFFER_SIZE];
+			
+			while (true) {
+				int bytes = input.read(buffer);
+				
+				if (bytes <= 0) {
+					break;
+				}
+				
+				output.write(buffer, 0, bytes);
+			}
+			
+			output.close();
+			input.close();
+			
+			toast = R.string.file_copied;
+			refreshList();
+			
+		} catch (Exception e) {
+			toast = R.string.error_copying_file;
+		}
+		Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
+	}
+	
 	private void sendFile(File file) {
 
 		String filename = file.getName();
@@ -1157,7 +1259,22 @@ public class FileManagerActivity extends ListActivity {
 				
 			}
 			break;
-		}
+
+		case REQUEST_CODE_COPY:
+			if (resultCode == RESULT_OK && data != null) {
+				// obtain the filename
+				File copyfrom = mContextFile;
+				File copyto = FileUtils.getFile(data.getData());
+				if (copyto != null) {
+					copyto = createUniqueCopyName(this, copyto, copyfrom.getName());
+					
+					if (copyto != null) {
+						copy(copyfrom, copyto);
+					}
+				}				
+			}
+			break;
+}
 	}
 	
 }
