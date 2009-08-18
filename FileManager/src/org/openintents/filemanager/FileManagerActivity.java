@@ -119,7 +119,7 @@ public class FileManagerActivity extends ListActivity {
 	private static final String BUNDLE_STEPS_BACK = "steps_back";
 	
 	/** Contains directories and files together */
-     private List<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
+     private ArrayList<IconifiedText> directoryEntries = new ArrayList<IconifiedText>();
 
      /** Dir separate for sorting */
      List<IconifiedText> mListDir = new ArrayList<IconifiedText>();
@@ -187,7 +187,10 @@ public class FileManagerActivity extends ListActivity {
 
 		  getListView().setOnCreateContextMenuListener(this);
 		  getListView().setEmptyView(findViewById(R.id.empty));
-  		
+	      getListView().setTextFilterEnabled(true);
+	      getListView().requestFocus();
+	      getListView().requestFocusFromTouch();
+	      
           mDirectoryButtons = (LinearLayout) findViewById(R.id.directory_buttons);
           mEditFilename = (EditText) findViewById(R.id.filename);
           
@@ -338,13 +341,16 @@ public class FileManagerActivity extends ListActivity {
     	 mListDir = contents.listDir;
     	 mListFile = contents.listFile;
     	 
+    	 directoryEntries.ensureCapacity(mListSdCard.size() + mListDir.size() + mListFile.size());
+    	 
          addAllElements(directoryEntries, mListSdCard);
          addAllElements(directoryEntries, mListDir);
          addAllElements(directoryEntries, mListFile);
           
          IconifiedTextListAdapter itla = new IconifiedTextListAdapter(this); 
-         itla.setListItems(directoryEntries);          
+         itla.setListItems(directoryEntries, getListView().hasTextFilter());          
          setListAdapter(itla); 
+	     getListView().setTextFilterEnabled(true);
 
          selectInList(mPreviousDirectory);
          refreshDirectoryPanel();
@@ -356,7 +362,7 @@ public class FileManagerActivity extends ListActivity {
     	 mThumbnailLoader = new ThumbnailLoader(currentDirectory, mListFile, currentHandler);
     	 mThumbnailLoader.start();
      }
-     
+
      private void onCreateDirectoryInput() {
     	 mDirectoryInput = (LinearLayout) findViewById(R.id.directory_input);
          mEditDirectory = (EditText) findViewById(R.id.directory_text);
