@@ -761,9 +761,16 @@ public class FileManagerActivity extends ListActivity {
      @Override 
      protected void onListItemClick(ListView l, View v, int position, long id) { 
           super.onListItemClick(l, v, position, id); 
+          
+          IconifiedTextListAdapter adapter = (IconifiedTextListAdapter) getListAdapter();
+          
+          if (adapter == null) {
+        	  return;
+          }
+          
+          IconifiedText text = (IconifiedText) adapter.getItem(position);
 
-          String selectedFileString = directoryEntries.get(position) 
-                    .getText(); 
+          String file = text.getText(); 
           /*
           if (selectedFileString.equals(getString(R.string.up_one_level))) { 
                upOneLevel(); 
@@ -771,8 +778,6 @@ public class FileManagerActivity extends ListActivity {
           */
         	  String curdir = currentDirectory 
               .getAbsolutePath() ;
-        	  String file = directoryEntries.get(position) 
-              .getText();
         	  File clickedFile = FileUtils.getFile(curdir, file);
                if (clickedFile != null) {
             	   if (clickedFile.isDirectory()) {
