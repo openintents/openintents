@@ -878,7 +878,13 @@ public class FileManagerActivity extends ListActivity {
 			return;
 		}
 */
-		IconifiedText it = directoryEntries.get(info.position);
+        IconifiedTextListAdapter adapter = (IconifiedTextListAdapter) getListAdapter();
+        
+        if (adapter == null) {
+      	  return;
+        }
+        
+        IconifiedText it = (IconifiedText) adapter.getItem(info.position);
 		menu.setHeaderTitle(it.getText());
 		menu.setHeaderIcon(it.getIcon());
 		File file = FileUtils.getFile(currentDirectory, it.getText());
@@ -920,7 +926,13 @@ public class FileManagerActivity extends ListActivity {
 				.getMenuInfo();
 		
 		// Remember current selection
-		IconifiedText ic = directoryEntries.get(menuInfo.position);
+        IconifiedTextListAdapter adapter = (IconifiedTextListAdapter) getListAdapter();
+        
+        if (adapter == null) {
+      	  return false;
+        }
+        
+        IconifiedText ic = (IconifiedText) adapter.getItem(menuInfo.position);
 		mContextText = ic.getText();
 		mContextIcon = ic.getIcon();
 		mContextFile = FileUtils.getFile(currentDirectory, ic.getText());
