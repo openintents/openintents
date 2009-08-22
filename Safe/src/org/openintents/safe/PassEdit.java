@@ -27,6 +27,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
@@ -58,25 +59,25 @@ public class PassEdit extends Activity {
 
 	public static final int RESULT_DELETED = RESULT_FIRST_USER;
 
-    private Intent restartTimerIntent;
-
 	private EditText descriptionText;
 	private EditText passwordText;
 	private EditText usernameText;
 	private EditText websiteText;
 	private EditText noteText;
 	private Long RowId;
+	private Long CategoryId;
 	private boolean pass_gen_ret = false;
 	private boolean discardEntry = false;
 	public static boolean entryEdited = false;
 	boolean populated = false;
+
 	Intent frontdoor;
+    private Intent restartTimerIntent=null;
 
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
             	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
-            	 frontdoor.setAction(Intent.ACTION_MAIN);
             	 startActivity(frontdoor);
             }
         }
@@ -88,11 +89,9 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"onCreate()");
 		
 		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if (CategoryList.isSignedIn()==false) {
 			startActivity(frontdoor);
-			// normally we'd do a finish() here, but
-			// by starting frontdoor from here the user could
-			// potentially find this activity and continue editing
     	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
@@ -116,6 +115,13 @@ public class PassEdit extends Activity {
 			Bundle extras = getIntent().getExtras();
 			RowId = extras != null ? extras.getLong(PassList.KEY_ID) : null;
 		}
+		CategoryId = icicle != null ? icicle.getLong(PassList.KEY_CATEGORY_ID) : null;
+		if (CategoryId == null) {
+			Bundle extras = getIntent().getExtras();
+			CategoryId = extras != null ? extras.getLong(PassList.KEY_CATEGORY_ID) : null;
+		}
+		if (debug) Log.d(TAG,"RowId="+RowId);
+		if (debug) Log.d(TAG,"CategoryId="+CategoryId);
 
 		entryEdited = false;
 
@@ -160,6 +166,7 @@ public class PassEdit extends Activity {
 		} else {
 			outState.putLong(PassList.KEY_ID, -1);
 		}
+		outState.putLong(PassList.KEY_CATEGORY_ID, CategoryId);
 	}
 
 	@Override
@@ -167,6 +174,11 @@ public class PassEdit extends Activity {
 		super.onPause();
 		if (isFinishing() && discardEntry==false) {
 			savePassword();
+		}
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 	}
 
@@ -178,16 +190,19 @@ public class PassEdit extends Activity {
 
 		if (CategoryList.isSignedIn()==false) {
 			saveState();
-			finish();
+			startActivity(frontdoor);
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
+
 		populateFields();
 	}
 
 	private void saveState() {
 		PassEntry entry = new PassEntry();
 
-		entry.category = PassList.getCategoryId();
+		entry.category = CategoryId;
 		entry.plainDescription = descriptionText.getText().toString();
 		entry.plainWebsite = websiteText.getText().toString();
 		entry.plainUsername = usernameText.getText().toString();
@@ -338,11 +353,13 @@ public class PassEdit extends Activity {
 		}
 		if ((RowId != null) && (RowId != -1)) {
 			PassEntry passEntry = Passwords.getPassEntry(RowId, true, false);
-			descriptionText.setText(passEntry.plainDescription);
-			websiteText.setText(passEntry.plainWebsite);
-			usernameText.setText(passEntry.plainUsername);
-			passwordText.setText(passEntry.plainPassword);
-			noteText.setText(passEntry.plainNote);
+			if (passEntry!=null) {
+				descriptionText.setText(passEntry.plainDescription);
+				websiteText.setText(passEntry.plainWebsite);
+				usernameText.setText(passEntry.plainUsername);
+				passwordText.setText(passEntry.plainPassword);
+				noteText.setText(passEntry.plainNote);
+			}
 		}
 		populated=true;
 	}
@@ -368,4 +385,17 @@ public class PassEdit extends Activity {
 			}
 		}  
 	}  
+
+	@Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
+	}
 }

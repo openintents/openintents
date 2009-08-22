@@ -18,7 +18,14 @@ package org.openintents.safe;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import org.openintents.intents.CryptoIntents;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,15 +44,29 @@ public class Help extends Activity {
 	
     // Menu Item order
     public static final int CLOSE_HELP_INDEX = Menu.FIRST;
+
+    Intent frontdoor;
+    private Intent restartTimerIntent=null;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
     
     @Override
     public void onCreate(Bundle icicle) {
     	super.onCreate(icicle);
 
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if (CategoryList.isSignedIn()==false) {
-			finish();
-			return;
-		}
+			startActivity(frontdoor);
+    	}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		//Setup layout
 		setContentView(R.layout.help);
@@ -86,6 +107,16 @@ public class Help extends Activity {
 
     }
 
+    @Override
+	protected void onPause() {
+		super.onPause();
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
+	}
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -93,9 +124,11 @@ public class Help extends Activity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (CategoryList.isSignedIn()==false) {
-			finish();
+			startActivity(frontdoor);
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
 	}
 
     @Override
@@ -116,4 +149,17 @@ public class Help extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
     }
+
+    @Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
+	}
 }

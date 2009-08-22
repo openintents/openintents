@@ -18,12 +18,17 @@ package org.openintents.safe;
 
 import java.util.ArrayList;
 
+import org.openintents.intents.CryptoIntents;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -34,6 +39,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,14 +72,29 @@ public class PassView extends Activity {
 	private Long CategoryId;
 	public static boolean entryEdited=false;
 
+	Intent frontdoor;
+    private Intent restartTimerIntent=null;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
+
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		if (debug) Log.d(TAG,"onCreate()");
+		
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if (CategoryList.isSignedIn()==false) {
-			finish();
-			return;
+			startActivity(frontdoor);
     	}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		String title = getResources().getString(R.string.app_name) + " - "
 				+ getResources().getString(R.string.view_entry);
@@ -151,6 +173,20 @@ public class PassView extends Activity {
 	@Override
 	protected void onPause() {
 		super.onPause();
+
+		if (debug) Log.d(TAG,"onResume()");
+
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
+		// hide the window from view
+		Window w=getWindow();
+		WindowManager.LayoutParams attrs=w.getAttributes();
+		attrs.alpha=0;
+		w.setAttributes(attrs);
+//		w.setLayout(0, 0);
 	}
 
 	@Override
@@ -160,9 +196,17 @@ public class PassView extends Activity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (CategoryList.isSignedIn()==false) {
-			finish();
+			startActivity(frontdoor);
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
+        // show the window
+		Window w=getWindow();
+		WindowManager.LayoutParams attrs=w.getAttributes();
+		attrs.alpha=1;
+		w.setAttributes(attrs);
+//		w.setLayout(getWallpaperDesiredMinimumWidth(), getWallpaperDesiredMinimumWidth());
 	}
 
 	@Override
@@ -270,6 +314,10 @@ public class PassView extends Activity {
 		if (debug) Log.d(TAG,"populateFields()");
 		if (RowId != null) {
 			PassEntry row = Passwords.getPassEntry(RowId, true, false);
+			if (row==null) {
+				if (debug) Log.d(TAG,"populateFields: row=null");
+				return;
+			}
     		ArrayList<String> packageAccess = Passwords.getPackageAccess(RowId);
 			descriptionText.setText(row.plainDescription);
 			websiteText.setText(row.plainWebsite);
@@ -306,6 +354,19 @@ public class PassView extends Activity {
 				packageAccessText.setText(getString(R.string.package_access)+
 						": "+packages);
 			}
+		}
+	}
+
+	@Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}
 	}
 }

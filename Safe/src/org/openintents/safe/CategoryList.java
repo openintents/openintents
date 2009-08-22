@@ -77,13 +77,14 @@ public class CategoryList extends ListActivity {
     public static final int ADD_CATEGORY_INDEX = Menu.FIRST + 3;
     public static final int DEL_CATEGORY_INDEX = Menu.FIRST + 4;
     public static final int HELP_INDEX = Menu.FIRST + 5;
-    public static final int EXPORT_INDEX = Menu.FIRST + 6;
-    public static final int IMPORT_INDEX = Menu.FIRST + 7;
-    public static final int CHANGE_PASS_INDEX = Menu.FIRST + 8;
-    public static final int BACKUP_INDEX = Menu.FIRST + 9;
-    public static final int RESTORE_INDEX = Menu.FIRST + 10;
-    public static final int PREFERENCES_INDEX = Menu.FIRST + 11;
-    public static final int ABOUT_INDEX = Menu.FIRST + 12;
+    public static final int SEARCH_INDEX = Menu.FIRST + 6;
+    public static final int EXPORT_INDEX = Menu.FIRST + 7;
+    public static final int IMPORT_INDEX = Menu.FIRST + 8;
+    public static final int CHANGE_PASS_INDEX = Menu.FIRST + 9;
+    public static final int BACKUP_INDEX = Menu.FIRST + 10;
+    public static final int RESTORE_INDEX = Menu.FIRST + 11;
+    public static final int PREFERENCES_INDEX = Menu.FIRST + 12;
+    public static final int ABOUT_INDEX = Menu.FIRST + 13;
     
     public static final int REQUEST_ONCREATE = 0;
     public static final int REQUEST_EDIT_CATEGORY = 1;
@@ -119,7 +120,7 @@ public class CategoryList extends ListActivity {
     private static String masterKey;			
 
     private List<CategoryEntry> rows;
-    private Intent restartTimerIntent;
+    private Intent restartTimerIntent=null;
     private int lastPosition=0;
     
     private boolean lockOnScreenLock=true;
@@ -201,8 +202,8 @@ public class CategoryList extends ListActivity {
 		
 		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
+			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 			startActivity(frontdoor);		
-			finish();
 			return;
     	}
 		
@@ -246,10 +247,12 @@ public class CategoryList extends ListActivity {
 
 		if (isSignedIn()==false) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
-			startActivity(frontdoor);		
-			finish();
+			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+			startActivity(frontdoor);
 			return;
     	}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
 
         showFirstTimeWarningDialog();
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -292,6 +295,11 @@ public class CategoryList extends ListActivity {
 			try { backupThread.join(maxWaitToDie); } 
 			catch(InterruptedException e){} //  ignore 
 		}
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
     }
 
     @Override
@@ -299,18 +307,18 @@ public class CategoryList extends ListActivity {
 		super.onStop();
 
 		if (debug) Log.d(TAG,"onStop()");
-//		dbHelper.close();
     }
     
     @Override
     public void onDestroy() {
 		super.onDestroy();
 		
-		if (mIntentReceiver!=null) {
-			unregisterReceiver(mIntentReceiver);
-			mIntentReceiver=null;
-		}
 		if (debug) Log.d(TAG,"onDestroy()");
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View view,
@@ -429,6 +437,9 @@ public class CategoryList extends ListActivity {
 			.setIcon(android.R.drawable.ic_menu_add)
 			.setShortcut('2', 'a');
 
+		menu.add(0, SEARCH_INDEX, 0, R.string.search)
+		.setIcon(android.R.drawable.ic_menu_search);
+
 		menu.add(0, DEL_CATEGORY_INDEX, 0, R.string.password_delete)  
 			.setIcon(android.R.drawable.ic_menu_delete)
 			.setShortcut('3', 'd')
@@ -538,6 +549,10 @@ public class CategoryList extends ListActivity {
 		    Intent help = new Intent(this, Help.class);
 		    startActivity(help);
 			break;
+		case SEARCH_INDEX:
+		    Intent search = new Intent(this, Search.class);
+		    startActivity(search);
+			break;
 		case EXPORT_INDEX:
 			Dialog exportDialog = new AlertDialog.Builder(CategoryList.this)
 			.setIcon(R.drawable.passicon)
@@ -602,9 +617,8 @@ public class CategoryList extends ListActivity {
 	    stopService(serviceIntent);
 		masterKey=null;
 	    Intent frontdoor = new Intent(this, FrontDoor.class);
-	    frontdoor.setAction(Intent.ACTION_MAIN);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 	    startActivity(frontdoor);
-	    finish();
     }
     
 	/**
@@ -969,6 +983,21 @@ public class CategoryList extends ListActivity {
 		} catch (IOException e) {
 			e.printStackTrace();
 			importMessage=getString(R.string.import_file_error);
+		}
+	}
+
+	@Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			Intent frontdoor = new Intent(this, FrontDoor.class);
+			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}
 	}
 }

@@ -29,8 +29,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -79,8 +82,10 @@ public class PassList extends ListActivity {
     public static final String KEY_ID = "id";  // Intent keys
     public static final String KEY_CATEGORY_ID = "categoryId";  // Intent keys
 
-    private static Long CategoryId=null;
-    private Intent restartTimerIntent;
+    private Long CategoryId=null;
+
+    Intent frontdoor;
+    private Intent restartTimerIntent=null;
 
     private static String salt;
     private static String masterKey;
@@ -112,6 +117,15 @@ public class PassList extends ListActivity {
 		}
 	}; 
 
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
+
     /** 
      * Called when the activity is first created. 
      */
@@ -120,8 +134,10 @@ public class PassList extends ListActivity {
 		super.onCreate(icicle);
 		
 		if (debug) Log.d(TAG,"onCreate()");
+		
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if (CategoryList.isSignedIn()==false) {
-			finish();
 			return;
     	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
@@ -177,6 +193,11 @@ public class PassList extends ListActivity {
 			try { fillerThread.join(maxWaitToDie); } 
 			catch(InterruptedException e){} //  ignore 
 		}
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
     }
 
     @Override
@@ -186,9 +207,11 @@ public class PassList extends ListActivity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (CategoryList.isSignedIn()==false) {
-			finish();
+			startActivity(frontdoor);
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
     }
     
     @Override
@@ -320,12 +343,10 @@ public class PassList extends ListActivity {
 		return masterKey;
     }
 
-    static long getCategoryId() {
-    	return CategoryId;
-    }
-
     private void addPassword() {
 		Intent i = new Intent(this, PassEdit.class);
+		i.putExtra(PassList.KEY_ID, (long)-1);
+		i.putExtra(PassList.KEY_CATEGORY_ID, CategoryId);
 	    startActivityForResult(i,REQUEST_ADD_PASSWORD);
     }
 	/**
@@ -462,4 +483,17 @@ public class PassList extends ListActivity {
     		fillData();
     	}
     }
+
+    @Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
+	}
 }

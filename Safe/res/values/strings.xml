@@ -208,6 +208,9 @@
 	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu > backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
 	<string name="switch_mode">Switch mode</string>
 	<string name="decrypt_progress">Decrypting...</string>
+	<string name="search">Search</string>
+	<string name="search_progress">Searching...</string>
+	<string name="search_hint">Type search criteria</string>
 	
 	
 	<!-- ***************************
@@ -255,6 +258,8 @@ Current version: %s
     <string-array name="pref_entries_lock_timeout">
         <item>1 minute</item>
         <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
         <item>30 minutes</item>  
     </string-array>
 

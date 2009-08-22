@@ -19,9 +19,16 @@ package org.openintents.safe;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
+import org.openintents.intents.CryptoIntents;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.ClipboardManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -40,7 +47,10 @@ import android.view.View.OnFocusChangeListener;
  * @author Steven Osborn - http://steven.bitsetters.com
  */
 public class PassGen extends Activity {
-	
+
+	private static boolean debug = false;
+	private static String TAG = "PassGen";
+
 	public static final int CHANGE_ENTRY_RESULT = 2;
 	public static final String NEW_PASS_KEY="new_pass";
 	
@@ -55,6 +65,18 @@ public class PassGen extends Activity {
 	Button copy_clip;
 	Button copy_entry;
 	Button cancel;
+
+	Intent frontdoor;
+    private Intent restartTimerIntent=null;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
 
 	private final OnClickListener update_click = new OnClickListener() {
 		public void onClick(View v) {
@@ -106,10 +128,12 @@ public class PassGen extends Activity {
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if (CategoryList.isSignedIn()==false) {
-			finish();
-			return;
-		}
+			startActivity(frontdoor);
+    	}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		setContentView(R.layout.pass_gen);
 		
@@ -192,6 +216,12 @@ public class PassGen extends Activity {
     @Override
     protected void onPause() {
 		super.onPause();
+
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
     }
 
     @Override
@@ -199,9 +229,11 @@ public class PassGen extends Activity {
 		super.onResume();
 
 		if (CategoryList.isSignedIn()==false) {
-			finish();
+			startActivity(frontdoor);
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
     }
 
     @Override
@@ -210,4 +242,16 @@ public class PassGen extends Activity {
 		return false;
     }
 
+    @Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
+	}
 }

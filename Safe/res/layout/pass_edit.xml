@@ -49,11 +49,12 @@
 				    android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:singleLine="true" 
+					android:inputType="textUri"
 					android:layout_weight="1"/>
 				<Button android:id="@+id/go" 
-	  					android:text="@string/go"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
+	  				android:text="@string/go"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 				/>
 			</TableRow>
 			<TableRow>
@@ -74,6 +75,7 @@
 					android:text="@string/password" />
 				<EditText android:id="@+id/password"
 				 	android:singleLine="true"
+					android:inputType="textVisiblePassword"
 				  	android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:layout_weight="1"/>
@@ -87,6 +89,7 @@
 		android:gravity="top" 
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
+		android:inputType="textShortMessage"
 		android:scrollbars="vertical" />
 	
 </LinearLayout>

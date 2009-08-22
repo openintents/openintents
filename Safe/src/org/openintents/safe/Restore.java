@@ -24,6 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.openintents.intents.CryptoIntents;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -31,8 +32,11 @@ import org.xml.sax.XMLReader;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -58,6 +62,18 @@ public class Restore extends Activity {
 
     public static final String KEY_FIRST_TIME = "first_time";  // Intent keys
 
+	Intent frontdoor;
+    private Intent restartTimerIntent=null;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
+
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -70,12 +86,13 @@ public class Restore extends Activity {
 		    firstTime = extras != null ? extras.getBoolean(Restore.KEY_FIRST_TIME) : false;
 		}
 
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		if ((!firstTime) && (CategoryList.isSignedIn()==false)) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
-			finish();
 			return;
 		}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		setContentView(R.layout.restore);
 		String title = getResources().getString(R.string.app_name) + " - " +
@@ -122,6 +139,17 @@ public class Restore extends Activity {
 		});
     }
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
+	}
+
     @Override
 	protected void onResume() {
 		super.onResume();
@@ -129,11 +157,11 @@ public class Restore extends Activity {
 		if (debug) Log.d(TAG,"onResume()");
 		
 		if ((!firstTime) && (CategoryList.isSignedIn()==false)) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
-			finish();
 			return;
 		}
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
 	}
 
     private boolean backupFileExists(String filename) {
@@ -331,5 +359,18 @@ public class Restore extends Activity {
 
 		setResult(RESULT_OK);
 		finish();
+	}
+
+	@Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
 	}
 }

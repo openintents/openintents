@@ -87,7 +87,7 @@ public class IntentHandler extends Activity {
 		switch (requestCode) {
 		case REQUEST_CODE_ASK_PASSWORD:
 			if (resultCode == RESULT_OK) {
-
+				if (debug) Log.d(TAG,"RESULT_OK");
 				if (service == null) {
 					mServiceIntent = data;
 					// setServiceParametersFromExtrasAndDispatchAction() is called in onServiceConnected.
@@ -96,7 +96,9 @@ public class IntentHandler extends Activity {
 				
 				setServiceParametersFromExtrasAndDispatchAction(data);
 				
-			} else { // resultCode == RESULT_CANCELED
+			} else { // resultCode == RESULT_CANCELED, which means the user hit Back at AskPassword
+				if (debug) Log.d(TAG,"RESULT_CANCELED");
+				moveTaskToBack(true);
 				setResult(RESULT_CANCELED);
 				finish();
 			}
@@ -208,6 +210,9 @@ public class IntentHandler extends Activity {
         	Intent i = new Intent(getApplicationContext(),
         			CategoryList.class);
         	startActivity(i);
+        } else if (action.equals(CryptoIntents.ACTION_AUTOLOCK)) {
+        	if (debug) Log.d(TAG,"autolock");
+        	finish();
         } else if (externalAccess){
 
         	// which action?
@@ -525,6 +530,11 @@ public class IntentHandler extends Activity {
 						final Intent thisIntent = getIntent();
 						String inputBody = thisIntent.getStringExtra (CryptoIntents.EXTRA_TEXT);
 	
+						String action=thisIntent.getAction();
+						if (action!=null && action.equals(CryptoIntents.ACTION_AUTOLOCK)) {
+							if (debug) Log.d(TAG,"autolock");
+							askPassIsLocal=true;
+						}
 						askPass.putExtra (CryptoIntents.EXTRA_TEXT, inputBody);
 						askPass.putExtra (AskPassword.EXTRA_IS_LOCAL, askPassIsLocal);
 						//TODO: Is there a way to make sure all the extras are set?	

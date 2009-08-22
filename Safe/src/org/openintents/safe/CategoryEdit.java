@@ -16,8 +16,13 @@
  */
 package org.openintents.safe;
 
+import org.openintents.intents.CryptoIntents;
+
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -38,10 +43,29 @@ public class CategoryEdit extends Activity {
     private EditText nameText;
     private Long RowId;
 
+    Intent frontdoor;
+    private Intent restartTimerIntent=null;
+
+    BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
+            	 if (debug) Log.d(TAG,"caught ACTION_CRYPTO_LOGGED_OUT");
+            	 startActivity(frontdoor);
+            }
+        }
+    };
+
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		if (debug) Log.d(TAG, "onCreate");
 		
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+    	}
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
 		String title = getResources().getString(R.string.app_name) + " - " +
 		getResources().getString(R.string.edit_entry);
 		setTitle(title);
@@ -91,6 +115,12 @@ public class CategoryEdit extends Activity {
     protected void onPause() {
 		super.onPause();
 		if (debug) Log.d(TAG, "onPause");
+		
+		try {
+			unregisterReceiver(mIntentReceiver);
+		} catch (IllegalArgumentException e) {
+			if (debug) Log.d(TAG,"IllegalArgumentException");
+		}
     }
 
     @Override
@@ -100,10 +130,11 @@ public class CategoryEdit extends Activity {
 		if (!CategoryList.isSignedIn()) {
 			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
-			finish();
 			return;
 		}
 		populateFields();
+        IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
+        registerReceiver(mIntentReceiver, filter);
     }
 
     private void saveState() {
@@ -136,4 +167,17 @@ public class CategoryEdit extends Activity {
 		    nameText.setText(catEntry.plainName);
 		}
     }
+
+    @Override
+	public void onUserInteraction() {
+		super.onUserInteraction();
+
+		if (debug) Log.d(TAG,"onUserInteraction()");
+
+		if (CategoryList.isSignedIn()==false) {
+			startActivity(frontdoor);
+		}else{
+			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
+		}
+	}
 }

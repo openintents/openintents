@@ -101,6 +101,14 @@ public class CryptoIntents {
 	public static final String ACTION_CRYPTO_LOGGED_OUT = "org.openintents.action.CRYPTO_LOGGED_OUT";
 	
 	/**
+	 * Activity Action: Initiate automatic locking of the safe.
+	 * This is used internally from any activity to launch the lock screen.
+	 * 
+	 * <p>Constant Value: "org.openintents.action.AUTOLOCK"</p>
+	 */
+	public static final String ACTION_AUTOLOCK = "org.openintents.action.AUTOLOCK";
+
+	/**
 	 * The text to encrypt or decrypt, or the location for the return result.
 	 * 
 	 * <p>Constant Value: "org.openintents.extra.TEXT"</p>

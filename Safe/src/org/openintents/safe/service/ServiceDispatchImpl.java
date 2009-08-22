@@ -36,7 +36,7 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
-	private static boolean debug = false;
+	private static boolean debug = true;
 	private static String TAG = "ServiceDispatchIMPL";
 	public static CryptoHelper ch;  // TODO Peli: Could clean this up by moving it into a singleton? Or at least a separate static class?
 	private String salt;
@@ -83,21 +83,22 @@ public class ServiceDispatchImpl extends Service {
     @Override
     public void onDestroy() {
 	  super.onDestroy();
+
+	  if (debug) Log.d( TAG,"onDestroy" );
 	  masterKey = null;
 	  ch = null;
 	  unregisterReceiver(mIntentReceiver);
 	  ServiceNotification.clearNotification(ServiceDispatchImpl.this);
 	  
+	  CategoryList.setSignedOut();
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 	  sendBroadcast(intent);
-	  CategoryList.setSignedOut();
 	  
-	  if (debug) Log.d( TAG,"onDestroy" );
     }
     
     private void startTimer () {
 		if (debug) Log.d(TAG,"startTimer with timeoutUntilStop="+timeoutUntilStop);
-    	t = new CountDownTimer(timeoutUntilStop, timeoutUntilStop) {
+    	t = new CountDownTimer(timeoutUntilStop, 10000) {
     		public void onTick(long millisUntilFinished) {
     			//doing nothing.
     			  if (debug) Log.d(TAG, "tick: " + millisUntilFinished );
