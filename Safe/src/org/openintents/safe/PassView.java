@@ -50,7 +50,7 @@ import android.widget.Toast;
  * 
  * @author Randy McEoin
  */
-public class PassView extends Activity {
+public class PassView extends Activity implements View.OnClickListener {
 
 	private static boolean debug = false;
 	private static String TAG = "PassView";
@@ -130,15 +130,14 @@ public class PassView extends Activity {
 
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
+				String link = websiteText.getText().toString();
+				if (link == null || link.equals("") || link.equals("http://")) {
+					return;
+				}
 
-				Toast.makeText(PassView.this, R.string.copy_to_clipboard,
-						Toast.LENGTH_SHORT).show();
-
-				ClipboardManager cb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-				cb.setText(passwordText.getText().toString());
+				clipboard(getString(R.string.password), passwordText.getText().toString());
 
 				Intent i = new Intent(Intent.ACTION_VIEW);
-				String link = websiteText.getText().toString();
 				Uri u = Uri.parse(link);
 				i.setData(u);
 				try {
@@ -322,7 +321,9 @@ public class PassView extends Activity {
 			descriptionText.setText(row.plainDescription);
 			websiteText.setText(row.plainWebsite);
 			usernameText.setText(row.plainUsername);
+			usernameText.setOnClickListener(this);
 			passwordText.setText(row.plainPassword);
+			passwordText.setOnClickListener(this);
 			noteText.setText(row.plainNote);
 			String lastEdited;
 			if (row.lastEdited!=null) {
@@ -357,6 +358,35 @@ public class PassView extends Activity {
 		}
 	}
 
+	/**
+	 * 
+	 * @author Billy Cui
+	 */
+	public void onClick(View view) {
+		if (view == usernameText) {
+			if (debug) Log.d(TAG, "click " + usernameText.getText());
+			clipboard(getString(R.string.username),usernameText.getText().toString());
+		} else if (view == passwordText) {
+			if (debug) Log.d(TAG, "click " + passwordText.getText());
+			clipboard(getString(R.string.password),passwordText.getText().toString());
+		}
+	}
+
+	/**
+	 * Copy to clipboard and toast to let user know that we have done so.
+	 * 
+	 * @author Billy Cui
+	 * @param fieldName Name of the field copied from
+	 * @param value String to copy to clipboard
+	 */
+	private void clipboard(String fieldName, String value) {
+		Toast.makeText(PassView.this, fieldName+" "+getString(R.string.copied_to_clipboard),
+				Toast.LENGTH_SHORT).show();
+
+		ClipboardManager cb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+		cb.setText(value);
+	}
+
 	@Override
 	public void onUserInteraction() {
 		super.onUserInteraction();
@@ -364,7 +394,7 @@ public class PassView extends Activity {
 		if (debug) Log.d(TAG,"onUserInteraction()");
 
 		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
+//			startActivity(frontdoor);
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}

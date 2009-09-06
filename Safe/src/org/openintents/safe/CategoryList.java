@@ -993,9 +993,9 @@ public class CategoryList extends ListActivity {
 		if (debug) Log.d(TAG,"onUserInteraction()");
 
 		if (CategoryList.isSignedIn()==false) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
-			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-			startActivity(frontdoor);
+//			Intent frontdoor = new Intent(this, FrontDoor.class);
+//			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+//			startActivity(frontdoor);
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}

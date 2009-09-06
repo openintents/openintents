@@ -249,7 +249,7 @@ public class PassGen extends Activity {
 		if (debug) Log.d(TAG,"onUserInteraction()");
 
 		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
+//			startActivity(frontdoor);
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}

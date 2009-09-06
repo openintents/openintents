@@ -35,7 +35,7 @@ import android.util.Log;
 public class FrontDoor extends Activity {
 
     private static final String TAG = "FrontDoor";
-	private static final boolean debug = false;
+	private static final boolean debug = true;
 
 //	public static final String KEY_AUTOLOCK = "autolock";
 	

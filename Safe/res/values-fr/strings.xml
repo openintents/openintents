@@ -129,7 +129,8 @@
     <string name="dialog_restore_database_msg">Êtes-vous sûr de vouloir remplacer les données actuelles?</string>
     <string name="restore_found">Trouvé %s mots de passe à partir de la sauvegarde du %s.</string>
     <string name="restore_complete">Complet. Mots de passe restaurés: %s</string>
-    <string name="copy_to_clipboard">Copier le mot de passe dans le Presse-papiers</string>
+    <!--  needs to be re-translated -->
+    <string name="copied_to_clipboard">Copier le mot de passe dans le Presse-papiers</string>
     <string name="invalid_website">Site invalide</string>
     
     <!-- Menu label to open a category -->

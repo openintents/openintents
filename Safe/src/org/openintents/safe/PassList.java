@@ -60,7 +60,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug = false;
+	private static final boolean debug = true;
     private static final String TAG = "PassList";
 
     // Menu Item order
@@ -198,6 +198,7 @@ public class PassList extends ListActivity {
 		} catch (IllegalArgumentException e) {
 			if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
+		removeDialog(DECRYPT_PROGRESS_KEY);
     }
 
     @Override
@@ -491,7 +492,7 @@ public class PassList extends ListActivity {
 		if (debug) Log.d(TAG,"onUserInteraction()");
 
 		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
+//			startActivity(frontdoor);
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}

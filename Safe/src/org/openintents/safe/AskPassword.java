@@ -53,7 +53,7 @@ import android.widget.Toast;
  */
 public class AskPassword extends Activity {
 
-	private boolean debug = false;
+	private boolean debug = true;
 	private static String TAG = "AskPassword";
 	public static String EXTRA_IS_LOCAL = "org.openintents.safe.bundle.EXTRA_IS_REMOTE";
 
@@ -293,6 +293,16 @@ public class AskPassword extends Activity {
 		super.onPause();
 
 		if (debug) Log.d(TAG, "onResume()");
+		if (CategoryList.isSignedIn()==true) {
+			if (debug) Log.d(TAG,"already signed in");
+			Intent callbackIntent = new Intent();
+			callbackIntent.putExtra("salt", CategoryList.getSalt());
+			callbackIntent.putExtra("masterKey", CategoryList.getMasterKey());
+			setResult(RESULT_OK, callbackIntent);
+			finish();
+			return;
+		}
+
 		if (dbHelper == null) {
 			dbHelper = new DBHelper(this);
 		}

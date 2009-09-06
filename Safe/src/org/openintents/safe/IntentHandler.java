@@ -49,7 +49,7 @@ import android.widget.Toast;
  */
 public class IntentHandler extends Activity {
 
-	private static final boolean debug = false;
+	private static final boolean debug = true;
 	private static String TAG = "IntentHandler";
 	
 	private static final int REQUEST_CODE_ASK_PASSWORD = 1;
@@ -65,18 +65,17 @@ public class IntentHandler extends Activity {
 	private Intent mServiceIntent;
 
     SharedPreferences mPreferences;
-	//public static String SERVICE_NAME = "org.openintents.safe.service.ServiceDispatchImpl";
 	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
+		if (debug) Log.d(TAG, "onCreate()");
+		
 		mServiceIntent = null;
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		Passwords.Initialize(this);
-
-		// The service is launched in onResume()
 	}
 
 	
@@ -518,6 +517,13 @@ public class IntentHandler extends Activity {
 			}
 			
 			try {
+				final Intent thisIntent = getIntent();
+				String action=thisIntent.getAction();
+				if (action!=null && action.equals(CryptoIntents.ACTION_AUTOLOCK)) {
+					if (debug) Log.d(TAG,"autolock");
+					askPassIsLocal=true;
+				}
+
 				if (service.getPassword() == null) {
 					boolean promptforpassword = getIntent().getBooleanExtra(CryptoIntents.EXTRA_PROMPT, true);
 					if (debug) Log.d(TAG, "Prompt for password: " + promptforpassword);
@@ -527,14 +533,8 @@ public class IntentHandler extends Activity {
 						Intent askPass = new Intent(getApplicationContext(),
 								AskPassword.class);
 	
-						final Intent thisIntent = getIntent();
 						String inputBody = thisIntent.getStringExtra (CryptoIntents.EXTRA_TEXT);
 	
-						String action=thisIntent.getAction();
-						if (action!=null && action.equals(CryptoIntents.ACTION_AUTOLOCK)) {
-							if (debug) Log.d(TAG,"autolock");
-							askPassIsLocal=true;
-						}
 						askPass.putExtra (CryptoIntents.EXTRA_TEXT, inputBody);
 						askPass.putExtra (AskPassword.EXTRA_IS_LOCAL, askPassIsLocal);
 						//TODO: Is there a way to make sure all the extras are set?	

@@ -129,7 +129,7 @@
     <string name="dialog_restore_database_msg">Sind Sie sicher, dass Sie die bestehenden Einträge ersetzen wollen?</string>
     <string name="restore_found">%s Passwörter im Backup gefunden vom %s.</string>
     <string name="restore_complete">Fertig. Passwörter wiederhergestellt: %s</string>
-    <string name="copy_to_clipboard">Password wurde in Zwischenablage kopiert</string>
+    <string name="copied_to_clipboard">wurde in Zwischenablage kopiert</string>
     <string name="invalid_website">Ungültige Webseite</string>
     
     <!-- Menu label to open a category -->

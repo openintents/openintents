@@ -128,7 +128,7 @@ public class PassEdit extends Activity {
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 
-				Toast.makeText(PassEdit.this, R.string.copy_to_clipboard,
+				Toast.makeText(PassEdit.this, getString(R.string.password)+" "+getString(R.string.copied_to_clipboard),
 						Toast.LENGTH_SHORT).show();
 
 				ClipboardManager cb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
@@ -384,8 +384,8 @@ public class PassEdit extends Activity {
 				populated=true;
 			}
 		}  
-	}  
-
+	}
+	
 	@Override
 	public void onUserInteraction() {
 		super.onUserInteraction();
@@ -393,7 +393,7 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"onUserInteraction()");
 
 		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
+//			startActivity(frontdoor);
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}
