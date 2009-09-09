@@ -46,6 +46,7 @@ public class ServiceDispatchImpl extends Service {
 	private long timeoutUntilStop = timeoutMinutes * 60000;
 	private BroadcastReceiver mIntentReceiver;
     private boolean lockOnScreenLock=true;
+    public static long timeRemaining=0;
     
     @Override
     public IBinder onBind(Intent intent) {
@@ -85,35 +86,44 @@ public class ServiceDispatchImpl extends Service {
 	  super.onDestroy();
 
 	  if (debug) Log.d( TAG,"onDestroy" );
+	  unregisterReceiver(mIntentReceiver);
+	  if (masterKey!=null) {
+		  lockOut();
+	  }
+    }
+
+    private void lockOut() {
 	  masterKey = null;
 	  ch = null;
-	  unregisterReceiver(mIntentReceiver);
 	  ServiceNotification.clearNotification(ServiceDispatchImpl.this);
 	  
 	  CategoryList.setSignedOut();
 	  Intent intent = new Intent(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
 	  sendBroadcast(intent);
-	  
     }
-    
+
     private void startTimer () {
 		if (debug) Log.d(TAG,"startTimer with timeoutUntilStop="+timeoutUntilStop);
     	t = new CountDownTimer(timeoutUntilStop, 10000) {
     		public void onTick(long millisUntilFinished) {
     			//doing nothing.
     			  if (debug) Log.d(TAG, "tick: " + millisUntilFinished );
+    			  timeRemaining=millisUntilFinished;
     		}
 
     		public void onFinish() {
     			if (debug) Log.d(TAG,"onFinish()");
+    			lockOut();
     			stopSelf(); // countdown is over, stop the service.
+    			timeRemaining=0;
     		}
     	};
     	t.start();
+    	timeRemaining=timeoutUntilStop;
 		if (debug) Log.d(TAG, "Timer started with: " + timeoutUntilStop );
     }
 	
-	public void restartTimer () {
+	private void restartTimer () {
     	// must be started with startTimer first.
 		if (debug) Log.d(TAG,"timer restarted");
     	if (t != null) {
