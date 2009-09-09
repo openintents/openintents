@@ -293,7 +293,7 @@ public class PassList extends ListActivity {
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 
     	if (menu == null) {
         	return super.onMenuOpened(featureId, menu);
@@ -424,7 +424,7 @@ public class PassList extends ListActivity {
     }
     
     public boolean onOptionsItemSelected(MenuItem item) {
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
 		if (info==null) {

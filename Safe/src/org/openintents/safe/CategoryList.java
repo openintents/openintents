@@ -502,7 +502,7 @@ public class CategoryList extends ListActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		int position=-1;
@@ -657,7 +657,7 @@ public class CategoryList extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		launchPassList(rows.get(position).id);
     }
 
@@ -688,7 +688,7 @@ public class CategoryList extends ListActivity {
     }
     
 	public boolean exportDatabase(){
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		String filename=EXPORT_FILENAME;
 		try {
 			CSVWriter writer = new CSVWriter(new FileWriter(filename), ',');
@@ -819,7 +819,7 @@ public class CategoryList extends ListActivity {
 	 * into the database.
 	 */
 	private void importDatabaseFromCSV(String filename){
-		sendBroadcast (restartTimerIntent);
+		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		try {
 			importMessage="";
 			importedEntries=0;
