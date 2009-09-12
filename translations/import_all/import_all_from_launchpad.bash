@@ -15,9 +15,9 @@ cd ../../Countdown/translations
 androidxml2po.bash -i
 cd ../../translations/import_all
 
-echo "Translating ShoppingList"
-cp translations_filemanager/* ../../ShoppingList/translations
-cd ../../ShoppingList/translations
+echo "Translating FileManager"
+cp translations_filemanager/* ../../FileManager/translations
+cd ../../FileManager/translations
 androidxml2po.bash -i
 cd ../../translations/import_all
 
