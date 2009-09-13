@@ -27,6 +27,7 @@
 
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   pjv https://launchpad.net/~pjv</string>
 	
     <!-- Strings for OI About -->
@@ -37,6 +38,7 @@
 	     Applicatio-specific strings
 	     *************************** -->
 
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
 	<string name="app_name">OI Notitieblok</string>
 	
     <string name="menu_delete">Verwijderen</string>
@@ -56,6 +58,9 @@
 	<string name="title_edit_title">Notitietitel:</string>  
     <string name="title_create_file">%s (nieuwe notitie)</string>
     <string name="title_edit_file">%s (bewerken van notitie)</string>
+    
+    <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -91,12 +96,28 @@
     <string name="error_reading_file">Fout bij het lezen van het bestand</string>
     <string name="file_not_found">Bestand niet gevonden</string>
     <string name="note_saved">Notitie opgeslagen</string>
+    <string name="warning_file_exists_title">File exists already</string>
+    <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
+    
+    <!-- Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes. -->
+    <string name="menu_import">Import</string>
+    <string name="menu_save">Opslaan</string>
+    <string name="menu_save_as">Save as</string>
+    <string name="warning_unsaved_changes_title">Text modified</string>
+    <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
+    <string name="button_save">Opslaan</string>
+    <string name="button_dont_save">"Don't save"</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Notitielijst</string>
     <string name="preference_sortorder_title">Sorteervolgorde van lijst</string>
     <string name="preference_sortorder_dialog_title">Sorteervolgorde van lijst</string>
     <string name="preference_sortorder_summary">De volgorde waarin notities in de notitielijst worden getoond</string>
+    
+    <string name="note_editor_preferences">Note Editor</string>
+    <string name="preference_autolink_title">Auto-create Links</string>
+    <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
+    <string name="preference_autolink_summary_off">Do not create links on notes</string>
 
 	<string name="settings">Voorkeuren</string>
 	<string name="settings_sortorder">Sorteervolgorde</string>

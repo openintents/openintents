@@ -21,7 +21,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  maimuzo https://launchpad.net/~maimuzo;</string>
+  maimuzo https://launchpad.net/~maimuzo</string>
 	
     <string name="about_comments">OI File Managerは他のアプリとシームレスに協力するみんなのためのファイルマネージャーです。</string>  
 	<string name="about_website_label">OpenIntentsのOI File Manager</string> 
@@ -37,6 +37,7 @@
     <string name="menu_send">送信</string>
     <string name="menu_open">開く</string>
     <string name="menu_move">移動</string>
+    <string name="menu_copy">Copy</string>
     
     <string name="create_new_folder">新規フォルダーを作成</string>
     <string name="folder_name">フォルダー名</string>
@@ -49,8 +50,14 @@
     <string name="folder_renamed">フォルダー名を変更しました。</string>
     <string name="file_moved">ファイルを移動しました。</string>
     <string name="folder_moved">フォルダーを移動しました。</string>
+    <string name="file_copied">File copied.</string>
     <string name="move_title">移動するフォルダーを選択してください</string>
     <string name="move_button">ここに移動</string>
+    <string name="copy_title">Select folder to copy to</string>
+    <string name="copy_button">Copy here</string>
+    
+    <string name="copied_file_name">Copy of %s</string>
+    <string name="copied_file_name_2">Copy %d of %s</string>
     
     <string name="error_creating_new_folder">新規フォルダーを作成できませんでした。</string>
     <string name="error_deleting_file">ファイルを削除できませんでした。</string>
@@ -59,6 +66,7 @@
     <string name="error_renaming_folder">フォルダ名を変更できませんでした。</string>
     <string name="error_moving_file">ファイルを移動できませんでした。</string>
     <string name="error_moving_folder">フォルダーを移動できませんでした。</string>
+    <string name="error_copying_file">Could not copy file.</string>
     <string name="error_file_does_not_exists">ファイルが存在しません。</string>
     
     <string name="send_not_available">利用できる送信用アプリがありません。</string>

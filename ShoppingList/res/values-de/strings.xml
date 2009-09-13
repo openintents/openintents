@@ -30,7 +30,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<string name="app_name">OI Einkaufsliste auf OpenIntents</string>
+	<string name="app_name">OI Einkaufsliste</string>
 
 	<!-- Shopping Provider -->
 	<string name="new_item">Neuer Posten</string>
@@ -50,11 +50,13 @@
 	<string name="confirm_delete_list">Wollen Sie diese Liste wirklich löschen?</string>
 	<string name="no_shopping_provider">Fehler bei Zugriff auf die Einkaufsliste.</string>
 	<string name="pick_item">Posten auswählen</string>
+	<string name="pick_list">Pick a list</string>
 	<string name="theme">Design</string>
 	<string name="theme_settings">Design Einstellungen</string>
 	<string name="rename_list">Liste umbenennen</string>
 	<string name="menu_mark_item">Posten markieren</string>
 	<string name="menu_edit_item">Posten bearbeiten</string>
+	<string name="menu_auto_add">Auto add</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -93,6 +95,9 @@
 
 	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Liste für Verknüpfung auswählen</string>
+	
+	<!-- Shown if external application wants to insert new items. -->
+	<string name="pick_list_to_insert_items">Pick list to insert items</string>
 	
 	<!-- Theme related -->
 	<string name="theme_pick">Design wählen</string>
@@ -222,4 +227,21 @@
         <item>Per Wort</item>
     </string-array>
 
+
+	<!-- ***************************
+	     Automation
+	     *************************** -->
+	<!-- Label above spinner for all actions (automation tasks) that can be performed. -->
+	<string name="label_select_action">Select action:</string>
+	
+	<!-- Label above button that opens a list of all shopping lists to choose from. -->
+	<string name="label_select_list">Select list:</string>
+	
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to clean up a list. -->
+    	<item>Liste aufräumen</item>
+    </string-array>
+    
 </resources>

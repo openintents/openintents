@@ -21,8 +21,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz;
-  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz
+  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz</string>
 	
     <string name="about_comments">OI File Manager est un gestionnaire de fichiers qui interagit avec les autres applications.</string>  
 	<string name="about_website_label">OI File Manager chez OpenIntents</string> 
@@ -38,6 +38,7 @@
     <string name="menu_send">Envoyer</string>
     <string name="menu_open">Ouvrir</string>
     <string name="menu_move">Déplacer</string>
+    <string name="menu_copy">Copy</string>
     
     <string name="create_new_folder">Créer un nouveau dossier</string>
     <string name="folder_name">Nom du dossier</string>
@@ -50,8 +51,14 @@
     <string name="folder_renamed">Dossier renommé.</string>
     <string name="file_moved">Fichier déplacé.</string>
     <string name="folder_moved">Dossier déplacé.</string>
+    <string name="file_copied">File copied.</string>
     <string name="move_title">Sélectionner un dossier vers lequel déplacer</string>
     <string name="move_button">Déplacer ici</string>
+    <string name="copy_title">Select folder to copy to</string>
+    <string name="copy_button">Copy here</string>
+    
+    <string name="copied_file_name">Copy of %s</string>
+    <string name="copied_file_name_2">Copy %d of %s</string>
     
     <string name="error_creating_new_folder">Impossible de créer le nouveau dossier.</string>
     <string name="error_deleting_file">Impossible de supprimer le fichier.</string>
@@ -60,6 +67,7 @@
     <string name="error_renaming_folder">Impossible de renommer le dossier.</string>
     <string name="error_moving_file">Impossible de déplacer le fichier.</string>
     <string name="error_moving_folder">Impossible de déplacer le dossier.</string>
+    <string name="error_copying_file">Could not copy file.</string>
     <string name="error_file_does_not_exists">Le fichier n'existe pas.</string>
     
     <string name="send_not_available">Pas d'application disponible pour l'envoi</string>
@@ -79,7 +87,7 @@
 	<string name="update_box_text">Veuillez vérifier manuellement les mises à jour ou installer OI Update pour les notifications automatique. Version actuelle: %s</string>
 	<string name="update_check_now">Vérifier maintenant.</string>
 	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Application téléchargée non disponible</string>
 	<string name="update">Vérifier les mises à jour</string>
 	
     <!-- About -->

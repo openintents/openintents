@@ -20,31 +20,30 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">Launchpad Contributions:
-  Anousak https://launchpad.net/~anousak</string>
+	<string name="about_translators">translator-credits</string>
 	
     <string name="about_comments">OI File Manager is an open file manager that seamlessly cooperates with other applications.</string>  
-	<string name="about_website_label">OI ແຟ້ມ ບໍລີຫານຂອງ OpenIntents</string> 
+	<string name="about_website_label">OI File Manager at OpenIntents</string> 
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI ແຟ້ມ ບໍລີຫານ</string>
+    <string name="app_name">OI File Manager</string>
     
     <string name="menu_new_folder">New Folder</string>
-    <string name="menu_delete">ລຶບ</string>
-    <string name="menu_rename">ປ່ຽນຊື່</string>
-    <string name="menu_send">ສົ່ງ</string>
-    <string name="menu_open">ເປີດ</string>
-    <string name="menu_move">ຍ້າຍ</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_rename">Rename</string>
+    <string name="menu_send">Send</string>
+    <string name="menu_open">Open</string>
+    <string name="menu_move">Move</string>
     <string name="menu_copy">Copy</string>
     
-    <string name="create_new_folder">ສ້າງໂຟເດີໃຫມ່</string>
-    <string name="folder_name">ຊື່ໂຟເດີ</string>
-    <string name="file_name">ຊື່ໂຟເດີ</string>
-    <string name="this_folder_is_empty">ໂຟເດີນີ້ແມ່ນວ່າງ</string>
+    <string name="create_new_folder">Create new folder</string>
+    <string name="folder_name">Folder name</string>
+    <string name="file_name">Folder name</string>
+    <string name="this_folder_is_empty">This folder is empty.</string>
     <string name="really_delete">Do you really want to delete %s?</string>
-    <string name="file_deleted">ແຟ້ມລຶບແລ້ວ</string>
+    <string name="file_deleted">File deleted.</string>
     <string name="folder_deleted">Folder deleted.</string>
     <string name="file_renamed">File renamed.</string>
     <string name="folder_renamed">Folder renamed.</string>

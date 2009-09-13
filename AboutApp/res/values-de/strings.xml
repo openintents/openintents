@@ -28,7 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101;</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Informationen über diverse Anwendungen</string>

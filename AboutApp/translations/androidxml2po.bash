@@ -4,8 +4,8 @@
 #Copyright 2009 by pjv. Licensed under GPLv3.
 
 #Set the languages here (long version is the android resource append string).
-short_lang=("de" "es" "fr" "ja" "lo" "nl") #do not include template language ("en" usually).
-long_lang=("de" "es" "fr" "ja" "lo" "nl" ) #do not include template language ("en" usually).
+short_lang=("de" "es" "fr" "ja" "lo" "nl" "pt") #do not include template language ("en" usually).
+long_lang=("de" "es" "fr" "ja" "lo" "nl" "pt") #do not include template language ("en" usually).
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
 launchpad_pot_file_dir="."

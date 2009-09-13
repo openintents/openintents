@@ -6,7 +6,7 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Anousak https://launchpad.net/~anousak</string>
+  Abdessamad Derraz https://launchpad.net/~derraz</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
@@ -18,31 +18,31 @@
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->
-    <string name="app_name">IO ໄລກັບ</string>
+    <string name="app_name">OI Countdown</string>
     
-    <string name="start">ເລີ້ມ</string>
-    <string name="stop">ຢຸດ</string>
-    <string name="modify">ແປງ</string>
-    <string name="cont">ຕໍ່ໄປ</string>
+    <string name="start">Démarrer</string>
+    <string name="stop">Arrêter</string>
+    <string name="modify">Modifier</string>
+    <string name="cont">Continuer</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="no_durations">Utilisez le menu pour ajouter de nouveaux compte à rebours.</string>
+	<string name="countdown_list">Liste de compte à rebours</string>
 	
-    <string name="menu_delete">ລຶບ</string>
-    <string name="menu_edit">ປັບ</string>
-    <string name="menu_insert">Add countdown</string>
-    <string name="menu_pick_ringtone">Ringtone</string>
+    <string name="menu_delete">Effacer</string>
+    <string name="menu_edit">Modifier</string>
+    <string name="menu_insert">Ajouter un compte à rebours</string>
+    <string name="menu_pick_ringtone">Sonnerie</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">Régler la date</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">Réglez la durée</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
     <string name="menu_set_action">Set action</string>
     
-    <string name="hint_title">e.g. pizza</string>
+    <string name="hint_title">par exemple pizza</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
     <string name="title_setcountdown">Set countdown</string>
@@ -57,10 +57,10 @@
     <string name="title_pick">Pick countdown</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">IO ໄລກັບ</string>
+    <string name="title_setcountdown_action">OI Countdown</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
-	<string name="error_title">Error</string>
+	<string name="error_title">Erreur</string>
 	
 	<!-- Message to display when an internal error occurs. This should practially never happen. -->
 	<string name="error_message">Error loading countdown</string>
@@ -92,19 +92,19 @@
 	<string name="select_countdown">Select countdown: %s</string>
 	
 	<!-- Button to test an action. -->
-	<string name="test">Test</string>
+	<string name="test">Tester</string>
 	
 	<!-- Button to view / edit settings. -->
 	<string name="settings">Settings</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
-	<string name="dismiss">Dismiss</string>
+	<string name="dismiss">Abandonner</string>
 	
 	<!-- For the countdown display. '%s' is the number of days remaining (more than 1). -->
-	<string name="days">days</string>
+	<string name="days">jours</string>
 	
 	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
-	<string name="day">day</string>
+	<string name="day">jour</string>
 	
 	<!--  -->
 	
@@ -131,21 +131,18 @@
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Countdown EULA</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
+	<string name="eula_accept">Accepter</string>
+	<string name="eula_refuse">Quitter</string>
 	
 	<!-- Update -->
-    <string name="menu_update">Check updates</string>
-	<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
+    <string name="menu_update">Vérifier les mises à jour</string>
+	<string name="update_box_text">Veuillez vérifier manuellement les mises à jour ou installer OI Update pour les notifications automatique. Version actuelle: %s</string>
+	<string name="update_check_now">Vérifier maintenant.</string>
+	<string name="update_get_updater">Obtenir OI Updater.</string>
+	<string name="update_error">Télécharger l'application indisponible.</string>
 	
     <!-- About -->
-    <string name="about">About</string>
+    <string name="about">À propos</string>
 	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
     <string name="aboutapp_get">Get OI About</string>
     

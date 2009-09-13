@@ -28,10 +28,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz
+  Yakari https://launchpad.net/~yakari</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">Un standalone à propos d'une boîte de dialogue qui est partagé entre les applications.</string>
+	<string name="about_comments">Une boîte de dialogue "À propos" indépendante partagée entre applications.</string>
 	
 	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">OI About chez OpenIntents</string>
@@ -48,13 +49,13 @@
     <!-- About some application, where '%s' is the name of another application. -->
     <string name="about_activity_name_extended">À propos de %s</string>
     
-	<string name="l_authors">Ecrit par</string>
+	<string name="l_authors">Écrit par</string>
 	<string name="l_documenters">Documentées par</string>
 	<string name="l_translators">Traduit par</string>
-	<string name="l_artists">Artwork par</string>
+	<string name="l_artists">Graphisme par</string>
 	<string name="l_credits">Crédits</string>
 	<string name="l_license">Licence</string>
-	<string name="l_info">Infos Générales</string>
+	<string name="l_info">Informations générales</string>
 	
 	<string name="no_information_available">Aucune information disponible.</string>
 </resources>

@@ -37,6 +37,7 @@
 	     Applicatio-specific strings
 	     *************************** -->
 
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
 	<string name="app_name">OI Notizblock</string>
 	
     <string name="menu_delete">Löschen</string>
@@ -56,6 +57,9 @@
 	<string name="title_edit_title">Titel der Notiz:</string>  
     <string name="title_create_file">%s (neue Notiz)</string>
     <string name="title_edit_file">%s (Notiz bearbeiten)</string>
+    
+    <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -91,12 +95,28 @@
     <string name="error_reading_file">Fehler beim Lesen der Datei</string>
     <string name="file_not_found">File nicht gefunden</string>
     <string name="note_saved">Notiz gespeichert</string>
+    <string name="warning_file_exists_title">File exists already</string>
+    <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
+    
+    <!-- Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes. -->
+    <string name="menu_import">Import</string>
+    <string name="menu_save">Speichern</string>
+    <string name="menu_save_as">Save as</string>
+    <string name="warning_unsaved_changes_title">Text modified</string>
+    <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
+    <string name="button_save">Speichern</string>
+    <string name="button_dont_save">"Don't save"</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Liste von Notizen</string>
     <string name="preference_sortorder_title">Sortierung</string>
     <string name="preference_sortorder_dialog_title">Sortierung</string>
     <string name="preference_sortorder_summary">Bestimmt die Reihenfolge, in der Notizen angezeigt werden.</string>
+    
+    <string name="note_editor_preferences">Note Editor</string>
+    <string name="preference_autolink_title">Auto-create Links</string>
+    <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
+    <string name="preference_autolink_summary_off">Do not create links on notes</string>
 
 	<string name="settings">Einstellungen</string>
 	<string name="settings_sortorder">Sortierung</string>

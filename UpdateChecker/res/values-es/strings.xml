@@ -6,7 +6,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz</string>
+  Feder Sáiz https://launchpad.net/~federsaiz
+  miwie https://launchpad.net/~mw-miwie</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -23,16 +24,16 @@
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %s\nSD card %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Versión %s\nSD card %s\n\nOS\n%s</string>
     <string name="free_space">espacio libre: %s</string>
     <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
     
-    <string name="do_update">Perform update now!</string>
+    <string name="do_update">Haz actualización ahora!</string>
     <string name="do_update_market">¡Pruebe actualizar desde Market ahora!</string>
     <string name="do_update_andAppStore">¡Pruebe actualizar desde AndAppStore ahora!</string>
     <string name="remind_me_later">¡Recordarme más tarde!</string>
     <string name="ignore_this_update">Ignorar esta actualización</string>
-    <string name="ignore_all_further_updates">Ignore all further updates</string>
+    <string name="ignore_all_further_updates">Ignorar todas actualizaciones en el futuro</string>
     <string name="ok">De acuerdo</string>
     
     <string name="update_not_started">Update could not be started!\n\nPlease contact application developer!\n\n%s</string>
@@ -46,8 +47,8 @@
     <string name="checked_against_andappstore">AndAppStore comrobado</string>
     <string name="current_version">Versión actual: %s</string>
     <string name="current_version_code">Código de versión actual: %s</string>
-    <string name="newer_version">Newer version: %s</string>
-    <string name="newer_version_comment">Newer version: %s - %s</string>
+    <string name="newer_version">Versión nueva: %s</string>
+    <string name="newer_version_comment">Versión nueva: %s - %s</string>
     <string name="newer_version_available">Nueva versión disponible.</string>
     <string name="no_update_info_found">Información de actualización no encontrada</string>
     <string name="title_list_new_versions">OI Update - Lista de versiones nuevas</string>

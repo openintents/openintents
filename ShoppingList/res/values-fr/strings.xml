@@ -21,8 +21,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz;
-  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz;</string>
+  Abdessamad Derraz https://launchpad.net/~derraz
+  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OI Shopping list vous permet de suivre votre liste de course. Vous pouvez aussi l'utiliser pour d'autres types de listes, par exemple une liste de chose à faire ou une liste d'invités.</string>
@@ -51,11 +51,13 @@
 	<string name="confirm_delete_list">Voulez-vous vraiment supprimer cette liste?</string>
 	<string name="no_shopping_provider">Erreur lors de l'accès aux listes de courses</string>
 	<string name="pick_item">Cochez un élément</string>
+	<string name="pick_list">Pick a list</string>
 	<string name="theme">Thème</string>
 	<string name="theme_settings">Option du thème</string>
 	<string name="rename_list">Renommer la liste</string>
 	<string name="menu_mark_item">Cocher un élément</string>
 	<string name="menu_edit_item">Modifier l'élément</string>
+	<string name="menu_auto_add">Auto add</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -94,6 +96,9 @@
 
 	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Cocher une liste pour raccourcis</string>
+	
+	<!-- Shown if external application wants to insert new items. -->
+	<string name="pick_list_to_insert_items">Pick list to insert items</string>
 	
 	<!-- Theme related -->
 	<string name="theme_pick">Choisissez un thème</string>
@@ -223,4 +228,21 @@
         <item>Par mot</item>
     </string-array>
 
+
+	<!-- ***************************
+	     Automation
+	     *************************** -->
+	<!-- Label above spinner for all actions (automation tasks) that can be performed. -->
+	<string name="label_select_action">Select action:</string>
+	
+	<!-- Label above button that opens a list of all shopping lists to choose from. -->
+	<string name="label_select_list">Select list:</string>
+	
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to clean up a list. -->
+    	<item>Nettoyer la liste</item>
+    </string-array>
+    
 </resources>

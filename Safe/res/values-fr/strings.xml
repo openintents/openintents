@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2124 2009-05-31 20:57:02Z peli0101 $
+* $Id: strings.xml 2295 2009-09-06 08:38:06Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -66,7 +66,7 @@
 	<string name="cannot_decrypt_password">Impossible de déchiffrer un mot de passe</string>
 	<string name="error_export">Erreur d'exportation de la base de données</string>
 	<string name="export_database">Export de la base de données</string>
-	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
+	<string name="export_msg">Cela permettra l'exportation de la base de données de mot de passe à un fichier texte en clair. C'EST TRÈS DANGEREUX. Assurez-vous de supprimer le fichier une fois que vous l'avez fait. Êtes-vous sûr que de vouloir l'exporter?</string>
 	<string name="export_success">Exportation vers '%s' terminer. Attention! Le fichier n'est pas crypté.</string>
 	<string name="export_file_error">Impossible de créer le fichier d'exportation 'oisafe.csv' sur SDCARD. Vous pouvez essayer de débrancher le cable USB de l'ordinateur.</string>
 	<string name="import_database">Import de la bases de données</string>
@@ -118,10 +118,10 @@
     <string name="restore_set_password">S'il vous plaît fournissez le mot de passe utilisé par le fichier de sauvegarde. Votre mot de passe principal sera intégré à l'intérieur.</string>
     
     <!-- Toast message. '%s' contains a more detailed error message. -->
-    <string name="restore_unable_to_open">Unable to open file: %s</string>
+    <string name="restore_unable_to_open">Impossible d'ouvrir le fichier: %s</string>
     
     <!-- Toast message. '%s' contains the version number of the database. -->
-    <string name="restore_bad_version">Version not supported: %s</string>
+    <string name="restore_bad_version">Version non pris en charge: %s</string>
     
     <string name="restore_error">Erreur de restauration.</string>
     <string name="restore_decrypt_error">Mauvais mot de passe.</string>
@@ -129,8 +129,7 @@
     <string name="dialog_restore_database_msg">Êtes-vous sûr de vouloir remplacer les données actuelles?</string>
     <string name="restore_found">Trouvé %s mots de passe à partir de la sauvegarde du %s.</string>
     <string name="restore_complete">Complet. Mots de passe restaurés: %s</string>
-    <!--  needs to be re-translated -->
-    <string name="copied_to_clipboard">Copier le mot de passe dans le Presse-papiers</string>
+    <string name="copied_to_clipboard">copied to Clipboard</string>
     <string name="invalid_website">Site invalide</string>
     
     <!-- Menu label to open a category -->
@@ -145,7 +144,7 @@
 	<string name="move_select">Sélectionner la catégorie</string>
 	
 	<!-- Toast that password has been moved to another category -->
-	<string name="moved_to">Moved to %s</string>
+	<string name="moved_to">Déplacé vers %s</string>
 	
 	<string name="preferences">Paramètres</string>
 	<string name="pref_title_external_access">Autoriser l'accès externe</string>
@@ -158,9 +157,15 @@
 	<string name="pref_title_lock_timeout">Délai du verrouillage automatique</string>
 	
 	<!-- Preference summary for auto lock timeout -->
-	<string name="pref_summary_lock_timeout">Number of minutes before timeout occurs and safe is locked</string>
+	<string name="pref_summary_lock_timeout">Nombre de minutes avant que l'expiration du délai ne se produit et la que la sécurité soit verrouillé</string>
 	
 	<string name="pref_dialog_title_lock_timeout">Délai du verrouillage automatique</string>
+	
+	<!-- Preference title -->
+	<string name="pref_title_lock_on_screen_lock">Lock on screen lock</string>
+	
+	<!-- Preference summary for lock on screen lock -->
+	<string name="pref_summary_lock_on_screen_lock">Lock when the screen locks</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Clavier</string>
@@ -202,7 +207,10 @@
 	<string name="dialog_title_first_time_warning">Nouvelle clé maîtresse</string>
 	<string name="dialog_summary_first_time_warning">Une nouvelle clé principale aléatoire a été créé. Utilisez le menu &gt; de sauvegarde et stocker cette clé en lieu sûr. Sans cette clé, vous perdez vos données cryptées.</string>
 	<string name="switch_mode">Changer de mode</string>
-	<string name="decrypt_progress">Decrypting...</string>
+	<string name="decrypt_progress">Décryptage ...</string>
+	<string name="search">Search</string>
+	<string name="search_progress">Searching...</string>
+	<string name="search_hint">Type search criteria</string>
 	
 	
 	<!-- ***************************
@@ -237,7 +245,7 @@
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_service">Accès au mot de passe principal</string>
 	<string name="oi_safe_permission_service_descr">Permet à l'application d'accéder à la clé principale utilisée pour le chiffrement et le déchiffrement. Il ne devrait jamais être utilisée, sauf par OI Safe.</string>	
-	<string name="oi_safe_permission_intents">encrypt and decrypt data</string>
+	<string name="oi_safe_permission_intents">crypter et décrypter des données</string>
     <string name="oi_safe_permission_intents_descr">Permet à l'application de crypter et décrypter le texte, les mots de passe et les accès qu'ils ont stockées dans OI Safe.</string>	
 
 	<!-- ***************************
@@ -247,6 +255,8 @@
     <string-array name="pref_entries_lock_timeout">
         <item>1 minute</item>
         <item>5 minutes</item>
+        <item>10 minutes</item>
+        <item>15 minutes</item>
         <item>30 minutes</item>  
     </string-array>
 

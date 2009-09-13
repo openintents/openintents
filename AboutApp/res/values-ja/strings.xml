@@ -28,7 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  maimuzo https://launchpad.net/~maimuzo;</string>
+  maimuzo https://launchpad.net/~maimuzo</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">アプリ間で共有されるダイアログについての単体アプリ</string>
