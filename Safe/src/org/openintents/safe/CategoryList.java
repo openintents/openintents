@@ -55,6 +55,7 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -119,7 +120,7 @@ public class CategoryList extends ListActivity {
 	private static String salt;
     private static String masterKey;			
 
-    private List<CategoryEntry> rows;
+    private List<CategoryEntry> rows=null;
     private Intent restartTimerIntent=null;
     private int lastPosition=0;
     
@@ -231,7 +232,7 @@ public class CategoryList extends ListActivity {
         filter.addAction (CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
 
-		fillData();
+//		fillData();
 
 		final ListView list = getListView();
 		list.setFocusable(true);
@@ -257,6 +258,14 @@ public class CategoryList extends ListActivity {
         showFirstTimeWarningDialog();
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		lockOnScreenLock = sp.getBoolean(Preferences.PREFERENCE_LOCK_ON_SCREEN_LOCK, true);
+
+		ListAdapter la=getListAdapter();
+        if (la!=null) {
+        	if (debug) Log.d(TAG,"onResume: count="+la.getCount());
+        } else {
+        	if (debug) Log.d(TAG,"onResume: no list");
+        	fillData();
+        }
     }
 
 	/**
@@ -398,6 +407,7 @@ public class CategoryList extends ListActivity {
 		List<String> categoryNames=Passwords.getCategoryNames();
 		
 		rows=Passwords.getCategoryEntries();
+		if (debug) Log.d(TAG,"fillData: rows="+rows.size());
 		
 		ArrayAdapter<String> entries = 
 		    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,

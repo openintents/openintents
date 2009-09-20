@@ -37,6 +37,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class Search extends ListActivity {
 	
@@ -65,6 +66,10 @@ public class Search extends ListActivity {
     		switch (msg.what) {
     		case MSG_SEARCH_COMPLETE:
     			setListAdapter(entries);
+    			if ((entries!=null) && (entries.isEmpty())) {
+    				Toast.makeText(Search.this, R.string.search_nothing_found,
+   						Toast.LENGTH_LONG).show();
+    			}
     			break;
     		}
     		super.handleMessage(msg);
@@ -177,7 +182,7 @@ public class Search extends ListActivity {
 			ProgressDialog dialog = new ProgressDialog(this);
 			dialog.setMessage(getString(R.string.search_progress));
 			dialog.setIndeterminate(false);
-			dialog.setCancelable(false);
+			dialog.setCancelable(true);
 			return dialog;
 		}
 		}
@@ -190,6 +195,16 @@ public class Search extends ListActivity {
 	 * and permit the updating of the progress dialog.
 	 */
 	private void searchThreadStart(){
+		if (searchThread!=null) {
+			if (searchThread.isAlive()) {
+				// it's already searching
+			} else {
+				// just rerun
+				showDialog(SEARCH_PROGRESS_KEY);
+				searchThread.run();
+			}
+			return;
+		}
 		showDialog(SEARCH_PROGRESS_KEY);
 		searchThread = new Thread(new Runnable() {
 			public void run() {
@@ -203,7 +218,7 @@ public class Search extends ListActivity {
 
 				if (debug) Log.d(TAG,"thread end");
 				}
-			});
+			},"Search");
 		searchThread.start();
 	}
 
@@ -214,7 +229,6 @@ public class Search extends ListActivity {
 			// don't bother searching for nothing
 			return;
 		}
-
 		
 		List<CategoryEntry> categories=Passwords.getCategoryEntries();
 		for (CategoryEntry catRow : categories) {
@@ -260,7 +274,8 @@ public class Search extends ListActivity {
 	}
 	
 	private void updateListFromResults() {
-		if ((results==null) || (results.size()==0)) {
+		if (results==null) {
+//		if ((results==null) || (results.size()==0)) {
 			return;
 		}
 

@@ -45,6 +45,7 @@ import android.view.MenuItem;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -60,7 +61,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
     private static final String TAG = "PassList";
 
     // Menu Item order
@@ -92,7 +93,7 @@ public class PassList extends ListActivity {
     
 	private Thread fillerThread=null;
 
-    private List<PassEntry> rows;
+    private List<PassEntry> rows=null;
     private int lastPosition=0;
 	List<String> passDescriptions=new ArrayList<String>();
 
@@ -101,11 +102,11 @@ public class PassList extends ListActivity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 				case PassList.MSG_UPDATE_LIST:
-					ArrayAdapter<String> entries = 
-					    new ArrayAdapter<String>(PassList.this, android.R.layout.simple_list_item_1,
-					    		passDescriptions);
-					setListAdapter(entries);
-
+					fillerThread=null;
+			    	ArrayAdapter<String> entries = 
+			    		new ArrayAdapter<String>(PassList.this, android.R.layout.simple_list_item_1,
+			    				passDescriptions);
+			    	setListAdapter(entries);
 					if (debug) Log.d(TAG,"lastPosition="+lastPosition);
 					if (lastPosition>2) {
 						setSelection(lastPosition-1);
@@ -160,7 +161,7 @@ public class PassList extends ListActivity {
 			categoryName;
 		setTitle(title);
 
-		fillData();
+//		fillData();
 
 		final ListView list = getListView();
 		list.setFocusable(true);
@@ -213,6 +214,14 @@ public class PassList extends ListActivity {
 		}
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
+
+        ListAdapter la=getListAdapter();
+        if (la!=null) {
+        	if (debug) Log.d(TAG,"onResume: count="+la.getCount());
+        } else {
+        	if (debug) Log.d(TAG,"onResume: no list");
+        	fillData();
+        }
     }
     
     @Override
@@ -266,6 +275,15 @@ public class PassList extends ListActivity {
      * Populates the password ListView
      */
 	private void fillData() {
+		if (fillerThread!=null) {
+			if (fillerThread.isAlive()) {
+				// there's already a thread running
+			} else {
+				showDialog(DECRYPT_PROGRESS_KEY);
+				fillerThread.run();
+			}
+			return;
+		}
 		showDialog(DECRYPT_PROGRESS_KEY);
 
 		fillerThread = new Thread(new Runnable() {
@@ -287,7 +305,7 @@ public class PassList extends ListActivity {
 				mu.what = PassList.MSG_UPDATE_LIST;
 				PassList.this.myViewUpdateHandler.sendMessage(mu); 
 			}
-		});
+		},"PassList fillData");
 		fillerThread.start();
 	}
 

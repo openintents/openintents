@@ -211,6 +211,7 @@
 	<string name="search">Search</string>
 	<string name="search_progress">Searching...</string>
 	<string name="search_hint">Type search criteria</string>
+	<string name="search_nothing_found">Nothing found</string>
 	
 	
 	<!-- ***************************

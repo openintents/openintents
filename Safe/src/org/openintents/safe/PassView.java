@@ -52,7 +52,7 @@ import android.widget.Toast;
  */
 public class PassView extends Activity implements View.OnClickListener {
 
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "PassView";
 
 	public static final int EDIT_PASSWORD_INDEX = Menu.FIRST;
