@@ -303,6 +303,9 @@ public class Passwords {
 	
 	public static PassEntry getPassEntry(Long id, boolean decrypt, boolean descriptionOnly) {
 		if (debug) Log.d(TAG,"getPassEntry("+id+")");
+		if ((id==null) || (passEntries==null)) {
+			return null;
+		}
 		PassEntry passEntry=passEntries.get(id);
 		if (passEntry==null) {
 			return null;

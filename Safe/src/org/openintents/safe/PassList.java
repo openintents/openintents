@@ -290,10 +290,12 @@ public class PassList extends ListActivity {
 			public void run(){
 				rows=Passwords.getPassEntries(CategoryId, true, true);
 				passDescriptions.clear();
-				Iterator<PassEntry> passIter=rows.iterator();
-				while (passIter.hasNext()) {
-					PassEntry passEntry=passIter.next();
-					passDescriptions.add(passEntry.plainDescription);
+				if (rows!=null) {
+					Iterator<PassEntry> passIter=rows.iterator();
+					while (passIter.hasNext()) {
+						PassEntry passEntry=passIter.next();
+						passDescriptions.add(passEntry.plainDescription);
+					}
 				}
 //				dismissDialog(DECRYPT_PROGRESS_KEY);
 				// forced to removeDialog(), without it
