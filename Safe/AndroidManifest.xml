@@ -105,6 +105,9 @@
         </service>    
         
     	<provider android:name=".CryptoContentProvider" android:authorities="org.openintents.safe"></provider>
+        <provider android:name="org.openintents.safe.backup.MyBackupPro"  
+            android:authorities="org.openintents.safe.backup.MyBackupPro"
+        /> 
     </application> 
 
     <permission android:name="org.openintents.safe.ACCESS_INTENTS"
