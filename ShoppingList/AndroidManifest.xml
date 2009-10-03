@@ -58,6 +58,9 @@
 		<provider android:name=".ShoppingProvider"
 			android:icon="@drawable/icon_shoppinglist"
 			android:authorities="org.openintents.shopping" />
+        <provider android:name="org.openintents.shopping.backup.MyBackupPro"  
+            android:authorities="org.openintents.shopping.backup.MyBackupPro"
+        /> 
         <!-- Permissions not yet active! Activate permissions in one of the following releases.
         	(Give time to extensions to implement permissions.)
         	android:readPermission="org.openintents.shopping.READ_PERMISSION"
