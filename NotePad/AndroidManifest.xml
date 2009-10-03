@@ -69,6 +69,9 @@
         <provider android:name=".NotePadProvider" 
             android:authorities="org.openintents.notepad"
         />
+        <provider android:name="org.openintents.notepad.backup.MyBackupPro"  
+            android:authorities="org.openintents.notepad.backup.MyBackupPro"
+        /> 
         <!-- Permissions not yet active! Activate permissions in one of the following releases.
         	(Give time to extensions to implement permissions.)
         	android:readPermission="org.openintents.notepad.READ_PERMISSION"
