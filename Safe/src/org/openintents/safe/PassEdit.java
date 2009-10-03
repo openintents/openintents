@@ -59,12 +59,6 @@ public class PassEdit extends Activity {
 
 	public static final int RESULT_DELETED = RESULT_FIRST_USER;
 	
-    public static final String KEY_DESCRIPTION = "description";
-    public static final String KEY_WEBSITE = "website";
-    public static final String KEY_USERNAME = "username";
-    public static final String KEY_PASSWORD = "password";
-    public static final String KEY_NOTE = "note";
-
 	private EditText descriptionText;
 	private EditText passwordText;
 	private EditText usernameText;
@@ -130,18 +124,6 @@ public class PassEdit extends Activity {
 		noteText = (EditText) findViewById(R.id.note);
 		websiteText = (EditText) findViewById(R.id.website);
 
-		if (icicle!=null) {
-			String plainDescription = icicle.getString(PassEdit.KEY_DESCRIPTION);
-			if (plainDescription == null) {
-				descriptionText.setText(plainDescription);
-				populated=true;
-			}
-			String plainPassword = icicle.getString(PassEdit.KEY_PASSWORD);
-			String plainUsername = icicle.getString(PassEdit.KEY_USERNAME);
-			String plainNote = icicle.getString(PassEdit.KEY_NOTE);
-			String plainWebsite = icicle.getString(PassEdit.KEY_WEBSITE);
-		}
-
 		Button goButton = (Button) findViewById(R.id.go);
 
 		entryEdited = false;
@@ -182,30 +164,30 @@ public class PassEdit extends Activity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
+
+		if (debug) Log.d(TAG,"onSaveInstanceState()");
 		if (RowId != null) {
 			outState.putLong(PassList.KEY_ID, RowId);
 		} else {
 			outState.putLong(PassList.KEY_ID, -1);
 		}
 		outState.putLong(PassList.KEY_CATEGORY_ID, CategoryId);
+	}
 
-		String plainDescription = getTextFromField(descriptionText);
-		String plainWebsite = getTextFromField(websiteText);
-		String plainUsername = getTextFromField(usernameText);
-		String plainPassword = getTextFromField(passwordText);
-		String plainNote = getTextFromField(noteText);
+	@Override
+	protected void onRestoreInstanceState(Bundle inState) {
+		super.onRestoreInstanceState(inState);
 
-		outState.putString(PassEdit.KEY_DESCRIPTION, plainDescription);
-		outState.putString(PassEdit.KEY_WEBSITE, plainWebsite);
-		outState.putString(PassEdit.KEY_USERNAME, plainUsername);
-		outState.putString(PassEdit.KEY_PASSWORD, plainPassword);
-		outState.putString(PassEdit.KEY_NOTE, plainNote);
+		if (debug) Log.d(TAG,"onRestoreInstanceState("+inState+")");
+		// because the various EditText automatically handle state
+		// when we come back there is no need to re-populate
+		populated=true;
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		if (debug) Log.d(TAG,"onResume()");
+		if (debug) Log.d(TAG,"onPause()");
 
 		if (isFinishing() && discardEntry==false) {
 			savePassword();
