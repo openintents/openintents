@@ -130,14 +130,12 @@ public class PassGen extends Activity {
 		
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		setContentView(R.layout.pass_gen);
 		
-		String title = getResources().getString(R.string.app_name) + " - Generate Password";
+		String title = getString(R.string.app_name) + " - " +
+			getString(R.string.generate_password);
 		setTitle(title);
 		
 		pass_view = (EditText) findViewById(R.id.pass_view);

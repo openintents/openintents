@@ -39,8 +39,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +50,7 @@ import android.widget.Toast;
  */
 public class PassView extends Activity implements View.OnClickListener {
 
-	private static boolean debug = false;
+	private static boolean debug = true;
 	private static String TAG = "PassView";
 
 	public static final int EDIT_PASSWORD_INDEX = Menu.FIRST;
@@ -87,13 +85,10 @@ public class PassView extends Activity implements View.OnClickListener {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		if (debug) Log.d(TAG,"onCreate()");
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 		
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		String title = getResources().getString(R.string.app_name) + " - "
@@ -126,8 +121,12 @@ public class PassView extends Activity implements View.OnClickListener {
 			CategoryId = extras != null ? extras.getLong(PassList.KEY_CATEGORY_ID) : null;
 		}
 
-		populateFields();
-
+		if ((RowId==null) || (CategoryId==null) ||
+				(RowId<1) || (CategoryId<1)) {
+			// invalid Row or Category
+			finish();
+			return;
+		}
 		goButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				String link = websiteText.getText().toString();
@@ -178,14 +177,8 @@ public class PassView extends Activity implements View.OnClickListener {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
-		// hide the window from view
-		Window w=getWindow();
-		WindowManager.LayoutParams attrs=w.getAttributes();
-		attrs.alpha=0;
-		w.setAttributes(attrs);
-//		w.setLayout(0, 0);
 	}
 
 	@Override
@@ -200,12 +193,10 @@ public class PassView extends Activity implements View.OnClickListener {
 		}
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
-        // show the window
-		Window w=getWindow();
-		WindowManager.LayoutParams attrs=w.getAttributes();
-		attrs.alpha=1;
-		w.setAttributes(attrs);
-//		w.setLayout(getWallpaperDesiredMinimumWidth(), getWallpaperDesiredMinimumWidth());
+
+		Passwords.Initialize(this);
+
+        populateFields();
 	}
 
 	@Override

@@ -61,7 +61,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug = false;
+	private static final boolean debug = true;
     private static final String TAG = "PassList";
 
     // Menu Item order
@@ -134,34 +134,24 @@ public class PassList extends ListActivity {
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
-		if (debug) Log.d(TAG,"onCreate()");
-		
-		frontdoor = new Intent(this, FrontDoor.class);
-		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			return;
-    	}
-		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 
-		setContentView(R.layout.pass_list);
-		
 		CategoryId = icicle != null ? icicle.getLong(CategoryList.KEY_ID) : null;
 		if (CategoryId == null) {
 		    Bundle extras = getIntent().getExtras();            
 		    CategoryId = extras != null ? extras.getLong(CategoryList.KEY_ID) : null;
 		}
-		if (CategoryId<1) {
-			finish();	// no valid category less than one
+		if (debug) Log.d(TAG,"CategoryId="+CategoryId);
+		if ((CategoryId==null) || (CategoryId<1)) {
+			finish();	// no valid category
 			return;
 		}
-		
-		String categoryName=Passwords.getCategoryEntry(CategoryId).plainName;
-		String title = getResources().getString(R.string.app_name) + " - " +
-			getResources().getString(R.string.passwords) + " -" +
-			categoryName;
-		setTitle(title);
 
-//		fillData();
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
+		setContentView(R.layout.pass_list);
 
 		final ListView list = getListView();
 		list.setFocusable(true);
@@ -175,6 +165,7 @@ public class PassList extends ListActivity {
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		
+		if (debug) Log.d(TAG,"onSaveInstanceState(): CategoryId="+CategoryId);
 		// remember which Category we're looking at
 		if (CategoryId != null) {
 			outState.putLong(CategoryList.KEY_ID, CategoryId);
@@ -197,7 +188,7 @@ public class PassList extends ListActivity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 		removeDialog(DECRYPT_PROGRESS_KEY);
     }
@@ -214,6 +205,14 @@ public class PassList extends ListActivity {
 		}
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
+
+		Passwords.Initialize(this);
+
+		String categoryName=Passwords.getCategoryEntry(CategoryId).plainName;
+		String title = getResources().getString(R.string.app_name) + " - " +
+			getResources().getString(R.string.passwords) + " -" +
+			categoryName;
+		setTitle(title);
 
         ListAdapter la=getListAdapter();
         if (la!=null) {
@@ -288,6 +287,7 @@ public class PassList extends ListActivity {
 
 		fillerThread = new Thread(new Runnable() {
 			public void run(){
+				if (debug) Log.d(TAG,"CategoryId="+CategoryId);
 				rows=Passwords.getPassEntries(CategoryId, true, true);
 				passDescriptions.clear();
 				if (rows!=null) {

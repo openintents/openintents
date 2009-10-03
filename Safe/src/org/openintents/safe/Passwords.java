@@ -27,6 +27,7 @@ import java.util.Set;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Abstraction layer for storing encrypted and decrypted versions
@@ -39,7 +40,7 @@ import android.util.Log;
  */
 public class Passwords {
 
-	private static final boolean debug = false;
+	private static final boolean debug = true;
     private static final String TAG = "Passwords";
 
 	private static HashMap<Long, PassEntry> passEntries=null;
@@ -49,6 +50,8 @@ public class Passwords {
 	private static HashMap<Long, ArrayList<PackageAccessEntry>> packageAccessEntries=null;
 	
 	private static CryptoHelper ch=null;
+	private static boolean cryptoInitialized=false;
+	
 	private static DBHelper dbHelper=null;
 	
 	public static void Initialize(Context ctx) {
@@ -57,6 +60,21 @@ public class Passwords {
 		if (ch==null) {
 			ch = new CryptoHelper();
 		}
+		if ((cryptoInitialized==false) &&
+				(CategoryList.getSalt()!=null) &&
+				(CategoryList.getMasterKey()!=null))
+		{
+			try {
+				Passwords.InitCrypto(CryptoHelper.EncryptionMedium,
+						CategoryList.getSalt(), CategoryList.getMasterKey());
+				cryptoInitialized=true;
+			} catch (Exception e) {
+				e.printStackTrace();
+	            Toast.makeText(ctx, "CategoryList: " + ctx.getString(R.string.crypto_error),
+	                    Toast.LENGTH_SHORT).show();
+			}
+		}
+				
 		if (dbHelper==null) {
 			dbHelper = new DBHelper(ctx);
 		}
@@ -88,6 +106,7 @@ public class Passwords {
 	
 	public static void InitCrypto(int strength, String salt, String masterKey) 
 		throws Exception {
+		if (debug) Log.d(TAG,"InitCrypto("+strength+","+salt+","+masterKey);
 		try {
 			ch.init(strength,salt);
 			ch.setPassword(masterKey);
@@ -98,6 +117,9 @@ public class Passwords {
 		}
 	}
 
+	public static boolean isCryptoInitialized() {
+		return cryptoInitialized;
+	}
 	public static void deleteAll() {
 		dbHelper.deleteDatabase();
 		Reset();
@@ -256,6 +278,7 @@ public class Passwords {
 	}
 
 	public static List<PassEntry> getPassEntries(long categoryId, boolean decrypt, boolean descriptionOnly) {
+		if (debug) Log.d(TAG,"getPassEntries("+categoryId+","+decrypt+","+descriptionOnly+")");
 		Collection<PassEntry> passwords=passEntries.values();
 		List<PassEntry> passList=new ArrayList<PassEntry>();
 		Iterator<PassEntry> passIter=passwords.iterator();

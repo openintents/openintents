@@ -68,7 +68,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class CategoryList extends ListActivity {
 
-	private static boolean debug = false;
+	private static boolean debug = true;
     private static final String TAG = "CategoryList";
 
     // Menu Item order
@@ -197,25 +197,12 @@ public class CategoryList extends ListActivity {
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		if (debug) Log.d(TAG,"onCreate()");
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 		
-		if (isSignedIn()==false) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
-			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-			startActivity(frontdoor);		
-			return;
-    	}
-		
-		try {
-			Passwords.InitCrypto(CryptoHelper.EncryptionMedium, salt, masterKey);
-		} catch (Exception e) {
-			e.printStackTrace();
-            Toast.makeText(CategoryList.this, "CategoryList: " + getString(R.string.crypto_error),
-                    Toast.LENGTH_SHORT).show();
-		}
-		
+		Passwords.Initialize(this);
+
 		setContentView(R.layout.cat_list);
 		String title = getResources().getString(R.string.app_name) + " - " +
 			getResources().getString(R.string.categories);
@@ -231,8 +218,6 @@ public class CategoryList extends ListActivity {
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction (CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
-
-//		fillData();
 
 		final ListView list = getListView();
 		list.setFocusable(true);
@@ -258,6 +243,8 @@ public class CategoryList extends ListActivity {
         showFirstTimeWarningDialog();
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		lockOnScreenLock = sp.getBoolean(Preferences.PREFERENCE_LOCK_ON_SCREEN_LOCK, true);
+
+		Passwords.Initialize(this);
 
 		ListAdapter la=getListAdapter();
         if (la!=null) {
@@ -307,7 +294,7 @@ public class CategoryList extends ListActivity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
     }
 

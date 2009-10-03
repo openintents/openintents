@@ -47,7 +47,7 @@ import android.widget.Toast;
  */
 public class PassEdit extends Activity {
 
-	private static boolean debug = false;
+	private static boolean debug = true;
 	private static String TAG = "PassEdit";
 
 	public static final int REQUEST_GEN_PASS = 10;
@@ -58,6 +58,12 @@ public class PassEdit extends Activity {
 	public static final int GEN_PASSWORD_INDEX = Menu.FIRST + 3;
 
 	public static final int RESULT_DELETED = RESULT_FIRST_USER;
+	
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_WEBSITE = "website";
+    public static final String KEY_USERNAME = "username";
+    public static final String KEY_PASSWORD = "password";
+    public static final String KEY_NOTE = "note";
 
 	private EditText descriptionText;
 	private EditText passwordText;
@@ -86,29 +92,7 @@ public class PassEdit extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		if (debug) Log.d(TAG,"onCreate()");
-		
-		frontdoor = new Intent(this, FrontDoor.class);
-		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
-		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
-
-		String title = getResources().getString(R.string.app_name) + " - "
-				+ getResources().getString(R.string.edit_entry);
-		setTitle(title);
-
-
-		setContentView(R.layout.pass_edit);
-
-		descriptionText = (EditText) findViewById(R.id.description);
-		passwordText = (EditText) findViewById(R.id.password);
-		usernameText = (EditText) findViewById(R.id.username);
-		noteText = (EditText) findViewById(R.id.note);
-		websiteText = (EditText) findViewById(R.id.website);
-
-		Button goButton = (Button) findViewById(R.id.go);
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 
 		RowId = icicle != null ? icicle.getLong(PassList.KEY_ID) : null;
 		if (RowId == null) {
@@ -122,6 +106,43 @@ public class PassEdit extends Activity {
 		}
 		if (debug) Log.d(TAG,"RowId="+RowId);
 		if (debug) Log.d(TAG,"CategoryId="+CategoryId);
+
+		if ((RowId==null) || (CategoryId==null) ||
+				(RowId<1) || (CategoryId<1)) {
+			// invalid Row or Category
+			finish();
+			return;
+		}
+
+		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
+		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
+		String title = getResources().getString(R.string.app_name) + " - "
+				+ getResources().getString(R.string.edit_entry);
+		setTitle(title);
+
+		setContentView(R.layout.pass_edit);
+
+		descriptionText = (EditText) findViewById(R.id.description);
+		passwordText = (EditText) findViewById(R.id.password);
+		usernameText = (EditText) findViewById(R.id.username);
+		noteText = (EditText) findViewById(R.id.note);
+		websiteText = (EditText) findViewById(R.id.website);
+
+		if (icicle!=null) {
+			String plainDescription = icicle.getString(PassEdit.KEY_DESCRIPTION);
+			if (plainDescription == null) {
+				descriptionText.setText(plainDescription);
+				populated=true;
+			}
+			String plainPassword = icicle.getString(PassEdit.KEY_PASSWORD);
+			String plainUsername = icicle.getString(PassEdit.KEY_USERNAME);
+			String plainNote = icicle.getString(PassEdit.KEY_NOTE);
+			String plainWebsite = icicle.getString(PassEdit.KEY_WEBSITE);
+		}
+
+		Button goButton = (Button) findViewById(R.id.go);
 
 		entryEdited = false;
 
@@ -167,18 +188,32 @@ public class PassEdit extends Activity {
 			outState.putLong(PassList.KEY_ID, -1);
 		}
 		outState.putLong(PassList.KEY_CATEGORY_ID, CategoryId);
+
+		String plainDescription = getTextFromField(descriptionText);
+		String plainWebsite = getTextFromField(websiteText);
+		String plainUsername = getTextFromField(usernameText);
+		String plainPassword = getTextFromField(passwordText);
+		String plainNote = getTextFromField(noteText);
+
+		outState.putString(PassEdit.KEY_DESCRIPTION, plainDescription);
+		outState.putString(PassEdit.KEY_WEBSITE, plainWebsite);
+		outState.putString(PassEdit.KEY_USERNAME, plainUsername);
+		outState.putString(PassEdit.KEY_PASSWORD, plainPassword);
+		outState.putString(PassEdit.KEY_NOTE, plainNote);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
+		if (debug) Log.d(TAG,"onResume()");
+
 		if (isFinishing() && discardEntry==false) {
 			savePassword();
 		}
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 	}
 
@@ -189,12 +224,16 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (CategoryList.isSignedIn()==false) {
-			saveState();
+			if (Passwords.isCryptoInitialized()) {
+				saveState();
+			}
 			startActivity(frontdoor);
 			return;
 		}
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
+
+		Passwords.Initialize(this);
 
 		populateFields();
 	}
@@ -386,6 +425,19 @@ public class PassEdit extends Activity {
 		}  
 	}
 	
+	/**
+	 * Get the text from an EditText field.
+	 * 
+	 * @param e EditText to retrieve text from.
+	 * @return The field's text.  If e==null returns null.
+	 */
+	private String getTextFromField(EditText e) {
+		if (e==null) {
+			return null;
+		}
+		return e.getText().toString();
+	}
+
 	@Override
 	public void onUserInteraction() {
 		super.onUserInteraction();

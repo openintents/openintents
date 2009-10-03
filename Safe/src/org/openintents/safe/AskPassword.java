@@ -53,7 +53,7 @@ import android.widget.Toast;
  */
 public class AskPassword extends Activity {
 
-	private boolean debug = false;
+	private boolean debug = true;
 	private static String TAG = "AskPassword";
 	public static String EXTRA_IS_LOCAL = "org.openintents.safe.bundle.EXTRA_IS_REMOTE";
 
@@ -96,7 +96,7 @@ public class AskPassword extends Activity {
             return;
         }
 			
-		if (debug) Log.d(TAG, "onCreate()");
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 
 		dbHelper = new DBHelper(this);
 			

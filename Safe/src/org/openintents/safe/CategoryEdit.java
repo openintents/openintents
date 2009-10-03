@@ -57,13 +57,10 @@ public class CategoryEdit extends Activity {
 
     public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		if (debug) Log.d(TAG, "onCreate");
+		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 		
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		String title = getResources().getString(R.string.app_name) + " - " +
@@ -81,8 +78,10 @@ public class CategoryEdit extends Activity {
 		    Bundle extras = getIntent().getExtras();            
 		    RowId = extras != null ? extras.getLong(CategoryList.KEY_ID) : null;
 		}
-	
-		populateFields();
+		if ((RowId==null) || (RowId<1)) {
+			finish();	// no valid category
+			return;
+		}
 	
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 		    public void onClick(View arg0) {
@@ -119,7 +118,7 @@ public class CategoryEdit extends Activity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
     }
 
@@ -132,9 +131,12 @@ public class CategoryEdit extends Activity {
 			startActivity(frontdoor);		
 			return;
 		}
-		populateFields();
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
+
+        Passwords.Initialize(this);
+
+		populateFields();
     }
 
     private void saveState() {

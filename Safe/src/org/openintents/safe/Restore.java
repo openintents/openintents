@@ -88,11 +88,9 @@ public class Restore extends Activity {
 
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if ((!firstTime) && (CategoryList.isSignedIn()==false)) {
-			startActivity(frontdoor);		
-			return;
-		}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
+
+		Passwords.Initialize(this);
 
 		setContentView(R.layout.restore);
 		String title = getResources().getString(R.string.app_name) + " - " +
@@ -146,7 +144,7 @@ public class Restore extends Activity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 	}
 

@@ -63,9 +63,6 @@ public class Help extends Activity {
 
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		//Setup layout
@@ -113,7 +110,7 @@ public class Help extends Activity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 	}
 

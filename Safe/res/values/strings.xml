@@ -188,6 +188,7 @@
 	<string name="open_safe">Open OI Safe</string>
 	<string name="lock">Lock</string>
 	<string name="continue_text">Continue</string>
+	<string name="generate_password">Generate Password</string>
 	<string name="pass_gen_length">Password Length</string>
 	<string name="pass_gen_uppercase">Uppercase [A-Z]</string>
 	<string name="pass_gen_lowercase">Lowercase [a-z]</string>

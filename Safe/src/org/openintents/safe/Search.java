@@ -98,9 +98,6 @@ public class Search extends ListActivity {
 
 		frontdoor = new Intent(this, FrontDoor.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
-		if (CategoryList.isSignedIn()==false) {
-			startActivity(frontdoor);
-    	}
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 
 		etSearchCriteria = (EditText) findViewById(R.id.search_criteria);
@@ -132,7 +129,7 @@ public class Search extends ListActivity {
 		try {
 			unregisterReceiver(mIntentReceiver);
 		} catch (IllegalArgumentException e) {
-			if (debug) Log.d(TAG,"IllegalArgumentException");
+			//if (debug) Log.d(TAG,"IllegalArgumentException");
 		}
 	}
 
@@ -148,7 +145,8 @@ public class Search extends ListActivity {
 		}
         IntentFilter filter = new IntentFilter(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
         registerReceiver(mIntentReceiver, filter);
-                
+
+        Passwords.Initialize(this);
     }
 
 	protected void onListItemClick(ListView l, View v, int position, long id) {
