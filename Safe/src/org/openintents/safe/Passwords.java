@@ -40,7 +40,7 @@ import android.widget.Toast;
  */
 public class Passwords {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
     private static final String TAG = "Passwords";
 
 	private static HashMap<Long, PassEntry> passEntries=null;

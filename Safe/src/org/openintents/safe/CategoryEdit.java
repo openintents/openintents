@@ -42,10 +42,11 @@ public class CategoryEdit extends Activity {
 
     private EditText nameText;
     private Long RowId;
+	boolean populated = false;
 
     Intent frontdoor;
     private Intent restartTimerIntent=null;
-
+    
     BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(CryptoIntents.ACTION_CRYPTO_LOGGED_OUT)) {
@@ -99,7 +100,6 @@ public class CategoryEdit extends Activity {
 		});
     }
 
-
     @Override
     protected void onSaveInstanceState(Bundle outState) {
     	super.onSaveInstanceState(outState);
@@ -109,6 +109,16 @@ public class CategoryEdit extends Activity {
     		outState.putLong(CategoryList.KEY_ID, -1);
     	}
     }
+
+	@Override
+	protected void onRestoreInstanceState(Bundle inState) {
+		super.onRestoreInstanceState(inState);
+
+		if (debug) Log.d(TAG,"onRestoreInstanceState("+inState+")");
+		// because the various EditText automatically handle state
+		// when we come back there is no need to re-populate
+		populated=true;
+	}
 
     @Override
     protected void onPause() {
@@ -127,7 +137,6 @@ public class CategoryEdit extends Activity {
 		super.onResume();
 		if (debug) Log.d(TAG, "onResume");
 		if (!CategoryList.isSignedIn()) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
 			startActivity(frontdoor);		
 			return;
 		}
@@ -161,6 +170,9 @@ public class CategoryEdit extends Activity {
      */
     private void populateFields() {
     	if (debug) Log.d(TAG, "populateFields");
+		if (populated) {
+			return;
+		}
 		if ((RowId != null) && (RowId > 0)) {
 		    CategoryEntry catEntry = Passwords.getCategoryEntry(RowId);
 		    if (catEntry==null) {
@@ -168,6 +180,7 @@ public class CategoryEdit extends Activity {
 		    }
 		    nameText.setText(catEntry.plainName);
 		}
+		populated=true;
     }
 
     @Override

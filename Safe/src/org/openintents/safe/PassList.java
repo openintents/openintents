@@ -61,7 +61,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
  */
 public class PassList extends ListActivity {
 
-	private static final boolean debug = true;
+	private static final boolean debug = false;
     private static final String TAG = "PassList";
 
     // Menu Item order

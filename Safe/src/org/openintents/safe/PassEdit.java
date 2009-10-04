@@ -47,7 +47,7 @@ import android.widget.Toast;
  */
 public class PassEdit extends Activity {
 
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "PassEdit";
 
 	public static final int REQUEST_GEN_PASS = 10;
@@ -206,9 +206,9 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (CategoryList.isSignedIn()==false) {
-			if (Passwords.isCryptoInitialized()) {
-				saveState();
-			}
+//			if (Passwords.isCryptoInitialized()) {
+//				saveState();
+//			}
 			startActivity(frontdoor);
 			return;
 		}
@@ -407,19 +407,6 @@ public class PassEdit extends Activity {
 		}  
 	}
 	
-	/**
-	 * Get the text from an EditText field.
-	 * 
-	 * @param e EditText to retrieve text from.
-	 * @return The field's text.  If e==null returns null.
-	 */
-	private String getTextFromField(EditText e) {
-		if (e==null) {
-			return null;
-		}
-		return e.getText().toString();
-	}
-
 	@Override
 	public void onUserInteraction() {
 		super.onUserInteraction();
