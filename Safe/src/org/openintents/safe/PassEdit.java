@@ -101,9 +101,8 @@ public class PassEdit extends Activity {
 		if (debug) Log.d(TAG,"RowId="+RowId);
 		if (debug) Log.d(TAG,"CategoryId="+CategoryId);
 
-		if ((RowId==null) || (CategoryId==null) ||
-				(RowId<1) || (CategoryId<1)) {
-			// invalid Row or Category
+		if ((CategoryId==null) || (CategoryId<1)) {
+			// invalid Category
 			finish();
 			return;
 		}
