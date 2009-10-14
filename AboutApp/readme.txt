@@ -29,6 +29,12 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.0.2
+date: 2009-10-14
+
+- Update to Android-1.6 (screensize and density).
+
+---------------------------------------------------------
 release: 1.0.1
 date: 2009-01-??
 
