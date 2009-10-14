@@ -95,7 +95,11 @@ public class PassList extends ListActivity {
 
     private List<PassEntry> rows=null;
     private int lastPosition=0;
+
+    // passDescriptions is updated by the background thread
 	List<String> passDescriptions=new ArrayList<String>();
+	// passDescriptions4Adapter must only be modified by the UI thread
+	List<String> passDescriptions4Adapter=new ArrayList<String>();
 
 	public Handler myViewUpdateHandler = new Handler(){
 		// @Override
@@ -103,9 +107,11 @@ public class PassList extends ListActivity {
 			switch (msg.what) {
 				case PassList.MSG_UPDATE_LIST:
 					fillerThread=null;
+					passDescriptions4Adapter.clear();
+					passDescriptions4Adapter.addAll(passDescriptions);
 			    	ArrayAdapter<String> entries = 
 			    		new ArrayAdapter<String>(PassList.this, android.R.layout.simple_list_item_1,
-			    				passDescriptions);
+			    				passDescriptions4Adapter);
 			    	setListAdapter(entries);
 					if (debug) Log.d(TAG,"lastPosition="+lastPosition);
 					if (lastPosition>2) {
