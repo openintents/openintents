@@ -17,16 +17,19 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.1.1"
-	android:versionCode="10008">
+	android:versionName="1.1.2"
+	android:versionCode="10009">
 	<!-- History:
+	1.1.2 [10009] 2009-10-14
 	1.1.1 [10008]: 2009-05-27
 	1.1.1-rc1 [10007]: 2009-05-24
 	1.1.0 [10006]: 2009-05-16
 	1.1.0-rc2 [10005]: 2009-05-15
 	1.0.3 [10004]: 2009-02-04  -->
 	
-	<uses-sdk android:minSdkVersion="2" />
+	<uses-sdk android:minSdkVersion="2" 
+		android:targetSdkVersion="4"
+/>
 	 
 	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name">
 	
@@ -233,6 +236,13 @@
 		android:permissionGroup="android.permission-group.PERSONAL_INFO"
 		android:protectionLevel="normal" />
 
+
+<supports-screens android:smallScreens="true"
+                  android:normalScreens="true"
+                  android:largeScreens="true"
+
+		
+/>
     <!-- required for gtalk (shopping list) -->
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
 	
