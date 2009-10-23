@@ -206,6 +206,10 @@ public class DirectoryScanner extends Thread {
      * @return
      */
     Drawable getDrawableForMimetype(String mimetype) {
+     if (mimetype == null) {
+    	 return null;
+     }
+     
    	 PackageManager pm = context.getPackageManager();
    	 
    	 Intent intent = new Intent(Intent.ACTION_VIEW);
