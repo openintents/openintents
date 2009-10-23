@@ -626,7 +626,7 @@ public class FileManagerActivity extends ListActivity {
           mProgressBar.setVisibility(View.GONE);
           setListAdapter(null); 
           
-		  mDirectoryScanner = new DirectoryScanner(currentDirectory, this, currentHandler, mMimeTypes);
+		  mDirectoryScanner = new DirectoryScanner(currentDirectory, this, currentHandler, mMimeTypes, mSdCardPath);
 		  mDirectoryScanner.start();
 		  
 		  
