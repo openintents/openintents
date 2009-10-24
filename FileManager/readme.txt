@@ -22,8 +22,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.1
-date: 2008-12-??
+release: 1.1.0
+date: 2009-10-??
+- Added file size.
+- Added thumbnails.
+- Copy file.
+- Added support for all WebKit extensions.
 - Added support for following extensions:
   .amr, .3gp
 - Added support for upper case or mixed case letter
