@@ -483,7 +483,8 @@ public class CategoryList extends ListActivity {
 		return masterKey;
     }
 
-    private void addCategory() {
+    private void addCategoryActivity() {
+    	if (debug) Log.d(TAG,"addCategoryActivity()");
 		Intent i = new Intent(this, CategoryEdit.class);
 		startActivityForResult(i,REQUEST_ADD_CATEGORY);
     }
@@ -526,7 +527,7 @@ public class CategoryList extends ListActivity {
 			}
 		    break;
 		case ADD_CATEGORY_INDEX:
-		    addCategory();
+		    addCategoryActivity();
 		    break;
 		case DEL_CATEGORY_INDEX:
 		    try {

@@ -79,10 +79,6 @@ public class CategoryEdit extends Activity {
 		    Bundle extras = getIntent().getExtras();            
 		    RowId = extras != null ? extras.getLong(CategoryList.KEY_ID) : null;
 		}
-		if ((RowId==null) || (RowId<1)) {
-			finish();	// no valid category
-			return;
-		}
 	
 		confirmButton.setOnClickListener(new View.OnClickListener() {
 		    public void onClick(View arg0) {

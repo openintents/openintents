@@ -70,7 +70,7 @@ public class AskPassword extends Activity {
 	private EditText pbeKey;
 	private DBHelper dbHelper;
 	private TextView introText;
-	private TextView confirmText;
+//	private TextView confirmText;
 	private TextView remoteAsk;
 	private EditText confirmPass;
 	private String PBEKey;
@@ -147,11 +147,11 @@ public class AskPassword extends Activity {
 		introText = (TextView) findViewById(R.id.first_time);
 		remoteAsk = (TextView) findViewById(R.id.remote);
 		confirmPass = (EditText) findViewById(R.id.pass_confirm);
-		confirmText = (TextView) findViewById(R.id.confirm_lbl);
+//		confirmText = (TextView) findViewById(R.id.confirm_lbl);
 		if (masterKey.length() == 0) {
 			firstTime = true;
 			introText.setVisibility(View.VISIBLE);
-			confirmText.setVisibility(View.VISIBLE);
+//			confirmText.setVisibility(View.VISIBLE);
 			confirmPass.setVisibility(View.VISIBLE);
 			checkForBackup();
 		}
