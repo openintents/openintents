@@ -208,12 +208,6 @@ public class CategoryList extends ListActivity {
 			getResources().getString(R.string.categories);
 		setTitle(title);
 
-		if (Passwords.getPrePopulate()==true)
-		{
-			prePopulate();
-			Passwords.clearPrePopulate();
-		}
-		
         IntentFilter filter = new IntentFilter();
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         filter.addAction (CryptoIntents.ACTION_CRYPTO_LOGGED_OUT);
@@ -241,6 +235,12 @@ public class CategoryList extends ListActivity {
         registerReceiver(mIntentReceiver, filter);
 
         showFirstTimeWarningDialog();
+		if (Passwords.getPrePopulate()==true)
+		{
+			prePopulate();
+			Passwords.clearPrePopulate();
+		}
+
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		lockOnScreenLock = sp.getBoolean(Preferences.PREFERENCE_LOCK_ON_SCREEN_LOCK, true);
 
