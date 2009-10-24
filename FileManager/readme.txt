@@ -24,15 +24,16 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.1.0
 date: 2009-10-??
-- Added file size.
-- Added thumbnails.
-- Copy file.
-- Added support for all WebKit extensions.
-- Added support for following extensions:
+- display file size.
+- show thumbnails for images.
+- copy files.
+- handle GET_CONTENT action.
+- added support for all WebKit extensions.
+- added support for following extensions:
   .amr, .3gp
-- Added support for upper case or mixed case letter
+- added support for upper case or mixed case letter
   extensions (like .png and .PNG)
-- Fix for send files via MMS.
+- fix for send files via MMS.
 - support for OI About.
 - encode file URIs properly
 - translations: French, German
