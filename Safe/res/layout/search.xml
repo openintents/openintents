@@ -29,6 +29,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:inputType="textFilter"
+				android:imeOptions="actionSearch"
+				android:imeActionLabel="@string/search"
 				android:maxLength="50"
 				android:hint="@string/search_hint" 
 				android:layout_weight="1"/>

@@ -33,10 +33,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Search extends ListActivity {
@@ -110,7 +114,21 @@ public class Search extends ListActivity {
 				searchThreadStart();
 			}
 		});
-		
+
+		etSearchCriteria.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+		        	InputMethodManager imm =
+		        		(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+		        	imm.toggleSoftInput(0, 0);
+					searchCriteria = etSearchCriteria.getText().toString().trim().toLowerCase();
+					searchThreadStart();
+		            return true;
+		        }
+		        return false;
+		    }
+		});
+
 		restoreMe();
     }
 
