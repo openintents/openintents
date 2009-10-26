@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2295 2009-09-06 08:38:06Z rmceoin $
+* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -24,7 +24,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz</string>
+  Abdessamad Derraz https://launchpad.net/~derraz
+  François Blondel https://launchpad.net/~francoisblondel</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe conserve toutes vos données privées cryptées.</string>  
@@ -36,7 +37,7 @@
     <string name="app_name">OI Safe</string>
     <string name="empty_safe">Pas de mot de passe actuel pour cette catégorie.</string>
     <string name="empty_category">Pas de catégories présentes. S'il vous plaît en ajouter une via le menu-&gt;Add</string>
-    <string name="password_lock">Verroullé</string>
+    <string name="password_lock">Vérouiller</string>
     <string name="password_view">Afficher</string>
     <string name="password_edit">Modifier</string>
     <string name="password_add">Ajouter</string>
@@ -186,8 +187,9 @@
 	<string name="intent_set_password">Définir le mot de passe (OI Safe)</string>
 	<string name="intent_restart_timer">Redémarre le minuteur (OI Safe)</string>
 	<string name="open_safe">Ouvrir OI Safe</string>
-	<string name="lock">Verroullé</string>
+	<string name="lock">Vérouiller</string>
 	<string name="continue_text">Continuer</string>
+	<string name="generate_password">Generate Password</string>
 	<string name="pass_gen_length">Longueur du mot de passe</string>
 	<string name="pass_gen_uppercase">Majuscules [A-Z]</string>
 	<string name="pass_gen_lowercase">Minuscules [a-z]</string>
@@ -208,9 +210,10 @@
 	<string name="dialog_summary_first_time_warning">Une nouvelle clé principale aléatoire a été créé. Utilisez le menu &gt; de sauvegarde et stocker cette clé en lieu sûr. Sans cette clé, vous perdez vos données cryptées.</string>
 	<string name="switch_mode">Changer de mode</string>
 	<string name="decrypt_progress">Décryptage ...</string>
-	<string name="search">Search</string>
-	<string name="search_progress">Searching...</string>
+	<string name="search">Rechercher</string>
+	<string name="search_progress">Recherche en cours…</string>
 	<string name="search_hint">Type search criteria</string>
+	<string name="search_nothing_found">Nothing found</string>
 	
 	
 	<!-- ***************************

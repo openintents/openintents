@@ -21,6 +21,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Bernd Schlapsi https://launchpad.net/~bernd-sch
+  MixCool https://launchpad.net/~mixcool
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
@@ -50,13 +52,13 @@
 	<string name="confirm_delete_list">Wollen Sie diese Liste wirklich löschen?</string>
 	<string name="no_shopping_provider">Fehler bei Zugriff auf die Einkaufsliste.</string>
 	<string name="pick_item">Posten auswählen</string>
-	<string name="pick_list">Pick a list</string>
+	<string name="pick_list">Wählen Sie eine Liste</string>
 	<string name="theme">Design</string>
 	<string name="theme_settings">Design Einstellungen</string>
 	<string name="rename_list">Liste umbenennen</string>
 	<string name="menu_mark_item">Posten markieren</string>
 	<string name="menu_edit_item">Posten bearbeiten</string>
-	<string name="menu_auto_add">Auto add</string>
+	<string name="menu_auto_add">Automatisch hinzufügen</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -232,10 +234,10 @@
 	     Automation
 	     *************************** -->
 	<!-- Label above spinner for all actions (automation tasks) that can be performed. -->
-	<string name="label_select_action">Select action:</string>
+	<string name="label_select_action">Aktion auswählen:</string>
 	
 	<!-- Label above button that opens a list of all shopping lists to choose from. -->
-	<string name="label_select_list">Select list:</string>
+	<string name="label_select_list">Liste auswählen:</string>
 	
 	<!-- Arrays -->
 	

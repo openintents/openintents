@@ -6,6 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  DiegoJ https://launchpad.net/~diegojromerolopez
   Feder Sáiz https://launchpad.net/~federsaiz
   miwie https://launchpad.net/~mw-miwie</string>
 	
@@ -14,7 +15,7 @@
 	     *************************** -->
     <string name="app_name">OI Flashlight</string>
     
-    <string name="flashlight_info">The backlight stays turned on.</string>
+    <string name="flashlight_info">La luz posterior permanece encendida.</string>
     
     
     <string name="color">Color</string>
@@ -22,21 +23,14 @@
     
     
 	<!-- Update -->
-	<string name="update_available">A new version of OI Flashlight is available.\n%s\nWould you like to upgrade?</string>
+	<string name="update_available">Hay una nueva vesión de OI Flashlight.\n%s\n¿Quiere actualizar?</string>
 	<string name="market_not_available">Android Market no disponible.</string>
 	<string name="market_search_term">OI Flashlight</string>
 
 	<!-- About -->
 	<string name="about">Acerca de</string>
 	<string name="about_title">Acerca de %</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
-while this application is running.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<string name="about_text">La versión %s \n\n de OpenIntents Flashlight le ayuda a ver en la oscuridad. La luz de fondo de la pantalla se mantiene encendida mientras la aplicación esté ejecutándose.\n\n OpenIntents permite a diferentes aplicaciones de Android compartir datos usando intents e interfaces abiertas.\n\n Para más información y otras aplicaciones visite OpenIntents en www.openintents.org</string>
 	
 	<!-- EULA -->
 	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
@@ -45,11 +39,8 @@ www.openintents.org
 	
 	<!-- Update -->
 	<string name="update_menu">Comprobar actualizaciones</string>
-    <string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
+    <string name="update_box_text">Por favor, compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
 	<string name="update_check_now">Comprobar ahora.</string>
 	<string name="update_get_updater">Obtenga el Actualizador OI.</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Descarga de aplicación no disponible.</string>
 </resources>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2295 2009-09-06 08:38:06Z rmceoin $
+* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -188,6 +188,7 @@
 	<string name="open_safe">Open OI Safe</string>
 	<string name="lock">Bloquear</string>
 	<string name="continue_text">Continuar</string>
+	<string name="generate_password">Generate Password</string>
 	<string name="pass_gen_length">Password Length</string>
 	<string name="pass_gen_uppercase">Mayúscula [A-Z]</string>
 	<string name="pass_gen_lowercase">Minúscula [a-z]</string>
@@ -211,6 +212,7 @@
 	<string name="search">Search</string>
 	<string name="search_progress">Searching...</string>
 	<string name="search_hint">Type search criteria</string>
+	<string name="search_nothing_found">Nothing found</string>
 	
 	
 	<!-- ***************************

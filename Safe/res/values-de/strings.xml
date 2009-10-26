@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2295 2009-09-06 08:38:06Z rmceoin $
+* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -24,7 +24,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  PsychoKim https://launchpad.net/~psychokim</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe verwahrt Ihre privaten Daten sicher verschlüsselt.</string>  
@@ -129,7 +130,7 @@
     <string name="dialog_restore_database_msg">Sind Sie sicher, dass Sie die bestehenden Einträge ersetzen wollen?</string>
     <string name="restore_found">%s Passwörter im Backup gefunden vom %s.</string>
     <string name="restore_complete">Fertig. Passwörter wiederhergestellt: %s</string>
-    <string name="copied_to_clipboard">copied to Clipboard</string>
+    <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="invalid_website">Ungültige Webseite</string>
     
     <!-- Menu label to open a category -->
@@ -162,10 +163,10 @@
 	<string name="pref_dialog_title_lock_timeout">Zeit bis zum automatischen sperren</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_on_screen_lock">Lock on screen lock</string>
+	<string name="pref_title_lock_on_screen_lock">Automatische Sperre</string>
 	
 	<!-- Preference summary for lock on screen lock -->
-	<string name="pref_summary_lock_on_screen_lock">Lock when the screen locks</string>
+	<string name="pref_summary_lock_on_screen_lock">Sperren, wenn der Bildschirm gesperrt wird</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Ziffernblock</string>
@@ -188,6 +189,7 @@
 	<string name="open_safe">OI Safe öffnen</string>
 	<string name="lock">Sperren</string>
 	<string name="continue_text">Fortsetzen</string>
+	<string name="generate_password">Generate Password</string>
 	<string name="pass_gen_length">Passwort Länge</string>
 	<string name="pass_gen_uppercase">Großbuchstaben [A-Z]</string>
 	<string name="pass_gen_lowercase">Kleinbuchstaben [a-z]</string>
@@ -208,9 +210,10 @@
 	<string name="dialog_summary_first_time_warning">Ein neuer Hauptschlüssel wurde generiert. Verwenden Sie Menü &gt; Sicherungskopie und speichern Sie den Schlüssel an einem sicheren Ort. Ohne diesen Schlüssel könnten Sie verschlüsselte Daten verlieren.</string>
 	<string name="switch_mode">Modus wechseln</string>
 	<string name="decrypt_progress">Entschlüsseln...</string>
-	<string name="search">Search</string>
-	<string name="search_progress">Searching...</string>
-	<string name="search_hint">Type search criteria</string>
+	<string name="search">Suchen</string>
+	<string name="search_progress">Suche läuft ...</string>
+	<string name="search_hint">Bitte Suchkriterien angeben</string>
+	<string name="search_nothing_found">Nothing found</string>
 	
 	
 	<!-- ***************************
@@ -255,8 +258,8 @@
     <string-array name="pref_entries_lock_timeout">
         <item>1 Minute</item>
         <item>5 Minuten</item>
-        <item>10 minutes</item>
-        <item>15 minutes</item>
+        <item>10 Minuten</item>
+        <item>15 Minuten</item>
         <item>30 Minuten</item>  
     </string-array>
 
