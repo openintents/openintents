@@ -25,9 +25,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.1.2
-date: 2009-?
+release: 1.2.1
+date: 2009-10-??
 - translations: French, German
+- change in the autolocking methodology
+- new Search feature
+- integration of MyBackupPro
 
 ---------------------------------------------------------
 release: 1.1.1
