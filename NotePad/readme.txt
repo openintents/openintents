@@ -24,7 +24,7 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.1.2-beta1
+release: 1.1.3-rc1
 date: 2009-07-09
 - translations: Dutch, French, German, Spanish
 - create shortcut for a note from Launcher
@@ -36,6 +36,9 @@ date: 2009-07-09
 - keep cursor position (or selection) when
   changing screen orientation.
 - when entering tags, show list of existing tags
+- hide Update menu item if Android Market or
+  aTrackDog are present.
+- compatible with various screen sizes.
 
 ---------------------------------------------------------
 release: 1.1.1
