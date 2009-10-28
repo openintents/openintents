@@ -126,5 +126,5 @@
     <uses-permission android:name="org.openintents.safe.ACCESS_INTENTS" />
     <uses-permission android:name="org.openintents.safe.ACCESS_SERVICE" />
     
-<uses-sdk android:minSdkVersion="1"></uses-sdk>
+<uses-sdk android:minSdkVersion="3"></uses-sdk>
 </manifest> 

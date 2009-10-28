@@ -32,7 +32,7 @@ import android.content.Intent;
  *
  */
 public class AboutDialog extends GetFromMarketDialog {
-	private static final String TAG = "About";
+//	private static final String TAG = "About";
     
 	public AboutDialog(Context context) {
 		super(context,

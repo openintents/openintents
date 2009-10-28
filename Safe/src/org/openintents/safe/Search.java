@@ -118,6 +118,7 @@ public class Search extends ListActivity {
 		etSearchCriteria.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 		    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 		        if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+		        	// hide the soft keyboard
 		        	InputMethodManager imm =
 		        		(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		        	imm.toggleSoftInput(0, 0);

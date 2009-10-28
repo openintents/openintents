@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.CheckBox;
 
 public class AllowExternalAccessDialog extends AlertDialog implements OnClickListener {
-	private static final String TAG = "FilenameDialog";
+//	private static final String TAG = "FilenameDialog";
 
     private static final String BUNDLE_TAGS = "tags";
     
@@ -75,6 +75,6 @@ public class AllowExternalAccessDialog extends AlertDialog implements OnClickLis
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String tags = savedInstanceState.getString(BUNDLE_TAGS);
+//        String tags = savedInstanceState.getString(BUNDLE_TAGS);
     }
 }

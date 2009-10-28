@@ -82,6 +82,7 @@ public class Engine
 	// all the cipher classes must be listed here, the rest of the registration
 	// is done via reflection; this is done by having every class implementing
 	// a 'public static void register()' method (see below)
+	@SuppressWarnings("unchecked")
 	static Class[] _cipherClasses =
 	{
 		//estreamj.ciphers.phelix.Phelix.class,
@@ -110,7 +111,7 @@ public class Engine
 			for (int i = 0; i < _cipherClasses.length; i++)
 			{
 				// check if the register method is there and static
-				Class cls = _cipherClasses[i];
+				Class<?> cls = _cipherClasses[i];
 				Method mthd = cls.getMethod("register", (Class[])null);
 				if (Modifier.STATIC != (mthd.getModifiers() & Modifier.STATIC))
 				{

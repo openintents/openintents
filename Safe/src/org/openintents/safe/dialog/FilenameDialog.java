@@ -14,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 public class FilenameDialog extends AlertDialog implements OnClickListener {
-	private static final String TAG = "FilenameDialog";
+//	private static final String TAG = "FilenameDialog";
 
     private static final String BUNDLE_TAGS = "tags";
     
@@ -104,6 +104,6 @@ public class FilenameDialog extends AlertDialog implements OnClickListener {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String tags = savedInstanceState.getString(BUNDLE_TAGS);
+//        String tags = savedInstanceState.getString(BUNDLE_TAGS);
     }
 }
