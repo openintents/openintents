@@ -65,7 +65,6 @@ storepass=*password of keystore*
 	        else="${basedir}/${external-libs}" >
 	    <os family="windows"/>
 	</condition>
-	<property name="googlemaps" value="${sdk-location}/add-ons/google_apis-3/libs" />
 	
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
@@ -161,7 +160,6 @@ storepass=*password of keystore*
         classname="com.android.ant.SetupTask"
         classpathref="android.antlibs"/>
 	<setup import="false" />
--->
     <taskdef name="aaptexec"
         classname="com.android.ant.AaptExecLoopTask"
         classpathref="android.antlibs"/>
@@ -169,6 +167,7 @@ storepass=*password of keystore*
     <taskdef name="apkbuilder"
         classname="com.android.ant.ApkBuilderTask"
         classpathref="android.antlibs"/>
+-->
 		
 <!-- 1.5 Changes END -->
 
@@ -220,6 +219,7 @@ storepass=*password of keystore*
     <!-- Compile this project's .java files into .class files. -->
     <target name="compile" depends="dirs,clear_layout, resource-src, aidl">
 		<echo>using sdk --|${android-jar}|--</echo>
+		<echo>external-libs --|${external-libs}|--</echo>
 		
         <javac encoding="ascii" target="1.5" debug="true" extdirs=""
                 
@@ -229,7 +229,6 @@ storepass=*password of keystore*
         	<src path="./gen"/>
             <classpath>
                 <fileset dir="${external-libs}" includes="*.jar"/>
-               <fileset dir="${googlemaps}" includes="*.jar"/>
             </classpath>
          </javac>
     </target>
