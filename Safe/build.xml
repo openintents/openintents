@@ -111,10 +111,16 @@ storepass=*password of keystore*
         <os family="windows"/>
     </condition>
 	
-	<property name="out-signed-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<property name="out-signed-package" value="${outdir}/${ant.project.name}-signed.apk" />
 	<condition property="out-signed-package-ospath"
 	            value="${basedir}\${out-signed-package}"
 	            else="${basedir}/${out-signed-package}" >
+	        <os family="windows"/>
+	</condition>
+	<property name="out-aligned-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<condition property="out-aligned-package-ospath"
+	            value="${basedir}\${out-aligned-package}"
+	            else="${basedir}/${out-aligned-package}" >
 	        <os family="windows"/>
 	</condition>
 
@@ -139,6 +145,9 @@ storepass=*password of keystore*
         <os family="windows"/>
     </condition>
     <condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder" >
+        <os family="windows"/>
+    </condition>
+    <condition property="zipalign" value="${android-tools}/zipalign.exe" else="${android-tools}/zipalign" >
         <os family="windows"/>
     </condition>
 	
@@ -378,6 +387,12 @@ storepass=*password of keystore*
             <arg value="${external-libs-ospath}" />
         </exec>
     	<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" keypass="${keypass}" signedjar="${out-signed-package-ospath}"/>
+        <exec executable="${zipalign}" failonerror="true">
+            <arg value="-f" />
+            <arg value="4" />
+            <arg value="${out-signed-package-ospath}" />
+            <arg value="${out-aligned-package-ospath}" />
+        </exec>
     	
     </target>
 
