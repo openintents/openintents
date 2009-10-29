@@ -189,7 +189,7 @@
 	<string name="open_safe">OI Safe öffnen</string>
 	<string name="lock">Sperren</string>
 	<string name="continue_text">Fortsetzen</string>
-	<string name="generate_password">Generate Password</string>
+	<string name="generate_password">Passwort erzeugen</string>
 	<string name="pass_gen_length">Passwort Länge</string>
 	<string name="pass_gen_uppercase">Großbuchstaben [A-Z]</string>
 	<string name="pass_gen_lowercase">Kleinbuchstaben [a-z]</string>
@@ -213,7 +213,7 @@
 	<string name="search">Suchen</string>
 	<string name="search_progress">Suche läuft ...</string>
 	<string name="search_hint">Bitte Suchkriterien angeben</string>
-	<string name="search_nothing_found">Nothing found</string>
+	<string name="search_nothing_found">Nichts gefunden</string>
 	
 	
 	<!-- ***************************
