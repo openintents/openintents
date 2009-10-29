@@ -17,6 +17,8 @@
 package org.openintents.safe;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.openintents.intents.CryptoIntents;
@@ -272,6 +274,11 @@ public class Search extends ListActivity {
 				}
 			}
 		}
+
+		Collections.sort(results, new Comparator<PassEntry>() {
+		    public int compare(PassEntry o1, PassEntry o2) {
+		    	return o1.plainDescription.compareToIgnoreCase(o2.plainDescription);
+		    }});
 
 		updateListFromResults();
 	}
