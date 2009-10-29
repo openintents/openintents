@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.safe" 
-    android:versionCode="10" android:versionName="1.2.1">
+    android:versionCode="11" android:versionName="1.2.2">
     <!-- History:
+    1.2.2 [11]: 2009-10-29
     1.2.1 [10]: 2009-10-23
     1.2.0 [9]: 2009-08-22
     1.1.1 [8]: 2009-05-30

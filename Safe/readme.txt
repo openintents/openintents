@@ -25,8 +25,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.2.1
-date: 2009-10-??
+release: 1.2.2
+date: 2009-10-29
 - translations: French, German
 - change in the autolocking methodology
 - new Search feature
