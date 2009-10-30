@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.0
-date: 2009-10-??
+date: 2009-10-30
 - display file size.
 - show thumbnails for images.
 - copy files.
@@ -36,7 +36,7 @@ date: 2009-10-??
 - fix for send files via MMS.
 - support for OI About.
 - encode file URIs properly
-- translations: French, German
+- translations: Chinese, French, German, Japanese, Spanish
 
 ---------------------------------------------------------
 release: 1.0.0
