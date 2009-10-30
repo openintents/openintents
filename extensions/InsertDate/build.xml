@@ -388,6 +388,7 @@ storepass=*password of keystore*
 				<exclude name="**/gen/**" />
 				<exclude name="**/release/**" />
 				<exclude name="**/tmp/**" />
+				<exclude name="**/translations/**" />
 				<exclude name="**/.svn" />
 				<exclude name="**/build-private.properties" />
 			</fileset>
