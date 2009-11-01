@@ -84,6 +84,7 @@ import android.widget.AbsListView.OnScrollListener;
  */
 public class NotesList extends ListActivity implements ListView.OnScrollListener {
 	private static final String TAG = "NotesList";
+	private static final boolean debug = false;
 
 	// Menu item ids
 	private static final int MENU_ITEM_DELETE = Menu.FIRST;
@@ -99,6 +100,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
  	private static final int MENU_SETTINGS = Menu.FIRST + 10;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
+
+	private static final String BUNDLE_CONTEXTMENUINFO_ID = "ctx_menu_id";
+	private static final String BUNDLE_CONTEXTMENUINFO_POSITION = "ctx_menu_position";
 	
 	/**
 	 * A group id for alternative menu items.
@@ -131,6 +135,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (debug) Log.d(TAG, "onCreate() " + (savedInstanceState == null ? "(no bundle)" : "(with bundle)"));
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
@@ -185,10 +190,22 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         
         if (savedInstanceState != null) {
         	mLastFilter = savedInstanceState.getString(BUNDLE_LAST_FILTER);
+
+        	// Restore information for context menu, for opening "Tags" dialog.
+        	if (savedInstanceState.containsKey(BUNDLE_CONTEXTMENUINFO_ID)) {
+	        	long id = savedInstanceState.getLong(BUNDLE_CONTEXTMENUINFO_ID);
+	        	int position = savedInstanceState.getInt(BUNDLE_CONTEXTMENUINFO_POSITION);
+	        	mContextMenuInfo = new AdapterView.AdapterContextMenuInfo(null, position, id);
+        	}
         }
 		
 		mCursorUtils = new NotesListCursor(this, getIntent());
-
+		
+		// Make sure mAdapter is created here already,
+		// because onPrepareDialog for the Tags dialog may be called
+		// before onResume() is called.
+		checkAdapter();
+		
 		if (Intent.ACTION_CREATE_SHORTCUT.equals(intent.getAction())) {
 			setTitle(R.string.title_pick_note_for_shortcut);
 		}
@@ -201,36 +218,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		if (debug) Log.d(TAG, "onResume()");
+		
 		NotesListCursor.mSuspendQueries = false;
 		
-		if (mAdapter == null) {
-			// Perform a managed query. The Activity will handle closing and
-			// requerying the cursor
-			// when needed.
-			//Cursor cursor = getContentResolver().query(getIntent().getData(), NotesListCursorUtils.PROJECTION, null,
-			//		null, Notes.DEFAULT_SORT_ORDER);
-	
-			Cursor cursor = mCursorUtils.query(null);
-			
-			/*
-			// Used to map notes entries from the database to views
-			SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-					R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
-					new int[] { android.R.id.text1 });
-					*/
-			mAdapter = new NotesListCursorAdapter(this, cursor, mCursorUtils);
-			setListAdapter(mAdapter);
-			
-			Log.i(TAG, "Lastfilter: " + mLastFilter);
-			
-			if (mLastFilter != null) {
-				cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
-				mAdapter.changeCursor(cursor);
-			}
-		} else {
-			mAdapter.getCursor().requery();
-		}
+		checkAdapter();
 		
 		if (!mDecryptionFailed) {
 			decryptDelayed();
@@ -249,6 +241,37 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 
         // getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+	}
+
+
+	private void checkAdapter() {
+		if (mAdapter == null) {
+			// Perform a managed query. The Activity will handle closing and
+			// requerying the cursor
+			// when needed.
+			//Cursor cursor = getContentResolver().query(getIntent().getData(), NotesListCursorUtils.PROJECTION, null,
+			//		null, Notes.DEFAULT_SORT_ORDER);
+	
+			Cursor cursor = mCursorUtils.query(null);
+			
+			/*
+			// Used to map notes entries from the database to views
+			SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+					R.layout.noteslist_item, cursor, new String[] { Notes.TITLE },
+					new int[] { android.R.id.text1 });
+					*/
+			mAdapter = new NotesListCursorAdapter(this, cursor, mCursorUtils);
+			setListAdapter(mAdapter);
+			
+			if (debug) Log.i(TAG, "Lastfilter: " + mLastFilter);
+			
+			if (mLastFilter != null) {
+				cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
+				mAdapter.changeCursor(cursor);
+			}
+		} else {
+			mAdapter.getCursor().requery();
+		}
 	}
 
 	@Override
@@ -291,6 +314,11 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		super.onSaveInstanceState(outState);
 		
 		outState.putString(BUNDLE_LAST_FILTER, mCursorUtils.mCurrentFilter);
+		
+		if (mContextMenuInfo != null) {
+			outState.putLong(BUNDLE_CONTEXTMENUINFO_ID, mContextMenuInfo.id);
+			outState.putInt(BUNDLE_CONTEXTMENUINFO_POSITION, mContextMenuInfo.position);
+		}
 	}
 
 
@@ -319,7 +347,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		// actions found here, but this allows other applications to extend
 		// our menu with their own actions.
 		Intent intent = new Intent(null, getIntent().getData());
-		Log.i(TAG, "Building options menu for: " + intent.getDataString());
+		if (debug) Log.i(TAG, "Building options menu for: " + intent.getDataString());
         intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
 		//menu
 		//		.addIntentOptions(CATEGORY_ALTERNATIVE_GLOBAL, 0, 0,
@@ -530,8 +558,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			content = c.getString(1);
 		}
 
-		Log.i(TAG, "Title to send: " + title);
-		Log.i(TAG, "Content to send: " + content);
+		if (debug) Log.i(TAG, "Title to send: " + title);
+		if (debug) Log.i(TAG, "Content to send: " + content);
 
 		Intent i = new Intent();
 		i.setAction(Intent.ACTION_SEND);
@@ -737,7 +765,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
-		FilenameDialog fd;
+		if (debug) Log.d(TAG, "onPrepareDialog()");
 		
 		switch (id) {
 		case DIALOG_TAGS:
@@ -879,7 +907,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
     
     protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
-    	Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
+    	if (debug) Log.i(TAG, "Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_DECRYPT_TITLE:
     		if (resultCode == RESULT_OK && intent != null) {
@@ -894,7 +922,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	    			// Add decrypted text to hash:
 	    			NotesListCursor.mEncryptedStringHashMap.put(encryptedText, decryptedText);
 	
-	            	Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
+	    			if (debug) Log.i(TAG, "Decrypted: " + encryptedText + " -> " + decryptedText);
     			}
             	mDecryptionSucceeded = true;
     			NotesListCursor.mLoggedIn = true;
@@ -969,7 +997,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     }
     
     private void saveFile(Uri uri, File file) {
-    	Log.i(TAG, "Saving file: uri: " + uri + ", file: " + file);
+    	if (debug) Log.i(TAG, "Saving file: uri: " + uri + ", file: " + file);
     	Cursor c = getContentResolver().query(uri, new String[] {Notes.ENCRYPTED, Notes.NOTE}, null, null, null);
     	
     	if (c != null && c.getCount() > 0) {
@@ -978,12 +1006,12 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     		String note = c.getString(1);
     		if (encrypted == 0) {
     			// Save to file
-    			Log.d(TAG, "Save unencrypted file.");
+    			if (debug) Log.d(TAG, "Save unencrypted file.");
     			writeToFile(file, note);
     		} else {
     			// decrypt first, then save to file
 
-    			Log.d(TAG, "Save encrypted file.");
+    			if (debug) Log.d(TAG, "Save encrypted file.");
     		}
     	} else {
     		Log.e(TAG, "Error saving file: Uri not valid: " + uri);
@@ -1009,7 +1037,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Log.i(TAG, "flush decrypted data");
+			if (debug) Log.i(TAG, "flush decrypted data");
 			NotesListCursor.flushDecryptedStringHashMap();
 			mAdapter.getCursor().requery();
 		}
