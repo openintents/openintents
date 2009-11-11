@@ -24,8 +24,8 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.1.3-rc1
-date: 2009-07-09
+release: 1.1.3
+date: 2009-11-11
 - translations: Dutch, French, German, Spanish
 - create shortcut for a note from Launcher
 - save to SD card possible directly from note
