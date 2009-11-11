@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                       *
+ * Copyright (C) 2008-2009 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -39,6 +39,10 @@ date: 2009-11-11
 - hide Update menu item if Android Market or
   aTrackDog are present.
 - compatible with various screen sizes.
+- add fast scroll bar.
+- hide Update menu item if Market or
+  aTrackDog are present.
+- add support for MyBackupPro.
 
 ---------------------------------------------------------
 release: 1.1.1
