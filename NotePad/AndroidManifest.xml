@@ -174,7 +174,7 @@
          
 		<activity android:name=".activity.SaveFileActivity"
 				android:label="@string/menu_save_to_sdcard"
-				android:icon="@android:drawable/ic_menu_save"
+				android:icon="@drawable/ic_menu_save"
 				android:theme="@android:style/Theme.Translucent.NoTitleBar">
 			<!-- This intent filter allows to save an internal note from
 			     various menus. -->
