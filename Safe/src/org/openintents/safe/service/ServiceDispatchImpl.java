@@ -36,7 +36,7 @@ import android.util.Log;
 import android.os.CountDownTimer;
 
 public class ServiceDispatchImpl extends Service {
-	private static boolean debug = true;
+	private static boolean debug = false;
 	private static String TAG = "ServiceDispatchIMPL";
 	public static CryptoHelper ch;  // TODO Peli: Could clean this up by moving it into a singleton? Or at least a separate static class?
 	private String salt;

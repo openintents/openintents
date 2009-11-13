@@ -25,6 +25,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.3
+date: 2009-11-12
+- add counts to Category List
+- support small, normal, large screens
+
+---------------------------------------------------------
 release: 1.2.2
 date: 2009-10-29
 - translations: French, German

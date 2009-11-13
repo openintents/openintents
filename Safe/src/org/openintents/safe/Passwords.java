@@ -16,10 +16,12 @@
 
 package org.openintents.safe;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -234,6 +236,7 @@ public class Passwords {
 		    catEntry.nameNeedsDecrypt=false;
 			categoryEntries.put(id, catEntry);
 		}
+		catEntry.count=dbHelper.getCategoryCount(id);
 		return catEntry;
 	}
 	
@@ -256,6 +259,14 @@ public class Passwords {
 		return catEntry.id;
 	}
 	
+	public static void updateCategoryCount(long id) {
+		CategoryEntry catEntry=categoryEntries.get(id);
+		if (catEntry==null) {
+			return;
+		}
+		catEntry.count=dbHelper.getCategoryCount(id);
+	}
+
 	public static void deleteCategoryEntry(long id) {
 		if (debug) Log.d(TAG,"deleteCategoryEntry("+id+")");
 		dbHelper.deleteCategory(id);
@@ -399,8 +410,14 @@ public class Passwords {
 		    }
 		    passEntry.needsEncrypt=false;
 		}
+		// Format the current time.
+		Date date = new Date();
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.DEFAULT,DateFormat.LONG);
+		passEntry.lastEdited=df.format(date);
+
 		if (passEntry.id==0) {
 			passEntry.id=dbHelper.addPassword(passEntry);
+			updateCategoryCount(passEntry.category);
 		} else {
 			dbHelper.updatePassword(passEntry.id, passEntry);
 		}
@@ -410,8 +427,14 @@ public class Passwords {
 	
 	public static void deletePassEntry(long id) {
 		if (debug) Log.d(TAG,"deletePassEntry("+id+")");
+		PassEntry passEntry=getPassEntry(id, false, false);
+		if (passEntry==null) {
+			return;
+		}
+		long categoryId=passEntry.category;
 		dbHelper.deletePassword(id);
 		passEntries.remove(id);
+		updateCategoryCount(categoryId);
 	}
 
 	public static void updatePassCategory(long passId, long categoryId) {

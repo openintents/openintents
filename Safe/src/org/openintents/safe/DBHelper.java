@@ -414,6 +414,23 @@ public class DBHelper {
         return row;
     }
 
+    public int getCategoryCount(long Id) {
+        int count = 0;
+        try {
+	        Cursor c =
+	            db.rawQuery("SELECT count(*) FROM "+TABLE_PASSWORDS+" WHERE category=" + Id, null);
+	        if (c.getCount() > 0) {
+	            c.moveToFirst();
+	            count = c.getInt(0);
+	        }
+	        c.close();
+		} catch (SQLException e)
+		{
+			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+		}
+        return count;
+    }
+
     /**
      * 
      * @param Id

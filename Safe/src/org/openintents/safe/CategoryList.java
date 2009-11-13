@@ -54,7 +54,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -121,6 +120,7 @@ public class CategoryList extends ListActivity {
     private static String masterKey;			
 
     private List<CategoryEntry> rows=null;
+    private CategoryListItemAdapter catAdapter;
     private Intent restartTimerIntent=null;
     private int lastPosition=0;
     
@@ -391,15 +391,14 @@ public class CategoryList extends ListActivity {
      */
     private void fillData() {
     	if (debug) Log.d(TAG,"fillData()");
-		List<String> categoryNames=Passwords.getCategoryNames();
 		
 		rows=Passwords.getCategoryEntries();
 		if (debug) Log.d(TAG,"fillData: rows="+rows.size());
 		
-		ArrayAdapter<String> entries = 
-		    new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-		    		categoryNames);
-		setListAdapter(entries);
+		catAdapter = 
+		    new CategoryListItemAdapter(this, R.layout.cat_row,
+		    		rows);
+		setListAdapter(catAdapter);
 		
     }
 
@@ -668,6 +667,10 @@ public class CategoryList extends ListActivity {
     		if (requestCode==REQUEST_EDIT_CATEGORY) {
     			setSelection(lastPosition);
     		}
+    	}
+    	if (requestCode==REQUEST_OPEN_CATEGORY) {
+    		// update in case passwords were added/deleted and caused the counts to update
+			catAdapter.notifyDataSetChanged();
     	}
     }
 
