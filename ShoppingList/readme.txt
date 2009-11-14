@@ -27,6 +27,9 @@ date: 2009-10-14
 - translations: French, Polish, Spanish
 - QVGA support
 - support for MyBackup Pro
+- new intent INSERT_FROM_EXTRAS, to support multiple
+  items to be added to a list. Used by Ben Caldwell's
+  application Bites.
 
 ---------------------------------------------------------
 release: 1.1.1
