@@ -28,34 +28,33 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Feder Sáiz https://launchpad.net/~federsaiz
-  Paco Molinero https://launchpad.net/~franciscomol</string>
+  goodev https://launchpad.net/~3-admin-goodev-org</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">Un diálogo «Acerca de» autónomo que se comparte entre aplicaciones.</string>
+	<string name="about_comments">一个在系统中共享的用于显示“关于”对话框的程序。</string>
 	
 	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
-	<string name="about_website_label">Acerca de OI en OpenIntents</string>
+	<string name="about_website_label">在OpenIntents查看“OI 关于”。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">Acerca de OI</string>
+    <string name="app_name">OI 关于</string>
 	
-    <string name="menu_about">Acerca de Acerca de OI</string>
+    <string name="menu_about">关于“OI关于”</string>
     
     <!-- About some application, where '%s' is the name of another application. -->
-    <string name="about_activity_name_extended">Acerca de %s</string>
+    <string name="about_activity_name_extended">关于%s</string>
     
-	<string name="l_authors">Escrito por</string>
-	<string name="l_documenters">Documentado por</string>
-	<string name="l_translators">Traducido por</string>
-	<string name="l_artists">Trabajo Artístico por</string>
-	<string name="l_credits">Creditos</string>
-	<string name="l_license">Licencia</string>
-	<string name="l_info">Información General</string>
+	<string name="l_authors">作者：</string>
+	<string name="l_documenters">文档撰写者：</string>
+	<string name="l_translators">翻译者：</string>
+	<string name="l_artists">美工：</string>
+	<string name="l_credits">制作组</string>
+	<string name="l_license">许可</string>
+	<string name="l_info">一般信息</string>
 	
-	<string name="no_information_available">Información no disponible</string>
+	<string name="no_information_available">无可用信息。</string>
 </resources>

@@ -21,10 +21,11 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Joselt Peña https://launchpad.net/~inf3rn41j4p</string>
+  Joselt Peña https://launchpad.net/~inf3rn41j4p
+  Paco Molinero https://launchpad.net/~franciscomol</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OI Shopping list lets you keep track of your shopping items. You can also use it for other kinds of check lists, for example for ToDo lists or party guest lists.</string>
+	<string name="about_comments">La lista de compras OI le permite hacer un seguimiento de sus artículos comprados. También se puede utilizar para otros tipos de listas de verificación, por ejemplo, para las listas de tareas o listas de invitados a la fiesta.</string>
 	<string name="about_website_label">OI Lista de compras en OpenIntents</string>
 
 	<!-- ***************************
@@ -74,7 +75,7 @@
 	<string name="menu_start_shopping">Compras</string>
 	
 	<!-- Title supplement. '%s' is the name of the current list. -->
-	<string name="pick_items_titel">%s - Pick items</string>
+	<string name="pick_items_titel">%s - Elementos marcados</string>
 	
 	<!-- Title supplement. '%s' is the name of the current list. -->
 	<string name="shopping_title">%s - Compras</string>
@@ -94,10 +95,10 @@
 	
 
 	<!-- The shortcut is created on the home screen. -->
-	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
+	<string name="pick_list_for_shortcut">Elija una lista para acceso directo</string>
 	
 	<!-- Shown if external application wants to insert new items. -->
-	<string name="pick_list_to_insert_items">Pick list to insert items</string>
+	<string name="pick_list_to_insert_items">Elija lista para introducir elementos</string>
 	
 	<!-- Theme related -->
 	<string name="theme_pick">Elije un tema</string>
@@ -115,7 +116,7 @@
 	
     <string name="preference_application">Configuración de la aplicación</string>
     
-	<string name="preference_unchecked_on_top">Unchecked on top</string>
+	<string name="preference_unchecked_on_top">Sin comprobar en la parte superior</string>
 	<string name="preference_unchecked_on_top_summary">Mostrar siempre los elementos sin marcar primero</string>
 	<string name="preference_fontsize">Tamaño de la fuente</string>
 	<string name="preference_fontsize_summary">Cambiar tamaño de la fuente</string>

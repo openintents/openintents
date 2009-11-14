@@ -6,6 +6,7 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
     <!-- Strings for OI About -->
@@ -34,13 +35,13 @@
     <string name="menu_pick_ringtone">Ringtone</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">Establecer fecha</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">Establecer duración</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">Establecer acción</string>
     
     <string name="hint_title">p.ej. pizza</string>
     
@@ -74,19 +75,19 @@
 	<string name="launch_through_status_bar">Launch through status bar</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Ring</string>
+	<string name="ring">Timbre</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
 	<string name="vibrate">Vibrar</string>
 	
 	<!-- Checkbox label whether to flash light for notifications. -->
-	<string name="light">Light</string>
+	<string name="light">Luz</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
 	<string name="action">Acción: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
-	<string name="select_action">Select action: %s</string>
+	<string name="select_action">Seleccionar acción: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
 	<string name="select_countdown">Select countdown: %s</string>
@@ -95,7 +96,7 @@
 	<string name="test">Prueba</string>
 	
 	<!-- Button to view / edit settings. -->
-	<string name="settings">Settings</string>
+	<string name="settings">Configuración</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Descartar</string>
@@ -109,9 +110,9 @@
 	<!--  -->
 	
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
-	<string name="group_applications">Applications</string>
+	<string name="group_applications">Aplicaciones</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
-	<string name="group_shortcuts">Shortcuts</string>
+	<string name="group_shortcuts">Accesos directos</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
 	<string name="group_automation_tasks">Automation tasks</string>
 	
@@ -136,18 +137,15 @@
 	
 	<!-- Update -->
     <string name="menu_update">Comprobar actualizaciones</string>
-	<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
+	<string name="update_box_text">Compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
 	<string name="update_check_now">Comprobar ahora.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="update_get_updater">Obtener el actualizador de OI.</string>
+	<string name="update_error">Descarga de aplicación no disponible.</string>
 	
     <!-- About -->
     <string name="about">Sobre</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Versión %s\nNo compatible con el complemento disponible para mostrar información completa (contacto, créditos, licencia).</string>
+    <string name="aboutapp_get">Obtener OI Acerca de</string>
     
 	<!-- Arrays -->
 	
@@ -162,16 +160,16 @@ Current version: %s
 	     Preferences
 	     *************************** -->
 
-    <string name="preference_countdown">Countdown</string>
+    <string name="preference_countdown">Cuenta atrás</string>
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions">Extensiones</string>
+    <string name="preference_get_extensions">Obtener nuevas extensiones</string>
+    <string name="preference_get_extensions_summary">Búsqueda de extensiones en línea.</string>
+    <string name="preference_get_extensions_from">Obtener extensiones desde</string>
+    <string name="preference_extensions_market">Tienda Android</string>
+    <string name="preference_extensions_market_summary">Búsqueda de extensiones en la Tienda Android</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">Obtener extensiones desde la página principal de OpenIntents</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
     <string name="preference_notification_timeout_title">Notification timeout</string>
@@ -183,12 +181,12 @@ Current version: %s
     <string name="preference_notification_timeout_dialog_title">Set timeout</string>
                 
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 segundos</item>
+        <item>5 segundos</item>
+        <item>10 segundos</item>
+        <item>30 segundos</item>
+        <item>1 minuto</item>
+        <item>5 minutos</item>
+        <item>10 minutos</item>
     </string-array>
 </resources>

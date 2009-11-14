@@ -28,6 +28,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Feder Sáiz https://launchpad.net/~federsaiz
+  Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
     <!-- Strings for OI About -->
@@ -43,7 +44,7 @@
 	
     <string name="menu_delete">Eliminar</string>
     <string name="menu_insert">Añadir nota</string>
-    <string name="menu_revert">Revert</string>
+    <string name="menu_revert">Revertir</string>
     <string name="menu_discard">Descartar</string>
     
 	<string name="no_notes">Utilizar menú para añadir notas nuevas.</string>
@@ -84,7 +85,7 @@
 	<string name="decryption_failed">Descifrado fallido.</string>
 
 	<string name="menu_edit_tags">Editar etiquetas</string>
-    <string name="dropdown_hint">Touch to see list</string>
+    <string name="dropdown_hint">Toque para ver la lista</string>
     <string name="tags_hint">Introducir etiquetas, separas por coma</string>
     
     <string name="menu_save_to_sdcard">Guardar a tarjeta SD</string>
@@ -92,21 +93,21 @@
     <string name="filename">Nombre de archivo</string>
     <string name="save">Guardar</string>
     <string name="open">Abrir</string>
-    <string name="error_writing_file">Error while writing file</string>
-    <string name="error_reading_file">Error while reading file</string>
+    <string name="error_writing_file">Error al grabar el archivo</string>
+    <string name="error_reading_file">Error al leer el archivo</string>
     <string name="file_not_found">Archivo no encontrado</string>
     <string name="note_saved">Nota guardada</string>
-    <string name="warning_file_exists_title">File exists already</string>
-    <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
+    <string name="warning_file_exists_title">El archivo ya existe</string>
+    <string name="warning_file_exists_message">¿Realmente desea sobrescribir el archivo existente?</string>
     
     <!-- Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes. -->
-    <string name="menu_import">Import</string>
+    <string name="menu_import">Importar</string>
     <string name="menu_save">Guardar</string>
-    <string name="menu_save_as">Save as</string>
-    <string name="warning_unsaved_changes_title">Text modified</string>
-    <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
+    <string name="menu_save_as">Guardar como</string>
+    <string name="warning_unsaved_changes_title">Texto modificado</string>
+    <string name="warning_unsaved_changes_message">¿Desea usted guardar los cambios?</string>
     <string name="button_save">Guardar</string>
-    <string name="button_dont_save">"Don't save"</string>
+    <string name="button_dont_save">«No guardar»</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Lista de Notas</string>
@@ -114,7 +115,7 @@
     <string name="preference_sortorder_dialog_title">Orden de Clasificación de Lista</string>
     <string name="preference_sortorder_summary">El orden en el que las notas son mostradas en la lista de notas</string>
     
-    <string name="note_editor_preferences">Note Editor</string>
+    <string name="note_editor_preferences">Editor de notas</string>
     <string name="preference_autolink_title">Auto-create Links</string>
     <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
     <string name="preference_autolink_summary_off">Do not create links on notes</string>
@@ -133,18 +134,15 @@
 	<string name="eula_refuse">Cancelar</string>
 	
 	<!-- Update -->
-		<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
+		<string name="update_box_text">Compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
 	<string name="update_check_now">Comprobar ahora.</string>
 	<string name="update_get_updater">Obtenga el Actualizador de OI</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Descarga de aplicación no disponible.</string>
 	<string name="update">Comprobar actualizaciones</string>
 	
     <!-- About -->
     <string name="about">Acerca de</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_not_available">Versión %s\nNo compatible con el complemento disponible para mostrar información completa (contacto, créditos, licencia).</string>
     <string name="aboutapp_get">Obtenga Acerca de OI</string>
     
     <!-- File Manager -->
@@ -169,7 +167,7 @@ Current version: %s
     
 	<!-- OI Shopping list -->
     <string name="oi_shopping_permission_read">leer listas de compra</string>
-    <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+    <string name="oi_shopping_permission_read_descr">Permitir a una aplicación leer las listas de compra. Tenga en cuenta que las listas y los elementos cifrados se presentan en formato cifrado.</string>
     <string name="oi_shopping_permission_write">escribir listas de compra</string>
     <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
     
@@ -190,14 +188,14 @@ Current version: %s
     </string-array>
 
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions">Extensiones</string>
+    <string name="preference_get_extensions">Obtener nuevas extensiones</string>
+    <string name="preference_get_extensions_summary">Búsqueda de extensiones en línea.</string>
+    <string name="preference_get_extensions_from">Obtener extensiones desde</string>
+    <string name="preference_extensions_market">Tienda Android</string>
+    <string name="preference_extensions_market_summary">Búsqueda de extensiones en la Tienda Android</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">Obtener extensiones desde la página principal de OpenIntents</string>
 	
 	     
 </resources>

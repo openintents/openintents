@@ -25,7 +25,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz
-  François Blondel https://launchpad.net/~francoisblondel</string>
+  François Blondel https://launchpad.net/~francoisblondel
+  beudbeud https://launchpad.net/~beudbeud</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Safe conserve toutes vos données privées cryptées.</string>  
@@ -130,7 +131,7 @@
     <string name="dialog_restore_database_msg">Êtes-vous sûr de vouloir remplacer les données actuelles?</string>
     <string name="restore_found">Trouvé %s mots de passe à partir de la sauvegarde du %s.</string>
     <string name="restore_complete">Complet. Mots de passe restaurés: %s</string>
-    <string name="copied_to_clipboard">copied to Clipboard</string>
+    <string name="copied_to_clipboard">Copier dans le presse-papier</string>
     <string name="invalid_website">Site invalide</string>
     
     <!-- Menu label to open a category -->
@@ -189,7 +190,7 @@
 	<string name="open_safe">Ouvrir OI Safe</string>
 	<string name="lock">Vérouiller</string>
 	<string name="continue_text">Continuer</string>
-	<string name="generate_password">Generate Password</string>
+	<string name="generate_password">Générer un mot de passe</string>
 	<string name="pass_gen_length">Longueur du mot de passe</string>
 	<string name="pass_gen_uppercase">Majuscules [A-Z]</string>
 	<string name="pass_gen_lowercase">Minuscules [a-z]</string>
@@ -213,7 +214,7 @@
 	<string name="search">Rechercher</string>
 	<string name="search_progress">Recherche en cours…</string>
 	<string name="search_hint">Type search criteria</string>
-	<string name="search_nothing_found">Nothing found</string>
+	<string name="search_nothing_found">RIen n'a été trouvé!</string>
 	
 	
 	<!-- ***************************

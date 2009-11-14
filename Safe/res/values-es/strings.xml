@@ -24,6 +24,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
     <!-- Strings for OI About -->
@@ -34,7 +35,7 @@
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Safe</string>
-    <string name="empty_safe">No Passwords present for this category.</string>
+    <string name="empty_safe">No hay contraseñas presentes para esta categoría.</string>
     <string name="empty_category">No categories present.  Please add one via Menu-&gt;Add</string>
     <string name="password_lock">Bloquear</string>
     <string name="password_view">Ver</string>
@@ -63,8 +64,8 @@
     <string name="name">Nombre</string>
     <string name="category_not_empty">Category is not empty.   You must delete the passwords first.</string>
 	<string name="cannot_decrypt_category">Cannot decrypt category</string>
-	<string name="cannot_decrypt_password">Cannot decrypt password</string>
-	<string name="error_export">Error exporting database</string>
+	<string name="cannot_decrypt_password">No se puede descifrar la contraseña</string>
+	<string name="error_export">Error al exportar la base de datos</string>
 	<string name="export_database">Exportar base de datos</string>
 	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
 	<string name="export_success">Export to '%s' successful.   Warning!   The file is not encrypted.</string>
@@ -78,7 +79,7 @@
 	<string name="yes">Sí</string>
 	<string name="no">No</string>
 	<string name="import_progress">Please wait while importing...</string>
-	<string name="import_no_categories">No categories found.</string>
+	<string name="import_no_categories">No se encontraron categorías.</string>
 	<string name="import_no_entries">No entries found in CSV.</string>
 	<string name="import_too_many_categories">Demasiadas categorias.</string>
 	<string name="import_not_enough_fields">Not enough fields</string>

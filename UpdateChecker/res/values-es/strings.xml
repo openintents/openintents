@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Feder Sáiz https://launchpad.net/~federsaiz
+  Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
 	<!-- ***************************
@@ -73,11 +74,11 @@
     <string name="abort">Abortar</string>
     
     <string name="preference_auto_update">Actualizar automáticamente</string>
-    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
+    <string name="preference_auto_update_summary">Si se selecciona, la búsqueda de actualizaciones se hará regularmente</string>
     <string name="title_update_interval">Intervalo de actualización</string>
     <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
     <string name="dialog_title_update_interval">Seleccionar intervalo</string>
-    <string name="default_update_interval">every_month</string>
+    <string name="default_update_interval">cada_mes</string>
     <string name="preference_warning_title">Advertencia</string>
     <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
     
