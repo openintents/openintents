@@ -42,7 +42,7 @@ date: 2009-11-11
 - add fast scroll bar.
 - hide Update menu item if Market or
   aTrackDog are present.
-- add support for MyBackupPro.
+- add support for MyBackup Pro.
 
 ---------------------------------------------------------
 release: 1.1.1

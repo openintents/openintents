@@ -36,7 +36,7 @@ date: 2009-10-29
 - translations: French, German
 - change in the autolocking methodology
 - new Search feature
-- integration of MyBackupPro
+- integration of MyBackup Pro
 
 ---------------------------------------------------------
 release: 1.1.1

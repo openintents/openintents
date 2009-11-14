@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2008 OpenIntents.org                                  *
+ * Copyright (C) 2007-2009 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -23,8 +23,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.2
-date: 2009-?
-- translations: French
+date: 2009-10-14
+- translations: French, Polish, Spanish
+- QVGA support
+- support for MyBackup Pro
 
 ---------------------------------------------------------
 release: 1.1.1
