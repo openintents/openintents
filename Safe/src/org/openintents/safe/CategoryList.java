@@ -120,7 +120,7 @@ public class CategoryList extends ListActivity {
     private static String masterKey;			
 
     private List<CategoryEntry> rows=null;
-    private CategoryListItemAdapter catAdapter;
+    private CategoryListItemAdapter catAdapter=null;
     private Intent restartTimerIntent=null;
     private int lastPosition=0;
     
@@ -670,7 +670,9 @@ public class CategoryList extends ListActivity {
     	}
     	if (requestCode==REQUEST_OPEN_CATEGORY) {
     		// update in case passwords were added/deleted and caused the counts to update
-			catAdapter.notifyDataSetChanged();
+    		if (catAdapter!=null) {
+    			catAdapter.notifyDataSetChanged();
+    		}
     	}
     }
 
