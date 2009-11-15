@@ -26,6 +26,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz
   François Blondel https://launchpad.net/~francoisblondel
+  Peli https://launchpad.net/~peli0101
   beudbeud https://launchpad.net/~beudbeud</string>
 	
     <!-- Strings for OI About -->
@@ -214,7 +215,7 @@
 	<string name="search">Rechercher</string>
 	<string name="search_progress">Recherche en cours…</string>
 	<string name="search_hint">Type search criteria</string>
-	<string name="search_nothing_found">RIen n'a été trouvé!</string>
+	<string name="search_nothing_found">Rien n'a été trouvé</string>
 	
 	
 	<!-- ***************************

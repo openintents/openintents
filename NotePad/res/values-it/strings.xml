@@ -27,7 +27,8 @@
 
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CAppa https://launchpad.net/~cappa-temp-1</string>
+  CAppa https://launchpad.net/~cappa-temp-1
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Notepad permette di creare, modificare ed eliminare i tuoi appunti</string>
