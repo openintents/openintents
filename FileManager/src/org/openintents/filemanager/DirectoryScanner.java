@@ -77,9 +77,15 @@ public class DirectoryScanner extends Thread {
 			return;
 		}
 		
+		if (files == null) {
+			Log.v(TAG, "Returned null - inaccessible directory?");
+			totalCount = 0;
+		} else {
+			totalCount = files.length;
+		}
+		
 		operationStartTime = SystemClock.uptimeMillis();
 		
-		totalCount = files.length;
 		Log.v(TAG, "Counting files... (total count=" + totalCount + ")");
 
 		int progress = 0;
@@ -99,64 +105,67 @@ public class DirectoryScanner extends Thread {
 		Drawable genericFileIcon = context.getResources().getDrawable(R.drawable.icon_file);
 
 		Drawable currentIcon = null; 
-		for (File currentFile : files){ 
-			if (cancel) {
-				// Abort!
-				Log.v(TAG, "Scan aborted while checking files");
-				clearData();
-				return;
-			}
-			
-			progress++;
-			updateProgress(progress, totalCount);
-			
-			/*
+		
+		if (files != null) {
+			for (File currentFile : files){ 
+				if (cancel) {
+					// Abort!
+					Log.v(TAG, "Scan aborted while checking files");
+					clearData();
+					return;
+				}
+
+				progress++;
+				updateProgress(progress, totalCount);
+
+				/*
         	  if (currentFile.isHidden()) {
         		  continue;
         	  }
-			 */
-			if (currentFile.isDirectory()) { 
-				if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
-					currentIcon = sdIcon;
+				 */
+				if (currentFile.isDirectory()) { 
+					if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
+						currentIcon = sdIcon;
 
-					listSdCard.add(new IconifiedText( 
-							currentFile.getName(), "", currentIcon)); 
-				} else {
-					currentIcon = folderIcon;
+						listSdCard.add(new IconifiedText( 
+								currentFile.getName(), "", currentIcon)); 
+					} else {
+						currentIcon = folderIcon;
 
-					listDir.add(new IconifiedText( 
-							currentFile.getName(), "", currentIcon)); 
-				}
-			}else{ 
-				String fileName = currentFile.getName(); 
+						listDir.add(new IconifiedText( 
+								currentFile.getName(), "", currentIcon)); 
+					}
+				}else{ 
+					String fileName = currentFile.getName(); 
 
-				String mimetype = mMimeTypes.getMimeType(fileName);
+					String mimetype = mMimeTypes.getMimeType(fileName);
 
-				currentIcon = getDrawableForMimetype(currentFile, mimetype);
-				if (currentIcon == null) {
-					currentIcon = genericFileIcon;
-				}
+					currentIcon = getDrawableForMimetype(currentFile, mimetype);
+					if (currentIcon == null) {
+						currentIcon = genericFileIcon;
+					}
 
-				String size = "";
+					String size = "";
 
-				try {
-					size = (String) formatter_formatFileSize.invoke(null, context, currentFile.length());
-				} catch (Exception e) {
-					// The file size method is probably null (this is most
-					// likely not a Cupcake phone), or something else went wrong.
-					// Let's fall back to something primitive, like just the number
-					// of KB.
-					size = Long.toString(currentFile.length() / 1024);
-					size +=" KB";
+					try {
+						size = (String) formatter_formatFileSize.invoke(null, context, currentFile.length());
+					} catch (Exception e) {
+						// The file size method is probably null (this is most
+						// likely not a Cupcake phone), or something else went wrong.
+						// Let's fall back to something primitive, like just the number
+						// of KB.
+						size = Long.toString(currentFile.length() / 1024);
+						size +=" KB";
 
-					// Technically "KB" should come from a string resource,
-					// but this is just a Cupcake 1.1 fallback, and KB is universal
-					// enough.
-				}
+						// Technically "KB" should come from a string resource,
+						// but this is just a Cupcake 1.1 fallback, and KB is universal
+						// enough.
+					}
 
-				listFile.add(new IconifiedText( 
-						currentFile.getName(), size, currentIcon)); 
-			} 
+					listFile.add(new IconifiedText( 
+							currentFile.getName(), size, currentIcon)); 
+				} 
+			}
 		}
 		
 		Log.v(TAG, "Sorting results...");
