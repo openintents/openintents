@@ -26,7 +26,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.2.3
-date: 2009-11-12
+date: 2009-11-23
 - add counts to Category List
 - support small, normal, large screens
 
