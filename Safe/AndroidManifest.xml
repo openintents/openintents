@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.safe" 
-    android:versionCode="12" android:versionName="1.2.3">
+    android:versionName="1.2.4" android:versionCode="13">
     <!-- History:
     1.2.3 [12]: 2009-11-23
     1.2.2 [11]: 2009-10-29
@@ -127,6 +127,7 @@
    	</permission>
     <uses-permission android:name="org.openintents.safe.ACCESS_INTENTS" />
     <uses-permission android:name="org.openintents.safe.ACCESS_SERVICE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
 <uses-sdk android:targetSdkVersion="4" android:minSdkVersion="3"></uses-sdk>
 <supports-screens android:normalScreens="true" android:smallScreens="true" android:largeScreens="true"></supports-screens>

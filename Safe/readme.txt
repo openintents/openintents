@@ -25,6 +25,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.4
+date: 2009-11-27
+- fixed WRITE_EXTERNAL_STORAGE permission
+
+---------------------------------------------------------
 release: 1.2.3
 date: 2009-11-23
 - add counts to Category List
