@@ -25,6 +25,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.5
+date: 2009-12-??
+- fixed latent service notification
+
+---------------------------------------------------------
 release: 1.2.4
 date: 2009-11-27
 - fixed WRITE_EXTERNAL_STORAGE permission

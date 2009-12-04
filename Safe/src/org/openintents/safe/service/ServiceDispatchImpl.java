@@ -90,6 +90,7 @@ public class ServiceDispatchImpl extends Service {
 	  if (masterKey!=null) {
 		  lockOut();
 	  }
+	  ServiceNotification.clearNotification(ServiceDispatchImpl.this);
     }
 
     private void lockOut() {
