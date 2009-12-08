@@ -40,6 +40,7 @@ public class SensorCheck extends Activity {
 	
 	
 	String[] mInstruction = new String[] {
+			"This application will collect sensor data and send them to OpenIntents support. Before you start, please rotate your phone several times swiftly in all directions to calibrate the sensors.",
 			"Hold your phone in landscape mode and point the camera towards North (as if you were taking a picture of something far away at the horizon)."
 			+ " Keep the position and press the button below.",
 			"Now point towards East (where the sun rises).",
@@ -53,6 +54,7 @@ public class SensorCheck extends Activity {
 	
 
 	String[] mButtonText = new String[] {
+			"Start",
 			"North",
 			"East",
 			"South",
@@ -174,26 +176,26 @@ public class SensorCheck extends Activity {
     	mTextView.setText(mInstruction[mStep]);
     	mButton.setText(mButtonText[mStep]);
     	
-    	if (mStep == 1) {
+    	if (mStep == 2) {
     		mSendText = "Dear OpenIntents support team,\n\n";
     		mSendText += "Please find below the sensor data in various orientations ";
     		mSendText += "together with device-specific information.\n\n";
     		mSendText += "<insert additional comments>\n\n";
-    		mSendText += "Best,\n<insert your name here>\n\n";
+    		mSendText += "Best,\n<insert your name if you want>\n\n";
     		mSendText += "-----\nDevice information:\n";
     		mSendText += mTextView3.getText().toString();
     		mSendText += "\n-----\nSensor information:\n";
     		mSendText += mTextView2.getText().toString();
     		mSendText += "\n";
     	}
-    	if (mStep >= 1 && mStep <= 6) {
+    	if (mStep >= 2 && mStep <= 7) {
     		mSendText += "-----\n";
     		mSendText += mButtonText[mStep-1];
     		mSendText += ":\n";
     		mSendText += mTextView1.getText().toString();
     		mSendText += "\n";
     	}
-    	if (mStep == 7) {
+    	if (mStep == 8) {
     		// Send
     		mSendText += "-----\n";
     		Intent sendIntent = new Intent(Intent.ACTION_SEND);
