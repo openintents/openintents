@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+   <modelVersion>4.0.0</modelVersion>
+	<groupId>org.devtcg.tools.logcat</groupId>
+   <artifactId>Logcat</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <packaging>android:apk</packaging>
+   <name>Logcat</name>
+   <dependencies>
+      <dependency>
+         <groupId>android</groupId>
+         <artifactId>android</artifactId>
+         <version>1.0_r1</version>
+      </dependency>
+   </dependencies>
+   <build>
+      <sourceDirectory>src</sourceDirectory>
+      <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+               <source>1.5</source>
+               <target>1.5</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <groupId>org.jvending.masa.plugins</groupId>
+            <artifactId>maven-dx-plugin</artifactId>
+            <extensions>true</extensions>
+         </plugin>
+         <plugin>
+            <groupId>org.jvending.masa.plugins</groupId>
+            <artifactId>maven-aapt-plugin</artifactId>
+            <configuration>
+               <androidVersion>1.0_r1</androidVersion>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>
