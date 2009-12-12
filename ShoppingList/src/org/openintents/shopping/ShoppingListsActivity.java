@@ -13,6 +13,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+/**
+ * Activity to show list of shopping lists
+ *
+ */
+@Deprecated
 public class ShoppingListsActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -31,6 +31,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final boolean PREFS_SHOW_PRICE_DEFAULT = true;
 	public static final String PREFS_SHOW_TAGS = "showtags";
 	public static final boolean PREFS_SHOW_TAGS_DEFAULT = true;
+	public static final String PREFS_SHOW_QUANTITY = "showquantity";
+	public static final boolean PREFS_SHOW_QUANTITY_DEFAULT = true;
 	public static final String PREFS_SHAKE = "shake";
 	public static final boolean PREFS_SHAKE_DEFAULT = false;
 	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";

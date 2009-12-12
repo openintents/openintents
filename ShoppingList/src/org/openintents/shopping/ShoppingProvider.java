@@ -325,7 +325,7 @@ public class ShoppingProvider extends ContentProvider {
 		}
 	}
 
-	public Uri insertItem(Uri url, ContentValues values) {
+	private Uri insertItem(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 		long rowID;
 
@@ -372,7 +372,7 @@ public class ShoppingProvider extends ContentProvider {
 		throw new SQLException("Failed to insert row into " + url);
 	}
 
-	public Uri insertList(Uri url, ContentValues values) {
+	private Uri insertList(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 		long rowID;
 
@@ -441,7 +441,7 @@ public class ShoppingProvider extends ContentProvider {
 
 	}
 
-	public Uri insertContains(Uri url, ContentValues values) {
+	private Uri insertContains(Uri url, ContentValues values) {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 		Long now = Long.valueOf(System.currentTimeMillis());
 		Resources r = Resources.getSystem();

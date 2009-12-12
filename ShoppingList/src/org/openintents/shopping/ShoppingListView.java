@@ -8,8 +8,11 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Status;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -30,6 +33,10 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.SimpleCursorAdapter.ViewBinder;
 
+/**
+ * View to show a shopping list with its items
+ * 
+ */
 public class ShoppingListView extends ListView {
 	private final static String TAG = "ShoppingListView";
 	private final static boolean debug = true;
@@ -43,7 +50,8 @@ public class ShoppingListView extends ListView {
 
 	public int mPriceVisibility;
 	public int mTagsVisibility;
-	public Typeface mTypeface;
+	public int mQuantityVisibility;
+	public int mTypeface;
 	public float mTextSize;
 	public boolean mUpperCaseFont;
 	public int mTextColor;
@@ -57,12 +65,12 @@ public class ShoppingListView extends ListView {
 	Cursor mCursorItems;
 	private View mThemedBackground;
 	private long mListId;
-	
+
 	private TextView mTotalTextView;
 	private TextView mTotalCheckedTextView;
-	
+
 	public boolean mClickMeansEdit;
-    
+
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
 	 * Shopping.Status.BOUGHT
@@ -95,6 +103,7 @@ public class ShoppingListView extends ListView {
 			View view = super.newView(context, cursor, parent);
 			view.findViewById(R.id.price).setVisibility(mPriceVisibility);
 			view.findViewById(R.id.tags).setVisibility(mTagsVisibility);
+			view.findViewById(R.id.quantity).setVisibility(mQuantityVisibility);
 			return view;
 		}
 
@@ -107,16 +116,19 @@ public class ShoppingListView extends ListView {
 				final Cursor cursor) {
 			super.bindView(view, context, cursor);
 
+			long status = cursor.getLong(ShoppingActivity.mStringItemsSTATUS);
+
 			TextView t = (TextView) view.findViewById(R.id.name);
-			// we have a check box now.. more visual and gets the point across
-			CheckBox c = (CheckBox) view.findViewById(R.id.check);
 
-			Log.i(TAG, "bindview: pos = " + cursor.getPosition());
-
-			c.setTag(new Integer(cursor.getPosition()));
-
+			// set style for name view
 			// Set font
-			t.setTypeface(mTypeface);
+			if (mTypeface == 1){
+				t.setTypeface(null);
+			} else if (mTypeface == 2){
+				t.setTypeface(mTypefaceHandwriting);				
+			} else {
+				t.setTypeface(mTypefaceDigital);
+			}
 
 			// Set size
 			t.setTextSize(mTextSize);
@@ -129,20 +141,6 @@ public class ShoppingListView extends ListView {
 			}
 
 			t.setTextColor(mTextColor);
-
-			long status = cursor.getLong(ShoppingActivity.mStringItemsSTATUS);
-			if (mMarkType == MARK_CHECKBOX) {
-				c.setVisibility(CheckBox.VISIBLE);
-				if ((status == Shopping.Status.BOUGHT && mMode == ShoppingActivity.MODE_IN_SHOP)
-						|| (status == Shopping.Status.WANT_TO_BUY)
-						&& mMode == ShoppingActivity.MODE_ADD_ITEMS) {
-					c.setChecked(true);
-				} else {
-					c.setChecked(false);
-				}
-			} else {
-				c.setVisibility(CheckBox.GONE);
-			}
 
 			if (status == Shopping.Status.BOUGHT) {
 				t.setTextColor(mMarkTextColor);
@@ -177,19 +175,37 @@ public class ShoppingListView extends ListView {
 
 			}
 
-			/*
-			t = (TextView) view.findViewById(R.id.quantity);
-			if (t != null && TextUtils.isEmpty(t.getText())) {
-				t.setText("1");
+			// we have a check box now.. more visual and gets the point across
+			CheckBox c = (CheckBox) view.findViewById(R.id.check);
+
+			Log.i(TAG, "bindview: pos = " + cursor.getPosition());
+
+			// set style for check box
+			c.setTag(new Integer(cursor.getPosition()));
+
+			if (mMarkType == MARK_CHECKBOX) {
+				c.setVisibility(CheckBox.VISIBLE);
+				if ((status == Shopping.Status.BOUGHT && mMode == ShoppingActivity.MODE_IN_SHOP)
+						|| (status == Shopping.Status.WANT_TO_BUY)
+						&& mMode == ShoppingActivity.MODE_ADD_ITEMS) {
+					c.setChecked(true);
+				} else {
+					c.setChecked(false);
+				}
+			} else {
+				c.setVisibility(CheckBox.GONE);
 			}
-			*/
+
+			/*
+			 * t = (TextView) view.findViewById(R.id.quantity); if (t != null &&
+			 * TextUtils.isEmpty(t.getText())) { t.setText("1"); }
+			 */
 
 			// The parent view knows how to deal with clicks.
 			// We just pass the click through.
-			//c.setClickable(false);
-			
+			// c.setClickable(false);
 			final int cursorpos = cursor.getPosition();
-			
+
 			c.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -197,7 +213,7 @@ public class ShoppingListView extends ListView {
 					Log.d(TAG, "Click: ");
 					toggleItemBought(cursorpos);
 				}
-				
+
 			});
 		}
 
@@ -208,11 +224,12 @@ public class ShoppingListView extends ListView {
 				TextView tv = (TextView) view;
 				if (mPriceVisibility == View.VISIBLE && price != 0) {
 					tv.setVisibility(View.VISIBLE);
-				    String s = mPriceFormatter.format(price * 0.01d);
+					String s = mPriceFormatter.format(price * 0.01d);
 					tv.setTextColor(mPriceTextColor);
 					tv.setText(s);
 				} else {
 					tv.setVisibility(View.GONE);
+					tv.setText("");
 				}
 				return true;
 			} else if (view.getId() == R.id.tags) {
@@ -225,6 +242,21 @@ public class ShoppingListView extends ListView {
 					tv.setText(tags);
 				} else {
 					tv.setVisibility(View.GONE);
+					tv.setText("");
+				}
+				return true;
+			} else if (view.getId() == R.id.quantity) {
+				String quantity = cursor
+						.getString(ShoppingActivity.mStringItemsQUANTITY);
+				TextView tv = (TextView) view;
+				if (mQuantityVisibility == View.VISIBLE
+						&& !TextUtils.isEmpty(quantity)) {
+					tv.setVisibility(View.VISIBLE);
+					tv.setTextColor(mPriceTextColor);
+					tv.setText(quantity);
+				} else {
+					tv.setVisibility(View.GONE);
+					tv.setText("");
 				}
 				return true;
 			} else {
@@ -244,7 +276,7 @@ public class ShoppingListView extends ListView {
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			
+
 			if (mCursorItems != null) {
 				try {
 					requery();
@@ -254,11 +286,10 @@ public class ShoppingListView extends ListView {
 					mCursorItems = null;
 				}
 			}
-			
+
 		}
-		
+
 	};
-	
 
 	public ShoppingListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -274,21 +305,21 @@ public class ShoppingListView extends ListView {
 		super(context);
 		init();
 	}
-	
+
 	private void init() {
 		readFonts();
 	}
 
 	public void onResume() {
-		
+
 		// Content observer registered at fillItems()
-		//registerContentObserver();
+		// registerContentObserver();
 	}
-	
+
 	public void onPause() {
 		unregisterContentObserver();
 	}
-	
+
 	private void readFonts() {
 		// Read fonts
 		mTypefaceHandwriting = Typeface.createFromAsset(getContext()
@@ -297,7 +328,7 @@ public class ShoppingListView extends ListView {
 				"fonts/Crysta.ttf");
 
 	}
-	
+
 	Cursor fillItems(long listId) {
 
 		mListId = listId;
@@ -323,7 +354,7 @@ public class ShoppingListView extends ListView {
 		mCursorItems = getContext().getContentResolver().query(
 				ContainsFull.CONTENT_URI, ShoppingActivity.mStringItems,
 				selection, new String[] { String.valueOf(listId) }, sortOrder);
-		
+
 		registerContentObserver();
 
 		// Activate the following for a striped list.
@@ -351,16 +382,19 @@ public class ShoppingListView extends ListView {
 				// Give the cursor to the list adapter
 				mCursorItems,
 				// Map the IMAGE and NAME to...
-				new String[] { ContainsFull.ITEM_NAME, /*ContainsFull.ITEM_IMAGE,*/
-						ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE/*,
-						ContainsFull.QUANTITY */},
+				new String[] { ContainsFull.ITEM_NAME, /*
+														 * ContainsFull.ITEM_IMAGE
+														 * ,
+														 */
+				ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
+						ContainsFull.QUANTITY },
 				// the view defined in the XML template
-				new int[] { R.id.name, /*R.id.image_URI, */R.id.tags, R.id.price/*,
-						R.id.quantity*/ });
+				new int[] { R.id.name, /* R.id.image_URI, */R.id.tags,
+						R.id.price, R.id.quantity });
 		setAdapter(adapter);
-		
+
 		updateTotal();
-		
+
 		return mCursorItems;
 	}
 
@@ -371,9 +405,10 @@ public class ShoppingListView extends ListView {
 		getContext().getContentResolver().registerContentObserver(
 				Shopping.Items.CONTENT_URI, true, mContentObserver);
 	}
-	
+
 	private void unregisterContentObserver() {
-		getContext().getContentResolver().unregisterContentObserver(mContentObserver);
+		getContext().getContentResolver().unregisterContentObserver(
+				mContentObserver);
 	}
 
 	private int getSizeFromPrefs() {
@@ -391,85 +426,59 @@ public class ShoppingListView extends ListView {
 	 */
 	void setListTheme(int themeId) {
 		int size = getSizeFromPrefs();
+
 		switch (themeId) {
 		case 1:
-			mTypeface = null;
-			mUpperCaseFont = false;
-			mTextColor = 0xffffffff; // white
-			mPriceTextColor = 0xffcccccc; // white gray
-
-			if (size == 1) {
-				mTextSize = 18;
-			} else if (size == 2) {
-				mTextSize = 23;
-			} else {
-				mTextSize = 28;
-			}
-
-			mMarkTextColor = 0xffcccccc; // white gray
-			mMarkType = MARK_CHECKBOX;
-
-			if (mThemedBackground != null) {
-				mThemedBackground.setPadding(0, 0, 0, 0);
-				mThemedBackground.setBackgroundDrawable(null);
-			}
-			
-			mClickMeansEdit = true;
-
+			getContext().setTheme(R.style.ShoppingListDefault);
 			break;
 		case 2:
-			mTypeface = mTypefaceHandwriting;
-			mUpperCaseFont = false;
-			mTextColor = 0xff000000; // black
-			mPriceTextColor = 0xff444444; // black gray
-			if (size == 1) {
-				mTextSize = 15;
-			} else if (size == 2) {
-				mTextSize = 20;
-			} else {
-				mTextSize = 25;
-			}
-
-			mMarkTextColor = 0xff008800; // dark green
-			mMarkType = MARK_STRIKETHROUGH;
-
-			if (mThemedBackground != null) {
-				// 9-patch drawable defines padding by itself
-				mThemedBackground
-						.setBackgroundResource(R.drawable.shoppinglist01d);
-			}
-			
-			mClickMeansEdit = false;
-
+			getContext().setTheme(R.style.ShoppingListClassic);
 			break;
 		case 3:
-			mTypeface = mTypefaceDigital;
-
-			// Digital only supports upper case fonts.
-			mUpperCaseFont = true;
-			mTextColor = 0xffff0000; // red
-			mPriceTextColor = 0xffcccccc; // white gray
-			if (size == 1) {
-				mTextSize = 21;
-			} else if (size == 2) {
-				mTextSize = 26;
-			} else {
-				mTextSize = 31;
-			}
-
-			mMarkTextColor = 0xff00ff00; // light green
-			mMarkType = MARK_ADDTEXT;
-
-			if (mThemedBackground != null) {
-				mThemedBackground.setPadding(0, 0, 0, 0);
-				mThemedBackground
-						.setBackgroundResource(R.drawable.theme_android);
-			}
-			
-			mClickMeansEdit = false;
-
+			getContext().setTheme(R.style.ShoppingListAndroid);
 			break;
 		}
+
+		TypedArray a = getContext().obtainStyledAttributes(
+				R.styleable.ShoppingListView);
+
+		mTypeface = a.getInteger(R.styleable.ShoppingListView_typeface, 1);
+		mUpperCaseFont = a.getBoolean(R.styleable.ShoppingListView_upperCaseFont, true);
+		mTextColor = a.getColor(R.styleable.ShoppingListView_textColor,
+				android.R.color.black);
+		mPriceTextColor = a.getColor(
+				R.styleable.ShoppingListView_priceTextColor,
+				android.R.color.black);
+		if (size == 1) {
+			mTextSize = a
+					.getInt(R.styleable.ShoppingListView_textSizeSmall, 10);
+		} else if (size == 2) {
+			mTextSize = a.getInt(R.styleable.ShoppingListView_textSizeMedium,
+					20);
+		} else {
+			mTextSize = a
+					.getInt(R.styleable.ShoppingListView_textSizeLarge, 30);
+		}
+
+		mMarkTextColor = a.getColor(R.styleable.ShoppingListView_markTextColor,
+				android.R.color.black);
+		mMarkType = a.getInt(R.styleable.ShoppingListView_markType, 0);
+
+		if (mThemedBackground != null) {
+			if (a.getInteger(R.styleable.ShoppingListView_backgroundPadding, -1) >=0){
+			   mThemedBackground.setPadding(0,0,0,0);
+			} else {
+				// 9-patches do the padding automatically
+				// todo clear padding 
+			}
+			mThemedBackground.setBackgroundResource(a.getResourceId(
+					R.styleable.ShoppingListView_background, 0));
+		}
+
+		mClickMeansEdit = a.getBoolean(
+				R.styleable.ShoppingListView_clickMeansEdit, true);
+
+		a.recycle();
 
 		invalidate();
 		if (mCursorItems != null) {
@@ -485,7 +494,8 @@ public class ShoppingListView extends ListView {
 	public void toggleItemBought(int position) {
 		mCursorItems.moveToPosition(position);
 
-		long oldstatus = mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS);
+		long oldstatus = mCursorItems
+				.getLong(ShoppingActivity.mStringItemsSTATUS);
 
 		// Toggle status:
 		// bought -> want_to_buy
@@ -498,7 +508,8 @@ public class ShoppingListView extends ListView {
 
 		ContentValues values = new ContentValues();
 		values.put(Shopping.Contains.STATUS, newstatus);
-		Log.d(TAG, "update row " + mCursorItems.getString(0) + ", newstatus " + newstatus);
+		Log.d(TAG, "update row " + mCursorItems.getString(0) + ", newstatus "
+				+ newstatus);
 		getContext().getContentResolver().update(
 				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI,
 						mCursorItems.getString(0)), values, null, null);
@@ -533,15 +544,16 @@ public class ShoppingListView extends ListView {
 		}
 
 		requery();
-		
+
 		return !nothingdeleted;
-		
+
 	}
 
 	public void toggleItemRemovedFromList(int pos) {
 		mCursorItems.moveToPosition(pos);
 
-		long oldstatus = mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS);
+		long oldstatus = mCursorItems
+				.getLong(ShoppingActivity.mStringItemsSTATUS);
 
 		// Toggle status:
 		// bought -> want_to_buy
@@ -554,28 +566,29 @@ public class ShoppingListView extends ListView {
 
 		ContentValues values = new ContentValues();
 		values.put(Shopping.Contains.STATUS, newstatus);
-		Log.d(TAG, "update row " + mCursorItems.getString(0) + ", newstatus " + newstatus);
+		Log.d(TAG, "update row " + mCursorItems.getString(0) + ", newstatus "
+				+ newstatus);
 		getContext().getContentResolver().update(
 				Uri.withAppendedPath(Shopping.Contains.CONTENT_URI,
 						mCursorItems.getString(0)), values, null, null);
 
 		requery();
 
-		//invalidate();
+		// invalidate();
 
-		
 	}
 
-	public void insertNewItem(String newItem) {		
+	public void insertNewItem(String newItem) {
 
 		long itemId = Shopping.getItem(getContext(), newItem, null);
 
-		Log.i(TAG, "Insert new item. " + " itemId = " + itemId
-				+ ", listId = " + mListId);
-		Shopping.addItemToList(getContext(), itemId, mListId, Status.WANT_TO_BUY);
+		Log.i(TAG, "Insert new item. " + " itemId = " + itemId + ", listId = "
+				+ mListId);
+		Shopping.addItemToList(getContext(), itemId, mListId,
+				Status.WANT_TO_BUY);
 
 		fillItems(mListId);
-		
+
 		// Set the item that we have just selected:
 		// Get position of ID:
 		mCursorItems.moveToPosition(-1);
@@ -593,66 +606,65 @@ public class ShoppingListView extends ListView {
 			}
 		}
 
-		
 	}
-	
+
 	public void requery() {
 		mCursorItems.requery();
 		updateTotal();
 	}
-	
+
 	public void setTotalTextView(TextView tv) {
 		mTotalTextView = tv;
 	}
-	
+
 	public void setTotalCheckedTextView(TextView tv) {
 		mTotalCheckedTextView = tv;
 	}
-	
+
 	/**
-	 * Update the text fields for "Total:" and "Checked:" with 
-	 * corresponding price information.
+	 * Update the text fields for "Total:" and "Checked:" with corresponding
+	 * price information.
 	 */
 	public void updateTotal() {
 		if (mTotalTextView == null || mTotalCheckedTextView == null) {
 			// Most probably in "Add item" mode where no total is displayed
 			return;
 		}
-		
+
 		if (mPriceVisibility != View.VISIBLE) {
 			// If price is not displayed, do not display total
 			mTotalTextView.setVisibility(View.GONE);
 			mTotalCheckedTextView.setVisibility(View.GONE);
 			return;
 		}
-		
+
 		mCursorItems.moveToPosition(-1);
 		long total = 0;
 		long totalchecked = 0;
 		while (mCursorItems.moveToNext()) {
-			long price = mCursorItems.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+			long price = mCursorItems
+					.getLong(ShoppingActivity.mStringItemsITEMPRICE);
 			total += price;
 			if (mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
 				totalchecked += price;
 			}
 		}
 		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked);
-		
+
 		mTotalTextView.setTextColor(mPriceTextColor);
 		mTotalCheckedTextView.setTextColor(mPriceTextColor);
-		
-		
+
 		if (total != 0) {
-			String s = mPriceFormatter.format(total * 0.01d);           
+			String s = mPriceFormatter.format(total * 0.01d);
 			s = getContext().getString(R.string.total, s);
 			mTotalTextView.setText(s);
 			mTotalTextView.setVisibility(View.VISIBLE);
 		} else {
 			mTotalTextView.setVisibility(View.GONE);
 		}
-		
+
 		if (totalchecked != 0) {
-			String s = mPriceFormatter.format(totalchecked * 0.01d);           
+			String s = mPriceFormatter.format(totalchecked * 0.01d);
 			s = getContext().getString(R.string.total_checked, s);
 			mTotalCheckedTextView.setText(s);
 			mTotalCheckedTextView.setVisibility(View.VISIBLE);

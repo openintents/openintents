@@ -11,40 +11,45 @@
 		permissions and * limitations under the License.
 	-->
 
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_height="fill_parent"
-android:layout_width="fill_parent">
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="wrap_content" android:padding="5dip">
-	<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text=""
-		android:layout_weight="1" android:hint="@string/item" 
-		android:singleLine="true"
-		/><!-- android:capitalize="words" -->
-	<LinearLayout android:id="@+id/tags_panel"
-		android:orientation="vertical" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:padding="5dip">
-		<TextView android:layout_width="fill_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" android:layout_width="fill_parent">
+	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:padding="5dip">
+		<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/tags" />
+			android:layout_weight="1" android:hint="@string/item"
+			android:inputType="text" />
+		<!--
+			android:capitalize="words"
+		-->
+		<TextView android:layout_width="fill_parent" android:id="@+id/labeledittag"
+			android:layout_height="wrap_content" android:text=""
+			android:layout_weight="1" android:hint="@string/tags"
+			android:layout_below="@+id/editquantity" />
 		<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/tags" 
-			android:singleLine="true"
-			/><!-- android:capitalize="words" -->
-	</LinearLayout>
-	<LinearLayout android:id="@+id/price_panel"
-		android:orientation="vertical" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:padding="5dip">
-		<TextView android:layout_width="fill_parent"
+			android:layout_weight="1" android:hint="@string/tags"
+			android:singleLine="true" android:layout_below="@id/labeledittag" />
+		<!--
+			android:capitalize="words"
+		-->
+		<TextView android:layout_width="fill_parent" android:id="@+id/labeleditprice"
 			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/price" />
+			android:layout_weight="1" android:hint="@string/price"
+			android:layout_below="@id/edittags" />
 		<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
 			android:layout_weight="1" android:hint="@string/price"
-			android:singleLine="true"
-			android:numeric="signed|decimal"/>
-	</LinearLayout>
-</LinearLayout>
+			android:singleLine="true" android:numeric="signed|decimal"
+			android:layout_below="@id/labeleditprice" />
+		<TextView android:layout_width="fill_parent" android:id="@+id/labeleditquantity"
+			android:layout_height="wrap_content" android:layout_weight="1"
+			android:hint="@string/quantity" android:layout_below="@+id/edittext" />
+		<EditText android:hint="@string/quantity" android:id="@+id/editquantity"
+			android:layout_height="wrap_content" android:layout_width="fill_parent"
+			android:layout_below="@+id/labeleditquantity" />
+
+	</RelativeLayout>
+
 </ScrollView>

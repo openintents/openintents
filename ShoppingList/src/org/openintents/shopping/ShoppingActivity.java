@@ -253,7 +253,7 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int mStringItemsITEMIMAGE = 2;
 	static final int mStringItemsITEMTAGS = 3;
 	static final int mStringItemsITEMPRICE = 4;
-	private static final int mStringItemsQUANTITY = 5;
+	static final int mStringItemsQUANTITY = 5;
 	static final int mStringItemsSTATUS = 6;
 	static final int mStringItemsITEMID = 7;
 	private static final int mStringItemsSHARECREATEDBY = 8;
@@ -309,6 +309,7 @@ public class ShoppingActivity extends Activity { // implements
 	 * Whether to use the sensor for shake.
 	 */
 	private boolean mUseSensor = false;
+	private Uri mRelationUri;
 
 	/**
 	 * Called when the activity is first created.
@@ -487,6 +488,12 @@ public class ShoppingActivity extends Activity { // implements
 				mListItemsView.mTagsVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mTagsVisibility = View.GONE;
+			}
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_QUANTITY, 
+					PreferenceActivity.PREFS_SHOW_QUANTITY_DEFAULT)) {
+				mListItemsView.mQuantityVisibility = View.VISIBLE;
+			} else {
+				mListItemsView.mQuantityVisibility = View.GONE;
 			}
 		}
 		
@@ -1245,9 +1252,12 @@ public class ShoppingActivity extends Activity { // implements
 		//mEditItemPosition = position;
 		
 		long itemId = mListItemsView.mCursorItems.getLong(mStringItemsITEMID);
+		long containsId = mListItemsView.mCursorItems.getLong(mStringItemsCONTAINSID);
 
 		mItemUri = Uri.withAppendedPath(Shopping.Items.CONTENT_URI, ""
 				+ itemId);
+		mRelationUri = Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, ""
+				+ containsId);
 		
 		showDialog(DIALOG_EDIT_ITEM);
 	}
@@ -1538,7 +1548,7 @@ public class ShoppingActivity extends Activity { // implements
 			});
 			
 		case DIALOG_EDIT_ITEM:
-			return new EditItemDialog(this, mItemUri);
+			return new EditItemDialog(this, mItemUri, mRelationUri);
 			
 		case DIALOG_DELETE_ITEM:
 			return new AlertDialog.Builder(this)
@@ -1574,6 +1584,7 @@ public class ShoppingActivity extends Activity { // implements
 			
 		case DIALOG_EDIT_ITEM:
 			((EditItemDialog) dialog).setItemUri(mItemUri);
+			((EditItemDialog)dialog).setRelationUri(mRelationUri);
 			break;
 		}
 	}

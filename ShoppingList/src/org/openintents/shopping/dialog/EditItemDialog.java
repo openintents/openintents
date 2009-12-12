@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
@@ -29,10 +30,11 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	EditText mEditText;
 	EditText mTags;
 	EditText mPrice;
+	EditText mQuantity;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 	
-	public EditItemDialog(Context context, Uri itemUri) {
+	public EditItemDialog(Context context, Uri itemUri, Uri relationUri) {
 		super(context);
 		mContext = context;
 		
@@ -44,6 +46,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mEditText = (EditText) view.findViewById(R.id.edittext);
 		mTags = (EditText) view.findViewById(R.id.edittags);
 		mPrice = (EditText) view.findViewById(R.id.editprice);
+		mQuantity= (EditText) view.findViewById(R.id.editquantity);
 
 		KeyListener kl = PreferenceActivity
 			.getCapitalizationKeyListenerFromPrefs(context);
@@ -54,6 +57,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		setTitle(R.string.ask_edit_item);
 		
 		setItemUri(itemUri);
+		setRelationUri(relationUri);
 		
 		setButton(context.getText(R.string.ok), this);
 		setButton2(context.getText(R.string.cancel), this);
@@ -81,11 +85,16 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 				*/
 	}
 	
-	String[] mProjection = { 
+	private final String[] mProjection = { 
 			Shopping.Items.NAME,
 			Shopping.Items.TAGS,
 			Shopping.Items.PRICE 
 	};
+	private final String[] mRelationProjection = { 
+			Shopping.Contains.QUANTITY 
+	};
+
+	private Uri mRelationUri;
 			
 	public void setItemUri(Uri itemUri) {
 		mItemUri = itemUri;
@@ -107,6 +116,17 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			mTags.setText(tags);
 			mPrice.setText(price);
 		}
+		c.close();
+	}
+	
+	public void setRelationUri(Uri relationUri){
+		mRelationUri = relationUri;
+		Cursor c= mContext.getContentResolver().query(mRelationUri, mRelationProjection, null, null, null);
+		if (c != null && c.moveToFirst()){
+			String quantity = c.getString(0);
+			mQuantity.setText(quantity);
+		}
+		c.close();		
 	}
 
 	public void onClick(DialogInterface dialog, int which) {
@@ -120,6 +140,8 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		String text = mEditText.getText().toString();
 		String tags = mTags.getText().toString();
 		String price = mPrice.getText().toString();
+		String quantity = mQuantity.getText().toString();
+		
 		Long priceLong;
 		if (TextUtils.isEmpty(price)) {
 			priceLong = 0L;
@@ -140,6 +162,10 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mContext.getContentResolver().update(mItemUri, values, null, null);
 		mContext.getContentResolver().notifyChange(mItemUri, null);
 
+		values.clear();
+		values.put(Contains.QUANTITY, quantity);
+		mContext.getContentResolver().update(mRelationUri, values, null, null);
+		mContext.getContentResolver().notifyChange(mRelationUri, null);
 	}
 	
 }

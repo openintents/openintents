@@ -16,12 +16,11 @@
 
 package org.openintents.provider;
 
-import com.google.android.maps.GeoPoint;
-
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.graphics.Point;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.provider.BaseColumns;
@@ -114,7 +113,7 @@ public class Location {
 
 	}
 
-	public GeoPoint getPoint(long id) {
+	public Point getPoint(long id) {
 		Cursor cursor = mResolver.query(ContentUris.withAppendedId(
 				Locations.CONTENT_URI, id), new String[] { Locations._ID,
 				Locations.LATITUDE, Locations.LONGITUDE }, null, null,
@@ -122,7 +121,7 @@ public class Location {
 		if (cursor.moveToNext()) {
 			int lat = Double.valueOf(cursor.getDouble(1) * 1E6).intValue();
 			int lon = Double.valueOf(cursor.getDouble(2) * 1E6).intValue();
-			return new GeoPoint(lat, lon);
+			return new Point(lat, lon);
 		} else {
 			return null;
 		}

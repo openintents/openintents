@@ -21,4 +21,6 @@
     <color name="strikethrough">#33336600</color>
     <drawable name="yellow_green">#9acd32</drawable>
     <drawable name="gold">#ffd700</drawable>
+    <color name="priceTextColor">#FFCCCCCC</color>
+    <color name="markTextColor">#FFCCCCCC</color>
 </resources>

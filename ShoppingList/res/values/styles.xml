@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="ShoppingListDefault">
+		<item name="typeface">1</item>
+		<item name="textColor">#FFFFFFFF</item>
+		<item name="priceTextColor">#FFCCCCCC</item>
+		<item name="markTextColor">#FFCCCCCC</item>
+		<item name="markType">1</item>
+		<item name="clickMeansEdit">true</item>
+		<item name="background">?android:background</item>
+		<item name="backgroundPadding">0</item>
+		<item name="textSizeSmall">18</item>
+		<item name="textSizeMedium">23</item>
+		<item name="textSizeLarge">28</item>
+		<item name="upperCaseFont">false</item>
+	</style>
+
+	<style name="ShoppingListClassic">
+		<item name="typeface">2</item>
+		<item name="textColor">#FF000000</item>
+		<item name="upperCaseFont">false</item>
+		<item name="priceTextColor">#FF444444</item>
+		<item name="markTextColor">#FF008800</item>
+		<item name="labelTextSize">30</item>
+		<item name="markType">2</item>
+		<item name="clickMeansEdit">false</item>
+		<item name="background">@drawable/shoppinglist01d</item>
+		<item name="textSizeSmall">15</item>
+		<item name="textSizeMedium">20</item>
+		<item name="textSizeLarge">25</item>
+	</style>
+
+	<style name="ShoppingListAndroid">
+		<item name="typeface">3</item>
+		<item name="textColor">#FFFF0000</item>
+		<item name="upperCaseFont">true</item>
+		<item name="priceTextColor">#FFCCCCCC</item>
+		<item name="markTextColor">#FF00FF00</item>
+		<item name="labelTextSize">30</item>
+		<item name="markType">3</item>
+		<item name="clickMeansEdit">false</item>
+		<item name="background">@drawable/theme_android</item>
+		<item name="backgroundPadding">0</item>
+		<item name="textSizeSmall">21</item>
+		<item name="textSizeMedium">26</item>
+		<item name="textSizeLarge">31</item>
+	</style>
+</resources>
