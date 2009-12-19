@@ -416,19 +416,19 @@ storepass=*password of keystore*
 	
 	<!-- Install the signed package on the default emulator -->
 	<target name="install-signed" depends="release">
-		<echo>Installing ${out-signed-package} onto default emulator...</echo>
+		<echo>Installing ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
 	<target name="reinstall-signed" depends="release">
-		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
+		<echo>Reinstalling ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
