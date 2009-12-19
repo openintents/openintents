@@ -9,6 +9,7 @@
 		<item name="clickMeansEdit">true</item>
 		<item name="background">?android:background</item>
 		<item name="backgroundPadding">0</item>
+		<item name="divider">0</item>
 		<item name="textSizeSmall">18</item>
 		<item name="textSizeMedium">23</item>
 		<item name="textSizeLarge">28</item>
@@ -25,6 +26,8 @@
 		<item name="markType">2</item>
 		<item name="clickMeansEdit">false</item>
 		<item name="background">@drawable/shoppinglist01d</item>
+		<item name="backgroundPadding">-1</item>
+		<item name="divider">-1</item>
 		<item name="textSizeSmall">15</item>
 		<item name="textSizeMedium">20</item>
 		<item name="textSizeLarge">25</item>
@@ -41,6 +44,7 @@
 		<item name="clickMeansEdit">false</item>
 		<item name="background">@drawable/theme_android</item>
 		<item name="backgroundPadding">0</item>
+		<item name="divider">0</item>
 		<item name="textSizeSmall">21</item>
 		<item name="textSizeMedium">26</item>
 		<item name="textSizeLarge">31</item>

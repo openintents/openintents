@@ -8,14 +8,13 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Status;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -70,6 +69,8 @@ public class ShoppingListView extends ListView {
 	private TextView mTotalCheckedTextView;
 
 	public boolean mClickMeansEdit;
+	
+	private Drawable mDefaultDivider;
 
 	/**
 	 * Extend the SimpleCursorAdapter to strike through items. if STATUS ==
@@ -308,6 +309,9 @@ public class ShoppingListView extends ListView {
 
 	private void init() {
 		readFonts();
+		
+		// Remember standard divider
+		mDefaultDivider = getDivider();
 	}
 
 	public void onResume() {
@@ -478,8 +482,21 @@ public class ShoppingListView extends ListView {
 		mClickMeansEdit = a.getBoolean(
 				R.styleable.ShoppingListView_clickMeansEdit, true);
 
+		int divider = a.getInteger(R.styleable.ShoppingListView_divider, 0);
+		
 		a.recycle();
-
+		
+		Drawable div = null;
+		if (divider > 0) {
+			div = getResources().getDrawable(divider);
+		} else if (divider < 0) {
+			div = null;
+		} else {
+			div = mDefaultDivider;
+		}
+		
+		setDivider(div);
+		
 		invalidate();
 		if (mCursorItems != null) {
 			requery();

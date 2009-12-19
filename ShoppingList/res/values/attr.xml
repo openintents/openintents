@@ -13,6 +13,7 @@
 		<attr name="markType" format="integer" />
 		<attr name="background" format="integer" />
 		<attr name="backgroundPadding" format="integer" />
+		<attr name="divider" format="integer" />
 		<attr name="clickMeansEdit" format="boolean" />
 		<attr name="typeface" format="integer" />
 	</declare-styleable>
