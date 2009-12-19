@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  CSro https://launchpad.net/~choongsan</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI 전등</string>
+    
+    <string name="flashlight_info">The backlight stays turned on.</string>
+    
+    
+    <string name="color">색</string>
+    <string name="color_picker">색 골라내기</string>
+    
+    
+	<!-- Update -->
+	<string name="update_available">OI 전등의 새버전이 나왔습니다. \n%s\n업그래이드 하시겠습니까?</string>
+	<string name="market_not_available">Android Market not available.</string>
+	<string name="market_search_term">OI 전등</string>
+
+	<!-- About -->
+	<string name="about">프로그램 정보</string>
+	<string name="about_title">%s에 대하여</string>
+	<string name="about_text">Version %s \n\n
+OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
+while this application is running.\n\n
+OpenIntents allows different Android applications 
+to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at 
+www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	<string name="eula_accept">수락</string>
+	<string name="eula_refuse">취소</string>
+	
+	<!-- Update -->
+	<string name="update_menu">업데이트 확인</string>
+    <string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">지금 확인</string>
+	<string name="update_get_updater">OI 업데이트기 가져오기</string>
+	<string name="update_error">Download application not available.</string>
+</resources>

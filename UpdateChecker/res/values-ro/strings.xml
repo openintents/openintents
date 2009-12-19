@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  iulargsb https://launchpad.net/~iulargsb</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">Este disponibilă o nouă versiune de %s.\nDoriți actualizarea?</string>
+    <string name="update_available_3">Este disponibilă o nouă versiune de %s pe %s.\n%s\n</string>
+    <string name="update_available_2">Este disponibilă o nouă versiune de %s.\n%s\n</string>
+    <string name="update_available_location_no_comment">Este disponibilă o nouă versiune de %s pe %s.</string>
+    <string name="update_available_no_comment">Este disponibilă o nouă versiune de %s.</string>
+	<string name="market_not_available">Android Market nu este disponibil.</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Versiune %s\nCard SD %s\n\nSO\n%s</string>
+    <string name="free_space">spațiu liber: %s</string>
+    <string name="os_info">Placă %s\nFirmă %s\nDispozitiv %s\nID %s\nModel %s</string>
+    
+    <string name="do_update">Aplică actualizarea acum!</string>
+    <string name="do_update_market">Incearcă actualizare de pe Market acum!</string>
+    <string name="do_update_andAppStore">Incearcă actualizare de pe AndAppStore acum!</string>
+    <string name="remind_me_later">Reamintește-mi mai târziu!</string>
+    <string name="ignore_this_update">Ignoră această actualizare</string>
+    <string name="ignore_all_further_updates">Ignoră toate actualizările ulterioare</string>
+    <string name="ok">OK</string>
+    
+    <string name="update_not_started">Actualizarea nu a putut fi pornită!\n\nVă rugăm contactați dezvoltatorul aplicatiei!\n\n%s</string>
+    <string name="app_up_to_date">Aplicația este la zi.</string>
+    <string name="checking">Verific versiuni noi.</string>
+    <string name="building_app_list">Alcătuiesc lista de aplicații.</string>
+    <string name="check_andappstore">Verifică AndAppStore.com</string>
+    <string name="check_versions">Verifică versiuni</string>
+    <string name="show_versions">Arată tot</string>
+    <string name="refresh">Actualizează</string>
+    <string name="checked_against_andappstore">AndAppStore verificat</string>
+    <string name="current_version">Versiune curentă: %s</string>
+    <string name="current_version_code">Codul versiunii curente: %s</string>
+    <string name="newer_version">Versiune nouă: %s</string>
+    <string name="newer_version_comment">Versiune nouă: %s - %s</string>
+    <string name="newer_version_available">Există versiune nouă.</string>
+    <string name="no_update_info_found">Nu am găsit informații despre actualizare.</string>
+    <string name="title_list_new_versions">OI Update - Listă de versiuni noi</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - Versiuni noi pe AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - Lista aplicațiilor gestionate</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Lista aplicațiilor gestionate (verifică pe AndAppStore)</string>
+    <string name="settings">Configurări</string>
+    <string name="auto_update">Verificare automată</string>
+    <string name="ignore_title">Ignorat</string>
+    <string name="ignore_text">Actualizările sunt momentan ignorate. Doriți să reprimiți actualizări?</string>
+    <string name="unknown_title">Necunoscut</string>
+    <string name="unknown_text">Nu există informații de actualizare. Verificați manual și adresați-vă dezvoltatorului să utlilizeze OI Update în viitor.</string>
+    <string name="search_on_market">Caută pe Market</string>
+    <string name="search_on_andappstore">Caută pe AndAppStore</string>
+    <string name="processing">Procesez %s</string>
+    
+    <string name="warn">Actualizarea acestei aplicații direcționează către un site diferit de Android Market. Aplicațiile instalate din surse necunoscute pot prezenta un risc de securitate.</string>
+    <string name="continue_anyway">Continuă oricum</string>
+    <string name="abort">Anulează</string>
+    
+    <string name="preference_auto_update">Actualizare automată</string>
+    <string name="preference_auto_update_summary">Dacă este selectat, căutarea actualizărilor se face regulat</string>
+    <string name="title_update_interval">Interval de actualizare</string>
+    <string name="summary_update_interval">Stabilește cât de des căutările de actualizări sunt efectuate.</string>
+    <string name="dialog_title_update_interval">Selectați interval</string>
+    <string name="default_update_interval">în fiecare lună</string>
+    <string name="preference_warning_title">Atenție</string>
+    <string name="preference_warning_text">Dacă deselectați această opțiune nu veți mai primi notificări pentru actualizări. Doriți deselectarea actualizărilor automate?</string>
+    
+    <string name="preference_andappstore">Folosește AndAppStore</string>
+    <string name="preference_andappstore_summary">Folosește informația disponibilă pe AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Citește informația de actualizare</string>
+    <string name="permission_write_update_info">Scrie informația de actualizare</string>
+    <string name="permission_read_update_info_descr">Citește informații despre aplicațiile instalate, locații si cereri de actualizări.</string>
+    <string name="permission_write_update_info_descr">Scrie informații despre aplicațiile instalate, locații si cereri de actualizări.</string>
+
+
+	<!-- About -->
+	<string name="about">Despre</string>
+	<string name="about_title">Despre %s</string>
+	<string name="about_text">Version %s \n\n
+OI Update keeps you informed on new application versions.\n
+	
+OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
+For more information and other great applications visit OpenIntents at www.openintents.org
+	</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update ALUF</string>
+<string name="eula_description">
+"Copyright 2008 OpenIntents.org\n
+Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
+http://www.apache.org/licenses/LICENSE-2.0\n
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
+\n"
+</string>
+	<string name="eula_accept">Acceptă</string>
+	<string name="eula_refuse">Renunță</string>
+	
+</resources>

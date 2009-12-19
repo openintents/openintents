@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  iulargsb https://launchpad.net/~iulargsb</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Countdown vă notifică după o perioadă specificată de timp.</string>
+	
+	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
+	<string name="about_website_label">OI Countdown pe OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application -->
+    <string name="app_name">OI Countdown</string>
+    
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="modify">Modifică</string>
+    <string name="cont">Continuă</string>
+    
+	<string name="no_durations">Folosiți meniul pentru a adăuga o numărătoare inversă.</string>
+	<string name="countdown_list">Listă cronometre</string>
+	
+    <string name="menu_delete">Șterge</string>
+    <string name="menu_edit">Modifică</string>
+    <string name="menu_insert">Adaugă numărătoare inversă</string>
+    <string name="menu_pick_ringtone">Sonerie</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Configurează data</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Configurează durata</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Configurează acțiunea</string>
+    
+    <string name="hint_title">ex. pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Configurează numărătoarea inversă</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Crează numărătoare inversă</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Modifcă numărătoare inversă</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Alege numărătoare inversă</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Countdown</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Eroare</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Eroare la încărcarea numărătorii inverse</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Notificare în bara de stare</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Lansare prin bara de stare</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Sună</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Vibrează</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Lumină</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="action">Acțiune: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_action">Alege acțiunea: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_countdown">Alege numărătoarea inversă: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Testează</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Configurări</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Închide</string>
+	
+	<!-- For the countdown display. '%s' is the number of days remaining (more than 1). -->
+	<string name="days">zile</string>
+	
+	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
+	<string name="day">zi</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Aplicații</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Scurtături</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Acțiuni de automatizare</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Alege scurtătură</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Alege acțiune de automatizare</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Alege activitatea</string>
+ 
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdown ALUF</string>
+	<string name="eula_accept">Acceptă</string>
+	<string name="eula_refuse">Renunță</string>
+	
+	<!-- Update -->
+    <string name="menu_update">Verifică versiuni noi</string>
+	<string name="update_box_text">Verificați manual existența versiunilor noi sau instalați OI Update pentru noitificări automate. Versiunea curentă: %s</string>
+	<string name="update_check_now">Verifică acum</string>
+	<string name="update_get_updater">Instalează OI Updater</string>
+	<string name="update_error">Aplicația pentru descărcare nu este disponibilă.</string>
+	
+    <!-- About -->
+    <string name="about">Despre</string>
+	<string name="aboutapp_not_available">Versiune %s\n\nNu există extensie compatibilă pentru afișarea informațiilor complete (contact, mulțumiri, licență).</string>
+    <string name="aboutapp_get">Instalează OI About</string>
+    
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Pornește numărătoarea inversă</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Oprește numărătoarea inversă</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string name="preference_countdown">Numărătoare inversă</string>
+
+    <string name="preference_extensions">Extensii</string>
+    <string name="preference_get_extensions">Instalează extensii noi</string>
+    <string name="preference_get_extensions_summary">Caută extensii online.</string>
+    <string name="preference_get_extensions_from">Instalează extensii de la</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Caută extensii pe Android Market</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Instalează extensii de pe siteul OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Timp de expirare</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Timpul de expirare pentru sonerie, vibrație sau lumină.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Configurează timpul de expirare</string>
+                
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 secunde</item>
+        <item>5 secunde</item>
+        <item>10 secunde</item>
+        <item>30 de secunde</item>
+        <item>1 minut</item>
+        <item>5 minute</item>
+        <item>10 minute</item>
+    </string-array>
+</resources>

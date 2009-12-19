@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  iulargsb https://launchpad.net/~iulargsb</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	
+	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<string name="about_website_label">OI About pe OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI About</string>
+	
+    <string name="menu_about">Despre OI About</string>
+    
+    <!-- About some application, where '%s' is the name of another application. -->
+    <string name="about_activity_name_extended">Despre %s</string>
+    
+	<string name="l_authors">Scris de</string>
+	<string name="l_documenters">Documentație</string>
+	<string name="l_translators">Traducere</string>
+	<string name="l_artists">Interfață</string>
+	<string name="l_credits">Mulţumiri</string>
+	<string name="l_license">Licență</string>
+	<string name="l_info">Informații generale</string>
+	
+	<string name="no_information_available">Informație indisponibilă.</string>
+</resources>

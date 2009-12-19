@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  iulargsb https://launchpad.net/~iulargsb</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Lanterna</string>
+    
+    <string name="flashlight_info">Ecranul rămâne pornit.</string>
+    
+    
+    <string name="color">Culoare</string>
+    <string name="color_picker">Alege culoarea</string>
+    
+    
+	<!-- Update -->
+	<string name="update_available">O nouă versiune de OI Lanterna este disponibilă.\n%s\nDoriți să o instalați?</string>
+	<string name="market_not_available">Android Market nu este disponibil.</string>
+	<string name="market_search_term">OI Lanterna</string>
+
+	<!-- About -->
+	<string name="about">Despre</string>
+	<string name="about_title">Despre %s</string>
+	<string name="about_text">Versiunea %s \n\n OpenIntents Lanterna vă ajută să vă găsiți drumul prin întuneric. Ecranul este menținut aprins cât timp aplicația rulează. \n\n OpenIntents permite diverselor aplicații Android să partajeze date folosind "intenții" și "interfețe". \n\n Pentru mai multe informații și alte aplicații vizitați OpenIntents la www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Lanterna ALUF</string>
+	<string name="eula_accept">Acceptă</string>
+	<string name="eula_refuse">Renunță</string>
+	
+	<!-- Update -->
+	<string name="update_menu">Verifică versiuni noi</string>
+    <string name="update_box_text">Verificați manual existența versiunilor noi sau instalați OI Update pentru noitificări automate. Versiunea curentă: %s</string>
+	<string name="update_check_now">Verifică acum</string>
+	<string name="update_get_updater">Instalează OI Updater</string>
+	<string name="update_error">Download application not available.</string>
+</resources>
