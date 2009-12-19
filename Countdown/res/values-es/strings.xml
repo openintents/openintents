@@ -7,7 +7,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Paco Molinero https://launchpad.net/~franciscomol
-  miwie https://launchpad.net/~mw-miwie</string>
+  miwie https://launchpad.net/~mw-miwie
+  tamalet https://launchpad.net/~tamalet</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
@@ -22,16 +23,16 @@
     <string name="app_name">OI Countdown</string>
     
     <string name="start">Inicio</string>
-    <string name="stop">Stop</string>
+    <string name="stop">Detener</string>
     <string name="modify">Modificar</string>
     <string name="cont">Continuar</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
+	<string name="no_durations">Use el menñu para añadir una cuenta atrás nueva</string>
 	<string name="countdown_list">Countdown list</string>
 	
     <string name="menu_delete">Borrar</string>
     <string name="menu_edit">Modificar</string>
-    <string name="menu_insert">Add countdown</string>
+    <string name="menu_insert">Añadir cuenta atrás</string>
     <string name="menu_pick_ringtone">Ringtone</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
@@ -49,10 +50,10 @@
     <string name="title_setcountdown">Set countdown</string>
     
     <!-- Title of the activity for creating a new countdown. -->
-    <string name="title_create">Create countdown</string>
+    <string name="title_create">Crear cuenta atrás</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_edit">Edit countdown</string>
+    <string name="title_edit">Editar cuenta atrás</string>
     
     <!-- Title of the activity for editing the countdown. -->
     <string name="title_pick">Pick countdown</string>
@@ -69,10 +70,10 @@
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">Notificación en la barra de estado</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">Ejecutar a travéz de la barra de estado</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
 	<string name="ring">Timbre</string>
@@ -114,7 +115,7 @@
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
 	<string name="group_shortcuts">Accesos directos</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">Tareas automáticas</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
@@ -124,7 +125,7 @@
 	<string name="title_select_automation_task">Select automation task</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">Seleccione actividad</string>
  
 	<!-- ***************************
 	     Distribution
@@ -151,9 +152,9 @@
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>Inicie cuenta atrás</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>Pare cuenta atrás</item>
     </string-array>
     
 	<!-- ***************************
@@ -178,7 +179,7 @@
     <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">Establecer límte de tiempo</string>
                 
     <string-array name="preference_notification_timeout_entries">
         <item>2 segundos</item>

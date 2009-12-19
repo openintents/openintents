@@ -83,6 +83,7 @@
 	<string name="tags">Etiquetas</string>
 	<string name="price">Precio</string>
 	<string name="item">Elemento</string>
+	<string name="quantity">Quantity</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
 	<string name="total">Total: %s</string>
@@ -135,6 +136,8 @@
 	<string name="preference_showprice_summary">Mostrado como columna extra en la lista.</string>
 	<string name="preference_showtags_title">Mostrar etiquetas</string>
 	<string name="preference_showtags_summary">Mostrado como columna extra en la lista.</string>
+	<string name="preference_showquantity_title">Show quantity</string>
+	<string name="preference_showquantity_summary">Mostrado como columna extra en la lista.</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->
 	<string name="preference_shake_title">Sacudir para limpiar</string>

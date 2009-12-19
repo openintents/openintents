@@ -84,6 +84,7 @@
 	<string name="tags">Stichworte</string>
 	<string name="price">Preis</string>
 	<string name="item">Posten</string>
+	<string name="quantity">Quantity</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
 	<string name="total">Summe: %s</string>
@@ -136,6 +137,8 @@
 	<string name="preference_showprice_summary">Wird als separate Spalte in der Liste angezeigt</string>
 	<string name="preference_showtags_title">Stichworte anzeigen</string>
 	<string name="preference_showtags_summary">Wird als separate Spalte in der Liste angezeigt</string>
+	<string name="preference_showquantity_title">Show quantity</string>
+	<string name="preference_showquantity_summary">Wird als separate Spalte in der Liste angezeigt</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->
 	<string name="preference_shake_title">Schütteln um Liste aufzuräumen</string>

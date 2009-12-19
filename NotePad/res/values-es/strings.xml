@@ -28,6 +28,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Feder Sáiz https://launchpad.net/~federsaiz
+  Monkey https://launchpad.net/~monkey-libre
   Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
@@ -61,7 +62,7 @@
     <string name="title_edit_file">%s (editar note)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
+    <string name="title_pick_note_for_shortcut">Seleccione nota para acceso directo</string>
 	
 	<string name="button_ok">De Acuerdo</string>  
 	
@@ -116,9 +117,9 @@
     <string name="preference_sortorder_summary">El orden en el que las notas son mostradas en la lista de notas</string>
     
     <string name="note_editor_preferences">Editor de notas</string>
-    <string name="preference_autolink_title">Auto-create Links</string>
-    <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
-    <string name="preference_autolink_summary_off">Do not create links on notes</string>
+    <string name="preference_autolink_title">Creación automática de enlaces</string>
+    <string name="preference_autolink_summary_on">Crear enlaces para números de teléfono y direcciones de e-mail/calle/web</string>
+    <string name="preference_autolink_summary_off">No crear enlaces de estas notas</string>
 
 	<string name="settings">Ajustes</string>
 	<string name="settings_sortorder">Orden de clasificación</string>
@@ -146,13 +147,13 @@
     <string name="aboutapp_get">Obtenga Acerca de OI</string>
     
     <!-- File Manager -->
-    <string name="filemanager_not_available">No compatible file manager is available.</string>
+    <string name="filemanager_not_available">Gestor de archivos compatible no está disponible.</string>
     <string name="filemanager_get_oi_filemanager">Obtenga el Administrador de Archivos de OI</string>
     
     <!-- Safe -->
-    <string name="safe_not_available">No compatible application for encryption is available.</string>
-    <string name="safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
-    <string name="safe_get_oi_filemanager">Get OI Safe</string>
+    <string name="safe_not_available">Ninguna aplicación para cifrar está disponible</string>
+    <string name="safe_not_available_decrypt">Ninguna aplicación para descifrar está disponible.\n\nNota: Debe restaurar la contraseña maestra de un archivo de respaldo para acceder a la información cifrada previamente.</string>
+    <string name="safe_get_oi_filemanager">Obtener OI seguro</string>
     
 	
 	<!-- ***************************
@@ -161,19 +162,19 @@
 
 	<!-- OI Notepad -->
     <string name="oi_notepad_permission_read">leer notas</string>
-    <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="oi_notepad_permission_read_descr">Permitir a una aplicación leer notas. Observe que las notas cifradas son proveídas en formato cifrado.</string>
     <string name="oi_notepad_permission_write">escribir notas</string>
-    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
+    <string name="oi_notepad_permission_write_descr">Permitir a una aplicación crear o modificar notas existentes.</string>
     
 	<!-- OI Shopping list -->
     <string name="oi_shopping_permission_read">leer listas de compra</string>
     <string name="oi_shopping_permission_read_descr">Permitir a una aplicación leer las listas de compra. Tenga en cuenta que las listas y los elementos cifrados se presentan en formato cifrado.</string>
     <string name="oi_shopping_permission_write">escribir listas de compra</string>
-    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
+    <string name="oi_shopping_permission_write_descr">Permitir a una aplicación crear una lista nueva y elementos o modificar los existentes.</string>
     
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_intents">cifrar y descifrar datos</string>
-    <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
+    <string name="oi_safe_permission_intents_descr">Permitir a la aplicación cifrar y descifrar texto, y acceder a las contraseñas que se han almacenado en cafa fuerte IO.</string>	
 
 
 	<!-- ***************************

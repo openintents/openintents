@@ -24,6 +24,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Monkey https://launchpad.net/~monkey-libre
   Paco Molinero https://launchpad.net/~franciscomol
   miwie https://launchpad.net/~mw-miwie</string>
 	
@@ -62,114 +63,114 @@
     <string name="category_business">Negocios</string>
     <string name="category_personal">Datos personales</string>
     <string name="name">Nombre</string>
-    <string name="category_not_empty">Category is not empty.   You must delete the passwords first.</string>
-	<string name="cannot_decrypt_category">Cannot decrypt category</string>
+    <string name="category_not_empty">La categoría no está vacía. Primero debe eliminar las contraseñas.</string>
+	<string name="cannot_decrypt_category">No se puede descodificar la categoría</string>
 	<string name="cannot_decrypt_password">No se puede descifrar la contraseña</string>
 	<string name="error_export">Error al exportar la base de datos</string>
 	<string name="export_database">Exportar base de datos</string>
 	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
-	<string name="export_success">Export to '%s' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_success">Exportación de '%s' satisfactora. ¡Advertencia! El archivo no está codificado.</string>
 	<string name="export_file_error">Unable to create export file 'oisafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Importar base de datos</string>
 	<string name="import_file_missing">Import file is missing:</string>
 	<string name="import_file_error">Unable to import file 'oisafe.csv' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">First line is missing fields.</string>
 	<string name="dialog_import_title">Importar</string>
-	<string name="dialog_import_msg">Do you want to replace the database (import from %s)?</string>
+	<string name="dialog_import_msg">¿Desea reemplazar la base de datos (importar de %s)?</string>
 	<string name="yes">Sí</string>
 	<string name="no">No</string>
-	<string name="import_progress">Please wait while importing...</string>
+	<string name="import_progress">Por favor espere mientras se importa</string>
 	<string name="import_no_categories">No se encontraron categorías.</string>
-	<string name="import_no_entries">No entries found in CSV.</string>
+	<string name="import_no_entries">Ninguna entrada encontrada en CSV.</string>
 	<string name="import_too_many_categories">Demasiadas categorias.</string>
-	<string name="import_not_enough_fields">Not enough fields</string>
-	<string name="import_blank_category">Blank category</string>
-	<string name="import_blank_description">Blank description</string>
+	<string name="import_not_enough_fields">No hay suficientes campos</string>
+	<string name="import_blank_category">Categoría en blanco</string>
+	<string name="import_blank_description">Descripción en blanco</string>
 	<string name="dialog_delete_database_title">Borrar base de datos</string>
-	<string name="dialog_delete_database_msg">Are you really sure you want to delete the database?  This cannot be undone.</string>
+	<string name="dialog_delete_database_msg">¿Está realmente seguro de eliminar la base de datos? Esto no puede ser deshecho.</string>
 	<string name="added">Añadido</string>
 	<string name="entries">entradas</string>
-	<string name="import_complete">Import complete</string>
+	<string name="import_complete">Importación completa</string>
 	<string name="import_delete_csv">Since it is not secure to keep passwords in clear text CSV files, would you like to delete</string>
 	<string name="edit_entry">Editar entrada</string>
-	<string name="view_entry">View Entry</string>
+	<string name="view_entry">Mostrar entrada</string>
 	<string name="help">Ayuda</string>
 	<string name="close">Cerrar</string>
 	<string name="go">Ir</string>
 	<string name="dialog_delete_password_title">Borrar contraseña</string>
-	<string name="dialog_delete_password_msg">Are you sure you want to delete this password?</string>
+	<string name="dialog_delete_password_msg">¿Está seguro de eliminar esta contraseña?</string>
 	<string name="change_password">Cambiar contraseña maestra</string>
 	<string name="chg_pass_explaination">Use this to change the password you use to unlock OI Safe.   Your data will be re-encrypted with the new password.  The more complex your password is, the safer your data will be.</string>
 	<string name="old_password">Contraseña anterior</string>
 	<string name="new_password">Contraseña nueva</string>
 	<string name="verify_password">Verificar contraseña</string>
 	<string name="new_verify_mismatch">New and Verify passwords do not match.</string>
-    <string name="invalid_old_password">Old password is invalid.  Please try again.</string>
-    <string name="error_changing_password">Error changing password</string>
-    <string name="password_changed">Master Password changed</string>
+    <string name="invalid_old_password">La contraseñaa antigua es incorrecta. Por favor Inténtelo otra vez</string>
+    <string name="error_changing_password">Error al cambiar la contraseña</string>
+    <string name="password_changed">Cambió la contraseña maestra</string>
     <string name="confirm">Confirmar</string>
-    <string name="confirm_pass_fail">Password entries do not match.</string>
+    <string name="confirm_pass_fail">Las contraseñas introducidas no coinciden.</string>
     <string name="backup">Copia de seguridad</string>
-    <string name="backup_progress">Backing up to </string>
-    <string name="backup_complete">Complete.  Passwords backed up: </string>
-    <string name="backup_failed">Backup failed: </string>
-    <string name="restore">Restore</string>
+    <string name="backup_progress">Respaldando a</string>
+    <string name="backup_complete">Completado. Las contraseñas se respaldaron a:</string>
+    <string name="backup_failed">Respaldo fallido:</string>
+    <string name="restore">Restaurar</string>
     <string name="filename">Nombre del archivo</string>
-    <string name="restore_no_file">Backup file not found.  You need to perform a backup first to create it.  Or copy a backup from your PC.</string>
+    <string name="restore_no_file">Archivo de respaldo no encontrado. Necesita realizar primero crear un respaldo. O copiar un respaldo de su PC.</string>
     <string name="restore_set_password">Please provide the password used by the backup file.  Your master password will be set to this.</string>
     
     <!-- Toast message. '%s' contains a more detailed error message. -->
-    <string name="restore_unable_to_open">Unable to open file: %s</string>
+    <string name="restore_unable_to_open">Incapaz de abrir el archivo: %s</string>
     
     <!-- Toast message. '%s' contains the version number of the database. -->
-    <string name="restore_bad_version">Version not supported: %s</string>
+    <string name="restore_bad_version">Versión no soportada: %s</string>
     
-    <string name="restore_error">Restore error.</string>
-    <string name="restore_decrypt_error">Bad password.</string>
-    <string name="dialog_restore_database_title">Restore Database</string>
-    <string name="dialog_restore_database_msg">Are you sure you want to replace the current data?</string>
+    <string name="restore_error">Error de restauración</string>
+    <string name="restore_decrypt_error">Contraseña incorrecta</string>
+    <string name="dialog_restore_database_title">Restaurar base de datos</string>
+    <string name="dialog_restore_database_msg">¿Está seguro de reemplazar la información actual?</string>
     <string name="restore_found">Found %s passwords from backup dated %s.</string>
-    <string name="restore_complete">Complete.  Passwords restored: %s</string>
-    <string name="copied_to_clipboard">copied to Clipboard</string>
-    <string name="invalid_website">Invalid website</string>
+    <string name="restore_complete">Completado. Contraseñas restauradas: %s</string>
+    <string name="copied_to_clipboard">copiado al portapapeles</string>
+    <string name="invalid_website">Página web incorrecta</string>
     
     <!-- Menu label to open a category -->
     <string name="open">Abrir</string>
     
-    <string name="database_version_error_title">Database Version Error</string>
+    <string name="database_version_error_title">Versión de la base de datos incorrecta</string>
     <string name="database_version_error_msg">Sorry, but the version of the database is not supported.   You must install the version associated with this database.</string>
 	
 	<!-- Menu label to move a password to another category -->
-	<string name="move">Move</string>
+	<string name="move">Mover</string>
 	
 	<string name="move_select">Seleccionar categoría</string>
 	
 	<!-- Toast that password has been moved to another category -->
-	<string name="moved_to">Moved to %s</string>
+	<string name="moved_to">Movido a %s</string>
 	
 	<string name="preferences">Preferencias</string>
-	<string name="pref_title_external_access">Allow external access</string>
+	<string name="pref_title_external_access">Permitir acceso externo</string>
 	<string name="pref_summary_external_access">Allow other applications to secure your data with OI Safe</string>
 	<string name="dialog_title_external_access">OI Safe: Another application requests access.</string>
 	<string name="dialog_summary_external_access">Allow other applications to secure your data with OI Safe.</string>
 	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Settings.</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_timeout">Auto lock timeout</string>
+	<string name="pref_title_lock_timeout">Tiempo de espera de bloqueo automático</string>
 	
 	<!-- Preference summary for auto lock timeout -->
 	<string name="pref_summary_lock_timeout">Number of minutes before timeout occurs and safe is locked</string>
 	
-	<string name="pref_dialog_title_lock_timeout">Auto lock timeout</string>
+	<string name="pref_dialog_title_lock_timeout">Tiempo de espera de bloqueo automático</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_on_screen_lock">Lock on screen lock</string>
+	<string name="pref_title_lock_on_screen_lock">Bloquear con pantalla bloqueada</string>
 	
 	<!-- Preference summary for lock on screen lock -->
 	<string name="pref_summary_lock_on_screen_lock">Lock when the screen locks</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
-	<string name="pref_title_keypad">Keypad</string>
+	<string name="pref_title_keypad">Teclado numérico</string>
 	
 	<!-- Preference summary: for a numeric keypad -->
 	<string name="pref_summary_keypad">Use a keypad to enter Master Password</string>
@@ -189,31 +190,31 @@
 	<string name="open_safe">Open OI Safe</string>
 	<string name="lock">Bloquear</string>
 	<string name="continue_text">Continuar</string>
-	<string name="generate_password">Generate Password</string>
-	<string name="pass_gen_length">Password Length</string>
+	<string name="generate_password">Generar contraseña</string>
+	<string name="pass_gen_length">Longitud de la contraseña</string>
 	<string name="pass_gen_uppercase">Mayúscula [A-Z]</string>
 	<string name="pass_gen_lowercase">Minúscula [a-z]</string>
 	<string name="pass_gen_numbers">Números [0-9]</string>
 	<string name="pass_gen_symbols">Símbolos [!@#$%^\*]</string>
-	<string name="pass_gen_copy_to_current_entry">Copy to Current Entry</string>
-	<string name="pass_gen_copy_to_clipboard">Copy to Clipboard</string>
+	<string name="pass_gen_copy_to_current_entry">Copiar a la entrada actual</string>
+	<string name="pass_gen_copy_to_clipboard">Copiar al portapapeles</string>
 	<string name="cancel">Cancelar</string>
 	<string name="discard_changes">Descartar cambios</string>
-	<string name="entry_saved">Entry saved</string>
-	<string name="last_edited">Last edited</string>
+	<string name="entry_saved">Entrada guardada</string>
+	<string name="last_edited">Último editado</string>
 	<string name="last_edited_unknown">desconocido</string>
-	<string name="crypto_error">Crypto error:</string>
-	<string name="uniquename">Unique name</string>
+	<string name="crypto_error">Error de codificación:</string>
+	<string name="uniquename">Nombre único</string>
 	<string name="package_access">Package access</string>
 	<string name="not_found">no encontrado</string>
-	<string name="dialog_title_first_time_warning">New master key</string>
+	<string name="dialog_title_first_time_warning">Nueva llave maestra</string>
 	<string name="dialog_summary_first_time_warning">A new random master key has been created. Use menu &gt; backup and store this key in a safe place. Without this key you may lose encrypted data.</string>
 	<string name="switch_mode">Switch mode</string>
-	<string name="decrypt_progress">Decrypting...</string>
-	<string name="search">Search</string>
-	<string name="search_progress">Searching...</string>
+	<string name="decrypt_progress">Descodificando...</string>
+	<string name="search">Buscar</string>
+	<string name="search_progress">Buscando...</string>
 	<string name="search_hint">Type search criteria</string>
-	<string name="search_nothing_found">Nothing found</string>
+	<string name="search_nothing_found">No se encontró nada</string>
 	
 	
 	<!-- ***************************
@@ -226,19 +227,16 @@
 	<string name="eula_refuse">Cancelar</string>
 	
 	<!-- Update -->
-		<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
+		<string name="update_box_text">Compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
 	<string name="update_check_now">Comprobar ahora.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
-	<string name="update">Check updates</string>
+	<string name="update_get_updater">Obtener el actualizador de OI.</string>
+	<string name="update_error">Descarga de aplicación no disponible.</string>
+	<string name="update">Comprobar actualizaciones</string>
 	
     <!-- About -->
     <string name="about">Sobre</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Versión %s\nNo compatible con el complemento disponible para mostrar información completa (contacto, créditos, licencia).</string>
+    <string name="aboutapp_get">Obtenga Acerca de OI</string>
     
     <!-- File Manager -->
     <string name="filemanager_not_available">No compatible file manager is available.</string>
@@ -251,7 +249,7 @@ Current version: %s
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_service">access the master password</string>
 	<string name="oi_safe_permission_service_descr">Allows the application to access the master key used for encryption and decryption. Should never be used except by OI Safe.</string>	
-	<string name="oi_safe_permission_intents">encrypt and decrypt data</string>
+	<string name="oi_safe_permission_intents">cifrar y descifrar datos</string>
     <string name="oi_safe_permission_intents_descr">Allows the application to encrypt and decrypt text, and access the passwords they have stored in OI Safe.</string>	
 
 	<!-- ***************************
@@ -261,8 +259,8 @@ Current version: %s
     <string-array name="pref_entries_lock_timeout">
         <item>1 minuto</item>
         <item>5 minutos</item>
-        <item>10 minutes</item>
-        <item>15 minutes</item>
+        <item>10 minutos</item>
+        <item>15 minutos</item>
         <item>30 minutos</item>  
     </string-array>
 
