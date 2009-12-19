@@ -15,6 +15,8 @@ public class NewListDialog extends RenameListDialog {
 	
 	public NewListDialog(Context context, DialogActionListener listener) {
 		super(context);
+		
+		setTitle(R.string.ask_new_list);
 		setDialogActionListener(listener);
 	}
 	
