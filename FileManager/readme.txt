@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.1.1
+date: 2009-??
+- recursive delete
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2009-10-30
 - display file size.
