@@ -23,6 +23,13 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.1.1
+date: 2009-??
+
+- translations: Dutch, French, German, Korean,
+  Lao, Portugese, Romanian, Spanish
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2009-07-05
 

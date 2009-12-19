@@ -26,11 +26,12 @@ release: 1.2.0
 date: ??
 - add quantity field
 - optimize styles
+- translations: Korean, Romanian
 
 ---------------------------------------------------------
 release: 1.1.2
 date: 2009-10-14
-- translations: French, Polish, Spanish
+- translations: French, German, Polish, Spanish
 - QVGA support
 - support for MyBackup Pro
 - new intent INSERT_FROM_EXTRAS, to support multiple

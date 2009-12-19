@@ -29,10 +29,18 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.0.3
+date: 2009-??
+
+- translations: Korean, Romanian
+
+---------------------------------------------------------
 release: 1.0.2
 date: 2009-10-14
 
 - Update to Android-1.6 (screensize and density).
+- translations: Chinese (simplified), Japanese, Lao,
+  Portugese
 
 ---------------------------------------------------------
 release: 1.0.1

@@ -28,11 +28,13 @@ To obtain the current release, visit
 release: 1.2.5
 date: 2009-12-??
 - fixed latent service notification
+- translations: Romanian
 
 ---------------------------------------------------------
 release: 1.2.4
 date: 2009-11-27
 - fixed WRITE_EXTERNAL_STORAGE permission
+- translations: Spanish
 
 ---------------------------------------------------------
 release: 1.2.3
