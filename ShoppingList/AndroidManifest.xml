@@ -17,9 +17,10 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.1.2"
-	android:versionCode="10009">
+	android:versionName="1.2.0-beta1"
+	android:versionCode="10010">
 	<!-- History:
+	1.2.0-beta1 [10010]: ??
 	1.1.2 [10009] 2009-10-14
 	1.1.1 [10008]: 2009-05-27
 	1.1.1-rc1 [10007]: 2009-05-24
@@ -33,7 +34,7 @@
 	
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10007" />
+           android:value="10010" />
         		
         <meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />

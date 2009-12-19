@@ -22,6 +22,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.0
+date: ??
+- add quantity field
+- optimize styles
+
+---------------------------------------------------------
 release: 1.1.2
 date: 2009-10-14
 - translations: French, Polish, Spanish
