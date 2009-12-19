@@ -13,3 +13,7 @@ that have been translated.
 5) Compile to check whether all works as expected.
 
 
+Export new strings for translations:
+1) Execute /export_all/export_all_to_launchpad.bash or ..._cygwin.bat
+
+2) Upload at https://translations.launchpad.net/openintents/trunk/+translations-upload
