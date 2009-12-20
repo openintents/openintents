@@ -29,9 +29,9 @@
 	
 	    
         <uses-sdk android:minSdkVersion="2"
-            android:targetSdkVersion="4"
-    
-     />
+            android:targetSdkVersion="4" />
+        <!-- If targetSdkVersion is increased, the following needs to be adjusted:
+             * FileManagerActivity: onKeyDown(): New way how "back" key is handled. -->
      
 <supports-screens android:smallScreens="true"
                   android:normalScreens="true"
