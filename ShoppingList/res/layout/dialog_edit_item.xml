@@ -13,7 +13,7 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_height="fill_parent" android:layout_width="fill_parent">
-	<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	<RelativeLayout
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
 		android:padding="5dip">
 		<EditText android:id="@+id/edittext" android:layout_width="fill_parent"
@@ -23,10 +23,39 @@
 		<!--
 			android:capitalize="words"
 		-->
+		<LinearLayout  android:id="@+id/quantity_and_price"
+			android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:layout_below="@id/edittext" >
+			<RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:layout_marginRight="5dip" >
+				<TextView android:layout_width="fill_parent" android:id="@+id/labeleditquantity"
+					android:layout_height="wrap_content" android:layout_weight="1"
+					android:hint="@string/quantity"  />
+				<EditText android:hint="@string/quantity" android:id="@+id/editquantity"
+					android:layout_height="wrap_content" android:layout_width="fill_parent"
+					android:layout_below="@+id/labeleditquantity"/>
+			</RelativeLayout>
+			<RelativeLayout
+				android:layout_width="wrap_content"
+				android:layout_weight="1" android:layout_height="wrap_content">
+				<TextView android:layout_width="fill_parent" android:id="@+id/labeleditprice"
+					android:layout_height="wrap_content" android:text=""
+					android:layout_weight="1" android:hint="@string/price"/>
+				<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
+					android:layout_height="wrap_content" android:text=""
+					android:layout_weight="1" android:hint="@string/price"
+					android:singleLine="true" android:numeric="signed|decimal"
+					android:layout_below="@id/labeleditprice" />
+			</RelativeLayout>
+		</LinearLayout>
 		<TextView android:layout_width="fill_parent" android:id="@+id/labeledittag"
 			android:layout_height="wrap_content" android:text=""
 			android:layout_weight="1" android:hint="@string/tags"
-			android:layout_below="@+id/editquantity" />
+			android:layout_below="@+id/quantity_and_price" />
 		<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""
 			android:layout_weight="1" android:hint="@string/tags"
@@ -34,22 +63,6 @@
 		<!--
 			android:capitalize="words"
 		-->
-		<TextView android:layout_width="fill_parent" android:id="@+id/labeleditprice"
-			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/price"
-			android:layout_below="@id/edittags" />
-		<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/price"
-			android:singleLine="true" android:numeric="signed|decimal"
-			android:layout_below="@id/labeleditprice" />
-		<TextView android:layout_width="fill_parent" android:id="@+id/labeleditquantity"
-			android:layout_height="wrap_content" android:layout_weight="1"
-			android:hint="@string/quantity" android:layout_below="@+id/edittext" />
-		<EditText android:hint="@string/quantity" android:id="@+id/editquantity"
-			android:layout_height="wrap_content" android:layout_width="fill_parent"
-			android:layout_below="@+id/labeleditquantity" />
-
 	</RelativeLayout>
 
 </ScrollView>

@@ -273,6 +273,7 @@ public class ShoppingActivity extends Activity { // implements
 	//private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
 	//private static final String BUNDLE_CURSOR_ITEMS_POSITION = "cursor items position";
 	private static final String BUNDLE_ITEM_URI = "item uri";
+	private static final String BUNDLE_RELATION_URI = "relation_uri";
 	
 	// Skins --------------------------
 
@@ -447,6 +448,7 @@ public class ShoppingActivity extends Activity { // implements
 			//mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
 			//mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
 			mItemUri = Uri.parse(icicle.getString(BUNDLE_ITEM_URI));
+			mRelationUri = Uri.parse(icicle.getString(BUNDLE_RELATION_URI));
 		}
 
 		// set focus to the edit line:
@@ -626,6 +628,7 @@ public class ShoppingActivity extends Activity { // implements
 		outState.putString(ORIGINAL_ITEM, s);
 
 		outState.putString(BUNDLE_ITEM_URI, mItemUri.toString());
+		outState.putString(BUNDLE_RELATION_URI, mRelationUri.toString());
 		
 		mUpdating = false;
 	}
