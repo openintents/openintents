@@ -75,7 +75,8 @@
 		<!-- Shopping activity -->
 		<activity android:name=".ShoppingActivity"
 			android:label="@string/app_name" 
-			android:icon="@drawable/icon_shoppinglist">
+			android:icon="@drawable/icon_shoppinglist"
+			android:windowSoftInputMode="stateHidden|adjustResize" >
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.DEFAULT" />
