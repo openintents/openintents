@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -212,6 +213,20 @@ public class ShoppingListView extends ListView {
 				@Override
 				public void onClick(View v) {
 					Log.d(TAG, "Click: ");
+					toggleItemBought(cursorpos);
+				}
+
+			});
+			
+
+			// also check around check box
+			LinearLayout l = (LinearLayout) view.findViewById(R.id.check_surround);
+
+			l.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Log.d(TAG, "Click around: ");
 					toggleItemBought(cursorpos);
 				}
 
