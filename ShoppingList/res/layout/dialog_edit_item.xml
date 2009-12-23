@@ -35,7 +35,7 @@
 				android:layout_marginRight="5dip" >
 				<TextView android:layout_width="fill_parent" android:id="@+id/labeleditquantity"
 					android:layout_height="wrap_content" android:layout_weight="1"
-					android:hint="@string/quantity"  />
+					android:text="@string/quantity"  />
 				<EditText android:hint="@string/quantity" android:id="@+id/editquantity"
 					android:layout_height="wrap_content" android:layout_width="fill_parent"
 					android:singleLine="true" android:numeric="signed|decimal"
@@ -46,8 +46,8 @@
 				android:layout_weight="1"
 				android:layout_height="wrap_content">
 				<TextView android:layout_width="fill_parent" android:id="@+id/labeleditprice"
-					android:layout_height="wrap_content" android:text=""
-					android:hint="@string/price"/>
+					android:layout_height="wrap_content" android:text="@string/price"
+					/>
 				<EditText android:id="@+id/editprice" android:layout_width="fill_parent"
 					android:layout_height="wrap_content" android:text=""
 					android:hint="@string/price"
@@ -56,8 +56,8 @@
 			</RelativeLayout>
 		</LinearLayout>
 		<TextView android:layout_width="fill_parent" android:id="@+id/labeledittag"
-			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/tags"
+			android:layout_height="wrap_content"
+			android:layout_weight="1" android:text="@string/tags"
 			android:layout_below="@+id/quantity_and_price" />
 		<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
 			android:layout_height="wrap_content" android:text=""

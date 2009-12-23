@@ -16,11 +16,14 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class EditItemDialog extends AlertDialog implements OnClickListener {
 
@@ -31,6 +34,8 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	EditText mTags;
 	EditText mPrice;
 	EditText mQuantity;
+	
+	TextView mPriceLabel;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 	
@@ -47,6 +52,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mTags = (EditText) view.findViewById(R.id.edittags);
 		mPrice = (EditText) view.findViewById(R.id.editprice);
 		mQuantity= (EditText) view.findViewById(R.id.editquantity);
+		mPriceLabel = (TextView) view.findViewById(R.id.labeleditprice);
 
 		KeyListener kl = PreferenceActivity
 			.getCapitalizationKeyListenerFromPrefs(context);
@@ -83,6 +89,47 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 					}
 				}).create();
 				*/
+		
+		mQuantity.addTextChangedListener(mTextWatcher);
+		mPrice.addTextChangedListener(mTextWatcher);
+	}
+	
+	private TextWatcher mTextWatcher = new TextWatcher() {
+
+		@Override
+		public void afterTextChanged(Editable arg0) {
+			updateQuantityPrice();
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+		}
+		
+	};
+	
+	void updateQuantityPrice() {
+		try {
+			double price = Double.parseDouble(mPrice.getText().toString());
+			String quantityString = mQuantity.getText().toString();
+			if (!TextUtils.isEmpty(quantityString)) {
+				double quantity = Double.parseDouble(quantityString);
+				price = quantity * price;
+				String s = mPriceFormatter.format(price);
+				mPriceLabel.setText(mContext.getText(R.string.price) + ": " + s);
+				return;
+			}
+		} catch (NumberFormatException e) {
+			// do nothing
+		}
+		
+		// Otherwise show default label:
+		mPriceLabel.setText(mContext.getText(R.string.price));
 	}
 	
 	private final String[] mProjection = { 
