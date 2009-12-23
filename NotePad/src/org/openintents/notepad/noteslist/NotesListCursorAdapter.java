@@ -109,8 +109,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
 	}
 */
 	
-	@Override
-	public Cursor runQueryOnBackgroundThread(CharSequence constraint) {
+	public Cursor runQueryOnBackgroundThread(CharSequence constraint, String tag) {
 		//Log.i(TAG, "runQueryOnBackgroundThread " + constraint + ", " + mIntent.getData());
 
 		
@@ -121,7 +120,7 @@ public class NotesListCursorAdapter extends CursorAdapter {
 				new String[] { }, Notes.DEFAULT_SORT_ORDER);
 		*/
 		
-		Cursor cursor = mCursorUtils.query(constraint);
+		Cursor cursor = mCursorUtils.query(constraint, tag);
 		
 		return cursor;
 	}

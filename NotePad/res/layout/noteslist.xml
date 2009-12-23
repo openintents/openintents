@@ -33,7 +33,12 @@
             
     </LinearLayout>
      -->
-     
+    <Spinner
+        android:id="@+id/tagselection"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="false"
+    />
     <!-- The frame layout is here since we will be showing either
     the empty view or the list view.  -->
     <FrameLayout

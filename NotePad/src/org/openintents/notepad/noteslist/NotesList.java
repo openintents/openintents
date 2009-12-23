@@ -60,6 +60,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -76,6 +77,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import java.util.List;
 
 /**
  * Displays a list of notes. Will display notes from the {@link Uri} provided in
@@ -123,6 +127,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	NotesListCursorAdapter mAdapter;
 	
 	String mLastFilter;
+        String mSelectedTag;
 	
 	private Handler mHandler = new Handler();
 	
@@ -135,7 +140,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		if (debug) Log.d(TAG, "onCreate() " + (savedInstanceState == null ? "(no bundle)" : "(with bundle)"));
+
+        if (debug) {
+            Log.d(TAG, "onCreate() " + (savedInstanceState == null ? "(no bundle)" : "(with bundle)"));
+        }
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
@@ -210,10 +218,63 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			setTitle(R.string.title_pick_note_for_shortcut);
 		}
 		
+        updateTagList();
+
+        Cursor cur = mAdapter.runQueryOnBackgroundThread(null, null);
+
+        cur.registerDataSetObserver(new DataSetObserver() {
+            @Override
+            public void onChanged() {
+                NotesList.this.updateTagList();
+            }
+        });
+
+        Spinner s = (Spinner) findViewById(R.id.tagselection);
+            s.setOnItemSelectedListener(
+                    new AdapterView.OnItemSelectedListener() {
+
+                        public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                            NotesList.this.updateQuery();
+                        }
+
+                        public void onNothingSelected(AdapterView<?> arg0) {
+                            
+                        }
+                    });
+
 		mDecryptionFailed = false;
 		mDecryptionSucceeded = false;
 	}
 
+    protected void updateTagList() {
+
+        List<String> tags = new ArrayList<String>();
+
+        tags.add(getString(R.string.tag_no_filter));
+
+        Uri notesUri = getIntent().getData();
+
+        Cursor managedCursor = getContentResolver().query(notesUri,
+                new String[]{"tags"},
+                null,
+                null,
+                null);
+
+        if (managedCursor.moveToFirst()) {
+            do {
+                for (String tag : managedCursor.getString(0).split(",")) {
+                    if (!tags.contains(tag.trim())) {
+                        tags.add(tag.trim());
+                    }
+                }
+            } while (managedCursor.moveToNext());
+        }
+
+        Spinner s = (Spinner) findViewById(R.id.tagselection);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, tags);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+    }
 	
 	@Override
 	protected void onResume() {
@@ -252,7 +313,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			//Cursor cursor = getContentResolver().query(getIntent().getData(), NotesListCursorUtils.PROJECTION, null,
 			//		null, Notes.DEFAULT_SORT_ORDER);
 	
-			Cursor cursor = mCursorUtils.query(null);
+            Cursor cursor = mCursorUtils.query(null, null);
 			
 			/*
 			// Used to map notes entries from the database to views
@@ -263,15 +324,29 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 			mAdapter = new NotesListCursorAdapter(this, cursor, mCursorUtils);
 			setListAdapter(mAdapter);
 			
-			if (debug) Log.i(TAG, "Lastfilter: " + mLastFilter);
+            updateQuery();
+        } else {
+            mAdapter.getCursor().requery();
+        }
+    }
 			
-			if (mLastFilter != null) {
-				cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter);
-				mAdapter.changeCursor(cursor);
+    protected void updateQuery() {
+        if (debug) {
+            Log.i(TAG, "Lastfilter: " + mLastFilter);
 			}
+
+        Spinner s = (Spinner) findViewById(R.id.tagselection);
+
+        if ( s.getSelectedItemPosition() == 0 ) {
+            mSelectedTag = null;
 		} else {
-			mAdapter.getCursor().requery();
+            mSelectedTag = (String) s.getSelectedItem();
 		}
+
+        //if (mLastFilter != null || mSelectedTag != null) {
+            Cursor cursor = mAdapter.runQueryOnBackgroundThread(mLastFilter, mSelectedTag);
+            mAdapter.changeCursor(cursor);
+        //}
 	}
 
 	@Override

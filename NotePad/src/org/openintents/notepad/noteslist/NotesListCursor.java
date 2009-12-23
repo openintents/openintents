@@ -17,6 +17,7 @@ import android.database.Cursor;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import java.util.ArrayList;
 
 public class NotesListCursor extends OpenMatrixCursor {
 
@@ -72,6 +73,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 	Cursor mDbCursor;
 	
 	public String mCurrentFilter;
+        public String mSelectedTag;
 	
 	/**
 	 * Map encrypted titles to decrypted ones.
@@ -119,7 +121,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 
 	@Override
 	public boolean requery() {
-		runQuery(mCurrentFilter);
+		runQuery(mCurrentFilter, mSelectedTag);
 		
 		return super.requery();
 	}
@@ -130,9 +132,9 @@ public class NotesListCursor extends OpenMatrixCursor {
 	 * 
 	 * @param constraint
 	 */
-	public Cursor query(CharSequence constraint) {
+	public Cursor query(CharSequence constraint, String tag) {
 		NotesListCursor cursor = new NotesListCursor(mContext, mIntent);
-		cursor.runQuery(constraint);
+		cursor.runQuery(constraint, tag);
 		return cursor;
 	}
 	
@@ -141,7 +143,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 	 * 
 	 * @param constraint
 	 */
-	private void runQuery(CharSequence constraint) {
+	private void runQuery(CharSequence constraint, String tag) {
 
 		// We have to query all items and return a new object, because notes may be encrypted.
 
@@ -150,6 +152,11 @@ public class NotesListCursor extends OpenMatrixCursor {
 		} else {
 			mCurrentFilter = null;
 		}
+                if(tag != null) {
+                    mSelectedTag = tag;
+                } else {
+                    mSelectedTag = null;
+                }
 		
 		if (mDbCursor != null) {
 			mDbCursor.unregisterContentObserver(mContentObserver);
@@ -224,7 +231,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 			
 			boolean addrow = false;
 			
-			if (TextUtils.isEmpty(mCurrentFilter)) {
+			if (TextUtils.isEmpty(mCurrentFilter) && TextUtils.isEmpty(mSelectedTag)) {
 				// Add all rows if there is no filter.
 				addrow = true;
 			} else if (skipEncrypted) {
@@ -233,8 +240,6 @@ public class NotesListCursor extends OpenMatrixCursor {
 				// test the filter
 
 				// Build search string from title and tags.
-				String searchstring = null;
-				if (!TextUtils.isEmpty(mCurrentFilter)) {
 					StringBuilder sb = new StringBuilder();
 					sb.append(" ");
 					sb.append(title.toUpperCase());
@@ -243,11 +248,25 @@ public class NotesListCursor extends OpenMatrixCursor {
 						String spacetags = tags.replace(",", " ");
 						sb.append(spacetags.toUpperCase());
 					}
-					searchstring = sb.toString();
+                            String searchstring = sb.toString();
+
+                            List<String> tagList = new ArrayList<String>();
+                            if (!TextUtils.isEmpty(tags)) {
+                                for(String tagString: tags.split(",")) {
+                                    if(tagString.trim().length() != 0) {
+                                        tagList.add(tagString.trim());
+                                    }
+                                }
 				}
 				
-				// apply filter:
+                            if ( TextUtils.isEmpty(mCurrentFilter) ) {
+                                addrow = tagList.contains(mSelectedTag.trim());
+                            } else if ( TextUtils.isEmpty(mSelectedTag) ) {
 				addrow = searchstring.contains(" " + mCurrentFilter.toUpperCase());
+                            } else {
+				addrow = searchstring.contains(" " + mCurrentFilter.toUpperCase()) &&
+                                         tagList.contains(mSelectedTag.trim());
+                            }
 			}
 			
 			if (addrow) {
