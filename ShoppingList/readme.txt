@@ -22,10 +22,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.2.0
-date: ??
+release: 1.2.0-beta1
+date: 2009-12-23
 - add quantity field
 - optimize styles
+- virtual keyboard should not automatically open
+  on some devices
 - translations: Korean, Romanian
 
 ---------------------------------------------------------
