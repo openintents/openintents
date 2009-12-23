@@ -105,7 +105,7 @@ public class ShoppingListView extends ListView {
 			View view = super.newView(context, cursor, parent);
 			view.findViewById(R.id.price).setVisibility(mPriceVisibility);
 			view.findViewById(R.id.tags).setVisibility(mTagsVisibility);
-			view.findViewById(R.id.quantity).setVisibility(mQuantityVisibility);
+			/*view.findViewById(R.id.quantity).setVisibility(mQuantityVisibility);*/
 			return view;
 		}
 
@@ -234,7 +234,18 @@ public class ShoppingListView extends ListView {
 		}
 
 		public boolean setViewValue(View view, Cursor cursor, int i) {
-			if (view.getId() == R.id.price) {
+			int id = view.getId();
+			if (id == R.id.name){
+				String name = cursor.getString(ShoppingActivity.mStringItemsITEMNAME);
+				String quantity = cursor.getString(ShoppingActivity.mStringItemsQUANTITY);
+				if (mQuantityVisibility == View.VISIBLE 
+						&& !TextUtils.isEmpty(quantity)) {
+					name = quantity + " " + name;
+				}
+				TextView tv = (TextView) view;
+				tv.setText(name);
+				return true;
+			} else if (id == R.id.price) {
 				long price = cursor
 						.getLong(ShoppingActivity.mStringItemsITEMPRICE);
 				TextView tv = (TextView) view;
@@ -248,7 +259,7 @@ public class ShoppingListView extends ListView {
 					tv.setText("");
 				}
 				return true;
-			} else if (view.getId() == R.id.tags) {
+			} else if (id == R.id.tags) {
 				String tags = cursor
 						.getString(ShoppingActivity.mStringItemsITEMTAGS);
 				TextView tv = (TextView) view;
@@ -261,21 +272,21 @@ public class ShoppingListView extends ListView {
 					tv.setText("");
 				}
 				return true;
-			} else if (view.getId() == R.id.quantity) {
-				String quantity = cursor
-						.getString(ShoppingActivity.mStringItemsQUANTITY);
+			}/* else if (id == R.id.quantity) {
+				//String quantity = cursor
+				//		.getString(ShoppingActivity.mStringItemsQUANTITY);
 				TextView tv = (TextView) view;
-				if (mQuantityVisibility == View.VISIBLE
-						&& !TextUtils.isEmpty(quantity)) {
-					tv.setVisibility(View.VISIBLE);
-					tv.setTextColor(mPriceTextColor);
-					tv.setText(quantity);
-				} else {
+				//if (mQuantityVisibility == View.VISIBLE
+				//		&& !TextUtils.isEmpty(quantity)) {
+				//	tv.setVisibility(View.VISIBLE);
+				//	tv.setTextColor(mPriceTextColor);
+				//	tv.setText(quantity);
+				//} else {
 					tv.setVisibility(View.GONE);
-					tv.setText("");
-				}
+				//	tv.setText("");
+				//}
 				return true;
-			} else {
+			} */else {
 				return false;
 			}
 		}
@@ -405,11 +416,11 @@ public class ShoppingListView extends ListView {
 														 * ContainsFull.ITEM_IMAGE
 														 * ,
 														 */
-				ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
-						ContainsFull.QUANTITY },
+				ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE/*,
+						ContainsFull.QUANTITY*/ },
 				// the view defined in the XML template
 				new int[] { R.id.name, /* R.id.image_URI, */R.id.tags,
-						R.id.price, R.id.quantity });
+						R.id.price/*, R.id.quantity*/ });
 		setAdapter(adapter);
 
 		updateTotal();

@@ -248,9 +248,9 @@ public class ShoppingActivity extends Activity { // implements
 			ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE,
 			ContainsFull.QUANTITY, ContainsFull.STATUS, ContainsFull.ITEM_ID,
 			ContainsFull.SHARE_CREATED_BY, ContainsFull.SHARE_MODIFIED_BY };
-	private static final int mStringItemsCONTAINSID = 0;
-	private static final int mStringItemsITEMNAME = 1;
-	private static final int mStringItemsITEMIMAGE = 2;
+	static final int mStringItemsCONTAINSID = 0;
+	static final int mStringItemsITEMNAME = 1;
+	static final int mStringItemsITEMIMAGE = 2;
 	static final int mStringItemsITEMTAGS = 3;
 	static final int mStringItemsITEMPRICE = 4;
 	static final int mStringItemsQUANTITY = 5;
@@ -448,7 +448,9 @@ public class ShoppingActivity extends Activity { // implements
 			//mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
 			//mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
 			mItemUri = Uri.parse(icicle.getString(BUNDLE_ITEM_URI));
-			mRelationUri = Uri.parse(icicle.getString(BUNDLE_RELATION_URI));
+			if (icicle.containsKey(BUNDLE_RELATION_URI)) {
+				mRelationUri = Uri.parse(icicle.getString(BUNDLE_RELATION_URI));
+			}
 		}
 
 		// set focus to the edit line:
@@ -628,7 +630,9 @@ public class ShoppingActivity extends Activity { // implements
 		outState.putString(ORIGINAL_ITEM, s);
 
 		outState.putString(BUNDLE_ITEM_URI, mItemUri.toString());
-		outState.putString(BUNDLE_RELATION_URI, mRelationUri.toString());
+		if (mRelationUri != null) {
+			outState.putString(BUNDLE_RELATION_URI, mRelationUri.toString());
+		}
 		
 		mUpdating = false;
 	}

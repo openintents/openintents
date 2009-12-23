@@ -105,7 +105,7 @@
         android:ellipsize="end"
 			android:layout_marginLeft="27dip"
 			android:layout_marginRight="27dip" -->
-				 
+				 <!-- 
 	<TextView android:id="@+id/quantity"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
@@ -115,18 +115,19 @@
         	android:layout_alignWithParentIfMissing="true"
 			  android:gravity="top"
 			  android:visibility="gone"/>
-				 
+				  -->
 	<TextView android:id="@+id/tags"
 			  android:layout_width="wrap_content"
 			  android:layout_height="wrap_content"
 			  android:layout_marginLeft = "10dip"
-        	android:layout_toRightOf="@id/quantity"        	
+        	android:layout_toRightOf="@id/check"        	
         	android:layout_below="@id/name"
         	android:layout_alignParentBottom="true"
         	android:layout_alignWithParentIfMissing="true"
 			  android:gravity="top"
 			  android:visibility="gone"/>
         <!-- 
+        	android:layout_toRightOf="@id/quantity"  
         android:singleLine="true"
         android:ellipsize="end" -->
 </RelativeLayout>
