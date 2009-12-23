@@ -602,8 +602,15 @@ public class NoteEditor extends Activity {
 	
 	                // This stuff is only done when working with a full-fledged note.
 	                if (!mNoteOnly) {
+                            String oldText = "";
+                            Cursor cursor = getContentResolver().query(mUri, new String[]{"note"}, null, null, null);
+                            if ( cursor.moveToFirst() ) {
+                                oldText = cursor.getString(0);
+                            }
 	                    // Bump the modification time to now.
+                            if ( ! oldText.trim().equals(text.trim()) ) {
 	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+                            }
 	                    
 	                    String title = ExtractTitle.extractTitle(text);
 		                values.put(Notes.TITLE, title);
