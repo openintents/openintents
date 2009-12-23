@@ -228,7 +228,9 @@ storepass=*password of keystore*
         	<src path="./gen"/>
             <classpath>
                 <fileset dir="${external-libs}" includes="*.jar"/>
+            	<!--
                <fileset dir="${googlemaps}" includes="*.jar"/>
+               -->
             </classpath>
          </javac>
     </target>
