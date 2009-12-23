@@ -248,9 +248,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
     protected void updateTagList() {
 
-        List<String> tags = new ArrayList<String>();
+        List<String> taglist = new ArrayList<String>();
 
-        tags.add(getString(R.string.tag_no_filter));
+        taglist.add(getString(R.string.tag_no_filter));
 
         Uri notesUri = getIntent().getData();
 
@@ -262,16 +262,19 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
         if (managedCursor.moveToFirst()) {
             do {
-                for (String tag : managedCursor.getString(0).split(",")) {
-                    if (!tags.contains(tag.trim())) {
-                        tags.add(tag.trim());
-                    }
-                }
+            	String tags = managedCursor.getString(0);
+            	if (!TextUtils.isEmpty(tags)) {
+	                for (String tag : tags.split(",")) {
+	                    if (!taglist.contains(tag.trim())) {
+	                        taglist.add(tag.trim());
+	                    }
+	                }
+            	}
             } while (managedCursor.moveToNext());
         }
 
         Spinner s = (Spinner) findViewById(R.id.tagselection);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, tags);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, taglist);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
     }
