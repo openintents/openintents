@@ -26,6 +26,7 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.1.4
 date: 2009-??
+- Don't change modification time when only viewing note.
 - translations: Korean, Lao, Romanian
 
 ---------------------------------------------------------
