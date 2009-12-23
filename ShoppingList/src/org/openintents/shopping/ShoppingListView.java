@@ -246,8 +246,7 @@ public class ShoppingListView extends ListView {
 				tv.setText(name);
 				return true;
 			} else if (id == R.id.price) {
-				long price = cursor
-						.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+				long price = getQuantityPrice(cursor);
 				TextView tv = (TextView) view;
 				if (mPriceVisibility == View.VISIBLE && price != 0) {
 					tv.setVisibility(View.VISIBLE);
@@ -685,8 +684,7 @@ public class ShoppingListView extends ListView {
 		long total = 0;
 		long totalchecked = 0;
 		while (mCursorItems.moveToNext()) {
-			long price = mCursorItems
-					.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+			long price = getQuantityPrice(mCursorItems);
 			total += price;
 			if (mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
 				totalchecked += price;
@@ -714,6 +712,23 @@ public class ShoppingListView extends ListView {
 		} else {
 			mTotalCheckedTextView.setVisibility(View.GONE);
 		}
+	}
+	
+	private long getQuantityPrice(Cursor cursor) {
+		long price = cursor
+				.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+		if (price != 0) {
+			String quantityString = cursor.getString(ShoppingActivity.mStringItemsQUANTITY);
+			if (!TextUtils.isEmpty(quantityString)) {
+				try {
+					double quantity = Double.parseDouble(quantityString);
+					price = (long) (price * quantity);
+				} catch (NumberFormatException e) {
+					// do nothing
+				}
+			}
+		}
+		return price;
 	}
 
 }
