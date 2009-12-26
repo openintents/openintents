@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.1
-date: 2009-12-19
+date: 2009-12-26
 - recursive delete
 - translations: Dutch, Faroese, Korean, Lao, Romanian
 
