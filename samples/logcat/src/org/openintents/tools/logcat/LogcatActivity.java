@@ -2,27 +2,24 @@ package org.openintents.tools.logcat;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -42,7 +39,8 @@ public class LogcatActivity extends Activity
 
 	public static final int MAX_LINES = 250;
 	
-	private static final int MENU_SAVE_LOG = Menu.FIRST;
+	private static final int MENU_SEND_LOG = Menu.FIRST;
+	private static final int MENU_SAVE_LOG = Menu.FIRST + 1;
 	
 //	private static final int MSG_ERROR = 0;
 	private static final int MSG_NEWLINE = 1;
@@ -115,7 +113,8 @@ public class LogcatActivity extends Activity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		super.onCreateOptionsMenu(menu);
-
+		
+		menu.add(0, MENU_SEND_LOG, 0, "Send Log").setIcon(android.R.drawable.ic_menu_send);
 		menu.add(0, MENU_SAVE_LOG, 0, "Save Log").setIcon(android.R.drawable.ic_menu_save);
 
 		return true;
@@ -195,6 +194,9 @@ public class LogcatActivity extends Activity
 	{
 		switch (item.getItemId())
 		{
+		case MENU_SEND_LOG:
+			sendCurrentInfo();
+			return true;
 		case MENU_SAVE_LOG:
 			menuSaveCurrentLog();
 			return true;
@@ -321,4 +323,83 @@ public class LogcatActivity extends Activity
 			LABEL_COLOR_MAP.put('W', 0xffffff99);
 		}
 	}
+
+	void sendCurrentInfo() {
+		
+		String mSendText = "";
+		mSendText = "Dear OpenIntents support team,\n\n";
+		mSendText += "Please find below the system log ";
+		mSendText += "together with device-specific information.\n\n";
+		mSendText += "<insert additional comments>\n\n";
+		mSendText += "Best,\n<insert your name if you want>\n\n";
+		mSendText += "-----\nDevice information:\n";
+		mSendText += getBuildInfo();
+		mSendText += "\n";
+		mSendText += "-----\nLogcat output:\n";
+		mSendText += getLogcatOutput();
+		mSendText += "\n";
+		
+		// Send
+		mSendText += "-----\n";
+		Intent sendIntent = new Intent(Intent.ACTION_SEND);
+		//sendIntent.setData(Uri.parse("mailto:support@openintents.org"));
+		sendIntent.putExtra(Intent.EXTRA_TEXT, mSendText);
+		sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Logcat for " + Build.MODEL);
+		sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"support@openintents.org"});
+		sendIntent.setType("message/rfc822");
+		startActivity(Intent.createChooser(sendIntent, "Send message:"));
+	}
+	
+    static String getBuildInfo() {
+    	StringBuilder sb = new StringBuilder();
+    	sb.append("Model: ");
+    	sb.append(Build.MODEL);
+    	sb.append("\nBrand: ");
+    	sb.append(Build.BRAND);
+    	sb.append("\nProduct: ");
+    	sb.append(Build.PRODUCT);
+    	sb.append("\nDevice: ");
+    	sb.append(Build.DEVICE);
+    	sb.append("\nBoard: ");
+    	sb.append(Build.BOARD);
+    	sb.append("\nDisplay: ");
+    	sb.append(Build.DISPLAY);
+    	sb.append("\nID: ");
+    	sb.append(Build.ID);
+    	sb.append("\nVersion: ");
+    	sb.append(Build.VERSION.RELEASE);
+    	sb.append("\nVersion incremental: ");
+    	sb.append(Build.VERSION.INCREMENTAL);
+    	sb.append("\nSDK version: ");
+    	sb.append(Build.VERSION.SDK);
+    	//sb.append("\nFingerprint: ");
+    	//sb.append(Build.FINGERPRINT);
+    	//sb.append("\nHost: ");
+    	//sb.append(Build.HOST);
+    	//sb.append("\nTags: ");
+    	//sb.append(Build.TAGS);
+    	//sb.append("\nTime: ");
+    	//sb.append(Build.TIME);
+    	//sb.append("\nType: ");
+    	//sb.append(Build.TYPE);
+    	//sb.append("\nUser: ");
+    	//sb.append(Build.USER);
+    	return sb.toString();
+    }
+    
+    String getLogcatOutput() {
+    	StringBuffer sb = new StringBuffer();
+    	
+		int n = mLines.getChildCount();
+
+		for (int i = 0; i < n; i++)
+		{
+			TextView lineView = (TextView)mLines.getChildAt(i);
+			String line = lineView.getText().toString();
+			sb.append(line);
+			sb.append("\n");
+		}
+		
+		return sb.toString();
+    }
 }
