@@ -51,6 +51,7 @@ public class LogcatActivity extends Activity
 	
 //	private static final int MSG_ERROR = 0;
 	private static final int MSG_NEWLINE = 1;
+	private static final int MSG_SHOW_DIALOG = 2;
 	
 	private static final int DIALOG_SEND_LOGCAT = 1;
 	
@@ -70,6 +71,9 @@ public class LogcatActivity extends Activity
 //				break;
 			case MSG_NEWLINE:
 				handleMessageNewline(msg);
+				break;
+			case MSG_SHOW_DIALOG:
+				showDialog(DIALOG_SEND_LOGCAT);
 				break;
 			default:
 				super.handleMessage(msg);
@@ -456,8 +460,12 @@ public class LogcatActivity extends Activity
     		
     		// Extract package name before pid in bracket starts:
     		lastErrorPackage = s.substring(0, s.indexOf("(") - 1);
-    		    		
-			showDialog(DIALOG_SEND_LOGCAT);
+    		
+    		// Delete any previous messages:
+    		mHandler.removeMessages(MSG_SHOW_DIALOG);
+    		
+    		// Show dialog after a delay (if no other error message is found in the mean-time)
+    		mHandler.sendEmptyMessageDelayed(MSG_SHOW_DIALOG, 1000);
     	}
     	
     }
