@@ -9,13 +9,20 @@ import java.util.Date;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.Menu;
@@ -45,6 +52,12 @@ public class LogcatActivity extends Activity
 //	private static final int MSG_ERROR = 0;
 	private static final int MSG_NEWLINE = 1;
 	
+	private static final int DIALOG_SEND_LOGCAT = 1;
+	
+	private String lastErrorPackage = null;
+    private String pid = null;
+	private String crashedApplicationName = null;
+	
 	private final Handler mHandler = new Handler()
 	{
 		@Override
@@ -68,6 +81,8 @@ public class LogcatActivity extends Activity
 	private void handleMessageNewline(Message msg)
 	{
 		String line = (String)msg.obj;
+		
+		checkForError(line);
 		
 		final boolean autoscroll = 
 		  (mScrollView.getScrollY() + mScrollView.getHeight() >= mLines.getBottom()) ? true : false;
@@ -328,6 +343,9 @@ public class LogcatActivity extends Activity
 		
 		String mSendText = "";
 		mSendText = "Dear OpenIntents support team,\n\n";
+		if (!TextUtils.isEmpty(crashedApplicationName)) {
+			mSendText += "The application " + crashedApplicationName + " crashed.\n\n";
+		}
 		mSendText += "Please find below the system log ";
 		mSendText += "together with device-specific information.\n\n";
 		mSendText += "<insert additional comments>\n\n";
@@ -344,10 +362,18 @@ public class LogcatActivity extends Activity
 		Intent sendIntent = new Intent(Intent.ACTION_SEND);
 		//sendIntent.setData(Uri.parse("mailto:support@openintents.org"));
 		sendIntent.putExtra(Intent.EXTRA_TEXT, mSendText);
-		sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Logcat for " + Build.MODEL);
+		if (!TextUtils.isEmpty(crashedApplicationName)) {
+			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Logcat for " + crashedApplicationName + " (" + Build.MODEL + ")");
+		} else {
+			sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Logcat (" + Build.MODEL + ")");
+		}
 		sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"support@openintents.org"});
 		sendIntent.setType("message/rfc822");
 		startActivity(Intent.createChooser(sendIntent, "Send message:"));
+		
+		lastErrorPackage = null;
+		pid = null;
+		crashedApplicationName = null;
 	}
 	
     static String getBuildInfo() {
@@ -402,4 +428,82 @@ public class LogcatActivity extends Activity
 		
 		return sb.toString();
     }
+    
+    /**
+     * Check whether line contains an error message:
+     * @param line
+     */
+    void checkForError(String line) {
+    	// First we look for a line that may look like this:
+    	// E/Wall    ( 8765): at org.openintents.test.crash.TestCrashActivity(TestCrashActivity.java:50)
+    	if (line.charAt(0) == 'E') {
+
+    		// Extract pid, which is contained in brackets:
+    		int x1 = line.indexOf("(");
+    		int x2 = line.indexOf(")");
+    		
+        	// Here we only extract the pid ('8765' in the example above).
+    		pid = line.substring(x1 + 1, x2).trim();
+    	}
+    	
+    	// Then we look for another line that may look like this:
+    	// I/ActivityManager(   74): Process org.openintents.test.crash (pid 8765) has died.
+    	if (pid != null && line.endsWith(" has died.") && line.contains(pid)) {
+    		// Retrieve package name from process that has died with same pid as obtained above in
+    		// an error message:
+    		String l = line.substring(line.indexOf(':'));
+    		String s = l.substring("Process ".length() + 2, l.length() - " has died.".length());
+    		
+    		// Extract package name before pid in bracket starts:
+    		lastErrorPackage = s.substring(0, s.indexOf("(") - 1);
+    		    		
+			showDialog(DIALOG_SEND_LOGCAT);
+    	}
+    	
+    }
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		switch (id) {
+		case DIALOG_SEND_LOGCAT:
+			
+    		PackageManager pm = getPackageManager();
+    		ApplicationInfo info = null;
+    		try {
+    			info = pm.getApplicationInfo(lastErrorPackage, 0);
+    		} catch (NameNotFoundException e) {
+    		}
+			
+    		AlertDialog.Builder builder = new AlertDialog.Builder(this)
+			.setTitle("Send error message?")
+			.setPositiveButton(
+					"Yes",
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							sendCurrentInfo();
+						}
+					})
+			.setNegativeButton("No", null
+					);
+    		
+    		
+    		if (info != null) {
+    			crashedApplicationName = pm.getApplicationLabel(info).toString();
+    			builder.setMessage("Application " + 
+    					crashedApplicationName + " crashed. Would you like to send "
+    	    			+ "the system log to support?");
+    			builder.setIcon(pm.getApplicationIcon(info));
+    		} else {
+    			builder.setMessage("An application crashed. Would you like to send "
+    	    			+ "the system log to support?");
+    			builder.setIcon(android.R.drawable.ic_dialog_alert);
+    		}
+    		 
+    		return builder.create();
+		}
+		return super.onCreateDialog(id);
+	}
+    
+    
 }
