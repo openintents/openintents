@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="crash_me">Crash me</string>
+    <string name="hello">Hello World, TestCrashActivity!</string>
+    <string name="app_name">TestCrash</string>
+</resources>
