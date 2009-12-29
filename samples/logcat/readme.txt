@@ -22,8 +22,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.0
-date: 2009-12-26
+date: 2009-12-29
 
 - Save logcat output to SD card.
 - Send logcat by email.
+- Automatic dialog if application crash has been
+  detected.
 
