@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.extensions.insertdate"
-      android:versionCode="1"
-      android:versionName="1.0.0-beta1">
-    <uses-sdk android:minSdkVersion="2" />
+      android:versionCode="2"
+      android:versionName="1.0.0">
 	<!-- History:
+	[2] 1.0.0: 2009-12-31
 	[1] 1.0.0-beta1: 2009-07-08 -->
 	
+    <uses-sdk android:minSdkVersion="2"
+    	android:targetSdkVersion="4" />
+    
+    <supports-screens android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true" />
+    
     <application android:icon="@drawable/ic_menu_month" android:label="@string/app_name">
     
         <!-- aTrackDog metadata -->

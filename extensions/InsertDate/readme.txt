@@ -22,10 +22,10 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.0.0-beta1
-date: 2009-07-08
+release: 1.0.0
+date: 2009-12-31
 
-- First public release on Android SDK 1.1 and 1.5.
+- First public release on Android SDK 1.1 and higher.
 
 Features: 
 - Insert current date and time at cursor position.

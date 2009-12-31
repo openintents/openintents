@@ -12,11 +12,25 @@ storepass=*password of keystore*
 	<property file="build.properties" />
 	<!-- <property file="${build.properties.dir}/build.properties" /> -->
 
+	<!-- 1.5 Changes START -->
+	    <!-- Custom Android task to deal with the project target, and import the proper rules.
+	         This requires ant 1.6.0 or above. -->
+	    <path id="android.antlibs">
+	        <pathelement path="${sdk-location}/tools/lib/anttasks.jar" />
+	        <pathelement path="${sdk-location}/tools/lib/sdklib.jar" />
+	        <pathelement path="${sdk-location}/tools/lib/androidprefs.jar" />
+	        <pathelement path="${sdk-location}/tools/lib/apkbuilder.jar" />
+	        <pathelement path="${sdk-location}/tools/lib/jarutils.jar" />
+	    </path>
+
+	<!-- 1.5 Changes END -->
+
 	<!-- Read manifest properties , e.g. manifest(android:versionName) or manifest.package -->
 	<xmlproperty file="AndroidManifest.xml" />
 
 	<!-- Path to Android SDK and tools -->
 	<property name="sdk-folder" value="${android.sdk}" />
+	<property name="platform-tools" value="${sdk-folder}/tools" />
 	<property name="android-tools" value="${sdk-folder}/tools" />
 	<echo>Using Android SDK directory ${sdk-folder}</echo>
 
@@ -58,7 +72,7 @@ storepass=*password of keystore*
 	<property name="releasedir" value="release" />
 
 	<!-- Create R.java in the source directory -->
-	<property name="outdir-r" value="src" />
+	<property name="outdir-r" value="gen" />
 
 	<!-- Intermediate files -->
 	<property name="dex-file" value="classes.dex" />
@@ -83,9 +97,16 @@ storepass=*password of keystore*
 		<os family="windows" />
 	</condition>
 
-	<property name="out-signed-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<property name="out-signed-package" value="${outdir}/${ant.project.name}-signed.apk" />
 	<condition property="out-signed-package-ospath" value="${basedir}\${out-signed-package}" else="${basedir}/${out-signed-package}">
 		<os family="windows" />
+	</condition>
+	
+	<property name="out-aligned-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<condition property="out-aligned-package-ospath"
+	            value="${basedir}\${out-aligned-package}"
+	            else="${basedir}/${out-aligned-package}" >
+	        <os family="windows"/>
 	</condition>
 
 	<property name="out-release-source" value="${releasedir}/${ant.project.name}-source-${version}" />
@@ -111,9 +132,8 @@ storepass=*password of keystore*
 	<condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder">
 		<os family="windows" />
 	</condition>
-
-	<condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder">
-		<os family="windows" />
+	<condition property="zipalign" value="${android-tools}/zipalign.exe" else="${android-tools}/zipalign" >
+	    <os family="windows"/>
 	</condition>
 
 	<condition property="android-jar" value="${sdk-folder}\android.jar" else="${sdk-folder}/android.jar">
@@ -121,6 +141,23 @@ storepass=*password of keystore*
 	</condition>
 
 	<!-- Rules -->
+    <!-- Custom tasks -->
+<!-- 1.5 Changes START -->
+   <taskdef name="setup"
+        classname="com.android.ant.SetupTask"
+        classpathref="android.antlibs"/>
+	<setup import="false" />
+
+    <taskdef name="aaptexec"
+        classname="com.android.ant.AaptExecLoopTask"
+        classpathref="android.antlibs"/>
+
+    <taskdef name="apkbuilder"
+        classname="com.android.ant.ApkBuilderTask"
+        classpathref="android.antlibs"/>
+		
+<!-- 1.5 Changes END -->
+
 
 	<!-- Create the output directories if they don't exist yet. -->
 	<target name="dirs">
@@ -159,6 +196,7 @@ storepass=*password of keystore*
 		<apply executable="${aidl}" failonerror="true">
 			<arg value="-p${android-framework}" />
 			<arg value="-I${srcdir}" />
+			<arg value="-o${outdir-r}" />
 			<fileset dir="${srcdir}">
 				<include name="**/*.aidl" />
 			</fileset>
@@ -166,15 +204,19 @@ storepass=*password of keystore*
 	</target>
 
 	<!-- Compile this project's .java files into .class files. -->
-	<target name="compile" depends="dirs, resource-src, aidl">
-		<javac encoding="ascii" target="1.5" debug="true" extdirs="" srcdir="." destdir="${outdir-classes}" bootclasspath="${android-jar}">
-			<exclude name="gen/**" /> <!-- SDK 1.5: backward compatibility with SDK 1.1 -->
+	<target name="compile" depends="dirs, clear_layout, resource-src, aidl">
+		<echo>using sdk --|${android-jar}|--</echo>
+		<echo>external-libs --|${external-libs}|--</echo>
+		
+		<javac encoding="ascii" target="1.5" debug="true" extdirs="" 
+				destdir="${outdir-classes}" 
+				bootclasspath="${android-jar}">
+			<src path="."/>
+			<src path="./gen"/>
 			<classpath>
 				<fileset dir="${external-libs}" includes="*.jar" />
 			</classpath>
 		</javac>
-		<!-- Deleted generated files of SDK 1.1 -->
-		<delete file="./src/org/openintents/extensions/insertdate/R.java" />
 	</target>
 
 
@@ -193,24 +235,17 @@ storepass=*password of keystore*
 			<arg value="-dontusemixedcaseclassnames" />
 			<arg value="-dontoptimize" />
 			<arg value="-dontshrink" />
-			<arg value="-keep public class org.openintents.news.channels.SearchSuggestionProvider" />
-			<arg value="-keep public class org.openintents.news.NewsProvider" />
-			<arg value="-keep public class org.openintents.news.reader.Newsreader" />
-			<arg value="-keep public class org.openintents.news.reader.EulaActivity" />
-			<arg value="-keep public class org.openintents.news.help.PreselectedChannelsActivity" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelSettings" />
-			<arg value="-keep public class org.openintents.news.services.NewsServiceSettings" />
-			<arg value="-keep public class org.openintents.news.messages.AFeedMessages" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelSettings" />
-			<arg value="-keep public class org.openintents.news.channels.ActionSpinner" />
-			<arg value="-keep public class org.openintents.news.categories.AddCategoryActivity" />
-			<arg value="-keep public class org.openintents.news.categories.CategoriesListActivity" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelListView" />
-			<arg value="-keep public class org.openintents.news.About" />
-			<arg value="-keep public class org.openintents.lib.ConfirmDialogPreference" />
-			<arg value="-keep public class org.openintents.news.services.AutostartService" />
-			<arg value="-keep public class org.openintents.news.services.RoamingWatcher" />
-			<arg value="-keep public class org.openintents.news.services.NewsreaderService" />
+			<arg value="-keep public class org.openintents.timesheet.Application" />
+			<arg value="-keep public class org.openintents.timesheet.PreferenceActivity" />
+			<arg value="-keep public class org.openintents.timesheet.TimesheetProvider" />
+			<arg value="-keep public class org.openintents.timesheet.LinedEditText" />
+			<arg value="-keep public class org.openintents.timesheet.convert.ConvertCsvActivity" />
+			<arg value="-keep public class org.openintents.timesheet.activity.JobList" />
+			<arg value="-keep public class org.openintents.timesheet.activity.JobActivity" />
+			<arg value="-keep public class org.openintents.distribution.EulaActivity" />
+			<arg value="-keep public class org.openintents.distribution.AboutActivity" />
+			<arg value="-keep public class org.openintents.distribution.LicenseActivity" />
+			<arg value="-keep public class org.openintents.distribution.LicensePreference" />
 
 			<!-- <arg value="-optimizationpasses 7"/> -->
 			<!-- <arg value="-overloadaggressively"/> -->
@@ -316,8 +351,15 @@ storepass=*password of keystore*
 			<arg value="${external-libs-ospath}" />
 		</exec>
 		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}" />
+        <exec executable="${zipalign}" failonerror="true">
+            <arg value="-f" />
+            <arg value="4" />
+            <arg value="${out-signed-package-ospath}" />
+            <arg value="${out-aligned-package-ospath}" />
+        </exec>
 	</target>
-
+	
+	
 	<!-- Install the package on the default emulator -->
 	<target name="install" depends="debug">
 		<echo>Installing ${out-debug-package} onto default emulator...</echo>
@@ -338,20 +380,20 @@ storepass=*password of keystore*
 
 
 	<!-- Install the package on the default emulator -->
-	<target name="install-signed" depends="release">
-		<echo>Installing ${out-signed-package} onto default emulator...</echo>
+	<target name="install-signed-market" depends="release">
+		<echo>Installing ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
-	<target name="reinstall-signed" depends="release">
-		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
+	<target name="reinstall-signed-market" depends="release">
+		<echo>Reinstalling ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 			
@@ -382,7 +424,6 @@ storepass=*password of keystore*
         <mkdir dir="${releasedir}" />
 		<copy todir="${out-release-source-ospath}">
 			<fileset dir=".">
-				<exclude name="**/.settings/**" />
 				<exclude name="**/bin/**" />
 				<exclude name="**/doc/**" />
 				<exclude name="**/gen/**" />
