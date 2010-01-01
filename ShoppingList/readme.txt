@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2009 OpenIntents.org                                  *
+ * Copyright (C) 2007-2010 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -22,8 +22,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.2.0-beta1
-date: 2009-12-23
+release: 1.2.0
+date: 2010-01-01
 - add quantity field
 - optimize styles
 - virtual keyboard should not automatically open

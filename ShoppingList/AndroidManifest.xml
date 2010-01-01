@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	* Copyright (C) 2007-2008 OpenIntents.org
+	* Copyright (C) 2007-2010 OpenIntents.org
 	*
 	* Licensed under the Apache License, Version 2.0 (the "License");
 	* you may not use this file except in compliance with the License.
@@ -17,10 +17,11 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionName="1.2.0-beta1"
+	android:versionName="1.2.0"
 	android:versionCode="10010">
 	<!-- History:
-	1.2.0-beta1 [10010]: ??
+	1.2.0 [10011]: 2010-01-01
+	1.2.0-beta1 [10010]: 2009-12-22
 	1.1.2 [10009] 2009-10-14
 	1.1.1 [10008]: 2009-05-27
 	1.1.1-rc1 [10007]: 2009-05-24
