@@ -79,6 +79,7 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.FilterQueryProvider;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -87,6 +88,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TableLayout.LayoutParams;
 
 /**
  * 
@@ -1377,6 +1379,13 @@ public class ShoppingActivity extends Activity { // implements
 
 		final RadioGroup radiogroup = (RadioGroup) view
 				.findViewById(R.id.radiogroup);
+		
+		// Add new button
+		RadioButton rb = new RadioButton(this);
+		rb.setText("Notepad Theme");
+		rb.setId(R.id.radio3 + 1);
+		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+//		radiogroup.addView(rb, lp);
 
 		// Set Theme according to database
 		radiogroup.check(R.id.radio1);
@@ -1407,6 +1416,9 @@ public class ShoppingActivity extends Activity { // implements
 							break;
 						case R.id.radio3:
 							mListItemsView.setListTheme(3);
+							break;
+						case R.id.radio3 + 1:
+							mListItemsView.setListTheme(4);
 							break;
 
 						}

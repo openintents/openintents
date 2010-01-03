@@ -7,9 +7,13 @@ import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Status;
+import org.openintents.util.ThemeUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.ContentObserver;
 import android.database.Cursor;
@@ -23,6 +27,7 @@ import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -458,16 +463,29 @@ public class ShoppingListView extends ListView {
 
 		switch (themeId) {
 		case 1:
-			getContext().setTheme(R.style.ShoppingListDefault);
+			setLocalStyle(R.style.ShoppingListDefault, size);
 			break;
 		case 2:
-			getContext().setTheme(R.style.ShoppingListClassic);
+			setLocalStyle(R.style.ShoppingListClassic, size);
 			break;
 		case 3:
-			getContext().setTheme(R.style.ShoppingListAndroid);
+			setLocalStyle(R.style.ShoppingListAndroid, size);
+			break;
+		case 4:
+			setRemoteStyle(size);
 			break;
 		}
 
+		
+		invalidate();
+		if (mCursorItems != null) {
+			requery();
+		}
+	}
+
+	private void setLocalStyle(int style, int size) {
+		getContext().setTheme(style);
+		
 		TypedArray a = getContext().obtainStyledAttributes(
 				R.styleable.ShoppingListView);
 
@@ -521,12 +539,89 @@ public class ShoppingListView extends ListView {
 		}
 		
 		setDivider(div);
-		
-		invalidate();
-		if (mCursorItems != null) {
-			requery();
-		}
 	}
+
+	private void setRemoteStyle(int size) {
+
+		PackageManager pm = getContext().getPackageManager();
+		
+		Context c = null;
+		try {
+			c = getContext().createPackageContext("org.openintents.themes.notepad", 0);
+		} catch (NameNotFoundException e) {
+			Log.e(TAG, "Name not found");
+		}
+		/*
+		Typeface mTypefaceHandwriting 
+			= Typeface.createFromAsset(c.getAssets(),
+					"fonts/AnkeHand.ttf");*
+
+		TextView t = (TextView) findViewById(R.id.text);
+		
+		t.setTypeface(mTypefaceHandwriting);*/
+		
+		Resources res = c.getResources();
+		
+		int themeid = res.getIdentifier("NotepadTheme", "style", "org.openintents.themes.notepad");
+		
+		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, "org.openintents.themes.notepad");
+		
+		TypedArray a = c.obtainStyledAttributes(themeid, attr);
+		
+		mTypeface = a.getInteger(ThemeUtils.ID_typeface, 1);
+		mUpperCaseFont = a.getBoolean(ThemeUtils.ID_upperCaseFont, true);
+		
+		mTextColor = a.getColor(ThemeUtils.ID_textColor,
+				android.R.color.black);
+		
+		mPriceTextColor = a.getColor(
+				ThemeUtils.ID_priceTextColor,
+				android.R.color.black);
+		if (size == 1) {
+			mTextSize = a
+					.getInt(ThemeUtils.ID_textSizeSmall, 10);
+		} else if (size == 2) {
+			mTextSize = a.getInt(ThemeUtils.ID_textSizeMedium,
+					20);
+		} else {
+			mTextSize = a
+					.getInt(ThemeUtils.ID_textSizeLarge, 30);
+		}
+
+		mMarkTextColor = a.getColor(ThemeUtils.ID_markTextColor,
+				android.R.color.black);
+		mMarkType = a.getInt(ThemeUtils.ID_markType, 0);
+
+		if (mThemedBackground != null) {
+			if (a.getInteger(ThemeUtils.ID_backgroundPadding, -1) >=0){
+			   mThemedBackground.setPadding(0,0,0,0);
+			} else {
+				// 9-patches do the padding automatically
+				// todo clear padding 
+			}
+			mThemedBackground.setBackgroundResource(a.getResourceId(
+					ThemeUtils.ID_background, 0));
+		}
+
+		mClickMeansEdit = a.getBoolean(
+				ThemeUtils.ID_clickMeansEdit, true);
+
+		int divider = a.getInteger(ThemeUtils.ID_divider, 0);
+		
+		a.recycle();
+		
+		Drawable div = null;
+		if (divider > 0) {
+			div = getResources().getDrawable(divider);
+		} else if (divider < 0) {
+			div = null;
+		} else {
+			div = mDefaultDivider;
+		}
+		
+		setDivider(div);
+	}
+	
 
 	public void setThemedBackground(View background) {
 		mThemedBackground = background;
