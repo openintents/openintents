@@ -68,7 +68,7 @@ public class AskPassword extends Activity {
     private int viewMode = VIEW_NORMAL;
 
 	private EditText pbeKey;
-	private DBHelper dbHelper;
+	private DBHelper dbHelper=null;
 	private TextView introText;
 //	private TextView confirmText;
 	private TextView remoteAsk;
@@ -276,8 +276,10 @@ public class AskPassword extends Activity {
 
 		if (debug) Log.d(TAG, "onPause()");
 
-		dbHelper.close();
-		dbHelper = null;
+		if (dbHelper!=null) {
+			dbHelper.close();
+			dbHelper = null;
+		}
 	}
 
 	@Override

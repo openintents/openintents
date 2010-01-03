@@ -701,7 +701,8 @@ public class CategoryList extends ListActivity {
 					getString(R.string.website),
 					getString(R.string.username),
 					getString(R.string.password),
-					getString(R.string.notes)
+					getString(R.string.notes),
+					getString(R.string.last_edited)
 			};
 			writer.writeNext(header);
 			
@@ -716,7 +717,8 @@ public class CategoryList extends ListActivity {
 			    		row.plainWebsite,
 			    		row.plainUsername,
 			    		row.plainPassword,
-			    		row.plainNote
+			    		row.plainNote,
+			    		row.lastEdited
 			    };
 			    writer.writeNext(rowEntries);
 			}
@@ -835,7 +837,7 @@ public class CategoryList extends ListActivity {
 		    	importMessage=getString(R.string.import_error_first_line);
 		        return;
 		    }
-		    if (nextLine.length != recordLength){
+		    if (nextLine.length < recordLength){
 		    	importMessage=getString(R.string.import_error_first_line);
 		        return;
 		    }

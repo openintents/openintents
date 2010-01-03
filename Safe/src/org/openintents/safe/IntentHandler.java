@@ -18,6 +18,7 @@ package org.openintents.safe;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.openintents.intents.CryptoIntents;
 import org.openintents.safe.dialog.DialogHostingActivity;
@@ -61,7 +62,7 @@ public class IntentHandler extends Activity {
 	
 	// service elements
     private static ServiceDispatch service=null;
-    private ServiceDispatchConnection conn;
+    private ServiceDispatchConnection conn=null;
 	private Intent mServiceIntent;
 
     SharedPreferences mPreferences;
@@ -70,7 +71,7 @@ public class IntentHandler extends Activity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		if (debug) Log.d(TAG, "onCreate()");
+		if (debug) Log.d(TAG, "onCreate("+icicle+")");
 		
 		mServiceIntent = null;
 		mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -113,6 +114,7 @@ public class IntentHandler extends Activity {
 				try {
 		        	salt = service.getSalt();
 					masterKey = service.getPassword();
+		if (debug) Log.d(TAG,"starting actiondispatch");
 					actionDispatch();
 				} catch (RemoteException e) {
 					Log.d(TAG, e.toString());
@@ -186,6 +188,8 @@ public class IntentHandler extends Activity {
         CategoryList.setSalt(salt);
 		PassList.setMasterKey(masterKey);
         CategoryList.setMasterKey(masterKey);
+        
+        if (debug) Log.d(TAG,"actionDispatch()");
         if ((salt==null) || (salt=="")) {
         	return;
         }
@@ -261,6 +265,7 @@ public class IntentHandler extends Activity {
 			if (thisIntent.hasExtra(CryptoIntents.EXTRA_TEXT)) {
 				// get the body text out of the extras.
 				String inputBody = thisIntent.getStringExtra (CryptoIntents.EXTRA_TEXT);
+				if (debug) Log.d(TAG,"inputBody="+inputBody);
 				String outputBody = "";
 				outputBody = ch.encryptWithSessionKey (inputBody);
 				// stash the encrypted text in the extra
@@ -269,12 +274,14 @@ public class IntentHandler extends Activity {
 			
 			if (thisIntent.hasExtra(CryptoIntents.EXTRA_TEXT_ARRAY)) {
 				String[] in = thisIntent.getStringArrayExtra(CryptoIntents.EXTRA_TEXT_ARRAY);
+				if (debug) Log.d(TAG,"in="+Arrays.toString(in));
 				String[] out = new String[in.length];
 				for (int i = 0; i < in.length; i++) {
 					if (in[i] != null) {
 						out[i] = ch.encryptWithSessionKey(in[i]);
 					}
 				}
+				if (debug) Log.d(TAG,"out="+Arrays.toString(out));
 				callbackIntent.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, out);
 			}
 			
@@ -476,11 +483,15 @@ public class IntentHandler extends Activity {
 	private void initService() {
 
         boolean isLocal = isIntentLocal();
-		conn = new ServiceDispatchConnection(isLocal);
-		Intent i = new Intent();
-		i.setClass(this, ServiceDispatchImpl.class);
-		startService(i);
-		bindService( i, conn, Context.BIND_AUTO_CREATE);
+        if (conn==null) {
+			conn = new ServiceDispatchConnection(isLocal);
+			Intent i = new Intent();
+			i.setClass(this, ServiceDispatchImpl.class);
+			startService(i);
+			bindService( i, conn, Context.BIND_AUTO_CREATE);
+        } else {
+        	if (debug) Log.d(TAG,"service already running");
+        }
 	}
 
 	/**
@@ -555,6 +566,8 @@ public class IntentHandler extends Activity {
 			        if (askPassIsLocal || externalAccess) {
 			        	salt = service.getSalt();
 						masterKey = service.getPassword();
+						if (debug) Log.d(TAG,"starting actiondispatch from service");
+
 						actionDispatch();
 			        } else {
 			        	if (debug) Log.d(TAG, "onServiceConnected: showDialogAllowExternalAccess()");
