@@ -36,6 +36,8 @@ import org.openintents.shopping.dialog.DialogActionListener;
 import org.openintents.shopping.dialog.EditItemDialog;
 import org.openintents.shopping.dialog.NewListDialog;
 import org.openintents.shopping.dialog.RenameListDialog;
+import org.openintents.shopping.dialog.ThemeDialog;
+import org.openintents.shopping.dialog.ThemeDialog.ThemeDialogListener;
 import org.openintents.shopping.share.GTalkSender;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.ShakeSensorListener;
@@ -95,7 +97,7 @@ import android.widget.TableLayout.LayoutParams;
  * Displays a shopping list.
  * 
  */
-public class ShoppingActivity extends Activity { // implements
+public class ShoppingActivity extends Activity implements ThemeDialogListener { // implements
 	// AdapterView.OnItemClickListener
 	// {
 
@@ -148,6 +150,7 @@ public class ShoppingActivity extends Activity { // implements
 	private static final int DIALOG_RENAME_LIST = 3;
 	private static final int DIALOG_EDIT_ITEM = 4;
 	private static final int DIALOG_DELETE_ITEM = 5;
+	private static final int DIALOG_THEME = 6;
 	
 	/**
 	 * The main activity.
@@ -1367,108 +1370,25 @@ public class ShoppingActivity extends Activity { // implements
 		 */
 	}
 
-	/**
-	 * Displays a dialog to select a theme for the current shopping list.
-	 */
 	void setThemeSettings() {
-
-		/* Display a custom progress bar */
-		LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		final View view = inflate.inflate(R.layout.shopping_theme_settings,
-				null);
-
-		final RadioGroup radiogroup = (RadioGroup) view
-				.findViewById(R.id.radiogroup);
-		
-		// Add new button
-		RadioButton rb = new RadioButton(this);
-		rb.setText("Notepad Theme");
-		rb.setId(R.id.radio3 + 1);
-		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//		radiogroup.addView(rb, lp);
-
-		// Set Theme according to database
-		radiogroup.check(R.id.radio1);
-
-		int themeId = loadListTheme();
-		switch (themeId) {
-		case 1:
-			radiogroup.check(R.id.radio1);
-			break;
-		case 2:
-			radiogroup.check(R.id.radio2);
-			break;
-		case 3:
-			radiogroup.check(R.id.radio3);
-			break;
-		}
-
-		radiogroup
-				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-
-					public void onCheckedChanged(RadioGroup group, int checkedId) {
-						switch (checkedId) {
-						case R.id.radio1:
-							mListItemsView.setListTheme(1);
-							break;
-						case R.id.radio2:
-							mListItemsView.setListTheme(2);
-							break;
-						case R.id.radio3:
-							mListItemsView.setListTheme(3);
-							break;
-						case R.id.radio3 + 1:
-							mListItemsView.setListTheme(4);
-							break;
-
-						}
-					}
-				});
-
-		new AlertDialog.Builder(ShoppingActivity.this).setIcon(
-				android.R.drawable.ic_menu_manage)
-				.setTitle(R.string.theme_pick).setView(view).setPositiveButton(
-						R.string.ok, new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-
-								/* User clicked Yes so do some stuff */
-								int r = radiogroup.getCheckedRadioButtonId();
-								int themeId = 0;
-								switch (r) {
-								case R.id.radio1:
-									themeId = 1;
-									break;
-								case R.id.radio2:
-									themeId = 2;
-									break;
-								case R.id.radio3:
-									themeId = 3;
-									break;
-								}
-								saveListTheme(themeId);
-								mListItemsView.setListTheme(themeId);
-
-							}
-						}).setNegativeButton(R.string.cancel,
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog,
-									int whichButton) {
-
-								/* User clicked No so do some stuff */
-								int themeId = loadListTheme();
-								mListItemsView.setListTheme(themeId);
-							}
-						}).setOnCancelListener(new OnCancelListener() {
-
-					public void onCancel(DialogInterface arg0) {
-						int themeId = loadListTheme();
-						mListItemsView.setListTheme(themeId);
-					}
-				}).show();
-
+		showDialog(DIALOG_THEME);
 	}
 
+	@Override
+	public int onLoadTheme() {
+		return loadListTheme();
+	}
+
+	@Override
+	public void onSaveTheme(int theme) {
+		saveListTheme(theme);
+	}
+
+	@Override
+	public void onSetTheme(int theme) {
+		mListItemsView.setListTheme(theme);
+	}
+	
 	/**
 	 * Loads the theme settings for the currently selected theme.
 	 * 
@@ -1584,6 +1504,9 @@ public class ShoppingActivity extends Activity { // implements
                 	// Don't do anything
                 }
             }).create();
+			
+		case DIALOG_THEME:
+			return new ThemeDialog(this, this);
 		}
 		return null;
 
@@ -1604,6 +1527,10 @@ public class ShoppingActivity extends Activity { // implements
 		case DIALOG_EDIT_ITEM:
 			((EditItemDialog) dialog).setItemUri(mItemUri);
 			((EditItemDialog)dialog).setRelationUri(mRelationUri);
+			break;
+			
+		case DIALOG_THEME:
+			((ThemeDialog)dialog).updateList();
 			break;
 		}
 	}
@@ -1974,5 +1901,6 @@ public class ShoppingActivity extends Activity { // implements
 
 		}
 	}
+
 
 }
