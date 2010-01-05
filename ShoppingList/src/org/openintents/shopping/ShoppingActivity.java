@@ -1375,17 +1375,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	}
 
 	@Override
-	public int onLoadTheme() {
+	public String onLoadTheme() {
 		return loadListTheme();
 	}
 
 	@Override
-	public void onSaveTheme(int theme) {
+	public void onSaveTheme(String theme) {
 		saveListTheme(theme);
 	}
 
 	@Override
-	public void onSetTheme(int theme) {
+	public void onSetTheme(String theme) {
 		mListItemsView.setListTheme(theme);
 	}
 	
@@ -1397,7 +1397,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 * 
 	 * @return
 	 */
-	public int loadListTheme() {
+	public String loadListTheme() {
 		/*
 		 * long listId = getSelectedListId(); if (listId < 0) { // No valid list
 		 * - probably view is not active // and no item is selected. return 1;
@@ -1406,9 +1406,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		// Return default theme if something unexpected happens:
 		if (mCursorListFilter == null)
-			return 1;
+			return "1";
 		if (mCursorListFilter.getPosition() < 0)
-			return 1;
+			return "1";
 
 		// mCursorListFilter has been set to correct position
 		// by calling getSelectedListId(),
@@ -1416,19 +1416,19 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		String skinBackground = mCursorListFilter
 				.getString(mStringListFilterSKINBACKGROUND);
 
-		int themeId;
-		try {
-			themeId = Integer.parseInt(skinBackground);
-		} catch (NumberFormatException e) {
-			themeId = 1;
+		// Backward compatibility:
+		if (skinBackground.equals("1")) {
+			// Default shopping theme.
+		} else if (skinBackground.equals("2")) {
+			// Default shopping theme.
+		} else if (skinBackground.equals("3")) {
+			
 		}
-		if (themeId < 1 || themeId > 3) {
-			themeId = 1;
-		}
-		return themeId;
+		
+		return skinBackground;
 	}
 
-	public void saveListTheme(int themeId) {
+	public void saveListTheme(String theme) {
 		long listId = getSelectedListId();
 		if (listId < 0) {
 			// No valid list - probably view is not active
@@ -1436,12 +1436,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			return; // return default theme
 		}
 
-		if (themeId < 1 || themeId > 3) {
-			themeId = 1;
-		}
-
 		ContentValues values = new ContentValues();
-		values.put(Lists.SKIN_BACKGROUND, "" + themeId);
+		values.put(Lists.SKIN_BACKGROUND, theme);
 		getContentResolver().update(
 				Uri.withAppendedPath(Lists.CONTENT_URI, mCursorListFilter
 						.getString(0)), values, null, null);

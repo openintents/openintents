@@ -1,6 +1,10 @@
 package org.openintents.shopping.dialog;
 
+import java.util.List;
+
 import org.openintents.shopping.R;
+import org.openintents.util.ThemeUtils;
+import org.openintents.util.ThemeUtils.ThemeInfo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,7 +16,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class ThemeDialog extends AlertDialog implements OnClickListener, OnCancelListener, OnCheckedChangeListener {
@@ -23,6 +30,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	Context mContext;
 	RadioGroup mRadioGroup;
 	ThemeDialogListener mListener;
+	ScrollView mScrollView;
 	
 	public ThemeDialog(Context context) {
 		super(context);
@@ -48,6 +56,11 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 				.findViewById(R.id.radiogroup);
 		mRadioGroup.setOnCheckedChangeListener(this);
 		
+		mScrollView = (ScrollView) view
+				.findViewById(R.id.scrollview);
+		
+		fillThemes();
+		
 		setIcon(android.R.drawable.ic_menu_manage);
 		setTitle(R.string.theme_pick);
 		
@@ -58,19 +71,53 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		updateList();
 	}
 	
+	public void fillThemes() {
+		List<ThemeInfo> listinfo = ThemeUtils.getThemeInfos(mContext, ThemeUtils.SHOPPING_LIST_THEME);
+		
+		//mRadioGroup.removeAllViews();
+		
+		int i = 0;
+		for (ThemeInfo ti : listinfo) {
+			RadioButton rb = new RadioButton(mContext);
+			rb.setText(ti.title);
+			LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			rb.setTag(ti);
+			rb.setId(i);
+			i++;
+			mRadioGroup.addView(rb, lp);
+		}
+	}
+	
 	public void updateList() {
 
-		int themeId = mListener.onLoadTheme();
-		switch (themeId) {
-		case 1:
+		String theme = mListener.onLoadTheme();
+		
+		// Check special cases:
+		if (theme.equals("1")) {
 			mRadioGroup.check(R.id.radio1);
-			break;
-		case 2:
+			return;
+		} else if (theme.equals("2")) {
 			mRadioGroup.check(R.id.radio2);
-			break;
-		case 3:
+			return;
+		} else if (theme.equals("3")) {
 			mRadioGroup.check(R.id.radio3);
-			break;
+			return;
+		}
+		
+		int max = mRadioGroup.getChildCount();
+		
+		for (int i = 0; i < max; i++) {
+			RadioButton rb = (RadioButton) mRadioGroup.getChildAt(i);
+			ThemeInfo ti = (ThemeInfo) rb.getTag();
+			if (ti != null && ti.styleName.equals(theme)) {
+				mRadioGroup.check(rb.getId());
+				
+				// Scroll to new position
+				// (Does not work, because a layout pass
+				//  is probably still missing...)
+				mScrollView.scrollTo(0, rb.getTop());
+				break;
+			}
 		}
 	}
 	
@@ -79,8 +126,8 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		Log.d(TAG, "onSaveInstanceState");
 		
 		Bundle b = super.onSaveInstanceState();
-		int theme = getSelectedTheme();
-		b.putInt(BUNDLE_THEME, theme);
+		String theme = getSelectedTheme();
+		b.putString(BUNDLE_THEME, theme);
 		return b;
 	}
 
@@ -90,23 +137,17 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 
 		Log.d(TAG, "onRestore");
 		
-		int theme = getSelectedTheme();
+		String theme = getSelectedTheme();
 		
 		if (savedInstanceState != null) {
 			if (savedInstanceState.containsKey(BUNDLE_THEME)) {
-				theme = savedInstanceState.getInt(BUNDLE_THEME);
+				theme = savedInstanceState.getString(BUNDLE_THEME);
 
 				Log.d(TAG, "onRestore theme " + theme);
 			}
 		}
 		
 		mListener.onSetTheme(theme);
-	}
-
-	@Override
-	protected void onStart() {
-		// TODO Auto-generated method stub
-		super.onStart();
 	}
 
 	public void onClick(DialogInterface dialog, int which) {
@@ -126,57 +167,71 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	public void pressOk() {
 
 		/* User clicked Yes so do some stuff */
-		int themeId = getSelectedTheme();
-		mListener.onSaveTheme(themeId);
-		mListener.onSetTheme(themeId);
+		String theme = getSelectedTheme();
+		mListener.onSaveTheme(theme);
+		mListener.onSetTheme(theme);
 	}
 
-	private int getSelectedTheme() {
+	private String getSelectedTheme() {
 		int r = mRadioGroup.getCheckedRadioButtonId();
-		int themeId = 0;
-		switch (r) {
-		case R.id.radio1:
-			themeId = 1;
-			break;
-		case R.id.radio2:
-			themeId = 2;
-			break;
-		case R.id.radio3:
-			themeId = 3;
-			break;
+		
+		// Check special cases first
+		if (r == R.id.radio1) {
+			return "1";
+		} else if (r == R.id.radio2) {
+			return "2";
+		} else if (r == R.id.radio3) {
+			return "3";
 		}
-		return themeId;
+		
+		// Now generic case from remote packages
+		RadioButton rb = (RadioButton) mRadioGroup.findViewById(r);
+		
+		if (rb != null) {
+			ThemeInfo ti = (ThemeInfo) rb.getTag();
+			
+			return ti.styleName;
+		} else {
+			return null;
+		}
 	}
 	
 	public void pressCancel() {
 		/* User clicked No so do some stuff */
-		int themeId = mListener.onLoadTheme();
-		mListener.onSetTheme(themeId);
+		String theme = mListener.onLoadTheme();
+		mListener.onSetTheme(theme);
 	}
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		switch (checkedId) {
-		case R.id.radio1:
-			mListener.onSetTheme(1);
-			break;
-		case R.id.radio2:
-			mListener.onSetTheme(2);
-			break;
-		case R.id.radio3:
-			mListener.onSetTheme(3);
-			break;
-		case R.id.radio3 + 1:
-			mListener.onSetTheme(4);
-			break;
-
+		
+		// Backward compatibility:
+		if (checkedId == R.id.radio1) {
+			mListener.onSetTheme("1");
+			return;
+		} else if (checkedId == R.id.radio2) {
+			mListener.onSetTheme("2");
+			return;
+		} else if (checkedId == R.id.radio3) {
+			mListener.onSetTheme("3");
+			return;
+		}
+		
+		// Generic case:
+		
+		RadioButton rb = (RadioButton) group.findViewById(checkedId);
+		
+		if (rb != null) {
+			ThemeInfo ti = (ThemeInfo) rb.getTag();
+	
+			mListener.onSetTheme(ti.styleName);
 		}
 	}
 	
 	public interface ThemeDialogListener {
-		void onSetTheme(int theme);
-		int onLoadTheme();
-		void onSaveTheme(int theme);
+		void onSetTheme(String theme);
+		String onLoadTheme();
+		void onSaveTheme(String theme);
 	}
 
 }

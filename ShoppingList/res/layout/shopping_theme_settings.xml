@@ -41,6 +41,9 @@
 	</LinearLayout>
 	 -->
 
+	<ScrollView android:id="@+id/scrollview"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
 	<RadioGroup android:id="@+id/radiogroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -61,5 +64,5 @@
             android:layout_height="wrap_content"
             android:text="@string/theme_bugdroid" />
     </RadioGroup>
-
+	</ScrollView>
 </LinearLayout>

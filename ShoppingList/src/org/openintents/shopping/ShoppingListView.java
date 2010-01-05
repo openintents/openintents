@@ -458,24 +458,27 @@ public class ShoppingListView extends ListView {
 	 * 
 	 * @param themeId
 	 */
-	void setListTheme(int themeId) {
+	void setListTheme(String themeName) {
 		int size = getSizeFromPrefs();
 
-		switch (themeId) {
-		case 1:
+		// backward compatibility:
+		if (themeName == null) {
 			setLocalStyle(R.style.ShoppingListDefault, size);
-			break;
-		case 2:
+		} else if (themeName.equals("1")) {
+			setLocalStyle(R.style.ShoppingListDefault, size);
+		} else if (themeName.equals("2")) {
 			setLocalStyle(R.style.ShoppingListClassic, size);
-			break;
-		case 3:
+		} else if (themeName.equals("3")) {
 			setLocalStyle(R.style.ShoppingListAndroid, size);
-			break;
-		case 4:
-			setRemoteStyle(size);
-			break;
+		} else {
+			// New styles:
+			boolean ok = setRemoteStyle(themeName, size);
+			
+			if (!ok) {
+				// Some error occured, let's use default style:
+				setLocalStyle(R.style.ShoppingListDefault, size);
+			}
 		}
-
 		
 		invalidate();
 		if (mCursorItems != null) {
@@ -541,15 +544,23 @@ public class ShoppingListView extends ListView {
 		setDivider(div);
 	}
 
-	private void setRemoteStyle(int size) {
+	private boolean setRemoteStyle(String styleName, int size) {
 
 		PackageManager pm = getContext().getPackageManager();
 		
+		String packageName = ThemeUtils.getPackageNameFromStyle(styleName);
+		
+		if (packageName == null) {
+			Log.e(TAG, "Invalid style name: " + styleName);
+			return false;
+		}
+		
 		Context c = null;
 		try {
-			c = getContext().createPackageContext("org.openintents.themes.notepad", 0);
+			c = getContext().createPackageContext(packageName, 0);
 		} catch (NameNotFoundException e) {
 			Log.e(TAG, "Name not found");
+			return false;
 		}
 		/*
 		Typeface mTypefaceHandwriting 
@@ -562,7 +573,7 @@ public class ShoppingListView extends ListView {
 		
 		Resources res = c.getResources();
 		
-		int themeid = res.getIdentifier("NotepadTheme", "style", "org.openintents.themes.notepad");
+		int themeid = res.getIdentifier(styleName, null, null);
 		
 		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, "org.openintents.themes.notepad");
 		
@@ -620,6 +631,8 @@ public class ShoppingListView extends ListView {
 		}
 		
 		setDivider(div);
+		
+		return true;
 	}
 	
 
