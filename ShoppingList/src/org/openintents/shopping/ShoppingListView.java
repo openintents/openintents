@@ -50,13 +50,12 @@ public class ShoppingListView extends ListView {
 	public static final int MARK_STRIKETHROUGH = 2;
 	public static final int MARK_ADDTEXT = 3;
 
-	public Typeface mTypefaceHandwriting;
-	public Typeface mTypefaceDigital;
+	Typeface mCurrentTypeface = null;
 
 	public int mPriceVisibility;
 	public int mTagsVisibility;
 	public int mQuantityVisibility;
-	public int mTypeface;
+	public String mTypeface;
 	public float mTextSize;
 	public boolean mUpperCaseFont;
 	public int mTextColor;
@@ -129,13 +128,7 @@ public class ShoppingListView extends ListView {
 
 			// set style for name view
 			// Set font
-			if (mTypeface == 1){
-				t.setTypeface(null);
-			} else if (mTypeface == 2){
-				t.setTypeface(mTypefaceHandwriting);				
-			} else {
-				t.setTypeface(mTypefaceDigital);
-			}
+			t.setTypeface(mCurrentTypeface);
 
 			// Set size
 			t.setTextSize(mTextSize);
@@ -338,8 +331,6 @@ public class ShoppingListView extends ListView {
 	}
 
 	private void init() {
-		readFonts();
-		
 		// Remember standard divider
 		mDefaultDivider = getDivider();
 	}
@@ -352,15 +343,6 @@ public class ShoppingListView extends ListView {
 
 	public void onPause() {
 		unregisterContentObserver();
-	}
-
-	private void readFonts() {
-		// Read fonts
-		mTypefaceHandwriting = Typeface.createFromAsset(getContext()
-				.getAssets(), "fonts/AnkeHand.ttf");
-		mTypefaceDigital = Typeface.createFromAsset(getContext().getAssets(),
-				"fonts/Crysta.ttf");
-
 	}
 
 	Cursor fillItems(long listId) {
@@ -492,7 +474,15 @@ public class ShoppingListView extends ListView {
 		TypedArray a = getContext().obtainStyledAttributes(
 				R.styleable.ShoppingListView);
 
-		mTypeface = a.getInteger(R.styleable.ShoppingListView_typeface, 1);
+		mTypeface = a.getString(R.styleable.ShoppingListView_typeface);
+		
+		if (!TextUtils.isEmpty(mTypeface)) {
+			mCurrentTypeface = Typeface.createFromAsset(getContext().getAssets(),
+				mTypeface);
+		} else {
+			mCurrentTypeface = null;
+		}
+		
 		mUpperCaseFont = a.getBoolean(R.styleable.ShoppingListView_upperCaseFont, true);
 		mTextColor = a.getColor(R.styleable.ShoppingListView_textColor,
 				android.R.color.black);
@@ -562,14 +552,6 @@ public class ShoppingListView extends ListView {
 			Log.e(TAG, "Name not found");
 			return false;
 		}
-		/*
-		Typeface mTypefaceHandwriting 
-			= Typeface.createFromAsset(c.getAssets(),
-					"fonts/AnkeHand.ttf");*
-
-		TextView t = (TextView) findViewById(R.id.text);
-		
-		t.setTypeface(mTypefaceHandwriting);*/
 		
 		Resources res = c.getResources();
 		
@@ -579,7 +561,24 @@ public class ShoppingListView extends ListView {
 		
 		TypedArray a = c.obtainStyledAttributes(themeid, attr);
 		
-		mTypeface = a.getInteger(ThemeUtils.ID_typeface, 1);
+		mTypeface = a.getString(ThemeUtils.ID_typeface);
+
+		if (!TextUtils.isEmpty(mTypeface)) {
+
+			try {
+				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTypeface);
+				Resources remoteRes = pm.getResourcesForApplication(packageName);
+				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
+						mTypeface);
+				Log.d(TAG, "Result: " + mCurrentTypeface);
+			} catch (NameNotFoundException e) {
+				Log.e(TAG, "Package not found for Typeface", e);
+				mCurrentTypeface = null;
+			}
+		} else {
+			mCurrentTypeface = null;
+		}
+		
 		mUpperCaseFont = a.getBoolean(ThemeUtils.ID_upperCaseFont, true);
 		
 		mTextColor = a.getColor(ThemeUtils.ID_textColor,
@@ -610,16 +609,13 @@ public class ShoppingListView extends ListView {
 				// 9-patches do the padding automatically
 				// todo clear padding 
 			}
-			Resources remoteRes;
 			try {
-				remoteRes = pm.getResourcesForApplication(packageName);
+				Resources remoteRes = pm.getResourcesForApplication(packageName);
 				Drawable d = remoteRes.getDrawable(a.getResourceId(ThemeUtils.ID_background, 0));
 				mThemedBackground.setBackgroundDrawable(d);
 			} catch (NameNotFoundException e) {
-				Log.e(TAG, "Package not found", e);
+				Log.e(TAG, "Package not found for Theme background.", e);
 			}
-			//mThemedBackground.setBackgroundResource(a.getResourceId(
-			//		ThemeUtils.ID_background, 0));
 		}
 
 		mClickMeansEdit = a.getBoolean(

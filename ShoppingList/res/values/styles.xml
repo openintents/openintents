@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<style name="ShoppingListDefault">
-		<item name="typeface">1</item>
+		<item name="typeface"></item>
 		<item name="textColor">#FFFFFFFF</item>
 		<item name="priceTextColor">#FFCCCCCC</item>
 		<item name="markTextColor">#FFCCCCCC</item>
@@ -17,7 +17,7 @@
 	</style>
 
 	<style name="ShoppingListClassic">
-		<item name="typeface">2</item>
+		<item name="typeface">fonts/AnkeHand.ttf</item>
 		<item name="textColor">#FF000000</item>
 		<item name="upperCaseFont">false</item>
 		<item name="priceTextColor">#FF444444</item>
@@ -34,7 +34,7 @@
 	</style>
 
 	<style name="ShoppingListAndroid">
-		<item name="typeface">3</item>
+		<item name="typeface">fonts/Crysta.ttf</item>
 		<item name="textColor">#FFFF0000</item>
 		<item name="upperCaseFont">true</item>
 		<item name="priceTextColor">#FFCCCCCC</item>

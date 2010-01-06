@@ -86,7 +86,6 @@ public class ThemeUtils {
 		int[] attrIds = new int[len];
 		for (int i = 0; i < len; i++) {
 			attrIds[i] = res.getIdentifier(attrNames[i], "attr", packageName);
-			Log.d("ee", " retrieve: " + attrIds[i]);
 		}
 		return attrIds;
 	}
