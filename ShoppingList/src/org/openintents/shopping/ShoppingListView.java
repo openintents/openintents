@@ -610,8 +610,16 @@ public class ShoppingListView extends ListView {
 				// 9-patches do the padding automatically
 				// todo clear padding 
 			}
-			mThemedBackground.setBackgroundResource(a.getResourceId(
-					ThemeUtils.ID_background, 0));
+			Resources remoteRes;
+			try {
+				remoteRes = pm.getResourcesForApplication(packageName);
+				Drawable d = remoteRes.getDrawable(a.getResourceId(ThemeUtils.ID_background, 0));
+				mThemedBackground.setBackgroundDrawable(d);
+			} catch (NameNotFoundException e) {
+				Log.e(TAG, "Package not found", e);
+			}
+			//mThemedBackground.setBackgroundResource(a.getResourceId(
+			//		ThemeUtils.ID_background, 0));
 		}
 
 		mClickMeansEdit = a.getBoolean(
