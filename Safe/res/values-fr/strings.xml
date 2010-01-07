@@ -154,7 +154,7 @@
 	<string name="pref_summary_external_access">Autoriser les autres applications à sécuriser vos données avec OI Safe</string>
 	<string name="dialog_title_external_access">OI Safe: Une autre application demande l'accès.</string>
 	<string name="dialog_summary_external_access">Autoriser les autres applications à sécuriser vos données avec OI Safe.</string>
-	<string name="dialog_comment_external_access">This can also be set in OI Safe\'s Menu / Settings.</string>
+	<string name="dialog_comment_external_access">Cela peut aussi être réglée dans le menu OI Safe / Paramètres.</string>
 	
 	<!-- Preference title -->
 	<string name="pref_title_lock_timeout">Délai du verrouillage automatique</string>
@@ -165,10 +165,10 @@
 	<string name="pref_dialog_title_lock_timeout">Délai du verrouillage automatique</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_on_screen_lock">Lock on screen lock</string>
+	<string name="pref_title_lock_on_screen_lock">Verrouiller sur l'écran de verrouillage</string>
 	
 	<!-- Preference summary for lock on screen lock -->
-	<string name="pref_summary_lock_on_screen_lock">Lock when the screen locks</string>
+	<string name="pref_summary_lock_on_screen_lock">Verrouiller lorsque l'écran se verrouille</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Clavier</string>
@@ -214,7 +214,7 @@
 	<string name="decrypt_progress">Décryptage ...</string>
 	<string name="search">Rechercher</string>
 	<string name="search_progress">Recherche en cours…</string>
-	<string name="search_hint">Type search criteria</string>
+	<string name="search_hint">Type de critères de recherche</string>
 	<string name="search_nothing_found">Rien n'a été trouvé</string>
 	
 	

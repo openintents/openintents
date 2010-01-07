@@ -59,7 +59,7 @@
     <string name="title_edit_file">%s (modifier la note)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
+    <string name="title_pick_note_for_shortcut">Mettre la note en raccourci</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -95,17 +95,17 @@
     <string name="error_reading_file">Erreur lors de la lecture du fichier</string>
     <string name="file_not_found">Fichier non trouvé</string>
     <string name="note_saved">Note sauvé</string>
-    <string name="warning_file_exists_title">File exists already</string>
-    <string name="warning_file_exists_message">Do you really want to overwrite the existing file?</string>
+    <string name="warning_file_exists_title">Le fichier existe déjà</string>
+    <string name="warning_file_exists_message">Voulez-vous vraiment écraser le fichier existant?</string>
     
     <!-- Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes. -->
-    <string name="menu_import">Import</string>
+    <string name="menu_import">Importer</string>
     <string name="menu_save">Sauver</string>
-    <string name="menu_save_as">Save as</string>
-    <string name="warning_unsaved_changes_title">Text modified</string>
-    <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
+    <string name="menu_save_as">Enregistrer sous</string>
+    <string name="warning_unsaved_changes_title">Texte modifié</string>
+    <string name="warning_unsaved_changes_message">Voulez-vous enregistrer les modifications?</string>
     <string name="button_save">Sauver</string>
-    <string name="button_dont_save">"Don't save"</string>
+    <string name="button_dont_save">"Ne pas enregistrer"</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Liste des Notes</string>
@@ -113,10 +113,10 @@
     <string name="preference_sortorder_dialog_title">Liste de l'ordre de tri</string>
     <string name="preference_sortorder_summary">L'ordre dans lequel les notes sont affichées dans la liste de notes</string>
     
-    <string name="note_editor_preferences">Note Editor</string>
-    <string name="preference_autolink_title">Auto-create Links</string>
-    <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
-    <string name="preference_autolink_summary_off">Do not create links on notes</string>
+    <string name="note_editor_preferences">Éditeur de note</string>
+    <string name="preference_autolink_title">Auto-créer des liens</string>
+    <string name="preference_autolink_summary_on">Créer des liens pour les numéros de téléphone/email/rue/adresses internet</string>
+    <string name="preference_autolink_summary_off">Ne pas créer de liens sur les notes</string>
 
 	<string name="settings">Paramètres</string>
 	<string name="settings_sortorder">Ordre de tri</string>
@@ -194,6 +194,5 @@
     <string name="preference_extensions_market_summary">Rechercher des extensions sur l'Android Market</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
-	
-	     
+    <string name="tag_no_filter">No filter</string>
 </resources>

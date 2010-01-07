@@ -22,6 +22,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz
+  Peli https://launchpad.net/~peli0101
+  dommy9111 https://launchpad.net/~bossboss9111
   kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz
   viktor https://launchpad.net/~lfraisse</string>
 	
@@ -84,7 +86,7 @@
 	<string name="tags">Libellé</string>
 	<string name="price">Prix</string>
 	<string name="item">Elément</string>
-	<string name="quantity">Quantity</string>
+	<string name="quantity">Quantité</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
 	<string name="total">Total: %s</string>
@@ -137,7 +139,7 @@
 	<string name="preference_showprice_summary">Voir comme une colonne supplémentaire dans la liste</string>
 	<string name="preference_showtags_title">Voir les libellés</string>
 	<string name="preference_showtags_summary">Voir comme une colonne supplémentaire dans la liste</string>
-	<string name="preference_showquantity_title">Show quantity</string>
+	<string name="preference_showquantity_title">Montrer la quantité</string>
 	<string name="preference_showquantity_summary">Voir comme une colonne supplémentaire dans la liste</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->

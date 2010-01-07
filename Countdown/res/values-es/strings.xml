@@ -7,14 +7,15 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Paco Molinero https://launchpad.net/~franciscomol
+  Peli https://launchpad.net/~peli0101
   miwie https://launchpad.net/~mw-miwie
   tamalet https://launchpad.net/~tamalet</string>
 	
     <!-- Strings for OI About -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI Countdown le notifica después de un determinado tiempo.</string>
 	
 	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OI Countdown at OpenIntents</string>
+	<string name="about_website_label">OI Countdown en OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -28,7 +29,7 @@
     <string name="cont">Continuar</string>
     
 	<string name="no_durations">Use el menñu para añadir una cuenta atrás nueva</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="countdown_list">Lista de cuenta atrás</string>
 	
     <string name="menu_delete">Borrar</string>
     <string name="menu_edit">Modificar</string>
