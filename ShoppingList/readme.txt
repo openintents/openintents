@@ -22,6 +22,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.1-beta1
+date: 2010-01-07
+- update MyBackupPro support v2.2.1
+- support external themes
+
+---------------------------------------------------------
 release: 1.2.0
 date: 2010-01-01
 - add quantity field
