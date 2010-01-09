@@ -93,7 +93,10 @@
 	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>
 	<string name="delete">Delete</string>
 	
-
+	<!-- Added to an item to indicate it was bought. -->
+	<string name="suffix_checked">... OK</string>
+	<string name="empty"></string>
+	
 	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	

@@ -55,12 +55,14 @@ public class ThemeUtils {
 			"textColor", // 5
 			"priceTextColor", // 6
 			"markTextColor", // 7
-			"markType", // 8
-			"background", // 9
-			"backgroundPadding", // 10
-			"divider", // 11
-			"clickMeansEdit", // 12
-			"typeface" // 13
+			"showCheckBox", // 8
+			"showStrikethrough", // 9
+			"textSuffixUnchecked", // 10
+			"textSuffixChecked", // 11
+			"background", // 12
+			"backgroundPadding", // 13
+			"divider", // 14
+			"typeface" // 15
 	};
 	
 	public static int ID_upperCaseFont = 0;
@@ -71,12 +73,14 @@ public class ThemeUtils {
 	public static int ID_textColor = 5;
 	public static int ID_priceTextColor = 6;
 	public static int ID_markTextColor = 7;
-	public static int ID_markType = 8;
-	public static int ID_background = 9;
-	public static int ID_backgroundPadding = 10;
-	public static int ID_divider = 11;
-	public static int ID_clickMeansEdit = 12;
-	public static int ID_typeface = 13;
+	public static int ID_showCheckBox = 8;
+	public static int ID_showStrikethrough = 9;
+	public static int ID_textSuffixUnchecked = 10;
+	public static int ID_textSuffixChecked = 11;
+	public static int ID_background = 12;
+	public static int ID_backgroundPadding = 13;
+	public static int ID_divider = 14;
+	public static int ID_typeface = 15;
 	
 	
 	public static int[] getAttributeIds(Context context, String[] attrNames, String packageName) {

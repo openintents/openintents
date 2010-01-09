@@ -46,10 +46,6 @@ public class ShoppingListView extends ListView {
 	private final static String TAG = "ShoppingListView";
 	private final static boolean debug = true;
 
-	public static final int MARK_CHECKBOX = 1;
-	public static final int MARK_STRIKETHROUGH = 2;
-	public static final int MARK_ADDTEXT = 3;
-
 	Typeface mCurrentTypeface = null;
 
 	public int mPriceVisibility;
@@ -60,8 +56,11 @@ public class ShoppingListView extends ListView {
 	public boolean mUpperCaseFont;
 	public int mTextColor;
 	public int mPriceTextColor;
-	public int mMarkType;
 	public int mMarkTextColor;
+	public boolean mShowCheckBox;
+	public boolean mShowStrikethrough;
+	public String mTextSuffixUnchecked;
+	public String mTextSuffixChecked;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 
@@ -72,8 +71,6 @@ public class ShoppingListView extends ListView {
 
 	private TextView mTotalTextView;
 	private TextView mTotalCheckedTextView;
-
-	public boolean mClickMeansEdit;
 	
 	private Drawable mDefaultDivider;
 
@@ -145,7 +142,7 @@ public class ShoppingListView extends ListView {
 			if (status == Shopping.Status.BOUGHT) {
 				t.setTextColor(mMarkTextColor);
 
-				if (mMarkType == MARK_STRIKETHROUGH) {
+				if (mShowStrikethrough) {
 					// We have bought the item,
 					// so we strike it through:
 
@@ -168,11 +165,16 @@ public class ShoppingListView extends ListView {
 					// color: 0x33336600
 				}
 
-				if (mMarkType == MARK_ADDTEXT) {
+				if (mTextSuffixChecked != null) {
 					// very simple
-					t.append("... OK");
+					t.append(mTextSuffixChecked);
 				}
 
+			} else {
+				// item not bought:
+				if (mTextSuffixUnchecked != null) {
+					t.append(mTextSuffixUnchecked);
+				}
 			}
 
 			// we have a check box now.. more visual and gets the point across
@@ -183,7 +185,7 @@ public class ShoppingListView extends ListView {
 			// set style for check box
 			c.setTag(new Integer(cursor.getPosition()));
 
-			if (mMarkType == MARK_CHECKBOX) {
+			if (mShowCheckBox) {
 				c.setVisibility(CheckBox.VISIBLE);
 				if ((status == Shopping.Status.BOUGHT && mMode == ShoppingActivity.MODE_IN_SHOP)
 						|| (status == Shopping.Status.WANT_TO_BUY)
@@ -502,8 +504,12 @@ public class ShoppingListView extends ListView {
 
 		mMarkTextColor = a.getColor(R.styleable.ShoppingListView_markTextColor,
 				android.R.color.black);
-		mMarkType = a.getInt(R.styleable.ShoppingListView_markType, 0);
-
+		
+		mShowCheckBox = a.getBoolean(R.styleable.ShoppingListView_showCheckBox, true);
+		mShowStrikethrough = a.getBoolean(R.styleable.ShoppingListView_showStrikethrough, false);
+		mTextSuffixUnchecked = a.getString(R.styleable.ShoppingListView_textSuffixUnchecked);
+		mTextSuffixChecked = a.getString(R.styleable.ShoppingListView_textSuffixChecked);
+		
 		if (mThemedBackground != null) {
 			if (a.getInteger(R.styleable.ShoppingListView_backgroundPadding, -1) >=0){
 			   mThemedBackground.setPadding(0,0,0,0);
@@ -514,9 +520,6 @@ public class ShoppingListView extends ListView {
 			mThemedBackground.setBackgroundResource(a.getResourceId(
 					R.styleable.ShoppingListView_background, 0));
 		}
-
-		mClickMeansEdit = a.getBoolean(
-				R.styleable.ShoppingListView_clickMeansEdit, true);
 
 		int divider = a.getInteger(R.styleable.ShoppingListView_divider, 0);
 		
@@ -600,8 +603,11 @@ public class ShoppingListView extends ListView {
 
 		mMarkTextColor = a.getColor(ThemeUtils.ID_markTextColor,
 				android.R.color.black);
-		mMarkType = a.getInt(ThemeUtils.ID_markType, 0);
-
+		mShowCheckBox = a.getBoolean(R.styleable.ShoppingListView_showCheckBox, true);
+		mShowStrikethrough = a.getBoolean(R.styleable.ShoppingListView_showStrikethrough, false);
+		mTextSuffixUnchecked = a.getString(R.styleable.ShoppingListView_textSuffixUnchecked);
+		mTextSuffixChecked = a.getString(R.styleable.ShoppingListView_textSuffixChecked);
+		
 		if (mThemedBackground != null) {
 			if (a.getInteger(ThemeUtils.ID_backgroundPadding, -1) >=0){
 			   mThemedBackground.setPadding(0,0,0,0);
@@ -617,9 +623,6 @@ public class ShoppingListView extends ListView {
 				Log.e(TAG, "Package not found for Theme background.", e);
 			}
 		}
-
-		mClickMeansEdit = a.getBoolean(
-				ThemeUtils.ID_clickMeansEdit, true);
 
 		int divider = a.getInteger(ThemeUtils.ID_divider, 0);
 		

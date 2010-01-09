@@ -754,13 +754,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				if (mState == STATE_PICK_ITEM) {
 					pickItem(c);
 				} else {
-					if (mListItemsView.mClickMeansEdit) {
+					if (mListItemsView.mShowCheckBox) {
 						// In default theme, there is an extra check box,
 						// so clicking on anywhere else means to edit the
 						// item.
 						editItem(pos);
 					} else {
-						// For the other two themes, clicking anywhere means
+						// For themes without a checkbox, clicking anywhere means
 						// to toggle the item.
 						mListItemsView.toggleItemBought(pos);
 					}

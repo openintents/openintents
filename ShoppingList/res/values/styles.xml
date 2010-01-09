@@ -5,8 +5,10 @@
 		<item name="textColor">#FFFFFFFF</item>
 		<item name="priceTextColor">#FFCCCCCC</item>
 		<item name="markTextColor">#FFCCCCCC</item>
-		<item name="markType">1</item>
-		<item name="clickMeansEdit">true</item>
+		<item name="showCheckBox">true</item>
+		<item name="showStrikethrough">false</item>
+		<item name="textSuffixUnchecked">@string/empty</item>
+		<item name="textSuffixChecked">@string/empty</item>
 		<item name="background">?android:background</item>
 		<item name="backgroundPadding">0</item>
 		<item name="divider">0</item>
@@ -16,15 +18,15 @@
 		<item name="upperCaseFont">false</item>
 	</style>
 
-	<style name="ShoppingListClassic">
+	<style name="ShoppingListClassic" parent="ShoppingListDefault" >
 		<item name="typeface">fonts/AnkeHand.ttf</item>
 		<item name="textColor">#FF000000</item>
 		<item name="upperCaseFont">false</item>
 		<item name="priceTextColor">#FF444444</item>
 		<item name="markTextColor">#FF008800</item>
 		<item name="labelTextSize">30</item>
-		<item name="markType">2</item>
-		<item name="clickMeansEdit">false</item>
+		<item name="showCheckBox">false</item>
+		<item name="showStrikethrough">true</item>
 		<item name="background">@drawable/shoppinglist01d</item>
 		<item name="backgroundPadding">-1</item>
 		<item name="divider">-1</item>
@@ -33,15 +35,16 @@
 		<item name="textSizeLarge">25</item>
 	</style>
 
-	<style name="ShoppingListAndroid">
+	<style name="ShoppingListAndroid" parent="ShoppingListDefault">
 		<item name="typeface">fonts/Crysta.ttf</item>
-		<item name="textColor">#FFFF0000</item>
+		<item name="textColor">#FFFF8866</item>
 		<item name="upperCaseFont">true</item>
 		<item name="priceTextColor">#FFCCCCCC</item>
 		<item name="markTextColor">#FF00FF00</item>
 		<item name="labelTextSize">30</item>
-		<item name="markType">3</item>
-		<item name="clickMeansEdit">false</item>
+		<item name="showCheckBox">false</item>
+		<item name="showStrikethrough">false</item>
+		<item name="textSuffixChecked">@string/suffix_checked</item>
 		<item name="background">@drawable/theme_android</item>
 		<item name="backgroundPadding">0</item>
 		<item name="divider">0</item>

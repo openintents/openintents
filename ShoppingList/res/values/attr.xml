@@ -10,11 +10,13 @@
 		<attr name="textColor" format="color" />
 		<attr name="priceTextColor" format="color" />
 		<attr name="markTextColor" format="color" />
-		<attr name="markType" format="integer" />
+		<attr name="showCheckBox" format="boolean" />
+		<attr name="showStrikethrough" format="boolean" />
+		<attr name="textSuffixUnchecked" format="string" />
+		<attr name="textSuffixChecked" format="string" />
 		<attr name="background" format="integer" />
 		<attr name="backgroundPadding" format="integer" />
 		<attr name="divider" format="integer" />
-		<attr name="clickMeansEdit" format="boolean" />
 		<attr name="typeface" format="string" />
 	</declare-styleable>
 
