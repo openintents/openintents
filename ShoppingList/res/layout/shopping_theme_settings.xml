@@ -49,6 +49,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+<!-- RadioButtons are added dynamically -->
+<!-- 
         <RadioButton android:id="@+id/radio1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/theme_bugdroid" />
+             -->
     </RadioGroup>
 	</ScrollView>
 </LinearLayout>

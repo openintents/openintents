@@ -18,10 +18,10 @@
 <themes xmlns:oi="http://schemas.openintents.org/android/themes" >
 	<attributeset oi:name="org.openintents.shoppinglist" >
 		<theme oi:title="@string/theme_default"
-			oi:style="@style/ShoppingListDefault" />
+			oi:style="@style/ShoppingList" />
 		<theme oi:title="@string/theme_classic"
-			oi:style="@style/ShoppingListClassic" />
+			oi:style="@style/ShoppingList.Classic" />
 		<theme oi:title="@string/theme_bugdroid"
-			oi:style="@style/ShoppingListAndroid" />
+			oi:style="@style/ShoppingList.Android" />
 	</attributeset>
 </themes>

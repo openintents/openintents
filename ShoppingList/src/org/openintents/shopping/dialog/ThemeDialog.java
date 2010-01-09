@@ -92,16 +92,16 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 
 		String theme = mListener.onLoadTheme();
 		
-		// Check special cases:
+		// Check special cases for backward compatibility:
 		if (theme.equals("1")) {
-			mRadioGroup.check(R.id.radio1);
-			return;
+			theme = mContext.getResources().getResourceName(
+					R.style.ShoppingList);
 		} else if (theme.equals("2")) {
-			mRadioGroup.check(R.id.radio2);
-			return;
+			theme = mContext.getResources().getResourceName(
+					R.style.ShoppingList_Classic);
 		} else if (theme.equals("3")) {
-			mRadioGroup.check(R.id.radio3);
-			return;
+			theme = mContext.getResources().getResourceName(
+					R.style.ShoppingList_Android);
 		}
 		
 		int max = mRadioGroup.getChildCount();
@@ -175,15 +175,6 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	private String getSelectedTheme() {
 		int r = mRadioGroup.getCheckedRadioButtonId();
 		
-		// Check special cases first
-		if (r == R.id.radio1) {
-			return "1";
-		} else if (r == R.id.radio2) {
-			return "2";
-		} else if (r == R.id.radio3) {
-			return "3";
-		}
-		
 		// Now generic case from remote packages
 		RadioButton rb = (RadioButton) mRadioGroup.findViewById(r);
 		
@@ -204,21 +195,6 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		
-		// Backward compatibility:
-		if (checkedId == R.id.radio1) {
-			mListener.onSetTheme("1");
-			return;
-		} else if (checkedId == R.id.radio2) {
-			mListener.onSetTheme("2");
-			return;
-		} else if (checkedId == R.id.radio3) {
-			mListener.onSetTheme("3");
-			return;
-		}
-		
-		// Generic case:
-		
 		RadioButton rb = (RadioButton) group.findViewById(checkedId);
 		
 		if (rb != null) {

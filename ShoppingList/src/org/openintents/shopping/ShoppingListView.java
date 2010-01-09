@@ -447,20 +447,20 @@ public class ShoppingListView extends ListView {
 
 		// backward compatibility:
 		if (themeName == null) {
-			setLocalStyle(R.style.ShoppingListDefault, size);
+			setLocalStyle(R.style.ShoppingList, size);
 		} else if (themeName.equals("1")) {
-			setLocalStyle(R.style.ShoppingListDefault, size);
+			setLocalStyle(R.style.ShoppingList, size);
 		} else if (themeName.equals("2")) {
-			setLocalStyle(R.style.ShoppingListClassic, size);
+			setLocalStyle(R.style.ShoppingList_Classic, size);
 		} else if (themeName.equals("3")) {
-			setLocalStyle(R.style.ShoppingListAndroid, size);
+			setLocalStyle(R.style.ShoppingList_Android, size);
 		} else {
 			// New styles:
-			boolean ok = setRemoteStyle(themeName, size);
+			boolean themeFound = setRemoteStyle(themeName, size);
 			
-			if (!ok) {
+			if (!themeFound) {
 				// Some error occured, let's use default style:
-				setLocalStyle(R.style.ShoppingListDefault, size);
+				setLocalStyle(R.style.ShoppingList, size);
 			}
 		}
 		
@@ -470,73 +470,17 @@ public class ShoppingListView extends ListView {
 		}
 	}
 
-	private void setLocalStyle(int style, int size) {
-		getContext().setTheme(style);
+	private void setLocalStyle(int styleResId, int size) {
+		String styleName = getResources().getResourceName(styleResId);
 		
-		TypedArray a = getContext().obtainStyledAttributes(
-				R.styleable.ShoppingListView);
-
-		mTypeface = a.getString(R.styleable.ShoppingListView_typeface);
+		boolean themefound = setRemoteStyle(styleName, size);
 		
-		if (!TextUtils.isEmpty(mTypeface)) {
-			mCurrentTypeface = Typeface.createFromAsset(getContext().getAssets(),
-				mTypeface);
-		} else {
-			mCurrentTypeface = null;
+		if (!themefound) {
+			// Actually this should never happen.
+			Log.e(TAG, "Local theme not found: " + styleName);
 		}
-		
-		mUpperCaseFont = a.getBoolean(R.styleable.ShoppingListView_upperCaseFont, true);
-		mTextColor = a.getColor(R.styleable.ShoppingListView_textColor,
-				android.R.color.black);
-		mPriceTextColor = a.getColor(
-				R.styleable.ShoppingListView_priceTextColor,
-				android.R.color.black);
-		if (size == 1) {
-			mTextSize = a
-					.getInt(R.styleable.ShoppingListView_textSizeSmall, 10);
-		} else if (size == 2) {
-			mTextSize = a.getInt(R.styleable.ShoppingListView_textSizeMedium,
-					20);
-		} else {
-			mTextSize = a
-					.getInt(R.styleable.ShoppingListView_textSizeLarge, 30);
-		}
-
-		mMarkTextColor = a.getColor(R.styleable.ShoppingListView_markTextColor,
-				android.R.color.black);
-		
-		mShowCheckBox = a.getBoolean(R.styleable.ShoppingListView_showCheckBox, true);
-		mShowStrikethrough = a.getBoolean(R.styleable.ShoppingListView_showStrikethrough, false);
-		mTextSuffixUnchecked = a.getString(R.styleable.ShoppingListView_textSuffixUnchecked);
-		mTextSuffixChecked = a.getString(R.styleable.ShoppingListView_textSuffixChecked);
-		
-		if (mThemedBackground != null) {
-			if (a.getInteger(R.styleable.ShoppingListView_backgroundPadding, -1) >=0){
-			   mThemedBackground.setPadding(0,0,0,0);
-			} else {
-				// 9-patches do the padding automatically
-				// todo clear padding 
-			}
-			mThemedBackground.setBackgroundResource(a.getResourceId(
-					R.styleable.ShoppingListView_background, 0));
-		}
-
-		int divider = a.getInteger(R.styleable.ShoppingListView_divider, 0);
-		
-		a.recycle();
-		
-		Drawable div = null;
-		if (divider > 0) {
-			div = getResources().getDrawable(divider);
-		} else if (divider < 0) {
-			div = null;
-		} else {
-			div = mDefaultDivider;
-		}
-		
-		setDivider(div);
 	}
-
+	
 	private boolean setRemoteStyle(String styleName, int size) {
 
 		PackageManager pm = getContext().getPackageManager();
@@ -552,13 +496,18 @@ public class ShoppingListView extends ListView {
 		try {
 			c = getContext().createPackageContext(packageName, 0);
 		} catch (NameNotFoundException e) {
-			Log.e(TAG, "Name not found");
+			Log.e(TAG, "Package for style not found: " + packageName + ", " + styleName);
 			return false;
 		}
 		
 		Resources res = c.getResources();
 		
 		int themeid = res.getIdentifier(styleName, null, null);
+		
+		if (themeid == 0) {
+			Log.e(TAG, "Theme name not found: " + styleName);
+			return false;
+		}
 		
 		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, packageName);
 		
