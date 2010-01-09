@@ -62,6 +62,10 @@
 	    <meta-data android:name="org.openintents.metadata.USES_INTENT"
 	                   android:value="org.openintents.action.SHOW_ABOUT_DIALOG?org.openintents.extra.PACKAGE_NAME=org.openintents.shopping"/>                       
 
+	    <meta-data android:name="org.openintents.themes"
+	        android:resource="@xml/themes"
+	      />
+	      
 		<provider android:name=".ShoppingProvider"
 			android:icon="@drawable/icon_shoppinglist"
 			android:authorities="org.openintents.shopping" />

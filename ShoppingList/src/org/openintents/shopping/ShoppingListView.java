@@ -560,7 +560,7 @@ public class ShoppingListView extends ListView {
 		
 		int themeid = res.getIdentifier(styleName, null, null);
 		
-		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, "org.openintents.themes.notepad");
+		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, packageName);
 		
 		TypedArray a = c.obtainStyledAttributes(themeid, attr);
 		
@@ -617,10 +617,18 @@ public class ShoppingListView extends ListView {
 			}
 			try {
 				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				Drawable d = remoteRes.getDrawable(a.getResourceId(ThemeUtils.ID_background, 0));
-				mThemedBackground.setBackgroundDrawable(d);
+				int resid = a.getResourceId(ThemeUtils.ID_background, 0);
+				if (resid != 0) {
+					Drawable d = remoteRes.getDrawable(resid);
+					mThemedBackground.setBackgroundDrawable(d);
+				} else {
+					// remove background
+					mThemedBackground.setBackgroundResource(0);
+				}
 			} catch (NameNotFoundException e) {
 				Log.e(TAG, "Package not found for Theme background.", e);
+			} catch (Resources.NotFoundException e) {
+				Log.e(TAG, "Resource not found for Theme background.", e);
 			}
 		}
 
