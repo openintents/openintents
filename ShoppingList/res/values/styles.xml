@@ -16,7 +16,7 @@
  -->
 
 <resources>
-	<style name="ShoppingList">
+	<style name="Theme.ShoppingList" parent="@android:style/Theme.Light" >
 		<item name="background">?android:background</item>
 		<item name="backgroundPadding">0</item>
 		<item name="divider">0</item>
@@ -34,7 +34,7 @@
 		<item name="showCheckBox">true</item>
 	</style>
 
-	<style name="ShoppingList.Classic" parent="ShoppingList" >
+	<style name="Theme.ShoppingList.Classic" parent="Theme.ShoppingList" >
 		<item name="background">@drawable/shoppinglist01d</item>
 		<item name="backgroundPadding">-1</item>
 		<item name="divider">-1</item>
@@ -50,7 +50,7 @@
 		<item name="showCheckBox">false</item>
 	</style>
 
-	<style name="ShoppingList.Android" parent="ShoppingList">
+	<style name="Theme.ShoppingList.Android" parent="Theme.ShoppingList">
 		<item name="background">@drawable/theme_android</item>
 		<item name="backgroundPadding">0</item>
 		<item name="divider">0</item>

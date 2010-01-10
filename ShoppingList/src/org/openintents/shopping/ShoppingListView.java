@@ -447,20 +447,20 @@ public class ShoppingListView extends ListView {
 
 		// backward compatibility:
 		if (themeName == null) {
-			setLocalStyle(R.style.ShoppingList, size);
+			setLocalStyle(R.style.Theme_ShoppingList, size);
 		} else if (themeName.equals("1")) {
-			setLocalStyle(R.style.ShoppingList, size);
+			setLocalStyle(R.style.Theme_ShoppingList, size);
 		} else if (themeName.equals("2")) {
-			setLocalStyle(R.style.ShoppingList_Classic, size);
+			setLocalStyle(R.style.Theme_ShoppingList_Classic, size);
 		} else if (themeName.equals("3")) {
-			setLocalStyle(R.style.ShoppingList_Android, size);
+			setLocalStyle(R.style.Theme_ShoppingList_Android, size);
 		} else {
 			// New styles:
 			boolean themeFound = setRemoteStyle(themeName, size);
 			
 			if (!themeFound) {
 				// Some error occured, let's use default style:
-				setLocalStyle(R.style.ShoppingList, size);
+				setLocalStyle(R.style.Theme_ShoppingList, size);
 			}
 		}
 		

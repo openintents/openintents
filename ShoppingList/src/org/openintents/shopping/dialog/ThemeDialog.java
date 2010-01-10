@@ -95,13 +95,13 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		// Check special cases for backward compatibility:
 		if (theme.equals("1")) {
 			theme = mContext.getResources().getResourceName(
-					R.style.ShoppingList);
+					R.style.Theme_ShoppingList);
 		} else if (theme.equals("2")) {
 			theme = mContext.getResources().getResourceName(
-					R.style.ShoppingList_Classic);
+					R.style.Theme_ShoppingList_Classic);
 		} else if (theme.equals("3")) {
 			theme = mContext.getResources().getResourceName(
-					R.style.ShoppingList_Android);
+					R.style.Theme_ShoppingList_Android);
 		}
 		
 		int max = mRadioGroup.getChildCount();
