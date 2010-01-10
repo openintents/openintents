@@ -106,6 +106,9 @@
     <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
     <string name="button_save">Save</string>
     <string name="button_dont_save">"Don't save"</string>
+    
+    <string name="theme_default">Default </string>
+    <string name="theme_monospaced">Monospaced font</string>
 
     <!-- Settings -->
     <string name="noteslist_preferences">Notes List</string>

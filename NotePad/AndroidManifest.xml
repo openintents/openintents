@@ -74,7 +74,11 @@
                        android:value="@string/about_email" />
         <meta-data android:name="org.openintents.metadata.DUZ_ID"
         			   android:value="aglkaWR1bm96YXRyGAsSEEFwcGxpY2F0aW9uTW9kZWwY0aQBDA"/>
-                       
+        
+	    <meta-data android:name="org.openintents.themes"
+	        android:resource="@xml/themes"
+	      />
+	    
         <provider android:name=".NotePadProvider" 
             android:authorities="org.openintents.notepad"
         />
