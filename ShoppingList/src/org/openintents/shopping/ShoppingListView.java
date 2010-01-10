@@ -51,12 +51,12 @@ public class ShoppingListView extends ListView {
 	public int mPriceVisibility;
 	public int mTagsVisibility;
 	public int mQuantityVisibility;
-	public String mTypeface;
+	public String mTextTypeface;
 	public float mTextSize;
-	public boolean mUpperCaseFont;
+	public boolean mTextUpperCaseFont;
 	public int mTextColor;
-	public int mPriceTextColor;
-	public int mMarkTextColor;
+	public int mTextColorPrice;
+	public int mTextColorChecked;
 	public boolean mShowCheckBox;
 	public boolean mShowStrikethrough;
 	public String mTextSuffixUnchecked;
@@ -131,7 +131,7 @@ public class ShoppingListView extends ListView {
 			t.setTextSize(mTextSize);
 
 			// Check for upper case:
-			if (mUpperCaseFont) {
+			if (mTextUpperCaseFont) {
 				// Only upper case should be displayed
 				CharSequence cs = t.getText();
 				t.setText(cs.toString().toUpperCase());
@@ -140,7 +140,7 @@ public class ShoppingListView extends ListView {
 			t.setTextColor(mTextColor);
 
 			if (status == Shopping.Status.BOUGHT) {
-				t.setTextColor(mMarkTextColor);
+				t.setTextColor(mTextColorChecked);
 
 				if (mShowStrikethrough) {
 					// We have bought the item,
@@ -251,7 +251,7 @@ public class ShoppingListView extends ListView {
 				if (mPriceVisibility == View.VISIBLE && price != 0) {
 					tv.setVisibility(View.VISIBLE);
 					String s = mPriceFormatter.format(price * 0.01d);
-					tv.setTextColor(mPriceTextColor);
+					tv.setTextColor(mTextColorPrice);
 					tv.setText(s);
 				} else {
 					tv.setVisibility(View.GONE);
@@ -264,7 +264,7 @@ public class ShoppingListView extends ListView {
 				TextView tv = (TextView) view;
 				if (mTagsVisibility == View.VISIBLE && !TextUtils.isEmpty(tags)) {
 					tv.setVisibility(View.VISIBLE);
-					tv.setTextColor(mPriceTextColor);
+					tv.setTextColor(mTextColorPrice);
 					tv.setText(tags);
 				} else {
 					tv.setVisibility(View.GONE);
@@ -513,15 +513,15 @@ public class ShoppingListView extends ListView {
 		
 		TypedArray a = c.obtainStyledAttributes(themeid, attr);
 		
-		mTypeface = a.getString(ThemeUtils.ID_typeface);
+		mTextTypeface = a.getString(ThemeUtils.ID_textTypeface);
 
-		if (!TextUtils.isEmpty(mTypeface)) {
+		if (!TextUtils.isEmpty(mTextTypeface)) {
 
 			try {
-				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTypeface);
+				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
 				Resources remoteRes = pm.getResourcesForApplication(packageName);
 				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
-						mTypeface);
+						mTextTypeface);
 				Log.d(TAG, "Result: " + mCurrentTypeface);
 			} catch (NameNotFoundException e) {
 				Log.e(TAG, "Package not found for Typeface", e);
@@ -531,14 +531,14 @@ public class ShoppingListView extends ListView {
 			mCurrentTypeface = null;
 		}
 		
-		mUpperCaseFont = a.getBoolean(ThemeUtils.ID_upperCaseFont, true);
+		mTextUpperCaseFont = a.getBoolean(ThemeUtils.ID_textUpperCaseFont, false);
 		
 		mTextColor = a.getColor(ThemeUtils.ID_textColor,
-				android.R.color.black);
+				android.R.color.white);
 		
-		mPriceTextColor = a.getColor(
-				ThemeUtils.ID_priceTextColor,
-				android.R.color.black);
+		mTextColorPrice = a.getColor(
+				ThemeUtils.ID_textColorPrice,
+				android.R.color.white);
 		if (size == 1) {
 			mTextSize = a
 					.getInt(ThemeUtils.ID_textSizeSmall, 10);
@@ -550,12 +550,12 @@ public class ShoppingListView extends ListView {
 					.getInt(ThemeUtils.ID_textSizeLarge, 30);
 		}
 
-		mMarkTextColor = a.getColor(ThemeUtils.ID_markTextColor,
-				android.R.color.black);
-		mShowCheckBox = a.getBoolean(R.styleable.ShoppingListView_showCheckBox, true);
-		mShowStrikethrough = a.getBoolean(R.styleable.ShoppingListView_showStrikethrough, false);
-		mTextSuffixUnchecked = a.getString(R.styleable.ShoppingListView_textSuffixUnchecked);
-		mTextSuffixChecked = a.getString(R.styleable.ShoppingListView_textSuffixChecked);
+		mTextColorChecked = a.getColor(ThemeUtils.ID_textColorChecked,
+				android.R.color.white);
+		mShowCheckBox = a.getBoolean(ThemeUtils.ID_showCheckBox, true);
+		mShowStrikethrough = a.getBoolean(ThemeUtils.ID_textStrikethroughChecked, false);
+		mTextSuffixUnchecked = a.getString(ThemeUtils.ID_textSuffixUnchecked);
+		mTextSuffixChecked = a.getString(ThemeUtils.ID_textSuffixChecked);
 		
 		if (mThemedBackground != null) {
 			if (a.getInteger(ThemeUtils.ID_backgroundPadding, -1) >=0){
@@ -764,8 +764,8 @@ public class ShoppingListView extends ListView {
 		}
 		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked);
 
-		mTotalTextView.setTextColor(mPriceTextColor);
-		mTotalCheckedTextView.setTextColor(mPriceTextColor);
+		mTotalTextView.setTextColor(mTextColorPrice);
+		mTotalCheckedTextView.setTextColor(mTextColorPrice);
 
 		if (total != 0) {
 			String s = mPriceFormatter.format(total * 0.01d);

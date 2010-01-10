@@ -47,40 +47,38 @@ public class ThemeUtils {
 	public static final String SHOPPING_LIST_THEME = "org.openintents.shoppinglist";
 	
 	public static final String[] OpenIntentsThemeAttributes = new String[] {
-			"upperCaseFont", // 0 - index see below
-			"labelTextSize", // 1
-			"textSizeSmall", // 2
-			"textSizeMedium", // 3
-			"textSizeLarge", // 4
-			"textColor", // 5
-			"priceTextColor", // 6
-			"markTextColor", // 7
-			"showCheckBox", // 8
-			"showStrikethrough", // 9
-			"textSuffixUnchecked", // 10
-			"textSuffixChecked", // 11
-			"background", // 12
-			"backgroundPadding", // 13
-			"divider", // 14
-			"typeface" // 15
+			"background", // 0 - index see below
+			"backgroundPadding", // 1
+			"divider", // 2
+			"textTypeface", // 3
+			"textUpperCaseFont", // 4
+			"textSizeSmall", // 5
+			"textSizeMedium", // 6
+			"textSizeLarge", // 7
+			"textColor", // 8
+			"textColorPrice", // 9
+			"textColorChecked", // 10
+			"textStrikethroughChecked", // 11
+			"textSuffixUnchecked", // 12
+			"textSuffixChecked", // 13
+			"showCheckBox" // 14
 	};
-	
-	public static int ID_upperCaseFont = 0;
-	public static int ID_labelTextSize = 1;
-	public static int ID_textSizeSmall = 2;
-	public static int ID_textSizeMedium = 3;
-	public static int ID_textSizeLarge = 4;
-	public static int ID_textColor = 5;
-	public static int ID_priceTextColor = 6;
-	public static int ID_markTextColor = 7;
-	public static int ID_showCheckBox = 8;
-	public static int ID_showStrikethrough = 9;
-	public static int ID_textSuffixUnchecked = 10;
-	public static int ID_textSuffixChecked = 11;
-	public static int ID_background = 12;
-	public static int ID_backgroundPadding = 13;
-	public static int ID_divider = 14;
-	public static int ID_typeface = 15;
+
+	public static int ID_background = 0;
+	public static int ID_backgroundPadding = 1;
+	public static int ID_divider = 2;
+	public static int ID_textTypeface = 3;
+	public static int ID_textUpperCaseFont = 4;
+	public static int ID_textSizeSmall = 5;
+	public static int ID_textSizeMedium = 6;
+	public static int ID_textSizeLarge = 7;
+	public static int ID_textColor = 8;
+	public static int ID_textColorPrice = 9;
+	public static int ID_textColorChecked = 10;
+	public static int ID_textStrikethroughChecked = 11;
+	public static int ID_textSuffixUnchecked = 12;
+	public static int ID_textSuffixChecked = 13;
+	public static int ID_showCheckBox = 14;
 	
 	
 	public static int[] getAttributeIds(Context context, String[] attrNames, String packageName) {

@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<declare-styleable name="ShoppingListView">
-		<attr name="upperCaseFont" format="boolean" />
-		<attr name="labelTextSize" format="integer" />
+	<declare-styleable name="ShoppingList">
+		<attr name="background" format="integer" />
+		<attr name="backgroundPadding" format="integer" />
+		<attr name="divider" format="integer" />
+		<attr name="textTypeface" format="string" />
+		<attr name="textUpperCaseFont" format="boolean" />
 		<attr name="textSizeSmall" format="integer" />
 		<attr name="textSizeMedium" format="integer" />
 		<attr name="textSizeLarge" format="integer" />
 		<attr name="textColor" format="color" />
-		<attr name="priceTextColor" format="color" />
-		<attr name="markTextColor" format="color" />
-		<attr name="showCheckBox" format="boolean" />
-		<attr name="showStrikethrough" format="boolean" />
+		<attr name="textColorPrice" format="color" />
+		<attr name="textColorChecked" format="color" />
+		<attr name="textStrikethroughChecked" format="boolean" />
 		<attr name="textSuffixUnchecked" format="string" />
 		<attr name="textSuffixChecked" format="string" />
-		<attr name="background" format="integer" />
-		<attr name="backgroundPadding" format="integer" />
-		<attr name="divider" format="integer" />
-		<attr name="typeface" format="string" />
+		<attr name="showCheckBox" format="boolean" />
 	</declare-styleable>
 
 </resources>
