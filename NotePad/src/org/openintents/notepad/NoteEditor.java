@@ -1236,8 +1236,16 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		TypedArray a = c.obtainStyledAttributes(themeid, attr);
 		
 		mTextTypeface = a.getString(ThemeNotepad.ID_textTypeface);
+		mCurrentTypeface = null;
 
-		if (!TextUtils.isEmpty(mTextTypeface)) {
+		// Look for special cases:
+		if ("monospace".equals(mTextTypeface)) {
+			mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
+		} else if ("sans".equals(mTextTypeface)) {
+			mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
+		} else if ("serif".equals(mTextTypeface)) {
+			mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
+		} else if (!TextUtils.isEmpty(mTextTypeface)) {
 
 			try {
 				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
@@ -1247,10 +1255,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 				Log.d(TAG, "Result: " + mCurrentTypeface);
 			} catch (NameNotFoundException e) {
 				Log.e(TAG, "Package not found for Typeface", e);
-				mCurrentTypeface = null;
 			}
 		} else {
-			mCurrentTypeface = null;
 		}
 		
 		mTextUpperCaseFont = a.getBoolean(ThemeNotepad.ID_textUpperCaseFont, false);

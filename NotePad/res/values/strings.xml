@@ -111,6 +111,7 @@
 	<string name="theme_pick">Pick a theme</string>
     <string name="theme_default">Default </string>
     <string name="theme_monospaced">Monospaced font</string>
+	<string name="theme_serif">Serif font</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>

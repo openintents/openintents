@@ -21,5 +21,7 @@
 			oi:style="@style/Theme.Notepad" />
 		<theme oi:title="@string/theme_monospaced"
 			oi:style="@style/Theme.Notepad.Monospaced" />
+		<theme oi:title="@string/theme_serif"
+			oi:style="@style/Theme.Notepad.Serif" />
 	</attributeset>
 </themes>

@@ -28,6 +28,8 @@ release: 1.1.4
 date: 2009-??
 - Add filter for tags in list of notes.
 - Don't change modification time when only viewing note.
+- Preference for font size.
+- Support external themes.
 - translations: Korean, Lao, Romanian
 
 ---------------------------------------------------------

@@ -13,6 +13,10 @@
 	</style>
 
 	<style name="Theme.Notepad.Monospaced" parent="Theme.Notepad" >
-		<item name="textTypeface"></item>
+		<item name="textTypeface">monospace</item>
+	</style>
+	
+	<style name="Theme.Notepad.Serif" parent="Theme.Notepad" >
+		<item name="textTypeface">serif</item>
 	</style>
 </resources>
