@@ -66,4 +66,16 @@
 		<item name="textSuffixChecked">@string/suffix_checked</item>
 		<item name="showCheckBox">false</item>
 	</style>
+	
+	<!-- We use OI Shopping List themes also for OI Notepad,
+	     because the Notepad attributes are a subset of the 
+	     OI Shopping List attributes.
+	     If additional attributes were required, they could
+	     be added here. -->
+	<style name="Theme.Notepad.Classic" parent="Theme.ShoppingList.Classic" >
+	</style>
+
+	<style name="Theme.Notepad.Android" parent="Theme.ShoppingList.Android">
+	</style>
+	     
 </resources>

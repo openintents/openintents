@@ -109,6 +109,8 @@
 	<string name="theme_default">Default</string>
 	<string name="theme_classic">Classic</string>
 	<string name="theme_bugdroid">Android</string>
+	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
+	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>

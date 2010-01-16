@@ -24,4 +24,11 @@
 		<theme oi:title="@string/theme_bugdroid"
 			oi:style="@style/Theme.ShoppingList.Android" />
 	</attributeset>
+	<!-- As an extra, export some themes for OI Notepad. -->
+	<attributeset oi:name="org.openintents.notepad" >
+		<theme oi:title="@string/theme_classic_export"
+			oi:style="@style/Theme.Notepad.Classic" />
+		<theme oi:title="@string/theme_bugdroid_export"
+			oi:style="@style/Theme.Notepad.Android" />
+	</attributeset>
 </themes>
