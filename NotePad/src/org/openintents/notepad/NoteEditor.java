@@ -103,12 +103,14 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             Notes.NOTE, // 1
             Notes.TAGS, // 2
             Notes.ENCRYPTED, // 3
+            Notes.THEME // 4
     };
     /** The index of the note column */
     private static final int COLUMN_INDEX_ID = 0;
     private static final int COLUMN_INDEX_NOTE = 1;
     private static final int COLUMN_INDEX_TAGS = 2;
     private static final int COLUMN_INDEX_ENCRYPTED = 3;
+    private static final int COLUMN_INDEX_THEME = 4;
     
     // This is our state data that is stored when freezing.
     private static final String BUNDLE_ORIGINAL_CONTENT = "original_content";
@@ -1137,7 +1139,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 
 	@Override
 	public void onSetTheme(String theme) {
-		//mListItemsView.setListTheme(theme);
+		setTheme(theme);
 	}
 
 	/**
@@ -1151,53 +1153,20 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	 * @return
 	 */
 	public String loadTheme() {
-		
-		return "";
-		/*
-		 * long listId = getSelectedListId(); if (listId < 0) { // No valid list
-		 * - probably view is not active // and no item is selected. return 1;
-		 * // return default theme }
-		 */
-/*
-		// Return default theme if something unexpected happens:
-		if (mCursorListFilter == null)
-			return "1";
-		if (mCursorListFilter.getPosition() < 0)
-			return "1";
 
 		// mCursorListFilter has been set to correct position
 		// by calling getSelectedListId(),
 		// so we can read out further elements:
-		String skinBackground = mCursorListFilter
-				.getString(mStringListFilterSKINBACKGROUND);
+		String skinBackground = mCursor
+				.getString(COLUMN_INDEX_THEME);
 
-		// Backward compatibility:
-		if (skinBackground.equals("1")) {
-			// Default shopping theme.
-		} else if (skinBackground.equals("2")) {
-			// Default shopping theme.
-		} else if (skinBackground.equals("3")) {
-			
-		}
-		
-		return skinBackground;*/
+		return skinBackground;
 	}
 
-	public void saveTheme(String theme) {/*
-		long listId = getSelectedListId();
-		if (listId < 0) {
-			// No valid list - probably view is not active
-			// and no item is selected.
-			return; // return default theme
-		}
-
+	public void saveTheme(String theme) {
 		ContentValues values = new ContentValues();
-		values.put(Lists.SKIN_BACKGROUND, theme);
-		getContentResolver().update(
-				Uri.withAppendedPath(Lists.CONTENT_URI, mCursorListFilter
-						.getString(0)), values, null, null);
-
-		mCursorListFilter.requery();*/
+		values.put(Notes.THEME, theme);
+		getContentResolver().update(mUri, values, null, null);
 	}
 
 	/**
@@ -1231,7 +1200,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	}
 	
 	private boolean setRemoteStyle(String styleName, int size) {
-
+		if (TextUtils.isEmpty(styleName)) {
+			Log.e(TAG, "Empty style name: " + styleName);
+			return false;
+		}
+		
 		PackageManager pm = getPackageManager();
 		
 		String packageName = ThemeUtils.getPackageNameFromStyle(styleName);
@@ -1343,6 +1316,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	private void applyTheme() {
 		mText.setTextSize(mTextSize);
 		mText.setTypeface(mCurrentTypeface);
+		mText.setTextColor(mTextColor);
 	}
 	
 	Dialog getUnsavedChangesWarningDialog() {

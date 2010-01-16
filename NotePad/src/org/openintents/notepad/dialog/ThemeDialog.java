@@ -14,6 +14,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,7 +95,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		String theme = mListener.onLoadTheme();
 		
 		// Check special cases for backward compatibility:
-		if (theme.equals("")) {
+		if (TextUtils.isEmpty(theme)) {
 			theme = mContext.getResources().getResourceName(
 					R.style.Theme_Notepad);
 		}
