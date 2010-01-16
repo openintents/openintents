@@ -65,6 +65,14 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		return IntentUtils.isIntentAvailable(this, i);
 	}
 	
+	public static int getFontSizeFromPrefs(Context context) {
+		int size = Integer.parseInt(PreferenceManager
+				.getDefaultSharedPreferences(context).getString(
+						PREFS_ROWSIZE,
+						PREFS_ROWSIZE_DEFAULT));
+		return size;
+	}
+
 	/**
 	 * Returns the sort order for the notes list based on the user preferences.
 	 * Performs error-checking.

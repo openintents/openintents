@@ -22,7 +22,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
@@ -388,7 +387,7 @@ public class ShoppingListView extends ListView {
 
 		int layout_row = R.layout.shopping_item_row;
 
-		int size = getSizeFromPrefs();
+		int size = PreferenceActivity.getFontSizeFromPrefs(getContext());
 		if (size < 3) {
 			layout_row = R.layout.shopping_item_row_small;
 		}
@@ -429,21 +428,13 @@ public class ShoppingListView extends ListView {
 				mContentObserver);
 	}
 
-	private int getSizeFromPrefs() {
-		int size = Integer.parseInt(PreferenceManager
-				.getDefaultSharedPreferences(this.getContext()).getString(
-						PreferenceActivity.PREFS_ROWSIZE,
-						PreferenceActivity.PREFS_ROWSIZE_DEFAULT));
-		return size;
-	}
-
 	/**
 	 * Set theme according to Id.
 	 * 
 	 * @param themeId
 	 */
 	void setListTheme(String themeName) {
-		int size = getSizeFromPrefs();
+		int size = PreferenceActivity.getFontSizeFromPrefs(getContext());
 
 		// backward compatibility:
 		if (themeName == null) {
