@@ -3,6 +3,7 @@ package org.openintents.shopping.dialog;
 import java.util.List;
 
 import org.openintents.shopping.R;
+import org.openintents.util.ThemeShoppingList;
 import org.openintents.util.ThemeUtils;
 import org.openintents.util.ThemeUtils.ThemeInfo;
 
@@ -72,7 +73,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 	
 	public void fillThemes() {
-		List<ThemeInfo> listinfo = ThemeUtils.getThemeInfos(mContext, ThemeUtils.SHOPPING_LIST_THEME);
+		List<ThemeInfo> listinfo = ThemeUtils.getThemeInfos(mContext, ThemeShoppingList.SHOPPING_LIST_THEME);
 		
 		//mRadioGroup.removeAllViews();
 		

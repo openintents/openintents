@@ -7,6 +7,7 @@ import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Status;
+import org.openintents.util.ThemeShoppingList;
 import org.openintents.util.ThemeUtils;
 
 import android.content.ContentValues;
@@ -27,7 +28,6 @@ import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -509,11 +509,11 @@ public class ShoppingListView extends ListView {
 			return false;
 		}
 		
-		int[] attr = ThemeUtils.getAttributeIds(c, ThemeUtils.OpenIntentsThemeAttributes, packageName);
+		int[] attr = ThemeUtils.getAttributeIds(c, ThemeShoppingList.ThemeShoppingListAttributes, packageName);
 		
 		TypedArray a = c.obtainStyledAttributes(themeid, attr);
 		
-		mTextTypeface = a.getString(ThemeUtils.ID_textTypeface);
+		mTextTypeface = a.getString(ThemeShoppingList.ID_textTypeface);
 
 		if (!TextUtils.isEmpty(mTextTypeface)) {
 
@@ -531,34 +531,34 @@ public class ShoppingListView extends ListView {
 			mCurrentTypeface = null;
 		}
 		
-		mTextUpperCaseFont = a.getBoolean(ThemeUtils.ID_textUpperCaseFont, false);
+		mTextUpperCaseFont = a.getBoolean(ThemeShoppingList.ID_textUpperCaseFont, false);
 		
-		mTextColor = a.getColor(ThemeUtils.ID_textColor,
+		mTextColor = a.getColor(ThemeShoppingList.ID_textColor,
 				android.R.color.white);
 		
 		mTextColorPrice = a.getColor(
-				ThemeUtils.ID_textColorPrice,
+				ThemeShoppingList.ID_textColorPrice,
 				android.R.color.white);
 		if (size == 1) {
 			mTextSize = a
-					.getInt(ThemeUtils.ID_textSizeSmall, 10);
+					.getInt(ThemeShoppingList.ID_textSizeSmall, 10);
 		} else if (size == 2) {
-			mTextSize = a.getInt(ThemeUtils.ID_textSizeMedium,
+			mTextSize = a.getInt(ThemeShoppingList.ID_textSizeMedium,
 					20);
 		} else {
 			mTextSize = a
-					.getInt(ThemeUtils.ID_textSizeLarge, 30);
+					.getInt(ThemeShoppingList.ID_textSizeLarge, 30);
 		}
 
-		mTextColorChecked = a.getColor(ThemeUtils.ID_textColorChecked,
+		mTextColorChecked = a.getColor(ThemeShoppingList.ID_textColorChecked,
 				android.R.color.white);
-		mShowCheckBox = a.getBoolean(ThemeUtils.ID_showCheckBox, true);
-		mShowStrikethrough = a.getBoolean(ThemeUtils.ID_textStrikethroughChecked, false);
-		mTextSuffixUnchecked = a.getString(ThemeUtils.ID_textSuffixUnchecked);
-		mTextSuffixChecked = a.getString(ThemeUtils.ID_textSuffixChecked);
+		mShowCheckBox = a.getBoolean(ThemeShoppingList.ID_showCheckBox, true);
+		mShowStrikethrough = a.getBoolean(ThemeShoppingList.ID_textStrikethroughChecked, false);
+		mTextSuffixUnchecked = a.getString(ThemeShoppingList.ID_textSuffixUnchecked);
+		mTextSuffixChecked = a.getString(ThemeShoppingList.ID_textSuffixChecked);
 		
 		if (mThemedBackground != null) {
-			if (a.getInteger(ThemeUtils.ID_backgroundPadding, -1) >=0){
+			if (a.getInteger(ThemeShoppingList.ID_backgroundPadding, -1) >=0){
 			   mThemedBackground.setPadding(0,0,0,0);
 			} else {
 				// 9-patches do the padding automatically
@@ -566,7 +566,7 @@ public class ShoppingListView extends ListView {
 			}
 			try {
 				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				int resid = a.getResourceId(ThemeUtils.ID_background, 0);
+				int resid = a.getResourceId(ThemeShoppingList.ID_background, 0);
 				if (resid != 0) {
 					Drawable d = remoteRes.getDrawable(resid);
 					mThemedBackground.setBackgroundDrawable(d);
@@ -581,7 +581,7 @@ public class ShoppingListView extends ListView {
 			}
 		}
 
-		int divider = a.getInteger(ThemeUtils.ID_divider, 0);
+		int divider = a.getInteger(ThemeShoppingList.ID_divider, 0);
 		
 		a.recycle();
 		

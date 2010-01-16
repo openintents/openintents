@@ -1392,8 +1392,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	/**
 	 * Loads the theme settings for the currently selected theme.
 	 * 
-	 * Currently only one of 3 hardcoded themes are available. These are stored
+	 * Up to version 1.2.1, only one of 3 hardcoded themes are available. These are stored
 	 * in 'skin_background' as '1', '2', or '3'.
+	 * 
+	 * Starting in 1.2.2, also themes of other packages are allowed.
 	 * 
 	 * @return
 	 */
