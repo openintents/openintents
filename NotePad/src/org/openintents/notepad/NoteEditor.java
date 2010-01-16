@@ -35,6 +35,8 @@ import org.openintents.intents.NotepadIntents;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.activity.SaveFileActivity;
 import org.openintents.notepad.crypto.EncryptActivity;
+import org.openintents.notepad.dialog.ThemeDialog;
+import org.openintents.notepad.dialog.ThemeDialog.ThemeDialogListener;
 import org.openintents.notepad.intents.NotepadInternalIntents;
 import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.notepad.util.FileUriUtils;
@@ -59,12 +61,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.Layout;
-import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
-import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.util.Linkify;
 import android.util.AttributeSet;
@@ -83,7 +83,7 @@ import android.widget.Toast;
  * either to simply view a note {@link Intent#ACTION_VIEW}, view and edit a note
  * {@link Intent#ACTION_EDIT}, or create a new note {@link Intent#ACTION_INSERT}.  
  */
-public class NoteEditor extends Activity {
+public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String TAG = "Notes";
     private static final boolean debug = true;
 
@@ -121,6 +121,7 @@ public class NoteEditor extends Activity {
 	private static final int MENU_IMPORT = Menu.FIRST + 5;
 	private static final int MENU_SAVE = Menu.FIRST + 6;
 	private static final int MENU_SAVE_AS = Menu.FIRST + 7;
+	private static final int MENU_THEME = Menu.FIRST + 8;
 
 	private static final int REQUEST_CODE_DECRYPT = 2;
 	private static final int REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE = 3;
@@ -132,6 +133,7 @@ public class NoteEditor extends Activity {
     private static final int STATE_EDIT_NOTE_FROM_SDCARD = 2;
     
     private static final int DIALOG_UNSAVED_CHANGES = 1;
+    private static final int DIALOG_THEME = 2;
     
     private static final int GROUP_ID_TEXT_SELECTION_ALTERNATIVE = 1234; // some number that must not collide with others
 
@@ -448,6 +450,9 @@ public class NoteEditor extends Activity {
         	}        	
         }
         );
+        
+
+		//setTheme(loadListTheme());
     }
 
 	private void getNoteFromContentProvider() {
@@ -734,7 +739,10 @@ public class NoteEditor extends Activity {
         menu.add(2, MENU_SAVE_AS, 0, R.string.menu_save_as)
 			.setShortcut('3', 'a')
 			.setIcon(android.R.drawable.ic_menu_save);
-        
+
+		menu.add(3, MENU_THEME, 0, R.string.menu_theme).setIcon(
+				android.R.drawable.ic_menu_manage).setShortcut('4', 't');
+
         /*
         if (mState == STATE_EDIT) {
         	
@@ -852,6 +860,9 @@ public class NoteEditor extends Activity {
         case MENU_SAVE_AS:
         	saveAsNote();
         	break;
+		case MENU_THEME:
+			setThemeSettings();
+			return true;
         }
         if (item.getGroupId() == GROUP_ID_TEXT_SELECTION_ALTERNATIVE) {
         	// Process manually:
@@ -1082,14 +1093,96 @@ public class NoteEditor extends Activity {
     	startActivityForResult(intent, REQUEST_CODE_SAVE_AS);
     }
 
+	void setThemeSettings() {
+		showDialog(DIALOG_THEME);
+	}
+	
 	@Override
 	protected Dialog onCreateDialog(int id) {
 
 		switch (id) {
 		case DIALOG_UNSAVED_CHANGES:
 			return getUnsavedChangesWarningDialog();
+			
+		case DIALOG_THEME:
+			return new ThemeDialog(this, this);
 		}
 		return null;
+	}
+
+	@Override
+	public String onLoadTheme() {
+		return loadListTheme();
+	}
+
+	@Override
+	public void onSaveTheme(String theme) {
+		saveListTheme(theme);
+	}
+
+	@Override
+	public void onSetTheme(String theme) {
+		//mListItemsView.setListTheme(theme);
+	}
+
+	/**
+	 * Loads the theme settings for the currently selected theme.
+	 * 
+	 * Up to version 1.2.1, only one of 3 hardcoded themes are available. These are stored
+	 * in 'skin_background' as '1', '2', or '3'.
+	 * 
+	 * Starting in 1.2.2, also themes of other packages are allowed.
+	 * 
+	 * @return
+	 */
+	public String loadListTheme() {
+		
+		return "";
+		/*
+		 * long listId = getSelectedListId(); if (listId < 0) { // No valid list
+		 * - probably view is not active // and no item is selected. return 1;
+		 * // return default theme }
+		 */
+/*
+		// Return default theme if something unexpected happens:
+		if (mCursorListFilter == null)
+			return "1";
+		if (mCursorListFilter.getPosition() < 0)
+			return "1";
+
+		// mCursorListFilter has been set to correct position
+		// by calling getSelectedListId(),
+		// so we can read out further elements:
+		String skinBackground = mCursorListFilter
+				.getString(mStringListFilterSKINBACKGROUND);
+
+		// Backward compatibility:
+		if (skinBackground.equals("1")) {
+			// Default shopping theme.
+		} else if (skinBackground.equals("2")) {
+			// Default shopping theme.
+		} else if (skinBackground.equals("3")) {
+			
+		}
+		
+		return skinBackground;*/
+	}
+
+	public void saveListTheme(String theme) {/*
+		long listId = getSelectedListId();
+		if (listId < 0) {
+			// No valid list - probably view is not active
+			// and no item is selected.
+			return; // return default theme
+		}
+
+		ContentValues values = new ContentValues();
+		values.put(Lists.SKIN_BACKGROUND, theme);
+		getContentResolver().update(
+				Uri.withAppendedPath(Lists.CONTENT_URI, mCursorListFilter
+						.getString(0)), values, null, null);
+
+		mCursorListFilter.requery();*/
 	}
 
 	Dialog getUnsavedChangesWarningDialog() {
