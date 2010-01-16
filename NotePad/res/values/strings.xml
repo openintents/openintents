@@ -123,7 +123,10 @@
     <string name="preference_sortorder_summary">The order in which notes are shown in the notes list</string>
     
     <string name="note_editor_preferences">Note Editor</string>
-    <string name="preference_autolink_title">Auto-create Links</string>
+    <string name="preference_fontsize">Font size</string>
+	<string name="preference_fontsize_summary">Change font size</string>
+	<string name="preference_fontsize_dialog_title">Choose font size</string>
+	<string name="preference_autolink_title">Auto-create Links</string>
     <string name="preference_autolink_summary_on">Create links for phone numbers and email/street/web addresses</string>
     <string name="preference_autolink_summary_off">Do not create links on notes</string>
 
@@ -197,6 +200,14 @@ Current version: %s
         <item>Oldest to Newest</item>
     </string-array>
 
+    <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: small font size -->
+        <item>Small</item>
+    	<!-- Preference fontsize: default font size-->
+    	<item>Default</item>
+    	<!-- Preference fontsize: large font size -->
+        <item>Large</item>
+    </string-array>
 
     <string name="preference_extensions">Extensions</string>
     <string name="preference_get_extensions">Get new extensions</string>

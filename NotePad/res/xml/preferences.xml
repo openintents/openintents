@@ -36,6 +36,12 @@
     <PreferenceCategory
             android:title="@string/note_editor_preferences">
 
+		<ListPreference android:key="fontsize"
+			android:defaultValue="2" android:title="@string/preference_fontsize"
+			android:summary="@string/preference_fontsize_summary"
+			android:entries="@array/preference_fontsize_entries"
+			android:entryValues="@array/preference_fontsize_entryvalues"
+			android:dialogTitle="@string/preference_fontsize_dialog_title" />
                
         <CheckBoxPreference
                 android:key="autolink"

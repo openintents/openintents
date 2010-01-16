@@ -19,8 +19,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 	public static final String PREFS_SORTORDER = "sortorder";
 	public static final String PREFS_SORTORDER_DEFAULT = "3";
-	public static final String PREFS_ROWSIZE = "fontsize";
-	public static final String PREFS_ROWSIZE_DEFAULT = "2";
+	public static final String PREFS_FONTSIZE = "fontsize";
+	public static final String PREFS_FONTSIZE_DEFAULT = "2";
 	public static final String PREFS_LOADLASTUSED = "loadlastused";
 	public static final boolean PREFS_LOADLASTUSED_DEFAULT = true;
 	public static final String PREFS_LASTUSED = "lastused";
@@ -68,8 +68,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static int getFontSizeFromPrefs(Context context) {
 		int size = Integer.parseInt(PreferenceManager
 				.getDefaultSharedPreferences(context).getString(
-						PREFS_ROWSIZE,
-						PREFS_ROWSIZE_DEFAULT));
+						PREFS_FONTSIZE,
+						PREFS_FONTSIZE_DEFAULT));
 		return size;
 	}
 

@@ -30,6 +30,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 	public static final String PREFS_SORTORDER = "sortorder";
 	public static final String PREFS_SORTORDER_DEFAULT = "2";
+	public static final String PREFS_FONTSIZE = "fontsize";
+	public static final String PREFS_FONTSIZE_DEFAULT = "2";
 	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";
 	public static final String PREFS_AUTOLINK = "autolink";
 
@@ -70,6 +72,14 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		return Notes.SORT_ORDERS[0];
 	}
 
+	public static int getFontSizeFromPrefs(Context context) {
+		int size = Integer.parseInt(PreferenceManager
+				.getDefaultSharedPreferences(context).getString(
+						PREFS_FONTSIZE,
+						PREFS_FONTSIZE_DEFAULT));
+		return size;
+	}
+	
 	/**
 	 * Check whether Market is available.
 	 * @return true if Market is available

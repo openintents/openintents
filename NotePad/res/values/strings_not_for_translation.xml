@@ -76,6 +76,12 @@
         <item>3</item>  
     </string-array>
     
+    <string-array name="preference_fontsize_entryvalues">
+    	<item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    
     <!-- URL to OI Notepad extensions on Market -->
     <string name="preference_extensions_market_link">market://search?q=extension%20oi%20notepad</string>
     

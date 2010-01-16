@@ -41,6 +41,8 @@ import org.openintents.notepad.intents.NotepadInternalIntents;
 import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
+import org.openintents.util.ThemeNotepad;
+import org.openintents.util.ThemeUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -52,10 +54,16 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -151,7 +159,13 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private String mFileContent;
     
     private String mTags;
-
+    
+    Typeface mCurrentTypeface = null;
+    public String mTextTypeface;
+    public float mTextSize;
+	public boolean mTextUpperCaseFont;
+	public int mTextColor;
+	
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
      */
@@ -452,7 +466,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         );
         
 
-		//setTheme(loadListTheme());
+		setTheme(loadTheme());
     }
 
 	private void getNoteFromContentProvider() {
@@ -1112,12 +1126,12 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 
 	@Override
 	public String onLoadTheme() {
-		return loadListTheme();
+		return loadTheme();
 	}
 
 	@Override
 	public void onSaveTheme(String theme) {
-		saveListTheme(theme);
+		saveTheme(theme);
 	}
 
 	@Override
@@ -1135,7 +1149,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	 * 
 	 * @return
 	 */
-	public String loadListTheme() {
+	public String loadTheme() {
 		
 		return "";
 		/*
@@ -1168,7 +1182,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		return skinBackground;*/
 	}
 
-	public void saveListTheme(String theme) {/*
+	public void saveTheme(String theme) {/*
 		long listId = getSelectedListId();
 		if (listId < 0) {
 			// No valid list - probably view is not active
@@ -1185,6 +1199,150 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		mCursorListFilter.requery();*/
 	}
 
+	/**
+	 * Set theme according to Id.
+	 * 
+	 * @param themeId
+	 */
+	void setTheme(String themeName) {
+		int size = PreferenceActivity.getFontSizeFromPrefs(this);
+
+		// New styles:
+		boolean themeFound = setRemoteStyle(themeName, size);
+		
+		if (!themeFound) {
+			// Some error occured, let's use default style:
+			setLocalStyle(R.style.Theme_Notepad, size);
+		}
+		
+		applyTheme();
+	}
+
+	private void setLocalStyle(int styleResId, int size) {
+		String styleName = getResources().getResourceName(styleResId);
+		
+		boolean themefound = setRemoteStyle(styleName, size);
+		
+		if (!themefound) {
+			// Actually this should never happen.
+			Log.e(TAG, "Local theme not found: " + styleName);
+		}
+	}
+	
+	private boolean setRemoteStyle(String styleName, int size) {
+
+		PackageManager pm = getPackageManager();
+		
+		String packageName = ThemeUtils.getPackageNameFromStyle(styleName);
+		
+		if (packageName == null) {
+			Log.e(TAG, "Invalid style name: " + styleName);
+			return false;
+		}
+		
+		Context c = null;
+		try {
+			c = createPackageContext(packageName, 0);
+		} catch (NameNotFoundException e) {
+			Log.e(TAG, "Package for style not found: " + packageName + ", " + styleName);
+			return false;
+		}
+		
+		Resources res = c.getResources();
+		
+		int themeid = res.getIdentifier(styleName, null, null);
+		
+		if (themeid == 0) {
+			Log.e(TAG, "Theme name not found: " + styleName);
+			return false;
+		}
+		
+		int[] attr = ThemeUtils.getAttributeIds(c, ThemeNotepad.ThemeNotepadAttributes, packageName);
+		
+		TypedArray a = c.obtainStyledAttributes(themeid, attr);
+		
+		mTextTypeface = a.getString(ThemeNotepad.ID_textTypeface);
+
+		if (!TextUtils.isEmpty(mTextTypeface)) {
+
+			try {
+				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
+				Resources remoteRes = pm.getResourcesForApplication(packageName);
+				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
+						mTextTypeface);
+				Log.d(TAG, "Result: " + mCurrentTypeface);
+			} catch (NameNotFoundException e) {
+				Log.e(TAG, "Package not found for Typeface", e);
+				mCurrentTypeface = null;
+			}
+		} else {
+			mCurrentTypeface = null;
+		}
+		
+		mTextUpperCaseFont = a.getBoolean(ThemeNotepad.ID_textUpperCaseFont, false);
+		
+		mTextColor = a.getColor(ThemeNotepad.ID_textColor,
+				android.R.color.white);
+		
+		if (size == 1) {
+			mTextSize = a
+					.getInt(ThemeNotepad.ID_textSizeSmall, 10);
+		} else if (size == 2) {
+			mTextSize = a.getInt(ThemeNotepad.ID_textSizeMedium,
+					20);
+		} else {
+			mTextSize = a
+					.getInt(ThemeNotepad.ID_textSizeLarge, 30);
+		}
+
+		if (mText != null) {
+			if (a.getInteger(ThemeNotepad.ID_backgroundPadding, -1) >=0){
+				mText.setPadding(0,0,0,0);
+			} else {
+				// 9-patches do the padding automatically
+				// todo clear padding 
+			}
+			try {
+				Resources remoteRes = pm.getResourcesForApplication(packageName);
+				int resid = a.getResourceId(ThemeNotepad.ID_background, 0);
+				if (resid != 0) {
+					Drawable d = remoteRes.getDrawable(resid);
+					mText.setBackgroundDrawable(d);
+				} else {
+					// remove background
+					mText.setBackgroundResource(0);
+				}
+			} catch (NameNotFoundException e) {
+				Log.e(TAG, "Package not found for Theme background.", e);
+			} catch (Resources.NotFoundException e) {
+				Log.e(TAG, "Resource not found for Theme background.", e);
+			}
+		}
+
+		int divider = a.getInteger(ThemeNotepad.ID_divider, 0);
+		
+		a.recycle();
+		/*
+		Drawable div = null;
+		if (divider > 0) {
+			div = getResources().getDrawable(divider);
+		} else if (divider < 0) {
+			div = null;
+		} else {
+			div = mDefaultDivider;
+		}
+		
+		setDivider(div);
+		*/
+		
+		return true;
+	}
+	
+	private void applyTheme() {
+		mText.setTextSize(mTextSize);
+		mText.setTypeface(mCurrentTypeface);
+	}
+	
 	Dialog getUnsavedChangesWarningDialog() {
 		return new AlertDialog.Builder(this)
 		.setIcon(android.R.drawable.ic_dialog_alert)
