@@ -1256,7 +1256,6 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			} catch (NameNotFoundException e) {
 				Log.e(TAG, "Package not found for Typeface", e);
 			}
-		} else {
 		}
 		
 		mTextUpperCaseFont = a.getBoolean(ThemeNotepad.ID_textUpperCaseFont, false);
