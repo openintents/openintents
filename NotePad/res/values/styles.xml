@@ -2,7 +2,7 @@
 <resources>
 	<style name="Theme.Notepad" parent="@android:style/Theme.Light" >
 		<item name="background">?android:background</item>
-		<item name="backgroundPadding">0</item>
+		<item name="backgroundPadding">5</item>
 		<item name="divider">0</item>
 		<item name="textTypeface"></item>
 		<item name="textUpperCaseFont">false</item>

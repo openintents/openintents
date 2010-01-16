@@ -60,6 +60,7 @@ public class ShoppingListView extends ListView {
 	public boolean mShowStrikethrough;
 	public String mTextSuffixUnchecked;
 	public String mTextSuffixChecked;
+	public int mBackgroundPadding;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 
@@ -549,8 +550,9 @@ public class ShoppingListView extends ListView {
 		mTextSuffixChecked = a.getString(ThemeShoppingList.ID_textSuffixChecked);
 		
 		if (mThemedBackground != null) {
-			if (a.getInteger(ThemeShoppingList.ID_backgroundPadding, -1) >=0){
-			   mThemedBackground.setPadding(0,0,0,0);
+			mBackgroundPadding = a.getInteger(ThemeShoppingList.ID_backgroundPadding, -1);
+			if (mBackgroundPadding >=0){
+				mThemedBackground.setPadding(mBackgroundPadding, mBackgroundPadding, mBackgroundPadding, mBackgroundPadding);
 			} else {
 				// 9-patches do the padding automatically
 				// todo clear padding 

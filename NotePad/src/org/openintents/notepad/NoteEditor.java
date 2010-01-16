@@ -165,6 +165,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     public float mTextSize;
 	public boolean mTextUpperCaseFont;
 	public int mTextColor;
+	public int mBackgroundPadding;
 	
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
@@ -1296,8 +1297,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		}
 
 		if (mText != null) {
-			if (a.getInteger(ThemeNotepad.ID_backgroundPadding, -1) >=0){
-				mText.setPadding(0,0,0,0);
+			mBackgroundPadding = a.getInteger(ThemeNotepad.ID_backgroundPadding, -1);
+			if (mBackgroundPadding >=0){
+				mText.setPadding(mBackgroundPadding, mBackgroundPadding, mBackgroundPadding, mBackgroundPadding);
 			} else {
 				// 9-patches do the padding automatically
 				// todo clear padding 
