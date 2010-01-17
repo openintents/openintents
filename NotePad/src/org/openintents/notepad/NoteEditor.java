@@ -43,6 +43,7 @@ import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.ThemeNotepad;
 import org.openintents.util.ThemeUtils;
+import org.openintents.util.UpperCaseTransformationMethod;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -425,6 +426,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 					.getBoolean(PreferenceActivity.PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
      
         mText.setAutoLinkMask(autoLink);
+        
 
         if (mState == STATE_EDIT || mState == STATE_INSERT) {
         	getNoteFromContentProvider();
@@ -598,6 +600,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         super.onPause();
         Log.d(TAG, "onPause");
 
+        mText.setAutoLinkMask(0);
+        
         // The user is going somewhere else, so make sure their current
         // changes are safely saved away in the provider.  We don't need
         // to do this if only editing.
@@ -1329,6 +1333,23 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		mText.setTextSize(mTextSize);
 		mText.setTypeface(mCurrentTypeface);
 		mText.setTextColor(mTextColor);
+
+		if (mTextUpperCaseFont) {
+			// Turn off autolinkmask, because it is not compatible with transformationmethod.
+	        mText.setAutoLinkMask(0);
+	        
+			mText.setTransformationMethod(UpperCaseTransformationMethod.getInstance());
+		} else {
+			mText.setTransformationMethod(null);
+			
+	        // Set auto-link on or off, based on the current setting.
+	        int autoLink = PreferenceManager.getDefaultSharedPreferences(this)
+						.getBoolean(PreferenceActivity.PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
+	     
+	        mText.setAutoLinkMask(autoLink);
+		}
+		
+		mText.invalidate();
 	}
 
 	private void showNotesListSettings() {
