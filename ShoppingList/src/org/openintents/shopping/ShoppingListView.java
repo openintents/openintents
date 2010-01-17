@@ -604,6 +604,11 @@ public class ShoppingListView extends ListView {
 	}
 
 	public void toggleItemBought(int position) {
+		if (mCursorItems.getCount() <= position) {
+			Log.e(TAG, "toggle inexistent item. Probably clicked too quickly?");
+			return;
+		}
+		
 		mCursorItems.moveToPosition(position);
 
 		long oldstatus = mCursorItems
