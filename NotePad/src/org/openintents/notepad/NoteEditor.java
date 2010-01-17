@@ -132,7 +132,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	private static final int MENU_SAVE = Menu.FIRST + 6;
 	private static final int MENU_SAVE_AS = Menu.FIRST + 7;
 	private static final int MENU_THEME = Menu.FIRST + 8;
-
+ 	private static final int MENU_SETTINGS = Menu.FIRST + 9;
+ 	
 	private static final int REQUEST_CODE_DECRYPT = 2;
 	private static final int REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE = 3;
 	private static final int REQUEST_CODE_SAVE_AS = 4;
@@ -760,6 +761,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		menu.add(3, MENU_THEME, 0, R.string.menu_theme).setIcon(
 				android.R.drawable.ic_menu_manage).setShortcut('4', 't');
 
+		menu.add(3, MENU_SETTINGS, 0, R.string.settings).setIcon(
+				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
+
         /*
         if (mState == STATE_EDIT) {
         	
@@ -879,6 +883,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         	break;
 		case MENU_THEME:
 			setThemeSettings();
+			return true;
+		case MENU_SETTINGS:
+			showNotesListSettings();
 			return true;
         }
         if (item.getGroupId() == GROUP_ID_TEXT_SELECTION_ALTERNATIVE) {
@@ -1322,6 +1329,10 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		mText.setTextSize(mTextSize);
 		mText.setTypeface(mCurrentTypeface);
 		mText.setTextColor(mTextColor);
+	}
+
+	private void showNotesListSettings() {
+		startActivity(new Intent(this, PreferenceActivity.class));
 	}
 	
 	Dialog getUnsavedChangesWarningDialog() {
