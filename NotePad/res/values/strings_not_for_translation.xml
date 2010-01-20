@@ -83,9 +83,15 @@
     </string-array>
     
     <!-- URL to OI Notepad extensions on Market -->
-    <string name="preference_extensions_market_link">market://search?q=extension%20oi%20notepad</string>
+    <string name="preference_market_extensions_link">market://search?q=extension%20oi%20notepad</string>
     
-    <!-- URL to OI Notepad -->
-    <string name="preference_extensions_developer_link">http://www.openintents.org/en/node/129#extensions</string>
-	
+    <!-- URL to OI Notepad themes on Market -->
+    <string name="preference_market_themes_link">market://search?q=theme%20oi%20notepad</string>
+    
+    <!-- URL to OI Notepad extensions -->
+    <string name="preference_developer_extensions_link">http://www.openintents.org/en/notepad#extensions</string>
+    
+    <!-- URL to OI Notepad themes -->
+    <string name="preference_developer_themes_link">http://www.openintents.org/en/notepad#themes</string>
+
 </resources>

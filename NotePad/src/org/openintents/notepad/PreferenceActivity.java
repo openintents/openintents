@@ -32,7 +32,8 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_SORTORDER_DEFAULT = "2";
 	public static final String PREFS_FONTSIZE = "fontsize";
 	public static final String PREFS_FONTSIZE_DEFAULT = "2";
-	public static final String PREFS_EXTENSIONS_MARKET = "preference_extensions_market";
+	public static final String PREFS_MARKET_EXTENSIONS = "preference_market_extensions";
+	public static final String PREFS_MARKET_THEMES = "preference_market_themes";
 	public static final String PREFS_AUTOLINK = "autolink";
 
 	@Override
@@ -43,7 +44,9 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		addPreferencesFromResource(R.xml.preferences);
 
 		// Set enabled state of Market preference
-		PreferenceScreen sp = (PreferenceScreen) findPreference(PREFS_EXTENSIONS_MARKET);
+		PreferenceScreen sp = (PreferenceScreen) findPreference(PREFS_MARKET_EXTENSIONS);
+		sp.setEnabled(isMarketAvailable());
+		sp = (PreferenceScreen) findPreference(PREFS_MARKET_THEMES);
 		sp.setEnabled(isMarketAvailable());
 	}
 
@@ -86,7 +89,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	 */
 	private boolean isMarketAvailable() {
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse(getString(R.string.preference_extensions_market_link)));
+		i.setData(Uri.parse(getString(R.string.preference_market_extensions_link)));
 		return IntentUtils.isIntentAvailable(this, i);
 	}
 }

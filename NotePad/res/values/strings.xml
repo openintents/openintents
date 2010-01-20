@@ -116,7 +116,7 @@
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>
-	
+    
     <!-- Settings -->
     <string name="noteslist_preferences">Notes List</string>
     <string name="preference_sortorder_title">List Sorting Order</string>
@@ -210,13 +210,17 @@ Current version: %s
         <item>Large</item>
     </string-array>
 
+    <string name="preference_addons">Add-ons</string>
+    <string name="preference_get_addons">Get new add-ons</string>
+    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
+    <string name="preference_get_market_addons">Get add-ons from Market</string>
+    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
-    <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_themes">Themes</string>
+    <string name="preference_market_extensions_summary">Search for extensions at Android Market.</string>
+    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_developer_extensions_summary">Get extensions from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+
     <string name="tag_no_filter">No filter</string>
 </resources>
