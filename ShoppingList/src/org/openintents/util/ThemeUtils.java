@@ -51,22 +51,28 @@ public class ThemeUtils {
 		}
 		return attrIds;
 	}
-	
+
 	/**
 	 * Return list of all applications that contain the 
 	 * theme meta-tag.
 	 * 
-	 * @param context
+	 * @param pm
+	 * @param firstPackage: package name of package that should be moved to front.
 	 * @return
 	 */
-	private static List<ApplicationInfo> getThemePackages(PackageManager pm) {
+	private static List<ApplicationInfo> getThemePackages(PackageManager pm, String firstPackage) {
 		List<ApplicationInfo> appinfolist = new LinkedList<ApplicationInfo>();
 		
 		List<ApplicationInfo> allapps = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 		for (ApplicationInfo ai : allapps) {
 			if (ai.metaData != null) {
 				if (ai.metaData.containsKey(METADATA_THEMES)) {
-					appinfolist.add(ai);
+					if (ai.packageName.equals(firstPackage)) {
+						// Add this package at the beginning of the list
+						appinfolist.add(0, ai);
+					} else {
+						appinfolist.add(ai);
+					}
 				}
 			}
  		}
@@ -146,8 +152,9 @@ public class ThemeUtils {
 	 */
 	public static List<ThemeInfo> getThemeInfos(Context context, String attributeset) {
 		PackageManager pm = context.getPackageManager();
+		String thisPackageName = context.getPackageName();
 		
-		List<ApplicationInfo> appinfolist = getThemePackages(pm);
+		List<ApplicationInfo> appinfolist = getThemePackages(pm, thisPackageName);
 		List<ThemeInfo> themeinfolist = new LinkedList<ThemeInfo>();
 		
 		for (ApplicationInfo ai : appinfolist) {
