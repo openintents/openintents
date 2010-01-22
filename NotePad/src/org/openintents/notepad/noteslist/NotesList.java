@@ -255,7 +255,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         Uri notesUri = getIntent().getData();
 
         Cursor managedCursor = getContentResolver().query(notesUri,
-                new String[]{"tags"},
+                new String[]{Notes.TAGS, Notes.ENCRYPTED},
                 null,
                 null,
                 null);
@@ -263,12 +263,21 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         if (managedCursor.moveToFirst()) {
             do {
             	String tags = managedCursor.getString(0);
+            	long encrypted = managedCursor.getLong(1);
+            	
             	if (!TextUtils.isEmpty(tags)) {
-	                for (String tag : tags.split(",")) {
-	                    if (!taglist.contains(tag.trim())) {
-	                        taglist.add(tag.trim());
-	                    }
-	                }
+            		if (encrypted == 0) {
+		                for (String tag : tags.split(",")) {
+		                    if (!taglist.contains(tag.trim())) {
+		                        taglist.add(tag.trim());
+		                    }
+		                }
+            		} else {
+            			// Currently: ignore encrypted tags.
+            			
+            			// TODO: store encrypted tags in an array,
+            			// decrypt them, and show them.
+            		}
             	}
             } while (managedCursor.moveToNext());
         }

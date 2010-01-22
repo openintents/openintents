@@ -67,7 +67,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.Layout;
 import android.text.Spannable;
@@ -75,7 +74,6 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.ArrowKeyMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.util.Linkify;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -163,6 +161,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private String mFileContent;
     
     private String mTags;
+    
+    private String mTheme;
     
     Typeface mCurrentTypeface = null;
     public String mTextTypeface;
@@ -422,8 +422,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         if (debug) Log.d(TAG, "onResume");
         
         // Set auto-link on or off, based on the current setting.
-        int autoLink = PreferenceManager.getDefaultSharedPreferences(this)
-					.getBoolean(PreferenceActivity.PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
+        int autoLink = PreferenceActivity.getAutoLinkFromPreference(this);
      
         mText.setAutoLinkMask(autoLink);
         
@@ -478,10 +477,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	private void getNoteFromContentProvider() {
 		// If we didn't have any trouble retrieving the data, it is now
         // time to get at the stuff.
-        if (mCursor != null) {
-        	mCursor.requery();
-            // Make sure we are at the one and only row in the cursor.
-            mCursor.moveToFirst();
+        if (mCursor != null 
+        		&& mCursor.requery()
+        		&& mCursor.moveToFirst()) {
 
             // Modify our overall title depending on the mode we are running in.
              if (mState == STATE_EDIT) {
@@ -493,6 +491,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             long id = mCursor.getLong(COLUMN_INDEX_ID);
             String note = mCursor.getString(COLUMN_INDEX_NOTE);
             long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+			mTheme = mCursor.getString(COLUMN_INDEX_THEME);
             
             if (encrypted == 0) {
             	// Not encrypted
@@ -645,7 +644,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	
 	                // Write our text back into the provider.
 	                values.put(Notes.NOTE, text);
-	
+
+	    			values.put(Notes.THEME, mTheme);
+	    			
 	                // Commit all of our changes to persistent storage. When the update completes
 	                // the content provider will notify the cursor of the change, which will
 	                // cause the UI to be updated.
@@ -655,6 +656,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             } else {
             	// encrypted note: First encrypt and store encrypted note:
 
+            	// Save current theme:
+                ContentValues values = new ContentValues();
+    			values.put(Notes.THEME, mTheme);
+                getContentResolver().update(mUri, values, null, null);
+            	
 	            if (mDecryptedText != null) {
 	            	// Decrypted had been decrypted.
 	            	// We take the current version from 'text' and encrypt it.
@@ -942,7 +948,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
                 //ContentValues values = new ContentValues();
                 //values.put(Notes.NOTE, mOriginalContent);
                 //getContentResolver().update(mUri, values, null, null);
-            	mText.setText(mOriginalContent);
+
+        		mText.setAutoLinkMask(0);
+            	mText.setTextKeepState(mOriginalContent);
+            	int autolink = PreferenceActivity.getAutoLinkFromPreference(this);
+    	        mText.setAutoLinkMask(autolink);
             //} else if (mState == STATE_INSERT) {
                 // We inserted an empty note, make sure to delete it
                 //deleteNote();
@@ -1066,6 +1076,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             //mState = STATE_INSERT;
             ContentValues values = new ContentValues();
             values.put(Notes.NOTE, mFileContent);
+            values.put(Notes.THEME, mTheme);
             newUri = getContentResolver().insert(Notes.CONTENT_URI, values);
             
 
@@ -1164,20 +1175,33 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	 * @return
 	 */
 	public String loadTheme() {
-
-		// mCursorListFilter has been set to correct position
-		// by calling getSelectedListId(),
-		// so we can read out further elements:
-		String skinBackground = mCursor
-				.getString(COLUMN_INDEX_THEME);
-
-		return skinBackground;
+		return mTheme;
+		/*
+		if (mCursor != null && mCursor.moveToFirst()) {
+			// mCursorListFilter has been set to correct position
+			// by calling getSelectedListId(),
+			// so we can read out further elements:
+			String skinBackground = mCursor
+					.getString(COLUMN_INDEX_THEME);
+	
+			return skinBackground;
+		} else {
+			return null;
+		}
+		*/
 	}
 
 	public void saveTheme(String theme) {
-		ContentValues values = new ContentValues();
-		values.put(Notes.THEME, theme);
-		getContentResolver().update(mUri, values, null, null);
+		mTheme = theme;
+		/*
+		// Save theme only for content Uris with NotePad authority.
+		// Don't save anything for file:// uri.
+		if (mUri != null && mUri.getAuthority().equals(NotePad.AUTHORITY)) {
+			ContentValues values = new ContentValues();
+			values.put(Notes.THEME, theme);
+			getContentResolver().update(mUri, values, null, null);
+		}
+		*/
 	}
 
 	/**
@@ -1343,8 +1367,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			mText.setTransformationMethod(null);
 			
 	        // Set auto-link on or off, based on the current setting.
-	        int autoLink = PreferenceManager.getDefaultSharedPreferences(this)
-						.getBoolean(PreferenceActivity.PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
+	        int autoLink = PreferenceActivity.getAutoLinkFromPreference(this);
 	     
 	        mText.setAutoLinkMask(autoLink);
 		}

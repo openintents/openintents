@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
+import android.text.util.Linkify;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 
@@ -91,5 +92,10 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse(getString(R.string.preference_market_extensions_link)));
 		return IntentUtils.isIntentAvailable(this, i);
+	}
+
+	static int getAutoLinkFromPreference(Context context) {
+		return PreferenceManager.getDefaultSharedPreferences(context)
+					.getBoolean(PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
 	}
 }
