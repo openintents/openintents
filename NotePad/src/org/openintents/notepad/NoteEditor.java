@@ -634,7 +634,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
                                 oldText = cursor.getString(0);
                             }
 	                    // Bump the modification time to now.
-                            if ( ! oldText.trim().equals(text.trim()) ) {
+                            if ( ! oldText.equals(text) ) {
 	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
                             }
 	                    
