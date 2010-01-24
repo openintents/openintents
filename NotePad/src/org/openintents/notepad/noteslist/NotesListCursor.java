@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class NotesListCursor extends OpenMatrixCursor {
 
-	private static final String TAG = "NotesListCursorUtils";
+	private static final String TAG = "NotesListCursor";
 	static final String TITLE_DECRYPTED = "title_decrypted";
 	static final String TAGS_DECRYPTED = "tags_decrypted";
 	
@@ -109,9 +109,10 @@ public class NotesListCursor extends OpenMatrixCursor {
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			Log.i(TAG, "NoteListCursor changed" + selfChange);
+			Log.i(TAG, "NoteListCursor changed: " + selfChange);
 
 			if (!mSuspendQueries) {
+				Log.i(TAG, "NoteListCursor requery()");
 				requery();
 			}
 		}
@@ -330,6 +331,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 			mDbCursor.unregisterContentObserver(mContentObserver);
 			//mDbCursor.close();
 			mDbCursor.deactivate();
+			mDbCursor.close();
 			mDbCursor = null;
 		}
 		

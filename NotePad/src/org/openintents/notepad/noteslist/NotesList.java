@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
@@ -46,7 +47,6 @@ import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.filename.DialogHostingActivity;
-import org.openintents.notepad.filename.FilenameDialog;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -59,6 +59,7 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.net.Uri;
@@ -74,12 +75,11 @@ import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import java.util.List;
 
 /**
  * Displays a list of notes. Will display notes from the {@link Uri} provided in
@@ -287,6 +287,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, taglist);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
+        
+        // Hide Spinner if there are no tags
+        if (taglist.size() > 1) {
+        	s.setVisibility(View.VISIBLE);
+        } else {
+        	s.setVisibility(View.GONE);
+        }
     }
 	
 	@Override
@@ -295,6 +302,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		if (debug) Log.d(TAG, "onResume()");
 		
 		NotesListCursor.mSuspendQueries = false;
+		
+		//mCursorUtils.registerContentObserver(mListContentObserver);
+		//mCursorUtils.registerDataSetObserver(mListDatasetObserver);
 		
 		checkAdapter();
 		
@@ -316,8 +326,41 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
         // getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 	}
+/*
+	ContentObserver mListContentObserver = new ContentObserver(mHandler) {
 
+		@Override
+		public boolean deliverSelfNotifications() {
+			Log.i(TAG, "NotesList:mListContentObserver: deliverSelfNotifications");
+			return super.deliverSelfNotifications();
+		}
 
+		@Override
+		public void onChange(boolean arg0) {
+			Log.i(TAG, "NotesList:mListContentObserver: onChange");
+			//mCursorListFilter.requery();
+			updateTagList();
+
+			super.onChange(arg0);
+		}
+	};
+	
+	DataSetObserver mListDatasetObserver = new DataSetObserver() {
+
+		@Override
+		public void onChanged() {
+			Log.i(TAG, "mListDatasetObserver: onChanged");
+			super.onChanged();
+		}
+
+		@Override
+		public void onInvalidated() {
+			Log.i(TAG, "mListDatasetObserver: onInvalidated");
+			super.onInvalidated();
+		}
+		
+	};
+*/
 	private void checkAdapter() {
 		if (mAdapter == null) {
 			// Perform a managed query. The Activity will handle closing and
@@ -376,6 +419,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		//	c.deactivate();
 		//}
 
+		//mCursorUtils.unregisterDataSetObserver(mListDatasetObserver);
+		//mCursorUtils.unregisterContentObserver(mListContentObserver);
+		
 		unregisterReceiver(mBroadcastReceiver);
 		
 		// After unregistering broadcastreceiver, the logged in state is not clear.
@@ -1133,7 +1179,6 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 	BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
 
-		@Override
 		public void onReceive(Context context, Intent intent) {
 			if (debug) Log.i(TAG, "flush decrypted data");
 			NotesListCursor.flushDecryptedStringHashMap();
