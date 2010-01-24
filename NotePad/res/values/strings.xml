@@ -121,7 +121,7 @@
     <string name="search_hint">Search</string>
     
     <!-- The description that will show up in the search settings for this source.  -->
-    <string name="search_settings_description">Notes.</string>
+    <string name="search_settings_description">Titles of your notes</string>
     
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>

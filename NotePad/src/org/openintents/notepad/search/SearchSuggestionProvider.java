@@ -119,11 +119,16 @@ public class SearchSuggestionProvider extends ContentProvider {
         MatrixCursor cursor = new MatrixCursor(COLUMNS);
         
         while (c.moveToNext()) {
-        	long id = c.getLong(0); 
-        	String title = c.getString(1);
-        	String tag = c.getString(2);
-    		Uri uri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
-        	cursor.addRow(columnValues(id, title, tag, uri));
+        	long encrypted = c.getLong(0);
+        	if (encrypted == 0) {
+	        	long id = c.getLong(0);
+	        	String title = c.getString(1);
+	        	String tag = c.getString(2);
+	    		Uri uri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
+	        	cursor.addRow(columnValues(id, title, tag, uri));
+        	} else {
+        		// Currently don't know how to handle encrypted notes.
+        	}
         }
         /*for (Dictionary.Word word : words) {
             cursor.addRow(columnValuesOfWord(word));
