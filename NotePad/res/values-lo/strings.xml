@@ -197,5 +197,4 @@ Current version: %s
     <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
-    <string name="tag_no_filter">No filter</string>
 </resources>

@@ -198,5 +198,4 @@
     <string name="preference_extensions_market_summary">Búsqueda de extensiones en la Tienda Android</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Obtener extensiones desde la página principal de OpenIntents</string>
-    <string name="tag_no_filter">No filter</string>
 </resources>

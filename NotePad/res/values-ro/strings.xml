@@ -195,5 +195,4 @@
     <string name="preference_extensions_market_summary">Caută extensii pe Android Market</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Instalează extensii de pe siteul OpenIntents.</string>
-    <string name="tag_no_filter">No filter</string>
 </resources>

@@ -26,6 +26,7 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.1.4
 date: 2009-??
+- Add search.
 - Add filter for tags in list of notes.
 - Don't change modification time when only viewing note.
 - Preference for font size.

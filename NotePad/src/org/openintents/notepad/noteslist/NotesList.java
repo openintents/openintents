@@ -251,7 +251,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
         List<String> taglist = new ArrayList<String>();
 
-        taglist.add(getString(R.string.tag_no_filter));
+        taglist.add(getString(R.string.all_notes));
 
         Uri notesUri = getIntent().getData();
 

@@ -194,5 +194,4 @@
     <string name="preference_extensions_market_summary">Rechercher des extensions sur l'Android Market</string>
     <string name="preference_extensions_developer">OpenIntents</string>
     <string name="preference_extensions_developer_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
-    <string name="tag_no_filter">No filter</string>
 </resources>
