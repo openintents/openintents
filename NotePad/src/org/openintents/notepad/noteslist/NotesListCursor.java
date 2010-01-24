@@ -39,7 +39,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 	/**
 	 * This cursors' columns
 	 */
-	protected static final String[] PROJECTION = new String[] { 
+	public static final String[] PROJECTION = new String[] { 
 			Notes._ID, // 0
 			Notes.TITLE, // 1
 			Notes.TAGS, // 2
@@ -48,14 +48,14 @@ public class NotesListCursor extends OpenMatrixCursor {
 			TAGS_DECRYPTED // 5
 	};
 
-	protected static final int COLUMN_INDEX_ID = 0;
+	public static final int COLUMN_INDEX_ID = 0;
 	/** The index of the title column */
-	protected static final int COLUMN_INDEX_TITLE = 1;
-	protected static final int COLUMN_INDEX_TAGS = 2;
-	protected static final int COLUMN_INDEX_ENCRYPTED = 3;
+	public static final int COLUMN_INDEX_TITLE = 1;
+	public static final int COLUMN_INDEX_TAGS = 2;
+	public static final int COLUMN_INDEX_ENCRYPTED = 3;
 	/** Contains the encrypted title if it has not been decrypted yet */
-	protected static final int COLUMN_INDEX_TITLE_ENCRYPTED = 4;
-	protected static final int COLUMN_INDEX_TAGS_ENCRYPTED = 5;
+	public static final int COLUMN_INDEX_TITLE_ENCRYPTED = 4;
+	public static final int COLUMN_INDEX_TAGS_ENCRYPTED = 5;
 	
 	static boolean mLoggedIn = false;
 	

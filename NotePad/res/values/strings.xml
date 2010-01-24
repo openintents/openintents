@@ -113,6 +113,16 @@
     <string name="theme_monospaced">Monospaced font</string>
 	<string name="theme_serif">Serif font</string>
 
+	<!-- Search -->
+	<string name="menu_search">Search</string>
+    <string name="search_query_results">OI Notepad</string>
+	<string name="search_found_no_results">No results found.</string>
+    <string name="search_label">OI Notepad search</string>
+    <string name="search_hint">Search</string>
+    
+    <!-- The description that will show up in the search settings for this source.  -->
+    <string name="search_settings_description">Notes.</string>
+    
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>

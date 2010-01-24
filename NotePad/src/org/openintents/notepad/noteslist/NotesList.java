@@ -102,6 +102,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	//private static final int MENU_ITEM_SAVE = Menu.FIRST + 8;
 	private static final int MENU_OPEN = Menu.FIRST + 9;
  	private static final int MENU_SETTINGS = Menu.FIRST + 10;
+ 	private static final int MENU_SEARCH = Menu.FIRST + 11;
 	
 	private static final String BUNDLE_LAST_FILTER = "last_filter";
 
@@ -415,10 +416,13 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		// This is our one standard application action -- inserting a
 		// new note into the list.
-		menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert).setShortcut('3',
-				'a').setIcon(android.R.drawable.ic_menu_add);
+		menu.add(0, MENU_ITEM_INSERT, 0, R.string.menu_insert).setShortcut('1',
+				'i').setIcon(android.R.drawable.ic_menu_add);
 		
-		menu.add(0, MENU_OPEN, 0, R.string.menu_open_from_sdcard).setShortcut('4',
+		menu.add(0, MENU_SEARCH, 0, R.string.menu_search).setShortcut('2',
+				's').setIcon(android.R.drawable.ic_menu_search);
+		
+		menu.add(0, MENU_OPEN, 0, R.string.menu_open_from_sdcard).setShortcut('3',
 				'o').setIcon(R.drawable.ic_menu_folder);
 
 		UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
@@ -497,6 +501,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		case MENU_ITEM_INSERT:
 			insertNewNote();
 			return true;
+		case MENU_SEARCH:
+			search();
+			return true;
 		case MENU_OPEN:
 			openFromSdCard();
 			return true;
@@ -519,6 +526,10 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	private void insertNewNote() {
 		// Launch activity to insert a new item
 		startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+	}
+	
+	private void search() {
+		onSearchRequested();
 	}
 	
 	private void openFromSdCard() {
