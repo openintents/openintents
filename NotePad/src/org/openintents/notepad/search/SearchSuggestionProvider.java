@@ -53,6 +53,7 @@ public class SearchSuggestionProvider extends ContentProvider {
             SearchManager.SUGGEST_COLUMN_TEXT_1,
             SearchManager.SUGGEST_COLUMN_TEXT_2,
             SearchManager.SUGGEST_COLUMN_INTENT_DATA,
+            SearchManager.SUGGEST_COLUMN_SHORTCUT_ID
             };
 
 
@@ -119,7 +120,7 @@ public class SearchSuggestionProvider extends ContentProvider {
         MatrixCursor cursor = new MatrixCursor(COLUMNS);
         
         while (c.moveToNext()) {
-        	long encrypted = c.getLong(0);
+        	long encrypted = c.getLong(3);
         	if (encrypted == 0) {
 	        	long id = c.getLong(0);
 	        	String title = c.getString(1);
@@ -139,10 +140,11 @@ public class SearchSuggestionProvider extends ContentProvider {
 
     private Object[] columnValues(long id, String text, String tag, Uri uri) {
         return new String[] {
-                "" + id,           // _id
+                "" + id,        // _id
                 text,           // text1
-                tag,     // text2
-                uri.toString(),           // intent_data (included when clicking on item)
+                tag,            // text2
+                uri.toString(), // intent_data (included when clicking on item)
+                "" + id         // shortcut ID for validating shortcuts.
         };
     }
 
@@ -153,7 +155,30 @@ public class SearchSuggestionProvider extends ContentProvider {
      * would return a cursor with a single item representing the refreshed suggestion data.
      */
     private Cursor refreshShortcut(String shortcutId, String[] projection) {
-        return null;
+    	if (true) return null;
+    	
+    	Context context = getContext();
+    	
+		Cursor c = context.getContentResolver().query(Notes.CONTENT_URI, 
+				new String[] {Notes._ID, Notes.TITLE, Notes.TAGS, Notes.ENCRYPTED}, 
+				Notes._ID + " = " + shortcutId,
+				new String[] { }, PreferenceActivity.getSortOrderFromPrefs(context));
+		
+        MatrixCursor cursor = new MatrixCursor(COLUMNS);
+        
+        if (c.moveToNext()) {
+        	long encrypted = c.getLong(0);
+        	if (encrypted == 0) {
+	        	long id = c.getLong(0);
+	        	String title = c.getString(1);
+	        	String tag = c.getString(2);
+	    		Uri uri = ContentUris.withAppendedId(Notes.CONTENT_URI, id);
+	        	cursor.addRow(columnValues(id, title, tag, uri));
+        	} else {
+        		// Currently don't know how to handle encrypted notes.
+        	}
+        }
+        return cursor;
     }
 
     /**
