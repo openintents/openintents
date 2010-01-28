@@ -208,7 +208,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        if (debug) Log.i(TAG, "onCreate()");
+        if (debug) Log.d(TAG, "onCreate()");
         
         mDecryptedText = null;
         mSelectionStart = 0;
@@ -352,7 +352,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	private TextWatcher mTextWatcherSdCard = new TextWatcher() {
 		@Override
 		public void afterTextChanged(Editable s) {
-			Log.i(TAG, "after");
+			//if (debug) Log.d(TAG, "after");
 			mFileContent = s.toString();
 			updateTitleSdCard();
 		}
@@ -360,13 +360,13 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		@Override
 		public void beforeTextChanged(CharSequence s, int start, int count,
 				int after) {
-			Log.i(TAG, "before");
+			//if (debug) Log.d(TAG, "before");
 		}
 
 		@Override
 		public void onTextChanged(CharSequence s, int start, int before,
 				int count) {
-			Log.i(TAG, "on");
+			//if (debug) Log.d(TAG, "on");
 		}
     	
     };
@@ -514,8 +514,12 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             		
             		setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_lock_idle_lock);
             	} else {
-            	// Decrypt note
-	
+            		// Decrypt note
+            		
+            		// Overwrite mText because it may contain unencrypted note
+            		// from savedInstanceState.
+            		//mText.setText(R.string.encrypted);
+            		
 	        		Intent i = new Intent();
 	        		i.setAction(CryptoIntents.ACTION_DECRYPT);
 	        		i.putExtra(CryptoIntents.EXTRA_TEXT, note);
@@ -545,7 +549,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	}
 	
 	private void getNoteFromFile() {
-		if (debug) Log.i(TAG, "file: " + mFileContent);
+		if (debug) Log.d(TAG, "file: " + mFileContent);
 
 		mText.setTextKeepState(mFileContent);
 		// keep state does not work, so we have to do it manually:
@@ -577,8 +581,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-    	if (debug) Log.i(TAG, "onSaveInstanceState");
-    	if (debug) Log.i(TAG, "file content: " + mFileContent);
+    	if (debug) Log.d(TAG, "onSaveInstanceState");
+    	if (debug) Log.d(TAG, "file content: " + mFileContent);
     	
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
@@ -597,7 +601,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "onPause");
+        if (debug) Log.d(TAG, "onPause");
 
         mText.setAutoLinkMask(0);
         
@@ -666,6 +670,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	            	// We take the current version from 'text' and encrypt it.
 	            	
 	            	encryptNote(false);
+	            	
+	            	// Remove displayed note.
+	            	//mText.setText(R.string.encrypted);
 	            }
             }
         }
@@ -679,7 +686,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         String text = mText.getText().toString();
         String title = ExtractTitle.extractTitle(text);
         String tags = getTags();
-		Log.i(TAG, "encrypt tags: " + tags);
+		//Log.i(TAG, "encrypt tags: " + tags);
 		
 		if (!encryptTags) {
 			tags = null;
@@ -700,7 +707,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         String text = mText.getText().toString();
         String title = ExtractTitle.extractTitle(text);
         String tags = getTags();
-		Log.i(TAG, "unencrypt tags: " + tags);
+		//Log.i(TAG, "unencrypt tags: " + tags);
         
         ContentValues values = new ContentValues();
         values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
@@ -1283,11 +1290,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		} else if (!TextUtils.isEmpty(mTextTypeface)) {
 
 			try {
-				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
+				if (debug) Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
 				Resources remoteRes = pm.getResourcesForApplication(packageName);
 				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
 						mTextTypeface);
-				Log.d(TAG, "Result: " + mCurrentTypeface);
+				if (debug) Log.d(TAG, "Result: " + mCurrentTypeface);
 			} catch (NameNotFoundException e) {
 				Log.e(TAG, "Package not found for Typeface", e);
 			}
@@ -1429,7 +1436,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	}
 	
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-    	if (debug) Log.i(TAG, "onActivityResult: Received requestCode " + requestCode + ", resultCode " + resultCode);
+    	if (debug) Log.d(TAG, "onActivityResult: Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_DECRYPT:
     		if (resultCode == RESULT_OK && data != null) {
@@ -1439,7 +1446,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     			// TODO: Check that id corresponds to current intent.
     			
     			if (id == -1) {
-        	    	Log.i(TAG, "Wrong extra id");
+        	    	Log.e(TAG, "Wrong extra id");
     				Toast.makeText(this,
         					"Decrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
@@ -1473,7 +1480,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     		if (resultCode == RESULT_OK && data != null) {
     			// Set the new file name
     			mUri = data.getData();
-    			if (debug) Log.i(TAG, "original: " + mOriginalContent + ", file: " + mFileContent);
+    			if (debug) Log.d(TAG, "original: " + mOriginalContent + ", file: " + mFileContent);
     			mOriginalContent = mFileContent;
     			
     			updateTitleSdCard();

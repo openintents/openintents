@@ -31,6 +31,7 @@ import android.widget.Toast;
 public class EncryptActivity extends Activity {
 
     private static final String TAG = "EncryptActivity";
+    private static final boolean debug = true;
     
 	public static final int DIALOG_ID_GET_FROM_MARKET = 1;
     
@@ -41,7 +42,7 @@ public class EncryptActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		Log.i(TAG, "EncryptActivity: onCreate");
+		if (debug) Log.d(TAG, "EncryptActivity: onCreate");
 		
 		Intent i = getIntent();
 
@@ -53,7 +54,7 @@ public class EncryptActivity extends Activity {
 				&& !action.equals(CryptoIntents.ACTION_DECRYPT) ) {
 			
 			// Unknown action
-			Log.i(TAG, "Unknown action supplied: " + action);
+			Log.e(TAG, "Unknown action supplied: " + action);
 			finish();
 			return;
 		}
@@ -64,7 +65,7 @@ public class EncryptActivity extends Activity {
 		
 		if (IntentUtils.isIntentAvailable(this, i)) {
 	        try {
-	    		Log.i(TAG, "EncryptActivity: startActivity");
+	        	if (debug) Log.d(TAG, "EncryptActivity: startActivity");
 	        	startActivityForResult(i, REQUEST_CODE_ENCRYPT_OR_UNENCRYPT);
 	        } catch (ActivityNotFoundException e) {
 				Toast.makeText(this,
@@ -79,7 +80,7 @@ public class EncryptActivity extends Activity {
         
         
 
-		Log.i(TAG, "EncryptActivity: startActivity OK");
+		if (debug) Log.d(TAG, "EncryptActivity: startActivity OK");
 	}
 	
 	/**
@@ -95,7 +96,7 @@ public class EncryptActivity extends Activity {
 	}
 
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-    	Log.i(TAG, "EncryptActivity: Received requestCode " + requestCode + ", resultCode " + resultCode);
+    	if (debug) Log.d(TAG, "EncryptActivity: Received requestCode " + requestCode + ", resultCode " + resultCode);
     	switch(requestCode) {
     	case REQUEST_CODE_ENCRYPT_OR_UNENCRYPT:
     		if (resultCode == RESULT_OK && data != null) {
@@ -112,14 +113,14 @@ public class EncryptActivity extends Activity {
     			if (uristring != null) {
     				uri = Uri.parse(uristring);
     			} else {
-        	    	Log.i(TAG, "Wrong extra uri");
+        	    	Log.e(TAG, "Wrong extra uri");
     				Toast.makeText(this,
         					"Encrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
     				return;
     			}
 
-    	    	Log.i(TAG, "Updating" + uri + ", encrypted text " + text + ", tags " + tags);
+    			if (debug) Log.d(TAG, "Updating" + uri + ", encrypted text " + text + ", tags " + tags);
     			// Write this to content provider:
 
                 ContentValues values = new ContentValues();
@@ -139,7 +140,7 @@ public class EncryptActivity extends Activity {
                 } else if (action.equals(CryptoIntents.ACTION_DECRYPT)) {
                 	values.put(Notes.ENCRYPTED, 0);
                 } else {
-        	    	Log.i(TAG, "Wrong action");
+        	    	Log.e(TAG, "Wrong action");
     				Toast.makeText(this,
         					"Encrypted information incomplete",
         					Toast.LENGTH_SHORT).show();
@@ -152,10 +153,10 @@ public class EncryptActivity extends Activity {
                 finish();
                 
     		} else {
-    			Toast.makeText(this,
-    					"Failed to invoke encrypt",
-    					Toast.LENGTH_SHORT).show();
-    			
+				Toast.makeText(this,
+						R.string.encryption_failed,
+						Toast.LENGTH_SHORT).show();
+				Log.e(TAG, "failed to invoke encrypt");
     			finish();
     		}
     		break;
