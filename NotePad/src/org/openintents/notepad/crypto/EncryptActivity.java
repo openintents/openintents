@@ -49,6 +49,9 @@ public class EncryptActivity extends Activity {
 		i.setComponent(null);
 		String action = i.getStringExtra(PrivateNotePadIntents.EXTRA_ACTION);
 		
+		// Failed, unless set later to be successful.
+		setResult(RESULT_CANCELED);
+		
 		// action should be either ENCRYPT or DECRYPT
 		if (!action.equals(CryptoIntents.ACTION_ENCRYPT) 
 				&& !action.equals(CryptoIntents.ACTION_DECRYPT) ) {
@@ -148,7 +151,9 @@ public class EncryptActivity extends Activity {
                 }
                 
                 getContentResolver().update(uri, values, null, null);
-                
+
+        		setResult(RESULT_OK);
+        		
                 // we are done
                 finish();
                 

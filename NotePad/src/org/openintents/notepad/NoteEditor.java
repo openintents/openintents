@@ -133,6 +133,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	private static final int MENU_THEME = Menu.FIRST + 8;
  	private static final int MENU_SETTINGS = Menu.FIRST + 9;
  	
+ 	//private static final int REQUEST_CODE_ENCRYPT = 1;
 	private static final int REQUEST_CODE_DECRYPT = 2;
 	private static final int REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE = 3;
 	private static final int REQUEST_CODE_SAVE_AS = 4;
@@ -697,6 +698,12 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
 		i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
 		startActivity(i);
+		
+		// Remove knowledge of the decrypted note.
+		// If encryption fails because one has been locked out, (another) user
+		// should not be able to see note again from cache.
+		mDecryptedText = null;
+		mText.setText(R.string.encrypted);
 	}
 	
 	/**
