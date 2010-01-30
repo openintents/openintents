@@ -1111,14 +1111,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 					Toast.LENGTH_SHORT).show();
 			return false;
 		}
-
+		
+		String previousTheme = loadListTheme();
+		
 		int newId = (int) Shopping.getList(this, name);
 		fillListFilter();
 
 		setSelectedListId(newId);
 
 		// Now set the theme based on the selected list:
-		mListItemsView.setListTheme(loadListTheme());
+		saveListTheme(previousTheme);
+		mListItemsView.setListTheme(previousTheme);
 
 		// A newly created list will not yet be shared via GTalk:
 		// bindGTalkIfNeeded();
@@ -1384,6 +1387,23 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		mListItemsView.setListTheme(theme);
 	}
 	
+	@Override
+	public void onSetThemeForAll(String theme) {
+		setThemeForAll(this, theme);
+	}
+	
+	/**
+	 * Set theme for all lists.
+	 * @param context
+	 * @param theme
+	 */
+	public static void setThemeForAll(Context context, String theme) {
+		ContentValues values = new ContentValues();
+		values.put(Lists.SKIN_BACKGROUND, theme);
+		context.getContentResolver().update(
+				Lists.CONTENT_URI, values, null, null);
+	}
+	
 	/**
 	 * Loads the theme settings for the currently selected theme.
 	 * 
@@ -1514,7 +1534,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			break;
 			
 		case DIALOG_THEME:
-			((ThemeDialog)dialog).updateList();
+			((ThemeDialog)dialog).prepareDialog();
 			break;
 		}
 	}

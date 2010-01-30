@@ -6,6 +6,7 @@ import org.openintents.util.IntentUtils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -37,6 +38,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final boolean PREFS_SHAKE_DEFAULT = false;
 	public static final String PREFS_MARKET_EXTENSIONS = "preference_market_extensions";
 	public static final String PREFS_MARKET_THEMES = "preference_market_themes";
+	public static final String PREFS_THEME_SET_FOR_ALL = "theme_set_for_all";
 
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 
@@ -137,6 +139,20 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 		return new TextKeyListener(smCapitalizationSettings[capitalization],
 				true);
+	}
+
+	public static boolean getThemeSetForAll(Context context) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return prefs.getBoolean(PREFS_THEME_SET_FOR_ALL, false);
+	}
+	
+	public static void setThemeSetForAll(Context context, boolean setForAll) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor ed = prefs.edit();
+		ed.putBoolean(PREFS_THEME_SET_FOR_ALL, setForAll);
+		ed.commit();
 	}
 
 }

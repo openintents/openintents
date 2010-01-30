@@ -18,6 +18,8 @@ package org.openintents.shopping.dialog;
 
 import java.util.List;
 
+import org.openintents.provider.Shopping.Lists;
+import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
 import org.openintents.util.ThemeShoppingList;
 import org.openintents.util.ThemeUtils;
@@ -25,10 +27,12 @@ import org.openintents.util.ThemeUtils.ThemeInfo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -36,6 +40,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -47,6 +52,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	Context mContext;
 	ThemeDialogListener mListener;
 	ListView mListView;
+	CheckBox mCheckBox;
 	List<ThemeInfo> mListInfo;
 	
 	public ThemeDialog(Context context) {
@@ -79,6 +85,8 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		mListView.setItemsCanFocus(false);
 		mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		
+		mCheckBox = (CheckBox) view.findViewById(R.id.check1);
+		
 		fillThemes();
 		
 		setTitle(R.string.theme_pick);
@@ -87,7 +95,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		setButton(Dialog.BUTTON_NEGATIVE, mContext.getText(R.string.cancel), this);
 		setOnCancelListener(this);
 		
-		updateList();
+		prepareDialog();
 	}
 	
 	public void fillThemes() {
@@ -107,10 +115,15 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
         mListView.setOnItemClickListener(this);
 	}
 	
+	public void prepareDialog() {
+		updateList();
+		mCheckBox.setChecked(PreferenceActivity.getThemeSetForAll(mContext));
+	}
+	
 	/**
 	 * Set selection to currently used theme.
 	 */
-	public void updateList() {
+	private void updateList() {
 		String theme = mListener.onLoadTheme();
 		
 		// Check special cases for backward compatibility:
@@ -125,6 +138,11 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 					R.style.Theme_ShoppingList_Android);
 		}
 
+		// Reset selection in case the current theme is not
+		// in this list (for example got uninstalled).
+		mListView.setItemChecked(-1, false);
+		mListView.setSelection(0);
+		
 		int pos = 0;
 		for (ThemeInfo ti : mListInfo) {
 			if (ti.styleName.equals(theme)) {
@@ -187,6 +205,13 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		String theme = getSelectedTheme();
 		mListener.onSaveTheme(theme);
 		mListener.onSetTheme(theme);
+		
+		boolean setForAllThemes = mCheckBox.isChecked();
+		PreferenceActivity.setThemeSetForAll(mContext,
+				setForAllThemes);
+		if (setForAllThemes) {
+			mListener.onSetThemeForAll(theme);
+		}
 	}
 
 	private String getSelectedTheme() {
@@ -218,6 +243,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	
 	public interface ThemeDialogListener {
 		void onSetTheme(String theme);
+		void onSetThemeForAll(String theme);
 		String onLoadTheme();
 		void onSaveTheme(String theme);
 	}
