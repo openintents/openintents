@@ -39,9 +39,12 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_MARKET_EXTENSIONS = "preference_market_extensions";
 	public static final String PREFS_MARKET_THEMES = "preference_market_themes";
 	public static final String PREFS_THEME_SET_FOR_ALL = "theme_set_for_all";
-
+	public static final String PREFS_SCREEN_ADDONS = "preference_screen_addons";
+	
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 
+	public static final String EXTRA_SHOW_GET_ADD_ONS = "show_get_add_ons";
+	
 	private static final TextKeyListener.Capitalize smCapitalizationSettings[] = {
 			TextKeyListener.Capitalize.NONE,
 			TextKeyListener.Capitalize.SENTENCES,
@@ -58,6 +61,17 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		sp.setEnabled(isMarketAvailable());
 		sp = (PreferenceScreen) findPreference(PREFS_MARKET_THEMES);
 		sp.setEnabled(isMarketAvailable());
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (getIntent() != null && getIntent().hasExtra(EXTRA_SHOW_GET_ADD_ONS)) {
+			// Open License section directly:
+			PreferenceScreen licensePrefScreen = (PreferenceScreen) getPreferenceScreen().findPreference(PREFS_SCREEN_ADDONS);
+			setPreferenceScreen(licensePrefScreen);
+		}
 	}
 
 	/**

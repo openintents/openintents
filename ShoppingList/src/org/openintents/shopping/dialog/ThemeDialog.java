@@ -18,7 +18,6 @@ package org.openintents.shopping.dialog;
 
 import java.util.List;
 
-import org.openintents.provider.Shopping.Lists;
 import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
 import org.openintents.util.ThemeShoppingList;
@@ -27,19 +26,20 @@ import org.openintents.util.ThemeUtils.ThemeInfo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
 import android.os.Bundle;
+import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -85,9 +85,24 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		mListView.setItemsCanFocus(false);
 		mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		
-		mCheckBox = (CheckBox) view.findViewById(R.id.check1);
+		Button b = new Button(mContext);
+		b.setText(R.string.get_more_themes);
+		b.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(mContext, PreferenceActivity.class);
+				i.putExtra(PreferenceActivity.EXTRA_SHOW_GET_ADD_ONS, true);
+				mContext.startActivity(i);
+				
+				pressCancel();
+				dismiss();
+			}
+		});
 		
-		fillThemes();
+		mListView.addFooterView(b);
+		
+		mCheckBox = (CheckBox) view.findViewById(R.id.check1);
 		
 		setTitle(R.string.theme_pick);
 		
@@ -116,6 +131,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 	
 	public void prepareDialog() {
+		fillThemes();
 		updateList();
 		mCheckBox.setChecked(PreferenceActivity.getThemeSetForAll(mContext));
 	}
