@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2007-2008 OpenIntents.org
+ * Copyright (C) 2007-2010 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.ContentObserver;
@@ -67,7 +66,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -81,8 +79,6 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.FilterQueryProvider;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -90,7 +86,6 @@ import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.TableLayout.LayoutParams;
 
 /**
  * 
@@ -1418,15 +1413,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		String skinBackground = mCursorListFilter
 				.getString(mStringListFilterSKINBACKGROUND);
 
-		// Backward compatibility:
-		if (skinBackground.equals("1")) {
-			// Default shopping theme.
-		} else if (skinBackground.equals("2")) {
-			// Default shopping theme.
-		} else if (skinBackground.equals("3")) {
-			
-		}
-		
 		return skinBackground;
 	}
 

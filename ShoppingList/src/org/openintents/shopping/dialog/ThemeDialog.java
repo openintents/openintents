@@ -1,3 +1,19 @@
+/* 
+ * Copyright (C) 2007-2010 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.shopping.dialog;
 
 import java.util.List;
@@ -15,23 +31,23 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.ScrollView;
-import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class ThemeDialog extends AlertDialog implements OnClickListener, OnCancelListener, OnCheckedChangeListener {
+public class ThemeDialog extends AlertDialog implements OnClickListener, OnCancelListener, OnItemClickListener {
 	private static final String TAG = "ThemeDialog";
 	
 	private static final String BUNDLE_THEME = "theme";
 	
 	Context mContext;
-	RadioGroup mRadioGroup;
 	ThemeDialogListener mListener;
-	ScrollView mScrollView;
+	ListView mListView;
+	List<ThemeInfo> mListInfo;
 	
 	public ThemeDialog(Context context) {
 		super(context);
@@ -47,22 +63,24 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 
 	private void init() {
-
+		setInverseBackgroundForced(true);
+		
 		LayoutInflater inflate = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		
+		inflate = inflate.cloneInContext(new ContextThemeWrapper(mContext, android.R.style.Theme_Light));
+		
 		final View view = inflate.inflate(R.layout.shopping_theme_settings,
 				null);
-		setView(view);
-
-		mRadioGroup = (RadioGroup) view
-				.findViewById(R.id.radiogroup);
-		mRadioGroup.setOnCheckedChangeListener(this);
 		
-		mScrollView = (ScrollView) view
-				.findViewById(R.id.scrollview);
+		setView(view);
+		
+		mListView = (ListView) view.findViewById(R.id.list1);
+		mListView.setCacheColorHint(0);
+		mListView.setItemsCanFocus(false);
+		mListView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 		
 		fillThemes();
 		
-		setIcon(android.R.drawable.ic_menu_manage);
 		setTitle(R.string.theme_pick);
 		
 		setButton(Dialog.BUTTON_POSITIVE, mContext.getText(R.string.ok), this);
@@ -73,52 +91,50 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 	
 	public void fillThemes() {
-		List<ThemeInfo> listinfo = ThemeUtils.getThemeInfos(mContext, ThemeShoppingList.SHOPPING_LIST_THEME);
+		mListInfo = ThemeUtils.getThemeInfos(mContext, ThemeShoppingList.SHOPPING_LIST_THEME);
 		
-		//mRadioGroup.removeAllViews();
-		
+		String[] s = new String[mListInfo.size()];
 		int i = 0;
-		for (ThemeInfo ti : listinfo) {
-			RadioButton rb = new RadioButton(mContext);
-			rb.setText(ti.title);
-			LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			rb.setTag(ti);
-			rb.setId(i);
+		for (ThemeInfo ti : mListInfo) {
+			s[i] = ti.title;
 			i++;
-			mRadioGroup.addView(rb, lp);
 		}
+
+        mListView.setAdapter(new ArrayAdapter<String>(
+        		new ContextThemeWrapper(mContext, android.R.style.Theme_Light),
+                android.R.layout.simple_list_item_single_choice, s));
+        
+        mListView.setOnItemClickListener(this);
 	}
 	
+	/**
+	 * Set selection to currently used theme.
+	 */
 	public void updateList() {
-
 		String theme = mListener.onLoadTheme();
 		
 		// Check special cases for backward compatibility:
-		if (theme.equals("1")) {
+		if ("1".equals(theme)) {
 			theme = mContext.getResources().getResourceName(
 					R.style.Theme_ShoppingList);
-		} else if (theme.equals("2")) {
+		} else if ("2".equals(theme)) {
 			theme = mContext.getResources().getResourceName(
 					R.style.Theme_ShoppingList_Classic);
-		} else if (theme.equals("3")) {
+		} else if ("3".equals(theme)) {
 			theme = mContext.getResources().getResourceName(
 					R.style.Theme_ShoppingList_Android);
 		}
-		
-		int max = mRadioGroup.getChildCount();
-		
-		for (int i = 0; i < max; i++) {
-			RadioButton rb = (RadioButton) mRadioGroup.getChildAt(i);
-			ThemeInfo ti = (ThemeInfo) rb.getTag();
-			if (ti != null && ti.styleName.equals(theme)) {
-				mRadioGroup.check(rb.getId());
+
+		int pos = 0;
+		for (ThemeInfo ti : mListInfo) {
+			if (ti.styleName.equals(theme)) {
+				mListView.setItemChecked(pos, true);
 				
-				// Scroll to new position
-				// (Does not work, because a layout pass
-				//  is probably still missing...)
-				mScrollView.scrollTo(0, rb.getTop());
+				// Move list to show the selected item:
+				mListView.setSelection(pos);
 				break;
 			}
+			pos++;
 		}
 	}
 	
@@ -174,14 +190,10 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 
 	private String getSelectedTheme() {
-		int r = mRadioGroup.getCheckedRadioButtonId();
+		int pos = mListView.getCheckedItemPosition();
 		
-		// Now generic case from remote packages
-		RadioButton rb = (RadioButton) mRadioGroup.findViewById(r);
-		
-		if (rb != null) {
-			ThemeInfo ti = (ThemeInfo) rb.getTag();
-			
+		if (pos != ListView.INVALID_POSITION) {
+			ThemeInfo ti = mListInfo.get(pos);
 			return ti.styleName;
 		} else {
 			return null;
@@ -195,13 +207,12 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 	}
 
 	@Override
-	public void onCheckedChanged(RadioGroup group, int checkedId) {
-		RadioButton rb = (RadioButton) group.findViewById(checkedId);
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		String theme = getSelectedTheme();
 		
-		if (rb != null) {
-			ThemeInfo ti = (ThemeInfo) rb.getTag();
-	
-			mListener.onSetTheme(ti.styleName);
+		if (theme != null) {
+			mListener.onSetTheme(theme);
 		}
 	}
 	
@@ -210,5 +221,4 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		String onLoadTheme();
 		void onSaveTheme(String theme);
 	}
-
 }
