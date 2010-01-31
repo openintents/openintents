@@ -91,7 +91,7 @@ import android.widget.Toast;
  * {@link Intent#ACTION_EDIT}, or create a new note {@link Intent#ACTION_INSERT}.  
  */
 public class NoteEditor extends Activity implements ThemeDialogListener {
-    private static final String TAG = "Notes";
+    private static final String TAG = "NoteEditor";
     private static final boolean debug = true;
 
     /**
@@ -119,6 +119,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String BUNDLE_SELECTION_STOP = "selection_stop";
     private static final String BUNDLE_FILENAME = "filename";
     private static final String BUNDLE_FILE_CONTENT = "file_content";
+    private static final String BUNDLE_APPLY_TEXT = "apply_text";
+    private static final String BUNDLE_APPLY_TEXT_BEFORE = "apply_text_before";
+    private static final String BUNDLE_APPLY_TEXT_AFTER = "apply_text_after";
     
 
     // Identifiers for our menu items.
@@ -157,6 +160,14 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private int mSelectionStart;
     private int mSelectionStop;
     
+    // If the following are not null, the result of
+    // a text change (TEXT_SELECTION_ALTERNATIVE) still needs to be applied.
+    private String mApplyText;
+    private String mApplyTextBefore;
+    private String mApplyTextAfter;
+    
+    // Whether this note is stored in encrypted format
+    private long mEncrypted;
     private String mDecryptedText;
     
     private String mFileContent;
@@ -224,6 +235,12 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             mSelectionStart = savedInstanceState.getInt(BUNDLE_SELECTION_START);
             mSelectionStop = savedInstanceState.getInt(BUNDLE_SELECTION_STOP);
             mFileContent = savedInstanceState.getString(BUNDLE_FILE_CONTENT);
+            if (mApplyText == null && mApplyTextBefore == null && mApplyTextAfter == null) {
+            	// Only read values if they had not been set by onActivityResult() yet:
+            	mApplyText = savedInstanceState.getString(BUNDLE_APPLY_TEXT);
+            	mApplyTextBefore = savedInstanceState.getString(BUNDLE_APPLY_TEXT_BEFORE);
+            	mApplyTextAfter = savedInstanceState.getString(BUNDLE_APPLY_TEXT_AFTER);
+            }
         } else {
             // Do some setup based on the action being performed.
 	        final Intent intent = getIntent();
@@ -427,11 +444,16 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
      
         mText.setAutoLinkMask(autoLink);
         
+        mEncrypted = 0;
 
         if (mState == STATE_EDIT || mState == STATE_INSERT) {
         	getNoteFromContentProvider();
         } else if (mState == STATE_EDIT_NOTE_FROM_SDCARD) {
         	getNoteFromFile();
+        }
+        
+        if (mEncrypted == 0 || mDecryptedText != null) {
+        	applyInsertText();
         }
         
         // Make sure that we don't use the link movement method.
@@ -491,10 +513,10 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 
             long id = mCursor.getLong(COLUMN_INDEX_ID);
             String note = mCursor.getString(COLUMN_INDEX_NOTE);
-            long encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+            mEncrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
 			mTheme = mCursor.getString(COLUMN_INDEX_THEME);
             
-            if (encrypted == 0) {
+            if (mEncrypted == 0) {
             	// Not encrypted
 
 	            // This is a little tricky: we may be resumed after previously being
@@ -597,6 +619,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         outState.putInt(BUNDLE_SELECTION_START, mSelectionStart);
         outState.putInt(BUNDLE_SELECTION_STOP, mSelectionStop);
         outState.putString(BUNDLE_FILE_CONTENT, mFileContent);
+        outState.putString(BUNDLE_APPLY_TEXT, mApplyText);
+        outState.putString(BUNDLE_APPLY_TEXT_BEFORE, mApplyTextBefore);
+        outState.putString(BUNDLE_APPLY_TEXT_AFTER, mApplyTextAfter);
     }
 
     @Override
@@ -1003,6 +1028,19 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     }
     */
 
+    private void applyInsertText() {
+    	if (mApplyTextBefore != null || mApplyText != null || mApplyTextAfter != null) {
+    		// Need to apply insert text from previous TEXT_SELECTION_ALTERNATIVE
+    		
+        	insertAtPoint(mApplyTextBefore, mApplyText, mApplyTextAfter);
+        	
+        	// Only apply once:
+        	mApplyTextBefore = null;
+        	mApplyText = null;
+        	mApplyTextAfter = null;
+    	}
+    }
+    
     /**
      * Insert textToInsert at current position.
      * Optionally, if textBefore or textAfter are non-null,
@@ -1012,9 +1050,15 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
      * @author Peli
      */
     private void insertAtPoint (String textBefore, String textToInsert, String textAfter) {
-    	String originalText = mText.getText().toString(); 
+    	String originalText = mText.getText().toString();
         int startPos = mText.getSelectionStart(); 
         int endPos = mText.getSelectionEnd();
+    	if (mDecryptedText != null) {
+    		// Treat encrypted text:
+    		originalText = mDecryptedText;
+    		startPos = mSelectionStart;
+    		endPos = mSelectionStop;
+    	}
         int newStartPos = startPos;
         int newEndPos = endPos;
         ContentValues values = new ContentValues(); 
@@ -1045,6 +1089,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         	mFileContent = newNote;
         	mSelectionStart = newStartPos;
         	mSelectionStop = newEndPos;
+        } else if (mDecryptedText != null) {
+        	mDecryptedText = newNote;
         } else {
 	        // This stuff is only done when working with a full-fledged note. 
 	        if (!mNoteOnly) { 
@@ -1476,11 +1522,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     	case REQUEST_CODE_TEXT_SELECTION_ALTERNATIVE:
     		if (resultCode == RESULT_OK && data != null) {
     			// Insert result at current cursor position:
-    			String text = data.getStringExtra(NotepadIntents.EXTRA_TEXT);
-    			String textBefore = data.getStringExtra(NotepadIntents.EXTRA_TEXT_BEFORE_SELECTION);
-    			String textAfter = data.getStringExtra(NotepadIntents.EXTRA_TEXT_AFTER_SELECTION);
+    			mApplyText = data.getStringExtra(NotepadIntents.EXTRA_TEXT);
+    			mApplyTextBefore = data.getStringExtra(NotepadIntents.EXTRA_TEXT_BEFORE_SELECTION);
+    			mApplyTextAfter = data.getStringExtra(NotepadIntents.EXTRA_TEXT_AFTER_SELECTION);
     			
-    			insertAtPoint(textBefore, text, textAfter);
+    			// Text is actually inserted in onResume() - see applyInsertText()
     		}
     		break;
     	case REQUEST_CODE_SAVE_AS:
