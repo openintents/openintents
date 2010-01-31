@@ -22,6 +22,8 @@ import java.util.ArrayList;
 public class NotesListCursor extends OpenMatrixCursor {
 
 	private static final String TAG = "NotesListCursor";
+	private static final boolean debug = false;
+	
 	static final String TITLE_DECRYPTED = "title_decrypted";
 	static final String TAGS_DECRYPTED = "tags_decrypted";
 	
@@ -109,10 +111,10 @@ public class NotesListCursor extends OpenMatrixCursor {
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			Log.i(TAG, "NoteListCursor changed: " + selfChange);
+			if (debug) Log.d(TAG, "NoteListCursor changed: " + selfChange);
 
 			if (!mSuspendQueries) {
-				Log.i(TAG, "NoteListCursor requery()");
+				if (debug) Log.d(TAG, "NoteListCursor requery()");
 				requery();
 			}
 		}
@@ -171,7 +173,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 		// Register content observer
 		mDbCursor.registerContentObserver(mContentObserver);
 		
-		Log.i(TAG, "Cursor count: " + mDbCursor.getCount());
+		if (debug) Log.d(TAG, "Cursor count: " + mDbCursor.getCount());
 		
 		//mCursor = new OpenMatrixCursor(PROJECTION, dbcursor.getCount());
 		
@@ -308,14 +310,14 @@ public class NotesListCursor extends OpenMatrixCursor {
 
 	@Override
 	public void close() {
-		Log.i(TAG, "Close NotesListCursor");
+		if (debug) Log.d(TAG, "Close NotesListCursor");
 		super.close();
 	}
 
 
 	@Override
 	public void deactivate() {
-		Log.i(TAG, "Deactivate NotesListCursor");
+		if (debug) Log.d(TAG, "Deactivate NotesListCursor");
 		if (mDbCursor != null) {
 			mDbCursor.deactivate();
 		}
@@ -325,7 +327,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 
 	@Override
 	protected void finalize() {
-		Log.i(TAG, "Finalize NotesListCursor");
+		if (debug) Log.d(TAG, "Finalize NotesListCursor");
 
 		if (mDbCursor != null) {
 			mDbCursor.unregisterContentObserver(mContentObserver);

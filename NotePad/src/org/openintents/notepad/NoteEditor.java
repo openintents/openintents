@@ -92,7 +92,7 @@ import android.widget.Toast;
  */
 public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String TAG = "NoteEditor";
-    private static final boolean debug = true;
+    private static final boolean debug = false;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -1296,7 +1296,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	
 	private boolean setRemoteStyle(String styleName, int size) {
 		if (TextUtils.isEmpty(styleName)) {
-			Log.e(TAG, "Empty style name: " + styleName);
+			if (debug) Log.e(TAG, "Empty style name: " + styleName);
 			return false;
 		}
 		

@@ -31,7 +31,7 @@ import android.widget.Toast;
 public class EncryptActivity extends Activity {
 
     private static final String TAG = "EncryptActivity";
-    private static final boolean debug = true;
+    private static final boolean debug = false;
     
 	public static final int DIALOG_ID_GET_FROM_MARKET = 1;
     
