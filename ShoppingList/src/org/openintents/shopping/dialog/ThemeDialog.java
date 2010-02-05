@@ -77,7 +77,7 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 		
 		inflate = inflate.cloneInContext(new ContextThemeWrapper(mContext, android.R.style.Theme_Light));
 		
-		final View view = inflate.inflate(R.layout.shopping_theme_settings,
+		final View view = inflate.inflate(R.layout.dialog_theme_settings,
 				null);
 		
 		setView(view);
