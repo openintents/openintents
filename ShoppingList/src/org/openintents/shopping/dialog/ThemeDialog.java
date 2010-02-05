@@ -32,15 +32,17 @@ import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.sax.StartElementListener;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -100,7 +102,12 @@ public class ThemeDialog extends AlertDialog implements OnClickListener, OnCance
 			}
 		});
 		
-		mListView.addFooterView(b);
+		LinearLayout ll = new LinearLayout(mContext);
+		LayoutParams lp = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		ll.setPadding(20, 10, 20, 10);
+		ll.addView(b, lp);
+		ll.setGravity(Gravity.CENTER);
+		mListView.addFooterView(ll);
 		
 		mCheckBox = (CheckBox) view.findViewById(R.id.check1);
 		
