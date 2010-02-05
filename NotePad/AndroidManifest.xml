@@ -94,7 +94,7 @@
         <!-- This metadata entry causes .app.SearchQueryResults to be the default context -->
         <!-- whenever the user invokes search while in this Activity. -->
         <meta-data android:name="android.app.default_searchable"
-                   android:value=".search.SearchQueryResults" />
+                   android:value=".search.SearchQueryResultsActivity" />
                        
         <activity android:name=".noteslist.NotesList" android:label="@string/title_notes_list">
             <intent-filter>
@@ -177,7 +177,7 @@
         </activity>
          -->
          
-        <activity android:name=".search.SearchQueryResults"
+        <activity android:name=".search.SearchQueryResultsActivity"
                   android:label="@string/search_query_results" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

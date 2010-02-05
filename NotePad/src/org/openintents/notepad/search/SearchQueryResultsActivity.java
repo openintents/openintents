@@ -33,10 +33,12 @@ import android.os.Bundle;
 import android.provider.SearchRecentSuggestions;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-public class SearchQueryResults extends ListActivity
+public class SearchQueryResultsActivity extends ListActivity
 {
 	NotesListCursor mCursorUtils;
 	NotesListCursorAdapter mAdapter;
@@ -102,15 +104,17 @@ public class SearchQueryResults extends ListActivity
 		mCursorUtils = new NotesListCursor(this, i);
 		Cursor cursor = mCursorUtils.query(null, null);
 
-		mAdapter = new NotesListCursorAdapter(this, cursor, mCursorUtils);
-		
-		cursor = mAdapter.runQueryOnBackgroundThread(queryString, null);
-        mAdapter.changeCursor(cursor);
+		cursor = FullTextSearch.getCursor(this, queryString);
+		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+				android.R.layout.simple_list_item_2,
+				cursor,
+				new String[] {SearchManager.SUGGEST_COLUMN_TEXT_1, SearchManager.SUGGEST_COLUMN_TEXT_2},
+				new int[] {android.R.id.text1, android.R.id.text2});
         
         if (cursor.getCount() <= 0) {
         	// Nothing found.
 	    	TextView t = new TextView(this);
-	    	t.setText(getString(R.string.search_found_no_results));
+	    	t.setText(getString(R.string.search_found_no_results, queryString));
 	    	t.setPadding(5, 5, 5, 5);
 	    	t.setTextSize(20);
 	    	getListView().addHeaderView(t);
@@ -119,7 +123,8 @@ public class SearchQueryResults extends ListActivity
 		           android.R.layout.simple_list_item_1, new String[] {}));
         } else {
 	        
-    		setListAdapter(mAdapter);
+    		//setListAdapter(mAdapter);
+        	setListAdapter(adapter);
         }
         
     }

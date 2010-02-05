@@ -113,9 +113,9 @@ public class SearchSuggestionProvider extends ContentProvider {
     	
 		Cursor c = context.getContentResolver().query(Notes.CONTENT_URI, 
 				new String[] {Notes._ID, Notes.TITLE, Notes.TAGS, Notes.ENCRYPTED}, 
-				"(" + Notes.TITLE + " like '" + query + "%' ) or ("
-				 + Notes.TITLE + " like '% " + query + "%' )",
-				new String[] { }, PreferenceActivity.getSortOrderFromPrefs(context));
+				"(" + Notes.TITLE + " like ? ) or ("
+				 + Notes.TITLE + " like ? )",
+				new String[] { query + "%", "% " + query + "%" }, PreferenceActivity.getSortOrderFromPrefs(context));
 		
         MatrixCursor cursor = new MatrixCursor(COLUMNS);
         
