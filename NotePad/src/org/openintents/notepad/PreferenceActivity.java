@@ -21,6 +21,8 @@ import org.openintents.util.IntentUtils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -36,7 +38,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_MARKET_EXTENSIONS = "preference_market_extensions";
 	public static final String PREFS_MARKET_THEMES = "preference_market_themes";
 	public static final String PREFS_AUTOLINK = "autolink";
+	public static final String PREFS_THEME_SET_FOR_ALL = "theme_set_for_all";
+	public static final String PREFS_SCREEN_ADDONS = "preference_screen_addons";
 
+	public static final String EXTRA_SHOW_GET_ADD_ONS = "show_get_add_ons";
+	
 	@Override
 	protected void onCreate(Bundle icicle) {
 		
@@ -49,6 +55,17 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		sp.setEnabled(isMarketAvailable());
 		sp = (PreferenceScreen) findPreference(PREFS_MARKET_THEMES);
 		sp.setEnabled(isMarketAvailable());
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		if (getIntent() != null && getIntent().hasExtra(EXTRA_SHOW_GET_ADD_ONS)) {
+			// Open License section directly:
+			PreferenceScreen licensePrefScreen = (PreferenceScreen) getPreferenceScreen().findPreference(PREFS_SCREEN_ADDONS);
+			setPreferenceScreen(licensePrefScreen);
+		}
 	}
 
 	/**
@@ -97,5 +114,19 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	static int getAutoLinkFromPreference(Context context) {
 		return PreferenceManager.getDefaultSharedPreferences(context)
 					.getBoolean(PREFS_AUTOLINK, true) ? Linkify.ALL : 0;
+	}
+
+	public static boolean getThemeSetForAll(Context context) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		return prefs.getBoolean(PREFS_THEME_SET_FOR_ALL, false);
+	}
+	
+	public static void setThemeSetForAll(Context context, boolean setForAll) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		Editor ed = prefs.edit();
+		ed.putBoolean(PREFS_THEME_SET_FOR_ALL, setForAll);
+		ed.commit();
 	}
 }

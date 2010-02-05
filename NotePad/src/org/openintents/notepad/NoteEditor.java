@@ -1224,6 +1224,23 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		setTheme(theme);
 	}
 
+	@Override
+	public void onSetThemeForAll(String theme) {
+		setThemeForAll(this, theme);
+	}
+	
+	/**
+	 * Set theme for all lists.
+	 * @param context
+	 * @param theme
+	 */
+	public static void setThemeForAll(Context context, String theme) {
+		ContentValues values = new ContentValues();
+		values.put(Notes.THEME, theme);
+		context.getContentResolver().update(
+				Notes.CONTENT_URI, values, null, null);
+	}
+	
 	/**
 	 * Loads the theme settings for the currently selected theme.
 	 * 

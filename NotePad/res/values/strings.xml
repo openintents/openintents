@@ -127,6 +127,8 @@
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Cancel</string>
+    <string name="use_theme_for_all_lists">Use this theme for all lists</string>
+	<string name="get_more_themes">Get more themes</string>
     
     <string name="all_notes">All notes</string>
     
