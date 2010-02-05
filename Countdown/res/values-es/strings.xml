@@ -48,7 +48,7 @@
     <string name="hint_title">p.ej. pizza</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">Establecer la cuenta atrás</string>
     
     <!-- Title of the activity for creating a new countdown. -->
     <string name="title_create">Crear cuenta atrás</string>
@@ -66,7 +66,7 @@
 	<string name="error_title">Error</string>
 	
 	<!-- Message to display when an internal error occurs. This should practially never happen. -->
-	<string name="error_message">Error loading countdown</string>
+	<string name="error_message">Error cargando la cuenta atrás</string>
 	
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
@@ -92,7 +92,7 @@
 	<string name="select_action">Seleccionar acción: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">Seleccionar cuenta atrás: %s</string>
 	
 	<!-- Button to test an action. -->
 	<string name="test">Prueba</string>
@@ -174,10 +174,10 @@
     <string name="preference_extensions_developer_summary">Obtener extensiones desde la página principal de OpenIntents</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">Tiempo para la notificación</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">Tiempo para la campana, vibración o notificación luminosa.</string>
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Establecer límte de tiempo</string>

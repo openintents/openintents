@@ -34,7 +34,7 @@ date: 2009-??
 - Don't change modification time when only viewing note.
 - Preference for font size.
 - Support external themes.
-- translations: Korean, Lao, Romanian
+- translations: Finnish, Korean, Lao, Romanian
 
 ---------------------------------------------------------
 release: 1.1.3

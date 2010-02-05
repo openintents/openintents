@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
- * Copyright (C) 2007-2008 OpenIntents.org
+ * Copyright (C) 2007-2010 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -97,7 +97,10 @@
 	<string name="delete_item_confirm">Etes vous sûr de vouloir définitivement supprimmer cet élément, son libellé et son prix de toutes les listes ?</string>
 	<string name="delete">Supprimer</string>
 	
-
+	<!-- Added to an item to indicate it was bought. -->
+	<string name="suffix_checked">... OK</string>
+	<string name="empty"/>
+	
 	<!-- The shortcut is created on the home screen. -->
 	<string name="pick_list_for_shortcut">Cocher une liste pour raccourcis</string>
 	
@@ -110,10 +113,14 @@
 	<string name="theme_default">Défaut</string>
 	<string name="theme_classic">Classique</string>
 	<string name="theme_bugdroid">Android</string>
+	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
+	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Annuler</string>
+	<string name="use_theme_for_all_lists">Use this theme for all lists</string>
+	<string name="get_more_themes">Get more themes</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Paramètres</string>
@@ -156,14 +163,17 @@
     
     <string name="preference_appearance">Apparence</string>
     
+    <string name="preference_addons">Add-ons</string>
+    <string name="preference_get_addons">Get new add-ons</string>
+    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
+    <string name="preference_get_market_addons">Get add-ons from Market</string>
+    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Obtenir des nouvelles extensions</string>
-    <string name="preference_get_extensions_summary">Chercher des extensions en ligne.</string>
-    <string name="preference_get_extensions_from">Obtenir des extensions depuis</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Rechercher des extensions sur l'Android Market</string>
-    <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
+    <string name="preference_themes">Themes</string>
+    <string name="preference_market_extensions_summary">Rechercher des extensions sur l'Android Market</string>
+    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
+	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
 	
 	<!-- ***************************
 	     Distribution
