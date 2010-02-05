@@ -26,6 +26,7 @@ release: 1.2.1-beta1
 date: 2010-01-07
 - update MyBackupPro support v2.2.1
 - support external themes
+- set theme optionally for all lists
 
 ---------------------------------------------------------
 release: 1.2.0
