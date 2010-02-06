@@ -22,7 +22,9 @@ import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 public class EditItemDialog extends AlertDialog implements OnClickListener {
@@ -31,11 +33,13 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	Uri mItemUri;
 	
 	EditText mEditText;
-	EditText mTags;
+	MultiAutoCompleteTextView mTags;
 	EditText mPrice;
 	EditText mQuantity;
 	
 	TextView mPriceLabel;
+
+    String[] mTagList;
 
 	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
 	
@@ -49,7 +53,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		setView(view);
 
 		mEditText = (EditText) view.findViewById(R.id.edittext);
-		mTags = (EditText) view.findViewById(R.id.edittags);
+		mTags = (MultiAutoCompleteTextView) view.findViewById(R.id.edittags);
 		mPrice = (EditText) view.findViewById(R.id.editprice);
 		mQuantity= (EditText) view.findViewById(R.id.editquantity);
 		mPriceLabel = (TextView) view.findViewById(R.id.labeleditprice);
@@ -59,7 +63,17 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mEditText.setKeyListener(kl);
 		mTags.setKeyListener(kl);
 		
-		setIcon(android.R.drawable.ic_menu_edit);
+		mTags.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+		mTags.setThreshold(0);
+		mTags.setOnClickListener(new View.OnClickListener() {
+
+				public void onClick(View v) {
+					toggleTaglistPopup();
+				}
+
+			});
+	        
+		//setIcon(android.R.drawable.ic_menu_edit);
 		setTitle(R.string.ask_edit_item);
 		
 		setItemUri(itemUri);
@@ -92,6 +106,24 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		
 		mQuantity.addTextChangedListener(mTextWatcher);
 		mPrice.addTextChangedListener(mTextWatcher);
+	}
+
+    public void setTagList(String[] taglist) {
+    	mTagList = taglist;
+
+	    if (taglist != null) {
+	        ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext,
+	                android.R.layout.simple_dropdown_item_1line, mTagList);
+	        mTags.setAdapter(adapter);
+	    }
+    }
+    
+	private void toggleTaglistPopup() {
+		if (mTags.isPopupShowing()) {
+			mTags.dismissDropDown();
+		} else {
+			mTags.showDropDown();
+		}
 	}
 	
 	private TextWatcher mTextWatcher = new TextWatcher() {
@@ -199,7 +231,14 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 				priceLong = null;
 			}
 		}
-		
+
+    	// Remove trailing ","
+    	tags = tags.trim();
+    	if (tags.endsWith(",")) {
+    		tags = tags.substring(0, tags.length() - 1);
+    	}
+    	tags = tags.trim();
+    	
 		ContentValues values = new ContentValues();
 		values.put(Items.NAME, text);
 		values.put(Items.TAGS, tags);

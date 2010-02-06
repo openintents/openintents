@@ -16,6 +16,9 @@
 
 package org.openintents.shopping;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 import org.openintents.OpenIntents;
@@ -1529,8 +1532,12 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			break;
 			
 		case DIALOG_EDIT_ITEM:
-			((EditItemDialog) dialog).setItemUri(mItemUri);
-			((EditItemDialog)dialog).setRelationUri(mRelationUri);
+			EditItemDialog d = (EditItemDialog) dialog;
+			d.setItemUri(mItemUri);
+			d.setRelationUri(mRelationUri);
+
+			String[] taglist = getTaglist();
+			d.setTagList(taglist);
 			break;
 			
 		case DIALOG_THEME:
@@ -1744,6 +1751,44 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 	}
 
+	/**
+	 * Create list of tags.
+	 * 
+	 * Tags for notes can be comma-separated. Here we create a list of the unique tags.
+	 * 
+	 * @param c
+	 * @return
+	 */
+	String[] getTaglist() {
+		Cursor c = getContentResolver().query(Shopping.Items.CONTENT_URI, 
+				new String[] {Shopping.Items.TAGS},
+				null, null, Shopping.Items.DEFAULT_SORT_ORDER);
+		// Create a set of all tags (every tag should only appear once).
+		HashSet<String> tagset = new HashSet<String>();
+		c.moveToPosition(-1);
+		while (c.moveToNext()) {
+			String tags = c.getString(0);
+			if (tags != null) {
+				// Split several tags in a line, separated by comma
+				String[] smalltaglist = tags.split(",");
+				for (String tag : smalltaglist) {
+					if (!tag.equals("")) {
+						tagset.add(tag.trim());
+					}
+				}
+			}
+		}
+		
+		// Sort the list
+		// 1. Convert HashSet to String list.
+		ArrayList<String> list = new ArrayList<String>();
+		list.addAll(tagset);
+		// 2. Sort the String list 
+		Collections.sort(list);
+		// 3. Convert it to String array
+		return list.toArray(new String[0]);
+	}
+	
 
 	/**
 	 * Initialized GTalk if the currently selected list requires it.

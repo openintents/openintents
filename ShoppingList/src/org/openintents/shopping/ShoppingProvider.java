@@ -719,6 +719,10 @@ public class ShoppingProvider extends ContentProvider {
 		ITEMS_PROJECTION_MAP.put(Items.NAME, "items.name");
 		ITEMS_PROJECTION_MAP.put(Items.IMAGE, "items.image");
 		ITEMS_PROJECTION_MAP.put(Items.PRICE, "items.price");
+		ITEMS_PROJECTION_MAP.put(Items.TAGS, "items.tags");
+		ITEMS_PROJECTION_MAP.put(Items.BARCODE, "items.barcode");
+		ITEMS_PROJECTION_MAP.put(Items.LOCATION, "items.location");
+		ITEMS_PROJECTION_MAP.put(Items.DUE_DATE, "items.due");
 		ITEMS_PROJECTION_MAP.put(Items.CREATED_DATE, "items.created");
 		ITEMS_PROJECTION_MAP.put(Items.MODIFIED_DATE, "items.modified");
 		ITEMS_PROJECTION_MAP.put(Items.ACCESSED_DATE, "items.accessed");

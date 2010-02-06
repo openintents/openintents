@@ -950,7 +950,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		while (c.moveToNext()) {
 			String tags = c.getString(NotesListCursor.COLUMN_INDEX_TAGS);
 			if (tags != null) {
-				// Split several tas in a line, separated by comma
+				// Split several tags in a line, separated by comma
 				String[] smalltaglist = tags.split(",");
 				for (String tag : smalltaglist) {
 					if (!tag.equals("")) {

@@ -59,11 +59,14 @@
 			android:layout_height="wrap_content"
 			android:layout_weight="1" android:text="@string/tags"
 			android:layout_below="@+id/quantity_and_price" />
-		<EditText android:id="@+id/edittags" android:layout_width="fill_parent"
-			android:layout_height="wrap_content" android:text=""
-			android:layout_weight="1" android:hint="@string/tags"
-			android:singleLine="true" android:layout_below="@id/labeledittag" />
-		<!--
+		<MultiAutoCompleteTextView
+	 	 android:id="@+id/edittags"
+	     android:layout_width="fill_parent"
+	     android:layout_height="wrap_content"
+	     android:hint="@string/tags"
+	     android:singleLine="true"
+	     android:layout_below="@id/labeledittag"  />
+	    <!--
 			android:capitalize="words"
 		-->
 	</RelativeLayout>
