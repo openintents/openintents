@@ -313,10 +313,15 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	            	
 	        	}*/
 	        } else if (Intent.ACTION_INSERT.equals(action)) {
+	        	// Use theme of most recently modified note:
+	        	ContentValues values = new ContentValues(1);
+	        	String theme = getMostRecentlyUsedTheme();
+	        	values.put(Notes.THEME, theme);
+	        	
 	            // Requested to insert: set that state, and create a new entry
 	            // in the container.
 	            mState = STATE_INSERT;
-	            mUri = getContentResolver().insert(intent.getData(), null);
+	            mUri = getContentResolver().insert(intent.getData(), values);
 	            /*
 	            intent.setAction(Intent.ACTION_EDIT);
 	            intent.setData(mUri);
@@ -366,6 +371,23 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         	mCursor = null;
         }
     }
+
+    /**
+     * Returns most recently used theme, or null.
+     * @return
+     */
+	private String getMostRecentlyUsedTheme() {
+		String theme = null;
+		Cursor c = getContentResolver().query(
+				Notes.CONTENT_URI, 
+				new String[] {Notes.THEME}, null, null, 
+				Notes.MODIFIED_DATE + " DESC");
+		if (c != null && c.moveToFirst()) {
+			theme = c.getString(0);
+		}
+		c.close();
+		return theme;
+	}
 
 	private TextWatcher mTextWatcherSdCard = new TextWatcher() {
 		@Override
@@ -800,7 +822,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         	.setIcon(android.R.drawable.ic_menu_add);
         
         menu.add(2, MENU_SAVE, 0, R.string.menu_save)
-			.setShortcut('2', 's')
+			.setShortcut('2', 'x')
 			.setIcon(android.R.drawable.ic_menu_save);
         
         menu.add(2, MENU_SAVE_AS, 0, R.string.menu_save_as)
