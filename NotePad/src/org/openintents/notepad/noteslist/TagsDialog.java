@@ -17,7 +17,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.MultiAutoCompleteTextView;
 
 public class TagsDialog extends AlertDialog implements OnClickListener {
@@ -49,7 +51,7 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
         setTitle(context.getText(R.string.menu_edit_tags));
         setButton(context.getText(android.R.string.ok), this);
         setButton2(context.getText(android.R.string.cancel), (OnClickListener) null);
-        setIcon(R.drawable.ic_menu_edit);
+        //setIcon(R.drawable.ic_menu_edit);
         
         LayoutInflater inflater = 
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -62,19 +64,34 @@ public class TagsDialog extends AlertDialog implements OnClickListener {
         mTextView.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				if (mTextView.isPopupShowing()) {
-					mTextView.dismissDropDown();
-				} else {
-					mTextView.showDropDown();
-				}
+				toggleTaglistPopup();
 			}
+
 		});
         String[] mTagList = new String[0];
 		if (mTagList.length < 1) {
 			mTextView.setHint(R.string.tags_hint);
 		}
+		/*
+		Button b = (Button) view.findViewById(R.id.button1);
+		b.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				toggleTaglistPopup();
+			}
+		});
+		*/
     }
-    
+
+	private void toggleTaglistPopup() {
+		if (mTextView.isPopupShowing()) {
+			mTextView.dismissDropDown();
+		} else {
+			mTextView.showDropDown();
+		}
+	}
+	
     public void setUri(Uri uri) {
     	mUri = uri;
     }

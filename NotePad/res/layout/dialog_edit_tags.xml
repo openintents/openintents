@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
- * Copyright (C) 2007-2009 OpenIntents.org
+ * Copyright (C) 2007-2010 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,22 @@
  * limitations under the License.
  */
 -->
-
- <MultiAutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
- 	 android:id="@+id/edit"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content"
-     android:hint="@string/dropdown_hint" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:layout_width="fill_parent"
+	android:layout_height="300dip">
+	<MultiAutoCompleteTextView
+	 	 android:id="@+id/edit"
+	     android:layout_width="0dip"
+	     android:layout_weight="1"
+	     android:layout_height="wrap_content"
+	     android:hint="@string/dropdown_hint" />
+	     <!-- 
+	<Button 
+		android:id="@+id/button1"
+		android:text=" + "
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content" />
+		 -->
+</LinearLayout>
             
