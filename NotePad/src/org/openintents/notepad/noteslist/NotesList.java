@@ -47,6 +47,7 @@ import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
 import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.filename.DialogHostingActivity;
+import org.openintents.notepad.intents.NotepadInternalIntents;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
@@ -571,7 +572,9 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 	 */
 	private void insertNewNote() {
 		// Launch activity to insert a new item
-		startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
+		Intent i = new Intent(Intent.ACTION_INSERT, getIntent().getData());
+		i.putExtra(NotepadInternalIntents.EXTRA_TAGS, mSelectedTag);
+		startActivity(i);
 	}
 	
 	private void search() {

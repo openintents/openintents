@@ -22,4 +22,11 @@ public class NotepadInternalIntents {
 	 * <p>Constant Value: "org.openintents.extra.TEXT"</p>
 	 */
 	public static final String EXTRA_TEXT = "org.openintents.extra.TEXT";
+	
+	/**
+	 * The tags to be used for a newly created note.
+	 * 
+	 * <p>Constant Value: "org.openintents.extra.TAGS"</p>
+	 */
+	public static final String EXTRA_TAGS = "org.openintents.extra.TAGS";
 }

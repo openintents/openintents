@@ -318,6 +318,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	        	String theme = getMostRecentlyUsedTheme();
 	        	values.put(Notes.THEME, theme);
 	        	
+	        	String tags = intent.getStringExtra(NotepadInternalIntents.EXTRA_TAGS);
+	        	values.put(Notes.TAGS, tags);
+	        	
 	            // Requested to insert: set that state, and create a new entry
 	            // in the container.
 	            mState = STATE_INSERT;
