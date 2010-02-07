@@ -20,9 +20,9 @@ import java.util.List;
 
 import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
-import org.openintents.util.ThemeShoppingList;
-import org.openintents.util.ThemeUtils;
-import org.openintents.util.ThemeUtils.ThemeInfo;
+import org.openintents.shopping.theme.ThemeShoppingList;
+import org.openintents.shopping.theme.ThemeUtils;
+import org.openintents.shopping.theme.ThemeUtils.ThemeInfo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

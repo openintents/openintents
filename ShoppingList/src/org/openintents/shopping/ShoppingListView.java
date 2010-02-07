@@ -7,15 +7,15 @@ import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Status;
-import org.openintents.util.ThemeShoppingList;
-import org.openintents.util.ThemeUtils;
+import org.openintents.shopping.theme.ThemeAttributes;
+import org.openintents.shopping.theme.ThemeShoppingList;
+import org.openintents.shopping.theme.ThemeUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -474,7 +474,11 @@ public class ShoppingListView extends ListView {
 	}
 	
 	private boolean setRemoteStyle(String styleName, int size) {
-
+		if (TextUtils.isEmpty(styleName)) {
+			if (debug) Log.e(TAG, "Empty style name: " + styleName);
+			return false;
+		}
+		
 		PackageManager pm = getContext().getPackageManager();
 		
 		String packageName = ThemeUtils.getPackageNameFromStyle(styleName);
@@ -501,100 +505,120 @@ public class ShoppingListView extends ListView {
 			return false;
 		}
 		
-		int[] attr = ThemeUtils.getAttributeIds(c, ThemeShoppingList.ThemeShoppingListAttributes, packageName);
-		
-		TypedArray a = c.obtainStyledAttributes(themeid, attr);
-		
-		mTextTypeface = a.getString(ThemeShoppingList.ID_textTypeface);
-		mCurrentTypeface = null;
-
-		// Look for special cases:
-		if ("monospace".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
-		} else if ("sans".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
-		} else if ("serif".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
-		} else if (!TextUtils.isEmpty(mTextTypeface)) {
-
-			try {
-				Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
-				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
-						mTextTypeface);
-				Log.d(TAG, "Result: " + mCurrentTypeface);
-			} catch (NameNotFoundException e) {
-				Log.e(TAG, "Package not found for Typeface", e);
-			}
-		}
-		
-		mTextUpperCaseFont = a.getBoolean(ThemeShoppingList.ID_textUpperCaseFont, false);
-		
-		mTextColor = a.getColor(ThemeShoppingList.ID_textColor,
-				android.R.color.white);
-		
-		mTextColorPrice = a.getColor(
-				ThemeShoppingList.ID_textColorPrice,
-				android.R.color.white);
-		if (size == 1) {
-			mTextSize = a
-					.getInt(ThemeShoppingList.ID_textSizeSmall, 10);
-		} else if (size == 2) {
-			mTextSize = a.getInt(ThemeShoppingList.ID_textSizeMedium,
-					20);
-		} else {
-			mTextSize = a
-					.getInt(ThemeShoppingList.ID_textSizeLarge, 30);
-		}
-
-		mTextColorChecked = a.getColor(ThemeShoppingList.ID_textColorChecked,
-				android.R.color.white);
-		mShowCheckBox = a.getBoolean(ThemeShoppingList.ID_showCheckBox, true);
-		mShowStrikethrough = a.getBoolean(ThemeShoppingList.ID_textStrikethroughChecked, false);
-		mTextSuffixUnchecked = a.getString(ThemeShoppingList.ID_textSuffixUnchecked);
-		mTextSuffixChecked = a.getString(ThemeShoppingList.ID_textSuffixChecked);
-		
-		if (mThemedBackground != null) {
-			mBackgroundPadding = a.getInteger(ThemeShoppingList.ID_backgroundPadding, -1);
-			if (mBackgroundPadding >=0){
-				mThemedBackground.setPadding(mBackgroundPadding, mBackgroundPadding, mBackgroundPadding, mBackgroundPadding);
-			} else {
-				// 9-patches do the padding automatically
-				// todo clear padding 
-			}
-			try {
-				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				int resid = a.getResourceId(ThemeShoppingList.ID_background, 0);
-				if (resid != 0) {
-					Drawable d = remoteRes.getDrawable(resid);
-					mThemedBackground.setBackgroundDrawable(d);
-				} else {
-					// remove background
-					mThemedBackground.setBackgroundResource(0);
+		try {
+			ThemeAttributes ta = new ThemeAttributes(c, packageName, themeid);
+			
+			mTextTypeface = ta.getString(ThemeShoppingList.textTypeface);
+			mCurrentTypeface = null;
+	
+			// Look for special cases:
+			if ("monospace".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
+			} else if ("sans".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
+			} else if ("serif".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
+			} else if (!TextUtils.isEmpty(mTextTypeface)) {
+	
+				try {
+					Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
+					Resources remoteRes = pm.getResourcesForApplication(packageName);
+					mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
+							mTextTypeface);
+					Log.d(TAG, "Result: " + mCurrentTypeface);
+				} catch (NameNotFoundException e) {
+					Log.e(TAG, "Package not found for Typeface", e);
 				}
-			} catch (NameNotFoundException e) {
-				Log.e(TAG, "Package not found for Theme background.", e);
-			} catch (Resources.NotFoundException e) {
-				Log.e(TAG, "Resource not found for Theme background.", e);
 			}
+			
+			mTextUpperCaseFont = ta.getBoolean(ThemeShoppingList.textUpperCaseFont, false);
+			
+			mTextColor = ta.getColor(ThemeShoppingList.textColor,
+					android.R.color.white);
+			
+			mTextColorPrice = ta.getColor(
+					ThemeShoppingList.textColorPrice,
+					android.R.color.white);
+			if (size == 1) {
+				mTextSize = ta
+						.getDimensionPixelOffset(ThemeShoppingList.textSizeSmall, 10);
+			} else if (size == 2) {
+				mTextSize = ta.getDimensionPixelOffset(ThemeShoppingList.textSizeMedium,
+						20);
+			} else {
+				mTextSize = ta
+						.getDimensionPixelOffset(ThemeShoppingList.textSizeLarge, 30);
+			}
+	
+			mTextColorChecked = ta.getColor(ThemeShoppingList.textColorChecked,
+					android.R.color.white);
+			mShowCheckBox = ta.getBoolean(ThemeShoppingList.showCheckBox, true);
+			mShowStrikethrough = ta.getBoolean(ThemeShoppingList.textStrikethroughChecked, false);
+			mTextSuffixUnchecked = ta.getString(ThemeShoppingList.textSuffixUnchecked);
+			mTextSuffixChecked = ta.getString(ThemeShoppingList.textSuffixChecked);
+			
+			if (mThemedBackground != null) {
+				mBackgroundPadding = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPadding, -1);
+				int backgroundPaddingLeft = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingLeft, mBackgroundPadding);
+				int backgroundPaddingTop = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingTop, mBackgroundPadding);
+				int backgroundPaddingRight = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingRight, mBackgroundPadding);
+				int backgroundPaddingBottom = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingBottom, mBackgroundPadding);
+				try {
+					Resources remoteRes = pm.getResourcesForApplication(packageName);
+					int resid = ta.getResourceId(ThemeShoppingList.background, 0);
+					if (resid != 0) {
+						Drawable d = remoteRes.getDrawable(resid);
+						mThemedBackground.setBackgroundDrawable(d);
+					} else {
+						// remove background
+						mThemedBackground.setBackgroundResource(0);
+					}
+				} catch (NameNotFoundException e) {
+					Log.e(TAG, "Package not found for Theme background.", e);
+				} catch (Resources.NotFoundException e) {
+					Log.e(TAG, "Resource not found for Theme background.", e);
+				}
+				
+				// Apply padding
+				if (mBackgroundPadding >=0 
+						|| backgroundPaddingLeft >= 0 || backgroundPaddingTop >= 0 ||
+						backgroundPaddingRight >= 0 || backgroundPaddingBottom >= 0){
+					mThemedBackground.setPadding(backgroundPaddingLeft, 
+							backgroundPaddingTop, 
+							backgroundPaddingRight,
+							backgroundPaddingBottom);
+				} else {
+					// 9-patches do the padding automatically
+					// todo clear padding 
+				}
+			}
+	
+			int divider = ta.getInteger(ThemeShoppingList.divider, 0);
+			
+			Drawable div = null;
+			if (divider > 0) {
+				div = getResources().getDrawable(divider);
+			} else if (divider < 0) {
+				div = null;
+			} else {
+				div = mDefaultDivider;
+			}
+			
+			setDivider(div);
+			
+			return true;
+			
+		} catch (UnsupportedOperationException e) {
+			// This exception is thrown e.g. if one attempts
+			// to read an integer attribute as dimension.
+			Log.e(TAG, "UnsupportedOperationException", e);
+			return false;
+		} catch (NumberFormatException e) {
+			// This exception is thrown e.g. if one attempts
+			// to read a string as integer.
+			Log.e(TAG, "NumberFormatException", e);
+			return false;
 		}
-
-		int divider = a.getInteger(ThemeShoppingList.ID_divider, 0);
-		
-		a.recycle();
-		
-		Drawable div = null;
-		if (divider > 0) {
-			div = getResources().getDrawable(divider);
-		} else if (divider < 0) {
-			div = null;
-		} else {
-			div = mDefaultDivider;
-		}
-		
-		setDivider(div);
-		
-		return true;
 	}
 	
 

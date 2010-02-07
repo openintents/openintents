@@ -1,4 +1,4 @@
-package org.openintents.util;
+package org.openintents.shopping.theme;
 
 import java.io.IOException;
 import java.util.LinkedList;
