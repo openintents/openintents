@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<style name="Theme.Notepad" parent="@android:style/Theme.Light" >
+	<style name="Theme">
+	</style>
+	<style name="Theme.Notepad" parent="Theme" >
 		<item name="background">?android:background</item>
-		<item name="backgroundPadding">5</item>
-		<item name="divider">0</item>
+		<item name="backgroundPadding">5dip</item>
+		<item name="lineMode">2</item>
+		<item name="lineColor">#FF000080</item>
 		<item name="textTypeface"></item>
 		<item name="textUpperCaseFont">false</item>
-		<item name="textSizeSmall">18</item>
-		<item name="textSizeMedium">23</item>
-		<item name="textSizeLarge">28</item>
+		<item name="textSizeSmall">18dip</item>
+		<item name="textSizeMedium">23dip</item>
+		<item name="textSizeLarge">28dip</item>
 		<item name="textColor">#FF000000</item>
 	</style>
 
 	<style name="Theme.Notepad.Monospaced" parent="Theme.Notepad" >
 		<item name="textTypeface">monospace</item>
+		<item name="lineMode">3</item>
+		<item name="lineColor">#FF008000</item>
 	</style>
 	
 	<style name="Theme.Notepad.Serif" parent="Theme.Notepad" >
 		<item name="textTypeface">serif</item>
+		<item name="lineColor">#FF800000</item>
 	</style>
 </resources>

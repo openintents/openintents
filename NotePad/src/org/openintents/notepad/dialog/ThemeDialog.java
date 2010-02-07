@@ -20,9 +20,9 @@ import java.util.List;
 
 import org.openintents.notepad.PreferenceActivity;
 import org.openintents.notepad.R;
-import org.openintents.util.ThemeNotepad;
-import org.openintents.util.ThemeUtils;
-import org.openintents.util.ThemeUtils.ThemeInfo;
+import org.openintents.notepad.theme.ThemeNotepad;
+import org.openintents.notepad.theme.ThemeUtils;
+import org.openintents.notepad.theme.ThemeUtils.ThemeInfo;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

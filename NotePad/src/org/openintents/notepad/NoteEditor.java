@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2008 OpenIntents.org
+ * Copyright (C) 2008-2010 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,11 +38,12 @@ import org.openintents.notepad.crypto.EncryptActivity;
 import org.openintents.notepad.dialog.ThemeDialog;
 import org.openintents.notepad.dialog.ThemeDialog.ThemeDialogListener;
 import org.openintents.notepad.intents.NotepadInternalIntents;
+import org.openintents.notepad.theme.ThemeAttributes;
+import org.openintents.notepad.theme.ThemeNotepad;
+import org.openintents.notepad.theme.ThemeUtils;
 import org.openintents.notepad.util.ExtractTitle;
 import org.openintents.notepad.util.FileUriUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
-import org.openintents.util.ThemeNotepad;
-import org.openintents.util.ThemeUtils;
 import org.openintents.util.UpperCaseTransformationMethod;
 
 import android.app.Activity;
@@ -92,7 +93,7 @@ import android.widget.Toast;
  */
 public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String TAG = "NoteEditor";
-    private static final boolean debug = false;
+    private static final boolean debug = !false;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -183,6 +184,17 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	public int mTextColor;
 	public int mBackgroundPadding;
 	
+	/**
+	 * Lines mode:
+	 * 0..no line.
+	 * 2..show lines only where there is text (padding width).
+	 * 3..show lines only where there is text (full width).
+	 * 4..show lines for whole page (padding width).
+	 * 5..show lines for whole page (full width).
+	 */
+	public static int mLinesMode;
+	public static int mLinesColor;
+	
     /**
      * A custom EditText that draws lines between each line of text that is displayed.
      */
@@ -197,21 +209,45 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             mRect = new Rect();
             mPaint = new Paint();
             mPaint.setStyle(Paint.Style.STROKE);
-            mPaint.setColor(0x800000FF);
         }
         
         @Override
         protected void onDraw(Canvas canvas) {
-            int count = getLineCount();
-            Rect r = mRect;
-            Paint paint = mPaint;
-
-            for (int i = 0; i < count; i++) {
-                int baseline = getLineBounds(i, r);
-
-                canvas.drawLine(r.left, baseline + 1, r.right, baseline + 1, paint);
-            }
-
+    		boolean fullWidth = (mLinesMode & 1) == 1;
+    		boolean textlines = (mLinesMode & 2) == 2;
+    		boolean pagelines = (mLinesMode & 4) == 4;
+        	if (textlines || pagelines) {
+                mPaint.setColor(mLinesColor);
+        		
+	            int count = getLineCount();
+	            Rect r = mRect;
+	            Paint paint = mPaint;
+	
+	            int height = getHeight();
+	            int line_height = getLineHeight();
+	            int page_size = height / line_height + 1;
+	            
+	            int baseline = 0;
+	            int left = 0;
+	            int right = 0;
+	            for (int i = 0; i < count; i++) {
+	                baseline = getLineBounds(i, r);
+	                left = r.left;
+	                right = r.right;
+	                if (fullWidth) {
+	                	left = getLeft();
+	                	right = getRight();
+	                }
+                	canvas.drawLine(left, baseline + 1, right, baseline + 1, paint);
+	            }
+	            if (pagelines) {
+	            	// Fill the rest of the page with lines
+		            for (int i = count; i < page_size; i++) {
+		            	baseline += line_height;
+		                canvas.drawLine(left, baseline + 1, right, baseline + 1, paint);
+		            }
+	            }
+        	}            
             super.onDraw(canvas);
         }
     }
@@ -1350,7 +1386,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			Log.e(TAG, "Invalid style name: " + styleName);
 			return false;
 		}
-		
+
 		Context c = null;
 		try {
 			c = createPackageContext(packageName, 0);
@@ -1362,97 +1398,124 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		Resources res = c.getResources();
 		
 		int themeid = res.getIdentifier(styleName, null, null);
+		if (debug) Log.d(TAG, "Retrieving theme: " + styleName + ", " + themeid);
 		
 		if (themeid == 0) {
 			Log.e(TAG, "Theme name not found: " + styleName);
 			return false;
 		}
-		
-		int[] attr = ThemeUtils.getAttributeIds(c, ThemeNotepad.ThemeNotepadAttributes, packageName);
-		
-		TypedArray a = c.obtainStyledAttributes(themeid, attr);
-		
-		mTextTypeface = a.getString(ThemeNotepad.ID_textTypeface);
-		mCurrentTypeface = null;
 
-		// Look for special cases:
-		if ("monospace".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
-		} else if ("sans".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
-		} else if ("serif".equals(mTextTypeface)) {
-			mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
-		} else if (!TextUtils.isEmpty(mTextTypeface)) {
-
-			try {
-				if (debug) Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
-				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
-						mTextTypeface);
-				if (debug) Log.d(TAG, "Result: " + mCurrentTypeface);
-			} catch (NameNotFoundException e) {
-				Log.e(TAG, "Package not found for Typeface", e);
-			}
-		}
-		
-		mTextUpperCaseFont = a.getBoolean(ThemeNotepad.ID_textUpperCaseFont, false);
-		
-		mTextColor = a.getColor(ThemeNotepad.ID_textColor,
-				android.R.color.white);
-		
-		if (size == 1) {
-			mTextSize = a
-					.getInt(ThemeNotepad.ID_textSizeSmall, 10);
-		} else if (size == 2) {
-			mTextSize = a.getInt(ThemeNotepad.ID_textSizeMedium,
-					20);
-		} else {
-			mTextSize = a
-					.getInt(ThemeNotepad.ID_textSizeLarge, 30);
-		}
-
-		if (mText != null) {
-			mBackgroundPadding = a.getInteger(ThemeNotepad.ID_backgroundPadding, -1);
-			if (mBackgroundPadding >=0){
-				mText.setPadding(mBackgroundPadding, mBackgroundPadding, mBackgroundPadding, mBackgroundPadding);
-			} else {
-				// 9-patches do the padding automatically
-				// todo clear padding 
-			}
-			try {
-				Resources remoteRes = pm.getResourcesForApplication(packageName);
-				int resid = a.getResourceId(ThemeNotepad.ID_background, 0);
-				if (resid != 0) {
-					Drawable d = remoteRes.getDrawable(resid);
-					mText.setBackgroundDrawable(d);
-				} else {
-					// remove background
-					mText.setBackgroundResource(0);
+		try {
+			ThemeAttributes ta = new ThemeAttributes(c, packageName, themeid);
+			
+			mTextTypeface = ta.getString(ThemeNotepad.textTypeface);
+			if (debug) Log.d(TAG, "textTypeface: " + mTextTypeface);
+			
+			mCurrentTypeface = null;
+	
+			// Look for special cases:
+			if ("monospace".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
+			} else if ("sans".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
+			} else if ("serif".equals(mTextTypeface)) {
+				mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
+			} else if (!TextUtils.isEmpty(mTextTypeface)) {
+	
+				try {
+					if (debug) Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
+					Resources remoteRes = pm.getResourcesForApplication(packageName);
+					mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
+							mTextTypeface);
+					if (debug) Log.d(TAG, "Result: " + mCurrentTypeface);
+				} catch (NameNotFoundException e) {
+					Log.e(TAG, "Package not found for Typeface", e);
 				}
-			} catch (NameNotFoundException e) {
-				Log.e(TAG, "Package not found for Theme background.", e);
-			} catch (Resources.NotFoundException e) {
-				Log.e(TAG, "Resource not found for Theme background.", e);
 			}
-		}
+			
+			mTextUpperCaseFont = ta.getBoolean(ThemeNotepad.textUpperCaseFont, false);
+			
+			mTextColor = ta.getColor(ThemeNotepad.textColor, android.R.color.white);
 
-		int divider = a.getInteger(ThemeNotepad.ID_divider, 0);
-		
-		a.recycle();
-		/*
-		Drawable div = null;
-		if (divider > 0) {
-			div = getResources().getDrawable(divider);
-		} else if (divider < 0) {
-			div = null;
-		} else {
-			div = mDefaultDivider;
+			if (debug) {
+				Log.d(TAG, "textColor: " + mTextColor);
+			}
+			
+			if (size == 1) {
+				mTextSize = ta
+						.getDimensionPixelOffset(ThemeNotepad.textSizeSmall, 10);
+			} else if (size == 2) {
+				mTextSize = ta.getDimensionPixelOffset(ThemeNotepad.textSizeMedium,
+						20);
+			} else {
+				mTextSize = ta
+						.getDimensionPixelOffset(ThemeNotepad.textSizeLarge, 30);
+			}
+			if (debug) Log.d(TAG, "textSize: " + mTextSize);
+			
+			if (mText != null) {
+				mBackgroundPadding = ta.getDimensionPixelOffset(ThemeNotepad.backgroundPadding, -1);
+				int backgroundPaddingLeft = ta.getDimensionPixelOffset(ThemeNotepad.backgroundPaddingLeft, mBackgroundPadding);
+				int backgroundPaddingTop = ta.getDimensionPixelOffset(ThemeNotepad.backgroundPaddingTop, mBackgroundPadding);
+				int backgroundPaddingRight = ta.getDimensionPixelOffset(ThemeNotepad.backgroundPaddingRight, mBackgroundPadding);
+				int backgroundPaddingBottom = ta.getDimensionPixelOffset(ThemeNotepad.backgroundPaddingBottom, mBackgroundPadding);
+				
+				if (debug) {
+					Log.d(TAG, "Padding: " + mBackgroundPadding + "; " + 
+							backgroundPaddingLeft + "; " + 
+							backgroundPaddingTop + "; " + 
+							backgroundPaddingRight + "; " + 
+							backgroundPaddingBottom + "; ");
+				}
+				
+				try {
+					Resources remoteRes = pm.getResourcesForApplication(packageName);
+					int resid = ta.getResourceId(ThemeNotepad.background, 0);
+					if (resid != 0) {
+						Drawable d = remoteRes.getDrawable(resid);
+						mText.setBackgroundDrawable(d);
+					} else {
+						// remove background
+						mText.setBackgroundResource(0);
+					}
+				} catch (NameNotFoundException e) {
+					Log.e(TAG, "Package not found for Theme background.", e);
+				} catch (Resources.NotFoundException e) {
+					Log.e(TAG, "Resource not found for Theme background.", e);
+				}
+				
+				// Apply padding
+				if (mBackgroundPadding >=0 
+						|| backgroundPaddingLeft >= 0 || backgroundPaddingTop >= 0 ||
+						backgroundPaddingRight >= 0 || backgroundPaddingBottom >= 0){
+					mText.setPadding(backgroundPaddingLeft, 
+							backgroundPaddingTop, 
+							backgroundPaddingRight,
+							backgroundPaddingBottom);
+				} else {
+					// 9-patches do the padding automatically
+					// todo clear padding 
+				}
+			}
+	
+			mLinesMode = ta.getInteger(ThemeNotepad.lineMode, 2);
+			mLinesColor = ta.getColor(ThemeNotepad.lineColor, 0xFF000080);
+
+			if (debug) Log.d(TAG, "line color: " + mLinesColor);
+			
+			return true;
+			
+		} catch (UnsupportedOperationException e) {
+			// This exception is thrown e.g. if one attempts
+			// to read an integer attribute as dimension.
+			Log.e(TAG, "UnsupportedOperationException", e);
+			return false;
+		} catch (NumberFormatException e) {
+			// This exception is thrown e.g. if one attempts
+			// to read a string as integer.
+			Log.e(TAG, "NumberFormatException", e);
+			return false;
 		}
-		
-		setDivider(div);
-		*/
-		
-		return true;
 	}
 	
 	private void applyTheme() {
