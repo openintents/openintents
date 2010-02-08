@@ -18,12 +18,23 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.themes.basiccolors"
       android:versionCode="1"
-      android:versionName="1.0">
+      android:versionName="1.0-rc1">
+	<!-- History:
+	[1] 1.0-rc1: 2010-02-08 -->
     <uses-sdk android:minSdkVersion="2"
     	android:targetSdkVersion="4" />
     	
+    <supports-screens android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true" />     
+    	
     <application android:icon="@drawable/icon" android:label="@string/app_name">
 
+        <!-- aTrackDog metadata -->
+        <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
+           android:value="1" />
+        
+        <!-- Theme definitions -->
 	    <meta-data android:name="org.openintents.themes"
 	        android:resource="@xml/themes"
 	      />
