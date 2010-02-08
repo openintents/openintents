@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008-2009 OpenIntents.org                                  *
+ * Copyright (C) 2008-2010 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -24,10 +24,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.1
-date: 2009-??
+date: 2010-??
 
 - translations: Dutch, French, German, Korean,
-  Lao, Portugese, Romanian, Spanish
+  Lao, Portugese, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.1.0

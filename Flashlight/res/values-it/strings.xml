@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Cassius Umbra https://launchpad.net/~cassius-umbra
+  Diego Pierotto https://launchpad.net/~gringo
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- ***************************
@@ -22,24 +23,24 @@
     
     
 	<!-- Update -->
-	<string name="update_available">Una nuova versione di OI Torcia è disponibile.\n%s\nVuoi effettuare l'aggionamento?</string>
+	<string name="update_available">Una nuova versione di OI Torcia è disponibile.\n%s\nVuoi effettuare l\'aggiornamento?</string>
 	<string name="market_not_available">Android Market non disponibile.</string>
 	<string name="market_search_term">OI Torcia</string>
 
 	<!-- About -->
-	<string name="about">Informazioni</string>
-	<string name="about_title">Informazioni</string>
-	<string name="about_text">Versione %s \n\n OpenIntents Torcia ti aiuta a trovare la strada nel buio. Mentre l'applicazione è attiva, la luce dello schermo rimane accesa.\n\n OpenIntents permette a diverse applicazioni Android di scambiarsi dati usando intents e open interfaces.\n\n Per ulteriori informazioni e fantastiche applicazioni visita OpenIntents su www.openintents.org</string>
+	<string name="about">Info</string>
+	<string name="about_title">Info %s</string>
+	<string name="about_text">Versione %s \n\n OpenIntents Torcia ti aiuta a trovare la strada nel buio. Mentre l\'applicazione è attiva, la luce dello schermo rimane accesa.\n\n OpenIntents permette a diverse applicazioni Android di scambiarsi dati usando intenti e interfacce aperte.\n\n Per ulteriori informazioni e fantastiche applicazioni visita OpenIntents su www.openintents.org</string>
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Torcia EULA</string>
-	<string name="eula_accept">Accetta</string>
+	<string name="eula_title">EULA OI Torcia</string>
+	<string name="eula_accept">Accetto</string>
 	<string name="eula_refuse">Annulla</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Cerca aggiornamenti</string>
-    <string name="update_box_text">Ricerca manualmente gli aggiornamenti o installa OI Update per le notifiche automatiche. Versione corrente: %s</string>
-	<string name="update_check_now">Cerca adesso</string>
-	<string name="update_get_updater">Scarica OI Updater</string>
-	<string name="update_error">Il download dell'applicazione non è disponibile.</string>
+	<string name="update_menu">Controlla aggiornamenti</string>
+    <string name="update_box_text">Controlla manualmente gli aggiornamenti o installa OI Aggiornamenti per le notifiche automatiche. Versione attuale: %s</string>
+	<string name="update_check_now">Controlla adesso.</string>
+	<string name="update_get_updater">Scarica OI Aggiornamenti.</string>
+	<string name="update_error">Scaricamento dell\'applicazione non disponibile.</string>
 </resources>

@@ -24,6 +24,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
     <!-- Strings for OI About -->
@@ -62,8 +63,8 @@
     <string name="category_personal">Личный</string>
     <string name="name">Имя</string>
     <string name="category_not_empty">В категории что-то есть. Сначала удалите содержимое.</string>
-	<string name="cannot_decrypt_category">Не могу расшифровать категорию</string>
-	<string name="cannot_decrypt_password">Не могу расшифровать пароль</string>
+	<string name="cannot_decrypt_category">Невозможно расшифровать категорию</string>
+	<string name="cannot_decrypt_password">Невозможно расшифровать пароль</string>
 	<string name="error_export">Ошибка экспорта базы данных</string>
 	<string name="export_database">Экспортировать базу данных</string>
 	<string name="export_msg">База данных будет экспортирована как простой текст. ЭТО ОЧЕНЬ ОПАСНО. Не забудьте удалить файл. Вы уверены, что хотите экспортировать?</string>

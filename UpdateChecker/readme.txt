@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008  OpenIntents.org
+ * Copyright (C) 2008-2010 OpenIntents.org
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,10 +27,10 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2009-??-??
+date: 2010-??-??
 
 - translations: Dutch, Faroese, French, German, Japanese,
-  Korean, Romanian, Spanish
+  Korean, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.0.2

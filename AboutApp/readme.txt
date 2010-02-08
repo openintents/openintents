@@ -30,9 +30,9 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2009-??
+date: 2010-??
 
-- translations: Korean, Romanian
+- translations: Korean, Romanian, Russian
 
 ---------------------------------------------------------
 release: 1.0.2

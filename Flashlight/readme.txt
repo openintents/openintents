@@ -22,9 +22,9 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.5
-date: 2009-?
+date: 2010-?
 - translations: Dutch, French, German, Italian, Korean,
-  Lao, Romanian, Spanish
+  Lao, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.0.4
