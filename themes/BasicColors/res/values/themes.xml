@@ -20,7 +20,7 @@
 	</style>
 	<style name="Theme.BasicColors" parent="Theme" >
 		<item name="background">@drawable/red</item>
-		<item name="backgroundPadding">5dip</item>
+		<item name="backgroundPadding">0dip</item>
 		<item name="lineMode">2</item>
 		<item name="lineColor">#FF800000</item>
 		<item name="textTypeface">sans</item>
@@ -54,9 +54,12 @@
 		<item name="textColorChecked">#FF606080</item>
 	</style>
 	<style name="Theme.BasicColors.Red.Notepad">
+		<item name="backgroundPadding">5dip</item>
 	</style>
 	<style name="Theme.BasicColors.Green.Notepad">
+		<item name="backgroundPadding">5dip</item>
 	</style>
 	<style name="Theme.BasicColors.Blue.Notepad">
+		<item name="backgroundPadding">5dip</item>
 	</style>
 </resources>
