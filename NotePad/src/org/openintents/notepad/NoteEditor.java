@@ -113,6 +113,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     
     // This is our state data that is stored when freezing.
     private static final String BUNDLE_ORIGINAL_CONTENT = "original_content";
+    private static final String BUNDLE_UNDO_REVERT = "undo_revert";
     private static final String BUNDLE_STATE = "state";
     private static final String BUNDLE_URI = "uri";
     private static final String BUNDLE_SELECTION_START = "selection_start";
@@ -157,6 +158,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private Cursor mCursor;
     private EditText mText;
     private String mOriginalContent;
+    private String mUndoRevert;
     private int mSelectionStart;
     private int mSelectionStop;
     
@@ -287,6 +289,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         // get the original text it started with.
         if (savedInstanceState != null) {
             mOriginalContent = savedInstanceState.getString(BUNDLE_ORIGINAL_CONTENT);
+            mUndoRevert = savedInstanceState.getString(BUNDLE_UNDO_REVERT);
             mState = savedInstanceState.getInt(BUNDLE_STATE);
             mUri = Uri.parse(savedInstanceState.getString(BUNDLE_URI));
             mSelectionStart = savedInstanceState.getInt(BUNDLE_SELECTION_START);
@@ -702,6 +705,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     	if (debug) Log.d(TAG, "Selection " + mSelectionStart + " - " + mSelectionStop + " for text : " + mFileContent);
     	
         outState.putString(BUNDLE_ORIGINAL_CONTENT, mOriginalContent);
+        outState.putString(BUNDLE_UNDO_REVERT, mUndoRevert);
         outState.putInt(BUNDLE_STATE, mState);
         outState.putString(BUNDLE_URI, mUri.toString());
         outState.putInt(BUNDLE_SELECTION_START, mSelectionStart);
@@ -997,7 +1001,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     		menu.findItem(MENU_SAVE).setEnabled(contentChanged);
     	} else {
     		// Menus for internal notes
-        	menu.setGroupVisible(0, contentChanged);
+        	menu.setGroupVisible(0, contentChanged || mUndoRevert != null);
     		menu.setGroupVisible(1, true);
     		menu.setGroupVisible(2, false);
     		
@@ -1017,10 +1021,10 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             finish();
             break;
         case MENU_DISCARD:
-            cancelNote();
+            revertNote();
             break;
         case MENU_REVERT:
-            cancelNote();
+            revertNote();
             break;
         case MENU_ENCRYPT:
         	encryptNote(true);
@@ -1081,30 +1085,23 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 	}
 
     /**
-     * Take care of canceling work on a note.  Deletes the note if we
-     * had created it, otherwise reverts to the original text.
+     * Reverts to the original text, or undoes revert.
      */
-    private final void cancelNote() {
+    private final void revertNote() {
         if (mCursor != null) {
         	String tmp = mText.getText().toString();
-        	//if (mState == STATE_EDIT) {
-                // Put the original note text back into the database
-                //mCursor.close();
-                //mCursor = null;
-                //ContentValues values = new ContentValues();
-                //values.put(Notes.NOTE, mOriginalContent);
-                //getContentResolver().update(mUri, values, null, null);
-
-        		mText.setAutoLinkMask(0);
-            	mText.setTextKeepState(mOriginalContent);
-            	int autolink = PreferenceActivity.getAutoLinkFromPreference(this);
-    	        mText.setAutoLinkMask(autolink);
-            //} else if (mState == STATE_INSERT) {
-                // We inserted an empty note, make sure to delete it
-                //deleteNote();
-                //mText.setText("");
-            //}
-        	mOriginalContent = tmp;
+    		mText.setAutoLinkMask(0);
+    		if (! tmp.equals(mOriginalContent)) {
+    			// revert to original content
+    			mText.setTextKeepState(mOriginalContent);
+    			mUndoRevert = tmp;
+    		} else if (mUndoRevert != null) {
+    			// revert to original content
+    			mText.setTextKeepState(mUndoRevert);
+    			mUndoRevert = null;
+    		}
+        	int autolink = PreferenceActivity.getAutoLinkFromPreference(this);
+	        mText.setAutoLinkMask(autolink);
         }
         //mCursor.requery();
         //setResult(RESULT_CANCELED);

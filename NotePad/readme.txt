@@ -35,6 +35,9 @@ date: 2009-??
 - new preference for font size.
 - support external themes.
 - set theme optionally for all lists.
+- fix bugs with encrypted notes:
+  revert menu and extensions like OI Insert date
+- fix revert menu button logic
 - translations: Finnish, Italian, Korean, Lao, Romanian, 
   Russian
 
