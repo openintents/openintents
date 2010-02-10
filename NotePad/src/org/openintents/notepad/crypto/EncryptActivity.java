@@ -93,6 +93,13 @@ public class EncryptActivity extends Activity {
 		// Failed, unless set later to be successful.
 		setResult(RESULT_CANCELED);
 		
+		boolean contentUnchanged = i.getBooleanExtra(PrivateNotePadIntents.EXTRA_CONTENT_UNCHANGED, false);
+		if (contentUnchanged) {
+			// No need to actually encrypt, because content was not modified.
+			finish();
+			return;
+		}
+		
 		// action should be either ENCRYPT or DECRYPT
 		if (!action.equals(CryptoIntents.ACTION_ENCRYPT) 
 				&& !action.equals(CryptoIntents.ACTION_DECRYPT) ) {

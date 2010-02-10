@@ -751,9 +751,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
                             if ( cursor.moveToFirst() ) {
                                 oldText = cursor.getString(0);
                             }
-	                    // Bump the modification time to now.
-                            if ( ! oldText.equals(text) ) {
-	                    values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
+	                        if ( ! oldText.equals(text) ) {
+	                        	// Bump the modification time to now.
+	                            values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
                             }
 	                    
 	                    String title = ExtractTitle.extractTitle(text);
@@ -813,6 +813,10 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
 			i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
 			i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
+			if (text.equals(mOriginalContent)) {
+				// No need to encrypt, content was not modified.
+				i.putExtra(PrivateNotePadIntents.EXTRA_CONTENT_UNCHANGED, true);
+			}
 			startActivity(i);
 
 			// Remove knowledge of the decrypted note.
