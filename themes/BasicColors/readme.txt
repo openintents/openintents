@@ -23,7 +23,7 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.0
-date: 2010-??
+release: 1.0.0-rc1
+date: 2010-02-11
 - 3 themes: red, green, blue.
 - support for OI Notepad and OI Shopping List.
