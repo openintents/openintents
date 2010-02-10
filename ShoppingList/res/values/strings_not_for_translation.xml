@@ -19,8 +19,8 @@
 	<!-- ***************************
 	     About information
 	     *************************** -->
-	<string name="about_copyright">Copyright © 2008-2009 OpenIntents</string>
-	<string name="about_website_url">http://www.openintents.org/en/node/19</string>
+	<string name="about_copyright">Copyright © 2008-2010 OpenIntents</string>
+	<string name="about_website_url">http://www.openintents.org/en/shoppinglist</string>
 	<string name="about_email">support@openintents.org</string>
 	
 	<string-array name="about_authors"><!-- Add your name here if you helped out -->
@@ -51,7 +51,7 @@
 	
 	<!-- Update -->
 	<string name="update_app_url">market://search?q=pname:org.openintents.shopping</string>
-    <string name="update_app_developer_url">http://www.openintents.org/en/node/19</string><!-- 19 = OI Shopping list -->
+    <string name="update_app_developer_url">http://www.openintents.org/en/shoppinglist</string><!-- OI Shopping list -->
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
     <string name="update_checker_developer_url">http://www.openintents.org/en/node/203</string><!-- 203 = OI Update -->
 	

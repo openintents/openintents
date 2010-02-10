@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
- * Copyright (C) 2007-2008 OpenIntents.org
+ * Copyright (C) 2007-2010 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,8 +21,8 @@
 	     *************************** -->
 
     <!-- Strings for OI About -->
-	<string name="about_copyright">Copyright © 2008-2009 OpenIntents</string>
-	<string name="about_website_url">http://www.openintents.org/en/node/129</string>
+	<string name="about_copyright">Copyright © 2008-2010 OpenIntents</string>
+	<string name="about_website_url">http://www.openintents.org/en/notepad</string>
 	<string name="about_email">support@openintents.org</string>
 	
 	
@@ -49,7 +49,7 @@
 	     *************************** -->
 	<!-- Update -->
 	<string name="update_app_url">market://search?q=pname:org.openintents.notepad</string>
-    <string name="update_app_developer_url">http://www.openintents.org/en/node/129</string><!-- 129 = OI Notepad -->
+    <string name="update_app_developer_url">http://www.openintents.org/en/notepad</string><!-- OI Notepad -->
 	<string name="update_checker_url">market://search?q=pname:org.openintents.updatechecker</string>
     <string name="update_checker_developer_url">http://www.openintents.org/en/node/203</string><!-- 203 = OI Update -->
 	
@@ -59,11 +59,11 @@
     
     <!-- File Manager -->
     <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
-    <string name="filemanager_developer_uri">http://www.openintents.org/en/node/159</string><!-- 159 = OI File Manager -->
+    <string name="filemanager_developer_uri">http://www.openintents.org/en/filemanager</string><!-- OI File Manager -->
 	
 	<!-- Safe -->
     <string name="safe_market_uri">market://search?q=pname:org.openintents.safe</string>
-    <string name="safe_developer_uri">http://www.openintents.org/en/node/205</string><!-- 205 = OI Safe -->
+    <string name="safe_developer_uri">http://www.openintents.org/en/safe</string><!-- OI Safe -->
 	
 	<!-- ***************************
 	     Preferences
