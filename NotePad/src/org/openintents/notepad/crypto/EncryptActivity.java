@@ -3,10 +3,10 @@ package org.openintents.notepad.crypto;
 import org.openintents.distribution.GetFromMarketDialog;
 import org.openintents.distribution.RD;
 import org.openintents.intents.CryptoIntents;
+import org.openintents.notepad.NoteEditor;
 import org.openintents.notepad.PrivateNotePadIntents;
 import org.openintents.notepad.R;
 import org.openintents.notepad.NotePad.Notes;
-import org.openintents.notepad.filename.DialogHostingActivity;
 import org.openintents.notepad.filename.FilenameDialog;
 import org.openintents.util.IntentUtils;
 
@@ -37,12 +37,53 @@ public class EncryptActivity extends Activity {
     
 	private static final int REQUEST_CODE_ENCRYPT_OR_UNENCRYPT = 1;
 	
+	/**
+	 * Quick hack:
+	 * Order on screen orientation is:
+	 *  1) on Pause
+	 *  2) on resume
+	 *     -> decrypt
+	 *  3) form 1) encrypt
+	 *  An older note is decrypted, a newer note is encrypted.
+	 *  In order to prevent this, delete mDecyptedRext only when this activity is called.
+	 */
+	private static int sPendingEncryptActivities = 0;
+	
+	private static boolean sCancelEncrypt = false;
+	
+	public static void confirmEncryptActivityCalled() {
+		sPendingEncryptActivities++;
+	}
+	
+	public static int getPendingEncryptActivities() {
+		return sPendingEncryptActivities;
+	}
+
+	public static void cancelEncrypt() {
+		if (debug) Log.d(TAG, "cancelEncrypt");
+		sCancelEncrypt = true;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		if (debug) Log.d(TAG, "EncryptActivity: onCreate");
+		
+		sPendingEncryptActivities--;
+		
+		if (sCancelEncrypt) {
+			if (debug) Log.d(TAG, "encryption cancelled");
+			sCancelEncrypt = false;
+			setResult(RESULT_CANCELED);
+			finish();
+			return;
+		}
+		
+		if (debug) Log.d(TAG, "delete static decrypted text");
+		NoteEditor.deleteStaticDecryptedText();
+		
 		
 		Intent i = getIntent();
 
@@ -151,7 +192,8 @@ public class EncryptActivity extends Activity {
                 }
                 
                 getContentResolver().update(uri, values, null, null);
-
+                getContentResolver().notifyChange(uri, null);
+                
         		setResult(RESULT_OK);
         		
                 // we are done

@@ -43,7 +43,7 @@ import android.util.Xml;
  */
 public class ThemeUtils {
 	private static final String TAG = "ThemeUtils";
-	private static final boolean debug = !false;
+	private static final boolean debug = false;
 	
 	public static final String METADATA_THEMES = "org.openintents.themes";
 	

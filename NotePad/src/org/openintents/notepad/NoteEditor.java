@@ -59,7 +59,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -93,7 +92,7 @@ import android.widget.Toast;
  */
 public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String TAG = "NoteEditor";
-    private static final boolean debug = !false;
+    private static final boolean debug = false;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -118,7 +117,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private static final String BUNDLE_URI = "uri";
     private static final String BUNDLE_SELECTION_START = "selection_start";
     private static final String BUNDLE_SELECTION_STOP = "selection_stop";
-    private static final String BUNDLE_FILENAME = "filename";
+//    private static final String BUNDLE_FILENAME = "filename";
     private static final String BUNDLE_FILE_CONTENT = "file_content";
     private static final String BUNDLE_APPLY_TEXT = "apply_text";
     private static final String BUNDLE_APPLY_TEXT_BEFORE = "apply_text_before";
@@ -171,9 +170,18 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     private long mEncrypted;
     private String mDecryptedText;
     
+    /**
+     * static string for hack.
+     * Only used for configuration changes.
+     */
+    private static String sDecryptedText = null;
+    private static int sSelectionStart = 0;
+    private static int sSelectionStop = 0;
+    
+    
     private String mFileContent;
     
-    private String mTags;
+//    private String mTags;
     
     private String mTheme;
     
@@ -258,7 +266,20 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         
         if (debug) Log.d(TAG, "onCreate()");
         
-        mDecryptedText = null;
+        // Usually, sDecryptedText == null.
+        mDecryptedText = sDecryptedText;
+        if (sDecryptedText != null) {
+        	// we use the text right now, 
+        	// so don't encrypt the text anymore.
+        	EncryptActivity.cancelEncrypt();
+        	
+        	if (EncryptActivity.getPendingEncryptActivities() == 0) {
+                if (debug) Log.d(TAG, "sDecryptedText = null");
+        		// no more encrypt activies will be called
+        		sDecryptedText = null;
+        	}
+        }
+        
         mSelectionStart = 0;
         mSelectionStop = 0;
 
@@ -500,6 +521,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         super.onResume();
         if (debug) Log.d(TAG, "onResume");
         
+        if (debug) Log.d(TAG, "mDecrypted: " + mDecryptedText);
+        
         // Set auto-link on or off, based on the current setting.
         int autoLink = PreferenceActivity.getAutoLinkFromPreference(this);
      
@@ -592,6 +615,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             } else {
             	if (mDecryptedText != null) {
             		// Text had already been decrypted, use that:
+            		if (debug) Log.d(TAG, "set decrypted text as mText: " + mDecryptedText);
             		mText.setTextKeepState(mDecryptedText);
             		// keep state does not work, so we have to do it manually:
             		mText.setSelection(mSelectionStart, mSelectionStop);
@@ -599,6 +623,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
             		setFeatureDrawableResource(Window.FEATURE_RIGHT_ICON, android.R.drawable.ic_lock_idle_lock);
             	} else {
             		// Decrypt note
+            		if (debug) Log.d(TAG, "Decrypt note: " + note);
             		
             		// Overwrite mText because it may contain unencrypted note
             		// from savedInstanceState.
@@ -666,13 +691,15 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
     	if (debug) Log.d(TAG, "onSaveInstanceState");
-    	if (debug) Log.d(TAG, "file content: " + mFileContent);
+    	//if (debug) Log.d(TAG, "file content: " + mFileContent);
     	
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
     	mSelectionStart = mText.getSelectionStart();
     	mSelectionStop = mText.getSelectionEnd();
     	mFileContent = mText.getText().toString();
+    	
+    	if (debug) Log.d(TAG, "Selection " + mSelectionStart + " - " + mSelectionStop + " for text : " + mFileContent);
     	
         outState.putString(BUNDLE_ORIGINAL_CONTENT, mOriginalContent);
         outState.putInt(BUNDLE_STATE, mState);
@@ -778,18 +805,33 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 		if (!encryptTags) {
 			tags = null;
 		}
-        
-		Intent i = new Intent(this, EncryptActivity.class);
-		i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
-		i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
-		i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
-		startActivity(i);
 		
-		// Remove knowledge of the decrypted note.
-		// If encryption fails because one has been locked out, (another) user
-		// should not be able to see note again from cache.
-		mDecryptedText = null;
-		mText.setText(R.string.encrypted);
+		if (debug) Log.d(TAG, "encrypt note: " + text);
+		
+		if (EncryptActivity.getPendingEncryptActivities() == 0) {
+			Intent i = new Intent(this, EncryptActivity.class);
+			i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
+			i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
+			i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
+			startActivity(i);
+
+			// Remove knowledge of the decrypted note.
+			// If encryption fails because one has been locked out, (another) user
+			// should not be able to see note again from cache.
+			if (debug) Log.d(TAG, "using static decrypted text: " + text);
+			sDecryptedText = text;
+			mDecryptedText = null;
+			EncryptActivity.confirmEncryptActivityCalled();
+			mText.setText(R.string.encrypted);
+		} else {
+			// encrypt already called
+		}
+		
+	}
+	
+	public static void deleteStaticDecryptedText() {
+		if (debug) Log.d(TAG, "deleting decrypted text: " + sDecryptedText);
+		sDecryptedText = null;
 	}
 	
 	/**
@@ -1613,7 +1655,9 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     				return;
     			}
 
+    			if (debug) Log.d(TAG, "decrypted text received: " + decryptedText);
     	    	mDecryptedText = decryptedText;
+    	    	mOriginalContent = decryptedText;
 	            
     		} else {
     			Toast.makeText(this,
