@@ -84,7 +84,7 @@
 	<string name="tags">Stichworte</string>
 	<string name="price">Preis</string>
 	<string name="item">Posten</string>
-	<string name="quantity">Quantity</string>
+	<string name="quantity">Menge</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
 	<string name="total">Summe: %s</string>
@@ -111,14 +111,14 @@
 	<string name="theme_default">Standard</string>
 	<string name="theme_classic">Klassik</string>
 	<string name="theme_bugdroid">Android</string>
-	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
-	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
+	<string name="theme_classic_export">Klassisch (von OI Einkaufsliste)</string>
+	<string name="theme_bugdroid_export">Android (von OI Einkaufsliste)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Abbrechen</string>
-	<string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+	<string name="use_theme_for_all_lists">Dieses Design für alle Listen verwenden</string>
+	<string name="get_more_themes">Neue Designs herunterladen</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Einstellungen</string>
@@ -144,7 +144,7 @@
 	<string name="preference_showprice_summary">Wird als separate Spalte in der Liste angezeigt</string>
 	<string name="preference_showtags_title">Stichworte anzeigen</string>
 	<string name="preference_showtags_summary">Wird als separate Spalte in der Liste angezeigt</string>
-	<string name="preference_showquantity_title">Show quantity</string>
+	<string name="preference_showquantity_title">Menge anzeigen</string>
 	<string name="preference_showquantity_summary">Wird als separate Spalte in der Liste angezeigt</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->
@@ -161,17 +161,17 @@
     
     <string name="preference_appearance">Erscheinung</string>
     
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_addons">Erweiterungen</string>
+    <string name="preference_get_addons">Neue Erweiterungen herunterladen</string>
+    <string name="preference_get_addons_summary">Online nach Erweiterungen und Designs suchen.</string>
+    <string name="preference_get_market_addons">Erweiterungen vom Market herunterladen</string>
+    <string name="preference_get_developer_addons">Erweiterungen von OpenIntents herunterladen</string>
     <string name="preference_extensions">Erweiterungen</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_themes">Designs</string>
     <string name="preference_market_extensions_summary">Nach Erweiterungen auf Android Market suchen</string>
-    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_market_themes_summary">Nach Designs auf Android Market suchen.</string>
     <string name="preference_developer_extensions_summary">Erweiterungen von der OpenIntents Webseite erhalten</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Nach Designs auf der OpenIntents Homepage suchen.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -187,7 +187,7 @@
 	<string name="update_check_now">Jetzt prüfen.</string>
 	<string name="update_get_updater">OI Update herunterladen</string>
 	<string name="update_error">Anwendung zum Herunterladen nicht verfügbar.</string>
-	<string name="update">Keine Anwendung zum Herunterladen verfügbar.</string>
+	<string name="update">Nach Updates suchen</string>
 
 	<!-- About -->
 	<string name="about">Info</string>

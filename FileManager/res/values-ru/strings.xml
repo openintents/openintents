@@ -21,6 +21,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
     <string name="about_comments">OI File Manager - открытый менеджер файлов интегрирующийся с дргими приложениями.</string>  

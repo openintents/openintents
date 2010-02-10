@@ -108,30 +108,30 @@
     <string name="button_save">Speichern</string>
     <string name="button_dont_save">Nicht speichern</string>
     
-	<string name="menu_theme">Theme</string>
-	<string name="theme_pick">Pick a theme</string>
-    <string name="theme_default">Default </string>
-    <string name="theme_monospaced">Monospaced font</string>
-	<string name="theme_serif">Serif font</string>
+	<string name="menu_theme">Design</string>
+	<string name="theme_pick">Design wählen</string>
+    <string name="theme_default">Standard</string>
+    <string name="theme_monospaced">Nichtproportionale Schrift</string>
+	<string name="theme_serif">Serifenschrift</string>
 
 	<!-- Search -->
-	<string name="menu_search">Search</string>
+	<string name="menu_search">Suche</string>
     <string name="search_query_results">OI Notizblock</string>
     <!-- %s is the search string -->
-	<string name="search_found_no_results">No results found for %s.</string>
-    <string name="search_label">OI Notepad search</string>
-    <string name="search_hint">Search</string>
+	<string name="search_found_no_results">Keine Ergebnisse für %s gefunden.</string>
+    <string name="search_label">OI Notizblock Suche</string>
+    <string name="search_hint">Suche</string>
     
     <!-- The description that will show up in the search settings for this source.  -->
-    <string name="search_settings_description">Titles of your notes</string>
+    <string name="search_settings_description">Überschriften Ihrer Notizen</string>
     
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Ablehnen</string>
-    <string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+    <string name="use_theme_for_all_lists">Dieses Design für alle Notizen verwenden.</string>
+	<string name="get_more_themes">Neue Designs herunterladen</string>
     
-    <string name="all_notes">All notes</string>
+    <string name="all_notes">Alle Notizen</string>
     
     <!-- Settings -->
     <string name="noteslist_preferences">Liste von Notizen</string>
@@ -140,9 +140,9 @@
     <string name="preference_sortorder_summary">Bestimmt die Reihenfolge, in der Notizen angezeigt werden.</string>
     
     <string name="note_editor_preferences">Notiz Editor</string>
-    <string name="preference_fontsize">Font size</string>
-	<string name="preference_fontsize_summary">Change font size</string>
-	<string name="preference_fontsize_dialog_title">Choose font size</string>
+    <string name="preference_fontsize">Schriftgröße</string>
+	<string name="preference_fontsize_summary">Schriftgröße ändern</string>
+	<string name="preference_fontsize_dialog_title">Wählen Sie die Schriftgröße</string>
 	<string name="preference_autolink_title">Links automatisch erstellen</string>
     <string name="preference_autolink_summary_on">Erstelle Links für Telefonnummern, Email- und Web- sowie Post-Adressen</string>
     <string name="preference_autolink_summary_off">Erstelle keine Links zu Notizen</string>
@@ -217,22 +217,22 @@ Aktuelle Version: %s</string>
 
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: small font size -->
-        <item>Small</item>
+        <item>Klein</item>
     	<!-- Preference fontsize: default font size-->
-    	<item>Default</item>
+    	<item>Standard</item>
     	<!-- Preference fontsize: large font size -->
-        <item>Large</item>
+        <item>Groß</item>
     </string-array>
 
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_addons">Erweiterungen</string>
+    <string name="preference_get_addons">Neue Erweiterungen herunterladen</string>
+    <string name="preference_get_addons_summary">Online nach Erweiterungen und Designs suchen.</string>
+    <string name="preference_get_market_addons">Erweiterungen vom Market herunterladen</string>
+    <string name="preference_get_developer_addons">Erweiterungen von OpenIntents herunterladen</string>
     <string name="preference_extensions">Erweiterungen</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_themes">Designs</string>
     <string name="preference_market_extensions_summary">Nach Erweiterungen auf Android Market suchen</string>
-    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_market_themes_summary">Nach Designs auf Android Market suchen.</string>
     <string name="preference_developer_extensions_summary">Erweiterungen von der OpenIntents Homepage herunterladen</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Nach Designs auf der OpenIntents Homepage suchen.</string>
 </resources>
