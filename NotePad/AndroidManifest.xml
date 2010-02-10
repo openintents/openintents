@@ -24,11 +24,11 @@
      to come from a domain that you own or have control over. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.notepad"
-	android:versionName="1.1.4-beta1"
+	android:versionName="1.1.4-rc1"
 	android:versionCode="10059"
 	>
 	<!-- History:
-	[10059] 1.1.4-beta1: ?
+	[10059] 1.1.4-rc1:   2010-02-11
 	[10058] 1.1.3:       2009-11-11
 	[10057] 1.1.3-rc1:   2009-10-26
 	[10056] 1.1.2        2009-10-15
