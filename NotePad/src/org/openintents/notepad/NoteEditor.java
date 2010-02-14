@@ -268,6 +268,11 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         
         if (debug) Log.d(TAG, "onCreate()");
         
+        if (savedInstanceState == null) {
+        	// sDecryptedText has no use for brand new activities
+        	sDecryptedText = null;
+        }
+        
         // Usually, sDecryptedText == null.
         mDecryptedText = sDecryptedText;
         if (sDecryptedText != null) {
@@ -805,6 +810,8 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
         String title = ExtractTitle.extractTitle(text);
         String tags = getTags();
 		//Log.i(TAG, "encrypt tags: " + tags);
+
+    	boolean isNoteEncrypted = !isNoteUnencrypted();
 		
 		if (!encryptTags) {
 			tags = null;
@@ -817,7 +824,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			i.putExtra(PrivateNotePadIntents.EXTRA_ACTION, CryptoIntents.ACTION_ENCRYPT);
 			i.putExtra(CryptoIntents.EXTRA_TEXT_ARRAY, EncryptActivity.getCryptoStringArray(text, title, tags));
 			i.putExtra(PrivateNotePadIntents.EXTRA_URI, mUri.toString());
-			if (text.equals(mOriginalContent)) {
+			if (text.equals(mOriginalContent) && isNoteEncrypted) {
 				// No need to encrypt, content was not modified.
 				i.putExtra(PrivateNotePadIntents.EXTRA_CONTENT_UNCHANGED, true);
 			}
@@ -828,11 +835,20 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			// should not be able to see note again from cache.
 			if (debug) Log.d(TAG, "using static decrypted text: " + text);
 			sDecryptedText = text;
-			mDecryptedText = null;
+			if (isNoteEncrypted) {
+				// Already encrypted
+				mDecryptedText = null;
+				mText.setText(R.string.encrypted);
+			} else {
+				// not yet encrypted, but we want to encrypt.
+				// Leave mText until note is really encrypted
+				// (in case password is not entered or OI Safw not installed)
+			}
 			EncryptActivity.confirmEncryptActivityCalled();
-			mText.setText(R.string.encrypted);
 		} else {
 			// encrypt already called
+			if (debug) Log.d(TAG, "encrypt already called");
+			
 		}
 		
 	}
@@ -983,11 +999,7 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     	// Show "revert" menu item only if content has changed.
     	boolean contentChanged = !mOriginalContent.equals(mText.getText().toString());
     	
-    	long encrypted = 0;
-    	if (mCursor != null && mCursor.moveToFirst()) {
-	    	encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
-    	}
-    	boolean isNoteUnencrypted = (encrypted == 0);
+    	boolean isNoteUnencrypted = isNoteUnencrypted();
     	
     	
     	// Show comands on the URI only if the note is not encrypted
@@ -1010,6 +1022,15 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
     	}
     	
 		return super.onPrepareOptionsMenu(menu);
+	}
+
+	private boolean isNoteUnencrypted() {
+		long encrypted = 0;
+    	if (mCursor != null && mCursor.moveToFirst()) {
+	    	encrypted = mCursor.getLong(COLUMN_INDEX_ENCRYPTED);
+    	}
+    	boolean isNoteUnencrypted = (encrypted == 0);
+		return isNoteUnencrypted;
 	}
 
 	@Override

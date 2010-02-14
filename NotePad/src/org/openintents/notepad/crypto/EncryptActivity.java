@@ -53,9 +53,11 @@ public class EncryptActivity extends Activity {
 	
 	public static void confirmEncryptActivityCalled() {
 		sPendingEncryptActivities++;
+		if (debug) Log.d(TAG, "sPendingEncryptActivities() -> " + sPendingEncryptActivities);
 	}
 	
 	public static int getPendingEncryptActivities() {
+		if (debug) Log.d(TAG, "getPendingEncryptActivities(): " + sPendingEncryptActivities);
 		return sPendingEncryptActivities;
 	}
 
@@ -71,7 +73,10 @@ public class EncryptActivity extends Activity {
 
 		if (debug) Log.d(TAG, "EncryptActivity: onCreate");
 		
-		sPendingEncryptActivities--;
+		if (sPendingEncryptActivities > 0) {
+			sPendingEncryptActivities--;
+		}
+		if (debug) Log.d(TAG, "sPendingEncryptActivities -> " + sPendingEncryptActivities);
 		
 		if (sCancelEncrypt) {
 			if (debug) Log.d(TAG, "encryption cancelled");
