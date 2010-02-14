@@ -237,6 +237,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
                         public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                             NotesList.this.updateQuery();
+                			decryptDelayed();
                         }
 
                         public void onNothingSelected(AdapterView<?> arg0) {
@@ -318,6 +319,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 
 		if (mDecryptionSucceeded) {
 			NotesListCursor.mLoggedIn = true;
+			if (debug) Log.d(TAG, "onResume: logged in");
 		}
 
 		IntentFilter filter = new IntentFilter();
@@ -427,6 +429,8 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
 		
 		// After unregistering broadcastreceiver, the logged in state is not clear.
 		NotesListCursor.mLoggedIn = false;
+		if (debug) Log.d(TAG, "onPause: logged out");
+		
 		// No need wasting a lot of time doing queries when external applications change the
 		// database - we requery in onResume anyway.
 		NotesListCursor.mSuspendQueries = true;
@@ -1073,6 +1077,7 @@ public class NotesList extends ListActivity implements ListView.OnScrollListener
     			}
             	mDecryptionSucceeded = true;
     			NotesListCursor.mLoggedIn = true;
+    			if (debug) Log.d(TAG, "onActivity: logged in");
     			
     			// decrypt the next string.
             	

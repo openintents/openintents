@@ -199,8 +199,10 @@ public class NotesListCursor extends OpenMatrixCursor {
 				String titleDecrypted = mEncryptedStringHashMap.get(title);
 				
 				if (titleDecrypted != null) {
+					if (debug) Log.d(TAG, "got title: " + titleDecrypted);
 					title = titleDecrypted;
 				} else {
+					if (debug) Log.d(TAG, "decrypt title later.");
 					// decrypt later
 					addForEncryption(title);
 					
@@ -214,18 +216,23 @@ public class NotesListCursor extends OpenMatrixCursor {
 				if (tags != null) {
 					String tagsDecrypted = mEncryptedStringHashMap.get(tags);
 					if (tagsDecrypted != null) {
+						if (debug) Log.d(TAG, "got tags: " + tagsDecrypted);
 						tags = tagsDecrypted;
 					} else {
+						if (debug) Log.d(TAG, "decrypt tags later.");
 						// decrypt later
 						addForEncryption(tags);
 						
 						// Set encrypt title
 						tagsEncrypted = tags;
 						tags = "";
+						
+						skipEncrypted = true;
 					}
 				}
 
 				if (!mLoggedIn) {
+					if (debug) Log.d(TAG, "not logged in.");
 					// suppress all decrypted output
 					title = encryptedlabel;
 					tags = "";
@@ -238,6 +245,7 @@ public class NotesListCursor extends OpenMatrixCursor {
 				// Add all rows if there is no filter.
 				addrow = true;
 			} else if (skipEncrypted) {
+				if (debug) Log.d(TAG, "skipEncrypted)");
 				addrow = false;
 			} else {
 				// test the filter
@@ -270,6 +278,12 @@ public class NotesListCursor extends OpenMatrixCursor {
 				addrow = searchstring.contains(" " + mCurrentFilter.toUpperCase()) &&
                                          tagList.contains(mSelectedTag.trim());
                             }
+                            
+				if (!addrow && encrypted != 0) {
+					// Set the following so that list is updated even if
+					// encrypted notes are not shown yet.
+					mContainsEncryptedStrings = true;
+				}
 			}
 			
 			if (addrow) {
