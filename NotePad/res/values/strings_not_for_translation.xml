@@ -30,6 +30,7 @@
         <item>Peli</item>
         <item>Friedger</item>
         <item>Michael A. Krehan</item>
+        <item>Matthias Blaesing</item><!-- issues 240, 241 -->
         
         <!-- The following item should always stay at the end -->
         <item>The Android Open Source Project</item>
