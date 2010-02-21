@@ -25,9 +25,9 @@
 		<item name="lineColor">#FF800000</item>
 		<item name="textTypeface">sans</item>
 		<item name="textUpperCaseFont">false</item>
-		<item name="textSizeSmall">18dip</item>
-		<item name="textSizeMedium">23dip</item>
-		<item name="textSizeLarge">28dip</item>
+		<item name="textSizeSmall">18sp</item>
+		<item name="textSizeMedium">23sp</item>
+		<item name="textSizeLarge">28sp</item>
 		<item name="textColor">#FF600000</item>
 		<item name="textColorPrice">#FF600000</item>
 		<item name="textColorChecked">#FF806060</item>
