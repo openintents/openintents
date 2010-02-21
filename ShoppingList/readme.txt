@@ -22,8 +22,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.2.1-rc1
-date: 2010-02-11
+release: 1.2.1
+date: 2010-02-21
 - update MyBackupPro support v2.2.1
 - support external themes
 - set theme optionally for all lists
