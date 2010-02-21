@@ -42,7 +42,7 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
     };
     
     private String[] mMinVersionName = {
-    		"1.1.4", // OI Notepad
+    		"1.2.0", // OI Notepad
     		"1.2.1" // OI Shopping List
     };
     
