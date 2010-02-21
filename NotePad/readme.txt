@@ -24,8 +24,8 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.1.4
-date: 2009-??
+release: 1.2.0
+date: 2010-02-21
 - add search system-wide search (has to be activated
   in home > settings > search > searchable items >
   OI Notepad).
