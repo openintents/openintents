@@ -24,6 +24,11 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.2.1
+date: 2010-02-22
+- new font size "tiny" (for Droid users).
+
+---------------------------------------------------------
 release: 1.2.0
 date: 2010-02-21
 - add search system-wide search (has to be activated
