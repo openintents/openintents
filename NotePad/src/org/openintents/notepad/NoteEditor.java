@@ -1505,15 +1505,14 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 				Log.d(TAG, "textColor: " + mTextColor);
 			}
 			
-			if (size == 1) {
-				mTextSize = ta
-						.getDimensionPixelOffset(ThemeNotepad.textSizeSmall, 10);
+			if (size == 0) {
+				mTextSize = getTextSizeTiny(ta);
+			} else if (size == 1) {
+				mTextSize = getTextSizeSmall(ta);
 			} else if (size == 2) {
-				mTextSize = ta.getDimensionPixelOffset(ThemeNotepad.textSizeMedium,
-						20);
+				mTextSize = getTextSizeMedium(ta);
 			} else {
-				mTextSize = ta
-						.getDimensionPixelOffset(ThemeNotepad.textSizeLarge, 30);
+				mTextSize = getTextSizeLarge(ta);
 			}
 			if (debug) Log.d(TAG, "textSize: " + mTextSize);
 			
@@ -1580,6 +1579,43 @@ public class NoteEditor extends Activity implements ThemeDialogListener {
 			Log.e(TAG, "NumberFormatException", e);
 			return false;
 		}
+	}
+	
+	private float getTextSizeTiny(ThemeAttributes ta) {
+		float size = ta
+				.getDimensionPixelOffset(ThemeNotepad.textSizeTiny, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (12f/18f) * getTextSizeSmall(ta);
+		}
+		return size;
+	}
+	
+	private float getTextSizeSmall(ThemeAttributes ta) {
+		float size = ta
+		.getDimensionPixelOffset(ThemeNotepad.textSizeSmall, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (18f/23f) * getTextSizeMedium(ta);
+		}
+		return size;
+	}
+	
+	private float getTextSizeMedium(ThemeAttributes ta) {
+		final float scale = getResources().getDisplayMetrics().scaledDensity;
+		float size = ta
+		.getDimensionPixelOffset(ThemeNotepad.textSizeMedium, (int) (23 * scale + 0.5f));
+		return size;
+	}
+
+	private float getTextSizeLarge(ThemeAttributes ta) {
+		float size = ta
+		.getDimensionPixelOffset(ThemeNotepad.textSizeLarge, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (28f/23f) * getTextSizeMedium(ta);
+		}
+		return size;
 	}
 	
 	private void applyTheme() {

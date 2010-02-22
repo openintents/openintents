@@ -18,6 +18,7 @@ public class ThemeNotepad {
 	public static final String lineColor = "lineColor";
 	public static final String textTypeface = "textTypeface";
 	public static final String textUpperCaseFont = "textUpperCaseFont";
+	public static final String textSizeTiny = "textSizeTiny";
 	public static final String textSizeSmall = "textSizeSmall";
 	public static final String textSizeMedium = "textSizeMedium";
 	public static final String textSizeLarge = "textSizeLarge";

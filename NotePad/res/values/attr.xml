@@ -52,6 +52,7 @@
 		<!-- Set true if the font only contains upper case characters. -->
 		<attr name="textUpperCaseFont" format="boolean" />
 		
+		<attr name="textSizeTiny" format="dimension" />
 		<attr name="textSizeSmall" format="dimension" />
 		<attr name="textSizeMedium" format="dimension" />
 		<attr name="textSizeLarge" format="dimension" />

@@ -43,7 +43,9 @@
      
     <supports-screens android:smallScreens="true"
         android:normalScreens="true"
-        android:largeScreens="true" />     
+        android:largeScreens="true"
+        android:anyDensity="true" />
+        <!-- android:resizable="true" --> 
 	
     <application android:icon="@drawable/app_notes"
         android:label="@string/app_name"
