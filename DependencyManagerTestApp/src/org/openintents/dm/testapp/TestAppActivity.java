@@ -24,10 +24,11 @@ import org.openintents.dm.common.DependencyManagerContract;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.widget.Toast;
 
 /**
  * The app's main activity should be derived from DMActivity in order to benefit
@@ -35,52 +36,50 @@ import android.os.Bundle;
  * DependencyManager in onCreate(), and unbinds onStop(). It's entirely possible
  * for each Activity to derive from DMActivity, but that may well incur overhead
  * you don't need.
- *
+ * 
  * After binding occurred, DMActivity tries to resolve this package's
  * dependencies, which - if they're not all resolved - will pop up a dialog
  * prompting the user to action.
- *
+ * 
  * The only thing you may want to do in order to provide best user experience is
  * to prompt for the installation of DependencyManager if binding failed. To do
  * so, just query the bindResult() function.
  **/
-public class TestAppActivity extends DMActivity
-{
-  private static int DIALOG_INSTALL_DM = 0;
+public class TestAppActivity extends DMActivity {
+	private static int DIALOG_INSTALL_DM = 0;
 
-  @Override
-  public void onCreate(Bundle savedInstanceState)
-  {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
 
-    if (!bindResult()) {
-      showDialog(DIALOG_INSTALL_DM);
-    }
-  }
+		if (!bindResult()) {
+			showDialog(DIALOG_INSTALL_DM);
+		}
+	}
 
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		if (DIALOG_INSTALL_DM != id) {
+			return null;
+		}
 
-
-  @Override
-  protected Dialog onCreateDialog(int id)
-  {
-    if (DIALOG_INSTALL_DM != id) {
-      return null;
-    }
-
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setMessage("DependencyManager is not installed.")
-    .setCancelable(false)
-    .setPositiveButton("Install now",
-        new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int id) {
-            // Try only the first Uri.
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(DependencyManagerContract.INSTALL_URIS[0]);
-            startActivity(i);
-          }
-       }
-    );
-    return builder.create();
-  }
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage("DependencyManager is not installed.")
+				.setCancelable(false).setPositiveButton("Install now",
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+								// Try only the first Uri.
+								Intent i = new Intent(Intent.ACTION_VIEW);
+								i.setData(DependencyManagerContract.INSTALL_URIS[0]);
+								try {
+									startActivity(i);
+								} catch (ActivityNotFoundException e) {
+									// FIXME 
+									// What to do if no market installed?
+								}
+							}
+						});
+		return builder.create();
+	}
 }

@@ -19,20 +19,16 @@
 
 package org.openintents.dm.client;
 
+import java.util.List;
+
+import org.openintents.dm.IDependencyManager;
+
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.ComponentName;
-
 import android.os.IBinder;
 import android.os.RemoteException;
-
-import android.os.Looper;
-
-import java.util.List;
-
-import de.finkhaeuser.dm.IDependencyManager;
-
 import android.util.Log;
 
 /**
