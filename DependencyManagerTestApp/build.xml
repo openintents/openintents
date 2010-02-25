@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TestApp" default="help">
+
+    <!-- The local.properties file is created and updated by the 'android' tool.
+         It contains the path to the SDK. It should *NOT* be checked in in Version
+         Control Systems. -->
+    <property file="local.properties" />
+
+    <!-- The build.properties file can be created by you and is never touched
+         by the 'android' tool. This is the place to change some of the default property values
+         used by the Ant rules.
+         Here are some properties you may want to change/update:
+
+         application.package
+             the name of your application package as defined in the manifest. Used by the
+             'uninstall' rule.
+         source.dir
+             the name of the source directory. Default is 'src'.
+         out.dir
+             the name of the output directory. Default is 'bin'.
+
+         Properties related to the SDK location or the project target should be updated
+          using the 'android' tool with the 'update' action.
+
+         This file is an integral part of the build system for your application and
+         should be checked in in Version Control Systems.
+
+         -->
+    <property file="build.properties" />
+
+    <!-- The default.properties file is created and updated by the 'android' tool, as well
+         as ADT.
+         This file is an integral part of the build system for your application and
+         should be checked in in Version Control Systems. -->
+    <property file="default.properties" />
+
+    <!-- Custom Android task to deal with the project target, and import the proper rules.
+         This requires ant 1.6.0 or above. -->
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/anttasks.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/apkbuilder.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/jarutils.jar" />
+    </path>
+
+    <taskdef name="setup"
+        classname="com.android.ant.SetupTask"
+        classpathref="android.antlibs" />
+
+    <!-- Execute the Android Setup task that will setup some properties specific to the target,
+         and import the build rules files.
+
+         The rules file is imported from
+            <SDK>/platforms/<target_platform>/templates/android_rules.xml
+
+         To customize some build steps for your project:
+         - copy the content of the main node <project> from android_rules.xml
+         - paste it in this build.xml below the <setup /> task.
+         - disable the import by changing the setup task below to <setup import="false" />
+
+         This will ensure that the properties are setup correctly but that your customized
+         build steps are used.
+    -->
+    <setup />
+
+    <!-- Create the output directories if they don't exist yet. -->
+    <target name="-real-dirs">
+      <echo>Creating output directories if needed...</echo>
+      <mkdir dir="${resource.absolute.dir}" />
+      <mkdir dir="${external.libs.absolute.dir}" />
+      <mkdir dir="${gen.absolute.dir}" />
+      <mkdir dir="${out.absolute.dir}" />
+      <mkdir dir="${out.classes.absolute.dir}" />
+    </target>
+
+
+    <!-- Client lib target -->
+    <property name="client.dir" value="externals/client" />
+    <property name="client.absolute.dir" location="${client.dir}" />
+
+    <target name="client.check" depends="-real-dirs">
+      <condition property="client.exists">
+        <and>
+          <available file="${external.libs.absolute.dir}/DependencyManager-client.jar" />
+        </and>
+      </condition>
+    </target>
+
+    <target name="-client" depends="-real-dirs, client.check" unless="client.exists">
+      <echo>Building client library...</echo>
+      <ant
+          antfile="build.xml"
+          dir="externals/client"
+          target="build"
+          inheritAll="false"
+        />
+      <copy todir="${external.libs.absolute.dir}" file="${client.absolute.dir}/bin/DependencyManager-client.jar"/>
+    </target>
+
+    <!-- Bootstrap target -->
+    <target name="-bootstrap" depends="-client" />
+
+    <!-- Override "dirs" target that is referenced from other targets. Just depends on
+         bootstrap, to kickstart our own stuff here. -->
+    <target name="-dirs" depends="-bootstrap" />
+
+    <!-- Override "clean" target -->
+    <target name="clean" description="Removes output files created by other targets.">
+      <delete dir="${out.absolute.dir}" verbose="${verbose}" />
+      <delete dir="${gen.absolute.dir}" verbose="${verbose}" />
+      <delete file="${external.libs.absolute.dir}/DependencyManager-client.jar" verbose="${verbose}" />
+    </target>
+
+
+</project>
