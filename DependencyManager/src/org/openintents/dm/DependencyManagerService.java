@@ -19,24 +19,19 @@
 
 package org.openintents.dm;
 
-import android.app.Service;
-
-import android.os.IBinder;
-import android.os.RemoteException;
-
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-
-import java.util.List;
-import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.openintents.dm.common.Intents;
 import org.openintents.dm.common.Schemas;
 
-import de.finkhaeuser.dm.IDependencyManager;
-
+import android.app.Service;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.util.Log;
 
 /**
