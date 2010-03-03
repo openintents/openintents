@@ -539,16 +539,18 @@ public class ShoppingListView extends ListView {
 			mTextColorPrice = ta.getColor(
 					ThemeShoppingList.textColorPrice,
 					android.R.color.white);
-			if (size == 1) {
-				mTextSize = ta
-						.getDimensionPixelOffset(ThemeShoppingList.textSizeSmall, 10);
+			
+			if (size == 0) {
+				mTextSize = getTextSizeTiny(ta);
+			} else if (size == 1) {
+				mTextSize = getTextSizeSmall(ta);
 			} else if (size == 2) {
-				mTextSize = ta.getDimensionPixelOffset(ThemeShoppingList.textSizeMedium,
-						20);
+				mTextSize = getTextSizeMedium(ta);
 			} else {
-				mTextSize = ta
-						.getDimensionPixelOffset(ThemeShoppingList.textSizeLarge, 30);
+				mTextSize = getTextSizeLarge(ta);
 			}
+			if (debug) Log.d(TAG, "textSize: " + mTextSize);
+			
 	
 			mTextColorChecked = ta.getColor(ThemeShoppingList.textColorChecked,
 					android.R.color.white);
@@ -620,7 +622,43 @@ public class ShoppingListView extends ListView {
 			return false;
 		}
 	}
+
+	private float getTextSizeTiny(ThemeAttributes ta) {
+		float size = ta
+				.getDimensionPixelOffset(ThemeShoppingList.textSizeTiny, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (12f/18f) * getTextSizeSmall(ta);
+		}
+		return size;
+	}
 	
+	private float getTextSizeSmall(ThemeAttributes ta) {
+		float size = ta
+		.getDimensionPixelOffset(ThemeShoppingList.textSizeSmall, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (18f/23f) * getTextSizeMedium(ta);
+		}
+		return size;
+	}
+	
+	private float getTextSizeMedium(ThemeAttributes ta) {
+		final float scale = getResources().getDisplayMetrics().scaledDensity;
+		float size = ta
+		.getDimensionPixelOffset(ThemeShoppingList.textSizeMedium, (int) (23 * scale + 0.5f));
+		return size;
+	}
+
+	private float getTextSizeLarge(ThemeAttributes ta) {
+		float size = ta
+		.getDimensionPixelOffset(ThemeShoppingList.textSizeLarge, -1);
+		if (size == -1) {
+			// Try to obtain from small:
+			size = (28f/23f) * getTextSizeMedium(ta);
+		}
+		return size;
+	}
 
 	public void setThemedBackground(View background) {
 		mThemedBackground = background;
