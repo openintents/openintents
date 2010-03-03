@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.2
+date: 2010-?
+- add "tiny" font size for Droid users.
+
+---------------------------------------------------------
 release: 1.2.1
 date: 2010-02-21
 - update MyBackupPro support v2.2.1
