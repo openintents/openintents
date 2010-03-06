@@ -29,6 +29,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Joao Nogueira https://launchpad.net/~whipx
+  Tiago Silva https://launchpad.net/~tiagosilva
   nglnx https://launchpad.net/~nglnx</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -51,7 +52,7 @@
     
 	<string name="l_authors">Escrito por</string>
 	<string name="l_documenters">Documentado por</string>
-	<string name="l_translators">Traduzido por João Nogueira </string>
+	<string name="l_translators">Traduzido por</string>
 	<string name="l_artists">Arte Gráfica por</string>
 	<string name="l_credits">Créditos</string>
 	<string name="l_license">Licença</string>

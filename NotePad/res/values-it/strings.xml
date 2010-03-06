@@ -129,8 +129,8 @@
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Annulla</string>
-    <string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+    <string name="use_theme_for_all_lists">Usa questo tema per tutti gli elenchi</string>
+	<string name="get_more_themes">Scarica altri temi</string>
     
     <string name="all_notes">Tutte le note</string>
     
@@ -216,6 +216,8 @@
     </string-array>
 
     <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: tiny font size -->
+        <item>Tiny</item>
     	<!-- Preference fontsize: small font size -->
         <item>Piccolo</item>
     	<!-- Preference fontsize: default font size-->

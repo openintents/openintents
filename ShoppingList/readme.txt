@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.3
+date: 2010-?
+- translations: Russian
+
+---------------------------------------------------------
 release: 1.2.2
 date: 2010-03-06
 - new font size "tiny" (for Droid users).

@@ -117,8 +117,8 @@
 	<!--     Dialog box    -->
 	<string name="ok">Aceptar</string>
 	<string name="cancel">Cancelar</string>
-	<string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+	<string name="use_theme_for_all_lists">Usar este tema para todas las listas</string>
+	<string name="get_more_themes">Obtener más temas</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Configuración</string>
@@ -161,17 +161,17 @@
     
     <string name="preference_appearance">Apariencia</string>
     
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_addons">Componentes adicionales</string>
+    <string name="preference_get_addons">Obtener nuevos componentes</string>
+    <string name="preference_get_addons_summary">Buscar extensiones y temas en linea.</string>
+    <string name="preference_get_market_addons">Obtener complementos del Market</string>
+    <string name="preference_get_developer_addons">Obtener complementos de OpenIntents</string>
     <string name="preference_extensions">Extensiones</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_themes">Temas</string>
     <string name="preference_market_extensions_summary">Busqueda de extensiones en la Tienda Android</string>
-    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_market_themes_summary">Buscar temas en Android Market.</string>
     <string name="preference_developer_extensions_summary">Obtener extensiones desde la página principal de OpenIntents</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Obtener temas de la web de OpenIntents</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -225,6 +225,8 @@
     </string-array>
     
     <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: tiny font size -->
+        <item>Tiny</item>
     	<!-- Preference fontsize: small font size -->
         <item>Pequeño</item>
     	<!-- Preference fontsize: default font size-->

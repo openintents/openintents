@@ -216,6 +216,8 @@ Aktuelle Version: %s</string>
     </string-array>
 
     <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: tiny font size -->
+        <item>Tiny</item>
     	<!-- Preference fontsize: small font size -->
         <item>Klein</item>
     	<!-- Preference fontsize: default font size-->

@@ -20,7 +20,8 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Federico Pontelli https://launchpad.net/~federico</string>
 	
     <string name="about_comments">OI File Manager is an open file manager that seamlessly cooperates with other applications.</string>  
 	<string name="about_website_label">OI File Manager at OpenIntents</string> 
@@ -43,13 +44,13 @@
     <string name="file_name">Folder name</string>
     <string name="this_folder_is_empty">This folder is empty.</string>
     <string name="really_delete">Do you really want to delete %s?</string>
-    <string name="file_deleted">File deleted.</string>
-    <string name="folder_deleted">Folder deleted.</string>
-    <string name="file_renamed">File renamed.</string>
-    <string name="folder_renamed">Folder renamed.</string>
-    <string name="file_moved">File moved.</string>
-    <string name="folder_moved">Folder moved.</string>
-    <string name="file_copied">File copied.</string>
+    <string name="file_deleted">File eliminato.</string>
+    <string name="folder_deleted">Cartella eliminata.</string>
+    <string name="file_renamed">File rinominato.</string>
+    <string name="folder_renamed">Cartella rinominata.</string>
+    <string name="file_moved">Il file è stato spostato.</string>
+    <string name="folder_moved">La cartella è stata spostata.</string>
+    <string name="file_copied">Il file è stato copiato.</string>
     <string name="move_title">Select folder to move to</string>
     <string name="move_button">Move here</string>
     <string name="copy_title">Select folder to copy to</string>
@@ -58,20 +59,20 @@
     <string name="copied_file_name">Copy of %s</string>
     <string name="copied_file_name_2">Copy %d of %s</string>
     
-    <string name="error_creating_new_folder">Could not create new folder.</string>
+    <string name="error_creating_new_folder">Impossibile creare una nuova cartella.</string>
     <string name="error_deleting_file">Could not delete file.</string>
-    <string name="error_deleting_folder">Could not delete folder '%s'.</string>
-    <string name="error_renaming_file">Could not rename file.</string>
-    <string name="error_renaming_folder">Could not rename folder.</string>
-    <string name="error_moving_file">Could not move file.</string>
-    <string name="error_moving_folder">Could not move folder.</string>
-    <string name="error_copying_file">Could not copy file.</string>
+    <string name="error_deleting_folder">Impossibile eliminare la cartella '%s'.</string>
+    <string name="error_renaming_file">Non è possibile rinominare il file.</string>
+    <string name="error_renaming_folder">Non è possibile rinominare la cartella.</string>
+    <string name="error_moving_file">Non è possibile spostare il file.</string>
+    <string name="error_moving_folder">Non è possibile spostare la cartella.</string>
+    <string name="error_copying_file">Non è possibile copiare il file.</string>
     <string name="error_file_does_not_exists">File does not exist.</string>
-    <string name="error_deleting_child_file">Could not delete child file '%s'.</string>
+    <string name="error_deleting_child_file">Non è possibile eliminare il file figlio '%s'.</string>
     
     <string name="send_not_available">No application available for sending.</string>
     
-    <string name="application_not_available">Application not available</string>
+    <string name="application_not_available">Applicazione non disponibile</string>
 
 	<!-- ***************************
 	     Distribution
@@ -95,7 +96,7 @@ Current version: %s
     <!-- About -->
     <string name="about">About</string>
 	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+    <string name="aboutapp_get">Scarica Informazioni su OI</string>
     
     
 </resources>
