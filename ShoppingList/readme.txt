@@ -23,8 +23,8 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.2.2
-date: 2010-?
-- add "tiny" font size for Droid users.
+date: 2010-03-06
+- new font size "tiny" (for Droid users).
 
 ---------------------------------------------------------
 release: 1.2.1
