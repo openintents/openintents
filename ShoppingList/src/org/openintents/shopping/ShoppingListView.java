@@ -2,6 +2,7 @@ package org.openintents.shopping;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
@@ -62,7 +63,7 @@ public class ShoppingListView extends ListView {
 	public String mTextSuffixChecked;
 	public int mBackgroundPadding;
 
-	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
+	NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
 
 	int mMode = ShoppingActivity.MODE_IN_SHOP;
 	Cursor mCursorItems;
@@ -99,6 +100,9 @@ public class ShoppingListView extends ListView {
 				final Cursor c, final String[] from, final int[] to) {
 			super(context, layout, c, from, to);
 			super.setViewBinder(this);
+			
+			mPriceFormatter.setMaximumFractionDigits(2);
+			mPriceFormatter.setMinimumFractionDigits(2);
 		}
 
 		@Override

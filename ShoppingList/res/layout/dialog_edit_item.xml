@@ -38,7 +38,7 @@
 					android:text="@string/quantity"  />
 				<EditText android:hint="@string/quantity" android:id="@+id/editquantity"
 					android:layout_height="wrap_content" android:layout_width="fill_parent"
-					android:singleLine="true" android:numeric="signed|decimal"
+					android:singleLine="true" android:inputType="numberDecimal"
 					android:layout_below="@+id/labeleditquantity"/>
 			</RelativeLayout>
 			<RelativeLayout

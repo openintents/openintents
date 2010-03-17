@@ -2,6 +2,8 @@ package org.openintents.shopping.dialog;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
@@ -43,11 +45,13 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 
     String[] mTagList;
 
-	NumberFormat mPriceFormatter = new DecimalFormat("0.00");
+	NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
 	
 	public EditItemDialog(Context context, Uri itemUri, Uri relationUri) {
 		super(context);
 		mContext = context;
+		mPriceFormatter.setMaximumFractionDigits(2);
+		mPriceFormatter.setMinimumFractionDigits(2);
 		
 		LayoutInflater inflater = LayoutInflater.from(context);
 		final View view = inflater
@@ -229,8 +233,8 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			priceLong = 0L;
 		} else {
 			try {
-				priceLong = (long) Math.round(100 * Double.parseDouble(price));
-			} catch (NumberFormatException e) {
+				priceLong = (long) Math.round(100 * mPriceFormatter.parse(price).doubleValue());
+			} catch (ParseException e) {
 				priceLong = null;
 			}
 		}

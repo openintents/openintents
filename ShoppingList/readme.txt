@@ -25,6 +25,7 @@ To obtain the current release, visit
 release: 1.2.3
 date: 2010-?
 - translations: Russian
+- fix #262, localized prices
 
 ---------------------------------------------------------
 release: 1.2.2
