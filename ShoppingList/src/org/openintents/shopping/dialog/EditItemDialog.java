@@ -20,8 +20,10 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.KeyListener;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
@@ -58,11 +60,12 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		mQuantity= (EditText) view.findViewById(R.id.editquantity);
 		mPriceLabel = (TextView) view.findViewById(R.id.labeleditprice);
 
-		KeyListener kl = PreferenceActivity
+		final KeyListener kl = PreferenceActivity
 			.getCapitalizationKeyListenerFromPrefs(context);
 		mEditText.setKeyListener(kl);
 		mTags.setKeyListener(kl);
 		
+		mTags.setImeOptions(EditorInfo.IME_ACTION_DONE);
 		mTags.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 		mTags.setThreshold(0);
 		mTags.setOnClickListener(new View.OnClickListener() {
