@@ -25,14 +25,14 @@ import android.util.Log;
 
 
 /**
- * FrontDoor Activity
+ * Safe Activity
  * 
  * This activity just makes sure we're entering the front door, not calling encrypt/decrypt
  * or other intents.
  * 
  * @author Steven Osborn - http://steven.bitsetters.com
  */
-public class FrontDoor extends Activity {
+public class Safe extends Activity {
 
     private static final String TAG = "FrontDoor";
 	private static final boolean debug = false;

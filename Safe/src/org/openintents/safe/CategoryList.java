@@ -226,7 +226,7 @@ public class CategoryList extends ListActivity {
 		if (debug) Log.d(TAG,"onResume()");
 
 		if (isSignedIn()==false) {
-			Intent frontdoor = new Intent(this, FrontDoor.class);
+			Intent frontdoor = new Intent(this, Safe.class);
 			frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 			startActivity(frontdoor);
 			return;
@@ -613,7 +613,7 @@ public class CategoryList extends ListActivity {
 		serviceIntent.setClass(this, ServiceDispatchImpl.class );
 	    stopService(serviceIntent);
 		masterKey=null;
-	    Intent frontdoor = new Intent(this, FrontDoor.class);
+	    Intent frontdoor = new Intent(this, Safe.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 	    startActivity(frontdoor);
     }

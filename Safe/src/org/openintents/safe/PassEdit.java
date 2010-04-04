@@ -107,7 +107,7 @@ public class PassEdit extends Activity {
 			return;
 		}
 
-		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor = new Intent(this, Safe.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 

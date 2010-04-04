@@ -60,7 +60,7 @@ public class CategoryEdit extends Activity {
 		super.onCreate(icicle);
 		if (debug) Log.d(TAG,"onCreate("+icicle+")");
 		
-		frontdoor = new Intent(this, FrontDoor.class);
+		frontdoor = new Intent(this, Safe.class);
 		frontdoor.setAction(CryptoIntents.ACTION_AUTOLOCK);
 		restartTimerIntent = new Intent (CryptoIntents.ACTION_RESTART_TIMER);
 

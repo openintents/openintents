@@ -47,7 +47,7 @@ public class LogOffActivity extends Activity {
 	        
 	    	gotoPWS.setOnClickListener(new View.OnClickListener() {
 	    		public void onClick(View arg0) {
-	    			Intent intent = new Intent(LogOffActivity.this, FrontDoor.class);
+	    			Intent intent = new Intent(LogOffActivity.this, Safe.class);
 	    			//intent.setClass (LogOffActivity.this, FrontDoor.class );
 	    			intent.addCategory(Intent.CATEGORY_LAUNCHER);
 	    			intent.setAction(Intent.ACTION_MAIN);
