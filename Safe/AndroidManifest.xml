@@ -52,7 +52,21 @@
 		        <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>           
         </activity>
-        
+        <!-- alias is to handle versions 1.2.4 and earlier which used to use
+             FrontDoor as the initial activity -->
+        <activity-alias android:label="@string/app_name"
+                android:name="FrontDoor"
+                android:targetActivity="Safe" >
+         	<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+		        <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>           
+         	<intent-filter>
+                <action android:name="org.openintents.action.A" />
+		        <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter> 
+        </activity-alias>
+		
         <activity class=".IntentHandler" android:name="IntentHandler" android:label="@string/app_name"
                   android:permission="org.openintents.safe.ACCESS_INTENTS">
             <intent-filter android:label="@string/intent_encrypt">
