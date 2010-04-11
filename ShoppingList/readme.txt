@@ -24,7 +24,7 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.2.3
 date: 2010-?
-- translations: Chinese (Simplified), Chinese 
+- translations: Czech, Chinese (Simplified), Chinese 
   (Traditional), Dutch, Italian, Japanese, Russian
 - fix #262, localized prices
 
