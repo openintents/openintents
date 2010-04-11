@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  usul https://launchpad.net/~usultis</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Update</string>
+    
+    <string name="update_available">Nowa wersja aplikacji %s jest dostępna.\nCzy chcesz ją zaktualizować?</string>
+    <string name="update_available_3">Nowa wersja aplikacji %s jest dostępna pod %s.\n%s\n</string>
+    <string name="update_available_2">Nowa wersja aplikacji %s jest dostępna.\n%s\n</string>
+    <string name="update_available_location_no_comment">Nowa wersja aplikacji %s jest dostępna pod %s.</string>
+    <string name="update_available_no_comment">Nowa wersja aplikacji %s jest dostępna.</string>
+	<string name="market_not_available">Android Market jest niedostępny.</string>
+    <string name="market_search_term">OI Update</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Wersja %s\nkarta SD %s\n\nOS\n%s</string>
+    <string name="free_space">wolne miejsce: %s</string>
+    <string name="os_info">Płyta %s\nMarka %s\nUrządzenie %s\nID %s\nModel %s</string>
+    
+    <string name="do_update">Przeprowadź aktualizację teraz!</string>
+    <string name="do_update_market">Spróbuj aktualizować z Marketu teraz!</string>
+    <string name="do_update_andAppStore">Spróbuj aktualizować z AndAppStore teraz!</string>
+    <string name="remind_me_later">Przypomnij mi później!</string>
+    <string name="ignore_this_update">Zignoruj tę aktualizację</string>
+    <string name="ignore_all_further_updates">Zignoruj wszystkie późniejsze aktualizacje</string>
+    <string name="ok">Ok</string>
+    
+    <string name="update_not_started">Aktualizacja nie mogła się rozpocząć!\n\nSkontaktuj się z autorem aplikacji!\n\n%s</string>
+    <string name="app_up_to_date">Aplikacja jest w najnowszej wersji.</string>
+    <string name="checking">Sprawdzanie nowych wersji.</string>
+    <string name="building_app_list">Budowanie listy aplikacji.</string>
+    <string name="check_andappstore">Sprawdź AndAppStore.com</string>
+    <string name="check_versions">Sprawdź wersje</string>
+    <string name="show_versions">Pokaż wszystkie</string>
+    <string name="refresh">Odśwież</string>
+    <string name="checked_against_andappstore">Sprawdzony AndAppStore</string>
+    <string name="current_version">Aktualna wersja: %s</string>
+    <string name="current_version_code">Kod aktualnej wersji: %s</string>
+    <string name="newer_version">Nowsza wersja: %s</string>
+    <string name="newer_version_comment">Nowsza wersja: %s - %s</string>
+    <string name="newer_version_available">Nowsza wersja jest dostępna.</string>
+    <string name="no_update_info_found">Nie znaleziono informacji o aktualizacjach.</string>
+    <string name="title_list_new_versions">OI Update - Lista nowych wersji</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - Nowe wersje na AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - Lista zarządzanych aplikacji</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Lista zarządzanych aplikacji (sprawdź na AndAppStore)</string>
+    <string name="settings">Ustawienia</string>
+    <string name="auto_update">Auto sprawdzanie</string>
+    <string name="ignore_title">Ignorowany</string>
+    <string name="ignore_text">Aktualizacje są obecnie ignorowane. Chcesz otrzymać aktualizacje jeszcze raz?</string>
+    <string name="unknown_title">Nieznany</string>
+    <string name="unknown_text">Informacje na temat aktualizacji są niedostępne. Sprawdź źródło i zapytaj autora o wsparcie OI Update w przyszłości.</string>
+    <string name="search_on_market">Szukaj na Android Market</string>
+    <string name="search_on_andappstore">Szukaj na AndAppStore</string>
+    <string name="processing">Przetwarzanie %s</string>
+    
+    <string name="warn">Proces aktualizacji tej aplikacji prowadzi na inna stronę niż Android Market. Aplikacje zainstalowane z nieznanych źródeł mogą stanowić zagrożenie.</string>
+    <string name="continue_anyway">Kontynuuj</string>
+    <string name="abort">Porzuć</string>
+    
+    <string name="preference_auto_update">Auto aktualizacja</string>
+    <string name="preference_auto_update_summary">Gdy zaznaczony, poszukiwanie aktualizacji jest dokonywane regularnie</string>
+    <string name="title_update_interval">Częstotliwość aktualizacji</string>
+    <string name="summary_update_interval">Ustaw czestotliwość przeprowadzania aktualizacji.</string>
+    <string name="dialog_title_update_interval">Wybierz częstotliwość</string>
+    <string name="default_update_interval">co_miesiac</string>
+    <string name="preference_warning_title">Ostrzeżenie</string>
+    <string name="preference_warning_text">Gdy odznaczony, nie będziesz uzyskiwał powiadomień o aktualizacjach. Czy nadal chcesz odznaczyć auto aktualizacje?</string>
+    
+    <string name="preference_andappstore">Użyj AndAppStore</string>
+    <string name="preference_andappstore_summary">Użyj informacji o wersji, dostarczonych przez AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">Informacje o odczycie aktualizowanej aplikacji</string>
+    <string name="permission_write_update_info">Informacje o zapisie aktualizowanej aplikacji</string>
+    <string name="permission_read_update_info_descr">Informacje o odczycie instalowanej aplikacji, lokalizacji aktualizacji i żądaniach.</string>
+    <string name="permission_write_update_info_descr">Informacje o zapisie instalowanej aplikacji, lokalizacji aktualizacji i żądaniach.</string>
+
+
+	<!-- About -->
+	<string name="about">O aplikacji</string>
+	<string name="about_title">O %s</string>
+	<string name="about_text">Wersja %s \n\n OI Update informuje Cię o nowych wersjach aplikacji.\n OpenIntents pozwala różnym aplikacjom dzielić się danymi korzystając z mechanizmu intent i otwartych interfejsów.\n\n W celu uzyskania uzyskania dodatkowych informacji i pobrania innych wspaniałych aplikacji odwiedź OpenIntents (www.openintents.org)</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
+	<string name="eula_accept">Anuluj</string>
+	<string name="eula_refuse">Anuluj</string>
+	
+</resources>

@@ -29,8 +29,8 @@ To obtain the current release, visit
 release: 1.0.3
 date: 2010-??-??
 
-- translations: Dutch, Faroese, French, German, Japanese,
-  Korean, Romanian, Russian, Spanish
+- translations: Dutch, Faroese, French, German, Italian, 
+  Japanese, Korean, Polish, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.0.2
