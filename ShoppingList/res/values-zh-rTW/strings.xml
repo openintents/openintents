@@ -24,39 +24,39 @@
   friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OI Lista Zakupów pozwala śledzić listę zakupów. Można jej używać również dla innych typów list: lista rzeczy do zrobienia lub lista gości.</string>
-	<string name="about_website_label">OI Lista Zakupów na OpenIntents</string>
+	<string name="about_comments">OI Shopping list lets you keep track of your shopping items. You can also use it for other kinds of check lists, for example for ToDo lists or party guest lists.</string>
+	<string name="about_website_label">OI Shopping list at OpenIntents</string>
 
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<string name="app_name">OI Lista Zakupów</string>
+	<string name="app_name">OI 購物清單</string>
 
 	<!-- Shopping Provider -->
-	<string name="new_item">Nowy element</string>
-	<string name="new_list">Nowa lista</string>
-	<string name="send">Wyślij listę</string>
-	<string name="empty_list_not_sent">Nie wysłano pustej listy.</string>
-	<string name="email_not_available">Brak aplikacji służącej wysłaniu.</string>
-	<string name="my_shopping_list">Moja lista zakupów</string>
-	<string name="new_list_hint">tj. lista życzeń, lista osób</string>
-	<string name="clean_up_list">Wyczyść listę</string>
-	<string name="delete_list">Usuń listę</string>
-	<string name="ask_new_list">Wstaw nazwę nowej listy</string>
-	<string name="ask_rename_list">Zmień nazwę listy zakupów</string>
-	<string name="ask_edit_item">Edytuj element</string>
-	<string name="please_enter_name">Wstaw nazwę</string>
-	<string name="no_items_marked">Nie ma elementów wybranych jako zakreślone.</string>
-	<string name="confirm_delete_list">Czy na pewno chcesz usunąć tę listę zakupów?</string>
-	<string name="no_shopping_provider">Błąd dostępu do list zakupów.</string>
-	<string name="pick_item">Wybierz element</string>
-	<string name="pick_list">Wybierz listy</string>
-	<string name="theme">Motyw</string>
-	<string name="theme_settings">Ustawienia motywu</string>
-	<string name="rename_list">Zmień nazwę listy</string>
-	<string name="menu_mark_item">Zaznacz element</string>
-	<string name="menu_edit_item">Edytuj element</string>
-	<string name="menu_auto_add">Edytuj element</string>
+	<string name="new_item">New item</string>
+	<string name="new_list">New list</string>
+	<string name="send">Send list</string>
+	<string name="empty_list_not_sent">Empty list not sent.</string>
+	<string name="email_not_available">找不到傳送用的應用程式。</string>
+	<string name="my_shopping_list">My shopping list</string>
+	<string name="new_list_hint">i.e. wishlist, family list</string>
+	<string name="clean_up_list">Clean up list</string>
+	<string name="delete_list">Delete list</string>
+	<string name="ask_new_list">Enter name of new shopping list</string>
+	<string name="ask_rename_list">Rename shopping list</string>
+	<string name="ask_edit_item">Edit item</string>
+	<string name="please_enter_name">Please enter a name</string>
+	<string name="no_items_marked">No items are marked as crossed out.</string>
+	<string name="confirm_delete_list">Do you really want to delete this shopping list?</string>
+	<string name="no_shopping_provider">Error while accessing shopping lists.</string>
+	<string name="pick_item">Pick an item</string>
+	<string name="pick_list">Pick a list</string>
+	<string name="theme">Theme</string>
+	<string name="theme_settings">Theme settings</string>
+	<string name="rename_list">Rename list</string>
+	<string name="menu_mark_item">Mark item</string>
+	<string name="menu_edit_item">Edit item</string>
+	<string name="menu_auto_add">Auto add</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -68,7 +68,7 @@
 	<string name="menu_delete_item">Delete item permanently</string>
 	
 	<!-- Button label to add an item to the list. -->
-	<string name="add">Dodaj</string>
+	<string name="add">Add</string>
 	
 	<string name="menu_pick_items">Pick items</string>
 	<string name="menu_start_shopping">Shopping</string>
@@ -81,7 +81,7 @@
 	
 	<string name="tags">Tags</string>
 	<string name="price">Price</string>
-	<string name="item">Element</string>
+	<string name="item">Item</string>
 	<string name="quantity">Quantity</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
@@ -98,39 +98,39 @@
 	<string name="empty"/>
 	
 	<!-- The shortcut is created on the home screen. -->
-	<string name="pick_list_for_shortcut">Wybierz listę dla skrótu</string>
+	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
 	
 	<!-- Shown if external application wants to insert new items. -->
 	<string name="pick_list_to_insert_items">Pick list to insert items</string>
 	
 	<!-- Theme related -->
-	<string name="theme_pick">Wybierz motyw</string>
-	<string name="theme_description">Wybierz  motyw dla tej listy</string>
-	<string name="theme_default">Domyślny</string>
-	<string name="theme_classic">Klasyczny</string>
+	<string name="theme_pick">Pick a theme</string>
+	<string name="theme_description">Choose a theme for this list</string>
+	<string name="theme_default">Default</string>
+	<string name="theme_classic">Classic</string>
 	<string name="theme_bugdroid">Android</string>
 	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
 	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
-	<string name="cancel">Anuluj</string>
+	<string name="cancel">Cancel</string>
 	<string name="use_theme_for_all_lists">Use this theme for all lists</string>
 	<string name="get_more_themes">Get more themes</string>
 	
 	<!-- preferences -->
-	<string name="preferences">Ustawienia</string>
+	<string name="preferences">Settings</string>
 	
     <string name="preference_application">Application settings</string>
     
-	<string name="preference_unchecked_on_top">Niezaznaczone na górze</string>
-	<string name="preference_unchecked_on_top_summary">Zawsze pokazuj niezaznaczone elementy jako pierwsze</string>
-	<string name="preference_fontsize">Rozmiar czcionki</string>
-	<string name="preference_fontsize_summary">Zmień rozmiar czcionki</string>
-	<string name="preference_fontsize_dialog_title">Wybierz rozmiar czcionki</string>
-	<string name="preference_sortorder_title">Porządek sortowania</string>
-	<string name="preference_sortorder_summary">Zmień porządek sortowania elementów listy</string>
-	<string name="preference_sortorder_dialog_title">Wybierz porządek sortowania</string>
+	<string name="preference_unchecked_on_top">Unchecked on top</string>
+	<string name="preference_unchecked_on_top_summary">Always show unchecked items first</string>
+	<string name="preference_fontsize">Font size</string>
+	<string name="preference_fontsize_summary">Change font size</string>
+	<string name="preference_fontsize_dialog_title">Choose font size</string>
+	<string name="preference_sortorder_title">Sort order</string>
+	<string name="preference_sortorder_summary">Change sort order of list items</string>
+	<string name="preference_sortorder_dialog_title">Choose sort order</string>
 	<string name="preference_loadlastused_title">Load last list used</string>
 	<string name="preference_loadlastused_summary">Always start with the list viewed last time.</string>
 	<string name="preference_capitalization_title">Capitalization</string>
@@ -166,41 +166,44 @@
     <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
     <string name="preference_themes">Themes</string>
-    <string name="preference_market_extensions_summary">Szukaj rozszerzeń na Android Market</string>
-    <string name="preference_market_themes_summary">Szukaj motywów na Android Market</string>
-    <string name="preference_developer_extensions_summary">Pobierz rozszerzenia ze strony OpenIntents.</string>
-	<string name="preference_developer_themes_summary">Pobierz motywy ze strony OpenIntents</string>
+    <string name="preference_market_extensions_summary">Search for extensions at Android Market.</string>
+    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_developer_extensions_summary">Get extensions from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Lista Zakupów EULA</string>
-	<string name="eula_accept">Zatwierdź</string>
-	<string name="eula_refuse">Anuluj</string>
+	<string name="eula_title">OI Shopping List EULA</string>
+	<string name="eula_accept">Accept</string>
+	<string name="eula_refuse">Cancel</string>
 
 	<!-- Update -->
-	<string name="update_box_text">Sprawdź aktualizacje lub zainstaluj OI Update w celu uzyskania automatycznych powiadomień. Aktualna wersja: %s</string>
-	<string name="update_check_now">Sprawdź teraz.</string>
-	<string name="update_get_updater">Pobierz OI Updater.</string>
-	<string name="update_error">Aplikacja jest niedostępna.</string>
-	<string name="update">Sprawdź aktualizacje</string>
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
 
 	<!-- About -->
-	<string name="about">O aplikacji</string>
-	<string name="aboutapp_not_available">Wersja %s\n\nŻadne kompatybilne rozszerzenie nie jest dostępne (kontakt, autorzy, licencja)</string>
-	<string name="aboutapp_get">Pobierz OI About</string>
+	<string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
 	
 	<!-- ***************************
 	     Permissions
 	     *************************** -->
 	
 	<!-- OI Shopping list -->
-	<string name="oi_shopping_permission_read">czytanie list zakupów</string>
-	<string name="oi_shopping_permission_read_descr">Pozwala aplikacji czytać listy zakupów. Warto odnotować, że listy i elementy zaszyfrowane będą dostępne w formie zaszyfrowanej.</string>
-	<string name="oi_shopping_permission_write">zapis list zakupów</string>
-	<string name="oi_shopping_permission_write_descr">Pozwala aplikacji tworzyć nowe listy i ich elementy oraz modyfikować istniejące.</string>
+	<string name="oi_shopping_permission_read">read shopping lists</string>
+	<string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+	<string name="oi_shopping_permission_write">write shopping lists</string>
+	<string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or change existing ones.</string>
 	
 	
 	<!-- ***************************
@@ -209,13 +212,13 @@
 	
     <string-array name="preference_sortorder_entries">
     	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
-    	<item>najpierw niezaznaczone, alfabetycznie</item>
+    	<item>unchecked first, alphabetical</item>
         <!-- Preference sort order: Sort by item name -->
-    	<item>alfabetycznie</item>
+    	<item>alphabetical</item>
         <!-- Preference sort order: Newest item first -->
-    	<item>najpierw najnowsze</item>
+    	<item>newest first</item>
         <!-- Preference sort order: Oldest item first -->
-    	<item>najpierw najstarsze</item>
+    	<item>oldest first</item>
         <!-- Preference sort order: Sort alphabetically by tags -->
     	<item>tags alphabetical</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
@@ -226,11 +229,11 @@
     	<!-- Preference fontsize: tiny font size -->
         <item>Tiny</item>
     	<!-- Preference fontsize: small font size -->
-        <item>Mały</item>
+        <item>Small</item>
     	<!-- Preference fontsize: default font size-->
-    	<item>Domyślny</item>
+    	<item>Default</item>
     	<!-- Preference fontsize: large font size -->
-        <item>Duży</item>
+        <item>Large</item>
     </string-array>
     
     <string-array name="preference_capitalization_entries">
@@ -256,7 +259,7 @@
 	
     <string-array name="automation_actions">
     	<!-- Automation action to clean up a list. -->
-    	<item>Wyczyść listę</item>
+    	<item>Clean up list</item>
     </string-array>
     
 </resources>
