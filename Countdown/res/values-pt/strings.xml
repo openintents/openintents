@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
+  PresuntoRJ https://launchpad.net/~fabio-tleitao
   nglnx https://launchpad.net/~nglnx</string>
 	
     <!-- Strings for OI About -->
@@ -24,12 +25,12 @@
     <string name="start">Iniciar</string>
     <string name="stop">Parar</string>
     <string name="modify">Alterar</string>
-    <string name="cont">Continue</string>
+    <string name="cont">Avançar</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
+	<string name="no_durations">Utilize o menu para adicionar nova contagem regressiva.</string>
 	<string name="countdown_list">Countdown list</string>
 	
-    <string name="menu_delete">Delete</string>
+    <string name="menu_delete">Apagar</string>
     <string name="menu_edit">Editar</string>
     <string name="menu_insert">Add countdown</string>
     <string name="menu_pick_ringtone">Ringtone</string>
@@ -43,7 +44,7 @@
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
     <string name="menu_set_action">Definir acção</string>
     
-    <string name="hint_title">e.g. pizza</string>
+    <string name="hint_title">ex: pizza</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
     <string name="title_setcountdown">Definir contagem decrescente</string>

@@ -6,6 +6,7 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Juan Eduardo Riva https://launchpad.net/~juaneduardoriva
   Paco Molinero https://launchpad.net/~franciscomol
   Peli https://launchpad.net/~peli0101
   miwie https://launchpad.net/~mw-miwie
@@ -57,7 +58,7 @@
     <string name="title_edit">Editar cuenta atrás</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">Seleccione cuenta regresiva</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
     <string name="title_setcountdown_action">OI Countdown</string>
@@ -120,10 +121,10 @@
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_shortcut">Select shortcut</string>
+	<string name="title_select_shortcut">Seleccione atajo</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">Seleccione tarea automarizada</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Seleccione actividad</string>

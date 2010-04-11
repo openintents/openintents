@@ -217,7 +217,7 @@
 
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Piccoli</item>
     	<!-- Preference fontsize: small font size -->
         <item>Piccolo</item>
     	<!-- Preference fontsize: default font size-->

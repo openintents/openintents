@@ -21,9 +21,10 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Angel Abad https://launchpad.net/~angel-abad
+  Angel Abad https://launchpad.net/~angelabad
   Joselt Peña https://launchpad.net/~inf3rn41j4p
-  Paco Molinero https://launchpad.net/~franciscomol</string>
+  Paco Molinero https://launchpad.net/~franciscomol
+  friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">La lista de compras OI le permite hacer un seguimiento de sus artículos comprados. También se puede utilizar para otros tipos de listas de verificación, por ejemplo, para las listas de tareas o listas de invitados a la fiesta.</string>
@@ -111,8 +112,8 @@
 	<string name="theme_default">Predeterminado</string>
 	<string name="theme_classic">Clásico</string>
 	<string name="theme_bugdroid">Androide</string>
-	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
-	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
+	<string name="theme_classic_export">Clásico (en OI Lista de compras)</string>
+	<string name="theme_bugdroid_export">Android (en OI Lista de compras)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">Aceptar</string>
@@ -226,7 +227,7 @@
     
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Muy pequeño</item>
     	<!-- Preference fontsize: small font size -->
         <item>Pequeño</item>
     	<!-- Preference fontsize: default font size-->

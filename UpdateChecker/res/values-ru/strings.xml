@@ -6,6 +6,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Artur https://launchpad.net/~arturyak
   Peli https://launchpad.net/~peli0101
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
@@ -15,7 +16,7 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Доступна новая версия %s.\nХотите обновить?</string>
-    <string name="update_available_3">A new version of %s is available at %s.\n%s\n</string>
+    <string name="update_available_3">Новая версия %s доступна на %s.\n%s\n</string>
     <string name="update_available_2">Доступна новая версия %s.\n%s\n</string>
     <string name="update_available_location_no_comment">Новая версия %s доступна на %s.</string>
     <string name="update_available_no_comment">Доступна новая версия %s.</string>
@@ -24,7 +25,7 @@
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %s\nSD card %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Версия %s\nSD card %s\n\nOS\n%s</string>
     <string name="free_space">свободно: %s</string>
     <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
     
@@ -41,27 +42,27 @@
     <string name="checking">Идёт проверка наличия новых версий.</string>
     <string name="building_app_list">Составляется список приложений.</string>
     <string name="check_andappstore">Проверьте AndAppStore.com</string>
-    <string name="check_versions">Check versions</string>
+    <string name="check_versions">Проверить версии</string>
     <string name="show_versions">Показать все</string>
     <string name="refresh">Обновить</string>
-    <string name="checked_against_andappstore">Checked AndAppStore</string>
+    <string name="checked_against_andappstore">AndAppStore проверен</string>
     <string name="current_version">Текущая версия: %s</string>
-    <string name="current_version_code">Current version code: %s</string>
-    <string name="newer_version">Newer version: %s</string>
-    <string name="newer_version_comment">Newer version: %s - %s</string>
+    <string name="current_version_code">Текущая версия: %s</string>
+    <string name="newer_version">Новая версия: %s</string>
+    <string name="newer_version_comment">Новая версия: %s - %s</string>
     <string name="newer_version_available">Доступна новая версия.</string>
     <string name="no_update_info_found">Не найдена информаия об обновлениях.</string>
     <string name="title_list_new_versions">OI Update - Список новых версий</string>
     <string name="title_list_new_versions_from_andappstore">OI Update - новые версии на AndAppStore</string>
-    <string name="title_list_all_versions">OI Update - List of managed applications</string>
-    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
+    <string name="title_list_all_versions">OI Update - Список управляемых приложений</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Список управляемых приложений (проверка на AndAppStore)</string>
     <string name="settings">Настройки</string>
-    <string name="auto_update">Auto check</string>
-    <string name="ignore_title">Ignored</string>
-    <string name="ignore_text">Updates are currently ignored. Would you like to receive updates again?</string>
-    <string name="unknown_title">Unknown</string>
-    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
-    <string name="search_on_market">Search on Market</string>
+    <string name="auto_update">Авто-проверка</string>
+    <string name="ignore_title">Игнорируется</string>
+    <string name="ignore_text">В данный момент обновления игнорируются. Хотите снова получать обновления?</string>
+    <string name="unknown_title">Неизвестно</string>
+    <string name="unknown_text">Нет информации об обновлениях. Проверьте вручную и попросите разработчика поддерживать OI Update в будущем.</string>
+    <string name="search_on_market">Поиск на Market</string>
     <string name="search_on_andappstore">Search on AndAppStore</string>
     <string name="processing">Обработка %s</string>
     
@@ -72,16 +73,16 @@
     <string name="continue_anyway">Продолжить в любом случае</string>
     <string name="abort">Отменить</string>
     
-    <string name="preference_auto_update">Auto update</string>
-    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
+    <string name="preference_auto_update">Авто-обновление</string>
+    <string name="preference_auto_update_summary">Если выбрано, то поиск обновлений производится регулярно</string>
     <string name="title_update_interval">Период обновления</string>
-    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
-    <string name="dialog_title_update_interval">Select interval</string>
-    <string name="default_update_interval">every_month</string>
+    <string name="summary_update_interval">Задать периодичность поиска обновлений</string>
+    <string name="dialog_title_update_interval">Выберите интервал</string>
+    <string name="default_update_interval">каждый_месяц</string>
     <string name="preference_warning_title">Внимание</string>
     <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
     
-    <string name="preference_andappstore">Use AndAppStore</string>
+    <string name="preference_andappstore">Использовать AndAppStore</string>
     <string name="preference_andappstore_summary">Use version information provided by AndAppStore.com</string>
     
     <string name="permission_read_update_info">Read update information</string>

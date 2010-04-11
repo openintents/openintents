@@ -22,6 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Bernd Schlapsi https://launchpad.net/~bernd-sch
+  Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail
   MixCool https://launchpad.net/~mixcool
   Peli https://launchpad.net/~peli0101</string>
 	
@@ -226,7 +227,7 @@
     
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Sehr klein</item>
     	<!-- Preference fontsize: small font size -->
         <item>Klein</item>
     	<!-- Preference fontsize: default font size-->
