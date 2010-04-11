@@ -28,7 +28,7 @@ To obtain the current release, visit
 release: 1.2.5
 date: 2009-12-??
 - fixed latent service notification
-- translations: Romanian, Russian
+- translations: Occitan (post 1500), Romanian, Russian
 
 ---------------------------------------------------------
 release: 1.2.4
