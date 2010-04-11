@@ -26,8 +26,8 @@ To obtain the current release, visit
 release: 1.1.1
 date: 2010-??
 
-- translations: Dutch, French, German, Korean,
-  Lao, Portugese, Romanian, Russian, Spanish
+- translations: Dutch, French, German, Italian, Korean,
+  Lao, Occitan (post 1500), Portugese, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.1.0
