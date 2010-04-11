@@ -32,7 +32,8 @@ To obtain the current release, visit
 release: 1.0.3
 date: 2010-??
 
-- translations: Korean, Romanian, Russian
+- translations: Italian, Korean, Occitan (post 1500),
+  Polish, Romanian, Russian
 
 ---------------------------------------------------------
 release: 1.0.2
