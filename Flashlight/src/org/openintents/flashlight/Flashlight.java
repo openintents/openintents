@@ -16,24 +16,21 @@
 
 package org.openintents.flashlight;
 
-import org.openintents.distribution.AboutActivity;
+import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.FlashlightIntents;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IHardwareService;
 import android.os.Message;
 import android.os.PowerManager;
-import android.os.RemoteException;
-import android.os.ServiceManager;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -54,6 +51,8 @@ public class Flashlight extends Activity {
 	private static final int MENU_UPDATE = Menu.FIRST + 3;
 
     private static final int REQUEST_CODE_PICK_COLOR = 1;
+
+	private static final int DIALOG_ABOUT = 1;
 	
 	private LinearLayout mBackground;
 	private View mIcon;
@@ -191,8 +190,9 @@ public class Flashlight extends Activity {
 
         menu.add(0, MENU_COLOR, 0,R.string.color)
 		  .setIcon(android.R.drawable.ic_menu_manage).setShortcut('3', 'c');
-        
-        UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update_menu);
+
+		UpdateMenu
+				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 		
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
@@ -226,6 +226,16 @@ public class Flashlight extends Activity {
 
 	}
 
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
+		}
+		return null;
+	}
+	
 	/////////////////////////////////////////////////////
 	// Other functions
 	
@@ -254,7 +264,7 @@ public class Flashlight extends Activity {
 	
 	
 	private void showAboutBox() {
-		startActivity(new Intent(this, AboutActivity.class));
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 	
 	private void pickColor() {
