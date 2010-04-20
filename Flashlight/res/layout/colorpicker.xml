@@ -16,42 +16,41 @@
  -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:id="@+id/background"
+    android:gravity="center"
     >
 	
 	<LinearLayout
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dip"
-	    android:layout_weight="1"
-	    />
-	<org.openintents.widget.ColorSlider
-			android:id="@+id/saturation" 
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" 
-			android:layout_gravity="center"
+	    android:orientation="horizontal"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/background"
+	    >
+
+		<org.openintents.widget.ColorSlider
+				android:id="@+id/saturation" 
+				android:layout_width="50sp" 
+				android:layout_height="fill_parent"
+				android:layout_margin="5sp"
+				/>
+		<org.openintents.widget.ColorCircle
+			android:layout_weight="1"
+				android:id="@+id/colorcircle"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				android:layout_marginLeft="10dip"
+				android:layout_marginRight="10dip"
+				android:layout_margin="5sp"
+				/>
+		<org.openintents.widget.ColorSlider
+			android:id="@+id/value"
+		    android:layout_width="50sp"
+		    android:layout_height="fill_parent"
+		    android:layout_margin="5sp"
 			/>
-	<org.openintents.widget.ColorCircle
-			android:id="@+id/colorcircle" 
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" 
-			android:layout_gravity="center"
-			android:layout_marginLeft="10dip"
-			android:layout_marginRight="10dip"
-			/>
-	<org.openintents.widget.ColorSlider
-			android:id="@+id/value" 
-			android:layout_width="wrap_content" 
-			android:layout_height="wrap_content" 
-			android:layout_gravity="center"
-			/>
-	<LinearLayout
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="0dip"
-	    android:layout_weight="1"
-	    />
+	</LinearLayout>
+
 </LinearLayout>

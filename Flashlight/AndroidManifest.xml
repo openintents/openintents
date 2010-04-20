@@ -18,10 +18,9 @@
       package="org.openintents.flashlight"
       
 
-android:versionName="1.0.4" 
-android:versionCode="10004">
+android:versionName="1.0.5" android:versionCode="10005">
 
-	<uses-sdk android:minSdkVersion="2" />
+	<uses-sdk android:minSdkVersion="3"/>
       
     <!-- required to keep the backlight turned on -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>

@@ -20,10 +20,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.RectF;
+import android.graphics.PointF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -40,15 +41,15 @@ public class ColorCircle extends View {
 
 	/** Default widget height */
 	public int defaultHeight;
-	
+
+    private float center_radius;
+    private final static float CENTER_RADIUS_SCALE = 0.4f;
+    
     private Paint mPaint;
     private Paint mCenterPaint;
     private int[] mColors;
     private OnColorChangedListener mListener;
-    
-    private static final int CENTER_X = 100;
-    private static final int CENTER_Y = 100;
-    private static final int CENTER_RADIUS = 32;
+
 
 	/**
 	 * Constructor. This version is only needed for instantiating the object
@@ -80,9 +81,7 @@ public class ColorCircle extends View {
 	 * Initializes variables.
 	 */
 	void init() {
-		defaultWidth = CENTER_X * 2;
-		defaultHeight = CENTER_Y * 2;
-		
+
         mColors = new int[] {
             0xFFFF0000, 0xFFFF00FF, 0xFF0000FF, 0xFF00FFFF, 0xFF00FF00,
             0xFFFFFF00, 0xFFFF0000
@@ -92,7 +91,6 @@ public class ColorCircle extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setShader(s);
         mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(32);
         
         mCenterPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCenterPaint.setStrokeWidth(5);
@@ -103,12 +101,19 @@ public class ColorCircle extends View {
 
     @Override 
     protected void onDraw(Canvas canvas) {
-        float r = CENTER_X - mPaint.getStrokeWidth()*0.5f;
+		float outer_radius = Math.min(getWidth(), getHeight())/2;
+ 		float touch_feedback_ring = center_radius + 2*mCenterPaint.getStrokeWidth();
+        float r = (outer_radius + touch_feedback_ring) / 2;
         
-        canvas.translate(CENTER_X, CENTER_X);
+        canvas.translate(getWidth()/2, getHeight()/2);
         
-        canvas.drawOval(new RectF(-r, -r, r, r), mPaint);            
-        canvas.drawCircle(0, 0, CENTER_RADIUS, mCenterPaint);
+        mPaint.setStrokeWidth(outer_radius - touch_feedback_ring);
+        
+        // This is the main "color ring"
+        canvas.drawCircle(0, 0, r, mPaint);       
+
+        // This is the center "activation button" circle
+        canvas.drawCircle(0, 0, center_radius, mCenterPaint);
         
         if (mTrackingCenter) {
             int c = mCenterPaint.getColor();
@@ -119,8 +124,10 @@ public class ColorCircle extends View {
             } else {
                 mCenterPaint.setAlpha(0x80);
             }
+            
+            // The skinny ring around the center to indicate that it is being pressed
             canvas.drawCircle(0, 0,
-                              CENTER_RADIUS + mCenterPaint.getStrokeWidth(),
+            		center_radius + mCenterPaint.getStrokeWidth(),
                               mCenterPaint);
             
             mCenterPaint.setStyle(Paint.Style.FILL);
@@ -134,62 +141,13 @@ public class ColorCircle extends View {
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		setMeasuredDimension(measureWidth(widthMeasureSpec),
-				measureHeight(heightMeasureSpec));
-	}
-
-	/**
-	 * Determines the width of this view
-	 * 
-	 * @param measureSpec
-	 *            A measureSpec packed into an int
-	 * @return The width of the view, honoring constraints from measureSpec
-	 */
-	private int measureWidth(int measureSpec) {
-		int result = 0;
-		int specMode = MeasureSpec.getMode(measureSpec);
-		int specSize = MeasureSpec.getSize(measureSpec);
-
-		if (specMode == MeasureSpec.EXACTLY) {
-			// We were told how big to be
-			result = specSize;
-		} else {
-			// Default width:
-			result = defaultWidth;
-			if (specMode == MeasureSpec.AT_MOST) {
-				// Respect AT_MOST value if that was what is called for by
-				// measureSpec
-				result = Math.min(result, specSize);
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Determines the height of this view
-	 * 
-	 * @param measureSpec
-	 *            A measureSpec packed into an int
-	 * @return The height of the view, honoring constraints from measureSpec
-	 */
-	private int measureHeight(int measureSpec) {
-		int result = 0;
-		int specMode = MeasureSpec.getMode(measureSpec);
-		int specSize = MeasureSpec.getSize(measureSpec);
-
-		if (specMode == MeasureSpec.EXACTLY) {
-			// We were told how big to be
-			result = specSize;
-		} else {
-			// Default height
-			result = defaultHeight;
-			if (specMode == MeasureSpec.AT_MOST) {
-				// Respect AT_MOST value if that was what is called for by
-				// measureSpec
-				result = Math.min(result, specSize);
-			}
-		}
-		return result;
+		
+		int max_width = MeasureSpec.getSize(widthMeasureSpec);
+		int max_height = MeasureSpec.getSize(heightMeasureSpec);
+		int size = Math.min(max_width, max_height);
+		this.center_radius = CENTER_RADIUS_SCALE * size/2;
+		
+		setMeasuredDimension(size, size);
 	}
     
 	public void setColor(int color) {
@@ -229,13 +187,11 @@ public class ColorCircle extends View {
         return Color.argb(a, r, g, b);
     }
     
-    private static final float PI = 3.1415926f;
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float x = event.getX() - CENTER_X;
-        float y = event.getY() - CENTER_Y;
-        boolean inCenter = java.lang.Math.sqrt(x*x + y*y) <= CENTER_RADIUS;
+        float x = event.getX() - getWidth()/2;
+        float y = event.getY() - getHeight()/2;
+        boolean inCenter = PointF.length(x, y) <= center_radius;
         
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -254,7 +210,7 @@ public class ColorCircle extends View {
                 } else {
                     float angle = (float)java.lang.Math.atan2(y, x);
                     // need to turn angle [-PI ... PI] into unit [0....1]
-                    float unit = angle/(2*PI);
+                    float unit = angle/(2*(float) Math.PI);
                     if (unit < 0) {
                         unit += 1;
                     }

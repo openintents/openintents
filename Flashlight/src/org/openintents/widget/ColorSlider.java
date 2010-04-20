@@ -44,9 +44,6 @@ public class ColorSlider extends View {
     private int mColor1;
     private int mColor2;
     private OnColorChangedListener mListener;
-    
-    private static final int WIDTH = 40;
-    private static final int HEIGHT = 200;
 
 	/**
 	 * Constructor. This version is only needed for instantiating the object
@@ -78,22 +75,20 @@ public class ColorSlider extends View {
 	 * Initializes variables.
 	 */
 	void init() {
-		defaultWidth = WIDTH;
-		defaultHeight = HEIGHT;
 		
 		mColor1 = 0xFFFFFFFF;
 		mColor2 = 0xFF000000;
-		Shader s = new LinearGradient(0, 0, 0, HEIGHT, mColor1, mColor2, Shader.TileMode.CLAMP);
-		
+
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mPaint.setShader(s);
         mPaint.setStyle(Paint.Style.FILL);
-        mPaint.setStrokeWidth(32);
 	}
 
     @Override 
     protected void onDraw(Canvas canvas) {
-    	canvas.drawRect(0, 0, WIDTH, HEIGHT, mPaint);
+		Shader s = new LinearGradient(0, 0, 0, getHeight(), mColor1, mColor2, Shader.TileMode.CLAMP);
+        mPaint.setShader(s);
+    	
+    	canvas.drawRect(0, 0, getWidth(), getHeight(), mPaint);
     }
     
 
@@ -163,9 +158,6 @@ public class ColorSlider extends View {
 	public void setColors(int color1, int color2) {
 		mColor1 = color1;
 		mColor2 = color2;
-
-		Shader s = new LinearGradient(0, 0, 0, HEIGHT, mColor1, mColor2, Shader.TileMode.CLAMP);
-        mPaint.setShader(s);
         
         invalidate();
 	}
@@ -209,7 +201,7 @@ public class ColorSlider extends View {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
             	
-            	float unit = (float) y / ((float) HEIGHT); 
+            	float unit = (float) y / ((float) getHeight()); 
             	
                 int newcolor = interpColor(mColor1, mColor2, unit);
 
