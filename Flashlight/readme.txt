@@ -23,6 +23,8 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.0.5
 date: 2010-?
+- Fix size of color picker widget for high density
+  devices (patch by Karl Ostmo, issue 267).
 - translations: Dutch, French, German, Italian, Korean,
   Lao, Romanian, Russian, Spanish
 
