@@ -27,6 +27,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -104,14 +105,12 @@ public class Flashlight extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.main);
-        
-        mColor = 0xffffffff;
+
         
         mBackground = (LinearLayout) findViewById(R.id.background);
         mIcon = (View) findViewById(R.id.icon);
         mText = (TextView) findViewById(R.id.text);
         
-        mBackground.setBackgroundColor(mColor);
         
         mBackground.setOnTouchListener(new View.OnTouchListener() {
 
@@ -147,15 +146,36 @@ public class Flashlight extends Activity {
 			mBrightness = new Brightness();
 		}
 
+		
+		final FlashlightState state = (FlashlightState) getLastNonConfigurationInstance();
+		if (state != null) {
+			mColor = state.mColor;
+			hideIcon();
+		} else {
+			mColor = Color.WHITE;
+			showIconForAWhile();
+		}
+		mBackground.setBackgroundColor(mColor);
     }
+    
+    
+    class FlashlightState {
+    	int mColor;
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+		FlashlightState state = new FlashlightState();
+		state.mColor = this.mColor;
+		return state;
+    }
+    
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
 		wakeLock();
-		
-		showIconForAWhile();
 	}
 	
 	@Override

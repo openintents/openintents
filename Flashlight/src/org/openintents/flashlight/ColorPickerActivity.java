@@ -49,21 +49,41 @@ public class ColorPickerActivity extends Activity
         	mIntent = new Intent();
         }
         
-        int color = mIntent.getIntExtra(FlashlightIntents.EXTRA_COLOR, 0);
-        
+
+        int color;
+        final ColorPickerState state = (ColorPickerState) getLastNonConfigurationInstance();
+        if (state != null) {
+        	color = state.mColor;
+        } else {
+        	color = mIntent.getIntExtra(FlashlightIntents.EXTRA_COLOR, Color.BLACK);
+        }
+
         mColorCircle = (ColorCircle) findViewById(R.id.colorcircle);
         mColorCircle.setOnColorChangedListener(this);
         mColorCircle.setColor(color);
-        
+
         mSaturation = (ColorSlider) findViewById(R.id.saturation);
         mSaturation.setOnColorChangedListener(this);
-		mSaturation.setColors(color, 0xff000000);
+        mSaturation.setColors(color, Color.BLACK);
 
         mValue = (ColorSlider) findViewById(R.id.value);
         mValue.setOnColorChangedListener(this);
-		mValue.setColors(0xFFFFFFFF, color);
-        
+        mValue.setColors(Color.WHITE, color);
 	}
+	
+	
+    class ColorPickerState {
+    	int mColor;
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+    	ColorPickerState state = new ColorPickerState();
+    	state.mColor = this.mColorCircle.getColor();
+        return state;
+    }
+	
+	
 
 	public int toGray(int color) {
 		int a = Color.alpha(color);
@@ -96,5 +116,4 @@ public class ColorPickerActivity extends Activity
 		setResult(RESULT_OK, mIntent);
 		finish();
 	}
-	
 }

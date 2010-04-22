@@ -24,7 +24,6 @@ import android.graphics.PointF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -35,12 +34,6 @@ import android.view.View;
  * 
  */
 public class ColorCircle extends View {
-
-	/** Default widget width */
-	public int defaultWidth;
-
-	/** Default widget height */
-	public int defaultHeight;
 
     private float center_radius;
     private final static float CENTER_RADIUS_SCALE = 0.4f;
@@ -155,6 +148,10 @@ public class ColorCircle extends View {
         invalidate();
 	}
 
+	public int getColor() {
+		return mCenterPaint.getColor();
+	}
+	
 	public void setOnColorChangedListener(
 			OnColorChangedListener colorListener) {
 		mListener = colorListener;
