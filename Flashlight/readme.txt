@@ -25,7 +25,9 @@ release: 1.0.5
 date: 2010-?
 - Fix size of color picker widget for high density
   devices (patch by Karl Ostmo, issue 267).
-- translations: Dutch, French, German, Italian, Korean,
+- Bugfix: Keep color on screen rotation (patch by
+  Karl Ostmo, issue 243).
+- Translations: Dutch, French, German, Italian, Korean,
   Lao, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
@@ -41,7 +43,7 @@ release: 1.0.3
 date: 2008-11-19
 
 - Bugfix: Set wake lock to bright instead of dim.
-- removed Internet permission
+- Remove Internet permission
   
 ---------------------------------------------------------
 release: 1.0.2
