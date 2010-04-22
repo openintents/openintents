@@ -8,6 +8,10 @@
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -20,15 +24,9 @@
     <string name="color_picker">Farbwähler</string>
     
     
-	<!-- Update -->
-	<string name="update_available">Eine neue Version von OI Taschenlampe ist verfügbar.\n%s\nWollen Sie aktualisieren?</string>
-	<string name="market_not_available">Android Market nicht verfügbar</string>
-	<string name="market_search_term">OI Taschenlampe</string>
-
-	<!-- About -->
-	<string name="about">Info</string>
-	<string name="about_title">Info zu %s</string>
-	<string name="about_text">Version %s \n\n OpenIntents Taschenlampe hilft, den Weg in der Dunkelheit zu finden. Die Hintergrundbeleuchtung bleibt eingeschaltet, solange die Anwendung aktiv ist.</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">EULA - OI Taschenlampe</string>
@@ -36,9 +34,15 @@
 	<string name="eula_refuse">Abbrechen</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Aktualisieren</string>
-    <string name="update_box_text">Bitte prüfen Sie, ob eine aktualisierte Version verfügbar ist, oder installieren Sie OI Update für automatische Benachrichtigungen. Aktuelle Version: %s</string>
+	<string name="update_box_text">Bitte prüfen Sie, ob eine aktualisierte Version verfügbar ist, oder installieren Sie OI Update für automatische Benachrichtigungen. Aktuelle Version: %s</string>
 	<string name="update_check_now">Jetzt prüfen</string>
 	<string name="update_get_updater">OI Update herunterladen</string>
 	<string name="update_error">Anwendung zum Herunterladen nicht verfügbar.</string>
+	<string name="update">Aktualisieren</string>
+	
+	<!-- About -->
+	<string name="about">Info</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

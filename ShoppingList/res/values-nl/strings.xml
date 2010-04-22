@@ -22,6 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Jasperdc https://launchpad.net/~jasperdc
+  Peli https://launchpad.net/~peli0101
   friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
@@ -31,7 +32,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<string name="app_name">OI Shopping list</string>
+	<string name="app_name">OI Boodschappenlijst</string>
 
 	<!-- Shopping Provider -->
 	<string name="new_item">Nieuw item</string>

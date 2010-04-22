@@ -5,49 +5,44 @@
 	     *************************** -->
 	     
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  bkiw https://launchpad.net/~bkiw</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Flashlight</string>
     
-    <string name="flashlight_info">The backlight stays turned on.</string>
+    <string name="flashlight_info">バックライトをつけたままにします。</string>
     
     
-    <string name="color">Color</string>
-    <string name="color_picker">Color picker</string>
+    <string name="color">色</string>
+    <string name="color_picker">色の選択</string>
     
     
-	<!-- Update -->
-	<string name="update_available">A new version of OI Flashlight is available.\n%s\nWould you like to upgrade?</string>
-	<string name="market_not_available">Android Market not available.</string>
-	<string name="market_search_term">OI Flashlight</string>
-
-	<!-- About -->
-	<string name="about">About</string>
-	<string name="about_title">About %s</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
-while this application is running.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
+	<string name="eula_title">OI Flashlightの利用規約</string>
+	<string name="eula_accept">許可</string>
+	<string name="eula_refuse">キャンセル</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Check updates</string>
-    <string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="update_box_text">新バージョンを手動でチェックするか、自動通知のためにOI Updateをインストールしてください。現在のバージョン: %s</string>
+	<string name="update_check_now">確認中。</string>
+	<string name="update_get_updater">OI Updaterを入手する</string>
+	<string name="update_error">ダウンロード用アプリが利用できません。</string>
+	<string name="update">アップデートをチェック</string>
+	
+	<!-- About -->
+	<string name="about">このソフトウェアについて</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

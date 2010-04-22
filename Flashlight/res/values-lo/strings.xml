@@ -8,6 +8,10 @@
 	<string name="about_translators">Launchpad Contributions:
   Anousak https://launchpad.net/~anousak</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -20,22 +24,9 @@
     <string name="color_picker">Color picker</string>
     
     
-	<!-- Update -->
-	<string name="update_available">A new version of OI Flashlight is available.\n%s\nWould you like to upgrade?</string>
-	<string name="market_not_available">ຕະລາດ ແອນດຣອຍ ຍັງບໍ່ມີ</string>
-	<string name="market_search_term">OI Flashlight</string>
-
-	<!-- About -->
-	<string name="about">ກ່ຽວກັບ</string>
-	<string name="about_title">ກ່ຽວກັບ %s</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
-while this application is running.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Flashlight EULA</string>
@@ -43,12 +34,18 @@ www.openintents.org
 	<string name="eula_refuse">Cancel</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Check updates</string>
-    <string name="update_box_text">Please check manually for updates or install OI Update
+	<string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
 	<string name="update_check_now">Check now.</string>
 	<string name="update_get_updater">Get OI Updater.</string>
 	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+	
+	<!-- About -->
+	<string name="about">ກ່ຽວກັບ</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

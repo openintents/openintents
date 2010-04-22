@@ -9,6 +9,10 @@
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -21,15 +25,9 @@
     <string name="color_picker">Alege culoarea</string>
     
     
-	<!-- Update -->
-	<string name="update_available">O nouă versiune de OI Lanterna este disponibilă.\n%s\nDoriți să o instalați?</string>
-	<string name="market_not_available">Android Market nu este disponibil.</string>
-	<string name="market_search_term">OI Lanterna</string>
-
-	<!-- About -->
-	<string name="about">Despre</string>
-	<string name="about_title">Despre %s</string>
-	<string name="about_text">Versiunea %s \n\n OpenIntents Lanterna vă ajută să vă găsiți drumul prin întuneric. Ecranul este menținut aprins cât timp aplicația rulează. \n\n OpenIntents permite diverselor aplicații Android să partajeze date folosind "intenții" și "interfețe". \n\n Pentru mai multe informații și alte aplicații vizitați OpenIntents la www.openintents.org</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Lanterna ALUF</string>
@@ -37,9 +35,15 @@
 	<string name="eula_refuse">Renunță</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Verifică versiuni noi</string>
-    <string name="update_box_text">Verificați manual existența versiunilor noi sau instalați OI Update pentru noitificări automate. Versiunea curentă: %s</string>
+	<string name="update_box_text">Verificați manual existența versiunilor noi sau instalați OI Update pentru noitificări automate. Versiunea curentă: %s</string>
 	<string name="update_check_now">Verifică acum</string>
 	<string name="update_get_updater">Instalează OI Updater</string>
 	<string name="update_error">Download application not available.</string>
+	<string name="update">Verifică versiuni noi</string>
+	
+	<!-- About -->
+	<string name="about">Despre</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

@@ -10,6 +10,10 @@
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
   miwie https://launchpad.net/~mw-miwie</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -22,15 +26,9 @@
     <string name="color_picker">Selector de color</string>
     
     
-	<!-- Update -->
-	<string name="update_available">Hay una nueva vesión de OI Flashlight.\n%s\n¿Quiere actualizar?</string>
-	<string name="market_not_available">Android Market no disponible.</string>
-	<string name="market_search_term">OI Flashlight</string>
-
-	<!-- About -->
-	<string name="about">Acerca de</string>
-	<string name="about_title">Acerca de %</string>
-	<string name="about_text">La versión %s \n\n de OpenIntents Flashlight le ayuda a ver en la oscuridad. La luz de fondo de la pantalla se mantiene encendida mientras la aplicación esté ejecutándose.\n\n OpenIntents permite a diferentes aplicaciones de Android compartir datos usando intents e interfaces abiertas.\n\n Para más información y otras aplicaciones visite OpenIntents en www.openintents.org</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
@@ -38,9 +36,15 @@
 	<string name="eula_refuse">Cancelar</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Comprobar actualizaciones</string>
-    <string name="update_box_text">Por favor, compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
+	<string name="update_box_text">Por favor, compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
 	<string name="update_check_now">Comprobar ahora.</string>
 	<string name="update_get_updater">Obtenga el Actualizador OI.</string>
 	<string name="update_error">Descarga de aplicación no disponible.</string>
+	<string name="update">Comprobar actualizaciones</string>
+	
+	<!-- About -->
+	<string name="about">Acerca de</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

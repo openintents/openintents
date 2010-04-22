@@ -8,6 +8,10 @@
 	<string name="about_translators">Launchpad Contributions:
   CSro https://launchpad.net/~choongsan</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -20,22 +24,9 @@
     <string name="color_picker">색 골라내기</string>
     
     
-	<!-- Update -->
-	<string name="update_available">OI 전등의 새버전이 나왔습니다. \n%s\n업그래이드 하시겠습니까?</string>
-	<string name="market_not_available">Android Market not available.</string>
-	<string name="market_search_term">OI 전등</string>
-
-	<!-- About -->
-	<string name="about">프로그램 정보</string>
-	<string name="about_title">%s에 대하여</string>
-	<string name="about_text">Version %s \n\n
-OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on
-while this application is running.\n\n
-OpenIntents allows different Android applications 
-to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at 
-www.openintents.org
-	</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Flashlight EULA</string>
@@ -43,12 +34,18 @@ www.openintents.org
 	<string name="eula_refuse">취소</string>
 	
 	<!-- Update -->
-	<string name="update_menu">업데이트 확인</string>
-    <string name="update_box_text">Please check manually for updates or install OI Update
+	<string name="update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
 	<string name="update_check_now">지금 확인</string>
 	<string name="update_get_updater">OI 업데이트기 가져오기</string>
 	<string name="update_error">Download application not available.</string>
+	<string name="update">업데이트 확인</string>
+	
+	<!-- About -->
+	<string name="about">프로그램 정보</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

@@ -9,6 +9,10 @@
   Peli https://launchpad.net/~peli0101
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -21,15 +25,9 @@
     <string name="color_picker">Выбор цвета</string>
     
     
-	<!-- Update -->
-	<string name="update_available">Доступна новая версия OI Flashlight.\n%s\nХотите обновить версию?</string>
-	<string name="market_not_available">Android Market недоступен.</string>
-	<string name="market_search_term">OI Flashlight</string>
-
-	<!-- About -->
-	<string name="about">О программе</string>
-	<string name="about_title">О %s</string>
-	<string name="about_text">OpenIntents Flashlight версии %s \n\n поможет Вам найти дорогу в темноте. Подсветка экрана остаётся включённой пока запущено это приложение.\n\n OpenIntents позволяет различным приложениям Android совместно использовать данные используя цели и открытые интерфейсы.\n\n Для более подробной информации и других отличных приложений посетите OpenIntents на www.openintents.org</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
 	
 	<!-- EULA -->
 	<string name="eula_title">Лицензионное соглашение OI Flashlight</string>
@@ -37,9 +35,15 @@
 	<string name="eula_refuse">Отменить</string>
 	
 	<!-- Update -->
-	<string name="update_menu">Проверить обновления</string>
-    <string name="update_box_text">Проверяйте обновления вручную или установите OI Update для автоматического уведомления. Текущая версия: %s</string>
+	<string name="update_box_text">Проверяйте обновления вручную или установите OI Update для автоматического уведомления. Текущая версия: %s</string>
 	<string name="update_check_now">Проверить сейчас</string>
 	<string name="update_get_updater">Получить OI Updater.</string>
 	<string name="update_error">Приложение загрузчик отсутствует</string>
+	<string name="update">Проверить обновления</string>
+	
+	<!-- About -->
+	<string name="about">О программе</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
 </resources>

@@ -22,6 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
+  bkiw https://launchpad.net/~bkiw
   maimuzo https://launchpad.net/~maimuzo
   tiantian https://launchpad.net/~tsukida-cmkc</string>
 	
@@ -39,7 +40,7 @@
     <string name="menu_send">送信</string>
     <string name="menu_open">開く</string>
     <string name="menu_move">移動</string>
-    <string name="menu_copy">Copy</string>
+    <string name="menu_copy">コピー</string>
     
     <string name="create_new_folder">新規フォルダーを作成</string>
     <string name="folder_name">フォルダ名</string>
@@ -58,19 +59,19 @@
     <string name="copy_title">コピーするフォルダを選択してください</string>
     <string name="copy_button">ここへコピー</string>
     
-    <string name="copied_file_name">Copy of %s</string>
-    <string name="copied_file_name_2">Copy %d of %s</string>
+    <string name="copied_file_name">%s のコピー</string>
+    <string name="copied_file_name_2">%s の %d をコピー</string>
     
     <string name="error_creating_new_folder">新規フォルダーを作成できませんでした。</string>
     <string name="error_deleting_file">ファイルを削除できませんでした。</string>
-    <string name="error_deleting_folder">Could not delete folder '%s'.</string>
+    <string name="error_deleting_folder">'%s' のフォルダを削除できません。</string>
     <string name="error_renaming_file">ファイル名を変更できませんでした。</string>
     <string name="error_renaming_folder">フォルダ名を変更できませんでした。</string>
     <string name="error_moving_file">ファイルを移動できませんでした。</string>
     <string name="error_moving_folder">フォルダーを移動できませんでした。</string>
-    <string name="error_copying_file">Could not copy file.</string>
+    <string name="error_copying_file">ファイルのコピーができません。</string>
     <string name="error_file_does_not_exists">ファイルが存在しません。</string>
-    <string name="error_deleting_child_file">Could not delete child file '%s'.</string>
+    <string name="error_deleting_child_file">フォルダの中の '%s' を削除できません。</string>
     
     <string name="send_not_available">利用できる送信用アプリがありません。</string>
     
@@ -93,7 +94,7 @@
 	<string name="update">新バージョンをチェック</string>
 	
     <!-- About -->
-    <string name="about">About</string>
+    <string name="about">このソフトウェアについて</string>
 	<string name="aboutapp_not_available">バージョン %s\n\n全情報(連絡先・クレジット・ライセンスなど)を表示するための互換性のある拡張機能は利用できません。</string>
     <string name="aboutapp_get">OI Aboutを入手する</string>
     

@@ -6,7 +6,8 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Diego Pierotto https://launchpad.net/~gringo</string>
+  Diego Pierotto https://launchpad.net/~gringo
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Strings for OI About -->
 	<string name="about_comments">OI Countdown mostra notifiche dopo uno specificato periodo di tempo.</string>

@@ -36,7 +36,7 @@
     <string name="ok">Ok</string>
     
     <string name="update_not_started">アップデートを開始できませんでした!\n\nアプリの開発者に連絡してみてください!</string>
-    <string name="app_up_to_date">Application is up-to-date.</string>
+    <string name="app_up_to_date">アプリは更新されています。</string>
     <string name="checking">新バージョンを確認中。</string>
     <string name="building_app_list">アプリのリストを作成中。</string>
     <string name="check_andappstore">AndAppStore.comを確認</string>
@@ -45,30 +45,27 @@
     <string name="refresh">再表示</string>
     <string name="checked_against_andappstore">AndAppStoreを確認しました</string>
     <string name="current_version">現在のバージョン: %s</string>
-    <string name="current_version_code">Current version code: %s</string>
+    <string name="current_version_code">現在のバージョンコード: %s</string>
     <string name="newer_version">最新バージョン: %s</string>
     <string name="newer_version_comment">最新バージョン: %s - %s</string>
     <string name="newer_version_available">最新バージョンが利用可能です。</string>
     <string name="no_update_info_found">アップデート情報が見つかりませんでした。</string>
     <string name="title_list_new_versions">OI Update - 新バージョンのリスト</string>
     <string name="title_list_new_versions_from_andappstore">OI Update - AndAppStoreの新バージョン</string>
-    <string name="title_list_all_versions">OI Update - List of managed applications</string>
+    <string name="title_list_all_versions">OI Update - 管理対象のアプリリスト</string>
     <string name="title_list_all_versions_from_andappstore">OI Update - 管理対象のアプリリスト(AndAppStoreで確認)</string>
     <string name="settings">設定</string>
     <string name="auto_update">自動確認</string>
     <string name="ignore_title">無視する</string>
     <string name="ignore_text">更新機能は現在無効です。もう一度更新情報を受信したいですか?</string>
     <string name="unknown_title">不明</string>
-    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
+    <string name="unknown_text">更新情報が利用できませんでした。手動でチェックし、将来OI Updateをサポートするよう開発者に頼んでみてください。</string>
     <string name="search_on_market">Android Marketを検索</string>
     <string name="search_on_andappstore">AndAppStoreを検索</string>
     <string name="processing">%s 処理中</string>
     
-    <string name="warn">The update process of this application directs to
-    a different site than Android Market. Applications installed from unknown sources might
-    exhibit a security risk. 
-    </string>
-    <string name="continue_anyway">Continue anyway</string>
+    <string name="warn">この更新手順ではAndroid Marketから別のサイトへ誘導します。不明な出所からインストールされたアプリは、セキュリティーリスクに晒されるかもしれません。</string>
+    <string name="continue_anyway">とにかく続行する</string>
     <string name="abort">このアプリについて</string>
     
     <string name="preference_auto_update">自動更新</string>
@@ -85,19 +82,14 @@
     
     <string name="permission_read_update_info">更新情報を読む</string>
     <string name="permission_write_update_info">更新情報を書く</string>
-    <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
+    <string name="permission_read_update_info_descr">インストールされているアプリの情報を読み、提供元とリクエストを更新する。</string>
     <string name="permission_write_update_info_descr">インストールされているアプリの情報を書き、提供元とリクエストを更新する。</string>
 
 
 	<!-- About -->
 	<string name="about">このアプリについて</string>
 	<string name="about_title">%s について</string>
-	<string name="about_text">Version %s \n\n
-OI Update keeps you informed on new application versions.\n
-	
-OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at www.openintents.org
-	</string>
+	<string name="about_text">バージョン %s\n\nOI Updateはアプリの新バージョンを通知し続けます。\nOpenIntentsはオープンインターフェイスとインテントによって別のアプリがデータを共有することを許します。\n\nさらなる情報とその他の便利なアプリを得るため、www.openintents.orgのOpenIntentsを訪れてみてください。</string>
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Update利用者規約</string>

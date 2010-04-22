@@ -114,28 +114,28 @@
     
 	<string name="menu_theme">Tema</string>
 	<string name="theme_pick">Elije un tema</string>
-    <string name="theme_default">Default </string>
+    <string name="theme_default">Por defecto</string>
     <string name="theme_monospaced">Monospaced font</string>
-	<string name="theme_serif">Serif font</string>
+	<string name="theme_serif">Tipografía Serif</string>
 
 	<!-- Search -->
-	<string name="menu_search">Search</string>
+	<string name="menu_search">Buscar</string>
     <string name="search_query_results">Bloc de Notas OI</string>
     <!-- %s is the search string -->
 	<string name="search_found_no_results">Ningún resultado encontrado para %s.</string>
     <string name="search_label">OI Notepad busqueda</string>
-    <string name="search_hint">Search</string>
+    <string name="search_hint">Buscar</string>
     
     <!-- The description that will show up in the search settings for this source.  -->
-    <string name="search_settings_description">Titles of your notes</string>
+    <string name="search_settings_description">Títulos de sus notas</string>
     
 	<!--     Dialog box    -->
 	<string name="ok">De Acuerdo</string>
 	<string name="cancel">Cancelar</string>
-    <string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+    <string name="use_theme_for_all_lists">Usar este tema para todas las listas</string>
+	<string name="get_more_themes">Obtener más temas</string>
     
-    <string name="all_notes">All notes</string>
+    <string name="all_notes">Todas las notas</string>
     
     <!-- Settings -->
     <string name="noteslist_preferences">Lista de Notas</string>
@@ -144,9 +144,9 @@
     <string name="preference_sortorder_summary">El orden en el que las notas son mostradas en la lista de notas</string>
     
     <string name="note_editor_preferences">Editor de notas</string>
-    <string name="preference_fontsize">Font size</string>
-	<string name="preference_fontsize_summary">Change font size</string>
-	<string name="preference_fontsize_dialog_title">Choose font size</string>
+    <string name="preference_fontsize">Tamaño de la tipografía</string>
+	<string name="preference_fontsize_summary">Cambiar tamaño de la fuente</string>
+	<string name="preference_fontsize_dialog_title">Seleccionar tamaño de fuente</string>
 	<string name="preference_autolink_title">Creación automática de enlaces</string>
     <string name="preference_autolink_summary_on">Crear enlaces para números de teléfono y direcciones de e-mail/calle/web</string>
     <string name="preference_autolink_summary_off">No crear enlaces de estas notas</string>
@@ -220,24 +220,24 @@
 
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Muy pequeña</item>
     	<!-- Preference fontsize: small font size -->
-        <item>Small</item>
+        <item>Pequeña</item>
     	<!-- Preference fontsize: default font size-->
-    	<item>Default</item>
+    	<item>Por defecto</item>
     	<!-- Preference fontsize: large font size -->
-        <item>Large</item>
+        <item>Grande</item>
     </string-array>
 
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_addons">Componentes adicionales</string>
+    <string name="preference_get_addons">Obtener nuevos complementos</string>
+    <string name="preference_get_addons_summary">Buscar extensiones y temas en linea.</string>
+    <string name="preference_get_market_addons">Obtener complementos de Market</string>
+    <string name="preference_get_developer_addons">Obtener complementos de OpenIntents</string>
     <string name="preference_extensions">Extensiones</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_themes">Temas</string>
     <string name="preference_market_extensions_summary">Búsqueda de extensiones en la Tienda Android</string>
-    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_market_themes_summary">Buscar temas en Android Market.</string>
     <string name="preference_developer_extensions_summary">Obtener extensiones desde la página principal de OpenIntents</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Obtener temas de la web de OpenIntents</string>
 </resources>

@@ -28,7 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Diego Pierotto https://launchpad.net/~gringo</string>
+  Diego Pierotto https://launchpad.net/~gringo
+  Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Semplice finestra di informazioni condivisa tra le applicazioni.</string>

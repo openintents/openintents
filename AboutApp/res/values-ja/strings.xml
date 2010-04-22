@@ -34,7 +34,7 @@
 	<string name="about_comments">アプリ間で共有されるダイアログについての単体アプリ</string>
 	
 	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
-	<string name="about_website_label">OI About at OpenIntents</string>
+	<string name="about_website_label">OpenIntentsのOI About</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
