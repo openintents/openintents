@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  bkiw https://launchpad.net/~bkiw</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Countdownは指定した時間が経った事を通知します。</string>
+	
+	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
+	<string name="about_website_label">OpenIntentsのOI Countdown</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application -->
+    <string name="app_name">OI Countdown</string>
+    
+    <string name="start">開始</string>
+    <string name="stop">停止</string>
+    <string name="modify">編集</string>
+    <string name="cont">続ける</string>
+    
+	<string name="no_durations">新しいカウントダウンの追加にメニューを使用</string>
+	<string name="countdown_list">カウントダウン一覧</string>
+	
+    <string name="menu_delete">削除</string>
+    <string name="menu_edit">編集</string>
+    <string name="menu_insert">カウントダウンの追加</string>
+    <string name="menu_pick_ringtone">着信音</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">日付をセット</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">持続時間を設定</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">アクションをセット</string>
+    
+    <string name="hint_title">例：ピザの注文</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">カウントダウンの編集</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">カウントダウンを作成</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">カウントダウンを編集</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">カウントダウンを選択</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Countdown</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">エラー</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">内部エラー(カウントダウンのロード)</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">ステータスバーへの通知</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">ステータスバーから起動</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">音</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">バイブ</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">ライト</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="action">アクション: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_action">アクションを選択: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<string name="select_countdown">カウントダウンを選択: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">テスト</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">設定</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">閉じる</string>
+	
+	<!-- For the countdown display. '%s' is the number of days remaining (more than 1). -->
+	<string name="days">日</string>
+	
+	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
+	<string name="day">日</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">アプリケーション</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">ショートカット</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">自動実行するタスク</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">ショートカットを選択</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">自動実行するタスクを選択</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">アクティビティを選択</string>
+ 
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdownの利用規約</string>
+	<string name="eula_accept">許可</string>
+	<string name="eula_refuse">キャンセル</string>
+	
+	<!-- Update -->
+    <string name="menu_update">アップデートをチェック</string>
+	<string name="update_box_text">新バージョンを手動でチェックするか、自動通知のためにOI Updateをインストールしてください。現在のバージョン: %s</string>
+	<string name="update_check_now">確認中。</string>
+	<string name="update_get_updater">OI Updaterを入手する</string>
+	<string name="update_error">ダウンロード用アプリが利用できません。</string>
+	
+    <!-- About -->
+    <string name="about">このソフトウェアについて</string>
+	<string name="aboutapp_not_available">バージョン %s\n\n全情報(連絡先・クレジット・ライセンスなど)を表示するための互換性のある拡張機能は利用できません。</string>
+    <string name="aboutapp_get">OI Aboutを入手する</string>
+    
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>カウントダウンをスタート</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>カウントダウンを停止</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string name="preference_countdown">カウントダウン</string>
+
+    <string name="preference_extensions">拡張機能</string>
+    <string name="preference_get_extensions">拡張機能を入手</string>
+    <string name="preference_get_extensions_summary">拡張機能をインターネットから検索</string>
+    <string name="preference_get_extensions_from">から拡張機能を検索</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">拡張機能をAndroid Marketから検索</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">拡張機能をOpenIntentsから検索</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">通知のタイムアウト</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">音やバイブ、光による通知のタイムアウト。</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">タイムアウトを設定</string>
+                
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 秒</item>
+        <item>5 秒</item>
+        <item>10 秒</item>
+        <item>30 秒</item>
+        <item>1 分</item>
+        <item>5 分</item>
+        <item>10 分</item>
+    </string-array>
+</resources>

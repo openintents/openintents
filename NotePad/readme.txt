@@ -26,7 +26,7 @@ To obtain the current release, visit
 ---------------------------------------------------------
 release: 1.2.2
 date: 2010-?
-- translations: Polish
+- translations: Japanese, Polish
 
 ---------------------------------------------------------
 release: 1.2.1

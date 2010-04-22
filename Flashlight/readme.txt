@@ -27,8 +27,8 @@ date: 2010-?
   devices (patch by Karl Ostmo, issue 267).
 - Bugfix: Keep color on screen rotation (patch by
   Karl Ostmo, issue 243).
-- Translations: Dutch, French, German, Italian, Korean,
-  Lao, Romanian, Russian, Spanish
+- Translations: Dutch, French, German, Italian, Japanese,
+  Korean, Lao, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 release: 1.0.4
