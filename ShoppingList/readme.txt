@@ -21,11 +21,15 @@ lists or party guest lists.
 To obtain the current release, visit
   http://www.openintents.org
 
+release 1.2.4
+date: 
+- translations: Czech, Chinese (Simplified), Chinese 
+  (Traditional), Dutch, Italian, Japanese, 
+  
 ---------------------------------------------------------
 release: 1.2.3
-date: 2010-?
-- translations: Czech, Chinese (Simplified), Chinese 
-  (Traditional), Dutch, Italian, Japanese, Russian
+date: 2010-03-24
+- translations: Russian
 - fix #262, localized prices
 
 ---------------------------------------------------------
