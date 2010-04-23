@@ -10,7 +10,6 @@ import org.openintents.flashlight.R;
  */
 public class RD {
 	public class layout {
-		public static final int about = R.layout.about;
 		public static final int eula = R.layout.eula;
 	}
 	
@@ -24,11 +23,6 @@ public class RD {
 	}
 	
 	public class string {
-		///////////////////////////////////////
-		// About activity
-		public static final int about_title = R.string.about_title;
-		public static final int about_text = R.string.about_text;
-		
 		///////////////////////////////////////
 		// Eula activity
 
