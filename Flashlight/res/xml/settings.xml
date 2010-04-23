@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="@string/settings_titlebar">
+
+	<CheckBoxPreference
+		android:key="should_save_color"
+		android:defaultValue="true"
+		android:title="@string/settings_title_keep_color"
+		android:summary="@string/settings_summary_keep_color" />
+
+</PreferenceScreen>

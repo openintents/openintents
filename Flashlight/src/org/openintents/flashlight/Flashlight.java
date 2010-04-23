@@ -27,11 +27,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -50,6 +52,8 @@ public class Flashlight extends Activity {
 	private static final int MENU_COLOR = Menu.FIRST + 1;
 	private static final int MENU_ABOUT = Menu.FIRST + 2;
 	private static final int MENU_UPDATE = Menu.FIRST + 3;
+	private static final int MENU_SETTINGS = Menu.FIRST + 4;
+	
 
     private static final int REQUEST_CODE_PICK_COLOR = 1;
 
@@ -146,18 +150,23 @@ public class Flashlight extends Activity {
 			mBrightness = new Brightness();
 		}
 
-		
 		final FlashlightState state = (FlashlightState) getLastNonConfigurationInstance();
 		if (state != null) {
 			mColor = state.mColor;
 			hideIcon();
 		} else {
-			mColor = Color.WHITE;
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			if (prefs.getBoolean(FlashlightPrefs.PREFKEY_SHOULD_SAVE_COLOR, FlashlightPrefs.DEFAULT_SHOULD_SAVE_COLOR)) {
+				mColor = prefs.getInt(FlashlightPrefs.PREFKEY_SAVED_COLOR, Color.WHITE);
+			} else {
+				mColor = Color.WHITE;
+			}
+			
 			showIconForAWhile();
 		}
 		mBackground.setBackgroundColor(mColor);
     }
-    
+
     
     class FlashlightState {
     	int mColor;
@@ -211,6 +220,9 @@ public class Flashlight extends Activity {
         menu.add(0, MENU_COLOR, 0,R.string.color)
 		  .setIcon(android.R.drawable.ic_menu_manage).setShortcut('3', 'c');
 
+        menu.add(0, MENU_SETTINGS, 0,R.string.preferences)
+		  .setIcon(android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
+        
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 		
@@ -236,6 +248,10 @@ public class Flashlight extends Activity {
         
 		case MENU_ABOUT:
 			showAboutBox();
+			return true;
+			
+		case MENU_SETTINGS:
+			showSettingsMenu();
 			return true;
 
 		case MENU_UPDATE:
@@ -282,9 +298,12 @@ public class Flashlight extends Activity {
 		}
 	}
 	
-	
 	private void showAboutBox() {
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
+	}
+	
+	private void showSettingsMenu() {
+		startActivity(new Intent(this, FlashlightPrefs.class));
 	}
 	
 	private void pickColor() {
@@ -329,6 +348,12 @@ public class Flashlight extends Activity {
 		case REQUEST_CODE_PICK_COLOR:
 			if (resultCode == RESULT_OK) {
 				mColor = data.getIntExtra(FlashlightIntents.EXTRA_COLOR, mColor);
+
+				SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+				if (prefs.getBoolean(FlashlightPrefs.PREFKEY_SHOULD_SAVE_COLOR, FlashlightPrefs.DEFAULT_SHOULD_SAVE_COLOR)) {
+					prefs.edit().putInt(FlashlightPrefs.PREFKEY_SAVED_COLOR, mColor).commit();
+				}
+
 		        mBackground.setBackgroundColor(mColor);
 			}
 			break;

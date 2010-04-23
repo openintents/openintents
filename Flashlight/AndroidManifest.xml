@@ -86,6 +86,8 @@
 				<category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name="org.openintents.flashlight.FlashlightPrefs" />
         
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
         </activity> 
