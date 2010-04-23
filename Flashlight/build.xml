@@ -29,8 +29,9 @@ storepass=*password of keystore*
 	<xmlproperty file="AndroidManifest.xml" />
 
 	<!-- Path to Android SDK and tools -->
-	<property name="sdk-folder" value="${android.sdk}" />
-	<property name="android-tools" value="${sdk-folder}/tools" />
+	<property name="sdk-folder" value="${android.sdk}/platforms/${platform}" />
+	<property name="platform-tools" value="${sdk-folder}/tools" />
+	<property name="android-tools" value="${android.sdk}/tools" />
 	<echo>Using Android SDK directory ${sdk-folder}</echo>
 	
 	<!-- Application Package Name -->
@@ -46,7 +47,7 @@ storepass=*password of keystore*
 
     <!-- No user servicable parts below. -->
 
-	<property name="android-framework" value="${android-tools}/lib/framework.aidl" />
+	<property name="android-framework" value="${sdk-location}/platforms/${platform}/framework.aidl" />
 
 	<!-- Input directories -->
     <property name="resource-dir" value="res" />
@@ -77,7 +78,7 @@ storepass=*password of keystore*
 	<property name="releasedir" value="release" />
     
     <!-- Create R.java in the source directory -->
-    <property name="outdir-r" value="src" />
+    <property name="outdir-r" value="gen" />
 
     <!-- Intermediate files -->
     <property name="dex-file" value="classes.dex" />
@@ -110,10 +111,16 @@ storepass=*password of keystore*
         <os family="windows"/>
     </condition>
 	
-	<property name="out-signed-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<property name="out-signed-package" value="${outdir}/${ant.project.name}-signed.apk" />
 	<condition property="out-signed-package-ospath"
 	            value="${basedir}\${out-signed-package}"
 	            else="${basedir}/${out-signed-package}" >
+	        <os family="windows"/>
+	</condition>
+	<property name="out-aligned-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<condition property="out-aligned-package-ospath"
+	            value="${basedir}\${out-aligned-package}"
+	            else="${basedir}/${out-aligned-package}" >
 	        <os family="windows"/>
 	</condition>
 
@@ -125,19 +132,22 @@ storepass=*password of keystore*
 	</condition>
 	
     <!-- Tools -->
-    <condition property="aapt" value="${android-tools}/aapt.exe" else="${android-tools}/aapt" >
+    <condition property="aapt" value="${platform-tools}/aapt.exe" else="${platform-tools}/aapt" >
         <os family="windows"/>
     </condition>
-    <condition property="aidl" value="${android-tools}/aidl.exe" else="${android-tools}/aidl" >
+    <condition property="aidl" value="${platform-tools}/aidl.exe" else="${platform-tools}/aidl" >
         <os family="windows"/>
     </condition>
     <condition property="adb" value="${android-tools}/adb.exe" else="${android-tools}/adb" >
         <os family="windows"/>
     </condition>
-    <condition property="dx" value="${android-tools}/dx.bat" else="${android-tools}/dx" >
+    <condition property="dx" value="${platform-tools}/dx.bat" else="${platform-tools}/dx" >
         <os family="windows"/>
     </condition>
     <condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder" >
+        <os family="windows"/>
+    </condition>
+    <condition property="zipalign" value="${android-tools}/zipalign.exe" else="${android-tools}/zipalign" >
         <os family="windows"/>
     </condition>
 	
@@ -155,7 +165,7 @@ storepass=*password of keystore*
     <!-- Rules -->
     <!-- Custom tasks -->
 <!-- 1.5 Changes START -->
-    <taskdef name="setup"
+<!--    <taskdef name="setup"
         classname="com.android.ant.SetupTask"
         classpathref="android.antlibs"/>
 	<setup import="false" />
@@ -166,6 +176,7 @@ storepass=*password of keystore*
     <taskdef name="apkbuilder"
         classname="com.android.ant.ApkBuilderTask"
         classpathref="android.antlibs"/>
+-->
 		
 <!-- 1.5 Changes END -->
 
@@ -206,7 +217,8 @@ storepass=*password of keystore*
         <echo>Compiling aidl files into Java classes...</echo>
         <apply executable="${aidl}" failonerror="true">
             <arg value="-p${android-framework}" />
-            <arg value="-I${srcdir}" />
+           <arg value="-I${srcdir}" />
+            <arg value="-o${outdir-r}" />
             <fileset dir="${srcdir}">
                 <include name="**/*.aidl"/>
             </fileset>
@@ -216,13 +228,15 @@ storepass=*password of keystore*
     <!-- Compile this project's .java files into .class files. -->
     <target name="compile" depends="dirs,clear_layout, resource-src, aidl">
 		<echo>using sdk --|${android-jar}|--</echo>
+		<echo>external-libs --|${external-libs}|--</echo>
 		
         <javac encoding="ascii" target="1.5" debug="true" extdirs=""
-                srcdir="."
+                
                 destdir="${outdir-classes}"
                 bootclasspath="${android-jar}">
-        	<exclude name="gen/**" /> <!-- SDK 1.5: backward compatibility with SDK 1.1 -->
-        	<classpath>
+        	<src path="."/>
+        	<src path="./gen"/>
+            <classpath>
                 <fileset dir="${external-libs}" includes="*.jar"/>
             </classpath>
          </javac>
@@ -245,11 +259,6 @@ storepass=*password of keystore*
 	     <arg value="-dontusemixedcaseclassnames"/>
 	     <arg value="-dontoptimize"/>
 	     <arg value="-dontshrink"/>
-	     <arg value="-keep public class org.openintents.flashlight.ColorPickerActivity"/>
-	     <arg value="-keep public class org.openintents.flashlight.Flashlight"/>
-	     <arg value="-keep public class android.content.BroadcastReceiver"/>
-	     <arg value="-keep public class org.openintents.widget.ColorCircle"/>
-	     <arg value="-keep public class org.openintents.widget.ColorSlider"/>
 		 <arg value="-keep public class org.openintents.distribution.EulaActivity"/>
 		 <arg value="-keep public class org.openintents.distribution.AboutActivity"/>
 	    	 <!-- <arg value="-keep public class org.openintents.splashplay.widget.LazyLinearLayout {
@@ -269,8 +278,19 @@ storepass=*password of keystore*
 	  </target>
 
 
+    <!-- Convert this project's .class files into .dex files. currently no optimization add >>,optimize<< to depends attr -->
+    <target name="dex" depends="compile">
+        <echo>Converting compiled files and external libraries into ${outdir}/${dex-file}...</echo>
+        <apply executable="${dx}" failonerror="true" parallel="true">
+            <arg value="--dex" />
+            <arg value="--output=${intermediate-dex-ospath}" />
+            <arg path="${outdir-classes-ospath}" />
+            <fileset dir="${external-libs}" includes="*.jar"/>
+        </apply>
+    </target>
+
     <!-- Convert this project's .class files into .dex files. -->
-    <target name="dex" depends="compile,optimize">
+    <target name="dex-debug" depends="compile">
         <echo>Converting compiled files and external libraries into ${outdir}/${dex-file}...</echo>
         <apply executable="${dx}" failonerror="true" parallel="true">
             <arg value="--dex" />
@@ -330,7 +350,7 @@ storepass=*password of keystore*
 
     <!-- Package the application and sign it with a debug key.
 		 This is the default target when building. It is used for debug. -->
-    <target name="debug" depends="dex, package-res">
+    <target name="debug" depends="dex-debug, package-res">
         <echo>Packaging ${out-debug-package}, and signing it with a debug key...</echo>
         <exec executable="${apk-builder}" failonerror="true">
             <arg value="${out-debug-package-ospath}" />
@@ -347,7 +367,7 @@ storepass=*password of keystore*
 
     <!-- Package the application without signing it.
     	 This allows for the application to be signed later with an official publishing key. -->
-    <target name="release" depends="dex, package-res">
+    <target name="release" depends="dex-debug, package-res">
         <echo>Packaging ${out-unsigned-package} for release...</echo>
         <exec executable="${apk-builder}" failonerror="true">
             <arg value="${out-unsigned-package-ospath}" />
@@ -361,7 +381,13 @@ storepass=*password of keystore*
             <arg value="-rj" />
             <arg value="${external-libs-ospath}" />
         </exec>
-    	<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}"/>
+    	<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" keypass="${keypass}" signedjar="${out-signed-package-ospath}"/>
+        <exec executable="${zipalign}" failonerror="true">
+            <arg value="-f" />
+            <arg value="4" />
+            <arg value="${out-signed-package-ospath}" />
+            <arg value="${out-aligned-package-ospath}" />
+        </exec>
     	
     </target>
 
@@ -385,19 +411,19 @@ storepass=*password of keystore*
 	
 	<!-- Install the signed package on the default emulator -->
 	<target name="install-signed" depends="release">
-		<echo>Installing ${out-signed-package} onto default emulator...</echo>
+		<echo>Installing ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
 	<target name="reinstall-signed" depends="release">
-		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
+		<echo>Reinstalling ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
