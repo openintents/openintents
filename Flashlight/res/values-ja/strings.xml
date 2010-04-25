@@ -6,6 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   bkiw https://launchpad.net/~bkiw</string>
 	
 	<!-- Strings for OI About -->
@@ -23,6 +24,8 @@
     <string name="color">色</string>
     <string name="color_picker">色の選択</string>
     
+    
+    <string name="preferences">Preferences</string>
     
 	<!-- ***************************
 	     Distribution
@@ -45,4 +48,11 @@
 	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
 	<string name="aboutapp_get">Get OI About</string>
 	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Preferences</string>
+	<string name="settings_title_keep_color">Keep color</string>
+	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
 </resources>
