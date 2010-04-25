@@ -31,6 +31,7 @@ release: 1.2.3
 date: 2010-03-24
 - translations: Russian
 - fix #262, localized prices
+- fix "Done" button for editing items
 
 ---------------------------------------------------------
 release: 1.2.2
