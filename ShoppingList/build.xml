@@ -117,7 +117,8 @@ storepass=*password of keystore*
 	            else="${basedir}/${out-signed-package}" >
 	        <os family="windows"/>
 	</condition>
-	<property name="out-aligned-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<property name="out-aligned-package-file" value="${ant.project.name}-${version}.apk" />
+	<property name="out-aligned-package" value="${outdir}/${out-aligned-package-file}" />
 	<condition property="out-aligned-package-ospath"
 	            value="${basedir}\${out-aligned-package}"
 	            else="${basedir}/${out-aligned-package}" >
@@ -468,6 +469,12 @@ storepass=*password of keystore*
 			<zipfileset dir="${out-release-source-ospath}" prefix="${ant.project.name}-source-${version}"/>
 		</zip>
 		<delete dir="${out-release-source-ospath}"/>
+		<!-- copy apk into releasedir for convenience -->
+		<copy todir="${releasedir}">
+			<fileset dir="${outdir}">
+				 <filename name="${out-aligned-package-file}"/>
+			</fileset>
+		</copy>
     </target>
 	
 	<!-- ############ Convencience target ############## -->
