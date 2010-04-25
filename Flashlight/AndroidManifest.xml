@@ -16,8 +16,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.flashlight"
-      android:versionName="1.0.5-rc1" android:versionCode="10005">
+      android:versionName="1.0.5" android:versionCode="10006">
 	<!-- History:
+	1.0.5       [10006]: 2010-04-25
 	1.0.5-rc1   [10005]: 2010-04-23
 	1.0.4       [10004]: 2009-05-13
 	1.0.3       [10003]: 2008-11-19

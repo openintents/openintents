@@ -21,8 +21,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.5-rc1
-date: 2010-04-23
+release: 1.0.5
+date: 2010-04-25
 - Fix size of color picker widget for high density
   devices (patch by Karl Ostmo, issue 267).
 - Bugfix: Keep color on screen rotation (patch by
