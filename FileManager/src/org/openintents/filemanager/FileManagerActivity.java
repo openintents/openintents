@@ -359,7 +359,7 @@ public class FileManagerActivity extends ListActivity {
     	 mProgressBar.setVisibility(View.GONE);
     	 mEmptyText.setVisibility(View.VISIBLE);
     	 
-    	 mThumbnailLoader = new ThumbnailLoader(currentDirectory, mListFile, currentHandler);
+    	 mThumbnailLoader = new ThumbnailLoader(currentDirectory, mListFile, currentHandler, this);
     	 mThumbnailLoader.start();
      }
 

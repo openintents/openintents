@@ -23,6 +23,7 @@ package org.openintents.filemanager;
 
 import android.content.Context; 
 import android.graphics.drawable.Drawable; 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView; 
 import android.widget.LinearLayout; 
@@ -51,6 +52,12 @@ public class IconifiedTextView extends LinearLayout {
 
      public void setText(String words) { 
          mText.setText(words); 
+
+         int height = getHeight();
+         
+         if (height > 0) {
+        	 ThumbnailLoader.setThumbnailHeight(height);
+         }
     } 
      
      public void setInfo(String info) { 
