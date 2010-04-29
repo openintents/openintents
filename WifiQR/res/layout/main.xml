@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    >
+
+<ImageButton 
+	android:id="@+id/button_openscan" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:text="@string/scan_and_connect"
+	/>
+<ImageButton 
+	android:id="@+id/button_opengenerate" 
+	android:layout_width="wrap_content" 
+	android:layout_height="wrap_content"
+	android:text="@string/generate_and_display"
+	/>
+</LinearLayout>
