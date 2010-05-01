@@ -36,7 +36,8 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/old_password" />
-	<EditText android:id="@+id/old_password" 
+	<EditText android:id="@+id/old_password"
+		android:hint="@string/old_password" 
 		android:password="true"
 		android:autoText="false"
 		android:singleLine="true"
@@ -47,7 +48,8 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/new_password" />
-	<EditText android:id="@+id/new_password" 
+	<EditText android:id="@+id/new_password"
+		android:hint="@string/new_password" 
 		android:password="true"
 		android:autoText="false"
 		android:singleLine="true"
@@ -58,7 +60,8 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/verify_password" />
-	<EditText android:id="@+id/verify_password" 
+	<EditText android:id="@+id/verify_password"
+		android:hint="@string/verify_password" 
 		android:password="true"
 		android:autoText="false"
 		android:singleLine="true"

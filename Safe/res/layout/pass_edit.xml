@@ -36,6 +36,7 @@
  
 					android:text="@string/description" />
 				<EditText android:id="@+id/description"
+					android:hint="@string/description"
 				 	android:singleLine="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
@@ -46,6 +47,7 @@
 					android:layout_height="wrap_content" 
 					android:text="@string/website" />
 				<EditText android:id="@+id/website"
+					android:hint="@string/website"
 				    android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:singleLine="true" 
@@ -61,7 +63,8 @@
 				<TextView android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
 					android:text="@string/username" />
-				<EditText android:id="@+id/username" 
+				<EditText android:id="@+id/username"
+					android:hint="@string/username"					 
 				 	android:singleLine="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content" 
@@ -74,6 +77,7 @@
 					android:autoText="false"
 					android:text="@string/password" />
 				<EditText android:id="@+id/password"
+					android:hint="@string/password"
 				 	android:singleLine="true"
 					android:inputType="textVisiblePassword"
 				  	android:layout_width="wrap_content"
@@ -85,7 +89,9 @@
 	<TextView android:layout_width="wrap_content"
 		android:layout_height="wrap_content" 
 		android:text="@string/notes" />
-	<EditText android:id="@+id/note" android:layout_width="fill_parent"
+	<EditText android:id="@+id/note"
+		android:hint="@string/notes"
+		android:layout_width="fill_parent"
 		android:gravity="top" 
 		android:layout_height="wrap_content"
 		android:layout_weight="1"
