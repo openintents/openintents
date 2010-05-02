@@ -41,7 +41,7 @@ public class DMActivity extends Activity implements DependencyManager.BindListen
    * Private data
    **/
   // Result of the bind operation - can be queried from users of the class
-  private boolean mBindResult;
+  private boolean mBindResult = false;
 
   // Dependency manager instance
   private DependencyManager mDependencyManager;
@@ -55,15 +55,8 @@ public class DMActivity extends Activity implements DependencyManager.BindListen
   public void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    mBindResult = DependencyManager.bindService(this, this);
-  }
 
-
-
-  public void onBound(DependencyManager dm)
-  {
-    mDependencyManager = dm;
-    mDependencyManager.resolveDependencies(getPackageName());
+    resolveDependencies();
   }
 
 
@@ -80,11 +73,75 @@ public class DMActivity extends Activity implements DependencyManager.BindListen
 
 
 
+  /***************************************************************************
+   * DMActivity API Implementation
+   **/
+
+  /**
+   * Bind to DependencyManager; this function does not do anything if we're
+   * already bound. Successful binding triggers dependency resolution.
+   **/
+  public void bindDependencyManager()
+  {
+    if (mBindResult) {
+      return;
+    }
+    mBindResult = DependencyManager.bindService(this, this);
+  }
+
+
+
   /**
    * Returns true if binding succeeded, false otherwise.
    **/
   public boolean bindResult()
   {
     return mBindResult;
+  }
+
+
+
+  /**
+   * Manually trigger dependency resolution. This will rebind to
+   * DependencyManager if the binding was lost.
+   **/
+  public void resolveDependencies()
+  {
+    if (null == mDependencyManager) {
+      Log.i(LTAG, "Not bound to a DependencyManager isntance, rebinding...");
+      mBindResult = false;
+      bindDependencyManager();
+      return;
+    }
+
+    mDependencyManager.resolveDependencies(getPackageName());
+  }
+
+
+
+  /***************************************************************************
+   * DependencyManager.BindListener Implementation
+   **/
+
+  /**
+   * Result of binding to DependencyManager service; once we're bound we'll
+   * try to resolve static dependencies of this package.
+   **/
+  public void onBound(DependencyManager dm)
+  {
+    mDependencyManager = dm;
+    resolveDependencies();
+  }
+
+
+
+  /**
+   * If we're unbound for whatever reason, make sure that resolveDependencies()
+   * fails gracefully.
+   **/
+  public void onUnBound()
+  {
+    mDependencyManager = null;
+    mBindResult = false;
   }
 }

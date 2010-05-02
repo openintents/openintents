@@ -50,6 +50,7 @@ public class DependencyManager
   public interface BindListener
   {
     public void onBound(DependencyManager dm);
+    public void onUnBound();
   }
 
 
@@ -75,6 +76,7 @@ public class DependencyManager
     public void onServiceDisconnected(ComponentName className)
     {
       mStub = null;
+      mBindListener.onUnBound();
     }
   };
 
