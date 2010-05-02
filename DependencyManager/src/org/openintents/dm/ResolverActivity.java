@@ -2,7 +2,7 @@
  * This file is part of the Android DependencyManager project hosted at
  * http://code.google.com/p/android-dependencymanager/
  *
- * Copyright (C) 2009 Jens Finkhaeuser <jens@finkhaeuser.de>
+ * Copyright (C) 2009,2010 Jens Finkhaeuser <jens@finkhaeuser.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +25,20 @@ import org.openintents.dm.common.DependencyManagerContract;
 import org.openintents.dm.common.Intents;
 import org.openintents.dm.common.DependencyManagerContract.CandidateColumns;
 
-import android.app.ListActivity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
+
+import android.app.ListActivity;
+
+import android.view.Window;
+
+import android.content.Intent;
+
+import android.database.Cursor;
+
+import android.net.Uri;
+
+import android.util.Log;
+
 
 /**
  * Displays a list of packages to install that would be able to serve one or
@@ -76,7 +85,10 @@ public class ResolverActivity extends ListActivity
   {
     super.onCreate(savedInstanceState);
 
+    requestWindowFeature(Window.FEATURE_LEFT_ICON);
     setContentView(R.layout.resolver_activity);
+    getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON,
+        R.drawable.icon);
     setTitle(R.string.candidate_list_title);
 
     // Grab extras

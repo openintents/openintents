@@ -2,7 +2,7 @@
  * This file is part of the Android DependencyManager project hosted at
  * http://code.google.com/p/android-dependencymanager/
  *
- * Copyright (C) 2009 Jens Finkhaeuser <jens@finkhaeuser.de>
+ * Copyright (C) 2009,2010 Jens Finkhaeuser <jens@finkhaeuser.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -302,7 +302,7 @@ public class CandidateListAdapter extends BaseAdapter
 
     // Set icon to default - real icons will be loaded later.
     if (null == smNoImage) {
-      smNoImage = mContext.getResources().getDrawable(R.drawable.default_icon);
+      smNoImage = mContext.getResources().getDrawable(R.drawable.icon);
     }
     ImageView image_view = (ImageView) view.findViewById(R.id.icon);
     if (null != image_view) {
