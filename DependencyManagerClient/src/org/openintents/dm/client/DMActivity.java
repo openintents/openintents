@@ -52,10 +52,9 @@ public class DMActivity extends Activity implements DependencyManager.BindListen
    * Implementation
    **/
   @Override
-  public void onCreate(Bundle savedInstanceState)
+  public void onStart()
   {
-    super.onCreate(savedInstanceState);
-
+    super.onStart();
     resolveDependencies();
   }
 
