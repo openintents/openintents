@@ -73,10 +73,6 @@ public class TestAppActivity extends DMActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
 
-    if (!bindResult()) {
-      showDialog(DIALOG_INSTALL_DM);
-    }
-
     Button b = (Button) findViewById(R.id.show_dialog);
     if (null != b) {
       b.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +81,17 @@ public class TestAppActivity extends DMActivity
             resolveDependencies();
           }
       });
+    }
+  }
+
+
+
+  @Override
+  public void onStart()
+  {
+    super.onStart();
+    if (!bindResult()) {
+      showDialog(DIALOG_INSTALL_DM);
     }
   }
 
