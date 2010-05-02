@@ -64,53 +64,72 @@
     -->
     <setup />
 
-    <!-- Create the output directories if they don't exist yet. -->
-    <target name="-real-dirs">
-      <echo>Creating output directories if needed...</echo>
-      <mkdir dir="${resource.absolute.dir}" />
-      <mkdir dir="${external.libs.absolute.dir}" />
-      <mkdir dir="${gen.absolute.dir}" />
-      <mkdir dir="${out.absolute.dir}" />
-      <mkdir dir="${out.classes.absolute.dir}" />
+    <!-- Root directory -->
+    <property name="root.dir" value="${gen.absolute.dir}/.." />
+    <property name="root.absolute.dir" location="${root.dir}" />
+
+    <!-- Overloaded targets -->
+    <target name="clean" description="Removes output files created by other targets.">
+      <delete dir="${out.absolute.dir}" verbose="${verbose}" />
+      <delete dir="${gen.absolute.dir}" verbose="${verbose}" />
+      <delete file="${external.libs.absolute.dir}/DependencyManagerClient.jar" verbose="${verbose}" />
     </target>
 
+    <!-- DependencyManagerClient lib target -->
+    <property name="dm-client.absolute.dir" location="${dm-client.dir}" />
 
-    <!-- Client lib target -->
-    <property name="client.dir" value="externals/client" />
-    <property name="client.absolute.dir" location="${client.dir}" />
-
-    <target name="client.check" depends="-real-dirs">
-      <condition property="client.exists">
+    <target name="-dm-client.check" depends="-dirs">
+      <condition property="-dm-client.exists">
         <and>
-          <available file="${external.libs.absolute.dir}/DependencyManager-client.jar" />
+          <available file="${external.libs.absolute.dir}/DependencyManagerClient.jar" />
         </and>
       </condition>
     </target>
 
-    <target name="-client" depends="-real-dirs, client.check" unless="client.exists">
-      <echo>Building client library...</echo>
+    <target name="-dm-client" depends="-dirs, -dm-client.check" unless="-dm-client.exists">
+      <echo>Building DependencyManagerClient library...</echo>
       <ant
           antfile="build.xml"
-          dir="externals/client"
+          dir="${dm-client.absolute.dir}"
           target="build"
           inheritAll="false"
-        />
-      <copy todir="${external.libs.absolute.dir}" file="${client.absolute.dir}/bin/DependencyManager-client.jar"/>
+        >
+        <property name="sdk.dir" value="${sdk.dir}" />
+        <property name="platform" value="${platform}" />
+        <property name="verbose" value="${verbose}" />
+      </ant>
+
+      <ant
+          antfile="build.xml"
+          dir="${dm-client.absolute.dir}"
+          target="install"
+          inheritAll="false"
+        >
+        <property name="sdk.dir" value="${sdk.dir}" />
+        <property name="platform" value="${platform}" />
+        <property name="verbose" value="${verbose}" />
+        <property name="install.dir" value="${root.absolute.dir}" />
+      </ant>
     </target>
 
-    <!-- Bootstrap target -->
-    <target name="-bootstrap" depends="-client" />
-
-    <!-- Override "dirs" target that is referenced from other targets. Just depends on
-         bootstrap, to kickstart our own stuff here. -->
-    <target name="-dirs" depends="-bootstrap" />
-
-    <!-- Override "clean" target -->
-    <target name="clean" description="Removes output files created by other targets.">
-      <delete dir="${out.absolute.dir}" verbose="${verbose}" />
-      <delete dir="${gen.absolute.dir}" verbose="${verbose}" />
-      <delete file="${external.libs.absolute.dir}/DependencyManager-client.jar" verbose="${verbose}" />
+    <!-- Compiles this project's .java files into .class files. -->
+    <target name="compile" depends="-resource-src, -aidl, -dm-client"
+                description="Compiles project's .java files into .class files">
+        <!-- If android rules are used for a test project, its classpath should include
+             tested project's location -->
+        <condition property="extensible.classpath"
+                           value="${tested.project.absolute.dir}/bin/classes" else=".">
+            <isset property="tested.project.absolute.dir" />
+        </condition>
+        <javac encoding="ascii" target="1.5" debug="true" extdirs=""
+                destdir="${out.classes.absolute.dir}"
+                bootclasspathref="android.target.classpath"
+                verbose="${verbose}" classpath="${extensible.classpath}">
+            <src path="${source.absolute.dir}" />
+            <src path="${gen.absolute.dir}" />
+            <classpath>
+                <fileset dir="${external.libs.absolute.dir}" includes="*.jar" />
+            </classpath>
+        </javac>
     </target>
-
-
 </project>
