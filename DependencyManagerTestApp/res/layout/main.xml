@@ -27,4 +27,10 @@
       android:layout_height="wrap_content"
       android:text="Hello World, TestApp"
     />
+
+  <Button android:id="@+id/show_dialog"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Show dialog again"
+    />
 </LinearLayout>
