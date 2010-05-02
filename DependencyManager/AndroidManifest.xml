@@ -26,6 +26,7 @@
   <application android:label="@string/app_name">
     <activity android:name=".DependencyManagerSettings"
         android:label="@string/app_name"
+        android:icon="@drawable/icon"
       >
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -61,11 +62,11 @@
       </intent-filter>
     </service>
 
-	<receiver android:name=".PackageInstalledReceiver">
-		<intent-filter>
-			<action android:name="android.intent.action.PACKAGE_ADDED"/>
-			<data android:scheme="package"/>
-		</intent-filter>
-	</receiver>
+  <receiver android:name=".PackageInstalledReceiver">
+    <intent-filter>
+      <action android:name="android.intent.action.PACKAGE_ADDED"/>
+      <data android:scheme="package"/>
+    </intent-filter>
+  </receiver>
   </application>
 </manifest>
