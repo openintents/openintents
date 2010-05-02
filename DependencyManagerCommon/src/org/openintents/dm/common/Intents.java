@@ -2,7 +2,7 @@
  * This file is part of the Android DependencyManager project hosted at
  * http://code.google.com/p/android-dependencymanager/
  *
- * Copyright (C) 2009 Jens Finkhaeuser <jens@finkhaeuser.de>
+ * Copyright (C) 2009,2010 Jens Finkhaeuser <jens@finkhaeuser.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class Intents
    * Actions
    **/
   // Action for installing packages
-  public static final String ACTION_PACKAGE_INSTALL = "de.finkhaeuser.dm.intent.action.PACKAGE_INSTALL";
+  public static final String ACTION_PACKAGE_INSTALL = "org.openintents.dm.intent.action.PACKAGE_INSTALL";
 
 
 

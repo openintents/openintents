@@ -2,7 +2,7 @@
  * This file is part of the Android DependencyManager project hosted at
  * http://code.google.com/p/android-dependencymanager/
  *
- * Copyright (C) 2009 Jens Finkhaeuser <jens@finkhaeuser.de>
+ * Copyright (C) 2009,2010 Jens Finkhaeuser <jens@finkhaeuser.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,11 +30,11 @@ public class DependencyManagerContract
   // Part of the contract is a list of URIs that clients can try to open in
   // order to install DependencyManager.
   public static final Uri INSTALL_URIS[]            = {
-    Uri.parse("market://search?q=pname:de.finkhaeuser.dm"), // Install via Android Market
+    Uri.parse("market://search?q=pname:org.openintents.dm"), // Install via Android Market
   };
 
   // Authority for DependencyResolutionProvider
-  public static final String CONTENT_AUTHORITY      = "de.finkhaeuser.dm";
+  public static final String CONTENT_AUTHORITY      = "org.openintents.dm";
 
   // Content URI paths. Requires a list of query-string encoded intents to list
   //    candidates for.

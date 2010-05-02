@@ -2,7 +2,7 @@
  * This file is part of the Android DependencyManager project hosted at
  * http://code.google.com/p/android-dependencymanager/
  *
- * Copyright (C) 2009 Jens Finkhaeuser <jens@finkhaeuser.de>
+ * Copyright (C) 2009,2010 Jens Finkhaeuser <jens@finkhaeuser.de>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ public class Schemas
   {
     // Not strictly speaking part of the schema, but the meta-data label used
     // for pointing to a resource file that follows this schema.
-    public static String META_DATA_LABEL        = "de.finkhaeuser.dm.dependency-source";
+    public static String META_DATA_LABEL        = "org.openintents.dm.dependency-source";
 
     // Schema name
     public static String SCHEMA                 = "http://schemas.finkhaeuser.de/android/dependency-manager/1.0/source";
@@ -56,12 +56,12 @@ public class Schemas
   {
     // Not strictly speaking part of the schema, but the meta-data label used
     // for pointing to a resource file that follows this schema.
-    public static String META_DATA_LABEL        = "de.finkhaeuser.dm.dependency-client";
+    public static String META_DATA_LABEL        = "org.openintents.dm.dependency-client";
 
     // Also not strictly speaking part of the schema, but related: we parse the
     // ATTR_COMPONENT_TYPE attribute of ELEM_INTENT, and add it to the Intent
     // as an extra. This is the extra key.
-    public static String EXTRA_COMPONENT_TYPE   = "de.finkhaeuser.dm.extras.COMPONENT_TYPE";
+    public static String EXTRA_COMPONENT_TYPE   = "org.openintents.dm.extras.COMPONENT_TYPE";
 
     // Schema name
     public static String SCHEMA                 = "http://schemas.finkhaeuser.de/android/dependency-manager/1.0/client";
