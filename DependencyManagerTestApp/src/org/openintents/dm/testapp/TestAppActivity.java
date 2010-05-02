@@ -82,7 +82,10 @@ public class TestAppActivity extends DMActivity
       b.setOnClickListener(new View.OnClickListener() {
           public void onClick(View v)
           {
-            resolveDependencies();
+            if (!resolveDependencies()) {
+              // Binding triggeres dependency resolution.
+              bindDependencyManager();
+            }
           }
       });
     }
