@@ -57,6 +57,7 @@
 	<string name="menu_mark_item">Mark item</string>
 	<string name="menu_edit_item">Edit item</string>
 	<string name="menu_auto_add">Auto add</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like

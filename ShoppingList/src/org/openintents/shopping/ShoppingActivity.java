@@ -814,11 +814,15 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 * Inserts new item from string array received in intent extras.
 	 */
 	private void insertItemsFromExtras() {
-		for (String item : mExtraItems) {
-			mListItemsView.insertNewItem(item);
+		if (mExtraItems != null) {
+			for (String item : mExtraItems) {
+				mListItemsView.insertNewItem(item);
+			}
+			//delete the string array list of extra items so it can't be inserted twice
+			mExtraItems = null;
+		} else {
+			Toast.makeText(this, R.string.no_items_available, Toast.LENGTH_SHORT).show();
 		}
-		//delete the string array list of extra items so it can't be inserted twice
-		mExtraItems = null;
 	}
 
 	/**
