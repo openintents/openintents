@@ -889,6 +889,15 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 
+		// Allow other apps to add more menu items here.
+		Intent intent = new Intent(null, Uri.parse("vnd.android.cursor.dir/vnd.openintents.shopping.list"));
+		intent.setType("vnd.android.cursor.dir/vnd.openintents.shopping.list");
+		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
+		
+		menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
+				new ComponentName(this, ShoppingActivity.class), null, intent,
+				0, null);
+
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
 
