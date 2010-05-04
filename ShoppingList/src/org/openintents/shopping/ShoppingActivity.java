@@ -893,14 +893,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		UpdateMenu
 				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
 
-		// Allow other apps to add more menu items here.
-		Intent intent = new Intent(null, Uri.parse("vnd.android.cursor.dir/vnd.openintents.shopping.list"));
-		intent.setType("vnd.android.cursor.dir/vnd.openintents.shopping.list");
-		intent.addCategory(Intent.CATEGORY_ALTERNATIVE);
-		
-		menu.addIntentOptions(Menu.CATEGORY_ALTERNATIVE, 0, 0,
-				new ComponentName(this, ShoppingActivity.class), null, intent,
-				0, null);
+		// NOTE:
+		// Dynamically added menu items are included in onPrepareOptionsMenu()
+		// instead of here!
+		// (Explanation see there.)
 
 		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
 				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
@@ -988,8 +984,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		// The following code is put from onCreateOptionsMenu to
 		// onPrepareOptionsMenu,
 		// because the URI of the shopping list can change if the user switches
-		// to
-		// another list.
+		// to another list.
 		// Generate any additional actions that can be performed on the
 		// overall list. This allows other applications to extend
 		// our menu with their own actions.
