@@ -150,6 +150,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	private static final int DIALOG_DELETE_ITEM = 5;
 	private static final int DIALOG_THEME = 6;
 	
+	private static final int REQUEST_CODE_CATEGORY_ALTERNATIVE = 1;
+	
 	/**
 	 * The main activity.
 	 * 
@@ -583,6 +585,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent().getAction())
 				&& getIntent().getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString())) {
 			// Insert items into shopping list now:
+			insertItemsFromExtras();
+		}
+		
+		// Extras may also be received in onActivityResult():
+		if (mExtraItems != null) {
 			insertItemsFromExtras();
 		}
 		
@@ -1064,6 +1071,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			insertItemsFromExtras();
 			return true;
 
+		}
+		if (Menu.CATEGORY_ALTERNATIVE == item.getGroupId()) {
+			// Start alternative cateogory intents with option to return a result.
+			startActivityForResult(item.getIntent(), REQUEST_CODE_CATEGORY_ALTERNATIVE);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 
@@ -1956,6 +1968,26 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			*/
 			}
 
+		} else if (REQUEST_CODE_CATEGORY_ALTERNATIVE == requestCode) {
+			Log.d(TAG, "result received");
+			if (RESULT_OK == resultCode) {
+				Log.d(TAG, "result OK");
+				// Check if any results have been returned:
+				/*
+				if ((data.getDataString() != null)
+						&& (data.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString()))) {
+					// We received a valid shopping list URI.
+					
+					// Set current list to received list:
+					mListUri = data.getData();
+					intent.setData(mListUri);
+				}
+				*/
+				if (data.getExtras() != null) {
+					Log.d(TAG, "extras received");
+					mExtraItems = data.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				}
+			}
 		}
 	}
 
