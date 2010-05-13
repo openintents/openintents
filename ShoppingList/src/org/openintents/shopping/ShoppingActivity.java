@@ -75,6 +75,8 @@ import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -301,6 +303,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		@Override
 		public void onShake() {
+			// Provide some visual feedback.
+	        Animation shake = AnimationUtils.loadAnimation(ShoppingActivity.this, R.anim.shake);
+	        findViewById(R.id.background).startAnimation(shake);
+
 			cleanupList();
 		}
 
