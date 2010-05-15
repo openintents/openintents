@@ -25,7 +25,8 @@ release 1.2.4
 date: 
 - translations: Czech, Chinese (Simplified), Chinese 
   (Traditional), Dutch, Italian, Japanese, 
-  
+- fix #237: Sometimes crash on shake.
+
 ---------------------------------------------------------
 release: 1.2.3
 date: 2010-03-24
