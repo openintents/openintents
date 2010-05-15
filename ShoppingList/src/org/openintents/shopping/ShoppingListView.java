@@ -820,6 +820,11 @@ public class ShoppingListView extends ListView {
 			mTotalCheckedTextView.setVisibility(View.GONE);
 			return;
 		}
+		
+		if (mCursorItems.isClosed()) {
+			// Can happen through onShake() in ShoppingActivity.
+			return;
+		}
 
 		mCursorItems.moveToPosition(-1);
 		long total = 0;
