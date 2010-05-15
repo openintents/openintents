@@ -228,9 +228,30 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	/**
 	 * The items to add to the shopping list.
 	 * 
-	 *  Received as a string array list in the intent extras.
+	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraItems;
+	
+	/**
+	 * The quantities for items to add to the shopping list.
+	 * 
+	 * Received as a string array list in the intent extras.
+	 */
+	private List<String> mExtraQuantities;
+	
+	/**
+	 * The prices for items to add to the shopping list.
+	 * 
+	 * Received as a string array list in the intent extras.
+	 */
+	private List<String> mExtraPrices;
+	
+	/**
+	 * The barcodes for items to add to the shopping list.
+	 * 
+	 * Received as a string array list in the intent extras.
+	 */
+	private List<String> mExtraBarcodes;
 
 	/**
 	 * Private members connected to Spinner ListFilter.
@@ -409,7 +430,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				/* Need to insert new items from a string array in the intent extras
 				 * Use main action but add an item to the options menu for adding extra items
 				 */
-				mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				getShoppingExtras(intent);
 				mState = STATE_MAIN;
 				mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 						+ defaultShoppingList);
@@ -420,7 +441,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				// We received a valid shopping list URI:
 				mListUri = intent.getData();
 
-				mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+				getShoppingExtras(intent);
 				mState = STATE_MAIN;
 				intent.setData(mListUri);
 			}
@@ -472,6 +493,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		initFromPreferences();
 		// now update title and fill all items
 		onModeChanged();
+	}
+
+	private void getShoppingExtras(final Intent intent) {
+		mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+		mExtraQuantities = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
+		mExtraPrices = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
+		mExtraBarcodes = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
 	}
 
 	private int initFromPreferences() {
@@ -829,6 +857,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	private void insertItemsFromExtras() {
 		if (mExtraItems != null) {
 			for (String item : mExtraItems) {
+				// TODO: Also use information provided in 
+				// other mExtra... fields.
 				mListItemsView.insertNewItem(item);
 			}
 			//delete the string array list of extra items so it can't be inserted twice
@@ -1991,7 +2021,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				*/
 				if (data.getExtras() != null) {
 					Log.d(TAG, "extras received");
-					mExtraItems = data.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+					getShoppingExtras(data);
 				}
 			}
 		}
