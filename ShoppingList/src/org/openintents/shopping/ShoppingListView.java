@@ -11,6 +11,7 @@ import org.openintents.provider.Shopping.Status;
 import org.openintents.shopping.theme.ThemeAttributes;
 import org.openintents.shopping.theme.ThemeShoppingList;
 import org.openintents.shopping.theme.ThemeUtils;
+import org.openintents.shopping.util.ShoppingUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -763,11 +764,11 @@ public class ShoppingListView extends ListView {
 
 	public void insertNewItem(String newItem) {
 
-		long itemId = Shopping.getItem(getContext(), newItem, null);
+		long itemId = ShoppingUtils.getItem(getContext(), newItem, null);
 
 		Log.i(TAG, "Insert new item. " + " itemId = " + itemId + ", listId = "
 				+ mListId);
-		Shopping.addItemToList(getContext(), itemId, mListId,
+		ShoppingUtils.addItemToList(getContext(), itemId, mListId,
 				Status.WANT_TO_BUY);
 
 		fillItems(mListId);

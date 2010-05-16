@@ -42,6 +42,7 @@ import org.openintents.shopping.dialog.RenameListDialog;
 import org.openintents.shopping.dialog.ThemeDialog;
 import org.openintents.shopping.dialog.ThemeDialog.ThemeDialogListener;
 import org.openintents.shopping.share.GTalkSender;
+import org.openintents.shopping.util.ShoppingUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.ShakeSensorListener;
 
@@ -398,7 +399,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
-				mListUri = Shopping.getListForItem(this,intent.getData()
+				mListUri = ShoppingUtils.getListForItem(this,intent.getData()
 						.getLastPathSegment());
 			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
@@ -408,7 +409,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
-				mListUri = Shopping.getListForItem(
+				mListUri = ShoppingUtils.getListForItem(
 					getApplicationContext(),
 					intent.getData().getLastPathSegment());
 			} else if (intent.getData() != null) {
@@ -495,13 +496,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		onModeChanged();
 	}
 
-	private void getShoppingExtras(final Intent intent) {
-		mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
-		mExtraQuantities = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
-		mExtraPrices = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
-		mExtraBarcodes = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
-	}
-
 	private int initFromPreferences() {
 		// if set to "last used", override the default list.
 		SharedPreferences sp = getSharedPreferences(
@@ -515,7 +509,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			defaultShoppingList = sp.getInt(PreferenceActivity.PREFS_LASTUSED,
 					1);
 		} else {
-			defaultShoppingList = (int) Shopping.getDefaultList();
+			defaultShoppingList = (int) ShoppingUtils.getDefaultList();
 		}
 
 		if (mListItemsView != null) {
@@ -852,6 +846,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	}
 
 	/**
+	 * Obtain items from extras.
+	 */
+	private void getShoppingExtras(final Intent intent) {
+		mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+		mExtraQuantities = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
+		mExtraPrices = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
+		mExtraBarcodes = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
+	}
+
+	/**
 	 * Inserts new item from string array received in intent extras.
 	 */
 	private void insertItemsFromExtras() {
@@ -1173,7 +1177,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		
 		String previousTheme = loadListTheme();
 		
-		int newId = (int) Shopping.getList(this, name);
+		int newId = (int) ShoppingUtils.getList(this, name);
 		fillListFilter();
 
 		setSelectedListId(newId);
@@ -1688,7 +1692,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		if (mCursorListFilter.getCount() < 1) {
 			// We have to create default shopping list:
-			long listId = Shopping.getList(this, getText(R.string.my_shopping_list)
+			long listId = ShoppingUtils.getList(this, getText(R.string.my_shopping_list)
 					.toString());
 
 			// Check if insertion really worked. Otherwise
