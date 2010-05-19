@@ -2,8 +2,7 @@ package org.openintents.wifiqr.util;
 
 /**
 ****************************************************************************
-* Copyright (C) 2010 OpenIntents.org                                       *
-*                                                                          *
+* Copyright (C) 2010 OpenIntents.org                                       **                                                                          *
 * Licensed under the Apache License, Version 2.0 (the "License");          *
 * you may not use this file except in compliance with the License.         *
 * You may obtain a copy of the License at                                  *
@@ -17,10 +16,10 @@ package org.openintents.wifiqr.util;
 * limitations under the License.                                           *
 ****************************************************************************
 */
-
-
+ 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.BitSet;
 import java.util.Vector;
 
 import org.json.JSONException;
@@ -31,52 +30,13 @@ import android.util.Log;
 
 public class WifiConfigHelper {
 
+	//PART OF MOBILE APP!
+
 	
 	public static String writeToString(WifiConfiguration wc) {
 		StringBuffer sb= new StringBuffer();
 		JSONObject jo= new JSONObject();
-		try {
-			jo.put("hiddenSSID", wc.hiddenSSID);
-			try {
-				Field field=wc.getClass().getDeclaredField("enterpriseFields");
-				Object entArray=field.get(wc);
-				for (int i=0;i<Array.getLength(entArray);i++){
-					Object enterpriseField=Array.get(entArray,i);
-					Field varName=enterpriseField.getClass().getDeclaredField("varName");
-					Field value=enterpriseField.getClass().getDeclaredField("value");
-					Log.v(varName.get(varName).toString(),value.get(value).toString());
-				}
-				Log.v("",field.toGenericString());
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchFieldException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-//			wc.BSSID;
-//			wc.networkId;
-//			
-//			
-//			wc.preSharedKey;
-//			wc.SSID;
-//			wc.priority;
-//			wc.wepKeys;
-			
-		
-			
-		} catch (JSONException e) {
-			return null;
-		}
-		
-		
+		//IMPLEMENTATION OF THIS IN WIFIQRDESKTOP
 		
 		return jo.toString();
 	}
@@ -101,6 +61,14 @@ public class WifiConfigHelper {
 					wepKeys.add("\""+value+"\"");
 					wepKeysTotal++;
 				}
+			}
+			
+			String secType=		jo.optString("KeyMgmt");
+			if(secType!=null && secType.equals("NONE"))
+			{				
+				BitSet bs=new BitSet(wc.allowedKeyManagement.size());
+				bs.clear();//this should reset to 0x00000000 ,which means none/WEP
+				wc.allowedKeyManagement=bs;
 			}
 			
 			String[] strWepKeys=new String[wepKeysTotal];
