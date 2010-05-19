@@ -45,7 +45,7 @@ public class QRHelper {
 	}
 	
 	public static BufferedImage createMarketDownloadCode(){
-		return createURLCode("");
+		return createURLCode("market://search?q=pname:org.openintents.wifiqr");
 	}
 	
 	
