@@ -91,6 +91,9 @@ public class ShoppingListsActivity extends ListActivity {
 		if (c != null && c.moveToFirst()) {
 			return c.getString(0);
 		}
+		if (c != null) {
+			c.close();
+		}
 		
 		// If there was a problem retrieving the note title
 		// simply use the application name

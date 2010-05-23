@@ -798,6 +798,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 						mListItemsView.toggleItemBought(pos);
 					}
 				}
+				// DO NOT CLOSE THIS CURSOR - IT IS A MANAGED ONE.
+				// ---- c.close();
 			}
 
 		});
@@ -837,7 +839,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				return;
 			}
 
-			mListItemsView.insertNewItem(newItem);
+			mListItemsView.insertNewItem(this, newItem);
 			mEditText.setText("");
 		} else {
 			// Open list to select item from
@@ -863,7 +865,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			for (String item : mExtraItems) {
 				// TODO: Also use information provided in 
 				// other mExtra... fields.
-				mListItemsView.insertNewItem(item);
+				mListItemsView.insertNewItem(this, item);
 			}
 			//delete the string array list of extra items so it can't be inserted twice
 			mExtraItems = null;
@@ -1598,6 +1600,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 			String[] taglist = getTaglist();
 			d.setTagList(taglist);
+			
+			d.setRequeryCursor(mListItemsView.mCursorItems);
 			break;
 			
 		case DIALOG_THEME:
@@ -1806,8 +1810,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			// and no item is selected.
 			return;
 		}
-		mListItemsView.fillItems(listId);
-		startManagingCursor(mListItemsView.mCursorItems);
+		mListItemsView.fillItems(this, listId);
 
 	}
 
@@ -1838,6 +1841,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				}
 			}
 		}
+		c.close();
 		
 		// Sort the list
 		// 1. Convert HashSet to String list.

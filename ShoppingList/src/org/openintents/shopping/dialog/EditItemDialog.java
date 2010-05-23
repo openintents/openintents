@@ -44,6 +44,9 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	TextView mPriceLabel;
 
     String[] mTagList;
+    
+    /** Cursor to be requeried after modifications */
+    Cursor mRequeryCursor;
 
 	NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
 	
@@ -123,6 +126,14 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	                android.R.layout.simple_dropdown_item_1line, mTagList);
 	        mTags.setAdapter(adapter);
 	    }
+    }
+    
+    /**
+     * Set cursor to be requeried if item is changed.
+     * @param c
+     */
+    public void setRequeryCursor(Cursor c) {
+    	mRequeryCursor = c;
     }
     
 	private void toggleTaglistPopup() {
@@ -259,6 +270,10 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		values.put(Contains.QUANTITY, quantity);
 		mContext.getContentResolver().update(mRelationUri, values, null, null);
 		mContext.getContentResolver().notifyChange(mRelationUri, null);
+		
+		if (mRequeryCursor != null) {
+			mRequeryCursor.requery();
+		}
 	}
 	
 }

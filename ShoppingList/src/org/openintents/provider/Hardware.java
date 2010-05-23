@@ -95,6 +95,7 @@ public abstract class Hardware {
 	 * @return The value for preference 'name'.
 	 */
 	public static String getPreference(final String name) {
+		String s = "";
 		try {
 			Log.i(TAG, "getPreference()");
 			Cursor c = mContentResolver.query(Preferences.CONTENT_URI, 
@@ -107,15 +108,15 @@ public abstract class Hardware {
 				return c.getString(mProjectionPreferencesVALUE);
 			} else if (c.getCount() == 0) {
 				// This value does not exist yet!
-				return "";
 			} else {
 				Log.e(TAG, "table 'preferences' corrupt. Multiple NAME!");
-				return "";
 			}
+			c.close();
 		} catch (Exception e) {
 			Log.e(TAG, "insert into table 'contains' failed", e);
-			return "Preferences table corrupt!";
+			s = "Preferences table corrupt!";
 		}
+		return s;
 	}
 	
 	/**
@@ -174,6 +175,9 @@ public abstract class Hardware {
 				c.getString(mProjectionPreferencesVALUE);
 			} else {
 				Log.e(TAG, "table 'preferences' corrupt. Multiple NAME!");
+			}
+			if (c != null) {
+				c.close();
 			}
 		} catch (Exception e) {
 			Log.i(TAG, "setPreference() failed", e);

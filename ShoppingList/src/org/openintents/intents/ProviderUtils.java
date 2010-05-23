@@ -31,6 +31,7 @@ public class ProviderUtils {
 				affectedRows[i] = c.getLong(0);
 			}
 		}
+		c.close();
 		return affectedRows;
 	}
 

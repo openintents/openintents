@@ -209,6 +209,9 @@ public class Tag {
 	 * cursor over contentUriStrings is returned where the content is tagged
 	 * with the given tag.
 	 * 
+	 * @deprecated !! WARNING !! Cursor has to be closed by caller.
+	 * Alternative API desired.
+	 * 
 	 * @param tag
 	 * @param contentUri
 	 * @return
@@ -223,6 +226,9 @@ public class Tag {
 
 	/**
 	 * cursor over tags with all tags for the given content is returned.
+	 * 
+	 * @deprecated !! WARNING !! Cursor has to be closed by caller.
+	 * Alternative API desired.
 	 * 
 	 * @param tag
 	 * @param contentUri
@@ -246,11 +252,15 @@ public class Tag {
 		if (sb.length() > 0) {
 			sb.deleteCharAt(sb.length() - separator.length());
 		}
+		tags.close();
 		return sb.toString();
 	}
 
 	/**
 	 * cursor over tags with all tags for the given content is returned.
+	 * 
+	 * @deprecated !! WARNING !! Cursor has to be closed by caller.
+	 * Alternative API desired.
 	 * 
 	 * @param contentUriPrefix
 	 * @return
@@ -271,6 +281,9 @@ public class Tag {
 	/**
 	 * Get a cursor with all tags
 	 * 
+	 * @deprecated !! WARNING !! Cursor has to be closed by caller.
+	 * Alternative API desired.
+	 * 
 	 * @return
 	 */
 	public Cursor findAllTags() {
@@ -283,6 +296,9 @@ public class Tag {
 	/**
 	 * Get a cursor with all used tags, i.e. at least one content has been
 	 * tagged with this tag.
+	 * 
+	 * @deprecated !! WARNING !! Cursor has to be closed by caller.
+	 * Alternative API desired.
 	 * 
 	 * @return
 	 */

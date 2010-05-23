@@ -114,6 +114,7 @@ public class Location {
 	}
 
 	public Point getPoint(long id) {
+		Point p = null;
 		Cursor cursor = mResolver.query(ContentUris.withAppendedId(
 				Locations.CONTENT_URI, id), new String[] { Locations._ID,
 				Locations.LATITUDE, Locations.LONGITUDE }, null, null,
@@ -121,12 +122,19 @@ public class Location {
 		if (cursor.moveToNext()) {
 			int lat = Double.valueOf(cursor.getDouble(1) * 1E6).intValue();
 			int lon = Double.valueOf(cursor.getDouble(2) * 1E6).intValue();
-			return new Point(lat, lon);
+			p = new Point(lat, lon);
 		} else {
-			return null;
 		}
+		cursor.close();
+		return p;
 	}
 
+	/**
+	 * @deprecated !! Warning !! Cursor has to be closed by caller.
+	 * Alternative API desired.
+	 * @param locationId
+	 * @return
+	 */
 	public Cursor queryExtras(long locationId) {
 		Builder uri = Locations.CONTENT_URI.buildUpon().appendPath(
 				String.valueOf(locationId)).appendPath(Extras.URI_PATH_EXTRAS);

@@ -20,7 +20,7 @@ public class PickItemsActivity extends Activity {
 		mListItems.mMode = ShoppingActivity.MODE_ADD_ITEMS;
 
 		String listId = getIntent().getData().getLastPathSegment();
-		startManagingCursor(mListItems.fillItems(Long.parseLong(listId)));
+		mListItems.fillItems(this, Long.parseLong(listId));
 		//mListItems.setListTheme(ShoppingListView.MARK_CHECKBOX);
 		mListItems.setListTheme("1");
 		mListItems.setOnItemClickListener(new OnItemClickListener() {

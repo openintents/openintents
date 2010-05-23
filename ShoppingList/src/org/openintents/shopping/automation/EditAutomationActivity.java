@@ -202,6 +202,8 @@ public class EditAutomationActivity extends Activity {
 			if (c != null & c.moveToFirst()) {
 				mDescriptionShoppingList = c.getString(1);
 			}
+			
+			c.close();
 		} 
 
 		if (TextUtils.isEmpty(mDescriptionShoppingList)) {

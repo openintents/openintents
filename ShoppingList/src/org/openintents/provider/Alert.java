@@ -241,7 +241,6 @@ public class Alert {
 					.toString(useWhileRoaming));
 			mContentResolver.update(Uri.withAppendedPath(
 					ManagedService.CONTENT_URI, id), values, null, null);
-			c.close();
 		} else {
 			// insert
 			cv = new ContentValues();
@@ -250,6 +249,9 @@ public class Alert {
 			cv.put(ManagedService.DO_ROAMING, useWhileRoaming);
 			insert(ManagedService.CONTENT_URI, cv);
 
+		}
+		if (c != null) {
+			c.close();
 		}
 		// get all entry && compute new minimum time intervall
 		// TODO: make this in sql.
@@ -297,6 +299,9 @@ public class Alert {
 
 			insert(DateTime.CONTENT_URI, cv);
 
+		}
+		if (c != null) {
+			c.close();
 		}
 		Log.d(_TAG, "registerManagedService: finished");
 

@@ -29,11 +29,8 @@ public class ShoppingUtils {
 				new String[] { name.toUpperCase() }, null);
 		if (existingItems.getCount() > 0) {
 			existingItems.moveToFirst();
-			id = existingItems.getLong(0);
-			existingItems.close();
-						
+			id = existingItems.getLong(0);						
 		} else {
-			existingItems.close();
 			// Add item to list:
 			ContentValues values = new ContentValues(1);
 			values.put(Shopping.Items.NAME, name);
@@ -47,6 +44,7 @@ public class ShoppingUtils {
 				// return -1
 			}
 		}
+		existingItems.close();
 		return id;
 	
 	}
@@ -69,7 +67,6 @@ public class ShoppingUtils {
 		if (existingItems.getCount() > 0) {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
-			existingItems.close();
 		} else {
 			// Add list to list:
 			ContentValues values = new ContentValues(1);
@@ -80,9 +77,10 @@ public class ShoppingUtils {
 				id = Long.parseLong(uri.getPathSegments().get(1));
 			} catch (Exception e) {
 				Log.i(TAG, "insert list failed", e);
-				return -1;
+				//return -1;
 			}
 		}
+		existingItems.close();
 		return id;
 	}
 
@@ -108,7 +106,6 @@ public class ShoppingUtils {
 		if (existingItems.getCount() > 0) {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
-			existingItems.close();
 			
 			// set status to want_to_buy:
 			ContentValues values = new ContentValues(1);
@@ -120,9 +117,7 @@ public class ShoppingUtils {
 			} catch (Exception e) {
 				Log.i(TAG, "Insert item failed", e);				
 			}
-			
 		} else {
-			existingItems.close();
 			// Add item to list:
 			ContentValues values = new ContentValues(2);
 			values.put(Shopping.Contains.ITEM_ID, itemId);
@@ -134,9 +129,10 @@ public class ShoppingUtils {
 				id = Long.parseLong(uri.getPathSegments().get(1));
 			} catch (Exception e) {
 				Log.i(TAG, "insert into table 'contains' failed", e);
-				id = -1;
+				//id = -1;
 			}
 		}
+		existingItems.close();
 		return id;
 	}
 

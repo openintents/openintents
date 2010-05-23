@@ -13,6 +13,7 @@ import org.openintents.shopping.theme.ThemeShoppingList;
 import org.openintents.shopping.theme.ThemeUtils;
 import org.openintents.shopping.util.ShoppingUtils;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -352,7 +353,13 @@ public class ShoppingListView extends ListView {
 		unregisterContentObserver();
 	}
 
-	Cursor fillItems(long listId) {
+	/**
+	 * 
+	 * @param activity Activity to manage the cursor.
+	 * @param listId
+	 * @return
+	 */
+	Cursor fillItems(Activity activity, long listId) {
 
 		mListId = listId;
 		String sortOrder = PreferenceActivity.getSortOrderFromPrefs(this
@@ -371,13 +378,18 @@ public class ShoppingListView extends ListView {
 		} else {
 			selection = "list_id = ? ";
 		}
+		
+		if (mCursorItems != null && !mCursorItems.isClosed()) {
+			mCursorItems.close();
+		}
 
 		// Get a cursor for all items that are contained
 		// in currently selected shopping list.
 		mCursorItems = getContext().getContentResolver().query(
 				ContainsFull.CONTENT_URI, ShoppingActivity.mStringItems,
 				selection, new String[] { String.valueOf(listId) }, sortOrder);
-
+		activity.startManagingCursor(mCursorItems);
+		
 		registerContentObserver();
 
 		// Activate the following for a striped list.
@@ -762,7 +774,12 @@ public class ShoppingListView extends ListView {
 
 	}
 
-	public void insertNewItem(String newItem) {
+	/**
+	 * 
+	 * @param activity Activity to manage new Cursor.
+	 * @param newItem
+	 */
+	public void insertNewItem(Activity activity, String newItem) {
 
 		long itemId = ShoppingUtils.getItem(getContext(), newItem, null);
 
@@ -771,7 +788,7 @@ public class ShoppingListView extends ListView {
 		ShoppingUtils.addItemToList(getContext(), itemId, mListId,
 				Status.WANT_TO_BUY);
 
-		fillItems(mListId);
+		fillItems(activity, mListId);
 
 		// Set the item that we have just selected:
 		// Get position of ID:
