@@ -796,13 +796,13 @@ public class ShoppingListView extends ListView {
 		while (mCursorItems.moveToNext()) {
 			if (mCursorItems.getLong(ShoppingActivity.mStringItemsITEMID) == itemId) {
 				int pos = mCursorItems.getPosition();
-				if (pos > 0) {
+		//		if (pos > 0) {
 					// Set selection one before, so that the item is fully
 					// visible.
-					setSelection(pos - 1);
-				} else {
+		//			setSelection(pos - 1);
+		//		} else {
 					setSelection(pos);
-				}
+		//		}
 				break;
 			}
 		}
