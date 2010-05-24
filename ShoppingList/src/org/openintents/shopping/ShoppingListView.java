@@ -781,7 +781,7 @@ public class ShoppingListView extends ListView {
 	 */
 	public void insertNewItem(Activity activity, String newItem) {
 
-		long itemId = ShoppingUtils.getItem(getContext(), newItem, null);
+		long itemId = ShoppingUtils.getOrCreateItem(getContext(), newItem, null);
 
 		Log.i(TAG, "Insert new item. " + " itemId = " + itemId + ", listId = "
 				+ mListId);

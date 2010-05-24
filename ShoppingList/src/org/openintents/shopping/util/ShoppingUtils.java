@@ -15,6 +15,25 @@ public class ShoppingUtils {
 	private static final String TAG = "ShoppingUtils";
 
 	/**
+	 * Obtain item id by name.
+	 * @param context
+	 * @param name
+	 * @return Item ID or -1 if item does not exist.
+	 */
+	private static long getItemId(Context context, String name) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver().query(Shopping.Items.CONTENT_URI,
+				new String[] { Shopping.Items._ID }, "upper(name) = ?",
+				new String[] { name.toUpperCase() }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+		};
+		existingItems.close();
+		return id;
+	}
+
+	/**
 	 * Gets or creates a new item and returns its id. If the item exists
 	 * already, the existing id is returned. Otherwise a new item is created.
 	 * 
@@ -22,15 +41,10 @@ public class ShoppingUtils {
 	 *            New name of the item.
 	 * @return id of the new or existing item.
 	 */
-	public static long getItem(Context context, String name, String tags) {
-		long id = -1;
-		Cursor existingItems = context.getContentResolver().query(Shopping.Items.CONTENT_URI,
-				new String[] { Shopping.Items._ID }, "upper(name) = ?",
-				new String[] { name.toUpperCase() }, null);
-		if (existingItems.getCount() > 0) {
-			existingItems.moveToFirst();
-			id = existingItems.getLong(0);						
-		} else {
+	public static long getOrCreateItem(Context context, String name, String tags) {
+		long id = getItemId(context, name);
+		
+		if (id == -1) {
 			// Add item to list:
 			ContentValues values = new ContentValues(1);
 			values.put(Shopping.Items.NAME, name);
@@ -44,7 +58,6 @@ public class ShoppingUtils {
 				// return -1
 			}
 		}
-		existingItems.close();
 		return id;
 	
 	}
