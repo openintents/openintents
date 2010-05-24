@@ -778,15 +778,17 @@ public class ShoppingListView extends ListView {
 	 * 
 	 * @param activity Activity to manage new Cursor.
 	 * @param newItem
+	 * @param quantity
+	 * @param price
+	 * @param barcode
 	 */
-	public void insertNewItem(Activity activity, String newItem) {
+	public void insertNewItem(Activity activity, String newItem, String quantity, String price, String barcode) {
 
-		long itemId = ShoppingUtils.getOrCreateItem(getContext(), newItem, null);
+		long itemId = ShoppingUtils.updateOrCreateItem(getContext(), newItem, null, price, barcode);
 
 		Log.i(TAG, "Insert new item. " + " itemId = " + itemId + ", listId = "
 				+ mListId);
-		ShoppingUtils.addItemToList(getContext(), itemId, mListId,
-				Status.WANT_TO_BUY);
+		ShoppingUtils.addItemToList(getContext(), itemId, mListId, quantity);
 
 		fillItems(activity, mListId);
 

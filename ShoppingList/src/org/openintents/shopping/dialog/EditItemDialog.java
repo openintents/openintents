@@ -1,15 +1,12 @@
 package org.openintents.shopping.dialog;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Locale;
 
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
+import org.openintents.shopping.util.ShoppingUtils;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -48,13 +45,11 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
     /** Cursor to be requeried after modifications */
     Cursor mRequeryCursor;
 
-	NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
-	
 	public EditItemDialog(Context context, Uri itemUri, Uri relationUri) {
 		super(context);
 		mContext = context;
-		mPriceFormatter.setMaximumFractionDigits(2);
-		mPriceFormatter.setMinimumFractionDigits(2);
+		ShoppingUtils.mPriceFormatter.setMaximumFractionDigits(2);
+		ShoppingUtils.mPriceFormatter.setMinimumFractionDigits(2);
 		
 		LayoutInflater inflater = LayoutInflater.from(context);
 		final View view = inflater
@@ -170,7 +165,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			if (!TextUtils.isEmpty(quantityString)) {
 				double quantity = Double.parseDouble(quantityString);
 				price = quantity * price;
-				String s = mPriceFormatter.format(price);
+				String s = ShoppingUtils.mPriceFormatter.format(price);
 				mPriceLabel.setText(mContext.getText(R.string.price) + ": " + s);
 				return;
 			}
@@ -202,7 +197,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			String text = c.getString(0);
 			String tags = c.getString(1);
 			long pricecent = c.getLong(2);
-			String price = mPriceFormatter.format(pricecent * 0.01d);
+			String price = ShoppingUtils.mPriceFormatter.format(pricecent * 0.01d);
 			if (pricecent == 0) {
 				// Empty field for easier editing
 				// (Otherwise "0.00" has to be deleted manually first)
@@ -239,16 +234,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		String price = mPrice.getText().toString();
 		String quantity = mQuantity.getText().toString();
 		
-		Long priceLong;
-		if (TextUtils.isEmpty(price)) {
-			priceLong = 0L;
-		} else {
-			try {
-				priceLong = (long) Math.round(100 * mPriceFormatter.parse(price).doubleValue());
-			} catch (ParseException e) {
-				priceLong = null;
-			}
-		}
+		Long priceLong = ShoppingUtils.getCentPriceFromString(price);
 
     	// Remove trailing ","
     	tags = tags.trim();

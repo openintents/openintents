@@ -839,7 +839,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				return;
 			}
 
-			mListItemsView.insertNewItem(this, newItem);
+			mListItemsView.insertNewItem(this, newItem, null, null, null);
 			mEditText.setText("");
 		} else {
 			// Open list to select item from
@@ -862,13 +862,23 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 */
 	private void insertItemsFromExtras() {
 		if (mExtraItems != null) {
-			for (String item : mExtraItems) {
-				// TODO: Also use information provided in 
-				// other mExtra... fields.
-				mListItemsView.insertNewItem(this, item);
+			int max = mExtraItems.size();
+			int maxQuantity = (mExtraQuantities != null) ? mExtraQuantities.size() : -1;
+			int maxPrice = (mExtraPrices != null) ? mExtraPrices.size() : -1;
+			int maxBarcode = (mExtraBarcodes != null) ? mExtraBarcodes.size() : -1;
+			for (int i = 0; i < max; i++) {
+				String item = mExtraItems.get(i);
+				String quantity = (i < maxQuantity) ? mExtraQuantities.get(i) : null;
+				String price = (i < maxPrice) ? mExtraPrices.get(i) : null;
+				String barcode = (i < maxBarcode) ? mExtraBarcodes.get(i) : null;
+				Log.d(TAG, "Add item: " + item + ", quantity: " + quantity + ", price: " + price + ", barcode: " + barcode);
+				mListItemsView.insertNewItem(this, item, quantity, price, barcode);
 			}
 			//delete the string array list of extra items so it can't be inserted twice
 			mExtraItems = null;
+			mExtraQuantities = null;
+			mExtraPrices = null;
+			mExtraBarcodes = null;
 		} else {
 			Toast.makeText(this, R.string.no_items_available, Toast.LENGTH_SHORT).show();
 		}

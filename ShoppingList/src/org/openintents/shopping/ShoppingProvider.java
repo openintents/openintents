@@ -330,10 +330,10 @@ public class ShoppingProvider extends ContentProvider {
 		long rowID;
 
 		Long now = Long.valueOf(System.currentTimeMillis());
-		Resources r = Resources.getSystem();
 
 		// Make sure that the fields are all set
 		if (!values.containsKey(Items.NAME)) {
+			Resources r = getContext().getResources();
 			values.put(Items.NAME, r.getString(R.string.new_item));
 		}
 

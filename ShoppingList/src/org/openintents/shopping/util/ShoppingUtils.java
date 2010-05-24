@@ -1,11 +1,18 @@
 package org.openintents.shopping.util;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
+
 import org.openintents.provider.Shopping;
+import org.openintents.provider.Shopping.Status;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 
 public class ShoppingUtils {
@@ -14,6 +21,8 @@ public class ShoppingUtils {
 	 */
 	private static final String TAG = "ShoppingUtils";
 
+	public static NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
+	
 	/**
 	 * Obtain item id by name.
 	 * @param context
@@ -32,23 +41,36 @@ public class ShoppingUtils {
 		existingItems.close();
 		return id;
 	}
-
+	
 	/**
 	 * Gets or creates a new item and returns its id. If the item exists
 	 * already, the existing id is returned. Otherwise a new item is created.
+	 * @param name New name of the item.
+	 * @param price
+	 * @param barcode
 	 * 
-	 * @param name
-	 *            New name of the item.
 	 * @return id of the new or existing item.
 	 */
-	public static long getOrCreateItem(Context context, String name, String tags) {
+	public static long updateOrCreateItem(Context context, String name, String tags, String price, String barcode) {
 		long id = getItemId(context, name);
 		
+		if (id >= 0) {
+			// Update existing item
+			ContentValues values = getContentValues(
+					null, // Existing item: no need to change name.
+					tags, price, barcode);
+			try {
+				Uri uri = Uri.withAppendedPath(Shopping.Items.CONTENT_URI, String.valueOf(id));
+				context.getContentResolver().update(uri, values, null, null);
+				Log.i(TAG, "updated item: " + uri);				
+			} catch (Exception e) {
+				Log.i(TAG, "Update item failed", e);				
+			}
+		}
+		
 		if (id == -1) {
-			// Add item to list:
-			ContentValues values = new ContentValues(1);
-			values.put(Shopping.Items.NAME, name);
-			values.put(Shopping.Items.TAGS, tags);
+			// Add new item to list:
+			ContentValues values = getContentValues(name, tags, price, barcode);
 			try {
 				Uri uri = context.getContentResolver().insert(Shopping.Items.CONTENT_URI, values);
 				Log.i(TAG, "Insert new item: " + uri);
@@ -60,6 +82,25 @@ public class ShoppingUtils {
 		}
 		return id;
 	
+	}
+
+	private static ContentValues getContentValues(String name, String tags, String price,
+			String barcode) {
+		ContentValues values = new ContentValues(4);
+		if (name != null) {
+			values.put(Shopping.Items.NAME, name);
+		}
+		if (tags != null) {
+			values.put(Shopping.Items.TAGS, tags);
+		}
+		if (price != null) {
+			Long priceLong = getCentPriceFromString(price);
+			values.put(Shopping.Items.PRICE, priceLong);
+		}
+		if (barcode != null) {
+			values.put(Shopping.Items.BARCODE, barcode);
+		}
+		return values;
 	}
 
 	/**
@@ -100,29 +141,39 @@ public class ShoppingUtils {
 	/**
 	 * Adds a new item to a specific list and returns its id. If the item exists
 	 * already, the existing id is returned.
-	 * 
 	 * @param itemId
 	 *            The id of the new item.
 	 * @param listId
 	 *            The id of the shopping list the item is added.
+	 * @param quantity
 	 * @param itemType
 	 *            The type of the new item
+	 * 
 	 * @return id of the "contains" table entry, or -1 if insert failed.
 	 */
-	public static long addItemToList(Context context, final long itemId, final long listId, final long status) {
+	public static long addItemToList(Context context, final long itemId, final long listId, String quantity) {
 		long id = -1;
+		long status = Status.WANT_TO_BUY;
 		Cursor existingItems = context.getContentResolver()
-				.query(Shopping.Contains.CONTENT_URI, new String[] { Shopping.Contains._ID },
+				.query(Shopping.Contains.CONTENT_URI, new String[] { 
+							Shopping.Contains._ID, Shopping.Contains.STATUS },
 						"list_id = ? AND item_id = ?",
 						new String[] { String.valueOf(listId),
 								String.valueOf(itemId) }, null);
 		if (existingItems.getCount() > 0) {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
+			long oldstatus = existingItems.getLong(1);
+			
+			// Toggle status:
+			if (oldstatus == Status.WANT_TO_BUY) {
+				status = Status.BOUGHT;
+			}
 			
 			// set status to want_to_buy:
-			ContentValues values = new ContentValues(1);
+			ContentValues values = new ContentValues(2);
 			values.put(Shopping.Contains.STATUS, status);
+			values.put(Shopping.Contains.QUANTITY, quantity);
 			try {
 				Uri uri = Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, String.valueOf(id));
 				context.getContentResolver().update(uri, values, null, null);
@@ -136,6 +187,7 @@ public class ShoppingUtils {
 			values.put(Shopping.Contains.ITEM_ID, itemId);
 			values.put(Shopping.Contains.LIST_ID, listId);
 			values.put(Shopping.Contains.STATUS, status);
+			values.put(Shopping.Contains.QUANTITY, quantity);
 			try {
 				Uri uri = context.getContentResolver().insert(Shopping.Contains.CONTENT_URI, values);
 				Log.i(TAG, "Insert new entry in 'contains': " + uri);
@@ -180,6 +232,20 @@ public class ShoppingUtils {
 		} else {
 			return null;
 		}
+	}
+
+	public static Long getCentPriceFromString(String price) {
+		Long priceLong;
+		if (TextUtils.isEmpty(price)) {
+			priceLong = 0L;
+		} else {
+			try {
+				priceLong = (long) Math.round(100 * ShoppingUtils.mPriceFormatter.parse(price).doubleValue());
+			} catch (ParseException e) {
+				priceLong = null;
+			}
+		}
+		return priceLong;
 	}
 
 }
