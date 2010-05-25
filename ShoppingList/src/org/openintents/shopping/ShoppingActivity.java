@@ -42,6 +42,7 @@ import org.openintents.shopping.dialog.RenameListDialog;
 import org.openintents.shopping.dialog.ThemeDialog;
 import org.openintents.shopping.dialog.ThemeDialog.ThemeDialogListener;
 import org.openintents.shopping.share.GTalkSender;
+import org.openintents.shopping.util.PriceConverter;
 import org.openintents.shopping.util.ShoppingUtils;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 import org.openintents.util.ShakeSensorListener;
@@ -67,6 +68,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
@@ -1239,7 +1241,31 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				} else {
 					sb.append("[ ] ");
 				}
+				String quantity = item.getString(mStringItemsQUANTITY);
+				long pricecent = item.getLong(mStringItemsITEMPRICE);
+				String price = PriceConverter.getStringFromCentPrice(pricecent);
+				String tags = item.getString(mStringItemsITEMTAGS);
+				if (!TextUtils.isEmpty(quantity)) {
+					sb.append(quantity);
+					sb.append(" ");
+				}
 				sb.append(item.getString(mStringItemsITEMNAME));
+				// Put additional info (price, tags) in brackets
+				boolean p = !TextUtils.isEmpty(price);
+				boolean t = !TextUtils.isEmpty(tags);
+				if (p || t) {
+					sb.append(" (");
+					if (p) {
+						sb.append(price);
+					}
+					if (p && t) {
+						sb.append(", ");
+					}
+					if (t) {
+						sb.append(tags);
+					}
+					sb.append(")");
+				}
 				sb.append("\n");
 			}
 

@@ -1,9 +1,5 @@
 package org.openintents.shopping.util;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Locale;
 
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Status;
@@ -12,7 +8,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.text.TextUtils;
 import android.util.Log;
 
 public class ShoppingUtils {
@@ -21,8 +16,6 @@ public class ShoppingUtils {
 	 */
 	private static final String TAG = "ShoppingUtils";
 
-	public static NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
-	
 	/**
 	 * Obtain item id by name.
 	 * @param context
@@ -94,7 +87,7 @@ public class ShoppingUtils {
 			values.put(Shopping.Items.TAGS, tags);
 		}
 		if (price != null) {
-			Long priceLong = getCentPriceFromString(price);
+			Long priceLong = PriceConverter.getCentPriceFromString(price);
 			values.put(Shopping.Items.PRICE, priceLong);
 		}
 		if (barcode != null) {
@@ -232,20 +225,6 @@ public class ShoppingUtils {
 		} else {
 			return null;
 		}
-	}
-
-	public static Long getCentPriceFromString(String price) {
-		Long priceLong;
-		if (TextUtils.isEmpty(price)) {
-			priceLong = 0L;
-		} else {
-			try {
-				priceLong = (long) Math.round(100 * ShoppingUtils.mPriceFormatter.parse(price).doubleValue());
-			} catch (ParseException e) {
-				priceLong = null;
-			}
-		}
-		return priceLong;
 	}
 
 }

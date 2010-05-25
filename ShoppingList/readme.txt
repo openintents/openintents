@@ -29,6 +29,7 @@ date:
 - new sort order "unchecked first, tags alphabetical"
 - support for barcode scanner: if scanned item is already
   in list then its status is toggled.
+- include quantity, price, and tags when sending a list.
 
 ---------------------------------------------------------
 release: 1.2.3

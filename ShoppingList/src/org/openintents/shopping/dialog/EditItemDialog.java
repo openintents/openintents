@@ -6,7 +6,7 @@ import org.openintents.provider.Shopping.Contains;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.shopping.PreferenceActivity;
 import org.openintents.shopping.R;
-import org.openintents.shopping.util.ShoppingUtils;
+import org.openintents.shopping.util.PriceConverter;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
@@ -48,8 +48,6 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 	public EditItemDialog(Context context, Uri itemUri, Uri relationUri) {
 		super(context);
 		mContext = context;
-		ShoppingUtils.mPriceFormatter.setMaximumFractionDigits(2);
-		ShoppingUtils.mPriceFormatter.setMinimumFractionDigits(2);
 		
 		LayoutInflater inflater = LayoutInflater.from(context);
 		final View view = inflater
@@ -165,7 +163,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			if (!TextUtils.isEmpty(quantityString)) {
 				double quantity = Double.parseDouble(quantityString);
 				price = quantity * price;
-				String s = ShoppingUtils.mPriceFormatter.format(price);
+				String s = PriceConverter.mPriceFormatter.format(price);
 				mPriceLabel.setText(mContext.getText(R.string.price) + ": " + s);
 				return;
 			}
@@ -197,12 +195,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 			String text = c.getString(0);
 			String tags = c.getString(1);
 			long pricecent = c.getLong(2);
-			String price = ShoppingUtils.mPriceFormatter.format(pricecent * 0.01d);
-			if (pricecent == 0) {
-				// Empty field for easier editing
-				// (Otherwise "0.00" has to be deleted manually first)
-				price = "";
-			}
+			String price = PriceConverter.getStringFromCentPrice(pricecent);
 			
 			mEditText.setText(text);
 			mTags.setText(tags);
@@ -210,7 +203,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		}
 		c.close();
 	}
-	
+
 	public void setRelationUri(Uri relationUri){
 		mRelationUri = relationUri;
 		Cursor c= mContext.getContentResolver().query(mRelationUri, mRelationProjection, null, null, null);
@@ -234,7 +227,7 @@ public class EditItemDialog extends AlertDialog implements OnClickListener {
 		String price = mPrice.getText().toString();
 		String quantity = mQuantity.getText().toString();
 		
-		Long priceLong = ShoppingUtils.getCentPriceFromString(price);
+		Long priceLong = PriceConverter.getCentPriceFromString(price);
 
     	// Remove trailing ","
     	tags = tags.trim();
