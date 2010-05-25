@@ -223,6 +223,8 @@
     	<item>Stichworte alphabetisch</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>teuerstes zuerst</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

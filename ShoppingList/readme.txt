@@ -26,6 +26,7 @@ date:
 - translations: Czech, Chinese (Simplified), Chinese 
   (Traditional), Dutch, Italian, Japanese, 
 - fix #237: Sometimes crash on shake.
+- new sort order "unchecked first, tags alphabetical"
 
 ---------------------------------------------------------
 release: 1.2.3

@@ -374,12 +374,14 @@ public abstract class Shopping {
 		 * into this array.
 		 */
 		public static final String[] SORT_ORDERS = {
-				"contains.status ASC, items.name ASC", 
+				"contains.status ASC, items.name ASC", // unchecked first, alphabetical
 				"items.name ASC",
 				"contains.modified DESC", 
 				"contains.modified ASC",
 				"(items.tags IS NULL or items.tags = '') ASC, items.tags ASC, items.name ASC", // sort by tags, but put empty tags last.
-				"items.price DESC, items.name ASC"};
+				"items.price DESC, items.name ASC",
+				"contains.status ASC, (items.tags IS NULL or items.tags = '') ASC, items.tags ASC, items.name ASC", // unchecked first, tags alphabetical, but put empty tags last.
+				};
 
 		
 	}
