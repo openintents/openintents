@@ -27,6 +27,8 @@ date:
   (Traditional), Dutch, Italian, Japanese, 
 - fix #237: Sometimes crash on shake.
 - new sort order "unchecked first, tags alphabetical"
+- support for barcode scanner: if scanned item is already
+  in list then its status is toggled.
 
 ---------------------------------------------------------
 release: 1.2.3
