@@ -611,17 +611,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		// Reload preferences, in case something changed
 		initFromPreferences();
 		
-		// Insert items received through intent:
-		if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent().getAction())
-				&& getIntent().getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString())) {
-			// Insert items into shopping list now:
-			insertItemsFromExtras();
-		}
-		
-		// Extras may also be received in onActivityResult():
-		if (mExtraItems != null) {
-			insertItemsFromExtras();
-		}
+		// Items received through intents are added in 
+		// fillItems().
 		
 		registerSensor();
 	}
@@ -1848,6 +1839,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		}
 		mListItemsView.fillItems(this, listId);
 
+		// Insert any pending items received either through intents
+		// or in onActivityResult:
+		if (mExtraItems != null) {
+			insertItemsFromExtras();
+		}
 	}
 
 	/**
