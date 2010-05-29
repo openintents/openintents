@@ -6,9 +6,9 @@
 # Nov 14, 2009: Peli: Modified export_xml2po to work with new Launchpad scheme.
 
 #Set the languages here (long version is the android resource append string).
-short_lang=("de" "es" "fo" "fr" "it" "ja" "ko" "lo" "nl" "pl" "ro" "ru" "zh_CN" "zh_TW") #do not include template language ("en" usually).
+short_lang=("de" "es" "fo" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "ro" "ru" "zh_CN" "zh_TW") #do not include template language ("en" usually).
 #="nl" "de" "fr" "ar" "es" "he" "hu" "id" "it" "pl" "pt_BR" "ru" "sv" "zh_CN"
-long_lang=("de" "es" "fo" "fr" "it" "ja" "ko" "lo" "nl" "pl" "ro" "ru" "zh-rCN" "zh-rTW") #do not include template language ("en" usually).
+long_lang=("de" "es" "fo" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "ro" "ru" "zh-rCN" "zh-rTW") #do not include template language ("en" usually).
 # "nl" "de" "fr" "ar" "es" "he" "hu" "id" "it" "pl" "pt-rBR" "ru" "sv" "zh-rCN"
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."

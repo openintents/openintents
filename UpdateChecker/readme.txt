@@ -30,7 +30,8 @@ release: 1.0.3
 date: 2010-??-??
 
 - translations: Dutch, Faroese, French, German, Italian, 
-  Japanese, Korean, Polish, Romanian, Russian, Spanish
+  Japanese, Korean, Polish, Romanian, Russian, Spanish,
+  Slovak
 
 ---------------------------------------------------------
 release: 1.0.2

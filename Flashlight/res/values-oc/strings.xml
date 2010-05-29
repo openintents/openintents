@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Cédric VALMARY (Tot en òc) https://launchpad.net/~cvalmary</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    
+    <string name="flashlight_info">Lo retroesclairatge es activat.</string>
+    
+    
+    <string name="color">Color</string>
+    <string name="color_picker">Selector de color</string>
+    
+    
+    <string name="preferences">Preferéncias</string>
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	<string name="eula_accept">Acceptar</string>
+	<string name="eula_refuse">Anullar</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Se vos plai, verificatz manualament las mesas a jorn o installatz OI Update per obténer de notificacions automaticas. Version actuala : %s</string>
+	<string name="update_check_now">Verificar ara.</string>
+	<string name="update_get_updater">Obténer OI Updater.</string>
+	<string name="update_error">Telecargament de l'aplicacion indisponible.</string>
+	<string name="update">Verificar las mesas a jorn</string>
+	
+	<!-- About -->
+	<string name="about">A prepaus</string>
+	<string name="aboutapp_not_available">Version %s\n\nCap d'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
+	<string name="aboutapp_get">Obténer OI About</string>
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Preferéncias</string>
+	<string name="settings_title_keep_color">Keep color</string>
+	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+</resources>

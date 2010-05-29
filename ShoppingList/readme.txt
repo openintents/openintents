@@ -21,10 +21,12 @@ lists or party guest lists.
 To obtain the current release, visit
   http://www.openintents.org
 
+---------------------------------------------------------
 release 1.2.4
-date: 
+date: 2010-?
 - translations: Czech, Chinese (Simplified), Chinese 
   (Traditional), Dutch, Italian, Japanese, 
+  Occitan (post 1500)
 - fix #237: Sometimes crash on shake.
 - new sort order "unchecked first, tags alphabetical"
 - support for barcode scanner: if scanned item is already
