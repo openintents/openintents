@@ -16,9 +16,10 @@
  -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.openintents.filemanager"
-	android:versionName="1.1.1"
-	android:versionCode="6">
+	android:versionName="1.1.2"
+	android:versionCode="8">
 	<!-- History: 
+	[8] 1.1.2:     2010-05-29
 	[7] 1.1.1:     2009-12-26
 	[6] 1.1.1-rc1: 2009-12-19
 	[5] 1.1.0:     2009-10-30

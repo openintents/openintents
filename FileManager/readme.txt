@@ -24,7 +24,8 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.2
-date: 2010-?-?
+date: 2010-05-29
+- fix thumbnail size on high-density devices.
 - translations: Occitan (post 1500), Polish, Russian
 
 ---------------------------------------------------------
