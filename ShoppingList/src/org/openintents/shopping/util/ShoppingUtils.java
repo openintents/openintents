@@ -24,14 +24,28 @@ public class ShoppingUtils {
 	 */
 	private static long getItemId(Context context, String name) {
 		long id = -1;
+		
+		// Try to resolve exact match:
 		Cursor existingItems = context.getContentResolver().query(Shopping.Items.CONTENT_URI,
-				new String[] { Shopping.Items._ID }, "upper(name) = ?",
-				new String[] { name.toUpperCase() }, null);
+				new String[] { Shopping.Items._ID }, "name = ?",
+				new String[] { name }, null);
 		if (existingItems.getCount() > 0) {
 			existingItems.moveToFirst();
 			id = existingItems.getLong(0);
 		};
 		existingItems.close();
+		
+		if (id < 0) {
+			// Try to resolve upper case
+			existingItems = context.getContentResolver().query(Shopping.Items.CONTENT_URI,
+					new String[] { Shopping.Items._ID }, "upper(name) = ?",
+					new String[] { name.toUpperCase() }, null);
+			if (existingItems.getCount() > 0) {
+				existingItems.moveToFirst();
+				id = existingItems.getLong(0);
+			};
+			existingItems.close();
+		}
 		return id;
 	}
 	
