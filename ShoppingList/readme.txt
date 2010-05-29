@@ -22,8 +22,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release 1.2.4
-date: 2010-?
+release 1.2.4-rc1
+date: 2010-05-29
 - translations: Czech, Chinese (Simplified), Chinese 
   (Traditional), Dutch, Italian, Japanese, 
   Occitan (post 1500)
