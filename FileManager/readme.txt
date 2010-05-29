@@ -23,6 +23,11 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.1.3
+date: 2010-05-29
+- backward compatibility with Android 1.5.
+
+---------------------------------------------------------
 release: 1.1.2
 date: 2010-05-29
 - fix thumbnail size on high-density devices.
