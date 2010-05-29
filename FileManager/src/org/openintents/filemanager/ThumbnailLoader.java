@@ -3,6 +3,7 @@ package org.openintents.filemanager;
 import java.io.File;
 import java.util.List;
 
+import org.openintents.filemanager.compatibility.BitmapDrawable_Compatible;
 import org.openintents.filemanager.util.FileUtils;
 
 import android.content.Context;
@@ -93,7 +94,11 @@ public class ThumbnailLoader extends Thread {
 					if (bitmap != null) {
 //						Log.v(TAG, "Got thumbnail for " + text.getText());
 						
-						BitmapDrawable drawable = new BitmapDrawable(context.getResources(), bitmap);
+						// SDK 1.6 and higher only:
+						// BitmapDrawable drawable = new BitmapDrawable(context.getResources(), bitmap);
+						
+						BitmapDrawable drawable = BitmapDrawable_Compatible.getNewBitmapDrawable(context.getResources(), bitmap);
+						
 						drawable.setGravity(Gravity.CENTER);
 						drawable.setBounds(0, 0, thumbnailWidth, thumbnailHeight);
 						
