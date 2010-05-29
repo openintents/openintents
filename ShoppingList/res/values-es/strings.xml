@@ -61,6 +61,7 @@
 	<string name="menu_mark_item">Marcar elemento</string>
 	<string name="menu_edit_item">Editar elemento</string>
 	<string name="menu_auto_add">Auto agregar</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -224,6 +225,8 @@
     	<item>etiquetas alfabeticamente</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>más costoso primero</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

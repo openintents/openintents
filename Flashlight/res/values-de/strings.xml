@@ -6,10 +6,11 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Florian Sievers https://launchpad.net/~florian-sievers
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_comments">OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.</string>
 	<string name="about_website_label">OI Flashlight at OpenIntents</string>
 	
 	<!-- ***************************
@@ -24,7 +25,7 @@
     <string name="color_picker">Farbwähler</string>
     
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Einstelliungen</string>
     
 	<!-- ***************************
 	     Distribution
@@ -51,7 +52,7 @@
 	     Preferences
 	     *************************** -->
 	
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">Einstelliungen</string>
+	<string name="settings_title_keep_color">Farbe beibehalten</string>
+	<string name="settings_summary_keep_color">Farbe für den nächsten Start von Flashlight speichern</string>
 </resources>

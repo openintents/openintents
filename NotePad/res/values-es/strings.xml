@@ -116,7 +116,7 @@
 	<string name="menu_theme">Tema</string>
 	<string name="theme_pick">Elije un tema</string>
     <string name="theme_default">Por defecto</string>
-    <string name="theme_monospaced">Monospaced font</string>
+    <string name="theme_monospaced">Tipografía monoespaciada</string>
 	<string name="theme_serif">Tipografía Serif</string>
 
 	<!-- Search -->

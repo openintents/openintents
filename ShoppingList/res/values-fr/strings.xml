@@ -62,6 +62,7 @@
 	<string name="menu_mark_item">Cocher un élément</string>
 	<string name="menu_edit_item">Modifier l'élément</string>
 	<string name="menu_auto_add">Ajout automatique</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -225,6 +226,8 @@
     	<item>Libellé par ordre alphabétique</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>plus cher en premier</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

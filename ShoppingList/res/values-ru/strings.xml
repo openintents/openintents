@@ -58,6 +58,7 @@
 	<string name="menu_mark_item">Выделить элемент</string>
 	<string name="menu_edit_item">Редактировать элемент</string>
 	<string name="menu_auto_add">Авто добавление</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -221,6 +222,8 @@
     	<item>по меткам, алфавитный</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>по цене</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

@@ -45,7 +45,7 @@
 	<string name="clean_up_list">schoonmaak lijst</string>
 	<string name="delete_list">Verwijder lijst</string>
 	<string name="ask_new_list">ingeven naam van nieuwe boodschappen lijst</string>
-	<string name="ask_rename_list">Rename shopping list</string>
+	<string name="ask_rename_list">herbenoem boodschappenlijst</string>
 	<string name="ask_edit_item">Item bewerken</string>
 	<string name="please_enter_name">Gelieve een naam in te voeren</string>
 	<string name="no_items_marked">geen punten zijn weggestreept</string>
@@ -53,12 +53,13 @@
 	<string name="no_shopping_provider">foutmelding bij benadering van de boodschappenlijsten</string>
 	<string name="pick_item">Kies een item</string>
 	<string name="pick_list">Kies een lijst</string>
-	<string name="theme">Stijl</string>
-	<string name="theme_settings">Stijl instellingen</string>
+	<string name="theme">Thema</string>
+	<string name="theme_settings">Thema instellingen</string>
 	<string name="rename_list">herbenoem lijst</string>
 	<string name="menu_mark_item">streep item aan</string>
 	<string name="menu_edit_item">Item bewerken</string>
 	<string name="menu_auto_add">automatissch toevoegen</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -73,7 +74,7 @@
 	<string name="add">Toevoegen</string>
 	
 	<string name="menu_pick_items">kies item</string>
-	<string name="menu_start_shopping">Winkelen</string>
+	<string name="menu_start_shopping">Boodschappen</string>
 	
 	<!-- Title supplement. '%s' is the name of the current list. -->
 	<string name="pick_items_titel">kies items.</string>
@@ -100,32 +101,32 @@
 	<string name="empty"/>
 	
 	<!-- The shortcut is created on the home screen. -->
-	<string name="pick_list_for_shortcut">Pick list for shortcut</string>
+	<string name="pick_list_for_shortcut">Kies lijst, maak snellkoppeling</string>
 	
 	<!-- Shown if external application wants to insert new items. -->
-	<string name="pick_list_to_insert_items">Pick list to insert items</string>
+	<string name="pick_list_to_insert_items">Kies lijst, items</string>
 	
 	<!-- Theme related -->
-	<string name="theme_pick">Pick a theme</string>
-	<string name="theme_description">Choose a theme for this list</string>
+	<string name="theme_pick">Kies een thema</string>
+	<string name="theme_description">Kies een thema voor dit lijst</string>
 	<string name="theme_default">Standaard</string>
-	<string name="theme_classic">Klassiek</string>
+	<string name="theme_classic">Klaziek</string>
 	<string name="theme_bugdroid">Android</string>
-	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
-	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
+	<string name="theme_classic_export">Klasiek (bij OI Boodschappenlijst)</string>
+	<string name="theme_bugdroid_export">Andoid (bij OI Boodschappenlijst )</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">Oke</string>
 	<string name="cancel">Annuleer</string>
-	<string name="use_theme_for_all_lists">Gebruik deze stijl voor alle lijsten</string>
-	<string name="get_more_themes">Get more themes</string>
+	<string name="use_theme_for_all_lists">Gebruik deze thema voor alle lijsten</string>
+	<string name="get_more_themes">Mere thema's</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Instellingen</string>
 	
     <string name="preference_application">Applicatie instellingen</string>
     
-	<string name="preference_unchecked_on_top">Unchecked on top</string>
+	<string name="preference_unchecked_on_top">Onvoltooide eerst</string>
 	<string name="preference_unchecked_on_top_summary">altijd onvoltooide item eerst laten zien</string>
 	<string name="preference_fontsize">Lettergrootte</string>
 	<string name="preference_fontsize_summary">Wijzig lettergrootte</string>
@@ -154,7 +155,7 @@
 	<string name="preference_shake_summary">Schud te telefoon om de lijst op te kuisen.</string>
 	
     <string name="preference_advanced">Geavanceerde instellingen</string>
-    <string name="preference_advanced_summary">Additional settings regarding the appearance.</string>
+    <string name="preference_advanced_summary">Extra instellingen voor weergave</string>
     
     <!-- Preference category: General settings -->
     <string name="preference_general">Algemeen</string>
@@ -162,23 +163,23 @@
     <string name="preference_appearance">Weergave</string>
     
     <string name="preference_addons">Extra's</string>
-    <string name="preference_get_addons">Get new add-ons</string>
+    <string name="preference_get_addons">Nieuw add-ons verkrijgen</string>
     <string name="preference_get_addons_summary">zoek naar uitbreidingen en thema's op het web</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_get_market_addons">Add-ons van Market verkrijgen</string>
+    <string name="preference_get_developer_addons">Add-ons van OpenIntents verkrijgen</string>
     <string name="preference_extensions">Uitbreidingen</string>
     <string name="preference_themes">Thema's</string>
     <string name="preference_market_extensions_summary">zoek naar uitbreidingen bij Android market</string>
     <string name="preference_market_themes_summary">zoek naar thema's bij Android Market</string>
-    <string name="preference_developer_extensions_summary">Get extensions from the OpenIntents homepage.</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+    <string name="preference_developer_extensions_summary">Extensies van OpenIntents homepage verkrijgen</string>
+	<string name="preference_developer_themes_summary">Mere thema's op OpenIntents</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Shopping List EULA</string>
+	<string name="eula_title">OI Boodschappenlijst  EULA</string>
 	<string name="eula_accept">Accepteren</string>
 	<string name="eula_refuse">Annuleer</string>
 
@@ -222,6 +223,8 @@
     	<item>tags alfabetisch</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>duurste eerst</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

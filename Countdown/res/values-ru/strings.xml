@@ -12,7 +12,7 @@
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
     <!-- Strings for OI About -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI Countdown уведомляет Вас после определенного периода.</string>
 	
 	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
 	<string name="about_website_label">OI Countdown на OpenIntents</string>
@@ -71,7 +71,7 @@
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Уведомление в статусной строке</string>
+	<string name="notification_in_status_bar">Уведомление в строке состояния</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
 	<string name="launch_through_status_bar">Запускать из строки состояния</string>
@@ -141,13 +141,13 @@
     <string name="menu_update">Проверить обновления</string>
 	<string name="update_box_text">Проверяйте обновления вручную или установите OI Update для автоматического уведомления. Текущая версия: %s</string>
 	<string name="update_check_now">Проверить сейчас</string>
-	<string name="update_get_updater">Получить OI Updater.</string>
+	<string name="update_get_updater">Установить OI Updater.</string>
 	<string name="update_error">Приложение загрузчик отсутствует</string>
 	
     <!-- About -->
     <string name="about">О программе</string>
 	<string name="aboutapp_not_available">Версия %s\n\n Отсутствует совместимое расширение для отображения полной информации (контакты, авторы, лицензия).</string>
-    <string name="aboutapp_get">Получить OI About</string>
+    <string name="aboutapp_get">Установить OI About</string>
     
 	<!-- Arrays -->
 	
@@ -165,13 +165,13 @@
     <string name="preference_countdown">Напоминание</string>
 
     <string name="preference_extensions">Расширения</string>
-    <string name="preference_get_extensions">Получить новые расширения</string>
+    <string name="preference_get_extensions">Установить новые расширения</string>
     <string name="preference_get_extensions_summary">Искать расширения в сети.</string>
     <string name="preference_get_extensions_from">Установить расширения из</string>
     <string name="preference_extensions_market">Android Market</string>
     <string name="preference_extensions_market_summary">Поиск расширений на Android Market.</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Получить обновления с домашней страницы OpenIntents.</string>
+    <string name="preference_extensions_developer_summary">Установить расширения с домашней страницы OpenIntents.</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
     <string name="preference_notification_timeout_title">Таймаут уведомления</string>

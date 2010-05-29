@@ -22,6 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
+  Tomasz 'Zen' Napierala https://launchpad.net/~tzn
   friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
@@ -58,41 +59,42 @@
 	<string name="menu_mark_item">Zaznacz element</string>
 	<string name="menu_edit_item">Edytuj element</string>
 	<string name="menu_auto_add">Edytuj element</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
 	     tags or price will be kept. -->
-	<string name="menu_remove_item">Remove item from list</string>
+	<string name="menu_remove_item">Usuń element z listy</string>
 	
 	<!-- Delete this item completely. If the user wants to add it again, they
 	     have to enter all the information again. -->
-	<string name="menu_delete_item">Delete item permanently</string>
+	<string name="menu_delete_item">Usuń element na stałe</string>
 	
 	<!-- Button label to add an item to the list. -->
 	<string name="add">Dodaj</string>
 	
-	<string name="menu_pick_items">Pick items</string>
-	<string name="menu_start_shopping">Shopping</string>
+	<string name="menu_pick_items">Wybierz elementy</string>
+	<string name="menu_start_shopping">Zakupy</string>
 	
 	<!-- Title supplement. '%s' is the name of the current list. -->
-	<string name="pick_items_titel">%s - Pick items</string>
+	<string name="pick_items_titel">%s - wybierz elementy</string>
 	
 	<!-- Title supplement. '%s' is the name of the current list. -->
-	<string name="shopping_title">%s - Shopping</string>
+	<string name="shopping_title">%s - zakupy</string>
 	
-	<string name="tags">Tags</string>
-	<string name="price">Price</string>
+	<string name="tags">Etykiety</string>
+	<string name="price">Cena</string>
 	<string name="item">Element</string>
-	<string name="quantity">Quantity</string>
+	<string name="quantity">Ilość</string>
 	
 	<!-- Total sum of all prices. '%s' is the sum -->
-	<string name="total">Total: %s</string>
+	<string name="total">Razem: %s</string>
 	
 	<!-- Sum of all prices of the checked items. '%s' is the sum -->
-	<string name="total_checked">Checked: %s</string>
+	<string name="total_checked">Zaznaczone: %s</string>
 	
 	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>
-	<string name="delete">Delete</string>
+	<string name="delete">Usuń</string>
 	
 	<!-- Added to an item to indicate it was bought. -->
 	<string name="suffix_checked">... OK</string>
@@ -102,7 +104,7 @@
 	<string name="pick_list_for_shortcut">Wybierz listę dla skrótu</string>
 	
 	<!-- Shown if external application wants to insert new items. -->
-	<string name="pick_list_to_insert_items">Pick list to insert items</string>
+	<string name="pick_list_to_insert_items">Wybierz listę do której dodać elementy</string>
 	
 	<!-- Theme related -->
 	<string name="theme_pick">Wybierz motyw</string>
@@ -110,19 +112,19 @@
 	<string name="theme_default">Domyślny</string>
 	<string name="theme_classic">Klasyczny</string>
 	<string name="theme_bugdroid">Android</string>
-	<string name="theme_classic_export">Classic (from OI Shopping List)</string>
-	<string name="theme_bugdroid_export">Android (from OI Shopping List)</string>
+	<string name="theme_classic_export">Klasyczny (z OI Lista zakupów)</string>
+	<string name="theme_bugdroid_export">Android (z OI Lista zakupów)</string>
 
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Anuluj</string>
-	<string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+	<string name="use_theme_for_all_lists">Użyj tego motywu dla wszystkich list</string>
+	<string name="get_more_themes">Pobierz więcej motywów</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Ustawienia</string>
 	
-    <string name="preference_application">Application settings</string>
+    <string name="preference_application">Ustawienia aplikacji</string>
     
 	<string name="preference_unchecked_on_top">Niezaznaczone na górze</string>
 	<string name="preference_unchecked_on_top_summary">Zawsze pokazuj niezaznaczone elementy jako pierwsze</string>
@@ -132,7 +134,7 @@
 	<string name="preference_sortorder_title">Porządek sortowania</string>
 	<string name="preference_sortorder_summary">Zmień porządek sortowania elementów listy</string>
 	<string name="preference_sortorder_dialog_title">Wybierz porządek sortowania</string>
-	<string name="preference_loadlastused_title">Load last list used</string>
+	<string name="preference_loadlastused_title">Wczytaj ostatno używaną listę</string>
 	<string name="preference_loadlastused_summary">Always start with the list viewed last time.</string>
 	<string name="preference_capitalization_title">Capitalization</string>
 	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
@@ -221,6 +223,8 @@
     	<item>tags alphabetical</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>most expensive first</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

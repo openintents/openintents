@@ -58,6 +58,7 @@
 	<string name="menu_mark_item">Označit bod</string>
 	<string name="menu_edit_item">Editovat bod</string>
 	<string name="menu_auto_add">Automaticky přidat</string>
+	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -211,37 +212,39 @@ Současná verze: %s</string>
 	
     <string-array name="preference_sortorder_entries">
     	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
-    	<item>unchecked first, alphabetical</item>
+    	<item>dát neodškrtnuté první: alfabeticky</item>
         <!-- Preference sort order: Sort by item name -->
-    	<item>alphabetical</item>
+    	<item>alfabeticky</item>
         <!-- Preference sort order: Newest item first -->
-    	<item>newest first</item>
+    	<item>nejnovější první</item>
         <!-- Preference sort order: Oldest item first -->
-    	<item>oldest first</item>
+    	<item>nejstarší první</item>
         <!-- Preference sort order: Sort alphabetically by tags -->
-    	<item>tags alphabetical</item>
+    	<item>alfabeticky podle označení</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
-    	<item>most expensive first</item>
+    	<item>nejdražší první</item>
+        <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>unchecked first, tags alphabetical</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Nejmenší</item>
     	<!-- Preference fontsize: small font size -->
-        <item>Small</item>
+        <item>Malé</item>
     	<!-- Preference fontsize: default font size-->
     	<item>Výchozí nastavení</item>
     	<!-- Preference fontsize: large font size -->
-        <item>Large</item>
+        <item>Velké</item>
     </string-array>
     
     <string-array name="preference_capitalization_entries">
     	<!-- Preference capitalization: No capitalization -->
-        <item>None</item>
+        <item>Žádné</item>
     	<!-- Preference capitalization: Automatically capitalize first letter of a sentence. -->
-        <item>Per Sentence</item>
+        <item>Každou větu</item>
     	<!-- Preference capitalization: Automatically capitalize first letter of each word. -->
-        <item>Per Word</item>
+        <item>Každé slovo</item>
     </string-array>
 
 

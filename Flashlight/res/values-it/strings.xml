@@ -11,8 +11,8 @@
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents Torcia ti aiuta a trovare la strada nel buio. Lo schermo rimane acceso mentre questa applicazione è in esecuzione.</string>
+	<string name="about_website_label">OI Torcia di OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -26,7 +26,7 @@
     <string name="color_picker">Selettore di colore</string>
     
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Preferenze</string>
     
 	<!-- ***************************
 	     Distribution
@@ -46,14 +46,14 @@
 	
 	<!-- About -->
 	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Versione %s\n\nNessuna estensione compatibile disponibile per mostrare tutte le info (contatti, crediti, licenza).</string>
+	<string name="aboutapp_get">Scarica OI Info</string>
 	
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">Preferenze</string>
+	<string name="settings_title_keep_color">Mantieni il colore</string>
+	<string name="settings_summary_keep_color">Salva il colore per il prossimo avvio di Torcia</string>
 </resources>

@@ -6,12 +6,13 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Artur https://launchpad.net/~arturyak
   Peli https://launchpad.net/~peli0101
   Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents Flashlight поможет Вам найти дорогу в темноте. Пока запущено приложение - подсветка экрана остается включенной.</string>
+	<string name="about_website_label">OI Flashlight на OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -25,7 +26,7 @@
     <string name="color_picker">Выбор цвета</string>
     
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Настройки</string>
     
 	<!-- ***************************
 	     Distribution
@@ -39,20 +40,20 @@
 	<!-- Update -->
 	<string name="update_box_text">Проверяйте обновления вручную или установите OI Update для автоматического уведомления. Текущая версия: %s</string>
 	<string name="update_check_now">Проверить сейчас</string>
-	<string name="update_get_updater">Получить OI Updater.</string>
-	<string name="update_error">Приложение загрузчик отсутствует</string>
+	<string name="update_get_updater">Установить OI Updater.</string>
+	<string name="update_error">Приложение загрузчик отсутствует.</string>
 	<string name="update">Проверить обновления</string>
 	
 	<!-- About -->
 	<string name="about">О программе</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Версия %s\n\n Отсутствует совместимое расширение для отображения полной информации (контакты, авторы, лицензия).</string>
+	<string name="aboutapp_get">Установить OI About</string>
 	
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">Настройки</string>
+	<string name="settings_title_keep_color">Сохранить цвет</string>
+	<string name="settings_summary_keep_color">Сохранить цвет для следующего запуска Flashlight</string>
 </resources>
