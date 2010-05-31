@@ -20,6 +20,7 @@ import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.EulaActivity;
 import org.openintents.distribution.UpdateMenu;
 import org.openintents.intents.FlashlightIntents;
+import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -310,7 +311,7 @@ public class Flashlight extends Activity {
 		Intent i = new Intent();
 		i.setAction(FlashlightIntents.ACTION_PICK_COLOR);
 		i.putExtra(FlashlightIntents.EXTRA_COLOR, mColor);
-		startActivityForResult(i, REQUEST_CODE_PICK_COLOR);
+		IntentUtils.intentLaunchWithMarketFallback(this, i, REQUEST_CODE_PICK_COLOR, FlashlightIntents.PACKAGE_NAME_COLOR_PICKER);
 	}
 
 	/**

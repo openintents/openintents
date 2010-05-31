@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  DiegoJ https://launchpad.net/~diegojromerolopez
+  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
+  enrigp https://launchpad.net/~enrgarc
+  miwie https://launchpad.net/~mw-miwie</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La luz de fondo de la pantalla permanece encendida mientras la aplicación esté arrancada.</string>
+	<string name="about_website_label">OI Flashlight a OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    <string name="color_picker">Selector de color</string>
+    
+	<!-- About -->
+	<string name="about">Acerca de</string>
+	<string name="aboutapp_not_available">Versión %s\nNo compatible con el complemento disponible para mostrar información completa (contacto, créditos, licencia).</string>
+	<string name="aboutapp_get">Obtener información acerca de OI</string>
+    
+	<!-- Update -->
+	<string name="update_error">Descarga de aplicación no disponible.</string>
+	
+
+</resources>

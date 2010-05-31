@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Artur https://launchpad.net/~arturyak
+  Peli https://launchpad.net/~peli0101
+  Vasily Bogantsev https://launchpad.net/~bas-eurogym</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight поможет Вам найти дорогу в темноте. Пока запущено приложение - подсветка экрана остается включенной.</string>
+	<string name="about_website_label">OI Flashlight на OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    <string name="color_picker">Выбор цвета</string>
+ 
+	<!-- About -->
+	<string name="about">О программе</string>
+	<string name="aboutapp_not_available">Версия %s\n\n Отсутствует совместимое расширение для отображения полной информации (контакты, авторы, лицензия).</string>
+	<string name="aboutapp_get">Установить OI About</string>
+
+	<!-- Update -->
+	<string name="update_error">Приложение загрузчик отсутствует.</string>
+
+</resources>

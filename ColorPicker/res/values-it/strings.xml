@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Cassius Umbra https://launchpad.net/~cassius-umbra
+  Diego Pierotto https://launchpad.net/~gringo
+  Peli https://launchpad.net/~peli0101</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Torcia ti aiuta a trovare la strada nel buio. Lo schermo rimane acceso mentre questa applicazione è in esecuzione.</string>
+	<string name="about_website_label">OI Torcia di OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Torcia</string>
+    <string name="color_picker">Selettore di colore</string>
+    
+    
+	<!-- About -->
+	<string name="about">Info</string>
+	<string name="aboutapp_not_available">Versione %s\n\nNessuna estensione compatibile disponibile per mostrare tutte le info (contatti, crediti, licenza).</string>
+	<string name="aboutapp_get">Scarica OI Info</string>
+
+	<!-- Update -->
+	<string name="update_error">Scaricamento dell\'applicazione non disponibile.</string>
+
+</resources>

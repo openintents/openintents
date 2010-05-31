@@ -16,8 +16,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.flashlight"
-      android:versionName="1.0.5" android:versionCode="10006">
+      android:versionCode="10007" android:versionName="1.0.6">
 	<!-- History:
+	1.0.6       [10006]: 2010-05-30
 	1.0.5       [10006]: 2010-04-25
 	1.0.5-rc1   [10005]: 2010-04-23
 	1.0.4       [10004]: 2009-05-13
@@ -80,14 +81,6 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".ColorPickerActivity"
-                  android:label="@string/color_picker">
-            <intent-filter>
-                <action android:name="org.openintents.action.PICK_COLOR" />
-				<category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <activity android:name="org.openintents.flashlight.FlashlightPrefs" />
         
         <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">

@@ -24,6 +24,8 @@ To obtain the current release, visit
 release: 1.0.6
 date: 2010-?
 - translations: Occitan (post 1500)
+- Modularized Color Picker
+    Launches Android Market when color picker not found
 
 ---------------------------------------------------------
 release: 1.0.5

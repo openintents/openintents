@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Florian Sievers https://launchpad.net/~florian-sievers
+  Peli https://launchpad.net/~peli0101</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Taschenlampe</string>
+    <string name="color_picker">Farbwähler</string>
+	
+	<!-- About -->
+	<string name="about">Info</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+
+	<!-- Update -->
+	<string name="update_error">Anwendung zum Herunterladen nicht verfügbar.</string>
+</resources>

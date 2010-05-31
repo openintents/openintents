@@ -18,26 +18,13 @@ package org.openintents.intents;
 
 
 /**
- * @version 2009-02-08
+ * @version 2010-05-30
  * 
  * @author Peli
+ * @author Karl Ostmo
  */
-public final class FlashlightIntents {
+public final class ColorPickerIntents {
 
-	/**
-	 * Color Picker package name for download from the Android Market
-	 */
-	public final static String PACKAGE_NAME_COLOR_PICKER = "org.openintents.colorpicker";
-	
-	/**
-	 * Activity Action: Start the flashlight.
-	 * 
-	 * <p>This starts the flashlight.</p>
-	 * 
-	 * <p>Constant Value: "org.openintents.action.START_FLASHLIGHT"</p>
-	 */
-	public final static String ACTION_START_FLASHLIGHT = "org.openintents.action.START_FLASHLIGHT";
-	
 	/**
 	 * Activity Action: Pick color.
 	 * 
@@ -46,15 +33,6 @@ public final class FlashlightIntents {
 	 * <p>Constant Value: "org.openintents.action.SET_FLASHLIGHT_COLOR"</p>
 	 */
 	public final static String ACTION_PICK_COLOR = "org.openintents.action.PICK_COLOR";
-	
-	/**
-	 * Broadcast Action: Set flashlight property.
-	 * 
-	 * <p>The color is given in EXTRA_COLOR.</p>
-	 * 
-	 * <p>Constant Value: "org.openintents.action.SET_FLASHLIGHT"</p>
-	 */
-	public static final String ACTION_SET_FLASHLIGHT = "org.openintents.action.SET_FLASHLIGHT";
 
 	/**
 	 * Color.
@@ -64,14 +42,4 @@ public final class FlashlightIntents {
 	 * <p>Constant Value: "org.openintents.extra.COLOR"</p>
 	 */
 	public final static String EXTRA_COLOR = "org.openintents.extra.COLOR";
-	
-	/**
-	 * Brightness.
-	 * 
-	 * <p>Brightness as float value, from 0 to 1. Use value < 0 for user setting.</p>
-	 * 
-	 * <p>Constant Value: "org.openintents.extra.BRIGHTNESS"</p>
-	 */
-	public final static String EXTRA_BRIGHTNESS = "org.openintents.extra.BRIGHTNESS";
-
 }
