@@ -18,13 +18,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" >
+		android:layout_height="wrap_content">
 	<LinearLayout android:id="@+id/check_surround"
 		android:orientation="vertical"
 		android:layout_width="wrap_content"
 		android:layout_height="fill_parent"
 		android:paddingLeft="20dip"
-        android:clickable = "true" >
+        android:clickable = "true"
+        android:gravity="center_vertical"  >
 		<CheckBox android:id="@+id/check"
 		              android:textAppearance="?android:attr/textAppearanceLarge"
 		              android:layout_width="wrap_content"
