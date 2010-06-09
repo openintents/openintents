@@ -23,7 +23,7 @@
 	<string name="shopping_share_description">Insert the email addresses of the contacts 
 		separated by comma
 		with who you want to share this list 
-		(use 'local/new_id' to test locally).</string>
+		(use \'local/new_id\' to test locally).</string>
 	<string name="shopping_share_hint">i.e. local/bob2, alice@gmail.com</string>
 	<string name="share">Share</string>
 	<string name="share_settings">Share settings</string>

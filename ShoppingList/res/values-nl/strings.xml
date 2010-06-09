@@ -119,7 +119,7 @@
 	<string name="ok">Oke</string>
 	<string name="cancel">Annuleer</string>
 	<string name="use_theme_for_all_lists">Gebruik deze thema voor alle lijsten</string>
-	<string name="get_more_themes">Mere thema's</string>
+	<string name="get_more_themes">Mere thema\'s</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Instellingen</string>
@@ -162,17 +162,17 @@
     
     <string name="preference_appearance">Weergave</string>
     
-    <string name="preference_addons">Extra's</string>
+    <string name="preference_addons">Extra\'s</string>
     <string name="preference_get_addons">Nieuw add-ons verkrijgen</string>
-    <string name="preference_get_addons_summary">zoek naar uitbreidingen en thema's op het web</string>
+    <string name="preference_get_addons_summary">zoek naar uitbreidingen en thema\'s op het web</string>
     <string name="preference_get_market_addons">Add-ons van Market verkrijgen</string>
     <string name="preference_get_developer_addons">Add-ons van OpenIntents verkrijgen</string>
     <string name="preference_extensions">Uitbreidingen</string>
-    <string name="preference_themes">Thema's</string>
+    <string name="preference_themes">Thema\'s</string>
     <string name="preference_market_extensions_summary">zoek naar uitbreidingen bij Android market</string>
-    <string name="preference_market_themes_summary">zoek naar thema's bij Android Market</string>
+    <string name="preference_market_themes_summary">zoek naar thema\'s bij Android Market</string>
     <string name="preference_developer_extensions_summary">Extensies van OpenIntents homepage verkrijgen</string>
-	<string name="preference_developer_themes_summary">Mere thema's op OpenIntents</string>
+	<string name="preference_developer_themes_summary">Mere thema\'s op OpenIntents</string>
 	
 	<!-- ***************************
 	     Distribution

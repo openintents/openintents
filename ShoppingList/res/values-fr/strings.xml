@@ -29,7 +29,7 @@
   viktor https://launchpad.net/~lfraisse</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OI Shopping list vous permet de suivre votre liste de course. Vous pouvez aussi l'utiliser pour d'autres types de listes, par exemple une liste de chose à faire ou une liste d'invités.</string>
+	<string name="about_comments">OI Shopping list vous permet de suivre votre liste de course. Vous pouvez aussi l\'utiliser pour d\'autres types de listes, par exemple une liste de chose à faire ou une liste d\'invités.</string>
 	<string name="about_website_label">OI Shopping list de OpenIntents</string>
 
 	<!-- ***************************
@@ -42,36 +42,36 @@
 	<string name="new_list">Nouvelle liste</string>
 	<string name="send">Envoyer la liste</string>
 	<string name="empty_list_not_sent">Liste vide non envoyée</string>
-	<string name="email_not_available">Non disponible pour l'envoi.</string>
+	<string name="email_not_available">Non disponible pour l\'envoi.</string>
 	<string name="my_shopping_list">Ma liste de courses</string>
 	<string name="new_list_hint">Par ex. cadeau, famille</string>
 	<string name="clean_up_list">Nettoyer la liste</string>
 	<string name="delete_list">Supprimer la liste</string>
 	<string name="ask_new_list">Entrez le nom de la nouvelle liste de courses</string>
 	<string name="ask_rename_list">Renommer la liste de courses</string>
-	<string name="ask_edit_item">Modifier l'élément</string>
+	<string name="ask_edit_item">Modifier l\'élément</string>
 	<string name="please_enter_name">Merci de saisir un nom</string>
 	<string name="no_items_marked">Aucun élément marqué</string>
 	<string name="confirm_delete_list">Voulez-vous vraiment supprimer cette liste?</string>
-	<string name="no_shopping_provider">Erreur lors de l'accès aux listes de courses</string>
+	<string name="no_shopping_provider">Erreur lors de l\'accès aux listes de courses</string>
 	<string name="pick_item">Cochez un élément</string>
 	<string name="pick_list">Sélectionner une liste</string>
 	<string name="theme">Thème</string>
 	<string name="theme_settings">Option du thème</string>
 	<string name="rename_list">Renommer la liste</string>
 	<string name="menu_mark_item">Cocher un élément</string>
-	<string name="menu_edit_item">Modifier l'élément</string>
+	<string name="menu_edit_item">Modifier l\'élément</string>
 	<string name="menu_auto_add">Ajout automatique</string>
 	<string name="no_items_available">No items available</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
 	     tags or price will be kept. -->
-	<string name="menu_remove_item">Retirer l'élément de la liste</string>
+	<string name="menu_remove_item">Retirer l\'élément de la liste</string>
 	
 	<!-- Delete this item completely. If the user wants to add it again, they
 	     have to enter all the information again. -->
-	<string name="menu_delete_item">Supprimer l'élément définitivement</string>
+	<string name="menu_delete_item">Supprimer l\'élément définitivement</string>
 	
 	<!-- Button label to add an item to the list. -->
 	<string name="add">Ajouter</string>
@@ -127,7 +127,7 @@
 	<!-- preferences -->
 	<string name="preferences">Paramètres</string>
 	
-    <string name="preference_application">Paramètres de l'application</string>
+    <string name="preference_application">Paramètres de l\'application</string>
     
 	<string name="preference_unchecked_on_top">Décoché en premier</string>
 	<string name="preference_unchecked_on_top_summary">Toujours voir les éléments non cochés en premier</string>
@@ -135,8 +135,8 @@
 	<string name="preference_fontsize_summary">Changer la taille de police</string>
 	<string name="preference_fontsize_dialog_title">Choisir la taille de police</string>
 	<string name="preference_sortorder_title">Ordre de tri</string>
-	<string name="preference_sortorder_summary">Changer l'ordre de tri des éléements de liste</string>
-	<string name="preference_sortorder_dialog_title">Choisir l'ordre de tri</string>
+	<string name="preference_sortorder_summary">Changer l\'ordre de tri des éléements de liste</string>
+	<string name="preference_sortorder_dialog_title">Choisir l\'ordre de tri</string>
 	<string name="preference_loadlastused_title">Charger la dernière liste utilisée</string>
 	<string name="preference_loadlastused_summary">Toujours démarrer avec la dernière liste vue</string>
 	<string name="preference_capitalization_title">Capitalisation</string>
@@ -158,7 +158,7 @@
 	<string name="preference_shake_summary">Secouer le téléphone pour nettoyer la liste</string>
 	
     <string name="preference_advanced">Paramètres avancés</string>
-    <string name="preference_advanced_summary">Paramètres supplémentaires sur l'apparence</string>
+    <string name="preference_advanced_summary">Paramètres supplémentaires sur l\'apparence</string>
     
     <!-- Preference category: General settings -->
     <string name="preference_general">Général</string>
@@ -172,10 +172,10 @@
     <string name="preference_get_developer_addons">Avoir des plug-ins depuis OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
     <string name="preference_themes">Thèmes</string>
-    <string name="preference_market_extensions_summary">Rechercher des extensions sur l'Android Market</string>
-    <string name="preference_market_themes_summary">Rechercher des thèmes sur l'Android Market.</string>
-    <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
-	<string name="preference_developer_themes_summary">Avoir des thèmes depuis la page internet d'OpenIntents</string>
+    <string name="preference_market_extensions_summary">Rechercher des extensions sur l\'Android Market</string>
+    <string name="preference_market_themes_summary">Rechercher des thèmes sur l\'Android Market.</string>
+    <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d\'OpenIntents</string>
+	<string name="preference_developer_themes_summary">Avoir des thèmes depuis la page internet d\'OpenIntents</string>
 	
 	<!-- ***************************
 	     Distribution

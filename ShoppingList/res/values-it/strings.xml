@@ -38,7 +38,7 @@
 	<string name="new_list">Nuovo elenco</string>
 	<string name="send">Invia elenco</string>
 	<string name="empty_list_not_sent">Elenco vuoto non inviato.</string>
-	<string name="email_not_available">Nessuna applicazione disponibile per l&apos;invio.</string>
+	<string name="email_not_available">Nessuna applicazione disponibile per l\'invio.</string>
 	<string name="my_shopping_list">Mia lista della spesa</string>
 	<string name="new_list_hint">Wishlist, elenco famiglie, ecc.</string>
 	<string name="clean_up_list">Svuota elenco</string>
@@ -49,7 +49,7 @@
 	<string name="please_enter_name">Inserire un nome</string>
 	<string name="no_items_marked">Nessun oggetto segnato come depennato</string>
 	<string name="confirm_delete_list">Eliminare questa lista della spesa?</string>
-	<string name="no_shopping_provider">Errore durante l&apos;accesso alle lista della spesa.</string>
+	<string name="no_shopping_provider">Errore durante l\'accesso alle lista della spesa.</string>
 	<string name="pick_item">Scegli un oggetto</string>
 	<string name="pick_list">Scegli un elenco</string>
 	<string name="theme">Tema</string>
@@ -131,24 +131,24 @@
 	<string name="preference_sortorder_summary">Cambia tipo di ordinamento per gli oggetti in elenco</string>
 	<string name="preference_sortorder_dialog_title">Scegli tipo di ordinamento</string>
 	<string name="preference_loadlastused_title">Carica ultimo elenco utilizzato</string>
-	<string name="preference_loadlastused_summary">Comincia sempre con l&apos;ultimo elenco visualizzato.</string>
+	<string name="preference_loadlastused_summary">Comincia sempre con l\'ultimo elenco visualizzato.</string>
 	<string name="preference_capitalization_title">Lettere maiuscole</string>
 	<string name="preference_capitalization_summary">Impostazione automatica delle maiuscole</string>
 	<string name="preference_capitalization_dialog_title">Scegli lettere maiuscole</string> 
 	<string name="preference_hidechecked_title">Nascondi elementi selezionati</string>
 	<string name="preference_hidechecked_summary">Nascondi immediatamente gli elementi selezionati.</string>
 	<string name="preference_showprice_title">Mostra prezzo</string>
-	<string name="preference_showprice_summary">Aggiungi una colonna extra nell&apos;elenco.</string>
+	<string name="preference_showprice_summary">Aggiungi una colonna extra nell\'elenco.</string>
 	<string name="preference_showtags_title">Mostra tag</string>
-	<string name="preference_showtags_summary">Aggiungi una colonna extra nell&apos;elenco.</string>
+	<string name="preference_showtags_summary">Aggiungi una colonna extra nell\'elenco.</string>
 	<string name="preference_showquantity_title">Mostra quantità</string>
-	<string name="preference_showquantity_summary">Aggiungi una colonna extra nell&apos;elenco.</string>
+	<string name="preference_showquantity_summary">Aggiungi una colonna extra nell\'elenco.</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->
 	<string name="preference_shake_title">Scuoti per svuotare elenco</string>
 	
 	<!-- Preference summary: Shake the phone to clean up the list. -->
-	<string name="preference_shake_summary">Scuoti il telefono per svuotare l&apos;elenco.</string>
+	<string name="preference_shake_summary">Scuoti il telefono per svuotare l\'elenco.</string>
 	
     <string name="preference_advanced">Impostazioni avanzate</string>
     <string name="preference_advanced_summary">Impostazioni aggiuntive per le modalità di visualizzazione.</string>
@@ -194,9 +194,9 @@
 	
 	<!-- OI Shopping list -->
 	<string name="oi_shopping_permission_read">Leggi lista della spesa</string>
-	<string name="oi_shopping_permission_read_descr">Consente a un&apos;applicazione di leggere le lista della spesa. Gli elenchi e gli oggetti crittografati vengono forniti nel formato crittografato.</string>
+	<string name="oi_shopping_permission_read_descr">Consente a un\'applicazione di leggere le lista della spesa. Gli elenchi e gli oggetti crittografati vengono forniti nel formato crittografato.</string>
 	<string name="oi_shopping_permission_write">Scrivi lista della spesa</string>
-	<string name="oi_shopping_permission_write_descr">Consente a un&apos;applicazione di creare nuovi elenchi e oggetti oppure di modificare quelli esistenti.</string>
+	<string name="oi_shopping_permission_write_descr">Consente a un\'applicazione di creare nuovi elenchi e oggetti oppure di modificare quelli esistenti.</string>
 	
 	
 	<!-- *************************** 	     Preferences 	     *************************** -->
