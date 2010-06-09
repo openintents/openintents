@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2010 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ 
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">تتيح لك قائمة التسوق OI تتبع عناصر التسوق الخاصة بك كما يمكنك أيضًا استخدامها كأنواع أخرى من قوائم المراجعة، مثل قوائم المهام المطلوبة أو قوائم ضيوف الحفل.</string>
+	<string name="about_website_label">قائمة التسوق OI في OpenIntents</string>
+
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<string name="app_name">قائمة التسوق OI</string>
+
+	<!-- Shopping Provider -->
+	<string name="new_item">عنصر جديد</string>
+	<string name="new_list">قائمة جديدة</string>
+	<string name="send">إرسال القائمة</string>
+	<string name="empty_list_not_sent">لم يتم إرسال القائمة الفارغة.</string>
+	<string name="email_not_available">التطبيق متاح الآن للإرسال.</string>
+	<string name="my_shopping_list">قائمة التسوق الخاصة بي</string>
+	<string name="new_list_hint">مثل قائمة الأمنيات وقائمة الأسرة</string>
+	<string name="clean_up_list">قائمة التنظيف</string>
+	<string name="delete_list">قائمة الحذف</string>
+	<string name="ask_new_list">إدخال اسم قائمة تسوق جديدة</string>
+	<string name="ask_rename_list">تغيير اسم قائمة التسوق</string>
+	<string name="ask_edit_item">تعديل عنصر</string>
+	<string name="please_enter_name">يرجى إدخال اسم</string>
+	<string name="no_items_marked">لم يتم وضع علامات حذف على عناصر.</string>
+	<string name="confirm_delete_list">هل تريد فعلاً حذف قائمة التسوق هذه؟</string>
+	<string name="no_shopping_provider">خطأ أثناء الدخول إلى قوائم التسوق.</string>
+	<string name="pick_item">اختيار عنصر</string>
+	<string name="pick_list">اختيار قائمة</string>
+	<string name="theme">الشكل العام</string>
+	<string name="theme_settings">إعدادات الشكل العام</string>
+	<string name="rename_list">تغيير اسم قائمة</string>
+	<string name="menu_mark_item">وضع علامة على عنصر</string>
+	<string name="menu_edit_item">تعديل عنصر</string>
+	<string name="menu_auto_add">إضافة تلقائية</string>
+	
+	<!-- Remove item from this list, but keep it internally, so that the user
+	     can choose it later for inclusion again. Information like
+	     tags or price will be kept. -->
+	<string name="menu_remove_item">إزالة عنصر من القائمة</string>
+	
+	<!-- Delete this item completely. If the user wants to add it again, they
+	     have to enter all the information again. -->
+	<string name="menu_delete_item">إزالة عنصر نهائيًا</string>
+	
+	<!-- Button label to add an item to the list. -->
+	<string name="add">إضافة</string>
+	
+	<string name="menu_pick_items">انتقاء عناصر</string>
+	<string name="menu_start_shopping">التسوق</string>
+	
+	<!-- Title supplement. '%s' is the name of the current list. -->
+	<string name="pick_items_titel">%s - انتقاء عناصر</string>
+	
+	<!-- Title supplement. '%s' is the name of the current list. -->
+	<string name="shopping_title">%s - التسوق</string>
+	
+	<string name="tags">علامات</string>
+	<string name="price">السعر</string>
+	<string name="item">العنصر</string>
+	<string name="quantity">الكمية</string>
+	
+	<!-- Total sum of all prices. '%s' is the sum -->
+	<string name="total">الإجمالي: %s</string>
+	
+	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<string name="total_checked">محدد: %s</string>
+	
+	<string name="delete_item_confirm">هل أنت متأكد من رغبتك في الحذف النهائي لهذا العنصر وعلاماته وسعره من كل قوائم التسوق؟</string>
+	<string name="delete">حذف</string>
+	
+	<!-- Added to an item to indicate it was bought. -->
+	<string name="suffix_checked">... موافق</string>
+	<string name="empty"></string>
+	
+	<!-- The shortcut is created on the home screen. -->
+	<string name="pick_list_for_shortcut">اختر قائمة للاختصار</string>
+	
+	<!-- Shown if external application wants to insert new items. -->
+	<string name="pick_list_to_insert_items">اختر قائمة لإدخال عناصر</string>
+	
+	<!-- Theme related -->
+	<string name="theme_pick">اختر شكلاً عامًا</string>
+	<string name="theme_description">اختر شكلاً عامًا لهذه القائمة</string>
+	<string name="theme_default">القيمة الافتراضية</string>
+	<string name="theme_classic">كلاسيكي</string>
+	<string name="theme_bugdroid">إنسان آلي</string>
+	<string name="theme_classic_export">كلاسيكي (من قائمة التسوق OI)</string>
+	<string name="theme_bugdroid_export">إنسان آلي (من قائمة التسوق OI)</string>
+
+	<!--     Dialog box    -->
+	<string name="ok">موافق</string>
+	<string name="cancel">إلغاء</string>
+	<string name="use_theme_for_all_lists">استخدم هذا الشكل العام مع كل القوائم</string>
+	<string name="get_more_themes">احصل على المزيد من الأشكال العامة</string>
+	
+	<!-- preferences -->
+	<string name="preferences">إعدادات </string>
+	
+    <string name="preference_application">إعدادات التطبيق</string>
+    
+	<string name="preference_unchecked_on_top">غير المحدد بالأعلى</string>
+	<string name="preference_unchecked_on_top_summary">إظهار العناصر غير المحددة أولاً بشكل دائم</string>
+	<string name="preference_fontsize">حجم الخط</string>
+	<string name="preference_fontsize_summary">تغيير حجم الخط</string>
+	<string name="preference_fontsize_dialog_title">تحديد حجم الخط</string>
+	<string name="preference_sortorder_title">ترتيب التصنيف</string>
+	<string name="preference_sortorder_summary">تغيير ترتيب تصنيف عناصر القائمة</string>
+	<string name="preference_sortorder_dialog_title">اختيار ترتيب التصنيف</string>
+	<string name="preference_loadlastused_title">تحميل آخر قائمة مستخدمة</string>
+	<string name="preference_loadlastused_summary">البدء دائمًا في القائمة التي تم عرضها آخر مرة.</string>
+	<string name="preference_capitalization_title">تكبير الحروف</string>
+	<string name="preference_capitalization_summary">التكبير التلقائي لحروف الإدخالات</string>
+	<string name="preference_capitalization_dialog_title">اختيار تكبير الحروف</string> 
+	<string name="preference_hidechecked_title">إخفاء العناصر المحددة</string>
+	<string name="preference_hidechecked_summary">إخفاء العناصر المحددة على الفور.</string>
+	<string name="preference_showprice_title">إظهار السعر</string>
+	<string name="preference_showprice_summary">إظهار عمود إضافي في القائمة.</string>
+	<string name="preference_showtags_title">إظهار الملصقات</string>
+	<string name="preference_showtags_summary">إظهار عمود إضافي في القائمة.</string>
+	<string name="preference_showquantity_title">إظهار الكمية</string>
+	<string name="preference_showquantity_summary">إظهار عمود إضافي في القائمة.</string>
+	
+	<!-- Preference title: Shake the phone to clean up the list. -->
+	<string name="preference_shake_title">هز للتنظيف</string>
+	
+	<!-- Preference summary: Shake the phone to clean up the list. -->
+	<string name="preference_shake_summary">هز الهاتف لتنظيف القائمة.</string>
+	
+    <string name="preference_advanced">إعدادات متطورة</string>
+    <string name="preference_advanced_summary">إعدادات إضافية تتعلق بالمظهر.</string>
+    
+    <!-- Preference category: General settings -->
+    <string name="preference_general">عام</string>
+    
+    <string name="preference_appearance">المظهر</string>
+    
+    <string name="preference_addons">البرامج الإضافية</string>
+    <string name="preference_get_addons">الحصول على برامج إضافية جديدة</string>
+    <string name="preference_get_addons_summary">البحث عن امتدادات وأشكال عامة على الإنترنت.</string>
+    <string name="preference_get_market_addons">الحصول على برامج إضافية من السوق</string>
+    <string name="preference_get_developer_addons">الحصول على برامج إضافية من OpenIntents</string>
+    <string name="preference_extensions">الامتدادات</string>
+    <string name="preference_themes">الأشكال العامة</string>
+    <string name="preference_market_extensions_summary">البحث عن امتدادات في سوق الإنسان الآلي.</string>
+    <string name="preference_market_themes_summary">البحث عن أشكال عامة في سوق الإنسان الآلي.</string>
+    <string name="preference_developer_extensions_summary">الحصول على امتدادات من صفحة OpenIntents الرئيسية.</string>
+	<string name="preference_developer_themes_summary">الحصول على أشكال عامة من صفحة OpenIntents الرئيسية.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">اتفاقية ترخيص المستخدم النهائي لقائمة التسوق OI</string>
+	<string name="eula_accept">قبول</string>
+	<string name="eula_refuse">إلغاء</string>
+
+	<!-- Update -->
+	<string name="update_box_text">يرجى إجراء فحص يدوي للتحديثات أو تثبيت تحديث OI للتنبيهات التلقائية. الإصدار الحالي: %s
+	</string>
+	<string name="update_check_now">الفحص الآن.</string>
+	<string name="update_get_updater">الحصول على أداة تحديث OI.</string>
+	<string name="update_error">تنزيل التطبيق غير المتاح.</string>
+	<string name="update">فحص التحديثات</string>
+
+	<!-- About -->
+	<string name="about">حول</string>
+	<string name="aboutapp_not_available">الإصدار %s\n\nلا يوجد امتداد متوافق متاح لعرض المعلومات الكاملة (جهة الاتصال والائتمان والترخيص).</string>
+	<string name="aboutapp_get">الحصول على OI حول</string>
+	
+	<!-- ***************************
+	     Permissions
+	     *************************** -->
+	
+	<!-- OI Shopping list -->
+	<string name="oi_shopping_permission_read">قراءة قوائم التسوق</string>
+	<string name="oi_shopping_permission_read_descr">تتيح لتطبيق أن يقرأ قوائم التسوق. لاحظ أن القوائم والعناصر المشفرة تتوفر بتنسيق مشفر.</string>
+	<string name="oi_shopping_permission_write">كتابة قوائم التسوق</string>
+	<string name="oi_shopping_permission_write_descr">تتيح للتطبيق إنشاء قوائم وعناصر جديدة أو تغيير الموجود.</string>
+	
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+    <string-array name="preference_sortorder_entries">
+    	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
+    	<item>غير المحدد أولاً، أبجديًا</item>
+        <!-- Preference sort order: Sort by item name -->
+    	<item>أبجديًا</item>
+        <!-- Preference sort order: Newest item first -->
+    	<item>الأحدث أولاً</item>
+        <!-- Preference sort order: Oldest item first -->
+    	<item>الأقدم أولاً</item>
+        <!-- Preference sort order: Sort alphabetically by tags -->
+    	<item>الملصقات أبجديًا</item>
+        <!-- Preference sort order: Sort by price, the most expensive first -->
+    	<item>الأعلى ثمنًا أولاً</item>
+    </string-array>
+    
+    <string-array name="preference_fontsize_entries">
+    	<!-- Preference fontsize: tiny font size -->
+        <item>شديد الصغر</item>
+    	<!-- Preference fontsize: small font size -->
+        <item>صغير</item>
+    	<!-- Preference fontsize: default font size-->
+    	<item>القيمة الافتراضية</item>
+    	<!-- Preference fontsize: large font size -->
+        <item>كبير</item>
+    </string-array>
+    
+    <string-array name="preference_capitalization_entries">
+    	<!-- Preference capitalization: No capitalization -->
+        <item>لا شيء</item>
+    	<!-- Preference capitalization: Automatically capitalize first letter of a sentence. -->
+        <item>بالجملة</item>
+    	<!-- Preference capitalization: Automatically capitalize first letter of each word. -->
+        <item>بالكلمة</item>
+    </string-array>
+
+
+	<!-- ***************************
+	     Automation
+	     *************************** --> <!-- Label above spinner for all actions (automation tasks) that can be performed. -->
+	<string name="label_select_action">تحديد إجراء:</string>
+	
+	<!-- Label above button that opens a list of all shopping lists to choose from. -->
+	<string name="label_select_list">قائمة التحديد:</string>
+	
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to clean up a list. -->
+    	<item>قائمة التنظيف</item>
+    </string-array>
+    
+</resources> 

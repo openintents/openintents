@@ -93,7 +93,7 @@
 	<!-- Sum of all prices of the checked items. '%s' is the sum -->
 	<string name="total_checked">Zaznaczone: %s</string>
 	
-	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>
+	<string name="delete_item_confirm">Czy na pewno chcesz ostatecznei usunąć tę pozycję oraz przypisane do niej znaczniki i ceny z wszystkich list zakupów?</string>
 	<string name="delete">Usuń</string>
 	
 	<!-- Added to an item to indicate it was bought. -->
@@ -135,40 +135,40 @@
 	<string name="preference_sortorder_summary">Zmień porządek sortowania elementów listy</string>
 	<string name="preference_sortorder_dialog_title">Wybierz porządek sortowania</string>
 	<string name="preference_loadlastused_title">Wczytaj ostatno używaną listę</string>
-	<string name="preference_loadlastused_summary">Always start with the list viewed last time.</string>
-	<string name="preference_capitalization_title">Capitalization</string>
-	<string name="preference_capitalization_summary">Automatic capitalization of entries</string>
-	<string name="preference_capitalization_dialog_title">Choose capitalization</string> 
-	<string name="preference_hidechecked_title">Hide checked items</string>
-	<string name="preference_hidechecked_summary">Immediately hide items checked off.</string>
-	<string name="preference_showprice_title">Show price</string>
-	<string name="preference_showprice_summary">Shown as extra column in list.</string>
-	<string name="preference_showtags_title">Show tags</string>
-	<string name="preference_showtags_summary">Shown as extra column in list.</string>
-	<string name="preference_showquantity_title">Show quantity</string>
-	<string name="preference_showquantity_summary">Shown as extra column in list.</string>
+	<string name="preference_loadlastused_summary">Zawsze zaczynaj, wyświetlając ostatnio przeglądaną listę.</string>
+	<string name="preference_capitalization_title">Duże litery</string>
+	<string name="preference_capitalization_summary">Automatycznie zmień pierwszą literę pozycji na dużą</string>
+	<string name="preference_capitalization_dialog_title">Wybierz duże litery</string> 
+	<string name="preference_hidechecked_title">Ukryj zaznaczone pozycje</string>
+	<string name="preference_hidechecked_summary">Niezwłocznie ukryj odznaczone pozycje.</string>
+	<string name="preference_showprice_title">Pokaż ceny</string>
+	<string name="preference_showprice_summary">Pokaż jako dodatkową kolumnę na liście.</string>
+	<string name="preference_showtags_title">Pokaż znaczniki</string>
+	<string name="preference_showtags_summary">Pokaż jako dodatkową kolumnę na liście.</string>
+	<string name="preference_showquantity_title">Pokaż liczbę</string>
+	<string name="preference_showquantity_summary">Pokaż jako dodatkową kolumnę na liście.</string>
 	
 	<!-- Preference title: Shake the phone to clean up the list. -->
-	<string name="preference_shake_title">Shake to clean up</string>
+	<string name="preference_shake_title">Potrząśnij, aby wyczyścić</string>
 	
 	<!-- Preference summary: Shake the phone to clean up the list. -->
-	<string name="preference_shake_summary">Shake the phone to clean up the list.</string>
+	<string name="preference_shake_summary">Potrząśnij telefonem, aby wyczyścić listę</string>
 	
-    <string name="preference_advanced">Advanced settings</string>
-    <string name="preference_advanced_summary">Additional settings regarding the appearance.</string>
+    <string name="preference_advanced">Ustawienia zaawansowane</string>
+    <string name="preference_advanced_summary">Dodatkowe ustawienia wyglądu.</string>
     
     <!-- Preference category: General settings -->
-    <string name="preference_general">General</string>
+    <string name="preference_general">Ogólne</string>
     
-    <string name="preference_appearance">Appearance</string>
+    <string name="preference_appearance">Wygląd</string>
     
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_addons">Dodatki</string>
+    <string name="preference_get_addons">Pobierz nowe dodatki</string>
+    <string name="preference_get_addons_summary">Wyszukaj rozszerzenia i tematy on-line.</string>
+    <string name="preference_get_market_addons">Pobierz dodatki ze sklepu</string>
+    <string name="preference_get_developer_addons">Pobierz dodatki z OpenIntents</string>
+    <string name="preference_extensions">Rozszerzenia</string>
+    <string name="preference_themes">Tematy</string>
     <string name="preference_market_extensions_summary">Szukaj rozszerzeń na Android Market</string>
     <string name="preference_market_themes_summary">Szukaj motywów na Android Market</string>
     <string name="preference_developer_extensions_summary">Pobierz rozszerzenia ze strony OpenIntents.</string>
@@ -220,16 +220,16 @@
         <!-- Preference sort order: Oldest item first -->
     	<item>najpierw najstarsze</item>
         <!-- Preference sort order: Sort alphabetically by tags -->
-    	<item>tags alphabetical</item>
+    	<item>najstarsza pierwsza</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
-    	<item>most expensive first</item>
+    	<item>znaczniki alfabetycznie</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>najdroższa pierwsza</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Drobny</item>
     	<!-- Preference fontsize: small font size -->
         <item>Mały</item>
     	<!-- Preference fontsize: default font size-->
@@ -240,11 +240,11 @@
     
     <string-array name="preference_capitalization_entries">
     	<!-- Preference capitalization: No capitalization -->
-        <item>None</item>
+        <item>Brak</item>
     	<!-- Preference capitalization: Automatically capitalize first letter of a sentence. -->
-        <item>Per Sentence</item>
+        <item>Pierwsza litera zdania</item>
     	<!-- Preference capitalization: Automatically capitalize first letter of each word. -->
-        <item>Per Word</item>
+        <item>Pierwsza litera słowa</item>
     </string-array>
 
 
@@ -252,10 +252,10 @@
 	     Automation
 	     *************************** -->
 	<!-- Label above spinner for all actions (automation tasks) that can be performed. -->
-	<string name="label_select_action">Select action:</string>
+	<string name="label_select_action">Wybierz akcję:</string>
 	
 	<!-- Label above button that opens a list of all shopping lists to choose from. -->
-	<string name="label_select_list">Select list:</string>
+	<string name="label_select_list">Wybierz listę:</string>
 	
 	<!-- Arrays -->
 	
