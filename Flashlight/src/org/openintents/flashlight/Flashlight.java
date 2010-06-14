@@ -23,9 +23,11 @@ import org.openintents.intents.FlashlightIntents;
 import org.openintents.util.IntentUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -59,6 +61,7 @@ public class Flashlight extends Activity {
     private static final int REQUEST_CODE_PICK_COLOR = 1;
 
 	private static final int DIALOG_ABOUT = 1;
+	private static final int DIALOG_COLORPICKER_DOWNLOAD = 2;
 	
 	private LinearLayout mBackground;
 	private View mIcon;
@@ -266,13 +269,56 @@ public class Flashlight extends Activity {
 	@Override
 	protected Dialog onCreateDialog(int id) {
 
+		Log.d(TAG, "Called onCreateDialog()");
+		
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
+		case DIALOG_COLORPICKER_DOWNLOAD:
+			return new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+			.setTitle(R.string.download_color_picker)
+			.setMessage(R.string.color_picker_modularization_explanation)
+			.setPositiveButton(R.string.download_color_picker_market, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startActivity(IntentUtils.getMarketDownloadIntent(IntentUtils.PACKAGE_NAME_COLOR_PICKER));
+				}
+			})
+			.setNeutralButton(R.string.download_color_picker_web, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					startActivity(new Intent(Intent.ACTION_VIEW, IntentUtils.APK_DOWNLOAD_URI_COLOR_PICKER));
+				}
+			})
+//			.setNegativeButton(R.string.alert_dialog_cancel, null)
+			.create();
 		}
 		return null;
 	}
 	
+	@Override
+	protected void onPrepareDialog(int id, final Dialog dialog) {
+		super.onPrepareDialog(id, dialog);
+		
+		Log.d(TAG, "Called onPrepareDialog()");
+	
+		switch (id) {
+		case DIALOG_COLORPICKER_DOWNLOAD:
+		{
+			boolean has_android_market = IntentUtils.isIntentAvailable(this,
+					IntentUtils.getMarketDownloadIntent(IntentUtils.PACKAGE_NAME_COLOR_PICKER));
+
+			Log.d(TAG, "has_android_market? " + has_android_market);
+			
+			dialog.findViewById(android.R.id.button1).setVisibility(
+					has_android_market ? View.VISIBLE : View.GONE);
+			break;
+		}
+		default:
+			break;
+		}
+	}
+
+
 	/////////////////////////////////////////////////////
 	// Other functions
 	
@@ -311,7 +357,13 @@ public class Flashlight extends Activity {
 		Intent i = new Intent();
 		i.setAction(FlashlightIntents.ACTION_PICK_COLOR);
 		i.putExtra(FlashlightIntents.EXTRA_COLOR, mColor);
-		IntentUtils.intentLaunchWithMarketFallback(this, i, REQUEST_CODE_PICK_COLOR, FlashlightIntents.PACKAGE_NAME_COLOR_PICKER);
+		
+		if (IntentUtils.isIntentAvailable(this, i)) {
+			startActivityForResult(i, REQUEST_CODE_PICK_COLOR);
+		} else {
+			showDialog(DIALOG_COLORPICKER_DOWNLOAD);
+		}
+//		IntentUtils.intentLaunchWithMarketFallback(this, i, REQUEST_CODE_PICK_COLOR, FlashlightIntents.PACKAGE_NAME_COLOR_PICKER);
 	}
 
 	/**

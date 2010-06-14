@@ -17,6 +17,7 @@
 package org.openintents.intents;
 
 
+
 /**
  * @version 2009-02-08
  * 
@@ -24,11 +25,6 @@ package org.openintents.intents;
  */
 public final class FlashlightIntents {
 
-	/**
-	 * Color Picker package name for download from the Android Market
-	 */
-	public final static String PACKAGE_NAME_COLOR_PICKER = "org.openintents.colorpicker";
-	
 	/**
 	 * Activity Action: Start the flashlight.
 	 * 

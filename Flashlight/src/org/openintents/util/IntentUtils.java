@@ -6,17 +6,15 @@
  */
 package org.openintents.util;
 
-import java.util.List;
-
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.Toast;
+
+import java.util.List;
 
 /**
  * 
@@ -26,6 +24,20 @@ import android.widget.Toast;
  *
  */
 public class IntentUtils {
+	
+
+	/**
+	 * Color Picker package name for download from the Android Market
+	 */
+	public final static String PACKAGE_NAME_COLOR_PICKER = "org.openintents.colorpicker";
+	
+
+	public final static String APK_DOWNLOAD_URL_PREFIX = "http://code.google.com/p/openintents/downloads/detail?name=";
+	public final static String APK_DOWNLOAD_FILENAME_COLOR_PICKER = "ColorPicker-1.0.0.apk";
+	// FIXME
+//	public final static String APK_DOWNLOAD_FILENAME_COLOR_PICKER = "ShoppingList-1.2.3.apk";
+	public final static Uri APK_DOWNLOAD_URI_COLOR_PICKER = Uri.parse(APK_DOWNLOAD_URL_PREFIX + APK_DOWNLOAD_FILENAME_COLOR_PICKER);
+	
 	
 	/**
 	 * Indicates whether the specified action can be used as an intent. This
@@ -72,8 +84,7 @@ public class IntentUtils {
                 context.startActivityForResult(intent, request_code);
         } else {
             // Launch market intent
-            Uri market_uri = Uri.parse(MARKET_PACKAGE_DETAILS_PREFIX + package_name);
-            Intent i = new Intent(Intent.ACTION_VIEW, market_uri);
+        	Intent i = getMarketDownloadIntent(package_name);
             if (isIntentAvailable(context, i)) {
                 context.startActivity(i);
             } else {
@@ -82,4 +93,8 @@ public class IntentUtils {
         }
     }
 	
+    public static Intent getMarketDownloadIntent(String package_name) {
+        Uri market_uri = Uri.parse(MARKET_PACKAGE_DETAILS_PREFIX + package_name);
+        return new Intent(Intent.ACTION_VIEW, market_uri);
+    }
 }

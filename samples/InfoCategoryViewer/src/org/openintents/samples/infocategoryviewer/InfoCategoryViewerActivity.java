@@ -1,8 +1,5 @@
 package org.openintents.samples.infocategoryviewer;
 
-import org.openintents.compatibility.activitypicker.DialogHostingActivity;
-import org.openintents.util.SDKVersion;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -50,21 +47,11 @@ public class InfoCategoryViewerActivity extends Activity {
         pickIntent.putExtra(Intent.EXTRA_TITLE,
                 getText(R.string.title_select_activity));
 
-        if (SDKVersion.SDKVersion < 3) {
-        	if (debug) Log.i(TAG, "Compatibility mode for ActivityPicker");
-            // SDK 1.1 backward compatibility:
-            // We launch our own version of ActivityPicker:
-            pickIntent.setClass(this, DialogHostingActivity.class);
-            pickIntent.putExtra(DialogHostingActivity.EXTRA_DIALOG_ID, 
-            			DialogHostingActivity.DIALOG_ID_ACTIVITY_PICKER);
-        } else {
-        	if (debug) Log.i(TAG, "Call system ActivityPicker");
-        }
+       	if (debug) Log.i(TAG, "Call system ActivityPicker");
         
 		Log.i(TAG, "Start activity for result 2");
         startActivityForResult(pickIntent, REQUEST_PICK_LOCALE_SETTING);
     }
-    
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

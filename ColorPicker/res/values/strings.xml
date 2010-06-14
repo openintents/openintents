@@ -25,5 +25,16 @@
 
 	<!-- Update -->
 	<string name="update_error">Download application not available.</string>
-
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+    <string name="info_app_flashlight">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+	<string name="info_activity_text">This app can be used with the following applications:</string>
+    <string name="info_launch">Launch %s</string>
+    <!-- First %s is application name, second %s is version name. -->
+	<string name="info_not_available">This app requires %s %s or higher.</string>
+	<string name="info_get">Get %s</string>
 </resources>
