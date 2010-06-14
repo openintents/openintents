@@ -36,10 +36,10 @@
 	<string name="eula_refuse">Quitter</string>
 	
 	<!-- Update -->
-	<string name="update_box_text">S'il vous plaît vérifier manuellement les mises à jour ou installer OI Update pour avoir des notifications automatique. Version actuelle: %s</string>
+	<string name="update_box_text">S\'il vous plaît vérifier manuellement les mises à jour ou installer OI Update pour avoir des notifications automatique. Version actuelle: %s</string>
 	<string name="update_check_now">Vérifier maintenant.</string>
 	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Télécharger l'application indisponible.</string>
+	<string name="update_error">Télécharger l\'application indisponible.</string>
 	<string name="update">Vérifier les mises à jour</string>
 	
 	<!-- About -->

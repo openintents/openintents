@@ -24,6 +24,6 @@
 	<string name="aboutapp_get">Get OI About</string>
 
 	<!-- Update -->
-	<string name="update_error">Télécharger l'application indisponible.</string>
+	<string name="update_error">Télécharger l\'application indisponible.</string>
 
 </resources>

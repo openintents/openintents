@@ -39,12 +39,12 @@
 	<string name="update_box_text">Se vos plai, verificatz manualament las mesas a jorn o installatz OI Update per obténer de notificacions automaticas. Version actuala : %s</string>
 	<string name="update_check_now">Verificar ara.</string>
 	<string name="update_get_updater">Obténer OI Updater.</string>
-	<string name="update_error">Telecargament de l'aplicacion indisponible.</string>
+	<string name="update_error">Telecargament de l\'aplicacion indisponible.</string>
 	<string name="update">Verificar las mesas a jorn</string>
 	
 	<!-- About -->
 	<string name="about">A prepaus</string>
-	<string name="aboutapp_not_available">Version %s\n\nCap d'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
+	<string name="aboutapp_not_available">Version %s\n\nCap d\'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
 	<string name="aboutapp_get">Obténer OI About</string>
 	
 	<!-- ***************************

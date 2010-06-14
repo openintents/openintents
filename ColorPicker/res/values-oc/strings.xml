@@ -22,10 +22,10 @@
     
 	<!-- About -->
 	<string name="about">A prepaus</string>
-	<string name="aboutapp_not_available">Version %s\n\nCap d'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
+	<string name="aboutapp_not_available">Version %s\n\nCap d\'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
 	<string name="aboutapp_get">Obténer OI About</string>
 
 	<!-- Update -->
-	<string name="update_error">Telecargament de l'aplicacion indisponible.</string>
+	<string name="update_error">Telecargament de l\'aplicacion indisponible.</string>
 
 </resources>
