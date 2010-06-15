@@ -648,7 +648,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		 * mGTalkSender.unbindGTalkService(); }
 		 */
 
-		mListItemsView.onPause();
+		mListItemsView.onPause();			
 	}
 
 	@Override
@@ -666,6 +666,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		}
 		
 		mUpdating = false;
+		
+		// after items have been added through an "insert from extras" the action name should be different to avoid duplicate inserts e.g. on rotation. 
+		if (mExtraItems == null && GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent().getAction())){
+			setIntent(getIntent().setAction(Intent.ACTION_VIEW));
+		}
 	}
 
 	/**
@@ -871,7 +876,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			mExtraItems = null;
 			mExtraQuantities = null;
 			mExtraPrices = null;
-			mExtraBarcodes = null;
+			mExtraBarcodes = null;	
 		} else {
 			Toast.makeText(this, R.string.no_items_available, Toast.LENGTH_SHORT).show();
 		}
