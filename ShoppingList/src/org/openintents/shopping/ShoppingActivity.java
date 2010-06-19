@@ -567,9 +567,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 	@Override
 	protected void onResume() {
-		Log.i(TAG, "Shopping list onResume() 1");
+		if (debug) Log.i(TAG, "Shopping list onResume() 1");
 		super.onResume();
-		Log.i(TAG, "Shopping list onResume() 2");
+		if (debug) Log.i(TAG, "Shopping list onResume() 2");
 		
 		mIsActive = true;
 
@@ -626,10 +626,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		Log.i(TAG, "Shopping list onPause()");
-		Log.i(TAG, "Spinner: onPause: " + mIsActive);
+		if (debug) Log.i(TAG, "Shopping list onPause()");
+		if (debug) Log.i(TAG, "Spinner: onPause: " + mIsActive);
 		mIsActive = false;
-		Log.i(TAG, "Spinner: onPause: " + mIsActive);
+		if (debug) Log.i(TAG, "Spinner: onPause: " + mIsActive);
 
 		unregisterSensor();
 
@@ -654,7 +654,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Log.i(TAG, "Shopping list onFreeze()");
+		if (debug) Log.i(TAG, "Shopping list onFreeze()");
 
 		// Save original text from edit box
 		String s = mEditText.getText().toString();
@@ -684,7 +684,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 					public void onItemSelected(AdapterView parent, View v,
 							int position, long id) {
-						Log.d(TAG, "Spinner: onItemSelected");
+						if (debug) Log.d(TAG, "Spinner: onItemSelected");
 						fillItems();
 						// Now set the theme based on the selected list:
 						mListItemsView.setListTheme(loadListTheme());
@@ -693,8 +693,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
-						Log.d(TAG, "Spinner: onNothingSelected: " + mIsActive);
-						Log.i(TAG, "Spinner: onNothingSelected: " + mIsActive);
+						if (debug) Log.d(TAG, "Spinner: onNothingSelected: " + mIsActive);
 						if (mIsActive) {
 							fillItems();
 						}
@@ -703,7 +702,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		mEditText = (AutoCompleteTextView) findViewById(R.id.autocomplete_add_item);
 		if (mItemsCursor != null) {
-			Log.d(TAG, "mItemsCursor managedQuery 1");
+			if (debug) Log.d(TAG, "mItemsCursor managedQuery 1");
 			stopManagingCursor(mItemsCursor);
 			mItemsCursor.close();
 			mItemsCursor = null;
@@ -717,7 +716,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 			public Cursor runQuery(CharSequence constraint) {
 				if (mItemsCursor != null) {
-					Log.d(TAG, "mItemsCursor managedQuery 2");
+					if (debug) Log.d(TAG, "mItemsCursor managedQuery 2");
 					stopManagingCursor(mItemsCursor);
 					
 					// For some reason, closing the cursor seems to post
@@ -746,8 +745,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 				// Shortcut: Instead of pressing the button,
 				// one can also press the "Enter" key.
-				Log.i(TAG, "Key action: " + key.getAction());
-				Log.i(TAG, "Key code: " + keyCode);
+				if (debug) Log.i(TAG, "Key action: " + key.getAction());
+				if (debug) Log.i(TAG, "Key code: " + keyCode);
 				if (key.getAction() == KeyEvent.ACTION_DOWN
 						&& keyCode == KeyEvent.KEYCODE_ENTER) {
 					insertNewItem();
@@ -869,7 +868,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				String quantity = (i < maxQuantity) ? mExtraQuantities.get(i) : null;
 				String price = (i < maxPrice) ? mExtraPrices.get(i) : null;
 				String barcode = (i < maxBarcode) ? mExtraBarcodes.get(i) : null;
-				Log.d(TAG, "Add item: " + item + ", quantity: " + quantity + ", price: " + price + ", barcode: " + barcode);
+				if (debug) Log.d(TAG, "Add item: " + item + ", quantity: " + quantity + ", price: " + price + ", barcode: " + barcode);
 				mListItemsView.insertNewItem(this, item, quantity, price, barcode);
 			}
 			//delete the string array list of extra items so it can't be inserted twice
@@ -986,8 +985,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		boolean pick_location_possible = (resolve_pick_location.size() > 0);
 		boolean view_alerts_possible = (resolve_view_alerts.size() > 0);
-		Log.d(TAG, "Pick location possible: " + pick_location_possible);
-		Log.d(TAG, "View alerts possible: " + view_alerts_possible);
+		if (debug) Log.d(TAG, "Pick location possible: " + pick_location_possible);
+		if (debug) Log.d(TAG, "View alerts possible: " + view_alerts_possible);
 		if (pick_location_possible && view_alerts_possible) {
 			return true;
 		}
@@ -1354,7 +1353,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	
 	/** Edit item */
 	void editItem(int position) {
-		Log.d(TAG, "EditItems: Position: " + position);
+		if (debug) Log.d(TAG, "EditItems: Position: " + position);
 		mListItemsView.mCursorItems.moveToPosition(position);
 		//mEditItemPosition = position;
 		
@@ -1373,7 +1372,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	
 	/** delete item */
 	void deleteItemDialog(int position) {
-		Log.d(TAG, "EditItems: Position: " + position);
+		if (debug) Log.d(TAG, "EditItems: Position: " + position);
 		mListItemsView.mCursorItems.moveToPosition(position);
 		mDeleteItemPosition = position;
 		
@@ -1748,7 +1747,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 			public mListContentObserver(Handler handler) {
 				super(handler);
-				Log.i(TAG, "mListContentObserver: Constructor");
+				if (debug) Log.i(TAG, "mListContentObserver: Constructor");
 			}
 
 			/*
@@ -1759,7 +1758,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			@Override
 			public boolean deliverSelfNotifications() {
 				// TODO Auto-generated method stub
-				Log.i(TAG, "mListContentObserver: deliverSelfNotifications");
+				if (debug) Log.i(TAG, "mListContentObserver: deliverSelfNotifications");
 				return super.deliverSelfNotifications();
 			}
 
@@ -1771,7 +1770,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			@Override
 			public void onChange(boolean arg0) {
 				// TODO Auto-generated method stub
-				Log.i(TAG, "mListContentObserver: onChange");
+				if (debug) Log.i(TAG, "mListContentObserver: onChange");
 
 				mCursorListFilter.requery();
 
@@ -1815,7 +1814,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 	private void onModeChanged() {
 
-		Log.d(TAG, "onModeChanged()");
+		if (debug) Log.d(TAG, "onModeChanged()");
 		fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
@@ -1834,7 +1833,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 	private void fillItems() {
 
-		Log.d(TAG, "fillItems()");
+		if (debug) Log.d(TAG, "fillItems()");
 		
 		long listId = getSelectedListId();
 		if (listId < 0) {
@@ -1986,18 +1985,18 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		Log.i(TAG, "ShoppingView: onActivityResult. ");
+		if (debug) Log.i(TAG, "ShoppingView: onActivityResult. ");
 
 		if (requestCode == SUBACTIVITY_LIST_SHARE_SETTINGS) {
-			Log.i(TAG, "SUBACTIVITY_LIST_SHARE_SETTINGS");
+			if (debug) Log.i(TAG, "SUBACTIVITY_LIST_SHARE_SETTINGS");
 
 			if (resultCode == RESULT_CANCELED) {
 				// Don't do anything.
-				Log.i(TAG, "RESULT_CANCELED");
+				if (debug) Log.i(TAG, "RESULT_CANCELED");
 
 			} else {
 				// Broadcast the intent
-				Log.i(TAG, "Broadcast intent.");
+				if (debug) Log.i(TAG, "Broadcast intent.");
 
 				// TODO ???
 				/*
@@ -2018,7 +2017,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				String contacts = extras
 						.getString(Shopping.Lists.SHARE_CONTACTS);
 
-				Log.i(TAG, "Received bundle: sharename: " + sharename
+				if (debug) Log.i(TAG, "Received bundle: sharename: " + sharename
 						+ ", contacts: " + contacts);
 				// TODO ???
 				/*
@@ -2050,9 +2049,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			}
 
 		} else if (REQUEST_CODE_CATEGORY_ALTERNATIVE == requestCode) {
-			Log.d(TAG, "result received");
+			if (debug) Log.d(TAG, "result received");
 			if (RESULT_OK == resultCode) {
-				Log.d(TAG, "result OK");
+				if (debug) Log.d(TAG, "result OK");
 				// Check if any results have been returned:
 				/*
 				if ((data.getDataString() != null)
@@ -2065,7 +2064,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				}
 				*/
 				if (data.getExtras() != null) {
-					Log.d(TAG, "extras received");
+					if (debug) Log.d(TAG, "extras received");
 					getShoppingExtras(data);
 				}
 			}
