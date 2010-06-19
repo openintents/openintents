@@ -738,6 +738,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		mEditText.setAdapter(adapter);
 		mEditText.setOnKeyListener(new OnKeyListener() {
 
+			private int mLastKeyAction = KeyEvent.ACTION_UP;
+
 			public boolean onKey(View v, int keyCode, KeyEvent key) {
 				// Log.i(TAG, "KeyCode: " + keyCode
 				// + " =?= "
@@ -747,9 +749,20 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				// one can also press the "Enter" key.
 				if (debug) Log.i(TAG, "Key action: " + key.getAction());
 				if (debug) Log.i(TAG, "Key code: " + keyCode);
-				if (key.getAction() == KeyEvent.ACTION_DOWN
-						&& keyCode == KeyEvent.KEYCODE_ENTER) {
-					insertNewItem();
+				if (keyCode == KeyEvent.KEYCODE_ENTER){
+					
+					if (mEditText.isPopupShowing()){
+						mEditText.performCompletion();
+					}
+						
+					// long key press might cause call of duplicate onKey events with ACTION_DOWN
+					// this would result in inserting an item and showing the pick list
+					
+					if (key.getAction() == KeyEvent.ACTION_DOWN && mLastKeyAction == KeyEvent.ACTION_UP){														
+					  insertNewItem();
+					}
+					
+					mLastKeyAction  = key.getAction();
 					return true;
 				}
 				;
