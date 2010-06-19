@@ -167,7 +167,11 @@ public class ShoppingUtils {
 			// set status to want_to_buy:
 			ContentValues values = new ContentValues(2);
 			values.put(Shopping.Contains.STATUS, status);
-			values.put(Shopping.Contains.QUANTITY, quantity);
+			if (quantity != null) {
+				// Only change quantity if an explicit value has been passed.
+				// (see issue 286)
+				values.put(Shopping.Contains.QUANTITY, quantity);
+			}
 			try {
 				Uri uri = Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, String.valueOf(id));
 				context.getContentResolver().update(uri, values, null, null);
