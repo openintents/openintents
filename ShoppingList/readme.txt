@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release 1.2.4-rc2
+date: 2010-06-19
+- translations: Portugues, Argentinien
+- fix #282, #286 and enter key behaviour
+---------------------------------------------------------
 release 1.2.4-rc1
 date: 2010-05-29
 - translations: Czech, Chinese (Simplified), Chinese 
