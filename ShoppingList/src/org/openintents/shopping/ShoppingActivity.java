@@ -35,6 +35,7 @@ import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
 import org.openintents.provider.Shopping.Status;
+import org.openintents.shopping.ShoppingListView.OnCustomClickListener;
 import org.openintents.shopping.dialog.DialogActionListener;
 import org.openintents.shopping.dialog.EditItemDialog;
 import org.openintents.shopping.dialog.NewListDialog;
@@ -100,7 +101,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
  * Displays a shopping list.
  * 
  */
-public class ShoppingActivity extends Activity implements ThemeDialogListener { // implements
+public class ShoppingActivity extends Activity implements ThemeDialogListener,
+		OnCustomClickListener { // implements
 	// AdapterView.OnItemClickListener
 	// {
 
@@ -790,6 +792,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 		mListItemsView = (ShoppingListView) findViewById(R.id.list_items);
 		mListItemsView.setThemedBackground(findViewById(R.id.background));
+		mListItemsView.setCustomClickListener(this);
+		
+		mListItemsView.setItemsCanFocus(true);
 		
 		TextView tv = (TextView) findViewById(R.id.total_1);
 		mListItemsView.setTotalCheckedTextView(tv);
@@ -801,23 +806,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
 				Cursor c = (Cursor) parent.getItemAtPosition(pos);
-				if (mState == STATE_PICK_ITEM) {
-					pickItem(c);
-				} else {
-					if (mListItemsView.mShowCheckBox) {
-						// In default theme, there is an extra check box,
-						// so clicking on anywhere else means to edit the
-						// item.
-						editItem(pos);
-					} else {
-						// For themes without a checkbox, clicking anywhere means
-						// to toggle the item.
-						mListItemsView.toggleItemBought(pos);
-					}
-				}
+				onCustomClick(c, pos);
 				// DO NOT CLOSE THIS CURSOR - IT IS A MANAGED ONE.
 				// ---- c.close();
 			}
+
 
 		});
 
@@ -841,6 +834,23 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 				});
 	}
 
+	public void onCustomClick(Cursor c, int pos) {
+		if (mState == STATE_PICK_ITEM) {
+			pickItem(c);
+		} else {
+			if (mListItemsView.mShowCheckBox) {
+				// In default theme, there is an extra check box,
+				// so clicking on anywhere else means to edit the
+				// item.
+				editItem(pos);
+			} else {
+				// For themes without a checkbox, clicking anywhere means
+				// to toggle the item.
+				mListItemsView.toggleItemBought(pos);
+			}
+		}
+	}
+	
 	/**
 	 * Inserts new item from edit box into currently selected shopping list.
 	 */

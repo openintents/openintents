@@ -36,6 +36,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.SimpleCursorAdapter.ViewBinder;
@@ -237,6 +238,22 @@ public class ShoppingListView extends ListView {
 				}
 
 			});
+			
+			// Check for clicks on item text
+			RelativeLayout r = (RelativeLayout) view.findViewById(R.id.description);
+
+			r.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Log.d(TAG, "Click on description: ");
+					if (mListener != null) {
+						mListener.onCustomClick(cursor, cursorpos);
+					}
+				}
+
+			});
+			
 		}
 
 		public boolean setViewValue(View view, Cursor cursor, int i) {
@@ -923,6 +940,16 @@ public class ShoppingListView extends ListView {
 			}
 		}
 		return price;
+	}
+	
+	OnCustomClickListener mListener = null;
+	
+	public void setCustomClickListener(OnCustomClickListener listener) {
+		mListener = listener;
+	}
+	
+	public interface OnCustomClickListener {
+		public void onCustomClick(Cursor c, int pos);
 	}
 
 }
