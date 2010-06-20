@@ -620,6 +620,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		// fillItems().
 		
 		registerSensor();
+		
+		if (debug) Log.i(TAG, "Shopping list onResume() finished");
 	}
 
 	/*
@@ -1883,6 +1885,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			// and no item is selected.
 			return;
 		}
+		if (debug) Log.d(TAG, "fillItems() for list " + listId);
 		mListItemsView.fillItems(this, listId);
 
 		// Insert any pending items received either through intents
