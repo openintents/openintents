@@ -429,7 +429,7 @@ public class ShoppingListView extends ListView {
 		setAdapter(adapter);
 
 		// called in requery():
-		//updateTotal();
+		updateTotal();
 
 		return mCursorItems;
 	}

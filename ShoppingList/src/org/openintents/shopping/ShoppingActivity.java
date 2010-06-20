@@ -1861,10 +1861,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 //		fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
-			//setTitle(getString(R.string.shopping_title, getCurrentListName()));		
+			//setTitle(getString(R.string.shopping_title, getCurrentListName()));
 			registerSensor();
 		} else {
-			//setTitle(getString(R.string.pick_items_titel, getCurrentListName()));		
+			//setTitle(getString(R.string.pick_items_titel, getCurrentListName()));
 			unregisterSensor();
 		}
 	}
