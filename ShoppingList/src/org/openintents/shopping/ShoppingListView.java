@@ -804,12 +804,36 @@ public class ShoppingListView extends ListView {
 					// visible.
 		//			setSelection(pos - 1);
 		//		} else {
-					setSelection(pos);
+				postDelayedSetSelection(pos);
 		//		}
 				break;
 			}
 		}
 
+	}
+	
+	/**
+	 * Post setSelection delayed, because onItemSelected() may be called
+	 * more than once, leading to fillItems() being called more than once
+	 * as well.
+	 * Posting delayed ensures that items added through intents that return
+	 * results (like a barcode scanner) are put into visible position.
+	 * @param pos
+	 */
+	void postDelayedSetSelection(final int pos) {
+		// set immediately
+		setSelection(pos);
+		
+		// if for any reason this does not work, a delayed version
+		// will succeed:
+		postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				setSelection(pos);
+			}
+			
+		}, 1000);
 	}
 
 	public void requery() {
