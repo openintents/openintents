@@ -255,6 +255,11 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraBarcodes;
+	
+	/**
+	 * The list URI received together with intent extras.
+	 */
+	private Uri mExtraListUri;
 
 	/**
 	 * Private members connected to Spinner ListFilter.
@@ -353,7 +358,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		// Log.i(TAG, "Shopping list onCreate()");
+		if (debug) Log.d(TAG, "Shopping list onCreate()");
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
@@ -654,7 +659,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		if (debug) Log.i(TAG, "Shopping list onFreeze()");
+		if (debug) Log.i(TAG, "Shopping list onSaveInstanceState()");
 
 		// Save original text from edit box
 		String s = mEditText.getText().toString();
@@ -865,6 +870,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 		mExtraQuantities = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
 		mExtraPrices = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
 		mExtraBarcodes = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
+
+		mExtraListUri = null;
+		if ((intent.getDataString() != null)
+				&& (intent.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString()))) {
+			// We received a valid shopping list URI.
+			
+			// Set current list to received list:
+			mExtraListUri = intent.getData();
+			if (debug) Log.d(TAG, "Received extras for " + mExtraListUri.toString());
+		}
 	}
 
 	/**
@@ -872,6 +887,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	 */
 	private void insertItemsFromExtras() {
 		if (mExtraItems != null) {
+			// Make sure we are in the correct list:
+			if (mExtraListUri != null) {
+				long listId = Long.parseLong(mExtraListUri.getLastPathSegment());
+				if (debug) Log.d(TAG, "insert items into list " + listId);
+				if (listId != getSelectedListId()) {
+					if (debug) Log.d(TAG, "set new list: " + listId);
+					setSelectedListId((int) listId);
+					mListItemsView.fillItems(this, listId);
+				}
+			}
+			
 			int max = mExtraItems.size();
 			int maxQuantity = (mExtraQuantities != null) ? mExtraQuantities.size() : -1;
 			int maxPrice = (mExtraPrices != null) ? mExtraPrices.size() : -1;
@@ -888,7 +914,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			mExtraItems = null;
 			mExtraQuantities = null;
 			mExtraPrices = null;
-			mExtraBarcodes = null;	
+			mExtraBarcodes = null;
+			mExtraListUri = null;
 		} else {
 			Toast.makeText(this, R.string.no_items_available, Toast.LENGTH_SHORT).show();
 		}
@@ -1074,6 +1101,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		if (debug) Log.d(TAG, "onOptionsItemSelected getItemId: " + item.getItemId());
 		Intent intent;
 		switch (item.getItemId()) {
 		case MENU_NEW_LIST:
@@ -1134,8 +1162,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 			return true;
 
 		}
+		if (debug) Log.d(TAG, "Start intent group id : " + item.getGroupId());
 		if (Menu.CATEGORY_ALTERNATIVE == item.getGroupId()) {
 			// Start alternative cateogory intents with option to return a result.
+			if (debug) Log.d(TAG, "Start alternative intent for : " + item.getIntent().getDataString());
 			startActivityForResult(item.getIntent(), REQUEST_CODE_CATEGORY_ALTERNATIVE);
 			return true;
 		}
@@ -1828,7 +1858,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	private void onModeChanged() {
 
 		if (debug) Log.d(TAG, "onModeChanged()");
-		fillItems();
+//		fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
 			//setTitle(getString(R.string.shopping_title, getCurrentListName()));		
@@ -1845,7 +1875,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener { 
 	}
 
 	private void fillItems() {
-
 		if (debug) Log.d(TAG, "fillItems()");
 		
 		long listId = getSelectedListId();

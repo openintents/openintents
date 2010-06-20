@@ -53,6 +53,7 @@ public class ShoppingProvider extends ContentProvider {
 	private DatabaseHelper mOpenHelper;
 
 	private static final String TAG = "ShoppingProvider";
+	private static final boolean debug = false;
 	private static final String DATABASE_NAME = "shopping.db";
 
 	/**
@@ -224,7 +225,7 @@ public class ShoppingProvider extends ContentProvider {
 			String[] selectionArgs, String sort) {
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
-		Log.i(TAG, "Query for URL: " + url);
+		if (debug) Log.d(TAG, "Query for URL: " + url);
 
 		String defaultOrderBy = null;
 
@@ -597,7 +598,7 @@ public class ShoppingProvider extends ContentProvider {
 	@Override
 	public int update(Uri url, ContentValues values, String where,
 			String[] whereArgs) {
-		Log.i(TAG, "update called for: " + url);
+		if (debug) Log.d(TAG, "update called for: " + url);
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 		int count;
 		// long rowId;

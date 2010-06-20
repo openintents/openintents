@@ -428,7 +428,8 @@ public class ShoppingListView extends ListView {
 						R.id.price/*, R.id.quantity*/ });
 		setAdapter(adapter);
 
-		updateTotal();
+		// called in requery():
+		//updateTotal();
 
 		return mCursorItems;
 	}
@@ -812,6 +813,7 @@ public class ShoppingListView extends ListView {
 	}
 
 	public void requery() {
+		if (debug) Log.d(TAG, "requery()");
 		mCursorItems.requery();
 		updateTotal();
 	}
@@ -829,6 +831,8 @@ public class ShoppingListView extends ListView {
 	 * price information.
 	 */
 	public void updateTotal() {
+		if (debug) Log.d(TAG, "updateTotal()");
+		
 		if (mTotalTextView == null || mTotalCheckedTextView == null) {
 			// Most probably in "Add item" mode where no total is displayed
 			return;
