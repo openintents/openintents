@@ -37,6 +37,7 @@ date: 2010-05-29
 - support for barcode scanner: if scanned item is already
   in list then its status is toggled.
 - include quantity, price, and tags when sending a list.
+- checkbox clickable with Dpad.
 
 ---------------------------------------------------------
 release: 1.2.3
