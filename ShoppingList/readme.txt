@@ -22,6 +22,10 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release 1.2.4-rc3
+date: 2010-06-21
+- improved focus behaviour for checkboxes
+---------------------------------------------------------
 release 1.2.4-rc2
 date: 2010-06-19
 - translations: Portugues, Argentinien

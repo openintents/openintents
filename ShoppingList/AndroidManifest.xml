@@ -17,9 +17,10 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionCode="10018" android:versionName="1.2.4-rc2">
+	android:versionCode="10019" android:versionName="1.2.4-rc3">
 	<!-- History:
-	1.2.4-rc2   [10018]: 2010-06-19
+	1.2.4-rc3   [10019]: 2010-06-21
+	1.2.4-rc2   [10018]: 2010-06-20
 	1.2.4-rc1   [10017]: 2010-05-29
 	1.2.3       [10016]: 2010-03-24
 	1.2.2       [10015]: 2010-03-06
