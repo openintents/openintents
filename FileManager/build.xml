@@ -65,7 +65,6 @@ storepass=*password of keystore*
 	        else="${basedir}/${external-libs}" >
 	    <os family="windows"/>
 	</condition>
-	<property name="googlemaps" value="${sdk-location}/add-ons/google_apis-3/libs" />
 	
     <!-- Output directories -->
     <property name="outdir-classes" value="${outdir}/classes" />
@@ -112,7 +111,7 @@ storepass=*password of keystore*
         <os family="windows"/>
     </condition>
 	
-	<property name="out-signed-package" value="${outdir}/${ant.project.name}-${version}.apk" />
+	<property name="out-signed-package" value="${outdir}/${ant.project.name}-signed.apk" />
 	<condition property="out-signed-package-ospath"
 	            value="${basedir}\${out-signed-package}"
 	            else="${basedir}/${out-signed-package}" >
@@ -149,6 +148,10 @@ storepass=*password of keystore*
     <condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder" >
         <os family="windows"/>
     </condition>
+    <condition property="zipalign" value="${android-tools}/zipalign.exe" else="${android-tools}/zipalign" >
+        <os family="windows"/>
+    </condition>
+    
 	
 	<condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder" >
 	       <os family="windows"/>
@@ -236,7 +239,6 @@ storepass=*password of keystore*
         	<src path="./gen"/>
             <classpath>
                 <fileset dir="${external-libs}" includes="*.jar"/>
-               <fileset dir="${googlemaps}" includes="*.jar"/>
             </classpath>
          </javac>
     </target>
@@ -386,6 +388,12 @@ storepass=*password of keystore*
             <arg value="${external-libs-ospath}" />
         </exec>
     	<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" keypass="${keypass}" signedjar="${out-signed-package-ospath}"/>
+        <exec executable="${zipalign}" failonerror="true">
+            <arg value="-f" />
+            <arg value="4" />
+            <arg value="${out-signed-package-ospath}" />
+            <arg value="${out-aligned-package-ospath}" />
+        </exec>
     	
     </target>
 
@@ -409,19 +417,19 @@ storepass=*password of keystore*
 	
 	<!-- Install the signed package on the default emulator -->
 	<target name="install-signed" depends="release">
-		<echo>Installing ${out-signed-package} onto default emulator...</echo>
+		<echo>Installing ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
 	<target name="reinstall-signed" depends="release">
-		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
+		<echo>Reinstalling ${out-aligned-package} onto default emulator...</echo>
 		<exec executable="${adb}" failonerror="true">
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-signed-package}" />
+			<arg value="${out-aligned-package}" />
 		</exec>
 	</target>
 
