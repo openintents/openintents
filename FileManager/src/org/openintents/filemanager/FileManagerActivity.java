@@ -581,6 +581,7 @@ public class FileManagerActivity extends ListActivity {
      	 
      	 if (originalIntent != null && originalIntent.getAction() != null && originalIntent.getAction().equals(Intent.ACTION_GET_CONTENT)) {
     		 // In that case, we should probably just return the requested data.
+     		 intent.setData(Uri.parse(FileManagerProvider.MIME_TYPE_PREFIX + aFile));
      		 setResult(RESULT_OK, intent);
      		 finish();
     		 return;
