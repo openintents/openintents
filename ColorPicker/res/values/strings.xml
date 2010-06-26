@@ -29,7 +29,7 @@
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
-    <string name="info_app_flashlight">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu > Color.</string>
     <string name="title_app_flashlight">OI Flashlight</string>
     
 	<string name="info_activity_text">This app can be used with the following applications:</string>
