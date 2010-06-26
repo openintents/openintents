@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -63,19 +62,12 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
     		null, // OI Flashlight
     };
     
-    // Theme for the Info activity
-    private int mTheme = R.style.Theme_BasicColors_Blue_Notepad;
-    
     /////////////////////////////////////////////////////////////////////////////
     
 	public static final int DIALOG_INFO = 0;
 	public static final int DIALOG_GET_FROM_MARKET = 100;
 	
     private String[] mApplicationStrings;
-    private Typeface mTypeface;
-    private int mTextSizeMedium;
-    private int mTextSizeLarge;
-    private int mTextColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
