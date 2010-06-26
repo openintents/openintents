@@ -228,13 +228,6 @@ public class ShoppingListView extends ListView {
 
 			// also check around check box
 			LinearLayout l = (LinearLayout) view.findViewById(R.id.check_surround);
-
-			if (mShowCheckBox) {
-				l.setFocusable(true);
-			} else {
-				// Don't allow for focus in themes without check box.
-				l.setFocusable(false);
-			}
 			
 			l.setOnClickListener(new OnClickListener() {
 
