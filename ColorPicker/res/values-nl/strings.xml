@@ -16,7 +16,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Zaklamp</string>
+    <string name="app_name">OI Kleurenkiezer</string>
     <string name="color_picker">Kleurenkiezer</string>
 
 	<!-- About -->

@@ -17,7 +17,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Torcia</string>
+    <string name="app_name">OI Selettore di colore</string>
     <string name="color_picker">Selettore di colore</string>
     
     

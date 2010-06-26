@@ -17,7 +17,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Flashlight</string>
+    <string name="app_name">OI Выбор цвета</string>
     <string name="color_picker">Выбор цвета</string>
  
 	<!-- About -->

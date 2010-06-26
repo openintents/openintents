@@ -16,7 +16,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Lanterna</string>
+    <string name="app_name">OI Alege culoarea</string>
     <string name="color_picker">Alege culoarea</string>
 
 	<!-- ***************************

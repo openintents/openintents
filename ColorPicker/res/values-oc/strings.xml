@@ -15,7 +15,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Flashlight</string>
+    <string name="app_name">OI Selector de color</string>
     
     <string name="flashlight_info">Lo retroesclairatge es activat.</string>
     <string name="color_picker">Selector de color</string>

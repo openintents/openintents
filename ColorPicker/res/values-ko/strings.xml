@@ -15,7 +15,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI 전등</string>
+    <string name="app_name">OI 색 골라내기</string>
     <string name="color_picker">색 골라내기</string>
     
 	<!-- About -->

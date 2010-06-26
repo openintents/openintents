@@ -16,7 +16,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Taschenlampe</string>
+    <string name="app_name">OI Farbwähler</string>
     <string name="color_picker">Farbwähler</string>
 	
 	<!-- About -->
