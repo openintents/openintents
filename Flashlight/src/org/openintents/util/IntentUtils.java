@@ -32,11 +32,13 @@ public class IntentUtils {
 	public final static String PACKAGE_NAME_COLOR_PICKER = "org.openintents.colorpicker";
 	
 
-	public final static String APK_DOWNLOAD_URL_PREFIX = "http://code.google.com/p/openintents/downloads/detail?name=";
-	public final static String APK_DOWNLOAD_FILENAME_COLOR_PICKER = "ColorPicker-1.0.0.apk";
+	//public final static String APK_DOWNLOAD_URL_PREFIX = "http://code.google.com/p/openintents/downloads/detail?name=";
+	//public final static String APK_DOWNLOAD_FILENAME_COLOR_PICKER = "ColorPicker-1.0.0.apk";
+	public final static String COLOR_PICKER_WEBSITE = "http://www.openintents.org/en/colorpicker";
 	// FIXME
 //	public final static String APK_DOWNLOAD_FILENAME_COLOR_PICKER = "ShoppingList-1.2.3.apk";
-	public final static Uri APK_DOWNLOAD_URI_COLOR_PICKER = Uri.parse(APK_DOWNLOAD_URL_PREFIX + APK_DOWNLOAD_FILENAME_COLOR_PICKER);
+	//public final static Uri APK_DOWNLOAD_URI_COLOR_PICKER = Uri.parse(APK_DOWNLOAD_URL_PREFIX + APK_DOWNLOAD_FILENAME_COLOR_PICKER);
+	public final static Uri APK_DOWNLOAD_URI_COLOR_PICKER = Uri.parse(COLOR_PICKER_WEBSITE);
 	
 	
 	/**
