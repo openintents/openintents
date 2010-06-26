@@ -22,26 +22,18 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release 1.2.4-rc3
-date: 2010-06-21
-- improved focus behaviour for checkboxes
----------------------------------------------------------
-release 1.2.4-rc2
-date: 2010-06-19
-- translations: Portugues, Argentinien
-- fix #282, #286 and enter key behaviour
----------------------------------------------------------
-release 1.2.4-rc1
-date: 2010-05-29
-- translations: Czech, Chinese (Simplified), Chinese 
-  (Traditional), Dutch, Italian, Japanese, 
-  Occitan (post 1500)
+release 1.2.4
+date: 2010-06-26
+- translations: Argentinien, Czech, Chinese (Simplified),
+  Chinese (Traditional), Dutch, Italian, Japanese, 
+  Occitan (post 1500), Portugues
 - fix #237: Sometimes crash on shake.
 - new sort order "unchecked first, tags alphabetical"
 - support for barcode scanner: if scanned item is already
   in list then its status is toggled.
 - include quantity, price, and tags when sending a list.
 - checkbox clickable with Dpad.
+- fix bugs #282, #286 and enter key behaviour
 
 ---------------------------------------------------------
 release: 1.2.3
