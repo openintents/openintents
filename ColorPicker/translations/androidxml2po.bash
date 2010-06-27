@@ -15,7 +15,7 @@ launchpad_po_files_dir="."
 launchpad_pot_file_dir="."
 android_xml_files_res_dir="../res/values"
 #Change the typical filenames.
-launchpad_po_filename="flashlight"
+launchpad_po_filename="colorpicker"
 android_xml_filename="strings"
 #Export directory of merged .po files. MUST not start with ".", or msgmerge will complain.
 export_po="export_po"

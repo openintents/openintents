@@ -9,6 +9,14 @@ cp *.pot ../../translations/export_all/translations_aboutapp
 cp export_po/*.po ../../translations/export_all/translations_aboutapp
 cd ../../translations/export_all
 
+echo "Translating ColorPicker"
+mkdir translations_colorpicker
+cd ../../ColorPicker/translations
+androidxml2po.bash -e
+cp *.pot ../../translations/export_all/translations_colorpicker
+cp export_po/*.po ../../translations/export_all/translations_colorpicker
+cd ../../translations/export_all
+
 echo "Translating Countdown"
 mkdir translations_countdown
 cd ../../Countdown/translations

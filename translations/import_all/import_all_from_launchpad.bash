@@ -9,6 +9,12 @@ cd ../../AboutApp/translations
 androidxml2po.bash -i
 cd ../../translations/import_all
 
+echo "Translating ColorPicker"
+cp translations_countdown/* ../../ColorPicker/translations
+cd ../../ColorPicker/translations
+androidxml2po.bash -i
+cd ../../translations/import_all
+
 echo "Translating Countdown"
 cp translations_countdown/* ../../Countdown/translations
 cd ../../Countdown/translations
