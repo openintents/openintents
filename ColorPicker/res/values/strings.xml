@@ -8,8 +8,8 @@
 	<string name="about_translators">translator-credits</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents Color Picker is an extension for OI Flashlight and other compatible applications.</string>
+	<string name="about_website_label">OI Color Picker at OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
