@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="Flashlight" default="debug">
+<project name="ColorPicker" default="debug">
 
 	<!-- private build properties are not shared via svn, 
 	developers must have there own copy with the following entries
