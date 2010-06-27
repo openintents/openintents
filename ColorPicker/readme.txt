@@ -21,9 +21,10 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.0
-date: 2010-5-30
+release: 1.0.0-rc1
+date: 2010-6-27
 
 - First public release on Android SDK 1.6.
+- Translations taken from OI Flashlight.
 - Application icon found on Open Clip Art Library:
     http://www.openclipart.org/detail/4421
