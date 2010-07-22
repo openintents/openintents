@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008-2009 OpenIntents.org                                  *
+ * Copyright (C) 2008-2010 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -21,8 +21,8 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.0-rc1
-date: 2010-6-27
+release: 1.0.0
+date: 2010-07-22
 
 - First public release on Android SDK 1.6.
 - Translations taken from OI Flashlight.

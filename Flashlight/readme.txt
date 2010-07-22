@@ -21,11 +21,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.6-rc1
-date: 2010-06-27
+release: 1.0.6
+date: 2010-07-22
 - translations: Occitan (post 1500)
-- Modularized Color Picker
-    Launches Android Market when color picker not found
+- Modularized Color Picker:
+  Launches Android Market when color picker not found
 
 ---------------------------------------------------------
 release: 1.0.5

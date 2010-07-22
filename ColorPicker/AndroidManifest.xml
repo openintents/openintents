@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	* Copyright (C) 2008 OpenIntents.org
+	* Copyright (C) 2008-2010 OpenIntents.org
 	*
 	* Licensed under the Apache License, Version 2.0 (the "License");
 	* you may not use this file except in compliance with the License.
@@ -15,8 +15,9 @@
 	* limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.openintents.colorpicker" android:versionCode="1" android:versionName="1.0.0-rc1">
+      package="org.openintents.colorpicker" android:versionCode="2" android:versionName="1.0.0">
 	<!-- History:
+	1.0.0       [2]: 2010-07-22 
 	1.0.0-rc1   [1]: 2010-06-27 -->
 	
 	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4"/>
