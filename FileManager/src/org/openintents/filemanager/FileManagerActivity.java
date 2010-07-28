@@ -85,6 +85,8 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 public class FileManagerActivity extends ListActivity { 
 	private static final String TAG = "FileManagerActivity";
 
+	private static final String NOMEDIA_FILE = ".nomedia";
+	
 	private int mState;
 	
 	private static final int STATE_BROWSE = 1;
@@ -104,6 +106,8 @@ public class FileManagerActivity extends ListActivity {
 	private static final int MENU_OPEN = Menu.FIRST + 8;
 	private static final int MENU_MOVE = Menu.FIRST + 9;
 	private static final int MENU_COPY = Menu.FIRST + 10;
+	private static final int MENU_INCLUDE_IN_MEDIA_SCAN = Menu.FIRST + 11;
+	private static final int MENU_EXCLUDE_FROM_MEDIA_SCAN = Menu.FIRST + 12;
 	
 	private static final int DIALOG_NEW_FOLDER = 1;
 	private static final int DIALOG_DELETE = 2;
@@ -129,6 +133,9 @@ public class FileManagerActivity extends ListActivity {
      
      /** SD card separate for sorting */
      List<IconifiedText> mListSdCard = new ArrayList<IconifiedText>();
+     
+     // There's a ".nomedia" file here
+     private boolean mNoMedia;
      
      private File currentDirectory = new File(""); 
      
@@ -157,6 +164,9 @@ public class FileManagerActivity extends ListActivity {
      private DirectoryScanner mDirectoryScanner;
      private File mPreviousDirectory;
      private ThumbnailLoader mThumbnailLoader;
+     
+     private MenuItem mExcludeMediaScanMenuItem;
+     private MenuItem mIncludeMediaScanMenuItem;
      
      private Handler currentHandler;
 
@@ -340,6 +350,7 @@ public class FileManagerActivity extends ListActivity {
     	 mListSdCard = contents.listSdCard;
     	 mListDir = contents.listDir;
     	 mListFile = contents.listFile;
+    	 mNoMedia = contents.noMedia;
     	 
     	 directoryEntries.ensureCapacity(mListSdCard.size() + mListDir.size() + mListFile.size());
     	 
@@ -804,12 +815,17 @@ public class FileManagerActivity extends ListActivity {
 
  		menu.add(0, MENU_NEW_FOLDER, 0, R.string.menu_new_folder).setIcon(
  				android.R.drawable.ic_menu_add).setShortcut('0', 'f');
- 		
+ 
+		mIncludeMediaScanMenuItem = menu.add(0, MENU_INCLUDE_IN_MEDIA_SCAN, 0, R.string.menu_include_in_media_scan).setShortcut('1', 's')
+				.setIcon(android.R.drawable.ic_menu_gallery);
+		mExcludeMediaScanMenuItem = menu.add(0, MENU_EXCLUDE_FROM_MEDIA_SCAN, 0, R.string.menu_exclude_from_media_scan).setShortcut('1', 's')
+				.setIcon(android.R.drawable.ic_menu_gallery);
+		
  		UpdateMenu
  				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
  		menu.add(0, MENU_ABOUT, 0, R.string.about).setIcon(
  				android.R.drawable.ic_menu_info_details).setShortcut('0', 'a');
-
+ 		
  		return true;
  	}
 
@@ -817,6 +833,18 @@ public class FileManagerActivity extends ListActivity {
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
+
+		mIncludeMediaScanMenuItem.setVisible(false);
+		mExcludeMediaScanMenuItem.setVisible(false);
+		 
+ 		// We only know about ".nomedia" once we have the results list back.
+ 		if (mListDir != null) {
+			if (mNoMedia) {
+				mIncludeMediaScanMenuItem.setVisible(true);
+			} else {
+				mExcludeMediaScanMenuItem.setVisible(true);
+ 			}
+ 		}
 
 		// Generate any additional actions that can be performed on the
 		// overall list. This allows other applications to extend
@@ -850,6 +878,14 @@ public class FileManagerActivity extends ListActivity {
 
 		case MENU_ABOUT:
 			showAboutBox();
+			return true;
+			
+		case MENU_INCLUDE_IN_MEDIA_SCAN:
+			includeInMediaScan();
+			return true;
+
+		case MENU_EXCLUDE_FROM_MEDIA_SCAN:
+			excludeFromMediaScan();
 			return true;
 /*
 		case MENU_PREFERENCES:
@@ -1077,6 +1113,34 @@ public class FileManagerActivity extends ListActivity {
 
 		case DIALOG_ABOUT:
 			break;
+		}
+	}
+	
+	private void includeInMediaScan() {
+		// Delete the .nomedia file.
+		File file = FileUtils.getFile(currentDirectory, NOMEDIA_FILE);
+		if (file.delete()) {
+			Toast.makeText(this, getString(R.string.media_scan_included), Toast.LENGTH_LONG).show();
+			mNoMedia = false;
+		} else {
+			// That didn't work.
+			Toast.makeText(this, getString(R.string.error_generic), Toast.LENGTH_LONG).show();
+		}
+	}
+
+	private void excludeFromMediaScan() {
+		// Create the .nomedia file.
+		File file = FileUtils.getFile(currentDirectory, NOMEDIA_FILE);
+		try {
+			if (file.createNewFile()) {
+				mNoMedia = true;
+				Toast.makeText(this, getString(R.string.media_scan_excluded), Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(this, getString(R.string.error_media_scan), Toast.LENGTH_LONG).show();
+			}
+		} catch (IOException e) {
+			// That didn't work.
+			Toast.makeText(this, getString(R.string.error_generic) + e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 	}
 
