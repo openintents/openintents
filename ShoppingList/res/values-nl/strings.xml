@@ -59,7 +59,7 @@
 	<string name="menu_mark_item">streep item aan</string>
 	<string name="menu_edit_item">Item bewerken</string>
 	<string name="menu_auto_add">automatissch toevoegen</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">Geen items beschikbaar</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -76,10 +76,10 @@
 	<string name="menu_pick_items">kies item</string>
 	<string name="menu_start_shopping">Boodschappen</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">kies items.</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">boodschappen.</string>
 	
 	<string name="tags">Labels</string>
@@ -87,10 +87,10 @@
 	<string name="item">Item</string>
 	<string name="quantity">Aantal</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Totaal: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">afgevinkt</string>
 	
 	<string name="delete_item_confirm">weet u zeker dat u dit item,  dit label en de prijs permanent wil uitwissen van alle boodschappenlijsten</string>

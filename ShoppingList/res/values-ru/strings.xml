@@ -22,7 +22,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
-  ZipUltra https://launchpad.net/~zipultra</string>
+  ZipUltra https://launchpad.net/~zipultra
+  friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">"OI Shopping list" предназначен для создания и хранения списков покупок. Вы так же можете использовать программу для других целей, например как список задач.</string>
@@ -58,7 +59,7 @@
 	<string name="menu_mark_item">Выделить элемент</string>
 	<string name="menu_edit_item">Редактировать элемент</string>
 	<string name="menu_auto_add">Авто добавление</string>
-	<string name="no_items_available">Нет доступных элементов.</string>
+	<string name="no_items_available">Нет доступных элементов</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -75,10 +76,10 @@
 	<string name="menu_pick_items">Выбор элементов</string>
 	<string name="menu_start_shopping">Покупки</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Выбрано элементов</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Список</string>
 	
 	<string name="tags">Метки</string>
@@ -86,10 +87,10 @@
 	<string name="item">Элемент</string>
 	<string name="quantity">Количество</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Итог: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Сумма: %s</string>
 	
 	<string name="delete_item_confirm">Вы действительно желаете удалить навсегда этот элемент из всех списков?</string>

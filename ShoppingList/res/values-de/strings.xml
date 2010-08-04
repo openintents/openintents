@@ -24,7 +24,8 @@
   Bernd Schlapsi https://launchpad.net/~bernd-sch
   Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail
   MixCool https://launchpad.net/~mixcool
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  friedger https://launchpad.net/~friedger</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">Mit der OI Einkaufsliste haben Sie Ihre Einkäufe im Griff. Sie können aber auch andere Listen erstellen, wie zum Beispiel eine Aufgabenliste.</string>
@@ -60,7 +61,7 @@
 	<string name="menu_mark_item">Posten markieren</string>
 	<string name="menu_edit_item">Posten bearbeiten</string>
 	<string name="menu_auto_add">Automatisch hinzufügen</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">Keine Posten vorhanden</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -77,10 +78,10 @@
 	<string name="menu_pick_items">Posten auswählen</string>
 	<string name="menu_start_shopping">Einkaufen</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Posten auswählen</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Einkaufen</string>
 	
 	<string name="tags">Stichworte</string>
@@ -88,10 +89,10 @@
 	<string name="item">Posten</string>
 	<string name="quantity">Menge</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Summe: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Abgehakt: %s</string>
 	
 	<string name="delete_item_confirm">Sind Sie sicher, dass Sie diesen Posten, die dazugehörigen Stichworte und den Preis von allen Einkaufslisten löschen möchten?</string>
@@ -225,7 +226,7 @@
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>teuerstes zuerst</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>nicht abgehakte zuerst, Stichworte alphabetisch</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

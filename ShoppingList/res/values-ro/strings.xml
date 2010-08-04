@@ -75,10 +75,10 @@
 	<string name="menu_pick_items">Pick items</string>
 	<string name="menu_start_shopping">Cumpărături</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Pick items</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Shopping</string>
 	
 	<string name="tags">Tags</string>
@@ -86,10 +86,10 @@
 	<string name="item">Articol</string>
 	<string name="quantity">Quantity</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Total: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Checked: %s</string>
 	
 	<string name="delete_item_confirm">Are you sure you want to permanently delete this item, its tags, and its price from all shopping lists?</string>

@@ -59,7 +59,7 @@
 	<string name="menu_mark_item">Zaznacz element</string>
 	<string name="menu_edit_item">Edytuj element</string>
 	<string name="menu_auto_add">Edytuj element</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">Brak elementów</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -76,10 +76,10 @@
 	<string name="menu_pick_items">Wybierz elementy</string>
 	<string name="menu_start_shopping">Zakupy</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - wybierz elementy</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - zakupy</string>
 	
 	<string name="tags">Etykiety</string>
@@ -87,10 +87,10 @@
 	<string name="item">Element</string>
 	<string name="quantity">Ilość</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Razem: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Zaznaczone: %s</string>
 	
 	<string name="delete_item_confirm">Czy na pewno chcesz ostatecznei usunąć tę pozycję oraz przypisane do niej znaczniki i ceny z wszystkich list zakupów?</string>
@@ -224,7 +224,7 @@
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>znaczniki alfabetycznie</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>najdroższa pierwsza</item>
+    	<item>najpierw nieodznaczone, znaczniki alfabetycznie</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

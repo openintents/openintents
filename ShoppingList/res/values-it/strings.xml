@@ -214,6 +214,9 @@
     	<item>Tag in ordine alfabetico</item>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>Prima più costosi</item>
+    	<!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
+    	<item>Prima deselezionati, tag in ordine alfabetico</item>
+    	
     </string-array>
     
     <string-array name="preference_fontsize_entries">

@@ -22,6 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Angel Abad https://launchpad.net/~angelabad
+  JoseRoberto https://launchpad.net/~joseroberto
   Joselt Peña https://launchpad.net/~inf3rn41j4p
   Paco Molinero https://launchpad.net/~franciscomol
   Peli https://launchpad.net/~peli0101
@@ -61,7 +62,7 @@
 	<string name="menu_mark_item">Marcar elemento</string>
 	<string name="menu_edit_item">Editar elemento</string>
 	<string name="menu_auto_add">Auto agregar</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">No hay elementos disponibles</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -78,10 +79,10 @@
 	<string name="menu_pick_items">Marcar elementos</string>
 	<string name="menu_start_shopping">Compras</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Elementos marcados</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Compras</string>
 	
 	<string name="tags">Etiquetas</string>
@@ -89,10 +90,10 @@
 	<string name="item">Elemento</string>
 	<string name="quantity">Cantidad</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Total: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Revisado: %s</string>
 	
 	<string name="delete_item_confirm">¿Estás seguro de que deseas eliminar permanentemente este elemento, sus etiquetas, y su precio de todas las listas de compra?</string>
@@ -226,7 +227,7 @@
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>más costoso primero</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>Sin revisar primero, etiquetar alfabéticamente</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

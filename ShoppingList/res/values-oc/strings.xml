@@ -74,10 +74,10 @@
 	<string name="menu_pick_items">Marcatz d\'elements</string>
 	<string name="menu_start_shopping">Crompas</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Marcatz d\'elements</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Crompas</string>
 	
 	<string name="tags">Etiquetas</string>
@@ -85,10 +85,10 @@
 	<string name="item">Element</string>
 	<string name="quantity">Quantitat</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Total : %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Marcat : %s</string>
 	
 	<string name="delete_item_confirm">Sètz segur que volètz suprimir definitivament aqueste element, son libellat e son prètz de totas las listas ?</string>

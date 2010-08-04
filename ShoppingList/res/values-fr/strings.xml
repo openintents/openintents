@@ -25,6 +25,7 @@
   Omega13 https://launchpad.net/~omega13
   Peli https://launchpad.net/~peli0101
   dommy9111 https://launchpad.net/~bossboss9111
+  friedger https://launchpad.net/~friedger
   kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz
   viktor https://launchpad.net/~lfraisse</string>
 	
@@ -62,7 +63,7 @@
 	<string name="menu_mark_item">Cocher un élément</string>
 	<string name="menu_edit_item">Modifier l\'élément</string>
 	<string name="menu_auto_add">Ajout automatique</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">Aucun élément disponible</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -79,10 +80,10 @@
 	<string name="menu_pick_items">Cochez des éléments</string>
 	<string name="menu_start_shopping">Courses</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Cochez des éléments</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Courses</string>
 	
 	<string name="tags">Libellé</string>
@@ -90,10 +91,10 @@
 	<string name="item">Elément</string>
 	<string name="quantity">Quantité</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Total: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Coché: %s</string>
 	
 	<string name="delete_item_confirm">Etes vous sûr de vouloir définitivement supprimmer cet élément, son libellé et son prix de toutes les listes ?</string>
@@ -227,7 +228,7 @@
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>plus cher en premier</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>Non coché en premier, libellé par ordre alphabétique</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

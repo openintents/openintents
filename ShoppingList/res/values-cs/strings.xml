@@ -58,7 +58,7 @@
 	<string name="menu_mark_item">Označit bod</string>
 	<string name="menu_edit_item">Editovat bod</string>
 	<string name="menu_auto_add">Automaticky přidat</string>
-	<string name="no_items_available">No items available</string>
+	<string name="no_items_available">Žádné položky nejsou k dispozici</string>
 	
 	<!-- Remove item from this list, but keep it internally, so that the user
 	     can choose it later for inclusion again. Information like
@@ -75,10 +75,10 @@
 	<string name="menu_pick_items">Zvolit body</string>
 	<string name="menu_start_shopping">Nakupování</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="pick_items_titel">%s - Zvolit body</string>
 	
-	<!-- Title supplement. '%s' is the name of the current list. -->
+	<!-- Title supplement. \'%s\' is the name of the current list. -->
 	<string name="shopping_title">%s - Nakupování</string>
 	
 	<string name="tags">Štítky</string>
@@ -86,10 +86,10 @@
 	<string name="item">Bod</string>
 	<string name="quantity">Množství</string>
 	
-	<!-- Total sum of all prices. '%s' is the sum -->
+	<!-- Total sum of all prices. \'%s\' is the sum -->
 	<string name="total">Celkem: %s</string>
 	
-	<!-- Sum of all prices of the checked items. '%s' is the sum -->
+	<!-- Sum of all prices of the checked items. \'%s\' is the sum -->
 	<string name="total_checked">Kontrola: %s</string>
 	
 	<string name="delete_item_confirm">Určitě chcete permanentně vymazat tento bod, jeho označení a jeho cenu ze všech seznamů nákupů?</string>
@@ -212,7 +212,7 @@ Současná verze: %s</string>
 	
     <string-array name="preference_sortorder_entries">
     	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
-    	<item>dát neodškrtnuté první, alfabeticky</item>
+    	<item>dát neodškrtnuté první: alfabeticky</item>
         <!-- Preference sort order: Sort by item name -->
     	<item>alfabeticky</item>
         <!-- Preference sort order: Newest item first -->
