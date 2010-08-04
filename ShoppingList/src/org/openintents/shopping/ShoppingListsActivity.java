@@ -15,9 +15,8 @@ import android.widget.SimpleCursorAdapter;
 
 /**
  * Activity to show list of shopping lists
- *
+ * Used for INSERT_FROM_EXTRAS
  */
-@Deprecated
 public class ShoppingListsActivity extends ListActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

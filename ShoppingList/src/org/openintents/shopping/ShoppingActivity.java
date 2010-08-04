@@ -1451,6 +1451,31 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		mListItemsView.requery();
 	}
 
+	/** move item */
+	void moveItem(int position, int targetListId) {
+		Cursor c = mListItemsView.mCursorItems;
+		c.moveToPosition(position);
+		
+
+		long listId = getSelectedListId();
+		if (listId < 0) {
+			// No valid list - probably view is not active
+			// and no item is selected.
+			return;
+		}
+	
+		// add item to new list
+		ShoppingUtils.addItemToList(this, c.getInt(mStringItemsITEMID), targetListId, c.getString(mStringItemsQUANTITY));
+		
+		
+		// Delete item from currentList
+		// by deleting contains row
+		getContentResolver().delete(Contains.CONTENT_URI, "item_id = ? and list_id = ?",
+				new String[] { c.getString(mStringItemsITEMID), String.valueOf(listId)});
+
+		mListItemsView.requery();
+	}
+
 	/** removeItemFromList */
 	void removeItemFromList(int position) {
 		Cursor c = mListItemsView.mCursorItems;
@@ -1459,17 +1484,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		String itemName = c.getString(mStringItemsITEMNAME);
 		long oldstatus = c.getLong(mStringItemsSTATUS);
 		
-		// Delete item from list
-		/*
-		// by deleting contains row
-		getContentResolver()
-				.delete(
-						Contains.CONTENT_URI,
-						"_id = ?",
-						new String[] { c
-								.getString(mStringItemsCONTAINSID) });
-
-		 */
 		
 		// Delete item by changing its state
 		ContentValues values = new ContentValues();
