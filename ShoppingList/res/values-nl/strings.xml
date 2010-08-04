@@ -224,7 +224,7 @@
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>duurste eerst</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>onvoltooid eerst, tags alfabetisch</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">

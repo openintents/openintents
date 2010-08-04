@@ -212,7 +212,7 @@ Současná verze: %s</string>
 	
     <string-array name="preference_sortorder_entries">
     	<!-- Preference sort order: List unchecked items first, sort items alphabetically -->
-    	<item>dát neodškrtnuté první: alfabeticky</item>
+    	<item>dát neodškrtnuté první, alfabeticky</item>
         <!-- Preference sort order: Sort by item name -->
     	<item>alfabeticky</item>
         <!-- Preference sort order: Newest item first -->
@@ -224,7 +224,7 @@ Současná verze: %s</string>
         <!-- Preference sort order: Sort by price, the most expensive first -->
     	<item>nejdražší první</item>
         <!-- Preference sort order: List unchecked items first, sort alphabetically by tags -->
-    	<item>unchecked first, tags alphabetical</item>
+    	<item>dát neodškrtnuté první, alfabeticky podle označení</item>
     </string-array>
     
     <string-array name="preference_fontsize_entries">
