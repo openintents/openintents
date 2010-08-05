@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+
+release 1.2.5
+date: 2010-08-05
+- translations: Danish, minor changes
+---------------------------------------------------------
 release 1.2.4
 date: 2010-06-26
 - translations: Argentinien, Czech, Chinese (Simplified),

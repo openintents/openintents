@@ -17,8 +17,9 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionCode="10020" android:versionName="1.2.4">
+	android:versionCode="10021" android:versionName="1.2.5">
 	<!-- History:
+	1.2.5       [10020]: 2010-08-05
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
 	1.2.4       [10020]: 2010-06-26
 	1.2.4-rc3   [10019]: 2010-06-21
@@ -42,10 +43,10 @@
 	 
 	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name" android:debuggable="true">
 	
-        <!-- aTrackDog metadata -->
+        <!-- aTrackDog metadata 
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
            android:value="10017" />
-        		
+        -->		
         <meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />
         <meta-data android:name="org.openintents.metadata.COPYRIGHT"
