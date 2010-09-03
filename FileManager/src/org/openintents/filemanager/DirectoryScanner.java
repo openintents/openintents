@@ -32,6 +32,10 @@ public class DirectoryScanner extends Thread {
     private MimeTypes mMimeTypes;
 	private Handler handler;
 	private long operationStartTime;
+
+	private boolean mWriteableOnly;
+
+	private boolean mDirectoriesOnly;
 	
 	// Update progress bar every n files
 	static final private int PROGRESS_STEPS = 50;
@@ -45,13 +49,15 @@ public class DirectoryScanner extends Thread {
     
 
 
-	DirectoryScanner(File directory, Context context, Handler handler, MimeTypes mimeTypes, String sdCardPath) {
+	DirectoryScanner(File directory, Context context, Handler handler, MimeTypes mimeTypes, String sdCardPath, boolean writeableOnly, boolean directoriesOnly) {
 		super("Directory Scanner");
 		currentDirectory = directory;
 		this.context = context;
 		this.handler = handler;
 		this.mMimeTypes = mimeTypes;
 		this.mSdCardPath = sdCardPath;
+		this.mWriteableOnly = writeableOnly;
+		this.mDirectoriesOnly = directoriesOnly;
 	}
 	
 	private void clearData() {
@@ -124,7 +130,8 @@ public class DirectoryScanner extends Thread {
         	  if (currentFile.isHidden()) {
         		  continue;
         	  }
-				 */
+				 */				
+				
 				if (currentFile.isDirectory()) { 
 					if (currentFile.getAbsolutePath().equals(mSdCardPath)) {
 						currentIcon = sdIcon;
@@ -133,9 +140,11 @@ public class DirectoryScanner extends Thread {
 								currentFile.getName(), "", currentIcon)); 
 					} else {
 						currentIcon = folderIcon;
-
-						listDir.add(new IconifiedText( 
-								currentFile.getName(), "", currentIcon)); 
+						
+						if (!mWriteableOnly || currentFile.canWrite()){
+							listDir.add(new IconifiedText( 
+									currentFile.getName(), "", currentIcon));
+						}
 					}
 				}else{ 
 					String fileName = currentFile.getName(); 
@@ -172,8 +181,10 @@ public class DirectoryScanner extends Thread {
 						// enough.
 					}
 
-					listFile.add(new IconifiedText( 
-							currentFile.getName(), size, currentIcon)); 
+					if (!mDirectoriesOnly){
+						listFile.add(new IconifiedText( 
+							currentFile.getName(), size, currentIcon));
+					}
 				} 
 			}
 		}

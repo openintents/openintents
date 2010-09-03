@@ -170,6 +170,8 @@ public class FileManagerActivity extends ListActivity {
      
      private Handler currentHandler;
 
+	private boolean mWritableOnly;
+
  	 static final public int MESSAGE_SHOW_DIRECTORY_CONTENTS = 500;	// List of contents is ready, obj = DirectoryContents
      static final public int MESSAGE_SET_PROGRESS = 501;	// Set progress bar, arg1 = current value, arg2 = max value
      static final public int MESSAGE_ICON_CHANGED = 502;	// View needs to be redrawn, obj = IconifiedText
@@ -235,20 +237,24 @@ public class FileManagerActivity extends ListActivity {
           
           // Default state
           mState = STATE_BROWSE;
+          mWritableOnly = false;
           
           if (action != null) {
+        	  
         	  if (action.equals(FileManagerIntents.ACTION_PICK_FILE)) {
-        		  mState = STATE_PICK_FILE;
+        		  mState = STATE_PICK_FILE;        		
         	  } else if (action.equals(FileManagerIntents.ACTION_PICK_DIRECTORY)) {
-        		  mState = STATE_PICK_DIRECTORY;
+        		  mState = STATE_PICK_DIRECTORY;        		          		          
+        		  mWritableOnly = intent.getBooleanExtra(FileManagerIntents.EXTRA_WRITEABLE_ONLY, false);
         		  
         		  // Remove edit text and make button fill whole line
         		  mEditFilename.setVisibility(View.GONE);
         		  mButtonPick.setLayoutParams(new LinearLayout.LayoutParams(
         				  LinearLayout.LayoutParams.FILL_PARENT,
         				  LinearLayout.LayoutParams.WRAP_CONTENT));
-        	  }
-          }
+        	  } 
+        	  
+          } 
           
           if (mState == STATE_BROWSE) {
         	  // Remove edit text and button.
@@ -608,6 +614,8 @@ public class FileManagerActivity extends ListActivity {
      } 
 
      private void refreshList() {
+    	     	 
+    	 boolean directoriesOnly = mState == STATE_PICK_DIRECTORY;
     	 
     	  // Cancel an existing scanner, if applicable.
     	  DirectoryScanner scanner = mDirectoryScanner;
@@ -638,7 +646,7 @@ public class FileManagerActivity extends ListActivity {
           mProgressBar.setVisibility(View.GONE);
           setListAdapter(null); 
           
-		  mDirectoryScanner = new DirectoryScanner(currentDirectory, this, currentHandler, mMimeTypes, mSdCardPath);
+		  mDirectoryScanner = new DirectoryScanner(currentDirectory, this, currentHandler, mMimeTypes, mSdCardPath, mWritableOnly, directoriesOnly);
 		  mDirectoryScanner.start();
 		  
 		  
@@ -1157,6 +1165,7 @@ public class FileManagerActivity extends ListActivity {
 		
 		intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(R.string.move_title));
 		intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(R.string.move_button));
+		intent.putExtra(FileManagerIntents.EXTRA_WRITEABLE_ONLY, true);
 		
 		startActivityForResult(intent, REQUEST_CODE_MOVE);
 	}
@@ -1169,6 +1178,7 @@ public class FileManagerActivity extends ListActivity {
 		
 		intent.putExtra(FileManagerIntents.EXTRA_TITLE, getString(R.string.copy_title));
 		intent.putExtra(FileManagerIntents.EXTRA_BUTTON_TEXT, getString(R.string.copy_button));
+		intent.putExtra(FileManagerIntents.EXTRA_WRITEABLE_ONLY, true);
 		
 		startActivityForResult(intent, REQUEST_CODE_COPY);
 	}
@@ -1236,6 +1246,11 @@ public class FileManagerActivity extends ListActivity {
 	
 	private void renameFileOrFolder(File file, String newFileName) {
 		
+		if (newFileName != null && newFileName.length() > 0){
+			if (newFileName.lastIndexOf('.') < 0){				
+				newFileName += FileUtils.getExtension(file.getName()); 
+			}
+		}
 		File newFile = FileUtils.getFile(currentDirectory, newFileName);
 		
 		rename(file, newFile);
