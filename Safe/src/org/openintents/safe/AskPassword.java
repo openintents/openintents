@@ -61,6 +61,7 @@ public class AskPassword extends Activity {
 
     // Menu Item order
     public static final int SWITCH_MODE_INDEX = Menu.FIRST;
+    public static final int MUTE_INDEX = Menu.FIRST + 1;
     
     public static final int VIEW_NORMAL = 0;
     public static final int VIEW_KEYPAD = 1;
@@ -326,6 +327,19 @@ public class AskPassword extends Activity {
 			} else {
 				miSwitch.setEnabled(true);
 			}
+			MenuItem miMute = menu.findItem(MUTE_INDEX);
+			if (viewMode==VIEW_KEYPAD) {
+				miMute.setVisible(true);
+				if (mute) {
+					miMute.setTitle(R.string.sounds);
+					miMute.setIcon(android.R.drawable.ic_lock_silent_mode_off);
+				} else {
+					miMute.setTitle(R.string.mute);
+					miMute.setIcon(android.R.drawable.ic_lock_silent_mode);
+				}
+			} else {
+				miMute.setVisible(false);
+			}
 		}
 		return super.onMenuOpened(featureId, menu);
 	}
@@ -336,6 +350,16 @@ public class AskPassword extends Activity {
 	
 		menu.add(0, SWITCH_MODE_INDEX, 0, R.string.switch_mode)
 			.setIcon(android.R.drawable.ic_menu_directions);
+
+		MenuItem miMute;
+		if (mute) {
+			miMute=menu.add(0, MUTE_INDEX, 0, R.string.sounds)
+				.setIcon(android.R.drawable.ic_lock_silent_mode_off);
+		} else {
+			miMute=menu.add(0, MUTE_INDEX, 0, R.string.mute)
+				.setIcon(android.R.drawable.ic_lock_silent_mode);
+		}
+		miMute.setVisible(viewMode==VIEW_KEYPAD);
 		
 		return super.onCreateOptionsMenu(menu);
     }
@@ -354,8 +378,17 @@ public class AskPassword extends Activity {
 				spe.putBoolean(Preferences.PREFERENCE_KEYPAD, false);
 				normalInit();
 			}
-			if (spe.commit()) {
+			if (!spe.commit()) {
 				if (debug) Log.d(TAG,"commitment issues");
+			}
+			break;
+		case MUTE_INDEX:
+			SharedPreferences msp = PreferenceManager.getDefaultSharedPreferences(this);
+			SharedPreferences.Editor mspe=msp.edit();
+	        mspe.putBoolean(Preferences.PREFERENCE_KEYPAD_MUTE, !mute);
+	        mute=!mute;
+			if (!mspe.commit()) {
+				if (debug) Log.d(TAG,"mute commitment issues");
 			}
 			break;
 		default:

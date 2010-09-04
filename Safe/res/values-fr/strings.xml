@@ -38,7 +38,7 @@
 	     *************************** -->
     <string name="app_name">OI Safe</string>
     <string name="empty_safe">Pas de mot de passe actuel pour cette catégorie.</string>
-    <string name="empty_category">Pas de catégories présentes. S'il vous plaît en ajouter une via le menu-&gt;Add</string>
+    <string name="empty_category">Pas de catégories présentes. S\'il vous plaît en ajouter une via le menu-&gt;Add</string>
     <string name="password_lock">Vérouiller</string>
     <string name="password_view">Afficher</string>
     <string name="password_edit">Modifier</string>
@@ -47,40 +47,40 @@
     <string name="password">Mot de passe</string>
     <string name="passwords">Les mots de passe</string>
     <string name="master_password">Mot de passe principal</string>
-    <string name="username">Nom d'utilisateur</string>
+    <string name="username">Nom d\'utilisateur</string>
     <string name="website">Site</string>
     <string name="description">Description</string>
     <string name="notes">Notes</string>
     <string name="save">Sauver</string>
-    <string name="invalid_password">Mot de passe incorrect. S'il vous plaît essayez de nouveau.</string>
+    <string name="invalid_password">Mot de passe incorrect. S\'il vous plaît essayez de nouveau.</string>
     <string name="notify_blank_pass">Le mot de passe doit comporter au moins 4 caractères</string>
     <string name="notify_blank_desc">La description ne peut pas être vide</string>
     <string name="notify_blank_name">Le nom ne peut pas être vide</string>
-    <string name="first_time">S'il vous plaît entrer un mot de passe ci-dessous, il sera utilisés pour garder vos mots de passe de sécurité.</string>
-    <string name="logoff_explanation">Vous êtes actuellement connecté sur OI Safe, ce qui signifie que d'autres applications peuvent leur demander de crypter/décrypter les mots de passe et les données. Verrouillez pour empêcher de nouveaux accès jusqu'à ce que vous tapez votre mot de passe.</string>
-    <string name="remote_ask">Une autre application qui vous demande d'utiliser la clé maîtresse. S'il vous plaît entrez votre mot de passe pour le déverrouiller.</string>
+    <string name="first_time">S\'il vous plaît entrer un mot de passe ci-dessous, il sera utilisés pour garder vos mots de passe de sécurité.</string>
+    <string name="logoff_explanation">Vous êtes actuellement connecté sur OI Safe, ce qui signifie que d\'autres applications peuvent leur demander de crypter/décrypter les mots de passe et les données. Verrouillez pour empêcher de nouveaux accès jusqu\'à ce que vous tapez votre mot de passe.</string>
+    <string name="remote_ask">Une autre application qui vous demande d\'utiliser la clé maîtresse. S\'il vous plaît entrez votre mot de passe pour le déverrouiller.</string>
     <string name="categories">Catégories</string>
 	<string name="category">Catégorie</string>
     <string name="category_business">Entreprise</string>
     <string name="category_personal">Personnel</string>
     <string name="name">Nom</string>
-    <string name="category_not_empty">Catégorie n'est pas vide. Vous devez supprimer les mots de passe en premier.</string>
+    <string name="category_not_empty">Catégorie n\'est pas vide. Vous devez supprimer les mots de passe en premier.</string>
 	<string name="cannot_decrypt_category">Impossible de déchiffrer la catégorie</string>
 	<string name="cannot_decrypt_password">Impossible de déchiffrer un mot de passe</string>
-	<string name="error_export">Erreur d'exportation de la base de données</string>
+	<string name="error_export">Erreur d\'exportation de la base de données</string>
 	<string name="export_database">Export de la base de données</string>
-	<string name="export_msg">Cela permettra l'exportation de la base de données de mot de passe à un fichier texte en clair. C'EST TRÈS DANGEREUX. Assurez-vous de supprimer le fichier une fois que vous l'avez fait. Êtes-vous sûr que de vouloir l'exporter?</string>
-	<string name="export_success">Exportation vers '%s' terminer. Attention! Le fichier n'est pas crypté.</string>
-	<string name="export_file_error">Impossible de créer le fichier d'exportation 'oisafe.csv' sur SDCARD. Vous pouvez essayer de débrancher le cable USB de l'ordinateur.</string>
+	<string name="export_msg">Cela permettra l\'exportation de la base de données de mot de passe à un fichier texte en clair. C\'EST TRÈS DANGEREUX. Assurez-vous de supprimer le fichier une fois que vous l\'avez fait. Êtes-vous sûr que de vouloir l\'exporter?</string>
+	<string name="export_success">Exportation vers \'%s\' terminer. Attention! Le fichier n\'est pas crypté.</string>
+	<string name="export_file_error">Impossible de créer le fichier d\'exportation \'oisafe.csv\' sur SDCARD. Vous pouvez essayer de débrancher le cable USB de l\'ordinateur.</string>
 	<string name="import_database">Import de la bases de données</string>
-	<string name="import_file_missing">L'import de fichiers est manquant:</string>
-	<string name="import_file_error">Impossible d'importer le fichier 'oisafe.csv' de SDCARD. Vous pouvez essayer de débrancher le cable USB de l'ordinateur.</string>
+	<string name="import_file_missing">L\'import de fichiers est manquant:</string>
+	<string name="import_file_error">Impossible d\'importer le fichier \'oisafe.csv\' de SDCARD. Vous pouvez essayer de débrancher le cable USB de l\'ordinateur.</string>
 	<string name="import_error_first_line">La première ligne à un champ manquant.</string>
 	<string name="dialog_import_title">Import</string>
 	<string name="dialog_import_msg">Voulez-vous remplacer la base de données (importation à partir de %s)?</string>
 	<string name="yes">Oui</string>
 	<string name="no">Non</string>
-	<string name="import_progress">S'il vous plaît veuillez patienter pendant l'importation de ...</string>
+	<string name="import_progress">S\'il vous plaît veuillez patienter pendant l\'importation de ...</string>
 	<string name="import_no_categories">Pas de catégories trouvées.</string>
 	<string name="import_no_entries">Aucune entrées trouvée dans CSV.</string>
 	<string name="import_too_many_categories">Un trop grand nombre de catégories.</string>
@@ -92,9 +92,9 @@
 	<string name="added">Ajouté</string>
 	<string name="entries">entrées</string>
 	<string name="import_complete">Import complète</string>
-	<string name="import_delete_csv">Comme il n'est pas sûr de garder les mots de passe en texte clair dans des fichiers CSV, voulez-vous les supprimer</string>
-	<string name="edit_entry">Modifier l'entrée</string>
-	<string name="view_entry">Voir l'entrée</string>
+	<string name="import_delete_csv">Comme il n\'est pas sûr de garder les mots de passe en texte clair dans des fichiers CSV, voulez-vous les supprimer</string>
+	<string name="edit_entry">Modifier l\'entrée</string>
+	<string name="view_entry">Voir l\'entrée</string>
 	<string name="help">Aide</string>
 	<string name="close">Fermer</string>
 	<string name="go">Aller</string>
@@ -106,7 +106,7 @@
 	<string name="new_password">Nouveau mot de passe</string>
 	<string name="verify_password">Vérifier le mot de passe</string>
 	<string name="new_verify_mismatch">Vos mots de passe ne correspondent pas.</string>
-    <string name="invalid_old_password">L'ancien mot de passe est incorrect. S'il vous plaît essayez de nouveau.</string>
+    <string name="invalid_old_password">L\'ancien mot de passe est incorrect. S\'il vous plaît essayez de nouveau.</string>
     <string name="error_changing_password">Erreur lors du changement de mot de passe</string>
     <string name="password_changed">Mot de passe changé</string>
     <string name="confirm">Confirmer</string>
@@ -117,11 +117,11 @@
     <string name="backup_failed">La sauvegarde a échoué:</string>
     <string name="restore">Restaurer</string>
     <string name="filename">Nom du fichier</string>
-    <string name="restore_no_file">Le fichier de sauvegarde n'a pas été trouvée. Vous devez effectuer une sauvegarde avant de le créer. Ou de copier une sauvegarde de sur votre PC.</string>
-    <string name="restore_set_password">S'il vous plaît fournissez le mot de passe utilisé par le fichier de sauvegarde. Votre mot de passe principal sera intégré à l'intérieur.</string>
+    <string name="restore_no_file">Le fichier de sauvegarde n\'a pas été trouvée. Vous devez effectuer une sauvegarde avant de le créer. Ou de copier une sauvegarde de sur votre PC.</string>
+    <string name="restore_set_password">S\'il vous plaît fournissez le mot de passe utilisé par le fichier de sauvegarde. Votre mot de passe principal sera intégré à l\'intérieur.</string>
     
     <!-- Toast message. '%s' contains a more detailed error message. -->
-    <string name="restore_unable_to_open">Impossible d'ouvrir le fichier: %s</string>
+    <string name="restore_unable_to_open">Impossible d\'ouvrir le fichier: %s</string>
     
     <!-- Toast message. '%s' contains the version number of the database. -->
     <string name="restore_bad_version">Version non pris en charge: %s</string>
@@ -139,7 +139,7 @@
     <string name="open">Ouvrir</string>
     
     <string name="database_version_error_title">Erreur de version de la base de données</string>
-    <string name="database_version_error_msg">Désolé, mais la version de la base de données n'est pas supporté. Vous devez installer la version associée à cette base de données.</string>
+    <string name="database_version_error_msg">Désolé, mais la version de la base de données n\'est pas supporté. Vous devez installer la version associée à cette base de données.</string>
 	
 	<!-- Menu label to move a password to another category -->
 	<string name="move">Déplacer</string>
@@ -150,9 +150,9 @@
 	<string name="moved_to">Déplacé vers %s</string>
 	
 	<string name="preferences">Paramètres</string>
-	<string name="pref_title_external_access">Autoriser l'accès externe</string>
+	<string name="pref_title_external_access">Autoriser l\'accès externe</string>
 	<string name="pref_summary_external_access">Autoriser les autres applications à sécuriser vos données avec OI Safe</string>
-	<string name="dialog_title_external_access">OI Safe: Une autre application demande l'accès.</string>
+	<string name="dialog_title_external_access">OI Safe: Une autre application demande l\'accès.</string>
 	<string name="dialog_summary_external_access">Autoriser les autres applications à sécuriser vos données avec OI Safe.</string>
 	<string name="dialog_comment_external_access">Cela peut aussi être réglée dans le menu OI Safe / Paramètres.</string>
 	
@@ -160,15 +160,15 @@
 	<string name="pref_title_lock_timeout">Délai du verrouillage automatique</string>
 	
 	<!-- Preference summary for auto lock timeout -->
-	<string name="pref_summary_lock_timeout">Nombre de minutes avant que l'expiration du délai ne se produit et la que la sécurité soit verrouillé</string>
+	<string name="pref_summary_lock_timeout">Nombre de minutes avant que l\'expiration du délai ne se produit et la que la sécurité soit verrouillé</string>
 	
 	<string name="pref_dialog_title_lock_timeout">Délai du verrouillage automatique</string>
 	
 	<!-- Preference title -->
-	<string name="pref_title_lock_on_screen_lock">Verrouiller sur l'écran de verrouillage</string>
+	<string name="pref_title_lock_on_screen_lock">Verrouiller sur l\'écran de verrouillage</string>
 	
 	<!-- Preference summary for lock on screen lock -->
-	<string name="pref_summary_lock_on_screen_lock">Verrouiller lorsque l'écran se verrouille</string>
+	<string name="pref_summary_lock_on_screen_lock">Verrouiller lorsque l\'écran se verrouille</string>
 	
 	<!-- Preference title: use a numeric keypad to enter the password -->
 	<string name="pref_title_keypad">Clavier</string>
@@ -197,7 +197,7 @@
 	<string name="pass_gen_lowercase">Minuscules [a-z]</string>
 	<string name="pass_gen_numbers">Numéros [0-9]</string>
 	<string name="pass_gen_symbols">Symboles [!@#$%^\*]</string>
-	<string name="pass_gen_copy_to_current_entry">Copier dans l'entrée actuelle</string>
+	<string name="pass_gen_copy_to_current_entry">Copier dans l\'entrée actuelle</string>
 	<string name="pass_gen_copy_to_clipboard">Copier dans le Presse-papiers</string>
 	<string name="cancel">Quitter</string>
 	<string name="discard_changes">Annuler les modifications</string>
@@ -215,7 +215,7 @@
 	<string name="search">Rechercher</string>
 	<string name="search_progress">Recherche en cours…</string>
 	<string name="search_hint">Type de critères de recherche</string>
-	<string name="search_nothing_found">Rien n'a été trouvé</string>
+	<string name="search_nothing_found">Rien n\'a été trouvé</string>
 	
 	
 	<!-- ***************************
@@ -228,15 +228,15 @@
 	<string name="eula_refuse">Quitter</string>
 	
 	<!-- Update -->
-		<string name="update_box_text">S'il vous plaît vérifiez manuellement les mises à jour ou installez OI Update pour les notifications automatique . Version actuelle: %s</string>
+		<string name="update_box_text">S\'il vous plaît vérifiez manuellement les mises à jour ou installez OI Update pour les notifications automatique . Version actuelle: %s</string>
 	<string name="update_check_now">Vérifier maintenant.</string>
 	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Télécharger l'application indisponible.</string>
+	<string name="update_error">Télécharger l\'application indisponible.</string>
 	<string name="update">Vérifier les mises à jour</string>
 	
     <!-- About -->
     <string name="about">À propos de</string>
-	<string name="aboutapp_not_available">La version %s\n\nest incompatible pour afficher plein d'infos (contact, crédits, licence).</string>
+	<string name="aboutapp_not_available">La version %s\n\nest incompatible pour afficher plein d\'infos (contact, crédits, licence).</string>
     <string name="aboutapp_get">Obtenir OI About</string>
     
     <!-- File Manager -->
@@ -249,9 +249,9 @@
 
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_service">Accès au mot de passe principal</string>
-	<string name="oi_safe_permission_service_descr">Permet à l'application d'accéder à la clé principale utilisée pour le chiffrement et le déchiffrement. Il ne devrait jamais être utilisée, sauf par OI Safe.</string>	
+	<string name="oi_safe_permission_service_descr">Permet à l\'application d\'accéder à la clé principale utilisée pour le chiffrement et le déchiffrement. Il ne devrait jamais être utilisée, sauf par OI Safe.</string>	
 	<string name="oi_safe_permission_intents">crypter et décrypter des données</string>
-    <string name="oi_safe_permission_intents_descr">Permet à l'application de crypter et décrypter le texte, les mots de passe et les accès qu'ils ont stockées dans OI Safe.</string>	
+    <string name="oi_safe_permission_intents_descr">Permet à l\'application de crypter et décrypter le texte, les mots de passe et les accès qu\'ils ont stockées dans OI Safe.</string>	
 
 	<!-- ***************************
 	     Preferences

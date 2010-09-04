@@ -68,11 +68,11 @@
 	<string name="error_export">Error exporting database</string>
 	<string name="export_database">Export Database</string>
 	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
-	<string name="export_success">Export to '%s' successful.   Warning!   The file is not encrypted.</string>
-	<string name="export_file_error">Unable to create export file 'oisafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="export_success">Export to \'%s\' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_file_error">Unable to create export file \'oisafe.csv\' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Import Database</string>
 	<string name="import_file_missing">Import file is missing:</string>
-	<string name="import_file_error">Unable to import file 'oisafe.csv' from SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="import_file_error">Unable to import file \'oisafe.csv\' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">First line is missing fields.</string>
 	<string name="dialog_import_title">Import</string>
 	<string name="dialog_import_msg">Do you want to replace the database (import from %s)?</string>

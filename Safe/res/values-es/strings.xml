@@ -69,11 +69,11 @@
 	<string name="error_export">Error al exportar la base de datos</string>
 	<string name="export_database">Exportar base de datos</string>
 	<string name="export_msg">This will export the password database to a plaintext file.  THIS IS VERY DANGEROUS.  Make sure that you delete the file after you are done with it.   Are you sure you want to export?</string>
-	<string name="export_success">Exportación de '%s' satisfactora. ¡Advertencia! El archivo no está codificado.</string>
-	<string name="export_file_error">Unable to create export file 'oisafe.csv' on SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="export_success">Exportación de \'%s\' satisfactora. ¡Advertencia! El archivo no está codificado.</string>
+	<string name="export_file_error">Unable to create export file \'oisafe.csv\' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Importar base de datos</string>
 	<string name="import_file_missing">Import file is missing:</string>
-	<string name="import_file_error">Unable to import file 'oisafe.csv' from SDCARD.  You might try disconnecting USB from computer.</string>
+	<string name="import_file_error">Unable to import file \'oisafe.csv\' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">First line is missing fields.</string>
 	<string name="dialog_import_title">Importar</string>
 	<string name="dialog_import_msg">¿Desea reemplazar la base de datos (importar de %s)?</string>
