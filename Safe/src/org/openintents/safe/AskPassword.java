@@ -37,11 +37,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
+import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 /**
  * AskPassword Activity
@@ -161,78 +165,103 @@ public class AskPassword extends Activity {
 				remoteAsk.setVisibility(View.VISIBLE);
 			}
 		}
+		if (firstTime) {
+			confirmPass.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			        if (actionId == EditorInfo.IME_ACTION_DONE) {
+						handleContinue();
+			            return true;
+			        }
+			        return false;
+			    }
+			});
+		}else{
+			pbeKey.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			        if (actionId == EditorInfo.IME_ACTION_DONE) {
+						handleContinue();
+			            return true;
+			        }
+			        return false;
+			    }
+			});
+		}
 		Button continueButton = (Button) findViewById(R.id.continue_button);
 
 		continueButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View arg0) {
-				PBEKey = pbeKey.getText().toString();
-				// For this version of CryptoHelper, we use the user-entered password.
-				// All other versions should be instantiated with the generated master
-				// password.
-
-				// Password must be at least 4 characters
-				if (PBEKey.length() < 4) {
-					Toast.makeText(AskPassword.this, R.string.notify_blank_pass,
-							Toast.LENGTH_SHORT).show();
-				    Animation shake = AnimationUtils
-			        .loadAnimation(AskPassword.this, R.anim.shake);
-			        
-			        findViewById(R.id.password).startAnimation(shake);
-					return;
-				}
-
-				// If it's the user's first time to enter a password,
-				// we have to store it in the database. We are going to
-				// store an encrypted hash of the password.
-				// Generate a master key, encrypt that with the pbekey
-				// and store the encrypted master key in database.
-				if (firstTime) {
-
-					// Make sure password and confirm fields match
-					if (pbeKey.getText().toString().compareTo(
-							confirmPass.getText().toString()) != 0) {
-						Toast.makeText(AskPassword.this,
-								R.string.confirm_pass_fail, Toast.LENGTH_SHORT)
-								.show();
-						return;
-					}
-					try {
-						salt = CryptoHelper.generateSalt();
-						masterKey = CryptoHelper.generateMasterKey();
-					} catch (NoSuchAlgorithmException e1) {
-						e1.printStackTrace();
-						Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
-							+ e1.getMessage(), Toast.LENGTH_SHORT).show();
-						return;
-					}
-					if (debug) Log.i(TAG, "Saving Password: " + masterKey);
-					try {
-						ch.init(CryptoHelper.EncryptionStrong,salt);
-						ch.setPassword(PBEKey);
-						String encryptedMasterKey = ch.encrypt(masterKey);
-						dbHelper.storeSalt(salt);
-						dbHelper.storeMasterKey(encryptedMasterKey);
-					} catch (CryptoHelperException e) {
-						Log.e(TAG, e.toString());
-						Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
-							+ e.getMessage(), Toast.LENGTH_SHORT).show();
-						return;
-					}
-				} else if (!checkUserPassword(PBEKey)) {
-					// Check the user's password and display a
-					// message if it's wrong
-					Toast.makeText(AskPassword.this, R.string.invalid_password,
-							Toast.LENGTH_SHORT).show();
-			        Animation shake = AnimationUtils
-			        .loadAnimation(AskPassword.this, R.anim.shake);
-			        
-			        findViewById(R.id.password).startAnimation(shake);
-					return;
-				}
-				gotPassword();
+				handleContinue();
 			}
 		});
+	}
+	
+	private void handleContinue() {
+		PBEKey = pbeKey.getText().toString();
+		// For this version of CryptoHelper, we use the user-entered password.
+		// All other versions should be instantiated with the generated master
+		// password.
+
+		// Password must be at least 4 characters
+		if (PBEKey.length() < 4) {
+			Toast.makeText(AskPassword.this, R.string.notify_blank_pass,
+					Toast.LENGTH_SHORT).show();
+		    Animation shake = AnimationUtils
+	        .loadAnimation(AskPassword.this, R.anim.shake);
+	        
+	        findViewById(R.id.password).startAnimation(shake);
+			return;
+		}
+
+		// If it's the user's first time to enter a password,
+		// we have to store it in the database. We are going to
+		// store an encrypted hash of the password.
+		// Generate a master key, encrypt that with the pbekey
+		// and store the encrypted master key in database.
+		if (firstTime) {
+
+			// Make sure password and confirm fields match
+			if (pbeKey.getText().toString().compareTo(
+					confirmPass.getText().toString()) != 0) {
+				Toast.makeText(AskPassword.this,
+						R.string.confirm_pass_fail, Toast.LENGTH_SHORT)
+						.show();
+				return;
+			}
+			try {
+				salt = CryptoHelper.generateSalt();
+				masterKey = CryptoHelper.generateMasterKey();
+			} catch (NoSuchAlgorithmException e1) {
+				e1.printStackTrace();
+				Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
+					+ e1.getMessage(), Toast.LENGTH_SHORT).show();
+				return;
+			}
+			if (debug) Log.i(TAG, "Saving Password: " + masterKey);
+			try {
+				ch.init(CryptoHelper.EncryptionStrong,salt);
+				ch.setPassword(PBEKey);
+				String encryptedMasterKey = ch.encrypt(masterKey);
+				dbHelper.storeSalt(salt);
+				dbHelper.storeMasterKey(encryptedMasterKey);
+			} catch (CryptoHelperException e) {
+				Log.e(TAG, e.toString());
+				Toast.makeText(AskPassword.this,getString(R.string.crypto_error)
+					+ e.getMessage(), Toast.LENGTH_SHORT).show();
+				return;
+			}
+		} else if (!checkUserPassword(PBEKey)) {
+			// Check the user's password and display a
+			// message if it's wrong
+			Toast.makeText(AskPassword.this, R.string.invalid_password,
+					Toast.LENGTH_SHORT).show();
+	        Animation shake = AnimationUtils
+	        .loadAnimation(AskPassword.this, R.anim.shake);
+	        
+	        findViewById(R.id.password).startAnimation(shake);
+			return;
+		}
+		gotPassword();
 	}
 	
 	private void gotPassword() {
