@@ -16,6 +16,7 @@
 
 package org.openintents.convertcsv.shoppinglist;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -65,7 +66,7 @@ public class ImportCsv {
 			
 			// Add item to list
 			long listId = Shopping.getList(mContext, listname);
-			long itemId = Shopping.getItem(mContext, itemname, tags);
+			long itemId = Shopping.getItem(mContext, itemname, tags, null);
 			
 			if (status == 1) {
 				status = Status.BOUGHT;
@@ -80,4 +81,46 @@ public class ImportCsv {
 	    }
 	    
 	}
+
+	public void importHandyShopperCsv(Reader reader) throws IOException, WrongFormatException {
+		CSVReader csvreader = new CSVReader(reader);
+	    String [] nextLine;
+	    while ((nextLine = csvreader.readNext()) != null) {
+	    	if (nextLine.length != 23) {
+	    		throw new WrongFormatException();
+	    	}
+	    	// nextLine[] is an array of values from the line
+	    	String statusstring = nextLine[0];
+	    	if (statusstring.equals(mContext.getString(R.string.header_need))) {
+	    		// First line is just subject, so let us skip it
+	    		continue;
+	    	}
+	    	
+			long status;
+			if ("x".equalsIgnoreCase(statusstring)){
+				status = Status.WANT_TO_BUY;
+			} else if ("".equalsIgnoreCase(statusstring)){
+				status = Status.BOUGHT;
+			} else if ("have".equalsIgnoreCase(statusstring)){
+				status = Status.REMOVED_FROM_LIST;
+			} else {
+				status = Status.REMOVED_FROM_LIST;
+			}
+
+			
+	    	String itemname = nextLine[2]; // Description					
+			String tags = nextLine[9]; // Category
+			String price = nextLine[6]; // Quantity
+			
+			// Add item to list
+			long listId = Shopping.getDefaultList();
+			long itemId = Shopping.getItem(mContext, itemname, tags, price);
+			
+			
+			Shopping.addItemToList(mContext, itemId, listId, status);
+	    }
+		
+	}
+	
+	
 }

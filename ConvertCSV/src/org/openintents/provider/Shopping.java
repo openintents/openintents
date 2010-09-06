@@ -554,7 +554,7 @@ public abstract class Shopping {
 	 *            New name of the item.
 	 * @return id of the new or existing item.
 	 */
-	public static long getItem(Context context, String name, String tags) {
+	public static long getItem(Context context, String name, String tags, String price) {
 		long id = -1;
 		Cursor existingItems = context.getContentResolver().query(Items.CONTENT_URI,
 				new String[] { Items._ID }, "upper(name) = ?",
@@ -570,6 +570,10 @@ public abstract class Shopping {
 			ContentValues values = new ContentValues(1);
 			values.put(Items.NAME, name);
 			values.put(Items.TAGS, tags);
+			
+			if (price != null){
+				values.put(Items.PRICE, price);
+			}
 			try {
 				Uri uri = context.getContentResolver().insert(Items.CONTENT_URI, values);
 				Log.i(TAG, "Insert new item: " + uri);

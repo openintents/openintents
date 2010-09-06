@@ -28,10 +28,12 @@
     
     <string-array name="shoppinglist_format">
         <item>MS Outlook Tasks</item>
+        <item>HandyShopper</item>
     </string-array>
     
     <string-array name="shoppinglist_format_value">
         <item>outlook tasks</item>
+        <item>handyshopper</item>
     </string-array>
 
     <string-array name="import_policy">

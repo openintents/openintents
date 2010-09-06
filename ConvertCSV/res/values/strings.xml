@@ -32,6 +32,7 @@
     <string name="error_reading_file">Error reading to file</string>
     <string name="wrong_csv_format">Wrong CSV format</string>
     <string name="error_file_not_found">File not found</string>
+    <string name="error_not_yet_implemented">Not yet implemented, please choose different option.</string>
     <string name="import_finished">Import finished</string>
     <string name="export_finished">Export finished</string>
     <string name="filemanager_title_notepad">Select notepad CSV file</string>
@@ -83,6 +84,9 @@
     <string name="header_percent_complete">% Complete</string>
     <string name="header_categories">Categories</string>
     <string name="header_tags">Tags</string>
+    
+    <!-- Header HandyShopper -->
+    <string name="header_need">Need</string>
     
     <!-- File path -->
     <string name="default_notepad_path">/sdcard/notepad.csv</string>

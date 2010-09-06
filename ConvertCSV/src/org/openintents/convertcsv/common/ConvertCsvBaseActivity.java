@@ -17,11 +17,14 @@
 package org.openintents.convertcsv.common;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.Charset;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
@@ -43,6 +46,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Xml.Encoding;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +59,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ConvertCsvBaseActivity extends Activity {
 	
@@ -340,7 +343,8 @@ public class ConvertCsvBaseActivity extends Activity {
 			new Thread() {
 				public void run() {
 					try{
-						FileReader reader = new FileReader(file);
+						// TODO let the implementation choose the encoding.
+						Reader reader = new InputStreamReader(new FileInputStream(file), Encoding.ISO_8859_1.name());
 
 						smProgressMax = (int) file.length();
 						((ProgressBar) findViewById(R.id.Progress)).setMax(smProgressMax);
@@ -422,7 +426,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	 * @param reader
 	 * @throws IOException
 	 */
-	public void doImport(FileReader reader) throws IOException,
+	public void doImport(Reader reader) throws IOException,
 				WrongFormatException {
 	
 	}
