@@ -56,6 +56,8 @@ public class MimeTypes {
 		
 		String mimetype = mMimeTypes.get(extension);
 		
+		if(mimetype==null) mimetype = "*/*";
+		
 		return mimetype;
 	}
 	
