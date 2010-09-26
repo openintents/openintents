@@ -25,8 +25,10 @@ import org.openintents.widget.OnColorChangedListener;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,14 +41,18 @@ public class ColorPickerActivity extends Activity
 	ColorSlider mValue;
 	
 	Intent mIntent;
+	
 
 	private static final int DIALOG_ABOUT = 1;
-	private static final int MENU_ABOUT = Menu.FIRST + 1;
+
+	private static final int MENU_ABOUT = Menu.FIRST;
+	private static final int MENU_RECENT_COLORS = MENU_ABOUT + 1;
+	
+	private static final int REQUEST_CODE_RECENT_COLOR = 1;
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
         setContentView(R.layout.colorpicker);
@@ -66,6 +72,11 @@ public class ColorPickerActivity extends Activity
         	color = mIntent.getIntExtra(ColorPickerIntents.EXTRA_COLOR, Color.BLACK);
         }
 
+        initializeColor(color);
+	}
+	
+	void initializeColor(int color) {
+
         mColorCircle = (ColorCircle) findViewById(R.id.colorcircle);
         mColorCircle.setOnColorChangedListener(this);
         mColorCircle.setColor(color);
@@ -78,6 +89,7 @@ public class ColorPickerActivity extends Activity
         mValue.setOnColorChangedListener(this);
         mValue.setColors(Color.WHITE, color);
 	}
+		
 	
 	
     class ColorPickerState {
@@ -121,6 +133,9 @@ public class ColorPickerActivity extends Activity
 		// We can return result
 		mIntent.putExtra(ColorPickerIntents.EXTRA_COLOR, newColor);
 
+	    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+		RecentColorsActivity.addRecentColor(settings, newColor);
+
 		setResult(RESULT_OK, mIntent);
 		finish();
 	}
@@ -133,8 +148,13 @@ public class ColorPickerActivity extends Activity
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 
+		menu.add(0, MENU_RECENT_COLORS, 0, R.string.recent_colors)
+		  .setTitleCondensed(getResources().getString(R.string.recent_colors_condensed))
+		  .setIcon(android.R.drawable.ic_menu_recent_history).setShortcut('0', 'r');
+
+		
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
-		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
+		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('1', 'a');
 
 		return true;
 	}
@@ -149,6 +169,9 @@ public class ColorPickerActivity extends Activity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		case MENU_RECENT_COLORS:
+			this.startActivityForResult(new Intent(this, RecentColorsActivity.class), REQUEST_CODE_RECENT_COLOR);
+			return true;
 		case MENU_ABOUT:
 			showAboutBox();
 			return true;
@@ -170,4 +193,24 @@ public class ColorPickerActivity extends Activity
 	private void showAboutBox() {
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
+	
+	
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		if (resultCode != RESULT_OK)
+			return;
+
+  	   	switch (requestCode) {
+		case REQUEST_CODE_RECENT_COLOR:
+		{
+			int color = data.getIntExtra(ColorPickerIntents.EXTRA_COLOR, Color.BLACK);
+			initializeColor(color);
+			break;
+		}
+   		default:
+	    	break;
+	   }
+    }
 }

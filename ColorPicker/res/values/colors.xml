@@ -2,4 +2,7 @@
 
 <resources>
     <color name="blue">#00F</color>
+    <color name="semi_transparent">#E000</color>
+    
+    <drawable name="background_semi_transparent">@color/semi_transparent</drawable>
 </resources>

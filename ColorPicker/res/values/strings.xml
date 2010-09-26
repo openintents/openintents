@@ -12,10 +12,18 @@
 	<string name="about_website_label">OI Color Picker at OpenIntents</string>
 	
 	<!-- ***************************
-	     Applicatio-specific strings
+	     Application-specific strings
 	     *************************** -->
     <string name="app_name">OI Color Picker</string>
     <string name="color_picker">Color picker</string>
+    
+    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors">Recent colors</string>
+    <string name="recent_colors_expanded">Recently chosen colors</string>
+    <string name="recent_colors_clear_history">Clear</string>
+    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    
+    
     
 	<!-- About -->
 	<string name="about">About</string>
