@@ -42,7 +42,7 @@
     <!--  <string name="filemanager_buttontext">Export finished</string>  -->
     
     <string name="file_exists">The file exists. Do you want to overwrite?</string>
-    <string name="dont_ask_again">Don't ask again. Always overwrite!</string>
+    <string name="dont_ask_again">"Don't ask again. Always overwrite!"</string>
     
     <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
     <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
