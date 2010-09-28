@@ -21,6 +21,10 @@ import android.os.Bundle;
 public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_NOTEPAD_FILENAME = "notepad_filename";
 	public static final String PREFS_NOTEPAD_FORMAT = "notepad_format";
+	public static final String PREFS_NOTEPAD_ENCODING = "notepad_encoding";
+	public static final String PREFS_NOTEPAD_USE_CUSTOM_ENCODING = "notepad_encoding";
+	public static final String PREFS_SHOPPINGLIST_ENCODING = "shopping_encoding";
+	public static final String PREFS_SHOPPINGLIST_USE_CUSTOM_ENCODING = "shoppinglist_use_custom_encoding";
 	public static final String PREFS_SHOPPINGLIST_FILENAME = "shoppinglist_filename";
 	public static final String PREFS_SHOPPINGLIST_FORMAT = "shoppinglist_format";
 	public static final String PREFS_ASK_IF_FILE_EXISTS = "ask_if_file_exists";

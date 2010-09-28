@@ -16,9 +16,9 @@
 
 package org.openintents.convertcsv.shoppinglist;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
@@ -26,6 +26,7 @@ import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 
 import android.os.Bundle;
+import android.util.Xml.Encoding;
 import android.widget.Toast;
 
 public class ConvertCsvActivity extends ConvertCsvBaseActivity {
@@ -39,6 +40,8 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 		DEFAULT_FILENAME = getString(R.string.default_shoppinglist_path);
 		PREFERENCE_FORMAT = PreferenceActivity.PREFS_SHOPPINGLIST_FORMAT;
 		DEFAULT_FORMAT = "outlook tasks";
+    	PREFERENCE_ENCODING = PreferenceActivity.PREFS_SHOPPINGLIST_ENCODING;
+    	PREFERENCE_USE_CUSTOM_ENCODING = PreferenceActivity.PREFS_SHOPPINGLIST_USE_CUSTOM_ENCODING;
 		RES_STRING_FILEMANAGER_TITLE = R.string.filemanager_title_shoppinglist;
 		RES_ARRAY_CSV_FILE_FORMAT = R.array.shoppinglist_format;
 		RES_ARRAY_CSV_FILE_FORMAT_VALUE = R.array.shoppinglist_format_value;
@@ -56,13 +59,23 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param reader
 	 * @throws IOException
 	 */
+	@Override
 	public void doImport(Reader reader) throws IOException,
 			WrongFormatException {
 		ImportCsv ic = new ImportCsv(this);
 		if (0 == mSpinner.getSelectedItemId()) {
 			ic.importCsv(reader);
-		} else if (1 == mSpinner.getSelectedItemId()) {			
+		} else if (1 == mSpinner.getSelectedItemId()) {
 			ic.importHandyShopperCsv(reader);
+		}
+	}
+
+	@Override
+	protected Encoding getDefaultEncoding() {
+		if (1 == mSpinner.getSelectedItemId()){
+			 return Encoding.ISO_8859_1;
+		} else {
+			return super.getDefaultEncoding();
 		}
 	}
 
@@ -70,12 +83,15 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param writer
 	 * @throws IOException
 	 */
-	public void doExport(FileWriter writer) throws IOException {
-		ExportCsv ec = new ExportCsv(this);		
-		if (DEFAULT_FORMAT.equals(mSpinner.getSelectedItem())) {
+	@Override
+	public void doExport(Writer writer) throws IOException {
+		ExportCsv ec = new ExportCsv(this);
+		String format = getFormat();
+		if (DEFAULT_FORMAT.equals(format)) {
 			ec.exportCsv(writer);
-		} else if (HANDYSHOPPER_FORMAT.equals(mSpinner.getSelectedItem())) {
-			Toast.makeText(this, R.string.error_not_yet_implemented, Toast.LENGTH_LONG).show();
+		} else if (HANDYSHOPPER_FORMAT.equals(format)) {
+			Toast.makeText(this, R.string.error_not_yet_implemented,
+					Toast.LENGTH_LONG).show();
 		}
 	}
 

@@ -16,9 +16,9 @@
 
 package org.openintents.convertcsv.notepad;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
@@ -35,7 +35,9 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     	PREFERENCE_FILENAME = PreferenceActivity.PREFS_NOTEPAD_FILENAME;
     	DEFAULT_FILENAME = getString(R.string.default_notepad_path);
     	PREFERENCE_FORMAT = PreferenceActivity.PREFS_NOTEPAD_FORMAT;
-    	DEFAULT_FORMAT = "palm";
+    	DEFAULT_FORMAT = ImportCsv.FORMAT_PALM_CSV;
+    	PREFERENCE_ENCODING = PreferenceActivity.PREFS_NOTEPAD_ENCODING;
+    	PREFERENCE_USE_CUSTOM_ENCODING = PreferenceActivity.PREFS_NOTEPAD_USE_CUSTOM_ENCODING;
     	RES_STRING_FILEMANAGER_TITLE = R.string.filemanager_title_notepad;
     	RES_ARRAY_CSV_FILE_FORMAT = R.array.notepad_format;
     	RES_ARRAY_CSV_FILE_FORMAT_VALUE = R.array.notepad_format_value;
@@ -58,7 +60,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param reader
 	 * @throws IOException
 	 */
-	public void doImport(FileReader reader) throws IOException,
+	public void doImport(Reader reader) throws IOException,
 				WrongFormatException {
 		ImportCsv ic = new ImportCsv(this);
 		ic.importCsv(reader, getFormat(), getValidatedImportPolicy());
@@ -68,7 +70,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	 * @param writer
 	 * @throws IOException
 	 */
-	public void doExport(FileWriter writer) throws IOException {
+	public void doExport(Writer writer) throws IOException {
 		ExportCsv ec = new ExportCsv(this);
 		ec.exportCsv(writer, getFormat());
 	}

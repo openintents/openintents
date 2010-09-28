@@ -94,6 +94,19 @@
         android:prompt="@string/select_csv_file_format"
 	    android:layout_marginBottom="10dip"
     />
+    <CheckBox android:id="@+id/custom_encoding"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/use_custom_encoding"
+    />
+    <Spinner android:id="@+id/spinner_encoding"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:layout_marginLeft="20dip"
+	    android:prompt="@string/select_encoding"
+	    android:layout_marginBottom="10dip"
+    />
     
 	<TextView
 		android:layout_width="wrap_content"

@@ -19,11 +19,14 @@ package org.openintents.convertcsv.common;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.Writer;
 import java.nio.charset.Charset;
 
 import org.openintents.convertcsv.PreferenceActivity;
@@ -54,11 +57,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class ConvertCsvBaseActivity extends Activity {
 	
@@ -81,6 +86,9 @@ public class ConvertCsvBaseActivity extends Activity {
 	protected String DEFAULT_FILENAME;
 	protected String PREFERENCE_FORMAT;
 	protected String DEFAULT_FORMAT = null;
+	protected String PREFERENCE_ENCODING;
+	protected String PREFERENCE_USE_CUSTOM_ENCODING;
+	
 	protected int RES_STRING_FILEMANAGER_TITLE = 0;
 	protected int RES_STRING_FILEMANAGER_BUTTON_TEXT = 0;
 	protected int RES_ARRAY_CSV_FILE_FORMAT = 0;
@@ -110,6 +118,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	static final public int MESSAGE_SUCCESS = 2;		// Operation finished.
 	static final public int MESSAGE_ERROR = 3;			// An error occured, arg1 = string ID of error
 	static final public int MESSAGE_SET_MAX_PROGRESS = 4;	// Set maximum progress int, arg1 = new max value
+
 	
 	// Message handler that receives status messages from the
 	// CSV import/export thread.
@@ -135,6 +144,20 @@ public class ConvertCsvBaseActivity extends Activity {
 			}			
 		}
 	};
+
+	private Spinner mSpinnerEncoding;
+
+	private CheckBox mCustomEncoding;
+
+	private OnCheckedChangeListener mCustomEncodingListener = new OnCheckedChangeListener() {
+		
+		@Override
+		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {		
+			mSpinnerEncoding.setEnabled(isChecked);
+		}
+	};
+
+
 	
 
 	/** Called when the activity is first created. */
@@ -197,10 +220,33 @@ public class ConvertCsvBaseActivity extends Activity {
                 this, RES_ARRAY_CSV_FILE_FORMAT, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinner.setAdapter(adapter);
-        
+                
         mFormatValues = getResources().getStringArray(RES_ARRAY_CSV_FILE_FORMAT_VALUE);
         
         setSpinner(pm.getString(PREFERENCE_FORMAT, DEFAULT_FORMAT));
+        
+        // set encoding spinner
+        mSpinnerEncoding = (Spinner) findViewById(R.id.spinner_encoding);
+        EncodingAdapter adapterEncoding = new EncodingAdapter(this, android.R.layout.simple_spinner_item);
+        adapterEncoding.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpinnerEncoding.setAdapter(adapterEncoding);
+        
+        String encodingString = pm.getString(PREFERENCE_ENCODING, getDefaultEncoding().name());
+        Encoding encoding;
+		try {
+        	encoding = Encoding.valueOf(encodingString);           
+		} catch (IllegalArgumentException e) {
+			encoding = Encoding.UTF_8;
+		}
+        int encodingPosition = adapterEncoding.getPosition(encoding);
+        if (encodingPosition != Spinner.INVALID_POSITION){
+        	mSpinnerEncoding.setSelection(encodingPosition);
+        }
+     
+        // set encoding checkbox
+        mCustomEncoding = (CheckBox)findViewById(R.id.custom_encoding);
+        mCustomEncoding.setOnCheckedChangeListener(mCustomEncodingListener);
+        mCustomEncoding.setChecked(pm.getBoolean(PREFERENCE_USE_CUSTOM_ENCODING, false));
         
         Intent intent = getIntent();
         String type = intent.getType();
@@ -342,9 +388,15 @@ public class ConvertCsvBaseActivity extends Activity {
 			
 			new Thread() {
 				public void run() {
-					try{
-						// TODO let the implementation choose the encoding.
-						Reader reader = new InputStreamReader(new FileInputStream(file), Encoding.ISO_8859_1.name());
+					try{						
+						Reader reader;
+						
+						Encoding enc = getCurrentEncoding(); 
+						if (enc == null){
+							reader = new InputStreamReader(new FileInputStream(file));
+						} else {
+							reader = new InputStreamReader(new FileInputStream(file), enc.name());
+						}
 
 						smProgressMax = (int) file.length();
 						((ProgressBar) findViewById(R.id.Progress)).setMax(smProgressMax);
@@ -372,7 +424,19 @@ public class ConvertCsvBaseActivity extends Activity {
 		}
     }
     
-    void displayMessage(int message, boolean success) {
+    protected Encoding getCurrentEncoding() {
+    	if (mCustomEncoding.isChecked()){	
+    		return (Encoding)mSpinnerEncoding.getSelectedItem();    		
+    	} else {
+    		return getDefaultEncoding();
+    	}
+	}
+
+	protected Encoding getDefaultEncoding() {
+		return Encoding.UTF_8;
+	}
+
+	void displayMessage(int message, boolean success) {
     	// Just make a toast instead?
 		//Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 		//finish();
@@ -463,7 +527,14 @@ public class ConvertCsvBaseActivity extends Activity {
 		new Thread() {
 			public void run() {
 				try{
-					FileWriter writer = new FileWriter(file);
+					Writer writer;
+					Encoding enc = (Encoding)mSpinnerEncoding.getSelectedItem();
+					if (enc == null){
+						writer = new OutputStreamWriter(new FileOutputStream(file));
+					} else {
+						writer = new OutputStreamWriter(new FileOutputStream(file), enc.name());
+					}
+
 
 					doExport(writer);
 					
@@ -485,7 +556,7 @@ public class ConvertCsvBaseActivity extends Activity {
 	 * @param writer
 	 * @throws IOException
 	 */
-	public void doExport(FileWriter writer) throws IOException {
+	public void doExport(Writer writer) throws IOException {
 	
 	}
 	
@@ -501,6 +572,10 @@ public class ConvertCsvBaseActivity extends Activity {
 		Editor editor = prefs.edit();
 		editor.putString(PREFERENCE_FILENAME, fileName);
 		editor.putString(PREFERENCE_FORMAT, getFormat());
+		if (mCustomEncoding.isChecked()){
+			editor.putString(PREFERENCE_ENCODING, ((Encoding)mSpinnerEncoding.getSelectedItem()).name());
+		}
+		editor.putBoolean(PREFERENCE_USE_CUSTOM_ENCODING, mCustomEncoding.isChecked());
 		editor.commit();
 
 		return fileName;
