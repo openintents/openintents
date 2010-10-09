@@ -17,6 +17,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.colorpicker" android:versionName="1.1.0" android:versionCode="3">
 	<!-- History:
+	1.1.0       [3]: 2010-10-10
 	1.0.0       [2]: 2010-07-22 
 	1.0.0-rc1   [1]: 2010-06-27 -->
 	
