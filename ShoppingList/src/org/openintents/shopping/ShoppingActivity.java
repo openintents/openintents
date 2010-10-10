@@ -35,6 +35,8 @@ import org.openintents.provider.Shopping.ContainsFull;
 import org.openintents.provider.Shopping.Items;
 import org.openintents.provider.Shopping.Lists;
 import org.openintents.provider.Shopping.Status;
+import org.openintents.shopping.ShoppingListView.DragListener;
+import org.openintents.shopping.ShoppingListView.DropListener;
 import org.openintents.shopping.ShoppingListView.OnCustomClickListener;
 import org.openintents.shopping.dialog.DialogActionListener;
 import org.openintents.shopping.dialog.EditItemDialog;
@@ -126,15 +128,22 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	private static final int MENU_MARK_ITEM = Menu.FIRST + 7;
 	private static final int MENU_EDIT_ITEM = Menu.FIRST + 8; // includes rename
 	private static final int MENU_DELETE_ITEM = Menu.FIRST + 9;
-	
-	private static final int MENU_INSERT_FROM_EXTRAS = Menu.FIRST + 10; //insert from string array in intent extras
+
+	private static final int MENU_INSERT_FROM_EXTRAS = Menu.FIRST + 10; // insert
+																		// from
+																		// string
+																		// array
+																		// in
+																		// intent
+																		// extras
 
 	private static final int MENU_ABOUT = Menu.FIRST + 11;
 
 	// TODO: Implement the following menu items
-	//private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes
+	// private static final int MENU_EDIT_LIST = Menu.FIRST + 12; // includes
 	// rename
-	//private static final int MENU_SORT = Menu.FIRST + 13; // sort alphabetically
+	// private static final int MENU_SORT = Menu.FIRST + 13; // sort
+	// alphabetically
 	// or modified
 	private static final int MENU_PICK_ITEMS = Menu.FIRST + 14; // pick from
 	// previously
@@ -142,23 +151,25 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 	// TODO: Implement "select list" action
 	// that can be called by other programs.
-	//private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
+	// private static final int MENU_SELECT_LIST = Menu.FIRST + 15; // select a
 	// shopping list
 	private static final int MENU_UPDATE = Menu.FIRST + 16;
 	private static final int MENU_PREFERENCES = Menu.FIRST + 17;
 	private static final int MENU_SEND = Menu.FIRST + 18;
 	private static final int MENU_REMOVE_ITEM_FROM_LIST = Menu.FIRST + 19;
-
+	private static final int MENU_MOVE_ITEM = Menu.FIRST + 20;
+	
 	private static final int DIALOG_ABOUT = 1;
-	//private static final int DIALOG_TEXT_ENTRY = 2;
+	// private static final int DIALOG_TEXT_ENTRY = 2;
 	private static final int DIALOG_NEW_LIST = 2;
 	private static final int DIALOG_RENAME_LIST = 3;
 	private static final int DIALOG_EDIT_ITEM = 4;
 	private static final int DIALOG_DELETE_ITEM = 5;
 	private static final int DIALOG_THEME = 6;
-	
+
 	private static final int REQUEST_CODE_CATEGORY_ALTERNATIVE = 1;
-	
+	private static final int REQUEST_PICK_LIST = 2;
+
 	/**
 	 * The main activity.
 	 * 
@@ -236,28 +247,28 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraItems;
-	
+
 	/**
 	 * The quantities for items to add to the shopping list.
 	 * 
 	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraQuantities;
-	
+
 	/**
 	 * The prices for items to add to the shopping list.
 	 * 
 	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraPrices;
-	
+
 	/**
 	 * The barcodes for items to add to the shopping list.
 	 * 
 	 * Received as a string array list in the intent extras.
 	 */
 	private List<String> mExtraBarcodes;
-	
+
 	/**
 	 * The list URI received together with intent extras.
 	 */
@@ -279,7 +290,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	private static final int mStringListFilterSKINBACKGROUND = 5;
 
 	private ShoppingListView mListItemsView;
-	//private Cursor mCursorItems;
+	// private Cursor mCursorItems;
 
 	static final String[] mStringItems = new String[] { ContainsFull._ID,
 			ContainsFull.ITEM_NAME, ContainsFull.ITEM_IMAGE,
@@ -308,51 +319,60 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	// State data to be stored when freezing:
 	private final String ORIGINAL_ITEM = "original item";
 
-	//private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
-	//private static final String BUNDLE_CURSOR_ITEMS_POSITION = "cursor items position";
+	// private static final String BUNDLE_TEXT_ENTRY_MENU = "text entry menu";
+	// private static final String BUNDLE_CURSOR_ITEMS_POSITION =
+	// "cursor items position";
 	private static final String BUNDLE_ITEM_URI = "item uri";
 	private static final String BUNDLE_RELATION_URI = "relation_uri";
 	
+	private static final String BUNDLE_POSITION = "position";
+	
+
 	// Skins --------------------------
 
 	// GTalk --------------------------
 	private GTalkSender mGTalkSender;
 
-	//private int mTextEntryMenu;
-	/* NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for items in list */
+	// private int mTextEntryMenu;
+	/*
+	 * NOTE: mItemsCursor is used for autocomplete Textview, mCursorItems is for
+	 * items in list
+	 */
 	private Cursor mItemsCursor;
-	
+
 	/**
 	 * Remember position for screen orientation change.
 	 */
-	//int mEditItemPosition = -1;
+	// int mEditItemPosition = -1;
 
-	//public int mPriceVisibility;
-	//private int mTagsVisibility;
+	// public int mPriceVisibility;
+	// private int mTagsVisibility;
 	private SensorManager mSensorManager;
 	private SensorListener mMySensorListener = new ShakeSensorListener() {
 
 		@Override
 		public void onShake() {
 			// Provide some visual feedback.
-	        Animation shake = AnimationUtils.loadAnimation(ShoppingActivity.this, R.anim.shake);
-	        findViewById(R.id.background).startAnimation(shake);
+			Animation shake = AnimationUtils.loadAnimation(
+					ShoppingActivity.this, R.anim.shake);
+			findViewById(R.id.background).startAnimation(shake);
 
 			cleanupList();
 		}
 
 	};
-	
+
 	/**
 	 * isActive is true only after onResume() and before onPause().
 	 */
 	private boolean mIsActive = false;
-	
-	/** 
+
+	/**
 	 * Whether to use the sensor for shake.
 	 */
 	private boolean mUseSensor = false;
 	private Uri mRelationUri;
+	private int mMoveItemPosition;
 
 	/**
 	 * Called when the activity is first created.
@@ -360,15 +380,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		if (debug) Log.d(TAG, "Shopping list onCreate()");
+		if (debug)
+			Log.d(TAG, "Shopping list onCreate()");
 
 		if (!EulaActivity.checkEula(this)) {
 			return;
 		}
-		setContentView(R.layout.shopping);		
+		setContentView(R.layout.shopping);
 
-		//mEditItemPosition = -1;
-		
+		// mEditItemPosition = -1;
+
 		// Initialize GTalkSender (but don't bind yet!)
 		mGTalkSender = new GTalkSender(this);
 
@@ -408,19 +429,19 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
-				mListUri = ShoppingUtils.getListForItem(this,intent.getData()
+				mListUri = ShoppingUtils.getListForItem(this, intent.getData()
 						.getLastPathSegment());
 			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
 			}
 		} else if (Intent.ACTION_INSERT.equals(action)) {
-			//TODO: insert items from extras ????
+			// TODO: insert items from extras ????
 			mState = STATE_VIEW_LIST;
 
 			if (Shopping.ITEM_TYPE.equals(type)) {
 				mListUri = ShoppingUtils.getListForItem(
-					getApplicationContext(),
-					intent.getData().getLastPathSegment());
+						getApplicationContext(), intent.getData()
+								.getLastPathSegment());
 			} else if (intent.getData() != null) {
 				mListUri = intent.getData();
 			}
@@ -437,17 +458,21 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 					+ defaultShoppingList);
 		} else if (GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(action)) {
 			if (ShoppingListIntents.TYPE_STRING_ARRAYLIST_SHOPPING.equals(type)) {
-				/* Need to insert new items from a string array in the intent extras
-				 * Use main action but add an item to the options menu for adding extra items
+				/*
+				 * Need to insert new items from a string array in the intent
+				 * extras Use main action but add an item to the options menu
+				 * for adding extra items
 				 */
 				getShoppingExtras(intent);
 				mState = STATE_MAIN;
 				mListUri = Uri.withAppendedPath(Shopping.Lists.CONTENT_URI, ""
 						+ defaultShoppingList);
 				intent.setData(mListUri);
-			} else if (intent.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString())) {
-				// Somewhat quick fix to pass data from ShoppingListsActivity to this activity.
-				
+			} else if (intent.getDataString().startsWith(
+					Shopping.Lists.CONTENT_URI.toString())) {
+				// Somewhat quick fix to pass data from ShoppingListsActivity to
+				// this activity.
+
 				// We received a valid shopping list URI:
 				mListUri = intent.getData();
 
@@ -487,8 +512,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			if (prevText != null) {
 				mEditText.setTextKeepState(prevText);
 			}
-			//mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
-			//mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
+			// mTextEntryMenu = icicle.getInt(BUNDLE_TEXT_ENTRY_MENU);
+			// mEditItemPosition = icicle.getInt(BUNDLE_CURSOR_ITEMS_POSITION);
 			mItemUri = Uri.parse(icicle.getString(BUNDLE_ITEM_URI));
 			if (icicle.containsKey(BUNDLE_RELATION_URI)) {
 				mRelationUri = Uri.parse(icicle.getString(BUNDLE_RELATION_URI));
@@ -498,6 +523,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		// set focus to the edit line:
 		mEditText.requestFocus();
 
+		
 		// TODO remove initFromPreferences from onCreate
 		// we need it in resume to update after settings have changed
 		initFromPreferences();
@@ -510,7 +536,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		SharedPreferences sp = getSharedPreferences(
 				"org.openintents.shopping_preferences", MODE_PRIVATE);
 		final boolean loadLastUsed = sp.getBoolean(
-				PreferenceActivity.PREFS_LOADLASTUSED, PreferenceActivity.PREFS_LOADLASTUSED_DEFAULT);
+				PreferenceActivity.PREFS_LOADLASTUSED,
+				PreferenceActivity.PREFS_LOADLASTUSED_DEFAULT);
 
 		Log.e(TAG, "load last used ?" + loadLastUsed);
 		int defaultShoppingList = 1;
@@ -522,29 +549,30 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		}
 
 		if (mListItemsView != null) {
-			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE, 
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_PRICE,
 					PreferenceActivity.PREFS_SHOW_PRICE_DEFAULT)) {
 				mListItemsView.mPriceVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mPriceVisibility = View.GONE;
 			}
-		
-			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS, 
+
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_TAGS,
 					PreferenceActivity.PREFS_SHOW_TAGS_DEFAULT)) {
 				mListItemsView.mTagsVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mTagsVisibility = View.GONE;
 			}
-			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_QUANTITY, 
+			if (sp.getBoolean(PreferenceActivity.PREFS_SHOW_QUANTITY,
 					PreferenceActivity.PREFS_SHOW_QUANTITY_DEFAULT)) {
 				mListItemsView.mQuantityVisibility = View.VISIBLE;
 			} else {
 				mListItemsView.mQuantityVisibility = View.GONE;
 			}
 		}
-		
-		mUseSensor = sp.getBoolean(PreferenceActivity.PREFS_SHAKE, PreferenceActivity.PREFS_SHAKE_DEFAULT);
-		
+
+		mUseSensor = sp.getBoolean(PreferenceActivity.PREFS_SHAKE,
+				PreferenceActivity.PREFS_SHAKE_DEFAULT);
+
 		return defaultShoppingList;
 	}
 
@@ -553,7 +581,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			// Don't use sensors
 			return;
 		}
-		
+
 		if (mMode == MODE_IN_SHOP) {
 			if (mSensorManager == null) {
 				mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -574,10 +602,12 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 	@Override
 	protected void onResume() {
-		if (debug) Log.i(TAG, "Shopping list onResume() 1");
+		if (debug)
+			Log.i(TAG, "Shopping list onResume() 1");
 		super.onResume();
-		if (debug) Log.i(TAG, "Shopping list onResume() 2");
-		
+		if (debug)
+			Log.i(TAG, "Shopping list onResume() 2");
+
 		mIsActive = true;
 
 		// Modify our overall title depending on the mode we are running in.
@@ -592,6 +622,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		mListItemsView.setListTheme(loadListTheme());
 		mListItemsView.onResume();
+
 		
 		mEditText
 				.setKeyListener(PreferenceActivity
@@ -614,16 +645,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		 * intentfilter = new IntentFilter(OpenIntents.REFRESH_ACTION);
 		 * registerReceiver(mIntentReceiver, intentfilter);
 		 */
-		
+
 		// Reload preferences, in case something changed
 		initFromPreferences();
-		
-		// Items received through intents are added in 
+
+		// Items received through intents are added in
 		// fillItems().
-		
+
 		registerSensor();
-		
-		if (debug) Log.i(TAG, "Shopping list onResume() finished");
+
+		if (debug)
+			Log.i(TAG, "Shopping list onResume() finished");
 	}
 
 	/*
@@ -635,10 +667,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		if (debug) Log.i(TAG, "Shopping list onPause()");
-		if (debug) Log.i(TAG, "Spinner: onPause: " + mIsActive);
+		if (debug)
+			Log.i(TAG, "Shopping list onPause()");
+		if (debug)
+			Log.i(TAG, "Spinner: onPause: " + mIsActive);
 		mIsActive = false;
-		if (debug) Log.i(TAG, "Spinner: onPause: " + mIsActive);
+		if (debug)
+			Log.i(TAG, "Spinner: onPause: " + mIsActive);
 
 		unregisterSensor();
 
@@ -657,13 +692,14 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		 * mGTalkSender.unbindGTalkService(); }
 		 */
 
-		mListItemsView.onPause();			
+		mListItemsView.onPause();
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		if (debug) Log.i(TAG, "Shopping list onSaveInstanceState()");
+		if (debug)
+			Log.i(TAG, "Shopping list onSaveInstanceState()");
 
 		// Save original text from edit box
 		String s = mEditText.getText().toString();
@@ -673,11 +709,15 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		if (mRelationUri != null) {
 			outState.putString(BUNDLE_RELATION_URI, mRelationUri.toString());
 		}
-		
+
 		mUpdating = false;
-		
-		// after items have been added through an "insert from extras" the action name should be different to avoid duplicate inserts e.g. on rotation. 
-		if (mExtraItems == null && GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent().getAction())){
+
+		// after items have been added through an "insert from extras" the
+		// action name should be different to avoid duplicate inserts e.g. on
+		// rotation.
+		if (mExtraItems == null
+				&& GeneralIntents.ACTION_INSERT_FROM_EXTRAS.equals(getIntent()
+						.getAction())) {
 			setIntent(getIntent().setAction(Intent.ACTION_VIEW));
 		}
 	}
@@ -687,13 +727,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	 */
 	private void createView() {
 
-		
 		mSpinnerListFilter = (Spinner) findViewById(R.id.spinner_listfilter);
 		mSpinnerListFilter
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 					public void onItemSelected(AdapterView parent, View v,
 							int position, long id) {
-						if (debug) Log.d(TAG, "Spinner: onItemSelected");
+						if (debug)
+							Log.d(TAG, "Spinner: onItemSelected");
 						fillItems();
 						// Now set the theme based on the selected list:
 						mListItemsView.setListTheme(loadListTheme());
@@ -702,7 +742,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 					}
 
 					public void onNothingSelected(AdapterView arg0) {
-						if (debug) Log.d(TAG, "Spinner: onNothingSelected: " + mIsActive);
+						if (debug)
+							Log.d(TAG, "Spinner: onNothingSelected: "
+									+ mIsActive);
 						if (mIsActive) {
 							fillItems();
 						}
@@ -711,12 +753,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		mEditText = (AutoCompleteTextView) findViewById(R.id.autocomplete_add_item);
 		if (mItemsCursor != null) {
-			if (debug) Log.d(TAG, "mItemsCursor managedQuery 1");
+			if (debug)
+				Log.d(TAG, "mItemsCursor managedQuery 1");
 			stopManagingCursor(mItemsCursor);
 			mItemsCursor.close();
 			mItemsCursor = null;
 		}
-		mItemsCursor= managedQuery(Items.CONTENT_URI, new String[] {
+		mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
 				Items._ID, Items.NAME }, null, null, "name desc");
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
 				android.R.layout.simple_dropdown_item_1line, mItemsCursor,
@@ -725,21 +768,22 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		adapter.setFilterQueryProvider(new FilterQueryProvider() {
 			public Cursor runQuery(CharSequence constraint) {
 				if (mItemsCursor != null) {
-					if (debug) Log.d(TAG, "mItemsCursor managedQuery 2");
+					if (debug)
+						Log.d(TAG, "mItemsCursor managedQuery 2");
 					stopManagingCursor(mItemsCursor);
-					
+
 					// For some reason, closing the cursor seems to post
 					// an invalidation on the background thread and a crash...
 					// so we keep it open.
-					//mItemsCursor.close();
-					//mItemsCursor = null;
+					// mItemsCursor.close();
+					// mItemsCursor = null;
 				}
 				mItemsCursor = managedQuery(Items.CONTENT_URI, new String[] {
-						Items._ID, Items.NAME }, 
-						"upper(name) like ?",
-						new String[] {"%" + (constraint == null ? "" : constraint.toString()
-								.toUpperCase()) + "%"}
-						, "name desc");
+						Items._ID, Items.NAME }, "upper(name) like ?",
+						new String[] { "%"
+								+ (constraint == null ? "" : constraint
+										.toString().toUpperCase()) + "%" },
+						"name desc");
 				return mItemsCursor;
 			}
 
@@ -756,22 +800,27 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 				// Shortcut: Instead of pressing the button,
 				// one can also press the "Enter" key.
-				if (debug) Log.i(TAG, "Key action: " + key.getAction());
-				if (debug) Log.i(TAG, "Key code: " + keyCode);
-				if (keyCode == KeyEvent.KEYCODE_ENTER){
-					
-					if (mEditText.isPopupShowing()){
+				if (debug)
+					Log.i(TAG, "Key action: " + key.getAction());
+				if (debug)
+					Log.i(TAG, "Key code: " + keyCode);
+				if (keyCode == KeyEvent.KEYCODE_ENTER) {
+
+					if (mEditText.isPopupShowing()) {
 						mEditText.performCompletion();
 					}
-						
-					// long key press might cause call of duplicate onKey events with ACTION_DOWN
-					// this would result in inserting an item and showing the pick list
-					
-					if (key.getAction() == KeyEvent.ACTION_DOWN && mLastKeyAction == KeyEvent.ACTION_UP){														
-					  insertNewItem();
+
+					// long key press might cause call of duplicate onKey events
+					// with ACTION_DOWN
+					// this would result in inserting an item and showing the
+					// pick list
+
+					if (key.getAction() == KeyEvent.ACTION_DOWN
+							&& mLastKeyAction == KeyEvent.ACTION_UP) {
+						insertNewItem();
 					}
-					
-					mLastKeyAction  = key.getAction();
+
+					mLastKeyAction = key.getAction();
 					return true;
 				}
 				;
@@ -793,15 +842,31 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		mListItemsView = (ShoppingListView) findViewById(R.id.list_items);
 		mListItemsView.setThemedBackground(findViewById(R.id.background));
 		mListItemsView.setCustomClickListener(this);
-		
+
 		mListItemsView.setItemsCanFocus(true);
-		
+		mListItemsView.setDragListener(new DragListener() {
+			
+			@Override
+			public void drag(int from, int to) {
+				Log.v("DRAG", ""+ from + "/"+ to );
+				
+			}
+		});
+		mListItemsView.setDropListener(new DropListener() {
+			
+			@Override
+			public void drop(int from, int to) {
+				Log.v("DRAG", ""+ from + "/"+ to );
+				
+			}
+		});
+
 		TextView tv = (TextView) findViewById(R.id.total_1);
 		mListItemsView.setTotalCheckedTextView(tv);
-		
+
 		tv = (TextView) findViewById(R.id.total_2);
 		mListItemsView.setTotalTextView(tv);
-		
+
 		mListItemsView.setOnItemClickListener(new OnItemClickListener() {
 
 			public void onItemClick(AdapterView parent, View v, int pos, long id) {
@@ -810,7 +875,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 				// DO NOT CLOSE THIS CURSOR - IT IS A MANAGED ONE.
 				// ---- c.close();
 			}
-
 
 		});
 
@@ -829,6 +893,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 						contextmenu.add(0, MENU_DELETE_ITEM, 0,
 								R.string.menu_delete_item)
 								.setShortcut('4', 'd');
+						contextmenu.add(0, MENU_MOVE_ITEM, 0,
+								R.string.menu_move_item)
+								.setShortcut('5', 's');
 					}
 
 				});
@@ -850,7 +917,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			}
 		}
 	}
-	
+
 	/**
 	 * Inserts new item from edit box into currently selected shopping list.
 	 */
@@ -878,19 +945,25 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	 * Obtain items from extras.
 	 */
 	private void getShoppingExtras(final Intent intent) {
-		mExtraItems = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
-		mExtraQuantities = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
-		mExtraPrices = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
-		mExtraBarcodes = intent.getExtras().getStringArrayList(ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
+		mExtraItems = intent.getExtras().getStringArrayList(
+				ShoppingListIntents.EXTRA_STRING_ARRAYLIST_SHOPPING);
+		mExtraQuantities = intent.getExtras().getStringArrayList(
+				ShoppingListIntents.EXTRA_STRING_ARRAYLIST_QUANTITY);
+		mExtraPrices = intent.getExtras().getStringArrayList(
+				ShoppingListIntents.EXTRA_STRING_ARRAYLIST_PRICE);
+		mExtraBarcodes = intent.getExtras().getStringArrayList(
+				ShoppingListIntents.EXTRA_STRING_ARRAYLIST_BARCODE);
 
 		mExtraListUri = null;
 		if ((intent.getDataString() != null)
-				&& (intent.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString()))) {
+				&& (intent.getDataString()
+						.startsWith(Shopping.Lists.CONTENT_URI.toString()))) {
 			// We received a valid shopping list URI.
-			
+
 			// Set current list to received list:
 			mExtraListUri = intent.getData();
-			if (debug) Log.d(TAG, "Received extras for " + mExtraListUri.toString());
+			if (debug)
+				Log.d(TAG, "Received extras for " + mExtraListUri.toString());
 		}
 	}
 
@@ -901,35 +974,47 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		if (mExtraItems != null) {
 			// Make sure we are in the correct list:
 			if (mExtraListUri != null) {
-				long listId = Long.parseLong(mExtraListUri.getLastPathSegment());
-				if (debug) Log.d(TAG, "insert items into list " + listId);
+				long listId = Long
+						.parseLong(mExtraListUri.getLastPathSegment());
+				if (debug)
+					Log.d(TAG, "insert items into list " + listId);
 				if (listId != getSelectedListId()) {
-					if (debug) Log.d(TAG, "set new list: " + listId);
+					if (debug)
+						Log.d(TAG, "set new list: " + listId);
 					setSelectedListId((int) listId);
 					mListItemsView.fillItems(this, listId);
 				}
 			}
-			
+
 			int max = mExtraItems.size();
-			int maxQuantity = (mExtraQuantities != null) ? mExtraQuantities.size() : -1;
+			int maxQuantity = (mExtraQuantities != null) ? mExtraQuantities
+					.size() : -1;
 			int maxPrice = (mExtraPrices != null) ? mExtraPrices.size() : -1;
-			int maxBarcode = (mExtraBarcodes != null) ? mExtraBarcodes.size() : -1;
+			int maxBarcode = (mExtraBarcodes != null) ? mExtraBarcodes.size()
+					: -1;
 			for (int i = 0; i < max; i++) {
 				String item = mExtraItems.get(i);
-				String quantity = (i < maxQuantity) ? mExtraQuantities.get(i) : null;
+				String quantity = (i < maxQuantity) ? mExtraQuantities.get(i)
+						: null;
 				String price = (i < maxPrice) ? mExtraPrices.get(i) : null;
-				String barcode = (i < maxBarcode) ? mExtraBarcodes.get(i) : null;
-				if (debug) Log.d(TAG, "Add item: " + item + ", quantity: " + quantity + ", price: " + price + ", barcode: " + barcode);
-				mListItemsView.insertNewItem(this, item, quantity, price, barcode);
+				String barcode = (i < maxBarcode) ? mExtraBarcodes.get(i)
+						: null;
+				if (debug)
+					Log.d(TAG, "Add item: " + item + ", quantity: " + quantity
+							+ ", price: " + price + ", barcode: " + barcode);
+				mListItemsView.insertNewItem(this, item, quantity, price,
+						barcode);
 			}
-			//delete the string array list of extra items so it can't be inserted twice
+			// delete the string array list of extra items so it can't be
+			// inserted twice
 			mExtraItems = null;
 			mExtraQuantities = null;
 			mExtraPrices = null;
 			mExtraBarcodes = null;
 			mExtraListUri = null;
 		} else {
-			Toast.makeText(this, R.string.no_items_available, Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.no_items_available,
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -952,13 +1037,14 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		
-		//Add menu option for auto adding items from string array in intent extra if they exist
+
+		// Add menu option for auto adding items from string array in intent
+		// extra if they exist
 		if (mExtraItems != null) {
-			menu.add(0, MENU_INSERT_FROM_EXTRAS, 0, R.string.menu_auto_add).setIcon(
-					android.R.drawable.ic_menu_upload);
+			menu.add(0, MENU_INSERT_FROM_EXTRAS, 0, R.string.menu_auto_add)
+					.setIcon(android.R.drawable.ic_menu_upload);
 		}
-		
+
 		// Standard menu
 		menu.add(0, MENU_NEW_LIST, 0, R.string.new_list).setIcon(
 				R.drawable.ic_menu_add_list).setShortcut('0', 'n');
@@ -983,7 +1069,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		menu.add(0, MENU_RENAME_LIST, 0, R.string.rename_list).setIcon(
 				android.R.drawable.ic_menu_edit).setShortcut('5', 'r');
-		
+
 		menu.add(0, MENU_DELETE_LIST, 0, R.string.delete_list).setIcon(
 				android.R.drawable.ic_menu_delete).setShortcut('6', 'd');
 
@@ -1037,8 +1123,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		boolean pick_location_possible = (resolve_pick_location.size() > 0);
 		boolean view_alerts_possible = (resolve_view_alerts.size() > 0);
-		if (debug) Log.d(TAG, "Pick location possible: " + pick_location_possible);
-		if (debug) Log.d(TAG, "View alerts possible: " + view_alerts_possible);
+		if (debug)
+			Log.d(TAG, "Pick location possible: " + pick_location_possible);
+		if (debug)
+			Log.d(TAG, "View alerts possible: " + view_alerts_possible);
 		if (pick_location_possible && view_alerts_possible) {
 			return true;
 		}
@@ -1053,22 +1141,24 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		// TODO: Add item-specific menu items (see NotesList.java example)
 		// like edit, strike-through, delete.
 
-		//Add menu option for auto adding items from string array in intent extra if they exist
+		// Add menu option for auto adding items from string array in intent
+		// extra if they exist
 		if (mExtraItems == null) {
 			menu.removeItem(MENU_INSERT_FROM_EXTRAS);
 		}
-		
+
 		// Selected list:
 		long listId = getSelectedListId();
 
 		// set menu title for change mode
 		MenuItem menuItem = menu.findItem(MENU_PICK_ITEMS);
 		/*
-		if (mMode == MODE_ADD_ITEMS) {
-			menuItem.setTitle(R.string.menu_start_shopping);
-			menuItem.setIcon(android.R.drawable.ic_menu_myplaces);
-
-		} else */{
+		 * if (mMode == MODE_ADD_ITEMS) {
+		 * menuItem.setTitle(R.string.menu_start_shopping);
+		 * menuItem.setIcon(android.R.drawable.ic_menu_myplaces);
+		 * 
+		 * } else
+		 */{
 			menu.findItem(MENU_PICK_ITEMS).setTitle(R.string.menu_pick_items);
 			menuItem.setIcon(android.R.drawable.ic_menu_add);
 		}
@@ -1113,7 +1203,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (debug) Log.d(TAG, "onOptionsItemSelected getItemId: " + item.getItemId());
+		if (debug)
+			Log.d(TAG, "onOptionsItemSelected getItemId: " + item.getItemId());
 		Intent intent;
 		switch (item.getItemId()) {
 		case MENU_NEW_LIST:
@@ -1133,12 +1224,12 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			return true;
 
 		case MENU_PICK_ITEMS:
-//			if (mMode == MODE_IN_SHOP) {
-//				mMode = MODE_ADD_ITEMS;
-//			} else {
-//				mMode = MODE_IN_SHOP;
-//			}
-//			onModeChanged();
+			// if (mMode == MODE_IN_SHOP) {
+			// mMode = MODE_ADD_ITEMS;
+			// } else {
+			// mMode = MODE_IN_SHOP;
+			// }
+			// onModeChanged();
 			pickItems();
 			return true;
 
@@ -1174,11 +1265,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			return true;
 
 		}
-		if (debug) Log.d(TAG, "Start intent group id : " + item.getGroupId());
+		if (debug)
+			Log.d(TAG, "Start intent group id : " + item.getGroupId());
 		if (Menu.CATEGORY_ALTERNATIVE == item.getGroupId()) {
-			// Start alternative cateogory intents with option to return a result.
-			if (debug) Log.d(TAG, "Start alternative intent for : " + item.getIntent().getDataString());
-			startActivityForResult(item.getIntent(), REQUEST_CODE_CATEGORY_ALTERNATIVE);
+			// Start alternative cateogory intents with option to return a
+			// result.
+			if (debug)
+				Log.d(TAG, "Start alternative intent for : "
+						+ item.getIntent().getDataString());
+			startActivityForResult(item.getIntent(),
+					REQUEST_CODE_CATEGORY_ALTERNATIVE);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -1213,6 +1309,13 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		case MENU_DELETE_ITEM:
 			deleteItemDialog(menuInfo.position);
 			break;
+		case MENU_MOVE_ITEM:
+			Intent intent = new Intent();
+			intent.setAction(Intent.ACTION_PICK);
+			intent.setData(Shopping.Lists.CONTENT_URI);
+			startActivityForResult(intent , REQUEST_PICK_LIST);
+			mMoveItemPosition = menuInfo.position;
+			break;
 		}
 
 		return true;
@@ -1222,7 +1325,6 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	//
 	// Menu functions
 	//
-
 
 	/**
 	 * Creates a new list from dialog.
@@ -1238,9 +1340,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 					Toast.LENGTH_SHORT).show();
 			return false;
 		}
-		
+
 		String previousTheme = loadListTheme();
-		
+
 		int newId = (int) ShoppingUtils.getList(this, name);
 		fillListFilter();
 
@@ -1401,39 +1503,41 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	}
 
 	/** Mark item */
-	void markItem(int position) {		
+	void markItem(int position) {
 		mListItemsView.toggleItemBought(position);
 	}
 
-	
 	/** Edit item */
 	void editItem(int position) {
-		if (debug) Log.d(TAG, "EditItems: Position: " + position);
+		if (debug)
+			Log.d(TAG, "EditItems: Position: " + position);
 		mListItemsView.mCursorItems.moveToPosition(position);
-		//mEditItemPosition = position;
-		
-		long itemId = mListItemsView.mCursorItems.getLong(mStringItemsITEMID);
-		long containsId = mListItemsView.mCursorItems.getLong(mStringItemsCONTAINSID);
+		// mEditItemPosition = position;
 
-		mItemUri = Uri.withAppendedPath(Shopping.Items.CONTENT_URI, ""
-				+ itemId);
+		long itemId = mListItemsView.mCursorItems.getLong(mStringItemsITEMID);
+		long containsId = mListItemsView.mCursorItems
+				.getLong(mStringItemsCONTAINSID);
+
+		mItemUri = Uri
+				.withAppendedPath(Shopping.Items.CONTENT_URI, "" + itemId);
 		mRelationUri = Uri.withAppendedPath(Shopping.Contains.CONTENT_URI, ""
 				+ containsId);
-		
+
 		showDialog(DIALOG_EDIT_ITEM);
 	}
 
 	int mDeleteItemPosition;
-	
+
 	/** delete item */
 	void deleteItemDialog(int position) {
-		if (debug) Log.d(TAG, "EditItems: Position: " + position);
+		if (debug)
+			Log.d(TAG, "EditItems: Position: " + position);
 		mListItemsView.mCursorItems.moveToPosition(position);
 		mDeleteItemPosition = position;
-		
+
 		showDialog(DIALOG_DELETE_ITEM);
 	}
-	
+
 	/** delete item */
 	void deleteItem(int position) {
 		Cursor c = mListItemsView.mCursorItems;
@@ -1447,31 +1551,35 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		getContentResolver().delete(Items.CONTENT_URI, "_id = ?",
 				new String[] { c.getString(mStringItemsITEMID) });
 
-		//c.requery();
+		// c.requery();
 		mListItemsView.requery();
 	}
 
 	/** move item */
 	void moveItem(int position, int targetListId) {
 		Cursor c = mListItemsView.mCursorItems;
+		mListItemsView.mCursorItems.requery();
 		c.moveToPosition(position);
-		
 
 		long listId = getSelectedListId();
-		if (listId < 0) {
+		if (false && listId < 0) {
 			// No valid list - probably view is not active
 			// and no item is selected.
 			return;
 		}
-	
+		listId = Integer.parseInt(mListUri.getLastPathSegment());
+		
 		// add item to new list
-		ShoppingUtils.addItemToList(this, c.getInt(mStringItemsITEMID), targetListId, c.getString(mStringItemsQUANTITY));
-		
-		
+		ShoppingUtils.addItemToList(this, c.getInt(mStringItemsITEMID),
+				targetListId, c.getString(mStringItemsQUANTITY));
+
 		// Delete item from currentList
 		// by deleting contains row
-		getContentResolver().delete(Contains.CONTENT_URI, "item_id = ? and list_id = ?",
-				new String[] { c.getString(mStringItemsITEMID), String.valueOf(listId)});
+		getContentResolver().delete(
+				Contains.CONTENT_URI,
+				"item_id = ? and list_id = ?",
+				new String[] { c.getString(mStringItemsITEMID),
+						String.valueOf(listId) });
 
 		mListItemsView.requery();
 	}
@@ -1483,20 +1591,15 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		// Remember old values before delete (for share below)
 		String itemName = c.getString(mStringItemsITEMNAME);
 		long oldstatus = c.getLong(mStringItemsSTATUS);
-		
-		
+
 		// Delete item by changing its state
 		ContentValues values = new ContentValues();
 		values.put(Contains.STATUS, Status.REMOVED_FROM_LIST);
-		getContentResolver()
-			.update(
-				Contains.CONTENT_URI, values,
-				"_id = ?",
-				new String[] { c
-						.getString(mStringItemsCONTAINSID) });
-		
-		//c.requery();
-		
+		getContentResolver().update(Contains.CONTENT_URI, values, "_id = ?",
+				new String[] { c.getString(mStringItemsCONTAINSID) });
+
+		// c.requery();
+
 		mListItemsView.requery();
 
 		// If we share items, mark item on other lists:
@@ -1551,29 +1654,30 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	public void onSetTheme(String theme) {
 		mListItemsView.setListTheme(theme);
 	}
-	
+
 	@Override
 	public void onSetThemeForAll(String theme) {
 		setThemeForAll(this, theme);
 	}
-	
+
 	/**
 	 * Set theme for all lists.
+	 * 
 	 * @param context
 	 * @param theme
 	 */
 	public static void setThemeForAll(Context context, String theme) {
 		ContentValues values = new ContentValues();
 		values.put(Lists.SKIN_BACKGROUND, theme);
-		context.getContentResolver().update(
-				Lists.CONTENT_URI, values, null, null);
+		context.getContentResolver().update(Lists.CONTENT_URI, values, null,
+				null);
 	}
-	
+
 	/**
 	 * Loads the theme settings for the currently selected theme.
 	 * 
-	 * Up to version 1.2.1, only one of 3 hardcoded themes are available. These are stored
-	 * in 'skin_background' as '1', '2', or '3'.
+	 * Up to version 1.2.1, only one of 3 hardcoded themes are available. These
+	 * are stored in 'skin_background' as '1', '2', or '3'.
 	 * 
 	 * Starting in 1.2.2, also themes of other packages are allowed.
 	 * 
@@ -1636,44 +1740,45 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
-			
+
 		case DIALOG_NEW_LIST:
-			return new NewListDialog(this,
-					new DialogActionListener() {
-				
+			return new NewListDialog(this, new DialogActionListener() {
+
 				public void onAction(String name) {
 					createNewList(name);
 				}
 			});
-			
+
 		case DIALOG_RENAME_LIST:
 			return new RenameListDialog(this, getCurrentListName(),
 					new DialogActionListener() {
-						
+
 						public void onAction(String name) {
 							renameList(name);
 						}
-			});
-			
+					});
+
 		case DIALOG_EDIT_ITEM:
 			return new EditItemDialog(this, mItemUri, mRelationUri);
-			
+
 		case DIALOG_DELETE_ITEM:
-			return new AlertDialog.Builder(this)
-            .setIcon(android.R.drawable.ic_dialog_alert)
-            .setTitle(R.string.menu_delete_item)
-            .setMessage(R.string.delete_item_confirm)
-            .setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                	deleteItem(mDeleteItemPosition);
-                }
-            })
-            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                	// Don't do anything
-                }
-            }).create();
-			
+			return new AlertDialog.Builder(this).setIcon(
+					android.R.drawable.ic_dialog_alert).setTitle(
+					R.string.menu_delete_item).setMessage(
+					R.string.delete_item_confirm).setPositiveButton(
+					R.string.delete, new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							deleteItem(mDeleteItemPosition);
+						}
+					}).setNegativeButton(android.R.string.cancel,
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							// Don't do anything
+						}
+					}).create();
+
 		case DIALOG_THEME:
 			return new ThemeDialog(this, this);
 		}
@@ -1692,7 +1797,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		case DIALOG_RENAME_LIST:
 			((RenameListDialog) dialog).setName(getCurrentListName());
 			break;
-			
+
 		case DIALOG_EDIT_ITEM:
 			EditItemDialog d = (EditItemDialog) dialog;
 			d.setItemUri(mItemUri);
@@ -1700,12 +1805,12 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 			String[] taglist = getTaglist();
 			d.setTagList(taglist);
-			
+
 			d.setRequeryCursor(mListItemsView.mCursorItems);
 			break;
-			
+
 		case DIALOG_THEME:
-			((ThemeDialog)dialog).prepareDialog();
+			((ThemeDialog) dialog).prepareDialog();
 			break;
 		}
 	}
@@ -1796,8 +1901,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		if (mCursorListFilter.getCount() < 1) {
 			// We have to create default shopping list:
-			long listId = ShoppingUtils.getList(this, getText(R.string.my_shopping_list)
-					.toString());
+			long listId = ShoppingUtils.getList(this, getText(
+					R.string.my_shopping_list).toString());
 
 			// Check if insertion really worked. Otherwise
 			// we may end up in infinite recursion.
@@ -1816,7 +1921,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 			public mListContentObserver(Handler handler) {
 				super(handler);
-				if (debug) Log.i(TAG, "mListContentObserver: Constructor");
+				if (debug)
+					Log.i(TAG, "mListContentObserver: Constructor");
 			}
 
 			/*
@@ -1827,7 +1933,10 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			@Override
 			public boolean deliverSelfNotifications() {
 				// TODO Auto-generated method stub
-				if (debug) Log.i(TAG, "mListContentObserver: deliverSelfNotifications");
+				if (debug)
+					Log
+							.i(TAG,
+									"mListContentObserver: deliverSelfNotifications");
 				return super.deliverSelfNotifications();
 			}
 
@@ -1839,7 +1948,8 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			@Override
 			public void onChange(boolean arg0) {
 				// TODO Auto-generated method stub
-				if (debug) Log.i(TAG, "mListContentObserver: onChange");
+				if (debug)
+					Log.i(TAG, "mListContentObserver: onChange");
 
 				mCursorListFilter.requery();
 
@@ -1883,14 +1993,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 	private void onModeChanged() {
 
-		if (debug) Log.d(TAG, "onModeChanged()");
-//		fillItems();
+		if (debug)
+			Log.d(TAG, "onModeChanged()");
+		// fillItems();
 
 		if (mMode == MODE_IN_SHOP) {
-			//setTitle(getString(R.string.shopping_title, getCurrentListName()));
+			// setTitle(getString(R.string.shopping_title,
+			// getCurrentListName()));
 			registerSensor();
 		} else {
-			//setTitle(getString(R.string.pick_items_titel, getCurrentListName()));
+			// setTitle(getString(R.string.pick_items_titel,
+			// getCurrentListName()));
 			unregisterSensor();
 		}
 	}
@@ -1901,15 +2014,17 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	}
 
 	private void fillItems() {
-		if (debug) Log.d(TAG, "fillItems()");
-		
+		if (debug)
+			Log.d(TAG, "fillItems()");
+
 		long listId = getSelectedListId();
 		if (listId < 0) {
 			// No valid list - probably view is not active
 			// and no item is selected.
 			return;
 		}
-		if (debug) Log.d(TAG, "fillItems() for list " + listId);
+		if (debug)
+			Log.d(TAG, "fillItems() for list " + listId);
 		mListItemsView.fillItems(this, listId);
 
 		// Insert any pending items received either through intents
@@ -1922,15 +2037,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	/**
 	 * Create list of tags.
 	 * 
-	 * Tags for notes can be comma-separated. Here we create a list of the unique tags.
+	 * Tags for notes can be comma-separated. Here we create a list of the
+	 * unique tags.
 	 * 
 	 * @param c
 	 * @return
 	 */
 	String[] getTaglist() {
-		Cursor c = getContentResolver().query(Shopping.Items.CONTENT_URI, 
-				new String[] {Shopping.Items.TAGS},
-				null, null, Shopping.Items.DEFAULT_SORT_ORDER);
+		Cursor c = getContentResolver().query(Shopping.Items.CONTENT_URI,
+				new String[] { Shopping.Items.TAGS }, null, null,
+				Shopping.Items.DEFAULT_SORT_ORDER);
 		// Create a set of all tags (every tag should only appear once).
 		HashSet<String> tagset = new HashSet<String>();
 		c.moveToPosition(-1);
@@ -1947,17 +2063,16 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 			}
 		}
 		c.close();
-		
+
 		// Sort the list
 		// 1. Convert HashSet to String list.
 		ArrayList<String> list = new ArrayList<String>();
 		list.addAll(tagset);
-		// 2. Sort the String list 
+		// 2. Sort the String list
 		Collections.sort(list);
 		// 3. Convert it to String array
 		return list.toArray(new String[0]);
 	}
-	
 
 	/**
 	 * Initialized GTalk if the currently selected list requires it.
@@ -1996,7 +2111,7 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 		// If recipients contains the '@' symbol, it is shared.
 		return recipients.contains("@");
 	}
-	
+
 	// Handle the process of automatically updating enabled sensors:
 	private Handler mHandler = new Handler() {
 		@Override
@@ -2054,18 +2169,22 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 	 */
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (debug) Log.i(TAG, "ShoppingView: onActivityResult. ");
+		if (debug)
+			Log.i(TAG, "ShoppingView: onActivityResult. ");
 
 		if (requestCode == SUBACTIVITY_LIST_SHARE_SETTINGS) {
-			if (debug) Log.i(TAG, "SUBACTIVITY_LIST_SHARE_SETTINGS");
+			if (debug)
+				Log.i(TAG, "SUBACTIVITY_LIST_SHARE_SETTINGS");
 
 			if (resultCode == RESULT_CANCELED) {
 				// Don't do anything.
-				if (debug) Log.i(TAG, "RESULT_CANCELED");
+				if (debug)
+					Log.i(TAG, "RESULT_CANCELED");
 
 			} else {
 				// Broadcast the intent
-				if (debug) Log.i(TAG, "Broadcast intent.");
+				if (debug)
+					Log.i(TAG, "Broadcast intent.");
 
 				// TODO ???
 				/*
@@ -2086,8 +2205,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 				String contacts = extras
 						.getString(Shopping.Lists.SHARE_CONTACTS);
 
-				if (debug) Log.i(TAG, "Received bundle: sharename: " + sharename
-						+ ", contacts: " + contacts);
+				if (debug)
+					Log.i(TAG, "Received bundle: sharename: " + sharename
+							+ ", contacts: " + contacts);
 				// TODO ???
 				/*
 				 * mGTalkSender.sendList(contacts, sharename);
@@ -2100,45 +2220,52 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 				// old ones should be in sync already.
 				// First delete all items in list
 				/*
-				mCursorItems.moveToPosition(-1);
-				while (mCursorItems.moveToNext()) {
-					String itemName = mCursorItems
-							.getString(mStringItemsITEMNAME);
-					Long status = mCursorItems.getLong(mStringItemsSTATUS);
-					Log.i(TAG, "Update shared item. " + " recipients: "
-							+ contacts + ", shareName: " + sharename
-							+ ", item: " + itemName);
-					// TODO ???
-					/*
-					 * mGTalkSender.sendItemUpdate(contacts, sharename,
-					 * itemName, itemName, status, status);
-					 * /
-				}
-			*/
+				 * mCursorItems.moveToPosition(-1); while
+				 * (mCursorItems.moveToNext()) { String itemName = mCursorItems
+				 * .getString(mStringItemsITEMNAME); Long status =
+				 * mCursorItems.getLong(mStringItemsSTATUS); Log.i(TAG,
+				 * "Update shared item. " + " recipients: " + contacts +
+				 * ", shareName: " + sharename + ", item: " + itemName); // TODO
+				 * ??? /* mGTalkSender.sendItemUpdate(contacts, sharename,
+				 * itemName, itemName, status, status); / }
+				 */
 			}
 
 		} else if (REQUEST_CODE_CATEGORY_ALTERNATIVE == requestCode) {
-			if (debug) Log.d(TAG, "result received");
+			if (debug)
+				Log.d(TAG, "result received");
 			if (RESULT_OK == resultCode) {
-				if (debug) Log.d(TAG, "result OK");
+				if (debug)
+					Log.d(TAG, "result OK");
 				// Check if any results have been returned:
 				/*
-				if ((data.getDataString() != null)
-						&& (data.getDataString().startsWith(Shopping.Lists.CONTENT_URI.toString()))) {
-					// We received a valid shopping list URI.
-					
-					// Set current list to received list:
-					mListUri = data.getData();
-					intent.setData(mListUri);
-				}
-				*/
+				 * if ((data.getDataString() != null) &&
+				 * (data.getDataString().startsWith
+				 * (Shopping.Lists.CONTENT_URI.toString()))) { // We received a
+				 * valid shopping list URI.
+				 * 
+				 * // Set current list to received list: mListUri =
+				 * data.getData(); intent.setData(mListUri); }
+				 */
 				if (data.getExtras() != null) {
-					if (debug) Log.d(TAG, "extras received");
+					if (debug)
+						Log.d(TAG, "extras received");
 					getShoppingExtras(data);
 				}
 			}
+		} else if (REQUEST_PICK_LIST == requestCode){
+			if (debug)
+				Log.d(TAG, "result received");
+			
+			if (RESULT_OK == resultCode) {
+				int position = mMoveItemPosition;				
+				if (mMoveItemPosition >= 0){
+					moveItem(position, Integer.parseInt(data.getData().getLastPathSegment()));
+				}
+			}
+			
+			mMoveItemPosition = -1;
 		}
 	}
-
 
 }
