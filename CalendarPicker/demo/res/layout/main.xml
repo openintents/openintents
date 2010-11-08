@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+   
+   <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    >
+   		<Button
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" 
+		    android:text="Pick date"
+		    android:id="@+id/button_pick_date"/>
+
+	   <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    >
+
+			<TextView
+				android:text="Picking result:"
+				android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="5dip" 
+			/>
+			
+			<TextView
+				android:id="@+id/date_picker_result"
+				android:layout_weight="1"
+				android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:textColor="@android:color/white"
+			/>
+			
+		</LinearLayout>
+
+	</LinearLayout>
+	
+   <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    >
+   		<Button
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" 
+		    android:text="Pick event"
+		    android:id="@+id/button_pick_event"/>
+
+	   <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    >
+
+			<TextView
+				android:text="Picking result:"
+				android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="5dip" 
+			/>
+			
+			<TextView
+				android:id="@+id/event_picker_result"
+				android:layout_weight="1"
+				android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:textColor="@android:color/white"
+			/>
+			
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

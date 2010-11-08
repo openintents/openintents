@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    
+	<LinearLayout
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		>
+
+		<TextView  
+			android:id="@+id/month_title"
+			android:text="Month"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"  
+			android:paddingTop="2dip"  
+			android:paddingBottom="2dip"  
+			android:paddingLeft="5dip"  
+			style="?android:attr/listSeparatorTextViewStyle" />  
+   
+	   	<LinearLayout
+			android:layoutAnimation="@anim/layout_random_fade"
+			android:id="@+id/weekdays_header"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+
+			/>
+
+		<org.openintents.calendarpicker.view.MonthLayout
+			android:layoutAnimation="@anim/layout_random_fade"
+			android:id="@+id/full_month"
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+		    />
+
+	</LinearLayout>
+
+</merge>

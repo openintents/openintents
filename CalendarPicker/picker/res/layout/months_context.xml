@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+    
+		
+	<ImageView
+		android:layout_margin="4dip"
+		android:id="@+id/mini_calendar_prev"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"
+		android:layout_height="fill_parent"
+	></ImageView>
+
+	<ImageView
+		android:layout_margin="4dip"
+		android:id="@+id/mini_calendar_curr"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"
+		android:layout_height="fill_parent"
+	></ImageView>
+	
+	<ImageView
+		android:layout_margin="4dip"
+		android:id="@+id/mini_calendar_next"
+		android:layout_width="fill_parent"
+		android:layout_weight="1"
+		android:layout_height="fill_parent"
+	></ImageView>
+
+</merge>

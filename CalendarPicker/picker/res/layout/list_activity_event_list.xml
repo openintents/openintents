@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/chartdroid_panel_background"
+    android:orientation="vertical">
+   
+   	<TextView  
+	     android:id="@+id/list_header"
+	     android:text="Events on this day"  
+	     android:layout_width="fill_parent"  
+	     android:layout_height="wrap_content"  
+	     android:paddingTop="2dip"  
+	     android:paddingBottom="2dip"  
+	     android:paddingLeft="5dip"  
+	     style="?android:attr/listSeparatorTextViewStyle" />
+
+    <ListView android:id="@android:id/list"
+    	android:paddingTop="5dip"
+    	android:fastScrollEnabled="false"
+        android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/transparent"
+        android:transcriptMode="disabled"/>
+
+    <TextView android:id="@android:id/empty"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:gravity="center"
+			android:text="No results to show"/>
+        
+</LinearLayout>

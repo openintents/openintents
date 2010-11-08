@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_sort_alpha"
+          android:title="Sort Alpha"
+          android:titleCondensed="Alpha"
+          android:alphabeticShortcut="a"
+          android:icon="@drawable/ic_menu_sort_alphabetically" />
+
+	<item android:id="@+id/menu_sort_recent"
+          android:title="Sort Recent"
+          android:titleCondensed="Recent"
+          android:alphabeticShortcut="r"
+          android:icon="@drawable/ic_menu_recent_history" />
+
+    <item android:id="@+id/menu_sort_usage"
+    	android:visible="false"
+          android:title="Sort Usage"
+          android:titleCondensed="Usage"
+          android:alphabeticShortcut="u"
+          android:icon="@drawable/ic_menu_sort_by_size" />
+
+</menu>
