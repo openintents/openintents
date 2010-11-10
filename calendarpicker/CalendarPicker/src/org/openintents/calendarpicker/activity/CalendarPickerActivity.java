@@ -20,6 +20,7 @@ import org.openintents.calendarpicker.view.ScrollableMonthView.OnDayClickListene
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
@@ -90,7 +91,7 @@ public class CalendarPickerActivity extends Activity {
 //        String weekdays[] = dfs.getWeekdays();
         String weekdays[] = dfs.getShortWeekdays();
         LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
-        LinearLayout weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
+        final LinearLayout weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
 		for (int i=Calendar.getInstance().getFirstDayOfWeek(); i<weekdays.length; i++) {
 	        TextView tv = new TextView(this);
 	        tv.setGravity(Gravity.CENTER);
@@ -108,11 +109,43 @@ public class CalendarPickerActivity extends Activity {
 			}
         });
         
+        month_layout.setOnDayTouchListener(new OnDayClickListener() {
+
+			@Override
+			public void clickDay(CalendarDay cd) {
+
+				int child_idx = -1;
+				if (cd != null) {
+					Calendar c = new GregorianCalendar();
+					c.setTime(cd.date);
+					child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+				}
+				
+				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
+					TextView tv = (TextView) weekday_header_layout.getChildAt(i);
+					tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.secondary_text_dark));
+				}
+			}
+        });
+        
         month_layout.setOnDayClickListener(new OnDayClickListener() {
 
 			@Override
 			public void clickDay(CalendarDay cd) {
 
+				Calendar c = new GregorianCalendar();
+				c.setTime(cd.date);
+				int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
+					TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
+					if (i == child_idx) {
+						tv.setTextColor(Color.RED);
+					} else {
+						tv.setTextColor(getResources().getColor(android.R.color.primary_text_dark));
+					}
+				}
+				
+				
 				Uri data = getIntent().getData();
 				if (data != null && cd.day_events.size() > 0) {
 
