@@ -2,7 +2,7 @@ package org.openintents.calendarpicker.demo.provider;
 
 import java.util.List;
 
-import org.openintents.calendarpicker.IntentConstants;
+import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.demo.Demo;
 import org.openintents.calendarpicker.demo.Demo.EventWrapper;
 

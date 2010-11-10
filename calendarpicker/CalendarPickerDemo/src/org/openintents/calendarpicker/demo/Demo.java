@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
+import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.demo.provider.EventContentProvider;
 
 import android.app.Activity;
