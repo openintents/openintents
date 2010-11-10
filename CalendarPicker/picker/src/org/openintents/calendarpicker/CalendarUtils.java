@@ -1,15 +1,16 @@
 package org.openintents.calendarpicker;
 
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.container.CalendarDay;
 import org.openintents.calendarpicker.container.SimpleEvent;
+
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class CalendarUtils {
 
@@ -19,7 +20,7 @@ public class CalendarUtils {
     	public ImageView thumb;
     }
     
-    public static int generate_days(GregorianCalendar cal, List<CalendarDay> day_list, List<SimpleEvent> events) {
+    public static int generate_days(Calendar cal, List<CalendarDay> day_list, List<SimpleEvent> events) {
 
     	final int active_month = cal.get(GregorianCalendar.MONTH);
 
@@ -28,7 +29,7 @@ public class CalendarUtils {
     	
     	
     	
-		GregorianCalendar cal_min_upper_limit = (GregorianCalendar) cal.clone();
+    	Calendar cal_min_upper_limit = (GregorianCalendar) cal.clone();
 		cal_min_upper_limit.add(GregorianCalendar.MONTH, 1);
 //		Log.i(TAG, "Minimum upper limit: " + cal_min_upper_limit.getTime());
 
@@ -44,7 +45,7 @@ public class CalendarUtils {
 //    	Log.e(TAG, "first day of week: " + first_day_of_week);
     	
     	int daydiff = cal.get(GregorianCalendar.DAY_OF_WEEK) - first_day_of_week;
-		cal.add(GregorianCalendar.DATE, -daydiff);
+		cal.add(Calendar.DATE, -daydiff);
     	
 //    	Log.i(TAG, "Month of starting day in calendar: " + cal.get(GregorianCalendar.MONTH));
 		
@@ -59,7 +60,7 @@ public class CalendarUtils {
 		
 		int event_index = 0;
     	while ( cal.before(cal_min_upper_limit)
-    			|| cal.get(GregorianCalendar.DAY_OF_WEEK) > first_day_of_week) {
+    			|| cal.get(Calendar.DAY_OF_WEEK) > first_day_of_week) {
 
 //    		Log.i(TAG, "Cal date: " + cal.getTime());
 //    		Log.d(TAG, "Before min end date? " + cal.before(cal_min_upper_limit));

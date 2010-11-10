@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_year_view"
+          android:title="Year View"
+          android:titleCondensed="Year"
+          android:alphabeticShortcut="y" />
+
+</menu>

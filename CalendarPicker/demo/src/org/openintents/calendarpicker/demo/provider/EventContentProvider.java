@@ -41,8 +41,8 @@ public class EventContentProvider extends ContentProvider {
 
    @Override
    public String getType(Uri uri) {
-	   Log.d(TAG, "Providing type: " + IntentConstants.CalendarEvent.CONTENT_TYPE_CALENDAR_EVENT);
-	   return IntentConstants.CalendarEvent.CONTENT_TYPE_CALENDAR_EVENT;
+	   Log.d(TAG, "Providing type: " + IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
+	   return IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
    }
 
    @Override
@@ -50,15 +50,21 @@ public class EventContentProvider extends ContentProvider {
 
 		MatrixCursor c = new MatrixCursor(new String[] {
 				BaseColumns._ID,
-				IntentConstants.CalendarEvent.COLUMN_EVENT_TIMESTAMP,
-				IntentConstants.CalendarEvent.COLUMN_EVENT_TITLE});
+				IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP,
+				IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE});
 
 		List<EventWrapper> generated_events = Demo.generateRandomEvents(5);
 //		Log.i(TAG, "Generated " + generated_events.size() + " events.");
 		
-		// The "EVENT_TITLE" field is omitted (it will be NULL) for this demo.
-		for (EventWrapper event : generated_events)
-			c.newRow().add(event.id).add( event.timestamp/1000 );
+		int i=0;
+		for (EventWrapper event : generated_events) {
+			c.newRow()
+				.add(event.id)
+				.add( event.timestamp/1000 )
+				.add( "Event " + i );
+			
+			i++;
+		}
 
 //		Log.i(TAG, "Generated cursor with " + c.getCount() + " rows.");
 		return c;

@@ -18,7 +18,7 @@ package org.openintents.calendarpicker;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.container.CalendarDay;
@@ -55,11 +55,11 @@ public class MiniMonthDrawable extends Drawable {
 	
 	final static String TAG = "Chartdroid";
 
-	GregorianCalendar cal;
+	Calendar cal;
 	Context context;
 	View view;
 	float day_border_width = 1;
-	public MiniMonthDrawable(Context c, View v, GregorianCalendar cal) {
+	public MiniMonthDrawable(Context c, View v, Calendar cal) {
 		context = c;
 		view = v;
 		this.cal = cal;

@@ -13,6 +13,9 @@
 	<color name="calendar_date_background_active">#008</color>
 	<color name="calendar_date_background_passive">#080</color>
 	
-	<color name="cornerbox_color">#800E</color>
+	
+	<color name="calendar_date_background_longpress">#FF0</color>
+	
+	<color name="cornerbox_color">#8000</color>
 
 </resources>

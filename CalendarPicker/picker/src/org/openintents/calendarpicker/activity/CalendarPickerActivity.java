@@ -9,12 +9,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.IntentConstants;
-import org.openintents.calendarpicker.MiniMonthDrawable;
-import org.openintents.calendarpicker.IntentConstants.CalendarEvent;
+import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.container.CalendarDay;
 import org.openintents.calendarpicker.container.SimpleEvent;
-import org.openintents.calendarpicker.view.DayView;
-import org.openintents.calendarpicker.view.MonthLayout;
+import org.openintents.calendarpicker.view.ScrollableMonthView;
+import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
+import org.openintents.calendarpicker.view.ScrollableMonthView.OnDayClickListener;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,16 +25,14 @@ import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
-
-import org.openintents.calendarpicker.R;
 
 public class CalendarPickerActivity extends Activity {
 
@@ -41,11 +40,9 @@ public class CalendarPickerActivity extends Activity {
     final static public String TAG = "CalendarPickerActivity";
 
 	static final int REQUEST_CODE_EVENT_SELECTION = 1;
+	static final int REQUEST_CODE_MONTH_YEAR_SELECTION = 2;
 
 
-    ImageView mini_calendar_prev, mini_calendar_curr, mini_calendar_next;
-    
-    
     public static final long INVALID_EVENT_ID = -1;
     public static final long INVALID_DATE = 0;
     
@@ -53,22 +50,26 @@ public class CalendarPickerActivity extends Activity {
     
 
 	final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-    
+
+	TextView month_title;
+    // ========================================================================
+	void updateMonthHeader(Calendar calendar) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy");
+        month_title.setText( formatter.format(calendar.getTime()) );
+	}
+	
     // ========================================================================
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().requestFeature(Window.FEATURE_LEFT_ICON);
-        setContentView(R.layout.calendar_activity);
+        setContentView(R.layout.months_main);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.titlebar_icon);
 
-        TextView month_title = (TextView) findViewById(R.id.month_title);
-        SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy");
-
+        this.month_title = (TextView) findViewById(R.id.month_title);
         Calendar current_month_calendar = new GregorianCalendar();
-        month_title.setText( formatter.format(current_month_calendar.getTime()) );
-        
+        updateMonthHeader(current_month_calendar);
 
         Uri intent_data = getIntent().getData();
         // Zip the events
@@ -77,27 +78,12 @@ public class CalendarPickerActivity extends Activity {
         	
         	Log.d(TAG, "Querying content provider for: " + intent_data);
 
-        	String key_event_title = IntentConstants.CalendarEvent.COLUMN_EVENT_TITLE;
+        	String key_event_title = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
  			Cursor cursor = managedQuery(intent_data,
- 					new String[] {BaseColumns._ID, IntentConstants.CalendarEvent.COLUMN_EVENT_TIMESTAMP, CalendarEvent.COLUMN_EVENT_TITLE},
+ 					new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
  					null, null, null);
 
- 			int id_column = cursor.getColumnIndex(BaseColumns._ID);
- 			int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEvent.COLUMN_EVENT_TIMESTAMP);
- 			
- 			if (cursor.moveToFirst()) {
-	 			do {
-	 				long timestamp = cursor.getLong(timestamp_column)*1000;
-	 				Log.d(TAG, "Adding event with timestamp: " + timestamp);
-	 				Log.d(TAG, "Timestamp date is: " + new Date(timestamp));
-	
-		        	events.add(
-		        		new SimpleEvent(
-		        			cursor.getLong(id_column),
-		        			timestamp) );
-		        	
-	 			} while (cursor.moveToNext());
- 			}
+ 			this.events = getEventsFromCursor(cursor);
         }
 
         DateFormatSymbols dfs = new DateFormatSymbols();
@@ -112,20 +98,20 @@ public class CalendarPickerActivity extends Activity {
 	        weekday_header_layout.addView(tv, lp);
 		}
         
-        
-        
-        MonthLayout month_layout = (MonthLayout) findViewById(R.id.full_month);
+		ScrollableMonthView month_layout = (ScrollableMonthView) findViewById(R.id.full_month);
         month_layout.setMonthAndEvents(current_month_calendar, events);
+        
+        month_layout.setMonthUpdateCallback(new MonthUpdateCallback() {
+        	@Override
+			public void updateMonth(Calendar cal) {
+				updateMonthHeader(cal);
+			}
+        });
+        
+        month_layout.setOnDayClickListener(new OnDayClickListener() {
 
-        month_layout.setOnDayClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View v) {
-//				startActivity(new Intent());
-				
-				DayView dv = (DayView) v;
-				CalendarDay cd = dv.getCalendarDay();
-
-				Log.d(TAG, "Clicked on a day: " + dv.getCalendarDay().date);
+			public void clickDay(CalendarDay cd) {
 
 				Uri data = getIntent().getData();
 				if (data != null && cd.day_events.size() > 0) {
@@ -133,45 +119,82 @@ public class CalendarPickerActivity extends Activity {
 					Intent i = new Intent(CalendarPickerActivity.this, EventListActivity.class);
 
 					i.setData(data);
-					i.putExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME, dv.getCalendarDay().date.getTime());
+					i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, cd.date.getTime());
 					startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
 
 				} else {
 					// If there are no events, just return the day.
 					Intent i = new Intent();
-					i.putExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME, sdf.format(dv.getCalendarDay().date));
+					i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(cd.date));
 					
 					setResult(Activity.RESULT_OK, i);
 					finish();
 				}
 			}
         });
-        
-        
-        this.mini_calendar_prev = (ImageView) findViewById(R.id.mini_calendar_prev);
-        this.mini_calendar_curr = (ImageView) findViewById(R.id.mini_calendar_curr);
-        this.mini_calendar_next = (ImageView) findViewById(R.id.mini_calendar_next);
-
-        
-
-		GregorianCalendar cal_prev = new GregorianCalendar();
-		cal_prev.add(GregorianCalendar.MONTH, -1);
-		
-		GregorianCalendar cal_curr = new GregorianCalendar();
-		
-		GregorianCalendar cal_next = new GregorianCalendar();
-		cal_next.add(GregorianCalendar.MONTH, 1);
-		
-//		Log.d(TAG, "Previous month...");
-        mini_calendar_prev.setImageDrawable(new MiniMonthDrawable(this, mini_calendar_prev, cal_prev));
-        
-//        Log.d(TAG, "Current month...");
-        mini_calendar_curr.setImageDrawable(new MiniMonthDrawable(this, mini_calendar_curr, cal_curr));
-        
-//        Log.d(TAG, "Next month...");
-        mini_calendar_next.setImageDrawable(new MiniMonthDrawable(this, mini_calendar_next, cal_next));
     }
 
+    // ========================================================================
+    List<SimpleEvent> getEventsFromCursor(Cursor cursor) {
+
+        List<SimpleEvent> events = new ArrayList<SimpleEvent>();
+    	
+			if (cursor.moveToFirst()) {
+
+	 			int id_column = cursor.getColumnIndex(BaseColumns._ID);
+	 			int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
+	 			
+				
+	 			do {
+	 				long timestamp = cursor.getLong(timestamp_column)*1000;
+	 				Log.d(TAG, "Adding event with timestamp: " + timestamp);
+	 				Log.d(TAG, "Timestamp date is: " + new Date(timestamp));
+	
+		        	events.add(
+		        		new SimpleEvent(
+		        			cursor.getLong(id_column),
+		        			timestamp) );
+		        	
+	 			} while (cursor.moveToNext());
+ 			}
+			
+			return events;
+    }
+
+    
+
+    // ========================================================================
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_main, menu);
+
+        return true;
+    }
+    
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_year_view:
+        {
+        	startActivityForResult(new Intent(this, YearsActivity.class), REQUEST_CODE_MONTH_YEAR_SELECTION);
+            return true;
+        }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    // ========================================================================
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -182,6 +205,18 @@ public class CalendarPickerActivity extends Activity {
         
   	   	switch (requestCode) {
    		case REQUEST_CODE_EVENT_SELECTION:
+   		{
+   			long id = data.getLongExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, INVALID_EVENT_ID);
+
+			Intent i = new Intent();
+			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
+	        setResult(Activity.RESULT_OK, i);
+			finish();
+
+			Toast.makeText(this, TAG + " finshing w/result: " + id, Toast.LENGTH_LONG).show();
+            break;
+        }
+   		case REQUEST_CODE_MONTH_YEAR_SELECTION:
    		{
    			long id = data.getLongExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, INVALID_EVENT_ID);
 

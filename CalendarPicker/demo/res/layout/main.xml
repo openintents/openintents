@@ -11,12 +11,28 @@
     android:layout_height="fill_parent"
     android:layout_weight="1"
     >
-   		<Button
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content" 
-		    android:text="Pick date"
-		    android:id="@+id/button_pick_date"/>
-
+   
+   	   <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    >
+	
+	   		<Button
+			    android:layout_width="fill_parent"
+			    android:layout_weight="1"
+			    android:layout_height="wrap_content" 
+			    android:text="Date Picker\n(plain)"
+			    android:id="@+id/button_pick_date_no_events"/>
+			<Button
+			    android:layout_width="fill_parent"
+			    android:layout_weight="1"
+			    android:layout_height="wrap_content" 
+			    android:text="Date Picker\n(with events)"
+			    android:id="@+id/button_pick_date_with_events"/>
+		</LinearLayout>
+		
 	   <LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent"
@@ -49,11 +65,29 @@
     android:layout_height="fill_parent"
     android:layout_weight="1"
     >
-   		<Button
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content" 
-		    android:text="Pick event"
-		    android:id="@+id/button_pick_event"/>
+    
+    
+       
+   	   <LinearLayout
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="1"
+	    >
+    
+	   		<Button
+			    android:layout_width="fill_parent"
+			    android:layout_weight="1"
+			    android:layout_height="wrap_content" 
+			    android:text="Event Picker\n(Content Provider)"
+			    android:id="@+id/button_pick_event_content_provider"/>
+			<Button
+			    android:layout_width="fill_parent"
+			    android:layout_weight="1"
+			    android:layout_height="wrap_content" 
+			    android:text="Event Picker\n(Intent extras)"
+			    android:id="@+id/button_pick_event_intent_extras"/>
+		</LinearLayout>
 
 	   <LinearLayout
 	    android:orientation="horizontal"

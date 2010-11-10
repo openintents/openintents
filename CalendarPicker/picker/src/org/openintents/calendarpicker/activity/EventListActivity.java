@@ -47,8 +47,8 @@ public class EventListActivity extends ListActivity {
     
 	
 	public static final String KEY_ROWID = BaseColumns._ID;
-	public static final String KEY_TIMESTAMP = IntentConstants.CalendarEvent.COLUMN_EVENT_TIMESTAMP;
-	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEvent.COLUMN_EVENT_TITLE;
+	public static final String KEY_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
+	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
 	
 	
 	Cursor requery() {
@@ -56,7 +56,7 @@ public class EventListActivity extends ListActivity {
         Uri intent_data = getIntent().getData();
     	Log.d(TAG, "Querying content provider for: " + intent_data);
     	
-        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME, -1));
+        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, -1));
         
         
         
@@ -138,7 +138,7 @@ public class EventListActivity extends ListActivity {
 			
 			Intent i = new Intent();
 			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
-			i.putExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME, getIntent().getLongExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME, 0));
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, 0));
 	        setResult(Activity.RESULT_OK, i);
 			finish();
 		}

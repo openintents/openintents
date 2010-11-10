@@ -34,8 +34,10 @@ public class Demo extends Activity implements View.OnClickListener {
         setContentView(R.layout.main);
         
         for (int view : new int[] {
-        		R.id.button_pick_date,
-        		R.id.button_pick_event
+        		R.id.button_pick_date_no_events,
+        		R.id.button_pick_date_with_events,
+        		R.id.button_pick_event_intent_extras,
+        		R.id.button_pick_event_content_provider
         		}) {
         	findViewById(view).setOnClickListener(this);
         }
@@ -45,14 +47,28 @@ public class Demo extends Activity implements View.OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.button_pick_date:
+		case R.id.button_pick_date_no_events:
 		{
 			Intent i = new Intent(Intent.ACTION_PICK);
-			i.setType(IntentConstants.CalendarPicker.CONTENT_TYPE_DATETIME);
+			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
             startActivityForResult(i, REQUEST_CODE_DATE_SELECTION);
 			break;
 		}
-		case R.id.button_pick_event:
+		case R.id.button_pick_date_with_events:
+		{
+			Intent i = new Intent(Intent.ACTION_PICK);
+			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
+            startActivityForResult(i, REQUEST_CODE_DATE_SELECTION);
+			break;
+		}
+		case R.id.button_pick_event_intent_extras:
+		{
+	    	Uri u = EventContentProvider.constructUri(12345);
+			Intent i = new Intent(Intent.ACTION_PICK, u);
+            startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
+			break;
+		}
+		case R.id.button_pick_event_content_provider:
 		{
 	    	Uri u = EventContentProvider.constructUri(12345);
 			Intent i = new Intent(Intent.ACTION_PICK, u);
@@ -100,7 +116,7 @@ public class Demo extends Activity implements View.OnClickListener {
   	   	switch (requestCode) {
    		case REQUEST_CODE_DATE_SELECTION:
    		{
-   			String iso_date = data.getStringExtra(IntentConstants.CalendarPicker.INTENT_EXTRA_DATETIME);
+   			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
    			Toast.makeText(this, "Result: " + iso_date, Toast.LENGTH_SHORT).show();
    			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date );
             break;

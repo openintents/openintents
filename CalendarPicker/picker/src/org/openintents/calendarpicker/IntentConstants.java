@@ -8,9 +8,7 @@ public class IntentConstants {
 	/** a Long */
 	public static String INTENT_EXTRA_CALENDAR_EVENT_ID = BaseColumns._ID;
 
-
-
-	public static final class CalendarPicker {
+	public static final class CalendarDatePicker {
 		
 		/** an ISO 8601 date string */
 		public static String INTENT_EXTRA_DATETIME = "datetime";
@@ -19,24 +17,11 @@ public class IntentConstants {
 	}
 	
 
-	public static final String CATEGORY_CALENDAR = "com.googlecode.chartdroid.intent.category.CALENDAR";
-
-	// Pie chart extras
-	public static final String EXTRA_COLORS = "com.googlecode.chartdroid.intent.extra.COLORS";
-	public static final String EXTRA_LABELS = "com.googlecode.chartdroid.intent.extra.LABELS";
-	public static final String EXTRA_DATA = "com.googlecode.chartdroid.intent.extra.DATA";
-
-	// Calendar extras
-	public static final String EXTRA_EVENT_IDS = "com.googlecode.chartdroid.intent.extra.EVENT_IDS";
-	public static final String EXTRA_EVENT_TIMESTAMPS = "com.googlecode.chartdroid.intent.extra.EVENT_TIMESTAMPS";
-
-
-
 	public static final String CONTENT_TYPE_BASE_SINGLE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/";
 	public static final String CONTENT_TYPE_BASE_MULTIPLE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/";
 
 
-	public static final class CalendarEvent implements BaseColumns {
+	public static final class CalendarEventPicker implements BaseColumns {
 
 		private static final String VND_TYPE_DECLARATION = "vnd.org.openintents.event";
 
