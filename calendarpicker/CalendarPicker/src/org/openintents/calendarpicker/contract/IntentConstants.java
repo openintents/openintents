@@ -1,4 +1,4 @@
-package org.openintents.calendarpicker;
+package org.openintents.calendarpicker.contract;
 
 import android.content.ContentResolver;
 import android.provider.BaseColumns;

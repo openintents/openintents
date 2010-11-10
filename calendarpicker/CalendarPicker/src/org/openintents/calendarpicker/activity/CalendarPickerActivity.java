@@ -8,11 +8,11 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.openintents.calendarpicker.IntentConstants;
 import org.openintents.calendarpicker.R;
-import org.openintents.calendarpicker.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.container.CalendarDay;
 import org.openintents.calendarpicker.container.SimpleEvent;
+import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
 import org.openintents.calendarpicker.view.ScrollableMonthView.OnDayClickListener;

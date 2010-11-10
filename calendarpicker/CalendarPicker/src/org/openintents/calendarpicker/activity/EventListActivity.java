@@ -7,8 +7,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Stack;
 
-import org.openintents.calendarpicker.IntentConstants;
+import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.adapter.EventListAdapter;
+import org.openintents.calendarpicker.contract.IntentConstants;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -32,8 +33,6 @@ import android.widget.CursorAdapter;
 import android.widget.ResourceCursorAdapter;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
-
-import org.openintents.calendarpicker.R;
 
 
 public class EventListActivity extends ListActivity {
