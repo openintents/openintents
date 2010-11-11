@@ -204,7 +204,7 @@ public class Demo extends Activity implements View.OnClickListener {
    		case REQUEST_CODE_DATE_SELECTION:
    		{
    			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
-   			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH);
+   			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0);
    			
    			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
             break;
