@@ -35,7 +35,7 @@
 
 	<org.openintents.calendarpicker.view.TinyTimelineViewHorizontal
         app:text="Green" app:textColor="#ffffffff"
-        android:background="@color/green"
+        android:background="@android:color/black"
 		android:id="@+id/tiny_timeline"
 		android:layout_width="fill_parent" 
 		android:layout_height="50dip"

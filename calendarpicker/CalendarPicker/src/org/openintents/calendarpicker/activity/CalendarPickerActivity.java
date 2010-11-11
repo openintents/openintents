@@ -14,6 +14,7 @@ import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
+import org.openintents.calendarpicker.view.TinyTimelineViewHorizontal;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
 import org.openintents.calendarpicker.view.ScrollableMonthView.OnDaySelectionListener;
 
@@ -32,7 +33,6 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
 public class CalendarPickerActivity extends Activity {
@@ -55,7 +55,8 @@ public class CalendarPickerActivity extends Activity {
 	final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	TextView month_title;
-	ScrollableMonthView month_layout;
+	ScrollableMonthView month_view;
+	TinyTimelineViewHorizontal tiny_timeline;
 	
     // ========================================================================
 	void updateMonthHeader(Calendar calendar) {
@@ -98,15 +99,19 @@ public class CalendarPickerActivity extends Activity {
 	        weekday_header_layout.addView(tv, lp);
 		}
         
-		month_layout = (ScrollableMonthView) findViewById(R.id.full_month);
-        month_layout.setMonthUpdateCallback(new MonthUpdateCallback() {
+
+		tiny_timeline = (TinyTimelineViewHorizontal) findViewById(R.id.tiny_timeline);
+		
+		month_view = (ScrollableMonthView) findViewById(R.id.full_month);
+        month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {
 				updateMonthHeader(cal);
+				tiny_timeline.setDate(cal.getTime());
 			}
         });
         
-        month_layout.setOnDayTouchListener(new OnDaySelectionListener() {
+        month_view.setOnDayTouchListener(new OnDaySelectionListener() {
 
 			@Override
 			public void clickDay(CalendarDay cd) {
@@ -125,7 +130,7 @@ public class CalendarPickerActivity extends Activity {
 			}
         });
         
-        month_layout.setOnDayClickListener(new OnDaySelectionListener() {
+        month_view.setOnDayClickListener(new OnDaySelectionListener() {
 
 			@Override
 			public void clickDay(CalendarDay cd) {
@@ -173,7 +178,8 @@ public class CalendarPickerActivity extends Activity {
         }
         
         updateMonthHeader(current_month_calendar);
-        month_layout.setMonthAndEvents(current_month_calendar, events);
+		tiny_timeline.setDate(current_month_calendar.getTime());
+        month_view.setMonthAndEvents(current_month_calendar, events);
     }
     
     // ========================================================================
@@ -181,7 +187,7 @@ public class CalendarPickerActivity extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
     	super.onSaveInstanceState(outState);
     	
-    	outState.putLong(BUNDLE_CALENDAR_EPOCH, this.month_layout.getCalendar().getTimeInMillis());
+    	outState.putLong(BUNDLE_CALENDAR_EPOCH, this.month_view.getCalendar().getTimeInMillis());
     }
     
     // ========================================================================
