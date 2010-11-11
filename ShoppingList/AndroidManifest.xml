@@ -41,8 +41,12 @@
 	
 	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4"/>
 	 
-	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name" android:debuggable="true">
+	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name" android:debuggable="true"
+		android:backupAgent="ShoppingBackupAgent">
 	
+		<meta-data android:name="com.google.android.backup.api_key"
+    		android:value="AEdPqrEAAAAIyg1-9MfKF9MnoINzk-FPUGiXcqLuHLcMP3PvEg" />
+    
         <!-- aTrackDog metadata 
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
            android:value="10017" />

@@ -54,7 +54,7 @@ public class ShoppingProvider extends ContentProvider {
 
 	private static final String TAG = "ShoppingProvider";
 	private static final boolean debug = false;
-	private static final String DATABASE_NAME = "shopping.db";
+	static final String DATABASE_NAME = "shopping.db";
 
 	/**
 	 * Version of database.
