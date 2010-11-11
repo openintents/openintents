@@ -19,5 +19,9 @@
 	
 	<color name="background_month_text">#666</color>
 	<color name="cornerbox_color">#8000</color>
+	
+	
+	
+	<color name="green">#0F0</color>
 
 </resources>

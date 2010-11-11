@@ -13,6 +13,9 @@ public class IntentConstants {
 		/** an ISO 8601 date string */
 		public static String INTENT_EXTRA_DATETIME = "datetime";
 		
+		/** A long */
+		public static String INTENT_EXTRA_EPOCH = "epoch";
+		
 		public static String CONTENT_TYPE_DATETIME = "text/datetime";
 		
 		

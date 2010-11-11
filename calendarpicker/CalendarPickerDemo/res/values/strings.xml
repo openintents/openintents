@@ -5,7 +5,7 @@
     
     <!-- Calendar Picker download strings -->
     <string name="download_calendar_picker">Download Calendar Picker</string>
-    <string name="calendar_picker_modularization_explanation">The calendar picker is a separate small, free app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="calendar_picker_modularization_explanation">The calendar picker is a separate small, free, open source app.  Please download it now from the Market or the OpenIntents website.</string>
     <string name="download_calendar_picker_market">Market download</string>
     <string name="download_calendar_picker_web">Web download</string>
 </resources>

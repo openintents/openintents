@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res/org.openintents.calendarpicker"
 	android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
 	android:layout_weight="1"
@@ -26,11 +27,18 @@
 		/>
 
 	<org.openintents.calendarpicker.view.ScrollableMonthView
-		android:layoutAnimation="@anim/layout_random_fade"
 		android:id="@+id/full_month"
 		android:layout_width="fill_parent" 
 		android:layout_height="fill_parent"
 		android:layout_weight="1"
+	    />
+
+	<org.openintents.calendarpicker.view.TinyTimelineViewHorizontal
+        app:text="Green" app:textColor="#ffffffff"
+        android:background="@color/green"
+		android:id="@+id/tiny_timeline"
+		android:layout_width="fill_parent" 
+		android:layout_height="50dip"
 	    />
 
 </LinearLayout>

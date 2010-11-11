@@ -3,10 +3,7 @@ package org.openintents.calendarpicker.view;
 
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -23,7 +20,6 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
 import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -129,8 +125,6 @@ public class ScrollableMonthView extends View {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-
-	        	Log.i(TAG, "Got MONTH touch event...");
 	        	
 	        	if (event.getAction() == MotionEvent.ACTION_UP) {
 	        		if (Math.abs(vertical_offset) > 0) {
@@ -225,23 +219,16 @@ public class ScrollableMonthView extends View {
     // ========================================================================
     public void setMonth(Calendar calendar) {
     	this.month_calendar = calendar;
-    	init();
     }
     
+    List<SimpleEvent> sorted_events;
+    
     // ========================================================================
-    public void setMonthAndEvents(Calendar calendar, List<SimpleEvent> events) {
+    public void setMonthAndEvents(Calendar calendar, List<SimpleEvent> sorted_events) {
     	this.month_calendar = calendar;
-
-    	Log.d(TAG, "We must process " + events.size() + " events.");
-    	init();
+    	this.sorted_events = sorted_events;
     }
 
-    // ========================================================================
-    void init() {
-    	// FIXME
-//    	assignDayEvents(working_calendar.getTime(), day_list, events);
-    }
-    
     // ========================================================================
     /** Rolls the date back to the beginning of the week of the first week of the month.
      * Expects the calendar date to already be set to the first day of the month. */
@@ -250,44 +237,6 @@ public class ScrollableMonthView extends View {
     		if (working_calendar.get(Calendar.DAY_OF_WEEK) == working_calendar.getFirstDayOfWeek())
     			break;
     		working_calendar.add(Calendar.DAY_OF_MONTH, -1);
-    	}
-    }
-
-    // ========================================================================
-    void assignDayEvents(Date cutoff, List<CalendarDay> day_list, List<SimpleEvent> events) {
-		if (events.size() == 0) return;
-		
-		Log.e(TAG, "About to process the events...");
-
-    	// Populate each calendar day with the right events
-		List<SimpleEvent> reversed_events = new ArrayList<SimpleEvent>(events);
-        Collections.sort(reversed_events);
-        Collections.reverse(reversed_events);
-        
-		List<CalendarDay> reversed_days = new ArrayList<CalendarDay>(day_list);
-        Collections.sort(reversed_days);
-        Collections.reverse(reversed_days);        
-        
-        int i=0; 	// Event index
-        
-        // Advance the event index (backwards) until
-        // we encounter an event within the final calendar day
-        // Note: Our "working calendar" is set to the beginning of the
-        // day after the last in our list.
-        while (!cutoff.after(reversed_events.get(i).timestamp)) i++;
-    	for (CalendarDay day : reversed_days) {
-    		
-    		// Consume events until we find an event
-    		// that starts "before" the given day
-            while (!day.date.after(reversed_events.get(i).timestamp)) {
-            	day.day_events.add(reversed_events.get(i));
-
-            	Log.d(TAG, "Added event " + i);
-            	
-    			i++;
-    			if (i >= reversed_events.size())
-    				return;
-    		}
     	}
     }
 
@@ -380,7 +329,6 @@ public class ScrollableMonthView extends View {
     	void visitViewport(RectF viewport, CalendarDay child);
     }
 
-
     // ========================================================================
     int getNextMonthIndex(Calendar calendar) {
     	// Get index of following month
@@ -395,51 +343,63 @@ public class ScrollableMonthView extends View {
         int usable_width = getWidth() - getPaddingLeft() - getPaddingRight();
         int usable_height = getHeight() - getPaddingTop() - getPaddingBottom();
         
-        float inter_day_horizontal_padding = this.horizontal_spacing;
-        float width_per_day = (usable_width - (DAYS_PER_WEEK - 1)*inter_day_horizontal_padding) / DAYS_PER_WEEK;
-
-
+        // Calculate horizontal dimensions
+        float day_box_width = (usable_width - (DAYS_PER_WEEK - 1)*this.horizontal_spacing) / DAYS_PER_WEEK;
+        float width_per_day = day_box_width + this.horizontal_spacing;
+        
     	int month_index = month_calendar.get(Calendar.MONTH);
-    	
+
+    	// Set working calendar to first day of the month.
     	Calendar working_calendar = new GregorianCalendar();
     	working_calendar.clear();
-    	
-    	// Set working calendar to first day of the month.
     	working_calendar.set(month_calendar.get(Calendar.YEAR), month_index, working_calendar.getMinimum(Calendar.DAY_OF_MONTH));
     	int next_month_index = getNextMonthIndex(working_calendar);
-    	
-    	
     	setMonthWeekBeginning(working_calendar);
 
+    	// Count the weeks spanned by this month
     	int spanned_weeks = 0;
     	while (working_calendar.get(Calendar.MONTH) != next_month_index) {
     		working_calendar.add(Calendar.DAY_OF_MONTH, DAYS_PER_WEEK);
     		spanned_weeks++;
     	}
-
+    	
+        // Calculate vertical dimensions
         float day_box_height = (usable_height - (spanned_weeks - 1)*this.vertical_spacing) / spanned_weeks;
         float height_per_week = day_box_height + this.vertical_spacing;
         
+        // Reset calendar to beginning of first week
         working_calendar.set(month_calendar.get(Calendar.YEAR), month_index, working_calendar.getMinimum(Calendar.DAY_OF_MONTH));
     	setMonthWeekBeginning(working_calendar);
 
+    	// Reposition calendar according to the vertical scroll offset
     	int weeks_offset = (int) Math.floor(-vertical_offset/height_per_week);
-
 		working_calendar.add(Calendar.DAY_OF_MONTH, weeks_offset*DAYS_PER_WEEK);
-    	
+
+		// Skip all events before the given calendar date
+        int event_idx=0;
+        while (event_idx < this.sorted_events.size() && this.sorted_events.get(event_idx).timestamp.before(working_calendar.getTime())) event_idx++;
+
+
+        // The "<=" as opposed to the typical "<" allows the entire screen to be
+        // covered while scrolling.
         for (int i=0; i <= spanned_weeks; i++) {
 
             float top = getPaddingTop() + height_per_week * (i + weeks_offset);
         	
             for (int j=0; j < DAYS_PER_WEEK; j++) {
 
-        		working_calendar.add(Calendar.DAY_OF_MONTH, 1);
                 CalendarDay child = new CalendarDay(working_calendar.getTime());
-                
-                float left = getPaddingLeft() + ((width_per_day + inter_day_horizontal_padding) * j);
 
+        		working_calendar.add(Calendar.DAY_OF_MONTH, 1);
+        		
+                // Consume all events up until the next day
+                while (event_idx < this.sorted_events.size() && this.sorted_events.get(event_idx).timestamp.before(working_calendar.getTime())) {
+                	child.day_events.add(this.sorted_events.get(event_idx));
+                	event_idx++;
+                }
 
-                RectF viewport = new RectF(left, top, left + width_per_day, top + day_box_height);
+                float left = getPaddingLeft() + ((width_per_day) * j);
+                RectF viewport = new RectF(left, top, left + day_box_width, top + day_box_height);
                 
                 visitor.visitViewport(viewport, child);
             }
@@ -478,17 +438,9 @@ public class ScrollableMonthView extends View {
         my_paint.setColor(background_color);
         RectF bg = new RectF(0, 0, viewport.width(), viewport.height());
         canvas.drawRect(bg, my_paint);
-		
 
-        my_paint.setStyle(Style.FILL);
         
         float usable_size = Math.min(viewport.width(), viewport.height());
-
-
-		
-		
-		
-
         drawEventCount(canvas, resources, viewport, day, usable_size);
         drawCornerBox(canvas, resources, viewport, day, usable_size, month_active);
     }
@@ -610,10 +562,6 @@ public class ScrollableMonthView extends View {
 		
 		int inc_value = forward ? 1 : -1;
         this.month_calendar.add(Calendar.MONTH, inc_value);
-    	init();
-    	
-    	
-
 
     	month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
         invalidate();
@@ -675,7 +623,6 @@ public class ScrollableMonthView extends View {
         
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        	Log.d(TAG, "Scrolled verically by " + distanceY);
 
 			float dy = e2.getY() - e1.getY();
 			if (Math.abs(dy) >= VERTICAL_SCROLL_TOLERANCE) {

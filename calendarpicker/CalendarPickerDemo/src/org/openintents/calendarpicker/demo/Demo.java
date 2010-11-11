@@ -56,14 +56,20 @@ public class Demo extends Activity implements View.OnClickListener {
 		{
 			Intent i = new Intent(Intent.ACTION_PICK);
 			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
-            startActivityForResult(i, REQUEST_CODE_DATE_SELECTION);
+			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
 			break;
 		}
 		case R.id.button_pick_date_with_events:
 		{
-			Intent i = new Intent(Intent.ACTION_PICK);
-			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
-            startActivityForResult(i, REQUEST_CODE_DATE_SELECTION);
+	    	Uri u = EventContentProvider.constructUri(12345);
+			Intent i = new Intent(Intent.ACTION_PICK, u);
+
+			Log.e(TAG, "I specified a URI for the date-picker Intent!");
+			
+			// XXX Specifying the "mime-type" manually has the effect of
+			// nullifying the data URI!
+//			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
+			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
 			break;
 		}
 		case R.id.button_pick_event_intent_extras:
@@ -82,28 +88,33 @@ public class Demo extends Activity implements View.OnClickListener {
 				event_times[i] = event.timestamp;
 			}
 
-
 			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS, event_ids);
 			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS, event_times);
 
-			if (Market.isIntentAvailable(this, intent)) {
-				startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
-			} else {
-				showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
-			}
+			downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
+
 			break;
 		}
 		case R.id.button_pick_event_content_provider:
 		{
 	    	Uri u = EventContentProvider.constructUri(12345);
 			Intent i = new Intent(Intent.ACTION_PICK, u);
-            startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
+			downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
 			break;
 		}
 		}
 	}
-    
-    // =============================================
+
+    // ========================================================================
+	void downloadLaunchCheck(Intent intent, int request_code) {
+		if (Market.isIntentAvailable(this, intent)) {
+			startActivityForResult(intent, request_code);
+		} else {
+			showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
+		}
+	}
+	
+    // ========================================================================
     @Override
     protected void onPrepareDialog(int id, Dialog dialog) {
 
@@ -193,8 +204,9 @@ public class Demo extends Activity implements View.OnClickListener {
    		case REQUEST_CODE_DATE_SELECTION:
    		{
    			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
-   			Toast.makeText(this, "Result: " + iso_date, Toast.LENGTH_SHORT).show();
-   			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date );
+   			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH);
+   			
+   			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
             break;
         }
    		case REQUEST_CODE_EVENT_SELECTION:

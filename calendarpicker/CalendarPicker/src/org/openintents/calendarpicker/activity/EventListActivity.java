@@ -131,13 +131,16 @@ public class EventListActivity extends ListActivity {
 
 		public void onItemClick(AdapterView<?> adapter_view, View arg1, int position, long id) {
 			
-//			Cursor c = (Cursor) ((CursorAdapter) adapter_view.getAdapter()).getItem(position);
-//			int rowid_column = c.getColumnIndex("_id");
-//			long rowid = c.getLong(rowid_column);
-			
+			Cursor cursor = (Cursor) ((CursorAdapter) adapter_view.getAdapter()).getItem(position);
+
 			Intent i = new Intent();
 			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
 			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, 0));
+
+			int epoch_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
+			long event_epoch = cursor.getLong(epoch_column);
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, event_epoch);
+
 	        setResult(Activity.RESULT_OK, i);
 			finish();
 		}
