@@ -1,5 +1,7 @@
 package org.openintents.calendarpicker.demo;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
@@ -11,8 +13,6 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class Market {
 

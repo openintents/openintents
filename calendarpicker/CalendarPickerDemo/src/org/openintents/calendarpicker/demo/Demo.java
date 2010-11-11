@@ -8,9 +8,6 @@ import java.util.Random;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.demo.provider.EventContentProvider;
 
-import com.googlecode.chartdroid.demo.R;
-import com.kostmo.charbuilder.Market;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -105,8 +102,6 @@ public class Demo extends Activity implements View.OnClickListener {
 		}
 		}
 	}
-	
-
     
     // =============================================
     @Override
