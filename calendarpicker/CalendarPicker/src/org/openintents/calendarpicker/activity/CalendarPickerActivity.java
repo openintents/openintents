@@ -15,7 +15,7 @@ import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
-import org.openintents.calendarpicker.view.ScrollableMonthView.OnDayClickListener;
+import org.openintents.calendarpicker.view.ScrollableMonthView.OnDaySelectionListener;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,7 +37,6 @@ import android.widget.LinearLayout.LayoutParams;
 
 public class CalendarPickerActivity extends Activity {
 
-
     final static public String TAG = "CalendarPickerActivity";
 
 	static final int REQUEST_CODE_EVENT_SELECTION = 1;
@@ -53,6 +52,8 @@ public class CalendarPickerActivity extends Activity {
 	final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	TextView month_title;
+	ScrollableMonthView month_layout;
+	
     // ========================================================================
 	void updateMonthHeader(Calendar calendar) {
         SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy");
@@ -69,8 +70,7 @@ public class CalendarPickerActivity extends Activity {
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.titlebar_icon);
 
         this.month_title = (TextView) findViewById(R.id.month_title);
-        Calendar current_month_calendar = new GregorianCalendar();
-        updateMonthHeader(current_month_calendar);
+
 
         Uri intent_data = getIntent().getData();
         // Zip the events
@@ -84,7 +84,11 @@ public class CalendarPickerActivity extends Activity {
  					new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
  					null, null, null);
 
- 			this.events = getEventsFromCursor(cursor);
+ 			if (cursor != null) {
+ 				this.events = getEventsFromCursor(cursor);
+ 			} else {
+ 				this.events = getEventsFromIntent(this.getIntent());
+ 			}
         }
 
         DateFormatSymbols dfs = new DateFormatSymbols();
@@ -99,9 +103,7 @@ public class CalendarPickerActivity extends Activity {
 	        weekday_header_layout.addView(tv, lp);
 		}
         
-		ScrollableMonthView month_layout = (ScrollableMonthView) findViewById(R.id.full_month);
-        month_layout.setMonthAndEvents(current_month_calendar, events);
-        
+		month_layout = (ScrollableMonthView) findViewById(R.id.full_month);
         month_layout.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {
@@ -109,7 +111,7 @@ public class CalendarPickerActivity extends Activity {
 			}
         });
         
-        month_layout.setOnDayTouchListener(new OnDayClickListener() {
+        month_layout.setOnDayTouchListener(new OnDaySelectionListener() {
 
 			@Override
 			public void clickDay(CalendarDay cd) {
@@ -128,7 +130,7 @@ public class CalendarPickerActivity extends Activity {
 			}
         });
         
-        month_layout.setOnDayClickListener(new OnDayClickListener() {
+        month_layout.setOnDayClickListener(new OnDaySelectionListener() {
 
 			@Override
 			public void clickDay(CalendarDay cd) {
@@ -165,8 +167,55 @@ public class CalendarPickerActivity extends Activity {
 				}
 			}
         });
+
+        
+        Calendar current_month_calendar = new GregorianCalendar();
+        
+        if (savedInstanceState != null) {
+        	long saved_millis = savedInstanceState.getLong(BUNDLE_CALENDAR_EPOCH);
+        	current_month_calendar.setTimeInMillis(saved_millis);
+        }
+        
+        updateMonthHeader(current_month_calendar);
+        month_layout.setMonthAndEvents(current_month_calendar, events);
+    }
+    
+    final static String BUNDLE_CALENDAR_EPOCH = "BUNDLE_CALENDAR_EPOCH";
+    
+    // ========================================================================
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    	super.onSaveInstanceState(outState);
+    	
+    	outState.putLong(BUNDLE_CALENDAR_EPOCH, this.month_layout.getCalendar().getTimeInMillis());
+    }
+    
+    // ========================================================================
+    @Override
+    protected void onRestoreInstanceState (Bundle savedInstanceState) {
+    	super.onRestoreInstanceState(savedInstanceState);
+
     }
 
+    // ========================================================================
+    List<SimpleEvent> getEventsFromIntent(Intent intent) {
+    	
+    	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
+
+    	// We have been passed the data directly.
+
+//     	Log.d(TAG, "We have been passed the data directly.");
+
+    	long[] event_ids = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
+    	long[] event_timestamps = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS);
+    	for (int i=0; i<event_timestamps.length; i++)
+    		events.add( new SimpleEvent(event_ids[i], event_timestamps[i]) );
+
+//	    Log.d(TAG, "Added " + event_timestamps.length + " timestamps.");
+
+    	return events;
+    }
+    
     // ========================================================================
     List<SimpleEvent> getEventsFromCursor(Cursor cursor) {
 
@@ -189,7 +238,7 @@ public class CalendarPickerActivity extends Activity {
 		        			timestamp) );
 		        	
 	 			} while (cursor.moveToNext());
- 			}
+			}
 			
 			return events;
     }

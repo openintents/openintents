@@ -29,7 +29,6 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -40,6 +39,8 @@ public class ScrollableMonthView extends View {
 	static final String TAG = "ScrollableMonthView";
 	
 	final int DAYS_PER_WEEK = 7;
+	
+	
 
     boolean is_holding_longpress = false;
     long longpress_start_time;
@@ -50,7 +51,6 @@ public class ScrollableMonthView extends View {
     float horizontal_spacing = 2;
     float vertical_spacing = 2;
     
-    float vertical_offset = 0;
     
 
     Context context;
@@ -58,26 +58,32 @@ public class ScrollableMonthView extends View {
 	TextPaint month_bg_paint;
     Calendar month_calendar;
     
-    List<CalendarDay> day_list;
     CalendarDay highlighted_day = null;
     
     MonthUpdateCallback month_update_callback = null;
-    OnDayClickListener day_click_callback = null, day_touch_callback = null;
+    OnDaySelectionListener day_click_callback = null, day_touch_callback = null;
     
-    float VERTICAL_SCROLL_TOLERANCE = 75;
-//    float SNAP_BACK_ANIMATION_ACCELERATION = 100;	// 100 px/s^2
-    float SNAP_BACK_MILLISECONDS = 500;
-	long snap_back_start_time;
-	float snap_back_start_offset = 0;
+
+    
 	float max_month_width;
     
     boolean snapping_back = false;
 
 
-	long month_text_fader_start_time;
-	boolean month_text_fader_running = false;
-	float MONTH_TEXT_FADER_MILLISECONDS = 300;
 
+    float MONTH_TEXT_FADER_MILLISECONDS = 500;
+	TimedAnimation month_text_fader = null;
+	
+
+//  float SNAP_BACK_ANIMATION_ACCELERATION = 100;	// 100 px/s^2
+	float SNAP_BACK_MILLISECONDS = 500;
+	TimedAnimation snap_back_animation = null;
+	
+    float VERTICAL_SCROLL_TOLERANCE = 75;
+    
+	float snap_back_start_offset = 0;
+    float vertical_offset = 0;
+	
     // ========================================================================
 	float getMaxMonthWidth(Paint paint) {
 	
@@ -91,6 +97,11 @@ public class ScrollableMonthView extends View {
     	}
     	
     	return max_month_width;
+	}
+
+    // ========================================================================
+	public Calendar getCalendar() {
+		return this.month_calendar;
 	}
 
     // ========================================================================
@@ -123,13 +134,14 @@ public class ScrollableMonthView extends View {
 	        	
 	        	if (event.getAction() == MotionEvent.ACTION_UP) {
 	        		if (Math.abs(vertical_offset) > 0) {
-	        			snap_back_start_time = SystemClock.uptimeMillis();
+	        			
+	        			snap_back_animation = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
 	        			snap_back_start_offset = vertical_offset;
-	        			snapping_back = true;
+
         				invalidate();
 	        		}
 	        	} else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-        			snapping_back = false;
+	        		snap_back_animation = null;
 	        	}
 	        	
 				
@@ -140,6 +152,7 @@ public class ScrollableMonthView extends View {
 			}
         });
         
+        /*
         setOnKeyListener(new OnKeyListener() {
 
 			@Override
@@ -179,6 +192,7 @@ public class ScrollableMonthView extends View {
 		    	return true;
 			}
 		});
+		*/
     }
     
     
@@ -188,17 +202,17 @@ public class ScrollableMonthView extends View {
     }
     
     // ========================================================================
-    public interface OnDayClickListener {
+    public interface OnDaySelectionListener {
     	void clickDay(CalendarDay day);
     }
     
     // ========================================================================
-    public void setOnDayClickListener(OnDayClickListener callback) {
+    public void setOnDayClickListener(OnDaySelectionListener callback) {
     	this.day_click_callback = callback;
     }
 
     // ========================================================================
-    public void setOnDayTouchListener(OnDayClickListener callback) {
+    public void setOnDayTouchListener(OnDaySelectionListener callback) {
     	this.day_touch_callback = callback;
     }    
     
@@ -211,7 +225,7 @@ public class ScrollableMonthView extends View {
     // ========================================================================
     public void setMonth(Calendar calendar) {
     	this.month_calendar = calendar;
-    	init(new ArrayList<SimpleEvent>());
+    	init();
     }
     
     // ========================================================================
@@ -219,65 +233,24 @@ public class ScrollableMonthView extends View {
     	this.month_calendar = calendar;
 
     	Log.d(TAG, "We must process " + events.size() + " events.");
-    	init(events);
+    	init();
     }
 
     // ========================================================================
     void init() {
-    	init(new ArrayList<SimpleEvent>());
+    	// FIXME
+//    	assignDayEvents(working_calendar.getTime(), day_list, events);
     }
     
     // ========================================================================
-    void init(List<SimpleEvent> events) {
-
-    	if (this.month_calendar != null) {
-    		this.day_list = generateChildren(this.month_calendar, events);
-    	} else {
-    		this.day_list = new ArrayList<CalendarDay>();
-    	}
-    }
-
-    // ========================================================================
-    List<CalendarDay> generateChildren(Calendar month_cal, List<SimpleEvent> events) {
-
-    	List<CalendarDay> day_list = new ArrayList<CalendarDay>();
-
-    	int month_index = month_cal.get(Calendar.MONTH);
-    	
-    	Calendar working_calendar = new GregorianCalendar();
-    	working_calendar.clear();
-    	
-    	// Set working calendar to first day of the month.
-    	working_calendar.set(month_cal.get(Calendar.YEAR), month_index, working_calendar.getMinimum(Calendar.DAY_OF_MONTH));
-    	
-
-    	// Get index of following month
-    	Calendar dupe2 = (Calendar) working_calendar.clone();
-    	dupe2.add(Calendar.MONTH, 1);
-    	int next_month_index = dupe2.get(Calendar.MONTH);
-    	
-    	
-    	// Roll the date back to the beginning of the week
+    /** Rolls the date back to the beginning of the week of the first week of the month.
+     * Expects the calendar date to already be set to the first day of the month. */
+    void setMonthWeekBeginning(Calendar working_calendar) {
     	while (true) {
-    		if (working_calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
+    		if (working_calendar.get(Calendar.DAY_OF_WEEK) == working_calendar.getFirstDayOfWeek())
     			break;
-    		
     		working_calendar.add(Calendar.DAY_OF_MONTH, -1);
     	}
-    	
-    	// Get trailing days from previous month and leading days from following month
-    	while (true) {
-    		day_list.add(new CalendarDay(working_calendar.getTime()));
-    		working_calendar.add(Calendar.DAY_OF_MONTH, 1);
-    		
-    		int current_month = working_calendar.get(Calendar.MONTH);
-    		if (working_calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY && current_month == next_month_index)
-    			break;
-    	}
-    	
-    	assignDayEvents(working_calendar.getTime(), day_list, events);
-		
-		return day_list;
     }
 
     // ========================================================================
@@ -342,30 +315,29 @@ public class ScrollableMonthView extends View {
         
         
         
-                // We animate the view by repeatedly invalidating it.
+        // We animate the view by repeatedly invalidating it.
         if (is_holding_longpress) {
         	this.invalidate();
         }
          
-        if (snapping_back) {
+        if (snap_back_animation != null) {
         	
         	long now = SystemClock.uptimeMillis();
-        	if (now > snap_back_start_time + SNAP_BACK_MILLISECONDS) {
-        		snapping_back = false;
+        	if (snap_back_animation.isFinished(now)) {
         		vertical_offset = 0;
+        		snap_back_animation = null;
         	} else {
-        		float fraction = (now - snap_back_start_time)/SNAP_BACK_MILLISECONDS;
+        		float fraction = snap_back_animation.getFraction(now);
         		vertical_offset = (1 - fraction) * snap_back_start_offset;
         	}
         	
         	this.invalidate();
         }
         
-        if (month_text_fader_running) {
+        if (month_text_fader != null) {
             long now = SystemClock.uptimeMillis();
-            if (now >= month_text_fader_start_time + MONTH_TEXT_FADER_MILLISECONDS) {
-            	month_text_fader_running = false;
-            }
+            if (month_text_fader.isFinished(now))
+            	month_text_fader = null;
 			
         	this.invalidate();
         }
@@ -380,6 +352,16 @@ public class ScrollableMonthView extends View {
     	SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
     	String month_string = sdf.format(this.month_calendar.getTime());
 
+        long now = SystemClock.uptimeMillis();
+        float fraction = 1;
+        if (month_text_fader != null)
+        	fraction = month_text_fader.getFraction(now);
+
+    	int target_color = this.context.getResources().getColor(R.color.background_month_text);
+    	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
+    	month_bg_paint.setColor(text_color);
+    	
+    	
 		canvas.save();
 		canvas.translate(getWidth(), 0);
 		canvas.rotate(-90);
@@ -389,14 +371,6 @@ public class ScrollableMonthView extends View {
 		// of the capital "J"s and the "y"s.
 //		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
 
-
-        long now = SystemClock.uptimeMillis();
-    	float fraction = (now - month_text_fader_start_time)/MONTH_TEXT_FADER_MILLISECONDS;
-		fraction = Math.min(1, fraction);
-
-    	int target_color = this.context.getResources().getColor(R.color.background_month_text);
-    	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
-    	month_bg_paint.setColor(text_color);
 		canvas.drawText(month_string, 0, 0, month_bg_paint);
 		canvas.restore();	
     }
@@ -406,6 +380,15 @@ public class ScrollableMonthView extends View {
     	void visitViewport(RectF viewport, CalendarDay child);
     }
 
+
+    // ========================================================================
+    int getNextMonthIndex(Calendar calendar) {
+    	// Get index of following month
+    	Calendar dupe2 = (Calendar) calendar.clone();
+    	dupe2.add(Calendar.MONTH, 1);
+    	return dupe2.get(Calendar.MONTH);
+    }
+    
     // ========================================================================
     void visitDayViewports(ViewportVisitor visitor) {
     	
@@ -414,23 +397,52 @@ public class ScrollableMonthView extends View {
         
         float inter_day_horizontal_padding = this.horizontal_spacing;
         float width_per_day = (usable_width - (DAYS_PER_WEEK - 1)*inter_day_horizontal_padding) / DAYS_PER_WEEK;
-        
-        
-        int weeks_per_month = (int) Math.ceil(this.day_list.size() / (float) DAYS_PER_WEEK);
-        
-        float inter_day_vertical_padding = this.vertical_spacing;
-        float height_per_day = (usable_height - (weeks_per_month - 1)*inter_day_vertical_padding) / weeks_per_month;
-        
-    	
-        for (int i = 0; i < this.day_list.size(); i++) {
-            final CalendarDay child = this.day_list.get(i);
-            
-            int left = getPaddingLeft() + (int) ((width_per_day + inter_day_horizontal_padding) * (i % DAYS_PER_WEEK));
-            int top = getPaddingTop() + (int) ((height_per_day + inter_day_vertical_padding) * (i / DAYS_PER_WEEK));
 
-            RectF viewport = new RectF(left, top, left + width_per_day, top + height_per_day);
-            
-            visitor.visitViewport(viewport, child);
+
+    	int month_index = month_calendar.get(Calendar.MONTH);
+    	
+    	Calendar working_calendar = new GregorianCalendar();
+    	working_calendar.clear();
+    	
+    	// Set working calendar to first day of the month.
+    	working_calendar.set(month_calendar.get(Calendar.YEAR), month_index, working_calendar.getMinimum(Calendar.DAY_OF_MONTH));
+    	int next_month_index = getNextMonthIndex(working_calendar);
+    	
+    	
+    	setMonthWeekBeginning(working_calendar);
+
+    	int spanned_weeks = 0;
+    	while (working_calendar.get(Calendar.MONTH) != next_month_index) {
+    		working_calendar.add(Calendar.DAY_OF_MONTH, DAYS_PER_WEEK);
+    		spanned_weeks++;
+    	}
+
+        float day_box_height = (usable_height - (spanned_weeks - 1)*this.vertical_spacing) / spanned_weeks;
+        float height_per_week = day_box_height + this.vertical_spacing;
+        
+        working_calendar.set(month_calendar.get(Calendar.YEAR), month_index, working_calendar.getMinimum(Calendar.DAY_OF_MONTH));
+    	setMonthWeekBeginning(working_calendar);
+
+    	int weeks_offset = (int) Math.floor(-vertical_offset/height_per_week);
+
+		working_calendar.add(Calendar.DAY_OF_MONTH, weeks_offset*DAYS_PER_WEEK);
+    	
+        for (int i=0; i <= spanned_weeks; i++) {
+
+            float top = getPaddingTop() + height_per_week * (i + weeks_offset);
+        	
+            for (int j=0; j < DAYS_PER_WEEK; j++) {
+
+        		working_calendar.add(Calendar.DAY_OF_MONTH, 1);
+                CalendarDay child = new CalendarDay(working_calendar.getTime());
+                
+                float left = getPaddingLeft() + ((width_per_day + inter_day_horizontal_padding) * j);
+
+
+                RectF viewport = new RectF(left, top, left + width_per_day, top + day_box_height);
+                
+                visitor.visitViewport(viewport, child);
+            }
         }
     }
 
@@ -440,16 +452,16 @@ public class ScrollableMonthView extends View {
     	Calendar daycal = new GregorianCalendar();
     	daycal.setTime(day.date);
     	
-    	boolean dim = month_calendar.get(Calendar.MONTH) == daycal.get(Calendar.MONTH);
+    	boolean month_active = month_calendar.get(Calendar.MONTH) == daycal.get(Calendar.MONTH);
         
         Resources resources = this.context.getResources();
         
         boolean day_highlighted = day == this.highlighted_day;
         int background_color = day_highlighted ?
         		resources.getColor(
-        				dim ? R.color.calendar_date_background_passive_selected : R.color.calendar_date_background_active_selected)
+        				month_active ? R.color.calendar_date_background_passive_selected : R.color.calendar_date_background_active_selected)
         		: resources.getColor(
-        				dim ? R.color.calendar_date_background_passive : R.color.calendar_date_background_active);
+        				month_active ? R.color.calendar_date_background_passive : R.color.calendar_date_background_active);
         				
         if (this.is_holding_longpress) {
 
@@ -478,7 +490,7 @@ public class ScrollableMonthView extends View {
 		
 
         drawEventCount(canvas, resources, viewport, day, usable_size);
-        drawCornerBox(canvas, resources, viewport, day, usable_size);
+        drawCornerBox(canvas, resources, viewport, day, usable_size, month_active);
     }
 
     // ========================================================================
@@ -514,7 +526,7 @@ public class ScrollableMonthView extends View {
     }
     
     // ========================================================================
-    void drawCornerBox(Canvas canvas, Resources resources, RectF viewport, CalendarDay calendar_day, float usable_size) {
+    void drawCornerBox(Canvas canvas, Resources resources, RectF viewport, CalendarDay calendar_day, float usable_size, boolean month_active) {
     	
         float corner_box_side = usable_size/2f;
         RectF rect = new RectF(
@@ -537,8 +549,7 @@ public class ScrollableMonthView extends View {
 		my_paint.setTextSize(corner_box_side*0.8f);
 		float text_height = my_paint.getFontMetrics().ascent + my_paint.getFontMetrics().descent;
 
-		
-        int text_color = resources.getColor(R.color.calendar_date_number);
+        int text_color = resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
         my_paint.setColor(text_color);
         
     	my_paint.setTextAlign(Align.CENTER);
@@ -600,8 +611,11 @@ public class ScrollableMonthView extends View {
 		int inc_value = forward ? 1 : -1;
         this.month_calendar.add(Calendar.MONTH, inc_value);
     	init();
-    	month_text_fader_start_time = SystemClock.uptimeMillis();
-		month_text_fader_running = true;
+    	
+    	
+
+
+    	month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
         invalidate();
         
         if (this.month_update_callback != null) {

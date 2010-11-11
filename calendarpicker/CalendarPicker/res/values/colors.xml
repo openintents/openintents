@@ -5,6 +5,7 @@
     <color name="transparent">#0000</color>
 
 	<color name="calendar_date_number">@android:color/white</color>
+	<color name="calendar_date_number_passive">@android:color/secondary_text_dark</color>
 	<color name="event_count_number">@android:color/black</color>
 	
 	<color name="calendar_date_background_active_selected">#C00f</color>

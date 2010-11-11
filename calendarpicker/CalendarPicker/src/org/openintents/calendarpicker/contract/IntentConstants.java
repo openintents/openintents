@@ -14,6 +14,12 @@ public class IntentConstants {
 		public static String INTENT_EXTRA_DATETIME = "datetime";
 		
 		public static String CONTENT_TYPE_DATETIME = "text/datetime";
+		
+		
+		
+		// Calendar event Intent extras
+		public static final String EXTRA_EVENT_IDS = "com.googlecode.chartdroid.intent.extra.EVENT_IDS";
+		public static final String EXTRA_EVENT_TIMESTAMPS = "com.googlecode.chartdroid.intent.extra.EVENT_TIMESTAMPS";
 	}
 	
 
@@ -36,5 +42,8 @@ public class IntentConstants {
 		public static final String COLUMN_EVENT_TITLE = "title";
 		public static final String COLUMN_EVENT_QUANTITY = "quantity";
 		public static final String COLUMN_EVENT_TIMESTAMP = "timestamp";
+		
+		
+
 	}
 }
