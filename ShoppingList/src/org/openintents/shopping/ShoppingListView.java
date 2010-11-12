@@ -74,7 +74,8 @@ public class ShoppingListView extends ListView {
 	public String mTextSuffixChecked;
 	public int mBackgroundPadding;
 
-	NumberFormat mPriceFormatter = DecimalFormat.getNumberInstance(Locale.ENGLISH);
+	NumberFormat mPriceFormatter = DecimalFormat
+			.getNumberInstance(Locale.ENGLISH);
 
 	int mMode = ShoppingActivity.MODE_IN_SHOP;
 	Cursor mCursorItems;
@@ -83,29 +84,30 @@ public class ShoppingListView extends ListView {
 
 	private TextView mTotalTextView;
 	private TextView mTotalCheckedTextView;
-	
+
 	private Drawable mDefaultDivider;
 
-	
-    private int mDragPos;      // which item is being dragged
-    private int mFirstDragPos; // where was the dragged item originally
-    private int mDragPoint;    // at what offset inside the item did the user grab it
-    private int mCoordOffset;  // the difference between screen coordinates and coordinates in this view
-    
-    private WindowManager mWindowManager;
-    private WindowManager.LayoutParams mWindowParams;
-    private Rect mTempRect = new Rect();
-    
-    //dragging elements
-    private Bitmap mDragBitmap;
-    private ImageView mDragView;
-    private int mHeight;
-    private int mUpperBound;
-    private int mLowerBound;
-    private int mTouchSlop;
-        private int mItemHeightHalf;
-    private int mItemHeightNormal;
-    private int mItemHeightExpanded;
+	private int mDragPos; // which item is being dragged
+	private int mFirstDragPos; // where was the dragged item originally
+	private int mDragPoint; // at what offset inside the item did the user grab
+							// it
+	private int mCoordOffset; // the difference between screen coordinates and
+								// coordinates in this view
+
+	private WindowManager mWindowManager;
+	private WindowManager.LayoutParams mWindowParams;
+	private Rect mTempRect = new Rect();
+
+	// dragging elements
+	private Bitmap mDragBitmap;
+	private ImageView mDragView;
+	private int mHeight;
+	private int mUpperBound;
+	private int mLowerBound;
+	private int mTouchSlop;
+	private int mItemHeightHalf;
+	private int mItemHeightNormal;
+	private int mItemHeightExpanded;
 
 	private DragListener mDragListener;
 	private DropListener mDropListener;
@@ -135,7 +137,7 @@ public class ShoppingListView extends ListView {
 				final Cursor c, final String[] from, final int[] to) {
 			super(context, layout, c, from, to);
 			super.setViewBinder(this);
-			
+
 			mPriceFormatter.setMaximumFractionDigits(2);
 			mPriceFormatter.setMinimumFractionDigits(2);
 		}
@@ -145,7 +147,10 @@ public class ShoppingListView extends ListView {
 			View view = super.newView(context, cursor, parent);
 			view.findViewById(R.id.price).setVisibility(mPriceVisibility);
 			view.findViewById(R.id.tags).setVisibility(mTagsVisibility);
-			/*view.findViewById(R.id.quantity).setVisibility(mQuantityVisibility);*/
+			/*
+			 * view.findViewById(R.id.quantity).setVisibility(mQuantityVisibility
+			 * );
+			 */
 			return view;
 		}
 
@@ -256,11 +261,11 @@ public class ShoppingListView extends ListView {
 				}
 
 			});
-			
 
 			// also check around check box
-			LinearLayout l = (LinearLayout) view.findViewById(R.id.check_surround);
-			
+			LinearLayout l = (LinearLayout) view
+					.findViewById(R.id.check_surround);
+
 			l.setOnClickListener(new OnClickListener() {
 
 				@Override
@@ -270,9 +275,10 @@ public class ShoppingListView extends ListView {
 				}
 
 			});
-			
+
 			// Check for clicks on item text
-			RelativeLayout r = (RelativeLayout) view.findViewById(R.id.description);
+			RelativeLayout r = (RelativeLayout) view
+					.findViewById(R.id.description);
 
 			r.setOnClickListener(new OnClickListener() {
 
@@ -285,15 +291,17 @@ public class ShoppingListView extends ListView {
 				}
 
 			});
-			
+
 		}
 
 		public boolean setViewValue(View view, Cursor cursor, int i) {
 			int id = view.getId();
-			if (id == R.id.name){
-				String name = cursor.getString(ShoppingActivity.mStringItemsITEMNAME);
-				String quantity = cursor.getString(ShoppingActivity.mStringItemsQUANTITY);
-				if (mQuantityVisibility == View.VISIBLE 
+			if (id == R.id.name) {
+				String name = cursor
+						.getString(ShoppingActivity.mStringItemsITEMNAME);
+				String quantity = cursor
+						.getString(ShoppingActivity.mStringItemsQUANTITY);
+				if (mQuantityVisibility == View.VISIBLE
 						&& !TextUtils.isEmpty(quantity)) {
 					name = quantity + " " + name;
 				}
@@ -326,21 +334,16 @@ public class ShoppingListView extends ListView {
 					tv.setText("");
 				}
 				return true;
-			}/* else if (id == R.id.quantity) {
-				//String quantity = cursor
-				//		.getString(ShoppingActivity.mStringItemsQUANTITY);
-				TextView tv = (TextView) view;
-				//if (mQuantityVisibility == View.VISIBLE
-				//		&& !TextUtils.isEmpty(quantity)) {
-				//	tv.setVisibility(View.VISIBLE);
-				//	tv.setTextColor(mPriceTextColor);
-				//	tv.setText(quantity);
-				//} else {
-					tv.setVisibility(View.GONE);
-				//	tv.setText("");
-				//}
-				return true;
-			} */else {
+			}/*
+			 * else if (id == R.id.quantity) { //String quantity = cursor //
+			 * .getString(ShoppingActivity.mStringItemsQUANTITY); TextView tv =
+			 * (TextView) view; //if (mQuantityVisibility == View.VISIBLE // &&
+			 * !TextUtils.isEmpty(quantity)) { //
+			 * tv.setVisibility(View.VISIBLE); //
+			 * tv.setTextColor(mPriceTextColor); // tv.setText(quantity); //}
+			 * else { tv.setVisibility(View.GONE); // tv.setText(""); //} return
+			 * true; }
+			 */else {
 				return false;
 			}
 		}
@@ -388,9 +391,9 @@ public class ShoppingListView extends ListView {
 	}
 
 	private void init() {
-	    mItemHeightNormal = 45;
-        mItemHeightHalf = mItemHeightNormal / 2;
-        mItemHeightExpanded = 90;
+		mItemHeightNormal = 45;
+		mItemHeightHalf = mItemHeightNormal / 2;
+		mItemHeightExpanded = 90;
 
 		// Remember standard divider
 		mDefaultDivider = getDivider();
@@ -408,7 +411,8 @@ public class ShoppingListView extends ListView {
 
 	/**
 	 * 
-	 * @param activity Activity to manage the cursor.
+	 * @param activity
+	 *            Activity to manage the cursor.
 	 * @param listId
 	 * @return
 	 */
@@ -431,7 +435,7 @@ public class ShoppingListView extends ListView {
 		} else {
 			selection = "list_id = ? ";
 		}
-		
+
 		if (mCursorItems != null && !mCursorItems.isClosed()) {
 			mCursorItems.close();
 		}
@@ -442,7 +446,7 @@ public class ShoppingListView extends ListView {
 				ContainsFull.CONTENT_URI, ShoppingActivity.mStringItems,
 				selection, new String[] { String.valueOf(listId) }, sortOrder);
 		activity.startManagingCursor(mCursorItems);
-		
+
 		registerContentObserver();
 
 		// Activate the following for a striped list.
@@ -474,11 +478,14 @@ public class ShoppingListView extends ListView {
 														 * ContainsFull.ITEM_IMAGE
 														 * ,
 														 */
-				ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE/*,
-						ContainsFull.QUANTITY*/ },
+				ContainsFull.ITEM_TAGS, ContainsFull.ITEM_PRICE /*
+																 * ,
+																 * ContainsFull
+																 * .QUANTITY
+																 */},
 				// the view defined in the XML template
 				new int[] { R.id.name, /* R.id.image_URI, */R.id.tags,
-						R.id.price/*, R.id.quantity*/ });
+						R.id.price /* , R.id.quantity */});
 		setAdapter(adapter);
 
 		// called in requery():
@@ -520,13 +527,13 @@ public class ShoppingListView extends ListView {
 		} else {
 			// New styles:
 			boolean themeFound = setRemoteStyle(themeName, size);
-			
+
 			if (!themeFound) {
 				// Some error occured, let's use default style:
 				setLocalStyle(R.style.Theme_ShoppingList, size);
 			}
 		}
-		
+
 		invalidate();
 		if (mCursorItems != null) {
 			requery();
@@ -535,82 +542,89 @@ public class ShoppingListView extends ListView {
 
 	private void setLocalStyle(int styleResId, int size) {
 		String styleName = getResources().getResourceName(styleResId);
-		
+
 		boolean themefound = setRemoteStyle(styleName, size);
-		
+
 		if (!themefound) {
 			// Actually this should never happen.
 			Log.e(TAG, "Local theme not found: " + styleName);
 		}
 	}
-	
+
 	private boolean setRemoteStyle(String styleName, int size) {
 		if (TextUtils.isEmpty(styleName)) {
-			if (debug) Log.e(TAG, "Empty style name: " + styleName);
+			if (debug)
+				Log.e(TAG, "Empty style name: " + styleName);
 			return false;
 		}
-		
+
 		PackageManager pm = getContext().getPackageManager();
-		
+
 		String packageName = ThemeUtils.getPackageNameFromStyle(styleName);
-		
+
 		if (packageName == null) {
 			Log.e(TAG, "Invalid style name: " + styleName);
 			return false;
 		}
-		
+
 		Context c = null;
 		try {
 			c = getContext().createPackageContext(packageName, 0);
 		} catch (NameNotFoundException e) {
-			Log.e(TAG, "Package for style not found: " + packageName + ", " + styleName);
+			Log.e(TAG, "Package for style not found: " + packageName + ", "
+					+ styleName);
 			return false;
 		}
-		
+
 		Resources res = c.getResources();
-		
+
 		int themeid = res.getIdentifier(styleName, null, null);
-		
+
 		if (themeid == 0) {
 			Log.e(TAG, "Theme name not found: " + styleName);
 			return false;
 		}
-		
+
 		try {
 			ThemeAttributes ta = new ThemeAttributes(c, packageName, themeid);
-			
+
 			mTextTypeface = ta.getString(ThemeShoppingList.textTypeface);
 			mCurrentTypeface = null;
-	
+
 			// Look for special cases:
 			if ("monospace".equals(mTextTypeface)) {
-				mCurrentTypeface = Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL);
+				mCurrentTypeface = Typeface.create(Typeface.MONOSPACE,
+						Typeface.NORMAL);
 			} else if ("sans".equals(mTextTypeface)) {
-				mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL);
+				mCurrentTypeface = Typeface.create(Typeface.SANS_SERIF,
+						Typeface.NORMAL);
 			} else if ("serif".equals(mTextTypeface)) {
-				mCurrentTypeface = Typeface.create(Typeface.SERIF, Typeface.NORMAL);
+				mCurrentTypeface = Typeface.create(Typeface.SERIF,
+						Typeface.NORMAL);
 			} else if (!TextUtils.isEmpty(mTextTypeface)) {
-	
+
 				try {
-					Log.d(TAG, "Reading typeface: package: " + packageName + ", typeface: " + mTextTypeface);
-					Resources remoteRes = pm.getResourcesForApplication(packageName);
-					mCurrentTypeface = Typeface.createFromAsset(remoteRes.getAssets(),
-							mTextTypeface);
+					Log.d(TAG, "Reading typeface: package: " + packageName
+							+ ", typeface: " + mTextTypeface);
+					Resources remoteRes = pm
+							.getResourcesForApplication(packageName);
+					mCurrentTypeface = Typeface.createFromAsset(remoteRes
+							.getAssets(), mTextTypeface);
 					Log.d(TAG, "Result: " + mCurrentTypeface);
 				} catch (NameNotFoundException e) {
 					Log.e(TAG, "Package not found for Typeface", e);
 				}
 			}
-			
-			mTextUpperCaseFont = ta.getBoolean(ThemeShoppingList.textUpperCaseFont, false);
-			
+
+			mTextUpperCaseFont = ta.getBoolean(
+					ThemeShoppingList.textUpperCaseFont, false);
+
 			mTextColor = ta.getColor(ThemeShoppingList.textColor,
 					android.R.color.white);
-			
-			mTextColorPrice = ta.getColor(
-					ThemeShoppingList.textColorPrice,
+
+			mTextColorPrice = ta.getColor(ThemeShoppingList.textColorPrice,
 					android.R.color.white);
-			
+
 			if (size == 0) {
 				mTextSize = getTextSizeTiny(ta);
 			} else if (size == 1) {
@@ -620,25 +634,39 @@ public class ShoppingListView extends ListView {
 			} else {
 				mTextSize = getTextSizeLarge(ta);
 			}
-			if (debug) Log.d(TAG, "textSize: " + mTextSize);
-			
-	
+			if (debug)
+				Log.d(TAG, "textSize: " + mTextSize);
+
 			mTextColorChecked = ta.getColor(ThemeShoppingList.textColorChecked,
 					android.R.color.white);
 			mShowCheckBox = ta.getBoolean(ThemeShoppingList.showCheckBox, true);
-			mShowStrikethrough = ta.getBoolean(ThemeShoppingList.textStrikethroughChecked, false);
-			mTextSuffixUnchecked = ta.getString(ThemeShoppingList.textSuffixUnchecked);
-			mTextSuffixChecked = ta.getString(ThemeShoppingList.textSuffixChecked);
-			
+			mShowStrikethrough = ta.getBoolean(
+					ThemeShoppingList.textStrikethroughChecked, false);
+			mTextSuffixUnchecked = ta
+					.getString(ThemeShoppingList.textSuffixUnchecked);
+			mTextSuffixChecked = ta
+					.getString(ThemeShoppingList.textSuffixChecked);
+
 			if (mThemedBackground != null) {
-				mBackgroundPadding = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPadding, -1);
-				int backgroundPaddingLeft = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingLeft, mBackgroundPadding);
-				int backgroundPaddingTop = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingTop, mBackgroundPadding);
-				int backgroundPaddingRight = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingRight, mBackgroundPadding);
-				int backgroundPaddingBottom = ta.getDimensionPixelOffset(ThemeShoppingList.backgroundPaddingBottom, mBackgroundPadding);
+				mBackgroundPadding = ta.getDimensionPixelOffset(
+						ThemeShoppingList.backgroundPadding, -1);
+				int backgroundPaddingLeft = ta.getDimensionPixelOffset(
+						ThemeShoppingList.backgroundPaddingLeft,
+						mBackgroundPadding);
+				int backgroundPaddingTop = ta.getDimensionPixelOffset(
+						ThemeShoppingList.backgroundPaddingTop,
+						mBackgroundPadding);
+				int backgroundPaddingRight = ta.getDimensionPixelOffset(
+						ThemeShoppingList.backgroundPaddingRight,
+						mBackgroundPadding);
+				int backgroundPaddingBottom = ta.getDimensionPixelOffset(
+						ThemeShoppingList.backgroundPaddingBottom,
+						mBackgroundPadding);
 				try {
-					Resources remoteRes = pm.getResourcesForApplication(packageName);
-					int resid = ta.getResourceId(ThemeShoppingList.background, 0);
+					Resources remoteRes = pm
+							.getResourcesForApplication(packageName);
+					int resid = ta.getResourceId(ThemeShoppingList.background,
+							0);
 					if (resid != 0) {
 						Drawable d = remoteRes.getDrawable(resid);
 						mThemedBackground.setBackgroundDrawable(d);
@@ -651,23 +679,23 @@ public class ShoppingListView extends ListView {
 				} catch (Resources.NotFoundException e) {
 					Log.e(TAG, "Resource not found for Theme background.", e);
 				}
-				
+
 				// Apply padding
-				if (mBackgroundPadding >=0 
-						|| backgroundPaddingLeft >= 0 || backgroundPaddingTop >= 0 ||
-						backgroundPaddingRight >= 0 || backgroundPaddingBottom >= 0){
-					mThemedBackground.setPadding(backgroundPaddingLeft, 
-							backgroundPaddingTop, 
-							backgroundPaddingRight,
+				if (mBackgroundPadding >= 0 || backgroundPaddingLeft >= 0
+						|| backgroundPaddingTop >= 0
+						|| backgroundPaddingRight >= 0
+						|| backgroundPaddingBottom >= 0) {
+					mThemedBackground.setPadding(backgroundPaddingLeft,
+							backgroundPaddingTop, backgroundPaddingRight,
 							backgroundPaddingBottom);
 				} else {
 					// 9-patches do the padding automatically
-					// todo clear padding 
+					// todo clear padding
 				}
 			}
-	
+
 			int divider = ta.getInteger(ThemeShoppingList.divider, 0);
-			
+
 			Drawable div = null;
 			if (divider > 0) {
 				div = getResources().getDrawable(divider);
@@ -676,11 +704,11 @@ public class ShoppingListView extends ListView {
 			} else {
 				div = mDefaultDivider;
 			}
-			
+
 			setDivider(div);
-			
+
 			return true;
-			
+
 		} catch (UnsupportedOperationException e) {
 			// This exception is thrown e.g. if one attempts
 			// to read an integer attribute as dimension.
@@ -695,38 +723,38 @@ public class ShoppingListView extends ListView {
 	}
 
 	private float getTextSizeTiny(ThemeAttributes ta) {
-		float size = ta
-				.getDimensionPixelOffset(ThemeShoppingList.textSizeTiny, -1);
+		float size = ta.getDimensionPixelOffset(ThemeShoppingList.textSizeTiny,
+				-1);
 		if (size == -1) {
 			// Try to obtain from small:
-			size = (12f/18f) * getTextSizeSmall(ta);
+			size = (12f / 18f) * getTextSizeSmall(ta);
 		}
 		return size;
 	}
-	
+
 	private float getTextSizeSmall(ThemeAttributes ta) {
-		float size = ta
-		.getDimensionPixelOffset(ThemeShoppingList.textSizeSmall, -1);
+		float size = ta.getDimensionPixelOffset(
+				ThemeShoppingList.textSizeSmall, -1);
 		if (size == -1) {
 			// Try to obtain from small:
-			size = (18f/23f) * getTextSizeMedium(ta);
+			size = (18f / 23f) * getTextSizeMedium(ta);
 		}
 		return size;
 	}
-	
+
 	private float getTextSizeMedium(ThemeAttributes ta) {
 		final float scale = getResources().getDisplayMetrics().scaledDensity;
-		float size = ta
-		.getDimensionPixelOffset(ThemeShoppingList.textSizeMedium, (int) (23 * scale + 0.5f));
+		float size = ta.getDimensionPixelOffset(
+				ThemeShoppingList.textSizeMedium, (int) (23 * scale + 0.5f));
 		return size;
 	}
 
 	private float getTextSizeLarge(ThemeAttributes ta) {
-		float size = ta
-		.getDimensionPixelOffset(ThemeShoppingList.textSizeLarge, -1);
+		float size = ta.getDimensionPixelOffset(
+				ThemeShoppingList.textSizeLarge, -1);
 		if (size == -1) {
 			// Try to obtain from small:
-			size = (28f/23f) * getTextSizeMedium(ta);
+			size = (28f / 23f) * getTextSizeMedium(ta);
 		}
 		return size;
 	}
@@ -741,7 +769,7 @@ public class ShoppingListView extends ListView {
 			Log.e(TAG, "toggle inexistent item. Probably clicked too quickly?");
 			return;
 		}
-		
+
 		mCursorItems.moveToPosition(position);
 
 		long oldstatus = mCursorItems
@@ -830,15 +858,18 @@ public class ShoppingListView extends ListView {
 
 	/**
 	 * 
-	 * @param activity Activity to manage new Cursor.
+	 * @param activity
+	 *            Activity to manage new Cursor.
 	 * @param newItem
 	 * @param quantity
 	 * @param price
 	 * @param barcode
 	 */
-	public void insertNewItem(Activity activity, String newItem, String quantity, String price, String barcode) {
+	public void insertNewItem(Activity activity, String newItem,
+			String quantity, String price, String barcode) {
 
-		long itemId = ShoppingUtils.updateOrCreateItem(getContext(), newItem, null, price, barcode);
+		long itemId = ShoppingUtils.updateOrCreateItem(getContext(), newItem,
+				null, price, barcode);
 
 		Log.i(TAG, "Insert new item. " + " itemId = " + itemId + ", listId = "
 				+ mListId);
@@ -852,31 +883,31 @@ public class ShoppingListView extends ListView {
 		while (mCursorItems.moveToNext()) {
 			if (mCursorItems.getLong(ShoppingActivity.mStringItemsITEMID) == itemId) {
 				int pos = mCursorItems.getPosition();
-		//		if (pos > 0) {
-					// Set selection one before, so that the item is fully
-					// visible.
-		//			setSelection(pos - 1);
-		//		} else {
+				// if (pos > 0) {
+				// Set selection one before, so that the item is fully
+				// visible.
+				// setSelection(pos - 1);
+				// } else {
 				postDelayedSetSelection(pos);
-		//		}
+				// }
 				break;
 			}
 		}
 
 	}
-	
+
 	/**
-	 * Post setSelection delayed, because onItemSelected() may be called
-	 * more than once, leading to fillItems() being called more than once
-	 * as well.
+	 * Post setSelection delayed, because onItemSelected() may be called more
+	 * than once, leading to fillItems() being called more than once as well.
 	 * Posting delayed ensures that items added through intents that return
 	 * results (like a barcode scanner) are put into visible position.
+	 * 
 	 * @param pos
 	 */
 	void postDelayedSetSelection(final int pos) {
 		// set immediately
 		setSelection(pos);
-		
+
 		// if for any reason this does not work, a delayed version
 		// will succeed:
 		postDelayed(new Runnable() {
@@ -885,12 +916,13 @@ public class ShoppingListView extends ListView {
 			public void run() {
 				setSelection(pos);
 			}
-			
+
 		}, 1000);
 	}
 
 	public void requery() {
-		if (debug) Log.d(TAG, "requery()");
+		if (debug)
+			Log.d(TAG, "requery()");
 		mCursorItems.requery();
 		updateTotal();
 	}
@@ -908,8 +940,9 @@ public class ShoppingListView extends ListView {
 	 * price information.
 	 */
 	public void updateTotal() {
-		if (debug) Log.d(TAG, "updateTotal()");
-		
+		if (debug)
+			Log.d(TAG, "updateTotal()");
+
 		if (mTotalTextView == null || mTotalCheckedTextView == null) {
 			// Most probably in "Add item" mode where no total is displayed
 			return;
@@ -921,7 +954,7 @@ public class ShoppingListView extends ListView {
 			mTotalCheckedTextView.setVisibility(View.GONE);
 			return;
 		}
-		
+
 		if (mCursorItems.isClosed()) {
 			// Can happen through onShake() in ShoppingActivity.
 			return;
@@ -960,12 +993,12 @@ public class ShoppingListView extends ListView {
 			mTotalCheckedTextView.setVisibility(View.GONE);
 		}
 	}
-	
+
 	private long getQuantityPrice(Cursor cursor) {
-		long price = cursor
-				.getLong(ShoppingActivity.mStringItemsITEMPRICE);
+		long price = cursor.getLong(ShoppingActivity.mStringItemsITEMPRICE);
 		if (price != 0) {
-			String quantityString = cursor.getString(ShoppingActivity.mStringItemsQUANTITY);
+			String quantityString = cursor
+					.getString(ShoppingActivity.mStringItemsQUANTITY);
 			if (!TextUtils.isEmpty(quantityString)) {
 				try {
 					double quantity = Double.parseDouble(quantityString);
@@ -977,265 +1010,279 @@ public class ShoppingListView extends ListView {
 		}
 		return price;
 	}
-	
+
 	OnCustomClickListener mListener = null;
-	
+	private boolean mDragAndDropEnabled = false;
+
 	public void setCustomClickListener(OnCustomClickListener listener) {
 		mListener = listener;
 	}
-	
+
 	public interface OnCustomClickListener {
 		public void onCustomClick(Cursor c, int pos);
 	}
 
 	@Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (mDragListener != null || mDropListener != null) {
-            switch (ev.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    int x = (int) ev.getX();
-                    int y = (int) ev.getY();
-                    int itemnum = pointToPosition(x, y);
-                    if (itemnum == AdapterView.INVALID_POSITION) {
-                        break;
-                    }
-                    ViewGroup item = (ViewGroup) getChildAt(itemnum - getFirstVisiblePosition());
-                    mDragPoint = y - item.getTop();
-                    mCoordOffset = ((int)ev.getRawY()) - y;
-                    item.setDrawingCacheEnabled(true);
-                    Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
-                    startDragging(bitmap, y);
-                    mDragPos = itemnum;
-                    mFirstDragPos = mDragPos;
-                    mHeight = getHeight();
-                    int touchSlop = mTouchSlop;
-                    mUpperBound = Math.min(y - touchSlop, mHeight / 3);
-                    mLowerBound = Math.max(y + touchSlop, mHeight * 2 /3);
-                    return false;
-            }
-        }
-        return super.onInterceptTouchEvent(ev);
-    }
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		if (mDragAndDropEnabled ) {
+			if (mDragListener != null || mDropListener != null) {
+				switch (ev.getAction()) {
+				case MotionEvent.ACTION_DOWN:
+					int x = (int) ev.getX();
+					int y = (int) ev.getY();
+					int itemnum = pointToPosition(x, y);
+					if (itemnum == AdapterView.INVALID_POSITION) {
+						break;
+					}
+					ViewGroup item = (ViewGroup) getChildAt(itemnum
+							- getFirstVisiblePosition());
+					mDragPoint = y - item.getTop();
+					mCoordOffset = ((int) ev.getRawY()) - y;
+					item.setDrawingCacheEnabled(true);
+					Bitmap bitmap = Bitmap.createBitmap(item.getDrawingCache());
+					startDragging(bitmap, y);
+					mDragPos = itemnum;
+					mFirstDragPos = mDragPos;
+					mHeight = getHeight();
+					int touchSlop = mTouchSlop;
+					mUpperBound = Math.min(y - touchSlop, mHeight / 3);
+					mLowerBound = Math.max(y + touchSlop, mHeight * 2 / 3);
+					return false;
+				}
+			}
+		}
+		return super.onInterceptTouchEvent(ev);
+	}
 
 	private int myPointToPosition(int x, int y) {
-        if (y < 0) {
-            int pos = myPointToPosition(x, y + mItemHeightNormal);
-            if (pos > 0) {
-                return pos - 1;
-            }
-        }
-        Rect frame = mTempRect;
-        final int count = getChildCount();
-        for (int i = count - 1; i >= 0; i--) {
-            final View child = getChildAt(i);
-            child.getHitRect(frame);
-            if (frame.contains(x, y)) {
-                return getFirstVisiblePosition() + i;
-            }
-        }
-        return INVALID_POSITION;
-    }
-    
-    private int getItemForPosition(int y) {
-        int adjustedy = y - mDragPoint - mItemHeightHalf;
-        int pos = myPointToPosition(0, adjustedy);
-        if (pos >= 0) {
-            if (pos <= mFirstDragPos) {
-                pos += 1;
-            }
-        } else if (adjustedy < 0) {
-            pos = 0;
-        }
-        return pos;
-    }
-    
-    private void adjustScrollBounds(int y) {
-        if (y >= mHeight / 3) {
-            mUpperBound = mHeight / 3;
-        }
-        if (y <= mHeight * 2 / 3) {
-            mLowerBound = mHeight * 2 / 3;
-        }
-    }
+		if (y < 0) {
+			int pos = myPointToPosition(x, y + mItemHeightNormal);
+			if (pos > 0) {
+				return pos - 1;
+			}
+		}
+		Rect frame = mTempRect;
+		final int count = getChildCount();
+		for (int i = count - 1; i >= 0; i--) {
+			final View child = getChildAt(i);
+			child.getHitRect(frame);
+			if (frame.contains(x, y)) {
+				return getFirstVisiblePosition() + i;
+			}
+		}
+		return INVALID_POSITION;
+	}
 
-    private void unExpandViews(boolean deletion) {
-        for (int i = 0;; i++) {
-            View v = getChildAt(i);
-            if (v == null) {
-                if (deletion) {
-                    int position = getFirstVisiblePosition();
-                    int y = getChildAt(0).getTop();
-                    setAdapter(getAdapter());
-                    setSelectionFromTop(position, y);
-                }
-                layoutChildren(); 
-                v = getChildAt(i);
-                if (v == null) {
-                    break;
-                }
-            }
-            ViewGroup.LayoutParams params = v.getLayoutParams();
-            params.height = mItemHeightNormal;
-            v.setLayoutParams(params);
-            v.setVisibility(View.VISIBLE);
-        }
-    }
+	private int getItemForPosition(int y) {
+		int adjustedy = y - mDragPoint - mItemHeightHalf;
+		int pos = myPointToPosition(0, adjustedy);
+		if (pos >= 0) {
+			if (pos <= mFirstDragPos) {
+				pos += 1;
+			}
+		} else if (adjustedy < 0) {
+			pos = 0;
+		}
+		return pos;
+	}
 
-    private void doExpansion() {
-        int childnum = mDragPos - getFirstVisiblePosition();
-        if (mDragPos > mFirstDragPos) {
-            childnum++;
-        }
+	private void adjustScrollBounds(int y) {
+		if (y >= mHeight / 3) {
+			mUpperBound = mHeight / 3;
+		}
+		if (y <= mHeight * 2 / 3) {
+			mLowerBound = mHeight * 2 / 3;
+		}
+	}
 
-        View first = getChildAt(mFirstDragPos - getFirstVisiblePosition());
+	private void unExpandViews(boolean deletion) {
+		for (int i = 0;; i++) {
+			View v = getChildAt(i);
+			if (v == null) {
+				if (deletion) {
+					int position = getFirstVisiblePosition();
+					int y = getChildAt(0).getTop();
+					setAdapter(getAdapter());
+					setSelectionFromTop(position, y);
+				}
+				layoutChildren();
+				v = getChildAt(i);
+				if (v == null) {
+					break;
+				}
+			}
+			ViewGroup.LayoutParams params = v.getLayoutParams();
+			params.height = mItemHeightNormal;
+			v.setLayoutParams(params);
+			v.setVisibility(View.VISIBLE);
+		}
+	}
 
-        for (int i = 0;; i++) {
-            View vv = getChildAt(i);
-            if (vv == null) {
-                break;
-            }
-            int height = mItemHeightNormal;
-            int visibility = View.VISIBLE;
-            if (vv.equals(first)) {
-               if (mDragPos == mFirstDragPos) {
-                   visibility = View.INVISIBLE;
-                } else {
-                    height = 1;
-                }
-            } else if (i == childnum) {
-                if (mDragPos < getCount() - 1) {
-                    height = mItemHeightExpanded;
-                }
-            }
-            ViewGroup.LayoutParams params = vv.getLayoutParams();
-            params.height = height;
-            vv.setLayoutParams(params);
-            vv.setVisibility(visibility);
-        }
-    }
-    
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        if ((mDragListener != null || mDropListener != null) && mDragView != null) {
-            int action = ev.getAction(); 
-            switch (action) {
-                case MotionEvent.ACTION_UP:
-                case MotionEvent.ACTION_CANCEL:
-                    Rect r = mTempRect;
-                    mDragView.getDrawingRect(r);
-                    stopDragging();
-                    if (mDropListener != null && mDragPos >= 0 && mDragPos < getCount()) {
-                        mDropListener.drop(mFirstDragPos, mDragPos);
-                     }
-                     unExpandViews(false);
-                    break;
-                case MotionEvent.ACTION_DOWN:
-                case MotionEvent.ACTION_MOVE:
-                    int x = (int) ev.getX();
-                    int y = (int) ev.getY();
-                    dragView(x, y);
-                    int itemnum = getItemForPosition(y);
-                    if (itemnum >= 0) {
-                        if (action == MotionEvent.ACTION_DOWN || itemnum != mDragPos) {
-                            if (mDragListener != null) {
-                                mDragListener.drag(mDragPos, itemnum);
-                            }
-                            mDragPos = itemnum;
-                            doExpansion();
-                        }
-                        int speed = 0;
-                        adjustScrollBounds(y);
-                        if (y > mLowerBound) {
-                            // scroll the list up a bit
-                            speed = y > (mHeight + mLowerBound) / 2 ? 16 : 4;
-                        } else if (y < mUpperBound) {
-                            // scroll the list down a bit
-                            speed = y < mUpperBound / 2 ? -16 : -4;
-                        }
-                        if (speed != 0) {
-                            int ref = pointToPosition(0, mHeight / 2);
-                            if (ref == AdapterView.INVALID_POSITION) {
-                                //we hit a divider or an invisible view, check somewhere else
-                                ref = pointToPosition(0, mHeight / 2 + getDividerHeight() + 64);
-                            }
-                            View v = getChildAt(ref - getFirstVisiblePosition());
-                            if (v!= null) {
-                                int pos = v.getTop();
-                                setSelectionFromTop(ref, pos - speed);
-                            }
-                        }
-                    }
-                    break;
-            }
-            return true;
-        }
-        return super.onTouchEvent(ev);
-    }
-    
-    private void startDragging(Bitmap bm, int y) {
-        stopDragging();
+	private void doExpansion() {
+		int childnum = mDragPos - getFirstVisiblePosition();
+		if (mDragPos > mFirstDragPos) {
+			childnum++;
+		}
 
-        mWindowParams = new WindowManager.LayoutParams();
-        mWindowParams.gravity = Gravity.TOP;
-        mWindowParams.x = 0;
-        mWindowParams.y = y - mDragPoint + mCoordOffset;
+		View first = getChildAt(mFirstDragPos - getFirstVisiblePosition());
 
-        mWindowParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        mWindowParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        mWindowParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
-                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
-        mWindowParams.format = PixelFormat.TRANSLUCENT;
-        mWindowParams.windowAnimations = 0;
-        
-        Context context = getContext();
-        ImageView v = new ImageView(context);
-        int backGroundColor = context.getResources().getColor(R.color.darkgreen);
-        v.setBackgroundColor(backGroundColor);
-        v.setImageBitmap(bm);
-        mDragBitmap = bm;
+		for (int i = 0;; i++) {
+			View vv = getChildAt(i);
+			if (vv == null) {
+				break;
+			}
+			int height = mItemHeightNormal;
+			int visibility = View.VISIBLE;
+			if (vv.equals(first)) {
+				if (mDragPos == mFirstDragPos) {
+					visibility = View.INVISIBLE;
+				} else {
+					height = 1;
+				}
+			} else if (i == childnum) {
+				if (mDragPos < getCount() - 1) {
+					height = mItemHeightExpanded;
+				}
+			}
+			ViewGroup.LayoutParams params = vv.getLayoutParams();
+			params.height = height;
+			vv.setLayoutParams(params);
+			vv.setVisibility(visibility);
+		}
+	}
 
-        mWindowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-        mWindowManager.addView(v, mWindowParams);
-        mDragView = v;
-    }
-    
-    private void dragView(int x, int y) {
-        mWindowParams.y = y - mDragPoint + mCoordOffset;
-        mWindowManager.updateViewLayout(mDragView, mWindowParams);
-    }
-    
-    private void stopDragging() {
-        if (mDragView != null) {
-            WindowManager wm = (WindowManager)getContext().getSystemService(Context.WINDOW_SERVICE);
-            wm.removeView(mDragView);
-            mDragView.setImageDrawable(null);
-            mDragView = null;
-        }
-        if (mDragBitmap != null) {
-            mDragBitmap.recycle();
-            mDragBitmap = null;
-        }
-    }
-    
-    public void setDragListener(DragListener l) {
-        mDragListener = l;
-    }
-    
-    public void setDropListener(DropListener l) {
-        mDropListener = l;
-    }
-    
-    public interface DragListener {
-        void drag(int from, int to);
-    }
-    public interface DropListener {
-        void drop(int from, int to);
-    }
-    public interface RemoveListener {
-        void remove(int which);
-    }
+	@Override
+	public boolean onTouchEvent(MotionEvent ev) {
+		if ((mDragListener != null || mDropListener != null)
+				&& mDragView != null) {
+			int action = ev.getAction();
+			switch (action) {
+			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_CANCEL:
+				Rect r = mTempRect;
+				mDragView.getDrawingRect(r);
+				stopDragging();
+				if (mDropListener != null && mDragPos >= 0
+						&& mDragPos < getCount()) {
+					mDropListener.drop(mFirstDragPos, mDragPos);
+				}
+				unExpandViews(false);
+				break;
+			case MotionEvent.ACTION_DOWN:
+			case MotionEvent.ACTION_MOVE:
+				int x = (int) ev.getX();
+				int y = (int) ev.getY();
+				dragView(x, y);
+				int itemnum = getItemForPosition(y);
+				if (itemnum >= 0) {
+					if (action == MotionEvent.ACTION_DOWN
+							|| itemnum != mDragPos) {
+						if (mDragListener != null) {
+							mDragListener.drag(mDragPos, itemnum);
+						}
+						mDragPos = itemnum;
+						doExpansion();
+					}
+					int speed = 0;
+					adjustScrollBounds(y);
+					if (y > mLowerBound) {
+						// scroll the list up a bit
+						speed = y > (mHeight + mLowerBound) / 2 ? 16 : 4;
+					} else if (y < mUpperBound) {
+						// scroll the list down a bit
+						speed = y < mUpperBound / 2 ? -16 : -4;
+					}
+					if (speed != 0) {
+						int ref = pointToPosition(0, mHeight / 2);
+						if (ref == AdapterView.INVALID_POSITION) {
+							// we hit a divider or an invisible view, check
+							// somewhere else
+							ref = pointToPosition(0, mHeight / 2
+									+ getDividerHeight() + 64);
+						}
+						View v = getChildAt(ref - getFirstVisiblePosition());
+						if (v != null) {
+							int pos = v.getTop();
+							setSelectionFromTop(ref, pos - speed);
+						}
+					}
+				}
+				break;
+			}
+			return true;
+		}
+		return super.onTouchEvent(ev);
+	}
+
+	private void startDragging(Bitmap bm, int y) {
+		stopDragging();
+
+		mWindowParams = new WindowManager.LayoutParams();
+		mWindowParams.gravity = Gravity.TOP;
+		mWindowParams.x = 0;
+		mWindowParams.y = y - mDragPoint + mCoordOffset;
+
+		mWindowParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+		mWindowParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+		mWindowParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+				| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+				| WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+				| WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN
+				| WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS;
+		mWindowParams.format = PixelFormat.TRANSLUCENT;
+		mWindowParams.windowAnimations = 0;
+
+		Context context = getContext();
+		ImageView v = new ImageView(context);
+		int backGroundColor = context.getResources()
+				.getColor(R.color.darkgreen);
+		v.setBackgroundColor(backGroundColor);
+		v.setImageBitmap(bm);
+		mDragBitmap = bm;
+
+		mWindowManager = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE);
+		mWindowManager.addView(v, mWindowParams);
+		mDragView = v;
+	}
+
+	private void dragView(int x, int y) {
+		mWindowParams.y = y - mDragPoint + mCoordOffset;
+		mWindowManager.updateViewLayout(mDragView, mWindowParams);
+	}
+
+	private void stopDragging() {
+		if (mDragView != null) {
+			WindowManager wm = (WindowManager) getContext().getSystemService(
+					Context.WINDOW_SERVICE);
+			wm.removeView(mDragView);
+			mDragView.setImageDrawable(null);
+			mDragView = null;
+		}
+		if (mDragBitmap != null) {
+			mDragBitmap.recycle();
+			mDragBitmap = null;
+		}
+	}
+
+	public void setDragListener(DragListener l) {
+		mDragListener = l;
+	}
+
+	public void setDropListener(DropListener l) {
+		mDropListener = l;
+	}
+
+	public interface DragListener {
+		void drag(int from, int to);
+	}
+
+	public interface DropListener {
+		void drop(int from, int to);
+	}
+
+	public interface RemoveListener {
+		void remove(int which);
+	}
 
 }
