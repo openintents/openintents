@@ -22,3 +22,6 @@ ContentProviders must implement "selection" (i.e. WHERE clauses) for epoch range
 selection to work properly, and it must support an ascending sort order.  This is trivial
 when your backend is SQLite, but could be complicated if you decide to use a MatrixCursor for
 some reason.
+
+If you supply your data through Intent extras instead of with an SQLite-backed ContentProvider,
+the event selection activity won't work quite properly.

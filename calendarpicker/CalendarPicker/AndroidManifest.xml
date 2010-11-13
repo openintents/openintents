@@ -29,8 +29,10 @@
 	    </activity>
 
         
-		<activity android:name="org.openintents.calendarpicker.activity.EventListActivity"
-		android:theme="@android:style/Theme.Translucent"/>
+		<activity android:name="org.openintents.calendarpicker.activity.DayEventsListActivity"
+			android:theme="@android:style/Theme.Translucent"/>
+		
+		<activity android:name="org.openintents.calendarpicker.activity.AllEventsListActivity"/>
 
 		<activity android:name="org.openintents.calendarpicker.activity.YearsActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>

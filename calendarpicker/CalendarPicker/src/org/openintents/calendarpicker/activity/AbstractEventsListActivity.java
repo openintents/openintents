@@ -1,26 +1,20 @@
 package org.openintents.calendarpicker.activity;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Stack;
 
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.adapter.EventListAdapter;
 import org.openintents.calendarpicker.contract.IntentConstants;
-import org.openintents.calendarpicker.view.ScrollableMonthView;
 
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 import android.text.TextUtils;
 import android.util.Log;
@@ -32,23 +26,19 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ResourceCursorAdapter;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 
-public class EventListActivity extends ListActivity {
+public abstract class AbstractEventsListActivity extends ListActivity {
 
-	static final String TAG = "EventListActivity"; 
+	static final String TAG = "AbstractEventsListActivity"; 
 
-	
-	final int DIALOG_RUNONCE_INSTRUCTIONS = 1;
-	public static final String PREFKEY_SHOW_EVENT_LIST_INSTRUCTIONS = "PREFKEY_SHOW_EVENT_LIST_INSTRUCTIONS";
-
-    
 	public static final String KEY_ROWID = BaseColumns._ID;
 	public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
 	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
 
+	// ========================================================================
+    abstract Cursor requery();
 
     // ========================================================================
     @Override
@@ -62,26 +52,18 @@ public class EventListActivity extends ListActivity {
         // Initialize sort bucket
         for (SortCriteria x : SortCriteria.values()) sorting_order.add(x);
 
-        
     	
     	Cursor cursor = requery();
-    	
-
         setListAdapter(new EventListAdapter(
         		this,
         		R.layout.list_item_event,
         		cursor));
 
         getListView().setOnItemClickListener(category_choice_listener);
-//        category_listview.setEmptyView(findViewById(R.id.empty_categories));
 
 //    	registerForContextMenu( category_listview );
     	
-		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-		if (!settings.getBoolean(PREFKEY_SHOW_EVENT_LIST_INSTRUCTIONS, false)) {
-//			showDialog(DIALOG_RUNONCE_INSTRUCTIONS);
-		}
-		
+
 		if (savedInstanceState != null) {
 //			autocomplete_textview.setText( savedInstanceState.getString("search_text") );
 		}
@@ -94,35 +76,6 @@ public class EventListActivity extends ListActivity {
         	
         }
     }
-
-    // ========================================================================
-	Cursor requery() {
-
-        Uri intent_data = getIntent().getData();
-    	Log.d(TAG, "Querying content provider for: " + intent_data);
-    	
-        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0));
-        
-
-        Log.e(TAG, "Received date: " + d.getDate());
-        long day_begin = d.getTime();
-        long day_end = day_begin + ScrollableMonthView.MILLISECONDS_PER_DAY;
-        
-		
-		Cursor cursor = managedQuery(intent_data,
-				new String[] {
-					KEY_ROWID,
-					KEY_EVENT_TIMESTAMP,
-					KEY_EVENT_TITLE},
-				KEY_EVENT_TIMESTAMP + ">=? AND " + KEY_EVENT_TIMESTAMP + "<?",
-				new String[] {Long.toString(day_begin), Long.toString(day_end)},
-				constructOrderByString());
-
-		String header_text = cursor.getCount() + " event(s) on " + new DateFormatSymbols().getShortMonths()[d.getMonth()] + " " + d.getDate();
-		((TextView) findViewById(R.id.list_header)).setText(header_text);
-		
-		return cursor;
-	}
 
     // ========================================================================
     OnItemClickListener category_choice_listener = new OnItemClickListener() {

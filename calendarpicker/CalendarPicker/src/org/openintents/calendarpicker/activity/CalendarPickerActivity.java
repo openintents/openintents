@@ -157,7 +157,7 @@ public class CalendarPickerActivity extends Activity {
 				Uri data = getIntent().getData();
 				if (data != null) {
 
-					Intent i = new Intent(CalendarPickerActivity.this, EventListActivity.class);
+					Intent i = new Intent(CalendarPickerActivity.this, DayEventsListActivity.class);
 
 					i.setData(data);
 					if (date != null) {
@@ -296,6 +296,13 @@ public class CalendarPickerActivity extends Activity {
         case R.id.menu_year_view:
         {
         	startActivityForResult(new Intent(this, YearsActivity.class), REQUEST_CODE_MONTH_YEAR_SELECTION);
+            return true;
+        }
+        case R.id.menu_all_events:
+        {
+        	Intent intent = new Intent(this, AllEventsListActivity.class);
+        	intent.setData(getIntent().getData());
+        	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
         }
         }

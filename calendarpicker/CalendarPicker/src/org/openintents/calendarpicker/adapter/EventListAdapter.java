@@ -3,7 +3,7 @@ package org.openintents.calendarpicker.adapter;
 import java.text.DateFormat;
 import java.util.Date;
 
-import org.openintents.calendarpicker.activity.EventListActivity;
+import org.openintents.calendarpicker.activity.DayEventsListActivity;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -27,8 +27,8 @@ public class EventListAdapter extends ResourceCursorAdapter {
 		TextView category_name = (TextView) view.findViewById(R.id.category_name);
 		TextView assignment_timestamp = (TextView) view.findViewById(R.id.assignment_timestamp);
 		
-		int timestamp_column = cursor.getColumnIndex(EventListActivity.KEY_EVENT_TIMESTAMP);
-		int name_column = cursor.getColumnIndex(EventListActivity.KEY_EVENT_TITLE);
+		int timestamp_column = cursor.getColumnIndex(DayEventsListActivity.KEY_EVENT_TIMESTAMP);
+		int name_column = cursor.getColumnIndex(DayEventsListActivity.KEY_EVENT_TITLE);
 		
 		category_name.setText(cursor.getString(name_column));
 
