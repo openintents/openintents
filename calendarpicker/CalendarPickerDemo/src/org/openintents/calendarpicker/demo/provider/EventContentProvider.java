@@ -41,7 +41,6 @@ public class EventContentProvider extends ContentProvider {
 
    @Override
    public String getType(Uri uri) {
-	   Log.d(TAG, "Providing type: " + IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
 	   return IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
    }
 

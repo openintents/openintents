@@ -10,6 +10,12 @@
    			android:name="org.openintents.calendarpicker.demo.provider.EventContentProvider"
 	        android:authorities="org.openintents.calendarpicker.demo.provider.events"
 		/>
+		
+      	<provider android:label="Google Calendar wrapper"
+   			android:name="org.openintents.calendarpicker.demo.provider.CalendarWrapperContentProvider"
+	        android:authorities="org.openintents.calendarpicker.demo.provider.googlewrapper"
+		/>
+		
 
 		
        <activity android:name="org.openintents.calendarpicker.demo.Demo"
@@ -22,6 +28,7 @@
         
         
     </application>
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>
+    <uses-sdk android:targetSdkVersion="8" android:minSdkVersion="8"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"></uses-permission>
 
 </manifest> 

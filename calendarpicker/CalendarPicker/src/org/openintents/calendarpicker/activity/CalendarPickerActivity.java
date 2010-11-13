@@ -9,7 +9,6 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
-import org.openintents.calendarpicker.container.CalendarDay;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
@@ -114,12 +113,12 @@ public class CalendarPickerActivity extends Activity {
         month_view.setOnDayTouchListener(new OnDaySelectionListener() {
 
 			@Override
-			public void clickDay(CalendarDay cd) {
+			public void updateDate(Date date) {
 
 				int child_idx = -1;
-				if (cd != null) {
+				if (date != null) {
 					Calendar c = new GregorianCalendar();
-					c.setTime(cd.date);
+					c.setTime(date);
 					child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
 				}
 				
@@ -130,13 +129,22 @@ public class CalendarPickerActivity extends Activity {
 			}
         });
         
+
+        month_view.setOnScrollListener(new OnDaySelectionListener() {
+			@Override
+			public void updateDate(Date date) {
+				tiny_timeline.setDate(date);
+			}
+        });
+				
+        
         month_view.setOnDayClickListener(new OnDaySelectionListener() {
 
 			@Override
-			public void clickDay(CalendarDay cd) {
+			public void updateDate(Date date) {
 
 				Calendar c = new GregorianCalendar();
-				c.setTime(cd.date);
+				c.setTime(date);
 				int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
 				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
 					TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
@@ -148,20 +156,27 @@ public class CalendarPickerActivity extends Activity {
 				}
 				
 				
+				boolean IS_SELECTING_EVENT = false;	// FIXME
 				Uri data = getIntent().getData();
-				if (data != null && cd.day_events.size() > 0) {
+				if (data != null && IS_SELECTING_EVENT) {
 
 					Intent i = new Intent(CalendarPickerActivity.this, EventListActivity.class);
 
 					i.setData(data);
-					i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, cd.date.getTime());
+					if (date != null) {
+						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
+						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
+					}
 					startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
 
 				} else {
 					// If there are no events, just return the day.
 					Intent i = new Intent();
-					i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(cd.date));
-					i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, cd.date.getTime());
+					
+					if (date != null) {
+						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
+						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
+					}
 					
 					setResult(Activity.RESULT_OK, i);
 					finish();

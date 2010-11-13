@@ -15,8 +15,7 @@
    	   <LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
 	    >
 	
 	   		<Button
@@ -65,14 +64,11 @@
     android:layout_height="fill_parent"
     android:layout_weight="1"
     >
-    
-    
        
    	   <LinearLayout
 	    android:orientation="horizontal"
 	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="1"
+	    android:layout_height="wrap_content"
 	    >
     
 	   		<Button
@@ -88,6 +84,11 @@
 			    android:text="Event Picker\n(Intent extras)"
 			    android:id="@+id/button_pick_event_intent_extras"/>
 		</LinearLayout>
+		<Button
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content" 
+		    android:text="Event Picker (Google Calendar)"
+		    android:id="@+id/button_pick_event_google_calendar"/>
 
 	   <LinearLayout
 	    android:orientation="horizontal"

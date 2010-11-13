@@ -32,7 +32,8 @@ public class IntentConstants {
 
 	public static final class CalendarEventPicker implements BaseColumns {
 
-		private static final String VND_TYPE_DECLARATION = "vnd.org.openintents.event";
+//		private static final String VND_TYPE_DECLARATION = "vnd.org.openintents.event";
+		private static final String VND_TYPE_DECLARATION = "event";
 
 		// ==== CONTENT TYPES ====
 
@@ -41,10 +42,11 @@ public class IntentConstants {
 		
 
 		// ==== COLUMNS ====
-
+		
 		public static final String COLUMN_EVENT_TITLE = "title";
 		public static final String COLUMN_EVENT_QUANTITY = "quantity";
-		public static final String COLUMN_EVENT_TIMESTAMP = "timestamp";
+		public static final String COLUMN_EVENT_TIMESTAMP = "dtstart";
+		public static final String COLUMN_EVENT_CALENDAR_ID = "dtstart";
 		
 		
 
