@@ -14,11 +14,9 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.util.Log;
 
 public class EventContentProvider extends ContentProvider {
 	
-
 	static final String TAG = "EventContentProvider";
 	
 	// This must be the same as what as specified as the Content Provider authority
@@ -53,19 +51,17 @@ public class EventContentProvider extends ContentProvider {
 				IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE});
 
 		List<EventWrapper> generated_events = Demo.generateRandomEvents(5);
-//		Log.i(TAG, "Generated " + generated_events.size() + " events.");
 		
 		int i=0;
 		for (EventWrapper event : generated_events) {
 			c.newRow()
 				.add(event.id)
-				.add( event.timestamp/1000 )
+				.add( event.timestamp )
 				.add( "Event " + i );
-			
+
 			i++;
 		}
 
-//		Log.i(TAG, "Generated cursor with " + c.getCount() + " rows.");
 		return c;
    }
 

@@ -239,17 +239,24 @@ public class CalendarPickerActivity extends Activity {
     	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
 
     	Log.d(TAG, "Querying content provider for: " + uri);
-    	Cursor cursor = managedQuery(uri,
-    			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
-    			null, null, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
+//    	Cursor cursor = managedQuery(uri,
+//    			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
+//    			null, null, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
 
+    	long cal_id = 1;
+    	
+    	Cursor cursor = managedQuery(uri,
+			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
+			IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id,
+			null, null);
+    	
     	if (cursor != null && cursor.moveToFirst()) {
 
     		int id_column = cursor.getColumnIndex(BaseColumns._ID);
     		int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
 
     		do {
-    			long timestamp = cursor.getLong(timestamp_column)*1000;
+    			long timestamp = cursor.getLong(timestamp_column);
     			Log.d(TAG, "Adding event with timestamp: " + timestamp);
     			Log.d(TAG, "Timestamp date is: " + new Date(timestamp));
 
@@ -259,6 +266,8 @@ public class CalendarPickerActivity extends Activity {
     							timestamp) );
 
     		} while (cursor.moveToNext());
+    	} else {
+    		Log.e(TAG, "There were no rows in this Cursor: " + cursor);
     	}
 
     	return events;

@@ -19,7 +19,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -172,8 +171,6 @@ public class Demo extends Activity implements View.OnClickListener {
 	// ========================================================
 	@Override
 	protected Dialog onCreateDialog(int id) {
-
-        LayoutInflater factory = LayoutInflater.from(this);
         
 		switch (id) {
 		case DIALOG_CALENDARPICKER_DOWNLOAD:
@@ -214,34 +211,27 @@ public class Demo extends Activity implements View.OnClickListener {
 					Log.d(TAG, "Selected calendar ID: " + selected_google_calendar_id);
 					
 //					Uri uri = CalendarWrapperContentProvider.constructUri(selected_google_calendar_id);
-					Uri uri = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority("calendar").appendPath("events").build();
+					Uri uri = new Uri.Builder()
+						.scheme(ContentResolver.SCHEME_CONTENT)
+						.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+						.appendPath("events").build();
 
 					Log.d(TAG, "Sending content provider Uri: " + uri);
 					
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
 					
 					
-					
-					
+
 					ContentResolver cr = getContentResolver();
 					String resolved_type = intent.resolveType(cr);
-					
 					Log.i(TAG, "Resolved type: " + resolved_type);
-					if (resolved_type == null) {
-						Log.d(TAG, "Resolved type was null, setting explicitly.");
-						
-						intent.setType(IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
-					}
-					
 					
 					
 					downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 
-//					Log.d(TAG, "Querying content provider Uri: " + uri);
+//					Log.d(TAG, "Querying content provider Uri in Demo: " + uri);
 //					Cursor cursor = managedQuery(uri, null, null, null, null);
 //					slurpGoogleCalendarEventsFromCursor(cursor);
-					
-
 				}
 			})
 			.create();
@@ -346,9 +336,13 @@ public class Demo extends Activity implements View.OnClickListener {
      */
     private Cursor getCalendarManagedCursor(String[] projection,
             String selection, String path) {
-        Uri calendars = Uri.parse("content://calendar/" + path);
+    	
+		Uri calendars = new Uri.Builder()
+		.scheme(ContentResolver.SCHEME_CONTENT)
+		.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+		.appendPath("calendars").build();
 
-        Cursor managedCursor = null;
+		Cursor managedCursor = null;
         try {
             managedCursor = managedQuery(calendars, projection, selection,
                     null, null);
@@ -357,17 +351,6 @@ public class Demo extends Activity implements View.OnClickListener {
                     + calendars.toString() + "]");
         }
 
-        if (managedCursor == null) {
-            // try again
-            calendars = Uri.parse("content://com.android.calendar/" + path);
-            try {
-                managedCursor = managedQuery(calendars, projection, selection,
-                        null, null);
-            } catch (IllegalArgumentException e) {
-                Log.w(TAG, "Failed to get provider at ["
-                        + calendars.toString() + "]");
-            }
-        }
         return managedCursor;
     }
 }

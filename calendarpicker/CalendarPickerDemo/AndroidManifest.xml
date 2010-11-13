@@ -5,19 +5,11 @@
       android:versionName="1.0">
     <application android:icon="@drawable/icon" android:label="@string/app_name">
 
-
       	<provider android:label="Demo event generator"
    			android:name="org.openintents.calendarpicker.demo.provider.EventContentProvider"
 	        android:authorities="org.openintents.calendarpicker.demo.provider.events"
 		/>
-		
-      	<provider android:label="Google Calendar wrapper"
-   			android:name="org.openintents.calendarpicker.demo.provider.CalendarWrapperContentProvider"
-	        android:authorities="org.openintents.calendarpicker.demo.provider.googlewrapper"
-		/>
-		
 
-		
        <activity android:name="org.openintents.calendarpicker.demo.Demo"
                android:label="@string/app_name">
             <intent-filter>

@@ -8,6 +8,10 @@ public class IntentConstants {
 	/** a Long */
 	public static String INTENT_EXTRA_CALENDAR_EVENT_ID = BaseColumns._ID;
 
+	
+	public static String ANDROID_CALENDAR_AUTHORITY_1_0 = "calendar";
+	public static String ANDROID_CALENDAR_AUTHORITY_2_0 = "com.android.calendar";
+	
 	public static final class CalendarDatePicker {
 		
 		/** an ISO 8601 date string */
