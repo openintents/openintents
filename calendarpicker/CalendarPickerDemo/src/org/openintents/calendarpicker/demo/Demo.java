@@ -1,12 +1,14 @@
 package org.openintents.calendarpicker.demo;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.demo.provider.EventContentProvider;
+import org.openintents.calendarpicker.demo.provider.SampleEventDatabase;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -29,54 +31,56 @@ public class Demo extends Activity implements View.OnClickListener {
 
 	private static final int REQUEST_CODE_DATE_SELECTION = 1;
 	private static final int REQUEST_CODE_EVENT_SELECTION = 2;
-	
+
 	private static final int DIALOG_CALENDARPICKER_DOWNLOAD = 1;
 	private static final int DIALOG_GOOGLE_CALENDAR_SELECTION = 2;
-	
-	
+
+
 
 	long selected_google_calendar_id = -1;
 
+	public final static int DEFAULT_RANDOM_EVENTS = 15;
+	
 	// ========================================================================
-    public static class EventWrapper {
-    	public long id, timestamp;
-    	public String title;
-    }
-    
-	// ========================================================================
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.main);
-        
-        for (int view : new int[] {
-        		R.id.button_pick_date_no_events,
-        		R.id.button_pick_date_with_events,
-        		R.id.button_pick_event_intent_extras,
-        		R.id.button_pick_event_content_provider,
-        		R.id.button_pick_event_google_calendar
-        		}) {
-        	findViewById(view).setOnClickListener(this);
-        }
-    }
-    
-    // ========================================================================
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-    	super.onSaveInstanceState(outState);
-    	
-    	outState.putLong("selected_google_calendar_id", selected_google_calendar_id);
-    }
-    
-    // ========================================================================
-    @Override
-    protected void onRestoreInstanceState (Bundle savedInstanceState) {
-    	super.onRestoreInstanceState(savedInstanceState);
+	public static class EventWrapper {
+		public long id, timestamp;
+		public String title;
+	}
 
-    	selected_google_calendar_id = savedInstanceState.getLong("selected_google_calendar_id");
-    }
-    
+	// ========================================================================
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.main);
+
+		for (int view : new int[] {
+				R.id.button_pick_date_no_events,
+				R.id.button_pick_date_with_events,
+				R.id.button_pick_event_intent_extras,
+				R.id.button_pick_event_content_provider,
+				R.id.button_pick_event_google_calendar
+		}) {
+			findViewById(view).setOnClickListener(this);
+		}
+	}
+
+	// ========================================================================
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putLong("selected_google_calendar_id", selected_google_calendar_id);
+	}
+
+	// ========================================================================
+	@Override
+	protected void onRestoreInstanceState (Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+
+		selected_google_calendar_id = savedInstanceState.getLong("selected_google_calendar_id");
+	}
+
 	// ========================================================================
 	@Override
 	public void onClick(View v) {
@@ -90,14 +94,18 @@ public class Demo extends Activity implements View.OnClickListener {
 		}
 		case R.id.button_pick_date_with_events:
 		{
-	    	Uri u = EventContentProvider.constructUri(12345);
+
+			SampleEventDatabase database = new SampleEventDatabase(this);
+			database.clearData();
+			long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+			Uri u = EventContentProvider.constructUri(calendar_id);
 			Intent i = new Intent(Intent.ACTION_PICK, u);
 
 			Log.e(TAG, "I specified a URI for the date-picker Intent!");
-			
+
 			// XXX Specifying the "mime-type" manually has the effect of
 			// nullifying the data URI!
-//			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
+			//			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
 			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
 			break;
 		}
@@ -106,7 +114,7 @@ public class Demo extends Activity implements View.OnClickListener {
 			Intent intent = new Intent(Intent.ACTION_PICK);
 			intent.setType(IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
 
-			List<EventWrapper> generated_events = generateRandomEvents(5);
+			List<EventWrapper> generated_events = generateRandomEvents(DEFAULT_RANDOM_EVENTS, new GregorianCalendar());
 			int event_count = generated_events.size();
 			long[] event_ids = new long[event_count];
 			long[] event_times = new long[event_count];
@@ -125,52 +133,55 @@ public class Demo extends Activity implements View.OnClickListener {
 		}
 		case R.id.button_pick_event_content_provider:
 		{
-	    	Uri u = EventContentProvider.constructUri(12345);
+			SampleEventDatabase database = new SampleEventDatabase(this);
+			database.clearData();
+			long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+			Uri u = EventContentProvider.constructUri(calendar_id);
 			Intent i = new Intent(Intent.ACTION_PICK, u);
 			downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
 			break;
 		}
 		case R.id.button_pick_event_google_calendar:
 		{
-	    	showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
+			showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
 			break;
 		}
 		}
 	}
 
-    // ========================================================================
+	// ========================================================================
 	void downloadLaunchCheck(Intent intent, int request_code) {
 		if (Market.isIntentAvailable(this, intent))
 			startActivityForResult(intent, request_code);
 		else
 			showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
 	}
-	
-    // ========================================================================
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog) {
 
-        switch (id) {
+	// ========================================================================
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+
+		switch (id) {
 		case DIALOG_CALENDARPICKER_DOWNLOAD:
 		{
 			boolean has_android_market = Market.isIntentAvailable(this,
 					Market.getMarketDownloadIntent(Market.PACKAGE_NAME_CALENDAR_PICKER));
 
 			Log.d(TAG, "has_android_market? " + has_android_market);
-			
+
 			dialog.findViewById(android.R.id.button1).setVisibility(
 					has_android_market ? View.VISIBLE : View.GONE);
 			break;
 		}
-        default:
-        	break;
-        }
-    }
-    
+		default:
+			break;
+		}
+	}
+
 	// ========================================================
 	@Override
 	protected Dialog onCreateDialog(int id) {
-        
+
 		switch (id) {
 		case DIALOG_CALENDARPICKER_DOWNLOAD:
 		{
@@ -198,7 +209,7 @@ public class Demo extends Activity implements View.OnClickListener {
 			.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
 
 			final Cursor cursor = managedQuery(calendars, null, null, null, null);
-			
+
 			return new AlertDialog.Builder(this)
 			.setIcon(android.R.drawable.ic_dialog_alert)
 			.setTitle("Choose calendar")
@@ -213,11 +224,11 @@ public class Demo extends Activity implements View.OnClickListener {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					Log.d(TAG, "Selected calendar ID: " + selected_google_calendar_id);
-					
+
 					Uri uri = new Uri.Builder()
-						.scheme(ContentResolver.SCHEME_CONTENT)
-						.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-						.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
+					.scheme(ContentResolver.SCHEME_CONTENT)
+					.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+					.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
 					intent.putExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, selected_google_calendar_id);
@@ -230,52 +241,56 @@ public class Demo extends Activity implements View.OnClickListener {
 
 		return null;
 	}
-    
-	// ========================================================================
-    public static List<EventWrapper> generateRandomEvents(int event_count) {
-    	
-    	List<EventWrapper> events = new ArrayList<EventWrapper>();
-		GregorianCalendar cal = new GregorianCalendar();
-		Random r = new Random();
 
+	// ========================================================================
+	/** Input: an event count and a calendar to specify the year and month */
+	public static List<EventWrapper> generateRandomEvents(int event_count, Calendar cal) {
+
+		Calendar calendar = (Calendar) cal.clone();
+		Random r = new Random();
+		
+		List<EventWrapper> events = new ArrayList<EventWrapper>();
 		for (int event_id = 0; event_id < event_count; event_id++) {
 			EventWrapper event = new EventWrapper();
-    		cal.roll(GregorianCalendar.DATE, r.nextInt(3));
-    		event.timestamp = cal.getTimeInMillis();
+			calendar.roll(Calendar.DATE, r.nextInt(calendar.getActualMaximum(Calendar.DAY_OF_MONTH)));
+			calendar.roll(Calendar.HOUR_OF_DAY, r.nextInt(calendar.getActualMaximum(Calendar.HOUR_OF_DAY)));
+			calendar.roll(Calendar.MINUTE, r.nextInt(calendar.getActualMaximum(Calendar.MINUTE)));
+			event.timestamp = calendar.getTimeInMillis();
 			event.id = event_id;
-    		events.add(event);
+			event.title = "Event " + event_id;
+			events.add(event);
 		}
-		
+
 		return events;
-    }
+	}
 
 	// ========================================================================
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (resultCode != RESULT_OK) {
-            Log.i(TAG, "==> result " + resultCode + " from subactivity!  Ignoring...");
-//            Toast t = Toast.makeText(this, "Action cancelled!", Toast.LENGTH_SHORT);
-//            t.show();
-            return;
-        }
-        
-  	   	switch (requestCode) {
-   		case REQUEST_CODE_DATE_SELECTION:
-   		{
-   			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
-   			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0);
-   			
-   			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
-            break;
-        }
-   		case REQUEST_CODE_EVENT_SELECTION:
-   		{
-   			long id = data.getLongExtra(BaseColumns._ID, -1);
-   			Toast.makeText(this, "Result: " + id, Toast.LENGTH_SHORT).show();
-   			((TextView) findViewById(R.id.event_picker_result)).setText( "" + id );
-            break;
-        }
-  	   	}
-    }
+		if (resultCode != RESULT_OK) {
+			Log.i(TAG, "==> result " + resultCode + " from subactivity!  Ignoring...");
+			//            Toast t = Toast.makeText(this, "Action cancelled!", Toast.LENGTH_SHORT);
+			//            t.show();
+			return;
+		}
+
+		switch (requestCode) {
+		case REQUEST_CODE_DATE_SELECTION:
+		{
+			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
+			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0);
+
+			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
+			break;
+		}
+		case REQUEST_CODE_EVENT_SELECTION:
+		{
+			long id = data.getLongExtra(BaseColumns._ID, -1);
+			Toast.makeText(this, "Result: " + id, Toast.LENGTH_SHORT).show();
+			((TextView) findViewById(R.id.event_picker_result)).setText( "" + id );
+			break;
+		}
+		}
+	}
 }

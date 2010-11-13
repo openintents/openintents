@@ -1,19 +1,15 @@
 package org.openintents.calendarpicker.demo.provider;
 
-import java.util.List;
-
 import org.openintents.calendarpicker.contract.IntentConstants;
-import org.openintents.calendarpicker.demo.Demo;
-import org.openintents.calendarpicker.demo.Demo.EventWrapper;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.database.Cursor;
-import android.database.MatrixCursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.provider.BaseColumns;
 
 public class EventContentProvider extends ContentProvider {
 	
@@ -45,26 +41,16 @@ public class EventContentProvider extends ContentProvider {
    @Override
    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
-		MatrixCursor c = new MatrixCursor(new String[] {
-				BaseColumns._ID,
-				IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP,
-				IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE});
-
-		List<EventWrapper> generated_events = Demo.generateRandomEvents(5);
-		
-		int i=0;
-		for (EventWrapper event : generated_events) {
-			c.newRow()
-				.add(event.id)
-				.add( event.timestamp )
-				.add( "Event " + i );
-
-			i++;
-		}
-
-		return c;
+	   long calendar_id = ContentUris.parseId(uri);
+	   
+	   SampleEventDatabase database = new SampleEventDatabase(getContext());
+	   SQLiteDatabase db = database.getReadableDatabase();
+	   
+	   SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
+	   builder.setTables(SampleEventDatabase.TABLE_EVENTS);
+	   builder.appendWhere(SampleEventDatabase.KEY_CALENDAR_ID + "=" + calendar_id);
+	   return builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
    }
-
 
    @Override
    public int delete(Uri uri, String s, String[] as) {

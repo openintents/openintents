@@ -9,12 +9,12 @@
 	<color name="event_count_number">@android:color/black</color>
 	
 	<color name="calendar_date_background_active_selected">#C0f0</color>
-	<color name="calendar_date_background_passive_even_selected">#C00f</color>
-	<color name="calendar_date_background_passive_odd_selected">#C80f</color>
+	<color name="calendar_date_background_passive_even_selected">#C04f</color>
+	<color name="calendar_date_background_passive_odd_selected">#C40f</color>
 
 	<color name="calendar_date_background_active">#C080</color>
-	<color name="calendar_date_background_passive_even">#C008</color>
-	<color name="calendar_date_background_passive_odd">#C40f</color>
+	<color name="calendar_date_background_passive_even">#C048</color>
+	<color name="calendar_date_background_passive_odd">#C408</color>
 	
 	
 	<color name="calendar_date_background_longpress">#FF0</color>

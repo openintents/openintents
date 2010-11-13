@@ -14,3 +14,11 @@ All changes made to the canonical version should be manually propagated to its d
 
 Normally, an svn:extern might be used for this, but the OpenIntents project opts not to use them
 due to the extra time they add to downloads.
+
+
+
+NOTE:
+ContentProviders must implement "selection" (i.e. WHERE clauses) for epoch ranges for event
+selection to work properly, and it must support an ascending sort order.  This is trivial
+when your backend is SQLite, but could be complicated if you decide to use a MatrixCursor for
+some reason.

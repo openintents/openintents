@@ -10,6 +10,7 @@ import java.util.Stack;
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.adapter.EventListAdapter;
 import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.view.ScrollableMonthView;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -44,44 +45,12 @@ public class EventListActivity extends ListActivity {
 	public static final String PREFKEY_SHOW_EVENT_LIST_INSTRUCTIONS = "PREFKEY_SHOW_EVENT_LIST_INSTRUCTIONS";
 
     
-	
 	public static final String KEY_ROWID = BaseColumns._ID;
-	public static final String KEY_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
+	public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
 	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
-	
-	
-	Cursor requery() {
 
-        Uri intent_data = getIntent().getData();
-    	Log.d(TAG, "Querying content provider for: " + intent_data);
-    	
-        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, -1));
-        
-        
-        
-        
-        Log.e(TAG, "Received date: " + d.getDate());
-        long day_begin = d.getTime()/1000;
-        long day_end = day_begin + 86400;
-        
-        
-		
-		Cursor cursor = managedQuery(intent_data,
-				new String[] {
-					KEY_ROWID,
-//					"strftime('%s', " + KEY_TIMESTAMP + ") AS " + KEY_TIMESTAMP,
-					KEY_TIMESTAMP,	// XXX
-					KEY_EVENT_TITLE},
-				KEY_TIMESTAMP + " >= datetime(?, 'unixepoch') AND " + KEY_TIMESTAMP + " < datetime(?, 'unixepoch')",
-				new String[] {Long.toString(day_begin), Long.toString(day_end)}, constructOrderByString());
 
-		String header_text = cursor.getCount() + " event(s) on " + new DateFormatSymbols().getShortMonths()[d.getMonth()] + " " + d.getDate();
-		((TextView) findViewById(R.id.list_header)).setText(header_text);
-		
-		return cursor;
-	}
-	
-	
+    // ========================================================================
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,8 +94,37 @@ public class EventListActivity extends ListActivity {
         	
         }
     }
-    // =============================================
-    
+
+    // ========================================================================
+	Cursor requery() {
+
+        Uri intent_data = getIntent().getData();
+    	Log.d(TAG, "Querying content provider for: " + intent_data);
+    	
+        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0));
+        
+
+        Log.e(TAG, "Received date: " + d.getDate());
+        long day_begin = d.getTime();
+        long day_end = day_begin + ScrollableMonthView.MILLISECONDS_PER_DAY;
+        
+		
+		Cursor cursor = managedQuery(intent_data,
+				new String[] {
+					KEY_ROWID,
+					KEY_EVENT_TIMESTAMP,
+					KEY_EVENT_TITLE},
+				KEY_EVENT_TIMESTAMP + ">=? AND " + KEY_EVENT_TIMESTAMP + "<?",
+				new String[] {Long.toString(day_begin), Long.toString(day_end)},
+				constructOrderByString());
+
+		String header_text = cursor.getCount() + " event(s) on " + new DateFormatSymbols().getShortMonths()[d.getMonth()] + " " + d.getDate();
+		((TextView) findViewById(R.id.list_header)).setText(header_text);
+		
+		return cursor;
+	}
+
+    // ========================================================================
     OnItemClickListener category_choice_listener = new OnItemClickListener() {
 
 		public void onItemClick(AdapterView<?> adapter_view, View arg1, int position, long id) {
@@ -134,7 +132,7 @@ public class EventListActivity extends ListActivity {
 			Cursor cursor = (Cursor) ((CursorAdapter) adapter_view.getAdapter()).getItem(position);
 
 			Intent i = new Intent();
-			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
+			i.putExtra(BaseColumns._ID, id);
 			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, 0));
 
 			int epoch_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
@@ -145,14 +143,14 @@ public class EventListActivity extends ListActivity {
 			finish();
 		}
     };    
-    // =============================================
-    
-    
+
+    // ========================================================================
     class StateRetainer {
     	Cursor cursor;
     	Stack<SortCriteria> sorting_order;
     }
-    
+
+    // ========================================================================
     @Override
     public Object onRetainNonConfigurationInstance() {
     	
@@ -161,27 +159,22 @@ public class EventListActivity extends ListActivity {
     	state.sorting_order = sorting_order;
         return state;
     }
-    
-    
-    
-    
-	
+
+    // ========================================================================
     @Override
     protected void onSaveInstanceState(Bundle out_bundle) {
     	Log.i(TAG, "onSaveInstanceState");
 
     }
-    
+
+    // ========================================================================
     @Override
     protected void onRestoreInstanceState(Bundle in_bundle) {
     	Log.i(TAG, "onRestoreInstanceState");
     	
     }
-    
-    
-    
-    
 
+    // ========================================================================
     @Override
     protected Dialog onCreateDialog(int id) {
     	
@@ -191,12 +184,8 @@ public class EventListActivity extends ListActivity {
         
         return null;
     }
-    
 
-
-
-
-
+    // ========================================================================
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -206,7 +195,8 @@ public class EventListActivity extends ListActivity {
 
         return true;
     }
-    
+
+    // ========================================================================
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
@@ -214,6 +204,7 @@ public class EventListActivity extends ListActivity {
         return true;
     }
 
+    // ========================================================================
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -239,12 +230,7 @@ public class EventListActivity extends ListActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // ========================================================   
-
-    
-	
-    // ========================================================
-
+    // ========================================================================
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (resultCode != Activity.RESULT_CANCELED) {
@@ -256,13 +242,8 @@ public class EventListActivity extends ListActivity {
 		}
     }
     
-    
-    
-    
-    
-    
-    // ========================================================
-    
+
+    // ========================================================================
     // NOTE: The criteria are read from right-to-left in the queue; Highest priority is
     // on top of the stack.
     Stack<SortCriteria> sorting_order = new Stack<SortCriteria>();
@@ -271,7 +252,7 @@ public class EventListActivity extends ListActivity {
     }
     String[] sort_column_names = {
 		KEY_EVENT_TITLE,
-		KEY_TIMESTAMP
+		KEY_EVENT_TIMESTAMP
 	};
     boolean[] default_ascending = {true, false};
     

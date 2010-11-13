@@ -27,13 +27,13 @@ public class EventListAdapter extends ResourceCursorAdapter {
 		TextView category_name = (TextView) view.findViewById(R.id.category_name);
 		TextView assignment_timestamp = (TextView) view.findViewById(R.id.assignment_timestamp);
 		
-		int timestamp_column = cursor.getColumnIndex(EventListActivity.KEY_TIMESTAMP);
+		int timestamp_column = cursor.getColumnIndex(EventListActivity.KEY_EVENT_TIMESTAMP);
 		int name_column = cursor.getColumnIndex(EventListActivity.KEY_EVENT_TITLE);
 		
 		category_name.setText(cursor.getString(name_column));
 
 	    long timestamp = cursor.getLong(timestamp_column);
-	    Date earliest = new Date(timestamp * 1000);
+	    Date earliest = new Date(timestamp);
 	    String formatted_date = DateFormat.getDateTimeInstance().format(earliest);
 		assignment_timestamp.setText(formatted_date);
 	}

@@ -4,6 +4,7 @@ import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -143,22 +144,18 @@ public class CalendarPickerActivity extends Activity {
 			@Override
 			public void updateDate(Date date) {
 
+				// Highlight the day of the week in the header bar
 				Calendar c = new GregorianCalendar();
 				c.setTime(date);
 				int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
 				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
 					TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
-					if (i == child_idx) {
-						tv.setTextColor(Color.RED);
-					} else {
-						tv.setTextColor(getResources().getColor(android.R.color.primary_text_dark));
-					}
+					tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.primary_text_dark));
 				}
 				
 				
-				boolean IS_SELECTING_EVENT = false;	// FIXME
 				Uri data = getIntent().getData();
-				if (data != null && IS_SELECTING_EVENT) {
+				if (data != null) {
 
 					Intent i = new Intent(CalendarPickerActivity.this, EventListActivity.class);
 
@@ -222,7 +219,8 @@ public class CalendarPickerActivity extends Activity {
 
     	long[] event_ids = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
     	long[] event_timestamps = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS);
-    	
+
+    	Collections.sort(events);
     	if (event_ids != null && event_timestamps != null) {
 	    	for (int i=0; i<event_timestamps.length; i++)
 	    		events.add( new SimpleEvent(event_ids[i], event_timestamps[i]) );
@@ -248,7 +246,8 @@ public class CalendarPickerActivity extends Activity {
     	Cursor cursor = managedQuery(uri,
 			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
 			selection,
-			null, null);
+			null,
+			IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
     	
     	if (cursor != null && cursor.moveToFirst()) {
 
@@ -316,11 +315,11 @@ public class CalendarPickerActivity extends Activity {
   	   	switch (requestCode) {
    		case REQUEST_CODE_EVENT_SELECTION:
    		{
-   			long id = data.getLongExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, INVALID_EVENT_ID);
+   			long id = data.getLongExtra(BaseColumns._ID, INVALID_EVENT_ID);
 			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, INVALID_DATE);
 
 			Intent i = new Intent();
-			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
+			i.putExtra(BaseColumns._ID, id);
 			
 			if (event_epoch != INVALID_DATE) {
 				i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(new Date(event_epoch)));
@@ -334,10 +333,10 @@ public class CalendarPickerActivity extends Activity {
         }
    		case REQUEST_CODE_MONTH_YEAR_SELECTION:
    		{
-   			long id = data.getLongExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, INVALID_EVENT_ID);
+   			long id = data.getLongExtra(BaseColumns._ID, INVALID_EVENT_ID);
 
 			Intent i = new Intent();
-			i.putExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, id);
+			i.putExtra(BaseColumns._ID, id);
 	        setResult(Activity.RESULT_OK, i);
 			finish();
             break;

@@ -451,7 +451,7 @@ public class ScrollableMonthView extends View {
     /** Calculate vertical dimensions */
     float getDayBoxHeight() {
 
-        int usable_height = getHeight() - getPaddingTop() - getPaddingBottom();
+    	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
         float day_box_height = (usable_height - (this.spanned_weeks - 1)*this.vertical_spacing) / this.spanned_weeks;
         return day_box_height;
     }
@@ -461,10 +461,9 @@ public class ScrollableMonthView extends View {
      * each of the days that are visible on screen.
      */
     void visitDayViewports(ViewportVisitor visitor) {
-
     	
         // Calculate horizontal dimensions
-        int usable_width = getWidth() - getPaddingLeft() - getPaddingRight();
+        int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
         float day_box_width = (usable_width - (DAYS_PER_WEEK - 1)*this.horizontal_spacing) / DAYS_PER_WEEK;
         float width_per_day = day_box_width + this.horizontal_spacing;
     	
@@ -553,9 +552,7 @@ public class ScrollableMonthView extends View {
         				
 		// Draw the background
         this.month_shapes_paint.setColor(background_color);
-        RectF bg = new RectF(0, 0, daybox.width(), daybox.height());
-        canvas.drawRect(bg, month_shapes_paint);
-
+        canvas.drawRect(0, 0, daybox.width(), daybox.height(), month_shapes_paint);
         
         float usable_size = Math.min(daybox.width(), daybox.height());
         drawEventCount(canvas, daybox, day, usable_size);
@@ -598,17 +595,12 @@ public class ScrollableMonthView extends View {
     void drawCornerBox(Canvas canvas, RectF viewport, SimpleCalendarDay calendar_day, float usable_size, boolean month_active) {
     	
         float corner_box_side = usable_size/2f;
-        RectF rect = new RectF(
-        		0,
-        		0,
-        		corner_box_side,
-        		corner_box_side);
 
         int cornerbox_color = resources.getColor(R.color.cornerbox_color);
         month_shapes_paint.setColor(cornerbox_color);
-        canvas.drawRect(rect, month_shapes_paint);
+        canvas.drawRect(0, 0, corner_box_side, corner_box_side, month_shapes_paint);
         canvas.save();
-        canvas.translate(rect.centerX(), rect.centerY());
+        canvas.translate(corner_box_side/2f, corner_box_side/2f);
         
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(calendar_day.getDate());
@@ -630,14 +622,13 @@ public class ScrollableMonthView extends View {
     Date getDayFromPoint(PointF point) {
 
     	// Use horizontal position to determine weekday
-    	// (zero-based index, of course)
-    	
-    	int weekday_index = (int) (DAYS_PER_WEEK*point.x / getWidth());
+        int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
+    	int weekday_index = (int) (DAYS_PER_WEEK*(point.x - getPaddingLeft()) / usable_width);
     	Log.d(TAG, "Weekday index: " + weekday_index);
     	
-    	// TODO: Ignores padding, for now.
-        
-        int week_offset = (int) (this.spanned_weeks*(point.y - this.vertical_offset) / getHeight());
+    	// Use vertical position to determine week multiplier
+    	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
+        int week_offset = (int) (this.spanned_weeks*(point.y - getPaddingTop() - this.vertical_offset) / usable_height);
         
 		Calendar offset_calendar_date = (Calendar) this.month_calendar.clone();
     	setMonthWeekBeginning(offset_calendar_date);
