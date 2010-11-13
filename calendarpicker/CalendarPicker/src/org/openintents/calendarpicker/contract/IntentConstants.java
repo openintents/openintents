@@ -46,7 +46,7 @@ public class IntentConstants {
 		public static final String COLUMN_EVENT_TITLE = "title";
 		public static final String COLUMN_EVENT_QUANTITY = "quantity";
 		public static final String COLUMN_EVENT_TIMESTAMP = "dtstart";
-		public static final String COLUMN_EVENT_CALENDAR_ID = "dtstart";
+		public static final String COLUMN_EVENT_CALENDAR_ID = "calendar_id";
 		
 		
 
