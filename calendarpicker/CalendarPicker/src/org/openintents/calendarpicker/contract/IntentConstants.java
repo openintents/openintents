@@ -5,12 +5,12 @@ import android.provider.BaseColumns;
 
 public class IntentConstants {
 
-	/** a Long */
-	public static String INTENT_EXTRA_CALENDAR_EVENT_ID = BaseColumns._ID;
-
-	
 	public static String ANDROID_CALENDAR_AUTHORITY_1_0 = "calendar";
 	public static String ANDROID_CALENDAR_AUTHORITY_2_0 = "com.android.calendar";
+	
+	public static String ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS = "calendars";
+	public static String ANDROID_CALENDAR_PROVIDER_PATH_EVENTS = "events";
+	
 	
 	public static final class CalendarDatePicker {
 		
@@ -40,19 +40,14 @@ public class IntentConstants {
 		private static final String VND_TYPE_DECLARATION = "event";
 
 		// ==== CONTENT TYPES ====
-
 		public static final String CONTENT_TYPE_ITEM_CALENDAR_EVENT = CONTENT_TYPE_BASE_SINGLE + VND_TYPE_DECLARATION;
 		public static final String CONTENT_TYPE_CALENDAR_EVENT = CONTENT_TYPE_BASE_MULTIPLE + VND_TYPE_DECLARATION;
 		
 
 		// ==== COLUMNS ====
-		
 		public static final String COLUMN_EVENT_TITLE = "title";
 		public static final String COLUMN_EVENT_QUANTITY = "quantity";
 		public static final String COLUMN_EVENT_TIMESTAMP = "dtstart";
 		public static final String COLUMN_EVENT_CALENDAR_ID = "calendar_id";
-		
-		
-
 	}
 }

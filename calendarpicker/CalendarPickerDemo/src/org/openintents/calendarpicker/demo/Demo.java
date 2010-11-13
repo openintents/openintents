@@ -33,6 +33,16 @@ public class Demo extends Activity implements View.OnClickListener {
 	private static final int DIALOG_CALENDARPICKER_DOWNLOAD = 1;
 	private static final int DIALOG_GOOGLE_CALENDAR_SELECTION = 2;
 	
+	
+
+	long selected_google_calendar_id = -1;
+
+	// ========================================================================
+    public static class EventWrapper {
+    	public long id, timestamp;
+    	public String title;
+    }
+    
 	// ========================================================================
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,7 +78,6 @@ public class Demo extends Activity implements View.OnClickListener {
     }
     
 	// ========================================================================
-    
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -121,7 +130,6 @@ public class Demo extends Activity implements View.OnClickListener {
 			downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
 			break;
 		}
-		
 		case R.id.button_pick_event_google_calendar:
 		{
 	    	showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
@@ -132,19 +140,10 @@ public class Demo extends Activity implements View.OnClickListener {
 
     // ========================================================================
 	void downloadLaunchCheck(Intent intent, int request_code) {
-		
-		Log.d(TAG, "Checking whether event is available: " + intent);
-		
-		boolean is_available = Market.isIntentAvailable(this, intent);
-
-		
-		
-		
-		if (is_available) {
+		if (Market.isIntentAvailable(this, intent))
 			startActivityForResult(intent, request_code);
-		} else {
+		else
 			showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
-		}
 	}
 	
     // ========================================================================
@@ -193,7 +192,12 @@ public class Demo extends Activity implements View.OnClickListener {
 		}
 		case DIALOG_GOOGLE_CALENDAR_SELECTION:
 		{
-			final Cursor cursor = getCalendarManagedCursor(null, null, "calendars");
+			Uri calendars = new Uri.Builder()
+			.scheme(ContentResolver.SCHEME_CONTENT)
+			.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+			.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
+
+			final Cursor cursor = managedQuery(calendars, null, null, null, null);
 			
 			return new AlertDialog.Builder(this)
 			.setIcon(android.R.drawable.ic_dialog_alert)
@@ -210,28 +214,14 @@ public class Demo extends Activity implements View.OnClickListener {
 				public void onClick(DialogInterface dialog, int which) {
 					Log.d(TAG, "Selected calendar ID: " + selected_google_calendar_id);
 					
-//					Uri uri = CalendarWrapperContentProvider.constructUri(selected_google_calendar_id);
 					Uri uri = new Uri.Builder()
 						.scheme(ContentResolver.SCHEME_CONTENT)
 						.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-						.appendPath("events").build();
+						.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
-					Log.d(TAG, "Sending content provider Uri: " + uri);
-					
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
-					
-					
-
-					ContentResolver cr = getContentResolver();
-					String resolved_type = intent.resolveType(cr);
-					Log.i(TAG, "Resolved type: " + resolved_type);
-					
-					
+					intent.putExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, selected_google_calendar_id);
 					downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
-
-//					Log.d(TAG, "Querying content provider Uri in Demo: " + uri);
-//					Cursor cursor = managedQuery(uri, null, null, null, null);
-//					slurpGoogleCalendarEventsFromCursor(cursor);
 				}
 			})
 			.create();
@@ -241,16 +231,6 @@ public class Demo extends Activity implements View.OnClickListener {
 
 		return null;
 	}
-	
-	long selected_google_calendar_id = -1;
-	
-	
-	
-	// ========================================================================
-    public static class EventWrapper {
-    	public long id, timestamp;
-    	public String title;
-    }
     
 	// ========================================================================
     public static List<EventWrapper> generateRandomEvents(int event_count) {
@@ -269,32 +249,7 @@ public class Demo extends Activity implements View.OnClickListener {
 		
 		return events;
     }
-    
 
-	// ========================================================================
-    void slurpGoogleCalendarEventsFromCursor(Cursor managedCursor) {
-    
-
-
-    	if (managedCursor != null && managedCursor.moveToFirst()) {
-
-    		Log.i(TAG, "Listing Calendar Event Details");
-
-    		do {
-
-    			Log.i(TAG, "**START Calendar Event Description**");
-
-    			for (int i = 0; i < managedCursor.getColumnCount(); i++) {
-    				Log.i(TAG, managedCursor.getColumnName(i) + "="
-    						+ managedCursor.getString(i));
-    			}
-    			Log.i(TAG, "**END Calendar Event Description**");
-    		} while (managedCursor.moveToNext());
-    	} else {
-    		Log.i(TAG, "No Calendars");
-    	}
-    }
-    
 	// ========================================================================
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -317,40 +272,11 @@ public class Demo extends Activity implements View.OnClickListener {
         }
    		case REQUEST_CODE_EVENT_SELECTION:
    		{
-   			long id = data.getLongExtra(IntentConstants.INTENT_EXTRA_CALENDAR_EVENT_ID, -1);
+   			long id = data.getLongExtra(BaseColumns._ID, -1);
    			Toast.makeText(this, "Result: " + id, Toast.LENGTH_SHORT).show();
    			((TextView) findViewById(R.id.event_picker_result)).setText( "" + id );
             break;
         }
   	   	}
-    }
-    
-    
-    
-    
-    /**
-     * @param projection
-     * @param selection
-     * @param path
-     * @return
-     */
-    private Cursor getCalendarManagedCursor(String[] projection,
-            String selection, String path) {
-    	
-		Uri calendars = new Uri.Builder()
-		.scheme(ContentResolver.SCHEME_CONTENT)
-		.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-		.appendPath("calendars").build();
-
-		Cursor managedCursor = null;
-        try {
-            managedCursor = managedQuery(calendars, projection, selection,
-                    null, null);
-        } catch (IllegalArgumentException e) {
-            Log.w(TAG, "Failed to get provider at ["
-                    + calendars.toString() + "]");
-        }
-
-        return managedCursor;
     }
 }

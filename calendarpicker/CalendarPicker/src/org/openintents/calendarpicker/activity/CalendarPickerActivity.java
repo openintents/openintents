@@ -239,15 +239,15 @@ public class CalendarPickerActivity extends Activity {
     	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
 
     	Log.d(TAG, "Querying content provider for: " + uri);
-//    	Cursor cursor = managedQuery(uri,
-//    			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
-//    			null, null, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
+    	String selection = null;
+    	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID)) {
+        	long cal_id = getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1);
+    		selection = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	}
 
-    	long cal_id = 1;
-    	
     	Cursor cursor = managedQuery(uri,
 			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
-			IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id,
+			selection,
 			null, null);
     	
     	if (cursor != null && cursor.moveToFirst()) {
