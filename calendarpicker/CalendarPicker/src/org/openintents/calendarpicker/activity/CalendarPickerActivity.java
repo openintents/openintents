@@ -273,8 +273,6 @@ public class CalendarPickerActivity extends Activity {
     	return events;
     }
 
-    
-
     // ========================================================================
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

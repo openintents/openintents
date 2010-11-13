@@ -226,7 +226,6 @@ public class Demo extends Activity implements View.OnClickListener {
 			})
 			.create();
 		}
-		
 		}
 
 		return null;
