@@ -15,6 +15,7 @@ import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
+import org.openintents.calendarpicker.view.ScrollableMonthView.MonthContextMenuInfo;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
 import org.openintents.calendarpicker.view.ScrollableMonthView.OnDaySelectionListener;
 
@@ -26,11 +27,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
@@ -57,6 +61,7 @@ public class MonthActivity extends Activity {
 	TextView month_title;
 	ScrollableMonthView month_view;
 	TimelineViewHorizontal tiny_timeline;
+    LinearLayout weekday_header_layout;
 	
     // ========================================================================
 	void updateMonthHeader(Calendar calendar) {
@@ -86,12 +91,11 @@ public class MonthActivity extends Activity {
         	Log.d(TAG, "No URI was passed, checking for Intent extras instead...");
 			this.events = getEventsFromIntent(this.getIntent());
 		}
-
         DateFormatSymbols dfs = new DateFormatSymbols();
 //        String weekdays[] = dfs.getWeekdays();
         String weekdays[] = dfs.getShortWeekdays();
         LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
-        final LinearLayout weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
+        weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
 		for (int i=Calendar.getInstance().getFirstDayOfWeek(); i<weekdays.length; i++) {
 	        TextView tv = new TextView(this);
 	        tv.setGravity(Gravity.CENTER);
@@ -144,42 +148,19 @@ public class MonthActivity extends Activity {
 			@Override
 			public void updateDate(Date date) {
 
-				// Highlight the day of the week in the header bar
-				Calendar c = new GregorianCalendar();
-				c.setTime(date);
-				int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
-				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
-					TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
-					tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.primary_text_dark));
-				}
-				
+				updateWeekHeaderBar(date);
 				
 				Uri data = getIntent().getData();
 				if (data != null) {
-
-					Intent i = new Intent(MonthActivity.this, DayEventsListActivity.class);
-
-					i.setData(data);
-					if (date != null) {
-						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
-						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
-					}
-					startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
-
+					launchDayEvents(data, date);
 				} else {
-					// If there are no events, just return the day.
-					Intent i = new Intent();
-					
-					if (date != null) {
-						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
-						i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
-					}
-					
-					setResult(Activity.RESULT_OK, i);
-					finish();
+					finishWithDate(date);
 				}
 			}
         });
+        
+
+        registerForContextMenu(month_view);
 
         
         Calendar current_month_calendar = new GregorianCalendar();
@@ -192,6 +173,44 @@ public class MonthActivity extends Activity {
         updateMonthHeader(current_month_calendar);
 		tiny_timeline.setDate(current_month_calendar.getTime());
         month_view.setMonthAndEvents(current_month_calendar, events);
+    }
+
+    // ========================================================================
+    void finishWithDate(Date date) {
+		// If there are no events, just return the day.
+		Intent i = new Intent();
+		
+		if (date != null) {
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
+		}
+		
+		setResult(Activity.RESULT_OK, i);
+		finish();
+    }
+    
+    // ========================================================================
+    void updateWeekHeaderBar(Date date) {
+		// Highlight the day of the week in the header bar
+		Calendar c = new GregorianCalendar();
+		c.setTime(date);
+		int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+		for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
+			TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
+			tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.primary_text_dark));
+		}
+    }
+
+    // ========================================================================
+    void launchDayEvents(Uri data, Date date) {
+		Intent i = new Intent(MonthActivity.this, DayEventsListActivity.class);
+
+		i.setData(data);
+		if (date != null) {
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(date));
+		}
+		startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
     }
     
     // ========================================================================
@@ -363,4 +382,38 @@ public class MonthActivity extends Activity {
         }
   	   	}
     }
+    
+    
+
+    // ========================================================================
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_month_view, menu);
+        
+        menu.setHeaderIcon(android.R.drawable.ic_dialog_alert);
+        menu.setHeaderTitle("Day action:");
+	}
+
+    
+    // ========================================================================
+    @Override
+	public boolean onContextItemSelected(MenuItem item) {
+
+    	MonthContextMenuInfo info = (MonthContextMenuInfo) item.getMenuInfo();
+		
+		switch (item.getItemId()) {
+		case R.id.menu_show_day_events:
+		{
+			launchDayEvents(getIntent().getData(), info.getDate());
+	    	break;
+		}
+		default:
+			break;
+		}
+		return super.onContextItemSelected(item);
+	}
+
 }

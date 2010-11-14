@@ -25,6 +25,7 @@ import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -79,7 +80,6 @@ public class ScrollableMonthView extends View {
 	
     boolean is_holding_longpress = false;
     long longpress_start_time;
-//    int LONGPRESS_DURATION = 3*ViewConfiguration.getLongPressTimeout();
     int LONGPRESS_DURATION = ViewConfiguration.getLongPressTimeout();
     
 	
@@ -130,6 +130,9 @@ public class ScrollableMonthView extends View {
 			public boolean onTouch(View v, MotionEvent event) {
 	        	
 	        	if (event.getAction() == MotionEvent.ACTION_UP) {
+
+	            	is_holding_longpress = false;
+	        		
 	        		if (Math.abs(vertical_offset) > 0) {
 	        			
 	        			// FIXME
@@ -167,7 +170,13 @@ public class ScrollableMonthView extends View {
 				cal.setTime(highlighted_day != null ? highlighted_day : month_calendar.getTime());
 								
 		    	switch (keyCode) {
-		    	case KeyEvent.KEYCODE_DPAD_DOWN:
+		    	case KeyEvent.KEYCODE_DPAD_UP:
+		    	{
+		    		cal.add(Calendar.DATE, -DAYS_PER_WEEK);
+		    	    highlighted_day = cal.getTime();
+		    	    touchDay(highlighted_day);
+		    		break;
+		    	}
 		    	case KeyEvent.KEYCODE_DPAD_LEFT:
 		    	{
 		    		cal.add(Calendar.DATE, -1);
@@ -175,7 +184,13 @@ public class ScrollableMonthView extends View {
 		    	    touchDay(highlighted_day);
 		    		break;
 		    	}
-		    	case KeyEvent.KEYCODE_DPAD_UP:
+		    	case KeyEvent.KEYCODE_DPAD_DOWN:
+		    	{
+		    		cal.add(Calendar.DATE, DAYS_PER_WEEK);
+		    	    highlighted_day = cal.getTime();
+		    	    touchDay(highlighted_day);
+		    		break;
+		    	}
 		    	case KeyEvent.KEYCODE_DPAD_RIGHT:
 		    	{
 		    		cal.add(Calendar.DATE, 1);
@@ -302,7 +317,6 @@ public class ScrollableMonthView extends View {
         });
         
         canvas.restore();
-        
         
         handleViewAnimation(canvas);
     }
@@ -539,15 +553,21 @@ public class ScrollableMonthView extends View {
         						: (daycal_month_odd ? R.color.calendar_date_background_passive_odd : R.color.calendar_date_background_passive_even)				
         		);
         				
-        if (this.is_holding_longpress) {
+        if (this.is_holding_longpress && day.getDate().equals(this.highlighted_day)) {
 
         	long now = SystemClock.uptimeMillis();
-        	float alpha = (now - this.longpress_start_time) / (float) LONGPRESS_DURATION;
-
-        	alpha = Math.min(1, alpha);
         	
-        	int target_color = this.resources.getColor(R.color.calendar_date_background_longpress);
-        	background_color = interpolateColor(background_color, target_color, alpha);
+        	// Before you start to animate, check whether the tap time has been exceeded.
+        	long tap_timeout = ViewConfiguration.getTapTimeout();
+        	if (now > this.longpress_start_time + tap_timeout) {
+	        	
+	        	float alpha = (now - (this.longpress_start_time + tap_timeout)) / (float) LONGPRESS_DURATION;
+	
+	        	alpha = Math.min(1, alpha);
+	        	
+	        	int target_color = this.resources.getColor(R.color.calendar_date_background_longpress);
+	        	background_color = interpolateColor(background_color, target_color, alpha);
+        	}
         }
         				
 		// Draw the background
@@ -678,8 +698,6 @@ public class ScrollableMonthView extends View {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         	
-        	Log.d(TAG, "Intercepted month fling gesture...");
-        	
             try {
 
             	boolean horizontal_fling_possible = true;
@@ -733,8 +751,18 @@ public class ScrollableMonthView extends View {
 			return true;
         }
         
+		@Override
+		public void onLongPress(MotionEvent e) {
+        	is_holding_longpress = false;
+	    	showContextMenu();
+		}
+        
         @Override
         public boolean onDown(MotionEvent e) {
+        	
+        	is_holding_longpress = true;
+        	longpress_start_time = SystemClock.uptimeMillis();
+        	// Note: invalidate() is called below from within touchDay()
         	
         	// Stop a fling
         	current_flinging_velocity = 0;
@@ -748,6 +776,8 @@ public class ScrollableMonthView extends View {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
+        	is_holding_longpress = false;
+        	
 			float dy = e2.getY() - e1.getY();
 			if (Math.abs(dy) >= VERTICAL_SCROLL_TOLERANCE) {
 //	        	vertical_offset = dy;
@@ -760,6 +790,23 @@ public class ScrollableMonthView extends View {
 	        }
         	return true;
         }
+    }
+
+    // ==========================================================
+    public static class MonthContextMenuInfo implements ContextMenu.ContextMenuInfo {
+    	Date date;
+    	MonthContextMenuInfo(Date date) {
+    		this.date = date;
+    	}
+    	
+    	public Date getDate() {
+    		return this.date;
+    	}
+    }
+    
+    // ==========================================================
+    protected ContextMenu.ContextMenuInfo getContextMenuInfo() {
+		return new MonthContextMenuInfo(this.highlighted_day);
     }
     
     // ==========================================================
