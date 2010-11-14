@@ -13,11 +13,11 @@ import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
+import org.openintents.calendarpicker.view.OnDateUpdateListener;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthContextMenuInfo;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
-import org.openintents.calendarpicker.view.ScrollableMonthView.OnDaySelectionListener;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,6 +37,7 @@ import android.view.Window;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
 public class MonthActivity extends Activity {
@@ -63,6 +64,9 @@ public class MonthActivity extends Activity {
 	TimelineViewHorizontal tiny_timeline;
     LinearLayout weekday_header_layout;
 	
+    Toast timeline_date_toast;
+    final static SimpleDateFormat toast_date_formatter = new SimpleDateFormat("MMMM d, yyyy");
+    
     // ========================================================================
 	void updateMonthHeader(Calendar calendar) {
         SimpleDateFormat formatter = new SimpleDateFormat("MMMM yyyy");
@@ -103,8 +107,34 @@ public class MonthActivity extends Activity {
 	        weekday_header_layout.addView(tv, lp);
 		}
         
-
+		timeline_date_toast = Toast.makeText(this, "Date", Toast.LENGTH_SHORT);
 		tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
+		tiny_timeline.setOnDateUpdateListener(new OnDateUpdateListener() {
+			@Override
+			public void updateDate(Date date) {
+				timeline_date_toast.setText(toast_date_formatter.format(date));
+				timeline_date_toast.show();
+			}
+		});
+		tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
+			@Override
+			public void updateDate(Date date) {
+				Calendar cal = new GregorianCalendar();
+				cal.setTime(date);
+				
+		    	int year = cal.get(Calendar.YEAR);
+		    	int month = cal.get(Calendar.MONTH);
+		    	int day = cal.get(Calendar.DATE);
+		    	cal.clear();
+		    	cal.set(year, month, cal.getMinimum(Calendar.DATE));
+		        month_view.setMonth(cal);
+
+				Calendar cal2 = (Calendar) cal.clone();
+		    	// Set the precision of the calendar to the Day
+				cal2.set(Calendar.DATE, day);
+		        month_view.highlightDay(cal2.getTime());
+			}
+		});
 		
 		month_view = (ScrollableMonthView) findViewById(R.id.full_month);
         month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
@@ -115,7 +145,7 @@ public class MonthActivity extends Activity {
 			}
         });
         
-        month_view.setOnDayTouchListener(new OnDaySelectionListener() {
+        month_view.setOnDayTouchListener(new OnDateUpdateListener() {
 
 			@Override
 			public void updateDate(Date date) {
@@ -135,7 +165,7 @@ public class MonthActivity extends Activity {
         });
         
 
-        month_view.setOnScrollListener(new OnDaySelectionListener() {
+        month_view.setOnScrollListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
 				tiny_timeline.setDate(date);
@@ -143,7 +173,7 @@ public class MonthActivity extends Activity {
         });
 				
         
-        month_view.setOnDayClickListener(new OnDaySelectionListener() {
+        month_view.setOnDayClickListener(new OnDateUpdateListener() {
 
 			@Override
 			public void updateDate(Date date) {
@@ -301,14 +331,18 @@ public class MonthActivity extends Activity {
 
         return true;
     }
-    
+
+    // ========================================================================
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
+        menu.findItem(R.id.menu_all_events).setVisible(getIntent().getData() != null);
+        
         return true;
     }
 
+    // ========================================================================
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

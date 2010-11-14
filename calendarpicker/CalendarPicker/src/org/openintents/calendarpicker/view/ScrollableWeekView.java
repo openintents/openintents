@@ -1,8 +1,6 @@
 package org.openintents.calendarpicker.view;
 
 
-import java.text.DateFormatSymbols;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -18,11 +16,9 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Paint.Align;
 import android.os.SystemClock;
-import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -44,7 +40,7 @@ public class ScrollableWeekView extends View {
 	static final int DAYS_PER_WEEK = 7;
 	static final long MILLISECONDS_PER_WEEK = DAYS_PER_WEEK*MILLISECONDS_PER_DAY;
 	
-
+	final static int spanned_weeks = 1;
 
     float horizontal_spacing = 2;
     float vertical_spacing = 2;
@@ -54,17 +50,11 @@ public class ScrollableWeekView extends View {
 //    Context context;
     Resources resources;
 	Paint month_shapes_paint;
-	TextPaint month_watermark_text_paint;
     Calendar month_calendar;
 
 
     List<SimpleEvent> sorted_events;
     Date highlighted_day = null;
-
-    // Cached computed values
-    int spanned_weeks;
-	float max_month_width;
-    
     
     MonthUpdateCallback month_update_callback = null;
     OnDaySelectionListener day_click_callback, day_touch_callback, scroll_callback;
@@ -113,13 +103,6 @@ public class ScrollableWeekView extends View {
         month_shapes_paint = new Paint();
 		month_shapes_paint.setAntiAlias(true);
 		month_shapes_paint.setColor(Color.WHITE);
-
-        month_watermark_text_paint = new TextPaint();
-		month_watermark_text_paint.setAntiAlias(true);
-		month_watermark_text_paint.setColor(this.resources.getColor(R.color.background_month_text));
-    	month_watermark_text_paint.setTextAlign(Align.RIGHT);
-		
-		max_month_width = getMaxMonthWidth(month_watermark_text_paint);
 
         this.setFocusable(true);
         
@@ -195,21 +178,6 @@ public class ScrollableWeekView extends View {
 			}
 		});
     }
-    
-    // ========================================================================
-	private static float getMaxMonthWidth(Paint paint) {
-	
-        DateFormatSymbols dfs = new DateFormatSymbols();
-        float max_month_width = Float.MIN_VALUE;
-    	Rect bounds = new Rect();
-    	for (String month : dfs.getMonths()) {
-    		paint.getTextBounds(month, 0, month.length(), bounds);
-    		if (bounds.width() > max_month_width)
-    			max_month_width = bounds.width();
-    	}
-    	
-    	return max_month_width;
-	}
 
     // ========================================================================
 	public Calendar getCalendar() {
@@ -259,7 +227,6 @@ public class ScrollableWeekView extends View {
     	this.month_calendar = calendar;
     	setCalendarToFirstDayOfMonth(this.month_calendar);
     	this.vertical_offset = 0;
-    	this.spanned_weeks = calcSpannedWeeksForMonth();
     }
 
     // ========================================================================
@@ -287,8 +254,6 @@ public class ScrollableWeekView extends View {
 
         canvas.save();
         canvas.translate(0, this.vertical_offset);
-        
-        drawMonthWatermarkText(canvas);
         
         // Draw all of the visible days
         visitDayViewports(new ViewportVisitor() {
@@ -380,37 +345,6 @@ public class ScrollableWeekView extends View {
         return new Date(this.month_calendar.getTimeInMillis() - milliseconds_offset);
     }
     
-    // ========================================================================
-    void drawMonthWatermarkText(Canvas canvas) {
-
-		// Set the scale to the widest month    	
-    	float scale = getHeight() / this.max_month_width;
-
-    	SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
-    	String month_string = sdf.format(this.month_calendar.getTime());
-
-        long now = SystemClock.uptimeMillis();
-        float fraction = 1;
-        if (this.month_text_fader != null)
-        	fraction = this.month_text_fader.getFraction(now);
-
-    	int target_color = this.resources.getColor(R.color.background_month_text);
-    	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
-    	this.month_watermark_text_paint.setColor(text_color);
-    	
-    	
-		canvas.save();
-		canvas.translate(getWidth(), 0);
-		canvas.rotate(-90);
-		canvas.scale(scale, scale);
-		// XXX The month names look more stylish if we align
-		// the baseline with the edge of the screen, but this cuts
-		// of the capital "J"s and the "y"s.
-//		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
-
-		canvas.drawText(month_string, 0, 0, this.month_watermark_text_paint);
-		canvas.restore();	
-    }
 
     // ========================================================================
     int getNextMonthIndex(Calendar calendar) {

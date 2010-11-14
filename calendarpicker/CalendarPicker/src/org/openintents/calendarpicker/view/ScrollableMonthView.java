@@ -36,9 +36,6 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 public class ScrollableMonthView extends View {
 
 	static final String TAG = "ScrollableMonthView";
-	
-
-	
 
 	
 	public static final long MILLISECONDS_PER_DAY = 1000L*60*60*24;
@@ -68,7 +65,7 @@ public class ScrollableMonthView extends View {
     
     
     MonthUpdateCallback month_update_callback = null;
-    OnDaySelectionListener day_click_callback, day_touch_callback, scroll_callback;
+    OnDateUpdateListener day_click_callback, day_touch_callback, scroll_callback;
     
 
     
@@ -118,7 +115,7 @@ public class ScrollableMonthView extends View {
 		month_watermark_text_paint.setAntiAlias(true);
 		month_watermark_text_paint.setColor(this.resources.getColor(R.color.background_month_text));
     	month_watermark_text_paint.setTextAlign(Align.RIGHT);
-		
+
 		max_month_width = getMaxMonthWidth(month_watermark_text_paint);
 
         this.setFocusable(true);
@@ -174,28 +171,28 @@ public class ScrollableMonthView extends View {
 		    	{
 		    		cal.add(Calendar.DATE, -DAYS_PER_WEEK);
 		    	    highlighted_day = cal.getTime();
-		    	    touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
 		    	case KeyEvent.KEYCODE_DPAD_LEFT:
 		    	{
 		    		cal.add(Calendar.DATE, -1);
 		    	    highlighted_day = cal.getTime();
-		    	    touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
 		    	case KeyEvent.KEYCODE_DPAD_DOWN:
 		    	{
 		    		cal.add(Calendar.DATE, DAYS_PER_WEEK);
 		    	    highlighted_day = cal.getTime();
-		    	    touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
 		    	case KeyEvent.KEYCODE_DPAD_RIGHT:
 		    	{
 		    		cal.add(Calendar.DATE, 1);
 		    	    highlighted_day = cal.getTime();
-					touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
 		    	case KeyEvent.KEYCODE_DPAD_CENTER:
@@ -235,11 +232,6 @@ public class ScrollableMonthView extends View {
     public interface MonthUpdateCallback {
     	void updateMonth(Calendar cal);
     }
-    
-    // ========================================================================
-    public interface OnDaySelectionListener {
-    	void updateDate(Date date);
-    }
 
     // ========================================================================
     interface ViewportVisitor {
@@ -247,17 +239,17 @@ public class ScrollableMonthView extends View {
     }
     
     // ========================================================================
-    public void setOnDayClickListener(OnDaySelectionListener callback) {
+    public void setOnDayClickListener(OnDateUpdateListener callback) {
     	this.day_click_callback = callback;
     }
     
     // ========================================================================
-    public void setOnScrollListener(OnDaySelectionListener callback) {
+    public void setOnScrollListener(OnDateUpdateListener callback) {
     	this.scroll_callback = callback;
     }
 
     // ========================================================================
-    public void setOnDayTouchListener(OnDaySelectionListener callback) {
+    public void setOnDayTouchListener(OnDateUpdateListener callback) {
     	this.day_touch_callback = callback;
     }
     
@@ -275,12 +267,32 @@ public class ScrollableMonthView extends View {
     	setCalendarToFirstDayOfMonth(this.month_calendar);
     	this.vertical_offset = 0;
     	this.spanned_weeks = calcSpannedWeeksForMonth();
+    	
+    	
+        if (this.month_update_callback != null) {
+        	this.month_update_callback.updateMonth(this.month_calendar);
+        }
+        
+        if (this.day_touch_callback != null) {
+        	this.day_touch_callback.updateDate(null);
+        }
+    	
+        this.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
+    	invalidate();
     }
 
     // ========================================================================
+    public void highlightDay(Date date) {
+
+    	this.highlighted_day = date;
+    	this.day_touch_callback.updateDate(date);
+    	invalidate();
+    }
+    
+    // ========================================================================
     public void setMonthAndEvents(Calendar calendar, List<SimpleEvent> sorted_events) {
-    	setMonth(calendar);
     	this.sorted_events = sorted_events;
+    	setMonth(calendar);
     }
 
     // ========================================================================
@@ -676,17 +688,6 @@ public class ScrollableMonthView extends View {
 		int inc_value = forward ? 1 : -1;
         this.month_calendar.add(Calendar.MONTH, inc_value);
         setMonth(this.month_calendar);
-        
-        this.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
-        invalidate();
-        
-        if (this.month_update_callback != null) {
-        	this.month_update_callback.updateMonth(this.month_calendar);
-        }
-        
-        if (this.day_touch_callback != null) {
-        	this.day_touch_callback.updateDate(null);
-        }
 	}
 	
     // ========================================================================
@@ -768,7 +769,7 @@ public class ScrollableMonthView extends View {
         	current_flinging_velocity = 0;
         	
         	highlighted_day = getDayFromPoint(new PointF(e.getX(), e.getY()));
-        	touchDay(highlighted_day);
+        	highlightDay(highlighted_day);
 
         	return true;
         }
@@ -813,12 +814,5 @@ public class ScrollableMonthView extends View {
     void executeDay(Date date) {
     	Log.d(TAG, "Chosen day: " + date);
     	this.day_click_callback.updateDate(date);
-    }
-        
-    // ==========================================================
-    void touchDay(Date date) {
-    	Log.d(TAG, "Chosen day: " + date);
-    	this.day_touch_callback.updateDate(date);
-        	invalidate();
     }
 }

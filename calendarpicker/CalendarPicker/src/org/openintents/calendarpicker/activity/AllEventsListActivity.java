@@ -24,8 +24,10 @@ public class AllEventsListActivity extends AbstractEventsListActivity {
     
     // ========================================================================
 	Cursor requery() {
-
+		
         Uri intent_data = getIntent().getData();
+        if (intent_data == null) return null;
+
     	Log.d(TAG, "Querying content provider for: " + intent_data);
     	
 

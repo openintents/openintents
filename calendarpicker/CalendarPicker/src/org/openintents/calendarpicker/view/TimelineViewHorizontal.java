@@ -33,6 +33,9 @@ public class TimelineViewHorizontal extends View {
     private String mText;
     private int mAscent;
     
+    boolean is_touching = false;
+    float last_touch_x;
+    
     private Date date;
 
     static final long MILLISECONDS_PER_YEAR = ScrollableMonthView.MILLISECONDS_PER_DAY*365;
@@ -101,7 +104,15 @@ public class TimelineViewHorizontal extends View {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-
+     	
+	        	if (event.getAction() == MotionEvent.ACTION_UP) {
+					is_touching	= false;
+					invalidate();
+//		        	Date touched_date = getTouchDate(event.getX());
+					Date touched_date = getTouchDate(last_touch_x);
+					date_selection_callback.updateDate(touched_date);
+	        	}
+				
                 if (gestureDetector.onTouchEvent(event)) {
                     return true;
                 }
@@ -109,7 +120,20 @@ public class TimelineViewHorizontal extends View {
 			}
         });
     }
+    
+    // ========================================================================
+    OnDateUpdateListener date_update_callback;
+    public void setOnDateUpdateListener(OnDateUpdateListener callback) {
+    	this.date_update_callback = callback;
+    }
+    
+    // ========================================================================
+    OnDateUpdateListener date_selection_callback;
+    public void setOnDateSelectionListener(OnDateUpdateListener callback) {
+    	this.date_selection_callback = callback;
+    }
 
+    // ========================================================================
     /**
      * Sets the text to display in this label
      * @param text The text to display. This will be drawn as one line.
@@ -119,14 +143,14 @@ public class TimelineViewHorizontal extends View {
         requestLayout();
         invalidate();
     }
-    
-    
+
+    // ========================================================================
     public void setDate(Date date) {
         this.date = date;
         invalidate();
     }
-    
 
+    // ========================================================================
     /**
      * Sets the text size for this label
      * @param size Font size
@@ -137,6 +161,7 @@ public class TimelineViewHorizontal extends View {
         invalidate();
     }
 
+    // ========================================================================
     /**
      * Sets the text color for this label.
      * @param color ARGB value for the text
@@ -146,6 +171,7 @@ public class TimelineViewHorizontal extends View {
         invalidate();
     }
 
+    // ========================================================================
     /**
      * @see android.view.View#measure(int, int)
      */
@@ -155,6 +181,7 @@ public class TimelineViewHorizontal extends View {
                 measureHeight(heightMeasureSpec));
     }
 
+    // ========================================================================
     /**
      * Determines the width of this view
      * @param measureSpec A measureSpec packed into an int
@@ -181,6 +208,7 @@ public class TimelineViewHorizontal extends View {
         return result;
     }
 
+    // ========================================================================
     /**
      * Determines the height of this view
      * @param measureSpec A measureSpec packed into an int
@@ -207,9 +235,7 @@ public class TimelineViewHorizontal extends View {
         return result;
     }
 
-    
-    
-    
+    // ========================================================================
     /**
      * Render the text
      * 
@@ -231,6 +257,12 @@ public class TimelineViewHorizontal extends View {
         mLinePaint.setStrokeWidth(line_width);
         canvas.drawLine(0, 0, getWidth(), 0, mLinePaint);
 
+
+        if (is_touching) {
+	        mLinePaint.setColor(Color.GREEN);
+	        canvas.drawLine(last_touch_x, getHeight()/4f, last_touch_x, -getHeight()/4f, mLinePaint);
+        }
+    	
         
         // Center horizontally
         canvas.translate(getWidth()/2f, 0);        
@@ -308,6 +340,9 @@ public class TimelineViewHorizontal extends View {
         @Override
         public boolean onDown(MotionEvent e) {
         	
+        	is_touching = true;
+        	last_touch_x = e.getX();
+        	
         	Date touched_date = getTouchDate(e.getX());
         	Log.d(TAG, "Touched timeline at " + touched_date);
         	
@@ -316,7 +351,14 @@ public class TimelineViewHorizontal extends View {
         
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        	return false;
+
+        	last_touch_x = e2.getX();
+        	
+        	Date touched_date = getTouchDate(e2.getX());
+        	date_update_callback.updateDate(touched_date);
+        	
+        	invalidate();
+        	return true;
         }
     }
 }
