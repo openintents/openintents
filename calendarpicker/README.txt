@@ -1,6 +1,9 @@
 Icon obtained from Open Clip Art Library:
 http://www.openclipart.org/detail/34669
 
+Small-caps font (for month names) obtained from:
+http://www.dafont.com/berlin-small-caps.font
+
 
 
 NOTE:

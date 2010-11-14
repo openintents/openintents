@@ -4,19 +4,18 @@ import java.util.Date;
 
 public class SimpleEvent implements Comparable<SimpleEvent> {
 
-	long id;
+	public long id;
 	public Date timestamp;
+	public String title;
 
-	public SimpleEvent(long id, long timestamp) {
-		this.id = id;
-		this.timestamp = new Date(timestamp);
-		
-//		Log.i(TAG, "Added Date: " + this.timestamp);
+	public SimpleEvent(long id, long timestamp, String title) {
+		this(id, new Date(timestamp), title);
 	}
 	
-	public SimpleEvent(long id, Date timestamp) {
+	public SimpleEvent(long id, Date timestamp, String title) {
 		this.id = id;
 		this.timestamp = timestamp;
+		this.title = title;
 	}
 	
 	public int compareTo(SimpleEvent another) {

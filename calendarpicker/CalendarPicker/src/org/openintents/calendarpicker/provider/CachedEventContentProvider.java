@@ -1,4 +1,4 @@
-package org.openintents.calendarpicker.demo.provider;
+package org.openintents.calendarpicker.provider;
 
 import org.openintents.calendarpicker.contract.IntentConstants;
 
@@ -11,17 +11,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 
-public class EventContentProvider extends ContentProvider {
+public class CachedEventContentProvider extends ContentProvider {
 	
-	static final String TAG = "EventContentProvider";
+	static final String TAG = "CachedEventContentProvider";
 	
 	// This must be the same as what as specified as the Content Provider authority
 	// in the manifest file.
-	public static final String AUTHORITY = "org.openintents.calendarpicker.demo.provider.events";
+	public static final String AUTHORITY = "org.openintents.calendarpicker.provider.events";
 	
 	
 	static Uri BASE_URI = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(AUTHORITY).path("events").build();
-
 
    public static Uri constructUri(long data_id) {
        return ContentUris.withAppendedId(BASE_URI, data_id);
@@ -42,12 +41,12 @@ public class EventContentProvider extends ContentProvider {
 
 	   long calendar_id = ContentUris.parseId(uri);
 	   
-	   SampleEventDatabase database = new SampleEventDatabase(getContext());
+	   CachedEventDatabase database = new CachedEventDatabase(getContext());
 	   SQLiteDatabase db = database.getReadableDatabase();
 	   
 	   SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-	   builder.setTables(SampleEventDatabase.TABLE_EVENTS);
-	   builder.appendWhere(SampleEventDatabase.KEY_CALENDAR_ID + "=" + calendar_id);
+	   builder.setTables(CachedEventDatabase.TABLE_EVENTS);
+	   builder.appendWhere(CachedEventDatabase.KEY_CALENDAR_ID + "=" + calendar_id);
 	   return builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
    }
 

@@ -118,14 +118,17 @@ public class Demo extends Activity implements View.OnClickListener {
 			int event_count = generated_events.size();
 			long[] event_ids = new long[event_count];
 			long[] event_times = new long[event_count];
+			String[] event_titles = new String[event_count];
 			for (int i = 0; i < event_count; i++) {
 				EventWrapper event = generated_events.get(i);
 				event_ids[i] = event.id;
 				event_times[i] = event.timestamp;
+				event_titles[i] = event.title;
 			}
 
 			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS, event_ids);
 			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS, event_times);
+			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TITLES, event_titles);
 
 			downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 

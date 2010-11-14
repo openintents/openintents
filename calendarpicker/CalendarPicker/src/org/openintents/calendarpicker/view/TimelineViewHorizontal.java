@@ -234,6 +234,8 @@ public class TimelineViewHorizontal extends View {
     }
 
     // ========================================================================
+    Calendar dummy_calendar = new GregorianCalendar();
+    // ========================================================================
     /**
      * Render the text
      * 
@@ -242,7 +244,7 @@ public class TimelineViewHorizontal extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        
+
         float smaller_dimension = Math.min(getHeight(), getWidth());
         float line_width = smaller_dimension/10;
         float hash_width = line_width/2;
@@ -271,27 +273,26 @@ public class TimelineViewHorizontal extends View {
         
 
         this.mLinePaint.setColor(Color.WHITE);
-    	Calendar calendar = new GregorianCalendar();        
         if (this.date != null) {
         	
         	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2));
 
-            calendar.setTime(d);
-            int y = calendar.get(Calendar.YEAR);
-            calendar.clear();
-            calendar.set(Calendar.YEAR, y);
+            this.dummy_calendar.setTime(d);
+            int y = this.dummy_calendar.get(Calendar.YEAR);
+            this.dummy_calendar.clear();
+            this.dummy_calendar.set(Calendar.YEAR, y);
 
             for (int i=0; i<this.timeline_years_span; i++) {
 
-                calendar.add(Calendar.YEAR, 1);
+            	this.dummy_calendar.add(Calendar.YEAR, 1);
 
-                long millis_delta = calendar.getTimeInMillis() - this.date.getTime();
+                long millis_delta = this.dummy_calendar.getTimeInMillis() - this.date.getTime();
             	float fraction = millis_delta/(MILLISECONDS_PER_YEAR*this.timeline_years_span);
 
             	float horizontal_position = fraction*getWidth();
             	canvas.drawCircle(horizontal_position, 0, marker_radius, this.mLinePaint);
 
-                int year = calendar.get(Calendar.YEAR);
+                int year = this.dummy_calendar.get(Calendar.YEAR);
            		canvas.drawText(Integer.toString(year), horizontal_position, -this.mAscent + marker_radius, this.mTextPaint);
             }
         }
@@ -300,13 +301,10 @@ public class TimelineViewHorizontal extends View {
     // ========================================================================
     Date getTouchDate(float horizontal_position) {
     	long ms_delta = (long) ((getWidth()/2f - horizontal_position)*(MILLISECONDS_PER_YEAR*timeline_years_span) / getWidth());
-    	return new Date(date.getTime() - ms_delta);
+    	return new Date(this.date.getTime() - ms_delta);
     }
 	
     // ========================================================================
-    private static final int SWIPE_MIN_DISTANCE = 60;
-    private static final int SWIPE_MAX_OFF_PATH = 300;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     class TimelineGestureDetector extends SimpleOnGestureListener {
         
         @Override

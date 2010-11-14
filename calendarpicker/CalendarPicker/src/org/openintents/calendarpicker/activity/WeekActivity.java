@@ -81,11 +81,11 @@ public class WeekActivity extends Activity {
         // Zip the events
         if (intent_data != null) {
         	// We have been passed a cursor to the data via a content provider.
-			this.events = getEventsFromUri(intent_data);
+			this.events = MonthActivity.getEventsFromUri(intent_data, getIntent(), this);
 
         } else {
         	Log.d(TAG, "No URI was passed, checking for Intent extras instead...");
-			this.events = getEventsFromIntent(this.getIntent());
+			this.events = MonthActivity.getEventsFromIntent(getIntent());
 		}
 
         DateFormatSymbols dfs = new DateFormatSymbols();
@@ -208,69 +208,6 @@ public class WeekActivity extends Activity {
     protected void onRestoreInstanceState (Bundle savedInstanceState) {
     	super.onRestoreInstanceState(savedInstanceState);
 
-    }
-
-    // ========================================================================
-	/** We have been passed the data directly. */
-    List<SimpleEvent> getEventsFromIntent(Intent intent) {
-    	
-    	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
-
-     	Log.d(TAG, "We have been passed the data directly.");
-
-    	long[] event_ids = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
-    	long[] event_timestamps = getIntent().getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS);
-
-    	Collections.sort(events);
-    	if (event_ids != null && event_timestamps != null) {
-	    	for (int i=0; i<event_timestamps.length; i++)
-	    		events.add( new SimpleEvent(event_ids[i], event_timestamps[i]) );
-
-		    Log.d(TAG, "Added " + event_timestamps.length + " timestamps.");
-    	}
-
-    	return events;
-    }
-
-    // ========================================================================
-    List<SimpleEvent> getEventsFromUri(Uri uri) {
-
-    	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
-
-    	Log.d(TAG, "Querying content provider for: " + uri);
-    	String selection = null;
-    	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID)) {
-        	long cal_id = getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1);
-    		selection = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
-    	}
-
-    	Cursor cursor = managedQuery(uri,
-			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
-			selection,
-			null,
-			IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
-    	
-    	if (cursor != null && cursor.moveToFirst()) {
-
-    		int id_column = cursor.getColumnIndex(BaseColumns._ID);
-    		int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
-
-    		do {
-    			long timestamp = cursor.getLong(timestamp_column);
-    			Log.d(TAG, "Adding event with timestamp: " + timestamp);
-    			Log.d(TAG, "Timestamp date is: " + new Date(timestamp));
-
-    			events.add(
-    					new SimpleEvent(
-    							cursor.getLong(id_column),
-    							timestamp) );
-
-    		} while (cursor.moveToNext());
-    	} else {
-    		Log.e(TAG, "There were no rows in this Cursor: " + cursor);
-    	}
-
-    	return events;
     }
 
     // ========================================================================

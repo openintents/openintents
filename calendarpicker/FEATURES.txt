@@ -7,11 +7,10 @@ Uses:
 * Event visualization
 
 Interaction:
-* D-pad navigation between dates
-* D-pad center or pointer tap activates a date
 * Horizontal fling increments/decrements month
 * Vertical fling scrolls quickly through months
+* D-pad navigates between dates
+* center D-pad or pointer tap activates a date
 * Dragging on timeline changes the date
-* Longpressable dates
-* Clicking on a date with events brings up an event list
+* Longpressing date opens context menu
 

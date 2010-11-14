@@ -11,10 +11,16 @@
         
             <intent-filter>
 				<action android:name="android.intent.action.PICK"/>
-
 				<category android:name="android.intent.category.DEFAULT"/>
 				<data android:mimeType="text/datetime"/>
 		    </intent-filter>
+		    
+		    
+		    <provider android:label="Demo event generator"
+	   			android:name="org.openintents.calendarpicker.provider.CachedEventContentProvider"
+		        android:authorities="org.openintents.calendarpicker.provider.events"
+			/>
+		    
 
 
 			<!-- An intent filter to handle the "event" mime type -->

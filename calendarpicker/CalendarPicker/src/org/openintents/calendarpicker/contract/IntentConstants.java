@@ -27,6 +27,7 @@ public class IntentConstants {
 		// Calendar event Intent extras
 		public static final String EXTRA_EVENT_IDS = "com.googlecode.chartdroid.intent.extra.EVENT_IDS";
 		public static final String EXTRA_EVENT_TIMESTAMPS = "com.googlecode.chartdroid.intent.extra.EVENT_TIMESTAMPS";
+		public static final String EXTRA_EVENT_TITLES = "com.googlecode.chartdroid.intent.extra.EVENT_TITLES";
 	}
 	
 

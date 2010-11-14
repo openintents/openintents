@@ -20,7 +20,9 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
 import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -42,21 +44,17 @@ public class FlingableMonthView extends View {
 	static final long MILLISECONDS_PER_WEEK = DAYS_PER_WEEK*MILLISECONDS_PER_DAY;
 	static final int MONTHS_PER_YEAR = 12;
 
+	static final SimpleDateFormat FULL_MONTH_FORMATTER = new SimpleDateFormat("MMMM");
 
-    float horizontal_spacing = 2;
-    float vertical_spacing = 2;
+	static final String MONTH_WATERMARK_FONT_PATH = "BerlinSmallCaps.ttf";
     
     
-    Resources resources;
-	Paint month_shapes_paint;
-	TextPaint month_watermark_text_paint;
-    Calendar month_calendar;
+    Calendar month_calendar = new GregorianCalendar();
     Date highlighted_day = null;
     List<SimpleEvent> sorted_events;
 
     // Cached computed values
     int spanned_weeks;
-	float max_month_width;
     
     // Callbacks
     MonthUpdateCallback month_update_callback = null;
@@ -91,25 +89,17 @@ public class FlingableMonthView extends View {
     float current_flinging_velocity = 0;
     long last_frame_time_for_fling;
     
+    
+    CalendarRenderer calendar_drawing;
 
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
 
-        this.resources = context.getResources();
     	setMonth(new GregorianCalendar());
+    	calendar_drawing = new CalendarRenderer(context);
     	
-    	this.month_shapes_paint = new Paint();
-    	this.month_shapes_paint.setAntiAlias(true);
-    	this.month_shapes_paint.setColor(Color.WHITE);
 
-		this.month_watermark_text_paint = new TextPaint();
-        this.month_watermark_text_paint.setAntiAlias(true);
-		this.month_watermark_text_paint.setColor(this.resources.getColor(R.color.month_watermark_text));
-		this.month_watermark_text_paint.setTextAlign(Align.RIGHT);
-
-    	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
-        
         final GestureDetector gestureDetector = new GestureDetector(new MonthGestureDetector());
         setOnTouchListener(new OnTouchListener() {
 
@@ -192,8 +182,14 @@ public class FlingableMonthView extends View {
     }
 
     // ========================================================================
-    interface ViewportVisitor {
-    	void visitViewport(RectF daybox, SimpleCalendarDay child);
+    abstract class ViewportVisitor {
+    	
+    	Canvas canvas;
+    	void setCanvas(Canvas canvas) {
+    		this.canvas = canvas;
+    	}
+    	
+    	abstract void visitViewport(RectF daybox, SimpleCalendarDay child);
     }
     
     // ========================================================================
@@ -222,12 +218,12 @@ public class FlingableMonthView extends View {
      */
     public void setMonth(Calendar calendar) {
     	
-    	highlighted_day = null;	// XXX
+    	this.highlighted_day = null;
     	
-    	this.month_calendar = calendar;
+    	this.month_calendar.setTime(calendar.getTime());
     	setCalendarToFirstDayOfMonth(this.month_calendar);
     	this.vertical_offset = 0;
-    	this.spanned_weeks = calcSpannedWeeksForMonth();
+    	this.spanned_weeks = calcSpannedWeeksForMonth(this.month_calendar);
     	
         if (this.month_update_callback != null) {
         	this.month_update_callback.updateMonth(this.month_calendar);
@@ -256,182 +252,30 @@ public class FlingableMonthView extends View {
     }
 
     // ========================================================================
-    /** Rolls the date back to the beginning of the week of the first week of the month.
-     * Expects the calendar date to already be set to the first day of the month. */
-    void setMonthWeekBeginning(Calendar working_calendar) {
-    	while (true) {
-    		if (working_calendar.get(Calendar.DAY_OF_WEEK) == working_calendar.getFirstDayOfWeek())
-    			break;
-    		working_calendar.add(Calendar.DAY_OF_MONTH, -1);
-    	}
-    }
-
-    // ========================================================================
     @Override
-    protected void onDraw(final Canvas canvas) {
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.save();
-        canvas.translate(0, this.vertical_offset);
-        
-        
-        // Draw all of the visible days
-        visitDayViewports(new ViewportVisitor() {
-			@Override
-			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
-	            canvas.save();
-	            canvas.translate(daybox.left, daybox.top);
-	            drawDayHolder(canvas, daybox, child);
-	            canvas.restore();
-			}
-        });
-        
-        drawMonthWatermarkText(canvas);
-        
-        // Draw all of the visible days
-        visitDayViewports(new ViewportVisitor() {
-			@Override
-			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
-	            canvas.save();
-	            canvas.translate(daybox.left, daybox.top);
-	            drawDayEvents(canvas, daybox, child);
-	            canvas.restore();
-			}
-        });
-        
-        
-        
-        
-        canvas.restore();
-        
-        handleViewAnimation(canvas);
+        this.calendar_drawing.draw(canvas);
     }
 
     // ========================================================================
-    void handleViewAnimation(Canvas canvas) {
-        
-        // We animate the view by repeatedly invalidating it.
-        if (this.is_holding_longpress) {
-        	this.invalidate();
-        }
-
-        
-        if (Math.abs(this.current_flinging_velocity) > 0) {
-        	
-        	long now = SystemClock.uptimeMillis();
-        	long fling_frame_millis_delta = now - this.last_frame_time_for_fling;
-        	this.last_frame_time_for_fling = now;
-
-        	// Update velocity
-        	float velocity_delta_magnitude = FLINGING_DECELERATION*fling_frame_millis_delta/1000;
-
-        	// Protect the velocity from increasing in the opposite direction after
-        	// crossing zero.
-        	velocity_delta_magnitude = Math.min(velocity_delta_magnitude, Math.abs(this.current_flinging_velocity));
-        	
-        	// If the velocity is positive, we decelerate it by adding a negative delta.
-        	// Otherwise, leave the delta as positive, which will bring a negative velocity
-        	// closer to zero.
-        	if (this.current_flinging_velocity > 0)
-        		velocity_delta_magnitude = -velocity_delta_magnitude;
-
-        	this.current_flinging_velocity += velocity_delta_magnitude;
-            
-        	
-        	if (this.current_flinging_velocity == 0) {
-        		
-        		Calendar cal = new GregorianCalendar();
-        		cal.setTime(getScrollOffsetDate());
-        		setCalendarToFirstDayOfMonth(cal);
-
-        		setMonth(cal);
-        		
-        	} else {
-	            // Velocity is in units of pixels/second.
-	        	float position_delta = this.current_flinging_velocity*fling_frame_millis_delta/1000;
-	        	this.vertical_offset += position_delta;
-	        	
-	        	// TODO Use this for debugging
-//	        	Log.d(TAG, "Velocity: " + this.current_flinging_velocity);
-	
-	
-	        	if (this.scroll_callback != null)
-	        		this.scroll_callback.updateDate(getScrollOffsetDate());
-	        	
-        	
-	        	invalidate();
-        	}
-        	
-        } else if (this.snap_back_animation != null) {
-        	
-        	long now = SystemClock.uptimeMillis();
-        	if (this.snap_back_animation.isFinished(now)) {
-        		this.vertical_offset = 0;
-        		this.snap_back_animation = null;
-        	} else {
-        		float fraction = this.snap_back_animation.getFraction(now);
-        		this.vertical_offset = (1 - fraction) * this.snap_back_start_offset;
-        	}
-        	
-        	invalidate();
-        }
-        
-        if (this.month_text_fader != null) {
-            long now = SystemClock.uptimeMillis();
-            if (this.month_text_fader.isFinished(now))
-            	this.month_text_fader = null;
-			
-        	invalidate();
-        }
+    /** Rolls the date back to the beginning of the week of the first week of the month.
+     * Expects the calendar date to already be set to the first day of the month. */
+    static void setMonthWeekBeginning(Calendar calendar) {
+    	while (true) {
+    		if (calendar.get(Calendar.DAY_OF_WEEK) == calendar.getFirstDayOfWeek())
+    			break;
+    		calendar.add(Calendar.DAY_OF_MONTH, -1);
+    	}
     }
     
     // ========================================================================
-    Date getScrollOffsetDate() {
-        float height_per_week = getDayBoxHeight() + this.vertical_spacing;
-        float weeks_offset = this.vertical_offset/height_per_week;
-        long milliseconds_offset = (long) (MILLISECONDS_PER_WEEK*weeks_offset);
-        
-        return new Date(this.month_calendar.getTimeInMillis() - milliseconds_offset);
-    }
-    
-    // ========================================================================
-    void drawMonthWatermarkText(Canvas canvas) {
-
-		// Set the scale to the widest month    	
-    	float scale = getHeight() / this.max_month_width;
-
-    	SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
-    	String month_string = sdf.format(this.month_calendar.getTime());
-
-        long now = SystemClock.uptimeMillis();
-        float fraction = 1;
-        if (this.month_text_fader != null)
-        	fraction = this.month_text_fader.getFraction(now);
-
-    	int target_color = this.resources.getColor(R.color.month_watermark_text);
-    	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
-    	this.month_watermark_text_paint.setColor(text_color);
-    	
-    	
-		canvas.save();
-		canvas.translate(getWidth(), 0);
-		canvas.rotate(-90);
-		canvas.scale(scale, scale);
-		// XXX The month names look more stylish if we align
-		// the baseline with the edge of the screen, but this cuts
-		// of the capital "J"s and the "y"s.
-//		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
-
-		canvas.drawText(month_string, 0, 0, this.month_watermark_text_paint);
-		canvas.restore();	
-    }
-
-    // ========================================================================
-    int getNextMonthIndex(Calendar calendar) {
+    static int getNextMonthIndex(Calendar source_calendar, Calendar dummy_calendar) {
     	// Get index of following month
-    	Calendar dupe2 = (Calendar) calendar.clone();
-    	dupe2.add(Calendar.MONTH, 1);
-    	return dupe2.get(Calendar.MONTH);
+    	dummy_calendar.setTime(source_calendar.getTime());
+    	dummy_calendar.add(Calendar.MONTH, 1);
+    	return dummy_calendar.get(Calendar.MONTH);
     }
     
     // ========================================================================
@@ -444,15 +288,15 @@ public class FlingableMonthView extends View {
     }
     
     // ========================================================================
-    int calcSpannedWeeksForMonth() {
+    static int calcSpannedWeeksForMonth(Calendar calendar) {
 
     	// Set working calendar to first day of the month.
-    	Calendar working_calendar = (Calendar) this.month_calendar.clone();
+    	Calendar working_calendar = (Calendar) calendar.clone();
     	setMonthWeekBeginning(working_calendar);
 
     	// Count the weeks spanned by this month
     	int spanned_weeks = 0;
-    	int next_month_index = getNextMonthIndex(this.month_calendar);
+    	int next_month_index = getNextMonthIndex(calendar, new GregorianCalendar());
     	while (working_calendar.get(Calendar.MONTH) != next_month_index) {
     		working_calendar.add(Calendar.DAY_OF_MONTH, DAYS_PER_WEEK);
     		spanned_weeks++;
@@ -462,86 +306,395 @@ public class FlingableMonthView extends View {
     }
 
     // ========================================================================
-    /** Calculate vertical dimensions */
-    float getDayBoxHeight() {
+    class CalendarRenderer {
 
-    	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
-        float day_box_height = (usable_height - (this.spanned_weeks - 1)*this.vertical_spacing) / this.spanned_weeks;
-        return day_box_height;
-    }
-    
-    // ========================================================================
-    /** Implementation of the visitor pattern that iterates through
-     * each of the days that are visible on screen.
-     */
-    void visitDayViewports(ViewportVisitor visitor) {
-    	
-        // Calculate horizontal dimensions
-        int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
-        float day_box_width = (usable_width - (DAYS_PER_WEEK - 1)*this.horizontal_spacing) / DAYS_PER_WEEK;
-        float width_per_day = day_box_width + this.horizontal_spacing;
-    	
-    	
-        float day_box_height = getDayBoxHeight();
-        float height_per_week = day_box_height + this.vertical_spacing;
+    	TextPaint day_tile_paint;
+    	TextPaint month_watermark_text_paint;
+        Resources resources;
+        FontMetrics day_tile_paint_font_metrics;
 
+    	float max_month_width;
 
+    	float horizontal_spacing = 2;
+        float vertical_spacing = 2;
         
-        // Reset calendar to beginning of first week
-    	Calendar working_calendar = (Calendar) this.month_calendar.clone();
-    	setMonthWeekBeginning(working_calendar);
+    	
 
-    	// Reposition calendar according to the vertical scroll offset
-    	int weeks_offset = (int) Math.floor(-vertical_offset/height_per_week);
-		working_calendar.add(Calendar.DAY_OF_MONTH, weeks_offset*DAYS_PER_WEEK);
+    	Calendar dummy_calendar = new GregorianCalendar();
+        
+    	CalendarRenderer(Context context) {
+    		
+    		this.resources = context.getResources();
+    		
+        	this.day_tile_paint = new TextPaint();
+        	this.day_tile_paint.setAntiAlias(true);
+        	this.day_tile_paint.setColor(Color.WHITE);
 
-		// Skip all events before the given calendar date
-        int event_idx=0;
-        while (event_idx < this.sorted_events.size() && this.sorted_events.get(event_idx).timestamp.before(working_calendar.getTime())) event_idx++;
-
-
-        // The "<=" as opposed to the typical "<" allows the entire screen to be
-        // covered while scrolling.
-        RectF viewport = new RectF();
-    	SimpleCalendarDay scd = new SimpleCalendarDay();
-        for (int i=0; i <= spanned_weeks; i++) {
-
-            float top = getPaddingTop() + height_per_week * (i + weeks_offset);
+        	this.day_tile_paint_font_metrics = this.day_tile_paint.getFontMetrics();
         	
-            for (int j=0; j < DAYS_PER_WEEK; j++) {
+    		this.month_watermark_text_paint = new TextPaint();
+    		
 
-            	scd.reset(working_calendar.getTime());
+    		Typeface face = Typeface.createFromAsset(context.getAssets(), MONTH_WATERMARK_FONT_PATH);
+    		this.month_watermark_text_paint.setTypeface(face);
+            this.month_watermark_text_paint.setAntiAlias(true);
+    		this.month_watermark_text_paint.setColor(this.resources.getColor(R.color.month_watermark_text));
+    		this.month_watermark_text_paint.setTextAlign(Align.RIGHT);
 
-            	// We advance the calendar to the next day *after* recording
-            	// the date for the current day.
-        		working_calendar.add(Calendar.DAY_OF_MONTH, 1);
-        		
-                // Consume all events up until the next day
-                while (event_idx < this.sorted_events.size() && this.sorted_events.get(event_idx).timestamp.before(working_calendar.getTime())) {
-                	scd.incrementEventCount();
-//                	child.day_events.add(this.sorted_events.get(event_idx));
-                	event_idx++;
-                }
+        	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
+    	}
+        
+    	Date dummy_date = new Date();
+        // ========================================================================
+        Date getScrollOffsetDate() {
+            float height_per_week = getDayBoxHeight() + this.vertical_spacing;
+            float weeks_offset = vertical_offset/height_per_week;
+            long milliseconds_offset = (long) (MILLISECONDS_PER_WEEK*weeks_offset);
+            
+            this.dummy_date.setTime(month_calendar.getTimeInMillis() - milliseconds_offset);
+            return this.dummy_date;
+        }
+        
+        // ========================================================================
+        /** Calculate vertical dimensions */
+        float getDayBoxHeight() {
 
-                float left = getPaddingLeft() + ((width_per_day) * j);
-                viewport.set(left, top, left + day_box_width, top + day_box_height);
+        	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
+            float day_box_height = (usable_height - (spanned_weeks - 1)*this.vertical_spacing) / spanned_weeks;
+            return day_box_height;
+        }
+
+        // ========================================================================
+        ViewportVisitor day_event_drawing_visitor = new ViewportVisitor() {
+			@Override
+			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+	            this.canvas.save();
+	            this.canvas.translate(daybox.left, daybox.top);
+	            drawDayEvents(canvas, daybox, child);
+	            this.canvas.restore();
+			}
+        };
+        
+        // ========================================================================
+        ViewportVisitor day_background_drawing_visitor = new ViewportVisitor() {
+			@Override
+			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+				this.canvas.save();
+				this.canvas.translate(daybox.left, daybox.top);
+	            drawDayHolder(canvas, daybox, child);
+	            this.canvas.restore();
+			}
+        };
+        
+        // ========================================================================
+    	void draw(final Canvas canvas) {
+
+            canvas.save();
+            canvas.translate(0, vertical_offset);
+            
+            // Draw all of the visible days
+            this.day_background_drawing_visitor.setCanvas(canvas);
+            visitDayViewports(this.day_background_drawing_visitor);
+            	
+            
+            drawMonthWatermarkText(canvas);
+            
+            // Draw all of the visible days
+            this.day_event_drawing_visitor.setCanvas(canvas);
+            visitDayViewports(this.day_event_drawing_visitor);
+            
+            canvas.restore();
+            
+            handleViewAnimation(canvas);
+        }
+    	
+        // ========================================================================
+        void handleViewAnimation(Canvas canvas) {
+            
+            // We animate the view by repeatedly invalidating it.
+            if (is_holding_longpress) {
+            	invalidate();
+            }
+
+            
+            if (Math.abs(current_flinging_velocity) > 0) {
+            	
+            	long now = SystemClock.uptimeMillis();
+            	long fling_frame_millis_delta = now - last_frame_time_for_fling;
+            	last_frame_time_for_fling = now;
+
+            	// Update velocity
+            	float velocity_delta_magnitude = FLINGING_DECELERATION*fling_frame_millis_delta/1000;
+
+            	// Protect the velocity from increasing in the opposite direction after
+            	// crossing zero.
+            	velocity_delta_magnitude = Math.min(velocity_delta_magnitude, Math.abs(current_flinging_velocity));
+            	
+            	// If the velocity is positive, we decelerate it by adding a negative delta.
+            	// Otherwise, leave the delta as positive, which will bring a negative velocity
+            	// closer to zero.
+            	if (current_flinging_velocity > 0)
+            		velocity_delta_magnitude = -velocity_delta_magnitude;
+
+            	current_flinging_velocity += velocity_delta_magnitude;
                 
-                visitor.visitViewport(viewport, scd);
+            	
+            	if (current_flinging_velocity == 0) {
+
+            		this.dummy_calendar.setTime(getScrollOffsetDate());
+            		setCalendarToFirstDayOfMonth(this.dummy_calendar);
+            		setMonth(this.dummy_calendar);
+            		
+            	} else {
+    	            // Velocity is in units of pixels/second.
+    	        	float position_delta = current_flinging_velocity*fling_frame_millis_delta/1000;
+    	        	vertical_offset += position_delta;
+    	        	
+    	        	// TODO Use this for debugging
+//    	        	Log.d(TAG, "Velocity: " + this.current_flinging_velocity);
+    	
+    	
+    	        	if (scroll_callback != null)
+    	        		scroll_callback.updateDate(getScrollOffsetDate());
+    	        	
+            	
+    	        	invalidate();
+            	}
+            	
+            } else if (snap_back_animation != null) {
+            	
+            	long now = SystemClock.uptimeMillis();
+            	if (snap_back_animation.isFinished(now)) {
+            		vertical_offset = 0;
+            		snap_back_animation = null;
+            	} else {
+            		float fraction = snap_back_animation.getFraction(now);
+            		vertical_offset = (1 - fraction) * snap_back_start_offset;
+            	}
+            	
+            	invalidate();
+            }
+            
+            if (month_text_fader != null) {
+                long now = SystemClock.uptimeMillis();
+                if (month_text_fader.isFinished(now))
+                	month_text_fader = null;
+    			
+            	invalidate();
             }
         }
-    }
-    
-    // ========================================================================
-    protected void drawDayEvents(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
-        float usable_size = Math.min(daybox.width(), daybox.height());
-        drawEventCount(canvas, daybox, day, usable_size);
         
-    	Calendar daycal = new GregorianCalendar();
-    	daycal.setTime(day.getDate());
+        // ========================================================================
+        void drawMonthWatermarkText(Canvas canvas) {
+
+    		// Set the scale to the widest month    	
+        	float scale = getHeight() / this.max_month_width;
+
+        	String month_string = FULL_MONTH_FORMATTER.format(month_calendar.getTime());
+
+            long now = SystemClock.uptimeMillis();
+            float fraction = 1;
+            if (month_text_fader != null)
+            	fraction = month_text_fader.getFraction(now);
+
+        	int target_color = this.resources.getColor(R.color.month_watermark_text);
+        	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
+        	this.month_watermark_text_paint.setColor(text_color);
+        	
+        	
+    		canvas.save();
+    		canvas.translate(getWidth(), 0);
+    		canvas.rotate(-90);
+    		canvas.scale(scale, scale);
+    		// XXX The month names look more stylish if we align
+    		// the baseline with the edge of the screen, but this can cut
+    		// off the capital "J"s and the "y"s.
+//    		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
+
+    		canvas.drawText(month_string, 0, 0, this.month_watermark_text_paint);
+    		canvas.restore();	
+        }
+
+        // ========================================================================
+        protected void drawDayEvents(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+            float usable_size = Math.min(daybox.width(), daybox.height());
+            drawEventCount(canvas, daybox, day, usable_size);
+            
+        	this.dummy_calendar.setTime(day.getDate());
+        	
+        	int daycal_month_idx = this.dummy_calendar.get(Calendar.MONTH);
+        	boolean month_active = month_calendar.get(Calendar.MONTH) == daycal_month_idx;
+            drawCornerBox(canvas, daybox, day, usable_size, month_active);
+        }
+        
+        // ========================================================================
+        protected void drawDayHolder(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+
+        	this.dummy_calendar.setTime(day.getDate());
+
+//        	int daycal_month_idx = daycal.get(Calendar.MONTH);
+//        	boolean month_active = this.month_calendar.get(Calendar.MONTH) == daycal_month_idx;
+//        	boolean daycal_month_odd = daycal_month_idx % 2 != 0;
+        	
+        	int months_away = getMonthDifference(month_calendar, this.dummy_calendar);
+        	boolean month_active = months_away == 0;
+        	boolean daycal_month_even = months_away % 2 == 0;
+        	
+            boolean day_highlighted = day.getDate().equals(highlighted_day);
+            
+            int background_color = day_highlighted ?
+            		this.resources.getColor(
+            				month_active ?
+            						R.color.calendar_date_background_active_selected
+            						: (daycal_month_even ? R.color.calendar_date_background_passive_odd_selected : R.color.calendar_date_background_passive_even_selected))
+            		: this.resources.getColor(
+            				month_active ?
+            						R.color.calendar_date_background_active
+            						: (daycal_month_even ? R.color.calendar_date_background_passive_odd : R.color.calendar_date_background_passive_even)				
+            		);
+            				
+            if (is_holding_longpress && day.getDate().equals(highlighted_day)) {
+
+            	long now = SystemClock.uptimeMillis();
+            	
+            	// Before you start to animate, check whether the tap time has been exceeded.
+            	long tap_timeout = ViewConfiguration.getTapTimeout();
+            	if (now > longpress_start_time + tap_timeout) {
+            		
+    	        	float alpha = (now - (longpress_start_time + tap_timeout)) / (float) ViewConfiguration.getLongPressTimeout();
     	
-    	int daycal_month_idx = daycal.get(Calendar.MONTH);
-    	boolean month_active = this.month_calendar.get(Calendar.MONTH) == daycal_month_idx;
-        drawCornerBox(canvas, daybox, day, usable_size, month_active);
+    	        	alpha = Math.min(1, alpha);
+    	        	
+    	        	int target_color = resources.getColor(R.color.calendar_date_background_longpress);
+    	        	background_color = interpolateColor(background_color, target_color, alpha);
+            	}
+            }
+            				
+    		// Draw the background
+            this.day_tile_paint.setColor(background_color);
+            canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.day_tile_paint);
+        }
+
+        // ========================================================================
+        void drawEventCount(Canvas canvas, RectF daybox, SimpleCalendarDay calendar_day, float usable_size) {
+
+            canvas.save();
+            canvas.translate(daybox.width()/2f, daybox.height()/2f);
+            
+    		
+    		int event_count = calendar_day.getEventCount();
+
+    		if (event_count > 0) {
+
+    	        // Draw decorative circle
+    	        day_tile_paint.setColor(Color.CYAN);
+    	        day_tile_paint.setAlpha(0xff/2);
+    			canvas.drawCircle(0, 0, usable_size/3, day_tile_paint);
+    			
+    			
+    			// Draw the number of events inside the circle
+    	        float corner_box_side = usable_size/2f;
+    	        this.day_tile_paint.setTextSize(corner_box_side*0.8f);
+    			float text_height = this.day_tile_paint_font_metrics.ascent + this.day_tile_paint_font_metrics.descent;
+    	
+    	        int event_count_number = this.resources.getColor(R.color.event_count_number);
+    	        this.day_tile_paint.setColor(event_count_number);
+    			String text = Integer.toString( event_count );
+    			this.day_tile_paint.setTextAlign(Align.CENTER);
+    			canvas.drawText(text, 0, -text_height/2, this.day_tile_paint);
+    		}
+    		
+    		canvas.restore();
+        }
+        
+        // ========================================================================
+        void drawCornerBox(Canvas canvas, RectF viewport, SimpleCalendarDay calendar_day, float usable_size, boolean month_active) {
+        	
+            float corner_box_side = usable_size/2f;
+
+            int cornerbox_color = this.resources.getColor(R.color.cornerbox_color);
+            this.day_tile_paint.setColor(cornerbox_color);
+            canvas.drawRect(0, 0, corner_box_side, corner_box_side, this.day_tile_paint);
+            canvas.save();
+            canvas.translate(corner_box_side/2f, corner_box_side/2f);
+            
+    		this.dummy_calendar.setTime(calendar_day.getDate());
+    		String text = Integer.toString( this.dummy_calendar.get(Calendar.DAY_OF_MONTH) );
+
+    		this.day_tile_paint.setTextSize(corner_box_side*0.8f);
+    		float text_height = this.day_tile_paint_font_metrics.ascent + this.day_tile_paint_font_metrics.descent;
+
+            int text_color = this.resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
+            this.day_tile_paint.setColor(text_color);
+            
+            this.day_tile_paint.setTextAlign(Align.CENTER);
+    		canvas.drawText(text, 0, -text_height/2, this.day_tile_paint);
+    		
+    		canvas.restore();
+        }
+
+
+        // ========================================================================
+        RectF dummy_rect = new RectF();
+    	SimpleCalendarDay dummy_scd = new SimpleCalendarDay();
+    	Calendar day_iterator_calendar = new GregorianCalendar();
+        
+        // ========================================================================
+        /** Implementation of the visitor pattern that iterates through
+         * each of the days that are visible on screen.
+         */
+        void visitDayViewports(ViewportVisitor visitor) {
+        	
+            // Calculate horizontal dimensions
+            int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
+            float day_box_width = (usable_width - (DAYS_PER_WEEK - 1)*this.horizontal_spacing) / DAYS_PER_WEEK;
+            float width_per_day = day_box_width + this.horizontal_spacing;
+        	
+        	
+            float day_box_height = getDayBoxHeight();
+            float height_per_week = day_box_height + this.vertical_spacing;
+
+            // Reset calendar to beginning of first week
+        	this.day_iterator_calendar.setTime(month_calendar.getTime());
+        	setMonthWeekBeginning(this.day_iterator_calendar);
+
+        	// Reposition calendar according to the vertical scroll offset
+        	int weeks_offset = (int) Math.floor(-vertical_offset/height_per_week);
+        	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, weeks_offset*DAYS_PER_WEEK);
+
+    		// Skip all events before the given calendar date
+            int event_idx=0;
+            while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) event_idx++;
+
+
+            // The "<=" as opposed to the typical "<" allows the entire screen to be
+            // covered while scrolling.
+            for (int i=0; i <= spanned_weeks; i++) {
+
+                float top = getPaddingTop() + height_per_week * (i + weeks_offset);
+            	
+                for (int j=0; j < DAYS_PER_WEEK; j++) {
+
+                	this.dummy_scd.reset(this.day_iterator_calendar.getTime());
+
+                	// We advance the calendar to the next day *after* recording
+                	// the date for the current day.
+                	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, 1);
+            		
+                    // Consume all events up until the next day
+                    while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) {
+                    	this.dummy_scd.incrementEventCount();
+//                    	child.day_events.add(this.sorted_events.get(event_idx));
+                    	event_idx++;
+                    }
+
+                    float left = getPaddingLeft() + ((width_per_day) * j);
+                    this.dummy_rect.set(left, top, left + day_box_width, top + day_box_height);
+                    
+                    visitor.visitViewport(this.dummy_rect, this.dummy_scd);
+                }
+            }
+        }
     }
 
     // ========================================================================
@@ -554,114 +707,6 @@ public class FlingableMonthView extends View {
     	int m2 = cal2.get(Calendar.MONTH);
 
     	return (y2 - y1) * MONTHS_PER_YEAR + (m2 - m1);
-    }
-    
-    // ========================================================================
-    protected void drawDayHolder(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
-
-    	Calendar daycal = new GregorianCalendar();
-    	daycal.setTime(day.getDate());
-
-//    	int daycal_month_idx = daycal.get(Calendar.MONTH);
-//    	boolean month_active = this.month_calendar.get(Calendar.MONTH) == daycal_month_idx;
-//    	boolean daycal_month_odd = daycal_month_idx % 2 != 0;
-    	
-    	int months_away = getMonthDifference(this.month_calendar, daycal);
-    	boolean month_active = months_away == 0;
-    	boolean daycal_month_even = months_away % 2 == 0;
-    	
-        boolean day_highlighted = day.getDate().equals(this.highlighted_day);
-        
-        int background_color = day_highlighted ?
-        		this.resources.getColor(
-        				month_active ?
-        						R.color.calendar_date_background_active_selected
-        						: (daycal_month_even ? R.color.calendar_date_background_passive_odd_selected : R.color.calendar_date_background_passive_even_selected))
-        		: resources.getColor(
-        				month_active ?
-        						R.color.calendar_date_background_active
-        						: (daycal_month_even ? R.color.calendar_date_background_passive_odd : R.color.calendar_date_background_passive_even)				
-        		);
-        				
-        if (this.is_holding_longpress && day.getDate().equals(this.highlighted_day)) {
-
-        	long now = SystemClock.uptimeMillis();
-        	
-        	// Before you start to animate, check whether the tap time has been exceeded.
-        	long tap_timeout = ViewConfiguration.getTapTimeout();
-        	if (now > this.longpress_start_time + tap_timeout) {
-        		
-	        	float alpha = (now - (this.longpress_start_time + tap_timeout)) / (float) ViewConfiguration.getLongPressTimeout();
-	
-	        	alpha = Math.min(1, alpha);
-	        	
-	        	int target_color = this.resources.getColor(R.color.calendar_date_background_longpress);
-	        	background_color = interpolateColor(background_color, target_color, alpha);
-        	}
-        }
-        				
-		// Draw the background
-        this.month_shapes_paint.setColor(background_color);
-        canvas.drawRect(0, 0, daybox.width(), daybox.height(), month_shapes_paint);
-    }
-
-    // ========================================================================
-    void drawEventCount(Canvas canvas, RectF daybox, SimpleCalendarDay calendar_day, float usable_size) {
-
-        canvas.save();
-        canvas.translate(daybox.width()/2f, daybox.height()/2f);
-        
-		
-		int event_count = calendar_day.getEventCount();
-
-		if (event_count > 0) {
-
-	        // Draw decorative circle
-	        month_shapes_paint.setColor(Color.CYAN);
-	        month_shapes_paint.setAlpha(0xff/2);
-			canvas.drawCircle(0, 0, usable_size/3, month_shapes_paint);
-			
-			
-			// Draw the number of events inside the circle
-	        float corner_box_side = usable_size/2f;
-			month_shapes_paint.setTextSize(corner_box_side*0.8f);
-			float text_height = month_shapes_paint.getFontMetrics().ascent + month_shapes_paint.getFontMetrics().descent;
-	
-	        int event_count_number = resources.getColor(R.color.event_count_number);
-	        month_shapes_paint.setColor(event_count_number);
-			String text = Integer.toString( event_count );
-	    	month_shapes_paint.setTextAlign(Align.CENTER);
-			canvas.drawText(text, 0, -text_height/2, month_shapes_paint);
-		}
-		
-		canvas.restore();
-    }
-    
-    // ========================================================================
-    void drawCornerBox(Canvas canvas, RectF viewport, SimpleCalendarDay calendar_day, float usable_size, boolean month_active) {
-    	
-        float corner_box_side = usable_size/2f;
-
-        int cornerbox_color = resources.getColor(R.color.cornerbox_color);
-        month_shapes_paint.setColor(cornerbox_color);
-        canvas.drawRect(0, 0, corner_box_side, corner_box_side, month_shapes_paint);
-        canvas.save();
-        canvas.translate(corner_box_side/2f, corner_box_side/2f);
-        
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(calendar_day.getDate());
-		String text = Integer.toString( cal.get(Calendar.DAY_OF_MONTH) );
-
-		month_shapes_paint.setTextSize(corner_box_side*0.8f);
-		float text_height = month_shapes_paint.getFontMetrics().ascent + month_shapes_paint.getFontMetrics().descent;
-
-        int text_color = resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
-        month_shapes_paint.setColor(text_color);
-        
-    	month_shapes_paint.setTextAlign(Align.CENTER);
-		canvas.drawText(text, 0, -text_height/2, month_shapes_paint);
-		
-		canvas.restore();
     }
     
     // ========================================================================
@@ -798,7 +843,7 @@ public class FlingableMonthView extends View {
 				vertical_offset -= distanceY;
 
 	        	if (scroll_callback != null)
-	        		scroll_callback.updateDate(getScrollOffsetDate());
+	        		scroll_callback.updateDate(calendar_drawing.getScrollOffsetDate());
 	        	
 	        	invalidate();
 	        }
