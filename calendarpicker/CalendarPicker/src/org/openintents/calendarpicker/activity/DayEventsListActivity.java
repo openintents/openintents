@@ -5,7 +5,7 @@ import java.util.Date;
 
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.contract.IntentConstants;
-import org.openintents.calendarpicker.view.ScrollableMonthView;
+import org.openintents.calendarpicker.view.FlingableMonthView;
 
 import android.database.Cursor;
 import android.net.Uri;
@@ -40,7 +40,7 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
 
         Log.e(TAG, "Received date: " + d.getDate());
         long day_begin = d.getTime();
-        long day_end = day_begin + ScrollableMonthView.MILLISECONDS_PER_DAY;
+        long day_end = day_begin + FlingableMonthView.MILLISECONDS_PER_DAY;
         
 		
         

@@ -14,10 +14,10 @@ import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.OnDateUpdateListener;
-import org.openintents.calendarpicker.view.ScrollableMonthView;
+import org.openintents.calendarpicker.view.FlingableMonthView;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
-import org.openintents.calendarpicker.view.ScrollableMonthView.MonthContextMenuInfo;
-import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
+import org.openintents.calendarpicker.view.FlingableMonthView.MonthContextMenuInfo;
+import org.openintents.calendarpicker.view.FlingableMonthView.MonthUpdateCallback;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -60,7 +60,7 @@ public class MonthActivity extends Activity {
 	final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	TextView month_title;
-	ScrollableMonthView month_view;
+	FlingableMonthView month_view;
 	TimelineViewHorizontal tiny_timeline;
     LinearLayout weekday_header_layout;
 	
@@ -136,7 +136,7 @@ public class MonthActivity extends Activity {
 			}
 		});
 		
-		month_view = (ScrollableMonthView) findViewById(R.id.full_month);
+		month_view = (FlingableMonthView) findViewById(R.id.full_month);
         month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {

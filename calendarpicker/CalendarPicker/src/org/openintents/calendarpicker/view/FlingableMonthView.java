@@ -1,6 +1,8 @@
 package org.openintents.calendarpicker.view;
 
 
+import java.text.DateFormatSymbols;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -16,11 +18,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Paint.Align;
 import android.os.SystemClock;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -28,19 +33,16 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.GestureDetector.SimpleOnGestureListener;
 
-public class ScrollableWeekView extends View {
+public class FlingableMonthView extends View {
 
-	static final String TAG = "ScrollableWeekView";
-	
-
-	
+	static final String TAG = "FlingableMonthView";
 
 	
 	public static final long MILLISECONDS_PER_DAY = 1000L*60*60*24;
 	static final int DAYS_PER_WEEK = 7;
 	static final long MILLISECONDS_PER_WEEK = DAYS_PER_WEEK*MILLISECONDS_PER_DAY;
 	
-	final static int spanned_weeks = 1;
+
 
     float horizontal_spacing = 2;
     float vertical_spacing = 2;
@@ -50,14 +52,20 @@ public class ScrollableWeekView extends View {
 //    Context context;
     Resources resources;
 	Paint month_shapes_paint;
+	TextPaint month_watermark_text_paint;
     Calendar month_calendar;
 
 
     List<SimpleEvent> sorted_events;
     Date highlighted_day = null;
+
+    // Cached computed values
+    int spanned_weeks;
+	float max_month_width;
+    
     
     MonthUpdateCallback month_update_callback = null;
-    OnDaySelectionListener day_click_callback, day_touch_callback, scroll_callback;
+    OnDateUpdateListener day_click_callback, day_touch_callback, scroll_callback;
     
 
     
@@ -69,7 +77,6 @@ public class ScrollableWeekView extends View {
 	
     boolean is_holding_longpress = false;
     long longpress_start_time;
-//    int LONGPRESS_DURATION = 3*ViewConfiguration.getLongPressTimeout();
     int LONGPRESS_DURATION = ViewConfiguration.getLongPressTimeout();
     
 	
@@ -94,7 +101,7 @@ public class ScrollableWeekView extends View {
     long last_frame_time_for_fling;
     
     // ========================================================================
-    public ScrollableWeekView(Context context, AttributeSet attrs) {
+    public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
 
         this.resources = context.getResources();
@@ -103,6 +110,13 @@ public class ScrollableWeekView extends View {
         month_shapes_paint = new Paint();
 		month_shapes_paint.setAntiAlias(true);
 		month_shapes_paint.setColor(Color.WHITE);
+
+        month_watermark_text_paint = new TextPaint();
+		month_watermark_text_paint.setAntiAlias(true);
+		month_watermark_text_paint.setColor(this.resources.getColor(R.color.month_watermark_text));
+    	month_watermark_text_paint.setTextAlign(Align.RIGHT);
+
+		max_month_width = getMaxMonthWidth(month_watermark_text_paint);
 
         this.setFocusable(true);
         
@@ -113,6 +127,9 @@ public class ScrollableWeekView extends View {
 			public boolean onTouch(View v, MotionEvent event) {
 	        	
 	        	if (event.getAction() == MotionEvent.ACTION_UP) {
+
+	            	is_holding_longpress = false;
+	        		
 	        		if (Math.abs(vertical_offset) > 0) {
 	        			
 	        			// FIXME
@@ -150,20 +167,32 @@ public class ScrollableWeekView extends View {
 				cal.setTime(highlighted_day != null ? highlighted_day : month_calendar.getTime());
 								
 		    	switch (keyCode) {
-		    	case KeyEvent.KEYCODE_DPAD_DOWN:
+		    	case KeyEvent.KEYCODE_DPAD_UP:
+		    	{
+		    		cal.add(Calendar.DATE, -DAYS_PER_WEEK);
+		    	    highlighted_day = cal.getTime();
+		    	    highlightDay(highlighted_day);
+		    		break;
+		    	}
 		    	case KeyEvent.KEYCODE_DPAD_LEFT:
 		    	{
 		    		cal.add(Calendar.DATE, -1);
 		    	    highlighted_day = cal.getTime();
-		    	    touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
-		    	case KeyEvent.KEYCODE_DPAD_UP:
+		    	case KeyEvent.KEYCODE_DPAD_DOWN:
+		    	{
+		    		cal.add(Calendar.DATE, DAYS_PER_WEEK);
+		    	    highlighted_day = cal.getTime();
+		    	    highlightDay(highlighted_day);
+		    		break;
+		    	}
 		    	case KeyEvent.KEYCODE_DPAD_RIGHT:
 		    	{
 		    		cal.add(Calendar.DATE, 1);
 		    	    highlighted_day = cal.getTime();
-					touchDay(highlighted_day);
+		    	    highlightDay(highlighted_day);
 		    		break;
 		    	}
 		    	case KeyEvent.KEYCODE_DPAD_CENTER:
@@ -178,6 +207,21 @@ public class ScrollableWeekView extends View {
 			}
 		});
     }
+    
+    // ========================================================================
+	private static float getMaxMonthWidth(Paint paint) {
+	
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        float max_month_width = Float.MIN_VALUE;
+    	Rect bounds = new Rect();
+    	for (String month : dfs.getMonths()) {
+    		paint.getTextBounds(month, 0, month.length(), bounds);
+    		if (bounds.width() > max_month_width)
+    			max_month_width = bounds.width();
+    	}
+    	
+    	return max_month_width;
+	}
 
     // ========================================================================
 	public Calendar getCalendar() {
@@ -188,11 +232,6 @@ public class ScrollableWeekView extends View {
     public interface MonthUpdateCallback {
     	void updateMonth(Calendar cal);
     }
-    
-    // ========================================================================
-    public interface OnDaySelectionListener {
-    	void updateDate(Date date);
-    }
 
     // ========================================================================
     interface ViewportVisitor {
@@ -200,17 +239,17 @@ public class ScrollableWeekView extends View {
     }
     
     // ========================================================================
-    public void setOnDayClickListener(OnDaySelectionListener callback) {
+    public void setOnDayClickListener(OnDateUpdateListener callback) {
     	this.day_click_callback = callback;
     }
     
     // ========================================================================
-    public void setOnScrollListener(OnDaySelectionListener callback) {
+    public void setOnScrollListener(OnDateUpdateListener callback) {
     	this.scroll_callback = callback;
     }
 
     // ========================================================================
-    public void setOnDayTouchListener(OnDaySelectionListener callback) {
+    public void setOnDayTouchListener(OnDateUpdateListener callback) {
     	this.day_touch_callback = callback;
     }
     
@@ -227,12 +266,33 @@ public class ScrollableWeekView extends View {
     	this.month_calendar = calendar;
     	setCalendarToFirstDayOfMonth(this.month_calendar);
     	this.vertical_offset = 0;
+    	this.spanned_weeks = calcSpannedWeeksForMonth();
+    	
+    	
+        if (this.month_update_callback != null) {
+        	this.month_update_callback.updateMonth(this.month_calendar);
+        }
+        
+        if (this.day_touch_callback != null) {
+        	this.day_touch_callback.updateDate(null);
+        }
+    	
+        this.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
+    	invalidate();
     }
 
     // ========================================================================
+    public void highlightDay(Date date) {
+
+    	this.highlighted_day = date;
+    	this.day_touch_callback.updateDate(date);
+    	invalidate();
+    }
+    
+    // ========================================================================
     public void setMonthAndEvents(Calendar calendar, List<SimpleEvent> sorted_events) {
-    	setMonth(calendar);
     	this.sorted_events = sorted_events;
+    	setMonth(calendar);
     }
 
     // ========================================================================
@@ -255,19 +315,35 @@ public class ScrollableWeekView extends View {
         canvas.save();
         canvas.translate(0, this.vertical_offset);
         
+        
         // Draw all of the visible days
         visitDayViewports(new ViewportVisitor() {
 			@Override
 			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
 	            canvas.save();
 	            canvas.translate(daybox.left, daybox.top);
-	            drawDay(canvas, daybox, child);
+	            drawDayHolder(canvas, daybox, child);
 	            canvas.restore();
 			}
         });
         
-        canvas.restore();
+        drawMonthWatermarkText(canvas);
         
+        // Draw all of the visible days
+        visitDayViewports(new ViewportVisitor() {
+			@Override
+			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+	            canvas.save();
+	            canvas.translate(daybox.left, daybox.top);
+	            drawDayEvents(canvas, daybox, child);
+	            canvas.restore();
+			}
+        });
+        
+        
+        
+        
+        canvas.restore();
         
         handleViewAnimation(canvas);
     }
@@ -345,6 +421,37 @@ public class ScrollableWeekView extends View {
         return new Date(this.month_calendar.getTimeInMillis() - milliseconds_offset);
     }
     
+    // ========================================================================
+    void drawMonthWatermarkText(Canvas canvas) {
+
+		// Set the scale to the widest month    	
+    	float scale = getHeight() / this.max_month_width;
+
+    	SimpleDateFormat sdf = new SimpleDateFormat("MMMM");
+    	String month_string = sdf.format(this.month_calendar.getTime());
+
+        long now = SystemClock.uptimeMillis();
+        float fraction = 1;
+        if (this.month_text_fader != null)
+        	fraction = this.month_text_fader.getFraction(now);
+
+    	int target_color = this.resources.getColor(R.color.month_watermark_text);
+    	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
+    	this.month_watermark_text_paint.setColor(text_color);
+    	
+    	
+		canvas.save();
+		canvas.translate(getWidth(), 0);
+		canvas.rotate(-90);
+		canvas.scale(scale, scale);
+		// XXX The month names look more stylish if we align
+		// the baseline with the edge of the screen, but this cuts
+		// of the capital "J"s and the "y"s.
+//		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
+
+		canvas.drawText(month_string, 0, 0, this.month_watermark_text_paint);
+		canvas.restore();	
+    }
 
     // ========================================================================
     int getNextMonthIndex(Calendar calendar) {
@@ -452,7 +559,20 @@ public class ScrollableWeekView extends View {
     }
     
     // ========================================================================
-    protected void drawDay(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+    protected void drawDayEvents(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+        float usable_size = Math.min(daybox.width(), daybox.height());
+        drawEventCount(canvas, daybox, day, usable_size);
+        
+    	Calendar daycal = new GregorianCalendar();
+    	daycal.setTime(day.getDate());
+    	
+    	int daycal_month_idx = daycal.get(Calendar.MONTH);
+    	boolean month_active = this.month_calendar.get(Calendar.MONTH) == daycal_month_idx;
+        drawCornerBox(canvas, daybox, day, usable_size, month_active);
+    }
+    
+    // ========================================================================
+    protected void drawDayHolder(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
 
     	Calendar daycal = new GregorianCalendar();
     	daycal.setTime(day.getDate());
@@ -473,24 +593,26 @@ public class ScrollableWeekView extends View {
         						: (daycal_month_odd ? R.color.calendar_date_background_passive_odd : R.color.calendar_date_background_passive_even)				
         		);
         				
-        if (this.is_holding_longpress) {
+        if (this.is_holding_longpress && day.getDate().equals(this.highlighted_day)) {
 
         	long now = SystemClock.uptimeMillis();
-        	float alpha = (now - this.longpress_start_time) / (float) LONGPRESS_DURATION;
-
-        	alpha = Math.min(1, alpha);
         	
-        	int target_color = this.resources.getColor(R.color.calendar_date_background_longpress);
-        	background_color = interpolateColor(background_color, target_color, alpha);
+        	// Before you start to animate, check whether the tap time has been exceeded.
+        	long tap_timeout = ViewConfiguration.getTapTimeout();
+        	if (now > this.longpress_start_time + tap_timeout) {
+	        	
+	        	float alpha = (now - (this.longpress_start_time + tap_timeout)) / (float) LONGPRESS_DURATION;
+	
+	        	alpha = Math.min(1, alpha);
+	        	
+	        	int target_color = this.resources.getColor(R.color.calendar_date_background_longpress);
+	        	background_color = interpolateColor(background_color, target_color, alpha);
+        	}
         }
         				
 		// Draw the background
         this.month_shapes_paint.setColor(background_color);
         canvas.drawRect(0, 0, daybox.width(), daybox.height(), month_shapes_paint);
-        
-        float usable_size = Math.min(daybox.width(), daybox.height());
-        drawEventCount(canvas, daybox, day, usable_size);
-        drawCornerBox(canvas, daybox, day, usable_size, month_active);
     }
 
     // ========================================================================
@@ -577,11 +699,12 @@ public class ScrollableWeekView extends View {
 	}
 
     // ========================================================================
-	int interpolateColor(int src_color, int dst_color, float alpha) {
-		int red = interpolateInt(Color.red(src_color), Color.red(dst_color), alpha);
-		int green = interpolateInt(Color.green(src_color), Color.green(dst_color), alpha);
-		int blue = interpolateInt(Color.blue(src_color), Color.blue(dst_color), alpha);
-		return Color.rgb(red, green, blue);
+	int interpolateColor(int src_color, int dst_color, float fraction) {
+		int red = interpolateInt(Color.red(src_color), Color.red(dst_color), fraction);
+		int green = interpolateInt(Color.green(src_color), Color.green(dst_color), fraction);
+		int blue = interpolateInt(Color.blue(src_color), Color.blue(dst_color), fraction);
+		int alpha = interpolateInt(Color.alpha(src_color), Color.alpha(dst_color), fraction);
+		return Color.argb(alpha, red, green, blue);
 	}
 
     // ========================================================================
@@ -590,17 +713,6 @@ public class ScrollableWeekView extends View {
 		int inc_value = forward ? 1 : -1;
         this.month_calendar.add(Calendar.MONTH, inc_value);
         setMonth(this.month_calendar);
-        
-        this.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
-        invalidate();
-        
-        if (this.month_update_callback != null) {
-        	this.month_update_callback.updateMonth(this.month_calendar);
-        }
-        
-        if (this.day_touch_callback != null) {
-        	this.day_touch_callback.updateDate(null);
-        }
 	}
 	
     // ========================================================================
@@ -611,8 +723,6 @@ public class ScrollableWeekView extends View {
     class MonthGestureDetector extends SimpleOnGestureListener {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        	
-        	Log.d(TAG, "Intercepted month fling gesture...");
         	
             try {
 
@@ -667,14 +777,24 @@ public class ScrollableWeekView extends View {
 			return true;
         }
         
+		@Override
+		public void onLongPress(MotionEvent e) {
+        	is_holding_longpress = false;
+	    	showContextMenu();
+		}
+        
         @Override
         public boolean onDown(MotionEvent e) {
+        	
+        	is_holding_longpress = true;
+        	longpress_start_time = SystemClock.uptimeMillis();
+        	// Note: invalidate() is called below from within touchDay()
         	
         	// Stop a fling
         	current_flinging_velocity = 0;
         	
         	highlighted_day = getDayFromPoint(new PointF(e.getX(), e.getY()));
-        	touchDay(highlighted_day);
+        	highlightDay(highlighted_day);
 
         	return true;
         }
@@ -682,6 +802,8 @@ public class ScrollableWeekView extends View {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
+        	is_holding_longpress = false;
+        	
 			float dy = e2.getY() - e1.getY();
 			if (Math.abs(dy) >= VERTICAL_SCROLL_TOLERANCE) {
 //	        	vertical_offset = dy;
@@ -695,17 +817,27 @@ public class ScrollableWeekView extends View {
         	return true;
         }
     }
+
+    // ==========================================================
+    public static class MonthContextMenuInfo implements ContextMenu.ContextMenuInfo {
+    	Date date;
+    	MonthContextMenuInfo(Date date) {
+    		this.date = date;
+    	}
+    	
+    	public Date getDate() {
+    		return this.date;
+    	}
+    }
+    
+    // ==========================================================
+    protected ContextMenu.ContextMenuInfo getContextMenuInfo() {
+		return new MonthContextMenuInfo(this.highlighted_day);
+    }
     
     // ==========================================================
     void executeDay(Date date) {
     	Log.d(TAG, "Chosen day: " + date);
     	this.day_click_callback.updateDate(date);
-    }
-        
-    // ==========================================================
-    void touchDay(Date date) {
-    	Log.d(TAG, "Chosen day: " + date);
-    	this.day_touch_callback.updateDate(date);
-        	invalidate();
     }
 }

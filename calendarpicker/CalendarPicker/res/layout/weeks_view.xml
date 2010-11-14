@@ -26,7 +26,7 @@
 		android:orientation="horizontal"
 		/>
 
-	<org.openintents.calendarpicker.view.ScrollableWeekView
+	<org.openintents.calendarpicker.view.FlingableWeekView
 		android:id="@+id/full_week"
 		android:layout_width="fill_parent" 
 		android:layout_height="fill_parent"

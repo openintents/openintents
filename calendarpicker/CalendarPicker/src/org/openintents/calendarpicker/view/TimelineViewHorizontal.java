@@ -38,7 +38,7 @@ public class TimelineViewHorizontal extends View {
     
     private Date date;
 
-    static final long MILLISECONDS_PER_YEAR = ScrollableMonthView.MILLISECONDS_PER_DAY*365;
+    static final long MILLISECONDS_PER_YEAR = FlingableMonthView.MILLISECONDS_PER_DAY*365;
     float timeline_years_span = 3.5f;
     
     /**

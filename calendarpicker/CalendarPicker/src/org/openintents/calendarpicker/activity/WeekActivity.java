@@ -13,10 +13,10 @@ import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
-import org.openintents.calendarpicker.view.ScrollableWeekView;
+import org.openintents.calendarpicker.view.FlingableWeekView;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
-import org.openintents.calendarpicker.view.ScrollableWeekView.MonthUpdateCallback;
-import org.openintents.calendarpicker.view.ScrollableWeekView.OnDaySelectionListener;
+import org.openintents.calendarpicker.view.FlingableWeekView.MonthUpdateCallback;
+import org.openintents.calendarpicker.view.FlingableWeekView.OnDaySelectionListener;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -56,7 +56,7 @@ public class WeekActivity extends Activity {
 	final static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
 	TextView month_title;
-	ScrollableWeekView week_view;
+	FlingableWeekView week_view;
 	TimelineViewHorizontal tiny_timeline;
 	
     // ========================================================================
@@ -103,7 +103,7 @@ public class WeekActivity extends Activity {
 
 		tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
 		
-		week_view = (ScrollableWeekView) findViewById(R.id.full_week);
+		week_view = (FlingableWeekView) findViewById(R.id.full_week);
         week_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {
