@@ -14,7 +14,7 @@ import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
 import org.openintents.calendarpicker.view.ScrollableMonthView;
-import org.openintents.calendarpicker.view.TinyTimelineViewHorizontal;
+import org.openintents.calendarpicker.view.TimelineViewHorizontal;
 import org.openintents.calendarpicker.view.ScrollableMonthView.MonthUpdateCallback;
 import org.openintents.calendarpicker.view.ScrollableMonthView.OnDaySelectionListener;
 
@@ -35,9 +35,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-public class CalendarPickerActivity extends Activity {
+public class MonthActivity extends Activity {
 
-    final static public String TAG = "CalendarPickerActivity";
+    final static public String TAG = "MonthActivity";
 
 	static final int REQUEST_CODE_EVENT_SELECTION = 1;
 	static final int REQUEST_CODE_MONTH_YEAR_SELECTION = 2;
@@ -56,7 +56,7 @@ public class CalendarPickerActivity extends Activity {
 
 	TextView month_title;
 	ScrollableMonthView month_view;
-	TinyTimelineViewHorizontal tiny_timeline;
+	TimelineViewHorizontal tiny_timeline;
 	
     // ========================================================================
 	void updateMonthHeader(Calendar calendar) {
@@ -100,7 +100,7 @@ public class CalendarPickerActivity extends Activity {
 		}
         
 
-		tiny_timeline = (TinyTimelineViewHorizontal) findViewById(R.id.tiny_timeline);
+		tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
 		
 		month_view = (ScrollableMonthView) findViewById(R.id.full_month);
         month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
@@ -157,7 +157,7 @@ public class CalendarPickerActivity extends Activity {
 				Uri data = getIntent().getData();
 				if (data != null) {
 
-					Intent i = new Intent(CalendarPickerActivity.this, DayEventsListActivity.class);
+					Intent i = new Intent(MonthActivity.this, DayEventsListActivity.class);
 
 					i.setData(data);
 					if (date != null) {
@@ -278,7 +278,7 @@ public class CalendarPickerActivity extends Activity {
         super.onCreateOptionsMenu(menu);
 
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_main, menu);
+        inflater.inflate(R.menu.options_month_view, menu);
 
         return true;
     }
@@ -298,10 +298,23 @@ public class CalendarPickerActivity extends Activity {
         	startActivityForResult(new Intent(this, YearsActivity.class), REQUEST_CODE_MONTH_YEAR_SELECTION);
             return true;
         }
+        case R.id.menu_week_view:
+        {
+        	Intent intent = new Intent(this, WeekActivity.class);
+        	intent.setData(getIntent().getData());
+        	startActivityForResult(intent, REQUEST_CODE_MONTH_YEAR_SELECTION);
+            return true;
+        }
         case R.id.menu_all_events:
         {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
+        	
+        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID))
+        		intent.putExtra(
+        				IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID,
+        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1));
+        	
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
         }

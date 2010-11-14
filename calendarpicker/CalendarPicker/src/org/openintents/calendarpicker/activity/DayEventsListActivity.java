@@ -43,12 +43,20 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
         long day_end = day_begin + ScrollableMonthView.MILLISECONDS_PER_DAY;
         
 		
+        
+    	String selection = null;
+    	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID)) {
+        	long cal_id = getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1);
+    		selection = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	}
+
 		Cursor cursor = managedQuery(intent_data,
 				new String[] {
 					KEY_ROWID,
 					KEY_EVENT_TIMESTAMP,
 					KEY_EVENT_TITLE},
-				KEY_EVENT_TIMESTAMP + ">=? AND " + KEY_EVENT_TIMESTAMP + "<?",
+				KEY_EVENT_TIMESTAMP + ">=? AND " + KEY_EVENT_TIMESTAMP + "<?"
+				+ (selection == null ? "" : " AND " + selection),
 				new String[] {Long.toString(day_begin), Long.toString(day_end)},
 				constructOrderByString());
 

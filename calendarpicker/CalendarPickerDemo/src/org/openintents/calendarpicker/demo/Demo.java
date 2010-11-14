@@ -226,9 +226,9 @@ public class Demo extends Activity implements View.OnClickListener {
 					Log.d(TAG, "Selected calendar ID: " + selected_google_calendar_id);
 
 					Uri uri = new Uri.Builder()
-					.scheme(ContentResolver.SCHEME_CONTENT)
-					.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-					.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
+						.scheme(ContentResolver.SCHEME_CONTENT)
+						.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+						.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
 					intent.putExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, selected_google_calendar_id);

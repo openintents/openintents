@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_all_events"
+    	  android:icon="@drawable/ic_menu_list"
+          android:title="All Events"
+          android:alphabeticShortcut="a" />
+
+    <item android:id="@+id/menu_year_view"
+    	android:visible="false"
+    	  android:icon="@drawable/ic_menu_my_calendar"
+          android:title="One Year"
+          android:titleCondensed="Year"
+          android:alphabeticShortcut="y" />
+
+    <item android:id="@+id/menu_month_view"
+		android:icon="@drawable/ic_menu_month"
+          android:title="One Month"
+          android:titleCondensed="Month"
+          android:alphabeticShortcut="m" />
+          
+    <item android:id="@+id/menu_day_view"
+    	android:visible="false"
+    	  android:icon="@drawable/ic_menu_day"
+          android:title="One Day"
+          android:titleCondensed="Day"
+          android:alphabeticShortcut="d" />
+
+</menu>

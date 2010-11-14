@@ -1,6 +1,7 @@
 package org.openintents.calendarpicker.activity;
 
 import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.contract.IntentConstants;
 
 import android.database.Cursor;
 import android.net.Uri;
@@ -27,12 +28,19 @@ public class AllEventsListActivity extends AbstractEventsListActivity {
         Uri intent_data = getIntent().getData();
     	Log.d(TAG, "Querying content provider for: " + intent_data);
     	
+
+    	String selection = null;
+    	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID)) {
+        	long cal_id = getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1);
+    		selection = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	}
+    	
 		Cursor cursor = managedQuery(intent_data,
 				new String[] {
 					KEY_ROWID,
 					KEY_EVENT_TIMESTAMP,
 					KEY_EVENT_TITLE},
-				null,
+				selection,
 				null,
 				constructOrderByString());
 

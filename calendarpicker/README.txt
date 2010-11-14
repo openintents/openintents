@@ -25,3 +25,17 @@ some reason.
 
 If you supply your data through Intent extras instead of with an SQLite-backed ContentProvider,
 the event selection activity won't work quite properly.
+
+
+
+NOTE:
+The minimum version of the Calendar Picker is set to 4 (Android 1.6), but the minimum version of
+the Calendar Picker Demo is set to 7 (Android 2.1).  This is because the "authority" portion of
+the CalendarProvider URI changed in Android 2.0.  The data URI is selected in the Demo, then
+passed on to the Picker.  The new (Android 2.0) URI is apparently still valid when accessed from
+the Android 1.6 Picker, so long as it originates from an Android 2.0+ application.
+However, experimentation will show that if the Demo is set to Android 1.6, the CalendarProvider URI
+will be invalid.  I have defined a different constant (in IntentConstants.java) for the "authority"
+of the URI that works with Android 1.6.
+
+Both the Picker and the Demo require the READ_CALENDAR permission.
