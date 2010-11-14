@@ -97,8 +97,6 @@ public class TimelineViewHorizontal extends View {
         
         setPadding(3, 3, 3, 3);
         
-        this.setFocusable(true);
-        
         final GestureDetector gestureDetector = new GestureDetector(new TimelineGestureDetector());
         setOnTouchListener(new OnTouchListener() {
 
@@ -253,48 +251,48 @@ public class TimelineViewHorizontal extends View {
         // Center vertically
         canvas.translate(0, getHeight()/2f);
 
-        mLinePaint.setColor(Color.GRAY);
-        mLinePaint.setStrokeWidth(line_width);
-        canvas.drawLine(0, 0, getWidth(), 0, mLinePaint);
+        this.mLinePaint.setColor(Color.GRAY);
+        this.mLinePaint.setStrokeWidth(line_width);
+        canvas.drawLine(0, 0, getWidth(), 0, this.mLinePaint);
 
 
-        if (is_touching) {
-	        mLinePaint.setColor(Color.GREEN);
-	        canvas.drawLine(last_touch_x, getHeight()/4f, last_touch_x, -getHeight()/4f, mLinePaint);
+        if (this.is_touching) {
+        	this.mLinePaint.setColor(Color.GREEN);
+	        canvas.drawLine(this.last_touch_x, getHeight()/4f, this.last_touch_x, -getHeight()/4f, this.mLinePaint);
         }
     	
         
         // Center horizontally
         canvas.translate(getWidth()/2f, 0);        
 
-        mLinePaint.setColor(Color.RED);
-        mLinePaint.setStrokeWidth(hash_width);
-        canvas.drawLine(0, getHeight()/4f, 0, -getHeight()/4f, mLinePaint);
+        this.mLinePaint.setColor(Color.RED);
+        this.mLinePaint.setStrokeWidth(hash_width);
+        canvas.drawLine(0, getHeight()/4f, 0, -getHeight()/4f, this.mLinePaint);
         
 
-        mLinePaint.setColor(Color.WHITE);
+        this.mLinePaint.setColor(Color.WHITE);
     	Calendar calendar = new GregorianCalendar();        
         if (this.date != null) {
         	
-        	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*timeline_years_span/2));
+        	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2));
 
             calendar.setTime(d);
             int y = calendar.get(Calendar.YEAR);
             calendar.clear();
             calendar.set(Calendar.YEAR, y);
 
-            for (int i=0; i<timeline_years_span; i++) {
+            for (int i=0; i<this.timeline_years_span; i++) {
 
                 calendar.add(Calendar.YEAR, 1);
 
                 long millis_delta = calendar.getTimeInMillis() - this.date.getTime();
-            	float fraction = millis_delta/(MILLISECONDS_PER_YEAR*timeline_years_span);
+            	float fraction = millis_delta/(MILLISECONDS_PER_YEAR*this.timeline_years_span);
 
             	float horizontal_position = fraction*getWidth();
-            	canvas.drawCircle(horizontal_position, 0, marker_radius, mLinePaint);
+            	canvas.drawCircle(horizontal_position, 0, marker_radius, this.mLinePaint);
 
                 int year = calendar.get(Calendar.YEAR);
-           		canvas.drawText(Integer.toString(year), horizontal_position, -mAscent + marker_radius, mTextPaint);
+           		canvas.drawText(Integer.toString(year), horizontal_position, -this.mAscent + marker_radius, this.mTextPaint);
             }
         }
     }
@@ -310,32 +308,6 @@ public class TimelineViewHorizontal extends View {
     private static final int SWIPE_MAX_OFF_PATH = 300;
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     class TimelineGestureDetector extends SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        	
-        	Log.d(TAG, "Intercepted timeline fling gesture...");
-        	
-        	/*
-            try {
-                if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_PATH)
-                    return false;
-                
-                if(e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                	moveMonth(true);
-                }  else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                	moveMonth(false);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            */
-            return false;
-        }
-        
-        @Override
-        public boolean onSingleTapConfirmed (MotionEvent e) {
-			return false;
-        }
         
         @Override
         public boolean onDown(MotionEvent e) {

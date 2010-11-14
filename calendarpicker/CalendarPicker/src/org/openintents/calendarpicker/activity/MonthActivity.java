@@ -13,8 +13,8 @@ import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.IntentConstants;
 import org.openintents.calendarpicker.contract.IntentConstants.CalendarEventPicker;
-import org.openintents.calendarpicker.view.OnDateUpdateListener;
 import org.openintents.calendarpicker.view.FlingableMonthView;
+import org.openintents.calendarpicker.view.OnDateUpdateListener;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
 import org.openintents.calendarpicker.view.FlingableMonthView.MonthContextMenuInfo;
 import org.openintents.calendarpicker.view.FlingableMonthView.MonthUpdateCallback;
@@ -29,6 +29,7 @@ import android.provider.BaseColumns;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -90,54 +91,40 @@ public class MonthActivity extends Activity {
         if (intent_data != null) {
         	// We have been passed a cursor to the data via a content provider.
 			this.events = getEventsFromUri(intent_data);
-
         } else {
         	Log.d(TAG, "No URI was passed, checking for Intent extras instead...");
 			this.events = getEventsFromIntent(this.getIntent());
 		}
+        
         DateFormatSymbols dfs = new DateFormatSymbols();
-//        String weekdays[] = dfs.getWeekdays();
         String weekdays[] = dfs.getShortWeekdays();
         LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
-        weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
+        this.weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
 		for (int i=Calendar.getInstance().getFirstDayOfWeek(); i<weekdays.length; i++) {
 	        TextView tv = new TextView(this);
 	        tv.setGravity(Gravity.CENTER);
 	        tv.setText(weekdays[i]);
-	        weekday_header_layout.addView(tv, lp);
+	        this.weekday_header_layout.addView(tv, lp);
 		}
         
-		timeline_date_toast = Toast.makeText(this, "Date", Toast.LENGTH_SHORT);
-		tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
-		tiny_timeline.setOnDateUpdateListener(new OnDateUpdateListener() {
+		this.timeline_date_toast = Toast.makeText(this, "Date", Toast.LENGTH_SHORT);
+		this.tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
+		this.tiny_timeline.setOnDateUpdateListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
 				timeline_date_toast.setText(toast_date_formatter.format(date));
 				timeline_date_toast.show();
 			}
 		});
-		tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
+		this.tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-				Calendar cal = new GregorianCalendar();
-				cal.setTime(date);
-				
-		    	int year = cal.get(Calendar.YEAR);
-		    	int month = cal.get(Calendar.MONTH);
-		    	int day = cal.get(Calendar.DATE);
-		    	cal.clear();
-		    	cal.set(year, month, cal.getMinimum(Calendar.DATE));
-		        month_view.setMonth(cal);
-
-				Calendar cal2 = (Calendar) cal.clone();
-		    	// Set the precision of the calendar to the Day
-				cal2.set(Calendar.DATE, day);
-		        month_view.highlightDay(cal2.getTime());
+				month_view.setMonthAndHighlight(date);
 			}
 		});
 		
-		month_view = (FlingableMonthView) findViewById(R.id.full_month);
-        month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
+		this.month_view = (FlingableMonthView) findViewById(R.id.full_month);
+		this.month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {
 				updateMonthHeader(cal);
@@ -145,7 +132,7 @@ public class MonthActivity extends Activity {
 			}
         });
         
-        month_view.setOnDayTouchListener(new OnDateUpdateListener() {
+		this.month_view.setOnDayTouchListener(new OnDateUpdateListener() {
 
 			@Override
 			public void updateDate(Date date) {
@@ -165,15 +152,13 @@ public class MonthActivity extends Activity {
         });
         
 
-        month_view.setOnScrollListener(new OnDateUpdateListener() {
+		this.month_view.setOnScrollListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
 				tiny_timeline.setDate(date);
 			}
         });
-				
-        
-        month_view.setOnDayClickListener(new OnDateUpdateListener() {
+		this.month_view.setOnDayClickListener(new OnDateUpdateListener() {
 
 			@Override
 			public void updateDate(Date date) {
@@ -190,7 +175,7 @@ public class MonthActivity extends Activity {
         });
         
 
-        registerForContextMenu(month_view);
+        registerForContextMenu(this.month_view);
 
         
         Calendar current_month_calendar = new GregorianCalendar();
@@ -201,10 +186,74 @@ public class MonthActivity extends Activity {
         }
         
         updateMonthHeader(current_month_calendar);
-		tiny_timeline.setDate(current_month_calendar.getTime());
-        month_view.setMonthAndEvents(current_month_calendar, events);
+        this.tiny_timeline.setDate(current_month_calendar.getTime());
+        this.month_view.setMonthAndEvents(current_month_calendar, this.events);
     }
 
+    // ========================================================================
+    @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+    	// If the key is not the DPAD, then let it be handled by default.
+    	switch (keyCode) {
+    	case KeyEvent.KEYCODE_DPAD_UP:
+    	case KeyEvent.KEYCODE_DPAD_LEFT:
+    	case KeyEvent.KEYCODE_DPAD_DOWN:
+    	case KeyEvent.KEYCODE_DPAD_RIGHT:
+    	case KeyEvent.KEYCODE_DPAD_CENTER:
+    		break;
+    	default:
+    		return super.onKeyDown(keyCode, event);
+    	}
+    	
+
+    	Date highlighted_day = month_view.getHighlightedDay();
+		if (highlighted_day == null) {
+			month_view.highlightDay(month_view.getCalendar().getTime());
+			return true;
+		}
+		
+		Calendar cal = new GregorianCalendar();
+		cal.setTime(highlighted_day);
+						
+    	switch (keyCode) {
+    	case KeyEvent.KEYCODE_DPAD_UP:
+    	{
+    		cal.add(Calendar.DATE, -FlingableMonthView.DAYS_PER_WEEK);
+    		month_view.setMonthAndHighlight(cal.getTime());
+    		break;
+    	}
+    	case KeyEvent.KEYCODE_DPAD_LEFT:
+    	{
+    		cal.add(Calendar.DATE, -1);
+    		month_view.setMonthAndHighlight(cal.getTime());
+    		break;
+    	}
+    	case KeyEvent.KEYCODE_DPAD_DOWN:
+    	{
+    		cal.add(Calendar.DATE, FlingableMonthView.DAYS_PER_WEEK);
+    		month_view.setMonthAndHighlight(cal.getTime());
+    		break;
+    	}
+    	case KeyEvent.KEYCODE_DPAD_RIGHT:
+    	{
+    		cal.add(Calendar.DATE, 1);
+    		month_view.setMonthAndHighlight(cal.getTime());
+    		break;
+    	}
+    	case KeyEvent.KEYCODE_DPAD_CENTER:
+    	{
+    		if (highlighted_day != null) {
+    			month_view.executeDay(highlighted_day);
+    		}
+    		break;
+    	}
+    	default:
+    		return false;
+    	}
+        return true;
+    }
+    
     // ========================================================================
     void finishWithDate(Date date) {
 		// If there are no events, just return the day.

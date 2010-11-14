@@ -12,8 +12,9 @@
           android:titleCondensed="Year"
           android:alphabeticShortcut="y" />
 
-
+	<!-- TODO -->
     <item android:id="@+id/menu_week_view"
+    	android:visible="false"
     	android:icon="@drawable/ic_menu_week"
           android:title="One Week"
           android:titleCondensed="Week"
