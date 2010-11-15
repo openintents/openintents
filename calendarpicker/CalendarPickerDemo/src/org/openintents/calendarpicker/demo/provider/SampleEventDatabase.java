@@ -19,7 +19,7 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
 
 	static final String TAG = "SampleEventDatabase"; 
 
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     static final String DATABASE_NAME = "EVENTS";
 
     public static final String TABLE_EVENTS = "TABLE_EVENTS";
@@ -81,7 +81,7 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
 		
 		ContentValues cv = new ContentValues();
 		cv.put(KEY_CALENDAR_TITLE, "Arbitrary Calendar");
-		long calendar_id = db.insert(TABLE_EVENTS, null, cv);
+		long calendar_id = db.insert(TABLE_CALENDARS, null, cv);
 
 
 		List<EventWrapper> events = Demo.generateRandomEvents(Demo.DEFAULT_RANDOM_EVENTS, new GregorianCalendar());

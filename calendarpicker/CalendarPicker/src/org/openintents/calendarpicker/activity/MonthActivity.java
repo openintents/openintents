@@ -86,7 +86,6 @@ public class MonthActivity extends Activity {
 
         this.month_title = (TextView) findViewById(R.id.month_title);
 
-
         List<SimpleEvent> events = new ArrayList<SimpleEvent>();
         Uri intent_data = getIntent().getData();
         // Zip the events
@@ -100,6 +99,9 @@ public class MonthActivity extends Activity {
 			CachedEventDatabase database = new CachedEventDatabase(this);
 			long calendar_id = database.populateEvents(events);
 			getIntent().setData(CachedEventContentProvider.constructUri(calendar_id));
+			
+			Log.d(TAG, "Sartup, set data URI: " + getIntent().getData());
+			
 		} else {
 			Log.e(TAG, "No data provided!");
 		}
@@ -329,7 +331,8 @@ public class MonthActivity extends Activity {
     	long[] event_ids = intent.getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
     	long[] event_timestamps = intent.getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS);
     	
-    	String[] event_titles = intent.getStringArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
+    	// Optional fields
+    	String[] event_titles = intent.getStringArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TITLES);
 
     	if (event_ids != null && event_timestamps != null) {
 	    	for (int i=0; i<event_timestamps.length; i++) {

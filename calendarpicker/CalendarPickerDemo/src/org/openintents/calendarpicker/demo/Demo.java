@@ -260,7 +260,7 @@ public class Demo extends Activity implements View.OnClickListener {
 			calendar.roll(Calendar.MINUTE, r.nextInt(calendar.getActualMaximum(Calendar.MINUTE)));
 			event.timestamp = calendar.getTimeInMillis();
 			event.id = event_id;
-			event.title = "Event " + event_id;
+			event.title = "Random Event 0x" + Integer.toHexString(r.nextInt()).toUpperCase();
 			events.add(event);
 		}
 

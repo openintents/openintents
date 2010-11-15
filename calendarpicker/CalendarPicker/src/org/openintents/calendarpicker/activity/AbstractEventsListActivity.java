@@ -2,6 +2,7 @@ package org.openintents.calendarpicker.activity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Stack;
 
@@ -86,12 +87,12 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, getIntent().getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, 0));
 
 			int epoch_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
 			long event_epoch = cursor.getLong(epoch_column);
 			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, event_epoch);
-
+			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, MonthActivity.HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));
+			
 	        setResult(Activity.RESULT_OK, i);
 			finish();
 		}

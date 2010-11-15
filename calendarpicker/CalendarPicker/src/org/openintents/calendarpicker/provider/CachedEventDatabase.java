@@ -16,8 +16,8 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
 
 	static final String TAG = "CachedEventDatabase"; 
 
-    static final int DATABASE_VERSION = 1;
-    static final String DATABASE_NAME = "EVENTS";
+    static final int DATABASE_VERSION = 2;
+    static final String DATABASE_NAME = "CACHED_EVENTS";
 
     public static final String TABLE_EVENTS = "TABLE_EVENTS";
     public static final String TABLE_CALENDARS = "TABLE_CALENDARS";
@@ -30,22 +30,22 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
     
 
     public static final String KEY_CALENDAR_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
-    
-    
-    final static String SQL_CREATE_EVENTS_TABLE =
-        "create table " + TABLE_EVENTS + " (" 
-        + BaseColumns._ID + " integer primary key autoincrement, "
-        + KEY_CALENDAR_ID + " integer default 0, "
-        + KEY_EVENT_TIMESTAMP + " integer, "
-        + KEY_EVENT_TITLE + " text);";
 
     final static String SQL_CREATE_CALENDARS_TABLE =
         "create table " + TABLE_CALENDARS + " (" 
         + BaseColumns._ID + " integer primary key autoincrement, "
         + KEY_CALENDAR_TITLE + " text);";
     
-    final static String[] table_list = {TABLE_EVENTS, TABLE_CALENDARS};
-    final static String[] table_creation_commands = {SQL_CREATE_EVENTS_TABLE, SQL_CREATE_CALENDARS_TABLE};
+    final static String SQL_CREATE_EVENTS_TABLE =
+        "create table " + TABLE_EVENTS + " (" 
+        + BaseColumns._ID + " integer primary key, "
+        + KEY_CALENDAR_ID + " integer, "
+        + KEY_EVENT_TIMESTAMP + " integer, "
+        + KEY_EVENT_TITLE + " text);";
+
+    
+    final static String[] table_list = {TABLE_CALENDARS, TABLE_EVENTS};
+    final static String[] table_creation_commands = {SQL_CREATE_CALENDARS_TABLE, SQL_CREATE_EVENTS_TABLE};
 
     // ============================================================
     public CachedEventDatabase(Context context) {
@@ -73,15 +73,15 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
     /** Populates the database with random events, given a calendar to specify the year and month */
     public long populateEvents(List<SimpleEvent> events) {
 
+		// Wipe the database clean, first.
+		clearData();
+    	
 	    SQLiteDatabase db = getWritableDatabase();
 		db.beginTransaction();
 		
-		// Wipe the database clean, first.
-		clearData();
-		
 		ContentValues cv = new ContentValues();
-		cv.put(KEY_CALENDAR_TITLE, "Arbitrary Calendar");
-		long calendar_id = db.insert(TABLE_EVENTS, null, cv);
+		cv.put(KEY_CALENDAR_TITLE, "Cached Calendar");
+		long calendar_id = db.insert(TABLE_CALENDARS, null, cv);
 
 		for (SimpleEvent event : events) {
 			cv.clear();
@@ -90,6 +90,8 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
 			cv.put(KEY_EVENT_TITLE, event.title);
 			cv.put(KEY_EVENT_TIMESTAMP, event.timestamp.getTime());
 			long event_id = db.insert(TABLE_EVENTS, null, cv);
+			
+			Log.d(TAG, "Inserted event - SPECIFIED ID: " + event.id + "; RESULTING ID: " + event_id);
 		}
 
 	    try {
@@ -103,7 +105,6 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
     }
     
     // ============================================================
-    
     @Override
     public void onCreate(SQLiteDatabase db) {
     	for (String sql : table_creation_commands)

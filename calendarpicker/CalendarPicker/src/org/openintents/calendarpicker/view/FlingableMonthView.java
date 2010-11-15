@@ -715,7 +715,6 @@ public class FlingableMonthView extends View {
     	// Use horizontal position to determine weekday
         int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
     	int weekday_index = (int) (DAYS_PER_WEEK*(point.x - getPaddingLeft()) / usable_width);
-    	Log.d(TAG, "Weekday index: " + weekday_index);
     	
     	// Use vertical position to determine week multiplier
     	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());

@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.util.Log;
 
 public class CachedEventContentProvider extends ContentProvider {
 	
@@ -17,7 +18,7 @@ public class CachedEventContentProvider extends ContentProvider {
 	
 	// This must be the same as what as specified as the Content Provider authority
 	// in the manifest file.
-	public static final String AUTHORITY = "org.openintents.calendarpicker.provider.events";
+	public static final String AUTHORITY = "org.openintents.calendarpicker.cache.events";
 	
 	
 	static Uri BASE_URI = new Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(AUTHORITY).path("events").build();
@@ -33,6 +34,7 @@ public class CachedEventContentProvider extends ContentProvider {
 
    @Override
    public String getType(Uri uri) {
+	   Log.i(TAG, "Queried type using: " + uri);
 	   return IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
    }
 
@@ -40,6 +42,8 @@ public class CachedEventContentProvider extends ContentProvider {
    public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 
 	   long calendar_id = ContentUris.parseId(uri);
+	   
+	   Log.i(TAG, "I'm in CalendarPicker, about to query calendar ID: " + calendar_id);
 	   
 	   CachedEventDatabase database = new CachedEventDatabase(getContext());
 	   SQLiteDatabase db = database.getReadableDatabase();

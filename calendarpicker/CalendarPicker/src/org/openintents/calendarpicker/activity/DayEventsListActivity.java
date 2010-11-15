@@ -60,7 +60,12 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
 				new String[] {Long.toString(day_begin), Long.toString(day_end)},
 				constructOrderByString());
 
-		String header_text = cursor.getCount() + " event(s) on " + new DateFormatSymbols().getShortMonths()[d.getMonth()] + " " + d.getDate();
+		Log.d(TAG, "Uri queried: " + intent_data);
+		Log.d(TAG, "Cursor: " + cursor);
+		
+		int cursor_row_count = cursor.getCount();
+		
+		String header_text = cursor_row_count + " event(s) on " + d.getDate();
 		((TextView) findViewById(R.id.list_header)).setText(header_text);
 		
 		return cursor;
