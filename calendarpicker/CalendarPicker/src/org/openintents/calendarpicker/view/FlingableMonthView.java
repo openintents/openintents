@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2010 Karl Ostmo
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.calendarpicker.view;
 
 
@@ -34,6 +50,31 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.GestureDetector.SimpleOnGestureListener;
 
+/**
+ * Animation process:
+ * When the user "scrolls" the calendar vertically then releases,
+ * the calendar will "snap" into place at the nearest month.
+ * The snapping animation begins on ACTION_UP, and once the animation
+ * is complete (and the calendar is at rest), the active month
+ * will be updated (using setMonth()).
+ * 
+ * The post-scroll snapping animation starts from zero velocity.
+ * It accelerates towards then snap target and stops suddenly
+ * when reached.
+ * The flinging animation on the other hand, must take initial
+ * velocity into account.
+ * 
+ * The "snapping" phase should act under different physics than the
+ * "flinging" phase, to avoid oscillations around the
+ * snap target.  A separate variable for "snapping" velocity may
+ * take on the value of the "flinging" velocity when the deceleration
+ * threshold is reached.
+ * 
+ * @author kostmo
+ *
+ */
+
+
 public class FlingableMonthView extends View {
 
 	static final String TAG = "FlingableMonthView";
@@ -44,12 +85,19 @@ public class FlingableMonthView extends View {
 	static final long MILLISECONDS_PER_WEEK = DAYS_PER_WEEK*MILLISECONDS_PER_DAY;
 	static final int MONTHS_PER_YEAR = 12;
 
-	static final SimpleDateFormat FULL_MONTH_FORMATTER = new SimpleDateFormat("MMMM");
+	static final SimpleDateFormat FULL_MONTH_NAME_FORMATTER = new SimpleDateFormat("MMMM");
 
-	static final String MONTH_WATERMARK_FONT_PATH = "BerlinSmallCaps.ttf";
+    
+	
+    float VERTICAL_SCROLL_TOLERANCE = 75;
     
     
-    Calendar month_calendar = new GregorianCalendar();
+    float vertical_offset = 0;
+    // The vertical offset is relative to the Sunday (upper-left corner)
+    // before the 1st of the active month.
+    Date active_month_northwest_corner = new Date();
+    
+    Calendar active_month_calendar = new GregorianCalendar();
     Date highlighted_day = null;
     List<SimpleEvent> sorted_events;
 
@@ -59,45 +107,20 @@ public class FlingableMonthView extends View {
     // Callbacks
     MonthUpdateCallback month_update_callback = null;
     OnDateUpdateListener day_click_callback, day_touch_callback, scroll_callback;
-    
-    // Animation-related values
-    float MONTH_TEXT_FADER_MILLISECONDS = 500;
-	TimedAnimation month_text_fader = null;
-	
 
 	// Longpress animation
     boolean is_holding_longpress = false;
     long longpress_start_time;
-    
 	
 
-//  float SNAP_BACK_ANIMATION_ACCELERATION = 100;	// 100 px/s^2
-	float SNAP_BACK_MILLISECONDS = 500;
-	TimedAnimation snap_back_animation = null;
-	
-    float VERTICAL_SCROLL_TOLERANCE = 75;
-    
-	float snap_back_start_offset = 0;
-    float vertical_offset = 0;
-    
-    
-    
-    
-    // FLINGING STATE
-    static final float MINIMUM_SUSTAINED_FLINGING_VELOCITY = 400;	// in px/sec
-    static final float FLINGING_DECELERATION = 750;	// in px/sec/sec
-    float current_flinging_velocity = 0;
-    long last_frame_time_for_fling;
-    
-    
     CalendarRenderer calendar_drawing;
 
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
 
+    	this.calendar_drawing = new CalendarRenderer(context);
     	setMonth(new GregorianCalendar());
-    	calendar_drawing = new CalendarRenderer(context);
     	
 
         final GestureDetector gestureDetector = new GestureDetector(new MonthGestureDetector());
@@ -116,15 +139,10 @@ public class FlingableMonthView extends View {
 	        			// Cause the snap-back to be triggered when the fling
 	        			// velocity drops below the minimum threshold
 	        			
-	        			/*
-	        			snap_back_animation = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
-	        			snap_back_start_offset = vertical_offset;
-
-        				invalidate();
-        				*/
+	        			calendar_drawing.beginSnappingBackAnimation(0);
 	        		}
 	        	} else if (event.getAction() == MotionEvent.ACTION_DOWN) {
-	        		snap_back_animation = null;
+	        		calendar_drawing.is_snapping = false;
 	        	}
 	        	
 				
@@ -147,7 +165,7 @@ public class FlingableMonthView extends View {
 		cal.setTime(date);
     	int day = cal.get(Calendar.DATE);
     	FlingableMonthView.setCalendarToFirstDayOfMonth(cal);
-    	if (!cal.equals(this.month_calendar))
+    	if (!cal.equals(this.active_month_calendar))
     		setMonth(cal);
 
 		Calendar cal2 = (Calendar) cal.clone();
@@ -155,25 +173,10 @@ public class FlingableMonthView extends View {
 		cal2.set(Calendar.DATE, day);
         highlightDay(cal2.getTime());
     }
-    
-    // ========================================================================
-	private static float getMaxMonthWidth(Paint paint) {
-	
-        DateFormatSymbols dfs = new DateFormatSymbols();
-        float max_month_width = Float.MIN_VALUE;
-    	Rect bounds = new Rect();
-    	for (String month : dfs.getMonths()) {
-    		paint.getTextBounds(month, 0, month.length(), bounds);
-    		if (bounds.width() > max_month_width)
-    			max_month_width = bounds.width();
-    	}
-    	
-    	return max_month_width;
-	}
 
     // ========================================================================
 	public Calendar getCalendar() {
-		return this.month_calendar;
+		return this.active_month_calendar;
 	}
     
     // ========================================================================
@@ -215,25 +218,43 @@ public class FlingableMonthView extends View {
     // ========================================================================
     /** After this routine, the calendar is guaranteed to be at the first
      * of the month.
+     * This function gets called infrequently enough (less than once per frame)
+     * so it is OK to do memory allocations within.
      */
+    
     public void setMonth(Calendar calendar) {
     	
     	this.highlighted_day = null;
     	
-    	this.month_calendar.setTime(calendar.getTime());
-    	setCalendarToFirstDayOfMonth(this.month_calendar);
+    	this.active_month_calendar.setTime(calendar.getTime());
+    	setCalendarToFirstDayOfMonth(this.active_month_calendar);
+    	
+    	Calendar temp_calendar = new GregorianCalendar();
+    	temp_calendar.setTime(this.active_month_calendar.getTime());
+    	setMonthWeekBeginning(temp_calendar);
+    	this.active_month_northwest_corner.setTime(temp_calendar.getTimeInMillis());
     	this.vertical_offset = 0;
-    	this.spanned_weeks = calcSpannedWeeksForMonth(this.month_calendar);
+    	
+    	
+    	
+    	this.calendar_drawing.reestablishCornerBoxDimensions();
+    	
+
+    	
+    	
+    	
+    	
+    	this.spanned_weeks = calcSpannedWeeksForMonth(this.active_month_calendar);
     	
         if (this.month_update_callback != null) {
-        	this.month_update_callback.updateMonth(this.month_calendar);
+        	this.month_update_callback.updateMonth(this.active_month_calendar);
         }
         
         if (this.day_touch_callback != null) {
         	this.day_touch_callback.updateDate(null);
         }
     	
-        this.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), MONTH_TEXT_FADER_MILLISECONDS);
+        this.calendar_drawing.month_text_fader = new TimedAnimation(SystemClock.uptimeMillis(), CalendarRenderer.MONTH_TEXT_FADER_MILLISECONDS);
     	invalidate();
     }
 
@@ -255,7 +276,6 @@ public class FlingableMonthView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         this.calendar_drawing.draw(canvas);
     }
 
@@ -263,11 +283,8 @@ public class FlingableMonthView extends View {
     /** Rolls the date back to the beginning of the week of the first week of the month.
      * Expects the calendar date to already be set to the first day of the month. */
     static void setMonthWeekBeginning(Calendar calendar) {
-    	while (true) {
-    		if (calendar.get(Calendar.DAY_OF_WEEK) == calendar.getFirstDayOfWeek())
-    			break;
+    	while (calendar.get(Calendar.DAY_OF_WEEK) != calendar.getFirstDayOfWeek())
     		calendar.add(Calendar.DAY_OF_MONTH, -1);
-    	}
     }
     
     // ========================================================================
@@ -306,7 +323,12 @@ public class FlingableMonthView extends View {
     }
 
     // ========================================================================
+    /** Handles all view rendering responsibilities, including render-specific data */
     class CalendarRenderer {
+    	
+
+    	static final String MONTH_WATERMARK_FONT_PATH = "BerlinSmallCaps.ttf";
+    	
 
     	TextPaint day_tile_paint;
     	TextPaint month_watermark_text_paint;
@@ -320,8 +342,38 @@ public class FlingableMonthView extends View {
         
     	
 
-    	Calendar dummy_calendar = new GregorianCalendar();
+        // Animation-related values
+        static final float MONTH_TEXT_FADER_MILLISECONDS = 500;
+    	TimedAnimation month_text_fader = null;
         
+    	
+    	
+    	
+        
+        // FLINGING STATE
+        static final float MINIMUM_SUSTAINED_FLINGING_VELOCITY = 400;	// in px/sec
+        static final float FLINGING_DECELERATION = 750;	// in px/sec/sec
+        float current_flinging_velocity = 0;
+        long last_frame_time_for_fling;
+    	
+    	
+        
+        
+        // SNAPPING STATE
+        static final float SNAPPING_ACCELERATION = 750;	// in px/sec/sec
+        float current_snapping_velocity = 0;	// in px/sec
+    	boolean is_snapping = false;
+    	long last_frame_time_for_snap;
+    	Calendar snap_target_month = new GregorianCalendar();
+    	Calendar snap_target_day = new GregorianCalendar();
+    	float snap_target_offset = 0;
+        
+        
+
+    	Calendar dummy_calendar = new GregorianCalendar();
+    	Date dummy_date = new Date();
+
+        // ========================================================================
     	CalendarRenderer(Context context) {
     		
     		this.resources = context.getResources();
@@ -329,12 +381,8 @@ public class FlingableMonthView extends View {
         	this.day_tile_paint = new TextPaint();
         	this.day_tile_paint.setAntiAlias(true);
         	this.day_tile_paint.setColor(Color.WHITE);
-
-        	this.day_tile_paint_font_metrics = this.day_tile_paint.getFontMetrics();
         	
     		this.month_watermark_text_paint = new TextPaint();
-    		
-
     		Typeface face = Typeface.createFromAsset(context.getAssets(), MONTH_WATERMARK_FONT_PATH);
     		this.month_watermark_text_paint.setTypeface(face);
             this.month_watermark_text_paint.setAntiAlias(true);
@@ -343,18 +391,89 @@ public class FlingableMonthView extends View {
 
         	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
     	}
-        
-    	Date dummy_date = new Date();
+    	
         // ========================================================================
-        Date getScrollOffsetDate() {
+    	void beginSnappingBackAnimation(float initial_velocity) {
+    		this.is_snapping = true;
+    		this.current_snapping_velocity = initial_velocity;
+    		this.last_frame_time_for_snap = SystemClock.uptimeMillis();
+
+    		
+    		// Identify the closest snap_target
+    		Date scroll_offset_date = getOffsetDateFromOffsetPixels();
+    		this.dummy_calendar.setTime(scroll_offset_date);
+    		
+    		setCalendarToFirstDayOfMonth(this.dummy_calendar);
+    		Date earlier_first_of_month = this.dummy_calendar.getTime();
+    		setMonthWeekBeginning(this.dummy_calendar);
+    		Date earlier_week_beginning = this.dummy_calendar.getTime();
+    		long backwards_millis_delta = scroll_offset_date.getTime() - earlier_week_beginning.getTime();
+
+    		this.dummy_calendar.setTime(earlier_first_of_month);
+    		this.dummy_calendar.add(Calendar.MONTH, 1);
+    		Date later_first_of_month = this.dummy_calendar.getTime();
+    		setMonthWeekBeginning(this.dummy_calendar);
+    		Date later_week_beginning = this.dummy_calendar.getTime();
+    		long forwards_millis_delta = later_week_beginning.getTime() - scroll_offset_date.getTime();
+    		
+    		
+    		if (backwards_millis_delta < forwards_millis_delta) {
+        		this.snap_target_month.setTime(earlier_first_of_month);
+        		this.snap_target_day.setTime(earlier_week_beginning);
+    		} else {
+    			this.snap_target_month.setTime(later_first_of_month);
+        		this.snap_target_day.setTime(later_week_beginning);
+    		}
+    		
+    		// XXX
+    		Log.d(TAG, "Target snap month: " + FULL_MONTH_NAME_FORMATTER.format(this.snap_target_month.getTime()));    		
+
+    		this.snap_target_offset = getOffsetPixelsForDate(
+    				this.snap_target_day.getTime());
+    		
+    		// Set the redraw chain in motion
+			invalidate();
+    	}
+        
+        // ========================================================================
+    	private float getMaxMonthWidth(Paint paint) {
+    	
+            DateFormatSymbols dfs = new DateFormatSymbols();
+            float max_month_width = Float.MIN_VALUE;
+        	Rect bounds = new Rect();
+        	for (String month : dfs.getMonths()) {
+        		paint.getTextBounds(month, 0, month.length(), bounds);
+        		if (bounds.width() > max_month_width)
+        			max_month_width = bounds.width();
+        	}
+        	
+        	return max_month_width;
+    	}
+        
+        // ========================================================================
+        Date getOffsetDateFromOffsetPixels() {
             float height_per_week = getDayBoxHeight() + this.vertical_spacing;
             float weeks_offset = vertical_offset/height_per_week;
             long milliseconds_offset = (long) (MILLISECONDS_PER_WEEK*weeks_offset);
             
-            this.dummy_date.setTime(month_calendar.getTimeInMillis() - milliseconds_offset);
+            this.dummy_date.setTime(active_month_northwest_corner.getTime() - milliseconds_offset);
             return this.dummy_date;
         }
-        
+
+        // ========================================================================
+        /** The inverse operation of getOffsetDateFromOffsetPixels() */
+        float getOffsetPixelsForDate(Date offset_date) {
+
+        	long millis_delta = active_month_northwest_corner.getTime() - offset_date.getTime();
+        	
+            float height_per_week = getDayBoxHeight() + this.vertical_spacing;
+            
+            float weeks_offset = millis_delta / MILLISECONDS_PER_WEEK;
+            float pixel_offset = weeks_offset*height_per_week;
+
+            return pixel_offset;
+        }
+
         // ========================================================================
         /** Calculate vertical dimensions */
         float getDayBoxHeight() {
@@ -362,6 +481,15 @@ public class FlingableMonthView extends View {
         	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
             float day_box_height = (usable_height - (spanned_weeks - 1)*this.vertical_spacing) / spanned_weeks;
             return day_box_height;
+        }
+        
+        // ========================================================================
+        /** Calculate vertical dimensions */
+        float getDayBoxWidth() {
+
+            int usable_width = getWidth() - (getPaddingLeft() + getPaddingRight());
+            float day_box_width = (usable_width - (DAYS_PER_WEEK - 1)*this.horizontal_spacing) / DAYS_PER_WEEK;
+            return day_box_width;
         }
 
         // ========================================================================
@@ -385,6 +513,21 @@ public class FlingableMonthView extends View {
 	            this.canvas.restore();
 			}
         };
+        
+        
+        // ========================================================================
+        void reestablishCornerBoxDimensions() {
+        	this.day_box_dimensions.set(
+        			this.getDayBoxWidth(),
+        			this.getDayBoxHeight());
+            float usable_size = Math.min(
+            		this.day_box_dimensions.x,
+            		this.day_box_dimensions.y);
+        	
+            float corner_box_side = usable_size/2f;
+            this.day_tile_paint.setTextSize(corner_box_side*0.8f);
+        	this.day_tile_paint_font_metrics = this.day_tile_paint.getFontMetrics();
+        }
         
         // ========================================================================
     	void draw(final Canvas canvas) {
@@ -415,73 +558,99 @@ public class FlingableMonthView extends View {
             if (is_holding_longpress) {
             	invalidate();
             }
-
             
-            if (Math.abs(current_flinging_velocity) > 0) {
-            	
-            	long now = SystemClock.uptimeMillis();
-            	long fling_frame_millis_delta = now - last_frame_time_for_fling;
-            	last_frame_time_for_fling = now;
-
-            	// Update velocity
-            	float velocity_delta_magnitude = FLINGING_DECELERATION*fling_frame_millis_delta/1000;
-
-            	// Protect the velocity from increasing in the opposite direction after
-            	// crossing zero.
-            	velocity_delta_magnitude = Math.min(velocity_delta_magnitude, Math.abs(current_flinging_velocity));
-            	
-            	// If the velocity is positive, we decelerate it by adding a negative delta.
-            	// Otherwise, leave the delta as positive, which will bring a negative velocity
-            	// closer to zero.
-            	if (current_flinging_velocity > 0)
-            		velocity_delta_magnitude = -velocity_delta_magnitude;
-
-            	current_flinging_velocity += velocity_delta_magnitude;
-                
-            	
-            	if (current_flinging_velocity == 0) {
-
-            		this.dummy_calendar.setTime(getScrollOffsetDate());
-            		setCalendarToFirstDayOfMonth(this.dummy_calendar);
-            		setMonth(this.dummy_calendar);
-            		
-            	} else {
-    	            // Velocity is in units of pixels/second.
-    	        	float position_delta = current_flinging_velocity*fling_frame_millis_delta/1000;
-    	        	vertical_offset += position_delta;
-    	        	
-    	        	// TODO Use this for debugging
-//    	        	Log.d(TAG, "Velocity: " + this.current_flinging_velocity);
-    	
-    	
-    	        	if (scroll_callback != null)
-    	        		scroll_callback.updateDate(getScrollOffsetDate());
-    	        	
-            	
-    	        	invalidate();
-            	}
-            	
-            } else if (snap_back_animation != null) {
-            	
-            	long now = SystemClock.uptimeMillis();
-            	if (snap_back_animation.isFinished(now)) {
-            		vertical_offset = 0;
-            		snap_back_animation = null;
-            	} else {
-            		float fraction = snap_back_animation.getFraction(now);
-            		vertical_offset = (1 - fraction) * snap_back_start_offset;
-            	}
-            	
-            	invalidate();
-            }
+            if (Math.abs(this.current_flinging_velocity) > 0) {
+            	processFlingState();
+            } else if (this.is_snapping) {
+            	processSnapState();
+            }            	
             
-            if (month_text_fader != null) {
+            if (this.month_text_fader != null) {
                 long now = SystemClock.uptimeMillis();
-                if (month_text_fader.isFinished(now))
-                	month_text_fader = null;
+                if (this.month_text_fader.isFinished(now))
+                	this.month_text_fader = null;
     			
             	invalidate();
             }
+        }
+
+        // ========================================================================
+        void processSnapState() {
+
+        	long now = SystemClock.uptimeMillis();
+        	long snap_frame_millis_delta = now - this.last_frame_time_for_snap;
+        	this.last_frame_time_for_snap = now;
+
+        	// Update velocity
+        	float velocity_delta_magnitude = SNAPPING_ACCELERATION*snap_frame_millis_delta/1000;
+
+        	
+        	// The default velocity delta sign is positive, but 
+        	// We must accelerate in the direction of the snap target.
+        	// Therefore, if the snap target position is less than than
+        	// current position, the velocity should become more negative.
+        	float distance_remaining = this.snap_target_offset - vertical_offset;
+
+        	if (distance_remaining < 0)
+        		velocity_delta_magnitude = -velocity_delta_magnitude;
+
+        	this.current_snapping_velocity += velocity_delta_magnitude;
+            
+        	
+            // Velocity is in units of pixels/second.
+        	float position_delta = this.current_snapping_velocity*snap_frame_millis_delta/1000;
+        	
+        	if (Math.abs(position_delta) > Math.abs(distance_remaining)) {
+        		
+        		this.is_snapping = false;
+        		this.current_snapping_velocity = 0;
+
+        		setMonth(this.snap_target_month);
+        		
+        	} else {
+
+        		vertical_offset += position_delta;
+	        	invalidate();
+        	}
+        }
+
+        // ========================================================================
+        void processFlingState() {
+
+        	long now = SystemClock.uptimeMillis();
+        	long fling_frame_millis_delta = now - this.last_frame_time_for_fling;
+        	this.last_frame_time_for_fling = now;
+
+        	// Update velocity
+        	float velocity_delta_magnitude = FLINGING_DECELERATION*fling_frame_millis_delta/1000;
+
+        	// Protect the velocity from increasing in the opposite direction after
+        	// crossing zero.
+        	velocity_delta_magnitude = Math.min(velocity_delta_magnitude, Math.abs(this.current_flinging_velocity));
+        	
+        	// If the velocity is positive, we decelerate it by adding a negative delta.
+        	// Otherwise, leave the delta as positive, which will bring a negative velocity
+        	// closer to zero.
+        	if (this.current_flinging_velocity > 0)
+        		velocity_delta_magnitude = -velocity_delta_magnitude;
+
+        	this.current_flinging_velocity += velocity_delta_magnitude;
+
+        	if (Math.abs(this.current_flinging_velocity) < MINIMUM_SUSTAINED_FLINGING_VELOCITY) {
+        		
+        		beginSnappingBackAnimation(this.current_flinging_velocity);
+        		this.current_flinging_velocity = 0;
+
+        	} else {
+	            // Velocity is in units of pixels/second.
+	        	float position_delta = this.current_flinging_velocity*fling_frame_millis_delta/1000;
+	        	vertical_offset += position_delta;
+
+	        	if (scroll_callback != null)
+	        		scroll_callback.updateDate(getOffsetDateFromOffsetPixels());
+        	
+	        	invalidate();
+        	}
         }
         
         // ========================================================================
@@ -490,7 +659,7 @@ public class FlingableMonthView extends View {
     		// Set the scale to the widest month    	
         	float scale = getHeight() / this.max_month_width;
 
-        	String month_string = FULL_MONTH_FORMATTER.format(month_calendar.getTime());
+        	String month_string = FULL_MONTH_NAME_FORMATTER.format(active_month_calendar.getTime());
 
             long now = SystemClock.uptimeMillis();
             float fraction = 1;
@@ -506,7 +675,8 @@ public class FlingableMonthView extends View {
     		canvas.translate(getWidth(), 0);
     		canvas.rotate(-90);
     		canvas.scale(scale, scale);
-    		// XXX The month names look more stylish if we align
+    		
+    		// The month names look more stylish if we align
     		// the baseline with the edge of the screen, but this can cut
     		// off the capital "J"s and the "y"s.
 //    		canvas.translate(0, -month_bg_paint.getFontMetrics().descent);
@@ -518,13 +688,14 @@ public class FlingableMonthView extends View {
         // ========================================================================
         protected void drawDayEvents(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
             float usable_size = Math.min(daybox.width(), daybox.height());
+            
             drawEventCount(canvas, daybox, day, usable_size);
             
         	this.dummy_calendar.setTime(day.getDate());
         	
         	int daycal_month_idx = this.dummy_calendar.get(Calendar.MONTH);
-        	boolean month_active = month_calendar.get(Calendar.MONTH) == daycal_month_idx;
-            drawCornerBox(canvas, daybox, day, usable_size, month_active);
+        	boolean month_active = active_month_calendar.get(Calendar.MONTH) == daycal_month_idx;
+            drawCornerBox(canvas, day, month_active);
         }
         
         // ========================================================================
@@ -532,11 +703,7 @@ public class FlingableMonthView extends View {
 
         	this.dummy_calendar.setTime(day.getDate());
 
-//        	int daycal_month_idx = daycal.get(Calendar.MONTH);
-//        	boolean month_active = this.month_calendar.get(Calendar.MONTH) == daycal_month_idx;
-//        	boolean daycal_month_odd = daycal_month_idx % 2 != 0;
-        	
-        	int months_away = getMonthDifference(month_calendar, this.dummy_calendar);
+        	int months_away = getMonthDifference(active_month_calendar, this.dummy_calendar);
         	boolean month_active = months_away == 0;
         	boolean daycal_month_even = months_away % 2 == 0;
         	
@@ -587,8 +754,8 @@ public class FlingableMonthView extends View {
     		if (event_count > 0) {
 
     	        // Draw decorative circle
-    	        day_tile_paint.setColor(Color.CYAN);
-    	        day_tile_paint.setAlpha(0xff/2);
+    	        this.day_tile_paint.setColor(Color.CYAN);
+    	        this.day_tile_paint.setAlpha(0xff/2);
     			canvas.drawCircle(0, 0, usable_size/3, day_tile_paint);
     			
     			
@@ -608,7 +775,11 @@ public class FlingableMonthView extends View {
         }
         
         // ========================================================================
-        void drawCornerBox(Canvas canvas, RectF viewport, SimpleCalendarDay calendar_day, float usable_size, boolean month_active) {
+        void drawCornerBox(Canvas canvas, SimpleCalendarDay calendar_day, boolean month_active) {
+        	
+            float usable_size = Math.min(
+            		this.day_box_dimensions.x,
+            		this.day_box_dimensions.y);
         	
             float corner_box_side = usable_size/2f;
 
@@ -621,7 +792,6 @@ public class FlingableMonthView extends View {
     		this.dummy_calendar.setTime(calendar_day.getDate());
     		String text = Integer.toString( this.dummy_calendar.get(Calendar.DAY_OF_MONTH) );
 
-    		this.day_tile_paint.setTextSize(corner_box_side*0.8f);
     		float text_height = this.day_tile_paint_font_metrics.ascent + this.day_tile_paint_font_metrics.descent;
 
             int text_color = this.resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
@@ -639,6 +809,9 @@ public class FlingableMonthView extends View {
     	SimpleCalendarDay dummy_scd = new SimpleCalendarDay();
     	Calendar day_iterator_calendar = new GregorianCalendar();
         
+    	PointF day_box_dimensions = new PointF();
+    	
+    	
         // ========================================================================
         /** Implementation of the visitor pattern that iterates through
          * each of the days that are visible on screen.
@@ -654,8 +827,10 @@ public class FlingableMonthView extends View {
             float day_box_height = getDayBoxHeight();
             float height_per_week = day_box_height + this.vertical_spacing;
 
+            
+            
             // Reset calendar to beginning of first week
-        	this.day_iterator_calendar.setTime(month_calendar.getTime());
+        	this.day_iterator_calendar.setTime(active_month_calendar.getTime());
         	setMonthWeekBeginning(this.day_iterator_calendar);
 
         	// Reposition calendar according to the vertical scroll offset
@@ -720,7 +895,7 @@ public class FlingableMonthView extends View {
     	int usable_height = getHeight() - (getPaddingTop() + getPaddingBottom());
         int week_offset = (int) (this.spanned_weeks*(point.y - getPaddingTop() - this.vertical_offset) / usable_height);
         
-		Calendar offset_calendar_date = (Calendar) this.month_calendar.clone();
+		Calendar offset_calendar_date = (Calendar) this.active_month_calendar.clone();
     	setMonthWeekBeginning(offset_calendar_date);
 
 		offset_calendar_date.add(Calendar.DATE, DAYS_PER_WEEK*week_offset + weekday_index);
@@ -743,15 +918,16 @@ public class FlingableMonthView extends View {
 
     // ========================================================================
 	void moveMonth(boolean forward) {
-        this.month_calendar.add(Calendar.MONTH, forward ? 1 : -1);
-        setMonth(this.month_calendar);
+        this.active_month_calendar.add(Calendar.MONTH, forward ? 1 : -1);
+        setMonth(this.active_month_calendar);
 	}
 	
     // ========================================================================
-    private static final int SWIPE_MIN_DISTANCE = 75;
-    private static final int SWIPE_MAX_OFF_HORIZONTAL_PATH = 300;
-    private static final int SWIPE_MAX_OFF_VERTICAL_PATH = 300;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
+    private static final int FLING_MIN_DISTANCE = 75;
+    private static final int FLING_MAX_OFF_HORIZONTAL_PATH = 300;
+    private static final int FLING_MAX_OFF_VERTICAL_PATH = 300;
+    private static final int FLING_THRESHOLD_VELOCITY = 500;
+    
     class MonthGestureDetector extends SimpleOnGestureListener {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
@@ -759,20 +935,20 @@ public class FlingableMonthView extends View {
             try {
 
             	boolean horizontal_fling_possible = true;
-                if (Math.abs(e1.getY() - e2.getY()) > SWIPE_MAX_OFF_HORIZONTAL_PATH)
+                if (Math.abs(e1.getY() - e2.getY()) > FLING_MAX_OFF_HORIZONTAL_PATH)
                 	horizontal_fling_possible = false;
                 
             	boolean vertical_fling_possible = true;
-                if (Math.abs(e1.getX() - e2.getX()) > SWIPE_MAX_OFF_VERTICAL_PATH)
+                if (Math.abs(e1.getX() - e2.getX()) > FLING_MAX_OFF_VERTICAL_PATH)
                 	vertical_fling_possible = false;
-                
+
 
                 
                 if (horizontal_fling_possible) {
                 	float x_delta = e1.getX() - e2.getX();
-	                if(x_delta > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+	                if(x_delta > FLING_MIN_DISTANCE && Math.abs(velocityX) > FLING_THRESHOLD_VELOCITY) {
 	                	moveMonth(true);
-	                }  else if (-x_delta > SWIPE_MIN_DISTANCE && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+	                }  else if (-x_delta > FLING_MIN_DISTANCE && Math.abs(velocityX) > FLING_THRESHOLD_VELOCITY) {
 	                	moveMonth(false);
 	                }
                 } else if (vertical_fling_possible) {
@@ -780,18 +956,18 @@ public class FlingableMonthView extends View {
                 	Log.i(TAG, "Flung with vertical velocity: " + velocityY);
                 	
                 	float y_delta = e1.getY() - e2.getY();
-	                if(y_delta > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+	                if(y_delta > FLING_MIN_DISTANCE && Math.abs(velocityY) > FLING_THRESHOLD_VELOCITY) {
 	                	
 	                	Log.d(TAG, "Achieved vertical swipe DOWN");
-	                	current_flinging_velocity = velocityY;
-	                	last_frame_time_for_fling = SystemClock.uptimeMillis();
+	                	calendar_drawing.current_flinging_velocity = velocityY;
+	                	calendar_drawing.last_frame_time_for_fling = SystemClock.uptimeMillis();
 	                	invalidate();
 	                	
-	                }  else if (-y_delta > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+	                }  else if (-y_delta > FLING_MIN_DISTANCE && Math.abs(velocityY) > FLING_THRESHOLD_VELOCITY) {
 	                	
 	                	Log.d(TAG, "Achieved vertical swipe UP");
-	                	current_flinging_velocity = velocityY;
-	                	last_frame_time_for_fling = SystemClock.uptimeMillis();
+	                	calendar_drawing.current_flinging_velocity = velocityY;
+	                	calendar_drawing.last_frame_time_for_fling = SystemClock.uptimeMillis();
 	                	invalidate();
 	                }
                 }
@@ -823,7 +999,7 @@ public class FlingableMonthView extends View {
         	// Note: invalidate() is called below from within touchDay()
         	
         	// Stop a fling
-        	current_flinging_velocity = 0;
+        	calendar_drawing.current_flinging_velocity = 0;
         	
         	highlighted_day = getDayFromPoint(new PointF(e.getX(), e.getY()));
         	highlightDay(highlighted_day);
@@ -842,7 +1018,7 @@ public class FlingableMonthView extends View {
 				vertical_offset -= distanceY;
 
 	        	if (scroll_callback != null)
-	        		scroll_callback.updateDate(calendar_drawing.getScrollOffsetDate());
+	        		scroll_callback.updateDate(calendar_drawing.getOffsetDateFromOffsetPixels());
 	        	
 	        	invalidate();
 	        }
@@ -871,5 +1047,11 @@ public class FlingableMonthView extends View {
     public void executeDay(Date date) {
     	Log.d(TAG, "Chosen day: " + date);
     	this.day_click_callback.updateDate(date);
+    }
+    
+    // ==========================================================
+    @Override
+    protected void onSizeChanged (int w, int h, int oldw, int oldh) {
+    	this.calendar_drawing.reestablishCornerBoxDimensions();
     }
 }

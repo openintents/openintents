@@ -1,16 +1,11 @@
 TODO List:
 =============================================
 
-Improve smoothness of animation when "locking on" to
-a month after sufficient deceleration
-
 Implement Weeks view
 
 Make vertical fling easier?
 
+Use a binary (rather than linear) search to find the first
+event that should be shown within the visible window of days.
 
 
-BUGS:
-=============================================
-
-Broken event selection when using intent extras?
