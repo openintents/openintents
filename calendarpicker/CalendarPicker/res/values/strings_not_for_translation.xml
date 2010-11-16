@@ -11,9 +11,6 @@
 	<string-array name="about_authors"><!-- Add your name here if you helped out -->
 		<item>Karl Ostmo</item>
 		<item>Peli</item>
-        
-        <!-- The following item should always stay at the end -->
-        <item>The Android Open Source Project</item>
 	</string-array>
 
 	<string-array name="about_documenters"><!-- Add your name here if you helped out -->
