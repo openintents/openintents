@@ -144,8 +144,7 @@ public class MonthActivity extends Activity {
 		this.tiny_timeline.setOnDateUpdateListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-				timeline_date_toast.setText(FULL_MONTH_AND_YEAR_FORMATTER.format(date));
-				timeline_date_toast.show();
+				updateTransientDate(date);
 			}
 		});
 		this.tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
@@ -182,12 +181,16 @@ public class MonthActivity extends Activity {
 				}
 			}
         });
-        
-
 		this.month_view.setOnScrollListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
 				tiny_timeline.setDate(date);
+			}
+        });
+		this.month_view.setTransientListener(new OnDateUpdateListener() {
+			@Override
+			public void updateDate(Date date) {
+				updateTransientDate(date);
 			}
         });
 		this.month_view.setOnDayClickListener(new OnDateUpdateListener() {
@@ -221,7 +224,13 @@ public class MonthActivity extends Activity {
         this.tiny_timeline.setDate(current_month_calendar.getTime());
         this.month_view.setMonthAndEvents(current_month_calendar, events);
     }
-
+    
+    // ========================================================================
+    void updateTransientDate(Date date) {
+		timeline_date_toast.setText(FULL_MONTH_AND_YEAR_FORMATTER.format(date));
+		timeline_date_toast.show();
+    }
+    
     // ========================================================================
     @Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

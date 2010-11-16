@@ -106,7 +106,7 @@ public class FlingableMonthView extends View {
     
     // Callbacks
     MonthUpdateCallback month_update_callback = null;
-    OnDateUpdateListener day_click_callback, day_touch_callback, scroll_callback;
+    OnDateUpdateListener day_click_callback, day_touch_callback, scroll_callback, transient_callback;
 
 	// Longpress animation
     boolean is_holding_longpress = false;
@@ -205,6 +205,11 @@ public class FlingableMonthView extends View {
     	this.scroll_callback = callback;
     }
 
+    // ========================================================================
+    public void setTransientListener(OnDateUpdateListener callback) {
+    	this.transient_callback = callback;
+    }
+    
     // ========================================================================
     public void setOnDayTouchListener(OnDateUpdateListener callback) {
     	this.day_touch_callback = callback;
@@ -391,6 +396,37 @@ public class FlingableMonthView extends View {
 
         	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
     	}
+
+        // ========================================================================
+		// Identifies the closest snap_target
+    	Date dummy_earlier_first_of_month = new Date();
+    	Date dummy_earlier_week_beginning = new Date();
+    	Date dummy_later_first_of_month = new Date();
+    	Date dummy_later_week_beginning = new Date();
+    	Date getNearestMonthBeginningDate() {
+    		Date scroll_offset_date = getOffsetDateFromOffsetPixels();
+    		this.dummy_calendar.setTime(scroll_offset_date);
+    		
+    		setCalendarToFirstDayOfMonth(this.dummy_calendar);
+    		dummy_earlier_first_of_month.setTime(this.dummy_calendar.getTimeInMillis());
+    		setMonthWeekBeginning(this.dummy_calendar);
+    		dummy_earlier_week_beginning.setTime(this.dummy_calendar.getTimeInMillis());
+    		long backwards_millis_delta = scroll_offset_date.getTime() - dummy_earlier_week_beginning.getTime();
+
+    		this.dummy_calendar.setTime(dummy_earlier_first_of_month);
+    		this.dummy_calendar.add(Calendar.MONTH, 1);
+    		dummy_later_first_of_month.setTime(this.dummy_calendar.getTimeInMillis());
+    		setMonthWeekBeginning(this.dummy_calendar);
+    		dummy_later_week_beginning.setTime(this.dummy_calendar.getTimeInMillis());
+    		long forwards_millis_delta = dummy_later_week_beginning.getTime() - scroll_offset_date.getTime();
+    		
+    		
+    		if (backwards_millis_delta < forwards_millis_delta) {
+        		return dummy_earlier_first_of_month;
+    		} else {
+        		return dummy_later_first_of_month;
+    		}
+    	}
     	
         // ========================================================================
     	void beginSnappingBackAnimation(float initial_velocity) {
@@ -513,7 +549,6 @@ public class FlingableMonthView extends View {
 	            this.canvas.restore();
 			}
         };
-        
         
         // ========================================================================
         void reestablishCornerBoxDimensions() {
@@ -648,7 +683,11 @@ public class FlingableMonthView extends View {
 
 	        	if (scroll_callback != null)
 	        		scroll_callback.updateDate(getOffsetDateFromOffsetPixels());
-        	
+
+	        	if (transient_callback != null)
+	        		transient_callback.updateDate(getNearestMonthBeginningDate());
+	        		
+	        	
 	        	invalidate();
         	}
         }
@@ -1006,7 +1045,7 @@ public class FlingableMonthView extends View {
 
         	return true;
         }
-        
+
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
@@ -1014,11 +1053,15 @@ public class FlingableMonthView extends View {
         	
 			float dy = e2.getY() - e1.getY();
 			if (Math.abs(dy) >= VERTICAL_SCROLL_TOLERANCE) {
-//	        	vertical_offset = dy;
+
 				vertical_offset -= distanceY;
 
 	        	if (scroll_callback != null)
 	        		scroll_callback.updateDate(calendar_drawing.getOffsetDateFromOffsetPixels());
+
+
+	        	if (transient_callback != null)
+	        		transient_callback.updateDate(calendar_drawing.getNearestMonthBeginningDate());
 	        	
 	        	invalidate();
 	        }
