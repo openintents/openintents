@@ -112,8 +112,8 @@ public class MonthActivity extends Activity {
         if (intent_data != null) {
         	// We have been passed a cursor to the data via a content provider.
 			events = getEventsFromUri(intent_data, getIntent(), this);
-        } else if (getIntent().hasExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS)
-        		&& getIntent().hasExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS)) {
+        } else if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS)
+        		&& getIntent().hasExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS)) {
         	Log.d(TAG, "No URI was passed, checking for Intent extras instead...");
 			events = getEventsFromIntent(getIntent());
 			CachedEventDatabase database = new CachedEventDatabase(this);
@@ -301,8 +301,8 @@ public class MonthActivity extends Activity {
 		Intent i = new Intent();
 		
 		if (date != null) {
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, date.getTime());
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
 		}
 		
 		setResult(Activity.RESULT_OK, i);
@@ -327,8 +327,8 @@ public class MonthActivity extends Activity {
 
 		i.setData(data);
 		if (date != null) {
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, date.getTime());
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, date.getTime());
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
 		}
 		startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
     }
@@ -357,11 +357,11 @@ public class MonthActivity extends Activity {
      	Log.d(TAG, "We have been passed the data directly.");
 
      	// Mandatory fields
-    	long[] event_ids = intent.getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS);
-    	long[] event_timestamps = intent.getLongArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS);
+    	long[] event_ids = intent.getLongArrayExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS);
+    	long[] event_timestamps = intent.getLongArrayExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS);
     	
     	// Optional fields
-    	String[] event_titles = intent.getStringArrayExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TITLES);
+    	String[] event_titles = intent.getStringArrayExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES);
 
     	if (event_ids != null && event_timestamps != null) {
 	    	for (int i=0; i<event_timestamps.length; i++) {
@@ -388,22 +388,22 @@ public class MonthActivity extends Activity {
 
     	Log.d(TAG, "Querying content provider for: " + uri);
     	String selection = null;
-    	if (intent.hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID)) {
-        	long cal_id = intent.getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1);
-    		selection = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	if (intent.hasExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID)) {
+        	long cal_id = intent.getLongExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1);
+    		selection = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
     	}
 
     	Cursor cursor = activity.managedQuery(uri,
-			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.COLUMN_EVENT_TITLE},
+			new String[] {BaseColumns._ID, IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE},
 			selection,
 			null,
-			IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP + " ASC");
+			IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP + " ASC");
     	
     	if (cursor != null && cursor.moveToFirst()) {
 
     		int id_column = cursor.getColumnIndex(BaseColumns._ID);
-    		int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
-    		int title_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE);
+    		int timestamp_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP);
+    		int title_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE);
 
     		do {
     			long timestamp = cursor.getLong(timestamp_column);
@@ -470,10 +470,10 @@ public class MonthActivity extends Activity {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
         	
-        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID))
+        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
         		intent.putExtra(
-        				IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID,
-        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1));
+        				IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
+        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
         	
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
@@ -528,14 +528,14 @@ public class MonthActivity extends Activity {
    		case REQUEST_CODE_EVENT_SELECTION:
    		{
    			long id = data.getLongExtra(BaseColumns._ID, INVALID_EVENT_ID);
-			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, INVALID_DATE);
+			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, INVALID_DATE);
 
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
 			
 			if (event_epoch != INVALID_DATE) {
-				i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));
-				i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, event_epoch);
+				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));
+				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
 			}
 			
 	        setResult(Activity.RESULT_OK, i);

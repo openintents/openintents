@@ -142,9 +142,9 @@ public class Demo extends Activity implements View.OnClickListener {
 				event_titles[i] = event.title;
 			}
 
-			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_IDS, event_ids);
-			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TIMESTAMPS, event_times);
-			intent.putExtra(IntentConstants.CalendarDatePicker.EXTRA_EVENT_TITLES, event_titles);
+			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS, event_ids);
+			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS, event_times);
+			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES, event_titles);
 
 			downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 
@@ -250,7 +250,7 @@ public class Demo extends Activity implements View.OnClickListener {
 						.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
-					intent.putExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, selected_google_calendar_id);
+					intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_CALENDAR_ID, selected_google_calendar_id);
 					downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 				}
 			})
@@ -297,8 +297,8 @@ public class Demo extends Activity implements View.OnClickListener {
 		switch (requestCode) {
 		case REQUEST_CODE_DATE_SELECTION:
 		{
-			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME);
-			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, 0);
+			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME);
+			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, 0);
 
 			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
 			break;

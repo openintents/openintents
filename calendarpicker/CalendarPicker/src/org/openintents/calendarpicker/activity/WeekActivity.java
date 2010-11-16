@@ -167,7 +167,8 @@ public class WeekActivity extends Activity {
 					tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.primary_text_dark));
 				}
 				
-				
+				// FIXME
+				/*
 				Uri data = getIntent().getData();
 				if (data != null) {
 
@@ -192,6 +193,7 @@ public class WeekActivity extends Activity {
 					setResult(Activity.RESULT_OK, i);
 					finish();
 				}
+				*/
 			}
         });
 
@@ -261,10 +263,10 @@ public class WeekActivity extends Activity {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
         	
-        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID))
+        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
         		intent.putExtra(
-        				IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID,
-        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID, -1));
+        				IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
+        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
         	
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
@@ -287,14 +289,14 @@ public class WeekActivity extends Activity {
    		case REQUEST_CODE_EVENT_SELECTION:
    		{
    			long id = data.getLongExtra(BaseColumns._ID, INVALID_EVENT_ID);
-			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, INVALID_DATE);
+			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, INVALID_DATE);
 
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
 			
 			if (event_epoch != INVALID_DATE) {
-				i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, sdf.format(new Date(event_epoch)));
-				i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, event_epoch);
+				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, sdf.format(new Date(event_epoch)));
+				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
 			}
 			
 	        setResult(Activity.RESULT_OK, i);

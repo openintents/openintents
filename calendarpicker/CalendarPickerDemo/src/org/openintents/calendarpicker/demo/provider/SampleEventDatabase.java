@@ -43,12 +43,12 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
     
 
     public static final String KEY_EVENT_ID = BaseColumns._ID;
-    public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
-    public static final String KEY_CALENDAR_ID = IntentConstants.CalendarEventPicker.COLUMN_EVENT_CALENDAR_ID;
-    public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
+    public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
+    public static final String KEY_CALENDAR_ID = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID;
+    public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP;
     
 
-    public static final String KEY_CALENDAR_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
+    public static final String KEY_CALENDAR_TITLE = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
     
     
     final static String SQL_CREATE_EVENTS_TABLE =

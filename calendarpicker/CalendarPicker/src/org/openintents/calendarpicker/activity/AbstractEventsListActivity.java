@@ -51,8 +51,8 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 	static final String TAG = "AbstractEventsListActivity"; 
 
 	public static final String KEY_ROWID = BaseColumns._ID;
-	public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP;
-	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.COLUMN_EVENT_TITLE;
+	public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP;
+	public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
 
 	// ========================================================================
     abstract Cursor requery();
@@ -104,10 +104,10 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
 
-			int epoch_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.COLUMN_EVENT_TIMESTAMP);
+			int epoch_column = cursor.getColumnIndex(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP);
 			long event_epoch = cursor.getLong(epoch_column);
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_EPOCH, event_epoch);
-			i.putExtra(IntentConstants.CalendarDatePicker.INTENT_EXTRA_DATETIME, MonthActivity.HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
+			i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, MonthActivity.HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));
 			
 	        setResult(Activity.RESULT_OK, i);
 			finish();
