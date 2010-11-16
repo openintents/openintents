@@ -4,6 +4,8 @@
     	  android:icon="@drawable/ic_menu_list"
           android:title="All Events"
           android:alphabeticShortcut="a" />
+          
+          
 
     <item android:id="@+id/menu_year_view"
     	android:visible="false"
@@ -26,5 +28,10 @@
           android:title="One Day"
           android:titleCondensed="Day"
           android:alphabeticShortcut="d" />
+
+    <item android:id="@+id/menu_about"
+    	  android:icon="@android:drawable/ic_menu_info_details"
+          android:title="About"
+          android:alphabeticShortcut="a" />
 
 </menu>

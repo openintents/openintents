@@ -35,8 +35,10 @@ import org.openintents.calendarpicker.view.OnDateUpdateListener;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
 import org.openintents.calendarpicker.view.FlingableMonthView.MonthContextMenuInfo;
 import org.openintents.calendarpicker.view.FlingableMonthView.MonthUpdateCallback;
+import org.openintents.distribution.AboutDialog;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -71,6 +73,8 @@ public class MonthActivity extends Activity {
 	
     public static final long INVALID_EVENT_ID = -1;
     public static final long INVALID_DATE = 0;
+    
+    public static final int DIALOG_ABOUT = 1;
     
     
 
@@ -435,6 +439,11 @@ public class MonthActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.menu_about:
+        {
+        	showAboutBox();
+            return true;
+        }
         case R.id.menu_year_view:
         {
         	startActivityForResult(new Intent(this, YearsActivity.class), REQUEST_CODE_MONTH_YEAR_SELECTION);
@@ -537,4 +546,20 @@ public class MonthActivity extends Activity {
         }
   	   	}
     }
+
+    // ========================================================================
+	@Override
+	protected Dialog onCreateDialog(int id) {
+
+		switch (id) {
+		case DIALOG_ABOUT:
+			return new AboutDialog(this);
+		}
+		return null;
+	}
+
+    // ========================================================================
+	private void showAboutBox() {
+		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
+	}
 }

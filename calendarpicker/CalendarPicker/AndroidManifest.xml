@@ -11,7 +11,7 @@
 		/>
 		    
         <activity android:name="org.openintents.calendarpicker.activity.MonthActivity"
-        	android:label="Calendar Picker"
+        	android:label="@string/calendar_picker"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         
             <intent-filter>
