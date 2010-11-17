@@ -38,7 +38,7 @@ public class Market {
 
 	public final static String PACKAGE_NAME_CALENDAR_PICKER = "org.openintents.colorpicker";
 	public final static String CALENDAR_PICKER_WEBSITE = "http://www.openintents.org/en/calendarpicker";
-	public final static Uri APK_DOWNLOAD_URI_COLOR_PICKER = Uri.parse(CALENDAR_PICKER_WEBSITE);
+	public final static Uri APK_DOWNLOAD_URI_CALENDAR_PICKER = Uri.parse(CALENDAR_PICKER_WEBSITE);
 
 
 
