@@ -71,10 +71,8 @@
 		<activity android:name="org.openintents.calendarpicker.activity.WeekActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
 
-		<activity android:name="org.openintents.calendarpicker.activity.YearsActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-
-
+		<activity android:name="org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences"/>            
+            
 
 
     </application>

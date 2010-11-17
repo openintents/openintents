@@ -20,11 +20,13 @@ package org.openintents.calendarpicker.view;
 import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences;
 import org.openintents.calendarpicker.container.SimpleCalendarDay;
 import org.openintents.calendarpicker.container.SimpleEvent;
 
@@ -40,6 +42,7 @@ import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -66,8 +69,8 @@ import android.view.GestureDetector.SimpleOnGestureListener;
  * 
  * The "snapping" phase should act under different physics than the
  * "flinging" phase, to avoid oscillations around the
- * snap target.  A separate variable for "snapping" velocity may
- * take on the value of the "flinging" velocity when the deceleration
+ * snap target.  A separate variable for "snapping" velocity
+ * takes on the value of the "flinging" velocity when the deceleration
  * threshold is reached.
  * 
  * @author kostmo
@@ -115,6 +118,8 @@ public class FlingableMonthView extends View {
 
     CalendarRenderer calendar_drawing;
 
+    
+    
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
@@ -328,12 +333,18 @@ public class FlingableMonthView extends View {
     }
 
     // ========================================================================
+    public void setVisualizeQuantities(boolean should_visualize) {
+    	this.calendar_drawing.visualize_quantities = should_visualize;
+    }
+    
+    // ========================================================================
     /** Handles all view rendering responsibilities, including render-specific data */
     class CalendarRenderer {
     	
-
     	static final String MONTH_WATERMARK_FONT_PATH = "BerlinSmallCaps.ttf";
     	
+    	// TODO Use me
+    	boolean visualize_quantities = false;
 
     	TextPaint day_tile_paint;
     	TextPaint month_watermark_text_paint;
@@ -378,11 +389,52 @@ public class FlingableMonthView extends View {
     	Calendar dummy_calendar = new GregorianCalendar();
     	Date dummy_date = new Date();
 
+    	int color_month_watermark_text,
+    	color_calendar_date_background_active_selected,
+    	color_calendar_date_background_passive_odd_selected,
+    	color_calendar_date_background_passive_even_selected,
+    	color_calendar_date_background_active,
+    	color_calendar_date_background_passive_odd,
+    	color_calendar_date_background_passive_even,
+    	color_calendar_date_background_longpress,
+    	color_event_count_background,
+    	color_event_count_number,
+    	color_cornerbox_background_color,
+    	color_cornerbox_date_number,
+    	color_cornerbox_date_number_passive;
+
+        // ========================================================================
+    	/** We initialize the colors once here, as opposed to looking them up from
+    	 * the Resources object every frame (or worse, once per calendar day).
+    	 */
+    	void initColors(Resources resources) {
+    		this.color_month_watermark_text = resources.getColor(R.color.month_watermark_text);
+    		this.color_calendar_date_background_active_selected = resources.getColor(R.color.calendar_date_background_active_selected);
+    		this.color_calendar_date_background_passive_odd_selected = resources.getColor(R.color.calendar_date_background_passive_odd_selected);
+    		this.color_calendar_date_background_passive_even_selected = resources.getColor(R.color.calendar_date_background_passive_even_selected);
+    		this.color_calendar_date_background_active = resources.getColor(R.color.calendar_date_background_active);
+    		this.color_calendar_date_background_passive_odd = resources.getColor(R.color.calendar_date_background_passive_odd);
+    		this.color_calendar_date_background_passive_even = resources.getColor(R.color.calendar_date_background_passive_even);
+    		this.color_calendar_date_background_longpress = resources.getColor(R.color.calendar_date_background_longpress);
+    		this.color_event_count_background = resources.getColor(R.color.event_count_background);
+    		this.color_event_count_number = resources.getColor(R.color.event_count_number);
+    		this.color_cornerbox_background_color = resources.getColor(R.color.cornerbox_background_color);
+    		this.color_cornerbox_date_number = resources.getColor(R.color.cornerbox_date_number);
+    		this.color_cornerbox_date_number_passive = resources.getColor(R.color.cornerbox_date_number_passive);
+    	}
+    	
+
+        boolean transparency_enabled = CalendarDisplayPreferences.DEFAULT_ENABLE_TRANSPARENCY;
+
         // ========================================================================
     	CalendarRenderer(Context context) {
     		
+        	this.transparency_enabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+        			CalendarDisplayPreferences.PREFKEY_ENABLE_TRANSPARENCY, CalendarDisplayPreferences.DEFAULT_ENABLE_TRANSPARENCY);
+        	
     		this.resources = context.getResources();
-    		
+    		initColors(this.resources);
+
         	this.day_tile_paint = new TextPaint();
         	this.day_tile_paint.setAntiAlias(true);
         	this.day_tile_paint.setColor(Color.WHITE);
@@ -391,7 +443,7 @@ public class FlingableMonthView extends View {
     		Typeface face = Typeface.createFromAsset(context.getAssets(), MONTH_WATERMARK_FONT_PATH);
     		this.month_watermark_text_paint.setTypeface(face);
             this.month_watermark_text_paint.setAntiAlias(true);
-    		this.month_watermark_text_paint.setColor(this.resources.getColor(R.color.month_watermark_text));
+    		this.month_watermark_text_paint.setColor(color_month_watermark_text);
     		this.month_watermark_text_paint.setTextAlign(Align.RIGHT);
 
         	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
@@ -461,8 +513,7 @@ public class FlingableMonthView extends View {
         		this.snap_target_day.setTime(later_week_beginning);
     		}
     		
-    		// XXX
-    		Log.d(TAG, "Target snap month: " + FULL_MONTH_NAME_FORMATTER.format(this.snap_target_month.getTime()));    		
+//    		Log.d(TAG, "Target snap month: " + FULL_MONTH_NAME_FORMATTER.format(this.snap_target_month.getTime()));    		
 
     		this.snap_target_offset = getOffsetPixelsForDate(
     				this.snap_target_day.getTime());
@@ -705,8 +756,7 @@ public class FlingableMonthView extends View {
             if (month_text_fader != null)
             	fraction = month_text_fader.getFraction(now);
 
-        	int target_color = this.resources.getColor(R.color.month_watermark_text);
-        	int text_color = interpolateColor(Color.WHITE, target_color, fraction);
+        	int text_color = interpolateColor(Color.WHITE, color_month_watermark_text, fraction);
         	this.month_watermark_text_paint.setColor(text_color);
         	
         	
@@ -747,17 +797,14 @@ public class FlingableMonthView extends View {
         	boolean daycal_month_even = months_away % 2 == 0;
         	
             boolean day_highlighted = day.getDate().equals(highlighted_day);
-            
+
             int background_color = day_highlighted ?
-            		this.resources.getColor(
-            				month_active ?
-            						R.color.calendar_date_background_active_selected
-            						: (daycal_month_even ? R.color.calendar_date_background_passive_odd_selected : R.color.calendar_date_background_passive_even_selected))
-            		: this.resources.getColor(
-            				month_active ?
-            						R.color.calendar_date_background_active
-            						: (daycal_month_even ? R.color.calendar_date_background_passive_odd : R.color.calendar_date_background_passive_even)				
-            		);
+    				month_active ?
+    						color_calendar_date_background_active_selected
+       						: (daycal_month_even ? color_calendar_date_background_passive_odd_selected : color_calendar_date_background_passive_even_selected)
+            		: month_active ?
+          					color_calendar_date_background_active
+            				: (daycal_month_even ? color_calendar_date_background_passive_odd : color_calendar_date_background_passive_even);
             				
             if (is_holding_longpress && day.getDate().equals(highlighted_day)) {
 
@@ -770,9 +817,8 @@ public class FlingableMonthView extends View {
     	        	float alpha = (now - (longpress_start_time + tap_timeout)) / (float) ViewConfiguration.getLongPressTimeout();
     	
     	        	alpha = Math.min(1, alpha);
-    	        	
-    	        	int target_color = resources.getColor(R.color.calendar_date_background_longpress);
-    	        	background_color = interpolateColor(background_color, target_color, alpha);
+
+    	        	background_color = interpolateColor(background_color, color_calendar_date_background_longpress, alpha);
             	}
             }
             				
@@ -793,8 +839,11 @@ public class FlingableMonthView extends View {
     		if (event_count > 0) {
 
     	        // Draw decorative circle
-    	        this.day_tile_paint.setColor(Color.CYAN);
-    	        this.day_tile_paint.setAlpha(0xff/2);
+    			
+    	        this.day_tile_paint.setColor(color_event_count_background);
+                if (transparency_enabled)
+                	this.day_tile_paint.setAlpha(0xff/2);
+
     			canvas.drawCircle(0, 0, usable_size/3, day_tile_paint);
     			
     			
@@ -803,8 +852,7 @@ public class FlingableMonthView extends View {
     	        this.day_tile_paint.setTextSize(corner_box_side*0.8f);
     			float text_height = this.day_tile_paint_font_metrics.ascent + this.day_tile_paint_font_metrics.descent;
     	
-    	        int event_count_number = this.resources.getColor(R.color.event_count_number);
-    	        this.day_tile_paint.setColor(event_count_number);
+    	        this.day_tile_paint.setColor(color_event_count_number);
     			String text = Integer.toString( event_count );
     			this.day_tile_paint.setTextAlign(Align.CENTER);
     			canvas.drawText(text, 0, -text_height/2, this.day_tile_paint);
@@ -822,8 +870,11 @@ public class FlingableMonthView extends View {
         	
             float corner_box_side = usable_size/2f;
 
-            int cornerbox_color = this.resources.getColor(R.color.cornerbox_color);
-            this.day_tile_paint.setColor(cornerbox_color);
+
+            this.day_tile_paint.setColor(color_cornerbox_background_color);
+            if (transparency_enabled)
+            	this.day_tile_paint.setAlpha(0xFF/2);
+            
             canvas.drawRect(0, 0, corner_box_side, corner_box_side, this.day_tile_paint);
             canvas.save();
             canvas.translate(corner_box_side/2f, corner_box_side/2f);
@@ -833,7 +884,7 @@ public class FlingableMonthView extends View {
 
     		float text_height = this.day_tile_paint_font_metrics.ascent + this.day_tile_paint_font_metrics.descent;
 
-            int text_color = this.resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
+            int text_color = month_active ? color_cornerbox_date_number : color_cornerbox_date_number_passive;
             this.day_tile_paint.setColor(text_color);
             
             this.day_tile_paint.setTextAlign(Align.CENTER);
@@ -842,7 +893,6 @@ public class FlingableMonthView extends View {
     		canvas.restore();
         }
 
-
         // ========================================================================
         RectF dummy_rect = new RectF();
     	SimpleCalendarDay dummy_scd = new SimpleCalendarDay();
@@ -850,11 +900,11 @@ public class FlingableMonthView extends View {
         
     	PointF day_box_dimensions = new PointF();
     	
-    	
         // ========================================================================
         /** Implementation of the visitor pattern that iterates through
          * each of the days that are visible on screen.
          */
+    	SimpleEvent dummy_simple_event = new SimpleEvent(-1, 0, null);
         void visitDayViewports(ViewportVisitor visitor) {
         	
             // Calculate horizontal dimensions
@@ -877,10 +927,49 @@ public class FlingableMonthView extends View {
         	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, weeks_offset*DAYS_PER_WEEK);
 
     		// Skip all events before the given calendar date
+
             int event_idx=0;
-            while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) event_idx++;
+        	// XXX This is the naive, O(N) approach.
+//			while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) event_idx++;
+//			int backup_event_idx = event_idx;
 
+            // The binary search will avoid iterating through many events.
+            this.dummy_simple_event.timestamp.setTime( this.day_iterator_calendar.getTimeInMillis() );
+            int search_index = Collections.binarySearch(sorted_events, this.dummy_simple_event);
+            
+            // If positive, the binary search index is guaranteed to be
+            // a valid index in the list.
+            if (search_index >= 0) {
+                // If the binary search index is non-negative, that means at least one of
+            	// the event dates was exactly equal to our first visible calendar date
+            	// (that is, exactly midnight).  Since binary search makes no guarantee
+            	// which one of multiple equal values will be found, we iterate backwards
+            	// in the list until we get a non-equal value.
 
+            	Date matching_date = sorted_events.get(search_index).timestamp;
+            	do {
+            		event_idx = search_index;
+            		search_index--;
+
+            	} while (search_index >= 0 && matching_date.equals(sorted_events.get(search_index).timestamp));
+            	
+            } else {
+                // If the binary search index is negative, we have a formula
+            	// for the "insertion point":
+            	// search_index = (-(insertion point) - 1). The insertion point is
+            	// defined as the point at which the key would be inserted into the
+            	// list: the index of the first element greater than the key, or
+            	// list.size(), if all elements in the list are less than the specified key.
+
+            	// Therefore:
+            	event_idx = Math.abs(search_index + 1);
+            }
+            
+//			Log.d(TAG, "Binary search starting point: " + event_idx + "; Actual starting point: " + backup_event_idx);
+//			event_idx = backup_event_idx;
+            
+            
+            
             // The "<=" as opposed to the typical "<" allows the entire screen to be
             // covered while scrolling.
             for (int i=0; i <= spanned_weeks; i++) {
@@ -898,6 +987,7 @@ public class FlingableMonthView extends View {
                     // Consume all events up until the next day
                     while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) {
                     	this.dummy_scd.incrementEventCount();
+                    	this.dummy_scd.addAggregateQuantity(sorted_events.get(event_idx).quantity);
 //                    	child.day_events.add(this.sorted_events.get(event_idx));
                     	event_idx++;
                     }

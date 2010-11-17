@@ -16,7 +16,7 @@
 
 package org.openintents.calendarpicker.demo.provider;
 
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -50,7 +50,7 @@ public class EventContentProvider extends ContentProvider {
 
    @Override
    public String getType(Uri uri) {
-	   return IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
+	   return CalendarPickerConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
    }
 
    @Override

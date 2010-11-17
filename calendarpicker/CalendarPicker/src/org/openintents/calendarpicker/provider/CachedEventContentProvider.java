@@ -16,7 +16,7 @@
 
 package org.openintents.calendarpicker.provider;
 
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
@@ -51,7 +51,7 @@ public class CachedEventContentProvider extends ContentProvider {
    @Override
    public String getType(Uri uri) {
 	   Log.i(TAG, "Queried type using: " + uri);
-	   return IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
+	   return CalendarPickerConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT;
    }
 
    @Override

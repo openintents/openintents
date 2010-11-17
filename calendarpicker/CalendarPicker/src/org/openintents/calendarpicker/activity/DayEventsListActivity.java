@@ -20,7 +20,7 @@ import java.text.DateFormatSymbols;
 import java.util.Date;
 
 import org.openintents.calendarpicker.R;
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.view.FlingableMonthView;
 
 import android.database.Cursor;
@@ -51,7 +51,7 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
         Uri intent_data = getIntent().getData();
     	Log.d(TAG, "Querying content provider for: " + intent_data);
     	
-        Date d = new Date(getIntent().getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, 0));
+        Date d = new Date(getIntent().getLongExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, 0));
         
 
         Log.e(TAG, "Received date: " + d.getDate());
@@ -61,9 +61,9 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
 		
         
     	String selection = null;
-    	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID)) {
-        	long cal_id = getIntent().getLongExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1);
-    		selection = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID)) {
+        	long cal_id = getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1);
+    		selection = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
     	}
 
 		Cursor cursor = managedQuery(intent_data,

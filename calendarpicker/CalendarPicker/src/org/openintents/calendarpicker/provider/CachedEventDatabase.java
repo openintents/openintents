@@ -19,7 +19,7 @@ package org.openintents.calendarpicker.provider;
 import java.util.List;
 
 import org.openintents.calendarpicker.container.SimpleEvent;
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -40,12 +40,12 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
     
 
     public static final String KEY_EVENT_ID = BaseColumns._ID;
-    public static final String KEY_EVENT_TITLE = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
-    public static final String KEY_CALENDAR_ID = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID;
-    public static final String KEY_EVENT_TIMESTAMP = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP;
+    public static final String KEY_EVENT_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
+    public static final String KEY_CALENDAR_ID = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID;
+    public static final String KEY_EVENT_TIMESTAMP = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP;
     
 
-    public static final String KEY_CALENDAR_TITLE = IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
+    public static final String KEY_CALENDAR_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
 
     final static String SQL_CREATE_CALENDARS_TABLE =
         "create table " + TABLE_CALENDARS + " (" 

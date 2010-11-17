@@ -21,6 +21,7 @@ import java.util.Date;
 public class SimpleEvent implements Comparable<SimpleEvent> {
 
 	public long id;
+	public float quantity;
 	public Date timestamp;
 	public String title;
 
@@ -32,6 +33,11 @@ public class SimpleEvent implements Comparable<SimpleEvent> {
 		this.id = id;
 		this.timestamp = timestamp;
 		this.title = title;
+	}
+	
+	// TODO Incorporate in constructor
+	public void setQuantity(float quantity) {
+		this.quantity = quantity;
 	}
 	
 	public int compareTo(SimpleEvent another) {

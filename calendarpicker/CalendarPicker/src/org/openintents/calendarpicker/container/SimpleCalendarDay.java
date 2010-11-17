@@ -20,12 +20,14 @@ import java.util.Date;
 
 public class SimpleCalendarDay {
 
+	private float aggregate_quantity;
 	private int event_count;
 	private Date date;
 
 	public void reset(Date date) {
 		this.date = date;
 		this.event_count = 0;
+		this.aggregate_quantity = 0;
 	}
 
 	public Date getDate() {
@@ -34,6 +36,14 @@ public class SimpleCalendarDay {
 
 	public void incrementEventCount() {
 		this.event_count++;
+	}
+	
+	public void addAggregateQuantity(float quantity) {
+		this.aggregate_quantity += quantity;
+	}
+	
+	public float getAggregateQuantity() {
+		return this.aggregate_quantity;
 	}
 	
 	public int getEventCount() {

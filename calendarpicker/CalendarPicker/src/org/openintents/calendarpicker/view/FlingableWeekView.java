@@ -506,7 +506,6 @@ public class FlingableWeekView extends View {
         
         float usable_size = Math.min(daybox.width(), daybox.height());
         drawEventCount(canvas, daybox, day, usable_size);
-        drawCornerBox(canvas, daybox, day, usable_size, month_active);
     }
 
     // ========================================================================
@@ -537,33 +536,6 @@ public class FlingableWeekView extends View {
 	    	month_shapes_paint.setTextAlign(Align.CENTER);
 			canvas.drawText(text, 0, -text_height/2, month_shapes_paint);
 		}
-		
-		canvas.restore();
-    }
-    
-    // ========================================================================
-    void drawCornerBox(Canvas canvas, RectF viewport, SimpleCalendarDay calendar_day, float usable_size, boolean month_active) {
-    	
-        float corner_box_side = usable_size/2f;
-
-        int cornerbox_color = resources.getColor(R.color.cornerbox_color);
-        month_shapes_paint.setColor(cornerbox_color);
-        canvas.drawRect(0, 0, corner_box_side, corner_box_side, month_shapes_paint);
-        canvas.save();
-        canvas.translate(corner_box_side/2f, corner_box_side/2f);
-        
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(calendar_day.getDate());
-		String text = Integer.toString( cal.get(Calendar.DAY_OF_MONTH) );
-
-		month_shapes_paint.setTextSize(corner_box_side*0.8f);
-		float text_height = month_shapes_paint.getFontMetrics().ascent + month_shapes_paint.getFontMetrics().descent;
-
-        int text_color = resources.getColor(month_active ? R.color.calendar_date_number : R.color.calendar_date_number_passive);
-        month_shapes_paint.setColor(text_color);
-        
-    	month_shapes_paint.setTextAlign(Align.CENTER);
-		canvas.drawText(text, 0, -text_height/2, month_shapes_paint);
 		
 		canvas.restore();
     }

@@ -30,12 +30,6 @@ import android.widget.TextView;
 
 public class CalendarUtils {
 
-    public static class ViewHolderCalendarDay {
-    	
-    	public TextView title, datum;
-    	public ImageView thumb;
-    }
-    
     public static int generate_days(Calendar cal, List<CalendarDay> day_list, List<SimpleEvent> events) {
 
     	final int active_month = cal.get(GregorianCalendar.MONTH);

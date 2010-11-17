@@ -22,7 +22,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.demo.provider.EventContentProvider;
 import org.openintents.calendarpicker.demo.provider.SampleEventDatabase;
 
@@ -104,7 +104,7 @@ public class Demo extends Activity implements View.OnClickListener {
 		case R.id.button_pick_date_no_events:
 		{
 			Intent i = new Intent(Intent.ACTION_PICK);
-			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
+			i.setType(CalendarPickerConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
 			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
 			break;
 		}
@@ -128,7 +128,7 @@ public class Demo extends Activity implements View.OnClickListener {
 		case R.id.button_pick_event_intent_extras:
 		{
 			Intent intent = new Intent(Intent.ACTION_PICK);
-			intent.setType(IntentConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
+			intent.setType(CalendarPickerConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
 
 			List<EventWrapper> generated_events = generateRandomEvents(DEFAULT_RANDOM_EVENTS, new GregorianCalendar());
 			int event_count = generated_events.size();
@@ -142,9 +142,9 @@ public class Demo extends Activity implements View.OnClickListener {
 				event_titles[i] = event.title;
 			}
 
-			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS, event_ids);
-			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS, event_times);
-			intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES, event_titles);
+			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS, event_ids);
+			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS, event_times);
+			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES, event_titles);
 
 			downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 
@@ -170,7 +170,7 @@ public class Demo extends Activity implements View.OnClickListener {
 
 	// ========================================================================
 	void downloadLaunchCheck(Intent intent, int request_code) {
-		if (Market.isIntentAvailable(this, intent))
+		if (CalendarPickerConstants.DownloadInfo.isIntentAvailable(this, intent))
 			startActivityForResult(intent, request_code);
 		else
 			showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
@@ -183,8 +183,8 @@ public class Demo extends Activity implements View.OnClickListener {
 		switch (id) {
 		case DIALOG_CALENDARPICKER_DOWNLOAD:
 		{
-			boolean has_android_market = Market.isIntentAvailable(this,
-					Market.getMarketDownloadIntent(Market.PACKAGE_NAME_CALENDAR_PICKER));
+			boolean has_android_market = CalendarPickerConstants.DownloadInfo.isIntentAvailable(this,
+					CalendarPickerConstants.DownloadInfo.getMarketDownloadIntent(CalendarPickerConstants.DownloadInfo.PACKAGE_NAME_CALENDAR_PICKER));
 
 			Log.d(TAG, "has_android_market? " + has_android_market);
 
@@ -210,12 +210,12 @@ public class Demo extends Activity implements View.OnClickListener {
 			.setMessage(R.string.calendar_picker_modularization_explanation)
 			.setPositiveButton(R.string.download_calendar_picker_market, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(Market.getMarketDownloadIntent(Market.PACKAGE_NAME_CALENDAR_PICKER));
+					startActivity(CalendarPickerConstants.DownloadInfo.getMarketDownloadIntent(CalendarPickerConstants.DownloadInfo.PACKAGE_NAME_CALENDAR_PICKER));
 				}
 			})
 			.setNeutralButton(R.string.download_calendar_picker_web, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(new Intent(Intent.ACTION_VIEW, Market.APK_DOWNLOAD_URI_CALENDAR_PICKER));
+					startActivity(new Intent(Intent.ACTION_VIEW, CalendarPickerConstants.DownloadInfo.APK_DOWNLOAD_URI));
 				}
 			})
 			.create();
@@ -224,8 +224,8 @@ public class Demo extends Activity implements View.OnClickListener {
 		{
 			Uri calendars = new Uri.Builder()
 			.scheme(ContentResolver.SCHEME_CONTENT)
-			.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-			.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
+			.authority( CalendarPickerConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+			.appendPath(CalendarPickerConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
 
 			final Cursor cursor = managedQuery(calendars, null, null, null, null);
 
@@ -246,11 +246,11 @@ public class Demo extends Activity implements View.OnClickListener {
 
 					Uri uri = new Uri.Builder()
 						.scheme(ContentResolver.SCHEME_CONTENT)
-						.authority( IntentConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-						.appendPath(IntentConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
+						.authority( CalendarPickerConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+						.appendPath(CalendarPickerConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
-					intent.putExtra(IntentConstants.CalendarEventPicker.IntentExtras.EXTRA_CALENDAR_ID, selected_google_calendar_id);
+					intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_CALENDAR_ID, selected_google_calendar_id);
 					downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
 				}
 			})
@@ -297,8 +297,8 @@ public class Demo extends Activity implements View.OnClickListener {
 		switch (requestCode) {
 		case REQUEST_CODE_DATE_SELECTION:
 		{
-			String iso_date = data.getStringExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME);
-			long epoch_date = data.getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, 0);
+			String iso_date = data.getStringExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME);
+			long epoch_date = data.getLongExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, 0);
 
 			((TextView) findViewById(R.id.date_picker_result)).setText( iso_date + "; " + epoch_date );
 			break;

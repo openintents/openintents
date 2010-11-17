@@ -16,10 +16,17 @@
 
 package org.openintents.calendarpicker.contract;
 
+import java.util.List;
+
 import android.content.ContentResolver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class IntentConstants {
+public class CalendarPickerConstants {
 
 	public static String ANDROID_CALENDAR_AUTHORITY_1_0 = "calendar";
 	public static String ANDROID_CALENDAR_AUTHORITY_2_0 = "com.android.calendar";
@@ -28,6 +35,40 @@ public class IntentConstants {
 	public static String ANDROID_CALENDAR_PROVIDER_PATH_EVENTS = "events";
 	
 	
+    
+    
+    public static class DownloadInfo {
+    	
+    	public final static String PACKAGE_NAME_CALENDAR_PICKER = "org.openintents.calendarpicker";
+    	public final static String CALENDAR_PICKER_WEBSITE = "http://www.openintents.org/en/calendarpicker";
+    	
+    	public final static String APK_DOWNLOAD_URL_PREFIX = "http://openintents.googlecode.com/files/";
+    	public final static String APK_APP_NAME = "CalendarPicker";
+    	public final static String APK_VERSION_NAME = "1.0.0";
+    	public final static Uri APK_DOWNLOAD_URI = Uri.parse(APK_DOWNLOAD_URL_PREFIX + APK_APP_NAME + "-" + APK_VERSION_NAME + ".apk");
+    	
+    	
+        // ========================================================================
+    	public static final String MARKET_PACKAGE_DETAILS_PREFIX = "market://details?id=";
+    	public static final String MARKET_PACKAGE_DETAILS_STRING = MARKET_PACKAGE_DETAILS_PREFIX + PACKAGE_NAME_CALENDAR_PICKER;
+
+        // ========================================================================
+    	public static Intent getMarketDownloadIntent(String package_name) {
+    		Uri market_uri = Uri.parse(MARKET_PACKAGE_DETAILS_PREFIX + package_name);
+    		return new Intent(Intent.ACTION_VIEW, market_uri);
+    	}
+    	
+    	// ================================================
+    	public static boolean isIntentAvailable(Context context, Intent intent) {
+    		final PackageManager packageManager = context.getPackageManager();
+    		List<ResolveInfo> list = packageManager.queryIntentActivities(intent,
+    				PackageManager.MATCH_DEFAULT_ONLY);
+    		return list.size() > 0;
+    	}
+    }
+	
+
+    // ========================================================================
 	public static final class CalendarDatePicker {
 
 		public static String CONTENT_TYPE_DATETIME = "text/datetime";
@@ -64,6 +105,8 @@ public class IntentConstants {
 			public static final String EXTRA_EVENT_TITLES = "org.openintents.calendarpicker.intent.extra.EVENT_TITLES";
 
 			public static final String EXTRA_CALENDAR_ID = "calendar_id";
+			
+			public static final String EXTRA_VISUALIZE_QUANTITIES = "org.openintents.calendarpicker.intent.extra.VISUALIZE_QUANTITIES";
 		}
 		
 		/** Columns to supply when implementing a ContentProvider for events */

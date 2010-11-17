@@ -26,7 +26,7 @@ import java.util.List;
 
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.container.SimpleEvent;
-import org.openintents.calendarpicker.contract.IntentConstants;
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.view.FlingableWeekView;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
 import org.openintents.calendarpicker.view.FlingableWeekView.MonthUpdateCallback;
@@ -246,11 +246,6 @@ public class WeekActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case R.id.menu_year_view:
-        {
-        	startActivityForResult(new Intent(this, YearsActivity.class), REQUEST_CODE_MONTH_YEAR_SELECTION);
-            return true;
-        }
         case R.id.menu_month_view:
         {
         	Intent intent = new Intent(this, MonthActivity.class);
@@ -263,10 +258,10 @@ public class WeekActivity extends Activity {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
         	
-        	if (getIntent().hasExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
+        	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
         		intent.putExtra(
-        				IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
-        				getIntent().getLongExtra(IntentConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
+        				CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
+        				getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
         	
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
@@ -289,14 +284,14 @@ public class WeekActivity extends Activity {
    		case REQUEST_CODE_EVENT_SELECTION:
    		{
    			long id = data.getLongExtra(BaseColumns._ID, INVALID_EVENT_ID);
-			long event_epoch = data.getLongExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, INVALID_DATE);
+			long event_epoch = data.getLongExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, INVALID_DATE);
 
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
 			
 			if (event_epoch != INVALID_DATE) {
-				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, sdf.format(new Date(event_epoch)));
-				i.putExtra(IntentConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
+				i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, sdf.format(new Date(event_epoch)));
+				i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
 			}
 			
 	        setResult(Activity.RESULT_OK, i);

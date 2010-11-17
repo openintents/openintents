@@ -5,13 +5,6 @@
           android:title="All Events"
           android:alphabeticShortcut="a" />
 
-    <item android:id="@+id/menu_year_view"
-    	android:visible="false"
-    	  android:icon="@drawable/ic_menu_my_calendar"
-          android:title="One Year"
-          android:titleCondensed="Year"
-          android:alphabeticShortcut="y" />
-
     <item android:id="@+id/menu_month_view"
 		android:icon="@drawable/ic_menu_month"
           android:title="One Month"
