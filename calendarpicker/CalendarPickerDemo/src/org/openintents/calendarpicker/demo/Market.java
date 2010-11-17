@@ -36,7 +36,7 @@ public class Market {
 
 	static final String TAG = "CalendarPickerDemo";
 
-	public final static String PACKAGE_NAME_CALENDAR_PICKER = "org.openintents.colorpicker";
+	public final static String PACKAGE_NAME_CALENDAR_PICKER = "org.openintents.calendarpicker";
 	public final static String CALENDAR_PICKER_WEBSITE = "http://www.openintents.org/en/calendarpicker";
 	public final static Uri APK_DOWNLOAD_URI_CALENDAR_PICKER = Uri.parse(CALENDAR_PICKER_WEBSITE);
 
@@ -50,9 +50,7 @@ public class Market {
 	public static final String MARKET_AUTHOR_SEARCH_STRING = MARKET_AUTHOR_SEARCH_PREFIX + MARKET_AUTHOR_PREFIX  + "\"" + MARKET_AUTHOR_NAME + "\"";
 
 
-
-	public static final String MARKET_PACKAGE_NAME = "org.openintents.calendarpicker";
-	public static final String MARKET_PACKAGE_DETAILS_STRING = MARKET_PACKAGE_DETAILS_PREFIX + MARKET_PACKAGE_NAME;
+	public static final String MARKET_PACKAGE_DETAILS_STRING = MARKET_PACKAGE_DETAILS_PREFIX + PACKAGE_NAME_CALENDAR_PICKER;
 
 
 	public static void intentLaunchMarketFallback(Activity context, String market_search, Intent intent, int request_code) {
