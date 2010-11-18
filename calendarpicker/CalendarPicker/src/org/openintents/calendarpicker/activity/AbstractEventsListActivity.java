@@ -16,6 +16,7 @@
 
 package org.openintents.calendarpicker.activity;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -57,6 +58,9 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 	// ========================================================================
     abstract Cursor requery();
 
+	// ========================================================================
+    abstract DateFormat getDateFormat();
+    
     // ========================================================================
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,7 +78,7 @@ public abstract class AbstractEventsListActivity extends ListActivity {
         setListAdapter(new EventListAdapter(
         		this,
         		R.layout.list_item_event,
-        		cursor));
+        		cursor, getDateFormat()));
 
         getListView().setOnItemClickListener(category_choice_listener);
 
@@ -224,7 +228,7 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 		KEY_EVENT_TITLE,
 		KEY_EVENT_TIMESTAMP
 	};
-    boolean[] default_ascending = {true, false};
+    boolean[] default_ascending = {true, true};
     
     String constructOrderByString() {
     	List<String> sort_pieces = new ArrayList<String>();

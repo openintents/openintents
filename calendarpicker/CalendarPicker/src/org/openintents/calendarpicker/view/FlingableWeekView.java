@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
-import org.openintents.calendarpicker.container.SimpleCalendarDay;
+import org.openintents.calendarpicker.container.CalendarDayAggregator;
 import org.openintents.calendarpicker.container.SimpleEvent;
 
 import android.content.Context;
@@ -212,7 +212,7 @@ public class FlingableWeekView extends View {
 
     // ========================================================================
     interface ViewportVisitor {
-    	void visitViewport(RectF daybox, SimpleCalendarDay child);
+    	void visitViewport(RectF daybox, CalendarDayAggregator child);
     }
     
     // ========================================================================
@@ -274,7 +274,7 @@ public class FlingableWeekView extends View {
         // Draw all of the visible days
         visitDayViewports(new ViewportVisitor() {
 			@Override
-			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+			public void visitViewport(RectF daybox, CalendarDayAggregator child) {
 	            canvas.save();
 	            canvas.translate(daybox.left, daybox.top);
 	            drawDay(canvas, daybox, child);
@@ -439,7 +439,7 @@ public class FlingableWeekView extends View {
         // The "<=" as opposed to the typical "<" allows the entire screen to be
         // covered while scrolling.
         RectF viewport = new RectF();
-    	SimpleCalendarDay scd = new SimpleCalendarDay();
+    	CalendarDayAggregator scd = new CalendarDayAggregator();
         for (int i=0; i <= spanned_weeks; i++) {
 
             float top = getPaddingTop() + height_per_week * (i + weeks_offset);
@@ -468,7 +468,7 @@ public class FlingableWeekView extends View {
     }
     
     // ========================================================================
-    protected void drawDay(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+    protected void drawDay(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
 
     	Calendar daycal = new GregorianCalendar();
     	daycal.setTime(day.getDate());
@@ -509,7 +509,7 @@ public class FlingableWeekView extends View {
     }
 
     // ========================================================================
-    void drawEventCount(Canvas canvas, RectF daybox, SimpleCalendarDay calendar_day, float usable_size) {
+    void drawEventCount(Canvas canvas, RectF daybox, CalendarDayAggregator calendar_day, float usable_size) {
 
         canvas.save();
         canvas.translate(daybox.width()/2f, daybox.height()/2f);

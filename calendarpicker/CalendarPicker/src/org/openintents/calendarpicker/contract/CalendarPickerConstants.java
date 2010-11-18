@@ -106,13 +106,22 @@ public class CalendarPickerConstants {
 
 			public static final String EXTRA_CALENDAR_ID = "calendar_id";
 			
+			/** Boolean for color mapping the calendar background color to aggregate day quantity */
 			public static final String EXTRA_VISUALIZE_QUANTITIES = "org.openintents.calendarpicker.intent.extra.VISUALIZE_QUANTITIES";
+			
+			/** Boolean for whether to display the day's event count */
+			public static final String EXTRA_SHOW_EVENT_COUNT = "org.openintents.calendarpicker.intent.extra.SHOW_EVENT_COUNT";
+			
+			
+			public static final String[] EXTRA_QUANTITY_COLUMN_NAMES = new String[] {
+				"org.openintents.calendarpicker.intent.extra.QUANTITY0_COLUMN_NAME",
+				"org.openintents.calendarpicker.intent.extra.QUANTITY1_COLUMN_NAME"
+			};
 		}
 		
 		/** Columns to supply when implementing a ContentProvider for events */
 		public static final class ContentProviderColumns implements BaseColumns {
 			public static final String COLUMN_EVENT_TITLE = "title";
-			public static final String COLUMN_EVENT_QUANTITY = "quantity";
 			public static final String COLUMN_EVENT_TIMESTAMP = "dtstart";
 			public static final String COLUMN_EVENT_CALENDAR_ID = "calendar_id";
 		}

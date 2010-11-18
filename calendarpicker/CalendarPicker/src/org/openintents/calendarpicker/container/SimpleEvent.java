@@ -18,10 +18,12 @@ package org.openintents.calendarpicker.container;
 
 import java.util.Date;
 
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
+
 public class SimpleEvent implements Comparable<SimpleEvent> {
 
 	public long id;
-	public float quantity;
+	public float[] quantities = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
 	public Date timestamp;
 	public String title;
 
@@ -35,9 +37,12 @@ public class SimpleEvent implements Comparable<SimpleEvent> {
 		this.title = title;
 	}
 	
-	// TODO Incorporate in constructor
-	public void setQuantity(float quantity) {
-		this.quantity = quantity;
+	public void setQuantity0(float quantity) {
+		this.quantities[0] = quantity;
+	}
+	
+	public void setQuantity1(float quantity) {
+		this.quantities[1] = quantity;
 	}
 	
 	public int compareTo(SimpleEvent another) {

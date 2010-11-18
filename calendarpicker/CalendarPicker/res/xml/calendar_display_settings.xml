@@ -6,7 +6,7 @@
 	<PreferenceCategory android:title="Month View">
 
 		<CheckBoxPreference android:key="enable_transparency"
-			android:defaultValue="false"
+			android:defaultValue="true"
 			android:title="Translucent graphics"
 			android:summary="Enable partial opacity for some graphics elements" />
 

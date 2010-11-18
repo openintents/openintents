@@ -26,8 +26,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.activity.PeriodBrowsingActivity.DailyEventMaximums;
 import org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences;
-import org.openintents.calendarpicker.container.SimpleCalendarDay;
+import org.openintents.calendarpicker.container.CalendarDayAggregator;
 import org.openintents.calendarpicker.container.SimpleEvent;
 
 import android.content.Context;
@@ -62,13 +63,13 @@ import android.view.GestureDetector.SimpleOnGestureListener;
  * will be updated (using setMonth()).
  * 
  * The post-scroll snapping animation starts from zero velocity.
- * It accelerates towards then snap target and stops suddenly
+ * It accelerates towards the snap target and stops suddenly
  * when reached.
  * The flinging animation on the other hand, must take initial
  * velocity into account.
  * 
- * The "snapping" phase should act under different physics than the
- * "flinging" phase, to avoid oscillations around the
+ * The "snapping" phase acts different rules than the
+ * "flinging" phase to avoid oscillations around the
  * snap target.  A separate variable for "snapping" velocity
  * takes on the value of the "flinging" velocity when the deceleration
  * threshold is reached.
@@ -118,8 +119,6 @@ public class FlingableMonthView extends View {
 
     CalendarRenderer calendar_drawing;
 
-    
-    
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
@@ -163,6 +162,12 @@ public class FlingableMonthView extends View {
     public Date getHighlightedDay() {
     	return this.highlighted_day;
     }
+
+    // ========================================================================
+    DailyEventMaximums maximums;
+    public void setMaximums(DailyEventMaximums maximums) {
+    	this.maximums = maximums;
+    }
     
     // ========================================================================
     public void setMonthAndHighlight(Date date) {
@@ -197,7 +202,7 @@ public class FlingableMonthView extends View {
     		this.canvas = canvas;
     	}
     	
-    	abstract void visitViewport(RectF daybox, SimpleCalendarDay child);
+    	abstract void visitViewport(RectF daybox, CalendarDayAggregator child);
     }
     
     // ========================================================================
@@ -582,7 +587,7 @@ public class FlingableMonthView extends View {
         // ========================================================================
         ViewportVisitor day_event_drawing_visitor = new ViewportVisitor() {
 			@Override
-			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+			public void visitViewport(RectF daybox, CalendarDayAggregator child) {
 	            this.canvas.save();
 	            this.canvas.translate(daybox.left, daybox.top);
 	            drawDayEvents(canvas, daybox, child);
@@ -593,7 +598,7 @@ public class FlingableMonthView extends View {
         // ========================================================================
         ViewportVisitor day_background_drawing_visitor = new ViewportVisitor() {
 			@Override
-			public void visitViewport(RectF daybox, SimpleCalendarDay child) {
+			public void visitViewport(RectF daybox, CalendarDayAggregator child) {
 				this.canvas.save();
 				this.canvas.translate(daybox.left, daybox.top);
 	            drawDayHolder(canvas, daybox, child);
@@ -775,7 +780,7 @@ public class FlingableMonthView extends View {
         }
 
         // ========================================================================
-        protected void drawDayEvents(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+        protected void drawDayEvents(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
             float usable_size = Math.min(daybox.width(), daybox.height());
             
             drawEventCount(canvas, daybox, day, usable_size);
@@ -788,7 +793,7 @@ public class FlingableMonthView extends View {
         }
         
         // ========================================================================
-        protected void drawDayHolder(Canvas canvas, RectF daybox, SimpleCalendarDay day) {
+        protected void drawDayHolder(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
 
         	this.dummy_calendar.setTime(day.getDate());
 
@@ -828,7 +833,7 @@ public class FlingableMonthView extends View {
         }
 
         // ========================================================================
-        void drawEventCount(Canvas canvas, RectF daybox, SimpleCalendarDay calendar_day, float usable_size) {
+        void drawEventCount(Canvas canvas, RectF daybox, CalendarDayAggregator calendar_day, float usable_size) {
 
             canvas.save();
             canvas.translate(daybox.width()/2f, daybox.height()/2f);
@@ -862,7 +867,7 @@ public class FlingableMonthView extends View {
         }
         
         // ========================================================================
-        void drawCornerBox(Canvas canvas, SimpleCalendarDay calendar_day, boolean month_active) {
+        void drawCornerBox(Canvas canvas, CalendarDayAggregator calendar_day, boolean month_active) {
         	
             float usable_size = Math.min(
             		this.day_box_dimensions.x,
@@ -895,7 +900,7 @@ public class FlingableMonthView extends View {
 
         // ========================================================================
         RectF dummy_rect = new RectF();
-    	SimpleCalendarDay dummy_scd = new SimpleCalendarDay();
+    	CalendarDayAggregator dummy_scd = new CalendarDayAggregator();
     	Calendar day_iterator_calendar = new GregorianCalendar();
         
     	PointF day_box_dimensions = new PointF();
@@ -987,7 +992,9 @@ public class FlingableMonthView extends View {
                     // Consume all events up until the next day
                     while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.before(this.day_iterator_calendar.getTime())) {
                     	this.dummy_scd.incrementEventCount();
-                    	this.dummy_scd.addAggregateQuantity(sorted_events.get(event_idx).quantity);
+                    	SimpleEvent se = sorted_events.get(event_idx);
+                    	for (int q=0; q<se.quantities.length; q++)
+                    		this.dummy_scd.addAggregateQuantity(q, se.quantities[q]);
 //                    	child.day_events.add(this.sorted_events.get(event_idx));
                     	event_idx++;
                     }

@@ -16,7 +16,7 @@
 
 package org.openintents.calendarpicker.activity;
 
-import java.text.DateFormatSymbols;
+import java.text.DateFormat;
 import java.util.Date;
 
 import org.openintents.calendarpicker.R;
@@ -81,11 +81,16 @@ public class DayEventsListActivity extends AbstractEventsListActivity {
 		
 		int cursor_row_count = cursor.getCount();
 		
-		String header_text = cursor_row_count + " event(s) on " + d.getDate();
+		String header_text = cursor_row_count + " event(s) on " + MonthActivity.YMD_FORMATTER.format(d);
 		((TextView) findViewById(R.id.list_header)).setText(header_text);
 		
 		return cursor;
 	}
 
+    // ========================================================================
+	@Override
+	DateFormat getDateFormat() {
+		return DateFormat.getTimeInstance();
+	}
 }
 

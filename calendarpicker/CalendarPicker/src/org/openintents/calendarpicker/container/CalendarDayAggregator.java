@@ -18,16 +18,20 @@ package org.openintents.calendarpicker.container;
 
 import java.util.Date;
 
-public class SimpleCalendarDay {
+import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
-	private float aggregate_quantity;
+public class CalendarDayAggregator {
+
+	private float[] aggregate_quantities = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
 	private int event_count;
 	private Date date;
 
 	public void reset(Date date) {
 		this.date = date;
 		this.event_count = 0;
-		this.aggregate_quantity = 0;
+		
+		for (int i=0; i<this.aggregate_quantities.length; i++)
+			this.aggregate_quantities[i] = 0;
 	}
 
 	public Date getDate() {
@@ -38,12 +42,12 @@ public class SimpleCalendarDay {
 		this.event_count++;
 	}
 	
-	public void addAggregateQuantity(float quantity) {
-		this.aggregate_quantity += quantity;
+	public void addAggregateQuantity(int index, float quantity) {
+		this.aggregate_quantities[index] += quantity;
 	}
 	
-	public float getAggregateQuantity() {
-		return this.aggregate_quantity;
+	public float getAggregateQuantity(int index) {
+		return this.aggregate_quantities[index];
 	}
 	
 	public int getEventCount() {

@@ -10,7 +10,7 @@ public class CalendarDisplayPreferences extends PreferenceActivity {
 
 	public final static String PREFKEY_ENABLE_TRANSPARENCY = "enable_transparency";
 
-	public final static boolean DEFAULT_ENABLE_TRANSPARENCY = false;
+	public final static boolean DEFAULT_ENABLE_TRANSPARENCY = true;
 
 	
 	

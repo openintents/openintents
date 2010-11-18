@@ -16,6 +16,8 @@
 
 package org.openintents.calendarpicker.activity;
 
+import java.text.DateFormat;
+
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
@@ -66,5 +68,11 @@ public class AllEventsListActivity extends AbstractEventsListActivity {
 		((TextView) findViewById(R.id.list_header)).setText(header_text);
 		
 		return cursor;
+	}
+
+    // ========================================================================
+	@Override
+	DateFormat getDateFormat() {
+		return DateFormat.getDateTimeInstance();
 	}
 }

@@ -32,9 +32,10 @@ import org.openintents.calendarpicker.R;
 public class EventListAdapter extends ResourceCursorAdapter {
 
 	static final String TAG = "EventListAdapter"; 
-	
-    public EventListAdapter(Context context, int layout, Cursor cursor) {
+	DateFormat date_format;
+    public EventListAdapter(Context context, int layout, Cursor cursor, DateFormat format) {
     	super(context, layout, cursor);
+    	this.date_format = format;
     }
 
 
@@ -50,7 +51,7 @@ public class EventListAdapter extends ResourceCursorAdapter {
 
 	    long timestamp = cursor.getLong(timestamp_column);
 	    Date earliest = new Date(timestamp);
-	    String formatted_date = DateFormat.getDateTimeInstance().format(earliest);
+	    String formatted_date = this.date_format.format(earliest);
 		assignment_timestamp.setText(formatted_date);
 	}
 }
