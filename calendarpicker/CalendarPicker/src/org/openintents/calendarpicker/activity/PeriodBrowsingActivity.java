@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.openintents.calendarpicker.container.CalendarDayAggregator;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants.CalendarEventPicker;
@@ -97,6 +98,32 @@ public class PeriodBrowsingActivity extends Activity {
     	// Holds the maximums
     	public int max_event_count_per_day = 0;
     	public float[] max_quantities_per_day = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
+    	
+    	public void clear() {
+    		this.max_event_count_per_day = 0;
+    		for (int i=0; i<this.max_quantities_per_day.length; i++)
+    			this.max_quantities_per_day[i] = 0;
+    	}
+    	
+    	public void updateMax(CalendarDayAggregator day) {
+    		if (day.getEventCount() > this.max_event_count_per_day)
+    			this.max_event_count_per_day = day.getEventCount();
+			
+    		for (int i=0; i<this.max_quantities_per_day.length; i++)
+        		if (day.getAggregateQuantity(i) > this.max_quantities_per_day[i])
+        			this.max_quantities_per_day[i] = day.getAggregateQuantity(i);
+    	}
+    }
+    
+    // ========================================================================    
+    public static String[] getAugmentedProjection(Intent intent) {
+    	
+    	List<String> projection = new ArrayList<String>(Arrays.asList(new String[] {BaseColumns._ID, CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP, CalendarEventPicker.ContentProviderColumns.TITLE}));
+    	for (String extra : CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES)
+    		if (intent.hasExtra(extra))
+    			projection.add(intent.getStringExtra(extra));	// Adds column name
+    	
+    	return projection.toArray(new String[] {});
     }
     
     // ========================================================================
@@ -106,28 +133,23 @@ public class PeriodBrowsingActivity extends Activity {
 
     	Log.d(TAG, "Querying content provider for: " + uri);
     	String selection = null;
-    	if (intent.hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID)) {
-        	long cal_id = intent.getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1);
-    		selection = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	if (intent.hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID)) {
+        	long cal_id = intent.getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID, -1);
+    		selection = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID + "=" + cal_id;
     	}
-
-    	List<String> projection = new ArrayList<String>(Arrays.asList(new String[] {BaseColumns._ID, CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP, CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE}));
-    	for (String extra : CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES)
-    		if (intent.hasExtra(extra))
-    			projection.add(intent.getStringExtra(extra));	// Adds column name
 
 
     	Cursor cursor = managedQuery(uri,
-    		projection.toArray(new String[] {}),
+			getAugmentedProjection(intent),
 			selection,
 			null,
-			CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP + " ASC");
+			CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP + " ASC");
     	
     	if (cursor != null && cursor.moveToFirst()) {
 
     		int id_column = cursor.getColumnIndex(BaseColumns._ID);
-    		int timestamp_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP);
-    		int title_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE);
+    		int timestamp_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP);
+    		int title_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TITLE);
     		int[] quantity_column_indices = new int[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
         	for (int i=0; i<CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length; i++)
         		quantity_column_indices[i] = intent.hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES[i]) ?
@@ -145,9 +167,8 @@ public class PeriodBrowsingActivity extends Activity {
         	
 
         	// Holds the running counts for a day
-        	int day_aggregate_event_count = 0;
-        	float[] day_aggregate_quantities = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
-
+        	CalendarDayAggregator day_aggregator = new CalendarDayAggregator();
+        	
         	do {
 
             	long timestamp_millis = cursor.getLong(timestamp_column);
@@ -159,9 +180,7 @@ public class PeriodBrowsingActivity extends Activity {
                 	roundCalendarToNextDay(day_iterator_calendar, timestamp_millis);
                 	
                 	// Reset the running totals
-                	day_aggregate_event_count = 0;
-                	for (int i=0; i<CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length; i++)
-                		day_aggregate_quantities[i] = 0;
+                	day_aggregator.reset(null);
             	}
 
 
@@ -174,21 +193,14 @@ public class PeriodBrowsingActivity extends Activity {
     			for (int i=0; i<quantity_column_indices.length; i++) {
     				if (quantity_column_indices[i] >= 0) {
     					event.quantities[i] = cursor.getFloat(quantity_column_indices[i]);
-    				
-    					day_aggregate_quantities[i] += event.quantities[i];
+    					day_aggregator.addAggregateQuantity(i, event.quantities[i]);
     				}
     			}
-            	day_aggregate_event_count++;
-
+    			day_aggregator.incrementEventCount();
 
             	// Update the maximums if need be
-            	if (day_aggregate_event_count > maximums.max_event_count_per_day)
-            		maximums.max_event_count_per_day = day_aggregate_event_count;
-            	
-            	for (int i=0; i<CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length; i++)
-            		if (day_aggregate_quantities[i] > maximums.max_quantities_per_day[i])
-            			maximums.max_quantities_per_day[i] = day_aggregate_quantities[i];
-
+    			maximums.updateMax(day_aggregator);
+    			
         	} while (cursor.moveToNext());
 
 

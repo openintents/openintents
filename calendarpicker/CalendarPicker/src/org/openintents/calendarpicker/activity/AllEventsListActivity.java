@@ -46,20 +46,14 @@ public class AllEventsListActivity extends AbstractEventsListActivity {
         Uri intent_data = getIntent().getData();
         if (intent_data == null) return null;
 
-    	Log.d(TAG, "Querying content provider for: " + intent_data);
-    	
-
     	String selection = null;
-    	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID)) {
-        	long cal_id = getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1);
-    		selection = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID + "=" + cal_id;
+    	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID)) {
+        	long cal_id = getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID, -1);
+    		selection = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID + "=" + cal_id;
     	}
     	
 		Cursor cursor = managedQuery(intent_data,
-				new String[] {
-					KEY_ROWID,
-					KEY_EVENT_TIMESTAMP,
-					KEY_EVENT_TITLE},
+				PeriodBrowsingActivity.getAugmentedProjection(getIntent()),
 				selection,
 				null,
 				constructOrderByString());

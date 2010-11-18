@@ -25,6 +25,7 @@ import java.util.Stack;
 
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.adapter.EventListAdapter;
+import org.openintents.calendarpicker.adapter.EventListAdapter.ExtraQuantityInfo;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.app.Activity;
@@ -52,8 +53,8 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 	static final String TAG = "AbstractEventsListActivity"; 
 
 	public static final String KEY_ROWID = BaseColumns._ID;
-	public static final String KEY_EVENT_TIMESTAMP = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP;
-	public static final String KEY_EVENT_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TITLE;
+	public static final String KEY_EVENT_TIMESTAMP = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP;
+	public static final String KEY_EVENT_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TITLE;
 
 	// ========================================================================
     abstract Cursor requery();
@@ -75,10 +76,24 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 
     	
     	Cursor cursor = requery();
+    	
+    	ExtraQuantityInfo[] extra_quantity_info = new ExtraQuantityInfo[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
+    	for (int i=0; i<CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length; i++) {
+    		String extra_name = CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES[i];
+    		if (getIntent().hasExtra(extra_name)) {
+    			
+    			String column_name = getIntent().getStringExtra(extra_name);
+    			extra_quantity_info[i] = new ExtraQuantityInfo(column_name);
+
+        		if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_FORMATS[i]))
+        			extra_quantity_info[i].format_string = getIntent().getStringExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_FORMATS[i]);
+    		}
+    	}
+    	
         setListAdapter(new EventListAdapter(
         		this,
         		R.layout.list_item_event,
-        		cursor, getDateFormat()));
+        		cursor, getDateFormat(), extra_quantity_info));
 
         getListView().setOnItemClickListener(category_choice_listener);
 
@@ -111,7 +126,7 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 			Intent i = new Intent();
 			i.putExtra(BaseColumns._ID, id);
 
-			int epoch_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_TIMESTAMP);
+			int epoch_column = cursor.getColumnIndex(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP);
 			long event_epoch = cursor.getLong(epoch_column);
 			i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, event_epoch);
 			i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, MonthActivity.HYPEHENATED_ISO_DATE_FORMATTER.format(new Date(event_epoch)));

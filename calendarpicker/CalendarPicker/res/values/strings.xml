@@ -34,6 +34,14 @@
     <string name="app_name">OI Calendar Picker</string>
     <string name="calendar_picker">Calendar picker</string>
     
+    <string name="calendar_interaction">Calendar interaction</string>
+    <string name="instructions_month_interaction"> * Horizontal fling increments/decrements month\n
+* Vertical fling scrolls quickly through months\n
+* D-pad navigates between dates\n
+* center D-pad or pointer tap activates a date\n
+* Dragging on timeline changes the date\n
+* Longpressing date opens context menu</string>
+    
     
 	<!-- About -->
 	<string name="about">About</string>

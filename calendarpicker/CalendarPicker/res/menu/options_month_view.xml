@@ -12,6 +12,11 @@
           android:title="Event counts"
           android:alphabeticShortcut="c" />
           
+    <item android:id="@+id/menu_toggle_colormap_scale"
+    	  android:icon="@drawable/ic_menu_scale_single"
+          android:title="Month scale"
+          android:alphabeticShortcut="s" />
+
 
 	<!-- TODO -->
     <item android:id="@+id/menu_week_view"
@@ -32,6 +37,11 @@
     	  android:icon="@android:drawable/ic_menu_preferences"
           android:title="Settings"
           android:alphabeticShortcut="a" />
+
+    <item android:id="@+id/menu_month_help"
+    	  android:icon="@android:drawable/ic_menu_help"
+          android:title="Help"
+          android:alphabeticShortcut="h" />
 
     <item android:id="@+id/menu_about"
     	  android:icon="@android:drawable/ic_menu_info_details"

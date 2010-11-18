@@ -37,6 +37,7 @@ import org.openintents.calendarpicker.view.FlingableMonthView.MonthUpdateCallbac
 import org.openintents.distribution.AboutDialog;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -73,6 +74,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
     public static final long INVALID_DATE = 0;
     
     public static final int DIALOG_ABOUT = 1;
+    public static final int DIALOG_MONTH_HELP = 2;
+    
 
 
 	TextView month_title;
@@ -219,15 +222,19 @@ public class MonthActivity extends PeriodBrowsingActivity {
 
         
         Calendar current_month_calendar = new GregorianCalendar();
-        
         if (savedInstanceState != null) {
         	long saved_millis = savedInstanceState.getLong(BUNDLE_CALENDAR_EPOCH);
         	current_month_calendar.setTimeInMillis(saved_millis);
+        } else {
+        	if (getIntent().hasExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH)) {
+        		current_month_calendar.setTimeInMillis(getIntent().getLongExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, current_month_calendar.getTimeInMillis()));
+        	}
         }
         
         updateMonthHeader(current_month_calendar);
-        this.tiny_timeline.setDate(current_month_calendar.getTime());
-        this.month_view.setMonthAndEvents(current_month_calendar, events);
+//        this.tiny_timeline.setDate(current_month_calendar.getTime());
+        this.month_view.setEvents(events);
+        this.month_view.setMonthAndHighlight(current_month_calendar.getTime());
     }
 
     // ========================================================================
@@ -237,11 +244,31 @@ public class MonthActivity extends PeriodBrowsingActivity {
     	this.month_view.invalidate();
 
     	if (this.options_menu != null) {
-	        this.options_menu.findItem(R.id.menu_toggle_event_counts).setIcon(
-	        		visible ? R.drawable.ic_menu_checked : R.drawable.ic_menu_unchecked);
+    		MenuItem item = this.options_menu.findItem(R.id.menu_toggle_event_counts);
+    		item.setIcon(visible ? R.drawable.ic_menu_unchecked : R.drawable.ic_menu_checked);
+
+    		String title = visible ? "Hide counts" : "Show counts";
+    		item.setTitle(title);
+    		item.setTitleCondensed(title);
     	}
     }
-    
+
+    // ========================================================================
+    void setColormapScale(boolean visible) {
+
+    	this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums = visible;
+    	this.month_view.invalidate();
+
+    	if (this.options_menu != null) {
+    		MenuItem item = this.options_menu.findItem(R.id.menu_toggle_colormap_scale);
+    		item.setIcon(visible ? R.drawable.ic_menu_scale_global : R.drawable.ic_menu_scale_single);
+
+    		String title = visible ? "Global scale" : "Month scale";
+    		item.setTitle(title);
+    		item.setTitleCondensed(title);
+    	}
+    }
+
     // ========================================================================
     void updateTransientDate(Date date) {
 		timeline_date_toast.setText(FULL_MONTH_AND_YEAR_FORMATTER.format(date));
@@ -250,14 +277,15 @@ public class MonthActivity extends PeriodBrowsingActivity {
 
     // ========================================================================
     void launchDayEvents(Uri data, Date date) {
-		Intent i = new Intent(MonthActivity.this, DayEventsListActivity.class);
-		i.setAction(getIntent().getAction());
-		i.setData(data);
+		Intent intent = new Intent(MonthActivity.this, DayEventsListActivity.class);
+		intent.setAction(getIntent().getAction());
+		intent.setData(data);
+		intent.putExtras(getIntent());
 		if (date != null) {
-			i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, date.getTime());
-			i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
+			intent.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, date.getTime());
+			intent.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_DATETIME, HYPEHENATED_ISO_DATE_FORMATTER.format(date));
 		}
-		startActivityForResult(i, REQUEST_CODE_EVENT_SELECTION);
+		startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
     }
     
     // ========================================================================
@@ -365,7 +393,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
         inflater.inflate(R.menu.options_month_view, menu);
 
 		setEventCountVisibility(this.month_view.calendar_drawing.enable_event_count);
-
+		setColormapScale(this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums);
+		
         return true;
     }
 
@@ -374,7 +403,11 @@ public class MonthActivity extends PeriodBrowsingActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
 
-        menu.findItem(R.id.menu_all_events).setVisible(getIntent().getData() != null);
+        boolean has_events = getIntent().getData() != null;
+        menu.findItem(R.id.menu_all_events).setVisible(has_events);
+        menu.findItem(R.id.menu_toggle_event_counts).setVisible(has_events);
+        menu.findItem(R.id.menu_toggle_colormap_scale).setVisible(this.month_view.calendar_drawing.color_mapping.enabled);
+
         return true;
     }
 
@@ -382,6 +415,16 @@ public class MonthActivity extends PeriodBrowsingActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.menu_month_help:
+        {
+        	showDialog(DIALOG_MONTH_HELP);
+            return true;
+        }
+        case R.id.menu_toggle_colormap_scale:
+        {
+    		setColormapScale(!this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums);
+            return true;
+        }
         case R.id.menu_toggle_event_counts:
         {
         	setEventCountVisibility(!this.month_view.calendar_drawing.enable_event_count);
@@ -402,6 +445,7 @@ public class MonthActivity extends PeriodBrowsingActivity {
         	Intent intent = new Intent(this, WeekActivity.class);
         	intent.setData(getIntent().getData());
         	intent.setAction(getIntent().getAction());
+    		intent.putExtras(getIntent());
         	startActivityForResult(intent, REQUEST_CODE_MONTH_YEAR_SELECTION);
             return true;
         }
@@ -410,12 +454,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
         	
-        	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
-        		intent.putExtra(
-        				CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
-        				getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
-
         	intent.setAction(getIntent().getAction());
+    		intent.putExtras(getIntent());
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
         }
@@ -504,6 +544,14 @@ public class MonthActivity extends PeriodBrowsingActivity {
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
+		case DIALOG_MONTH_HELP:
+		{
+			return new AlertDialog.Builder(this)
+				.setIcon(android.R.drawable.ic_dialog_info)
+				.setTitle(R.string.calendar_interaction)
+				.setMessage(R.string.instructions_month_interaction)
+				.create();
+		}
 		}
 		return null;
 	}

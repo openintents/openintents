@@ -106,7 +106,7 @@ public class FlingableMonthView extends View {
     
     Calendar active_month_calendar = new GregorianCalendar();
     Date highlighted_day = null;
-    List<SimpleEvent> sorted_events;
+    List<SimpleEvent> sorted_events = new ArrayList<SimpleEvent>();
 
     // Cached computed values
     int spanned_weeks;
@@ -129,12 +129,11 @@ public class FlingableMonthView extends View {
     		EVENT_COUNT, EXTRA_QUANTITY
     	}
 
-        // TODO Use this
-        boolean showing_monthwide_daily_maximums = false;
-        DailyEventMaximums monthwide_daily_maximums;
+        public boolean showing_monthwide_daily_maximums = false;
+        DailyEventMaximums monthwide_daily_maximums = new DailyEventMaximums();
 
 
-    	boolean enabled = false;
+    	public boolean enabled = false;
         
         
         DailyEventMaximums overall_daily_maximums;
@@ -165,18 +164,19 @@ public class FlingableMonthView extends View {
     	public void setMaxColor(int color) {
     		this.color_high = color;
     	}
-    	
+
     	int getTileColor(CalendarDayAggregator day) {
-    		DailyEventMaximums maxes = showing_monthwide_daily_maximums ?
+    		DailyEventMaximums maxes = this.showing_monthwide_daily_maximums ?
     				this.monthwide_daily_maximums : this.overall_daily_maximums;
-    		
+
     		float fraction = 0;
     		switch (this.mapping_source) {
     		case EVENT_COUNT:
-    			fraction = day.getEventCount() / (float) maxes.max_event_count_per_day;
+    			fraction = maxes.max_event_count_per_day == 0 ? 0 : day.getEventCount() / (float) maxes.max_event_count_per_day;
     			break;
     		case EXTRA_QUANTITY:
-    			fraction = day.getAggregateQuantity(this.extra_quantity_index) / maxes.max_quantities_per_day[this.extra_quantity_index];
+    			float max = maxes.max_quantities_per_day[this.extra_quantity_index];
+    			fraction = max == 0 ? 0 : day.getAggregateQuantity(this.extra_quantity_index) / max;
     			break;
     		}
     		
@@ -189,7 +189,8 @@ public class FlingableMonthView extends View {
     	super(context, attrs);
 
     	this.calendar_drawing = new CalendarRenderer(context);
-    	setMonthAndEvents(new GregorianCalendar(), new ArrayList<SimpleEvent>());
+
+    	setMonth(new GregorianCalendar());
     	
 
         final GestureDetector gestureDetector = new GestureDetector(new MonthGestureDetector());
@@ -203,11 +204,6 @@ public class FlingableMonthView extends View {
 	            	is_holding_longpress = false;
 	        		
 	        		if (Math.abs(vertical_offset) > 0) {
-	        			
-	        			// TODO
-	        			// Cause the snap-back to be triggered when the fling
-	        			// velocity drops below the minimum threshold
-	        			
 	        			calendar_drawing.beginSnappingBackAnimation(0);
 	        		}
 	        	} else if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -227,7 +223,6 @@ public class FlingableMonthView extends View {
     public Date getHighlightedDay() {
     	return this.highlighted_day;
     }
-
     
     // ========================================================================
     public void setMonthAndHighlight(Date date) {
@@ -339,12 +334,8 @@ public class FlingableMonthView extends View {
     }
     
     // ========================================================================
-    public void setMonthAndEvents(Calendar calendar, List<SimpleEvent> sorted_events) {
-    	
-    	Log.d(TAG, "Now calling setMonthAndEvents()");
-    	
+    public void setEvents(List<SimpleEvent> sorted_events) {
     	this.sorted_events = sorted_events;
-    	setMonth(calendar);
     }
 
     // ========================================================================
@@ -427,7 +418,6 @@ public class FlingableMonthView extends View {
     	
 
         public ColorMappingConfiguration color_mapping = new ColorMappingConfiguration();
-    	
         
         // FLINGING STATE
         static final float MINIMUM_SUSTAINED_FLINGING_VELOCITY = 400;	// in px/sec
@@ -675,14 +665,26 @@ public class FlingableMonthView extends View {
 
         // ========================================================================
     	void prepareForMonth() {
-    		
-        	this.reestablishCornerBoxDimensions();
-        	
-        	int event_index = findFirstEventAfterDate(active_month_calendar);
-        	// TODO
-        	Log.d(TAG, "Month first evt index: " + event_index);
+        	reestablishCornerBoxDimensions();
+        	updateMonthMaximums();
     	}
-        
+
+        // ========================================================================
+    	/** Update the month maximums */
+    	void updateMonthMaximums() {
+        	int event_index = findFirstEventAfterDate(active_month_calendar);
+        	this.day_iterator_calendar.setTime(active_month_calendar.getTime());
+        	int month = this.day_iterator_calendar.get(Calendar.MONTH);
+        	this.color_mapping.monthwide_daily_maximums.clear();
+        	while (month == this.day_iterator_calendar.get(Calendar.MONTH)) {
+	        	this.dummy_scd.reset(this.day_iterator_calendar.getTime());
+	        	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, 1);
+	    		
+	        	event_index = aggregateEventsForDay(this.dummy_scd, this.day_iterator_calendar, event_index);
+	        	this.color_mapping.monthwide_daily_maximums.updateMax(this.dummy_scd);
+        	}
+    	}
+
     	
     	Path northwest_triangle = new Path();
     	Path southeast_triangle = new Path();
@@ -898,7 +900,18 @@ public class FlingableMonthView extends View {
 
             int background_color;
             if (this.color_mapping.enabled) {
-            	background_color = this.color_mapping.getTileColor(day);
+            	
+            	if (day_highlighted) {
+
+            		background_color = month_active ? color_calendar_date_background_active_selected
+						: (daycal_month_even ? color_calendar_date_background_passive_odd_selected : color_calendar_date_background_passive_even_selected);
+            		
+            	} else {
+	            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_active)
+	            		background_color = this.color_mapping.color_low;
+	            	else
+	            		background_color = this.color_mapping.getTileColor(day);
+            	}
             } else {
             	background_color = day_highlighted ?
         				month_active ?
@@ -1092,11 +1105,11 @@ public class FlingableMonthView extends View {
         int findFirstEventAfterDate(Calendar calendar) {
         	
             int event_idx = 0;
-        	// XXX This is the naive, O(N) approach.
+        	// This is the naive, O(N) approach.
 //			while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.getTime() < calendar.getTimeInMillis()) event_idx++;
 //			int backup_event_idx = event_idx;
 
-            // The binary search will avoid iterating through many events.
+            // The binary search will avoid iterating through many events; it is O(log(N))
             this.dummy_simple_event.timestamp.setTime( calendar.getTimeInMillis() );
             int search_index = Collections.binarySearch(sorted_events, this.dummy_simple_event);
             
@@ -1178,6 +1191,16 @@ public class FlingableMonthView extends View {
 		int alpha = interpolateInt(Color.alpha(src_color), Color.alpha(dst_color), fraction);
 		return Color.argb(alpha, red, green, blue);
 	}
+	
+    // ========================================================================
+	static int invertColor(int src_color) {
+		return Color.argb(
+				Color.alpha(src_color),
+				0xFF - Color.red(src_color),
+				0xFF - Color.green(src_color),
+				0xFF - Color.blue(src_color));
+	}
+	
 
     // ========================================================================
 	void moveMonth(boolean forward) {

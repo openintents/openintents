@@ -258,10 +258,10 @@ public class WeekActivity extends PeriodBrowsingActivity {
         	Intent intent = new Intent(this, AllEventsListActivity.class);
         	intent.setData(getIntent().getData());
         	
-        	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID))
+        	if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID))
         		intent.putExtra(
-        				CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
-        				getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
+        				CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID,
+        				getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID, -1));
         	
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
