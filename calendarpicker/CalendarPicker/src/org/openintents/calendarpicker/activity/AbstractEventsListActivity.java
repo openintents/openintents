@@ -103,6 +103,9 @@ public abstract class AbstractEventsListActivity extends ListActivity {
 
 		public void onItemClick(AdapterView<?> adapter_view, View arg1, int position, long id) {
 			
+			if (!Intent.ACTION_PICK.equals(getIntent().getAction()))
+				return;
+			
 			Cursor cursor = (Cursor) ((CursorAdapter) adapter_view.getAdapter()).getItem(position);
 
 			Intent i = new Intent();

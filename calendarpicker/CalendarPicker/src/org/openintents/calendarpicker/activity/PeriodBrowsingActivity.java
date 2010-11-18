@@ -95,8 +95,8 @@ public class PeriodBrowsingActivity extends Activity {
     // ========================================================================
     public static class DailyEventMaximums {
     	// Holds the maximums
-    	int max_event_count_per_day = 0;
-    	float[] max_quantities_per_day = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
+    	public int max_event_count_per_day = 0;
+    	public float[] max_quantities_per_day = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
     }
     
     // ========================================================================

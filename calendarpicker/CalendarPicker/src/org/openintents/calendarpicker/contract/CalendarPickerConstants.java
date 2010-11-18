@@ -109,7 +109,7 @@ public class CalendarPickerConstants {
 			/** Boolean for color mapping the calendar background color to aggregate day quantity */
 			public static final String EXTRA_VISUALIZE_QUANTITIES = "org.openintents.calendarpicker.intent.extra.VISUALIZE_QUANTITIES";
 			
-			/** Boolean for whether to display the day's event count */
+			/** Boolean for whether to display the day's event count. Default: true */
 			public static final String EXTRA_SHOW_EVENT_COUNT = "org.openintents.calendarpicker.intent.extra.SHOW_EVENT_COUNT";
 			
 			
@@ -117,6 +117,10 @@ public class CalendarPickerConstants {
 				"org.openintents.calendarpicker.intent.extra.QUANTITY0_COLUMN_NAME",
 				"org.openintents.calendarpicker.intent.extra.QUANTITY1_COLUMN_NAME"
 			};
+			
+			/** Integer for selecting the quantity for determining the background color values
+			 * If this value is omitted, the day's event count will be used for the color value. */
+			public static final String EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX = "org.openintents.calendarpicker.intent.extra.BACKGROUND_COLORMAP_QUANTITY_INDEX";
 		}
 		
 		/** Columns to supply when implementing a ContentProvider for events */

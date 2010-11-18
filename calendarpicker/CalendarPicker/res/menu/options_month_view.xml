@@ -4,6 +4,13 @@
     	  android:icon="@drawable/ic_menu_list"
           android:title="All Events"
           android:alphabeticShortcut="a" />
+
+
+    <item android:id="@+id/menu_toggle_event_counts"
+    	  android:icon="@drawable/ic_menu_checked"
+    	  android:titleCondensed="Counts"
+          android:title="Event counts"
+          android:alphabeticShortcut="c" />
           
 
 	<!-- TODO -->

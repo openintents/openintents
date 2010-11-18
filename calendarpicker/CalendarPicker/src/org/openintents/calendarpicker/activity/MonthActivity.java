@@ -151,7 +151,17 @@ public class MonthActivity extends PeriodBrowsingActivity {
 		});
 		
 		this.month_view = (FlingableMonthView) findViewById(R.id.full_month);
+		
+		this.month_view.calendar_drawing.enable_event_count = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_SHOW_EVENT_COUNT, true);
 		this.month_view.setVisualizeQuantities(getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_VISUALIZE_QUANTITIES, false));
+		this.month_view.calendar_drawing.color_mapping.setMaximums(maximums);
+		
+		if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX)) {
+			int extra_quantity_index = getIntent().getIntExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX, -1);
+			this.month_view.calendar_drawing.color_mapping.setColormapSource(extra_quantity_index);
+		}
+		
+		
 		this.month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
 			public void updateMonth(Calendar cal) {
@@ -198,7 +208,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
 				if (data != null) {
 					launchDayEvents(data, date);
 				} else {
-					finishWithDate(date);
+					if (Intent.ACTION_PICK.equals(getIntent().getAction()))
+						finishWithDate(date);
 				}
 			}
         });
@@ -218,6 +229,18 @@ public class MonthActivity extends PeriodBrowsingActivity {
         this.tiny_timeline.setDate(current_month_calendar.getTime());
         this.month_view.setMonthAndEvents(current_month_calendar, events);
     }
+
+    // ========================================================================
+    void setEventCountVisibility(boolean visible) {
+
+    	this.month_view.calendar_drawing.enable_event_count = visible;
+    	this.month_view.invalidate();
+
+    	if (this.options_menu != null) {
+	        this.options_menu.findItem(R.id.menu_toggle_event_counts).setIcon(
+	        		visible ? R.drawable.ic_menu_checked : R.drawable.ic_menu_unchecked);
+    	}
+    }
     
     // ========================================================================
     void updateTransientDate(Date date) {
@@ -228,7 +251,7 @@ public class MonthActivity extends PeriodBrowsingActivity {
     // ========================================================================
     void launchDayEvents(Uri data, Date date) {
 		Intent i = new Intent(MonthActivity.this, DayEventsListActivity.class);
-
+		i.setAction(getIntent().getAction());
 		i.setData(data);
 		if (date != null) {
 			i.putExtra(CalendarPickerConstants.CalendarDatePicker.IntentExtras.INTENT_EXTRA_EPOCH, date.getTime());
@@ -331,12 +354,17 @@ public class MonthActivity extends PeriodBrowsingActivity {
     }
 
     // ========================================================================
+    Menu options_menu = null;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
+        this.options_menu = menu;
+        
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_month_view, menu);
+
+		setEventCountVisibility(this.month_view.calendar_drawing.enable_event_count);
 
         return true;
     }
@@ -347,7 +375,6 @@ public class MonthActivity extends PeriodBrowsingActivity {
         super.onPrepareOptionsMenu(menu);
 
         menu.findItem(R.id.menu_all_events).setVisible(getIntent().getData() != null);
-        
         return true;
     }
 
@@ -355,6 +382,11 @@ public class MonthActivity extends PeriodBrowsingActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.menu_toggle_event_counts:
+        {
+        	setEventCountVisibility(!this.month_view.calendar_drawing.enable_event_count);
+            return true;
+        }
         case R.id.menu_settings:
         {
         	startActivity(new Intent(this, CalendarDisplayPreferences.class));
@@ -369,6 +401,7 @@ public class MonthActivity extends PeriodBrowsingActivity {
         {
         	Intent intent = new Intent(this, WeekActivity.class);
         	intent.setData(getIntent().getData());
+        	intent.setAction(getIntent().getAction());
         	startActivityForResult(intent, REQUEST_CODE_MONTH_YEAR_SELECTION);
             return true;
         }
@@ -381,7 +414,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
         		intent.putExtra(
         				CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID,
         				getIntent().getLongExtra(CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.COLUMN_EVENT_CALENDAR_ID, -1));
-        	
+
+        	intent.setAction(getIntent().getAction());
         	startActivityForResult(intent, REQUEST_CODE_EVENT_SELECTION);
             return true;
         }
