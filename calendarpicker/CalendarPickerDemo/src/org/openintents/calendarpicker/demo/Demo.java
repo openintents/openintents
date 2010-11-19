@@ -34,6 +34,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
@@ -64,6 +65,7 @@ public class Demo extends Activity implements View.OnClickListener {
 	public static class EventWrapper {
 		public long id, timestamp;
 		public String title;
+		public float quantity;
 	}
 
 	// ========================================================================
@@ -104,7 +106,7 @@ public class Demo extends Activity implements View.OnClickListener {
 	void launchDatePickerWithEvents() {
 		SampleEventDatabase database = new SampleEventDatabase(this);
 		database.clearData();
-		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar(), DEFAULT_RANDOM_EVENTS);
 		Uri u = EventContentProvider.constructUri(calendar_id);
 		Intent i = new Intent(Intent.ACTION_PICK, u);
 		downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
@@ -139,7 +141,7 @@ public class Demo extends Activity implements View.OnClickListener {
 	void launchEventPickerContentProvider() {
 		SampleEventDatabase database = new SampleEventDatabase(this);
 		database.clearData();
-		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar(), DEFAULT_RANDOM_EVENTS);
 		Uri u = EventContentProvider.constructUri(calendar_id);
 		Intent i = new Intent(Intent.ACTION_PICK, u);
 		downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
@@ -150,16 +152,29 @@ public class Demo extends Activity implements View.OnClickListener {
 		showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
 	}
 
+    final int[] COLORMAP_COLORS = new int[] {Color.BLUE, Color.GREEN, Color.RED};
 	// ========================================================================
 	void launchEventVisualizer() {
-		
-		// TODO
-		
+
 		SampleEventDatabase database = new SampleEventDatabase(this);
 		database.clearData();
-		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar(), 3*DEFAULT_RANDOM_EVENTS);
+		
+
 		Uri u = EventContentProvider.constructUri(calendar_id);
 		Intent i = new Intent(Intent.ACTION_VIEW, u);
+		
+		
+		String extra_name = CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES[0];
+		i.putExtra(extra_name, SampleEventDatabase.KEY_EVENT_QUANTITY0);
+		i.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_FORMATS[0], "%.3f");
+		
+		i.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_VISUALIZE_QUANTITIES, true);
+		i.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS, COLORMAP_COLORS);
+		i.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_SHOW_EVENT_COUNT, false);
+		
+		
+		
 		downloadLaunchCheck(i, -1);
 	}
 	
@@ -340,6 +355,7 @@ public class Demo extends Activity implements View.OnClickListener {
 			event.timestamp = calendar.getTimeInMillis();
 			event.id = event_id;
 			event.title = "Random Event 0x" + Integer.toHexString(0xFFFF & r.nextInt()).toUpperCase();
+			event.quantity = r.nextFloat();
 			events.add(event);
 		}
 

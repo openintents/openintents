@@ -35,7 +35,7 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
 
 	static final String TAG = "SampleEventDatabase"; 
 
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 3;
     static final String DATABASE_NAME = "EVENTS";
 
     public static final String TABLE_EVENTS = "TABLE_EVENTS";
@@ -47,8 +47,13 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
     public static final String KEY_CALENDAR_ID = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID;
     public static final String KEY_EVENT_TIMESTAMP = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP;
     
+    public static final String KEY_EVENT_QUANTITY0 = "QUANTITY0";
+    
+    
 
     public static final String KEY_CALENDAR_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TITLE;
+    
+    
     
     
     final static String SQL_CREATE_EVENTS_TABLE =
@@ -56,6 +61,7 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
         + BaseColumns._ID + " integer primary key autoincrement, "
         + KEY_CALENDAR_ID + " integer default 0, "
         + KEY_EVENT_TIMESTAMP + " integer, "
+        + KEY_EVENT_QUANTITY0 + " real, "
         + KEY_EVENT_TITLE + " text);";
 
     final static String SQL_CREATE_CALENDARS_TABLE =
@@ -90,7 +96,7 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
     
     // ============================================================
     /** Populates the database with random events, given a calendar to specify the year and month */
-    public long populateRandomEvents(Calendar calendar) {
+    public long populateRandomEvents(Calendar calendar, int event_count) {
 
 	    SQLiteDatabase db = getWritableDatabase();
 		db.beginTransaction();
@@ -100,12 +106,13 @@ public class SampleEventDatabase extends SQLiteOpenHelper {
 		long calendar_id = db.insert(TABLE_CALENDARS, null, cv);
 
 
-		List<EventWrapper> events = Demo.generateRandomEvents(Demo.DEFAULT_RANDOM_EVENTS, new GregorianCalendar());
+		List<EventWrapper> events = Demo.generateRandomEvents(event_count, new GregorianCalendar());
 		for (EventWrapper event : events) {
 			cv.clear();
 			cv.put(KEY_CALENDAR_ID, calendar_id);
 			cv.put(KEY_EVENT_TITLE, event.title);
 			cv.put(KEY_EVENT_TIMESTAMP, event.timestamp);
+			cv.put(KEY_EVENT_QUANTITY0, event.quantity);
 			long event_id = db.insert(TABLE_EVENTS, null, cv);
 		}
 
