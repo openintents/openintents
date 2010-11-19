@@ -20,7 +20,7 @@ public class CalendarDisplayPreferences extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-//        getPreferenceManager().setSharedPreferencesName(SHARED_PREFS_NAME);
+        getPreferenceManager().setSharedPreferencesName(SHARED_PREFS_NAME);
         addPreferencesFromResource(R.xml.calendar_display_settings);
     }
 }

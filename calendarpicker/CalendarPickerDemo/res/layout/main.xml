@@ -18,93 +18,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-   
+   android:layout_height="fill_parent"
+   >
+  
+
+
+ 		<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Date Picker"
+    android:id="@+id/button_pick_date"/>
+
+
+
    <LinearLayout
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
     >
-   
-   	   <LinearLayout
-	    android:orientation="horizontal"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    >
-	
-	   		<Button
-			    android:layout_width="fill_parent"
-			    android:layout_weight="1"
-			    android:layout_height="wrap_content" 
-			    android:text="Date Picker\n(plain)"
-			    android:id="@+id/button_pick_date_no_events"/>
-			<Button
-			    android:layout_width="fill_parent"
-			    android:layout_weight="1"
-			    android:layout_height="wrap_content" 
-			    android:text="Date Picker\n(with events)"
-			    android:id="@+id/button_pick_date_with_events"/>
-		</LinearLayout>
+
+		<TextView
+			android:text="Picking result:"
+			android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="5dip" 
+		/>
 		
-	   <LinearLayout
-	    android:orientation="horizontal"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="1"
-	    >
-
-			<TextView
-				android:text="Picking result:"
-				android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_marginRight="5dip" 
-			/>
-			
-			<TextView
-				android:id="@+id/date_picker_result"
-				android:layout_weight="1"
-				android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:textColor="@android:color/white"
-			/>
-			
-		</LinearLayout>
-
+		<TextView
+			android:id="@+id/date_picker_result"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:textColor="@android:color/white"
+		/>
+		
 	</LinearLayout>
+
 	
-   <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_weight="1"
-    >
-       
-   	   <LinearLayout
-	    android:orientation="horizontal"
+
+    
+
+  		<Button
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    >
-    
-	   		<Button
-			    android:layout_width="fill_parent"
-			    android:layout_weight="1"
-			    android:layout_height="wrap_content" 
-			    android:text="Event Picker\n(Content Provider)"
-			    android:id="@+id/button_pick_event_content_provider"/>
-			<Button
-			    android:layout_width="fill_parent"
-			    android:layout_weight="1"
-			    android:layout_height="wrap_content" 
-			    android:text="Event Picker\n(Intent extras)"
-			    android:id="@+id/button_pick_event_intent_extras"/>
-		</LinearLayout>
-		<Button
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content" 
-		    android:text="Event Picker (Google Calendar)"
-		    android:id="@+id/button_pick_event_google_calendar"/>
+	    android:text="Event Picker"
+	    android:id="@+id/button_pick_event"/>
 
 	   <LinearLayout
 	    android:orientation="horizontal"
@@ -129,7 +88,5 @@
 			/>
 			
 		</LinearLayout>
-
-	</LinearLayout>
 
 </LinearLayout>

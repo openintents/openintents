@@ -46,7 +46,7 @@
 	<color name="month_watermark_text">#4FFF</color>
 	
 	
-	
+	<color name="weekday_highlight">#88F</color>
 	<color name="green">#0F0</color>
 
 </resources>

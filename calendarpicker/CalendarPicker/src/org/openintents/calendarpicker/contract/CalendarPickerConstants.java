@@ -126,6 +126,9 @@ public class CalendarPickerConstants {
 			/** Integer for selecting the quantity for determining the background color values
 			 * If this value is omitted, the day's event count will be used for the color value. */
 			public static final String EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX = "org.openintents.calendarpicker.intent.extra.BACKGROUND_COLORMAP_QUANTITY_INDEX";
+			
+			/** An array of color integers */
+			public static final String EXTRA_BACKGROUND_COLORMAP_COLORS = "org.openintents.calendarpicker.intent.extra.BACKGROUND_COLORMAP_COLORS";
 		}
 		
 		/** Columns to supply when implementing a ContentProvider for events */

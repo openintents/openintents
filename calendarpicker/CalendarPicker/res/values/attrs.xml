@@ -17,8 +17,16 @@
 
 <resources>
 
+     <declare-styleable name="FlingableMonthView">
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="vertical_spacing" format="dimension" />
+    </declare-styleable>
+    
+     <declare-styleable name="ColormapView">
+        <attr name="orientation" format="string" />
+    </declare-styleable>
+
      <declare-styleable name="TinyTimelineViewHorizontal">
-        <attr name="text" format="string" />
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
     </declare-styleable>

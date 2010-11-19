@@ -46,13 +46,12 @@ public class TimelineViewHorizontal extends View {
 	
     private TextPaint mTextPaint;
     private Paint mLinePaint;
-    private String mText;
     private int mAscent;
     
     boolean is_touching = false;
     float last_touch_x;
     
-    private Date date;
+    private Date date = new Date();
 
     static final long MILLISECONDS_PER_YEAR = FlingableMonthView.MILLISECONDS_PER_DAY*365;
     float timeline_years_span = 3.5f;
@@ -80,11 +79,6 @@ public class TimelineViewHorizontal extends View {
 
         TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.TinyTimelineViewHorizontal);
-
-        CharSequence s = a.getString(R.styleable.TinyTimelineViewHorizontal_text);
-        if (s != null) {
-            setText(s.toString());
-        }
 
         // Retrieve the color(s) to be used for this view and apply them.
         // Note, if you only care about supporting a single color, that you
@@ -148,17 +142,6 @@ public class TimelineViewHorizontal extends View {
     }
 
     // ========================================================================
-    /**
-     * Sets the text to display in this label
-     * @param text The text to display. This will be drawn as one line.
-     */
-    public void setText(String text) {
-        mText = text;
-        requestLayout();
-        invalidate();
-    }
-
-    // ========================================================================
     public void setDate(Date date) {
         this.date = date;
         invalidate();
@@ -195,6 +178,7 @@ public class TimelineViewHorizontal extends View {
                 measureHeight(heightMeasureSpec));
     }
 
+    int DEFAULT_WIDTH = 50;
     // ========================================================================
     /**
      * Determines the width of this view
@@ -211,8 +195,7 @@ public class TimelineViewHorizontal extends View {
             result = specSize;
         } else {
             // Measure the text
-            result = (int) mTextPaint.measureText(mText) + getPaddingLeft()
-                    + getPaddingRight();
+            result = DEFAULT_WIDTH;
             if (specMode == MeasureSpec.AT_MOST) {
                 // Respect AT_MOST value if that was what is called for by measureSpec
                 result = Math.min(result, specSize);

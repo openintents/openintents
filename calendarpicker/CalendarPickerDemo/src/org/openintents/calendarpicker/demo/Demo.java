@@ -32,6 +32,7 @@ import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,7 +51,9 @@ public class Demo extends Activity implements View.OnClickListener {
 
 	private static final int DIALOG_CALENDARPICKER_DOWNLOAD = 1;
 	private static final int DIALOG_GOOGLE_CALENDAR_SELECTION = 2;
-
+	private static final int DIALOG_DATE_PICKER_OPTIONS = 3;
+	private static final int DIALOG_EVENT_PICKER_OPTIONS = 4;
+	
 
 
 	long selected_google_calendar_id = -1;
@@ -70,15 +73,9 @@ public class Demo extends Activity implements View.OnClickListener {
 
 		setContentView(R.layout.main);
 
-		for (int view : new int[] {
-				R.id.button_pick_date_no_events,
-				R.id.button_pick_date_with_events,
-				R.id.button_pick_event_intent_extras,
-				R.id.button_pick_event_content_provider,
-				R.id.button_pick_event_google_calendar
-		}) {
-			findViewById(view).setOnClickListener(this);
-		}
+
+		findViewById(R.id.button_pick_date).setOnClickListener(this);
+		findViewById(R.id.button_pick_event).setOnClickListener(this);
 	}
 
 	// ========================================================================
@@ -98,71 +95,74 @@ public class Demo extends Activity implements View.OnClickListener {
 	}
 
 	// ========================================================================
+	void launchDatePickerPlain() {
+		Intent i = new Intent(Intent.ACTION_PICK);
+		i.setType(CalendarPickerConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
+		downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
+	}
+	
+	// ========================================================================
+	void launchDatePickerWithEvents() {
+		SampleEventDatabase database = new SampleEventDatabase(this);
+		database.clearData();
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		Uri u = EventContentProvider.constructUri(calendar_id);
+		Intent i = new Intent(Intent.ACTION_PICK, u);
+		downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
+	}
+
+	// ========================================================================
+	void launchEventPickerIntentExtras() {
+		
+		Intent intent = new Intent(Intent.ACTION_PICK);
+		intent.setType(CalendarPickerConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
+
+		List<EventWrapper> generated_events = generateRandomEvents(DEFAULT_RANDOM_EVENTS, new GregorianCalendar());
+		int event_count = generated_events.size();
+		long[] event_ids = new long[event_count];
+		long[] event_times = new long[event_count];
+		String[] event_titles = new String[event_count];
+		for (int i = 0; i < event_count; i++) {
+			EventWrapper event = generated_events.get(i);
+			event_ids[i] = event.id;
+			event_times[i] = event.timestamp;
+			event_titles[i] = event.title;
+		}
+
+		intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS, event_ids);
+		intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS, event_times);
+		intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES, event_titles);
+
+		downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
+	}
+	
+	// ========================================================================
+	void launchEventPickerContentProvider() {
+		SampleEventDatabase database = new SampleEventDatabase(this);
+		database.clearData();
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		Uri u = EventContentProvider.constructUri(calendar_id);
+		Intent i = new Intent(Intent.ACTION_PICK, u);
+		downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
+	}
+	
+	// ========================================================================
+	void launchEventPickerGoogleCalendar() {
+		showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
+	}
+
+	// ========================================================================
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.button_pick_date_no_events:
+		case R.id.button_pick_date:
 		{
-			Intent i = new Intent(Intent.ACTION_PICK);
-			i.setType(CalendarPickerConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
-			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
+			showDialog(DIALOG_DATE_PICKER_OPTIONS);
 			break;
 		}
-		case R.id.button_pick_date_with_events:
+		case R.id.button_pick_event:
 		{
-
-			SampleEventDatabase database = new SampleEventDatabase(this);
-			database.clearData();
-			long calendar_id = database.populateRandomEvents(new GregorianCalendar());
-			Uri u = EventContentProvider.constructUri(calendar_id);
-			Intent i = new Intent(Intent.ACTION_PICK, u);
-
-			Log.e(TAG, "I specified a URI for the date-picker Intent!");
-
-			// XXX Specifying the "mime-type" manually has the effect of
-			// nullifying the data URI!
-			//			i.setType(IntentConstants.CalendarDatePicker.CONTENT_TYPE_DATETIME);
-			downloadLaunchCheck(i, REQUEST_CODE_DATE_SELECTION);
-			break;
-		}
-		case R.id.button_pick_event_intent_extras:
-		{
-			Intent intent = new Intent(Intent.ACTION_PICK);
-			intent.setType(CalendarPickerConstants.CalendarEventPicker.CONTENT_TYPE_CALENDAR_EVENT);
-
-			List<EventWrapper> generated_events = generateRandomEvents(DEFAULT_RANDOM_EVENTS, new GregorianCalendar());
-			int event_count = generated_events.size();
-			long[] event_ids = new long[event_count];
-			long[] event_times = new long[event_count];
-			String[] event_titles = new String[event_count];
-			for (int i = 0; i < event_count; i++) {
-				EventWrapper event = generated_events.get(i);
-				event_ids[i] = event.id;
-				event_times[i] = event.timestamp;
-				event_titles[i] = event.title;
-			}
-
-			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_IDS, event_ids);
-			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TIMESTAMPS, event_times);
-			intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_EVENT_TITLES, event_titles);
-
-			downloadLaunchCheck(intent, REQUEST_CODE_EVENT_SELECTION);
-
-			break;
-		}
-		case R.id.button_pick_event_content_provider:
-		{
-			SampleEventDatabase database = new SampleEventDatabase(this);
-			database.clearData();
-			long calendar_id = database.populateRandomEvents(new GregorianCalendar());
-			Uri u = EventContentProvider.constructUri(calendar_id);
-			Intent i = new Intent(Intent.ACTION_PICK, u);
-			downloadLaunchCheck(i, REQUEST_CODE_EVENT_SELECTION);
-			break;
-		}
-		case R.id.button_pick_event_google_calendar:
-		{
-			showDialog(DIALOG_GOOGLE_CALENDAR_SELECTION);
+			showDialog(DIALOG_EVENT_PICKER_OPTIONS);
 			break;
 		}
 		}
@@ -202,6 +202,49 @@ public class Demo extends Activity implements View.OnClickListener {
 	protected Dialog onCreateDialog(int id) {
 
 		switch (id) {
+		case DIALOG_DATE_PICKER_OPTIONS:
+		{
+			return new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+			.setTitle(R.string.download_calendar_picker)
+			.setItems(new String[] {"Plain", "With events"}, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case 0:
+						launchDatePickerPlain();
+						break;
+					case 1:
+						launchDatePickerWithEvents();
+						break;
+					}
+				}
+			})
+			.create();
+		}
+		case DIALOG_EVENT_PICKER_OPTIONS:
+		{
+			return new AlertDialog.Builder(this)
+			.setIcon(android.R.drawable.ic_dialog_alert)
+			.setTitle(R.string.download_calendar_picker)
+			.setItems(new String[] {"Custom ContentProvider", "Intent Extras", "Google Calendar"}, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
+					case 0:
+						launchEventPickerContentProvider();
+						break;
+					case 1:
+						launchEventPickerIntentExtras();
+						break;
+					case 2:
+						launchEventPickerGoogleCalendar();
+						break;
+					}
+				}
+			})
+			.create();
+		}
 		case DIALOG_CALENDARPICKER_DOWNLOAD:
 		{
 			return new AlertDialog.Builder(this)
@@ -289,8 +332,8 @@ public class Demo extends Activity implements View.OnClickListener {
 
 		if (resultCode != RESULT_OK) {
 			Log.i(TAG, "==> result " + resultCode + " from subactivity!  Ignoring...");
-			//            Toast t = Toast.makeText(this, "Action cancelled!", Toast.LENGTH_SHORT);
-			//            t.show();
+//            Toast t = Toast.makeText(this, "Action cancelled!", Toast.LENGTH_SHORT);
+//            t.show();
 			return;
 		}
 

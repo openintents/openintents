@@ -29,6 +29,7 @@ import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.provider.CachedEventContentProvider;
 import org.openintents.calendarpicker.provider.CachedEventDatabase;
+import org.openintents.calendarpicker.view.ColormapView;
 import org.openintents.calendarpicker.view.FlingableMonthView;
 import org.openintents.calendarpicker.view.OnDateUpdateListener;
 import org.openintents.calendarpicker.view.TimelineViewHorizontal;
@@ -40,7 +41,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
@@ -82,7 +83,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
 	FlingableMonthView month_view;
 	TimelineViewHorizontal tiny_timeline;
     LinearLayout weekday_header_layout;
-	
+    ColormapView colormap_view;
+    
     Toast timeline_date_toast;
     final static SimpleDateFormat YMD_FORMATTER = new SimpleDateFormat("MMMM d, yyyy");
     final static SimpleDateFormat FULL_MONTH_AND_YEAR_FORMATTER = new SimpleDateFormat("MMMM yyyy");
@@ -125,18 +127,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
 			events = new ArrayList<SimpleEvent>();
 		}
         
-
-        LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
         this.weekday_header_layout = (LinearLayout) findViewById(R.id.weekdays_header);
-        Calendar weekdays_cal = Calendar.getInstance();
-        weekdays_cal.set(Calendar.DAY_OF_WEEK, weekdays_cal.getFirstDayOfWeek());
-		for (int i=0; i<FlingableMonthView.DAYS_PER_WEEK; i++) {
-	        TextView tv = new TextView(this);
-	        tv.setGravity(Gravity.CENTER);
-	        tv.setText(DAY_OF_WEEK_FORMATTER.format(weekdays_cal.getTime()));
-	        this.weekday_header_layout.addView(tv, lp);
-	        weekdays_cal.roll(Calendar.DAY_OF_WEEK, 1);
-		}
+        generateWeekdayLabels(this.weekday_header_layout);
         
 		this.timeline_date_toast = Toast.makeText(this, "Date", Toast.LENGTH_SHORT);
 		this.tiny_timeline = (TimelineViewHorizontal) findViewById(R.id.tiny_timeline);
@@ -153,17 +145,31 @@ public class MonthActivity extends PeriodBrowsingActivity {
 			}
 		});
 		
+		
+	
+		
 		this.month_view = (FlingableMonthView) findViewById(R.id.full_month);
 		
 		this.month_view.calendar_drawing.enable_event_count = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_SHOW_EVENT_COUNT, true);
-		this.month_view.setVisualizeQuantities(getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_VISUALIZE_QUANTITIES, false));
-		this.month_view.calendar_drawing.color_mapping.setMaximums(maximums);
 		
-		if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX)) {
-			int extra_quantity_index = getIntent().getIntExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX, -1);
-			this.month_view.calendar_drawing.color_mapping.setColormapSource(extra_quantity_index);
+		boolean visualizing_quantites = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_VISUALIZE_QUANTITIES, false);
+		this.month_view.setVisualizeQuantities(visualizing_quantites);
+		if (visualizing_quantites) {
+			this.month_view.calendar_drawing.color_mapping.setMaximums(maximums);
+			
+			if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX)) {
+				int extra_quantity_index = getIntent().getIntExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX, -1);
+				this.month_view.calendar_drawing.color_mapping.setColormapSource(extra_quantity_index);
+			}
+			
+	        ColormapView colormap_view = (ColormapView) findViewById(R.id.colormap_view);
+	        colormap_view.setVisibility(View.VISIBLE);
+	        if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS)) {
+	        	int[] colors = getIntent().getIntArrayExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS);
+	        	this.month_view.calendar_drawing.color_mapping.setColors(colors);
+		        colormap_view.setColors(colors);
+	        }
 		}
-		
 		
 		this.month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
         	@Override
@@ -175,18 +181,7 @@ public class MonthActivity extends PeriodBrowsingActivity {
 		this.month_view.setOnDayTouchListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-
-				int child_idx = -1;
-				if (date != null) {
-					Calendar c = new GregorianCalendar();
-					c.setTime(date);
-					child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
-				}
-				
-				for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
-					TextView tv = (TextView) weekday_header_layout.getChildAt(i);
-					tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.secondary_text_dark));
-				}
+				updateWeekHeaderBar(date);
 			}
         });
 		this.month_view.setOnScrollListener(new OnDateUpdateListener() {
@@ -235,8 +230,25 @@ public class MonthActivity extends PeriodBrowsingActivity {
 //        this.tiny_timeline.setDate(current_month_calendar.getTime());
         this.month_view.setEvents(events);
         this.month_view.setMonthAndHighlight(current_month_calendar.getTime());
+
     }
 
+
+    // ========================================================================
+    void generateWeekdayLabels(LinearLayout layout) {
+        LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
+        Calendar weekdays_cal = Calendar.getInstance();
+        weekdays_cal.set(Calendar.DAY_OF_WEEK, weekdays_cal.getFirstDayOfWeek());
+		for (int i=0; i<FlingableMonthView.DAYS_PER_WEEK; i++) {
+	        TextView tv = new TextView(this);
+	        tv.setGravity(Gravity.CENTER);
+	        tv.setTypeface(Typeface.DEFAULT_BOLD);
+	        tv.setText(DAY_OF_WEEK_FORMATTER.format(weekdays_cal.getTime()));
+	        layout.addView(tv, lp);
+	        weekdays_cal.roll(Calendar.DAY_OF_WEEK, 1);
+		}
+    }
+    
     // ========================================================================
     void setEventCountVisibility(boolean visible) {
 
@@ -356,15 +368,18 @@ public class MonthActivity extends PeriodBrowsingActivity {
     // ========================================================================
     void updateWeekHeaderBar(Date date) {
 		// Highlight the day of the week in the header bar
-		Calendar c = new GregorianCalendar();
-		c.setTime(date);
-		int child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+		int child_idx = -1;
+		if (date != null) {
+			Calendar c = new GregorianCalendar();
+			c.setTime(date);
+			child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+		}
+		
 		for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
-			TextView tv = (TextView) weekday_header_layout.getChildAt(child_idx);
-			tv.setTextColor(i == child_idx ? Color.RED : getResources().getColor(android.R.color.primary_text_dark));
+			TextView tv = (TextView) weekday_header_layout.getChildAt(i);
+			tv.setTextColor(getResources().getColor(i == child_idx ? R.color.weekday_highlight : android.R.color.secondary_text_dark));
 		}
     }
-
     
     // ========================================================================
     @Override

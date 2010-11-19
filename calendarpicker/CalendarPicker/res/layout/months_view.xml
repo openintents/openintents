@@ -24,6 +24,8 @@
 	android:background="@null"
 	>
 
+
+
 	<TextView  
 		android:id="@+id/month_title"
 		android:text="Month"
@@ -34,28 +36,56 @@
 		android:paddingLeft="5dip"  
 		style="?android:attr/listSeparatorTextViewStyle" /> 
   
-   	<LinearLayout
-		android:layoutAnimation="@anim/layout_random_fade"
-		android:id="@+id/weekdays_header"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		/>
-
-	<org.openintents.calendarpicker.view.FlingableMonthView
-		android:id="@+id/full_month"
+ 
+	  <LinearLayout
 		android:layout_width="fill_parent" 
 		android:layout_height="fill_parent"
 		android:layout_weight="1"
-	    />
+		android:orientation="horizontal"
+		>
+  
+		  <LinearLayout
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:orientation="vertical"
+			>
+			  
+		   	<LinearLayout
+				android:layoutAnimation="@anim/layout_random_fade"
+				android:id="@+id/weekdays_header"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:orientation="horizontal"
+				/>
+		
+			<org.openintents.calendarpicker.view.FlingableMonthView
+				android:id="@+id/full_month"
+				android:layout_width="fill_parent" 
+				android:layout_height="fill_parent"
+				app:horizontal_spacing="1px"
+				app:vertical_spacing="1px"
+				android:layout_weight="1"
+			    />
+		
+			<org.openintents.calendarpicker.view.TimelineViewHorizontal
+		        app:textColor="#ffffffff"
+		        android:background="@android:color/black"
+				android:id="@+id/tiny_timeline"
+				android:layout_width="fill_parent" 
+				android:layout_height="40dip"
+			    />
 
-	<org.openintents.calendarpicker.view.TimelineViewHorizontal
-        app:text="Green" app:textColor="#ffffffff"
-        android:background="@android:color/black"
-		android:id="@+id/tiny_timeline"
-		android:layout_width="fill_parent" 
-		android:layout_height="40dip"
-	    />
+		</LinearLayout>
 
+		<org.openintents.calendarpicker.view.ColormapView
+		   	android:visibility="gone"
+	        android:background="@android:color/black"
+			android:id="@+id/colormap_view"
+			android:layout_width="3dip" 
+			android:layout_height="fill_parent"
+		    />
+
+	</LinearLayout>
 </LinearLayout>
 

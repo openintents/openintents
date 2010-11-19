@@ -34,19 +34,25 @@ import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DrawFilter;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.FontMetrics;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -82,7 +88,7 @@ import android.view.GestureDetector.SimpleOnGestureListener;
  */
 
 
-public class FlingableMonthView extends View {
+public class FlingableMonthView extends View implements SharedPreferences.OnSharedPreferenceChangeListener {
 
 	static final String TAG = "FlingableMonthView";
 
@@ -160,9 +166,25 @@ public class FlingableMonthView extends View {
     	
     	
     	int color_low = Color.BLACK;
-    	int color_high = Color.RED;
-    	public void setMaxColor(int color) {
-    		this.color_high = color;
+    	int color_high = Color.MAGENTA;
+    	
+    	int[] color_stops = new int[] {color_low, color_high};
+    	/** Assign equidistant color stops.  Validates the input */
+    	public void setColors(int[] stops) {
+    		if (stops != null && stops.length > 1)
+    			this.color_stops = stops;
+    	}
+    	
+    	private int interpolateColorStops(float fraction) {
+    		
+    		int max_color_index = this.color_stops.length - 1;
+    		float high_fractional_value = fraction * max_color_index;
+    		int low_index = (int) high_fractional_value;
+    		int high_index = (int) Math.ceil(fraction * max_color_index);
+    		
+    		float partial_fraction = high_fractional_value - low_index;
+    		
+    		return interpolateColor(this.color_stops[low_index], this.color_stops[high_index], partial_fraction);
     	}
 
     	int getTileColor(CalendarDayAggregator day) {
@@ -180,7 +202,7 @@ public class FlingableMonthView extends View {
     			break;
     		}
     		
-    		return interpolateColor(this.color_low, this.color_high, fraction);
+    		return interpolateColorStops(fraction);
     	}
     }
     
@@ -189,7 +211,13 @@ public class FlingableMonthView extends View {
     	super(context, attrs);
 
     	this.calendar_drawing = new CalendarRenderer(context);
-
+    	
+        TypedArray a = context.obtainStyledAttributes(attrs,
+                R.styleable.FlingableMonthView);
+    	this.calendar_drawing.horizontal_spacing = a.getDimensionPixelOffset(R.styleable.FlingableMonthView_horizontal_spacing, 1);
+    	this.calendar_drawing.vertical_spacing = a.getDimensionPixelOffset(R.styleable.FlingableMonthView_vertical_spacing, 1);
+    	a.recycle();
+    	
     	setMonth(new GregorianCalendar());
     	
 
@@ -217,6 +245,11 @@ public class FlingableMonthView extends View {
                 return false;
 			}
         });
+        
+        
+        
+        SharedPreferences prefs = context.getSharedPreferences(CalendarDisplayPreferences.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+		prefs.registerOnSharedPreferenceChangeListener(this);
     }
 
     // ========================================================================
@@ -399,8 +432,8 @@ public class FlingableMonthView extends View {
     	
     	static final String MONTH_WATERMARK_FONT_PATH = "BerlinSmallCaps.ttf";
 
-    	TextPaint day_tile_paint;
-    	TextPaint month_watermark_text_paint;
+    	Paint day_tile_paint, month_watermark_text_paint, triangle_paint;
+    	
         Resources resources;
         FontMetrics day_tile_paint_font_metrics;
 
@@ -442,6 +475,39 @@ public class FlingableMonthView extends View {
     	Calendar dummy_calendar = new GregorianCalendar();
     	Date dummy_date = new Date();
 
+    	
+    	
+    	
+    	
+    	
+    	DrawFilter mFastDF = new PaintFlagsDrawFilter(Paint.FILTER_BITMAP_FLAG |
+    			Paint.DITHER_FLAG,
+    			0);
+
+    	Shader mShader1 = new BitmapShader(makeBitmap2(), Shader.TileMode.REPEAT,
+    			Shader.TileMode.REPEAT);
+    	Bitmap makeBitmap2() {
+    		int tile_size = 5;
+    		int dimension = tile_size*2;
+    		Bitmap bm = Bitmap.createBitmap(dimension, dimension, Bitmap.Config.ARGB_8888);
+    		Canvas c = new Canvas(bm);
+    		c.drawColor(Color.TRANSPARENT);
+    		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    		paint.setColor(Color.BLACK);
+
+    		for (int i=0; i<2; i++)
+    			c.drawRect(tile_size*i, tile_size*i, tile_size*(i+1), tile_size*(i+1), paint);
+    		return bm;
+    	}
+
+
+
+    	
+    	
+    	
+    	
+    	
+    	
     	int color_month_watermark_text,
     	color_calendar_date_background_active_selected,
     	color_calendar_date_background_passive_odd_selected,
@@ -478,7 +544,7 @@ public class FlingableMonthView extends View {
     		this.color_inactive_day_triangle = resources.getColor(R.color.inactive_day_triangle);
     		
     		
-        	this.color_mapping.setMaxColor(resources.getColor(R.color.colormap_max));
+        	this.color_mapping.color_stops[1] = resources.getColor(R.color.colormap_max);
     	}
     	
 
@@ -487,12 +553,20 @@ public class FlingableMonthView extends View {
         // ========================================================================
     	CalendarRenderer(Context context) {
     		
-        	this.transparency_enabled = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(
+            SharedPreferences prefs = context.getSharedPreferences(CalendarDisplayPreferences.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+        	this.transparency_enabled = prefs.getBoolean(
         			CalendarDisplayPreferences.PREFKEY_ENABLE_TRANSPARENCY, CalendarDisplayPreferences.DEFAULT_ENABLE_TRANSPARENCY);
         	
     		this.resources = context.getResources();
     		initColors(this.resources);
 
+    		
+    		
+        	this.triangle_paint = new Paint();
+        	this.triangle_paint.setShader(mShader1);
+    		
+    		
+    		
         	this.day_tile_paint = new TextPaint();
         	this.day_tile_paint.setAntiAlias(true);
         	this.day_tile_paint.setColor(Color.WHITE);
@@ -716,6 +790,8 @@ public class FlingableMonthView extends View {
         
         // ========================================================================
     	void draw(final Canvas canvas) {
+    		canvas.setDrawFilter(mFastDF);
+    	
 
             canvas.save();
             canvas.translate(0, vertical_offset);
@@ -949,14 +1025,13 @@ public class FlingableMonthView extends View {
             // Draw triangle indicators
             if (this.color_mapping.enabled) {
             	if (months_away < 0) {
-
-                    this.day_tile_paint.setColor(color_inactive_day_triangle);
-                    canvas.drawPath(this.southeast_triangle, this.day_tile_paint);
+//            		this.triangle_paint.setColor(color_inactive_day_triangle);
+                    canvas.drawPath(this.southeast_triangle, this.triangle_paint);
 
             	} else if (months_away > 0) {
 
-                    this.day_tile_paint.setColor(color_inactive_day_triangle);
-                    canvas.drawPath(this.northwest_triangle, this.day_tile_paint);
+//                    this.triangle_paint.setColor(color_inactive_day_triangle);
+                    canvas.drawPath(this.northwest_triangle, this.triangle_paint);
             	}
             }
         }
@@ -1344,4 +1419,12 @@ public class FlingableMonthView extends View {
     protected void onSizeChanged (int w, int h, int oldw, int oldh) {
     	this.calendar_drawing.reestablishCornerBoxDimensions();
     }
+
+    // ==========================================================
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		this.calendar_drawing.transparency_enabled = sharedPreferences.getBoolean(CalendarDisplayPreferences.PREFKEY_ENABLE_TRANSPARENCY, CalendarDisplayPreferences.DEFAULT_ENABLE_TRANSPARENCY);
+		invalidate();
+	}
 }
