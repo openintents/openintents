@@ -73,9 +73,8 @@ public class Demo extends Activity implements View.OnClickListener {
 
 		setContentView(R.layout.main);
 
-
-		findViewById(R.id.button_pick_date).setOnClickListener(this);
-		findViewById(R.id.button_pick_event).setOnClickListener(this);
+		for (int id : new int[] {R.id.button_pick_date, R.id.button_pick_event, R.id.button_visualize_events})
+			findViewById(id).setOnClickListener(this);
 	}
 
 	// ========================================================================
@@ -152,6 +151,19 @@ public class Demo extends Activity implements View.OnClickListener {
 	}
 
 	// ========================================================================
+	void launchEventVisualizer() {
+		
+		// TODO
+		
+		SampleEventDatabase database = new SampleEventDatabase(this);
+		database.clearData();
+		long calendar_id = database.populateRandomEvents(new GregorianCalendar());
+		Uri u = EventContentProvider.constructUri(calendar_id);
+		Intent i = new Intent(Intent.ACTION_VIEW, u);
+		downloadLaunchCheck(i, -1);
+	}
+	
+	// ========================================================================
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -165,13 +177,21 @@ public class Demo extends Activity implements View.OnClickListener {
 			showDialog(DIALOG_EVENT_PICKER_OPTIONS);
 			break;
 		}
+		case R.id.button_visualize_events:
+		{
+			launchEventVisualizer();
+			break;
+		}
 		}
 	}
 
 	// ========================================================================
 	void downloadLaunchCheck(Intent intent, int request_code) {
 		if (CalendarPickerConstants.DownloadInfo.isIntentAvailable(this, intent))
-			startActivityForResult(intent, request_code);
+			if (request_code >= 0)
+				startActivityForResult(intent, request_code);
+			else
+				startActivity(intent);
 		else
 			showDialog(DIALOG_CALENDARPICKER_DOWNLOAD);
 	}

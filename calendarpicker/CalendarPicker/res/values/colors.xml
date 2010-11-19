@@ -32,10 +32,6 @@
 	<color name="calendar_date_background_passive_even_selected">#03b</color>
 	<color name="calendar_date_background_passive_odd_selected">#30b</color>
 	
-	<color name="inactive_day_triangle">#88F</color>
-	<color name="colormap_max">#FBF</color>
-	
-
 	<color name="calendar_date_background_active">#060</color>
 	<color name="calendar_date_background_passive_even">#036</color>
 	<color name="calendar_date_background_passive_odd">#306</color>
@@ -43,7 +39,8 @@
 	
 	<color name="calendar_date_background_longpress">#FF0</color>
 	
-	<color name="month_watermark_text">#4FFF</color>
+	<color name="month_watermark_text_light">#4FFF</color>
+	<color name="month_watermark_text_dark">#4000</color>
 	
 	
 	<color name="weekday_highlight">#88F</color>

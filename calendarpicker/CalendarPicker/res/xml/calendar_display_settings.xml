@@ -10,6 +10,22 @@
 			android:title="Translucent graphics"
 			android:summary="Enable partial opacity for some graphics elements" />
 
+		<CheckBoxPreference android:key="enable_colormap_override"
+			android:defaultValue="false"
+			android:title="Override colormap"
+			android:summary="Use a custom colormap other than the one provided by the application" />
+
+		<Preference android:key="colormap_override"
+			android:dependency="enable_colormap_override"
+			android:title="Colormap"
+			android:summary="@string/no_colormap_selected" />
+
+		<CheckBoxPreference android:key="dark_watermark"
+			android:defaultValue="false"
+			android:title="Dark month watermark"
+			android:summary="Dark watermark may be more visible for certain colormaps" />
+
+
 	</PreferenceCategory>
 
 </PreferenceScreen>

@@ -52,7 +52,7 @@
 			>
 			  
 		   	<LinearLayout
-				android:layoutAnimation="@anim/layout_random_fade"
+				android:layoutAnimation="@anim/layout_sequential_fade"
 				android:id="@+id/weekdays_header"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
@@ -80,9 +80,9 @@
 
 		<org.openintents.calendarpicker.view.ColormapView
 		   	android:visibility="gone"
-	        android:background="@android:color/black"
+			app:orientation="vertical"
 			android:id="@+id/colormap_view"
-			android:layout_width="3dip" 
+			android:layout_width="4dip" 
 			android:layout_height="fill_parent"
 		    />
 

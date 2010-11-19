@@ -33,14 +33,6 @@
 		android:paddingBottom="2dip"  
 		android:paddingLeft="5dip"  
 		style="?android:attr/listSeparatorTextViewStyle" /> 
-  
-   	<LinearLayout
-		android:layoutAnimation="@anim/layout_random_fade"
-		android:id="@+id/weekdays_header"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		/>
 
 	<org.openintents.calendarpicker.view.FlingableWeekView
 		android:id="@+id/full_week"

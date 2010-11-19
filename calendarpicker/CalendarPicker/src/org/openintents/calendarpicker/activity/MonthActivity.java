@@ -40,7 +40,9 @@ import org.openintents.distribution.AboutDialog;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -60,7 +62,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
-public class MonthActivity extends PeriodBrowsingActivity {
+public class MonthActivity extends PeriodBrowsingActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     final static public String TAG = "MonthActivity";
 
@@ -93,6 +95,28 @@ public class MonthActivity extends PeriodBrowsingActivity {
 	void updateMonthHeader(Calendar calendar) {
         month_title.setText( FULL_MONTH_AND_YEAR_FORMATTER.format(calendar.getTime()) );
 	}
+
+    // ========================================================================
+	void updateColormap(SharedPreferences sharedPreferences) {
+		
+		int[] colors = null;
+
+		boolean override_enabled = sharedPreferences.getBoolean(CalendarDisplayPreferences.PREFKEY_ENABLE_COLORMAP_OVERRIDE, false);
+		if (override_enabled) {
+
+        	int colormap_index = sharedPreferences.getInt(CalendarDisplayPreferences.PREFKEY_COLORMAP_OVERRIDE, 0);
+        	colors = ColormapSelectionListActivity.COLOR_LISTS[colormap_index];
+
+		} else if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS)) {
+        	colors = getIntent().getIntArrayExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS);
+
+        }
+		
+		if (colors != null) {
+        	this.month_view.setColors(colors);
+        	this.colormap_view.setColors(colors);
+		}
+	}
 	
     // ========================================================================
     @Override
@@ -103,6 +127,10 @@ public class MonthActivity extends PeriodBrowsingActivity {
         setContentView(R.layout.months_view);
         getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, R.drawable.titlebar_icon);
 
+        final SharedPreferences prefs = getSharedPreferences(CalendarDisplayPreferences.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
+		prefs.registerOnSharedPreferenceChangeListener(this);
+        
+        
         this.month_title = (TextView) findViewById(R.id.month_title);
 
         DailyEventMaximums maximums = new DailyEventMaximums();
@@ -147,7 +175,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
 		
 		
 	
-		
+
+        this.colormap_view = (ColormapView) findViewById(R.id.colormap_view);
 		this.month_view = (FlingableMonthView) findViewById(R.id.full_month);
 		
 		this.month_view.calendar_drawing.enable_event_count = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_SHOW_EVENT_COUNT, true);
@@ -162,13 +191,8 @@ public class MonthActivity extends PeriodBrowsingActivity {
 				this.month_view.calendar_drawing.color_mapping.setColormapSource(extra_quantity_index);
 			}
 			
-	        ColormapView colormap_view = (ColormapView) findViewById(R.id.colormap_view);
 	        colormap_view.setVisibility(View.VISIBLE);
-	        if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS)) {
-	        	int[] colors = getIntent().getIntArrayExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_COLORS);
-	        	this.month_view.calendar_drawing.color_mapping.setColors(colors);
-		        colormap_view.setColors(colors);
-	        }
+	        updateColormap(prefs);
 		}
 		
 		this.month_view.setMonthUpdateCallback(new MonthUpdateCallback() {
@@ -574,5 +598,14 @@ public class MonthActivity extends PeriodBrowsingActivity {
     // ========================================================================
 	private void showAboutBox() {
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
+	}
+	
+    // ==========================================================
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+			String key) {
+		
+		if (CalendarDisplayPreferences.PREFKEY_COLORMAP_OVERRIDE.equals(key) || CalendarDisplayPreferences.PREFKEY_ENABLE_COLORMAP_OVERRIDE.equals(key))
+			updateColormap(sharedPreferences);
 	}
 }

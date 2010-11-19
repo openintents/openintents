@@ -76,9 +76,12 @@ public class ColormapView extends View {
     	a.recycle();
     }
 
-
+    // ========================================================================
     public void setColors(int[] colors) {
     	this.color_stops = colors;
+    	
+    	updateGradient();
+    	invalidate();
     }
     
     // ========================================================================
@@ -153,12 +156,24 @@ public class ColormapView extends View {
         }
         return result;
     }
-    
+
     Shader gradient;
     // ==========================================================
     @Override
     protected void onSizeChanged (int w, int h, int oldw, int oldh) {
-    	gradient = new LinearGradient (0, 0, 0, h, this.color_stops, null, Shader.TileMode.CLAMP);
+    	updateGradient();
+    }
+    
+    // ========================================================================
+    void updateGradient() {
+    	switch (this.orientation) {
+    	case HORIZONTAL:
+    		gradient = new LinearGradient (0, 0, getWidth(), 0, this.color_stops, null, Shader.TileMode.CLAMP);
+    		break;
+    	case VERTICAL:
+    		gradient = new LinearGradient (0, getHeight(), 0, 0, this.color_stops, null, Shader.TileMode.CLAMP);
+    		break;
+    	}
     }
     
     // ========================================================================

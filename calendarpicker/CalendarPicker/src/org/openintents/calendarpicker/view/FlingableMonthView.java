@@ -35,6 +35,7 @@ import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -126,8 +127,15 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     long longpress_start_time;
 	
 
+    // ========================================================================
     public CalendarRenderer calendar_drawing;
-    
+	public void setColors(int[] stops) {
+		if (stops != null && stops.length > 1)
+			this.calendar_drawing.color_mapping.color_stops = stops;
+		
+		invalidate();
+	}
+	
     // ========================================================================
     public static class ColorMappingConfiguration {
 
@@ -170,10 +178,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	
     	int[] color_stops = new int[] {color_low, color_high};
     	/** Assign equidistant color stops.  Validates the input */
-    	public void setColors(int[] stops) {
-    		if (stops != null && stops.length > 1)
-    			this.color_stops = stops;
-    	}
+
     	
     	private int interpolateColorStops(float fraction) {
     		
@@ -250,6 +255,8 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         
         SharedPreferences prefs = context.getSharedPreferences(CalendarDisplayPreferences.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
 		prefs.registerOnSharedPreferenceChangeListener(this);
+		
+		this.calendar_drawing.dark_watermark = prefs.getBoolean(CalendarDisplayPreferences.PREFKEY_DARK_WATERMARK, false);
     }
 
     // ========================================================================
@@ -439,8 +446,10 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
     	float max_month_width;
 
-    	float horizontal_spacing = 2;
-        float vertical_spacing = 2;
+    	float horizontal_spacing = 1;
+        float vertical_spacing = 1;
+        
+        final static int CHECKER_PATTERN_TILE_SIZE = 8;
         
     	public boolean enable_event_count = true;
 
@@ -487,7 +496,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	Shader mShader1 = new BitmapShader(makeBitmap2(), Shader.TileMode.REPEAT,
     			Shader.TileMode.REPEAT);
     	Bitmap makeBitmap2() {
-    		int tile_size = 5;
+    		int tile_size = CHECKER_PATTERN_TILE_SIZE;
     		int dimension = tile_size*2;
     		Bitmap bm = Bitmap.createBitmap(dimension, dimension, Bitmap.Config.ARGB_8888);
     		Canvas c = new Canvas(bm);
@@ -508,43 +517,33 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	
     	
     	
-    	int color_month_watermark_text,
-    	color_calendar_date_background_active_selected,
-    	color_calendar_date_background_passive_odd_selected,
-    	color_calendar_date_background_passive_even_selected,
-    	color_calendar_date_background_active,
-    	color_calendar_date_background_passive_odd,
-    	color_calendar_date_background_passive_even,
+    	int color_month_watermark_text_dark,
+    	color_month_watermark_text_light,
     	color_calendar_date_background_longpress,
     	color_event_count_background,
     	color_event_count_number,
     	color_cornerbox_background_color,
     	color_cornerbox_date_number,
-    	color_cornerbox_date_number_passive,
-    	color_inactive_day_triangle;
+    	color_cornerbox_date_number_passive;
 
+    	ColorStateList month_color_states;
+    	
+    	boolean dark_watermark = false;
         // ========================================================================
     	/** We initialize the colors once here, as opposed to looking them up from
     	 * the Resources object every frame (or worse, once per calendar day).
     	 */
     	void initColors(Resources resources) {
-    		this.color_month_watermark_text = resources.getColor(R.color.month_watermark_text);
-    		this.color_calendar_date_background_active_selected = resources.getColor(R.color.calendar_date_background_active_selected);
-    		this.color_calendar_date_background_passive_odd_selected = resources.getColor(R.color.calendar_date_background_passive_odd_selected);
-    		this.color_calendar_date_background_passive_even_selected = resources.getColor(R.color.calendar_date_background_passive_even_selected);
-    		this.color_calendar_date_background_active = resources.getColor(R.color.calendar_date_background_active);
-    		this.color_calendar_date_background_passive_odd = resources.getColor(R.color.calendar_date_background_passive_odd);
-    		this.color_calendar_date_background_passive_even = resources.getColor(R.color.calendar_date_background_passive_even);
+    		this.color_month_watermark_text_dark = resources.getColor(R.color.month_watermark_text_dark);
+    		this.color_month_watermark_text_light = resources.getColor(R.color.month_watermark_text_light);
     		this.color_calendar_date_background_longpress = resources.getColor(R.color.calendar_date_background_longpress);
     		this.color_event_count_background = resources.getColor(R.color.event_count_background);
     		this.color_event_count_number = resources.getColor(R.color.event_count_number);
     		this.color_cornerbox_background_color = resources.getColor(R.color.cornerbox_background_color);
     		this.color_cornerbox_date_number = resources.getColor(R.color.cornerbox_date_number);
     		this.color_cornerbox_date_number_passive = resources.getColor(R.color.cornerbox_date_number_passive);
-    		this.color_inactive_day_triangle = resources.getColor(R.color.inactive_day_triangle);
     		
-    		
-        	this.color_mapping.color_stops[1] = resources.getColor(R.color.colormap_max);
+    		this.month_color_states = resources.getColorStateList(R.color.days);
     	}
     	
 
@@ -575,7 +574,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     		Typeface face = Typeface.createFromAsset(context.getAssets(), MONTH_WATERMARK_FONT_PATH);
     		this.month_watermark_text_paint.setTypeface(face);
             this.month_watermark_text_paint.setAntiAlias(true);
-    		this.month_watermark_text_paint.setColor(color_month_watermark_text);
+    		this.month_watermark_text_paint.setColor(color_month_watermark_text_dark);
     		this.month_watermark_text_paint.setTextAlign(Align.RIGHT);
 
         	this.max_month_width = getMaxMonthWidth(this.month_watermark_text_paint);
@@ -931,7 +930,10 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             if (month_text_fader != null)
             	fraction = month_text_fader.getFraction(now);
 
-        	int text_color = interpolateColor(Color.WHITE, color_month_watermark_text, fraction);
+            
+        	int text_color = dark_watermark ?
+        			interpolateColor(Color.BLACK, color_month_watermark_text_dark, fraction)
+        			: interpolateColor(Color.WHITE, color_month_watermark_text_light, fraction);
         	this.month_watermark_text_paint.setColor(text_color);
         	
         	
@@ -962,6 +964,28 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         	boolean month_active = active_month_calendar.get(Calendar.MONTH) == daycal_month_idx;
             drawCornerBox(canvas, day, month_active);
         }
+
+        // ========================================================================
+        int[] getProperViewState(boolean month_focused, boolean daycal_month_odd, boolean day_highlighted) {
+        	if (month_focused) {
+        		if (day_highlighted)
+        			return View.ENABLED_FOCUSED_SELECTED_STATE_SET;
+    			else
+        			return View.ENABLED_FOCUSED_STATE_SET;
+        	} else {
+        		if (daycal_month_odd) {
+        			if (day_highlighted)
+            			return View.ENABLED_SELECTED_STATE_SET;
+        			else
+            			return View.ENABLED_STATE_SET;
+        		} else {
+        			if (day_highlighted)
+            			return View.SELECTED_STATE_SET;
+        			else
+            			return View.EMPTY_STATE_SET;
+        		}
+        	}
+        }
         
         // ========================================================================
         protected void drawDayHolder(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
@@ -969,8 +993,8 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         	this.dummy_calendar.setTime(day.getDate());
 
         	int months_away = getMonthDifference(active_month_calendar, this.dummy_calendar);
-        	boolean month_active = months_away == 0;
-        	boolean daycal_month_even = months_away % 2 == 0;
+        	boolean month_focused = months_away == 0;
+        	boolean daycal_month_odd = months_away % 2 != 0;
         	
             boolean day_highlighted = day.getDate().equals(highlighted_day);
 
@@ -978,24 +1002,16 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             if (this.color_mapping.enabled) {
             	
             	if (day_highlighted) {
-
-            		background_color = month_active ? color_calendar_date_background_active_selected
-						: (daycal_month_even ? color_calendar_date_background_passive_odd_selected : color_calendar_date_background_passive_even_selected);
+            		background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
             		
             	} else {
-	            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_active)
+	            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_focused)
 	            		background_color = this.color_mapping.color_low;
 	            	else
 	            		background_color = this.color_mapping.getTileColor(day);
             	}
             } else {
-            	background_color = day_highlighted ?
-        				month_active ?
-        						color_calendar_date_background_active_selected
-           						: (daycal_month_even ? color_calendar_date_background_passive_odd_selected : color_calendar_date_background_passive_even_selected)
-                		: month_active ?
-              					color_calendar_date_background_active
-                				: (daycal_month_even ? color_calendar_date_background_passive_odd : color_calendar_date_background_passive_even);
+            	background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
             }
             				
             if (is_holding_longpress && day.getDate().equals(highlighted_day)) {
@@ -1022,17 +1038,19 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
             
             
-            // Draw triangle indicators
+            // Draw bordering month day indicators
             if (this.color_mapping.enabled) {
+
+            	/*
             	if (months_away < 0) {
-//            		this.triangle_paint.setColor(color_inactive_day_triangle);
                     canvas.drawPath(this.southeast_triangle, this.triangle_paint);
-
             	} else if (months_away > 0) {
-
-//                    this.triangle_paint.setColor(color_inactive_day_triangle);
                     canvas.drawPath(this.northwest_triangle, this.triangle_paint);
             	}
+            	*/
+
+            	if (!month_focused)
+            		canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.triangle_paint);
             }
         }
 
@@ -1041,11 +1059,10 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
             canvas.save();
             canvas.translate(daybox.width()/2f, daybox.height()/2f);
-            
     		
     		int event_count = calendar_day.getEventCount();
 
-    		if (event_count > 0) {
+            if (event_count > 0) {
 
     	        // Draw decorative circle
     			
@@ -1425,6 +1442,8 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		this.calendar_drawing.transparency_enabled = sharedPreferences.getBoolean(CalendarDisplayPreferences.PREFKEY_ENABLE_TRANSPARENCY, CalendarDisplayPreferences.DEFAULT_ENABLE_TRANSPARENCY);
+		
+		this.calendar_drawing.dark_watermark = sharedPreferences.getBoolean(CalendarDisplayPreferences.PREFKEY_DARK_WATERMARK, false);
 		invalidate();
 	}
 }

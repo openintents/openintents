@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+   <item android:state_enabled="true" android:state_focused="true" android:state_selected="true" android:color="@color/calendar_date_background_active_selected"/>
+   <item android:state_enabled="true" android:state_focused="true" android:state_selected="false" android:color="@color/calendar_date_background_active" />
+   
+   <item android:state_enabled="true" android:state_focused="false" android:state_selected="true" android:color="@color/calendar_date_background_passive_even_selected" />
+   <item android:state_enabled="true" android:state_focused="false" android:state_selected="false" android:color="@color/calendar_date_background_passive_even" />
+
+   <item android:state_enabled="false" android:state_focused="false" android:state_selected="true" android:color="@color/calendar_date_background_passive_odd_selected" />
+   <item android:state_enabled="false" android:state_focused="false" android:state_selected="false" android:color="@color/calendar_date_background_passive_odd" />
+</selector>

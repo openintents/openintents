@@ -43,6 +43,9 @@
 * Longpressing date opens context menu</string>
     
     
+    <string name="no_colormap_selected">No colormap selected</string>
+    
+    
 	<!-- About -->
 	<string name="about">About</string>
 	<string name="aboutapp_not_available">Version %s\nWritten by Karl Ostmo 2010\n\nPlease install OI About to display full info (contact, credits, license).</string>

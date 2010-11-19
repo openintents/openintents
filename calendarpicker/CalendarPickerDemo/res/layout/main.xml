@@ -23,7 +23,7 @@
   
 
 
- 		<Button
+	<Button
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="Date Picker"
@@ -88,5 +88,12 @@
 			/>
 			
 		</LinearLayout>
+
+
+	<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Event Quantity Visualizer"
+    android:id="@+id/button_visualize_events"/>
 
 </LinearLayout>

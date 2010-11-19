@@ -74,6 +74,9 @@
 		<activity android:name="org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences"/>            
             
 
+		<activity android:name="org.openintents.calendarpicker.activity.ColormapSelectionListActivity"/>            
+            
+
 
     </application>
     <uses-sdk android:targetSdkVersion="4" android:minSdkVersion="4"/>
