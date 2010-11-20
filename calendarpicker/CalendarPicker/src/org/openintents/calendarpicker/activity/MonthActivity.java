@@ -25,7 +25,9 @@ import java.util.List;
 
 import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences;
+import org.openintents.calendarpicker.container.ColorMappingConfiguration;
 import org.openintents.calendarpicker.container.SimpleEvent;
+import org.openintents.calendarpicker.container.ColorMappingConfiguration.ColorMappingHost;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.provider.CachedEventContentProvider;
 import org.openintents.calendarpicker.provider.CachedEventDatabase;
@@ -62,10 +64,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 
-public class MonthActivity extends PeriodBrowsingActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+public class MonthActivity extends PeriodBrowsingActivity implements ColorMappingHost, SharedPreferences.OnSharedPreferenceChangeListener {
 
     final static public String TAG = "MonthActivity";
 
+
+    
+    
 	static final int REQUEST_CODE_EVENT_SELECTION = 1;
 	static final int REQUEST_CODE_MONTH_YEAR_SELECTION = 2;
 
@@ -81,11 +86,15 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
     
 
 
+
 	TextView month_title;
 	FlingableMonthView month_view;
 	TimelineViewHorizontal tiny_timeline;
     LinearLayout weekday_header_layout;
     ColormapView colormap_view;
+    
+
+    ColorMappingConfiguration color_mapping = new ColorMappingConfiguration();
     
     Toast timeline_date_toast;
     final static SimpleDateFormat YMD_FORMATTER = new SimpleDateFormat("MMMM d, yyyy");
@@ -112,10 +121,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
 
         }
 		
-		if (colors != null) {
-        	this.month_view.setColors(colors);
-        	this.colormap_view.setColors(colors);
-		}
+        setColors(colors);
 	}
 	
     // ========================================================================
@@ -182,13 +188,13 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
 		this.month_view.calendar_drawing.enable_event_count = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_SHOW_EVENT_COUNT, true);
 		
 		boolean visualizing_quantites = getIntent().getBooleanExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_VISUALIZE_QUANTITIES, false);
-		this.month_view.setVisualizeQuantities(visualizing_quantites);
+		this.color_mapping.enabled = visualizing_quantites;
 		if (visualizing_quantites) {
-			this.month_view.calendar_drawing.color_mapping.setMaximums(maximums);
+			this.month_view.calendar_drawing.setMaximums(maximums);
 			
 			if (getIntent().hasExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX)) {
 				int extra_quantity_index = getIntent().getIntExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_BACKGROUND_COLORMAP_QUANTITY_INDEX, -1);
-				this.month_view.calendar_drawing.color_mapping.setColormapSource(extra_quantity_index);
+				this.color_mapping.setColormapSource(extra_quantity_index);
 			}
 			
 	        colormap_view.setVisibility(View.VISIBLE);
@@ -251,13 +257,27 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         }
         
         updateMonthHeader(current_month_calendar);
-        
+
+        this.tiny_timeline.setColorMappingHost(this);
         this.tiny_timeline.setEvents(events);
         
+        this.month_view.setColorMappingHost(this);
         this.month_view.setEvents(events);
         this.month_view.setMonthAndHighlight(current_month_calendar.getTime());
     }
 
+    // ========================================================================
+	public void setColors(int[] colors) {
+		if (colors != null && colors.length > 1) {
+			this.color_mapping.color_stops = colors;
+
+			this.month_view.invalidate();
+			this.tiny_timeline.invalidate();
+
+        	this.colormap_view.setColors(colors);
+		}
+	}
+    
     // ========================================================================
     void generateWeekdayLabels(LinearLayout layout) {
         LayoutParams lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1);
@@ -292,7 +312,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
     // ========================================================================
     void setColormapScale(boolean visible) {
 
-    	this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums = visible;
+    	this.month_view.calendar_drawing.showing_monthwide_daily_maximums = visible;
     	this.month_view.invalidate();
 
     	if (this.options_menu != null) {
@@ -432,7 +452,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         inflater.inflate(R.menu.options_month_view, menu);
 
 		setEventCountVisibility(this.month_view.calendar_drawing.enable_event_count);
-		setColormapScale(this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums);
+		setColormapScale(this.month_view.calendar_drawing.showing_monthwide_daily_maximums);
 		
         return true;
     }
@@ -445,7 +465,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         boolean has_events = getIntent().getData() != null;
         menu.findItem(R.id.menu_all_events).setVisible(has_events);
         menu.findItem(R.id.menu_toggle_event_counts).setVisible(has_events);
-        menu.findItem(R.id.menu_toggle_colormap_scale).setVisible(this.month_view.calendar_drawing.color_mapping.enabled);
+        menu.findItem(R.id.menu_toggle_colormap_scale).setVisible(this.color_mapping.enabled);
 
         return true;
     }
@@ -466,7 +486,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         }
         case R.id.menu_toggle_colormap_scale:
         {
-    		setColormapScale(!this.month_view.calendar_drawing.color_mapping.showing_monthwide_daily_maximums);
+    		setColormapScale(!this.month_view.calendar_drawing.showing_monthwide_daily_maximums);
             return true;
         }
         case R.id.menu_toggle_event_counts:
@@ -604,13 +624,19 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
 	private void showAboutBox() {
 		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
-	
-    // ==========================================================
+
+    // ========================================================================
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
 		
 		if (CalendarDisplayPreferences.PREFKEY_COLORMAP_OVERRIDE.equals(key) || CalendarDisplayPreferences.PREFKEY_ENABLE_COLORMAP_OVERRIDE.equals(key))
 			updateColormap(sharedPreferences);
+	}
+
+    // ========================================================================
+	@Override
+	public ColorMappingConfiguration getColorMappingConfig() {
+		return this.color_mapping;
 	}
 }

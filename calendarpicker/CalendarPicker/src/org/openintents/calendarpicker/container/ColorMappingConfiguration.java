@@ -15,18 +15,14 @@ public class ColorMappingConfiguration {
 		EVENT_COUNT, EXTRA_QUANTITY
 	}
 
-    public boolean showing_monthwide_daily_maximums = false;
-    public TimespanEventMaximums monthwide_daily_maximums = new TimespanEventMaximums();
 
 
 	public boolean enabled = false;
-    
-    
-    TimespanEventMaximums overall_daily_maximums;
-    public void setMaximums(TimespanEventMaximums maximums) {
-    	this.overall_daily_maximums = maximums;
+
+
+    public static interface ColorMappingHost {
+    	ColorMappingConfiguration getColorMappingConfig();
     }
-	
 
 	ColorMappingSource mapping_source = ColorMappingSource.EVENT_COUNT;
 	public int extra_quantity_index = 0;
@@ -46,7 +42,7 @@ public class ColorMappingConfiguration {
 	public int[] color_stops = new int[] {Color.BLACK, Color.MAGENTA};
 	
 	/** Assign equidistant color stops.  Validates the input */
-	private int interpolateColorStops(float fraction) {
+	public int interpolateColorStops(float fraction) {
 		
 		int max_color_index = this.color_stops.length - 1;
 		float high_fractional_value = fraction * max_color_index;
@@ -58,9 +54,8 @@ public class ColorMappingConfiguration {
 		return FlingableMonthView.interpolateColor(this.color_stops[low_index], this.color_stops[high_index], partial_fraction);
 	}
 
-	public int getTileColor(TimespanEventAggregator day) {
-		TimespanEventMaximums maxes = this.showing_monthwide_daily_maximums ?
-				this.monthwide_daily_maximums : this.overall_daily_maximums;
+	
+	public float getFraction(TimespanEventAggregator day, TimespanEventMaximums maxes) {
 
 		float fraction = 0;
 		switch (this.mapping_source) {
@@ -77,6 +72,11 @@ public class ColorMappingConfiguration {
 		}
 		}
 		
-		return interpolateColorStops(fraction);
+		return fraction;
+	}
+
+	
+	public int getTileColor(TimespanEventAggregator day, TimespanEventMaximums maxes) {
+		return interpolateColorStops(getFraction(day, maxes));
 	}
 }

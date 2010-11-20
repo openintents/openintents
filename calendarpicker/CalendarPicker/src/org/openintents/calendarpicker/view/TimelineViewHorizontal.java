@@ -28,6 +28,7 @@ import org.openintents.calendarpicker.R;
 import org.openintents.calendarpicker.activity.PeriodBrowsingActivity.TimespanEventMaximums;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.container.TimespanEventAggregator;
+import org.openintents.calendarpicker.container.ColorMappingConfiguration.ColorMappingHost;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -282,8 +283,8 @@ public class TimelineViewHorizontal extends View {
         canvas.translate(getWidth()/2f, 0);        
 
 
-
-        drawEventsHistogram(canvas);
+        if (this.colormapping_host.getColorMappingConfig().enabled)
+        	drawEventsHistogram(canvas);
         
         this.mLinePaint.setColor(Color.RED);
         this.mLinePaint.setStrokeWidth(hash_width);
@@ -296,22 +297,6 @@ public class TimelineViewHorizontal extends View {
 
     // ========================================================================
     void drawEventsHistogram(Canvas canvas) {
-
-    	float maximum_value = 0;
-
-    	// TODO Select this depending upon the intent extras
-    	if (true) {
-    		maximum_value = timespan_maximums.max_event_count_per_day;
-    	} else {
-    		maximum_value = timespan_maximums.max_quantities_per_day[0];
-    	}
-
-    	// Don't bother drawing anything if there are no events
-    	if (maximum_value == 0) {
-    		return;
-    	}
-    	
-    	
 
         Date left_edge_date = getLeftEdgeDate();
         Date right_edge_date = new Date(left_edge_date.getTime() + (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span));
@@ -329,20 +314,14 @@ public class TimelineViewHorizontal extends View {
     		}
     		
     		
-    		
-    		float value = 0;
-    		
-    		// TODO See above
-        	if (true) {
-        		value = aggregation.getEventCount();
-        	} else {
-        		value = aggregation.getAggregateQuantity(0);
-        	}
         	
-    		float height = max_height*value/maximum_value;
-    		
+        	float fraction = this.colormapping_host.getColorMappingConfig().getFraction(aggregation, this.timespan_maximums);
+    		float height = max_height*fraction;
         	float horizontal_position = getScreenPositionOfDateMillis(aggregation.getDate().getTime());
-    		canvas.drawRect(horizontal_position, -height, horizontal_position + pixels_per_bin, 0, mEventPaint);
+        	
+        	int color = this.colormapping_host.getColorMappingConfig().interpolateColorStops(fraction);
+        	this.mEventPaint.setColor(color);
+    		canvas.drawRect(horizontal_position, -height, horizontal_position + this.pixels_per_bin, 0, this.mEventPaint);
     	}
     }
 
@@ -479,5 +458,13 @@ public class TimelineViewHorizontal extends View {
 	        	timespan_maximums.updateMax(timespan_aggregator);
 	    	}
     	}
+    }
+    
+    
+    
+    ColorMappingHost colormapping_host;
+    // ==========================================================
+    public void setColorMappingHost(ColorMappingHost host) {
+    	this.colormapping_host = host;
     }
 }

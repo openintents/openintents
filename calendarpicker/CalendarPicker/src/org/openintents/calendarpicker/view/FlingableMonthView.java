@@ -27,10 +27,11 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.activity.PeriodBrowsingActivity.TimespanEventMaximums;
 import org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences;
-import org.openintents.calendarpicker.container.ColorMappingConfiguration;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.container.TimespanEventAggregator;
+import org.openintents.calendarpicker.container.ColorMappingConfiguration.ColorMappingHost;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -128,16 +129,8 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 	// Longpress animation
     boolean is_holding_longpress = false;
     long longpress_start_time;
-	
 
-    // ========================================================================
     public CalendarRenderer calendar_drawing;
-	public void setColors(int[] stops) {
-		if (stops != null && stops.length > 1)
-			this.calendar_drawing.color_mapping.color_stops = stops;
-		
-		invalidate();
-	}
 
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
@@ -356,11 +349,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	
     	return spanned_weeks;
     }
-
-    // ========================================================================
-    public void setVisualizeQuantities(boolean should_visualize) {
-    	this.calendar_drawing.color_mapping.enabled = should_visualize;
-    }
     
     // ========================================================================
     /** Handles all view rendering responsibilities, including render-specific data */
@@ -388,7 +376,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         
     	
 
-        public ColorMappingConfiguration color_mapping = new ColorMappingConfiguration();
         
         // FLINGING STATE
         static final float MINIMUM_SUSTAINED_FLINGING_VELOCITY = 400;	// in px/sec
@@ -414,6 +401,14 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	Date dummy_date = new Date();
 
     	
+    	
+        public boolean showing_monthwide_daily_maximums = false;
+        public TimespanEventMaximums monthwide_daily_maximums = new TimespanEventMaximums();
+        TimespanEventMaximums overall_daily_maximums;
+        public void setMaximums(TimespanEventMaximums maximums) {
+        	this.overall_daily_maximums = maximums;
+        }
+
     	
     	
     	
@@ -679,13 +674,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         	
         	this.day_iterator_calendar.setTimeInMillis(active_month_calendar.getTimeInMillis());
         	
-        	this.color_mapping.monthwide_daily_maximums.clear();
+        	this.monthwide_daily_maximums.clear();
         	while (month == this.day_iterator_calendar.get(Calendar.MONTH)) {
 	        	this.dummy_scd.reset(null);
 	        	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, 1);
 	    		
 	        	event_index = aggregateEventsUntilTime(sorted_events, this.dummy_scd, this.day_iterator_calendar.getTimeInMillis(), event_index);
-	        	this.color_mapping.monthwide_daily_maximums.updateMax(this.dummy_scd);
+	        	this.monthwide_daily_maximums.updateMax(this.dummy_scd);
         	}
     	}
 
@@ -937,12 +932,17 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             boolean day_highlighted = day.getDate().equals(highlighted_day);
 
             int background_color;
-            if (this.color_mapping.enabled) {
+            if (colormapping_host.getColorMappingConfig().enabled) {
             	
-            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_focused)
-            		background_color = this.color_mapping.color_stops[0];
-            	else
-            		background_color = this.color_mapping.getTileColor(day);
+            	if (this.showing_monthwide_daily_maximums && !month_focused)
+            		background_color = colormapping_host.getColorMappingConfig().color_stops[0];
+            	else {
+            		
+            		TimespanEventMaximums maxes = this.showing_monthwide_daily_maximums ?
+            				this.monthwide_daily_maximums : this.overall_daily_maximums;
+            		
+            		background_color = colormapping_host.getColorMappingConfig().getTileColor(day, maxes);
+            	}
 
             } else {
             	background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
@@ -968,7 +968,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             this.day_tile_paint.setColor(background_color);
             canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.day_tile_paint);
             
-            if (this.color_mapping.enabled && day_highlighted) {
+            if (colormapping_host.getColorMappingConfig().enabled && day_highlighted) {
             	this.day_tile_paint.setShader(this.day_highlighter_gradient);
                 canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.day_tile_paint);
                 this.day_tile_paint.setShader(null);
@@ -976,7 +976,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             
             
             // Draw bordering month day indicators
-            if (this.color_mapping.enabled) {
+            if (colormapping_host.getColorMappingConfig().enabled) {
 
             	/*
             	if (months_away < 0) {
@@ -1375,6 +1375,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	this.calendar_drawing.reestablishCornerBoxDimensions();
     }
 
+    
+    ColorMappingHost colormapping_host;
+    // ==========================================================
+    public void setColorMappingHost(ColorMappingHost host) {
+    	this.colormapping_host = host;
+    }
+    
     // ==========================================================
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
