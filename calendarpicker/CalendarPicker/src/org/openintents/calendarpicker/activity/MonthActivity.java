@@ -169,7 +169,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
 		this.tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-				month_view.setMonthAndHighlight(date);
+				month_view.setMonthAndHighlight(date, false);
 			}
 		});
 		
@@ -253,7 +253,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         updateMonthHeader(current_month_calendar);
 //        this.tiny_timeline.setDate(current_month_calendar.getTime());
         this.month_view.setEvents(events);
-        this.month_view.setMonthAndHighlight(current_month_calendar.getTime());
+        this.month_view.setMonthAndHighlight(current_month_calendar.getTime(), true);
 
     }
 
@@ -354,25 +354,25 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
     	case KeyEvent.KEYCODE_DPAD_UP:
     	{
     		cal.add(Calendar.DATE, -FlingableMonthView.DAYS_PER_WEEK);
-    		month_view.setMonthAndHighlight(cal.getTime());
+    		month_view.setMonthAndHighlight(cal.getTime(), false);
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_LEFT:
     	{
     		cal.add(Calendar.DATE, -1);
-    		month_view.setMonthAndHighlight(cal.getTime());
+    		month_view.setMonthAndHighlight(cal.getTime(), false);
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_DOWN:
     	{
     		cal.add(Calendar.DATE, FlingableMonthView.DAYS_PER_WEEK);
-    		month_view.setMonthAndHighlight(cal.getTime());
+    		month_view.setMonthAndHighlight(cal.getTime(), false);
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_RIGHT:
     	{
     		cal.add(Calendar.DATE, 1);
-    		month_view.setMonthAndHighlight(cal.getTime());
+    		month_view.setMonthAndHighlight(cal.getTime(), false);
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_CENTER:
@@ -454,6 +454,11 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+        case R.id.menu_goto_today:
+        {
+        	month_view.setMonthAndHighlight(new Date(), false);
+            return true;
+        }
         case R.id.menu_month_help:
         {
         	showDialog(DIALOG_MONTH_HELP);

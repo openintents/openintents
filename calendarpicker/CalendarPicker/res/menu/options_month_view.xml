@@ -26,12 +26,11 @@
           android:titleCondensed="Week"
           android:alphabeticShortcut="w" />
           
-    <item android:id="@+id/menu_day_view"
-    	android:visible="false"
+    <item android:id="@+id/menu_goto_today"
     	  android:icon="@drawable/ic_menu_day"
-          android:title="One Day"
-          android:titleCondensed="Day"
-          android:alphabeticShortcut="d" />
+          android:title="Go to Today"
+          android:titleCondensed="Today"
+          android:alphabeticShortcut="g" />
 
     <item android:id="@+id/menu_settings"
     	  android:icon="@android:drawable/ic_menu_preferences"

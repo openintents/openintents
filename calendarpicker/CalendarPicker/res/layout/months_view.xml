@@ -79,6 +79,7 @@
 		</LinearLayout>
 
 		<org.openintents.calendarpicker.view.ColormapView
+			android:layout_marginLeft="1px"
 		   	android:visibility="gone"
 			app:orientation="vertical"
 			android:id="@+id/colormap_view"
