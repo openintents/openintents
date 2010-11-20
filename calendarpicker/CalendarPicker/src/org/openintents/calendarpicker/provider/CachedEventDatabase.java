@@ -32,7 +32,7 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
 
 	static final String TAG = "CachedEventDatabase"; 
 
-    static final int DATABASE_VERSION = 2;
+    static final int DATABASE_VERSION = 3;
     static final String DATABASE_NAME = "CACHED_EVENTS";
 
     public static final String TABLE_EVENTS = "TABLE_EVENTS";
@@ -43,7 +43,9 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
     public static final String KEY_EVENT_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TITLE;
     public static final String KEY_CALENDAR_ID = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.CALENDAR_ID;
     public static final String KEY_EVENT_TIMESTAMP = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TIMESTAMP;
-    
+
+    public static final String KEY_EVENT_QUANTITY0 = "QUANTITY0";
+    public static final String KEY_EVENT_QUANTITY1 = "QUANTITY1";
 
     public static final String KEY_CALENDAR_TITLE = CalendarPickerConstants.CalendarEventPicker.ContentProviderColumns.TITLE;
 
@@ -56,6 +58,8 @@ public class CachedEventDatabase extends SQLiteOpenHelper {
         "create table " + TABLE_EVENTS + " (" 
         + BaseColumns._ID + " integer primary key, "
         + KEY_CALENDAR_ID + " integer, "
+        + KEY_EVENT_QUANTITY0 + " real, "
+        + KEY_EVENT_QUANTITY1 + " real, "
         + KEY_EVENT_TIMESTAMP + " integer, "
         + KEY_EVENT_TITLE + " text);";
 

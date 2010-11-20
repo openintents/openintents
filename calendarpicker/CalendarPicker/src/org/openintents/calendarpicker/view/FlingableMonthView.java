@@ -47,6 +47,7 @@ import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
 import android.graphics.PointF;
+import android.graphics.RadialGradient;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
@@ -56,6 +57,7 @@ import android.graphics.Paint.FontMetrics;
 import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.FloatMath;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.GestureDetector;
@@ -163,23 +165,17 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         		if (extra_quantity_index >= 0) {
         			this.mapping_source = ColorMappingSource.EXTRA_QUANTITY;
         			this.extra_quantity_index = extra_quantity_index;
-        		} else {
+        		} else
         			this.mapping_source = ColorMappingSource.EVENT_COUNT;
-        		}
-    		} else {
+    		} else
     			Log.e(TAG, "Color mapping source is out of range: " + extra_quantity_index);
-    		}
     	}
     	
     	
-    	
-    	int color_low = Color.BLACK;
-    	int color_high = Color.MAGENTA;
-    	
-    	int[] color_stops = new int[] {color_low, color_high};
-    	/** Assign equidistant color stops.  Validates the input */
 
+    	int[] color_stops = new int[] {Color.BLACK, Color.MAGENTA};
     	
+    	/** Assign equidistant color stops.  Validates the input */
     	private int interpolateColorStops(float fraction) {
     		
     		int max_color_index = this.color_stops.length - 1;
@@ -489,13 +485,12 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	
     	
     	
-    	DrawFilter mFastDF = new PaintFlagsDrawFilter(Paint.FILTER_BITMAP_FLAG |
+    	private DrawFilter mFastDF = new PaintFlagsDrawFilter(Paint.FILTER_BITMAP_FLAG |
     			Paint.DITHER_FLAG,
     			0);
 
-    	Shader mShader1 = new BitmapShader(makeBitmap2(), Shader.TileMode.REPEAT,
-    			Shader.TileMode.REPEAT);
-    	Bitmap makeBitmap2() {
+    	private Shader mShader1 = new BitmapShader(makeCheckeredBitmap(), Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+    	private Bitmap makeCheckeredBitmap() {
     		int tile_size = CHECKER_PATTERN_TILE_SIZE;
     		int dimension = tile_size*2;
     		Bitmap bm = Bitmap.createBitmap(dimension, dimension, Bitmap.Config.ARGB_8888);
@@ -758,9 +753,10 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         	}
     	}
 
-    	
-    	Path northwest_triangle = new Path();
-    	Path southeast_triangle = new Path();
+    	// XXX These are no longer used
+    	private Path northwest_triangle = new Path();
+    	private Path southeast_triangle = new Path();
+        Shader day_highlighter_gradient;
         // ========================================================================
         void reestablishCornerBoxDimensions() {
         	this.day_box_dimensions.set(
@@ -782,6 +778,12 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             this.southeast_triangle.lineTo(0, this.day_box_dimensions.y);
             this.southeast_triangle.close();
             
+            float half_x = this.day_box_dimensions.x/2;
+            float half_y = this.day_box_dimensions.y/2;
+            float radius = FloatMath.sqrt(half_x*half_x + half_y*half_y);
+            if (radius >0)
+            	this.day_highlighter_gradient = new RadialGradient(half_x, half_y, radius, new int[] {Color.TRANSPARENT, Color.TRANSPARENT, Color.WHITE, Color.BLACK}, null, Shader.TileMode.CLAMP);
+            
             float corner_box_side = usable_size/2f;
             this.day_tile_paint.setTextSize(corner_box_side*0.8f);
         	this.day_tile_paint_font_metrics = this.day_tile_paint.getFontMetrics();
@@ -789,7 +791,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         
         // ========================================================================
     	void draw(final Canvas canvas) {
-    		canvas.setDrawFilter(mFastDF);
+    		canvas.setDrawFilter(this.mFastDF);
     	
 
             canvas.save();
@@ -927,13 +929,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
             long now = SystemClock.uptimeMillis();
             float fraction = 1;
-            if (month_text_fader != null)
-            	fraction = month_text_fader.getFraction(now);
+            if (this.month_text_fader != null)
+            	fraction = this.month_text_fader.getFraction(now);
 
             
-        	int text_color = dark_watermark ?
-        			interpolateColor(Color.BLACK, color_month_watermark_text_dark, fraction)
-        			: interpolateColor(Color.WHITE, color_month_watermark_text_light, fraction);
+        	int text_color = this.dark_watermark ?
+        			interpolateColor(Color.BLACK, this.color_month_watermark_text_dark, fraction)
+        			: interpolateColor(Color.WHITE, this.color_month_watermark_text_light, fraction);
         	this.month_watermark_text_paint.setColor(text_color);
         	
         	
@@ -1001,12 +1003,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             int background_color;
             if (this.color_mapping.enabled) {
             	
-            	if (day_highlighted) {
+//            	if (day_highlighted) {
+            	if (false) {
             		background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
             		
             	} else {
 	            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_focused)
-	            		background_color = this.color_mapping.color_low;
+	            		background_color = this.color_mapping.color_stops[0];
 	            	else
 	            		background_color = this.color_mapping.getTileColor(day);
             	}
@@ -1034,8 +1037,11 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             this.day_tile_paint.setColor(background_color);
             canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.day_tile_paint);
             
-
-
+            if (this.color_mapping.enabled && day_highlighted) {
+            	this.day_tile_paint.setShader(this.day_highlighter_gradient);
+                canvas.drawRect(0, 0, daybox.width(), daybox.height(), this.day_tile_paint);
+                this.day_tile_paint.setShader(null);
+            }
             
             
             // Draw bordering month day indicators
