@@ -27,11 +27,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.openintents.calendarpicker.R;
-import org.openintents.calendarpicker.activity.PeriodBrowsingActivity.DailyEventMaximums;
 import org.openintents.calendarpicker.activity.prefs.CalendarDisplayPreferences;
-import org.openintents.calendarpicker.container.CalendarDayAggregator;
+import org.openintents.calendarpicker.container.ColorMappingConfiguration;
 import org.openintents.calendarpicker.container.SimpleEvent;
-import org.openintents.calendarpicker.contract.CalendarPickerConstants;
+import org.openintents.calendarpicker.container.TimespanEventAggregator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -91,6 +90,8 @@ import android.view.GestureDetector.SimpleOnGestureListener;
  */
 
 
+/** Clients must call setMonthAndHighlight() in the Activity's onCreate() method to properly
+ * initialize this view. */
 public class FlingableMonthView extends View implements SharedPreferences.OnSharedPreferenceChangeListener {
 
 	static final String TAG = "FlingableMonthView";
@@ -113,9 +114,9 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     // before the 1st of the active month.
     Date active_month_northwest_corner_date = new Date();
     
-    Calendar active_month_calendar = new GregorianCalendar();
+    Calendar active_month_calendar = null;
     Date highlighted_day = null;
-    List<SimpleEvent> sorted_events = new ArrayList<SimpleEvent>();
+    private List<SimpleEvent> sorted_events = new ArrayList<SimpleEvent>();
 
     // Cached computed values
     int spanned_weeks;
@@ -137,80 +138,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 		
 		invalidate();
 	}
-	
-    // ========================================================================
-    public static class ColorMappingConfiguration {
 
-    	enum ColorMappingSource {
-    		EVENT_COUNT, EXTRA_QUANTITY
-    	}
-
-        public boolean showing_monthwide_daily_maximums = false;
-        DailyEventMaximums monthwide_daily_maximums = new DailyEventMaximums();
-
-
-    	public boolean enabled = false;
-        
-        
-        DailyEventMaximums overall_daily_maximums;
-        public void setMaximums(DailyEventMaximums maximums) {
-        	this.overall_daily_maximums = maximums;
-        }
-    	
-
-    	ColorMappingSource mapping_source = ColorMappingSource.EVENT_COUNT;
-    	public int extra_quantity_index = 0;
-    	public void setColormapSource(int extra_quantity_index) {
-    		if (extra_quantity_index < CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length) {
-        		if (extra_quantity_index >= 0) {
-        			this.mapping_source = ColorMappingSource.EXTRA_QUANTITY;
-        			this.extra_quantity_index = extra_quantity_index;
-        		} else
-        			this.mapping_source = ColorMappingSource.EVENT_COUNT;
-    		} else
-    			Log.e(TAG, "Color mapping source is out of range: " + extra_quantity_index);
-    	}
-    	
-    	
-
-    	int[] color_stops = new int[] {Color.BLACK, Color.MAGENTA};
-    	
-    	/** Assign equidistant color stops.  Validates the input */
-    	private int interpolateColorStops(float fraction) {
-    		
-    		int max_color_index = this.color_stops.length - 1;
-    		float high_fractional_value = fraction * max_color_index;
-    		int low_index = (int) high_fractional_value;
-    		int high_index = (int) Math.ceil(fraction * max_color_index);
-    		
-    		float partial_fraction = high_fractional_value - low_index;
-    		
-    		return interpolateColor(this.color_stops[low_index], this.color_stops[high_index], partial_fraction);
-    	}
-
-    	int getTileColor(CalendarDayAggregator day) {
-    		DailyEventMaximums maxes = this.showing_monthwide_daily_maximums ?
-    				this.monthwide_daily_maximums : this.overall_daily_maximums;
-
-    		float fraction = 0;
-    		switch (this.mapping_source) {
-    		case EVENT_COUNT:
-    		{
-    			fraction = maxes.max_event_count_per_day == 0 ? 0 : day.getEventCount() / (float) maxes.max_event_count_per_day;
-    			break;
-    		}
-    		case EXTRA_QUANTITY:
-    		{
-    			float max = maxes.max_quantities_per_day[this.extra_quantity_index];
-    			fraction = max == 0 ? 0 : day.getAggregateQuantity(this.extra_quantity_index) / max;
-    			break;
-    		}
-    		}
-    		
-    		return interpolateColorStops(fraction);
-    	}
-    }
-    
     // ========================================================================
     public FlingableMonthView(Context context, AttributeSet attrs) {
     	super(context, attrs);
@@ -222,9 +150,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	this.calendar_drawing.horizontal_spacing = a.getDimensionPixelOffset(R.styleable.FlingableMonthView_horizontal_spacing, 1);
     	this.calendar_drawing.vertical_spacing = a.getDimensionPixelOffset(R.styleable.FlingableMonthView_vertical_spacing, 1);
     	a.recycle();
-    	
-    	setMonth(new GregorianCalendar());
-    	
 
         final GestureDetector gestureDetector = new GestureDetector(new MonthGestureDetector());
         setOnTouchListener(new OnTouchListener() {
@@ -265,12 +190,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     }
     
     // ========================================================================
-    public void setMonthAndHighlight(Date date, boolean force_initialization) {
+    /** This function must be called within onCreate() in the Activity */
+    public void setMonthAndHighlight(Date date) {
     	Calendar cal = new GregorianCalendar();
 		cal.setTime(date);
     	int day = cal.get(Calendar.DATE);
     	FlingableMonthView.setCalendarToFirstDayOfMonth(cal);
-    	if (force_initialization || !cal.equals(this.active_month_calendar))
+    	if (!cal.equals(this.active_month_calendar))
     		setMonth(cal);
 
 		Calendar cal2 = (Calendar) cal.clone();
@@ -297,7 +223,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     		this.canvas = canvas;
     	}
     	
-    	abstract void visitViewport(RectF daybox, CalendarDayAggregator child);
+    	abstract void visitViewport(RectF daybox, TimespanEventAggregator child);
     }
     
     // ========================================================================
@@ -336,6 +262,9 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	
     	this.highlighted_day = null;
     	
+    	if (this.active_month_calendar == null)
+    		this.active_month_calendar = new GregorianCalendar();
+
     	this.active_month_calendar.setTime(calendar.getTime());
     	setCalendarToFirstDayOfMonth(this.active_month_calendar);
     	
@@ -716,7 +645,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         // ========================================================================
         ViewportVisitor day_event_drawing_visitor = new ViewportVisitor() {
 			@Override
-			public void visitViewport(RectF daybox, CalendarDayAggregator child) {
+			public void visitViewport(RectF daybox, TimespanEventAggregator child) {
 	            this.canvas.save();
 	            this.canvas.translate(daybox.left, daybox.top);
 	            drawDayEvents(canvas, daybox, child);
@@ -727,7 +656,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         // ========================================================================
         ViewportVisitor day_background_drawing_visitor = new ViewportVisitor() {
 			@Override
-			public void visitViewport(RectF daybox, CalendarDayAggregator child) {
+			public void visitViewport(RectF daybox, TimespanEventAggregator child) {
 				this.canvas.save();
 				this.canvas.translate(daybox.left, daybox.top);
 	            drawDayHolder(canvas, daybox, child);
@@ -737,9 +666,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
         // ========================================================================
     	void prepareForMonth() {
-    		
-    		Log.i(TAG, "Inside prepareForMonth()");
-    		
         	reestablishCornerBoxDimensions();
         	updateMonthMaximums();
     	}
@@ -747,9 +673,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         // ========================================================================
     	/** Update the month maximums */
     	void updateMonthMaximums() {
-    		
-
-    		Log.e(TAG, "Inside updateMonthMaximums()");
     		
         	int event_index = findFirstEventAfterDate(active_month_calendar);
         	int month = active_month_calendar.get(Calendar.MONTH);
@@ -761,12 +684,9 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 	        	this.dummy_scd.reset(null);
 	        	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, 1);
 	    		
-	        	event_index = aggregateEventsForDay(this.dummy_scd, this.day_iterator_calendar, event_index);
+	        	event_index = aggregateEventsUntilTime(sorted_events, this.dummy_scd, this.day_iterator_calendar.getTimeInMillis(), event_index);
 	        	this.color_mapping.monthwide_daily_maximums.updateMax(this.dummy_scd);
         	}
-        	
-
-    		Log.e(TAG, "Finished updateMonthMaximums(); max month val: " + this.color_mapping.monthwide_daily_maximums.max_event_count_per_day);
     	}
 
     	// XXX These are no longer used
@@ -970,7 +890,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         }
 
         // ========================================================================
-        protected void drawDayEvents(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
+        protected void drawDayEvents(Canvas canvas, RectF daybox, TimespanEventAggregator day) {
             float usable_size = Math.min(daybox.width(), daybox.height());
             
             if (this.enable_event_count)
@@ -1006,7 +926,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         }
         
         // ========================================================================
-        protected void drawDayHolder(Canvas canvas, RectF daybox, CalendarDayAggregator day) {
+        protected void drawDayHolder(Canvas canvas, RectF daybox, TimespanEventAggregator day) {
 
         	this.dummy_calendar.setTime(day.getDate());
 
@@ -1019,16 +939,11 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             int background_color;
             if (this.color_mapping.enabled) {
             	
-//            	if (day_highlighted) {
-            	if (false) {
-            		background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
-            		
-            	} else {
-	            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_focused)
-	            		background_color = this.color_mapping.color_stops[0];
-	            	else
-	            		background_color = this.color_mapping.getTileColor(day);
-            	}
+            	if (this.color_mapping.showing_monthwide_daily_maximums && !month_focused)
+            		background_color = this.color_mapping.color_stops[0];
+            	else
+            		background_color = this.color_mapping.getTileColor(day);
+
             } else {
             	background_color = this.month_color_states.getColorForState(getProperViewState(month_focused, daycal_month_odd, day_highlighted), Color.YELLOW);
             }
@@ -1077,7 +992,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         }
 
         // ========================================================================
-        void drawEventCount(Canvas canvas, RectF daybox, CalendarDayAggregator calendar_day, float usable_size) {
+        void drawEventCount(Canvas canvas, RectF daybox, TimespanEventAggregator calendar_day, float usable_size) {
 
             canvas.save();
             canvas.translate(daybox.width()/2f, daybox.height()/2f);
@@ -1110,7 +1025,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         }
         
         // ========================================================================
-        void drawCornerBox(Canvas canvas, CalendarDayAggregator calendar_day, boolean month_active) {
+        void drawCornerBox(Canvas canvas, TimespanEventAggregator calendar_day, boolean month_active) {
         	
             float usable_size = Math.min(
             		this.day_box_dimensions.x,
@@ -1143,7 +1058,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 
         // ========================================================================
         RectF dummy_rect = new RectF();
-    	CalendarDayAggregator dummy_scd = new CalendarDayAggregator();
+    	TimespanEventAggregator dummy_scd = new TimespanEventAggregator();
     	Calendar day_iterator_calendar = new GregorianCalendar();
         
     	PointF day_box_dimensions = new PointF();
@@ -1185,7 +1100,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
                 	this.dummy_scd.reset(this.day_iterator_calendar.getTime());
                 	this.day_iterator_calendar.add(Calendar.DAY_OF_MONTH, 1);
             		
-                	event_idx = aggregateEventsForDay(this.dummy_scd, this.day_iterator_calendar, event_idx);
+                	event_idx = aggregateEventsUntilTime(sorted_events, this.dummy_scd, this.day_iterator_calendar.getTimeInMillis(), event_idx);
 
                     float left = getPaddingLeft() + ((width_per_day) * j);
                     this.dummy_rect.set(left, top, left + day_box_width, top + day_box_height);
@@ -1195,27 +1110,6 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
             }
         }
 
-        // ========================================================================
-        /** Consume all events up until the next day.  The values are zeroed,
-         * except for the date, which has already been set.
-         * Returns the index of the next event to be processed. */
-        int aggregateEventsForDay(CalendarDayAggregator aggregator, Calendar limit, int starting_index) {
-        	
-
-//    		Log.w(TAG, "Inside aggregateEventsForDay() with event index: " + starting_index);
-        	
-        	int event_idx = starting_index;
-            while (event_idx < sorted_events.size() && sorted_events.get(event_idx).timestamp.getTime() < limit.getTimeInMillis()) {
-            	aggregator.incrementEventCount();
-            	SimpleEvent se = sorted_events.get(event_idx);
-            	for (int q=0; q<se.quantities.length; q++)
-            		aggregator.addAggregateQuantity(q, se.quantities[q]);
-//            	child.day_events.add(this.sorted_events.get(event_idx));
-            	event_idx++;
-            }
-        	
-        	return event_idx;
-        }
 
         // ========================================================================
         /** Skip all events before the given calendar date */
@@ -1265,6 +1159,25 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
         }
     }
 
+
+    // ========================================================================
+    /** Consume all events up until the next day.  The values are zeroed,
+     * except for the date, which has already been set.
+     * Returns the index of the next event to be processed. */
+    static int aggregateEventsUntilTime(List<SimpleEvent> events, TimespanEventAggregator aggregator, long limit_millis, int starting_index) {
+
+    	int event_idx = starting_index;
+        while (event_idx < events.size() && events.get(event_idx).timestamp.getTime() < limit_millis) {
+        	aggregator.incrementEventCount();
+        	SimpleEvent se = events.get(event_idx);
+        	for (int q=0; q<se.quantities.length; q++)
+        		aggregator.addAggregateQuantity(q, se.quantities[q]);
+        	event_idx++;
+        }
+    	
+    	return event_idx;
+    }
+    
     // ========================================================================
     static int getMonthDifference(Calendar cal1, Calendar cal2) {
     	
@@ -1301,7 +1214,7 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
 	}
 
     // ========================================================================
-	static int interpolateColor(int src_color, int dst_color, float fraction) {
+	public static int interpolateColor(int src_color, int dst_color, float fraction) {
 		int red = interpolateInt(Color.red(src_color), Color.red(dst_color), fraction);
 		int green = interpolateInt(Color.green(src_color), Color.green(dst_color), fraction);
 		int blue = interpolateInt(Color.blue(src_color), Color.blue(dst_color), fraction);

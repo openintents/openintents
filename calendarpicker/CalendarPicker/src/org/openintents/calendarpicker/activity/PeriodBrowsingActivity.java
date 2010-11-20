@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
-import org.openintents.calendarpicker.container.CalendarDayAggregator;
+import org.openintents.calendarpicker.container.TimespanEventAggregator;
 import org.openintents.calendarpicker.container.SimpleEvent;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 import org.openintents.calendarpicker.contract.CalendarPickerConstants.CalendarEventPicker;
@@ -94,7 +94,7 @@ public class PeriodBrowsingActivity extends Activity {
     }
 
     // ========================================================================
-    public static class DailyEventMaximums {
+    public static class TimespanEventMaximums {
     	// Holds the maximums
     	public int max_event_count_per_day = 0;
     	public float[] max_quantities_per_day = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
@@ -105,7 +105,7 @@ public class PeriodBrowsingActivity extends Activity {
     			this.max_quantities_per_day[i] = 0;
     	}
     	
-    	public void updateMax(CalendarDayAggregator day) {
+    	public void updateMax(TimespanEventAggregator day) {
     		if (day.getEventCount() > this.max_event_count_per_day)
     			this.max_event_count_per_day = day.getEventCount();
 			
@@ -127,7 +127,7 @@ public class PeriodBrowsingActivity extends Activity {
     }
     
     // ========================================================================
-    public List<SimpleEvent> getEventsFromUri(Uri uri, Intent intent, DailyEventMaximums maximums) {
+    public List<SimpleEvent> getEventsFromUri(Uri uri, Intent intent, TimespanEventMaximums maximums) {
 
     	List<SimpleEvent> events = new ArrayList<SimpleEvent>();
 
@@ -167,7 +167,7 @@ public class PeriodBrowsingActivity extends Activity {
         	
 
         	// Holds the running counts for a day
-        	CalendarDayAggregator day_aggregator = new CalendarDayAggregator();
+        	TimespanEventAggregator day_aggregator = new TimespanEventAggregator();
         	
         	do {
 

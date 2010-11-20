@@ -20,7 +20,8 @@ import java.util.Date;
 
 import org.openintents.calendarpicker.contract.CalendarPickerConstants;
 
-public class CalendarDayAggregator {
+/** Can be used to represent events aggregated over an arbitrary time period */
+public class TimespanEventAggregator {
 
 	private float[] aggregate_quantities = new float[CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_QUANTITY_COLUMN_NAMES.length];
 	private int event_count;

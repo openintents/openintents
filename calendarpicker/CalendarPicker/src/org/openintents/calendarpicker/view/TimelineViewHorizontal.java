@@ -18,11 +18,16 @@ package org.openintents.calendarpicker.view;
 
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.openintents.calendarpicker.R;
+import org.openintents.calendarpicker.activity.PeriodBrowsingActivity.TimespanEventMaximums;
+import org.openintents.calendarpicker.container.SimpleEvent;
+import org.openintents.calendarpicker.container.TimespanEventAggregator;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -31,6 +36,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Paint.Cap;
+import android.graphics.Paint.Style;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -41,11 +47,11 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 
 public class TimelineViewHorizontal extends View {
 
-	static final String TAG = "TinyTimelineViewHorizontal";
+	static final String TAG = "TimelineViewHorizontal";
 	
 	
     private TextPaint mTextPaint;
-    private Paint mLinePaint;
+    private Paint mLinePaint, mEventPaint;
     private int mAscent;
     
     boolean is_touching = false;
@@ -55,7 +61,9 @@ public class TimelineViewHorizontal extends View {
 
     static final long MILLISECONDS_PER_YEAR = FlingableMonthView.MILLISECONDS_PER_DAY*365;
     float timeline_years_span = 3.5f;
+    float pixels_per_bin = 5;
     
+    // ========================================================================
     /**
      * Constructor.  This version is only needed if you will be instantiating
      * the object manually (not from a layout XML file).
@@ -66,6 +74,7 @@ public class TimelineViewHorizontal extends View {
         initTimelineView();
     }
 
+    // ========================================================================
     /**
      * Construct object, initializing with any attributes we understand from a
      * layout file. These attributes are defined in
@@ -93,17 +102,23 @@ public class TimelineViewHorizontal extends View {
         a.recycle();
     }
 
+    // ========================================================================
     private final void initTimelineView() {
         mTextPaint = new TextPaint();
         mTextPaint.setAntiAlias(true);
         mTextPaint.setTextSize(16);
         mTextPaint.setTextAlign(Align.CENTER);
-        mTextPaint.setColor(0xFF000000);
+        mTextPaint.setColor(Color.WHITE);
         
         mLinePaint = new Paint();
         mLinePaint.setAntiAlias(true);
         mLinePaint.setColor(Color.WHITE);
         mLinePaint.setStrokeCap(Cap.ROUND);
+        
+        mEventPaint = new Paint();
+        mEventPaint.setAntiAlias(true);
+        mEventPaint.setColor(Color.YELLOW);
+        mEventPaint.setStyle(Style.FILL);
         
         setPadding(3, 3, 3, 3);
         
@@ -266,16 +281,94 @@ public class TimelineViewHorizontal extends View {
         // Center horizontally
         canvas.translate(getWidth()/2f, 0);        
 
+
+
+        drawEventsHistogram(canvas);
+        
         this.mLinePaint.setColor(Color.RED);
         this.mLinePaint.setStrokeWidth(hash_width);
         canvas.drawLine(0, getHeight()/4f, 0, -getHeight()/4f, this.mLinePaint);
         
 
-        this.mLinePaint.setColor(Color.WHITE);
+        drawYearNodes(canvas, marker_radius);
+
+    }
+
+    // ========================================================================
+    void drawEventsHistogram(Canvas canvas) {
+
+    	float maximum_value = 0;
+
+    	// TODO Select this depending upon the intent extras
+    	if (true) {
+    		maximum_value = timespan_maximums.max_event_count_per_day;
+    	} else {
+    		maximum_value = timespan_maximums.max_quantities_per_day[0];
+    	}
+
+    	// Don't bother drawing anything if there are no events
+    	if (maximum_value == 0) {
+    		return;
+    	}
+    	
+    	
+
+        Date left_edge_date = getLeftEdgeDate();
+        Date right_edge_date = new Date(left_edge_date.getTime() + (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span));
+    	
+    	float max_height = getHeight()/2;
+    	for (TimespanEventAggregator aggregation : aggregated_events) {
+    		
+    		// We skip through pieces that come before the leftmost visible
+    		// edge of the timeline.
+    		
+    		if (aggregation.getDate().before(left_edge_date)) {
+    			continue;
+    		} else if (!aggregation.getDate().before(right_edge_date)) {
+    			break;
+    		}
+    		
+    		
+    		
+    		float value = 0;
+    		
+    		// TODO See above
+        	if (true) {
+        		value = aggregation.getEventCount();
+        	} else {
+        		value = aggregation.getAggregateQuantity(0);
+        	}
+        	
+    		float height = max_height*value/maximum_value;
+    		
+        	float horizontal_position = getScreenPositionOfDateMillis(aggregation.getDate().getTime());
+    		canvas.drawRect(horizontal_position, -height, horizontal_position + pixels_per_bin, 0, mEventPaint);
+    	}
+    }
+
+    // ========================================================================
+    Date getLeftEdgeDate() {
+    	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2));
+    	return d;
+    }
+
+    // ========================================================================
+    float getScreenPositionOfDateMillis(long millis) {
+        long millis_delta = millis - this.date.getTime();
+    	float fraction = millis_delta/(MILLISECONDS_PER_YEAR*this.timeline_years_span);
+
+    	float horizontal_position = fraction*getWidth();
+    	return horizontal_position;
+    }
+    
+    // ========================================================================
+    void drawYearNodes(Canvas canvas, float marker_radius) {
+    	
         if (this.date != null) {
         	
-        	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2));
-
+            this.mLinePaint.setColor(Color.WHITE);
+        	
+            Date d = getLeftEdgeDate();
             this.dummy_calendar.setTime(d);
             int y = this.dummy_calendar.get(Calendar.YEAR);
             this.dummy_calendar.clear();
@@ -285,10 +378,8 @@ public class TimelineViewHorizontal extends View {
 
             	this.dummy_calendar.add(Calendar.YEAR, 1);
 
-                long millis_delta = this.dummy_calendar.getTimeInMillis() - this.date.getTime();
-            	float fraction = millis_delta/(MILLISECONDS_PER_YEAR*this.timeline_years_span);
-
-            	float horizontal_position = fraction*getWidth();
+            	
+            	float horizontal_position = getScreenPositionOfDateMillis(this.dummy_calendar.getTimeInMillis());
             	canvas.drawCircle(horizontal_position, 0, marker_radius, this.mLinePaint);
 
                 int year = this.dummy_calendar.get(Calendar.YEAR);
@@ -329,5 +420,64 @@ public class TimelineViewHorizontal extends View {
         	invalidate();
         	return true;
         }
+    }
+
+    
+    
+    // ==========================================================
+    @Override
+    protected void onSizeChanged (int w, int h, int oldw, int oldh) {
+    	
+    	float screenspace_pixel_milliseconds = MILLISECONDS_PER_YEAR*timeline_years_span / w;
+    	
+    	aggregateEvents(screenspace_pixel_milliseconds);
+    }
+
+    // ==========================================================
+    // We only hold onto this variable until the dimensions of this view are set,
+    // at which time we aggregate them into screen-space-determined bins.
+    List<SimpleEvent> sorted_events = new ArrayList<SimpleEvent>();
+    public void setEvents(List<SimpleEvent> sorted_events) {
+    	this.sorted_events = sorted_events;
+    }
+
+    private List<TimespanEventAggregator> aggregated_events = new ArrayList<TimespanEventAggregator>();
+    TimespanEventMaximums timespan_maximums = new TimespanEventMaximums();
+    
+    // ========================================================================
+    /** Aggregates the events into weeks */
+    public void aggregateEvents(float screenspace_pixel_milliseconds) {
+    	this.aggregated_events.clear();
+    	
+    	
+    	if (sorted_events.size() > 0) {
+
+    		
+    		long bin_duration_milliseconds = (long) (pixels_per_bin*screenspace_pixel_milliseconds);
+    		
+	    	TimespanEventAggregator timespan_aggregator = null;
+	    	
+	    	
+	    	Date aggregation_stopping_point = new Date();
+	    	SimpleEvent first_event = sorted_events.get(0);
+	    	aggregation_stopping_point.setTime(first_event.timestamp.getTime());
+	    	
+	    	int event_index = 0;
+	    	while (event_index < sorted_events.size()) {
+	
+		    	SimpleEvent event = sorted_events.get(event_index);
+		    	
+		    	while (event.timestamp.getTime() >= aggregation_stopping_point.getTime()) {
+		    		timespan_aggregator = new TimespanEventAggregator();
+		    		timespan_aggregator.reset((Date) aggregation_stopping_point.clone());
+		    		this.aggregated_events.add(timespan_aggregator);
+		    		
+		    		aggregation_stopping_point.setTime(aggregation_stopping_point.getTime() + bin_duration_milliseconds);
+		    	}
+	    		
+	        	event_index = FlingableMonthView.aggregateEventsUntilTime(sorted_events, timespan_aggregator, aggregation_stopping_point.getTime(), event_index);
+	        	timespan_maximums.updateMax(timespan_aggregator);
+	    	}
+    	}
     }
 }

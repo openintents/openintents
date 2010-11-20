@@ -94,7 +94,7 @@ public class WeekActivity extends PeriodBrowsingActivity {
         // Zip the events
         if (intent_data != null) {
         	// We have been passed a cursor to the data via a content provider.
-			this.events = getEventsFromUri(intent_data, getIntent(), new DailyEventMaximums());
+			this.events = getEventsFromUri(intent_data, getIntent(), new TimespanEventMaximums());
 
         } else {
         	Log.d(TAG, "No URI was passed, checking for Intent extras instead...");

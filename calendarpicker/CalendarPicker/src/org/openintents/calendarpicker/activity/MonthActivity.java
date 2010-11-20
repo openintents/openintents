@@ -133,7 +133,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         
         this.month_title = (TextView) findViewById(R.id.month_title);
 
-        DailyEventMaximums maximums = new DailyEventMaximums();
+        TimespanEventMaximums maximums = new TimespanEventMaximums();
         List<SimpleEvent> events;
         Uri intent_data = getIntent().getData();
         // Zip the events
@@ -169,7 +169,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
 		this.tiny_timeline.setOnDateSelectionListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-				month_view.setMonthAndHighlight(date, false);
+				month_view.setMonthAndHighlight(date);
 			}
 		});
 		
@@ -251,12 +251,12 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         }
         
         updateMonthHeader(current_month_calendar);
-//        this.tiny_timeline.setDate(current_month_calendar.getTime());
+        
+        this.tiny_timeline.setEvents(events);
+        
         this.month_view.setEvents(events);
-        this.month_view.setMonthAndHighlight(current_month_calendar.getTime(), true);
-
+        this.month_view.setMonthAndHighlight(current_month_calendar.getTime());
     }
-
 
     // ========================================================================
     void generateWeekdayLabels(LinearLayout layout) {
@@ -354,25 +354,25 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
     	case KeyEvent.KEYCODE_DPAD_UP:
     	{
     		cal.add(Calendar.DATE, -FlingableMonthView.DAYS_PER_WEEK);
-    		month_view.setMonthAndHighlight(cal.getTime(), false);
+    		month_view.setMonthAndHighlight(cal.getTime());
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_LEFT:
     	{
     		cal.add(Calendar.DATE, -1);
-    		month_view.setMonthAndHighlight(cal.getTime(), false);
+    		month_view.setMonthAndHighlight(cal.getTime());
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_DOWN:
     	{
     		cal.add(Calendar.DATE, FlingableMonthView.DAYS_PER_WEEK);
-    		month_view.setMonthAndHighlight(cal.getTime(), false);
+    		month_view.setMonthAndHighlight(cal.getTime());
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_RIGHT:
     	{
     		cal.add(Calendar.DATE, 1);
-    		month_view.setMonthAndHighlight(cal.getTime(), false);
+    		month_view.setMonthAndHighlight(cal.getTime());
     		break;
     	}
     	case KeyEvent.KEYCODE_DPAD_CENTER:
@@ -456,7 +456,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements SharedPrefe
         switch (item.getItemId()) {
         case R.id.menu_goto_today:
         {
-        	month_view.setMonthAndHighlight(new Date(), false);
+        	this.month_view.setMonthAndHighlight(new Date());
             return true;
         }
         case R.id.menu_month_help:
