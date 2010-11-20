@@ -265,7 +265,13 @@ public class FlingableMonthView extends View implements SharedPreferences.OnShar
     	temp_calendar.setTime(this.active_month_calendar.getTime());
     	setMonthWeekBeginning(temp_calendar);
     	this.active_month_northwest_corner_date.setTime(temp_calendar.getTimeInMillis());
+
     	this.vertical_offset = 0;
+
+    	this.calendar_drawing.current_flinging_velocity = 0;
+    	this.calendar_drawing.current_snapping_velocity = 0;
+    	this.calendar_drawing.is_snapping = false;
+    	
     	
 
     	// The order of these two functions is vital.
