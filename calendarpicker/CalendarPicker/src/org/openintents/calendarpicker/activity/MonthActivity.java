@@ -211,7 +211,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements ColorMappin
 		this.month_view.setOnDayTouchListener(new OnDateUpdateListener() {
 			@Override
 			public void updateDate(Date date) {
-				updateWeekHeaderBar(date);
+				highlightWeekday(date);
 			}
         });
 		this.month_view.setOnScrollListener(new OnDateUpdateListener() {
@@ -230,7 +230,7 @@ public class MonthActivity extends PeriodBrowsingActivity implements ColorMappin
 			@Override
 			public void updateDate(Date date) {
 
-				updateWeekHeaderBar(date);
+				highlightWeekday(date);
 				
 				Uri data = getIntent().getData();
 				if (data != null) {
@@ -410,15 +410,15 @@ public class MonthActivity extends PeriodBrowsingActivity implements ColorMappin
 
     
     // ========================================================================
-    void updateWeekHeaderBar(Date date) {
+    void highlightWeekday(Date date) {
 		// Highlight the day of the week in the header bar
 		int child_idx = -1;
 		if (date != null) {
 			Calendar c = new GregorianCalendar();
 			c.setTime(date);
-			child_idx = c.get(Calendar.DAY_OF_WEEK) - c.getMinimum(Calendar.DAY_OF_WEEK);
+			child_idx = (c.get(Calendar.DAY_OF_WEEK) - c.getFirstDayOfWeek() + FlingableMonthView.DAYS_PER_WEEK) % FlingableMonthView.DAYS_PER_WEEK;
 		}
-		
+
 		for (int i=0; i<weekday_header_layout.getChildCount(); i++) {
 			TextView tv = (TextView) weekday_header_layout.getChildAt(i);
 			tv.setTextColor(getResources().getColor(i == child_idx ? R.color.weekday_highlight : android.R.color.secondary_text_dark));
