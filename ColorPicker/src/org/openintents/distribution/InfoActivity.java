@@ -26,40 +26,67 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
 
     private int[] mApplications = {
             R.string.title_app_flashlight, // OI Flashlight
+            R.string.title_app_spiral_wallpaper, // Spiral Wallpaper
+            R.string.title_app_bettr_flickr, // OI Flashlight
+            R.string.title_app_character_gen, // Character Generator
     };
     
     private String[] mPackageNames = {
     		"org.openintents.flashlight", // OI Flashlight
+    		"com.kostmo.wallpaper.spiral", // Spiral Wallpaper
+    		"com.kostmo.flickr.bettr", // BettrFlickr
+    		"com.kostmo.charbuilder.full", // Character Generator
     };
     
     private int[] mMinVersionCodes = {
     		10007, // OI Flashlight
+    		11, // Spiral Wallpaper
+    		26, // BettrFlickr
+    		12, // Character Generator
     };
     
     private String[] mMinVersionName = {
     		"1.0.6", // OI Flashlight
+    		"1.3.6", // Spiral Wallpaper
+    		"2.1.1", // BettrFlickr
+    		"2.7.2", // Character Generator
     };
     
     private int[] mInfoText = {
     		R.string.info_app_flashlight, // OI Flashlight
+    		R.string.info_app_spiral_wallpaper, // Spiral Wallpaper
+    		R.string.info_app_bettr_flickr, // BettrFlickr
+    		R.string.info_app_character_gen, // Character Generator
     };
 
     public static final String MARKET_PACKAGE_DETAILS_PREFIX = "market://details?id=";
     private String[] mMarketUris = {
     		MARKET_PACKAGE_DETAILS_PREFIX + mPackageNames[0], // OI Flashlight
+    		MARKET_PACKAGE_DETAILS_PREFIX + mPackageNames[1], // Spiral Wallpaper
+    		MARKET_PACKAGE_DETAILS_PREFIX + mPackageNames[2], // BettrFlickr
+    		MARKET_PACKAGE_DETAILS_PREFIX + mPackageNames[3], // Character Generator
     };
 
     public static final String DEVELOPER_WEBSITE_URL_PREFIX = "http://www.openintents.org/en/";
     private String[] mDeveloperUris = {
     		DEVELOPER_WEBSITE_URL_PREFIX + "flashlight", // OI Flashlight
+    		"http://code.google.com/p/android-spiral-wallpaper/", // Spiral Wallpaper
+    		"http://sites.google.com/site/bettrflickr/", // BettrFlickr
+    		"http://sites.google.com/site/droidful/my-apps/anime-character-generator", // Character Generator
     };
 
     private String[] mIntentAction = {
     		"org.openintents.action.START_FLASHLIGHT", // OI Flashlight
+    		null, // Spiral Wallpaper
+    		null, // BettrFlickr
+    		null, // Character Generator
     };
 
     private String[] mIntentData = {
     		null, // OI Flashlight
+    		null, // Spiral Wallpaper
+    		null, // BettrFlickr
+    		null, // Character Generator
     };
     
     /////////////////////////////////////////////////////////////////////////////
