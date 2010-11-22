@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2010 Karl Ostmo
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+    <string name="title_app_kanji_tutor">Kanji Tutor</string>
+    <string name="info_app_kanji_tutor">Learn Japanese characters</string>
+    <string name="package_app_kanji_tutor">com.kostmo.kanji</string>
+    <string name="website_app_kanji_tutor">http://sites.google.com/site/droidful/my-apps/kanji-tutor</string>
+    
+    <string name="title_app_dev_rev">Developer Revenue Analysis</string>
+    <string name="info_app_dev_rev">Analyze and plot sales revenue from the Android Market</string>
+    <string name="package_app_dev_rev">com.kostmo.market.revenue</string>
+    <string name="website_app_dev_rev">http://code.google.com/p/chartdroid/wiki/DeveloperRevenueAnalysis</string>
+    
+    <string name="title_app_taxo_tracker">TaxoTracker</string>
+    <string name="info_app_taxo_tracker">Maintain a list of flora/fauna sightings, e.g. for birdwatching</string>
+    <string name="package_app_taxo_tracker">org.crittr.track</string>
+    <string name="website_app_taxo_tracker">http://code.google.com/p/chartdroid/wiki/TaxoTrack</string>
+    
+    
+</resources>

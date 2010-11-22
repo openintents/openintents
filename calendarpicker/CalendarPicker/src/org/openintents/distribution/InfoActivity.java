@@ -25,36 +25,54 @@ import android.widget.AdapterView.OnItemClickListener;
 public class InfoActivity extends ListActivity implements OnItemClickListener {
 
     private int[] mApplications = {
+            R.string.title_app_kanji_tutor, // Kanji Tutor
+    		R.string.title_app_dev_rev, // Developer Revenue Analysis
+    		R.string.title_app_taxo_tracker // Taxo Tracker
     };
     
-    private String[] mPackageNames = {
+    private int[] mPackageNames = {
+    		R.string.package_app_kanji_tutor, // Kanji Tutor
+    		R.string.package_app_dev_rev, // Developer Revenue Analysis
+    		R.string.package_app_taxo_tracker, // Taxo Tracker
     };
     
     private int[] mMinVersionCodes = {
+    		15, // Kanji Tutor
+    		13, // Developer Revenue Analysis
+    		1, // Taxo Tracker
     };
     
     private String[] mMinVersionName = {
+    		"2.3", // Kanji Tutor
+    		"1.4", // Developer Revenue Analysis
+    		"1.0", // Taxo Tracker
     };
     
     private int[] mInfoText = {
+    		R.string.info_app_kanji_tutor, // Kanji Tutor
+    		R.string.info_app_dev_rev, // Developer Revenue Analysis
+    		R.string.info_app_taxo_tracker, // Taxo Tracker
     };
 
     public static final String MARKET_PACKAGE_DETAILS_PREFIX = "market://details?id=";
-    private String[] mMarketUris = {
-    		MARKET_PACKAGE_DETAILS_PREFIX + mPackageNames[0], // OI Flashlight
-    };
 
     public static final String DEVELOPER_WEBSITE_URL_PREFIX = "http://www.openintents.org/en/";
-    private String[] mDeveloperUris = {
-    		DEVELOPER_WEBSITE_URL_PREFIX + "flashlight", // OI Flashlight
+    private int[] mDeveloperUris = {
+    		R.string.website_app_kanji_tutor, // Kanji Tutor
+    		R.string.website_app_dev_rev, // Developer Revenue Analysis
+    		R.string.website_app_taxo_tracker, // Taxo Tracker
     };
 
     private String[] mIntentAction = {
-    		"org.openintents.action.START_FLASHLIGHT", // OI Flashlight
+    		Intent.ACTION_MAIN, // Kanji Tutor
+    		Intent.ACTION_MAIN, // Developer Revenue Analysis
+    		Intent.ACTION_MAIN, // Taxo Tracker
     };
 
     private String[] mIntentData = {
-    		null, // OI Flashlight
+    		null, // Kanji Tutor
+    		null, // Developer Revenue Analysis
+    		null, // Taxo Tracker
     };
     
     /////////////////////////////////////////////////////////////////////////////
@@ -103,7 +121,8 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		if (isPackageAvailable(this, mPackageNames[pos], mMinVersionCodes[pos])) {
+		String package_name = getResources().getString(mPackageNames[pos]);
+		if (isPackageAvailable(this, package_name, mMinVersionCodes[pos])) {
 			showDialog(DIALOG_INFO + pos);
 		} else {
 			showDialog(DIALOG_GET_FROM_MARKET + pos);
@@ -187,22 +206,31 @@ public class InfoActivity extends ListActivity implements OnItemClickListener {
 		intent.setAction(mIntentAction[pos]);
 		if (mIntentData[pos] != null)
 			intent.setData(Uri.parse(mIntentData[pos]));
-
+		else if (mPackageNames[pos] != 0) {
+			String package_name = getResources().getString(mPackageNames[pos]);
+			intent.setPackage(package_name);
+			intent.addCategory(Intent.CATEGORY_LAUNCHER);
+		}
 		try {
 			startActivity(intent);
 		} catch (ActivityNotFoundException e) {
-			
+			e.printStackTrace();
 		}
 	}
 
 	private AlertDialog buildGetFromMarketDialog(int pos) {
 		String info_not_available = getString(R.string.info_not_available, mApplicationStrings[pos], mMinVersionName[pos]);
 		String info_get = getString(R.string.info_get, mApplicationStrings[pos]);
+
+		String package_name = getResources().getString(mPackageNames[pos]);
+		String package_uri = MARKET_PACKAGE_DETAILS_PREFIX + package_name;
+		
+		String developer_url = getResources().getString(mDeveloperUris[pos]);
 		return new GetFromMarketDialog(this, 
 				info_not_available,
 				info_get,
-				mMarketUris[pos],
-				mDeveloperUris[pos]);
+				package_uri,
+				developer_url);
 	
 	}
 	

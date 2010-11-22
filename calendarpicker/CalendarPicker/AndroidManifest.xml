@@ -77,6 +77,14 @@
 		<activity android:name="org.openintents.calendarpicker.activity.ColormapSelectionListActivity"/>            
             
 
+        <activity android:name="org.openintents.distribution.InfoActivity"
+			android:theme="@*android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" />  -->
+            </intent-filter>
+        </activity>
 
     </application>
     <uses-sdk android:targetSdkVersion="4" android:minSdkVersion="4"/>
