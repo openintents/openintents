@@ -132,8 +132,7 @@ public class TimelineViewHorizontal extends View {
 	        	if (event.getAction() == MotionEvent.ACTION_UP) {
 					is_touching	= false;
 					invalidate();
-//		        	Date touched_date = getTouchDate(event.getX());
-					Date touched_date = getTouchDate(last_touch_x);
+					Date touched_date = new Date(getTouchDateMillis(last_touch_x));
 					date_selection_callback.updateDate(touched_date);
 	        	}
 				
@@ -295,11 +294,14 @@ public class TimelineViewHorizontal extends View {
 
     }
 
+
+    Date dummy_left_edge_date = new Date();
+    Date dummy_right_edge_date = new Date();
     // ========================================================================
     void drawEventsHistogram(Canvas canvas) {
 
-        Date left_edge_date = getLeftEdgeDate();
-        Date right_edge_date = new Date(left_edge_date.getTime() + (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span));
+    	this.dummy_left_edge_date.setTime(getLeftEdgeDateMillis());
+        this.dummy_right_edge_date.setTime(this.dummy_left_edge_date.getTime() + (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span));
     	
     	float max_height = getHeight()/2;
     	for (TimespanEventAggregator aggregation : aggregated_events) {
@@ -307,9 +309,9 @@ public class TimelineViewHorizontal extends View {
     		// We skip through pieces that come before the leftmost visible
     		// edge of the timeline.
     		
-    		if (aggregation.getDate().before(left_edge_date)) {
+    		if (aggregation.getDate().before(this.dummy_left_edge_date)) {
     			continue;
-    		} else if (!aggregation.getDate().before(right_edge_date)) {
+    		} else if (!aggregation.getDate().before(this.dummy_right_edge_date)) {
     			break;
     		}
     		
@@ -324,11 +326,10 @@ public class TimelineViewHorizontal extends View {
     		canvas.drawRect(horizontal_position, -height, horizontal_position + this.pixels_per_bin, 0, this.mEventPaint);
     	}
     }
-
+    
     // ========================================================================
-    Date getLeftEdgeDate() {
-    	Date d = new Date(this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2));
-    	return d;
+    long getLeftEdgeDateMillis() {
+    	return this.date.getTime() - (long) (MILLISECONDS_PER_YEAR*this.timeline_years_span/2);
     }
 
     // ========================================================================
@@ -347,8 +348,7 @@ public class TimelineViewHorizontal extends View {
         	
             this.mLinePaint.setColor(Color.WHITE);
         	
-            Date d = getLeftEdgeDate();
-            this.dummy_calendar.setTime(d);
+            this.dummy_calendar.setTimeInMillis(getLeftEdgeDateMillis());
             int y = this.dummy_calendar.get(Calendar.YEAR);
             this.dummy_calendar.clear();
             this.dummy_calendar.set(Calendar.YEAR, y);
@@ -368,9 +368,9 @@ public class TimelineViewHorizontal extends View {
     }
 
     // ========================================================================
-    Date getTouchDate(float horizontal_position) {
+    long getTouchDateMillis(float horizontal_position) {
     	long ms_delta = (long) ((getWidth()/2f - horizontal_position)*(MILLISECONDS_PER_YEAR*timeline_years_span) / getWidth());
-    	return new Date(this.date.getTime() - ms_delta);
+    	return this.date.getTime() - ms_delta;
     }
 	
     // ========================================================================
@@ -382,9 +382,6 @@ public class TimelineViewHorizontal extends View {
         	is_touching = true;
         	last_touch_x = e.getX();
         	
-        	Date touched_date = getTouchDate(e.getX());
-        	Log.d(TAG, "Touched timeline at " + touched_date);
-        	
         	return true;
         }
         
@@ -393,22 +390,19 @@ public class TimelineViewHorizontal extends View {
 
         	last_touch_x = e2.getX();
         	
-        	Date touched_date = getTouchDate(e2.getX());
+        	Date touched_date = new Date(getTouchDateMillis(e2.getX()));
         	date_update_callback.updateDate(touched_date);
         	
         	invalidate();
         	return true;
         }
     }
-
-    
     
     // ==========================================================
     @Override
     protected void onSizeChanged (int w, int h, int oldw, int oldh) {
     	
     	float screenspace_pixel_milliseconds = MILLISECONDS_PER_YEAR*timeline_years_span / w;
-    	
     	aggregateEvents(screenspace_pixel_milliseconds);
     }
 

@@ -28,29 +28,20 @@ import android.provider.BaseColumns;
 
 public class CalendarPickerConstants {
 
-	public static String ANDROID_CALENDAR_AUTHORITY_1_0 = "calendar";
-	public static String ANDROID_CALENDAR_AUTHORITY_2_0 = "com.android.calendar";
-	
-	public static String ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS = "calendars";
-	public static String ANDROID_CALENDAR_PROVIDER_PATH_EVENTS = "events";
-	
-	
-    
     
     public static class DownloadInfo {
     	
     	public final static String PACKAGE_NAME_CALENDAR_PICKER = "org.openintents.calendarpicker";
     	public final static String CALENDAR_PICKER_WEBSITE = "http://www.openintents.org/en/calendarpicker";
     	
-    	public final static String APK_DOWNLOAD_URL_PREFIX = "http://openintents.googlecode.com/files/";
+    	public final static String APK_DOWNLOAD_URL_PREFIX = "http://openintents.googlecode.com/files";
     	public final static String APK_APP_NAME = "CalendarPicker";
     	public final static String APK_VERSION_NAME = "1.0.0";
-    	public final static Uri APK_DOWNLOAD_URI = Uri.parse(APK_DOWNLOAD_URL_PREFIX + APK_APP_NAME + "-" + APK_VERSION_NAME + ".apk");
-    	
+    	public final static String APK_FILENAME = APK_APP_NAME + "-" + APK_VERSION_NAME + ".apk";
+    	public final static Uri APK_DOWNLOAD_URI = Uri.withAppendedPath(Uri.parse(APK_DOWNLOAD_URL_PREFIX), APK_FILENAME);
     	
         // ========================================================================
     	public static final String MARKET_PACKAGE_DETAILS_PREFIX = "market://details?id=";
-    	public static final String MARKET_PACKAGE_DETAILS_STRING = MARKET_PACKAGE_DETAILS_PREFIX + PACKAGE_NAME_CALENDAR_PICKER;
 
         // ========================================================================
     	public static Intent getMarketDownloadIntent(String package_name) {

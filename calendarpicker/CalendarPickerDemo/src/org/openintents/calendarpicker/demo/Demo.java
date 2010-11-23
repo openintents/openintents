@@ -61,6 +61,20 @@ public class Demo extends Activity implements View.OnClickListener {
 
 	public final static int DEFAULT_RANDOM_EVENTS = 15;
 	
+	
+
+	
+	public static class CalendarProviderConstants {
+		public static String ANDROID_CALENDAR_AUTHORITY_1_0 = "calendar";
+		public static String ANDROID_CALENDAR_AUTHORITY_2_0 = "com.android.calendar";
+		
+		public static String ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS = "calendars";
+		public static String ANDROID_CALENDAR_PROVIDER_PATH_EVENTS = "events";
+	}
+	
+	
+    
+	
 	// ========================================================================
 	public static class EventWrapper {
 		public long id, timestamp;
@@ -301,8 +315,8 @@ public class Demo extends Activity implements View.OnClickListener {
 		{
 			Uri calendars = new Uri.Builder()
 			.scheme(ContentResolver.SCHEME_CONTENT)
-			.authority( CalendarPickerConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-			.appendPath(CalendarPickerConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
+			.authority( CalendarProviderConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+			.appendPath(CalendarProviderConstants.ANDROID_CALENDAR_PROVIDER_PATH_CALENDARS).build();
 
 			final Cursor cursor = managedQuery(calendars, null, null, null, null);
 
@@ -323,8 +337,8 @@ public class Demo extends Activity implements View.OnClickListener {
 
 					Uri uri = new Uri.Builder()
 						.scheme(ContentResolver.SCHEME_CONTENT)
-						.authority( CalendarPickerConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
-						.appendPath(CalendarPickerConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
+						.authority( CalendarProviderConstants.ANDROID_CALENDAR_AUTHORITY_2_0)
+						.appendPath(CalendarProviderConstants.ANDROID_CALENDAR_PROVIDER_PATH_EVENTS).build();
 
 					Intent intent = new Intent(Intent.ACTION_PICK, uri);
 					intent.putExtra(CalendarPickerConstants.CalendarEventPicker.IntentExtras.EXTRA_CALENDAR_ID, selected_google_calendar_id);
