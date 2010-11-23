@@ -254,7 +254,7 @@ public class Demo extends Activity implements View.OnClickListener {
 		{
 			return new AlertDialog.Builder(this)
 			.setIcon(android.R.drawable.ic_dialog_alert)
-			.setTitle(R.string.download_calendar_picker)
+			.setTitle(R.string.event_picker)
 			.setItems(new String[] {"Plain", "With events"}, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
@@ -274,7 +274,7 @@ public class Demo extends Activity implements View.OnClickListener {
 		{
 			return new AlertDialog.Builder(this)
 			.setIcon(android.R.drawable.ic_dialog_alert)
-			.setTitle(R.string.download_calendar_picker)
+			.setTitle(R.string.date_picker)
 			.setItems(new String[] {"Custom ContentProvider", "Intent Extras", "Google Calendar"}, new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
