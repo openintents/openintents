@@ -23,6 +23,15 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 
+release 1.2.6
+date:
+- move items between lists
+- backup preferences and items
+- support for xlarge screens
+- launcher icons for different resolutions
+
+---------------------------------------------------------
+
 release 1.2.5
 date: 2010-08-05
 - translations: Danish, minor changes

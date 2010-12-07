@@ -17,10 +17,11 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="org.openintents.shopping"
-	android:versionCode="10021" android:versionName="1.2.5">
+	android:versionCode="10022" android:versionName="1.2.6-rc1">
 	<!-- History:
-	1.2.5       [10021]: 2010-08-05
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
+	1.2.6-rc1   [10022]: 2010-12-07
+	1.2.5       [10021]: 2010-08-05
 	1.2.4       [10020]: 2010-06-26
 	1.2.4-rc3   [10019]: 2010-06-21
 	1.2.4-rc2   [10018]: 2010-06-20
@@ -47,10 +48,10 @@
 		<meta-data android:name="com.google.android.backup.api_key"
     		android:value="AEdPqrEAAAAIyg1-9MfKF9MnoINzk-FPUGiXcqLuHLcMP3PvEg" />
     		    
-        <!-- aTrackDog metadata 
+        <!-- aTrackDog metadata --> 
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10017" />
-        -->		
+           android:value="10022" />
+        
         <meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />
         <meta-data android:name="org.openintents.metadata.COPYRIGHT"
