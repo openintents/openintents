@@ -1,8 +1,10 @@
 package org.openintents.shopping;
 
 import org.openintents.provider.Shopping.Contains;
+import org.openintents.util.BackupManagerWrapper;
 import org.openintents.util.IntentUtils;
 
+import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +17,17 @@ import android.text.method.KeyListener;
 import android.text.method.TextKeyListener;
 
 public class PreferenceActivity extends android.preference.PreferenceActivity {
-	
+	private static boolean mBackupManagerAvailable;
+
+	static {
+		try {
+			BackupManagerWrapper.checkAvailable();
+			mBackupManagerAvailable = true;
+		} catch (RuntimeException e) {
+			mBackupManagerAvailable = false;
+		}
+	}
+
 	private static final String TAG = "PreferenceActivity";
 
 	public static final String PREFS_SORTORDER = "sortorder";
@@ -40,11 +52,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 	public static final String PREFS_MARKET_THEMES = "preference_market_themes";
 	public static final String PREFS_THEME_SET_FOR_ALL = "theme_set_for_all";
 	public static final String PREFS_SCREEN_ADDONS = "preference_screen_addons";
-	
+
 	public static final int PREFS_CAPITALIZATION_DEFAULT = 1;
 
 	public static final String EXTRA_SHOW_GET_ADD_ONS = "show_get_add_ons";
-	
+
 	private static final TextKeyListener.Capitalize smCapitalizationSettings[] = {
 			TextKeyListener.Capitalize.NONE,
 			TextKeyListener.Capitalize.SENTENCES,
@@ -55,7 +67,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		super.onCreate(savedInstanceState);
 		// Load the preferences from an XML resource
 		addPreferencesFromResource(R.xml.preferences);
-		
+
 		// Set enabled state of Market preference
 		PreferenceScreen sp = (PreferenceScreen) findPreference(PREFS_MARKET_EXTENSIONS);
 		sp.setEnabled(isMarketAvailable());
@@ -69,25 +81,36 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 
 		if (getIntent() != null && getIntent().hasExtra(EXTRA_SHOW_GET_ADD_ONS)) {
 			// Open License section directly:
-			PreferenceScreen licensePrefScreen = (PreferenceScreen) getPreferenceScreen().findPreference(PREFS_SCREEN_ADDONS);
+			PreferenceScreen licensePrefScreen = (PreferenceScreen) getPreferenceScreen()
+					.findPreference(PREFS_SCREEN_ADDONS);
 			setPreferenceScreen(licensePrefScreen);
 		}
 	}
 
+	@Override
+	protected void onPause() {
+		if (mBackupManagerAvailable) {
+			new BackupManagerWrapper(this).dataChanged();
+		}
+
+		super.onPause();
+	}
+
 	/**
 	 * Check whether Market is available.
+	 * 
 	 * @return true if Market is available
 	 */
 	private boolean isMarketAvailable() {
 		Intent i = new Intent(Intent.ACTION_VIEW);
-		i.setData(Uri.parse(getString(R.string.preference_market_extensions_link)));
+		i.setData(Uri
+				.parse(getString(R.string.preference_market_extensions_link)));
 		return IntentUtils.isIntentAvailable(this, i);
 	}
-	
+
 	public static int getFontSizeFromPrefs(Context context) {
 		int size = Integer.parseInt(PreferenceManager
-				.getDefaultSharedPreferences(context).getString(
-						PREFS_FONTSIZE,
+				.getDefaultSharedPreferences(context).getString(PREFS_FONTSIZE,
 						PREFS_FONTSIZE_DEFAULT));
 		return size;
 	}
@@ -160,7 +183,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 				.getDefaultSharedPreferences(context);
 		return prefs.getBoolean(PREFS_THEME_SET_FOR_ALL, false);
 	}
-	
+
 	public static void setThemeSetForAll(Context context, boolean setForAll) {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);

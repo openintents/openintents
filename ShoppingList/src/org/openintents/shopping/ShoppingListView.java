@@ -374,6 +374,7 @@ public class ShoppingListView extends ListView {
 		}
 
 	};
+	private TextView mCountTextView;
 
 	public ShoppingListView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -934,6 +935,13 @@ public class ShoppingListView extends ListView {
 	public void setTotalCheckedTextView(TextView tv) {
 		mTotalCheckedTextView = tv;
 	}
+	
+
+	public void setCountTextView(TextView tv) {
+		mCountTextView = tv;
+		
+	}
+
 
 	/**
 	 * Update the text fields for "Total:" and "Checked:" with corresponding
@@ -963,17 +971,20 @@ public class ShoppingListView extends ListView {
 		mCursorItems.moveToPosition(-1);
 		long total = 0;
 		long totalchecked = 0;
+		long counter = 0;
 		while (mCursorItems.moveToNext()) {
 			long price = getQuantityPrice(mCursorItems);
 			total += price;
 			if (mCursorItems.getLong(ShoppingActivity.mStringItemsSTATUS) == Shopping.Status.BOUGHT) {
 				totalchecked += price;
+				counter++;
 			}
 		}
-		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked);
+		Log.d(TAG, "Total: " + total + ", Checked: " + totalchecked + "(#" + counter + ")");
 
 		mTotalTextView.setTextColor(mTextColorPrice);
 		mTotalCheckedTextView.setTextColor(mTextColorPrice);
+		mCountTextView.setTextColor(mTextColorPrice);
 
 		if (total != 0) {
 			String s = mPriceFormatter.format(total * 0.01d);
@@ -989,9 +1000,13 @@ public class ShoppingListView extends ListView {
 			s = getContext().getString(R.string.total_checked, s);
 			mTotalCheckedTextView.setText(s);
 			mTotalCheckedTextView.setVisibility(View.VISIBLE);
+			mCountTextView.setVisibility(View.VISIBLE);
 		} else {
 			mTotalCheckedTextView.setVisibility(View.GONE);
+			mCountTextView.setVisibility(View.GONE);
 		}
+		
+		mCountTextView.setText("#" + counter);
 	}
 
 	private long getQuantityPrice(Cursor cursor) {

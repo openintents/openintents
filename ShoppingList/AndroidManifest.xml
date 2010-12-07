@@ -39,14 +39,14 @@
 	1.1.0-rc2 [10005]: 2009-05-15
 	1.0.3 [10004]: 2009-02-04  -->
 	
-	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4"/>
+	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="9"/>
 	 
 	<application android:icon="@drawable/icon_shoppinglist" android:label="@string/app_name" android:debuggable="true"
 		android:backupAgent="ShoppingBackupAgent">
 	
 		<meta-data android:name="com.google.android.backup.api_key"
     		android:value="AEdPqrEAAAAIyg1-9MfKF9MnoINzk-FPUGiXcqLuHLcMP3PvEg" />
-    
+    		    
         <!-- aTrackDog metadata 
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
            android:value="10017" />
@@ -245,6 +245,7 @@
         
 	</application>	 
 	
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
 	<!-- required for MyBackupPro: -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     
@@ -262,12 +263,11 @@
 		android:protectionLevel="normal" />
 
 
-<supports-screens android:smallScreens="true"
+    <supports-screens android:smallScreens="true"
                   android:normalScreens="true"
                   android:largeScreens="true"
-
-		
-/>
+                  android:xlargeScreens="true"
+                  />
     <!-- required for gtalk (shopping list) -->
     <!-- <uses-permission android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE" />   -->
 	

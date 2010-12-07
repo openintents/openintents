@@ -866,6 +866,9 @@ public class ShoppingActivity extends Activity implements ThemeDialogListener,
 
 		tv = (TextView) findViewById(R.id.total_2);
 		mListItemsView.setTotalTextView(tv);
+		
+		tv = (TextView) findViewById(R.id.count);
+		mListItemsView.setCountTextView(tv);
 
 		mListItemsView.setOnItemClickListener(new OnItemClickListener() {
 
