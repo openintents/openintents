@@ -30,6 +30,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
@@ -279,8 +280,10 @@ public class AskPassword extends Activity {
 	}
 	
 	private void checkForBackup() {
-		String filename=CategoryList.BACKUP_FILENAME;
-		File restoreFile=new File(filename);
+    	File externalStorageDirectory=Environment.getExternalStorageDirectory();
+    	String backupFullname=externalStorageDirectory.getAbsolutePath()+"/"+
+    		CategoryList.BACKUP_BASENAME+".xml";
+		File restoreFile=new File(backupFullname);
 		if (!restoreFile.exists()) {
 			return;
 		}

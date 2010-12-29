@@ -20,10 +20,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.TimeZone;
 
 import org.openintents.distribution.AboutDialog;
 import org.openintents.intents.AboutMiniIntents;
@@ -44,16 +46,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -103,8 +109,9 @@ public class CategoryList extends ListActivity {
     public static final int MAX_CATEGORIES = 256;
 
     private static final String EXPORT_FILENAME = "/sdcard/oisafe.csv";
-    public static final String BACKUP_FILENAME = "/sdcard/oisafe.xml";
+    public static final String BACKUP_BASENAME = "oisafe";
     private static final String PASSWORDSAFE_IMPORT_FILENAME = "/sdcard/passwordsafe.csv";
+    public String backupFullname="";
     
     public static final String KEY_ID = "id";  // Intent keys
 
@@ -123,6 +130,8 @@ public class CategoryList extends ListActivity {
     private CategoryListItemAdapter catAdapter=null;
     private Intent restartTimerIntent=null;
     private int lastPosition=0;
+
+    private AlertDialog autobackupDialog;
     
     private boolean lockOnScreenLock=true;
     
@@ -253,8 +262,87 @@ public class CategoryList extends ListActivity {
         	if (debug) Log.d(TAG,"onResume: no list");
         	fillData();
         }
+        checkForAutoBackup();
     }
 
+    private void checkForAutoBackup() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean prefAutobackup = sp.getBoolean(Preferences.PREFERENCE_AUTOBACKUP, true);
+
+        if (prefAutobackup==false) {
+        	return;
+        }
+    	if (Passwords.countPasswords(-1)<1) {
+    		// if no passwords populated yet, then nevermind
+    		return;
+    	}
+		TimeZone tz = TimeZone.getDefault(); 
+		int julianDay = Time.getJulianDay((new Date()).getTime(), tz.getRawOffset());
+
+		SharedPreferences.Editor editor = sp.edit();
+
+		int lastAutobackupCheck = sp.getInt(Preferences.PREFERENCE_LAST_AUTOBACKUP_CHECK, 0);
+		editor.putInt(Preferences.PREFERENCE_LAST_AUTOBACKUP_CHECK, julianDay);
+		editor.commit();
+		if (lastAutobackupCheck==0) {
+			// first time
+        	if (debug) Log.d(TAG,"first time autobackup");
+			return;
+		}
+		int lastBackupJulian = sp.getInt(Preferences.PREFERENCE_LAST_BACKUP_JULIAN, 0);
+		String maxDaysToAutobackupString=sp.getString(Preferences.PREFERENCE_AUTOBACKUP_DAYS,
+				Preferences.PREFERENCE_AUTOBACKUP_DAYS_DEFAULT_VALUE);
+		int maxDaysToAutobackup=7;
+		try {
+			maxDaysToAutobackup = Integer.valueOf(maxDaysToAutobackupString);
+		} catch (NumberFormatException e) {
+			Log.d(TAG,"why is autobackup_days busted?");
+		}
+
+    	int daysSinceLastBackup=julianDay-lastBackupJulian;
+		if (((julianDay-lastAutobackupCheck)>(maxDaysToAutobackup-1)) &&
+				((daysSinceLastBackup)>(maxDaysToAutobackup-1))) {
+        	if (debug) Log.d(TAG,"in need of backup");
+        	// used a custom layout in order to get the checkbox
+			AlertDialog.Builder builder;
+			
+			LayoutInflater inflater = (LayoutInflater) this.getSystemService(LAYOUT_INFLATER_SERVICE);
+			View layout = inflater.inflate(R.layout.auto_backup,null);
+			
+			builder = new AlertDialog.Builder(this);
+			builder.setView(layout);
+			builder.setTitle(getString(R.string.autobackup));
+			builder.setIcon(android.R.drawable.ic_menu_save);
+			builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					checkAutobackupTurnoff();
+				}
+			});
+			builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int whichButton) {
+					checkAutobackupTurnoff();
+					backupThreadStart();
+				}
+			});
+			if (daysSinceLastBackup==julianDay) {
+				builder.setMessage(R.string.backup_never);
+			} else {
+				String backupInDays = String.format(getString(R.string.backup_in_days), daysSinceLastBackup);
+				builder.setMessage(backupInDays);
+			}
+			autobackupDialog = builder.create();
+			autobackupDialog.show();
+		}
+	}
+	private void checkAutobackupTurnoff() {
+		CheckBox autobackupTurnoff=(CheckBox) autobackupDialog.findViewById(R.id.autobackup_turnoff);
+		if (autobackupTurnoff.isChecked()) {
+    		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+    		SharedPreferences.Editor editor = sp.edit();
+            editor.putBoolean(Preferences.PREFERENCE_AUTOBACKUP, false);
+            editor.commit();
+		}
+	}
 	/**
 	 * 
 	 */
@@ -353,7 +441,7 @@ public class CategoryList extends ListActivity {
             case BACKUP_PROGRESS_KEY: {
                 ProgressDialog dialog = new ProgressDialog(this);
                 dialog.setMessage(getString(R.string.backup_progress)+
-                		" "+BACKUP_FILENAME);
+                		" "+backupFullname);
                 dialog.setIndeterminate(false);
                 dialog.setCancelable(false);
                 return dialog;
@@ -603,7 +691,7 @@ public class CategoryList extends ListActivity {
     private String backupDatabase() {
     	Backup backup=new Backup(this);
     	
-    	backup.write(BACKUP_FILENAME);
+    	backup.write(backupFullname);
     	return backup.getResult();
     }
 
@@ -624,7 +712,10 @@ public class CategoryList extends ListActivity {
 	 * and permit the updating of the progress dialog.
 	 */
 	private void backupThreadStart(){
-		showDialog(BACKUP_PROGRESS_KEY);
+    	File externalStorageDirectory=Environment.getExternalStorageDirectory();
+    	backupFullname=externalStorageDirectory.getAbsolutePath()+"/"+BACKUP_BASENAME+".xml";
+
+    	showDialog(BACKUP_PROGRESS_KEY);
 		backupThread = new Thread(new Runnable() {
 			public void run() {
 				String result=backupDatabase();

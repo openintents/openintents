@@ -442,7 +442,10 @@ public class Passwords {
 		passEntry.category=categoryId;
 		dbHelper.updatePasswordCategory(passId, categoryId);
 	}
-	
+
+	/**
+	 * @param categoryId if -1 then count all passwords
+	 */
 	public static int countPasswords(long categoryId) {
 		return dbHelper.countPasswords(categoryId);
 	}

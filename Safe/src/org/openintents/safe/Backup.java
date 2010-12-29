@@ -23,7 +23,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TimeZone;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.text.format.Time;
 import android.util.Log;
 import android.util.Xml;
 
@@ -147,6 +152,15 @@ public class Backup {
 
 			serializer.endTag(null, "OISafe");
 			serializer.endDocument();
+
+			TimeZone tz = TimeZone.getDefault(); 
+			int julianDay = Time.getJulianDay((new Date()).getTime(), tz.getRawOffset());
+	    	if (debug) Log.d(TAG,"julianDay="+julianDay);
+
+	    	SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(myCtx);
+			SharedPreferences.Editor editor = sp.edit();
+			editor.putInt(Preferences.PREFERENCE_LAST_BACKUP_JULIAN, julianDay);
+			editor.commit();
 
 			result=myCtx.getString(R.string.backup_complete)+" "+
 				Integer.toString(totalPasswords);

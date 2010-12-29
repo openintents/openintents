@@ -179,6 +179,14 @@
 	<!-- Preference summary: Make the 'keypad sounds' mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
+
+	<string name="pref_title_autobackup">Auto backup</string>
+	<string name="pref_summary_autobackup">Automatically prompt to backup passwords</string>
+
+	<string name="pref_title_autobackup_days">Auto backup days</string>
+	<string name="pref_summary_autobackup_days">Number of days to wait before next auto backup</string>
+	<string name="pref_dialog_title_autobackup_days">Auto Backup Days</string>
+	
 	
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
@@ -217,6 +225,10 @@
 	<string name="sounds">Sounds</string>
 	<string name="previous">Previous</string>
 	<string name="next">Next</string>
+	<string name="autobackup">AutoBackup</string>
+	<string name="backup_never">No backup has been performed yet.   Would you like to backup now?</string>
+	<string name="backup_in_days">The last backup was %d days ago.   Would you like to backup now?</string>
+	<string name="autobackup_turnoff">Turn off autobackup</string>
 	
 	
 	<!-- ***************************
@@ -267,6 +279,13 @@ Current version: %s
         <item>10 minutes</item>
         <item>15 minutes</item>
         <item>30 minutes</item>  
+    </string-array>
+
+    <string-array name="pref_entries_autobackup_days">
+        <item>1 day</item>
+        <item>7 days</item>
+        <item>30 days</item>
+        <item>60 days</item>
     </string-array>
 
         

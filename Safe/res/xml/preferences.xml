@@ -54,6 +54,20 @@
 			android:key="keypad_mute"
 			android:defaultValue="false"
 			android:dependency="keypad"/>
+		<CheckBoxPreference
+			android:title="@string/pref_title_autobackup"
+			android:summary="@string/pref_summary_autobackup"
+			android:key="autobackup"
+			android:defaultValue="true"/>
+        <ListPreference
+			android:key="autobackup_days"
+			android:title="@string/pref_title_autobackup_days"
+			android:summary="@string/pref_summary_autobackup_days"
+			android:entries="@array/pref_entries_autobackup_days"
+			android:entryValues="@array/pref_entryvalues_autobackup_days"
+			android:dialogTitle="@string/pref_dialog_title_autobackup_days"
+			android:defaultValue="7"
+			android:dependency="autobackup"/>    
 
     </PreferenceCategory>
 </PreferenceScreen>

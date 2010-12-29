@@ -16,6 +16,7 @@
  */
 package org.openintents.safe;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
@@ -98,7 +100,9 @@ public class Restore extends Activity {
 		setTitle(title);
 		
 		if (filename==null) {
-			filename=CategoryList.BACKUP_FILENAME;
+	    	File externalStorageDirectory=Environment.getExternalStorageDirectory();
+	    	filename=externalStorageDirectory.getAbsolutePath()+"/"+
+	    		CategoryList.BACKUP_BASENAME+".xml";
 		}
 		TextView filenameText;
 		filenameText = (TextView) findViewById(R.id.restore_filename);

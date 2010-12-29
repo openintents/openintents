@@ -454,14 +454,18 @@ public class DBHelper {
 
 	/**
 	 * 
-	 * @param categoryId
+	 * @param categoryId if -1 then count all passwords
 	 */
 	public int countPasswords(long categoryId) {
 		int count=0;
 	    try {
+	    	String selection=null;
+	    	if (categoryId>0) {
+	    		selection="category="+categoryId;
+	    	}
 	        Cursor c = db.query(TABLE_PASSWORDS, new String[] {
 	                "count(*)"},
-	                "category="+categoryId, null, null, null, null);
+	                selection, null, null, null, null);
 	        c.moveToFirst();
 	        count=c.getInt(0);
 	        c.close();
@@ -469,7 +473,7 @@ public class DBHelper {
 		{
 			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
 		}
-		Log.i(TAG,"count="+count);
+		//Log.i(TAG,"count="+count);
 		return count;
 	}
 

@@ -24,6 +24,11 @@ public class Preferences extends PreferenceActivity {
 	public static final String PREFERENCE_FIRST_TIME_WARNING = "first_time_warning";
 	public static final String PREFERENCE_KEYPAD = "keypad";
 	public static final String PREFERENCE_KEYPAD_MUTE = "keypad_mute";
+	public static final String PREFERENCE_LAST_BACKUP_JULIAN = "last_backup_julian";
+	public static final String PREFERENCE_LAST_AUTOBACKUP_CHECK = "last_autobackup_check";
+	public static final String PREFERENCE_AUTOBACKUP = "autobackup";
+	public static final String PREFERENCE_AUTOBACKUP_DAYS = "autobackup_days";
+	public static final String PREFERENCE_AUTOBACKUP_DAYS_DEFAULT_VALUE = "7";
 
 	Intent frontdoor;
     private Intent restartTimerIntent=null;
