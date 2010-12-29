@@ -243,6 +243,8 @@ public class ChangePass extends Activity {
 				encryptedMasterKey = ch.encrypt(decryptedMasterKey);
 				if (ch.getStatus()==true) { // successful encryption?
 					dbHelper.storeMasterKey(encryptedMasterKey);
+					Passwords.InitCrypto(CryptoHelper.EncryptionMedium, dbHelper.fetchSalt(), decryptedMasterKey);
+					Passwords.Reset();
 					dbHelper.close();
 					Toast.makeText(ChangePass.this, R.string.password_changed,
 							Toast.LENGTH_LONG).show();
@@ -253,6 +255,10 @@ public class ChangePass extends Activity {
 			}
 
 		} catch (CryptoHelperException e) {
+			Log.e(TAG, e.toString());
+			Toast.makeText(this,getString(R.string.crypto_error)
+				+ e.getMessage(), Toast.LENGTH_SHORT).show();
+		} catch (Exception e) {
 			Log.e(TAG, e.toString());
 			Toast.makeText(this,getString(R.string.crypto_error)
 				+ e.getMessage(), Toast.LENGTH_SHORT).show();

@@ -128,7 +128,7 @@
     <string name="restore_decrypt_error">Schlechtes Passwort</string>
     <string name="dialog_restore_database_title">Datenbank wiederherstellen</string>
     <string name="dialog_restore_database_msg">Sind Sie sicher, dass Sie die bestehenden Einträge ersetzen wollen?</string>
-    <string name="restore_found">%s Passwörter im Backup gefunden vom %s.</string>
+    <string name="restore_found">%1$s Passwörter im Backup gefunden vom %2$s.</string>
     <string name="restore_complete">Fertig. Passwörter wiederhergestellt: %s</string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="invalid_website">Ungültige Webseite</string>

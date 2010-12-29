@@ -128,7 +128,7 @@
     <string name="restore_decrypt_error">Плохой пароль</string>
     <string name="dialog_restore_database_title">Восстановить базу данных</string>
     <string name="dialog_restore_database_msg">Вы уверены, что хотите заменить текущие данные?</string>
-    <string name="restore_found">Найдено %s записей в резервной копии от %s.</string>
+    <string name="restore_found">Найдено %1$s записей в резервной копии от %2$s.</string>
     <string name="restore_complete">Завершено. Паролей восстановлено: %s</string>
     <string name="copied_to_clipboard">скопировано в буфер</string>
     <string name="invalid_website">Неправильный сайт</string>

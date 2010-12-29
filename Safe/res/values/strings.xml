@@ -127,7 +127,7 @@
     <string name="restore_decrypt_error">Bad password.</string>
     <string name="dialog_restore_database_title">Restore Database</string>
     <string name="dialog_restore_database_msg">Are you sure you want to replace the current data?</string>
-    <string name="restore_found">Found %s passwords from backup dated %s.</string>
+    <string name="restore_found">Found %1$s passwords from backup dated %2$s.</string>
     <string name="restore_complete">Complete.  Passwords restored: %s</string>
     <string name="copied_to_clipboard">copied to Clipboard</string>
     <string name="invalid_website">Invalid website</string>
@@ -215,6 +215,8 @@
 	<string name="search_nothing_found">Nothing found</string>
 	<string name="mute">Mute</string>
 	<string name="sounds">Sounds</string>
+	<string name="previous">Previous</string>
+	<string name="next">Next</string>
 	
 	
 	<!-- ***************************

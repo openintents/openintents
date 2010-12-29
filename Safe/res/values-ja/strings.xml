@@ -128,7 +128,7 @@
     <string name="restore_decrypt_error">正しくないパスワード。</string>
     <string name="dialog_restore_database_title">データベースを復元</string>
     <string name="dialog_restore_database_msg">現在のデータで置き換えてもよろしいですか？</string>
-    <string name="restore_found">Found %s passwords from backup dated %s.</string>
+    <string name="restore_found">Found %1$s passwords from backup dated %2$s.</string>
     <string name="restore_complete">パスワードの復元が完了: %s</string>
     <string name="copied_to_clipboard">クリップボードにコピーしました</string>
     <string name="invalid_website">不正なwebsite</string>

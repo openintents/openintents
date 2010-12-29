@@ -82,6 +82,8 @@ public class PassList extends ListActivity {
     
     public static final String KEY_ID = "id";  // Intent keys
     public static final String KEY_CATEGORY_ID = "categoryId";  // Intent keys
+    public static final String KEY_ROWIDS = "rowids";
+    public static final String KEY_LIST_POSITION = "position";
 
     private Long CategoryId=null;
 
@@ -449,6 +451,31 @@ public class PassList extends ListActivity {
 		.show();
     }
     
+	private long[] getRowsIds() {
+		if (debug) Log.d(TAG,"getRowsIds() rows="+rows);
+		if (rows!=null) {
+	    	long[] ids=new long[rows.size()];
+			Iterator<PassEntry> passIter=rows.iterator();
+			int i=0;
+			while (passIter.hasNext()) {
+				ids[i]=passIter.next().id;
+				i++;
+			}
+			return ids;
+		} else {
+			return null;
+		}
+	}
+
+	private void viewPassword(int position) {
+		Intent vi = new Intent(this, PassView.class);
+		vi.putExtra(KEY_ID, rows.get(position).id);
+		vi.putExtra(KEY_CATEGORY_ID, CategoryId);
+		vi.putExtra(KEY_ROWIDS, getRowsIds());
+		vi.putExtra(KEY_LIST_POSITION, position);
+		startActivityForResult(vi,REQUEST_VIEW_PASSWORD);
+	}
+	
     public boolean onOptionsItemSelected(MenuItem item) {
 		if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
@@ -465,10 +492,7 @@ public class PassList extends ListActivity {
 		    addPassword();
 		    break;
 		case VIEW_PASSWORD_INDEX:
-			Intent vi = new Intent(this, PassView.class);
-			vi.putExtra(KEY_ID, rows.get(position).id);
-			vi.putExtra(KEY_CATEGORY_ID, CategoryId);
-			startActivityForResult(vi,REQUEST_VIEW_PASSWORD);
+			viewPassword(position);
 			lastPosition=position;
 		    break;
 		case EDIT_PASSWORD_INDEX:
@@ -492,10 +516,7 @@ public class PassList extends ListActivity {
     protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 	
-		Intent i = new Intent(this, PassView.class);
-		i.putExtra(KEY_ID, rows.get(position).id);
-		i.putExtra(KEY_CATEGORY_ID, CategoryId);
-	    startActivityForResult(i,REQUEST_VIEW_PASSWORD);
+	    viewPassword(position);
     }
 
     @Override

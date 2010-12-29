@@ -19,6 +19,7 @@ package org.openintents.safe;
 import java.util.ArrayList;
 
 import org.openintents.intents.CryptoIntents;
+import org.openintents.safe.SimpleGestureFilter.SimpleGestureListener;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -36,19 +37,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 /**
  * PassView Activity
  * 
  * @author Randy McEoin
  */
-public class PassView extends Activity implements View.OnClickListener {
+public class PassView extends Activity implements SimpleGestureListener {
 
 	private static boolean debug = false;
 	private static String TAG = "PassView";
@@ -58,18 +65,16 @@ public class PassView extends Activity implements View.OnClickListener {
 
 	public static final int REQUEST_EDIT_PASS = 1;
 	
-	private TextView descriptionText;
-	private TextView passwordText;
-	private TextView usernameText;
-	private TextView websiteText;
-	private TextView noteText;
-	private TextView lastEditedText;
-	private TextView uniqueNameText;
-	private TextView packageAccessText;
 	private Long RowId;
 	private Long CategoryId;
 	public static boolean entryEdited=false;
+	private long[] rowids=null;
+	private int listPosition=-1;
 
+	ViewFlipper flipper;
+	private SimpleGestureFilter detector;
+	private static int ANIMATION_DURATION=300;
+	
 	Intent frontdoor;
     private Intent restartTimerIntent=null;
 
@@ -94,22 +99,7 @@ public class PassView extends Activity implements View.OnClickListener {
 		String title = getResources().getString(R.string.app_name) + " - "
 				+ getResources().getString(R.string.view_entry);
 		setTitle(title);
-
-		setContentView(R.layout.pass_view);
-
-		descriptionText = (TextView) findViewById(R.id.description);
-		websiteText = (TextView) findViewById(R.id.website);
-		usernameText = (TextView) findViewById(R.id.username);
-		passwordText = (TextView) findViewById(R.id.password);
-		noteText = (TextView) findViewById(R.id.note);
-		lastEditedText = (TextView) findViewById(R.id.last_edited);
-		uniqueNameText = (TextView) findViewById(R.id.uniquename);
-		packageAccessText = (TextView) findViewById(R.id.packageaccess);
 		
-		entryEdited=false;
-
-		Button goButton = (Button) findViewById(R.id.go);
-
 		RowId = icicle != null ? icicle.getLong(PassList.KEY_ID) : null;
 		if (RowId == null) {
 			Bundle extras = getIntent().getExtras();
@@ -120,43 +110,201 @@ public class PassView extends Activity implements View.OnClickListener {
 			Bundle extras = getIntent().getExtras();
 			CategoryId = extras != null ? extras.getLong(PassList.KEY_CATEGORY_ID) : null;
 		}
+		rowids = icicle != null ? icicle.getLongArray(PassList.KEY_ROWIDS) : null;
+		if (rowids == null) {
+			Bundle extras = getIntent().getExtras();
+			rowids = extras != null ? extras.getLongArray(PassList.KEY_ROWIDS) : null;
+		}
+		listPosition = icicle != null ? icicle.getInt(PassList.KEY_LIST_POSITION) : -1;
+		if (listPosition == -1) {
+			Bundle extras = getIntent().getExtras();
+			listPosition = extras != null ? extras.getInt(PassList.KEY_LIST_POSITION) : -1;
+		}
 
-		if ((RowId==null) || (CategoryId==null) ||
+		if (debug) Log.d(TAG,"RowId="+RowId+" CategoryId="+CategoryId+" rowids="+rowids+
+				" listPosition="+listPosition);
+		if ((RowId==null) || (CategoryId==null) || (rowids==null) || (listPosition==-1) ||
 				(RowId<1) || (CategoryId<1)) {
 			// invalid Row or Category
 			finish();
 			return;
 		}
-		goButton.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View arg0) {
-				String link = websiteText.getText().toString();
-				if (link == null || link.equals("") || link.equals("http://")) {
-					return;
-				}
 
-				clipboard(getString(R.string.password), passwordText.getText().toString());
+		if (debug) {
+			for (int i=0; i<rowids.length; i++) {
+				Log.d(TAG,"rowids["+i+"]="+rowids[i]);
+			}
+		}
+		if (debug) Log.d(TAG,"rowids.length="+rowids.length);
 
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				Uri u = Uri.parse(link);
+		if (debug) Log.d(TAG,"creating flipper");
+		flipper = new ViewFlipper(this);
+		View currentView = createView(listPosition,null);
+		flipper.addView(currentView);
+
+		if (listPosition>0) { // is there a previous?
+			if (debug) Log.d(TAG,"add previous");
+			View prevView = createView(listPosition-1,null);
+			flipper.addView(prevView,0);
+			flipper.showNext();
+		}
+
+		// are we starting at the end and we have more than 2 entries?
+		if (((listPosition+1)==rowids.length) && (rowids.length > 2)) { 
+			if (debug) Log.d(TAG,"add prev prev");
+			View prevView = createView(listPosition-2,null);
+			flipper.addView(prevView,0);
+			flipper.showNext();
+		}
+
+		if (rowids.length > (listPosition+1)) {  // is there a next?
+			if (debug) Log.d(TAG,"add next");
+			View nextView = createView(listPosition+1,null);
+			if (debug) Log.d(TAG,"flipper ChildCount="+flipper.getChildCount());
+			flipper.addView(nextView, flipper.getChildCount());
+		}
+
+		// are we starting at the start and we have more than 2 entries?
+		if ((listPosition==0) && (rowids.length > 2)) { 
+			if (debug) Log.d(TAG,"add next next");
+			View nextView = createView(listPosition+2,null);
+			flipper.addView(nextView,flipper.getChildCount());
+		}
+
+		detector = new SimpleGestureFilter(this,this);
+		
+		setContentView(flipper);
+		if (debug) Log.d(TAG,"flipper.getChildCount="+flipper.getChildCount());
+
+		entryEdited=false;
+
+	}
+	private View createView(int position, View view) {
+		if (view==null) {
+			LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			view = inflater.inflate(R.layout.pass_view,null);
+		}
+		populateFields(rowids[position],view);
+		Button previousButton = (Button) view.findViewById(R.id.prev_pass);
+		if (position>0) {	// is there a previous?
+			previousButton.setEnabled(true);
+			previousButton.setOnClickListener(new prevButtonListener());
+		} else {
+			previousButton.setEnabled(false);
+		}
+		Button nextButton = (Button) view.findViewById(R.id.next_pass);
+		if (rowids.length > (position+1)) {  // is there a next?
+			nextButton.setEnabled(true);
+			nextButton.setOnClickListener(new nextButtonListener());
+		} else {
+			nextButton.setEnabled(false);
+		}
+		
+		Button goButton = (Button) view.findViewById(R.id.go);
+		goButton.setOnClickListener(new goButtonListener());
+
+		TextView usernameText = (TextView) view.findViewById(R.id.username);
+		usernameText.setOnClickListener(new usernameTextListener());
+		TextView passwordText = (TextView) view.findViewById(R.id.password);
+		passwordText.setOnClickListener(new passwordTextListener());
+		return view;
+	}
+	
+	class goButtonListener implements View.OnClickListener {
+		public void onClick(View arg0) {
+			View current=flipper.getCurrentView();
+			TextView passwordText;
+    		TextView websiteText;
+    		websiteText = (TextView) current.findViewById(R.id.website);
+    		passwordText = (TextView) current.findViewById(R.id.password);
+
+			String link = websiteText.getText().toString();
+			if (link == null || link.equals("") || link.equals("http://")) {
+				return;
+			}
+
+			clipboard(getString(R.string.password), passwordText.getText().toString());
+
+			Intent i = new Intent(Intent.ACTION_VIEW);
+			Uri u = Uri.parse(link);
+			i.setData(u);
+			try {
+				startActivity(i);
+			} catch (ActivityNotFoundException e) {
+				// Let's try to catch the most common mistake: omitting http:
+				u = Uri.parse("http://" + link);
 				i.setData(u);
 				try {
 					startActivity(i);
-				} catch (ActivityNotFoundException e) {
-					// Let's try to catch the most common mistake: omitting http:
-					u = Uri.parse("http://" + link);
-					i.setData(u);
-					try {
-						startActivity(i);
-					} catch (ActivityNotFoundException e2) {
-						Toast.makeText(PassView.this, R.string.invalid_website,
-							Toast.LENGTH_SHORT).show();
-					}
+				} catch (ActivityNotFoundException e2) {
+					Toast.makeText(PassView.this, R.string.invalid_website,
+						Toast.LENGTH_SHORT).show();
 				}
 			}
-		});
-
+		}
 	}
-
+	
+	private void showPreviousView(boolean isRightLeft) {
+		if (listPosition==0) {
+			// already at the beginning
+			return;
+		}
+		if (isRightLeft) {
+			flipper.setInAnimation(inFromLeftAnimation());
+			flipper.setOutAnimation(outToRightAnimation());
+		} else {
+			flipper.setInAnimation(inFromTopAnimation());
+			flipper.setOutAnimation(outToBottomAnimation());
+		}
+		flipper.showPrevious();
+		listPosition--;
+		RowId=rowids[listPosition];
+		int displayedChild=flipper.getDisplayedChild();
+		if (debug) Log.d(TAG,"previousButton displayedChild="+displayedChild+" listPosition="+listPosition);
+		if ((displayedChild==0) && (listPosition>0)) {
+			View last=flipper.getChildAt(flipper.getChildCount()-1);
+			flipper.removeViewAt(flipper.getChildCount()-1);
+			View prevView = createView(listPosition-1, last);
+			flipper.addView(prevView,0);
+			flipper.showNext();
+		}
+	}
+	class prevButtonListener implements View.OnClickListener {
+		public void onClick(View arg0) {
+			if (debug) Log.d(TAG,"previousButton getDisplayedChild="+flipper.getDisplayedChild());
+			showPreviousView(true);
+		}
+	}
+	private void showNextView(boolean isRightLeft) {
+		if ((listPosition+1)==rowids.length) {
+			// already at the end
+			return;
+		}
+		int displayedChild=flipper.getDisplayedChild();
+		if (isRightLeft) {
+			flipper.setInAnimation(inFromRightAnimation());
+			flipper.setOutAnimation(outToLeftAnimation());
+		} else {
+			flipper.setInAnimation(inFromBottomAnimation());
+			flipper.setOutAnimation(outToTopAnimation());
+		}
+		flipper.showNext();
+		listPosition++;
+		RowId=rowids[listPosition];
+		// did we move beyond something more than the 2nd entry?
+		if ((rowids.length>3) && (displayedChild>0) && (rowids.length-listPosition>1)){
+			View first=flipper.getChildAt(0);
+			flipper.removeViewAt(0);
+			View nextView = createView(listPosition+1, first);
+			flipper.addView(nextView,flipper.getChildCount());
+		}
+	}
+	class nextButtonListener implements View.OnClickListener {
+		public void onClick(View arg0) {
+			if (debug) Log.d(TAG,"nextButton getDisplayedChild="+flipper.getDisplayedChild());
+			showNextView(true);
+		}
+	}
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
@@ -166,6 +314,8 @@ public class PassView extends Activity implements View.OnClickListener {
 			outState.putLong(PassList.KEY_ID, -1);
 		}
 		outState.putLong(PassList.KEY_CATEGORY_ID, CategoryId);
+		outState.putLongArray(PassList.KEY_ROWIDS, rowids);
+		outState.putInt(PassList.KEY_LIST_POSITION, listPosition);
 	}
 
 	@Override
@@ -196,7 +346,9 @@ public class PassView extends Activity implements View.OnClickListener {
 
 		Passwords.Initialize(this);
 
-        populateFields();
+		// update in case it was edited
+//		View current=this.flipper.getCurrentView();
+//		populateFields(RowId,current);
 	}
 
 	@Override
@@ -291,7 +443,8 @@ public class PassView extends Activity implements View.OnClickListener {
 	    		finish();
 	    	}
 			if ((resultCode == RESULT_OK) || (PassEdit.entryEdited)){
-				populateFields();
+				View current=this.flipper.getCurrentView();
+				populateFields(RowId,current);
 				entryEdited=true;
 			}
 		}
@@ -300,21 +453,39 @@ public class PassView extends Activity implements View.OnClickListener {
 	/**
 	 * 
 	 */
-	private void populateFields() {
-		if (debug) Log.d(TAG,"populateFields()");
-		if (RowId != null) {
-			PassEntry row = Passwords.getPassEntry(RowId, true, false);
+	private void populateFields(long rowIdx, View view) {
+		if (debug) Log.d(TAG,"populateFields("+rowIdx+","+view+")");
+		if (rowIdx > 0) {
+			if (debug) Log.d(TAG,"rowIdx="+rowIdx);
+			PassEntry row = Passwords.getPassEntry(rowIdx, true, false);
 			if (row==null) {
 				if (debug) Log.d(TAG,"populateFields: row=null");
 				return;
 			}
-    		ArrayList<String> packageAccess = Passwords.getPackageAccess(RowId);
+    		ArrayList<String> packageAccess = Passwords.getPackageAccess(rowIdx);
+    		
+    		TextView descriptionText;
+    		TextView passwordText;
+    		TextView usernameText;
+    		TextView websiteText;
+    		TextView noteText;
+    		TextView lastEditedText;
+    		TextView uniqueNameText;
+    		TextView packageAccessText;
+
+    		descriptionText = (TextView) view.findViewById(R.id.description);
+    		websiteText = (TextView) view.findViewById(R.id.website);
+    		usernameText = (TextView) view.findViewById(R.id.username);
+    		passwordText = (TextView) view.findViewById(R.id.password);
+    		noteText = (TextView) view.findViewById(R.id.note);
+    		lastEditedText = (TextView) view.findViewById(R.id.last_edited);
+    		uniqueNameText = (TextView) view.findViewById(R.id.uniquename);
+    		packageAccessText = (TextView) view.findViewById(R.id.packageaccess);
+
 			descriptionText.setText(row.plainDescription);
 			websiteText.setText(row.plainWebsite);
 			usernameText.setText(row.plainUsername);
-			usernameText.setOnClickListener(this);
 			passwordText.setText(row.plainPassword);
-			passwordText.setOnClickListener(this);
 			noteText.setText(row.plainNote);
 			String lastEdited;
 			if (row.lastEdited!=null) {
@@ -352,17 +523,22 @@ public class PassView extends Activity implements View.OnClickListener {
 	/**
 	 * 
 	 * @author Billy Cui
+	 * refactored by Randy McEoin
 	 */
-	public void onClick(View view) {
-		if (view == usernameText) {
+	class usernameTextListener implements View.OnClickListener {
+		public void onClick(View arg0) {
+			TextView usernameText = (TextView) arg0.findViewById(R.id.username);
 			if (debug) Log.d(TAG, "click " + usernameText.getText());
 			clipboard(getString(R.string.username),usernameText.getText().toString());
-		} else if (view == passwordText) {
+		}
+	}
+	class passwordTextListener implements View.OnClickListener {
+		public void onClick(View arg0) {
+			TextView passwordText = (TextView) arg0.findViewById(R.id.password);
 			if (debug) Log.d(TAG, "click " + passwordText.getText());
 			clipboard(getString(R.string.password),passwordText.getText().toString());
 		}
 	}
-
 	/**
 	 * Copy to clipboard and toast to let user know that we have done so.
 	 * 
@@ -389,5 +565,117 @@ public class PassView extends Activity implements View.OnClickListener {
 		}else{
 			if (restartTimerIntent!=null) sendBroadcast (restartTimerIntent);
 		}
+	}
+	private Animation inFromRightAnimation() {
+		Animation inFromRight = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, +1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromRight.setDuration(ANIMATION_DURATION);
+		inFromRight.setInterpolator(new AccelerateInterpolator());
+		return inFromRight;
+	}
+
+	private Animation outToLeftAnimation() {
+		Animation outtoLeft = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, -1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+			outtoLeft.setDuration(ANIMATION_DURATION);
+		outtoLeft.setInterpolator(new AccelerateInterpolator());
+		return outtoLeft;
+	}
+
+	private Animation inFromLeftAnimation() {
+		Animation inFromLeft = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, -1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+			inFromLeft.setDuration(ANIMATION_DURATION);
+		inFromLeft.setInterpolator(new AccelerateInterpolator());
+		return inFromLeft;
+	}
+
+	private Animation outToRightAnimation() {
+		Animation outtoRight = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, +1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+			outtoRight.setDuration(ANIMATION_DURATION);
+		outtoRight.setInterpolator(new AccelerateInterpolator());
+		return outtoRight;
+	}
+	
+	private Animation inFromBottomAnimation() {
+		Animation inFromBottom = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, +1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+		inFromBottom.setDuration(ANIMATION_DURATION);
+		inFromBottom.setInterpolator(new AccelerateInterpolator());
+		return inFromBottom;
+	}
+
+	private Animation outToTopAnimation() {
+		Animation outtoTop = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, -1.0f);
+			outtoTop.setDuration(ANIMATION_DURATION);
+		outtoTop.setInterpolator(new AccelerateInterpolator());
+		return outtoTop;
+	}
+
+	private Animation inFromTopAnimation() {
+		Animation inFromTop = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, -1.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f);
+			inFromTop.setDuration(ANIMATION_DURATION);
+		inFromTop.setInterpolator(new AccelerateInterpolator());
+		return inFromTop;
+	}
+
+	private Animation outToBottomAnimation() {
+		Animation outToBottom = new TranslateAnimation(
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, 0.0f,
+			Animation.RELATIVE_TO_PARENT, +1.0f);
+			outToBottom.setDuration(ANIMATION_DURATION);
+		outToBottom.setInterpolator(new AccelerateInterpolator());
+		return outToBottom;
+	}
+	@Override 
+	public boolean dispatchTouchEvent(MotionEvent me){ 
+		this.detector.onTouchEvent(me);
+		return super.dispatchTouchEvent(me); 
+	}
+
+	public void onSwipe(int direction) {
+		switch (direction) {
+		case SimpleGestureFilter.SWIPE_RIGHT:
+			showPreviousView(true);
+			break;
+		case SimpleGestureFilter.SWIPE_DOWN:
+			showPreviousView(false);
+			break;
+		case SimpleGestureFilter.SWIPE_LEFT:
+			showNextView(true);
+			break;
+		case SimpleGestureFilter.SWIPE_UP:
+			showNextView(false);
+			break;
+		} 
+	}
+
+	public void onDoubleTap() {
 	}
 }
