@@ -67,6 +67,12 @@
         	android:text="#" />
     </TableRow>
     <TableRow>
+		<ImageView android:id="@+id/switch_button"
+			android:layout_height="48dp"
+			android:layout_width="48dp"
+			android:src="@android:drawable/ic_menu_directions"
+			/>
+    
         <Button android:id="@+id/keypad_continue"
         	android:layout_column="1"
         	android:layout_span="3"

@@ -393,23 +393,27 @@ public class AskPassword extends Activity {
 		return super.onCreateOptionsMenu(menu);
     }
 	
+	private void switchView() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor spe=sp.edit();
+		if (viewMode==VIEW_NORMAL) {
+			viewMode=VIEW_KEYPAD;
+			spe.putBoolean(Preferences.PREFERENCE_KEYPAD, true);
+			keypadInit();
+		} else {
+			viewMode=VIEW_NORMAL;
+			spe.putBoolean(Preferences.PREFERENCE_KEYPAD, false);
+			normalInit();
+		}
+		if (!spe.commit()) {
+			if (debug) Log.d(TAG,"commitment issues");
+		}
+	}
+	
     public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 		case SWITCH_MODE_INDEX:
-			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-			SharedPreferences.Editor spe=sp.edit();
-			if (viewMode==VIEW_NORMAL) {
-				viewMode=VIEW_KEYPAD;
-				spe.putBoolean(Preferences.PREFERENCE_KEYPAD, true);
-				keypadInit();
-			} else {
-				viewMode=VIEW_NORMAL;
-				spe.putBoolean(Preferences.PREFERENCE_KEYPAD, false);
-				normalInit();
-			}
-			if (!spe.commit()) {
-				if (debug) Log.d(TAG,"commitment issues");
-			}
+			switchView();
 			break;
 		case MUTE_INDEX:
 			SharedPreferences msp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -586,6 +590,12 @@ public class AskPassword extends Activity {
 		keypadContinue.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				keypadTryPassword(keypadPassword);
+			}
+		});
+		ImageView keypadSwitch = (ImageView) findViewById(R.id.switch_button);
+		keypadSwitch.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View arg0) {
+					switchView();
 			}
 		});
 	}
