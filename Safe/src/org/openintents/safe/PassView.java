@@ -74,6 +74,7 @@ public class PassView extends Activity implements SimpleGestureListener {
 	ViewFlipper flipper;
 	private SimpleGestureFilter detector;
 	private static int ANIMATION_DURATION=300;
+	private boolean usernameCopiedToClipboard=false;
 	
 	Intent frontdoor;
     private Intent restartTimerIntent=null;
@@ -223,7 +224,10 @@ public class PassView extends Activity implements SimpleGestureListener {
 				return;
 			}
 
-			clipboard(getString(R.string.password), passwordText.getText().toString());
+			if (usernameCopiedToClipboard==false) {
+				// don't copy the password if username was already copied
+				clipboard(getString(R.string.password), passwordText.getText().toString());
+			}
 
 			Intent i = new Intent(Intent.ACTION_VIEW);
 			Uri u = Uri.parse(link);
@@ -530,6 +534,7 @@ public class PassView extends Activity implements SimpleGestureListener {
 			TextView usernameText = (TextView) arg0.findViewById(R.id.username);
 			if (debug) Log.d(TAG, "click " + usernameText.getText());
 			clipboard(getString(R.string.username),usernameText.getText().toString());
+			usernameCopiedToClipboard=true;
 		}
 	}
 	class passwordTextListener implements View.OnClickListener {
