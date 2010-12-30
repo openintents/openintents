@@ -118,6 +118,7 @@ public class PassEdit extends Activity {
 		setContentView(R.layout.pass_edit);
 
 		descriptionText = (EditText) findViewById(R.id.description);
+		descriptionText.requestFocus();
 		passwordText = (EditText) findViewById(R.id.password);
 		usernameText = (EditText) findViewById(R.id.username);
 		noteText = (EditText) findViewById(R.id.note);
