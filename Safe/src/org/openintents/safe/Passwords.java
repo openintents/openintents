@@ -394,6 +394,11 @@ public class Passwords {
 		}
 		return null;
 	}
+	/**
+	 * @param entry PassEntry
+	 * @return long row id of newly added or updated entry,
+	 * equal to -1 if a sql error occurred
+	 */
 	public static long putPassEntry(PassEntry passEntry) {
 		if (debug) Log.d(TAG,"putPassEntry("+passEntry.id+")");
 		if (passEntry.needsEncrypt) {
@@ -417,9 +422,16 @@ public class Passwords {
 
 		if (passEntry.id==0) {
 			passEntry.id=dbHelper.addPassword(passEntry);
+			if (passEntry.id==-1) {
+				// error adding
+				return -1;
+			}
 			updateCategoryCount(passEntry.category);
 		} else {
-			dbHelper.updatePassword(passEntry.id, passEntry);
+			long success=dbHelper.updatePassword(passEntry.id, passEntry);
+			if (success==-1) {
+				return -1;
+			}
 		}
 		passEntries.put(passEntry.id, passEntry);
 		return passEntry.id;

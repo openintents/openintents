@@ -235,13 +235,25 @@ public class PassEdit extends Activity {
 		if (RowId == null || RowId == -1) {
 			entry.id = 0;	// brand new entry
 			RowId = Passwords.putPassEntry(entry);
+			if (RowId==-1) {
+				Toast.makeText(PassEdit.this, R.string.entry_save_error,
+					Toast.LENGTH_LONG).show();
+				return;
+			}
 		} else {
 			entry.id=RowId;
 			PassEntry storedEntry = Passwords.getPassEntry(RowId, true, false);
 			//update fields that aren't set in the UI:
 			entry.uniqueName = storedEntry.uniqueName;
-			Passwords.putPassEntry(entry);
+			long success=Passwords.putPassEntry(entry);
+			if (success==-1) {
+				Toast.makeText(PassEdit.this, R.string.entry_save_error,
+					Toast.LENGTH_LONG).show();
+				return;
+			}
 		}
+		Toast.makeText(PassEdit.this, R.string.entry_saved,
+			Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -265,8 +277,6 @@ public class PassEdit extends Activity {
 	 */
 	private void savePassword() {
 		saveState();
-		Toast.makeText(PassEdit.this, R.string.entry_saved,
-			Toast.LENGTH_SHORT).show();
 		setResult(RESULT_OK);
 	}
 

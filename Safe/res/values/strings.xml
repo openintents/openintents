@@ -207,6 +207,7 @@
 	<string name="cancel">Cancel</string>
 	<string name="discard_changes">Discard changes</string>
 	<string name="entry_saved">Entry saved</string>
+	<string name="entry_save_error">Unable to save due to database error</string>
 	<string name="last_edited">Last edited</string>
 	<string name="last_edited_unknown">unknown</string>
 	<string name="crypto_error">Crypto error:</string>

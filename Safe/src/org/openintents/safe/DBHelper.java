@@ -670,8 +670,9 @@ public class DBHelper {
 	 * 
 	 * @param Id
 	 * @param entry
+	 * @return Id on success, -1 on failure
 	 */
-	public void updatePassword(long Id, PassEntry entry) {
+	public long updatePassword(long Id, PassEntry entry) {
 	    ContentValues args = new ContentValues();	    
 	    args.put("description", entry.description);
 	    args.put("username", entry.username);
@@ -688,8 +689,10 @@ public class DBHelper {
 			db.update(TABLE_PASSWORDS, args, "id=" + Id, null);
 		} catch (SQLException e)
 		{
-			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+			Log.d(TAG,"updatePassword: SQLite exception: " + e.getLocalizedMessage());
+			return -1;
 		}
+		return Id;
 	}
 	
 	/**
@@ -721,7 +724,7 @@ public class DBHelper {
 	 * row id is desired.
 	 * 
 	 * @param entry PassEntry
-	 * @return long row id of newly added entry 
+	 * @return long row id of newly added entry, equal to -1 if an error occurred
 	 */
 	public long addPassword(PassEntry entry) {
 		long id = -1;
@@ -743,10 +746,11 @@ public class DBHelper {
 	    initialValues.put("lastdatetimeedit", dateOut);
 
 	    try {
-	        id = db.insert(TABLE_PASSWORDS, null, initialValues);
+	        id = db.insertOrThrow(TABLE_PASSWORDS, null, initialValues);
 		} catch (SQLException e)
 		{
 			Log.d(TAG,"SQLite exception: " + e.getLocalizedMessage());
+			id=-1;
 		}
 		return (id);
 	}
