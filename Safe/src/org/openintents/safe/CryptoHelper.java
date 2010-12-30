@@ -801,6 +801,8 @@ public class CryptoHelper {
 			Log.e(TAG, "File not found", e);
 		} catch (IOException e) {
 			Log.e(TAG, "IOException", e);
+		} catch (IllegalArgumentException e) {
+			Log.e(TAG, "IllegalArgumentException", e);
 		}
 
 

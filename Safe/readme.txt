@@ -25,6 +25,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.2.6
+date: 2010-12-??
+- added auto backup
+- fixed change master password bug
+
+---------------------------------------------------------
 release: 1.2.5
 date: 2009-12-??
 - fixed latent service notification
