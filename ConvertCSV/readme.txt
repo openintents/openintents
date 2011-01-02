@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                       *
+ * Copyright (C) 2008-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -22,10 +22,12 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.2
-date: 2009-??
+date: 2011-??
 
 - Add progress bar during conversion.
 - Shopping list export with tags
+- Basic support for HandyShopper import
+  (including patch by Aaron Peromsik).
 
 ---------------------------------------------------------
 release: 1.0.1
