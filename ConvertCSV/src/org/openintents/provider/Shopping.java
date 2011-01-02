@@ -71,7 +71,7 @@ public abstract class Shopping {
 		/**
 		 * A price for the item (in cent)
 		 * <P>
-		 * Type: INTEGER
+		 * Type: INTEGER (long)
 		 * </P>
 		 */
 		public static final String PRICE = "price";
@@ -83,6 +83,23 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String TAGS = "tags";
+		
+		/**
+		 * A barcode (EAN or QR)
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String BARCODE = "barcode";
+
+		/**
+		 * a location where to find it, as geo:lat,long uri
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String LOCATION = "location";
+
 		/**
 		 * The timestamp for when the item was created.
 		 * <P>
@@ -106,6 +123,14 @@ public abstract class Shopping {
 		 * </P>
 		 */
 		public static final String ACCESSED_DATE = "accessed";
+
+		/**
+		 * The timestamp for when the item is due.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String DUE_DATE = "due";
 
 		/**
 		 * Generic projection map.
@@ -353,8 +378,14 @@ public abstract class Shopping {
 		 * into this array.
 		 */
 		public static final String[] SORT_ORDERS = {
-				"contains.status ASC, items.name ASC", "items.name ASC",
-				"contains.modified DESC", "contains.modified ASC" };
+				"contains.status ASC, items.name ASC", // unchecked first, alphabetical
+				"items.name ASC",
+				"contains.modified DESC", 
+				"contains.modified ASC",
+				"(items.tags IS NULL or items.tags = '') ASC, items.tags ASC, items.name ASC", // sort by tags, but put empty tags last.
+				"items.price DESC, items.name ASC",
+				"contains.status ASC, (items.tags IS NULL or items.tags = '') ASC, items.tags ASC, items.name ASC", // unchecked first, tags alphabetical, but put empty tags last.
+				};
 
 		
 	}
@@ -507,6 +538,29 @@ public abstract class Shopping {
 		 */
 		public static final String LIST_IMAGE = "list_image";
 
+		/**
+		 * A barcode (EAN or QR)
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String BARCODE = "barcode";
+
+		/**
+		 * a location where to find it, as geo:lat,long uri
+		 * <P>
+		 * Type: VARCHAR
+		 * </P>
+		 */
+		public static final String LOCATION = "location";
+		
+		/**
+		 * The timestamp for when the item is due.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String DUE_DATE = "due";
 	
 	}
 
@@ -634,7 +688,7 @@ public abstract class Shopping {
 	 *            The type of the new item
 	 * @return id of the "contains" table entry, or -1 if insert failed.
 	 */
-	public static long addItemToList(Context context, final long itemId, final long listId, final long status) {
+	public static long addItemToList(Context context, final long itemId, final long listId, final long status, final long quantity) {
 		long id = -1;
 		Cursor existingItems = context.getContentResolver()
 				.query(Contains.CONTENT_URI, new String[] { Contains._ID },
@@ -664,6 +718,7 @@ public abstract class Shopping {
 			values.put(Contains.ITEM_ID, itemId);
 			values.put(Contains.LIST_ID, listId);
 			values.put(Contains.STATUS, status);
+			values.put(Contains.QUANTITY, quantity);
 			try {
 				Uri uri = context.getContentResolver().insert(Contains.CONTENT_URI, values);
 				Log.i(TAG, "Insert new entry in 'contains': " + uri);

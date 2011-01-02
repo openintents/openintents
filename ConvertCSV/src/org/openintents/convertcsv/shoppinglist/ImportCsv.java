@@ -77,7 +77,7 @@ public class ImportCsv {
 			}
 			
 			
-			Shopping.addItemToList(mContext, itemId, listId, status);
+			Shopping.addItemToList(mContext, itemId, listId, status, 1);
 	    }
 	    
 	}
@@ -110,14 +110,15 @@ public class ImportCsv {
 			
 	    	String itemname = nextLine[2]; // Description					
 			String tags = nextLine[9]; // Category
-			String price = nextLine[6]; // Quantity
+			String price = nextLine[6]; // Price
+			long quantity = Integer.parseInt(nextLine[4]); // Quantity
 			
 			// Add item to list
 			long listId = Shopping.getDefaultList();
 			long itemId = Shopping.getItem(mContext, itemname, tags, price);
 			
 			
-			Shopping.addItemToList(mContext, itemId, listId, status);
+			Shopping.addItemToList(mContext, itemId, listId, status, quantity);
 	    }
 		
 	}
