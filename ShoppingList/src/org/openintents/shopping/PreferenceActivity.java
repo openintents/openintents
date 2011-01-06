@@ -23,7 +23,7 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
 		try {
 			BackupManagerWrapper.checkAvailable();
 			mBackupManagerAvailable = true;
-		} catch (RuntimeException e) {
+		} catch (Throwable e) {
 			mBackupManagerAvailable = false;
 		}
 	}
