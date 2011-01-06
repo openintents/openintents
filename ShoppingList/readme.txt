@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2010 OpenIntents.org                                  *
+ * Copyright (C) 2007-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -22,19 +22,18 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-
 release 1.2.6
-date:
+date: 2011-01-06
 - move items between lists
 - backup preferences and items
 - support for xlarge screens
 - launcher icons for different resolutions
 
 ---------------------------------------------------------
-
 release 1.2.5
 date: 2010-08-05
 - translations: Danish, minor changes
+
 ---------------------------------------------------------
 release 1.2.4
 date: 2010-06-26
