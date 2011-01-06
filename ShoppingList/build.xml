@@ -38,6 +38,13 @@
     <property name="out.doc.dir"
                   value="doc" />
 	
+	<!-- Paths for source release -->
+	<property name="out.source.dir" value="release" />
+	<property name="out.source.version.name"
+	                  value="${ant.project.name}-source-${version}" />
+    <property name="out.source.version"
+                  location="${out.source.dir}/${out.source.version.name}" />
+	
 <!-- ################################################
      The default Android 2.3 build.xml script follows
      ################################################ -->
@@ -148,10 +155,40 @@
         	source="1.6" sourcepath="${source.absolute.dir}" splitindex="true" use="true" version="true">
         </javadoc>
     </target>
-		
+
+	<!-- ############### Release source ####################### -->
+	<!-- Copy to source release -->
+	<target name="release-source">
+    	<delete dir="${out.source.dir}"/>
+        <mkdir dir="${out.source.dir}" />
+		<copy todir="${out.source.version}">
+			<fileset dir=".">
+				<exclude name="**/bin/**" />
+				<exclude name="**/doc/**" />
+				<exclude name="**/gen/**" />
+				<exclude name="**/release/**" />
+				<exclude name="**/tmp/**" />
+				<exclude name="**/translations/**" />
+				<exclude name="**/.svn" />
+				<exclude name="**/build-private.properties" />
+	    		<exclude name="**/local.properties" />
+			</fileset>
+		</copy>
+		<zip destfile="${out.source.version}.zip">
+			<zipfileset dir="${out.source.version}" prefix="${out.source.version.name}"/>
+		</zip>
+		<delete dir="${out.source.version}"/>
+		<!-- copy apk into releasedir for convenience -->
+		<copy todir="${out.source.dir}">
+			<fileset dir="${out.absolute.dir}">
+				 <filename name="${out.release.file.name}"/>
+			</fileset>
+		</copy>
+    </target>
+	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
-		depends="release, javadoc" />
+		depends="release, javadoc, release-source" />
 	
 </project>
 
