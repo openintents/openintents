@@ -57,7 +57,7 @@
     <string name="copy_button">复制到此处</string>
     
     <string name="copied_file_name">复制 %s</string>
-    <string name="copied_file_name_2">复制 %2$s 的 %1$d</string>
+    <string name="copied_file_name_2">复制 %1$d 的 %2$s</string>
     
     <string name="error_creating_new_folder">无法建立新文件夹</string>
     <string name="error_deleting_file">无法删除文件</string>
