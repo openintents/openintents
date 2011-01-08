@@ -1,6 +1,7 @@
 Import new translations:
 
 1) Download translations from  https://translations.launchpad.net/openintents/trunk/+export
+   (in the PO format)
 
 2) Place tar file into folder "import_all".
 

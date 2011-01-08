@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# THIS IS A GENERATED COPY. ANY MODIFICATIONS WILL BE OVERWRITTEN BY trunk/translations/scripts/copy_scripts.bash
+#
 #Wrapper for xml2po for android and launchpad: Import .xml's from .po's, or export/update .po's from string.xml's. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad.
 #Copyright 2009 by pjv. Licensed under GPLv3.
 
