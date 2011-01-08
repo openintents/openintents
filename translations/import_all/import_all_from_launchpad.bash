@@ -22,12 +22,12 @@ function execute
 echo "Extracing translation files..."
 tar -xvvzf launchpad-export.tar.gz
 
-execute AboutApp aboutapp
-execute ColorPicker colorpicker
-execute Countdown countdown
-execute FileManager filemanager
-execute Flashlight flashlight
-execute NotePad notepad
-execute Safe safe
-execute ShoppingList shoppinglist
+execute aboutapp/AboutApp aboutapp
+execute colorpicker/ColorPicker colorpicker
+execute countdown/Countdown countdown
+execute filemanager/FileManager filemanager
+execute flashlight/Flashlight flashlight
+execute notepad/NotePad notepad
+execute safe/Safe safe
+execute shoppinglist/ShoppingList shoppinglist
 execute UpdateChecker updatechecker
