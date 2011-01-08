@@ -5,12 +5,12 @@
 
 # Nov 14, 2009: Peli: Modified export_xml2po to work with new Launchpad scheme.
 # Jan 8, 2011: Peli: Automatically delimit apostrophes: "'" <-> "\'"
+# Jan 8, 2011: Peli: Check if a language .po file exists. In this way, all language codes can be included in this file.
 
 #Set the languages here (long version is the android resource append string).
-short_lang=("de" "es" "fi" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "ro" "ru") #do not include template language ("en" usually).
-#="nl" "de" "fr" "ar" "es" "he" "hu" "id" "it" "pl" "pt_BR" "ru" "sv" "zh_CN"
-long_lang=("de" "es" "fi" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "ro" "ru") #do not include template language ("en" usually).
-# "nl" "de" "fr" "ar" "es" "he" "hu" "id" "it" "pl" "pt-rBR" "ru" "sv" "zh-rCN"
+short_lang=("ar" "cs" "da" "de" "es" "fo" "fi" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "pt" "ro" "ru" "sk" "zh_CN" "zh_TW") #do not include template language ("en" usually).
+long_lang=("ar" "cs" "da" "de" "es" "fo" "fi" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "pt" "ro" "ru" "sk" "zh-rCN" "zh-rTW") #do not include template language ("en" usually).
+
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
 launchpad_pot_file_dir="."
@@ -45,10 +45,12 @@ function import_po2xml
 {
 for (( i=0 ; i<${#short_lang[*]} ; i=i+1 )) ;
 do
-    echo "Importing .xml from .po for "${short_lang[i]}""
-    mkdir -p "${android_xml_files_res_dir}"-"${long_lang[i]}"
-    ${xml2po} -a -l "${short_lang[i]}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml > "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
-	delimitapostrophe "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
+    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po ] ; then
+        echo "Importing .xml from .po for "${short_lang[i]}""
+        mkdir -p "${android_xml_files_res_dir}"-"${long_lang[i]}"
+        ${xml2po} -a -l "${short_lang[i]}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml > "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
+        delimitapostrophe "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
+    fi
 done
 }
 
