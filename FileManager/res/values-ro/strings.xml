@@ -39,6 +39,8 @@
     <string name="menu_open">Deschide</string>
     <string name="menu_move">Mută</string>
     <string name="menu_copy">Copy</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">Crează un dosar nou</string>
     <string name="folder_name">Numele dosarului</string>
@@ -57,8 +59,14 @@
     <string name="copy_title">Selectați dosarul destinație</string>
     <string name="copy_button">Copiază aici</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">Copie a %s</string>
-    <string name="copied_file_name_2">Copie %1$d a %2$s</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">Nu am putut crea un dosar nou.</string>
     <string name="error_deleting_file">Nu am putut șterge fișierul.</string>
@@ -70,6 +78,8 @@
     <string name="error_copying_file">Nu am putut copia fișierul.</string>
     <string name="error_file_does_not_exists">Fișierul nu există.</string>
     <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">Nu există aplicație pentru trimitere.</string>
     

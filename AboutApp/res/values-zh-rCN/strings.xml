@@ -34,19 +34,19 @@
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">一个在系统中共享的用于显示“关于”对话框的程序。</string>
 	
-	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">在OpenIntents查看“OI 关于”。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI 关于</string>
 	
     <string name="menu_about">关于“OI关于”</string>
     
-    <!-- About some application, where '%s' is the name of another application. -->
+    <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">关于%s</string>
     
 	<string name="l_authors">作者：</string>

@@ -14,18 +14,18 @@
     <string name="app_name">OI 업데이트</string>
     
     <string name="update_available">%s의 새로운 버전이 있습니다.\n업그래이드를 하시겠습니까?</string>
-    <string name="update_available_3">%s의 새로운버전이 %s에있습니다. \n%s\n</string>
-    <string name="update_available_2">%s의 새로운 버전이 있습니다.\n%s\n</string>
-    <string name="update_available_location_no_comment">%s의 새로운버전이 %s에있습니다.</string>
+    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
     <string name="update_available_no_comment">%s의 새로운 버전이 있습니다.</string>
 	<string name="market_not_available">Android Market not available.</string>
     <string name="market_search_term">OI 업데이트</string>
 	<string name="android_market">안드로이드 마켓</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %s\nSD card %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">남은 공강: %s</string>
-    <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
+    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">지금 업데이트 시작!</string>
     <string name="do_update_market">안드로이드 마켓에서 업데이트 시작!</string>
@@ -47,7 +47,7 @@
     <string name="current_version">현재 버전: %s</string>
     <string name="current_version_code">Current version code: %s</string>
     <string name="newer_version">새로운 버전: %s</string>
-    <string name="newer_version_comment">새로운 버전: %s - %s</string>
+    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
     <string name="newer_version_available">Newer version available.</string>
     <string name="no_update_info_found">No update information found.</string>
     <string name="title_list_new_versions">OI Update - List of new versions</string>

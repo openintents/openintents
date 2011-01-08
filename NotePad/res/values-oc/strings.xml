@@ -59,7 +59,7 @@
     <string name="title_edit_file">%s (modificar la nòta)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Metre la nòta en acorchi</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">D\'acòrdi</string>  
 	
@@ -105,7 +105,7 @@
     <string name="warning_unsaved_changes_title">Tèxte modificat</string>
     <string name="warning_unsaved_changes_message">Volètz enregistrar las modificacions ?</string>
     <string name="button_save">Salvar</string>
-    <string name="button_dont_save">"Enregistrar pas"</string>
+    <string name="button_dont_save">Don\'t save</string>
     
 	<string name="menu_theme">Tèma</string>
 	<string name="theme_pick">Causissètz un tèma</string>

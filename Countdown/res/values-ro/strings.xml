@@ -83,13 +83,13 @@
 	<!-- Checkbox label whether to flash light for notifications. -->
 	<string name="light">Lumină</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="action">Acțiune: %s</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="select_action">Alege acțiunea: %s</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="select_countdown">Alege numărătoarea inversă: %s</string>
 	
 	<!-- Button to test an action. -->
@@ -101,10 +101,10 @@
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Închide</string>
 	
-	<!-- For the countdown display. '%s' is the number of days remaining (more than 1). -->
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
 	<string name="days">zile</string>
 	
-	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
 	<string name="day">zi</string>
 	
 	<!--  -->

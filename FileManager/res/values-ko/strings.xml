@@ -38,6 +38,8 @@
     <string name="menu_open">열기</string>
     <string name="menu_move">이동</string>
     <string name="menu_copy">복사</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">새 폴더 생성</string>
     <string name="folder_name">폴더 이름</string>
@@ -56,8 +58,14 @@
     <string name="copy_title">복사할 폴더 선택</string>
     <string name="copy_button">여기로 복사</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">%s의 복사</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
     <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">새 폴더를 생성할 수 없습니다.</string>
     <string name="error_deleting_file">파일을 삭제할 수 없습니다.</string>
@@ -69,6 +77,8 @@
     <string name="error_copying_file">파일을 복사할 수 없습니다.</string>
     <string name="error_file_does_not_exists">파일이 존재하지 않습니다.</string>
     <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">No application available for sending.</string>
     

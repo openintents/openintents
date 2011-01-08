@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
+* $Id: strings.xml 2889 2010-12-30 18:15:04Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -68,11 +68,11 @@
 	<string name="error_export">Ошибка экспорта базы данных</string>
 	<string name="export_database">Экспортировать базу данных</string>
 	<string name="export_msg">База данных будет экспортирована как простой текст. ЭТО ОЧЕНЬ ОПАСНО. Не забудьте удалить файл. Вы уверены, что хотите экспортировать?</string>
-	<string name="export_success">Экспорт в \'%s\' прошёл успешно. Внимание! Файл не зашифрован.</string>
-	<string name="export_file_error">Не могу создать файл экспорта \'oisafe.csv\' на SDCARD. Попробуйте отключить USB от компьютера.</string>
+	<string name="export_success">Export to \'%s\' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_file_error">Unable to create export file \'oisafe.csv\' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Импорт базы данных</string>
 	<string name="import_file_missing">Отсутствует файл импорта:</string>
-	<string name="import_file_error">Не могу импортировать файл \'oisafe.csv\' с SDCARD. Попробуйте отключить USB от компьютера.</string>
+	<string name="import_file_error">Unable to import file \'oisafe.csv\' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">В первой строке не хватает полей.</string>
 	<string name="dialog_import_title">Импорт</string>
 	<string name="dialog_import_msg">Вы хотите заменить базу данных (импортировать из %s)?</string>
@@ -118,17 +118,17 @@
     <string name="restore_no_file">Файл резервной копии не найден. Сначала нужно создать резервную копию или скопировать её с вашего компьютера.</string>
     <string name="restore_set_password">Введите пароль файла резервной копии. Он станет вашим Мастер Паролем.</string>
     
-    <!-- Toast message. '%s' contains a more detailed error message. -->
+    <!-- Toast message. %s contains a more detailed error message. -->
     <string name="restore_unable_to_open">Не могу открыть файл: %s</string>
     
-    <!-- Toast message. '%s' contains the version number of the database. -->
+    <!-- Toast message. %s contains the version number of the database. -->
     <string name="restore_bad_version">Версия не поддерживается: %s</string>
     
     <string name="restore_error">Ошибка восстановления.</string>
     <string name="restore_decrypt_error">Плохой пароль</string>
     <string name="dialog_restore_database_title">Восстановить базу данных</string>
     <string name="dialog_restore_database_msg">Вы уверены, что хотите заменить текущие данные?</string>
-    <string name="restore_found">Найдено %1$s записей в резервной копии от %2$s.</string>
+    <string name="restore_found">Found %1$s passwords from backup dated %2$s.</string>
     <string name="restore_complete">Завершено. Паролей восстановлено: %s</string>
     <string name="copied_to_clipboard">скопировано в буфер</string>
     <string name="invalid_website">Неправильный сайт</string>
@@ -177,9 +177,17 @@
 	<!-- Preference title -->
 	<string name="pref_title_keypad_mute">Бесшумная клавиатура</string>
 	
-	<!-- Preference summary: Make the 'keypad sounds' mute. 
+	<!-- Preference summary: Make the keypad sounds mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Выключить звуки клавиатуры</string>
+
+	<string name="pref_title_autobackup">Auto backup</string>
+	<string name="pref_summary_autobackup">Automatically prompt to backup passwords</string>
+
+	<string name="pref_title_autobackup_days">Auto backup days</string>
+	<string name="pref_summary_autobackup_days">Number of days to wait before next auto backup</string>
+	<string name="pref_dialog_title_autobackup_days">Auto Backup Days</string>
+	
 	
 	<string name="intent_decrypt">Расшифровать (OI Safe)</string>
 	<string name="intent_encrypt">Зашифровать (OI Safe)</string>
@@ -200,6 +208,7 @@
 	<string name="cancel">Отменить</string>
 	<string name="discard_changes">Отменить изменения</string>
 	<string name="entry_saved">Запись сохранена</string>
+	<string name="entry_save_error">Unable to save due to database error</string>
 	<string name="last_edited">Последнее редактирование</string>
 	<string name="last_edited_unknown">Неизвестно</string>
 	<string name="crypto_error">Ошибка шифрования</string>
@@ -214,6 +223,14 @@
 	<string name="search_progress">Идёт поиск...</string>
 	<string name="search_hint">Введите информацию для поиска</string>
 	<string name="search_nothing_found">Ничего не найдено</string>
+	<string name="mute">Mute</string>
+	<string name="sounds">Sounds</string>
+	<string name="previous">Previous</string>
+	<string name="next">Next</string>
+	<string name="autobackup">AutoBackup</string>
+	<string name="backup_never">No backup has been performed yet.   Would you like to backup now?</string>
+	<string name="backup_in_days">The last backup was %d days ago.   Would you like to backup now?</string>
+	<string name="autobackup_turnoff">Turn off autobackup</string>
 	
 	
 	<!-- ***************************
@@ -261,6 +278,13 @@
         <item>10 минут</item>
         <item>15 минут</item>
         <item>30 минут</item>  
+    </string-array>
+
+    <string-array name="pref_entries_autobackup_days">
+        <item>1 day</item>
+        <item>7 days</item>
+        <item>30 days</item>
+        <item>60 days</item>
     </string-array>
 
         

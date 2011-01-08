@@ -61,7 +61,7 @@
     <string name="title_edit_file">%s (Notiz bearbeiten)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Wählen Sie eine Notiz als Verknüpfung aus</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -107,7 +107,7 @@
     <string name="warning_unsaved_changes_title">Text wurde verändert</string>
     <string name="warning_unsaved_changes_message">Möchten Sie die Änderungen speichern?</string>
     <string name="button_save">Speichern</string>
-    <string name="button_dont_save">Nicht speichern</string>
+    <string name="button_dont_save">Don\'t save</string>
     
 	<string name="menu_theme">Design</string>
 	<string name="theme_pick">Design wählen</string>

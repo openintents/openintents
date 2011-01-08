@@ -39,6 +39,8 @@
     <string name="menu_open">Открыть</string>
     <string name="menu_move">Переместить</string>
     <string name="menu_copy">Копировать</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">Создать новую папку</string>
     <string name="folder_name">Имя папки</string>
@@ -57,19 +59,27 @@
     <string name="copy_title">Выберите папку куда скопировать</string>
     <string name="copy_button">Скопировать сюда</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">Копия %s</string>
-    <string name="copied_file_name_2">Копия %1$d из %2$s</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">Невозможно создать новую папку.</string>
     <string name="error_deleting_file">Невозможно удалить файл.</string>
-    <string name="error_deleting_folder">Невозможно удалить папку \'%s\'.</string>
+    <string name="error_deleting_folder">Could not delete folder \'%s\'.</string>
     <string name="error_renaming_file">Невозможно переименовать файл.</string>
     <string name="error_renaming_folder">Невозможно переименовать папку.</string>
     <string name="error_moving_file">Невозможно переместить файл.</string>
     <string name="error_moving_folder">Невозможно переместить папку.</string>
     <string name="error_copying_file">Невозможно скопировать файл.</string>
     <string name="error_file_does_not_exists">Файл не существует.</string>
-    <string name="error_deleting_child_file">Невозможно удалить вложенный файл \'%s\'.</string>
+    <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">Нет приложения для отправки.</string>
     

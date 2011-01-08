@@ -41,6 +41,8 @@
     <string name="menu_open">開く</string>
     <string name="menu_move">移動</string>
     <string name="menu_copy">コピー</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">新規フォルダーを作成</string>
     <string name="folder_name">フォルダ名</string>
@@ -59,19 +61,27 @@
     <string name="copy_title">コピーするフォルダを選択してください</string>
     <string name="copy_button">ここへコピー</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">%s のコピー</string>
-    <string name="copied_file_name_2">%2$s の %1$d をコピー</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">新規フォルダーを作成できませんでした。</string>
     <string name="error_deleting_file">ファイルを削除できませんでした。</string>
-    <string name="error_deleting_folder">"'%s' のフォルダを削除できません。"</string>
+    <string name="error_deleting_folder">Could not delete folder \'%s\'.</string>
     <string name="error_renaming_file">ファイル名を変更できませんでした。</string>
     <string name="error_renaming_folder">フォルダ名を変更できませんでした。</string>
     <string name="error_moving_file">ファイルを移動できませんでした。</string>
     <string name="error_moving_folder">フォルダーを移動できませんでした。</string>
     <string name="error_copying_file">ファイルのコピーができません。</string>
     <string name="error_file_does_not_exists">ファイルが存在しません。</string>
-    <string name="error_deleting_child_file">"フォルダの中の '%s' を削除できません。"</string>
+    <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">利用できる送信用アプリがありません。</string>
     

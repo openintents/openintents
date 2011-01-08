@@ -117,10 +117,10 @@
     <string name="restore_no_file">Backup file not found.  You need to perform a backup first to create it.  Or copy a backup from your PC.</string>
     <string name="restore_set_password">Please provide the password used by the backup file.  Your master password will be set to this.</string>
     
-    <!-- Toast message. '%s' contains a more detailed error message. -->
+    <!-- Toast message. %s contains a more detailed error message. -->
     <string name="restore_unable_to_open">Unable to open file: %s</string>
     
-    <!-- Toast message. '%s' contains the version number of the database. -->
+    <!-- Toast message. %s contains the version number of the database. -->
     <string name="restore_bad_version">Version not supported: %s</string>
     
     <string name="restore_error">Restore error.</string>
@@ -176,7 +176,7 @@
 	<!-- Preference title -->
 	<string name="pref_title_keypad_mute">Keypad Mute</string>
 	
-	<!-- Preference summary: Make the 'keypad sounds' mute. 
+	<!-- Preference summary: Make the keypad sounds mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
 

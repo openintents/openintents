@@ -18,18 +18,18 @@
     <string name="app_name">Actualización OI</string>
     
     <string name="update_available">Una versión nueva de %s está disponible. \n¿Quiere actualizar?</string>
-    <string name="update_available_3">Una nueva versión de %s está disponible en %s.\n%s\n</string>
-    <string name="update_available_2">Una nueva versión de %s está disponible.\n%s\n</string>
-    <string name="update_available_location_no_comment">Una nueva versión de %s está disponible en %s.</string>
+    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
     <string name="update_available_no_comment">Una neva versión de %s está disponible.</string>
 	<string name="market_not_available">Android Market no disponible.</string>
     <string name="market_search_term">Actualización OI</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Versión %s\nSD card %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">espacio libre: %s</string>
-    <string name="os_info">Board %s\nBrand %s\nDevice %s\nID %s\nModel %s</string>
+    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">Haz actualización ahora!</string>
     <string name="do_update_market">¡Pruebe actualizar desde Market ahora!</string>
@@ -51,7 +51,7 @@
     <string name="current_version">Versión actual: %s</string>
     <string name="current_version_code">Código de versión actual: %s</string>
     <string name="newer_version">Versión nueva: %s</string>
-    <string name="newer_version_comment">Versión nueva: %s - %s</string>
+    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
     <string name="newer_version_available">Nueva versión disponible.</string>
     <string name="no_update_info_found">Información de actualización no encontrada</string>
     <string name="title_list_new_versions">OI Update - Lista de versiones nuevas</string>

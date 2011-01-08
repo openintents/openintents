@@ -29,6 +29,7 @@
 	<string name="about_translators">Launchpad Contributions:
   DiegoJ https://launchpad.net/~diegojromerolopez
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
+  Fitoschido https://launchpad.net/~fitoschido
   Juan Eduardo Riva https://launchpad.net/~juaneduardoriva
   Monkey https://launchpad.net/~monkey-libre
   Paco Molinero https://launchpad.net/~franciscomol
@@ -65,7 +66,7 @@
     <string name="title_edit_file">%s (editar note)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Seleccione nota para acceso directo</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">De Acuerdo</string>  
 	
@@ -111,7 +112,7 @@
     <string name="warning_unsaved_changes_title">Texto modificado</string>
     <string name="warning_unsaved_changes_message">¿Desea usted guardar los cambios?</string>
     <string name="button_save">Guardar</string>
-    <string name="button_dont_save">«No guardar»</string>
+    <string name="button_dont_save">Don\'t save</string>
     
 	<string name="menu_theme">Tema</string>
 	<string name="theme_pick">Elije un tema</string>
@@ -178,7 +179,7 @@
     <string name="aboutapp_get">Obtenga Acerca de OI</string>
     
     <!-- File Manager -->
-    <string name="filemanager_not_available">Gestor de archivos compatible no está disponible.</string>
+    <string name="filemanager_not_available">No hay ningún gestor de archivos compatible.</string>
     <string name="filemanager_get_oi_filemanager">Obtenga el Administrador de Archivos de OI</string>
     
     <!-- Safe -->

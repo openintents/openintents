@@ -15,18 +15,18 @@
     <string name="app_name">OI Aggiornamenti</string>
     
     <string name="update_available">Una nuova versione di %s è disponibile.\nVuoi aggiornare?</string>
-    <string name="update_available_3">Una nuova versione di %s è disponibile in %s.\n%s\n</string>
-    <string name="update_available_2">Una nuova versione di %s è disponibile.\n%s\n</string>
-    <string name="update_available_location_no_comment">Una nuova versione di %s è disponibile in %s.</string>
+    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
     <string name="update_available_no_comment">Una nuova versione di %s è disponibile.</string>
 	<string name="market_not_available">Android Market non disponibile.</string>
     <string name="market_search_term">OI Aggiornamenti</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Versione %s\nScheda SD %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">spazio disponibile: %s</string>
-    <string name="os_info">Scheda %s\nMarca %s\nDispositivo %s\nID %s\nModello %s</string>
+    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">Esegui aggiornamenti adesso!</string>
     <string name="do_update_market">Prova ad aggiornare dal Market adesso!</string>
@@ -37,7 +37,7 @@
     <string name="ok">Ok</string>
     
     <string name="update_not_started">Impossibile avviare l\'aggiornamento!\n\nContatta lo sviluppatore dell\'applicazione!\n\n%s</string>
-    <string name="app_up_to_date">L'\applicazione è aggiornata.</string>
+    <string name="app_up_to_date">L\'\applicazione è aggiornata.</string>
     <string name="checking">Controlla nuove versioni.</string>
     <string name="building_app_list">Creazione elenco applicazioni.</string>
     <string name="check_andappstore">Controlla AndAppStore.com</string>
@@ -48,7 +48,7 @@
     <string name="current_version">Versione attuale: %s</string>
     <string name="current_version_code">Codice versione attuale: %s</string>
     <string name="newer_version">Versione recente: %s</string>
-    <string name="newer_version_comment">Versione recente: %s - %s</string>
+    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
     <string name="newer_version_available">Nuova versione disponibile.</string>
     <string name="no_update_info_found">Nessuna informazione di aggiornamento trovata.</string>
     <string name="title_list_new_versions">OI Aggiornamenti - Elenco nuove versioni</string>

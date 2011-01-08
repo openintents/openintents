@@ -61,7 +61,7 @@
     <string name="title_edit_file">%s (редактировать заметку)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Выбрать заметку для ярлыка</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">ОК</string>  
 	
@@ -107,7 +107,7 @@
     <string name="warning_unsaved_changes_title">Текст изменен</string>
     <string name="warning_unsaved_changes_message">Вы хотите сохранить изменения?</string>
     <string name="button_save">Сохранить</string>
-    <string name="button_dont_save">"Не сохранять"</string>
+    <string name="button_dont_save">Don\'t save</string>
     
 	<string name="menu_theme">Тема</string>
 	<string name="theme_pick">Выбрать тему</string>

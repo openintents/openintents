@@ -6,24 +6,54 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Florian Sievers https://launchpad.net/~florian-sievers
-  Peli https://launchpad.net/~peli0101</string>
+  Stefan Fenzke https://launchpad.net/~stefan-fenzke</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents Color Picker ist eine Erweiterung für OI Flashlight und andere kompatible Anwendungen.</string>
+	<string name="about_website_label">OI Color Picker at OpenIntents</string>
 	
 	<!-- ***************************
-	     Applicatio-specific strings
+	     Application-specific strings
 	     *************************** -->
-    <string name="app_name">OI Farbwähler</string>
+    <string name="app_name">OI Color Picker</string>
     <string name="color_picker">Farbwähler</string>
-	
+    
+    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors">Recent colors</string>
+    <string name="recent_colors_expanded">Recently chosen colors</string>
+    <string name="recent_colors_clear_history">Clear</string>
+    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    
+    
+    
 	<!-- About -->
 	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
 	<string name="aboutapp_get">Get OI About</string>
 
+
 	<!-- Update -->
-	<string name="update_error">Anwendung zum Herunterladen nicht verfügbar.</string>
+	<string name="update_error">Download application not available.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    
+    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
+    <string name="title_app_character_gen">Anime Character Generator</string>
+    
+    
+	<string name="info_activity_text">Diese App kann mit mit folgenden Anwedungen verwendet werden:</string>
+    <string name="info_launch">Starte %s</string>
+    <!-- %1$s is application name, %2$s is version name. -->
+	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
+	<string name="info_get">Get %s</string>
 </resources>

@@ -40,6 +40,8 @@
     <string name="menu_open">Öffnen</string>
     <string name="menu_move">Verschieben</string>
     <string name="menu_copy">Kopie</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">Neuen Ordner erstellen</string>
     <string name="folder_name">Name des Ordners</string>
@@ -58,19 +60,27 @@
     <string name="copy_title">Wählen Sie Zielverzeichnis für den Kopiervorgang</string>
     <string name="copy_button">Hierher kopieren</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">Kopie von %s</string>
-    <string name="copied_file_name_2">%1$d von %2$s kopiert</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">Neuer Ordner konnte nicht erstellt werden.</string>
     <string name="error_deleting_file">Datei konnte nicht gelöscht werden.</string>
-    <string name="error_deleting_folder">Ordner \'%s\' kann nicht gelöscht werden.</string>
+    <string name="error_deleting_folder">Could not delete folder \'%s\'.</string>
     <string name="error_renaming_file">Datei konnte nicht umbenannt werden.</string>
     <string name="error_renaming_folder">Ordner konnte nicht umbenannt werden.</string>
     <string name="error_moving_file">Datei konnte nicht verschoben werden.</string>
     <string name="error_moving_folder">Ordner konnte nicht verschoben werden.</string>
     <string name="error_copying_file">Datei kann nicht kopiert werden.</string>
     <string name="error_file_does_not_exists">Datei existiert nicht.</string>
-    <string name="error_deleting_child_file">Konnte Unterdatei \'%s\' nicht löschen</string>
+    <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">Keine Anwendung zum Senden vorhanden.</string>
     

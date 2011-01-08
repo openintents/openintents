@@ -38,6 +38,8 @@
     <string name="menu_open">打开</string>
     <string name="menu_move">移动</string>
     <string name="menu_copy">复制</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">新建文件夹</string>
     <string name="folder_name">文件夹名</string>
@@ -56,8 +58,14 @@
     <string name="copy_title">选择要复制的文件夹</string>
     <string name="copy_button">复制到此处</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">复制 %s</string>
-    <string name="copied_file_name_2">复制 %1$d 的 %2$s</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">无法建立新文件夹</string>
     <string name="error_deleting_file">无法删除文件</string>
@@ -69,6 +77,8 @@
     <string name="error_copying_file">无法复制文件</string>
     <string name="error_file_does_not_exists">文件不存在</string>
     <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">无法找到用于传送的应用程序</string>
     

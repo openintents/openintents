@@ -34,19 +34,19 @@
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Une boîte de dialogue "À propos" indépendante partagée entre applications.</string>
 	
-	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">OI About chez OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI About</string>
 	
-    <string name="menu_about">À propos d'OI About lui-même</string>
+    <string name="menu_about">À propos d\'OI About lui-même</string>
     
-    <!-- About some application, where '%s' is the name of another application. -->
+    <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">À propos de %s</string>
     
 	<string name="l_authors">Écrit par</string>

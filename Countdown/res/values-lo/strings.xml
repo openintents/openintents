@@ -82,13 +82,13 @@
 	<!-- Checkbox label whether to flash light for notifications. -->
 	<string name="light">Light</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="action">Action: %s</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="select_action">Select action: %s</string>
 	
-	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  '%s' specifies the action further.-->
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
 	<string name="select_countdown">Select countdown: %s</string>
 	
 	<!-- Button to test an action. -->
@@ -100,10 +100,10 @@
 	<!-- Button label to dismiss notification after countdown ended. -->
 	<string name="dismiss">Dismiss</string>
 	
-	<!-- For the countdown display. '%s' is the number of days remaining (more than 1). -->
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
 	<string name="days">days</string>
 	
-	<!-- For the countdown display. '%s' is 1 (the number of days remaining). -->
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
 	<string name="day">day</string>
 	
 	<!--  -->

@@ -38,6 +38,8 @@
     <string name="menu_open">Otwórz</string>
     <string name="menu_move">Przenieś</string>
     <string name="menu_copy">Kopiuj</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">Utwórz nowy katalog</string>
     <string name="folder_name">Nazwa katalogu</string>
@@ -56,19 +58,27 @@
     <string name="copy_title">Wybierz katalog docelowy</string>
     <string name="copy_button">Skopiuj tutaj</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">Kopia %s</string>
-    <string name="copied_file_name_2">Skopiuj %1$d z %2$s</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">Nie udało się utworzyć katalogu.</string>
     <string name="error_deleting_file">Nie udało się usunąć pliku.</string>
-    <string name="error_deleting_folder">Nie udało się usunąć katalogu \'%s\'.</string>
+    <string name="error_deleting_folder">Could not delete folder \'%s\'.</string>
     <string name="error_renaming_file">Nie udało się zmienić nazwy pliku.</string>
     <string name="error_renaming_folder">Nie udało się zmienić nazwy katalogu.</string>
     <string name="error_moving_file">Nie udało się przenieść pliku.</string>
     <string name="error_moving_folder">Nie udało się przenieść katalogu.</string>
     <string name="error_copying_file">Nie udało się skopiować pliku.</string>
     <string name="error_file_does_not_exists">Plik nie istnieje</string>
-    <string name="error_deleting_child_file">Nie udało się usunąć pliku potomnego \'%s\'.</string>
+    <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">Nie ma dostępnych aplikacji do wysyłania.</string>
     

@@ -33,19 +33,19 @@
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">アプリ間で共有されるダイアログについての単体アプリ</string>
 	
-	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">OpenIntentsのOI About</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI About</string>
 	
     <string name="menu_about">OI About自身について</string>
     
-    <!-- About some application, where '%s' is the name of another application. -->
+    <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">%s について</string>
     
 	<string name="l_authors">作者</string>

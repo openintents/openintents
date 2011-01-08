@@ -24,6 +24,7 @@
   Abdessamad Derraz https://launchpad.net/~derraz
   Omega13 https://launchpad.net/~omega13
   Peli https://launchpad.net/~peli0101
+  Thibault Févry https://launchpad.net/~thibaultfevry
   dommy9111 https://launchpad.net/~bossboss9111
   friedger https://launchpad.net/~friedger
   kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz
@@ -73,7 +74,7 @@
 	<!-- Delete this item completely. If the user wants to add it again, they
 	     have to enter all the information again. -->
 	<string name="menu_delete_item">Supprimer l\'élément définitivement</string>
-	
+	<string name="menu_move_item">Move item to other list</string>
 	<!-- Button label to add an item to the list. -->
 	<string name="add">Ajouter</string>
 	
@@ -123,7 +124,7 @@
 	<string name="ok">OK</string>
 	<string name="cancel">Annuler</string>
 	<string name="use_theme_for_all_lists">Utiliser ce thème pour toutes les listes</string>
-	<string name="get_more_themes">Avoir plus de thèmes</string>
+	<string name="get_more_themes">Obtenir plus de thèmes</string>
 	
 	<!-- preferences -->
 	<string name="preferences">Paramètres</string>
@@ -166,11 +167,11 @@
     
     <string name="preference_appearance">Apparence</string>
     
-    <string name="preference_addons">Plug-ins</string>
-    <string name="preference_get_addons">Avoir de nouveaux plug-ins</string>
-    <string name="preference_get_addons_summary">Rechercher extensions et thèmes en ligne.</string>
-    <string name="preference_get_market_addons">Avoir des plug-ins depuis le Market.</string>
-    <string name="preference_get_developer_addons">Avoir des plug-ins depuis OpenIntents</string>
+    <string name="preference_addons">Greffons</string>
+    <string name="preference_get_addons">Obtenir de nouveaux greffons</string>
+    <string name="preference_get_addons_summary">Rechercher des extensions et thémes sur Internet</string>
+    <string name="preference_get_market_addons">Obtenir des greffons depuis le « Market ».</string>
+    <string name="preference_get_developer_addons">Obtenir des greffons depuis OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
     <string name="preference_themes">Thèmes</string>
     <string name="preference_market_extensions_summary">Rechercher des extensions sur l\'Android Market</string>

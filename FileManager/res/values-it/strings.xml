@@ -22,7 +22,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Diego Pierotto https://launchpad.net/~gringo
-  Federico Pontelli https://launchpad.net/~federico
+  Federico https://launchpad.net/~federico-deactivatedaccount
   Peli https://launchpad.net/~peli0101</string>
 	
     <string name="about_comments">OI Gestore File è un gestore di file che coopera senza soluzione di continuità con altre applicazioni.</string>  
@@ -40,6 +40,8 @@
     <string name="menu_open">Apri</string>
     <string name="menu_move">Sposta</string>
     <string name="menu_copy">Copia</string>
+    <string name="menu_include_in_media_scan">Include in media scan</string>
+    <string name="menu_exclude_from_media_scan">Exclude from media scan</string>
     
     <string name="create_new_folder">Crea nuova cartella</string>
     <string name="folder_name">Nome cartella</string>
@@ -58,19 +60,27 @@
     <string name="copy_title">Seleziona la cartella dove copiare</string>
     <string name="copy_button">Copia qui</string>
     
+    <!-- Construct a unique file name of a file called %s. -->
     <string name="copied_file_name">Copia di %s</string>
-    <string name="copied_file_name_2">Copia %1$d di %2$s</string>
+    
+    <!-- Construct a unique file name with number %1$d of a file called %2$s. -->
+    <string name="copied_file_name_2">Copy %1$d of %2$s</string>
+    
+    <string name="media_scan_included">This folder will be included in the next media scan.</string>
+    <string name="media_scan_excluded">This folder will be excluded during the next media scan.</string>
     
     <string name="error_creating_new_folder">Impossibile creare una nuova cartella.</string>
     <string name="error_deleting_file">Impossibile eliminare il file.</string>
-    <string name="error_deleting_folder">Impossibile eliminare la cartella \'%s\'.</string>
+    <string name="error_deleting_folder">Could not delete folder \'%s\'.</string>
     <string name="error_renaming_file">Impossibile rinominare il file.</string>
     <string name="error_renaming_folder">Impossibile rinominare la cartella.</string>
     <string name="error_moving_file">Impossibile spostare il file.</string>
     <string name="error_moving_folder">Impossibile spostare la cartella.</string>
     <string name="error_copying_file">Impossibile copiare il file.</string>
     <string name="error_file_does_not_exists">Il file non esiste.</string>
-    <string name="error_deleting_child_file">Impossibile eliminare il sotto file \'%s\'.</string>
+    <string name="error_deleting_child_file">Could not delete child file \'%s\'.</string>
+    <string name="error_generic">An error occurred: </string>
+    <string name="error_media_scan">Could not change media scan settings.</string>
     
     <string name="send_not_available">Nessuna applicazione disponibile per l\'invio</string>
     

@@ -6,6 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Eric Baudach https://launchpad.net/~cs-sniffer
   Florian Sievers https://launchpad.net/~florian-sievers
   Peli https://launchpad.net/~peli0101</string>
 	
@@ -25,11 +26,19 @@
     <string name="color_picker">Farbwähler</string>
     
     
-    <string name="preferences">Einstelliungen</string>
+    <string name="preferences">Einstellungen</string>
     
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
+	
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	
 	
 	<!-- EULA -->
 	<string name="eula_title">EULA - OI Taschenlampe</string>
@@ -45,14 +54,14 @@
 	
 	<!-- About -->
 	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
+	<string name="aboutapp_get">OI Info herunterladen</string>
 	
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
-	<string name="settings_titlebar">Einstelliungen</string>
+	<string name="settings_titlebar">Einstellungen</string>
 	<string name="settings_title_keep_color">Farbe beibehalten</string>
 	<string name="settings_summary_keep_color">Farbe für den nächsten Start von Flashlight speichern</string>
 </resources>

@@ -30,25 +30,25 @@
 	<string name="about_translators">Launchpad Contributions:
   Joao Nogueira https://launchpad.net/~whipx
   Peli https://launchpad.net/~peli0101
-  Tiago https://launchpad.net/~tiagosilva
+  Tiago Silva https://launchpad.net/~tiagosilva
   nglnx https://launchpad.net/~nglnx</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">Um ficheiro de informação partilhado entre as aplicações.</string>
 	
-	<!-- This is a link label. It will like to a page about 'OI About' on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
 	<string name="about_website_label">OI sobre o Openintents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Application name. Can be localized, like 'OI About', or 'OI Info'. 
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">Sobre o OI</string>
 	
     <string name="menu_about">Sobre o próprio OI</string>
     
-    <!-- About some application, where '%s' is the name of another application. -->
+    <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">Sobre %s</string>
     
 	<string name="l_authors">Escrito por</string>

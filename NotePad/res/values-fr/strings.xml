@@ -28,6 +28,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz
+  Thibault Févry https://launchpad.net/~thibaultfevry
   lonelyxstorm https://launchpad.net/~sleepless-l4dy</string>
 	
     <!-- Strings for OI About -->
@@ -60,7 +61,7 @@
     <string name="title_edit_file">%s (modifier la note)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Mettre la note en raccourci</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -106,32 +107,32 @@
     <string name="warning_unsaved_changes_title">Texte modifié</string>
     <string name="warning_unsaved_changes_message">Voulez-vous enregistrer les modifications?</string>
     <string name="button_save">Sauver</string>
-    <string name="button_dont_save">"Ne pas enregistrer"</string>
+    <string name="button_dont_save">Don\'t save</string>
     
-	<string name="menu_theme">Theme</string>
-	<string name="theme_pick">Pick a theme</string>
-    <string name="theme_default">Default </string>
-    <string name="theme_monospaced">Monospaced font</string>
-	<string name="theme_serif">Serif font</string>
+	<string name="menu_theme">Thème</string>
+	<string name="theme_pick">Choisissez un thème</string>
+    <string name="theme_default">Par défaut</string>
+    <string name="theme_monospaced">Police monospace</string>
+	<string name="theme_serif">Police serif</string>
 
 	<!-- Search -->
-	<string name="menu_search">Search</string>
+	<string name="menu_search">Chercher</string>
     <string name="search_query_results">OI Notepad</string>
     <!-- %s is the search string -->
-	<string name="search_found_no_results">No results found for %s.</string>
-    <string name="search_label">OI Notepad search</string>
-    <string name="search_hint">Search</string>
+	<string name="search_found_no_results">Pas de résultat trouvé pour %s.</string>
+    <string name="search_label">Recherche OI Notepad</string>
+    <string name="search_hint">Chercher</string>
     
     <!-- The description that will show up in the search settings for this source.  -->
-    <string name="search_settings_description">Titles of your notes</string>
+    <string name="search_settings_description">Titre de vos notes</string>
     
 	<!--     Dialog box    -->
 	<string name="ok">OK</string>
 	<string name="cancel">Quitter</string>
-    <string name="use_theme_for_all_lists">Use this theme for all lists</string>
-	<string name="get_more_themes">Get more themes</string>
+    <string name="use_theme_for_all_lists">Utiliser ce thème pour toutes les listes</string>
+	<string name="get_more_themes">Obtenir plus de thèmes</string>
     
-    <string name="all_notes">All notes</string>
+    <string name="all_notes">Toutes les notes</string>
     
     <!-- Settings -->
     <string name="noteslist_preferences">Liste des Notes</string>
@@ -140,9 +141,9 @@
     <string name="preference_sortorder_summary">L\'ordre dans lequel les notes sont affichées dans la liste de notes</string>
     
     <string name="note_editor_preferences">Éditeur de note</string>
-    <string name="preference_fontsize">Font size</string>
-	<string name="preference_fontsize_summary">Change font size</string>
-	<string name="preference_fontsize_dialog_title">Choose font size</string>
+    <string name="preference_fontsize">Taille de la police</string>
+	<string name="preference_fontsize_summary">Changer la taille de police</string>
+	<string name="preference_fontsize_dialog_title">Choisir la taille de police</string>
 	<string name="preference_autolink_title">Auto-créer des liens</string>
     <string name="preference_autolink_summary_on">Créer des liens pour les numéros de téléphone/email/rue/adresses internet</string>
     <string name="preference_autolink_summary_off">Ne pas créer de liens sur les notes</string>
@@ -216,24 +217,24 @@
 
     <string-array name="preference_fontsize_entries">
     	<!-- Preference fontsize: tiny font size -->
-        <item>Tiny</item>
+        <item>Très petite</item>
     	<!-- Preference fontsize: small font size -->
-        <item>Small</item>
+        <item>Petite</item>
     	<!-- Preference fontsize: default font size-->
-    	<item>Default</item>
+    	<item>Par défaut</item>
     	<!-- Preference fontsize: large font size -->
-        <item>Large</item>
+        <item>Grande</item>
     </string-array>
 
-    <string name="preference_addons">Add-ons</string>
-    <string name="preference_get_addons">Get new add-ons</string>
-    <string name="preference_get_addons_summary">Search for extensions and themes online.</string>
-    <string name="preference_get_market_addons">Get add-ons from Market</string>
-    <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
+    <string name="preference_addons">Greffons</string>
+    <string name="preference_get_addons">Obtenir de nouveaux greffons</string>
+    <string name="preference_get_addons_summary">Rechercher des extensions et thèmes sur Internet.</string>
+    <string name="preference_get_market_addons">Obtenir des greffons depuis le « Market ».</string>
+    <string name="preference_get_developer_addons">Obtenir des greffons depuis OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
-    <string name="preference_themes">Themes</string>
+    <string name="preference_themes">Thèmes</string>
     <string name="preference_market_extensions_summary">Rechercher des extensions sur l\'Android Market</string>
-    <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
+    <string name="preference_market_themes_summary">Rechercher des thèmes sur l\'Android Market.</string>
     <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d\'OpenIntents</string>
-	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
+	<string name="preference_developer_themes_summary">Obtenir des thèmes depuis la page d\'acceuil d\'OpenIntents</string>
 </resources>

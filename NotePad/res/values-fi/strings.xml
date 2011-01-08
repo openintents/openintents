@@ -60,7 +60,7 @@
     <string name="title_edit_file">%s (edit note)</string>
     
     <!-- Title: Pick note for shortcut (to be placed on the home screen) -->
-    <string name="title_pick_note_for_shortcut">Pick note for shortcut"</string>
+    <string name="title_pick_note_for_shortcut">Pick note for shortcut</string>
 	
 	<string name="button_ok">OK</string>  
 	
@@ -83,7 +83,7 @@
 	<string name="encryption_failed">Salaus epäonnistui.</string>
 	<string name="decryption_failed">Salauksen purkaminen epäonnistui.</string>
 
-	<string name="menu_edit_tags">Edit tags</string>
+	<string name="menu_edit_tags">Muokkaa tageja</string>
     <string name="dropdown_hint">Paina nähdäksesi listan</string>
     <string name="tags_hint">Lisää tageja, erota pilkulla</string>
     
@@ -106,7 +106,7 @@
     <string name="warning_unsaved_changes_title">Tekstiä muokattu</string>
     <string name="warning_unsaved_changes_message">Do you want to save the changes?</string>
     <string name="button_save">Tallenna</string>
-    <string name="button_dont_save">"Don\'t save"</string>
+    <string name="button_dont_save">Don\'t save</string>
     
 	<string name="menu_theme">Theme</string>
 	<string name="theme_pick">Pick a theme</string>

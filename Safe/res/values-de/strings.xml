@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
+* $Id: strings.xml 2889 2010-12-30 18:15:04Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -68,11 +68,11 @@
 	<string name="error_export">Fehler beim Exportieren der Datenbank</string>
 	<string name="export_database">Datenbank exportieren</string>
 	<string name="export_msg">Hiermit wird die Passwort Datenbank in eine Klartext Datei exportiert. DAS IST SEHR GEFÄHRLICH. Löschen Sie diese Datei, sobald Sie fertig sind. Sind Sie sicher, dass Sie exportieren wollen?</string>
-	<string name="export_success">Export nach \'%s\' erfolgreich. Achtung! Die Datei ist nicht verschlüsselt.</string>
-	<string name="export_file_error">Die Datei \'oisafe.csv\' kann auf der SD Karte nicht erstellt werden. Eventuell muss die USB Verbindung zum Computer getrennt werden.</string>
+	<string name="export_success">Export to \'%s\' successful.   Warning!   The file is not encrypted.</string>
+	<string name="export_file_error">Unable to create export file \'oisafe.csv\' on SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_database">Datenbank importieren</string>
 	<string name="import_file_missing">Datei zum Importieren fehlt:</string>
-	<string name="import_file_error">Die Datei \'oisafe.csv\' kann nicht von der SD Karte importiert werden. Eventuell muss die USB Verbindung zum Computer getrennt werden.</string>
+	<string name="import_file_error">Unable to import file \'oisafe.csv\' from SDCARD.  You might try disconnecting USB from computer.</string>
 	<string name="import_error_first_line">Die erste Zeile ist unvollständig.</string>
 	<string name="dialog_import_title">Importieren</string>
 	<string name="dialog_import_msg">Soll die Datenbank ersetzt werden (importiert von %s)?</string>
@@ -118,17 +118,17 @@
     <string name="restore_no_file">Wiederherstellungsdatei nicht gefunden. Zuerst muss eine Sicherungskopie erstellt werden, oder vom PC kopiert werden.</string>
     <string name="restore_set_password">Passwort der Wiederherstellungsdatei eingeben. Das neue Hauptpasswort wird auf dieses Passwort gesetzt.</string>
     
-    <!-- Toast message. '%s' contains a more detailed error message. -->
+    <!-- Toast message. %s contains a more detailed error message. -->
     <string name="restore_unable_to_open">Datei kann nicht geöffnet werden: %s</string>
     
-    <!-- Toast message. '%s' contains the version number of the database. -->
+    <!-- Toast message. %s contains the version number of the database. -->
     <string name="restore_bad_version">Version wird nicht unterstützt: %s</string>
     
     <string name="restore_error">Fehler beim Wiederherstellen.</string>
     <string name="restore_decrypt_error">Schlechtes Passwort</string>
     <string name="dialog_restore_database_title">Datenbank wiederherstellen</string>
     <string name="dialog_restore_database_msg">Sind Sie sicher, dass Sie die bestehenden Einträge ersetzen wollen?</string>
-    <string name="restore_found">%1$s Passwörter im Backup gefunden vom %2$s.</string>
+    <string name="restore_found">Found %1$s passwords from backup dated %2$s.</string>
     <string name="restore_complete">Fertig. Passwörter wiederhergestellt: %s</string>
     <string name="copied_to_clipboard">In die Zwischenablage kopiert</string>
     <string name="invalid_website">Ungültige Webseite</string>
@@ -177,9 +177,17 @@
 	<!-- Preference title -->
 	<string name="pref_title_keypad_mute">Ziffernblock stumm</string>
 	
-	<!-- Preference summary: Make the 'keypad sounds' mute. 
+	<!-- Preference summary: Make the keypad sounds mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Ziffernblock stumm schalten</string>
+
+	<string name="pref_title_autobackup">Auto backup</string>
+	<string name="pref_summary_autobackup">Automatically prompt to backup passwords</string>
+
+	<string name="pref_title_autobackup_days">Auto backup days</string>
+	<string name="pref_summary_autobackup_days">Number of days to wait before next auto backup</string>
+	<string name="pref_dialog_title_autobackup_days">Auto Backup Days</string>
+	
 	
 	<string name="intent_decrypt">Entschlüsseln (OI Safe)</string>
 	<string name="intent_encrypt">Verschlüsseln (OI Safe)</string>
@@ -200,6 +208,7 @@
 	<string name="cancel">Abbrechen</string>
 	<string name="discard_changes">Änderungen verwerfen</string>
 	<string name="entry_saved">Eintrag gespeichert</string>
+	<string name="entry_save_error">Unable to save due to database error</string>
 	<string name="last_edited">Zuletzt bearbeitet</string>
 	<string name="last_edited_unknown">unbekannt</string>
 	<string name="crypto_error">Verschlüsselungsfehler:</string>
@@ -214,6 +223,14 @@
 	<string name="search_progress">Suche läuft ...</string>
 	<string name="search_hint">Bitte Suchkriterien angeben</string>
 	<string name="search_nothing_found">Nichts gefunden</string>
+	<string name="mute">Mute</string>
+	<string name="sounds">Sounds</string>
+	<string name="previous">Previous</string>
+	<string name="next">Next</string>
+	<string name="autobackup">AutoBackup</string>
+	<string name="backup_never">No backup has been performed yet.   Would you like to backup now?</string>
+	<string name="backup_in_days">The last backup was %d days ago.   Would you like to backup now?</string>
+	<string name="autobackup_turnoff">Turn off autobackup</string>
 	
 	
 	<!-- ***************************
@@ -261,6 +278,13 @@
         <item>10 Minuten</item>
         <item>15 Minuten</item>
         <item>30 Minuten</item>  
+    </string-array>
+
+    <string-array name="pref_entries_autobackup_days">
+        <item>1 day</item>
+        <item>7 days</item>
+        <item>30 days</item>
+        <item>60 days</item>
     </string-array>
 
         

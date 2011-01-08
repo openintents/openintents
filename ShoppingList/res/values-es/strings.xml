@@ -72,7 +72,7 @@
 	<!-- Delete this item completely. If the user wants to add it again, they
 	     have to enter all the information again. -->
 	<string name="menu_delete_item">Borrar elemento permanentemente</string>
-	
+	<string name="menu_move_item">Move item to other list</string>
 	<!-- Button label to add an item to the list. -->
 	<string name="add">Agregar</string>
 	

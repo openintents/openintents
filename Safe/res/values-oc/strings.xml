@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-* $Id: strings.xml 2312 2009-10-03 22:42:11Z rmceoin $
+* $Id: strings.xml 2889 2010-12-30 18:15:04Z rmceoin $
 * 
 * Copyright 2007-2009 OpenIntents.org
 *
@@ -117,10 +117,10 @@
     <string name="restore_no_file">Backup file not found.  You need to perform a backup first to create it.  Or copy a backup from your PC.</string>
     <string name="restore_set_password">Please provide the password used by the backup file.  Your master password will be set to this.</string>
     
-    <!-- Toast message. '%s' contains a more detailed error message. -->
+    <!-- Toast message. %s contains a more detailed error message. -->
     <string name="restore_unable_to_open">Unable to open file: %s</string>
     
-    <!-- Toast message. '%s' contains the version number of the database. -->
+    <!-- Toast message. %s contains the version number of the database. -->
     <string name="restore_bad_version">Version not supported: %s</string>
     
     <string name="restore_error">Restore error.</string>
@@ -176,9 +176,17 @@
 	<!-- Preference title -->
 	<string name="pref_title_keypad_mute">Keypad Mute</string>
 	
-	<!-- Preference summary: Make the 'keypad sounds' mute. 
+	<!-- Preference summary: Make the keypad sounds mute. 
 	     If a user chooses this, then the keypad does not sound when pressing the keys. -->
 	<string name="pref_summary_keypad_mute">Mute keypad sounds</string>
+
+	<string name="pref_title_autobackup">Auto backup</string>
+	<string name="pref_summary_autobackup">Automatically prompt to backup passwords</string>
+
+	<string name="pref_title_autobackup_days">Auto backup days</string>
+	<string name="pref_summary_autobackup_days">Number of days to wait before next auto backup</string>
+	<string name="pref_dialog_title_autobackup_days">Auto Backup Days</string>
+	
 	
 	<string name="intent_decrypt">Decrypt (OI Safe)</string>
 	<string name="intent_encrypt">Encrypt (OI Safe)</string>
@@ -199,6 +207,7 @@
 	<string name="cancel">Anullar</string>
 	<string name="discard_changes">Abandonar las modificacions</string>
 	<string name="entry_saved">Entry saved</string>
+	<string name="entry_save_error">Unable to save due to database error</string>
 	<string name="last_edited">Last edited</string>
 	<string name="last_edited_unknown">desconegut</string>
 	<string name="crypto_error">Crypto error:</string>
@@ -213,6 +222,14 @@
 	<string name="search_progress">Recèrca en cors...</string>
 	<string name="search_hint">Type search criteria</string>
 	<string name="search_nothing_found">Pas res de trobat</string>
+	<string name="mute">Mute</string>
+	<string name="sounds">Sounds</string>
+	<string name="previous">Previous</string>
+	<string name="next">Next</string>
+	<string name="autobackup">AutoBackup</string>
+	<string name="backup_never">No backup has been performed yet.   Would you like to backup now?</string>
+	<string name="backup_in_days">The last backup was %d days ago.   Would you like to backup now?</string>
+	<string name="autobackup_turnoff">Turn off autobackup</string>
 	
 	
 	<!-- ***************************
@@ -263,6 +280,13 @@ Current version: %s
         <item>10 minutas</item>
         <item>15 minutas</item>
         <item>30 minutas</item>  
+    </string-array>
+
+    <string-array name="pref_entries_autobackup_days">
+        <item>1 day</item>
+        <item>7 days</item>
+        <item>30 days</item>
+        <item>60 days</item>
     </string-array>
 
         

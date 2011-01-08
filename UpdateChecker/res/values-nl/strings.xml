@@ -6,6 +6,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Jaap-Willem Dooge https://launchpad.net/~japydooge
   Peli https://launchpad.net/~peli0101
   pjv https://launchpad.net/~pjv</string>
 	
@@ -15,18 +16,18 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Een nieuwe versie van %s is beschikbaar.\nWilt u upgraden?</string>
-    <string name="update_available_3">Een nieuwe versie van %s is beschikbaar op %s.\n%s\n</string>
-    <string name="update_available_2">Een nieuwe versie van %s is beschikbaar.\n%s\n</string>
-    <string name="update_available_location_no_comment">Een nieuwe versie van %s is beschikbaar op %s.</string>
+    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
     <string name="update_available_no_comment">Een nieuwe versie van %s is beschikbaar.</string>
 	<string name="market_not_available">Android Market is niet beschikbaar.</string>
     <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Versie %s\nSD-kaart %s\n\nOS\n%s</string>
+    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">vrije ruimte: %s</string>
-    <string name="os_info">Bord %s\nMerk %s\nApparaat %s\nID %s\nModel %s</string>
+    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">Nu updaten!</string>
     <string name="do_update_market">Nu proberen te updaten via Market!</string>
@@ -48,13 +49,13 @@
     <string name="current_version">Huidige versie: %s</string>
     <string name="current_version_code">Huidige versiecode: %s</string>
     <string name="newer_version">Nieuwere versie: %s</string>
-    <string name="newer_version_comment">Nieuwere versie: %s - %s</string>
+    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
     <string name="newer_version_available">Nieuwere versie beschikbaar.</string>
     <string name="no_update_info_found">Geen update-informatie gevonden.</string>
     <string name="title_list_new_versions">OI Update - Lijst van nieuwe versies</string>
     <string name="title_list_new_versions_from_andappstore">OI Update - Nieuwe versies op AndAppStore</string>
     <string name="title_list_all_versions">OI Update - Lijst van applicaties in beheer</string>
-    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Lijst van applicaties in beheer (controle op AndAppStore)</string>
     <string name="settings">Voorkeuren</string>
     <string name="auto_update">Automatische controle</string>
     <string name="ignore_title">Genegeerd</string>
@@ -74,7 +75,7 @@
     <string name="title_update_interval">Verversingsinterval</string>
     <string name="summary_update_interval">Het interval waarmee de controle naar updates moet worden uitgevoerd.</string>
     <string name="dialog_title_update_interval">Selecteer interval</string>
-    <string name="default_update_interval">every_month</string>
+    <string name="default_update_interval">iedere_maand</string>
     <string name="preference_warning_title">Waarschuwing</string>
     <string name="preference_warning_text">Als u dit item uitzet dan zal u niet langer meldingen ontvangen voor updates. Wilt u zeker automatische updates uitzetten?</string>
     
@@ -94,13 +95,7 @@
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Update EULA</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
 	<string name="eula_accept">Accepteren</string>
 	<string name="eula_refuse">Annuleren</string>
 	
