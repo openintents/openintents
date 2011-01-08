@@ -10,6 +10,7 @@ function execute
     mainpath=$1
 	translationfilename=$2
     scriptfile=../../$mainpath/translations/androidxml2po.bash
+    echo "Copying scripts for $mainpath"
     cp androidxml2po.bash $scriptfile
 	sed -i "s/xxxxxFILENAMExxxxx/$translationfilename/g" $scriptfile
 	sed -i "s/THIS IS THE MASTER FILE./THIS IS A GENERATED COPY. ANY MODIFICATIONS WILL BE OVERWRITTEN BY trunk\/translations\/scripts\/copy_scripts\.bash/g" $scriptfile
