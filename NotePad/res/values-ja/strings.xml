@@ -106,7 +106,7 @@
     <string name="warning_unsaved_changes_title">テキスト変更</string>
     <string name="warning_unsaved_changes_message">変更を保存しますか？</string>
     <string name="button_save">保存</string>
-    <string name="button_dont_save">"Don't save"</string>
+    <string name="button_dont_save">"Don\'t save"</string>
     
 	<string name="menu_theme">テーマ</string>
 	<string name="theme_pick">テーマを選択</string>

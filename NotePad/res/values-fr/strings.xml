@@ -70,7 +70,7 @@
 	
 	<string name="menu_send_by_email">Envoyer</string>
 	<string name="empty_note">Vider la note</string>
-	<string name="email_not_available">Pas d'application disponible pour l'envoi.</string>
+	<string name="email_not_available">Pas d\'application disponible pour l\'envoi.</string>
 	
 	<string name="encrypting_note">Chiffrement de note</string>
 	<string name="encrypted">Chiffrée</string>
@@ -92,7 +92,7 @@
     <string name="filename">Nom du fichier</string>
     <string name="save">Sauver</string>
     <string name="open">Ouvrir</string>
-    <string name="error_writing_file">Erreur lors de l'écriture du fichier</string>
+    <string name="error_writing_file">Erreur lors de l\'écriture du fichier</string>
     <string name="error_reading_file">Erreur lors de la lecture du fichier</string>
     <string name="file_not_found">Fichier non trouvé</string>
     <string name="note_saved">Note sauvé</string>
@@ -135,9 +135,9 @@
     
     <!-- Settings -->
     <string name="noteslist_preferences">Liste des Notes</string>
-    <string name="preference_sortorder_title">Liste de l'ordre de tri</string>
-    <string name="preference_sortorder_dialog_title">Liste de l'ordre de tri</string>
-    <string name="preference_sortorder_summary">L'ordre dans lequel les notes sont affichées dans la liste de notes</string>
+    <string name="preference_sortorder_title">Liste de l\'ordre de tri</string>
+    <string name="preference_sortorder_dialog_title">Liste de l\'ordre de tri</string>
+    <string name="preference_sortorder_summary">L\'ordre dans lequel les notes sont affichées dans la liste de notes</string>
     
     <string name="note_editor_preferences">Éditeur de note</string>
     <string name="preference_fontsize">Font size</string>
@@ -161,15 +161,15 @@
 	<string name="eula_refuse">Quitter</string>
 	
 	<!-- Update -->
-		<string name="update_box_text">S'il vous plaît vérifier manuellement les mises à jour ou d'installer OI Update pour les notifications automatique. Version actuelle: %s</string>
+		<string name="update_box_text">S\'il vous plaît vérifier manuellement les mises à jour ou d\'installer OI Update pour les notifications automatique. Version actuelle: %s</string>
 	<string name="update_check_now">Vérifier maintenant.</string>
 	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Télécharger l'application indisponible.</string>
+	<string name="update_error">Télécharger l\'application indisponible.</string>
 	<string name="update">Vérifier les mises à jour</string>
 	
     <!-- About -->
     <string name="about">À propos de</string>
-	<string name="aboutapp_not_available">La version %s\n\nest incompatible pour afficher plein d'infos (contact, crédits, licence).</string>
+	<string name="aboutapp_not_available">La version %s\n\nest incompatible pour afficher plein d\'infos (contact, crédits, licence).</string>
     <string name="aboutapp_get">Obtenir OI About</string>
     
     <!-- File Manager -->
@@ -177,8 +177,8 @@
     <string name="filemanager_get_oi_filemanager">Obtenir OI File Manager</string>
     
     <!-- Safe -->
-    <string name="safe_not_available">Pas d'application compatible pour le chiffrement disponible.</string>
-    <string name="safe_not_available_decrypt">Pas d'application compatible pour le décryptage disponible.\n\nNote: Vous devez restaurer la clé principale à partir d'un fichier de sauvegarde afin d'accéder à des données chiffrées auparavant.</string>
+    <string name="safe_not_available">Pas d\'application compatible pour le chiffrement disponible.</string>
+    <string name="safe_not_available_decrypt">Pas d\'application compatible pour le décryptage disponible.\n\nNote: Vous devez restaurer la clé principale à partir d\'un fichier de sauvegarde afin d\'accéder à des données chiffrées auparavant.</string>
     <string name="safe_get_oi_filemanager">Obtenir OI Safe</string>
     
 	
@@ -193,14 +193,14 @@
     <string name="oi_notepad_permission_write_descr">Permet à une application de créer de nouvelles notes ou de modifier les notes.</string>
     
 	<!-- OI Shopping list -->
-    <string name="oi_shopping_permission_read">lire des listes d'achats</string>
-    <string name="oi_shopping_permission_read_descr">Permet à une application de lire des listes d'achats. Notez que la liste chiffrée et les éléments sont fournis dans un format crypté.</string>
-    <string name="oi_shopping_permission_write">rédiger des listes d'achats</string>
+    <string name="oi_shopping_permission_read">lire des listes d\'achats</string>
+    <string name="oi_shopping_permission_read_descr">Permet à une application de lire des listes d\'achats. Notez que la liste chiffrée et les éléments sont fournis dans un format crypté.</string>
+    <string name="oi_shopping_permission_write">rédiger des listes d\'achats</string>
     <string name="oi_shopping_permission_write_descr">Permet à une application de créer de nouvelles listes et des articles ou modifier ceux existants.</string>
     
 	<!-- OI Safe -->
 	<string name="oi_safe_permission_intents">chiffrer et déchiffrer des données</string>
-    <string name="oi_safe_permission_intents_descr">Permet à l'application de chiffrer et déchiffrer le texte, les mots de passe et les accès qui sont stockées dans OI Safe.</string>	
+    <string name="oi_safe_permission_intents_descr">Permet à l\'application de chiffrer et déchiffrer le texte, les mots de passe et les accès qui sont stockées dans OI Safe.</string>	
 
 
 	<!-- ***************************
@@ -209,7 +209,7 @@
 
     <string-array name="preference_sortorder_entries">
         <item>Ordre alphabétique</item>
-        <item>Inverser l'ordre alphabétique</item>
+        <item>Inverser l\'ordre alphabétique</item>
         <item>Plus récent au plus ancien</item>  
         <item>Les plus anciens au plus récent</item>
     </string-array>
@@ -232,8 +232,8 @@
     <string name="preference_get_developer_addons">Get add-ons from OpenIntents</string>
     <string name="preference_extensions">Extensions</string>
     <string name="preference_themes">Themes</string>
-    <string name="preference_market_extensions_summary">Rechercher des extensions sur l'Android Market</string>
+    <string name="preference_market_extensions_summary">Rechercher des extensions sur l\'Android Market</string>
     <string name="preference_market_themes_summary">Search for themes at Android Market.</string>
-    <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d'OpenIntents</string>
+    <string name="preference_developer_extensions_summary">Obtenir des extensions depuis le site d\'OpenIntents</string>
 	<string name="preference_developer_themes_summary">Get themes from the OpenIntents homepage.</string>
 </resources>

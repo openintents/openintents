@@ -4,6 +4,7 @@
 #Copyright 2009 by pjv. Licensed under GPLv3.
 
 # Nov 14, 2009: Peli: Modified export_xml2po to work with new Launchpad scheme.
+# Jan 8, 2011: Peli: Automatically delimit apostrophes: "'" <-> "\'"
 
 #Set the languages here (long version is the android resource append string).
 short_lang=("de" "es" "fi" "fr" "it" "ja" "ko" "lo" "nl" "oc" "pl" "ro" "ru") #do not include template language ("en" usually).
@@ -22,6 +23,24 @@ export_po="export_po"
 #Location of xml2po
 xml2po="xml2po"
 
+# Delimit apostrophes: "'" -> "\'"
+# argument $1 is file name
+function delimitapostrophe
+{
+	qot="'"
+	qot2="\\\\'"
+	sed -i "s/$qot/$qot2/g" $1
+}
+
+# Undo delimit apostrophes: "\'" -> "'"
+# argument $1 is file name
+function undodelimitapostrophe
+{
+	qot="'"
+	qot2="\\\\'"
+	sed -i "s/$qot2/$qot/g" $1
+}
+
 function import_po2xml
 {
 for (( i=0 ; i<${#short_lang[*]} ; i=i+1 )) ;
@@ -29,6 +48,7 @@ do
     echo "Importing .xml from .po for "${short_lang[i]}""
     mkdir -p "${android_xml_files_res_dir}"-"${long_lang[i]}"
     ${xml2po} -a -l "${short_lang[i]}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml > "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
+	delimitapostrophe "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml
 done
 }
 
@@ -36,6 +56,7 @@ function export_xml2po
 {
 echo "Exporting .xml to .pot"
 ${xml2po} -a -l "${short_lang[i]}" -o "${launchpad_pot_file_dir}"/"${launchpad_po_filename}".pot "${android_xml_files_res_dir}"/"${android_xml_filename}".xml
+undodelimitapostrophe "${launchpad_pot_file_dir}"/"${launchpad_po_filename}".pot
 
 # Create clean export folder for exported .po files:
 echo "Making export folder: ${export_po}"
@@ -51,6 +72,7 @@ do
     	if [ -e "${android_xml_files_res_dir}"-"${long_lang[i]}"/"${android_xml_filename}".xml ] ; then
         	#${xml2po} -a -u "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml
             ${xml2po} -a -u "${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml
+			undodelimitapostrophe "${short_lang[i]}".po
         else
 		    echo "-"
         	#${xml2po} -a -u "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${short_lang[i]}".po "${android_xml_files_res_dir}"/"${android_xml_filename}".xml
