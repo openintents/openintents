@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Tiago Silva https://launchpad.net/~tiagosilva</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    
+    <string name="flashlight_info">The backlight stays turned on.</string>
+    
+    
+    <string name="color">Color</string>
+    <string name="color_picker">Color picker</string>
+    
+    
+    <string name="preferences">Preferences</string>
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	<string name="eula_accept">Aceitar</string>
+	<string name="eula_refuse">Cancel</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Check now.</string>
+	<string name="update_get_updater">Get OI Updater.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Check updates</string>
+	
+	<!-- About -->
+	<string name="about">About</string>
+	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Preferences</string>
+	<string name="settings_title_keep_color">Keep color</string>
+	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+</resources>

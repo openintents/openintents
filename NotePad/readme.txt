@@ -25,8 +25,8 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.2.2
-date: 2010-?
-- translations: Japanese, Occitan (post 1500), Polish
+date: 2011-?
+- translations into various languages.
 
 ---------------------------------------------------------
 release: 1.2.1

@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2007-2009 Steven Osborn - http://steven.bitsetters.com     *
+ * Copyright (C) 2007-2011 Steven Osborn - http://steven.bitsetters.com     *
  *                     and Randy McEoin (and others, see Help)              *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
@@ -29,6 +29,7 @@ release: 1.2.6
 date: 2010-12-??
 - added auto backup
 - fixed change master password bug
+- translations into various languages.
 
 ---------------------------------------------------------
 release: 1.2.5

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Odliczanie informuje cię po upłynięciu określonego czasu.</string>
+	
+	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
+	<string name="about_website_label">OI Odliczanie na OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application -->
+    <string name="app_name">OI Odliczanie</string>
+    
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="modify">Modyfikuj</string>
+    <string name="cont">Kontynuuj</string>
+    
+	<string name="no_durations">Użyj menu aby dodać nowe odliczanie</string>
+	<string name="countdown_list">Lista odliczań</string>
+	
+    <string name="menu_delete">Usuń</string>
+    <string name="menu_edit">Edytuj</string>
+    <string name="menu_insert">Dodaj odliczanie</string>
+    <string name="menu_pick_ringtone">Dzwonek</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Ustaw datę</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Ustaw czas trwania</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Ustaw działanie</string>
+    
+    <string name="hint_title">n.p. pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Ustaw odliczanie</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Utwórz odliczanie</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Edytuj odliczanie</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Wybierz odliczanie</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Odliczanie</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Błąd</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Błąd wczytywania odliczania</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Powiadomienia na pasku statusu</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Uruchamiaj z paska statusu</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Dzwonek</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Wibracje</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Dioda</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Działanie: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Wybierz działanie: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Wybierz odliczanie: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Test</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Ustawienia</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Odrzuć</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">dni</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">dzień</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Programy</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Skróty</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Zadania automatyczne</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Wybierz skrót</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Wybierz zadanie automatyczne</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Wybierz aktywność</string>
+ 
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">Licencja OI Odliczanie</string>
+	<string name="eula_accept">Akceptuj</string>
+	<string name="eula_refuse">Anuluj</string>
+	
+	<!-- Update -->
+    <string name="menu_update">Sprawdź aktualizacje</string>
+	<string name="update_box_text">Sprawdź aktualizacje ręcznie lub zainstaluj OI Aktualizacje z funkcją automatycznego powiadamiania. Obecna wersja: %s</string>
+	<string name="update_check_now">Sprawdź teraz.</string>
+	<string name="update_get_updater">Pobierz OI Updater.</string>
+	<string name="update_error">Aplikacja jest niedostępna.</string>
+	
+    <!-- About -->
+    <string name="about">O programie</string>
+	<string name="aboutapp_not_available">Wersja %s\n\nŻadne kompatybilne rozszerzenie nie jest dostępne (kontakt, autorzy, licencja)</string>
+    <string name="aboutapp_get">Pobierz OI About</string>
+    
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Rozpocznij odliczanie</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Zatrzymaj odliczanie</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string name="preference_countdown">Odliczanie</string>
+
+    <string name="preference_extensions">Rozszerzenia</string>
+    <string name="preference_get_extensions">Pobierz nowe rozszerzenia</string>
+    <string name="preference_get_extensions_summary">Szukaj rozszerzeń w sieci.</string>
+    <string name="preference_get_extensions_from">Pobierz rozszerzenia z</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Szukaj rozszerzeń na Android Market</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Pobierz rozszerzenia ze strony OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Czas trwania powiadomień</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Ustaw czas trwania</string>
+                
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 sekundy</item>
+        <item>5 sekund</item>
+        <item>10 sekund</item>
+        <item>30 sekund</item>
+        <item>1 minuta</item>
+        <item>5 minut</item>
+        <item>10 minut</item>
+    </string-array>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Mads Peter Rommedahl https://launchpad.net/~lhademmor</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">En separat dialog som deles mellem programmer.</string>
+	
+	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
+	<string name="about_website_label">OI About hos OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI About</string>
+	
+    <string name="menu_about">Om selve OI About</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">Om %s</string>
+    
+	<string name="l_authors">Skrevet af</string>
+	<string name="l_documenters">Dokumenteret af</string>
+	<string name="l_translators">Oversat af</string>
+	<string name="l_artists">Grafik af</string>
+	<string name="l_credits">Bidragydere</string>
+	<string name="l_license">Licens</string>
+	<string name="l_info">Generel info</string>
+	
+	<string name="no_information_available">Ingen information tilgængelig.</string>
+</resources>

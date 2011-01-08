@@ -21,6 +21,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.7
+date: 2011-?
+- translations into various languages.
+
+---------------------------------------------------------
 release: 1.0.6
 date: 2010-07-22
 - translations: Occitan (post 1500)

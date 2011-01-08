@@ -1,6 +1,6 @@
  ****************************************************************************
  *                                                                          *
- *   Copyright (C) 2008-2009 pjv (and others, see About dialog)             *
+ *   Copyright (C) 2008-2011 pjv (and others, see About dialog)             *
  *                                                                          *
  *   OI About is free software: you can redistribute it and/or modify       *
  *   it under the terms of the GNU General Public License as published by   *
@@ -30,10 +30,9 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2010-??
+date: 2011-??
 
-- translations: Czech, Italian, Korean, 
-  Occitan (post 1500), Polish, Romanian, Russian, Slovak
+- translations into various languages.
 
 ---------------------------------------------------------
 release: 1.0.2

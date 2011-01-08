@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.</string>
+	<string name="about_website_label">OI Latarka na OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Latarka</string>
+    
+    <string name="flashlight_info">Podświetlanie pozostaje włączone</string>
+    
+    
+    <string name="color">Kolor</string>
+    <string name="color_picker">Wybór koloru</string>
+    
+    
+    <string name="preferences">Preferencje</string>
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	
+	
+	<!-- EULA -->
+	<string name="eula_title">Licancja OI Latarka</string>
+	<string name="eula_accept">Akceptuj</string>
+	<string name="eula_refuse">Anuluj</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Sprawdź aktualizacje ręcznie lub zainstaluj OI Aktualizacje z funkcją automatycznego powiadamiania. Obecna wersja: %s</string>
+	<string name="update_check_now">Sprawdź teraz.</string>
+	<string name="update_get_updater">Pobierz OI Updater.</string>
+	<string name="update_error">Aplikacja jest niedostępna.</string>
+	<string name="update">Sprawdź aktualizacje</string>
+	
+	<!-- About -->
+	<string name="about">O programie</string>
+	<string name="aboutapp_not_available">Wersja %s\n\nNie jest dostępne żadne kompatybilne rozszerzenie do wyświetlenia pełnej informacji (kontakt, autorzy, licencja)</string>
+	<string name="aboutapp_get">Pobierz OI About</string>
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Preferencje</string>
+	<string name="settings_title_keep_color">Zachowaj kolor</string>
+	<string name="settings_summary_keep_color">Zachowaj wybór koloru do następnego uruchomienia</string>
+</resources>

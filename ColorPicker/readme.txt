@@ -21,11 +21,18 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.1.1
+date: 2011-?
+
+- translations into various languages.
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2010-09-25
 
 - Implemented color history
 
+---------------------------------------------------------
 release: 1.0.0
 date: 2010-07-22
 

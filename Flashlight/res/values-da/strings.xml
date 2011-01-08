@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Mads Peter Rommedahl https://launchpad.net/~lhademmor</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight hjælper dig med at finde vej i mørket. Skærmens baggrundslys forbliver tændt så længe dette program kører.</string>
+	<string name="about_website_label">OI Flashlight hos OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Flashlight</string>
+    
+    <string name="flashlight_info">Baggrundslyset forbliver tændt.</string>
+    
+    
+    <string name="color">Farve</string>
+    <string name="color_picker">Farvevælger</string>
+    
+    
+    <string name="preferences">Indstillinger</string>
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlights licensaftale</string>
+	<string name="eula_accept">Acceptér</string>
+	<string name="eula_refuse">Annullér</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Tjek venligst manuelt for opdateringer eller installér OI Update for automatiske påmindelser. Nuværende version: %s</string>
+	<string name="update_check_now">Tjek nu.</string>
+	<string name="update_get_updater">Hent OI Updater.</string>
+	<string name="update_error">Downloadprogram er ikke tilgængeligt.</string>
+	<string name="update">Tjek opdateringer</string>
+	
+	<!-- About -->
+	<string name="about">Om</string>
+	<string name="aboutapp_not_available">Version %s\n\nIngen kompatible udvidelser til at vise fuld info (kontakt, tak til, licens) blev fundet.</string>
+	<string name="aboutapp_get">Hent OI About</string>
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Indstillinger</string>
+	<string name="settings_title_keep_color">Bevar farve</string>
+	<string name="settings_summary_keep_color">Gem farve til næste gang Flashlight-programmet startes</string>
+</resources>

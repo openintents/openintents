@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                       *
+ * Copyright (C) 2008-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -21,6 +21,12 @@ seamlessly cooperates with other applications.
 To obtain the current release, visit
   http://www.openintents.org
 
+
+---------------------------------------------------------
+release: 1.1.4
+date: 2011-?
+
+- translations into various languages.
 
 ---------------------------------------------------------
 release: 1.1.3

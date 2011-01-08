@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  zeugma https://launchpad.net/~sunder67</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI El feneri</string>
+    
+    <string name="flashlight_info">The backlight stays turned on.</string>
+    
+    
+    <string name="color">Renk</string>
+    <string name="color_picker">Renk Seçici</string>
+    
+    
+    <string name="preferences">Tercihler</string>
+    
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	
+	
+	<!-- EULA -->
+	<string name="eula_title">OI El feneri kullanıcı lisans anlaşması EULA</string>
+	<string name="eula_accept">Kabul Et</string>
+	<string name="eula_refuse">İptal</string>
+	
+	<!-- Update -->
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Şimdi kontrol et.</string>
+	<string name="update_get_updater">OI Güncellemelerini al.</string>
+	<string name="update_error">Download application not available.</string>
+	<string name="update">Güncellemeleri kontrol et</string>
+	
+	<!-- About -->
+	<string name="about">Hakkında</string>
+	<string name="aboutapp_not_available">Sürüm %s\n\n Uyumlu uzantısı mevcut tüm bilgileri (iletişim, krediler, lisans) gösterilecek.</string>
+	<string name="aboutapp_get">Get OI About</string>
+	
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<string name="settings_titlebar">Tercihler</string>
+	<string name="settings_title_keep_color">Keep color</string>
+	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+</resources>

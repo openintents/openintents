@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  zeugma https://launchpad.net/~sunder67</string>
+	
+    <!-- Strings for OI About -->
+	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	
+	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
+	<string name="about_website_label">OI OpenIntents de geri sayım</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application -->
+    <string name="app_name">OI Geri sayım</string>
+    
+    <string name="start">Başlat</string>
+    <string name="stop">Durdur</string>
+    <string name="modify">Değiştir</string>
+    <string name="cont">Devam et</string>
+    
+	<string name="no_durations">Use menu to add new countdown.</string>
+	<string name="countdown_list">Geri sayım listesi</string>
+	
+    <string name="menu_delete">Sil</string>
+    <string name="menu_edit">Düzenle</string>
+    <string name="menu_insert">Geri sayım ekle</string>
+    <string name="menu_pick_ringtone">Melodi</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Tarihi ayarla</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Set duration</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Set action</string>
+    
+    <string name="hint_title">örneğin pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Set countdown</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Geri sayım oluştur</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Geri sayım düzenle</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Pick countdown</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Geri sayım</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Hata</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Geri sayım yükleme hatası</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Notification in status bar</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Launch through status bar</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Zil sesi</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Titreşim</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Işık</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Eylem: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Eylem seçin: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Select countdown: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Test</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Ayarlar</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Dismiss</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">gün</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">gün</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Uygulamalar</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Kısayollar</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Automation tasks</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Kısayol seçin</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Select automation task</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Select activity</string>
+ 
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdown kullanıcı lisans sözleşmesi (EULA)</string>
+	<string name="eula_accept">Kabul Et</string>
+	<string name="eula_refuse">İptal</string>
+	
+	<!-- Update -->
+    <string name="menu_update">Güncellemeleri kontrol et</string>
+	<string name="update_box_text">Please check manually for updates or install OI Update
+for automatic notifications.
+Current version: %s
+	</string>
+	<string name="update_check_now">Şimdi kontrol et.</string>
+	<string name="update_get_updater">OI Güncellemelerini al.</string>
+	<string name="update_error">Download application not available.</string>
+	
+    <!-- About -->
+    <string name="about">Hakkında</string>
+	<string name="aboutapp_not_available">Sürüm %s\n\n Uyumlu uzantısı mevcut tüm bilgileri (iletişim, krediler, lisans) gösterilecek.</string>
+    <string name="aboutapp_get">Get OI About</string>
+    
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Geri sayım başlat</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Geri sayım durdur</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+    <string name="preference_countdown">Geri Sayım</string>
+
+    <string name="preference_extensions">Uzantılar</string>
+    <string name="preference_get_extensions">Yeni uzantıları al</string>
+    <string name="preference_get_extensions_summary">Search for extensions online.</string>
+    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Android Markette uzantıları arayın.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Zaman aşımı bildirimi</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Zaman aşımını zil sesi , titreşim veya ışıkla bildirim.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Zaman aşımı ayarı</string>
+                
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 saniye</item>
+        <item>5 saniye</item>
+        <item>10 saniye</item>
+        <item>30 saniye</item>
+        <item>1 dakika</item>
+        <item>5 dakika</item>
+        <item>10 dakika</item>
+    </string-array>
+</resources>

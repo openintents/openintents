@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
+
+Launchpad Contributions:
+  Mads Peter Rommedahl https://launchpad.net/~lhademmor</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Color Picker er en udvidelse til OI Flashlight og andre kompatible programmer.</string>
+	<string name="about_website_label">OI Color Picker hos OpenIntents</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+    <string name="app_name">OI Color Picker</string>
+    <string name="color_picker">Farvevælger</string>
+    
+    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors">Recent colors</string>
+    <string name="recent_colors_expanded">Recently chosen colors</string>
+    <string name="recent_colors_clear_history">Clear</string>
+    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    
+    
+    
+	<!-- About -->
+	<string name="about">Om</string>
+	<string name="aboutapp_not_available">Version %s\n\nIngen kompatible udvidelser til at vise fuld info (kontakt, tak til, licens) blev fundet.</string>
+	<string name="aboutapp_get">Hent OI About</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Downloadprogram er ikke tilgængeligt.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+    <string name="info_app_flashlight">For at vælge en farve i OI Flashlight skal du trykke menu &gt; Farve.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    
+    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
+    <string name="title_app_character_gen">Anime Character Generator</string>
+    
+    
+	<string name="info_activity_text">Dette program kan bruges med de følgende programmer:</string>
+    <string name="info_launch">Kør %s</string>
+    <!-- %1$s is application name, %2$s is version name. -->
+	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
+	<string name="info_get">Hent %s</string>
+</resources>

@@ -22,6 +22,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release 1.2.7
+date: 2011-?
+- translations into various languages.
+
+---------------------------------------------------------
 release 1.2.6
 date: 2011-01-06
 - move items between lists
