@@ -1,77 +1,34 @@
 #!/bin/bash
 
+# Export translations for all applications
+# Jan 8, 2011, Peli
 
-echo "Translating AboutApp"
-mkdir translations_aboutapp
-cd ../../AboutApp/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_aboutapp
-cp export_po/*.po ../../translations/export_all/translations_aboutapp
-cd ../../translations/export_all
+# $1..main path
+# $2..translation file name
+function execute
+{
+    mainpath=$1
+	translationfilename=$2
+    scriptpath=../../$mainpath/translations
+	translationspath=translations_$translationfilename
+    echo "Translating $mainpath"
+    mkdir translations_$translationfilename
+    cd $scriptpath
+    androidxml2po.bash -e
+	cd -
+    cp $scriptpath/*.pot $translationspath
+    cp $scriptpath/export_po/*.po $translationspath
+}
 
-echo "Translating ColorPicker"
-mkdir translations_colorpicker
-cd ../../ColorPicker/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_colorpicker
-cp export_po/*.po ../../translations/export_all/translations_colorpicker
-cd ../../translations/export_all
-
-echo "Translating Countdown"
-mkdir translations_countdown
-cd ../../Countdown/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_countdown
-cp export_po/*.po ../../translations/export_all/translations_countdown
-cd ../../translations/export_all
-
-echo "Translating FileManager"
-mkdir translations_filemanager
-cd ../../FileManager/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_filemanager
-cp export_po/*.po ../../translations/export_all/translations_filemanager
-cd ../../translations/export_all
-
-echo "Translating Flashlight"
-mkdir translations_flashlight
-cd ../../Flashlight/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_flashlight
-cp export_po/*.po ../../translations/export_all/translations_flashlight
-cd ../../translations/export_all
-
-echo "Translating NotePad"
-mkdir translations_notepad
-cd ../../NotePad/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_notepad
-cp export_po/*.po ../../translations/export_all/translations_notepad
-cd ../../translations/export_all
-
-echo "Translating Safe"
-mkdir translations_safe
-cd ../../Safe/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_safe
-cp export_po/*.po ../../translations/export_all/translations_safe
-cd ../../translations/export_all
-
-echo "Translating ShoppingList"
-mkdir translations_shoppinglist
-cd ../../ShoppingList/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_shoppinglist
-cp export_po/*.po ../../translations/export_all/translations_shoppinglist
-cd ../../translations/export_all
-
-echo "Translating UpdateChecker"
-mkdir translations_updatechecker
-cd ../../UpdateChecker/translations
-androidxml2po.bash -e
-cp *.pot ../../translations/export_all/translations_updatechecker
-cp export_po/*.po ../../translations/export_all/translations_updatechecker
-cd ../../translations/export_all
+execute AboutApp aboutapp
+execute ColorPicker colorpicker
+execute Countdown countdown
+execute FileManager filemanager
+execute Flashlight flashlight
+execute NotePad notepad
+execute Safe safe
+execute ShoppingList shoppinglist
+execute UpdateChecker updatechecker
 
 echo "Creating tar.gz file for upload..."
 tar -cvvzf launchpad-upload.tar.gz translations_*
