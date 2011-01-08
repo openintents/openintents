@@ -32,6 +32,8 @@ function delimitapostrophe
 	qot="'"
 	qot2="\\\\'"
 	sed -i "s/$qot/$qot2/g" $1
+	# but undo any double delimiters
+	sed -i "s/\\\\$qot2/$qot2/g" $1
 }
 
 # Undo delimit apostrophes: "\'" -> "'"
