@@ -16,8 +16,10 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.flashlight"
-      android:versionCode="10008" android:versionName="1.0.6">
+      android:versionCode="10009" android:versionName="1.0.7-rc1">
 	<!-- History:
+	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
+	1.0.7-rc1   [10009]: 2010-07-22
 	1.0.6       [10008]: 2010-07-22
 	1.0.6-rc1   [10007]: 2010-06-27
 	1.0.5       [10006]: 2010-04-25
@@ -28,7 +30,7 @@
 	1.0.1       [10001]: 2008-10-30
 	1.0.0       [10000]: 2008-10-27 -->
 	
-	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4"/>
+	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="9"/>
 	<supports-screens android:smallScreens="true"
 			android:normalScreens="true"
 			android:largeScreens="true" />
@@ -47,7 +49,7 @@
     
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="10007" />
+           android:value="10009" />
         		
         <meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />

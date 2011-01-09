@@ -281,12 +281,12 @@ public class Flashlight extends Activity {
 			.setMessage(R.string.color_picker_modularization_explanation)
 			.setPositiveButton(R.string.download_color_picker_market, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(IntentUtils.getMarketDownloadIntent(IntentUtils.PACKAGE_NAME_COLOR_PICKER));
+					startActivity(GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
 				}
 			})
 			.setNeutralButton(R.string.download_color_picker_web, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(new Intent(Intent.ACTION_VIEW, IntentUtils.APK_DOWNLOAD_URI_COLOR_PICKER));
+					startActivity(new Intent(Intent.ACTION_VIEW, GetMarketDownloadIntent.APK_DOWNLOAD_URI_COLOR_PICKER));
 				}
 			})
 //			.setNegativeButton(R.string.alert_dialog_cancel, null)
@@ -305,7 +305,7 @@ public class Flashlight extends Activity {
 		case DIALOG_COLORPICKER_DOWNLOAD:
 		{
 			boolean has_android_market = IntentUtils.isIntentAvailable(this,
-					IntentUtils.getMarketDownloadIntent(IntentUtils.PACKAGE_NAME_COLOR_PICKER));
+					GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
 
 			Log.d(TAG, "has_android_market? " + has_android_market);
 			

@@ -4,5 +4,6 @@
 	<classpathentry kind="lib" path="lib/hardware09.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="OI Distribution Library_src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
