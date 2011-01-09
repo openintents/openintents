@@ -21,6 +21,7 @@ import org.openintents.countdown.R;
 import android.content.Context;
 import android.os.Handler;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.Spanned;
 import android.text.method.NumberKeyListener;
 import android.util.AttributeSet;
@@ -391,6 +392,12 @@ public class NumberPicker extends LinearLayout implements OnClickListener,
                 return filtered;
             }
         }
+
+		@Override
+		public int getInputType() {
+			// TODO Auto-generated method stub
+			return InputType.TYPE_CLASS_NUMBER;
+		}
     }
 
     private int getSelectedPos(String str) {

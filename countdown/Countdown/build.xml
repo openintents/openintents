@@ -1,387 +1,168 @@
 <?xml version="1.0" ?>
-<project name="Countdown" default="debug">
-
-	<!-- private build properties are not shared via svn, 
-	developers must have there own copy with the following entries
-proguard.jar=d:\\extern\\proguard4.2\\proguard4.2\\lib\\proguard.jar
-storepass=*password of keystore*
+<project name="Countdown" default="help">
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     If Eclipse does not let you build the project because
+     it claims the "help" target above does not exist,
+     go to Window->preferences->Ant->Editor->Problems tab
+     and add "build.xml" to the ignore list.
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 -->
-	<property file="build-private.properties" />
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     NOTE: In order for the jar files in the libs folder to
+     be properly imported, this build script requires
+     Ant 1.8 or higher.
+     Download Apache-Ant 1.8 and in Eclipse set
+     Window > Preferences > Ant > Runtime > Ant Home...
+     to the new Ant path.
+     !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+	
+<!-- #############################################
+     OpenIntents modifications to build.xml follow
+     ############################################# -->
 
-	<!-- Read properties from OpenIntents property file -->
-	<property file="build.properties" />
-	<!-- <property file="${build.properties.dir}/build.properties" /> -->
+    <!-- Private build properties are not shared via svn, 
+         developers must have there own copy. -->	 
+    <property file="build-private.properties" />
 
-	<!-- Read manifest properties , e.g. manifest(android:versionName) or manifest.package -->
+	<!-- Read manifest properties , e.g. 
+	     manifest(android:versionName) or manifest.package -->
 	<xmlproperty file="AndroidManifest.xml" />
-
-	<!-- Path to Android SDK and tools -->
-	<property name="sdk-folder" value="${android.sdk}" />
-	<property name="android-tools" value="${sdk-folder}/tools" />
-	<echo>Using Android SDK directory ${sdk-folder}</echo>
-
-	<!-- Application Package Name -->
-	<property name="application-package" value="${manifest(package)}" />
 	<property name="version" value="${manifest(android:versionName)}" />
 
-	<!-- The intermediates directory -->
-	<!-- Eclipse uses "bin" for its own output, so we do the same. -->
-	<property name="outdir" value="bin" />
+	<!-- Overwrite default release file name -->
+    <property name="out.release.file.name"
+                  value="${ant.project.name}-${version}.apk" />
 
-	<!-- OpenIntents library file -->
-	<property name="openintents-lib-jar" value="lib/openintents-lib.jar" />
+	<!-- Path for java doc -->
+    <property name="out.doc.dir"
+                  value="doc" />
+	
+	<!-- Paths for source release -->
+	<property name="out.source.dir" value="release" />
+	<property name="out.source.version.name"
+	                  value="${ant.project.name}-source-${version}" />
+    <property name="out.source.version"
+                  location="${out.source.dir}/${out.source.version.name}" />
+	
+<!-- ################################################
+     The default Android 2.3 build.xml script follows
+     ################################################ -->
 
-	<!-- No user servicable parts below. -->
+<!-- The local.properties file is created and updated by the 'android'
+     tool.
+     It contains the path to the SDK. It should *NOT* be checked into
+     Version Control Systems. -->
+    <property file="local.properties" />
 
-	<property name="android-framework" value="${android-tools}/lib/framework.aidl" />
+    <!-- The build.properties file can be created by you and is never touched
+         by the 'android' tool. This is the place to change some of the
+         default property values used by the Ant rules.
+         Here are some properties you may want to change/update:
 
-	<!-- Input directories -->
-	<property name="resource-dir" value="res" />
-	<property name="asset-dir" value="assets" />
-	<property name="srcdir" value="src" />
-	<condition property="srcdir-ospath" value="${basedir}\${srcdir}" else="${basedir}/${srcdir}">
-		<os family="windows" />
-	</condition>
+         source.dir
+             The name of the source directory. Default is 'src'.
+         out.dir
+             The name of the output directory. Default is 'bin'.
 
-	<property name="external-libs" value="lib" />
-	<condition property="external-libs-ospath" value="${basedir}\${external-libs}" else="${basedir}/${external-libs}">
-		<os family="windows" />
-	</condition>
+         Properties related to the SDK location or the project target should
+         be updated using the 'android' tool with the 'update' action.
 
-	<!-- Output directories -->
-	<property name="outdir-classes" value="${outdir}/classes" />
-	<condition property="outdir-classes-ospath" value="${basedir}\${outdir-classes}" else="${basedir}/${outdir-classes}">
-		<os family="windows" />
-	</condition>
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems.
 
-	<property name="docdir" value="doc" />
-	<property name="releasedir" value="release" />
+         -->
+    <property file="build.properties" />
 
-	<!-- Create R.java in the source directory -->
-	<property name="outdir-r" value="src" />
+    <!-- The default.properties file is created and updated by the 'android'
+         tool, as well as ADT.
+         This file is an integral part of the build system for your
+         application and should be checked into Version Control Systems. -->
+    <property file="default.properties" />
 
-	<!-- Intermediate files -->
-	<property name="dex-file" value="classes.dex" />
-	<property name="intermediate-dex" value="${outdir}/${dex-file}" />
-	<condition property="intermediate-dex-ospath" value="${basedir}\${intermediate-dex}" else="${basedir}/${intermediate-dex}">
-		<os family="windows" />
-	</condition>
+    <!-- Custom Android task to deal with the project target, and import the
+         proper rules.
+         This requires ant 1.6.0 or above. -->
+    <path id="android.antlibs">
+        <pathelement path="${sdk.dir}/tools/lib/anttasks.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/sdklib.jar" />
+        <pathelement path="${sdk.dir}/tools/lib/androidprefs.jar" />
+    </path>
 
-	<!-- The final package file to generate -->
-	<property name="resources-package" value="${outdir}/${ant.project.name}.ap_" />
-	<condition property="resources-package-ospath" value="${basedir}\${resources-package}" else="${basedir}/${resources-package}">
-		<os family="windows" />
-	</condition>
+    <taskdef name="setup"
+        classname="com.android.ant.SetupTask"
+        classpathref="android.antlibs" />
 
-	<property name="out-debug-package" value="${outdir}/${ant.project.name}.apk" />
-	<condition property="out-debug-package-ospath" value="${basedir}\${out-debug-package}" else="${basedir}/${out-debug-package}">
-		<os family="windows" />
-	</condition>
+<!-- extension targets. Uncomment the ones where you want to do custom work
+     in between standard targets -->
+<!--
+    <target name="-pre-build">
+    </target>
+    <target name="-pre-compile">
+    </target>
 
-	<property name="out-unsigned-package" value="${outdir}/${ant.project.name}-unsigned.apk" />
-	<condition property="out-unsigned-package-ospath" value="${basedir}\${out-unsigned-package}" else="${basedir}/${out-unsigned-package}">
-		<os family="windows" />
-	</condition>
-
-	<property name="out-signed-package" value="${outdir}/${ant.project.name}-${version}.apk" />
-	<condition property="out-signed-package-ospath" value="${basedir}\${out-signed-package}" else="${basedir}/${out-signed-package}">
-		<os family="windows" />
-	</condition>
-
-	<property name="out-release-source" value="${releasedir}/${ant.project.name}-source-${version}" />
-	<condition property="out-release-source-ospath"
-	            value="${basedir}\${out-release-source}"
-	            else="${basedir}/${out-release-source}" >
-	        <os family="windows"/>
-	</condition>
-
-	<!-- Tools -->
-	<condition property="aapt" value="${android-tools}/aapt.exe" else="${android-tools}/aapt">
-		<os family="windows" />
-	</condition>
-	<condition property="aidl" value="${android-tools}/aidl.exe" else="${android-tools}/aidl">
-		<os family="windows" />
-	</condition>
-	<condition property="adb" value="${android-tools}/adb.exe" else="${android-tools}/adb">
-		<os family="windows" />
-	</condition>
-	<condition property="dx" value="${android-tools}/dx.bat" else="${android-tools}/dx">
-		<os family="windows" />
-	</condition>
-	<condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder">
-		<os family="windows" />
-	</condition>
-
-	<condition property="apk-builder" value="${android-tools}/apkbuilder.bat" else="${android-tools}/apkbuilder">
-		<os family="windows" />
-	</condition>
-
-	<condition property="android-jar" value="${sdk-folder}\android.jar" else="${sdk-folder}/android.jar">
-		<os family="windows" />
-	</condition>
-
-	<!-- Rules -->
-
-	<!-- Create the output directories if they don't exist yet. -->
-	<target name="dirs">
-		<mkdir dir="${outdir}" />
-		<delete dir="${outdir-classes}" />
-		<mkdir dir="${outdir-classes}" />
-	</target>
-
-	<target name="clear_layout">
-		<echo>purging .bak files </echo>
-		<delete>
-			<fileset dir="." includes="**/*.bak" />
-		</delete>
-	</target>
-
-	<!-- Generate the R.java file for this project's resources. -->
-	<target name="resource-src" depends="dirs">
-		<echo>Generating R.java / Manifest.java from the resources...</echo>
-		<exec executable="${aapt}" failonerror="true">
-			<arg value="package" />
-			<arg value="-m" />
-			<arg value="-J" />
-			<arg value="${outdir-r}" />
-			<arg value="-M" />
-			<arg value="AndroidManifest.xml" />
-			<arg value="-S" />
-			<arg value="${resource-dir}" />
-			<arg value="-I" />
-			<arg value="${android-jar}" />
-		</exec>
-	</target>
-
-	<!-- Generate java classes from .aidl files. -->
-	<target name="aidl" depends="dirs">
-		<echo>Compiling aidl files into Java classes...</echo>
-		<apply executable="${aidl}" failonerror="true">
-			<arg value="-p${android-framework}" />
-			<arg value="-I${srcdir}" />
-			<fileset dir="${srcdir}">
-				<include name="**/*.aidl" />
-			</fileset>
-		</apply>
-	</target>
-
-	<!-- Compile this project's .java files into .class files. -->
-	<target name="compile" depends="dirs, resource-src, aidl">
-		<javac encoding="ascii" target="1.5" debug="true" extdirs="" srcdir="." destdir="${outdir-classes}" bootclasspath="${android-jar}">
-			<exclude name="gen/**" /> <!-- SDK 1.5: backward compatibility with SDK 1.1 -->
-			<classpath>
-				<fileset dir="${external-libs}" includes="*.jar" />
-			</classpath>
-		</javac>
-	</target>
+    [This is typically used for code obfuscation.
+     Compiled code location: ${out.classes.absolute.dir}
+     If this is not done in place, override ${out.dex.input.absolute.dir}]
+    <target name="-post-compile">
+    </target>
+-->
 
 
-	<target name="optimize" depends="compile">
-		<!-- unless="debug" -->
-		<jar basedir="${outdir-classes}" destfile="temp.jar" />
-		<java jar="${proguard.jar}" fork="true" failonerror="true">
-			<!-- <jvmarg value="-Dmaximum.inlined.code.length=32"/> -->
-			<arg value="-injars temp.jar" />
-			<arg value="-outjars optimized.jar" />
-			<arg value="-libraryjars '${android-jar}'" />
-			<!-- <arg value="-dontpreverify"/> -->
-			<!-- <arg value="-dontobfuscate"/> -->
-			<arg value="-printmapping obfuscated.txt" />
-			<arg value="-printusage obfuscated_deadcode.txt" />
-			<arg value="-dontusemixedcaseclassnames" />
-			<arg value="-dontoptimize" />
-			<arg value="-dontshrink" />
-			<arg value="-keep public class org.openintents.news.channels.SearchSuggestionProvider" />
-			<arg value="-keep public class org.openintents.news.NewsProvider" />
-			<arg value="-keep public class org.openintents.news.reader.Newsreader" />
-			<arg value="-keep public class org.openintents.news.reader.EulaActivity" />
-			<arg value="-keep public class org.openintents.news.help.PreselectedChannelsActivity" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelSettings" />
-			<arg value="-keep public class org.openintents.news.services.NewsServiceSettings" />
-			<arg value="-keep public class org.openintents.news.messages.AFeedMessages" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelSettings" />
-			<arg value="-keep public class org.openintents.news.channels.ActionSpinner" />
-			<arg value="-keep public class org.openintents.news.categories.AddCategoryActivity" />
-			<arg value="-keep public class org.openintents.news.categories.CategoriesListActivity" />
-			<arg value="-keep public class org.openintents.news.channels.ChannelListView" />
-			<arg value="-keep public class org.openintents.news.About" />
-			<arg value="-keep public class org.openintents.lib.ConfirmDialogPreference" />
-			<arg value="-keep public class org.openintents.news.services.AutostartService" />
-			<arg value="-keep public class org.openintents.news.services.RoamingWatcher" />
-			<arg value="-keep public class org.openintents.news.services.NewsreaderService" />
+    <!-- Execute the Android Setup task that will setup some properties
+         specific to the target, and import the build rules files.
 
-			<!-- <arg value="-optimizationpasses 7"/> -->
-			<!-- <arg value="-overloadaggressively"/> -->
-			<arg value="-verbose" />
-		</java>
-		<delete file="temp.jar" />
-		<delete dir="${outdir-classes}" />
-		<mkdir dir="${outdir-classes}" />
-		<unzip src="optimized.jar" dest="${outdir-classes}" />
-		<!-- <delete file="optimized.jar"/> -->
-	</target>
+         The rules file is imported from
+            <SDK>/platforms/<target_platform>/ant/ant_rules_r#.xml
+
+         To customize existing targets, there are two options:
+         - Customize only one target:
+             - copy/paste the target into this file, *before* the
+               <setup> task.
+             - customize it to your needs.
+         - Customize the whole script.
+             - copy/paste the content of the rules files (minus the top node)
+               into this file, *after* the <setup> task
+             - disable the import of the rules by changing the setup task
+               below to <setup import="false" />.
+             - customize to your needs.
+    -->
+    <setup />
 
 
-	<!-- Convert this project's .class files into .dex files. -->
-	<target name="dex" depends="compile">
-		<echo>Converting compiled files and external libraries into ${outdir}/${dex-file}...</echo>
-		<apply executable="${dx}" failonerror="true" parallel="true">
-			<arg value="--dex" />
-			<arg value="--output=${intermediate-dex-ospath}" />
-			<arg path="${outdir-classes-ospath}" />
-			<fileset dir="${external-libs}" includes="*.jar" />
-		</apply>
-	</target>
+<!-- #############################################
+     OpenIntents modifications to build.xml follow
+     ############################################# -->
 
-	<!-- Put the project's resources into the output package file. -->
-	<target name="package-res-and-assets">
-		<echo>Packaging resources and assets...</echo>
-		<exec executable="${aapt}" failonerror="true">
-			<arg value="package" />
-			<arg value="-f" />
-			<arg value="-M" />
-			<arg value="AndroidManifest.xml" />
-			<arg value="-S" />
-			<arg value="${resource-dir}" />
-			<arg value="-A" />
-			<arg value="${asset-dir}" />
-			<arg value="-I" />
-			<arg value="${android-jar}" />
-			<arg value="-F" />
-			<arg value="${resources-package}" />
-		</exec>
-	</target>
-
-	<!-- Same as package-res-and-assets, but without "-A ${asset-dir}" -->
-	<target name="package-res-no-assets">
-		<echo>Packaging resources...</echo>
-		<exec executable="${aapt}" failonerror="true">
-			<arg value="package" />
-			<arg value="-f" />
-			<arg value="-M" />
-			<arg value="AndroidManifest.xml" />
-			<arg value="-S" />
-			<arg value="${resource-dir}" />
-			<!-- No assets directory -->
-			<arg value="-I" />
-			<arg value="${android-jar}" />
-			<arg value="-F" />
-			<arg value="${resources-package}" />
-		</exec>
-	</target>
-
-	<!-- Invoke the proper target depending on whether or not
-         an assets directory is present. -->
-	<!-- TODO: find a nicer way to include the "-A ${asset-dir}" argument
-         only when the assets dir exists. -->
-	<target name="package-res">
-		<available file="${asset-dir}" type="dir" property="res-target" value="and-assets" />
-		<property name="res-target" value="no-assets" />
-		<antcall target="package-res-${res-target}" />
-	</target>
-
-	<!-- Package the application and sign it with a debug key.
-		 This is the default target when building. It is used for debug. -->
-	<target name="debug" depends="dex, package-res">
-		<echo>Packaging ${out-debug-package}, and signing it with a debug key...</echo>
-		<exec executable="${apk-builder}" failonerror="true">
-			<arg value="${out-debug-package-ospath}" />
-			<arg value="-z" />
-			<arg value="${resources-package-ospath}" />
-			<arg value="-f" />
-			<arg value="${intermediate-dex-ospath}" />
-			<arg value="-rf" />
-			<arg value="${srcdir-ospath}" />
-			<arg value="-rj" />
-			<arg value="${external-libs-ospath}" />
-		</exec>
-	</target>
-
-	<!-- Package the application without signing it.
-    	 This allows for the application to be signed later with an official publishing key. -->
-	<target name="release" depends="dex, package-res">
-		<echo>Packaging ${out-unsigned-package} for release...</echo>
-		<exec executable="${apk-builder}" failonerror="true">
-			<arg value="${out-unsigned-package-ospath}" />
-			<arg value="-u" />
-			<arg value="-z" />
-			<arg value="${resources-package-ospath}" />
-			<arg value="-f" />
-			<arg value="${intermediate-dex-ospath}" />
-			<arg value="-rf" />
-			<arg value="${srcdir-ospath}" />
-			<arg value="-rj" />
-			<arg value="${external-libs-ospath}" />
-		</exec>
-		<signjar jar="${out-unsigned-package-ospath}" alias="${cert-alias}" keystore="${keystore}" storepass="${storepass}" signedjar="${out-signed-package-ospath}" />
-		<delete file="${srcdir-ospath}/org/openintents/countdown/R.java" />
-	</target>
-
-	<!-- Install the package on the default emulator -->
-	<target name="install" depends="debug">
-		<echo>Installing ${out-debug-package} onto default emulator...</echo>
+	<!-- ############### Install-release ################ -->
+	
+	<target name="install-release" depends="release">
+		<echo>Reinstalling ${out.release.file.name} onto default emulator or device...</echo>
 		<exec executable="${adb}" failonerror="true">
-			<arg value="install" />
-			<arg value="${out-debug-package}" />
-		</exec>
-	</target>
-
-	<target name="reinstall" depends="debug">
-		<echo>Installing ${out-debug-package} onto default emulator...</echo>
-		<exec executable="${adb}" failonerror="true">
+            <arg line="${adb.device.arg}" />
 			<arg value="install" />
 			<arg value="-r" />
-			<arg value="${out-debug-package}" />
+			<arg value="${out.release.file}" />
 		</exec>
 	</target>
-
-
-	<!-- Install the package on the default emulator -->
-	<target name="install-signed" depends="release">
-		<echo>Installing ${out-signed-package} onto default emulator...</echo>
-		<exec executable="${adb}" failonerror="true">
-			<arg value="install" />
-			<arg value="${out-signed-package}" />
-		</exec>
-	</target>
-
-	<target name="reinstall-signed" depends="release">
-		<echo>Reinstalling ${out-signed-package} onto default emulator...</echo>
-		<exec executable="${adb}" failonerror="true">
-			<arg value="install" />
-			<arg value="-r" />
-			<arg value="${out-signed-package}" />
-		</exec>
-	</target>
-			
-	<!-- Uinstall the package from the default emulator -->
-	<target name="uninstall">
-		<echo>Uninstalling ${application-package} from the default emulator...</echo>
-		<exec executable="${adb}" failonerror="true">
-			<arg value="uninstall" />
-			<arg value="${application-package}" />
-		</exec>
-	</target>
-
-
-
-
+	
 	<!-- ############### JavaDoc ####################### -->
 	<!-- Create JavaDoc -->
 	<target name="javadoc">
-		<delete dir="${docdir}" />
-		<javadoc access="public" author="true" destdir="${docdir}" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" source="1.6" sourcepath="${srcdir}" splitindex="true" use="true" version="true">
-		</javadoc>
-	</target>
+		<delete dir="${out.doc.dir}" />
+		<javadoc access="public" author="true" destdir="${out.doc.dir}" 
+        	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
+        	source="1.6" sourcepath="${source.absolute.dir}" splitindex="true" use="true" version="true">
+        </javadoc>
+    </target>
 
 	<!-- ############### Release source ####################### -->
 	<!-- Copy to source release -->
 	<target name="release-source">
-    	<delete dir="${releasedir}"/>
-        <mkdir dir="${releasedir}" />
-		<copy todir="${out-release-source-ospath}">
+    	<delete dir="${out.source.dir}"/>
+        <mkdir dir="${out.source.dir}" />
+		<copy todir="${out.source.version}">
 			<fileset dir=".">
-				<exclude name="**/.settings/**" />
 				<exclude name="**/bin/**" />
 				<exclude name="**/doc/**" />
 				<exclude name="**/gen/**" />
@@ -390,15 +171,23 @@ storepass=*password of keystore*
 				<exclude name="**/translations/**" />
 				<exclude name="**/.svn" />
 				<exclude name="**/build-private.properties" />
+	    		<exclude name="**/local.properties" />
 			</fileset>
 		</copy>
-		<zip destfile="${out-release-source-ospath}.zip">
-			<zipfileset dir="${out-release-source-ospath}" prefix="${ant.project.name}-source-${version}"/>
+		<zip destfile="${out.source.version}.zip">
+			<zipfileset dir="${out.source.version}" prefix="${out.source.version.name}"/>
 		</zip>
-		<delete dir="${out-release-source-ospath}"/>
+		<delete dir="${out.source.version}"/>
+		<!-- copy apk into releasedir for convenience -->
+		<copy todir="${out.source.dir}">
+			<fileset dir="${out.absolute.dir}">
+				 <filename name="${out.release.file.name}"/>
+			</fileset>
+		</copy>
     </target>
 	
 	<!-- ############ Convencience target ############## -->
-	<target name="all" depends="debug, javadoc" />
-
+	<target name="all" 
+		depends="release, javadoc, release-source" />
+	
 </project>
