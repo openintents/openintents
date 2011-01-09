@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_explanation">This application tests the OI About extension.</string>
-    <string name="app_name">TestAboutApp</string>
+    <string name="app_name">OI About Demo</string>
     <string name="show_about">Show About</string>
     <string name="show_about_2">Show About with extras</string>
     <string name="show_about_3">Show About for other package</string>
     
     <!-- Strings for About dialog -->
 	<string name="about_comments">A versatile, minimalistic, expansible simple test application for OI About.</string>  
-	<string name="about_copyright">Copyright © 2008-2009 OpenIntents</string><!-- Add your name here, separated with comma's, if you helped out --> 
+	<string name="about_copyright">Copyright © 2008-2011 OpenIntents</string><!-- Add your name here, separated with comma's, if you helped out --> 
 	<string name="about_website_label">TestAboutApp at OpenIntents</string> 
 	<string name="about_website_url">http://www.openintents.org</string>
 	<string name="about_email">support@openintents.org</string>

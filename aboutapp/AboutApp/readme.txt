@@ -32,6 +32,8 @@ To obtain the current release, visit
 release: 1.0.3
 date: 2011-??
 
+- support moving app to SD card.
+- fix crash if no icon is supplied.
 - support Android 2.3.
 - translations into various languages.
 

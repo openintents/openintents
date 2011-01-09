@@ -386,6 +386,10 @@ public class About extends TabActivity {
                 Log.e(TAG, "Package name not found", e);
     			mLogoImage.setImageResource(android.R.drawable.ic_menu_info_details);
         		//mLogoImage.setImageURI(Uri.EMPTY);
+    		} catch (Resources.NotFoundException e) {
+                Log.e(TAG, "Package name not found", e);
+    			mLogoImage.setImageResource(android.R.drawable.ic_menu_info_details);
+        		//mLogoImage.setImageURI(Uri.EMPTY);
     		} catch (IllegalArgumentException e) {
     			mLogoImage.setImageResource(android.R.drawable.ic_menu_info_details);
     			//mLogoImage.setImageURI(Uri.EMPTY);

@@ -28,9 +28,9 @@ public class ShowAboutWithExtras {
 		
 		//alternative 3: Supply the image name and package.
 		intent.putExtra(AboutIntents.EXTRA_ICON_RESOURCE, activity.getResources()
-				.getResourceName(R.drawable.icon));
+				.getResourceName(R.drawable.ic_menu_info_details));
 		Log.i(TAG, "package for icon: " + activity.getResources()
-				.getResourcePackageName(R.drawable.icon));
+				.getResourcePackageName(R.drawable.ic_menu_info_details));
 
 		intent.putExtra(AboutIntents.EXTRA_APPLICATION_LABEL,
 				activity.getString(R.string.app_name));
