@@ -23,6 +23,7 @@ function execute
 execute aboutapp/AboutApp aboutapp
 execute colorpicker/ColorPicker colorpicker
 execute countdown/Countdown countdown
+execute distribution/DistributionLibrary distributionlibrary
 execute filemanager/FileManager filemanager
 execute flashlight/Flashlight flashlight
 execute notepad/NotePad notepad
