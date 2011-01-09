@@ -32,6 +32,7 @@ To obtain the current release, visit
 release: 1.0.3
 date: 2011-??
 
+- support Android 2.3.
 - translations into various languages.
 
 ---------------------------------------------------------

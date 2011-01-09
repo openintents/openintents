@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008 OpenIntents.org                                       *
+ * Copyright (C) 2008-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -19,6 +19,11 @@ of OI About.
 
 To obtain the current release, visit
   http://www.openintents.org
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2011-?
+- Support Android 2.3.
 
 ---------------------------------------------------------
 release: 1.0.0
