@@ -21,8 +21,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.openintents.countdown.LogConstants;
-
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -47,7 +45,7 @@ public class EulaActivity extends Activity {
 
 	/** TAG for log messages. */
 	private static final String TAG = "EulaActivity";
-	private static final boolean debug = LogConstants.debug;
+	private static final boolean debug = false;
 	
 	static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
 	

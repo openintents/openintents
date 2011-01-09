@@ -16,8 +16,6 @@
 
 package org.openintents.distribution;
 
-import org.openintents.countdown.R;
-
 /**
  * Resources for the distribution package.
  * RD = Resources Distribution
