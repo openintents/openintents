@@ -1,4 +1,4 @@
-package org.openintents.samples.TestAboutApp;
+package org.openintents.about.demo;
 
 import org.openintents.intents.AboutIntents;
 

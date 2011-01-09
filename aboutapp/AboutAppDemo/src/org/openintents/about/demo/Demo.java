@@ -1,4 +1,4 @@
-package org.openintents.samples.TestAboutApp;
+package org.openintents.about.demo;
 
 import org.openintents.intents.AboutIntents;
 
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class TestAboutApp extends Activity {
+public class Demo extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
