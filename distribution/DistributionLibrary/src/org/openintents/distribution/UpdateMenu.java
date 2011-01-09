@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2008-2009 OpenIntents.org
+ * Copyright (C) 2008 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
+ * @version 2009-10-23: support Market and aTrackDog
  * @version 2009-02-04
  * @author Peli
  *
@@ -35,9 +36,18 @@ import android.view.MenuItem;
 public class UpdateMenu {
 	
 	private static final String TAG = "UpdateMenu";
-	
-	public static final String UPDATE_CHECKER = "org.openintents.updatechecker";
 
+	/**
+	 * If any of the following applications is installed,
+	 * there is no need for a manual "Update" menu entry.
+	 */
+	public static final String[] UPDATE_CHECKER = new String[]
+	    {
+			"org.openintents.updatechecker", // OI Update
+			"com.android.vending", // Google's Android Market
+			"com.a0soft.gphone.aTrackDog" // aTrackDog
+	    };
+	
 	/**
 	 * Adds a menu item for update only if update checker is not installed.
 	 * 
@@ -52,19 +62,26 @@ public class UpdateMenu {
 	public static MenuItem addUpdateMenu(Context context, Menu menu, int groupId,
 			int itemId, int order, int titleRes) {
 		PackageInfo pi = null;
-		try {
-			pi = context.getPackageManager().getPackageInfo(
-					UPDATE_CHECKER, 0);
-		} catch (NameNotFoundException e) {
-			// ignore
+		
+		// Test for existence of all known update checker applications.
+		for (int i = 0; i < UPDATE_CHECKER.length; i++) {
+			try {
+				pi = context.getPackageManager().getPackageInfo(
+						UPDATE_CHECKER[i], 0);
+			} catch (NameNotFoundException e) {
+				// ignore
+			}
+			if (pi != null) {
+				// At least one kind of update checker exists,
+				// so there is no need to add a menu item.
+				return null;
+			}
 		}
-		if (pi == null) {
-			return menu.add(groupId, itemId, order, titleRes).setIcon(
-					android.R.drawable.ic_menu_info_details).setShortcut('9',
-					'u');
-		} else {
-			return null;
-		}
+		
+		// If we reach this point, we add a menu item for manual update.
+		return menu.add(groupId, itemId, order, titleRes).setIcon(
+				android.R.drawable.ic_menu_info_details).setShortcut('9',
+				'u');
 	}
 	
 
