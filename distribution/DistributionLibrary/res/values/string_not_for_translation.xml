@@ -28,4 +28,12 @@
     <string name="aboutapp_market_uri">market://search?q=pname:org.openintents.about</string>
     <string name="aboutapp_developer_uri">http://www.openintents.org/en/node/202</string><!-- 202 = OI About -->
 	
+    <!-- File Manager -->
+    <string name="filemanager_market_uri">market://search?q=pname:org.openintents.filemanager</string>
+    <string name="filemanager_developer_uri">http://www.openintents.org/en/filemanager</string><!-- OI File Manager -->
+	
+	<!-- Safe -->
+    <string name="safe_market_uri">market://search?q=pname:org.openintents.safe</string>
+    <string name="safe_developer_uri">http://www.openintents.org/en/safe</string><!-- OI Safe -->
+	
 </resources>

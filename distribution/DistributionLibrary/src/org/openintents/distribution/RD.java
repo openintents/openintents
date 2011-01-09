@@ -60,7 +60,21 @@ public class RD {
 		public static final int aboutapp_get = R.string.aboutapp_get;
 		public static final int aboutapp_market_uri = R.string.aboutapp_market_uri;
 		public static final int aboutapp_developer_uri = R.string.aboutapp_developer_uri;
-		
+
+		///////////////////////////////////////
+		// GetFromMarketDialog
+		public static final int filemanager_not_available = R.string.filemanager_not_available;
+		public static final int filemanager_get_oi_filemanager = R.string.filemanager_get_oi_filemanager;
+		public static final int filemanager_market_uri = R.string.filemanager_market_uri;
+		public static final int filemanager_developer_uri = R.string.filemanager_developer_uri;
+
+		///////////////////////////////////////
+		// GetFromMarketDialog
+		public static final int safe_not_available = R.string.safe_not_available;
+		public static final int safe_not_available_decrypt = R.string.safe_not_available_decrypt;
+		public static final int safe_get_oi_filemanager = R.string.safe_get_oi_filemanager;
+		public static final int safe_market_uri = R.string.safe_market_uri;
+		public static final int safe_developer_uri = R.string.safe_developer_uri;	
 	}
 
 	public class raw {
