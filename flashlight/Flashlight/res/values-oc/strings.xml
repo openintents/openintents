@@ -13,6 +13,18 @@
 	<string name="about_website_label">OI Flashlight at OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Flashlight</string>
@@ -26,35 +38,7 @@
     
     <string name="preferences">Preferéncias</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	<string name="eula_accept">Acceptar</string>
-	<string name="eula_refuse">Anullar</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Se vos plai, verificatz manualament las mesas a jorn o installatz OI Update per obténer de notificacions automaticas. Version actuala : %s</string>
-	<string name="update_check_now">Verificar ara.</string>
-	<string name="update_get_updater">Obténer OI Updater.</string>
-	<string name="update_error">Telecargament de l\'aplicacion indisponible.</string>
-	<string name="update">Verificar las mesas a jorn</string>
-	
-	<!-- About -->
-	<string name="about">A prepaus</string>
-	<string name="aboutapp_not_available">Version %s\n\nCap d\'extension pas disponibla per afichar la totalitat de las informacions (contacte, credits, licéncia).</string>
-	<string name="aboutapp_get">Obténer OI About</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->

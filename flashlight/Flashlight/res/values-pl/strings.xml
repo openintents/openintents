@@ -15,6 +15,18 @@ Launchpad Contributions:
 	<string name="about_website_label">OI Latarka na OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">Licancja OI Latarka</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Latarka</string>
@@ -28,35 +40,7 @@ Launchpad Contributions:
     
     <string name="preferences">Preferencje</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">Licancja OI Latarka</string>
-	<string name="eula_accept">Akceptuj</string>
-	<string name="eula_refuse">Anuluj</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Sprawdź aktualizacje ręcznie lub zainstaluj OI Aktualizacje z funkcją automatycznego powiadamiania. Obecna wersja: %s</string>
-	<string name="update_check_now">Sprawdź teraz.</string>
-	<string name="update_get_updater">Pobierz OI Updater.</string>
-	<string name="update_error">Aplikacja jest niedostępna.</string>
-	<string name="update">Sprawdź aktualizacje</string>
-	
-	<!-- About -->
-	<string name="about">O programie</string>
-	<string name="aboutapp_not_available">Wersja %s\n\nNie jest dostępne żadne kompatybilne rozszerzenie do wyświetlenia pełnej informacji (kontakt, autorzy, licencja)</string>
-	<string name="aboutapp_get">Pobierz OI About</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->

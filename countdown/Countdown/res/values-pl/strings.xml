@@ -17,6 +17,13 @@ Launchpad Contributions:
 	<string name="about_website_label">OI Odliczanie na OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">Licencja OI Odliczanie</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->
@@ -127,27 +134,6 @@ Launchpad Contributions:
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Wybierz aktywność</string>
  
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">Licencja OI Odliczanie</string>
-	<string name="eula_accept">Akceptuj</string>
-	<string name="eula_refuse">Anuluj</string>
-	
-	<!-- Update -->
-    <string name="menu_update">Sprawdź aktualizacje</string>
-	<string name="update_box_text">Sprawdź aktualizacje ręcznie lub zainstaluj OI Aktualizacje z funkcją automatycznego powiadamiania. Obecna wersja: %s</string>
-	<string name="update_check_now">Sprawdź teraz.</string>
-	<string name="update_get_updater">Pobierz OI Updater.</string>
-	<string name="update_error">Aplikacja jest niedostępna.</string>
-	
-    <!-- About -->
-    <string name="about">O programie</string>
-	<string name="aboutapp_not_available">Wersja %s\n\nŻadne kompatybilne rozszerzenie nie jest dostępne (kontakt, autorzy, licencja)</string>
-    <string name="aboutapp_get">Pobierz OI About</string>
-    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

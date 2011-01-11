@@ -15,6 +15,13 @@
 	<string name="about_website_label">OI Countdown chez OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdown EULA</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->
@@ -125,27 +132,6 @@
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Choisir l\'activité</string>
  
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Countdown EULA</string>
-	<string name="eula_accept">Accepter</string>
-	<string name="eula_refuse">Quitter</string>
-	
-	<!-- Update -->
-    <string name="menu_update">Vérifier les mises à jour</string>
-	<string name="update_box_text">Veuillez vérifier manuellement les mises à jour ou installer OI Update pour les notifications automatique. Version actuelle: %s</string>
-	<string name="update_check_now">Vérifier maintenant.</string>
-	<string name="update_get_updater">Obtenir OI Updater.</string>
-	<string name="update_error">Télécharger l\'application indisponible.</string>
-	
-    <!-- About -->
-    <string name="about">À propos</string>
-	<string name="aboutapp_not_available">Version %s\n\nAucune extension compatible disponible pour afficher la totalité des informations (contact, crédits, licence).</string>
-    <string name="aboutapp_get">Obtenir OI About</string>
-    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

@@ -16,6 +16,13 @@
 	<string name="about_website_label">OpenIntentsのOI Countdown</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdownの利用規約</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->
@@ -126,27 +133,6 @@
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">アクティビティを選択</string>
  
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Countdownの利用規約</string>
-	<string name="eula_accept">許可</string>
-	<string name="eula_refuse">キャンセル</string>
-	
-	<!-- Update -->
-    <string name="menu_update">アップデートをチェック</string>
-	<string name="update_box_text">新バージョンを手動でチェックするか、自動通知のためにOI Updateをインストールしてください。現在のバージョン: %s</string>
-	<string name="update_check_now">確認中。</string>
-	<string name="update_get_updater">OI Updaterを入手する</string>
-	<string name="update_error">ダウンロード用アプリが利用できません。</string>
-	
-    <!-- About -->
-    <string name="about">このソフトウェアについて</string>
-	<string name="aboutapp_not_available">バージョン %s\n\n全情報(連絡先・クレジット・ライセンスなど)を表示するための互換性のある拡張機能は利用できません。</string>
-    <string name="aboutapp_get">OI Aboutを入手する</string>
-    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

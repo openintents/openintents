@@ -15,6 +15,18 @@
 	<string name="about_website_label">OI Flashlight at OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">EULA - OI Taschenlampe</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Taschenlampe</string>
@@ -28,35 +40,7 @@
     
     <string name="preferences">Einstellungen</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">EULA - OI Taschenlampe</string>
-	<string name="eula_accept">Annehmen</string>
-	<string name="eula_refuse">Abbrechen</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Bitte prüfen Sie, ob eine aktualisierte Version verfügbar ist, oder installieren Sie OI Update für automatische Benachrichtigungen. Aktuelle Version: %s</string>
-	<string name="update_check_now">Jetzt prüfen</string>
-	<string name="update_get_updater">OI Update herunterladen</string>
-	<string name="update_error">Anwendung zum Herunterladen nicht verfügbar.</string>
-	<string name="update">Aktualisieren</string>
-	
-	<!-- About -->
-	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
-	<string name="aboutapp_get">OI Info herunterladen</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->

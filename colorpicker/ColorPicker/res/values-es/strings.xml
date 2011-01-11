@@ -8,7 +8,8 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
-  Fitoschido https://launchpad.net/~fitoschido</string>
+  Fitoschido https://launchpad.net/~fitoschido
+  Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">El selector de color OpenIntents es una extensión para OI Flashlight y otras aplicaciones compatibles.</string>

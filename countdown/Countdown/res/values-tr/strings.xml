@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   zeugma https://launchpad.net/~sunder67</string>
 	
     <!-- Strings for OI About -->
@@ -15,6 +16,13 @@ Launchpad Contributions:
 	
 	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
 	<string name="about_website_label">OI OpenIntents de geri sayım</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Countdown kullanıcı lisans sözleşmesi (EULA)</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -127,30 +135,6 @@ Launchpad Contributions:
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Select activity</string>
  
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Countdown kullanıcı lisans sözleşmesi (EULA)</string>
-	<string name="eula_accept">Kabul Et</string>
-	<string name="eula_refuse">İptal</string>
-	
-	<!-- Update -->
-    <string name="menu_update">Güncellemeleri kontrol et</string>
-	<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">Şimdi kontrol et.</string>
-	<string name="update_get_updater">OI Güncellemelerini al.</string>
-	<string name="update_error">Download application not available.</string>
-	
-    <!-- About -->
-    <string name="about">Hakkında</string>
-	<string name="aboutapp_not_available">Sürüm %s\n\n Uyumlu uzantısı mevcut tüm bilgileri (iletişim, krediler, lisans) gösterilecek.</string>
-    <string name="aboutapp_get">Get OI About</string>
-    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

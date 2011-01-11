@@ -15,6 +15,18 @@
 	<string name="about_website_label">OI Flashlight op OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Zaklamp EULA</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Zaklamp</string>
@@ -28,35 +40,7 @@
     
     <string name="preferences">Instellingen</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Zaklamp EULA</string>
-	<string name="eula_accept">Accepteren</string>
-	<string name="eula_refuse">Annuleren</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Gelieve manueel naar updates te controleren of OI Update te installeren voor automatische meldingen over updates. Huidige versie: %s</string>
-	<string name="update_check_now">Controleer nu.</string>
-	<string name="update_get_updater">Haal OI Updater.</string>
-	<string name="update_error">Applicatiedownload niet beschikbaar.</string>
-	<string name="update">Controleer op updates</string>
-	
-	<!-- About -->
-	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Versie %s\n\nGeen compatibele extensie beschikbaar om volledige info weer te geven (contactinformatie, dankbetuigingen, licentie).</string>
-	<string name="aboutapp_get">Haal OI About</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->

@@ -13,6 +13,18 @@
 	<string name="about_website_label">OI Flashlight at OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Flashlight EULA</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI 전등</string>
@@ -26,38 +38,7 @@
     
     <string name="preferences">Preferences</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	<string name="eula_accept">수락</string>
-	<string name="eula_refuse">취소</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Please check manually for updates or install OI Update
-for automatic notifications.
-Current version: %s
-	</string>
-	<string name="update_check_now">지금 확인</string>
-	<string name="update_get_updater">OI 업데이트기 가져오기</string>
-	<string name="update_error">Download application not available.</string>
-	<string name="update">업데이트 확인</string>
-	
-	<!-- About -->
-	<string name="about">프로그램 정보</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->

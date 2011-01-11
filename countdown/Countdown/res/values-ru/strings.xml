@@ -18,6 +18,13 @@
 	<string name="about_website_label">OI Countdown на OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- EULA -->
+	<string name="eula_title">Лицензионное соглашение OI Countdown</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->
@@ -128,27 +135,6 @@
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
 	<string name="activity_picker_label">Select activity</string>
  
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">Лицензионное соглашение OI Countdown</string>
-	<string name="eula_accept">Принять</string>
-	<string name="eula_refuse">Отменить</string>
-	
-	<!-- Update -->
-    <string name="menu_update">Проверить обновления</string>
-	<string name="update_box_text">Проверяйте обновления вручную или установите OI Update для автоматического уведомления. Текущая версия: %s</string>
-	<string name="update_check_now">Проверить сейчас</string>
-	<string name="update_get_updater">Установить OI Updater.</string>
-	<string name="update_error">Приложение загрузчик отсутствует</string>
-	
-    <!-- About -->
-    <string name="about">О программе</string>
-	<string name="aboutapp_not_available">Версия %s\n\n Отсутствует совместимое расширение для отображения полной информации (контакты, авторы, лицензия).</string>
-    <string name="aboutapp_get">Установить OI About</string>
-    
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">

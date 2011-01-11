@@ -16,6 +16,18 @@
 	<string name="about_website_label">OI Flashlight a OpenIntents</string>
 	
 	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+    <string name="download_color_picker">Download Color Picker</string>
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
+    <string name="download_color_picker_market">Market download</string>
+    <string name="download_color_picker_web">Web download</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
+	
+	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
     <string name="app_name">OI Flashlight</string>
@@ -29,35 +41,7 @@
     
     <string name="preferences">Preferencias</string>
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	
-	
-	<!-- EULA -->
-	<string name="eula_title">Acuerdo de Licencia de Usuario Final (EULA) de OI Flashlight</string>
-	<string name="eula_accept">Aceptar</string>
-	<string name="eula_refuse">Cancelar</string>
-	
-	<!-- Update -->
-	<string name="update_box_text">Por favor, compruebe manualmente las actualizaciones o instale OI Update para notificaciones automáticas. Versión actual: %s</string>
-	<string name="update_check_now">Comprobar ahora.</string>
-	<string name="update_get_updater">Obtenga el Actualizador OI.</string>
-	<string name="update_error">Descarga de aplicación no disponible.</string>
-	<string name="update">Comprobar actualizaciones</string>
-	
-	<!-- About -->
-	<string name="about">Acerca de</string>
-	<string name="aboutapp_not_available">Versión %s\nNo compatible con el complemento disponible para mostrar información completa (contacto, créditos, licencia).</string>
-	<string name="aboutapp_get">Obtener información acerca de OI</string>
-	
+
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
