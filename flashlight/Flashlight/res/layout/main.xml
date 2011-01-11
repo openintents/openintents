@@ -31,7 +31,7 @@
 	    android:id="@+id/icon"
 	    android:layout_width="48dip" 
 	    android:layout_height="48dip" 
-	    android:background="@drawable/icon_flashlight"
+	    android:background="@drawable/ic_launcher_flashlight"
 	    android:layout_gravity="center"
 	    />
 	<TextView  
