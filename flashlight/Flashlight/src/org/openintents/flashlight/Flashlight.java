@@ -228,7 +228,7 @@ public class Flashlight extends Activity {
 		  .setIcon(android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
         
 		UpdateMenu
-				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.update);
+				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
 		
 		menu.add(0, MENU_ABOUT, 0, R.string.about)
 		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
