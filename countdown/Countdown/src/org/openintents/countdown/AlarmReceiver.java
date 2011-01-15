@@ -221,7 +221,7 @@ import android.util.Log;
                 intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         // construct the Notification object.
-        Notification notif = new Notification(R.drawable.icon_hourglass, title,
+        Notification notif = new Notification(R.drawable.ic_launcher_countdown, title,
                 time);
 
         // Set the info for the views that show in the notification panel.

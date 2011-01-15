@@ -32,7 +32,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     
-    <application android:icon="@drawable/icon_hourglass" android:label="@string/app_name">
+    <application android:icon="@drawable/ic_launcher_countdown" android:label="@string/app_name">
     
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
@@ -68,7 +68,6 @@
     
         
         <activity android:name=".list.CountdownListActivity" 
-        	android:icon="@drawable/icon_hourglass" 
         	android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -89,7 +88,6 @@
         </activity>
         
         <activity android:name=".activity.CountdownEditorActivity"
-            android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
         	android:windowSoftInputMode="stateHidden"
         ><!-- 
@@ -116,7 +114,6 @@
         </activity>
             
         <activity android:name=".activity.SetCountdownActivity"
-            android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown"
         >
             <!-- This filter says that any other application can set a countdown on
@@ -138,7 +135,6 @@
         </receiver>
         
         <activity android:name=".automation.EditAutomationActivity"
-            android:icon="@drawable/icon_hourglass" 
         	android:label="@string/title_setcountdown_action">
             <intent-filter>
         		<action android:name="org.openintents.action.EDIT_AUTOMATION" />
