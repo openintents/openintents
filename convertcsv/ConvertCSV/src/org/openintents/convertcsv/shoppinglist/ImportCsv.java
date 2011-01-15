@@ -16,7 +16,6 @@
 
 package org.openintents.convertcsv.shoppinglist;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
@@ -111,14 +110,66 @@ public class ImportCsv {
 	    	String itemname = nextLine[2]; // Description					
 			String tags = nextLine[9]; // Category
 			String price = nextLine[6]; // Price
-			long quantity = Integer.parseInt(nextLine[4]); // Quantity
+			long quantity;
+			try {
+			    quantity = Integer.parseInt(nextLine[4]); // Quantity
+			} catch (java.lang.NumberFormatException nfe){
+				quantity = 1;		
+			}
 			
 			// Add item to list
 			long listId = Shopping.getDefaultList();
 			long itemId = Shopping.getItem(mContext, itemname, tags, price);
-			
-			
 			Shopping.addItemToList(mContext, itemId, listId, status, quantity);
+			
+			// Two columns contain per-store information. Column 10 lists 
+			// all stores which carry this item, delimited by semicolons. Column 11 
+			// lists aisles and prices for some subset of those stores.
+			//
+			// First deal with the stores themselves from column 10.
+			String [] stores;
+			
+			if (nextLine[10].length() > 0) {
+				stores = nextLine[10].split(";");
+				for (int i_store = 0; i_store < stores.length; i_store ++)
+				{
+					long storeId = Shopping.getStore(mContext, stores[i_store], listId);
+					long item_store = Shopping.addItemToStore(mContext, itemId, storeId, 0, "");
+				}
+			}
+			// Now go back and deal with per-store aisles and prices from column 11.
+			// example value for column 11:    Big Y=/0.50;BJ's=11/0.42
+			if (nextLine[11].length() > 0) {
+				stores = nextLine[11].split(";");
+
+				for (int i_store = 0; i_store < stores.length; i_store ++)
+				{
+					String [] key_vals = stores[i_store].split("=");
+					String store_name = key_vals[0];
+					String [] aisle_price = key_vals[1].split("/");
+					if (aisle_price.length == 0)
+						continue;
+					int aisle;
+					try {
+						aisle = Integer.parseInt(aisle_price[0]);
+					} catch (java.lang.NumberFormatException nfe) {
+						aisle = -1;
+					}
+					String store_price = "";
+					if (aisle_price.length > 1) {
+						try {
+							Float fprice = Float.parseFloat(aisle_price[1]);
+							fprice *= 100;
+							store_price = fprice.toString();
+						} catch (java.lang.NumberFormatException nfe) {
+						}
+					}
+			
+					long storeId = Shopping.getStore(mContext, store_name, listId);
+					long item_store = Shopping.addItemToStore(mContext, itemId, storeId, aisle, store_price);
+				
+				}
+			}
 	    }
 		
 	}

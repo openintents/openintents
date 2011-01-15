@@ -27,6 +27,7 @@ import android.util.Log;
 /**
  * Definition for content provider related to shopping.
  * 
+ * @version 1.1.0
  */
 public abstract class Shopping {
 
@@ -598,6 +599,120 @@ public abstract class Shopping {
 
 	}
 
+	/**
+	 * Stores which might be able to sell items.
+	 */
+	public static final class Stores implements BaseColumns {
+		/**
+		 * The content:// style URL for this table.
+		 */
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.shopping/stores");
+
+		/**
+		 * The default sort order for this table.
+		 */
+		public static final String DEFAULT_SORT_ORDER = "name ASC";
+
+		/**
+		 * The name of the item.
+		 * <P>
+		 * Type: TEXT
+		 * </P>
+		 */
+		public static final String NAME = "name";
+		
+		/**
+		 * The id of the list associated with this store.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String LIST_ID = "list_id";
+
+		/**
+		 * The timestamp for when the store was created.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String CREATED_DATE = "created";
+
+		/**
+		 * The timestamp for when the store was last modified.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String MODIFIED_DATE = "modified";
+
+	}
+	
+	/**
+	 * Items that can be put into shopping lists.
+	 */
+	public static final class ItemStores implements BaseColumns {
+		/**
+		 * The content:// style URL for this table.
+		 */
+		public static final Uri CONTENT_URI = Uri
+				.parse("content://org.openintents.shopping/itemstores");
+
+		/**
+		 * The default sort order for this table.
+		 */
+		public static final String DEFAULT_SORT_ORDER = "item_id ASC";
+
+
+		/**
+		 * The timestamp for when the itemstore record was created.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String CREATED_DATE = "created";
+
+		/**
+		 * The timestamp for when the itemstore record was last modified.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String MODIFIED_DATE = "modified";
+
+		/**
+		 * The id of the item.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String ITEM_ID = "item_id";
+		
+		/**
+		 * The id of one store that contains item.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String STORE_ID = "store_id";
+
+		/**
+		 * The aisle which contains item item_id at store store_id.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String AISLE = "aisle";
+		
+		/**
+		 * The price of item item_id at store store_id.
+		 * <P>
+		 * Type: INTEGER (long)
+		 * </P>
+		 */
+		public static final String PRICE = "price";
+	}
+	
 	// Some convenience functions follow	
 
 	/**
@@ -677,6 +792,43 @@ public abstract class Shopping {
 	}
 
 	/**
+	 * Gets or creates a new store and returns its id. If the store
+	 * exists already, the existing id is returned. Otherwise a new store is
+	 * created.
+	 * 
+	 * @param context 
+	 * @param name
+	 *            New name of the list.
+	 * @return id of the new or existing list.
+	 */
+	public static long getStore(Context context, final String name, final long listId) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver().query(Stores.CONTENT_URI,
+				new String[] { Stores._ID }, "upper(name) = ? AND list_id = ?",
+				new String[] { name.toUpperCase(), String.valueOf(listId) }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+			existingItems.close();
+		} else {
+			// Add list to list:
+			ContentValues values = new ContentValues(1);
+			values.put(Stores.NAME, name);
+			values.put(Stores.LIST_ID, listId);
+			try {
+				Uri uri = context.getContentResolver().insert(Stores.CONTENT_URI, values);
+				Log.i(TAG, "Insert new store: " + uri);
+				id = Long.parseLong(uri.getPathSegments().get(1));
+			} catch (Exception e) {
+				Log.i(TAG, "insert store failed", e);
+				return -1;
+			}
+		}
+		return id;
+	}
+	
+	
+	/**
 	 * Adds a new item to a specific list and returns its id. If the item exists
 	 * already, the existing id is returned.
 	 * 
@@ -731,6 +883,63 @@ public abstract class Shopping {
 		return id;
 	}
 
+	/**
+	 * Adds an item to a specific store and returns its id. If the item exists
+	 * already, the existing id is returned.
+	 * 
+	 * @param itemId
+	 *            The id of the new item.
+	 * @param listId
+	 *            The id of the shopping list the item is added.
+	 * @param itemType
+	 *            The type of the new item
+	 * @return id of the "contains" table entry, or -1 if insert failed.
+	 */
+	public static long addItemToStore(Context context, final long itemId, final long storeId, final long aisle, final String price) {
+		long id = -1;
+		Cursor existingItems = context.getContentResolver()
+				.query(ItemStores.CONTENT_URI, new String[] { ItemStores._ID },
+						"store_id = ? AND item_id = ?",
+						new String[] { String.valueOf(storeId),
+								String.valueOf(itemId) }, null);
+		if (existingItems.getCount() > 0) {
+			existingItems.moveToFirst();
+			id = existingItems.getLong(0);
+			existingItems.close();
+			
+			// update aisle and price:
+			ContentValues values = new ContentValues(1);
+			values.put(ItemStores.PRICE, price);
+			values.put(ItemStores.AISLE, aisle);
+			try {
+				Uri uri = Uri.withAppendedPath(ItemStores.CONTENT_URI, String.valueOf(id));
+				context.getContentResolver().update(uri, values, null, null);
+				Log.i(TAG, "updated itemstore: " + uri);				
+			} catch (Exception e) {
+				Log.i(TAG, "Update itemstore failed", e);				
+			}
+			
+		} else {
+			existingItems.close();
+			// Add item to list:
+			ContentValues values = new ContentValues(2);
+			values.put(ItemStores.ITEM_ID, itemId);
+			values.put(ItemStores.STORE_ID, storeId);
+			values.put(ItemStores.PRICE, price);
+			values.put(ItemStores.AISLE, aisle);
+			try {
+				Uri uri = context.getContentResolver().insert(ItemStores.CONTENT_URI, values);
+				Log.i(TAG, "Insert new entry in 'itemstores': " + uri);
+				id = Long.parseLong(uri.getPathSegments().get(1));
+			} catch (Exception e) {
+				Log.i(TAG, "insert into table 'itemstores' failed", e);
+				id = -1;
+			}
+		}
+		return id;
+	}
+
+	
 	/**
 	 * Returns the id of the default shopping list. Currently this is always 1.
 	 * 
