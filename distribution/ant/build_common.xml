@@ -133,7 +133,8 @@
 
 	<!-- ############### Install-release ################ -->
 	
-	<target name="install-release" depends="release">
+	<target name="install-release" depends="release" 
+		description="Compiles the release version and installs it on the emulator or device" >
 		<echo>Reinstalling ${out.release.file.name} onto default emulator or device...</echo>
 		<exec executable="${adb}" failonerror="true">
             <arg line="${adb.device.arg}" />
@@ -145,7 +146,7 @@
 	
 	<!-- ############### JavaDoc ####################### -->
 	<!-- Create JavaDoc -->
-	<target name="javadoc">
+	<target name="javadoc" description="Creates JavaDoc documentation from source into ./doc" >
 		<delete dir="${out.doc.dir}" />
 		<javadoc access="public" author="true" destdir="${out.doc.dir}" 
         	nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" 
@@ -154,27 +155,123 @@
     </target>
 
 	<!-- ############### Release source ####################### -->
+
+	<patternset id="exclude.from.source">
+		<exclude name="**/bin/**" />
+		<exclude name="**/doc/**" />
+		<exclude name="**/gen/**" />
+		<exclude name="**/release/**" />
+		<exclude name="**/tmp/**" />
+		<exclude name="**/translations/**" />
+		<exclude name="**/.svn" />
+		<exclude name="**/build-private.properties" />
+		<exclude name="**/local.properties" />
+	</patternset>
+
+	<!-- Full path of the base directory of OpenIntents -->
+	<property name="source.base.dir" location="${basedir}/${source.base}" />
+
+	<!-- This macro creates a path relative to source.base.dir
+		and copies all source files into it. -->
+	<macrodef name="copy-source">
+		<attribute name="source" />
+		<sequential>
+			<!-- Create a path of @{source} relative to ${source.base.dir}.
+				e.g. 
+				@{source}="C:\User\Eclipse\OpenIntents\notepad\NotePad",
+				${source.base.dir}="C:\User\Eclipse\OpenIntents"
+				 -> ${relativepath}="notepad\NotePad" -->
+			<local name="relativepath" />
+			<pathconvert property="relativepath" targetos="unix">
+				<path path="@{source}"/>
+				<mapper>
+					<globmapper from="${source.base.dir}/*" to="*" handledirsep="yes"/>
+				</mapper>
+			</pathconvert>
+			
+			<!-- Now copy the files -->
+			<echo>Copy from @{source} to ${out.source.version}/${relativepath}</echo>
+			<copy todir="${out.source.version}/${relativepath}">
+				<fileset dir="@{source}">
+					<patternset refid="exclude.from.source"/>
+				</fileset>
+			</copy> 
+		</sequential>
+	</macrodef>
+	
+	<!-- This macro creates a path relative to source.base.dir
+		and copies the source file into it. -->
+	<macrodef name="copy-source-file">
+		<attribute name="source" />
+		<sequential>
+			<!-- Create a path of @{source} relative to ${source.base.dir}.
+				e.g. 
+				@{source}="C:\User\Eclipse\OpenIntents\notepad\NotePad",
+				${source.base.dir}="C:\User\Eclipse\OpenIntents"
+				 -> ${relativepath}="notepad\NotePad" -->
+			<local name="relativepath" />
+			<pathconvert property="relativepath" targetos="unix">
+				<path path="@{source}"/>
+				<mapper>
+					<globmapper from="${source.base.dir}/*" to="*" handledirsep="yes"/>
+				</mapper>
+			</pathconvert>
+			
+			<!-- Now copy the file -->
+			<echo>Copy from @{source} to ${out.source.version}/${relativepath}</echo>
+			<copy tofile="${out.source.version}/${relativepath}"
+				file="@{source}" />
+		</sequential>
+	</macrodef>
+
+	<!-- Copy the referenced Android Library Project
+		with number "num" to source release -->
+	<macrodef name="copy-source-lib" >
+		<attribute name="num" />
+		<sequential>
+			<!-- Ideally, only execute the following, if
+				android.library.reference.@{num} exists.
+			
+				Since "if" does not work with macros yet, 
+				here is a simple but inefficient workaround:
+				if the referenced library does not exist,
+				simply the main project is copied again.
+				
+				Note that this workaround modifies the property,
+				but this does not matter, because the apk has
+				been built already through depends="release" -->
+			<property name="android.library.reference.@{num}" value="." />
+			
+			<copy-source source="${android.library.reference.@{num}}"/>
+		</sequential>  
+	</macrodef>
+	
 	<!-- Copy to source release -->
-	<target name="release-source">
+	<target name="release-source" depends="release" description="Copies the source code to ./release" >
     	<delete dir="${out.source.dir}"/>
         <mkdir dir="${out.source.dir}" />
-		<copy todir="${out.source.version}">
-			<fileset dir=".">
-				<exclude name="**/bin/**" />
-				<exclude name="**/doc/**" />
-				<exclude name="**/gen/**" />
-				<exclude name="**/release/**" />
-				<exclude name="**/tmp/**" />
-				<exclude name="**/translations/**" />
-				<exclude name="**/.svn" />
-				<exclude name="**/build-private.properties" />
-	    		<exclude name="**/local.properties" />
-			</fileset>
-		</copy>
+		
+		<!-- Copy main application -->
+		<copy-source source="." />
+		
+		<!-- Copy common ant script and README -->
+		<copy-source source="${build.common.dir}" />
+		<copy-source-file source="${source.base.dir}/README.txt" />
+		
+		<!-- Copy referenced Android Library Projects
+		    (currently at most 5) -->
+		<copy-source-lib num="1" />
+		<copy-source-lib num="2" />
+		<copy-source-lib num="3" />
+		<copy-source-lib num="4" />
+		<copy-source-lib num="5" />
+		
+		<!-- Create ZIP file -->
 		<zip destfile="${out.source.version}.zip">
 			<zipfileset dir="${out.source.version}" prefix="${out.source.version.name}"/>
 		</zip>
 		<delete dir="${out.source.version}"/>
+		
 		<!-- copy apk into releasedir for convenience -->
 		<copy todir="${out.source.dir}">
 			<fileset dir="${out.absolute.dir}">
@@ -185,6 +282,7 @@
 	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
-		depends="release, javadoc, release-source" />
+		depends="release, javadoc, release-source"
+		description="Creates release apk, JavaDoc, and the source code" />
 	
 </project>
