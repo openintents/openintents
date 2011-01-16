@@ -156,6 +156,14 @@
 
 	<!-- ############### Release source ####################### -->
 
+	<!-- Full path of the base directory of OpenIntents -->
+	<property name="source.base.dir" location="${basedir}/${source.base}" />
+	
+	<!-- Application base directory.
+		By default this is ".." so that demos are copied as well. -->
+	<property name="app.base" value=".." />
+	
+	<!-- Files to be excluded -->
 	<patternset id="exclude.from.source">
 		<exclude name="**/bin/**" />
 		<exclude name="**/doc/**" />
@@ -166,10 +174,9 @@
 		<exclude name="**/.svn" />
 		<exclude name="**/build-private.properties" />
 		<exclude name="**/local.properties" />
+		<exclude name="**/promotion/**" />
 	</patternset>
 
-	<!-- Full path of the base directory of OpenIntents -->
-	<property name="source.base.dir" location="${basedir}/${source.base}" />
 
 	<!-- This macro creates a path relative to source.base.dir
 		and copies all source files into it. -->
@@ -251,8 +258,9 @@
     	<delete dir="${out.source.dir}"/>
         <mkdir dir="${out.source.dir}" />
 		
-		<!-- Copy main application -->
-		<copy-source source="." />
+		<!-- Copy main application.
+			Start from parent, so that all demos etc. can be copied as well. -->
+		<copy-source source="${app.base}" />
 		
 		<!-- Copy common ant script and README -->
 		<copy-source source="${build.common.dir}" />
