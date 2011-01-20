@@ -76,7 +76,7 @@ public class ImportCsv {
 			}
 			
 			
-			Shopping.addItemToList(mContext, itemId, listId, status, 1);
+			Shopping.addItemToList(mContext, itemId, listId, status, 1, 1);
 	    }
 	    
 	}
@@ -116,11 +116,17 @@ public class ImportCsv {
 			} catch (java.lang.NumberFormatException nfe){
 				quantity = 1;		
 			}
+			long priority;
+			try {
+			    priority = Integer.parseInt(nextLine[1]); // Priority
+			} catch (java.lang.NumberFormatException nfe){
+				priority = 1;		
+			}
 			
 			// Add item to list
 			long listId = Shopping.getDefaultList();
 			long itemId = Shopping.getItem(mContext, itemname, tags, price);
-			Shopping.addItemToList(mContext, itemId, listId, status, quantity);
+			Shopping.addItemToList(mContext, itemId, listId, status, priority, quantity);
 			
 			// Two columns contain per-store information. Column 10 lists 
 			// all stores which carry this item, delimited by semicolons. Column 11 
