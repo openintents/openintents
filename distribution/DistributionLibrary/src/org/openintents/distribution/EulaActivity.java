@@ -46,7 +46,7 @@ public class EulaActivity extends Activity {
 	/** TAG for log messages. */
 	private static final String TAG = "EulaActivity";
 	
-	static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
+	public static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
 	
 	/**
 	 * Extra for main intent.
@@ -111,6 +111,10 @@ public class EulaActivity extends Activity {
 		Intent i;
 		if (mLaunchIntent != null) {
 			i = mLaunchIntent;
+			
+			// Android 2.3: category LAUNCHER needs to be removed,
+			// otherwise main activity is not called.
+			i.removeCategory(Intent.CATEGORY_LAUNCHER);
 		} else {
 			i = new Intent();
 			i.setClassName(mLaunchPackage, mLaunchClass);
@@ -133,7 +137,7 @@ public class EulaActivity extends Activity {
 	}
 
 	public static boolean checkEula(Activity activity) {
-		return checkEula(activity, null);
+		return checkEula(activity, activity.getIntent());
 	}
 	
 	/**
