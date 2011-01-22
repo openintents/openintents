@@ -68,7 +68,7 @@ public class EulaActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
-		setContentView(RD.layout.eula);
+		setContentView(R.layout.eula);
 		
 		// Extras are provided by checkEula() below.
 		Intent i = getIntent();
@@ -79,22 +79,22 @@ public class EulaActivity extends Activity {
 		mLaunchIntent = b.getParcelable(EXTRA_LAUNCH_ACTIVITY_INTENT);
 		
 		//mIntroContinue = (Button) findViewById(R.id.intro_continue);
-		mAgree = (Button) findViewById(RD.id.button1);
+		mAgree = (Button) findViewById(R.id.button1);
 		mAgree.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				acceptEula();
 			}
 		});
 		
-		mDisagree = (Button) findViewById(RD.id.button2);
+		mDisagree = (Button) findViewById(R.id.button2);
 		mDisagree.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				refuseEula();
 			}
 		});
 		
-		TextView text = (TextView) findViewById(RD.id.text);
-		text.setText(readLicenseFromRawResource(RD.raw.license_short));
+		TextView text = (TextView) findViewById(R.id.text);
+		text.setText(readLicenseFromRawResource(R.raw.license_short));
 		
 	}
 	
