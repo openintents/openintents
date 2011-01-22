@@ -37,6 +37,17 @@
 			    android:layout_marginBottom="10dip"
 				android:layout_marginLeft="5dip"
 			>
+			<LinearLayout
+				android:id="@+id/container1"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				>
+				<ImageView android:id="@+id/imageview"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					/>
 				<TextView  
 				    android:id="@+id/text"
 					android:layout_width="wrap_content" 
@@ -49,7 +60,8 @@
 				    android:layout_marginTop="10dip"
 				    android:layout_marginBottom="10dip"
 					/>
-			</ScrollView>
+			</LinearLayout>
+		</ScrollView>
 		<LinearLayout
 			android:id="@+id/container2"
 			android:orientation="horizontal"

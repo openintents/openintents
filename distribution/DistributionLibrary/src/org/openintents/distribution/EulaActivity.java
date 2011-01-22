@@ -32,6 +32,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -92,11 +93,42 @@ public class EulaActivity extends Activity {
 				refuseEula();
 			}
 		});
+
+		int labelRes = getApplicationInfo().labelRes;
+		String appName = getString(labelRes);
 		
-		TextView text = (TextView) findViewById(R.id.text);
+		String title = getString(R.string.oi_distribution_eula_title_with_appname, 
+				appName);
+		
+		TextView text = (TextView) findViewById(R.id.text1);
+		text.setText(title);
+		
+		text = (TextView) findViewById(R.id.text);
 		text.setText(readLicenseFromRawResource(R.raw.license_short));
-		
+
+		int iconRes = getApplicationInfo().icon;
+		ImageView image = (ImageView) findViewById(R.id.imageview);
+		image.setImageResource(iconRes);
 	}
+	/*
+	String getApplicationName() {
+		String packagename = getPackageName();
+		
+		PackageManager pm = getPackageManager();
+		pm.getApplicationLabel(getApplicationInfo());
+		
+		get
+		try {
+            PackageInfo pi = getPackageManager().getPackageInfo(
+            		packagename, 0);
+            int labelid = pi.applicationInfo.labelRes;
+ 			Resources resources = getPackageManager().
+ 					.getResourcesForApplication(packagename);
+ 			applicationlabel = resources.getString(labelid);
+		} catch (PackageManager.NameNotFoundException e) {
+            Log.e(TAG, "Package name not found", e);
+		}
+	}*/
 	
 	/**
 	 * Accept EULA and proceed with main application.
