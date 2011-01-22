@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OI Distribution Library</string>
+    <string name="oi_distribution_app_name">OI Distribution Library</string>
     
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	
 	<!-- EULA -->
-	<string name="eula_title">EULA</string>
-	<string name="eula_accept">Accept</string>
-	<string name="eula_refuse">Cancel</string>
+	<string name="oi_distribution_eula_title">EULA</string>
+	<string name="oi_distribution_eula_accept">Accept</string>
+	<string name="oi_distribution_eula_refuse">Cancel</string>
 	
 	<!-- Update -->
-    <string name="menu_update">Check updates</string>
-	<string name="update_box_text">Please check manually for updates or install OI Update
+    <string name="oi_distribution_menu_update">Check updates</string>
+	<string name="oi_distribution_update_box_text">Please check manually for updates or install OI Update
 for automatic notifications.
 Current version: %s
 	</string>
-	<string name="update_check_now">Check now.</string>
-	<string name="update_get_updater">Get OI Updater.</string>
-	<string name="update_error">Download application not available.</string>
+	<string name="oi_distribution_update_check_now">Check now.</string>
+	<string name="oi_distribution_update_get_updater">Get OI Updater.</string>
+	<string name="oi_distribution_update_error">Download application not available.</string>
 	
     <!-- About -->
-    <string name="about">About</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-    <string name="aboutapp_get">Get OI About</string>
+    <string name="oi_distribution_about">About</string>
+	<string name="oi_distribution_aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+    <string name="oi_distribution_aboutapp_get">Get OI About</string>
     
     <!-- File Manager -->
-    <string name="filemanager_not_available">No compatible file manager is available.</string>
-    <string name="filemanager_get_oi_filemanager">Get OI File Manager</string>
+    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_get_oi_filemanager">Get OI File Manager</string>
     
     <!-- Safe -->
-    <string name="safe_not_available">No compatible application for encryption is available.</string>
-    <string name="safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
-    <string name="safe_get_oi_filemanager">Get OI Safe</string>
+    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
+    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_get_oi_filemanager">Get OI Safe</string>
     
 </resources>

@@ -3,8 +3,9 @@
       package="org.openintents.distribution"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name">
-        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
+    <application android:label="@string/oi_distribution_app_name">
+        <activity android:name="org.openintents.distribution.EulaActivity"
+              android:label="@string/oi_distribution_eula_title">
         </activity>
     </application>
 </manifest> 

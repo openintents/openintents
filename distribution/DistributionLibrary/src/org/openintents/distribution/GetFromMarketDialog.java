@@ -82,7 +82,7 @@ public class GetFromMarketDialog extends AlertDialog implements OnClickListener 
 				context.startActivity(intent2);
 			} catch (ActivityNotFoundException e2) {
 				Toast.makeText(context,
-						R.string.update_error,
+						R.string.oi_distribution_update_error,
 						Toast.LENGTH_SHORT).show();
 				Log.e(TAG, "Error starting second activity.", e2);
 			}

@@ -99,20 +99,20 @@ public class UpdateMenu {
 		}
 		final Intent intent  = new Intent(Intent.ACTION_VIEW);
 		final Intent intent2  = new Intent(Intent.ACTION_VIEW);
-		new Builder(context).setMessage(context.getString(R.string.update_box_text, version))
-		.setPositiveButton(R.string.update_check_now, new OnClickListener(){
+		new Builder(context).setMessage(context.getString(R.string.oi_distribution_update_box_text, version))
+		.setPositiveButton(R.string.oi_distribution_update_check_now, new OnClickListener(){
 
 			public void onClick(DialogInterface arg0, int arg1) {
-				intent.setData(Uri.parse(context.getString(R.string.update_app_url)));
-				intent2.setData(Uri.parse(context.getString(R.string.update_app_developer_url)));
+				intent.setData(Uri.parse(context.getString(R.string.oi_distribution_update_app_url)));
+				intent2.setData(Uri.parse(context.getString(R.string.oi_distribution_update_app_developer_url)));
 				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
 			}
 			
-		}).setNegativeButton(R.string.update_get_updater, new OnClickListener(){
+		}).setNegativeButton(R.string.oi_distribution_update_get_updater, new OnClickListener(){
 
 			public void onClick(DialogInterface dialog, int which) {
-				intent.setData(Uri.parse(context.getString(R.string.update_checker_url)));
-				intent2.setData(Uri.parse(context.getString(R.string.update_checker_developer_url)));
+				intent.setData(Uri.parse(context.getString(R.string.oi_distribution_update_checker_url)));
+				intent2.setData(Uri.parse(context.getString(R.string.oi_distribution_update_checker_developer_url)));
 				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
 			}
 			

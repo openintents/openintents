@@ -13,7 +13,7 @@
         </activity>
 
         <activity android:name="org.openintents.distribution.EulaActivity"
-        	android:label="@string/eula_title">
+        	android:label="@string/oi_distribution_eula_title">
         </activity>
     </application>
     <uses-sdk android:minSdkVersion="4" />

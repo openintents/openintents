@@ -68,7 +68,7 @@ public class EulaActivity extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		
-		setContentView(R.layout.eula);
+		setContentView(R.layout.oi_distribution_eula);
 		
 		// Extras are provided by checkEula() below.
 		Intent i = getIntent();

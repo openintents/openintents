@@ -36,16 +36,16 @@ public class AboutDialog extends GetFromMarketDialog {
     
 	public AboutDialog(Context context) {
 		super(context,
-				R.string.aboutapp_not_available,
-				R.string.aboutapp_get,
-				R.string.aboutapp_market_uri,
-				R.string.aboutapp_developer_uri);
+				R.string.oi_distribution_aboutapp_not_available,
+				R.string.oi_distribution_aboutapp_get,
+				R.string.oi_distribution_aboutapp_market_uri,
+				R.string.oi_distribution_aboutapp_developer_uri);
 		
 		String version = VersionUtils.getVersionNumber(context);
 		String name = VersionUtils.getApplicationName(context);
 
 		setTitle(name);
-		setMessage(context.getString(R.string.aboutapp_not_available, version));
+		setMessage(context.getString(R.string.oi_distribution_aboutapp_not_available, version));
 	}
 	
 	public static void showDialogOrStartActivity(Activity activity, int dialogId) {
