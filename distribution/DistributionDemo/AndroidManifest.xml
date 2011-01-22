@@ -12,9 +12,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="org.openintents.distribution.EulaActivity"
-        	android:label="@string/oi_distribution_eula_title">
-        </activity>
+		<!-- Activities from OI Distribution Library -->
+        <activity android:name="org.openintents.distribution.EulaActivity" />
+        <activity android:name="org.openintents.distribution.NewVersionActivity" />
     </application>
     <uses-sdk android:minSdkVersion="4" />
 

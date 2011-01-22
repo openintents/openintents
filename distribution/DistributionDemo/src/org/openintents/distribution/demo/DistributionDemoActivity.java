@@ -1,7 +1,7 @@
 package org.openintents.distribution.demo;
 
 import org.openintents.distribution.AboutDialog;
-import org.openintents.distribution.EulaActivity;
+import org.openintents.distribution.EulaOrNewVersion;
 import org.openintents.distribution.UpdateMenu;
 
 import android.app.Activity;
@@ -9,7 +9,6 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,23 +27,27 @@ public class DistributionDemoActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        Log.d(TAG, "onCreate()");
 
-        // Check whether EULA has been accepted.
-		if (!EulaActivity.checkEula(this, getIntent())) {
+        // Check whether EULA has been accepted
+        // or information about new version can be presented.
+		if (!EulaOrNewVersion.check(this)) {
             return;
         }
     }
     
-    
     public void onClickResetEula(View view) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferences.Editor e = sp.edit();
-		e.putBoolean(EulaActivity.PREFERENCES_EULA_ACCEPTED, false);
+		e.putBoolean(EulaOrNewVersion.PREFERENCES_EULA_ACCEPTED, false);
 		e.commit();
     }
     
+    public void onClickResetVersion(View view) {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+		SharedPreferences.Editor e = sp.edit();
+		e.putInt(EulaOrNewVersion.PREFERENCES_VERSION_NUMBER, 0);
+		e.commit();
+    }
 
  	@Override
  	public boolean onCreateOptionsMenu(Menu menu) {

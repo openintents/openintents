@@ -21,17 +21,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import org.openintents.util.VersionUtils;
-
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -40,36 +36,24 @@ import android.widget.TextView;
 /**
  * Displays the Eula for the first time, reading it from a raw resource.
  * 
- * @version 2009-01-17, 13:00 UTC
  * @author Peli
  *
  */
 public class EulaActivity extends Activity {
+	
+	Button mAgree;
+	Button mDisagree;
+	
+	String mLaunchPackage;
+	String mLaunchClass;
+	Intent mLaunchIntent;
+	
+	String mAppName;
 
-	/** TAG for log messages. */
-	private static final String TAG = "EulaActivity";
-	
-	public static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
-	
-	/**
-	 * Extra for main intent.
-	 * Specifies activity that should be launched after Eula has been accepted.
-	 */
-	private static final String EXTRA_LAUNCH_ACTIVITY_PACKAGE = "org.openintents.extra.launch_activity_package";
-	private static final String EXTRA_LAUNCH_ACTIVITY_CLASS = "org.openintents.extra.launch_activity_class";
-	private static final String EXTRA_LAUNCH_ACTIVITY_INTENT = "org.openintents.extra.launch_activity_intent";
-	
-	private Button mAgree;
-	private Button mDisagree;
-	
-	private String mLaunchPackage;
-	private String mLaunchClass;
-	private Intent mLaunchIntent;
-
-	private TextView mText1;
-	private TextView mText2;
-	private TextView mText;
-	private ImageView mImage;
+	TextView mText1;
+	TextView mText2;
+	TextView mText;
+	ImageView mImage;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -81,23 +65,23 @@ public class EulaActivity extends Activity {
 		// Extras are provided by checkEula() below.
 		Intent i = getIntent();
 		Bundle b = i.getExtras();
-		mLaunchPackage = b.getString(EXTRA_LAUNCH_ACTIVITY_PACKAGE);
-		mLaunchClass = b.getString(EXTRA_LAUNCH_ACTIVITY_CLASS);
+		mLaunchPackage = b.getString(EulaOrNewVersion.EXTRA_LAUNCH_ACTIVITY_PACKAGE);
+		mLaunchClass = b.getString(EulaOrNewVersion.EXTRA_LAUNCH_ACTIVITY_CLASS);
 		//mLaunchIntent 
-		mLaunchIntent = b.getParcelable(EXTRA_LAUNCH_ACTIVITY_INTENT);
+		mLaunchIntent = b.getParcelable(EulaOrNewVersion.EXTRA_LAUNCH_ACTIVITY_INTENT);
 		
 		//mIntroContinue = (Button) findViewById(R.id.intro_continue);
 		mAgree = (Button) findViewById(R.id.button1);
 		mAgree.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				acceptEula();
+				accept();
 			}
 		});
 		
 		mDisagree = (Button) findViewById(R.id.button2);
 		mDisagree.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				refuseEula();
+				refuse();
 			}
 		});
 
@@ -107,56 +91,38 @@ public class EulaActivity extends Activity {
 		mImage = (ImageView) findViewById(R.id.imageview);
 		
 		int labelRes = getApplicationInfo().labelRes;
-		String appName = getString(labelRes);
+		mAppName = getString(labelRes);
 		int iconRes = getApplicationInfo().icon;
 		
-		setTitle(appName);
-		
-		//createEula(appName);
-		createNewVersion(appName);
-
+		setTitle(mAppName);
 		mImage.setImageResource(iconRes);
-	}
-	
-	private void createEula(String appName) {
+
 		String title = getString(R.string.oi_distribution_eula_title, 
-				appName);
+				mAppName);
 		String message = getString(R.string.oi_distribution_eula_message, 
-				appName);
+				mAppName);
 		
 		mText1.setText(title);
 		mText2.setText(message);
 		mText.setText(readTextFromRawResource(R.raw.license_short, false));
 	}
-
-	private void createNewVersion(String appName) {
-		String version = VersionUtils.getVersionNumber(this);
-		String title = getString(R.string.oi_distribution_newversion_title, 
-				appName, version);
-		String message = getString(R.string.oi_distribution_newversion_message, 
-				appName);
-		message += "\n\n" + getString(R.string.oi_distribution_newversion_recent_changes);
-		
-		mText1.setText(title);
-		mText2.setText(message);
-		mText.setText(readTextFromRawResource(R.raw.recent_changes, true));
-		
-		mAgree.setText(R.string.oi_distribution_newversion_continue);
-		mDisagree.setVisibility(View.GONE);
-		View v = findViewById(R.id.space);
-		v.setVisibility(View.GONE);
-	}
+	
 	
 	/**
 	 * Accept EULA and proceed with main application.
 	 */
-	public void acceptEula() {
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-		SharedPreferences.Editor e = sp.edit();
-		e.putBoolean(PREFERENCES_EULA_ACCEPTED, true);
-		e.commit();
+	void accept() {
+		EulaOrNewVersion.storeEulaAccepted(this);
 		
+		startOriginalActivity();
+	}
+
+
+
+
+	void startOriginalActivity() {
 		// Call the activity that originally called checkEula()
+		// or checkNewVersion()
 		Intent i;
 		if (mLaunchIntent != null) {
 			i = mLaunchIntent;
@@ -176,60 +142,17 @@ public class EulaActivity extends Activity {
 	/**
 	 * Refuse EULA.
 	 */
-	public void refuseEula() {
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-		SharedPreferences.Editor e = sp.edit();
-		e.putBoolean(PREFERENCES_EULA_ACCEPTED, false);
-		e.commit();
-		
+	void refuse() {
 		finish();
 	}
 
-	public static boolean checkEula(Activity activity) {
-		return checkEula(activity, activity.getIntent());
-	}
-	
-	/**
-	 * Test whether EULA has been accepted. Otherwise display EULA.
-	 * 
-	 * @return True if Eula has been accepted.
-	 */
-	public static boolean checkEula(Activity activity, Intent intent) {
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
-		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
-		
-		if (accepted) {
-			Log.i(TAG, "Eula has been accepted.");
-			return true;
-		} else {
-			Log.i(TAG, "Eula has not been accepted yet.");
-			
-			// Launch Eula activity
-			Intent i = new Intent(activity, EulaActivity.class);
-			ComponentName ci = activity.getComponentName();
-			
-			// Specify in intent extras which activity should be called
-			// after Eula has been accepted.
-			Log.d(TAG, "Local package name: " + ci.getPackageName());
-			Log.d(TAG, "Local class name: " + ci.getClassName());
-			i.putExtra(EXTRA_LAUNCH_ACTIVITY_PACKAGE, ci.getPackageName());
-			i.putExtra(EXTRA_LAUNCH_ACTIVITY_CLASS, ci.getClassName());
-			if (intent != null) {
-				i.putExtra(EXTRA_LAUNCH_ACTIVITY_INTENT, intent);
-			}
-			i.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT);
-			activity.startActivity(i);
-			activity.finish();
-			return false;
-		}
-	}
 	
 	/**
 	 * Read license from raw resource.
 	 * @param resourceid ID of the raw resource.
 	 * @return
 	 */
-	private String readTextFromRawResource(int resourceid, boolean preserveLineBreaks) {
+	String readTextFromRawResource(int resourceid, boolean preserveLineBreaks) {
 
 		// Retrieve license from resource:
 		String license = "";

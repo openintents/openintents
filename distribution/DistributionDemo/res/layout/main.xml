@@ -12,4 +12,8 @@
 <Button android:text="Reset EULA" android:id="@+id/Button01" 
 	android:layout_width="wrap_content" android:layout_height="wrap_content"
 	android:onClick="onClickResetEula"></Button>
+	
+<Button android:text="Reset current version" android:id="@+id/Button02" 
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:onClick="onClickResetVersion"></Button>
 </LinearLayout>
