@@ -21,15 +21,17 @@
     >
     	<TextView  
 			    android:id="@+id/text1"
+			    android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_height="wrap_content"
 				android:layout_width="fill_parent" 
-			    android:layout_height="34dip" 
 			    android:text="@string/oi_distribution_eula_title"
     			android:gravity="center"
 			    android:textStyle="bold"
 			    android:textColor="#ffffffff"
 			    android:layout_marginTop="10dip"
 			    android:layout_marginBottom="10dip"
-				/>
+				/><!-- 
+			    android:layout_height="34dip"  -->
 		<ScrollView
 				android:layout_width="fill_parent"
 				android:layout_height="0dip"
@@ -47,6 +49,17 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
+					/>
+				<TextView  
+				    android:id="@+id/text2"
+					android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+			    	android:textStyle="bold"
+				    android:textColor="#ffffffff"
+				    android:layout_marginLeft="10dip"
+				    android:layout_marginRight="10dip"
+				    android:layout_marginTop="10dip"
+				    android:layout_marginBottom="10dip"
 					/>
 				<TextView  
 				    android:id="@+id/text"
@@ -74,7 +87,7 @@
 				android:layout_gravity="bottom"
 				android:layout_weight="1"
 				android:text="@string/oi_distribution_eula_accept" />
-			<LinearLayout
+			<LinearLayout android:id="@+id/space"
 				android:orientation="horizontal"
 				android:layout_width="0dip"
 				android:layout_height="wrap_content"

@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.openintents.util.VersionUtils;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -63,6 +65,11 @@ public class EulaActivity extends Activity {
 	private String mLaunchPackage;
 	private String mLaunchClass;
 	private Intent mLaunchIntent;
+
+	private TextView mText1;
+	private TextView mText2;
+	private TextView mText;
+	private ImageView mImage;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -94,41 +101,51 @@ public class EulaActivity extends Activity {
 			}
 		});
 
+		mText1 = (TextView) findViewById(R.id.text1);
+		mText2 = (TextView) findViewById(R.id.text2);
+		mText = (TextView) findViewById(R.id.text);
+		mImage = (ImageView) findViewById(R.id.imageview);
+		
 		int labelRes = getApplicationInfo().labelRes;
 		String appName = getString(labelRes);
+		int iconRes = getApplicationInfo().icon;
 		
-		String title = getString(R.string.oi_distribution_eula_title_with_appname, 
+		setTitle(appName);
+		
+		//createEula(appName);
+		createNewVersion(appName);
+
+		mImage.setImageResource(iconRes);
+	}
+	
+	private void createEula(String appName) {
+		String title = getString(R.string.oi_distribution_eula_title, 
+				appName);
+		String message = getString(R.string.oi_distribution_eula_message, 
 				appName);
 		
-		TextView text = (TextView) findViewById(R.id.text1);
-		text.setText(title);
-		
-		text = (TextView) findViewById(R.id.text);
-		text.setText(readLicenseFromRawResource(R.raw.license_short));
-
-		int iconRes = getApplicationInfo().icon;
-		ImageView image = (ImageView) findViewById(R.id.imageview);
-		image.setImageResource(iconRes);
+		mText1.setText(title);
+		mText2.setText(message);
+		mText.setText(readTextFromRawResource(R.raw.license_short, false));
 	}
-	/*
-	String getApplicationName() {
-		String packagename = getPackageName();
+
+	private void createNewVersion(String appName) {
+		String version = VersionUtils.getVersionNumber(this);
+		String title = getString(R.string.oi_distribution_newversion_title, 
+				appName, version);
+		String message = getString(R.string.oi_distribution_newversion_message, 
+				appName);
+		message += "\n\n" + getString(R.string.oi_distribution_newversion_recent_changes);
 		
-		PackageManager pm = getPackageManager();
-		pm.getApplicationLabel(getApplicationInfo());
+		mText1.setText(title);
+		mText2.setText(message);
+		mText.setText(readTextFromRawResource(R.raw.recent_changes, true));
 		
-		get
-		try {
-            PackageInfo pi = getPackageManager().getPackageInfo(
-            		packagename, 0);
-            int labelid = pi.applicationInfo.labelRes;
- 			Resources resources = getPackageManager().
- 					.getResourcesForApplication(packagename);
- 			applicationlabel = resources.getString(labelid);
-		} catch (PackageManager.NameNotFoundException e) {
-            Log.e(TAG, "Package name not found", e);
-		}
-	}*/
+		mAgree.setText(R.string.oi_distribution_newversion_continue);
+		mDisagree.setVisibility(View.GONE);
+		View v = findViewById(R.id.space);
+		v.setVisibility(View.GONE);
+	}
 	
 	/**
 	 * Accept EULA and proceed with main application.
@@ -212,7 +229,7 @@ public class EulaActivity extends Activity {
 	 * @param resourceid ID of the raw resource.
 	 * @return
 	 */
-	private String readLicenseFromRawResource(int resourceid) {
+	private String readTextFromRawResource(int resourceid, boolean preserveLineBreaks) {
 
 		// Retrieve license from resource:
 		String license = "";
@@ -231,7 +248,11 @@ public class EulaActivity extends Activity {
 					sb.append("\n\n");
 				} else {
 					sb.append(line);
-					sb.append(" ");
+					if (preserveLineBreaks) {
+						sb.append("\n");
+					} else {
+						sb.append(" ");
+					}
 				}
 			}
 			license = sb.toString();
