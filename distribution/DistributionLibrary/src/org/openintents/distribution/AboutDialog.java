@@ -33,7 +33,8 @@ import android.content.Intent;
  */
 public class AboutDialog extends GetFromMarketDialog {
 	private static final String TAG = "About";
-    
+	private static final boolean DEBUG_NO_OI_ABOUT = true;
+	
 	public AboutDialog(Context context) {
 		super(context,
 				R.string.oi_distribution_aboutapp_not_available,

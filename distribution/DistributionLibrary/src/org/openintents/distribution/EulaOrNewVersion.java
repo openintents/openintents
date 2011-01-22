@@ -51,28 +51,23 @@ public class EulaOrNewVersion {
 	static final String EXTRA_LAUNCH_ACTIVITY_CLASS = "org.openintents.extra.launch_activity_class";
 	static final String EXTRA_LAUNCH_ACTIVITY_INTENT = "org.openintents.extra.launch_activity_intent";
 	
-	
-	public static boolean check(Activity activity) {
-		return checkEula(activity) && checkNewVersion(activity);
-	}
-	
 	/**
 	 * Test whether EULA has been accepted. Otherwise display EULA.
 	 * 
-	 * @return True if Eula has been accepted.
+	 * @return True if Eula needs to be shown.
 	 */
-	static boolean checkEula(Activity activity) {
+	static boolean showEula(Activity activity) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
 		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
 		
 		if (accepted) {
 			if (debug) Log.i(TAG, "Eula has been accepted.");
-			return true;
+			return false;
 		} else {
 			if (debug) Log.i(TAG, "Eula has not been accepted yet.");
 			
 			startForwardActivity(activity, EulaActivity.class);
-			return false;
+			return true;
 		}
 	}
 	
@@ -84,23 +79,23 @@ public class EulaOrNewVersion {
 	}
 	
 	/**
-	 * Test whether EULA has been accepted. Otherwise display EULA.
+	 * Test whether version code changed.
 	 * 
-	 * @return True if Eula has been accepted.
+	 * @return True if version code changed and recent changes are being shown.
 	 */
-	static boolean checkNewVersion(Activity activity) {
+	static boolean showNewVersion(Activity activity) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
 		int lastVersion = sp.getInt(PREFERENCES_VERSION_NUMBER, 0);
 		int thisVersion = VersionUtils.getVersionCode(activity);
 		
 		if (lastVersion == thisVersion) {
 			if (debug) Log.i(TAG, "Same version " + lastVersion + " as last launch.");
-			return true;
+			return false;
 		} else {
 			if (debug) Log.i(TAG, "Newer version " + thisVersion + " since last launch " + lastVersion + ". Show recent changes.");
 			
 			startForwardActivity(activity, NewVersionActivity.class);
-			return false;
+			return true;
 		}
 	}
 	

@@ -64,6 +64,24 @@ public class GetFromMarketDialog extends AlertDialog implements OnClickListener 
     	}
 		
 	}
+
+	/**
+	 * Start an activity but prompt a toast if activity is not found
+	 * (instead of crashing).
+	 * 
+	 * @param context
+	 * @param intent
+	 */
+	public static void startSaveActivity(Context context, Intent intent) {
+		try {
+			context.startActivity(intent);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(context,
+					R.string.oi_distribution_update_error,
+					Toast.LENGTH_SHORT).show();
+			Log.e(TAG, "Error starting second activity.", e);
+		}
+	}
 	
 	/**
 	 * Start an activity but prompt a toast if activity is not found

@@ -15,6 +15,7 @@
 		<!-- Activities from OI Distribution Library -->
         <activity android:name="org.openintents.distribution.EulaActivity" />
         <activity android:name="org.openintents.distribution.NewVersionActivity" />
+        
     </application>
     <uses-sdk android:minSdkVersion="4" />
 

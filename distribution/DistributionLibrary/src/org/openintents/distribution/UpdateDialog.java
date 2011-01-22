@@ -16,11 +16,13 @@
 
 package org.openintents.distribution;
 
-import android.app.AlertDialog.Builder;
+import org.openintents.util.VersionUtils;
+
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
@@ -33,10 +35,11 @@ import android.view.MenuItem;
  * @author Peli
  *
  */
-public class UpdateMenu {
+public class UpdateDialog extends AlertDialog implements OnClickListener {
 	
 	private static final String TAG = "UpdateMenu";
-
+	private static final boolean DEBUG_NO_MARKET = true;
+	
 	/**
 	 * If any of the following applications is installed,
 	 * there is no need for a manual "Update" menu entry.
@@ -47,20 +50,43 @@ public class UpdateMenu {
 			"com.android.vending", // Google's Android Market
 			"com.a0soft.gphone.aTrackDog" // aTrackDog
 	    };
+
+    Context mContext;
+    
+    public UpdateDialog(Context context) {
+        super(context);
+        mContext = context;
+
+        //setTitle(context.getText(R.string.menu_edit_tags));
+        String version = VersionUtils.getVersionNumber(mContext);
+        String messageText = mContext.getString(R.string.oi_distribution_update_box_text, version);
+        String appname = mContext.getString(R.string.oi_distribution_aboutapp);
+        messageText += " " + mContext.getString(R.string.oi_distribution_download_message, appname);
+        setMessage(messageText);
+    	setButton(mContext.getText(R.string.oi_distribution_update_check_now), this);
+    	setButton2(mContext.getText(R.string.oi_distribution_update_get_updater), this);
+    }
+
+	public void onClick(DialogInterface dialog, int which) {
+		final Intent intent  = new Intent(Intent.ACTION_VIEW);
+		
+    	if (which == BUTTON1) {
+			intent.setData(Uri.parse(mContext.getString(R.string.oi_distribution_update_app_developer_url)));
+			GetFromMarketDialog.startSaveActivity(mContext, intent);
+    	} else if (which == BUTTON2) {
+			intent.setData(Uri.parse(mContext.getString(R.string.oi_distribution_update_checker_developer_url)));
+			GetFromMarketDialog.startSaveActivity(mContext, intent);
+    	}
+		
+	}
 	
 	/**
-	 * Adds a menu item for update only if update checker is not installed.
+	 * Check if no updater application is installed.
 	 * 
 	 * @param context
-	 * @param menu
-	 * @param groupId
-	 * @param itemId
-	 * @param order
-	 * @param titleRes
 	 * @return
 	 */
-	public static MenuItem addUpdateMenu(Context context, Menu menu, int groupId,
-			int itemId, int order, int titleRes) {
+	public static boolean isUpdateMenuNecessary(Context context) {
 		PackageInfo pi = null;
 		
 		// Test for existence of all known update checker applications.
@@ -71,52 +97,15 @@ public class UpdateMenu {
 			} catch (NameNotFoundException e) {
 				// ignore
 			}
-			if (pi != null) {
+			if (pi != null && !DEBUG_NO_MARKET) {
 				// At least one kind of update checker exists,
 				// so there is no need to add a menu item.
-				return null;
+				return false;
 			}
 		}
 		
 		// If we reach this point, we add a menu item for manual update.
-		return menu.add(groupId, itemId, order, titleRes).setIcon(
-				android.R.drawable.ic_menu_info_details).setShortcut('9',
-				'u');
-	}
-	
-
-	/**
-	 * Shows dialog box with option to upgrade.
-	 * 
-	 * @param context
-	 */
-	public static void showUpdateBox(final Context context) {
-		String version = null;
-		try {
-			version = context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		final Intent intent  = new Intent(Intent.ACTION_VIEW);
-		final Intent intent2  = new Intent(Intent.ACTION_VIEW);
-		new Builder(context).setMessage(context.getString(R.string.oi_distribution_update_box_text, version))
-		.setPositiveButton(R.string.oi_distribution_update_check_now, new OnClickListener(){
-
-			public void onClick(DialogInterface arg0, int arg1) {
-				intent.setData(Uri.parse(context.getString(R.string.oi_distribution_update_app_url)));
-				intent2.setData(Uri.parse(context.getString(R.string.oi_distribution_update_app_developer_url)));
-				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
-			}
-			
-		}).setNegativeButton(R.string.oi_distribution_update_get_updater, new OnClickListener(){
-
-			public void onClick(DialogInterface dialog, int which) {
-				intent.setData(Uri.parse(context.getString(R.string.oi_distribution_update_checker_url)));
-				intent2.setData(Uri.parse(context.getString(R.string.oi_distribution_update_checker_developer_url)));
-				GetFromMarketDialog.startSaveActivity(context, intent, intent2);
-			}
-			
-		}).show();		
+		return true; 
 	}
 
 }
