@@ -53,7 +53,7 @@ public class NewVersionActivity extends EulaActivity {
 		// Modifications to convert EulaActivity into
 		// NewVersionActivity:
 		String version = VersionUtils.getVersionNumber(this);
-		String title = getString(R.string.oi_distribution_newversion_title, 
+		String title = getString(R.string.oi_distribution_name_and_version, 
 				mAppName, version);
 		String message = getString(R.string.oi_distribution_newversion_message, 
 				mAppName);

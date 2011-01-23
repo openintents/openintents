@@ -22,8 +22,9 @@
 	<string name="oi_distribution_eula_refuse">Cancel</string>
 	
 	<!-- New version -->
-	<!-- Title for a new version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0"). -->
-	<string name="oi_distribution_newversion_title">%1$s %2$s</string>
+	<!-- Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
+	Keep unmodified, unless your language requires that the version number is displayed first. -->
+	<string name="oi_distribution_name_and_version">%1$s %2$s</string>
 	
 	<!-- Welcome message. %s is an application name. -->
 	<string name="oi_distribution_newversion_message">Welcome to this new version of %s.</string>
@@ -37,9 +38,9 @@
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Check updates</string>
 	<!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_update_box_text">Current version: %s\nPlease check manually for updates or install OI Update for automatic notifications.</string>
-	<string name="oi_distribution_update_check_now">Check now.</string>
-	<string name="oi_distribution_update_get_updater">Get OI Updater.</string>
+	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
+	<string name="oi_distribution_update_check_now">Check now</string>
+	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
 	<string name="oi_distribution_update_error">Download application not available.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
@@ -49,7 +50,7 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">About</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
@@ -70,10 +71,14 @@
     <string name="oi_distribution_safe_get_oi_filemanager">Get OI Safe</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_message">Please download %s from the Market or the OpenIntents website.</string>
+    <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
+    <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
+    <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
     <string name="oi_distribution_download_market">Market download</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
     <string name="oi_distribution_download_web">Web download</string>
+	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
+    <string name="oi_distribution_download_title">Download %s</string>
 	
 </resources>

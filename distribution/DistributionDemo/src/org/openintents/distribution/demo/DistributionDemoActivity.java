@@ -12,7 +12,7 @@ import android.view.View;
 public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
-
+	
 	static final int MENU_DISTRIBUTION_START = Menu.FIRST;
 	
 	static final int DIALOG_DISTRIBUTION_START = 1;

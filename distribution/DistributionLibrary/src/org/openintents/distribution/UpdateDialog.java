@@ -18,16 +18,12 @@ package org.openintents.distribution;
 
 import org.openintents.util.VersionUtils;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
-import android.view.Menu;
-import android.view.MenuItem;
 
 /**
  * @version 2009-10-23: support Market and aTrackDog
@@ -35,7 +31,7 @@ import android.view.MenuItem;
  * @author Peli
  *
  */
-public class UpdateDialog extends AlertDialog implements OnClickListener {
+public class UpdateDialog extends DownloadAppDialog {
 	
 	private static final String TAG = "UpdateMenu";
 	private static final boolean DEBUG_NO_MARKET = true;
@@ -50,21 +46,27 @@ public class UpdateDialog extends AlertDialog implements OnClickListener {
 			"com.android.vending", // Google's Android Market
 			"com.a0soft.gphone.aTrackDog" // aTrackDog
 	    };
-
-    Context mContext;
     
     public UpdateDialog(Context context) {
-        super(context);
+        super(context, 
+        		R.string.oi_distribution_update_box_text, 
+        		R.string.oi_distribution_update_app, 
+        		R.string.oi_distribution_update_checker_package, 
+        		R.string.oi_distribution_update_checker_developer_url);
         mContext = context;
 
-        //setTitle(context.getText(R.string.menu_edit_tags));
         String version = VersionUtils.getVersionNumber(mContext);
-        String messageText = mContext.getString(R.string.oi_distribution_update_box_text, version);
-        String appname = mContext.getString(R.string.oi_distribution_aboutapp);
-        messageText += " " + mContext.getString(R.string.oi_distribution_download_message, appname);
-        setMessage(messageText);
-    	setButton(mContext.getText(R.string.oi_distribution_update_check_now), this);
-    	setButton2(mContext.getText(R.string.oi_distribution_update_get_updater), this);
+		int labelRes = context.getApplicationInfo().labelRes;
+        String appname = context.getString(labelRes);
+        String appnameversion = mContext.getString(R.string.oi_distribution_name_and_version, appname, version);
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append(appnameversion);
+        sb.append("\n\n");
+        sb.append(mMessageText);
+        setMessage(sb.toString());
+        
+        setButton(mContext.getText(R.string.oi_distribution_update_check_now), this);
     }
 
 	public void onClick(DialogInterface dialog, int which) {
@@ -72,10 +74,10 @@ public class UpdateDialog extends AlertDialog implements OnClickListener {
 		
     	if (which == BUTTON1) {
 			intent.setData(Uri.parse(mContext.getString(R.string.oi_distribution_update_app_developer_url)));
-			GetFromMarketDialog.startSaveActivity(mContext, intent);
-    	} else if (which == BUTTON2) {
-			intent.setData(Uri.parse(mContext.getString(R.string.oi_distribution_update_checker_developer_url)));
-			GetFromMarketDialog.startSaveActivity(mContext, intent);
+			startSaveActivity(intent);
+    	} else {
+    		// BUTTON2 is handled by parent.
+    		super.onClick(dialog, which);
     	}
 		
 	}
