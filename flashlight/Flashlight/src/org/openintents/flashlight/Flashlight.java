@@ -18,6 +18,7 @@ package org.openintents.flashlight;
 
 import org.openintents.distribution.AboutDialog;
 import org.openintents.distribution.DistributionLibraryActivity;
+import org.openintents.distribution.DownloadAppDialog;
 import org.openintents.intents.FlashlightIntents;
 import org.openintents.util.IntentUtils;
 
@@ -268,22 +269,11 @@ public class Flashlight extends DistributionLibraryActivity {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
 		case DIALOG_COLORPICKER_DOWNLOAD:
-			return new AlertDialog.Builder(this)
-			.setIcon(android.R.drawable.ic_dialog_alert)
-			.setTitle(R.string.download_color_picker)
-			.setMessage(R.string.color_picker_modularization_explanation)
-			.setPositiveButton(R.string.download_color_picker_market, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
-				}
-			})
-			.setNeutralButton(R.string.download_color_picker_web, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(new Intent(Intent.ACTION_VIEW, GetMarketDownloadIntent.APK_DOWNLOAD_URI_COLOR_PICKER));
-				}
-			})
-//			.setNegativeButton(R.string.alert_dialog_cancel, null)
-			.create();
+			return new DownloadAppDialog(this, 
+					R.string.color_picker_modularization_explanation, 
+					R.string.color_picker, 
+					R.string.color_picker_package,
+					R.string.color_picker_website);
 		}
 		return null;
 	}
@@ -297,13 +287,7 @@ public class Flashlight extends DistributionLibraryActivity {
 		switch (id) {
 		case DIALOG_COLORPICKER_DOWNLOAD:
 		{
-			boolean has_android_market = IntentUtils.isIntentAvailable(this,
-					GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
-
-			Log.d(TAG, "has_android_market? " + has_android_market);
-			
-			dialog.findViewById(android.R.id.button1).setVisibility(
-					has_android_market ? View.VISIBLE : View.GONE);
+			DownloadAppDialog.onPrepareDialog(this, dialog);
 			break;
 		}
 		default:

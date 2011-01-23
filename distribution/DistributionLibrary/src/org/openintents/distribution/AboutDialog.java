@@ -40,7 +40,7 @@ public class AboutDialog extends DownloadAppDialog {
 				R.string.oi_distribution_aboutapp_not_available,
 				R.string.oi_distribution_aboutapp,
 				R.string.oi_distribution_aboutapp_package,
-				R.string.oi_distribution_aboutapp_developer_uri);
+				R.string.oi_distribution_aboutapp_website);
 
 		String version = VersionUtils.getVersionNumber(mContext);
         String appname = VersionUtils.getApplicationName(mContext);

@@ -52,7 +52,7 @@ public class UpdateDialog extends DownloadAppDialog {
         		R.string.oi_distribution_update_box_text, 
         		R.string.oi_distribution_update_app, 
         		R.string.oi_distribution_update_checker_package, 
-        		R.string.oi_distribution_update_checker_developer_url);
+        		R.string.oi_distribution_update_checker_website);
         mContext = context;
 
         String version = VersionUtils.getVersionNumber(mContext);

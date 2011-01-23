@@ -38,7 +38,7 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
 
     Context mContext;
     int mDownloadPackage;
-    int mDownloadDeveloperUri;
+    int mDownloadWebsite;
     String mDownloadAppName;
     String mDownloadPackageName;
     String mMessageText;
@@ -50,11 +50,11 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
     //    mContext = context;
     //}
     
-    public DownloadAppDialog(Context context, int message, int download_name, int download_package, int download_developer_uri) {
+    public DownloadAppDialog(Context context, int message, int download_name, int download_package, int download_website) {
         super(context);
         mContext = context;
         mDownloadPackage = download_package;
-        mDownloadDeveloperUri = download_developer_uri;
+        mDownloadWebsite = download_website;
 
         mDownloadAppName = mContext.getString(download_name);
         mDownloadPackageName = mContext.getString(mDownloadPackage);
@@ -89,7 +89,7 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
 			startSaveActivity(intent);
     	} else if (which == BUTTON2) {
     		intent  = new Intent(Intent.ACTION_VIEW);
-    		Uri uri= Uri.parse(mContext.getString(mDownloadDeveloperUri));
+    		Uri uri= Uri.parse(mContext.getString(mDownloadWebsite));
 			intent.setData(uri);
 			startSaveActivity(intent);
     	}
