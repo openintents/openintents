@@ -20,9 +20,6 @@
     <string name="download_color_picker_market">Market download</string>
     <string name="download_color_picker_web">Web download</string>
 	
-	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->

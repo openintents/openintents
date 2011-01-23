@@ -13,9 +13,9 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
 	
-	protected static final int MENU_DISTRIBUTION_START = Menu.FIRST + 0; // MUST BE LAST
+	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 0; // MUST BE LAST
 	
-	protected static final int DIALOG_DISTRIBUTION_START = 1; // MUST BE LAST
+	private static final int DIALOG_DISTRIBUTION_START = 1; // MUST BE LAST
 	
     /** Called when the activity is first created. */
     @Override
@@ -31,7 +31,19 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
             return;
         }
     }
-    
+
+ 	@Override
+ 	public boolean onCreateOptionsMenu(Menu menu) {
+ 		super.onCreateOptionsMenu(menu);
+ 		
+ 		// Add other menu items here....
+ 		
+ 		// Add distribution menu items last.
+ 		mDistribution.onCreateOptionsMenu(menu);
+ 		
+ 		return true;
+ 	}
+ 	
     public void onClickResetEula(View view) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferences.Editor e = sp.edit();
