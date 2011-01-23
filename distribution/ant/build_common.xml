@@ -154,6 +154,72 @@
         </javadoc>
     </target>
 
+	
+	<!-- ############### recent_changes.txt ############ -->
+	<!-- Copy parts of readme.txt to res/raw/recent_changes.txt.
+	Copies the latest 3 version comments and the final
+	section of readme.txt into res/raw/recent_changes.txt -->
+
+	<!-- Readme file -->
+    <property name="readme.full.file.name"
+                  value="readme.txt" />
+	
+	<!-- res/raw/recent_changes.txt file -->
+    <property name="readme.short.file.name"
+                  value="res/raw/recent_changes.txt" />
+	
+	<target name="update-recent-changes" description="Copy the three latest version comments from readme.txt to res/raw/recent_changes.txt">
+		<delete file="${readme.short.file.name}"/>
+		<copy file="${readme.full.file.name}" tofile="${readme.short.file.name}" >
+			<filterchain>
+				<!-- The separator is 3 or more "-" in a single line.
+					Prepend those by "§", which will be the 
+					separating character.
+					
+					Explanation of the regular expression:
+						^  line start
+						-  one "-" (repeated twice)
+						-* one or more "-"
+						$  line end -->
+				<tokenfilter>
+					<replaceregex
+				        pattern="^(---*)$"
+				        replace="§\1"/>
+				</tokenfilter>
+				<!-- Split off the first 3 release items
+					and keep everything after the last separator.
+					
+					Explanation of the regular expression:
+						[^§]*  everything except "§"
+						§      then a single "§"
+						(...)  first group starts that contains
+						(...){1,3}  one up to three times
+						[^§]*§ everything except "§" followed by "§"
+						.*     then arbitrary characters
+						§([^§]*) the final group that does not contain
+						         "§" is separated by a "§". 
+					Filetokenizer and flag "s" (singleline) treat the
+					whole file as single line.
+					-->
+				<tokenfilter>
+					<filetokenizer/>
+					<replaceregex
+						pattern="[^§]*§(([^§]*§){1,3}).*§([^§]*)"
+						replace="\1\3"
+						flags="s"/>
+				</tokenfilter>
+				<!-- Remove the separator "§" -->
+				<tokenfilter>
+					<replaceregex
+						pattern="§"
+						replace=""
+						flags="g"/>
+				</tokenfilter>
+			</filterchain>
+		</copy>
+		
+	</target>
+	
 	<!-- ############### Release source ####################### -->
 
 	<!-- Full path of the base directory of OpenIntents -->
@@ -290,7 +356,7 @@
 	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
-		depends="release, javadoc, release-source"
+		depends="update-recent-changes, release, javadoc, release-source"
 		description="Creates release apk, JavaDoc, and the source code" />
 	
 </project>

@@ -40,12 +40,6 @@
     
     
 	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	<!-- Update -->
-	<string name="oi_distribution_update_app_developer_url">http://www.openintents.org/en/countdown</string>
-	
-	<!-- ***************************
 	     Preferences
 	     *************************** -->
     
