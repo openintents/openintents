@@ -21,6 +21,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.openintents.util.VersionUtils;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -90,9 +92,8 @@ public class EulaActivity extends Activity {
 		mText = (TextView) findViewById(R.id.text);
 		mImage = (ImageView) findViewById(R.id.imageview);
 		
-		int labelRes = getApplicationInfo().labelRes;
-		mAppName = getString(labelRes);
-		int iconRes = getApplicationInfo().icon;
+		mAppName = VersionUtils.getApplicationName(this);
+		int iconRes = VersionUtils.getApplicationIcon(this);
 		
 		setTitle(mAppName);
 		mImage.setImageResource(iconRes);

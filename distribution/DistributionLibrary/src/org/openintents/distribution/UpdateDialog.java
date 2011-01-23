@@ -56,8 +56,7 @@ public class UpdateDialog extends DownloadAppDialog {
         mContext = context;
 
         String version = VersionUtils.getVersionNumber(mContext);
-		int labelRes = context.getApplicationInfo().labelRes;
-        String appname = context.getString(labelRes);
+        String appname = VersionUtils.getApplicationName(mContext);
         String appnameversion = mContext.getString(R.string.oi_distribution_name_and_version, appname, version);
         
         StringBuilder sb = new StringBuilder();
