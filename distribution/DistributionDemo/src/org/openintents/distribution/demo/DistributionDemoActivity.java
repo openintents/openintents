@@ -13,9 +13,9 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
 	
-	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 0; // MUST BE LAST
+	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // MUST BE LAST
 	
-	private static final int DIALOG_DISTRIBUTION_START = 1; // MUST BE LAST
+	private static final int DIALOG_DISTRIBUTION_START = 100; // MUST BE LAST
 	
     /** Called when the activity is first created. */
     @Override

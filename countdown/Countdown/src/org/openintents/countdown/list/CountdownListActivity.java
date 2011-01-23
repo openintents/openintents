@@ -68,7 +68,7 @@ public class CountdownListActivity extends DistributionLibraryListActivity
     private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
  	private static final int MENU_SETTINGS = Menu.FIRST + 5;
     private static final int MENU_ITEM_EDIT = Menu.FIRST + 6;
-    private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 7; // must be last
+    private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // must be last
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
 	

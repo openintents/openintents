@@ -43,8 +43,6 @@
 	     Distribution
 	     *************************** -->
 	<!-- Update -->
-	<!-- <string name="oi_distribution_update_app_url">market://search?q=openintents</string> -->
-    <string name="oi_distribution_update_app_developer_url">http://www.openintents.org</string>
 	<string name="oi_distribution_update_checker_package">org.openintents.updatechecker</string>
     <string name="oi_distribution_update_checker_website">http://www.openintents.org/en/node/203</string><!-- 203 = OI Update -->
 	

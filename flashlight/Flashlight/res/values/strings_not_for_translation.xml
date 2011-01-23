@@ -30,9 +30,6 @@
 	     Distribution
 	     *************************** -->
 	
-	<!-- Update -->
-	<string name="oi_distribution_update_app_developer_url">http://www.openintents.org/en/flashlight</string>
-    
     <!-- Color picker -->
     <string name="color_picker_package">org.openintents.colorpicker</string>
     <string name="color_picker_website">http://www.openintents.org/en/colorpicker</string>

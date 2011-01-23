@@ -53,7 +53,7 @@ public class Flashlight extends DistributionLibraryActivity {
 
 	private static final int MENU_COLOR = Menu.FIRST + 1;
 	private static final int MENU_SETTINGS = Menu.FIRST + 4;	
-	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 5; // MUST BE LAST
+	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // MUST BE LAST
 
 	
 
@@ -61,7 +61,7 @@ public class Flashlight extends DistributionLibraryActivity {
 
 	private static final int DIALOG_ABOUT = 1;
 	private static final int DIALOG_COLORPICKER_DOWNLOAD = 2;
-	private static final int DIALOG_DISTRIBUTION_START = 1; // MUST BE LAST
+	private static final int DIALOG_DISTRIBUTION_START = 100; // MUST BE LAST
 
 	
 	private LinearLayout mBackground;
@@ -275,7 +275,7 @@ public class Flashlight extends DistributionLibraryActivity {
 					R.string.color_picker_package,
 					R.string.color_picker_website);
 		}
-		return null;
+		return super.onCreateDialog(id);
 	}
 	
 	@Override
