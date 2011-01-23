@@ -45,15 +45,20 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
     
     boolean mMarketAvailable;
     
-    //public DownloadAppDialog(Context context) {
-    //	super(context);
-    //    mContext = context;
-    //}
+    public DownloadAppDialog(Context context) {
+        super(context);
+        mContext = context;
+    }
     
     public DownloadAppDialog(Context context, int message, int download_name, int download_package, int download_website) {
         super(context);
         mContext = context;
-        mDownloadPackage = download_package;
+        set(message, download_name, download_package, download_website);
+    }
+
+	protected void set(int message, int download_name,
+			int download_package, int download_website) {
+		mDownloadPackage = download_package;
         mDownloadWebsite = download_website;
 
         mDownloadAppName = mContext.getString(download_name);
@@ -74,12 +79,12 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
         mMessageText = sb.toString();
         setMessage(mMessageText);
 
-        setTitle(context.getString(R.string.oi_distribution_download_title,
+        setTitle(mContext.getString(R.string.oi_distribution_download_title,
         		mDownloadAppName));
         
         setButton(mContext.getText(R.string.oi_distribution_download_market), this);
     	setButton2(mContext.getText(R.string.oi_distribution_download_web), this);
-    }
+	}
     
 	public void onClick(DialogInterface dialog, int which) {
 		Intent intent;
