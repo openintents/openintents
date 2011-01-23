@@ -1,0 +1,41 @@
+
+---------------------------------------------------------
+release: 1.1.1
+date: 2011-??
+
+- support Android 2.3.
+- translations into various languages.
+
+---------------------------------------------------------
+release: 1.1.0
+date: 2009-07-05
+
+- Increase maximum duration from 24 hours to 100000 days.
+- Alternatively set countdown through due date.
+- Set shortcut or automation task when countdown is done.
+- Shortcuts (and applications) are launched either
+  through the notification or directly.
+- New automation tasks to start or stop a specific
+  countdown.
+- Auto-turn off alarm after a certain period
+  that can be adjusted in the settings.
+- Use ringer volume stream for sound.
+- Fix vibrate only notification.
+- Light notification.
+ 
+---------------------------------------------------------
+release: 1.0.1
+date: 2008-11-11
+
+- Include Start button on list of countdowns.
+
+---------------------------------------------------------
+
+For the complete list of changes and a list of frequently asked questions, please visit:
+http://www.openintents.org
+
+You can help to improve the translation into your language at Launchpad:
+https://translations.launchpad.net/openintents/trunk
+
+The source code of this free and open source application is available at:
+http://code.google.com/p/openintents/

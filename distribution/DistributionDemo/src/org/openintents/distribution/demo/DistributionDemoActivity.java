@@ -13,16 +13,23 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
 	
-	static final int MENU_DISTRIBUTION_START = Menu.FIRST;
+	protected static final int MENU_DISTRIBUTION_START = Menu.FIRST;
 	
-	static final int DIALOG_DISTRIBUTION_START = 1;
-	
+	protected static final int DIALOG_DISTRIBUTION_START = 1;
 	
     /** Called when the activity is first created. */
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+        mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
+        
+        // Check whether EULA has been accepted
+        // or information about new version can be presented.
+		if (mDistribution.showEulaOrNewVersion()) {
+            return;
+        }
     }
     
     public void onClickResetEula(View view) {

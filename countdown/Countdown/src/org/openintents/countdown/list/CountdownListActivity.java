@@ -23,14 +23,10 @@ import org.openintents.countdown.automation.AutomationActions;
 import org.openintents.countdown.db.Countdown.Durations;
 import org.openintents.countdown.util.CountdownUtils;
 import org.openintents.countdown.util.NotificationState;
-import org.openintents.distribution.AboutDialog;
-import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.UpdateMenu;
+import org.openintents.distribution.DistributionLibraryListActivity;
 import org.openintents.util.DateTimeFormater;
 import org.openintents.util.MenuIntentOptionsWithIcons;
 
-import android.app.Dialog;
-import android.app.ListActivity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentUris;
@@ -45,14 +41,14 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.AbsListView.OnScrollListener;
 
 
 /**
@@ -60,7 +56,7 @@ import android.widget.AbsListView.OnScrollListener;
  * provided in the intent if there is one, otherwise defaults to displaying the
  * contents of the {@link NotePadProvider}
  */
-public class CountdownListActivity extends ListActivity 
+public class CountdownListActivity extends DistributionLibraryListActivity 
 	implements CountdownCursorAdapter.OnCountdownClickListener,
 	ListView.OnScrollListener{
     private static final String TAG = "CountdownListActivity";
@@ -70,14 +66,11 @@ public class CountdownListActivity extends ListActivity
     private static final int MENU_ITEM_DELETE = Menu.FIRST;
     private static final int MENU_ITEM_INSERT = Menu.FIRST + 1;
     private static final int MENU_ITEM_SEND_BY_EMAIL = Menu.FIRST + 2;
-	private static final int MENU_ABOUT = Menu.FIRST + 3;
-	private static final int MENU_UPDATE = Menu.FIRST + 4;
  	private static final int MENU_SETTINGS = Menu.FIRST + 5;
     private static final int MENU_ITEM_EDIT = Menu.FIRST + 6;
+    protected static final int MENU_DISTRIBUTION_START = Menu.FIRST + 7; // must be last
 	
 	private static final int REQUEST_CODE_VERSION_CHECK = 1;
-
-	private static final int DIALOG_ABOUT = 1;
 	
     /**
      * The columns we are interested in from the database
@@ -108,9 +101,13 @@ public class CountdownListActivity extends ListActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-		if (!EulaActivity.checkEula(this)) {
-			return;
-		}
+        mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
+        
+        // Check whether EULA has been accepted
+        // or information about new version can be presented.
+		if (mDistribution.showEulaOrNewVersion()) {
+            return;
+        }
 		
 		CountdownUtils.setLocalizedStrings(this);
 		
@@ -211,13 +208,10 @@ public class CountdownListActivity extends ListActivity
                 .setShortcut('3', 'c')
                 .setIcon(android.R.drawable.ic_menu_add);
         
-        UpdateMenu.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
-
 		menu.add(0, MENU_SETTINGS, 0, R.string.settings).setIcon(
 				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
-		
-        menu.add(0, MENU_ABOUT, 0, R.string.about)
-		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
+
+ 		mDistribution.onCreateOptionsMenu(menu);
 
         // Generate any additional actions that can be performed on the
         // overall list.  In a normal install, there are no additional
@@ -277,12 +271,6 @@ public class CountdownListActivity extends ListActivity
         case MENU_ITEM_INSERT:
             insertNewNote();
             return true;
-		case MENU_ABOUT:
-			showAboutBox();
-			return true;
-		case MENU_UPDATE:
-			UpdateMenu.showUpdateBox(this);
-			return true;
 		case MENU_SETTINGS:
 			showNotesListSettings();
 			return true;
@@ -351,28 +339,6 @@ public class CountdownListActivity extends ListActivity
         }
         return false;
     }
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-
-		switch (id) {
-		case DIALOG_ABOUT:
-			return new AboutDialog(this);
-		}
-		return null;
-	}
-
-	@Override
-	protected void onPrepareDialog(int id, Dialog dialog) {
-		switch (id) {
-		case DIALOG_ABOUT:
-			break;
-		}
-	}
-	
-	private void showAboutBox() {
-		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
-	}
 
 	private void showNotesListSettings() {
 		startActivity(new Intent(this, PreferenceActivity.class));

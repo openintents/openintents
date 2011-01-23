@@ -158,9 +158,6 @@
 			</intent-filter>  -->
 		</activity>
         
-        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
-        </activity>
-        
     	<activity android:name=".PreferenceActivity" android:label="@string/settings"></activity>
         
         <receiver android:name=".AlarmReceiver" />
@@ -176,6 +173,10 @@
 		
         <service android:name=".AlarmService" />
         <!--  android:process=":remote" -->
+        
+		<!-- Activities from OI Distribution Library -->
+        <activity android:name="org.openintents.distribution.EulaActivity" />
+        <activity android:name="org.openintents.distribution.NewVersionActivity" />
         
     </application>
 </manifest> 

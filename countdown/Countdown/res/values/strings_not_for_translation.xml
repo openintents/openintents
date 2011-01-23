@@ -43,8 +43,7 @@
 	     Distribution
 	     *************************** -->
 	<!-- Update -->
-	<string name="update_app_url">market://search?q=pname:org.openintents.countdown</string>
-    <string name="update_app_developer_url">http://www.openintents.org/en/node/204</string><!-- 204 = OI Countdown -->
+	<string name="oi_distribution_update_app_developer_url">http://www.openintents.org/en/countdown</string>
 	
 	<!-- ***************************
 	     Preferences

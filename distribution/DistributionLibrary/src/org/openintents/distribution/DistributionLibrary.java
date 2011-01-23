@@ -27,6 +27,11 @@ public class DistributionLibrary {
 		mFirstDialogId = firstDialogId;
 	}
 	
+	public void setFirst(int firstMenuId, int firstDialogId) {
+		mFirstMenuId = firstMenuId;
+		mFirstDialogId = firstDialogId;
+	}
+	
 	/**
 	 * Typical usage:
 	 * Put this code in the beginning of onCreate().
@@ -50,6 +55,10 @@ public class DistributionLibrary {
 	}
 	
 	public void onCreateOptionsMenu(Menu menu) {
+		// Remove items first so that they don't appear twice:
+		menu.removeItem(mFirstMenuId + OFFSET_UPDATE);
+		menu.removeItem(mFirstMenuId + OFFSET_ABOUT);
+		
 		if (UpdateDialog.isUpdateMenuNecessary(mActivity)) {
 			menu.add(0, mFirstMenuId + OFFSET_UPDATE, 0, R.string.oi_distribution_menu_update).setIcon(
 					android.R.drawable.ic_menu_info_details).setShortcut('9', 'u');
