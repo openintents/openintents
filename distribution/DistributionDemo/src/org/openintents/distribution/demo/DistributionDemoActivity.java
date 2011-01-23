@@ -13,9 +13,9 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
 	
-	protected static final int MENU_DISTRIBUTION_START = Menu.FIRST;
+	protected static final int MENU_DISTRIBUTION_START = Menu.FIRST + 0; // MUST BE LAST
 	
-	protected static final int DIALOG_DISTRIBUTION_START = 1;
+	protected static final int DIALOG_DISTRIBUTION_START = 1; // MUST BE LAST
 	
     /** Called when the activity is first created. */
     @Override
@@ -27,7 +27,7 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
         
         // Check whether EULA has been accepted
         // or information about new version can be presented.
-		if (mDistribution.showEulaOrNewVersion()) {
+        if (mDistribution.showEulaOrNewVersion()) {
             return;
         }
     }
