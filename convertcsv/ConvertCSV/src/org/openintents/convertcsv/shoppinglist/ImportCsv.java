@@ -65,7 +65,7 @@ public class ImportCsv {
 			
 			// Add item to list
 			long listId = Shopping.getList(mContext, listname);
-			long itemId = Shopping.getItem(mContext, itemname, tags, null);
+			long itemId = Shopping.getItem(mContext, itemname, tags, null, null);
 			
 			if (status == 1) {
 				status = Status.BOUGHT;
@@ -106,10 +106,11 @@ public class ImportCsv {
 				status = Status.REMOVED_FROM_LIST;
 			}
 
-			
-	    	String itemname = nextLine[2]; // Description					
+			String itemname = nextLine[2]; // Description					
 			String tags = nextLine[9]; // Category
 			String price = nextLine[6]; // Price
+			String note = nextLine[18]; // Note
+			
 			long quantity;
 			try {
 			    quantity = Integer.parseInt(nextLine[4]); // Quantity
@@ -125,7 +126,7 @@ public class ImportCsv {
 			
 			// Add item to list
 			long listId = Shopping.getDefaultList();
-			long itemId = Shopping.getItem(mContext, itemname, tags, price);
+			long itemId = Shopping.getItem(mContext, itemname, tags, price, note);
 			Shopping.addItemToList(mContext, itemId, listId, status, priority, quantity);
 			
 			// Two columns contain per-store information. Column 10 lists 
