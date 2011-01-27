@@ -21,7 +21,6 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
 
         mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
         
@@ -30,6 +29,8 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
         if (mDistribution.showEulaOrNewVersion()) {
             return;
         }
+        
+        setContentView(R.layout.main);
     }
 
  	@Override

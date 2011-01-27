@@ -65,6 +65,8 @@
     <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
     
     <!-- Safe -->
+    <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
+    <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>

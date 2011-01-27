@@ -52,10 +52,10 @@
 	
     <!-- File Manager -->
     <string name="oi_distribution_filemanager_package">org.openintents.filemanager</string>
-    <string name="oi_distribution_filemanager_website">http://www.openintents.org/en/filemanager</string><!-- OI File Manager -->
+    <string name="oi_distribution_filemanager_website">http://www.openintents.org/en/filemanager</string>
 	
 	<!-- Safe -->
     <string name="oi_distribution_safe_package">org.openintents.safe</string>
-    <string name="oi_distribution_safe_website">http://www.openintents.org/en/safe</string><!-- OI Safe -->
+    <string name="oi_distribution_safe_website">http://www.openintents.org/en/safe</string>
 	
 </resources>
