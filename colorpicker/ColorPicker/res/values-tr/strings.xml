@@ -21,10 +21,10 @@ Launchpad Contributions:
     <string name="app_name">OI Renk Seçici</string>
     <string name="color_picker">Renk Seçici</string>
     
-    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors_condensed">En son</string>
     <string name="recent_colors">Recent colors</string>
     <string name="recent_colors_expanded">Recently chosen colors</string>
-    <string name="recent_colors_clear_history">Clear</string>
+    <string name="recent_colors_clear_history">Temizle</string>
     <string name="recent_colors_empty">There are no recently chosen colors.</string>
     
     

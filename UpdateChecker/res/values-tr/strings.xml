@@ -59,7 +59,7 @@ Launchpad Contributions:
     <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
     <string name="settings">Ayarlar</string>
     <string name="auto_update">Auto check</string>
-    <string name="ignore_title">Ignored</string>
+    <string name="ignore_title">Yok Sayıldı</string>
     <string name="ignore_text">Updates are currently ignored. Would you like to receive updates again?</string>
     <string name="unknown_title">Bilinmeyen</string>
     <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>

@@ -18,13 +18,6 @@
 	<string name="about_website_label">OI Countdown на OpenIntents</string>
 	
 	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">Лицензионное соглашение OI Countdown</string>
-	
-	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->

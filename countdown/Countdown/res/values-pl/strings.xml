@@ -17,13 +17,6 @@ Launchpad Contributions:
 	<string name="about_website_label">OI Odliczanie na OpenIntents</string>
 	
 	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">Licencja OI Odliczanie</string>
-	
-	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->

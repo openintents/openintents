@@ -9,6 +9,7 @@
 
 Launchpad Contributions:
   Fitoschido https://launchpad.net/~fitoschido
+  Javier Martínez Arrieta https://launchpad.net/~javote87
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
@@ -24,8 +25,8 @@ Launchpad Contributions:
     <string name="recent_colors_condensed">Recent</string>
     <string name="recent_colors">Recent colors</string>
     <string name="recent_colors_expanded">Recently chosen colors</string>
-    <string name="recent_colors_clear_history">Clear</string>
-    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    <string name="recent_colors_clear_history">Limpiar</string>
+    <string name="recent_colors_empty">No hay colores elegidos recientemente</string>
     
     
     
@@ -47,11 +48,11 @@ Launchpad Contributions:
     <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
     <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Interfaz Flickr nativo para Android</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
     <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
-    <string name="title_app_character_gen">Anime Character Generator</string>
+    <string name="title_app_character_gen">Generador de carácter animado</string>
     
     
 	<string name="info_activity_text">Esta app puede ser usada con las aplicaciones siguientes:</string>

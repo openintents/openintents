@@ -16,14 +16,8 @@
 	     Distribution
 	     *************************** -->
 	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -33,7 +27,9 @@
     
     
     <string name="color">색</string>
-    <string name="color_picker">색 골라내기</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Color Picker</string>
     
     
     <string name="preferences">Preferences</string>

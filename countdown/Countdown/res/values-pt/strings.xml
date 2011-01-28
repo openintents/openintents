@@ -19,13 +19,6 @@
 	<string name="about_website_label">OI Countdown at OpenIntents</string>
 	
 	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Countdown EULA</string>
-	
-	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application -->

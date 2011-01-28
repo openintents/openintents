@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Anges https://launchpad.net/~az24
   Peli https://launchpad.net/~peli0101
   Thibault Févry https://launchpad.net/~thibaultfevry</string>
 	
@@ -23,9 +24,9 @@ Launchpad Contributions:
     
     <string name="recent_colors_condensed">Recent</string>
     <string name="recent_colors">Recent colors</string>
-    <string name="recent_colors_expanded">Recently chosen colors</string>
-    <string name="recent_colors_clear_history">Clear</string>
-    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    <string name="recent_colors_expanded">Dernières couleurs choisies</string>
+    <string name="recent_colors_clear_history">Vider la liste</string>
+    <string name="recent_colors_empty">L’historique est vide</string>
     
     
     

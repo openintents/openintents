@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Abdessamad Derraz https://launchpad.net/~derraz
+  Anges https://launchpad.net/~az24
   Peli https://launchpad.net/~peli0101
   Thibault Févry https://launchpad.net/~thibaultfevry</string>
 	
@@ -18,14 +19,8 @@
 	     Distribution
 	     *************************** -->
 	
-    <string name="download_color_picker">Download Color Picker</string>
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.  Please download it now from the Market or the OpenIntents website.</string>
-    <string name="download_color_picker_market">Market download</string>
-    <string name="download_color_picker_web">Web download</string>
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Flashlight EULA</string>
-	
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
@@ -35,17 +30,19 @@
     
     
     <string name="color">Couleur</string>
-    <string name="color_picker">Sélecteur de couleur</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Color Picker</string>
     
     
-    <string name="preferences">Préférences</string>
+    <string name="preferences">Paramètres</string>
     
 
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
-	<string name="settings_titlebar">Préférences</string>
+	<string name="settings_titlebar">Paramètres</string>
 	<string name="settings_title_keep_color">Garder la couleur</string>
 	<string name="settings_summary_keep_color">Sauver la couleur pour le prochain démarrage de l\'application Flashlight</string>
 </resources>

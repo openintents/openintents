@@ -6,6 +6,7 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Fitoschido https://launchpad.net/~fitoschido
   Juan Eduardo Riva https://launchpad.net/~juaneduardoriva
   Paco Molinero https://launchpad.net/~franciscomol
   Peli https://launchpad.net/~peli0101
@@ -17,13 +18,6 @@
 	
 	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
 	<string name="about_website_label">OI Countdown en OpenIntents</string>
-	
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-	<!-- EULA -->
-	<string name="eula_title">OI Countdown EULA</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -149,7 +143,7 @@
 	     Preferences
 	     *************************** -->
 
-    <string name="preference_countdown">Cuenta atrás</string>
+    <string name="preference_countdown">Cuenta regresiva</string>
 
     <string name="preference_extensions">Extensiones</string>
     <string name="preference_get_extensions">Obtener nuevas extensiones</string>
