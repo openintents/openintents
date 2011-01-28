@@ -86,8 +86,9 @@
         
         <activity android:name="org.openintents.flashlight.FlashlightPrefs" />
         
-        <activity android:name="org.openintents.distribution.EulaActivity" android:label="@string/eula_title">
-        </activity> 
+		<!-- Activities from OI Distribution Library -->
+        <activity android:name="org.openintents.distribution.EulaActivity" />
+        <activity android:name="org.openintents.distribution.NewVersionActivity" />
                 
     </application>
 </manifest> 

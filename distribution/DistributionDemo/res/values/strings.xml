@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">To see EULA or New Version activities again, press one of the buttons, and exit and enter the application again.</string>
+    <string name="app_name">OI Distribution Demo</string>
+</resources>

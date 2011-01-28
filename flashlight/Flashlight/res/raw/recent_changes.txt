@@ -1,0 +1,33 @@
+---------------------------------------------------------
+release: 1.0.7
+date: 2011-?
+- support Android 2.3.
+- translations into various languages.
+
+---------------------------------------------------------
+release: 1.0.6
+date: 2010-07-22
+- translations: Occitan (post 1500)
+- Modularized Color Picker:
+  Launches Android Market when color picker not found
+
+---------------------------------------------------------
+release: 1.0.5
+date: 2010-04-25
+- Fix size of color picker widget for high density
+  devices (patch by Karl Ostmo, issue 267).
+- Bugfix: Keep color on screen rotation (patch by
+  Karl Ostmo, issue 243).
+- New preference to keep color (patch by Karl Ostmo)
+- Translations: Dutch, French, German, Italian, Japanese,
+  Korean, Lao, Romanian, Russian, Spanish
+
+---------------------------------------------------------
+For the complete list of changes and a list of frequently asked questions, please visit:
+http://www.openintents.org
+
+You can help to improve the translation into your language at Launchpad:
+https://translations.launchpad.net/openintents/trunk
+
+The source code of this free and open source application is available at:
+http://code.google.com/p/openintents

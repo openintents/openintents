@@ -17,12 +17,11 @@
 package org.openintents.flashlight;
 
 import org.openintents.distribution.AboutDialog;
-import org.openintents.distribution.EulaActivity;
-import org.openintents.distribution.UpdateMenu;
+import org.openintents.distribution.DistributionLibraryActivity;
+import org.openintents.distribution.DownloadAppDialog;
 import org.openintents.intents.FlashlightIntents;
 import org.openintents.util.IntentUtils;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -47,21 +46,23 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class Flashlight extends Activity {
+public class Flashlight extends DistributionLibraryActivity {
 	
 	private static final String TAG = "Flashlight";
 	private static final boolean debug = true;
 
 	private static final int MENU_COLOR = Menu.FIRST + 1;
-	private static final int MENU_ABOUT = Menu.FIRST + 2;
-	private static final int MENU_UPDATE = Menu.FIRST + 3;
-	private static final int MENU_SETTINGS = Menu.FIRST + 4;
+	private static final int MENU_SETTINGS = Menu.FIRST + 4;	
+	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // MUST BE LAST
+
 	
 
     private static final int REQUEST_CODE_PICK_COLOR = 1;
 
 	private static final int DIALOG_ABOUT = 1;
 	private static final int DIALOG_COLORPICKER_DOWNLOAD = 2;
+	private static final int DIALOG_DISTRIBUTION_START = 100; // MUST BE LAST
+
 	
 	private LinearLayout mBackground;
 	private View mIcon;
@@ -104,10 +105,14 @@ public class Flashlight extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
         
-		if (!EulaActivity.checkEula(this)) {
-			return;
-		}
+        // Check whether EULA has been accepted
+        // or information about new version can be presented.
+        if (mDistribution.showEulaOrNewVersion()) {
+            return;
+        }
 
 		// Turn off the title bar
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -226,13 +231,10 @@ public class Flashlight extends Activity {
 
         menu.add(0, MENU_SETTINGS, 0,R.string.preferences)
 		  .setIcon(android.R.drawable.ic_menu_preferences).setShortcut('4', 'p');
-        
-		UpdateMenu
-				.addUpdateMenu(this, menu, 0, MENU_UPDATE, 0, R.string.menu_update);
-		
-		menu.add(0, MENU_ABOUT, 0, R.string.about)
-		  .setIcon(android.R.drawable.ic_menu_info_details) .setShortcut('0', 'a');
 
+ 		// Add distribution menu items last.
+ 		mDistribution.onCreateOptionsMenu(menu);
+ 		
 		return true;
 	}
 
@@ -249,17 +251,9 @@ public class Flashlight extends Activity {
 		case MENU_COLOR:
             pickColor();
             return true;
-        
-		case MENU_ABOUT:
-			showAboutBox();
-			return true;
 			
 		case MENU_SETTINGS:
 			showSettingsMenu();
-			return true;
-
-		case MENU_UPDATE:
-			UpdateMenu.showUpdateBox(this);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -275,24 +269,13 @@ public class Flashlight extends Activity {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
 		case DIALOG_COLORPICKER_DOWNLOAD:
-			return new AlertDialog.Builder(this)
-			.setIcon(android.R.drawable.ic_dialog_alert)
-			.setTitle(R.string.download_color_picker)
-			.setMessage(R.string.color_picker_modularization_explanation)
-			.setPositiveButton(R.string.download_color_picker_market, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
-				}
-			})
-			.setNeutralButton(R.string.download_color_picker_web, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int whichButton) {
-					startActivity(new Intent(Intent.ACTION_VIEW, GetMarketDownloadIntent.APK_DOWNLOAD_URI_COLOR_PICKER));
-				}
-			})
-//			.setNegativeButton(R.string.alert_dialog_cancel, null)
-			.create();
+			return new DownloadAppDialog(this, 
+					R.string.color_picker_modularization_explanation, 
+					R.string.color_picker, 
+					R.string.color_picker_package,
+					R.string.color_picker_website);
 		}
-		return null;
+		return super.onCreateDialog(id);
 	}
 	
 	@Override
@@ -304,13 +287,7 @@ public class Flashlight extends Activity {
 		switch (id) {
 		case DIALOG_COLORPICKER_DOWNLOAD:
 		{
-			boolean has_android_market = IntentUtils.isIntentAvailable(this,
-					GetMarketDownloadIntent.getMarketDownloadIntent(GetMarketDownloadIntent.PACKAGE_NAME_COLOR_PICKER));
-
-			Log.d(TAG, "has_android_market? " + has_android_market);
-			
-			dialog.findViewById(android.R.id.button1).setVisibility(
-					has_android_market ? View.VISIBLE : View.GONE);
+			DownloadAppDialog.onPrepareDialog(this, dialog);
 			break;
 		}
 		default:
@@ -343,10 +320,6 @@ public class Flashlight extends Activity {
 			//android 1.5 magic number meaning "default/user brightness"
 			mBrightness.setBrightness(-1f);
 		}
-	}
-	
-	private void showAboutBox() {
-		AboutDialog.showDialogOrStartActivity(this, DIALOG_ABOUT);
 	}
 	
 	private void showSettingsMenu() {

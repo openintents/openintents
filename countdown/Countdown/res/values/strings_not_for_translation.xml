@@ -21,8 +21,8 @@
 	     *************************** -->
 
     <!-- Strings for OI About -->
-	<string name="about_copyright">Copyright © 2008-2009 OpenIntents</string>
-	<string name="about_website_url">http://www.openintents.org/en/node/204</string><!-- 204 = OI Countdown -->
+	<string name="about_copyright">Copyright © 2008-2011 OpenIntents</string>
+	<string name="about_website_url">http://www.openintents.org/en/countdown</string>
 	<string name="about_email">support@openintents.org</string>
 	
 	
@@ -39,13 +39,6 @@
     </string-array>
     
     
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	<!-- Update -->
-	<string name="update_app_url">market://search?q=pname:org.openintents.countdown</string>
-    <string name="update_app_developer_url">http://www.openintents.org/en/node/204</string><!-- 204 = OI Countdown -->
-	
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
