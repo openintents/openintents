@@ -7,15 +7,11 @@
 # $2..translation file name
 function execute
 {
-    mainpath=$1
-	translationfilename=$2
-    scriptpath=../../$mainpath/translations
+    mainpath="$1"
+	translationfilename="$2"
+    scriptpath="../../$mainpath/translations"
     echo "Translating $mainpath"
-    cp translations_$translationfilename/* $scriptpath
-    cd $scriptpath
-    androidxml2po.bash -i
-	# back to the original directory
-    cd -
+    ../scripts/androidxml2po.bash -lp "translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -i
 }
 
 

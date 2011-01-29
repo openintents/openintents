@@ -13,11 +13,7 @@ function execute
 	translationspath=translations_$translationfilename
     echo "Translating $mainpath"
     mkdir translations_$translationfilename
-    cd $scriptpath
-    androidxml2po.bash -e
-	cd -
-    cp $scriptpath/*.pot $translationspath
-    cp $scriptpath/export_po/*.po $translationspath
+    ../scripts/androidxml2po.bash -lp "../import_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" -e
 }
 
 execute aboutapp/AboutApp aboutapp
