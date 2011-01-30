@@ -18,6 +18,9 @@ function execute
     ../scripts/androidxml2po.bash -lp "../import_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" -e
 }
 
+# Delete all existing output directories:
+rm -r translations_*
+
 # Read all apps that should be translated.
 # sed: Remove comment lines starting with "#"
 apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
