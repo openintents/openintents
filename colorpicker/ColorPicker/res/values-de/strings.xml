@@ -11,12 +11,14 @@
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Color Picker ist eine Erweiterung für OI Flashlight und andere kompatible Anwendungen.</string>
-	<string name="about_website_label">OI Color Picker at OpenIntents</string>
 	
 	<!-- ***************************
 	     Application-specific strings
 	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Color Picker</string>
+    
+    <!-- Title of the color picker activity. -->
     <string name="color_picker">Farbwähler</string>
     
     <string name="recent_colors_condensed">Recent</string>
@@ -25,13 +27,10 @@
     <string name="recent_colors_clear_history">Clear</string>
     <string name="recent_colors_empty">There are no recently chosen colors.</string>
     
-    
-    
 	<!-- About -->
 	<string name="about">Info</string>
 	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
 	<string name="aboutapp_get">Get OI About</string>
-
 
 	<!-- Update -->
 	<string name="update_error">Download application not available.</string>
@@ -39,6 +38,7 @@
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
     <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
     <string name="title_app_flashlight">OI Flashlight</string>
     

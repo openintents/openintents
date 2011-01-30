@@ -14,12 +14,14 @@ Launchpad Contributions:
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Color Picker est une extension pour OI Flashlight et autres application compatibles.</string>
-	<string name="about_website_label">OI Color Picker à OpenIntents</string>
 	
 	<!-- ***************************
 	     Application-specific strings
 	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Color Picker</string>
+    
+    <!-- Title of the color picker activity. -->
     <string name="color_picker">Sélecteur de couleur</string>
     
     <string name="recent_colors_condensed">Recent</string>
@@ -28,13 +30,10 @@ Launchpad Contributions:
     <string name="recent_colors_clear_history">Vider la liste</string>
     <string name="recent_colors_empty">L’historique est vide</string>
     
-    
-    
 	<!-- About -->
 	<string name="about">À propos</string>
 	<string name="aboutapp_not_available">Version %s\n\n Aucune extension disponible pour afficher toutes les infos (contact, credits, license).</string>
 	<string name="aboutapp_get">Obtenir OI About</string>
-
 
 	<!-- Update -->
 	<string name="update_error">Télécharger l\'application indisponible.</string>
@@ -42,6 +41,7 @@ Launchpad Contributions:
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
     <string name="info_app_flashlight">Pour choisir une couleur dans OI Flashlight, appuyez sur menu &gt; Couleur.</string>
     <string name="title_app_flashlight">OI Flashlight</string>
     
