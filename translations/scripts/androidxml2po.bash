@@ -1,7 +1,4 @@
 #!/bin/bash
-#
-# THIS IS THE MASTER FILE.
-#
 #Wrapper for xml2po for android and launchpad: Import .xml's from .po's, or export/update .po's from string.xml's. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad.
 #Copyright 2009 by pjv. Licensed under GPLv3.
 
@@ -9,13 +6,14 @@
 # Jan 8, 2011: Peli: Automatically delimit apostrophes: "'" <-> "\'"
 # Jan 8, 2011: Peli: Check if a language .po file exists. In this way, all language codes can be included in this file.
 # Jan 29, 2011: Peli: Read language codes dynamically. One central androidxml2po.bash file for all projects by introducing additional arguments.
+# Jan 30, 2011: Peli: Delete lines starting with "#~" (deleted translations) from export .po files, as they may contain duplicates that cause an error message when uploading to Launchpad..
 
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
 launchpad_pot_file_dir="."
 android_xml_files_res_dir="../res/values"
 #Change the typical filenames.
-launchpad_po_filename="xxxxxFILENAMExxxxx"
+launchpad_po_filename="application_name"
 android_xml_filename="strings"
 #Export directory of merged .po files. MUST not start with ".", or msgmerge will complain.
 export_po="export_po"
@@ -121,6 +119,12 @@ do
 			cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
             ${xml2po} -a -u "${language}".po tmp_strings.xml
 			undodelimitapostrophe "${language}".po
+			
+			# Take out lines starting with "#~".
+			# These are deleted translations, and Launchpad may show an error
+			# if duplicates appear there.
+			sed -i "s/#~.*//g" "${language}".po
+			
 			mv "${language}".po "${export_po}"/"${language}".po
         else
 		    echo "-"
