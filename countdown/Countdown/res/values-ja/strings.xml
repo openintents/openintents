@@ -9,16 +9,13 @@
   Peli https://launchpad.net/~peli0101
   bkiw https://launchpad.net/~bkiw</string>
 	
-    <!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">OI Countdownは指定した時間が経った事を通知します。</string>
-	
-	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OpenIntentsのOI Countdown</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Name of application -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Countdown</string>
     
     <string name="start">開始</string>
@@ -139,6 +136,7 @@
 	     Preferences
 	     *************************** -->
 
+	<!-- Preference section title for general settings regarding the countdown -->
     <string name="preference_countdown">カウントダウン</string>
 
     <string name="preference_extensions">拡張機能</string>
@@ -158,7 +156,8 @@
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">タイムアウトを設定</string>
-                
+    
+    <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
         <item>2 秒</item>
         <item>5 秒</item>

@@ -10,38 +10,39 @@
 Launchpad Contributions:
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
 	
-	<!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.</string>
-	<string name="about_website_label">OI Latarka na OpenIntents</string>
 	
-	<!-- ***************************
-	     Distribution
-	     *************************** -->
-	
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
-    
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Latarka</string>
     
     <string name="flashlight_info">Podświetlanie pozostaje włączone</string>
-    
     
     <string name="color">Kolor</string>
     
     <!-- Application name should be consistent across translations. -->
     <string name="color_picker">OI Color Picker</string>
     
-    
     <string name="preferences">Preferencje</string>
     
-
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
+	<!-- Title for preferences or settings -->
 	<string name="settings_titlebar">Preferencje</string>
 	<string name="settings_title_keep_color">Zachowaj kolor</string>
 	<string name="settings_summary_keep_color">Zachowaj wybór koloru do następnego uruchomienia</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    
 </resources>

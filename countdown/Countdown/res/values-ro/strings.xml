@@ -9,16 +9,13 @@
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
-    <!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">OI Countdown vă notifică după o perioadă specificată de timp.</string>
-	
-	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OI Countdown pe OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Name of application -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Countdown</string>
     
     <string name="start">Start</string>
@@ -139,6 +136,7 @@
 	     Preferences
 	     *************************** -->
 
+	<!-- Preference section title for general settings regarding the countdown -->
     <string name="preference_countdown">Numărătoare inversă</string>
 
     <string name="preference_extensions">Extensii</string>
@@ -158,7 +156,8 @@
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Configurează timpul de expirare</string>
-                
+    
+    <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
         <item>2 secunde</item>
         <item>5 secunde</item>

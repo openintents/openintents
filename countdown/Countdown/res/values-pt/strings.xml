@@ -12,16 +12,13 @@
   Tiago Silva https://launchpad.net/~tiagosilva
   nglnx https://launchpad.net/~nglnx</string>
 	
-    <!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
-	
-	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OI Countdown at OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Name of application -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Countdown</string>
     
     <string name="start">Iniciar</string>
@@ -142,6 +139,7 @@
 	     Preferences
 	     *************************** -->
 
+	<!-- Preference section title for general settings regarding the countdown -->
     <string name="preference_countdown">Countdown</string>
 
     <string name="preference_extensions">Extensions</string>
@@ -161,7 +159,8 @@
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Set timeout</string>
-                
+    
+    <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
         <item>2 seconds</item>
         <item>5 seconds</item>

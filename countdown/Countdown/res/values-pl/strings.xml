@@ -10,16 +10,13 @@
 Launchpad Contributions:
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
 	
-    <!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">OI Odliczanie informuje cię po upłynięciu określonego czasu.</string>
-	
-	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OI Odliczanie na OpenIntents</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Name of application -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Odliczanie</string>
     
     <string name="start">Start</string>
@@ -140,6 +137,7 @@ Launchpad Contributions:
 	     Preferences
 	     *************************** -->
 
+	<!-- Preference section title for general settings regarding the countdown -->
     <string name="preference_countdown">Odliczanie</string>
 
     <string name="preference_extensions">Rozszerzenia</string>
@@ -159,7 +157,8 @@ Launchpad Contributions:
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Ustaw czas trwania</string>
-                
+    
+    <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
         <item>2 sekundy</item>
         <item>5 sekund</item>

@@ -6,25 +6,54 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101
-  pjv https://launchpad.net/~pjv</string>
+  Henk van der Velden https://launchpad.net/~henkvandervelden86</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents Kleurenkiezer is een extensie voor OI Flashlight en andere ondersteunde applicaties.</string>
+	<string name="about_website_label">OI Kleurenkiezer bij OpenIntents</string>
 	
 	<!-- ***************************
-	     Applicatio-specific strings
+	     Application-specific strings
 	     *************************** -->
     <string name="app_name">OI Kleurenkiezer</string>
     <string name="color_picker">Kleurenkiezer</string>
-
+    
+    <string name="recent_colors_condensed">Recent</string>
+    <string name="recent_colors">Recente kleuren</string>
+    <string name="recent_colors_expanded">Recentelijk gekozen kleuren</string>
+    <string name="recent_colors_clear_history">Wissen</string>
+    <string name="recent_colors_empty">Er zijn geen recentelijk gekozen kleuren.</string>
+    
+    
+    
 	<!-- About -->
-	<string name="about">Info</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="about">Over</string>
+	<string name="aboutapp_not_available">Versie %s\n\n Geen ondersteunde extensie aanwezig om volledige informatie weer te geven (contact, credits, licensie).</string>
+	<string name="aboutapp_get">Verkrijg OI About</string>
+
 
 	<!-- Update -->
-	<string name="update_error">Applicatiedownload niet beschikbaar.</string>
-
+	<string name="update_error">De update is niet verkrijgbaar.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+    <string name="info_app_flashlight">Om een kleur te selecteren in OI Zaklamp, druk op menu &gt; Kleur.</string>
+    <string name="title_app_flashlight">OI Zaklamp</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotisch, geanimeerde spiraal achtergrond.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live achtergrond</string>
+    
+    <string name="info_app_bettr_flickr">Standaard Flickr interface voor Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Afbeeldingen bij elkaar zetten om anime karakter te maken</string>
+    <string name="title_app_character_gen">Anime karakter generator</string>
+    
+    
+	<string name="info_activity_text">Deze applicatie kan gebruikt worden voor de volgende applicaties:</string>
+    <string name="info_launch">%s opstarten</string>
+    <!-- %1$s is application name, %2$s is version name. -->
+	<string name="info_not_available">Deze applicatie heeft %1$s %2$s of hoger nodig.</string>
+	<string name="info_get">Verkrijg %s</string>
 </resources>

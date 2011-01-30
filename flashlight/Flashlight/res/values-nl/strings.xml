@@ -7,41 +7,43 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Bert de Bruijn https://launchpad.net/~lpdebruijn
+  Henk van der Velden https://launchpad.net/~henkvandervelden86
   Peli https://launchpad.net/~peli0101
   pjv https://launchpad.net/~pjv</string>
 	
-	<!-- Strings for OI About -->
+    <!-- Short explanation of the application -->
 	<string name="about_comments">OpenIntents Flashlight helpt u uw weg te vinden in het donker. Het schermlicht blijft aan tijdens het uitvoeren van deze toepassing.</string>
-	<string name="about_website_label">OI Flashlight op OpenIntents</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Zaklamp</string>
+    
+    <string name="flashlight_info">De achtergrondverlichting blijft aan.</string>
+    
+    <string name="color">Kleur</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Kleurenkiezer</string>
+    
+    <string name="preferences">Instellingen</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Instellingen</string>
+	<string name="settings_title_keep_color">Bewaar kleur</string>
+	<string name="settings_summary_keep_color">Sla de kleur op voor de volgende keer de Flashlight-toepassing wordt opgestart</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Om de kleurenkiezer bruikbaar te maken voor andere ontwikkelaars, hebben we onze eigen applicatie opgesplitst.</string>
     
-	<!-- ***************************
-	     Applicatio-specific strings
-	     *************************** -->
-    <string name="app_name">OI Zaklamp</string>
-    
-    <string name="flashlight_info">De achtergrondverlichting blijft aan.</string>
-    
-    
-    <string name="color">Kleur</string>
-    
-    <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
-    
-    
-    <string name="preferences">Instellingen</string>
-    
-
-	<!-- ***************************
-	     Preferences
-	     *************************** -->
-	
-	<string name="settings_titlebar">Instellingen</string>
-	<string name="settings_title_keep_color">Bewaar kleur</string>
-	<string name="settings_summary_keep_color">Sla de kleur op voor de volgende keer de Flashlight-toepassing wordt opgestart</string>
 </resources>

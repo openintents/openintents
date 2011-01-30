@@ -6,20 +6,18 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Henk van der Velden https://launchpad.net/~henkvandervelden86
   Jaap-Willem Dooge https://launchpad.net/~japydooge
   Peli https://launchpad.net/~peli0101
   pjv https://launchpad.net/~pjv</string>
 	
-    <!-- Strings for OI About -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
-	
-	<!-- Label of a link to the OI Countdown web page at the OI website. ( http://www.openintents.org/en/node/204 ) -->
-	<string name="about_website_label">OI Countdown at OpenIntents</string>
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI Aftellen waarschuwt je naar een specifieke tijd.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-	<!-- Name of application -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Afteller</string>
     
     <string name="start">Starten</string>
@@ -56,7 +54,7 @@
     <string name="title_edit">Bewerk afteller</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">Kies aftellen</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
     <string name="title_setcountdown_action">OI Afteller</string>
@@ -70,7 +68,7 @@
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">Notificatie in statusbalk</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
 	<string name="launch_through_status_bar">Start vanaf de statusbalk</string>
@@ -91,7 +89,7 @@
 	<string name="select_action">Selecteer actie: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">Selecteer aftellen: %s</string>
 	
 	<!-- Button to test an action. -->
 	<string name="test">Testen</string>
@@ -131,16 +129,17 @@
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>Start aftellen</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>Stop aftellen</item>
     </string-array>
     
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 
-    <string name="preference_countdown">Countdown</string>
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Aftellen</string>
 
     <string name="preference_extensions">Extensies</string>
     <string name="preference_get_extensions">Verkrijg nieuwe uitbreidingen</string>
@@ -155,18 +154,19 @@
     <string name="preference_notification_timeout_title">Notificatie timeout</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">Interval voor ringtone, vibratie en licht notificatie.</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
-                
+    <string name="preference_notification_timeout_dialog_title">selecteer interval</string>
+    
+    <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 seconden</item>
+        <item>5 seconden</item>
+        <item>10 seconden</item>
+        <item>30 seconden</item>
+        <item>1 minuut</item>
+        <item>5 minuten</item>
+        <item>10 minuten</item>
     </string-array>
 </resources>
