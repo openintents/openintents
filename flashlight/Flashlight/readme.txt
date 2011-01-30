@@ -22,7 +22,8 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.7
-date: 2011-?
+date: ?
+- new application icon for Android 2.0 or higher.
 - support Android 2.3.
 - translations into various languages.
 
