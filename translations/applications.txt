@@ -1,0 +1,17 @@
+# This file contains all applications that are translated at Launchpad.
+#
+# First column: Unique name used for Launchpad.
+# Second column: Path to application source.
+#
+# This file is used by ../import_all and ../export_all
+#
+aboutapp aboutapp/AboutApp
+colorpicker colorpicker/ColorPicker
+countdown countdown/Countdown
+distributionlibrary distribution/DistributionLibrary
+filemanager filemanager/FileManager
+flashlight flashlight/Flashlight
+notepad notepad/NotePad
+safe safe/Safe
+shoppinglist shoppinglist/ShoppingList
+updatechecker UpdateChecker
