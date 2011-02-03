@@ -14,11 +14,15 @@
 	* See the License for the specific language governing permissions and
 	* limitations under the License.
 -->
+<!-- NOTE: installLocation is not set to "auto" for the following purpose:
+	"Your alarms registered with AlarmManager will be cancelled.
+	You must manually re-register any alarms when external storage is remounted." -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.countdown"
+      android:installLocation="internalOnly"
       android:versionCode="10005"
       android:versionName="1.1.1-rc1">
-    <uses-sdk android:minSdkVersion="2" />
+    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="9" />
     <!-- History:
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
     1.1.1-rc1 [10005]: 2011-?
@@ -31,6 +35,8 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     
     <application android:icon="@drawable/ic_launcher_countdown" android:label="@string/app_name">
     
