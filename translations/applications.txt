@@ -14,4 +14,4 @@ flashlight flashlight/Flashlight
 notepad notepad/NotePad
 safe safe/Safe
 shoppinglist shoppinglist/ShoppingList
-updatechecker UpdateChecker
+updatechecker UpdateCheckerApp

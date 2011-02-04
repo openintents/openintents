@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Henk van der Velden https://launchpad.net/~henkvandervelden86</string>
+  Henk van der Velden https://launchpad.net/~henkvandervelden86
+  Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Kleurenkiezer is een extensie voor OI Flashlight en andere ondersteunde applicaties.</string>
