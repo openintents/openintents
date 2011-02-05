@@ -1,0 +1,129 @@
+# Romanian translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-02-04 01:04+0100\n"
+"PO-Revision-Date: 2010-01-09 00:57+0000\n"
+"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Language-Team: Romanian <ro@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-02-03 23:16+0000\n"
+"X-Generator: Launchpad (build 12309)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Peli https://launchpad.net/~peli0101\n"
+"  iulargsb https://launchpad.net/~iulargsb"
+
+#. Short explanation of the application
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Flashlight helps you find your way in the dark. The display "
+"backlight is kept turned on while this application is running."
+msgstr ""
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Flashlight"
+msgstr "OI Lanterna"
+
+#: tmp_strings.xml:19(string)
+msgid "The backlight stays turned on."
+msgstr "Ecranul rămâne pornit."
+
+#: tmp_strings.xml:21(string)
+msgid "Color"
+msgstr "Culoare"
+
+#. Application name should be consistent across translations.
+#: tmp_strings.xml:24(string)
+msgid "OI Color Picker"
+msgstr ""
+
+#. Title for preferences or settings
+#: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
+msgid "Preferences"
+msgstr ""
+
+#: tmp_strings.xml:34(string)
+msgid "Keep color"
+msgstr ""
+
+#: tmp_strings.xml:35(string)
+msgid "Save color for next time Flashlight app is started"
+msgstr ""
+
+#. Explanation that is displayed if Color Picker has not been installed yet, but 
+#. 		user tries to access it.
+#: tmp_strings.xml:43(string)
+msgid ""
+"To make the Color Picker more useful to other developers, we have split it "
+"into its own app."
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

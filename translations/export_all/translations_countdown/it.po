@@ -1,0 +1,354 @@
+# Italian translation for openintents
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-02-04 01:03+0100\n"
+"PO-Revision-Date: 2011-01-11 13:53+0000\n"
+"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-02-03 23:16+0000\n"
+"X-Generator: Launchpad (build 12309)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Diego Pierotto https://launchpad.net/~gringo\n"
+"  Peli https://launchpad.net/~peli0101"
+
+#. Short explanation of the application
+#: tmp_strings.xml:11(string)
+msgid "OI Countdown notifies you after a specified amount of time."
+msgstr "OI Countdown mostra notifiche dopo uno specificato periodo di tempo."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
+msgid "OI Countdown"
+msgstr "OI Countdown"
+
+#: tmp_strings.xml:19(string)
+msgid "Start"
+msgstr "Avvia"
+
+#: tmp_strings.xml:20(string)
+msgid "Stop"
+msgstr "Ferma"
+
+#: tmp_strings.xml:21(string)
+msgid "Modify"
+msgstr "Modifica"
+
+#: tmp_strings.xml:22(string)
+msgid "Continue"
+msgstr "Continua"
+
+#: tmp_strings.xml:24(string)
+msgid "Use menu to add new countdown."
+msgstr "Usa il menu per aggiungere un nuovo promemoria"
+
+#: tmp_strings.xml:25(string)
+msgid "Countdown list"
+msgstr "Elenco conti alla rovescia"
+
+#: tmp_strings.xml:27(string)
+msgid "Delete"
+msgstr "Elimina"
+
+#: tmp_strings.xml:28(string)
+msgid "Edit"
+msgstr "Modifica"
+
+#: tmp_strings.xml:29(string)
+msgid "Add countdown"
+msgstr "Aggiungi promemoria"
+
+#: tmp_strings.xml:30(string)
+msgid "Ringtone"
+msgstr "Suoneria"
+
+#. Menu item: Set the countdown by setting a final date or deadline.
+#: tmp_strings.xml:33(string)
+msgid "Set date"
+msgstr "Imposta data"
+
+#. Menu item: Set the countdown by setting a duration.
+#: tmp_strings.xml:36(string)
+msgid "Set duration"
+msgstr "Imposta durata"
+
+#. Menu item: Set the action to be performed at the end of the countdown.
+#: tmp_strings.xml:39(string)
+msgid "Set action"
+msgstr "Imposta azione"
+
+#: tmp_strings.xml:41(string)
+msgid "e.g. pizza"
+msgstr "es. pizza"
+
+#. Title of the activity for setting (editing) the countdown.
+#: tmp_strings.xml:44(string)
+msgid "Set countdown"
+msgstr "Imposta promemoria"
+
+#. Title of the activity for creating a new countdown.
+#: tmp_strings.xml:47(string)
+msgid "Create countdown"
+msgstr "Crea promemoria"
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:50(string)
+msgid "Edit countdown"
+msgstr "Modifica promemoria"
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:53(string)
+msgid "Pick countdown"
+msgstr "Seleziona promemoria"
+
+#. Title of the activity when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:59(string)
+msgid "Error"
+msgstr "Errore"
+
+#. Message to display when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:62(string)
+msgid "Error loading countdown"
+msgstr "Errore caricamento promemoria"
+
+#. Checkbox label whether to notifications.
+#: tmp_strings.xml:67(string)
+msgid "Notification in status bar"
+msgstr "Notifica nella barra di stato"
+
+#. Checkbox label whether to launch automation task through the status bar
+#: tmp_strings.xml:70(string)
+msgid "Launch through status bar"
+msgstr "Avvia dalla barra di stato"
+
+#. Checkbox label whether to use the ring tone for notifications.
+#: tmp_strings.xml:73(string)
+msgid "Ring"
+msgstr "Suona"
+
+#. Checkbox label whether to vibrate.
+#: tmp_strings.xml:76(string)
+msgid "Vibrate"
+msgstr "Vibra"
+
+#. Checkbox label whether to flash light for notifications.
+#: tmp_strings.xml:79(string)
+msgid "Light"
+msgstr "Led"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:82(string)
+msgid "Action: %s"
+msgstr "Azione: %s"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:85(string)
+msgid "Select action: %s"
+msgstr "Seleziona azione: %s"
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:88(string)
+msgid "Select countdown: %s"
+msgstr "Seleziona promemoria: %s"
+
+#. Button to test an action.
+#: tmp_strings.xml:91(string)
+msgid "Test"
+msgstr "Prova"
+
+#. Button to view / edit settings.
+#: tmp_strings.xml:94(string)
+msgid "Settings"
+msgstr "Impostazioni"
+
+#. Button label to dismiss notification after countdown ended.
+#: tmp_strings.xml:97(string)
+msgid "Dismiss"
+msgstr "Annulla"
+
+#. For the countdown display. "%s" is the number of days remaining (more than 1).
+#: tmp_strings.xml:100(string)
+msgid "days"
+msgstr "giorni"
+
+#. For the countdown display. "%s" is 1 (the number of days remaining).
+#: tmp_strings.xml:103(string)
+msgid "day"
+msgstr "giorno"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all apps
+#: tmp_strings.xml:108(string)
+msgid "Applications"
+msgstr "Applicazioni"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all shortcuts
+#: tmp_strings.xml:110(string)
+msgid "Shortcuts"
+msgstr "Collegamenti"
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
+#: tmp_strings.xml:112(string)
+msgid "Automation tasks"
+msgstr "Operazioni schedulate"
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:116(string)
+msgid "Select shortcut"
+msgstr "Seleziona collegamento"
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:119(string)
+msgid "Select automation task"
+msgstr "Seleziona operazione schedulata"
+
+#. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
+#: tmp_strings.xml:122(string)
+msgid "Select activity"
+msgstr "Seleziona attività"
+
+#. Automation action to start a countdown.
+#: tmp_strings.xml:128(item)
+msgid "Start countdown"
+msgstr "Avvia promemoria"
+
+#. Automation action to stop a countdown.
+#: tmp_strings.xml:130(item)
+msgid "Stop countdown"
+msgstr "Ferma promemoria"
+
+#. Preference section title for general settings regarding the countdown
+#: tmp_strings.xml:138(string)
+msgid "Countdown"
+msgstr "Promemoria"
+
+#: tmp_strings.xml:140(string)
+msgid "Extensions"
+msgstr "Estensioni"
+
+#: tmp_strings.xml:141(string)
+msgid "Get new extensions"
+msgstr "Scarica nuove estensioni"
+
+#: tmp_strings.xml:142(string)
+msgid "Search for extensions online."
+msgstr "Cerca estensioni online"
+
+#: tmp_strings.xml:143(string)
+msgid "Get extensions from"
+msgstr "Scarica estensioni da"
+
+#: tmp_strings.xml:144(string)
+msgid "Android Market"
+msgstr "Android Market"
+
+#: tmp_strings.xml:145(string)
+msgid "Search for extensions at Android Market."
+msgstr "Cerca estensioni nel Market di Android."
+
+#: tmp_strings.xml:146(string)
+msgid "OpenIntents"
+msgstr "OpenIntents"
+
+#: tmp_strings.xml:147(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Scarica estensioni dalla pagina web di OpenIntents."
+
+#. Preference title: Set the notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:150(string)
+msgid "Notification timeout"
+msgstr "Durata notifiche"
+
+#. Preference summary: Set notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:153(string)
+msgid "Timeout for ring, vibrate, or light notification."
+msgstr "Durata notifica della suoneria, vibrazione o led"
+
+#. Dialog title to set timeout for notification
+#: tmp_strings.xml:156(string)
+msgid "Set timeout"
+msgstr "Imposta durata"
+
+#: tmp_strings.xml:160(item)
+msgid "2 seconds"
+msgstr "2 secondi"
+
+#: tmp_strings.xml:161(item)
+msgid "5 seconds"
+msgstr "5 secondi"
+
+#: tmp_strings.xml:162(item)
+msgid "10 seconds"
+msgstr "10 secondi"
+
+#: tmp_strings.xml:163(item)
+msgid "30 seconds"
+msgstr "30 secondi"
+
+#: tmp_strings.xml:164(item)
+msgid "1 minute"
+msgstr "1 minuto"
+
+#: tmp_strings.xml:165(item)
+msgid "5 minutes"
+msgstr "5 minuti"
+
+#: tmp_strings.xml:166(item)
+msgid "10 minutes"
+msgstr "10 minuti"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

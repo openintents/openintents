@@ -1,0 +1,300 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-02-04 01:03+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string) 
+msgid "translator-credits"
+msgstr ""
+
+#. Short explanation of the application
+#: tmp_strings.xml:11(string) 
+msgid "OI Countdown notifies you after a specified amount of time."
+msgstr ""
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string) tmp_strings.xml:56(string) 
+msgid "OI Countdown"
+msgstr ""
+
+#: tmp_strings.xml:19(string) 
+msgid "Start"
+msgstr ""
+
+#: tmp_strings.xml:20(string) 
+msgid "Stop"
+msgstr ""
+
+#: tmp_strings.xml:21(string) 
+msgid "Modify"
+msgstr ""
+
+#: tmp_strings.xml:22(string) 
+msgid "Continue"
+msgstr ""
+
+#: tmp_strings.xml:24(string) 
+msgid "Use menu to add new countdown."
+msgstr ""
+
+#: tmp_strings.xml:25(string) 
+msgid "Countdown list"
+msgstr ""
+
+#: tmp_strings.xml:27(string) 
+msgid "Delete"
+msgstr ""
+
+#: tmp_strings.xml:28(string) 
+msgid "Edit"
+msgstr ""
+
+#: tmp_strings.xml:29(string) 
+msgid "Add countdown"
+msgstr ""
+
+#: tmp_strings.xml:30(string) 
+msgid "Ringtone"
+msgstr ""
+
+#. Menu item: Set the countdown by setting a final date or deadline.
+#: tmp_strings.xml:33(string) 
+msgid "Set date"
+msgstr ""
+
+#. Menu item: Set the countdown by setting a duration.
+#: tmp_strings.xml:36(string) 
+msgid "Set duration"
+msgstr ""
+
+#. Menu item: Set the action to be performed at the end of the countdown.
+#: tmp_strings.xml:39(string) 
+msgid "Set action"
+msgstr ""
+
+#: tmp_strings.xml:41(string) 
+msgid "e.g. pizza"
+msgstr ""
+
+#. Title of the activity for setting (editing) the countdown.
+#: tmp_strings.xml:44(string) 
+msgid "Set countdown"
+msgstr ""
+
+#. Title of the activity for creating a new countdown.
+#: tmp_strings.xml:47(string) 
+msgid "Create countdown"
+msgstr ""
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:50(string) 
+msgid "Edit countdown"
+msgstr ""
+
+#. Title of the activity for editing the countdown.
+#: tmp_strings.xml:53(string) 
+msgid "Pick countdown"
+msgstr ""
+
+#. Title of the activity when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:59(string) 
+msgid "Error"
+msgstr ""
+
+#. Message to display when an internal error occurs. This should practially never happen.
+#: tmp_strings.xml:62(string) 
+msgid "Error loading countdown"
+msgstr ""
+
+#. Checkbox label whether to notifications.
+#: tmp_strings.xml:67(string) 
+msgid "Notification in status bar"
+msgstr ""
+
+#. Checkbox label whether to launch automation task through the status bar
+#: tmp_strings.xml:70(string) 
+msgid "Launch through status bar"
+msgstr ""
+
+#. Checkbox label whether to use the ring tone for notifications.
+#: tmp_strings.xml:73(string) 
+msgid "Ring"
+msgstr ""
+
+#. Checkbox label whether to vibrate.
+#: tmp_strings.xml:76(string) 
+msgid "Vibrate"
+msgstr ""
+
+#. Checkbox label whether to flash light for notifications.
+#: tmp_strings.xml:79(string) 
+msgid "Light"
+msgstr ""
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:82(string) 
+msgid "Action: %s"
+msgstr ""
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:85(string) 
+msgid "Select action: %s"
+msgstr ""
+
+#. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
+#: tmp_strings.xml:88(string) 
+msgid "Select countdown: %s"
+msgstr ""
+
+#. Button to test an action.
+#: tmp_strings.xml:91(string) 
+msgid "Test"
+msgstr ""
+
+#. Button to view / edit settings.
+#: tmp_strings.xml:94(string) 
+msgid "Settings"
+msgstr ""
+
+#. Button label to dismiss notification after countdown ended.
+#: tmp_strings.xml:97(string) 
+msgid "Dismiss"
+msgstr ""
+
+#. For the countdown display. "%s" is the number of days remaining (more than 1).
+#: tmp_strings.xml:100(string) 
+msgid "days"
+msgstr ""
+
+#. For the countdown display. "%s" is 1 (the number of days remaining).
+#: tmp_strings.xml:103(string) 
+msgid "day"
+msgstr ""
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all apps
+#: tmp_strings.xml:108(string) 
+msgid "Applications"
+msgstr ""
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all shortcuts
+#: tmp_strings.xml:110(string) 
+msgid "Shortcuts"
+msgstr ""
+
+#. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
+#: tmp_strings.xml:112(string) 
+msgid "Automation tasks"
+msgstr ""
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:116(string) 
+msgid "Select shortcut"
+msgstr ""
+
+#. Title of dialog when user is selecting shortcut to add as activity
+#: tmp_strings.xml:119(string) 
+msgid "Select automation task"
+msgstr ""
+
+#. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
+#: tmp_strings.xml:122(string) 
+msgid "Select activity"
+msgstr ""
+
+#. Automation action to start a countdown.
+#: tmp_strings.xml:128(item) 
+msgid "Start countdown"
+msgstr ""
+
+#. Automation action to stop a countdown.
+#: tmp_strings.xml:130(item) 
+msgid "Stop countdown"
+msgstr ""
+
+#. Preference section title for general settings regarding the countdown
+#: tmp_strings.xml:138(string) 
+msgid "Countdown"
+msgstr ""
+
+#: tmp_strings.xml:140(string) 
+msgid "Extensions"
+msgstr ""
+
+#: tmp_strings.xml:141(string) 
+msgid "Get new extensions"
+msgstr ""
+
+#: tmp_strings.xml:142(string) 
+msgid "Search for extensions online."
+msgstr ""
+
+#: tmp_strings.xml:143(string) 
+msgid "Get extensions from"
+msgstr ""
+
+#: tmp_strings.xml:144(string) 
+msgid "Android Market"
+msgstr ""
+
+#: tmp_strings.xml:145(string) 
+msgid "Search for extensions at Android Market."
+msgstr ""
+
+#: tmp_strings.xml:146(string) 
+msgid "OpenIntents"
+msgstr ""
+
+#: tmp_strings.xml:147(string) 
+msgid "Get extensions from the OpenIntents homepage."
+msgstr ""
+
+#. Preference title: Set the notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:150(string) 
+msgid "Notification timeout"
+msgstr ""
+
+#. Preference summary: Set notification timeout (2 sec, 10 min, ...)
+#: tmp_strings.xml:153(string) 
+msgid "Timeout for ring, vibrate, or light notification."
+msgstr ""
+
+#. Dialog title to set timeout for notification
+#: tmp_strings.xml:156(string) 
+msgid "Set timeout"
+msgstr ""
+
+#: tmp_strings.xml:160(item) 
+msgid "2 seconds"
+msgstr ""
+
+#: tmp_strings.xml:161(item) 
+msgid "5 seconds"
+msgstr ""
+
+#: tmp_strings.xml:162(item) 
+msgid "10 seconds"
+msgstr ""
+
+#: tmp_strings.xml:163(item) 
+msgid "30 seconds"
+msgstr ""
+
+#: tmp_strings.xml:164(item) 
+msgid "1 minute"
+msgstr ""
+
+#: tmp_strings.xml:165(item) 
+msgid "5 minutes"
+msgstr ""
+
+#: tmp_strings.xml:166(item) 
+msgid "10 minutes"
+msgstr ""
+
