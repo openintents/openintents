@@ -25,7 +25,9 @@ import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Xml.Encoding;
 import android.widget.Toast;
 
@@ -62,11 +64,13 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	@Override
 	public void doImport(Reader reader) throws IOException,
 			WrongFormatException {
-		ImportCsv ic = new ImportCsv(this);
+		ImportCsv ic = new ImportCsv(this, getValidatedImportPolicy());
 		if (0 == mSpinner.getSelectedItemId()) {
 			ic.importCsv(reader);
 		} else if (1 == mSpinner.getSelectedItemId()) {
-			ic.importHandyShopperCsv(reader);
+	        SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
+	        Boolean importStores = pm.getBoolean("shoppinglist_import_stores", true);
+			ic.importHandyShopperCsv(reader, importStores);
 		}
 	}
 
@@ -94,5 +98,12 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 					Toast.LENGTH_LONG).show();
 		}
 	}
-
+	
+    /**
+     * @return The string that identifies the import policy for this importer.
+     * null if this derived activity does not support import policies.
+     */
+    public String getImportPolicyPrefString() {
+    	  return "shoppinglist_import_policy";
+    }
 }

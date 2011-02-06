@@ -20,19 +20,39 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.openintents.convertcsv.R;
+import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
 import org.openintents.provider.Shopping;
 import org.openintents.provider.Shopping.Status;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 public class ImportCsv {
 
 	Context mContext;
-
-	public ImportCsv(Context context) {
+	Boolean mDuplicate = true;
+    Boolean mUpdate = false;
+    
+	public ImportCsv(Context context, int importPolicy) {
 		mContext = context;
+	    switch (importPolicy) {
+	    case ConvertCsvBaseActivity.IMPORT_POLICY_KEEP:
+	    	mDuplicate = false;
+	    	mUpdate = false;
+	    	break;
+	    case ConvertCsvBaseActivity.IMPORT_POLICY_RESTORE:
+	    	// not implemented, treat as overwrite for now.
+	    case ConvertCsvBaseActivity.IMPORT_POLICY_OVERWRITE:
+	    	mDuplicate = false;
+	    	mUpdate = true;
+	    	break;
+	    case ConvertCsvBaseActivity.IMPORT_POLICY_DUPLICATE:
+	    	mDuplicate = true;
+	    	mUpdate = false;
+	    	break;
+	    }
 	}
 
 	/**
@@ -66,7 +86,7 @@ public class ImportCsv {
 			// Add item to list
 			long listId = Shopping.getList(mContext, listname);
 			long itemId = Shopping.getItem(mContext, itemname, tags, null, 
-					null, null);
+					null, null, mDuplicate, mUpdate);
 			
 			if (status == 1) {
 				status = Status.BOUGHT;
@@ -82,9 +102,10 @@ public class ImportCsv {
 	    
 	}
 
-	public void importHandyShopperCsv(Reader reader) throws IOException, WrongFormatException {
+	public void importHandyShopperCsv(Reader reader, Boolean importStores) throws IOException, WrongFormatException {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
+	    	    
 	    while ((nextLine = csvreader.readNext()) != null) {
 	    	if (nextLine.length != 23) {
 	    		throw new WrongFormatException();
@@ -135,8 +156,9 @@ public class ImportCsv {
 			}
 			
 			// Add item to list
-			long listId = Shopping.getDefaultList();
-			long itemId = Shopping.getItem(mContext, itemname, tags, price, units, note);
+			long listId = Shopping.getDefaultList(mContext);
+			long itemId = Shopping.getItem(mContext, itemname, tags, price, units, note,
+					mDuplicate, mUpdate);
 			Shopping.addItemToList(mContext, itemId, listId, status, priority, quantity);
 			
 			// Two columns contain per-store information. Column 10 lists 
@@ -146,17 +168,23 @@ public class ImportCsv {
 			// First deal with the stores themselves from column 10.
 			String [] stores;
 			
-			if (nextLine[10].length() > 0) {
+			if (nextLine[10].length() > 0)
+			{
 				stores = nextLine[10].split(";");
 				for (int i_store = 0; i_store < stores.length; i_store ++)
 				{
-					long storeId = Shopping.getStore(mContext, stores[i_store], listId);
-					long item_store = Shopping.addItemToStore(mContext, itemId, storeId, 0, "");
+					if (importStores){	// real store import
+						long storeId = Shopping.getStore(mContext, stores[i_store], listId);
+						long item_store = Shopping.addItemToStore(mContext, itemId, storeId, 0, "");
+					} else if (!TextUtils.isEmpty(stores[i_store])){
+						// store names added as tags. 
+						Shopping.addTagToItem(mContext, itemId, stores[i_store]);
+					}
 				}
 			}
 			// Now go back and deal with per-store aisles and prices from column 11.
 			// example value for column 11:    Big Y=/0.50;BJ's=11/0.42
-			if (nextLine[11].length() > 0) {
+			if (nextLine[11].length() > 0 && importStores) {
 				stores = nextLine[11].split(";");
 
 				for (int i_store = 0; i_store < stores.length; i_store ++)
@@ -190,6 +218,4 @@ public class ImportCsv {
 	    }
 		
 	}
-	
-	
 }

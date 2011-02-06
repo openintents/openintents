@@ -98,4 +98,7 @@
     
 <string name="converting">Converting...</string>
 <string name="dialog_ok">Ok.</string>
+<string name="preference_stores">Import stores</string>
+<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
+<string name="preference_stores_on_summary">Import HandyShopper stores and per-store price and aisle information.</string>
 </resources>

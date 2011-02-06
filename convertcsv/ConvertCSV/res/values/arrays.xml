@@ -57,4 +57,20 @@
         <item>3</item>
     </string-array>
 
+
+    <string-array name="shoppinglist_import_policy">
+        <item>DUPLICATE - Allow duplicates of records.</item>
+        <item>"KEEP - Don't overwrite existing records."</item>
+    </string-array>
+
+    <string-array name="shoppinglist_import_policy_detail">
+        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
+        <item>"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."</item>
+    </string-array>
+
+    <string-array name="shoppinglist_import_policy_value">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
 </resources>

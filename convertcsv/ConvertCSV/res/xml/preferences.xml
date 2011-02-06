@@ -70,6 +70,18 @@
 					android:entries="@array/shoppinglist_format" 
 					android:entryValues="@array/shoppinglist_format_value"
 					android:dialogTitle="@string/select_csv_file_format" />
+				<ListPreference android:key="shoppinglist_import_policy"
+					android:defaultValue="0" 
+					android:title="@string/import_policy"
+					android:summary="@string/preferences_select_import_policy"
+					android:entries="@array/shoppinglist_import_policy" 
+					android:entryValues="@array/shoppinglist_import_policy_value"
+					android:dialogTitle="@string/select_import_policy" />
+				<CheckBoxPreference android:key="shoppinglist_import_stores"
+					android:defaultValue="true" 
+					android:title="@string/preference_stores"
+					android:summaryOn="@string/preference_stores_on_summary"
+					android:summaryOff="@string/preference_stores_off_summary" />
 			</PreferenceCategory>		        
 	    </PreferenceScreen>
 	    <!-- 
