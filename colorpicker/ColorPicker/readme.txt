@@ -21,10 +21,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.1.1
-date: 2011-?
+release: 1.2.0
+date: 2011-2-6
 
 - translations into various languages.
+- Resolved Issue 296: Color Picker should return new color on back button press
+- Bumped min sdk version to 7 to use onBackPressed()
 
 ---------------------------------------------------------
 release: 1.1.0

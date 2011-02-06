@@ -15,13 +15,13 @@
 	* limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.openintents.colorpicker" android:versionName="1.1.0" android:versionCode="3">
+      package="org.openintents.colorpicker" android:versionName="1.2.0" android:versionCode="4">
 	<!-- History:
 	1.1.0       [3]: 2010-10-10
 	1.0.0       [2]: 2010-07-22 
 	1.0.0-rc1   [1]: 2010-06-27 -->
 	
-	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="4"/>
+	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="7"/>
 	<supports-screens android:smallScreens="true"
 			android:normalScreens="true"
 			android:largeScreens="true" />
@@ -45,7 +45,7 @@
         <meta-data android:name="org.openintents.metadata.ARTISTS"
                        android:resource="@array/about_artists" />
         <meta-data android:name="org.openintents.metadata.WEBSITE_LABEL"
-                       android:value="@string/app_name" />
+                       android:value="@string/about_website_label" />
         <meta-data android:name="org.openintents.metadata.WEBSITE_URL"
                        android:value="@string/about_website_url" />
         <meta-data android:name="org.openintents.metadata.LICENSE"

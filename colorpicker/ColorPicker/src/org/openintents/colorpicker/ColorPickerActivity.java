@@ -23,9 +23,12 @@ import org.openintents.widget.ColorSlider;
 import org.openintents.widget.OnColorChangedListener;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,12 +47,36 @@ public class ColorPickerActivity extends Activity
 	
 
 	private static final int DIALOG_ABOUT = 1;
+	private static final int DIALOG_CONFIRM_COLOR = 2;
+	
 
 	private static final int MENU_ABOUT = Menu.FIRST;
 	private static final int MENU_RECENT_COLORS = MENU_ABOUT + 1;
 	
 	private static final int REQUEST_CODE_RECENT_COLOR = 1;
 	
+	private boolean color_changed = false;
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putBoolean("color_changed", this.color_changed);
+	}
+	
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		this.color_changed = savedInstanceState.getBoolean("color_changed");
+	}
+	
+	
+	@Override
+	public void onBackPressed() {
+		if (this.color_changed)
+			showDialog(DIALOG_CONFIRM_COLOR);
+		else
+			super.onBackPressed();
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +153,7 @@ public class ColorPickerActivity extends Activity
 			mColorCircle.setColor(newColor);
 		}
 		
+		this.color_changed = true;
 	}
 
 	
@@ -186,6 +214,24 @@ public class ColorPickerActivity extends Activity
 		switch (id) {
 		case DIALOG_ABOUT:
 			return new AboutDialog(this);
+		case DIALOG_CONFIRM_COLOR:
+			return new AlertDialog.Builder(this)
+				.setTitle(R.string.confirm_color_title)
+				.setMessage(R.string.confirm_color_message)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setPositiveButton("Yes", new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						onColorPicked(mColorCircle, mColorCircle.getColor());
+					}
+				})
+				.setNegativeButton("No", new OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				})
+				.create();
 		}
 		return null;
 	}
