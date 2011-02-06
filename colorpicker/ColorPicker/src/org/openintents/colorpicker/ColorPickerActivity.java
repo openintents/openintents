@@ -32,6 +32,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,13 +70,23 @@ public class ColorPickerActivity extends Activity
 		this.color_changed = savedInstanceState.getBoolean("color_changed");
 	}
 	
-	
+	/*
 	@Override
 	public void onBackPressed() {
 		if (this.color_changed)
 			showDialog(DIALOG_CONFIRM_COLOR);
 		else
 			super.onBackPressed();
+	}
+	*/
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && this.color_changed) {
+			showDialog(DIALOG_CONFIRM_COLOR);
+			return true;
+		} else
+			return super.onKeyDown(keyCode, event);
 	}
 	
 	@Override

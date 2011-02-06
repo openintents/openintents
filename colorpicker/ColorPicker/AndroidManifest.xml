@@ -23,7 +23,7 @@
 	1.0.0       [2]: 2010-07-22
 	1.0.0-rc1   [1]: 2010-06-27 -->
 	
-	<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="7"/>
+	<uses-sdk android:targetSdkVersion="7" android:minSdkVersion="4"/>
 	<supports-screens android:smallScreens="true"
 			android:normalScreens="true"
 			android:largeScreens="true" />
