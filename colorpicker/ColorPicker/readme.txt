@@ -22,7 +22,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.2.0
-date: 2011-2-6
+date: ?
 
 - translations into various languages.
 - Resolved Issue 296: Color Picker should return new color on back button press
