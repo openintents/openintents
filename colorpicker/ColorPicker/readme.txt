@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2008-2010 OpenIntents.org                                  *
+ * Copyright (C) 2008-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -24,9 +24,10 @@ To obtain the current release, visit
 release: 1.2.0
 date: ?
 
-- translations into various languages.
+- support moving app to SD card.
 - Resolved Issue 296: Color Picker should return new color on back button press
-- Bumped min sdk version to 7 to use onBackPressed()
+- support Android 2.3.
+- translations into various languages.
 
 ---------------------------------------------------------
 release: 1.1.0

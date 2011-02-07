@@ -15,7 +15,10 @@
 	* limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.openintents.colorpicker" android:versionName="1.2.0-beta" android:versionCode="4">
+      package="org.openintents.colorpicker"
+      android:installLocation="auto"
+      android:versionName="1.2.0-beta"
+      android:versionCode="4">
 	<!-- History:
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
 	1.2.0-beta  [4]: ?
@@ -23,10 +26,7 @@
 	1.0.0       [2]: 2010-07-22
 	1.0.0-rc1   [1]: 2010-06-27 -->
 	
-	<uses-sdk android:targetSdkVersion="7" android:minSdkVersion="4"/>
-	<supports-screens android:smallScreens="true"
-			android:normalScreens="true"
-			android:largeScreens="true" />
+	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="9" />
 
     <application android:icon="@drawable/icon_colorpicker" android:label="@string/app_name">
         
