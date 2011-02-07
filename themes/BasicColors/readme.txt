@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2010 OpenIntents.org                                       *
+ * Copyright (C) 2010-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -21,6 +21,13 @@ This is a theme for OI Notepad and OI Shopping List.
 To obtain the current release, visit
   http://www.openintents.org
 
+
+---------------------------------------------------------
+release: 1.0.1
+date: ?
+
+- support moving app to SD card.
+- support Android 2.3.
 
 ---------------------------------------------------------
 release: 1.0.0

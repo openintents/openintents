@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="AboutApp" default="debug">
+<project name="AboutApp" default="help">
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      If Eclipse does not let you build the project because
      it claims the "help" target above does not exist,

@@ -30,7 +30,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.3
-date: 2011-??
+date: ?
 
 - support moving app to SD card.
 - fix crash if no icon is supplied.
