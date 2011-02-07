@@ -33,6 +33,7 @@ release: 1.0.3
 date: ?
 
 - support moving app to SD card.
+- new tab for recent changes.
 - fix crash if no icon is supplied.
 - support Android 2.3.
 - translations into various languages.
