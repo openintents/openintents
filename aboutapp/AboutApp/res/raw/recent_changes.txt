@@ -1,0 +1,33 @@
+---------------------------------------------------------
+release: 1.0.3
+date: 2011-??
+
+- support moving app to SD card.
+- fix crash if no icon is supplied.
+- support Android 2.3.
+- translations into various languages.
+
+---------------------------------------------------------
+release: 1.0.2
+date: 2009-10-14
+
+- Update to Android-1.6 (screensize and density).
+- translations: Chinese (simplified), Japanese, Lao,
+  Portugese
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2009-01-??
+
+- Fix blackening of license text while touching.
+- translations: Dutch, French, German, Spanish
+
+---------------------------------------------------------
+For the complete list of changes and a list of frequently asked questions, please visit:
+http://www.openintents.org
+
+You can help to improve the translation into your language at Launchpad:
+https://translations.launchpad.net/openintents/trunk
+
+The source code of this free and open source application is available at:
+http://code.google.com/p/openintents
