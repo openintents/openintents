@@ -1,5 +1,5 @@
  ****************************************************************************
- * Copyright (C) 2009 OpenIntents.org                                       *
+ * Copyright (C) 2009-2011 OpenIntents.org                                  *
  *                                                                          *
  * Licensed under the Apache License, Version 2.0 (the "License");          *
  * you may not use this file except in compliance with the License.         *
@@ -21,8 +21,15 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.1
+date: ?
+
+- support moving app to SD card.
+- support Android 2.3.
+
+---------------------------------------------------------
 release: 1.0.0
-date: 2009-04-?
+date: 2009-04-21
 
 - First public release targeted for Android SDK 1.0.
 

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.extensions.insertdate"
+      android:installLocation="auto"
       android:versionCode="2"
       android:versionName="1.0.0">
 	<!-- History:
+	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
 	[2] 1.0.0: 2009-12-31
 	[1] 1.0.0-beta1: 2009-07-08 -->
 	
     <uses-sdk android:minSdkVersion="2"
-    	android:targetSdkVersion="4" />
+    	android:targetSdkVersion="9" />
     
     <supports-screens android:smallScreens="true"
         android:normalScreens="true"
