@@ -19,6 +19,7 @@ package org.openintents.util;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
 /**
@@ -99,5 +100,23 @@ public class VersionUtils {
 			Log.e(TAG, "Package name not found", e);
 		};
 		return icon;
+	}
+
+	/**
+	 * Indicates whether a specific package with minimum version code is available.
+	 */
+	public static boolean isPackageAvailable(final Context context, final String packageName,
+			final int minVersionCode) {
+		boolean result = false;
+		try {
+			PackageInfo pi = context.getPackageManager().getPackageInfo(
+					packageName, 0);
+			if (pi.versionCode >= minVersionCode) {
+				result = true;
+			}
+	    } catch (PackageManager.NameNotFoundException e) {
+	    	
+	    }
+	    return result;
 	}
 }

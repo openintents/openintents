@@ -8,8 +8,6 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -106,7 +104,7 @@ public class InfoActivity extends DistributionLibraryListActivity implements OnI
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-		if (isPackageAvailable(this, mPackageNames[pos], mMinVersionCodes[pos])) {
+		if (VersionUtils.isPackageAvailable(this, mPackageNames[pos], mMinVersionCodes[pos])) {
 			showDialog(DIALOG_INFO + pos);
 		} else {
 			showDialog(DIALOG_GET_FROM_MARKET + pos);
@@ -133,24 +131,6 @@ public class InfoActivity extends DistributionLibraryListActivity implements OnI
 		}
 	}
 
-
-	/**
-	 * Indicates whether a specific package with minimum version code is available.
-	 */
-	public static boolean isPackageAvailable(final Context context, final String packageName,
-			final int minVersionCode) {
-		boolean result = false;
-		try {
-			PackageInfo pi = context.getPackageManager().getPackageInfo(
-					packageName, 0);
-			if (pi.versionCode >= minVersionCode) {
-				result = true;
-			}
-        } catch (PackageManager.NameNotFoundException e) {
-        	
-        }
-	    return result;
-	}
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
