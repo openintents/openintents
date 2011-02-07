@@ -2,4 +2,11 @@
 <resources>
     <string name="hello">To see EULA or New Version activities again, press one of the buttons, and exit and enter the application again.</string>
     <string name="app_name">OI Distribution Demo</string>
+    
+    <!-- For InfoActivity: -->
+	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping_upcoming">OI Shopping List (upcoming version)</string>
+	<string name="info_text_notepad">To use this extension, edit a note and press menu > Theme.</string>
+	<string name="info_text_shopping">To use this extension, open a list and press menu > Theme.</string>
 </resources>

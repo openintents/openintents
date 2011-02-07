@@ -2,8 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.distribution"
       android:installLocation="auto"
-      android:versionCode="1"
-      android:versionName="1.0.0">
+      android:versionCode="2"
+      android:versionName="1.0.1">
+    <!-- History: 
+      1.0.1 [2]: 2011-02-07
+      1.0.0 [1]: 2011-01-22 -->
     <uses-sdk android:minSdkVersion="2" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     <application android:label="@string/oi_distribution_app_name">

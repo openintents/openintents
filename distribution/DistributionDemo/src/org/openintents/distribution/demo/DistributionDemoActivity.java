@@ -3,12 +3,16 @@ package org.openintents.distribution.demo;
 import org.openintents.distribution.DistributionLibraryActivity;
 import org.openintents.distribution.EulaOrNewVersion;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.View;
 
+// Extend your activity from DistributionLibraryActivity
+// or from DistributionLibraryListActivity.
 public class DistributionDemoActivity extends DistributionLibraryActivity {
 	
 	private static final String TAG = "DistribtionDemo";
@@ -33,6 +37,7 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
         setContentView(R.layout.main);
     }
 
+    // Optionally override onCreateOptionsMenu()
  	@Override
  	public boolean onCreateOptionsMenu(Menu menu) {
  		super.onCreateOptionsMenu(menu);
@@ -45,6 +50,17 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
  		return true;
  	}
  	
+ 	// Optionally override onCreateDialog()
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		Dialog d = super.onCreateDialog(id);
+		
+		// Based on id, create your own dialogs.
+		
+		return d;
+	}
+ 	
+	// Called by the buttons in this activity:
     public void onClickResetEula(View view) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 		SharedPreferences.Editor e = sp.edit();
@@ -58,5 +74,9 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 		e.putInt(EulaOrNewVersion.PREFERENCES_VERSION_NUMBER, 0);
 		e.commit();
     }
-
+    
+    public void onClickShowInfoActivity(View view) {
+    	Intent i = new Intent(this, InfoActivity.class);
+    	startActivity(i);
+    }
 }
