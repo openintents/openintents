@@ -12,6 +12,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class InfoActivity extends DistributionLibraryListActivity implements OnItemClickListener {
 
@@ -181,7 +183,7 @@ public class InfoActivity extends DistributionLibraryListActivity implements OnI
 	}
 
 	private AlertDialog buildInfoDialog(final int pos) {
-		String infotext = getString(mInfoText[pos]);
+		String infotext = getString(mInfoText[pos], mApplicationStrings[pos]);
 		String infolaunch = getString(R.string.oi_distribution_info_launch, mApplicationStrings[pos]);
 		
 		// Trick for Android 2.3:
@@ -208,13 +210,25 @@ public class InfoActivity extends DistributionLibraryListActivity implements OnI
 	void launchApplication(int pos) {
 		Intent intent = new Intent();
 		intent.setAction(mIntentAction[pos]);
-		if (mIntentData[pos] != null)
-			intent.setData(Uri.parse(mIntentData[pos]));
-
+		if (mIntentAction[pos].equals(Intent.ACTION_MAIN)) {
+			// Exception for ACTION_MAIN:
+			// Use data as class name.
+			if (mPackageNames[pos] != null && mIntentData[pos] != null) {
+				intent.setClassName(mPackageNames[pos], mIntentData[pos]);
+			}
+		} else {
+			if (mIntentData[pos] != null) {
+				intent.setData(Uri.parse(mIntentData[pos]));
+			}
+		}
+		
 		try {
 			startActivity(intent);
 		} catch (ActivityNotFoundException e) {
-			
+
+			Toast.makeText(this,
+					R.string.oi_distribution_launch_error,
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 

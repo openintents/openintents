@@ -74,6 +74,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+		<!-- Activities from OI Distribution Library -->
+        <activity android:name="org.openintents.distribution.EulaActivity" />
+        <activity android:name="org.openintents.distribution.NewVersionActivity" />
+        
+        <activity android:name=".InfoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
 	</application>
 	
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>

@@ -91,5 +91,7 @@
 	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
 	<!-- Title of a dialog. -->
 	<string name="oi_distribution_info_instructions">Instructions</string>
+	<!-- Error message -->
+	<string name="oi_distribution_launch_error">Application could not be launched</string>
 	
 </resources>
