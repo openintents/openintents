@@ -21,8 +21,15 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.0.1
+date: ?
+
+- support moving app to SD card.
+- support Android 2.3.
+
+---------------------------------------------------------
 release: 1.0
-date: 2010-???
+date: 2010-10-20
 
 - First public release on Android SDK 1.6.
 - Select dates and events.
