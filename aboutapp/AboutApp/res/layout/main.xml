@@ -184,4 +184,19 @@
 			 -->
 		</TextView>
 </ScrollView>
+
+<ScrollView android:id="@+id/sv_recent_changes" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:fadingEdge="vertical"
+	>
+		<TextView android:id="@+id/et_recent_changes"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textColor="#ffffffff"
+			android:autoLink="web|email|map"
+			android:paddingBottom="20dip" android:paddingRight="?android:attr/scrollbarSize">
+			<!-- 
+			android:textColor="?android:attr/textColorPrimary"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			 -->
+		</TextView>
+</ScrollView>
 </FrameLayout>

@@ -24,6 +24,7 @@ package org.openintents.metadata;
  * Metadata definition belonging to OI About.
  * 
  * @version 2009-Jan-08
+ * @version 2011-02-07: Add Metadata for recent changes.
  * 
  * @author pjv
  * @author Peli
@@ -195,5 +196,18 @@ public final class AboutMetaData {
 	 * </p>
 	 */
 	public static final String METADATA_EMAIL = "org.openintents.metadata.EMAIL";
+
+	/**
+	 * Application metadata: The raw resource containing the license of the program. 
+	 * 
+	 * <p>
+	 * This key matches with AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE.
+	 * </p>
+	 * 
+	 * <p>
+	 * Constant Value: "org.openintents.metadata.RECENT_CHANGES"
+	 * </p>
+	 */
+	public static final String METADATA_RECENT_CHANGES = "org.openintents.metadata.RECENT_CHANGES";
 
 }

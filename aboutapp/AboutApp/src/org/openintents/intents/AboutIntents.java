@@ -20,6 +20,7 @@ package org.openintents.intents;
  * Intents definition belonging to OI About.
  * 
  * @version 2009-Jan-08
+ * @version 2011-02-07: Add Metadata for recent changes.
  * 
  * @author pjv
  * @author Peli
@@ -282,5 +283,17 @@ public final class AboutIntents {
 	 */
 	public static final String EXTRA_EMAIL = "org.openintents.extra.EMAIL";
 	
+	/**
+	 * Optional intent extra:
+	 * The name of the raw resource containing the license of the program.
+	 * 
+	 * By default, this is retrieved from the Manifest meta tag
+	 * with the AboutMetaData.METADATA_RECENT_CHANGES name.
+	 * 
+	 * <p>
+	 * Constant Value: "org.openintents.extra.RECENT_CHANGES_RESOURCE"
+	 * </p>
+	 */
+	public static final String EXTRA_RECENT_CHANGES_RESOURCE = "org.openintents.extra.RECENT_CHANGES_RESOURCE";
 
 }

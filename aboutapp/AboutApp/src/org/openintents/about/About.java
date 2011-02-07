@@ -96,6 +96,7 @@ public class About extends TabActivity {
 	protected TextView mArtistsText;
 	protected TextView mNoInformationText;
 	protected TextView mLicenseText;
+	protected TextView mRecentChangesText;
 
 	protected TabHost tabHost;
 
@@ -302,38 +303,7 @@ public class About extends TabActivity {
 			return;
 		}
 		
-		
-		// Retrieve license from resource:
-		String license = "";
-		try {
-    		Resources resources = getPackageManager()
-				.getResourcesForApplication(packagename);
-    		
-    		//Read in the license file as a big String
-    		BufferedReader in
-    		   = new BufferedReader(new InputStreamReader(
-    				resources.openRawResource(resourceid)));
-    		String line;
-    		StringBuilder sb = new StringBuilder();
-    		try {
-    			while ((line = in.readLine()) != null) { // Read line per line.
-    				if (TextUtils.isEmpty(line)) {
-    					// Empty line: Leave line break
-    					sb.append("\n\n");
-    				} else {
-    					sb.append(line);
-    					sb.append(" ");
-    				}
-    			}
-    			license = sb.toString();
-    		} catch (IOException e) {
-    			//Should not happen.
-    			e.printStackTrace();
-    		}
-    		
-    	} catch (NameNotFoundException e) {
-            Log.e(TAG, "Package name not found", e);
-    	}
+		String license = getRawResource(packagename, resourceid, false);
     	
     	mLicenseText.setText(license);
 		/*
@@ -349,6 +319,69 @@ public class About extends TabActivity {
     		mLicenseText.setText("");
     	}
     	*/
+	}
+
+	/**
+	 * Fetch and display recent changes information.
+	 * 
+	 * @param intent The intent from which to fetch the information.
+	 */
+	protected void displayRecentChanges(final String packagename, final Intent intent) {
+		
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+				AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, AboutMetaData.METADATA_RECENT_CHANGES);
+		
+		if (resourceid == 0) {
+			mRecentChangesText.setText(R.string.no_information_available);
+			return;
+		}
+		
+		String recentchanges = getRawResource(packagename, resourceid, true);
+    	
+    	mRecentChangesText.setText(recentchanges);
+	}
+	
+	private String getRawResource(final String packagename, int resourceid, boolean preserveLineBreaks) {
+		// Retrieve text from resource:
+		String text = "";
+		try {
+    		Resources resources = getPackageManager()
+				.getResourcesForApplication(packagename);
+    		
+    		//Read in the license file as a big String
+    		BufferedReader in
+    		   = new BufferedReader(new InputStreamReader(
+    				resources.openRawResource(resourceid)));
+    		String line;
+    		StringBuilder sb = new StringBuilder();
+    		try {
+    			while ((line = in.readLine()) != null) { // Read line per line.
+    				if (TextUtils.isEmpty(line)) {
+    					// Empty line: Leave line break
+    					if (preserveLineBreaks) {
+    						sb.append("\n");
+    					} else {
+    						sb.append("\n\n");
+    					}
+    				} else {
+    					sb.append(line);
+    					if (preserveLineBreaks) {
+    						sb.append("\n");
+    					} else {
+    						sb.append(" ");
+    					}
+    				}
+    			}
+    			text = sb.toString();
+    		} catch (IOException e) {
+    			//Should not happen.
+    			e.printStackTrace();
+    		}
+    		
+    	} catch (NameNotFoundException e) {
+            Log.e(TAG, "Package name not found", e);
+    	}
+		return text;
 	}
 
 	/**
@@ -611,6 +644,9 @@ public class About extends TabActivity {
         tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_license))
                 .setIndicator(getString(R.string.l_license))
                 .setContent(R.id.sv_license));
+        tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_recent_changes))
+                .setIndicator(getString(R.string.l_recent_changes))
+                .setContent(R.id.sv_recent_changes));
         
         //Set the animations for the switchers
         Animation in = AnimationUtils.loadAnimation(this,
@@ -669,6 +705,8 @@ public class About extends TabActivity {
 		mNoInformationText = (TextView) findViewById(R.id.tv_no_information);
 
 		mLicenseText = (TextView) findViewById(R.id.et_license);
+		
+		mRecentChangesText = (TextView) findViewById(R.id.et_recent_changes);
     }
 
 	/* (non-Javadoc)
@@ -759,6 +797,7 @@ public class About extends TabActivity {
     	displayArtists(packagename, intent);
     	displayLicense(packagename, intent);
     	displayEmail(packagename, intent);
+    	displayRecentChanges(packagename, intent);
     	
     	checkCreditsAvailable();
     	
@@ -828,7 +867,10 @@ public class About extends TabActivity {
 		// Supply resource name of raw resource that contains the license:
 		intent.putExtra(AboutIntents.EXTRA_LICENSE_RESOURCE, getResources()
 				.getResourceName(R.raw.license_short));
-		
+
+		// Supply resource name of raw resource that contains the recent changes:
+		intent.putExtra(AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, getResources()
+				.getResourceName(R.raw.recent_changes));
 		/*
 		//Read in the license file as a big String
 		BufferedReader in
