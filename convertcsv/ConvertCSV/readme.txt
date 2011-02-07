@@ -22,12 +22,14 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.0.2
-date: 2011-??
+date: ?
 
+- support moving app to SD card.
 - Add progress bar during conversion.
 - Shopping list export with tags
 - Basic support for HandyShopper import
   (including patch by Aaron Peromsik).
+- support Android 2.3.
 
 ---------------------------------------------------------
 release: 1.0.1

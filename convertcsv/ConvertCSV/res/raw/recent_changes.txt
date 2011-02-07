@@ -1,0 +1,28 @@
+---------------------------------------------------------
+release: 1.0.2
+date: ?
+
+- support moving app to SD card.
+- Add progress bar during conversion.
+- Shopping list export with tags
+- Basic support for HandyShopper import
+  (including patch by Aaron Peromsik).
+- support Android 2.3.
+
+---------------------------------------------------------
+release: 1.0.1
+date: 2009-01-19
+
+- Fix line feed problem with Palm CSV Windows files.
+- Add support for new fields in NotePad 1.1.0.
+- Prepare for OI Notepad and OI Shopping list permissions.
+
+---------------------------------------------------------
+For the complete list of changes and a list of frequently asked questions, please visit:
+http://www.openintents.org
+
+You can help to improve the translation into your language at Launchpad:
+https://translations.launchpad.net/openintents/trunk
+
+The source code of this free and open source application is available at:
+http://code.google.com/p/openintents
