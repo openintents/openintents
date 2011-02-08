@@ -337,13 +337,24 @@ public class About extends TabActivity {
 				AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, AboutMetaData.METADATA_RECENT_CHANGES);
 		
 		if (resourceid == 0) {
-			mRecentChangesText.setText(R.string.no_information_available);
+			// Tab is hidden if there are no recent changes.
+			//mRecentChangesText.setText(R.string.no_information_available);
 			return;
 		}
 		
 		String recentchanges = getRawResource(packagename, resourceid, true);
     	
     	mRecentChangesText.setText(recentchanges);
+	}
+	
+	/** 
+	 * @return true if recent changes are available
+	 **/
+	protected boolean hasRecentChanges(final String packagename, final Intent intent) {
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+				AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, AboutMetaData.METADATA_RECENT_CHANGES);
+		
+		return resourceid != 0;
 	}
 	
 	private String getRawResource(final String packagename, int resourceid, boolean preserveLineBreaks) {
@@ -656,9 +667,19 @@ public class About extends TabActivity {
         tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_license))
                 .setIndicator(getString(R.string.l_license))
                 .setContent(R.id.sv_license));
-        tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_recent_changes))
-                .setIndicator(getString(R.string.l_recent_changes))
-                .setContent(R.id.sv_recent_changes));
+
+        // Add fourth tab only if "recent changes" information
+        // has been provided
+		final Intent intent = getIntent();
+		if (intent == null) {
+			setIntent(new Intent());
+		}
+		String packagename = getPackageNameFromIntent(intent);
+        if (hasRecentChanges(packagename, intent)) {
+	        tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_recent_changes))
+	                .setIndicator(getString(R.string.l_recent_changes))
+	                .setContent(R.id.sv_recent_changes));
+        }
         
         //Set the animations for the switchers
         Animation in = AnimationUtils.loadAnimation(this,
