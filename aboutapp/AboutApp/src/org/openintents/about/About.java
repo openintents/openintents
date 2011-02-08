@@ -42,6 +42,7 @@ import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.TextUtils;
 import android.text.util.Linkify;
 import android.text.util.Linkify.TransformFilter;
@@ -69,8 +70,12 @@ public class About extends TabActivity {
 	//TODO BUG rotating screen broken due to TabHost?
 	//TODO BUG OI Updater does not find OI About.
 	
-	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR = ";";
-	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX = "("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+" )|("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+")";
+	//private static final String LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR = ";";
+	//private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX = "("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+" )|("+LAUNCHPAD_TRANSLATOR_CREDITS_SEPARATOR+")";
+	// Replace anything that looks like a link (starts with http) ...
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1 = "(http[^ ]*)";
+	// ... by surrounding line breaks and a smaller font.
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_2 = "<br/><small><small>$1</small></small><br/>\n";
 	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_HEADER = "Launchpad Contributions: ";
 	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_TAG = "translator-credits";
 
@@ -525,11 +530,18 @@ public class About extends TabActivity {
 			// Create string array of translators from translated string
 			// from Launchpad or (for English) from the array.
 			if (!text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) && !TextUtils.isEmpty(text)) {
-				textarray = text.replaceFirst(
-						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
-				text = AboutUtils.getTextFromArray(textarray);
-
-				mTranslatorsText.setText(text);
+			//	textarray = text.replaceFirst(
+			//			LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
+			//	text = AboutUtils.getTextFromArray(textarray);
+			//	mTranslatorsText.setText(text);
+				text = text.replaceFirst(
+						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").replaceAll(
+								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1,
+								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_2);
+				CharSequence styledText = Html.fromHtml(text);
+				
+				mTranslatorsText.setText(styledText);
+				mTranslatorsText.setLinksClickable(true);
 				mTranslatorsLabel.setVisibility(View.VISIBLE);
 				mTranslatorsText.setVisibility(View.VISIBLE);
 			} else {
@@ -857,8 +869,9 @@ public class About extends TabActivity {
 		if(translatorsString.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG)){
 			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources().getStringArray(R.array.about_translators));
 		}else{
-			String[] translatorsArray=translatorsString.replaceFirst(LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
-			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, translatorsArray);
+	// TODO: Fix this if required. See displayTranslators()
+	//		String[] translatorsArray=translatorsString.replaceFirst(LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
+	//		intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, translatorsArray);
 		}
 		
 		intent.putExtra(AboutIntents.EXTRA_ARTISTS, getResources()
