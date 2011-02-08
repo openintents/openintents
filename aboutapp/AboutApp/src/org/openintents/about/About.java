@@ -670,11 +670,11 @@ public class About extends TabActivity {
 
         // Add fourth tab only if "recent changes" information
         // has been provided
-		final Intent intent = getIntent();
-		if (intent == null) {
-			setIntent(new Intent());
-		}
-		String packagename = getPackageNameFromIntent(intent);
+        final Intent intent = getIntent();
+        if (intent == null) {
+            setIntent(new Intent());
+        }
+        String packagename = getPackageNameFromIntent(intent);
         if (hasRecentChanges(packagename, intent)) {
 	        tabHost.addTab(tabHost.newTabSpec(getString(R.string.l_recent_changes))
 	                .setIndicator(getString(R.string.l_recent_changes))
