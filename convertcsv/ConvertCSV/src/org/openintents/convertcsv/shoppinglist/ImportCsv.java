@@ -142,11 +142,11 @@ public class ImportCsv {
 				}
 			}
 			
-			long quantity;
+			double quantity;
 			try {
-			    quantity = Integer.parseInt(nextLine[4]); // Quantity
+			    quantity = Double.parseDouble(nextLine[4]); // Quantity
 			} catch (java.lang.NumberFormatException nfe){
-				quantity = 1;		
+				quantity = 1.0;		
 			}
 			long priority;
 			try {
