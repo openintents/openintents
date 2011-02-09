@@ -7,6 +7,7 @@
 # Jan 8, 2011: Peli: Check if a language .po file exists. In this way, all language codes can be included in this file.
 # Jan 29, 2011: Peli: Read language codes dynamically. One central androidxml2po.bash file for all projects by introducing additional arguments.
 # Jan 30, 2011: Peli: Delete lines starting with "#~" (deleted translations) from export .po files, as they may contain duplicates that cause an error message when uploading to Launchpad..
+# Feb 9, 2011: Add option --no-po.
 
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
@@ -23,6 +24,8 @@ xml2po="xml2po"
 
 # Languages will be determined automatically
 languages=()
+
+option_no_po=0
 
 # Delimit apostrophes: "'" -> "\'"
 # argument $1 is file name
@@ -104,33 +107,34 @@ echo "Exporting .xml to .pot"
 ${xml2po} -a -o "${export_pot}"/"${launchpad_po_filename}".pot tmp_strings.xml
 undodelimitapostrophe "${export_pot}"/"${launchpad_po_filename}".pot
 
-
-for language in ${languages[@]}
-do
-    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
-		set_androidlanguage_from_language
-    	echo "Exporting .xml to updated .po for "${language}""
-    	if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
-			# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
-			# WORKAROUND: 
-			#    msgmerge will not merge properly, if export file is not in current directory.
-			#    Therefore: first create .po file in current directory, then
-			#    move it to export directory.
-			cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
-            ${xml2po} -a -u "${language}".po tmp_strings.xml
-			undodelimitapostrophe "${language}".po
-			
-			# Take out lines starting with "#~".
-			# These are deleted translations, and Launchpad may show an error
-			# if duplicates appear there.
-			sed -i "s/#~.*//g" "${language}".po
-			
-			mv "${language}".po "${export_po}"/"${language}".po
-        else
-		    echo "-"
-        fi
-    fi
-done
+if [ option_no_po -eq 0 ] ; then
+	for language in ${languages[@]}
+	do
+	    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
+			set_androidlanguage_from_language
+	    	echo "Exporting .xml to updated .po for "${language}""
+	    	if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
+				# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
+				# WORKAROUND: 
+				#    msgmerge will not merge properly, if export file is not in current directory.
+				#    Therefore: first create .po file in current directory, then
+				#    move it to export directory.
+				cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
+	            ${xml2po} -a -u "${language}".po tmp_strings.xml
+				undodelimitapostrophe "${language}".po
+				
+				# Take out lines starting with "#~".
+				# These are deleted translations, and Launchpad may show an error
+				# if duplicates appear there.
+				sed -i "s/#~.*//g" "${language}".po
+				
+				mv "${language}".po "${export_po}"/"${language}".po
+	        else
+			    echo "-"
+	        fi
+	    fi
+	done
+fi
 rm tmp_strings.xml
 }
 
@@ -144,6 +148,7 @@ function usage
 	echo " -a:  Android project path."
 	echo " -n:  Launchpad name for translation files."
 	echo " -ex: Export path for Launchpad files."
+	echo " --no-po: Option for export to suppress generation of .po files."
     echo "Set variables correctly inside. Run from the /res directory. Provide a string with value "translator-credits" for Launchpad."
     echo ""
     echo "Copyright 2009 by pjv. Licensed under GPLv3."
@@ -176,6 +181,9 @@ while [ "$1" != "" ]; do
 				shift
 				export_po="$1"
 				export_pot="$1"
+				;;
+		--nopo )	# Suppress generation of po file in export
+				option_no_po=1
 				;;
         -h | --help )           		usage
                                 		exit

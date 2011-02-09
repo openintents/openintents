@@ -5,6 +5,10 @@
 
 # Jan 29, 2011: Peli: read list of apps from central place.
 
+# Suppress generation of .po file:
+#nopo=
+nopo="--nopo"
+
 # $1..translation file name
 # $2..main path
 function execute
@@ -15,7 +19,8 @@ function execute
 	translationspath=translations_$translationfilename
     echo "Translating $mainpath"
     mkdir translations_$translationfilename
-    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" -e
+	echo "$nopo"
+    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo -e
 }
 
 # Delete all existing output directories:
