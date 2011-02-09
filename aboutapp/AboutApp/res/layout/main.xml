@@ -161,6 +161,17 @@
 			<!-- android:editable="false" android:linksClickable="true" android:selectAllOnFocus="false" -->
 		</TextView>
 		
+		<TextView android:id="@+id/l_international_translators"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/l_international_translators">
+		</TextView>
+		<TextView android:id="@+id/et_international_translators"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:textColor="#ffffffff"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:autoLink="all" android:layout_marginBottom="15dip">
+		</TextView>
+		
 		<TextView android:id="@+id/tv_no_information"
 			android:text="@string/no_information_available"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"

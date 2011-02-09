@@ -1,9 +1,12 @@
 package org.openintents.about;
 
+import java.util.Locale;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -129,6 +132,41 @@ public class AboutUtils {
 		}
 	}
 
+
+	/**
+	 * Get string from metadata in different localization.
+	 * 
+	 * @param context
+	 * @param packagename
+	 * @param intent
+	 * @param extra
+	 * @param metadata
+	 * @return
+	 */
+	public static int getMetadataId(final Context context, final String packagename,
+		final String metadata) {
+        //Try meta data of package
+        Bundle md = null;
+        try {
+                md = context.getPackageManager().getApplicationInfo(
+					packagename, PackageManager.GET_META_DATA).metaData;
+        } catch (NameNotFoundException e) {
+            Log.e(TAG, "Package name not found", e);
+        }
+
+        if (md != null) {
+        	//Still try metadata but don't expect a ready string (get it from the resources).
+        		try {
+	        		int id = md.getInt(metadata);
+	        		return id;
+	        	} catch (NumberFormatException e) {
+            		Log.e(TAG, "Metadata not valid id.", e);
+	        	} catch (Resources.NotFoundException e) {
+            		Log.e(TAG, "Resource not found.", e);
+	        	}
+	    }
+        return 0;
+	}
 
 	/**
 	 * Get resource ID from extra or from metadata.

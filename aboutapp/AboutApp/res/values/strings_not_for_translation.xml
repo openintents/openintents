@@ -25,4 +25,31 @@
 	<string name="about_website_url">http://www.openintents.org</string>
 	<string name="about_email">support@openintents.org</string>
 	
+    <string-array name="languages">
+		<item>ar</item><!-- Arabic -->
+		<item>cs</item><!-- Czech -->
+		<item>da</item><!-- Danish -->
+		<item>de</item><!-- German -->
+		<item>en</item><!-- English -->
+		<item>es</item><!-- Spanish -->
+		<item>fi</item><!-- Finnish -->
+		<item>fo</item><!-- Faroese -->
+		<item>fr</item><!-- French -->
+		<item>it</item><!-- Italian -->
+		<item>ja</item><!-- Japanese -->
+		<item>ko</item><!-- Korean -->
+		<item>lo</item><!-- Lao -->
+		<item>nl</item><!-- Dutch -->
+		<item>oc</item><!-- Occitan (post 1500) -->
+		<item>pl</item><!-- Polish -->
+		<item>pt</item><!-- Portuguese -->
+		<item>pt_BR</item><!-- Brazilian Portuguese -->
+		<item>ro</item><!-- Romanian -->
+		<item>ru</item><!-- Russian -->
+		<item>sk</item><!-- Slovak -->
+		<item>sv</item><!-- Swedish -->
+		<item>tr</item><!-- Turkish -->
+		<item>zh_CN</item><!-- Chinese (Simplified) -->
+		<item>zh_TW</item><!-- Chinese (Traditional) -->
+	</string-array>
 </resources>

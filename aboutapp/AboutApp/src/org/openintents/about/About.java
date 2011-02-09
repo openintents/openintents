@@ -26,6 +26,7 @@ package org.openintents.about;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +39,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.net.Uri;
@@ -75,8 +77,11 @@ public class About extends TabActivity {
 	// Replace anything that looks like a link (starts with http) ...
 	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1 = "(http[^ ]*)";
 	// ... by surrounding line breaks and a smaller font.
-	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_2 = "<br/><small><small>$1</small></small><br/>\n";
-	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_HEADER = "Launchpad Contributions: ";
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_2 = "<br/><small><small>$1</small></small><br/>";
+	// for international translations omit the link altogether:
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_3 = "<br/>";
+	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_HEADER = "(Launchpad Contributions: )|"
+		+"(This is a dummy translation so that the credits are counted as translated. Launchpad Contributions: )";
 	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_TAG = "translator-credits";
 
 	private static final String TAG = "About";
@@ -99,6 +104,8 @@ public class About extends TabActivity {
 	protected TextView mTranslatorsText;
 	protected TextView mArtistsLabel;
 	protected TextView mArtistsText;
+	protected TextView mInternationalTranslatorsLabel;
+	protected TextView mInternationalTranslatorsText;
 	protected TextView mNoInformationText;
 	protected TextView mLicenseText;
 	protected TextView mRecentChangesText;
@@ -537,7 +544,7 @@ public class About extends TabActivity {
 			text = AboutUtils.getStringExtraOrMetadata(this,
 					packagename, intent, AboutIntents.EXTRA_TRANSLATORS,
 					AboutMetaData.METADATA_TRANSLATORS);
-
+			
 			// Create string array of translators from translated string
 			// from Launchpad or (for English) from the array.
 			if (!text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) && !TextUtils.isEmpty(text)) {
@@ -549,6 +556,12 @@ public class About extends TabActivity {
 						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").replaceAll(
 								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1,
 								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_2);
+
+				// take away final "<br/>"
+				if (text.length() > 5) {
+					text = text.substring(0, text.length() - 5);
+				}
+				
 				CharSequence styledText = Html.fromHtml(text);
 				
 				mTranslatorsText.setText(styledText);
@@ -563,6 +576,92 @@ public class About extends TabActivity {
 
 	}
 
+	/**
+	 * Fetch and display international translators information.
+	 * This is only possible through the string resource directly - not through intent.
+	 * 
+	 */
+	protected void displayInternationalTranslators(final String packagename) {
+
+		int id = AboutUtils.getMetadataId(this,
+				packagename, AboutMetaData.METADATA_TRANSLATORS);
+		
+		String text = null;
+		
+		if (id != 0) {
+			// local resources
+    		Resources res = getResources();
+    		String[] languages = res.getStringArray(R.array.languages);
+    		String[] languagenames = res.getStringArray(R.array.language_names);
+    		
+    		if (languages.length != languagenames.length){
+    			// Language array lengths must agree!
+    			throw new RuntimeException();
+    		}
+    		try {
+    			// remote resources:
+        		Resources resources = getPackageManager()
+    					.getResourcesForApplication(packagename);
+        		
+        		StringBuilder sb = new StringBuilder();
+        		
+	    		for (int i=0; i<languages.length; i++) {
+	    			String lang = languages[i].substring(0, 2);
+	    			String country = "";
+	    			if (languages[i].length() > 3) {
+	    				country = languages[i].substring(3);
+	    			}	
+	
+	        		Locale locale = new Locale(lang, country);
+	        		Configuration config = new Configuration();
+	        		config.locale = locale;
+	        		resources.updateConfiguration(config, null);
+	        		text = resources.getString(id);
+	        		
+	        		if (!text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) && !TextUtils.isEmpty(text)) {
+	        				text = text.replaceFirst(
+	        						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").replaceAll(
+	        								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1,
+	        								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_3);
+	    	    			sb.append("<font color=\"#c0c0c0\"><small>");
+	    	    			sb.append(languagenames[i]);
+	    	    			sb.append("</small></font><br/>");
+	    	    			sb.append(text);
+	    	    			sb.append("<br/>");	    		
+	        		}
+	    		}
+
+				// take away final "<br/><br/>"
+				if (sb.length() > 10) {
+					text = sb.substring(0, sb.length() - 10);
+				} else {
+					text = sb.toString();
+				}
+
+        	} catch (NameNotFoundException e) {
+        		Log.e(TAG, "Package name not found ", e);
+        	} catch (NumberFormatException e) {
+        		Log.e(TAG, "Metadata not valid id.", e);
+        	} catch (Resources.NotFoundException e) {
+        		Log.e(TAG, "Resource not found.", e);
+        	}
+    		
+		}
+		
+		if (!TextUtils.isEmpty(text)) {
+			CharSequence styledText = Html.fromHtml(text);
+			
+			mInternationalTranslatorsText.setText(styledText);
+			mInternationalTranslatorsText.setLinksClickable(true);
+			mInternationalTranslatorsLabel.setVisibility(View.VISIBLE);
+			mInternationalTranslatorsText.setVisibility(View.VISIBLE);
+		} else {
+			mInternationalTranslatorsLabel.setVisibility(View.GONE);
+			mInternationalTranslatorsText.setVisibility(View.GONE);
+		}
+
+	}
+	
 	/**
 	 * Fetch and display website link information.
 	 * 
@@ -735,6 +834,9 @@ public class About extends TabActivity {
 		mArtistsLabel = (TextView) findViewById(R.id.l_artists);
 		mArtistsText = (TextView) findViewById(R.id.et_artists);
 		
+		mInternationalTranslatorsLabel = (TextView) findViewById(R.id.l_international_translators);
+		mInternationalTranslatorsText = (TextView) findViewById(R.id.et_international_translators);
+		
 		mNoInformationText = (TextView) findViewById(R.id.tv_no_information);
 
 		mLicenseText = (TextView) findViewById(R.id.et_license);
@@ -828,6 +930,7 @@ public class About extends TabActivity {
     	displayDocumenters(packagename, intent);
     	displayTranslators(packagename, intent);
     	displayArtists(packagename, intent);
+    	displayInternationalTranslators(packagename);
     	displayLicense(packagename, intent);
     	displayEmail(packagename, intent);
     	displayRecentChanges(packagename, intent);
@@ -836,104 +939,6 @@ public class About extends TabActivity {
     	
     	setResult(RESULT_OK);
 	}
-
-	/**
-	 * Show an about dialog for this application.
-	 */
-	private void showAboutDialogUsingExtras() {
-		Intent intent = new Intent(AboutIntents.ACTION_SHOW_ABOUT_DIALOG);
-
-		intent.putExtra(AboutIntents.EXTRA_PACKAGE_NAME, getPackageName());
-		
-		//Supply the image.
-		/*//alternative 1: Put the image resId into the provider.
-		Bitmap image = BitmapFactory.decodeResource(getResources(), 
-				R.drawable.icon);//lossy
-		String uri = Images.Media.insertImage(getContentResolver(), image,
-				getString(R.string.about_logo_title), 
-				getString(R.string.about_logo_description));
-		intent.putExtra(AboutIntents.EXTRA_ICON_URI, uri);*/
-		
-		//alternative 2: Supply the image name and package.
-		intent.putExtra(AboutIntents.EXTRA_ICON_RESOURCE, getResources()
-				.getResourceName(R.drawable.ic_menu_info_details));
-		
-		intent.putExtra(AboutIntents.EXTRA_APPLICATION_LABEL,
-				getString(R.string.app_name));
-		
-		//Get the app version
-		String version = "?";
-		try {
-		        PackageInfo pi = getPackageManager().getPackageInfo(
-					getPackageName(), 0);
-		        version = pi.versionName;
-		} catch (PackageManager.NameNotFoundException e) {
-		        Log.e(TAG, "Package name not found", e);
-		}
-		intent.putExtra(AboutIntents.EXTRA_VERSION_NAME, version);
-		
-		intent.putExtra(AboutIntents.EXTRA_COMMENTS,
-				getString(R.string.about_comments));
-		intent.putExtra(AboutIntents.EXTRA_COPYRIGHT,
-				getString(R.string.about_copyright));
-		intent.putExtra(AboutIntents.EXTRA_WEBSITE_LABEL,
-				getString(R.string.about_website_label));
-		intent.putExtra(AboutIntents.EXTRA_WEBSITE_URL,
-				getString(R.string.about_website_url));
-		intent.putExtra(AboutIntents.EXTRA_AUTHORS, getResources()
-				.getStringArray(R.array.about_authors));
-		intent.putExtra(AboutIntents.EXTRA_DOCUMENTERS, getResources()
-				.getStringArray(R.array.about_documenters));
-		
-		//Create string array of translators from translated string from Launchpad or (for English) from the array.
-		String translatorsString=getString(R.string.about_translators);
-		if(translatorsString.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG)){
-			intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, getResources().getStringArray(R.array.about_translators));
-		}else{
-	// TODO: Fix this if required. See displayTranslators()
-	//		String[] translatorsArray=translatorsString.replaceFirst(LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").split(LAUNCHPAD_TRANSLATOR_CREDITS_REGEX);
-	//		intent.putExtra(AboutIntents.EXTRA_TRANSLATORS, translatorsArray);
-		}
-		
-		intent.putExtra(AboutIntents.EXTRA_ARTISTS, getResources()
-				.getStringArray(R.array.about_artists));
-		
-		// Supply resource name of raw resource that contains the license:
-		intent.putExtra(AboutIntents.EXTRA_LICENSE_RESOURCE, getResources()
-				.getResourceName(R.raw.license_short));
-
-		// Supply resource name of raw resource that contains the recent changes:
-		intent.putExtra(AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, getResources()
-				.getResourceName(R.raw.recent_changes));
-		/*
-		//Read in the license file as a big String
-		BufferedReader in
-		   = new BufferedReader(new InputStreamReader(
-				getResources().openRawResource(R.raw.license_short)));
-		String license = "";
-		String line;
-		try {
-			while ((line = in.readLine()) != null) { // Read line per line.
-				license += line + "\n";
-			}
-		} catch (IOException e) {
-			//Should not happen.
-			e.printStackTrace();
-		}
-		intent.putExtra(AboutIntents.EXTRA_LICENSE, license);
-		intent.putExtra(AboutIntents.EXTRA_WRAP_LICENSE, false);
-		*/
-		
-		// Start about activity. Needs to be "forResult" with requestCode>=0
-		// because the About dialog may call elements from your Manifest by your
-		// package name.
-		startActivityForResult(intent, 0);
-		
-		// Don't need a chooser here:
-		//startActivityForResult(Intent.createChooser(intent,
-		//		getString(R.string.about_chooser_title)), 0);
-	}
-	
 
 	/**
 	 * Show an about dialog for this application.
