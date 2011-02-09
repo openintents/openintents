@@ -16,7 +16,7 @@
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">Actualización OI</string>
+    <string name="app_name">OI Update</string>
     
     <string name="update_available">Una versión nueva de %s está disponible. \n¿Quiere actualizar?</string>
     <string name="update_available_3">Existe una nueva versión disponible de %1$s en %2\n%3$s\n</string>
@@ -24,7 +24,7 @@
     <string name="update_available_location_no_comment">Existe una versión disponible de %1$s diaponible en %2$s</string>
     <string name="update_available_no_comment">Una neva versión de %s está disponible.</string>
 	<string name="market_not_available">Android Market no disponible.</string>
-    <string name="market_search_term">Actualización OI</string>
+    <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
@@ -32,22 +32,22 @@
     <string name="free_space">espacio libre: %s</string>
     <string name="os_info">Tabla %1$s\nMarca %2$s\nDispositivo %3$s\nID %4$s\nModelo %5$s</string>
     
-    <string name="do_update">Haz actualización ahora!</string>
+    <string name="do_update">Actualizar ahora</string>
     <string name="do_update_market">¡Pruebe actualizar desde Market ahora!</string>
     <string name="do_update_andAppStore">¡Pruebe actualizar desde AndAppStore ahora!</string>
     <string name="remind_me_later">¡Recordarme más tarde!</string>
     <string name="ignore_this_update">Ignorar esta actualización</string>
     <string name="ignore_all_further_updates">Ignorar todas actualizaciones en el futuro</string>
-    <string name="ok">De acuerdo</string>
+    <string name="ok">Aceptar</string>
     
-    <string name="update_not_started">¡No se pudo iniciar la actualización!\n\nPor favor póngase en contacto con el desarrollador de la aplicación!!\n\n%s</string>
+    <string name="update_not_started">¡No se pudo iniciar la actualización!\n\nPóngase en contacto con el desarrollador de la aplicación!\n\n%s</string>
     <string name="app_up_to_date">La aplicación está actualizada.</string>
     <string name="checking">Comprobando nueva versión.</string>
     <string name="building_app_list">Construyendo lista de aplicaciones.</string>
     <string name="check_andappstore">Comprobar AndAppStore.com</string>
     <string name="check_versions">Comprobar versiones</string>
     <string name="show_versions">Mostrar todo</string>
-    <string name="refresh">Refrescar</string>
+    <string name="refresh">Actualizar</string>
     <string name="checked_against_andappstore">AndAppStore comrobado</string>
     <string name="current_version">Versión actual: %s</string>
     <string name="current_version_code">Código de versión actual: %s</string>
@@ -59,7 +59,7 @@
     <string name="title_list_new_versions_from_andappstore">OI Update - Nuevas versiones en AndAppStore</string>
     <string name="title_list_all_versions">OI Update - Lista de aplicaciones administradas</string>
     <string name="title_list_all_versions_from_andappstore">OI Update - Lista de aplicaciones administradas (comprobar en AndAppStore)</string>
-    <string name="settings">Ajustes</string>
+    <string name="settings">Configuración</string>
     <string name="auto_update">Comprobar automáticamente</string>
     <string name="ignore_title">Ignorado</string>
     <string name="ignore_text">Actualmente se omiten las actualizaciones. ¿Le gustaría volver a recibir actualizaciones?</string>
@@ -79,8 +79,8 @@
     <string name="summary_update_interval">Establezca la frecuencia con que se deben buscar actualizaciones.</string>
     <string name="dialog_title_update_interval">Seleccionar intervalo</string>
     <string name="default_update_interval">cada_mes</string>
-    <string name="preference_warning_title">Advertencia</string>
-    <string name="preference_warning_text">Si quila selección de este objeto, ya no recibirá avisos sobre actualizaciones. ¿Todavía desea quitar la selección a la actualización automática?</string>
+    <string name="preference_warning_title">Aviso</string>
+    <string name="preference_warning_text">Si quita la selección de este objeto, ya no recibirá avisos sobre actualizaciones. ¿Todavía quiere quitar la selección a la actualización automática?</string>
     
     <string name="preference_andappstore">Utilizar AndAppStore</string>
     <string name="preference_andappstore_summary">Utilizar información de versión proporcionada por AndAppStore.com</string>

@@ -27,10 +27,15 @@
     <string name="recent_colors_clear_history">Wissen</string>
     <string name="recent_colors_empty">Er zijn geen recentelijk gekozen kleuren.</string>
     
+    <string name="confirm_color_title">Use color?</string>
+    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    
+    
 	<!-- About -->
 	<string name="about">Over</string>
 	<string name="aboutapp_not_available">Versie %s\n\n Geen ondersteunde extensie aanwezig om volledige informatie weer te geven (contact, credits, licensie).</string>
 	<string name="aboutapp_get">Verkrijg OI About</string>
+
 
 	<!-- Update -->
 	<string name="update_error">De update is niet verkrijgbaar.</string>
@@ -54,7 +59,7 @@
     
 	<string name="info_activity_text">Deze applicatie kan gebruikt worden voor de volgende applicaties:</string>
     <string name="info_launch">%s opstarten</string>
-    <!-- %1$s is application name, %2$s is version name. -->
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">Deze applicatie heeft %1$s %2$s of hoger nodig.</string>
 	<string name="info_get">Verkrijg %s</string>
 </resources>

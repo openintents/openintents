@@ -57,7 +57,7 @@
     
 	<string name="info_activity_text">This app can be used with the following applications:</string>
     <string name="info_launch">Launch %s</string>
-    <!-- %1$s is application name, second %2$s is version name. -->
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
 	<string name="info_get">Get %s</string>
 </resources>

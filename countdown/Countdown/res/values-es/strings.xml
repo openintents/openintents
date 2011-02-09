@@ -30,8 +30,8 @@
 	<string name="no_durations">Use el menñu para añadir una cuenta atrás nueva</string>
 	<string name="countdown_list">Lista de cuenta atrás</string>
 	
-    <string name="menu_delete">Borrar</string>
-    <string name="menu_edit">Modificar</string>
+    <string name="menu_delete">Eliminar</string>
+    <string name="menu_edit">Editar</string>
     <string name="menu_insert">Añadir cuenta atrás</string>
     <string name="menu_pick_ringtone">Ringtone</string>
     
@@ -56,7 +56,7 @@
     <string name="title_edit">Editar cuenta atrás</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Seleccione cuenta regresiva</string>
+    <string name="title_pick">Seleccione la cuenta atrás</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
     <string name="title_setcountdown_action">OI Countdown</string>
@@ -103,7 +103,7 @@
 	<string name="dismiss">Descartar</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">Días</string>
+	<string name="days">días</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
 	<string name="day">día</string>

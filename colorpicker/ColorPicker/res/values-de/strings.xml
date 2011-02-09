@@ -27,10 +27,15 @@
     <string name="recent_colors_clear_history">Clear</string>
     <string name="recent_colors_empty">There are no recently chosen colors.</string>
     
+    <string name="confirm_color_title">Use color?</string>
+    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    
+    
 	<!-- About -->
 	<string name="about">Info</string>
 	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
 	<string name="aboutapp_get">Get OI About</string>
+
 
 	<!-- Update -->
 	<string name="update_error">Download application not available.</string>
@@ -54,7 +59,7 @@
     
 	<string name="info_activity_text">Diese App kann mit mit folgenden Anwedungen verwendet werden:</string>
     <string name="info_launch">Starte %s</string>
-    <!-- %1$s is application name, %2$s is version name. -->
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
 	<string name="info_get">Get %s</string>
 </resources>

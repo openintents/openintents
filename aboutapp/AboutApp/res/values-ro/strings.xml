@@ -53,9 +53,52 @@
 	<string name="l_documenters">Documentație</string>
 	<string name="l_translators">Traducere</string>
 	<string name="l_artists">Interfață</string>
+	<string name="l_international_translators">International translations by</string>
 	<string name="l_credits">Mulţumiri</string>
 	<string name="l_license">Licență</string>
 	<string name="l_info">Informații generale</string>
+	<string name="l_recent_changes">Recent changes</string>
 	
 	<string name="no_information_available">Informație indisponibilă.</string>
+	
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI File Manager</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Shopping List</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI Notepad</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI Safe</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>Arabic</item>
+		<item>Czech</item>
+		<item>Danish</item>
+		<item>German</item>
+		<item>English</item>
+		<item>Spanish</item>
+		<item>Finnish</item>
+		<item>Faroese</item>
+		<item>French</item>
+		<item>Italian</item>
+		<item>Japanese</item>
+		<item>Korean</item>
+		<item>Lao</item>
+		<item>Dutch</item>
+		<item>Occitan (post 1500)</item>
+		<item>Polish</item>
+		<item>Portuguese</item>
+		<item>Brazilian Portuguese</item>
+		<item>Romanian</item>
+		<item>Russian</item>
+		<item>Slovak</item>
+		<item>Swedish</item>
+		<item>Turkish</item>
+		<item>Chinese (Simplified)</item>
+		<item>Chinese (Traditional)</item>
+	</string-array>
 </resources>

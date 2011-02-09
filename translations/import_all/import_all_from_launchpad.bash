@@ -13,7 +13,7 @@ function execute
     mainpath="$2"
     scriptpath="../../$mainpath/translations"
     echo "Translating $mainpath"
-    ../scripts/androidxml2po.bash -lp "translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -i
+    ../scripts/androidxml2po.bash -lp "translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -i
 }
 
 
