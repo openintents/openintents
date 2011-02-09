@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-02-04 01:03+0100\n"
+"POT-Creation-Date: 2011-02-09 02:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,5 +149,31 @@ msgstr ""
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:83(string) 
 msgid "Download %s"
+msgstr ""
+
+#. %s is an application name (e.g. "OI About can be used with the following applications:")
+#: tmp_strings.xml:86(string) 
+msgid "%s can be used with the following applications:"
+msgstr ""
+
+#. %s is an application name (e.g. "Launch OI Notepad")
+#: tmp_strings.xml:88(string) 
+msgid "Launch %s"
+msgstr ""
+
+#. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
+#.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
+#: tmp_strings.xml:91(string) 
+msgid "%1$s requires %2$s %3$s or higher."
+msgstr ""
+
+#. Title of a dialog.
+#: tmp_strings.xml:93(string) 
+msgid "Instructions"
+msgstr ""
+
+#. Error message
+#: tmp_strings.xml:95(string) 
+msgid "Application could not be launched"
 msgstr ""
 

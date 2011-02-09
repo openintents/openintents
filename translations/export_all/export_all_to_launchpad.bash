@@ -15,11 +15,12 @@ function execute
 	translationspath=translations_$translationfilename
     echo "Translating $mainpath"
     mkdir translations_$translationfilename
-    ../scripts/androidxml2po.bash -lp "../import_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" -e
+    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" -e
 }
 
 # Delete all existing output directories:
-rm -r translations_*
+rm -r translations_*/*.po
+rm -r translations_*/*.pot
 
 # Read all apps that should be translated.
 # sed: Remove comment lines starting with "#"

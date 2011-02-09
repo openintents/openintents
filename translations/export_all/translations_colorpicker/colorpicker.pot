@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-02-04 01:03+0100\n"
+"POT-Creation-Date: 2011-02-09 02:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,71 +49,79 @@ msgstr ""
 msgid "There are no recently chosen colors."
 msgstr ""
 
-#. About
+#: tmp_strings.xml:28(string) 
+msgid "Use color?"
+msgstr ""
+
 #: tmp_strings.xml:29(string) 
+msgid "Use this new color? You can avoid this message by clicking on the center circle."
+msgstr ""
+
+#. About
+#: tmp_strings.xml:33(string) 
 msgid "About"
 msgstr ""
 
-#: tmp_strings.xml:30(string) 
+#: tmp_strings.xml:34(string) 
 msgid "Version %s\\n\\nNo compatible extension available to display full info (contact, credits, license)."
 msgstr ""
 
-#: tmp_strings.xml:31(string) 
+#: tmp_strings.xml:35(string) 
 msgid "Get OI About"
 msgstr ""
 
 #. Update
-#: tmp_strings.xml:34(string) 
+#: tmp_strings.xml:39(string) 
 msgid "Download application not available."
 msgstr ""
 
 #. Message how to use OI Color Picker from within OI Flashlight.
-#: tmp_strings.xml:40(string) 
+#: tmp_strings.xml:45(string) 
 msgid "To select a color in OI Flashlight, press menu &gt; Color."
 msgstr ""
 
-#: tmp_strings.xml:41(string) 
+#: tmp_strings.xml:46(string) 
 msgid "OI Flashlight"
 msgstr ""
 
-#: tmp_strings.xml:43(string) 
+#: tmp_strings.xml:48(string) 
 msgid "Hypnotic, animated spiral Live Wallpaper."
 msgstr ""
 
-#: tmp_strings.xml:44(string) 
+#: tmp_strings.xml:49(string) 
 msgid "HypnoTwister Live Wallpaper"
 msgstr ""
 
-#: tmp_strings.xml:46(string) 
+#: tmp_strings.xml:51(string) 
 msgid "Native Flickr interface for Android"
 msgstr ""
 
-#: tmp_strings.xml:47(string) 
+#: tmp_strings.xml:52(string) 
 msgid "BettrFlickr"
 msgstr ""
 
-#: tmp_strings.xml:49(string) 
+#: tmp_strings.xml:54(string) 
 msgid "Mix and match artwork to generate anime characters"
 msgstr ""
 
-#: tmp_strings.xml:50(string) 
+#: tmp_strings.xml:55(string) 
 msgid "Anime Character Generator"
 msgstr ""
 
-#: tmp_strings.xml:53(string) 
+#: tmp_strings.xml:58(string) 
 msgid "This app can be used with the following applications:"
 msgstr ""
 
-#: tmp_strings.xml:54(string) 
+#: tmp_strings.xml:59(string) 
 msgid "Launch %s"
 msgstr ""
 
-#. %1$s is application name, %2$s is version name.
-#: tmp_strings.xml:56(string) 
+#. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
+#: tmp_strings.xml:61(string) 
 msgid "This app requires %1$s %2$s or higher."
 msgstr ""
 
-#: tmp_strings.xml:57(string) 
+#: tmp_strings.xml:62(string) 
 msgid "Get %s"
 msgstr ""
 
