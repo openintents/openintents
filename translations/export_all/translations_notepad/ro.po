@@ -1,0 +1,559 @@
+# Romanian translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2010-04-11 08:57+0000\n"
+"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Language-Team: Romanian <ro@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-02-09 01:20+0000\n"
+"X-Generator: Launchpad (build 12335)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  George Dumitrescu https://launchpad.net/~geod\n"
+"  Peli https://launchpad.net/~peli0101\n"
+"  iulargsb https://launchpad.net/~iulargsb"
+
+#. Short explanation of the application
+#: tmp_strings.xml:33(string)
+msgid "OI Notepad allows to create, edit, and delete notes."
+msgstr "OI Notepad vă permite să creați, modificați și ștergeți note."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
+#: tmp_strings.xml:117(string)
+msgid "OI Notepad"
+msgstr "OI Notepad"
+
+#: tmp_strings.xml:42(string)
+msgid "Delete"
+msgstr "Șterge"
+
+#: tmp_strings.xml:43(string)
+msgid "Add note"
+msgstr "Adaugă notă"
+
+#: tmp_strings.xml:44(string)
+msgid "Revert"
+msgstr "Revenire"
+
+#: tmp_strings.xml:45(string)
+msgid "Discard"
+msgstr "Renunță"
+
+#: tmp_strings.xml:47(string)
+msgid "Use menu to add new notes."
+msgstr "Folosiți meniul pentru a adăuga o notă."
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
+msgid "Edit note"
+msgstr "Editează nota"
+
+#: tmp_strings.xml:50(string)
+msgid "Edit title"
+msgstr "Modifică titlu"
+
+#: tmp_strings.xml:52(string)
+msgid "Create note"
+msgstr "Crează notă"
+
+#: tmp_strings.xml:55(string)
+msgid "Note"
+msgstr "Notă"
+
+#: tmp_strings.xml:56(string)
+msgid "Note title:"
+msgstr "Titlu notă:"
+
+#: tmp_strings.xml:57(string)
+msgid "%s (new note)"
+msgstr "%s (notă nouă)"
+
+#: tmp_strings.xml:58(string)
+msgid "%s (edit note)"
+msgstr "%s (modifică notă)"
+
+#. Title: Pick note for shortcut (to be placed on the home screen)
+#: tmp_strings.xml:61(string)
+msgid "Pick note for shortcut"
+msgstr ""
+
+#. Dialog box
+#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+msgid "OK"
+msgstr "OK"
+
+#: tmp_strings.xml:65(string)
+msgid "Error"
+msgstr "Eroare"
+
+#: tmp_strings.xml:66(string)
+msgid "Error loading note"
+msgstr "Eroare încărcare notă"
+
+#. <string name="no_notes">Note list is empty.</string>
+#: tmp_strings.xml:69(string)
+msgid "Send"
+msgstr "Trimite"
+
+#: tmp_strings.xml:70(string)
+msgid "Empty note"
+msgstr "Notă goală"
+
+#: tmp_strings.xml:71(string)
+msgid "No application available for sending."
+msgstr "Nu există aplicație pentru trimitere."
+
+#: tmp_strings.xml:73(string)
+msgid "Encrypting note"
+msgstr "Criptez nota"
+
+#: tmp_strings.xml:74(string)
+msgid "Encrypted"
+msgstr "Criptată"
+
+#: tmp_strings.xml:75(string)
+msgid "Encrypt"
+msgstr "Criptează"
+
+#: tmp_strings.xml:76(string)
+msgid "Decrypt"
+msgstr "Decriptează"
+
+#: tmp_strings.xml:77(string)
+msgid "Undo encryption"
+msgstr "Renunță la criptare"
+
+#: tmp_strings.xml:78(string)
+msgid "Do not encrypt"
+msgstr "Nu încripta"
+
+#: tmp_strings.xml:79(string)
+msgid "Already encrypted."
+msgstr "Încriptată deja"
+
+#: tmp_strings.xml:80(string)
+msgid "Not encrypted."
+msgstr "Neîncriptată"
+
+#: tmp_strings.xml:81(string)
+msgid "Encryption failed."
+msgstr "Criptarea a eșuat."
+
+#: tmp_strings.xml:82(string)
+msgid "Decryption failed."
+msgstr "Decriptarea a eșuat."
+
+#: tmp_strings.xml:84(string)
+msgid "Edit tags"
+msgstr "Modifică taguri"
+
+#: tmp_strings.xml:85(string)
+msgid "Touch to see list"
+msgstr "Atinge pentru a vedea lista"
+
+#: tmp_strings.xml:86(string)
+msgid "Enter tags, separated by comma"
+msgstr "Introduceți taguri separate cu virgulă"
+
+#: tmp_strings.xml:88(string)
+msgid "Save to SD card"
+msgstr "Salvează pe cardul SD"
+
+#: tmp_strings.xml:89(string)
+msgid "Open from SD card"
+msgstr "Deschide de pe cardul SD"
+
+#: tmp_strings.xml:90(string)
+msgid "File name"
+msgstr "Nume fișier"
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
+#: tmp_strings.xml:106(string)
+msgid "Save"
+msgstr "Salvează"
+
+#: tmp_strings.xml:92(string)
+msgid "Open"
+msgstr "Deschide"
+
+#: tmp_strings.xml:93(string)
+msgid "Error while writing file"
+msgstr "Eroare la scrierea fișierului"
+
+#: tmp_strings.xml:94(string)
+msgid "Error while reading file"
+msgstr "Eroare la citirea fișierului"
+
+#: tmp_strings.xml:95(string)
+msgid "File not found"
+msgstr "Fișier negăsit"
+
+#: tmp_strings.xml:96(string)
+msgid "Note saved"
+msgstr "Notă salvată"
+
+#: tmp_strings.xml:97(string)
+msgid "File exists already"
+msgstr "Fișierul deja există"
+
+#: tmp_strings.xml:98(string)
+msgid "Do you really want to overwrite the existing file?"
+msgstr "Doriți întradevăr să suprascrieți fișierul existent?"
+
+#. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
+#: tmp_strings.xml:101(string)
+msgid "Import"
+msgstr "Importă"
+
+#: tmp_strings.xml:103(string)
+msgid "Save as"
+msgstr "Salvează ca"
+
+#: tmp_strings.xml:104(string)
+msgid "Text modified"
+msgstr "Text modificat"
+
+#: tmp_strings.xml:105(string)
+msgid "Do you want to save the changes?"
+msgstr "Doriți să salvați modificările?"
+
+#: tmp_strings.xml:107(string)
+msgid "Don't save"
+msgstr ""
+
+#: tmp_strings.xml:109(string)
+msgid "Theme"
+msgstr "Temă"
+
+#: tmp_strings.xml:110(string)
+msgid "Pick a theme"
+msgstr "Alege temă"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+msgid "Default"
+msgstr "Implicit"
+
+#: tmp_strings.xml:112(string)
+msgid "Monospaced font"
+msgstr "Font Monospaced"
+
+#: tmp_strings.xml:113(string)
+msgid "Serif font"
+msgstr "Font Serif"
+
+#. Search
+#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+msgid "Search"
+msgstr "Caută"
+
+#. %s is the search string
+#: tmp_strings.xml:119(string)
+msgid "No results found for %s."
+msgstr "Nu s-au găsit rezultate pentru %s."
+
+#: tmp_strings.xml:120(string)
+msgid "OI Notepad search"
+msgstr "Caută OI Notepad"
+
+#. The description that will show up in the search settings for this source.
+#: tmp_strings.xml:124(string)
+msgid "Titles of your notes"
+msgstr "Titlurile pentru notele tale"
+
+#: tmp_strings.xml:128(string)
+msgid "Cancel"
+msgstr "Renunță"
+
+#: tmp_strings.xml:129(string)
+msgid "Use this theme for all lists"
+msgstr "Utilizează această temă pentru toate listele"
+
+#: tmp_strings.xml:130(string)
+msgid "Get more themes"
+msgstr "Obţine mai multe teme"
+
+#: tmp_strings.xml:132(string)
+msgid "All notes"
+msgstr "Toate notele"
+
+#. Title for settings regarding the list of notes
+#: tmp_strings.xml:136(string)
+msgid "Notes List"
+msgstr "Listă note"
+
+#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+msgid "List Sorting Order"
+msgstr "Ordonarea listei"
+
+#: tmp_strings.xml:139(string)
+msgid "The order in which notes are shown in the notes list"
+msgstr "Ordinea în care notele sunt afișate in listă"
+
+#: tmp_strings.xml:141(string)
+msgid "Note Editor"
+msgstr "Editor de Note"
+
+#: tmp_strings.xml:142(string)
+msgid "Font size"
+msgstr "Dimensiune font"
+
+#: tmp_strings.xml:143(string)
+msgid "Change font size"
+msgstr "Schimbă dimensiunea fontului"
+
+#: tmp_strings.xml:144(string)
+msgid "Choose font size"
+msgstr "Alege dimensiunea fontului"
+
+#: tmp_strings.xml:145(string)
+msgid "Auto-create Links"
+msgstr "Crează automat legături"
+
+#: tmp_strings.xml:146(string)
+msgid "Create links for phone numbers and email/street/web addresses"
+msgstr ""
+"Crează legături pentru numere de telefon, adrese de email/străzi/internet"
+
+#: tmp_strings.xml:147(string)
+msgid "Do not create links on notes"
+msgstr "Nu crea legături în note"
+
+#: tmp_strings.xml:149(string)
+msgid "Settings"
+msgstr "Configurări"
+
+#: tmp_strings.xml:150(string)
+msgid "Sort Order"
+msgstr "Ordinea sortării"
+
+#. Permission to read notes.
+#: tmp_strings.xml:158(string)
+msgid "read notes"
+msgstr "citește note"
+
+#: tmp_strings.xml:159(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Permite unei aplicații să citească note. Notele criptate sunt oferite în "
+"formatul criptat."
+
+#. Permission to write notes.
+#: tmp_strings.xml:161(string)
+msgid "write notes"
+msgstr "scrie note"
+
+#: tmp_strings.xml:162(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr ""
+"Permite unei aplicații sa creeze note noi sau să modifice pe cele existente."
+
+#. Permission to read shopping lists.
+#: tmp_strings.xml:166(string)
+msgid "read shopping lists"
+msgstr "citește listele de cumpărături"
+
+#: tmp_strings.xml:167(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Permite unei aplicații să citească listele de cumpărături. Listele criptate "
+"sunt oferite în formatul criptat."
+
+#. Permission to write shopping lists.
+#: tmp_strings.xml:169(string)
+msgid "write shopping lists"
+msgstr "scrie liste de cumpărături"
+
+#: tmp_strings.xml:170(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+"Permite unei aplicații să creeze liste noi sau să modifice pe cele existente."
+
+#. Permission to encrypt and decrypt data.
+#: tmp_strings.xml:174(string)
+msgid "encrypt and decrypt data"
+msgstr "criptează și decriptează date"
+
+#: tmp_strings.xml:175(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+"Permite aplicațiilor să cripteze și să decripteze text, și să acceseze "
+"parolele pe care le-au salvat in OI Safe."
+
+#: tmp_strings.xml:184(item)
+msgid "Alphabetical"
+msgstr "Alfabetic"
+
+#: tmp_strings.xml:185(item)
+msgid "Reverse Alphabetical"
+msgstr "Invers alfabetic"
+
+#: tmp_strings.xml:186(item)
+msgid "Newest to Oldest"
+msgstr "Cea mai nouă spre cea mai veche"
+
+#: tmp_strings.xml:187(item)
+msgid "Oldest to Newest"
+msgstr "Cea mai veche spre cea mai nouă"
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:192(item)
+msgid "Tiny"
+msgstr "Minuscul"
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:194(item)
+msgid "Small"
+msgstr "Mic"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:198(item)
+msgid "Large"
+msgstr "Mare"
+
+#: tmp_strings.xml:201(string)
+msgid "Add-ons"
+msgstr "Module"
+
+#: tmp_strings.xml:202(string)
+msgid "Get new add-ons"
+msgstr "Obține module noi"
+
+#: tmp_strings.xml:203(string)
+msgid "Search for extensions and themes online."
+msgstr "Caută extensii și teme online."
+
+#: tmp_strings.xml:204(string)
+msgid "Get add-ons from Market"
+msgstr "Obține module de la Piață"
+
+#: tmp_strings.xml:205(string)
+msgid "Get add-ons from OpenIntents"
+msgstr "Obține module de la OpenIntents"
+
+#: tmp_strings.xml:206(string)
+msgid "Extensions"
+msgstr "Extensii"
+
+#: tmp_strings.xml:207(string)
+msgid "Themes"
+msgstr "Teme"
+
+#: tmp_strings.xml:208(string)
+msgid "Search for extensions at Android Market."
+msgstr "Caută extensii pe Android Market"
+
+#: tmp_strings.xml:209(string)
+msgid "Search for themes at Android Market."
+msgstr "Caută teme la Piaţa Android."
+
+#: tmp_strings.xml:210(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Instalează extensii de pe siteul OpenIntents."
+
+#: tmp_strings.xml:211(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr "Obține teme de la pagina principală OpenIntents."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

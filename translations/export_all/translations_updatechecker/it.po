@@ -1,0 +1,386 @@
+# Italian translation for openintents
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2011-01-28 10:33+0000\n"
+"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-02-09 01:20+0000\n"
+"X-Generator: Launchpad (build 12335)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Diego Pierotto https://launchpad.net/~gringo\n"
+"  Martino Barbon https://launchpad.net/~martins999\n"
+"  Peli https://launchpad.net/~peli0101"
+
+#. ***************************
+#. 	     Applicatio-specific strings
+#. 	     ***************************
+#: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
+msgid "OI Update"
+msgstr "OI Aggiornamenti"
+
+#: tmp_strings.xml:15(string)
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr "Una nuova versione di %s è disponibile.\\nVuoi aggiornare?"
+
+#: tmp_strings.xml:16(string)
+msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
+msgstr "Una nuova versione di %1$s è disponibile a %2$s.\\n%3$s\\n"
+
+#: tmp_strings.xml:17(string)
+msgid "A new version of %1$s is available.\\n%2$s\\n"
+msgstr "Una nuova versione di %1$s è disponibile.\\n%2$s\\n"
+
+#: tmp_strings.xml:18(string)
+msgid "A new version of %1$s is available at %2$s."
+msgstr "Una nuova versione di %1$s è disponibile a %2$s."
+
+#: tmp_strings.xml:19(string)
+msgid "A new version of %s is available."
+msgstr "Una nuova versione di %s è disponibile."
+
+#: tmp_strings.xml:20(string)
+msgid "Android Market not available."
+msgstr "Android Market non disponibile."
+
+#: tmp_strings.xml:22(string)
+msgid "Android Market"
+msgstr "Android Market"
+
+#: tmp_strings.xml:23(string)
+msgid "AndAppStore.com"
+msgstr "AndAppStore.com"
+
+#: tmp_strings.xml:25(string)
+msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+msgstr "Versione %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+
+#: tmp_strings.xml:26(string)
+msgid "free space: %s"
+msgstr "spazio disponibile: %s"
+
+#: tmp_strings.xml:27(string)
+msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+msgstr "Scheda %1$s\\nMarca %2$s\\nDispositivo %3$s\\nID %4$s\\nModello %5$s"
+
+#: tmp_strings.xml:29(string)
+msgid "Perform update now!"
+msgstr "Esegui aggiornamenti adesso!"
+
+#: tmp_strings.xml:30(string)
+msgid "Try update from Market now!"
+msgstr "Prova ad aggiornare dal Market adesso!"
+
+#: tmp_strings.xml:31(string)
+msgid "Try update from AndAppStore now!"
+msgstr "Prova ad aggiornare da AndAppStore adesso!"
+
+#: tmp_strings.xml:32(string)
+msgid "Remind me later!"
+msgstr "Ricorda più tardi!"
+
+#: tmp_strings.xml:33(string)
+msgid "Ignore this update"
+msgstr "Ignora questo aggiornamento"
+
+#: tmp_strings.xml:34(string)
+msgid "Ignore all further updates"
+msgstr "Ignora ulteriori aggiornamenti"
+
+#: tmp_strings.xml:35(string)
+msgid "Ok"
+msgstr "Ok"
+
+#: tmp_strings.xml:37(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
+"%s"
+msgstr ""
+"Impossibile avviare l'aggiornamento!\\n\\nContatta lo sviluppatore "
+"dell'applicazione!\\n\\n%s"
+
+#: tmp_strings.xml:38(string)
+msgid "Application is up-to-date."
+msgstr "L'\\applicazione è aggiornata."
+
+#: tmp_strings.xml:39(string)
+msgid "Checking for new version."
+msgstr "Controlla nuove versioni."
+
+#: tmp_strings.xml:40(string)
+msgid "Building list of applications."
+msgstr "Creazione elenco applicazioni."
+
+#: tmp_strings.xml:41(string)
+msgid "Check AndAppStore.com"
+msgstr "Controlla AndAppStore.com"
+
+#: tmp_strings.xml:42(string)
+msgid "Check versions"
+msgstr "Controlla versioni"
+
+#: tmp_strings.xml:43(string)
+msgid "Show all"
+msgstr "Mostra tutte"
+
+#: tmp_strings.xml:44(string)
+msgid "Refresh"
+msgstr "Aggiorna"
+
+#: tmp_strings.xml:45(string)
+msgid "Checked AndAppStore"
+msgstr "AndAppStore è stato controllato"
+
+#: tmp_strings.xml:46(string)
+msgid "Current version: %s"
+msgstr "Versione attuale: %s"
+
+#: tmp_strings.xml:47(string)
+msgid "Current version code: %s"
+msgstr "Codice versione attuale: %s"
+
+#: tmp_strings.xml:48(string)
+msgid "Newer version: %s"
+msgstr "Versione recente: %s"
+
+#: tmp_strings.xml:49(string)
+msgid "Newer version: %1$s - %2$s"
+msgstr "Nuova versione: %1$s - %2$s"
+
+#: tmp_strings.xml:50(string)
+msgid "Newer version available."
+msgstr "Nuova versione disponibile."
+
+#: tmp_strings.xml:51(string)
+msgid "No update information found."
+msgstr "Nessuna informazione di aggiornamento trovata."
+
+#: tmp_strings.xml:52(string)
+msgid "OI Update - List of new versions"
+msgstr "OI Aggiornamenti - Elenco nuove versioni"
+
+#: tmp_strings.xml:53(string)
+msgid "OI Update - New versions at AndAppStore"
+msgstr "OI Aggiornamenti - Nuove versioni in AddAppStore"
+
+#: tmp_strings.xml:54(string)
+msgid "OI Update - List of managed applications"
+msgstr "OI Aggiornamenti - Elenco applicazioni gestite"
+
+#: tmp_strings.xml:55(string)
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr ""
+"OI Aggiornamenti - Elenco applicazioni gestite (controlla in AndAppStore)"
+
+#: tmp_strings.xml:56(string)
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: tmp_strings.xml:57(string)
+msgid "Auto check"
+msgstr "Controllo automatico"
+
+#: tmp_strings.xml:58(string)
+msgid "Ignored"
+msgstr "Ignorato"
+
+#: tmp_strings.xml:59(string)
+msgid "Updates are currently ignored. Would you like to receive updates again?"
+msgstr ""
+"Gli aggiornamenti sono attualmente ignorati. Vuoi ancora ricevere "
+"aggiornamenti?"
+
+#: tmp_strings.xml:60(string)
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: tmp_strings.xml:61(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+"Nessuna informazione di aggiornamento disponibile. Verifica manualmente e "
+"chiedi allo sviluppatore di OI Aggiornamenti supporto in futuro."
+
+#: tmp_strings.xml:62(string)
+msgid "Search on Market"
+msgstr "Cerca nel Market"
+
+#: tmp_strings.xml:63(string)
+msgid "Search on AndAppStore"
+msgstr "Cerca in AndAppStore"
+
+#: tmp_strings.xml:64(string)
+msgid "Processing %s"
+msgstr "Elaborazione %s"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+"Il processo di aggiornamento di questa applicazione si indirizza verso un "
+"sito diverso di Android Market. Le applicazioni installate da fonti "
+"sconosciute potrebbero causare problemi di sicurezza."
+
+#: tmp_strings.xml:70(string)
+msgid "Continue anyway"
+msgstr "Continua comunque"
+
+#: tmp_strings.xml:71(string)
+msgid "Abort"
+msgstr "Termina"
+
+#: tmp_strings.xml:73(string)
+msgid "Auto update"
+msgstr "Aggiornamento automatico"
+
+#: tmp_strings.xml:74(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr "Se spuntato, gli aggiornamenti saranno eseguiti con regolarità"
+
+#: tmp_strings.xml:75(string)
+msgid "Update interval"
+msgstr "Intervallo aggiornamenti"
+
+#: tmp_strings.xml:76(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr "Imposta il tempo dell'intervallo di ricerca aggiornamenti."
+
+#: tmp_strings.xml:77(string)
+msgid "Select interval"
+msgstr "Seleziona intervallo"
+
+#: tmp_strings.xml:78(string)
+msgid "every_month"
+msgstr "ogni mese"
+
+#: tmp_strings.xml:79(string)
+msgid "Warning"
+msgstr "Attenzione"
+
+#: tmp_strings.xml:80(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+"Se non spunti questa voce, non riceverai più notifiche di aggiornamenti. "
+"Vuoi ancora non spuntare l'aggiornamento automatico?"
+
+#: tmp_strings.xml:82(string)
+msgid "Use AndAppStore"
+msgstr "Usa AndAppStore"
+
+#: tmp_strings.xml:83(string)
+msgid "Use version information provided by AndAppStore.com"
+msgstr "Usa info versione fornita da AndAppStore.com"
+
+#: tmp_strings.xml:85(string)
+msgid "Read update information"
+msgstr "Leggi info aggiornamenti"
+
+#: tmp_strings.xml:86(string)
+msgid "Write update information"
+msgstr "Scrivi info aggiornamenti"
+
+#: tmp_strings.xml:87(string)
+msgid ""
+"Read information about installed applications, update locations and requests."
+msgstr ""
+"Leggi info sulle applicazioni installate, aggiorna posizioni e richieste."
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Write information about installed applications, update locations and "
+"requests."
+msgstr ""
+"Scrivi info sulle applicazioni installate, aggiorna posizioni e richieste."
+
+#. About
+#: tmp_strings.xml:92(string)
+msgid "About"
+msgstr "Info"
+
+#: tmp_strings.xml:93(string)
+msgid "About %s"
+msgstr "Info %s"
+
+#: tmp_strings.xml:94(string)
+msgid ""
+"Version %s \\n\\n OI Update keeps you informed on new application versions."
+"\\n OpenIntents allows different Android applications to share data using "
+"intents and open interfaces.\\n\\n For more information and other great "
+"applications visit OpenIntents at www.openintents.org"
+msgstr ""
+"Versione %s\\n\\n OI Aggiornamenti ti mantiene informato sulle nuove "
+"versioni delle applicazioni.\\n OpenIntents permette a diverse applicazioni "
+"Android di condividere dati usando intenti e applicazioni aperte.\\n\\n Per "
+"maggiori info e altre applicazioni di successo visita OpenIntents in www."
+"openintents.org"
+
+#. EULA
+#: tmp_strings.xml:102(string)
+msgid "OI Update EULA"
+msgstr "EULA OI Aggiornamenti"
+
+#: tmp_strings.xml:103(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+"\"Copyright 2008 OpenIntents.org\\n Licenziato sotto la Licenza Apache, "
+"Versione 2.0 (la \\\"Licenza\\\"); non puoi usare questo file se non in "
+"accordo con la Licenza. Puoi avere una copia della Licenza in\\n http://www."
+"apache.org/licenses/LICENSE-2.0\\n A meno che non sia richiesto dalla legge "
+"o da accordi intervenuti durante la scrittura, il software distribuito sotto "
+"la Licenza viene distribuito sulla BASE \"COME E'\", SENZA GARANZIE O "
+"CONDIZIONI DI OGNI TIPO, anche espresse o implicite. Vedi la Licenza per i "
+"permessi e le limitazioni di governo nella lingua specifica sotto la Licenza."
+"\\n\\n\""
+
+#: tmp_strings.xml:110(string)
+msgid "Accept"
+msgstr "Accetto"
+
+#: tmp_strings.xml:111(string)
+msgid "Cancel"
+msgstr "Annulla"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

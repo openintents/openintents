@@ -1,0 +1,283 @@
+# Spanish translation for openintents
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2011-02-07 18:35+0000\n"
+"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-02-09 01:20+0000\n"
+"X-Generator: Launchpad (build 12335)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:23(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  DiegoJ https://launchpad.net/~diegojromerolopez\n"
+"  Javier Martínez Arrieta https://launchpad.net/~javote87\n"
+"  Paco Molinero https://launchpad.net/~franciscomol\n"
+"  Peli https://launchpad.net/~peli0101\n"
+"  miwie https://launchpad.net/~mw-miwie"
+
+#. Short explanation of the application
+#: tmp_strings.xml:26(string)
+msgid ""
+"OI File Manager is an open file manager that seamlessly cooperates with "
+"other applications."
+msgstr ""
+"OI File Manager es un gestor abierto de archivos que cooperar fluidamente "
+"con otras aplicaciones."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:32(string)
+msgid "OI File Manager"
+msgstr "OI File Manager"
+
+#: tmp_strings.xml:34(string)
+msgid "New Folder"
+msgstr "Carpeta nueva"
+
+#: tmp_strings.xml:35(string)
+msgid "Delete"
+msgstr "Borrar"
+
+#: tmp_strings.xml:36(string)
+msgid "Rename"
+msgstr "Renombrar"
+
+#: tmp_strings.xml:37(string)
+msgid "Send"
+msgstr "Enviar"
+
+#: tmp_strings.xml:38(string)
+msgid "Open"
+msgstr "Abrir"
+
+#: tmp_strings.xml:39(string)
+msgid "Move"
+msgstr "Mover"
+
+#: tmp_strings.xml:40(string)
+msgid "Copy"
+msgstr "Copiar"
+
+#: tmp_strings.xml:41(string)
+msgid "Include in media scan"
+msgstr "Incluir en la exploración de archivos multimedia"
+
+#: tmp_strings.xml:42(string) tmp_strings.xml:95(string)
+msgid "Exclude from media scan"
+msgstr "Excluir de la exploración de archivos multimedia"
+
+#: tmp_strings.xml:44(string)
+msgid "Create new folder"
+msgstr "Crear nueva carpeta"
+
+#: tmp_strings.xml:45(string) tmp_strings.xml:46(string)
+msgid "Folder name"
+msgstr "Nombre de carpeta"
+
+#: tmp_strings.xml:47(string)
+msgid "This folder is empty."
+msgstr "Esta carpeta es vacia."
+
+#: tmp_strings.xml:48(string)
+msgid "Do you really want to delete %s?"
+msgstr "Verdaderamente quiere borrar %s?"
+
+#: tmp_strings.xml:49(string)
+msgid "File deleted."
+msgstr "Archivo borrado."
+
+#: tmp_strings.xml:50(string)
+msgid "Folder deleted."
+msgstr "Carpeta borrada."
+
+#: tmp_strings.xml:51(string)
+msgid "File renamed."
+msgstr "Fichero cambiado de nombre."
+
+#: tmp_strings.xml:52(string)
+msgid "Folder renamed."
+msgstr "Carpeta cambiado de nombre."
+
+#: tmp_strings.xml:53(string)
+msgid "File moved."
+msgstr "Fichero movido."
+
+#: tmp_strings.xml:54(string)
+msgid "Folder moved."
+msgstr "Carpeta movido."
+
+#: tmp_strings.xml:55(string)
+msgid "File copied."
+msgstr "Archivo copiado."
+
+#: tmp_strings.xml:56(string)
+msgid "Select folder to move to"
+msgstr "Seleccionar carpeta de destino"
+
+#: tmp_strings.xml:57(string)
+msgid "Move here"
+msgstr "Mover acá"
+
+#: tmp_strings.xml:58(string)
+msgid "Select folder to copy to"
+msgstr "Seleccione carpeta a copiar a"
+
+#: tmp_strings.xml:59(string)
+msgid "Copy here"
+msgstr "Copiar aquí"
+
+#. Construct a unique file name of a file called %s.
+#: tmp_strings.xml:62(string)
+msgid "Copy of %s"
+msgstr "Copia de %s"
+
+#. Construct a unique file name with number %1$d of a file called %2$s.
+#: tmp_strings.xml:65(string)
+msgid "Copy %1$d of %2$s"
+msgstr "Copiar %1$d de %2$s"
+
+#: tmp_strings.xml:67(string)
+msgid "This folder will be included in the next media scan."
+msgstr ""
+"Esta carpeta se incluirá en la siguiente exploración de archivos multimedia"
+
+#: tmp_strings.xml:68(string)
+msgid "This folder will be excluded during the next media scan."
+msgstr "Esta carpeta se excluirá durante la exploración de archivos multimedia"
+
+#: tmp_strings.xml:70(string)
+msgid "Could not create new folder."
+msgstr "No se puede crear la carpeta nueva."
+
+#: tmp_strings.xml:71(string)
+msgid "Could not delete file."
+msgstr "No se puede borrar el fichero."
+
+#: tmp_strings.xml:72(string)
+msgid "Could not delete folder '%s'."
+msgstr "No se puede borrar la carpeta «'%sx."
+
+#: tmp_strings.xml:73(string)
+msgid "Could not rename file."
+msgstr "No se puede cambiar de nombre del fichero."
+
+#: tmp_strings.xml:74(string)
+msgid "Could not rename folder."
+msgstr "No se puede cambiar de nombre de la carpeta."
+
+#: tmp_strings.xml:75(string)
+msgid "Could not move file."
+msgstr "No se puede mover el fichero."
+
+#: tmp_strings.xml:76(string)
+msgid "Could not move folder."
+msgstr "No se puede mover la carpeta."
+
+#: tmp_strings.xml:77(string)
+msgid "Could not copy file."
+msgstr "No se pudo copiar el archivo."
+
+#: tmp_strings.xml:78(string)
+msgid "File does not exist."
+msgstr "El archivo no existe."
+
+#: tmp_strings.xml:79(string)
+msgid "Could not delete child file '%s'."
+msgstr "No se puede borrar el archivo hijo «%s»."
+
+#: tmp_strings.xml:80(string)
+msgid "An error occurred:"
+msgstr "Ocurrió un error:"
+
+#: tmp_strings.xml:81(string)
+msgid "Could not change media scan settings."
+msgstr ""
+"No pudo cambiarse la configuración de exploración de archivos multimedia"
+
+#: tmp_strings.xml:83(string)
+msgid "No application available for sending."
+msgstr "Aplicación no disponible para enviar."
+
+#: tmp_strings.xml:85(string)
+msgid "Application not available"
+msgstr "Aplicación no disponible"
+
+#. Menu item for Settings
+#: tmp_strings.xml:91(string)
+msgid "Settings"
+msgstr "Configuración"
+
+#. Category for preferences.
+#: tmp_strings.xml:94(string)
+msgid "Advanced features"
+msgstr "Características avanzadas"
+
+#: tmp_strings.xml:96(string)
+msgid "Show menu item to exclude folders from media scan."
+msgstr ""
+
+#: tmp_strings.xml:97(string)
+msgid "Hide menu item to exclude folders from media scan."
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
