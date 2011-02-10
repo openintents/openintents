@@ -4,10 +4,15 @@
 # Jan 8, 2011, Peli
 
 # Jan 29, 2011: Peli: read list of apps from central place.
+# Feb 10, 2011: Peli: Omit creating tar file, as modifications are pulled 
+#                     directly from the trunk from Launchpad.
 
 # Suppress generation of .po file:
-#nopo=
-nopo="--nopo"
+nopo=
+#nopo="--nopo"
+
+# Remove timestamp in po and pot files:
+notimestamp="--notimestamp"
 
 # $1..translation file name
 # $2..main path
@@ -20,7 +25,7 @@ function execute
     echo "Translating $mainpath"
     mkdir translations_$translationfilename
 	echo "$nopo"
-    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo -e
+    ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo $notimestamp -e
 }
 
 # Delete all existing output directories:
@@ -37,5 +42,5 @@ do
 done
 
 
-echo "Creating tar.gz file for upload..."
-tar -cvvzf launchpad-upload.tar.gz translations_*
+#echo "Creating tar.gz file for upload..."
+#tar -cvvzf launchpad-upload.tar.gz translations_*

@@ -7,7 +7,8 @@
 # Jan 8, 2011: Peli: Check if a language .po file exists. In this way, all language codes can be included in this file.
 # Jan 29, 2011: Peli: Read language codes dynamically. One central androidxml2po.bash file for all projects by introducing additional arguments.
 # Jan 30, 2011: Peli: Delete lines starting with "#~" (deleted translations) from export .po files, as they may contain duplicates that cause an error message when uploading to Launchpad..
-# Feb 9, 2011: Add option --no-po.
+# Feb 9, 2011: Peli: Add option --nopo.
+# Feb 10, 2011: Peli: Add option --notimestamp.
 
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
@@ -26,6 +27,7 @@ xml2po="xml2po"
 languages=()
 
 option_no_po=0
+option_no_timestamp=0
 
 # Delimit apostrophes: "'" -> "\'"
 # argument $1 is file name
@@ -68,6 +70,17 @@ function set_androidlanguage_from_language
 	androidlanguage=`echo $language | sed 's/\(.*\)_\(.*\)/\1\-r\2/g'`
 }
 
+
+# Remove time stampe: "POT-Creation-Date: 2010-05-29 13:09+0000\n" 
+#                  -> "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+# argument $1 is file name
+function removetimestamp
+{
+	replace="POT\-Creation\-Date\: .*\\\\n"
+	by="POT\-Creation\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
+	sed -i "s/$replace/$by/g" $1
+}
+
 function import_po2xml
 {
 setlanguagelist
@@ -106,8 +119,11 @@ rm "${export_pot}"/*
 echo "Exporting .xml to .pot"
 ${xml2po} -a -o "${export_pot}"/"${launchpad_po_filename}".pot tmp_strings.xml
 undodelimitapostrophe "${export_pot}"/"${launchpad_po_filename}".pot
+if [ $option_no_timestamp -eq 1 ] ; then
+	removetimestamp "${export_pot}"/"${launchpad_po_filename}".pot
+fi
 
-if [ option_no_po -eq 0 ] ; then
+if [ $option_no_po -eq 0 ] ; then
 	for language in ${languages[@]}
 	do
 	    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
@@ -128,6 +144,10 @@ if [ option_no_po -eq 0 ] ; then
 				# if duplicates appear there.
 				sed -i "s/#~.*//g" "${language}".po
 				
+				if [ $option_no_timestamp -eq 1 ] ; then
+					removetimestamp "${language}".po
+				fi
+
 				mv "${language}".po "${export_po}"/"${language}".po
 	        else
 			    echo "-"
@@ -184,6 +204,9 @@ while [ "$1" != "" ]; do
 				;;
 		--nopo )	# Suppress generation of po file in export
 				option_no_po=1
+				;;
+		--notimestamp )   # Remove timestamp from po and pot files in export
+				option_no_timestamp=1
 				;;
         -h | --help )           		usage
                                 		exit
