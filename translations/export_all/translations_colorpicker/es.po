@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-09 01:21+0000\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Launchpad (build 12335)\n"
 
 #. Automatically filled in by Launchpad:
@@ -69,9 +69,8 @@ msgid "There are no recently chosen colors."
 msgstr "No hay colores elegidos recientemente"
 
 #: tmp_strings.xml:28(string)
-#, fuzzy
 msgid "Use color?"
-msgstr "Colores recientes"
+msgstr ""
 
 #: tmp_strings.xml:29(string)
 msgid ""

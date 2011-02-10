@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2011-01-28 10:19+0000\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"PO-Revision-Date: 2011-02-09 01:22+0000\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-02-09 01:20+0000\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Launchpad (build 12335)\n"
 
 #. Automatically filled in by Launchpad:
@@ -50,7 +50,7 @@ msgstr "Renk"
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)
 msgid "OI Color Picker"
-msgstr ""
+msgstr "OI Renk Seçici"
 
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)

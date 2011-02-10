@@ -79,6 +79,10 @@ function removetimestamp
 	replace="POT\-Creation\-Date\: .*\\\\n"
 	by="POT\-Creation\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
 	sed -i "s/$replace/$by/g" $1
+	
+	replace="X\-Launchpad\-Export\-Date\: .*\\\\n"
+	by="X\-Launchpad\-Export\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
+	sed -i "s/$replace/$by/g" $1
 }
 
 function import_po2xml
