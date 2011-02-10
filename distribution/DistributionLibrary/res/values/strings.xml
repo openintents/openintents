@@ -37,7 +37,6 @@
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Check updates</string>
-	<!-- %s is the version number (e.g. "1.2.1") -->
 	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
 	<string name="oi_distribution_update_check_now">Check now</string>
 	<string name="oi_distribution_update_get_updater">Get OI Updater</string>

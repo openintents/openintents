@@ -25,7 +25,7 @@ Launchpad Contributions:
     <string name="color">Renk</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">OI Renk Seçici</string>
     
     <string name="preferences">Tercihler</string>
     

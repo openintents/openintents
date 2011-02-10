@@ -13,13 +13,13 @@
 	
 	<!-- EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 		Translation can be as long as required. -->
-	<string name="oi_distribution_eula_message">Bitte lesen und akzeptiern sie den folgenden Endbenutzer-Lizenzvertrag (EULA) für %s.</string>
+	<string name="oi_distribution_eula_message">Please read and accept the following End User License Agreement (EULA) for %s.</string>
 	
 	<!-- Button: Accept terms of EULA. -->
-	<string name="oi_distribution_eula_accept">Akzeptieren</string>
+	<string name="oi_distribution_eula_accept">Kabul et</string>
 	
 	<!-- Button: Refuse terms of EULA. -->
-	<string name="oi_distribution_eula_refuse">Abbrechen</string>
+	<string name="oi_distribution_eula_refuse">İptal</string>
 	
 	<!-- New version -->
 	<!-- Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
@@ -27,18 +27,18 @@
 	<string name="oi_distribution_name_and_version">%1$s %2$s</string>
 	
 	<!-- Welcome message. %s is an application name. -->
-	<string name="oi_distribution_newversion_message">Willkommen zur neuen Version von %s.</string>
+	<string name="oi_distribution_newversion_message">Welcome to this new version of %s.</string>
 	
-	<string name="oi_distribution_newversion_recent_changes">Neueste Änderungen:</string>
+	<string name="oi_distribution_newversion_recent_changes">Recent changes:</string>
 	
 	<!-- Button: Continue to main application. -->
-	<string name="oi_distribution_newversion_continue">Fortfahren</string>
+	<string name="oi_distribution_newversion_continue">Devam</string>
 	
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
-    <string name="oi_distribution_menu_update">Auf Updates prüfen</string>
+    <string name="oi_distribution_menu_update">Check updates</string>
 	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
-	<string name="oi_distribution_update_check_now">Jetzt überprüfen</string>
+	<string name="oi_distribution_update_check_now">Şimdi kontrol et</string>
 	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
 	<string name="oi_distribution_update_error">Download application not available.</string>
 	
@@ -47,7 +47,7 @@
     
     <!-- About -->
     <!-- Menu command to open the "about" or "info" dialog. -->
-    <string name="oi_distribution_about">Info</string>
+    <string name="oi_distribution_about">Hakkında</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
 	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
     
@@ -56,16 +56,16 @@
     <string name="oi_distribution_aboutapp_get">Get OI About</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp">OI About</string>
+    <string name="oi_distribution_aboutapp">OI Hakkında</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_filemanager">OI Dateimanager</string>
+    <string name="oi_distribution_filemanager">OI Dosya Yöneticisi</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
-    <string name="oi_distribution_safe">OI Safe</string>
+    <string name="oi_distribution_safe">OI Kasa</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
@@ -75,11 +75,11 @@
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market Download</string>
+    <string name="oi_distribution_download_market">Market download</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
-    <string name="oi_distribution_download_web">Web Download</string>
+    <string name="oi_distribution_download_web">Web download</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_title">%s herunterladen</string>
+    <string name="oi_distribution_download_title">%s indir</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
 	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
