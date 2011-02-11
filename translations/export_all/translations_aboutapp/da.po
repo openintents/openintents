@@ -31,187 +31,185 @@ msgstr ""
 msgid "A standalone about dialog that is shared between apps."
 msgstr "En separat dialog som deles mellem programmer."
 
-#. This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 )
-#: tmp_strings.xml:36(string)
-msgid "OI About at OpenIntents"
-msgstr "OI About hos OpenIntents"
-
-#. Application name. Can be localized, like "OI About", or "OI Info". 
-#. 	   This is an extension that shows an about dialog or info dialog.
-#: tmp_strings.xml:43(string)
-msgid "OI About"
-msgstr "OI About"
-
-#: tmp_strings.xml:45(string)
-msgid "About OI About itself"
-msgstr "Om selve OI About"
-
-#. About some application, where "%s" is the name of another application.
-#: tmp_strings.xml:48(string)
-msgid "About %s"
-msgstr "Om %s"
-
-#: tmp_strings.xml:50(string)
-msgid "Written by"
-msgstr "Skrevet af"
-
-#: tmp_strings.xml:51(string)
-msgid "Documented by"
-msgstr "Dokumenteret af"
-
-#: tmp_strings.xml:52(string)
-msgid "Translated by"
-msgstr "Oversat af"
-
-#: tmp_strings.xml:53(string)
-msgid "Artwork by"
-msgstr "Grafik af"
-
-#: tmp_strings.xml:54(string)
-msgid "International translations by"
-msgstr ""
-
-#: tmp_strings.xml:55(string)
-msgid "Credits"
-msgstr "Bidragydere"
-
-#: tmp_strings.xml:56(string)
-msgid "License"
-msgstr "Licens"
-
-#: tmp_strings.xml:57(string)
-msgid "General Info"
-msgstr "Generel info"
-
-#: tmp_strings.xml:58(string)
-msgid "Recent changes"
-msgstr ""
-
-#: tmp_strings.xml:60(string)
-msgid "No information available."
-msgstr "Ingen information tilgængelig."
-
 #. Name of an application. Please make sure that translations are consistent.
-#: tmp_strings.xml:63(string)
+#: tmp_strings.xml:39(string)
 msgid "OI File Manager"
 msgstr ""
 
 #. Name of an application. Please make sure that translations are consistent.
-#: tmp_strings.xml:65(string)
+#: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
 msgstr ""
 
 #. Name of an application. Please make sure that translations are consistent.
-#: tmp_strings.xml:67(string)
+#: tmp_strings.xml:43(string)
 msgid "OI Notepad"
 msgstr ""
 
 #. Name of an application. Please make sure that translations are consistent.
-#: tmp_strings.xml:69(string)
+#: tmp_strings.xml:45(string)
 msgid "OI Safe"
 msgstr ""
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
-#: tmp_strings.xml:72(string)
+#: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
 msgstr ""
 
-#: tmp_strings.xml:76(item)
+#. Application name. Can be localized, like "OI About", or "OI Info". 
+#. 	   This is an extension that shows an about dialog or info dialog.
+#: tmp_strings.xml:55(string)
+msgid "OI About"
+msgstr "OI About"
+
+#: tmp_strings.xml:57(string)
+msgid "About OI About itself"
+msgstr "Om selve OI About"
+
+#. About some application, where "%s" is the name of another application.
+#: tmp_strings.xml:60(string)
+msgid "About %s"
+msgstr "Om %s"
+
+#: tmp_strings.xml:62(string)
+msgid "Written by"
+msgstr "Skrevet af"
+
+#: tmp_strings.xml:63(string)
+msgid "Documented by"
+msgstr "Dokumenteret af"
+
+#: tmp_strings.xml:64(string)
+msgid "Translated by"
+msgstr "Oversat af"
+
+#: tmp_strings.xml:65(string)
+msgid "Artwork by"
+msgstr "Grafik af"
+
+#: tmp_strings.xml:66(string)
+msgid "International translations by"
+msgstr ""
+
+#: tmp_strings.xml:67(string)
+msgid "Credits"
+msgstr "Bidragydere"
+
+#: tmp_strings.xml:68(string)
+msgid "License"
+msgstr "Licens"
+
+#: tmp_strings.xml:69(string)
+msgid "General Info"
+msgstr "Generel info"
+
+#: tmp_strings.xml:70(string)
+msgid "Recent changes"
+msgstr ""
+
+#: tmp_strings.xml:72(string)
+msgid "No information available."
+msgstr "Ingen information tilgængelig."
+
+#: tmp_strings.xml:79(item)
 msgid "Arabic"
 msgstr ""
 
-#: tmp_strings.xml:77(item)
+#: tmp_strings.xml:80(item)
 msgid "Czech"
 msgstr ""
 
-#: tmp_strings.xml:78(item)
+#: tmp_strings.xml:81(item)
 msgid "Danish"
 msgstr ""
 
-#: tmp_strings.xml:79(item)
+#: tmp_strings.xml:82(item)
 msgid "German"
 msgstr ""
 
-#: tmp_strings.xml:80(item)
+#: tmp_strings.xml:83(item)
 msgid "English"
 msgstr ""
 
-#: tmp_strings.xml:81(item)
+#: tmp_strings.xml:84(item)
 msgid "Spanish"
 msgstr ""
 
-#: tmp_strings.xml:82(item)
+#: tmp_strings.xml:85(item)
 msgid "Finnish"
 msgstr ""
 
-#: tmp_strings.xml:83(item)
+#: tmp_strings.xml:86(item)
 msgid "Faroese"
 msgstr ""
 
-#: tmp_strings.xml:84(item)
+#: tmp_strings.xml:87(item)
 msgid "French"
 msgstr ""
 
-#: tmp_strings.xml:85(item)
+#: tmp_strings.xml:88(item)
 msgid "Italian"
 msgstr ""
 
-#: tmp_strings.xml:86(item)
+#: tmp_strings.xml:89(item)
 msgid "Japanese"
 msgstr ""
 
-#: tmp_strings.xml:87(item)
+#: tmp_strings.xml:90(item)
 msgid "Korean"
 msgstr ""
 
-#: tmp_strings.xml:88(item)
+#: tmp_strings.xml:91(item)
 msgid "Lao"
 msgstr ""
 
-#: tmp_strings.xml:89(item)
+#: tmp_strings.xml:92(item)
 msgid "Dutch"
 msgstr ""
 
-#: tmp_strings.xml:90(item)
+#: tmp_strings.xml:93(item)
 msgid "Occitan (post 1500)"
 msgstr ""
 
-#: tmp_strings.xml:91(item)
+#: tmp_strings.xml:94(item)
 msgid "Polish"
 msgstr ""
 
-#: tmp_strings.xml:92(item)
+#: tmp_strings.xml:95(item)
 msgid "Portuguese"
 msgstr ""
 
-#: tmp_strings.xml:93(item)
+#: tmp_strings.xml:96(item)
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: tmp_strings.xml:94(item)
+#: tmp_strings.xml:97(item)
 msgid "Romanian"
 msgstr ""
 
-#: tmp_strings.xml:95(item)
+#: tmp_strings.xml:98(item)
 msgid "Russian"
 msgstr ""
 
-#: tmp_strings.xml:96(item)
+#: tmp_strings.xml:99(item)
 msgid "Slovak"
 msgstr ""
 
-#: tmp_strings.xml:97(item)
+#: tmp_strings.xml:100(item)
 msgid "Swedish"
 msgstr ""
 
-#: tmp_strings.xml:98(item)
+#: tmp_strings.xml:101(item)
 msgid "Turkish"
 msgstr ""
 
-#: tmp_strings.xml:99(item)
+#: tmp_strings.xml:102(item)
 msgid "Chinese (Simplified)"
 msgstr ""
 
-#: tmp_strings.xml:100(item)
+#: tmp_strings.xml:103(item)
 msgid "Chinese (Traditional)"
 msgstr ""
+
+
+
