@@ -1,6 +1,7 @@
 package org.openintents.distribution.demo;
 
 import org.openintents.distribution.DistributionLibraryActivity;
+import org.openintents.distribution.DownloadOIAppDialog;
 import org.openintents.distribution.EulaOrNewVersion;
 
 import android.app.Dialog;
@@ -18,7 +19,8 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 	private static final String TAG = "DistribtionDemo";
 	
 	private static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // MUST BE LAST
-	
+
+	public static final int DIALOG_NO_FILE_MANAGER_AVAILABLE = 1;
 	private static final int DIALOG_DISTRIBUTION_START = 100; // MUST BE LAST
 	
     /** Called when the activity is first created. */
@@ -56,8 +58,24 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
 		Dialog d = super.onCreateDialog(id);
 		
 		// Based on id, create your own dialogs.
-		
+		switch(id) {
+		case DIALOG_NO_FILE_MANAGER_AVAILABLE:
+			d = new DownloadOIAppDialog(this,
+					DownloadOIAppDialog.OI_FILEMANAGER);
+			break;
+		}
 		return d;
+	}
+
+	@Override
+	protected void onPrepareDialog(int id, Dialog dialog) {
+		super.onPrepareDialog(id, dialog);
+		
+		switch (id) {
+		case DIALOG_NO_FILE_MANAGER_AVAILABLE:
+			DownloadOIAppDialog.onPrepareDialog(this, dialog);
+			break;
+		}
 	}
  	
 	// Called by the buttons in this activity:
@@ -79,4 +97,9 @@ public class DistributionDemoActivity extends DistributionLibraryActivity {
     	Intent i = new Intent(this, InfoActivity.class);
     	startActivity(i);
     }
+
+    public void onClickDownloadFileManager(View view) {
+    	showDialog(DIALOG_NO_FILE_MANAGER_AVAILABLE);
+    }
+	
 }

@@ -17,7 +17,11 @@
 	android:layout_width="wrap_content" android:layout_height="wrap_content"
 	android:onClick="onClickResetVersion"></Button>
 	
-<Button android:text="ShowInfoActivity" android:id="@+id/Button03" 
+<Button android:text="Show InfoActivity" android:id="@+id/Button03" 
 	android:layout_width="wrap_content" android:layout_height="wrap_content"
 	android:onClick="onClickShowInfoActivity"></Button>
+	
+<Button android:text="Download OI File Manager" android:id="@+id/Button04" 
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:onClick="onClickDownloadFileManager"></Button>
 </LinearLayout>
