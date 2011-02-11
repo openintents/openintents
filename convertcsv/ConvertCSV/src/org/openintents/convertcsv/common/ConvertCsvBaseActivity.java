@@ -20,28 +20,25 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.charset.Charset;
 
 import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
-import org.openintents.distribution.LaunchFileManager;
+import org.openintents.distribution.DistributionLibraryActivity;
+import org.openintents.distribution.DownloadOIAppDialog;
 import org.openintents.intents.FileManagerIntents;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,22 +55,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class ConvertCsvBaseActivity extends Activity {
+public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
 	
 	private final static String TAG = "ConvertCsvBaseActivity";
 
 	protected static final int MENU_SETTINGS = Menu.FIRST + 1;
+	protected static final int MENU_DISTRIBUTION_START = Menu.FIRST + 100; // MUST BE LAST
 	
 	protected static final int DIALOG_ID_WARN_OVERWRITE = 1;
 	protected static final int DIALOG_ID_NO_FILE_MANAGER_AVAILABLE = 2;
 	protected static final int DIALOG_ID_WARN_RESTORE_POLICY = 3;
+	protected static final int DIALOG_DISTRIBUTION_START = 100; // MUST BE LAST
 	
 	protected static final int REQUEST_CODE_PICK_FILE = 1;
 
@@ -164,6 +163,14 @@ public class ConvertCsvBaseActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
+        
+        // Check whether EULA has been accepted
+        // or information about new version can be presented.
+        if (mDistribution.showEulaOrNewVersion()) {
+            return;
+        }
         
         // Always create the main layout first, since we need to populate the
         // variables with all the views.
@@ -597,6 +604,9 @@ public class ConvertCsvBaseActivity extends Activity {
 		if (!smHasWorkerThread) {
 			menu.add(0, MENU_SETTINGS, 0, R.string.menu_settings).setShortcut(
 					'1', 's').setIcon(android.R.drawable.ic_menu_preferences);
+			
+	 		// Add distribution menu items last.
+	 		mDistribution.onCreateOptionsMenu(menu);
 		}
 		
 		return true;
@@ -664,9 +674,10 @@ public class ConvertCsvBaseActivity extends Activity {
 					.create();
 					
 		case DIALOG_ID_NO_FILE_MANAGER_AVAILABLE:
-			return LaunchFileManager.createDialog(this);
+			return new DownloadOIAppDialog(this,
+					DownloadOIAppDialog.OI_FILEMANAGER);
 		}
-		return null;
+		return super.onCreateDialog(id);
 	}
 
 

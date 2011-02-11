@@ -1,76 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- 
- * Copyright (C) 2007-2009 OpenIntents.org
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- -->
+<?xml version="1.0" encoding="utf-8"?><resources/>
 
-<resources>
-    <string-array name="notepad_format">
-        <item>MS Outlook Notes</item>
-        <item>Palm CSV</item>
-    </string-array>
-    
-    <string-array name="notepad_format_value">
-        <item>outlook notes</item>
-        <item>palm</item>
-    </string-array>
-    
-    <string-array name="shoppinglist_format">
-        <item>MS Outlook Tasks</item>
-        <item>HandyShopper</item>
-    </string-array>
-    
-    <string-array name="shoppinglist_format_value">
-        <item>outlook tasks</item>
-        <item>handyshopper</item>
-    </string-array>
-
-    <string-array name="import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don't overwrite existing records."</item>
-        <item>Overwrite - Overwrite existing records.</item>
-        <item>Restore - DELETE ALL, then import.</item>
-    </string-array>
-
-    <string-array name="import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."</item>
-        <item>Overwrite - A record in the CSV will OVERWRITE an existing record.</item>
-        <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
-    </string-array>
-
-    <string-array name="import_policy_value">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
-
-
-    <string-array name="shoppinglist_import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don't overwrite existing records."</item>
-    </string-array>
-
-    <string-array name="shoppinglist_import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."</item>
-    </string-array>
-
-    <string-array name="shoppinglist_import_policy_value">
-        <item>0</item>
-        <item>1</item>
-    </string-array>
-
-</resources>
+	<!-- NOTICE: 
+	
+	* There are no arrays in here.
+	
+	* All arrays have been moved either to strings.xml
+	  (if they should be translated)
+	  
+	* Or to strings_not_for_translation.xml
+	  (if they should not be translated)
+	
+	 -->

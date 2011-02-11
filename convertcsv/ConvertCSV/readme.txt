@@ -21,7 +21,7 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.0.2
+release: 1.1.0
 date: ?
 
 - support moving app to SD card.
