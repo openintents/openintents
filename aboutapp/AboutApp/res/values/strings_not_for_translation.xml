@@ -25,6 +25,20 @@
 	<string name="about_website_url">http://www.openintents.org</string>
 	<string name="about_email">support@openintents.org</string>
 	
+    <string-array name="about_authors"><!-- Add your name here if you helped out -->
+        <item>pjv https://launchpad.net/~pjv</item>
+        <item>Peli</item>
+    </string-array>
+    
+    <string-array name="about_documenters"><!-- Add your name here if you helped out -->
+        <item>pjv<!-- https://launchpad.net/~pjv --></item>
+        <item>Peli</item>
+    </string-array>
+    
+    <string-array name="about_artists"><!-- Add your name here if you helped out -->
+        <!-- <item>pjv https://launchpad.net/~pjv</item>  -->
+    </string-array>
+    
     <string-array name="languages">
 		<item>ar</item><!-- Arabic -->
 		<item>cs</item><!-- Czech -->
