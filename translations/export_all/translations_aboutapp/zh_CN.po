@@ -191,22 +191,26 @@ msgid "Russian"
 msgstr ""
 
 #: tmp_strings.xml:99(item)
-msgid "Slovak"
+msgid "Sardinian"
 msgstr ""
 
 #: tmp_strings.xml:100(item)
-msgid "Swedish"
+msgid "Slovak"
 msgstr ""
 
 #: tmp_strings.xml:101(item)
-msgid "Turkish"
+msgid "Swedish"
 msgstr ""
 
 #: tmp_strings.xml:102(item)
-msgid "Chinese (Simplified)"
+msgid "Turkish"
 msgstr ""
 
 #: tmp_strings.xml:103(item)
+msgid "Chinese (Simplified)"
+msgstr ""
+
+#: tmp_strings.xml:104(item)
 msgid "Chinese (Traditional)"
 msgstr ""
 

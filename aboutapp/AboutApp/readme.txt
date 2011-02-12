@@ -34,6 +34,7 @@ date: ?
 
 - support moving app to SD card.
 - new tab for recent changes.
+- show translators of all languages.
 - fix crash if no icon is supplied.
 - support Android 2.3.
 - translations into various languages.
