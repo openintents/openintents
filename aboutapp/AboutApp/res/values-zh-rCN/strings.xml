@@ -34,8 +34,20 @@
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">一个在系统中共享的用于显示“关于”对话框的程序。</string>
 	
-	<!-- This is a link label. It will like to a page about "OI About" on the OpenIntents web site. ( http://www.openintents.org/en/node/191 ) -->
-	<string name="about_website_label">在OpenIntents查看“OI 关于”。</string>
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI File Manager</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Shopping List</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI Notepad</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI Safe</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -61,18 +73,9 @@
 	
 	<string name="no_information_available">无可用信息。</string>
 	
-	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
-	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
-	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
-	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
-	
-	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
-	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
 		<item>Arabic</item>

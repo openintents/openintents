@@ -3,6 +3,13 @@
     <string name="oi_distribution_app_name">OI Distribution Library</string>
     
 	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">translator-credits</string>
+	
+	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	
