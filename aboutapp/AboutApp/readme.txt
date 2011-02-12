@@ -29,8 +29,8 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.0.3
-date: ?
+release: 1.0.3-rc1
+date: 2011-02-12
 
 - support moving app to SD card.
 - new tab for recent changes.
@@ -49,7 +49,7 @@ date: 2009-10-14
 
 ---------------------------------------------------------
 release: 1.0.1
-date: 2009-01-??
+date: 2009-01-13
 
 - Fix blackening of license text while touching.
 - translations: Dutch, French, German, Spanish
