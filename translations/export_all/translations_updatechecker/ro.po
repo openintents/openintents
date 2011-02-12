@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2010-01-09 03:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Peli <peli0101@googlemail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Launchpad (build 12335)\n"
+"X-Generator: Launchpad (build nnnnn)\n"
 
 #. Automatically filled in by Launchpad:
 #: tmp_strings.xml:8(string)

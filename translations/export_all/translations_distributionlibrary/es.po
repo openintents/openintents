@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: openintents\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2011-02-07 18:45+0000\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
+"net>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: Launchpad (build 12335)\n"
+"X-Generator: Launchpad (build nnnnn)\n"
 
 #: tmp_strings.xml:3(string)
 msgid "OI Distribution Library"
@@ -25,6 +26,8 @@ msgstr "Biblioteca de distribución OI"
 #: tmp_strings.xml:10(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Paco Molinero https://launchpad.net/~franciscomol"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Rex Sanna https://launchpad.net/~rex-sanna</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OI Issepera Colorese este una applicatzione pro OI Luche et atterasa applicatzionese compatibilese.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Issepera Colorese</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Issepera Colore</string>
+    
+    <string name="recent_colors_condensed">Recentese</string>
+    <string name="recent_colors">Colorese Recentese</string>
+    <string name="recent_colors_expanded">Colorese isseperadoso dae pacu</string>
+    <string name="recent_colors_clear_history">Doga</string>
+    <string name="recent_colors_empty">Non bi sunu colorese isseperadoso dae pacu</string>
+    
+    <string name="confirm_color_title">Usare su colore?</string>
+    <string name="confirm_color_message">Usare custu colore? Podes evitare custu avvisu cliccande in su zircu zentrale.</string>
+    
+    
+	<!-- About -->
+	<string name="about">Itte?</string>
+	<string name="aboutapp_not_available">Versione %s\n\nNon bi sunu estensionese disponibilese pro che biere tottu sas informatzionese (zente, creditoso, licentzia)</string>
+	<string name="aboutapp_get">Pica Oi Itte</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Applicatzione pro ghirare atterasa applicatzionese non disponibile.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Pro che isseperare unu colore in OI Luche, preme menu &gt; Colore.</string>
+    <string name="title_app_flashlight">OI Luche</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    
+    <string name="info_app_bettr_flickr">Interfatza pro Android de Flickr.</string>
+    <string name="title_app_bettr_flickr">BetteFlickr</string>
+    
+    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
+    <string name="title_app_character_gen">Anime Character Generator</string>
+    
+    
+	<string name="info_activity_text">Custa applicatzione podet essere usada chin custasa applicatzionese:</string>
+    <string name="info_launch">Apperi %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Custa applicatzione necessitata de  %1$s versione %2$s (o prus recente)</string>
+	<string name="info_get">Pica %s</string>
+</resources>
