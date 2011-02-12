@@ -5,6 +5,11 @@
 #
 # This file is used by ../import_all and ../export_all
 #
+
+## Uncomment the following lines to translate individual apps:
+#aboutapp aboutapp/AboutApp
+#STOP
+
 aboutapp aboutapp/AboutApp
 colorpicker colorpicker/ColorPicker
 countdown countdown/Countdown

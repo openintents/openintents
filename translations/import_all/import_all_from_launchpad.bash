@@ -4,6 +4,7 @@
 # Jan 8, 2011, Peli
 
 # Jan 29, 2011: Peli: read list of apps from central place.
+# Feb 12, 2011: Peli: Implement "STOP" command.
 
 # $1..translation file name
 # $2..main path
@@ -26,5 +27,8 @@ apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
 
 for (( i = 0 ; i < ${#apps[@]} ; i+=2 ))
 do
+	if [ "${apps[$i]}" == "STOP" ] ; then
+		break
+	fi
 	execute ${apps[$i]} ${apps[$i+1]}
 done

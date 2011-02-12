@@ -6,6 +6,7 @@
 # Jan 29, 2011: Peli: read list of apps from central place.
 # Feb 10, 2011: Peli: Omit creating tar file, as modifications are pulled 
 #                     directly from the trunk from Launchpad.
+# Feb 12, 2011: Peli: Implement "STOP" command.
 
 # Suppress generation of .po file:
 nopo=
@@ -24,13 +25,15 @@ function execute
 	translationspath=translations_$translationfilename
     echo "Translating $mainpath"
     mkdir translations_$translationfilename
+    rm translations_$translationfilename/*.po
+    rm translations_$translationfilename/*.pot
 	echo "$nopo"
     ../scripts/androidxml2po.bash -lp "../import_all/translations/export_all/translations_$translationfilename" -a "../../$mainpath" -n "$translationfilename" -ex "translations_$translationfilename" $nopo $notimestamp -e
 }
 
 # Delete all existing output directories:
-rm -r translations_*/*.po
-rm -r translations_*/*.pot
+#rm -r translations_*/*.po
+#rm -r translations_*/*.pot
 
 # Read all apps that should be translated.
 # sed: Remove comment lines starting with "#"
@@ -38,6 +41,9 @@ apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
 
 for (( i = 0 ; i < ${#apps[@]} ; i+=2 ))
 do
+	if [ "${apps[$i]}" == "STOP" ] ; then
+		break
+	fi
 	execute ${apps[$i]} ${apps[$i+1]}
 done
 
