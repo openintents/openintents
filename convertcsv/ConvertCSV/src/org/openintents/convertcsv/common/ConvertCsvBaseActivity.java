@@ -238,7 +238,12 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
         adapterEncoding.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpinnerEncoding.setAdapter(adapterEncoding);
         
-        String encodingString = pm.getString(PREFERENCE_ENCODING, getDefaultEncoding().name());
+        String encodingString = getDefaultEncoding().name();
+        try {
+        	encodingString = pm.getString(PREFERENCE_ENCODING, encodingString);
+        } catch (ClassCastException e) {
+        }
+        
         Encoding encoding;
 		try {
         	encoding = Encoding.valueOf(encodingString);           
