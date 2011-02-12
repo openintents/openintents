@@ -21,14 +21,15 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.1.0
-date: ?
+release: 1.1.0-beta1
+date: 2011-02-12
 
 - support moving app to SD card.
 - Add progress bar during conversion.
 - Shopping list export with tags
-- Basic support for HandyShopper import
+- Add support for HandyShopper import
   (including patch by Aaron Peromsik).
+- Choose custom encoding.
 - support Android 2.3.
 
 ---------------------------------------------------------
