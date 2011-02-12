@@ -39,7 +39,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 
 	public void setPreferencesUsed() {
 		PREFERENCE_FILENAME = PreferenceActivity.PREFS_SHOPPINGLIST_FILENAME;
-		DEFAULT_FILENAME = getString(R.string.default_shoppinglist_path);
+		DEFAULT_FILENAME = getString(R.string.default_shoppinglist_filename);
 		PREFERENCE_FORMAT = PreferenceActivity.PREFS_SHOPPINGLIST_FORMAT;
 		DEFAULT_FORMAT = "outlook tasks";
     	PREFERENCE_ENCODING = PreferenceActivity.PREFS_SHOPPINGLIST_ENCODING;
@@ -54,7 +54,9 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		mConvertInfo.setText(R.string.convert_all_shoppinglists);
+        if (mConvertInfo != null) {
+        	mConvertInfo.setText(R.string.convert_all_shoppinglists);
+        }
 	}
 
 	/**

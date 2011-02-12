@@ -84,8 +84,8 @@
     <string name="header_need">Need</string>
     
     <!-- File path -->
-    <string name="default_notepad_path">/sdcard/notepad.csv</string>
-    <string name="default_shoppinglist_path">/sdcard/shoppinglist.csv</string>
-    <string name="default_path">/sdcard/output.csv</string>
+    <string name="default_notepad_filename">notepad.csv</string>
+    <string name="default_shoppinglist_filename">shoppinglist.csv</string>
+    <string name="default_filename">output.csv</string>
     
 </resources>

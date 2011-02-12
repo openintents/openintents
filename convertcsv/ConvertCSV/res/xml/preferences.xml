@@ -29,7 +29,7 @@
     		<PreferenceCategory android:title="@string/preference_notepad">
 			    <EditTextPreference
 			            android:key="notepad_filename"
-			            android:defaultValue="@string/default_notepad_path"
+			            android:defaultValue="@string/default_notepad_filename"
 			            android:title="@string/preference_filename"
 			            android:summary="@string/preference_filename_summary"/>
 			    <ListPreference android:key="notepad_format"
@@ -59,7 +59,7 @@
     		<PreferenceCategory android:title="@string/preference_shoppinglist">
 			    <EditTextPreference
 			            android:key="shoppinglist_filename"
-			            android:defaultValue="@string/default_shoppinglist_path"
+			            android:defaultValue="@string/default_shoppinglist_filename"
 			            android:title="@string/preference_filename"
 			            android:summary="@string/preference_filename_summary"/>
 			            

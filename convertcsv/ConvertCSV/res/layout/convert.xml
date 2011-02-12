@@ -39,7 +39,7 @@
 	    android:layout_marginBottom="10dip"
 	    >
 	    <EditText android:id="@+id/file_path"
-	    	android:text="@string/default_path"
+	    	android:text="@string/default_filename"
 		    android:layout_width="0dip" 
 		    android:layout_height="wrap_content" 
 		    android:layout_weight="1"/>

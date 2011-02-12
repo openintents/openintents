@@ -184,14 +184,19 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
     private void switchToMainLayout() {
         setContentView(R.layout.convert);
         
-        DEFAULT_FILENAME = getString(R.string.default_path);
+        DEFAULT_FILENAME = getString(R.string.default_filename);
         
         setPreferencesUsed();
          
         mEditText = (EditText) findViewById(R.id.file_path);
         
         SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditText.setText(pm.getString(PREFERENCE_FILENAME, DEFAULT_FILENAME));
+        String filepath = pm.getString(PREFERENCE_FILENAME, DEFAULT_FILENAME);
+        if (filepath.equals(DEFAULT_FILENAME)) {
+        	// prepend SD path
+        	filepath = getSdCardFilename(DEFAULT_FILENAME);
+        }
+        mEditText.setText(filepath);
 
         ImageButton buttonFileManager = (ImageButton) findViewById(R.id.file_manager);
         
@@ -719,7 +724,23 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
 			showDialog(DIALOG_ID_NO_FILE_MANAGER_AVAILABLE);
 		}
 	}
-	
+
+	/**
+	 * Prepends the system's SD card path to the file name.
+	 * @param filename
+	 * @return
+	 */
+    protected String getSdCardFilename(String filename) {
+    	String sdpath = android.os.Environment
+				.getExternalStorageDirectory().getAbsolutePath();
+    	String path;
+    	if (sdpath.substring(sdpath.length() - 1, sdpath.length()).equals("/")) {
+    		path = sdpath + filename;
+    	} else {
+    		path = sdpath + "/" + filename;
+    	}
+	   	return path;
+    }
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
