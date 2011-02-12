@@ -12,6 +12,7 @@
 
 aboutapp aboutapp/AboutApp
 colorpicker colorpicker/ColorPicker
+convertcsv convertcsv/ConvertCSV
 countdown countdown/Countdown
 distributionlibrary distribution/DistributionLibrary
 filemanager filemanager/FileManager
