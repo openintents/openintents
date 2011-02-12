@@ -26,6 +26,7 @@ package org.openintents.about;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -605,6 +606,8 @@ public class About extends TabActivity {
         		
         		StringBuilder sb = new StringBuilder();
         		
+        		HashMap<String, String> translatorHash = new HashMap<String, String>();
+        		
 	    		for (int i=0; i<languages.length; i++) {
 	    			String lang = languages[i].substring(0, 2);
 	    			String country = "";
@@ -618,7 +621,23 @@ public class About extends TabActivity {
 	        		resources.updateConfiguration(config, null);
 	        		text = resources.getString(id);
 	        		
-	        		if (!text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) && !TextUtils.isEmpty(text)) {
+	        		// Make sure that text is unique within a language.
+	        		// e.g. If pt and pt_BR give same translators,
+	        		//      only pt should be shown.
+	        		//      If they differ, both should be shown.
+	        		//      pt: Portugese, pt_BR: Portugese (Brazilian)
+	        		boolean showCountry = true;
+	        		if (translatorHash.containsKey(text) && translatorHash.get(text).equals(lang)) {
+	        			showCountry = false;
+	        		}
+	        		if (TextUtils.isEmpty(country)) {
+	        			// Only add base language translations to hash
+	        			translatorHash.put(text, lang);
+	        		}
+	        		
+	        		if (showCountry 
+	        				&& !text.equals(LAUNCHPAD_TRANSLATOR_CREDITS_TAG) 
+	        				&& !TextUtils.isEmpty(text)) {
 	        				text = text.replaceFirst(
 	        						LAUNCHPAD_TRANSLATOR_CREDITS_HEADER, "").replaceAll(
 	        								LAUNCHPAD_TRANSLATOR_CREDITS_REGEX_1,
