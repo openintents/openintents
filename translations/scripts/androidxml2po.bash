@@ -71,7 +71,7 @@ function set_androidlanguage_from_language
 }
 
 
-# Remove time stampe: "POT-Creation-Date: 2010-05-29 13:09+0000\n" 
+# Remove time stamps: "POT-Creation-Date: 2010-05-29 13:09+0000\n" 
 #                  -> "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 # argument $1 is file name
 function removetimestamp
@@ -80,8 +80,16 @@ function removetimestamp
 	by="POT\-Creation\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
 	sed -i "s/$replace/$by/g" $1
 	
+	replace="PO\-Revision\-Date\: .*\\\\n"
+	by="PO\-Revision\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
+	sed -i "s/$replace/$by/g" $1
+	
 	replace="X\-Launchpad\-Export\-Date\: .*\\\\n"
 	by="X\-Launchpad\-Export\-Date\: YEAR\-MO\-DA HO\:MI\+ZONE\\\\n"
+	sed -i "s/$replace/$by/g" $1
+	
+	replace="X\-Generator\: Launchpad .*\\\\n"
+	by="X\-Generator\: Launchpad \\(build nnnnn\\)\\\\n"
 	sed -i "s/$replace/$by/g" $1
 }
 
