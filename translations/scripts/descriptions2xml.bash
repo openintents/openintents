@@ -42,6 +42,12 @@ function import_description2xml
 	echo "" >> "$xmlfile"
 	echo "$tab</description>" >> "$xmlfile"
 	
+	# Convert "#$ international" into "<international />"
+	sed -i "s/^#\$[ ]*international[ ]*$/$tab$tab<international \/>/g" "$xmlfile"
+	
+	# Convert "#$ include ..." into "<include file="..." />"
+	sed -i "s/^#\$[ ]*include[ ]*\(.*\)[ ]*$/$tab$tab<include file=\"\1\" \/>/g" "$xmlfile"
+	
 	# Convert comment lines starting with "#" into "<!-- ... -->"
 	sed -i "s/^#\(.*\)/$tab$tab<!-- \1 -->/g" "$xmlfile"
 	
@@ -52,7 +58,7 @@ function import_description2xml
 	sed -i "s/^\*[ ]*\(.*\)$/$tab$tab<listitem>\1<\/listitem>/g" "$xmlfile"
 	
 	# Convert lines starting with "http" into "<link href="..." />"
-	sed -i "s/^[ ]*\(http.*\)$/$tab$tab<link href=\"\1\" \/>/g" "$xmlfile"
+	sed -i "s/^[ ]*\(http.*\)[ ]*$/$tab$tab<link href=\"\1\" \/>/g" "$xmlfile"
 	
 	# Convert all other lines (those that don't start with tab yet) into "<string>...</string>"
 	sed -i "s/^\([^$tab].*\)/$tab$tab<string>\1<\/string>/g" "$xmlfile"
@@ -70,20 +76,15 @@ function appendinternationalnames
 	# Remove last comma:
 	appnames=`echo -n "$appnames" | sed "s/^\, \(.*\)$/\1/"`
 	
-	
-	echo -n -e "$newline$newline" >> $outfile
-	echo "International versions: $appnames" >> "$outfile"
+	echo "$appnames" >> "$outfile"
 }
-	
-function appendfooter
+
+
+# $1..include file name
+function includefile
 {
-	footerfile="$rootpath/$xmltitle/$descriptionpath/../description_footer.txt"
-	if [[ "$outfile" != "" ]] ; then
-		appendinternationalnames
-		
-		echo -n -e "$newline$newline" >> $outfile
-		cat "$footerfile" >> "$outfile"
-	fi
+	incfile="$rootpath/$xmltitle/$descriptionpath/../$1"
+	cat "$incfile" >> "$outfile"
 }
 
 # Simple XML parser:
@@ -109,7 +110,6 @@ function export_xml2description
 			if [[ $E == description* ]] ; then
 				# append footer for old file name prefix
 				# (if it existed)
-				appendfooter
 				
 				# extract file name prefix.
 				xmltitle=( `echo "$E" | sed "s/.*\"\(.*\)\"/\1/"`)
@@ -135,15 +135,24 @@ function export_xml2description
 				# extract part between quotes "..."
 				echo -n "$E" | sed "s/[^\"]*\"\(.*\)\"[^\"]*/\1/" >> $outfile
 			fi
+			if [[ $E == include* ]]; then
+				echo -n -e "$newline" >> $outfile
+				# extract part between quotes "..."
+				includefilename=`echo -n "$E" | sed "s/[^\"]*\"\(.*\)\"[^\"]*/\1/"`
+				includefile $includefilename
+			fi
+			if [[ $E == international* ]]; then
+				echo -n -e "$newline" >> $outfile
+				appendinternationalnames
+			fi
 			#if [[ $E = title ]]; then
 			#	echo $C
 			#	exit
 			#fi
 		done < "$xmlfile" ###> titleOfXHTMLPage.txt
 		
-		# Close last file
-		appendfooter
-				
+		echo -n -e "$newline" >> $outfile
+					
 	done
 }
 
