@@ -24,10 +24,10 @@ Translate market descriptions:
 1) Execute descriptions/convert_descriptions2xml.bash or ..._cygwin.bat
    (Texts in [app]/promotion/description get converted to descriptions/res/values)
 
-2) Follow steps above to export strings for translation.
-
-3) Follow steps above to import strings for translation.
+2) Follow steps above to import strings for translation.
    (Text in descriptions/res/values-[intl] are updated)
 
-4) Execute descriptions/convert_xml2descriptions.bash or ..._cygwin.bat
+3) Execute descriptions/convert_xml2descriptions.bash or ..._cygwin.bat
    (Texts in descriptions/res/values-[intl] get converted to [app]/promotion/description/translations)
+
+4) Follow steps above to export strings for translation.
