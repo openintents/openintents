@@ -24,14 +24,10 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  DanielElias https://launchpad.net/~danielelias"
 
-#. Short explanation of the application
+#. Short explanation of the application. Max. 80 characters.
 #: tmp_strings.xml:26(string)
-msgid ""
-"OI File Manager is an open file manager that seamlessly cooperates with "
-"other applications."
+msgid "Manage files on the SD card."
 msgstr ""
-"OI File Manager é um gerenciador de arquivos que coopera facilmente com "
-"outras aplicações."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
@@ -42,189 +38,215 @@ msgstr "OI File Manager"
 msgid "New Folder"
 msgstr "Nova Pasta"
 
-#: tmp_strings.xml:35(string)
+#. Multi select option menu
+#: tmp_strings.xml:37(string)
+msgid "Multi Select"
+msgstr ""
+
+#: tmp_strings.xml:39(string) tmp_strings.xml:69(string)
 msgid "Delete"
 msgstr "Deletar"
 
-#: tmp_strings.xml:36(string)
+#: tmp_strings.xml:40(string)
 msgid "Rename"
 msgstr "Renomear"
 
-#: tmp_strings.xml:37(string)
+#: tmp_strings.xml:41(string)
 msgid "Send"
 msgstr "Enviar"
 
-#: tmp_strings.xml:38(string)
+#: tmp_strings.xml:42(string)
 msgid "Open"
 msgstr "Abrir"
 
-#: tmp_strings.xml:39(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:67(string)
 msgid "Move"
 msgstr "Mover"
 
-#: tmp_strings.xml:40(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:68(string)
 msgid "Copy"
 msgstr "Copiar"
 
-#: tmp_strings.xml:41(string)
+#: tmp_strings.xml:45(string)
 msgid "Include in media scan"
 msgstr "Incluir no scanner de mídia."
 
-#: tmp_strings.xml:42(string) tmp_strings.xml:95(string)
+#: tmp_strings.xml:46(string) tmp_strings.xml:107(string)
 msgid "Exclude from media scan"
 msgstr "Remover do scanner de mídia."
 
-#: tmp_strings.xml:44(string)
+#: tmp_strings.xml:48(string)
 msgid "Create new folder"
 msgstr "Criar nova pasta"
 
-#: tmp_strings.xml:45(string) tmp_strings.xml:46(string)
+#: tmp_strings.xml:49(string) tmp_strings.xml:50(string)
 msgid "Folder name"
 msgstr "Nome da Pasta"
 
-#: tmp_strings.xml:47(string)
+#: tmp_strings.xml:51(string)
 msgid "This folder is empty."
 msgstr "Esta pasta está vazia."
 
-#: tmp_strings.xml:48(string)
+#: tmp_strings.xml:52(string)
 msgid "Do you really want to delete %s?"
 msgstr "Você realmente deseja deletar %s ?"
 
-#: tmp_strings.xml:49(string)
+#: tmp_strings.xml:53(string)
 msgid "File deleted."
 msgstr "Arquivo deletado."
 
-#: tmp_strings.xml:50(string)
+#: tmp_strings.xml:54(string)
 msgid "Folder deleted."
 msgstr "Pasta deletada."
 
-#: tmp_strings.xml:51(string)
+#: tmp_strings.xml:55(string)
 msgid "File renamed."
 msgstr "Arquivo renomeado."
 
-#: tmp_strings.xml:52(string)
+#: tmp_strings.xml:56(string)
 msgid "Folder renamed."
 msgstr "Pasta renomeada."
 
-#: tmp_strings.xml:53(string)
+#: tmp_strings.xml:57(string)
 msgid "File moved."
 msgstr "Arquivo movido."
 
-#: tmp_strings.xml:54(string)
+#: tmp_strings.xml:58(string)
 msgid "Folder moved."
 msgstr "Pasta movida."
 
-#: tmp_strings.xml:55(string)
+#: tmp_strings.xml:59(string)
 msgid "File copied."
 msgstr "Arquivo copiado."
 
-#: tmp_strings.xml:56(string)
+#: tmp_strings.xml:60(string)
 msgid "Select folder to move to"
 msgstr "Escolha a pasta para onde deseja mover"
 
-#: tmp_strings.xml:57(string)
+#: tmp_strings.xml:61(string)
 msgid "Move here"
 msgstr "Mover aqui"
 
-#: tmp_strings.xml:58(string)
+#: tmp_strings.xml:62(string)
 msgid "Select folder to copy to"
 msgstr "Escolha a pasta para onde deseja copiar"
 
-#: tmp_strings.xml:59(string)
+#: tmp_strings.xml:63(string)
 msgid "Copy here"
 msgstr "Copiar aqui"
 
+#. Strings for a multi select feature
+#: tmp_strings.xml:66(string)
+#, fuzzy
+msgid "Do you really want to delete %d files?"
+msgstr "Você realmente deseja deletar %s ?"
+
+#: tmp_strings.xml:70(string)
+msgid "Select multiple files"
+msgstr ""
+
+#: tmp_strings.xml:71(string)
+msgid "Please select one or more file(s)."
+msgstr ""
+
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:62(string)
+#: tmp_strings.xml:74(string)
 msgid "Copy of %s"
 msgstr "Cópia de %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:65(string)
+#: tmp_strings.xml:77(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copia %1$d de %2$s"
 
-#: tmp_strings.xml:67(string)
+#: tmp_strings.xml:79(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Esta pasta será incluída no próximo escaneamento de mídia"
 
-#: tmp_strings.xml:68(string)
+#: tmp_strings.xml:80(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Esta pasta será excluída durante o próximo escaneamento de mídia."
 
-#: tmp_strings.xml:70(string)
+#: tmp_strings.xml:82(string)
 msgid "Could not create new folder."
 msgstr "Não é possível criar nova pasta."
 
-#: tmp_strings.xml:71(string)
+#: tmp_strings.xml:83(string)
 msgid "Could not delete file."
 msgstr "Não é possível deletar arquivo."
 
-#: tmp_strings.xml:72(string)
+#: tmp_strings.xml:84(string)
 msgid "Could not delete folder '%s'."
 msgstr "Não é possível deletar pasta '%s'."
 
-#: tmp_strings.xml:73(string)
+#: tmp_strings.xml:85(string)
 msgid "Could not rename file."
 msgstr "Não é possível renomar arquivo."
 
-#: tmp_strings.xml:74(string)
+#: tmp_strings.xml:86(string)
 msgid "Could not rename folder."
 msgstr "Não é possível renomar pasta."
 
-#: tmp_strings.xml:75(string)
+#: tmp_strings.xml:87(string)
 msgid "Could not move file."
 msgstr "Não é possível mover arquivo."
 
-#: tmp_strings.xml:76(string)
+#: tmp_strings.xml:88(string)
 msgid "Could not move folder."
 msgstr "Não é possível mover pasta."
 
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:89(string)
 msgid "Could not copy file."
 msgstr "Não é possível copiar arquivo."
 
-#: tmp_strings.xml:78(string)
+#: tmp_strings.xml:90(string)
 msgid "File does not exist."
 msgstr "Arquivo não existe."
 
-#: tmp_strings.xml:79(string)
+#: tmp_strings.xml:91(string)
 msgid "Could not delete child file '%s'."
 msgstr "Não é possível excluir arquivo filho '%s'."
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:92(string)
 msgid "An error occurred:"
 msgstr "Um erro ocorreu:"
 
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:93(string)
 msgid "Could not change media scan settings."
 msgstr "Não é possível mudar configurações do scanner de mídia."
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:95(string)
 msgid "No application available for sending."
 msgstr "Sem aplicativos disponíveis para envio."
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:97(string)
 msgid "Application not available"
 msgstr "Aplicativo indisponível."
 
 #. Menu item for Settings
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:103(string)
 msgid "Settings"
 msgstr ""
 
 #. Category for preferences.
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:106(string)
 msgid "Advanced features"
 msgstr ""
 
-#: tmp_strings.xml:96(string)
+#: tmp_strings.xml:108(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:109(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
+
+
+
+
+
+
+
 
 
 
