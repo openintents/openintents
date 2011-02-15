@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<translators>translator-credits</translators>
 <main>
+	<translators>translator-credits</translators>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->
@@ -9,7 +9,7 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Filemanager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
+		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
 		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
 		<emptyline />
 		<string>This application is ad free and does not require the internet permission.</string>
@@ -43,9 +43,6 @@
 		<emptyline />
 		<string>Extensions:</string>
 		<include file="description_extensions.txt" />
-		<emptyline />
-	</description>
-	<description application="shoppinglist/ShoppingList">
 		<emptyline />
 	</description>
 </main>
