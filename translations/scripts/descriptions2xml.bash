@@ -58,10 +58,29 @@ function import_description2xml
 	sed -i "s/^\([^$tab].*\)/$tab$tab<string>\1<\/string>/g" "$xmlfile"
 }
 
+function appendinternationalnames
+{
+	appnamesfile="$outpath/application_names.txt"
+	appnames=""
+	while read line
+	do
+		appnames="$appnames, $line"
+	done < "$appnamesfile"
+	
+	# Remove last comma:
+	appnames=`echo -n "$appnames" | sed "s/^\, \(.*\)$/\1/"`
+	
+	
+	echo -n -e "$newline$newline" >> $outfile
+	echo "International versions: $appnames" >> "$outfile"
+}
+	
 function appendfooter
 {
 	footerfile="$rootpath/$xmltitle/$descriptionpath/../description_footer.txt"
 	if [[ "$outfile" != "" ]] ; then
+		appendinternationalnames
+		
 		echo -n -e "$newline$newline" >> $outfile
 		cat "$footerfile" >> "$outfile"
 	fi
