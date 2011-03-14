@@ -22,9 +22,9 @@ import java.io.Writer;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.opencsv.CSVWriter;
-import org.openintents.provider.Shopping;
-import org.openintents.provider.Shopping.ContainsFull;
-import org.openintents.provider.Shopping.Lists;
+import org.openintents.shopping.library.provider.Shopping;
+import org.openintents.shopping.library.provider.Shopping.ContainsFull;
+import org.openintents.shopping.library.provider.Shopping.Lists;
 
 import android.content.Context;
 import android.database.Cursor;
