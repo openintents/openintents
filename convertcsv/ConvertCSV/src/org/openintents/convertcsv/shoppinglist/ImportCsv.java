@@ -25,6 +25,7 @@ import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
 import org.openintents.shopping.library.provider.Shopping;
 import org.openintents.shopping.library.provider.Shopping.Status;
+import org.openintents.shopping.library.util.ShoppingUtils;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -84,8 +85,8 @@ public class ImportCsv {
 			String tags = nextLine[3];
 			
 			// Add item to list
-			long listId = Shopping.getList(mContext, listname);
-			long itemId = Shopping.getItem(mContext, itemname, tags, null, 
+			long listId = ShoppingUtils.getList(mContext, listname);
+			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, null, 
 					null, null, mDuplicate, mUpdate);
 			
 			if (status == 1) {
@@ -97,7 +98,7 @@ public class ImportCsv {
 			}
 			
 			
-			Shopping.addItemToList(mContext, itemId, listId, status, 1, 1);
+			ShoppingUtils.addItemToList(mContext, itemId, listId, status, null, null, false);
 	    }
 	    
 	}
@@ -141,25 +142,15 @@ public class ImportCsv {
 					tags += "," + nextLine[3];
 				}
 			}
-			
-			double quantity;
-			try {
-			    quantity = Double.parseDouble(nextLine[4]); // Quantity
-			} catch (java.lang.NumberFormatException nfe){
-				quantity = 1.0;		
-			}
-			long priority;
-			try {
-			    priority = Integer.parseInt(nextLine[1]); // Priority
-			} catch (java.lang.NumberFormatException nfe){
-				priority = 1;		
-			}
+
+			String quantity = nextLine[4]; // Quantity
+			String priority = nextLine[1]; // Priority
 			
 			// Add item to list
-			long listId = Shopping.getDefaultList(mContext);
-			long itemId = Shopping.getItem(mContext, itemname, tags, price, units, note,
+			long listId = ShoppingUtils.getDefaultList(mContext);
+			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, price, units, note,
 					mDuplicate, mUpdate);
-			Shopping.addItemToList(mContext, itemId, listId, status, priority, quantity);
+			ShoppingUtils.addItemToList(mContext, itemId, listId, status, priority, quantity, false);
 			
 			// Two columns contain per-store information. Column 10 lists 
 			// all stores which carry this item, delimited by semicolons. Column 11 
@@ -174,11 +165,11 @@ public class ImportCsv {
 				for (int i_store = 0; i_store < stores.length; i_store ++)
 				{
 					if (importStores){	// real store import
-						long storeId = Shopping.getStore(mContext, stores[i_store], listId);
-						long item_store = Shopping.addItemToStore(mContext, itemId, storeId, 0, "");
+						long storeId = ShoppingUtils.getStore(mContext, stores[i_store], listId);
+						long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, 0, "");
 					} else if (!TextUtils.isEmpty(stores[i_store])){
 						// store names added as tags. 
-						Shopping.addTagToItem(mContext, itemId, stores[i_store]);
+						ShoppingUtils.addTagToItem(mContext, itemId, stores[i_store]);
 					}
 				}
 			}
@@ -210,8 +201,8 @@ public class ImportCsv {
 						}
 					}
 			
-					long storeId = Shopping.getStore(mContext, store_name, listId);
-					long item_store = Shopping.addItemToStore(mContext, itemId, storeId, aisle, store_price);
+					long storeId = ShoppingUtils.getStore(mContext, store_name, listId);
+					long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, aisle, store_price);
 				
 				}
 			}
