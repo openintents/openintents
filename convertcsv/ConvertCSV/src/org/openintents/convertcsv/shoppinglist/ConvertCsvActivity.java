@@ -96,13 +96,14 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 		if (DEFAULT_FORMAT.equals(format)) {
 			ec.exportCsv(writer);
 		} else if (HANDYSHOPPER_FORMAT.equals(format)) {
-			runOnUiThread(new Runnable() {
+			ec.exportHandyShopperCsv(writer);
+			/*runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
 					Toast.makeText(ConvertCsvActivity.this, R.string.error_not_yet_implemented,
 							Toast.LENGTH_LONG).show();
 				}
-			});
+			});*/
 		}
 	}
 	

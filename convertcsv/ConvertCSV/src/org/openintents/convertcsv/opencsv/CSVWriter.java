@@ -214,6 +214,10 @@ public class CSVWriter {
     	this.lineEnd = lineEnd;
     }
     
+    public void setQuoteCharacter(char quotecharacter) {
+    	this.quotechar = quotecharacter;
+    }
+    
     /**
      * Writes the entire list to a CSV file. The list is assumed to be a
      * String[]
