@@ -1,0 +1,9 @@
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+     android:label="@string/search_channel"
+     android:hint="@string/searchhint"          
+     android:icon="@drawable/newsreader_icon"
+     android:searchMode="showSearchLabelAsBadge"
+     
+     android:searchSuggestAuthority="org.openintents.news.channels.SuggestionProvider"
+     android:searchSuggestSelection=" ? ">
+ </searchable>

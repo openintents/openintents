@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<!--
+/*
+*	This file is part of OI Newsreader.
+*	Copyright (C) 2007-2009 OpenIntents.org
+*	OI Newsreader is free software: you can redistribute it and/or modify
+*	it under the terms of the GNU General Public License as published by
+*	the Free Software Foundation, either version 3 of the License, or
+*	(at your option) any later version.
+*
+*	OI Newsreader is distributed in the hope that it will be useful,
+*	but WITHOUT ANY WARRANTY; without even the implied warranty of
+*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*	GNU General Public License for more details.
+*
+*	You should have received a copy of the GNU General Public License
+*	along with OI Newsreader.  If not, see <http://www.gnu.org/licenses/>.
+*/
+	-->
+<resources>
+    <!-- Main application  -->
+	<string name="default_tag">DEFAULT</string>
+	<string name="init_databases">Init default values</string>
+	<string name="init_add_news_feeds">Add default news feeds</string>
+	<string name="init_done">Werte hinzugefuegt.</string>
+	<string name="init_view_news">View Newsfeeds</string>
+
+	
+	<!--     Dialog box    -->
+	<string name="cancel">Abbrechen</string>
+	<string name="ok">OK</string>
+	
+	<!--     Newsreader Service -->
+	<string name="news_service_settings">News Service</string>
+	<string name="start_on_system_boot">Autostart</string>
+	<string name="use_while_roaming">Roaming zulassen</string>
+	<string name="debug_mode">Debug mode</string>
+	<string name="running_now">Running now</string>
+
+	<string name="summary_use_while_roaming">Daten werden auch waehrend Roaming abgerufen.</string>
+	<string name="summary_start_on_system_boot">Service startet mit dem Betriebssystem.</string>
+	<string name="summary_debug_mode">Alle Details ins Log schreiben.</string>
+	<string name="summary_running_now">If ticked service will start if not yet running. If unticked service will stop.</string>
+	
+	<!-- ########################################
+	     Newsreader
+	     ######################################## -->
+    <string name="newsreader_app_name">OI News Reader</string>
+    <string name="select_feeds">Select feeds</string>
+	<string name="feed_settings">Feed Einstellungen</string>
+		
+<string name="feedname_hint">Hier Name eingeben</string>
+<string name="name">Name</string>
+<string name="feedurl">Feed Url</string>
+<string name="type">Typ</string>
+<string name="save">Speichern</string>
+<string name="feedurl_hint">Hier Feed Url eingeben</string>
+<string name="categories">Kategorien</string>
+<string name="checkurl">Url ueberpruefen</string>
+<string name="looking_up_feed_information">Looking for feed information</string>
+<string name="show_advanced_settings">Erweiterte Einstellungen anzeigen</string>
+<string name="hide_advanced_settings">Erweiterte Einstellungen verbergen</string>
+<string name="checkforupdates">Check for updates (min):</string>
+<string name="saveandrestart">Save and restart</string>
+<string name="stop">Save</string>
+<string name="start">Stop</string>
+<string name="addfeed">Add feed</string>
+<string name="addfeed_manually">Feed manuell hinzufuegen</string>
+<string name="feedadded">"Feed '%s' wurde hinzugefuegt."</string>
+<string name="delete">Loeschen</string>
+<string name="showoffline">Nachrichten anzeigen</string>
+<string name="toggle">Toggle</string>
+<string name="magnolia_tagging">Ma.gnolia Tags</string>
+<string name="update">Update</string>
+<string name="newsservicestarted">NewsReaderService gestartet</string>
+<string name="newsservicestopping">NewsReaderService gestoppt</string>
+<string name="editfeed">Feed Einstellungen</string>
+<string name="addnewfeed">Feed hinzufuegen</string>
+<string name="deletefeed">Feed loeschen</string>
+<string name="servicesettings">Service Einstellungen</string>
+<string name="servicestate">Service Status</string>
+<string name="feedfromurl">Feed von Url</string>
+<string name="checkicon">Icon ueberpruefen</string>
+<string name="mark_for_notification">Benachrichtigung anzeigen</string>
+<string name="markfeedasread">Feed als gelesen markieren</string>
+<string name="markallasread">Alle als gelesen markieren</string>
+<string name="newnews">Neue Nachrichten in \'%1$s\' (%2$s)</string>
+<string name="never">Nie</string>
+<string name="search">Suche</string>
+<string name="search_web">Web Suche</string>
+<string name="gotolink">Zu Website gehen</string>
+<string name="searchhint">Suchbegriff oder \'*\' fuer alle</string>
+<string name="urlfailed">Could not connect to feed channel.</string>
+<string name="all">Alle</string>
+<string name="newsreader">OpenIntents Newsreader</string>
+<string name="newsreader_select_1">OpenIntents Newsreader (\'%s\')</string>
+<string name="previous">letzte</string>
+<string name="next">nächste</string>
+<string name="messagesettings">Einstellungen für Nachrichten</string>
+<string name="message_click_action">Bevorzugte Auswahl Aktion</string>
+<string name="summary_message_click_action">Bevorzugte Aktion wählen wenn Nachricht gewählt wird.</string>
+<string name="dialog_title_message_click_action">Aktion wählen</string>
+<string name="default_encoding">Codierung</string>
+<string name="summary_default_encoding">Bevorzugte Codierung wählen.</string>
+<string name="dialog_title_default_encoding">Codierung wählen</string>
+<string name="read_after_seconds">Automatisch als gelesen markieren</string>
+<string name="summary_read_after_seconds">If ticked a shown message is marked as read automatically.</string>
+<string name="offline_read_exception">Could not prepare temporary file for offline reading.</string>
+<string name="addcategory">Kategorie hinzufuegen</string>
+<string name="category_exists">Kategorie existiert bereits</string>
+<string name="channelsettings">Settings for channels</string>
+<string name="dialog_title_channel_sort_order">Choose sort order for channels</string>
+<string name="sort_order">Sortierung</string>
+<string name="summary_sort_order">Choose which sort order to use</string>
+<string name="mark_for_update">Delete messages before update</string>
+<string name="search_channel">Search channel</string>
+<string name="settings">Settings</string>
+<string name="select_categories">Select categories</string>
+	<string name="timeout">Timeout</string>
+	<string name="timeout_long">Trial period has ended.</string>
+<string name="no_offline_msg"><![CDATA[
+ <p>No offline message available.</p><p><a href="%s">Goto site</a></p>]]></string>
+<string name="unknown_feed_type">Unknown feed type.</string>
+<string name="invalid_feed_url">Feed URL is not reachable.</string>
+ 
+<string name="about_openintents">About %s</string>
+<string name="about">About</string>
+<string name="about_openintents_text">Version %s \n\nOpenIntents 
+		defines open intents and interfaces to make Android applications
+		work together.\n\nFor more information visit the OpenIntents developer home at 
+		http://www.openintents.org/newsreader
+	</string>
+<string name="compress_categories">Compress categories</string>
+<string name="summary_compress_categories">Delete all unused categories</string>
+<string name="dialog_title_compress_categories">Confirm delete</string>
+
+<string name="search_web_for_feeds">Search web for feeds</string>
+<string name="preselected_feed_hint">or pick from the preselected feeds below.</string>
+
+<string name="search_web_help">"To copy a feed from the browser, long-click on the feed link and select 'Copy link URL'."</string>
+<string name="open_browser">Open browser</string>
+<string name="clipboard_content">Clipboard content:</string>
+<string name="add_clipboard_feed">Add clipboard feed</string>
+<string name="clipboard_empty">Clipboard empty</string>
+<string name="invalid_link">Invalid URL</string>
+
+<string name="purged_entrys">Purged %s records</string>
+<string name="dialog_message_purge">This will delete all read content. Continue?</string>
+<string name="preference_purgedata">Purge Data</string>
+<string name="preference_purgedata_summary">This will purge old data from the Storage.</string>
+
+<string name="online_feeds_dir">http://www.rss-verzeichnis.de/</string>
+
+<string name="newsreader_eula">Newsreader EULA</string>
+
+<string name="newsreader_eula_description">"EULA – End User Software License Agreement for OPENINTENTS-NEWSREADER Android application. 
+
+
+PLEASE CAREFULLY READ THE FOLLOWING LEGAL AGREEMENT (\"AGREEMENT\") FOR THE LICENSE OF OPENINTENTS-NEWSREADER ANDROID APPLICATION (\"SOFTWARE\") BY THE VENDOR OPENINTENTS-NEWSREADER HEREIN CALLED (\"OPENINTENTS-NEWSREADER \"). BY USING THE SOFTWARE, YOU (EITHER AN INDIVIDUAL OR A SINGLE ENTITY) CONSENT TO BE BOUND BY AND BECOME A PARTY TO THIS AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, YOU MUST NOT USE THE SOFTWARE.
+
+
+1. License Grant.
+OPENINTENTS-NEWSREADER grants to you a non-exclusive, non-transferable License to use the Software for beta testing purposes (personal or business) provided you do not remove any of the original proprietary, trademark or copyright markings or notices placed upon or contained with the Software. OPENINTENTS-NEWSREADER warrants that it owns all intellectual property rights related to the Software and will defend and keep you harmless if any third party intellectual property claims arise.
+
+2. Term.
+This Agreement is effective for an unlimited duration. This Agreement will terminate automatically if you fail to comply with any of the limitations or other requirements described herein. Upon any termination or expiration of this Agreement, you must destroy all copies of the Software.
+
+3. Ownership Rights.
+The Software is protected by European copyright laws and international treaty provisions. All intellectual property rights related to the Software are the property of OPENINTENTS-NEWSREADER. Your possession, installation, or use of the Software does not transfer to you any title to the intellectual property in the Software.
+
+4. Restrictions.
+You may not rent, lease, loan, sublicense, resell or otherwise transfer rights to the Software. You may not remove any proprietary notices or labels on the Software. All rights not expressly set forth hereunder are reserved by OPENINTENTS-NEWSREADER.
+
+5. Fees.
+There is no License fee for the Software whilst being used on a non-profit basis by individuals, non-profit organizations or businesses for beta testing purposes. License fees will be applicable on final release when the product is being used in a commercial application, web site, personal use or an intranet.
+
+6. OPENINTENTS-NEWSREADER Services.
+Use of the Services requires Internet access and use of certain Services requires you to accept additional terms of service which will be presented to you before you can use such Services. By using this software in connection with a OPENINTENTS-NEWSREADER account, you agree to the latest OPENINTENTS-NEWSREADER Terms of Service, which you may access and review from OPENINTENTS-NEWSREADER web site.
+You understand that by using any of the Services, you may encounter content that may be deemed offensive, indecent, or objectionable, which content may or may not be identified as having explicit language. Nevertheless, you agree to use the Services at your sole risk and that OPENINTENTS-NEWSREADER shall have no liability to you for content that may be found to be offensive, indecent, or objectionable. 
+Content types (including genres, sub-genres, sub-categories and the like) and descriptions are provided for convenience, and you acknowledge and agree that OPENINTENTS-NEWSREADER does not guarantee their accuracy. Certain Services may include materials from third parties or links to certain third party web sites. 
+
+You acknowledge and agree that OPENINTENTS-NEWSREADER is not responsible for examining or evaluating the content or accuracy of any such third-party material or web sites. OPENINTENTS-NEWSREADER does not warrant or endorse and does not assume and will not have any liability or responsibility for any third-party materials or web sites, or for any other materials, products, or services of third parties. 
+Links to other web sites are provided solely as a convenience to you. You agree that you will not use any third-party materials in a manner that would infringe or violate the rights of any other party, and that OPENINTENTS-NEWSREADER is not in any way responsible for any such use by you. 
+You agree that the Services, including but not limited to graphics, audio clips, and editorial content, contain proprietary information and material that is owned by OPENINTENTS-NEWSREADER and/or its licensors, and is protected by applicable intellectual property and other laws, including but not limited to copyright, and that you will not use such proprietary information or materials in any way whatsoever except for permitted use of the Services. 
+
+No portion of the Services may be reproduced in any form or by any means. You agree not to modify, rent, lease, loan, sell, distribute, or create derivative works based on the Services, in any manner, and you shall not exploit the Services in any unauthorized way whatsoever, including but not limited to, by trespass or burdening network capacity. OPENINTENTS-NEWSREADER and its licensors reserve the right to change, suspend, remove, or disable access to any Services at any time without notice. 
+In no event will OPENINTENTS-NEWSREADER be liable for the removal of or disabling of access to any such Services. OPENINTENTS-NEWSREADER may also impose limits on the use of or access to certain Services, in any case and without notice or liability. 
+
+7. Warranty Disclaimer.
+THE SOFTWARE IS PROVIDED ON AN \"AS IS\" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OPENINTENTS-NEWSREADER DISCLAIMS ALL WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NONINFRINGEMENT. YOU ASSUME RESPONSIBILITY FOR SELECTING THE SOFTWARE TO ACHIEVE YOUR INTENDED RESULTS, AND FOR THE USE OF, AND RESULTS OBTAINED FROM THE SOFTWARE. OPENINTENTS-NEWSREADER MAKES NO WARRANTY THAT THE SOFTWARE WILL BE FREE FROM DEFECTS OR THAT THE SOFTWARE WILL MEET YOUR REQUIREMENTS. SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON IMPLIED WARRANTIES, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+
+8. Limitation of Liability.
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT, CONTRACT, OR OTHERWISE, SHALL OPENINTENTS-NEWSREADER OR ITS SUPPLIERS OR RESELLERS BE LIABLE TO YOU OR TO ANY OTHER PERSON FOR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY CHARACTER ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF GOODWILL, COMPUTER FAILURE OR MALFUNCTION, WORK STOPPAGE OR FOR ANY AND ALL OTHER DAMAGES OR LOSSES. IN NO EVENT WILL OPENINTENTS-NEWSREADER BE LIABLE FOR ANY DAMAGES IN EXCESS OF THE LIST PRICE OPENINTENTS-NEWSREADER CHARGES FOR A LICENSE TO THE SOFTWARE, EVEN IF OPENINTENTS-NEWSREADER SHALL HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THIS LIMITATION AND EXCLUSION MAY NOT APPLY TO YOU.
+
+9. Further Limitation of Liability.
+THE SOFTWARE IS NOT DESIGNED FOR USE IN HAZARDOUS ENVIRONMENTS REQUIRING FAIL-SAFE PERFORMANCE. OPENINTENTS-NEWSREADER EXPRESSLY DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY OF FITNESS FOR HIGH-RISK ACTIVITIES. YOU AGREE THAT OPENINTENTS-NEWSREADER WILL NOT BE LIABLE FOR ANY CLAIMS OR DAMAGES ARISING FROM THE USE OF THE SOFTWARE IN SUCH APPLICATIONS.
+
+10. Miscellaneous.
+This Agreement is governed by the law of Germany and the parties agree that the sole location and venue for any litigation which may arise hereunder shall be Germany. This Agreement sets forth all rights for the user of the Software and is the entire agreement between the parties. This Agreement may not be modified except by a written addendum issued by a duly authorized representative of OPENINTENTS-NEWSREADER. No provision hereof shall be deemed waived unless such waiver shall be in writing and signed by OPENINTENTS-NEWSREADER or a duly authorized representative of OPENINTENTS-NEWSREADER. If any provision of this Agreement is held illegal or unenforceable by a court having jurisdiction, such provision shall be modified to the extent necessary to render it enforceable without losing its intent, or severed from this Agreement if no such modification is possible, and the remainder of this Agreement shall continue in full force and effect. The parties confirm that it is their wish that this Agreement has been written in the English language only."</string>
+
+
+<string name="eula_accept">Accept</string>
+<string name="eula_refuse">No thanks</string>
+<string name="looking_up_default_feeds">Looking for default feeds from server</string>
+
+	<string name="update_available">A new version of OI News Reader is available.\n%s\nWould you like to upgrade?</string>
+	<string name="market_not_available">Android Market not available.</string>
+<string name="market_search_term">OI News Reader</string>
+</resources> 

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	* Copyright (C) 2007-2008 OpenIntents.org
+	*
+	* Licensed under the Apache License, Version 2.0 (the "License");
+	* you may not use this file except in compliance with the License.
+	* You may obtain a copy of the License at
+	*
+	*      http://www.apache.org/licenses/LICENSE-2.0
+	*
+	* Unless required by applicable law or agreed to in writing, software
+	* distributed under the License is distributed on an "AS IS" BASIS,
+	* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	* See the License for the specific language governing permissions and
+	* limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="org.openintents.newsreader"
+	android:versionCode="65549" android:versionName="1.1.1">
+
+	<!-- History:
+	[65549] 1.1.1: 2010-05-16
+	[65548] 1.1.1-rc1: not released
+	[65547] 1.1.0: 2010-04-05 -->
+
+	<uses-sdk android:targetSdkVersion="2" android:minSdkVersion="2"></uses-sdk>
+
+	<!-- required for news service  -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+	<application android:icon="@drawable/newsreader_icon" android:label="@string/newsreader_app_name">
+
+		<provider android:name="org.openintents.newsreader.NewsProvider"
+			android:authorities="org.openintents.newsreader" />		
+
+		<provider android:name="org.openintents.newsreader.channels.SearchSuggestionProvider"
+			android:authorities="org.openintents.newsreader.channels.SuggestionProvider" />		
+
+
+		
+		<receiver android:name="org.openintents.newsreader.services.AutostartService">
+		 <intent-filter>
+		   <action android:name="android.intent.action.BOOT_COMPLETED" />
+		 </intent-filter>
+		</receiver>
+		<receiver android:name="org.openintents.newsreader.services.RoamingWatcher">
+		 <intent-filter>
+		   <action android:name="android.intent.action.DATA_STATE" />
+								 
+		 </intent-filter>
+		 <intent-filter>
+		   <action android:name="android.intent.action.SERVICE_STATE" />
+								 
+		 </intent-filter>
+		</receiver>
+		<service android:name="org.openintents.newsreader.services.NewsreaderService"
+				 android:enabled="true"
+		>
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.DEFAULT" />
+				
+				<!--  <category
+					android:name="android.intent.category.LAUNCHER" />  -->              					
+			</intent-filter>
+		</service>
+		<activity android:name="org.openintents.newsreader.services.NewsServiceSettings"
+			android:label="@string/news_service_settings"
+			android:icon="@drawable/ic_menu_preferences">
+			<!-- android:icon="@android:drawable/ic_menu_preferences" -->
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="org.openintents.category.SETTINGS" />
+			</intent-filter>
+
+			<intent-filter>
+				<action android:name="org.openintents.action.CONFIG_NEWSREADERSERVICE"
+					android:label="tag" />
+				<category android:name="android.intent.category.DEFAULT" />				
+				<category android:name="android.intent.category.ALTERNATIVE" />				
+			</intent-filter>
+		</activity>
+		
+
+		<!-- ########################################
+		     Newsreader
+		     ######################################## -->
+
+        <activity android:name=".reader.Newsreader" 
+					android:label="@string/newsreader_app_name"
+					android:icon="@drawable/newsreader_icon"
+					android:launchMode="singleTop"
+		>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <!-- -->
+				<category
+					android:name="android.intent.category.LAUNCHER" />
+					<!--  -->
+
+                <category android:name="org.openintents.category.MAIN" />
+            </intent-filter>
+           
+            <intent-filter>
+				<action android:name="android.intent.action.SEARCH" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data android:name="android.app.searchable"
+				android:resource="@xml/searchable" />
+        </activity>
+
+       <activity android:name=".channels.ChannelSettings" android:label="@string/editfeed">
+                    
+            <intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <!--  
+                <category android:name="android.intent.category.DEFAULT" />
+                <type android:name="vnd.openintents.cursor.dir/vnd.openintents.rssfeed" />
+                -->
+            </intent-filter>
+                       
+        </activity>        
+
+        <activity android:name=".reader.EulaActivity" android:label="@string/newsreader_eula">
+        </activity> 
+        
+        <activity android:name=".categories.ChooseCategoriesDialog" android:label="@string/newsreader_app_name">
+        </activity> 
+
+        <activity android:name=".help.PreselectedChannelsActivity" android:label="@string/select_feeds">
+        </activity> 
+        
+		<activity android:name=".messages.AFeedMessages" android:label="@string/newsreader_app_name">
+		 <!-- Register RSS feed through browser -->
+            <intent-filter> 
+                <action android:name="android.intent.action.VIEW" /> 
+                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="application/rss+xml"/> 
+ 			</intent-filter> 
+
+            <!-- Register Atom feed through browser -->
+            <intent-filter> 
+                <action android:name="android.intent.action.VIEW" /> 
+                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="application/atom+xml"/> 
+ 			</intent-filter> 
+ 			
+            <!-- Register generic xml through browser? - DOES NOT WORK. -->
+            <!-- 
+            <intent-filter> 
+                <action android:name="android.intent.action.VIEW" /> 
+                <category android:name="android.intent.category.DEFAULT" /> 
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:mimeType="application/xml"/> 
+            </intent-filter> 
+            -->
+        </activity> 
+        
+        <activity android:name=".categories.CategoriesListActivity"/>
+        <activity android:name=".categories.AddCategoryActivity"/>
+        
+		<activity android:name=".About"
+			android:label="@string/about_openintents">			
+		</activity>
+		
+	<supports-screens android:smallScreens="true"
+                  android:normalScreens="true"
+                  android:largeScreens="true"
+
+		
+/>	
+</application>	 
+	
+	
+<uses-sdk android:targetSdkVersion="4"></uses-sdk>
+</manifest>

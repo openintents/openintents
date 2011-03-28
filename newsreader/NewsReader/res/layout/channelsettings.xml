@@ -1,0 +1,126 @@
+
+	<!--
+		* Copyright (C) 2007-2008 OpenIntents.org * * Licensed under the
+		Apache License, Version 2.0 (the "License"); * you may not use this
+		file except in compliance with the License. * You may obtain a copy of
+		the License at * * http://www.apache.org/licenses/LICENSE-2.0 * *
+		Unless required by applicable law or agreed to in writing, software *
+		distributed under the License is distributed on an "AS IS" BASIS, *
+		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+		implied. * See the License for the specific language governing
+		permissions and * limitations under the License.
+	-->
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+>
+<LinearLayout 
+	android:gravity="center_horizontal" android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical">
+	<LinearLayout android:id="@+id/afeedsettings_ft1"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:orientation="vertical">		
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight"
+			android:layout_marginTop="10dip">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/feedurl" />
+			<EditText android:id="@+id/feedurl" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:hint="@string/feedurl_hint"
+				android:padding="3dip" android:scrollHorizontally="true" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">			
+			<Button android:id="@+id/checkurl" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:padding="3dip"
+				android:text="@string/checkurl" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/name" />
+			<EditText android:id="@+id/feedname" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:hint="@string/feedname_hint"
+				android:padding="3dip" android:scrollHorizontally="true" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">			
+			<Button android:id="@+id/button_advanced_settings" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" android:padding="3dip"
+				android:text="@string/show_advanced_settings" />
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/afeedsettings_ft2"
+		android:orientation="vertical" 
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<!-- android:layout_below="@id/afeedsettings_ft1" -->
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/type" />
+			<Spinner android:id="@+id/afeedsettings.feedtype"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">			
+			<TextView android:id="@+id/editfeedcats" android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/categories" />
+			<org.openintents.news.channels.ActionSpinner android:id="@+id/feedcats" android:layout_width="fill_parent"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/checkforupdates" />
+			<Spinner android:id="@+id/afeedsettings.updatecycle"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/mark_for_notification" />
+			<CheckBox android:id="@+id/notificationbox"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:padding="3dip" />
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:minHeight="?android:attr/listPreferredItemHeight">
+			<TextView android:layout_width="100px"
+				android:layout_height="wrap_content" android:layout_weight="0"
+				android:paddingBottom="4dip" android:text="@string/mark_for_update" />
+			<CheckBox android:id="@+id/updatebox"
+				android:layout_width="fill_parent" android:layout_height="wrap_content"
+				android:padding="3dip" />
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/afeedsettings_ft3"
+		android:orientation="horizontal" 
+		android:layout_gravity="right" android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:minHeight="?android:attr/listPreferredItemHeight">
+		<!-- android:layout_below="@id/afeedsettings_ft2" -->
+		<Button android:id="@+id/saveFeedSettings" android:layout_weight="1"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:text="@string/save">
+			<requestFocus />
+		</Button>		
+	</LinearLayout>
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FeedList>
+    <FeedCategory name="Computing">
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="OpenIntents News"
+	    	href="http://www.openintents.org/en/rss.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/atom+xml"
+	    	title="Android Developers Blog"
+	    	href="http://feeds.feedburner.com/blogspot/hsDu" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Hello Android"
+	    	href="http://www.helloandroid.com/rss.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Phandroid"
+	    	href="http://phandroid.com/feed/" />
+	</FeedCategory>
+	<FeedCategory name="Cooking">
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Vegetarian recipes"
+	    	href="http://feeds.feedburner.com/SimplyRecipesVegetarian" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Recipezaar: less than 15 mins recipes"
+	    	href="http://www.recipezaar.com/rss?categ=less-than-15-mins" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Recipezaar: new recipes"
+	    	href="http://www.recipezaar.com/rss?" />
+	</FeedCategory>
+	<FeedCategory name="Entertainment">		
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Celebs Now.net"
+	    	href="http://feeds.feedburner.com/WhoIsDoingWhatToday" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Dilbert Daily Strip"
+	    	href="http://feedproxy.google.com/DilbertDailyStrip" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="That Girl Site"
+	    	href="http://www.thatgirlsite.com/feed/" />
+	</FeedCategory>
+	<FeedCategory name="Literature">
+    	<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Aesop Fable of the Day"
+	    	href="http://www.litscape.com/xml/fotd.rss" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Slashdot: Book Reviews"
+	    	href="http://rss.slashdot.org/Slashdot/slashdotBookReviews" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="ReadersRead.com Book Blog"
+	    	href="http://www.readersread.com/rss.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="GotPoetry.com News"
+	    	href="http://www.gotpoetry.com/rss/news2.php" />
+	</FeedCategory>
+	<FeedCategory name="Music">
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="SplashPlay"
+	    	href="http://splashplay.co.uk/beta64/index2.php?option=com_fireboard&amp;func=fb_rss&amp;no_html=1&amp;Itemid=0" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Guitar lessons"
+	    	href="http://www.ultimate-guitar.com/modules/rss/lessons.xml.php" />
+		<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="iTunes Top 50 Songs"
+	    	href="http://ax.phobos.apple.com.edgesuite.net/WebObjects/MZStore.woa/wpa/MRSS/topsongs/limit=50/rss.xml" />		
+	</FeedCategory>
+	<FeedCategory name="News">
+    	<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="ABC News Online"
+	    	href="http://www.newslookup.com/rss/oceania/australia/tv/abc.rss" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="BBC World News"
+	    	href="http://news.bbc.co.uk/rss/newsonline_world_edition/front_page/rss.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Daily Telegraph | World News"
+	    	href="http://feeds.news.com.au/public/rss/2.0/dtele_world_news_204.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Reuters: International News"
+	    	href="http://www.microsite.reuters.com/rss/worldNews" />
+	</FeedCategory>
+	<FeedCategory name="Science">
+    	<link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Astronomy"
+	    	href="http://www.livejournal.com/community/astronomy/data/rss" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Biology Blog From Networlddirectory"
+	    	href="http://www.networlddirectory.com/blogs/rss/biology-blog.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="NASA's Earth Observatory"
+	    	href="http://earthobservatory.nasa.gov/eo.rss" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="Physics Today magazine"
+	    	href="http://www.physicstoday.org/feed.xml" />
+	    <link
+	    	rel="alternate"
+	    	type="application/rss+xml"
+	    	title="ScienceDaily: Latest Science News"
+	    	href="http://www.sciencedaily.com/newsfeed.xml" />
+	</FeedCategory>
+</FeedList>

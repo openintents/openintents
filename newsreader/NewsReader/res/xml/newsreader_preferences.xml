@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+*	This file is part of OI Newsreader.
+*	Copyright (C) 2007-2009 OpenIntents.org
+*	OI Newsreader is free software: you can redistribute it and/or modify
+*	it under the terms of the GNU General Public License as published by
+*	the Free Software Foundation, either version 3 of the License, or
+*	(at your option) any later version.
+*
+*	OI Newsreader is distributed in the hope that it will be useful,
+*	but WITHOUT ANY WARRANTY; without even the implied warranty of
+*	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+*	GNU General Public License for more details.
+*
+*	You should have received a copy of the GNU General Public License
+*	along with OI Newsreader.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/servicestate">
+		<CheckBoxPreference android:key="running_now"
+			android:defaultValue="true" android:title="@string/running_now"
+			android:summary="@string/summary_running_now" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/servicesettings">		
+		<CheckBoxPreference android:key="use_while_roaming"
+			android:defaultValue="false" android:title="@string/use_while_roaming"
+			android:summary="@string/summary_use_while_roaming" />
+		<CheckBoxPreference android:key="start_on_system_boot"
+			android:defaultValue="true" android:title="@string/start_on_system_boot"
+			android:summary="@string/summary_start_on_system_boot" />		
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/channelsettings">		
+		<ListPreference android:key="channel_sort_order"
+			android:defaultValue="new" android:title="@string/sort_order"
+			android:summary="@string/summary_sort_order"
+			 android:entries="@array/entries_channel_sort_order"
+             android:entryValues="@array/entries_channel_sort_order_values"
+             android:dialogTitle="@string/dialog_title_channel_sort_order" />
+             <org.openintents.lib.ConfirmDialogPreference android:key="compress_categories"              
+                android:defaultValue="true"
+            	android:title="@string/compress_categories"
+                android:summary="@string/summary_compress_categories"
+                android:dialogTitle="@string/dialog_title_compress_categories"/>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/messagesettings">		
+		<ListPreference android:key="message_click_action"
+			android:defaultValue="offline" android:title="@string/message_click_action"
+			android:summary="@string/summary_message_click_action"
+			 android:entries="@array/entries_message_click_action"
+             android:entryValues="@array/entries_message_click_action_values"
+             android:dialogTitle="@string/dialog_title_message_click_action" />
+		<CheckBoxPreference android:key="message_read_after_seconds"
+			android:defaultValue="true" android:title="@string/read_after_seconds"
+			android:summary="@string/summary_read_after_seconds" />			
+		
+		<ListPreference android:key="default_encoding"
+			android:defaultValue="UTF-8" android:title="@string/default_encoding"
+			android:summary="@string/summary_default_encoding"
+			 android:entries="@array/entries_default_encoding"
+             android:entryValues="@array/entries_default_encoding_values"
+             android:dialogTitle="@string/dialog_title_default_encoding" />
+             
+		<org.openintents.news.services.PurgeDataPreference
+		        android:key="org.openintents.news.services.purgedata"
+		        android:defaultValue=""
+		        android:title="@string/preference_purgedata"
+		        android:summary="@string/preference_purgedata_summary"/>
+         
+    
+	</PreferenceCategory>
+</PreferenceScreen>

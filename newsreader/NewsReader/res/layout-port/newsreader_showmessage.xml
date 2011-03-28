@@ -1,0 +1,25 @@
+<!--
+layout-port
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:padding="2dip" android:gravity="center_horizontal"
+	android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<WebView android:id="@+id/newsreader.showmessage.wv"
+		android:layout_width="fill_parent" android:layout_height="250dip" />
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:gravity="center">
+		<Button android:id="@+id/newsreader.showmessage.prev"
+		android:minHeight="?android:attr/listPreferredItemHeight"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/previous" android:layout_weight="1"/>
+		<Button android:id="@+id/newsreader.showmessage.goto"
+		android:minHeight="?android:attr/listPreferredItemHeight"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/gotolink" android:layout_weight="1"/>
+		<Button android:id="@+id/newsreader.showmessage.next"
+		android:minHeight="?android:attr/listPreferredItemHeight"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/next" android:layout_weight="1"/>
+	</LinearLayout>
+</LinearLayout>
