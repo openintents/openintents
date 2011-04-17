@@ -23,7 +23,6 @@ import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
-import org.openintents.shopping.library.provider.Shopping;
 import org.openintents.shopping.library.provider.Shopping.Status;
 import org.openintents.shopping.library.util.ShoppingUtils;
 
@@ -166,7 +165,7 @@ public class ImportCsv {
 				{
 					if (importStores){	// real store import
 						long storeId = ShoppingUtils.getStore(mContext, stores[i_store], listId);
-						long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, 0, "");
+						long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, "", "");
 					} else if (!TextUtils.isEmpty(stores[i_store])){
 						// store names added as tags. 
 						ShoppingUtils.addTagToItem(mContext, itemId, stores[i_store]);
@@ -185,12 +184,15 @@ public class ImportCsv {
 					String [] aisle_price = key_vals[1].split("/");
 					if (aisle_price.length == 0)
 						continue;
+					/*
 					int aisle;
 					try {
 						aisle = Integer.parseInt(aisle_price[0]);
 					} catch (java.lang.NumberFormatException nfe) {
 						aisle = -1;
 					}
+					*/
+					String aisle = aisle_price[0];
 					String store_price = "";
 					if (aisle_price.length > 1) {
 						try {
