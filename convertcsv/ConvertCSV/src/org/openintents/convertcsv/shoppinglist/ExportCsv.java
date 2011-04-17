@@ -183,7 +183,11 @@ public class ExportCsv {
 						String tags = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_TAGS));
 						String priority = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.PRIORITY));
 						String quantity = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.QUANTITY));
-						String price = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.ITEM_PRICE));
+						long price = ci.getLong(ci.getColumnIndex(Shopping.ContainsFull.ITEM_PRICE));
+						String pricestring = "";
+						if (price != 0) {
+							pricestring += (double) price / 100.d;
+						}
 						String unit = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.ITEM_UNITS));
 						long itemId =  ci.getInt(ci.getColumnIndex(Shopping.ContainsFull.ITEM_ID));
 						
@@ -214,7 +218,7 @@ public class ExportCsv {
 						csvwriter.write(otherTags); // 3 CustomText
 						csvwriter.write(quantity); // 4 Quantity
 						csvwriter.write(unit); // 5 Units
-						csvwriter.write(price); // 6 Price
+						csvwriter.write(pricestring); // 6 Price
 						csvwriter.write(""); // 7 Aisle
 						csvwriter.write(""); // 8 Date
 						csvwriter.write(firstTag); // 9 Category
@@ -228,8 +232,8 @@ public class ExportCsv {
 						csvwriter.write(""); // 17 Private
 						csvwriter.write(note); // 18 Note
 						csvwriter.write(""); // 19 Alarm
-						csvwriter.write(""); // 20 AlarmMidi
-						csvwriter.write(""); // 21 Icon
+						csvwriter.write("0"); // 20 AlarmMidi
+						csvwriter.write("0"); // 21 Icon
 						csvwriter.write(""); // 22 AutoOrder
 						
 						csvwriter.writeNewline();
@@ -318,7 +322,8 @@ public class ExportCsv {
 			while (c1.moveToNext()) {
 				long storeId = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.STORE_ID));
 				String aisle = c1.getString(c1.getColumnIndexOrThrow(Shopping.ItemStores.AISLE));
-				String price = c1.getString(c1.getColumnIndexOrThrow(Shopping.ItemStores.PRICE));
+				long price = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.PRICE));
+				String pricestring = "" + (double) price / 100.d;
 				
 				Uri uri2 = ContentUris.withAppendedId(Shopping.Stores.CONTENT_URI, storeId);
 				Cursor c2 = mContext.getContentResolver().query(uri2, 
@@ -327,13 +332,15 @@ public class ExportCsv {
 				if (c2 != null) {
 					if (c2.moveToFirst()) {
 						String storeName = c2.getString(c2.getColumnIndexOrThrow(Shopping.Stores.NAME));
-						
-						String info = storeName + "=" + aisle + "/" + price;
-						
-						if (perStoreInfo.equals("")) {
-							perStoreInfo = info;
-						} else {
-							perStoreInfo += ";" + info;
+
+						if (price != 0) {
+							String info = storeName + "=" + aisle + "/" + pricestring;
+							
+							if (perStoreInfo.equals("")) {
+								perStoreInfo = info;
+							} else {
+								perStoreInfo += ";" + info;
+							}
 						}
 					}
 					c2.close();
