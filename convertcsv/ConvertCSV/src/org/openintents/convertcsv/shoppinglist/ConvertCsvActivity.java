@@ -67,9 +67,10 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 	public void doImport(Reader reader) throws IOException,
 			WrongFormatException {
 		ImportCsv ic = new ImportCsv(this, getValidatedImportPolicy());
-		if (0 == mSpinner.getSelectedItemId()) {
+		String format = getFormat();
+		if (DEFAULT_FORMAT.equals(format)) {
 			ic.importCsv(reader);
-		} else if (1 == mSpinner.getSelectedItemId()) {
+		} else if (HANDYSHOPPER_FORMAT.equals(format)) {
 	        SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
 	        Boolean importStores = pm.getBoolean("shoppinglist_import_stores", true);
 			ic.importHandyShopperCsv(reader, importStores);
