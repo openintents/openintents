@@ -133,7 +133,7 @@ public class ExportCsv {
 	 * @param dos
 	 * @throws IOException
 	 */
-	public void exportHandyShopperCsv(Writer writer) throws IOException {
+	public void exportHandyShopperCsv(Writer writer, long listId) throws IOException {
 
 		CSVWriter csvwriter = new CSVWriter(writer);
 		csvwriter.setLineEnd("\r\n");
@@ -141,106 +141,87 @@ public class ExportCsv {
 		
 		csvwriter.write(handyShopperColumns);
 		csvwriter.writeNewline();
-
-		Cursor c = mContext.getContentResolver().query(
-				Shopping.Lists.CONTENT_URI, PROJECTION_LISTS, null,
-				null, Shopping.Lists.DEFAULT_SORT_ORDER);
-
-		if (c != null) {
-
-			while (c.moveToNext()) {
-
-				String listname = c.getString(c
-						.getColumnIndexOrThrow(Shopping.Lists.NAME));
-				long id = c
-						.getLong(c.getColumnIndexOrThrow(Shopping.Lists._ID));
+	
 				
-				long listId = ShoppingUtils.getDefaultList(mContext);
-				if (id != listId) {
-					// TODO: Currently only default list supported.
-					break;
+		Cursor ci = mContext.getContentResolver().query(
+				Shopping.ContainsFull.CONTENT_URI,
+				PROJECTION_CONTAINS_FULL_HANDY_SHOPPER,
+				Shopping.ContainsFull.LIST_ID + " = ?",
+				new String[] { "" + listId },
+				Shopping.ContainsFull.DEFAULT_SORT_ORDER);
+
+		if (ci != null) {
+			int itemcount = ci.getCount();
+			ConvertCsvBaseActivity.dispatchSetMaxProgress(itemcount);
+			int progress = 0;
+
+			while (ci.moveToNext()) {
+				ConvertCsvBaseActivity
+						.dispatchConversionProgress(progress++);
+				String itemname = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
+				int status = ci.getInt(ci.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
+				String tags = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_TAGS));
+				String priority = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.PRIORITY));
+				String quantity = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.QUANTITY));
+				long price = ci.getLong(ci.getColumnIndex(Shopping.ContainsFull.ITEM_PRICE));
+				String pricestring = "";
+				if (price != 0) {
+					pricestring += (double) price / 100.d;
+				}
+				String unit = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.ITEM_UNITS));
+				long itemId =  ci.getInt(ci.getColumnIndex(Shopping.ContainsFull.ITEM_ID));
+				
+				String statusText = getHandyShopperStatusText(status);
+				
+				// Split off first tag.
+				if (tags == null) {
+					tags = "";
+				}
+				int t = tags.indexOf(",");
+				String firstTag = "";
+				String otherTags = "";
+				if (t >= 0) {
+					firstTag = tags.substring(0,t); // -> Category
+					otherTags = tags.substring(t+1); // -> CustomText
+				} else {
+					firstTag = tags; // -> Category
+					otherTags = ""; // -> CustomText
 				}
 				
-				// Log.i(ConvertCsvActivity.TAG, "List: " + listname);
-
-				Cursor ci = mContext.getContentResolver().query(
-						Shopping.ContainsFull.CONTENT_URI,
-						PROJECTION_CONTAINS_FULL_HANDY_SHOPPER,
-						Shopping.ContainsFull.LIST_ID + " = ?",
-						new String[] { "" + id },
-						Shopping.ContainsFull.DEFAULT_SORT_ORDER);
-
-				if (ci != null) {
-					int itemcount = ci.getCount();
-					ConvertCsvBaseActivity.dispatchSetMaxProgress(itemcount);
-					int progress = 0;
-
-					while (ci.moveToNext()) {
-						ConvertCsvBaseActivity
-								.dispatchConversionProgress(progress++);
-						String itemname = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
-						int status = ci.getInt(ci.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
-						String tags = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_TAGS));
-						String priority = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.PRIORITY));
-						String quantity = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.QUANTITY));
-						long price = ci.getLong(ci.getColumnIndex(Shopping.ContainsFull.ITEM_PRICE));
-						String pricestring = "";
-						if (price != 0) {
-							pricestring += (double) price / 100.d;
-						}
-						String unit = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.ITEM_UNITS));
-						long itemId =  ci.getInt(ci.getColumnIndex(Shopping.ContainsFull.ITEM_ID));
-						
-						String statusText = getHandyShopperStatusText(status);
-						
-						// Split off first tag.
-						int t = tags.indexOf(",");
-						String firstTag = "";
-						String otherTags = "";
-						if (t >= 0) {
-							firstTag = tags.substring(0,t); // -> Category
-							otherTags = tags.substring(t+1); // -> CustomText
-						} else {
-							firstTag = tags; // -> Category
-							otherTags = ""; // -> CustomText
-						}
-						
-						// Retrieve note:
-						String note = getHandyShopperNote(c, itemId);
-						
-						String stores = getHandyShopperStores(c, itemId);
-						String perStoreInfo = getHandyShopperPerStoreInfo(c, itemId);
-						
-						
-						csvwriter.write(statusText); // 0 Need
-						csvwriter.write(priority); // 1 Priority
-						csvwriter.write(itemname); // 2 Description
-						csvwriter.write(otherTags); // 3 CustomText
-						csvwriter.write(quantity); // 4 Quantity
-						csvwriter.write(unit); // 5 Units
-						csvwriter.write(pricestring); // 6 Price
-						csvwriter.write(""); // 7 Aisle
-						csvwriter.write(""); // 8 Date
-						csvwriter.write(firstTag); // 9 Category
-						csvwriter.write(stores); // 10 Stores
-						csvwriter.write(perStoreInfo); // 11 PerStoreInfo
-						csvwriter.write(""); // 12 EntryOrder
-						csvwriter.write(""); // 13 Coupon
-						csvwriter.write(""); // 14 Tax
-						csvwriter.write(""); // 15 Tax2
-						csvwriter.write(""); // 16 AutoDelete
-						csvwriter.write(""); // 17 Private
-						csvwriter.write(note); // 18 Note
-						csvwriter.write(""); // 19 Alarm
-						csvwriter.write("0"); // 20 AlarmMidi
-						csvwriter.write("0"); // 21 Icon
-						csvwriter.write(""); // 22 AutoOrder
-						
-						csvwriter.writeNewline();
-					}
-					ci.close();
-				}
+				// Retrieve note:
+				String note = getHandyShopperNote(itemId);
+				
+				String stores = getHandyShopperStores(itemId);
+				String perStoreInfo = getHandyShopperPerStoreInfo(itemId);
+				
+				
+				csvwriter.write(statusText); // 0 Need
+				csvwriter.write(priority); // 1 Priority
+				csvwriter.write(itemname); // 2 Description
+				csvwriter.write(otherTags); // 3 CustomText
+				csvwriter.write(quantity); // 4 Quantity
+				csvwriter.write(unit); // 5 Units
+				csvwriter.write(pricestring); // 6 Price
+				csvwriter.write(""); // 7 Aisle
+				csvwriter.write(""); // 8 Date
+				csvwriter.write(firstTag); // 9 Category
+				csvwriter.write(stores); // 10 Stores
+				csvwriter.write(perStoreInfo); // 11 PerStoreInfo
+				csvwriter.write(""); // 12 EntryOrder
+				csvwriter.write(""); // 13 Coupon
+				csvwriter.write(""); // 14 Tax
+				csvwriter.write(""); // 15 Tax2
+				csvwriter.write(""); // 16 AutoDelete
+				csvwriter.write(""); // 17 Private
+				csvwriter.write(note); // 18 Note
+				csvwriter.write(""); // 19 Alarm
+				csvwriter.write("0"); // 20 AlarmMidi
+				csvwriter.write("0"); // 21 Icon
+				csvwriter.write(""); // 22 AutoOrder
+				
+				csvwriter.writeNewline();
 			}
+			ci.close();
 		}
 
 		csvwriter.close();
@@ -258,13 +239,13 @@ public class ExportCsv {
 		return statusText;
 	}
 
-	private String getHandyShopperNote(Cursor c, long itemId) {
+	private String getHandyShopperNote(long itemId) {
 		Uri uri = ContentUris.withAppendedId(Shopping.Items.CONTENT_URI, itemId);
 		
 		String note = "";
 		Cursor c1 = mContext.getContentResolver().query(uri, 
 				new String[] {Shopping.Items.NOTE} , null, null, null);
-		if (c != null) {
+		if (c1 != null) {
 			if (c1.moveToFirst()) {
 				note = c1.getString(0);
 			}
@@ -273,7 +254,7 @@ public class ExportCsv {
 		return note;
 	}
 
-	private String getHandyShopperStores(Cursor c, long itemId) {
+	private String getHandyShopperStores(long itemId) {
 		String stores = "";
 		
 		Cursor c1 = mContext.getContentResolver().query(
@@ -282,7 +263,7 @@ public class ExportCsv {
 				Shopping.ItemStores.STORE_ID} , 
 				Shopping.ItemStores.ITEM_ID + " = ?",
 				new String[] {"" + itemId}, null);
-		if (c != null) {
+		if (c1 != null) {
 			while (c1.moveToNext()) {
 				long storeId = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.STORE_ID));
 				Uri uri2 = ContentUris.withAppendedId(Shopping.Stores.CONTENT_URI, storeId);
@@ -307,7 +288,7 @@ public class ExportCsv {
 	
 	// Deal with per-store aisles and prices from column 11.
 	// example value for column 11:    Big Y=/0.50;BJ's=11/0.42
-	private String getHandyShopperPerStoreInfo(Cursor c, long itemId) {
+	private String getHandyShopperPerStoreInfo(long itemId) {
 		String perStoreInfo = "";
 
 		Cursor c1 = mContext.getContentResolver().query(
@@ -318,7 +299,7 @@ public class ExportCsv {
 				Shopping.ItemStores.PRICE} , 
 				Shopping.ItemStores.ITEM_ID + " = ?",
 				new String[] {"" + itemId}, null);
-		if (c != null) {
+		if (c1 != null) {
 			while (c1.moveToNext()) {
 				long storeId = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.STORE_ID));
 				String aisle = c1.getString(c1.getColumnIndexOrThrow(Shopping.ItemStores.AISLE));

@@ -102,7 +102,7 @@ public class ImportCsv {
 	    
 	}
 
-	public void importHandyShopperCsv(Reader reader, Boolean importStores) throws IOException, WrongFormatException {
+	public void importHandyShopperCsv(Reader reader, long listId, Boolean importStores) throws IOException, WrongFormatException {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
 	    	    
@@ -146,7 +146,7 @@ public class ImportCsv {
 			String priority = nextLine[1]; // Priority
 			
 			// Add item to list
-			long listId = ShoppingUtils.getDefaultList(mContext);
+			//long listId = ShoppingUtils.getDefaultList(mContext);
 			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, price, units, note,
 					mDuplicate, mUpdate);
 			ShoppingUtils.addItemToList(mContext, itemId, listId, status, priority, quantity, false);

@@ -24,12 +24,19 @@ import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
+import org.openintents.shopping.library.provider.Shopping;
+import org.openintents.shopping.library.util.ShoppingUtils;
 
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Xml.Encoding;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 
@@ -57,8 +64,39 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
         if (mConvertInfo != null) {
         	mConvertInfo.setText(R.string.convert_all_shoppinglists);
         }
+        
+        if (mSpinner != null) {
+	        mSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+	            @Override
+	            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+	                updateInfo();
+	            }
+	
+	            @Override
+	            public void onNothingSelected(AdapterView<?> parentView) {
+	                updateInfo();
+	            }
+	        });
+        }
 	}
 
+	public void updateInfo() {
+        if (mConvertInfo == null) return;
+
+		String format = getFormat();
+		if (DEFAULT_FORMAT.equals(format)) {
+        	mConvertInfo.setText(R.string.convert_all_shoppinglists);
+        } else if (HANDYSHOPPER_FORMAT.equals(format)) {
+        	long listId = getCurrentListId();
+        	String listname = getListName(listId);
+        	if (listname != null) {
+        		String text = getString(R.string.convert_list, listname);
+        		mConvertInfo.setText(text);
+        	}
+			
+        }
+	}
+	
 	/**
 	 * @param reader
 	 * @throws IOException
@@ -73,7 +111,8 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 		} else if (HANDYSHOPPER_FORMAT.equals(format)) {
 	        SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
 	        Boolean importStores = pm.getBoolean("shoppinglist_import_stores", true);
-			ic.importHandyShopperCsv(reader, importStores);
+	        long listId = getCurrentListId();
+			ic.importHandyShopperCsv(reader, listId, importStores);
 		}
 	}
 
@@ -97,7 +136,8 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 		if (DEFAULT_FORMAT.equals(format)) {
 			ec.exportCsv(writer);
 		} else if (HANDYSHOPPER_FORMAT.equals(format)) {
-			ec.exportHandyShopperCsv(writer);
+			long listId = getCurrentListId();
+			ec.exportHandyShopperCsv(writer, listId);
 			/*runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
@@ -114,5 +154,40 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
      */
     public String getImportPolicyPrefString() {
     	  return "shoppinglist_import_policy";
+    }
+    
+    public long getCurrentListId() {
+    	long listId = -1;
+    	
+    	// Try the URI with which Convert CSV has been called:
+    	Uri uri = getIntent().getData();
+    	Cursor c = getContentResolver().query(uri, 
+    			new String[] {Shopping.Lists._ID}, null, null, null);
+    	if (c != null) {
+    		if (c.moveToFirst()) {
+    			listId = c.getLong(0);
+    		}
+    		c.close();
+    	}
+    	
+    	// Use default list if URI is not valid.
+    	if (listId < 0) {
+    		listId = ShoppingUtils.getDefaultList(this);
+    	}
+    	return listId;
+    }
+    
+    public String getListName(long listId) {
+    	String listname = null;
+    	Uri uri = getIntent().getData();
+		Cursor c = getContentResolver().query(uri
+				, new String[] {Shopping.Lists.NAME}, null, null, null);
+		if (c != null) {
+			if (c.moveToFirst()) {
+				listname = c.getString(0);
+			}
+			c.close();
+		}
+		return listname;
     }
 }
