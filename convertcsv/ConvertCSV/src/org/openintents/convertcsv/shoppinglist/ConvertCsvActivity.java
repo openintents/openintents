@@ -155,6 +155,13 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     public String getImportPolicyPrefString() {
     	  return "shoppinglist_import_policy";
     }
+
+    /**
+     * @return The default import policy
+     */
+    public String getDefaultImportPolicy() {
+    	return "" + IMPORT_POLICY_KEEP;
+    }
     
     public long getCurrentListId() {
     	long listId = -1;

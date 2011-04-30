@@ -346,7 +346,7 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
     	
     	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
     	
-    	String importPolicy = prefs.getString(prefKey, "0");
+    	String importPolicy = prefs.getString(prefKey, getDefaultImportPolicy());
     	
     	try
     	{
@@ -372,6 +372,13 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
      */
     public String getImportPolicyPrefString() {
     	return null;
+    }
+    
+    /**
+     * @return The default import policy
+     */
+    public String getDefaultImportPolicy() {
+    	return "" + IMPORT_POLICY_DUPLICATE;
     }
 
     public void startImport() {
