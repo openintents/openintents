@@ -19,7 +19,7 @@ function execute
 
 # Read all apps that should be translated.
 # sed: Remove comment lines starting with "#"
-apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications_description.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
 
 for (( i = 0 ; i < ${#apps[@]} ; i+=2 ))
 do

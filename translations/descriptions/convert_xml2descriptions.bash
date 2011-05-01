@@ -41,7 +41,7 @@ function execute2
 
 # Read all apps that should be translated.
 # sed: Remove comment lines starting with "#"
-apps=( `cat "../applications.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
+apps=( `cat "../applications_description.txt" | sed -e "s/#.*$//" -e "/^$/d"`)
 
 # execute STEP 1 #######################
 echo "############## STEP 1 ################"
