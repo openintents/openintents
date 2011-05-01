@@ -29,6 +29,12 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.0.4-beta
+date: ?
+
+- high-resolution icon for Android 2.3 and later.
+
+---------------------------------------------------------
 release: 1.0.3
 date: 2011-05-01
 
