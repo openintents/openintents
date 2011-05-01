@@ -23,7 +23,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Henk van der Velden https://launchpad.net/~henkvandervelden86
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  Sjoerd Hiemstra https://launchpad.net/~sjohie</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OI kluis houdt al je privé data geëncrypt.</string>  
@@ -74,38 +75,38 @@
 	<string name="import_error_first_line">First line is missing fields.</string>
 	<string name="dialog_import_title">Import</string>
 	<string name="dialog_import_msg">Do you want to replace the database (import from %s)?</string>
-	<string name="yes">Yes</string>
-	<string name="no">No</string>
+	<string name="yes">Ja</string>
+	<string name="no">Nee</string>
 	<string name="import_progress">Please wait while importing...</string>
-	<string name="import_no_categories">No categories found.</string>
-	<string name="import_no_entries">No entries found in CSV.</string>
-	<string name="import_too_many_categories">Too many categories.</string>
-	<string name="import_not_enough_fields">Not enough fields</string>
-	<string name="import_blank_category">Blank category</string>
-	<string name="import_blank_description">Blank description</string>
-	<string name="dialog_delete_database_title">Delete Database</string>
-	<string name="dialog_delete_database_msg">Are you really sure you want to delete the database?  This cannot be undone.</string>
-	<string name="added">Added</string>
-	<string name="entries">entries</string>
-	<string name="import_complete">Import complete</string>
+	<string name="import_no_categories">Geen categorieën gevonden.</string>
+	<string name="import_no_entries">CSV bestand bevat geen invoer.</string>
+	<string name="import_too_many_categories">Teveel categoriën</string>
+	<string name="import_not_enough_fields">Niet genoeg velden.</string>
+	<string name="import_blank_category">Lege categorie</string>
+	<string name="import_blank_description">Lege omschrijving</string>
+	<string name="dialog_delete_database_title">Verwijderen database</string>
+	<string name="dialog_delete_database_msg">Weet je absoluut zeker dat je deze database wilt verwijderen? Dit kan niet ongedaan gemaakt worden.</string>
+	<string name="added">Toegevoegd</string>
+	<string name="entries">items</string>
+	<string name="import_complete">Import compleet</string>
 	<string name="import_delete_csv">Since it is not secure to keep passwords in clear text CSV files, would you like to delete</string>
-	<string name="edit_entry">Edit Entry</string>
-	<string name="view_entry">View Entry</string>
+	<string name="edit_entry">Invoer bewerken</string>
+	<string name="view_entry">Bekijk invoer</string>
 	<string name="help">Help</string>
-	<string name="close">Close</string>
-	<string name="go">Go</string>
-	<string name="dialog_delete_password_title">Delete Password</string>
-	<string name="dialog_delete_password_msg">Are you sure you want to delete this password?</string>
+	<string name="close">Afsluiten</string>
+	<string name="go">Start</string>
+	<string name="dialog_delete_password_title">Verwijder wachtwoord.</string>
+	<string name="dialog_delete_password_msg">Weet jezeker dat je dit wachtwoord wilt verwijderen?</string>
 	<string name="change_password">Change Master Password</string>
 	<string name="chg_pass_explaination">Use this to change the password you use to unlock OI Safe.   Your data will be re-encrypted with the new password.  The more complex your password is, the safer your data will be.</string>
-	<string name="old_password">Old password</string>
-	<string name="new_password">New password</string>
-	<string name="verify_password">Verify password</string>
+	<string name="old_password">Oud wachtwoord</string>
+	<string name="new_password">Nieuw wachtwoord</string>
+	<string name="verify_password">Wachtwoord verifiëren</string>
 	<string name="new_verify_mismatch">New and Verify passwords do not match.</string>
     <string name="invalid_old_password">Old password is invalid.  Please try again.</string>
-    <string name="error_changing_password">Error changing password</string>
+    <string name="error_changing_password">Fout bij veranderen van wachtwoord</string>
     <string name="password_changed">Master Password changed</string>
-    <string name="confirm">Confirm</string>
+    <string name="confirm">Bevestigen</string>
     <string name="confirm_pass_fail">Password entries do not match.</string>
     <string name="backup">Backup</string>
     <string name="backup_progress">Backing up to </string>

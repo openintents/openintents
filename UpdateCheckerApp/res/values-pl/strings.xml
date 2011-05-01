@@ -6,6 +6,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Damian Skrodzki https://launchpad.net/~damienix
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn
   usul https://launchpad.net/~usultis</string>
 	
@@ -48,7 +49,7 @@
     <string name="current_version">Aktualna wersja: %s</string>
     <string name="current_version_code">Kod aktualnej wersji: %s</string>
     <string name="newer_version">Nowsza wersja: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_comment">Nowsza wersja: %1$s - %2$s</string>
     <string name="newer_version_available">Nowsza wersja jest dostępna.</string>
     <string name="no_update_info_found">Nie znaleziono informacji o aktualizacjach.</string>
     <string name="title_list_new_versions">OI Update - Lista nowych wersji</string>

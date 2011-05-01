@@ -8,6 +8,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Cassius Umbra https://launchpad.net/~cassius-umbra
   Diego Pierotto https://launchpad.net/~gringo
+  Martino Barbon https://launchpad.net/~martins999
   Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Short explanation of the application -->
@@ -24,7 +25,7 @@
     <string name="color">Colore</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">OI Selettore Colore</string>
     
     <string name="preferences">Preferenze</string>
     
@@ -43,6 +44,6 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    <string name="color_picker_modularization_explanation">Per rendere il Selettore Colore più utile per gli altri sviluppatori, l\'abbiamo divisa in un\'applicazione a sé stante.</string>
     
 </resources>

@@ -31,8 +31,8 @@ Launchpad Contributions:
     <string name="recent_colors_clear_history">Limpiar</string>
     <string name="recent_colors_empty">No hay colores elegidos recientemente</string>
     
-    <string name="confirm_color_title">Use color?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_title">¿Usar color?</string>
+    <string name="confirm_color_message">¿Usar este nuevo color? Puede evitar este mensaje pulsando en el círculo central.</string>
     
     
 	<!-- About -->

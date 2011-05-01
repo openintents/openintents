@@ -7,7 +7,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Henk van der Velden https://launchpad.net/~henkvandervelden86
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  Sjoerd Hiemstra https://launchpad.net/~sjohie</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Kleurenkiezer is een extensie voor OI Flashlight en andere ondersteunde applicaties.</string>
@@ -27,8 +28,8 @@
     <string name="recent_colors_clear_history">Wissen</string>
     <string name="recent_colors_empty">Er zijn geen recentelijk gekozen kleuren.</string>
     
-    <string name="confirm_color_title">Use color?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_title">Gebruik kleur?</string>
+    <string name="confirm_color_message">Gebruik nieuwe kleur? Deze melding kan voorkomen worden door in de middelste cirkel te klikken.</string>
     
     
 	<!-- About -->

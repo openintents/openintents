@@ -15,16 +15,16 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Este disponibilă o nouă versiune de %s.\nDoriți actualizarea?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_3">O nouă versiune a %1$s este disponibilă la %2$s.\n%3$s\n</string>
+    <string name="update_available_2">O nouă versiune a %1$s este disponibilă.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">O nouă versiune a %1$s este disponibilă la %2$s.</string>
     <string name="update_available_no_comment">Este disponibilă o nouă versiune de %s.</string>
 	<string name="market_not_available">Android Market nu este disponibil.</string>
     <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="about_text_extended">Versiunea %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">spațiu liber: %s</string>
     <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
@@ -48,7 +48,7 @@
     <string name="current_version">Versiune curentă: %s</string>
     <string name="current_version_code">Codul versiunii curente: %s</string>
     <string name="newer_version">Versiune nouă: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_comment">Versiunea nouă: %1$s - %2$s</string>
     <string name="newer_version_available">Există versiune nouă.</string>
     <string name="no_update_info_found">Nu am găsit informații despre actualizare.</string>
     <string name="title_list_new_versions">OI Update - Listă de versiuni noi</string>
@@ -67,7 +67,7 @@
     
     <string name="warn">Actualizarea acestei aplicații direcționează către un site diferit de Android Market. Aplicațiile instalate din surse necunoscute pot prezenta un risc de securitate.</string>
     <string name="continue_anyway">Continuă oricum</string>
-    <string name="abort">Anulează</string>
+    <string name="abort">Anulați</string>
     
     <string name="preference_auto_update">Actualizare automată</string>
     <string name="preference_auto_update_summary">Dacă este selectat, căutarea actualizărilor se face regulat</string>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Sjoerd Hiemstra https://launchpad.net/~sjohie</translators>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI File Manager biedt de mogelijkheid om de inhoud van de SD kaart te doorzoeken, directory\'s aan te maken, en bestanden te hernoemen, kopiëren, verplaatsen en te verwijderen.</string>
+		<string>Wordt als extensie gebuikt door andere programma\'s, om de dialoogboxen "open" en "save" te tonen,</string>
+		<emptyline/>
+		<string>Deze applicatie is advertentievrij, en heeft geen internet toegang nodig.</string>
+		<emptyline/>
+		<string>Het complete overzicht van wijzigingen en de FAQ is te lezen op:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Jij kan helpen om de vertaling in je eigen taal te verbeteren via Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>De broncode van deze gratis en open source applicatie is beschikbaar op:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Eigenschappen:</string>
+		<listitem>Toon een lijst van bestanden met thumbnails voor foto\'s.</listitem>
+		<listitem>Verplaats, kopieer, hernoem en verwijder bestanden.</listitem>
+		<listitem>Maak en verwijder directories</listitem>
+		<listitem>Verstuur bestanden via email</listitem>
+		<listitem>Wordt als extensie gebuikt door andere programma\'s zoals GMail, om bestanden toe te kunnen voegen.</listitem>
+		<listitem>Ondersteunt vele bestandsformaten en mime types.</listitem>
+		<listitem>Ondersteunt PICK_FILE en PICK_DIRECTORY intents, waardoor andere programma\'s OI File Manager ook kunnen gebruiken.</listitem>
+		<emptyline/>
+		<string>Sleutelwoorden:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>Copy text 	 file manager, filemanager, file explorer</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internationale versies</string>
+		<international/>
+		<emptyline/>
+		<string>Extensies:</string>
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+</main>

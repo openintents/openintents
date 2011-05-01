@@ -12,7 +12,7 @@ Launchpad Contributions:
   zeugma https://launchpad.net/~sunder67</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_comments">OpenIntents Fener karanlıkta yolunuzu bulmanıza yardımcı olur.Uygulama çalışırken ekran arka ışığı açık tutulur.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -20,7 +20,7 @@ Launchpad Contributions:
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI El feneri</string>
     
-    <string name="flashlight_info">The backlight stays turned on.</string>
+    <string name="flashlight_info">Arka ışığı açık kalır.</string>
     
     <string name="color">Renk</string>
     
@@ -35,8 +35,8 @@ Launchpad Contributions:
 	
 	<!-- Title for preferences or settings -->
 	<string name="settings_titlebar">Tercihler</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_title_keep_color">Renk tut</string>
+	<string name="settings_summary_keep_color">El feneri uygulaması sonraki başlangıç için rengi kaydet</string>
 	
 	<!-- ***************************
 	     Distribution

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="oi_distribution_app_name">OI Distribution Library</string>
+    <string name="oi_distribution_app_name">OI Dağıtım Kütüphanesi</string>
     
 	<!-- ***************************
 	     About information
@@ -17,7 +17,7 @@
 	<!-- EULA -->	
 	<!-- EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 		Translation should be short, since this is a title. -->
-	<string name="oi_distribution_eula_title">%s EULA</string>
+	<string name="oi_distribution_eula_title">%s EULA (Kullanıcı lisans sözleşmesi)</string>
 	
 	<!-- EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 		Translation can be as long as required. -->
@@ -44,14 +44,14 @@
 	
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
-    <string name="oi_distribution_menu_update">Check updates</string>
+    <string name="oi_distribution_menu_update">Güncelleme kontrolü</string>
 	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
 	<string name="oi_distribution_update_check_now">Şimdi kontrol et</string>
-	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
+	<string name="oi_distribution_update_get_updater">OI Güncelleyici al</string>
 	<string name="oi_distribution_update_error">Download application not available.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_update_app">OI Update</string>
+    <string name="oi_distribution_update_app">OI Güncelleme</string>
     
     <!-- About -->
     <!-- Menu command to open the "about" or "info" dialog. -->
@@ -61,7 +61,7 @@
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp_get">Get OI About</string>
+    <string name="oi_distribution_aboutapp_get">OI Hakkında al</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
     <string name="oi_distribution_aboutapp">OI Hakkında</string>
@@ -92,12 +92,12 @@
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
 	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
-    <string name="oi_distribution_info_launch">Launch %s</string>
+    <string name="oi_distribution_info_launch">%s başlat</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
 	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
 	<!-- Title of a dialog. -->
-	<string name="oi_distribution_info_instructions">Instructions</string>
+	<string name="oi_distribution_info_instructions">Talimatlar</string>
 	<!-- Error message -->
 	<string name="oi_distribution_launch_error">Application could not be launched</string>
 	

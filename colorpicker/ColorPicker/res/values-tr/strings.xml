@@ -12,7 +12,7 @@ Launchpad Contributions:
   zeugma https://launchpad.net/~sunder67</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Color Picker is an extension for OI Flashlight and other compatible applications.</string>
+	<string name="about_comments">OpenIntents Renk Seçici ,OI El feneri ve diğer uyumlu uygulamalar için bir uzantıdır.</string>
 	
 	<!-- ***************************
 	     Application-specific strings
@@ -24,12 +24,12 @@ Launchpad Contributions:
     <string name="color_picker">Renk Seçici</string>
     
     <string name="recent_colors_condensed">En son</string>
-    <string name="recent_colors">Recent colors</string>
-    <string name="recent_colors_expanded">Recently chosen colors</string>
+    <string name="recent_colors">Son renkler</string>
+    <string name="recent_colors_expanded">Son seçilen renkler</string>
     <string name="recent_colors_clear_history">Temizle</string>
-    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    <string name="recent_colors_empty">Son zamanlarda seçilmiş renkler yok.</string>
     
-    <string name="confirm_color_title">Use color?</string>
+    <string name="confirm_color_title">renk kullan?</string>
     <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
     
     
@@ -40,7 +40,7 @@ Launchpad Contributions:
 
 
 	<!-- Update -->
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">İndirilecek uygulama mevcut değil.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -63,5 +63,5 @@ Launchpad Contributions:
     <string name="info_launch">%s başlat</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
-	<string name="info_get">Get %s</string>
+	<string name="info_get">%s al</string>
 </resources>

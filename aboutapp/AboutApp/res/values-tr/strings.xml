@@ -40,13 +40,13 @@ Launchpad Contributions:
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Dosya Yöneticisi</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Alışveriş Listesi</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Not defteri</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Kasa</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
 	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
@@ -58,7 +58,7 @@ Launchpad Contributions:
 	   This is an extension that shows an about dialog or info dialog.  -->
     <string name="app_name">OI Hakkında</string>
 	
-    <string name="menu_about">About OI About itself</string>
+    <string name="menu_about">OI Hakkında  kendi hakkında</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">%s Hakkında</string>
@@ -67,11 +67,11 @@ Launchpad Contributions:
 	<string name="l_documenters">Belgelendiren</string>
 	<string name="l_translators">Çevirenler</string>
 	<string name="l_artists">Grafikler</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Uluslararası çeviriler</string>
 	<string name="l_credits">Hazırlayanlar</string>
 	<string name="l_license">Lisans</string>
 	<string name="l_info">Genel Bilgi</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">Son değişiklikler</string>
 	
 	<string name="no_information_available">Hiç bilgi yok.</string>
 	
@@ -80,31 +80,31 @@ Launchpad Contributions:
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Spanish</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Arapça</item>
+		<item>Çekçe</item>
+		<item>Danimarkaca</item>
+		<item>Almanca</item>
+		<item>İngilizce</item>
+		<item>İspanyolca</item>
+		<item>Fince</item>
+		<item>Faroe Dili</item>
+		<item>Fransızca</item>
+		<item>İtalyanca</item>
+		<item>Japonca</item>
+		<item>Korece</item>
+		<item>Lao Dili</item>
+		<item>Flemenkçe</item>
+		<item>Eski Katalanca (1500 yılından sonra)</item>
+		<item>Lehçe</item>
+		<item>Portekizce</item>
+		<item>Brezilya Portekizcesi</item>
+		<item>Romence</item>
+		<item>Rusça</item>
+		<item>Sardunyaca</item>
+		<item>Slovakça</item>
+		<item>İsveççe</item>
+		<item>Türkçe</item>
+		<item>Çince (Basitleştirilmiş)</item>
+		<item>Çince (Geleneksel)</item>
 	</string-array>
 </resources>

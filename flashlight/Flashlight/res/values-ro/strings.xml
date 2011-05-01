@@ -25,16 +25,16 @@
     <!-- Application name should be consistent across translations. -->
     <string name="color_picker">OI Color Picker</string>
     
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Preferințe</string>
     
 	<!-- ***************************
 	     Preferences
 	     *************************** -->
 	
 	<!-- Title for preferences or settings -->
-	<string name="settings_titlebar">Preferences</string>
-	<string name="settings_title_keep_color">Keep color</string>
-	<string name="settings_summary_keep_color">Save color for next time Flashlight app is started</string>
+	<string name="settings_titlebar">Preferințe</string>
+	<string name="settings_title_keep_color">Păstrează culoarea</string>
+	<string name="settings_summary_keep_color">Salvează culoarea pentru următoarea dată când aplicația va fi pornită.</string>
 	
 	<!-- ***************************
 	     Distribution

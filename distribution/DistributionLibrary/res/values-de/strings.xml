@@ -8,6 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Peli https://launchpad.net/~peli0101
   hani https://launchpad.net/~markushahnenkamm</string>
 	
 	<!-- ***************************
@@ -45,10 +46,10 @@
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Auf Updates prüfen</string>
-	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
+	<string name="oi_distribution_update_box_text">Suchen Sie manuell nach Updates oder oder installieren Sie für eine automatische Benachrichtigung OI Update.</string>
 	<string name="oi_distribution_update_check_now">Jetzt überprüfen</string>
-	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
-	<string name="oi_distribution_update_error">Download application not available.</string>
+	<string name="oi_distribution_update_get_updater">OI Updater Herunterladen</string>
+	<string name="oi_distribution_update_error">Keine Anwendung zum Herunterladen vorhanden.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
     <string name="oi_distribution_update_app">OI Update</string>
@@ -69,7 +70,7 @@
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI Dateimanager</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_not_available">Kein kompatibler Dateimanager gefunden.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->

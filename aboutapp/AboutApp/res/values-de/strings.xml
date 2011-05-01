@@ -37,16 +37,16 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Dateimanager</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Einkaufsliste</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Notizblock</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI Safe</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Starten Sie %s und wählen Sie Menü &gt; Info.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -64,11 +64,11 @@
 	<string name="l_documenters">Dokumentiert von</string>
 	<string name="l_translators">Übersetzt von</string>
 	<string name="l_artists">Grafiken von</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Internationale Übersetzungen von</string>
 	<string name="l_credits">Mitwirkende</string>
 	<string name="l_license">Lizenz</string>
 	<string name="l_info">Allgemeine Informationen</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">Letzte Änderungen</string>
 	
 	<string name="no_information_available">Keine Informationen verfügbar.</string>
 	
@@ -77,31 +77,31 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Spanish</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Arabisch</item>
+		<item>Tschechisch</item>
+		<item>Dänisch</item>
+		<item>Deutsch</item>
+		<item>Englisch</item>
+		<item>Spanisch</item>
+		<item>Finnisch</item>
+		<item>Färöisch</item>
+		<item>Französisch</item>
+		<item>Italienisch</item>
+		<item>Japanisch</item>
+		<item>Koreanisch</item>
+		<item>Laotisch</item>
+		<item>Niederländisch</item>
+		<item>Okzitanisch (nach 1500)</item>
+		<item>Polnisch</item>
+		<item>Portugiesisch</item>
+		<item>Brasilianisches Portugiesisch</item>
+		<item>Rumänisch</item>
+		<item>Russisch</item>
+		<item>Sardinisch</item>
+		<item>Slowakisch</item>
+		<item>Schwedisch</item>
+		<item>Türkisch</item>
+		<item>Chinesisch (Kurzzeichen)</item>
+		<item>Chinesisch (Langzeichen)</item>
 	</string-array>
 </resources>

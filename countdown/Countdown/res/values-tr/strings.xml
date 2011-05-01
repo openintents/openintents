@@ -12,7 +12,7 @@ Launchpad Contributions:
   zeugma https://launchpad.net/~sunder67</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI Geri sayım zamanın belirli bir süre sonrası sizi uyarır</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -25,7 +25,7 @@ Launchpad Contributions:
     <string name="modify">Değiştir</string>
     <string name="cont">Devam et</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
+	<string name="no_durations">Yeni geri sayım eklemek için menüyü kullanın.</string>
 	<string name="countdown_list">Geri sayım listesi</string>
 	
     <string name="menu_delete">Sil</string>
@@ -37,15 +37,15 @@ Launchpad Contributions:
     <string name="menu_set_date">Tarihi ayarla</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">Süreyi ayarla</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">Eylemi ayarla</string>
     
     <string name="hint_title">örneğin pizza</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">Geri sayımı ayarla</string>
     
     <!-- Title of the activity for creating a new countdown. -->
     <string name="title_create">Geri sayım oluştur</string>
@@ -68,10 +68,10 @@ Launchpad Contributions:
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">Durum çubuğu bildirimi</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">Durum çubuğu üzerinden başlat</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
 	<string name="ring">Zil sesi</string>
@@ -89,7 +89,7 @@ Launchpad Contributions:
 	<string name="select_action">Eylem seçin: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">Geri sayım seçme: %s</string>
 	
 	<!-- Button to test an action. -->
 	<string name="test">Test</string>
@@ -98,10 +98,10 @@ Launchpad Contributions:
 	<string name="settings">Ayarlar</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
-	<string name="dismiss">Dismiss</string>
+	<string name="dismiss">Reddet</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">gün</string>
+	<string name="days">günler</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
 	<string name="day">gün</string>
@@ -113,17 +113,17 @@ Launchpad Contributions:
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
 	<string name="group_shortcuts">Kısayollar</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">Otomasyon görevleri</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
 	<string name="title_select_shortcut">Kısayol seçin</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">Otomasyon görev seçin</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">Aktivite seçin</string>
  
 	<!-- Arrays -->
 	
@@ -143,12 +143,12 @@ Launchpad Contributions:
 
     <string name="preference_extensions">Uzantılar</string>
     <string name="preference_get_extensions">Yeni uzantıları al</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
+    <string name="preference_get_extensions_summary">Uzantılar için çevrimiçi arama.</string>
+    <string name="preference_get_extensions_from">Uzantıları alın</string>
     <string name="preference_extensions_market">Android Market</string>
     <string name="preference_extensions_market_summary">Android Markette uzantıları arayın.</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">OpenIntents ana sayfasından  uzantılar al</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
     <string name="preference_notification_timeout_title">Zaman aşımı bildirimi</string>
