@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,22 +35,22 @@ msgstr ""
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI Dosya Yöneticisi"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Alışveriş Listesi"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Not defteri"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Kasa"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
@@ -65,7 +65,7 @@ msgstr "OI Hakkında"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr ""
+msgstr "OI Hakkında  kendi hakkında"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
@@ -90,7 +90,7 @@ msgstr "Grafikler"
 
 #: tmp_strings.xml:66(string)
 msgid "International translations by"
-msgstr ""
+msgstr "Uluslararası çeviriler"
 
 #: tmp_strings.xml:67(string)
 msgid "Credits"
@@ -106,7 +106,7 @@ msgstr "Genel Bilgi"
 
 #: tmp_strings.xml:70(string)
 msgid "Recent changes"
-msgstr ""
+msgstr "Son değişiklikler"
 
 #: tmp_strings.xml:72(string)
 msgid "No information available."
@@ -114,104 +114,104 @@ msgstr "Hiç bilgi yok."
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr ""
+msgstr "Arapça"
 
 #: tmp_strings.xml:80(item)
 msgid "Czech"
-msgstr ""
+msgstr "Çekçe"
 
 #: tmp_strings.xml:81(item)
 msgid "Danish"
-msgstr ""
+msgstr "Danimarkaca"
 
 #: tmp_strings.xml:82(item)
 msgid "German"
-msgstr ""
+msgstr "Almanca"
 
 #: tmp_strings.xml:83(item)
 msgid "English"
-msgstr ""
+msgstr "İngilizce"
 
 #: tmp_strings.xml:84(item)
 msgid "Spanish"
-msgstr ""
+msgstr "İspanyolca"
 
 #: tmp_strings.xml:85(item)
 msgid "Finnish"
-msgstr ""
+msgstr "Fince"
 
 #: tmp_strings.xml:86(item)
 msgid "Faroese"
-msgstr ""
+msgstr "Faroe Dili"
 
 #: tmp_strings.xml:87(item)
 msgid "French"
-msgstr ""
+msgstr "Fransızca"
 
 #: tmp_strings.xml:88(item)
 msgid "Italian"
-msgstr ""
+msgstr "İtalyanca"
 
 #: tmp_strings.xml:89(item)
 msgid "Japanese"
-msgstr ""
+msgstr "Japonca"
 
 #: tmp_strings.xml:90(item)
 msgid "Korean"
-msgstr ""
+msgstr "Korece"
 
 #: tmp_strings.xml:91(item)
 msgid "Lao"
-msgstr ""
+msgstr "Lao Dili"
 
 #: tmp_strings.xml:92(item)
 msgid "Dutch"
-msgstr ""
+msgstr "Flemenkçe"
 
 #: tmp_strings.xml:93(item)
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Eski Katalanca (1500 yılından sonra)"
 
 #: tmp_strings.xml:94(item)
 msgid "Polish"
-msgstr ""
+msgstr "Lehçe"
 
 #: tmp_strings.xml:95(item)
 msgid "Portuguese"
-msgstr ""
+msgstr "Portekizce"
 
 #: tmp_strings.xml:96(item)
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Brezilya Portekizcesi"
 
 #: tmp_strings.xml:97(item)
 msgid "Romanian"
-msgstr ""
+msgstr "Romence"
 
 #: tmp_strings.xml:98(item)
 msgid "Russian"
-msgstr ""
+msgstr "Rusça"
 
 #: tmp_strings.xml:99(item)
 msgid "Sardinian"
-msgstr ""
+msgstr "Sardunyaca"
 
 #: tmp_strings.xml:100(item)
 msgid "Slovak"
-msgstr ""
+msgstr "Slovakça"
 
 #: tmp_strings.xml:101(item)
 msgid "Swedish"
-msgstr ""
+msgstr "İsveççe"
 
 #: tmp_strings.xml:102(item)
 msgid "Turkish"
-msgstr ""
+msgstr "Türkçe"
 
 #: tmp_strings.xml:103(item)
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Çince (Basitleştirilmiş)"
 
 #: tmp_strings.xml:104(item)
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Çince (Geleneksel)"

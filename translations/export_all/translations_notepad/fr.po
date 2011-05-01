@@ -245,7 +245,7 @@ msgid "Pick a theme"
 msgstr "Choisissez un thème"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
 msgid "Default"
 msgstr "Par défaut"
 
@@ -413,69 +413,79 @@ msgid "Reverse Alphabetical"
 msgstr "Inverser l'ordre alphabétique"
 
 #: tmp_strings.xml:186(item)
+#, fuzzy
+msgid "Last Modified"
+msgstr "Texte modifié"
+
+#: tmp_strings.xml:187(item)
+#, fuzzy
+msgid "First Modified"
+msgstr "Texte modifié"
+
+#: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"
 msgstr "Plus récent au plus ancien"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:189(item)
 msgid "Oldest to Newest"
 msgstr "Les plus anciens au plus récent"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:192(item)
+#: tmp_strings.xml:194(item)
 msgid "Tiny"
 msgstr "Très petite"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Small"
 msgstr "Petite"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:200(item)
 msgid "Large"
 msgstr "Grande"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:203(string)
 msgid "Add-ons"
 msgstr "Greffons"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:204(string)
 msgid "Get new add-ons"
 msgstr "Obtenir de nouveaux greffons"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Search for extensions and themes online."
 msgstr "Rechercher des extensions et thèmes sur Internet."
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get add-ons from Market"
 msgstr "Obtenir des greffons depuis le « Market »."
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Obtenir des greffons depuis OpenIntents"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Extensions"
 msgstr "Extensions"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Themes"
 msgstr "Thèmes"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Search for extensions at Android Market."
 msgstr "Rechercher des extensions sur l'Android Market"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Search for themes at Android Market."
 msgstr "Rechercher des thèmes sur l'Android Market."
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Obtenir des extensions depuis le site d'OpenIntents"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Obtenir des thèmes depuis la page d'acceuil d'OpenIntents"
 

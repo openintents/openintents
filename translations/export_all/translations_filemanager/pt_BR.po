@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: DanielElias <dan.elias@gmail.com>\n"
+"Last-Translator: André Gondim <andregondim@ubuntu.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  André Gondim https://launchpad.net/~andregondim\n"
 "  DanielElias https://launchpad.net/~danielelias"
 
 #. Short explanation of the application. Max. 80 characters.
@@ -43,9 +44,9 @@ msgstr "Nova Pasta"
 msgid "Multi Select"
 msgstr ""
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:69(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
 msgid "Delete"
-msgstr "Deletar"
+msgstr "Apagar"
 
 #: tmp_strings.xml:40(string)
 msgid "Rename"
@@ -59,11 +60,11 @@ msgstr "Enviar"
 msgid "Open"
 msgstr "Abrir"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:67(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
 msgid "Move"
 msgstr "Mover"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
 msgid "Copy"
 msgstr "Copiar"
 
@@ -71,7 +72,7 @@ msgstr "Copiar"
 msgid "Include in media scan"
 msgstr "Incluir no scanner de mídia."
 
-#: tmp_strings.xml:46(string) tmp_strings.xml:107(string)
+#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
 msgid "Exclude from media scan"
 msgstr "Remover do scanner de mídia."
 
@@ -135,109 +136,112 @@ msgstr "Escolha a pasta para onde deseja copiar"
 msgid "Copy here"
 msgstr "Copiar aqui"
 
-#. Strings for a multi select feature
-#: tmp_strings.xml:66(string)
-#, fuzzy
-msgid "Do you really want to delete %d files?"
-msgstr "Você realmente deseja deletar %s ?"
+#: tmp_strings.xml:64(string)
+msgid "Deleting files..."
+msgstr ""
 
-#: tmp_strings.xml:70(string)
-msgid "Select multiple files"
+#. Strings for a multi select feature
+#: tmp_strings.xml:67(string)
+msgid "Do you really want to delete %d files?"
 msgstr ""
 
 #: tmp_strings.xml:71(string)
+msgid "Select multiple files"
+msgstr ""
+
+#: tmp_strings.xml:72(string)
 msgid "Please select one or more file(s)."
 msgstr ""
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:74(string)
+#: tmp_strings.xml:75(string)
 msgid "Copy of %s"
 msgstr "Cópia de %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:78(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copia %1$d de %2$s"
 
-#: tmp_strings.xml:79(string)
+#: tmp_strings.xml:80(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Esta pasta será incluída no próximo escaneamento de mídia"
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:81(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Esta pasta será excluída durante o próximo escaneamento de mídia."
 
-#: tmp_strings.xml:82(string)
+#: tmp_strings.xml:83(string)
 msgid "Could not create new folder."
 msgstr "Não é possível criar nova pasta."
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Could not delete file."
 msgstr "Não é possível deletar arquivo."
 
-#: tmp_strings.xml:84(string)
+#: tmp_strings.xml:85(string)
 msgid "Could not delete folder '%s'."
 msgstr "Não é possível deletar pasta '%s'."
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:86(string)
 msgid "Could not rename file."
 msgstr "Não é possível renomar arquivo."
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Could not rename folder."
 msgstr "Não é possível renomar pasta."
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Could not move file."
 msgstr "Não é possível mover arquivo."
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "Could not move folder."
 msgstr "Não é possível mover pasta."
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Could not copy file."
 msgstr "Não é possível copiar arquivo."
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:91(string)
 msgid "File does not exist."
 msgstr "Arquivo não existe."
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Could not delete child file '%s'."
 msgstr "Não é possível excluir arquivo filho '%s'."
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "An error occurred:"
 msgstr "Um erro ocorreu:"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Could not change media scan settings."
 msgstr "Não é possível mudar configurações do scanner de mídia."
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No application available for sending."
 msgstr "Sem aplicativos disponíveis para envio."
 
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:98(string)
 msgid "Application not available"
 msgstr "Aplicativo indisponível."
 
 #. Menu item for Settings
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "Settings"
 msgstr ""
 
 #. Category for preferences.
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Advanced features"
 msgstr ""
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
 

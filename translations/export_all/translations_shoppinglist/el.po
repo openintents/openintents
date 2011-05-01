@@ -1,0 +1,583 @@
+# Greek translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:24(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Peli https://launchpad.net/~peli0101"
+
+#. Short explanation of the application
+#: tmp_strings.xml:27(string)
+msgid ""
+"OI Shopping list lets you keep track of your shopping items. You can also "
+"use it for other kinds of check lists, for example for ToDo lists or party "
+"guest lists."
+msgstr ""
+"Η λίστα αγορών OI Shopping list σας δίνει τη δυνατότητα να παρακολουθείτε "
+"τις αγορές σας. Μπορείτε επίσης να χρησιμοποιήσετε την εφαρμογή για πολλές "
+"ακόμη λίστες, όπως για παράδειγμα, λίστες υποχρεώσεων ή λίστες "
+"προσκεκλημένων."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:33(string)
+msgid "OI Shopping list"
+msgstr "Λίστα αγορών OI Shopping list"
+
+#: tmp_strings.xml:35(string)
+msgid "New item"
+msgstr "Νέο στοιχείο"
+
+#: tmp_strings.xml:36(string)
+msgid "New list"
+msgstr "Νέα λίστα"
+
+#: tmp_strings.xml:37(string)
+msgid "Send list"
+msgstr "Αποστολή λίστας"
+
+#: tmp_strings.xml:38(string)
+#, fuzzy
+msgid "Mark all items"
+msgstr "Επισήμανση στοιχείου"
+
+#: tmp_strings.xml:39(string)
+msgid "Empty list not sent."
+msgstr "Κενή λίστα. Δεν εστάλη."
+
+#: tmp_strings.xml:40(string)
+msgid "No application available for sending."
+msgstr "Δεν υπάρχει εφαρμογή για αποστολή."
+
+#: tmp_strings.xml:41(string)
+msgid "My shopping list"
+msgstr "Η λίστα αγορών μου"
+
+#: tmp_strings.xml:42(string)
+msgid "i.e. wishlist, family list"
+msgstr "π.χ. λίστα επιθυμιών, οικογενειακή λίστα"
+
+#. Automation action to clean up a list.
+#: tmp_strings.xml:43(string) tmp_strings.xml:263(item)
+msgid "Clean up list"
+msgstr "Εκκαθάριση λίστας"
+
+#: tmp_strings.xml:44(string)
+msgid "Delete list"
+msgstr "Διαγραφή λίστας"
+
+#: tmp_strings.xml:45(string)
+msgid "Enter name of new shopping list"
+msgstr "Εισαγάγετε το όνομα της νέας λίστας αγορών"
+
+#: tmp_strings.xml:46(string)
+msgid "Rename shopping list"
+msgstr "Μετονομασία λίστας αγορών"
+
+#: tmp_strings.xml:47(string) tmp_strings.xml:58(string)
+msgid "Edit item"
+msgstr "Επεξεργασία στοιχείου"
+
+#: tmp_strings.xml:48(string)
+msgid "Please enter a name"
+msgstr "Εισαγάγετε ένα όνομα"
+
+#: tmp_strings.xml:49(string)
+msgid "No items are marked as crossed out."
+msgstr "Δεν έχουν επισημανθεί στοιχεία ως ολοκληρωμένα."
+
+#: tmp_strings.xml:50(string)
+msgid "Do you really want to delete this shopping list?"
+msgstr ""
+
+#: tmp_strings.xml:51(string)
+msgid "Error while accessing shopping lists."
+msgstr "Σφάλμα κατά την πρόσβαση στις λίστες αγορών."
+
+#: tmp_strings.xml:52(string)
+msgid "Pick an item"
+msgstr "Επιλέξτε στοιχείο"
+
+#: tmp_strings.xml:53(string)
+msgid "Pick a list"
+msgstr "Επιλέξτε λίστα"
+
+#: tmp_strings.xml:54(string)
+msgid "Theme"
+msgstr "Θέμα"
+
+#: tmp_strings.xml:55(string)
+msgid "Theme settings"
+msgstr "Ρυθμίσεις θέματος"
+
+#: tmp_strings.xml:56(string)
+msgid "Rename list"
+msgstr "Μετονομασία λίστας"
+
+#: tmp_strings.xml:57(string)
+msgid "Mark item"
+msgstr "Επισήμανση στοιχείου"
+
+#: tmp_strings.xml:59(string)
+msgid "Auto add"
+msgstr "Αυτόματη προσθήκη"
+
+#: tmp_strings.xml:60(string)
+msgid "No items available"
+msgstr ""
+
+#. Remove item from this list, but keep it internally, so that the user
+#. 	     can choose it later for inclusion again. Information like
+#. 	     tags or price will be kept.
+#: tmp_strings.xml:65(string)
+msgid "Remove item from list"
+msgstr "Κατάργηση στοιχείου από λίστα"
+
+#. Delete this item completely. If the user wants to add it again, they
+#. 	     have to enter all the information again.
+#: tmp_strings.xml:69(string)
+msgid "Delete item permanently"
+msgstr "Μόνιμη διαγραφή στοιχείου"
+
+#: tmp_strings.xml:70(string)
+msgid "Move item to other list"
+msgstr ""
+
+#. Button label to add an item to the list.
+#: tmp_strings.xml:72(string)
+msgid "Add"
+msgstr "Προσθήκη"
+
+#: tmp_strings.xml:74(string)
+msgid "Pick items"
+msgstr "Επιλογή στοιχείων"
+
+#: tmp_strings.xml:75(string)
+msgid "Shopping"
+msgstr "Αγορές"
+
+#. Title supplement. '%s' is the name of the current list.
+#: tmp_strings.xml:78(string)
+msgid "%s - Pick items"
+msgstr "%s - Επιλογή στοιχείων"
+
+#. Title supplement. '%s' is the name of the current list.
+#: tmp_strings.xml:81(string)
+msgid "%s - Shopping"
+msgstr "%s - Αγορές"
+
+#: tmp_strings.xml:83(string)
+msgid "Tags"
+msgstr "Ετικέτες"
+
+#: tmp_strings.xml:84(string)
+msgid "Price"
+msgstr "Τιμή"
+
+#: tmp_strings.xml:85(string)
+msgid "Item"
+msgstr "Στοιχείο"
+
+#: tmp_strings.xml:86(string)
+msgid "Quantity"
+msgstr "Ποσότητα"
+
+#: tmp_strings.xml:87(string)
+msgid "Priority"
+msgstr ""
+
+#: tmp_strings.xml:88(string)
+msgid "Has Note"
+msgstr ""
+
+#: tmp_strings.xml:89(string)
+msgid "Units"
+msgstr ""
+
+#: tmp_strings.xml:90(string)
+msgid "Note"
+msgstr ""
+
+#. Total sum of all prices. '%s' is the sum
+#: tmp_strings.xml:93(string)
+msgid "Total: %s"
+msgstr "Σύνολο: %s"
+
+#. Sum of all prices of the checked items. '%s' is the sum
+#: tmp_strings.xml:96(string)
+msgid "Checked: %s"
+msgstr "Επιλεγμένα: %s"
+
+#: tmp_strings.xml:98(string)
+msgid ""
+"Are you sure you want to permanently delete this item, its tags, and its "
+"price from all shopping lists?"
+msgstr ""
+"Είστε βέβαιοι ότι θέλετε να διαγραφεί μόνιμα αυτό το στοιχείο μαζί με τις "
+"ετικέτες και την τιμή του από όλες τις λίστες αγορών;"
+
+#: tmp_strings.xml:99(string)
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#. Added to an item to indicate it was bought.
+#: tmp_strings.xml:102(string)
+msgid "... OK"
+msgstr "... OK"
+
+#. The shortcut is created on the home screen.
+#: tmp_strings.xml:106(string)
+msgid "Pick list for shortcut"
+msgstr "Επιλογή λίστας για συντόμευση"
+
+#. Shown if external application wants to insert new items.
+#: tmp_strings.xml:109(string)
+msgid "Pick list to insert items"
+msgstr "Επιλογή λίστας για εισαγωγή στοιχείων"
+
+#. Title for selecting a theme
+#: tmp_strings.xml:113(string)
+msgid "Pick a theme"
+msgstr "Επιλογή θέματος"
+
+#: tmp_strings.xml:114(string)
+msgid "Choose a theme for this list"
+msgstr "Επιλογή θέματος για τη λίστα"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:115(string) tmp_strings.xml:228(item)
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: tmp_strings.xml:116(string)
+msgid "Classic"
+msgstr "Κλασσικό"
+
+#: tmp_strings.xml:117(string)
+msgid "Android"
+msgstr "Android"
+
+#: tmp_strings.xml:118(string)
+msgid "Classic (from OI Shopping List)"
+msgstr "Κλασσικό (από OI Shopping List)"
+
+#: tmp_strings.xml:119(string)
+msgid "Android (from OI Shopping List)"
+msgstr "Android (από OI Shopping List)"
+
+#. Button label "OK"
+#: tmp_strings.xml:123(string)
+msgid "OK"
+msgstr "OK"
+
+#. Button label "Cancel"
+#: tmp_strings.xml:125(string)
+msgid "Cancel"
+msgstr "Άκυρο"
+
+#: tmp_strings.xml:126(string)
+msgid "Use this theme for all lists"
+msgstr "Χρήση αυτού του θέματος σε όλες τις λίστες"
+
+#: tmp_strings.xml:127(string)
+msgid "Get more themes"
+msgstr "Λήψη περισσότερων θεμάτων"
+
+#. preferences
+#: tmp_strings.xml:130(string)
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: tmp_strings.xml:132(string)
+msgid "Application settings"
+msgstr "Ρυθμίσεις εφαρμογής"
+
+#: tmp_strings.xml:134(string)
+msgid "Unchecked on top"
+msgstr "Τα μη επιλεγμένα στην κορυφή"
+
+#: tmp_strings.xml:135(string)
+msgid "Always show unchecked items first"
+msgstr "Να εμφανίζονται πάντα πρώτα τα μη επιλεγμένα στοιχεία"
+
+#: tmp_strings.xml:136(string)
+msgid "Font size"
+msgstr "Μέγεθος γραμματοσειράς"
+
+#: tmp_strings.xml:137(string)
+msgid "Change font size"
+msgstr "Αλλαγή μεγέθους γραμματοσειράς"
+
+#: tmp_strings.xml:138(string)
+msgid "Choose font size"
+msgstr "Επιλογή μεγέθους γραμματοσειράς"
+
+#: tmp_strings.xml:139(string)
+msgid "Sort order"
+msgstr "Σειρά ταξινόμησης"
+
+#: tmp_strings.xml:140(string)
+msgid "Change sort order of list items"
+msgstr "Αλλαγή σειράς ταξινόμησης στοιχείων λίστας"
+
+#: tmp_strings.xml:141(string)
+msgid "Choose sort order"
+msgstr "Επιλογή σειράς ταξινόμησης"
+
+#: tmp_strings.xml:142(string)
+msgid "Load last list used"
+msgstr "Φόρτωση της πιο πρόσφατης λίστας"
+
+#: tmp_strings.xml:143(string)
+msgid "Always start with the list viewed last time."
+msgstr "Έναρξη πάντα με τη λίστα που προβλήθηκε τελευταία."
+
+#: tmp_strings.xml:144(string)
+msgid "Capitalization"
+msgstr "Κεφαλαιοποίηση"
+
+#: tmp_strings.xml:145(string)
+msgid "Automatic capitalization of entries"
+msgstr "Αυτόματη κεφαλαιοποίηση των καταχωρήσεων"
+
+#: tmp_strings.xml:146(string)
+msgid "Choose capitalization"
+msgstr "Επιλογή κεφαλαιοποίησης"
+
+#: tmp_strings.xml:147(string)
+msgid "Hide checked items"
+msgstr "Απόκρυψη επιλεγμένων στοιχείων"
+
+#: tmp_strings.xml:148(string)
+msgid "Immediately hide items checked off."
+msgstr "Άμεση απόκρυψη των στοιχείων που έχουν επιλεγεί ως ολοκληρωμένα."
+
+#: tmp_strings.xml:149(string)
+msgid "Show price"
+msgstr "Εμφάνιση τιμής"
+
+#: tmp_strings.xml:150(string) tmp_strings.xml:152(string)
+#: tmp_strings.xml:154(string) tmp_strings.xml:156(string)
+#: tmp_strings.xml:158(string)
+msgid "Shown as extra column in list."
+msgstr "Εμφάνιση ως επιπλέον στήλης στη λίστα."
+
+#: tmp_strings.xml:151(string)
+msgid "Show tags"
+msgstr "Εμφάνιση ετικετών"
+
+#: tmp_strings.xml:153(string)
+msgid "Show quantity"
+msgstr "Εμφάνιση ποσότητας"
+
+#: tmp_strings.xml:155(string)
+msgid "Show priority"
+msgstr ""
+
+#: tmp_strings.xml:157(string)
+msgid "Show units"
+msgstr ""
+
+#. Preference title: Shake the phone to clean up the list.
+#: tmp_strings.xml:161(string)
+msgid "Shake to clean up"
+msgstr "Κίνηση για εκκαθάριση"
+
+#. Preference summary: Shake the phone to clean up the list.
+#: tmp_strings.xml:164(string)
+msgid "Shake the phone to clean up the list."
+msgstr "Κινήστε το τηλέφωνο για την εκκαθάριση της λίστας."
+
+#: tmp_strings.xml:166(string)
+msgid "Advanced settings"
+msgstr "Σύνθετες ρυθμίσεις"
+
+#: tmp_strings.xml:167(string)
+msgid "Additional settings regarding the appearance."
+msgstr "Επιπλέον ρυθμίσεις που αφορούν την εμφάνιση."
+
+#. Preference category: General settings
+#: tmp_strings.xml:170(string)
+msgid "General"
+msgstr "Γενικά"
+
+#: tmp_strings.xml:172(string)
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
+#: tmp_strings.xml:174(string)
+msgid "Add-ons"
+msgstr "Προσθήκες"
+
+#: tmp_strings.xml:175(string)
+msgid "Get new add-ons"
+msgstr "Λήψη νέων προσθηκών"
+
+#: tmp_strings.xml:176(string)
+msgid "Search for extensions and themes online."
+msgstr "Αναζήτηση για επεκτάσεις και θέματα στο Internet."
+
+#: tmp_strings.xml:177(string)
+msgid "Get add-ons from Market"
+msgstr "Λήψη προσθηκών από το Market"
+
+#: tmp_strings.xml:178(string)
+msgid "Get add-ons from OpenIntents"
+msgstr "Λήψη προσθηκών από το OpenIntents"
+
+#: tmp_strings.xml:179(string)
+msgid "Extensions"
+msgstr "Επεκτάσεις"
+
+#: tmp_strings.xml:180(string)
+msgid "Themes"
+msgstr "Θέματα"
+
+#: tmp_strings.xml:181(string)
+msgid "Search for extensions at Android Market."
+msgstr "Αναζήτηση για επεκτάσεις στο Android Market."
+
+#: tmp_strings.xml:182(string)
+msgid "Search for themes at Android Market."
+msgstr "Αναζήτηση για θέματα στο Android Market."
+
+#: tmp_strings.xml:183(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Λήψη επεκτάσεων από την αρχική σελίδα του OpenIntents."
+
+#: tmp_strings.xml:184(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr "Λήψη θεμάτων από την αρχική σελίδα του OpenIntents."
+
+#. Permission to read shopping lists
+#: tmp_strings.xml:192(string)
+msgid "read shopping lists"
+msgstr "ανάγνωση λιστών αγορών"
+
+#: tmp_strings.xml:193(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Επιτρέπει σε μια εφαρμογή την ανάγνωση λιστών αγορών. Λάβετε υπόψη σας ότι "
+"οι κρυπτογραφημένες λίστες και στοιχεία παρέχονται στην κρυπτογραφημένη "
+"μορφή."
+
+#. Permission to write to shopping lists
+#: tmp_strings.xml:195(string)
+msgid "write shopping lists"
+msgstr "εγγραφή λιστών αγορών"
+
+#: tmp_strings.xml:196(string)
+msgid ""
+"Allows an application to create new lists and items or change existing ones."
+msgstr ""
+"Επιτρέπει στην εφαρμογή τη δημιουργία νέων λιστών και στοιχείων ή την αλλαγή "
+"των όσων ήδη υπάρχουν."
+
+#. Preference sort order: List unchecked items first, sort items alphabetically
+#: tmp_strings.xml:205(item)
+msgid "unchecked first, alphabetical"
+msgstr "μη επιλεγμένα, με αλφαβητική σειρά"
+
+#. Preference sort order: Sort by item name
+#: tmp_strings.xml:207(item)
+msgid "alphabetical"
+msgstr "με αλφαβητική σειρά"
+
+#. Preference sort order: Newest item first
+#: tmp_strings.xml:209(item)
+msgid "newest first"
+msgstr "πιο πρόσφατα"
+
+#. Preference sort order: Oldest item first
+#: tmp_strings.xml:211(item)
+msgid "oldest first"
+msgstr "παλαιότερα"
+
+#. Preference sort order: Sort alphabetically by tags
+#: tmp_strings.xml:213(item)
+msgid "tags alphabetical"
+msgstr "ετικέτες με αλφαβητική σειρά"
+
+#. Preference sort order: Sort by price, the most expensive first
+#: tmp_strings.xml:215(item)
+msgid "most expensive first"
+msgstr "πιο ακριβά"
+
+#. Preference sort order: List unchecked items first, sort alphabetically by tags
+#: tmp_strings.xml:217(item)
+msgid "unchecked first, tags alphabetical"
+msgstr ""
+
+#. Preference sort order: List unchecked items first, priority, sort items alphabetically
+#: tmp_strings.xml:219(item)
+msgid "unchecked first, priority, alphabetical"
+msgstr ""
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:224(item)
+msgid "Tiny"
+msgstr "Ελάχιστο"
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:226(item)
+msgid "Small"
+msgstr "Μικρό"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:230(item)
+msgid "Large"
+msgstr "Μεγάλο"
+
+#. Preference capitalization: No capitalization
+#: tmp_strings.xml:235(item)
+msgid "None"
+msgstr "Καμία"
+
+#. Preference capitalization: Automatically capitalize first letter of a sentence.
+#: tmp_strings.xml:237(item)
+msgid "Per Sentence"
+msgstr "Ανά πρόταση"
+
+#. Preference capitalization: Automatically capitalize first letter of each word.
+#: tmp_strings.xml:239(item)
+msgid "Per Word"
+msgstr "Ανά λέξη"
+
+#. Message box warning if user wants to edit a note, but OI Notepad is not installed.
+#: tmp_strings.xml:246(string)
+msgid "Editing item notes requires OI Notepad."
+msgstr ""
+
+#. Name of application "OI Notepad". Translations should be consistent.
+#: tmp_strings.xml:248(string)
+msgid "OI Notepad"
+msgstr ""
+
+#. Label above spinner for all actions (automation tasks) that can be performed.
+#: tmp_strings.xml:254(string)
+msgid "Select action:"
+msgstr "Επιλογή ενέργειας:"
+
+#. Label above button that opens a list of all shopping lists to choose from.
+#: tmp_strings.xml:257(string)
+msgid "Select list:"
+msgstr "Επιλογή λίστας:"

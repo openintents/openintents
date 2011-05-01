@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Paco Molinero <paco@byasl.com>\n"
+"Last-Translator: Andrew Mike <logomancer@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Andrew Mike https://launchpad.net/~logomancer\n"
 "  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount\n"
 "  Paco Molinero https://launchpad.net/~franciscomol"
 
@@ -104,7 +105,7 @@ msgstr "Información general"
 
 #: tmp_strings.xml:70(string)
 msgid "Recent changes"
-msgstr ""
+msgstr "Cambios Recientes"
 
 #: tmp_strings.xml:72(string)
 msgid "No information available."
@@ -112,31 +113,31 @@ msgstr "Información no disponible"
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr ""
+msgstr "Árabe"
 
 #: tmp_strings.xml:80(item)
 msgid "Czech"
-msgstr ""
+msgstr "Checo"
 
 #: tmp_strings.xml:81(item)
 msgid "Danish"
-msgstr ""
+msgstr "Danés"
 
 #: tmp_strings.xml:82(item)
 msgid "German"
-msgstr ""
+msgstr "Alemán"
 
 #: tmp_strings.xml:83(item)
 msgid "English"
-msgstr ""
+msgstr "Inglés"
 
 #: tmp_strings.xml:84(item)
 msgid "Spanish"
-msgstr ""
+msgstr "Español"
 
 #: tmp_strings.xml:85(item)
 msgid "Finnish"
-msgstr ""
+msgstr "Finlandés"
 
 #: tmp_strings.xml:86(item)
 msgid "Faroese"
@@ -144,15 +145,15 @@ msgstr ""
 
 #: tmp_strings.xml:87(item)
 msgid "French"
-msgstr ""
+msgstr "Francés"
 
 #: tmp_strings.xml:88(item)
 msgid "Italian"
-msgstr ""
+msgstr "Italiano"
 
 #: tmp_strings.xml:89(item)
 msgid "Japanese"
-msgstr ""
+msgstr "Japonés"
 
 #: tmp_strings.xml:90(item)
 msgid "Korean"
@@ -164,23 +165,23 @@ msgstr ""
 
 #: tmp_strings.xml:92(item)
 msgid "Dutch"
-msgstr ""
+msgstr "Neerlandés"
 
 #: tmp_strings.xml:93(item)
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Occitano (después de 1500)"
 
 #: tmp_strings.xml:94(item)
 msgid "Polish"
-msgstr ""
+msgstr "Polaco"
 
 #: tmp_strings.xml:95(item)
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugués"
 
 #: tmp_strings.xml:96(item)
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Portugués brasileño"
 
 #: tmp_strings.xml:97(item)
 msgid "Romanian"
@@ -188,7 +189,7 @@ msgstr ""
 
 #: tmp_strings.xml:98(item)
 msgid "Russian"
-msgstr ""
+msgstr "Ruso"
 
 #: tmp_strings.xml:99(item)
 msgid "Sardinian"
@@ -200,19 +201,19 @@ msgstr ""
 
 #: tmp_strings.xml:101(item)
 msgid "Swedish"
-msgstr ""
+msgstr "Sueco"
 
 #: tmp_strings.xml:102(item)
 msgid "Turkish"
-msgstr ""
+msgstr "Turco"
 
 #: tmp_strings.xml:103(item)
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Chino (Simplificado)"
 
 #: tmp_strings.xml:104(item)
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Chino (Tradicional)"
 
 
 

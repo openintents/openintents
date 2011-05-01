@@ -44,7 +44,7 @@ msgstr "Nova Cartelledda"
 msgid "Multi Select"
 msgstr ""
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:69(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
 msgid "Delete"
 msgstr "Doga"
 
@@ -60,11 +60,11 @@ msgstr "Manda"
 msgid "Open"
 msgstr "Apperi"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:67(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
 msgid "Move"
 msgstr "Moghe"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
 msgid "Copy"
 msgstr "Cópia"
 
@@ -72,7 +72,7 @@ msgstr "Cópia"
 msgid "Include in media scan"
 msgstr "Azzunghe a sa scansione"
 
-#: tmp_strings.xml:46(string) tmp_strings.xml:107(string)
+#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
 msgid "Exclude from media scan"
 msgstr "Esclude da sa scansione"
 
@@ -136,109 +136,112 @@ msgstr "Issepera sa cartelledda auve lu copiare"
 msgid "Copy here"
 msgstr "Copia inoche"
 
-#. Strings for a multi select feature
-#: tmp_strings.xml:66(string)
-#, fuzzy
-msgid "Do you really want to delete %d files?"
-msgstr "Cherese abberu dogare %s?"
+#: tmp_strings.xml:64(string)
+msgid "Deleting files..."
+msgstr ""
 
-#: tmp_strings.xml:70(string)
-msgid "Select multiple files"
+#. Strings for a multi select feature
+#: tmp_strings.xml:67(string)
+msgid "Do you really want to delete %d files?"
 msgstr ""
 
 #: tmp_strings.xml:71(string)
+msgid "Select multiple files"
+msgstr ""
+
+#: tmp_strings.xml:72(string)
 msgid "Please select one or more file(s)."
 msgstr ""
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:74(string)
+#: tmp_strings.xml:75(string)
 msgid "Copy of %s"
 msgstr "Copiande %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:78(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copiande su %1$d de %2$s"
 
-#: tmp_strings.xml:79(string)
+#: tmp_strings.xml:80(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Custa cartelledda atta a essere inclusa in sa prossima scansione"
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:81(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Custa cartelledda no atta a essere inclusa in sa scansione"
 
-#: tmp_strings.xml:82(string)
+#: tmp_strings.xml:83(string)
 msgid "Could not create new folder."
 msgstr "Non potto creare sa cartelledda"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Could not delete file."
 msgstr "Non potto dogare su file"
 
-#: tmp_strings.xml:84(string)
+#: tmp_strings.xml:85(string)
 msgid "Could not delete folder '%s'."
 msgstr "Non potto cantzellare '%s'."
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:86(string)
 msgid "Could not rename file."
 msgstr "Non lu potto torrare a lu numinare"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Could not rename folder."
 msgstr "Non la potto torrare a la numinare"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Could not move file."
 msgstr "Non che lu potto moghere"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "Could not move folder."
 msgstr "Non che lu potto moghere inoche"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Could not copy file."
 msgstr "Non che lu potto copiare"
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:91(string)
 msgid "File does not exist."
 msgstr "Su file non esistiti"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Could not delete child file '%s'."
 msgstr "Non potto che cantzellare su file '%s'."
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "An error occurred:"
 msgstr "B'este un errore:"
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Could not change media scan settings."
 msgstr "Non potto cambiare sas impostatzionese de scansione"
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No application available for sending."
 msgstr "Non bi sunu applicatzionese valida pro che lu mandare"
 
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:98(string)
 msgid "Application not available"
 msgstr "Applicatzione non disponibile"
 
 #. Menu item for Settings
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "Settings"
 msgstr "Impostatzionese"
 
 #. Category for preferences.
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Advanced features"
 msgstr "Impostatzionese avantzadasa"
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr "Mustra su menu pro che dogare cartelleddasa dae sa scansione"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "Doga su menu pro che dogare cartelleddasa dae sa scansione"
 

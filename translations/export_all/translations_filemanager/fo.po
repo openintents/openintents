@@ -44,7 +44,7 @@ msgstr "Nýggj skjátta"
 msgid "Multi Select"
 msgstr ""
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:69(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
 msgid "Delete"
 msgstr "Strika"
 
@@ -60,11 +60,11 @@ msgstr "Senda"
 msgid "Open"
 msgstr "Lat upp"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:67(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
 msgid "Move"
 msgstr "Flyt"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
 msgid "Copy"
 msgstr ""
 
@@ -72,7 +72,7 @@ msgstr ""
 msgid "Include in media scan"
 msgstr ""
 
-#: tmp_strings.xml:46(string) tmp_strings.xml:107(string)
+#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
 msgid "Exclude from media scan"
 msgstr ""
 
@@ -136,109 +136,112 @@ msgstr "Vel skjáttu at avrita til"
 msgid "Copy here"
 msgstr "Avrita her"
 
-#. Strings for a multi select feature
-#: tmp_strings.xml:66(string)
-#, fuzzy
-msgid "Do you really want to delete %d files?"
-msgstr "Vil tú veruliga strika %s?"
+#: tmp_strings.xml:64(string)
+msgid "Deleting files..."
+msgstr ""
 
-#: tmp_strings.xml:70(string)
-msgid "Select multiple files"
+#. Strings for a multi select feature
+#: tmp_strings.xml:67(string)
+msgid "Do you really want to delete %d files?"
 msgstr ""
 
 #: tmp_strings.xml:71(string)
+msgid "Select multiple files"
+msgstr ""
+
+#: tmp_strings.xml:72(string)
 msgid "Please select one or more file(s)."
 msgstr ""
 
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:74(string)
+#: tmp_strings.xml:75(string)
 msgid "Copy of %s"
 msgstr "Avrita av %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:78(string)
 msgid "Copy %1$d of %2$s"
 msgstr ""
 
-#: tmp_strings.xml:79(string)
+#: tmp_strings.xml:80(string)
 msgid "This folder will be included in the next media scan."
 msgstr ""
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:81(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr ""
 
-#: tmp_strings.xml:82(string)
+#: tmp_strings.xml:83(string)
 msgid "Could not create new folder."
 msgstr "Kundi ikki stovna nýggja skjáttu."
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:84(string)
 msgid "Could not delete file."
 msgstr "Kundi ikki strika fílu."
 
-#: tmp_strings.xml:84(string)
+#: tmp_strings.xml:85(string)
 msgid "Could not delete folder '%s'."
 msgstr "Kundi ikki strika skjáttu '%s'."
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:86(string)
 msgid "Could not rename file."
 msgstr "Kundi ikki nýnevna fílu."
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:87(string)
 msgid "Could not rename folder."
 msgstr "Kundi ikki nýnevna skjáttu."
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:88(string)
 msgid "Could not move file."
 msgstr "Kundi ikki flýta fílu."
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:89(string)
 msgid "Could not move folder."
 msgstr "Kundi ikki flyta skjáttu."
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:90(string)
 msgid "Could not copy file."
 msgstr "Kundi ikki avrita fílu."
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:91(string)
 msgid "File does not exist."
 msgstr "Fíla finnst ei."
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:92(string)
 msgid "Could not delete child file '%s'."
 msgstr "Kundi ikki strika fílu '%s'."
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:93(string)
 msgid "An error occurred:"
 msgstr ""
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:94(string)
 msgid "Could not change media scan settings."
 msgstr ""
 
-#: tmp_strings.xml:95(string)
+#: tmp_strings.xml:96(string)
 msgid "No application available for sending."
 msgstr "Eingin nýtsluskipan tøk til sending."
 
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:98(string)
 msgid "Application not available"
 msgstr "Nýtsluskipan ikki tøk"
 
 #. Menu item for Settings
-#: tmp_strings.xml:103(string)
+#: tmp_strings.xml:104(string)
 msgid "Settings"
 msgstr ""
 
 #. Category for preferences.
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:107(string)
 msgid "Advanced features"
 msgstr ""
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:109(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
 

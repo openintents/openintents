@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,6 +33,8 @@ msgid ""
 "OpenIntents Color Picker is an extension for OI Flashlight and other "
 "compatible applications."
 msgstr ""
+"OpenIntents Renk Seçici ,OI El feneri ve diğer uyumlu uygulamalar için bir "
+"uzantıdır."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -50,11 +52,11 @@ msgstr "En son"
 
 #: tmp_strings.xml:23(string)
 msgid "Recent colors"
-msgstr ""
+msgstr "Son renkler"
 
 #: tmp_strings.xml:24(string)
 msgid "Recently chosen colors"
-msgstr ""
+msgstr "Son seçilen renkler"
 
 #: tmp_strings.xml:25(string)
 msgid "Clear"
@@ -62,11 +64,11 @@ msgstr "Temizle"
 
 #: tmp_strings.xml:26(string)
 msgid "There are no recently chosen colors."
-msgstr ""
+msgstr "Son zamanlarda seçilmiş renkler yok."
 
 #: tmp_strings.xml:28(string)
 msgid "Use color?"
-msgstr ""
+msgstr "renk kullan?"
 
 #: tmp_strings.xml:29(string)
 msgid ""
@@ -94,7 +96,7 @@ msgstr ""
 #. Update
 #: tmp_strings.xml:39(string)
 msgid "Download application not available."
-msgstr ""
+msgstr "İndirilecek uygulama mevcut değil."
 
 #. Message how to use OI Color Picker from within OI Flashlight.
 #: tmp_strings.xml:45(string)
@@ -144,4 +146,4 @@ msgstr ""
 
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
-msgstr ""
+msgstr "%s al"

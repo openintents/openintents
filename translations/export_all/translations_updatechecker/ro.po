@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: iulargsb <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,15 +38,15 @@ msgstr "Este disponibilă o nouă versiune de %s.\\nDoriți actualizarea?"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "O nouă versiune a %1$s este disponibilă la %2$s.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "O nouă versiune a %1$s este disponibilă.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "O nouă versiune a %1$s este disponibilă la %2$s."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
@@ -66,7 +66,7 @@ msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "Versiunea %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
@@ -158,7 +158,7 @@ msgstr "Versiune nouă: %s"
 
 #: tmp_strings.xml:49(string)
 msgid "Newer version: %1$s - %2$s"
-msgstr ""
+msgstr "Versiunea nouă: %1$s - %2$s"
 
 #: tmp_strings.xml:50(string)
 msgid "Newer version available."
@@ -240,7 +240,7 @@ msgstr "Continuă oricum"
 
 #: tmp_strings.xml:71(string)
 msgid "Abort"
-msgstr "Anulează"
+msgstr "Anulați"
 
 #: tmp_strings.xml:73(string)
 msgid "Auto update"

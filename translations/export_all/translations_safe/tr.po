@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr ""
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
 msgid "OI Safe keeps all your private data encrypted."
-msgstr ""
+msgstr "OI kasa tüm özel verilerinizi şifreler."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -191,7 +191,7 @@ msgstr ""
 
 #: tmp_strings.xml:70(string)
 msgid "Import Database"
-msgstr ""
+msgstr "Veritabanı Al"
 
 #: tmp_strings.xml:71(string)
 msgid "Import file is missing:"
@@ -229,7 +229,7 @@ msgstr ""
 
 #: tmp_strings.xml:79(string)
 msgid "No categories found."
-msgstr "Kategori bulunamadı"
+msgstr "Kategori bulunamadı."
 
 #: tmp_strings.xml:80(string)
 msgid "No entries found in CSV."

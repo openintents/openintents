@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: iulargsb <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,11 +38,11 @@ msgstr "OI Safe"
 
 #: tmp_strings.xml:35(string)
 msgid "No Passwords present for this category."
-msgstr ""
+msgstr "Nu există parole pentru această categorie."
 
 #: tmp_strings.xml:36(string)
 msgid "No categories present. Please add one via Menu-&gt;Add"
-msgstr ""
+msgstr "Nu există categorii. Vă rugăm adăugați una din Menu-&gt;Adaugă"
 
 #: tmp_strings.xml:37(string) tmp_strings.xml:197(string)
 msgid "Lock"
@@ -62,7 +62,7 @@ msgstr "Adaugă"
 
 #: tmp_strings.xml:41(string)
 msgid "Delete"
-msgstr ""
+msgstr "Șterge"
 
 #: tmp_strings.xml:42(string)
 msgid "Password"
@@ -98,19 +98,19 @@ msgstr "Salvează"
 
 #: tmp_strings.xml:50(string)
 msgid "Invalid password. Please try again."
-msgstr ""
+msgstr "Parolă incorectă. Vă rugăm reîncercați."
 
 #: tmp_strings.xml:51(string)
 msgid "Password must be at least 4 characters"
-msgstr ""
+msgstr "Parola trebuie să conțină cel puțin 4 caractere"
 
 #: tmp_strings.xml:52(string)
 msgid "Description cannot be blank"
-msgstr ""
+msgstr "Descrierea nu poate fi goală"
 
 #: tmp_strings.xml:53(string)
 msgid "Name cannot be blank"
-msgstr ""
+msgstr "Numele nu poate fi gol"
 
 #: tmp_strings.xml:54(string)
 msgid ""
@@ -141,11 +141,11 @@ msgstr "Categorie"
 
 #: tmp_strings.xml:59(string)
 msgid "Business"
-msgstr ""
+msgstr "Serviciu"
 
 #: tmp_strings.xml:60(string)
 msgid "Personal"
-msgstr ""
+msgstr "Personal"
 
 #: tmp_strings.xml:61(string)
 msgid "Name"

@@ -242,7 +242,7 @@ msgid "Pick a theme"
 msgstr "テーマを選択"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
 msgid "Default"
 msgstr "デフォルト"
 
@@ -405,69 +405,79 @@ msgid "Reverse Alphabetical"
 msgstr "逆アルファベット順"
 
 #: tmp_strings.xml:186(item)
+#, fuzzy
+msgid "Last Modified"
+msgstr "テキスト変更"
+
+#: tmp_strings.xml:187(item)
+#, fuzzy
+msgid "First Modified"
+msgstr "テキスト変更"
+
+#: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"
 msgstr "新しいもの順"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:189(item)
 msgid "Oldest to Newest"
 msgstr "古いもの順"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:192(item)
+#: tmp_strings.xml:194(item)
 msgid "Tiny"
 msgstr "極小"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Small"
 msgstr "小"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:200(item)
 msgid "Large"
 msgstr "大"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:203(string)
 msgid "Add-ons"
 msgstr "アドオン"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:204(string)
 msgid "Get new add-ons"
 msgstr "アドオンを取得"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Search for extensions and themes online."
 msgstr "拡張機能とテーマをインターネットで検索"
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get add-ons from Market"
 msgstr "アドオンをマーケットから取得"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "アドオンをOpenIntentsから取得"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Extensions"
 msgstr "拡張機能"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Themes"
 msgstr "テーマ"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Search for extensions at Android Market."
 msgstr "拡張機能をAndroid Marketから検索"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Search for themes at Android Market."
 msgstr "テーマをAndroid Marketから検索"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "拡張機能をOpenIntentsから検索"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "テーマをOpenIntentsから取得"
 

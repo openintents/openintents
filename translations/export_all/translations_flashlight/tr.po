@@ -33,6 +33,8 @@ msgid ""
 "OpenIntents Flashlight helps you find your way in the dark. The display "
 "backlight is kept turned on while this application is running."
 msgstr ""
+"OpenIntents Fener karanlıkta yolunuzu bulmanıza yardımcı olur.Uygulama "
+"çalışırken ekran arka ışığı açık tutulur."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
@@ -41,7 +43,7 @@ msgstr "OI El feneri"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
-msgstr ""
+msgstr "Arka ışığı açık kalır."
 
 #: tmp_strings.xml:21(string)
 msgid "Color"
@@ -59,11 +61,11 @@ msgstr "Tercihler"
 
 #: tmp_strings.xml:34(string)
 msgid "Keep color"
-msgstr ""
+msgstr "Renk tut"
 
 #: tmp_strings.xml:35(string)
 msgid "Save color for next time Flashlight app is started"
-msgstr ""
+msgstr "El feneri uygulaması sonraki başlangıç için rengi kaydet"
 
 #. Explanation that is displayed if Color Picker has not been installed yet, but 
 #. 		user tries to access it.

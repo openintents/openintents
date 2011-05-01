@@ -1,0 +1,245 @@
+# Slovenian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: met <Unknown>\n"
+"Language-Team: Slovenian <sl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:23(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  met https://launchpad.net/~dot-cis"
+
+#. Short explanation of the application. Max. 80 characters.
+#: tmp_strings.xml:26(string)
+msgid "Manage files on the SD card."
+msgstr "Upravljajte z dokumenti na SD kartici."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:32(string)
+msgid "OI File Manager"
+msgstr "OI File Manager"
+
+#: tmp_strings.xml:34(string)
+msgid "New Folder"
+msgstr "Nova mapa"
+
+#. Multi select option menu
+#: tmp_strings.xml:37(string)
+msgid "Multi Select"
+msgstr "Izberi več"
+
+#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
+msgid "Delete"
+msgstr "Izbriši"
+
+#: tmp_strings.xml:40(string)
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: tmp_strings.xml:41(string)
+msgid "Send"
+msgstr "Pošlji"
+
+#: tmp_strings.xml:42(string)
+msgid "Open"
+msgstr "Odpri"
+
+#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
+msgid "Move"
+msgstr "Prestavi"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
+msgid "Copy"
+msgstr "Kopiraj"
+
+#: tmp_strings.xml:45(string)
+msgid "Include in media scan"
+msgstr "Vključi v pregled datotek"
+
+#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
+msgid "Exclude from media scan"
+msgstr "Izključi iz pregleda datotek"
+
+#: tmp_strings.xml:48(string)
+msgid "Create new folder"
+msgstr "Ustvari novo mapo"
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:50(string)
+msgid "Folder name"
+msgstr "Ime mape"
+
+#: tmp_strings.xml:51(string)
+msgid "This folder is empty."
+msgstr "Ta mapa je prazna."
+
+#: tmp_strings.xml:52(string)
+msgid "Do you really want to delete %s?"
+msgstr "Res želiš izbrisati datoteko %s?"
+
+#: tmp_strings.xml:53(string)
+msgid "File deleted."
+msgstr "Datoteka je izbrisana."
+
+#: tmp_strings.xml:54(string)
+msgid "Folder deleted."
+msgstr "Mapa je izbrisana."
+
+#: tmp_strings.xml:55(string)
+msgid "File renamed."
+msgstr "Datoteka je preimenovana."
+
+#: tmp_strings.xml:56(string)
+msgid "Folder renamed."
+msgstr "Mapa je preimenovana."
+
+#: tmp_strings.xml:57(string)
+msgid "File moved."
+msgstr "Datoteka je prestavljena."
+
+#: tmp_strings.xml:58(string)
+msgid "Folder moved."
+msgstr "Mapa je prestavljena."
+
+#: tmp_strings.xml:59(string)
+msgid "File copied."
+msgstr "Datoteka je skopirana."
+
+#: tmp_strings.xml:60(string)
+msgid "Select folder to move to"
+msgstr "Izberi mapo, kamor bo datoteka prestavljena"
+
+#: tmp_strings.xml:61(string)
+msgid "Move here"
+msgstr "Prestavi sem"
+
+#: tmp_strings.xml:62(string)
+msgid "Select folder to copy to"
+msgstr "Izberi mapo, kamor bo datoteka skopirana"
+
+#: tmp_strings.xml:63(string)
+msgid "Copy here"
+msgstr "Skopiraj sem"
+
+#: tmp_strings.xml:64(string)
+msgid "Deleting files..."
+msgstr ""
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:67(string)
+msgid "Do you really want to delete %d files?"
+msgstr "Res želiš izbrisati datoteke %d?"
+
+#: tmp_strings.xml:71(string)
+msgid "Select multiple files"
+msgstr "Izberi več datotek"
+
+#: tmp_strings.xml:72(string)
+msgid "Please select one or more file(s)."
+msgstr "Prosim izberi eno ali več datotek."
+
+#. Construct a unique file name of a file called %s.
+#: tmp_strings.xml:75(string)
+msgid "Copy of %s"
+msgstr "%s - kopija"
+
+#. Construct a unique file name with number %1$d of a file called %2$s.
+#: tmp_strings.xml:78(string)
+msgid "Copy %1$d of %2$s"
+msgstr "Kopija %1$d datoteke %2$s"
+
+#: tmp_strings.xml:80(string)
+msgid "This folder will be included in the next media scan."
+msgstr "Ta mapa bo vključena v naslednji pregled datotek."
+
+#: tmp_strings.xml:81(string)
+msgid "This folder will be excluded during the next media scan."
+msgstr "Ta mapa bo izključena iz naslednjega pregleda datotek."
+
+#: tmp_strings.xml:83(string)
+msgid "Could not create new folder."
+msgstr "Ne morem ustvariti nove mape."
+
+#: tmp_strings.xml:84(string)
+msgid "Could not delete file."
+msgstr "Ne morem izbrisati datoteke."
+
+#: tmp_strings.xml:85(string)
+msgid "Could not delete folder '%s'."
+msgstr "Ne morem izbrisati mape '%s'."
+
+#: tmp_strings.xml:86(string)
+msgid "Could not rename file."
+msgstr "Ne morem preimenovati datoteke."
+
+#: tmp_strings.xml:87(string)
+msgid "Could not rename folder."
+msgstr "Ne morem preimenovati mape."
+
+#: tmp_strings.xml:88(string)
+msgid "Could not move file."
+msgstr "Ne morem prestaviti datoteke."
+
+#: tmp_strings.xml:89(string)
+msgid "Could not move folder."
+msgstr "Ne morem prestaviti mape."
+
+#: tmp_strings.xml:90(string)
+msgid "Could not copy file."
+msgstr "Ne morem kopirati datoteke."
+
+#: tmp_strings.xml:91(string)
+msgid "File does not exist."
+msgstr "Datoteka ne obstaja."
+
+#: tmp_strings.xml:92(string)
+msgid "Could not delete child file '%s'."
+msgstr "Ne morem izbrisati poddatoteke '%s'."
+
+#: tmp_strings.xml:93(string)
+msgid "An error occurred:"
+msgstr "Napaka:"
+
+#: tmp_strings.xml:94(string)
+msgid "Could not change media scan settings."
+msgstr "Ne morem spremeniti nastavitev pregleda datotek."
+
+#: tmp_strings.xml:96(string)
+msgid "No application available for sending."
+msgstr "Ni aplikacije za pošiljanje."
+
+#: tmp_strings.xml:98(string)
+msgid "Application not available"
+msgstr "Aplikacija ni dosegljiva"
+
+#. Menu item for Settings
+#: tmp_strings.xml:104(string)
+msgid "Settings"
+msgstr "Nastavitve"
+
+#. Category for preferences.
+#: tmp_strings.xml:107(string)
+msgid "Advanced features"
+msgstr "Napredne možnosti"
+
+#: tmp_strings.xml:109(string)
+msgid "Show menu item to exclude folders from media scan."
+msgstr "Pokaži meni za izključitev map iz pregleda datotek."
+
+#: tmp_strings.xml:110(string)
+msgid "Hide menu item to exclude folders from media scan."
+msgstr "Skrij meni za izključitev map iz pregleda datotek."

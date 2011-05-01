@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+#, fuzzy
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr "Filemanager erlaubt das ..."
+
+#: tmp_strings.xml:13(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr "Außerdem ist es wie..."
+
+#: tmp_strings.xml:15(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr ""
+
+#: tmp_strings.xml:17(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr ""
+
+#: tmp_strings.xml:20(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr ""
+
+#: tmp_strings.xml:23(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr ""
+
+#: tmp_strings.xml:26(string)
+msgid "Features:"
+msgstr "Eigentschaften:"
+
+#: tmp_strings.xml:27(listitem)
+#, fuzzy
+msgid "Show list of files with thumbnails for images."
+msgstr "Zeite Thumbnails von Bildern."
+
+#: tmp_strings.xml:28(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr ""
+
+#: tmp_strings.xml:29(listitem)
+msgid "Create and delete directories (folders)."
+msgstr ""
+
+#: tmp_strings.xml:30(listitem)
+msgid "Send files by email."
+msgstr ""
+
+#: tmp_strings.xml:31(listitem)
+#, fuzzy
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr "Außerdem ist es wie..."
+
+#: tmp_strings.xml:32(listitem)
+msgid "Support for many file endings and mime types."
+msgstr ""
+
+#: tmp_strings.xml:33(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr ""
+
+#: tmp_strings.xml:35(string)
+msgid "Keywords:"
+msgstr ""
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:37(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr ""
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:39(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr ""
+
+#: tmp_strings.xml:41(string)
+msgid "International versions:"
+msgstr ""
+
+#: tmp_strings.xml:44(string)
+msgid "Extensions:"
+msgstr ""
+
+
+
+
+
+

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,13 +30,13 @@ msgstr ""
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr ""
+msgstr "OI Not defteri notlarınızı oluşturma ,düzenleme ve silmenizi sağlar."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
 #: tmp_strings.xml:117(string)
 msgid "OI Notepad"
-msgstr "OI Notepad"
+msgstr "OI Not defteri"
 
 #: tmp_strings.xml:42(string)
 msgid "Delete"
@@ -48,7 +48,7 @@ msgstr "Not ekle"
 
 #: tmp_strings.xml:44(string)
 msgid "Revert"
-msgstr ""
+msgstr "Geri al"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
-msgstr ""
+msgstr "Yeni not eklemek için menüyü kullanın"
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
 msgid "Edit note"
@@ -80,11 +80,11 @@ msgstr "Not başlığı:"
 
 #: tmp_strings.xml:57(string)
 msgid "%s (new note)"
-msgstr ""
+msgstr "%s (yeni not)"
 
 #: tmp_strings.xml:58(string)
 msgid "%s (edit note)"
-msgstr ""
+msgstr "%s (notu düzenleme)"
 
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
@@ -102,7 +102,7 @@ msgstr "Hata"
 
 #: tmp_strings.xml:66(string)
 msgid "Error loading note"
-msgstr ""
+msgstr "Not yüklenirken hata"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
@@ -139,23 +139,23 @@ msgstr ""
 
 #: tmp_strings.xml:78(string)
 msgid "Do not encrypt"
-msgstr ""
+msgstr "Şifreleme"
 
 #: tmp_strings.xml:79(string)
 msgid "Already encrypted."
-msgstr ""
+msgstr "Zaten şifreli."
 
 #: tmp_strings.xml:80(string)
 msgid "Not encrypted."
-msgstr ""
+msgstr "Şifreli değil."
 
 #: tmp_strings.xml:81(string)
 msgid "Encryption failed."
-msgstr ""
+msgstr "Şifreleme işlemi başarısız oldu."
 
 #: tmp_strings.xml:82(string)
 msgid "Decryption failed."
-msgstr ""
+msgstr "Şifre çözme işlemi başarısız oldu."
 
 #: tmp_strings.xml:84(string)
 msgid "Edit tags"
@@ -163,11 +163,11 @@ msgstr "Etiketleri düzenle"
 
 #: tmp_strings.xml:85(string)
 msgid "Touch to see list"
-msgstr ""
+msgstr "Listeyi görmek için dokun"
 
 #: tmp_strings.xml:86(string)
 msgid "Enter tags, separated by comma"
-msgstr ""
+msgstr "Etiketleri virgülle ayırarak girin"
 
 #: tmp_strings.xml:88(string)
 msgid "Save to SD card"
@@ -175,7 +175,7 @@ msgstr "SD karta kaydet"
 
 #: tmp_strings.xml:89(string)
 msgid "Open from SD card"
-msgstr ""
+msgstr "SD karttan aç"
 
 #: tmp_strings.xml:90(string)
 msgid "File name"
@@ -192,7 +192,7 @@ msgstr "Aç"
 
 #: tmp_strings.xml:93(string)
 msgid "Error while writing file"
-msgstr ""
+msgstr "Dosya yazılırken hata"
 
 #: tmp_strings.xml:94(string)
 msgid "Error while reading file"
@@ -208,16 +208,16 @@ msgstr "Not kayıt edildi"
 
 #: tmp_strings.xml:97(string)
 msgid "File exists already"
-msgstr ""
+msgstr "Dosya zaten var"
 
 #: tmp_strings.xml:98(string)
 msgid "Do you really want to overwrite the existing file?"
-msgstr ""
+msgstr "Mevcut dosyanın üzerine yazmak istediğinize emin misiniz?"
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:101(string)
 msgid "Import"
-msgstr ""
+msgstr "İçe aktar"
 
 #: tmp_strings.xml:103(string)
 msgid "Save as"
@@ -244,7 +244,7 @@ msgid "Pick a theme"
 msgstr ""
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
 msgid "Default"
 msgstr "Ön tanımlı"
 
@@ -268,12 +268,12 @@ msgstr "%s için sonuç bulunamadı."
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr "OI Notepad arama"
+msgstr "OI Not defteri arama"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
 msgid "Titles of your notes"
-msgstr ""
+msgstr "Notlarınızın başlıkları"
 
 #: tmp_strings.xml:128(string)
 msgid "Cancel"
@@ -289,12 +289,12 @@ msgstr "Daha fazla tema al"
 
 #: tmp_strings.xml:132(string)
 msgid "All notes"
-msgstr "Tüm nptlar"
+msgstr "Tüm notlar"
 
 #. Title for settings regarding the list of notes
 #: tmp_strings.xml:136(string)
 msgid "Notes List"
-msgstr ""
+msgstr "Notlar Listesi"
 
 #: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
 msgid "List Sorting Order"
@@ -322,15 +322,16 @@ msgstr "Yazı boyutunu seçin"
 
 #: tmp_strings.xml:145(string)
 msgid "Auto-create Links"
-msgstr ""
+msgstr "Bağlantıları otomatik oluştur"
 
 #: tmp_strings.xml:146(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr ""
+"E-posta/sokak/internet adresi ve telefon numaraları için bağlantı oluştur"
 
 #: tmp_strings.xml:147(string)
 msgid "Do not create links on notes"
-msgstr ""
+msgstr "Notlara link oluşturma"
 
 #: tmp_strings.xml:149(string)
 msgid "Settings"
@@ -354,7 +355,7 @@ msgstr ""
 #. Permission to write notes.
 #: tmp_strings.xml:161(string)
 msgid "write notes"
-msgstr ""
+msgstr "notları yaz"
 
 #: tmp_strings.xml:162(string)
 msgid "Allows an application to create new notes or modify existing notes."
@@ -384,7 +385,7 @@ msgstr ""
 #. Permission to encrypt and decrypt data.
 #: tmp_strings.xml:174(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "Veri şifrele ve şifreleri çöz"
 
 #: tmp_strings.xml:175(string)
 msgid ""
@@ -398,74 +399,82 @@ msgstr "Alfabetik"
 
 #: tmp_strings.xml:185(item)
 msgid "Reverse Alphabetical"
-msgstr ""
+msgstr "Tersten Alfabetik"
 
 #: tmp_strings.xml:186(item)
-msgid "Newest to Oldest"
+msgid "Last Modified"
 msgstr ""
 
 #: tmp_strings.xml:187(item)
+msgid "First Modified"
+msgstr ""
+
+#: tmp_strings.xml:188(item)
+msgid "Newest to Oldest"
+msgstr ""
+
+#: tmp_strings.xml:189(item)
 msgid "Oldest to Newest"
 msgstr ""
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:192(item)
+#: tmp_strings.xml:194(item)
 msgid "Tiny"
 msgstr "Minik"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Small"
 msgstr "Küçük"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:200(item)
 msgid "Large"
 msgstr "Büyük"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:203(string)
 msgid "Add-ons"
 msgstr "Eklentiler"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:204(string)
 msgid "Get new add-ons"
 msgstr "Yeni eklentiler al"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Search for extensions and themes online."
 msgstr "Eklenti ve tema için çevrimiçi arama"
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get add-ons from Market"
 msgstr "Marketten yeni eklentiler al"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "OpenIntents'den yeni eklentiler al"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Extensions"
 msgstr "Uzantılar"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Themes"
 msgstr "Temalar"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Search for extensions at Android Market."
 msgstr "Android Markette uzantıları arayın."
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Search for themes at Android Market."
 msgstr "Android Markette temaları arayın."
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "OpenIntents ana sayfasından  uzantılar al"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "OpenIntents ana sayfasından temalar al"
 
 
 

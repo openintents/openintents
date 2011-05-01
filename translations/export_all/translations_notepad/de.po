@@ -243,7 +243,7 @@ msgid "Pick a theme"
 msgstr "Design wählen"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
 msgid "Default"
 msgstr "Standard"
 
@@ -411,69 +411,79 @@ msgid "Reverse Alphabetical"
 msgstr "Umgekehrt alphabetisch"
 
 #: tmp_strings.xml:186(item)
+#, fuzzy
+msgid "Last Modified"
+msgstr "Text wurde verändert"
+
+#: tmp_strings.xml:187(item)
+#, fuzzy
+msgid "First Modified"
+msgstr "Text wurde verändert"
+
+#: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"
 msgstr "Neueste zuerst"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:189(item)
 msgid "Oldest to Newest"
 msgstr "Älteste zuerst"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:192(item)
+#: tmp_strings.xml:194(item)
 msgid "Tiny"
 msgstr "Sehr klein"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Small"
 msgstr "Klein"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:200(item)
 msgid "Large"
 msgstr "Groß"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:203(string)
 msgid "Add-ons"
 msgstr "Erweiterungen"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:204(string)
 msgid "Get new add-ons"
 msgstr "Neue Erweiterungen herunterladen"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Search for extensions and themes online."
 msgstr "Online nach Erweiterungen und Designs suchen."
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get add-ons from Market"
 msgstr "Erweiterungen vom Market herunterladen"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Erweiterungen von OpenIntents herunterladen"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Extensions"
 msgstr "Erweiterungen"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Themes"
 msgstr "Designs"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Search for extensions at Android Market."
 msgstr "Nach Erweiterungen auf Android Market suchen"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Search for themes at Android Market."
 msgstr "Nach Designs auf Android Market suchen."
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Erweiterungen von der OpenIntents Homepage herunterladen"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Nach Designs auf der OpenIntents Homepage suchen."
 

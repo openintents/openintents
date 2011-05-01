@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: zeugma <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +32,7 @@ msgstr ""
 #. 	     ***************************
 #: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI Güncelleme"
 
 #: tmp_strings.xml:15(string)
 msgid "A new version of %s is available.\\nWould you like to upgrade?"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
-msgstr ""
+msgstr "%s için yeni bir sürüm mevcut."
 
 #: tmp_strings.xml:20(string)
 msgid "Android Market not available."
@@ -122,7 +122,7 @@ msgstr "Yeni sürüm için kontrol ediliyor."
 
 #: tmp_strings.xml:40(string)
 msgid "Building list of applications."
-msgstr ""
+msgstr "Uygulamalar için inşa listesi."
 
 #: tmp_strings.xml:41(string)
 msgid "Check AndAppStore.com"
@@ -130,7 +130,7 @@ msgstr "AndAppStore.com kontrol et"
 
 #: tmp_strings.xml:42(string)
 msgid "Check versions"
-msgstr ""
+msgstr "Sürüm kontrolleri"
 
 #: tmp_strings.xml:43(string)
 msgid "Show all"
@@ -154,15 +154,15 @@ msgstr "Güncel sürüm kodu: %s"
 
 #: tmp_strings.xml:48(string)
 msgid "Newer version: %s"
-msgstr ""
+msgstr "Yeni sürüm: %s"
 
 #: tmp_strings.xml:49(string)
 msgid "Newer version: %1$s - %2$s"
-msgstr ""
+msgstr "Yeni sürüm: %1$s - %2$s"
 
 #: tmp_strings.xml:50(string)
 msgid "Newer version available."
-msgstr ""
+msgstr "Yeni sürüm mevcut."
 
 #: tmp_strings.xml:51(string)
 msgid "No update information found."
@@ -170,11 +170,11 @@ msgstr "Hiçbir güncelleştirme bilgisi bulunamadı."
 
 #: tmp_strings.xml:52(string)
 msgid "OI Update - List of new versions"
-msgstr "OI Update - Yeni sürümler listesi"
+msgstr "OI Güncelleme - List of new versions"
 
 #: tmp_strings.xml:53(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr ""
+msgstr "OI Güncelleme - AndAppStore'de yeni sürümler"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
@@ -190,7 +190,7 @@ msgstr "Ayarlar"
 
 #: tmp_strings.xml:57(string)
 msgid "Auto check"
-msgstr ""
+msgstr "Otomatik kontrol"
 
 #: tmp_strings.xml:58(string)
 msgid "Ignored"
@@ -216,7 +216,7 @@ msgstr "Markette ara"
 
 #: tmp_strings.xml:63(string)
 msgid "Search on AndAppStore"
-msgstr ""
+msgstr "AndAppStore de arama"
 
 #: tmp_strings.xml:64(string)
 msgid "Processing %s"
@@ -235,7 +235,7 @@ msgstr ""
 
 #: tmp_strings.xml:71(string)
 msgid "Abort"
-msgstr ""
+msgstr "Bitirmeden durdur"
 
 #: tmp_strings.xml:73(string)
 msgid "Auto update"
@@ -273,7 +273,7 @@ msgstr ""
 
 #: tmp_strings.xml:82(string)
 msgid "Use AndAppStore"
-msgstr ""
+msgstr "AndAppStore kullan"
 
 #: tmp_strings.xml:83(string)
 msgid "Use version information provided by AndAppStore.com"
@@ -318,7 +318,7 @@ msgstr ""
 #. EULA
 #: tmp_strings.xml:102(string)
 msgid "OI Update EULA"
-msgstr "OI Update Kullanıcı lisans sözleşmesi (EULA)"
+msgstr "OI güncelleme Kullanıcı lisans sözleşmesi (EULA)"
 
 #: tmp_strings.xml:103(string)
 msgid ""

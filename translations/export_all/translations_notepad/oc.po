@@ -86,7 +86,7 @@ msgstr "%s (modificar la nòta)"
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "Metre la nòte en acorchi"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
@@ -230,7 +230,7 @@ msgstr "Volètz enregistrar las modificacions ?"
 
 #: tmp_strings.xml:107(string)
 msgid "Don't save"
-msgstr ""
+msgstr "Enregistrar pas"
 
 #: tmp_strings.xml:109(string)
 msgid "Theme"
@@ -241,17 +241,17 @@ msgid "Pick a theme"
 msgstr "Causissètz un tèma"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:196(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
 msgid "Default"
 msgstr "Per defaut"
 
 #: tmp_strings.xml:112(string)
 msgid "Monospaced font"
-msgstr ""
+msgstr "Poliça monospace"
 
 #: tmp_strings.xml:113(string)
 msgid "Serif font"
-msgstr ""
+msgstr "Poliça serif"
 
 #. Search
 #: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
@@ -261,16 +261,16 @@ msgstr "Recercar"
 #. %s is the search string
 #: tmp_strings.xml:119(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "Cap de resultat pas trobat per %s."
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "Recèrca OI Notepad"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
 msgid "Titles of your notes"
-msgstr ""
+msgstr "Títol de vòstras nòtas"
 
 #: tmp_strings.xml:128(string)
 msgid "Cancel"
@@ -299,7 +299,7 @@ msgstr "Lista de l'òrdre de triada"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr ""
+msgstr "L'òrdre dins lo qual las nòtas son afichadas dins la lista de nòtas"
 
 #: tmp_strings.xml:141(string)
 msgid "Note Editor"
@@ -404,69 +404,79 @@ msgid "Reverse Alphabetical"
 msgstr "Inversar l'òrdre alfabetic"
 
 #: tmp_strings.xml:186(item)
+#, fuzzy
+msgid "Last Modified"
+msgstr "Tèxte modificat"
+
+#: tmp_strings.xml:187(item)
+#, fuzzy
+msgid "First Modified"
+msgstr "Tèxte modificat"
+
+#: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"
 msgstr "Del mai recent al mai ancian"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:189(item)
 msgid "Oldest to Newest"
 msgstr "Del mai ancian al mai recent"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:192(item)
+#: tmp_strings.xml:194(item)
 msgid "Tiny"
 msgstr "Minuscul"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Small"
 msgstr "Pichon"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:198(item)
+#: tmp_strings.xml:200(item)
 msgid "Large"
 msgstr "Grand"
 
-#: tmp_strings.xml:201(string)
-msgid "Add-ons"
-msgstr "Ensèrts"
-
-#: tmp_strings.xml:202(string)
-msgid "Get new add-ons"
-msgstr "Obténer d'ensèrts novèls"
-
 #: tmp_strings.xml:203(string)
+msgid "Add-ons"
+msgstr "Empeutons"
+
+#: tmp_strings.xml:204(string)
+msgid "Get new add-ons"
+msgstr "Obténer d'empeutons novèls"
+
+#: tmp_strings.xml:205(string)
 msgid "Search for extensions and themes online."
 msgstr "Recercar d'extensions e de tèmas en linha."
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get add-ons from Market"
 msgstr "Obténer d'ensèrts dempuèi lo Market."
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Obténer d'ensèrts dempuèi OpenIntents"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Extensions"
 msgstr "Extensions"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Themes"
 msgstr "Tèmas"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Search for extensions at Android Market."
 msgstr "Recercar d'extensions sus l'Android Market"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Search for themes at Android Market."
 msgstr "Recercar de tèmas sus l'Android Market."
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Obténer d'extensions dempuèi lo site d'OpenIntents"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Obténer de tèmas dempuèi la pagina internet d'OpenIntents"
 
