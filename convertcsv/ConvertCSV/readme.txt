@@ -22,7 +22,7 @@ To obtain the current release, visit
 
 ---------------------------------------------------------
 release: 1.1.0-rc1
-date: ?
+date: 2011-05-01
 
 - support moving app to SD card.
 - Add progress bar during conversion.

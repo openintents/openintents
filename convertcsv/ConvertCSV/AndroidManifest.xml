@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="org.openintents.convertcsv"
       android:installLocation="auto"
-      android:versionCode="6"
-      android:versionName="1.1.0-beta1">
+      android:versionCode="7"
+      android:versionName="1.1.0-rc1">
     <!-- History:
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
+      1.1.0-rc1 [7]: 2011-05-01
       1.1.0-beta1 [6]: 2011-02-12
       1.0.2-rc2 [5]: 2010-09-28
       1.0.2-rc1 [4]: 2009-04-21
@@ -19,7 +20,7 @@
     <application android:icon="@drawable/ic_menu_convert_csv" android:label="@string/app_name">
         <!-- aTrackDog metadata -->
         <meta-data android:name="com.a0soft.gphone.aTrackDog.testVersion"
-           android:value="6" />
+           android:value="7" />
         
         <meta-data android:name="org.openintents.metadata.COMMENTS"
                        android:value="@string/about_comments" />
