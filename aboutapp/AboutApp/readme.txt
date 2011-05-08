@@ -33,6 +33,7 @@ release: 1.0.4-beta
 date: ?
 
 - high-resolution icon for Android 2.3 and later.
+- list more languages for translations.
 
 ---------------------------------------------------------
 release: 1.0.3

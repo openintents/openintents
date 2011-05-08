@@ -45,10 +45,14 @@
 		<item>da</item><!-- Danish -->
 		<item>de</item><!-- German -->
 		<item>en</item><!-- English -->
+		<item>el</item><!-- Greek -->
 		<item>es</item><!-- Spanish -->
+		<item>fa</item><!-- Persian -->
 		<item>fi</item><!-- Finnish -->
 		<item>fo</item><!-- Faroese -->
 		<item>fr</item><!-- French -->
+		<item>hr</item><!-- Croatian -->
+		<item>hu</item><!-- Hungarian -->
 		<item>it</item><!-- Italian -->
 		<item>ja</item><!-- Japanese -->
 		<item>ko</item><!-- Korean -->

@@ -39,16 +39,16 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Gestore File</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Lista Spese</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Blocco Note</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Sicurezza</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Avvia %s e seleziona menu &gt; Informazioni.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -66,7 +66,7 @@
 	<string name="l_documenters">Documentato da</string>
 	<string name="l_translators">Tradotto da</string>
 	<string name="l_artists">Grafica di</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Traduzioni internazionali a cura di</string>
 	<string name="l_credits">Crediti</string>
 	<string name="l_license">Licenza</string>
 	<string name="l_info">Informazioni generali</string>
@@ -84,10 +84,14 @@
 		<item>Danese</item>
 		<item>Tedesco</item>
 		<item>Inglese</item>
+		<item>Greek</item>
 		<item>Spagnolo</item>
+		<item>Persian</item>
 		<item>Finlandese</item>
 		<item>Faroese</item>
 		<item>Francese</item>
+		<item>Croatian</item>
+		<item>Hungarian</item>
 		<item>Italiano</item>
 		<item>Giapponese</item>
 		<item>Coreano</item>
