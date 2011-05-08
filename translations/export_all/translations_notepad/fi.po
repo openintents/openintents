@@ -399,14 +399,12 @@ msgid "Reverse Alphabetical"
 msgstr ""
 
 #: tmp_strings.xml:186(item)
-#, fuzzy
 msgid "Last Modified"
-msgstr "Tekstiä muokattu"
+msgstr ""
 
 #: tmp_strings.xml:187(item)
-#, fuzzy
 msgid "First Modified"
-msgstr "Tekstiä muokattu"
+msgstr ""
 
 #: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"

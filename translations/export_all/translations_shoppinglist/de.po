@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Dennis Baudys <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr ""
 "  Bernd Schlapsi https://launchpad.net/~bernd-sch\n"
 "  Dennis Baudys https://launchpad.net/~thecondordb\n"
 "  Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  SpaceCafé https://launchpad.net/~spacecafe\n"
 "  friedger https://launchpad.net/~friedger\n"
@@ -59,9 +60,8 @@ msgid "Send list"
 msgstr "Liste senden"
 
 #: tmp_strings.xml:38(string)
-#, fuzzy
 msgid "Mark all items"
-msgstr "Eintrag markieren"
+msgstr ""
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."

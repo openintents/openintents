@@ -131,86 +131,104 @@ msgid "English"
 msgstr "Engleză"
 
 #: tmp_strings.xml:84(item)
+msgid "Greek"
+msgstr ""
+
+#: tmp_strings.xml:85(item)
 msgid "Spanish"
 msgstr "Spaniolă"
 
-#: tmp_strings.xml:85(item)
+#: tmp_strings.xml:86(item)
+#, fuzzy
+msgid "Persian"
+msgstr "Germană"
+
+#: tmp_strings.xml:87(item)
 msgid "Finnish"
 msgstr "Finlandeză"
 
-#: tmp_strings.xml:86(item)
+#: tmp_strings.xml:88(item)
 msgid "Faroese"
 msgstr "Feroeză"
 
-#: tmp_strings.xml:87(item)
+#: tmp_strings.xml:89(item)
 msgid "French"
 msgstr "Franceză"
 
-#: tmp_strings.xml:88(item)
+#: tmp_strings.xml:90(item)
+#, fuzzy
+msgid "Croatian"
+msgstr "Română"
+
+#: tmp_strings.xml:91(item)
+msgid "Hungarian"
+msgstr ""
+
+#: tmp_strings.xml:92(item)
 msgid "Italian"
 msgstr "Italiană"
 
-#: tmp_strings.xml:89(item)
+#: tmp_strings.xml:93(item)
 msgid "Japanese"
 msgstr "Japoneză"
 
-#: tmp_strings.xml:90(item)
+#: tmp_strings.xml:94(item)
 msgid "Korean"
 msgstr "Coreană"
 
-#: tmp_strings.xml:91(item)
+#: tmp_strings.xml:95(item)
 msgid "Lao"
 msgstr "Lao"
 
-#: tmp_strings.xml:92(item)
+#: tmp_strings.xml:96(item)
 msgid "Dutch"
 msgstr "Olandeză"
 
-#: tmp_strings.xml:93(item)
+#: tmp_strings.xml:97(item)
 msgid "Occitan (post 1500)"
 msgstr "Occitană (post 1500)"
 
-#: tmp_strings.xml:94(item)
+#: tmp_strings.xml:98(item)
 msgid "Polish"
 msgstr "Poloneză"
 
-#: tmp_strings.xml:95(item)
+#: tmp_strings.xml:99(item)
 msgid "Portuguese"
 msgstr "Portugheză"
 
-#: tmp_strings.xml:96(item)
+#: tmp_strings.xml:100(item)
 msgid "Brazilian Portuguese"
 msgstr "Portugheză braziliană"
 
-#: tmp_strings.xml:97(item)
+#: tmp_strings.xml:101(item)
 msgid "Romanian"
 msgstr "Română"
 
-#: tmp_strings.xml:98(item)
+#: tmp_strings.xml:102(item)
 msgid "Russian"
 msgstr "Rusă"
 
-#: tmp_strings.xml:99(item)
+#: tmp_strings.xml:103(item)
 msgid "Sardinian"
 msgstr "Sardiniană"
 
-#: tmp_strings.xml:100(item)
+#: tmp_strings.xml:104(item)
 msgid "Slovak"
 msgstr "Slovacă"
 
-#: tmp_strings.xml:101(item)
+#: tmp_strings.xml:105(item)
 msgid "Swedish"
 msgstr "Suedeză"
 
-#: tmp_strings.xml:102(item)
+#: tmp_strings.xml:106(item)
 msgid "Turkish"
 msgstr "Turcă"
 
-#: tmp_strings.xml:103(item)
+#: tmp_strings.xml:107(item)
 msgid "Chinese (Simplified)"
 msgstr "Chineză (Simplificată)"
 
-#: tmp_strings.xml:104(item)
+#: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
 msgstr "Chineză (Tradiţională)"
 

@@ -133,85 +133,103 @@ msgid "English"
 msgstr "İngilizce"
 
 #: tmp_strings.xml:84(item)
+msgid "Greek"
+msgstr ""
+
+#: tmp_strings.xml:85(item)
 msgid "Spanish"
 msgstr "İspanyolca"
 
-#: tmp_strings.xml:85(item)
+#: tmp_strings.xml:86(item)
+#, fuzzy
+msgid "Persian"
+msgstr "Almanca"
+
+#: tmp_strings.xml:87(item)
 msgid "Finnish"
 msgstr "Fince"
 
-#: tmp_strings.xml:86(item)
+#: tmp_strings.xml:88(item)
 msgid "Faroese"
 msgstr "Faroe Dili"
 
-#: tmp_strings.xml:87(item)
+#: tmp_strings.xml:89(item)
 msgid "French"
 msgstr "Fransızca"
 
-#: tmp_strings.xml:88(item)
+#: tmp_strings.xml:90(item)
+#, fuzzy
+msgid "Croatian"
+msgstr "Romence"
+
+#: tmp_strings.xml:91(item)
+msgid "Hungarian"
+msgstr ""
+
+#: tmp_strings.xml:92(item)
 msgid "Italian"
 msgstr "İtalyanca"
 
-#: tmp_strings.xml:89(item)
+#: tmp_strings.xml:93(item)
 msgid "Japanese"
 msgstr "Japonca"
 
-#: tmp_strings.xml:90(item)
+#: tmp_strings.xml:94(item)
 msgid "Korean"
 msgstr "Korece"
 
-#: tmp_strings.xml:91(item)
+#: tmp_strings.xml:95(item)
 msgid "Lao"
 msgstr "Lao Dili"
 
-#: tmp_strings.xml:92(item)
+#: tmp_strings.xml:96(item)
 msgid "Dutch"
 msgstr "Flemenkçe"
 
-#: tmp_strings.xml:93(item)
+#: tmp_strings.xml:97(item)
 msgid "Occitan (post 1500)"
 msgstr "Eski Katalanca (1500 yılından sonra)"
 
-#: tmp_strings.xml:94(item)
+#: tmp_strings.xml:98(item)
 msgid "Polish"
 msgstr "Lehçe"
 
-#: tmp_strings.xml:95(item)
+#: tmp_strings.xml:99(item)
 msgid "Portuguese"
 msgstr "Portekizce"
 
-#: tmp_strings.xml:96(item)
+#: tmp_strings.xml:100(item)
 msgid "Brazilian Portuguese"
 msgstr "Brezilya Portekizcesi"
 
-#: tmp_strings.xml:97(item)
+#: tmp_strings.xml:101(item)
 msgid "Romanian"
 msgstr "Romence"
 
-#: tmp_strings.xml:98(item)
+#: tmp_strings.xml:102(item)
 msgid "Russian"
 msgstr "Rusça"
 
-#: tmp_strings.xml:99(item)
+#: tmp_strings.xml:103(item)
 msgid "Sardinian"
 msgstr "Sardunyaca"
 
-#: tmp_strings.xml:100(item)
+#: tmp_strings.xml:104(item)
 msgid "Slovak"
 msgstr "Slovakça"
 
-#: tmp_strings.xml:101(item)
+#: tmp_strings.xml:105(item)
 msgid "Swedish"
 msgstr "İsveççe"
 
-#: tmp_strings.xml:102(item)
+#: tmp_strings.xml:106(item)
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: tmp_strings.xml:103(item)
+#: tmp_strings.xml:107(item)
 msgid "Chinese (Simplified)"
 msgstr "Çince (Basitleştirilmiş)"
 
-#: tmp_strings.xml:104(item)
+#: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
 msgstr "Çince (Geleneksel)"

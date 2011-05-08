@@ -404,14 +404,12 @@ msgid "Reverse Alphabetical"
 msgstr "Inversar l'òrdre alfabetic"
 
 #: tmp_strings.xml:186(item)
-#, fuzzy
 msgid "Last Modified"
-msgstr "Tèxte modificat"
+msgstr ""
 
 #: tmp_strings.xml:187(item)
-#, fuzzy
 msgid "First Modified"
-msgstr "Tèxte modificat"
+msgstr ""
 
 #: tmp_strings.xml:188(item)
 msgid "Newest to Oldest"

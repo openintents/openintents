@@ -55,9 +55,8 @@ msgid "Send list"
 msgstr "Отправить список"
 
 #: tmp_strings.xml:38(string)
-#, fuzzy
 msgid "Mark all items"
-msgstr "Выделить элемент"
+msgstr ""
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."

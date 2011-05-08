@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Tomasz 'Zen' Napierala <tomasz@napierala.org>\n"
+"Last-Translator: Damian Skrodzki <damienix1@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,7 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
+"  Damian Skrodzki https://launchpad.net/~damienix\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn"
 
 #. Short explanation of the application
@@ -51,7 +52,7 @@ msgstr "Kolor"
 #. Application name should be consistent across translations.
 #: tmp_strings.xml:24(string)
 msgid "OI Color Picker"
-msgstr ""
+msgstr "OI Próbnik Kolorów"
 
 #. Title for preferences or settings
 #: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
@@ -73,6 +74,8 @@ msgid ""
 "To make the Color Picker more useful to other developers, we have split it "
 "into its own app."
 msgstr ""
+"Aby uczynić Próbnik Kolorów jeszcze bardziej użytecznym dla innych "
+"programistów, uczyniliśmy go odrębną aplikacją."
 
 
 
