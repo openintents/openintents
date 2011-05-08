@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   Sjoerd Hiemstra https://launchpad.net/~sjohie</translators>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
