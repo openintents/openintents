@@ -184,14 +184,6 @@ public class ImportCsv {
 					String [] aisle_price = key_vals[1].split("/");
 					if (aisle_price.length == 0)
 						continue;
-					/*
-					int aisle;
-					try {
-						aisle = Integer.parseInt(aisle_price[0]);
-					} catch (java.lang.NumberFormatException nfe) {
-						aisle = -1;
-					}
-					*/
 					String aisle = aisle_price[0];
 					String store_price = "";
 					if (aisle_price.length > 1) {
