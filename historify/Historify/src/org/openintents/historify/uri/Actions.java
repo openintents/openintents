@@ -1,6 +1,6 @@
 package org.openintents.historify.uri;
 
-public class Actions {
+public final class Actions {
 
 	//ContactsActivity
 	public static final String EXTRA_MODE_FAVORITES = "favorites";

@@ -8,4 +8,7 @@
 	
 	<string name="contacts.no_contacts">No contacts.</string>
 	
+	<string name="sources.internal_sources">Internal</string>
+	<string name="sources.external_sources">External</string>
+	
 </resources>

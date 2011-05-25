@@ -42,12 +42,16 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		//create menu items
-		MenuItem[] menuItems = new MenuItem[2];
+		MenuItem[] menuItems = new MenuItem[3];
 		menuItems[0] =new MenuItem(this, R.string.main_menu_contacts, new Intent(
 				this, ContactsActivity.class));
+		
 		Intent intent = new Intent(this, ContactsActivity.class);
 		intent.putExtra(Actions.EXTRA_MODE_FAVORITES, true);
 		menuItems[1] =new MenuItem(this, R.string.main_menu_favorites, intent);
+		
+		menuItems[2] =new MenuItem(this, R.string.main_menu_sources, new Intent(
+				this, SourcesActivity.class));
 		
 		
 		//init menu

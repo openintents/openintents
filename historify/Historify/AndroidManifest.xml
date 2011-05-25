@@ -15,13 +15,20 @@
         </activity>
         
         <activity android:name=".ContactsActivity"/>
+        
         <activity android:name=".TimeLineActivity" >
         	<intent-filter>
                 <action android:name="org.openintents.historify.SHOW_TIMELINE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 		</activity>
+		
         <activity android:name="SourcesActivity"/>
+        
+        <provider android:name=".data.providers.SourcesProvider"
+            android:authorities="org.openintents.historify.sources"
+            android:exported="false"> 
+        </provider>
         
     </application>
     

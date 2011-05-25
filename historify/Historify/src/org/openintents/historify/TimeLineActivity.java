@@ -27,6 +27,7 @@ public class TimeLineActivity extends Activity {
 		//mLstTimeLine = (ListView) findViewById(R.id.timeline_lstTimeLine);
 		txtContact = (TextView) findViewById(R.id.timeline_txtContact);
 
+		
 		String contactLookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);
 		if(contactLookupKey==null) {
 			Log.w(NAME, "Contact lookupkey not provided.");
