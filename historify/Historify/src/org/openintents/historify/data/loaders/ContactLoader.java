@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.Contacts;
 
 public class ContactLoader {
 
@@ -23,7 +24,7 @@ public class ContactLoader {
 		return openCursor(context, starredOnly,null);
 	}
 	
-	public Cursor openCursor(Activity context, boolean starredOnly, String selection) {
+	public Cursor openCursor(Activity context, boolean starredOnly, String[] selection) {
 		
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
         String[] projection = PROJECTION;
@@ -34,8 +35,15 @@ public class ContactLoader {
         	querySelection.append(" AND "+ContactsContract.Contacts.STARRED + " = '1'");
         
         if(selection!=null) {
-        	querySelection.append(" AND ");
-        	querySelection.append(selection);
+        	querySelection.append(" AND "+ContactsContract.Contacts.LOOKUP_KEY+ " IN (");
+        	for(String s : selection) {
+        		querySelection.append('\'');
+        		querySelection.append(s);
+        		querySelection.append('\'');
+        		querySelection.append(',');
+        	}
+        	if(selection.length!=0) 
+        		querySelection.setCharAt(querySelection.length()-1, ')');
         }
         
         String[] selectionArgs = null;
@@ -56,7 +64,9 @@ public class ContactLoader {
 
 	public Contact loadFromLookupKey(Activity context, String contactLookupKey) {
 		
-		String selection = ContactsContract.Contacts.LOOKUP_KEY + " = '"+contactLookupKey+"'";
+		String[] selection  = new String[] {
+				contactLookupKey	
+		};
 		
 		Cursor cursor = openCursor(context, false, selection);
 		

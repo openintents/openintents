@@ -14,7 +14,7 @@ public class TimeLineActivity extends Activity {
 	private static final String NAME = "TimeLineActivity";
 	
 	//private ListView mLstTimeLine;
-	private TextView txtContact;
+	private TextView mTxtContact;
 
 	private Contact mContact;
 	
@@ -25,7 +25,7 @@ public class TimeLineActivity extends Activity {
 		setContentView(R.layout.timeline);
 
 		//mLstTimeLine = (ListView) findViewById(R.id.timeline_lstTimeLine);
-		txtContact = (TextView) findViewById(R.id.timeline_txtContact);
+		mTxtContact = (TextView) findViewById(R.id.timeline_txtContact);
 
 		
 		String contactLookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);
@@ -44,7 +44,7 @@ public class TimeLineActivity extends Activity {
 		
 		if(mContact == null) finish();
 		else {
-			txtContact.setText(mContact.getName());	
+			mTxtContact.setText(mContact.getName());	
 		}
 		
 	}

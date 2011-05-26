@@ -1,4 +1,4 @@
-package org.openintents.historify.data.model;
+package org.openintents.historify.data.model.source;
 
 
 public class ExternalSource extends AbstractSource {

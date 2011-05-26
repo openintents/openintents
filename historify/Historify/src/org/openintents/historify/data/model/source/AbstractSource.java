@@ -1,4 +1,4 @@
-package org.openintents.historify.data.model;
+package org.openintents.historify.data.model.source;
 
 public abstract class AbstractSource {
 
@@ -17,6 +17,7 @@ public abstract class AbstractSource {
 	private long mId;
 	private String mName;
 	private SourceState mState;
+	private SourceFilter mSourceFilter;
 
 	protected boolean mIsInternal = false;
 
@@ -28,10 +29,6 @@ public abstract class AbstractSource {
 
 	public boolean isInternal() {
 		return mIsInternal;
-	}
-
-	public boolean isEnabled() {
-		return mState == SourceState.ENABLED;
 	}
 
 	public long getId() {
@@ -50,6 +47,24 @@ public abstract class AbstractSource {
 		this.mState = mState;
 	}
 
+	public boolean isEnabled() {
+		return (mSourceFilter==null && mState==SourceState.ENABLED) || (mSourceFilter!=null && mSourceFilter.getFilteredState()==SourceState.ENABLED);
+	}
+
+	public void setEnabled(boolean checked) {
+		SourceState newState = checked ? SourceState.ENABLED : SourceState.DISABLED;
+		if(mSourceFilter==null) setState(newState);
+		else mSourceFilter.setFilteredState(newState);
+	}
+	
+	public void setSourceFilter(SourceFilter mSourceFilter) {
+		this.mSourceFilter = mSourceFilter;
+	}
+	
+	public SourceFilter getSourceFilter() {
+		return mSourceFilter;
+	}
+	
 	public static AbstractSource factoryMethod(boolean isInternal, long id,
 			String name, String state) {
 

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.loaders.SourceLoader;
-import org.openintents.historify.data.model.AbstractSource;
-import org.openintents.historify.data.model.ExternalSource;
-import org.openintents.historify.data.model.InternalSource;
-import org.openintents.historify.data.model.AbstractSource.SourceState;
+import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.ExternalSource;
+import org.openintents.historify.data.model.source.InternalSource;
+import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 
 import android.app.Activity;
 import android.content.Context;
@@ -30,20 +32,23 @@ public class SourcesAdapter extends BaseAdapter {
 	
 	private Activity mContext;
 
-	private SourceLoader mLoader;
+	private SourceLoader mSourceLoader;
+	private FilterLoader mFilterLoader;
 	private List<InternalSource> mInternalSources;
 	private List<ExternalSource> mExternalSources;
 	private SparseBooleanArray mCheckedItems;
 
+	private Contact mFilterModeContact = null;
+	private int mFilterModePosition = 0;
+	
 	public SourcesAdapter(Activity context, ListView listView) {
 
 		mContext = context;
-		mLoader = new SourceLoader();
+		mSourceLoader = new SourceLoader();
+		mFilterLoader = new FilterLoader();
 		mInternalSources = new ArrayList<InternalSource>();
 		mExternalSources = new ArrayList<ExternalSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
-		
-		load();
 	}
 
 	public void load() {
@@ -51,10 +56,14 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources.clear();
 		mExternalSources.clear();
 
-		Cursor c = mLoader.openCursor(mContext);
+		Cursor c = mSourceLoader.openCursor(mContext, mFilterModeContact);
 		for (int i = 0; i < c.getCount(); i++) {
-			AbstractSource source = mLoader.loadFromCursor(c, i);
+			AbstractSource source = mSourceLoader.loadFromCursor(c, i);
 			if (source != null) {
+				
+				if(mFilterModeContact!=null && source.getSourceFilter()!=null) 
+					source.getSourceFilter().setContact(mFilterModeContact);
+				
 				if (source.isInternal())
 					mInternalSources.add((InternalSource) source);
 				else
@@ -84,6 +93,15 @@ public class SourcesAdapter extends BaseAdapter {
 				mInternalSources.get(position - HEADER_OFFSET);
 		}
 		
+	}
+
+	public List<AbstractSource> getItems() {
+		
+		ArrayList<AbstractSource> retval = new ArrayList<AbstractSource>();
+		retval.addAll(mInternalSources);
+		retval.addAll(mExternalSources);
+		
+		return retval;
 	}
 
 	public long getItemId(int position) {
@@ -117,7 +135,7 @@ public class SourcesAdapter extends BaseAdapter {
 			CheckedTextView ctv = ((CheckedTextView)convertView); 
 			ctv.setText(item.getName());
 			
-			mCheckedItems.put(position, item.getState()==SourceState.ENABLED);
+			mCheckedItems.put(position, item.isEnabled());
 		}
 		return convertView;
 	}
@@ -148,7 +166,23 @@ public class SourcesAdapter extends BaseAdapter {
 	}
 
 	public void update(AbstractSource source) {
-		mLoader.update(mContext, source);
+		
+		if(mFilterModeContact==null)
+			mSourceLoader.update(mContext, source);
+		else
+			mFilterLoader.update(mContext,source.getSourceFilter());
+	}
+
+	public void setFilterMode(Contact contact, int position) {
+		
+		mFilterModeContact = contact;
+		mFilterModePosition = position;
+		
+		load();
+	}
+
+	public int getFilterModePosition() {
+		return mFilterModePosition;
 	}
 
 }

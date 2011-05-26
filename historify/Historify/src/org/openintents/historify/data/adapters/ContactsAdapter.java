@@ -55,11 +55,10 @@ public class ContactsAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = ((LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-					.inflate(android.R.layout.simple_list_item_1, null);
+					.inflate(android.R.layout.two_line_list_item, null);
 		}
 
-		TextView txtName = (TextView) convertView;
-				//.findViewById(R.id.contacts_listitem_txtName);
+		TextView txtName = (TextView) convertView.findViewById(android.R.id.text1);
 		txtName.setText(contact.getName());
 
 		return convertView;
