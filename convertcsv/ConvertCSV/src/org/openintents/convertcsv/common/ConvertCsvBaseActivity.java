@@ -415,7 +415,7 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
 					try{						
 						Reader reader;
 						
-						Encoding enc = getCurrentEncoding(); 
+						Encoding enc = getCurrentEncoding();
 						if (enc == null){
 							reader = new InputStreamReader(new FileInputStream(file));
 						} else {
@@ -552,7 +552,7 @@ public class ConvertCsvBaseActivity extends DistributionLibraryActivity {
 			public void run() {
 				try{
 					Writer writer;
-					Encoding enc = (Encoding)mSpinnerEncoding.getSelectedItem();
+					Encoding enc = getCurrentEncoding();
 					if (enc == null){
 						writer = new OutputStreamWriter(new FileOutputStream(file));
 					} else {

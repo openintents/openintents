@@ -141,6 +141,8 @@ public class ExportCsv {
 		
 		csvwriter.write(handyShopperColumns);
 		csvwriter.writeNewline();
+		
+		csvwriter.setQuoteCharacter(CSVWriter.DEFAULT_QUOTE_CHARACTER);
 	
 				
 		Cursor ci = mContext.getContentResolver().query(
@@ -190,34 +192,38 @@ public class ExportCsv {
 				
 				// Retrieve note:
 				String note = getHandyShopperNote(itemId);
+				if (note != null) {
+					// Replace LF by CR+LF
+					note = note.replace("\n", "\r\n");
+				}
 				
 				String stores = getHandyShopperStores(itemId);
 				String perStoreInfo = getHandyShopperPerStoreInfo(itemId);
 				
 				
-				csvwriter.write(statusText); // 0 Need
-				csvwriter.write(priority); // 1 Priority
-				csvwriter.write(itemname); // 2 Description
-				csvwriter.write(otherTags); // 3 CustomText
-				csvwriter.write(quantity); // 4 Quantity
-				csvwriter.write(unit); // 5 Units
-				csvwriter.write(pricestring); // 6 Price
-				csvwriter.write(""); // 7 Aisle
-				csvwriter.write(""); // 8 Date
-				csvwriter.write(firstTag); // 9 Category
-				csvwriter.write(stores); // 10 Stores
-				csvwriter.write(perStoreInfo); // 11 PerStoreInfo
-				csvwriter.write(""); // 12 EntryOrder
-				csvwriter.write(""); // 13 Coupon
-				csvwriter.write(""); // 14 Tax
-				csvwriter.write(""); // 15 Tax2
-				csvwriter.write(""); // 16 AutoDelete
-				csvwriter.write(""); // 17 Private
-				csvwriter.write(note); // 18 Note
-				csvwriter.write(""); // 19 Alarm
-				csvwriter.write("0"); // 20 AlarmMidi
-				csvwriter.write("0"); // 21 Icon
-				csvwriter.write(""); // 22 AutoOrder
+				csvwriter.writeValue(statusText); // 0 Need
+				csvwriter.writeValue(priority); // 1 Priority
+				csvwriter.writeValue(itemname); // 2 Description
+				csvwriter.writeValue(otherTags); // 3 CustomText
+				csvwriter.writeValue(quantity); // 4 Quantity
+				csvwriter.writeValue(unit); // 5 Units
+				csvwriter.writeValue(pricestring); // 6 Price
+				csvwriter.writeValue(""); // 7 Aisle
+				csvwriter.writeValue(""); // 8 Date
+				csvwriter.writeValue(firstTag); // 9 Category
+				csvwriter.writeValue(stores); // 10 Stores
+				csvwriter.writeValue(perStoreInfo); // 11 PerStoreInfo
+				csvwriter.writeValue(""); // 12 EntryOrder
+				csvwriter.writeValue(""); // 13 Coupon
+				csvwriter.writeValue(""); // 14 Tax
+				csvwriter.writeValue(""); // 15 Tax2
+				csvwriter.writeValue(""); // 16 AutoDelete
+				csvwriter.writeValue(""); // 17 Private
+				csvwriter.write(note); // 18 Note (use quotes)
+				csvwriter.writeValue(""); // 19 Alarm
+				csvwriter.writeValue("0"); // 20 AlarmMidi
+				csvwriter.writeValue("0"); // 21 Icon
+				csvwriter.writeValue(""); // 22 AutoOrder
 				
 				csvwriter.writeNewline();
 			}

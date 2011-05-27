@@ -118,8 +118,11 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
 
 	@Override
 	protected Encoding getDefaultEncoding() {
-		if (1 == mSpinner.getSelectedItemId()){
-			 return Encoding.ISO_8859_1;
+		long id = mSpinner.getSelectedItemId();
+		if (0 == id) {
+			 return Encoding.ISO_8859_1; // Default encoding for "MS Outlook Tasks".
+		} else if (1 == id) {
+			return Encoding.UTF_8; // Default encoding for "HandyShopper".
 		} else {
 			return super.getDefaultEncoding();
 		}
