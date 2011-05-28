@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Damian Skrodzki https://launchpad.net/~damienix
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
 	
     <!-- Short explanation of the application -->
@@ -153,7 +154,7 @@ Launchpad Contributions:
     <string name="preference_notification_timeout_title">Czas trwania powiadomień</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">Zwłoka dla dzwonka, wibracji lub powiadomienia świetlnego.</string>
     
     <!-- Dialog title to set timeout for notification -->
     <string name="preference_notification_timeout_dialog_title">Ustaw czas trwania</string>

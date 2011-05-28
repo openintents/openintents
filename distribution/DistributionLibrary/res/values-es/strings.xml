@@ -8,6 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Hector A. Mantellini https://launchpad.net/~xombra
   Paco Molinero https://launchpad.net/~franciscomol</string>
 	
 	<!-- ***************************
@@ -57,7 +58,7 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">Acerca de</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">No hay extensión compatibles disponible  para mostrar toda la información (de contacto, créditos, licencia).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
@@ -76,29 +77,29 @@
     <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
     <string name="oi_distribution_safe_not_available">No hay aplicación compatible de cifrado disponible.</string>
-    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_not_available_decrypt">No hay ninguna aplicación compatible para el descifrado disponible.\n\nNota:. Usted tiene que restaurar la clave maestra desde una copia de seguridad para acceder a los datos previamente codificados.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
+    <string name="oi_distribution_download_market_message">Por favor, descargue %s del sitio web de OpenIntents.</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
+    <string name="oi_distribution_download_message">Por favor, descargue %s desde el sitio web OpenIntents.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market download</string>
+    <string name="oi_distribution_download_market">Market de descargas</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
-    <string name="oi_distribution_download_web">Web download</string>
+    <string name="oi_distribution_download_web">Web de descarga</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_title">Descargar %s</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
-	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
+	<string name="oi_distribution_info_activity_text">%s se puede ser utilizado con las siguientes aplicaciones:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
-    <string name="oi_distribution_info_launch">Launch %s</string>
+    <string name="oi_distribution_info_launch">Iniciar %s</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
-	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
+	<string name="oi_distribution_info_not_available">%1$s requiere %2$s %3$s o superior.</string>
 	<!-- Title of a dialog. -->
-	<string name="oi_distribution_info_instructions">Instructions</string>
+	<string name="oi_distribution_info_instructions">Instrucciones</string>
 	<!-- Error message -->
-	<string name="oi_distribution_launch_error">Application could not be launched</string>
+	<string name="oi_distribution_launch_error">La aplicación no podría ser iniciada</string>
 	
 </resources>

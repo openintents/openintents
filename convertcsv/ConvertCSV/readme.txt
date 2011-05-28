@@ -21,12 +21,14 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
-release: 1.1.0-rc1
-date: 2011-05-01
+release: 1.1.0
+date: 2011-05-28
+
+NOTE: Use the new HandyShopper format to export tags, price, and quantity from OI Shopping List. Export each list separately in this format.
 
 - support moving app to SD card.
 - Add progress bar during conversion.
-- Shopping list export with tags
+- Shopping list export with tags.
 - Add support for HandyShopper import and export (including patch by Aaron Peromsik).
 - Choose custom encoding.
 - support Android 2.3.

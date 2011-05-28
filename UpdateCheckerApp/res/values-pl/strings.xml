@@ -16,16 +16,16 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Nowa wersja %s jest dostępna.\nChcesz ją zaktualizować?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_3">Nowa wersja %1$s jest dostępna  w %2$s.\n%3$s\n</string>
+    <string name="update_available_2">Nowa wersja %1$s jest dostępna.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Nowa wersja %1$s jest dostępna w %2$s.</string>
     <string name="update_available_no_comment">Nowa wersja %s jest dostępna.</string>
 	<string name="market_not_available">Android Market jest niedostępny.</string>
     <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="about_text_extended">Wersja %1$s\nkarta SD %2$s\n\nOS\n%3$s</string>
     <string name="free_space">wolne miejsce: %s</string>
     <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
     
