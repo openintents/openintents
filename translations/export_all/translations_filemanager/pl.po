@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Schlussarz <schlussarz@schlussarz.pl>\n"
+"Last-Translator: Damian Skrodzki <damienix1@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -139,7 +139,7 @@ msgstr "Skopiuj tutaj"
 
 #: tmp_strings.xml:64(string)
 msgid "Deleting files..."
-msgstr ""
+msgstr "Usuwanie plików..."
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:67(string)
@@ -162,7 +162,7 @@ msgstr "Kopia %s"
 #. Construct a unique file name with number %1$d of a file called %2$s.
 #: tmp_strings.xml:78(string)
 msgid "Copy %1$d of %2$s"
-msgstr ""
+msgstr "Kopiowanie %1$d z %2$s"
 
 #: tmp_strings.xml:80(string)
 msgid "This folder will be included in the next media scan."
@@ -240,11 +240,11 @@ msgstr "Zaawansowane"
 
 #: tmp_strings.xml:109(string)
 msgid "Show menu item to exclude folders from media scan."
-msgstr ""
+msgstr "Pokaż w menu przycisk do wyłączania folderów ze skanowanych mediów."
 
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
-msgstr ""
+msgstr "Ukryj w menu przycisk do wyłączania folderów ze skanowanych mediów."
 
 
 

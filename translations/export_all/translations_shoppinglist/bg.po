@@ -1,7 +1,7 @@
-# Japanese translation for openintents
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# Bulgarian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the openintents package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
@@ -10,7 +10,7 @@ msgstr ""
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Peli <peli0101@googlemail.com>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,9 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  bkiw https://launchpad.net/~bkiw\n"
-"  friedger https://launchpad.net/~friedger"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application
 #: tmp_strings.xml:27(string)
@@ -33,23 +31,26 @@ msgid ""
 "use it for other kinds of check lists, for example for ToDo lists or party "
 "guest lists."
 msgstr ""
+"Списъкът за пазаруване на OI ви позволява да следите вашите покупки. Можете "
+"да го използвате за други проверки, например за списъци със задачи или "
+"списъци с гости за партита."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
 msgid "OI Shopping list"
-msgstr "OI Shopping list"
+msgstr "OI списък за пазаруване"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
-msgstr "新規アイテム"
+msgstr "Нов продукт"
 
 #: tmp_strings.xml:36(string)
 msgid "New list"
-msgstr "新規リスト"
+msgstr "Нов списък"
 
 #: tmp_strings.xml:37(string)
 msgid "Send list"
-msgstr "リストを送信"
+msgstr "Изпрати списък"
 
 #: tmp_strings.xml:38(string)
 msgid "Mark all items"
@@ -57,40 +58,40 @@ msgstr ""
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."
-msgstr ""
+msgstr "Празният списък не е изпратен."
 
 #: tmp_strings.xml:40(string)
 msgid "No application available for sending."
-msgstr "利用できる送信用アプリがありません。"
+msgstr "Не се предлага приложение за изпращане."
 
 #: tmp_strings.xml:41(string)
 msgid "My shopping list"
-msgstr "My shopping list"
+msgstr "Мой списък за пазаруване"
 
 #: tmp_strings.xml:42(string)
 msgid "i.e. wishlist, family list"
-msgstr "例：欲しいものリスト, 家族一覧"
+msgstr "напр. списък с желания, семеен списък"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:271(item)
 msgid "Clean up list"
-msgstr "リストのクリーン"
+msgstr "Почисти списък"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr "リストを削除"
+msgstr "Изтрий списък"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr "新しいリストの名前を入力して下さい"
+msgstr "Въведи име на новия списък за пазаруване"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr "リストの名前を変更"
+msgstr "Преименувай списъка за пазаруване"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
-msgstr "アイテムの編集"
+msgstr "Редактирай елемент"
 
 #: tmp_strings.xml:48(string)
 msgid "Enter new store name"
@@ -98,47 +99,47 @@ msgstr ""
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
-msgstr "名前を入力して下さい"
+msgstr "Моля, въведете име"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr "チェック済みのアイテムがありません。"
+msgstr "Няма елементи, които да са маркирани като зачеркнати."
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
-msgstr "リストを削除してもよろしいですか？"
+msgstr "Наистина ли искате да изтриете този списък за пазаруване?"
 
 #: tmp_strings.xml:52(string)
 msgid "Error while accessing shopping lists."
-msgstr "リストへのアクセスでエラーが発生しました。"
+msgstr "Грешка при достъп до списъка за пазаруване."
 
 #: tmp_strings.xml:53(string)
 msgid "Pick an item"
-msgstr "アイテムを選択"
+msgstr "Изберете елемент"
 
 #: tmp_strings.xml:54(string)
 msgid "Pick a list"
-msgstr "リストを選択"
+msgstr "Изберете списък"
 
 #: tmp_strings.xml:55(string)
 msgid "Theme"
-msgstr "テーマ"
+msgstr "Палитра"
 
 #: tmp_strings.xml:56(string)
 msgid "Theme settings"
-msgstr "テーマの設定"
+msgstr "Настройки палитра"
 
 #: tmp_strings.xml:57(string)
 msgid "Rename list"
-msgstr "リストの名前を変更"
+msgstr "Преименувай списък"
 
 #: tmp_strings.xml:58(string)
 msgid "Mark item"
-msgstr "アイテムをマーク"
+msgstr "Маркирай елемент"
 
 #: tmp_strings.xml:60(string)
 msgid "Auto add"
-msgstr "自動追加"
+msgstr "Автоматично добавяне"
 
 #: tmp_strings.xml:61(string)
 msgid "Stores..."
@@ -153,13 +154,13 @@ msgstr ""
 #. 	     tags or price will be kept.
 #: tmp_strings.xml:67(string)
 msgid "Remove item from list"
-msgstr ""
+msgstr "Отстрани елемент от списъка"
 
 #. Delete this item completely. If the user wants to add it again, they
 #. 	     have to enter all the information again.
 #: tmp_strings.xml:71(string)
 msgid "Delete item permanently"
-msgstr ""
+msgstr "Изтрий елемент перманентно"
 
 #: tmp_strings.xml:72(string)
 msgid "Move item to other list"
@@ -168,52 +169,52 @@ msgstr ""
 #. Button label to add an item to the list.
 #: tmp_strings.xml:74(string)
 msgid "Add"
-msgstr "追加"
+msgstr "Добавяне"
 
 #: tmp_strings.xml:76(string)
 msgid "Pick items"
-msgstr "アイテムを選択"
+msgstr "Избери елементи"
 
 #: tmp_strings.xml:77(string)
 msgid "Shopping"
-msgstr "ショッピング"
+msgstr "Пазаруване"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:80(string)
 msgid "%s - Pick items"
-msgstr "%s - アイテムを選択"
+msgstr "%s - Избери елементи"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:83(string)
 msgid "%s - Shopping"
-msgstr ""
+msgstr "%s - Пазаруване"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:86(string)
 #, fuzzy
 msgid "%s - Stores"
-msgstr "%s - アイテムを選択"
+msgstr "%s - Избери елементи"
 
 #: tmp_strings.xml:87(string)
 #, fuzzy
 msgid "Edit Item Stores"
-msgstr "アイテムの編集"
+msgstr "Редактирай елемент"
 
 #: tmp_strings.xml:89(string)
 msgid "Tags"
-msgstr "タグ"
+msgstr "Отметки"
 
 #: tmp_strings.xml:90(string)
 msgid "Price"
-msgstr "価格"
+msgstr "Цена"
 
 #: tmp_strings.xml:91(string)
 msgid "Item"
-msgstr "アイテム"
+msgstr "Елемент"
 
 #: tmp_strings.xml:92(string)
 msgid "Quantity"
-msgstr "数量"
+msgstr "Количество"
 
 #: tmp_strings.xml:93(string)
 msgid "Priority"
@@ -234,22 +235,24 @@ msgstr ""
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:99(string)
 msgid "Total: %s"
-msgstr "合計価格: %s"
+msgstr "Общо: %s"
 
 #. Sum of all prices of the checked items. '%s' is the sum
 #: tmp_strings.xml:102(string)
 msgid "Checked: %s"
-msgstr "チェック済合計価格: %s"
+msgstr "Проверени: %s"
 
 #: tmp_strings.xml:104(string)
 msgid ""
 "Are you sure you want to permanently delete this item, its tags, and its "
 "price from all shopping lists?"
 msgstr ""
+"Сигурни ли сте, че искате перманентно да изтриете този елемент, неговите "
+"маркери и цената му от всички списъци за пазаруване?"
 
 #: tmp_strings.xml:105(string)
 msgid "Delete"
-msgstr "削除"
+msgstr "Изтриване"
 
 #. Added to an item to indicate it was bought.
 #: tmp_strings.xml:108(string)
@@ -259,30 +262,30 @@ msgstr "... OK"
 #. The shortcut is created on the home screen.
 #: tmp_strings.xml:112(string)
 msgid "Pick list for shortcut"
-msgstr "リストのショートカットを作成"
+msgstr "Избери списък за бърза команда"
 
 #. Shown if external application wants to insert new items.
 #: tmp_strings.xml:115(string)
 msgid "Pick list to insert items"
-msgstr ""
+msgstr "Избери списък за въвеждане на елементи"
 
 #. Title for selecting a theme
 #: tmp_strings.xml:119(string)
 msgid "Pick a theme"
-msgstr "テーマを選択"
+msgstr "Избери палитра"
 
 #: tmp_strings.xml:120(string)
 msgid "Choose a theme for this list"
-msgstr "このリストのテーマを選択"
+msgstr "Избери палитра от този списък"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:121(string) tmp_strings.xml:236(item)
 msgid "Default"
-msgstr "デフォルト"
+msgstr "По подразбиране"
 
 #: tmp_strings.xml:122(string)
 msgid "Classic"
-msgstr "クラシック"
+msgstr "Класика"
 
 #: tmp_strings.xml:123(string)
 msgid "Android"
@@ -290,11 +293,11 @@ msgstr "Android"
 
 #: tmp_strings.xml:124(string)
 msgid "Classic (from OI Shopping List)"
-msgstr "Classic (from OI Shopping List)"
+msgstr "Класика (от OI списъка за пазаруване)"
 
 #: tmp_strings.xml:125(string)
 msgid "Android (from OI Shopping List)"
-msgstr "Android (from OI Shopping List)"
+msgstr "Android (от OI списъка за пазаруване)"
 
 #. Button label "OK"
 #: tmp_strings.xml:129(string)
@@ -304,94 +307,94 @@ msgstr "OK"
 #. Button label "Cancel"
 #: tmp_strings.xml:131(string)
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr "Откажи"
 
 #: tmp_strings.xml:132(string)
 msgid "Use this theme for all lists"
-msgstr "テーマを全てのリストで使用する"
+msgstr "Използване на тази палитра за всички списъци"
 
 #: tmp_strings.xml:133(string)
 msgid "Get more themes"
-msgstr "テーマを入手"
+msgstr "Вземете повече палитри"
 
 #. preferences
 #: tmp_strings.xml:136(string)
 msgid "Settings"
-msgstr "設定"
+msgstr "Настройки"
 
 #: tmp_strings.xml:138(string)
 msgid "Application settings"
-msgstr "アプリケーションの設定"
+msgstr "Настройки на приложението"
 
 #: tmp_strings.xml:140(string)
 msgid "Unchecked on top"
-msgstr ""
+msgstr "Немаркирани най-отгоре"
 
 #: tmp_strings.xml:141(string)
 msgid "Always show unchecked items first"
-msgstr "未チェックのアイテムを先頭に表示"
+msgstr "Винаги показвай първо немаркирани"
 
 #: tmp_strings.xml:142(string)
 msgid "Font size"
-msgstr "フォントサイズ"
+msgstr "Размер на шрифт"
 
 #: tmp_strings.xml:143(string)
 msgid "Change font size"
-msgstr "フォントサイズを変更"
+msgstr "Промени размер на шрифт"
 
 #: tmp_strings.xml:144(string)
 msgid "Choose font size"
-msgstr "フォントサイズを選択"
+msgstr "Избери размер на шрифт"
 
 #: tmp_strings.xml:145(string)
 msgid "Sort order"
-msgstr "ソート順"
+msgstr "Сортиране на реда"
 
 #: tmp_strings.xml:146(string)
 msgid "Change sort order of list items"
-msgstr "アイテムのソート順を変更"
+msgstr "Промени реда на подреждане на елементи от списъка"
 
 #: tmp_strings.xml:147(string)
 msgid "Choose sort order"
-msgstr "ソート順を選択"
+msgstr "Избери реда на подреждане"
 
 #: tmp_strings.xml:148(string)
 msgid "Load last list used"
-msgstr ""
+msgstr "Зареди последно ползван списък"
 
 #: tmp_strings.xml:149(string)
 msgid "Always start with the list viewed last time."
-msgstr ""
+msgstr "Започвай винаги с последно прегледания списък."
 
 #: tmp_strings.xml:150(string)
 msgid "Capitalization"
-msgstr "大文字化"
+msgstr "Главна буква"
 
 #: tmp_strings.xml:151(string)
 msgid "Automatic capitalization of entries"
-msgstr "アイテム追加時に自動的に大文字化する"
+msgstr "Автоматично изписване на записите с главна буква"
 
 #: tmp_strings.xml:152(string)
 msgid "Choose capitalization"
-msgstr "大文字化の方法を選択"
+msgstr "Избери писане с главни букви"
 
 #: tmp_strings.xml:153(string)
 msgid "Hide checked items"
-msgstr "チェックしたアイテムを隠す"
+msgstr "Скрий маркирани елементи"
 
 #: tmp_strings.xml:154(string)
 msgid "Immediately hide items checked off."
-msgstr ""
+msgstr "Скрий веднага елементи, които са демаркирани."
 
 #: tmp_strings.xml:155(string)
 msgid "Show price"
-msgstr "価格を表示"
+msgstr "Покажи цена"
 
 #: tmp_strings.xml:156(string) tmp_strings.xml:160(string)
 #: tmp_strings.xml:162(string) tmp_strings.xml:164(string)
 #: tmp_strings.xml:166(string)
 msgid "Shown as extra column in list."
-msgstr "リストに列を追加表示。"
+msgstr "Показано като допълнителна колона в списъка."
 
 #: tmp_strings.xml:157(string)
 msgid "Track per-store prices"
@@ -403,11 +406,11 @@ msgstr ""
 
 #: tmp_strings.xml:159(string)
 msgid "Show tags"
-msgstr "タグを表示"
+msgstr "Покажи маркери"
 
 #: tmp_strings.xml:161(string)
 msgid "Show quantity"
-msgstr "数量を表示"
+msgstr "Покажи количество"
 
 #: tmp_strings.xml:163(string)
 msgid "Show priority"
@@ -420,126 +423,128 @@ msgstr ""
 #. Preference title: Shake the phone to clean up the list.
 #: tmp_strings.xml:169(string)
 msgid "Shake to clean up"
-msgstr "シェイクでリストをクリーン"
+msgstr "Разклати за почистване"
 
 #. Preference summary: Shake the phone to clean up the list.
 #: tmp_strings.xml:172(string)
 msgid "Shake the phone to clean up the list."
-msgstr "端末をシェイクする事でリストをクリーンする。"
+msgstr "Разклатете телефона за изчистване на списъка."
 
 #: tmp_strings.xml:174(string)
 msgid "Advanced settings"
-msgstr "詳細設定"
+msgstr "Допълнителни настройки"
 
 #: tmp_strings.xml:175(string)
 msgid "Additional settings regarding the appearance."
-msgstr "表示に関する追加設定。"
+msgstr "Допълнителни настройки относно външния вид."
 
 #. Preference category: General settings
 #: tmp_strings.xml:178(string)
 msgid "General"
-msgstr "一般"
+msgstr "Обща информация"
 
 #: tmp_strings.xml:180(string)
 msgid "Appearance"
-msgstr "表示"
+msgstr "Външен вид"
 
 #: tmp_strings.xml:182(string)
 msgid "Add-ons"
-msgstr "アドオン"
+msgstr "Добавки"
 
 #: tmp_strings.xml:183(string)
 msgid "Get new add-ons"
-msgstr "アドオンを取得"
+msgstr "Вземи нови добавки"
 
 #: tmp_strings.xml:184(string)
 msgid "Search for extensions and themes online."
-msgstr "拡張機能とテーマをインターネットで検索"
+msgstr "Търсете за разширения и палитри онлайн."
 
 #: tmp_strings.xml:185(string)
 msgid "Get add-ons from Market"
-msgstr "アドオンをマーケットから取得"
+msgstr "Вземи добавки от Market"
 
 #: tmp_strings.xml:186(string)
 msgid "Get add-ons from OpenIntents"
-msgstr "アドオンをOpenIntentsから取得"
+msgstr "Вземи добавки от OpenIntents"
 
 #: tmp_strings.xml:187(string)
 msgid "Extensions"
-msgstr "拡張機能"
+msgstr "Разширения"
 
 #: tmp_strings.xml:188(string)
 msgid "Themes"
-msgstr "テーマ"
+msgstr "Палитри"
 
 #: tmp_strings.xml:189(string)
 msgid "Search for extensions at Android Market."
-msgstr "拡張機能をAndroid Marketから検索"
+msgstr "Търсете разширения в Android Market."
 
 #: tmp_strings.xml:190(string)
 msgid "Search for themes at Android Market."
-msgstr "テーマをAndroid Marketから検索"
+msgstr "Търсете палитри в Android Market."
 
 #: tmp_strings.xml:191(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr "拡張機能をOpenIntentsから検索"
+msgstr "Вземете разширения от началната страница на OpenIntents."
 
 #: tmp_strings.xml:192(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr "テーマをOpenIntentsから取得"
+msgstr "Вземете палитри от началната страница на OpenIntents."
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:200(string)
 msgid "read shopping lists"
-msgstr "ショッピングリストの閲覧"
+msgstr "прочети списъци за пазаруване"
 
 #: tmp_strings.xml:201(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
-"他のアプリケーションにショッピングリストを閲覧する事を許可します。暗号化され"
-"たリストやアイテムは暗号化された状態で提供される事に注意してください。"
+"Позволява на приложение да чете списъците за пазаруване. Отбележете, че "
+"кодираните списъци и елементи се предоставят в кодиран формат."
 
 #. Permission to write to shopping lists
 #: tmp_strings.xml:203(string)
 msgid "write shopping lists"
-msgstr "ショッピングリストの作成・編集"
+msgstr "напиши списъци за пазаруване"
 
 #: tmp_strings.xml:204(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
-msgstr "他のアプリケーションにリストやアイテムの新規追加や編集を許可する。"
+msgstr ""
+"Позволява на приложение да създаде нови списъци и елементи или да промени "
+"съществуващи."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
 #: tmp_strings.xml:213(item)
 msgid "unchecked first, alphabetical"
-msgstr ""
+msgstr "първо немаркирани, азбучно"
 
 #. Preference sort order: Sort by item name
 #: tmp_strings.xml:215(item)
 msgid "alphabetical"
-msgstr "アルファベット順"
+msgstr "азбучно"
 
 #. Preference sort order: Newest item first
 #: tmp_strings.xml:217(item)
 msgid "newest first"
-msgstr "新しいアイテム順"
+msgstr "първо най-новите"
 
 #. Preference sort order: Oldest item first
 #: tmp_strings.xml:219(item)
 msgid "oldest first"
-msgstr "古いアイテム順"
+msgstr "първо най-старите"
 
 #. Preference sort order: Sort alphabetically by tags
 #: tmp_strings.xml:221(item)
 msgid "tags alphabetical"
-msgstr "タグのアルファベット順"
+msgstr "маркери по азбучен ред"
 
 #. Preference sort order: Sort by price, the most expensive first
 #: tmp_strings.xml:223(item)
 msgid "most expensive first"
-msgstr "価格の高い順"
+msgstr "първо най-скъпите"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
 #: tmp_strings.xml:225(item)
@@ -554,32 +559,32 @@ msgstr ""
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:232(item)
 msgid "Tiny"
-msgstr "極小"
+msgstr "Най-малки"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:234(item)
 msgid "Small"
-msgstr "小"
+msgstr "Малки"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:238(item)
 msgid "Large"
-msgstr "大"
+msgstr "Големи"
 
 #. Preference capitalization: No capitalization
 #: tmp_strings.xml:243(item)
 msgid "None"
-msgstr "なし"
+msgstr "Без"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:245(item)
 msgid "Per Sentence"
-msgstr "文単位"
+msgstr "На изречение"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:247(item)
 msgid "Per Word"
-msgstr "単語単位"
+msgstr "На дума"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:254(string)
@@ -594,50 +599,9 @@ msgstr ""
 #. Label above spinner for all actions (automation tasks) that can be performed.
 #: tmp_strings.xml:262(string)
 msgid "Select action:"
-msgstr "アクションを選択"
+msgstr "Избери действие:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
 #: tmp_strings.xml:265(string)
 msgid "Select list:"
-msgstr "リストを選択"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+msgstr "Избери списък:"

@@ -9,8 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
-"net>\n"
+"Last-Translator: Hector A. Mantellini <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,6 +26,7 @@ msgstr "Biblioteca de distribución OI"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Hector A. Mantellini https://launchpad.net/~xombra\n"
 "  Paco Molinero https://launchpad.net/~franciscomol"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
@@ -115,6 +115,8 @@ msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
 msgstr ""
+"No hay extensión compatibles disponible  para mostrar toda la información "
+"(de contacto, créditos, licencia)."
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
@@ -152,26 +154,29 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"No hay ninguna aplicación compatible para el descifrado disponible.\\n"
+"\\nNota:. Usted tiene que restaurar la clave maestra desde una copia de "
+"seguridad para acceder a los datos previamente codificados."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:81(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr ""
+msgstr "Por favor, descargue %s del sitio web de OpenIntents."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:83(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr ""
+msgstr "Por favor, descargue %s desde el sitio web OpenIntents."
 
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:85(string)
 msgid "Market download"
-msgstr ""
+msgstr "Market de descargas"
 
 #. Dialog button: download the suggested application from the developer web site.
 #: tmp_strings.xml:87(string)
 msgid "Web download"
-msgstr ""
+msgstr "Web de descarga"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:89(string)
@@ -181,25 +186,25 @@ msgstr "Descargar %s"
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:92(string)
 msgid "%s can be used with the following applications:"
-msgstr ""
+msgstr "%s se puede ser utilizado con las siguientes aplicaciones:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:94(string)
 msgid "Launch %s"
-msgstr ""
+msgstr "Iniciar %s"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
 #: tmp_strings.xml:97(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr ""
+msgstr "%1$s requiere %2$s %3$s o superior."
 
 #. Title of a dialog.
 #: tmp_strings.xml:99(string)
 msgid "Instructions"
-msgstr ""
+msgstr "Instrucciones"
 
 #. Error message
 #: tmp_strings.xml:101(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "La aplicación no podría ser iniciada"

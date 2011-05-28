@@ -141,9 +141,8 @@ msgid "Spanish"
 msgstr "İspanyolca"
 
 #: tmp_strings.xml:86(item)
-#, fuzzy
 msgid "Persian"
-msgstr "Almanca"
+msgstr ""
 
 #: tmp_strings.xml:87(item)
 msgid "Finnish"
@@ -158,9 +157,8 @@ msgid "French"
 msgstr "Fransızca"
 
 #: tmp_strings.xml:90(item)
-#, fuzzy
 msgid "Croatian"
-msgstr "Romence"
+msgstr ""
 
 #: tmp_strings.xml:91(item)
 msgid "Hungarian"

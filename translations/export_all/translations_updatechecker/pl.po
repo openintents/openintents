@@ -34,15 +34,15 @@ msgstr "Nowa wersja %s jest dostępna.\\nChcesz ją zaktualizować?"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "Nowa wersja %1$s jest dostępna  w %2$s.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "Nowa wersja %1$s jest dostępna.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "Nowa wersja %1$s jest dostępna w %2$s."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
@@ -62,7 +62,7 @@ msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "Wersja %1$s\\nkarta SD %2$s\\n\\nOS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
