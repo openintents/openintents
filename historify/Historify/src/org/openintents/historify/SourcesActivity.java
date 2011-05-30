@@ -4,15 +4,12 @@ import org.openintents.historify.data.adapters.FilterModesAdapter;
 import org.openintents.historify.data.adapters.SourcesAdapter;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 import org.openintents.historify.view.NewFilterModeDialog;
 
 import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;

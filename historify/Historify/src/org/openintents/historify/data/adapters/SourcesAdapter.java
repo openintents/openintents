@@ -10,7 +10,6 @@ import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.model.source.ExternalSource;
 import org.openintents.historify.data.model.source.InternalSource;
-import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 
 import android.app.Activity;
 import android.content.Context;

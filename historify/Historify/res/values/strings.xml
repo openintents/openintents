@@ -18,4 +18,8 @@
 	<string name="sources.internal_sources">Internal</string>
 	<string name="sources.external_sources">External</string>
 	
+	
+	<string name="telephony.event_message">Call duration: %1$s</string>
+	
+	
 </resources>

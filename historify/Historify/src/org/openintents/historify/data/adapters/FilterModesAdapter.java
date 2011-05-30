@@ -3,6 +3,7 @@ package org.openintents.historify.data.adapters;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.loaders.FilterLoader;

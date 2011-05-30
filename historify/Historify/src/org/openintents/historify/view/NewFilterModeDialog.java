@@ -4,13 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.openintents.historify.R;
-import org.openintents.historify.data.adapters.ContactsAdapter;
 import org.openintents.historify.data.adapters.ContactsDialogAdapter;
 import org.openintents.historify.data.model.Contact;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;

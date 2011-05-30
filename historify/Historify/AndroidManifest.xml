@@ -30,6 +30,11 @@
             android:exported="false"> 
         </provider>
         
+        <provider android:name=".data.providers.internal.TelephonyProvider"
+            android:authorities="org.openintents.historify.internal.telephony"
+            android:exported="false"> 
+        </provider>
+        
     </application>
     
     <uses-permission android:name="android.permission.READ_CONTACTS" />

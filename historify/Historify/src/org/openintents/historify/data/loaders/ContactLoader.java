@@ -6,7 +6,6 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.Contacts;
 
 public class ContactLoader {
 
