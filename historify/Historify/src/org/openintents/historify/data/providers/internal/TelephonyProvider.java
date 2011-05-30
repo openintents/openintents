@@ -89,6 +89,8 @@ public class TelephonyProvider extends ContentProvider{
 		if(phoneNumbers.length()>0)
 			phoneNumbers.setLength(phoneNumbers.length()-1);
 		
+		phoneCursor.close();
+		
 		//build where clause for call log query
 		String where = CallLog.Calls.NUMBER + " IN ("+phoneNumbers.toString()+")" 
 			+ " AND "+CallLog.Calls.TYPE +" != "+CallLog.Calls.MISSED_TYPE

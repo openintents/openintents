@@ -1,11 +1,17 @@
 package org.openintents.historify;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 import org.openintents.historify.uri.Actions;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -72,6 +78,22 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		File f = getDatabasePath("sources.db");
+		try {
+			FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory()+"/db.db"));
+			FileInputStream fis = new FileInputStream(f);
+			byte[] buf = new byte[1024];
+			int c;
+			while((c=fis.read(buf))!=-1) {
+				fos.write(buf,0,c);
+			}
+			fos.close();
+			fis.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }

@@ -12,7 +12,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 8;
+	static final int DB_VERSION = 9;
 	
 	public static final class SourcesTable {
 		
@@ -75,7 +75,7 @@ public final class Sources {
             db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("
             		+ FiltersTable._ID + " INTEGER PRIMARY KEY,"
                     + FiltersTable.CONTACT_LOOKUP_KEY + " TEXT NOT NULL,"
-                    + FiltersTable.SOURCE_ID + " INTEGER UNIQUE NOT NULL,"
+                    + FiltersTable.SOURCE_ID + " INTEGER NOT NULL,"
                     + FiltersTable.FILTERED_STATE + " TEXT NOT NULL,"
                     + " FOREIGN KEY ("+FiltersTable.SOURCE_ID + ") REFERENCES "+SourcesTable._TABLE+" ("+SourcesTable._ID+"));");
             
