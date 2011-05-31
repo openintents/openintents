@@ -2,9 +2,11 @@ package org.openintents.historify;
 
 import java.util.ArrayList;
 
+import org.openintents.historify.data.adapters.EventsAdapter;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.providers.Events;
+import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.uri.Actions;
 
@@ -25,6 +27,7 @@ public class TimeLineActivity extends Activity {
 	private TextView mTxtContact;
 
 	private Contact mContact;
+	private EventsAdapter mAdapter;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -34,7 +37,6 @@ public class TimeLineActivity extends Activity {
 
 		mLstTimeLine = (ListView) findViewById(R.id.timeline_lstTimeLine);
 		mTxtContact = (TextView) findViewById(R.id.timeline_txtContact);
-
 		
 		String contactLookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);
 		if(contactLookupKey==null) {
@@ -54,22 +56,8 @@ public class TimeLineActivity extends Activity {
 		else {
 			mTxtContact.setText(mContact.getName());
 			
-			//testing call log provider
-			Cursor c = getContentResolver().query(Telephony.SOURCE_URI.buildUpon().appendPath(contactLookupKey).build(), null, null, null, null);
-			ArrayList<String> testValues = new ArrayList<String>();
-			
-			while(c.moveToNext()) {
-				StringBuilder testMessage = new StringBuilder();
-				testMessage.append(DateUtils.formatDateTime(this, c.getLong(c.getColumnIndex(Events.PUBLISHED_TIME)), 0));
-				testMessage.append(":\n");
-				testMessage.append(c.getString(c.getColumnIndex(Events.MESSAGE)));
-				testMessage.append("\n");
-				testMessage.append(c.getString(c.getColumnIndex(Events.ORIGINATOR)));
-				testValues.add(testMessage.toString());
-			}
-			
-			ArrayAdapter<String> testAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, testValues);
-			mLstTimeLine.setAdapter(testAdapter);
+			mAdapter = new EventsAdapter(this, mContact);
+			mLstTimeLine.setAdapter(mAdapter);
 		}
 		
 	}

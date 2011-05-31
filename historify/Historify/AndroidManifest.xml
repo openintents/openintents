@@ -35,11 +35,16 @@
             android:exported="false"> 
         </provider>
         
+        <provider android:name=".data.providers.internal.MessagingProvider"
+            android:authorities="org.openintents.historify.internal.messaging"
+            android:exported="false"> 
+        </provider>
+        
     </application>
     
     
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_SMS" />
     
     <uses-sdk android:minSdkVersion="5" /> <!--  ContactsContract min API level --> 
 	<supports-screens android:smallScreens="true"  android:normalScreens="true" android:largeScreens="true" />

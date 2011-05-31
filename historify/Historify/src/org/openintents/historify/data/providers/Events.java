@@ -8,6 +8,8 @@ public final class Events {
 	public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.event";
 	public static final String ITEM_CONTENT_TYPE ="vnd.android.cursor.item/vnd.historify.event";
 	
+	public static final String EVENTS_PATH = "events";
+	
 	/**
 	 * Long. Required, key field.
 	 */
@@ -20,9 +22,9 @@ public final class Events {
 	public final static String EVENT_KEY = "event_key";
 
 	/**
-	 * String. Required, short description of the event.
+	 * LookupKey of the contact associated with the event. Optional. 
 	 */
-	public final static String MESSAGE = "message";
+	public final static String CONTACT_KEY = "contact_key";
 
 	/**
 	 * Long (UNIX Time). Required, to support default sorting order.
@@ -30,9 +32,9 @@ public final class Events {
 	public final static String PUBLISHED_TIME = "published_time";
 
 	/**
-	 * LookupKey of the contact associated with the event. Optional. 
+	 * String. Required, short description of the event.
 	 */
-	public final static String CONTACT_KEY = "contact_key";
+	public final static String MESSAGE = "message";
 	
 	/**
 	 * Enum of {@link #Originator}. Optional, default value is {@link Originator#both} if {@link #CONTACT_KEY} has been set.
@@ -43,6 +45,13 @@ public final class Events {
 	 * Enum used as values of the {@link #ORIGINATOR} field
 	 */
 	public enum Originator {
-		user, contact, both
+		user, contact, both;
+
+		public static Originator parseString(String string) {
+			for(Originator o : values()) {
+				if(o.toString().equals(string)) return o;
+			}
+			return both;
+		}
 	}
 }

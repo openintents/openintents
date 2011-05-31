@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.uri.Actions;
 
 import android.app.Activity;
@@ -79,21 +80,5 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		File f = getDatabasePath("sources.db");
-		try {
-			FileOutputStream fos = new FileOutputStream(new File(Environment.getExternalStorageDirectory()+"/db.db"));
-			FileInputStream fis = new FileInputStream(f);
-			byte[] buf = new byte[1024];
-			int c;
-			while((c=fis.read(buf))!=-1) {
-				fos.write(buf,0,c);
-			}
-			fos.close();
-			fis.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 }
