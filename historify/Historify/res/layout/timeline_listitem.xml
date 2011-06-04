@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="4dip"
+    >
+
+<View
+	android:id="@+id/timeline_listitem_vLeftSpacer1"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="2"
+ />
+
+<View
+	android:id="@+id/timeline_listitem_vLeftSpacer2"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="2"
+ />
+
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    style="@style/ListItem.TimeLine"
+    >
+
+	<TextView
+		android:id="@+id/timeline_listitem_txtSource"
+		android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+    	android:layout_alignParentLeft="true"    	
+    	style="@style/Label.Bold"
+    	android:text="Source:"
+
+	 />
+
+	<TextView
+		android:id="@+id/timeline_listitem_txtDate"
+		android:layout_width="wrap_content" 
+	    android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+    	android:layout_alignParentRight="true"
+    	android:gravity="right"	    
+	    style="@style/Label"
+	    android:text="(Date)"
+		 />
+
+	<TextView
+		android:id="@+id/timeline_listitem_txtMessage"
+		android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/timeline_listitem_txtSource"
+	    android:minLines="2"
+	    style="@style/Label"
+	    android:text="Detailed message."
+		 /> 		 
+</RelativeLayout>
+
+<View
+	android:id="@+id/timeline_listitem_vRightSpacer1"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="2"
+ />
+
+<View
+	android:id="@+id/timeline_listitem_vRightSpacer2"
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="2"
+ />
+
+    
+</LinearLayout>

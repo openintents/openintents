@@ -1,9 +1,26 @@
+/* 
+ * Copyright (C) 2011 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.historify.data.adapters;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
+import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
@@ -23,23 +40,43 @@ import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * 
+ * Adapter for the list of sources on {@link SourcesActivity}. Provides sources
+ * and their filtered state for all contact, or a particular contact if filter
+ * mode is set.
+ * 
+ * @author berke.andras
+ */
 public class SourcesAdapter extends BaseAdapter {
 
 	private static final int HEADER_OFFSET = 1;
+
+	// different types of views in this adapter
+	// HEADER is a section header displaying either 'internal' or 'external'.
+	// ITEM is a source.
+	// EMPTY_MESSAGE is a textview shown if the external sources section is
+	// empty.
 	private static final int VIEW_TYPE_HEADER = 0;
 	private static final int VIEW_TYPE_ITEM = 1;
-	
+	private static final int VIEW_TYPE_EMPTY_MESSAGE = 2;
+
 	private Activity mContext;
 
 	private SourceLoader mSourceLoader;
 	private FilterLoader mFilterLoader;
+
 	private List<InternalSource> mInternalSources;
 	private List<ExternalSource> mExternalSources;
+
+	// checked items (enabled sources), shared with listview
 	private SparseBooleanArray mCheckedItems;
 
+	// if not null, source filters for the given contact are loaded
 	private Contact mFilterModeContact = null;
 	private int mFilterModePosition = 0;
-	
+
+	/** Constructor. */
 	public SourcesAdapter(Activity context, ListView listView) {
 
 		mContext = context;
@@ -50,6 +87,7 @@ public class SourcesAdapter extends BaseAdapter {
 		mCheckedItems = listView.getCheckedItemPositions();
 	}
 
+	/** Load external and internal sources with their state. */
 	public void load() {
 
 		mInternalSources.clear();
@@ -59,10 +97,11 @@ public class SourcesAdapter extends BaseAdapter {
 		for (int i = 0; i < c.getCount(); i++) {
 			AbstractSource source = mSourceLoader.loadFromCursor(c, i);
 			if (source != null) {
-				
-				if(mFilterModeContact!=null && source.getSourceFilter()!=null) 
+
+				if (mFilterModeContact != null
+						&& source.getSourceFilter() != null)
 					source.getSourceFilter().setContact(mFilterModeContact);
-				
+
 				if (source.isInternal())
 					mInternalSources.add((InternalSource) source);
 				else
@@ -70,118 +109,144 @@ public class SourcesAdapter extends BaseAdapter {
 			}
 		}
 		c.close();
-		
+
 		notifyDataSetChanged();
 	}
 
-		
-	public int getCount() {
-		
-		return mInternalSources.size() + mExternalSources.size() + 2 * HEADER_OFFSET;
-		
-	}
-
-	public AbstractSource getItem(int position) {
-		
-		if(position==0 || position == mInternalSources.size()+HEADER_OFFSET) {
-			return null;
-		}
-		else {
-			return (position>mInternalSources.size()) ?  
-				mExternalSources.get(position - mInternalSources.size() - 2 * HEADER_OFFSET) :
-				mInternalSources.get(position - HEADER_OFFSET);
-		}
-		
-	}
-
-	public List<AbstractSource> getItems() {
-		
-		ArrayList<AbstractSource> retval = new ArrayList<AbstractSource>();
-		retval.addAll(mInternalSources);
-		retval.addAll(mExternalSources);
-		
-		return retval;
-	}
-
-	public long getItemId(int position) {
-		AbstractSource item = getItem(position);
-		return item==null ? -1 : item.getId();
-	}
-
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		Integer viewType = getItemViewType(position);
-		
-		if(viewType == VIEW_TYPE_HEADER) { //list header
-			
-			if(convertView == null || !viewType.equals(convertView.getTag())) {
-				convertView = ((LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(android.R.layout.preference_category, null);
-			}
-			
-			((TextView)convertView).setText(position == 0 ? R.string.sources_internal_sources : R.string.sources_external_sources);
-			
-		} else { //list item
-			
-			if(convertView == null || !viewType.equals(convertView.getTag())) {
-				convertView = ((LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(android.R.layout.simple_list_item_multiple_choice, null);
-			}
-			
-			AbstractSource item = getItem(position);
-			CheckedTextView ctv = ((CheckedTextView)convertView); 
-			ctv.setText(item.getName());
-			
-			mCheckedItems.put(position, item.isEnabled());
-		}
-		return convertView;
-	}
-	
-	@Override
-	public int getViewTypeCount() {
-		return 2;
-	}
-	
-	@Override
-	public int getItemViewType(int position) {
-
-		if(position==0 || position == mInternalSources.size() + HEADER_OFFSET)
-			return VIEW_TYPE_HEADER;
-		else
-			return VIEW_TYPE_ITEM;
-
-	}
-	
-	@Override
-	public boolean areAllItemsEnabled() {
-		return false;
-	}
-	
-	@Override
-	public boolean isEnabled(int position) {
-		return getItemViewType(position)==VIEW_TYPE_ITEM;
-	}
-
+	/** Update the enabled / disabled state of a source */
 	public void update(AbstractSource source) {
-		
-		if(mFilterModeContact==null)
+
+		if (mFilterModeContact == null) // all contacts
 			mSourceLoader.update(mContext, source);
+
 		else
-			mFilterLoader.update(mContext,source.getSourceFilter());
+			// single contact
+			mFilterLoader.update(mContext, source.getSourceFilter());
 	}
 
 	public void setFilterMode(Contact contact, int position) {
-		
+
 		mFilterModeContact = contact;
 		mFilterModePosition = position;
-		
 		load();
 	}
 
 	public int getFilterModePosition() {
 		return mFilterModePosition;
+	}
+
+	public int getCount() {
+
+		return mInternalSources.size() + mExternalSources.size() + 2
+				* HEADER_OFFSET + (mExternalSources.isEmpty() ? 1 : 0);
+
+	}
+
+	@Override
+	public int getViewTypeCount() {
+		return 3;
+	}
+
+	@Override
+	public int getItemViewType(int position) {
+
+		if (position == 0
+				|| position == mInternalSources.size() + HEADER_OFFSET)
+			return VIEW_TYPE_HEADER;
+		else if (position == mInternalSources.size() + HEADER_OFFSET + 1
+				&& mExternalSources.isEmpty()) {
+			return VIEW_TYPE_EMPTY_MESSAGE;
+		} else
+			return VIEW_TYPE_ITEM;
+
+	}
+
+	@Override
+	public boolean areAllItemsEnabled() {
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled(int position) {
+		return getItemViewType(position) == VIEW_TYPE_ITEM;
+	}
+
+	public long getItemId(int position) {
+		AbstractSource item = getItem(position);
+		return item == null ? -1 : item.getId();
+	}
+
+	public AbstractSource getItem(int position) {
+
+		if (position == 0
+				|| position == mInternalSources.size() + HEADER_OFFSET
+				|| (position == getCount() - 1 && mExternalSources.isEmpty())) {
+			return null;
+		} else {
+			return (position > mInternalSources.size()) ? mExternalSources
+					.get(position - mInternalSources.size() - 2 * HEADER_OFFSET)
+					: mInternalSources.get(position - HEADER_OFFSET);
+		}
+
+	}
+
+	public List<AbstractSource> getItems() {
+
+		ArrayList<AbstractSource> retval = new ArrayList<AbstractSource>();
+		retval.addAll(mInternalSources);
+		retval.addAll(mExternalSources);
+
+		return retval;
+	}
+
+	public View getView(int position, View convertView, ViewGroup parent) {
+
+		Integer viewType = getItemViewType(position);
+
+		if (viewType == VIEW_TYPE_HEADER) { // list header
+
+			if (convertView == null || !viewType.equals(convertView.getTag())) {
+				convertView = ((LayoutInflater) mContext
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+						.inflate(android.R.layout.preference_category, null);
+			}
+
+			((TextView) convertView)
+					.setText(position == 0 ? R.string.sources_internal_sources
+							: R.string.sources_external_sources);
+
+		} else if (viewType == VIEW_TYPE_EMPTY_MESSAGE) { // message shown if
+			// there are no
+			// external sources
+			// detected
+
+			if (convertView == null || !viewType.equals(convertView.getTag())) {
+				convertView = ((LayoutInflater) mContext
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+						.inflate(R.layout.list_empty_view, null);
+				convertView.setVisibility(View.VISIBLE);
+			}
+
+			((TextView) convertView)
+					.setText(R.string.sources_no_external_sources);
+
+		} else { // list item
+
+			if (convertView == null || !viewType.equals(convertView.getTag())) {
+				convertView = ((LayoutInflater) mContext
+						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+						.inflate(R.layout.sources_listitem, null);
+			}
+
+			AbstractSource item = getItem(position);
+			CheckedTextView ctv = ((CheckedTextView) convertView);
+			ctv.setText(item.getName());
+
+			mCheckedItems.put(position, item.isEnabled());
+		}
+
+		convertView.setTag(viewType);
+		return convertView;
 	}
 
 }

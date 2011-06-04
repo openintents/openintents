@@ -8,18 +8,17 @@
 	
 	<string name="contacts.no_contacts">No contacts.</string>
 	
-	
 	<string name="sources.filter_mode_description">Showing sources for:</string>
 	<string name="sources.filter_mode_default">(All Contacts)</string>
 	<string name="sources.filter_mode_new">Add exception ...</string>
 	<string name="sources.filter_mode_new_dialog">Add exception</string>
 	<string name="sources.filter_mode_already_added">Already added</string>
+	<string name="sources.filter_deleted">All exceptions for %1$s have been removed.</string>
 	
 	<string name="sources.internal_sources">Internal</string>
 	<string name="sources.external_sources">External</string>
-	
+	<string name="sources.no_external_sources">No external sources have been detected.</string>
 	
 	<string name="telephony.event_message">Call duration: %1$s</string>
-	
 	
 </resources>

@@ -14,19 +14,28 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.data.model.source;
+package org.openintents.historify.utils;
+
+import android.content.Context;
+import android.widget.Toast;
 
 /**
  * 
- * Model class representing an internal Source of events.
+ * Helper class for displaying Toast messages.
  * 
  * @author berke.andras
  */
-public class InternalSource extends AbstractSource {
+public class Toaster {
 
-	public InternalSource(long id, String name) {
-		super(id, name);
-		mIsInternal = true;
+	public static void toast(Context context, int resId) {
+		
+		Toast.makeText(context, context.getString(resId), Toast.LENGTH_SHORT).show();
 	}
 
+	public static void toast(Context context, int resId, String parameterText) {
+		
+		Toast.makeText(context, String.format(context.getString(resId), parameterText), Toast.LENGTH_SHORT).show();
+		
+	}
+	
 }

@@ -1,10 +1,27 @@
+/* 
+ * Copyright (C) 2011 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.historify;
 
 import org.openintents.historify.data.adapters.FilterModesAdapter;
 import org.openintents.historify.data.adapters.SourcesAdapter;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.view.NewFilterModeDialog;
+import org.openintents.historify.utils.Toaster;
+import org.openintents.historify.view.ContactChooserDialog;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -17,30 +34,36 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+/**
+ * 
+ * Displays and manages filters for sources and contacts.
+ * 
+ * @author berke.andras
+ */
 public class SourcesActivity extends Activity {
 
 	public static final String NAME = "SourcesActivity";
 
+	// filter modes
 	private Spinner mSpinnerFilterMode;
 	private FilterModesAdapter mFilterModesAdapter;
+
 	private View mBtnAddFilterMode;
 	private View mBtnDeleteFilterMode;
-	
+
+	// sources
 	private ListView mLstSources;
 	private SourcesAdapter mSourcesAdapter;
-	
 
+	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sources);
 
+		// init filter modes spinner
 		mSpinnerFilterMode = (Spinner) findViewById(R.id.sources_spinnerFilterMode);
-		mLstSources = (ListView) findViewById(R.id.sources_lstSources);
-
-		mFilterModesAdapter = new FilterModesAdapter(this);
-		mSpinnerFilterMode.setAdapter(mFilterModesAdapter);
 		mSpinnerFilterMode
 				.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -54,22 +77,22 @@ public class SourcesActivity extends Activity {
 					}
 				});
 
+		// init buttons
 		mBtnAddFilterMode = findViewById(R.id.source_btnAddFilterMode);
 		mBtnAddFilterMode.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onShowNewFilterModeDialog();
 			}
 		});
-		
 		mBtnDeleteFilterMode = findViewById(R.id.source_btnDeleteFilterMode);
 		mBtnDeleteFilterMode.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onDeleteFilterMode();
 			}
 		});
-		
-		mSourcesAdapter = new SourcesAdapter(this, mLstSources);
-		mLstSources.setAdapter(mSourcesAdapter);
+
+		// init sources list
+		mLstSources = (ListView) findViewById(R.id.sources_lstSources);
 		mLstSources
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					public void onItemClick(AdapterView<?> parent, View view,
@@ -82,41 +105,66 @@ public class SourcesActivity extends Activity {
 					}
 				});
 
+		// filter modes adapter
+		mFilterModesAdapter = new FilterModesAdapter(this);
+		mSpinnerFilterMode.setAdapter(mFilterModesAdapter);
+
+		// sources adapter
+		mSourcesAdapter = new SourcesAdapter(this, mLstSources);
+		mLstSources.setAdapter(mSourcesAdapter);
+
 	}
 
+	/** Called when the user clicks on a source. */
+	private void onSourceClicked(AbstractSource source, boolean checked) {
+		source.setEnabled(checked);
+		mSourcesAdapter.update(source);
+	}
 
+	/** Called when an item selected on the filter modes spinner. */
 	private void onFilterModeSelected(FilterModesAdapter adapter, int position) {
 
 		if (adapter.isDefault(position)) {
+			// show filters for all contacts
 			mSourcesAdapter.setFilterMode(null, position);
 			mBtnDeleteFilterMode.setEnabled(false);
+
 		} else if (adapter.isAddNew(position)) {
+			// add filters for a contact
 			onShowNewFilterModeDialog();
 			mBtnDeleteFilterMode.setEnabled(false);
+
 		} else {
+			// show filters for a contact
 			mSourcesAdapter.setFilterMode(adapter.getItem(position), position);
 			mBtnDeleteFilterMode.setEnabled(true);
 		}
 
 	}
 
+	/**
+	 * Displays a dialog which let the user select a contact to insert new
+	 * filters for.
+	 */
 	private void onShowNewFilterModeDialog() {
 
-		NewFilterModeDialog dialog = new NewFilterModeDialog(this,
+		ContactChooserDialog dialog = new ContactChooserDialog(this,
 				mFilterModesAdapter.getItems());
-		dialog.setOnDismissListener(new OnDismissListener() {
 
+		dialog.setOnDismissListener(new OnDismissListener() {
 			public void onDismiss(DialogInterface dialog) {
-				Contact selected = ((NewFilterModeDialog) dialog)
+				Contact selected = ((ContactChooserDialog) dialog)
 						.getSelectedContact();
 				onAddNewFilterMode(selected);
 			}
 
 		});
+
 		dialog.show();
 
 	}
 
+	/** Called when user dismisses a {@link ContactChooserDialog}. */
 	private void onAddNewFilterMode(Contact contact) {
 
 		if (contact == null) {
@@ -152,20 +200,22 @@ public class SourcesActivity extends Activity {
 
 	}
 
+	/** Delete all filters installed for the currently selected contact. */
 	private void onDeleteFilterMode() {
-		
+
 		int actFilterModePosition = mSourcesAdapter.getFilterModePosition();
-		if(!mFilterModesAdapter.isDefault(actFilterModePosition) && !mFilterModesAdapter.isAddNew(actFilterModePosition)) {
-			
+
+		if (!mFilterModesAdapter.isDefault(actFilterModePosition)
+				&& !mFilterModesAdapter.isAddNew(actFilterModePosition)) {
+
+			String contactName = mFilterModesAdapter.getItem(
+					actFilterModePosition).getName();
+
 			mFilterModesAdapter.delete(actFilterModePosition);
 			mSpinnerFilterMode.setSelection(0);
-		}
-	}
 
-	
-	private void onSourceClicked(AbstractSource source, boolean checked) {
-		source.setEnabled(checked);
-		mSourcesAdapter.update(source);
+			Toaster.toast(this, R.string.sources_filter_deleted, contactName);
+		}
 	}
 
 }

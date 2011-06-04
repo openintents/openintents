@@ -1,6 +1,21 @@
+/* 
+ * Copyright (C) 2011 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.openintents.historify.data.providers.internal;
 
-import org.openintents.historify.R;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.uri.ContentUris;
 
@@ -9,16 +24,16 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.CursorJoiner;
-import android.database.CursorJoiner.Result;
 import android.net.Uri;
-import android.provider.CallLog;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.util.Log;
 
-public class MessagingProvider extends ContentProvider{
+/**
+ * 
+ * Content Provider for accessing the sms messages.
+ * 
+ * @author berke.andras
+ */
+public class MessagingProvider extends ContentProvider {
 
 	public static final String NAME = "TelephonyProvider";
 
@@ -28,12 +43,12 @@ public class MessagingProvider extends ContentProvider{
 
 	static {
 		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		
-		sUriMatcher.addURI(ContentUris.SOURCES_AUTHORITY, Events.EVENTS_PATH+"/#",
-				EVENT_ID);
-		
-		sUriMatcher.addURI(Messaging.MESSAGING_AUTHORITY,
-				Events.EVENTS_PATH+"/*", EVENTS);
+
+		sUriMatcher.addURI(ContentUris.SOURCES_AUTHORITY, Events.EVENTS_PATH
+				+ "/#", EVENT_ID);
+
+		sUriMatcher.addURI(Messaging.MESSAGING_AUTHORITY, Events.EVENTS_PATH
+				+ "/*", EVENTS);
 	}
 
 	@Override
@@ -46,7 +61,7 @@ public class MessagingProvider extends ContentProvider{
 
 		switch (sUriMatcher.match(uri)) {
 		case EVENTS:
-			return Events.CONTENT_TYPE; 
+			return Events.CONTENT_TYPE;
 		case EVENT_ID:
 			return Events.ITEM_CONTENT_TYPE;
 		default:
@@ -60,61 +75,59 @@ public class MessagingProvider extends ContentProvider{
 
 		String lookupKey = null;
 		String phoneSelection = null;
-		
+
 		switch (sUriMatcher.match(uri)) {
 		case EVENTS:
-			//2nd path segment contains the lookup key (content:://authority/events/{CONTACT_LOOKUP_KEY})
+			// 2nd path segment contains the lookup key
+			// (content:://authority/events/{CONTACT_LOOKUP_KEY})
 			lookupKey = uri.getPathSegments().get(1);
-			phoneSelection = Phone.LOOKUP_KEY + " = '"+lookupKey+"'";
+			phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
 			break;
-			
+
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
-		
+
 		ContentResolver resolver = getContext().getContentResolver();
-		
-		//querying phone numbers of the contact
-		Cursor phoneCursor = resolver.query(Phone.CONTENT_URI, new String[] {
-				Phone.NUMBER
-		}, phoneSelection, null, null);
-		
+
+		// querying phone numbers of the contact
+		Cursor phoneCursor = resolver.query(Phone.CONTENT_URI,
+				new String[] { Phone.NUMBER }, phoneSelection, null, null);
+
 		StringBuilder phoneNumbers = new StringBuilder();
-		while(phoneCursor.moveToNext()) {
+		while (phoneCursor.moveToNext()) {
 			phoneNumbers.append("'");
 			phoneNumbers.append(phoneCursor.getString(0));
 			phoneNumbers.append("'");
 			phoneNumbers.append(",");
 		}
-		if(phoneNumbers.length()>0)
-			phoneNumbers.setLength(phoneNumbers.length()-1);
-		
+		if (phoneNumbers.length() > 0)
+			phoneNumbers.setLength(phoneNumbers.length() - 1);
+
 		phoneCursor.close();
-		
-		//build where clause for message log query
-		String where = Messaging.Messages.ADDRESS + " IN ("+phoneNumbers.toString()+")";
-				
-		/*
-		//format call duration string
-		String eventMessage = getContext().getString(R.string.telephony_event_message);
-		eventMessage = String.format("'"+eventMessage+"'", "' || "
-				+"strftime('%M:%S', time("+CallLog.Calls.DURATION+ ", 'unixepoch'))"
-				+" || '");
-		*/
-		//execute query
-		//column names are mapped as defined in .data.providers.Events
-		return getContext().getContentResolver().query(Messaging.Messages.CONTENT_URI, 
+
+		// build where clause for message log query
+		String where = Messaging.Messages.ADDRESS + " IN ("
+				+ phoneNumbers.toString() + ")";
+
+		// execute query
+		// column names are mapped as defined in .data.providers.Events
+		return getContext().getContentResolver().query(
+				Messaging.Messages.CONTENT_URI,
 				new String[] {
-					Messaging.Messages._ID + " AS "+Events._ID,
-					"NULL AS "+Events.EVENT_KEY,
-					Messaging.Messages.BODY+ " AS "+Events.MESSAGE,
-					Messaging.Messages.DATE+" AS "+Events.PUBLISHED_TIME,
-					"'"+lookupKey+"' AS "+Events.CONTACT_KEY,
-					"REPLACE("+
-						"REPLACE("+ Messaging.Messages.TYPE+","
-									+Messaging.Messages.INCOMING_TYPE+",'"+Events.Originator.contact+"'),"
-									+Messaging.Messages.OUTGOING_TYPE+",'"+Events.Originator.user+"') AS "+Events.ORIGINATOR
-				}, where, null, Messaging.Messages.DATE + " DESC");
+						Messaging.Messages._ID + " AS " + Events._ID,
+						"NULL AS " + Events.EVENT_KEY,
+						Messaging.Messages.BODY + " AS " + Events.MESSAGE,
+						Messaging.Messages.DATE + " AS "
+								+ Events.PUBLISHED_TIME,
+						"'" + lookupKey + "' AS " + Events.CONTACT_KEY,
+						"REPLACE(" + "REPLACE(" + Messaging.Messages.TYPE + ","
+								+ Messaging.Messages.INCOMING_TYPE + ",'"
+								+ Events.Originator.contact + "'),"
+								+ Messaging.Messages.OUTGOING_TYPE + ",'"
+								+ Events.Originator.user + "') AS "
+								+ Events.ORIGINATOR }, where, null,
+				Messaging.Messages.DATE + " DESC");
 	}
 
 	@Override

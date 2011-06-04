@@ -3,16 +3,19 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    style="@style/Fragment.Root"
     >
 <TextView
 	android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
     android:text="@string/sources.filter_mode_description"
+    style="@style/Label"
     />
     
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:padding="4dip"
     >    
 	<Spinner 
 		android:id="@+id/sources_spinnerFilterMode"
@@ -38,7 +41,7 @@
 	android:id="@+id/sources_lstSources"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
-    android:layout_weight="1"
-    android:choiceMode="multipleChoice" 
+    android:choiceMode="multipleChoice"
+    style="@style/ListView" 
     />
 </LinearLayout>

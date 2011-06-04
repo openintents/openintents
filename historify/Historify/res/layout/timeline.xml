@@ -3,61 +3,71 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    style="@style/Fragment.Root"
     >
+    
 <RelativeLayout
 	android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
-    android:padding="10dip"
->
+    android:padding="10dip">
+
+	<LinearLayout 
+    	android:orientation="vertical"
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true">
+    	
+    	<ImageView
+			android:id="@+id/timeline_imgUserAvatar"
+			android:layout_width="wrap_content" 
+	    	android:layout_height="wrap_content"
+	    	android:src="@drawable/contact_default_large"
+	    	
+	 	/>
+    	<TextView
+			android:id="@+id/timeline_txtUser"
+			android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"
+		    style="@style/Label"
+		    android:layout_gravity="center"
+		    android:text="Me"
+	 	/>
+
+	</LinearLayout>
+	<LinearLayout 
+    	android:orientation="vertical"
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true">
+    
+    	<ImageView
+			android:id="@+id/timeline_imgContactAvatar"
+			android:layout_width="wrap_content" 
+	    	android:layout_height="wrap_content"
+	    	android:layout_gravity="right"
+	   		android:src="@drawable/contact_default_large"
+	 	/>
+	
+		<TextView
+			android:id="@+id/timeline_txtContact"
+			android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"
+		    style="@style/Label"
+		    android:layout_gravity="center"
+		    android:text="Contact"
+	 	/> 
+    	    
+	</LinearLayout>
 
 	
-	<View
-		android:id="@+id/timeline_imgUserAvatar"
-		android:layout_width="50dip" 
-    	android:layout_height="50dip"
-    	android:background="@android:color/darker_gray"
-    	android:layout_alignParentTop="true"
-    	android:layout_alignParentLeft="true"
-	 />
-
-	<View
-		android:id="@+id/timeline_imgContactAvatar"
-		android:layout_width="50dip" 
-    	android:layout_height="50dip"
-    	android:background="@android:color/darker_gray"
-    	android:layout_alignParentTop="true"
-    	android:layout_alignParentRight="true"
-	 />
-	
-	<TextView
-	android:id="@+id/timeline_txtUser"
-	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:layout_below="@id/timeline_imgUserAvatar"
-    android:layout_alignParentLeft="true"
-    android:textSize="30dp"
-    android:textStyle="bold"
-    android:text="Me"
-	 />
-	 
-	<TextView
-	android:id="@+id/timeline_txtContact"
-	android:layout_width="wrap_content" 
-    android:layout_height="wrap_content"
-    android:layout_below="@id/timeline_imgContactAvatar"
-    android:layout_alignParentRight="true"    
-    android:textSize="30dp"
-    android:textStyle="bold"
-    android:text="Contact"
-
-	 /> 
-
 </RelativeLayout>	 
 	 
 <ListView  
 	android:id="@+id/timeline_lstTimeLine"
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
-    android:layout_weight="1" 
+    style="@style/ListView.NoDivider"
     />
 </LinearLayout>

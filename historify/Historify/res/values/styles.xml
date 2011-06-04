@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Fragment.Root" parent="android:Theme">
+		<item name="android:background">@color/background_light</item>			
+	</style>
+    
+    <style name="ListView" parent="android:Theme">
+		<item name="android:cacheColorHint">@color/background_transparent</item>
+		<item name="android:divider">@color/foreground_light</item>
+		<item name="android:dividerHeight">1dip</item>
+	</style>
+    
+    <style name="ListView.NoDivider" parent="ListView">
+		<item name="android:divider">@null</item>
+	</style>
+	
+	<style name="ListItem.SingleLine" parent="android:Theme">
+		<item name="android:padding">16dip</item>
+    	<item name="android:textSize">28dip</item>
+    	<item name="android:textColor">@color/foreground_light</item>
+	</style>
+	
+	<style name="ListItem.Iconified.FirstLine" parent="android:Theme">
+		<item name="android:textSize">18dip</item>
+    	<item name="android:textColor">@color/foreground_light</item>
+	</style>
+	
+	<style name="ListItem.Iconified.SecondLine" parent="android:Theme">
+    	<item name="android:textColor">@color/foreground_light</item>
+	</style>
+	
+	<style name="Label" parent="android:Theme">
+    	<item name="android:textColor">@color/foreground_light</item>
+    	<item name="android:padding">2dip</item>
+	</style>
+
+	<style name="Label.Bold" parent="Label">
+    	<item name="android:textStyle">bold</item>
+	</style>
+	
+	<style name="ListItem.TimeLine" parent="android:Theme">
+    	<item name="android:background">@drawable/bubble</item>
+    	<item name="android:padding">2dip</item>
+	</style>
+	    	
+</resources>
