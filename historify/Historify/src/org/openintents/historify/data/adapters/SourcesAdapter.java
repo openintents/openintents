@@ -239,10 +239,16 @@ public class SourcesAdapter extends BaseAdapter {
 			}
 
 			AbstractSource item = getItem(position);
-			CheckedTextView ctv = ((CheckedTextView) convertView);
-			ctv.setText(item.getName());
-
+			TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
+			tv.setText(item.getName());
+			
+			((CheckedTextView)tv).setChecked(item.isEnabled());
 			mCheckedItems.put(position, item.isEnabled());
+			
+			tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtDescription);
+			tv.setText(item.getDescription() == null ? "" : item.getDescription());
+
+			
 		}
 
 		convertView.setTag(viewType);

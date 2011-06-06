@@ -17,6 +17,9 @@
 package org.openintents.historify.data.providers;
 
 import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.providers.internal.Messaging;
+import org.openintents.historify.data.providers.internal.Telephony;
+import org.openintents.historify.uri.Actions;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -34,98 +37,126 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 12;
-	
-	//table of sources
+	static final int DB_VERSION = 20;
+
+	// table of sources
 	public static final class SourcesTable {
-		
+
 		public static final String _TABLE = "sources";
-		
+
 		public static final String _ID = BaseColumns._ID;
 		public static final String NAME = "name";
+		public static final String DESCRIPTION = "description";
+		public static final String ICON_URI = "icon_uri";
+
+		public static final String AUTHORITY = "authority";
+		public static final String EVENT_INTENT = "event_intent";
+
 		public static final String IS_INTERNAL = "is_internal";
 		public static final String STATE = "state";
-		
+
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.source";
-		public static final String ITEM_CONTENT_TYPE ="vnd.android.cursor.item/vnd.historify.source";
-		
+		public static final String ITEM_CONTENT_TYPE = "vnd.android.cursor.item/vnd.historify.source";
+
 	}
 
-	//table of filters
+	// table of filters
 	public static final class FiltersTable {
-		
+
 		public static final String _TABLE = "filters";
-		
+
 		public static final String _ID = "filter_id";
 		public static final String CONTACT_LOOKUP_KEY = "contact_lookup_key";
 		public static final String SOURCE_ID = "source_id";
 		public static final String FILTERED_STATE = "filtered_state";
-		
+
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.source_filter";
-		public static final String ITEM_CONTENT_TYPE ="vnd.android.cursor.item/vnd.historify.source_filter";
+		public static final String ITEM_CONTENT_TYPE = "vnd.android.cursor.item/vnd.historify.source_filter";
 	}
-	
-	//view construed by joining the sources and filters table in order to query the filters for a particular contact
+
+	// view construed by joining the sources and filters table in order to query
+	// the filters for a particular contact
 	public static final class FilteredSourcesView {
-		
+
 		public static final String _VIEW = "filtered_sources";
-		
-		public static final String JOIN_CLAUSE =
-			SourcesTable._TABLE+" LEFT OUTER JOIN "+FiltersTable._TABLE+" ON "+
-			SourcesTable._TABLE+"."+SourcesTable._ID+" = "+
-			FiltersTable._TABLE+"."+FiltersTable.SOURCE_ID;
-		
+
+		public static final String JOIN_CLAUSE = SourcesTable._TABLE
+				+ " LEFT OUTER JOIN " + FiltersTable._TABLE + " ON "
+				+ SourcesTable._TABLE + "." + SourcesTable._ID + " = "
+				+ FiltersTable._TABLE + "." + FiltersTable.SOURCE_ID;
+
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.filtered_source";
-		
+
 	}
-	
+
 	/**
 	 * SQLite helper class.
 	 */
-    static class OpenHelper extends SQLiteOpenHelper {
+	static class OpenHelper extends SQLiteOpenHelper {
 
-        OpenHelper(Context context) {
-            super(context, DB_NAME, null, DB_VERSION);
-        }
+		OpenHelper(Context context) {
+			super(context, DB_NAME, null, DB_VERSION);
+		}
 
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-        	
-            db.execSQL("CREATE TABLE " + SourcesTable._TABLE + " ("
-                    + SourcesTable._ID + " INTEGER PRIMARY KEY,"
-                    + SourcesTable.NAME + " TEXT NOT NULL,"
-                    + SourcesTable.STATE + " TEXT DEFAULT "+AbstractSource.SourceState.ENABLED+","
-                    + SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");
-            
-            db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("
-            		+ FiltersTable._ID + " INTEGER PRIMARY KEY,"
-                    + FiltersTable.CONTACT_LOOKUP_KEY + " TEXT NOT NULL,"
-                    + FiltersTable.SOURCE_ID + " INTEGER NOT NULL,"
-                    + FiltersTable.FILTERED_STATE + " TEXT NOT NULL,"
-                    + " FOREIGN KEY ("+FiltersTable.SOURCE_ID + ") REFERENCES "+SourcesTable._TABLE+" ("+SourcesTable._ID+"));");
-            
-            //adding test data
-            ContentValues cv = new ContentValues();
-            cv.put(SourcesTable.NAME, "Messaging");
-            cv.put(SourcesTable.IS_INTERNAL, 1);
-            db.insert(SourcesTable._TABLE, null, cv);            
+		@Override
+		public void onCreate(SQLiteDatabase db) {
 
-        }
+			db.execSQL("CREATE TABLE " + SourcesTable._TABLE + " ("
+					+ SourcesTable._ID + " INTEGER PRIMARY KEY,"
+					+ SourcesTable.NAME + " TEXT NOT NULL,"
+					+ SourcesTable.DESCRIPTION + " TEXT,"
+					+ SourcesTable.ICON_URI + " TEXT," + SourcesTable.AUTHORITY
+					+ " TEXT NOT NULL," + SourcesTable.EVENT_INTENT + " TEXT,"
+					+ SourcesTable.STATE + " TEXT DEFAULT "
+					+ AbstractSource.SourceState.ENABLED + ","
+					+ SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");
 
-        private void onErase(SQLiteDatabase db) {
-        	db.execSQL("DROP TABLE IF EXISTS "+SourcesTable._TABLE);
-        	db.execSQL("DROP TABLE IF EXISTS "+FiltersTable._TABLE);
-        }
-        
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-           
-        	Log.w(SourcesProvider.NAME, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
-            
-            onErase(db);
-            onCreate(db);
-        }
+			db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("
+					+ FiltersTable._ID + " INTEGER PRIMARY KEY,"
+					+ FiltersTable.CONTACT_LOOKUP_KEY + " TEXT NOT NULL,"
+					+ FiltersTable.SOURCE_ID + " INTEGER NOT NULL,"
+					+ FiltersTable.FILTERED_STATE + " TEXT NOT NULL,"
+					+ " FOREIGN KEY (" + FiltersTable.SOURCE_ID
+					+ ") REFERENCES " + SourcesTable._TABLE + " ("
+					+ SourcesTable._ID + "));");
 
-    }
+			db.execSQL("CREATE INDEX " + FiltersTable._TABLE + "_"
+					+ FiltersTable.CONTACT_LOOKUP_KEY + " ON "
+					+ FiltersTable._TABLE + " ("
+					+ FiltersTable.CONTACT_LOOKUP_KEY + ");");
+
+			// adding test data
+			ContentValues cv = new ContentValues();
+			cv.put(SourcesTable.NAME, "Messaging");
+			cv.put(SourcesTable.DESCRIPTION, "Sent and received sms messages.");
+			cv.put(SourcesTable.AUTHORITY, Messaging.MESSAGING_AUTHORITY);
+			cv.put(SourcesTable.EVENT_INTENT, Actions.VIEW_MESSAGING_EVENT);
+			cv.put(SourcesTable.IS_INTERNAL, 1);
+			db.insert(SourcesTable._TABLE, null, cv);
+
+			cv = new ContentValues();
+			cv.put(SourcesTable.NAME, "Telephony");
+			cv.put(SourcesTable.AUTHORITY, Telephony.TELEPHONY_AUTHORITY);
+			cv.put(SourcesTable.IS_INTERNAL, 1);
+			db.insert(SourcesTable._TABLE, null, cv);
+
+		}
+
+		private void onErase(SQLiteDatabase db) {
+			db.execSQL("DROP TABLE IF EXISTS " + SourcesTable._TABLE);
+			db.execSQL("DROP TABLE IF EXISTS " + FiltersTable._TABLE);
+		}
+
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+			Log.w(SourcesProvider.NAME, "Upgrading database from version "
+					+ oldVersion + " to " + newVersion
+					+ ", which will destroy all old data");
+
+			onErase(db);
+			onCreate(db);
+		}
+
+	}
 }

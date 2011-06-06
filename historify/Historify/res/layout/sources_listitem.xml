@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" 
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:gravity="center_vertical"
-    android:checkMark="?android:attr/textCheckMark"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     android:paddingLeft="6dip"
-    android:paddingRight="6dip"
-    android:textColor="@color/foreground_light"
-	 />	 
+	android:paddingRight="6dip"    
+    >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/sources_listitem_imgIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/source_default" />    
+    
+	<CheckedTextView
+		android:id="@+id/sources_listitem_txtName"
+		android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:gravity="center_vertical"
+	    android:checkMark="?android:attr/textCheckMark"
+		android:textColor="@color/foreground_light"
+	    android:text="Name"
+	/>
+</LinearLayout>
+	 
+<TextView 
+	android:id="@+id/sources_listitem_txtDescription"
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    style="@style/Label"
+    android:singleLine="true"
+    android:ellipsize="marquee"
+    android:text="Detailed description"
+/>	 
+	 
+</LinearLayout>	 	 

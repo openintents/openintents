@@ -24,8 +24,9 @@ package org.openintents.historify.data.model.source;
  */
 public class ExternalSource extends AbstractSource {
 
-	public ExternalSource(long id, String name) {
-		super(id, name);
+	public ExternalSource(long id, String name, String description,
+			String iconUri, String authority, String eventIntent) {
+		super(id, name, description, iconUri, authority, eventIntent);
 	}
 
 }

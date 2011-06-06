@@ -17,14 +17,10 @@
 package org.openintents.historify.data.providers.internal;
 
 import org.openintents.historify.data.providers.Events;
-import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.data.providers.EventsProvider;
 
-import android.content.ContentProvider;
 import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.UriMatcher;
 import android.database.Cursor;
-import android.net.Uri;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 /**
@@ -33,61 +29,29 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
  * 
  * @author berke.andras
  */
-public class MessagingProvider extends ContentProvider {
-
-	public static final String NAME = "TelephonyProvider";
-
-	private static final UriMatcher sUriMatcher;
-	private static final int EVENTS = 1;
-	private static final int EVENT_ID = 2;
-
-	static {
-		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-
-		sUriMatcher.addURI(ContentUris.SOURCES_AUTHORITY, Events.EVENTS_PATH
-				+ "/#", EVENT_ID);
-
-		sUriMatcher.addURI(Messaging.MESSAGING_AUTHORITY, Events.EVENTS_PATH
-				+ "/*", EVENTS);
-	}
+public class MessagingProvider extends EventsProvider {
 
 	@Override
 	public boolean onCreate() {
-		return true;
+		return super.onCreate();
 	}
 
 	@Override
-	public String getType(Uri uri) {
-
-		switch (sUriMatcher.match(uri)) {
-		case EVENTS:
-			return Events.CONTENT_TYPE;
-		case EVENT_ID:
-			return Events.ITEM_CONTENT_TYPE;
-		default:
-			throw new IllegalArgumentException("Unknown URI " + uri);
-		}
+	protected String getAuthority() {
+		return Messaging.MESSAGING_AUTHORITY;
 	}
 
 	@Override
-	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+	protected Cursor queryEvent(long eventId) {
+		// not supported yet
+		return null;
+	}
 
-		String lookupKey = null;
-		String phoneSelection = null;
-
-		switch (sUriMatcher.match(uri)) {
-		case EVENTS:
-			// 2nd path segment contains the lookup key
-			// (content:://authority/events/{CONTACT_LOOKUP_KEY})
-			lookupKey = uri.getPathSegments().get(1);
-			phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
-			break;
-
-		default:
-			throw new IllegalArgumentException("Unknown URI " + uri);
-		}
-
+	@Override
+	protected Cursor queryEvents(String lookupKey) {
+		
+		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
+		
 		ContentResolver resolver = getContext().getContentResolver();
 
 		// querying phone numbers of the contact
@@ -128,25 +92,7 @@ public class MessagingProvider extends ContentProvider {
 								+ Events.Originator.user + "') AS "
 								+ Events.ORIGINATOR }, where, null,
 				Messaging.Messages.DATE + " DESC");
-	}
 
-	@Override
-	public Uri insert(Uri uri, ContentValues values) {
-		// not supported
-		return null;
-	}
-
-	@Override
-	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
-		// not supported
-		return 0;
-	}
-
-	@Override
-	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// not supported
-		return 0;
 	}
 
 }

@@ -24,7 +24,7 @@ import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.data.providers.internal.Messaging;
+import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.DateUtils;
 
 import android.app.Activity;
@@ -64,7 +64,7 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	public void load() {
 
-		// test load with Messaging provider
+		// test load with a single provider
 		// also testing source filtering
 
 		SourceLoader sourceLoader = new SourceLoader();
@@ -72,7 +72,7 @@ public class TimeLineAdapter extends BaseAdapter {
 
 		testSource = sourceLoader.loadFromCursor(sourcesCursor, 0);
 		mCursor = testSource.isEnabled() ? mLoader.openCursor(mContext,
-				Messaging.SOURCE_URI, mContact) : null;
+				ContentUris.fromAuthorityString(testSource.getAuthority()), mContact) : null;
 
 		notifyDataSetChanged();
 
@@ -83,8 +83,16 @@ public class TimeLineAdapter extends BaseAdapter {
 	}
 
 	public Event getItem(int position) {
-		return mCursor == null ? null : mLoader.loadFromCursor(mCursor,
-				position);
+		
+		if(mCursor==null)
+			return null;
+		
+		Event retval = mLoader.loadFromCursor(mCursor, position);
+		if(retval!=null) {
+			retval.setSource(testSource);
+		}
+		
+		return retval;
 	}
 
 	public long getItemId(int position) {
@@ -109,9 +117,9 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	private void loadEventToView(Event event, View convertView) {
 
-		TextView txtSource = (TextView) convertView
-				.findViewById(R.id.timeline_listitem_txtSource);
-		txtSource.setText(testSource.getName());
+//		TextView txtSource = (TextView) convertView
+//				.findViewById(R.id.timeline_listitem_txtSource);
+//		txtSource.setText(testSource.getName());
 
 		TextView txtMessage = (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtMessage);

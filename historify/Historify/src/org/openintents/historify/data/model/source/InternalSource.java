@@ -24,8 +24,9 @@ package org.openintents.historify.data.model.source;
  */
 public class InternalSource extends AbstractSource {
 
-	public InternalSource(long id, String name) {
-		super(id, name);
+	public InternalSource(long id, String name, String description,
+			String iconUri, String authority, String eventIntent) {
+		super(id, name, description, iconUri, authority, eventIntent);
 		mIsInternal = true;
 	}
 

@@ -16,6 +16,7 @@
 
 package org.openintents.historify.data.model;
 
+import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.Events.Originator;
 
@@ -29,6 +30,7 @@ public class Event {
 
 	//id
 	private long mId;
+	private String mEventKey;
 	
 	//CONTACT_LOOKUP_KEY
 	private String mContactKey;
@@ -42,19 +44,28 @@ public class Event {
 	//originator of the event
 	private Events.Originator mOriginator;
 	
-	public Event(long mId, String mContactKey, long mPublishedTime,
-			String mMessage, Originator mOriginator) {
-		this.mId = mId;
-		this.mContactKey = mContactKey;
-		this.mPublishedTime = mPublishedTime;
-		this.mMessage = mMessage;
-		this.mOriginator = mOriginator;
+	//source of the event
+	private AbstractSource mSource;
+	
+	public Event(long id, String eventKey, String contactKey, long publishedTime,
+			String message, Originator originator) {
+		
+		this.mId = id;
+		this.mEventKey = eventKey;
+		this.mContactKey = contactKey;
+		this.mPublishedTime = publishedTime;
+		this.mMessage = message;
+		this.mOriginator = originator;
 	}
 
 	public long getId() {
 		return mId;
 	}
 
+	public String getEventKey() {
+		return mEventKey;
+	}
+	
 	public String getContactKey() {
 		return mContactKey;
 	}
@@ -71,4 +82,12 @@ public class Event {
 		return mOriginator;
 	}
 	
+	public AbstractSource getSource() {
+		return mSource;
+	}
+	
+	public void setSource(AbstractSource mSource) {
+		this.mSource = mSource;
+	}
+
 }

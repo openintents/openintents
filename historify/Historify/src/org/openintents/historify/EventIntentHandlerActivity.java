@@ -14,22 +14,33 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.utils;
+package org.openintents.historify;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
 
 /**
  * 
- * Helper class for formatting dates.
+ * Activity for handling internal sources' event intents.
  * 
  * @author berke.andras
  */
-public class DateUtils {
+public class EventIntentHandlerActivity extends Activity {
 
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd. MMM HH:mm");
-	
-	public static String formatDate(Date date) {
-		return dateFormat.format(date);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+//		Intent i = new Intent();
+//        i.setAction(Intent.ACTION_VIEW);
+//        i.setData(CallLog.Calls.CONTENT_URI);
+//        i.setType(CallLog.Calls.CONTENT_TYPE);
+//        startActivity(i); 
+		
+		TextView tv = new TextView(this);
+		tv.setText(getIntent().getAction());
+		
+		setContentView(tv);
 	}
 }

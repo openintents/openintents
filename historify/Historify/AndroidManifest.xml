@@ -25,6 +25,12 @@
 		
         <activity android:name="SourcesActivity"/>
         
+        <activity android:name="EventIntentHandlerActivity">
+        	<intent-filter>
+                <action android:name="org.openintents.historify.VIEW_MESSAGING_EVENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>        
+        </activity>
         <provider android:name=".data.providers.SourcesProvider"
             android:authorities="org.openintents.historify.sources"
             android:exported="false"> 

@@ -46,6 +46,7 @@ public class EventLoader {
 		cursor.moveToPosition(position);
 		
 		int column_id = cursor.getColumnIndex(Events._ID);
+		int column_event_key = cursor.getColumnIndex(Events.EVENT_KEY);
 		int column_contact_key = cursor.getColumnIndex(Events.CONTACT_KEY);
 		int column_published_time = cursor.getColumnIndex(Events.PUBLISHED_TIME);
 		int column_message = cursor.getColumnIndex(Events.MESSAGE);
@@ -53,6 +54,7 @@ public class EventLoader {
 		
 		return new Event(
 				cursor.getLong(column_id),
+				cursor.getString(column_event_key),
 				cursor.getString(column_contact_key),
 				cursor.getLong(column_published_time),
 				cursor.getString(column_message),

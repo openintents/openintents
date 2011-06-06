@@ -16,6 +16,8 @@
 
 package org.openintents.historify.data.model.source;
 
+import android.net.Uri;
+
 /**
  * 
  * Model class representing a Source of events.
@@ -41,6 +43,18 @@ public abstract class AbstractSource {
 	
 	//displayed source name
 	private String mName;
+
+	//short description of the source
+	private String mDescription;
+	
+	//icon displayed on the timeline
+	private Uri mIconUri;
+	
+	//authority of the source content provider
+	private String mAuthority;
+
+	//Intent to be fired if user selects an event
+	private String mEventIntent;
 	
 	//current state
 	private SourceState mState;
@@ -51,9 +65,16 @@ public abstract class AbstractSource {
 	//flag for internal sources
 	protected boolean mIsInternal = false;
 
-	protected AbstractSource(long id, String name) {
+	protected AbstractSource(long id, String name, String description,
+			String iconUri, String authority, String eventIntent) {
+		
 		mId = id;
 		mName = name;
+		mDescription = description;
+		mIconUri = iconUri==null ? null : Uri.parse(iconUri);
+		mAuthority = authority;
+		mEventIntent = eventIntent;
+		
 		mState = SourceState.ENABLED;
 	}
 
@@ -69,6 +90,18 @@ public abstract class AbstractSource {
 		return mName;
 	}
 
+	public String getDescription() {
+		return mDescription;
+	}
+	
+	public String getAuthority() {
+		return mAuthority;
+	}
+	
+	public String getEventIntent() {
+		return mEventIntent;
+	}
+	
 	public SourceState getState() {
 		return mState;
 	}
@@ -97,11 +130,19 @@ public abstract class AbstractSource {
 		return mSourceFilter;
 	}
 	
-	public static AbstractSource factoryMethod(boolean isInternal, long id,
-			String name, String state) {
-
-		AbstractSource retval = isInternal ? new InternalSource(id, name)
-				: new ExternalSource(id, name);
+	public static AbstractSource factoryMethod(
+			boolean isInternal, 
+			long id,
+			String name, 
+			String description,
+			String iconUri,
+			String authority,
+			String eventIntent,
+			String state) {
+		
+		AbstractSource retval = isInternal ? 
+				new InternalSource(id, name, description, iconUri, authority, eventIntent):
+				new ExternalSource(id, name, description, iconUri, authority, eventIntent);
 		retval.setState(SourceState.parseString(state));
 
 		return retval;

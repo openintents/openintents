@@ -55,21 +55,9 @@ public class ContactChooserDialog extends Dialog {
 		// init view
 		setTitle(context.getString(R.string.sources_filter_mode_new_dialog));
 		setContentView(R.layout.contacts_dialog);
+
+		// listview
 		ListView lstContacts = (ListView) findViewById(R.id.contacts_lstContacts);
-
-		String alreadyAddedMessage = context
-				.getString(R.string.sources_filter_mode_already_added);
-		ContactsDialogAdapter adapter = new ContactsDialogAdapter(context,
-				disabledKeys, alreadyAddedMessage);
-		lstContacts.setAdapter(adapter);
-
-		View lstContactsEmptyView = getLayoutInflater().inflate(
-				R.layout.list_empty_view, null);
-		((TextView) lstContactsEmptyView)
-				.setText(R.string.contacts_no_contacts);
-		((ViewGroup) lstContacts.getParent()).addView(lstContactsEmptyView);
-		lstContacts.setEmptyView(lstContactsEmptyView);
-
 		lstContacts
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -80,6 +68,21 @@ public class ContactChooserDialog extends Dialog {
 						onContactSelected(selected);
 					}
 				});
+
+		// list empty view
+		View lstContactsEmptyView = getLayoutInflater().inflate(
+				R.layout.list_empty_view, null);
+		((TextView) lstContactsEmptyView)
+				.setText(R.string.contacts_no_contacts);
+		((ViewGroup) lstContacts.getParent()).addView(lstContactsEmptyView);
+		lstContacts.setEmptyView(lstContactsEmptyView);
+
+		// adapter
+		String alreadyAddedMessage = context
+				.getString(R.string.sources_filter_mode_already_added);
+		ContactsDialogAdapter adapter = new ContactsDialogAdapter(context,
+				disabledKeys, alreadyAddedMessage);
+		lstContacts.setAdapter(adapter);
 
 	}
 

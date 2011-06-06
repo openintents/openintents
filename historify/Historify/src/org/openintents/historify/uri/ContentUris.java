@@ -31,4 +31,8 @@ public final class ContentUris {
 	public static final Uri Sources = Uri.parse("content://"+SOURCES_AUTHORITY+"/sources");
 	public static final Uri FilteredSources = Uri.parse("content://"+SOURCES_AUTHORITY+"/filtered_sources");
 	public static final Uri Filters = Uri.parse("content://"+SOURCES_AUTHORITY+"/filters");
+	
+	public static Uri fromAuthorityString(String authority) {
+		return Uri.parse("content://"+authority+"/");
+	}
 }

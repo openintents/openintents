@@ -40,25 +40,37 @@ public class SourceLoader {
 	public static String[] SOURCES_PROJECTION = new String[] {
 		Sources.SourcesTable._ID,
 		Sources.SourcesTable.NAME,
+		Sources.SourcesTable.DESCRIPTION,
+		Sources.SourcesTable.ICON_URI,		
+		Sources.SourcesTable.AUTHORITY,
+		Sources.SourcesTable.EVENT_INTENT,
 		Sources.SourcesTable.IS_INTERNAL,
-		Sources.SourcesTable.STATE, 
+		Sources.SourcesTable.STATE 
 	};
 	
 	public static String[] FILTERED_SOURCES_PROJECTION = new String[] {
 		Sources.SourcesTable._ID,
 		Sources.SourcesTable.NAME,
+		Sources.SourcesTable.DESCRIPTION,
+		Sources.SourcesTable.ICON_URI,		
+		Sources.SourcesTable.AUTHORITY,
+		Sources.SourcesTable.EVENT_INTENT,
 		Sources.SourcesTable.IS_INTERNAL,
-		Sources.SourcesTable.STATE, 
+		Sources.SourcesTable.STATE,
 		Sources.FiltersTable._ID,
 		Sources.FiltersTable.FILTERED_STATE
 	};
 		
 	private static final int COLUMN_ID = 0;
 	private static final int COLUMN_NAME = 1;
-	private static final int COLUMN_IS_INTERNAL = 2;
-	private static final int COLUMN_STATE = 3;
-	private static final int COLUMN_FILTER_ID = 4;
-	private static final int COLUMN_FILTERED_STATE = 5;
+	private static final int COLUMN_DESCRIPTION = 2;
+	private static final int COLUMN_ICON_URI = 3;
+	private static final int COLUMN_AUTHORITY = 4;
+	private static final int COLUMN_EVENT_INTENT = 5;
+	private static final int COLUMN_IS_INTERNAL = 6;
+	private static final int COLUMN_STATE = 7;
+	private static final int COLUMN_FILTER_ID = 8;
+	private static final int COLUMN_FILTERED_STATE = 9;
 	
 	public Cursor openCursor(Activity context, Contact filterModeContact) {
 		
@@ -79,7 +91,7 @@ public class SourceLoader {
 			projection = SOURCES_PROJECTION;
 		}
 				 
-		return context.getContentResolver().query(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
+		return context.managedQuery(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
 	
@@ -90,7 +102,11 @@ public class SourceLoader {
 		AbstractSource retval = AbstractSource.factoryMethod(
 				cursor.getInt(COLUMN_IS_INTERNAL)>0,
 				cursor.getLong(COLUMN_ID), 
-				cursor.getString(COLUMN_NAME), 
+				cursor.getString(COLUMN_NAME),
+				cursor.isNull(COLUMN_DESCRIPTION) ? null : cursor.getString(COLUMN_DESCRIPTION),
+				cursor.isNull(COLUMN_ICON_URI) ? null : cursor.getString(COLUMN_ICON_URI),
+				cursor.getString(COLUMN_AUTHORITY),
+				cursor.isNull(COLUMN_EVENT_INTENT) ? null : cursor.getString(COLUMN_EVENT_INTENT),
 				cursor.getString(COLUMN_STATE));
 		
 		long filterId = cursor.isNull(COLUMN_FILTER_ID) ? -1 : cursor.getLong(COLUMN_FILTER_ID);
