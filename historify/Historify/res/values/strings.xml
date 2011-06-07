@@ -21,4 +21,6 @@
 	
 	<string name="telephony.event_message">Call duration: %1$s</string>
 	
+	<string name="timeline.no_events">There is nothing to display.</string>
+	
 </resources>

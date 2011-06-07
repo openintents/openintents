@@ -16,81 +16,34 @@
 
 package org.openintents.historify;
 
-import org.openintents.historify.data.adapters.ContactsAdapter;
-import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.fragments.ContactsListFragment;
 import org.openintents.historify.uri.Actions;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * 
- * Fragment for displaying the list of contacts. The list could be filtered to
- * display favorite contacts only.
+ * Contacts list view. Contains a fragment for displaying the list of contacts.
  * 
  * @author berke.andras
  */
-public class ContactsActivity extends Activity {
-
-	public static final String NAME = "ContactsActivity";
-
-	// list adapter
-	private ContactsAdapter mAdapter;
+public class ContactsActivity extends FragmentActivity {
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.contacts);
 
-		// init listview
-		ListView lstContacts = (ListView) findViewById(R.id.contacts_lstContacts);
-		lstContacts
-				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		if (savedInstanceState == null) {
 
-					public void onItemClick(AdapterView<?> parent, View view,
-							int position, long id) {
-						Contact selected = (Contact) parent
-								.getItemAtPosition(position);
-						onContactSelected(selected);
-					}
-				});
-
-		// init list empty view
-		View lstContactsEmptyView = getLayoutInflater().inflate(
-				R.layout.list_empty_view, null);
-		((TextView) lstContactsEmptyView)
-				.setText(R.string.contacts_no_contacts);
-		((ViewGroup) lstContacts.getParent()).addView(lstContactsEmptyView);
-		lstContacts.setEmptyView(lstContactsEmptyView);
-
-		// init adapter
-		mAdapter = new ContactsAdapter(this, getIntent().hasExtra(
-				Actions.EXTRA_MODE_FAVORITES));
-		lstContacts.setAdapter(mAdapter);
+			boolean starredOnly = getIntent().getBooleanExtra(
+					Actions.EXTRA_MODE_FAVORITES, false);
+			ContactsListFragment fragment = new ContactsListFragment(starredOnly);
+			getSupportFragmentManager().beginTransaction().add(
+					android.R.id.content, fragment).commit();
+		}
 
 	}
 
-	/**
-	 * Fires Intent to show the selected contact's timeline.
-	 * 
-	 * @param selected
-	 *            Selected contact.
-	 */
-	private void onContactSelected(Contact selected) {
-
-		String contactLookupKey = String.valueOf(selected.getLookupKey());
-
-		Intent intent = new Intent();
-		intent.setAction(Actions.SHOW_TIMELINE);
-		intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactLookupKey);
-
-		startActivity(intent);
-	}
 }

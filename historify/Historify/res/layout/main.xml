@@ -5,28 +5,9 @@
     android:layout_height="fill_parent"
     style="@style/Fragment.Root"
     >
-<ListView  
-	android:id="@+id/main_lstMenu"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
-    android:layout_weight="1"
-    style="@style/ListView.NoDivider" 
-    />
-    
- <!--    
-<TextView
-	android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:text="@string/main.recent"
-    android:textSize="20dp"
-    android:textStyle="bold"
-    android:padding="5dp"
-	 />
-<TextView
-	android:id="@+id/main_txtRecentEntry"
-	android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:text="Ann: Phonecall (Yesterday)\nDuration: 3:42"
-     /> -->
+
+  <fragment android:name="org.openintents.historify.fragments.MainMenuFragment"
+            android:layout_width="fill_parent"
+    		android:layout_height="fill_parent" />
+
 </LinearLayout>

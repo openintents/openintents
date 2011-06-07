@@ -16,98 +16,22 @@
 
 package org.openintents.historify;
 
-import org.openintents.historify.uri.Actions;
-
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * 
- * Historify's main view.
+ * Historify's main view. Contains a fragment for displaying the main menu.
  * 
  * @author berke.andras
  */
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
-	public static final String NAME = "MainActivity";
-
-	/**
-	 * Class describing menu element.
-	 */
-	private class MenuItem {
-		
-		//displayed title and Intent to be fired
-		private String mTitle;
-		private Intent mIntent;
-
-		public MenuItem(Context context, int stringResource, Intent intent) {
-			mTitle = context.getResources().getString(stringResource);
-			mIntent = intent;
-		}
-
-		@Override
-		public String toString() {
-			return mTitle;
-		}
-
-		public Intent getIntent() {
-			return mIntent;
-		}
-	}
-
-	/** Creates MenuItem instances. */
-	private MenuItem[] createMenuItems() {
-		
-		MenuItem[] retval = new MenuItem[3];
-		
-		//contacts
-		retval[0] =new MenuItem(this, R.string.main_menu_contacts, new Intent(
-				this, ContactsActivity.class));
-		
-		//favorites
-		Intent intent = new Intent(this, ContactsActivity.class);
-		intent.putExtra(Actions.EXTRA_MODE_FAVORITES, true);
-		retval[1] =new MenuItem(this, R.string.main_menu_favorites, intent);
-		
-		//sources
-		retval[2] =new MenuItem(this, R.string.main_menu_sources, new Intent(
-				this, SourcesActivity.class));
-		
-		return retval;
-		
-	}
-	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
-		//init menu
-		ListView lstMenu = (ListView) findViewById(R.id.main_lstMenu);
-		lstMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-
-				Intent intent = ((MenuItem) parent.getItemAtPosition(position))
-						.getIntent();
-				startActivity(intent);
-			}
-		});
-		
-		//create menu items
-		MenuItem[] menuItems = createMenuItems(); 
-		ArrayAdapter<MenuItem> menuItemAdapter = new ArrayAdapter<MenuItem>(
-				this, R.layout.main_listitem, menuItems);
-		lstMenu.setAdapter(menuItemAdapter);
-				
 	}
 
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="factory_test">
+		<item>i think everybody\nshould like\neverybody.</item>
+		<item>the world\nfascinates me.</item>
+		<item>but I always say,\none\&apos;s company,\ntwo\&apos;s a crowd,\nand three\&apos;s a party.</item>
+		<item>the idea of waiting for\nsomething makes it\nmore exciting.</item>
+		<item>i wonder if it\&apos;s possible\nto have a love affair\nthat lasts forever.</item>
+		<item>art is what you can\nget away with.</item>
+		<item>everybody must\nhave a fantasy.</item>
+		<item>in the future\neverybody will\nbe world famous\nfor fifteen minutes.</item>
+	</string-array>
+</resources>
+
