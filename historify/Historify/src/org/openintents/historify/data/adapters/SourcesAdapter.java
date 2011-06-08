@@ -37,6 +37,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -248,7 +249,8 @@ public class SourcesAdapter extends BaseAdapter {
 			tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtDescription);
 			tv.setText(item.getDescription() == null ? "" : item.getDescription());
 
-			
+			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
+			iv.setImageURI(item.getIcon());
 		}
 
 		convertView.setTag(viewType);

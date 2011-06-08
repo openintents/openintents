@@ -110,6 +110,10 @@ public abstract class AbstractSource {
 		this.mState = mState;
 	}
 
+	public Uri getIcon() {
+		return mIconUri;
+	}
+	
 	public boolean isEnabled() {
 		
 		return (mSourceFilter==null && mState==SourceState.ENABLED) ||

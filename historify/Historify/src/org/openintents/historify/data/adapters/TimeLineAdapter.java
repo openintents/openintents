@@ -34,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -117,18 +118,18 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	private void loadEventToView(Event event, View convertView) {
 
-//		TextView txtSource = (TextView) convertView
-//				.findViewById(R.id.timeline_listitem_txtSource);
-//		txtSource.setText(testSource.getName());
 
-		TextView txtMessage = (TextView) convertView
+		TextView tv= (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtMessage);
-		txtMessage.setText(event.getMessage());
+		tv.setText(event.getMessage());
 
-		TextView txtDate = (TextView) convertView
+		tv = (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtDate);
-		txtDate.setText(DateUtils
+		tv.setText(DateUtils
 				.formatDate(new Date(event.getPublishedTime())));
+		
+		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
+		iv.setImageURI(event.getSource().getIcon());
 	}
 
 	private void alignView(Event event, View convertView) {

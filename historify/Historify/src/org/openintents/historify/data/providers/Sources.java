@@ -16,10 +16,13 @@
 
 package org.openintents.historify.data.providers;
 
+import org.openintents.historify.R;
 import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.providers.internal.FactoryTest;
 import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.uri.Actions;
+import org.openintents.historify.utils.UriUtils;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -37,7 +40,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 20;
+	static final int DB_VERSION = 23;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -127,17 +130,28 @@ public final class Sources {
 
 			// adding test data
 			ContentValues cv = new ContentValues();
-			cv.put(SourcesTable.NAME, "Messaging");
+			cv.put(SourcesTable.NAME, FactoryTest.SOURCE_NAME);
+			cv.put(SourcesTable.DESCRIPTION, "Inifinite source of joy.");
+			cv.put(SourcesTable.AUTHORITY, FactoryTest.FACTORY_TEST_AUTHORITY);
+			cv.put(SourcesTable.IS_INTERNAL, 1);
+			cv.put(SourcesTable.ICON_URI, UriUtils.resourceToUri(R.drawable.source_factory_test).toString());
+			db.insert(SourcesTable._TABLE, null, cv);
+			
+			cv = new ContentValues();
+			cv.put(SourcesTable.NAME, Messaging.SOURCE_NAME);
 			cv.put(SourcesTable.DESCRIPTION, "Sent and received sms messages.");
 			cv.put(SourcesTable.AUTHORITY, Messaging.MESSAGING_AUTHORITY);
 			cv.put(SourcesTable.EVENT_INTENT, Actions.VIEW_MESSAGING_EVENT);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
+			cv.put(SourcesTable.ICON_URI, UriUtils.resourceToUri(R.drawable.source_messaging).toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 
 			cv = new ContentValues();
-			cv.put(SourcesTable.NAME, "Telephony");
+			cv.put(SourcesTable.NAME, Telephony.SOURCE_NAME);
+			cv.put(SourcesTable.DESCRIPTION, "Log incoming and outgoing calls.");
 			cv.put(SourcesTable.AUTHORITY, Telephony.TELEPHONY_AUTHORITY);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
+			cv.put(SourcesTable.ICON_URI, UriUtils.resourceToUri(R.drawable.source_telephony).toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 
 		}

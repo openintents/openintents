@@ -35,14 +35,19 @@
             android:authorities="org.openintents.historify.sources"
             android:exported="false"> 
         </provider>
-        
-        <provider android:name=".data.providers.internal.TelephonyProvider"
-            android:authorities="org.openintents.historify.internal.telephony"
+
+        <provider android:name=".data.providers.internal.FactoryTestProvider"
+            android:authorities="org.openintents.historify.internal.factorytest"
             android:exported="false"> 
         </provider>
         
         <provider android:name=".data.providers.internal.MessagingProvider"
             android:authorities="org.openintents.historify.internal.messaging"
+            android:exported="false"> 
+        </provider>
+        
+        <provider android:name=".data.providers.internal.TelephonyProvider"
+            android:authorities="org.openintents.historify.internal.telephony"
             android:exported="false"> 
         </provider>
         
