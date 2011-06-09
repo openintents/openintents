@@ -24,6 +24,7 @@ import org.openintents.historify.uri.Actions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,18 +45,11 @@ public class ContactsListFragment extends Fragment {
 	private ListView mLstContacts;
 	private ContactsAdapter mAdapter;
 	
-	//only favorites to show
-	private boolean mStarredOnly;
-
-	public ContactsListFragment(boolean starredOnly) {
-		mStarredOnly = starredOnly;
-	}
-
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
+		
 		ViewGroup layout = (ViewGroup) inflater.inflate(
 				R.layout.contacts_list_fragment, container, false);
 
@@ -96,6 +90,7 @@ public class ContactsListFragment extends Fragment {
 		// init adapter
 		mAdapter = new ContactsAdapter(getActivity(), isStarredOnly());
 		mLstContacts.setAdapter(mAdapter);
+		
 	}
 
 	
@@ -105,7 +100,9 @@ public class ContactsListFragment extends Fragment {
 	 * @return true if only favorite contacts have to be shown.
 	 */
 	private boolean isStarredOnly() {
-		return mStarredOnly;
+		return getArguments().getBoolean(
+				Actions.EXTRA_MODE_FAVORITES, false);
+
 	}
 
 	/**

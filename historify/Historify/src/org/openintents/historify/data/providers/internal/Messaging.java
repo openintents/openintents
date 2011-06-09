@@ -16,6 +16,8 @@
 
 package org.openintents.historify.data.providers.internal;
 
+import org.openintents.historify.utils.UriUtils;
+
 import android.net.Uri;
 import android.provider.CallLog;
 
@@ -28,10 +30,11 @@ import android.provider.CallLog;
 public class Messaging {
 
 	public static final String SOURCE_NAME = "Messaging";
+	public static final String DESCRIPTION = "Sent and received sms messages.";
 	
 	public static final String MESSAGING_AUTHORITY = "org.openintents.historify.internal.messaging";
-	
-	public static final Uri SOURCE_URI = Uri.parse("content://"+MESSAGING_AUTHORITY+"/");
+	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(MESSAGING_AUTHORITY);
+
 	
 	//undocumented messaging provider API
 	//handle with care

@@ -55,24 +55,6 @@ public class TimeLineFragment extends Fragment {
 	private ListView mLstTimeLine;
 	private TextView mTxtContact;
 
-	/**
-	 * Constructor. Initialize parameters.
-	 * 
-	 * @param context
-	 *            Activity context.
-	 * @param contactLookupKey
-	 *            The lookupkey of the contact whom timeline has to displayed.
-	 */
-	public TimeLineFragment(Activity context, String contactLookupKey) {
-
-		if (contactLookupKey == null) {
-			Log.w(NAME, "Contact lookupkey not provided.");
-		} else {
-			mContact = new ContactLoader().loadFromLookupKey(context,
-					contactLookupKey);
-		}
-	}
-
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,6 +95,15 @@ public class TimeLineFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
+		String contactLookupKey = getContactLookupKey();
+		
+		if (contactLookupKey == null) {
+			Log.w(NAME, "Contact lookupkey not provided.");
+		} else {
+			mContact = new ContactLoader().loadFromLookupKey(getActivity(),
+					contactLookupKey);
+		}
+		
 		if(mContact!=null) {
 			mTxtContact.setText(mContact.getName());
 			mAdapter = new TimeLineAdapter(getActivity(), mContact);
@@ -123,6 +114,9 @@ public class TimeLineFragment extends Fragment {
 
 	}
 
+	private String getContactLookupKey() {
+		return getArguments().getString(Actions.EXTRA_CONTACT_LOOKUP_KEY);
+	}
 
 	private void onEventClicked(Event event) {
 

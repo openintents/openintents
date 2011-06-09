@@ -38,8 +38,9 @@ public class TimeLineActivity extends FragmentActivity {
 
 		if (savedInstanceState == null) {
 
-			TimeLineFragment fragment = new TimeLineFragment(this, getIntent()
-					.getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY));
+			TimeLineFragment fragment = new TimeLineFragment();
+			Bundle arguments = getIntent().getExtras();
+			fragment.setArguments(arguments == null ? new Bundle() : arguments);
 			getSupportFragmentManager().beginTransaction().add(
 					android.R.id.content, fragment).commit();
 		}

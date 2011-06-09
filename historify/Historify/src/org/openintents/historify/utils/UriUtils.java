@@ -4,7 +4,13 @@ import android.net.Uri;
 
 public class UriUtils {
 
-	public static Uri resourceToUri(int resId) {
-		return Uri.parse("android.resource://org.openintents.historify/"+resId);
+	private static final String INTERNAL_DRAWABLE_SCHEME="internal.drawable";
+	
+	public static Uri drawableToUri(String drawableName) {
+		return Uri.parse(INTERNAL_DRAWABLE_SCHEME+"://"+drawableName);
+	}
+
+	public static Uri sourceAuthorityToUri(String authority) {
+		return Uri.parse("content://"+authority+"/");
 	}
 }

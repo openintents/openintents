@@ -22,6 +22,7 @@ import java.util.List;
 import org.openintents.historify.R;
 import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.loaders.FilterLoader;
+import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
@@ -65,6 +66,7 @@ public class SourcesAdapter extends BaseAdapter {
 	private Activity mContext;
 
 	private SourceLoader mSourceLoader;
+	private SourceIconHelper mSourceIconHelper;
 	private FilterLoader mFilterLoader;
 
 	private List<InternalSource> mInternalSources;
@@ -82,6 +84,7 @@ public class SourcesAdapter extends BaseAdapter {
 
 		mContext = context;
 		mSourceLoader = new SourceLoader();
+		mSourceIconHelper = new SourceIconHelper();
 		mFilterLoader = new FilterLoader();
 		mInternalSources = new ArrayList<InternalSource>();
 		mExternalSources = new ArrayList<ExternalSource>();
@@ -250,7 +253,7 @@ public class SourcesAdapter extends BaseAdapter {
 			tv.setText(item.getDescription() == null ? "" : item.getDescription());
 
 			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
-			iv.setImageURI(item.getIcon());
+			mSourceIconHelper.toImageView(mContext, item,iv);
 		}
 
 		convertView.setTag(viewType);

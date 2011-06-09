@@ -20,11 +20,9 @@ import org.openintents.historify.R;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.EventsProvider;
 
-import android.content.ContentResolver;
+import android.app.AlarmManager;
 import android.database.Cursor;
 import android.database.MatrixCursor;
-import android.provider.CallLog;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
 
 /**
  * 
@@ -35,6 +33,7 @@ import android.provider.ContactsContract.CommonDataKinds.Phone;
 public class FactoryTestProvider extends EventsProvider {
 
 	private static final int TEST_SET_SIZE = 10;
+	private static final long EVENT_INTERVAL = AlarmManager.INTERVAL_DAY;
 	
 	@Override
 	public boolean onCreate() {
@@ -74,12 +73,10 @@ public class FactoryTestProvider extends EventsProvider {
 					null,
 					testMessages[i % testMessages.length],
 					i % 2 == 0 ? Events.Originator.user : Events.Originator.contact,
-					System.currentTimeMillis()-60000*(i+1)
+					System.currentTimeMillis()-EVENT_INTERVAL*(i+1)
 			});	
 		}
-		
-		
-		
+
 		return mc;
 		
 	}

@@ -14,24 +14,27 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.data.providers.internal;
+package org.openintents.historify.data.loaders;
 
-import org.openintents.historify.utils.UriUtils;
+import org.openintents.historify.data.model.source.AbstractSource;
 
-import android.net.Uri;
+import android.content.Context;
+import android.content.res.Resources;
+import android.widget.ImageView;
 
 /**
  * 
- * Helper class for constants in {@link FactoryTestProvider}.
+ * Class for loading icon resources.
  * 
  * @author berke.andras
  */
-public class FactoryTest {
+public class SourceIconHelper {
 
-	public static final String SOURCE_NAME = "FactoryTest";
-	public static final String DESCRIPTION = "Infinite source of joy.";
-	
-	public static final String FACTORY_TEST_AUTHORITY = "org.openintents.historify.internal.factorytest";
-	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(FACTORY_TEST_AUTHORITY);
-	
+	public void toImageView(Context context, AbstractSource source, ImageView iv) {
+		if(source.isInternal()) {
+			//internal sources have icons defined as drawable resources
+			String resName = source.getIcon().getAuthority();
+			iv.setImageResource(context.getResources().getIdentifier(resName, "drawable", context.getPackageName()));
+		}
+	}
 }

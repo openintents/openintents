@@ -21,6 +21,7 @@ import org.openintents.historify.uri.Actions;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 /**
  * 
@@ -34,16 +35,15 @@ public class ContactsActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		
 		if (savedInstanceState == null) {
 
-			boolean starredOnly = getIntent().getBooleanExtra(
-					Actions.EXTRA_MODE_FAVORITES, false);
-			ContactsListFragment fragment = new ContactsListFragment(starredOnly);
+			ContactsListFragment fragment = new ContactsListFragment();
+			Bundle arguments = getIntent().getExtras();
+			fragment.setArguments(arguments == null ? new Bundle() : arguments);
 			getSupportFragmentManager().beginTransaction().add(
 					android.R.id.content, fragment).commit();
 		}
-
 	}
 
 }

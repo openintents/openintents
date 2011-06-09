@@ -19,7 +19,9 @@ package org.openintents.historify.data.adapters;
 import java.util.Date;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.aggregation.EventAggregator;
 import org.openintents.historify.data.loaders.EventLoader;
+import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
@@ -46,58 +48,34 @@ import android.widget.TextView;
 public class TimeLineAdapter extends BaseAdapter {
 
 	private Activity mContext;
-
-	private EventLoader mLoader;
-	private Cursor mCursor;
-
-	private Contact mContact;
-	private AbstractSource testSource;
-
+	
+	private EventAggregator mAggregator;
+	private SourceIconHelper mSourceIconHelper;
+	
 	/** Constructor */
 	public TimeLineAdapter(Activity context, Contact contact) {
 
-		mContext = context;
-		mContact = contact;
-		mLoader = new EventLoader();
-
+		mContext = context;		
+		mAggregator = new EventAggregator(context, contact);
+		mSourceIconHelper = new SourceIconHelper();
 		load();
 	}
 
 	public void load() {
-
-		// test load with a single provider
-		// also testing source filtering
-
-		SourceLoader sourceLoader = new SourceLoader();
-		Cursor sourcesCursor = sourceLoader.openCursor(mContext, mContact);
-
-		testSource = sourceLoader.loadFromCursor(sourcesCursor, 0);
-		mCursor = testSource.isEnabled() ? mLoader.openCursor(mContext,
-				ContentUris.fromAuthorityString(testSource.getAuthority()), mContact) : null;
-
+		mAggregator.query();
 		notifyDataSetChanged();
-
 	}
 
 	public int getCount() {
-		return mCursor == null ? 0 : mCursor.getCount();
+		return mAggregator.getCount();
 	}
 
 	public Event getItem(int position) {
-		
-		if(mCursor==null)
-			return null;
-		
-		Event retval = mLoader.loadFromCursor(mCursor, position);
-		if(retval!=null) {
-			retval.setSource(testSource);
-		}
-		
-		return retval;
+		return mAggregator.getItem(position);
 	}
 
 	public long getItemId(int position) {
-		return -1;
+		return getItem(position).getId();
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -129,7 +107,7 @@ public class TimeLineAdapter extends BaseAdapter {
 				.formatDate(new Date(event.getPublishedTime())));
 		
 		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
-		iv.setImageURI(event.getSource().getIcon());
+		mSourceIconHelper.toImageView(mContext, event.getSource(), iv);
 	}
 
 	private void alignView(Event event, View convertView) {
