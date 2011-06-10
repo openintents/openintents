@@ -17,6 +17,7 @@
 package org.openintents.historify.data.adapters;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 
@@ -27,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -40,6 +42,7 @@ public class ContactsAdapter extends BaseAdapter {
 	private Activity mContext;
 
 	private ContactLoader mLoader;
+	private ContactIconHelper mContactIconHelper;
 	private Cursor mCursor;
 
 	// true if list is filtered for favorite contacts only.
@@ -50,6 +53,7 @@ public class ContactsAdapter extends BaseAdapter {
 		mContext = context;
 		mStarredOnly = starredOnly;
 		mLoader = new ContactLoader();
+		mContactIconHelper = new ContactIconHelper(mContext);
 
 		load();
 	}
@@ -88,6 +92,15 @@ public class ContactsAdapter extends BaseAdapter {
 				.findViewById(R.id.contacts_listitem_txtName);
 		txtName.setText(contact.getName());
 
+		
+		ImageView iv = (ImageView)convertView.findViewById(R.id.contacts_listitem_imgIcon);
+		iv.setImageResource(R.drawable.contact_default_small);
+		mContactIconHelper.loadContactIcon(contact, iv);
+		
 		return convertView;
+	}
+	
+	public void releaseThread() {
+		mContactIconHelper.stopThread();
 	}
 }

@@ -17,7 +17,6 @@
 package org.openintents.historify.data.model.source;
 
 import android.net.Uri;
-import android.widget.ImageView;
 
 /**
  * 

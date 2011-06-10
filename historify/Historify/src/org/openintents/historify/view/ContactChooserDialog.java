@@ -25,6 +25,7 @@ import org.openintents.historify.data.model.Contact;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -42,6 +43,8 @@ import android.widget.TextView;
 public class ContactChooserDialog extends Dialog {
 
 	private Contact mSelectedContact;
+	private OnDismissListener mOnDismissListener;
+	private ContactsDialogAdapter mAdapter;
 
 	public ContactChooserDialog(Activity context, List<Contact> disabledContacts) {
 		super(context);
@@ -76,16 +79,17 @@ public class ContactChooserDialog extends Dialog {
 				.setText(R.string.contacts_no_contacts);
 		((ViewGroup) lstContacts.getParent()).addView(lstContactsEmptyView);
 		lstContacts.setEmptyView(lstContactsEmptyView);
-
+			
 		// adapter
 		String alreadyAddedMessage = context
 				.getString(R.string.sources_filter_mode_already_added);
-		ContactsDialogAdapter adapter = new ContactsDialogAdapter(context,
+		mAdapter = new ContactsDialogAdapter(context,
 				disabledKeys, alreadyAddedMessage);
-		lstContacts.setAdapter(adapter);
+		lstContacts.setAdapter(mAdapter);
 
+		super.setOnDismissListener(new DismissListenerWrapper());
 	}
-
+	
 	private void onContactSelected(Contact selected) {
 		setSelectedContact(selected);
 		dismiss();
@@ -97,6 +101,21 @@ public class ContactChooserDialog extends Dialog {
 
 	public Contact getSelectedContact() {
 		return mSelectedContact;
+	}
+	
+	
+	@Override
+	public void setOnDismissListener(OnDismissListener listener) {
+		mOnDismissListener = listener;
+	}
+	
+	public class DismissListenerWrapper implements OnDismissListener {
+
+		public void onDismiss(DialogInterface dialog) {
+			mAdapter.releaseThread();
+			if(mOnDismissListener!=null) mOnDismissListener.onDismiss(dialog);
+		}
+
 	}
 
 }

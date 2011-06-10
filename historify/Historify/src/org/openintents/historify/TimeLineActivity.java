@@ -17,7 +17,6 @@
 package org.openintents.historify;
 
 import org.openintents.historify.fragments.TimeLineFragment;
-import org.openintents.historify.uri.Actions;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;

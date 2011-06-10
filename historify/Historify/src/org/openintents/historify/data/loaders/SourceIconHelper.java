@@ -19,7 +19,6 @@ package org.openintents.historify.data.loaders;
 import org.openintents.historify.data.model.source.AbstractSource;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.widget.ImageView;
 
 /**

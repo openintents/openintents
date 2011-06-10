@@ -14,14 +14,14 @@
 	<LinearLayout 
     	android:orientation="vertical"
     	android:layout_width="wrap_content" 
-    	android:layout_height="wrap_content"
+		android:layout_height="wrap_content"
     	android:layout_alignParentTop="true"
 		android:layout_alignParentLeft="true">
     	
     	<ImageView
-			android:id="@+id/timeline_imgUserAvatar"
-			android:layout_width="wrap_content" 
-	    	android:layout_height="wrap_content"
+			android:id="@+id/timeline_imgUserIcon"
+			android:layout_width="64dip" 
+			android:layout_height="64dip"
 	    	android:src="@drawable/contact_default_large"
 	    	
 	 	/>
@@ -43,9 +43,9 @@
 		android:layout_alignParentRight="true">
     
     	<ImageView
-			android:id="@+id/timeline_imgContactAvatar"
-			android:layout_width="wrap_content" 
-	    	android:layout_height="wrap_content"
+			android:id="@+id/timeline_imgContactIcon"
+			android:layout_width="64dip" 
+	    	android:layout_height="64dip"
 	    	android:layout_gravity="right"
 	   		android:src="@drawable/contact_default_large"
 	 	/>

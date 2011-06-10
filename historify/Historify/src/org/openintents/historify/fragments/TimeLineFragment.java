@@ -18,13 +18,14 @@ package org.openintents.historify.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.TimeLineAdapter;
+import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.uri.Actions;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -32,6 +33,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -54,6 +56,7 @@ public class TimeLineFragment extends Fragment {
 	// views
 	private ListView mLstTimeLine;
 	private TextView mTxtContact;
+	private ImageView mImgContactIcon;
 
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
@@ -83,7 +86,8 @@ public class TimeLineFragment extends Fragment {
 
 		
 		mTxtContact = (TextView) layout.findViewById(R.id.timeline_txtContact);
-
+		mImgContactIcon = (ImageView) layout.findViewById(R.id.timeline_imgContactIcon);
+		
 		return layout;
 	}
 
@@ -107,7 +111,12 @@ public class TimeLineFragment extends Fragment {
 		if(mContact!=null) {
 			mTxtContact.setText(mContact.getName());
 			mAdapter = new TimeLineAdapter(getActivity(), mContact);
-			mLstTimeLine.setAdapter(mAdapter);			
+			mLstTimeLine.setAdapter(mAdapter);
+			
+			Drawable icon = ContactIconHelper.getIconDrawable(getActivity(), mContact.getLookupKey());
+			if(icon==null) mImgContactIcon.setImageResource(R.drawable.contact_default_large);
+			else mImgContactIcon.setImageDrawable(icon);
+			
 		} else {
 			mTxtContact.setText("");
 		}

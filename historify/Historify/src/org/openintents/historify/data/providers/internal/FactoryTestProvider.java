@@ -32,7 +32,7 @@ import android.database.MatrixCursor;
  */
 public class FactoryTestProvider extends EventsProvider {
 
-	private static final int TEST_SET_SIZE = 10;
+	private static final int TEST_SET_SIZE = 100;
 	private static final long EVENT_INTERVAL = AlarmManager.INTERVAL_DAY;
 	
 	@Override

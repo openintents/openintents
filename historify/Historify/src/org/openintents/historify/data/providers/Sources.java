@@ -16,7 +16,6 @@
 
 package org.openintents.historify.data.providers;
 
-import org.openintents.historify.R;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.internal.FactoryTest;
 import org.openintents.historify.data.providers.internal.Messaging;

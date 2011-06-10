@@ -17,11 +17,9 @@
 package org.openintents.historify;
 
 import org.openintents.historify.fragments.ContactsListFragment;
-import org.openintents.historify.uri.Actions;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 /**
  * 

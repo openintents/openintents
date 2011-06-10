@@ -20,18 +20,13 @@ import java.util.Date;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.aggregation.EventAggregator;
-import org.openintents.historify.data.loaders.EventLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
-import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
-import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.DateUtils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

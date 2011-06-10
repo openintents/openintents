@@ -39,5 +39,5 @@ public final class Actions {
 	//EventIntent extras
 	public static final String EXTRA_EVENT_ID = Events._ID;
 	public static final String EXTRA_EVENT_KEY = Events.EVENT_KEY;
-
+	
 }

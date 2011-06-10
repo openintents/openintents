@@ -22,7 +22,6 @@ import org.openintents.historify.data.model.source.AbstractSource;
 
 import android.database.AbstractCursor;
 import android.database.Cursor;
-import android.util.Log;
 
 /**
  * 
