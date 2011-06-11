@@ -6,6 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Etienne Ruedin https://launchpad.net/~ruedin
   Peli https://launchpad.net/~peli0101
   Stefan Fenzke https://launchpad.net/~stefan-fenzke</string>
 	
@@ -16,19 +17,19 @@
 	     Application-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Color Picker</string>
+    <string name="app_name">OI-Farbwähler</string>
     
     <!-- Title of the color picker activity. -->
     <string name="color_picker">Farbwähler</string>
     
-    <string name="recent_colors_condensed">Recent</string>
-    <string name="recent_colors">Recent colors</string>
-    <string name="recent_colors_expanded">Recently chosen colors</string>
-    <string name="recent_colors_clear_history">Clear</string>
-    <string name="recent_colors_empty">There are no recently chosen colors.</string>
+    <string name="recent_colors_condensed">Zuletzt verwendet</string>
+    <string name="recent_colors">Aktuelle Farben</string>
+    <string name="recent_colors_expanded">Kürzlich gewählt Farben</string>
+    <string name="recent_colors_clear_history">Löschen</string>
+    <string name="recent_colors_empty">Es gibt keine kürzlich gewählten Farben</string>
     
-    <string name="confirm_color_title">Use color?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_title">Farbe verwenden?</string>
+    <string name="confirm_color_message">Diese neue Farbe verwenden? Wenn diese Nachricht nicht mehr angezeigt werden soll, klicken Sie in den mittleren Kreis.</string>
     
     
 	<!-- About -->
@@ -38,14 +39,14 @@
 
 
 	<!-- Update -->
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Keine Anwendung zum Herunterladen vorhanden.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
-    <string name="title_app_flashlight">OI Flashlight</string>
+    <string name="info_app_flashlight">Um eine Farbe in der OI-Taschenlampe zu wählen, wählen Sie Menü &gt; Farbe.</string>
+    <string name="title_app_flashlight">OI-Taschenlampe</string>
     
     <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
     <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
@@ -60,6 +61,6 @@
 	<string name="info_activity_text">Diese App kann mit mit folgenden Anwedungen verwendet werden:</string>
     <string name="info_launch">Starte %s</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
+	<string name="info_not_available">Diese Anwendung benötigt %1$s %2$s Auflösung oder höher.</string>
 	<string name="info_get">Get %s</string>
 </resources>

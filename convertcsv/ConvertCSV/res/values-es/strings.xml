@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+ * Copyright (C) 2007-2008 OpenIntents.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+<resources>
+
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+ 	<string name="about_translators">Launchpad Contributions:
+  dcb116 https://launchpad.net/~dcb116</string>
+	
+	<!-- Explanation what this application does. -->
+	<string name="about_comments">Esta extensión para OI  Lista de Compras y OI Bloc de Notas le permite importar y exportar listas y notas en el formato CSV</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Lista de Compras</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">Bloc de Notas OI</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Launch %s and select menu &gt; Convert CSV.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized.
+	  "CSV" is a common file extension meaning "comma separated values".
+	  "OI" and "CSV" should not be changed.  -->
+    <string name="app_name">OI Convertidor CSV</string>
+    <string name="convert_csv">Convertidor CSV</string>
+    <string name="convert_csv_notepad">Convertir CSV a Bloc de Notas</string>
+    <string name="convert_csv_shoppinglist">Convertir CSV a Lista de Compras</string>
+    <string name="convert_all_notes">Convetir todas las notas</string>
+    <string name="convert_all_shoppinglists">Convertir todas las listas de compra</string>
+    <string name="convert_list">Convertir listas</string>
+    <string name="file_path">Ruta del archivo</string>
+    <string name="file_import">Importar</string>
+    <string name="file_export">Exportar</string>
+    <string name="error_writing_file">Error escribiendo en archivo</string>
+    <string name="error_reading_file">Error leyendo el archivo</string>
+    <string name="wrong_csv_format">Formato CSV erroneo</string>
+    <string name="error_file_not_found">Archivo no encontrado</string>
+    <string name="error_not_yet_implemented">No implementado aun, por favor escoja otra opción</string>
+    <string name="import_finished">Importación terminada</string>
+    <string name="export_finished">Exportación terminada</string>
+    <string name="filemanager_title_notepad">Seleccione archivo CSV del Bloc de Notas</string>
+    <string name="filemanager_title_shoppinglist">Seleccione archivo CSV de la Lista de Compras</string>
+	<string name="current_import_policy">Política de Importación actual</string>
+	<string name="import_policy">Política de Importación</string>
+	<string name="select_import_policy">Seleccione política de importación a usar</string>
+    
+    <string name="file_exists">El archivo existe. Quiere reescribirlo</string>
+    <string name="dont_ask_again">No preguntar de nuevo. Reescribir siempre</string>
+    
+    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
+    <string name="warn_restore_policy">Su política actual de importación esta configurada para BORRAR TODOS LOS DATOS ACTUALES y REEMPLAZARLOS con en el contenido del archivo CSV. ¿Esta seguro?</string>
+    
+    <string name="menu_settings">Configuración</string>
+    <string name="csv_file_format">formato de archivo CSV</string>
+    <string name="select_csv_file_format">Seleccione el formato de archivo CSV</string>
+    <string name="select_encoding">Seleccionar codificación</string>
+    <string name="default_encoding">Predeterminado</string>
+    <string name="use_custom_encoding">Usar codificación personalizada (usuarios avanzados)</string>
+    <string name="preferences_select_csv_file_format">Seleccione un formato de archivo CSV</string>
+    <string name="preferences_select_import_policy">Seleccione política de importación a usar</string>
+    
+    <!-- Preferences -->
+    <!-- Preference category title -->
+    <string name="preference_common">Opciones comunes</string>
+    <string name="preference_common_summary">Opciones de Importacion/Exportación que se aplican al Bloc de notas y Lista de Compras</string>
+    <string name="preference_ask_if_file_exists">Preguntar si el archivo existe</string>
+    <string name="preference_ask_if_file_exists_summary">Si está seleccionado aparece una advertencia para confirmar re-escritura si el archivo de exportación ya existe.</string>
+    
+    <string name="preference_application_specific">Configuración específica de la aplicación</string>
+    <string name="preference_filename">Nombre de archivo</string>
+    <string name="preference_filename_summary">Ruta completa del archivo</string>
+    
+    <string name="preference_notepad">Bloc de Notas OI</string>
+    <string name="preference_notepad_summary">Configuración de Importación/Exportación para OI Bloc de Notas</string>
+    
+    <string name="preference_shoppinglist">OI Lista de Compras</string>
+    <string name="preference_shoppinglist_summary">Configuración de Importación/Exportación para OI Lista de Compras</string>
+    
+	<string name="converting">Convirtiendo...</string>
+	<string name="dialog_ok">Ok</string>
+	<string name="preference_stores">Importar tiendas</string>
+	<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
+	<string name="preference_stores_on_summary">Importar tiendas de HandyShopper y precios por-tienda y ordenar la información</string>
+
+	<!-- OI Notepad -->
+	<!-- Permission -->
+    <string name="oi_notepad_permission_read">leer notas</string>
+    <string name="oi_notepad_permission_read_descr">Permitir a una aplicación leer notas. Observe que las notas cifradas son proveídas en formato cifrado.</string>
+	<!-- Permission -->
+    <string name="oi_notepad_permission_write">escribir notas</string>
+    <string name="oi_notepad_permission_write_descr">Permitir a una aplicación crear o modificar notas existentes.</string>
+    
+	<!-- OI Shopping list -->
+	<!-- Permission -->
+    <string name="oi_shopping_permission_read">leer listas de compra</string>
+    <string name="oi_shopping_permission_read_descr">Permitir a una aplicación leer las listas de compra. Tenga en cuenta que las listas y los elementos cifrados se presentan en formato cifrado.</string>
+	<!-- Permission -->
+    <string name="oi_shopping_permission_write">escribir listas de compra</string>
+    <string name="oi_shopping_permission_write_descr">Permitir a una aplicación crear una lista nueva y elementos o modificar los existentes.</string>
+    	
+    <string-array name="notepad_format">
+        <item>Notas de MS Outlook</item>
+        <item>Formato CSV de Palm</item>
+    </string-array>
+    
+    <string-array name="shoppinglist_format">
+        <item>Tareas de MS Outlook</item>
+        <item>HandyShopper</item>
+    </string-array>
+    
+    <string-array name="import_policy">
+        <item>DUPLICAR - Permitir duplicacion de registros.</item>
+        <item>"CONSERVAR - No re-escribir registros existentes."</item>
+        <item>Re-escribir - Re-escribir registros existentes</item>
+        <item>Restaurar - BORRAR TODO, entonces importar.</item>
+    </string-array>
+
+    <string-array name="import_policy_detail">
+        <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
+        <item>"Conservar - No re-escribir un registro existente, ignorar el del archivo CSV."</item>
+        <item>Re-escribir - Un registro en el archivo CSV RE-ESCRIBIRA al registro existente.</item>
+        <item>Restaurar Respaldo - BORRA TODO SUS REGISTROS EXISTENTES, entonces importa el archivo CSV.</item>
+    </string-array>
+    
+    <string-array name="shoppinglist_import_policy">
+        <item>DUPLICAR - Permitir duplicacion de registros.</item>
+        <item>"CONSERVAR - No re-escribir registros existentes."</item>
+    </string-array>
+
+    <string-array name="shoppinglist_import_policy_detail">
+        <item>DUPLICAR - Agregar una segunda copia del registro si ya existe.</item>
+        <item>"Conservar - No re-escribir un registro existente, ignorar el del archivo CSV."</item>
+    </string-array>
+    
+</resources>
