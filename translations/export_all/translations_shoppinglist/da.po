@@ -193,14 +193,12 @@ msgstr "%s - Indkøb"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:86(string)
-#, fuzzy
 msgid "%s - Stores"
-msgstr "%s - Vælg varer"
+msgstr ""
 
 #: tmp_strings.xml:87(string)
-#, fuzzy
 msgid "Edit Item Stores"
-msgstr "Redigér vare"
+msgstr ""
 
 #: tmp_strings.xml:89(string)
 msgid "Tags"

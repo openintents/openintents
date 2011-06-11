@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: reza kia <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  reza kia https://launchpad.net/~kia1349"
 
@@ -192,14 +193,12 @@ msgstr "%s - خرید"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:86(string)
-#, fuzzy
 msgid "%s - Stores"
-msgstr "%s - انتخاب موارد"
+msgstr ""
 
 #: tmp_strings.xml:87(string)
-#, fuzzy
 msgid "Edit Item Stores"
-msgstr "ویرایش مورد"
+msgstr ""
 
 #: tmp_strings.xml:89(string)
 msgid "Tags"

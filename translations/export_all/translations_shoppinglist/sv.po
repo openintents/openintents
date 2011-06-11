@@ -193,9 +193,8 @@ msgid "%s - Stores"
 msgstr ""
 
 #: tmp_strings.xml:87(string)
-#, fuzzy
 msgid "Edit Item Stores"
-msgstr "Redigera post"
+msgstr ""
 
 #: tmp_strings.xml:89(string)
 msgid "Tags"

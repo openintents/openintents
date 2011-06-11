@@ -190,14 +190,12 @@ msgstr "%s - kupovina"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:86(string)
-#, fuzzy
 msgid "%s - Stores"
-msgstr "%s - odaberite stavke"
+msgstr ""
 
 #: tmp_strings.xml:87(string)
-#, fuzzy
 msgid "Edit Item Stores"
-msgstr "Uredi stavku"
+msgstr ""
 
 #: tmp_strings.xml:89(string)
 msgid "Tags"
