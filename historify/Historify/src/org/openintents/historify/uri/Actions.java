@@ -26,18 +26,38 @@ import org.openintents.historify.data.providers.Events;
  */
 public final class Actions {
 
-	//ContactsActivity
+	// ContactsActivity
+	// ----------------------------------------------------------------------------------------------
 	public static final String EXTRA_MODE_FAVORITES = "favorites";
 
-	//TimeLineActiviy
-	public static final String SHOW_TIMELINE = "org.openintents.historify.SHOW_TIMELINE";
+
+	// TimeLineActiviy
+	// ----------------------------------------------------------------------------------------------
+	public static final String ACTION_SHOW_TIMELINE = "org.openintents.historify.SHOW_TIMELINE";
 	public static final String EXTRA_CONTACT_LOOKUP_KEY = "lookupKey";
 
-	//EventIntents for internal providers
-	public static final String VIEW_MESSAGING_EVENT = "org.openintents.historify.VIEW_MESSAGING_EVENT";
+	// EventIntents for internal providers
+	public static final String ACTION_VIEW_MESSAGING_EVENT = "org.openintents.historify.VIEW_MESSAGING_EVENT";
 
-	//EventIntent extras
+	// EventIntent extras
 	public static final String EXTRA_EVENT_ID = Events._ID;
 	public static final String EXTRA_EVENT_KEY = Events.EVENT_KEY;
+
+	
+	// BridgeService
+	// ----------------------------------------------------------------------------------------------
+
+	public static final String ACTION_REGISTER_SOURCE = "org.openintents.historify.REGISTER_SOURCE";
+	// mandatory parameters
+	public static final String EXTRA_SOURCE_NAME = "name";
+	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
+	// optional parameters
+	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
+	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
+
+	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
+	public static final String EXTRA_PACKAGE_NAME = "package_name";
+	public static final String EXTRA_ADDRESSED = "addressed";
+
 	
 }

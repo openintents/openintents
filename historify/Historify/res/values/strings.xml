@@ -23,4 +23,10 @@
 	
 	<string name="timeline.no_events">There is nothing to display.</string>
 	
+	<string name="permissions.use_bridge">Interact with Historify</string>
+	<string name="permissions.use_bridge_description">Can register a SharedSource, can use the QuickPost Interface.</string>
+	
+	<string name="notification_source_added_ticker">SharedSource registered.</string>
+	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
+	
 </resources>

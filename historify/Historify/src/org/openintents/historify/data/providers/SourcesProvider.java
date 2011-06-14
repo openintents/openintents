@@ -262,23 +262,13 @@ public class SourcesProvider extends ContentProvider {
 
 		switch (sUriMatcher.match(uri)) {
 
-		// case SOURCES:
-		// table = SourcesTable._TABLE;
-		// break;
+		case SOURCES:
+			table = SourcesTable._TABLE;
+			break;
 
 		case FILTERS:
 			table = FiltersTable._TABLE;
 			break;
-
-		// case SOURCE_ID:
-		// table = SourcesTable._TABLE;
-		// where = BaseColumns._ID + " = "+uri.getPathSegments().get(1);
-		// break;
-		//			
-		// case FILTER_ID:
-		// table = FiltersTable._TABLE;
-		// where = BaseColumns._ID + " = "+uri.getPathSegments().get(1);
-		// break;
 
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);

@@ -16,9 +16,11 @@
 
 package org.openintents.historify.data.loaders;
 
+import org.openintents.historify.R;
 import org.openintents.historify.data.model.source.AbstractSource;
 
 import android.content.Context;
+import android.net.Uri;
 import android.widget.ImageView;
 
 /**
@@ -30,10 +32,19 @@ import android.widget.ImageView;
 public class SourceIconHelper {
 
 	public void toImageView(Context context, AbstractSource source, ImageView iv) {
+		
 		if(source.isInternal()) {
 			//internal sources have icons defined as drawable resources
 			String resName = source.getIcon().getAuthority();
 			iv.setImageResource(context.getResources().getIdentifier(resName, "drawable", context.getPackageName()));
+		} else {
+			//external sources may use the content:// or the file:// schema
+			//if icon_uri is not defined by the source, the default icon will be used
+			Uri resUri = source.getIcon();
+			if(resUri==null)
+				iv.setImageResource(R.drawable.source_default);
+			else 
+				iv.setImageURI(resUri);
 		}
 	}
 }

@@ -39,7 +39,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 25;
+	static final int DB_VERSION = 27;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -140,7 +140,7 @@ public final class Sources {
 			cv.put(SourcesTable.NAME, Messaging.SOURCE_NAME);
 			cv.put(SourcesTable.DESCRIPTION, Messaging.DESCRIPTION);
 			cv.put(SourcesTable.AUTHORITY, Messaging.MESSAGING_AUTHORITY);
-			cv.put(SourcesTable.EVENT_INTENT, Actions.VIEW_MESSAGING_EVENT);
+			cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_MESSAGING_EVENT);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_messaging").toString());
 			db.insert(SourcesTable._TABLE, null, cv);

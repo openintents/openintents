@@ -116,7 +116,7 @@ public class ContactsListFragment extends Fragment {
 		String contactLookupKey = String.valueOf(selected.getLookupKey());
 
 		Intent intent = new Intent();
-		intent.setAction(Actions.SHOW_TIMELINE);
+		intent.setAction(Actions.ACTION_SHOW_TIMELINE);
 		intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactLookupKey);
 
 		startActivity(intent);
