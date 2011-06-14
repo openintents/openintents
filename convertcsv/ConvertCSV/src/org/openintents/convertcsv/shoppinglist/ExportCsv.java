@@ -22,11 +22,10 @@ import java.io.Writer;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.opencsv.CSVWriter;
-import org.openintents.shopping.library.provider.Shopping;
-import org.openintents.shopping.library.provider.Shopping.ContainsFull;
-import org.openintents.shopping.library.provider.Shopping.Lists;
-import org.openintents.shopping.library.provider.Shopping.Status;
-import org.openintents.shopping.library.util.ShoppingUtils;
+import org.openintents.shopping.library.provider.ShoppingContract;
+import org.openintents.shopping.library.provider.ShoppingContract.ContainsFull;
+import org.openintents.shopping.library.provider.ShoppingContract.Lists;
+import org.openintents.shopping.library.provider.ShoppingContract.Status;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -66,26 +65,26 @@ public class ExportCsv {
 		csvwriter.writeNewline();
 
 		Cursor c = mContext.getContentResolver().query(
-				Shopping.Lists.CONTENT_URI, PROJECTION_LISTS, null,
-				null, Shopping.Lists.DEFAULT_SORT_ORDER);
+				ShoppingContract.Lists.CONTENT_URI, PROJECTION_LISTS, null,
+				null, ShoppingContract.Lists.DEFAULT_SORT_ORDER);
 
 		if (c != null) {
 
 			while (c.moveToNext()) {
 
 				String listname = c.getString(c
-						.getColumnIndexOrThrow(Shopping.Lists.NAME));
+						.getColumnIndexOrThrow(ShoppingContract.Lists.NAME));
 				long id = c
-						.getLong(c.getColumnIndexOrThrow(Shopping.Lists._ID));
+						.getLong(c.getColumnIndexOrThrow(ShoppingContract.Lists._ID));
 
 				// Log.i(ConvertCsvActivity.TAG, "List: " + listname);
 
 				Cursor ci = mContext.getContentResolver().query(
-						Shopping.ContainsFull.CONTENT_URI,
+						ShoppingContract.ContainsFull.CONTENT_URI,
 						PROJECTION_CONTAINS_FULL,
-						Shopping.ContainsFull.LIST_ID + " = ?",
+						ShoppingContract.ContainsFull.LIST_ID + " = ?",
 						new String[] { "" + id },
-						Shopping.ContainsFull.DEFAULT_SORT_ORDER);
+						ShoppingContract.ContainsFull.DEFAULT_SORT_ORDER);
 
 				if (ci != null) {
 					int itemcount = ci.getCount();
@@ -97,15 +96,15 @@ public class ExportCsv {
 								.dispatchConversionProgress(progress++);
 						String itemname = ci
 								.getString(ci
-										.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
+										.getColumnIndexOrThrow(ShoppingContract.ContainsFull.ITEM_NAME));
 						int status = ci
 								.getInt(ci
-										.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
-						int percentage = (status == Shopping.Status.BOUGHT) ? 1
+										.getColumnIndexOrThrow(ShoppingContract.ContainsFull.STATUS));
+						int percentage = (status == ShoppingContract.Status.BOUGHT) ? 1
 								: 0;
 						String tags = ci
 								.getString(ci
-										.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_TAGS));
+										.getColumnIndexOrThrow(ShoppingContract.ContainsFull.ITEM_TAGS));
 						csvwriter.write(itemname);
 						csvwriter.write(percentage);
 						csvwriter.write(listname);
@@ -146,11 +145,11 @@ public class ExportCsv {
 	
 				
 		Cursor ci = mContext.getContentResolver().query(
-				Shopping.ContainsFull.CONTENT_URI,
+				ShoppingContract.ContainsFull.CONTENT_URI,
 				PROJECTION_CONTAINS_FULL_HANDY_SHOPPER,
-				Shopping.ContainsFull.LIST_ID + " = ?",
+				ShoppingContract.ContainsFull.LIST_ID + " = ?",
 				new String[] { "" + listId },
-				Shopping.ContainsFull.DEFAULT_SORT_ORDER);
+				ShoppingContract.ContainsFull.DEFAULT_SORT_ORDER);
 
 		if (ci != null) {
 			int itemcount = ci.getCount();
@@ -160,18 +159,18 @@ public class ExportCsv {
 			while (ci.moveToNext()) {
 				ConvertCsvBaseActivity
 						.dispatchConversionProgress(progress++);
-				String itemname = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_NAME));
-				int status = ci.getInt(ci.getColumnIndexOrThrow(Shopping.ContainsFull.STATUS));
-				String tags = ci.getString(ci.getColumnIndexOrThrow(Shopping.ContainsFull.ITEM_TAGS));
-				String priority = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.PRIORITY));
-				String quantity = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.QUANTITY));
-				long price = ci.getLong(ci.getColumnIndex(Shopping.ContainsFull.ITEM_PRICE));
+				String itemname = ci.getString(ci.getColumnIndexOrThrow(ShoppingContract.ContainsFull.ITEM_NAME));
+				int status = ci.getInt(ci.getColumnIndexOrThrow(ShoppingContract.ContainsFull.STATUS));
+				String tags = ci.getString(ci.getColumnIndexOrThrow(ShoppingContract.ContainsFull.ITEM_TAGS));
+				String priority = ci.getString(ci.getColumnIndex(ShoppingContract.ContainsFull.PRIORITY));
+				String quantity = ci.getString(ci.getColumnIndex(ShoppingContract.ContainsFull.QUANTITY));
+				long price = ci.getLong(ci.getColumnIndex(ShoppingContract.ContainsFull.ITEM_PRICE));
 				String pricestring = "";
 				if (price != 0) {
 					pricestring += (double) price / 100.d;
 				}
-				String unit = ci.getString(ci.getColumnIndex(Shopping.ContainsFull.ITEM_UNITS));
-				long itemId =  ci.getInt(ci.getColumnIndex(Shopping.ContainsFull.ITEM_ID));
+				String unit = ci.getString(ci.getColumnIndex(ShoppingContract.ContainsFull.ITEM_UNITS));
+				long itemId =  ci.getInt(ci.getColumnIndex(ShoppingContract.ContainsFull.ITEM_ID));
 				
 				String statusText = getHandyShopperStatusText(status);
 				
@@ -246,11 +245,11 @@ public class ExportCsv {
 	}
 
 	private String getHandyShopperNote(long itemId) {
-		Uri uri = ContentUris.withAppendedId(Shopping.Items.CONTENT_URI, itemId);
+		Uri uri = ContentUris.withAppendedId(ShoppingContract.Items.CONTENT_URI, itemId);
 		
 		String note = "";
 		Cursor c1 = mContext.getContentResolver().query(uri, 
-				new String[] {Shopping.Items.NOTE} , null, null, null);
+				new String[] {ShoppingContract.Items.NOTE} , null, null, null);
 		if (c1 != null) {
 			if (c1.moveToFirst()) {
 				note = c1.getString(0);
@@ -264,20 +263,20 @@ public class ExportCsv {
 		String stores = "";
 		
 		Cursor c1 = mContext.getContentResolver().query(
-				Shopping.ItemStores.CONTENT_URI, 
-				new String[] {Shopping.ItemStores.ITEM_ID,
-				Shopping.ItemStores.STORE_ID} , 
-				Shopping.ItemStores.ITEM_ID + " = ?",
+				ShoppingContract.ItemStores.CONTENT_URI, 
+				new String[] {ShoppingContract.ItemStores.ITEM_ID,
+				ShoppingContract.ItemStores.STORE_ID} , 
+				ShoppingContract.ItemStores.ITEM_ID + " = ?",
 				new String[] {"" + itemId}, null);
 		if (c1 != null) {
 			while (c1.moveToNext()) {
-				long storeId = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.STORE_ID));
-				Uri uri2 = ContentUris.withAppendedId(Shopping.Stores.CONTENT_URI, storeId);
+				long storeId = c1.getLong(c1.getColumnIndexOrThrow(ShoppingContract.ItemStores.STORE_ID));
+				Uri uri2 = ContentUris.withAppendedId(ShoppingContract.Stores.CONTENT_URI, storeId);
 				Cursor c2 = mContext.getContentResolver().query(uri2, 
-						new String[] {Shopping.Stores.NAME}, null, null, null);
+						new String[] {ShoppingContract.Stores.NAME}, null, null, null);
 				if (c2 != null) {
 					if (c2.moveToFirst()) {
-						String storeName = c2.getString(c2.getColumnIndexOrThrow(Shopping.Stores.NAME));
+						String storeName = c2.getString(c2.getColumnIndexOrThrow(ShoppingContract.Stores.NAME));
 						if (stores.equals("")) {
 							stores = storeName;
 						} else {
@@ -298,27 +297,27 @@ public class ExportCsv {
 		String perStoreInfo = "";
 
 		Cursor c1 = mContext.getContentResolver().query(
-				Shopping.ItemStores.CONTENT_URI, 
-				new String[] {Shopping.ItemStores.ITEM_ID,
-				Shopping.ItemStores.STORE_ID,
-				Shopping.ItemStores.AISLE,
-				Shopping.ItemStores.PRICE} , 
-				Shopping.ItemStores.ITEM_ID + " = ?",
+				ShoppingContract.ItemStores.CONTENT_URI, 
+				new String[] {ShoppingContract.ItemStores.ITEM_ID,
+				ShoppingContract.ItemStores.STORE_ID,
+				ShoppingContract.ItemStores.AISLE,
+				ShoppingContract.ItemStores.PRICE} , 
+				ShoppingContract.ItemStores.ITEM_ID + " = ?",
 				new String[] {"" + itemId}, null);
 		if (c1 != null) {
 			while (c1.moveToNext()) {
-				long storeId = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.STORE_ID));
-				String aisle = c1.getString(c1.getColumnIndexOrThrow(Shopping.ItemStores.AISLE));
-				long price = c1.getLong(c1.getColumnIndexOrThrow(Shopping.ItemStores.PRICE));
+				long storeId = c1.getLong(c1.getColumnIndexOrThrow(ShoppingContract.ItemStores.STORE_ID));
+				String aisle = c1.getString(c1.getColumnIndexOrThrow(ShoppingContract.ItemStores.AISLE));
+				long price = c1.getLong(c1.getColumnIndexOrThrow(ShoppingContract.ItemStores.PRICE));
 				String pricestring = "" + (double) price / 100.d;
 				
-				Uri uri2 = ContentUris.withAppendedId(Shopping.Stores.CONTENT_URI, storeId);
+				Uri uri2 = ContentUris.withAppendedId(ShoppingContract.Stores.CONTENT_URI, storeId);
 				Cursor c2 = mContext.getContentResolver().query(uri2, 
-						new String[] {Shopping.Stores.NAME}, null, null, null);
+						new String[] {ShoppingContract.Stores.NAME}, null, null, null);
 
 				if (c2 != null) {
 					if (c2.moveToFirst()) {
-						String storeName = c2.getString(c2.getColumnIndexOrThrow(Shopping.Stores.NAME));
+						String storeName = c2.getString(c2.getColumnIndexOrThrow(ShoppingContract.Stores.NAME));
 
 						if (price != 0) {
 							String info = storeName + "=" + aisle + "/" + pricestring;

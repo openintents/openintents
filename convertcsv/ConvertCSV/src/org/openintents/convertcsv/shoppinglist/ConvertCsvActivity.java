@@ -24,7 +24,7 @@ import org.openintents.convertcsv.PreferenceActivity;
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
-import org.openintents.shopping.library.provider.Shopping;
+import org.openintents.shopping.library.provider.ShoppingContract;
 import org.openintents.shopping.library.util.ShoppingUtils;
 
 import android.content.SharedPreferences;
@@ -172,7 +172,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     	// Try the URI with which Convert CSV has been called:
     	Uri uri = getIntent().getData();
     	Cursor c = getContentResolver().query(uri, 
-    			new String[] {Shopping.Lists._ID}, null, null, null);
+    			new String[] {ShoppingContract.Lists._ID}, null, null, null);
     	if (c != null) {
     		if (c.moveToFirst()) {
     			listId = c.getLong(0);
@@ -191,7 +191,7 @@ public class ConvertCsvActivity extends ConvertCsvBaseActivity {
     	String listname = null;
     	Uri uri = getIntent().getData();
 		Cursor c = getContentResolver().query(uri
-				, new String[] {Shopping.Lists.NAME}, null, null, null);
+				, new String[] {ShoppingContract.Lists.NAME}, null, null, null);
 		if (c != null) {
 			if (c.moveToFirst()) {
 				listname = c.getString(0);

@@ -23,7 +23,7 @@ import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
 import org.openintents.convertcsv.common.WrongFormatException;
 import org.openintents.convertcsv.opencsv.CSVReader;
-import org.openintents.shopping.library.provider.Shopping.Status;
+import org.openintents.shopping.library.provider.ShoppingContract.Status;
 import org.openintents.shopping.library.util.ShoppingUtils;
 
 import android.content.Context;
