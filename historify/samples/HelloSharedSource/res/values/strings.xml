@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hello SharedSource</string>
+    
+    <string name="hello">Hello, SharedSource!</string>
+    <string name="register">Register SharedSource</string>
+    
+</resources>
