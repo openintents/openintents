@@ -39,7 +39,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 27;
+	static final int DB_VERSION = 28;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -55,10 +55,13 @@ public final class Sources {
 		public static final String EVENT_INTENT = "event_intent";
 
 		public static final String IS_INTERNAL = "is_internal";
+		public static final String UID = "uid";
 		public static final String STATE = "state";
 
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.source";
 		public static final String ITEM_CONTENT_TYPE = "vnd.android.cursor.item/vnd.historify.source";
+
+
 
 	}
 
@@ -111,6 +114,7 @@ public final class Sources {
 					+ " TEXT NOT NULL," + SourcesTable.EVENT_INTENT + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
 					+ AbstractSource.SourceState.ENABLED + ","
+					+ SourcesTable.UID + " INTEGER DEFAULT 0,"
 					+ SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");
 
 			db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("

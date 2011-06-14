@@ -28,6 +28,9 @@ import android.util.Log;
  * Historify's core functionality. It could be used for registering
  * SharedSources, and posting single events through the QuickPost interface.
  * 
+ * 3rd party apps may use the {@link HistorifyBridge} helper class to call the
+ * service.
+ * 
  * @author berke.andras
  */
 public class BridgeService extends IntentService {
@@ -42,21 +45,24 @@ public class BridgeService extends IntentService {
 	@Override
 	protected void onHandleIntent(Intent intent) {
 
-		if(Actions.ACTION_REGISTER_SOURCE.equals(intent.getAction())) {
-			
-			String sourceName = intent.getStringExtra(Actions.EXTRA_SOURCE_NAME);
-			if(sourceName!=null) {
-				Log.v(N,"Registering source: "+sourceName);
+		if (Actions.ACTION_REGISTER_SOURCE.equals(intent.getAction())) {
+
+			String sourceName = intent
+					.getStringExtra(Actions.EXTRA_SOURCE_NAME);
+			if (sourceName != null) {
+				Log.v(N, "Registering source: " + sourceName);
 				try {
-					new SourceRegistrationHelper().registerSource(this, intent.getExtras());	
-				} catch(Exception e) {
-					Log.e("N","Error while registering source.");
+					new SourceRegistrationHelper().registerSource(this, intent
+							.getExtras());
+				} catch (Exception e) {
+					Log.e("N", "Error while registering source.");
 					e.printStackTrace();
 				}
 			} else {
-				Log.e("N",intent.getAction().toString()+" called with wrong parameters");
+				Log.e("N", intent.getAction().toString()
+						+ " called with wrong parameters");
 			}
-			
+
 		}
 	}
 

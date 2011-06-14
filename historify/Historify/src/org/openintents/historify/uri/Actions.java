@@ -51,6 +51,7 @@ public final class Actions {
 	// mandatory parameters
 	public static final String EXTRA_SOURCE_NAME = "name";
 	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
+	public static final String EXTRA_SOURCE_UID = "uid";
 	// optional parameters
 	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";

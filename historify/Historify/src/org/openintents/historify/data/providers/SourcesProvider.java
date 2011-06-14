@@ -225,9 +225,9 @@ public class SourcesProvider extends ContentProvider {
 
 		switch (sUriMatcher.match(uri)) {
 
-		// case SOURCES:
-		// table = SourcesTable._TABLE;
-		// break;
+		case SOURCES:
+			table = SourcesTable._TABLE;
+			break;
 
 		case FILTERS:
 			table = FiltersTable._TABLE;

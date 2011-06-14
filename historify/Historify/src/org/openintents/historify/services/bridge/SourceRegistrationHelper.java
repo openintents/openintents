@@ -19,6 +19,7 @@ package org.openintents.historify.services.bridge;
 import org.openintents.historify.R;
 import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.providers.Sources;
+import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.uri.ContentUris;
 
@@ -52,13 +53,15 @@ public class SourceRegistrationHelper {
 		String name = parameterSet.getString(Actions.EXTRA_SOURCE_NAME);
 		String authority = parameterSet
 				.getString(Actions.EXTRA_SOURCE_AUTHORITY);
+		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
+		
 		String description = parameterSet
 				.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
 		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
 
-		if (name == null && authority == null) {
+		if (name == null || authority == null || uid == 0) {
 			Log.e(BridgeService.N,
-					"Source name and authority are mandatory parameters!");
+					"Source name, authority and uid are mandatory parameters!");
 			return;
 		}
 
@@ -81,6 +84,7 @@ public class SourceRegistrationHelper {
 		ContentValues cv = new ContentValues();
 		cv.put(Sources.SourcesTable.NAME, name);
 		cv.put(Sources.SourcesTable.AUTHORITY, authority);
+		cv.put(Sources.SourcesTable.UID, uid);
 		if (description != null)
 			cv.put(Sources.SourcesTable.DESCRIPTION, description);
 		if (iconUri != null)
@@ -141,8 +145,9 @@ public class SourceRegistrationHelper {
 	}
 
 	public void unregisterSource(Context context, int uid) {
-		
-		
+
+		String where = SourcesTable.UID + " = "+uid;
+		context.getContentResolver().delete(ContentUris.Sources, where, null);
 	}
 
 }

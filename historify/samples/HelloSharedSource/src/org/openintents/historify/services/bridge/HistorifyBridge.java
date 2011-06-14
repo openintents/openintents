@@ -25,6 +25,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
 
 /**
  * 
@@ -75,20 +76,29 @@ public class HistorifyBridge {
 
 		Intent intent = new Intent();
 
+		//determine application's uid
+		String packageName=context.getPackageName();
+		int uid;
+		try {
+			uid = context.getPackageManager().getPackageInfo(packageName, 0).applicationInfo.uid;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+			return;
+		}
+		
 		intent.setAction(Actions.ACTION_REGISTER_SOURCE);
 		intent.putExtra(Actions.EXTRA_SOURCE_NAME, name);
 		intent.putExtra(Actions.EXTRA_SOURCE_AUTHORITY, authority);
+		intent.putExtra(Actions.EXTRA_SOURCE_UID, uid);
 		intent.putExtra(Actions.EXTRA_SOURCE_DESCRIPTION, description);
 		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
 
 		try {
-
 			context.startService(intent);
-
 		} catch (SecurityException se) {
 			// can't access service, maybe because this application was
-			// installed
-			// BEFORE Historify.
+			// installed BEFORE Historify.
+			//
 			// http://stackoverflow.com/questions/4567812/define-a-permission-for-third-party-apps-to-use-in-android
 			// "My own app, which defined the permission for other apps to use,
 			// must be installed before other apps who want to use my

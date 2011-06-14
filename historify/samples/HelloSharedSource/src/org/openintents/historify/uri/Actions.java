@@ -51,12 +51,14 @@ public final class Actions {
 	// mandatory parameters
 	public static final String EXTRA_SOURCE_NAME = "name";
 	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
+	public static final String EXTRA_SOURCE_UID = "uid";
 	// optional parameters
 	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
-	
+
 	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_ADDRESSED = "addressed";
 
+	
 }
