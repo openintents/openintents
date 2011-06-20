@@ -31,7 +31,6 @@ public class HelloProvider extends EventsProvider{
 		return AUTHORITY;
 	}
 
-
 	@Override
 	protected Cursor queryEvents(String lookupKey) {
 		
@@ -61,5 +60,6 @@ public class HelloProvider extends EventsProvider{
 	protected Cursor queryEvent(String eventKey) {
 		return null;
 	}
+
 
 }

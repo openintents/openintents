@@ -30,17 +30,24 @@ import android.net.Uri;
  */
 public abstract class EventsProvider extends ContentProvider {
 
-	private UriMatcher sUriMatcher;
-	private static final int EVENTS = 1;
-	private static final int EVENT_ID = 2;
+	protected UriMatcher mUriMatcher;
+	protected static final int EVENTS_UNFILTERED = 1;
+	protected static final int EVENTS_FOR_A_CONTACT = 2;
+	protected static final int EVENT_BY_EVENT_KEY = 3;
+	
+	protected static final int USER_DEFINED_MATCH = 10;
 
 	@Override
 	public boolean onCreate() {
 
-		sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		sUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH + "/#", EVENT_ID);
-		sUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH + "/*", EVENTS);
-
+		mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+		mUriMatcher.addURI(getAuthority(), 
+				Events.EVENTS_PATH, EVENTS_UNFILTERED);
+		mUriMatcher.addURI(getAuthority(), 
+				Events.EVENTS_PATH + "/" + Events.EVENTS_FOR_CONTACTS_PATH + "/*", EVENTS_FOR_A_CONTACT);
+		mUriMatcher.addURI(getAuthority(), 
+				Events.EVENTS_PATH + "/" + Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENT_BY_EVENT_KEY);
+		
 		return true;
 	}
 
@@ -54,16 +61,16 @@ public abstract class EventsProvider extends ContentProvider {
 
 	/**
 	 * Derived classes must override this to let the client able to query a
-	 * particular event identified with the given id.
+	 * particular event identified with the given EVENT_KEY.
 	 * 
-	 * @param eventId
-	 *            The id of the requested event.
+	 * @param eventKey
+	 *            The eventKey of the requested event.
 	 * @return The Cursor containing the row associated with the requested
 	 *         event. <br/>
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEvent(long eventId);
+	protected abstract Cursor queryEvent(String eventKey);
 
 	/**
 	 * Derived classes must override this to let the client able to query the
@@ -81,10 +88,11 @@ public abstract class EventsProvider extends ContentProvider {
 	@Override
 	public String getType(Uri uri) {
 
-		switch (sUriMatcher.match(uri)) {
-		case EVENTS:
+		switch (mUriMatcher.match(uri)) {
+		case EVENTS_UNFILTERED:
+		case EVENTS_FOR_A_CONTACT:
 			return Events.CONTENT_TYPE;
-		case EVENT_ID:
+		case EVENT_BY_EVENT_KEY:
 			return Events.ITEM_CONTENT_TYPE;
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
@@ -103,19 +111,21 @@ public abstract class EventsProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 
-		switch (sUriMatcher.match(uri)) {
-		case EVENTS:
-			// 2nd path segment contains the lookup key
-			// (content:://authority/events/{CONTACT_LOOKUP_KEY})
+		switch (mUriMatcher.match(uri)) {
+		case EVENTS_UNFILTERED:
+			return null;
+		case EVENTS_FOR_A_CONTACT:
+			// 3rd path segment contains the lookup key
+			// (content://authority/events/contacts/{CONTACT_LOOKUP_KEY})
 			try {
-				return queryEvents(uri.getPathSegments().get(1));
+				return queryEvents(uri.getPathSegments().get(2));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		case EVENT_ID:
-			// 2nd path segment contains the event id
+		case EVENT_BY_EVENT_KEY:
+			// 3rd path segment contains the event id
 			try {
-				return queryEvent(Long.valueOf(uri.getPathSegments().get(1)));
+				return queryEvent(uri.getPathSegments().get(2));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -126,21 +136,21 @@ public abstract class EventsProvider extends ContentProvider {
 	}
 
 	@Override
-	public final Uri insert(Uri uri, ContentValues values) {
-		// not supported
+	public Uri insert(Uri uri, ContentValues values) {
+		// not supported by default
 		return null;
 	}
 
 	@Override
-	public final int update(Uri uri, ContentValues values, String selection,
+	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
-		// not supported
+		// not supported by default
 		return 0;
 	}
 
 	@Override
-	public final int delete(Uri uri, String selection, String[] selectionArgs) {
-		// not supported
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		// not supported by default
 		return 0;
 	}
 
