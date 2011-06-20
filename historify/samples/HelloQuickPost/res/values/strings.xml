@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HelloQuickPost</string>
+    
+    <string name="hello">Hello, QuickPost!</string>
+    <string name="test">This is a test.</string>
+    
+</resources>

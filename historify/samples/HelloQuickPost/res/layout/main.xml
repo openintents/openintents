@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<TextView
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="1. Pick a contact"
+    android:textSize="20dip"
+    />
+
+<TextView
+	android:id="@+id/main_txtPick"
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="(not picked yet.)"
+    />
+
+<Button    
+	android:id="@+id/main_btnPick"
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="Pick"
+    />
+
+<View
+    android:layout_width="fill_parent" 
+    android:layout_height="40dip" 
+    />
+
+
+<TextView
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="2. Chose a message and QuickPost it"
+    android:textSize="20dip"
+    />
+
+
+<TextView
+	android:id="@+id/main_txtPost1"  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/hello"
+    />
+<Button
+	android:id="@+id/main_btnPost1"    
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="QuickPost it!"
+    />
+
+<View
+    android:layout_width="fill_parent" 
+    android:layout_height="20dip" 
+    />
+
+
+<TextView
+	android:id="@+id/main_txtPost2"  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/test"
+    />
+<Button    
+	android:id="@+id/main_btnPost2"
+	android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:text="QuickPost it!"
+    />
+        
+</LinearLayout>
