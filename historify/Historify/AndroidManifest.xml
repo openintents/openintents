@@ -37,6 +37,11 @@
             android:exported="false"> 
         </provider>
 
+        <provider android:name=".data.providers.internal.QuickPostsProvider"
+            android:authorities="org.openintents.historify.internal.quickposts"
+            android:exported="false"> 
+        </provider>
+
         <provider android:name=".data.providers.internal.FactoryTestProvider"
             android:authorities="org.openintents.historify.internal.factorytest"
             android:exported="false"> 
@@ -59,6 +64,7 @@
          	android:process="org.openintents.historify.services.bridge" >
          	<intent-filter>
                 <action android:name="org.openintents.historify.REGISTER_SOURCE" />
+                <action android:name="org.openintents.historify.QUICK_POST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>

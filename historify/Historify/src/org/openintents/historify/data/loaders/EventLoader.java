@@ -36,7 +36,10 @@ public class EventLoader {
 	public Cursor openCursor(Activity context, Uri providerAuthority, Contact contact) {
 		
 		Builder eventsUri = providerAuthority.buildUpon().appendPath(Events.EVENTS_PATH);
-		if(contact!=null) eventsUri.appendPath(contact.getLookupKey());
+		if(contact!=null) {
+			eventsUri.appendPath(Events.EVENTS_FOR_CONTACTS_PATH);
+			eventsUri.appendPath(contact.getLookupKey());
+		}
 		
         return context.managedQuery(eventsUri.build(), null, null, null, null);
 	}

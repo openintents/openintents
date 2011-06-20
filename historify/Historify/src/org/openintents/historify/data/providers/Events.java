@@ -25,6 +25,8 @@ public final class Events {
 	public static final String ITEM_CONTENT_TYPE ="vnd.android.cursor.item/vnd.historify.event";
 	
 	public static final String EVENTS_PATH = "events";
+	public static final String EVENTS_FOR_CONTACTS_PATH = "contacts";
+	public static final String EVENTS_BY_EVENT_KEYS_PATH = "event_keys";
 	
 	/**
 	 * Long. Required, key field.

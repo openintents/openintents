@@ -19,6 +19,7 @@ package org.openintents.historify.data.providers;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.internal.FactoryTest;
 import org.openintents.historify.data.providers.internal.Messaging;
+import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.utils.UriUtils;
@@ -39,7 +40,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 28;
+	static final int DB_VERSION = 30;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -138,6 +139,13 @@ public final class Sources {
 			cv.put(SourcesTable.AUTHORITY, FactoryTest.FACTORY_TEST_AUTHORITY);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_factory_test").toString());
+			db.insert(SourcesTable._TABLE, null, cv);
+			
+			cv.put(SourcesTable.NAME, QuickPosts.SOURCE_NAME);
+			cv.put(SourcesTable.DESCRIPTION, QuickPosts.DESCRIPTION);
+			cv.put(SourcesTable.AUTHORITY, QuickPosts.QUICKPOSTS_AUTHORITY);
+			cv.put(SourcesTable.IS_INTERNAL, 1);
+			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_quick_post").toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 			
 			cv = new ContentValues();

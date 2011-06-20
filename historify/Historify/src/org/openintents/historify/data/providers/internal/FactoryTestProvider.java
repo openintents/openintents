@@ -46,8 +46,7 @@ public class FactoryTestProvider extends EventsProvider {
 	}
 
 	@Override
-	protected Cursor queryEvent(long eventId) {
-		// not supported yet
+	protected Cursor queryEvent(String eventKey) {
 		return null;
 	}
 

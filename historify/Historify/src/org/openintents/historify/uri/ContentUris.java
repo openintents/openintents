@@ -16,6 +16,8 @@
 
 package org.openintents.historify.uri;
 
+import org.openintents.historify.data.providers.internal.QuickPosts;
+
 import android.net.Uri;
 
 /**
@@ -31,7 +33,8 @@ public final class ContentUris {
 	public static final Uri Sources = Uri.parse("content://"+SOURCES_AUTHORITY+"/sources");
 	public static final Uri FilteredSources = Uri.parse("content://"+SOURCES_AUTHORITY+"/filtered_sources");
 	public static final Uri Filters = Uri.parse("content://"+SOURCES_AUTHORITY+"/filters");
-	
+	public static final Uri QuickPostSources = Uri.withAppendedPath(QuickPosts.SOURCE_URI, QuickPosts.QUICKPOST_SOURCES_PATH);
+
 	public static Uri fromAuthorityString(String authority) {
 		return Uri.parse("content://"+authority+"/");
 	}

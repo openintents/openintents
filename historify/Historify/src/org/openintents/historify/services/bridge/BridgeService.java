@@ -64,6 +64,27 @@ public class BridgeService extends IntentService {
 			}
 
 		}
+
+		if (Actions.ACTION_QUICK_POST.equals(intent.getAction())) {
+
+			String sourceName = intent
+					.getStringExtra(Actions.EXTRA_SOURCE_NAME);
+			if (sourceName != null) {
+				Log.v(N, "QuickPosting event from source: " + sourceName);
+				try {
+					new QuickPostHelper().quickPost(this, intent
+							.getExtras());
+				} catch (Exception e) {
+					Log.e("N", "Error while inserting QuickPost.");
+					e.printStackTrace();
+				}
+			} else {
+				Log.e("N", intent.getAction().toString()
+						+ " called with wrong parameters");
+			}
+
+		}
+
 	}
 
 }

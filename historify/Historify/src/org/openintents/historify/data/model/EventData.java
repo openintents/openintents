@@ -16,64 +16,61 @@
 
 package org.openintents.historify.data.model;
 
-import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.Events.Originator;
 
 /**
  * 
- * Model class representing an Event in the timeline.
+ * Model class describing the details of an Event in the timeline.
  * 
  * @author berke.andras
  */
-public class Event {
+public class EventData {
 
-	//id
-	private long mId;
+	//evenkey
+	private String mEventKey;
 	
-	//event data
-	private EventData mEventData;
+	//CONTACT_LOOKUP_KEY
+	private String mContactKey;
 	
-	//source of the event
-	private AbstractSource mSource;
-
-	public Event(long id, String eventKey, String contactKey, long publishedTime,
+	//event time
+	private long mPublishedTime;
+	
+	//displayed message string
+	private String mMessage;
+	
+	//originator of the event
+	private Events.Originator mOriginator;
+	
+	
+	public EventData(String eventKey, String contactKey, long publishedTime,
 			String message, Originator originator) {
-	
-		mId = id;
-		mEventData = new EventData(eventKey, contactKey, publishedTime, message, originator);
-	}
-
-	public long getId() {
-		return mId;
+		
+		this.mEventKey = eventKey;
+		this.mContactKey = contactKey;
+		this.mPublishedTime = publishedTime;
+		this.mMessage = message;
+		this.mOriginator = originator;
 	}
 
 	public String getEventKey() {
-		return mEventData.getEventKey();
+		return mEventKey;
 	}
 	
 	public String getContactKey() {
-		return mEventData.getContactKey();
+		return mContactKey;
 	}
 
 	public long getPublishedTime() {
-		return mEventData.getPublishedTime();
+		return mPublishedTime;
 	}
 
 	public String getMessage() {
-		return mEventData.getMessage();
+		return mMessage;
 	}
 
 	public Events.Originator getOriginator() {
-		return mEventData.getOriginator();
+		return mOriginator;
 	}
 	
-	public AbstractSource getSource() {
-		return mSource;
-	}
-	
-	public void setSource(AbstractSource mSource) {
-		this.mSource = mSource;
-	}
-
 }

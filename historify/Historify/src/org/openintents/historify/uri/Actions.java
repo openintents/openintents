@@ -60,5 +60,11 @@ public final class Actions {
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_ADDRESSED = "addressed";
 
-	
+
+	public static final String ACTION_QUICK_POST = "org.openintents.historify.QUICK_POST";
+	public static final String EXTRA_SOURCE_VERSION = "version";
+	// mandatory parameters
+	//EXTRA_SOURCE_NAME = "name";
+	//EXTRA_SOURCE_UID = "uid";
+	//also fields defined in .data.providers.Events
 }

@@ -44,8 +44,8 @@ public class TelephonyProvider extends EventsProvider {
 	}
 
 	@Override
-	protected Cursor queryEvent(long eventId) {
-		// not supported yet
+	protected Cursor queryEvent(String eventKey) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
