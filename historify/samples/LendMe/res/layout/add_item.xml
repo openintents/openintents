@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:orientation="vertical"
+	android:padding="10dip"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+		
+	<Button    
+		android:id="@+id/add_item_btnPick"
+		android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:text="@string/add.pick" />
+			
+	<EditText
+		android:id="@+id/add_item_editName"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textCapSentences"
+		android:maxLength = "20"
+		android:imeOptions="actionDone"
+		android:hint="Item name" />		
+		
+	<EditText
+		android:id="@+id/add_item_editDescription"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textMultiLine|textCapSentences"
+		android:lines="3"
+		android:imeOptions="actionDone"
+		android:gravity="top"
+		android:hint="Remarks (optional)" />
+		
+	<ImageButton    
+		android:id="@+id/add_item_btnAdd"
+		android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:src="@android:drawable/ic_menu_add"
+    	android:text="Add" />
+
+		
+</LinearLayout>

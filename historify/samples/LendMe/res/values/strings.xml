@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LendMe</string>
+    
+    
+    <string name="main.tab.lent">Lent</string>
+    <string name="main.tab.borrowed">Borrowed</string>
+    
+    <string name="main.add">Add ...</string>
+    <string name="main.returned">Returned</string>
+    <string name="main.reminder">Send reminder</string>
+    
+    <string name="main.reminder_text">Would you be so kind to return the following item: %1$s</string>
+    
+    <string name="add.pick">Pick a Contact</string>
+    
+    <string name="add.msg_nocontact">Select a Contact first.</string>
+    <string name="add.msg_mandatory">Item name is a mandatory field.</string>
+
+</resources>
