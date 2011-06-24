@@ -29,6 +29,13 @@
 		android:imeOptions="actionDone"
 		android:gravity="top"
 		android:hint="Remarks (optional)" />
+	
+	<CheckBox
+		android:id="@+id/add_item_chkPost"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Post event to Historify"
+		/>
 		
 	<ImageButton    
 		android:id="@+id/add_item_btnAdd"

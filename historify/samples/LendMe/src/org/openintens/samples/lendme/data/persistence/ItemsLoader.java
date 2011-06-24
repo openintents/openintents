@@ -65,7 +65,7 @@ public class ItemsLoader {
 				cursor.getString(COLUMN_ITEM_DESCRIPTION));
 	}
 
-	public void insert(Context context, Bundle parameterSet) {
+	public long insert(Context context, Bundle parameterSet) {
 		
 		Uri contentUri = ItemsProviderHelper.CONTENT_URI;
 		
@@ -80,7 +80,7 @@ public class ItemsLoader {
 		
 		values.put(ItemsTable.OWNER, parameterSet.getString(ItemsTable.OWNER));
 		
-		context.getContentResolver().insert(contentUri, values);
+		return Long.valueOf(context.getContentResolver().insert(contentUri, values).getLastPathSegment());
 	}
 
 	public void delete(Context context, long itemId) {

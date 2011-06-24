@@ -16,17 +16,19 @@
 
 package org.openintens.samples.lendme;
 
+import org.openintens.samples.lendme.data.ContactOperations;
+import org.openintens.samples.lendme.data.HistorifyPostHelper;
 import org.openintens.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.Contacts;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 public class AddItemActivity extends Activity {
@@ -35,6 +37,7 @@ public class AddItemActivity extends Activity {
 	
 	private Button btnPick;
 	private EditText editName, editDescription;
+	private CheckBox chkPost;
 	private View btnAdd;
 	
 	private String pickedContactKey;
@@ -47,6 +50,7 @@ public class AddItemActivity extends Activity {
 		btnPick = (Button)findViewById(R.id.add_item_btnPick);
 		editName = (EditText) findViewById(R.id.add_item_editName);
 		editDescription = (EditText)findViewById(R.id.add_item_editDescription);
+		chkPost = (CheckBox)findViewById(R.id.add_item_chkPost);
 		btnAdd = findViewById(R.id.add_item_btnAdd);
 		
 		btnPick.setOnClickListener(new OnClickListener() {
@@ -62,6 +66,9 @@ public class AddItemActivity extends Activity {
 				onAdd();
 			}
 		});
+		
+		boolean shouldPost = HistorifyPostHelper.getInstance(this).userPrefersPosting();
+		chkPost.setChecked(shouldPost);
 	}
 	
 	private void onPick() {
@@ -81,9 +88,9 @@ public class AddItemActivity extends Activity {
 				Uri lookupUri = Contacts.getLookupUri(getContentResolver(), contactUri);
 				if(lookupUri!=null) {
 					pickedContactKey = lookupUri.getPathSegments().get(2);
-					String name = loadContactName(pickedContactKey);
+					String name = ContactOperations.loadContactName(getContentResolver(), pickedContactKey);
 					if(name!=null)
-						btnPick.setText(loadContactName(pickedContactKey));
+						btnPick.setText(name);
 					else {
 						pickedContactKey = null;
 						btnPick.setText(R.string.add_pick);
@@ -96,20 +103,6 @@ public class AddItemActivity extends Activity {
 
 	}
 	
-	private String loadContactName(String contactKey) {
-		
-		Uri lookupUri = Uri.withAppendedPath(Contacts.CONTENT_LOOKUP_URI,contactKey);
-		String name = null;
-		
-		Cursor c = getContentResolver().query(lookupUri, new String[] {Contacts.DISPLAY_NAME}, null, null,null);
-		if(c.moveToFirst()) {
-			name = c.getString(0);
-		}
-		c.close();
-		
-		return name;
-	}
-
 	private void onAdd() {
 		
 		String contactKey = pickedContactKey;
@@ -134,6 +127,7 @@ public class AddItemActivity extends Activity {
 		data.putExtra(ItemsTable.CONTACT_KEY, contactKey);
 		data.putExtra(ItemsTable.ITEM_NAME, itemName);
 		data.putExtra(ItemsTable.ITEM_DESCRIPTION, itemDescription);
+		data.putExtra(HistorifyPostHelper.PREF_NAME, chkPost.isChecked());
 		
 		setResult(RESULT_OK, data);
 		finish();

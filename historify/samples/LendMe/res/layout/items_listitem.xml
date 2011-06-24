@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="fill_parent"
-	android:layout_height="wrap_content" 
+	android:layout_height="wrap_content"
+	android:orientation="vertical" 
 	xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout android:layout_width="fill_parent"
+	android:layout_marginTop="10dip"
+	android:layout_marginRight="10dip"
+	android:layout_marginLeft="10dip"
+	android:layout_height="wrap_content">
 	<ImageView
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -10,6 +16,28 @@
 	<TextView
 		android:id="@+id/items_listitem_txtName"
 		android:gravity="center_vertical"
+		android:layout_weight="1.0"
+		android:textStyle="bold"
+		android:textSize="20dip"
+		android:singleLine="true"
+		android:ellipsize="marquee"
 		android:layout_width="fill_parent"
 		android:layout_height="fill_parent" />
+		
+	<TextView
+		android:id="@+id/items_listitem_txtLendingStart"
+		android:gravity="center_vertical|right"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent" />
+	</LinearLayout>		
+	
+	<TextView
+		android:id="@+id/items_listitem_txtDescription"
+		android:gravity="center_vertical"
+		android:layout_weight="1.0"
+		android:lines="2"
+		android:paddingLeft="30dip"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+		
 </LinearLayout>

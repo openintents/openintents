@@ -16,13 +16,19 @@
 
 package org.openintens.samples.lendme;
 
+import org.openintens.samples.lendme.data.ContactOperations;
+import org.openintens.samples.lendme.data.HistorifyPostHelper;
 import org.openintens.samples.lendme.data.Item;
 import org.openintens.samples.lendme.data.ItemsAdapter;
 import org.openintens.samples.lendme.data.Item.Owner;
 import org.openintens.samples.lendme.data.persistence.ItemsProviderHelper;
+import org.openintens.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -31,6 +37,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -89,7 +96,15 @@ public class ItemsActivity extends Activity {
 
 		if(requestCode == REQUEST_ADD_ITEM) {
 			if(resultCode==RESULT_OK) {
-				((ItemsAdapter)mLstItems.getAdapter()).insert(data.getExtras());
+				data.putExtra(ItemsTable.OWNER, mFilterForOwner.toString());
+				long itemId = ((ItemsAdapter)mLstItems.getAdapter()).insert(data.getExtras());
+				
+				boolean shouldPost = data.getBooleanExtra(HistorifyPostHelper.PREF_NAME, true);
+				HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(this);
+				postHelper.setUserPrefersPosting(this, shouldPost);
+				
+				if(shouldPost)
+					postHelper.postLendingStartEvent(this, data.getExtras(), itemId);
 			}
 		} else super.onActivityResult(requestCode, resultCode, data);
 	}
@@ -132,18 +147,81 @@ public class ItemsActivity extends Activity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		
+		Uri data = item.getIntent().getData();
+		Long id = null;
+		if(data!=null) {
+			id = Long.valueOf(data.getLastPathSegment()); 
+		}
+		
 		if(item.getItemId()==CONTEXT_ITEM_RETURNED) {
-			onSetItemReturned(Long.valueOf(item.getIntent().getData().getLastPathSegment()));
+			onSetItemReturned(id);
 			return true;
 		} else if(item.getItemId()==CONTEXT_ITEM_REMINDER) {
-			Toast.makeText(this, "reminder", Toast.LENGTH_SHORT).show();
+			onSendReminder(id);
 			return true;
 		} else return super.onContextItemSelected(item);
 	}
 
-	private void onSetItemReturned(long itemId) {
+	private void onSendReminder(long itemId) {
 		
-		((ItemsAdapter)mLstItems.getAdapter()).delete(itemId);
+		final Item item = ((ItemsAdapter)mLstItems.getAdapter()).getItemById(itemId);
+		
+		final String[] phoneNumbers = ContactOperations.loadContactPhones(getContentResolver(), item.getContactKey());
+		if(phoneNumbers.length==0) {
+			//no phone for contact
+			Toaster.toast(this, R.string.main_msg_nophone);
+		} else if(phoneNumbers.length==1){
+			//exactly one phone number
+			ContactOperations.displaySmsSender(this, phoneNumbers[0],item);
+		} else {
+			//multiple phone numbers
+			//show number selector dialog
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(R.string.main_msg_select_phone);
+			builder.setItems(phoneNumbers, new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					ContactOperations.displaySmsSender(ItemsActivity.this, phoneNumbers[which],item);
+				}
+			});
+			builder.show();
+		}
+		
+	}
+
+	private void onSetItemReturned(final long itemId) {		
+		
+		final Item item = ((ItemsAdapter)mLstItems.getAdapter()).getItemById(itemId);
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(item.getName());
+		
+		View content = getLayoutInflater().inflate(R.layout.return_item_dialog, null);
+		final CheckBox chkPost = (CheckBox)content.findViewById(R.id.return_item_dialog_chkPost);
+		chkPost.setChecked(HistorifyPostHelper.getInstance(this).userPrefersPosting());
+		
+		builder.setView(content);
+		
+		builder.setPositiveButton(R.string.ok, new OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				((ItemsAdapter)mLstItems.getAdapter()).delete(itemId);
+				
+				boolean shouldPost = chkPost.isChecked();
+				HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(ItemsActivity.this);
+				postHelper.setUserPrefersPosting(ItemsActivity.this, shouldPost);
+				
+				if(shouldPost)
+					postHelper.postReturedEvent(ItemsActivity.this, item);
+			}
+		});
+		
+		builder.setNegativeButton(R.string.cancel, null);
+		
+		builder.show();
+		
+		
 	}
 	
 	@Override

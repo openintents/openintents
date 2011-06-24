@@ -25,6 +25,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,18 +109,27 @@ public class ItemsAdapter extends BaseAdapter {
 			Item item = getItem(position);
 
 			TextView tv = (TextView)convertView.findViewById(R.id.items_listitem_txtName);
-			tv.setText(item.getName());	
+			tv.setText(item.getName());
+			
+			String contactName = ContactOperations.loadContactName(mContext.getContentResolver(), item.getContactKey());
+			String startDate = DateUtils.formatDateTime(mContext, item.getLendingStart(), 0); 
+			
+			tv = (TextView)convertView.findViewById(R.id.items_listitem_txtLendingStart);
+			tv.setText(contactName+"\n"+startDate);
+			
+			tv = (TextView)convertView.findViewById(R.id.items_listitem_txtDescription);
+			tv.setText(item.getDescription()==null ? "" : item.getDescription());
 		}
 		
 		return convertView;
 	}
 
 	
-	public void insert(Bundle parameterSet) {
+	public long insert(Bundle parameterSet) {
 		
-		parameterSet.putString(ItemsTable.OWNER, mFilterForOwner.toString());
-		mLoader.insert(mContext, parameterSet);
+		long retval = mLoader.insert(mContext, parameterSet);
 		load();
+		return retval;
 	}
 
 	public void delete(long itemId) {
@@ -130,5 +140,13 @@ public class ItemsAdapter extends BaseAdapter {
 	
 	public void close() {
 		mCursor.close();
+	}
+
+	public Item getItemById(long itemId) {
+		
+		for(int i=1;i<getCount();i++) {
+			if(getItem(i).getId()==itemId) return getItem(i);
+		}
+		return null;
 	}
 }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LendMe</string>
+    <string name="app_description">Keep record of your </string>
     
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
     
     <string name="main.tab.lent">Lent</string>
     <string name="main.tab.borrowed">Borrowed</string>
@@ -10,11 +13,23 @@
     <string name="main.returned">Returned</string>
     <string name="main.reminder">Send reminder</string>
     
-    <string name="main.reminder_text">Would you be so kind to return the following item: %1$s</string>
+    <string name="main.reminder_title">Set reminder text</string>
+    <string name="main.reminder_text">Hi, would you be so kind to return the following item: %1$s</string>
+    <string name="main.reminder_send">Send</string>
+    <string name="main.reminder_cancel">Cancel</string>
+    <string name="main.msg_cannot_send">Failed to deliver message.</string>
+    <string name="main.msg_sent">Message sent.</string>
     
     <string name="add.pick">Pick a Contact</string>
     
     <string name="add.msg_nocontact">Select a Contact first.</string>
     <string name="add.msg_mandatory">Item name is a mandatory field.</string>
+    
+    <string name="main.msg_nophone">No phone number found for the contact.</string>
+    <string name="main.msg_select_phone">Select phone number</string>
+    
+    <string name="post.lent">Lent: %1$s</string>
+    <string name="post.returned">Returned: %1$s</string>
+    <string name="post.successful">Event posted to Historify.</string>
 
 </resources>
