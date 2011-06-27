@@ -16,6 +16,7 @@
 
 package org.openintents.historify.data.loaders;
 
+import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.model.source.SourceFilter;
@@ -41,7 +42,8 @@ public class SourceLoader {
 		Sources.SourcesTable._ID,
 		Sources.SourcesTable.NAME,
 		Sources.SourcesTable.DESCRIPTION,
-		Sources.SourcesTable.ICON_URI,		
+		Sources.SourcesTable.ICON_URI,
+		Sources.SourcesTable.ICON_LOADING_STRATEGY,
 		Sources.SourcesTable.AUTHORITY,
 		Sources.SourcesTable.EVENT_INTENT,
 		Sources.SourcesTable.IS_INTERNAL,
@@ -52,7 +54,8 @@ public class SourceLoader {
 		Sources.SourcesTable._ID,
 		Sources.SourcesTable.NAME,
 		Sources.SourcesTable.DESCRIPTION,
-		Sources.SourcesTable.ICON_URI,		
+		Sources.SourcesTable.ICON_URI,	
+		Sources.SourcesTable.ICON_LOADING_STRATEGY,
 		Sources.SourcesTable.AUTHORITY,
 		Sources.SourcesTable.EVENT_INTENT,
 		Sources.SourcesTable.IS_INTERNAL,
@@ -65,14 +68,15 @@ public class SourceLoader {
 	private static final int COLUMN_NAME = 1;
 	private static final int COLUMN_DESCRIPTION = 2;
 	private static final int COLUMN_ICON_URI = 3;
-	private static final int COLUMN_AUTHORITY = 4;
-	private static final int COLUMN_EVENT_INTENT = 5;
-	private static final int COLUMN_IS_INTERNAL = 6;
-	private static final int COLUMN_STATE = 7;
-	private static final int COLUMN_FILTER_ID = 8;
-	private static final int COLUMN_FILTERED_STATE = 9;
+	private static final int COLUMN_ICON_LOADING_STRATEGY = 4;
+	private static final int COLUMN_AUTHORITY = 5;
+	private static final int COLUMN_EVENT_INTENT = 6;
+	private static final int COLUMN_IS_INTERNAL = 7;
+	private static final int COLUMN_STATE = 8;
+	private static final int COLUMN_FILTER_ID = 9;
+	private static final int COLUMN_FILTERED_STATE = 10;
 	
-	public Cursor openCursor(Activity context, Contact filterModeContact) {
+	public Cursor openManagedCursor(Activity context, Contact filterModeContact) {
 		
 		String selection = null;
 		String[] selectionArgs = null;
@@ -105,6 +109,7 @@ public class SourceLoader {
 				cursor.getString(COLUMN_NAME),
 				cursor.isNull(COLUMN_DESCRIPTION) ? null : cursor.getString(COLUMN_DESCRIPTION),
 				cursor.isNull(COLUMN_ICON_URI) ? null : cursor.getString(COLUMN_ICON_URI),
+				IconLoadingStrategy.parseString(cursor.getString(COLUMN_ICON_LOADING_STRATEGY)),
 				cursor.getString(COLUMN_AUTHORITY),
 				cursor.isNull(COLUMN_EVENT_INTENT) ? null : cursor.getString(COLUMN_EVENT_INTENT),
 				cursor.getString(COLUMN_STATE));
@@ -117,7 +122,7 @@ public class SourceLoader {
 			filter.setSource(retval);
 			retval.setSourceFilter(filter);
 		}
-		
+				
 		return retval;
 		
 	}

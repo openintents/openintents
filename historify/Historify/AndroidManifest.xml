@@ -57,10 +57,13 @@
             android:exported="false"> 
         </provider>
         
+        <!--  
+        	Adding this permission to service will lead to problems with
+        	client applications installed before Historify.
+        	android:permission="org.openintents.historify.permission.USE_BRIDGE" -->
 		<service         	
          	android:label="Historify Bridge"
          	android:name=".services.bridge.BridgeService"
-         	android:permission="org.openintents.historify.permission.USE_BRIDGE"
          	android:process="org.openintents.historify.services.bridge" >
          	<intent-filter>
                 <action android:name="org.openintents.historify.REGISTER_SOURCE" />

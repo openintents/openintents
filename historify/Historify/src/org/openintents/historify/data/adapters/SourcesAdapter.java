@@ -97,7 +97,7 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources.clear();
 		mExternalSources.clear();
 
-		Cursor c = mSourceLoader.openCursor(mContext, mFilterModeContact);
+		Cursor c = mSourceLoader.openManagedCursor(mContext, mFilterModeContact);
 		for (int i = 0; i < c.getCount(); i++) {
 			AbstractSource source = mSourceLoader.loadFromCursor(c, i);
 			if (source != null) {
@@ -253,7 +253,7 @@ public class SourcesAdapter extends BaseAdapter {
 			tv.setText(item.getDescription() == null ? "" : item.getDescription());
 
 			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
-			mSourceIconHelper.toImageView(mContext, item,iv);
+			mSourceIconHelper.toImageView(mContext, item,null,iv);
 		}
 
 		convertView.setTag(viewType);

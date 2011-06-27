@@ -20,6 +20,8 @@ import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.Events.Originator;
 
+import android.net.Uri;
+
 /**
  * 
  * Model class representing an Event in the timeline.
@@ -37,10 +39,14 @@ public class Event {
 	//source of the event
 	private AbstractSource mSource;
 
+	//custom icon associated with this event
+	private Uri mIconUri;
+	
 	public Event(long id, String eventKey, String contactKey, long publishedTime,
-			String message, Originator originator) {
+			String message, Originator originator, Uri iconUri) {
 	
 		mId = id;
+		mIconUri = iconUri;
 		mEventData = new EventData(eventKey, contactKey, publishedTime, message, originator);
 	}
 
@@ -76,4 +82,11 @@ public class Event {
 		this.mSource = mSource;
 	}
 
+	public Uri getCustomIcon() {
+		return mIconUri;
+	}
+
+	public void setCustomIcon(Uri mIconUri) {
+		this.mIconUri = mIconUri;
+	}
 }

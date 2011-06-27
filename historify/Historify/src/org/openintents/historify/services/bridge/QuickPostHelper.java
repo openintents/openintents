@@ -23,6 +23,7 @@ import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostEve
 import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostSourcesTable;
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.utils.UriUtils;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -49,6 +50,7 @@ public class QuickPostHelper {
 		
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
+		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
 		
 		if(uid==0) {
 			Log.e(BridgeService.N, "Source uid is a mandatory parameter!");
@@ -68,12 +70,20 @@ public class QuickPostHelper {
 			//check if the version provided by the Intent is greater than the stored value 
 			if(version>c.getLong(1)) {
 				//newer version
+				if(iconUri==null) {
+					//caller didn't provided an icon. caller application's app icon will be used
+					parameterSet.putString(Actions.EXTRA_SOURCE_ICON_URI, UriUtils.getAppIconUri(context, uid).toString());
+				}
 				sourceId = insertOrUpdateQuickPostSource(resolver, parameterSet,c.getLong(0));
 			} else {
 				sourceId = c.getLong(0);
 			}
 		} else {
 			//source not registered yet
+			if(iconUri==null) {
+				//caller didn't provided an icon. caller application's app icon will be used
+				parameterSet.putString(Actions.EXTRA_SOURCE_ICON_URI, UriUtils.getAppIconUri(context, uid).toString());
+			}
 			sourceId = insertOrUpdateQuickPostSource(resolver, parameterSet, null);
 		}
 		c.close();
@@ -160,6 +170,37 @@ public class QuickPostHelper {
 			return res==0 ? null : updateRow;
 		}
 		
+	}
+
+	public void removeQuickPosts(Context context, int uid) {
+		
+		//delete all entries for a particular QuickPost client 
+		
+		//check if the QuickPostProvider stores the latest version of this QuickPost source
+		ContentResolver resolver = context.getContentResolver();
+		String where = QuickPostSourcesTable.UID + " = "+uid;
+		Long sourceId = null;
+		
+		Cursor c = resolver.query(ContentUris.QuickPostSources, new String[] {
+				QuickPostSourcesTable._ID
+		}, where, null, null);
+		if(c.moveToFirst()) {
+			//uid has a quickpost source
+			sourceId = c.getLong(0);
+		}
+		
+		c.close();
+		
+		if(sourceId!=null) {
+			//delete quickposts
+			where = QuickPostEventsTable.SOURCE_ID + " = "+sourceId;
+			resolver.delete(Uri.withAppendedPath(QuickPosts.SOURCE_URI,Events.EVENTS_PATH), where, null);
+			
+			//delete source from the sources table
+			where = QuickPostSourcesTable._ID + " = "+sourceId;
+			resolver.delete(ContentUris.QuickPostSources, where, null);
+			
+		}
 	}
 
 }

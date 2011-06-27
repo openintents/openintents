@@ -60,6 +60,11 @@ public final class Events {
 	public final static String ORIGINATOR = "originator";
 
 	/**
+	 * Custom icon for the event to display on the timeline. Only supported by internal sources.
+	 */
+	public final static String ICON_URI = "icon_uri";
+	
+	/**
 	 * Enum used as values of the {@link #ORIGINATOR} field
 	 */
 	public enum Originator {

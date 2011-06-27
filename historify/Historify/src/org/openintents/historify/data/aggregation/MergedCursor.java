@@ -205,6 +205,14 @@ public class MergedCursor extends AbstractCursor {
 
 	}
 
+	public void release() {
+		for(Cursor c : mCursors) {
+			if(!c.isClosed()) 
+				c.close();
+		}
+	}
+
+	
 	@Override
 	public int getCount() {
 		return mCount;

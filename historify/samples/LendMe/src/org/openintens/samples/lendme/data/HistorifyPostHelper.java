@@ -1,6 +1,5 @@
 package org.openintens.samples.lendme.data;
 
-import org.openintens.samples.lendme.ItemsActivity;
 import org.openintens.samples.lendme.R;
 import org.openintens.samples.lendme.Toaster;
 import org.openintens.samples.lendme.data.Item.Owner;
@@ -11,7 +10,6 @@ import org.openintents.historify.services.bridge.HistorifyBridge;
 import org.openintents.historify.services.bridge.HistorifyBridge.QuickPostContext;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
 
 public class HistorifyPostHelper {

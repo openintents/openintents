@@ -16,6 +16,7 @@
 
 package org.openintents.historify.data.providers;
 
+import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.internal.FactoryTest;
 import org.openintents.historify.data.providers.internal.Messaging;
@@ -40,7 +41,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 30;
+	static final int DB_VERSION = 32;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -51,18 +52,18 @@ public final class Sources {
 		public static final String NAME = "name";
 		public static final String DESCRIPTION = "description";
 		public static final String ICON_URI = "icon_uri";
+		public static final String ICON_LOADING_STRATEGY = "icon_loading_strategy";
 
 		public static final String AUTHORITY = "authority";
 		public static final String EVENT_INTENT = "event_intent";
 
 		public static final String IS_INTERNAL = "is_internal";
 		public static final String UID = "uid";
+		public static final String VERSION = "version";
 		public static final String STATE = "state";
 
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.source";
 		public static final String ITEM_CONTENT_TYPE = "vnd.android.cursor.item/vnd.historify.source";
-
-
 
 	}
 
@@ -111,11 +112,14 @@ public final class Sources {
 					+ SourcesTable._ID + " INTEGER PRIMARY KEY,"
 					+ SourcesTable.NAME + " TEXT NOT NULL,"
 					+ SourcesTable.DESCRIPTION + " TEXT,"
-					+ SourcesTable.ICON_URI + " TEXT," + SourcesTable.AUTHORITY
-					+ " TEXT NOT NULL," + SourcesTable.EVENT_INTENT + " TEXT,"
+					+ SourcesTable.ICON_URI + " TEXT,"
+					+ SourcesTable.ICON_LOADING_STRATEGY + " TEXT DEFAULT '"+IconLoadingStrategy.useSourceIcon+"', "
+					+ SourcesTable.AUTHORITY + " TEXT NOT NULL," 
+					+ SourcesTable.EVENT_INTENT + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
 					+ AbstractSource.SourceState.ENABLED + ","
 					+ SourcesTable.UID + " INTEGER DEFAULT 0,"
+					+ SourcesTable.VERSION + " INTEGER DEFAULT 0,"
 					+ SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");
 
 			db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("
@@ -146,6 +150,7 @@ public final class Sources {
 			cv.put(SourcesTable.AUTHORITY, QuickPosts.QUICKPOSTS_AUTHORITY);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_quick_post").toString());
+			cv.put(SourcesTable.ICON_LOADING_STRATEGY, IconLoadingStrategy.useEventIcon.toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 			
 			cv = new ContentValues();

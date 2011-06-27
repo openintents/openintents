@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.samples.historify;
+package org.openintents.samples.historify.helloquickpost;
 
 import org.openintents.historify.data.model.EventData;
 import org.openintents.historify.data.providers.Events.Originator;

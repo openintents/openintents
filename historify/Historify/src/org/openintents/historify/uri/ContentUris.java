@@ -35,7 +35,4 @@ public final class ContentUris {
 	public static final Uri Filters = Uri.parse("content://"+SOURCES_AUTHORITY+"/filters");
 	public static final Uri QuickPostSources = Uri.withAppendedPath(QuickPosts.SOURCE_URI, QuickPosts.QUICKPOST_SOURCES_PATH);
 
-	public static Uri fromAuthorityString(String authority) {
-		return Uri.parse("content://"+authority+"/");
-	}
 }

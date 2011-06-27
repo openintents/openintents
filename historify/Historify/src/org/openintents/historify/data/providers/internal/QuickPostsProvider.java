@@ -110,7 +110,7 @@ public class QuickPostsProvider extends EventsProvider {
 		}
 		
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.query(QuickPostEventsTable._TABLE, null, where, whereArgs, null, null, null);
+		return db.query(QuickPosts.JOIN_CLAUSE, null, where, whereArgs, null, null, null);
 	}
 
 	@Override
@@ -120,7 +120,7 @@ public class QuickPostsProvider extends EventsProvider {
 		String[] whereArgs = new String[]{lookupKey};
 		
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.query(QuickPostEventsTable._TABLE, null, where, whereArgs, null, null, Events.PUBLISHED_TIME+" DESC");
+		return db.query(QuickPosts.JOIN_CLAUSE, null, where, whereArgs, null, null, Events.PUBLISHED_TIME+" DESC");
 	}
 
 	@Override
@@ -143,5 +143,22 @@ public class QuickPostsProvider extends EventsProvider {
 		}
 
 		return null;
+	}
+	
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs) {
+		
+		String tableName = null;
+
+		if (mUriMatcher.match(uri) == EVENTS_UNFILTERED) {
+			tableName = QuickPostEventsTable._TABLE;
+		} else if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
+			tableName = QuickPostSourcesTable._TABLE;
+		} else {
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+		
+		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+		return db.delete(tableName, selection, selectionArgs);
 	}
 }

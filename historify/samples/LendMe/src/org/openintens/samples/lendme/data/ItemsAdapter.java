@@ -19,7 +19,6 @@ package org.openintens.samples.lendme.data;
 import org.openintens.samples.lendme.R;
 import org.openintens.samples.lendme.data.Item.Owner;
 import org.openintens.samples.lendme.data.persistence.ItemsLoader;
-import org.openintens.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
 
 import android.app.Activity;
 import android.content.Context;

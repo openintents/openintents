@@ -2,13 +2,10 @@ package org.openintens.samples.lendme.data;
 
 import java.util.ArrayList;
 
-import org.openintens.samples.lendme.ItemsActivity;
 import org.openintens.samples.lendme.R;
-import org.openintens.samples.lendme.Toaster;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
-import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,8 +20,6 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.RemoteViews.ActionException;
 
 public class ContactOperations {
 

@@ -75,6 +75,13 @@ public class QuickPosts {
 		public static final String _TABLE = "quickpost_events";
 	}
 	
+	
+	public static final String JOIN_CLAUSE = QuickPostEventsTable._TABLE
+		+ " LEFT OUTER JOIN " + QuickPostSourcesTable._TABLE + " ON "
+		+ QuickPostEventsTable._TABLE + "." + QuickPostEventsTable.SOURCE_ID + " = "
+		+ QuickPostSourcesTable._TABLE + "." + QuickPostSourcesTable._ID;
+
+	
 	/**
 	 * SQLite helper class.
 	 */

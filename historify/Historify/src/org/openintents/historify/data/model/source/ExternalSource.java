@@ -16,6 +16,8 @@
 
 package org.openintents.historify.data.model.source;
 
+import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+
 /**
  * 
  * Model class representing an external Source of events.
@@ -25,8 +27,8 @@ package org.openintents.historify.data.model.source;
 public class ExternalSource extends AbstractSource {
 
 	public ExternalSource(long id, String name, String description,
-			String iconUri, String authority, String eventIntent) {
-		super(id, name, description, iconUri, authority, eventIntent);
+			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent) {
+		super(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent);
 	}
 
 }

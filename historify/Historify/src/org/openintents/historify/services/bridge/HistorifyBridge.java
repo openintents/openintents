@@ -155,7 +155,7 @@ public class HistorifyBridge {
 	}
 	
 	public void registerSource(Context context, String name, String authority,
-			String description, String iconUri) {
+			String description, String iconUri, int version) {
 
 		//determine application's uid
 		int uid  = determineUid(context);
@@ -172,6 +172,7 @@ public class HistorifyBridge {
 		intent.putExtra(Actions.EXTRA_SOURCE_UID, uid);
 		intent.putExtra(Actions.EXTRA_SOURCE_DESCRIPTION, description);
 		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
+		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, version);
 
 		postIntent(context, intent);
 	}
@@ -181,14 +182,8 @@ public class HistorifyBridge {
 		try {
 			context.startService(intent);
 		} catch (SecurityException se) {
-			// can't access service, maybe because this application was
-			// installed BEFORE Historify.
-			//
-			// http://stackoverflow.com/questions/4567812/define-a-permission-for-third-party-apps-to-use-in-android
-			// "My own app, which defined the permission for other apps to use,
-			// must be installed before other apps who want to use my
-			// permissions. Otherwise, those apps must be re-installed, to use
-			// my permissions.
+			// can't access service, maybe it's not installed,
+			// or there are other configuration or permission problems.
 			postNotification(
 					context,
 					"Application Error",

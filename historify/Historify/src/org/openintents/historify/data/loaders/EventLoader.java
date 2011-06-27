@@ -20,7 +20,7 @@ import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.data.providers.Events;
 
-import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.Uri.Builder;
@@ -32,8 +32,8 @@ import android.net.Uri.Builder;
  * @author berke.andras
  */
 public class EventLoader {
-
-	public Cursor openCursor(Activity context, Uri providerAuthority, Contact contact) {
+	
+	public Cursor openCursor(Context context, Uri providerAuthority, Contact contact) {
 		
 		Builder eventsUri = providerAuthority.buildUpon().appendPath(Events.EVENTS_PATH);
 		if(contact!=null) {
@@ -41,7 +41,7 @@ public class EventLoader {
 			eventsUri.appendPath(contact.getLookupKey());
 		}
 		
-        return context.managedQuery(eventsUri.build(), null, null, null, null);
+        return context.getContentResolver().query(eventsUri.build(), null, null, null, null);
 	}
 	
 	public Event loadFromCursor(Cursor cursor, int position) {
@@ -55,13 +55,23 @@ public class EventLoader {
 		int column_message = cursor.getColumnIndex(Events.MESSAGE);
 		int column_originator = cursor.getColumnIndex(Events.ORIGINATOR);
 		
+		int column_icon_uri = cursor.getColumnIndex(Events.ICON_URI);
+		Uri iconUri = null;
+		if(column_icon_uri!=-1) {
+			String uriString = cursor.getString(column_icon_uri);
+			if(uriString!=null) {
+				iconUri = Uri.parse(uriString);
+			}
+		}
+		
 		return new Event(
 				cursor.getLong(column_id),
 				cursor.getString(column_event_key),
 				cursor.getString(column_contact_key),
 				cursor.getLong(column_published_time),
 				cursor.getString(column_message),
-				Events.Originator.parseString(cursor.getString(column_originator)));
+				Events.Originator.parseString(cursor.getString(column_originator)),
+				iconUri);
 	}
 	
 }

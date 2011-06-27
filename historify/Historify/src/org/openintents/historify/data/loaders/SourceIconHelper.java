@@ -17,9 +17,12 @@
 package org.openintents.historify.data.loaders;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.model.Event;
 import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.utils.UriUtils;
 
 import android.content.Context;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.widget.ImageView;
 
@@ -30,21 +33,62 @@ import android.widget.ImageView;
  * @author berke.andras
  */
 public class SourceIconHelper {
+ 	
+	public enum IconLoadingStrategy {
+		useSourceIcon, useEventIcon;
 
-	public void toImageView(Context context, AbstractSource source, ImageView iv) {
+		public static IconLoadingStrategy parseString(String string) {
+			for(IconLoadingStrategy value : values()) {
+				if(value.toString().equals(string)) return value;
+			}
+			return null;
+		}
+	}
+	
+	public void toImageView(Context context, AbstractSource source, Event event, ImageView iv) {
 		
-		if(source.isInternal()) {
-			//internal sources have icons defined as drawable resources
-			String resName = source.getIcon().getAuthority();
-			iv.setImageResource(context.getResources().getIdentifier(resName, "drawable", context.getPackageName()));
+		if(source.getIconLoadingStrategy()==IconLoadingStrategy.useSourceIcon || event==null || !source.isInternal()) {
+			toImageView(context, source.getIcon(), iv);
 		} else {
-			//external sources may use the content:// or the file:// schema
-			//if icon_uri is not defined by the source, the default icon will be used
-			Uri resUri = source.getIcon();
-			if(resUri==null)
+			//used for loading custom event icons (eg. QuickPost)
+			toImageView(context, event.getCustomIcon(), iv);
+		}
+		
+	}
+
+	/**
+	 * Loading source icon.
+	 * @param context
+	 * @param source
+	 * @param iv
+	 */
+	private void toImageView(Context context, Uri resUri, ImageView iv) {
+
+		if(resUri==null) {
+			//default icon
+			iv.setImageResource(R.drawable.source_default);
+		}
+		
+		else if(UriUtils.INTERNAL_DRAWABLE_SCHEME.equals(resUri.getScheme())) {
+			//package drawable
+			String resName = resUri.getAuthority();
+			iv.setImageResource(context.getResources().getIdentifier(resName, "drawable", context.getPackageName()));
+		}
+		
+		else if(UriUtils.APP_ICON_SCHEME.equals(resUri.getScheme())) {
+			//external application's icon
+			String packageName = resUri.getAuthority();
+			try {
+				iv.setImageDrawable(context.getPackageManager().getApplicationIcon(packageName));
+			} catch (NameNotFoundException e) {
+				e.printStackTrace();
 				iv.setImageResource(R.drawable.source_default);
-			else 
-				iv.setImageURI(resUri);
+			}
+		}
+		
+		else {
+			//file:// or content://
+			iv.setImageURI(resUri);
 		}
 	}
 }

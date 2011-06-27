@@ -52,9 +52,12 @@ public class PackageChangesReceiver extends BroadcastReceiver {
 						.v(BridgeService.N,
 								"Received broadcast for PACKAGE_REMOVED");
 				// package is removed
-				// delete registered SharedSource if there is any.
 				int uid = intent.getIntExtra(Intent.EXTRA_UID, 0);
+				
+				// delete registered SharedSource if there is any.
 				new SourceRegistrationHelper().unregisterSource(context, uid);
+				// delete QuickPost entries if there is any.
+				new QuickPostHelper().removeQuickPosts(context, uid);
 			}
 		}
 	}

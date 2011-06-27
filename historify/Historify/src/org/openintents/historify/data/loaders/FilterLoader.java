@@ -55,10 +55,10 @@ public class FilterLoader {
 		String selection = Sources.FiltersTable.CONTACT_LOOKUP_KEY + " = ?";
 		String[] selectionArgs = new String[] { contact.getLookupKey() };
 
-		return openCursor(context, selection, selectionArgs);
+		return openManagedCursor(context, selection, selectionArgs);
 	}
 
-	public Cursor openCursor(Activity context, String selection,
+	public Cursor openManagedCursor(Activity context, String selection,
 			String[] selectionArgs) {
 
 		return context.managedQuery(ContentUris.Filters, PROJECTION, selection,

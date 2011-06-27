@@ -16,6 +16,8 @@
 
 package org.openintents.historify.data.model.source;
 
+import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+
 import android.net.Uri;
 
 /**
@@ -65,13 +67,18 @@ public abstract class AbstractSource {
 	//flag for internal sources
 	protected boolean mIsInternal = false;
 
+	
+	private IconLoadingStrategy mIconLoadingStrategy;
+	
+	
 	protected AbstractSource(long id, String name, String description,
-			String iconUri, String authority, String eventIntent) {
+			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent) {
 		
 		mId = id;
 		mName = name;
 		mDescription = description;
 		mIconUri = iconUri==null ? null : Uri.parse(iconUri);
+		mIconLoadingStrategy = iconLoadingStrategy==null ? IconLoadingStrategy.useSourceIcon : iconLoadingStrategy;
 		mAuthority = authority;
 		mEventIntent = eventIntent;
 		
@@ -133,24 +140,31 @@ public abstract class AbstractSource {
 	public SourceFilter getSourceFilter() {
 		return mSourceFilter;
 	}
-	
+
+	public IconLoadingStrategy getIconLoadingStrategy() {
+		return mIconLoadingStrategy;
+	}
+
 	public static AbstractSource factoryMethod(
 			boolean isInternal, 
 			long id,
 			String name, 
 			String description,
 			String iconUri,
+			IconLoadingStrategy iconLoadingStrategy, 
 			String authority,
 			String eventIntent,
 			String state) {
 		
 		AbstractSource retval = isInternal ? 
-				new InternalSource(id, name, description, iconUri, authority, eventIntent):
-				new ExternalSource(id, name, description, iconUri, authority, eventIntent);
+				new InternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent):
+				new ExternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent);
 		retval.setState(SourceState.parseString(state));
 
 		return retval;
 	}
+
+
 
 
 }

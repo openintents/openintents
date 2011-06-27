@@ -36,7 +36,5 @@ public class MainActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
 		}
-		
 	}
-
 }

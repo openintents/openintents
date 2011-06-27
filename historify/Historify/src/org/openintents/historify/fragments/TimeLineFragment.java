@@ -137,4 +137,12 @@ public class TimeLineFragment extends Fragment {
 			startActivity(i);
 		}
 	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		
+		//release merged cursors
+		mAdapter.releaseCursors();
+	}
 }

@@ -52,6 +52,7 @@ public final class Actions {
 	public static final String EXTRA_SOURCE_NAME = "name";
 	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
 	public static final String EXTRA_SOURCE_UID = "uid";
+	public static final String EXTRA_SOURCE_VERSION = "version";
 	// optional parameters
 	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
@@ -60,11 +61,10 @@ public final class Actions {
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_ADDRESSED = "addressed";
 
-
 	public static final String ACTION_QUICK_POST = "org.openintents.historify.QUICK_POST";
-	public static final String EXTRA_SOURCE_VERSION = "version";
 	// mandatory parameters
 	//EXTRA_SOURCE_NAME = "name";
 	//EXTRA_SOURCE_UID = "uid";
+	//EXTRA_SOURCE_VERSION = "version";
 	//also fields defined in .data.providers.Events
 }

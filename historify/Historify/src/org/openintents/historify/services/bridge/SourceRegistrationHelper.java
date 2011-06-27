@@ -22,6 +22,7 @@ import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.utils.UriUtils;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -31,6 +32,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -54,10 +56,17 @@ public class SourceRegistrationHelper {
 		String authority = parameterSet
 				.getString(Actions.EXTRA_SOURCE_AUTHORITY);
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
+		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
 		
-		String description = parameterSet
-				.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
+//		String description = parameterSet
+//				.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
 		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
+		
+		if(iconUri==null) {
+			//caller didn't provided an icon. caller application's app icon will be used
+			iconUri = UriUtils.getAppIconUri(context, uid).toString();
+			parameterSet.putString(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
+		}
 
 		if (name == null || authority == null || uid == 0) {
 			Log.e(BridgeService.N,
@@ -68,38 +77,82 @@ public class SourceRegistrationHelper {
 		ContentResolver resolver = context.getContentResolver();
 
 		// check if authority already registered
-		Cursor cursor = resolver.query(ContentUris.Sources, null,
+		Cursor cursor = resolver.query(ContentUris.Sources, new String[] {Sources.SourcesTable.VERSION, Sources.SourcesTable._ID, Sources.SourcesTable.UID},
 				Sources.SourcesTable.AUTHORITY + " = ?",
 				new String[] { authority }, null);
-
+		
+		Long sourceId = null;
+		
 		if (cursor.moveToNext()) {
-			Log.w(BridgeService.N, "Source for authority '" + authority
-					+ "' has been already registered.");
-			cursor.close();
-			return;
+			
+			//if the source is registered by an application with a different uid
+			//we have to ignore the register request.
+			if(cursor.getInt(2)!=uid) {
+				Log.w(BridgeService.N, "Source for authority '" + authority
+						+ "' has been already registered by a different application.");
+				cursor.close();
+				return;
+			} else {
+				//check if we store the latest version of this source
+				if(cursor.getInt(0)!=version) {
+					//update source in the sources table
+					Log
+					.v(BridgeService.N, "Updating '" + name
+							+ "' source.");
+					sourceId = cursor.getLong(1);
+				} else {
+					//same version, we do nothing
+					Log
+					.v(BridgeService.N, "Source '" + name
+							+ "' already registered.");
+					cursor.close();
+					return;
+				}
+			}
 		}
 
 		cursor.close();
-
-		ContentValues cv = new ContentValues();
-		cv.put(Sources.SourcesTable.NAME, name);
-		cv.put(Sources.SourcesTable.AUTHORITY, authority);
-		cv.put(Sources.SourcesTable.UID, uid);
-		if (description != null)
-			cv.put(Sources.SourcesTable.DESCRIPTION, description);
-		if (iconUri != null)
-			cv.put(Sources.SourcesTable.ICON_URI, iconUri);
-
-		resolver.insert(ContentUris.Sources, cv);
-
+		
+		insertOrUpdateSource(resolver, parameterSet, sourceId);
+		
 		Log
 				.v(BridgeService.N, "Source '" + name
 						+ "' registered successfully.");
 		
-		postNotification(context, name, iconUri);
+		postNotification(context, name);
 	}
 
-	private void postNotification(Context context, String name, String iconUri) {
+	private Long insertOrUpdateSource(ContentResolver resolver, Bundle parameterSet, Long updateRow) {
+		
+		
+		String name = parameterSet.getString(Actions.EXTRA_SOURCE_NAME);
+		String description = parameterSet.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
+		String authority = parameterSet.getString(Actions.EXTRA_SOURCE_AUTHORITY);
+		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
+		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
+		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
+		
+		ContentValues values = new ContentValues();
+		values.put(SourcesTable.NAME, name);
+		values.put(SourcesTable.DESCRIPTION, description);
+		values.put(SourcesTable.AUTHORITY, authority);
+		values.put(SourcesTable.ICON_URI, iconUri);
+		values.put(SourcesTable.UID, uid);
+		values.put(SourcesTable.VERSION, version);
+		
+		if(updateRow==null) {
+			//insert
+			Uri rowUri = resolver.insert(ContentUris.Sources, values);
+			return rowUri == null ? null : Long.valueOf(rowUri.getLastPathSegment());
+		} else {
+			//update
+			String where = SourcesTable._ID + " = "+updateRow;
+			int res = resolver.update(ContentUris.Sources, values, where, null);
+			return res==0 ? null : updateRow;
+		}		
+	}
+	
+	private void postNotification(Context context, String name) {
 		
 		NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		Notification notification = new Notification(R.drawable.icon, context.getString(R.string.notification_source_added_ticker), System.currentTimeMillis());

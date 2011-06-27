@@ -58,7 +58,7 @@ public class EventAggregator {
 		SourceLoader sourceLoader = new SourceLoader();
 		ArrayList<AbstractSource> enabledSources = new ArrayList<AbstractSource>();
 		
-		Cursor sourcesCursor = sourceLoader.openCursor(mContext, mContact);
+		Cursor sourcesCursor = sourceLoader.openManagedCursor(mContext, mContact);
 		for(int i=0;i<sourcesCursor.getCount();i++) {
 			AbstractSource source = sourceLoader.loadFromCursor(sourcesCursor, i);
 			if(source.isEnabled()) enabledSources.add(source);
@@ -85,11 +85,17 @@ public class EventAggregator {
 	public Event getItem(int position) {
 		
 		Event retval = mLoader.loadFromCursor(mMergedCursor, position);
-		if(retval!=null) {
-			retval.setSource(mMergedCursor.getSource());
+		if(retval!=null) {			
+			AbstractSource source = mMergedCursor.getSource();
+			retval.setSource(source);
+			
 		}
 		
 		return retval;
+	}
+
+	public void release() {
+		mMergedCursor.release();
 	}
 
 }

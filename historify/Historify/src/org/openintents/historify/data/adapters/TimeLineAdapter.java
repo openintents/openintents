@@ -102,7 +102,7 @@ public class TimeLineAdapter extends BaseAdapter {
 				.formatDate(new Date(event.getPublishedTime())));
 		
 		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
-		mSourceIconHelper.toImageView(mContext, event.getSource(), iv);
+		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);
 	}
 
 	private void alignView(Event event, View convertView) {
@@ -143,6 +143,10 @@ public class TimeLineAdapter extends BaseAdapter {
 			break;
 		}
 
+	}
+
+	public void releaseCursors() {
+		mAggregator.release();
 	}
 
 }
