@@ -57,7 +57,7 @@ public class ItemsProviderHelper {
 		public void onCreate(SQLiteDatabase db) {
 
 			db.execSQL("CREATE TABLE " + ItemsTable.TABLE_NAME + " ("
-					+ ItemsTable._ID + " INTEGER PRIMARY KEY,"
+					+ ItemsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
 					+ ItemsTable.CONTACT_KEY + " TEXT NOT NULL,"
 					+ ItemsTable.LENDING_START + " INTEGER NOT NULL,"
 					+ ItemsTable.ITEM_NAME + " TEXT NOT NULL,"
