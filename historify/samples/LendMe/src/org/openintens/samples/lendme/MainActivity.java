@@ -25,27 +25,57 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 public class MainActivity extends TabActivity {
+	
+	public static final String ACTION_SHOW_ITEM = "org.openintents.samples.lendme.SHOW_ITEM";
+	
+	private Intent lentIntent, borrowedIntent;
+	private TabHost tabHost;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab);
         
-        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
+        tabHost = (TabHost)findViewById(android.R.id.tabhost);
         
         TabSpec lentTabSpec = tabHost.newTabSpec("tid1");
         TabSpec borrowedTabSpec = tabHost.newTabSpec("tid2");
         
-        Intent lentIntent = new Intent(this, ItemsActivity.class);
+        lentIntent = new Intent(this, ItemsActivity.class);
         lentIntent.putExtra(ItemsActivity.EXTRA_OWNER, Owner.Me.toString());
         lentTabSpec.setIndicator(getString(R.string.main_tab_lent)).setContent(lentIntent);
         
-        Intent borrowedIntent = new Intent(this, ItemsActivity.class);
+        borrowedIntent = new Intent(this, ItemsActivity.class);
         borrowedIntent.putExtra(ItemsActivity.EXTRA_OWNER, Owner.Contact.toString());
         borrowedTabSpec.setIndicator(getString(R.string.main_tab_borrowed)).setContent(borrowedIntent);
-        
+
         tabHost.addTab(lentTabSpec);
         tabHost.addTab(borrowedTabSpec);
+
+        int tabToShow = 0;
         
+        if(ACTION_SHOW_ITEM.equals(getIntent().getAction())) {
+        	//activity is launched by historify to show a particular item
+        	if(EventIntentHandler.onEventIntentReceived(this, getIntent())) {
+        		tabToShow = EventIntentHandler.getTabToShow()==Owner.Me ? 0 : 1;
+        	}
+        }
+
+		tabHost.setCurrentTab(tabToShow);
+		
     }
+    
+    
+    @Override
+    protected void onNewIntent(Intent intent) {
+
+    	if(ACTION_SHOW_ITEM.equals(intent.getAction())) {
+        	//activity is relaunched by historify to show a particular item
+        	if(EventIntentHandler.onEventIntentReceived(this, intent)) {
+        		tabHost.setCurrentTab(EventIntentHandler.getTabToShow()==Owner.Me ? 0 : 1);
+        	}
+        }
+    }
+    
 }

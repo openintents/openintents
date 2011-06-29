@@ -36,13 +36,19 @@ public final class Actions {
 	public static final String ACTION_SHOW_TIMELINE = "org.openintents.historify.SHOW_TIMELINE";
 	public static final String EXTRA_CONTACT_LOOKUP_KEY = "lookupKey";
 
+	
 	// EventIntents for internal providers
+	// ----------------------------------------------------------------------------------------------
 	public static final String ACTION_VIEW_MESSAGING_EVENT = "org.openintents.historify.VIEW_MESSAGING_EVENT";
-
 	// EventIntent extras
 	public static final String EXTRA_EVENT_ID = Events._ID;
 	public static final String EXTRA_EVENT_KEY = Events.EVENT_KEY;
 
+	
+	// ConfigIntents for internal providers
+	// ----------------------------------------------------------------------------------------------
+	public static final String ACTION_CONFIG_QUICKPOSTS = "org.openintents.historify.CONFIG_QUICKPOSTS";
+	
 	
 	// BridgeService
 	// ----------------------------------------------------------------------------------------------
@@ -52,19 +58,22 @@ public final class Actions {
 	public static final String EXTRA_SOURCE_NAME = "name";
 	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
 	public static final String EXTRA_SOURCE_UID = "uid";
+	public static final String EXTRA_SOURCE_VERSION = "version";
 	// optional parameters
 	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
+	public static final String EXTRA_EVENT_INTENT = "event_intent";
+	public static final String EXTRA_CONFIG_INTENT = "config_intent";
 
 	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_ADDRESSED = "addressed";
 
-
 	public static final String ACTION_QUICK_POST = "org.openintents.historify.QUICK_POST";
-	public static final String EXTRA_SOURCE_VERSION = "version";
 	// mandatory parameters
 	//EXTRA_SOURCE_NAME = "name";
 	//EXTRA_SOURCE_UID = "uid";
+	//EXTRA_SOURCE_VERSION = "version";
 	//also fields defined in .data.providers.Events
+
 }

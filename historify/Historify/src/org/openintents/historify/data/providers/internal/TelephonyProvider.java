@@ -44,13 +44,7 @@ public class TelephonyProvider extends EventsProvider {
 	}
 
 	@Override
-	protected Cursor queryEvent(String eventKey) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEvents(String lookupKey) {
+	protected Cursor queryEventsForContact(String lookupKey) {
 
 		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
 
@@ -102,6 +96,21 @@ public class TelephonyProvider extends EventsProvider {
 								+ Events.Originator.user + "') AS "
 								+ Events.ORIGINATOR }, where, null,
 				CallLog.Calls.DATE + " DESC");
+	}
+
+	@Override
+	protected Cursor queryEvent(long eventId) {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEvents() {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEventsByKey(String eventKey) {
+		return null;
 	}
 
 }

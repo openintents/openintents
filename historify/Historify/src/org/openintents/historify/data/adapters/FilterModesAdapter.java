@@ -21,10 +21,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.openintents.historify.R;
-import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.ui.SourcesActivity;
 
 import android.app.Activity;
 import android.database.Cursor;

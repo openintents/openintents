@@ -45,9 +45,12 @@ import android.widget.AdapterView.OnItemClickListener;
 public class ItemsActivity extends Activity {
 
 	public static final String EXTRA_OWNER = "owner";
+	public static final String EXTRA_JUMP_TO_ID = "jump_to_id";
+	
 	private static final int REQUEST_ADD_ITEM = 42;
 	private static final int CONTEXT_ITEM_RETURNED = 1;
 	private static final int CONTEXT_ITEM_REMINDER = 2;
+
 	
 	private ListView mLstItems;
 	private Owner mFilterForOwner;
@@ -80,10 +83,23 @@ public class ItemsActivity extends Activity {
 				}
 			});			
 			
-			registerForContextMenu(mLstItems);
+			registerForContextMenu(mLstItems);			
 		}
+		
 	}
 
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		Item toShow = EventIntentHandler.getItemToShow();
+		if(toShow!=null) {
+			long id = toShow.getId();
+			int pos = ((ItemsAdapter)mLstItems.getAdapter()).getItemPosById(id);
+			mLstItems.setSelection(pos);
+		}
+	}
+	
 	private void onAddNewItem() {
 		
 		Intent i = new Intent(this, AddItemActivity.class);

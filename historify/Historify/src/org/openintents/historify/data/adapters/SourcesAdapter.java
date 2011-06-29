@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
-import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
@@ -28,10 +27,13 @@ import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.model.source.ExternalSource;
 import org.openintents.historify.data.model.source.InternalSource;
+import org.openintents.historify.ui.SourcesActivity;
+import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,18 +61,18 @@ public class SourcesAdapter extends BaseAdapter {
 	// ITEM is a source.
 	// EMPTY_MESSAGE is a textview shown if the external sources section is
 	// empty.
-	private static final int VIEW_TYPE_HEADER = 0;
-	private static final int VIEW_TYPE_ITEM = 1;
-	private static final int VIEW_TYPE_EMPTY_MESSAGE = 2;
+	protected static final int VIEW_TYPE_HEADER = 0;
+	protected static final int VIEW_TYPE_ITEM = 1;
+	protected static final int VIEW_TYPE_EMPTY_MESSAGE = 2;
 
-	private Activity mContext;
+	protected Activity mContext;
 
 	private SourceLoader mSourceLoader;
-	private SourceIconHelper mSourceIconHelper;
+	protected SourceIconHelper mSourceIconHelper;
 	private FilterLoader mFilterLoader;
 
-	private List<InternalSource> mInternalSources;
-	private List<ExternalSource> mExternalSources;
+	protected List<AbstractSource> mInternalSources;
+	protected List<AbstractSource> mExternalSources;
 
 	// checked items (enabled sources), shared with listview
 	private SparseBooleanArray mCheckedItems;
@@ -80,14 +82,14 @@ public class SourcesAdapter extends BaseAdapter {
 	private int mFilterModePosition = 0;
 
 	/** Constructor. */
-	public SourcesAdapter(Activity context, ListView listView) {
+	public SourcesAdapter(Activity context, ListView listView, boolean basicColumnsOnly, Uri sourcesUri) {
 
 		mContext = context;
-		mSourceLoader = new SourceLoader();
+		mSourceLoader = new SourceLoader(basicColumnsOnly, sourcesUri);
 		mSourceIconHelper = new SourceIconHelper();
 		mFilterLoader = new FilterLoader();
-		mInternalSources = new ArrayList<InternalSource>();
-		mExternalSources = new ArrayList<ExternalSource>();
+		mInternalSources = new ArrayList<AbstractSource>();
+		mExternalSources = new ArrayList<AbstractSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
 	}
 
@@ -141,8 +143,10 @@ public class SourcesAdapter extends BaseAdapter {
 
 	public int getCount() {
 
-		return mInternalSources.size() + mExternalSources.size() + 2
-				* HEADER_OFFSET + (mExternalSources.isEmpty() ? 1 : 0);
+		return 
+			mInternalSources.size() + 
+			mExternalSources.size() + 2 * HEADER_OFFSET + 
+			(mExternalSources.isEmpty() ? 1 : 0);
 
 	}
 
@@ -239,7 +243,10 @@ public class SourcesAdapter extends BaseAdapter {
 			if (convertView == null || !viewType.equals(convertView.getTag())) {
 				convertView = ((LayoutInflater) mContext
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(R.layout.sources_listitem, null);
+						.inflate(R.layout.listitem_source, null);
+				
+				View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
+				btnMore.setOnClickListener(new SourcesConfigurationFragment.OnMoreButtonClickedListener());
 			}
 
 			AbstractSource item = getItem(position);
@@ -254,6 +261,15 @@ public class SourcesAdapter extends BaseAdapter {
 
 			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
 			mSourceIconHelper.toImageView(mContext, item,null,iv);
+			
+			View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
+			if(item.getConfigIntent()==null) 
+				btnMore.setVisibility(View.INVISIBLE);
+			else  {
+				btnMore.setVisibility(View.VISIBLE);
+				btnMore.setTag(item.getConfigIntent());
+			}
+							
 		}
 
 		convertView.setTag(viewType);

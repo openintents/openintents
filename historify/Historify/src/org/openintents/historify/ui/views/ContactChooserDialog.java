@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.view;
+package org.openintents.historify.ui.views;
 
 import java.util.HashSet;
 import java.util.List;
@@ -57,7 +57,7 @@ public class ContactChooserDialog extends Dialog {
 
 		// init view
 		setTitle(context.getString(R.string.sources_filter_mode_new_dialog));
-		setContentView(R.layout.contacts_dialog);
+		setContentView(R.layout.dialog_contacts);
 
 		// listview
 		ListView lstContacts = (ListView) findViewById(R.id.contacts_lstContacts);

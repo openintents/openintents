@@ -42,6 +42,7 @@ public class QuickPosts {
 	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(QUICKPOSTS_AUTHORITY);
 	
 	public static final String QUICKPOST_SOURCES_PATH = "quickpost_sources";
+	public static final String QUICKPOST_RAW_EVENTS_PATH = "raw_events";
 	
 	static final String DB_NAME = "quickposts.db";
 	static final int DB_VERSION = 2;

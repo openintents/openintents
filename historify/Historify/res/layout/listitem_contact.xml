@@ -14,8 +14,6 @@
 
     <TextView  
         android:id="@+id/contacts_listitem_txtName"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
         android:layout_toRightOf="@id/contacts_listitem_imgIcon"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
@@ -24,8 +22,6 @@
 
     <TextView
 		android:id="@+id/contacts_listitem_txtStatus"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/contacts_listitem_imgIcon"
         android:layout_alignParentRight="true"
         android:layout_below="@id/contacts_listitem_txtName"

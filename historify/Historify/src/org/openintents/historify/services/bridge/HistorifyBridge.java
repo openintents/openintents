@@ -69,14 +69,16 @@ public class HistorifyBridge {
 		private String sourceName;
 		private String sourceDescription;
 		private String iconUri;
+		private String eventIntent;
 		private int version;
 		
-		public QuickPostContext(String sourceName, String sourceDescription, String iconUri, int version) {
+		public QuickPostContext(String sourceName, String sourceDescription, String iconUri, String eventIntent, int version) {
 			super();
 			this.sourceName = sourceName;
 			this.sourceDescription = sourceDescription;
 			this.iconUri = iconUri;
 			this.version = version;
+			this.eventIntent = eventIntent;
 			
 			if(this.sourceName==null) {
 				throw new NullPointerException("Source name cannot be null.");
@@ -98,6 +100,11 @@ public class HistorifyBridge {
 		public int getVersion() {
 			return version;
 		}
+		
+		public String getEventIntent() {
+			return eventIntent;
+		}
+		
 	}
 	
 	private int mIconResource;
@@ -143,6 +150,7 @@ public class HistorifyBridge {
 		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, mQuickPostContext.getIconUri());
 		intent.putExtra(Actions.EXTRA_SOURCE_UID, uid);
 		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, mQuickPostContext.getVersion());
+		intent.putExtra(Actions.EXTRA_EVENT_INTENT, mQuickPostContext.getEventIntent());
 		
 		//quickpost event data
 		intent.putExtra(Events.EVENT_KEY,eventData.getEventKey());
@@ -155,7 +163,7 @@ public class HistorifyBridge {
 	}
 	
 	public void registerSource(Context context, String name, String authority,
-			String description, String iconUri, int version) {
+			String description, String iconUri, String eventIntent, String configIntent, int version) {
 
 		//determine application's uid
 		int uid  = determineUid(context);
@@ -173,6 +181,8 @@ public class HistorifyBridge {
 		intent.putExtra(Actions.EXTRA_SOURCE_DESCRIPTION, description);
 		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
 		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, version);
+		intent.putExtra(Actions.EXTRA_EVENT_INTENT, eventIntent);
+		intent.putExtra(Actions.EXTRA_CONFIG_INTENT, configIntent);
 
 		postIntent(context, intent);
 	}

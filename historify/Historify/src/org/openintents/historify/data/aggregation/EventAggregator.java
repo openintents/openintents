@@ -24,6 +24,7 @@ import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.Events;
+import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
 
 import android.app.Activity;
@@ -55,7 +56,7 @@ public class EventAggregator {
 	public void query() {
 
 		//load enabled sources
-		SourceLoader sourceLoader = new SourceLoader();
+		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
 		ArrayList<AbstractSource> enabledSources = new ArrayList<AbstractSource>();
 		
 		Cursor sourcesCursor = sourceLoader.openManagedCursor(mContext, mContact);

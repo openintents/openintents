@@ -85,7 +85,7 @@ public class ContactsAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = ((LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-					.inflate(R.layout.contacts_listitem, null);
+					.inflate(R.layout.listitem_contact, null);
 		}
 
 		TextView txtName = (TextView) convertView

@@ -1,5 +1,6 @@
 package org.openintens.samples.lendme.data;
 
+import org.openintens.samples.lendme.MainActivity;
 import org.openintens.samples.lendme.R;
 import org.openintens.samples.lendme.Toaster;
 import org.openintens.samples.lendme.data.Item.Owner;
@@ -15,7 +16,7 @@ import android.os.Bundle;
 public class HistorifyPostHelper {
 
 	private static HistorifyPostHelper sInstance;
-	private static final int SOURCE_VERSION = 1;
+	private static final int SOURCE_VERSION = 14;
 	public static final String PREF_NAME = "posting";
 	
 	private static final String EVENTKEY_START = "start";
@@ -40,7 +41,7 @@ public class HistorifyPostHelper {
 		String sourceName = context.getString(R.string.app_name);
 		String sourceDescription = context.getString(R.string.app_description);
 		
-		QuickPostContext quickPostContext = new QuickPostContext(sourceName, sourceDescription, null, SOURCE_VERSION);
+		QuickPostContext quickPostContext = new QuickPostContext(sourceName,sourceDescription,null,MainActivity.ACTION_SHOW_ITEM,SOURCE_VERSION);
 		mBridge.setQuickPostContext(quickPostContext);
 		
 		//check is auto posting is set by the user
@@ -90,5 +91,9 @@ public class HistorifyPostHelper {
 	private String generateEventKey(long itemId, String action) {
 		
 		return String.valueOf(itemId)+"_"+action;
+	}
+
+	public long getItemId(String eventKey) {
+		return Long.valueOf(eventKey.substring(0,eventKey.indexOf("_")));
 	}
 }

@@ -148,4 +148,12 @@ public class ItemsAdapter extends BaseAdapter {
 		}
 		return null;
 	}
+
+	public int getItemPosById(long itemId) {
+
+		for(int i=1;i<getCount();i++) {
+			if(getItem(i).getId()==itemId) return i;
+		}
+		return -1;
+	}
 }

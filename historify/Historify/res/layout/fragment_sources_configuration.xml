@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
     style="@style/Fragment.Root"
     >
 <TextView
-	android:layout_width="fill_parent" 
-    android:layout_height="wrap_content"
     android:text="@string/sources.filter_mode_description"
     style="@style/Label"
     />
@@ -39,8 +35,6 @@
 </LinearLayout>	
 <ListView  
 	android:id="@+id/sources_lstSources"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
     android:choiceMode="multipleChoice"
     style="@style/ListView" 
     />

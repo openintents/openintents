@@ -97,15 +97,16 @@ public class QuickPostHelper {
 			//if the caller provided an EVENT_KEY, we have to check if the associated
 			//row is already stored.
 			if(eventKey!=null) {
-				Uri eventUri = 
-					QuickPosts.SOURCE_URI.buildUpon()
-					.appendPath(Events.EVENTS_PATH)
-					.appendPath(Events.EVENTS_BY_EVENT_KEYS_PATH)
-					.appendPath(eventKey).build();
+				Uri rawEventUri = 
+					Uri.withAppendedPath(QuickPosts.SOURCE_URI, QuickPosts.QUICKPOST_RAW_EVENTS_PATH);
 				
-				c = resolver.query(eventUri, new String[] {
-						QuickPostSourcesTable._ID
-				}, null, null, null);
+				where = QuickPostEventsTable.SOURCE_ID + " = "+sourceId + " AND "+
+						Events.EVENT_KEY + " = ?";
+				String[] whereArgs = new String[] { eventKey};
+				
+				c = resolver.query(rawEventUri, new String[] {
+						Events._ID
+				}, where, whereArgs, null);
 				
 				if(c.moveToFirst()) {
 					//event already stored
@@ -138,7 +139,7 @@ public class QuickPostHelper {
 		cv.put(Events.CONTACT_KEY, contactKey);
 		cv.put(Events.PUBLISHED_TIME, publishedTime);
 		cv.put(Events.MESSAGE, message);
-		cv.put(Events.ORIGINATOR, originator.toString());
+		cv.put(Events.ORIGINATOR, originator.toString());		
 		cv.put(QuickPostEventsTable.SOURCE_ID, sourceId);
 		
 		resolver.insert(Uri.withAppendedPath(QuickPosts.SOURCE_URI,Events.EVENTS_PATH), cv);
@@ -151,11 +152,14 @@ public class QuickPostHelper {
 		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
+		String eventIntent = parameterSet.getString(Actions.EXTRA_EVENT_INTENT);
+		
 		
 		ContentValues values = new ContentValues();
 		values.put(QuickPostSourcesTable.NAME, name);
 		values.put(QuickPostSourcesTable.DESCRIPTION, description);
 		values.put(QuickPostSourcesTable.ICON_URI, iconUri);
+		values.put(QuickPostSourcesTable.EVENT_INTENT,eventIntent);
 		values.put(QuickPostSourcesTable.UID, uid);
 		values.put(QuickPostSourcesTable.VERSION, version);
 		

@@ -17,9 +17,9 @@
 package org.openintents.historify.services.bridge;
 
 import org.openintents.historify.R;
-import org.openintents.historify.SourcesActivity;
 import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
+import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
@@ -132,11 +132,16 @@ public class SourceRegistrationHelper {
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
 		
+		String eventIntent = parameterSet.getString(Actions.EXTRA_EVENT_INTENT);
+		String configIntent = parameterSet.getString(Actions.EXTRA_CONFIG_INTENT);
+		
 		ContentValues values = new ContentValues();
 		values.put(SourcesTable.NAME, name);
 		values.put(SourcesTable.DESCRIPTION, description);
 		values.put(SourcesTable.AUTHORITY, authority);
 		values.put(SourcesTable.ICON_URI, iconUri);
+		values.put(SourcesTable.EVENT_INTENT, eventIntent);
+		values.put(SourcesTable.CONFIG_INTENT, configIntent);
 		values.put(SourcesTable.UID, uid);
 		values.put(SourcesTable.VERSION, version);
 		

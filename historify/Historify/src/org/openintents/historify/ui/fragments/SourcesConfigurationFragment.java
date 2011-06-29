@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.fragments;
+package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.FilterModesAdapter;
 import org.openintents.historify.data.adapters.SourcesAdapter;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.ui.views.ContactChooserDialog;
+import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.Toaster;
-import org.openintents.historify.view.ContactChooserDialog;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -62,7 +64,7 @@ public class SourcesConfigurationFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 	
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.sources_configuration_fragment, container, false);
+		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.fragment_sources_configuration, container, false);
 		
 		// init filter modes spinner
 		mSpinnerFilterMode = (Spinner) layout.findViewById(R.id.sources_spinnerFilterMode);
@@ -112,7 +114,7 @@ public class SourcesConfigurationFragment extends Fragment {
 		mSpinnerFilterMode.setAdapter(mFilterModesAdapter);
 
 		// sources adapter
-		mSourcesAdapter = new SourcesAdapter(getActivity(), mLstSources);
+		mSourcesAdapter = new SourcesAdapter(getActivity(), mLstSources, false, ContentUris.Sources);
 		mLstSources.setAdapter(mSourcesAdapter);
 		
 		return layout;
@@ -125,6 +127,25 @@ public class SourcesConfigurationFragment extends Fragment {
 		mSourcesAdapter.update(source);
 	}
 
+	/** Class to handle when the user clicks on a source's "More" button. */
+	public static class OnMoreButtonClickedListener implements OnClickListener {
+		public void onClick(View v) {
+			// the intent to be fired is stored in the view's tag
+			String action = (String)v.getTag();
+			
+			if(action!=null) {
+				Intent i = new Intent();
+				i.setAction(action);
+				try {
+					v.getContext().startActivity(i);	
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
+				
+			}
+		}
+	}
+	
 	/** Called when an item selected on the filter modes spinner. */
 	private void onFilterModeSelected(FilterModesAdapter adapter, int position) {
 

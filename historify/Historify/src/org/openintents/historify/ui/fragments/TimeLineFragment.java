@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.fragments;
+package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.TimeLineAdapter;
@@ -64,7 +64,7 @@ public class TimeLineFragment extends Fragment {
 			Bundle savedInstanceState) {
 
 		ViewGroup layout = (ViewGroup) inflater.inflate(
-				R.layout.timeline_fragment, container, false);
+				R.layout.fragment_timeline, container, false);
 
 		// init list
 		mLstTimeLine = (ListView) layout
@@ -134,6 +134,10 @@ public class TimeLineFragment extends Fragment {
 			i.setAction(event.getSource().getEventIntent());
 			i.putExtra(Actions.EXTRA_EVENT_ID, event.getId());
 			i.putExtra(Actions.EXTRA_EVENT_KEY, event.getEventKey());
+			
+			if(!event.getSource().isInternal())
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			
 			startActivity(i);
 		}
 	}

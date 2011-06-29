@@ -60,7 +60,8 @@ public final class Events {
 	public final static String ORIGINATOR = "originator";
 
 	/**
-	 * Custom icon for the event to display on the timeline. Only supported by internal sources.
+	 * Custom icon for the event to display on the timeline. Only supported if
+	 * the source's icon load strategy is set to event mode.
 	 */
 	public final static String ICON_URI = "icon_uri";
 	

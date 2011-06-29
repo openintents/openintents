@@ -22,8 +22,6 @@
  
  <LinearLayout
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
 	android:layout_weight="1"
     style="@style/ListItem.TimeLine"    
     >
@@ -43,8 +41,6 @@
     
 	<TextView
 		android:id="@+id/timeline_listitem_txtDate"
-		android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
     	android:gravity="right"	    
 	    style="@style/Label"
 	    android:text="(Date)"
@@ -53,8 +49,6 @@
 	 
 <TextView
 		android:id="@+id/timeline_listitem_txtMessage"
-		android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
 	    android:minLines="2"
 	    style="@style/Label"
 	    android:text="Detailed message."

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.fragments;
+package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.ContactsAdapter;
@@ -50,7 +50,7 @@ public class ContactsListFragment extends Fragment {
 			Bundle savedInstanceState) {
 		
 		ViewGroup layout = (ViewGroup) inflater.inflate(
-				R.layout.contacts_list_fragment, container, false);
+				R.layout.fragment_contacts_list, container, false);
 
 		// init listview
 		mLstContacts = (ListView) layout

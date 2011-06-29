@@ -14,32 +14,29 @@
  * limitations under the License.
  */
 
-package org.openintents.historify;
+package org.openintents.historify.ui;
 
-import org.openintents.historify.fragments.TimeLineFragment;
+import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 /**
  * 
- * Displays Historify timeline.
+ * Displays and manages filters for sources and contacts.
  * 
  * @author berke.andras
- * 
  */
-public class TimeLineActivity extends FragmentActivity {
+public class SourcesActivity extends FragmentActivity {
 
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		if (savedInstanceState == null) {
-
-			TimeLineFragment fragment = new TimeLineFragment();
-			Bundle arguments = getIntent().getExtras();
-			fragment.setArguments(arguments == null ? new Bundle() : arguments);
+			
+			SourcesConfigurationFragment fragment = new SourcesConfigurationFragment();
 			getSupportFragmentManager().beginTransaction().add(
 					android.R.id.content, fragment).commit();
 		}

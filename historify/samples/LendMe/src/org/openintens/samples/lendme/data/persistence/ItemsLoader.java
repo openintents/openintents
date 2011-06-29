@@ -16,6 +16,7 @@
 
 package org.openintens.samples.lendme.data.persistence;
 
+import org.openintens.samples.lendme.data.HistorifyPostHelper;
 import org.openintens.samples.lendme.data.Item;
 import org.openintens.samples.lendme.data.Item.Owner;
 import org.openintens.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
@@ -87,5 +88,21 @@ public class ItemsLoader {
 		
 		Uri contentUri = Uri.withAppendedPath(ItemsProviderHelper.CONTENT_URI, String.valueOf(itemId));
 		context.getContentResolver().delete(contentUri, null, null);
+	}
+
+	public Item query(Context context, String eventKey) {
+		
+		long id=HistorifyPostHelper.getInstance(context).getItemId(eventKey);
+		String where = ItemsTable._ID + " = "+id;
+		
+		Item retval = null;
+		
+		Cursor c = context.getContentResolver().query(ItemsProviderHelper.CONTENT_URI, null, where, null, ItemsTable.LENDING_START+ " DESC");
+		if(c.getCount()!=0) {
+			retval = loadFromCursor(c, 0);
+		}
+		c.close();
+		
+		return retval;
 	}
 }

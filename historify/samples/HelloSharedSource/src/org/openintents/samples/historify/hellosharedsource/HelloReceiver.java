@@ -25,9 +25,15 @@ public class HelloReceiver extends HistorifyBridge.RequestReceiver {
 	@Override
 	protected void onRequestRegister(Context context) {
 
-		new HistorifyBridge(R.drawable.icon).registerSource(context, "HelloSharedSource",
-				HelloProvider.AUTHORITY,
-				"Example app for registering a SharedSource", null);
+		new HistorifyBridge(R.drawable.icon).registerSource(
+				context, 
+				"HelloSharedSource", 
+				HelloProvider.AUTHORITY, 
+				"Sample app that demonstrates how to register a SharedSource.", 
+				null, 
+				null, 
+				"org.openintents.samples.historify.hellosharedsource.ACTION_CONFIG", 
+				1);
 
 	}
 

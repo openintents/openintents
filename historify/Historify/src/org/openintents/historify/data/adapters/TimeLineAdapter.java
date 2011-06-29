@@ -80,7 +80,7 @@ public class TimeLineAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = ((LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-					.inflate(R.layout.timeline_listitem, null);
+					.inflate(R.layout.listitem_timeline, null);
 		}
 
 		loadEventToView(event, convertView);

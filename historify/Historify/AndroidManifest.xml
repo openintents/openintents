@@ -6,7 +6,7 @@
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -14,20 +14,29 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".ContactsActivity"/>
+        <activity android:name=".ui.ContactsActivity"/>
         
-        <activity android:name=".TimeLineActivity" >
+        <activity android:name=".ui.TimeLineActivity" >
         	<intent-filter>
                 <action android:name="org.openintents.historify.SHOW_TIMELINE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 		</activity>
 		
-        <activity android:name="SourcesActivity"/>
+        <activity android:name=".ui.SourcesActivity"/>
+
+        <activity android:name=".ui.QuickPostsConfigActivity">
+        	<intent-filter>
+                <action android:name="org.openintents.historify.CONFIG_QUICKPOSTS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>        
+        </activity>
         
-        <activity android:name="EventIntentHandlerActivity">
+        <activity android:name=".ui.EventIntentHandlerActivity">
         	<intent-filter>
                 <action android:name="org.openintents.historify.VIEW_MESSAGING_EVENT" />
+                <action android:name="org.openintents.historify.VIEW_CALLOG_EVENT" />
+                <action android:name="org.openintents.historify.VIEW_QUICKPOST_EVENT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>        
         </activity>

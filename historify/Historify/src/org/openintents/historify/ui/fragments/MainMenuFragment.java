@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.fragments;
+package org.openintents.historify.ui.fragments;
 
-import org.openintents.historify.ContactsActivity;
 import org.openintents.historify.R;
-import org.openintents.historify.SourcesActivity;
+import org.openintents.historify.ui.ContactsActivity;
+import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.uri.Actions;
 
 import android.content.Intent;
@@ -45,7 +45,7 @@ public class MainMenuFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.main_menu_fragment, container, false);
+		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.fragment_main_menu, container, false);
 		
 		//init menu
 		ListView lstMenu = (ListView) layout.findViewById(R.id.main_lstMenu);
@@ -63,7 +63,7 @@ public class MainMenuFragment extends Fragment {
 		//create menu items
 		MenuItem[] menuItems = createMenuItems(); 
 		ArrayAdapter<MenuItem> menuItemAdapter = new ArrayAdapter<MenuItem>(
-				getActivity(), R.layout.main_listitem, menuItems);
+				getActivity(), R.layout.listitem_main, menuItems);
 		lstMenu.setAdapter(menuItemAdapter);
 
 		return layout;

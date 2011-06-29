@@ -27,8 +27,8 @@ import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrate
 public class InternalSource extends AbstractSource {
 
 	public InternalSource(long id, String name, String description,
-			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent) {
-		super(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent);
+			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent, String configIntent) {
+		super(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent, configIntent);
 		mIsInternal = true;
 	}
 

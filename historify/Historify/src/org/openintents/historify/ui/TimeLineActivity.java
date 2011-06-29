@@ -14,34 +14,36 @@
  * limitations under the License.
  */
 
-package org.openintents.historify;
+package org.openintents.historify.ui;
 
-import org.openintents.historify.fragments.ContactsListFragment;
+import org.openintents.historify.ui.fragments.TimeLineFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
 /**
  * 
- * Contacts list view. Contains a fragment for displaying the list of contacts.
+ * Displays Historify timeline.
  * 
  * @author berke.andras
+ * 
  */
-public class ContactsActivity extends FragmentActivity {
+public class TimeLineActivity extends FragmentActivity {
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		if (savedInstanceState == null) {
 
-			ContactsListFragment fragment = new ContactsListFragment();
+			TimeLineFragment fragment = new TimeLineFragment();
 			Bundle arguments = getIntent().getExtras();
 			fragment.setArguments(arguments == null ? new Bundle() : arguments);
 			getSupportFragmentManager().beginTransaction().add(
 					android.R.id.content, fragment).commit();
 		}
+
 	}
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LendMe</string>
-    <string name="app_description">Keep record of your </string>
+    <string name="app_description">Keep record of your belongings.</string>
     
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -27,6 +27,8 @@
     
     <string name="main.msg_nophone">No phone number found for the contact.</string>
     <string name="main.msg_select_phone">Select phone number</string>
+    
+	<string name="main.msg_no_item">The item you are looking for is no longer available.</string>
     
     <string name="post.lent">Lent: %1$s</string>
     <string name="post.returned">Returned: %1$s</string>

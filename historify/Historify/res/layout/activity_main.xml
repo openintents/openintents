@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
     style="@style/Fragment.Root"
     >
 
-  <fragment android:name="org.openintents.historify.fragments.MainMenuFragment"
+  <fragment android:name="org.openintents.historify.ui.fragments.MainMenuFragment"
             android:layout_width="fill_parent"
     		android:layout_height="fill_parent" />
 

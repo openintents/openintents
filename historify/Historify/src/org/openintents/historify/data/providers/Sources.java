@@ -23,6 +23,7 @@ import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.uri.Actions;
+import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
 
 import android.content.ContentValues;
@@ -41,7 +42,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 32;
+	static final int DB_VERSION = 34;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -56,6 +57,7 @@ public final class Sources {
 
 		public static final String AUTHORITY = "authority";
 		public static final String EVENT_INTENT = "event_intent";
+		public static final String CONFIG_INTENT = "config_intent";
 
 		public static final String IS_INTERNAL = "is_internal";
 		public static final String UID = "uid";
@@ -85,7 +87,7 @@ public final class Sources {
 	// the filters for a particular contact
 	public static final class FilteredSourcesView {
 
-		public static final String _VIEW = "filtered_sources";
+		public static final String _VIEW = SourcesTable._TABLE+"/"+ContentUris.FILTERED_SOURCES_PATH;
 
 		public static final String JOIN_CLAUSE = SourcesTable._TABLE
 				+ " LEFT OUTER JOIN " + FiltersTable._TABLE + " ON "
@@ -116,6 +118,7 @@ public final class Sources {
 					+ SourcesTable.ICON_LOADING_STRATEGY + " TEXT DEFAULT '"+IconLoadingStrategy.useSourceIcon+"', "
 					+ SourcesTable.AUTHORITY + " TEXT NOT NULL," 
 					+ SourcesTable.EVENT_INTENT + " TEXT,"
+					+ SourcesTable.CONFIG_INTENT + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
 					+ AbstractSource.SourceState.ENABLED + ","
 					+ SourcesTable.UID + " INTEGER DEFAULT 0,"
@@ -148,8 +151,10 @@ public final class Sources {
 			cv.put(SourcesTable.NAME, QuickPosts.SOURCE_NAME);
 			cv.put(SourcesTable.DESCRIPTION, QuickPosts.DESCRIPTION);
 			cv.put(SourcesTable.AUTHORITY, QuickPosts.QUICKPOSTS_AUTHORITY);
+			cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_QUICKPOST_EVENT);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_quick_post").toString());
+			cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_QUICKPOSTS);
 			cv.put(SourcesTable.ICON_LOADING_STRATEGY, IconLoadingStrategy.useEventIcon.toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 			
@@ -166,6 +171,7 @@ public final class Sources {
 			cv.put(SourcesTable.NAME, Telephony.SOURCE_NAME);
 			cv.put(SourcesTable.DESCRIPTION, Telephony.DESCRIPTION);
 			cv.put(SourcesTable.AUTHORITY, Telephony.TELEPHONY_AUTHORITY);
+			cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_CALLOG_EVENT);
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_telephony").toString());
 			db.insert(SourcesTable._TABLE, null, cv);

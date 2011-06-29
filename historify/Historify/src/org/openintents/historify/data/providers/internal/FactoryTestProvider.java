@@ -45,13 +45,10 @@ public class FactoryTestProvider extends EventsProvider {
 		return FactoryTest.FACTORY_TEST_AUTHORITY;
 	}
 
-	@Override
-	protected Cursor queryEvent(String eventKey) {
-		return null;
-	}
+
 
 	@Override
-	protected Cursor queryEvents(String lookupKey) {
+	protected Cursor queryEventsForContact(String lookupKey) {
 
 		MatrixCursor mc = new MatrixCursor(new String[] {
 				Events._ID,
@@ -78,5 +75,20 @@ public class FactoryTestProvider extends EventsProvider {
 
 		return mc;
 		
+	}
+
+	@Override
+	protected Cursor queryEvent(long eventId) {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEvents() {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEventsByKey(String eventKey) {
+		return null;
 	}
 }

@@ -41,13 +41,9 @@ public class MessagingProvider extends EventsProvider {
 		return Messaging.MESSAGING_AUTHORITY;
 	}
 
-	@Override
-	protected Cursor queryEvent(String eventKey) {
-		return null;
-	}
 
 	@Override
-	protected Cursor queryEvents(String lookupKey) {
+	protected Cursor queryEventsForContact(String lookupKey) {
 		
 		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
 		
@@ -92,6 +88,21 @@ public class MessagingProvider extends EventsProvider {
 								+ Events.ORIGINATOR }, where, null,
 				Messaging.Messages.DATE + " DESC");
 
+	}
+
+	@Override
+	protected Cursor queryEvent(long eventId) {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEvents() {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEventsByKey(String eventKey) {
+		return null;
 	}
 
 }

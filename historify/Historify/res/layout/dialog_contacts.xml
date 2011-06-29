@@ -6,8 +6,6 @@
     >
 <ListView  
 	android:id="@+id/contacts_lstContacts"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
     style="@style/ListView.NoDivider" 
     />
 </LinearLayout>

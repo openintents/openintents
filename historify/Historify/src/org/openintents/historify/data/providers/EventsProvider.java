@@ -31,9 +31,11 @@ import android.net.Uri;
 public abstract class EventsProvider extends ContentProvider {
 
 	protected UriMatcher mUriMatcher;
+	
 	protected static final int EVENTS_UNFILTERED = 1;
 	protected static final int EVENTS_FOR_A_CONTACT = 2;
-	protected static final int EVENT_BY_EVENT_KEY = 3;
+	protected static final int EVENTS_BY_EVENT_KEY = 3;
+	protected static final int EVENT_BY_EVENT_ID = 4;
 	
 	protected static final int USER_DEFINED_MATCH = 10;
 
@@ -44,9 +46,11 @@ public abstract class EventsProvider extends ContentProvider {
 		mUriMatcher.addURI(getAuthority(), 
 				Events.EVENTS_PATH, EVENTS_UNFILTERED);
 		mUriMatcher.addURI(getAuthority(), 
+				Events.EVENTS_PATH + "/#", EVENT_BY_EVENT_ID);
+		mUriMatcher.addURI(getAuthority(), 
 				Events.EVENTS_PATH + "/" + Events.EVENTS_FOR_CONTACTS_PATH + "/*", EVENTS_FOR_A_CONTACT);
 		mUriMatcher.addURI(getAuthority(), 
-				Events.EVENTS_PATH + "/" + Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENT_BY_EVENT_KEY);
+				Events.EVENTS_PATH + "/" + Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENTS_BY_EVENT_KEY);
 		
 		return true;
 	}
@@ -58,19 +62,29 @@ public abstract class EventsProvider extends ContentProvider {
 	 * @return The authority string of the defined provider.
 	 */
 	protected abstract String getAuthority();
+	
 
 	/**
-	 * Derived classes must override this to let the client able to query a
-	 * particular event identified with the given EVENT_KEY.
+	 * Derived classes must override this to let the client able to query the
+	 * event stored in this EventSource.
 	 * 
-	 * @param eventKey
-	 *            The eventKey of the requested event.
-	 * @return The Cursor containing the row associated with the requested
-	 *         event. <br/>
+	 * @return The Cursor containing the rows of this EventProvider. <br/>
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEvent(String eventKey);
+	protected abstract Cursor queryEvents();
+	
+	/**
+	 * Derived classes must override this to let the client able to query
+	 * event identified with the given ID.
+	 * 
+	 * @param eventId
+	 *            The id of the requested event.
+	 * @return The Cursor containing the row associated with the requested ID. <br/>
+	 *         The Cursor should contain the columns defined in the
+	 *         {@link Events} class.
+	 */
+	protected abstract Cursor queryEvent(long eventId);
 
 	/**
 	 * Derived classes must override this to let the client able to query the
@@ -83,7 +97,22 @@ public abstract class EventsProvider extends ContentProvider {
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEvents(String lookupKey);
+	protected abstract Cursor queryEventsForContact(String lookupKey);
+	
+	
+	/**
+	 * Derived classes must override this to let the client able to query
+	 * event(s) identified with the given EVENT_KEY.
+	 * 
+	 * @param eventKey
+	 *            The eventKey of the requested event.
+	 * @return The Cursor containing the row associated with the requested
+	 *         event. <br/>
+	 *         The Cursor should contain the columns defined in the
+	 *         {@link Events} class.
+	 */
+	protected abstract Cursor queryEventsByKey(String eventKey);
+
 
 	@Override
 	public String getType(Uri uri) {
@@ -92,7 +121,8 @@ public abstract class EventsProvider extends ContentProvider {
 		case EVENTS_UNFILTERED:
 		case EVENTS_FOR_A_CONTACT:
 			return Events.CONTENT_TYPE;
-		case EVENT_BY_EVENT_KEY:
+		case EVENT_BY_EVENT_ID:
+		case EVENTS_BY_EVENT_KEY:
 			return Events.ITEM_CONTENT_TYPE;
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
@@ -111,28 +141,25 @@ public abstract class EventsProvider extends ContentProvider {
 	public Cursor query(Uri uri, String[] projection, String selection,
 			String[] selectionArgs, String sortOrder) {
 
-		switch (mUriMatcher.match(uri)) {
-		case EVENTS_UNFILTERED:
+		try {
+			switch (mUriMatcher.match(uri)) {
+			case EVENTS_UNFILTERED:
+				return queryEvents();
+			case EVENT_BY_EVENT_ID:
+				return queryEvent(Long.parseLong(uri.getLastPathSegment()));
+			case EVENTS_FOR_A_CONTACT:
+				return queryEventsForContact(uri.getPathSegments().get(2));
+			case EVENTS_BY_EVENT_KEY:
+				return queryEventsByKey(uri.getPathSegments().get(2));
+			default:
+				throw new IllegalArgumentException("Unknown URI " + uri);
+			}		
+		} catch(IllegalArgumentException iae) {
+			throw iae;
+		} catch(Exception e) {
+			e.printStackTrace();
 			return null;
-		case EVENTS_FOR_A_CONTACT:
-			// 3rd path segment contains the lookup key
-			// (content://authority/events/contacts/{CONTACT_LOOKUP_KEY})
-			try {
-				return queryEvents(uri.getPathSegments().get(2));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		case EVENT_BY_EVENT_KEY:
-			// 3rd path segment contains the event id
-			try {
-				return queryEvent(uri.getPathSegments().get(2));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		default:
-			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
-
 	}
 
 	@Override

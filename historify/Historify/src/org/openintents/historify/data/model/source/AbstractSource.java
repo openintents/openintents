@@ -67,12 +67,14 @@ public abstract class AbstractSource {
 	//flag for internal sources
 	protected boolean mIsInternal = false;
 
+	//Action of the intent to be fired for launching source configuration activity
+	private String mConfigIntent;
 	
 	private IconLoadingStrategy mIconLoadingStrategy;
 	
 	
 	protected AbstractSource(long id, String name, String description,
-			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent) {
+			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent, String configIntent) {
 		
 		mId = id;
 		mName = name;
@@ -81,6 +83,7 @@ public abstract class AbstractSource {
 		mIconLoadingStrategy = iconLoadingStrategy==null ? IconLoadingStrategy.useSourceIcon : iconLoadingStrategy;
 		mAuthority = authority;
 		mEventIntent = eventIntent;
+		mConfigIntent = configIntent;
 		
 		mState = SourceState.ENABLED;
 	}
@@ -107,6 +110,10 @@ public abstract class AbstractSource {
 	
 	public String getEventIntent() {
 		return mEventIntent;
+	}
+	
+	public String getConfigIntent() {
+		return mConfigIntent;
 	}
 	
 	public SourceState getState() {
@@ -154,11 +161,12 @@ public abstract class AbstractSource {
 			IconLoadingStrategy iconLoadingStrategy, 
 			String authority,
 			String eventIntent,
+			String configIntent,
 			String state) {
 		
 		AbstractSource retval = isInternal ? 
-				new InternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent):
-				new ExternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent);
+				new InternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent):
+				new ExternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent);
 		retval.setState(SourceState.parseString(state));
 
 		return retval;

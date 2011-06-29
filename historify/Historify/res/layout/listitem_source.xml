@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="6dip"
+	android:paddingRight="6dip"    
+    >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/sources_listitem_imgIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/source_default" />    
+    
+	<CheckedTextView
+		android:id="@+id/sources_listitem_txtName"
+		android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_marginRight="6dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:gravity="center_vertical"
+	    android:checkMark="?android:attr/textCheckMark"
+		android:textColor="@color/foreground_light"
+	    android:text="Name"
+	/>
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+	 
+	<TextView 
+		android:id="@+id/sources_listitem_txtDescription"
+	    android:layout_weight="1"
+	    style="@style/Label"
+	    android:minLines="1"
+	    android:text="Detailed description"
+	/>	 
+
+	<ImageView
+		android:id="@+id/sources_listitem_btnMore"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@android:drawable/ic_menu_more"
+	/>	 
+</LinearLayout>
+	 
+</LinearLayout>	 	 

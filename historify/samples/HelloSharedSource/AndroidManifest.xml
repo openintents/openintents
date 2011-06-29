@@ -13,6 +13,8 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="org.openintents.samples.historify.hellosharedsource.ACTION_CONFIG" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 

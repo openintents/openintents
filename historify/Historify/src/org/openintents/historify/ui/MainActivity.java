@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-package org.openintents.historify;
+package org.openintents.historify.ui;
+
+
+import org.openintents.historify.FirstStartTasks;
+import org.openintents.historify.R;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -31,7 +35,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.activity_main);
 
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
