@@ -134,6 +134,7 @@ public class TimeLineFragment extends Fragment {
 			i.setAction(event.getSource().getEventIntent());
 			i.putExtra(Actions.EXTRA_EVENT_ID, event.getId());
 			i.putExtra(Actions.EXTRA_EVENT_KEY, event.getEventKey());
+			i.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, mContact.getLookupKey());
 			
 			if(!event.getSource().isInternal())
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

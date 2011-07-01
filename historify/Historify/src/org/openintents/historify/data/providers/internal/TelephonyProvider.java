@@ -43,32 +43,10 @@ public class TelephonyProvider extends EventsProvider {
 		return Telephony.TELEPHONY_AUTHORITY;
 	}
 
-	@Override
-	protected Cursor queryEventsForContact(String lookupKey) {
-
-		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
-
-		ContentResolver resolver = getContext().getContentResolver();
-
-		// querying phone numbers of the contact
-		Cursor phoneCursor = resolver.query(Phone.CONTENT_URI,
-				new String[] { Phone.NUMBER }, phoneSelection, null, null);
-
-		StringBuilder phoneNumbers = new StringBuilder();
-		while (phoneCursor.moveToNext()) {
-			phoneNumbers.append("'");
-			phoneNumbers.append(phoneCursor.getString(0));
-			phoneNumbers.append("'");
-			phoneNumbers.append(",");
-		}
-		if (phoneNumbers.length() > 0)
-			phoneNumbers.setLength(phoneNumbers.length() - 1);
-
-		phoneCursor.close();
-
+	private Cursor rawQuery(String where, String lookupKey) {
+		
 		// build where clause for call log query
-		String where = CallLog.Calls.NUMBER + " IN (" + phoneNumbers.toString()
-				+ ")" + " AND " + CallLog.Calls.TYPE + " != "
+		String selection = where + " AND " + CallLog.Calls.TYPE + " != "
 				+ CallLog.Calls.MISSED_TYPE + " AND " + CallLog.Calls.DURATION
 				+ " != 0";
 
@@ -94,13 +72,46 @@ public class TelephonyProvider extends EventsProvider {
 								+ Events.Originator.contact + "'),"
 								+ CallLog.Calls.OUTGOING_TYPE + ",'"
 								+ Events.Originator.user + "') AS "
-								+ Events.ORIGINATOR }, where, null,
+								+ Events.ORIGINATOR }, selection, null,
 				CallLog.Calls.DATE + " DESC");
+
+		
+	}
+	
+	@Override
+	protected Cursor queryEventsForContact(String lookupKey) {
+
+		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
+
+		ContentResolver resolver = getContext().getContentResolver();
+
+		// querying phone numbers of the contact
+		Cursor phoneCursor = resolver.query(Phone.CONTENT_URI,
+				new String[] { Phone.NUMBER }, phoneSelection, null, null);
+
+		StringBuilder phoneNumbers = new StringBuilder();
+		while (phoneCursor.moveToNext()) {
+			phoneNumbers.append("'");
+			phoneNumbers.append(phoneCursor.getString(0));
+			phoneNumbers.append("'");
+			phoneNumbers.append(",");
+		}
+		if (phoneNumbers.length() > 0)
+			phoneNumbers.setLength(phoneNumbers.length() - 1);
+
+		phoneCursor.close();
+		
+		String where = CallLog.Calls.NUMBER + " IN (" + phoneNumbers.toString() + ")";
+		
+		return rawQuery(where, lookupKey);
+
 	}
 
 	@Override
 	protected Cursor queryEvent(long eventId) {
-		return null;
+		
+		String where = CallLog.Calls._ID + " = "+eventId;
+		return rawQuery(where, null);
 	}
 
 	@Override

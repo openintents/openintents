@@ -43,7 +43,16 @@ public class EventLoader {
 		
         return context.getContentResolver().query(eventsUri.build(), null, null, null, null);
 	}
-	
+
+	public Cursor openCursor(Context context, Uri providerAuthority, long eventId) {
+		
+		Uri eventUri = providerAuthority.buildUpon()
+			.appendPath(Events.EVENTS_PATH)
+			.appendPath(String.valueOf(eventId)).build();
+		
+        return context.getContentResolver().query(eventUri, null, null, null, null);
+	}
+
 	public Event loadFromCursor(Cursor cursor, int position) {
 		
 		cursor.moveToPosition(position);

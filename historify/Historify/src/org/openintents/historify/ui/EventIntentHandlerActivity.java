@@ -16,10 +16,22 @@
 
 package org.openintents.historify.ui;
 
+import java.util.Date;
+
+import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.EventLoader;
+import org.openintents.historify.data.loaders.SourceIconHelper;
+import org.openintents.historify.data.loaders.SourceLoader;
+import org.openintents.historify.data.model.Event;
+import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.providers.Events;
+import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.QuickPosts;
+import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostSourcesTable;
 import org.openintents.historify.uri.Actions;
+import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.utils.DateUtils;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -27,7 +39,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract.Contacts;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -43,33 +60,89 @@ public class EventIntentHandlerActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-//		Intent i = new Intent();
-//        i.setAction(Intent.ACTION_VIEW);
-//        i.setData(CallLog.Calls.CONTENT_URI);
-//        i.setType(CallLog.Calls.CONTENT_TYPE);
-//        startActivity(i); 
-		
-		setTheme(android.R.style.Theme_Dialog);
-		TextView tv = new TextView(this);
-		tv.setText(getIntent().getAction());
-		setContentView(tv);
+		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.activity_event_intent_handler);
 		
 		String action = getIntent().getAction();
 		
 		if(Actions.ACTION_VIEW_MESSAGING_EVENT.equals(action)) {
-			tv.setText("TODO: view messaging event");
+			handleInternalEventIntent(Messaging.SOURCE_URI, getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1));
 		} else if(Actions.ACTION_VIEW_CALLOG_EVENT.equals(action)) {
-			tv.setText("TODO: view callog event");
+			handleInternalEventIntent(Telephony.SOURCE_URI, getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1));
 		} else if(Actions.ACTION_VIEW_QUICKPOST_EVENT.equals(action)) {
 			handleQuickPostEventIntent();
-			finish();
 		} else {
 			finish();
 		}
 		
-		
 	}
+
+	
+	private void handleInternalEventIntent(Uri eventSource, long eventId) {
+		
+		if(eventId!=-1) {
+			Event event = null;
+			AbstractSource source = null;
+			EventLoader eventLoader = new EventLoader();
+			Cursor ec = eventLoader.openCursor(this, eventSource, eventId);
+			if(ec.getCount()!=0) {
+				event = eventLoader.loadFromCursor(ec,0);
+				
+				SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
+				Cursor sc = sourceLoader.openManagedCursor(this, eventSource);
+				if(sc.getCount()!=0) {
+					source = sourceLoader.loadFromCursor(sc, 0);
+					if(source!=null)
+						event.setSource(source);
+				}
+			}
+			ec.close();
+			
+			if(event!=null && source!=null) {
+				loadEventToView(event);
+				initViewButton();
+				return;
+			}
+		}
+		
+		finish();
+	}
+	
+	private void initViewButton() {
+		
+		String lookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);		
+		Uri contactUri = 
+			Contacts.lookupContact(getContentResolver(),
+					Uri.withAppendedPath(Contacts.CONTENT_LOOKUP_URI, lookupKey));
+		
+		final Intent i = new Intent();
+		i.setAction(Intent.ACTION_VIEW);
+		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		i.setData(contactUri);
+		
+		View btnView = findViewById(R.id.event_intent_handler_btnView);
+		btnView.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				startActivity(i);
+				finish();
+			}
+		});
+	}
+
+
+	private void loadEventToView(Event event) {
+		
+		TextView tv= (TextView) findViewById(R.id.timeline_listitem_txtMessage);
+		tv.setText(event.getMessage());
+
+		tv = (TextView) findViewById(R.id.timeline_listitem_txtDate);
+		tv.setText(DateUtils.formatDate(new Date(event.getPublishedTime())));
+
+		ImageView iv = (ImageView)findViewById(R.id.timeline_listitem_imgIcon);
+		new SourceIconHelper().toImageView(this, event.getSource(), event, iv);
+
+	}
+
 
 	private void handleQuickPostEventIntent() {
 		
@@ -101,6 +174,6 @@ public class EventIntentHandlerActivity extends Activity {
 			}
 		}
 		 
-
+		finish();
 	}
 }

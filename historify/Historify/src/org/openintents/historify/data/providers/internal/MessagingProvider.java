@@ -41,6 +41,29 @@ public class MessagingProvider extends EventsProvider {
 		return Messaging.MESSAGING_AUTHORITY;
 	}
 
+	private Cursor rawQuery(String where, String lookupKey) {
+		
+		// execute query
+		// column names are mapped as defined in .data.providers.Events
+		return getContext().getContentResolver().query(
+				Messaging.Messages.CONTENT_URI,
+				new String[] {
+						Messaging.Messages._ID + " AS " + Events._ID,
+						"NULL AS " + Events.EVENT_KEY,
+						Messaging.Messages.BODY + " AS " + Events.MESSAGE,
+						Messaging.Messages.DATE + " AS "
+								+ Events.PUBLISHED_TIME,
+						"'" + lookupKey + "' AS " + Events.CONTACT_KEY,
+						"REPLACE(" + "REPLACE(" + Messaging.Messages.TYPE + ","
+								+ Messaging.Messages.INCOMING_TYPE + ",'"
+								+ Events.Originator.contact + "'),"
+								+ Messaging.Messages.OUTGOING_TYPE + ",'"
+								+ Events.Originator.user + "') AS "
+								+ Events.ORIGINATOR }, where, null,
+				Messaging.Messages.DATE + " DESC");
+
+	
+	}
 
 	@Override
 	protected Cursor queryEventsForContact(String lookupKey) {
@@ -68,31 +91,16 @@ public class MessagingProvider extends EventsProvider {
 		// build where clause for message log query
 		String where = Messaging.Messages.ADDRESS + " IN ("
 				+ phoneNumbers.toString() + ")";
-
-		// execute query
-		// column names are mapped as defined in .data.providers.Events
-		return getContext().getContentResolver().query(
-				Messaging.Messages.CONTENT_URI,
-				new String[] {
-						Messaging.Messages._ID + " AS " + Events._ID,
-						"NULL AS " + Events.EVENT_KEY,
-						Messaging.Messages.BODY + " AS " + Events.MESSAGE,
-						Messaging.Messages.DATE + " AS "
-								+ Events.PUBLISHED_TIME,
-						"'" + lookupKey + "' AS " + Events.CONTACT_KEY,
-						"REPLACE(" + "REPLACE(" + Messaging.Messages.TYPE + ","
-								+ Messaging.Messages.INCOMING_TYPE + ",'"
-								+ Events.Originator.contact + "'),"
-								+ Messaging.Messages.OUTGOING_TYPE + ",'"
-								+ Events.Originator.user + "') AS "
-								+ Events.ORIGINATOR }, where, null,
-				Messaging.Messages.DATE + " DESC");
+		
+		return rawQuery(where, lookupKey);
 
 	}
 
 	@Override
 	protected Cursor queryEvent(long eventId) {
-		return null;
+		
+		String where = Messaging.Messages._ID + " = "+eventId;
+		return rawQuery(where, null);
 	}
 
 	@Override

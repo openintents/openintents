@@ -32,7 +32,8 @@
             </intent-filter>        
         </activity>
         
-        <activity android:name=".ui.EventIntentHandlerActivity">
+        <activity android:name=".ui.EventIntentHandlerActivity"
+        		android:theme="@android:style/Theme.Dialog">
         	<intent-filter>
                 <action android:name="org.openintents.historify.VIEW_MESSAGING_EVENT" />
                 <action android:name="org.openintents.historify.VIEW_CALLOG_EVENT" />

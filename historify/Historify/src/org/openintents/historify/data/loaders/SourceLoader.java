@@ -22,6 +22,7 @@ import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.model.source.SourceFilter;
 import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
+import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
 
@@ -122,6 +123,22 @@ public class SourceLoader {
 			uri = mSourcesUri;
 			projection = mBasicColumnsOnly ?  SIMPLE_SOURCES_PROJECTION : SOURCES_PROJECTION;
 		}
+				 
+		return context.managedQuery(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
+	}
+	
+	public Cursor openManagedCursor(Activity context, Uri sourceUri) {
+		
+		String selection = SourcesTable.AUTHORITY + " = ?";
+		String[] selectionArgs = new String[] {
+			sourceUri.getAuthority()	
+		};
+		
+		Uri uri = null;
+		String[] projection = null;
+					
+		uri = mSourcesUri;
+		projection = mBasicColumnsOnly ?  SIMPLE_SOURCES_PROJECTION : SOURCES_PROJECTION;
 				 
 		return context.managedQuery(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
