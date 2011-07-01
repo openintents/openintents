@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
 		mBridge = new HistorifyBridge(R.drawable.icon);
 		
 		QuickPostContext quickPostContext = new QuickPostContext(
-				"HelloQuickPost", "Test source for QuickPosting.", null,0);
+				"HelloQuickPost", "Test source for QuickPosting.", null, null, 0);
         mBridge.setQuickPostContext(quickPostContext);
 	}
 	

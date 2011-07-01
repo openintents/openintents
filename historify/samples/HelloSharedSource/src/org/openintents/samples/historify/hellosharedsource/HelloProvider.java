@@ -32,8 +32,23 @@ public class HelloProvider extends EventsProvider{
 	}
 
 	@Override
-	protected Cursor queryEvents(String lookupKey) {
-		
+	protected Cursor queryEvent(long eventKey) {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEvents() {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEventsByKey(String eventKey) {
+		return null;
+	}
+
+	@Override
+	protected Cursor queryEventsForContact(String lookupKey) {
+
 		MatrixCursor mc = new MatrixCursor(new String[] {
 				Events._ID,
 				Events.CONTACT_KEY,
@@ -54,11 +69,6 @@ public class HelloProvider extends EventsProvider{
 			});	
 
 		return mc;
-	}
-
-	@Override
-	protected Cursor queryEvent(String eventKey) {
-		return null;
 	}
 
 
