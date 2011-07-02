@@ -23,7 +23,10 @@ import org.openintents.historify.data.model.Contact;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.os.Handler;
+import android.provider.ContactsContract.Contacts;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +51,26 @@ public class ContactsAdapter extends BaseAdapter {
 	// true if list is filtered for favorite contacts only.
 	private boolean mStarredOnly;
 
+	private ContactsChangedObserver mObserver;
+	
+	private class ContactsChangedObserver extends ContentObserver {
+
+		public ContactsChangedObserver(Handler handler) {
+			super(handler);
+		}
+		
+		@Override
+		public boolean deliverSelfNotifications() {
+			return true;
+		}
+		
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			reload();
+		}
+	}
+
 	public ContactsAdapter(Activity context, boolean starredOnly) {
 
 		mContext = context;
@@ -63,7 +86,23 @@ public class ContactsAdapter extends BaseAdapter {
 
 		mCursor = mLoader.openCursor(mContext, mStarredOnly);
 		notifyDataSetChanged();
+		
+		mObserver = new ContactsChangedObserver(new Handler()); 
+		mContext
+		 .getContentResolver()
+		 .registerContentObserver(Contacts.CONTENT_URI, true, mObserver);		
 	}
+	
+	public void reload() {
+		
+		if(mCursor==null) 
+			load();
+		else {
+			mCursor.requery();
+			notifyDataSetChanged();
+		}
+	}
+
 
 	public int getCount() {
 		return mCursor == null ? 0 : mCursor.getCount();
@@ -100,7 +139,8 @@ public class ContactsAdapter extends BaseAdapter {
 		return convertView;
 	}
 	
-	public void releaseThread() {
+	public void onDestroy() {
 		mContactIconHelper.stopThread();
+		mContext.getContentResolver().unregisterContentObserver(mObserver);
 	}
 }

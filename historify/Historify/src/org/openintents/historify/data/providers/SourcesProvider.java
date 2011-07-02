@@ -29,10 +29,12 @@ import org.openintents.historify.uri.ContentUris;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * 
@@ -123,12 +125,14 @@ public class SourcesProvider extends ContentProvider {
 
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
+		Uri notificationUri = null;
 		boolean filteredSources = false;
 
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
 			qb.setTables(SourcesTable._TABLE);
+			notificationUri = ContentUris.Sources;
 			break;
 
 		case FILTERS:
@@ -173,8 +177,15 @@ public class SourcesProvider extends ContentProvider {
 				return cursorWithFilters;
 		}
 
-		return qb.query(db, projection, selection, selectionArgs, null, null,
+		
+		Cursor retval = qb.query(db, projection, selection, selectionArgs, null, null,
 				null);
+		if(notificationUri!=null && retval!=null) {
+			retval.setNotificationUri(getContext().getContentResolver(), notificationUri);
+		}
+			
+
+		return retval;
 	}
 
 	@Override
@@ -182,11 +193,13 @@ public class SourcesProvider extends ContentProvider {
 			String[] selectionArgs) {
 
 		String table, where = null;
-
+		Uri notificationUri = null;
+		
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
 			table = SourcesTable._TABLE;
+			notificationUri = ContentUris.Sources;
 			break;
 
 		case FILTERS:
@@ -215,18 +228,25 @@ public class SourcesProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.update(table, values, selection, selectionArgs);
+		
+		int retval =  db.update(table, values, selection, selectionArgs);
+		if(retval!=0 && notificationUri!=null) {
+			getContext().getContentResolver().notifyChange(notificationUri, null);
+		}
+		return retval;
 	}
 
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
 
 		String table = null;
-
+		Uri notificationUri = null;
+		
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
 			table = SourcesTable._TABLE;
+			notificationUri = ContentUris.Sources;
 			break;
 
 		case FILTERS:
@@ -249,7 +269,11 @@ public class SourcesProvider extends ContentProvider {
 
 		if (table != null) {
 			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-			return db.delete(table, selection, selectionArgs);
+			int retval =  db.delete(table, selection, selectionArgs);
+			if(retval!=0 && notificationUri!=null) {
+				getContext().getContentResolver().notifyChange(notificationUri, null);
+			}
+			return retval;
 		}
 
 		return 0;
@@ -259,11 +283,13 @@ public class SourcesProvider extends ContentProvider {
 	public Uri insert(Uri uri, ContentValues values) {
 
 		String table = null;
-
+		Uri notificationUri = null;
+		
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
 			table = SourcesTable._TABLE;
+			notificationUri = ContentUris.Sources;
 			break;
 
 		case FILTERS:
@@ -278,7 +304,10 @@ public class SourcesProvider extends ContentProvider {
 			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 			long id = db.insert(table, null, values);
 			if (id > 0) {
-				return uri.buildUpon().appendPath(String.valueOf(id)).build();
+				Uri retval = uri.buildUpon().appendPath(String.valueOf(id)).build();
+				if(notificationUri!=null)
+					getContext().getContentResolver().notifyChange(notificationUri, null);
+				return retval;
 			}
 		}
 

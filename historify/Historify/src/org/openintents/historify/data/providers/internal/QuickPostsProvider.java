@@ -21,6 +21,7 @@ import org.openintents.historify.data.providers.EventsProvider;
 import org.openintents.historify.data.providers.internal.QuickPosts.OpenHelper;
 import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostEventsTable;
 import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostSourcesTable;
+import org.openintents.historify.uri.ContentUris;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -106,8 +107,14 @@ public class QuickPostsProvider extends EventsProvider {
 			String selection, String[] selectionArgs, String sortOrder) {
 
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.query(QuickPosts.QuickPostSourcesTable._TABLE, projection,
+		
+		Cursor c =  db.query(QuickPosts.QuickPostSourcesTable._TABLE, projection,
 				selection, selectionArgs, null, null, sortOrder);
+
+		if(c!=null)
+			c.setNotificationUri(getContext().getContentResolver(), ContentUris.QuickPostSources);
+		
+		return c;
 	}
 
 	@Override
@@ -156,11 +163,13 @@ public class QuickPostsProvider extends EventsProvider {
 	public Uri insert(Uri uri, ContentValues values) {
 
 		String tableName = null;
-
+		Uri notificationUri = null;
+		
 		if (mUriMatcher.match(uri) == EVENTS_UNFILTERED) {
 			tableName = QuickPostEventsTable._TABLE;
 		} else if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
 			tableName = QuickPostSourcesTable._TABLE;
+			notificationUri = ContentUris.QuickPostSources;
 		} else {
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
@@ -168,7 +177,10 @@ public class QuickPostsProvider extends EventsProvider {
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 		long id = db.insert(tableName, null, values);
 		if (id != -1) {
-			return Uri.withAppendedPath(uri, String.valueOf(id));
+			Uri retval =  Uri.withAppendedPath(uri, String.valueOf(id));
+			if(notificationUri!=null)
+				getContext().getContentResolver().notifyChange(notificationUri, null);
+			return retval;
 		}
 
 		return null;
@@ -179,33 +191,46 @@ public class QuickPostsProvider extends EventsProvider {
 			String[] selectionArgs) {
 		
 		String tableName = null;
-
+		Uri notificationUri = null;
+		
 		if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
 			tableName = QuickPostSourcesTable._TABLE;
+			notificationUri = ContentUris.QuickPostSources;
 		} else {
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.update(tableName, values, selection, selectionArgs);
-
+		int retval = db.update(tableName, values, selection, selectionArgs);
+		if(retval!=0 && notificationUri!=null)
+			getContext().getContentResolver().notifyChange(notificationUri, null);
+		
+		return retval;
 	}
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
 		
 		String tableName = null;
-
+		Uri notificationUri = null;
+		
 		if (mUriMatcher.match(uri) == EVENTS_UNFILTERED) {
 			tableName = QuickPostEventsTable._TABLE;
 		} else if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
 			tableName = QuickPostSourcesTable._TABLE;
+			notificationUri = ContentUris.QuickPostSources;
 		} else {
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 		
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		return db.delete(tableName, selection, selectionArgs);
+		int retval = db.delete(tableName, selection, selectionArgs);
+		
+		if(retval!=0 && notificationUri!=null)
+			getContext().getContentResolver().notifyChange(notificationUri, null);
+		
+		return retval;
+
 	}
 
 }

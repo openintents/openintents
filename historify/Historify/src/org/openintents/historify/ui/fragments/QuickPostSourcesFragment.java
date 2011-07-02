@@ -80,4 +80,9 @@ public class QuickPostSourcesFragment extends Fragment {
 		mSourcesAdapter.load();
 	}
 	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		mSourcesAdapter.onDestroy();
+	}
 }

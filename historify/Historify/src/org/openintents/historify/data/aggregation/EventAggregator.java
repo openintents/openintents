@@ -59,11 +59,12 @@ public class EventAggregator {
 		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
 		ArrayList<AbstractSource> enabledSources = new ArrayList<AbstractSource>();
 		
-		Cursor sourcesCursor = sourceLoader.openManagedCursor(mContext, mContact);
+		Cursor sourcesCursor = sourceLoader.openCursor(mContext, mContact);
 		for(int i=0;i<sourcesCursor.getCount();i++) {
 			AbstractSource source = sourceLoader.loadFromCursor(sourcesCursor, i);
 			if(source.isEnabled()) enabledSources.add(source);
 		}
+		sourcesCursor.close();
 		
 		//open cursors for enabled sources
 		MergedCursor.Builder builder = new MergedCursor.Builder(Events.PUBLISHED_TIME);

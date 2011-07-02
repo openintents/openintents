@@ -22,6 +22,7 @@ import org.openintents.historify.data.model.source.AbstractSource;
 import org.openintents.historify.data.model.source.SourceFilter;
 import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
+import org.openintents.historify.data.providers.Sources.FiltersTable;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
@@ -102,7 +103,7 @@ public class SourceLoader {
 		mSourcesUri = sourcesUri;
 	}
 
-	public Cursor openManagedCursor(Activity context, Contact filterModeContact) {
+	public Cursor openCursor(Activity context, Contact filterModeContact) {
 		
 		String selection = null;
 		String[] selectionArgs = null;
@@ -124,7 +125,7 @@ public class SourceLoader {
 			projection = mBasicColumnsOnly ?  SIMPLE_SOURCES_PROJECTION : SOURCES_PROJECTION;
 		}
 				 
-		return context.managedQuery(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
+		return context.getContentResolver().query(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
 	public Cursor openManagedCursor(Activity context, Uri sourceUri) {
@@ -173,7 +174,7 @@ public class SourceLoader {
 					cursor.isNull(COLUMN_CONFIG_INTENT) ? null : cursor.getString(COLUMN_CONFIG_INTENT),
 					cursor.getString(COLUMN_STATE));
 			
-			long filterId = cursor.isNull(COLUMN_FILTER_ID) ? -1 : cursor.getLong(COLUMN_FILTER_ID);
+			long filterId = cursor.getColumnIndex(FiltersTable._ID)!=-1 && !cursor.isNull(COLUMN_FILTER_ID) ? cursor.getLong(COLUMN_FILTER_ID) : -1;
 			if(filterId>-1) {
 				SourceFilter filter = new SourceFilter(
 						filterId, 

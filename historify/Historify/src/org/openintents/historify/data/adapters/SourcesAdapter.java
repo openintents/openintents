@@ -29,11 +29,16 @@ import org.openintents.historify.data.model.source.ExternalSource;
 import org.openintents.historify.data.model.source.InternalSource;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
+import org.openintents.historify.uri.ContentUris;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Handler;
+import android.provider.ContactsContract.Contacts;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +85,26 @@ public class SourcesAdapter extends BaseAdapter {
 	// if not null, source filters for the given contact are loaded
 	private Contact mFilterModeContact = null;
 	private int mFilterModePosition = 0;
+	
+	private SourcesChangedObserver mObserver;
+	
+	private class SourcesChangedObserver extends ContentObserver {
+
+		public SourcesChangedObserver(Handler handler) {
+			super(handler);
+		}
+		
+		@Override
+		public boolean deliverSelfNotifications() {
+			return true;
+		}
+		
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			load();
+		}
+	}
 
 	/** Constructor. */
 	public SourcesAdapter(Activity context, ListView listView, boolean basicColumnsOnly, Uri sourcesUri) {
@@ -91,6 +116,12 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources = new ArrayList<AbstractSource>();
 		mExternalSources = new ArrayList<AbstractSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
+				
+		mObserver = new SourcesChangedObserver(new Handler());
+		mContext
+		 .getContentResolver()
+		 .registerContentObserver(sourcesUri, true, mObserver);
+
 	}
 
 	/** Load external and internal sources with their state. */
@@ -99,7 +130,7 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources.clear();
 		mExternalSources.clear();
 
-		Cursor c = mSourceLoader.openManagedCursor(mContext, mFilterModeContact);
+		Cursor c = mSourceLoader.openCursor(mContext, mFilterModeContact);
 		for (int i = 0; i < c.getCount(); i++) {
 			AbstractSource source = mSourceLoader.loadFromCursor(c, i);
 			if (source != null) {
@@ -114,6 +145,7 @@ public class SourcesAdapter extends BaseAdapter {
 					mExternalSources.add((ExternalSource) source);
 			}
 		}
+		
 		c.close();
 
 		notifyDataSetChanged();
@@ -274,6 +306,10 @@ public class SourcesAdapter extends BaseAdapter {
 
 		convertView.setTag(viewType);
 		return convertView;
+	}
+
+	public void onDestroy() {
+		mContext.getContentResolver().unregisterContentObserver(mObserver);
 	}
 
 }
