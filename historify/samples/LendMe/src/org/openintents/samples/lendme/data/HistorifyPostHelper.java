@@ -65,6 +65,10 @@ public class HistorifyPostHelper {
 		
 	}
 	
+	public boolean canQuickPost(Context context) {
+		return mBridge.canQuickPost(context);
+	}
+	
 	public boolean userPrefersPosting() {
 		return mUserPrefersPosting;
 	}

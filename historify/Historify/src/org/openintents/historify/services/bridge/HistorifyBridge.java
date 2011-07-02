@@ -16,6 +16,8 @@
 
 package org.openintents.historify.services.bridge;
 
+import java.util.List;
+
 import org.openintents.historify.data.model.EventData;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.uri.Actions;
@@ -27,6 +29,8 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
@@ -124,6 +128,16 @@ public class HistorifyBridge {
 		this.mQuickPostContext = quickPostContext;
 	}
 	
+	public boolean canQuickPost(Context context) {
+
+		Intent intent = new Intent();
+		intent.setAction(Actions.ACTION_QUICK_POST);
+
+		List<ResolveInfo> info = context.getPackageManager().queryIntentServices(intent, PackageManager.MATCH_DEFAULT_ONLY);
+		return info.size()!=0;
+		
+	}
+ 	
 	public void quickPost(Context context, EventData eventData) {
 		
 		if(mQuickPostContext==null) {

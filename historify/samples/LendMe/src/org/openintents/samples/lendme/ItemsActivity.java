@@ -114,11 +114,10 @@ public class ItemsActivity extends Activity {
 				data.putExtra(ItemsTable.OWNER, mFilterForOwner.toString());
 				long itemId = ((ItemsAdapter)mLstItems.getAdapter()).insert(data.getExtras());
 				
-				boolean shouldPost = data.getBooleanExtra(HistorifyPostHelper.PREF_NAME, true);
 				HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(this);
-				postHelper.setUserPrefersPosting(this, shouldPost);
+				boolean post = data.getBooleanExtra(AddItemActivity.EXTRA_POST_TO_HISTORIFY, false);
 				
-				if(shouldPost)
+				if(post)
 					postHelper.postLendingStartEvent(this, data.getExtras(), itemId);
 			}
 		} else super.onActivityResult(requestCode, resultCode, data);
@@ -213,8 +212,15 @@ public class ItemsActivity extends Activity {
 		
 		View content = getLayoutInflater().inflate(R.layout.return_item_dialog, null);
 		final CheckBox chkPost = (CheckBox)content.findViewById(R.id.return_item_dialog_chkPost);
-		chkPost.setChecked(HistorifyPostHelper.getInstance(this).userPrefersPosting());
 		
+		HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(this);
+		boolean canQuickPost = postHelper.canQuickPost(this);
+		chkPost.setVisibility(canQuickPost ? View.VISIBLE : View.GONE);
+		if(canQuickPost) {
+			chkPost.setChecked(HistorifyPostHelper.getInstance(this).userPrefersPosting());	
+		}
+		
+				
 		builder.setView(content);
 		
 		builder.setPositiveButton(R.string.ok, new OnClickListener() {
@@ -223,12 +229,14 @@ public class ItemsActivity extends Activity {
 				
 				((ItemsAdapter)mLstItems.getAdapter()).delete(itemId);
 				
-				boolean shouldPost = chkPost.isChecked();
-				HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(ItemsActivity.this);
-				postHelper.setUserPrefersPosting(ItemsActivity.this, shouldPost);
+				if(chkPost.getVisibility()==View.VISIBLE) {
+					boolean shouldPost = chkPost.isChecked();
+					HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(ItemsActivity.this);
+					postHelper.setUserPrefersPosting(ItemsActivity.this, shouldPost);
+					if(shouldPost)
+						postHelper.postReturedEvent(ItemsActivity.this, item);
+				}
 				
-				if(shouldPost)
-					postHelper.postReturedEvent(ItemsActivity.this, item);
 			}
 		});
 		

@@ -33,6 +33,8 @@ import android.widget.EditText;
 
 public class AddItemActivity extends Activity {
 
+	public static final String EXTRA_POST_TO_HISTORIFY = "post";
+	
 	private static final int REQUEST_PICK_A_CONTACT = 42;
 	
 	private Button btnPick;
@@ -41,6 +43,7 @@ public class AddItemActivity extends Activity {
 	private View btnAdd;
 	
 	private String pickedContactKey;
+	private boolean canPostToHistorify;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +70,16 @@ public class AddItemActivity extends Activity {
 			}
 		});
 		
-		boolean shouldPost = HistorifyPostHelper.getInstance(this).userPrefersPosting();
-		chkPost.setChecked(shouldPost);
+		
+		HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(this);
+		canPostToHistorify = postHelper.canQuickPost(this);
+		chkPost.setVisibility(canPostToHistorify ? View.VISIBLE : View.GONE);
+		
+		if(canPostToHistorify) {
+			boolean shouldPost = postHelper.userPrefersPosting();
+			chkPost.setChecked(shouldPost);	
+		}
+		
 	}
 	
 	private void onPick() {
@@ -127,8 +138,13 @@ public class AddItemActivity extends Activity {
 		data.putExtra(ItemsTable.CONTACT_KEY, contactKey);
 		data.putExtra(ItemsTable.ITEM_NAME, itemName);
 		data.putExtra(ItemsTable.ITEM_DESCRIPTION, itemDescription);
-		data.putExtra(HistorifyPostHelper.PREF_NAME, chkPost.isChecked());
 		
+		if(canPostToHistorify) {
+			boolean shouldPost = chkPost.isChecked();
+			HistorifyPostHelper.getInstance(this).setUserPrefersPosting(this, shouldPost);
+			data.putExtra(EXTRA_POST_TO_HISTORIFY, shouldPost);
+		}
+				
 		setResult(RESULT_OK, data);
 		finish();
 	}
