@@ -51,7 +51,7 @@ public class TimeLineAdapter extends BaseAdapter {
 	public TimeLineAdapter(Activity context, Contact contact) {
 
 		mContext = context;		
-		mAggregator = new EventAggregator(context, contact);
+		mAggregator = new EventAggregator(context, this, contact);
 		mSourceIconHelper = new SourceIconHelper();
 		load();
 	}

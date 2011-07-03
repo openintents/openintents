@@ -37,8 +37,6 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
-import android.provider.ContactsContract.Contacts;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,17 +114,16 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources = new ArrayList<AbstractSource>();
 		mExternalSources = new ArrayList<AbstractSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
-				
-		mObserver = new SourcesChangedObserver(new Handler());
-		mContext
-		 .getContentResolver()
-		 .registerContentObserver(sourcesUri, true, mObserver);
-
 	}
 
 	/** Load external and internal sources with their state. */
 	public void load() {
 
+		if(mObserver!=null) {
+			mContext.getContentResolver().unregisterContentObserver(mObserver);
+			mObserver = null;
+		}
+			
 		mInternalSources.clear();
 		mExternalSources.clear();
 
@@ -148,6 +145,10 @@ public class SourcesAdapter extends BaseAdapter {
 		
 		c.close();
 
+		mObserver = new SourcesChangedObserver(new Handler());
+		mContext.getContentResolver().registerContentObserver(
+				mFilterModeContact==null ? ContentUris.Sources : ContentUris.FilteredSources,true, mObserver);
+		
 		notifyDataSetChanged();
 	}
 
@@ -309,7 +310,10 @@ public class SourcesAdapter extends BaseAdapter {
 	}
 
 	public void onDestroy() {
-		mContext.getContentResolver().unregisterContentObserver(mObserver);
+		if(mObserver!=null) {
+			mContext.getContentResolver().unregisterContentObserver(mObserver);
+			mObserver = null;	
+		}
 	}
 
 }

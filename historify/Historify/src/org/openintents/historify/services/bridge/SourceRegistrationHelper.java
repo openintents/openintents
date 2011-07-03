@@ -17,6 +17,8 @@
 package org.openintents.historify.services.bridge;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.FilterLoader;
+import org.openintents.historify.data.model.source.AbstractSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.ui.SourcesActivity;
@@ -113,11 +115,21 @@ public class SourceRegistrationHelper {
 
 		cursor.close();
 		
-		insertOrUpdateSource(resolver, parameterSet, sourceId);
+		Long newSourceId = insertOrUpdateSource(resolver, parameterSet, sourceId);
 		
 		Log
 				.v(BridgeService.N, "Source '" + name
 						+ "' registered successfully.");
+		
+		if(sourceId==null) {
+			//new source ha been added
+			//we have to insert source filters for all the contacts
+			//that are already filtered
+			FilterLoader filterLoader = new FilterLoader();
+			String[] lookupKeys = filterLoader.loadFilterModeLookupKeys(context);
+			filterLoader.insertFilters(context, lookupKeys, newSourceId, SourceState.ENABLED);
+		}
+		
 		
 		postNotification(context, name);
 	}
@@ -204,8 +216,22 @@ public class SourceRegistrationHelper {
 
 	public void unregisterSource(Context context, int uid) {
 
+		
 		String where = SourcesTable.UID + " = "+uid;
-		context.getContentResolver().delete(ContentUris.Sources, where, null);
+		Cursor c = context.getContentResolver().query(ContentUris.Sources, new String[] {SourcesTable._ID}, 
+				where, null, null); 
+		if(c.moveToFirst()) {
+			//there is a registered source in the uninstalled package
+		
+			long sourceId = c.getLong(0);
+		
+			FilterLoader filterLoader = new FilterLoader();
+			filterLoader.deleteFilters(context, sourceId);
+
+			context.getContentResolver().delete(ContentUris.Sources, where, null);
+			
+		}
+
 	}
 
 }

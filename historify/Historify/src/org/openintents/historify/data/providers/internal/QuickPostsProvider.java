@@ -164,9 +164,11 @@ public class QuickPostsProvider extends EventsProvider {
 
 		String tableName = null;
 		Uri notificationUri = null;
+		boolean eventsChange = false;
 		
 		if (mUriMatcher.match(uri) == EVENTS_UNFILTERED) {
 			tableName = QuickPostEventsTable._TABLE;
+			eventsChange = true;
 		} else if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
 			tableName = QuickPostSourcesTable._TABLE;
 			notificationUri = ContentUris.QuickPostSources;
@@ -178,8 +180,13 @@ public class QuickPostsProvider extends EventsProvider {
 		long id = db.insert(tableName, null, values);
 		if (id != -1) {
 			Uri retval =  Uri.withAppendedPath(uri, String.valueOf(id));
+			
 			if(notificationUri!=null)
 				getContext().getContentResolver().notifyChange(notificationUri, null);
+			
+			if(eventsChange)
+				onEventsChanged();
+			
 			return retval;
 		}
 
@@ -213,9 +220,12 @@ public class QuickPostsProvider extends EventsProvider {
 		
 		String tableName = null;
 		Uri notificationUri = null;
+		boolean eventsChange = false;
+		
 		
 		if (mUriMatcher.match(uri) == EVENTS_UNFILTERED) {
 			tableName = QuickPostEventsTable._TABLE;
+			eventsChange = true;
 		} else if (mUriMatcher.match(uri) == QUICKPOST_SOURCES) {
 			tableName = QuickPostSourcesTable._TABLE;
 			notificationUri = ContentUris.QuickPostSources;
@@ -228,6 +238,9 @@ public class QuickPostsProvider extends EventsProvider {
 		
 		if(retval!=0 && notificationUri!=null)
 			getContext().getContentResolver().notifyChange(notificationUri, null);
+		
+		if(retval!=0 && eventsChange)
+			onEventsChanged();
 		
 		return retval;
 

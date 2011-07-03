@@ -35,7 +35,12 @@ public class TelephonyProvider extends EventsProvider {
 
 	@Override
 	public boolean onCreate() {
-		return super.onCreate();
+		boolean retval = super.onCreate();
+		
+		if(retval) 
+			setEventsUri(CallLog.Calls.CONTENT_URI);
+		
+		return retval;
 	}
 
 	@Override

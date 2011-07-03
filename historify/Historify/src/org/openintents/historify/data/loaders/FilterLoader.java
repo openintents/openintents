@@ -104,15 +104,49 @@ public class FilterLoader {
 	public boolean insertFilters(Context context, Contact contact,
 			List<AbstractSource> sources) {
 
-		ContentValues[] cvs = new ContentValues[sources.size()];
-		String contactLookupKey = contact.getLookupKey();
+		long[] sourceIds = new long[sources.size()];
+		SourceState[] defaultStates = new SourceState[sources.size()];
+		
+		for(int i=0;i<sourceIds.length;i++) {
+			sourceIds[i] = sources.get(i).getId();
+			defaultStates[i] = sources.get(i).getState();
+		}
+		
+		return insertFilters(context, contact.getLookupKey(), sourceIds, defaultStates);
+	}
+
+	public boolean insertFilters(Context context, String[] lookupKeys,
+			Long sourceId, SourceState defaultState) {
+		
+		ContentValues[] cvs = new ContentValues[lookupKeys.length];
+
+		// inserting filters for each contact with default value
+		for (int i = 0; i < cvs.length; i++) {
+			ContentValues cv = new ContentValues();
+			cv.put(FiltersTable.CONTACT_LOOKUP_KEY, lookupKeys[i]);
+			cv.put(FiltersTable.SOURCE_ID, sourceId);
+			cv.put(FiltersTable.FILTERED_STATE, defaultState
+					.toString());
+			cvs[i] = cv;
+		}
+
+		int ret = context.getContentResolver().bulkInsert(ContentUris.Filters,
+				cvs);
+		return ret > 0;
+
+	}
+	
+	private boolean insertFilters(Context context, String contactLookupKey,
+			long[] sourceIds, SourceState[] defaultStates) {
+
+		ContentValues[] cvs = new ContentValues[sourceIds.length];
 
 		// inserting filters for each source with default values
 		for (int i = 0; i < cvs.length; i++) {
 			ContentValues cv = new ContentValues();
 			cv.put(FiltersTable.CONTACT_LOOKUP_KEY, contactLookupKey);
-			cv.put(FiltersTable.SOURCE_ID, sources.get(i).getId());
-			cv.put(FiltersTable.FILTERED_STATE, sources.get(i).getState()
+			cv.put(FiltersTable.SOURCE_ID, sourceIds[i]);
+			cv.put(FiltersTable.FILTERED_STATE, defaultStates[i]
 					.toString());
 			cvs[i] = cv;
 		}
@@ -121,7 +155,7 @@ public class FilterLoader {
 				cvs);
 		return ret > 0;
 	}
-
+	
 	/**
 	 * Delete all filters defined for the given {@link Contact}.
 	 * 
@@ -138,6 +172,14 @@ public class FilterLoader {
 				selectionArgs);
 	}
 
+	
+	public void deleteFilters(Context context, long sourceId) {
+		String where = FiltersTable.SOURCE_ID + " = "+sourceId;
+		context.getContentResolver().delete(ContentUris.Filters, where,
+				null);
+	}
+
+	
 	/**
 	 * Queries the db to collect all contact lookup keys that have source
 	 * filters defined for.
@@ -148,8 +190,7 @@ public class FilterLoader {
 	public String[] loadFilterModeLookupKeys(Context context) {
 
 		Cursor c = context.getContentResolver().query(ContentUris.Filters,
-				new String[] { FiltersTable.CONTACT_LOOKUP_KEY }, null, null,
-				"GROUP BY " + FiltersTable.CONTACT_LOOKUP_KEY);
+				new String[] { FiltersTable.CONTACT_LOOKUP_KEY }, null, null,null);
 
 		String[] retval = new String[c.getCount()];
 		for (int i = 0; i < retval.length; i++) {

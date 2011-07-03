@@ -18,6 +18,7 @@ package org.openintents.historify.data.aggregation;
 
 import java.util.ArrayList;
 
+import org.openintents.historify.data.adapters.TimeLineAdapter;
 import org.openintents.historify.data.loaders.EventLoader;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
@@ -28,7 +29,10 @@ import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
 
 import android.app.Activity;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.os.Handler;
+import android.util.Log;
 
 /**
  * 
@@ -40,15 +44,40 @@ import android.database.Cursor;
  */
 public class EventAggregator {
 
+	public static String N = "EventAggregator";
+	
+	private class AggregatorContentObserver extends ContentObserver {
+		
+		public AggregatorContentObserver() {
+			super(new Handler());
+		}
+		
+		@Override
+		public boolean deliverSelfNotifications() {
+			return true;
+		}
+		
+		@Override
+		public void onChange(boolean selfChange) {
+			super.onChange(selfChange);
+			Log.v(N,"Contents of the aggregator have been changed.");
+			mAdapter.load();
+		}
+	}
+	
 	private Activity mContext;
 	private Contact mContact;
 	private EventLoader mLoader;
 	
 	private MergedCursor mMergedCursor;
+	private AggregatorContentObserver mContentObserver;
 	
-	public EventAggregator(Activity context, Contact contact) {
+	private TimeLineAdapter mAdapter;
+	
+	public EventAggregator(Activity context, TimeLineAdapter adapter, Contact contact) {
 		
 		mContext = context;
+		mAdapter = adapter;
 		mContact = contact;
 		mLoader = new EventLoader();
 	}
@@ -67,7 +96,7 @@ public class EventAggregator {
 		sourcesCursor.close();
 		
 		//open cursors for enabled sources
-		MergedCursor.Builder builder = new MergedCursor.Builder(Events.PUBLISHED_TIME);
+		MergedCursor.Builder builder = new MergedCursor.Builder(mContext,Events.PUBLISHED_TIME);
 		EventLoader eventLoader = new EventLoader();
 		for(AbstractSource source : enabledSources) {
 			Cursor eventsCursor = eventLoader.openCursor(mContext, UriUtils.sourceAuthorityToUri(source.getAuthority()), mContact);
@@ -78,6 +107,10 @@ public class EventAggregator {
 		//create merged cursor from the source cursors
 		mMergedCursor = builder.build();
 
+		if(mContentObserver==null) {
+			mContentObserver = new AggregatorContentObserver();
+			mMergedCursor.registerContentObserver(mContentObserver);
+		}
 	}
 	
 	public int getCount() {
@@ -97,7 +130,13 @@ public class EventAggregator {
 	}
 
 	public void release() {
+		if(mContentObserver!=null) {
+			mContext.getContentResolver().unregisterContentObserver(mContentObserver);
+			mContentObserver = null;
+		}
+		
 		mMergedCursor.release();
+		
 	}
 
 }

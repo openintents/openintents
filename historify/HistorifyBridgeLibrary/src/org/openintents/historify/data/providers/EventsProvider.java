@@ -39,6 +39,8 @@ public abstract class EventsProvider extends ContentProvider {
 	
 	protected static final int USER_DEFINED_MATCH = 10;
 
+	private Uri mEventsUri;
+	
 	@Override
 	public boolean onCreate() {
 
@@ -51,6 +53,8 @@ public abstract class EventsProvider extends ContentProvider {
 				Events.EVENTS_PATH + "/" + Events.EVENTS_FOR_CONTACTS_PATH + "/*", EVENTS_FOR_A_CONTACT);
 		mUriMatcher.addURI(getAuthority(), 
 				Events.EVENTS_PATH + "/" + Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENTS_BY_EVENT_KEY);
+		
+		mEventsUri = Uri.parse("content://"+getAuthority()+"/"+Events.EVENTS_PATH);
 		
 		return true;
 	}
@@ -142,18 +146,34 @@ public abstract class EventsProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		try {
+			Cursor retval = null;
+			boolean unknown = false;
+			
 			switch (mUriMatcher.match(uri)) {
 			case EVENTS_UNFILTERED:
-				return queryEvents();
+				retval = queryEvents();
+				break;
 			case EVENT_BY_EVENT_ID:
-				return queryEvent(Long.parseLong(uri.getLastPathSegment()));
+				retval = queryEvent(Long.parseLong(uri.getLastPathSegment()));
+				break;
 			case EVENTS_FOR_A_CONTACT:
-				return queryEventsForContact(uri.getPathSegments().get(2));
+				retval = queryEventsForContact(uri.getPathSegments().get(2));
+				break;
 			case EVENTS_BY_EVENT_KEY:
-				return queryEventsByKey(uri.getPathSegments().get(2));
+				retval = queryEventsByKey(uri.getPathSegments().get(2));
+				break;
 			default:
+				unknown = true;
+			}
+			
+			if(retval!=null)
+				retval.setNotificationUri(getContext().getContentResolver(), mEventsUri);
+
+			if(unknown)
 				throw new IllegalArgumentException("Unknown URI " + uri);
-			}		
+			else
+				return retval;
+			
 		} catch(IllegalArgumentException iae) {
 			throw iae;
 		} catch(Exception e) {
@@ -181,4 +201,11 @@ public abstract class EventsProvider extends ContentProvider {
 		return 0;
 	}
 
+	protected final void onEventsChanged() {
+		getContext().getContentResolver().notifyChange(mEventsUri, null);
+	}
+
+	protected final  void setEventsUri(Uri mEventsUri) {
+		this.mEventsUri = mEventsUri;
+	}
 }

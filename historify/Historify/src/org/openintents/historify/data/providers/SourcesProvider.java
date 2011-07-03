@@ -29,12 +29,10 @@ import org.openintents.historify.uri.ContentUris;
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
-import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.util.Log;
 
 /**
  * 
@@ -137,13 +135,15 @@ public class SourcesProvider extends ContentProvider {
 
 		case FILTERS:
 			qb.setTables(FiltersTable._TABLE);
+			qb.setDistinct(true);
 			break;
 
 		case FILTERED_SOURCES:
 			qb.setTables(FilteredSourcesView.JOIN_CLAUSE);
 			qb.appendWhere(FiltersTable.CONTACT_LOOKUP_KEY + " = ");
-			qb.appendWhereEscapeString(uri.getPathSegments().get(1));
+			qb.appendWhereEscapeString(uri.getPathSegments().get(2));
 			filteredSources = true;
+			notificationUri = ContentUris.FilteredSources;
 			break;
 
 		case SOURCE_ID:
@@ -173,8 +173,13 @@ public class SourcesProvider extends ContentProvider {
 				qb.setTables(SourcesTable._TABLE);
 				qb.setProjectionMap(nullFilterProjectionMap);
 
-			} else
+			} else {
+				if(notificationUri!=null) {
+					cursorWithFilters.setNotificationUri(getContext().getContentResolver(), notificationUri);
+				}
 				return cursorWithFilters;
+			}
+
 		}
 
 		
@@ -204,6 +209,7 @@ public class SourcesProvider extends ContentProvider {
 
 		case FILTERS:
 			table = FiltersTable._TABLE;
+			notificationUri = ContentUris.FilteredSources;
 			break;
 
 		case SOURCE_ID:
@@ -251,6 +257,7 @@ public class SourcesProvider extends ContentProvider {
 
 		case FILTERS:
 			table = FiltersTable._TABLE;
+			notificationUri = ContentUris.FilteredSources;
 			break;
 
 		// case SOURCE_ID:
@@ -294,6 +301,7 @@ public class SourcesProvider extends ContentProvider {
 
 		case FILTERS:
 			table = FiltersTable._TABLE;
+			notificationUri = ContentUris.FilteredSources;
 			break;
 
 		default:

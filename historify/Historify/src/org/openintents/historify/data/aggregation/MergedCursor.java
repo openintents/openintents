@@ -19,7 +19,9 @@ package org.openintents.historify.data.aggregation;
 import java.util.ArrayList;
 
 import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.uri.ContentUris;
 
+import android.content.Context;
 import android.database.AbstractCursor;
 import android.database.Cursor;
 
@@ -39,11 +41,13 @@ public class MergedCursor extends AbstractCursor {
 	 */
 	public static class Builder {
 
+		private Context context;
 		private String orderColumn;
 		private ArrayList<Cursor> cursors;
 		private ArrayList<AbstractSource> sources;
 
-		public Builder(String orderColumn) {
+		public Builder(Context context, String orderColumn) {
+			this.context = context;
 			this.orderColumn = orderColumn;
 			this.cursors = new ArrayList<Cursor>();
 			this.sources = new ArrayList<AbstractSource>();
@@ -61,7 +65,7 @@ public class MergedCursor extends AbstractCursor {
 			cursors.toArray(cursorsArray);
 			AbstractSource[] sourcesArray = new AbstractSource[sources.size()];
 			sources.toArray(sourcesArray);
-			return new MergedCursor(cursorsArray, sourcesArray, orderColumn);
+			return new MergedCursor(context, cursorsArray, sourcesArray, orderColumn);
 		}
 	}
 
@@ -186,30 +190,42 @@ public class MergedCursor extends AbstractCursor {
 
 	private MergerPosition mMergerPosition;
 
-	private MergedCursor(Cursor[] cursors, AbstractSource[] sources,
+	private MergedContentObserver[] mMergedObservers;
+	
+	private MergedCursor(Context context, Cursor[] cursors, AbstractSource[] sources,
 			String orderColumn) {
 
 		mCursors = cursors;
 		mCursorOrderByColumnIndex = new int[mCursors.length];
 		mSources = sources;
-
+		mMergedObservers = new MergedContentObserver[mCursors.length];
+		
+		
 		int count = 0;
 		for (int i = 0; i < cursors.length; i++) {
 			Cursor c = cursors[i];
 			mCursorOrderByColumnIndex[i] = c.getColumnIndex(orderColumn);
 			count += c.getCount();
+			
+			mMergedObservers[i] = new MergedContentObserver(context, sources[i], ContentUris.MergedEvents);
+			c.registerContentObserver(mMergedObservers[i]);
 		}
 		mCount = count;
 
 		mMergerPosition = new MergerPosition(this);
-
+		
+		setNotificationUri(context.getContentResolver(), ContentUris.MergedEvents);
 	}
 
 	public void release() {
-		for(Cursor c : mCursors) {
-			if(!c.isClosed()) 
+		for(int i=0;i<mCursors.length;i++) {
+			Cursor c = mCursors[i];
+			if(!c.isClosed())
+				c.unregisterContentObserver(mMergedObservers[i]);
 				c.close();
+				mMergedObservers[i] = null;
 		}
+		
 	}
 
 	

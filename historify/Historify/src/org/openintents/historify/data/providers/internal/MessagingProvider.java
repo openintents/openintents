@@ -18,6 +18,7 @@ package org.openintents.historify.data.providers.internal;
 
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.EventsProvider;
+import org.openintents.historify.data.providers.internal.Messaging.Messages;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -33,7 +34,12 @@ public class MessagingProvider extends EventsProvider {
 
 	@Override
 	public boolean onCreate() {
-		return super.onCreate();
+		boolean retval =  super.onCreate();
+		
+		if(retval)
+			setEventsUri(Messages.CONTENT_URI);
+		
+		return retval;
 	}
 
 	@Override
