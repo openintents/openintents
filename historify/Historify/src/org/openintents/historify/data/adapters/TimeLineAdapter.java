@@ -99,7 +99,7 @@ public class TimeLineAdapter extends BaseAdapter {
 		tv = (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtDate);
 		tv.setText(DateUtils
-				.formatDate(new Date(event.getPublishedTime())));
+				.formatPrettyDate(new Date(event.getPublishedTime())));
 		
 		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
 		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);

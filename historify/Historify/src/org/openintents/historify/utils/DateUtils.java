@@ -17,7 +17,13 @@
 package org.openintents.historify.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+
+import android.app.AlarmManager;
+
+import com.ocpsoft.pretty.time.PrettyTime;
 
 /**
  * 
@@ -27,9 +33,30 @@ import java.util.Date;
  */
 public class DateUtils {
 
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd. MMM HH:mm");
+	private static final SimpleDateFormat fullDateFormat = new SimpleDateFormat("dd. MMM HH:mm",Locale.ENGLISH);
+	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.ENGLISH);
+	
+	private static PrettyTime prettyTime = new PrettyTime(Locale.ENGLISH);
+	private static long INTERVAL_WEEK = AlarmManager.INTERVAL_DAY * 7;
+		
+	public static String formatPrettyDate(Date date) {
+		if(isInADay(date))
+			return prettyTime.format(date);
+		else if(isInAWeek(date))		
+			return prettyTime.format(date) + " " + timeFormat.format(date);
+		else
+			return fullDateFormat.format(date);
+	}
 	
 	public static String formatDate(Date date) {
-		return dateFormat.format(date);
+		return fullDateFormat.format(date);
+	}
+	
+	private static boolean isInADay(Date date) {
+		return System.currentTimeMillis() - date.getTime() < AlarmManager.INTERVAL_DAY;
+	}
+
+	private static boolean isInAWeek(Date date) {
+		return System.currentTimeMillis() - date.getTime() < INTERVAL_WEEK;
 	}
 }
