@@ -19,8 +19,11 @@ package org.openintents.historify.data.providers.internal;
 import org.openintents.historify.R;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.EventsProvider;
+import org.openintents.historify.uri.ContentUris;
 
 import android.app.AlarmManager;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 
@@ -32,8 +35,50 @@ import android.database.MatrixCursor;
  */
 public class FactoryTestProvider extends EventsProvider {
 
-	private static final int TEST_SET_SIZE = 100;
-	private static final long EVENT_INTERVAL = AlarmManager.INTERVAL_DAY;
+	/**
+	 * Class for storing the parameters of the test set (size and event interval).
+	 */
+	public static class FactoryTestConfig {
+		
+		private static final int DEFAULT_TEST_SET_SIZE = 100;
+		private static final long DEFAULT_EVENT_INTERVAL = AlarmManager.INTERVAL_DAY;
+		
+		private static final String PREF_FILE = "factorytest";
+		private static final String PREF_TEST_SET_SIZE = "test_set_size";
+		private static final String PREF_EVENT_INTERVAL = "event_interval";
+		
+		
+		public final int testSetSize;
+		public final long eventInterval;
+		
+		public FactoryTestConfig(int testSetSize, long eventInterval) {
+			this.testSetSize = testSetSize;
+			this.eventInterval = eventInterval;
+		}
+		
+		public static FactoryTestConfig load(Context context) {
+			
+			SharedPreferences sp =  context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE);
+			return new FactoryTestConfig(
+					sp.getInt(PREF_TEST_SET_SIZE, DEFAULT_TEST_SET_SIZE), 
+					sp.getLong(PREF_EVENT_INTERVAL, DEFAULT_EVENT_INTERVAL));
+			
+		}
+		
+		public void save(Context context) {
+			
+			context.getSharedPreferences(PREF_FILE, Context.MODE_PRIVATE)
+			.edit()
+			.putInt(PREF_TEST_SET_SIZE, testSetSize)
+			.putLong(PREF_EVENT_INTERVAL, eventInterval)
+			.commit();
+			
+			//parameters have been changed
+			//notify ContentResolver to reload events
+			context.getContentResolver().notifyChange(FactoryTest.EVENTS_URI, null);
+		}
+	}
+	
 	
 	@Override
 	public boolean onCreate() {
@@ -45,11 +90,11 @@ public class FactoryTestProvider extends EventsProvider {
 		return FactoryTest.FACTORY_TEST_AUTHORITY;
 	}
 
-
-
 	@Override
 	protected Cursor queryEventsForContact(String lookupKey) {
 
+		FactoryTestConfig factoryTestConfig = FactoryTestConfig.load(getContext());
+		
 		MatrixCursor mc = new MatrixCursor(new String[] {
 				Events._ID,
 				Events.CONTACT_KEY,
@@ -62,14 +107,14 @@ public class FactoryTestProvider extends EventsProvider {
 		
 		String[] testMessages = getContext().getResources().getStringArray(R.array.factory_test);
 		
-		for(int i=0;i<TEST_SET_SIZE;i++) {
+		for(int i=0;i<factoryTestConfig.testSetSize;i++) {
 			mc.addRow(new Object[] {
 					Long.valueOf(i+1), 
 					lookupKey, 
 					null,
 					testMessages[i % testMessages.length],
 					i % 2 == 0 ? Events.Originator.user : Events.Originator.contact,
-					System.currentTimeMillis()-EVENT_INTERVAL*(i+1)
+					System.currentTimeMillis()-factoryTestConfig.eventInterval*(i+1)
 			});	
 		}
 

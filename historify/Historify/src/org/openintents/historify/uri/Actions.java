@@ -51,6 +51,7 @@ public final class Actions {
 	// ConfigIntents for internal providers
 	// ----------------------------------------------------------------------------------------------
 	public static final String ACTION_CONFIG_QUICKPOSTS = "org.openintents.historify.CONFIG_QUICKPOSTS";
+	public static final String ACTION_CONFIG_FACTORYTEST = "org.openintents.historify.CONFIG_FACTORYTEST";
 	
 	
 	// BridgeService

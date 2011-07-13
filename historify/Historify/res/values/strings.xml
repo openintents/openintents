@@ -31,4 +31,6 @@
 	<string name="notification_source_added_ticker">SharedSource registered.</string>
 	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
 	
+	<string name="factory_test.config_error">Wrong parameter(s).</string>
+	
 </resources>

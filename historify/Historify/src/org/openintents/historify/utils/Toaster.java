@@ -16,6 +16,7 @@
 
 package org.openintents.historify.utils;
 
+import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
@@ -27,6 +28,11 @@ import android.widget.Toast;
  */
 public class Toaster {
 
+	public static void toast(Activity activity, int resId) {
+		
+		Toast.makeText(activity, activity.getString(resId), Toast.LENGTH_SHORT).show();
+	}
+	
 	public static void toast(Fragment fragment, int resId) {
 		
 		Toast.makeText(fragment.getActivity(), fragment.getString(resId), Toast.LENGTH_SHORT).show();

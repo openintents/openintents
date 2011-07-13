@@ -32,6 +32,13 @@
             </intent-filter>        
         </activity>
         
+        <activity android:name=".ui.FactoryTestConfigActivity">
+        	<intent-filter>
+                <action android:name="org.openintents.historify.CONFIG_FACTORYTEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>        
+        </activity>
+        
         <activity android:name=".ui.EventIntentHandlerActivity"
         		android:theme="@android:style/Theme.Dialog">
         	<intent-filter>

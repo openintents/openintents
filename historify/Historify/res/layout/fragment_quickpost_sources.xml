@@ -3,6 +3,37 @@
     android:orientation="vertical"
     style="@style/Fragment.Root"
     >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dip"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/source_quick_post" />    
+    
+	<TextView
+		android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:layout_marginRight="6dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:gravity="center_vertical"
+	    android:checkMark="?android:attr/textCheckMark"
+		android:textColor="@color/foreground_light"
+	    android:text="QuickPosts"
+	/>
+	
+</LinearLayout>
+
+<TextView
+	style="@style/Label.Bold"
+	android:padding="6dip"
+	android:text="Listing the applications that have posted events.\n"
+/>
     
 <ListView  
 	android:id="@+id/quickpost_sources_lstQuickPostSources"

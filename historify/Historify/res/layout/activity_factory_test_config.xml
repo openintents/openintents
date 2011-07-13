@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/Fragment.Root"
+    >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dip"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/source_factory_test" />    
+    
+	<TextView
+		android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:layout_marginRight="6dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:gravity="center_vertical"
+	    android:checkMark="?android:attr/textCheckMark"
+		android:textColor="@color/foreground_light"
+	    android:text="FactoryTest"
+	/>
+</LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:padding="6dip"
+    android:orientation="vertical"
+    >
+
+
+<TextView 
+	style="@style/Label.Bold"
+	android:text="Customizing the parameters of the test set.\n"
+/>
+
+<TextView 
+	style="@style/Label"
+	android:text="Number of events generated:"	
+/>
+
+<EditText
+	android:id="@+id/factory_test_editTestSetSize"
+	android:inputType="numberDecimal"
+	android:imeOptions="actionNext"
+	style="@style/EditText"
+/>
+
+<TextView
+	style="@style/Label"
+	android:text="Interval of events generated (in hours):"	
+/>
+
+<EditText
+	android:id="@+id/factory_test_editEventInterval" 
+	android:inputType="numberDecimal"
+	android:imeOptions="actionDone"
+	style="@style/EditText"
+/>	
+
+<View
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_weight="1"
+	
+/>
+</LinearLayout>
+
+
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:background="@color/foreground_light">
+
+	<Button 
+		android:id="@+id/factory_test_btnDone"
+		android:text="Done"
+		style="@style/Button"/>
+
+	<Button 
+		android:id="@+id/factory_test_btnRevert"
+		android:text="Revert"
+		style="@style/Button"/>
+
+</LinearLayout>
+</LinearLayout>

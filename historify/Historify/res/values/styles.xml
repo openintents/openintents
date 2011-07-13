@@ -57,4 +57,17 @@
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 	    	
+	<style name="EditText" parent="android:Theme">
+    	<item name="android:layout_margin">2dip</item>
+    	<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item> 
+	</style>
+
+	<style name="Button" parent="android:Theme">
+    	<item name="android:layout_margin">6dip</item>
+    	<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item> 
+	</style>
+	    	
 </resources>
