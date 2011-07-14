@@ -102,6 +102,17 @@ public class ImportCsv {
 	    
 	}
 
+	private String convert_hs_price(String hs_price) {
+		String price = hs_price;
+		try {
+			Double fprice = Double.parseDouble(price);
+			fprice *= 100;
+			price = ((Long)Math.round(fprice)).toString();
+		} catch (java.lang.NumberFormatException nfe) {
+		}
+		return price;
+	}
+	
 	public void importHandyShopperCsv(Reader reader, long listId, Boolean importStores) throws IOException, WrongFormatException {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
@@ -145,6 +156,10 @@ public class ImportCsv {
 			String quantity = nextLine[4]; // Quantity
 			String priority = nextLine[1]; // Priority
 			
+            if (price.length() > 0) {
+            	price = convert_hs_price(price);
+            }
+			
 			// Add item to list
 			//long listId = ShoppingUtils.getDefaultList(mContext);
 			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, price, units, note,
@@ -187,12 +202,7 @@ public class ImportCsv {
 					String aisle = aisle_price[0];
 					String store_price = "";
 					if (aisle_price.length > 1) {
-						try {
-							Float fprice = Float.parseFloat(aisle_price[1]);
-							fprice *= 100;
-							store_price = fprice.toString();
-						} catch (java.lang.NumberFormatException nfe) {
-						}
+						store_price = convert_hs_price(aisle_price[1]);
 					}
 			
 					long storeId = ShoppingUtils.getStore(mContext, store_name, listId);
