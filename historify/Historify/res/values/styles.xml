@@ -3,7 +3,8 @@
 	<style name="Fragment.Root" parent="android:Theme">
 		<item name="android:background">@color/background_light</item>
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">fill_parent</item> 					
+		<item name="android:layout_height">fill_parent</item>
+		<item name="android:orientation">vertical</item>
 	</style>
     
     <style name="ListView" parent="android:Theme">
@@ -27,6 +28,8 @@
 	</style>
 	
 	<style name="ListItem.Iconified.FirstLine" parent="android:Theme">
+	    <item name="android:ellipsize">marquee</item>
+    	<item name="android:singleLine">true</item>
 		<item name="android:textSize">18dip</item>
     	<item name="android:textColor">@color/foreground_light</item>
     	<item name="android:layout_width">fill_parent</item>
@@ -34,6 +37,8 @@
 	</style>
 	
 	<style name="ListItem.Iconified.SecondLine" parent="android:Theme">
+		<item name="android:ellipsize">marquee</item>
+    	<item name="android:singleLine">true</item>
     	<item name="android:textColor">@color/foreground_light</item>
     	<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
@@ -64,10 +69,67 @@
 	</style>
 
 	<style name="Button" parent="android:Theme">
-    	<item name="android:layout_margin">6dip</item>
     	<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:layout_weight">1</item> 
+		<item name="android:layout_height">wrap_content</item> 
 	</style>
+
+	<style name="Button.Skinned" parent="Button">
+    	<item name="android:background">@drawable/btn</item>
+	</style>
+
+	<style name="Button.Margined" parent="Button">
+    	<item name="android:layout_margin">6dip</item>
+	</style>
+
+    <style name="ActionBar">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">45dip</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/actionbar_background</item>
+    </style>
+
+    <style name="ActionBarButton">
+        <item name="android:layout_width">45dip</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:background">@drawable/actionbar_button</item>
+    </style>
+
+    <style name="ActionBarProgressIndicator" parent="android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <style name="ActionBarSeparator">
+        <item name="android:layout_width">2px</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@drawable/actionbar_separator</item>
+    </style>
+
+    <style name="ActionBarLogo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:clickable">false</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:contentDescription">Desc</item>
+        <item name="android:src">@drawable/actionbar_logo</item>
+    </style>
+
+    <style name="ActionBarText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/foreground_dark</item>
+        <item name="android:shadowColor">#fff</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.00001</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 	    	
 </resources>

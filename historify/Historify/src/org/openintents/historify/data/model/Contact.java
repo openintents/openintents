@@ -30,9 +30,12 @@ public class Contact {
 	//displayed name
 	private String mName;
 
-	public Contact(String key, String name) {
+	private long mLastTimeContacted;
+	
+	public Contact(String key, String name, long lastTimeContacted) {
 		this.mKey = key;
 		this.mName = name;
+		this.mLastTimeContacted = lastTimeContacted;
 	}
 
 	public String getName() {
@@ -43,6 +46,10 @@ public class Contact {
 		return mKey;
 	}
 
+	public long getLastTimeContacted() {
+		return mLastTimeContacted;
+	}
+	
 	public static class Comparator implements java.util.Comparator<Contact> {
 
 		public int compare(Contact c1, Contact c2) {

@@ -19,7 +19,6 @@ package org.openintents.historify.data.loaders;
 import java.io.InputStream;
 import java.util.Stack;
 
-import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.ContactsAdapter;
 import org.openintents.historify.data.model.Contact;
 
@@ -46,6 +45,8 @@ public class ContactIconHelper {
 	private Activity mContext;
 	private TaskQueue mTaskQueue = new TaskQueue();
 	private PhotosLoader mImageLoaderThread = new PhotosLoader();
+	
+	private int mDrawableResId;
 	
 	// Task for the image updater queue
 	private class ImageLoadingTask {
@@ -123,14 +124,15 @@ public class ContactIconHelper {
 			if (drawable != null)
 				imageView.setImageDrawable(drawable);
 			else
-				imageView.setImageResource(R.drawable.contact_default_small);
+				imageView.setImageResource(mDrawableResId);
 		}
 	}
 
-	public ContactIconHelper(Activity context) {
+	public ContactIconHelper(Activity context, int drawableResID) {
 
 		mContext = context;
 		mImageLoaderThread.setPriority(Thread.NORM_PRIORITY - 1);
+		mDrawableResId = drawableResID;
 
 	}
 

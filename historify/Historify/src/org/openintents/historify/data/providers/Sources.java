@@ -42,7 +42,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 36;
+	static final int DB_VERSION = 37;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -147,6 +147,7 @@ public final class Sources {
 			cv.put(SourcesTable.IS_INTERNAL, 1);
 			cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_factory_test").toString());
 			cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_FACTORYTEST);
+			cv.put(SourcesTable.STATE, AbstractSource.SourceState.DISABLED.toString());
 			db.insert(SourcesTable._TABLE, null, cv);
 			
 			cv.put(SourcesTable.NAME, QuickPosts.SOURCE_NAME);

@@ -30,7 +30,7 @@ public class FirstStartTasks {
 	public static void onStart(Context context) {
 		
 		//check if application has been started before
-		if(firstStart(context)) {
+		if(isFirstStart(context)) {
 			
 			//do tasks
 			new SourceRegistrationHelper().requestRegisterSource(context, null);
@@ -39,7 +39,7 @@ public class FirstStartTasks {
 		}
 	}
 
-	private static boolean firstStart(Context context) {
+	private static boolean isFirstStart(Context context) {
 		return context.getSharedPreferences("start_tasks", Context.MODE_PRIVATE).getBoolean("first", true);
 	}
 	

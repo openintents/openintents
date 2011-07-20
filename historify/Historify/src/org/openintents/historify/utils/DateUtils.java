@@ -17,7 +17,6 @@
 package org.openintents.historify.utils;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -39,13 +38,17 @@ public class DateUtils {
 	private static PrettyTime prettyTime = new PrettyTime(Locale.ENGLISH);
 	private static long INTERVAL_WEEK = AlarmManager.INTERVAL_DAY * 7;
 		
-	public static String formatPrettyDate(Date date) {
+	public static String formatTimelineDate(Date date) {
 		if(isInADay(date))
 			return prettyTime.format(date);
 		else if(isInAWeek(date))		
 			return prettyTime.format(date) + " " + timeFormat.format(date);
 		else
 			return fullDateFormat.format(date);
+	}
+	
+	public static String formatPrettyDate(Date date) {
+		return prettyTime.format(date);
 	}
 	
 	public static String formatDate(Date date) {

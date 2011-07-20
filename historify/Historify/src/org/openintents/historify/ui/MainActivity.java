@@ -19,24 +19,31 @@ package org.openintents.historify.ui;
 
 import org.openintents.historify.FirstStartTasks;
 import org.openintents.historify.R;
+import org.openintents.historify.ui.views.ActionBar;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 
 /**
  * 
- * Historify's main view. Contains a fragment for displaying the main menu.
+ * Historify's main view. Contains a fragment for displaying the main screen.
  * 
  * @author berke.andras
  */
 public class MainActivity extends FragmentActivity {
 
+	private ActionBar actionBar;
+	
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), null);
+		actionBar.setup();
+		
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
 		}

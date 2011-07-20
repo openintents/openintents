@@ -84,12 +84,14 @@
 	<Button 
 		android:id="@+id/factory_test_btnDone"
 		android:text="Done"
-		style="@style/Button"/>
+		android:layout_weight="1"
+		style="@style/Button.Margined"/>
 
 	<Button 
 		android:id="@+id/factory_test_btnRevert"
 		android:text="Revert"
-		style="@style/Button"/>
+		android:layout_weight="1"
+		style="@style/Button.Margined"/>
 
 </LinearLayout>
 </LinearLayout>

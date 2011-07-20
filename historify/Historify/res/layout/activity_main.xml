@@ -4,7 +4,11 @@
     style="@style/Fragment.Root"
     >
 
-  <fragment android:name="org.openintents.historify.ui.fragments.MainMenuFragment"
+  <LinearLayout
+  	android:id="@+id/actionbar" 
+  	style="@style/ActionBar" />
+
+  <fragment android:name="org.openintents.historify.ui.fragments.MainScreenFragment"
             android:layout_width="fill_parent"
     		android:layout_height="fill_parent" />
 

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 
+	style="@style/Fragment.Root"
+	android:padding="6dip"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+<TextView
+	android:layout_marginTop="12dip"
+	style="@style/Label.Bold"
+	android:text="@string/main.msg.welcome1"
+	/>
+	
+<TextView
+	style="@style/Label"
+	android:text="@string/main.msg.welcome2"
+	/>
+
+<Gallery 
+	android:id="@+id/main_screen_galleryContacts"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dip"
+    android:paddingBottom="6dip"
+/>
+
+<LinearLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:paddingBottom="12dip">
+
+	<Button
+		android:id="@+id/main_screen_btnMore"
+		android:text="@string/main.label.more"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+		/>
+
+	<Button
+		android:id="@+id/main_screen_btnFavorites"
+		android:text="@string/main.label.favorites"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+	/>
+
+</LinearLayout>
+
+<TextView
+	style="@style/Label"
+	android:layout_height="fill_parent"
+	android:gravity="bottom"
+	android:layout_weight="1"
+	android:text="@string/main.msg.config"
+	/>
+
+<LinearLayout
+	android:paddingBottom="6dip"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="2"
+	/>
+ 	
+	<Button
+		android:id="@+id/main_screen_btnSources"
+		android:text="@string/main.label.sources"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+	/> 
+	
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="2"
+	/>
+</LinearLayout>
+    
+</LinearLayout>

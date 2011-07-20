@@ -19,6 +19,7 @@ package org.openintents.historify.data.adapters;
 import java.util.HashSet;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.ContactLoader;
 
 import android.app.Activity;
 import android.view.View;
@@ -51,7 +52,7 @@ public class ContactsDialogAdapter extends ContactsAdapter {
 	 */
 	public ContactsDialogAdapter(Activity context,
 			HashSet<String> disabledKeys, String disabledMessage) {
-		super(context, false);
+		super(context, new ContactLoader.SimpleLoadingStrategy());
 
 		mDisabledKeys = disabledKeys;
 		mDisabledMessage = disabledMessage;

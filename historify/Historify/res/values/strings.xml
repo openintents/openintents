@@ -2,6 +2,13 @@
 <resources>
     <string name="app_name">Historify</string>
 	
+	<string name="main.msg.welcome1">welcome to historify.</string>
+	<string name="main.msg.welcome2">select a recently contacted person\nto browse the flow of events ...</string>
+	<string name="main.label.more">more</string>
+	<string name="main.label.favorites">starred</string>
+	<string name="main.msg.config">you can also edit the events to appear:</string>
+	<string name="main.label.sources">sources</string>
+	
 	<string name="main.menu.contacts">Contacts</string>
 	<string name="main.menu.favorites">Favorites</string>
 	<string name="main.menu.sources">Sources</string>

@@ -75,8 +75,7 @@ public class FilterModesAdapter extends BaseAdapter {
 		String[] contactLookupKeys = mLoader.loadFilterModeLookupKeys(mContext);
 		if (contactLookupKeys.length != 0) {
 			ContactLoader contactLoader = new ContactLoader();
-			Cursor cursor = contactLoader.openCursor(mContext, false,
-					contactLookupKeys);
+			Cursor cursor = contactLoader.openCursor(mContext, new ContactLoader.FilteredContactsLoadingStrategy(contactLookupKeys));
 
 			for (int i = 0; i < cursor.getCount(); i++) {
 				Contact contact = contactLoader.loadFromCursor(cursor, i);

@@ -18,6 +18,7 @@ package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.ContactsAdapter;
+import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.uri.Actions;
 
@@ -87,7 +88,7 @@ public class ContactsListFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		
 		// init adapter
-		mAdapter = new ContactsAdapter(getActivity(), isStarredOnly());
+		mAdapter = new ContactsAdapter(getActivity(), isStarredOnly() ? new ContactLoader.StarredContactsLoadingStrategy() : new ContactLoader.SimpleLoadingStrategy());
 		mLstContacts.setAdapter(mAdapter);
 		
 	}

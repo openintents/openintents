@@ -19,7 +19,6 @@ package org.openintents.historify.data.providers.internal;
 import org.openintents.historify.R;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.EventsProvider;
-import org.openintents.historify.uri.ContentUris;
 
 import android.app.AlarmManager;
 import android.content.Context;

@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dip"
+    android:layout_height="80dip"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="6dip">
+    
+    <ImageView
+        android:id="@+id/contacts_listitem_imgIcon"
+        android:layout_width="64dip" 
+		android:layout_height="64dip"
+        android:layout_marginLeft="32dip"
+    	android:layout_marginRight="32dip"
+        android:src="@drawable/contact_default_large" />
+
+    <TextView  
+    	android:id="@+id/contacts_listitem_txtName"
+    	android:gravity="center"
+        style="@style/ListItem.Iconified.FirstLine" />
+        
+	<TextView  
+        android:id="@+id/contacts_listitem_txtContacted"
+        android:gravity="center"
+        style="@style/ListItem.Iconified.SecondLine" />        
+
+</LinearLayout>

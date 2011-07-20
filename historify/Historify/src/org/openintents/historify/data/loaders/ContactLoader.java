@@ -31,47 +31,95 @@ import android.provider.ContactsContract;
  */
 public class ContactLoader {
 
+	public static abstract class LoadingStrategy {
+		public abstract String getSelection();
+		public String getSortOrder() {
+			return ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+		}
+	}
+
+	public static class SimpleLoadingStrategy extends LoadingStrategy {
+		@Override
+		public String getSelection() {
+			return null;
+		}
+	}
+
+	public static class StarredContactsLoadingStrategy extends LoadingStrategy {
+		@Override
+		public String getSelection() {
+			return ContactsContract.Contacts.STARRED + " = '1'";
+		}		
+	}
+	
+	public static class FilteredContactsLoadingStrategy extends LoadingStrategy {
+		
+		private String[] filteredLookupKeys;
+		
+		public FilteredContactsLoadingStrategy(String filteredLookupKey) {
+			this.filteredLookupKeys = new String[] {filteredLookupKey};
+		}
+		
+		public FilteredContactsLoadingStrategy(String[] filteredLookupKeys) {
+			this.filteredLookupKeys = filteredLookupKeys;
+		}
+		
+		@Override
+		public String getSelection() {
+			StringBuilder selection = new StringBuilder(ContactsContract.Contacts.LOOKUP_KEY+ " IN (");
+        	for(String s : filteredLookupKeys) {
+        		selection.append('\'');
+        		selection.append(s);
+        		selection.append('\'');
+        		selection.append(',');
+        	}
+        	if(filteredLookupKeys.length!=0) 
+        		selection.setCharAt(selection.length()-1, ')');
+			
+        	return selection.toString();
+		}
+	}
+	
+	public static class RecentlyContactedLoadingStrategy extends LoadingStrategy {
+		@Override
+		public String getSelection() {
+			return null;
+		}
+		@Override
+		public String getSortOrder() {
+			return ContactsContract.Contacts.LAST_TIME_CONTACTED + " DESC";
+		}
+	}
+	
 	public static String[] PROJECTION = new String[] {
 		ContactsContract.Contacts.LOOKUP_KEY,
 		ContactsContract.Contacts.DISPLAY_NAME,
-		ContactsContract.Contacts.STARRED
+		ContactsContract.Contacts.STARRED,
+		ContactsContract.Contacts.LAST_TIME_CONTACTED
 	};
 	
 	private static final int COLUMN_LOOKUP_KEY = 0;
 	private static final int COLUMN_DISPLAYNAME = 1;
 	//private static final int COLUMN_STARRED = 2;
+	private static final int COLUMN_LAST_TIME_CONTACTED = 3;
 
-	public Cursor openCursor(Activity context, boolean starredOnly) {
-		return openCursor(context, starredOnly,null);
-	}
 	
-	public Cursor openCursor(Activity context, boolean starredOnly, String[] selection) {
+	public Cursor openCursor(Activity context, LoadingStrategy loadingStrategy) {
 		
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
         String[] projection = PROJECTION;
         
         StringBuilder querySelection = new StringBuilder();
         querySelection.append(ContactsContract.Contacts.IN_VISIBLE_GROUP + " = '1'");
-        if(starredOnly)
-        	querySelection.append(" AND "+ContactsContract.Contacts.STARRED + " = '1'");
-        
+        String selection = loadingStrategy.getSelection();
         if(selection!=null) {
-        	querySelection.append(" AND "+ContactsContract.Contacts.LOOKUP_KEY+ " IN (");
-        	for(String s : selection) {
-        		querySelection.append('\'');
-        		querySelection.append(s);
-        		querySelection.append('\'');
-        		querySelection.append(',');
-        	}
-        	if(selection.length!=0) 
-        		querySelection.setCharAt(querySelection.length()-1, ')');
+        	querySelection.append(" AND ");
+        	querySelection.append(selection);
         }
         
-        String[] selectionArgs = null;
-        String sortOrder = ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+        String sortOrder = loadingStrategy.getSortOrder();
         
-        return context.managedQuery(uri, projection, querySelection.toString(), selectionArgs, sortOrder);
-
+        return context.managedQuery(uri, projection, querySelection.toString(), null, sortOrder);
 	}
 	
 	public Contact loadFromCursor(Cursor cursor, int position) {
@@ -79,18 +127,14 @@ public class ContactLoader {
 		cursor.moveToPosition(position);
 		return new Contact(
 				cursor.getString(COLUMN_LOOKUP_KEY),
-				cursor.getString(COLUMN_DISPLAYNAME));
+				cursor.getString(COLUMN_DISPLAYNAME),
+				cursor.getLong(COLUMN_LAST_TIME_CONTACTED));
 		
 	}
 
 	public Contact loadFromLookupKey(Activity context, String contactLookupKey) {
 		
-		String[] selection  = new String[] {
-				contactLookupKey	
-		};
-		
-		Cursor cursor = openCursor(context, false, selection);
-		
+		Cursor cursor = openCursor(context, new FilteredContactsLoadingStrategy(contactLookupKey));		
 		return (cursor==null || cursor.getCount()==0) ? null : loadFromCursor(cursor, 0);
 	}
 	

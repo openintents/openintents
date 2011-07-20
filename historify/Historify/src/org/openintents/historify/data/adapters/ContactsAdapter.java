@@ -19,6 +19,7 @@ package org.openintents.historify.data.adapters;
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.loaders.ContactLoader;
+import org.openintents.historify.data.loaders.ContactLoader.LoadingStrategy;
 import org.openintents.historify.data.model.Contact;
 
 import android.app.Activity;
@@ -42,14 +43,12 @@ import android.widget.TextView;
  */
 public class ContactsAdapter extends BaseAdapter {
 
-	private Activity mContext;
+	protected Activity mContext;
 
 	private ContactLoader mLoader;
-	private ContactIconHelper mContactIconHelper;
+	protected ContactIconHelper mContactIconHelper;
+	protected ContactLoader.LoadingStrategy mLoadingStrategy;
 	private Cursor mCursor;
-
-	// true if list is filtered for favorite contacts only.
-	private boolean mStarredOnly;
 
 	private ContactsChangedObserver mObserver;
 	
@@ -71,12 +70,12 @@ public class ContactsAdapter extends BaseAdapter {
 		}
 	}
 
-	public ContactsAdapter(Activity context, boolean starredOnly) {
+	public ContactsAdapter(Activity context, LoadingStrategy loadingStrategy) {
 
 		mContext = context;
-		mStarredOnly = starredOnly;
+		mLoadingStrategy = loadingStrategy;
 		mLoader = new ContactLoader();
-		mContactIconHelper = new ContactIconHelper(mContext);
+		mContactIconHelper = new ContactIconHelper(mContext,R.drawable.contact_default_small);
 
 		load();
 	}
@@ -84,7 +83,7 @@ public class ContactsAdapter extends BaseAdapter {
 	/** Open cursor. */
 	public void load() {
 
-		mCursor = mLoader.openCursor(mContext, mStarredOnly);
+		mCursor = mLoader.openCursor(mContext, mLoadingStrategy);
 		notifyDataSetChanged();
 		
 		mObserver = new ContactsChangedObserver(new Handler()); 
