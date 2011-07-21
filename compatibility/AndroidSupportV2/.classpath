@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="honeycomb_mr2"/>
+	<classpathentry kind="src" path="froyo"/>
+	<classpathentry kind="src" path="eclair"/>
 	<classpathentry kind="src" path="honeycomb"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
