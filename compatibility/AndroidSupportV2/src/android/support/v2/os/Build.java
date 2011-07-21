@@ -110,5 +110,10 @@ public class Build {
 		 * May 2011: Android 3.1.
 		 */
 		public static final int HONEYCOMB_MR1 = 12;
+		
+		/**
+		 * June 2011: Android 3.2.
+		 */
+		public static final int HONEYCOMB_MR2 = 13;
 	}
 }
