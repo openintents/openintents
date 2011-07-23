@@ -10,9 +10,15 @@
 	<EditText
 		android:id="@+id/searchBar_editSearch"
 		style="@style/EditText"
+		android:layout_weight="1"
 		android:imeOptions="actionDone"
 		android:inputType="textPersonName"
-		/>	
+		/>
+<!-- 			
+	<View
+		android:layout_width="45dip"
+		android:layout_height="fill_parent"
+		/>  -->
 	
 </LinearLayout>
 

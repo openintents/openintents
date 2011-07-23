@@ -53,6 +53,8 @@ import android.widget.TextView.OnEditorActionListener;
  */
 public class ContactsListFragment extends Fragment {
 
+	private static final String STATE_SEARCH_VISIBILITY = "state_search_visibility";
+	private static final String STATE_SEARCH_CONTENT = "state_search_content";
 	//search panel
 	private ViewGroup mSearchBar;
 	private EditText mEditSearch;
@@ -75,6 +77,11 @@ public class ContactsListFragment extends Fragment {
 		mSearchBar = (ViewGroup)layout.findViewById(R.id.searchBar);
 		mEditSearch = (EditText)mSearchBar.findViewById(R.id.searchBar_editSearch);
 		mEditSearch.setHint(R.string.searchbar_contacts_hint);
+		
+		if(savedInstanceState!=null) {
+			mSearchBar.setVisibility(savedInstanceState.getInt(STATE_SEARCH_VISIBILITY));
+			mEditSearch.setText(savedInstanceState.getString(STATE_SEARCH_CONTENT));
+		}
 		
 		mEditSearch.addTextChangedListener(new TextWatcher() {
 			
@@ -140,6 +147,10 @@ public class ContactsListFragment extends Fragment {
 		
 		// init adapter
 		mAdapter = new ContactsAdapter(getActivity(), mContactLoadingStrategy);
+		if(savedInstanceState!=null) {
+			mAdapter.setFilter(savedInstanceState.getString(STATE_SEARCH_CONTENT));
+		}
+		
 		mLstContacts.setAdapter(mAdapter);
 		
 	}
@@ -175,7 +186,14 @@ public class ContactsListFragment extends Fragment {
 		super.onDestroy();
 		mAdapter.onDestroy();
 	}
-
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(STATE_SEARCH_VISIBILITY, mSearchBar.getVisibility());
+		outState.putString(STATE_SEARCH_CONTENT, mEditSearch.getText().toString());
+	}
+	
 	public void onSearchSelected() {
 		boolean needToShow = mSearchBar.getVisibility() == View.GONE;
 		
@@ -193,24 +211,8 @@ public class ContactsListFragment extends Fragment {
 	
 	protected void notifySearchTextChanged() {
 		String searchText = mEditSearch.getText().toString().trim();
-		mAdapter.setFilter(searchText);
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		super.onConfigurationChanged(newConfig);
-		
-		Log.v("ch","ch");
-	}
-	
-	public void onHideKeyboard() {
-		
-		if(mEditSearch.hasFocus()) 
-			Log.v("f","f");
-		
-		if(mEditSearch.hasFocus() && mEditSearch.getText().toString().trim().equals("")) {
-			onSearchSelected();
-		}
+		if(mAdapter!=null)
+			mAdapter.setFilter(searchText);
 	}
 
 }
