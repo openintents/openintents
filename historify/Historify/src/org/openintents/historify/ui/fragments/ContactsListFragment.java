@@ -23,14 +23,26 @@ import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.uri.Actions;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.location.Address;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.InputType;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnKeyListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 /**
  * 
@@ -41,9 +53,15 @@ import android.widget.TextView;
  */
 public class ContactsListFragment extends Fragment {
 
+	//search panel
+	private ViewGroup mSearchBar;
+	private EditText mEditSearch;
+	
 	// list
 	private ListView mLstContacts;
 	private ContactsAdapter mAdapter;
+	
+	private ContactLoader.LoadingStrategy mContactLoadingStrategy;
 	
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
@@ -53,6 +71,36 @@ public class ContactsListFragment extends Fragment {
 		ViewGroup layout = (ViewGroup) inflater.inflate(
 				R.layout.fragment_contacts_list, container, false);
 
+		// init search panel
+		mSearchBar = (ViewGroup)layout.findViewById(R.id.searchBar);
+		mEditSearch = (EditText)mSearchBar.findViewById(R.id.searchBar_editSearch);
+		mEditSearch.setHint(R.string.searchbar_contacts_hint);
+		
+		mEditSearch.addTextChangedListener(new TextWatcher() {
+			
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+			
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+			
+			public void afterTextChanged(Editable s) {
+				notifySearchTextChanged();
+			}
+		});
+		
+		mEditSearch.setOnEditorActionListener(new OnEditorActionListener() {
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				if(actionId==EditorInfo.IME_ACTION_DONE || actionId==EditorInfo.IME_ACTION_NONE) {
+					if(v.getText().toString().trim().equals(""))
+						//empty search field -- so we hide it
+						onSearchSelected();					
+				}
+				return false;
+			}
+		});
+				
 		// init listview
 		mLstContacts = (ListView) layout
 				.findViewById(R.id.contacts_lstContacts);
@@ -66,7 +114,7 @@ public class ContactsListFragment extends Fragment {
 						onContactSelected(selected);
 					}
 				});
-
+		
 		// init list empty view
 		View lstContactsEmptyView = inflater.inflate(R.layout.list_empty_view,
 				null);
@@ -78,7 +126,7 @@ public class ContactsListFragment extends Fragment {
 		return layout;
 
 	}
-
+	
 	/**
 	 * Called when the fragment's activity has been created and this fragment's
 	 * view hierarchy instantiated.
@@ -87,23 +135,22 @@ public class ContactsListFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
+		if(mContactLoadingStrategy == null)
+			throw new IllegalStateException("Fragment parameters not set.");
+		
 		// init adapter
-		mAdapter = new ContactsAdapter(getActivity(), isStarredOnly() ? new ContactLoader.StarredContactsLoadingStrategy() : new ContactLoader.SimpleLoadingStrategy());
+		mAdapter = new ContactsAdapter(getActivity(), mContactLoadingStrategy);
 		mLstContacts.setAdapter(mAdapter);
 		
 	}
-
 	
-	/**
-	 * Checks if fragment is for displaying favorite contacts only.
-	 * 
-	 * @return true if only favorite contacts have to be shown.
-	 */
-	private boolean isStarredOnly() {
-		return getArguments().getBoolean(
-				Actions.EXTRA_MODE_FAVORITES, false);
-
+	public void setStarredOnly(boolean starredOnly) {
+		
+		mContactLoadingStrategy = starredOnly ? 
+				new ContactLoader.StarredContactsLoadingStrategy() :
+				new ContactLoader.SimpleLoadingStrategy();
 	}
+	
 
 	/**
 	 * Fires Intent to show the selected contact's timeline. Future releases
@@ -128,4 +175,42 @@ public class ContactsListFragment extends Fragment {
 		super.onDestroy();
 		mAdapter.onDestroy();
 	}
+
+	public void onSearchSelected() {
+		boolean needToShow = mSearchBar.getVisibility() == View.GONE;
+		
+		if(needToShow && mAdapter.isEmpty())
+			return;
+		
+		if(!needToShow) { //hide search
+			mEditSearch.setText("");
+		}
+		
+		mSearchBar.setVisibility(needToShow ?  View.VISIBLE : View.GONE);
+		if(needToShow)
+			mEditSearch.requestFocus();
+	}
+	
+	protected void notifySearchTextChanged() {
+		String searchText = mEditSearch.getText().toString().trim();
+		mAdapter.setFilter(searchText);
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		
+		Log.v("ch","ch");
+	}
+	
+	public void onHideKeyboard() {
+		
+		if(mEditSearch.hasFocus()) 
+			Log.v("f","f");
+		
+		if(mEditSearch.hasFocus() && mEditSearch.getText().toString().trim().equals("")) {
+			onSearchSelected();
+		}
+	}
+
 }

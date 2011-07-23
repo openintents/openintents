@@ -15,7 +15,8 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".ui.ContactsActivity"/>
+        <activity android:name=".ui.ContactsActivity"
+        	android:theme="@android:style/Theme.NoTitleBar"/>
         
         <activity android:name=".ui.TimeLineActivity" >
         	<intent-filter>

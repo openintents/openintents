@@ -22,6 +22,7 @@ import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.Contacts;
 
 /**
  * 
@@ -32,22 +33,51 @@ import android.provider.ContactsContract;
 public class ContactLoader {
 
 	public static abstract class LoadingStrategy {
-		public abstract String getSelection();
-		public String getSortOrder() {
+		
+		private String mFilterText = "";
+		
+		public String getSelection() {
+			String strategySelection = getStrategySelection();
+			
+			if(mFilterText.equals("")) {
+				return strategySelection;
+			} else {
+				StringBuilder selection = new StringBuilder(strategySelection == null ? "" : strategySelection + " AND ");
+				selection.append("("+Contacts.DISPLAY_NAME + " LIKE ?");
+				selection.append(" OR "+Contacts.DISPLAY_NAME + " LIKE ?)");
+				return selection.toString();
+			}
+		}
+		
+		public String[] getSelectionArgs() {
+			if(mFilterText.equals("")) return null;
+			else return new String[] {mFilterText+"%", "% "+mFilterText+"%"};
+		}
+		
+		public abstract String getStrategySelection();
+		public String getStrategySortOrder() {
 			return ContactsContract.Contacts.DISPLAY_NAME + " COLLATE LOCALIZED ASC";
+		}
+		
+		public String getFilterText() {
+			return mFilterText;
+		}
+		
+		public void setFilterText(String filterText) {
+			this.mFilterText = filterText;
 		}
 	}
 
 	public static class SimpleLoadingStrategy extends LoadingStrategy {
 		@Override
-		public String getSelection() {
+		public String getStrategySelection() {
 			return null;
 		}
 	}
 
 	public static class StarredContactsLoadingStrategy extends LoadingStrategy {
 		@Override
-		public String getSelection() {
+		public String getStrategySelection() {
 			return ContactsContract.Contacts.STARRED + " = '1'";
 		}		
 	}
@@ -65,7 +95,7 @@ public class ContactLoader {
 		}
 		
 		@Override
-		public String getSelection() {
+		public String getStrategySelection() {
 			StringBuilder selection = new StringBuilder(ContactsContract.Contacts.LOOKUP_KEY+ " IN (");
         	for(String s : filteredLookupKeys) {
         		selection.append('\'');
@@ -82,11 +112,11 @@ public class ContactLoader {
 	
 	public static class RecentlyContactedLoadingStrategy extends LoadingStrategy {
 		@Override
-		public String getSelection() {
-			return null;
+		public String getStrategySelection() {
+			return ContactsContract.Contacts.LAST_TIME_CONTACTED + ">0";
 		}
 		@Override
-		public String getSortOrder() {
+		public String getStrategySortOrder() {
 			return ContactsContract.Contacts.LAST_TIME_CONTACTED + " DESC";
 		}
 	}
@@ -117,9 +147,9 @@ public class ContactLoader {
         	querySelection.append(selection);
         }
         
-        String sortOrder = loadingStrategy.getSortOrder();
+        String sortOrder = loadingStrategy.getStrategySortOrder();
         
-        return context.managedQuery(uri, projection, querySelection.toString(), null, sortOrder);
+        return context.managedQuery(uri, projection, querySelection.toString(), loadingStrategy.getSelectionArgs(), sortOrder);
 	}
 	
 	public Contact loadFromCursor(Cursor cursor, int position) {

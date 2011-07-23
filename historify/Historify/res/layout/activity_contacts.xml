@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    style="@style/Fragment.Root"
+    >
+
+  <LinearLayout
+  	android:id="@+id/actionbar" 
+  	style="@style/ActionBar" />
+
+  <fragment 
+  			android:id="@+id/contacts_fragment"
+  			android:name="org.openintents.historify.ui.fragments.ContactsListFragment"
+            android:layout_width="fill_parent"
+    		android:layout_height="fill_parent" /> 
+
+</LinearLayout>

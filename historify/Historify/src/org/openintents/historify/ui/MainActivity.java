@@ -41,11 +41,17 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), null);
-		actionBar.setup();
+		setupActionBar();
 		
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
 		}
+	}
+
+	private void setupActionBar() {
+		
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), null);
+		actionBar.setup();
+
 	}
 }

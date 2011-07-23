@@ -3,8 +3,11 @@
     android:orientation="vertical"
     style="@style/Fragment.Root"
     >
+    
+<include layout="@layout/searchbar" />   
+
 <ListView  
 	android:id="@+id/contacts_lstContacts"
-    style="@style/ListView" 
+    style="@style/ListView.NoDivider"
     />
 </LinearLayout>

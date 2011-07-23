@@ -28,6 +28,7 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Handler;
 import android.provider.ContactsContract.Contacts;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,8 @@ public class ContactsAdapter extends BaseAdapter {
 
 	private ContactsChangedObserver mObserver;
 	
+	private String mFilterText = "";
+	
 	private class ContactsChangedObserver extends ContentObserver {
 
 		public ContactsChangedObserver(Handler handler) {
@@ -66,7 +69,7 @@ public class ContactsAdapter extends BaseAdapter {
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			reload();
+			refresh();
 		}
 	}
 
@@ -83,8 +86,7 @@ public class ContactsAdapter extends BaseAdapter {
 	/** Open cursor. */
 	public void load() {
 
-		mCursor = mLoader.openCursor(mContext, mLoadingStrategy);
-		notifyDataSetChanged();
+		doLoad();
 		
 		mObserver = new ContactsChangedObserver(new Handler()); 
 		mContext
@@ -92,11 +94,14 @@ public class ContactsAdapter extends BaseAdapter {
 		 .registerContentObserver(Contacts.CONTENT_URI, true, mObserver);		
 	}
 	
-	public void reload() {
+	private void doLoad() {
+		mCursor = mLoader.openCursor(mContext, mLoadingStrategy);
+		notifyDataSetChanged();
+	}
+	
+	public void refresh() {
 		
-		if(mCursor==null) 
-			load();
-		else {
+		if(mCursor!=null) {
 			mCursor.requery();
 			notifyDataSetChanged();
 		}
@@ -126,6 +131,8 @@ public class ContactsAdapter extends BaseAdapter {
 					.inflate(R.layout.listitem_contact, null);
 		}
 
+		convertView.setBackgroundColor(mContext.getResources().getColor(position % 2 == 0 ? R.color.background_light : R.color.background_soft_light));
+		
 		TextView txtName = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);
 		txtName.setText(contact.getName());
@@ -141,5 +148,13 @@ public class ContactsAdapter extends BaseAdapter {
 	public void onDestroy() {
 		mContactIconHelper.stopThread();
 		mContext.getContentResolver().unregisterContentObserver(mObserver);
+	}
+
+	public void setFilter(String searchText) {
+		
+		if(!mLoadingStrategy.getFilterText().equals(searchText)) {
+			mLoadingStrategy.setFilterText(searchText);
+			doLoad();
+		}
 	}
 }

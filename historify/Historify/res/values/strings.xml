@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Historify</string>
+    <string name="app_name">h!storify</string>
 	
 	<string name="main.msg.welcome1">welcome to historify.</string>
 	<string name="main.msg.welcome2">select a recently contacted person\nto browse the flow of events ...</string>
 	<string name="main.label.more">more</string>
-	<string name="main.label.favorites">starred</string>
+	<string name="main.label.favorites">favorites</string>
 	<string name="main.msg.config">you can also edit the events to appear:</string>
-	<string name="main.label.sources">sources</string>
-	
-	<string name="main.menu.contacts">Contacts</string>
-	<string name="main.menu.favorites">Favorites</string>
-	<string name="main.menu.sources">Sources</string>
-	
-	<string name="contacts.no_contacts">No contacts.</string>
+	<string name="main.label.sources">my sources</string>
+		
+	<string name="contacts.no_contacts">no contacts.</string>
+	<string name="contacts.title_favorites">my favorites</string>
+	<string name="contacts.title_all">my contacts</string>
 	
 	<string name="sources.filter_mode_description">Showing sources for:</string>
 	<string name="sources.filter_mode_default">(All Contacts)</string>
@@ -39,5 +37,7 @@
 	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
 	
 	<string name="factory_test.config_error">Wrong parameter(s).</string>
+	
+	<string name="searchbar.contacts_hint">search for a contact ...</string>
 	
 </resources>
