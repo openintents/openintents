@@ -22,6 +22,7 @@ import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.uri.Actions;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.location.Address;
@@ -36,8 +37,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.View.OnFocusChangeListener;
 import android.view.View.OnKeyListener;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -107,7 +111,7 @@ public class ContactsListFragment extends Fragment {
 				return false;
 			}
 		});
-				
+		
 		// init listview
 		mLstContacts = (ListView) layout
 				.findViewById(R.id.contacts_lstContacts);
@@ -172,12 +176,15 @@ public class ContactsListFragment extends Fragment {
 	 */
 	private void onContactSelected(Contact selected) {
 
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(mEditSearch.getWindowToken(), 0);
+
 		String contactLookupKey = String.valueOf(selected.getLookupKey());
 
 		Intent intent = new Intent();
 		intent.setAction(Actions.ACTION_SHOW_TIMELINE);
 		intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactLookupKey);
-
+		
 		startActivity(intent);
 	}
 	
@@ -205,8 +212,14 @@ public class ContactsListFragment extends Fragment {
 		}
 		
 		mSearchBar.setVisibility(needToShow ?  View.VISIBLE : View.GONE);
-		if(needToShow)
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		if(needToShow) {
 			mEditSearch.requestFocus();
+			imm.showSoftInput(mEditSearch, InputMethodManager.SHOW_FORCED);
+		} else {
+			imm.hideSoftInputFromWindow(mEditSearch.getWindowToken(), 0);
+		}
+			
 	}
 	
 	protected void notifySearchTextChanged() {

@@ -23,6 +23,7 @@ import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.uri.Actions;
+import org.openintents.historify.utils.Toaster;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -32,7 +33,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -47,8 +50,6 @@ import android.widget.AdapterView.OnItemClickListener;
  */
 public class TimeLineFragment extends Fragment {
 
-	private static final String NAME = "TimeLineFragment";
-
 	// model
 	private Contact mContact;
 	private TimeLineAdapter mAdapter;
@@ -57,6 +58,8 @@ public class TimeLineFragment extends Fragment {
 	private ListView mLstTimeLine;
 	private TextView mTxtContact;
 	private ImageView mImgContactIcon;
+	
+	private Button mBtnOptions;
 
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
@@ -83,12 +86,22 @@ public class TimeLineFragment extends Fragment {
 				.setText(R.string.timeline_no_events);
 		((ViewGroup) mLstTimeLine.getParent()).addView(lstContactsEmptyView);
 		mLstTimeLine.setEmptyView(lstContactsEmptyView);
-
 		
 		mTxtContact = (TextView) layout.findViewById(R.id.timeline_txtContact);
 		mImgContactIcon = (ImageView) layout.findViewById(R.id.timeline_imgContactIcon);
 		
+		mBtnOptions = (Button)layout.findViewById(R.id.timeline_btnOptions);
+		mBtnOptions.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onTimeLineOptionsSelected();
+			}
+		});
+		
 		return layout;
+	}
+	
+	public void setContact(Contact contact) {
+		mContact = contact;
 	}
 
 	/**
@@ -99,15 +112,6 @@ public class TimeLineFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		String contactLookupKey = getContactLookupKey();
-		
-		if (contactLookupKey == null) {
-			Log.w(NAME, "Contact lookupkey not provided.");
-		} else {
-			mContact = new ContactLoader().loadFromLookupKey(getActivity(),
-					contactLookupKey);
-		}
-		
 		if(mContact!=null) {
 			mTxtContact.setText(mContact.getName());
 			mAdapter = new TimeLineAdapter(getActivity(), mContact);
@@ -121,10 +125,6 @@ public class TimeLineFragment extends Fragment {
 			mTxtContact.setText("");
 		}
 
-	}
-
-	private String getContactLookupKey() {
-		return getArguments().getString(Actions.EXTRA_CONTACT_LOOKUP_KEY);
 	}
 
 	private void onEventClicked(Event event) {
@@ -150,4 +150,9 @@ public class TimeLineFragment extends Fragment {
 		//release merged cursors
 		mAdapter.releaseCursors();
 	}
+
+	private void onTimeLineOptionsSelected() {
+		Toaster.toast(this, "options menu");
+	}
+
 }

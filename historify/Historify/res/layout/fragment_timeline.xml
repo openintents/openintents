@@ -7,7 +7,23 @@
 <RelativeLayout
 	android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
-    android:padding="10dip">
+    android:background="@drawable/actionbar_background"
+    android:paddingTop="4dip"
+    android:paddingBottom="2dip"
+    android:paddingLeft="6dip"
+    android:paddingRight="6dip">
+
+	<Button
+		android:id="@+id/timeline_btnOptions"
+		android:text="h?"
+		android:textSize="20sp"
+		style="@style/Button.Skinned"
+		android:layout_width="100dip"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:layout_alignParentTop="false"
+	/>
+
 
 	<LinearLayout 
     	android:orientation="vertical"
@@ -18,8 +34,8 @@
     	
     	<ImageView
 			android:id="@+id/timeline_imgUserIcon"
-			android:layout_width="64dip" 
-			android:layout_height="64dip"
+			android:layout_width="52dip" 
+			android:layout_height="52dip"
 	    	android:src="@drawable/contact_default_large"
 	    	
 	 	/>
@@ -33,6 +49,7 @@
 	 	/>
 
 	</LinearLayout>
+		
 	<LinearLayout 
     	android:orientation="vertical"
     	android:layout_width="wrap_content" 
@@ -42,8 +59,8 @@
     
     	<ImageView
 			android:id="@+id/timeline_imgContactIcon"
-			android:layout_width="64dip" 
-	    	android:layout_height="64dip"
+			android:layout_width="52dip" 
+	    	android:layout_height="52dip"
 	    	android:layout_gravity="right"
 	   		android:src="@drawable/contact_default_large"
 	 	/>

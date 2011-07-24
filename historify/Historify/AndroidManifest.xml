@@ -18,7 +18,8 @@
         <activity android:name=".ui.ContactsActivity"
         	android:theme="@android:style/Theme.NoTitleBar"/>
         
-        <activity android:name=".ui.TimeLineActivity" >
+        <activity android:name=".ui.TimeLineActivity" 
+        	android:theme="@android:style/Theme.NoTitleBar">
         	<intent-filter>
                 <action android:name="org.openintents.historify.SHOW_TIMELINE" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -131,7 +131,9 @@ public class ContactsAdapter extends BaseAdapter {
 					.inflate(R.layout.listitem_contact, null);
 		}
 
-		convertView.setBackgroundColor(mContext.getResources().getColor(position % 2 == 0 ? R.color.background_light : R.color.background_soft_light));
+		convertView.setBackgroundResource(
+				position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+		//convertView.setBackgroundColor(mContext.getResources().getColor(position % 2 == 0 ? R.color.background_light : R.color.background_soft_light));
 		
 		TextView txtName = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);

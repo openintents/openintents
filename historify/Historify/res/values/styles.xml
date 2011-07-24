@@ -9,8 +9,8 @@
     
     <style name="ListView" parent="android:Theme">
 		<item name="android:cacheColorHint">@color/background_transparent</item>
-		<item name="android:divider">@color/foreground_light</item>
-		<item name="android:dividerHeight">1dip</item>
+		<item name="android:divider">@null</item>
+		<item name="android:dividerHeight">0dip</item>
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">fill_parent</item> 
 	</style>
@@ -56,8 +56,9 @@
 	</style>
 	
 	<style name="ListItem.TimeLine" parent="android:Theme">
-    	<item name="android:background">@drawable/bubble</item>
-    	<item name="android:padding">2dip</item>
+    	<item name="android:background">@drawable/btn_focused</item>
+    	<item name="android:padding">6dip</item>
+    	<item name="android:layout_margin">0dip</item>
     	<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>

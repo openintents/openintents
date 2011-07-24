@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="32dip"
         android:scaleType="fitStart"
-        android:layout_marginRight="6dip"
+        android:layout_marginRight="2dip"
         android:src="@drawable/source_default" />    
     
 	<TextView

@@ -42,13 +42,19 @@ public class ActionBar {
 	private String mTitle;
 	private List<Action> mActions;
 	
-	public ActionBar(ViewGroup contentView, Integer titleResId) {
-		
+	public ActionBar(ViewGroup contentView, int titleResId) {
+		init(contentView, contentView.getContext().getString(titleResId));		
+	}
+
+	public ActionBar(ViewGroup contentView, String title) {
+		init(contentView, title);
+	}
+
+	private void init(ViewGroup contentView, String title) {
 		mContext = contentView.getContext();
 		mContentView = contentView;
-		mTitle = titleResId == null ? null : mContext.getString(titleResId);
+		mTitle = title;
 		mActions = new ArrayList<Action>();
-		
 	}
 
 	public void add(Action action) {

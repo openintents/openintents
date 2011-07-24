@@ -33,6 +33,11 @@ public class Toaster {
 		Toast.makeText(activity, activity.getString(resId), Toast.LENGTH_SHORT).show();
 	}
 	
+	public static void toast(Fragment fragment, String text) {
+		
+		Toast.makeText(fragment.getActivity(), text, Toast.LENGTH_SHORT).show();
+	}
+	
 	public static void toast(Fragment fragment, int resId) {
 		
 		Toast.makeText(fragment.getActivity(), fragment.getString(resId), Toast.LENGTH_SHORT).show();
