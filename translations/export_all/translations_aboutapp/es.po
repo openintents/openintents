@@ -24,6 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Andrew Mike https://launchpad.net/~logomancer\n"
 "  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount\n"
+"  Jonay https://launchpad.net/~jonay-santana\n"
 "  Paco Molinero https://launchpad.net/~franciscomol"
 
 #. Explanation what this application does. It is a menu extension for other applications.
@@ -34,7 +35,7 @@ msgstr "Un diálogo «Acerca de» autónomo que se comparte entre aplicaciones."
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI File Manager"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
@@ -44,12 +45,12 @@ msgstr ""
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "Bloc de notas OI"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Safe"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
@@ -133,7 +134,7 @@ msgstr "Inglés"
 
 #: tmp_strings.xml:84(item)
 msgid "Greek"
-msgstr ""
+msgstr "Griego"
 
 #: tmp_strings.xml:85(item)
 msgid "Spanish"
@@ -141,7 +142,7 @@ msgstr "Español"
 
 #: tmp_strings.xml:86(item)
 msgid "Persian"
-msgstr ""
+msgstr "Persa"
 
 #: tmp_strings.xml:87(item)
 msgid "Finnish"
@@ -149,7 +150,7 @@ msgstr "Finlandés"
 
 #: tmp_strings.xml:88(item)
 msgid "Faroese"
-msgstr ""
+msgstr "Feroés"
 
 #: tmp_strings.xml:89(item)
 msgid "French"
@@ -157,11 +158,11 @@ msgstr "Francés"
 
 #: tmp_strings.xml:90(item)
 msgid "Croatian"
-msgstr ""
+msgstr "Croata"
 
 #: tmp_strings.xml:91(item)
 msgid "Hungarian"
-msgstr ""
+msgstr "Húngaro"
 
 #: tmp_strings.xml:92(item)
 msgid "Italian"
@@ -173,11 +174,11 @@ msgstr "Japonés"
 
 #: tmp_strings.xml:94(item)
 msgid "Korean"
-msgstr ""
+msgstr "Coreano"
 
 #: tmp_strings.xml:95(item)
 msgid "Lao"
-msgstr ""
+msgstr "Laosiano"
 
 #: tmp_strings.xml:96(item)
 msgid "Dutch"
@@ -201,7 +202,7 @@ msgstr "Portugués brasileño"
 
 #: tmp_strings.xml:101(item)
 msgid "Romanian"
-msgstr ""
+msgstr "Rumano"
 
 #: tmp_strings.xml:102(item)
 msgid "Russian"
@@ -209,11 +210,11 @@ msgstr "Ruso"
 
 #: tmp_strings.xml:103(item)
 msgid "Sardinian"
-msgstr ""
+msgstr "Sardo"
 
 #: tmp_strings.xml:104(item)
 msgid "Slovak"
-msgstr ""
+msgstr "Eslovaco"
 
 #: tmp_strings.xml:105(item)
 msgid "Swedish"

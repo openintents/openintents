@@ -1,4 +1,4 @@
-# German translation for openintents
+# Brazilian Portuguese translation for openintents
 # Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the openintents package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
-"Language-Team: German <de@li.org>\n"
+"Last-Translator: Jhony <Unknown>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,10 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Etienne Ruedin https://launchpad.net/~ruedin\n"
-"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Stefan Fenzke https://launchpad.net/~stefan-fenzke"
+"  Jhony https://launchpad.net/~jhonystein"
 
 #. Strings for OI About
 #: tmp_strings.xml:11(string)
@@ -33,82 +30,79 @@ msgid ""
 "OpenIntents Color Picker is an extension for OI Flashlight and other "
 "compatible applications."
 msgstr ""
-"OpenIntents Color Picker ist eine Erweiterung für OI Flashlight und andere "
-"kompatible Anwendungen."
+"OpenIntents Seletor de Cores é uma extensão para OI Flashlight e outras "
+"aplicações compatíveis."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
 msgid "OI Color Picker"
-msgstr "OI-Farbwähler"
+msgstr "OI Seletor de Cores"
 
 #. Title of the color picker activity.
 #: tmp_strings.xml:20(string)
 msgid "Color picker"
-msgstr "Farbwähler"
+msgstr "Seletor de cor"
 
 #: tmp_strings.xml:22(string)
 msgid "Recent"
-msgstr "Zuletzt verwendet"
+msgstr "Recente"
 
 #: tmp_strings.xml:23(string)
 msgid "Recent colors"
-msgstr "Aktuelle Farben"
+msgstr "Cores recentes"
 
 #: tmp_strings.xml:24(string)
 msgid "Recently chosen colors"
-msgstr "Kürzlich gewählt Farben"
+msgstr "Cores escolhidas recentimente"
 
 #: tmp_strings.xml:25(string)
 msgid "Clear"
-msgstr "Löschen"
+msgstr "Limpar"
 
 #: tmp_strings.xml:26(string)
 msgid "There are no recently chosen colors."
-msgstr "Es gibt keine kürzlich gewählten Farben"
+msgstr "Não existem cores recentemente selecionadas."
 
 #: tmp_strings.xml:28(string)
 msgid "Use color?"
-msgstr "Farbe verwenden?"
+msgstr "Usar a cor?"
 
 #: tmp_strings.xml:29(string)
 msgid ""
 "Use this new color? You can avoid this message by clicking on the center "
 "circle."
 msgstr ""
-"Diese neue Farbe verwenden? Wenn diese Nachricht nicht mehr angezeigt werden "
-"soll, klicken Sie in den mittleren Kreis."
+"Usar esta nova cor? Você pode evitar essa mensagem, clicando no círculo "
+"central."
 
 #. About
 #: tmp_strings.xml:33(string)
 msgid "About"
-msgstr "Info"
+msgstr "Sobre"
 
 #: tmp_strings.xml:34(string)
 msgid ""
 "Version %s\\n\\nNo compatible extension available to display full info "
 "(contact, credits, license)."
 msgstr ""
-"Version %s\\n\\nKeine kompatible Erweiterung verfügbar um vollständige "
-"Information anzuzeigen (Kontakt, Beitragende, Lizenz)."
 
 #: tmp_strings.xml:35(string)
 msgid "Get OI About"
-msgstr ""
+msgstr "Sobre OI"
 
 #. Update
 #: tmp_strings.xml:39(string)
 msgid "Download application not available."
-msgstr "Keine Anwendung zum Herunterladen vorhanden."
+msgstr ""
 
 #. Message how to use OI Color Picker from within OI Flashlight.
 #: tmp_strings.xml:45(string)
 msgid "To select a color in OI Flashlight, press menu &gt; Color."
 msgstr ""
-"Um eine Farbe in der OI-Taschenlampe zu wählen, wählen Sie Menü &gt; Farbe."
 
 #: tmp_strings.xml:46(string)
 msgid "OI Flashlight"
-msgstr "OI-Taschenlampe"
+msgstr ""
 
 #: tmp_strings.xml:48(string)
 msgid "Hypnotic, animated spiral Live Wallpaper."
@@ -124,7 +118,7 @@ msgstr ""
 
 #: tmp_strings.xml:52(string)
 msgid "BettrFlickr"
-msgstr "BettrFlickr"
+msgstr ""
 
 #: tmp_strings.xml:54(string)
 msgid "Mix and match artwork to generate anime characters"
@@ -136,20 +130,17 @@ msgstr ""
 
 #: tmp_strings.xml:58(string)
 msgid "This app can be used with the following applications:"
-msgstr "Diese App kann mit mit folgenden Anwedungen verwendet werden:"
+msgstr ""
 
 #: tmp_strings.xml:59(string)
 msgid "Launch %s"
-msgstr "Starte %s"
+msgstr ""
 
 #. %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher").
 #: tmp_strings.xml:61(string)
 msgid "This app requires %1$s %2$s or higher."
-msgstr "Diese Anwendung benötigt %1$s %2$s Auflösung oder höher."
+msgstr ""
 
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr ""
-
-
-

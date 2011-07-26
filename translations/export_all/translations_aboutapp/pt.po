@@ -25,6 +25,7 @@ msgstr ""
 "  Joao Nogueira https://launchpad.net/~whipx\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Tiago Silva https://launchpad.net/~tiagosilva\n"
+"  miguel narciso https://launchpad.net/~as1309831\n"
 "  nglnx https://launchpad.net/~nglnx"
 
 #. Explanation what this application does. It is a menu extension for other applications.

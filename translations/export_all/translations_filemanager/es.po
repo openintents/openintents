@@ -28,7 +28,7 @@ msgstr ""
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  miwie https://launchpad.net/~mw-miwie\n"
-"  simon https://launchpad.net/~hurtadosimon"
+"  simon https://launchpad.net/~sianhulo"
 
 #. Short explanation of the application. Max. 80 characters.
 #: tmp_strings.xml:26(string)
