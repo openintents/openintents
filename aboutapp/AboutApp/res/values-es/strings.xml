@@ -30,6 +30,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Andrew Mike https://launchpad.net/~logomancer
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
+  Jonay https://launchpad.net/~jonay-santana
   Paco Molinero https://launchpad.net/~franciscomol</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -43,7 +44,7 @@
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_shopping">OI Shopping List</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">Bloc de notas OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI Safe</string>
 	
@@ -84,27 +85,27 @@
 		<item>Danés</item>
 		<item>Alemán</item>
 		<item>Inglés</item>
-		<item>Greek</item>
+		<item>Griego</item>
 		<item>Español</item>
-		<item>Persian</item>
+		<item>Persa</item>
 		<item>Finlandés</item>
-		<item>Faroese</item>
+		<item>Feroés</item>
 		<item>Francés</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
+		<item>Croata</item>
+		<item>Húngaro</item>
 		<item>Italiano</item>
 		<item>Japonés</item>
-		<item>Korean</item>
-		<item>Lao</item>
+		<item>Coreano</item>
+		<item>Laosiano</item>
 		<item>Neerlandés</item>
 		<item>Occitano (después de 1500)</item>
 		<item>Polaco</item>
 		<item>Portugués</item>
 		<item>Portugués brasileño</item>
-		<item>Romanian</item>
+		<item>Rumano</item>
 		<item>Ruso</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
+		<item>Sardo</item>
+		<item>Eslovaco</item>
 		<item>Sueco</item>
 		<item>Turco</item>
 		<item>Chino (Simplificado)</item>

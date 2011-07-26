@@ -6,7 +6,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Abdessamad Derraz https://launchpad.net/~derraz</string>
+  Abdessamad Derraz https://launchpad.net/~derraz
+  fragarch https://launchpad.net/~fragarch</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -15,7 +16,7 @@
     
     <string name="update_available">Une nouvelle version de %s est disponible.\nVoulez-vous la mettre à jour?</string>
     <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
+    <string name="update_available_2">Une nouvelle version de %1$s est disponible.\n%2$s\n</string>
     <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
     <string name="update_available_no_comment">Une nouvelle version de %s est disponible.</string>
 	<string name="market_not_available">Le marché Android n\'est pas disponible.</string>
@@ -47,7 +48,7 @@
     <string name="current_version">Version actuelle: %s</string>
     <string name="current_version_code">Code de la version actuelle: %s</string>
     <string name="newer_version">Nouvelle version: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_comment">Version plus récente: %1$s - %2$s</string>
     <string name="newer_version_available">Nouvelle version disponible.</string>
     <string name="no_update_info_found">Pas d\'informations de mise à jour trouvées.</string>
     <string name="title_list_new_versions">OI Update - Liste des nouvelles versions</string>
