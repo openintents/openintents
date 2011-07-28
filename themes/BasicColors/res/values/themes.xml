@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
- * Copyright (C) 2010 OpenIntents.org
+ * Copyright (C) 2010-2011 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@
 		<item name="textSizeLarge">28sp</item>
 		<item name="textColor">#FF600000</item>
 		<item name="textColorPrice">#FF600000</item>
+		<item name="textColorPriority">#FF600000</item>
 		<item name="textColorChecked">#FF806060</item>
 		<item name="textStrikethroughChecked">false</item>
 		<item name="showCheckBox">true</item>
@@ -43,6 +44,7 @@
 		<item name="lineColor">#FF008000</item>
 		<item name="textColor">#FF006000</item>
 		<item name="textColorPrice">#FF006000</item>
+		<item name="textColorPriority">#FF006000</item>
 		<item name="textColorChecked">#FF608060</item>
 	</style>
 	<style name="Theme.BasicColors.Blue">
@@ -51,6 +53,7 @@
 		<item name="lineColor">#FF000080</item>
 		<item name="textColor">#FF000060</item>
 		<item name="textColorPrice">#FF000060</item>
+		<item name="textColorPriority">#FF000060</item>
 		<item name="textColorChecked">#FF606080</item>
 	</style>
 	<style name="Theme.BasicColors.Red.Notepad">

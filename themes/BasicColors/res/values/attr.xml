@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
- * Copyright (C) 2010 OpenIntents.org
+ * Copyright (C) 2009-2011 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
  -->
 
 <!-- 
-  Version: OI Shopping List 1.2.1-beta1
-  Date: 2009-02-07
+  Version: OI Shopping List 1.4
+  Date: 2011-07-28
  -->
  
 <resources>
@@ -45,11 +45,13 @@
 		<!-- Set true if the font only contains upper case characters. -->
 		<attr name="textUpperCaseFont" format="boolean" />
 		
+		<attr name="textSizeTiny" format="dimension" />
 		<attr name="textSizeSmall" format="dimension" />
 		<attr name="textSizeMedium" format="dimension" />
 		<attr name="textSizeLarge" format="dimension" />
 		<attr name="textColor" format="color" />
 		<attr name="textColorPrice" format="color" />
+		<attr name="textColorPriority" format="color" />
 		<attr name="textColorChecked" format="color" />
 		<attr name="textStrikethroughChecked" format="boolean" />
 		
