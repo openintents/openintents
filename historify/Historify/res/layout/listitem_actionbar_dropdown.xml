@@ -1,0 +1,6 @@
+<TextView  xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/ListItem.SingleLine"
+        android:textSize="18sp"
+        android:padding="6dip"
+        android:background="@drawable/listitem_background2"
+        android:text="Name" />

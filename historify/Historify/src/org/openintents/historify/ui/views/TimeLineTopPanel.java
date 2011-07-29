@@ -7,9 +7,11 @@ import org.openintents.historify.preferences.PreferenceManager;
 import org.openintents.historify.preferences.Prefs;
 import org.openintents.historify.ui.views.popup.TimeLineOptionsPopupWindow;
 import org.openintents.historify.ui.views.popup.ToolTipPopupWindow;
+import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
@@ -19,6 +21,22 @@ import android.widget.TextView;
 import android.widget.PopupWindow.OnDismissListener;
 
 public class TimeLineTopPanel {
+	
+	private static class HMenuBuilder {
+		public MenuModel build(final TimeLineTopPanel panel) {
+			return new MenuModel(panel.getContext())
+			.add(R.string.timeline_hmenu_filter, new OnClickListener() {
+				public void onClick(View v) {
+					panel.onTimeLineOptionsSelected();
+				}
+			})
+			.add(R.string.timeline_hmenu_restore, new OnClickListener() {
+				public void onClick(View v) {
+					panel.onShow();
+				}
+			});
+		}
+	}
 	
 	private Contact mContact;
 	
@@ -74,7 +92,19 @@ public class TimeLineTopPanel {
 	}
 	
 	private void onTimeLineOptionsSelected() {
-		new TimeLineOptionsPopupWindow(this).show(mBtnOptions);
+		
+		TimeLineOptionsPopupWindow popupWindow =
+			new TimeLineOptionsPopupWindow(this);
+		popupWindow.setHideButtonVisibility(mVisible);
+		
+		if(mVisible) {
+			popupWindow.show(mBtnOptions);	
+		} else {
+			popupWindow.setArrowGravity(Gravity.LEFT);
+			popupWindow.show(mActionBar.getHSymbol());
+		}
+		
+		
 	}
 
 	public Context getContext() {
@@ -84,6 +114,7 @@ public class TimeLineTopPanel {
 	public void onHide() {
 		boolean needToShowToolTip = PreferenceManager.getInstance(mContext).getBooleanPreference(Prefs.TOOLTIP_RESTORE_TOP_PANEL_VISIBILITY, Prefs.DEF_TOOLTIP_VISIBILITY);
 		onHide(needToShowToolTip);
+		onUserChangedVisibility();
 	}
 	
 	private void onHide(boolean displayTooltip) {
@@ -104,16 +135,18 @@ public class TimeLineTopPanel {
 		}
 		
 		//set the h! symbol clickable
-		mActionBar.setHSymbolClickable(new View.OnClickListener() {
-			public void onClick(View v) {
-				onShow();
-			}
-		});
+		mActionBar.setHSymbolClickable(new HMenuBuilder().build(this));
 	}
 
 	public void onShow() {
 		mContentView.setVisibility(View.VISIBLE);
 		mActionBar.setHSymbolClickable(null);
+		onUserChangedVisibility();
+	}
+
+	private void onUserChangedVisibility() {
+		mVisible = mContentView.getVisibility() == View.VISIBLE;
+		PreferenceManager.getInstance(mContext).setPreference(Prefs.TIMELINE_TOP_PANEL_VISIBILITY, mVisible);
 	}
 	
 }

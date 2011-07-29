@@ -16,6 +16,7 @@
     	android:layout_gravity="center_horizontal" />
 
   <LinearLayout
+  	android:maxWidth="200dip"
   	android:id="@+id/popupwindow_root"
   	android:background="@drawable/popup"
   	android:orientation="vertical"

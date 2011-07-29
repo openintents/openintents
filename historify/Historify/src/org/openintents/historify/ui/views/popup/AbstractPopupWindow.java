@@ -37,11 +37,15 @@ public abstract class AbstractPopupWindow extends PopupWindow {
 		super.showAsDropDown(anchor);
 	}
 	
-	protected void setArrowGravity(int gravity) {
+	public void setArrowGravity(int gravity) {
 //		LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 //		layoutParams.gravity = gravity;
 //		mArrow.setLayoutParams(layoutParams);
 		((LinearLayout.LayoutParams)mArrow.getLayoutParams()).gravity = gravity;		
+	}
+	
+	protected void setArrowVisibility(int visibility) {
+		mArrow.setVisibility(visibility);
 	}
 	
 	protected abstract void addContent(ViewGroup contentRoot);

@@ -13,19 +13,25 @@ import android.widget.TextView;
 public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 
 	private TimeLineTopPanel mPanel;
+	private TextView mTxtHidePanel;
+	
 	
 	public TimeLineOptionsPopupWindow(TimeLineTopPanel panel) {
 		super(panel.getContext());
 		mPanel = panel;
 	}
 
+	public void setHideButtonVisibility(boolean visible) {
+		mTxtHidePanel.setVisibility(visible ? View.VISIBLE : View.GONE);
+	}
+	
 	@Override
 	protected void addContent(ViewGroup contentRoot) {
 		
 		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_timeline_options, contentRoot);
 		
-		TextView txtHidePanel = (TextView)contentView.findViewById(R.id.timeline_options_txtHidePanel);
-		txtHidePanel.setOnClickListener(new OnClickListener() {
+		mTxtHidePanel = (TextView)contentView.findViewById(R.id.timeline_options_txtHidePanel);
+		mTxtHidePanel.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dismiss();
 				mPanel.onHide();

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
+import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu;
+import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
 
 import android.app.Service;
 import android.content.Context;
@@ -29,11 +31,24 @@ public class ActionBar {
 
 	public static class Action {
 		public final View.OnClickListener onClickListener;
+		public final String title;
 		public final int iconResId;
 		
 		public Action(int iconResId, View.OnClickListener onClickListener) {
 			this.iconResId = iconResId;
+			this.title = "";
 			this.onClickListener = onClickListener;
+		}
+
+		public Action(String title, OnClickListener onClickListener) {
+			this.iconResId = 0;
+			this.title = title;
+			this.onClickListener = onClickListener;
+		}
+		
+		@Override
+		public String toString() {
+			return title;
 		}
 	}
 	
@@ -135,8 +150,22 @@ public class ActionBar {
 		return mLogo;
 	}
 
-	public void setHSymbolClickable(OnClickListener onClickListener) {
-		mLogo.setOnClickListener(onClickListener);
-		mLogo.setImageResource(onClickListener == null ? R.drawable.actionbar_logo_short : R.drawable.actionbar_logo_short_clickable);
+	public void setHSymbolClickable(final MenuModel menu) {
+		
+		if(menu==null) {
+			mLogo.setOnClickListener(null);
+			mLogo.setImageResource(R.drawable.actionbar_logo_short);
+		} else {
+			mLogo.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					ActionBarDropDownMenu dropDownMenu =
+						new ActionBarDropDownMenu(mContext);
+					dropDownMenu.setMenu(menu);
+					dropDownMenu.show(mContentView);
+				}
+			});
+			mLogo.setImageResource(R.drawable.actionbar_logo_short_clickable);
+		}
 	}
+
 }

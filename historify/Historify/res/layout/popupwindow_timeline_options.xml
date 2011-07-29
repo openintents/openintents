@@ -43,6 +43,6 @@
 		android:id="@+id/timeline_options_txtHidePanel"
 		style="@style/TextView.Popup"
 		android:paddingLeft="3dip"
-		android:text="> Hide top panel"
+		android:text="> hide top panel"
 		/>
 </merge>
