@@ -18,25 +18,19 @@ package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.TimeLineAdapter;
-import org.openintents.historify.data.loaders.ContactIconHelper;
-import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
+import org.openintents.historify.ui.views.ActionBar;
+import org.openintents.historify.ui.views.TimeLineTopPanel;
 import org.openintents.historify.uri.Actions;
-import org.openintents.historify.utils.Toaster;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -55,12 +49,9 @@ public class TimeLineFragment extends Fragment {
 	private TimeLineAdapter mAdapter;
 
 	// views
+	private TimeLineTopPanel mTopPanel;
 	private ListView mLstTimeLine;
-	private TextView mTxtContact;
-	private ImageView mImgContactIcon;
 	
-	private Button mBtnOptions;
-
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,16 +77,9 @@ public class TimeLineFragment extends Fragment {
 				.setText(R.string.timeline_no_events);
 		((ViewGroup) mLstTimeLine.getParent()).addView(lstContactsEmptyView);
 		mLstTimeLine.setEmptyView(lstContactsEmptyView);
-		
-		mTxtContact = (TextView) layout.findViewById(R.id.timeline_txtContact);
-		mImgContactIcon = (ImageView) layout.findViewById(R.id.timeline_imgContactIcon);
-		
-		mBtnOptions = (Button)layout.findViewById(R.id.timeline_btnOptions);
-		mBtnOptions.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				onTimeLineOptionsSelected();
-			}
-		});
+				
+		//init top panel
+		mTopPanel = new TimeLineTopPanel((ViewGroup) layout.findViewById(R.id.timeline_layoutTopPanel));
 		
 		return layout;
 	}
@@ -104,6 +88,10 @@ public class TimeLineFragment extends Fragment {
 		mContact = contact;
 	}
 
+	public void setActionBar(ActionBar actionBar) {
+		mTopPanel.setActionBar(actionBar);
+	}
+	
 	/**
 	 * Called when the fragment's activity has been created and this fragment's
 	 * view hierarchy instantiated.
@@ -111,20 +99,13 @@ public class TimeLineFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		
+		mTopPanel.init(mContact);
 
 		if(mContact!=null) {
-			mTxtContact.setText(mContact.getName());
 			mAdapter = new TimeLineAdapter(getActivity(), mContact);
-			mLstTimeLine.setAdapter(mAdapter);
-			
-			Drawable icon = ContactIconHelper.getIconDrawable(getActivity(), mContact.getLookupKey());
-			if(icon==null) mImgContactIcon.setImageResource(R.drawable.contact_default_large);
-			else mImgContactIcon.setImageDrawable(icon);
-			
-		} else {
-			mTxtContact.setText("");
+			mLstTimeLine.setAdapter(mAdapter);	
 		}
-
 	}
 
 	private void onEventClicked(Event event) {
@@ -149,10 +130,6 @@ public class TimeLineFragment extends Fragment {
 		
 		//release merged cursors
 		mAdapter.releaseCursors();
-	}
-
-	private void onTimeLineOptionsSelected() {
-		Toaster.toast(this, "options menu");
 	}
 
 }

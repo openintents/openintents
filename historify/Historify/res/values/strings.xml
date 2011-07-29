@@ -40,4 +40,9 @@
 	
 	<string name="searchbar.contacts_hint">search for a contact ...</string>
 	
+	<string name="timeline.options.all">all</string>
+	<string name="timeline.options.none">none</string>
+	<string name="timeline.options.default">default</string>
+	<string name="timeline.msg_restore">You can always restore the top panel by selecting the <b>h!</b> symbol.</string>
+	
 </resources>

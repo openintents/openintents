@@ -19,18 +19,14 @@ package org.openintents.historify.ui;
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
-import org.openintents.historify.ui.fragments.ContactsListFragment;
 import org.openintents.historify.ui.fragments.TimeLineFragment;
 import org.openintents.historify.ui.views.ActionBar;
-import org.openintents.historify.ui.views.ActionBar.Action;
 import org.openintents.historify.uri.Actions;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 
 /**
  * 
@@ -62,8 +58,8 @@ public class TimeLineActivity extends FragmentActivity {
 			
 			Contact contact = new ContactLoader().loadFromLookupKey(this, contactLookupKey);
 			if(contact!=null) {
+				setupActionBar(contact);
 				setFragmentParameters(contact);
-				setupActionBar(contact);	
 			} else {
 				Log.e(N, "Contact could not be loaded.");
 				finish();
@@ -74,6 +70,7 @@ public class TimeLineActivity extends FragmentActivity {
 	private void setFragmentParameters(Contact contact) {
 		timeLineFragment = (TimeLineFragment)getSupportFragmentManager().findFragmentById(R.id.timeline_fragment);
 		timeLineFragment.setContact(contact);
+		timeLineFragment.setActionBar(actionBar);
 	}
 
 	private void setupActionBar(Contact contact) {

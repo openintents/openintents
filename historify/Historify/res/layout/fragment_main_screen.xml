@@ -56,30 +56,8 @@
 	android:text="@string/main.msg.config"
 	/>
 
-<LinearLayout
-	android:paddingBottom="6dip"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content">
 
-	<View
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="2"
-	/>
- 	
-	<Button
-		android:id="@+id/main_screen_btnSources"
-		android:text="@string/main.label.sources"
-		android:layout_weight="1"
-		style="@style/Button.Skinned"
-	/> 
-	
-	<View
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="2"
-	/>
-</LinearLayout>
+<include layout="@layout/button_sources" />
     
 </LinearLayout>
 </ScrollView>

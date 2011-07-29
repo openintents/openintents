@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+	<LinearLayout
+		android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+	    >
+
+	<Button
+		android:id="@+id/timeline_options_btnAll"
+		android:text="@string/timeline.options.all"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+		/>
+
+	<Button
+		android:id="@+id/timeline_options_btnNone"
+		android:text="@string/timeline.options.none"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+		/>
+
+	<Button
+		android:id="@+id/timeline_options_btnDefault"
+		android:text="@string/timeline.options.default"
+		android:layout_weight="1"
+		style="@style/Button.Skinned"
+		/>
+
+	</LinearLayout>
+	
+	<ListView  
+		android:id="@+id/timeline_options_lstSources"
+	    android:choiceMode="multipleChoice"
+	    style="@style/ListView" 
+    	/>
+
+	<include layout="@layout/button_sources"/>
+
+	<TextView
+		android:id="@+id/timeline_options_txtHidePanel"
+		style="@style/TextView.Popup"
+		android:paddingLeft="3dip"
+		android:text="> Hide top panel"
+		/>
+</merge>

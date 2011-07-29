@@ -17,17 +17,13 @@
 package org.openintents.historify.ui;
 
 import org.openintents.historify.R;
-import org.openintents.historify.R.string;
 import org.openintents.historify.ui.fragments.ContactsListFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.ui.views.ActionBar.Action;
 import org.openintents.historify.uri.Actions;
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;

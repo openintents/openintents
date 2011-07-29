@@ -5,9 +5,10 @@
     >
     
 <RelativeLayout
+	android:id="@+id/timeline_layoutTopPanel"
 	android:layout_width="fill_parent" 
     android:layout_height="wrap_content"
-    android:background="@drawable/actionbar_background"
+    android:background="@drawable/panel_background"
     android:paddingTop="4dip"
     android:paddingBottom="2dip"
     android:paddingLeft="6dip"

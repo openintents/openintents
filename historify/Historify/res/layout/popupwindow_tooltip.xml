@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+	<TextView
+		android:id="@+id/tooltip_txtMessage"
+		style="@style/TextView.Popup"
+		android:layout_width="wrap_content"
+		android:paddingLeft="3dip"
+		/>
+
+	<CheckBox
+		android:id="@+id/tooltip_chkShowAgain"
+		android:text="Show this information in the future."
+		android:textSize="12sp"
+		style="@style/TextView.Popup"
+		android:layout_width="fill_parent"
+	    android:checked="true"
+	/>
+
+</merge>

@@ -8,10 +8,10 @@ import org.openintents.historify.R;
 
 import android.app.Service;
 import android.content.Context;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -38,9 +38,11 @@ public class ActionBar {
 	}
 	
 	private Context mContext;
-	private ViewGroup mContentView;
 	private String mTitle;
 	private List<Action> mActions;
+	
+	private ViewGroup mContentView;
+	private ImageView mLogo;
 	
 	public ActionBar(ViewGroup contentView, int titleResId) {
 		init(contentView, contentView.getContext().getString(titleResId));		
@@ -96,11 +98,11 @@ public class ActionBar {
 
 	private void addImage(int imageResId) {
 		
-		ImageView logo = new ImageView(mContext);
-		logo.setImageResource(imageResId);
-		logo.setClickable(false);
-		logo.setScaleType(ScaleType.CENTER);
-        mContentView.addView(logo);
+		mLogo = new ImageView(mContext);
+		mLogo.setImageResource(imageResId);
+		mLogo.setClickable(false);
+		mLogo.setScaleType(ScaleType.CENTER);
+        mContentView.addView(mLogo);
 
 	}
 	
@@ -127,5 +129,14 @@ public class ActionBar {
 
 	private View inflate(int resId) {
 		return ((LayoutInflater)mContext.getSystemService(Service.LAYOUT_INFLATER_SERVICE)).inflate(resId, null);
+	}
+
+	public View getHSymbol() {
+		return mLogo;
+	}
+
+	public void setHSymbolClickable(OnClickListener onClickListener) {
+		mLogo.setOnClickListener(onClickListener);
+		mLogo.setImageResource(onClickListener == null ? R.drawable.actionbar_logo_short : R.drawable.actionbar_logo_short_clickable);
 	}
 }

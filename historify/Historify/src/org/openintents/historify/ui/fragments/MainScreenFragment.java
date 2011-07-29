@@ -56,7 +56,7 @@ public class MainScreenFragment extends Fragment {
 		//init buttons
 		btnMore = (Button)layout.findViewById(R.id.main_screen_btnMore);
 		btnFavorites = (Button)layout.findViewById(R.id.main_screen_btnFavorites);
-		btnSources = (Button)layout.findViewById(R.id.main_screen_btnSources);
+		btnSources = (Button)layout.findViewById(R.id.btnSources);
 
 		btnMore.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
