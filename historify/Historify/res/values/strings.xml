@@ -12,39 +12,29 @@
 	<string name="contacts.no_contacts">no contacts.</string>
 	<string name="contacts.title_favorites">my favorites</string>
 	<string name="contacts.title_all">my contacts</string>
-	
-	<string name="sources.filter_mode_description">Showing sources for:</string>
-	<string name="sources.filter_mode_default">(All Contacts)</string>
-	<string name="sources.filter_mode_new">Add exception ...</string>
-	<string name="sources.filter_mode_new_dialog">Add exception</string>
-	<string name="sources.filter_mode_already_added">Already added</string>
-	<string name="sources.filter_deleted">All exceptions for %1$s have been removed.</string>
-	
-	<string name="sources.internal_sources">Internal</string>
-	<string name="sources.external_sources">External</string>
+	<string name="searchbar.contacts_hint">search for a contact ...</string>
+		
+	<string name="sources.title">my sources</string>
+	<string name="sources.external_sources">external sources</string>
+	<string name="sources.need_mode"><b>Need more?</b>\nYou could always install new\napplications with further sources.\nmore information</string>
 	<string name="sources.quickpost_sources">QuickPost Applications</string>
-	<string name="sources.no_external_sources">No external sources have been detected.</string>
 	<string name="sources.no_quickpost_sources">No QuickPosts.</string>
 	
-	<string name="telephony.event_message">Call duration: %1$s</string>
-	
 	<string name="timeline.no_events">there is nothing to display.</string>
-	
-	<string name="permissions.use_bridge">Interact with Historify</string>
-	<string name="permissions.use_bridge_description">Can register a SharedSource, can use the QuickPost Interface.</string>
-	
-	<string name="notification_source_added_ticker">SharedSource registered.</string>
-	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
-	
-	<string name="factory_test.config_error">Wrong parameter(s).</string>
-	
-	<string name="searchbar.contacts_hint">search for a contact ...</string>
-	
 	<string name="timeline.options.all">all</string>
 	<string name="timeline.options.none">none</string>
 	<string name="timeline.options.default">default</string>
 	<string name="timeline.msg_restore">You can always restore the top panel by selecting the <b>h!</b> symbol.</string>
 	<string name="timeline.hmenu.filter">filters</string>
 	<string name="timeline.hmenu.restore">restore top panel</string>
+		
+	<string name="notification_source_added_ticker">SharedSource registered.</string>
+	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
+
+	<string name="telephony.event_message">Call duration: %1$s</string>	
+	<string name="factory_test.config_error">Wrong parameter(s).</string>
 	
+	<string name="permissions.use_bridge">Interact with Historify</string>
+	<string name="permissions.use_bridge_description">Can register a SharedSource, can use the QuickPost Interface.</string>
+		
 </resources>

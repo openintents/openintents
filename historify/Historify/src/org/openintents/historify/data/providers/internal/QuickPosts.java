@@ -36,7 +36,7 @@ import android.util.Log;
 public class QuickPosts {
 
 	public static final String SOURCE_NAME = "QuickPosts";
-	public static final String DESCRIPTION = "Events posted by 3rd party applications via QuickPost.";
+	public static final String DESCRIPTION = "Events posted by other applications via QuickPost.";
 	
 	public static final String QUICKPOSTS_AUTHORITY = "org.openintents.historify.internal.quickposts";
 	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(QUICKPOSTS_AUTHORITY);

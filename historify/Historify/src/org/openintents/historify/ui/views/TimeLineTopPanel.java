@@ -3,8 +3,8 @@ package org.openintents.historify.ui.views;
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.preferences.Pref;
 import org.openintents.historify.preferences.PreferenceManager;
-import org.openintents.historify.preferences.Prefs;
 import org.openintents.historify.ui.views.popup.TimeLineOptionsPopupWindow;
 import org.openintents.historify.ui.views.popup.ToolTipPopupWindow;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
@@ -87,7 +87,7 @@ public class TimeLineTopPanel {
 			mTxtContact.setText("");
 		}	
 		
-		mVisible = PreferenceManager.getInstance(mContext).getBooleanPreference(Prefs.TIMELINE_TOP_PANEL_VISIBILITY, Prefs.DEF_TIMELINE_TOP_PANEL_VISIBILITY);
+		mVisible = PreferenceManager.getInstance(mContext).getBooleanPreference(Pref.TIMELINE_TOP_PANEL_VISIBILITY, Pref.DEF_TIMELINE_TOP_PANEL_VISIBILITY);
 		if(!mVisible) onHide(false);
 	}
 	
@@ -112,7 +112,7 @@ public class TimeLineTopPanel {
 	}
 
 	public void onHide() {
-		boolean needToShowToolTip = PreferenceManager.getInstance(mContext).getBooleanPreference(Prefs.TOOLTIP_RESTORE_TOP_PANEL_VISIBILITY, Prefs.DEF_TOOLTIP_VISIBILITY);
+		boolean needToShowToolTip = PreferenceManager.getInstance(mContext).getBooleanPreference(Pref.TOOLTIP_RESTORE_TOP_PANEL_VISIBILITY, Pref.DEF_TOOLTIP_VISIBILITY);
 		onHide(needToShowToolTip);
 		onUserChangedVisibility();
 	}
@@ -128,7 +128,7 @@ public class TimeLineTopPanel {
 			popupWindow.setOnDismissListener(new OnDismissListener() {
 				public void onDismiss() {					
 					boolean needToShowInFuture = popupWindow.needToShowInFuture();
-					PreferenceManager.getInstance(mContext).setPreference(Prefs.TOOLTIP_RESTORE_TOP_PANEL_VISIBILITY, needToShowInFuture);
+					PreferenceManager.getInstance(mContext).setPreference(Pref.TOOLTIP_RESTORE_TOP_PANEL_VISIBILITY, needToShowInFuture);
 				}
 			});
 			popupWindow.show(viewHSymbol);
@@ -146,7 +146,7 @@ public class TimeLineTopPanel {
 
 	private void onUserChangedVisibility() {
 		mVisible = mContentView.getVisibility() == View.VISIBLE;
-		PreferenceManager.getInstance(mContext).setPreference(Prefs.TIMELINE_TOP_PANEL_VISIBILITY, mVisible);
+		PreferenceManager.getInstance(mContext).setPreference(Pref.TIMELINE_TOP_PANEL_VISIBILITY, mVisible);
 	}
 	
 }

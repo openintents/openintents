@@ -59,7 +59,7 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 		if (position == 0)
 			return VIEW_TYPE_HEADER;
 		else if (position == 1 && mExternalSources.isEmpty()) {
-			return VIEW_TYPE_EMPTY_MESSAGE;
+			return VIEW_TYPE_NEED_MORE_MESSAGE;
 		} else
 			return VIEW_TYPE_ITEM;
 
@@ -111,7 +111,7 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 			}
 			((TextView) convertView).setText(R.string.sources_quickpost_sources);
 
-		} else if (viewType == VIEW_TYPE_EMPTY_MESSAGE) { // message shown if
+		} else if (viewType == VIEW_TYPE_NEED_MORE_MESSAGE) { // message shown if
 			// there are no
 			// quickpost sources
 			// detected

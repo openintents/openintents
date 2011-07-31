@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.model.Contact;
@@ -60,8 +59,8 @@ public class FilterModesAdapter extends BaseAdapter {
 		mLoader = new FilterLoader();
 
 		mItems = new ArrayList<Contact>();
-		DEFAULT = mContext.getString(R.string.sources_filter_mode_default);
-		NEW = mContext.getString(R.string.sources_filter_mode_new);
+		DEFAULT = "";//mContext.getString(R.string.sources_filter_mode_default);
+		NEW = "";//mContext.getString(R.string.sources_filter_mode_new);
 
 		load();
 	}

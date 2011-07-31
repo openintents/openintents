@@ -56,7 +56,7 @@ public class ContactChooserDialog extends Dialog {
 		}
 
 		// init view
-		setTitle(context.getString(R.string.sources_filter_mode_new_dialog));
+		//setTitle(context.getString(R.string.sources_filter_mode_new_dialog));
 		setContentView(R.layout.dialog_contacts);
 
 		// listview
@@ -81,11 +81,11 @@ public class ContactChooserDialog extends Dialog {
 		lstContacts.setEmptyView(lstContactsEmptyView);
 			
 		// adapter
-		String alreadyAddedMessage = context
-				.getString(R.string.sources_filter_mode_already_added);
-		mAdapter = new ContactsDialogAdapter(context,
-				disabledKeys, alreadyAddedMessage);
-		lstContacts.setAdapter(mAdapter);
+//		String alreadyAddedMessage = context
+//				.getString(R.string.sources_filter_mode_already_added);
+//		mAdapter = new ContactsDialogAdapter(context,
+//				disabledKeys, alreadyAddedMessage);
+//		lstContacts.setAdapter(mAdapter);
 
 		super.setOnDismissListener(new DismissListenerWrapper());
 	}

@@ -26,7 +26,8 @@
             </intent-filter>
 		</activity>
 		
-        <activity android:name=".ui.SourcesActivity"/>
+        <activity android:name=".ui.SourcesActivity"
+        	android:theme="@android:style/Theme.NoTitleBar"/>
 
         <activity android:name=".ui.QuickPostsConfigActivity">
         	<intent-filter>

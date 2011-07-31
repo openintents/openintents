@@ -16,10 +16,12 @@
 
 package org.openintents.historify.ui;
 
-import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
+import org.openintents.historify.R;
+import org.openintents.historify.ui.views.ActionBar;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 
 /**
  * 
@@ -29,17 +31,20 @@ import android.support.v4.app.FragmentActivity;
  */
 public class SourcesActivity extends FragmentActivity {
 
+	private ActionBar actionBar;
+	
 	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sources);
+		setupActionBar();
+	}
 
-		if (savedInstanceState == null) {
-			
-			SourcesConfigurationFragment fragment = new SourcesConfigurationFragment();
-			getSupportFragmentManager().beginTransaction().add(
-					android.R.id.content, fragment).commit();
-		}
+	private void setupActionBar() {
+		
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+		actionBar.setup();
 
 	}
 

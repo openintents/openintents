@@ -7,6 +7,7 @@ import java.util.List;
 import org.openintents.historify.R;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
+import org.openintents.historify.utils.Toaster;
 
 import android.app.Service;
 import android.content.Context;
@@ -83,6 +84,7 @@ public class ActionBar {
 		if(mTitle==null) {
 			//no title means we have to display the logo
 			addImage(R.drawable.actionbar_logo);
+			addTitleAndSpacing();
 		} else {
 			//display short logo and title
 			addImage(R.drawable.actionbar_logo_short);
@@ -90,6 +92,14 @@ public class ActionBar {
 			for(Action a : mActions)
 				addAction(a);
 		}
+		
+		Action actionMoreMenu = new Action(R.drawable.ic_menu_more, new OnClickListener() {
+			public void onClick(View v) {
+				Toaster.toast(mContext, "menu");
+			}
+		});
+		
+		addAction(actionMoreMenu);
 		
 	}
 
@@ -136,7 +146,7 @@ public class ActionBar {
         spacing.weight = 1;
 
 		TextView title = (TextView) inflate(R.layout.actionbar_title);
-		title.setText(mTitle);
+		title.setText(mTitle == null ? "" : mTitle);
 		title.setLayoutParams(spacing);
 		
 		mContentView.addView(title);

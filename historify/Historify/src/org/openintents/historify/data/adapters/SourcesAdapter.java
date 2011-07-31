@@ -30,6 +30,7 @@ import org.openintents.historify.data.model.source.InternalSource;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.utils.URLHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -37,6 +38,9 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
+import android.text.Spannable;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.URLSpan;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +50,7 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.TextView.BufferType;
 
 /**
  * 
@@ -60,13 +65,12 @@ public class SourcesAdapter extends BaseAdapter {
 	private static final int HEADER_OFFSET = 1;
 
 	// different types of views in this adapter
-	// HEADER is a section header displaying either 'internal' or 'external'.
+	// HEADER is a section header displaying 'external'.
 	// ITEM is a source.
-	// EMPTY_MESSAGE is a textview shown if the external sources section is
-	// empty.
+	// NEED_MORE_MESSAGE is a textview shown as the very last list item
 	protected static final int VIEW_TYPE_HEADER = 0;
 	protected static final int VIEW_TYPE_ITEM = 1;
-	protected static final int VIEW_TYPE_EMPTY_MESSAGE = 2;
+	protected static final int VIEW_TYPE_NEED_MORE_MESSAGE = 2;
 
 	protected Activity mContext;
 
@@ -114,6 +118,8 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources = new ArrayList<AbstractSource>();
 		mExternalSources = new ArrayList<AbstractSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
+		
+		load();
 	}
 
 	/** Load external and internal sources with their state. */
@@ -167,7 +173,7 @@ public class SourcesAdapter extends BaseAdapter {
 
 		mFilterModeContact = contact;
 		mFilterModePosition = position;
-		load();
+		
 	}
 
 	public int getFilterModePosition() {
@@ -191,12 +197,10 @@ public class SourcesAdapter extends BaseAdapter {
 	@Override
 	public int getItemViewType(int position) {
 
-		if (position == 0
-				|| position == mInternalSources.size() + HEADER_OFFSET)
+		if (position == mInternalSources.size())
 			return VIEW_TYPE_HEADER;
-		else if (position == mInternalSources.size() + HEADER_OFFSET + 1
-				&& mExternalSources.isEmpty()) {
-			return VIEW_TYPE_EMPTY_MESSAGE;
+		else if (position == mInternalSources.size() + HEADER_OFFSET + mExternalSources.size()) {
+			return VIEW_TYPE_NEED_MORE_MESSAGE;
 		} else
 			return VIEW_TYPE_ITEM;
 
@@ -209,7 +213,7 @@ public class SourcesAdapter extends BaseAdapter {
 
 	@Override
 	public boolean isEnabled(int position) {
-		return getItemViewType(position) == VIEW_TYPE_ITEM;
+		return getItemViewType(position) != VIEW_TYPE_HEADER;
 	}
 
 	public long getItemId(int position) {
@@ -219,14 +223,12 @@ public class SourcesAdapter extends BaseAdapter {
 
 	public AbstractSource getItem(int position) {
 
-		if (position == 0
-				|| position == mInternalSources.size() + HEADER_OFFSET
-				|| (position == getCount() - 1 && mExternalSources.isEmpty())) {
+		if (getItemViewType(position)!=VIEW_TYPE_ITEM) {
 			return null;
 		} else {
 			return (position > mInternalSources.size()) ? mExternalSources
-					.get(position - mInternalSources.size() - 2 * HEADER_OFFSET)
-					: mInternalSources.get(position - HEADER_OFFSET);
+					.get(position - mInternalSources.size() - HEADER_OFFSET)
+					: mInternalSources.get(position);
 		}
 
 	}
@@ -253,13 +255,9 @@ public class SourcesAdapter extends BaseAdapter {
 			}
 
 			((TextView) convertView)
-					.setText(position == 0 ? R.string.sources_internal_sources
-							: R.string.sources_external_sources);
+					.setText(R.string.sources_external_sources);
 
-		} else if (viewType == VIEW_TYPE_EMPTY_MESSAGE) { // message shown if
-			// there are no
-			// external sources
-			// detected
+		} else if (viewType == VIEW_TYPE_NEED_MORE_MESSAGE) { 
 
 			if (convertView == null || !viewType.equals(convertView.getTag())) {
 				convertView = ((LayoutInflater) mContext
@@ -268,8 +266,19 @@ public class SourcesAdapter extends BaseAdapter {
 				convertView.setVisibility(View.VISIBLE);
 			}
 
-			((TextView) convertView)
-					.setText(R.string.sources_no_external_sources);
+			TextView tv = ((TextView) convertView);
+			String text = mContext.getString(R.string.sources_need_mode);
+			tv.setText(text, BufferType.SPANNABLE);
+			
+			//style text
+			//increase font size in line1
+			((Spannable)tv.getText()).setSpan(new RelativeSizeSpan(2.0f), 0, text.indexOf('\n'), 0);
+			//make last line url-like
+			((Spannable)tv.getText()).setSpan(new URLSpan(new URLHelper().getMoreInfoURL()), text.lastIndexOf('\n')+1, text.length(), 0);
+			
+			convertView.setBackgroundResource(
+					(position - 1) % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+
 
 		} else { // list item
 
@@ -283,6 +292,11 @@ public class SourcesAdapter extends BaseAdapter {
 			}
 
 			AbstractSource item = getItem(position);
+			int pos = item.isInternal() ? position : position - 1;
+			convertView.setBackgroundResource(
+					pos % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+
+			
 			TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
 			tv.setText(item.getName());
 			
