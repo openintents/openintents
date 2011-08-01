@@ -102,10 +102,9 @@ public class TimeLineFragment extends Fragment {
 		
 		mTopPanel.init(mContact);
 
-		if(mContact!=null) {
-			mAdapter = new TimeLineAdapter(getActivity(), mContact);
-			mLstTimeLine.setAdapter(mAdapter);	
-		}
+		mAdapter = new TimeLineAdapter(getActivity(), mContact);
+		mLstTimeLine.setAdapter(mAdapter);	
+
 	}
 
 	private void onEventClicked(Event event) {

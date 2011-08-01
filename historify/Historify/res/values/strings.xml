@@ -27,6 +27,7 @@
 	<string name="timeline.msg_restore">You can always restore the top panel by selecting the <b>h!</b> symbol.</string>
 	<string name="timeline.hmenu.filter">filters</string>
 	<string name="timeline.hmenu.restore">restore top panel</string>
+	<string name="timeline.default_given_name">Contact</string>
 		
 	<string name="moremenu.myfavorites">my favorites</string>
 	<string name="moremenu.mycontacts">my contacts</string>

@@ -16,9 +16,11 @@
 
 package org.openintents.historify.data.loaders;
 
+import org.openintents.historify.R;
 import org.openintents.historify.data.model.Contact;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
@@ -162,10 +164,38 @@ public class ContactLoader {
 		
 	}
 
-	public Contact loadFromLookupKey(Activity context, String contactLookupKey) {
+	public Contact loadFromLookupKey(Activity context, String contactLookupKey, boolean withAdditionalData) {
 		
 		Cursor cursor = openCursor(context, new FilteredContactsLoadingStrategy(contactLookupKey));		
-		return (cursor==null || cursor.getCount()==0) ? null : loadFromCursor(cursor, 0);
+		
+		if (cursor==null || cursor.getCount()==0) {
+			return null;
+		} else {
+			Contact retval = loadFromCursor(cursor, 0);
+			if(retval!=null && withAdditionalData) loadAdditionalData(context, retval);
+			return retval;
+		}
+			
 	}
 	
+	public void loadAdditionalData(Context context, Contact contact) {
+		//load given name if available
+		
+		Uri uri = ContactsContract.Data.CONTENT_URI;
+		String[] projection = new String[] {
+			ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME
+		};
+		String selection = ContactsContract.Data.LOOKUP_KEY + "= ? AND "+ContactsContract.Data.MIMETYPE +"= ? ";
+		String[] selectionArgs = new String[] {
+			contact.getLookupKey(),
+			ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE
+		};
+		
+		Cursor c = context.getContentResolver().query(uri, projection, selection, selectionArgs, null);
+		String givenName = null;
+		if(c.moveToFirst()) givenName = c.getString(0);
+		c.close();
+		
+		contact.setGivenName(givenName == null ? context.getString(R.string.timeline_default_given_name) : givenName);
+	}
 }

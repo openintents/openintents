@@ -55,8 +55,7 @@ public class TimeLineActivity extends FragmentActivity {
 			Log.e(N, "Contact lookupkey not provided.");
 			finish();
 		} else {
-			
-			Contact contact = new ContactLoader().loadFromLookupKey(this, contactLookupKey);
+			Contact contact = new ContactLoader().loadFromLookupKey(this, contactLookupKey,true);
 			if(contact!=null) {
 				setupActionBar(contact);
 				setFragmentParameters(contact);

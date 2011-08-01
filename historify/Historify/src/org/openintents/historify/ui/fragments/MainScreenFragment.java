@@ -89,6 +89,11 @@ public class MainScreenFragment extends Fragment {
 			}
 		});
 		
+		//init gallery empty view
+		View layoutGalleryEmpty = layout.findViewById(R.id.main_screen_viewEmptyGallery);
+		layoutGalleryEmpty.setVisibility(View.GONE);
+		galleryContacts.setEmptyView(layoutGalleryEmpty);
+		
 		return layout;
 	}
 	

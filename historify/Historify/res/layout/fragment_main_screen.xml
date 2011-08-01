@@ -27,6 +27,9 @@
     android:paddingBottom="6dip"
 />
 
+<!--  shown if gallery is empty -->
+<include layout="@layout/list_recently_contacted_empty_view" android:id="@+id/main_screen_viewEmptyGallery" />
+
 <LinearLayout
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"

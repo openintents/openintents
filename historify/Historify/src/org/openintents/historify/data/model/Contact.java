@@ -29,8 +29,10 @@ public class Contact {
 	
 	//displayed name
 	private String mName;
-
 	private long mLastTimeContacted;
+	
+	private String mGivenName;
+
 	
 	public Contact(String key, String name, long lastTimeContacted) {
 		this.mKey = key;
@@ -42,6 +44,14 @@ public class Contact {
 		return mName;
 	}
 
+	public String getGivenName() {
+		return mGivenName;
+	}
+	
+	public void setGivenName(String givenName) {
+		this.mGivenName = givenName;
+	}
+	
 	public String getLookupKey() {
 		return mKey;
 	}
