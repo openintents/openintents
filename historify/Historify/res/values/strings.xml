@@ -28,6 +28,11 @@
 	<string name="timeline.hmenu.filter">filters</string>
 	<string name="timeline.hmenu.restore">restore top panel</string>
 		
+	<string name="moremenu.myfavorites">my favorites</string>
+	<string name="moremenu.mycontacts">my contacts</string>
+	<string name="moremenu.mysources">my sources</string>
+	<string name="moremenu.mypreferences">my preferences</string>
+		
 	<string name="notification_source_added_ticker">SharedSource registered.</string>
 	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
 

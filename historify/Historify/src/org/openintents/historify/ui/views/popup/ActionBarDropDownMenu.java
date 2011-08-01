@@ -7,6 +7,7 @@ import org.openintents.historify.R;
 import org.openintents.historify.ui.views.ActionBar.Action;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,15 +43,18 @@ public class ActionBarDropDownMenu extends AbstractPopupWindow {
 	
 	private ListView mListView;
 	private ListAdapter mAdapter;
+	private int listItemResId;
 	
 	public ActionBarDropDownMenu(Context context) {
 		super(context);
-		setArrowVisibility(View.GONE); 
+		setArrowVisibility(View.GONE);
+		listItemResId = R.layout.listitem_actionbar_dropdown_left;
 	}
 
-	public void setMenu(MenuModel menu) {
+	public void setMenu(MenuModel menu, int spacerGravity) {
 		
-		mAdapter = new ArrayAdapter<Action>(mContext,R.layout.listitem_actionbar_dropdown,menu.toArray());
+		listItemResId = spacerGravity == Gravity.LEFT ? R.layout.listitem_actionbar_dropdown_left : R.layout.listitem_actionbar_dropdown_right; 
+		mAdapter = new ArrayAdapter<Action>(mContext,listItemResId, R.id.actionbar_dropdown_text, menu.toArray());
 		mListView.setAdapter(mAdapter);
 		
 		mListView.setOnItemClickListener(new OnItemClickListener() {

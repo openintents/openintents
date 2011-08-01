@@ -20,6 +20,7 @@ import org.openintents.historify.R;
 import org.openintents.historify.ui.fragments.ContactsListFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.ui.views.ActionBar.Action;
+import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 import org.openintents.historify.uri.Actions;
 
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class ContactsActivity extends FragmentActivity {
 			}
 		});
 		actionBar.add(searchAction);
+		actionBar.setInactiveFunction(starredOnly ? MoreMenuFunction.favorites : MoreMenuFunction.contacts);
 		actionBar.setup();
 
 	}

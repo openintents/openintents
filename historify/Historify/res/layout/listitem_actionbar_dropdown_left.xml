@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+<View
+	android:background="@color/foreground_light"
+	android:layout_width="36dip"
+	android:layout_height="fill_parent"  />	
+<TextView
+        style="@style/ListItem.SingleLine"
+        android:id="@+id/actionbar_dropdown_text"
+        android:textSize="18sp"
+        android:padding="6dip"
+        android:background="@drawable/listitem_background2"
+        android:text="Name" />
+
+        
+</LinearLayout>

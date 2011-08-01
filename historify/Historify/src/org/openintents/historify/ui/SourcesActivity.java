@@ -18,6 +18,7 @@ package org.openintents.historify.ui;
 
 import org.openintents.historify.R;
 import org.openintents.historify.ui.views.ActionBar;
+import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -44,6 +45,7 @@ public class SourcesActivity extends FragmentActivity {
 	private void setupActionBar() {
 		
 		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+		actionBar.setInactiveFunction(MoreMenuFunction.sources);
 		actionBar.setup();
 
 	}

@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
+import org.openintents.historify.ui.ContactsActivity;
+import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
+import org.openintents.historify.uri.Actions;
 import org.openintents.historify.utils.Toaster;
 
 import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +57,57 @@ public class ActionBar {
 			return title;
 		}
 	}
+
+	public enum MoreMenuFunction {
+		favorites,contacts,sources,preferences;
+	}
+
+	private MoreMenuFunction inactiveFunction;
+	
+	public void setInactiveFunction(MoreMenuFunction inactiveFunction) {
+		this.inactiveFunction = inactiveFunction;
+	}
+
+	private static class MoreMenuBuilder {		
+		
+				
+		public MenuModel build(final Context context, final MoreMenuFunction inactiveFunction) {
+			return new MenuModel(context)
+			.add(R.string.moremenu_myfavorites, new OnClickListener() {
+				public void onClick(View v) {
+					if(inactiveFunction!=MoreMenuFunction.favorites) {
+						Intent intent = new Intent(context, ContactsActivity.class);
+						intent.putExtra(Actions.EXTRA_MODE_FAVORITES, true);
+						context.startActivity(intent);	
+					}
+					
+				}
+			})
+			.add(R.string.moremenu_mycontacts, new OnClickListener() {
+				public void onClick(View v) {
+					if(inactiveFunction!=MoreMenuFunction.contacts) {
+						Intent intent = new Intent(context, ContactsActivity.class);
+						context.startActivity(intent);	
+					}
+				}
+			})
+			.add(R.string.moremenu_mysources, new OnClickListener() {
+				public void onClick(View v) {
+					if(inactiveFunction!=MoreMenuFunction.sources) {
+						Intent intent = new Intent(context, SourcesActivity.class);
+						context.startActivity(intent);	
+					}
+				}
+			})
+			.add(R.string.moremenu_mypreferences, new OnClickListener() {
+				public void onClick(View v) {
+//					Intent intent = new Intent(context, PreferencesActivity.class);
+//					context.startActivity(intent);
+				}
+			});
+		}
+	}
+
 	
 	private Context mContext;
 	private String mTitle;
@@ -95,7 +151,11 @@ public class ActionBar {
 		
 		Action actionMoreMenu = new Action(R.drawable.ic_menu_more, new OnClickListener() {
 			public void onClick(View v) {
-				Toaster.toast(mContext, "menu");
+				ActionBarDropDownMenu dropDownMenu =
+					new ActionBarDropDownMenu(mContext);
+				MenuModel menuMore = new MoreMenuBuilder().build(mContext, inactiveFunction);
+				dropDownMenu.setMenu(menuMore, Gravity.RIGHT);
+				dropDownMenu.show(mContentView);
 			}
 		});
 		
@@ -170,7 +230,7 @@ public class ActionBar {
 				public void onClick(View v) {
 					ActionBarDropDownMenu dropDownMenu =
 						new ActionBarDropDownMenu(mContext);
-					dropDownMenu.setMenu(menu);
+					dropDownMenu.setMenu(menu, Gravity.LEFT);
 					dropDownMenu.show(mContentView);
 				}
 			});
