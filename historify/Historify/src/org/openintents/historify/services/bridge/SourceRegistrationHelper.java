@@ -17,8 +17,8 @@
 package org.openintents.historify.services.bridge;
 
 import org.openintents.historify.R;
-import org.openintents.historify.data.loaders.FilterLoader;
-import org.openintents.historify.data.model.source.AbstractSource.SourceState;
+import org.openintents.historify.data.loaders.SourceFilterOperation;
+import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.ui.SourcesActivity;
@@ -125,9 +125,7 @@ public class SourceRegistrationHelper {
 			//new source ha been added
 			//we have to insert source filters for all the contacts
 			//that are already filtered
-			FilterLoader filterLoader = new FilterLoader();
-			String[] lookupKeys = filterLoader.loadFilterModeLookupKeys(context);
-			filterLoader.insertFilters(context, lookupKeys, newSourceId, SourceState.ENABLED);
+			new SourceFilterOperation().insertFiltersForNewSource(context, newSourceId, SourceState.ENABLED);
 		}
 		
 		
@@ -225,8 +223,7 @@ public class SourceRegistrationHelper {
 		
 			long sourceId = c.getLong(0);
 		
-			FilterLoader filterLoader = new FilterLoader();
-			filterLoader.deleteFilters(context, sourceId);
+			new SourceFilterOperation().removeFiltersOfDeletedSource(context, sourceId);
 
 			context.getContentResolver().delete(ContentUris.Sources, where, null);
 			

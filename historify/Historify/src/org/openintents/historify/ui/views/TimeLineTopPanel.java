@@ -111,7 +111,7 @@ public class TimeLineTopPanel {
 		
 		TimeLineOptionsPopupWindow popupWindow =
 			new TimeLineOptionsPopupWindow(this);
-		popupWindow.setHideButtonVisibility(mVisible);
+		popupWindow.initView(mVisible);
 		
 		if(mVisible) {
 			popupWindow.show(mBtnOptions);	
@@ -163,6 +163,10 @@ public class TimeLineTopPanel {
 	private void onUserChangedVisibility() {
 		mVisible = mContentView.getVisibility() == View.VISIBLE;
 		PreferenceManager.getInstance(mContext).setPreference(Pref.TIMELINE_TOP_PANEL_VISIBILITY, mVisible);
+	}
+
+	public Contact getContact() {
+		return mContact;
 	}
 	
 }

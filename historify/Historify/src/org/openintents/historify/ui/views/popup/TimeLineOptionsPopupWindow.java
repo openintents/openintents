@@ -17,6 +17,9 @@
 package org.openintents.historify.ui.views.popup;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.adapters.SourceFiltersAdapter;
+import org.openintents.historify.data.adapters.SourcesAdapter;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.ui.views.TimeLineTopPanel;
 
 import android.content.Context;
@@ -24,11 +27,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 
 	private TimeLineTopPanel mPanel;
+	
+	private Button mBtnAll, mBtnNone, mBtnDefault;
+	private ListView mLstSources;
 	private TextView mTxtHidePanel;
 	
 	
@@ -37,14 +46,28 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 		mPanel = panel;
 	}
 
-	public void setHideButtonVisibility(boolean visible) {
-		mTxtHidePanel.setVisibility(visible ? View.VISIBLE : View.GONE);
-	}
 	
 	@Override
 	protected void addContent(ViewGroup contentRoot) {
 		
 		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_timeline_options, contentRoot);
+		
+		mBtnAll = (Button)contentView.findViewById(R.id.timeline_options_btnAll);
+		mBtnNone = (Button) contentView.findViewById(R.id.timeline_options_btnNone);
+		mBtnDefault = (Button) contentView.findViewById(R.id.timeline_options_btnDefault);
+		
+		mLstSources = (ListView)contentView.findViewById(R.id.timeline_options_lstSources);
+		
+		mLstSources
+		.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				EventSource source = (EventSource) parent.getItemAtPosition(position);
+				boolean checked = mLstSources.getCheckedItemPositions().get(position);
+				onSourceClicked(source, checked);	
+			}
+		});
+
 		
 		mTxtHidePanel = (TextView)contentView.findViewById(R.id.timeline_options_txtHidePanel);
 		mTxtHidePanel.setOnClickListener(new OnClickListener() {
@@ -53,6 +76,19 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 				mPanel.onHide();
 			}
 		});
+	}
+
+	public void initView(boolean hideButtonVisible) {
+	
+		mTxtHidePanel.setVisibility(hideButtonVisible ? View.VISIBLE : View.GONE);
+		mLstSources.setAdapter(new SourceFiltersAdapter(mContext, mLstSources, mPanel.getContact()));
+		
+	}
+	
+	/** Called when the user clicks on a source. */
+	private void onSourceClicked(EventSource source, boolean checked) {
+		source.setEnabled(checked);
+		((SourcesAdapter)mLstSources.getAdapter()).update(source);
 	}
 		
 }

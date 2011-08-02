@@ -1,0 +1,9 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/popupwindow_btn_pressed" android:state_pressed="true" />
+    <item android:drawable="@drawable/popupwindow_btn_focused"
+        android:state_pressed="false"
+        android:state_focused="true" />
+    <item android:drawable="@drawable/popupwindow_btn_default"
+        android:state_focused="false"
+        android:state_pressed="false" />
+</selector>

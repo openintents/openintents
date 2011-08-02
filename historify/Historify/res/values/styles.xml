@@ -135,4 +135,11 @@
 		<item name="android:textSize">18sp</item>
         <item name="android:textColor">#fff</item>
 	</style>    	
+	
+	<style name="Button.Popup" parent="Button">
+    	<item name="android:background">@drawable/popupwindow_btn</item>
+    	<item name="android:layout_margin">2dip</item>
+    	<item name="android:textColor">#fff</item>
+	</style>
+	
 </resources>

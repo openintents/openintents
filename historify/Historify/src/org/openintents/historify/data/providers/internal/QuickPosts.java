@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.providers.internal;
 
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.utils.UriUtils;
 
@@ -102,7 +102,7 @@ public class QuickPosts {
 					+ QuickPostSourcesTable.ICON_URI + " TEXT," 
 					+ QuickPostSourcesTable.EVENT_INTENT + " TEXT,"
 					+ QuickPostSourcesTable.STATE + " TEXT DEFAULT "
-					+ AbstractSource.SourceState.ENABLED + ","
+					+ EventSource.SourceState.ENABLED + ","
 					+ QuickPostSourcesTable.VERSION + " INTEGER DEFAULT 0,"
 					+ QuickPostSourcesTable.UID + " INTEGER DEFAULT 0);");
 

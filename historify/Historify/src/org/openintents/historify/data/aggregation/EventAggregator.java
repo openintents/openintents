@@ -20,10 +20,10 @@ import java.util.ArrayList;
 
 import org.openintents.historify.data.adapters.TimeLineAdapter;
 import org.openintents.historify.data.loaders.EventLoader;
-import org.openintents.historify.data.loaders.SourceLoader;
+import org.openintents.historify.data.loaders.SourceFilterLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
@@ -85,12 +85,12 @@ public class EventAggregator {
 	public void query() {
 
 		//load enabled sources
-		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
-		ArrayList<AbstractSource> enabledSources = new ArrayList<AbstractSource>();
+		SourceFilterLoader sourceFilterLoader = new SourceFilterLoader(mContact);
+		ArrayList<EventSource> enabledSources = new ArrayList<EventSource>();
 		
-		Cursor sourcesCursor = sourceLoader.openCursor(mContext, mContact);
+		Cursor sourcesCursor = sourceFilterLoader.openCursor(mContext);
 		for(int i=0;i<sourcesCursor.getCount();i++) {
-			AbstractSource source = sourceLoader.loadFromCursor(sourcesCursor, i);
+			EventSource source = sourceFilterLoader.loadFromCursor(sourcesCursor, i);
 			if(source.isEnabled()) enabledSources.add(source);
 		}
 		sourcesCursor.close();
@@ -98,7 +98,7 @@ public class EventAggregator {
 		//open cursors for enabled sources
 		MergedCursor.Builder builder = new MergedCursor.Builder(mContext,Events.PUBLISHED_TIME);
 		EventLoader eventLoader = new EventLoader();
-		for(AbstractSource source : enabledSources) {
+		for(EventSource source : enabledSources) {
 			Cursor eventsCursor = eventLoader.openCursor(mContext, UriUtils.sourceAuthorityToUri(source.getAuthority()), mContact);
 			if(eventsCursor!=null)
 				builder.add(eventsCursor, source);
@@ -110,6 +110,7 @@ public class EventAggregator {
 		if(mContentObserver==null) {
 			mContentObserver = new AggregatorContentObserver();
 			mMergedCursor.registerContentObserver(mContentObserver);
+			mContext.getContentResolver().registerContentObserver(ContentUris.Sources, true, mContentObserver);
 		}
 	}
 	
@@ -121,7 +122,7 @@ public class EventAggregator {
 		
 		Event retval = mLoader.loadFromCursor(mMergedCursor, position);
 		if(retval!=null) {			
-			AbstractSource source = mMergedCursor.getSource();
+			EventSource source = mMergedCursor.getSource();
 			retval.setSource(source);
 			
 		}

@@ -18,7 +18,6 @@ package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.QuickPostSourcesAdapter;
-import org.openintents.historify.uri.ContentUris;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -63,7 +62,7 @@ public class QuickPostSourcesFragment extends Fragment {
 		((ViewGroup) mLstQuickPostSources.getParent()).addView(lstQuickPostsEmptyView);
 		mLstQuickPostSources.setEmptyView(lstQuickPostsEmptyView);
 		
-		mSourcesAdapter = new QuickPostSourcesAdapter(getActivity(), mLstQuickPostSources, ContentUris.QuickPostSources);
+		mSourcesAdapter = new QuickPostSourcesAdapter(getActivity(), mLstQuickPostSources);
 		mLstQuickPostSources.setAdapter(mSourcesAdapter);
 		
 		return layout;

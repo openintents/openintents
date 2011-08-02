@@ -26,7 +26,7 @@ import android.net.Uri;
  * 
  * @author berke.andras
  */
-public abstract class AbstractSource {
+public class EventSource {
 
 	public enum SourceState {
 		ENABLED, DISABLED, ERROR;
@@ -61,9 +61,6 @@ public abstract class AbstractSource {
 	//current state
 	private SourceState mState;
 	
-	//source filter - if loaded
-	private SourceFilter mSourceFilter;
-
 	//flag for internal sources
 	protected boolean mIsInternal = false;
 
@@ -73,7 +70,7 @@ public abstract class AbstractSource {
 	private IconLoadingStrategy mIconLoadingStrategy;
 	
 	
-	protected AbstractSource(long id, String name, String description,
+	protected EventSource(long id, String name, String description,
 			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent, String configIntent) {
 		
 		mId = id;
@@ -86,6 +83,19 @@ public abstract class AbstractSource {
 		mConfigIntent = configIntent;
 		
 		mState = SourceState.ENABLED;
+	}
+
+	public EventSource(EventSource s) {
+		
+		mId = s.mId;
+		mName = s.mName;
+		mDescription = s.mDescription;
+		mIconUri = s.mIconUri;
+		mIconLoadingStrategy = s.mIconLoadingStrategy;
+		mAuthority = s.mAuthority;
+		mEventIntent = s.mEventIntent;
+		mConfigIntent = s.mConfigIntent;
+		mState = s.mState;
 	}
 
 	public boolean isInternal() {
@@ -129,30 +139,23 @@ public abstract class AbstractSource {
 	}
 	
 	public boolean isEnabled() {
-		
-		return (mSourceFilter==null && mState==SourceState.ENABLED) ||
-			(mSourceFilter!=null && mSourceFilter.getFilteredState()==SourceState.ENABLED);
+		return mState==SourceState.ENABLED;
 	}
 
 	public void setEnabled(boolean checked) {
 		SourceState newState = checked ? SourceState.ENABLED : SourceState.DISABLED;
-		if(mSourceFilter==null) setState(newState);
-		else mSourceFilter.setFilteredState(newState);
+		setState(newState);
 	}
 	
-	public void setSourceFilter(SourceFilter mSourceFilter) {
-		this.mSourceFilter = mSourceFilter;
+	protected void setInternal(boolean isInternal) {
+		mIsInternal = isInternal;
 	}
 	
-	public SourceFilter getSourceFilter() {
-		return mSourceFilter;
-	}
-
 	public IconLoadingStrategy getIconLoadingStrategy() {
 		return mIconLoadingStrategy;
 	}
 
-	public static AbstractSource factoryMethod(
+	public static EventSource factoryMethod(
 			boolean isInternal, 
 			long id,
 			String name, 
@@ -164,15 +167,12 @@ public abstract class AbstractSource {
 			String configIntent,
 			String state) {
 		
-		AbstractSource retval = isInternal ? 
-				new InternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent):
-				new ExternalSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent);
+		EventSource retval = new EventSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent);
+		retval.setInternal(isInternal);
 		retval.setState(SourceState.parseString(state));
 
 		return retval;
 	}
-
-
 
 
 }

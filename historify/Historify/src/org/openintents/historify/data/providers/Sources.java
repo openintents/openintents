@@ -17,7 +17,7 @@
 package org.openintents.historify.data.providers;
 
 import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.uri.ContentUris;
 
 import android.content.Context;
@@ -113,7 +113,7 @@ public final class Sources {
 					+ SourcesTable.EVENT_INTENT + " TEXT,"
 					+ SourcesTable.CONFIG_INTENT + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
-					+ AbstractSource.SourceState.ENABLED + ","
+					+ EventSource.SourceState.ENABLED + ","
 					+ SourcesTable.UID + " INTEGER DEFAULT 0,"
 					+ SourcesTable.VERSION + " INTEGER DEFAULT 0,"
 					+ SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");

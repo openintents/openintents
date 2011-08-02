@@ -23,7 +23,7 @@ import org.openintents.historify.data.loaders.EventLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Event;
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.QuickPosts;
@@ -82,7 +82,7 @@ public class EventIntentHandlerActivity extends Activity {
 		
 		if(eventId!=-1) {
 			Event event = null;
-			AbstractSource source = null;
+			EventSource source = null;
 			EventLoader eventLoader = new EventLoader();
 			Cursor ec = eventLoader.openCursor(this, eventSource, eventId);
 			if(ec.getCount()!=0) {

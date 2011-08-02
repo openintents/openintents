@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.aggregation;
 
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 
 import android.content.Context;
 import android.database.ContentObserver;
@@ -26,11 +26,11 @@ import android.util.Log;
 
 public class MergedContentObserver extends ContentObserver{
 
-	private AbstractSource mSource;
+	private EventSource mSource;
 	private Uri mUriToNotify;
 	private Context mContext;
 	
-	public MergedContentObserver(Context context, AbstractSource source, Uri uriToNotify) {
+	public MergedContentObserver(Context context, EventSource source, Uri uriToNotify) {
 		super(new Handler());
 		mContext = context;
 		mSource = source;

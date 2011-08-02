@@ -18,7 +18,7 @@ package org.openintents.historify.data.aggregation;
 
 import java.util.ArrayList;
 
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.uri.ContentUris;
 
 import android.content.Context;
@@ -44,16 +44,16 @@ public class MergedCursor extends AbstractCursor {
 		private Context context;
 		private String orderColumn;
 		private ArrayList<Cursor> cursors;
-		private ArrayList<AbstractSource> sources;
+		private ArrayList<EventSource> sources;
 
 		public Builder(Context context, String orderColumn) {
 			this.context = context;
 			this.orderColumn = orderColumn;
 			this.cursors = new ArrayList<Cursor>();
-			this.sources = new ArrayList<AbstractSource>();
+			this.sources = new ArrayList<EventSource>();
 		}
 
-		public Builder add(Cursor cursor, AbstractSource source) {
+		public Builder add(Cursor cursor, EventSource source) {
 			cursors.add(cursor);
 			sources.add(source);
 			return this;
@@ -63,7 +63,7 @@ public class MergedCursor extends AbstractCursor {
 
 			Cursor[] cursorsArray = new Cursor[cursors.size()];
 			cursors.toArray(cursorsArray);
-			AbstractSource[] sourcesArray = new AbstractSource[sources.size()];
+			EventSource[] sourcesArray = new EventSource[sources.size()];
 			sources.toArray(sourcesArray);
 			return new MergedCursor(context, cursorsArray, sourcesArray, orderColumn);
 		}
@@ -185,14 +185,14 @@ public class MergedCursor extends AbstractCursor {
 
 	private Cursor[] mCursors;
 	private int[] mCursorOrderByColumnIndex;
-	private AbstractSource[] mSources;
+	private EventSource[] mSources;
 	private int mCount;
 
 	private MergerPosition mMergerPosition;
 
 	private MergedContentObserver[] mMergedObservers;
 	
-	private MergedCursor(Context context, Cursor[] cursors, AbstractSource[] sources,
+	private MergedCursor(Context context, Cursor[] cursors, EventSource[] sources,
 			String orderColumn) {
 
 		mCursors = cursors;
@@ -247,7 +247,7 @@ public class MergedCursor extends AbstractCursor {
 		return mMergerPosition.moveToPosition(newPosition);
 	}
 
-	public AbstractSource getSource() {
+	public EventSource getSource() {
 		return mSources[mMergerPosition.getActCursorIndex()];
 	}
 

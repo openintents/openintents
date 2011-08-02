@@ -18,7 +18,7 @@ package org.openintents.historify.data.loaders;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.model.Event;
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.utils.UriUtils;
 
 import android.content.Context;
@@ -45,7 +45,7 @@ public class SourceIconHelper {
 		}
 	}
 	
-	public void toImageView(Context context, AbstractSource source, Event event, ImageView iv) {
+	public void toImageView(Context context, EventSource source, Event event, ImageView iv) {
 		
 		if(source.getIconLoadingStrategy()==IconLoadingStrategy.useSourceIcon || event==null || !source.isInternal()) {
 			toImageView(context, source.getIcon(), iv);

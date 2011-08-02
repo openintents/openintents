@@ -20,12 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
-import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.ui.SourcesActivity;
+import org.openintents.historify.data.loaders.SourceLoader;
+import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.ui.QuickPostsConfigActivity;
+import org.openintents.historify.uri.ContentUris;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,17 +36,16 @@ import android.widget.TextView;
 
 /**
  * 
- * Adapter for the list of sources on {@link SourcesActivity}. Provides sources
- * and their filtered state for all contact, or a particular contact if filter
- * mode is set.
+ * Adapter for the list of sources on {@link QuickPostsConfigActivity}. Provides Q! sources
+ * for all contact.
  * 
  * @author berke.andras
  */
 public class QuickPostSourcesAdapter extends SourcesAdapter {
 
 	/** Constructor. */
-	public QuickPostSourcesAdapter(Activity context, ListView listView, Uri sourcesUri) {
-		super(context, listView, true, sourcesUri);
+	public QuickPostSourcesAdapter(Activity context, ListView listView) {
+		super(context, listView, new SourceLoader(ContentUris.QuickPostSources , SourceLoader.BASIC_COLUMNS_PROJECTION),R.layout.listitem_quickpost_source);
 	}
 
 	
@@ -76,11 +76,11 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 	}
 
 	public long getItemId(int position) {
-		AbstractSource item = getItem(position);
+		EventSource item = getItem(position);
 		return item == null ? -1 : item.getId();
 	}
 
-	public AbstractSource getItem(int position) {
+	public EventSource getItem(int position) {
 
 		if (position == 0) {
 				return null;
@@ -90,9 +90,9 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 
 	}
 
-	public List<AbstractSource> getItems() {
+	public List<EventSource> getItems() {
 
-		ArrayList<AbstractSource> retval = new ArrayList<AbstractSource>();
+		ArrayList<EventSource> retval = new ArrayList<EventSource>();
 		retval.addAll(mExternalSources);
 
 		return retval;
@@ -111,10 +111,7 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 			}
 			((TextView) convertView).setText(R.string.sources_quickpost_sources);
 
-		} else if (viewType == VIEW_TYPE_NEED_MORE_MESSAGE) { // message shown if
-			// there are no
-			// quickpost sources
-			// detected
+		} else if (viewType == VIEW_TYPE_NEED_MORE_MESSAGE) { 
 
 			if (convertView == null || !viewType.equals(convertView.getTag())) {
 				convertView = ((LayoutInflater) mContext
@@ -135,7 +132,7 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 				
 			}
 
-			AbstractSource item = getItem(position);
+			EventSource item = getItem(position);
 			TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
 			tv.setText(item.getName());
 						

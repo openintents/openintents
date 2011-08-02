@@ -20,13 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openintents.historify.R;
-import org.openintents.historify.data.loaders.FilterLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
-import org.openintents.historify.data.model.Contact;
-import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.data.model.source.ExternalSource;
-import org.openintents.historify.data.model.source.InternalSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 import org.openintents.historify.uri.ContentUris;
@@ -36,7 +32,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Handler;
 import android.text.Spannable;
 import android.text.style.RelativeSizeSpan;
@@ -72,21 +67,19 @@ public class SourcesAdapter extends BaseAdapter {
 	protected static final int VIEW_TYPE_ITEM = 1;
 	protected static final int VIEW_TYPE_NEED_MORE_MESSAGE = 2;
 
-	protected Activity mContext;
+	protected Context mContext;
 
-	private SourceLoader mSourceLoader;
+	protected int mListItemResId;
+	
+	protected SourceLoader mSourceLoader;
 	protected SourceIconHelper mSourceIconHelper;
-	private FilterLoader mFilterLoader;
 
-	protected List<AbstractSource> mInternalSources;
-	protected List<AbstractSource> mExternalSources;
+	protected List<EventSource> mSources;
+	protected List<EventSource> mInternalSources;
+	protected List<EventSource> mExternalSources;
 
 	// checked items (enabled sources), shared with listview
-	private SparseBooleanArray mCheckedItems;
-
-	// if not null, source filters for the given contact are loaded
-	private Contact mFilterModeContact = null;
-	private int mFilterModePosition = 0;
+	protected SparseBooleanArray mCheckedItems;
 	
 	private SourcesChangedObserver mObserver;
 	
@@ -108,17 +101,28 @@ public class SourcesAdapter extends BaseAdapter {
 		}
 	}
 
-	/** Constructor. */
-	public SourcesAdapter(Activity context, ListView listView, boolean basicColumnsOnly, Uri sourcesUri) {
+	/** Default public constructor */
+	public SourcesAdapter(Activity context, ListView listView) {
+		init(context,listView, new SourceLoader(ContentUris.Sources), R.layout.listitem_source);
+	}
 
+	/** Constructor for derived classes. */
+	protected SourcesAdapter(Activity context, ListView listView, SourceLoader sourceLoader, int listItemResId) {
+		init(context, listView, sourceLoader,listItemResId);
+	}
+
+	protected SourcesAdapter() {}
+
+	protected void init(Context context, ListView listView, SourceLoader sourceLoader, int listItemResId) {
+	
 		mContext = context;
-		mSourceLoader = new SourceLoader(basicColumnsOnly, sourcesUri);
+		mSourceLoader = sourceLoader;
 		mSourceIconHelper = new SourceIconHelper();
-		mFilterLoader = new FilterLoader();
-		mInternalSources = new ArrayList<AbstractSource>();
-		mExternalSources = new ArrayList<AbstractSource>();
+		mSources = new ArrayList<EventSource>();
+		mInternalSources = new ArrayList<EventSource>();
+		mExternalSources = new ArrayList<EventSource>();
 		mCheckedItems = listView.getCheckedItemPositions();
-		
+		mListItemResId = listItemResId;
 		load();
 	}
 
@@ -133,19 +137,16 @@ public class SourcesAdapter extends BaseAdapter {
 		mInternalSources.clear();
 		mExternalSources.clear();
 
-		Cursor c = mSourceLoader.openCursor(mContext, mFilterModeContact);
+		Cursor c = mSourceLoader.openCursor(mContext);
 		for (int i = 0; i < c.getCount(); i++) {
-			AbstractSource source = mSourceLoader.loadFromCursor(c, i);
+			EventSource source = mSourceLoader.loadFromCursor(c, i);
 			if (source != null) {
-
-				if (mFilterModeContact != null
-						&& source.getSourceFilter() != null)
-					source.getSourceFilter().setContact(mFilterModeContact);
-
+				mSources.add(source);
+				
 				if (source.isInternal())
-					mInternalSources.add((InternalSource) source);
+					mInternalSources.add(source);
 				else
-					mExternalSources.add((ExternalSource) source);
+					mExternalSources.add(source);
 			}
 		}
 		
@@ -153,39 +154,23 @@ public class SourcesAdapter extends BaseAdapter {
 
 		mObserver = new SourcesChangedObserver(new Handler());
 		mContext.getContentResolver().registerContentObserver(
-				mFilterModeContact==null ? ContentUris.Sources : ContentUris.FilteredSources,true, mObserver);
+				ContentUris.Sources ,true, mObserver); //ContentUris.FilteredSources
 		
 		notifyDataSetChanged();
 	}
 
 	/** Update the enabled / disabled state of a source */
-	public void update(AbstractSource source) {
+	public void update(EventSource source) {
 
-		if (mFilterModeContact == null) // all contacts
-			mSourceLoader.update(mContext, source);
+		mSourceLoader.update(mContext, source);
 
-		else
-			// single contact
-			mFilterLoader.update(mContext, source.getSourceFilter());
-	}
-
-	public void setFilterMode(Contact contact, int position) {
-
-		mFilterModeContact = contact;
-		mFilterModePosition = position;
-		
-	}
-
-	public int getFilterModePosition() {
-		return mFilterModePosition;
 	}
 
 	public int getCount() {
 
 		return 
 			mInternalSources.size() + 
-			mExternalSources.size() + 2 * HEADER_OFFSET + 
-			(mExternalSources.isEmpty() ? 1 : 0);
+			mExternalSources.size() + HEADER_OFFSET + 1;
 
 	}
 
@@ -217,11 +202,11 @@ public class SourcesAdapter extends BaseAdapter {
 	}
 
 	public long getItemId(int position) {
-		AbstractSource item = getItem(position);
+		EventSource item = getItem(position);
 		return item == null ? -1 : item.getId();
 	}
 
-	public AbstractSource getItem(int position) {
+	public EventSource getItem(int position) {
 
 		if (getItemViewType(position)!=VIEW_TYPE_ITEM) {
 			return null;
@@ -233,9 +218,9 @@ public class SourcesAdapter extends BaseAdapter {
 
 	}
 
-	public List<AbstractSource> getItems() {
+	public List<EventSource> getItems() {
 
-		ArrayList<AbstractSource> retval = new ArrayList<AbstractSource>();
+		ArrayList<EventSource> retval = new ArrayList<EventSource>();
 		retval.addAll(mInternalSources);
 		retval.addAll(mExternalSources);
 
@@ -285,42 +270,53 @@ public class SourcesAdapter extends BaseAdapter {
 			if (convertView == null || !viewType.equals(convertView.getTag())) {
 				convertView = ((LayoutInflater) mContext
 						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(R.layout.listitem_source, null);
+						.inflate(mListItemResId, null);
 				
-				View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
-				btnMore.setOnClickListener(new SourcesConfigurationFragment.OnMoreButtonClickedListener());
+				initListItem(convertView);				
 			}
 
-			AbstractSource item = getItem(position);
-			int pos = item.isInternal() ? position : position - 1;
-			convertView.setBackgroundResource(
-					pos % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
-
-			
-			TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
-			tv.setText(item.getName());
-			
-			((CheckedTextView)tv).setChecked(item.isEnabled());
-			mCheckedItems.put(position, item.isEnabled());
-			
-			tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtDescription);
-			tv.setText(item.getDescription() == null ? "" : item.getDescription());
-
-			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
-			mSourceIconHelper.toImageView(mContext, item,null,iv);
-			
-			View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
-			if(item.getConfigIntent()==null) 
-				btnMore.setVisibility(View.INVISIBLE);
-			else  {
-				btnMore.setVisibility(View.VISIBLE);
-				btnMore.setTag(item.getConfigIntent());
-			}
-							
+			EventSource item = getItem(position);
+			loadItemToView(convertView,item,position);
 		}
 
 		convertView.setTag(viewType);
 		return convertView;
+	}
+
+	protected void loadItemToView(View convertView, EventSource item, int position) {
+		
+		int pos = item.isInternal() ? position : position - 1;
+		convertView.setBackgroundResource(
+				pos % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+
+		
+		TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
+		tv.setText(item.getName());
+		
+		((CheckedTextView)tv).setChecked(item.isEnabled());
+		mCheckedItems.put(position, item.isEnabled());
+		
+		tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtDescription);
+		tv.setText(item.getDescription() == null ? "" : item.getDescription());
+
+		ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
+		mSourceIconHelper.toImageView(mContext, item,null,iv);
+		
+		View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
+		if(item.getConfigIntent()==null) 
+			btnMore.setVisibility(View.INVISIBLE);
+		else  {
+			btnMore.setVisibility(View.VISIBLE);
+			btnMore.setTag(item.getConfigIntent());
+		}
+
+	}
+
+	protected void initListItem(View convertView) {
+		
+		View btnMore = convertView.findViewById(R.id.sources_listitem_btnMore);
+		btnMore.setOnClickListener(new SourcesConfigurationFragment.OnMoreButtonClickedListener());
+
 	}
 
 	public void onDestroy() {

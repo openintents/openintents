@@ -18,8 +18,7 @@ package org.openintents.historify.ui.fragments;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.SourcesAdapter;
-import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.uri.ContentUris;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.utils.URLHelper;
 
 import android.content.Intent;
@@ -63,7 +62,7 @@ public class SourcesConfigurationFragment extends Fragment {
 							//need more message
 							new URLHelper().navigateToMoreInfo(getActivity());
 						} else {
-							AbstractSource source = (AbstractSource) parent
+							EventSource source = (EventSource) parent
 							.getItemAtPosition(position);
 							boolean checked = mLstSources.getCheckedItemPositions()
 								.get(position);
@@ -74,7 +73,7 @@ public class SourcesConfigurationFragment extends Fragment {
 				});
 
 		// sources adapter
-		mSourcesAdapter = new SourcesAdapter(getActivity(), mLstSources, false, ContentUris.Sources);
+		mSourcesAdapter = new SourcesAdapter(getActivity(), mLstSources);
 		mLstSources.setAdapter(mSourcesAdapter);
 		
 		return layout;
@@ -82,7 +81,7 @@ public class SourcesConfigurationFragment extends Fragment {
 	}
 	
 	/** Called when the user clicks on a source. */
-	private void onSourceClicked(AbstractSource source, boolean checked) {
+	private void onSourceClicked(EventSource source, boolean checked) {
 		source.setEnabled(checked);
 		mSourcesAdapter.update(source);
 	}

@@ -17,7 +17,7 @@
 package org.openintents.historify.data.providers;
 
 import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.FactoryTest;
 import org.openintents.historify.data.providers.internal.Messaging;
@@ -61,7 +61,7 @@ public class DefaultSources {
 		cv.put(SourcesTable.IS_INTERNAL, 1);
 		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_factory_test").toString());
 		cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_FACTORYTEST);
-		cv.put(SourcesTable.STATE, AbstractSource.SourceState.DISABLED.toString());
+		cv.put(SourcesTable.STATE, EventSource.SourceState.DISABLED.toString());
 		db.insert(SourcesTable._TABLE, null, cv);
 		
 		//quickposts

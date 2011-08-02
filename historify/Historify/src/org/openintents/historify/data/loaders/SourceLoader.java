@@ -17,12 +17,8 @@
 package org.openintents.historify.data.loaders;
 
 import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
-import org.openintents.historify.data.model.Contact;
-import org.openintents.historify.data.model.source.AbstractSource;
-import org.openintents.historify.data.model.source.SourceFilter;
-import org.openintents.historify.data.model.source.AbstractSource.SourceState;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Sources;
-import org.openintents.historify.data.providers.Sources.FiltersTable;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
@@ -35,13 +31,13 @@ import android.net.Uri;
 
 /**
  * 
- * Helper class for loading and updating {@link AbstractSource} objects.
+ * Helper class for loading and updating {@link EventSource} objects.
  * 
  * @author berke.andras
  */
 public class SourceLoader {
 
-	public static String[] SOURCES_PROJECTION = new String[] {
+	public static String[] DEFAULT_PROJECTION = new String[] {
 		Sources.SourcesTable._ID,
 		Sources.SourcesTable.NAME,
 		Sources.SourcesTable.DESCRIPTION,
@@ -53,23 +49,8 @@ public class SourceLoader {
 		Sources.SourcesTable.IS_INTERNAL,
 		Sources.SourcesTable.STATE 
 	};
-	
-	public static String[] FILTERED_SOURCES_PROJECTION = new String[] {
-		Sources.SourcesTable._ID,
-		Sources.SourcesTable.NAME,
-		Sources.SourcesTable.DESCRIPTION,
-		Sources.SourcesTable.ICON_URI,
-		Sources.SourcesTable.EVENT_INTENT,
-		Sources.SourcesTable.ICON_LOADING_STRATEGY,
-		Sources.SourcesTable.AUTHORITY,
-		Sources.SourcesTable.CONFIG_INTENT,
-		Sources.SourcesTable.IS_INTERNAL,
-		Sources.SourcesTable.STATE,
-		Sources.FiltersTable._ID,
-		Sources.FiltersTable.FILTERED_STATE
-	};
-	
-	public static String[] SIMPLE_SOURCES_PROJECTION = new String[] {
+		
+	public static String[] BASIC_COLUMNS_PROJECTION = new String[] {
 		QuickPosts.QuickPostSourcesTable._ID,
 		QuickPosts.QuickPostSourcesTable.NAME,
 		QuickPosts.QuickPostSourcesTable.DESCRIPTION,
@@ -77,55 +58,41 @@ public class SourceLoader {
 		QuickPosts.QuickPostSourcesTable.EVENT_INTENT,
 	};
 	
-	private static final int COLUMN_ID = 0;
-	private static final int COLUMN_NAME = 1;
-	private static final int COLUMN_DESCRIPTION = 2;
-	private static final int COLUMN_ICON_URI = 3;
-	private static final int COLUMN_EVENT_INTENT = 4;
-	private static final int COLUMN_ICON_LOADING_STRATEGY = 5;
-	private static final int COLUMN_AUTHORITY = 6;
-	private static final int COLUMN_CONFIG_INTENT = 7;
-	private static final int COLUMN_IS_INTERNAL = 8;
-	private static final int COLUMN_STATE = 9;
-	private static final int COLUMN_FILTER_ID = 10;
-	private static final int COLUMN_FILTERED_STATE = 11;
+	protected static final int COLUMN_ID = 0;
+	protected static final int COLUMN_NAME = 1;
+	protected static final int COLUMN_DESCRIPTION = 2;
+	protected static final int COLUMN_ICON_URI = 3;
+	protected static final int COLUMN_EVENT_INTENT = 4;
+	protected static final int COLUMN_ICON_LOADING_STRATEGY = 5;
+	protected static final int COLUMN_AUTHORITY = 6;
+	protected static final int COLUMN_CONFIG_INTENT = 7;
+	protected static final int COLUMN_IS_INTERNAL = 8;
+	protected static final int COLUMN_STATE = 9;
 	
 	private Uri mSourcesUri;
-	private boolean mBasicColumnsOnly;
+	private String[] mProjection;
 	
-	public SourceLoader(boolean basicColumnsOnly, Uri sourcesUri) {
-		mBasicColumnsOnly = basicColumnsOnly;
-		mSourcesUri = sourcesUri;
+	public SourceLoader() {}
+	
+	public SourceLoader(Uri sourcesUri, String[] projection) {
+		init(sourcesUri, projection);
 	}
 		
 	public SourceLoader(Uri sourcesUri) {
-		mBasicColumnsOnly = false;
-		mSourcesUri = sourcesUri;
+		init(sourcesUri, DEFAULT_PROJECTION);
 	}
 
-	public Cursor openCursor(Activity context, Contact filterModeContact) {
+	protected void init(Uri sourcesUri, String[] projection) {
+		mSourcesUri = sourcesUri;
+		mProjection = projection;		
+	}
+	
+	public Cursor openCursor(Context context) {
 		
 		String selection = null;
 		String[] selectionArgs = null;
-		
-		Uri uri = null;
-		String[] projection = null;
-		
-		if(filterModeContact!=null) {
-
-			uri = mSourcesUri.buildUpon()
-				.appendPath(ContentUris.FILTERED_SOURCES_PATH)
-				.appendPath(filterModeContact.getLookupKey())
-				.build();
-			projection = FILTERED_SOURCES_PROJECTION;
-			
-		} else {
-			
-			uri = mSourcesUri;
-			projection = mBasicColumnsOnly ?  SIMPLE_SOURCES_PROJECTION : SOURCES_PROJECTION;
-		}
-				 
-		return context.getContentResolver().query(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
+								 
+		return context.getContentResolver().query(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
 	public Cursor openManagedCursor(Activity context, Uri sourceUri) {
@@ -134,26 +101,20 @@ public class SourceLoader {
 		String[] selectionArgs = new String[] {
 			sourceUri.getAuthority()	
 		};
-		
-		Uri uri = null;
-		String[] projection = null;
-					
-		uri = mSourcesUri;
-		projection = mBasicColumnsOnly ?  SIMPLE_SOURCES_PROJECTION : SOURCES_PROJECTION;
-				 
-		return context.managedQuery(uri, projection, selection, selectionArgs, Sources.SourcesTable.NAME);
+						 
+		return context.managedQuery(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
 	
-	public AbstractSource loadFromCursor(Cursor cursor, int position) {
+	public EventSource loadFromCursor(Cursor cursor, int position) {
 		
 		cursor.moveToPosition(position);
 
-		AbstractSource retval;
+		EventSource retval;
 		
-		if(mBasicColumnsOnly) {
+		if(mProjection==BASIC_COLUMNS_PROJECTION) {
 			
-			retval = AbstractSource.factoryMethod(
+			retval = EventSource.factoryMethod(
 					false,
 					cursor.getLong(COLUMN_ID), 
 					cursor.getString(COLUMN_NAME),
@@ -162,7 +123,7 @@ public class SourceLoader {
 					null, null, null, null, null);
 		} else {
 
-			retval = AbstractSource.factoryMethod(
+			retval = EventSource.factoryMethod(
 					cursor.getInt(COLUMN_IS_INTERNAL)>0,
 					cursor.getLong(COLUMN_ID), 
 					cursor.getString(COLUMN_NAME),
@@ -173,23 +134,13 @@ public class SourceLoader {
 					cursor.isNull(COLUMN_EVENT_INTENT) ? null : cursor.getString(COLUMN_EVENT_INTENT),
 					cursor.isNull(COLUMN_CONFIG_INTENT) ? null : cursor.getString(COLUMN_CONFIG_INTENT),
 					cursor.getString(COLUMN_STATE));
-			
-			long filterId = cursor.getColumnIndex(FiltersTable._ID)!=-1 && !cursor.isNull(COLUMN_FILTER_ID) ? cursor.getLong(COLUMN_FILTER_ID) : -1;
-			if(filterId>-1) {
-				SourceFilter filter = new SourceFilter(
-						filterId, 
-						SourceState.parseString(cursor.getString(COLUMN_FILTERED_STATE)));
-				filter.setSource(retval);
-				retval.setSourceFilter(filter);
-			}
-
 		}
 				
 		return retval;
 		
 	}
 
-	public void update(Context context, AbstractSource source) {
+	public void update(Context context, EventSource source) {
 
 		Uri sourceUri = ContentUris.Sources.buildUpon().appendPath(String.valueOf(source.getId())).build();
 		

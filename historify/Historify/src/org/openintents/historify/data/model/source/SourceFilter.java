@@ -16,60 +16,33 @@
 
 package org.openintents.historify.data.model.source;
 
-import org.openintents.historify.data.model.Contact;
-import org.openintents.historify.data.model.source.AbstractSource.SourceState;
+public class SourceFilter extends EventSource {
 
-/**
- * 
- * Model class representing a filter defined for a particular {@link Contact} - {@link AbstractSource} pair.
- * 
- * @author berke.andras
- */
-public class SourceFilter {
-
-	//id
-	private long mId;
-	
-	//associated contact
-	private Contact mContact;
-	
-	//associated source
-	private AbstractSource mSource;
-	
-	//the state of this filter (enabled / disabled)
+	private long mFilterId;
 	private SourceState mFilteredState;
 	
-	public SourceFilter(long id, SourceState filteredState) {
-		mId = id;
+	public SourceFilter(long filterId, EventSource source, SourceState filteredState) {
+		super(source);
+		setInternal(source.isInternal());
 		mFilteredState = filteredState;
+		mFilterId = filterId;
 	}
 
-	public long getId() {
-		return mId;
+	@Override
+	public boolean isEnabled() {
+		return mFilteredState==null ? super.isEnabled() : mFilteredState==SourceState.ENABLED;
+	}
+
+	@Override
+	public void setEnabled(boolean checked) {
+		mFilteredState = checked ? SourceState.ENABLED : SourceState.DISABLED;
+	}
+
+	public long getFilterId() {
+		return mFilterId;
 	}
 	
-	public Contact getContact() {
-		return mContact;
-	}
-
-	public AbstractSource getSource() {
-		return mSource;
-	}
-
 	public SourceState getFilteredState() {
 		return mFilteredState;
 	}
-
-	public void setContact(Contact mContact) {
-		this.mContact = mContact;
-	}
-	
-	public void setSource(AbstractSource mSource) {
-		this.mSource = mSource;
-	}
-	
-	public void setFilteredState(SourceState filteredState) {
-		this.mFilteredState = filteredState;
-	}
-
 }

@@ -86,7 +86,7 @@ public class SourcesProvider extends ContentProvider {
 		nullFilterProjectionMap = new HashMap<String, String>();
 		nullFilterProjectionMap.put(FiltersTable._ID, "NULL");
 		nullFilterProjectionMap.put(FiltersTable.FILTERED_STATE, "NULL");
-		for (String s : SourceLoader.SOURCES_PROJECTION)
+		for (String s : SourceLoader.DEFAULT_PROJECTION)
 			nullFilterProjectionMap.put(s, s);
 	}
 
@@ -214,12 +214,14 @@ public class SourcesProvider extends ContentProvider {
 
 		case SOURCE_ID:
 			table = SourcesTable._TABLE;
+			notificationUri = ContentUris.Sources;
 			where = SourcesTable._ID + " = " + uri.getPathSegments().get(1);
 			break;
 
 		case FILTER_ID:
 			table = FiltersTable._TABLE;
 			where = FiltersTable._ID + " = " + uri.getPathSegments().get(1);
+			notificationUri = ContentUris.FilteredSources;
 			break;
 
 		default:
@@ -322,4 +324,55 @@ public class SourcesProvider extends ContentProvider {
 		return null;
 	}
 
+	@Override
+	public int bulkInsert(Uri uri, ContentValues[] values) {
+		
+		String table = null;
+		Uri notificationUri = null;
+		
+		switch (sUriMatcher.match(uri)) {
+
+		case SOURCES:
+			table = SourcesTable._TABLE;
+			notificationUri = ContentUris.Sources;
+			break;
+
+		case FILTERS:
+			table = FiltersTable._TABLE;
+			notificationUri = ContentUris.FilteredSources;
+			break;
+
+		default:
+			throw new IllegalArgumentException("Unknown URI " + uri);
+		}
+
+		int retval = 0; 
+
+		if (table != null) {
+			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
+			db.beginTransaction();
+			try {
+				for(ContentValues cv : values) {
+					long id = db.insert(table, null, cv);
+					if (id > 0) {
+						retval++;
+					}	
+				}
+				
+				if(notificationUri!=null)
+					getContext().getContentResolver().notifyChange(notificationUri, null);
+				
+				db.setTransactionSuccessful();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				return 0;
+			}
+			finally {
+				db.endTransaction();
+			}
+		}
+
+		return retval;
+	}
 }

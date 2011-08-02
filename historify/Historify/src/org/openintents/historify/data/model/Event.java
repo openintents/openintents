@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.model;
 
-import org.openintents.historify.data.model.source.AbstractSource;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.Events.Originator;
 
@@ -37,7 +37,7 @@ public class Event {
 	private EventData mEventData;
 	
 	//source of the event
-	private AbstractSource mSource;
+	private EventSource mSource;
 
 	//custom icon associated with this event
 	private Uri mIconUri;
@@ -74,11 +74,11 @@ public class Event {
 		return mEventData.getOriginator();
 	}
 	
-	public AbstractSource getSource() {
+	public EventSource getSource() {
 		return mSource;
 	}
 	
-	public void setSource(AbstractSource mSource) {
+	public void setSource(EventSource mSource) {
 		this.mSource = mSource;
 	}
 
