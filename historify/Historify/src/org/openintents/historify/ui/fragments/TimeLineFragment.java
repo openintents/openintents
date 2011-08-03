@@ -100,7 +100,7 @@ public class TimeLineFragment extends Fragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
-		mTopPanel.init(mContact);
+		mTopPanel.init(mContact, mLstTimeLine);
 
 		mAdapter = new TimeLineAdapter(getActivity(), mContact);
 		mLstTimeLine.setAdapter(mAdapter);	

@@ -19,10 +19,15 @@ package org.openintents.historify.ui.views.popup;
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.SourceFiltersAdapter;
 import org.openintents.historify.data.adapters.SourcesAdapter;
+import org.openintents.historify.data.adapters.TimeLineAdapter;
+import org.openintents.historify.data.aggregation.EventAggregator;
 import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.data.model.source.EventSource.SourceState;
+import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.views.TimeLineTopPanel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +40,18 @@ import android.widget.TextView;
 public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 
 	private TimeLineTopPanel mPanel;
+	private TimeLineAdapter mTimeLineAdapter;
 	
-	private Button mBtnAll, mBtnNone, mBtnDefault;
+	private TextView mTxtMessage;
+	private Button mBtnAll, mBtnNone, mBtnDefault, mBtnSources;
 	private ListView mLstSources;
 	private TextView mTxtHidePanel;
 	
 	
-	public TimeLineOptionsPopupWindow(TimeLineTopPanel panel) {
+	public TimeLineOptionsPopupWindow(TimeLineTopPanel panel, TimeLineAdapter timeLineAdapter) {
 		super(panel.getContext());
 		mPanel = panel;
+		mTimeLineAdapter = timeLineAdapter;
 	}
 
 	
@@ -52,11 +60,12 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 		
 		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_timeline_options, contentRoot);
 		
+		mTxtMessage = (TextView)contentView.findViewById(R.id.timeline_options_txtMessage);
 		mBtnAll = (Button)contentView.findViewById(R.id.timeline_options_btnAll);
 		mBtnNone = (Button) contentView.findViewById(R.id.timeline_options_btnNone);
 		mBtnDefault = (Button) contentView.findViewById(R.id.timeline_options_btnDefault);
-		
 		mLstSources = (ListView)contentView.findViewById(R.id.timeline_options_lstSources);
+		mBtnSources = (Button) contentView.findViewById(R.id.timeline_options_btnSources);
 		
 		mLstSources
 		.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -76,6 +85,32 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 				mPanel.onHide();
 			}
 		});
+		
+		mBtnAll.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onSetAll(true);
+			}
+		});
+		
+		mBtnNone.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onSetAll(false);
+			}
+		});
+		
+		mBtnDefault.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onDeleteFilters();
+			}
+		});
+		
+		mBtnSources.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				Intent i = new Intent(mContext,SourcesActivity.class);
+				mContext.startActivity(i);
+			}
+		});
+		
 	}
 
 	public void initView(boolean hideButtonVisible) {
@@ -83,12 +118,33 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 		mTxtHidePanel.setVisibility(hideButtonVisible ? View.VISIBLE : View.GONE);
 		mLstSources.setAdapter(new SourceFiltersAdapter(mContext, mLstSources, mPanel.getContact()));
 		
+		String message = String.format(mContext.getString(R.string.timeline_options_message), mPanel.getContact().getGivenName());
+		mTxtMessage.setText(message);
+		
 	}
 	
 	/** Called when the user clicks on a source. */
 	private void onSourceClicked(EventSource source, boolean checked) {
 		source.setEnabled(checked);
-		((SourcesAdapter)mLstSources.getAdapter()).update(source);
+		((SourceFiltersAdapter)mLstSources.getAdapter()).update(source);
 	}
+	
+	private void onSetAll(boolean enabled) {
 		
+		mTimeLineAdapter.disableObserver();
+		
+		for(EventSource s : ((SourceFiltersAdapter)mLstSources.getAdapter()).getItems())
+			s.setEnabled(enabled);
+		
+		((SourceFiltersAdapter)mLstSources.getAdapter()).updateAll(enabled ? SourceState.ENABLED : SourceState.DISABLED);
+		
+		mTimeLineAdapter.enableObserverAndNotify();
+		
+	}
+	
+	private void onDeleteFilters() {
+		
+		((SourceFiltersAdapter)mLstSources.getAdapter()).deleteFilters();
+	}
+
 }

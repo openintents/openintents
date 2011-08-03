@@ -84,6 +84,10 @@ public class EventAggregator {
 
 	public void query() {
 
+		if(mMergedCursor!=null)
+			mMergedCursor.release();
+		
+		
 		//load enabled sources
 		SourceFilterLoader sourceFilterLoader = new SourceFilterLoader(mContact);
 		ArrayList<EventSource> enabledSources = new ArrayList<EventSource>();
@@ -106,12 +110,7 @@ public class EventAggregator {
 		
 		//create merged cursor from the source cursors
 		mMergedCursor = builder.build();
-
-		if(mContentObserver==null) {
-			mContentObserver = new AggregatorContentObserver();
-			mMergedCursor.registerContentObserver(mContentObserver);
-			mContext.getContentResolver().registerContentObserver(ContentUris.Sources, true, mContentObserver);
-		}
+		registerObserver();
 	}
 	
 	public int getCount() {
@@ -131,13 +130,30 @@ public class EventAggregator {
 	}
 
 	public void release() {
+		
+		unregisterObserver();
+		mMergedCursor.release();
+	}
+
+	public void unregisterObserver() {
+		
 		if(mContentObserver!=null) {
 			mContext.getContentResolver().unregisterContentObserver(mContentObserver);
 			mContentObserver = null;
 		}
-		
-		mMergedCursor.release();
-		
+	}
+
+	public void registerObserver() {
+
+		if(mContentObserver==null) {
+			mContentObserver = new AggregatorContentObserver();
+			mMergedCursor.registerContentObserver(mContentObserver);
+			mContext.getContentResolver().registerContentObserver(ContentUris.Sources, true, mContentObserver);
+		}
+	}
+
+	public void notifyObserver() {
+		mContentObserver.onChange(false);
 	}
 
 }

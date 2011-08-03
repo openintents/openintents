@@ -149,4 +149,13 @@ public class TimeLineAdapter extends BaseAdapter {
 		mAggregator.release();
 	}
 
+	public void disableObserver() {
+		mAggregator.unregisterObserver();
+	}
+
+	public void enableObserverAndNotify() {
+		mAggregator.registerObserver();
+		mAggregator.notifyObserver();
+	}
+
 }

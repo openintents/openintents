@@ -28,7 +28,7 @@
 	<string name="timeline.hmenu.filter">filters</string>
 	<string name="timeline.hmenu.restore">restore top panel</string>
 	<string name="timeline.default_given_name">Contact</string>
-		
+	<string name="timeline.options.message">select which events of %1$s you\'d like to see.</string>
 	<string name="moremenu.myfavorites">my favorites</string>
 	<string name="moremenu.mycontacts">my contacts</string>
 	<string name="moremenu.mysources">my sources</string>

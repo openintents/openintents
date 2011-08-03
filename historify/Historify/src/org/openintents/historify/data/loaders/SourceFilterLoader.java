@@ -74,17 +74,7 @@ public class SourceFilterLoader extends SourceLoader {
 	
 	public boolean hasFilters(Context context) {
 
-		String[] projection = new String[] { FiltersTable.CONTACT_LOOKUP_KEY }; 
-		String selection = Sources.FiltersTable.CONTACT_LOOKUP_KEY + " = ?";
-		String[] selectionArgs = new String[] {
-			mContact.getLookupKey()	
-		};
-		
-		Cursor c = context.getContentResolver().query(ContentUris.Filters,projection,selection,selectionArgs,null);
-		boolean retval = c.moveToNext();
-		c.close();
-		
-		return retval;
+		return new SourceFilterOperation().hasFilters(context, mContact);
 	}
 
 	public boolean insertFiltersForContact(Context context, List<EventSource> sources) {
@@ -115,7 +105,7 @@ public class SourceFilterLoader extends SourceLoader {
 	}
 
 	@Override
-	public void update(Context context, EventSource source) {
+	public void updateItemState(Context context, EventSource source) {
 
 		SourceFilter filter = (SourceFilter)source;
 		Uri filterUri =  Uri.withAppendedPath(ContentUris.Filters, String.valueOf(filter.getFilterId()));
@@ -124,6 +114,20 @@ public class SourceFilterLoader extends SourceLoader {
 		cv.put(Sources.FiltersTable.FILTERED_STATE, filter.getFilteredState().toString());
 		
 		context.getContentResolver().update(filterUri, cv, null, null);
+	}
+	
+	@Override
+	public void updateAllItemState(Context context, SourceState newState) {
+
+		ContentValues cv = new ContentValues();
+		cv.put(Sources.FiltersTable.FILTERED_STATE, newState.toString());
+		
+		String where = FiltersTable.CONTACT_LOOKUP_KEY + " = ?";
+		String[] whereArgs = new String[] {
+				mContact.getLookupKey()
+		};
+		
+		context.getContentResolver().update(ContentUris.Filters, cv, where, whereArgs);
 	}
 
 }

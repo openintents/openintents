@@ -17,6 +17,7 @@
 package org.openintents.historify.ui.views;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.adapters.TimeLineAdapter;
 import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.preferences.Pref;
@@ -33,6 +34,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.PopupWindow.OnDismissListener;
 
@@ -63,7 +65,8 @@ public class TimeLineTopPanel {
 	private Button mBtnOptions;
 
 	private ActionBar mActionBar;
-
+	private ListView mLstTimeLine;
+	
 	private boolean mVisible;
 	
 	public TimeLineTopPanel(ViewGroup contentView) {
@@ -87,7 +90,9 @@ public class TimeLineTopPanel {
 		mActionBar = actionBar;
 	}
 	
-	public void init(Contact contact) {
+	public void init(Contact contact, ListView lstTimeLine) {
+
+		mLstTimeLine = lstTimeLine;
 		
 		mContact = contact;
 		
@@ -110,7 +115,7 @@ public class TimeLineTopPanel {
 	private void onTimeLineOptionsSelected() {
 		
 		TimeLineOptionsPopupWindow popupWindow =
-			new TimeLineOptionsPopupWindow(this);
+			new TimeLineOptionsPopupWindow(this, (TimeLineAdapter) mLstTimeLine.getAdapter());
 		popupWindow.initView(mVisible);
 		
 		if(mVisible) {

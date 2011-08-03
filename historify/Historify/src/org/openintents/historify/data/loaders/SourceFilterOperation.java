@@ -19,7 +19,9 @@ package org.openintents.historify.data.loaders;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
+import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.FiltersTable;
 import org.openintents.historify.uri.ContentUris;
 
@@ -86,6 +88,29 @@ public class SourceFilterOperation {
 	public void removeFiltersOfDeletedSource(Context context, long sourceId) {
 		String where = FiltersTable.SOURCE_ID + " = "+sourceId;
 		context.getContentResolver().delete(ContentUris.Filters, where, null);
+	}
+
+	public void removeFiltersOfContact(Context context, Contact contact) {
+		String where = FiltersTable.CONTACT_LOOKUP_KEY + " = ?";
+		String[] whereArgs = new String[] {
+				contact.getLookupKey()
+		};
+		context.getContentResolver().delete(ContentUris.Filters, where, whereArgs);
+	}
+
+	public boolean hasFilters(Context context, Contact mContact) {
+		
+		String[] projection = new String[] { FiltersTable.CONTACT_LOOKUP_KEY }; 
+		String selection = Sources.FiltersTable.CONTACT_LOOKUP_KEY + " = ?";
+		String[] selectionArgs = new String[] {
+			mContact.getLookupKey()	
+		};
+		
+		Cursor c = context.getContentResolver().query(ContentUris.Filters,projection,selection,selectionArgs,null);
+		boolean retval = c.moveToNext();
+		c.close();
+		
+		return retval;
 	}
 
 }

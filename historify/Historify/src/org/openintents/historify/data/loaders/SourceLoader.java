@@ -16,8 +16,11 @@
 
 package org.openintents.historify.data.loaders;
 
+import java.util.List;
+
 import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.QuickPosts;
@@ -140,7 +143,7 @@ public class SourceLoader {
 		
 	}
 
-	public void update(Context context, EventSource source) {
+	public void updateItemState(Context context, EventSource source) {
 
 		Uri sourceUri = ContentUris.Sources.buildUpon().appendPath(String.valueOf(source.getId())).build();
 		
@@ -148,6 +151,11 @@ public class SourceLoader {
 		cv.put(Sources.SourcesTable.STATE, source.getState().toString());
 		
 		context.getContentResolver().update(sourceUri, cv, null, null);
+	}
+
+	public void updateAllItemState(Context context, SourceState newState) {
+		//no need
+		
 	}
 
 	

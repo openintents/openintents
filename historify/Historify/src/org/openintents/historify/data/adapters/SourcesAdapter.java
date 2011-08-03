@@ -23,6 +23,7 @@ import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 import org.openintents.historify.uri.ContentUris;
@@ -136,6 +137,7 @@ public class SourcesAdapter extends BaseAdapter {
 			
 		mInternalSources.clear();
 		mExternalSources.clear();
+		mSources.clear();
 
 		Cursor c = mSourceLoader.openCursor(mContext);
 		for (int i = 0; i < c.getCount(); i++) {
@@ -162,8 +164,13 @@ public class SourcesAdapter extends BaseAdapter {
 	/** Update the enabled / disabled state of a source */
 	public void update(EventSource source) {
 
-		mSourceLoader.update(mContext, source);
+		mSourceLoader.updateItemState(mContext, source);
 
+	}
+	
+	public void updateAll(SourceState newState) {
+		
+		mSourceLoader.updateAllItemState(mContext, newState);
 	}
 
 	public int getCount() {
@@ -219,12 +226,7 @@ public class SourcesAdapter extends BaseAdapter {
 	}
 
 	public List<EventSource> getItems() {
-
-		ArrayList<EventSource> retval = new ArrayList<EventSource>();
-		retval.addAll(mInternalSources);
-		retval.addAll(mExternalSources);
-
-		return retval;
+		return mSources;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -325,5 +327,6 @@ public class SourcesAdapter extends BaseAdapter {
 			mObserver = null;	
 		}
 	}
+
 
 }

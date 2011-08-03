@@ -18,9 +18,11 @@ package org.openintents.historify.data.adapters;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.SourceFilterLoader;
+import org.openintents.historify.data.loaders.SourceFilterOperation;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.uri.ContentUris;
 
 import android.content.Context;
@@ -36,11 +38,13 @@ public class SourceFiltersAdapter extends SourcesAdapter {
 	private boolean mHasFilters;
 	
 	private SourceFilterLoader mSourceFilterLoader;
+	private SourceLoader mDefaultSourceLoader;
 	
 	public SourceFiltersAdapter(Context context, ListView listView, Contact contact) {
 		super();
 		mContact = contact;
 		mSourceFilterLoader = new SourceFilterLoader(contact);
+		mDefaultSourceLoader = new SourceLoader(ContentUris.Sources);
 		
 		//check if contact has previously defined filters
 		mHasFilters = mSourceFilterLoader.hasFilters(context);
@@ -48,7 +52,7 @@ public class SourceFiltersAdapter extends SourcesAdapter {
 		//If the current contact hasnt got any filters, the default values will be shown.
 		//We use a simple SourceLoader for that purpose.
 		//If the user modifies a list element, the loader will be changed to the SourceFilterLoader instance.
-		init(context, listView, mHasFilters ? mSourceFilterLoader : new SourceLoader(ContentUris.Sources), R.layout.listitem_source_filter);
+		init(context, listView, mHasFilters ? mSourceFilterLoader : mDefaultSourceLoader, R.layout.listitem_source_filter);
 	}
 
 	@Override
@@ -89,4 +93,27 @@ public class SourceFiltersAdapter extends SourcesAdapter {
 		
 	}
 	
+	
+	@Override
+	public void updateAll(SourceState newState) {
+		
+		if(!mHasFilters) {
+			mSourceFilterLoader.insertFiltersForContact(mContext, mSources);
+			mHasFilters = true;
+			mSourceLoader = mSourceFilterLoader;
+			load();
+		} else {
+			super.updateAll(newState);	
+		}
+	}
+
+	public void deleteFilters() {
+		
+		if(mHasFilters) {
+			new SourceFilterOperation().removeFiltersOfContact(mContext, mContact);
+			mHasFilters = false;
+			mSourceLoader = mDefaultSourceLoader;
+			load();
+		}
+	}
 }

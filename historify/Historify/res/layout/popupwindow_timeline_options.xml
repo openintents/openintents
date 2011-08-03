@@ -3,6 +3,12 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
+	<TextView
+		android:id="@+id/timeline_options_txtMessage"
+		style="@style/TextView.Popup"
+		android:paddingLeft="3dip"
+		/>		
+
 	<LinearLayout
 		android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
@@ -41,7 +47,7 @@
 
  
 	<Button
-		android:id="@+id/btnSources"
+		android:id="@+id/timeline_options_btnSources"
 		android:text="@string/main.label.sources"
 		android:layout_width="160dip"
 		android:layout_gravity="center"
@@ -51,7 +57,7 @@
 
 	<TextView
 		android:id="@+id/timeline_options_txtHidePanel"
-		style="@style/TextView.Popup"
+		style="@style/TextView.Popup.Clickable"
 		android:paddingLeft="3dip"
 		android:text="> hide top panel"
 		/>		
