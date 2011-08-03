@@ -23,6 +23,7 @@ import android.support.v2.app.ListFragment;
 import android.support.v2.app.LoaderManager;
 import android.support.v2.content.CursorLoader;
 import android.support.v2.content.Loader;
+import android.support.v2.database.DatabaseUtils;
 import android.support.v2.widget.SimpleCursorAdapter;
 
 import android.content.ContentProvider;
@@ -32,7 +33,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
