@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="AndroidSupportV2" basedir="." default="jar">
+
+    <!-- Local build properties are not shared via svn, 
+         developers must have their own copy. -->	 
+    <property file="local.properties" />
+
+    <property file="default.properties" />
+	
+    <property name="app.shopping" value="../../shoppinglist/ShoppingList/libs"/>
+    	
+    <property name="src" value="src"/>
+    <property name="src.eclair" value="eclair"/>
+    <property name="src.froyo" value="froyo"/>
+    <property name="src.honeycomb" value="honeycomb"/>
+    <property name="src.honeycomb_mr2" value="honeycomb_mr2"/>
+	
+    <property name="output" value="bin"/>
+    <property name="output.lib" value="release"/>
+    <property name="libname" value="android-support-v2"/>
+    <property name="output.lib.file" value="${output.lib}/${libname}.jar"/>
+	
+	<property name="android.jar" value="${sdk.dir}/platforms/${target}/android.jar"/>
+
+    <target name="compile" depends="create">
+        <javac destdir="bin" includeantruntime="false"
+        	classpath="${android.jar}">
+            <src path="${src}"/>
+            <src path="${src.eclair}"/>
+            <src path="${src.froyo}"/>
+            <src path="${src.honeycomb}"/>
+            <src path="${src.honeycomb_mr2}"/>
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar destfile="${output.lib.file}">
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+
+    <target name="create">
+        <mkdir dir="${output}"/>
+        <mkdir dir="${output.lib}"/>
+    </target>
+	
+    <target name="copy">
+        <copy file="${output.lib.file}" todir="${app.shopping}"/>
+    </target>
+</project>
