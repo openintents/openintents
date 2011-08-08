@@ -29,6 +29,9 @@
         <activity android:name=".ui.SourcesActivity"
         	android:theme="@android:style/Theme.NoTitleBar"/>
 
+        <activity android:name=".ui.PreferencesActivity"
+        	android:theme="@android:style/Theme.NoTitleBar"/>
+
         <activity android:name=".ui.QuickPostsConfigActivity">
         	<intent-filter>
                 <action android:name="org.openintents.historify.CONFIG_QUICKPOSTS" />

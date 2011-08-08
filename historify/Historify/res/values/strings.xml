@@ -26,6 +26,7 @@
 	<string name="timeline.options.default">default</string>
 	<string name="timeline.msg_restore">You can always restore the top panel by selecting the <b>h!</b> symbol.</string>
 	<string name="timeline.hmenu.filter">filters</string>
+	<string name="timeline.hmenu.interact">interact</string>
 	<string name="timeline.hmenu.restore">restore top panel</string>
 	<string name="timeline.default_given_name">Contact</string>
 	<string name="timeline.options.message">select which events of %1$s you\'d like to see.</string>

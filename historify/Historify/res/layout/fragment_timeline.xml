@@ -77,8 +77,31 @@
     	    
 	</LinearLayout>
 
+	<ImageView
+			android:scaleType="fitXY"
+			android:layout_width="20dip" 
+		    android:layout_height="20dip"
+		    android:src="@android:drawable/ic_menu_more"
+		    android:layout_alignParentTop="true"
+		    android:layout_alignParentLeft="true"/> 
+	
+	<ImageView
+			android:scaleType="fitXY"
+			android:layout_width="20dip" 
+		    android:layout_height="20dip"
+		    android:src="@android:drawable/ic_menu_more"
+		    android:layout_alignParentTop="true"
+		    android:layout_alignParentRight="true"/>
 	
 </RelativeLayout>	 
+
+<TextView
+	android:id="@+id/timeline_txtFiltered"
+	style="@style/Label"
+	android:background="@color/background_dark"
+	android:paddingBottom="4dip"
+	android:visibility="gone"
+	android:text="several events might be filtered out." />   
 	 
 <ListView  
 	android:id="@+id/timeline_lstTimeLine"

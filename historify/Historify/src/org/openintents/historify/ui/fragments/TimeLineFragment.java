@@ -51,6 +51,7 @@ public class TimeLineFragment extends Fragment {
 	// views
 	private TimeLineTopPanel mTopPanel;
 	private ListView mLstTimeLine;
+	private View mTxtFiltered;
 	
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
@@ -81,6 +82,8 @@ public class TimeLineFragment extends Fragment {
 		//init top panel
 		mTopPanel = new TimeLineTopPanel((ViewGroup) layout.findViewById(R.id.timeline_layoutTopPanel));
 		
+		mTxtFiltered = layout.findViewById(R.id.timeline_txtFiltered);
+		
 		return layout;
 	}
 	
@@ -102,8 +105,8 @@ public class TimeLineFragment extends Fragment {
 		
 		mTopPanel.init(mContact, mLstTimeLine);
 
-		mAdapter = new TimeLineAdapter(getActivity(), mContact);
-		mLstTimeLine.setAdapter(mAdapter);	
+		mAdapter = new TimeLineAdapter(getActivity(), mContact, mTxtFiltered);
+		mLstTimeLine.setAdapter(mAdapter);
 
 	}
 

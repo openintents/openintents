@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.openintents.historify.R;
 import org.openintents.historify.ui.ContactsActivity;
+import org.openintents.historify.ui.PreferencesActivity;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
@@ -115,8 +116,8 @@ public class ActionBar {
 			})
 			.add(R.string.moremenu_mypreferences, new OnClickListener() {
 				public void onClick(View v) {
-//					Intent intent = new Intent(context, PreferencesActivity.class);
-//					context.startActivity(intent);
+					Intent intent = new Intent(context, PreferencesActivity.class);
+					context.startActivity(intent);
 				}
 			});
 		}

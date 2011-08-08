@@ -94,9 +94,9 @@ public final class Sources {
 	/**
 	 * SQLite helper class.
 	 */
-	static class OpenHelper extends SQLiteOpenHelper {
+	public static class OpenHelper extends SQLiteOpenHelper {
 
-		OpenHelper(Context context) {
+		public OpenHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);
 		}
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+	<ListView
+		android:id="@+id/popupwindow_interact_lstInteract"
+		style="@style/ListView"
+	    android:layout_width="160dip"
+	    android:paddingTop="10dip"
+	    android:paddingBottom="10dip"
+		/>
+
+</merge>

@@ -17,17 +17,25 @@
 package org.openintents.historify.data.loaders;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.data.model.source.SourceFilter;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
+import org.openintents.historify.data.providers.SourcesProvider;
 import org.openintents.historify.data.providers.Sources.FiltersTable;
+import org.openintents.historify.data.providers.Sources.OpenHelper;
+import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.uri.ContentUris;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteQuery;
+import android.database.sqlite.SQLiteQueryBuilder;
 
 public class SourceFilterOperation {
 
@@ -113,4 +121,30 @@ public class SourceFilterOperation {
 		return retval;
 	}
 
+	public boolean filteredEqualsDefault(Context context, Contact contact) {
+		return querySourceFilters(context, contact, "f."+FiltersTable.FILTERED_STATE+" != s."+SourcesTable.STATE);
+	}
+
+	public boolean filteredMoreThanDefault(Context context, Contact contact) {
+		return querySourceFilters(context, contact, "f."+FiltersTable.FILTERED_STATE+" = '" +SourceState.DISABLED 
+				+ "' AND s."+SourcesTable.STATE+ " = '"+SourceState.ENABLED+"'");
+	}
+	
+	private boolean querySourceFilters(Context context, Contact contact, String selection) {
+		
+		Sources.OpenHelper dbHelper = new OpenHelper(context);
+		
+		String q= "SELECT COUNT(*) FROM "+
+			Sources.FiltersTable._TABLE+" f JOIN "+Sources.SourcesTable._TABLE+
+			" s ON s."+SourcesTable._ID+" = f."+FiltersTable.SOURCE_ID+" WHERE " +
+			FiltersTable.CONTACT_LOOKUP_KEY + " = ? AND "+selection;
+		
+		Cursor c = dbHelper.getWritableDatabase().rawQuery(q, new String[] {contact.getLookupKey()});
+		c.moveToFirst();
+		boolean retval =  c.getInt(0)==0;
+		
+		c.close();
+		return retval;
+
+	}
 }

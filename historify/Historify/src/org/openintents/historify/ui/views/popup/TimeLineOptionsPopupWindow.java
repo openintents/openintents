@@ -52,6 +52,13 @@ public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 		super(panel.getContext());
 		mPanel = panel;
 		mTimeLineAdapter = timeLineAdapter;
+		
+//		setOnDismissListener(new OnDismissListener() {
+//			public void onDismiss() {
+//				//if all filtered state equals the corresponding default state,
+//				//filters are unnecessary, we may remove them?
+//			}
+//		});
 	}
 
 	

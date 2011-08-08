@@ -117,6 +117,10 @@ public class EventAggregator {
 		return mMergedCursor.getCount();
 	}
 
+	public Contact getContact() {
+		return mContact;
+	}
+	
 	public Event getItem(int position) {
 		
 		Event retval = mLoader.loadFromCursor(mMergedCursor, position);

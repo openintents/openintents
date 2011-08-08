@@ -22,6 +22,8 @@ import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.preferences.Pref;
 import org.openintents.historify.preferences.PreferenceManager;
+import org.openintents.historify.ui.views.popup.InteractPopupWindow;
+import org.openintents.historify.ui.views.popup.MyAvatarPopupWindow;
 import org.openintents.historify.ui.views.popup.TimeLineOptionsPopupWindow;
 import org.openintents.historify.ui.views.popup.ToolTipPopupWindow;
 import org.openintents.historify.ui.views.popup.ActionBarDropDownMenu.MenuModel;
@@ -48,6 +50,11 @@ public class TimeLineTopPanel {
 					panel.onTimeLineOptionsSelected();
 				}
 			})
+			.add(R.string.timeline_hmenu_interact, new OnClickListener() {
+				public void onClick(View v) {
+					panel.onInteractSelected();
+				}
+			})
 			.add(R.string.timeline_hmenu_restore, new OnClickListener() {
 				public void onClick(View v) {
 					panel.onShow();
@@ -60,8 +67,12 @@ public class TimeLineTopPanel {
 	
 	private Context mContext;
 	private ViewGroup mContentView;
+	
+	private TextView mTxtUser; 
+	private ImageView mImgUserIcon;
 	private TextView mTxtContact;
-	private ImageView mImgContactIcon;	
+	private ImageView mImgContactIcon;
+	
 	private Button mBtnOptions;
 
 	private ActionBar mActionBar;
@@ -74,6 +85,8 @@ public class TimeLineTopPanel {
 		mContentView = contentView;
 		mContext = contentView.getContext();
 		
+		mTxtUser = (TextView)contentView.findViewById(R.id.timeline_txtUser);
+		mImgUserIcon = (ImageView)contentView.findViewById(R.id.timeline_imgUserIcon);
 		mTxtContact = (TextView) contentView.findViewById(R.id.timeline_txtContact);
 		mImgContactIcon = (ImageView) contentView.findViewById(R.id.timeline_imgContactIcon);
 		
@@ -81,6 +94,18 @@ public class TimeLineTopPanel {
 		mBtnOptions.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onTimeLineOptionsSelected();
+			}
+		});
+		
+		mImgUserIcon.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				new MyAvatarPopupWindow(mContext).show(mTxtUser);
+			}
+		});
+		
+		mImgContactIcon.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				onInteractSelected();
 			}
 		});
 
@@ -128,6 +153,20 @@ public class TimeLineTopPanel {
 		
 	}
 
+	protected void onInteractSelected() {
+
+		InteractPopupWindow popupWindow = new InteractPopupWindow(mContext);
+		
+		if(mVisible) {
+			popupWindow.show(mTxtContact);
+		} else {
+			popupWindow.setArrowGravity(Gravity.LEFT);
+			popupWindow.show(mActionBar.getHSymbol());
+		}
+		
+	}
+
+	
 	public Context getContext() {
 		return mContext;
 	}

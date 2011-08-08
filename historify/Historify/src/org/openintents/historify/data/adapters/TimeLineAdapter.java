@@ -20,6 +20,7 @@ import java.util.Date;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.aggregation.EventAggregator;
+import org.openintents.historify.data.loaders.SourceFilterOperation;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
@@ -47,18 +48,26 @@ public class TimeLineAdapter extends BaseAdapter {
 	private EventAggregator mAggregator;
 	private SourceIconHelper mSourceIconHelper;
 	
+	private View mFilteredWarningView;
+	
 	/** Constructor */
-	public TimeLineAdapter(Activity context, Contact contact) {
+	public TimeLineAdapter(Activity context, Contact contact, View filteredWarningView) {
 
 		mContext = context;		
 		mAggregator = new EventAggregator(context, this, contact);
 		mSourceIconHelper = new SourceIconHelper();
+		mFilteredWarningView = filteredWarningView;
 		load();
 	}
 
 	public void load() {
 		mAggregator.query();
 		notifyDataSetChanged();
+		
+		if(mFilteredWarningView!=null) {
+			mFilteredWarningView.setVisibility(new SourceFilterOperation().filteredMoreThanDefault(mContext, mAggregator.getContact()) ? 
+					View.GONE : View.VISIBLE);
+		}
 	}
 
 	public int getCount() {
