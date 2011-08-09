@@ -19,6 +19,7 @@ package org.openintents.historify.ui;
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.preferences.PreferenceManager;
 import org.openintents.historify.ui.fragments.TimeLineFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.uri.Actions;
@@ -59,11 +60,16 @@ public class TimeLineActivity extends FragmentActivity {
 			if(contact!=null) {
 				setupActionBar(contact);
 				setFragmentParameters(contact);
+				saveAsLastShown(contactLookupKey);
 			} else {
 				Log.e(N, "Contact could not be loaded.");
 				finish();
 			}
 		}
+	}
+
+	private void saveAsLastShown(String lookupKey) {
+		PreferenceManager.getInstance(this).setLastShownContact(lookupKey);
 	}
 
 	private void setFragmentParameters(Contact contact) {

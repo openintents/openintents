@@ -19,15 +19,24 @@ package org.openintents.historify.data.loaders;
 import java.io.InputStream;
 import java.util.Stack;
 
+import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.ContactsAdapter;
 import org.openintents.historify.data.model.Contact;
+import org.openintents.historify.preferences.Pref;
+import org.openintents.historify.preferences.PreferenceManager;
+import org.openintents.historify.preferences.Pref.MyAvatar;
+import org.openintents.historify.utils.UserIconHelper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
+import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.widget.ImageView;
 
 /**
@@ -185,6 +194,43 @@ public class ContactIconHelper {
 		}
 
 		return retval;
+	}
+
+	public static MyAvatar loadMyAvatar(Context context, ImageView imageView) {
+
+		MyAvatar retval = MyAvatar.fromString(PreferenceManager.getInstance(context).getStringPreference(Pref.MY_AVATAR_ICON, Pref.DEF_AVATAR_ICON.toString()));
+		
+		if(retval==MyAvatar.defaultIcon) 
+			imageView.setImageResource(R.drawable.contact_default_large);
+		
+		else {
+			boolean succ = loadCustomAvatar(context, imageView);
+			
+			if(!succ) {
+				retval = MyAvatar.defaultIcon;
+				imageView.setImageResource(R.drawable.contact_default_large);
+			}
+			
+		}
+		
+		return retval;
+		
+	}
+
+	private static boolean loadCustomAvatar(Context context, ImageView imageView) {
+		try {
+			Bitmap b = new UserIconHelper().openIcon(context);
+			if(b!=null) {
+				imageView.setImageBitmap(b);
+				return true;
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return false;
+		
 	}
 
 }

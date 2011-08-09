@@ -19,8 +19,12 @@ package org.openintents.historify.ui;
 
 import org.openintents.historify.FirstStartTasks;
 import org.openintents.historify.R;
+import org.openintents.historify.preferences.Pref;
+import org.openintents.historify.preferences.PreferenceManager;
 import org.openintents.historify.ui.views.ActionBar;
+import org.openintents.historify.uri.Actions;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
@@ -39,14 +43,30 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
-		setupActionBar();
-		
+	
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
 		}
-					
+	
+		//decide which startup action to run
+		PreferenceManager pm = PreferenceManager.getInstance(this);
+		String startUpActionSetting = pm.getStringPreference(Pref.STARTUP_ACTION, Pref.DEF_STARTUP_ACTION);
+		if(!startUpActionSetting.equals(getString(R.string.preferences_startup_welcome))) {
+		
+			//user prefer to open a timeline on startup
+			String contactToShow = pm.getContactToShow(this, startUpActionSetting);
+			if(contactToShow!=null) {
+				Intent intent = new Intent(this, TimeLineActivity.class);
+				intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactToShow);
+				startActivity(intent);
+				finish();
+				return;
+			}
+		}
+			
+		//normal behaviour is to show the welcome screen
+		setContentView(R.layout.activity_main);
+		setupActionBar();
 	}
 
 	private void setupActionBar() {

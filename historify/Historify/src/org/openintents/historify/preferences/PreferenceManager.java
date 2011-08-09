@@ -16,8 +16,13 @@
 
 package org.openintents.historify.preferences;
 
+import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.ContactLoader;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 
 public class PreferenceManager {
 
@@ -43,5 +48,39 @@ public class PreferenceManager {
 	
 	public synchronized void setPreference(String key, boolean value) {
 		mSharedPreferences.edit().putBoolean(key, value).commit();
+	}
+	
+	public synchronized String getStringPreference(String key, String defaultValue) {
+		return mSharedPreferences.getString(key, defaultValue);
+	}
+	
+	public synchronized void setPreference(String key, String value) {
+		mSharedPreferences.edit().putString(key, value).commit();
+	}
+
+	public String getContactToShow(Activity context, String startUpActionSetting) {
+		
+		if(startUpActionSetting.equals(context.getString(R.string.preferences_startup_last_contacted))) {
+			//get lookupkey for last contacted person
+			return new ContactLoader().getMostRecentlyContacted(context); 
+		} else if(startUpActionSetting.equals(context.getString(R.string.preferences_startup_last_shown))) {
+			return getLastShownContact(context);
+		}
+		
+		return null;
+	}
+
+	private String getLastShownContact(Activity context) {
+		
+		String retval = getStringPreference(Pref.LAST_SHOWN_CONTACT, Pref.DEF_LAST_SHOWN_CONTACT);
+		if(retval!=null) {
+			return new ContactLoader().exists(context,retval) ? retval : null;
+		}
+		
+		return null;
+	}
+	
+	public void setLastShownContact(String lookupKey) {
+		setPreference(Pref.LAST_SHOWN_CONTACT, lookupKey);
 	}
 }

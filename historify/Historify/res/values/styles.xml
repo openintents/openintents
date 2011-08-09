@@ -55,10 +55,20 @@
     	<item name="android:textStyle">bold</item>
 	</style>
 	
-	<style name="ListItem.TimeLine" parent="android:Theme">
+	<style name="Label.Big.Centered" parent="Label">
+    	<item name="android:textSize">24sp</item>
+    	<item name="android:gravity">center_horizontal</item>
+	</style>
+	
+	<style name="ListItem.TimeLine.Bubble" parent="android:Theme">
     	<item name="android:background">@drawable/btn_focused</item>
     	<item name="android:padding">6dip</item>
-    	<item name="android:layout_margin">0dip</item>
+    	<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	
+	<style name="ListItem.TimeLine.Row" parent="android:Theme">
+    	<item name="android:padding">2dip</item>
     	<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>

@@ -31,6 +31,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -131,7 +132,15 @@ public class TimeLineFragment extends Fragment {
 		super.onDestroy();
 		
 		//release merged cursors
-		mAdapter.releaseCursors();
+		if(mAdapter!=null)
+			mAdapter.releaseCursors();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		((BaseAdapter)mLstTimeLine.getAdapter()).notifyDataSetChanged();
+		mTopPanel.loadUserIcon();
 	}
 
 }

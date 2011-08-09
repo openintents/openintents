@@ -22,7 +22,7 @@
  /> 
  
 
-  <include layout="@layout/listitem_event" />
+  <include layout="@layout/listitem_event_bubble" />
 
 
 <View

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout 
+	style="@style/Fragment.Root"
+	android:padding="6dip">
+
+<TextView
+	style="@style/Label.Bold"
+	android:text="my avatar icon" />
+
+<RelativeLayout
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+	
+	<ImageView
+		android:id="@+id/preferences_imgUserIcon"
+		android:layout_width="52dip" 
+		android:layout_height="52dip"
+		android:src="@drawable/contact_default_large" />
+
+	<TextView
+		style="@style/Label.Big.Centered"
+		android:id="@+id/preferences_txtUserIcon"
+		android:layout_width="fill_parent"
+		android:layout_alignParentTop="true"
+		android:layout_toRightOf="@id/preferences_imgUserIcon"
+		android:text="default" />
+	
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_below="@id/preferences_txtUserIcon"
+		android:layout_toRightOf="@id/preferences_imgUserIcon">
+	
+	<Button
+		android:id="@+id/preferences_btnSet"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="set new" />
+		
+	<Button
+		android:id="@+id/preferences_btnRestore"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="restore to default" />		
+
+	</LinearLayout>
+</RelativeLayout>
+
+<TextView
+	style="@style/Label.Bold"
+	android:text="on startup" />
+	
+<Spinner
+	android:id="@+id/preferences_spinnerStartupAction"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content" />	
+
+<TextView
+	style="@style/Label.Bold"
+	android:text="timeline theme" />
+
+<Spinner
+	android:id="@+id/preferences_spinnerTimeLineTheme"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content" />	
+
+</LinearLayout>
+</ScrollView>

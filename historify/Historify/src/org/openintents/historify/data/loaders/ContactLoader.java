@@ -136,7 +136,7 @@ public class ContactLoader {
 	private static final int COLUMN_LAST_TIME_CONTACTED = 3;
 
 	
-	public Cursor openCursor(Activity context, LoadingStrategy loadingStrategy) {
+	public Cursor openManagedCursor(Activity context, LoadingStrategy loadingStrategy) {
 		
 		Uri uri = ContactsContract.Contacts.CONTENT_URI;
         String[] projection = PROJECTION;
@@ -166,7 +166,7 @@ public class ContactLoader {
 
 	public Contact loadFromLookupKey(Activity context, String contactLookupKey, boolean withAdditionalData) {
 		
-		Cursor cursor = openCursor(context, new FilteredContactsLoadingStrategy(contactLookupKey));		
+		Cursor cursor = openManagedCursor(context, new FilteredContactsLoadingStrategy(contactLookupKey));		
 		
 		if (cursor==null || cursor.getCount()==0) {
 			return null;
@@ -197,5 +197,22 @@ public class ContactLoader {
 		c.close();
 		
 		contact.setGivenName(givenName == null ? context.getString(R.string.timeline_default_given_name) : givenName);
+	}
+
+	public String getMostRecentlyContacted(Activity context) {
+		
+		Cursor c = openManagedCursor(context, new RecentlyContactedLoadingStrategy());
+		
+		if(c.moveToFirst()) {
+			return c.getString(COLUMN_LOOKUP_KEY);
+		}
+		
+		return null;
+	}
+
+	public boolean exists(Activity context, String contactLookupKey) {
+
+		Cursor cursor = openManagedCursor(context, new FilteredContactsLoadingStrategy(contactLookupKey));		
+		return cursor!=null && cursor.getCount()!=0;
 	}
 }

@@ -24,6 +24,8 @@ import org.openintents.historify.data.loaders.SourceFilterOperation;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
+import org.openintents.historify.preferences.Pref;
+import org.openintents.historify.preferences.PreferenceManager;
 import org.openintents.historify.utils.DateUtils;
 
 import android.app.Activity;
@@ -50,6 +52,9 @@ public class TimeLineAdapter extends BaseAdapter {
 	
 	private View mFilteredWarningView;
 	
+	private String mTimeLineThemeSetting;
+	private int mTimeLineItemResId;
+	
 	/** Constructor */
 	public TimeLineAdapter(Activity context, Contact contact, View filteredWarningView) {
 
@@ -58,6 +63,25 @@ public class TimeLineAdapter extends BaseAdapter {
 		mSourceIconHelper = new SourceIconHelper();
 		mFilteredWarningView = filteredWarningView;
 		load();
+	}
+
+	@Override
+	public void notifyDataSetInvalidated() {
+		refreshTheme();
+		super.notifyDataSetInvalidated();
+	}
+
+	@Override
+	public void notifyDataSetChanged() {
+		refreshTheme();
+		super.notifyDataSetChanged();
+	}
+	
+	private void refreshTheme() {
+		mTimeLineThemeSetting = PreferenceManager.getInstance(mContext).getStringPreference(Pref.TIMELINE_THEME, Pref.DEF_TIMELINE_THEME);
+		mTimeLineItemResId = mTimeLineThemeSetting.equals(mContext.getString(R.string.preferences_timeline_theme_bubbles)) ?
+				R.layout.listitem_timeline_bubble :
+				R.layout.listitem_timeline_row;
 	}
 
 	public void load() {
@@ -86,16 +110,53 @@ public class TimeLineAdapter extends BaseAdapter {
 
 		Event event = getItem(position);
 
-		if (convertView == null) {
+		if (convertView == null || !convertView.getTag().equals(mTimeLineItemResId)) {
 			convertView = ((LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-					.inflate(R.layout.listitem_timeline, null);
+					.inflate(mTimeLineItemResId, null);
+			convertView.setTag(mTimeLineItemResId);
 		}
 
 		loadEventToView(event, convertView);
-		alignView(event, convertView);
-
+		
+		if(convertView.getTag().equals(R.layout.listitem_timeline_bubble)) {
+			alignBubbleView(event, convertView);	
+		} else {
+			alignRowView(event, convertView);
+			convertView.setBackgroundResource(
+					position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+		}
+		
 		return convertView;
+	}
+
+	private void alignRowView(Event event, View convertView) {
+
+		View viewLeftSpacer1 = convertView
+				.findViewById(R.id.timeline_listitem_vLeftSpacer1);
+		View viewRightSpacer1 = convertView
+				.findViewById(R.id.timeline_listitem_vRightSpacer1);
+
+		switch (event.getOriginator()) {
+		case user:
+
+			viewLeftSpacer1.setVisibility(View.VISIBLE);
+			viewRightSpacer1.setVisibility(View.GONE);
+			break;
+
+		case contact:
+
+			viewLeftSpacer1.setVisibility(View.GONE);
+			viewRightSpacer1.setVisibility(View.VISIBLE);
+			break;
+
+		case both:
+
+			viewLeftSpacer1.setVisibility(View.VISIBLE);
+			viewRightSpacer1.setVisibility(View.VISIBLE);
+			break;
+		}
+
 	}
 
 	private void loadEventToView(Event event, View convertView) {
@@ -114,7 +175,7 @@ public class TimeLineAdapter extends BaseAdapter {
 		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);
 	}
 
-	private void alignView(Event event, View convertView) {
+	private void alignBubbleView(Event event, View convertView) {
 
 		// align the view depending on the originator of the event
 		View viewLeftSpacer1 = convertView

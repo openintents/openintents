@@ -81,7 +81,7 @@
 			android:scaleType="fitXY"
 			android:layout_width="20dip" 
 		    android:layout_height="20dip"
-		    android:src="@android:drawable/ic_menu_more"
+		    android:src="@drawable/ic_more"
 		    android:layout_alignParentTop="true"
 		    android:layout_alignParentLeft="true"/> 
 	
@@ -89,7 +89,7 @@
 			android:scaleType="fitXY"
 			android:layout_width="20dip" 
 		    android:layout_height="20dip"
-		    android:src="@android:drawable/ic_menu_more"
+		    android:src="@drawable/ic_more"
 		    android:layout_alignParentTop="true"
 		    android:layout_alignParentRight="true"/>
 	

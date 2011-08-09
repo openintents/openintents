@@ -94,7 +94,7 @@ public class ContactsAdapter extends BaseAdapter {
 	}
 	
 	private void doLoad() {
-		mCursor = mLoader.openCursor(mContext, mLoadingStrategy);
+		mCursor = mLoader.openManagedCursor(mContext, mLoadingStrategy);
 		notifyDataSetChanged();
 	}
 	

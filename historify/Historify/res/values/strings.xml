@@ -35,6 +35,13 @@
 	<string name="moremenu.mysources">my sources</string>
 	<string name="moremenu.mypreferences">my preferences</string>
 		
+	<string name="preferences.title">my preferences</string>		
+	<string name="preferences.startup.welcome">show welcome screen</string>
+	<string name="preferences.startup.last_shown">open last shown timeline</string>
+	<string name="preferences.startup.last_contacted">open last contacted person</string>
+	<string name="preferences.timeline_theme.bubbles">bubbles</string>
+	<string name="preferences.timeline_theme.rows">rows</string>
+		
 	<string name="notification_source_added_ticker">SharedSource registered.</string>
 	<string name="notification_source_added">SharedSource successfully registered in Historify.</string>
 

@@ -133,6 +133,8 @@ public class TimeLineTopPanel {
 			mTxtContact.setText("");
 		}	
 		
+		loadUserIcon();
+		
 		mVisible = PreferenceManager.getInstance(mContext).getBooleanPreference(Pref.TIMELINE_TOP_PANEL_VISIBILITY, Pref.DEF_TIMELINE_TOP_PANEL_VISIBILITY);
 		if(!mVisible) onHide(false);
 	}
@@ -211,6 +213,10 @@ public class TimeLineTopPanel {
 
 	public Contact getContact() {
 		return mContact;
+	}
+
+	public void loadUserIcon() {
+		ContactIconHelper.loadMyAvatar(mContext, mImgUserIcon);
 	}
 	
 }
