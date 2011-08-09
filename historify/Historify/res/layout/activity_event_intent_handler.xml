@@ -5,24 +5,25 @@
     style="@style/ListItem.TimeLine.Bubble"    
     >
 
-<include layout="@layout/listitem_event_bubble" />
+<include layout="@layout/listitem_event_row" />
 
 <LinearLayout
 	android:layout_width="fill_parent"
 	android:layout_margin="5dip"
 	android:layout_height="wrap_content">
 
-	<ImageButton
-		android:id="@+id/event_intent_handler_btnView" 
-		android:layout_width="50dip"
-		android:layout_height="50dip"
-		android:src="@android:drawable/ic_menu_view"
+	<ImageView
+		android:id="@+id/event_intent_handler_btnView"
+		android:focusable="true" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/interact_default"
 		/>
 
 	<TextView 
 		style="@style/Label.Bold"
 		android:layout_gravity="center_vertical"
-		android:text="View Contact"/>
+		android:text="Interact"/>
 </LinearLayout>
 
 </LinearLayout>	 

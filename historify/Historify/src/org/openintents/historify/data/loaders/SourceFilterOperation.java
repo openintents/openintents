@@ -17,25 +17,19 @@
 package org.openintents.historify.data.loaders;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.openintents.historify.data.model.Contact;
-import org.openintents.historify.data.model.source.SourceFilter;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
-import org.openintents.historify.data.providers.SourcesProvider;
 import org.openintents.historify.data.providers.Sources.FiltersTable;
 import org.openintents.historify.data.providers.Sources.OpenHelper;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.uri.ContentUris;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteQuery;
-import android.database.sqlite.SQLiteQueryBuilder;
 
 public class SourceFilterOperation {
 

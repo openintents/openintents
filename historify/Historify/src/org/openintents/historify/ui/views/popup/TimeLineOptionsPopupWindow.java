@@ -18,9 +18,7 @@ package org.openintents.historify.ui.views.popup;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.SourceFiltersAdapter;
-import org.openintents.historify.data.adapters.SourcesAdapter;
 import org.openintents.historify.data.adapters.TimeLineAdapter;
-import org.openintents.historify.data.aggregation.EventAggregator;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.ui.SourcesActivity;

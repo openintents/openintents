@@ -23,6 +23,7 @@ import org.openintents.historify.data.loaders.EventLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.Event;
+import org.openintents.historify.data.model.source.DefaultInteractionType;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.data.providers.internal.Messaging;
@@ -39,7 +40,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -62,6 +62,7 @@ public class EventIntentHandlerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_event_intent_handler);
+		
 		
 		String action = getIntent().getAction();
 		
@@ -111,14 +112,8 @@ public class EventIntentHandlerActivity extends Activity {
 	private void initViewButton() {
 		
 		String lookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);		
-		Uri contactUri = 
-			Contacts.lookupContact(getContentResolver(),
-					Uri.withAppendedPath(Contacts.CONTENT_LOOKUP_URI, lookupKey));
 		
-		final Intent i = new Intent();
-		i.setAction(Intent.ACTION_VIEW);
-		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		i.setData(contactUri);
+		final Intent i = DefaultInteractionType.createIntent(this, lookupKey); 
 		
 		View btnView = findViewById(R.id.event_intent_handler_btnView);
 		btnView.setOnClickListener(new OnClickListener() {

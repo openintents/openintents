@@ -17,25 +17,28 @@
 package org.openintents.historify.ui.views.popup;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.adapters.InteractionTypesAdapter;
+import org.openintents.historify.data.model.source.InteractionType;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class InteractPopupWindow extends AbstractPopupWindow {
 
-	public InteractPopupWindow(Context context) {
+	private String mContactLookupKey;
+	
+	public InteractPopupWindow(Context context, String contactLookupKey) {
 		super(context);
 		setArrowGravity(Gravity.RIGHT);
+		mContactLookupKey = contactLookupKey;
 	}
 	
 	@Override
@@ -44,44 +47,18 @@ public class InteractPopupWindow extends AbstractPopupWindow {
 		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_interact, contentRoot);
 		
 		ListView lstInteract = (ListView)contentView.findViewById(R.id.popupwindow_interact_lstInteract);
-		lstInteract.setAdapter(new InteractListAdapter());
+		View emptyHintView = contentView.findViewById(R.id.popupwindow_interact_txtEmptyHint);
+		
+		lstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, emptyHintView));
 		
 		lstInteract.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> adapterView, View arg1, int pos,
 					long arg3) {
+				Intent i = ((InteractionType)adapterView.getItemAtPosition(pos)).crateIntent(mContactLookupKey);
+				mContext.startActivity(i);
 				dismiss();
 			}
 		});
 	}
 
-	private class InteractListAdapter extends BaseAdapter {
-
-		public int getCount() {
-			return 1;
-		}
-
-		public Object getItem(int position) {
-			return null;
-		}
-
-		public long getItemId(int position) {
-			return 0;
-		}
-
-		public View getView(int position, View convertView, ViewGroup parent) {
-			
-			if(convertView==null) {
-				convertView = ((LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.listitem_interact, null);
-			}
-			
-			ImageView iv = (ImageView)convertView.findViewById(R.id.interact_listitem_imgIcon);
-			iv.setImageResource(R.drawable.source_telephony);
-			
-			TextView tv = (TextView)convertView.findViewById(R.id.interact_listitem_txtName);
-			tv.setText("Call");
-			
-			return convertView;
-		}
-		
-	}
 }

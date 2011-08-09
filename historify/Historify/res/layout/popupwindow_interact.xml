@@ -9,6 +9,20 @@
 	    android:layout_width="160dip"
 	    android:paddingTop="10dip"
 	    android:paddingBottom="10dip"
+	    android:layout_weight="1"
 		/>
+
+	<TextView
+		android:id="@+id/popupwindow_interact_txtEmptyHint"
+		style="@style/TextView.Popup"
+		android:textSize="12sp"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="20dip"
+	    android:layout_marginRight="10dip"
+	    android:lines="4"
+	    android:text="you can expand the ways of interaction by adding new sources."
+		/>
+
 
 </merge>

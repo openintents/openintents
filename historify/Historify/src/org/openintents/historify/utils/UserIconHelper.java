@@ -1,19 +1,13 @@
 package org.openintents.historify.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-
-import org.openintents.historify.preferences.Pref;
-import org.openintents.historify.preferences.PreferenceManager;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 public class UserIconHelper {

@@ -157,7 +157,7 @@ public class TimeLineTopPanel {
 
 	protected void onInteractSelected() {
 
-		InteractPopupWindow popupWindow = new InteractPopupWindow(mContext);
+		InteractPopupWindow popupWindow = new InteractPopupWindow(mContext, mContact.getLookupKey());
 		
 		if(mVisible) {
 			popupWindow.show(mTxtContact);

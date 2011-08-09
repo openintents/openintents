@@ -30,13 +30,10 @@ import org.openintents.historify.utils.UserIconHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.widget.ImageView;
 
 /**

@@ -44,7 +44,7 @@ public class SourceIconHelper {
 			return null;
 		}
 	}
-	
+		
 	public void toImageView(Context context, EventSource source, Event event, ImageView iv) {
 		
 		if(source.getIconLoadingStrategy()==IconLoadingStrategy.useSourceIcon || event==null || !source.isInternal()) {
@@ -62,7 +62,7 @@ public class SourceIconHelper {
 	 * @param source
 	 * @param iv
 	 */
-	private void toImageView(Context context, Uri resUri, ImageView iv) {
+	public void toImageView(Context context, Uri resUri, ImageView iv) {
 
 		if(resUri==null) {
 			//default icon

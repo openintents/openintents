@@ -20,14 +20,10 @@ import org.openintents.historify.R;
 import org.openintents.historify.ui.fragments.PreferencesFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
-import org.openintents.historify.uri.Actions;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class PreferencesActivity extends FragmentActivity {
 	

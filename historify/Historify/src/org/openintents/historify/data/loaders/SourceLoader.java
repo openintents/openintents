@@ -16,8 +16,6 @@
 
 package org.openintents.historify.data.loaders;
 
-import java.util.List;
-
 import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.EventSource.SourceState;

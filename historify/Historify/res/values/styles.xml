@@ -156,5 +156,10 @@
     	<item name="android:layout_margin">2dip</item>
     	<item name="android:textColor">#fff</item>
 	</style>
+
+	<style name="Dialog" parent="android:Theme.Dialog">
+    	<item name="android:windowBackground">@android:color/transparent</item>
+	</style>
+
 	
 </resources>

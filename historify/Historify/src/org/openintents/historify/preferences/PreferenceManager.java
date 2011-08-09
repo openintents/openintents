@@ -22,7 +22,6 @@ import org.openintents.historify.data.loaders.ContactLoader;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 
 public class PreferenceManager {
 
