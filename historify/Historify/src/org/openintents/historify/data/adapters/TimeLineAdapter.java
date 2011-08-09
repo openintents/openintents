@@ -27,9 +27,14 @@ import org.openintents.historify.data.model.Event;
 import org.openintents.historify.preferences.Pref;
 import org.openintents.historify.preferences.PreferenceManager;
 import org.openintents.historify.utils.DateUtils;
+import org.openintents.historify.utils.PrettyTimeRefreshHelper;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +60,8 @@ public class TimeLineAdapter extends BaseAdapter {
 	private String mTimeLineThemeSetting;
 	private int mTimeLineItemResId;
 	
+	private PrettyTimeRefreshHelper mPrettyTimeRefreshHelper;
+	
 	/** Constructor */
 	public TimeLineAdapter(Activity context, Contact contact, View filteredWarningView) {
 
@@ -62,6 +69,9 @@ public class TimeLineAdapter extends BaseAdapter {
 		mAggregator = new EventAggregator(context, this, contact);
 		mSourceIconHelper = new SourceIconHelper();
 		mFilteredWarningView = filteredWarningView;
+		
+		mPrettyTimeRefreshHelper = new PrettyTimeRefreshHelper();
+		mPrettyTimeRefreshHelper.startRefresher(this);
 		load();
 	}
 
@@ -95,7 +105,7 @@ public class TimeLineAdapter extends BaseAdapter {
 	}
 
 	public int getCount() {
-		return mAggregator.getCount();
+		return mAggregator==null ? 0 : mAggregator.getCount();
 	}
 
 	public Event getItem(int position) {
@@ -171,6 +181,10 @@ public class TimeLineAdapter extends BaseAdapter {
 		tv.setText(DateUtils
 				.formatTimelineDate(new Date(event.getPublishedTime())));
 		
+		if(event.getMessage().startsWith("Lent")) {
+			Log.v("itt", "kell");
+		}
+		
 		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
 		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);
 	}
@@ -215,9 +229,11 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	}
 
-	public void releaseCursors() {
+	public void release() {
 		mAggregator.release();
+		mPrettyTimeRefreshHelper.stopRefresher();
 	}
+
 
 	public void disableObserver() {
 		mAggregator.unregisterObserver();
@@ -227,5 +243,4 @@ public class TimeLineAdapter extends BaseAdapter {
 		mAggregator.registerObserver();
 		mAggregator.notifyObserver();
 	}
-
 }

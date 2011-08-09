@@ -183,7 +183,7 @@ public class ContactsListFragment extends Fragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		mAdapter.onDestroy();
+		mAdapter.release();
 	}
 	
 	@Override

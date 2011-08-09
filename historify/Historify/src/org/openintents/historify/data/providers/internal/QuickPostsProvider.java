@@ -27,6 +27,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 
 /**
  * 
@@ -181,8 +182,10 @@ public class QuickPostsProvider extends EventsProvider {
 		if (id != -1) {
 			Uri retval =  Uri.withAppendedPath(uri, String.valueOf(id));
 			
-			if(notificationUri!=null)
+			if(notificationUri!=null) {
 				getContext().getContentResolver().notifyChange(notificationUri, null);
+			}
+				
 			
 			if(eventsChange)
 				onEventsChanged();

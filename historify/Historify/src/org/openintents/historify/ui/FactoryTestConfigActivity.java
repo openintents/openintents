@@ -19,12 +19,15 @@ package org.openintents.historify.ui;
 
 import org.openintents.historify.R;
 import org.openintents.historify.data.providers.internal.FactoryTestProvider.FactoryTestConfig;
+import org.openintents.historify.ui.views.ActionBar;
+import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 import org.openintents.historify.utils.Toaster;
 
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +39,7 @@ public class FactoryTestConfigActivity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_factory_test_config);
 
@@ -60,6 +64,10 @@ public class FactoryTestConfigActivity extends Activity {
 				finish();
 			}
 		});
+		
+		ActionBar actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+		actionBar.setInactiveFunction(MoreMenuFunction.sources);
+		actionBar.setup();
 	}
 
 	private void onDone() {

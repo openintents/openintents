@@ -16,24 +16,34 @@
 
 package org.openintents.historify.ui;
 
+import org.openintents.historify.R;
 import org.openintents.historify.ui.fragments.QuickPostSourcesFragment;
+import org.openintents.historify.ui.views.ActionBar;
+import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 
 public class QuickPostsConfigActivity extends FragmentActivity {
 
+	private ActionBar actionBar;
+	
+	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_quickpost_sources);
+		setupActionBar();
+	}
+
+	private void setupActionBar() {
 		
-		if (savedInstanceState == null) {
-			
-			QuickPostSourcesFragment fragment = new QuickPostSourcesFragment();
-			getSupportFragmentManager().beginTransaction().add(
-					android.R.id.content, fragment).commit();
-		}
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+		actionBar.setInactiveFunction(MoreMenuFunction.sources);
+		actionBar.setup();
 
 	}
+
 
 }

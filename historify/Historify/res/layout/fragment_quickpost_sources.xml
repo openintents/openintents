@@ -7,7 +7,8 @@
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="6dip"
+    android:background="@color/background_dark"
+    android:padding="4dip"
     >
 
     <ImageView
@@ -29,10 +30,17 @@
 	
 </LinearLayout>
 
+<View
+	android:layout_width="fill_parent"
+	android:layout_height="1px"
+	android:background="#000"   
+	/> 	
+
+
 <TextView
-	style="@style/Label.Bold"
+	style="@style/Label.Big.Centered"
 	android:padding="6dip"
-	android:text="Listing the applications that have posted events.\n"
+	android:text="event poster applications\n"
 />
     
 <ListView  

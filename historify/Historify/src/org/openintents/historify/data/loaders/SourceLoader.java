@@ -156,5 +156,9 @@ public class SourceLoader {
 		
 	}
 
+	public Uri getUri() {
+		return mSourcesUri;
+	}
+
 	
 }

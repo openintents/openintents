@@ -37,6 +37,7 @@ import android.os.Handler;
 import android.text.Spannable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -156,7 +157,7 @@ public class SourcesAdapter extends BaseAdapter {
 
 		mObserver = new SourcesChangedObserver(new Handler());
 		mContext.getContentResolver().registerContentObserver(
-				ContentUris.Sources ,true, mObserver); //ContentUris.FilteredSources
+				mSourceLoader.getUri() ,true, mObserver); //ContentUris.FilteredSources
 		
 		notifyDataSetChanged();
 	}
@@ -321,7 +322,7 @@ public class SourcesAdapter extends BaseAdapter {
 
 	}
 
-	public void onDestroy() {
+	public void release() {
 		if(mObserver!=null) {
 			mContext.getContentResolver().unregisterContentObserver(mObserver);
 			mObserver = null;	

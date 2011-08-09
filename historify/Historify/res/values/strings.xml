@@ -17,8 +17,7 @@
 	<string name="sources.title">my sources</string>
 	<string name="sources.external_sources">external sources</string>
 	<string name="sources.need_mode"><b>Need more?</b>\nYou could always install new\napplications with further sources.\nmore information</string>
-	<string name="sources.quickpost_sources">QuickPost Applications</string>
-	<string name="sources.no_quickpost_sources">No QuickPosts.</string>
+	<string name="sources.no_quickpost_sources">no QuickPosts.</string>
 	
 	<string name="timeline.no_events">there is nothing to display.</string>
 	<string name="timeline.options.all">all</string>

@@ -47,7 +47,7 @@ public class SourceIconHelper {
 		
 	public void toImageView(Context context, EventSource source, Event event, ImageView iv) {
 		
-		if(source.getIconLoadingStrategy()==IconLoadingStrategy.useSourceIcon || event==null || !source.isInternal()) {
+		if(source.getIconLoadingStrategy()==IconLoadingStrategy.useSourceIcon || event==null /*|| !source.isInternal()*/) {
 			toImageView(context, source.getIcon(), iv);
 		} else {
 			//used for loading custom event icons (eg. QuickPost)

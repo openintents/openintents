@@ -133,7 +133,7 @@ public class TimeLineFragment extends Fragment {
 		
 		//release merged cursors
 		if(mAdapter!=null)
-			mAdapter.releaseCursors();
+			mAdapter.release();
 	}
 	
 	@Override

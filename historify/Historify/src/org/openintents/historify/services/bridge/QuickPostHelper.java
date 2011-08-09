@@ -31,6 +31,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract.Contacts;
 import android.util.Log;
 
 /**
@@ -143,6 +144,15 @@ public class QuickPostHelper {
 		cv.put(QuickPostEventsTable.SOURCE_ID, sourceId);
 		
 		resolver.insert(Uri.withAppendedPath(QuickPosts.SOURCE_URI,Events.EVENTS_PATH), cv);
+		markAsContacted(resolver, contactKey);
+	}
+
+	private void markAsContacted(ContentResolver resolver, String contactKey) {
+		
+		Uri contactUri = 
+				Contacts.lookupContact(resolver, Uri.withAppendedPath(Contacts.CONTENT_LOOKUP_URI, contactKey));
+		Contacts.markAsContacted(resolver, android.content.ContentUris.parseId(contactUri));
+
 	}
 
 	private Long insertOrUpdateQuickPostSource(ContentResolver resolver, Bundle parameterSet, Long updateRow) {

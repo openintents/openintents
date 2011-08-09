@@ -44,7 +44,9 @@ import android.widget.AdapterView.OnItemClickListener;
 public class MainScreenFragment extends Fragment {
 	
 	private Button btnMore, btnFavorites, btnSources;
+	
 	private Gallery galleryContacts;
+	private RecentlyContactedAdapter recentlyContactedAdapter;
 	
 	/** Called to have the fragment instantiate its user interface view.*/
 	@Override
@@ -79,7 +81,8 @@ public class MainScreenFragment extends Fragment {
 		
 		//init gallery for contacts
 		galleryContacts = (Gallery)layout.findViewById(R.id.main_screen_galleryContacts);
-		galleryContacts.setAdapter(new RecentlyContactedAdapter(getActivity()));
+		recentlyContactedAdapter = new RecentlyContactedAdapter(getActivity());
+		galleryContacts.setAdapter(recentlyContactedAdapter);
 		
 		galleryContacts.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View view, int pos,
@@ -125,4 +128,21 @@ public class MainScreenFragment extends Fragment {
 		startActivity(intent);
 	}
 
+	@Override
+	public void onPause() {
+		super.onPause();
+		recentlyContactedAdapter.stopPrettyTimeRefresher();
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		recentlyContactedAdapter.startPrettyTimeRefresher();
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		recentlyContactedAdapter.release();
+	}
 }

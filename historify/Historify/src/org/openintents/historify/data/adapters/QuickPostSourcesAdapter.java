@@ -50,29 +50,12 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 
 	
 	public int getCount() {
-		return mExternalSources.size() + 1 + (mExternalSources.isEmpty() ? 1 : 0);
-	}
-
-	@Override
-	public int getItemViewType(int position) {
-
-		if (position == 0)
-			return VIEW_TYPE_HEADER;
-		else if (position == 1 && mExternalSources.isEmpty()) {
-			return VIEW_TYPE_NEED_MORE_MESSAGE;
-		} else
-			return VIEW_TYPE_ITEM;
-
+		return mExternalSources.size();
 	}
 
 	@Override
 	public boolean areAllItemsEnabled() {
-		return false;
-	}
-
-	@Override
-	public boolean isEnabled(int position) {
-		return getItemViewType(position) == VIEW_TYPE_ITEM;
+		return true;
 	}
 
 	public long getItemId(int position) {
@@ -81,70 +64,41 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 	}
 
 	public EventSource getItem(int position) {
-
-		if (position == 0) {
-				return null;
-		} else {
-			return (mExternalSources.isEmpty() ? null : mExternalSources.get(position-1));
-		}
-
+		return mExternalSources.get(position);
 	}
 
 	public List<EventSource> getItems() {
 
 		ArrayList<EventSource> retval = new ArrayList<EventSource>();
 		retval.addAll(mExternalSources);
-
 		return retval;
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		Integer viewType = getItemViewType(position);
+		if (convertView == null) {
+			convertView = ((LayoutInflater) mContext
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+					.inflate(R.layout.listitem_quickpost_source, null);
 
-		if (viewType == VIEW_TYPE_HEADER) { // list header
-
-			if (convertView == null || !viewType.equals(convertView.getTag())) {
-				convertView = ((LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(android.R.layout.preference_category, null);
-			}
-			((TextView) convertView).setText(R.string.sources_quickpost_sources);
-
-		} else if (viewType == VIEW_TYPE_NEED_MORE_MESSAGE) { 
-
-			if (convertView == null || !viewType.equals(convertView.getTag())) {
-				convertView = ((LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(R.layout.list_empty_view, null);
-				convertView.setVisibility(View.VISIBLE);
-			}
-
-			((TextView) convertView)
-					.setText(R.string.sources_no_quickpost_sources);
-
-		} else { // list item
-
-			if (convertView == null || !viewType.equals(convertView.getTag())) {
-				convertView = ((LayoutInflater) mContext
-						.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
-						.inflate(R.layout.listitem_quickpost_source, null);
-				
-			}
-
-			EventSource item = getItem(position);
-			TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
-			tv.setText(item.getName());
-						
-			tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtDescription);
-			tv.setText(item.getDescription() == null ? "" : item.getDescription());
-
-			ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
-			mSourceIconHelper.toImageView(mContext, item,null,iv);
-										
 		}
 
-		convertView.setTag(viewType);
+		convertView.setBackgroundResource(
+				position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+		
+		EventSource item = getItem(position);
+		TextView tv = (TextView) convertView
+				.findViewById(R.id.sources_listitem_txtName);
+		tv.setText(item.getName());
+
+		tv = (TextView) convertView
+				.findViewById(R.id.sources_listitem_txtDescription);
+		tv.setText(item.getDescription() == null ? "" : item.getDescription());
+
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.sources_listitem_imgIcon);
+		mSourceIconHelper.toImageView(mContext, item, null, iv);
+
 		return convertView;
 	}
 

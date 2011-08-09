@@ -23,6 +23,7 @@ import org.openintents.historify.data.loaders.ContactIconHelper;
 import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.utils.DateUtils;
+import org.openintents.historify.utils.PrettyTimeRefreshHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -34,9 +35,12 @@ import android.widget.TextView;
 
 public class RecentlyContactedAdapter extends ContactsAdapter {
 	
+	private PrettyTimeRefreshHelper mPrettyTimeRefreshHelper;
+	
 	public RecentlyContactedAdapter(Activity context) {
 		super(context, new ContactLoader.RecentlyContactedLoadingStrategy());
 		mContactIconHelper = new ContactIconHelper(mContext,R.drawable.contact_default_large);
+		mPrettyTimeRefreshHelper = new PrettyTimeRefreshHelper();
 	}
 	
 	@Override
@@ -66,4 +70,17 @@ public class RecentlyContactedAdapter extends ContactsAdapter {
 
 	}
 
+	@Override
+	public void release() {
+		super.release();
+	}
+
+	public void stopPrettyTimeRefresher() {
+		mPrettyTimeRefreshHelper.stopRefresher();
+		
+	}
+
+	public void startPrettyTimeRefresher() {
+		mPrettyTimeRefreshHelper.startRefresher(this);
+	}
 }

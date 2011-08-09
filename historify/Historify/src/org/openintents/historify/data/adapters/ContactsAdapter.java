@@ -108,7 +108,7 @@ public class ContactsAdapter extends BaseAdapter {
 
 
 	public int getCount() {
-		return mCursor == null ? 0 : mCursor.getCount();
+		return mCursor == null || mCursor.isClosed() ? 0 : mCursor.getCount();
 	}
 
 	public Contact getItem(int position) {
@@ -145,7 +145,7 @@ public class ContactsAdapter extends BaseAdapter {
 		return convertView;
 	}
 	
-	public void onDestroy() {
+	public void release() {
 		mContactIconHelper.stopThread();
 		mContext.getContentResolver().unregisterContentObserver(mObserver);
 	}

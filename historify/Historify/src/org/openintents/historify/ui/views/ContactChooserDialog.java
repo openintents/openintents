@@ -112,7 +112,7 @@ public class ContactChooserDialog extends Dialog {
 	public class DismissListenerWrapper implements OnDismissListener {
 
 		public void onDismiss(DialogInterface dialog) {
-			mAdapter.onDestroy();
+			mAdapter.release();
 			if(mOnDismissListener!=null) mOnDismissListener.onDismiss(dialog);
 		}
 

@@ -58,7 +58,7 @@ public class QuickPostSourcesFragment extends Fragment {
 		View lstQuickPostsEmptyView = inflater.inflate(R.layout.list_empty_view,
 				null);
 		((TextView) lstQuickPostsEmptyView)
-				.setText(R.string.timeline_no_events);
+				.setText(R.string.sources_no_quickpost_sources);
 		((ViewGroup) mLstQuickPostSources.getParent()).addView(lstQuickPostsEmptyView);
 		mLstQuickPostSources.setEmptyView(lstQuickPostsEmptyView);
 		
@@ -82,6 +82,6 @@ public class QuickPostSourcesFragment extends Fragment {
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		mSourcesAdapter.onDestroy();
+		mSourcesAdapter.release();
 	}
 }
