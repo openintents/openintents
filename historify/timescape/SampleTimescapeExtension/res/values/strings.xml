@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">The purpose of this application is to generate events for the Timescape Eventstream.</string>
+    <string name="app_name">OI Sample Timescape Extension</string>
+    
+    <string name="plugin_name">OI Sample Timescape Extension</string>
+    <string name="source_name">OI Sample Timescape Source</string>
+    
+    <string name="config">OI Sample Timescape Source Config</string>
+</resources>
