@@ -104,7 +104,8 @@ public class RegisterPluginAction extends AbstractAction {
 	            } else {
 	                cv.put(EventStream.SourceColumns.ENABLED, 1); // 1: enabled
 	                Uri sourceUri = cr.insert(EventStream.EVENTSTREAM_SOURCE_PROVIDER_URI, cv);
-	                Log.v("reguri",sourceUri.toString());
+	                if(sourceUri!=null)
+	                	PersistentSourceId.set(mContext, sourceUri);
 	            }
 	        } finally {
 	            if (null != cursor) {

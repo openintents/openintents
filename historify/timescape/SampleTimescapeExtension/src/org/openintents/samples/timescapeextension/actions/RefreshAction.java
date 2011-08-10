@@ -52,7 +52,7 @@ public class RefreshAction extends AbstractAction {
                 	
                 	ContentValues values = new ContentValues();
                     values.put(EventStream.EventColumns.EVENT_KEY,"myevent");
-                    values.put(EventStream.EventColumns.SOURCE_ID,11);
+                    values.put(EventStream.EventColumns.SOURCE_ID,PersistentSourceId.get(mContext));
                     values.put(EventStream.EventColumns.TITLE, "Title");
                     values.put(EventStream.EventColumns.MESSAGE, "Message of my event.");
                     values.put(EventStream.EventColumns.PUBLISHED_TIME,System.currentTimeMillis());
