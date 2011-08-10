@@ -30,6 +30,7 @@ public class InteractionType {
 		
 		Intent intent = new  Intent();
 		intent.setAction(mIntentAction);
+		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactLookupKey);
 		
 		return intent;

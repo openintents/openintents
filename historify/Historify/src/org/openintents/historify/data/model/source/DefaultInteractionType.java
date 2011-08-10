@@ -28,7 +28,7 @@ public class DefaultInteractionType extends InteractionType {
 	public static Intent createIntent(Context context, String contactLookupKey) {
 		Intent retval = new Intent();
 		retval.setAction(Intent.ACTION_VIEW);
-		retval.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		retval.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		
 		Uri contactUri = 
 			Contacts.lookupContact(context.getContentResolver(),

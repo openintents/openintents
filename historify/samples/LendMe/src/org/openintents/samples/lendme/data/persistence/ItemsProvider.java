@@ -74,7 +74,13 @@ public class ItemsProvider extends ContentProvider {
 		}
 		
 		SQLiteDatabase db = openHelper.getWritableDatabase();
-		return db.query(tableName, projection, selection, selectionArgs, null, null, sortOrder);
+		
+		Cursor retval = db.query(tableName, projection, selection, selectionArgs, null, null, sortOrder);;
+		
+		if(retval!=null)
+			retval.setNotificationUri(getContext().getContentResolver(), ItemsProviderHelper.CONTENT_URI);
+			
+		return retval;
 	}
 
 	@Override
@@ -91,7 +97,10 @@ public class ItemsProvider extends ContentProvider {
 		SQLiteDatabase db = openHelper.getWritableDatabase();
 		long id = db.insert(tableName, null, values);
 		if(id==-1) return null;
-		else return Uri.withAppendedPath(ItemsProviderHelper.CONTENT_URI, String.valueOf(id));
+		else {
+			getContext().getContentResolver().notifyChange(ItemsProviderHelper.CONTENT_URI, null);
+			return Uri.withAppendedPath(ItemsProviderHelper.CONTENT_URI, String.valueOf(id));
+		}
 	}
 
 	@Override
@@ -107,6 +116,8 @@ public class ItemsProvider extends ContentProvider {
 	
 		long id = Long.parseLong(uri.getLastPathSegment());
 		String where = ItemsTable._ID + " = "+id;
+		
+		getContext().getContentResolver().notifyChange(ItemsProviderHelper.CONTENT_URI, null);
 		
 		SQLiteDatabase db = openHelper.getWritableDatabase();
 		return db.delete(tableName, where, null);

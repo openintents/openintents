@@ -26,13 +26,17 @@ import org.openintents.samples.lendme.Toaster;
 import org.openintents.samples.lendme.data.Item.Owner;
 import org.openintents.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
 
+import android.content.ContentUris;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract.Contacts;
+import android.provider.ContactsContract.RawContacts;
 
 public class HistorifyPostHelper {
 
 	private static HistorifyPostHelper sInstance;
-	private static final int SOURCE_VERSION = 14;
+	private static final int SOURCE_VERSION = 1;
 	public static final String PREF_NAME = "posting";
 	
 	private static final String EVENTKEY_START = "start";
@@ -57,10 +61,12 @@ public class HistorifyPostHelper {
 		String sourceName = context.getString(R.string.app_name);
 		String sourceDescription = context.getString(R.string.app_description);
 		
-		QuickPostContext quickPostContext = new QuickPostContext(sourceName,sourceDescription,null,MainActivity.ACTION_SHOW_ITEM,SOURCE_VERSION);
+		QuickPostContext quickPostContext = new QuickPostContext(sourceName,sourceDescription,null,SOURCE_VERSION);
+		quickPostContext.setEventIntent(MainActivity.ACTION_SHOW_ITEM);
+		quickPostContext.setInteractIntent(MainActivity.ACTION_CREATE_ITEM,context.getString(R.string.interact_title));
 		mBridge.setQuickPostContext(quickPostContext);
 		
-		//check is auto posting is set by the user
+		//check if auto posting is set by the user
 		mUserPrefersPosting = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE).getBoolean(PREF_NAME, true);
 		
 	}

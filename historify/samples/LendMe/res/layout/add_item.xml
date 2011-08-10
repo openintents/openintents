@@ -4,7 +4,26 @@
 	android:orientation="vertical"
 	android:padding="10dip"
 	xmlns:android="http://schemas.android.com/apk/res/android">
-		
+
+	<RadioGroup
+		android:layout_width="fill_parent"
+		android:orientation="horizontal"
+		android:layout_height="wrap_content">	
+		<RadioButton
+			android:id="@+id/add_item_radioLend"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Lend" />
+	
+		<RadioButton
+			android:id="@+id/add_item_radioBorrow"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:text="Borrow" />			
+	</RadioGroup>
+	
 	<Button    
 		android:id="@+id/add_item_btnPick"
 		android:layout_width="fill_parent" 

@@ -19,6 +19,7 @@ package org.openintents.samples.lendme.data;
 import java.util.ArrayList;
 
 import org.openintents.samples.lendme.R;
+import org.openintents.samples.lendme.Toaster;
 
 import android.app.AlertDialog;
 import android.app.PendingIntent;
@@ -94,6 +95,7 @@ public class ContactOperations {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				sendSms(context, editMsg.getText().toString(),phoneNumber);
+				Toaster.toast(context, R.string.sms_sent);
 			}
 		});
 		

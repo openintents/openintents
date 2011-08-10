@@ -12,15 +12,17 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-                
+            </intent-filter>
+            <intent-filter>
                 <action android:name="org.openintents.samples.lendme.SHOW_ITEM"/>
+                <action android:name="org.openintents.samples.lendme.CREATE_ITEM"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 
             </intent-filter>
         </activity>
 
 		<activity android:name="ItemsActivity" />
-		<activity android:name="AddItemActivity" android:theme="@android:style/Theme.Dialog" />
+		<activity android:name="AddItemActivity"  />
 		
 		<provider android:name=".data.persistence.ItemsProvider"
 			android:authorities="org.openintents.samples.lendme.items"

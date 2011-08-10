@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,7 +48,7 @@ public class ItemsActivity extends Activity {
 	public static final String EXTRA_OWNER = "owner";
 	public static final String EXTRA_JUMP_TO_ID = "jump_to_id";
 	
-	private static final int REQUEST_ADD_ITEM = 42;
+	public static final int REQUEST_ADD_ITEM = 42;
 	private static final int CONTEXT_ITEM_RETURNED = 1;
 	private static final int CONTEXT_ITEM_REMINDER = 2;
 
@@ -98,20 +99,22 @@ public class ItemsActivity extends Activity {
 			int pos = ((ItemsAdapter)mLstItems.getAdapter()).getItemPosById(id);
 			mLstItems.setSelection(pos);
 		}
+		
 	}
 	
 	private void onAddNewItem() {
 		
 		Intent i = new Intent(this, AddItemActivity.class);
+		i.putExtra(AddItemActivity.EXTRA_MODE, mFilterForOwner.toString());
 		startActivityForResult(i, REQUEST_ADD_ITEM);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+		
 		if(requestCode == REQUEST_ADD_ITEM) {
 			if(resultCode==RESULT_OK) {
-				data.putExtra(ItemsTable.OWNER, mFilterForOwner.toString());
+				data.putExtra(ItemsTable.OWNER, data.getStringExtra(AddItemActivity.EXTRA_MODE));
 				long itemId = ((ItemsAdapter)mLstItems.getAdapter()).insert(data.getExtras());
 				
 				HistorifyPostHelper postHelper = HistorifyPostHelper.getInstance(this);
@@ -250,7 +253,7 @@ public class ItemsActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		((ItemsAdapter)mLstItems.getAdapter()).close();
+		((ItemsAdapter)mLstItems.getAdapter()).release();
 	}
 
 }

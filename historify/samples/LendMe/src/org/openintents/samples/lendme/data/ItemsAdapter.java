@@ -19,11 +19,14 @@ package org.openintents.samples.lendme.data;
 import org.openintents.samples.lendme.R;
 import org.openintents.samples.lendme.data.Item.Owner;
 import org.openintents.samples.lendme.data.persistence.ItemsLoader;
+import org.openintents.samples.lendme.data.persistence.ItemsProviderHelper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +50,7 @@ public class ItemsAdapter extends BaseAdapter {
 	private static final int ITEM_TYPE_ADD = 0;
 	private static final int ITEM_TYPE_NORMAL = 1;
 	
+	private ContentObserver mContentObserver;
 	
 	public ItemsAdapter(Activity context, Owner filterForOwner) {
 
@@ -59,8 +63,25 @@ public class ItemsAdapter extends BaseAdapter {
 	/** Open cursor. */
 	public void load() {
 
+		if(mContentObserver!=null) {
+			mContext.getContentResolver().unregisterContentObserver(mContentObserver);
+			mContentObserver=null;
+		}
+		
+		if(mCursor!=null) {
+			mCursor.close();
+		}
+		
 		mCursor = mLoader.openCursor(mContext, mFilterForOwner);
 		notifyDataSetChanged();
+		
+		mContentObserver = new ContentObserver(new Handler()) {
+			@Override
+			public void onChange(boolean selfChange) {
+				load();
+			}
+		};
+		mContext.getContentResolver().registerContentObserver(ItemsProviderHelper.CONTENT_URI, true, mContentObserver);
 	}
 
 	public int getCount() {
@@ -126,19 +147,21 @@ public class ItemsAdapter extends BaseAdapter {
 	
 	public long insert(Bundle parameterSet) {
 		
-		long retval = mLoader.insert(mContext, parameterSet);
-		load();
-		return retval;
+		return mLoader.insert(mContext, parameterSet);
 	}
 
 	public void delete(long itemId) {
 		
 		mLoader.delete(mContext, itemId);
-		load();
 	}
 	
-	public void close() {
+	public void release() {
 		mCursor.close();
+
+		if(mContentObserver!=null) {
+			mContext.getContentResolver().unregisterContentObserver(mContentObserver);
+			mContentObserver=null;
+		}
 	}
 
 	public Item getItemById(long itemId) {

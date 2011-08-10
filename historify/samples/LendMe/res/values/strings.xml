@@ -33,5 +33,7 @@
     <string name="post.lent">Lent: %1$s</string>
     <string name="post.returned">Returned: %1$s</string>
     <string name="post.successful">Event posted to Historify.</string>
+    <string name="interact.title">Lend | Borrow</string>
 
+	<string name="sms_sent">SMS sent.</string>
 </resources>
