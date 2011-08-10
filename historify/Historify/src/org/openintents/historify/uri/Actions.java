@@ -53,6 +53,7 @@ public final class Actions {
 	public static final String ACTION_CONFIG_QUICKPOSTS = "org.openintents.historify.CONFIG_QUICKPOSTS";
 	public static final String ACTION_CONFIG_FACTORYTEST = "org.openintents.historify.CONFIG_FACTORYTEST";
 	
+	public static final String ACTION_INTERACT_FACTORYTEST = "org.openintents.historify.INTERACT_FACTORYTEST";
 	
 	// BridgeService
 	// ----------------------------------------------------------------------------------------------
@@ -68,7 +69,10 @@ public final class Actions {
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
 	public static final String EXTRA_EVENT_INTENT = "event_intent";
 	public static final String EXTRA_CONFIG_INTENT = "config_intent";
+	public static final String EXTRA_INTERACT_INTENT = "interact_intent";
+	public static final String EXTRA_INTERACT_ACTION_TITLE = "interact_action_title";
 
+	
 	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
 	public static final String EXTRA_PACKAGE_NAME = "package_name";
 	public static final String EXTRA_ADDRESSED = "addressed";
@@ -79,5 +83,8 @@ public final class Actions {
 	//EXTRA_SOURCE_UID = "uid";
 	//EXTRA_SOURCE_VERSION = "version";
 	//also fields defined in .data.providers.Events
+
+
+	
 
 }

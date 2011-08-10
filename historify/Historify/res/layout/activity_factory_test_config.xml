@@ -40,6 +40,10 @@
 	android:background="#000"   
 	/> 	
 
+<ScrollView
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1">
 <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -85,7 +89,7 @@
 	
 />
 </LinearLayout>
-
+</ScrollView>
 
 <LinearLayout
 	android:layout_width="fill_parent"

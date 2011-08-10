@@ -35,7 +35,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 38;
+	static final int DB_VERSION = 42;
 
 	// table of sources
 	public static final class SourcesTable {
@@ -51,6 +51,8 @@ public final class Sources {
 		public static final String AUTHORITY = "authority";
 		public static final String EVENT_INTENT = "event_intent";
 		public static final String CONFIG_INTENT = "config_intent";
+		public static final String INTERACT_INTENT = "interact_intent";
+		public static final String INTERACT_ACTION_TITLE = "interact_action_title";
 
 		public static final String IS_INTERNAL = "is_internal";
 		public static final String UID = "uid";
@@ -112,6 +114,8 @@ public final class Sources {
 					+ SourcesTable.AUTHORITY + " TEXT NOT NULL," 
 					+ SourcesTable.EVENT_INTENT + " TEXT,"
 					+ SourcesTable.CONFIG_INTENT + " TEXT,"
+					+ SourcesTable.INTERACT_INTENT + " TEXT,"
+					+ SourcesTable.INTERACT_ACTION_TITLE + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
 					+ EventSource.SourceState.ENABLED + ","
 					+ SourcesTable.UID + " INTEGER DEFAULT 0,"

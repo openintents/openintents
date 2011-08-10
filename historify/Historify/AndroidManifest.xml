@@ -54,6 +54,7 @@
                 <action android:name="org.openintents.historify.VIEW_MESSAGING_EVENT" />
                 <action android:name="org.openintents.historify.VIEW_CALLOG_EVENT" />
                 <action android:name="org.openintents.historify.VIEW_QUICKPOST_EVENT" />
+                <action android:name="org.openintents.historify.INTERACT_FACTORYTEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>        
         </activity>

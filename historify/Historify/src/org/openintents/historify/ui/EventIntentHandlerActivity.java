@@ -19,9 +19,11 @@ package org.openintents.historify.ui;
 import java.util.Date;
 
 import org.openintents.historify.R;
+import org.openintents.historify.data.loaders.ContactLoader;
 import org.openintents.historify.data.loaders.EventLoader;
 import org.openintents.historify.data.loaders.SourceIconHelper;
 import org.openintents.historify.data.loaders.SourceLoader;
+import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.data.model.Event;
 import org.openintents.historify.data.model.source.DefaultInteractionType;
 import org.openintents.historify.data.model.source.EventSource;
@@ -33,6 +35,7 @@ import org.openintents.historify.data.providers.internal.QuickPosts.QuickPostSou
 import org.openintents.historify.uri.Actions;
 import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.DateUtils;
+import org.openintents.historify.utils.Toaster;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -72,13 +75,14 @@ public class EventIntentHandlerActivity extends Activity {
 			handleInternalEventIntent(Telephony.SOURCE_URI, getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1));
 		} else if(Actions.ACTION_VIEW_QUICKPOST_EVENT.equals(action)) {
 			handleQuickPostEventIntent();
+		} else if(Actions.ACTION_INTERACT_FACTORYTEST.equals(action)) {
+			handleInteractFactoryTestIntent();	
 		} else {
 			finish();
 		}
 		
 	}
 
-	
 	private void handleInternalEventIntent(Uri eventSource, long eventId) {
 		
 		if(eventId!=-1) {
@@ -171,4 +175,12 @@ public class EventIntentHandlerActivity extends Activity {
 		 
 		finish();
 	}
+	
+	private void handleInteractFactoryTestIntent() {
+		
+		Contact c = new ContactLoader().loadFromLookupKey(this, getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY), false);
+		Toaster.toast(this, "Interaction test for contact:\n"+(c==null? "!Error!" : c.getName()));
+		finish();
+	}
+
 }

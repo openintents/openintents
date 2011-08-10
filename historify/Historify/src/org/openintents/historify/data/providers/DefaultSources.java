@@ -61,6 +61,8 @@ public class DefaultSources {
 		cv.put(SourcesTable.IS_INTERNAL, 1);
 		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_factory_test").toString());
 		cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_FACTORYTEST);
+		cv.put(SourcesTable.INTERACT_INTENT, Actions.ACTION_INTERACT_FACTORYTEST);
+		//cv.put(SourcesTable.INTERACT_ACTION_TITLE, "Test");
 		cv.put(SourcesTable.STATE, EventSource.SourceState.DISABLED.toString());
 		db.insert(SourcesTable._TABLE, null, cv);
 		

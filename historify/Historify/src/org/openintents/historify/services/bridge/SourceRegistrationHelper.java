@@ -144,6 +144,8 @@ public class SourceRegistrationHelper {
 		
 		String eventIntent = parameterSet.getString(Actions.EXTRA_EVENT_INTENT);
 		String configIntent = parameterSet.getString(Actions.EXTRA_CONFIG_INTENT);
+		String interactIntent = parameterSet.getString(Actions.EXTRA_INTERACT_INTENT);
+		String interactActionTitle = parameterSet.getString(Actions.EXTRA_INTERACT_ACTION_TITLE);
 		
 		ContentValues values = new ContentValues();
 		values.put(SourcesTable.NAME, name);
@@ -152,6 +154,8 @@ public class SourceRegistrationHelper {
 		values.put(SourcesTable.ICON_URI, iconUri);
 		values.put(SourcesTable.EVENT_INTENT, eventIntent);
 		values.put(SourcesTable.CONFIG_INTENT, configIntent);
+		values.put(SourcesTable.INTERACT_INTENT, interactIntent);
+		values.put(SourcesTable.INTERACT_ACTION_TITLE, interactActionTitle);
 		values.put(SourcesTable.UID, uid);
 		values.put(SourcesTable.VERSION, version);
 		

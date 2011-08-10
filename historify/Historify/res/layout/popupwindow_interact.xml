@@ -6,7 +6,7 @@
 	<ListView
 		android:id="@+id/popupwindow_interact_lstInteract"
 		style="@style/ListView"
-	    android:layout_width="160dip"
+	    android:layout_width="200dip"
 	    android:paddingTop="10dip"
 	    android:paddingBottom="10dip"
 	    android:layout_weight="1"
@@ -18,10 +18,10 @@
 		android:textSize="12sp"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="20dip"
+	    android:layout_marginLeft="10dip"
 	    android:layout_marginRight="10dip"
 	    android:lines="4"
-	    android:text="you can expand the ways of interaction by adding new sources."
+	    android:text="you can expand the ways of interaction by enabling more sources."
 		/>
 
 

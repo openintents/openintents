@@ -37,7 +37,6 @@ import android.os.Handler;
 import android.text.Spannable;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.URLSpan;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;

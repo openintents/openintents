@@ -17,7 +17,6 @@
 package org.openintents.historify.ui;
 
 import org.openintents.historify.R;
-import org.openintents.historify.ui.fragments.QuickPostSourcesFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 

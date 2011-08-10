@@ -33,25 +33,18 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class InteractPopupWindow extends AbstractPopupWindow {
 
+	private ListView mLstInteract;
+	private View mEmptyHintView;
+	
 	private String mContactLookupKey;
 	
 	public InteractPopupWindow(Context context, String contactLookupKey) {
 		super(context);
 		setArrowGravity(Gravity.RIGHT);
-		mContactLookupKey = contactLookupKey;
-	}
-	
-	@Override
-	protected void addContent(ViewGroup contentRoot) {
 		
-		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_interact, contentRoot);
-		
-		ListView lstInteract = (ListView)contentView.findViewById(R.id.popupwindow_interact_lstInteract);
-		View emptyHintView = contentView.findViewById(R.id.popupwindow_interact_txtEmptyHint);
-		
-		lstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, emptyHintView));
-		
-		lstInteract.setOnItemClickListener(new OnItemClickListener() {
+		mContactLookupKey = contactLookupKey;		
+		mLstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, mEmptyHintView, mContactLookupKey));
+		mLstInteract.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View arg1, int pos,
 					long arg3) {
 				Intent i = ((InteractionType)adapterView.getItemAtPosition(pos)).crateIntent(mContactLookupKey);
@@ -59,6 +52,17 @@ public class InteractPopupWindow extends AbstractPopupWindow {
 				dismiss();
 			}
 		});
+
+		
+	}
+	
+	@Override
+	protected void addContent(ViewGroup contentRoot) {
+		
+		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_interact, contentRoot);
+		
+		mLstInteract = (ListView)contentView.findViewById(R.id.popupwindow_interact_lstInteract);
+		mEmptyHintView = contentView.findViewById(R.id.popupwindow_interact_txtEmptyHint);
 	}
 
 }

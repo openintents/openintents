@@ -30,10 +30,7 @@ import org.openintents.historify.utils.DateUtils;
 import org.openintents.historify.utils.PrettyTimeRefreshHelper;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
