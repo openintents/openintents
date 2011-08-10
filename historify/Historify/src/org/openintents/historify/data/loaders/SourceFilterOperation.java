@@ -30,6 +30,7 @@ import org.openintents.historify.uri.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 public class SourceFilterOperation {
 
@@ -133,11 +134,17 @@ public class SourceFilterOperation {
 			" s ON s."+SourcesTable._ID+" = f."+FiltersTable.SOURCE_ID+" WHERE " +
 			FiltersTable.CONTACT_LOOKUP_KEY + " = ? AND "+selection;
 		
-		Cursor c = dbHelper.getWritableDatabase().rawQuery(q, new String[] {contact.getLookupKey()});
-		c.moveToFirst();
-		boolean retval =  c.getInt(0)==0;
+		boolean retval = false;
 		
-		c.close();
+		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		if(db!=null) {
+			Cursor c = dbHelper.getWritableDatabase().rawQuery(q, new String[] {contact.getLookupKey()});
+			c.moveToFirst();
+			retval =  c.getInt(0)==0;
+			c.close();	
+			db.close();
+		}
+		
 		return retval;
 
 	}

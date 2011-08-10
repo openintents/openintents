@@ -16,7 +16,6 @@
 
 package org.openintents.historify.data.loaders;
 
-import org.openintents.historify.data.aggregation.MergedCursor;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.InteractionType;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
@@ -29,7 +28,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.MergeCursor;
 import android.net.Uri;
-import android.util.Log;
 
 public class InteractionTypeLoader {
 

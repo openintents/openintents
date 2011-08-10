@@ -31,7 +31,6 @@ import org.openintents.historify.utils.PrettyTimeRefreshHelper;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -168,7 +167,6 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	private void loadEventToView(Event event, View convertView) {
 
-
 		TextView tv= (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtMessage);
 		tv.setText(event.getMessage());
@@ -177,11 +175,7 @@ public class TimeLineAdapter extends BaseAdapter {
 				.findViewById(R.id.timeline_listitem_txtDate);
 		tv.setText(DateUtils
 				.formatTimelineDate(new Date(event.getPublishedTime())));
-		
-		if(event.getMessage().startsWith("Lent")) {
-			Log.v("itt", "kell");
-		}
-		
+				
 		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
 		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);
 	}
