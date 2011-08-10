@@ -45,7 +45,7 @@ public class QuickPosts {
 	public static final String QUICKPOST_RAW_EVENTS_PATH = "raw_events";
 	
 	static final String DB_NAME = "quickposts.db";
-	static final int DB_VERSION = 2;
+	static final int DB_VERSION = 3;
 
 	// table of quickpost sources
 	public static final class QuickPostSourcesTable  {
@@ -60,6 +60,8 @@ public class QuickPosts {
 
 		public static final String VERSION = "version";
 		public static final String EVENT_INTENT = "event_intent";
+		public static final String INTERACT_INTENT = "interact_intent";
+		public static final String INTERACT_ACTION_TITLE = "interact_action_title";
 
 		public static final String UID = "uid";
 		public static final String STATE = "state";
@@ -101,6 +103,8 @@ public class QuickPosts {
 					+ QuickPostSourcesTable.DESCRIPTION + " TEXT,"
 					+ QuickPostSourcesTable.ICON_URI + " TEXT," 
 					+ QuickPostSourcesTable.EVENT_INTENT + " TEXT,"
+					+ QuickPostSourcesTable.INTERACT_INTENT + " TEXT,"
+					+ QuickPostSourcesTable.INTERACT_ACTION_TITLE + " TEXT,"
 					+ QuickPostSourcesTable.STATE + " TEXT DEFAULT "
 					+ EventSource.SourceState.ENABLED + ","
 					+ QuickPostSourcesTable.VERSION + " INTEGER DEFAULT 0,"

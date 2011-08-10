@@ -74,21 +74,30 @@ public class HistorifyBridge {
 		private String sourceDescription;
 		private String iconUri;
 		private String eventIntent;
+		private String interactIntent;
+		private String interactActionTitle;
 		private int version;
 		
-		public QuickPostContext(String sourceName, String sourceDescription, String iconUri, String eventIntent, int version) {
-			super();
+		public QuickPostContext(String sourceName, String sourceDescription, String iconUri, int version) {
 			this.sourceName = sourceName;
 			this.sourceDescription = sourceDescription;
 			this.iconUri = iconUri;
 			this.version = version;
-			this.eventIntent = eventIntent;
 			
 			if(this.sourceName==null) {
 				throw new NullPointerException("Source name cannot be null.");
 			}
 		}
 
+		public void setEventIntent(String eventIntent) {
+			this.eventIntent = eventIntent;
+		}
+		
+		public void setInteractIntent(String interactIntent, String interactActionTitle) {
+			this.interactIntent = interactIntent;
+			this.interactActionTitle = interactActionTitle;
+		}
+		
 		public String getSourceName() {
 			return sourceName;
 		}
@@ -107,6 +116,14 @@ public class HistorifyBridge {
 		
 		public String getEventIntent() {
 			return eventIntent;
+		}
+		
+		public String getInteractIntent() {
+			return interactIntent;
+		}
+		
+		public String getInteractActionTitle() {
+			return interactActionTitle;
 		}
 		
 	}
@@ -165,6 +182,8 @@ public class HistorifyBridge {
 		intent.putExtra(Actions.EXTRA_SOURCE_UID, uid);
 		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, mQuickPostContext.getVersion());
 		intent.putExtra(Actions.EXTRA_EVENT_INTENT, mQuickPostContext.getEventIntent());
+		intent.putExtra(Actions.EXTRA_INTERACT_INTENT, mQuickPostContext.getInteractIntent());
+		intent.putExtra(Actions.EXTRA_INTERACT_ACTION_TITLE, mQuickPostContext.getInteractActionTitle());
 		
 		//quickpost event data
 		intent.putExtra(Events.EVENT_KEY,eventData.getEventKey());
@@ -176,8 +195,78 @@ public class HistorifyBridge {
 		postIntent(context, intent);
 	}
 	
-	public void registerSource(Context context, String name, String authority,
-			String description, String iconUri, String eventIntent, String configIntent, int version) {
+	public static class SourceData {
+		
+		private String name; 
+		private String authority;
+		private String description;
+		private String iconUri; 
+		private String eventIntent; 
+		private String configIntent;
+		private String interactIntent;
+		private String interactActionTitle;
+		private int version;
+		
+		public SourceData(String name, String authority, String description, String iconUri, int version) {
+			this.name = name;
+			this.authority = authority;
+			this.description = description;
+			this.iconUri = iconUri;
+			this.version = version;
+		}
+		
+		public void setEventIntent(String eventIntent) {
+			this.eventIntent = eventIntent;
+		}
+		
+		public void setConfigIntent(String configIntent) {
+			this.configIntent = configIntent;
+		}
+		
+		public void setInteractIntent(String interactIntent, String interactActionTitle) {
+			this.interactIntent = interactIntent;
+			this.interactActionTitle = interactActionTitle;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public String getAuthority() {
+			return authority;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public String getIconUri() {
+			return iconUri;
+		}
+
+		public String getInteractIntent() {
+			return interactIntent;
+		}
+
+		public String getInteractActionTitle() {
+			return interactActionTitle;
+		}
+
+		public int getVersion() {
+			return version;
+		}
+
+		public String getEventIntent() {
+			return eventIntent;
+		}
+
+		public String getConfigIntent() {
+			return configIntent;
+		}		
+		
+	}
+	
+	public void registerSource(Context context, SourceData sourceData) {
 
 		//determine application's uid
 		int uid  = determineUid(context);
@@ -189,14 +278,16 @@ public class HistorifyBridge {
 
 		Intent intent = new Intent();
 		intent.setAction(Actions.ACTION_REGISTER_SOURCE);
-		intent.putExtra(Actions.EXTRA_SOURCE_NAME, name);
-		intent.putExtra(Actions.EXTRA_SOURCE_AUTHORITY, authority);
+		intent.putExtra(Actions.EXTRA_SOURCE_NAME, sourceData.getName());
+		intent.putExtra(Actions.EXTRA_SOURCE_AUTHORITY, sourceData.getAuthority());
 		intent.putExtra(Actions.EXTRA_SOURCE_UID, uid);
-		intent.putExtra(Actions.EXTRA_SOURCE_DESCRIPTION, description);
-		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
-		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, version);
-		intent.putExtra(Actions.EXTRA_EVENT_INTENT, eventIntent);
-		intent.putExtra(Actions.EXTRA_CONFIG_INTENT, configIntent);
+		intent.putExtra(Actions.EXTRA_SOURCE_DESCRIPTION, sourceData.getDescription());
+		intent.putExtra(Actions.EXTRA_SOURCE_ICON_URI, sourceData.getIconUri());
+		intent.putExtra(Actions.EXTRA_SOURCE_VERSION, sourceData.getVersion());
+		intent.putExtra(Actions.EXTRA_EVENT_INTENT, sourceData.getEventIntent());
+		intent.putExtra(Actions.EXTRA_CONFIG_INTENT, sourceData.getConfigIntent());
+		intent.putExtra(Actions.EXTRA_INTERACT_INTENT, sourceData.getInteractIntent());
+		intent.putExtra(Actions.EXTRA_INTERACT_ACTION_TITLE, sourceData.getInteractActionTitle());
 
 		postIntent(context, intent);
 	}

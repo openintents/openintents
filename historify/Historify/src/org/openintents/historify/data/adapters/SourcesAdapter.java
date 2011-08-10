@@ -134,7 +134,7 @@ public class SourcesAdapter extends BaseAdapter {
 			mContext.getContentResolver().unregisterContentObserver(mObserver);
 			mObserver = null;
 		}
-			
+		
 		mInternalSources.clear();
 		mExternalSources.clear();
 		mSources.clear();

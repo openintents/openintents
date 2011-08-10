@@ -89,10 +89,12 @@ public class SourceLoader {
 	}
 	
 	public Cursor openCursor(Context context) {
-		
-		String selection = null;
-		String[] selectionArgs = null;
-								 
+		return openCursor(context, null, null);
+	}
+	public Cursor openCursor(Context context, String selection, String[] selectionArgs) {
+		if(mSourcesUri==null) {
+			throw new NullPointerException("Sources uri not set.");
+		}
 		return context.getContentResolver().query(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
@@ -158,6 +160,22 @@ public class SourceLoader {
 
 	public Uri getUri() {
 		return mSourcesUri;
+	}
+
+	public EventSource loadFromSourceAuthority(Context context, String sourceAuth) {
+		String selection = SourcesTable.AUTHORITY + " = ?";
+		String[] selectionArgs = new String[] {
+			sourceAuth	
+		};
+		
+		Cursor c = openCursor(context, selection, selectionArgs);
+		if(c.moveToFirst()) {
+			EventSource retval =  loadFromCursor(c, 0);
+			c.close();
+			return retval;
+		}
+		
+		return null;
 	}
 
 	

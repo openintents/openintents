@@ -16,14 +16,20 @@
 
 package org.openintents.historify.data.loaders;
 
+import org.openintents.historify.data.aggregation.MergedCursor;
+import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.InteractionType;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
+import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.MergeCursor;
 import android.net.Uri;
+import android.util.Log;
 
 public class InteractionTypeLoader {
 
@@ -41,6 +47,7 @@ public class InteractionTypeLoader {
 	
 	public Cursor openCursor(Activity context) {
 		
+		//load interaction types for external sources
 		StringBuilder selection = new StringBuilder();
 		selection.append(Sources.SourcesTable.STATE);
 		selection.append(" = '");
@@ -49,8 +56,38 @@ public class InteractionTypeLoader {
 		selection.append(Sources.SourcesTable.INTERACT_INTENT);
 		selection.append(" NOT NULL");
 		
-		return context.getContentResolver().query(ContentUris.Sources, PROJECTION, selection.toString(), null, Sources.SourcesTable.NAME);
+		Cursor cursorSources = context.getContentResolver().query(ContentUris.Sources, PROJECTION, selection.toString(), null, Sources.SourcesTable.NAME);
 		
+		//load interaction types for Q! sources
+		if(isQuickPostSourceAvailable(context)) {
+			
+			selection = new StringBuilder();
+			selection.append(QuickPosts.QuickPostSourcesTable.INTERACT_INTENT);
+			selection.append(" NOT NULL");
+			
+			Cursor cursorQpSources = context.getContentResolver().query(ContentUris.QuickPostSources, PROJECTION, selection.toString(), null, QuickPosts.QuickPostSourcesTable.NAME);
+			if(cursorQpSources!=null) {
+				
+//				cursorQpSources.moveToFirst();
+//				for(String s : cursorQpSources.getColumnNames()) {
+//					Log.v(s," "+cursorQpSources.getString(cursorQpSources.getColumnIndex(s)));
+//				}
+			
+				
+				return new MergeCursor(new Cursor[] {cursorSources, cursorQpSources});
+			}	
+		} else {
+			return cursorSources;
+		}
+		
+		return null;
+	}
+
+	private boolean isQuickPostSourceAvailable(Context context) {
+		
+		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
+		EventSource source = sourceLoader.loadFromSourceAuthority(context, QuickPosts.QUICKPOSTS_AUTHORITY);
+		return source!=null && source.isEnabled();
 	}
 
 	public InteractionType loadFromCursor(Cursor cursor, int pos) {

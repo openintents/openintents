@@ -67,6 +67,7 @@ public class DefaultSources {
 		db.insert(SourcesTable._TABLE, null, cv);
 		
 		//quickposts
+		cv = new ContentValues();
 		cv.put(SourcesTable.NAME, QuickPosts.SOURCE_NAME);
 		cv.put(SourcesTable.DESCRIPTION, QuickPosts.DESCRIPTION);
 		cv.put(SourcesTable.AUTHORITY, QuickPosts.QUICKPOSTS_AUTHORITY);

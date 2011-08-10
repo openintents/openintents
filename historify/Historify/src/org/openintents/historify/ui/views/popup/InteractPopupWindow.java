@@ -52,6 +52,14 @@ public class InteractPopupWindow extends AbstractPopupWindow {
 				dismiss();
 			}
 		});
+		
+		setOnDismissListener(new OnDismissListener() {
+			
+			public void onDismiss() {
+				if(mLstInteract!=null)
+					((InteractionTypesAdapter)mLstInteract.getAdapter()).release();
+			}
+		});
 
 		
 	}

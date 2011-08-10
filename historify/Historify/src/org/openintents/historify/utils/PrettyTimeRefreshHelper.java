@@ -42,7 +42,7 @@ public class PrettyTimeRefreshHelper {
 					Thread.sleep(60000);
 					mRefreshHandler.sendEmptyMessage(0);
 				} catch(InterruptedException e) {
-					e.printStackTrace();
+					
 				}
 			}
 		}

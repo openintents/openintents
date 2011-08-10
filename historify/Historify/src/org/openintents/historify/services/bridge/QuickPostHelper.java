@@ -164,12 +164,17 @@ public class QuickPostHelper {
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
 		String eventIntent = parameterSet.getString(Actions.EXTRA_EVENT_INTENT);
 		
+		String interactIntent = parameterSet.getString(Actions.EXTRA_INTERACT_INTENT);
+		String interactActionTitle = parameterSet.getString(Actions.EXTRA_INTERACT_ACTION_TITLE);
+		
 		
 		ContentValues values = new ContentValues();
 		values.put(QuickPostSourcesTable.NAME, name);
 		values.put(QuickPostSourcesTable.DESCRIPTION, description);
 		values.put(QuickPostSourcesTable.ICON_URI, iconUri);
 		values.put(QuickPostSourcesTable.EVENT_INTENT,eventIntent);
+		values.put(QuickPostSourcesTable.INTERACT_INTENT,interactIntent);
+		values.put(QuickPostSourcesTable.INTERACT_ACTION_TITLE,interactActionTitle);
 		values.put(QuickPostSourcesTable.UID, uid);
 		values.put(QuickPostSourcesTable.VERSION, version);
 		

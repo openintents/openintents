@@ -92,6 +92,7 @@ public class InteractionTypesAdapter extends BaseAdapter {
 	}
 	
 	private void doLoad() {
+		
 		if(mCursor!=null)
 			mCursor.close();
 		
