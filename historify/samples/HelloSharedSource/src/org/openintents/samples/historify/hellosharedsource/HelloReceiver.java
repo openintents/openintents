@@ -17,6 +17,7 @@
 package org.openintents.samples.historify.hellosharedsource;
 
 import org.openintents.historify.services.bridge.HistorifyBridge;
+import org.openintents.historify.services.bridge.HistorifyBridge.SourceData;
 
 import android.content.Context;
 
@@ -25,16 +26,15 @@ public class HelloReceiver extends HistorifyBridge.RequestReceiver {
 	@Override
 	protected void onRequestRegister(Context context) {
 
-		new HistorifyBridge(R.drawable.icon).registerSource(
-				context, 
+		SourceData sourceData = new SourceData(
 				"HelloSharedSource", 
 				HelloProvider.AUTHORITY, 
-				"Sample app that demonstrates how to register a SharedSource.", 
-				null, 
-				null, 
-				"org.openintents.samples.historify.hellosharedsource.ACTION_CONFIG", 
-				1);
-
+				"Sample app that demonstrates how to register a SharedSource.", null, 1);
+		
+		sourceData.setConfigIntent("org.openintents.samples.historify.hellosharedsource.ACTION_CONFIG");
+		sourceData.setInteractIntent("org.openintents.samples.historify.hellosharedsource.ACTION_INTERACT","Say hello");
+		
+		new HistorifyBridge(R.drawable.icon).registerSource(context,sourceData);
 	}
 
 }
