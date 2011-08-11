@@ -45,7 +45,7 @@ public class QuickPosts {
 	public static final String QUICKPOST_RAW_EVENTS_PATH = "raw_events";
 	
 	static final String DB_NAME = "quickposts.db";
-	static final int DB_VERSION = 3;
+	static final int DB_VERSION = 1;
 
 	// table of quickpost sources
 	public static final class QuickPostSourcesTable  {

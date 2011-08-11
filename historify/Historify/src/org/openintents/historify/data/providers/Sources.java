@@ -35,7 +35,7 @@ import android.util.Log;
 public final class Sources {
 
 	static final String DB_NAME = "sources.db";
-	static final int DB_VERSION = 42;
+	static final int DB_VERSION = 1;
 
 	// table of sources
 	public static final class SourcesTable {
