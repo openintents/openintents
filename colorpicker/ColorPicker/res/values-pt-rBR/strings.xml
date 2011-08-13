@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Jhony https://launchpad.net/~jhonystein</string>
+  Jhony https://launchpad.net/~jhonystein
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Seletor de Cores é uma extensão para OI Flashlight e outras aplicações compatíveis.</string>

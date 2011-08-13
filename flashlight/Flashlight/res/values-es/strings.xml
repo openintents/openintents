@@ -8,11 +8,9 @@
 	<string name="about_translators">Launchpad Contributions:
   DiegoJ https://launchpad.net/~diegojromerolopez
   Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount
-  Javier Martínez Arrieta https://launchpad.net/~javote87
   Julián Unrrein https://launchpad.net/~junrrein
   Paco Molinero https://launchpad.net/~franciscomol
-  enrigp https://launchpad.net/~enrgarc
-  miwie https://launchpad.net/~mw-miwie</string>
+  enrigp https://launchpad.net/~enrgarc</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La luz de fondo de la pantalla permanece encendida mientras la aplicación esté arrancada.</string>

@@ -42,14 +42,14 @@
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_filemanager">OI File Manager</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Lista de compras</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_notepad">Bloc de notas OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
 	<string name="info_app_safe">OI Safe</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Lanzar %s y seleccionar el menú &gt; Acerca de.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

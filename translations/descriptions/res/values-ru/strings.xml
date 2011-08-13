@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Alexander Sapronov https://launchpad.net/~warmonger</translators>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
+		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<emptyline/>
+		<string>Это приложение является бесплатным и не требует постоянного подключения к Интернет.</string>
+		<emptyline/>
+		<string>С полным списком изменений и списком часто задаваемых вопросов можно ознакомиться на:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Вы можете помочь улучшить перевод прилоежния на ваш язык, посетите Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Исходный код этой программы является свободным и открытым. Доступен по адресу:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Возможности:</string>
+		<listitem>Показать список файлов с эскизами изображений.</listitem>
+		<listitem>Переместить, копировать, переименовывать и удалять файлы.</listitem>
+		<listitem>￼  Создание и удаление директорий (папок).</listitem>
+		<listitem>Отправить файлы по электронной почте.</listitem>
+		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
+		<listitem>Support for many file endings and mime types.</listitem>
+		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<emptyline/>
+		<string>Ключевые слова:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>файловый менеджер, файловый менеджер, файловый менеджер</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>Copy text 	 OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Переведенные версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Расширения:</string>
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+</main>

@@ -8,8 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101
-  Tiago Silva https://launchpad.net/~tiagosilva</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>

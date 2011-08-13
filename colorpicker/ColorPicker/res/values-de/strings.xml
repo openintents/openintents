@@ -8,8 +8,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Etienne Ruedin https://launchpad.net/~ruedin
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Peli https://launchpad.net/~peli0101
-  Stefan Fenzke https://launchpad.net/~stefan-fenzke</string>
+  Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Color Picker ist eine Erweiterung für OI Flashlight und andere kompatible Anwendungen.</string>
