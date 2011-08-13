@@ -24,8 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
 "  Jaap-Willem Dooge https://launchpad.net/~japydooge\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  pjv https://launchpad.net/~pjv"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -310,50 +309,3 @@ msgstr "5 minuten"
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
 msgstr "10 minuten"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

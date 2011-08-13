@@ -307,18 +307,3 @@ msgstr ""
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

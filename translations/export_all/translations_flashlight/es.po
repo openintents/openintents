@@ -24,11 +24,9 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  DiegoJ https://launchpad.net/~diegojromerolopez\n"
 "  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount\n"
-"  Javier Martínez Arrieta https://launchpad.net/~javote87\n"
 "  Julián Unrrein https://launchpad.net/~junrrein\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
-"  enrigp https://launchpad.net/~enrgarc\n"
-"  miwie https://launchpad.net/~mw-miwie"
+"  enrigp https://launchpad.net/~enrgarc"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -80,75 +78,3 @@ msgid ""
 msgstr ""
 "Para hacer el selector de color mas útil para otros desarrolladores, ha sido "
 "convertido en una aplicación separada."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

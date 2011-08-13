@@ -1,0 +1,348 @@
+# Russian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Alexander Sapronov <Unknown>\n"
+"Language-Team: Russian <ru@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Sapronov https://launchpad.net/~warmonger"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr ""
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI Shopping List"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI Notepad"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "Запустите %s и выберите пункт &gt; Конвертировать CSV."
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI Convert CSV"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "Конвертирование CSV"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "Конвертировать CVS в Notepad"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "Конвертировать CVS в Shopping list"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "Конвертировать все заметки"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "Конвертировать все списки покупок"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "Конвертирование списка '%s'"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "Путь к файлу"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "Импортировать"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "Экспортировать"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "Ошибка записи в файл"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "Ошибка чтения из файла"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "Неправильный формат CSV"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "Файл не найден"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr ""
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "Импорт завершен"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "Экспорт завершен"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "Выберите CSV файл блокнота"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "Выберите CSV файл списка покупок"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr ""
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr ""
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr ""
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "Файл существует. Вы хотите перезаписать?"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "Больше не спрашивать. Всегда перезаписывать!"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr ""
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "Настройки"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "CSV файл"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "Выберите CSV файл"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "Выберите кодировку"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "По умочанию"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "Выбрать кодировку(для опытных пользователей)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr ""
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr ""
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr ""
+"Импорт / экспорт настроек, которые можно применить в Блокноте и Списке "
+"покупок"
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "Спрашивать, если файл существует"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr ""
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr ""
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "Имя файла"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "Полный путь до файла"
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "Импортировать/экспортировать настройки для OI Notepad."
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI Список покупок"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "Импортировать/экспортировать настройки для OI Список покупок"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "Конвертирование..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "OK"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "Импорт магазинов"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr ""
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr ""
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "Читать заметки"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Разрешить приложению читать заметки. Примечание: зашифрованные заметки "
+"предоставляются в зашифрованном формате."
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "Запись заметок"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr ""
+"Разрешить приложению создавать новые заметки или изменять существующие."
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "чтение списка покупок"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Разрешить приложениям получать списки. Примечание: зашифрованные списки и "
+"элементы предоставлены в зашифрованном формате."
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "Запись списков покупок"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+"Разрешить приложению создавать новые списки и элементы или изменять "
+"существующие."
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "MS Outlook Notes"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:130(item)
+msgid "MS Outlook Tasks"
+msgstr "MS Outlook Tasks"
+
+#: tmp_strings.xml:131(item)
+msgid "HandyShopper"
+msgstr ""
+
+#: tmp_strings.xml:135(item) tmp_strings.xml:149(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr ""
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "\"KEEP - Don't overwrite existing records.\""
+msgstr ""
+
+#: tmp_strings.xml:137(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr ""
+
+#: tmp_strings.xml:138(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr ""
+
+#: tmp_strings.xml:142(item) tmp_strings.xml:154(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr ""
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid ""
+"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+"\""
+msgstr ""
+
+#: tmp_strings.xml:144(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr ""

@@ -310,34 +310,3 @@ msgstr "5 dakika"
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
 msgstr "10 dakika"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

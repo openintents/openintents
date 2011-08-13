@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Abdessamad Derraz https://launchpad.net/~derraz\n"
 "  Anges https://launchpad.net/~az24\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  kawazzzzzz@yahoo.fr https://launchpad.net/~kawazzzzzz"
@@ -246,60 +245,3 @@ msgstr ""
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

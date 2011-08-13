@@ -246,31 +246,3 @@ msgstr ""
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

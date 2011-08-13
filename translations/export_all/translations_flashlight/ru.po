@@ -23,8 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Artur https://launchpad.net/~arturyak\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Vasily Bogantsev https://launchpad.net/~bas-eurogym"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -73,75 +72,3 @@ msgid ""
 "To make the Color Picker more useful to other developers, we have split it "
 "into its own app."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

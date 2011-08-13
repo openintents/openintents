@@ -25,8 +25,7 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Anges https://launchpad.net/~az24\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Thibault Févry https://launchpad.net/~thibaultfevry"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Strings for OI About
 #: tmp_strings.xml:11(string)
@@ -149,9 +148,3 @@ msgstr ""
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr "Obtenir %s"
-
-
-
-
-
-

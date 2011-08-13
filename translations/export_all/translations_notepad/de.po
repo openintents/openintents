@@ -22,9 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Peter Huewe https://launchpad.net/~peterhuewe"
+"  Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
@@ -484,87 +482,3 @@ msgstr "Erweiterungen von der OpenIntents Homepage herunterladen"
 #: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Nach Designs auf der OpenIntents Homepage suchen."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

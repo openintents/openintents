@@ -24,8 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
 "  Jaap-Willem Dooge https://launchpad.net/~japydooge\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  pjv https://launchpad.net/~pjv"
+"  Peli https://launchpad.net/~peli0101"
 
 #. ***************************
 #. 	     Applicatio-specific strings
@@ -365,21 +364,3 @@ msgstr "Accepteren"
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr "Annuleren"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

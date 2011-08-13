@@ -23,7 +23,6 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  bkiw https://launchpad.net/~bkiw\n"
 "  maimuzo https://launchpad.net/~maimuzo\n"
 "  tiantian https://launchpad.net/~tsukida-cmkc"
 
@@ -246,60 +245,3 @@ msgstr ""
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

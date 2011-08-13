@@ -23,8 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
-"  Tomasz 'Zen' Napierala https://launchpad.net/~tzn\n"
-"  usul https://launchpad.net/~usultis"
+"  Tomasz 'Zen' Napierala https://launchpad.net/~tzn"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
@@ -480,71 +479,3 @@ msgstr "Pobierz rozszerzenia ze strony OpenIntents."
 #: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Pobierz motywy ze strony OpenIntents"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

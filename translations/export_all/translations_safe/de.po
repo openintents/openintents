@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Peli https://launchpad.net/~peli0101\n"
 "  PsychoKim https://launchpad.net/~psychokim"
 
 #. Short explanation of the application
@@ -813,78 +812,3 @@ msgstr ""
 #: tmp_strings.xml:264(item)
 msgid "60 days"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

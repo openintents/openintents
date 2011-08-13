@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Diego Pierotto https://launchpad.net/~gringo\n"
 "  Martino Barbon https://launchpad.net/~martins999\n"
 "  Peli https://launchpad.net/~peli0101"
 
@@ -366,21 +365,3 @@ msgstr "Accetto"
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr "Annulla"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

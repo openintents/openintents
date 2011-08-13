@@ -773,24 +773,3 @@ msgstr ""
 #: tmp_strings.xml:264(item)
 msgid "60 days"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

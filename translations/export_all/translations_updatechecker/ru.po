@@ -22,10 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Artur https://launchpad.net/~arturyak\n"
-"  Oleg https://launchpad.net/~oleg-devyatilov\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Vasily Bogantsev https://launchpad.net/~bas-eurogym"
+"  Peli https://launchpad.net/~peli0101"
 
 #. ***************************
 #. 	     Applicatio-specific strings
@@ -357,21 +354,3 @@ msgstr "Принять"
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr "Отменить"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

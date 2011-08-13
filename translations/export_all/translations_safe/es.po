@@ -22,13 +22,11 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Fitoschido https://launchpad.net/~fitoschido\n"
 "  Javier Martínez Arrieta https://launchpad.net/~javote87\n"
 "  Monkey https://launchpad.net/~monkey-libre\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  miwie https://launchpad.net/~mw-miwie\n"
-"  victor tejada yau https://launchpad.net/~victormtyau"
+"  miwie https://launchpad.net/~mw-miwie"
 
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
@@ -820,56 +818,3 @@ msgstr "30 días"
 #: tmp_strings.xml:264(item)
 msgid "60 days"
 msgstr "60 días"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

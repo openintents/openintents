@@ -230,6 +230,3 @@ msgstr "Cinese (Semplificato)"
 #: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
 msgstr "Cinese (Tradizionale)"
-
-
-

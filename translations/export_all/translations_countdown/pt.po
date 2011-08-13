@@ -22,11 +22,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Almufadado https://launchpad.net/~almufadado\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  PresuntoRJ https://launchpad.net/~fabio-tleitao\n"
-"  Tiago Silva https://launchpad.net/~tiagosilva\n"
-"  nglnx https://launchpad.net/~nglnx"
+"  Tiago Silva https://launchpad.net/~tiagosilva"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -311,38 +309,3 @@ msgstr ""
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

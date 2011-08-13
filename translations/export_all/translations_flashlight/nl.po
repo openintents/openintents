@@ -22,10 +22,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Bert de Bruijn https://launchpad.net/~lpdebruijn\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  pjv https://launchpad.net/~pjv"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -78,75 +76,3 @@ msgid ""
 msgstr ""
 "Om de kleurenkiezer bruikbaar te maken voor andere ontwikkelaars, hebben we "
 "onze eigen applicatie opgesplitst."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

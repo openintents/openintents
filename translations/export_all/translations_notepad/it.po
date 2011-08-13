@@ -23,7 +23,6 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  CAppa https://launchpad.net/~cappa-temp-1\n"
-"  Diego Pierotto https://launchpad.net/~gringo\n"
 "  Martino Barbon https://launchpad.net/~martins999\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  simone.sandri https://launchpad.net/~lexluxsox"
@@ -486,83 +485,3 @@ msgstr "Scarica estensioni dalla pagina web di OpenIntents."
 #: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Scarica temi dalla pagina web di OpenIntents."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  George Dumitrescu https://launchpad.net/~geod\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
@@ -482,86 +481,3 @@ msgstr "Instalează extensii de pe siteul OpenIntents."
 #: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Obține teme de la pagina principală OpenIntents."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

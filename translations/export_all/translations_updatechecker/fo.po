@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Gunleif Joensen https://launchpad.net/~gunleif\n"
 "  Peli https://launchpad.net/~peli0101"
 
 #. ***************************
@@ -337,12 +336,3 @@ msgstr ""
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr ""
-
-
-
-
-
-
-
-
-

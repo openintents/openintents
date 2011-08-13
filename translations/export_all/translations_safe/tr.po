@@ -776,34 +776,3 @@ msgstr "30 gün"
 #: tmp_strings.xml:264(item)
 msgid "60 days"
 msgstr "60 gün"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

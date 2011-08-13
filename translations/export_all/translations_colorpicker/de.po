@@ -24,8 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Etienne Ruedin https://launchpad.net/~ruedin\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  Peli https://launchpad.net/~peli0101\n"
-"  Stefan Fenzke https://launchpad.net/~stefan-fenzke"
+"  Peli https://launchpad.net/~peli0101"
 
 #. Strings for OI About
 #: tmp_strings.xml:11(string)
@@ -150,6 +149,3 @@ msgstr "Diese Anwendung benötigt %1$s %2$s Auflösung oder höher."
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr ""
-
-
-

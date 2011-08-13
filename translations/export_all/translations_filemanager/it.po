@@ -22,8 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Diego Pierotto https://launchpad.net/~gringo\n"
-"  Federico https://launchpad.net/~federico-deactivatedaccount\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  simone.sandri https://launchpad.net/~lexluxsox"
 
@@ -246,57 +244,3 @@ msgstr ""
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

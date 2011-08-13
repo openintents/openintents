@@ -357,21 +357,3 @@ msgstr "承諾する"
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr "キャンセル"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

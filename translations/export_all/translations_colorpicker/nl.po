@@ -149,6 +149,3 @@ msgstr "Deze applicatie heeft %1$s %2$s of hoger nodig."
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr "Verkrijg %s"
-
-
-

@@ -471,36 +471,3 @@ msgstr ""
 #: tmp_strings.xml:213(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

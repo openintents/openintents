@@ -152,9 +152,3 @@ msgstr "Esta aplicación requiere %1$s versión %2$s o posterior"
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr "Obtener %s"
-
-
-
-
-
-

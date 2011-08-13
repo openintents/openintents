@@ -146,9 +146,3 @@ msgstr ""
 #: tmp_strings.xml:62(string)
 msgid "Get %s"
 msgstr "Hent %s"
-
-
-
-
-
-

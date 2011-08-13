@@ -40,7 +40,7 @@ msgstr "OI File Manager"
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Lista de compras"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
@@ -55,7 +55,7 @@ msgstr "OI Safe"
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
-msgstr ""
+msgstr "Lanzar %s y seleccionar el menú &gt; Acerca de."
 
 #. Application name. Can be localized, like "OI About", or "OI Info". 
 #. 	   This is an extension that shows an about dialog or info dialog.
@@ -231,6 +231,3 @@ msgstr "Chino (Simplificado)"
 #: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
 msgstr "Chino (Tradicional)"
-
-
-

@@ -372,21 +372,3 @@ msgstr "Aceptar"
 #: tmp_strings.xml:111(string)
 msgid "Cancel"
 msgstr "Cancelar"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

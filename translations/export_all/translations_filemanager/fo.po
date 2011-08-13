@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Gunleif Joensen https://launchpad.net/~gunleif\n"
 "  Peli https://launchpad.net/~peli0101"
 
 #. Short explanation of the application. Max. 80 characters.
@@ -244,27 +243,3 @@ msgstr ""
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

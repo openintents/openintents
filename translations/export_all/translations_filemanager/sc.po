@@ -244,10 +244,3 @@ msgstr "Mustra su menu pro che dogare cartelleddasa dae sa scansione"
 #: tmp_strings.xml:110(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "Doga su menu pro che dogare cartelleddasa dae sa scansione"
-
-
-
-
-
-
-

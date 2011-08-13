@@ -22,8 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Cassius Umbra https://launchpad.net/~cassius-umbra\n"
-"  Diego Pierotto https://launchpad.net/~gringo\n"
 "  Martino Barbon https://launchpad.net/~martins999\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101"
@@ -77,76 +75,3 @@ msgid ""
 msgstr ""
 "Per rendere il Selettore Colore più utile per gli altri sviluppatori, "
 "l'abbiamo divisa in un'applicazione a sé stante."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
