@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package org.openintents.samples.timescapeextension;
-
-import android.app.Activity;
-import android.os.Bundle;
+package org.openintents.samples.timescapeextension.actions;
 
 /**
- * Activity launched by Xperia Events to configure this extension. 
+ * Class storing contacts for the test friend inserted by the RegisterPluginAction.
  *
  */
-public class ConfigActivity extends Activity {
+public class TestFriend {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.config);
-		
-	}
+	public static String NAME = "Aretha Franklin";
+	public static String IMAGE_URI = "android.resource://org.openintents.samples.timescapeextension/drawable/aretha";
+	
+	public static String ACCOUNT_TYPE = "STE_account";
+	public static String ACCOUNT_NAME = "STE Account";
+	
+	public static String FRIEND_KEY = "STE_test_friend";
 }

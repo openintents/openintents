@@ -31,27 +31,6 @@ public interface PluginConstants {
 
         /** Indicate the service of a plug-in registration intent */
         public static final String ACTION_REGISTER_PLUGIN = PACKAGE_NAME + ".action.REGISTER_PLUGIN";
-
-        /** Indicate the service of a add new source intent */
-        public static final String ACTION_ADD_SOURCE_FEED = PACKAGE_NAME + ".action.ADD_SOURCE_FEED";
-
-        /** Indicate the service of a url of new source feed */
-        public static final String EXTRA_SOURCE_FEED_URL = PACKAGE_NAME + ".extra.SOURCE_FEED_URL";
-
-        /** Indicate the service of a add new source intent */
-        public static final String ACTION_DELETE_SOURCE_FEED = PACKAGE_NAME + ".action.DELETE_SOURCE_FEED";
-
-        /** Indicate the service of a url of new source feed */
-        public static final String EXTRA_SOURCE_FEED_ID = PACKAGE_NAME + ".extra.SOURCE_FEED_ID";
-
-        /** Indicate the service of a proxy set intent */
-        public static final String ACTION_SET_PROXY = PACKAGE_NAME + ".action.SET_PROXY";
-
-        /** Indicate the service of a proxy url */
-        public static final String EXTRA_PROXY_URL = PACKAGE_NAME + "extra.PROXY_URL";
-
-        /** Indicate the service of a proxy port */
-        public static final String EXTRA_PROXY_PORT = PACKAGE_NAME + "extra.PROXY_PORT";
     }
 
     /** Event stream constants needed to access the engine */
@@ -152,6 +131,8 @@ public interface PluginConstants {
             public static final String ID_COLUMN = "_id";
 
             public static final String SOURCE_ID = "source_id";
+            
+            public static final String CONTACTS_REFERENCE = "contacts_reference";
 
             public static final String DISPLAY_NAME = "display_name";
 

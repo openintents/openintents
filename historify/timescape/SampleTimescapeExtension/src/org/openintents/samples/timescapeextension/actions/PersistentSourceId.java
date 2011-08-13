@@ -20,6 +20,10 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.net.Uri;
 
+/**
+ * Helper class for storing the ID of this extension's event source.
+ *
+ */
 public class PersistentSourceId {
 
 	public static void set(Context context, Uri sourceUri) {

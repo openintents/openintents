@@ -19,6 +19,10 @@ package org.openintents.samples.timescapeextension.actions;
 import android.content.ContentResolver;
 import android.content.Context;
 
+/**
+ * Base class represents a single action processed by the PluginService. 
+ *
+ */
 public abstract class AbstractAction {
 	
 	protected Context mContext;

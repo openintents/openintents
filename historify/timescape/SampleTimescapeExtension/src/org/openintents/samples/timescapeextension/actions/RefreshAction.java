@@ -24,6 +24,10 @@ import android.provider.BaseColumns;
 
 import com.sonyericsson.eventstream.PluginConstants.EventStream;
 
+/**
+ * Syncronize events with EventStream. This sample extension inserts only a single event.
+ *
+ */
 public class RefreshAction extends AbstractAction {
 
 	public RefreshAction(Context context) {
@@ -35,40 +39,45 @@ public class RefreshAction extends AbstractAction {
 		insertToEventStream();
 	}
 
-	  protected void insertToEventStream(){
-	        ContentResolver contentResolver = getContentResolver();
-	        
-	        Cursor cursor = null;
-            try {
-                cursor = contentResolver.query(
-                        EventStream.EVENTSTREAM_EVENT_PROVIDER_URI,
-                        new String[]{BaseColumns._ID}, //dummy projection
-                        EventStream.EventColumns.EVENT_KEY + " = ?",
-                        new String[]{"myevent"},
-                        null);
-                
-                if (cursor != null && cursor.getCount() == 0) {
-                    // not registered in event stream yet
-                	
-                	ContentValues values = new ContentValues();
-                    values.put(EventStream.EventColumns.EVENT_KEY,"myevent");
-                    values.put(EventStream.EventColumns.SOURCE_ID,PersistentSourceId.get(mContext));
-                    values.put(EventStream.EventColumns.TITLE, "Title");
-                    values.put(EventStream.EventColumns.MESSAGE, "Message of my event.");
-                    values.put(EventStream.EventColumns.PUBLISHED_TIME,System.currentTimeMillis());
-                    values.putNull(EventStream.EventColumns.IMAGE_URI);
-                    values.put(EventStream.EventColumns.OUTGOING, 0);
-                    values.put(EventStream.EventColumns.PERSONAL, 0);
-                	
-                	contentResolver.insert(EventStream.EVENTSTREAM_EVENT_PROVIDER_URI, values);
-                } else {
-                	
-                }
-            } finally {
-                if (cursor != null) {
-                    cursor.close();
-                }
-            }
-	      
-	    } 
+	protected void insertToEventStream() {
+		ContentResolver contentResolver = getContentResolver();
+
+		Cursor cursor = null;
+		try {
+			cursor = contentResolver.query(
+					EventStream.EVENTSTREAM_EVENT_PROVIDER_URI,
+					new String[] { BaseColumns._ID }, // dummy projection
+					EventStream.EventColumns.EVENT_KEY + " = ?",
+					new String[] { "myevent" }, null);
+
+			if (cursor != null && cursor.getCount() == 0) {
+				// not registered in event stream yet
+
+				ContentValues values = new ContentValues();
+				values.put(EventStream.EventColumns.EVENT_KEY, "myevent");
+				values.put(EventStream.EventColumns.SOURCE_ID,
+						PersistentSourceId.get(mContext));
+				// values.put(EventStream.EventColumns.TITLE, "Title");
+				values.put(EventStream.EventColumns.MESSAGE,
+						"Message of my event.");
+				values.put(EventStream.EventColumns.PUBLISHED_TIME, System
+						.currentTimeMillis());
+				values.putNull(EventStream.EventColumns.IMAGE_URI);
+				values.put(EventStream.EventColumns.OUTGOING, 0);
+				values.put(EventStream.EventColumns.PERSONAL, 1);
+				values.put(EventStream.FriendColumns.FRIEND_KEY,
+						TestFriend.FRIEND_KEY);
+
+				contentResolver.insert(
+						EventStream.EVENTSTREAM_EVENT_PROVIDER_URI, values);
+			} else {
+
+			}
+		} finally {
+			if (cursor != null) {
+				cursor.close();
+			}
+		}
+
+	}
 }

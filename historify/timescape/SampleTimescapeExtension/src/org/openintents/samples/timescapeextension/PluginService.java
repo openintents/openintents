@@ -25,6 +25,10 @@ import android.content.Intent;
 
 import com.sonyericsson.eventstream.PluginConstants.ServiceIntentCmd;
 
+/**
+ * Service component for handling Xperia Events' requests.
+ *
+ */
 public class PluginService extends IntentService {
 	
 	private static final String N = "PluginService";

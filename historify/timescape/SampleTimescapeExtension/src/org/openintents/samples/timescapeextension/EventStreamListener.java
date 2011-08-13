@@ -25,6 +25,10 @@ import android.util.Log;
 import com.sonyericsson.eventstream.PluginConstants.EventStream;
 import com.sonyericsson.eventstream.PluginConstants.ServiceIntentCmd;
 
+/**
+ * Broadcast listener for processing Intents sent by Xperia Events.
+ *
+ */
 public class EventStreamListener extends BroadcastReceiver {
 
 	@Override
