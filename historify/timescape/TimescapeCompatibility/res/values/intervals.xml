@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="scheduling_intervals">
+		<item>never refreshed</item>
+		<item>15 minutes</item>
+	</string-array>
+</resources>

@@ -3,7 +3,7 @@
       package="org.openintents.samples.timescapeextension"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="9" />
+    <uses-sdk android:minSdkVersion="5" />
 	<uses-permission android:name="com.sonyericsson.eventstream.PLUGIN_PERMISSION" />
 	<uses-permission android:name="android.permission.READ_CONTACTS" />
 	<uses-permission android:name="android.permission.WRITE_CONTACTS" />

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.timescape;
+package org.openintents.timescape.ui;
 
 import org.openintents.timescape.sharedsource.SourceConstants;
 

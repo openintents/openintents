@@ -42,45 +42,54 @@ public interface EventStreamConstants {
         String NAME = "name";
         String PLUGIN_KEY = "plugin_key";
         String STATUS_SUPPORT = "status_support";
-        String STATUS_TEXT_MAX_LENGTH  = "status_text_max_length"; // Not supported
+        String STATUS_TEXT_MAX_LENGTH  = "status_text_max_length";
     }
 
     public interface SourceColumns {
         String ID = "_id";
-        String CURRENT_STATUS = "current_status"; // Not supported
+        String CURRENT_STATUS = "current_status";
         String ENABLED = "enabled";
         String ICON_URI = "icon_uri";
         String NAME = "name";
-        String STATUS_TIMESTAMP = "status_timestamp"; // Not supported
+        String STATUS_TIMESTAMP = "status_timestamp"; 
     }
 
+    public interface FriendColumns {
+    	String SOURCE_ID = "source_id";
+        String PLUGIN_ID = "plugin_id";
+        String DISPLAY_NAME = "display_name";
+        String PROFILE_IMAGE_URI = "profile_image_uri";
+        String CONTACTS_REFERENCE = "contacts_reference";
+        String FRIEND_KEY = "friend_key";
+    }
+    
     public interface EventColumns {
         String EVENT_KEY = "event_key";
-        String FRIEND_KEY = "friend_key"; // Not supported
-        String GEODATA = "geodata"; // Not supported
+        String FRIEND_KEY = "friend_key";
+        String GEODATA = "geodata";
         String IMAGE_URI = "image_uri";
         String MESSAGE = "message";
-        String OUTGOING = "outgoing"; // Not supported
-        String PERSONAL = "personal"; // Not supported
+        String OUTGOING = "outgoing";
+        String PERSONAL = "personal";
         String PUBLISHED_TIME = "published_time";
         String SOURCE_ID = "source_id";
         String STATUS_ICON_URI = "status_icon_uri";
         String TITLE = "title";
     }
 
-    public interface ConfigState {
-        int CONFIGURED = 0;
-        int NOT_CONFIGURED = 1;
-        int CONFIGURATION_NOT_NEEDED = 2;
-    }
-
-    public interface StatusSupport {
-        int HAS_SUPPORT_FALSE = 0;
-        int HAS_SUPPORT_TRUE = 1;
-    }
-
-    public interface SourceState {
-        int NOT_ENABLED = 0;
-        int ENABLED = 1;
-    }
+//    public interface ConfigState {
+//        int CONFIGURED = 0;
+//        int NOT_CONFIGURED = 1;
+//        int CONFIGURATION_NOT_NEEDED = 2;
+//    }
+//
+//    public interface StatusSupport {
+//        int HAS_SUPPORT_FALSE = 0;
+//        int HAS_SUPPORT_TRUE = 1;
+//    }
+//
+//    public interface SourceState {
+//        int NOT_ENABLED = 0;
+//        int ENABLED = 1;
+//    }
 }

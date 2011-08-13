@@ -2,5 +2,6 @@
 <resources>
     <string name="app_name">h! TimescapeCompatibility</string>
     
-    <string name="config_title">my sources</string>
+    <string name="config.title">my sources</string>
+    <string name="config.no_services">no extensions installed.</string>
 </resources>

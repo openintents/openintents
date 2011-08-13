@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/background_listitem_selected" 
+    	android:state_pressed="true" />
+    <item android:drawable="@color/background_listitem1_normal"
+        android:state_focused="false"
+        android:state_pressed="false" />
+</selector>

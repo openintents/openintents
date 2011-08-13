@@ -63,6 +63,7 @@
 	android:text="setup services" />
 
 <ListView
+	style="@style/ListView.NoDivider"
 	android:id="@+id/config_lstPlugins"
 	android:layout_width="fill_parent"	
 	android:layout_height="fill_parent"

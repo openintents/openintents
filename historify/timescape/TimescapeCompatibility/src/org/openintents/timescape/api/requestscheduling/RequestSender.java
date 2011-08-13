@@ -15,7 +15,7 @@
  *
  */
 
-package org.openintents.timescape.api;
+package org.openintents.timescape.api.requestscheduling;
 
 import com.sonyericsson.eventstream.EventStreamConstants;
 

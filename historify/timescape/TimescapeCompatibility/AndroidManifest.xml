@@ -7,7 +7,7 @@
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         
-        <activity android:name=".ConfigActivity"
+        <activity android:name=".ui.ConfigActivity"
                   android:label="@string/app_name"
                   android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ViewEventHandlerActivity"
+        <activity android:name=".ui.ViewEventHandlerActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="org.openintents.timescape.ACTION_VIEW_EVENT" />
@@ -25,7 +25,7 @@
         </activity>
 
 		<provider 
-			android:name=".api.EventStreamCompatibleProvider"
+			android:name=".api.provider.EventStreamCompatibleProvider"
 			android:authorities="com.sonyericsson.eventstream">
 		</provider>
 		
@@ -39,6 +39,15 @@
         	<intent-filter>
                 <action android:name="org.openintents.historify.REQUEST_REGISTER_SOURCE" />
                 <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+    	</receiver>
+		
+		<receiver 
+              android:name=".api.service.PackageChangesReceiver">
+        	<intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package"/>
             </intent-filter>
     	</receiver>
 		

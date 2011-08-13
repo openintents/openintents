@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openintents.historify.ui.views;
+package org.openintents.timescape.ui;
 
 import java.util.ArrayList;
 import java.util.List;
