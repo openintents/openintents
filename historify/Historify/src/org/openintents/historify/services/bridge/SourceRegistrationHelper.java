@@ -232,6 +232,8 @@ public class SourceRegistrationHelper {
 			context.getContentResolver().delete(ContentUris.Sources, where, null);
 			
 		}
+		
+		c.close();
 
 	}
 
