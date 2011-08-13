@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="foreground_dark">#000</color>
+	<color name="foreground_light">#888</color>
+	
+	<color name="background_transparent">#0000</color>
+	<color name="background_dark">#444</color>
+	<color name="background_light">#fff</color>
+	
+	<color name="background_listitem1_normal">#afff</color>
+	<color name="background_listitem2_normal">#aeee</color>
+	<color name="background_listitem_selected">#accc</color>	
+</resources>
+
