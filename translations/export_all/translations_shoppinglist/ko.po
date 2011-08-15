@@ -147,9 +147,8 @@ msgid "Rename store"
 msgstr ""
 
 #: tmp_strings.xml:63(string)
-#, fuzzy
 msgid "Delete store"
-msgstr "목록 삭제"
+msgstr ""
 
 #: tmp_strings.xml:64(string)
 msgid "Do you really want to delete this store?"
@@ -268,8 +267,8 @@ msgstr ""
 
 #: tmp_strings.xml:111(string)
 msgid ""
-"Are you sure you want to permanently delete this item, its tags, and its "
-"price from all shopping lists?"
+"Are you sure you want to permanently delete this item from this shopping "
+"lists?"
 msgstr ""
 
 #: tmp_strings.xml:112(string)

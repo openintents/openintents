@@ -146,19 +146,16 @@ msgid "Stores..."
 msgstr ""
 
 #: tmp_strings.xml:62(string)
-#, fuzzy
 msgid "Rename store"
-msgstr "重命名列表"
+msgstr ""
 
 #: tmp_strings.xml:63(string)
-#, fuzzy
 msgid "Delete store"
-msgstr "删除列表"
+msgstr ""
 
 #: tmp_strings.xml:64(string)
-#, fuzzy
 msgid "Do you really want to delete this store?"
-msgstr "确定删除此购物列表吗？"
+msgstr ""
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
@@ -272,9 +269,10 @@ msgid "Priority 1-4: %s"
 msgstr ""
 
 #: tmp_strings.xml:111(string)
+#, fuzzy
 msgid ""
-"Are you sure you want to permanently delete this item, its tags, and its "
-"price from all shopping lists?"
+"Are you sure you want to permanently delete this item from this shopping "
+"lists?"
 msgstr "确定要从所有购物列表中永久删除此物品，其标签以及价格吗？"
 
 #: tmp_strings.xml:112(string)

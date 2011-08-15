@@ -146,19 +146,16 @@ msgid "Stores..."
 msgstr ""
 
 #: tmp_strings.xml:62(string)
-#, fuzzy
 msgid "Rename store"
-msgstr "Tornar nomenar la lista"
+msgstr ""
 
 #: tmp_strings.xml:63(string)
-#, fuzzy
 msgid "Delete store"
-msgstr "Suprimir la lista"
+msgstr ""
 
 #: tmp_strings.xml:64(string)
-#, fuzzy
 msgid "Do you really want to delete this store?"
-msgstr "Sètz segur que volètz suprimir aquesta lista ?"
+msgstr ""
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
@@ -272,9 +269,10 @@ msgid "Priority 1-4: %s"
 msgstr ""
 
 #: tmp_strings.xml:111(string)
+#, fuzzy
 msgid ""
-"Are you sure you want to permanently delete this item, its tags, and its "
-"price from all shopping lists?"
+"Are you sure you want to permanently delete this item from this shopping "
+"lists?"
 msgstr ""
 "Sètz segur que volètz suprimir definitivament aqueste element, son libellat "
 "e son prètz de totas las listas ?"

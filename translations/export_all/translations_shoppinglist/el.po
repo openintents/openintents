@@ -147,14 +147,12 @@ msgid "Stores..."
 msgstr ""
 
 #: tmp_strings.xml:62(string)
-#, fuzzy
 msgid "Rename store"
-msgstr "Μετονομασία λίστας"
+msgstr ""
 
 #: tmp_strings.xml:63(string)
-#, fuzzy
 msgid "Delete store"
-msgstr "Διαγραφή λίστας"
+msgstr ""
 
 #: tmp_strings.xml:64(string)
 msgid "Do you really want to delete this store?"
@@ -272,9 +270,10 @@ msgid "Priority 1-4: %s"
 msgstr ""
 
 #: tmp_strings.xml:111(string)
+#, fuzzy
 msgid ""
-"Are you sure you want to permanently delete this item, its tags, and its "
-"price from all shopping lists?"
+"Are you sure you want to permanently delete this item from this shopping "
+"lists?"
 msgstr ""
 "Είστε βέβαιοι ότι θέλετε να διαγραφεί μόνιμα αυτό το στοιχείο μαζί με τις "
 "ετικέτες και την τιμή του από όλες τις λίστες αγορών;"

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Alexander Sapronov <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Alexander Sapronov https://launchpad.net/~warmonger\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  ZipUltra https://launchpad.net/~zipultra\n"
 "  friedger https://launchpad.net/~friedger"
@@ -149,19 +150,16 @@ msgid "Stores..."
 msgstr ""
 
 #: tmp_strings.xml:62(string)
-#, fuzzy
 msgid "Rename store"
-msgstr "Переименовать список"
+msgstr ""
 
 #: tmp_strings.xml:63(string)
-#, fuzzy
 msgid "Delete store"
-msgstr "Удалить список"
+msgstr ""
 
 #: tmp_strings.xml:64(string)
-#, fuzzy
 msgid "Do you really want to delete this store?"
-msgstr "Вы действительно хотите удалить этот список покупок?"
+msgstr ""
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
@@ -275,9 +273,10 @@ msgid "Priority 1-4: %s"
 msgstr "Приоритет 1-4: %s"
 
 #: tmp_strings.xml:111(string)
+#, fuzzy
 msgid ""
-"Are you sure you want to permanently delete this item, its tags, and its "
-"price from all shopping lists?"
+"Are you sure you want to permanently delete this item from this shopping "
+"lists?"
 msgstr ""
 "Вы действительно желаете удалить навсегда этот элемент из всех списков?"
 
