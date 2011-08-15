@@ -37,7 +37,7 @@ import android.util.Log;
 public class EulaOrNewVersion {
 	/** TAG for log messages. */
 	private static final String TAG = "EulaOrNewVersion";
-	private static final boolean debug = !false;
+	private static final boolean debug = false;
 	
 	public static final String PREFERENCES_EULA_ACCEPTED = "eula_accepted";
 
@@ -61,10 +61,10 @@ public class EulaOrNewVersion {
 		boolean accepted = sp.getBoolean(PREFERENCES_EULA_ACCEPTED, false);
 		
 		if (accepted) {
-			if (debug) Log.i(TAG, "Eula has been accepted.");
+			if (debug) Log.d(TAG, "Eula has been accepted.");
 			return false;
 		} else {
-			if (debug) Log.i(TAG, "Eula has not been accepted yet.");
+			if (debug) Log.d(TAG, "Eula has not been accepted yet.");
 			
 			startForwardActivity(activity, EulaActivity.class);
 			return true;
