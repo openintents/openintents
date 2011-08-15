@@ -1,5 +1,5 @@
-/*
- * Copyright (C) 2010 Sony Ericsson Mobile Communications AB.
+/* 
+ * Copyright (C) 2011 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11,8 +11,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License
- *
+ * limitations under the License.
  */
 
 package org.openintents.timescape.api.requestscheduling;
@@ -24,7 +23,7 @@ public class Settings {
 
 	private static final String SP_NAME = "scheduling";
 	private static final String KEY_INTERVAL = "interval";
-	private static final long DEF_INTERVAL = 0;
+	public static final long DEF_INTERVAL = 0;
 	
 	public final long[] SCHEDULING_INTERVAL_VALUES = new long[] {
 			0,
@@ -32,10 +31,19 @@ public class Settings {
 	};
 	
 	public void setSchedulingIntervalIndex(Context context, int index) {
+		
+		long interval = SCHEDULING_INTERVAL_VALUES[index]; 
+		
 		context.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
 			.edit()
-			.putLong(KEY_INTERVAL, SCHEDULING_INTERVAL_VALUES[index])
+			.putLong(KEY_INTERVAL, interval)
 			.commit();
+		
+		if(interval==DEF_INTERVAL) {
+			new AlarmRegister().unregister(context);
+		} else {
+			new AlarmRegister().register(context, interval);
+		}
 	}
 	
 	public long getSchedulingInterval(Context context) {

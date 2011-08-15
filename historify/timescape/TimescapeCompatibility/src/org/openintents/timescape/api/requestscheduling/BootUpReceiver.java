@@ -16,24 +16,19 @@
 
 package org.openintents.timescape.api.requestscheduling;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.sonyericsson.eventstream.EventStreamConstants;
+public class BootUpReceiver extends BroadcastReceiver {
 
-public class RequestSender {
-
-	public void requestRegisterPlugin(Context context) {
+	@Override
+	public void onReceive(Context context, Intent intent) {
 		
-		Intent intent = new Intent();
-		intent.setAction(EventStreamConstants.Intents.REGISTER_PLUGINS_REQUEST_INTENT);
-		context.sendBroadcast(intent);
+		long interval = new Settings().getSchedulingInterval(context); 
+		
+		if(interval!=Settings.DEF_INTERVAL)
+			new AlarmRegister().register(context, interval);
 	}
 
-	public void requestRefresh(Context context) {
-
-		Intent intent = new Intent();
-		intent.setAction(EventStreamConstants.Intents.REFRESH_REQUEST_INTENT);
-		context.sendBroadcast(intent);
-	}
 }
