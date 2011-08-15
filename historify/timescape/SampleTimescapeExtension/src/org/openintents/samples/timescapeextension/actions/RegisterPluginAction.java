@@ -16,29 +16,20 @@
 
 package org.openintents.samples.timescapeextension.actions;
 
-import java.util.ArrayList;
-
 import org.openintents.samples.timescapeextension.ConfigActivity;
 import org.openintents.samples.timescapeextension.PluginService;
 import org.openintents.samples.timescapeextension.R;
 
 import android.content.ComponentName;
-import android.content.ContentProviderOperation;
-import android.content.ContentProviderResult;
 import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.net.Uri;
 import android.net.Uri.Builder;
-import android.os.RemoteException;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.Data;
+import android.provider.ContactsContract.Contacts;
 import android.provider.ContactsContract.RawContacts;
-import android.provider.ContactsContract.CommonDataKinds.StructuredName;
 
 import com.sonyericsson.eventstream.PluginConstants.EventStream;
 import com.sonyericsson.eventstream.PluginConstants.EventStream.FriendColumns;
@@ -86,19 +77,17 @@ public class RegisterPluginAction extends AbstractAction {
 
 			Builder iconUriBuilder = new Uri.Builder().scheme(
 					ContentResolver.SCHEME_ANDROID_RESOURCE).authority(
-					getPackageName()).appendPath(
-					Integer.toString(R.drawable.icon));
+					getPackageName()).appendPath("drawable").appendPath("icon");
 			pluginRegistrationValues.put(EventStream.PluginColumns.ICON_URI,
 					iconUriBuilder.toString());
 
 			pluginRegistrationValues.put(EventStream.PluginColumns.API_VERSION,
 					PluginService.PLUGIN_VERSION);
 
-			ComponentName componentName = new ComponentName(getPackageName(),
-					ConfigActivity.class.getName());
+			ComponentName componentName = new ComponentName(mContext, ConfigActivity.class);
 			pluginRegistrationValues.put(
 					EventStream.PluginColumns.CONFIGURATION_ACTIVITY,
-					componentName.flattenToShortString());
+					componentName.flattenToString());
 			pluginRegistrationValues.put(
 					EventStream.PluginColumns.CONFIGURATION_STATE,
 					EventStream.ConfigState.CONFIGURATION_NOT_NEEDED);
@@ -163,57 +152,45 @@ public class RegisterPluginAction extends AbstractAction {
 	}
 
 	private void insertFriend() {
-
+		
+		Cursor c = null;
+		Cursor c2 = null;
 		try {
-
-			long rawContactId = insertRawContact();
-			if (rawContactId != -1) {
-				ContentValues values = new ContentValues();
-				values.put(FriendColumns.CONTACTS_REFERENCE, ContentUris
-						.withAppendedId(RawContacts.CONTENT_URI, rawContactId)
-						.toString());
-				values.put(FriendColumns.SOURCE_ID, PersistentSourceId
-						.get(mContext));
-				values.put(FriendColumns.FRIEND_KEY, TestFriend.FRIEND_KEY);
-				values.put(FriendColumns.DISPLAY_NAME, TestFriend.NAME);
-				values.put(FriendColumns.PROFILE_IMAGE_URI,
-						TestFriend.IMAGE_URI);
-				getContentResolver().insert(
-						EventStream.EVENTSTREAM_FRIEND_PROVIDER_URI, values);
+			
+			// query first contacts from db
+	        c = getContentResolver().query(Contacts.CONTENT_URI, new String[] {
+	        		Contacts._ID, Contacts.DISPLAY_NAME
+	        }, Contacts.IN_VISIBLE_GROUP + " = '1'", null, null);
+	        
+	        if(c.moveToFirst()) {
+	        	//get data of the first contact
+	        	
+	        	c2 = getContentResolver().query(RawContacts.CONTENT_URI, new String[] {
+	        		RawContacts._ID	
+	        	}, RawContacts.CONTACT_ID + " = "+c.getLong(0), null, null);
+	        	
+	        	if(c2.moveToFirst()) {
+		        	String displayName = c.getString(1);
+		        	long rawId = c2.getLong(0);
+		        	Uri rawContactUri = Uri.withAppendedPath(RawContacts.CONTENT_URI, String.valueOf(rawId));
+		        	
+		        	ContentValues values = new ContentValues();
+					values.put(FriendColumns.CONTACTS_REFERENCE, rawContactUri.toString());
+					values.put(FriendColumns.SOURCE_ID, PersistentSourceId.get(mContext));
+					values.put(FriendColumns.FRIEND_KEY, TestFriend.FRIEND_KEY);
+					values.put(FriendColumns.DISPLAY_NAME, displayName);
+					values.put(FriendColumns.PROFILE_IMAGE_URI, TestFriend.IMAGE_URI);
+					getContentResolver().insert(EventStream.EVENTSTREAM_FRIEND_PROVIDER_URI, values);					        		
+	        	}
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			if(c!=null) c.close();
+			if(c2!=null) c2.close();
 		}
 
 	}
 
-	private long insertRawContact() {
-
-		ArrayList<ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-
-		int rawContactInsertIndex = ops.size();
-		ops.add(ContentProviderOperation.newInsert(RawContacts.CONTENT_URI)
-				.withValue(RawContacts.ACCOUNT_TYPE, TestFriend.ACCOUNT_TYPE)
-				.withValue(RawContacts.ACCOUNT_NAME, TestFriend.ACCOUNT_NAME)
-				.build());
-
-		ops.add(ContentProviderOperation.newInsert(Data.CONTENT_URI)
-				.withValueBackReference(Data.RAW_CONTACT_ID,
-						rawContactInsertIndex).withValue(Data.MIMETYPE,
-						StructuredName.CONTENT_ITEM_TYPE).withValue(
-						StructuredName.DISPLAY_NAME, TestFriend.NAME).build());
-
-		try {
-			ContentProviderResult[] results = getContentResolver().applyBatch(
-					ContactsContract.AUTHORITY, ops);
-			return ContentUris.parseId(results[0].uri);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (OperationApplicationException e) {
-			e.printStackTrace();
-		}
-
-		return -1;
-	}
 }

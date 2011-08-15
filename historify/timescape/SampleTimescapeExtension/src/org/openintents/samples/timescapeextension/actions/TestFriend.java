@@ -22,11 +22,6 @@ package org.openintents.samples.timescapeextension.actions;
  */
 public class TestFriend {
 
-	public static String NAME = "Aretha Franklin";
-	public static String IMAGE_URI = "android.resource://org.openintents.samples.timescapeextension/drawable/aretha";
-	
-	public static String ACCOUNT_TYPE = "STE_account";
-	public static String ACCOUNT_NAME = "STE Account";
-	
+	public static String IMAGE_URI = "android.resource://org.openintents.samples.timescapeextension/drawable/contact";
 	public static String FRIEND_KEY = "STE_test_friend";
 }

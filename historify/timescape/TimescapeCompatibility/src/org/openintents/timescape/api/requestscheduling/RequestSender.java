@@ -17,10 +17,10 @@
 
 package org.openintents.timescape.api.requestscheduling;
 
-import com.sonyericsson.eventstream.EventStreamConstants;
-
 import android.content.Context;
 import android.content.Intent;
+
+import com.sonyericsson.eventstream.EventStreamConstants;
 
 public class RequestSender {
 

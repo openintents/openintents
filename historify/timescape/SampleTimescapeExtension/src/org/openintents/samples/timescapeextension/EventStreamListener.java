@@ -20,34 +20,31 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.sonyericsson.eventstream.PluginConstants.EventStream;
 import com.sonyericsson.eventstream.PluginConstants.ServiceIntentCmd;
 
 /**
  * Broadcast listener for processing Intents sent by Xperia Events.
- *
+ * 
  */
 public class EventStreamListener extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		
-		
-		
+
 		String action = intent.getAction();
-		Log.v("act",action);
-		 Intent serviceIntent = new Intent();
-	      serviceIntent.setComponent(new ComponentName(context, PluginService.class)); 
-	        
-		if(EventStream.Intents.REGISTER_PLUGINS_REQUEST_INTENT.equals(action)) {
-			
+		Intent serviceIntent = new Intent();
+		serviceIntent.setComponent(new ComponentName(context,
+				PluginService.class));
+
+		if (EventStream.Intents.REGISTER_PLUGINS_REQUEST_INTENT.equals(action)) {
+
 			serviceIntent.setAction(ServiceIntentCmd.ACTION_REGISTER_PLUGIN);
-            context.startService(serviceIntent);
-            
-		} else if(EventStream.Intents.REFRESH_REQUEST_INTENT.equals(action)) {
-			
+			context.startService(serviceIntent);
+
+		} else if (EventStream.Intents.REFRESH_REQUEST_INTENT.equals(action)) {
+
 			serviceIntent.setAction(ServiceIntentCmd.ACTION_REFRESH_REQUEST);
 			context.startService(serviceIntent);
 		}

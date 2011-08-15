@@ -12,7 +12,7 @@
     
     	<uses-library android:name="com.sonyericsson.eventstream_1" android:required="false" />
     	
-        <activity android:name="MainActivity"
+        <activity android:name=".MainActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-		<activity android:name="ConfigActivity"
+		<activity android:name=".ConfigActivity"
                   android:label="@string/app_name"
                   android:launchMode="singleTask">
 			<intent-filter>
@@ -28,7 +28,7 @@
 			</intent-filter>
         </activity>
 
-	 	<receiver android:name="EventStreamListener">
+	 	<receiver android:name=".EventStreamListener">
 	        <intent-filter>
 	            <action
 	             android:name="com.sonyericsson.eventstream.REGISTER_PLUGINS" />

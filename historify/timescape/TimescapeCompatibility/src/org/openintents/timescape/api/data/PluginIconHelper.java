@@ -18,7 +18,9 @@ package org.openintents.timescape.api.data;
 
 import org.openintents.timescape.R;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 
@@ -29,8 +31,6 @@ import android.widget.ImageView;
  * @author berke.andras
  */
 public class PluginIconHelper {
-
-	private static final String DRAWABLE_SCHEME = "android.drawable";
 	
 	/**
 	 * Loading source icon.
@@ -46,10 +46,22 @@ public class PluginIconHelper {
 			iv.setImageResource(R.drawable.plugin_default);
 		}
 		
-		else if(DRAWABLE_SCHEME.equals(resUri.getScheme())) {
+		else if(ContentResolver.SCHEME_ANDROID_RESOURCE.equals(resUri.getScheme())) {
 			
-			//accessing other applications drawable resource
-			context.getPackageManager().getDrawable(resUri.getAuthority(), Integer.valueOf(resUri.getLastPathSegment()), null);
+			try {
+				//accessing other applications drawable resource
+				String packageName = resUri.getAuthority();
+				String type = "drawable";
+				String name = resUri.getLastPathSegment();
+				int resId = context.getPackageManager().getResourcesForApplication(resUri.getAuthority()).getIdentifier(name, type, packageName);
+				
+				Drawable d = context.getPackageManager().getDrawable(packageName, resId, null);
+				iv.setImageDrawable(d);
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+				iv.setImageResource(R.drawable.plugin_default);
+			}
 		}
 		
 		else {

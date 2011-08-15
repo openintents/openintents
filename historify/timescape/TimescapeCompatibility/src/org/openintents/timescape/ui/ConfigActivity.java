@@ -18,12 +18,14 @@ package org.openintents.timescape.ui;
 
 import org.openintents.timescape.R;
 import org.openintents.timescape.api.data.PluginsAdapter;
+import org.openintents.timescape.api.provider.EventStreamHelper;
 import org.openintents.timescape.api.requestscheduling.RequestSender;
 import org.openintents.timescape.api.requestscheduling.Settings;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +48,15 @@ public class ConfigActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        new RequestSender().requestRefresh(this);
+        
+        Cursor c = getContentResolver().query(EventStreamHelper.getUri(EventStreamHelper.FRIENDS_PATH),null, null, null, null);
+        while(c.moveToNext()) {
+        	for(String s : c.getColumnNames()) {
+        		Log.v(s," "+c.getString(c.getColumnIndex(s)));
+        	}
+        }
+        
 		if (savedInstanceState == null) {
 			FirstStartTasks.onStart(this);	
 		}

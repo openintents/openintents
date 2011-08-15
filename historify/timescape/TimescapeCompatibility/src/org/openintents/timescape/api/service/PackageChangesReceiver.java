@@ -34,6 +34,8 @@ public class PackageChangesReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 
+		Log.v("i",intent.getAction());
+		
 		if (Intent.ACTION_PACKAGE_ADDED.equals(intent.getAction())) {
 
 			Log.v(TimescapeCompatibilityService.N, "Received broadcast for PACKAGE_ADDED");
@@ -43,7 +45,7 @@ public class PackageChangesReceiver extends BroadcastReceiver {
 		}
 
 		else if (Intent.ACTION_PACKAGE_REMOVED.equals(intent.getAction())) {
-			if (!intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) {
+			//if (!intent.getBooleanExtra(Intent.EXTRA_REPLACING, false)) {
 
 				Log
 						.v(TimescapeCompatibilityService.N,
@@ -51,9 +53,13 @@ public class PackageChangesReceiver extends BroadcastReceiver {
 				// package is removed
 				int uid = intent.getIntExtra(Intent.EXTRA_UID, 0);
 				
-				// delete registered SharedSource if there is any.
-				new PluginRegistrationHelper().removePlugin(context, uid);
-			}
+				// delete registered plugin if there is any.
+				Intent i = new Intent(context, TimescapeCompatibilityService.class);
+				i.setAction(Intent.ACTION_PACKAGE_REMOVED);
+				i.putExtra(Intent.EXTRA_UID, uid);
+				context.startService(i);
+
+			//}
 		}
 	}
 

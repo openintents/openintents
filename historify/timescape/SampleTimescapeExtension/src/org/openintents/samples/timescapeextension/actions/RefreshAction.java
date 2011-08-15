@@ -59,7 +59,7 @@ public class RefreshAction extends AbstractAction {
 						PersistentSourceId.get(mContext));
 				// values.put(EventStream.EventColumns.TITLE, "Title");
 				values.put(EventStream.EventColumns.MESSAGE,
-						"Message of my event.");
+						"I dream of coloured inks. Of every kind.");
 				values.put(EventStream.EventColumns.PUBLISHED_TIME, System
 						.currentTimeMillis());
 				values.putNull(EventStream.EventColumns.IMAGE_URI);

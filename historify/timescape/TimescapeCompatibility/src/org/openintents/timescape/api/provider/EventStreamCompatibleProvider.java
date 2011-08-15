@@ -4,7 +4,6 @@ package org.openintents.timescape.api.provider;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.openintents.timescape.api.provider.EventStreamHelper.EventsTable;
 import org.openintents.timescape.api.provider.EventStreamHelper.FriendsTable;
@@ -12,21 +11,19 @@ import org.openintents.timescape.api.provider.EventStreamHelper.OpenHelper;
 import org.openintents.timescape.api.provider.EventStreamHelper.PluginsTable;
 import org.openintents.timescape.api.provider.EventStreamHelper.SourcesTable;
 
-import com.sonyericsson.eventstream.EventStreamConstants.EventColumns;
-import com.sonyericsson.eventstream.EventStreamConstants.FriendColumns;
-import com.sonyericsson.eventstream.EventStreamConstants.PluginColumns;
-import com.sonyericsson.eventstream.EventStreamConstants.SourceColumns;
-
 import android.content.ContentProvider;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Binder;
 import android.util.Log;
+
+import com.sonyericsson.eventstream.EventStreamConstants.EventColumns;
+import com.sonyericsson.eventstream.EventStreamConstants.FriendColumns;
+import com.sonyericsson.eventstream.EventStreamConstants.PluginColumns;
+import com.sonyericsson.eventstream.EventStreamConstants.SourceColumns;
 
 public class EventStreamCompatibleProvider extends ContentProvider {
 
@@ -122,8 +119,10 @@ public class EventStreamCompatibleProvider extends ContentProvider {
 			break;
 		case FRIENDS:
 			qb.setTables(FriendsTable._TABLE);
-			if(uid!=getContext().getApplicationInfo().uid)
+			if(uid!=getContext().getApplicationInfo().uid) {
 				qb.appendWhere(FriendsTable.UID + " = "+uid);
+			}
+				
 			break;
 		case EVENTS:
 			qb.setTables(EventsTable._TABLE);
@@ -140,7 +139,9 @@ public class EventStreamCompatibleProvider extends ContentProvider {
 
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
-						
+					
+		Log.v("insert",uri.toString());
+		
 		String table = null;
 		Uri notificationUri = null;
 		
@@ -303,8 +304,36 @@ public class EventStreamCompatibleProvider extends ContentProvider {
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String table = null;
+		Uri notificationUri = null;
+		
+		switch(sUriMatcher.match(uri)) {
+		
+		case PLUGINS:
+			table = PluginsTable._TABLE;
+			notificationUri = EventStreamHelper.getUri(EventStreamHelper.PLUGINS_PATH);
+			break;
+		case SOURCES:
+			table = SourcesTable._TABLE;
+			break;
+		case FRIENDS:
+			table = FriendsTable._TABLE;
+			break;
+		case EVENTS:
+			table = EventsTable._TABLE;
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI.");
+		}
+		
+		int retval = mOpenHelper.getWritableDatabase().delete(table, selection, selectionArgs);
+		
+		if(0<retval && notificationUri!=null) {
+			getContext().getContentResolver().notifyChange(notificationUri, null);	
+		}
+		
+		return retval;
 	}
 
 }

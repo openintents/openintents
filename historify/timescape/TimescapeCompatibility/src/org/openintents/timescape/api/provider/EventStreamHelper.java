@@ -1,14 +1,14 @@
 package org.openintents.timescape.api.provider;
 
-import com.sonyericsson.eventstream.EventStreamConstants.FriendColumns;
-import com.sonyericsson.eventstream.EventStreamConstants.PluginColumns;
-
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.provider.BaseColumns;
 import android.util.Log;
+
+import com.sonyericsson.eventstream.EventStreamConstants.FriendColumns;
+import com.sonyericsson.eventstream.EventStreamConstants.PluginColumns;
 
 public class EventStreamHelper {
 
