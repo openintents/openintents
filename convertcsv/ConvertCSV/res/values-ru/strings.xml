@@ -22,7 +22,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Alexander Sapronov https://launchpad.net/~warmonger</string>
+  Alexander Sapronov https://launchpad.net/~warmonger
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
 	<string name="about_comments">This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format.</string>
