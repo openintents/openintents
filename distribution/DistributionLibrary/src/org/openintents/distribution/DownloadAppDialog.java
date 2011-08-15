@@ -96,6 +96,7 @@ public class DownloadAppDialog extends AlertDialog implements OnClickListener {
         
         setButton(mContext.getText(R.string.oi_distribution_download_market), this);
     	setButton2(mContext.getText(R.string.oi_distribution_download_web), this);
+    	setButton3(mContext.getText(android.R.string.cancel), this);
 	}
     
 	public void onClick(DialogInterface dialog, int which) {
