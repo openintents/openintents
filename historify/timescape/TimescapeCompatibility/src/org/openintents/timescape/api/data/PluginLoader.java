@@ -37,7 +37,7 @@ public class PluginLoader {
 	private final int COLUMN_DESCRIPTION = 1;
 	private final int COLUMN_ICON_URI = 2;
 	private final int COLUMN_CONFIG_ACTIVITY= 3;
-	private final int COLUMN_PLUGIN_KEY= 3;
+	//private final int COLUMN_PLUGIN_KEY= 3;
 	
 	public Cursor openCursor(Context context) {
 		

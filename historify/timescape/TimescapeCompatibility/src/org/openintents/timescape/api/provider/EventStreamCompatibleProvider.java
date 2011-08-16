@@ -32,7 +32,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.os.Binder;
-import android.util.Log;
 
 import com.sonyericsson.eventstream.EventStreamConstants.EventColumns;
 import com.sonyericsson.eventstream.EventStreamConstants.FriendColumns;
@@ -154,8 +153,6 @@ public class EventStreamCompatibleProvider extends ContentProvider {
 	@Override
 	public Uri insert(Uri uri, ContentValues values) {
 					
-		Log.v("insert",uri.toString());
-		
 		String table = null;
 		Uri notificationUri = null;
 		
@@ -275,6 +272,16 @@ public class EventStreamCompatibleProvider extends ContentProvider {
 		
 		if(values.containsKey(EventColumns.SOURCE_ID))
 			retval.put(EventsTable.SOURCE_ID, values.getAsInteger(EventColumns.SOURCE_ID));
+		
+		//also put plugin_id
+		Cursor c = mOpenHelper.getWritableDatabase().query(PluginsTable._TABLE, new String[] {
+				PluginsTable._ID
+		}, PluginsTable.UID +  " = " +uid, null, null, null, null);
+		
+		if(c.moveToFirst()) {
+			retval.put(EventsTable.PLUGIN_ID, c.getLong(0));
+		}
+		c.close();
 		
 		return retval;
 	}

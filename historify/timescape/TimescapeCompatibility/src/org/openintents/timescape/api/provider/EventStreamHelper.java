@@ -94,7 +94,8 @@ public class EventStreamHelper {
 		public static final String OUTGOING = "outgoing";
 		public static final String PERSONAL = "personal";
 		public static final String PUBLISHED_TIME = "published_time";
-		public static final  String SOURCE_ID = "source_id";
+		public static final String SOURCE_ID = "source_id";
+		public static final String PLUGIN_ID = "plugin_id";
 		public static final String UID = "uid";
         
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.timescapecompatibility.event";
@@ -145,7 +146,8 @@ public class EventStreamHelper {
 					+ EventsTable.OUTGOING + " INTEGER DEFAULT 0,"
 					+ EventsTable.PERSONAL + " INTEGER DEFAULT 0,"
 					+ EventsTable.PUBLISHED_TIME + " INTEGER,"
-					+ EventsTable.SOURCE_ID + " INTEGER,"
+					+ EventsTable.SOURCE_ID + " INTEGER NOT NULL,"
+					+ EventsTable.PLUGIN_ID + " INTEGER NOT NULL,"
 					+ EventsTable.UID + " INTEGER NOT NULL);");
 		}
 

@@ -22,6 +22,7 @@ import org.openintents.timescape.api.provider.EventStreamHelper;
 import org.openintents.timescape.api.provider.EventStreamHelper.EventsTable;
 import org.openintents.timescape.api.provider.EventStreamHelper.FriendsTable;
 import org.openintents.timescape.api.provider.EventStreamHelper.OpenHelper;
+import org.openintents.timescape.api.provider.EventStreamHelper.PluginsTable;
 
 import android.content.ContentUris;
 import android.database.Cursor;
@@ -46,21 +47,6 @@ public class TimescapeProvider extends EventsProvider{
 	@Override
 	protected String getAuthority() {
 		return SourceConstants.AUTHORITY;
-	}
-
-	@Override
-	protected Cursor queryEvent(long eventKey) {
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEvents() {
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEventsByKey(String eventKey) {
-		return null;
 	}
 
 	@Override
@@ -118,7 +104,7 @@ public class TimescapeProvider extends EventsProvider{
 		}
 		
 		StringBuilder eventSelection = new StringBuilder();
-		eventSelection.append(EventsTable.FRIEND_KEY);
+		eventSelection.append("e."+EventsTable.FRIEND_KEY);
 		eventSelection.append(" IN (");
 		do {
 			eventSelection.append("'");
@@ -130,22 +116,20 @@ public class TimescapeProvider extends EventsProvider{
 		eventSelection.setCharAt(eventSelection.length()-1, ')');
 		c.close(); 
 		
-		
-		//get plugin's icon for this event
-		//TODO
 
 		//3. query the events table for the events associated with the friendkeys		
 		//4. return the events mapped as h! event fields
 
-		Cursor retval = db.query(EventsTable._TABLE,
+		Cursor retval = db.query(EventsTable._TABLE + " e JOIN "+PluginsTable._TABLE +" p ON e."+EventsTable.PLUGIN_ID+" = p."+PluginsTable._ID,
 				new String[] {
-					EventsTable._ID + " AS "+Events._ID,
+					"e."+EventsTable._ID + " AS "+Events._ID,
 					"'"+lookupKey+"'" + " AS "+Events.CONTACT_KEY,
-					EventsTable.EVENT_KEY + " AS "+Events.EVENT_KEY,
-					EventsTable.MESSAGE + " AS "+Events.MESSAGE,
-					"'"+Events.Originator.contact+"'" + " AS "+Events.ORIGINATOR,
-					EventsTable.PUBLISHED_TIME + " AS "+Events.PUBLISHED_TIME,
-				},eventSelection.toString(),null, null, null, EventsTable.PUBLISHED_TIME + " DESC");
+					"e."+EventsTable.EVENT_KEY + " AS "+Events.EVENT_KEY,
+					"e."+EventsTable.MESSAGE + " AS "+Events.MESSAGE,
+					"'"+Events.Originator.contact+"'" + " AS "+Events.ORIGINATOR, //TODO: handle OUTGOING event
+					"e."+EventsTable.PUBLISHED_TIME + " AS "+Events.PUBLISHED_TIME,
+					"p."+PluginsTable.ICON_URI + " AS "+Events.ICON_URI
+				},eventSelection.toString(),null, null, null, "e."+EventsTable.PUBLISHED_TIME + " DESC");
 		
 		if(retval!=null)
 			retval.setNotificationUri(getContext().getContentResolver(), EventStreamHelper.getUri(EventStreamHelper.EVENTS_PATH));

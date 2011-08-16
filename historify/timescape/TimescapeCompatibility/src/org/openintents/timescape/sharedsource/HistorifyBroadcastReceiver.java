@@ -16,6 +16,7 @@
 
 package org.openintents.timescape.sharedsource;
 
+import org.openintents.historify.data.model.IconLoadingStrategy;
 import org.openintents.historify.services.bridge.HistorifyBridge;
 import org.openintents.historify.services.bridge.HistorifyBridge.SourceData;
 import org.openintents.timescape.R;
@@ -30,10 +31,11 @@ public class HistorifyBroadcastReceiver extends HistorifyBridge.RequestReceiver 
 		SourceData sourceData = new SourceData(
 				SourceConstants.SOURCE_NAME, 
 				SourceConstants.AUTHORITY, 
-				SourceConstants.SOURCE_DESCRIPTION, null, 1);
+				SourceConstants.SOURCE_DESCRIPTION, null, 2);
 		
 		sourceData.setConfigIntent(SourceConstants.CONFIG_INTENT);
 		sourceData.setEventIntent(SourceConstants.VIEW_EVENT_INTENT);
+		sourceData.setIconLoadingStrategy(IconLoadingStrategy.useEventIcon);
 		
 		new HistorifyBridge(R.drawable.icon).registerSource(context,sourceData);
 	}
