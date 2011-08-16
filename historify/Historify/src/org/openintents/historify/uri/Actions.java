@@ -67,6 +67,7 @@ public final class Actions {
 	// optional parameters
 	public static final String EXTRA_SOURCE_DESCRIPTION = "description";
 	public static final String EXTRA_SOURCE_ICON_URI = "icon_uri";
+	public static final String EXTRA_SOURCE_ICON_LOADING_STRATEGY = "icon_loading_strategy";
 	public static final String EXTRA_EVENT_INTENT = "event_intent";
 	public static final String EXTRA_CONFIG_INTENT = "config_intent";
 	public static final String EXTRA_INTERACT_INTENT = "interact_intent";

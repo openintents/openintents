@@ -28,7 +28,7 @@ import android.database.Cursor;
 /**
  * 
  * This class is for wrapping the aggregated source cursors to provide a
- * logical, merged view of the data where rows are sorted by the value of a
+ * virtual, merged view of the data where rows are sorted by the value of a
  * given field.
  * 
  * @author berke.andras
@@ -65,7 +65,8 @@ public class MergedCursor extends AbstractCursor {
 			cursors.toArray(cursorsArray);
 			EventSource[] sourcesArray = new EventSource[sources.size()];
 			sources.toArray(sourcesArray);
-			return new MergedCursor(context, cursorsArray, sourcesArray, orderColumn);
+			return new MergedCursor(context, cursorsArray, sourcesArray,
+					orderColumn);
 		}
 	}
 
@@ -190,45 +191,50 @@ public class MergedCursor extends AbstractCursor {
 
 	private MergerPosition mMergerPosition;
 
-	private MergedContentObserver[] mMergedObservers;
-	
-	private MergedCursor(Context context, Cursor[] cursors, EventSource[] sources,
-			String orderColumn) {
+	private SourceContentObserver[] mSourceObservers;
+
+	private MergedCursor(Context context, Cursor[] cursors,
+			EventSource[] sources, String orderColumn) {
 
 		mCursors = cursors;
 		mCursorOrderByColumnIndex = new int[mCursors.length];
 		mSources = sources;
-		mMergedObservers = new MergedContentObserver[mCursors.length];
-		
-		
+		mSourceObservers = new SourceContentObserver[mCursors.length];
+
 		int count = 0;
 		for (int i = 0; i < cursors.length; i++) {
 			Cursor c = cursors[i];
 			mCursorOrderByColumnIndex[i] = c.getColumnIndex(orderColumn);
 			count += c.getCount();
-			
-			mMergedObservers[i] = new MergedContentObserver(context, sources[i], ContentUris.MergedEvents);
-			c.registerContentObserver(mMergedObservers[i]);
+
+			mSourceObservers[i] = new SourceContentObserver(context, sources[i]);
+			c.registerContentObserver(mSourceObservers[i]);
 		}
 		mCount = count;
 
 		mMergerPosition = new MergerPosition(this);
-		
-		setNotificationUri(context.getContentResolver(), ContentUris.MergedEvents);
+
+		setNotificationUri(context.getContentResolver(),
+				ContentUris.MergedEvents);
 	}
 
 	public void release() {
-		for(int i=0;i<mCursors.length;i++) {
+		for (int i = 0; i < mCursors.length; i++) {
 			Cursor c = mCursors[i];
-			if(!c.isClosed())
-				c.unregisterContentObserver(mMergedObservers[i]);
-				c.close();
-				mMergedObservers[i] = null;
+			if (!c.isClosed())
+				c.unregisterContentObserver(mSourceObservers[i]);
+			c.close();
+			mSourceObservers[i] = null;
 		}
-		
+
 	}
 
-	
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD CURSOR METHODS
+	// ---------------------------------------------------------------------------------
+
 	@Override
 	public int getCount() {
 		return mCount;

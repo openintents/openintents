@@ -19,6 +19,7 @@ package org.openintents.historify.services.bridge;
 import java.util.List;
 
 import org.openintents.historify.data.model.EventData;
+import org.openintents.historify.data.model.IconLoadingStrategy;
 import org.openintents.historify.data.providers.Events;
 import org.openintents.historify.uri.Actions;
 
@@ -205,6 +206,7 @@ public class HistorifyBridge {
 		private String configIntent;
 		private String interactIntent;
 		private String interactActionTitle;
+		private IconLoadingStrategy iconLoadingStrategy;
 		private int version;
 		
 		public SourceData(String name, String authority, String description, String iconUri, int version) {
@@ -213,6 +215,7 @@ public class HistorifyBridge {
 			this.description = description;
 			this.iconUri = iconUri;
 			this.version = version;
+			this.iconLoadingStrategy = IconLoadingStrategy.useSourceIcon;
 		}
 		
 		public void setEventIntent(String eventIntent) {
@@ -228,6 +231,11 @@ public class HistorifyBridge {
 			this.interactActionTitle = interactActionTitle;
 		}
 
+		public void setIconLoadingStrategy(
+				IconLoadingStrategy iconLoadingStrategy) {
+			this.iconLoadingStrategy = iconLoadingStrategy;
+		}
+		
 		public String getName() {
 			return name;
 		}
@@ -264,6 +272,9 @@ public class HistorifyBridge {
 			return configIntent;
 		}		
 		
+		public IconLoadingStrategy getIconLoadingStrategy() {
+			return iconLoadingStrategy;
+		}
 	}
 	
 	public void registerSource(Context context, SourceData sourceData) {
@@ -288,6 +299,7 @@ public class HistorifyBridge {
 		intent.putExtra(Actions.EXTRA_CONFIG_INTENT, sourceData.getConfigIntent());
 		intent.putExtra(Actions.EXTRA_INTERACT_INTENT, sourceData.getInteractIntent());
 		intent.putExtra(Actions.EXTRA_INTERACT_ACTION_TITLE, sourceData.getInteractActionTitle());
+		intent.putExtra(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY, sourceData.getIconLoadingStrategy().toString());
 
 		postIntent(context, intent);
 	}

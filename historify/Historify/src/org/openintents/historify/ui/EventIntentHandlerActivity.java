@@ -94,12 +94,9 @@ public class EventIntentHandlerActivity extends Activity {
 				event = eventLoader.loadFromCursor(ec,0);
 				
 				SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
-				Cursor sc = sourceLoader.openManagedCursor(this, eventSource);
-				if(sc.getCount()!=0) {
-					source = sourceLoader.loadFromCursor(sc, 0);
-					if(source!=null)
+				source = sourceLoader.loadFromSourceUri(this, eventSource);
+				if(source!=null)
 						event.setSource(source);
-				}
 			}
 			ec.close();
 			

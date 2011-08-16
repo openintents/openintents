@@ -32,7 +32,7 @@
 	<string name="moremenu.myfavorites">my favorites</string>
 	<string name="moremenu.mycontacts">my contacts</string>
 	<string name="moremenu.mysources">my sources</string>
-	<string name="moremenu.mypreferences">my preferences</string>
+	<string name="moremenu.mypreferences">preferences</string>
 		
 	<string name="preferences.title">my preferences</string>		
 	<string name="preferences.startup.welcome">show welcome screen</string>
@@ -48,6 +48,6 @@
 	<string name="factory_test.config_error">Wrong parameter(s).</string>
 	
 	<string name="permissions.use_bridge">Interact with Historify</string>
-	<string name="permissions.use_bridge_description">Can register a SharedSource, can use the QuickPost Interface.</string>
+	<string name="permissions.use_bridge_description">Can register a SharedSource, can use QuickPost interface.</string>
 		
 </resources>

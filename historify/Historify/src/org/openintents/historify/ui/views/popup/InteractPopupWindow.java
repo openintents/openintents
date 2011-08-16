@@ -43,7 +43,7 @@ public class InteractPopupWindow extends AbstractPopupWindow {
 		setArrowGravity(Gravity.RIGHT);
 		
 		mContactLookupKey = contactLookupKey;		
-		mLstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, mEmptyHintView, mContactLookupKey));
+		mLstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, mEmptyHintView));
 		mLstInteract.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View arg1, int pos,
 					long arg3) {

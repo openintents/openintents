@@ -8,9 +8,9 @@
 <TextView
         style="@style/ListItem.SingleLine"
         android:id="@+id/actionbar_dropdown_text"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:padding="6dip"
-        android:background="@drawable/listitem_background2"
+        android:background="@drawable/listitem_background3"
         android:text="Name" />
 
         

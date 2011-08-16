@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.loaders;
 
-import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+import org.openintents.historify.data.model.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.data.providers.Sources;
@@ -24,7 +24,6 @@ import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -75,10 +74,21 @@ public class SourceLoader {
 	
 	public SourceLoader() {}
 	
+	/**
+	 * Constructor with custom projection.
+	 * 
+	 * @param sourcesUri The URI of the provider where the sources should be loaded from.
+	 * @param projection The projection used for querying the sources.
+	 */
 	public SourceLoader(Uri sourcesUri, String[] projection) {
 		init(sourcesUri, projection);
 	}
 		
+	/**
+	 * Constructor with default projection
+	 * 
+	 * @param sourcesUri The URI of the provider where the sources should be loaded from.
+	 */
 	public SourceLoader(Uri sourcesUri) {
 		init(sourcesUri, DEFAULT_PROJECTION);
 	}
@@ -88,9 +98,26 @@ public class SourceLoader {
 		mProjection = projection;		
 	}
 	
+	public Uri getUri() {
+		return mSourcesUri;
+	}
+
+	/**
+	 * Opens cursor with default parameters (no selection).
+	 * @param context Context
+	 * @return A cursor containing the sources.
+	 */
 	public Cursor openCursor(Context context) {
 		return openCursor(context, null, null);
 	}
+	
+	/**
+	 * Opens cursor with custom selection.
+	 * @param context Context
+	 * @param selection Selection used while querying.
+	 * @param selectionArgs Selection args used while querying.
+	 * @return A cursor containing the sources.
+	 */
 	public Cursor openCursor(Context context, String selection, String[] selectionArgs) {
 		if(mSourcesUri==null) {
 			throw new NullPointerException("Sources uri not set.");
@@ -98,17 +125,30 @@ public class SourceLoader {
 		return context.getContentResolver().query(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
-	public Cursor openManagedCursor(Activity context, Uri sourceUri) {
+	/**
+	 * Opens a cursor containing the source associated with the given source uri.
+	 * @param context Context
+	 * @param sourceUri The URI of the event provider (source) that should be loaded.
+	 * @return A cursor containing the source associated with the Uri, if exists.
+	 */
+	public Cursor openCursor(Context context, Uri sourceUri) {
 		
 		String selection = SourcesTable.AUTHORITY + " = ?";
 		String[] selectionArgs = new String[] {
 			sourceUri.getAuthority()	
 		};
 						 
-		return context.managedQuery(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
+		return context.getContentResolver().query(mSourcesUri, mProjection, selection, selectionArgs, Sources.SourcesTable.NAME);
 	}
 	
-	
+	/**
+	 * Loading an EventSource instance from the given cursor.
+	 * 
+	 * @param cursor
+	 * @param position
+	 *            The position to load from.
+	 * @return The new EventSource instance.
+	 */
 	public EventSource loadFromCursor(Cursor cursor, int position) {
 		
 		cursor.moveToPosition(position);
@@ -143,6 +183,33 @@ public class SourceLoader {
 		
 	}
 
+	/**
+	 * Loading an EventSource instance for a given event source uri.
+	 * 
+	 * @param context Context
+	 * @param sourceUri The uri of the event provider
+	 */ 
+	public EventSource loadFromSourceUri(Context context, Uri sourceUri) {
+		
+		Cursor c = openCursor(context, sourceUri);
+		if(c.moveToFirst()) {
+			EventSource retval =  loadFromCursor(c, 0);
+			c.close();
+			return retval;
+		}
+		
+		return null;
+	}
+
+	
+	/**
+	 * Updates the state of a source based on the state of the provided source.
+	 * 
+	 * @param context
+	 *            Context
+	 * @param source
+	 *            The source whose filtered state will be updated.
+	 */
 	public void updateItemState(Context context, EventSource source) {
 
 		Uri sourceUri = ContentUris.Sources.buildUpon().appendPath(String.valueOf(source.getId())).build();
@@ -153,29 +220,18 @@ public class SourceLoader {
 		context.getContentResolver().update(sourceUri, cv, null, null);
 	}
 
+	/**
+	 * Updates the state of all sources.
+	 * 
+	 * @param context
+	 *            Context
+	 * @param source
+	 *            The new state of the filters.
+	 */
+	
 	public void updateAllItemState(Context context, SourceState newState) {
-		//no need
-		
-	}
-
-	public Uri getUri() {
-		return mSourcesUri;
-	}
-
-	public EventSource loadFromSourceAuthority(Context context, String sourceAuth) {
-		String selection = SourcesTable.AUTHORITY + " = ?";
-		String[] selectionArgs = new String[] {
-			sourceAuth	
-		};
-		
-		Cursor c = openCursor(context, selection, selectionArgs);
-		if(c.moveToFirst()) {
-			EventSource retval =  loadFromCursor(c, 0);
-			c.close();
-			return retval;
-		}
-		
-		return null;
+		//Only used in the derived SourceFilterLoader for let the users configure the state of multiple filters at the same time.
+		//However, the function not implemented for sources.
 	}
 
 	

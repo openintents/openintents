@@ -32,88 +32,121 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Customized source adapter for loading source filters for a particular
+ * contact. <br/>
+ * <br/>
+ * Note that if a contact hasn't got filters yet, the adapter works as a simple
+ * {@link SourcesAdapter}. If the user changes the state of a source, or already
+ * has filters, the {@link SourceFilterLoader} class will be used as a loader
+ * instead of the default {@link SourceLoader}.
+ * 
+ * @author berke.andras
+ */
 public class SourceFiltersAdapter extends SourcesAdapter {
 
 	private Contact mContact;
 	private boolean mHasFilters;
-	
+
 	private SourceFilterLoader mSourceFilterLoader;
 	private SourceLoader mDefaultSourceLoader;
-	
-	public SourceFiltersAdapter(Context context, ListView listView, Contact contact) {
+
+	public SourceFiltersAdapter(Context context, ListView listView,
+			Contact contact) {
 		super();
+
 		mContact = contact;
 		mSourceFilterLoader = new SourceFilterLoader(contact);
 		mDefaultSourceLoader = new SourceLoader(ContentUris.Sources);
-		
-		//check if contact has previously defined filters
+
+		// check if contact has previously defined filters
 		mHasFilters = mSourceFilterLoader.hasFilters(context);
-		
-		//If the current contact hasnt got any filters, the default values will be shown.
-		//We use a simple SourceLoader for that purpose.
-		//If the user modifies a list element, the loader will be changed to the SourceFilterLoader instance.
-		init(context, listView, mHasFilters ? mSourceFilterLoader : mDefaultSourceLoader, R.layout.listitem_source_filter);
+
+		// If the current contact hasnt got any filters, the default values will
+		// be shown.
+		// We use a simple SourceLoader for that purpose.
+		// If the user modifies a list element, the loader will be changed to
+		// the SourceFilterLoader instance.
+		init(context, listView, mHasFilters ? mSourceFilterLoader
+				: mDefaultSourceLoader, R.layout.listitem_source_filter);
 	}
 
-	@Override
-	public int getCount() {
-		return super.getCount()-1;
-	}
-
-	@Override
-	protected void initListItem(View convertView) {
-		
-	}
-	
-	@Override
-	protected void loadItemToView(View convertView, EventSource item, int position) {
-		
-		TextView tv = (TextView) convertView.findViewById(R.id.sources_listitem_txtName);
-		tv.setText(item.getName());
-		
-		((CheckedTextView)tv).setChecked(item.isEnabled());
-		mCheckedItems.put(position, item.isEnabled());
-		
-		ImageView iv = (ImageView)convertView.findViewById(R.id.sources_listitem_imgIcon);
-		mSourceIconHelper.toImageView(mContext, item,null,iv);
-		
-	}
-	
+	/** Update the enabled / disabled state of a source */
 	@Override
 	public void update(EventSource source) {
-		
-		if(!mHasFilters) {
+
+		if (!mHasFilters) {
+			// create filters if hasnt got yet
 			mSourceFilterLoader.insertFiltersForContact(mContext, mSources);
 			mHasFilters = true;
 			mSourceLoader = mSourceFilterLoader;
 			load();
 		} else {
-			super.update(source);	
+			super.update(source);
 		}
-		
+
 	}
-	
-	
+
+	/** Update the enabled / disabled state of all sources */
 	@Override
 	public void updateAll(SourceState newState) {
-		
-		if(!mHasFilters) {
+
+		if (!mHasFilters) {
+			// create filters if hasnt got yet
 			mSourceFilterLoader.insertFiltersForContact(mContext, mSources);
 			mHasFilters = true;
 			mSourceLoader = mSourceFilterLoader;
 			load();
 		} else {
-			super.updateAll(newState);	
+			super.updateAll(newState);
 		}
 	}
 
+	/**
+	 * Restores default behaviour, source filters will be removed for the
+	 * contact.
+	 */
 	public void deleteFilters() {
-		
-		if(mHasFilters) {
-			new SourceFilterOperation().removeFiltersOfContact(mContext, mContact);
+
+		if (mHasFilters) {
+			new SourceFilterOperation().removeFiltersOfContact(mContext,
+					mContact);
 			mHasFilters = false;
 			mSourceLoader = mDefaultSourceLoader;
 			load();
 		}
+	}
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
+
+	@Override
+	public int getCount() {
+		return super.getCount() - 1;
+	}
+
+	@Override
+	protected void initListItem(View convertView) {
+
+	}
+
+	@Override
+	protected void loadItemToView(View convertView, EventSource item,
+			int position) {
+
+		TextView tv = (TextView) convertView
+				.findViewById(R.id.sources_listitem_txtName);
+		tv.setText(item.getName());
+
+		((CheckedTextView) tv).setChecked(item.isEnabled());
+		mCheckedItems.put(position, item.isEnabled());
+
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.sources_listitem_imgIcon);
+		mSourceIconHelper.toImageView(mContext, item, null, iv);
+
 	}
 }

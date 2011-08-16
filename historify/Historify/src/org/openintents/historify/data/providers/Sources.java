@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.providers;
 
-import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+import org.openintents.historify.data.model.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.uri.ContentUris;
 
@@ -98,8 +98,11 @@ public final class Sources {
 	 */
 	public static class OpenHelper extends SQLiteOpenHelper {
 
+		private Context mContext;
+		
 		public OpenHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);
+			mContext = context;
 		}
 
 		@Override
@@ -137,7 +140,7 @@ public final class Sources {
 					+ FiltersTable.CONTACT_LOOKUP_KEY + ");");
 
 			// adding test data
-			new DefaultSources().insert(db);
+			new DefaultSources().insert(mContext, db);
 
 		}
 

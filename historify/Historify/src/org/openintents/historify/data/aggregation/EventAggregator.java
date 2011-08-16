@@ -36,128 +36,150 @@ import android.util.Log;
 
 /**
  * 
- * This class is responsible for aggregating events provided by the
- * different sources, and converting their content into a single sequence of
- * events ordered by the {@link Events#PUBLISHED_TIME} field.
+ * This class is responsible for aggregating events provided by the different
+ * sources, and converting their content into a single sequence of events
+ * ordered by the {@link Events#PUBLISHED_TIME} field.
  * 
  * @author berke.andras
  */
 public class EventAggregator {
 
 	public static String N = "EventAggregator";
-	
+
+	/**
+	 * Observer for the aggregated cursors.
+	 */
 	private class AggregatorContentObserver extends ContentObserver {
-		
+
 		public AggregatorContentObserver() {
 			super(new Handler());
 		}
-		
+
 		@Override
 		public boolean deliverSelfNotifications() {
 			return true;
 		}
-		
+
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
-			Log.v(N,"Contents of the aggregator have been changed.");
+			Log.v(N, "Contents of the aggregator have been changed.");
 			mAdapter.load();
 		}
 	}
-	
+
 	private Activity mContext;
 	private Contact mContact;
 	private EventLoader mLoader;
-	
+
 	private MergedCursor mMergedCursor;
 	private AggregatorContentObserver mContentObserver;
-	
+
 	private TimeLineAdapter mAdapter;
-	
-	public EventAggregator(Activity context, TimeLineAdapter adapter, Contact contact) {
-		
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param context
+	 *            Activity context.
+	 * @param adapter
+	 *            The timeline adapter used currently.
+	 * @param contact
+	 *            The contact whom the events are aggregated for.
+	 */
+	public EventAggregator(Activity context, TimeLineAdapter adapter,
+			Contact contact) {
+
 		mContext = context;
 		mAdapter = adapter;
 		mContact = contact;
 		mLoader = new EventLoader();
 	}
 
+	public Contact getContact() {
+		return mContact;
+	}
+
+	/**
+	 * Query the aggregated cursors.
+	 */
 	public void query() {
 
-		if(mMergedCursor!=null)
+		if (mMergedCursor != null)
 			mMergedCursor.release();
-		
-		
-		//load enabled sources
+
+		// load enabled sources
 		SourceFilterLoader sourceFilterLoader = new SourceFilterLoader(mContact);
 		ArrayList<EventSource> enabledSources = new ArrayList<EventSource>();
-		
+
 		Cursor sourcesCursor = sourceFilterLoader.openCursor(mContext);
-		for(int i=0;i<sourcesCursor.getCount();i++) {
-			EventSource source = sourceFilterLoader.loadFromCursor(sourcesCursor, i);
-			if(source.isEnabled()) enabledSources.add(source);
+		for (int i = 0; i < sourcesCursor.getCount(); i++) {
+			EventSource source = sourceFilterLoader.loadFromCursor(
+					sourcesCursor, i);
+			if (source.isEnabled())
+				enabledSources.add(source);
 		}
 		sourcesCursor.close();
-		
-		//open cursors for enabled sources
-		MergedCursor.Builder builder = new MergedCursor.Builder(mContext,Events.PUBLISHED_TIME);
+
+		// open cursors for enabled sources
+		MergedCursor.Builder builder = new MergedCursor.Builder(mContext,
+				Events.PUBLISHED_TIME);
 		EventLoader eventLoader = new EventLoader();
-		for(EventSource source : enabledSources) {
-			Cursor eventsCursor = eventLoader.openCursor(mContext, UriUtils.sourceAuthorityToUri(source.getAuthority()), mContact);
-			if(eventsCursor!=null)
+		for (EventSource source : enabledSources) {
+			Cursor eventsCursor = eventLoader.openCursor(mContext, UriUtils
+					.sourceAuthorityToUri(source.getAuthority()), mContact);
+			if (eventsCursor != null)
 				builder.add(eventsCursor, source);
 		}
-		
-		//create merged cursor from the source cursors
+
+		// create merged cursor from the source cursors
 		mMergedCursor = builder.build();
 		registerObserver();
 	}
-	
+
 	public int getCount() {
 		return mMergedCursor.getCount();
 	}
 
-	public Contact getContact() {
-		return mContact;
-	}
-	
 	public Event getItem(int position) {
-		
+
 		Event retval = mLoader.loadFromCursor(mMergedCursor, position);
-		if(retval!=null) {			
+		if (retval != null) {
 			EventSource source = mMergedCursor.getSource();
 			retval.setSource(source);
-			
+
 		}
-		
+
 		return retval;
-	}
-
-	public void release() {
-		
-		unregisterObserver();
-		mMergedCursor.release();
-	}
-
-	public void unregisterObserver() {
-		
-		if(mContentObserver!=null) {
-			mContext.getContentResolver().unregisterContentObserver(mContentObserver);
-			mContentObserver = null;
-		}
 	}
 
 	public void registerObserver() {
 
-		if(mContentObserver==null) {
+		if (mContentObserver == null) {
 			mContentObserver = new AggregatorContentObserver();
 			mMergedCursor.registerContentObserver(mContentObserver);
-			mContext.getContentResolver().registerContentObserver(ContentUris.Sources, true, mContentObserver);
+			mContext.getContentResolver().registerContentObserver(
+					ContentUris.Sources, true, mContentObserver);
 		}
 	}
 
 	public void notifyObserver() {
 		mContentObserver.onChange(false);
+	}
+
+	public void unregisterObserver() {
+
+		if (mContentObserver != null) {
+			mContext.getContentResolver().unregisterContentObserver(
+					mContentObserver);
+			mContentObserver = null;
+		}
+	}
+
+	public void release() {
+
+		unregisterObserver();
+		mMergedCursor.release();
 	}
 
 }

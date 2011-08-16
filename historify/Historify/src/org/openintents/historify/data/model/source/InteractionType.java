@@ -12,12 +12,18 @@ public class InteractionType {
 	
 	private String mIntentAction;
 	
+	public InteractionType() {}
+	
 	public InteractionType(Uri eventIcon, String actionTitle, String intentAction) {
+		init(eventIcon,actionTitle,intentAction);
+	}
+	
+	protected void init(Uri eventIcon, String actionTitle, String intentAction) {
 		mEventIcon = eventIcon;
 		mActionTitle = actionTitle;
 		mIntentAction = intentAction;
 	}
-	
+
 	public Uri getEventIcon() {
 		return mEventIcon;
 	}

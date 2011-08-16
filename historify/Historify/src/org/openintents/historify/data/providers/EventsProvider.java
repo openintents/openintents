@@ -69,17 +69,19 @@ public abstract class EventsProvider extends ContentProvider {
 	
 
 	/**
-	 * Derived classes must override this to let the client able to query the
+	 * Derived classes could override this to let the client able to query the
 	 * event stored in this EventSource.
 	 * 
 	 * @return The Cursor containing the rows of this EventProvider. <br/>
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEvents();
+	protected Cursor queryEvents() {
+		return null;
+	}
 	
 	/**
-	 * Derived classes must override this to let the client able to query
+	 * Derived classes could override this to let the client able to query
 	 * event identified with the given ID.
 	 * 
 	 * @param eventId
@@ -88,7 +90,9 @@ public abstract class EventsProvider extends ContentProvider {
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEvent(long eventId);
+	protected Cursor queryEvent(long eventId) {
+		return null;
+	}
 
 	/**
 	 * Derived classes must override this to let the client able to query the
@@ -105,7 +109,7 @@ public abstract class EventsProvider extends ContentProvider {
 	
 	
 	/**
-	 * Derived classes must override this to let the client able to query
+	 * Derived classes could override this to let the client able to query
 	 * event(s) identified with the given EVENT_KEY.
 	 * 
 	 * @param eventKey
@@ -115,7 +119,9 @@ public abstract class EventsProvider extends ContentProvider {
 	 *         The Cursor should contain the columns defined in the
 	 *         {@link Events} class.
 	 */
-	protected abstract Cursor queryEventsByKey(String eventKey);
+	protected Cursor queryEventsByKey(String eventKey) {
+		return null;
+	}
 
 
 	@Override

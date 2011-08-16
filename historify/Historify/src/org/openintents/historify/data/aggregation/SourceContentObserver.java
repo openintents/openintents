@@ -17,6 +17,7 @@
 package org.openintents.historify.data.aggregation;
 
 import org.openintents.historify.data.model.source.EventSource;
+import org.openintents.historify.uri.ContentUris;
 
 import android.content.Context;
 import android.database.ContentObserver;
@@ -24,29 +25,38 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 
-public class MergedContentObserver extends ContentObserver{
+/**
+ * 
+ * Content observer for a single source of events. When notified, it triggers
+ * the observer of the event aggregator.
+ * 
+ * @author berke.andras
+ * 
+ */
+public class SourceContentObserver extends ContentObserver {
+
+	private static final Uri sUriToNotify = ContentUris.MergedEvents;
 
 	private EventSource mSource;
-	private Uri mUriToNotify;
 	private Context mContext;
-	
-	public MergedContentObserver(Context context, EventSource source, Uri uriToNotify) {
+
+	public SourceContentObserver(Context context, EventSource source) {
 		super(new Handler());
 		mContext = context;
 		mSource = source;
-		mUriToNotify = uriToNotify;
 	}
 
 	@Override
 	public boolean deliverSelfNotifications() {
 		return true;
 	}
-	
+
 	@Override
 	public void onChange(boolean selfChange) {
 		super.onChange(selfChange);
-		Log.v(EventAggregator.N,"Contents of "+mSource.getName()+" have been changed.");
-		mContext.getContentResolver().notifyChange(mUriToNotify, null);
-		
+		Log.v(EventAggregator.N, "Contents of " + mSource.getName()
+				+ " have been changed.");
+		mContext.getContentResolver().notifyChange(sUriToNotify, null);
+
 	}
 }

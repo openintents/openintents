@@ -145,12 +145,6 @@ public class QuickPostsProvider extends EventsProvider {
 	}
 
 	@Override
-	protected Cursor queryEvents() {
-		return null;
-	}
-
-
-	@Override
 	protected Cursor queryEventsForContact(String lookupKey) {
 
 		String where = Events.CONTACT_KEY + " = ?";

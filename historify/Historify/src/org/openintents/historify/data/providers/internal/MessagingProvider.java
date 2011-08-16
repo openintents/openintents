@@ -109,14 +109,4 @@ public class MessagingProvider extends EventsProvider {
 		return rawQuery(where, null);
 	}
 
-	@Override
-	protected Cursor queryEvents() {
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEventsByKey(String eventKey) {
-		return null;
-	}
-
 }

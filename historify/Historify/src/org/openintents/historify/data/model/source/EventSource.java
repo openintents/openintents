@@ -16,7 +16,7 @@
 
 package org.openintents.historify.data.model.source;
 
-import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+import org.openintents.historify.data.model.IconLoadingStrategy;
 
 import android.net.Uri;
 

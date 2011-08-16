@@ -1,14 +1,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content">
+
+<View
+	android:background="@drawable/listitem_background3"
+	android:layout_width="fill_parent"
+	android:layout_weight="1"
+	android:layout_height="fill_parent"  />	
+
+
 <TextView
         style="@style/ListItem.SingleLine"
         android:id="@+id/actionbar_dropdown_text"
-        android:layout_weight="1"
-        android:textSize="18sp"
+        android:layout_width="140dip"
+        android:textSize="22sp"
         android:padding="6dip"
-        android:background="@drawable/listitem_background2"
+        android:background="@drawable/listitem_background3"
         android:text="Name" />
+
+<TextView
+        style="@style/ListItem.SingleLine"
+        android:id="@+id/actionbar_dropdown_text"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:gravity="top"
+        android:textSize="22sp"
+        android:padding="6dip"
+        android:background="@drawable/listitem_background3"
+        android:text="&lt;" />
+        
 
 <View
 	android:background="@color/foreground_light"

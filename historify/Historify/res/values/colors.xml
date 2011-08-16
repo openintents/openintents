@@ -9,6 +9,7 @@
 	
 	<color name="background_listitem1_normal">#afff</color>
 	<color name="background_listitem2_normal">#aeee</color>
+	<color name="background_listitem3_normal">#dfff</color>
 	<color name="background_listitem_selected">#accc</color>	
 </resources>
 

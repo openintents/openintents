@@ -16,7 +16,8 @@
 
 package org.openintents.historify.data.providers;
 
-import org.openintents.historify.data.loaders.SourceIconHelper.IconLoadingStrategy;
+import org.openintents.historify.data.loaders.SourceLoader;
+import org.openintents.historify.data.model.IconLoadingStrategy;
 import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.providers.Sources.SourcesTable;
 import org.openintents.historify.data.providers.internal.FactoryTest;
@@ -24,14 +25,16 @@ import org.openintents.historify.data.providers.internal.Messaging;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.data.providers.internal.Telephony;
 import org.openintents.historify.uri.Actions;
+import org.openintents.historify.uri.ContentUris;
 import org.openintents.historify.utils.UriUtils;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class DefaultSources {
 
-	public void insert(SQLiteDatabase db) {
+	public void insert(Context context, SQLiteDatabase db) {
 
 		//telephony
 		ContentValues cv = new ContentValues();
@@ -40,7 +43,7 @@ public class DefaultSources {
 		cv.put(SourcesTable.AUTHORITY, Telephony.TELEPHONY_AUTHORITY);
 		cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_CALLOG_EVENT);
 		cv.put(SourcesTable.IS_INTERNAL, 1);
-		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_telephony").toString());
+		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri(context, "source_telephony").toString());
 		db.insert(SourcesTable._TABLE, null, cv);
 
 		//messaging
@@ -50,7 +53,7 @@ public class DefaultSources {
 		cv.put(SourcesTable.AUTHORITY, Messaging.MESSAGING_AUTHORITY);
 		cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_MESSAGING_EVENT);
 		cv.put(SourcesTable.IS_INTERNAL, 1);
-		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_messaging").toString());
+		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri(context, "source_messaging").toString());
 		db.insert(SourcesTable._TABLE, null, cv);
 
 		//factory test
@@ -59,7 +62,7 @@ public class DefaultSources {
 		cv.put(SourcesTable.DESCRIPTION, FactoryTest.DESCRIPTION);
 		cv.put(SourcesTable.AUTHORITY, FactoryTest.FACTORY_TEST_AUTHORITY);
 		cv.put(SourcesTable.IS_INTERNAL, 1);
-		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_factory_test").toString());
+		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri(context, "source_factory_test").toString());
 		cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_FACTORYTEST);
 		cv.put(SourcesTable.INTERACT_INTENT, Actions.ACTION_INTERACT_FACTORYTEST);
 		//cv.put(SourcesTable.INTERACT_ACTION_TITLE, "Test");
@@ -73,10 +76,18 @@ public class DefaultSources {
 		cv.put(SourcesTable.AUTHORITY, QuickPosts.QUICKPOSTS_AUTHORITY);
 		cv.put(SourcesTable.EVENT_INTENT, Actions.ACTION_VIEW_QUICKPOST_EVENT);
 		cv.put(SourcesTable.IS_INTERNAL, 0);
-		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri("source_quick_post").toString());
+		cv.put(SourcesTable.ICON_URI, UriUtils.drawableToUri(context, "source_quick_post").toString());
 		cv.put(SourcesTable.CONFIG_INTENT, Actions.ACTION_CONFIG_QUICKPOSTS);
 		cv.put(SourcesTable.ICON_LOADING_STRATEGY, IconLoadingStrategy.useEventIcon.toString());
 		db.insert(SourcesTable._TABLE, null, cv);
 		
 	}
+	
+	public static boolean isQuickPostSourceAvailable(Context context) {
+		
+		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
+		EventSource source = sourceLoader.loadFromSourceUri(context, ContentUris.QuickPostSources);
+		return source!=null && source.isEnabled();
+	}
+
 }

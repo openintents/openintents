@@ -33,19 +33,48 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Customized contact adapter for loading the list of recently contacted
+ * persons. Used on the welcome screen.
+ * 
+ * @author berke.andras
+ */
 public class RecentlyContactedAdapter extends ContactsAdapter {
-	
+
+	// helper class for refreshing pretty times (e.g. '5 minutes ago')
 	private PrettyTimeRefreshHelper mPrettyTimeRefreshHelper;
-	
+
 	public RecentlyContactedAdapter(Activity context) {
 		super(context, new ContactLoader.RecentlyContactedLoadingStrategy());
-		mContactIconHelper = new ContactIconHelper(mContext,R.drawable.contact_default_large);
+		mContactIconHelper = new ContactIconHelper(mContext,
+				R.drawable.contact_default_large);
 		mPrettyTimeRefreshHelper = new PrettyTimeRefreshHelper();
 	}
-	
+
+	/**
+	 * Starts the thread that refreshes pretty times on the list.
+	 */
+	public void startPrettyTimeRefresher() {
+		mPrettyTimeRefreshHelper.startRefresher(this);
+	}
+
+	/**
+	 * Stops the thread that refreshes pretty times on the list.
+	 */
+	public void stopPrettyTimeRefresher() {
+		mPrettyTimeRefreshHelper.stopRefresher();
+
+	}
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
+
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		
+
 		Contact contact = getItem(position);
 
 		if (convertView == null) {
@@ -58,29 +87,17 @@ public class RecentlyContactedAdapter extends ContactsAdapter {
 				.findViewById(R.id.contacts_listitem_txtName);
 		tv.setText(contact.getName());
 
-		
-		ImageView iv = (ImageView)convertView.findViewById(R.id.contacts_listitem_imgIcon);
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.contacts_listitem_imgIcon);
 		iv.setImageResource(R.drawable.contact_default_large);
 		mContactIconHelper.loadContactIcon(contact, iv);
-		
-		tv = (TextView)convertView.findViewById(R.id.contacts_listitem_txtContacted);
-		tv.setText(DateUtils.formatPrettyDate(new Date(contact.getLastTimeContacted())));
-		
+
+		tv = (TextView) convertView
+				.findViewById(R.id.contacts_listitem_txtContacted);
+		tv.setText(DateUtils.formatPrettyDate(new Date(contact
+				.getLastTimeContacted())));
+
 		return convertView;
 
-	}
-
-	@Override
-	public void release() {
-		super.release();
-	}
-
-	public void stopPrettyTimeRefresher() {
-		mPrettyTimeRefreshHelper.stopRefresher();
-		
-	}
-
-	public void startPrettyTimeRefresher() {
-		mPrettyTimeRefreshHelper.startRefresher(this);
 	}
 }

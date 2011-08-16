@@ -147,6 +147,7 @@ public class SourceRegistrationHelper {
 		String interactIntent = parameterSet.getString(Actions.EXTRA_INTERACT_INTENT);
 		String interactActionTitle = parameterSet.getString(Actions.EXTRA_INTERACT_ACTION_TITLE);
 		
+			
 		ContentValues values = new ContentValues();
 		values.put(SourcesTable.NAME, name);
 		values.put(SourcesTable.DESCRIPTION, description);
@@ -158,6 +159,9 @@ public class SourceRegistrationHelper {
 		values.put(SourcesTable.INTERACT_ACTION_TITLE, interactActionTitle);
 		values.put(SourcesTable.UID, uid);
 		values.put(SourcesTable.VERSION, version);
+		
+		if(parameterSet.containsKey(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY))
+			values.put(SourcesTable.ICON_LOADING_STRATEGY, parameterSet.getString(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY));
 		
 		if(updateRow==null) {
 			//insert

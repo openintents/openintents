@@ -120,19 +120,4 @@ public class FactoryTestProvider extends EventsProvider {
 		return mc;
 		
 	}
-
-	@Override
-	protected Cursor queryEvent(long eventId) {
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEvents() {
-		return null;
-	}
-
-	@Override
-	protected Cursor queryEventsByKey(String eventKey) {
-		return null;
-	}
 }

@@ -16,19 +16,27 @@
 
 package org.openintents.historify.data.loaders;
 
-import org.openintents.historify.data.model.source.EventSource;
 import org.openintents.historify.data.model.source.InteractionType;
 import org.openintents.historify.data.model.source.EventSource.SourceState;
+import org.openintents.historify.data.providers.DefaultSources;
 import org.openintents.historify.data.providers.Sources;
 import org.openintents.historify.data.providers.internal.QuickPosts;
 import org.openintents.historify.uri.ContentUris;
 
 import android.app.Activity;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.MergeCursor;
 import android.net.Uri;
 
+/**
+ * 
+ * Helper class for loading {@link InteractionType} objects.<br/>
+ * <br/>
+ * Note that all interaction types of the registered SharedSources and - if the QuickPost
+ * source is available - QuickPost clients will be loaded.
+ * 
+ * @author berke.andras
+ */
 public class InteractionTypeLoader {
 
 	public static String[] PROJECTION = new String[] {
@@ -43,6 +51,11 @@ public class InteractionTypeLoader {
 	private static final int COLUMN_INTERACT_INTENT = 2;
 	private static final int COLUMN_INTERACT_ACTION_TITLE = 3;
 	
+	/**
+	 * Opens a cursor based containing interaction types of SharedSources and QuickPost clients. 
+	 * @param context
+	 * @return A cursor containing the interaction types.
+	 */
 	public Cursor openCursor(Activity context) {
 		
 		//load interaction types for external sources
@@ -57,7 +70,7 @@ public class InteractionTypeLoader {
 		Cursor cursorSources = context.getContentResolver().query(ContentUris.Sources, PROJECTION, selection.toString(), null, Sources.SourcesTable.NAME);
 		
 		//load interaction types for Q! sources
-		if(isQuickPostSourceAvailable(context)) {
+		if(DefaultSources.isQuickPostSourceAvailable(context)) {
 			
 			selection = new StringBuilder();
 			selection.append(QuickPosts.QuickPostSourcesTable.INTERACT_INTENT);
@@ -65,13 +78,6 @@ public class InteractionTypeLoader {
 			
 			Cursor cursorQpSources = context.getContentResolver().query(ContentUris.QuickPostSources, PROJECTION, selection.toString(), null, QuickPosts.QuickPostSourcesTable.NAME);
 			if(cursorQpSources!=null) {
-				
-//				cursorQpSources.moveToFirst();
-//				for(String s : cursorQpSources.getColumnNames()) {
-//					Log.v(s," "+cursorQpSources.getString(cursorQpSources.getColumnIndex(s)));
-//				}
-			
-				
 				return new MergeCursor(new Cursor[] {cursorSources, cursorQpSources});
 			}	
 		} else {
@@ -81,13 +87,14 @@ public class InteractionTypeLoader {
 		return null;
 	}
 
-	private boolean isQuickPostSourceAvailable(Context context) {
-		
-		SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
-		EventSource source = sourceLoader.loadFromSourceAuthority(context, QuickPosts.QUICKPOSTS_AUTHORITY);
-		return source!=null && source.isEnabled();
-	}
-
+	/**
+	 * Loads an InterctionType instance from the cursor.
+	 * 
+	 * @param cursor
+	 * @param position
+	 *            The position to load from.
+	 * @return The new InteractionType instance.
+	 */
 	public InteractionType loadFromCursor(Cursor cursor, int pos) {
 		
 		cursor.moveToPosition(pos);
@@ -100,5 +107,5 @@ public class InteractionTypeLoader {
 		
 		return new InteractionType(iconUri, actionTitle, intentAction);
 	}
-
+	
 }

@@ -88,6 +88,7 @@ public class ActionBar {
 				
 		public MenuModel build(final Context context, final MoreMenuFunction inactiveFunction) {
 			return new MenuModel(context)
+			.setGravity(Gravity.RIGHT)
 			.add(R.string.moremenu_myfavorites, new OnClickListener() {
 				public void onClick(View v) {
 					if(inactiveFunction!=MoreMenuFunction.favorites) {
@@ -169,7 +170,7 @@ public class ActionBar {
 				ActionBarDropDownMenu dropDownMenu =
 					new ActionBarDropDownMenu(mContext);
 				MenuModel menuMore = new MoreMenuBuilder().build(mContext, inactiveFunction);
-				dropDownMenu.setMenu(menuMore, Gravity.RIGHT);
+				dropDownMenu.setMenu(menuMore);
 				dropDownMenu.show(mContentView);
 			}
 		});
@@ -245,7 +246,7 @@ public class ActionBar {
 				public void onClick(View v) {
 					ActionBarDropDownMenu dropDownMenu =
 						new ActionBarDropDownMenu(mContext);
-					dropDownMenu.setMenu(menu, Gravity.LEFT);
+					dropDownMenu.setMenu(menu);
 					dropDownMenu.show(mContentView);
 				}
 			});

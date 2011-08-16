@@ -35,6 +35,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * 
+ * Adapter for the list of interaction modes shown in the popup window of the
+ * timeline. Note that the adapter provides all interaction types regardless the
+ * associated source's filter state.
+ * 
+ * @author berke.andras
+ */
 public class InteractionTypesAdapter extends BaseAdapter {
 
 	protected Activity mContext;
@@ -44,23 +52,25 @@ public class InteractionTypesAdapter extends BaseAdapter {
 	private Cursor mCursor;
 
 	private SourcesChangedObserver mObserver;
-	
+
 	private DefaultInteractionType mDefaultInteractionType;
 	private View mEmptyHintView;
-	
-	private String mFilterForContactKey;
-	
+
+	/**
+	 * Observer for the interaction list. If the list of sources changes, the
+	 * data set will be refreshed.
+	 */
 	private class SourcesChangedObserver extends ContentObserver {
 
 		public SourcesChangedObserver(Handler handler) {
 			super(handler);
 		}
-		
+
 		@Override
 		public boolean deliverSelfNotifications() {
 			return true;
 		}
-		
+
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
@@ -68,64 +78,83 @@ public class InteractionTypesAdapter extends BaseAdapter {
 		}
 	}
 
-	public InteractionTypesAdapter(Activity context, View emptyHintView, String filterForContactKey) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param context
+	 *            Activity context.
+	 * @param emptyHintView
+	 *            View shown if no additional interaction types have been
+	 *            installed.
+	 */
+	public InteractionTypesAdapter(Activity context, View emptyHintView) {
 
 		mContext = context;
 		mLoader = new InteractionTypeLoader();
 		mSourceIconHelper = new SourceIconHelper();
 		mDefaultInteractionType = new DefaultInteractionType(context);
 		mEmptyHintView = emptyHintView;
-		mFilterForContactKey = filterForContactKey;
 		load();
 	}
 
-	/** Open cursor. */
+	/**
+	 * Loading data. Opens cursor. Registers content observer.
+	 */
 	public void load() {
 
-		doLoad();
-		
-		mObserver = new SourcesChangedObserver(new Handler()); 
-		mContext
-		 .getContentResolver()
-		 .registerContentObserver(ContentUris.Sources, true, mObserver);
-		refreshHintVisibity();
-	}
-	
-	private void doLoad() {
-		
-		if(mCursor!=null)
+		if (mCursor != null)
 			mCursor.close();
-		
+
 		mCursor = mLoader.openCursor(mContext);
 		notifyDataSetChanged();
+
+		mObserver = new SourcesChangedObserver(new Handler());
+		mContext.getContentResolver().registerContentObserver(
+				ContentUris.Sources, true, mObserver);
+		refreshHintVisibity();
 	}
-	
-	public void refresh() {
-		
-		if(mCursor!=null) {
+
+	private void refresh() {
+
+		if (mCursor != null) {
 			mCursor.requery();
 			notifyDataSetChanged();
 			refreshHintVisibity();
 		}
 	}
 
-
 	private void refreshHintVisibity() {
-		mEmptyHintView.setVisibility(getCount()>1 ? View.GONE : View.VISIBLE);
+		mEmptyHintView.setVisibility(getCount() > 1 ? View.GONE : View.VISIBLE);
 	}
 
+	/**
+	 * Called by onDestroy() to release the cursor an unregister the content
+	 * observer.
+	 */
+	public void release() {
+		if (mCursor != null)
+			mCursor.close();
+		mContext.getContentResolver().unregisterContentObserver(mObserver);
+	}
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
+
 	public int getCount() {
-		return (mCursor == null ? 0 : mCursor.getCount())+1;
+		return (mCursor == null ? 0 : mCursor.getCount()) + 1;
 	}
 
 	public InteractionType getItem(int position) {
-		if(position==0)
+		if (position == 0)
 			return mDefaultInteractionType;
 		else {
-			return (InteractionType) (mCursor == null ? null : mLoader.loadFromCursor(mCursor,
-					position-1));	
+			return (InteractionType) (mCursor == null ? null : mLoader
+					.loadFromCursor(mCursor, position - 1));
 		}
-		
+
 	}
 
 	public long getItemId(int position) {
@@ -136,22 +165,22 @@ public class InteractionTypesAdapter extends BaseAdapter {
 
 		InteractionType item = getItem(position);
 
-		if(convertView==null) {
-			convertView = ((LayoutInflater)parent.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.listitem_interact, null);
+		if (convertView == null) {
+			convertView = ((LayoutInflater) parent.getContext()
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+					.inflate(R.layout.listitem_interact, null);
 		}
-		
-		ImageView iv = (ImageView)convertView.findViewById(R.id.interact_listitem_imgIcon);
+
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.interact_listitem_imgIcon);
 		mSourceIconHelper.toImageView(mContext, item.getEventIcon(), iv);
-		
-		TextView tv = (TextView)convertView.findViewById(R.id.interact_listitem_txtName);
+
+		TextView tv = (TextView) convertView
+				.findViewById(R.id.interact_listitem_txtName);
 		tv.setText(item.getActionTitle());
-		
+
 		return convertView;
 
-	}
-	
-	public void release() {
-		if(mCursor!=null) mCursor.close();
 	}
 
 }

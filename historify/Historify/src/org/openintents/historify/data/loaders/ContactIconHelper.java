@@ -51,9 +51,9 @@ public class ContactIconHelper {
 	private Activity mContext;
 	private TaskQueue mTaskQueue = new TaskQueue();
 	private PhotosLoader mImageLoaderThread = new PhotosLoader();
-	
+
 	private int mDrawableResId;
-	
+
 	// Task for the image updater queue
 	private class ImageLoadingTask {
 		public final String lookupKey;
@@ -193,41 +193,50 @@ public class ContactIconHelper {
 		return retval;
 	}
 
+	/**
+	 * Loads the user's avatar to the given ImageView.
+	 * 
+	 * @param context
+	 * @param imageView
+	 * @return The current avatar setting.
+	 */
 	public static MyAvatar loadMyAvatar(Context context, ImageView imageView) {
 
-		MyAvatar retval = MyAvatar.fromString(PreferenceManager.getInstance(context).getStringPreference(Pref.MY_AVATAR_ICON, Pref.DEF_AVATAR_ICON.toString()));
-		
-		if(retval==MyAvatar.defaultIcon) 
+		MyAvatar retval = MyAvatar.fromString(PreferenceManager.getInstance(
+				context).getStringPreference(Pref.MY_AVATAR_ICON,
+				Pref.DEF_AVATAR_ICON.toString()));
+
+		if (retval == MyAvatar.defaultIcon)
 			imageView.setImageResource(R.drawable.contact_default_large);
-		
+
 		else {
 			boolean succ = loadCustomAvatar(context, imageView);
-			
-			if(!succ) {
+
+			if (!succ) {
 				retval = MyAvatar.defaultIcon;
 				imageView.setImageResource(R.drawable.contact_default_large);
 			}
-			
+
 		}
-		
+
 		return retval;
-		
+
 	}
 
 	private static boolean loadCustomAvatar(Context context, ImageView imageView) {
 		try {
 			Bitmap b = new UserIconHelper().openIcon(context);
-			if(b!=null) {
+			if (b != null) {
 				imageView.setImageBitmap(b);
 				return true;
 			}
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
-		
+
 	}
 
 }

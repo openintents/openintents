@@ -22,7 +22,6 @@ import java.util.List;
 import org.openintents.historify.R;
 import org.openintents.historify.data.loaders.SourceLoader;
 import org.openintents.historify.data.model.source.EventSource;
-import org.openintents.historify.ui.QuickPostsConfigActivity;
 import org.openintents.historify.uri.ContentUris;
 
 import android.app.Activity;
@@ -35,9 +34,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
- * 
- * Adapter for the list of sources on {@link QuickPostsConfigActivity}. Provides Q! sources
- * for all contact.
+ * Customized source adapter for loading sources provided by the
+ * {@link QuickPostsProvider} content provider which stores the sources of
+ * QuickPost events.
  * 
  * @author berke.andras
  */
@@ -45,10 +44,29 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 
 	/** Constructor. */
 	public QuickPostSourcesAdapter(Activity context, ListView listView) {
-		super(context, listView, new SourceLoader(ContentUris.QuickPostSources , SourceLoader.BASIC_COLUMNS_PROJECTION),R.layout.listitem_quickpost_source);
+		super(context, listView, new SourceLoader(ContentUris.QuickPostSources,
+				SourceLoader.BASIC_COLUMNS_PROJECTION),
+				R.layout.listitem_quickpost_source);
 	}
 
-	
+	/**
+	 * Gets the set of loaded items.
+	 * 
+	 * @return List of all sources loaded.
+	 */
+	public List<EventSource> getItems() {
+
+		ArrayList<EventSource> retval = new ArrayList<EventSource>();
+		retval.addAll(mExternalSources);
+		return retval;
+	}
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
+
 	public int getCount() {
 		return mExternalSources.size();
 	}
@@ -67,13 +85,6 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 		return mExternalSources.get(position);
 	}
 
-	public List<EventSource> getItems() {
-
-		ArrayList<EventSource> retval = new ArrayList<EventSource>();
-		retval.addAll(mExternalSources);
-		return retval;
-	}
-
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		if (convertView == null) {
@@ -83,9 +94,10 @@ public class QuickPostSourcesAdapter extends SourcesAdapter {
 
 		}
 
-		convertView.setBackgroundResource(
-				position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
-		
+		convertView
+				.setBackgroundResource(position % 2 == 0 ? R.drawable.listitem_background1
+						: R.drawable.listitem_background2);
+
 		EventSource item = getItem(position);
 		TextView tv = (TextView) convertView
 				.findViewById(R.id.sources_listitem_txtName);

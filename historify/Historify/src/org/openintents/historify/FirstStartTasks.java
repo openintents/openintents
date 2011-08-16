@@ -26,13 +26,13 @@ import android.content.Context;
  * @author berke.andras
  */
 public class FirstStartTasks {
-	
+
 	public static void onStart(Context context) {
-		
-		//check if application has been started before
-		if(isFirstStart(context)) {
-			
-			//do tasks
+
+		// check if application has been started before
+		if (isFirstStart(context)) {
+
+			// do tasks
 			new SourceRegistrationHelper().requestRegisterSource(context, null);
 
 			commit(context);
@@ -40,10 +40,13 @@ public class FirstStartTasks {
 	}
 
 	private static boolean isFirstStart(Context context) {
-		return context.getSharedPreferences("start_tasks", Context.MODE_PRIVATE).getBoolean("first", true);
+		return context
+				.getSharedPreferences("start_tasks", Context.MODE_PRIVATE)
+				.getBoolean("first", true);
 	}
-	
+
 	private static void commit(Context context) {
-		context.getSharedPreferences("start_tasks", Context.MODE_PRIVATE).edit().putBoolean("first", false).commit();
+		context.getSharedPreferences("start_tasks", Context.MODE_PRIVATE)
+				.edit().putBoolean("first", false).commit();
 	}
 }

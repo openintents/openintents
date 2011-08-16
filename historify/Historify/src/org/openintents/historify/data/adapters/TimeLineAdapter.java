@@ -40,35 +40,87 @@ import android.widget.TextView;
 
 /**
  * 
- * Adapter for the timeline list.
+ * Adapter for the list of events shown on the timeline.
  * 
  * @author berke.andras
  */
 public class TimeLineAdapter extends BaseAdapter {
 
 	private Activity mContext;
-	
+
 	private EventAggregator mAggregator;
 	private SourceIconHelper mSourceIconHelper;
-	
+
 	private View mFilteredWarningView;
-	
+
 	private String mTimeLineThemeSetting;
 	private int mTimeLineItemResId;
-	
-	private PrettyTimeRefreshHelper mPrettyTimeRefreshHelper;
-	
-	/** Constructor */
-	public TimeLineAdapter(Activity context, Contact contact, View filteredWarningView) {
 
-		mContext = context;		
+	private PrettyTimeRefreshHelper mPrettyTimeRefreshHelper;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param context
+	 *            Activity context.
+	 * @param contact
+	 *            The contact whom the timeline is displayed for.
+	 * @param filteredWarningView
+	 *            View shown if the currently used source filters are more
+	 *            strict that the default source states.
+	 */
+	public TimeLineAdapter(Activity context, Contact contact,
+			View filteredWarningView) {
+
+		mContext = context;
 		mAggregator = new EventAggregator(context, this, contact);
 		mSourceIconHelper = new SourceIconHelper();
 		mFilteredWarningView = filteredWarningView;
-		
+
 		mPrettyTimeRefreshHelper = new PrettyTimeRefreshHelper();
 		mPrettyTimeRefreshHelper.startRefresher(this);
 		load();
+	}
+
+	/**
+	 * Loading data. Opens cursor. Registers content observer.
+	 */
+	public void load() {
+		mAggregator.query();
+		notifyDataSetChanged();
+
+		if (mFilteredWarningView != null) {
+			mFilteredWarningView
+					.setVisibility(new SourceFilterOperation()
+							.filteredMoreThanDefault(mContext, mAggregator
+									.getContact()) ? View.GONE : View.VISIBLE);
+		}
+	}
+
+	/**
+	 * Temporary disables the content observer to avoid flood of refresh events
+	 * in case of bulk update / insert.
+	 */
+	public void disableObserver() {
+		mAggregator.unregisterObserver();
+	}
+
+	/**
+	 * Enables the observer and sends a notification of change after a
+	 * successful bulk update / insert.
+	 */
+	public void enableObserverAndNotify() {
+		mAggregator.registerObserver();
+		mAggregator.notifyObserver();
+	}
+
+	/**
+	 * Called by onDestroy() to stop the thread and unregister the content
+	 * observers.
+	 */
+	public void release() {
+		mAggregator.release();
+		mPrettyTimeRefreshHelper.stopRefresher();
 	}
 
 	@Override
@@ -82,26 +134,24 @@ public class TimeLineAdapter extends BaseAdapter {
 		refreshTheme();
 		super.notifyDataSetChanged();
 	}
-	
+
 	private void refreshTheme() {
-		mTimeLineThemeSetting = PreferenceManager.getInstance(mContext).getStringPreference(Pref.TIMELINE_THEME, Pref.DEF_TIMELINE_THEME);
-		mTimeLineItemResId = mTimeLineThemeSetting.equals(mContext.getString(R.string.preferences_timeline_theme_bubbles)) ?
-				R.layout.listitem_timeline_bubble :
-				R.layout.listitem_timeline_row;
+		mTimeLineThemeSetting = PreferenceManager.getInstance(mContext)
+				.getStringPreference(Pref.TIMELINE_THEME,
+						Pref.DEF_TIMELINE_THEME);
+		mTimeLineItemResId = mTimeLineThemeSetting.equals(mContext
+				.getString(R.string.preferences_timeline_theme_bubbles)) ? R.layout.listitem_timeline_bubble
+				: R.layout.listitem_timeline_row;
 	}
 
-	public void load() {
-		mAggregator.query();
-		notifyDataSetChanged();
-		
-		if(mFilteredWarningView!=null) {
-			mFilteredWarningView.setVisibility(new SourceFilterOperation().filteredMoreThanDefault(mContext, mAggregator.getContact()) ? 
-					View.GONE : View.VISIBLE);
-		}
-	}
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
 
 	public int getCount() {
-		return mAggregator==null ? 0 : mAggregator.getCount();
+		return mAggregator == null ? 0 : mAggregator.getCount();
 	}
 
 	public Event getItem(int position) {
@@ -116,7 +166,8 @@ public class TimeLineAdapter extends BaseAdapter {
 
 		Event event = getItem(position);
 
-		if (convertView == null || !convertView.getTag().equals(mTimeLineItemResId)) {
+		if (convertView == null
+				|| !convertView.getTag().equals(mTimeLineItemResId)) {
 			convertView = ((LayoutInflater) mContext
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
 					.inflate(mTimeLineItemResId, null);
@@ -124,59 +175,32 @@ public class TimeLineAdapter extends BaseAdapter {
 		}
 
 		loadEventToView(event, convertView);
-		
-		if(convertView.getTag().equals(R.layout.listitem_timeline_bubble)) {
-			alignBubbleView(event, convertView);	
+
+		if (convertView.getTag().equals(R.layout.listitem_timeline_bubble)) {
+			alignBubbleView(event, convertView);
 		} else {
 			alignRowView(event, convertView);
-			convertView.setBackgroundResource(
-					position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
+			convertView
+					.setBackgroundResource(position % 2 == 0 ? R.drawable.listitem_background1
+							: R.drawable.listitem_background2);
 		}
-		
+
 		return convertView;
-	}
-
-	private void alignRowView(Event event, View convertView) {
-
-		View viewLeftSpacer1 = convertView
-				.findViewById(R.id.timeline_listitem_vLeftSpacer1);
-		View viewRightSpacer1 = convertView
-				.findViewById(R.id.timeline_listitem_vRightSpacer1);
-
-		switch (event.getOriginator()) {
-		case user:
-
-			viewLeftSpacer1.setVisibility(View.VISIBLE);
-			viewRightSpacer1.setVisibility(View.GONE);
-			break;
-
-		case contact:
-
-			viewLeftSpacer1.setVisibility(View.GONE);
-			viewRightSpacer1.setVisibility(View.VISIBLE);
-			break;
-
-		case both:
-
-			viewLeftSpacer1.setVisibility(View.VISIBLE);
-			viewRightSpacer1.setVisibility(View.VISIBLE);
-			break;
-		}
-
 	}
 
 	private void loadEventToView(Event event, View convertView) {
 
-		TextView tv= (TextView) convertView
+		TextView tv = (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtMessage);
 		tv.setText(event.getMessage());
 
 		tv = (TextView) convertView
 				.findViewById(R.id.timeline_listitem_txtDate);
-		tv.setText(DateUtils
-				.formatTimelineDate(new Date(event.getPublishedTime())));
-				
-		ImageView iv = (ImageView)convertView.findViewById(R.id.timeline_listitem_imgIcon);
+		tv.setText(DateUtils.formatTimelineDate(new Date(event
+				.getPublishedTime())));
+
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.timeline_listitem_imgIcon);
 		mSourceIconHelper.toImageView(mContext, event.getSource(), event, iv);
 	}
 
@@ -220,18 +244,34 @@ public class TimeLineAdapter extends BaseAdapter {
 
 	}
 
-	public void release() {
-		mAggregator.release();
-		mPrettyTimeRefreshHelper.stopRefresher();
-	}
+	private void alignRowView(Event event, View convertView) {
 
+		// align the view depending on the originator of the event
 
-	public void disableObserver() {
-		mAggregator.unregisterObserver();
-	}
+		View viewLeftSpacer1 = convertView
+				.findViewById(R.id.timeline_listitem_vLeftSpacer1);
+		View viewRightSpacer1 = convertView
+				.findViewById(R.id.timeline_listitem_vRightSpacer1);
 
-	public void enableObserverAndNotify() {
-		mAggregator.registerObserver();
-		mAggregator.notifyObserver();
+		switch (event.getOriginator()) {
+		case user:
+
+			viewLeftSpacer1.setVisibility(View.VISIBLE);
+			viewRightSpacer1.setVisibility(View.GONE);
+			break;
+
+		case contact:
+
+			viewLeftSpacer1.setVisibility(View.GONE);
+			viewRightSpacer1.setVisibility(View.VISIBLE);
+			break;
+
+		case both:
+
+			viewLeftSpacer1.setVisibility(View.VISIBLE);
+			viewRightSpacer1.setVisibility(View.VISIBLE);
+			break;
+		}
+
 	}
 }

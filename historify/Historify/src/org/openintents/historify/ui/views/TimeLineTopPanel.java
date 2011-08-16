@@ -45,6 +45,7 @@ public class TimeLineTopPanel {
 	private static class HMenuBuilder {
 		public MenuModel build(final TimeLineTopPanel panel) {
 			return new MenuModel(panel.getContext())
+			.setGravity(Gravity.LEFT)
 			.add(R.string.timeline_hmenu_filter, new OnClickListener() {
 				public void onClick(View v) {
 					panel.onTimeLineOptionsSelected();

@@ -37,7 +37,7 @@ import android.widget.TextView;
 
 /**
  * 
- * Adapter for contacts list.
+ * Adapter for the contacts list.
  * 
  * @author berke.andras
  */
@@ -51,20 +51,22 @@ public class ContactsAdapter extends BaseAdapter {
 	private Cursor mCursor;
 
 	private ContactsChangedObserver mObserver;
-	
-	private String mFilterText = "";
-	
+
+	/**
+	 * Observer for the contact list. If the contact list changes, the data set
+	 * will be refreshed.
+	 */
 	private class ContactsChangedObserver extends ContentObserver {
 
 		public ContactsChangedObserver(Handler handler) {
 			super(handler);
 		}
-		
+
 		@Override
 		public boolean deliverSelfNotifications() {
 			return true;
 		}
-		
+
 		@Override
 		public void onChange(boolean selfChange) {
 			super.onChange(selfChange);
@@ -72,40 +74,80 @@ public class ContactsAdapter extends BaseAdapter {
 		}
 	}
 
+	/**
+	 * Constructor.
+	 * 
+	 * @param context
+	 *            Activity context.
+	 * @param loadingStrategy
+	 *            The actual {@link ContactLoader.LoadingStrategy} used for
+	 *            querying the contacts.
+	 */
 	public ContactsAdapter(Activity context, LoadingStrategy loadingStrategy) {
 
 		mContext = context;
 		mLoadingStrategy = loadingStrategy;
 		mLoader = new ContactLoader();
-		mContactIconHelper = new ContactIconHelper(mContext,R.drawable.contact_default_small);
+		mContactIconHelper = new ContactIconHelper(mContext,
+				R.drawable.contact_default_small);
 
 		load();
 	}
 
-	/** Open cursor. */
+	/**
+	 * Loading data. Opens cursor. Registers content observer.
+	 */
 	public void load() {
 
 		doLoad();
-		
-		mObserver = new ContactsChangedObserver(new Handler()); 
-		mContext
-		 .getContentResolver()
-		 .registerContentObserver(Contacts.CONTENT_URI, true, mObserver);		
+
+		mObserver = new ContactsChangedObserver(new Handler());
+		mContext.getContentResolver().registerContentObserver(
+				Contacts.CONTENT_URI, true, mObserver);
 	}
-	
+
+	/**
+	 * Sets a filter for the underlying ContactLoader. Used by the contact
+	 * search function.
+	 * 
+	 * @param searchText
+	 *            The searched text.
+	 */
+	public void setFilter(String searchText) {
+
+		if (!mLoadingStrategy.getFilterText().equals(searchText)) {
+			mLoadingStrategy.setFilterText(searchText);
+			doLoad();
+		}
+	}
+
 	private void doLoad() {
 		mCursor = mLoader.openManagedCursor(mContext, mLoadingStrategy);
 		notifyDataSetChanged();
 	}
-	
-	public void refresh() {
-		
-		if(mCursor!=null) {
+
+	private void refresh() {
+
+		if (mCursor != null) {
 			mCursor.requery();
 			notifyDataSetChanged();
 		}
 	}
 
+	/**
+	 * Called by onDestroy() to stop the thread and unregister the content
+	 * observer.
+	 */
+	public void release() {
+		mContactIconHelper.stopThread();
+		mContext.getContentResolver().unregisterContentObserver(mObserver);
+	}
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// STANDARD ADAPTER METHODS
+	// ---------------------------------------------------------------------------------
 
 	public int getCount() {
 		return mCursor == null || mCursor.isClosed() ? 0 : mCursor.getCount();
@@ -130,31 +172,20 @@ public class ContactsAdapter extends BaseAdapter {
 					.inflate(R.layout.listitem_contact, null);
 		}
 
-		convertView.setBackgroundResource(
-				position % 2 == 0 ? R.drawable.listitem_background1 : R.drawable.listitem_background2);
-		
+		convertView
+				.setBackgroundResource(position % 2 == 0 ? R.drawable.listitem_background1
+						: R.drawable.listitem_background2);
+
 		TextView txtName = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);
 		txtName.setText(contact.getName());
 
-		
-		ImageView iv = (ImageView)convertView.findViewById(R.id.contacts_listitem_imgIcon);
+		ImageView iv = (ImageView) convertView
+				.findViewById(R.id.contacts_listitem_imgIcon);
 		iv.setImageResource(R.drawable.contact_default_small);
 		mContactIconHelper.loadContactIcon(contact, iv);
-		
+
 		return convertView;
 	}
-	
-	public void release() {
-		mContactIconHelper.stopThread();
-		mContext.getContentResolver().unregisterContentObserver(mObserver);
-	}
 
-	public void setFilter(String searchText) {
-		
-		if(!mLoadingStrategy.getFilterText().equals(searchText)) {
-			mLoadingStrategy.setFilterText(searchText);
-			doLoad();
-		}
-	}
 }

@@ -37,6 +37,8 @@ public class ActionBarDropDownMenu extends AbstractPopupWindow {
 
 	public static class MenuModel {
 		
+		private int gravity;
+		
 		private List<Action> actions;
 		private Context context;
 		
@@ -45,8 +47,17 @@ public class ActionBarDropDownMenu extends AbstractPopupWindow {
 			actions = new ArrayList<Action>();
 		}
 		
+		public MenuModel setGravity(int gravity) {
+			this.gravity = gravity;
+			return this;
+		}
+		
+		public int getGravity() {
+			return gravity;
+		}
+		
 		public MenuModel add(int titleResId, View.OnClickListener onClickListener) {
-			actions.add(new Action("> "+context.getString(titleResId), onClickListener));
+			actions.add(new Action((Gravity.LEFT == gravity ? "> " : "") +context.getString(titleResId), onClickListener));
 			return this;
 		}
 
@@ -67,9 +78,9 @@ public class ActionBarDropDownMenu extends AbstractPopupWindow {
 		listItemResId = R.layout.listitem_actionbar_dropdown_left;
 	}
 
-	public void setMenu(MenuModel menu, int spacerGravity) {
+	public void setMenu(MenuModel menu) {
 		
-		listItemResId = spacerGravity == Gravity.LEFT ? R.layout.listitem_actionbar_dropdown_left : R.layout.listitem_actionbar_dropdown_right; 
+		listItemResId = menu.getGravity() == Gravity.LEFT ? R.layout.listitem_actionbar_dropdown_left : R.layout.listitem_actionbar_dropdown_right; 
 		mAdapter = new ArrayAdapter<Action>(mContext,listItemResId, R.id.actionbar_dropdown_text, menu.toArray());
 		mListView.setAdapter(mAdapter);
 		
