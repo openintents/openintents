@@ -42,7 +42,7 @@
 	    android:choiceMode="multipleChoice"
 	    style="@style/ListView"
 	    android:layout_width="300dip"
-	    android:layout_weight="1" 
+	    android:layout_height="150dip" 
     	/>
 
  
