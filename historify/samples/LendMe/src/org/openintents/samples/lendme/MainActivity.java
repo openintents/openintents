@@ -18,7 +18,6 @@ package org.openintents.samples.lendme;
 
 import org.openintents.historify.uri.Actions;
 import org.openintents.samples.lendme.data.HistorifyPostHelper;
-import org.openintents.samples.lendme.data.ItemsAdapter;
 import org.openintents.samples.lendme.data.Item.Owner;
 import org.openintents.samples.lendme.data.persistence.ItemsLoader;
 import org.openintents.samples.lendme.data.persistence.ItemsProviderHelper.ItemsTable;
@@ -26,7 +25,6 @@ import org.openintents.samples.lendme.data.persistence.ItemsProviderHelper.Items
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
