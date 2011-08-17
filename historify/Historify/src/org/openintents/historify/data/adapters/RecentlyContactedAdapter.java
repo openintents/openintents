@@ -83,6 +83,8 @@ public class RecentlyContactedAdapter extends ContactsAdapter {
 					.inflate(R.layout.listitem_recently_contacted, null);
 		}
 
+		convertView.setBackgroundDrawable(null);
+		
 		TextView tv = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);
 		tv.setText(contact.getDisplayedName());

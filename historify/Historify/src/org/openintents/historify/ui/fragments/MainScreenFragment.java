@@ -21,6 +21,7 @@ import org.openintents.historify.data.adapters.RecentlyContactedAdapter;
 import org.openintents.historify.data.model.Contact;
 import org.openintents.historify.ui.ContactsActivity;
 import org.openintents.historify.ui.SourcesActivity;
+import org.openintents.historify.ui.views.HorizontalListView;
 import org.openintents.historify.uri.Actions;
 
 import android.content.Intent;
@@ -32,7 +33,6 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Gallery;
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
@@ -45,7 +45,7 @@ public class MainScreenFragment extends Fragment {
 
 	private Button btnMore, btnFavorites, btnSources;
 
-	private Gallery galleryContacts;
+	private HorizontalListView lstContacts;
 	private RecentlyContactedAdapter recentlyContactedAdapter;
 
 	/** Called to have the fragment instantiate its user interface view. */
@@ -56,51 +56,62 @@ public class MainScreenFragment extends Fragment {
 		ViewGroup layout = (ViewGroup) inflater.inflate(
 				R.layout.fragment_main_screen, container, false);
 
+		// init list for contacts
+		lstContacts = (HorizontalListView) layout
+				.findViewById(R.id.main_screen_lstContacts);
+		recentlyContactedAdapter = new RecentlyContactedAdapter(getActivity());
+		lstContacts.setAdapter(recentlyContactedAdapter);
+		
+		lstContacts.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> adapterView, final View view,
+					int pos, long id) {
+				
+				view.setBackgroundResource(R.drawable.bubble);
+				view.postDelayed(new Runnable() {
+					public void run() {
+						view.setBackgroundDrawable(null);
+					}
+				}, 500);
+				
+				onContactClicked((Contact) adapterView.getItemAtPosition(pos));
+				
+			}
+		});
+
+		// init list empty view
+		View viewContactListEmpty = layout
+				.findViewById(R.id.main_screen_viewEmptyList);
+		viewContactListEmpty.setVisibility(View.GONE);
+		lstContacts.setEmptyView(viewContactListEmpty);
+
+		
 		// init buttons
 		btnMore = (Button) layout.findViewById(R.id.main_screen_btnMore);
+		
 		btnFavorites = (Button) layout
 				.findViewById(R.id.main_screen_btnFavorites);
 		btnSources = (Button) layout.findViewById(R.id.btnSources);
 
-		btnMore.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				onMoreClicked();
-			}
-		});
+		if(btnMore!=null) {
+			btnMore.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					onMoreClicked();
+				}
+			});
 
-		btnFavorites.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				onFavoritesClicked();
-			}
-		});
+			btnFavorites.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					onFavoritesClicked();
+				}
+			});
 
-		btnSources.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				onSourcesClicked();
-			}
-		});
-
-		// init gallery for contacts
-		galleryContacts = (Gallery) layout
-				.findViewById(R.id.main_screen_galleryContacts);
-		recentlyContactedAdapter = new RecentlyContactedAdapter(getActivity());
-		galleryContacts.setAdapter(recentlyContactedAdapter);
-
-		galleryContacts.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> adapterView, View view,
-					int pos, long id) {
-				if (pos == galleryContacts.getSelectedItemPosition())
-					onContactClicked((Contact) adapterView
-							.getItemAtPosition(pos));
-			}
-		});
-
-		// init gallery empty view
-		View layoutGalleryEmpty = layout
-				.findViewById(R.id.main_screen_viewEmptyGallery);
-		layoutGalleryEmpty.setVisibility(View.GONE);
-		galleryContacts.setEmptyView(layoutGalleryEmpty);
-
+			btnSources.setOnClickListener(new OnClickListener() {
+				public void onClick(View v) {
+					onSourcesClicked();
+				}
+			});
+		}
+		
 		return layout;
 	}
 

@@ -22,40 +22,12 @@
   	android:id="@+id/main_screen_lstContacts"
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
+  	android:paddingTop="6dip"
+    android:paddingBottom="6dip"
     android:layout_weight="1"
   />
 
 <!--  shown if gallery is empty -->
 <include layout="@layout/list_recently_contacted_empty_view" android:id="@+id/main_screen_viewEmptyList" />
-
-<LinearLayout
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:paddingBottom="12dip">
-
-	<Button
-		android:id="@+id/main_screen_btnMore"
-		android:text="@string/main.label.more"
-		android:layout_weight="1"
-		style="@style/Button.Skinned"
-		/>
-
-	<Button
-		android:id="@+id/main_screen_btnFavorites"
-		android:text="@string/main.label.favorites"
-		android:layout_weight="1"
-		style="@style/Button.Skinned"
-	/>
-
-</LinearLayout>
-
-<TextView
-	style="@style/Label"
-	android:text="@string/main.msg.config"
-	/>
-
- 
-<include layout="@layout/button_sources"
-	 /> 
     
 </LinearLayout>

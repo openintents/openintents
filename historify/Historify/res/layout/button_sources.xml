@@ -2,6 +2,7 @@
 		android:id="@+id/btnSources"
 		android:text="@string/main.label.sources"
 		android:layout_width="160dip"
+		android:layout_height="wrap_content"
 		android:layout_gravity="center"
 		style="@style/Button.Skinned"
 	/> 
