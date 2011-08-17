@@ -28,7 +28,7 @@ import android.util.Log;
 
 /**
  * 
- * Helper class for constants and db creation in {@link SourcesProvider}.
+ * Helper class for constants and db creation used by {@link SourcesProvider}.
  * 
  * @author berke.andras
  */
@@ -82,7 +82,8 @@ public final class Sources {
 	// the filters for a particular contact
 	public static final class FilteredSourcesView {
 
-		public static final String _VIEW = SourcesTable._TABLE+"/"+ContentUris.FILTERED_SOURCES_PATH;
+		public static final String _VIEW = SourcesTable._TABLE + "/"
+				+ ContentUris.FILTERED_SOURCES_PATH;
 
 		public static final String JOIN_CLAUSE = SourcesTable._TABLE
 				+ " LEFT OUTER JOIN " + FiltersTable._TABLE + " ON "
@@ -99,7 +100,7 @@ public final class Sources {
 	public static class OpenHelper extends SQLiteOpenHelper {
 
 		private Context mContext;
-		
+
 		public OpenHelper(Context context) {
 			super(context, DB_NAME, null, DB_VERSION);
 			mContext = context;
@@ -113,17 +114,18 @@ public final class Sources {
 					+ SourcesTable.NAME + " TEXT NOT NULL,"
 					+ SourcesTable.DESCRIPTION + " TEXT,"
 					+ SourcesTable.ICON_URI + " TEXT,"
-					+ SourcesTable.ICON_LOADING_STRATEGY + " TEXT DEFAULT '"+IconLoadingStrategy.useSourceIcon+"', "
-					+ SourcesTable.AUTHORITY + " TEXT NOT NULL," 
+					+ SourcesTable.ICON_LOADING_STRATEGY + " TEXT DEFAULT '"
+					+ IconLoadingStrategy.useSourceIcon + "', "
+					+ SourcesTable.AUTHORITY + " TEXT NOT NULL,"
 					+ SourcesTable.EVENT_INTENT + " TEXT,"
 					+ SourcesTable.CONFIG_INTENT + " TEXT,"
 					+ SourcesTable.INTERACT_INTENT + " TEXT,"
 					+ SourcesTable.INTERACT_ACTION_TITLE + " TEXT,"
 					+ SourcesTable.STATE + " TEXT DEFAULT "
-					+ EventSource.SourceState.ENABLED + ","
-					+ SourcesTable.UID + " INTEGER DEFAULT 0,"
-					+ SourcesTable.VERSION + " INTEGER DEFAULT 0,"
-					+ SourcesTable.IS_INTERNAL + " INTEGER DEFAULT 0);");
+					+ EventSource.SourceState.ENABLED + "," + SourcesTable.UID
+					+ " INTEGER DEFAULT 0," + SourcesTable.VERSION
+					+ " INTEGER DEFAULT 0," + SourcesTable.IS_INTERNAL
+					+ " INTEGER DEFAULT 0);");
 
 			db.execSQL("CREATE TABLE " + FiltersTable._TABLE + " ("
 					+ FiltersTable._ID + " INTEGER PRIMARY KEY,"

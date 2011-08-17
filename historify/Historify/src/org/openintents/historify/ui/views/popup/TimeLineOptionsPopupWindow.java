@@ -35,6 +35,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Popup window shown when the user selects the 'h?' symbol on the timeline top panel.
+ * Contains source filter options for actually selected contact.
+ * 
+ * @author berke.andras
+ */
 public class TimeLineOptionsPopupWindow extends AbstractPopupWindow {
 
 	private TimeLineTopPanel mPanel;

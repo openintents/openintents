@@ -31,46 +31,59 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Popup window shown when the user selects the 'interact' option on the
+ * timeline It displays the list of currently available interaction types, and a
+ * text message if there are no custom interaction types registered yet.
+ * 
+ * @author berke.andras
+ */
 public class InteractPopupWindow extends AbstractPopupWindow {
 
 	private ListView mLstInteract;
 	private View mEmptyHintView;
-	
+
 	private String mContactLookupKey;
-	
+
 	public InteractPopupWindow(Context context, String contactLookupKey) {
 		super(context);
 		setArrowGravity(Gravity.RIGHT);
-		
-		mContactLookupKey = contactLookupKey;		
-		mLstInteract.setAdapter(new InteractionTypesAdapter((Activity)mContext, mEmptyHintView));
+
+		mContactLookupKey = contactLookupKey;
+		mLstInteract.setAdapter(new InteractionTypesAdapter(
+				(Activity) mContext, mEmptyHintView));
 		mLstInteract.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> adapterView, View arg1, int pos,
-					long arg3) {
-				Intent i = ((InteractionType)adapterView.getItemAtPosition(pos)).crateIntent(mContactLookupKey);
+			public void onItemClick(AdapterView<?> adapterView, View arg1,
+					int pos, long arg3) {
+				Intent i = ((InteractionType) adapterView
+						.getItemAtPosition(pos)).crateIntent(mContactLookupKey);
 				mContext.startActivity(i);
 				dismiss();
 			}
 		});
-		
+
 		setOnDismissListener(new OnDismissListener() {
-			
+
 			public void onDismiss() {
-				if(mLstInteract!=null)
-					((InteractionTypesAdapter)mLstInteract.getAdapter()).release();
+				if (mLstInteract != null)
+					((InteractionTypesAdapter) mLstInteract.getAdapter())
+							.release();
 			}
 		});
 
-		
 	}
-	
+
 	@Override
 	protected void addContent(ViewGroup contentRoot) {
-		
-		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_interact, contentRoot);
-		
-		mLstInteract = (ListView)contentView.findViewById(R.id.popupwindow_interact_lstInteract);
-		mEmptyHintView = contentView.findViewById(R.id.popupwindow_interact_txtEmptyHint);
+
+		ViewGroup contentView = (ViewGroup) ((LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
+				R.layout.popupwindow_interact, contentRoot);
+
+		mLstInteract = (ListView) contentView
+				.findViewById(R.id.popupwindow_interact_lstInteract);
+		mEmptyHintView = contentView
+				.findViewById(R.id.popupwindow_interact_txtEmptyHint);
 	}
 
 }

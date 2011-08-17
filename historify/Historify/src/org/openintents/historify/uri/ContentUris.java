@@ -28,14 +28,25 @@ import android.net.Uri;
  */
 public final class ContentUris {
 
+	// Sources provider
 	public static final String SOURCES_AUTHORITY = "org.openintents.historify.sources";
-	
-	public static final Uri Sources = Uri.parse("content://"+SOURCES_AUTHORITY+"/sources");
 	public static final String FILTERED_SOURCES_PATH = "filtered";
-	public static final Uri FilteredSources = Uri.withAppendedPath(Sources, FILTERED_SOURCES_PATH);
-	public static final Uri Filters = Uri.parse("content://"+SOURCES_AUTHORITY+"/filters");
-	public static final Uri QuickPostSources = Uri.withAppendedPath(QuickPosts.SOURCE_URI, QuickPosts.QUICKPOST_SOURCES_PATH);
 
-	public static final Uri MergedEvents = Uri.parse("content://org.openintents.historify.mergedevents");
+	public static final Uri Sources = Uri.parse("content://"
+			+ SOURCES_AUTHORITY + "/sources");
+	public static final Uri FilteredSources = Uri.withAppendedPath(Sources,
+			FILTERED_SOURCES_PATH);
+	public static final Uri Filters = Uri.parse("content://"
+			+ SOURCES_AUTHORITY + "/filters");
+
+	
+	// QuickPostSources provider
+	public static final Uri QuickPostSources = Uri.withAppendedPath(
+			QuickPosts.SOURCE_URI, QuickPosts.QUICKPOST_SOURCES_PATH);
+
+	
+	// Notification URI for aggregated event content
+	public static final Uri MergedEvents = Uri
+			.parse("content://org.openintents.historify.mergedevents");
 
 }

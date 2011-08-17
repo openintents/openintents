@@ -34,11 +34,11 @@ public class MessagingProvider extends EventsProvider {
 
 	@Override
 	public boolean onCreate() {
-		boolean retval =  super.onCreate();
-		
-		if(retval)
+		boolean retval = super.onCreate();
+
+		if (retval)
 			setEventsUri(Messages.CONTENT_URI);
-		
+
 		return retval;
 	}
 
@@ -48,7 +48,7 @@ public class MessagingProvider extends EventsProvider {
 	}
 
 	private Cursor rawQuery(String where, String lookupKey) {
-		
+
 		// execute query
 		// column names are mapped as defined in .data.providers.Events
 		return getContext().getContentResolver().query(
@@ -68,14 +68,13 @@ public class MessagingProvider extends EventsProvider {
 								+ Events.ORIGINATOR }, where, null,
 				Messaging.Messages.DATE + " DESC");
 
-	
 	}
 
 	@Override
 	protected Cursor queryEventsForContact(String lookupKey) {
-		
+
 		String phoneSelection = Phone.LOOKUP_KEY + " = '" + lookupKey + "'";
-		
+
 		ContentResolver resolver = getContext().getContentResolver();
 
 		// querying phone numbers of the contact
@@ -97,15 +96,15 @@ public class MessagingProvider extends EventsProvider {
 		// build where clause for message log query
 		String where = Messaging.Messages.ADDRESS + " IN ("
 				+ phoneNumbers.toString() + ")";
-		
+
 		return rawQuery(where, lookupKey);
 
 	}
 
 	@Override
 	protected Cursor queryEvent(long eventId) {
-		
-		String where = Messaging.Messages._ID + " = "+eventId;
+
+		String where = Messaging.Messages._ID + " = " + eventId;
 		return rawQuery(where, null);
 	}
 

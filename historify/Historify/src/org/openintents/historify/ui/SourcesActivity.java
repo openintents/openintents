@@ -26,14 +26,15 @@ import android.view.ViewGroup;
 
 /**
  * 
- * Displays and manages filters for sources and contacts.
+ * Historify's source activity. Contains a fragment for displaying and managing
+ * event sources.
  * 
  * @author berke.andras
  */
 public class SourcesActivity extends FragmentActivity {
 
 	private ActionBar actionBar;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,9 @@ public class SourcesActivity extends FragmentActivity {
 	}
 
 	private void setupActionBar() {
-		
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
+				R.string.sources_title);
 		actionBar.setInactiveFunction(MoreMenuFunction.sources);
 		actionBar.setup();
 

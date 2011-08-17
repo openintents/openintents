@@ -59,63 +59,86 @@ import android.widget.TextView;
 public class EventIntentHandlerActivity extends Activity {
 
 	private static final String N = "EventIntentHandler";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_event_intent_handler);
-		
-		
+
 		String action = getIntent().getAction();
-		
-		if(Actions.ACTION_VIEW_MESSAGING_EVENT.equals(action)) {
-			handleInternalEventIntent(Messaging.SOURCE_URI, getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1));
-		} else if(Actions.ACTION_VIEW_CALLOG_EVENT.equals(action)) {
-			handleInternalEventIntent(Telephony.SOURCE_URI, getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1));
-		} else if(Actions.ACTION_VIEW_QUICKPOST_EVENT.equals(action)) {
+
+		if (Actions.ACTION_VIEW_MESSAGING_EVENT.equals(action)) {
+			handleInternalEventIntent(Messaging.SOURCE_URI, getIntent()
+					.getLongExtra(Actions.EXTRA_EVENT_ID, -1));
+		} else if (Actions.ACTION_VIEW_CALLOG_EVENT.equals(action)) {
+			handleInternalEventIntent(Telephony.SOURCE_URI, getIntent()
+					.getLongExtra(Actions.EXTRA_EVENT_ID, -1));
+		} else if (Actions.ACTION_VIEW_QUICKPOST_EVENT.equals(action)) {
 			handleQuickPostEventIntent();
-		} else if(Actions.ACTION_INTERACT_FACTORYTEST.equals(action)) {
-			handleInteractFactoryTestIntent();	
+		} else if (Actions.ACTION_INTERACT_FACTORYTEST.equals(action)) {
+			handleInteractFactoryTestIntent();
 		} else {
 			finish();
 		}
-		
+
 	}
 
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// HANDLING EVENTS FOR CALLOG AND MESSAGING
+	// ---------------------------------------------------------------------------------
+
 	private void handleInternalEventIntent(Uri eventSource, long eventId) {
-		
-		if(eventId!=-1) {
+
+		if (eventId != -1) {
 			Event event = null;
 			EventSource source = null;
 			EventLoader eventLoader = new EventLoader();
 			Cursor ec = eventLoader.openCursor(this, eventSource, eventId);
-			if(ec.getCount()!=0) {
-				event = eventLoader.loadFromCursor(ec,0);
-				
-				SourceLoader sourceLoader = new SourceLoader(ContentUris.Sources);
+			if (ec.getCount() != 0) {
+				event = eventLoader.loadFromCursor(ec, 0);
+
+				SourceLoader sourceLoader = new SourceLoader(
+						ContentUris.Sources);
 				source = sourceLoader.loadFromSourceUri(this, eventSource);
-				if(source!=null)
-						event.setSource(source);
+				if (source != null)
+					event.setSource(source);
 			}
 			ec.close();
-			
-			if(event!=null && source!=null) {
+
+			if (event != null && source != null) {
 				loadEventToView(event);
 				initViewButton();
 				return;
 			}
 		}
-		
+
 		finish();
 	}
-	
+
+	private void loadEventToView(Event event) {
+
+		TextView tv = (TextView) findViewById(R.id.timeline_listitem_txtMessage);
+		tv.setText(event.getMessage());
+
+		tv = (TextView) findViewById(R.id.timeline_listitem_txtDate);
+		tv.setText(DateUtils.formatDate(new Date(event.getPublishedTime())));
+
+		ImageView iv = (ImageView) findViewById(R.id.timeline_listitem_imgIcon);
+		new SourceIconHelper().toImageView(this, event.getSource(), event, iv);
+
+	}
+
 	private void initViewButton() {
-		
-		String lookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);		
-		
-		final Intent i = DefaultInteractionType.createIntent(this, lookupKey); 
-		
+
+		String lookupKey = getIntent().getStringExtra(
+				Actions.EXTRA_CONTACT_LOOKUP_KEY);
+
+		final Intent i = DefaultInteractionType.createViewContactIntent(this,
+				lookupKey);
+
 		View btnView = findViewById(R.id.event_intent_handler_btnView);
 		btnView.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -125,58 +148,66 @@ public class EventIntentHandlerActivity extends Activity {
 		});
 	}
 
-
-	private void loadEventToView(Event event) {
-		
-		TextView tv= (TextView) findViewById(R.id.timeline_listitem_txtMessage);
-		tv.setText(event.getMessage());
-
-		tv = (TextView) findViewById(R.id.timeline_listitem_txtDate);
-		tv.setText(DateUtils.formatDate(new Date(event.getPublishedTime())));
-
-		ImageView iv = (ImageView)findViewById(R.id.timeline_listitem_imgIcon);
-		new SourceIconHelper().toImageView(this, event.getSource(), event, iv);
-
-	}
-
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// HANDLE EVENTS OF QUICKPOSTS:
+	// pass intent if the QuickPost source has a registered EVENT_INTENT
+	// ---------------------------------------------------------------------------------
 
 	private void handleQuickPostEventIntent() {
-		
+
 		long eventId = getIntent().getLongExtra(Actions.EXTRA_EVENT_ID, -1);
-		if(eventId!=-1) {
-			
-			//query the event's EVENT_INTENT as registered by the QuickPost client app
-			Uri eventUri = Uri.withAppendedPath(QuickPosts.SOURCE_URI,Events.EVENTS_PATH+"/"+eventId);
-			
+		if (eventId != -1) {
+
+			// query the event's EVENT_INTENT as registered by the QuickPost
+			// client app
+			Uri eventUri = Uri.withAppendedPath(QuickPosts.SOURCE_URI,
+					Events.EVENTS_PATH + "/" + eventId);
+
 			String intentAction = null;
-			Cursor c = getContentResolver().query(eventUri, null, null, null, null);
-			if(c.moveToFirst()) {
-				intentAction = c.getString(c.getColumnIndex(QuickPostSourcesTable.EVENT_INTENT));
+			Cursor c = getContentResolver().query(eventUri, null, null, null,
+					null);
+			if (c.moveToFirst()) {
+				intentAction = c.getString(c
+						.getColumnIndex(QuickPostSourcesTable.EVENT_INTENT));
 			}
 			c.close();
-			
-			//fire intent if action is not null
-			if(intentAction!=null) {
+
+			// fire intent if action is not null
+			if (intentAction != null) {
 				Intent i = new Intent();
 				i.setAction(intentAction);
-				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				i.putExtra(Actions.EXTRA_EVENT_KEY, getIntent().getStringExtra(Actions.EXTRA_EVENT_KEY));
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+						| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				i.putExtra(Actions.EXTRA_EVENT_KEY, getIntent().getStringExtra(
+						Actions.EXTRA_EVENT_KEY));
 				try {
-					startActivity(i);	
-				} catch(ActivityNotFoundException e) {
-					Log.e(N, "Unable to launch Activity to handle action: "+intentAction);
+					startActivity(i);
+				} catch (ActivityNotFoundException e) {
+					Log.e(N, "Unable to launch Activity to handle action: "
+							+ intentAction);
 				}
-				
+
 			}
 		}
-		 
+
 		finish();
 	}
-	
+
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// ---------------------------------------------------------------------------------
+	// HANDLE FACTORY TEST INTENT:
+	// show toast.
+	// ---------------------------------------------------------------------------------
+
 	private void handleInteractFactoryTestIntent() {
-		
-		Contact c = new ContactLoader().loadFromLookupKey(this, getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY), false);
-		Toaster.toast(this, "Interaction test for contact:\n"+(c==null? "!Error!" : c.getName()));
+
+		Contact c = new ContactLoader().loadFromLookupKey(this, getIntent()
+				.getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY), false);
+		Toaster.toast(this, "Interaction test for contact:\n"
+				+ (c == null ? "!Error!" : c.getDisplayedName()));
 		finish();
 	}
 

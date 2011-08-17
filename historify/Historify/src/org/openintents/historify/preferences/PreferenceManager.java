@@ -23,62 +23,85 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * 
+ * Helper class for storing a retrieving user settings.
+ * 
+ * @author berke.andras
+ */
 public class PreferenceManager {
 
 	public static final String FILE_NAME = "preferences";
-	
+
 	private static PreferenceManager instance;
-	
+
 	public static synchronized PreferenceManager getInstance(Context context) {
-		if(instance==null)
-			instance = new PreferenceManager(context.getApplicationContext().getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE));
+		if (instance == null)
+			instance = new PreferenceManager(context.getApplicationContext()
+					.getSharedPreferences(FILE_NAME, Context.MODE_PRIVATE));
 		return instance;
 	}
-	
+
 	private SharedPreferences mSharedPreferences;
-	
+
 	public PreferenceManager(SharedPreferences sharedPreferences) {
 		mSharedPreferences = sharedPreferences;
 	}
-	
-	public synchronized boolean getBooleanPreference(String key, boolean defaultValue) {
+
+	public synchronized boolean getBooleanPreference(String key,
+			boolean defaultValue) {
 		return mSharedPreferences.getBoolean(key, defaultValue);
 	}
-	
+
 	public synchronized void setPreference(String key, boolean value) {
 		mSharedPreferences.edit().putBoolean(key, value).commit();
 	}
-	
-	public synchronized String getStringPreference(String key, String defaultValue) {
+
+	public synchronized String getStringPreference(String key,
+			String defaultValue) {
 		return mSharedPreferences.getString(key, defaultValue);
 	}
-	
+
 	public synchronized void setPreference(String key, String value) {
 		mSharedPreferences.edit().putString(key, value).commit();
 	}
 
+	/**
+	 * Determines which contact to show on application startup depending on the
+	 * given user preference.
+	 * 
+	 * @param context
+	 *            Context
+	 * @param startUpActionSetting
+	 *            The user preference value
+	 * @return The contact lookup key of the contact to show or <b>null</b> if
+	 *         can not be determined.
+	 */
 	public String getContactToShow(Activity context, String startUpActionSetting) {
-		
-		if(startUpActionSetting.equals(context.getString(R.string.preferences_startup_last_contacted))) {
-			//get lookupkey for last contacted person
-			return new ContactLoader().getMostRecentlyContacted(context); 
-		} else if(startUpActionSetting.equals(context.getString(R.string.preferences_startup_last_shown))) {
+
+		if (startUpActionSetting.equals(context
+				.getString(R.string.preferences_startup_last_contacted))) {
+			// get lookupkey for last contacted person
+			return new ContactLoader().getMostRecentlyContacted(context);
+		} else if (startUpActionSetting.equals(context
+				.getString(R.string.preferences_startup_last_shown))) {
 			return getLastShownContact(context);
 		}
-		
+
 		return null;
 	}
 
 	private String getLastShownContact(Activity context) {
-		
-		String retval = getStringPreference(Pref.LAST_SHOWN_CONTACT, Pref.DEF_LAST_SHOWN_CONTACT);
-		if(retval!=null) {
-			return new ContactLoader().exists(context,retval) ? retval : null;
+
+		String retval = getStringPreference(Pref.LAST_SHOWN_CONTACT,
+				Pref.DEF_LAST_SHOWN_CONTACT);
+		if (retval != null) {
+			return new ContactLoader().exists(context, retval) ? retval : null;
 		}
-		
+
 		return null;
 	}
-	
+
 	public void setLastShownContact(String lookupKey) {
 		setPreference(Pref.LAST_SHOWN_CONTACT, lookupKey);
 	}

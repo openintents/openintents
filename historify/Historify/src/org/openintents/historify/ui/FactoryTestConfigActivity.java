@@ -16,7 +16,6 @@
 
 package org.openintents.historify.ui;
 
-
 import org.openintents.historify.R;
 import org.openintents.historify.data.providers.internal.FactoryTestProvider.FactoryTestConfig;
 import org.openintents.historify.ui.views.ActionBar;
@@ -32,68 +31,81 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * 
+ * Activity used for configure the parameters of the FactoryTestProvider's event
+ * set.
+ * 
+ * @author berke.andras
+ */
 public class FactoryTestConfigActivity extends Activity {
 
 	private EditText editTestSetSize, editEventInterval;
 	private Button btnDone, btnRevert;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_factory_test_config);
 
-		editTestSetSize = (EditText)findViewById(R.id.factory_test_editTestSetSize);
-		editEventInterval = (EditText)findViewById(R.id.factory_test_editEventInterval);
+		editTestSetSize = (EditText) findViewById(R.id.factory_test_editTestSetSize);
+		editEventInterval = (EditText) findViewById(R.id.factory_test_editEventInterval);
 
 		FactoryTestConfig factoryTestConfig = FactoryTestConfig.load(this);
 		editTestSetSize.setText(String.valueOf(factoryTestConfig.testSetSize));
-		editEventInterval.setText(String.valueOf(factoryTestConfig.eventInterval / AlarmManager.INTERVAL_HOUR));
-		
-		btnDone = (Button)findViewById(R.id.factory_test_btnDone);
-		btnRevert = (Button)findViewById(R.id.factory_test_btnRevert);
-		
+		editEventInterval.setText(String
+				.valueOf(factoryTestConfig.eventInterval
+						/ AlarmManager.INTERVAL_HOUR));
+
+		btnDone = (Button) findViewById(R.id.factory_test_btnDone);
+		btnRevert = (Button) findViewById(R.id.factory_test_btnRevert);
+
 		btnDone.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				onDone();
+				onDoneButtonSelected();
 			}
 		});
-		
+
 		btnRevert.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				finish();
 			}
 		});
-		
-		ActionBar actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+
+		ActionBar actionBar = new ActionBar(
+				(ViewGroup) findViewById(R.id.actionbar),
+				R.string.sources_title);
 		actionBar.setInactiveFunction(MoreMenuFunction.sources);
 		actionBar.setup();
 	}
 
-	private void onDone() {
-		
+	private void onDoneButtonSelected() {
+
 		String strTestSetSize = editTestSetSize.getText().toString().trim();
 		String strEventInterval = editEventInterval.getText().toString().trim();
-		
-		if(strTestSetSize.length()!=0 && strEventInterval.length()!=0) {
-			
-			Integer intTestSetSize=null, intEventInterval=null;
-			
+
+		if (strTestSetSize.length() != 0 && strEventInterval.length() != 0) {
+
+			Integer intTestSetSize = null, intEventInterval = null;
+
 			try {
 				intTestSetSize = Integer.parseInt(strTestSetSize);
 				intEventInterval = Integer.parseInt(strEventInterval);
-			} catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			if(intTestSetSize!=null && intEventInterval!=null) {
-				FactoryTestConfig factoryTestConfig = new FactoryTestConfig(intTestSetSize, intEventInterval * AlarmManager.INTERVAL_HOUR);
+
+			if (intTestSetSize != null && intEventInterval != null) {
+				FactoryTestConfig factoryTestConfig = new FactoryTestConfig(
+						intTestSetSize, intEventInterval
+								* AlarmManager.INTERVAL_HOUR);
 				factoryTestConfig.save(this);
 				finish();
 				return;
 			}
-		} 
-			
+		}
+
 		Toaster.toast(this, R.string.factory_test_config_error);
 
 	}

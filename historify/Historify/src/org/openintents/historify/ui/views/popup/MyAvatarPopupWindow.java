@@ -28,25 +28,35 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+/**
+ * Popup window shown when the user clicks on her avatar on the timeline top
+ * panel.
+ * 
+ * @author berke.andras
+ */
 public class MyAvatarPopupWindow extends AbstractPopupWindow {
 
 	private TextView mTxtChangeAvatar;
-	
+
 	public MyAvatarPopupWindow(Context context) {
 		super(context);
-		
+
 		setArrowGravity(Gravity.LEFT);
 	}
-	
+
 	@Override
 	protected void addContent(ViewGroup contentRoot) {
-		
-		ViewGroup contentView = (ViewGroup) ((LayoutInflater)mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.popupwindow_myavatar, contentRoot);
-		mTxtChangeAvatar = (TextView) contentView.findViewById(R.id.popupwindow_myavatar_txtChangeAvatar);
+
+		ViewGroup contentView = (ViewGroup) ((LayoutInflater) mContext
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(
+				R.layout.popupwindow_myavatar, contentRoot);
+		mTxtChangeAvatar = (TextView) contentView
+				.findViewById(R.id.popupwindow_myavatar_txtChangeAvatar);
 		mTxtChangeAvatar.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				dismiss();
-				mContext.startActivity(new Intent(mContext, PreferencesActivity.class));
+				mContext.startActivity(new Intent(mContext,
+						PreferencesActivity.class));
 			}
 		});
 	}

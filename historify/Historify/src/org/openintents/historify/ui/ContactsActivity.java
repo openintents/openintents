@@ -39,37 +39,42 @@ public class ContactsActivity extends FragmentActivity {
 
 	private ActionBar actionBar;
 	private ContactsListFragment contactsListFragment;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacts);
-		
-		boolean starredOnly = getIntent().getBooleanExtra(Actions.EXTRA_MODE_FAVORITES, false); 
-		
+
+		boolean starredOnly = getIntent().getBooleanExtra(
+				Actions.EXTRA_MODE_FAVORITES, false);
+
 		setFragmentParameters(starredOnly);
 		setupActionBar(starredOnly);
 	}
 
 	private void setFragmentParameters(boolean starredOnly) {
-		
-		contactsListFragment = (ContactsListFragment)getSupportFragmentManager().findFragmentById(R.id.contacts_fragment);
+
+		contactsListFragment = (ContactsListFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.contacts_fragment);
 		contactsListFragment.setStarredOnly(starredOnly);
 	}
 
 	private void setupActionBar(boolean starredOnly) {
-		
+
 		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
-				starredOnly ? R.string.contacts_title_favorites : R.string.contacts_title_all);
-		
-		Action searchAction = new ActionBar.Action(R.drawable.ic_menu_search, new OnClickListener() {
-			public void onClick(View v) {
-				onSearchSelected();
-			}
-		});
+				starredOnly ? R.string.contacts_title_favorites
+						: R.string.contacts_title_all);
+
+		Action searchAction = new ActionBar.Action(R.drawable.ic_menu_search,
+				new OnClickListener() {
+					public void onClick(View v) {
+						onSearchSelected();
+					}
+				});
 		actionBar.add(searchAction);
-		actionBar.setInactiveFunction(starredOnly ? MoreMenuFunction.favorites : MoreMenuFunction.contacts);
+		actionBar.setInactiveFunction(starredOnly ? MoreMenuFunction.favorites
+				: MoreMenuFunction.contacts);
 		actionBar.setup();
 
 	}
@@ -77,5 +82,5 @@ public class ContactsActivity extends FragmentActivity {
 	private void onSearchSelected() {
 		contactsListFragment.onSearchSelected();
 	}
-		
+
 }

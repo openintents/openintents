@@ -17,7 +17,6 @@
 package org.openintents.historify.ui;
 
 import org.openintents.historify.R;
-import org.openintents.historify.ui.fragments.PreferencesFragment;
 import org.openintents.historify.ui.views.ActionBar;
 import org.openintents.historify.ui.views.ActionBar.MoreMenuFunction;
 
@@ -25,25 +24,29 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 
+/**
+ * 
+ * User preferences Activity. Contains a fragment for setting displaying the
+ * preferences.
+ * 
+ * @author berke.andras
+ */
 public class PreferencesActivity extends FragmentActivity {
-	
+
 	private ActionBar actionBar;
-	private PreferencesFragment preferencesFragment;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.activity_preferences);
-		
-		preferencesFragment = (PreferencesFragment) getSupportFragmentManager().findFragmentById(R.id.preferences_fragment);
-		
 		setupActionBar();
 	}
 
 	private void setupActionBar() {
 
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.preferences_title);
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
+				R.string.preferences_title);
 		actionBar.setInactiveFunction(MoreMenuFunction.preferences);
 		actionBar.setup();
 	}

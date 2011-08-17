@@ -85,7 +85,7 @@ public class RecentlyContactedAdapter extends ContactsAdapter {
 
 		TextView tv = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);
-		tv.setText(contact.getName());
+		tv.setText(contact.getDisplayedName());
 
 		ImageView iv = (ImageView) convertView
 				.findViewById(R.id.contacts_listitem_imgIcon);

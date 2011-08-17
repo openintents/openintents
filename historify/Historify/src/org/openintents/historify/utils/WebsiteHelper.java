@@ -20,12 +20,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-public class URLHelper {
+/**
+ * 
+ * Helper class for opening the "more information" link shown in
+ * SourcesConfigurationFragment.
+ * 
+ * @author berke.andras
+ */
+public class WebsiteHelper {
 
 	public String getMoreInfoURL() {
 		return "http://www.example.com/";
 	}
-	
+
 	public void navigateToMoreInfo(Context context) {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_VIEW);

@@ -29,7 +29,7 @@ import android.util.Log;
 
 /**
  * 
- * Helper class for constants in {@link QuikcPostsProvider}.
+ * Helper class for constants in {@link QuickPostsProvider}.
  * 
  * @author berke.andras
  */
@@ -37,18 +37,19 @@ public class QuickPosts {
 
 	public static final String SOURCE_NAME = "QuickPosts";
 	public static final String DESCRIPTION = "Events posted by other applications via QuickPost.";
-	
+
 	public static final String QUICKPOSTS_AUTHORITY = "org.openintents.historify.internal.quickposts";
-	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(QUICKPOSTS_AUTHORITY);
-	
+	public static final Uri SOURCE_URI = UriUtils
+			.sourceAuthorityToUri(QUICKPOSTS_AUTHORITY);
+
 	public static final String QUICKPOST_SOURCES_PATH = "quickpost_sources";
 	public static final String QUICKPOST_RAW_EVENTS_PATH = "raw_events";
-	
+
 	static final String DB_NAME = "quickposts.db";
 	static final int DB_VERSION = 1;
 
 	// table of quickpost sources
-	public static final class QuickPostSourcesTable  {
+	public static final class QuickPostSourcesTable {
 
 		public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd.historify.quickpostSource";
 
@@ -67,24 +68,22 @@ public class QuickPosts {
 		public static final String STATE = "state";
 
 	}
-	
+
 	public static final class QuickPostEventsTable {
-		
-		//all columns defined by data.providers.Events
-		
-		//additional columns:
+
+		// all columns defined by data.providers.Events
+		// additional columns:
 		public static final String SOURCE_ID = "source_id";
-		
+
 		public static final String _TABLE = "quickpost_events";
 	}
-	
-	
-	public static final String JOIN_CLAUSE = QuickPostEventsTable._TABLE
-		+ " LEFT OUTER JOIN " + QuickPostSourcesTable._TABLE + " ON "
-		+ QuickPostEventsTable._TABLE + "." + QuickPostEventsTable.SOURCE_ID + " = "
-		+ QuickPostSourcesTable._TABLE + "." + QuickPostSourcesTable._ID;
 
-	
+	public static final String JOIN_CLAUSE = QuickPostEventsTable._TABLE
+			+ " LEFT OUTER JOIN " + QuickPostSourcesTable._TABLE + " ON "
+			+ QuickPostEventsTable._TABLE + "."
+			+ QuickPostEventsTable.SOURCE_ID + " = "
+			+ QuickPostSourcesTable._TABLE + "." + QuickPostSourcesTable._ID;
+
 	/**
 	 * SQLite helper class.
 	 */
@@ -101,7 +100,7 @@ public class QuickPosts {
 					+ QuickPostSourcesTable._ID + " INTEGER PRIMARY KEY,"
 					+ QuickPostSourcesTable.NAME + " TEXT NOT NULL,"
 					+ QuickPostSourcesTable.DESCRIPTION + " TEXT,"
-					+ QuickPostSourcesTable.ICON_URI + " TEXT," 
+					+ QuickPostSourcesTable.ICON_URI + " TEXT,"
 					+ QuickPostSourcesTable.EVENT_INTENT + " TEXT,"
 					+ QuickPostSourcesTable.INTERACT_INTENT + " TEXT,"
 					+ QuickPostSourcesTable.INTERACT_ACTION_TITLE + " TEXT,"
@@ -113,12 +112,11 @@ public class QuickPosts {
 			db.execSQL("CREATE TABLE " + QuickPostEventsTable._TABLE + " ("
 					+ Events._ID + " INTEGER PRIMARY KEY,"
 					+ QuickPostEventsTable.SOURCE_ID + " INTEGER,"
-					+ Events.EVENT_KEY + " TEXT,"
-					+ Events.CONTACT_KEY + " TEXT,"
-					+ Events.PUBLISHED_TIME + " INTEGER NOT NULL,"
-					+ Events.MESSAGE + " TEXT NOT NULL,"
-					+ Events.ORIGINATOR + " TEXT NOT NULL);");
-					
+					+ Events.EVENT_KEY + " TEXT," + Events.CONTACT_KEY
+					+ " TEXT," + Events.PUBLISHED_TIME + " INTEGER NOT NULL,"
+					+ Events.MESSAGE + " TEXT NOT NULL," + Events.ORIGINATOR
+					+ " TEXT NOT NULL);");
+
 		}
 
 		private void onErase(SQLiteDatabase db) {

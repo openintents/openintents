@@ -22,6 +22,7 @@ package org.openintents.historify.data.model;
  * event should be used.
  */
 public enum IconLoadingStrategy {
+	
 	useSourceIcon, useEventIcon;
 
 	public static IconLoadingStrategy parseString(String string) {

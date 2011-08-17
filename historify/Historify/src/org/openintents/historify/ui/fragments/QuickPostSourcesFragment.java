@@ -36,8 +36,6 @@ import android.widget.TextView;
  */
 public class QuickPostSourcesFragment extends Fragment {
 
-	private static final String NAME = "QuickPostSourcesFragment";
-
 	// sources
 	private ListView mLstQuickPostSources;
 	private QuickPostSourcesAdapter mSourcesAdapter;
@@ -55,16 +53,18 @@ public class QuickPostSourcesFragment extends Fragment {
 				.findViewById(R.id.quickpost_sources_lstQuickPostSources);
 
 		// init list empty view
-		View lstQuickPostsEmptyView = inflater.inflate(R.layout.list_empty_view,
-				null);
+		View lstQuickPostsEmptyView = inflater.inflate(
+				R.layout.list_empty_view, null);
 		((TextView) lstQuickPostsEmptyView)
 				.setText(R.string.sources_no_quickpost_sources);
-		((ViewGroup) mLstQuickPostSources.getParent()).addView(lstQuickPostsEmptyView);
+		((ViewGroup) mLstQuickPostSources.getParent())
+				.addView(lstQuickPostsEmptyView);
 		mLstQuickPostSources.setEmptyView(lstQuickPostsEmptyView);
-		
-		mSourcesAdapter = new QuickPostSourcesAdapter(getActivity(), mLstQuickPostSources);
+
+		mSourcesAdapter = new QuickPostSourcesAdapter(getActivity(),
+				mLstQuickPostSources);
 		mLstQuickPostSources.setAdapter(mSourcesAdapter);
-		
+
 		return layout;
 	}
 
@@ -75,10 +75,9 @@ public class QuickPostSourcesFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-
 		mSourcesAdapter.load();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

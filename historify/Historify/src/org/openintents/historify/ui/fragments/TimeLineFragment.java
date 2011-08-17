@@ -38,7 +38,7 @@ import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * 
- * Displays Historify timeline.
+ * Displays Historify timeline and its additional views.
  * 
  * @author berke.andras
  * 
@@ -53,7 +53,7 @@ public class TimeLineFragment extends Fragment {
 	private TimeLineTopPanel mTopPanel;
 	private ListView mLstTimeLine;
 	private View mTxtFiltered;
-	
+
 	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,19 +75,19 @@ public class TimeLineFragment extends Fragment {
 		// init list empty view
 		View lstContactsEmptyView = inflater.inflate(R.layout.list_empty_view,
 				null);
-		((TextView) lstContactsEmptyView)
-				.setText(R.string.timeline_no_events);
+		((TextView) lstContactsEmptyView).setText(R.string.timeline_no_events);
 		((ViewGroup) mLstTimeLine.getParent()).addView(lstContactsEmptyView);
 		mLstTimeLine.setEmptyView(lstContactsEmptyView);
-				
-		//init top panel
-		mTopPanel = new TimeLineTopPanel((ViewGroup) layout.findViewById(R.id.timeline_layoutTopPanel));
-		
+
+		// init top panel
+		mTopPanel = new TimeLineTopPanel((ViewGroup) layout
+				.findViewById(R.id.timeline_layoutTopPanel));
+
 		mTxtFiltered = layout.findViewById(R.id.timeline_txtFiltered);
-		
+
 		return layout;
 	}
-	
+
 	public void setContact(Contact contact) {
 		mContact = contact;
 	}
@@ -95,7 +95,7 @@ public class TimeLineFragment extends Fragment {
 	public void setActionBar(ActionBar actionBar) {
 		mTopPanel.setActionBar(actionBar);
 	}
-	
+
 	/**
 	 * Called when the fragment's activity has been created and this fragment's
 	 * view hierarchy instantiated.
@@ -103,12 +103,20 @@ public class TimeLineFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
+
 		mTopPanel.init(mContact, mLstTimeLine);
 
 		mAdapter = new TimeLineAdapter(getActivity(), mContact, mTxtFiltered);
 		mLstTimeLine.setAdapter(mAdapter);
 
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		((BaseAdapter) mLstTimeLine.getAdapter()).notifyDataSetChanged();
+		mTopPanel.loadUserIcon();
+		mTopPanel.loadContactIcon();
 	}
 
 	private void onEventClicked(Event event) {
@@ -118,29 +126,21 @@ public class TimeLineFragment extends Fragment {
 			i.setAction(event.getSource().getEventIntent());
 			i.putExtra(Actions.EXTRA_EVENT_ID, event.getId());
 			i.putExtra(Actions.EXTRA_EVENT_KEY, event.getEventKey());
-			i.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, mContact.getLookupKey());
-			
-			if(!event.getSource().isInternal())
-				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			
+			i.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, mContact
+					.getLookupKey());
+
+			if (!event.getSource().isInternal())
+				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+						| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 			startActivity(i);
 		}
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		
-		//release merged cursors
-		if(mAdapter!=null)
+		if (mAdapter != null)
 			mAdapter.release();
 	}
-	
-	@Override
-	public void onResume() {
-		super.onResume();
-		((BaseAdapter)mLstTimeLine.getAdapter()).notifyDataSetChanged();
-		mTopPanel.loadUserIcon();
-	}
-
 }

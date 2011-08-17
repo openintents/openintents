@@ -16,12 +16,30 @@
 
 package org.openintents.historify.data.model.source;
 
+/**
+ * 
+ * Model class representing a SourceFilter that wraps an actual source and
+ * override its default state with the filtered state.
+ * 
+ * @author berke.andras
+ */
 public class SourceFilter extends EventSource {
 
 	private long mFilterId;
 	private SourceState mFilteredState;
-	
-	public SourceFilter(long filterId, EventSource source, SourceState filteredState) {
+
+	/**
+	 * Constructor
+	 * 
+	 * @param filterId
+	 *            The id of the filter in the db.
+	 * @param source
+	 *            The source which should be filtered.
+	 * @param filteredState
+	 *            The initial filtered state of this filter
+	 */
+	public SourceFilter(long filterId, EventSource source,
+			SourceState filteredState) {
 		super(source);
 		setInternal(source.isInternal());
 		mFilteredState = filteredState;
@@ -30,7 +48,8 @@ public class SourceFilter extends EventSource {
 
 	@Override
 	public boolean isEnabled() {
-		return mFilteredState==null ? super.isEnabled() : mFilteredState==SourceState.ENABLED;
+		return mFilteredState == null ? super.isEnabled()
+				: mFilteredState == SourceState.ENABLED;
 	}
 
 	@Override
@@ -41,7 +60,7 @@ public class SourceFilter extends EventSource {
 	public long getFilterId() {
 		return mFilterId;
 	}
-	
+
 	public SourceState getFilteredState() {
 		return mFilteredState;
 	}

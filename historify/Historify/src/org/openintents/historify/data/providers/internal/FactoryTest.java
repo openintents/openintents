@@ -31,9 +31,11 @@ public class FactoryTest {
 
 	public static final String SOURCE_NAME = "FactoryTest";
 	public static final String DESCRIPTION = "Infinite source of joy.";
-	
+
 	public static final String FACTORY_TEST_AUTHORITY = "org.openintents.historify.internal.factorytest";
-	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(FACTORY_TEST_AUTHORITY);
-	public static final Uri EVENTS_URI = Uri.withAppendedPath(SOURCE_URI, Events.EVENTS_PATH);
-	
+	public static final Uri SOURCE_URI = UriUtils
+			.sourceAuthorityToUri(FACTORY_TEST_AUTHORITY);
+	public static final Uri EVENTS_URI = Uri.withAppendedPath(SOURCE_URI,
+			Events.EVENTS_PATH);
+
 }

@@ -24,24 +24,29 @@ package org.openintents.historify.data.model;
  */
 public class Contact {
 	
-	//CONTACT_LOOKUP_KEY
-	private String mKey;
+	private String mKey; //CONTACT_LOOKUP_KEY
 	
-	//displayed name
-	private String mName;
+	private String mDisplayedName;
+	
 	private long mLastTimeContacted;
 	
 	private String mGivenName;
-
 	
-	public Contact(String key, String name, long lastTimeContacted) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param key Lookup key of the contact.
+	 * @param displayedName Displayed contact name.
+	 * @param lastTimeContacted the time of last contact UTC. 
+	 */
+	public Contact(String key, String displayedName, long lastTimeContacted) {
 		this.mKey = key;
-		this.mName = name;
+		this.mDisplayedName = displayedName;
 		this.mLastTimeContacted = lastTimeContacted;
 	}
 
-	public String getName() {
-		return mName;
+	public String getDisplayedName() {
+		return mDisplayedName;
 	}
 
 	public String getGivenName() {
@@ -58,32 +63,5 @@ public class Contact {
 
 	public long getLastTimeContacted() {
 		return mLastTimeContacted;
-	}
-	
-
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((mKey == null) ? 0 : mKey.hashCode());
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Contact other = (Contact) obj;
-//		if (mKey == null) {
-//			if (other.mKey != null)
-//				return false;
-//		} else if (!mKey.equals(other.mKey))
-//			return false;
-//		return true;
-//	}
-	
+	}	
 }

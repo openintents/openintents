@@ -30,9 +30,9 @@ public class Telephony {
 
 	public static final String SOURCE_NAME = "Telephony";
 	public static final String DESCRIPTION = "Log incoming and outgoing calls.";
-	
-	public static final String TELEPHONY_AUTHORITY = "org.openintents.historify.internal.telephony";
-	public static final Uri SOURCE_URI = UriUtils.sourceAuthorityToUri(TELEPHONY_AUTHORITY);
 
-	
+	public static final String TELEPHONY_AUTHORITY = "org.openintents.historify.internal.telephony";
+	public static final Uri SOURCE_URI = UriUtils
+			.sourceAuthorityToUri(TELEPHONY_AUTHORITY);
+
 }

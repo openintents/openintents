@@ -31,31 +31,32 @@ import android.net.Uri;
 public abstract class EventsProvider extends ContentProvider {
 
 	protected UriMatcher mUriMatcher;
-	
+
 	protected static final int EVENTS_UNFILTERED = 1;
 	protected static final int EVENTS_FOR_A_CONTACT = 2;
 	protected static final int EVENTS_BY_EVENT_KEY = 3;
 	protected static final int EVENT_BY_EVENT_ID = 4;
-	
+
 	protected static final int USER_DEFINED_MATCH = 10;
 
 	private Uri mEventsUri;
-	
+
 	@Override
 	public boolean onCreate() {
 
 		mUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-		mUriMatcher.addURI(getAuthority(), 
-				Events.EVENTS_PATH, EVENTS_UNFILTERED);
-		mUriMatcher.addURI(getAuthority(), 
-				Events.EVENTS_PATH + "/#", EVENT_BY_EVENT_ID);
-		mUriMatcher.addURI(getAuthority(), 
-				Events.EVENTS_PATH + "/" + Events.EVENTS_FOR_CONTACTS_PATH + "/*", EVENTS_FOR_A_CONTACT);
-		mUriMatcher.addURI(getAuthority(), 
-				Events.EVENTS_PATH + "/" + Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENTS_BY_EVENT_KEY);
-		
-		mEventsUri = Uri.parse("content://"+getAuthority()+"/"+Events.EVENTS_PATH);
-		
+		mUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH,
+				EVENTS_UNFILTERED);
+		mUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH + "/#",
+				EVENT_BY_EVENT_ID);
+		mUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH + "/"
+				+ Events.EVENTS_FOR_CONTACTS_PATH + "/*", EVENTS_FOR_A_CONTACT);
+		mUriMatcher.addURI(getAuthority(), Events.EVENTS_PATH + "/"
+				+ Events.EVENTS_BY_EVENT_KEYS_PATH + "/*", EVENTS_BY_EVENT_KEY);
+
+		mEventsUri = Uri.parse("content://" + getAuthority() + "/"
+				+ Events.EVENTS_PATH);
+
 		return true;
 	}
 
@@ -66,7 +67,6 @@ public abstract class EventsProvider extends ContentProvider {
 	 * @return The authority string of the defined provider.
 	 */
 	protected abstract String getAuthority();
-	
 
 	/**
 	 * Derived classes could override this to let the client able to query the
@@ -79,10 +79,10 @@ public abstract class EventsProvider extends ContentProvider {
 	protected Cursor queryEvents() {
 		return null;
 	}
-	
+
 	/**
-	 * Derived classes could override this to let the client able to query
-	 * event identified with the given ID.
+	 * Derived classes could override this to let the client able to query event
+	 * identified with the given ID.
 	 * 
 	 * @param eventId
 	 *            The id of the requested event.
@@ -106,8 +106,7 @@ public abstract class EventsProvider extends ContentProvider {
 	 *         {@link Events} class.
 	 */
 	protected abstract Cursor queryEventsForContact(String lookupKey);
-	
-	
+
 	/**
 	 * Derived classes could override this to let the client able to query
 	 * event(s) identified with the given EVENT_KEY.
@@ -122,7 +121,6 @@ public abstract class EventsProvider extends ContentProvider {
 	protected Cursor queryEventsByKey(String eventKey) {
 		return null;
 	}
-
 
 	@Override
 	public String getType(Uri uri) {
@@ -154,7 +152,7 @@ public abstract class EventsProvider extends ContentProvider {
 		try {
 			Cursor retval = null;
 			boolean unknown = false;
-			
+
 			switch (mUriMatcher.match(uri)) {
 			case EVENTS_UNFILTERED:
 				retval = queryEvents();
@@ -171,18 +169,19 @@ public abstract class EventsProvider extends ContentProvider {
 			default:
 				unknown = true;
 			}
-			
-			if(retval!=null)
-				retval.setNotificationUri(getContext().getContentResolver(), mEventsUri);
 
-			if(unknown)
+			if (retval != null)
+				retval.setNotificationUri(getContext().getContentResolver(),
+						mEventsUri);
+
+			if (unknown)
 				throw new IllegalArgumentException("Unknown URI " + uri);
 			else
 				return retval;
-			
-		} catch(IllegalArgumentException iae) {
+
+		} catch (IllegalArgumentException iae) {
 			throw iae;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -207,11 +206,27 @@ public abstract class EventsProvider extends ContentProvider {
 		return 0;
 	}
 
+	/**
+	 * Derived classes should call this method to notify content observers about
+	 * a change in the contents of this event provider.<br/>
+	 * <br/>
+	 * The default Uri used for notifying observers is
+	 * <code>"content://"+getAuthority()+"/"+Events.EVENTS_PATH</code>. Derived
+	 * classes could set a custom Uri by calling
+	 * {@link #setEventsUri(Uri mEventsUri)}
+	 */
 	protected final void onEventsChanged() {
 		getContext().getContentResolver().notifyChange(mEventsUri, null);
 	}
 
-	protected final  void setEventsUri(Uri mEventsUri) {
+	/**
+	 * Derived classes could call this method to override the default uri used
+	 * for notifying registered content observers when calling
+	 * {@link #onEventsChanged()}
+	 * 
+	 * @param mEventsUri
+	 */
+	protected final void setEventsUri(Uri mEventsUri) {
 		this.mEventsUri = mEventsUri;
 	}
 }

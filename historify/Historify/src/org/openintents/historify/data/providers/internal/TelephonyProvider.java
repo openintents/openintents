@@ -36,10 +36,10 @@ public class TelephonyProvider extends EventsProvider {
 	@Override
 	public boolean onCreate() {
 		boolean retval = super.onCreate();
-		
-		if(retval) 
+
+		if (retval)
 			setEventsUri(CallLog.Calls.CONTENT_URI);
-		
+
 		return retval;
 	}
 
@@ -49,7 +49,7 @@ public class TelephonyProvider extends EventsProvider {
 	}
 
 	private Cursor rawQuery(String where, String lookupKey) {
-		
+
 		// build where clause for call log query
 		String selection = where + " AND " + CallLog.Calls.TYPE + " != "
 				+ CallLog.Calls.MISSED_TYPE + " AND " + CallLog.Calls.DURATION
@@ -80,9 +80,8 @@ public class TelephonyProvider extends EventsProvider {
 								+ Events.ORIGINATOR }, selection, null,
 				CallLog.Calls.DATE + " DESC");
 
-		
 	}
-	
+
 	@Override
 	protected Cursor queryEventsForContact(String lookupKey) {
 
@@ -105,17 +104,18 @@ public class TelephonyProvider extends EventsProvider {
 			phoneNumbers.setLength(phoneNumbers.length() - 1);
 
 		phoneCursor.close();
-		
-		String where = CallLog.Calls.NUMBER + " IN (" + phoneNumbers.toString() + ")";
-		
+
+		String where = CallLog.Calls.NUMBER + " IN (" + phoneNumbers.toString()
+				+ ")";
+
 		return rawQuery(where, lookupKey);
 
 	}
 
 	@Override
 	protected Cursor queryEvent(long eventId) {
-		
-		String where = CallLog.Calls._ID + " = "+eventId;
+
+		String where = CallLog.Calls._ID + " = " + eventId;
 		return rawQuery(where, null);
 	}
 

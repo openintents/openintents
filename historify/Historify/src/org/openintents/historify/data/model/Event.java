@@ -42,6 +42,17 @@ public class Event {
 	//custom icon associated with this event
 	private Uri mIconUri;
 	
+	/**
+	 * Constructor.
+	 * 
+	 * @param id Event id field.
+	 * @param eventKey Event key field.
+	 * @param contactKey Lookup key of a contact.
+	 * @param publishedTime Event time.
+	 * @param message Brief message of the event.
+	 * @param originator Originator of the event.
+	 * @param iconUri Uri of an image associated with the event.
+	 */
 	public Event(long id, String eventKey, String contactKey, long publishedTime,
 			String message, Originator originator, Uri iconUri) {
 	
@@ -73,15 +84,7 @@ public class Event {
 	public Events.Originator getOriginator() {
 		return mEventData.getOriginator();
 	}
-	
-	public EventSource getSource() {
-		return mSource;
-	}
-	
-	public void setSource(EventSource mSource) {
-		this.mSource = mSource;
-	}
-
+		
 	public Uri getCustomIcon() {
 		return mIconUri;
 	}
@@ -89,4 +92,13 @@ public class Event {
 	public void setCustomIcon(Uri mIconUri) {
 		this.mIconUri = mIconUri;
 	}
+	
+	public EventSource getSource() {
+		return mSource;
+	}
+
+	public void setSource(EventSource mSource) {
+		this.mSource = mSource;
+	}
+
 }

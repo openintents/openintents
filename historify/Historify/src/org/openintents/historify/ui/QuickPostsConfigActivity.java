@@ -24,10 +24,17 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.ViewGroup;
 
+/**
+ * 
+ * Activity used for configure the QuickPostProvider. Contains a fragment for
+ * displaying QuickPost sources.
+ * 
+ * @author berke.andras
+ */
 public class QuickPostsConfigActivity extends FragmentActivity {
 
 	private ActionBar actionBar;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +44,12 @@ public class QuickPostsConfigActivity extends FragmentActivity {
 	}
 
 	private void setupActionBar() {
-		
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), R.string.sources_title);
+
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
+				R.string.sources_title);
 		actionBar.setInactiveFunction(MoreMenuFunction.sources);
 		actionBar.setup();
 
 	}
-
 
 }

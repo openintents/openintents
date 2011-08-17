@@ -19,7 +19,7 @@ package org.openintents.historify.ui.fragments;
 import org.openintents.historify.R;
 import org.openintents.historify.data.adapters.SourcesAdapter;
 import org.openintents.historify.data.model.source.EventSource;
-import org.openintents.historify.utils.URLHelper;
+import org.openintents.historify.utils.WebsiteHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ import android.widget.ListView;
 
 /**
  * 
- * Displays and manages the different sources.
+ * Displays and manages the different event sources.
  * 
  * @author berke.andras
  */
@@ -43,43 +43,43 @@ public class SourcesConfigurationFragment extends Fragment {
 	private ListView mLstSources;
 	private SourcesAdapter mSourcesAdapter;
 
-	
-	/** Called to have the fragment instantiate its user interface view.*/
+	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-	
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.fragment_sources_configuration, container, false);
-		
+
+		ViewGroup layout = (ViewGroup) inflater.inflate(
+				R.layout.fragment_sources_configuration, container, false);
+
 		// init sources list
 		mLstSources = (ListView) layout.findViewById(R.id.sources_lstSources);
 		mLstSources
 				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 					public void onItemClick(AdapterView<?> parent, View view,
 							int position, long id) {
-						
-						if(position==parent.getCount()-1) {
-							//need more message
-							new URLHelper().navigateToMoreInfo(getActivity());
+
+						if (position == parent.getCount() - 1) {
+							// need more message
+							new WebsiteHelper().navigateToMoreInfo(getActivity());
 						} else {
 							EventSource source = (EventSource) parent
-							.getItemAtPosition(position);
-							boolean checked = mLstSources.getCheckedItemPositions()
-								.get(position);
-							onSourceClicked(source, checked);	
+									.getItemAtPosition(position);
+							boolean checked = mLstSources
+									.getCheckedItemPositions().get(position);
+							onSourceClicked(source, checked);
 						}
-						
+
 					}
 				});
 
 		// sources adapter
 		mSourcesAdapter = new SourcesAdapter(getActivity(), mLstSources);
 		mLstSources.setAdapter(mSourcesAdapter);
-		
+
 		return layout;
 
 	}
-	
+
 	/** Called when the user clicks on a source. */
 	private void onSourceClicked(EventSource source, boolean checked) {
 		source.setEnabled(checked);
@@ -90,17 +90,17 @@ public class SourcesConfigurationFragment extends Fragment {
 	public static class OnMoreButtonClickedListener implements OnClickListener {
 		public void onClick(View v) {
 			// the intent to be fired is stored in the view's tag
-			String action = (String)v.getTag();
-			
-			if(action!=null) {
+			String action = (String) v.getTag();
+
+			if (action != null) {
 				Intent i = new Intent();
 				i.setAction(action);
 				try {
-					v.getContext().startActivity(i);	
-				} catch(Exception e) {
+					v.getContext().startActivity(i);
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
 		}
 	}

@@ -30,8 +30,8 @@ import android.util.Log;
 import android.view.ViewGroup;
 
 /**
- * 
- * Displays Historify timeline.
+ * Historify timeline. Contains a fragment for displaying the timeline and its
+ * additional views.
  * 
  * @author berke.andras
  * 
@@ -39,28 +39,31 @@ import android.view.ViewGroup;
 public class TimeLineActivity extends FragmentActivity {
 
 	public static final String N = "TimeLineActivity";
-	
+
 	private ActionBar actionBar;
 	private TimeLineFragment timeLineFragment;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_timeline);
-		
-		String contactLookupKey = getIntent().getStringExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY);
-		
-		if(contactLookupKey==null) {
+
+		String contactLookupKey = getIntent().getStringExtra(
+				Actions.EXTRA_CONTACT_LOOKUP_KEY);
+
+		if (contactLookupKey == null) {
 			Log.e(N, "Contact lookupkey not provided.");
 			finish();
 		} else {
-			Contact contact = new ContactLoader().loadFromLookupKey(this, contactLookupKey,true);
-			if(contact!=null) {
+			Contact contact = new ContactLoader().loadFromLookupKey(this,
+					contactLookupKey, true);
+			if (contact != null) {
 				setupActionBar(contact);
 				setFragmentParameters(contact);
-				saveAsLastShown(contactLookupKey);
+				PreferenceManager.getInstance(this).setLastShownContact(
+						contactLookupKey);
 			} else {
 				Log.e(N, "Contact could not be loaded.");
 				finish();
@@ -68,21 +71,18 @@ public class TimeLineActivity extends FragmentActivity {
 		}
 	}
 
-	private void saveAsLastShown(String lookupKey) {
-		PreferenceManager.getInstance(this).setLastShownContact(lookupKey);
-	}
-
 	private void setFragmentParameters(Contact contact) {
-		timeLineFragment = (TimeLineFragment)getSupportFragmentManager().findFragmentById(R.id.timeline_fragment);
+		timeLineFragment = (TimeLineFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.timeline_fragment);
 		timeLineFragment.setContact(contact);
 		timeLineFragment.setActionBar(actionBar);
 	}
 
 	private void setupActionBar(Contact contact) {
-		
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), contact.getName());
-		actionBar.setup();
 
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
+				contact.getDisplayedName());
+		actionBar.setup();
 	}
 
 }

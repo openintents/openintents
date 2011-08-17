@@ -47,6 +47,46 @@ import android.util.Log;
  */
 public class SourceRegistrationHelper {
 
+	/**
+	 * Sends a broadcast request to ask a particular client (if uid provided) or
+	 * all clients to register their sources.
+	 * 
+	 * @param context
+	 * @param uid
+	 *            The uid of the target client if the request is addressed,
+	 *            <code>null</code> otherwise.
+	 */
+	public void requestRegisterSource(Context context, Integer uid) {
+
+		try {
+
+			Intent broadCast = new Intent();
+			broadCast.setAction(Actions.BROADCAST_REQUEST_REGISTER_SOURCE);
+
+			if (uid != null) { // addressed request for a particular external
+								// source
+
+				String[] packages = context.getPackageManager()
+						.getPackagesForUid(uid);
+				String packageName = packages[0]; // shared uids not supported
+
+				if (packageName != null) {
+					Log.v(BridgeService.N, "-- " + packageName);
+
+					broadCast.putExtra(Actions.EXTRA_ADDRESSED, true);
+					broadCast.putExtra(Actions.EXTRA_PACKAGE_NAME, packageName);
+					context.sendBroadcast(broadCast);
+				}
+			} else { // request for all external sources
+				broadCast.putExtra(Actions.EXTRA_ADDRESSED, false);
+				context.sendBroadcast(broadCast);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void registerSource(Context context, Bundle parameterSet) {
 
 		if (parameterSet == null) {
@@ -59,14 +99,15 @@ public class SourceRegistrationHelper {
 				.getString(Actions.EXTRA_SOURCE_AUTHORITY);
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
-		
-//		String description = parameterSet
-//				.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
+
+		// String description = parameterSet
+		// .getString(Actions.EXTRA_SOURCE_DESCRIPTION);
 		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
-		
-		if(iconUri==null) {
-			//caller didn't provided an icon. caller application's app icon will be used
-			iconUri = UriUtils.getAppIconUri(context, uid).toString();
+
+		if (iconUri == null) {
+			// caller didn't provided an icon. caller application's app icon
+			// will be used
+			iconUri = UriUtils.appIconToUri(context, uid).toString();
 			parameterSet.putString(Actions.EXTRA_SOURCE_ICON_URI, iconUri);
 		}
 
@@ -79,33 +120,36 @@ public class SourceRegistrationHelper {
 		ContentResolver resolver = context.getContentResolver();
 
 		// check if authority already registered
-		Cursor cursor = resolver.query(ContentUris.Sources, new String[] {Sources.SourcesTable.VERSION, Sources.SourcesTable._ID, Sources.SourcesTable.UID},
-				Sources.SourcesTable.AUTHORITY + " = ?",
-				new String[] { authority }, null);
-		
+		Cursor cursor = resolver.query(ContentUris.Sources, new String[] {
+				Sources.SourcesTable.VERSION, Sources.SourcesTable._ID,
+				Sources.SourcesTable.UID }, Sources.SourcesTable.AUTHORITY
+				+ " = ?", new String[] { authority }, null);
+
 		Long sourceId = null;
-		
+
 		if (cursor.moveToNext()) {
-			
-			//if the source is registered by an application with a different uid
-			//we have to ignore the register request.
-			if(cursor.getInt(2)!=uid) {
-				Log.w(BridgeService.N, "Source for authority '" + authority
-						+ "' has been already registered by a different application.");
+
+			// if the source is registered by an application with a different
+			// uid
+			// we have to ignore the register request.
+			if (cursor.getInt(2) != uid) {
+				Log
+						.w(
+								BridgeService.N,
+								"Source for authority '"
+										+ authority
+										+ "' has been already registered by a different application.");
 				cursor.close();
 				return;
 			} else {
-				//check if we store the latest version of this source
-				if(cursor.getInt(0)!=version) {
-					//update source in the sources table
-					Log
-					.v(BridgeService.N, "Updating '" + name
-							+ "' source.");
+				// check if we store the latest version of this source
+				if (cursor.getInt(0) != version) {
+					// update source in the sources table
+					Log.v(BridgeService.N, "Updating '" + name + "' source.");
 					sourceId = cursor.getLong(1);
 				} else {
-					//same version, we do nothing
-					Log
-					.v(BridgeService.N, "Source '" + name
+					// same version, we do nothing
+					Log.v(BridgeService.N, "Source '" + name
 							+ "' already registered.");
 					cursor.close();
 					return;
@@ -114,40 +158,45 @@ public class SourceRegistrationHelper {
 		}
 
 		cursor.close();
-		
-		Long newSourceId = insertOrUpdateSource(resolver, parameterSet, sourceId);
-		
+
+		Long newSourceId = insertOrUpdateSource(resolver, parameterSet,
+				sourceId);
+
 		Log
 				.v(BridgeService.N, "Source '" + name
 						+ "' registered successfully.");
-		
-		if(sourceId==null) {
-			//new source ha been added
-			//we have to insert source filters for all the contacts
-			//that are already filtered
-			new SourceFilterOperation().insertFiltersForNewSource(context, newSourceId, SourceState.ENABLED);
+
+		if (sourceId == null) {
+			// new source ha been added
+			// we have to insert source filters for all the contacts
+			// that are already filtered
+			new SourceFilterOperation().insertFiltersForNewSource(context,
+					newSourceId, SourceState.ENABLED);
 		}
-		
-		
+
 		postNotification(context, name);
 	}
 
-	private Long insertOrUpdateSource(ContentResolver resolver, Bundle parameterSet, Long updateRow) {
-		
-		
+	private Long insertOrUpdateSource(ContentResolver resolver,
+			Bundle parameterSet, Long updateRow) {
+
 		String name = parameterSet.getString(Actions.EXTRA_SOURCE_NAME);
-		String description = parameterSet.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
-		String authority = parameterSet.getString(Actions.EXTRA_SOURCE_AUTHORITY);
+		String description = parameterSet
+				.getString(Actions.EXTRA_SOURCE_DESCRIPTION);
+		String authority = parameterSet
+				.getString(Actions.EXTRA_SOURCE_AUTHORITY);
 		String iconUri = parameterSet.getString(Actions.EXTRA_SOURCE_ICON_URI);
 		int uid = parameterSet.getInt(Actions.EXTRA_SOURCE_UID);
 		int version = parameterSet.getInt(Actions.EXTRA_SOURCE_VERSION);
-		
+
 		String eventIntent = parameterSet.getString(Actions.EXTRA_EVENT_INTENT);
-		String configIntent = parameterSet.getString(Actions.EXTRA_CONFIG_INTENT);
-		String interactIntent = parameterSet.getString(Actions.EXTRA_INTERACT_INTENT);
-		String interactActionTitle = parameterSet.getString(Actions.EXTRA_INTERACT_ACTION_TITLE);
-		
-			
+		String configIntent = parameterSet
+				.getString(Actions.EXTRA_CONFIG_INTENT);
+		String interactIntent = parameterSet
+				.getString(Actions.EXTRA_INTERACT_INTENT);
+		String interactActionTitle = parameterSet
+				.getString(Actions.EXTRA_INTERACT_ACTION_TITLE);
+
 		ContentValues values = new ContentValues();
 		values.put(SourcesTable.NAME, name);
 		values.put(SourcesTable.DESCRIPTION, description);
@@ -159,84 +208,63 @@ public class SourceRegistrationHelper {
 		values.put(SourcesTable.INTERACT_ACTION_TITLE, interactActionTitle);
 		values.put(SourcesTable.UID, uid);
 		values.put(SourcesTable.VERSION, version);
-		
-		if(parameterSet.containsKey(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY))
-			values.put(SourcesTable.ICON_LOADING_STRATEGY, parameterSet.getString(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY));
-		
-		if(updateRow==null) {
-			//insert
+
+		if (parameterSet
+				.containsKey(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY))
+			values.put(SourcesTable.ICON_LOADING_STRATEGY, parameterSet
+					.getString(Actions.EXTRA_SOURCE_ICON_LOADING_STRATEGY));
+
+		if (updateRow == null) {
+			// insert
 			Uri rowUri = resolver.insert(ContentUris.Sources, values);
-			return rowUri == null ? null : Long.valueOf(rowUri.getLastPathSegment());
+			return rowUri == null ? null : Long.valueOf(rowUri
+					.getLastPathSegment());
 		} else {
-			//update
-			String where = SourcesTable._ID + " = "+updateRow;
+			// update
+			String where = SourcesTable._ID + " = " + updateRow;
 			int res = resolver.update(ContentUris.Sources, values, where, null);
-			return res==0 ? null : updateRow;
-		}		
-	}
-	
-	private void postNotification(Context context, String name) {
-		
-		NotificationManager nm = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-		Notification notification = new Notification(R.drawable.icon, context.getString(R.string.notification_source_added_ticker), System.currentTimeMillis());
-		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-		
-		Intent intent = new Intent(context,SourcesActivity.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-		
-		notification.setLatestEventInfo(context, name, context.getString(R.string.notification_source_added), pendingIntent);
-		nm.notify(0, notification);
-		
+			return res == 0 ? null : updateRow;
+		}
 	}
 
-	public void requestRegisterSource(Context context, Integer uid) {
-		
-		try {
-			
-			Intent broadCast = new Intent();
-			broadCast.setAction(Actions.BROADCAST_REQUEST_REGISTER_SOURCE);
-			
-			if(uid!=null) { //addressed request for a particular external source
-				
-				String[] packages = context.getPackageManager().getPackagesForUid(uid);
-				String packageName = packages[0]; //shared uids not supported
-				
-				if(packageName!=null) {
-					Log.v(BridgeService.N,"-- "+packageName);
-					
-					broadCast.putExtra(Actions.EXTRA_ADDRESSED, true);
-					broadCast.putExtra(Actions.EXTRA_PACKAGE_NAME, packageName);
-					context.sendBroadcast(broadCast);
-				}
-			} else { //request for all external sources
-				broadCast.putExtra(Actions.EXTRA_ADDRESSED, false);
-				context.sendBroadcast(broadCast);
-			}
-			
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+	private void postNotification(Context context, String name) {
+
+		NotificationManager nm = (NotificationManager) context
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+		Notification notification = new Notification(R.drawable.icon, context
+				.getString(R.string.notification_source_added_ticker), System
+				.currentTimeMillis());
+		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+		Intent intent = new Intent(context, SourcesActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
+				intent, 0);
+
+		notification.setLatestEventInfo(context, name, context
+				.getString(R.string.notification_source_added), pendingIntent);
+		nm.notify(0, notification);
+
 	}
 
 	public void unregisterSource(Context context, int uid) {
 
-		
-		String where = SourcesTable.UID + " = "+uid;
-		Cursor c = context.getContentResolver().query(ContentUris.Sources, new String[] {SourcesTable._ID}, 
-				where, null, null); 
-		if(c.moveToFirst()) {
-			//there is a registered source in the uninstalled package
-		
-			long sourceId = c.getLong(0);
-		
-			new SourceFilterOperation().removeFiltersOfDeletedSource(context, sourceId);
+		String where = SourcesTable.UID + " = " + uid;
+		Cursor c = context.getContentResolver().query(ContentUris.Sources,
+				new String[] { SourcesTable._ID }, where, null, null);
+		if (c.moveToFirst()) {
+			// there is a registered source in the uninstalled package
 
-			context.getContentResolver().delete(ContentUris.Sources, where, null);
-			
+			long sourceId = c.getLong(0);
+
+			new SourceFilterOperation().removeFiltersOfDeletedSource(context,
+					sourceId);
+
+			context.getContentResolver().delete(ContentUris.Sources, where,
+					null);
+
 		}
-		
+
 		c.close();
 
 	}

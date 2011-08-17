@@ -24,8 +24,9 @@ import android.util.Log;
 /**
  * 
  * Receiving broadcast intents for added and removed application packages. If
- * the added / removed application contains a Historify SharedSource, it is
- * necessary to register / unregister it in Historify.
+ * the added / removed application contains a Historify SharedSource or
+ * QuickPost source, it is necessary to register / unregister it in Historify or
+ * delete the QuickPost events.
  * 
  * @author berke.andras
  */
@@ -53,7 +54,7 @@ public class PackageChangesReceiver extends BroadcastReceiver {
 								"Received broadcast for PACKAGE_REMOVED");
 				// package is removed
 				int uid = intent.getIntExtra(Intent.EXTRA_UID, 0);
-				
+
 				// delete registered SharedSource if there is any.
 				new SourceRegistrationHelper().unregisterSource(context, uid);
 				// delete QuickPost entries if there is any.

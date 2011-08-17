@@ -16,7 +16,6 @@
 
 package org.openintents.historify.ui;
 
-
 import org.openintents.historify.FirstStartTasks;
 import org.openintents.historify.R;
 import org.openintents.historify.preferences.Pref;
@@ -31,47 +30,57 @@ import android.view.ViewGroup;
 
 /**
  * 
- * Historify's main view. Contains a fragment for displaying the main screen.
+ * Historify's main view. Contains a fragment for displaying the welcome screen.<br/>
+ * <br/>
+ * If the user's startup action preference is not set to
+ * {@link Prefs#DEF_STARTUP_ACTION}, timeline activity will be launched instead
+ * of showing the welcome screen.
  * 
  * @author berke.andras
  */
 public class MainActivity extends FragmentActivity {
 
 	private ActionBar actionBar;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	
+
 		if (savedInstanceState == null) {
-			FirstStartTasks.onStart(this);	
+			FirstStartTasks.onStart(this);
 		}
-	
-		//decide which startup action to run
+
+		// decide which startup action to run
 		PreferenceManager pm = PreferenceManager.getInstance(this);
-		String startUpActionSetting = pm.getStringPreference(Pref.STARTUP_ACTION, Pref.DEF_STARTUP_ACTION);
-		if(!startUpActionSetting.equals(getString(R.string.preferences_startup_welcome))) {
-		
-			//user prefer to open a timeline on startup
-			String contactToShow = pm.getContactToShow(this, startUpActionSetting);
-			if(contactToShow!=null) {
+		String startUpActionSetting = pm.getStringPreference(
+				Pref.STARTUP_ACTION, Pref.DEF_STARTUP_ACTION);
+		if (!startUpActionSetting
+				.equals(getString(R.string.preferences_startup_welcome))) {
+
+			// user prefer to open a timeline on startup
+			String contactToShow = pm.getContactToShow(this,
+					startUpActionSetting);
+			if (contactToShow != null) {
 				Intent intent = new Intent(this, TimeLineActivity.class);
-				intent.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY, contactToShow);
+				intent
+						.putExtra(Actions.EXTRA_CONTACT_LOOKUP_KEY,
+								contactToShow);
 				startActivity(intent);
 				finish();
 				return;
 			}
 		}
-			
-		//normal behaviour is to show the welcome screen
+
+		// normal behaviour is to show the welcome screen
 		setContentView(R.layout.activity_main);
 		setupActionBar();
 	}
 
 	private void setupActionBar() {
-		
-		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar), null);
+
+		actionBar = new ActionBar((ViewGroup) findViewById(R.id.actionbar),
+				null);
 		actionBar.setup();
 
 	}

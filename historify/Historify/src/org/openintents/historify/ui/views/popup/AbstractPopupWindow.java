@@ -26,6 +26,11 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+/**
+ * Abstract base class for popup windows displayed on the timeline.
+ * 
+ * @author berke.andras
+ */
 public abstract class AbstractPopupWindow extends PopupWindow {
 
 	protected Context mContext;
@@ -46,7 +51,6 @@ public abstract class AbstractPopupWindow extends PopupWindow {
 		setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
 		setFocusable(true);
 		setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.transparent_popup_background));
-		//setBackgroundDrawable(null);
 	}
 	
 	public void show(View anchor) {
@@ -54,9 +58,6 @@ public abstract class AbstractPopupWindow extends PopupWindow {
 	}
 	
 	public void setArrowGravity(int gravity) {
-//		LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-//		layoutParams.gravity = gravity;
-//		mArrow.setLayoutParams(layoutParams);
 		((LinearLayout.LayoutParams)mArrow.getLayoutParams()).gravity = gravity;		
 	}
 	

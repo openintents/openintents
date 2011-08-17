@@ -37,71 +37,75 @@ import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * 
- * Fragment for displaying the main screen.
+ * Fragment for displaying the main welcome screen.
  * 
  * @author berke.andras
  */
 public class MainScreenFragment extends Fragment {
-	
+
 	private Button btnMore, btnFavorites, btnSources;
-	
+
 	private Gallery galleryContacts;
 	private RecentlyContactedAdapter recentlyContactedAdapter;
-	
-	/** Called to have the fragment instantiate its user interface view.*/
+
+	/** Called to have the fragment instantiate its user interface view. */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.fragment_main_screen, container, false);
-		
-		//init buttons
-		btnMore = (Button)layout.findViewById(R.id.main_screen_btnMore);
-		btnFavorites = (Button)layout.findViewById(R.id.main_screen_btnFavorites);
-		btnSources = (Button)layout.findViewById(R.id.btnSources);
+
+		ViewGroup layout = (ViewGroup) inflater.inflate(
+				R.layout.fragment_main_screen, container, false);
+
+		// init buttons
+		btnMore = (Button) layout.findViewById(R.id.main_screen_btnMore);
+		btnFavorites = (Button) layout
+				.findViewById(R.id.main_screen_btnFavorites);
+		btnSources = (Button) layout.findViewById(R.id.btnSources);
 
 		btnMore.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onMoreClicked();
 			}
 		});
-		
+
 		btnFavorites.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onFavoritesClicked();
 			}
 		});
-		
+
 		btnSources.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				onSourcesClicked();
 			}
 		});
-		
-		
-		//init gallery for contacts
-		galleryContacts = (Gallery)layout.findViewById(R.id.main_screen_galleryContacts);
+
+		// init gallery for contacts
+		galleryContacts = (Gallery) layout
+				.findViewById(R.id.main_screen_galleryContacts);
 		recentlyContactedAdapter = new RecentlyContactedAdapter(getActivity());
 		galleryContacts.setAdapter(recentlyContactedAdapter);
-		
+
 		galleryContacts.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> adapterView, View view, int pos,
-					long id) {
-				if(pos==galleryContacts.getSelectedItemPosition())
-					onContactClicked((Contact)adapterView.getItemAtPosition(pos));
+			public void onItemClick(AdapterView<?> adapterView, View view,
+					int pos, long id) {
+				if (pos == galleryContacts.getSelectedItemPosition())
+					onContactClicked((Contact) adapterView
+							.getItemAtPosition(pos));
 			}
 		});
-		
-		//init gallery empty view
-		View layoutGalleryEmpty = layout.findViewById(R.id.main_screen_viewEmptyGallery);
+
+		// init gallery empty view
+		View layoutGalleryEmpty = layout
+				.findViewById(R.id.main_screen_viewEmptyGallery);
 		layoutGalleryEmpty.setVisibility(View.GONE);
 		galleryContacts.setEmptyView(layoutGalleryEmpty);
-		
+
 		return layout;
 	}
-	
+
 	protected void onContactClicked(Contact selected) {
-		
+
 		String contactLookupKey = String.valueOf(selected.getLookupKey());
 
 		Intent intent = new Intent();
@@ -116,13 +120,13 @@ public class MainScreenFragment extends Fragment {
 		Intent intent = new Intent(getActivity(), ContactsActivity.class);
 		startActivity(intent);
 	}
-	
+
 	private void onFavoritesClicked() {
 		Intent intent = new Intent(getActivity(), ContactsActivity.class);
 		intent.putExtra(Actions.EXTRA_MODE_FAVORITES, true);
 		startActivity(intent);
 	}
-	
+
 	private void onSourcesClicked() {
 		Intent intent = new Intent(getActivity(), SourcesActivity.class);
 		startActivity(intent);
@@ -133,13 +137,13 @@ public class MainScreenFragment extends Fragment {
 		super.onPause();
 		recentlyContactedAdapter.stopPrettyTimeRefresher();
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
 		recentlyContactedAdapter.startPrettyTimeRefresher();
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();

@@ -27,7 +27,7 @@ import org.openintents.historify.data.model.source.EventSource.SourceState;
 import org.openintents.historify.ui.SourcesActivity;
 import org.openintents.historify.ui.fragments.SourcesConfigurationFragment;
 import org.openintents.historify.uri.ContentUris;
-import org.openintents.historify.utils.URLHelper;
+import org.openintents.historify.utils.WebsiteHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -294,7 +294,7 @@ public class SourcesAdapter extends BaseAdapter {
 			((Spannable) tv.getText()).setSpan(new RelativeSizeSpan(2.0f), 0,
 					text.indexOf('\n'), 0);
 			// make last line url-like
-			((Spannable) tv.getText()).setSpan(new URLSpan(new URLHelper()
+			((Spannable) tv.getText()).setSpan(new URLSpan(new WebsiteHelper()
 					.getMoreInfoURL()), text.lastIndexOf('\n') + 1, text
 					.length(), 0);
 

@@ -27,7 +27,7 @@ import org.openintents.historify.data.providers.Events.Originator;
  */
 public class EventData {
 
-	//evenkey
+	//eventkey
 	private String mEventKey;
 	
 	//CONTACT_LOOKUP_KEY
@@ -42,7 +42,15 @@ public class EventData {
 	//originator of the event
 	private Events.Originator mOriginator;
 	
-	
+	/**
+	 * Constructor.
+	 * 
+	 * @param eventKey Event key field.
+	 * @param contactKey Lookup key of a contact.
+	 * @param publishedTime Event time.
+	 * @param message Brief message of the event.
+	 * @param originator Originator of the event.
+	 */
 	public EventData(String eventKey, String contactKey, long publishedTime,
 			String message, Originator originator) {
 		

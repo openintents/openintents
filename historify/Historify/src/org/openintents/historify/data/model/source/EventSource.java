@@ -28,6 +28,10 @@ import android.net.Uri;
  */
 public class EventSource {
 
+	/**
+	 * The current state of the source. Events of disabled sources won't show up
+	 * on the timeline.
+	 */
 	public enum SourceState {
 		ENABLED, DISABLED, ERROR;
 
@@ -40,53 +44,62 @@ public class EventSource {
 		}
 	}
 
-	//id
+	// id
 	private long mId;
-	
-	//displayed source name
+
+	// displayed source name
 	private String mName;
 
-	//short description of the source
+	// short description of the source
 	private String mDescription;
-	
-	//icon displayed on the timeline
+
+	// icon displayed on the timeline
 	private Uri mIconUri;
-	
-	//authority of the source content provider
+
+	// authority of the source content provider
 	private String mAuthority;
 
-	//Intent to be fired if user selects an event
+	// Intent to be fired if user selects an event
 	private String mEventIntent;
-	
-	//current state
+
+	// current state
 	private SourceState mState;
-	
-	//flag for internal sources
+
+	// flag for internal sources
 	protected boolean mIsInternal = false;
 
-	//Action of the intent to be fired for launching source configuration activity
+	// Action of the intent to be fired for launching source configuration
+	// activity
 	private String mConfigIntent;
-	
+
+	// strategy used for displaying event icons on the timeline
 	private IconLoadingStrategy mIconLoadingStrategy;
-	
-	
+
+	/**
+	 * Constructor.
+	 */
 	protected EventSource(long id, String name, String description,
-			String iconUri, IconLoadingStrategy iconLoadingStrategy, String authority, String eventIntent, String configIntent) {
-		
+			String iconUri, IconLoadingStrategy iconLoadingStrategy,
+			String authority, String eventIntent, String configIntent) {
+
 		mId = id;
 		mName = name;
 		mDescription = description;
-		mIconUri = iconUri==null ? null : Uri.parse(iconUri);
-		mIconLoadingStrategy = iconLoadingStrategy==null ? IconLoadingStrategy.useSourceIcon : iconLoadingStrategy;
+		mIconUri = iconUri == null ? null : Uri.parse(iconUri);
+		mIconLoadingStrategy = iconLoadingStrategy == null ? IconLoadingStrategy.useSourceIcon
+				: iconLoadingStrategy;
 		mAuthority = authority;
 		mEventIntent = eventIntent;
 		mConfigIntent = configIntent;
-		
+
 		mState = SourceState.ENABLED;
 	}
 
+	/**
+	 * Copy constructor.
+	 */
 	public EventSource(EventSource s) {
-		
+
 		mId = s.mId;
 		mName = s.mName;
 		mDescription = s.mDescription;
@@ -113,19 +126,23 @@ public class EventSource {
 	public String getDescription() {
 		return mDescription;
 	}
-	
+
 	public String getAuthority() {
 		return mAuthority;
 	}
-	
+
 	public String getEventIntent() {
 		return mEventIntent;
 	}
-	
+
 	public String getConfigIntent() {
 		return mConfigIntent;
 	}
-	
+
+	public Uri getIcon() {
+		return mIconUri;
+	}
+
 	public SourceState getState() {
 		return mState;
 	}
@@ -134,45 +151,39 @@ public class EventSource {
 		this.mState = mState;
 	}
 
-	public Uri getIcon() {
-		return mIconUri;
-	}
-	
 	public boolean isEnabled() {
-		return mState==SourceState.ENABLED;
+		return mState == SourceState.ENABLED;
 	}
 
 	public void setEnabled(boolean checked) {
-		SourceState newState = checked ? SourceState.ENABLED : SourceState.DISABLED;
+		SourceState newState = checked ? SourceState.ENABLED
+				: SourceState.DISABLED;
 		setState(newState);
 	}
-	
+
 	protected void setInternal(boolean isInternal) {
 		mIsInternal = isInternal;
 	}
-	
+
 	public IconLoadingStrategy getIconLoadingStrategy() {
 		return mIconLoadingStrategy;
 	}
 
-	public static EventSource factoryMethod(
-			boolean isInternal, 
-			long id,
-			String name, 
-			String description,
-			String iconUri,
-			IconLoadingStrategy iconLoadingStrategy, 
-			String authority,
-			String eventIntent,
-			String configIntent,
-			String state) {
-		
-		EventSource retval = new EventSource(id, name, description, iconUri, iconLoadingStrategy, authority, eventIntent,configIntent);
+	/**
+	 * Static method for initializing an EventSource instance.
+	 * 
+	 * @return New event source based on the given parameters.
+	 */
+	public static EventSource factoryMethod(boolean isInternal, long id,
+			String name, String description, String iconUri,
+			IconLoadingStrategy iconLoadingStrategy, String authority,
+			String eventIntent, String configIntent, String state) {
+
+		EventSource retval = new EventSource(id, name, description, iconUri,
+				iconLoadingStrategy, authority, eventIntent, configIntent);
 		retval.setInternal(isInternal);
 		retval.setState(SourceState.parseString(state));
 
 		return retval;
 	}
-
-
 }

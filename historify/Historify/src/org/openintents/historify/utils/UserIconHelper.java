@@ -8,59 +8,66 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.CompressFormat;
-import android.util.Log;
 
+/**
+ * 
+ * Helper class for storing and retrieving the user's avatar image provided by
+ * the PreferencesFragment.
+ * 
+ * @author berke.andras
+ * 
+ */
 public class UserIconHelper {
 
 	private static final String FILE_NAME = "user.icon";
-	
+
 	public Bitmap openIcon(Context context) {
 		try {
-			return BitmapFactory.decodeStream(context.openFileInput(FILE_NAME));	
-		} catch(Exception e) {
+			return BitmapFactory.decodeStream(context.openFileInput(FILE_NAME));
+		} catch (Exception e) {
 			return null;
 		}
-		
+
 	}
-	
+
 	public boolean saveIcon(Context context, String sourceFile) {
-	
+
 		try {
 			BitmapFactory.Options options = new BitmapFactory.Options();
 			options.inJustDecodeBounds = true;
-			BitmapFactory.decodeFile(sourceFile,options);
-			
+			BitmapFactory.decodeFile(sourceFile, options);
+
 			int w = options.outWidth;
-			if(w==-1) return false;
-			
+			if (w == -1)
+				return false;
+
 			options.inJustDecodeBounds = false;
-			
-			if(w>200) {
+
+			if (w > 200) {
 				options.inSampleSize = 4;
 			}
-			
-			Bitmap b = BitmapFactory.decodeFile(sourceFile,options);
-			
-			if(b==null) return false;
-			
-			
-			FileOutputStream fos = context.openFileOutput(FILE_NAME, Activity.MODE_PRIVATE);
+
+			Bitmap b = BitmapFactory.decodeFile(sourceFile, options);
+
+			if (b == null)
+				return false;
+
+			FileOutputStream fos = context.openFileOutput(FILE_NAME,
+					Activity.MODE_PRIVATE);
 			b.compress(CompressFormat.PNG, 100, fos);
 			fos.close();
-			
-			Log.v("bw","  "+b.getWidth());
-			
+
 			return true;
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return false;
 	}
 
-	public void delete(Context context) {
-		
+	public void deleteIcon(Context context) {
+
 		File f = context.getFileStreamPath(FILE_NAME);
 		f.delete();
 	}

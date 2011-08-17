@@ -32,29 +32,32 @@ import com.ocpsoft.pretty.time.PrettyTime;
  */
 public class DateUtils {
 
-	private static final SimpleDateFormat fullDateFormat = new SimpleDateFormat("dd. MMM HH:mm",Locale.ENGLISH);
-	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm",Locale.ENGLISH);
-	
+	private static final SimpleDateFormat fullDateFormat = new SimpleDateFormat(
+			"dd. MMM HH:mm", Locale.ENGLISH);
+	private static final SimpleDateFormat timeFormat = new SimpleDateFormat(
+			"HH:mm", Locale.ENGLISH);
+
 	private static PrettyTime prettyTime = new PrettyTime(Locale.ENGLISH);
 	private static long INTERVAL_WEEK = AlarmManager.INTERVAL_DAY * 7;
-		
+
+	
 	public static String formatTimelineDate(Date date) {
-		if(isInADay(date))
+		if (isInADay(date))
 			return prettyTime.format(date);
-		else if(isInAWeek(date))		
+		else if (isInAWeek(date))
 			return prettyTime.format(date) + " " + timeFormat.format(date);
 		else
 			return fullDateFormat.format(date);
 	}
-	
+
 	public static String formatPrettyDate(Date date) {
 		return prettyTime.format(date);
 	}
-	
+
 	public static String formatDate(Date date) {
 		return fullDateFormat.format(date);
 	}
-	
+
 	private static boolean isInADay(Date date) {
 		return System.currentTimeMillis() - date.getTime() < AlarmManager.INTERVAL_DAY;
 	}

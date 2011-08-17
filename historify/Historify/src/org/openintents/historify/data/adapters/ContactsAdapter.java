@@ -178,7 +178,7 @@ public class ContactsAdapter extends BaseAdapter {
 
 		TextView txtName = (TextView) convertView
 				.findViewById(R.id.contacts_listitem_txtName);
-		txtName.setText(contact.getName());
+		txtName.setText(contact.getDisplayedName());
 
 		ImageView iv = (ImageView) convertView
 				.findViewById(R.id.contacts_listitem_imgIcon);

@@ -151,6 +151,11 @@ public class ContactsListFragment extends Fragment {
 		
 	}
 	
+	/**
+	 * Set up contact list filter parameter.
+	 * 
+	 * @param starredOnly
+	 */
 	public void setStarredOnly(boolean starredOnly) {
 		
 		mContactLoadingStrategy = starredOnly ? 

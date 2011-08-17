@@ -20,48 +20,43 @@ import org.openintents.historify.data.providers.Events;
 
 /**
  * 
- * Helper class for Intent actions and extra fields.
+ * Helper class for Intent actions and extra fields used by Historify and its
+ * client applications.
  * 
  * @author berke.andras
  */
 public final class Actions {
 
-	// ContactsActivity
 	// ----------------------------------------------------------------------------------------------
-	public static final String EXTRA_MODE_FAVORITES = "favorites";
-
-
-	// TimeLineActiviy
+	// Common
 	// ----------------------------------------------------------------------------------------------
-	public static final String ACTION_SHOW_TIMELINE = "org.openintents.historify.SHOW_TIMELINE";
+	// ----------------------------------------------------------------------------------------------
+
 	public static final String EXTRA_CONTACT_LOOKUP_KEY = "lookupKey";
-
-	
-	// EventIntents for internal providers
-	// ----------------------------------------------------------------------------------------------
-	public static final String ACTION_VIEW_MESSAGING_EVENT = "org.openintents.historify.VIEW_MESSAGING_EVENT";
-	public static final String ACTION_VIEW_CALLOG_EVENT = "org.openintents.historify.VIEW_CALLOG_EVENT";
-	public static final String ACTION_VIEW_QUICKPOST_EVENT = "org.openintents.historify.VIEW_QUICKPOST_EVENT";
-	// EventIntent extras
 	public static final String EXTRA_EVENT_ID = Events._ID;
 	public static final String EXTRA_EVENT_KEY = Events.EVENT_KEY;
-	//public static final String EXTRA_CONTACT_LOOKUP_KEY = "lookupKey";
 
 	
-	// ConfigIntents for internal providers
 	// ----------------------------------------------------------------------------------------------
-	public static final String ACTION_CONFIG_QUICKPOSTS = "org.openintents.historify.CONFIG_QUICKPOSTS";
-	public static final String ACTION_CONFIG_FACTORYTEST = "org.openintents.historify.CONFIG_FACTORYTEST";
-	
-	public static final String ACTION_INTERACT_FACTORYTEST = "org.openintents.historify.INTERACT_FACTORYTEST";
-	
 	// BridgeService
 	// ----------------------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------------------------
 
+	// REQUEST_REGISTER_SOURCE
+	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
+	public static final String EXTRA_PACKAGE_NAME = "package_name";
+	public static final String EXTRA_ADDRESSED = "addressed";
+
+	// REGISTER_SOURCE
 	public static final String ACTION_REGISTER_SOURCE = "org.openintents.historify.REGISTER_SOURCE";
+	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
+
+	// QUICK_POST
+	public static final String ACTION_QUICK_POST = "org.openintents.historify.QUICK_POST";
+
+	// REGISTER_SOURCE and QUICK_POST common fields
 	// mandatory parameters
 	public static final String EXTRA_SOURCE_NAME = "name";
-	public static final String EXTRA_SOURCE_AUTHORITY = "authority";
 	public static final String EXTRA_SOURCE_UID = "uid";
 	public static final String EXTRA_SOURCE_VERSION = "version";
 	// optional parameters
@@ -74,18 +69,27 @@ public final class Actions {
 	public static final String EXTRA_INTERACT_ACTION_TITLE = "interact_action_title";
 
 	
-	public static final String BROADCAST_REQUEST_REGISTER_SOURCE = "org.openintents.historify.REQUEST_REGISTER_SOURCE";;
-	public static final String EXTRA_PACKAGE_NAME = "package_name";
-	public static final String EXTRA_ADDRESSED = "addressed";
+	// ----------------------------------------------------------------------------------------------
+	// INTERNAL
+	// ----------------------------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------------------------
 
-	public static final String ACTION_QUICK_POST = "org.openintents.historify.QUICK_POST";
-	// mandatory parameters
-	//EXTRA_SOURCE_NAME = "name";
-	//EXTRA_SOURCE_UID = "uid";
-	//EXTRA_SOURCE_VERSION = "version";
-	//also fields defined in .data.providers.Events
+	// ContactsActivity
+	public static final String EXTRA_MODE_FAVORITES = "favorites";
 
+	// TimeLineActiviy
+	public static final String ACTION_SHOW_TIMELINE = "org.openintents.historify.SHOW_TIMELINE";
 
-	
+	// EventIntents for internal providers
+	public static final String ACTION_VIEW_MESSAGING_EVENT = "org.openintents.historify.VIEW_MESSAGING_EVENT";
+	public static final String ACTION_VIEW_CALLOG_EVENT = "org.openintents.historify.VIEW_CALLOG_EVENT";
+	public static final String ACTION_VIEW_QUICKPOST_EVENT = "org.openintents.historify.VIEW_QUICKPOST_EVENT";
+
+	// InteractIntents for internal providers
+	public static final String ACTION_INTERACT_FACTORYTEST = "org.openintents.historify.INTERACT_FACTORYTEST";
+
+	// ConfigIntents for internal providers
+	public static final String ACTION_CONFIG_QUICKPOSTS = "org.openintents.historify.CONFIG_QUICKPOSTS";
+	public static final String ACTION_CONFIG_FACTORYTEST = "org.openintents.historify.CONFIG_FACTORYTEST";
 
 }

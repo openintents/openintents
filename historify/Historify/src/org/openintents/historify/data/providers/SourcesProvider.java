@@ -174,21 +174,21 @@ public class SourcesProvider extends ContentProvider {
 				qb.setProjectionMap(nullFilterProjectionMap);
 
 			} else {
-				if(notificationUri!=null) {
-					cursorWithFilters.setNotificationUri(getContext().getContentResolver(), notificationUri);
+				if (notificationUri != null) {
+					cursorWithFilters.setNotificationUri(getContext()
+							.getContentResolver(), notificationUri);
 				}
 				return cursorWithFilters;
 			}
 
 		}
 
-		
-		Cursor retval = qb.query(db, projection, selection, selectionArgs, null, null,
-				null);
-		if(notificationUri!=null && retval!=null) {
-			retval.setNotificationUri(getContext().getContentResolver(), notificationUri);
+		Cursor retval = qb.query(db, projection, selection, selectionArgs,
+				null, null, null);
+		if (notificationUri != null && retval != null) {
+			retval.setNotificationUri(getContext().getContentResolver(),
+					notificationUri);
 		}
-			
 
 		return retval;
 	}
@@ -199,7 +199,7 @@ public class SourcesProvider extends ContentProvider {
 
 		String table, where = null;
 		Uri notificationUri = null;
-		
+
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
@@ -236,10 +236,11 @@ public class SourcesProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-		
-		int retval =  db.update(table, values, selection, selectionArgs);
-		if(retval!=0 && notificationUri!=null) {
-			getContext().getContentResolver().notifyChange(notificationUri, null);
+
+		int retval = db.update(table, values, selection, selectionArgs);
+		if (retval != 0 && notificationUri != null) {
+			getContext().getContentResolver().notifyChange(notificationUri,
+					null);
 		}
 		return retval;
 	}
@@ -249,7 +250,7 @@ public class SourcesProvider extends ContentProvider {
 
 		String table = null;
 		Uri notificationUri = null;
-		
+
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
@@ -278,9 +279,10 @@ public class SourcesProvider extends ContentProvider {
 
 		if (table != null) {
 			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
-			int retval =  db.delete(table, selection, selectionArgs);
-			if(retval!=0 && notificationUri!=null) {
-				getContext().getContentResolver().notifyChange(notificationUri, null);
+			int retval = db.delete(table, selection, selectionArgs);
+			if (retval != 0 && notificationUri != null) {
+				getContext().getContentResolver().notifyChange(notificationUri,
+						null);
 			}
 			return retval;
 		}
@@ -293,7 +295,7 @@ public class SourcesProvider extends ContentProvider {
 
 		String table = null;
 		Uri notificationUri = null;
-		
+
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
@@ -314,9 +316,11 @@ public class SourcesProvider extends ContentProvider {
 			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 			long id = db.insert(table, null, values);
 			if (id > 0) {
-				Uri retval = uri.buildUpon().appendPath(String.valueOf(id)).build();
-				if(notificationUri!=null)
-					getContext().getContentResolver().notifyChange(notificationUri, null);
+				Uri retval = uri.buildUpon().appendPath(String.valueOf(id))
+						.build();
+				if (notificationUri != null)
+					getContext().getContentResolver().notifyChange(
+							notificationUri, null);
 				return retval;
 			}
 		}
@@ -326,10 +330,10 @@ public class SourcesProvider extends ContentProvider {
 
 	@Override
 	public int bulkInsert(Uri uri, ContentValues[] values) {
-		
+
 		String table = null;
 		Uri notificationUri = null;
-		
+
 		switch (sUriMatcher.match(uri)) {
 
 		case SOURCES:
@@ -346,29 +350,29 @@ public class SourcesProvider extends ContentProvider {
 			throw new IllegalArgumentException("Unknown URI " + uri);
 		}
 
-		int retval = 0; 
+		int retval = 0;
 
 		if (table != null) {
 			SQLiteDatabase db = mOpenHelper.getWritableDatabase();
 			db.beginTransaction();
 			try {
-				for(ContentValues cv : values) {
+				for (ContentValues cv : values) {
 					long id = db.insert(table, null, cv);
 					if (id > 0) {
 						retval++;
-					}	
+					}
 				}
-				
-				if(notificationUri!=null)
-					getContext().getContentResolver().notifyChange(notificationUri, null);
-				
+
+				if (notificationUri != null)
+					getContext().getContentResolver().notifyChange(
+							notificationUri, null);
+
 				db.setTransactionSuccessful();
-				
-			} catch(Exception e) {
+
+			} catch (Exception e) {
 				e.printStackTrace();
 				return 0;
-			}
-			finally {
+			} finally {
 				db.endTransaction();
 			}
 		}
