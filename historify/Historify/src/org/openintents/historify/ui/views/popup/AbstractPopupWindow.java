@@ -19,10 +19,13 @@ package org.openintents.historify.ui.views.popup;
 import org.openintents.historify.R;
 
 import android.content.Context;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.View.MeasureSpec;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -54,7 +57,19 @@ public abstract class AbstractPopupWindow extends PopupWindow {
 	}
 	
 	public void show(View anchor) {
-		super.showAsDropDown(anchor);
+		
+		setHeight(getMaxAvailableHeight(anchor));
+		
+		if(getArrowGravity()==Gravity.CENTER) {
+			super.showAtLocation(anchor, Gravity.CENTER, 0, anchor.getHeight());	
+		}else
+			super.showAsDropDown(anchor);
+		
+	}
+	
+	
+	public int getArrowGravity() {
+		return ((LinearLayout.LayoutParams)mArrow.getLayoutParams()).gravity;		
 	}
 	
 	public void setArrowGravity(int gravity) {

@@ -190,6 +190,7 @@ public class TimeLineTopPanel {
 		popupWindow.initView(mVisible);
 
 		if (mVisible) {
+			popupWindow.setArrowGravity(Gravity.CENTER);
 			popupWindow.show(mBtnOptions);
 		} else {
 			popupWindow.setArrowGravity(Gravity.LEFT);
