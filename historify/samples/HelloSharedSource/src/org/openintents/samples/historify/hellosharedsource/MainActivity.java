@@ -18,6 +18,11 @@ package org.openintents.samples.historify.hellosharedsource;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.Spanned;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -26,6 +31,15 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		//last word is a link
+		TextView txtMore = (TextView)findViewById(R.id.main_txtMore);
+		
+		int startPos = txtMore.getText().toString().lastIndexOf(' ');		
+		((Spannable)txtMore.getText()).setSpan(new ClickableSpan() {
+			@Override
+			public void onClick(View widget) {}
+		}, startPos+1, txtMore.getText().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 	}
 
 }

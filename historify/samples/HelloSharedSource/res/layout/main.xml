@@ -4,9 +4,88 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />    
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#444"
+    android:padding="4dip"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="6dip"
+        android:src="@drawable/icon" />    
+    
+	<TextView
+		android:layout_width="fill_parent" 
+	    android:layout_height="fill_parent"
+	    android:layout_marginRight="6dip"
+	    android:textAppearance="?android:attr/textAppearanceLarge"
+	    android:gravity="center_vertical"
+	    android:text="@string/hello"
+	/>
+</LinearLayout>
+
+<View
+	android:layout_width="fill_parent"
+	android:layout_height="1px"
+	android:background="#000"   
+	/> 	
+
+<ScrollView
+	android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1">
+    
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:padding="6dip"
+    android:orientation="vertical"
+    >
+
+
+<TextView 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:textAppearance="?android:attr/textAppearanceLarge"
+	android:textStyle="bold"
+	android:text="\nAbout"
+/>
+
+<TextView 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="@string/about"	
+/>
+
+<TextView 
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:textAppearance="?android:attr/textAppearanceLarge"
+	android:textStyle="bold"
+	android:text="\nMore info"
+/>
+
+<TextView 
+	android:id="@+id/main_txtMore"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:bufferType="spannable"
+	android:text="@string/more"	
+/>
+
+
+<View
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_weight="1"
+	
+/>
+</LinearLayout>
+</ScrollView>
+
 </LinearLayout>
