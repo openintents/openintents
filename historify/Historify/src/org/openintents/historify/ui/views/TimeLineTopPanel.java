@@ -191,6 +191,7 @@ public class TimeLineTopPanel {
 
 		if (mVisible) {
 			popupWindow.setArrowGravity(Gravity.CENTER);
+			mBtnOptions.setTag(mContentView.getHeight()+mActionBar.getContentView().getHeight());
 			popupWindow.show(mBtnOptions);
 		} else {
 			popupWindow.setArrowGravity(Gravity.LEFT);

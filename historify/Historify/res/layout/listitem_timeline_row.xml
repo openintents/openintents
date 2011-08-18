@@ -16,7 +16,7 @@
     android:layout_height="wrap_content"
     android:src="@drawable/arrow_right"
     android:layout_gravity="top"
-    android:layout_marginTop="2dip"
+    android:layout_marginTop="4dip"
     android:layout_marginLeft="6dip"
  />
  

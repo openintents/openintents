@@ -184,7 +184,8 @@ public class ActionBar {
 		// Create the button
 		ImageButton actionButton = (ImageButton) inflate(R.layout.actionbar_button);
 		actionButton.setImageResource(action.iconResId);
-		actionButton.setScaleType(ImageView.ScaleType.CENTER);
+		actionButton.setScaleType(ImageView.ScaleType.FIT_START);
+		actionButton.setAdjustViewBounds(true);
 		actionButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
 				action.onClickListener.onClick(view);
@@ -199,8 +200,8 @@ public class ActionBar {
 
 		mLogo = new ImageView(mContext);
 		mLogo.setImageResource(imageResId);
-		mLogo.setClickable(false);
-		mLogo.setScaleType(ScaleType.CENTER);
+		mLogo.setScaleType(ScaleType.FIT_START);
+		mLogo.setAdjustViewBounds(true);
 		mContentView.addView(mLogo);
 
 	}
@@ -238,6 +239,10 @@ public class ActionBar {
 
 	public View getHSymbol() {
 		return mLogo;
+	}
+
+	public View getContentView() {
+		return mContentView;
 	}
 
 	public void setHSymbolClickable(final MenuModel menu) {

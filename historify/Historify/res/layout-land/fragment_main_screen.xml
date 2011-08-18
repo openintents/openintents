@@ -22,8 +22,6 @@
   	android:id="@+id/main_screen_lstContacts"
   	android:layout_width="fill_parent"
   	android:layout_height="wrap_content"
-  	android:paddingTop="6dip"
-    android:paddingBottom="6dip"
     android:layout_weight="1"
   />
 

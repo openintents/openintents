@@ -43,6 +43,7 @@
 	    style="@style/ListView"
 	    android:layout_width="300dip"
 	    android:layout_height="150dip" 
+	    android:layout_weight="1"
     	/>
 
  
