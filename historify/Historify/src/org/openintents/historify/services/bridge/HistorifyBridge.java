@@ -111,8 +111,7 @@ public class HistorifyBridge {
 		 * The event intent is fired by Historify when the user selects an event
 		 * on timeline posted by this QuickPost source. Note that to let the
 		 * receiver identify which event has been selected by the user,
-		 * {@link Actions#EXTRA_EVENT_ID} and {@link Actions#EXTRA_EVENT_KEY}
-		 * will be passed as Intent extras.
+		 * {@link Actions#EXTRA_EVENT_KEY} will be passed as Intent extra.
 		 * 
 		 * @param eventIntent
 		 *            The action field of the <code>Intent</code> which should
