@@ -183,7 +183,7 @@ public class ContactLoader {
 
 		StringBuilder querySelection = new StringBuilder();
 		querySelection.append(ContactsContract.Contacts.IN_VISIBLE_GROUP
-				+ " = '1'");
+				+ " = 1");
 		String selection = loadingStrategy.getSelection();
 		if (selection != null) {
 			querySelection.append(" AND ");

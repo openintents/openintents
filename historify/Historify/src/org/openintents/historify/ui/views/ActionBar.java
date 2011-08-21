@@ -127,6 +127,7 @@ public class ActionBar {
 	private ImageView mLogo;
 
 	private MoreMenuFunction inactiveMoreMenuFunction;
+	private View mMoreMenuAnchor;
 
 	public ActionBar(ViewGroup contentView, int titleResId) {
 		init(contentView, contentView.getContext().getString(titleResId));
@@ -169,15 +170,15 @@ public class ActionBar {
 						MenuModel menuMore = new MoreMenuBuilder().build(
 								mContext, inactiveMoreMenuFunction);
 						dropDownMenu.setMenu(menuMore);
-						dropDownMenu.show(mContentView);
+						dropDownMenu.show(mMoreMenuAnchor);
 					}
 				});
 
-		addAction(actionMoreMenu);
+		mMoreMenuAnchor = addAction(actionMoreMenu);
 
 	}
 
-	private void addAction(final Action action) {
+	private View addAction(final Action action) {
 
 		addSeparator();
 
@@ -194,6 +195,7 @@ public class ActionBar {
 
 		mContentView.addView(actionButton);
 
+		return actionButton;
 	}
 
 	private void addImage(int imageResId) {
