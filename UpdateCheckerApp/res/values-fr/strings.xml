@@ -16,9 +16,9 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Une nouvelle version de %s est disponible.\nVoulez-vous la mettre à jour?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
+    <string name="update_available_3">Une nouvelle version de %1$s est disponible sur %2$s.\n%3$s\n</string>
     <string name="update_available_2">Une nouvelle version de %1$s est disponible.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_location_no_comment">Une nouvelle version de %1$s est disponible sur %2$s.</string>
     <string name="update_available_no_comment">Une nouvelle version de %s est disponible.</string>
 	<string name="market_not_available">Le marché Android n\'est pas disponible.</string>
     <string name="market_search_term">OI Update</string>

@@ -74,7 +74,7 @@ msgid "i.e. wishlist, family list"
 msgstr "Např. seznam přání, rodinný seznam"
 
 #. Automation action to clean up a list.
-#: tmp_strings.xml:43(string) tmp_strings.xml:301(item)
+#: tmp_strings.xml:43(string) tmp_strings.xml:308(item)
 msgid "Clean up list"
 msgstr "Vyčistit seznam"
 
@@ -270,13 +270,10 @@ msgid "Priority 1-4: %s"
 msgstr ""
 
 #: tmp_strings.xml:111(string)
-#, fuzzy
 msgid ""
 "Are you sure you want to permanently delete this item from this shopping "
 "lists?"
 msgstr ""
-"Určitě chcete permanentně vymazat tento bod, jeho označení a jeho cenu ze "
-"všech seznamů nákupů?"
 
 #: tmp_strings.xml:112(string)
 msgid "Delete"
@@ -307,7 +304,7 @@ msgid "Choose a theme for this list"
 msgstr "Zvolte téma pro tento seznam"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:128(string) tmp_strings.xml:266(item)
+#: tmp_strings.xml:128(string) tmp_strings.xml:273(item)
 msgid "Default"
 msgstr "Výchozí nastavení"
 
@@ -383,185 +380,218 @@ msgid "Change sort order of list items"
 msgstr "Změnit roztřídění bodů na seznamu"
 
 #: tmp_strings.xml:154(string)
+#, fuzzy
+msgid "Sort order - Pick Items"
+msgstr "%s - Zvolit body"
+
+#: tmp_strings.xml:155(string)
+#, fuzzy
+msgid "Change sort order of list items in Pick Items mode."
+msgstr "Změnit roztřídění bodů na seznamu"
+
+#: tmp_strings.xml:156(string)
 msgid "Choose sort order"
 msgstr "Zvolte řazení bodů"
 
-#: tmp_strings.xml:155(string)
+#: tmp_strings.xml:157(string)
+#, fuzzy
+msgid "Choose sort order for Pick Items mode"
+msgstr "Změnit roztřídění bodů na seznamu"
+
+#: tmp_strings.xml:158(string)
 msgid "Load last list used"
 msgstr "Natáhnout naposled použitý seznam"
 
-#: tmp_strings.xml:156(string)
+#: tmp_strings.xml:159(string)
 msgid "Always start with the list viewed last time."
 msgstr "Vždy začít se seznamem shlédnutým naposled"
 
-#: tmp_strings.xml:157(string)
+#: tmp_strings.xml:160(string)
 msgid "Capitalization"
 msgstr "Velká písmena"
 
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:161(string)
 msgid "Automatic capitalization of entries"
 msgstr "Automatická velká písmena vstupů"
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:162(string)
 msgid "Choose capitalization"
 msgstr "Zvolte velká písmena"
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:163(string)
 msgid "Hide checked items"
 msgstr "Skrýt odškrtnuté body"
 
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:164(string)
 msgid "Immediately hide items checked off."
 msgstr "Ihned skrýt odškrtnuté body."
 
-#: tmp_strings.xml:162(string)
+#: tmp_strings.xml:165(string)
 msgid "Show price"
 msgstr "Ukázat cenu"
 
-#: tmp_strings.xml:163(string) tmp_strings.xml:168(string)
-#: tmp_strings.xml:170(string) tmp_strings.xml:172(string)
-#: tmp_strings.xml:174(string)
+#: tmp_strings.xml:166(string) tmp_strings.xml:171(string)
+#: tmp_strings.xml:173(string) tmp_strings.xml:175(string)
+#: tmp_strings.xml:177(string)
 msgid "Shown as extra column in list."
 msgstr "Ukázáno na seznamu jako další sloupek"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:167(string)
 msgid "Per-store prices"
 msgstr ""
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:168(string)
 msgid "Track per-store prices"
 msgstr ""
 
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:169(string)
 msgid "Keep track of separate prices for each item at each store."
 msgstr ""
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:170(string)
 msgid "Show tags"
 msgstr "Ukázat označené"
 
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:172(string)
 msgid "Show quantity"
 msgstr "Ukázat množství"
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:174(string)
 msgid "Show priority"
 msgstr ""
 
-#: tmp_strings.xml:173(string)
+#: tmp_strings.xml:176(string)
 msgid "Show units"
 msgstr ""
 
-#: tmp_strings.xml:175(string) tmp_strings.xml:176(string)
-#: tmp_strings.xml:178(string)
+#: tmp_strings.xml:178(string) tmp_strings.xml:179(string)
+#: tmp_strings.xml:181(string)
 msgid "Subtotal by priority"
 msgstr ""
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:180(string)
 msgid "No subtotal by priority shown."
 msgstr ""
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:182(string)
 msgid "Include checked items"
 msgstr ""
 
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:183(string)
 msgid "Subtotal by priority includes checked items"
 msgstr ""
 
-#: tmp_strings.xml:181(string)
+#: tmp_strings.xml:184(string)
 msgid "Subtotal by priority excludes checked items"
 msgstr ""
 
-#: tmp_strings.xml:182(string)
+#: tmp_strings.xml:185(string)
 msgid "Pick items directly in list"
 msgstr ""
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:186(string)
 msgid "Switch main list to edit mode to re-add existing items"
 msgstr ""
 
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:187(string)
 msgid "Add items to list using a dedicated dialog"
 msgstr ""
 
+#: tmp_strings.xml:188(string)
+#, fuzzy
+msgid "Always same sort order"
+msgstr "Zvolte řazení bodů"
+
+#: tmp_strings.xml:189(string)
+msgid "Items are sorted in Pick Items mode just as in Shopping mode."
+msgstr ""
+
+#: tmp_strings.xml:190(string)
+msgid "Sort order for Pick Items mode can be chosen separately."
+msgstr ""
+
 #. Preference title: Shake the phone to clean up the list.
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:193(string)
 msgid "Shake to clean up"
 msgstr "Pro vyčištění zatřást"
 
 #. Preference summary: Shake the phone to clean up the list.
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:196(string)
 msgid "Shake the phone to clean up the list."
 msgstr "Pro vyčištění seznamu zatřást telefonem"
 
-#: tmp_strings.xml:192(string)
+#: tmp_strings.xml:198(string)
 msgid "Advanced settings"
 msgstr "Pokročilá nastavení"
 
-#: tmp_strings.xml:193(string)
+#: tmp_strings.xml:199(string)
 msgid "Additional settings regarding the appearance."
 msgstr "Dodatečná nastavení vzhledu"
 
 #. Preference category: General settings
-#: tmp_strings.xml:196(string)
+#: tmp_strings.xml:202(string)
 msgid "General"
 msgstr "Obecné"
 
-#: tmp_strings.xml:198(string)
+#: tmp_strings.xml:203(string)
+#, fuzzy
+msgid "Pick Items"
+msgstr "Zvolit body"
+
+#: tmp_strings.xml:205(string)
 msgid "Appearance"
 msgstr "Vzhled"
 
-#: tmp_strings.xml:200(string)
+#: tmp_strings.xml:207(string)
 msgid "Add-ons"
 msgstr "Doplňky"
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:208(string)
 msgid "Get new add-ons"
 msgstr "Získejte nový doplněk"
 
-#: tmp_strings.xml:202(string)
+#: tmp_strings.xml:209(string)
 msgid "Search for extensions and themes online."
 msgstr "Hledejte na netu přídatky a témata"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:210(string)
 msgid "Get add-ons from Market"
 msgstr "Získejte doplňky z Marketu"
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:211(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Získejte doplňky z OpenIntents"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:212(string)
 msgid "Extensions"
 msgstr "Přídavky"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:213(string)
 msgid "Themes"
 msgstr "Témata"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:214(string)
 msgid "Search for extensions at Android Market."
 msgstr "Hledejte přídavky v Android Marketu."
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:215(string)
 msgid "Search for themes at Android Market."
 msgstr "Hledejte témata v Android Marketu."
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:216(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Získejte přídatky z domovské stránky OpenIntents."
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:217(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Získejte témata z domovské stránky OpenIntents."
 
 #. Permission to read shopping lists
-#: tmp_strings.xml:218(string)
+#: tmp_strings.xml:225(string)
 msgid "read shopping lists"
 msgstr "číst seznamy nákupů"
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:226(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -570,11 +600,11 @@ msgstr ""
 "seznamy a body jsou dodány v zakódovaném formátu"
 
 #. Permission to write to shopping lists
-#: tmp_strings.xml:221(string)
+#: tmp_strings.xml:228(string)
 msgid "write shopping lists"
 msgstr "sepište seznamy nákupů"
 
-#: tmp_strings.xml:222(string)
+#: tmp_strings.xml:229(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
 msgstr ""
@@ -582,121 +612,121 @@ msgstr ""
 "stávajících."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
-#: tmp_strings.xml:231(item)
+#: tmp_strings.xml:238(item)
 msgid "unchecked first, alphabetical"
 msgstr "dát neodškrtnuté první: alfabeticky"
 
 #. Preference sort order: Sort by item name
-#: tmp_strings.xml:233(item)
+#: tmp_strings.xml:240(item)
 msgid "alphabetical"
 msgstr "alfabeticky"
 
 #. Preference sort order: Newest item first
-#: tmp_strings.xml:235(item)
+#: tmp_strings.xml:242(item)
 msgid "newest first"
 msgstr "nejnovější první"
 
 #. Preference sort order: Oldest item first
-#: tmp_strings.xml:237(item)
+#: tmp_strings.xml:244(item)
 msgid "oldest first"
 msgstr "nejstarší první"
 
 #. Preference sort order: Sort alphabetically by tags
-#: tmp_strings.xml:239(item)
+#: tmp_strings.xml:246(item)
 msgid "tags alphabetical"
 msgstr "alfabeticky podle označení"
 
 #. Preference sort order: Sort by priority, then alphabetically by tags
-#: tmp_strings.xml:241(item)
+#: tmp_strings.xml:248(item)
 msgid "priority, tags alphabetical"
 msgstr ""
 
 #. Preference sort order: Sort by price, the most expensive first
-#: tmp_strings.xml:243(item)
+#: tmp_strings.xml:250(item)
 msgid "most expensive first"
 msgstr "nejdražší první"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
-#: tmp_strings.xml:245(item)
+#: tmp_strings.xml:252(item)
 msgid "unchecked first, tags alphabetical"
 msgstr "dát neodškrtnuté první, alfabeticky podle označení"
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
-#: tmp_strings.xml:247(item)
+#: tmp_strings.xml:254(item)
 msgid "unchecked first, priority, alphabetical"
 msgstr ""
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
-#: tmp_strings.xml:249(item)
+#: tmp_strings.xml:256(item)
 msgid "unchecked first, priority, tags alphabetical"
 msgstr ""
 
-#: tmp_strings.xml:253(item)
+#: tmp_strings.xml:260(item)
 msgid "Not shown"
 msgstr ""
 
-#: tmp_strings.xml:254(item)
+#: tmp_strings.xml:261(item)
 msgid "Priority 1"
 msgstr ""
 
-#: tmp_strings.xml:255(item)
+#: tmp_strings.xml:262(item)
 msgid "Priority 1-2"
 msgstr ""
 
-#: tmp_strings.xml:256(item)
+#: tmp_strings.xml:263(item)
 msgid "Priority 1-3"
 msgstr ""
 
-#: tmp_strings.xml:257(item)
+#: tmp_strings.xml:264(item)
 msgid "Priority 1-4"
 msgstr ""
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:262(item)
+#: tmp_strings.xml:269(item)
 msgid "Tiny"
 msgstr "Nejmenší"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:271(item)
 msgid "Small"
 msgstr "Malé"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:268(item)
+#: tmp_strings.xml:275(item)
 msgid "Large"
 msgstr "Velké"
 
 #. Preference capitalization: No capitalization
-#: tmp_strings.xml:273(item)
+#: tmp_strings.xml:280(item)
 msgid "None"
 msgstr "Žádné"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
-#: tmp_strings.xml:275(item)
+#: tmp_strings.xml:282(item)
 msgid "Per Sentence"
 msgstr "Každou větu"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
-#: tmp_strings.xml:277(item)
+#: tmp_strings.xml:284(item)
 msgid "Per Word"
 msgstr "Každé slovo"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
-#: tmp_strings.xml:284(string)
+#: tmp_strings.xml:291(string)
 msgid "Editing item notes requires OI Notepad."
 msgstr ""
 
 #. Name of application "OI Notepad". Translations should be consistent.
-#: tmp_strings.xml:286(string)
+#: tmp_strings.xml:293(string)
 msgid "OI Notepad"
 msgstr ""
 
 #. Label above spinner for all actions (automation tasks) that can be performed.
-#: tmp_strings.xml:292(string)
+#: tmp_strings.xml:299(string)
 msgid "Select action:"
 msgstr "Zvolte úkon:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
-#: tmp_strings.xml:295(string)
+#: tmp_strings.xml:302(string)
 msgid "Select list:"
 msgstr "Zvolte seznam:"
