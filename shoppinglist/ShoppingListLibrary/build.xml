@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="DistributionLibrary" default="help">
+<project name="ShoppingListLibrary" default="help">
 <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      If Eclipse does not let you build the project because
      it claims the "help" target above does not exist,
