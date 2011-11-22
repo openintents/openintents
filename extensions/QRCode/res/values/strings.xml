@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OI QR Code</string>
+    <string name="decode_label">Scan QR Code</string>
+    <string name="encode_label">Generate QR Code</string>
+    <string name="info">This is an extension for OI Notepad to support de- and encoding of QR Codes. It uses the IntentIntegrator library by zxing (http://code.google.com/p/zxing/wiki/ScanningViaIntent).</string>
+    <string name="info_text">To scan a QR Code, edit a note and press menu > Scan QRCode. You can also generate a QR code by selecting text and pressing menu -> Generate QR Code</string>
+    <string name="info_launch">Launch OI Notepad</string>
+    <string name="update_error">Download application not available.</string>
+    <string name="notepad_not_available">This extension requires OI Notepad.</string>
+    <string name="notepad_get">Get OI Notepad</string>
+    <string name="notepad_market_uri">market://search?q=pname:org.openintents.notepad</string>
+    <string name="notepad_developer_uri">http://www.openintents.org/en/node/129</string> <!-- 129 = OI Notepad -->
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.openintents.extensions.qrcode"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="10" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/decode_label"
+            android:name="org.openintents.qrcode.QRDecodeActivity" >
+            <intent-filter >
+                <action android:name="org.openintents.action.DECODE_QR" />
+
+                <category android:name="org.openintents.category.TEXT_SELECTION_ALTERNATIVE" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/encode_label"
+            android:name="org.openintents.qrcode.QREncodeActivity" >
+            <intent-filter >
+                <action android:name="org.openintents.action.ENCODE_QR" />
+
+                <category android:name="org.openintents.category.TEXT_SELECTION_ALTERNATIVE" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.openintents.qrcode.InfoActivity"
+            android:theme="@*android:style/Theme.Translucent.NoTitleBar" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.INFO" />
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
