@@ -18,6 +18,8 @@ package org.openintents.convertcsv.shoppinglist;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import org.openintents.convertcsv.R;
 import org.openintents.convertcsv.common.ConvertCsvBaseActivity;
@@ -97,7 +99,8 @@ public class ImportCsv {
 			}
 			
 			
-			ShoppingUtils.addItemToList(mContext, itemId, listId, status, null, null, false);
+			ShoppingUtils.addItemToList(mContext, itemId, listId, status, null, null, 
+					false, mDuplicate);
 	    }
 	    
 	}
@@ -116,6 +119,8 @@ public class ImportCsv {
 	public void importHandyShopperCsv(Reader reader, long listId, Boolean importStores) throws IOException, WrongFormatException {
 		CSVReader csvreader = new CSVReader(reader);
 	    String [] nextLine;
+		HashMap<String, Long> seen_stores = new HashMap<String,Long>();
+		HashMap<String, Long> item_stores = new HashMap<String,Long>(); 
 	    	    
 	    while ((nextLine = csvreader.readNext()) != null) {
 	    	if (nextLine.length != 23) {
@@ -164,30 +169,19 @@ public class ImportCsv {
 			//long listId = ShoppingUtils.getDefaultList(mContext);
 			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, price, units, note,
 					mDuplicate, mUpdate);
-			ShoppingUtils.addItemToList(mContext, itemId, listId, status, priority, quantity, false);
+			ShoppingUtils.addItemToList(mContext, itemId, listId, status, priority, quantity, 
+					false, mDuplicate);
 			
 			// Two columns contain per-store information. Column 10 lists 
 			// all stores which carry this item, delimited by semicolons. Column 11 
 			// lists aisles and prices for some subset of those stores.
 			//
-			// First deal with the stores themselves from column 10.
-			String [] stores;
+			// To save time, we first deal with the prices in column 11, then from 
+			// Column 10 we add only the ones not already added from Column 11.
 			
-			if (nextLine[10].length() > 0)
-			{
-				stores = nextLine[10].split(";");
-				for (int i_store = 0; i_store < stores.length; i_store ++)
-				{
-					if (importStores){	// real store import
-						long storeId = ShoppingUtils.getStore(mContext, stores[i_store], listId);
-						long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, "", "");
-					} else if (!TextUtils.isEmpty(stores[i_store])){
-						// store names added as tags. 
-						ShoppingUtils.addTagToItem(mContext, itemId, stores[i_store]);
-					}
-				}
-			}
-			// Now go back and deal with per-store aisles and prices from column 11.
+			String [] stores;
+			item_stores.clear();
+
 			// example value for column 11:    Big Y=/0.50;BJ's=11/0.42
 			if (nextLine[11].length() > 0 && importStores) {
 				stores = nextLine[11].split(";");
@@ -205,12 +199,41 @@ public class ImportCsv {
 						store_price = convert_hs_price(aisle_price[1]);
 					}
 			
-					long storeId = ShoppingUtils.getStore(mContext, store_name, listId);
-					long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, aisle, store_price);
-				
+					Long storeId = seen_stores.get(store_name);
+					if (storeId == null)
+					{
+						storeId = ShoppingUtils.getStore(mContext, store_name, listId);
+						seen_stores.put(store_name, storeId);
+					}
+					item_stores.put(store_name, storeId);
+					long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, aisle, store_price, mDuplicate);
+				}
+			}
+	
+			if (nextLine[10].length() > 0)
+			{
+				stores = nextLine[10].split(";");
+				for (int i_store = 0; i_store < stores.length; i_store ++)
+				{
+					if (importStores){	// real store import
+						Long storeId = item_stores.get(stores[i_store]);
+						if (storeId != null)
+							// existence of item at store handled in price handling, no need to add it again.
+							continue;
+						storeId = seen_stores.get(stores[i_store]);
+						if (storeId == null) 
+						{
+							storeId = ShoppingUtils.getStore(mContext, stores[i_store], listId);
+							seen_stores.put(stores[i_store], storeId);
+						}
+						item_stores.put(stores[i_store], storeId); // not strictly required, but...
+						long item_store = ShoppingUtils.addItemToStore(mContext, itemId, storeId, "", "", mDuplicate);
+					} else if (!TextUtils.isEmpty(stores[i_store])){
+						// store names added as tags. 
+						ShoppingUtils.addTagToItem(mContext, itemId, stores[i_store]);
+					}
 				}
 			}
 	    }
-		
 	}
 }
