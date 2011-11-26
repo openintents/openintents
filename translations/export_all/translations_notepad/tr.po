@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zeugma <Unknown>\n"
+"Last-Translator: ehturan <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  ehturan https://launchpad.net/~ehturan1968\n"
 "  zeugma https://launchpad.net/~sunder67"
 
 #. Short explanation of the application
@@ -52,7 +53,7 @@ msgstr "Geri al"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
-msgstr ""
+msgstr "Çıkarma"
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
@@ -89,7 +90,7 @@ msgstr "%s (notu düzenleme)"
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "Kısayol için not al"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
@@ -111,15 +112,15 @@ msgstr "Gönder"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
-msgstr ""
+msgstr "Boş not"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sending."
-msgstr ""
+msgstr "Gönderilmeye uygun uygulama yok"
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
-msgstr ""
+msgstr "Şifreleme notu"
 
 #: tmp_strings.xml:74(string)
 msgid "Encrypted"
@@ -135,7 +136,7 @@ msgstr "Şifre Çöz"
 
 #: tmp_strings.xml:77(string)
 msgid "Undo encryption"
-msgstr ""
+msgstr "Şifrelemeyi geri al"
 
 #: tmp_strings.xml:78(string)
 msgid "Do not encrypt"
@@ -225,7 +226,7 @@ msgstr "Farklı kaydet"
 
 #: tmp_strings.xml:104(string)
 msgid "Text modified"
-msgstr ""
+msgstr "Değiştirilmiş metin"
 
 #: tmp_strings.xml:105(string)
 msgid "Do you want to save the changes?"
@@ -241,10 +242,10 @@ msgstr "Tema"
 
 #: tmp_strings.xml:110(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Tema al"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
 msgid "Default"
 msgstr "Ön tanımlı"
 
@@ -298,180 +299,205 @@ msgstr "Notlar Listesi"
 
 #: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
 msgid "List Sorting Order"
-msgstr ""
+msgstr "Sıralama düzeni listesi"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
+msgstr "Not listesinde gösterilen notların sırası"
+
+#: tmp_strings.xml:140(string)
+msgid "Marquee note titles."
 msgstr ""
 
 #: tmp_strings.xml:141(string)
-msgid "Note Editor"
+msgid "Continuously scroll note titles that are too long."
 msgstr ""
 
-#: tmp_strings.xml:142(string)
+#: tmp_strings.xml:143(string)
+msgid "Note Editor"
+msgstr "Not Düzenleyici"
+
+#: tmp_strings.xml:144(string)
 msgid "Font size"
 msgstr "Yazı tipi boyutu"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:145(string)
 msgid "Change font size"
 msgstr "Yazı boyutunu değiştir"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:146(string)
 msgid "Choose font size"
 msgstr "Yazı boyutunu seçin"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:147(string)
 msgid "Auto-create Links"
 msgstr "Bağlantıları otomatik oluştur"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr ""
 "E-posta/sokak/internet adresi ve telefon numaraları için bağlantı oluştur"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"
 msgstr "Notlara link oluşturma"
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:151(string)
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: tmp_strings.xml:150(string)
+#: tmp_strings.xml:152(string)
 msgid "Sort Order"
-msgstr ""
+msgstr "Sıralama Düzeni"
 
 #. Permission to read notes.
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:160(string)
 msgid "read notes"
 msgstr "notları oku"
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:161(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
-msgstr ""
+msgstr "Uygulama notları okumaya izin verir."
 
 #. Permission to write notes.
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:163(string)
 msgid "write notes"
 msgstr "notları yaz"
 
-#: tmp_strings.xml:162(string)
+#: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"Bu ugulama yeni not oluşturmak için ve varolan notları değiştirmeye izin "
+"verir."
 
 #. Permission to read shopping lists.
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:168(string)
 msgid "read shopping lists"
 msgstr "alışveriş listelerini oku"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:169(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Bu ugulama alışveriş listesinin okumaya izin verir. Şifrelenmiş liste ve "
+"nesnelerin şifrelenmiş biçimde olduğuna dikkat edin."
 
 #. Permission to write shopping lists.
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:171(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "Alışveriş listeleri yaz"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:172(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Bu uygulama yeni liste oluşturmanıza ve nesneleri veya varolan notları "
+"değiştirmeye izin verir."
 
 #. Permission to encrypt and decrypt data.
-#: tmp_strings.xml:174(string)
+#: tmp_strings.xml:176(string)
 msgid "encrypt and decrypt data"
 msgstr "Veri şifrele ve şifreleri çöz"
 
-#: tmp_strings.xml:175(string)
+#: tmp_strings.xml:177(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Bu uygulama metinin şifresini çözme ve metini şifrelemeye izin verir ve "
+"saklanan şifrelere erişim izni verir."
 
-#: tmp_strings.xml:184(item)
+#: tmp_strings.xml:186(item)
 msgid "Alphabetical"
 msgstr "Alfabetik"
 
-#: tmp_strings.xml:185(item)
+#: tmp_strings.xml:187(item)
 msgid "Reverse Alphabetical"
 msgstr "Tersten Alfabetik"
 
-#: tmp_strings.xml:186(item)
-msgid "Last Modified"
-msgstr ""
-
-#: tmp_strings.xml:187(item)
-msgid "First Modified"
-msgstr ""
-
 #: tmp_strings.xml:188(item)
-msgid "Newest to Oldest"
-msgstr ""
+msgid "Last Modified"
+msgstr "Son değiştirilme tarihi"
 
 #: tmp_strings.xml:189(item)
+msgid "First Modified"
+msgstr "İlk değiştirme tarihi"
+
+#: tmp_strings.xml:190(item)
+msgid "Newest to Oldest"
+msgstr "En yeniden en eskiye"
+
+#: tmp_strings.xml:191(item)
 msgid "Oldest to Newest"
-msgstr ""
+msgstr "En eskiden en yeniye"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Tiny"
 msgstr "Minik"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:196(item)
+#: tmp_strings.xml:198(item)
 msgid "Small"
 msgstr "Küçük"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:200(item)
+#: tmp_strings.xml:202(item)
 msgid "Large"
 msgstr "Büyük"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Add-ons"
 msgstr "Eklentiler"
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get new add-ons"
 msgstr "Yeni eklentiler al"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Search for extensions and themes online."
 msgstr "Eklenti ve tema için çevrimiçi arama"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Get add-ons from Market"
 msgstr "Marketten yeni eklentiler al"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "OpenIntents'den yeni eklentiler al"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Extensions"
 msgstr "Uzantılar"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Themes"
 msgstr "Temalar"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
 msgstr "Android Markette uzantıları arayın."
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
 msgstr "Android Markette temaları arayın."
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "OpenIntents ana sayfasından  uzantılar al"
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:215(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "OpenIntents ana sayfasından temalar al"
+
+#: tmp_strings.xml:216(string)
+msgid "Deletion Confirmation"
+msgstr ""
+
+#: tmp_strings.xml:217(string)
+#, fuzzy
+msgid "Are you sure you want to delete this note?"
+msgstr "Mevcut dosyanın üzerine yazmak istediğinize emin misiniz?"

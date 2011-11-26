@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zeugma <Unknown>\n"
+"Last-Translator: ariza95 <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  ariza95 https://launchpad.net/~alirizanazli95\n"
 "  zeugma https://launchpad.net/~sunder67"
 
 #. Short explanation of the application
@@ -39,11 +40,11 @@ msgstr "OI Kasa"
 
 #: tmp_strings.xml:35(string)
 msgid "No Passwords present for this category."
-msgstr ""
+msgstr "Bu katagori için şifre hazırlanmamış."
 
 #: tmp_strings.xml:36(string)
 msgid "No categories present. Please add one via Menu-&gt;Add"
-msgstr ""
+msgstr "Katagori yok. Lütfen menü aracılığıyla bir tane -&gt ekleyin."
 
 #: tmp_strings.xml:37(string) tmp_strings.xml:197(string)
 msgid "Lock"
@@ -117,7 +118,7 @@ msgstr "Ad boş olamaz"
 msgid ""
 "Please enter a password below, which will be used to keep your passwords "
 "safe."
-msgstr ""
+msgstr "Lütfen aşağıya şifrelerinizi koruyacak bir şifre giriniz."
 
 #: tmp_strings.xml:55(string)
 msgid ""
@@ -125,12 +126,16 @@ msgid ""
 "request their passwords and decrypt/encrypt data. Lock to prevent further "
 "access until you type in your password again."
 msgstr ""
+"OI Kasa şuan giriş yapmış bulunuyorsunuz. Bunum anlamı diğer uygulamalar "
+"şifrelerini ve  decrypt/encrypt datalarını isteyebilir.Şifrenizi yeniden "
+"girene kadar daha fazla erşişim engellenecek."
 
 #: tmp_strings.xml:56(string)
 msgid ""
 "Another application is asking to use the master key. Please type in your "
 "password to unlock it."
 msgstr ""
+"Başka bir uygulama master key kullanmak istiyor? Lütfen şifre tipinizi açın."
 
 #: tmp_strings.xml:57(string)
 msgid "Categories"
@@ -154,23 +159,23 @@ msgstr "İsim"
 
 #: tmp_strings.xml:62(string)
 msgid "Category is not empty. You must delete the passwords first."
-msgstr ""
+msgstr "Katagori boş değil. İlk önce şifreyi silmelisiniz."
 
 #: tmp_strings.xml:63(string)
 msgid "Cannot decrypt category"
-msgstr ""
+msgstr "Katagori şifresi çözülemiyor."
 
 #: tmp_strings.xml:64(string)
 msgid "Cannot decrypt password"
-msgstr ""
+msgstr "Şifre çözülemiyor."
 
 #: tmp_strings.xml:65(string)
 msgid "Error exporting database"
-msgstr ""
+msgstr "Veri tabanı hatası."
 
 #: tmp_strings.xml:66(string)
 msgid "Export Database"
-msgstr ""
+msgstr "Veri tabanını farklı kaydet."
 
 #: tmp_strings.xml:67(string)
 msgid ""
@@ -178,16 +183,21 @@ msgid ""
 "DANGEROUS. Make sure that you delete the file after you are done with it. "
 "Are you sure you want to export?"
 msgstr ""
+"Bu yaptığınız şifre veri tabanını plaintext dosyası şeklinde kaydedecek. BU "
+"YAPTIĞINIZ ÇOK TEHLİKELİ. Dosya ile işiniz bittikten sonra sildiğinizden "
+"emin olun.Kaydetmek istediğinizden emin misiniz?"
 
 #: tmp_strings.xml:68(string)
 msgid "Export to '%s' successful. Warning! The file is not encrypted."
-msgstr ""
+msgstr "'%s' başarılı bir şekilde dışa aktarıldı. Uyarı! Dosya şifrelenmedi."
 
 #: tmp_strings.xml:69(string)
 msgid ""
 "Unable to create export file 'oisafe.csv' on SDCARD. You might try "
 "disconnecting USB from computer."
 msgstr ""
+"SDCARD üzerinde dışa aktarılan 'oisafe.csv' dosyası  oluşturulamadı. USB nin "
+"bilgisayarla olan bağlantısını kesmeyi denemelisiniz."
 
 #: tmp_strings.xml:70(string)
 msgid "Import Database"
@@ -195,25 +205,27 @@ msgstr "Veritabanı Al"
 
 #: tmp_strings.xml:71(string)
 msgid "Import file is missing:"
-msgstr ""
+msgstr "İçe alınan dosya eksik:"
 
 #: tmp_strings.xml:72(string)
 msgid ""
 "Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
 "USB from computer."
 msgstr ""
+"SDCARD üzerinde içe aktarılan  'oisafe.csv' dosyası oluşturulamadı. USB nin "
+"bilgisayarla olan bağlantısını kesmeyi denemelisiniz."
 
 #: tmp_strings.xml:73(string)
 msgid "First line is missing fields."
-msgstr ""
+msgstr "İlk satır eksik."
 
 #: tmp_strings.xml:74(string)
 msgid "Import"
-msgstr ""
+msgstr "İçe aktarım."
 
 #: tmp_strings.xml:75(string)
 msgid "Do you want to replace the database (import from %s)?"
-msgstr ""
+msgstr "Veri tabanını değiştirmek istiyor musunuz(%s den içe aktarılan )?"
 
 #: tmp_strings.xml:76(string)
 msgid "Yes"
@@ -225,7 +237,7 @@ msgstr "Hayır"
 
 #: tmp_strings.xml:78(string)
 msgid "Please wait while importing..."
-msgstr ""
+msgstr "İçe aktarılırken Lütfen bekleyiniz"
 
 #: tmp_strings.xml:79(string)
 msgid "No categories found."
@@ -233,15 +245,15 @@ msgstr "Kategori bulunamadı."
 
 #: tmp_strings.xml:80(string)
 msgid "No entries found in CSV."
-msgstr ""
+msgstr "CSV girdilieri bulunamadı."
 
 #: tmp_strings.xml:81(string)
 msgid "Too many categories."
-msgstr ""
+msgstr "Çok fazla katagori"
 
 #: tmp_strings.xml:82(string)
 msgid "Not enough fields"
-msgstr ""
+msgstr "Yeterli alan yok."
 
 #: tmp_strings.xml:83(string)
 msgid "Blank category"
@@ -258,7 +270,7 @@ msgstr "Veritabanını sil"
 #: tmp_strings.xml:86(string)
 msgid ""
 "Are you really sure you want to delete the database? This cannot be undone."
-msgstr ""
+msgstr "Veri tabanını gerçekten silmek istiyor musunuz?Bu işlem geri alınamaz."
 
 #: tmp_strings.xml:87(string)
 msgid "Added"
@@ -270,13 +282,15 @@ msgstr "girdiler"
 
 #: tmp_strings.xml:89(string)
 msgid "Import complete"
-msgstr ""
+msgstr "İçe aktarım tamamlandı."
 
 #: tmp_strings.xml:90(string)
 msgid ""
 "Since it is not secure to keep passwords in clear text CSV files, would you "
 "like to delete"
 msgstr ""
+"Şifreleri açık metin CSV dosyalarında tutmak güvenli değil , silmek istiyor "
+"musunuz?"
 
 #: tmp_strings.xml:91(string)
 msgid "Edit Entry"
@@ -284,7 +298,7 @@ msgstr "Girdiyi Düzenle"
 
 #: tmp_strings.xml:92(string)
 msgid "View Entry"
-msgstr ""
+msgstr "Girdiyi göster."
 
 #: tmp_strings.xml:93(string)
 msgid "Help"
@@ -308,7 +322,7 @@ msgstr "Şifreyi silmek istediğinize emin misiniz?"
 
 #: tmp_strings.xml:98(string)
 msgid "Change Master Password"
-msgstr ""
+msgstr "Ana  şifreyi değiştir."
 
 #: tmp_strings.xml:99(string)
 msgid ""
@@ -316,6 +330,9 @@ msgid ""
 "re-encrypted with the new password. The more complex your password is, the "
 "safer your data will be."
 msgstr ""
+"OI Kasa kilidini açmak için kullandığınız şifreyi değiştirin. Veriniz yeni "
+"bir şifreyle şifrelenecek. Daha karmaşık şifre ile veriniz daha güvenli "
+"olabilecek."
 
 #: tmp_strings.xml:100(string)
 msgid "Old password"
@@ -355,23 +372,23 @@ msgstr "Parola girdileri uyuşmuyor."
 
 #: tmp_strings.xml:109(string)
 msgid "Backup"
-msgstr ""
+msgstr "Yedekleme"
 
 #: tmp_strings.xml:110(string)
 msgid "Backing up to"
-msgstr ""
+msgstr "Yedekleniyor"
 
 #: tmp_strings.xml:111(string)
 msgid "Complete. Passwords backed up:"
-msgstr ""
+msgstr "Tamamlandı.Şifre yedeklendi:"
 
 #: tmp_strings.xml:112(string)
 msgid "Backup failed:"
-msgstr ""
+msgstr "Yedekleme başarısız oldu."
 
 #: tmp_strings.xml:113(string)
 msgid "Restore"
-msgstr ""
+msgstr "Geri yükleme"
 
 #: tmp_strings.xml:114(string)
 msgid "Filename"
@@ -381,27 +398,29 @@ msgstr "Dosya adı"
 msgid ""
 "Backup file not found. You need to perform a backup first to create it. Or "
 "copy a backup from your PC."
-msgstr ""
+msgstr "Yedeklenen dosya bulunamadı."
 
 #: tmp_strings.xml:116(string)
 msgid ""
 "Please provide the password used by the backup file. Your master password "
 "will be set to this."
 msgstr ""
+"Lütfen yedekleme dosyasını kullanarak şifreyi temin ediniz.An şifreniz bu "
+"olarak ayarlanacak."
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:119(string)
 msgid "Unable to open file: %s"
-msgstr ""
+msgstr "Dosya açılmaya uygun değil: %s"
 
 #. Toast message. %s contains the version number of the database.
 #: tmp_strings.xml:122(string)
 msgid "Version not supported: %s"
-msgstr ""
+msgstr "Sürüm desteklenmiyor: %s"
 
 #: tmp_strings.xml:124(string)
 msgid "Restore error."
-msgstr ""
+msgstr "Geri yükleme hatası"
 
 #: tmp_strings.xml:125(string)
 msgid "Bad password."
@@ -409,19 +428,19 @@ msgstr "Kötü parola."
 
 #: tmp_strings.xml:126(string)
 msgid "Restore Database"
-msgstr ""
+msgstr "Geri yükleme veri tabanı"
 
 #: tmp_strings.xml:127(string)
 msgid "Are you sure you want to replace the current data?"
-msgstr ""
+msgstr "Şuan kullanılan veri tabanının değiştirilmesini istiyor musunuz?"
 
 #: tmp_strings.xml:128(string)
 msgid "Found %1$s passwords from backup dated %2$s."
-msgstr ""
+msgstr "Yedekleme tarihinden %1$s şifresini bulun."
 
 #: tmp_strings.xml:129(string)
 msgid "Complete. Passwords restored: %s"
-msgstr ""
+msgstr "Tamamlandı.Şifre geri yükleme: %s"
 
 #: tmp_strings.xml:130(string)
 msgid "copied to Clipboard"
@@ -433,11 +452,11 @@ msgstr "Geçersiz web sitesi"
 
 #: tmp_strings.xml:132(string)
 msgid "Database Error"
-msgstr ""
+msgstr "Veri tabanı hatası."
 
 #: tmp_strings.xml:133(string)
 msgid "Database error. Out of space?"
-msgstr ""
+msgstr "veri tabanı hatası.Alanın dışında."
 
 #. Menu label to open a category
 #: tmp_strings.xml:136(string)
@@ -446,13 +465,15 @@ msgstr "Aç"
 
 #: tmp_strings.xml:138(string)
 msgid "Database Version Error"
-msgstr ""
+msgstr "Veri tabanı sürüm hatası"
 
 #: tmp_strings.xml:139(string)
 msgid ""
 "Sorry, but the version of the database is not supported. You must install "
 "the version associated with this database."
 msgstr ""
+"Üzgünüz, fakat veri tabanı versiyonunuz desteklenmiyor. Veri tabanı ile "
+"uyumlu sürümü yüklemek zorundasınız."
 
 #. Menu label to move a password to another category
 #: tmp_strings.xml:142(string)
@@ -474,23 +495,23 @@ msgstr "Ayarlar"
 
 #: tmp_strings.xml:150(string)
 msgid "Allow external access"
-msgstr ""
+msgstr "Harici erişim izni"
 
 #: tmp_strings.xml:151(string)
 msgid "Allow other applications to secure your data with OI Safe"
-msgstr ""
+msgstr "Diğer uygulamalara OI Kasa ile verilerini korumaları için izin ver"
 
 #: tmp_strings.xml:152(string)
 msgid "OI Safe: Another application requests access."
-msgstr ""
+msgstr "OI Kasa: Başka bir uygulamanın erişim talebi."
 
 #: tmp_strings.xml:153(string)
 msgid "Allow other applications to secure your data with OI Safe."
-msgstr ""
+msgstr "Diğer uygulamalara OI Kasa ile verilerini korumaları için izin ver"
 
 #: tmp_strings.xml:154(string)
 msgid "This can also be set in OI Safe's Menu / Settings."
-msgstr ""
+msgstr "Bu aynı zamanda OI Kasa  Menu/Ayarlar ayarlanabilir."
 
 #. Preference title for auto lock timeout
 #: tmp_strings.xml:157(string) tmp_strings.xml:162(string)
@@ -501,16 +522,17 @@ msgstr "Otomatik kilit zaman aşımı"
 #: tmp_strings.xml:160(string)
 msgid "Number of minutes before timeout occurs and safe is locked"
 msgstr ""
+"Sürenin dolmasından ve kasanın kilitlenmesinden önceki kalan dakika sayısı."
 
 #. Preference title for lock (OI Safe) on screen lock (device)
 #: tmp_strings.xml:165(string)
 msgid "Lock on screen lock"
-msgstr ""
+msgstr "Ekran kilidini kilitle"
 
 #. Preference summary for lock (OI Safe) on screen lock
 #: tmp_strings.xml:168(string)
 msgid "Lock when the screen locks"
-msgstr ""
+msgstr "Ekran kilitliyken  kilitler"
 
 #. Preference title: use a numeric keypad to enter the password
 #: tmp_strings.xml:171(string)
@@ -520,7 +542,7 @@ msgstr "Tuş takımı"
 #. Preference summary: for a numeric keypad
 #: tmp_strings.xml:174(string)
 msgid "Use a keypad to enter Master Password"
-msgstr ""
+msgstr "Ana şifreyi girmek için tuş takımını kullanın."
 
 #. Preference title for keypad mute
 #: tmp_strings.xml:177(string)
@@ -531,7 +553,7 @@ msgstr "Tuş takımı sessiz"
 #. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
 #: tmp_strings.xml:181(string)
 msgid "Mute keypad sounds"
-msgstr ""
+msgstr "Tuş takımının sesini kapatın"
 
 #: tmp_strings.xml:183(string)
 msgid "Auto backup"
@@ -539,7 +561,7 @@ msgstr "Otomatik yedekleme"
 
 #: tmp_strings.xml:184(string)
 msgid "Automatically prompt to backup passwords"
-msgstr ""
+msgstr "Yedekleme şifresini otomatik olarak iste"
 
 #: tmp_strings.xml:186(string)
 msgid "Auto backup days"
@@ -547,7 +569,7 @@ msgstr "Otomatik yedekleme günü"
 
 #: tmp_strings.xml:187(string)
 msgid "Number of days to wait before next auto backup"
-msgstr ""
+msgstr "Bir sonraki yedeklemeye kalan gün sayısı."
 
 #: tmp_strings.xml:188(string)
 msgid "Auto Backup Days"
@@ -555,27 +577,27 @@ msgstr "Otomatik Yedekleme Günü"
 
 #: tmp_strings.xml:191(string)
 msgid "Decrypt (OI Safe)"
-msgstr ""
+msgstr "Şifreyi Çözmek(OI Kasa)"
 
 #: tmp_strings.xml:192(string)
 msgid "Encrypt (OI Safe)"
-msgstr ""
+msgstr "Şifrelemek(OI Kasa)"
 
 #: tmp_strings.xml:193(string)
 msgid "Get password (OI Safe)"
-msgstr ""
+msgstr "Şifreyi alın (OI Kasa)"
 
 #: tmp_strings.xml:194(string)
 msgid "Set password (OI Safe)"
-msgstr ""
+msgstr "Şifreyi ayarlayın(OI Kasa)"
 
 #: tmp_strings.xml:195(string)
 msgid "Restart timer (OI Safe)"
-msgstr ""
+msgstr "Yeniden başlatma zamanlayıcısı(OI Kasa)"
 
 #: tmp_strings.xml:196(string)
 msgid "Open OI Safe"
-msgstr ""
+msgstr "OI Kasayı aç."
 
 #: tmp_strings.xml:198(string)
 msgid "Continue"
@@ -607,7 +629,7 @@ msgstr "Semboller [!@#$%^\\*]"
 
 #: tmp_strings.xml:205(string)
 msgid "Copy to Current Entry"
-msgstr ""
+msgstr "Şuanki girdiyi koyalayın"
 
 #: tmp_strings.xml:206(string)
 msgid "Copy to Clipboard"
@@ -619,19 +641,19 @@ msgstr "İptal"
 
 #: tmp_strings.xml:208(string)
 msgid "Discard changes"
-msgstr ""
+msgstr "Değişikleri kaydetme."
 
 #: tmp_strings.xml:209(string)
 msgid "Entry saved"
-msgstr ""
+msgstr "Girdiler kaydedildi."
 
 #: tmp_strings.xml:210(string)
 msgid "Unable to save due to database error"
-msgstr ""
+msgstr "Veri tabanı hatasından dolayı kaydedilemiyor."
 
 #: tmp_strings.xml:211(string)
 msgid "Last edited"
-msgstr ""
+msgstr "Son düzenleme"
 
 #: tmp_strings.xml:212(string)
 msgid "unknown"
@@ -639,15 +661,15 @@ msgstr "bilinmiyor"
 
 #: tmp_strings.xml:213(string)
 msgid "Crypto error:"
-msgstr ""
+msgstr "Şifreleme hatası:"
 
 #: tmp_strings.xml:214(string)
 msgid "Unique name"
-msgstr ""
+msgstr "Ad"
 
 #: tmp_strings.xml:215(string)
 msgid "Package access"
-msgstr ""
+msgstr "Paket erişimi"
 
 #: tmp_strings.xml:216(string)
 msgid "not found"
@@ -655,21 +677,24 @@ msgstr "bulunamadı"
 
 #: tmp_strings.xml:217(string)
 msgid "New master key"
-msgstr ""
+msgstr "Yeni Ana anahtar"
 
 #: tmp_strings.xml:218(string)
 msgid ""
 "A new random master key has been created. Use menu &gt; backup and store "
 "this key in a safe place. Without this key you may lose encrypted data."
 msgstr ""
+"Yeni rastgele ana anahtar yaratıldı. Menüyü kullanarak &gt; bu anahtarı "
+"güvenli bir yere yedekle ve depola. Bu anahtarsız  şifrelenmiş veriyi "
+"kaybedebilirsiniz."
 
 #: tmp_strings.xml:219(string)
 msgid "Switch mode"
-msgstr ""
+msgstr "Modu değiştirin."
 
 #: tmp_strings.xml:220(string)
 msgid "Decrypting..."
-msgstr ""
+msgstr "Şifre çözülüyor."
 
 #: tmp_strings.xml:221(string)
 msgid "Search"
@@ -681,7 +706,7 @@ msgstr "Aranıyor..."
 
 #: tmp_strings.xml:223(string)
 msgid "Type search criteria"
-msgstr ""
+msgstr "Arama kriteri yazın."
 
 #: tmp_strings.xml:224(string)
 msgid "Nothing found"
@@ -705,41 +730,46 @@ msgstr "Sonraki"
 
 #: tmp_strings.xml:229(string)
 msgid "AutoBackup"
-msgstr ""
+msgstr "Otomatik yedekleme"
 
 #: tmp_strings.xml:230(string)
 msgid "No backup has been performed yet. Would you like to backup now?"
 msgstr ""
+"Henüz hiç bir yedekleme yapılmadı .Şimdi yedekleme yapmak istiyor musunuz?"
 
 #: tmp_strings.xml:231(string)
 msgid "The last backup was %d days ago. Would you like to backup now?"
-msgstr ""
+msgstr "Son yedeklem %d gün önce yapıldı.Şimdi yedekleme yapmak istermisiniz?"
 
 #: tmp_strings.xml:232(string)
 msgid "Turn off autobackup"
-msgstr ""
+msgstr "Otomatik yedeklemeyi kapatma."
 
 #. Permission to access master password
 #: tmp_strings.xml:240(string)
 msgid "access the master password"
-msgstr ""
+msgstr "Ana şifreye erişim"
 
 #: tmp_strings.xml:241(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
 msgstr ""
+"Uygulamanın şifreleme ve şifre çözmek için ana anahtara ulaşmasına izin "
+"verir.OI Kasa dışında asla kullanılmamalıdır."
 
 #. Permission to encrypt and decrypt data
 #: tmp_strings.xml:243(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "Şifreleme ve şifre çözme verileri"
 
 #: tmp_strings.xml:244(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Uygulamanın yazıyı şifrelemesine ve şifresini çözmesine izin verir ve OI "
+"Kasa içinde depolanmış şifrelere erişime izin verir."
 
 #: tmp_strings.xml:252(item)
 msgid "1 minute"

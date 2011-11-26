@@ -43,7 +43,7 @@ msgstr "새 폴더"
 msgid "Multi Select"
 msgstr ""
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:77(string)
 msgid "Delete"
 msgstr "삭제"
 
@@ -59,187 +59,293 @@ msgstr "보내기"
 msgid "Open"
 msgstr "열기"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:75(string)
 msgid "Move"
 msgstr "이동"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:76(string)
 msgid "Copy"
 msgstr "복사"
 
 #: tmp_strings.xml:45(string)
-msgid "Include in media scan"
+msgid "Details"
 msgstr ""
 
-#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
-msgid "Exclude from media scan"
+#: tmp_strings.xml:46(string)
+#, fuzzy
+msgid "More"
+msgstr "이동"
+
+#: tmp_strings.xml:47(string)
+msgid "Filter"
 msgstr ""
 
 #: tmp_strings.xml:48(string)
+msgid "Include in media scan"
+msgstr ""
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:127(string)
+msgid "Exclude from media scan"
+msgstr ""
+
+#: tmp_strings.xml:51(string)
 msgid "Create new folder"
 msgstr "새 폴더 생성"
 
-#: tmp_strings.xml:49(string) tmp_strings.xml:50(string)
+#: tmp_strings.xml:52(string) tmp_strings.xml:53(string)
 msgid "Folder name"
 msgstr "폴더 이름"
 
-#: tmp_strings.xml:51(string)
+#: tmp_strings.xml:54(string)
+msgid "Extension (with '.')"
+msgstr ""
+
+#: tmp_strings.xml:55(string)
 msgid "This folder is empty."
 msgstr ""
 
-#: tmp_strings.xml:52(string)
+#: tmp_strings.xml:56(string)
 msgid "Do you really want to delete %s?"
 msgstr ""
 
-#: tmp_strings.xml:53(string)
+#: tmp_strings.xml:57(string)
 msgid "File deleted."
 msgstr "파일이 삭제되었습니다."
 
-#: tmp_strings.xml:54(string)
+#: tmp_strings.xml:58(string)
 msgid "Folder deleted."
 msgstr "폴더가 삭제되었습니다."
 
-#: tmp_strings.xml:55(string)
+#: tmp_strings.xml:59(string)
 msgid "File renamed."
 msgstr "파일 이름이 변경되었습니다."
 
-#: tmp_strings.xml:56(string)
+#: tmp_strings.xml:60(string)
 msgid "Folder renamed."
 msgstr "폴더 이름이 변경되었습니다."
 
-#: tmp_strings.xml:57(string)
+#: tmp_strings.xml:61(string)
 msgid "File moved."
 msgstr ""
 
-#: tmp_strings.xml:58(string)
+#: tmp_strings.xml:62(string)
 msgid "Folder moved."
 msgstr "폴더가 이동되었습니다."
 
-#: tmp_strings.xml:59(string)
+#: tmp_strings.xml:63(string)
 msgid "File copied."
 msgstr "폴더가 복사되었습니다."
 
-#: tmp_strings.xml:60(string)
+#: tmp_strings.xml:64(string)
 msgid "Select folder to move to"
 msgstr "이동할 폴더 선택"
 
-#: tmp_strings.xml:61(string)
+#: tmp_strings.xml:65(string)
 msgid "Move here"
 msgstr "여기로 옮기기"
 
-#: tmp_strings.xml:62(string)
+#: tmp_strings.xml:66(string)
 msgid "Select folder to copy to"
 msgstr "복사할 폴더 선택"
 
-#: tmp_strings.xml:63(string)
+#: tmp_strings.xml:67(string)
 msgid "Copy here"
 msgstr "여기로 복사"
 
-#: tmp_strings.xml:64(string)
+#: tmp_strings.xml:68(string)
 msgid "Deleting files..."
 msgstr ""
 
-#. Strings for a multi select feature
-#: tmp_strings.xml:67(string)
-msgid "Do you really want to delete %d files?"
+#: tmp_strings.xml:69(string)
+msgid "Warning"
+msgstr ""
+
+#: tmp_strings.xml:70(string)
+msgid "Some of the following options may not work."
 msgstr ""
 
 #: tmp_strings.xml:71(string)
+msgid "Show warning again"
+msgstr ""
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:74(string)
+msgid "Do you really want to delete %d files?"
+msgstr ""
+
+#: tmp_strings.xml:78(string)
 msgid "Select multiple files"
 msgstr ""
 
-#: tmp_strings.xml:72(string)
+#: tmp_strings.xml:79(string)
 msgid "Please select one or more file(s)."
 msgstr ""
 
+#. Strings for details table
+#: tmp_strings.xml:82(string)
+msgid "Type"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
+#, fuzzy
+msgid "Folder"
+msgstr "새 폴더"
+
+#: tmp_strings.xml:84(string)
+msgid "File"
+msgstr ""
+
+#: tmp_strings.xml:85(string)
+msgid "Other"
+msgstr ""
+
+#: tmp_strings.xml:86(string)
+msgid "Size"
+msgstr ""
+
+#: tmp_strings.xml:87(string)
+msgid "Permissions"
+msgstr ""
+
+#: tmp_strings.xml:88(string)
+msgid "Hidden"
+msgstr ""
+
+#: tmp_strings.xml:89(string)
+msgid "Last Modified"
+msgstr ""
+
+#: tmp_strings.xml:90(string)
+msgid "Yes"
+msgstr ""
+
+#: tmp_strings.xml:91(string)
+msgid "No"
+msgstr ""
+
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:75(string)
+#: tmp_strings.xml:94(string)
 msgid "Copy of %s"
 msgstr "%s의 복사"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:78(string)
+#: tmp_strings.xml:97(string)
 msgid "Copy %1$d of %2$s"
 msgstr ""
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:99(string)
 msgid "This folder will be included in the next media scan."
 msgstr ""
 
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:100(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr ""
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:102(string)
 msgid "Could not create new folder."
 msgstr "새 폴더를 생성할 수 없습니다."
 
-#: tmp_strings.xml:84(string)
+#: tmp_strings.xml:103(string)
 msgid "Could not delete file."
 msgstr "파일을 삭제할 수 없습니다."
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:104(string)
 msgid "Could not delete folder '%s'."
 msgstr ""
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:105(string)
 msgid "Could not rename file."
 msgstr "파일의 이름을 변경할 수 없습니다."
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:106(string)
 msgid "Could not rename folder."
 msgstr "폴더의 이름을 변경할 수 없습니다."
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not move file."
 msgstr "파일을 이동할 수 없습니다."
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not move folder."
 msgstr "폴더를 이동할 수 없습니다."
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not copy file."
 msgstr "파일을 복사할 수 없습니다."
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:110(string)
 msgid "File does not exist."
 msgstr "파일이 존재하지 않습니다."
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not delete child file '%s'."
 msgstr ""
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:112(string)
 msgid "An error occurred:"
 msgstr ""
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not change media scan settings."
 msgstr ""
 
-#: tmp_strings.xml:96(string)
+#: tmp_strings.xml:115(string)
 msgid "No application available for sending."
 msgstr ""
 
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:117(string)
 msgid "Application not available"
 msgstr ""
 
 #. Menu item for Settings
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:123(string)
 msgid "Settings"
 msgstr ""
 
 #. Category for preferences.
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:126(string)
 msgid "Advanced features"
 msgstr ""
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:128(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:129(string)
 msgid "Hide menu item to exclude folders from media scan."
+msgstr ""
+
+#: tmp_strings.xml:131(string)
+msgid "Show all warnings"
+msgstr ""
+
+#: tmp_strings.xml:132(string)
+msgid "Show all warning messages"
+msgstr ""
+
+#: tmp_strings.xml:133(string)
+msgid "Suppress warning messages"
+msgstr ""
+
+#: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
+msgid "Display hidden files"
+msgstr ""
+
+#: tmp_strings.xml:137(string)
+msgid "Hide hidden files"
+msgstr ""
+
+#. ***************************
+#.    		 Strings for the 'Save as' feature
+#.     	 ***************************
+#: tmp_strings.xml:143(string)
+msgid "You haven't picked any file."
+msgstr ""
+
+#: tmp_strings.xml:144(string)
+msgid "An error occured."
+msgstr ""
+
+#: tmp_strings.xml:145(string)
+msgid "File successfully saved!"
 msgstr ""

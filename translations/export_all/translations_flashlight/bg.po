@@ -1,0 +1,75 @@
+# Bulgarian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <kkrassi1984@abv.bg>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <kkrassi1984@abv.bg>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Kras4ooo <Unknown>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Kras4ooo https://launchpad.net/~kkrassi1984"
+
+#. Short explanation of the application
+#: tmp_strings.xml:11(string)
+msgid ""
+"OpenIntents Flashlight helps you find your way in the dark. The display "
+"backlight is kept turned on while this application is running."
+msgstr ""
+"OpenIntents фенерче ще ви помага да намерите пътя в тъмнината. Дисплеят е "
+"включен, докато това приложение работи."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:17(string)
+msgid "OI Flashlight"
+msgstr "OI Фенерче"
+
+#: tmp_strings.xml:19(string)
+msgid "The backlight stays turned on."
+msgstr "Осветяването остава включено."
+
+#: tmp_strings.xml:21(string)
+msgid "Color"
+msgstr "Цвят"
+
+#. Application name should be consistent across translations.
+#: tmp_strings.xml:24(string)
+msgid "OI Color Picker"
+msgstr "OI избот на цвят"
+
+#. Title for preferences or settings
+#: tmp_strings.xml:26(string) tmp_strings.xml:33(string)
+msgid "Preferences"
+msgstr "Настройки"
+
+#: tmp_strings.xml:34(string)
+msgid "Keep color"
+msgstr "Запазен цвят"
+
+#: tmp_strings.xml:35(string)
+msgid "Save color for next time Flashlight app is started"
+msgstr "Запази цвета при следващото стартиране на фенерчето"
+
+#. Explanation that is displayed if Color Picker has not been installed yet, but 
+#. 		user tries to access it.
+#: tmp_strings.xml:43(string)
+msgid ""
+"To make the Color Picker more useful to other developers, we have split it "
+"into its own app."
+msgstr ""
+"Да се направи избор на цвета е по-полезен за други производители, се разделя "
+"в собствените си приложения."

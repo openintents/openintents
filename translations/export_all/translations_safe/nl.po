@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Menno Vogel <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Henk van der Velden https://launchpad.net/~henkvandervelden86\n"
+"  Menno Vogel https://launchpad.net/~mennovogel90\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Sjoerd Hiemstra https://launchpad.net/~sjohie"
@@ -75,7 +76,7 @@ msgstr "Wachtwoorden"
 
 #: tmp_strings.xml:44(string)
 msgid "Master Password"
-msgstr "Hoofd wachtwoord"
+msgstr "Hoofdwachtwoord"
 
 #: tmp_strings.xml:45(string)
 msgid "Username"
@@ -205,7 +206,7 @@ msgstr "Database importeren"
 
 #: tmp_strings.xml:71(string)
 msgid "Import file is missing:"
-msgstr ""
+msgstr "Importeer bestand mist:"
 
 #: tmp_strings.xml:72(string)
 msgid ""
@@ -219,11 +220,11 @@ msgstr ""
 
 #: tmp_strings.xml:74(string)
 msgid "Import"
-msgstr ""
+msgstr "Importeer"
 
 #: tmp_strings.xml:75(string)
 msgid "Do you want to replace the database (import from %s)?"
-msgstr ""
+msgstr "Wilt u de database vervangen (importeren van %s)?"
 
 #: tmp_strings.xml:76(string)
 msgid "Yes"
@@ -235,7 +236,7 @@ msgstr "Nee"
 
 #: tmp_strings.xml:78(string)
 msgid "Please wait while importing..."
-msgstr ""
+msgstr "Wacht aub tijdens het importeren..."
 
 #: tmp_strings.xml:79(string)
 msgid "No categories found."
@@ -289,6 +290,8 @@ msgid ""
 "Since it is not secure to keep passwords in clear text CSV files, would you "
 "like to delete"
 msgstr ""
+"Het is niet veilig om wachtwoorden in een onversleuteld CSV bestand te "
+"bewaren, wilt u ze verwijderen"
 
 #: tmp_strings.xml:91(string)
 msgid "Edit Entry"
@@ -320,7 +323,7 @@ msgstr "Weet jezeker dat je dit wachtwoord wilt verwijderen?"
 
 #: tmp_strings.xml:98(string)
 msgid "Change Master Password"
-msgstr ""
+msgstr "Wijzig hoofdwachtwoord"
 
 #: tmp_strings.xml:99(string)
 msgid ""
@@ -347,7 +350,7 @@ msgstr ""
 
 #: tmp_strings.xml:104(string)
 msgid "Old password is invalid. Please try again."
-msgstr ""
+msgstr "Het oude wachtwoord is ongeldig, probeer het opnieuw."
 
 #: tmp_strings.xml:105(string)
 msgid "Error changing password"
@@ -355,7 +358,7 @@ msgstr "Fout bij veranderen van wachtwoord"
 
 #: tmp_strings.xml:106(string)
 msgid "Master Password changed"
-msgstr ""
+msgstr "Hoofdwachtwoord is gewijzigd"
 
 #: tmp_strings.xml:107(string)
 msgid "Confirm"
@@ -363,15 +366,15 @@ msgstr "Bevestigen"
 
 #: tmp_strings.xml:108(string)
 msgid "Password entries do not match."
-msgstr ""
+msgstr "Wachtwoorden komen niet overeen."
 
 #: tmp_strings.xml:109(string)
 msgid "Backup"
-msgstr ""
+msgstr "Reservekopie"
 
 #: tmp_strings.xml:110(string)
 msgid "Backing up to"
-msgstr ""
+msgstr "Reservekopie maken op"
 
 #: tmp_strings.xml:111(string)
 msgid "Complete. Passwords backed up:"
@@ -379,15 +382,15 @@ msgstr ""
 
 #: tmp_strings.xml:112(string)
 msgid "Backup failed:"
-msgstr ""
+msgstr "Reservekopie maken is niet gelukt:"
 
 #: tmp_strings.xml:113(string)
 msgid "Restore"
-msgstr ""
+msgstr "Herstellen"
 
 #: tmp_strings.xml:114(string)
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #: tmp_strings.xml:115(string)
 msgid ""
@@ -404,101 +407,103 @@ msgstr ""
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:119(string)
 msgid "Unable to open file: %s"
-msgstr ""
+msgstr "Kan bestand niet openen: %s"
 
 #. Toast message. %s contains the version number of the database.
 #: tmp_strings.xml:122(string)
 msgid "Version not supported: %s"
-msgstr ""
+msgstr "Versie wordt niet ondersteund: %s"
 
 #: tmp_strings.xml:124(string)
 msgid "Restore error."
-msgstr ""
+msgstr "Herstel fout."
 
 #: tmp_strings.xml:125(string)
 msgid "Bad password."
-msgstr ""
+msgstr "Fout wachtwoord."
 
 #: tmp_strings.xml:126(string)
 msgid "Restore Database"
-msgstr ""
+msgstr "Herstel database"
 
 #: tmp_strings.xml:127(string)
 msgid "Are you sure you want to replace the current data?"
-msgstr ""
+msgstr "Weet u zeker dat u de huidige data wilt vervangen?"
 
 #: tmp_strings.xml:128(string)
 msgid "Found %1$s passwords from backup dated %2$s."
-msgstr ""
+msgstr "Heeft %1$s wachtwoorden gevonden van een reservekopie van %2$s."
 
 #: tmp_strings.xml:129(string)
 msgid "Complete. Passwords restored: %s"
-msgstr ""
+msgstr "Voltooid, wachtwoorden hersteld: %s"
 
 #: tmp_strings.xml:130(string)
 msgid "copied to Clipboard"
-msgstr ""
+msgstr "gekopieerd naar Klembord"
 
 #: tmp_strings.xml:131(string)
 msgid "Invalid website"
-msgstr ""
+msgstr "Ongeldige website"
 
 #: tmp_strings.xml:132(string)
 msgid "Database Error"
-msgstr ""
+msgstr "Database fout"
 
 #: tmp_strings.xml:133(string)
 msgid "Database error. Out of space?"
-msgstr ""
+msgstr "Database fout. Geen ruimte meer?"
 
 #. Menu label to open a category
 #: tmp_strings.xml:136(string)
 msgid "Open"
-msgstr ""
+msgstr "Openen"
 
 #: tmp_strings.xml:138(string)
 msgid "Database Version Error"
-msgstr ""
+msgstr "Database versie fout"
 
 #: tmp_strings.xml:139(string)
 msgid ""
 "Sorry, but the version of the database is not supported. You must install "
 "the version associated with this database."
 msgstr ""
+"Sorry, maar de versie van de database wordt niet ondersteund. U moet de "
+"versie gerelateerd met de database installeren."
 
 #. Menu label to move a password to another category
 #: tmp_strings.xml:142(string)
 msgid "Move"
-msgstr ""
+msgstr "Verplaatsen"
 
 #: tmp_strings.xml:144(string)
 msgid "Select Category"
-msgstr ""
+msgstr "Selecteer Categorie"
 
 #. Toast that password has been moved to another category
 #: tmp_strings.xml:147(string)
 msgid "Moved to %s"
-msgstr ""
+msgstr "Verplaats naar %s"
 
 #: tmp_strings.xml:149(string)
 msgid "Settings"
-msgstr ""
+msgstr "Instellingen"
 
 #: tmp_strings.xml:150(string)
 msgid "Allow external access"
-msgstr ""
+msgstr "Sta externe toegang toe"
 
 #: tmp_strings.xml:151(string)
 msgid "Allow other applications to secure your data with OI Safe"
-msgstr ""
+msgstr "Sta andere programma's toe om uw data te beveiligen met OI Kluis"
 
 #: tmp_strings.xml:152(string)
 msgid "OI Safe: Another application requests access."
-msgstr ""
+msgstr "OI Kluis: Een ander programma vraagt toegang."
 
 #: tmp_strings.xml:153(string)
 msgid "Allow other applications to secure your data with OI Safe."
-msgstr ""
+msgstr "Sta andere programma's toe om uw data te beveiligen met OI Kluis."
 
 #: tmp_strings.xml:154(string)
 msgid "This can also be set in OI Safe's Menu / Settings."
@@ -532,7 +537,7 @@ msgstr ""
 #. Preference summary: for a numeric keypad
 #: tmp_strings.xml:174(string)
 msgid "Use a keypad to enter Master Password"
-msgstr ""
+msgstr "Gebruik een keypad om het hoofdwachtwoord in te voeren"
 
 #. Preference title for keypad mute
 #: tmp_strings.xml:177(string)
@@ -734,7 +739,7 @@ msgstr ""
 #. Permission to access master password
 #: tmp_strings.xml:240(string)
 msgid "access the master password"
-msgstr ""
+msgstr "krijg toegang tot het hoofdwachtwoord"
 
 #: tmp_strings.xml:241(string)
 msgid ""

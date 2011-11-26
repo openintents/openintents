@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: appricoo <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,8 +23,9 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Fabian Riechsteiner https://launchpad.net/~ruffy91-gmail\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
-"  appricoo https://launchpad.net/~development-0"
+"  appricoo https://launchpad.net/~appricoo"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
@@ -243,7 +244,7 @@ msgid "Pick a theme"
 msgstr "Design wählen"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:111(string) tmp_strings.xml:198(item)
+#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
 msgid "Default"
 msgstr "Standard"
 
@@ -303,48 +304,56 @@ msgstr "Sortierung"
 msgid "The order in which notes are shown in the notes list"
 msgstr "Bestimmt die Reihenfolge, in der Notizen angezeigt werden."
 
+#: tmp_strings.xml:140(string)
+msgid "Marquee note titles."
+msgstr ""
+
 #: tmp_strings.xml:141(string)
+msgid "Continuously scroll note titles that are too long."
+msgstr ""
+
+#: tmp_strings.xml:143(string)
 msgid "Note Editor"
 msgstr "Notiz Editor"
 
-#: tmp_strings.xml:142(string)
+#: tmp_strings.xml:144(string)
 msgid "Font size"
 msgstr "Schriftgröße"
 
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:145(string)
 msgid "Change font size"
 msgstr "Schriftgröße ändern"
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:146(string)
 msgid "Choose font size"
 msgstr "Wählen Sie die Schriftgröße"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:147(string)
 msgid "Auto-create Links"
 msgstr "Links automatisch erstellen"
 
-#: tmp_strings.xml:146(string)
+#: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr "Erstelle Links für Telefonnummern, Email- und Web- sowie Post-Adressen"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"
 msgstr "Erstelle keine Links zu Notizen"
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:151(string)
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: tmp_strings.xml:150(string)
+#: tmp_strings.xml:152(string)
 msgid "Sort Order"
 msgstr "Sortierung"
 
 #. Permission to read notes.
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:160(string)
 msgid "read notes"
 msgstr "Notizen lesen"
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:161(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
@@ -353,22 +362,22 @@ msgstr ""
 "verschlüsselte Notizen nur in verschlüsselter Form weitergegeben werden."
 
 #. Permission to write notes.
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:163(string)
 msgid "write notes"
 msgstr "Notizen schreiben"
 
-#: tmp_strings.xml:162(string)
+#: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
 "Ermöglicht einer Anwendung, neue Notizen zu erstellen oder vorhandene "
 "Notizen zu ändern."
 
 #. Permission to read shopping lists.
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:168(string)
 msgid "read shopping lists"
 msgstr "Einkaufslisten lesen"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:169(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -378,11 +387,11 @@ msgstr ""
 "werden."
 
 #. Permission to write shopping lists.
-#: tmp_strings.xml:169(string)
+#: tmp_strings.xml:171(string)
 msgid "write shopping lists"
 msgstr "Einkaufslisten schreiben"
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:172(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
@@ -390,11 +399,11 @@ msgstr ""
 "bestehende Listen und Posten zu ändern."
 
 #. Permission to encrypt and decrypt data.
-#: tmp_strings.xml:174(string)
+#: tmp_strings.xml:176(string)
 msgid "encrypt and decrypt data"
 msgstr "Daten verschlüsseln und entschlüsseln"
 
-#: tmp_strings.xml:175(string)
+#: tmp_strings.xml:177(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
@@ -402,85 +411,94 @@ msgstr ""
 "Ermöglicht einer Anwendung, Texte zu verschlüsseln und entschlüsseln, und "
 "auf Passwörter zuzugreifen, die in OI Safe gespeichert sind."
 
-#: tmp_strings.xml:184(item)
+#: tmp_strings.xml:186(item)
 msgid "Alphabetical"
 msgstr "Alphabetisch"
 
-#: tmp_strings.xml:185(item)
+#: tmp_strings.xml:187(item)
 msgid "Reverse Alphabetical"
 msgstr "Umgekehrt alphabetisch"
 
-#: tmp_strings.xml:186(item)
+#: tmp_strings.xml:188(item)
 msgid "Last Modified"
 msgstr "Letzte Änderung"
 
-#: tmp_strings.xml:187(item)
+#: tmp_strings.xml:189(item)
 msgid "First Modified"
 msgstr "Erste Änderung"
 
-#: tmp_strings.xml:188(item)
+#: tmp_strings.xml:190(item)
 msgid "Newest to Oldest"
 msgstr "Neueste zuerst"
 
-#: tmp_strings.xml:189(item)
+#: tmp_strings.xml:191(item)
 msgid "Oldest to Newest"
 msgstr "Älteste zuerst"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:194(item)
+#: tmp_strings.xml:196(item)
 msgid "Tiny"
 msgstr "Sehr klein"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:196(item)
+#: tmp_strings.xml:198(item)
 msgid "Small"
 msgstr "Klein"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:200(item)
+#: tmp_strings.xml:202(item)
 msgid "Large"
 msgstr "Groß"
 
-#: tmp_strings.xml:203(string)
+#: tmp_strings.xml:205(string)
 msgid "Add-ons"
 msgstr "Erweiterungen"
 
-#: tmp_strings.xml:204(string)
+#: tmp_strings.xml:206(string)
 msgid "Get new add-ons"
 msgstr "Neue Erweiterungen herunterladen"
 
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:207(string)
 msgid "Search for extensions and themes online."
 msgstr "Online nach Erweiterungen und Designs suchen."
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:208(string)
 msgid "Get add-ons from Market"
 msgstr "Erweiterungen vom Market herunterladen"
 
-#: tmp_strings.xml:207(string)
+#: tmp_strings.xml:209(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "Erweiterungen von OpenIntents herunterladen"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:210(string)
 msgid "Extensions"
 msgstr "Erweiterungen"
 
-#: tmp_strings.xml:209(string)
+#: tmp_strings.xml:211(string)
 msgid "Themes"
 msgstr "Designs"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
 msgstr "Nach Erweiterungen auf Android Market suchen"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
 msgstr "Nach Designs auf Android Market suchen."
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "Erweiterungen von der OpenIntents Homepage herunterladen"
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:215(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "Nach Designs auf der OpenIntents Homepage suchen."
+
+#: tmp_strings.xml:216(string)
+msgid "Deletion Confirmation"
+msgstr ""
+
+#: tmp_strings.xml:217(string)
+#, fuzzy
+msgid "Are you sure you want to delete this note?"
+msgstr "Möchten Sie die bestehende Datei wirklich überschreiben?"

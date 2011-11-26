@@ -1,0 +1,496 @@
+# Belarusian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Alexander Geroimenko <Unknown>\n"
+"Language-Team: Belarusian <be@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Geroimenko https://launchpad.net/~geroimenko"
+
+#. Short explanation of the application
+#: tmp_strings.xml:33(string)
+msgid "OI Notepad allows to create, edit, and delete notes."
+msgstr "OI Notepad дазваляе ствараць, рэдагаваць і выдаляць нататкі."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
+#: tmp_strings.xml:117(string)
+msgid "OI Notepad"
+msgstr "OI Notepad"
+
+#: tmp_strings.xml:42(string)
+msgid "Delete"
+msgstr "Выдаліць"
+
+#: tmp_strings.xml:43(string)
+msgid "Add note"
+msgstr "Дадаць нататку"
+
+#: tmp_strings.xml:44(string)
+msgid "Revert"
+msgstr "Аднавіць"
+
+#: tmp_strings.xml:45(string)
+msgid "Discard"
+msgstr "Ігнараваць"
+
+#: tmp_strings.xml:47(string)
+msgid "Use menu to add new notes."
+msgstr "Выкарыстоўвайце меню для дадання новых нататак."
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
+msgid "Edit note"
+msgstr "Рэдагаваць нататку"
+
+#: tmp_strings.xml:50(string)
+msgid "Edit title"
+msgstr "Рэдагаваць загаловак"
+
+#: tmp_strings.xml:52(string)
+msgid "Create note"
+msgstr "Стварыць нататку"
+
+#: tmp_strings.xml:55(string)
+msgid "Note"
+msgstr "Нататка"
+
+#: tmp_strings.xml:56(string)
+msgid "Note title:"
+msgstr "Загаловак нататкі:"
+
+#: tmp_strings.xml:57(string)
+msgid "%s (new note)"
+msgstr "%s (новая нататка)"
+
+#: tmp_strings.xml:58(string)
+msgid "%s (edit note)"
+msgstr "%s (рэдагаваць нататку)"
+
+#. Title: Pick note for shortcut (to be placed on the home screen)
+#: tmp_strings.xml:61(string)
+msgid "Pick note for shortcut"
+msgstr "Выбраць нататку для ярлыка"
+
+#. Dialog box
+#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+msgid "OK"
+msgstr "OK"
+
+#: tmp_strings.xml:65(string)
+msgid "Error"
+msgstr "Памылка"
+
+#: tmp_strings.xml:66(string)
+msgid "Error loading note"
+msgstr "Памылка загрузкі нататкі"
+
+#. <string name="no_notes">Note list is empty.</string>
+#: tmp_strings.xml:69(string)
+msgid "Send"
+msgstr "Адправіць"
+
+#: tmp_strings.xml:70(string)
+msgid "Empty note"
+msgstr "Пустая нататка"
+
+#: tmp_strings.xml:71(string)
+msgid "No application available for sending."
+msgstr "Няма прыкладання для адпраўкі."
+
+#: tmp_strings.xml:73(string)
+msgid "Encrypting note"
+msgstr "Шыфрую нататку"
+
+#: tmp_strings.xml:74(string)
+msgid "Encrypted"
+msgstr "Зашыфравана"
+
+#: tmp_strings.xml:75(string)
+msgid "Encrypt"
+msgstr "Зашыфраваць"
+
+#: tmp_strings.xml:76(string)
+msgid "Decrypt"
+msgstr "Дэшыфраваць"
+
+#: tmp_strings.xml:77(string)
+msgid "Undo encryption"
+msgstr "Адмяніць шыфраванне"
+
+#: tmp_strings.xml:78(string)
+msgid "Do not encrypt"
+msgstr "Не шыфраваць"
+
+#: tmp_strings.xml:79(string)
+msgid "Already encrypted."
+msgstr "Ужо зашыфравана."
+
+#: tmp_strings.xml:80(string)
+msgid "Not encrypted."
+msgstr "Не зашыфравана."
+
+#: tmp_strings.xml:81(string)
+msgid "Encryption failed."
+msgstr "Памылка пры шыфраванні."
+
+#: tmp_strings.xml:82(string)
+msgid "Decryption failed."
+msgstr "Памылка пры дэшыфраванні."
+
+#: tmp_strings.xml:84(string)
+msgid "Edit tags"
+msgstr "Рэдагаваць пазнакі"
+
+#: tmp_strings.xml:85(string)
+msgid "Touch to see list"
+msgstr "Дакраніцеся для прагляду спісу"
+
+#: tmp_strings.xml:86(string)
+msgid "Enter tags, separated by comma"
+msgstr "Увядзіце пазнакі, падзеленыя коскамі"
+
+#: tmp_strings.xml:88(string)
+msgid "Save to SD card"
+msgstr "Захаваць на SD картцы"
+
+#: tmp_strings.xml:89(string)
+msgid "Open from SD card"
+msgstr "Адкрыць з SD карткі"
+
+#: tmp_strings.xml:90(string)
+msgid "File name"
+msgstr "Імя файла"
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
+#: tmp_strings.xml:106(string)
+msgid "Save"
+msgstr "Захаваць"
+
+#: tmp_strings.xml:92(string)
+msgid "Open"
+msgstr "Адкрыць"
+
+#: tmp_strings.xml:93(string)
+msgid "Error while writing file"
+msgstr "Памылка запісу файла"
+
+#: tmp_strings.xml:94(string)
+msgid "Error while reading file"
+msgstr "Памылка чытання файла"
+
+#: tmp_strings.xml:95(string)
+msgid "File not found"
+msgstr "Файл не знойдзены"
+
+#: tmp_strings.xml:96(string)
+msgid "Note saved"
+msgstr "Нататка захавана"
+
+#: tmp_strings.xml:97(string)
+msgid "File exists already"
+msgstr "Файл з такой назвай ужо існуе"
+
+#: tmp_strings.xml:98(string)
+msgid "Do you really want to overwrite the existing file?"
+msgstr "Вы ўпэўнены, што жадаеце перазапісаць існуючы файл?"
+
+#. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
+#: tmp_strings.xml:101(string)
+msgid "Import"
+msgstr "Імпартаваць"
+
+#: tmp_strings.xml:103(string)
+msgid "Save as"
+msgstr "Захаваць як"
+
+#: tmp_strings.xml:104(string)
+msgid "Text modified"
+msgstr "Тэкст зменены"
+
+#: tmp_strings.xml:105(string)
+msgid "Do you want to save the changes?"
+msgstr "Вы жадаеце захаваць змяненні?"
+
+#: tmp_strings.xml:107(string)
+msgid "Don't save"
+msgstr "Не захоўваць"
+
+#: tmp_strings.xml:109(string)
+msgid "Theme"
+msgstr "Тэма"
+
+#: tmp_strings.xml:110(string)
+msgid "Pick a theme"
+msgstr "Выбраць тэму"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+msgid "Default"
+msgstr "Па змаўчанні"
+
+#: tmp_strings.xml:112(string)
+msgid "Monospaced font"
+msgstr "Монашырынны шрыфт"
+
+#: tmp_strings.xml:113(string)
+msgid "Serif font"
+msgstr "Шрыфт з засечкамі"
+
+#. Search
+#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+msgid "Search"
+msgstr "Пошук"
+
+#. %s is the search string
+#: tmp_strings.xml:119(string)
+msgid "No results found for %s."
+msgstr "Не знойдзена вынікаў для %s."
+
+#: tmp_strings.xml:120(string)
+msgid "OI Notepad search"
+msgstr "Пошук па OI Notepad"
+
+#. The description that will show up in the search settings for this source.
+#: tmp_strings.xml:124(string)
+msgid "Titles of your notes"
+msgstr "Загалоўкі вашых нататак"
+
+#: tmp_strings.xml:128(string)
+msgid "Cancel"
+msgstr "Адмяніць"
+
+#: tmp_strings.xml:129(string)
+msgid "Use this theme for all lists"
+msgstr "Выкарыстоўваць дадзеную тэму для ўсіх спісаў"
+
+#: tmp_strings.xml:130(string)
+msgid "Get more themes"
+msgstr "Атрымаць больш тэм"
+
+#: tmp_strings.xml:132(string)
+msgid "All notes"
+msgstr "Усе нататкі"
+
+#. Title for settings regarding the list of notes
+#: tmp_strings.xml:136(string)
+msgid "Notes List"
+msgstr "Спіс нататак"
+
+#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+msgid "List Sorting Order"
+msgstr "Парадак сартавання спісу"
+
+#: tmp_strings.xml:139(string)
+msgid "The order in which notes are shown in the notes list"
+msgstr "Парадак адлюстравання нататак у спісе"
+
+#: tmp_strings.xml:140(string)
+msgid "Marquee note titles."
+msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "Continuously scroll note titles that are too long."
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Note Editor"
+msgstr "Рэдактар нататак"
+
+#: tmp_strings.xml:144(string)
+msgid "Font size"
+msgstr "Памер шрыфта"
+
+#: tmp_strings.xml:145(string)
+msgid "Change font size"
+msgstr "Змяніць памер шрыфта"
+
+#: tmp_strings.xml:146(string)
+msgid "Choose font size"
+msgstr "Выбраць памер шрыфта"
+
+#: tmp_strings.xml:147(string)
+msgid "Auto-create Links"
+msgstr "Аўта-стварэнне спасылак"
+
+#: tmp_strings.xml:148(string)
+msgid "Create links for phone numbers and email/street/web addresses"
+msgstr "Стварэнне спасылак на нумары тэлефонаў і email/паштовых/вэб адрасоў"
+
+#: tmp_strings.xml:149(string)
+msgid "Do not create links on notes"
+msgstr "Не ствараць спасылак ў нататках"
+
+#: tmp_strings.xml:151(string)
+msgid "Settings"
+msgstr "Наладкі"
+
+#: tmp_strings.xml:152(string)
+msgid "Sort Order"
+msgstr "Парадак сартавання"
+
+#. Permission to read notes.
+#: tmp_strings.xml:160(string)
+msgid "read notes"
+msgstr "чытаць нататкі"
+
+#: tmp_strings.xml:161(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Дазволіць прыкладанню чытаць нататкі. Заўвага: зашыфраваныя нататкі "
+"прадастаўляюцца ў зашыфраваным фармаце."
+
+#. Permission to write notes.
+#: tmp_strings.xml:163(string)
+msgid "write notes"
+msgstr "запіс нататак"
+
+#: tmp_strings.xml:164(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "Дазволіць прыкладанню ствараць новыя нататкі ці змяняць існуючыя."
+
+#. Permission to read shopping lists.
+#: tmp_strings.xml:168(string)
+msgid "read shopping lists"
+msgstr "чытанне спісу пакупак"
+
+#: tmp_strings.xml:169(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Дазволіць прыкладанню чытаць нататкі. Заўвага: зашыфраваныя спісы і элементы "
+"прадастаўляюцца ў зашыфраваным фармаце."
+
+#. Permission to write shopping lists.
+#: tmp_strings.xml:171(string)
+msgid "write shopping lists"
+msgstr "запіс спісаў пакупак"
+
+#: tmp_strings.xml:172(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr "Дазволіць прыкладанню ствараць новыя спісы ці змяняць існуючыя."
+
+#. Permission to encrypt and decrypt data.
+#: tmp_strings.xml:176(string)
+msgid "encrypt and decrypt data"
+msgstr "шыфраваць і дэшыфраваць дадзеныя"
+
+#: tmp_strings.xml:177(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+"Дазволіць прыкладанню шыфраваць і дэшыфраваць тэкст, атрымліваць доступ да "
+"пароляў, захаваных ў OI Safe."
+
+#: tmp_strings.xml:186(item)
+msgid "Alphabetical"
+msgstr "Ад А да Я"
+
+#: tmp_strings.xml:187(item)
+msgid "Reverse Alphabetical"
+msgstr "Ад Я да А"
+
+#: tmp_strings.xml:188(item)
+msgid "Last Modified"
+msgstr "Апошняе змяненне"
+
+#: tmp_strings.xml:189(item)
+msgid "First Modified"
+msgstr "Першае змяненне"
+
+#: tmp_strings.xml:190(item)
+msgid "Newest to Oldest"
+msgstr "Ад новай да даўняй"
+
+#: tmp_strings.xml:191(item)
+msgid "Oldest to Newest"
+msgstr "Ад даўняй да новай"
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:196(item)
+msgid "Tiny"
+msgstr "Малюсенькі"
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:198(item)
+msgid "Small"
+msgstr "Малы"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:202(item)
+msgid "Large"
+msgstr "Вялікі"
+
+#: tmp_strings.xml:205(string)
+msgid "Add-ons"
+msgstr "Дапаўненні"
+
+#: tmp_strings.xml:206(string)
+msgid "Get new add-ons"
+msgstr "Усталяваць новыя дапаўненні"
+
+#: tmp_strings.xml:207(string)
+msgid "Search for extensions and themes online."
+msgstr "Пошук пашырэнняў і тэм ў інтэрнэце."
+
+#: tmp_strings.xml:208(string)
+msgid "Get add-ons from Market"
+msgstr "Усталяваць дапаўненні з Market"
+
+#: tmp_strings.xml:209(string)
+msgid "Get add-ons from OpenIntents"
+msgstr "Усталяваць дапаўненні з OpenIntents"
+
+#: tmp_strings.xml:210(string)
+msgid "Extensions"
+msgstr "Пашырэння"
+
+#: tmp_strings.xml:211(string)
+msgid "Themes"
+msgstr "Тэмы"
+
+#: tmp_strings.xml:212(string)
+msgid "Search for extensions at Android Market."
+msgstr "Пошук пашырэнняў ў Android Market."
+
+#: tmp_strings.xml:213(string)
+msgid "Search for themes at Android Market."
+msgstr "Пошук тэм ў Android Market."
+
+#: tmp_strings.xml:214(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr "Усталяваць пашырэнні з хатняй старонцы OpenIntents."
+
+#: tmp_strings.xml:215(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr "Усталяваць тэмы з хатняй старонцы OpenIntents."
+
+#: tmp_strings.xml:216(string)
+msgid "Deletion Confirmation"
+msgstr ""
+
+#: tmp_strings.xml:217(string)
+#, fuzzy
+msgid "Are you sure you want to delete this note?"
+msgstr "Вы ўпэўнены, што жадаеце перазапісаць існуючы файл?"

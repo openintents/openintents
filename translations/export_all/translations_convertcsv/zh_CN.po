@@ -1,0 +1,339 @@
+# Chinese (Simplified) translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: zhangchun <Unknown>\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  zhangchun https://launchpad.net/~zhangchun"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr "OI购物清单和OI记事本可以导入CSV格式的文件。"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI购物清单"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI记事本"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "启动 %s，并选择菜单->转换 CSV."
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI转换 CSV"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "转换 CSV"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "I转换 CSV到记事本"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "I转换 CSV到购物列表"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "I转换所有的便签"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "I转换所有的购物清单"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "转换列表 '%s'"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "文件路径"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "导入"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "导出"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "写入文件出错"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "读文件时出错"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "错误的CSV格式"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "未找到文件"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "不可用，请选择不同的选项。"
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "导入已完成"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "导出已完成"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "选择记事本CSV文件"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "选择购物清单CSV文件"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "当前导入政策"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "导入政策"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "选择导入政策"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "文件存在，要覆盖？"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "不再询问，全部覆盖！"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "重置导入政策"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr "当前导入政策已删除，用CSV文件替换内容，确定？"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "设置"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "CSV文件格式"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "选择CSV文件格式"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "选择编码"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "默认"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "使用自定义编码（高级用户）"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "选择CSV文件格式"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "通用设置"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr "导入/导出适用于记事本和购物清单的设置。"
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "如果文件已存在，请提示"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr "如果文件已存在，对话框提示确认覆盖。"
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "应用程序描述设置"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "文件名"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "文件的完整路径。"
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "OI记事本导入/导出设置。"
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI 购物清单"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "OI购物清单导入/导出设置。"
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "正在转换..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "确定"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "导入商店"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr "导入HandyShopper名字存为标签。"
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr "导入HandyShopper，每一家店的价格，和渠道信息。"
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "阅读便签"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr "允许应用程序阅读便签。需要注意的是加密便签的格式。"
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "写便签"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "允许程序创建新便签，修改已存在的便签。"
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "读购物列表"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr "允许应用软件读取购物列表。注意加密列表和物品以加密格式来提供。"
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "写购物列表"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr "允许应用程序创建新的物品列表，或修改已有的。"
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "MS Outlook便签"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "掌上CSV"
+
+#: tmp_strings.xml:130(item)
+msgid "MS Outlook Tasks"
+msgstr "MS Outlook任务"
+
+#: tmp_strings.xml:131(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:135(item) tmp_strings.xml:149(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "复制 - 允许重复记录。"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "\"KEEP - Don't overwrite existing records.\""
+msgstr "“继续 - 不要覆盖现有的记录。”"
+
+#: tmp_strings.xml:137(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "覆盖 - 覆盖现有记录。"
+
+#: tmp_strings.xml:138(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "还原 - 全部删除，然后导入。"
+
+#: tmp_strings.xml:142(item) tmp_strings.xml:154(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr "复制- 添加一个纪录两个副本，如果它已经存在。"
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid ""
+"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+"\""
+msgstr "“保持 - 不覆盖现有的记录，忽略一个CSV文件。”"
+
+#: tmp_strings.xml:144(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr "覆盖 - 用CSV的记录将覆盖现有的记录。"
+
+#: tmp_strings.xml:145(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr "恢复备份 - 删除所有现有的记录，然后导入CSV文件。"

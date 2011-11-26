@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zeugma <Unknown>\n"
+"Last-Translator: ariza95 <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,6 +26,7 @@ msgstr "OI Dağıtım Kütüphanesi"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  ariza95 https://launchpad.net/~alirizanazli95\n"
 "  zeugma https://launchpad.net/~sunder67"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
@@ -41,6 +42,8 @@ msgid ""
 "Please read and accept the following End User License Agreement (EULA) for %"
 "s."
 msgstr ""
+"%s için Lütfen Aşağıdaki Kullanıcı Lisans Sözleşmesini(EULA) okuyun ve kabul "
+"edin."
 
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)
@@ -56,16 +59,16 @@ msgstr "İptal"
 #. 	Keep unmodified, unless your language requires that the version number is displayed first.
 #: tmp_strings.xml:34(string)
 msgid "%1$s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. Welcome message. %s is an application name.
 #: tmp_strings.xml:37(string)
 msgid "Welcome to this new version of %s."
-msgstr ""
+msgstr "%s yeni sürümüne hoş geldiniz."
 
 #: tmp_strings.xml:39(string)
 msgid "Recent changes:"
-msgstr ""
+msgstr "Son değişiklikler:"
 
 #. Button: Continue to main application.
 #: tmp_strings.xml:42(string)
@@ -81,6 +84,8 @@ msgstr "Güncelleme kontrolü"
 msgid ""
 "Check manually for updates or install OI Update for automatic notifications."
 msgstr ""
+"Güncelleştirmeleri  el ile kontrol edin yada Otomatik uyarı için "
+"OIGüncellemeyi yükleyin."
 
 #: tmp_strings.xml:48(string)
 msgid "Check now"
@@ -92,7 +97,7 @@ msgstr "OI Güncelleyici al"
 
 #: tmp_strings.xml:50(string)
 msgid "Download application not available."
-msgstr ""
+msgstr "İndirilebilir uygulama mevcut değil."
 
 #. Name of the application "OI Update". Translations of the application name should be consistent.
 #: tmp_strings.xml:53(string)
@@ -110,6 +115,8 @@ msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
 msgstr ""
+"Bütün bilgileri gösterebiilmek için uygun bir uzantı bulunmamaktadır."
+"(iletişim,kredi,lisans)"
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
@@ -129,7 +136,7 @@ msgstr "OI Dosya Yöneticisi"
 #. Dialog message.
 #: tmp_strings.xml:71(string)
 msgid "No compatible file manager is available."
-msgstr ""
+msgstr "Uyumlu dosya yöneticisi bulunamadı."
 
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
 #: tmp_strings.xml:75(string)
@@ -139,7 +146,7 @@ msgstr "OI Kasa"
 #. Dialog message.
 #: tmp_strings.xml:77(string)
 msgid "No compatible application for encryption is available."
-msgstr ""
+msgstr "Şifreleme için uyumlu uygulama yok."
 
 #: tmp_strings.xml:78(string)
 msgid ""
@@ -147,26 +154,28 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Şifre çözmek için uyumlu uygulama yok.Not: Şifrelenmiş veriye erişebilmek "
+"için Yedeklenmiş dosyadan ana anahtarı geri yüklemek zorundasınız."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:81(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr ""
+msgstr "Lütfen %s Marketten veya OpenIntents internet sitesinden indirin."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:83(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr ""
+msgstr "Lütfen %s OpenIntents internet sitesinden indirin."
 
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:85(string)
 msgid "Market download"
-msgstr ""
+msgstr "Market İndirmeleri."
 
 #. Dialog button: download the suggested application from the developer web site.
 #: tmp_strings.xml:87(string)
 msgid "Web download"
-msgstr ""
+msgstr "İnternet indirmeleri"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:89(string)
@@ -176,7 +185,7 @@ msgstr "%s indir"
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:92(string)
 msgid "%s can be used with the following applications:"
-msgstr ""
+msgstr "%s aşağıdaki uygulamalarla kullanılabilir."
 
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:94(string)
@@ -187,7 +196,7 @@ msgstr "%s başlat"
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
 #: tmp_strings.xml:97(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr ""
+msgstr "%1$s,%2$s %3$s yada daha yüksek bir sürümü gerektiriyor."
 
 #. Title of a dialog.
 #: tmp_strings.xml:99(string)
@@ -197,4 +206,4 @@ msgstr "Talimatlar"
 #. Error message
 #: tmp_strings.xml:101(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "Uygulama başlatılamadı."

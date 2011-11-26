@@ -44,7 +44,7 @@ msgstr "Nova Cartelledda"
 msgid "Multi Select"
 msgstr ""
 
-#: tmp_strings.xml:39(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:39(string) tmp_strings.xml:77(string)
 msgid "Delete"
 msgstr "Doga"
 
@@ -60,187 +60,294 @@ msgstr "Manda"
 msgid "Open"
 msgstr "Apperi"
 
-#: tmp_strings.xml:43(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:43(string) tmp_strings.xml:75(string)
 msgid "Move"
 msgstr "Moghe"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:69(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:76(string)
 msgid "Copy"
 msgstr "Cópia"
 
 #: tmp_strings.xml:45(string)
+msgid "Details"
+msgstr ""
+
+#: tmp_strings.xml:46(string)
+#, fuzzy
+msgid "More"
+msgstr "Moghe"
+
+#: tmp_strings.xml:47(string)
+msgid "Filter"
+msgstr ""
+
+#: tmp_strings.xml:48(string)
 msgid "Include in media scan"
 msgstr "Azzunghe a sa scansione"
 
-#: tmp_strings.xml:46(string) tmp_strings.xml:108(string)
+#: tmp_strings.xml:49(string) tmp_strings.xml:127(string)
 msgid "Exclude from media scan"
 msgstr "Esclude da sa scansione"
 
-#: tmp_strings.xml:48(string)
+#: tmp_strings.xml:51(string)
 msgid "Create new folder"
 msgstr "Crea un'attera cartelledda"
 
-#: tmp_strings.xml:49(string) tmp_strings.xml:50(string)
+#: tmp_strings.xml:52(string) tmp_strings.xml:53(string)
 msgid "Folder name"
 msgstr "Numene"
 
-#: tmp_strings.xml:51(string)
+#: tmp_strings.xml:54(string)
+msgid "Extension (with '.')"
+msgstr ""
+
+#: tmp_strings.xml:55(string)
 msgid "This folder is empty."
 msgstr "Custa cartelledda este bodia"
 
-#: tmp_strings.xml:52(string)
+#: tmp_strings.xml:56(string)
 msgid "Do you really want to delete %s?"
 msgstr "Cherese abberu dogare %s?"
 
-#: tmp_strings.xml:53(string)
+#: tmp_strings.xml:57(string)
 msgid "File deleted."
 msgstr "File dogau."
 
-#: tmp_strings.xml:54(string)
+#: tmp_strings.xml:58(string)
 msgid "Folder deleted."
 msgstr "Cartelledda dogada."
 
-#: tmp_strings.xml:55(string)
+#: tmp_strings.xml:59(string)
 msgid "File renamed."
 msgstr "File torrau a nominare."
 
-#: tmp_strings.xml:56(string)
+#: tmp_strings.xml:60(string)
 msgid "Folder renamed."
 msgstr "Cartelledda torrada a nominare."
 
-#: tmp_strings.xml:57(string)
+#: tmp_strings.xml:61(string)
 msgid "File moved."
 msgstr "File moghiu."
 
-#: tmp_strings.xml:58(string)
+#: tmp_strings.xml:62(string)
 msgid "Folder moved."
 msgstr "Cartelledda moghia."
 
-#: tmp_strings.xml:59(string)
+#: tmp_strings.xml:63(string)
 msgid "File copied."
 msgstr "File copiau."
 
-#: tmp_strings.xml:60(string)
+#: tmp_strings.xml:64(string)
 msgid "Select folder to move to"
 msgstr "Issepera sa cartelledda auve lu ponnere"
 
-#: tmp_strings.xml:61(string)
+#: tmp_strings.xml:65(string)
 msgid "Move here"
 msgstr "Moghe inoche"
 
-#: tmp_strings.xml:62(string)
+#: tmp_strings.xml:66(string)
 msgid "Select folder to copy to"
 msgstr "Issepera sa cartelledda auve lu copiare"
 
-#: tmp_strings.xml:63(string)
+#: tmp_strings.xml:67(string)
 msgid "Copy here"
 msgstr "Copia inoche"
 
-#: tmp_strings.xml:64(string)
+#: tmp_strings.xml:68(string)
 msgid "Deleting files..."
 msgstr ""
 
-#. Strings for a multi select feature
-#: tmp_strings.xml:67(string)
-msgid "Do you really want to delete %d files?"
+#: tmp_strings.xml:69(string)
+msgid "Warning"
+msgstr ""
+
+#: tmp_strings.xml:70(string)
+msgid "Some of the following options may not work."
 msgstr ""
 
 #: tmp_strings.xml:71(string)
+msgid "Show warning again"
+msgstr ""
+
+#. Strings for a multi select feature
+#: tmp_strings.xml:74(string)
+msgid "Do you really want to delete %d files?"
+msgstr ""
+
+#: tmp_strings.xml:78(string)
 msgid "Select multiple files"
 msgstr ""
 
-#: tmp_strings.xml:72(string)
+#: tmp_strings.xml:79(string)
 msgid "Please select one or more file(s)."
 msgstr ""
 
+#. Strings for details table
+#: tmp_strings.xml:82(string)
+msgid "Type"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
+#, fuzzy
+msgid "Folder"
+msgstr "Nova Cartelledda"
+
+#: tmp_strings.xml:84(string)
+msgid "File"
+msgstr ""
+
+#: tmp_strings.xml:85(string)
+msgid "Other"
+msgstr ""
+
+#: tmp_strings.xml:86(string)
+msgid "Size"
+msgstr ""
+
+#: tmp_strings.xml:87(string)
+msgid "Permissions"
+msgstr ""
+
+#: tmp_strings.xml:88(string)
+msgid "Hidden"
+msgstr ""
+
+#: tmp_strings.xml:89(string)
+msgid "Last Modified"
+msgstr ""
+
+#: tmp_strings.xml:90(string)
+msgid "Yes"
+msgstr ""
+
+#: tmp_strings.xml:91(string)
+msgid "No"
+msgstr ""
+
 #. Construct a unique file name of a file called %s.
-#: tmp_strings.xml:75(string)
+#: tmp_strings.xml:94(string)
 msgid "Copy of %s"
 msgstr "Copiande %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
-#: tmp_strings.xml:78(string)
+#: tmp_strings.xml:97(string)
 msgid "Copy %1$d of %2$s"
 msgstr "Copiande su %1$d de %2$s"
 
-#: tmp_strings.xml:80(string)
+#: tmp_strings.xml:99(string)
 msgid "This folder will be included in the next media scan."
 msgstr "Custa cartelledda atta a essere inclusa in sa prossima scansione"
 
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:100(string)
 msgid "This folder will be excluded during the next media scan."
 msgstr "Custa cartelledda no atta a essere inclusa in sa scansione"
 
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:102(string)
 msgid "Could not create new folder."
 msgstr "Non potto creare sa cartelledda"
 
-#: tmp_strings.xml:84(string)
+#: tmp_strings.xml:103(string)
 msgid "Could not delete file."
 msgstr "Non potto dogare su file"
 
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:104(string)
 msgid "Could not delete folder '%s'."
 msgstr "Non potto cantzellare '%s'."
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:105(string)
 msgid "Could not rename file."
 msgstr "Non lu potto torrare a lu numinare"
 
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:106(string)
 msgid "Could not rename folder."
 msgstr "Non la potto torrare a la numinare"
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:107(string)
 msgid "Could not move file."
 msgstr "Non che lu potto moghere"
 
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:108(string)
 msgid "Could not move folder."
 msgstr "Non che lu potto moghere inoche"
 
-#: tmp_strings.xml:90(string)
+#: tmp_strings.xml:109(string)
 msgid "Could not copy file."
 msgstr "Non che lu potto copiare"
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:110(string)
 msgid "File does not exist."
 msgstr "Su file non esistiti"
 
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:111(string)
 msgid "Could not delete child file '%s'."
 msgstr "Non potto che cantzellare su file '%s'."
 
-#: tmp_strings.xml:93(string)
+#: tmp_strings.xml:112(string)
 msgid "An error occurred:"
 msgstr "B'este un errore:"
 
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:113(string)
 msgid "Could not change media scan settings."
 msgstr "Non potto cambiare sas impostatzionese de scansione"
 
-#: tmp_strings.xml:96(string)
+#: tmp_strings.xml:115(string)
 msgid "No application available for sending."
 msgstr "Non bi sunu applicatzionese valida pro che lu mandare"
 
-#: tmp_strings.xml:98(string)
+#: tmp_strings.xml:117(string)
 msgid "Application not available"
 msgstr "Applicatzione non disponibile"
 
 #. Menu item for Settings
-#: tmp_strings.xml:104(string)
+#: tmp_strings.xml:123(string)
 msgid "Settings"
 msgstr "Impostatzionese"
 
 #. Category for preferences.
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:126(string)
 msgid "Advanced features"
 msgstr "Impostatzionese avantzadasa"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:128(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr "Mustra su menu pro che dogare cartelleddasa dae sa scansione"
 
-#: tmp_strings.xml:110(string)
+#: tmp_strings.xml:129(string)
 msgid "Hide menu item to exclude folders from media scan."
 msgstr "Doga su menu pro che dogare cartelleddasa dae sa scansione"
+
+#: tmp_strings.xml:131(string)
+msgid "Show all warnings"
+msgstr ""
+
+#: tmp_strings.xml:132(string)
+msgid "Show all warning messages"
+msgstr ""
+
+#: tmp_strings.xml:133(string)
+msgid "Suppress warning messages"
+msgstr ""
+
+#: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
+msgid "Display hidden files"
+msgstr ""
+
+#: tmp_strings.xml:137(string)
+msgid "Hide hidden files"
+msgstr ""
+
+#. ***************************
+#.    		 Strings for the 'Save as' feature
+#.     	 ***************************
+#: tmp_strings.xml:143(string)
+msgid "You haven't picked any file."
+msgstr ""
+
+#: tmp_strings.xml:144(string)
+#, fuzzy
+msgid "An error occured."
+msgstr "B'este un errore:"
+
+#: tmp_strings.xml:145(string)
+msgid "File successfully saved!"
+msgstr ""

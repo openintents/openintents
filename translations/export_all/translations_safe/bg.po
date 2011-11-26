@@ -1,0 +1,773 @@
+# Bulgarian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Language-Team: Bulgarian <bg@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+
+#. Short explanation of the application
+#: tmp_strings.xml:28(string)
+msgid "OI Safe keeps all your private data encrypted."
+msgstr ""
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:34(string)
+msgid "OI Safe"
+msgstr ""
+
+#: tmp_strings.xml:35(string)
+msgid "No Passwords present for this category."
+msgstr ""
+
+#: tmp_strings.xml:36(string)
+msgid "No categories present. Please add one via Menu-&gt;Add"
+msgstr ""
+
+#: tmp_strings.xml:37(string) tmp_strings.xml:197(string)
+msgid "Lock"
+msgstr ""
+
+#: tmp_strings.xml:38(string)
+msgid "View"
+msgstr ""
+
+#: tmp_strings.xml:39(string)
+msgid "Edit"
+msgstr ""
+
+#: tmp_strings.xml:40(string)
+msgid "Add"
+msgstr ""
+
+#: tmp_strings.xml:41(string)
+msgid "Delete"
+msgstr ""
+
+#: tmp_strings.xml:42(string)
+msgid "Password"
+msgstr ""
+
+#: tmp_strings.xml:43(string)
+msgid "Passwords"
+msgstr ""
+
+#: tmp_strings.xml:44(string)
+msgid "Master Password"
+msgstr ""
+
+#: tmp_strings.xml:45(string)
+msgid "Username"
+msgstr ""
+
+#: tmp_strings.xml:46(string)
+msgid "Website"
+msgstr ""
+
+#: tmp_strings.xml:47(string)
+msgid "Description"
+msgstr ""
+
+#: tmp_strings.xml:48(string)
+msgid "Notes"
+msgstr ""
+
+#: tmp_strings.xml:49(string)
+msgid "Save"
+msgstr ""
+
+#: tmp_strings.xml:50(string)
+msgid "Invalid password. Please try again."
+msgstr ""
+
+#: tmp_strings.xml:51(string)
+msgid "Password must be at least 4 characters"
+msgstr ""
+
+#: tmp_strings.xml:52(string)
+msgid "Description cannot be blank"
+msgstr ""
+
+#: tmp_strings.xml:53(string)
+msgid "Name cannot be blank"
+msgstr ""
+
+#: tmp_strings.xml:54(string)
+msgid ""
+"Please enter a password below, which will be used to keep your passwords "
+"safe."
+msgstr ""
+
+#: tmp_strings.xml:55(string)
+msgid ""
+"You are currently logged into OI Safe, meaning that other applications can "
+"request their passwords and decrypt/encrypt data. Lock to prevent further "
+"access until you type in your password again."
+msgstr ""
+
+#: tmp_strings.xml:56(string)
+msgid ""
+"Another application is asking to use the master key. Please type in your "
+"password to unlock it."
+msgstr ""
+
+#: tmp_strings.xml:57(string)
+msgid "Categories"
+msgstr ""
+
+#: tmp_strings.xml:58(string)
+msgid "Category"
+msgstr ""
+
+#: tmp_strings.xml:59(string)
+msgid "Business"
+msgstr ""
+
+#: tmp_strings.xml:60(string)
+msgid "Personal"
+msgstr ""
+
+#: tmp_strings.xml:61(string)
+msgid "Name"
+msgstr ""
+
+#: tmp_strings.xml:62(string)
+msgid "Category is not empty. You must delete the passwords first."
+msgstr ""
+
+#: tmp_strings.xml:63(string)
+msgid "Cannot decrypt category"
+msgstr ""
+
+#: tmp_strings.xml:64(string)
+msgid "Cannot decrypt password"
+msgstr ""
+
+#: tmp_strings.xml:65(string)
+msgid "Error exporting database"
+msgstr ""
+
+#: tmp_strings.xml:66(string)
+msgid "Export Database"
+msgstr ""
+
+#: tmp_strings.xml:67(string)
+msgid ""
+"This will export the password database to a plaintext file. THIS IS VERY "
+"DANGEROUS. Make sure that you delete the file after you are done with it. "
+"Are you sure you want to export?"
+msgstr ""
+
+#: tmp_strings.xml:68(string)
+msgid "Export to '%s' successful. Warning! The file is not encrypted."
+msgstr ""
+
+#: tmp_strings.xml:69(string)
+msgid ""
+"Unable to create export file 'oisafe.csv' on SDCARD. You might try "
+"disconnecting USB from computer."
+msgstr ""
+
+#: tmp_strings.xml:70(string)
+msgid "Import Database"
+msgstr ""
+
+#: tmp_strings.xml:71(string)
+msgid "Import file is missing:"
+msgstr ""
+
+#: tmp_strings.xml:72(string)
+msgid ""
+"Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
+"USB from computer."
+msgstr ""
+
+#: tmp_strings.xml:73(string)
+msgid "First line is missing fields."
+msgstr ""
+
+#: tmp_strings.xml:74(string)
+msgid "Import"
+msgstr ""
+
+#: tmp_strings.xml:75(string)
+msgid "Do you want to replace the database (import from %s)?"
+msgstr ""
+
+#: tmp_strings.xml:76(string)
+msgid "Yes"
+msgstr ""
+
+#: tmp_strings.xml:77(string)
+msgid "No"
+msgstr ""
+
+#: tmp_strings.xml:78(string)
+msgid "Please wait while importing..."
+msgstr ""
+
+#: tmp_strings.xml:79(string)
+msgid "No categories found."
+msgstr ""
+
+#: tmp_strings.xml:80(string)
+msgid "No entries found in CSV."
+msgstr ""
+
+#: tmp_strings.xml:81(string)
+msgid "Too many categories."
+msgstr ""
+
+#: tmp_strings.xml:82(string)
+msgid "Not enough fields"
+msgstr ""
+
+#: tmp_strings.xml:83(string)
+msgid "Blank category"
+msgstr ""
+
+#: tmp_strings.xml:84(string)
+msgid "Blank description"
+msgstr ""
+
+#: tmp_strings.xml:85(string)
+msgid "Delete Database"
+msgstr ""
+
+#: tmp_strings.xml:86(string)
+msgid ""
+"Are you really sure you want to delete the database? This cannot be undone."
+msgstr ""
+
+#: tmp_strings.xml:87(string)
+msgid "Added"
+msgstr ""
+
+#: tmp_strings.xml:88(string)
+msgid "entries"
+msgstr ""
+
+#: tmp_strings.xml:89(string)
+msgid "Import complete"
+msgstr ""
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"Since it is not secure to keep passwords in clear text CSV files, would you "
+"like to delete"
+msgstr ""
+
+#: tmp_strings.xml:91(string)
+msgid "Edit Entry"
+msgstr ""
+
+#: tmp_strings.xml:92(string)
+msgid "View Entry"
+msgstr ""
+
+#: tmp_strings.xml:93(string)
+msgid "Help"
+msgstr ""
+
+#: tmp_strings.xml:94(string)
+msgid "Close"
+msgstr ""
+
+#: tmp_strings.xml:95(string)
+msgid "Go"
+msgstr ""
+
+#: tmp_strings.xml:96(string)
+msgid "Delete Password"
+msgstr ""
+
+#: tmp_strings.xml:97(string)
+msgid "Are you sure you want to delete this password?"
+msgstr ""
+
+#: tmp_strings.xml:98(string)
+msgid "Change Master Password"
+msgstr ""
+
+#: tmp_strings.xml:99(string)
+msgid ""
+"Use this to change the password you use to unlock OI Safe. Your data will be "
+"re-encrypted with the new password. The more complex your password is, the "
+"safer your data will be."
+msgstr ""
+
+#: tmp_strings.xml:100(string)
+msgid "Old password"
+msgstr ""
+
+#: tmp_strings.xml:101(string)
+msgid "New password"
+msgstr ""
+
+#: tmp_strings.xml:102(string)
+msgid "Verify password"
+msgstr ""
+
+#: tmp_strings.xml:103(string)
+msgid "New and Verify passwords do not match."
+msgstr ""
+
+#: tmp_strings.xml:104(string)
+msgid "Old password is invalid. Please try again."
+msgstr ""
+
+#: tmp_strings.xml:105(string)
+msgid "Error changing password"
+msgstr ""
+
+#: tmp_strings.xml:106(string)
+msgid "Master Password changed"
+msgstr ""
+
+#: tmp_strings.xml:107(string)
+msgid "Confirm"
+msgstr ""
+
+#: tmp_strings.xml:108(string)
+msgid "Password entries do not match."
+msgstr ""
+
+#: tmp_strings.xml:109(string)
+msgid "Backup"
+msgstr ""
+
+#: tmp_strings.xml:110(string)
+msgid "Backing up to"
+msgstr ""
+
+#: tmp_strings.xml:111(string)
+msgid "Complete. Passwords backed up:"
+msgstr ""
+
+#: tmp_strings.xml:112(string)
+msgid "Backup failed:"
+msgstr ""
+
+#: tmp_strings.xml:113(string)
+msgid "Restore"
+msgstr ""
+
+#: tmp_strings.xml:114(string)
+msgid "Filename"
+msgstr ""
+
+#: tmp_strings.xml:115(string)
+msgid ""
+"Backup file not found. You need to perform a backup first to create it. Or "
+"copy a backup from your PC."
+msgstr ""
+
+#: tmp_strings.xml:116(string)
+msgid ""
+"Please provide the password used by the backup file. Your master password "
+"will be set to this."
+msgstr ""
+
+#. Toast message. %s contains a more detailed error message.
+#: tmp_strings.xml:119(string)
+msgid "Unable to open file: %s"
+msgstr ""
+
+#. Toast message. %s contains the version number of the database.
+#: tmp_strings.xml:122(string)
+msgid "Version not supported: %s"
+msgstr ""
+
+#: tmp_strings.xml:124(string)
+msgid "Restore error."
+msgstr ""
+
+#: tmp_strings.xml:125(string)
+msgid "Bad password."
+msgstr ""
+
+#: tmp_strings.xml:126(string)
+msgid "Restore Database"
+msgstr ""
+
+#: tmp_strings.xml:127(string)
+msgid "Are you sure you want to replace the current data?"
+msgstr ""
+
+#: tmp_strings.xml:128(string)
+msgid "Found %1$s passwords from backup dated %2$s."
+msgstr ""
+
+#: tmp_strings.xml:129(string)
+msgid "Complete. Passwords restored: %s"
+msgstr ""
+
+#: tmp_strings.xml:130(string)
+msgid "copied to Clipboard"
+msgstr ""
+
+#: tmp_strings.xml:131(string)
+msgid "Invalid website"
+msgstr ""
+
+#: tmp_strings.xml:132(string)
+msgid "Database Error"
+msgstr ""
+
+#: tmp_strings.xml:133(string)
+msgid "Database error. Out of space?"
+msgstr ""
+
+#. Menu label to open a category
+#: tmp_strings.xml:136(string)
+msgid "Open"
+msgstr ""
+
+#: tmp_strings.xml:138(string)
+msgid "Database Version Error"
+msgstr ""
+
+#: tmp_strings.xml:139(string)
+msgid ""
+"Sorry, but the version of the database is not supported. You must install "
+"the version associated with this database."
+msgstr ""
+
+#. Menu label to move a password to another category
+#: tmp_strings.xml:142(string)
+msgid "Move"
+msgstr ""
+
+#: tmp_strings.xml:144(string)
+msgid "Select Category"
+msgstr ""
+
+#. Toast that password has been moved to another category
+#: tmp_strings.xml:147(string)
+msgid "Moved to %s"
+msgstr ""
+
+#: tmp_strings.xml:149(string)
+msgid "Settings"
+msgstr ""
+
+#: tmp_strings.xml:150(string)
+msgid "Allow external access"
+msgstr ""
+
+#: tmp_strings.xml:151(string)
+msgid "Allow other applications to secure your data with OI Safe"
+msgstr ""
+
+#: tmp_strings.xml:152(string)
+msgid "OI Safe: Another application requests access."
+msgstr ""
+
+#: tmp_strings.xml:153(string)
+msgid "Allow other applications to secure your data with OI Safe."
+msgstr ""
+
+#: tmp_strings.xml:154(string)
+msgid "This can also be set in OI Safe's Menu / Settings."
+msgstr ""
+
+#. Preference title for auto lock timeout
+#: tmp_strings.xml:157(string) tmp_strings.xml:162(string)
+msgid "Auto lock timeout"
+msgstr ""
+
+#. Preference summary for auto lock timeout
+#: tmp_strings.xml:160(string)
+msgid "Number of minutes before timeout occurs and safe is locked"
+msgstr ""
+
+#. Preference title for lock (OI Safe) on screen lock (device)
+#: tmp_strings.xml:165(string)
+msgid "Lock on screen lock"
+msgstr ""
+
+#. Preference summary for lock (OI Safe) on screen lock
+#: tmp_strings.xml:168(string)
+msgid "Lock when the screen locks"
+msgstr ""
+
+#. Preference title: use a numeric keypad to enter the password
+#: tmp_strings.xml:171(string)
+msgid "Keypad"
+msgstr ""
+
+#. Preference summary: for a numeric keypad
+#: tmp_strings.xml:174(string)
+msgid "Use a keypad to enter Master Password"
+msgstr ""
+
+#. Preference title for keypad mute
+#: tmp_strings.xml:177(string)
+msgid "Keypad Mute"
+msgstr ""
+
+#. Preference summary: Make the keypad sounds mute. 
+#. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
+#: tmp_strings.xml:181(string)
+msgid "Mute keypad sounds"
+msgstr ""
+
+#: tmp_strings.xml:183(string)
+msgid "Auto backup"
+msgstr ""
+
+#: tmp_strings.xml:184(string)
+msgid "Automatically prompt to backup passwords"
+msgstr ""
+
+#: tmp_strings.xml:186(string)
+msgid "Auto backup days"
+msgstr ""
+
+#: tmp_strings.xml:187(string)
+msgid "Number of days to wait before next auto backup"
+msgstr ""
+
+#: tmp_strings.xml:188(string)
+msgid "Auto Backup Days"
+msgstr ""
+
+#: tmp_strings.xml:191(string)
+msgid "Decrypt (OI Safe)"
+msgstr ""
+
+#: tmp_strings.xml:192(string)
+msgid "Encrypt (OI Safe)"
+msgstr ""
+
+#: tmp_strings.xml:193(string)
+msgid "Get password (OI Safe)"
+msgstr ""
+
+#: tmp_strings.xml:194(string)
+msgid "Set password (OI Safe)"
+msgstr ""
+
+#: tmp_strings.xml:195(string)
+msgid "Restart timer (OI Safe)"
+msgstr ""
+
+#: tmp_strings.xml:196(string)
+msgid "Open OI Safe"
+msgstr ""
+
+#: tmp_strings.xml:198(string)
+msgid "Continue"
+msgstr ""
+
+#: tmp_strings.xml:199(string)
+msgid "Generate Password"
+msgstr ""
+
+#: tmp_strings.xml:200(string)
+msgid "Password Length"
+msgstr ""
+
+#: tmp_strings.xml:201(string)
+msgid "Uppercase [A-Z]"
+msgstr ""
+
+#: tmp_strings.xml:202(string)
+msgid "Lowercase [a-z]"
+msgstr ""
+
+#: tmp_strings.xml:203(string)
+msgid "Numbers [0-9]"
+msgstr ""
+
+#: tmp_strings.xml:204(string)
+msgid "Symbols [!@#$%^\\*]"
+msgstr ""
+
+#: tmp_strings.xml:205(string)
+msgid "Copy to Current Entry"
+msgstr ""
+
+#: tmp_strings.xml:206(string)
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: tmp_strings.xml:207(string)
+msgid "Cancel"
+msgstr ""
+
+#: tmp_strings.xml:208(string)
+msgid "Discard changes"
+msgstr ""
+
+#: tmp_strings.xml:209(string)
+msgid "Entry saved"
+msgstr ""
+
+#: tmp_strings.xml:210(string)
+msgid "Unable to save due to database error"
+msgstr ""
+
+#: tmp_strings.xml:211(string)
+msgid "Last edited"
+msgstr ""
+
+#: tmp_strings.xml:212(string)
+msgid "unknown"
+msgstr ""
+
+#: tmp_strings.xml:213(string)
+msgid "Crypto error:"
+msgstr ""
+
+#: tmp_strings.xml:214(string)
+msgid "Unique name"
+msgstr ""
+
+#: tmp_strings.xml:215(string)
+msgid "Package access"
+msgstr ""
+
+#: tmp_strings.xml:216(string)
+msgid "not found"
+msgstr ""
+
+#: tmp_strings.xml:217(string)
+msgid "New master key"
+msgstr ""
+
+#: tmp_strings.xml:218(string)
+msgid ""
+"A new random master key has been created. Use menu &gt; backup and store "
+"this key in a safe place. Without this key you may lose encrypted data."
+msgstr ""
+
+#: tmp_strings.xml:219(string)
+msgid "Switch mode"
+msgstr ""
+
+#: tmp_strings.xml:220(string)
+msgid "Decrypting..."
+msgstr ""
+
+#: tmp_strings.xml:221(string)
+msgid "Search"
+msgstr ""
+
+#: tmp_strings.xml:222(string)
+msgid "Searching..."
+msgstr ""
+
+#: tmp_strings.xml:223(string)
+msgid "Type search criteria"
+msgstr ""
+
+#: tmp_strings.xml:224(string)
+msgid "Nothing found"
+msgstr ""
+
+#: tmp_strings.xml:225(string)
+msgid "Mute"
+msgstr ""
+
+#: tmp_strings.xml:226(string)
+msgid "Sounds"
+msgstr ""
+
+#: tmp_strings.xml:227(string)
+msgid "Previous"
+msgstr ""
+
+#: tmp_strings.xml:228(string)
+msgid "Next"
+msgstr ""
+
+#: tmp_strings.xml:229(string)
+msgid "AutoBackup"
+msgstr ""
+
+#: tmp_strings.xml:230(string)
+msgid "No backup has been performed yet. Would you like to backup now?"
+msgstr ""
+
+#: tmp_strings.xml:231(string)
+msgid "The last backup was %d days ago. Would you like to backup now?"
+msgstr ""
+
+#: tmp_strings.xml:232(string)
+msgid "Turn off autobackup"
+msgstr ""
+
+#. Permission to access master password
+#: tmp_strings.xml:240(string)
+msgid "access the master password"
+msgstr ""
+
+#: tmp_strings.xml:241(string)
+msgid ""
+"Allows the application to access the master key used for encryption and "
+"decryption. Should never be used except by OI Safe."
+msgstr ""
+
+#. Permission to encrypt and decrypt data
+#: tmp_strings.xml:243(string)
+msgid "encrypt and decrypt data"
+msgstr ""
+
+#: tmp_strings.xml:244(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+
+#: tmp_strings.xml:252(item)
+msgid "1 minute"
+msgstr ""
+
+#: tmp_strings.xml:253(item)
+msgid "5 minutes"
+msgstr ""
+
+#: tmp_strings.xml:254(item)
+msgid "10 minutes"
+msgstr ""
+
+#: tmp_strings.xml:255(item)
+msgid "15 minutes"
+msgstr ""
+
+#: tmp_strings.xml:256(item)
+msgid "30 minutes"
+msgstr ""
+
+#: tmp_strings.xml:261(item)
+msgid "1 day"
+msgstr ""
+
+#: tmp_strings.xml:262(item)
+msgid "7 days"
+msgstr ""
+
+#: tmp_strings.xml:263(item)
+msgid "30 days"
+msgstr ""
+
+#: tmp_strings.xml:264(item)
+msgid "60 days"
+msgstr ""

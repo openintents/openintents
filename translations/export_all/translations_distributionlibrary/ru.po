@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Andrey Zaytsev <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,6 +27,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Alexander Sapronov https://launchpad.net/~warmonger\n"
+"  Andrey Zaytsev https://launchpad.net/~a.einsam\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
@@ -82,6 +83,8 @@ msgstr "Проверка обновлений"
 msgid ""
 "Check manually for updates or install OI Update for automatic notifications."
 msgstr ""
+"Проверьте обновления вручную или установите OI Update для автоматической "
+"проверки."
 
 #: tmp_strings.xml:48(string)
 msgid "Check now"
@@ -162,7 +165,7 @@ msgstr "Пожалуйста скачайте %s с сайта OpenIntents"
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:85(string)
 msgid "Market download"
-msgstr ""
+msgstr "Загрузить из Android Маркета"
 
 #. Dialog button: download the suggested application from the developer web site.
 #: tmp_strings.xml:87(string)

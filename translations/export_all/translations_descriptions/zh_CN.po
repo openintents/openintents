@@ -1,0 +1,115 @@
+# Chinese (Simplified) translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: zhangchun <Unknown>\n"
+"Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  zhangchun https://launchpad.net/~zhangchun"
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr "文件管理器允许你浏览SD卡，创建目录，重命名，复制，移动和删除文件。"
+
+#: tmp_strings.xml:13(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr "作为一个扩展到其他应用程序，显示“打开”和“保存”对话框。"
+
+#: tmp_strings.xml:15(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr "应用程序的广告是免费的，不需要网络权限。"
+
+#: tmp_strings.xml:17(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr "完整列表的更改，请访问："
+
+#: tmp_strings.xml:20(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr "可以翻译成您的语言："
+
+#: tmp_strings.xml:23(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr "开放源码应用程序的源代码是："
+
+#: tmp_strings.xml:26(string)
+msgid "Features:"
+msgstr "功能"
+
+#: tmp_strings.xml:27(listitem)
+msgid "Show list of files with thumbnails for images."
+msgstr "显示的图像的缩略图文件列表。"
+
+#: tmp_strings.xml:28(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr "移动，复制，重命名，和删除文件"
+
+#: tmp_strings.xml:29(listitem)
+msgid "Create and delete directories (folders)."
+msgstr "创建和删除目录（文件夹）"
+
+#: tmp_strings.xml:30(listitem)
+msgid "Send files by email."
+msgstr "通过电子邮件发送文件"
+
+#: tmp_strings.xml:31(listitem)
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr "也可用其他应用程序，如Gmail，附加档案。"
+
+#: tmp_strings.xml:32(listitem)
+msgid "Support for many file endings and mime types."
+msgstr "支持的许多文件结尾和MIME类型。"
+
+#: tmp_strings.xml:33(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr "支持PICK_FILE 和PICK_DIRECTORY，这样其他应用程序可使用OI文件管理器。"
+
+#: tmp_strings.xml:35(string)
+msgid "Keywords:"
+msgstr "关键字："
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:37(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr "文件管理器，文件管理器，文件浏览器"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:39(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr "OI, IO, OpenIntents, Open Intents"
+
+#: tmp_strings.xml:41(string)
+msgid "International versions:"
+msgstr "国际版本："
+
+#: tmp_strings.xml:44(string)
+msgid "Extensions:"
+msgstr "扩展:"

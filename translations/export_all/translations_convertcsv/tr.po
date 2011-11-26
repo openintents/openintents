@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Huseyin AKSU <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Huseyin AKSU https://launchpad.net/~huseyinaksu95\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  zeugma https://launchpad.net/~sunder67"
 
@@ -31,6 +32,8 @@ msgid ""
 "This extension to OI Shopping list and OI Notepad lets you import and export "
 "lists and notes in the CSV file format."
 msgstr ""
+"Bu OI Alışveriş listesi ve OI Not defteri eklentisi CSV dosya formatında "
+"listeleri ve notları yüklemenizi ve CSV formatında çıktı almanızı sağlar."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -45,7 +48,7 @@ msgstr "OI Not defteri"
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:39(string)
 msgid "Launch %s and select menu &gt; Convert CSV."
-msgstr ""
+msgstr "%s i başlat ve menüsüyü seç &gt; CSV'ye Çevir."
 
 #. Application name. Can be localized.
 #. 	  "CSV" is a common file extension meaning "comma separated values".
@@ -60,11 +63,11 @@ msgstr "Çevir CSV"
 
 #: tmp_strings.xml:49(string)
 msgid "Convert CSV to Notepad"
-msgstr ""
+msgstr "CSV'den Not defterine dönüştür"
 
 #: tmp_strings.xml:50(string)
 msgid "Convert CSV to Shopping list"
-msgstr ""
+msgstr "CSV'den Alışveriş listesine dönüştür"
 
 #: tmp_strings.xml:51(string)
 msgid "Convert all notes"
@@ -76,7 +79,7 @@ msgstr "Tüm alışveriş listesini çevir"
 
 #: tmp_strings.xml:53(string)
 msgid "Convert list '%s'"
-msgstr ""
+msgstr "'%s' listesini dnüştür"
 
 #: tmp_strings.xml:54(string)
 msgid "File path"
@@ -100,7 +103,7 @@ msgstr "Dosya okunurken hata"
 
 #: tmp_strings.xml:59(string)
 msgid "Wrong CSV format"
-msgstr ""
+msgstr "Hatalı CSV formatı"
 
 #: tmp_strings.xml:60(string)
 msgid "File not found"
@@ -108,53 +111,56 @@ msgstr "Dosya bulunamadı"
 
 #: tmp_strings.xml:61(string)
 msgid "Not yet implemented, please choose different option."
-msgstr ""
+msgstr "Uygulanamadı, lütfen farklı bir seçenek seçin."
 
 #: tmp_strings.xml:62(string)
 msgid "Import finished"
-msgstr ""
+msgstr "İçe aktarma tamamlandı"
 
 #: tmp_strings.xml:63(string)
 msgid "Export finished"
-msgstr ""
+msgstr "Dışa aktarma tamamlandı"
 
 #: tmp_strings.xml:64(string)
 msgid "Select notepad CSV file"
-msgstr ""
+msgstr "Not defteri CSV dosyası seçin"
 
 #: tmp_strings.xml:65(string)
 msgid "Select shopping list CSV file"
-msgstr ""
+msgstr "Alışveriş Listesi CSV dosyası seçin"
 
 #: tmp_strings.xml:66(string)
 msgid "Current Import Policy:"
-msgstr ""
+msgstr "İçe aktarma"
 
 #: tmp_strings.xml:67(string)
 msgid "Import Policy"
-msgstr ""
+msgstr "İçe Aktarma İlkeleri"
 
 #: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
 msgid "Select the import policy to use"
-msgstr ""
+msgstr "Kullanmak istediğiniz içe aktarma ilkelerini seçin"
 
 #: tmp_strings.xml:70(string)
 msgid "The file exists. Do you want to overwrite?"
-msgstr ""
+msgstr "Dosya zaten var. Var olan dosya ile değiştirisin mi?"
 
 #: tmp_strings.xml:71(string)
 msgid "Don't ask again. Always overwrite!"
-msgstr ""
+msgstr "Tekrar sorma. Her zaman var olan dosyayla değiştir!"
 
 #: tmp_strings.xml:73(string)
 msgid "Import policy set to RESTORE"
-msgstr ""
+msgstr "İçe Aktarma İlkelerini GERİ AL olarak ayarla"
 
 #: tmp_strings.xml:74(string)
 msgid ""
 "Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
 "them with the contents of the CSV file. Are you sure?"
 msgstr ""
+"Senin mevcut içe aktarma politikan MEVCUT BÜTÜN KAYITLARI SİL ve CSV "
+"dosyasının tüm içeriğini bunla DEĞİŞTİR olarak ayarlandı. Devam etmek "
+"istediğinize emin misiniz?"
 
 #: tmp_strings.xml:76(string)
 msgid "Settings"
@@ -170,7 +176,7 @@ msgstr "CSV dosya biçimi seçin"
 
 #: tmp_strings.xml:79(string)
 msgid "Select encoding"
-msgstr ""
+msgstr "Kodlama türü seçin"
 
 #: tmp_strings.xml:80(string)
 msgid "Default"
@@ -178,7 +184,7 @@ msgstr "Varsayılan"
 
 #: tmp_strings.xml:81(string)
 msgid "Use custom encoding (advanced users)"
-msgstr ""
+msgstr "Kodlama türünü kendiniz ayarlayın (sadece üst düzey kullanıcılar)"
 
 #: tmp_strings.xml:82(string)
 msgid "Select a CSV file format"
@@ -187,25 +193,28 @@ msgstr "Bir CVS dosya biçimi seçin"
 #. Preference category title
 #: tmp_strings.xml:87(string)
 msgid "Common settings"
-msgstr ""
+msgstr "Genel ayarlar"
 
 #: tmp_strings.xml:88(string)
 msgid "Import/export settings that apply to Notepad and Shopping list."
 msgstr ""
+"Kaydedilecek Not defteri ve Alıveriş listesi ayarlarını içe/dışa aktar."
 
 #: tmp_strings.xml:89(string)
 msgid "Ask if file exists"
-msgstr ""
+msgstr "Dosyanın olup olmadığını kontrol et"
 
 #: tmp_strings.xml:90(string)
 msgid ""
 "If checked a dialog appears to confirm overwriting if the export file "
 "already exists."
 msgstr ""
+"Eğer işaretlerseniz dışa aktarılan dosyanın zaten bulunduğu durumlarda "
+"dosyanın üstüne yazılacak."
 
 #: tmp_strings.xml:92(string)
 msgid "Application specific settings"
-msgstr ""
+msgstr "Özel uygulama ayarları"
 
 #: tmp_strings.xml:93(string)
 msgid "Filename"
@@ -237,15 +246,18 @@ msgstr "Tamam"
 
 #: tmp_strings.xml:104(string)
 msgid "Import stores"
-msgstr ""
+msgstr "Mağazaları içe aktar"
 
 #: tmp_strings.xml:105(string)
 msgid "Import HandyShopper store names only as item tags."
 msgstr ""
+"BecerikliMüşteri mağaza isimlerini sadece öğe etiketi olarak içe aktar."
 
 #: tmp_strings.xml:106(string)
 msgid "Import HandyShopper stores and per-store price and aisle information."
 msgstr ""
+"BecerikliMüşteri mağazalarını, mağaza başına fiyatları ve reyon bilgilerini "
+"içe aktar."
 
 #. Permission
 #: tmp_strings.xml:110(string)
@@ -257,6 +269,8 @@ msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"Notları okuması için bir dosyaya izin verir. Kodlanmış notların encrypted "
+"formatında olduğunu untutmayın."
 
 #. Permission
 #: tmp_strings.xml:113(string)
@@ -266,6 +280,8 @@ msgstr "notları yaz"
 #: tmp_strings.xml:114(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"Bir uygulamanın yeni notlar oluşturmasına ya da olan notları düzenlemesine "
+"izin verir."
 
 #. Permission
 #: tmp_strings.xml:118(string)
@@ -277,16 +293,20 @@ msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Bir uygulamaya alışveriş listelerini okuyabilmesi için izin verir. Kodlanmış "
+"notların encrypted formatında olduğunu untutmayın."
 
 #. Permission
 #: tmp_strings.xml:121(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "alışveriş listelerini yaz"
 
 #: tmp_strings.xml:122(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Bir uygulamanın yeni listeler oluşturmasına ya da olan listeleri "
+"düzenlemesine izin verir."
 
 #: tmp_strings.xml:125(item)
 msgid "MS Outlook Notes"
@@ -294,7 +314,7 @@ msgstr "MS Outlook Notları"
 
 #: tmp_strings.xml:126(item)
 msgid "Palm CSV"
-msgstr ""
+msgstr "Palm CSV"
 
 #: tmp_strings.xml:130(item)
 msgid "MS Outlook Tasks"
@@ -302,39 +322,42 @@ msgstr "MS Outlook Görevleri"
 
 #: tmp_strings.xml:131(item)
 msgid "HandyShopper"
-msgstr ""
+msgstr "BecerikliMüşteri"
 
 #: tmp_strings.xml:135(item) tmp_strings.xml:149(item)
 msgid "DUPLICATE - Allow duplicates of records."
-msgstr ""
+msgstr "KOPYALA - Kayıtları kopyalamanıza izin verir"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "\"KEEP - Don't overwrite existing records.\""
-msgstr ""
+msgstr "\"SAKLA - Var olan kayıtların üstüne yazma. \""
 
 #: tmp_strings.xml:137(item)
 msgid "Overwrite - Overwrite existing records."
-msgstr ""
+msgstr "Üstüne yaz - Var olan kayıtların üstüne yazar."
 
 #: tmp_strings.xml:138(item)
 msgid "Restore - DELETE ALL, then import."
-msgstr ""
+msgstr "Geri Al - HEPSİNİ SİLi daha sonra içe aktar."
 
 #: tmp_strings.xml:142(item) tmp_strings.xml:154(item)
 msgid "DUPLICATE - Add a second copy of a record if it already exists."
-msgstr ""
+msgstr "KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur."
 
 #: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
 msgid ""
 "\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 "\""
 msgstr ""
+"\"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. \""
 
 #: tmp_strings.xml:144(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
-msgstr ""
+msgstr "Üstüne yaz - CSV deki bir kayıt var olan bir dosyanın ÜSTÜNE YAZACAK."
 
 #: tmp_strings.xml:145(item)
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr ""
+"Yedeklemeyi Geri Al - VAR OLAN BÜTÜN KAYITLARI SİLER, ve CSV dosyasını içe "
+"aktarır."

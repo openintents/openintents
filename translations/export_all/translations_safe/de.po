@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: DHermit <Unknown>\n"
+"Last-Translator: appricoo <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,9 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  DHermit https://launchpad.net/~dhermit\n"
 "  Kim Linoh https://launchpad.net/~psychokim\n"
-"  Peli https://launchpad.net/~peli0101"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Peli https://launchpad.net/~peli0101\n"
+"  appricoo https://launchpad.net/~appricoo"
 
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
@@ -569,7 +571,7 @@ msgstr ""
 
 #: tmp_strings.xml:184(string)
 msgid "Automatically prompt to backup passwords"
-msgstr ""
+msgstr "Automatisch nach Password-Sicherung fragen"
 
 #: tmp_strings.xml:186(string)
 msgid "Auto backup days"
@@ -750,7 +752,7 @@ msgstr ""
 
 #: tmp_strings.xml:232(string)
 msgid "Turn off autobackup"
-msgstr ""
+msgstr "automatische Sicherung ausschalten"
 
 #. Permission to access master password
 #: tmp_strings.xml:240(string)
@@ -801,11 +803,11 @@ msgstr "30 Minuten"
 
 #: tmp_strings.xml:261(item)
 msgid "1 day"
-msgstr ""
+msgstr "1 Tag"
 
 #: tmp_strings.xml:262(item)
 msgid "7 days"
-msgstr ""
+msgstr "7 Tage"
 
 #: tmp_strings.xml:263(item)
 msgid "30 days"

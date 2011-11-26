@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peli <peli0101@googlemail.com>\n"
+"Last-Translator: ubuntuuser87 <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,9 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Peli https://launchpad.net/~peli0101"
+"  Peli https://launchpad.net/~peli0101\n"
+"  appricoo https://launchpad.net/~appricoo\n"
+"  ubuntuuser87 https://launchpad.net/~martin-wallner-"
 
 #. ***************************
 #. 	     Applicatio-specific strings
@@ -37,19 +39,19 @@ msgstr "Eine neue Version von %s ist verfügbar.\\nWollen Sie aktualisieren?"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "Eine neue Version von% 1 $ s ist% vorhanden 2 $ s. \\ n% 3 $ s \\ n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "Eine neue Version von %1$s ist verfügbar.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "Eine neue Version von% 1 $ s ist verfügbar in% 2 $ s."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
-msgstr "Eine neue Version von %s ist verfügbar."
+msgstr "Eine neue Version von% s zur Verfügung steht."
 
 #: tmp_strings.xml:20(string)
 msgid "Android Market not available."
