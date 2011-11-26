@@ -29,7 +29,8 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
-  goodev https://launchpad.net/~3-admin-goodev-org</string>
+  goodev https://launchpad.net/~3-admin-goodev-org
+  zhangchun https://launchpad.net/~zhangchun</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">一个在系统中共享的用于显示“关于”对话框的程序。</string>
@@ -38,38 +39,38 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI文件管理器</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI购物列表</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI记事本</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI安全</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">启动 %s选择“菜单”-&gt;关于。</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">OI 关于</string>
+    <string name="app_name">OI简介</string>
 	
-    <string name="menu_about">关于“OI关于”</string>
+    <string name="menu_about">关于OI</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
     <string name="about_activity_name_extended">关于%s</string>
     
-	<string name="l_authors">作者：</string>
+	<string name="l_authors">开发人员</string>
 	<string name="l_documenters">文档撰写者：</string>
 	<string name="l_translators">翻译者：</string>
 	<string name="l_artists">美工：</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">国际翻译由</string>
 	<string name="l_credits">制作组</string>
 	<string name="l_license">许可</string>
-	<string name="l_info">一般信息</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_info">基本信息</string>
+	<string name="l_recent_changes">最近更改</string>
 	
 	<string name="no_information_available">无可用信息。</string>
 	
@@ -78,35 +79,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>阿拉伯语</item>
+		<item>捷克语</item>
+		<item>丹麦语</item>
+		<item>德语</item>
+		<item>英语</item>
+		<item>希腊语</item>
+		<item>西班牙语</item>
+		<item>波斯语</item>
+		<item>芬兰语</item>
+		<item>法罗语</item>
+		<item>法语</item>
+		<item>克罗地亚语</item>
+		<item>匈牙利语</item>
+		<item>意大利语</item>
+		<item>日语</item>
+		<item>韩语</item>
+		<item>老挝语</item>
+		<item>荷兰语</item>
+		<item>奥克语</item>
+		<item>波兰语</item>
+		<item>葡萄牙语</item>
+		<item>巴西葡萄牙语</item>
+		<item>罗马尼亚语</item>
+		<item>俄语</item>
+		<item>撒丁语</item>
+		<item>斯洛伐克语</item>
+		<item>瑞典语</item>
+		<item>土耳其语</item>
+		<item>中文(简体)</item>
+		<item>中文 (繁体)</item>
 	</string-array>
 </resources>

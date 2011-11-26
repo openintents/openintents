@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  zhangchun https://launchpad.net/~zhangchun</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents手电筒帮助你在黑暗中寻找光明。运行开启屏背光。</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI手电筒</string>
+    
+    <string name="flashlight_info">开启背光屏。</string>
+    
+    <string name="color">颜色</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI拾色器</string>
+    
+    <string name="preferences">设置</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">设置</string>
+	<string name="settings_title_keep_color">保持颜色</string>
+	<string name="settings_summary_keep_color">手电筒下次开启是保持一样的颜色。</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">使拾色器能应用于更多的开发者，我们已经分类好所有的应用程序。</string>
+    
+</resources>

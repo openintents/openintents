@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Sahran https://launchpad.net/~sahran</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">مۇستەقىل ھەققىدە سۆزلەشكۈ پىروگراممىلار ئارا ھەمبەھىرلىنىدۇ.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI ھۆججەت باشقۇرغۇچ</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI سېتىۋېلىش تىزىمى</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI خاتىرە دەپتەر</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI بىخەتەرلىك</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">%s نى ئىجرا قىلىپ تىزىملىك &gt; ھەققىدە نى تاللاڭ.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI ھەققىدە</string>
+	
+    <string name="menu_about">OI نىڭ ئۆزى ھەققىدە</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">%s ھەققىدە</string>
+    
+	<string name="l_authors">يازغۇچى</string>
+	<string name="l_documenters">پۈتۈكچى</string>
+	<string name="l_translators">تەرجىمان</string>
+	<string name="l_artists">گۈزەل سەنئەت تەھرىرى</string>
+	<string name="l_international_translators">خەلقئارا تەرجىمە</string>
+	<string name="l_credits">تەشەككۈر</string>
+	<string name="l_license">ئىجازەتنامە</string>
+	<string name="l_info">ئادەتتىكى ئۇچۇر</string>
+	<string name="l_recent_changes">يېقىنقى ئۆزگەرتىشلەر</string>
+	
+	<string name="no_information_available">ئىشلەتكىلى بولىدىغان ئۇچۇر يوق.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>ئەرەبچە</item>
+		<item>چېخچە</item>
+		<item>دانىشچە</item>
+		<item>گېرمانچە</item>
+		<item>ئىنگلىزچە</item>
+		<item>گرېكچە</item>
+		<item>ئىسپانچە</item>
+		<item>پارسچە</item>
+		<item>فىنچە</item>
+		<item>فائېروچە</item>
+		<item>فىرانسۇزچە</item>
+		<item>خورۋاتچە</item>
+		<item>ھۇنگىرچە</item>
+		<item>ئىتالىيانچە</item>
+		<item>ياپونچە</item>
+		<item>كورىيەچە</item>
+		<item>لائوسچە</item>
+		<item>گوللاندىيەچە</item>
+		<item>ئاۋكچە (post 1500)</item>
+		<item>پولەكچە</item>
+		<item>پورتۇگالچە</item>
+		<item>بىرازىليە پورتۇگالچە</item>
+		<item>رۇمىنىيەچە</item>
+		<item>رۇسچە</item>
+		<item>ساردىنىيەچە</item>
+		<item>سىلوۋاكچە</item>
+		<item>شۋېدچە</item>
+		<item>تۈركچە</item>
+		<item>خەنزۇچە (ئاددىي)</item>
+		<item>خەنزۇچە (مۇرەككەپ)</item>
+	</string-array>
+</resources>

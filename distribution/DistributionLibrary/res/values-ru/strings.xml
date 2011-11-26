@@ -9,6 +9,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Alexander Sapronov https://launchpad.net/~warmonger
+  Andrey Zaytsev https://launchpad.net/~a.einsam
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- ***************************
@@ -46,7 +47,7 @@
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
     <string name="oi_distribution_menu_update">Проверка обновлений</string>
-	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
+	<string name="oi_distribution_update_box_text">Проверьте обновления вручную или установите OI Update для автоматической проверки.</string>
 	<string name="oi_distribution_update_check_now">Проверить сейчас</string>
 	<string name="oi_distribution_update_get_updater">Получить OI Updater</string>
 	<string name="oi_distribution_update_error">Download application not available.</string>
@@ -84,7 +85,7 @@
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
     <string name="oi_distribution_download_message">Пожалуйста скачайте %s с сайта OpenIntents</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
-    <string name="oi_distribution_download_market">Market download</string>
+    <string name="oi_distribution_download_market">Загрузить из Android Маркета</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
     <string name="oi_distribution_download_web">Онлайн загрузка</string>
 	<!-- Dialog title: %s is the name of an application (e.g. "OI Notepad"). -->

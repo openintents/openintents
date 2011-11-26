@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents Color Picker - гэта пашырэнне для OI Flashlight і іншых сумяшчальных з ім прыкладанняў.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Палітра</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Выбар колеру</string>
+    
+    <string name="recent_colors_condensed">Апошнія</string>
+    <string name="recent_colors">Апошнія колеры</string>
+    <string name="recent_colors_expanded">Нядаўна выбраныя колеры</string>
+    <string name="recent_colors_clear_history">Ачысціць</string>
+    <string name="recent_colors_empty">Няма апошніх выбраных колераў.</string>
+    
+    <string name="confirm_color_title">Выкарыстоўваць колер?</string>
+    <string name="confirm_color_message">Выкарыстоўваць гэты новы колер? Вы можаце адмовіцца ад гэтага апавяшчэння, націснуўшы на цэнтр круга.</string>
+    
+    
+	<!-- About -->
+	<string name="about">А праграме</string>
+	<string name="aboutapp_not_available">Версія %s\n\nНяма даступнага сумяшчальнага пашырэння для паказу поўнай інфармацыі.</string>
+	<string name="aboutapp_get">Атрымаць OI About</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Загрузка прыкладання недаступна.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">Каб выбраць колер ў OI Flashlight, націсніце меню &gt; Колер.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+    <string name="info_app_spiral_wallpaper">Гіпнатызуючыя, аніміраваныя, жывыя шпалеры.</string>
+    <string name="title_app_spiral_wallpaper">Жывыя шпалеры HypnoTwister</string>
+    
+    <string name="info_app_bettr_flickr">Родны інтэрфэйс Flickr для Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Kамбiнуйце графiку для стварэння анiмэ</string>
+    <string name="title_app_character_gen">Генератар персанажаў анімэ</string>
+    
+    
+	<string name="info_activity_text">Гэта прыкладанне можа быць выкарыстана з наступнымі прыкладаннямі:</string>
+    <string name="info_launch">Запуск %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Гэта прыкладанне патрабуе %1$s версіі %2$s ці вышэй.</string>
+	<string name="info_get">Атрымаць %s</string>
+</resources>

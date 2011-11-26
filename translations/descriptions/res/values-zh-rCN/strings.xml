@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  zhangchun https://launchpad.net/~zhangchun</translators>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>文件管理器允许你浏览SD卡，创建目录，重命名，复制，移动和删除文件。</string>
+		<string>作为一个扩展到其他应用程序，显示“打开”和“保存”对话框。</string>
+		<emptyline/>
+		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<emptyline/>
+		<string>完整列表的更改，请访问：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>可以翻译成您的语言：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>开放源码应用程序的源代码是：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>功能</string>
+		<listitem>显示的图像的缩略图文件列表。</listitem>
+		<listitem>移动，复制，重命名，和删除文件</listitem>
+		<listitem>创建和删除目录（文件夹）</listitem>
+		<listitem>通过电子邮件发送文件</listitem>
+		<listitem>也可用其他应用程序，如Gmail，附加档案。</listitem>
+		<listitem>支持的许多文件结尾和MIME类型。</listitem>
+		<listitem>支持PICK_FILE 和PICK_DIRECTORY，这样其他应用程序可使用OI文件管理器。</listitem>
+		<emptyline/>
+		<string>关键字：</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>文件管理器，文件管理器，文件浏览器</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国际版本：</string>
+		<international/>
+		<emptyline/>
+		<string>扩展:</string>
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+</main>

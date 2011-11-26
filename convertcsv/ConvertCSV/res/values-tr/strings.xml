@@ -22,11 +22,12 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Huseyin AKSU https://launchpad.net/~huseyinaksu95
   OpenIntents devs https://launchpad.net/~openintents-devs
   zeugma https://launchpad.net/~sunder67</string>
 	
 	<!-- Explanation what this application does. -->
-	<string name="about_comments">This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format.</string>
+	<string name="about_comments">Bu OI Alışveriş listesi ve OI Not defteri eklentisi CSV dosya formatında listeleri ve notları yüklemenizi ve CSV formatında çıktı almanızı sağlar.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -37,7 +38,7 @@
 	<string name="info_app_notepad">OI Not defteri</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; Convert CSV.</string>
+	<string name="info_instructions">%s i başlat ve menüsüyü seç &gt; CSV\'ye Çevir.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -47,50 +48,50 @@
 	  "OI" and "CSV" should not be changed.  -->
     <string name="app_name">OI Çevir CSV</string>
     <string name="convert_csv">Çevir CSV</string>
-    <string name="convert_csv_notepad">Convert CSV to Notepad</string>
-    <string name="convert_csv_shoppinglist">Convert CSV to Shopping list</string>
+    <string name="convert_csv_notepad">CSV\'den Not defterine dönüştür</string>
+    <string name="convert_csv_shoppinglist">CSV\'den Alışveriş listesine dönüştür</string>
     <string name="convert_all_notes">Tüm notları çevir</string>
     <string name="convert_all_shoppinglists">Tüm alışveriş listesini çevir</string>
-    <string name="convert_list">Convert list \'%s\'</string>
+    <string name="convert_list">\'%s\' listesini dnüştür</string>
     <string name="file_path">Dosya yolu</string>
     <string name="file_import">İçe aktar</string>
     <string name="file_export">Dışa aktar</string>
     <string name="error_writing_file">Dosyaya yazılırken hata</string>
     <string name="error_reading_file">Dosya okunurken hata</string>
-    <string name="wrong_csv_format">Wrong CSV format</string>
+    <string name="wrong_csv_format">Hatalı CSV formatı</string>
     <string name="error_file_not_found">Dosya bulunamadı</string>
-    <string name="error_not_yet_implemented">Not yet implemented, please choose different option.</string>
-    <string name="import_finished">Import finished</string>
-    <string name="export_finished">Export finished</string>
-    <string name="filemanager_title_notepad">Select notepad CSV file</string>
-    <string name="filemanager_title_shoppinglist">Select shopping list CSV file</string>
-	<string name="current_import_policy">Current Import Policy:</string>
-	<string name="import_policy">Import Policy</string>
-	<string name="select_import_policy">Select the import policy to use</string>
+    <string name="error_not_yet_implemented">Uygulanamadı, lütfen farklı bir seçenek seçin.</string>
+    <string name="import_finished">İçe aktarma tamamlandı</string>
+    <string name="export_finished">Dışa aktarma tamamlandı</string>
+    <string name="filemanager_title_notepad">Not defteri CSV dosyası seçin</string>
+    <string name="filemanager_title_shoppinglist">Alışveriş Listesi CSV dosyası seçin</string>
+	<string name="current_import_policy">İçe aktarma</string>
+	<string name="import_policy">İçe Aktarma İlkeleri</string>
+	<string name="select_import_policy">Kullanmak istediğiniz içe aktarma ilkelerini seçin</string>
     
-    <string name="file_exists">The file exists. Do you want to overwrite?</string>
-    <string name="dont_ask_again">Don\'t ask again. Always overwrite!</string>
+    <string name="file_exists">Dosya zaten var. Var olan dosya ile değiştirisin mi?</string>
+    <string name="dont_ask_again">Tekrar sorma. Her zaman var olan dosyayla değiştir!</string>
     
-    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
-    <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
+    <string name="warn_restore_policy_title">İçe Aktarma İlkelerini GERİ AL olarak ayarla</string>
+    <string name="warn_restore_policy">Senin mevcut içe aktarma politikan MEVCUT BÜTÜN KAYITLARI SİL ve CSV dosyasının tüm içeriğini bunla DEĞİŞTİR olarak ayarlandı. Devam etmek istediğinize emin misiniz?</string>
     
     <string name="menu_settings">Ayarlar</string>
     <string name="csv_file_format">CSV dosya biçimi</string>
     <string name="select_csv_file_format">CSV dosya biçimi seçin</string>
-    <string name="select_encoding">Select encoding</string>
+    <string name="select_encoding">Kodlama türü seçin</string>
     <string name="default_encoding">Varsayılan</string>
-    <string name="use_custom_encoding">Use custom encoding (advanced users)</string>
+    <string name="use_custom_encoding">Kodlama türünü kendiniz ayarlayın (sadece üst düzey kullanıcılar)</string>
     <string name="preferences_select_csv_file_format">Bir CVS dosya biçimi seçin</string>
-    <string name="preferences_select_import_policy">Select the import policy to use</string>
+    <string name="preferences_select_import_policy">Kullanmak istediğiniz içe aktarma ilkelerini seçin</string>
     
     <!-- Preferences -->
     <!-- Preference category title -->
-    <string name="preference_common">Common settings</string>
-    <string name="preference_common_summary">Import/export settings that apply to Notepad and Shopping list.</string>
-    <string name="preference_ask_if_file_exists">Ask if file exists</string>
-    <string name="preference_ask_if_file_exists_summary">If checked a dialog appears to confirm overwriting if the export file already exists.</string>
+    <string name="preference_common">Genel ayarlar</string>
+    <string name="preference_common_summary">Kaydedilecek Not defteri ve Alıveriş listesi ayarlarını içe/dışa aktar.</string>
+    <string name="preference_ask_if_file_exists">Dosyanın olup olmadığını kontrol et</string>
+    <string name="preference_ask_if_file_exists_summary">Eğer işaretlerseniz dışa aktarılan dosyanın zaten bulunduğu durumlarda dosyanın üstüne yazılacak.</string>
     
-    <string name="preference_application_specific">Application specific settings</string>
+    <string name="preference_application_specific">Özel uygulama ayarları</string>
     <string name="preference_filename">Dosya adı</string>
     <string name="preference_filename_summary">Dosya için tam yol.</string>
     
@@ -102,25 +103,25 @@
     
 	<string name="converting">Çevriliyor...</string>
 	<string name="dialog_ok">Tamam</string>
-	<string name="preference_stores">Import stores</string>
-	<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
-	<string name="preference_stores_on_summary">Import HandyShopper stores and per-store price and aisle information.</string>
+	<string name="preference_stores">Mağazaları içe aktar</string>
+	<string name="preference_stores_off_summary">BecerikliMüşteri mağaza isimlerini sadece öğe etiketi olarak içe aktar.</string>
+	<string name="preference_stores_on_summary">BecerikliMüşteri mağazalarını, mağaza başına fiyatları ve reyon bilgilerini içe aktar.</string>
 
 	<!-- OI Notepad -->
 	<!-- Permission -->
     <string name="oi_notepad_permission_read">notları oku</string>
-    <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="oi_notepad_permission_read_descr">Notları okuması için bir dosyaya izin verir. Kodlanmış notların encrypted formatında olduğunu untutmayın.</string>
 	<!-- Permission -->
     <string name="oi_notepad_permission_write">notları yaz</string>
-    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
+    <string name="oi_notepad_permission_write_descr">Bir uygulamanın yeni notlar oluşturmasına ya da olan notları düzenlemesine izin verir.</string>
     
 	<!-- OI Shopping list -->
 	<!-- Permission -->
     <string name="oi_shopping_permission_read">alışveriş listelerini oku</string>
-    <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+    <string name="oi_shopping_permission_read_descr">Bir uygulamaya alışveriş listelerini okuyabilmesi için izin verir. Kodlanmış notların encrypted formatında olduğunu untutmayın.</string>
 	<!-- Permission -->
-    <string name="oi_shopping_permission_write">write shopping lists</string>
-    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
+    <string name="oi_shopping_permission_write">alışveriş listelerini yaz</string>
+    <string name="oi_shopping_permission_write_descr">Bir uygulamanın yeni listeler oluşturmasına ya da olan listeleri düzenlemesine izin verir.</string>
     	
     <string-array name="notepad_format">
         <item>MS Outlook Notları</item>
@@ -129,31 +130,31 @@
     
     <string-array name="shoppinglist_format">
         <item>MS Outlook Görevleri</item>
-        <item>HandyShopper</item>
+        <item>BecerikliMüşteri</item>
     </string-array>
     
     <string-array name="import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
-        <item>Overwrite - Overwrite existing records.</item>
-        <item>Restore - DELETE ALL, then import.</item>
+        <item>KOPYALA - Kayıtları kopyalamanıza izin verir</item>
+        <item>"SAKLA - Var olan kayıtların üstüne yazma. "</item>
+        <item>Üstüne yaz - Var olan kayıtların üstüne yazar.</item>
+        <item>Geri Al - HEPSİNİ SİLi daha sonra içe aktar.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
-        <item>Overwrite - A record in the CSV will OVERWRITE an existing record.</item>
-        <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
+        <item>KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur.</item>
+        <item>"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. "</item>
+        <item>Üstüne yaz - CSV deki bir kayıt var olan bir dosyanın ÜSTÜNE YAZACAK.</item>
+        <item>Yedeklemeyi Geri Al - VAR OLAN BÜTÜN KAYITLARI SİLER, ve CSV dosyasını içe aktarır.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
+        <item>KOPYALA - Kayıtları kopyalamanıza izin verir</item>
+        <item>"SAKLA - Var olan kayıtların üstüne yazma. "</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>KOPYALA - Eğer kayıt mevcutsa ikinci bir koptasını oluştur.</item>
+        <item>"SAKLA - Var olan kayıtların üstüne yazma, CSV dosyasındakini hariç tut. "</item>
     </string-array>
     
 </resources>

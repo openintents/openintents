@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Huseyin AKSU https://launchpad.net/~huseyinaksu95
   Peli https://launchpad.net/~peli0101
   zeugma https://launchpad.net/~sunder67</string>
 	
@@ -30,13 +31,13 @@ Launchpad Contributions:
     <string name="recent_colors_empty">Son zamanlarda seçilmiş renkler yok.</string>
     
     <string name="confirm_color_title">renk kullan?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_message">Bu yeni rengi kullanmak istiyor musunuz? Mesajı kapatmak için merkezdeki çembere tıklayın.</string>
     
     
 	<!-- About -->
 	<string name="about">Hakkında</string>
 	<string name="aboutapp_not_available">Sürüm %s\n\n Uyumlu uzantısı mevcut tüm bilgileri (iletişim, krediler, lisans) gösterilecek.</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_get">OI Hakkında</string>
 
 
 	<!-- Update -->
@@ -46,22 +47,22 @@ Launchpad Contributions:
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
+    <string name="info_app_flashlight">OI Flashlight\'tan bir renk seçmek için menuye tıklayın  Renk.</string>
     <string name="title_app_flashlight">OI El feneri</string>
     
-    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
-    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    <string name="info_app_spiral_wallpaper">Hipnotize edici animasyonlu dairesel Live Masaüstü Arka Planı.</string>
+    <string name="title_app_spiral_wallpaper">HypoTwister Live Masaüstü Arka Planı</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Android için yerel Flickr arayüzü</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
-    <string name="title_app_character_gen">Anime Character Generator</string>
+    <string name="info_app_character_gen">Anime karakterleri oluşturmak için sanatsal öğeleri karıştırıp eşleştirin</string>
+    <string name="title_app_character_gen">Anime Karakter Oluşturucu</string>
     
     
-	<string name="info_activity_text">This app can be used with the following applications:</string>
+	<string name="info_activity_text">Bu uygulama aşağıdaki uygulamalarla birlikte kullanılabilir:</string>
     <string name="info_launch">%s başlat</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
+	<string name="info_not_available">Bu uygulama %1s %2$s ya da daha yüksek bir sürüm gerektirir.</string>
 	<string name="info_get">%s al</string>
 </resources>

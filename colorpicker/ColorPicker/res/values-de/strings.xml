@@ -8,7 +8,8 @@
 	<string name="about_translators">Launchpad Contributions:
   Etienne Ruedin https://launchpad.net/~ruedin
   OpenIntents devs https://launchpad.net/~openintents-devs
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  appricoo https://launchpad.net/~appricoo</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Color Picker ist eine Erweiterung für OI Flashlight und andere kompatible Anwendungen.</string>
@@ -46,7 +47,7 @@
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
     <string name="info_app_flashlight">Um eine Farbe in der OI-Taschenlampe zu wählen, wählen Sie Menü &gt; Farbe.</string>
-    <string name="title_app_flashlight">OI-Taschenlampe</string>
+    <string name="title_app_flashlight">OI Taschenlampe</string>
     
     <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
     <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>

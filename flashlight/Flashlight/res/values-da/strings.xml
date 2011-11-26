@@ -8,7 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
-  Mads Peter Rommedahl https://launchpad.net/~lhademmor</string>
+  Torben Gundtofte-Bruun https://launchpad.net/~torbengb</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OpenIntents Flashlight hjælper dig med at finde vej i mørket. Skærmens baggrundslys forbliver tændt så længe dette program kører.</string>
@@ -24,7 +24,7 @@ Launchpad Contributions:
     <string name="color">Farve</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">OI farvevælger</string>
     
     <string name="preferences">Indstillinger</string>
     
@@ -43,6 +43,6 @@ Launchpad Contributions:
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    <string name="color_picker_modularization_explanation">Vi har skilt Color Picker ud i et eget program for at gøre det mere brugbart for udviklere.</string>
     
 </resources>

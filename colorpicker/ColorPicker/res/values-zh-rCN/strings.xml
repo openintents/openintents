@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  zhangchun https://launchpad.net/~zhangchun</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents拾色器是一个和OI手电筒兼容的应用程序的扩展。</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI拾色器</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">颜色拾色器</string>
+    
+    <string name="recent_colors_condensed">最近</string>
+    <string name="recent_colors">最近颜色</string>
+    <string name="recent_colors_expanded">最近选择的颜色</string>
+    <string name="recent_colors_clear_history">清除</string>
+    <string name="recent_colors_empty">这是最近选择的颜色</string>
+    
+    <string name="confirm_color_title">使用颜色？</string>
+    <string name="confirm_color_message">使用新颜色？点击中间的圆圈不再提示。</string>
+    
+    
+	<!-- About -->
+	<string name="about">关于</string>
+	<string name="aboutapp_not_available">版本%s\n\n不兼容扩展，可用来显示完整的信息（联系人，开发者，许可证）。</string>
+	<string name="aboutapp_get">获取OI简介</string>
+
+
+	<!-- Update -->
+	<string name="update_error">下载的应用程序不可用。</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">按菜单-&gt;的颜色，选手OI手电筒的颜色。</string>
+    <string name="title_app_flashlight">OI手电筒</string>
+    
+    <string name="info_app_spiral_wallpaper">催眠，动画螺旋动态壁纸。</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister动态壁纸</string>
+    
+    <string name="info_app_bettr_flickr">Flickr界面为机器语言</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">混合和匹配的动画人物艺术品</string>
+    <string name="title_app_character_gen">动漫人物</string>
+    
+    
+	<string name="info_activity_text">此应用程序可用于以下：</string>
+    <string name="info_launch">启动 %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">这个拥有程序需要%1$s %2$s 或者更高版本。</string>
+	<string name="info_get">获取 %s</string>
+</resources>

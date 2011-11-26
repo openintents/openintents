@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Menno Vogel https://launchpad.net/~mennovogel90
   Peli https://launchpad.net/~peli0101
   pjv https://launchpad.net/~pjv</string>
 	
@@ -38,16 +39,16 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Bestandsbeheer</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Boodschappenlijst</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Notitieblok</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI kluis</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Start %s en selecteer menu &gt; Over.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -65,11 +66,11 @@
 	<string name="l_documenters">Gedocumenteerd door</string>
 	<string name="l_translators">Vertaald door</string>
 	<string name="l_artists">Grafisch werk door</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Internationale vertalingen door</string>
 	<string name="l_credits">Met dank aan</string>
 	<string name="l_license">Licentie</string>
 	<string name="l_info">Algemene info</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">Recente wijzigingen</string>
 	
 	<string name="no_information_available">Geen informatie beschikbaar.</string>
 	
@@ -78,35 +79,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Arabisch</item>
+		<item>Tsjechisch</item>
+		<item>Deens</item>
+		<item>Duits</item>
+		<item>Engels</item>
+		<item>Grieks</item>
+		<item>Spaans</item>
+		<item>Perzisch</item>
+		<item>Fins</item>
+		<item>Faeröers</item>
+		<item>Frans</item>
+		<item>Kroatisch</item>
+		<item>Hongaars</item>
+		<item>Italiaans</item>
+		<item>Japans</item>
+		<item>Koreaans</item>
+		<item>Laotiaans</item>
+		<item>Nederlands</item>
+		<item>Occitaans (na 1500)</item>
+		<item>Pools</item>
+		<item>Portugees</item>
+		<item>Braziliaans Portugees</item>
+		<item>Roemeens</item>
+		<item>Russisch</item>
+		<item>Sardisch</item>
+		<item>Slowaaks</item>
+		<item>Zweeds</item>
+		<item>Turks</item>
+		<item>Chinees (vereenvoudigd)</item>
+		<item>Chinees (Traditioneel)</item>
 	</string-array>
 </resources>

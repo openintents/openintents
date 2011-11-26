@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Sahran https://launchpad.net/~sahran</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents رەڭ سۈمۈرگۈچ OI قول چىراغ ۋە باشقا ماسلىشىشچان پىروگراممىلارنىڭ كېڭەيتىلمىسى.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI رەڭ سۈمۈرگۈچ</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">رەك سۈمۈرگۈچ</string>
+    
+    <string name="recent_colors_condensed">يېقىنقى</string>
+    <string name="recent_colors">يېقىنقى رەڭلەر</string>
+    <string name="recent_colors_expanded">يېقىندا تاللانغان رەڭلەر</string>
+    <string name="recent_colors_clear_history">تازىلا</string>
+    <string name="recent_colors_empty">يېقىندا تاللانغان رەڭلەر يوق.</string>
+    
+    <string name="confirm_color_title">رەڭ ئىشلىتەمسىز؟</string>
+    <string name="confirm_color_message">بۇ يېڭى رەڭنى ئىشلىتەمسىز؟ ئوتتۇرىدىكى چەمبەرنى چېكىپ بۇ ئۇچۇرغا پەرۋا قىلمىسىڭىز بولىدۇ.</string>
+    
+    
+	<!-- About -->
+	<string name="about">ھەققىدە</string>
+	<string name="aboutapp_not_available">%s نەشرى\n\n تولۇق ئۇچۇرى(ئالاقەداش، تۆھپىكارلار، ئىجازەت)نى كۆرسىتىشكە ئىشلىتىدىغان ماسلىشىشچان كېڭەيتىلمىنى تاپالمىدى.</string>
+	<string name="aboutapp_get">OI ھەققىدە</string>
+
+
+	<!-- Update -->
+	<string name="update_error">چۈشۈرىدىغان قوللىنىشچان پىروگرامما يوق.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">OI قول چىراغدا بىر رەڭ تاللاش ئۈچۈن تىزىملىك &gt; نى تاللاڭ.</string>
+    <string name="title_app_flashlight">OI قول چىراغ</string>
+    
+    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    
+    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
+    <string name="title_app_character_gen">جانلاندۇرۇم ھەرپ ياسىغۇچ</string>
+    
+    
+	<string name="info_activity_text">بۇ پىروگراممىنى تۆۋەندىكى قوللىنىشچان پىروگراممىلاردا ئىشلەتكىلى بولىدۇ:</string>
+    <string name="info_launch">%s نى ئىجرا قىل</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">بۇ پىروگراممىغا %1$s %2$s ياكى يۇقىرى نەشرى زۆرۈر.</string>
+	<string name="info_get">%s غا ئېرىش</string>
+</resources>

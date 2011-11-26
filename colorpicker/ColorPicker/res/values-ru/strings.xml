@@ -7,13 +7,14 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   Alexander Sapronov https://launchpad.net/~warmonger
+  Andrey Zaytsev https://launchpad.net/~a.einsam
   OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
   lma https://launchpad.net/~wan-on-sea
   stmc https://launchpad.net/~whats-up</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Color Picker is an extension for OI Flashlight and other compatible applications.</string>
+	<string name="about_comments">OpenIntents Color Picker это расширение для OI Flashlight и других совместимых с ним приложений.</string>
 	
 	<!-- ***************************
 	     Application-specific strings
@@ -47,13 +48,13 @@
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
+    <string name="info_app_flashlight">Чтобы выбрать цвет в OI Flashlight нажмите кнопку меню &gt; Цвет.</string>
     <string name="title_app_flashlight">OI Flashlight</string>
     
-    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
+    <string name="info_app_spiral_wallpaper">Гипнотизирующие анимированные живые обои.</string>
     <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Родной интерфейс Flickr для Android</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
     <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>

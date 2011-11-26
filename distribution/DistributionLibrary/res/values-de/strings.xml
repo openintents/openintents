@@ -10,6 +10,7 @@
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
+  appricoo https://launchpad.net/~appricoo
   hani https://launchpad.net/~markushahnenkamm</string>
 	
 	<!-- ***************************
@@ -94,7 +95,7 @@
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
 	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
-    <string name="oi_distribution_info_launch">Launch %s</string>
+    <string name="oi_distribution_info_launch">Starte %s</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
 	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>

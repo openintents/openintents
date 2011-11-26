@@ -2,6 +2,7 @@
 <main>
 	<translators>Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Robert Dumitrescu https://launchpad.net/~rc-dumitrescu
   iulargsb https://launchpad.net/~iulargsb</translators>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
@@ -25,7 +26,7 @@
 		<string>The source code of this free and open source application is available at:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
+		<string>Caracteristici:</string>
 		<listitem>Show list of files with thumbnails for images.</listitem>
 		<listitem>Mută, copiază, redenumește și șterge fișiere.</listitem>
 		<listitem>Crează și șterge dosare.</listitem>
@@ -40,7 +41,7 @@
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
 		<string>Extensii:</string>

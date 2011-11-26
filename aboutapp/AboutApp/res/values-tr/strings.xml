@@ -31,10 +31,11 @@
 
 Launchpad Contributions:
   Peli https://launchpad.net/~peli0101
+  ariza95 https://launchpad.net/~alirizanazli95
   zeugma https://launchpad.net/~sunder67</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">Uygulamalar arasında paylaşılan bir diyalog hakkındaki bağımsız bileşen.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -49,7 +50,7 @@ Launchpad Contributions:
 	<string name="info_app_safe">OI Kasa</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">%s başlatın ve  men</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -85,14 +86,14 @@ Launchpad Contributions:
 		<item>Danimarkaca</item>
 		<item>Almanca</item>
 		<item>İngilizce</item>
-		<item>Greek</item>
+		<item>Yunanca</item>
 		<item>İspanyolca</item>
-		<item>Persian</item>
+		<item>Farsça</item>
 		<item>Fince</item>
 		<item>Faroe Dili</item>
 		<item>Fransızca</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
+		<item>Hırvatça</item>
+		<item>Macarca</item>
 		<item>İtalyanca</item>
 		<item>Japonca</item>
 		<item>Korece</item>

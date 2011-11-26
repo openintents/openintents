@@ -8,7 +8,8 @@
 	<string name="about_translators">Launchpad Contributions:
   Eric Baudach https://launchpad.net/~cs-sniffer
   Florian Sievers https://launchpad.net/~florian-sievers
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  appricoo https://launchpad.net/~appricoo</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.</string>
@@ -21,7 +22,7 @@
     
     <string name="flashlight_info">Die Hintergrundbeleuchtung bleibt eingeschaltet</string>
     
-    <string name="color">Farbe</string>
+    <string name="color">Farben</string>
     
     <!-- Application name should be consistent across translations. -->
     <string name="color_picker">OI Color Picker</string>

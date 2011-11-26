@@ -150,6 +150,9 @@
 	<string name="preference_fontsize">Teckenstorlek</string>
 	<string name="preference_fontsize_summary">Ändra teckenstorlek</string>
 	<string name="preference_fontsize_dialog_title">Välj teckenstorlek</string>
+	<string name="preference_orientation">Orientation</string>
+	<string name="preference_orientation_summary">Change orientation</string>
+	<string name="preference_orientation_dialog_title">Choose orientation</string>
 	<string name="preference_sortorder_title">Sorteringsordning</string>
 	<string name="preference_sortorder_summary">Ändra sorteringsordning av poster</string>
 	<string name="preference_sortorder_for_pick_title">Sort order - Pick Items</string>
@@ -274,6 +277,15 @@
     	<item>Standard</item>
     	<!-- Preference fontsize: large font size -->
         <item>Stor</item>
+    </string-array>
+    
+    <string-array name="preference_orientation_entries">
+    	<!-- Preference orientation: default -->
+        <item>Standard</item>
+    	<!-- Preference orientation: landscape -->
+    	<item>Landscape</item>
+    	<!-- Preference orientation: portrait -->
+        <item>Portrait</item>
     </string-array>
     
     <string-array name="preference_capitalization_entries">

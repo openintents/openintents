@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  zhangchun https://launchpad.net/~zhangchun</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI倒计时，会在特定的时间通知你。</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI倒计时</string>
+    
+    <string name="start">开始</string>
+    <string name="stop">停止</string>
+    <string name="modify">修改</string>
+    <string name="cont">继续</string>
+    
+	<string name="no_durations">使用菜单添加倒计时</string>
+	<string name="countdown_list">倒计时列表</string>
+	
+    <string name="menu_delete">删除</string>
+    <string name="menu_edit">编辑</string>
+    <string name="menu_insert">添加倒计时</string>
+    <string name="menu_pick_ringtone">铃声</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">设置日期</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">设置持续时间</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">设置操作</string>
+    
+    <string name="hint_title">例如：批萨</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">选择倒计时</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">创建倒计时</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">编辑倒计时</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">选择倒计时</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI倒计时</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">错误</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">加载倒计时出错</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">通知在状态栏</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">通过状态栏启动</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">环</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">振动</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">灯光</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">操作: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">选择操作: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">选择倒计时：: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">测试</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">设置</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">解散</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">天</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">天</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">应用程序</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">快捷方式</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">自动化任务</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">选择快捷方式</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">选择自动化任务</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">选择活动</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>开始倒计时</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>停止倒计时</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">倒计时</string>
+
+    <string name="preference_extensions">扩展程序</string>
+    <string name="preference_get_extensions">获取新扩展软件</string>
+    <string name="preference_get_extensions_summary">在线搜索扩展软件</string>
+    <string name="preference_get_extensions_from">获取新扩展软件从</string>
+    <string name="preference_extensions_market">Android电子 市场</string>
+    <string name="preference_extensions_market_summary">从Android Market上获取插件 .</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">从OpenIntents 主页上获取插件.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">通知超时</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">超时铃声，振动，或者闪光通知</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">设置超时</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2秒钟</item>
+        <item>5 秒钟</item>
+        <item>10 秒钟</item>
+        <item>30 秒钟</item>
+        <item>1 分钟</item>
+        <item>5 分钟</item>
+        <item>10 分钟</item>
+    </string-array>
+</resources>

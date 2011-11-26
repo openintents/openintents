@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  zhangchun https://launchpad.net/~zhangchun</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI更新</string>
+    
+    <string name="update_available">有新版本 %s .\n需要更新吗？</string>
+    <string name="update_available_3">新版本  %2$s.\n%3$s\n</string>
+    <string name="update_available_2">新版本  %2$s.\n%3$s\n</string>
+    <string name="update_available_location_no_comment">新版本%1$s</string>
+    <string name="update_available_no_comment">新版本 %s</string>
+	<string name="market_not_available">Android电子市场不可用。</string>
+    <string name="market_search_term">OI更新</string>
+	<string name="android_market">Android电子 市场</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">版本 %1$s\nSD卡 %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">免费空间: %s</string>
+    <string name="os_info">木板%1$s\n品牌%2$s\n设备%3$s\n帐号 %4$s\n型号 %5$s</string>
+    
+    <string name="do_update">现在更新！</string>
+    <string name="do_update_market">从电子市场更新！</string>
+    <string name="do_update_andAppStore">从 AndAppStore更新！</string>
+    <string name="remind_me_later">稍后提醒我！</string>
+    <string name="ignore_this_update">忽略这次更新</string>
+    <string name="ignore_all_further_updates">忽略以后的更新</string>
+    <string name="ok">确定</string>
+    
+    <string name="update_not_started">无法更新！\n\n请联系开发者！\n\n%s</string>
+    <string name="app_up_to_date">应用程序过旧。</string>
+    <string name="checking">正在检查新版本。</string>
+    <string name="building_app_list">创建应用程序列表。</string>
+    <string name="check_andappstore">查看AndAppStore.com</string>
+    <string name="check_versions">查看版本</string>
+    <string name="show_versions">显示全部</string>
+    <string name="refresh">刷新</string>
+    <string name="checked_against_andappstore">检查 AndAppStore</string>
+    <string name="current_version">当前版本: %s</string>
+    <string name="current_version_code">当前版本编码: %s</string>
+    <string name="newer_version">新版本: %s</string>
+    <string name="newer_version_comment">新版本: %1$s - %2$s</string>
+    <string name="newer_version_available">新版本可用。</string>
+    <string name="no_update_info_found">未找到更新信息。</string>
+    <string name="title_list_new_versions">OI更新 -新版本列表</string>
+    <string name="title_list_new_versions_from_andappstore">OI更新 -新版本列表在 AndAppStore</string>
+    <string name="title_list_all_versions">OI更新 --管理应用程序列表</string>
+    <string name="title_list_all_versions_from_andappstore">OI更新 --管理应用程序列表（在AndAppStore查看）</string>
+    <string name="settings">设置</string>
+    <string name="auto_update">自动检测</string>
+    <string name="ignore_title">已忽略</string>
+    <string name="ignore_text">忽略当前更新。更新吗？</string>
+    <string name="unknown_title">未知</string>
+    <string name="unknown_text">没有更新信息，请手动检查，询问开发者OI更新的未来版本。</string>
+    <string name="search_on_market">在电子市场搜索</string>
+    <string name="search_on_andappstore">在 AndAppStore搜索</string>
+    <string name="processing">正在处理 %s</string>
+    
+    <string name="warn">应用程序更新时，有不同的电子市场，可能存在安全风险。</string>
+    <string name="continue_anyway">仍然继续</string>
+    <string name="abort">中止</string>
+    
+    <string name="preference_auto_update">自动更新</string>
+    <string name="preference_auto_update_summary">定期进行搜索更新</string>
+    <string name="title_update_interval">更新间隔</string>
+    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
+    <string name="dialog_title_update_interval">选择时间间隔</string>
+    <string name="default_update_interval">每个月</string>
+    <string name="preference_warning_title">警告</string>
+    <string name="preference_warning_text">取消这个选项，您将不再收到更新通知。取消自动更新？</string>
+    
+    <string name="preference_andappstore">使用AndAppStore</string>
+    <string name="preference_andappstore_summary">使用AndAppStore.com的版本信息</string>
+    
+    <string name="permission_read_update_info">阅读更新信息</string>
+    <string name="permission_write_update_info">写更新信息</string>
+    <string name="permission_read_update_info_descr">阅读安装，更新，和需求信息。</string>
+    <string name="permission_write_update_info_descr">写安装，更新，和需求信息。</string>
+
+
+	<!-- About -->
+	<string name="about">关于</string>
+	<string name="about_title">关于 %s</string>
+	<string name="about_text">版本%s \n\nOI更新让您了解新版本信息。\n OpenIntents允许不同的Android应用程序分享数据。\n\n获取更多信息，请访问Iwww.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI更新最终用户许可</string>
+<string name="eula_description">“版权所有2008 OpenIntents.org\n拥有Apache的授权，2.0版（”许可证“）可能获得,\nHTTP许可证的副本。http：/ / www.apache.org/licenses/LICENSE-2.0\n需要法律书面同意才会授权许可。</string>
+	<string name="eula_accept">接受</string>
+	<string name="eula_refuse">取消</string>
+	
+</resources>

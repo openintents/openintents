@@ -6,7 +6,9 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Peli https://launchpad.net/~peli0101</string>
+  Peli https://launchpad.net/~peli0101
+  appricoo https://launchpad.net/~appricoo
+  ubuntuuser87 https://launchpad.net/~martin-wallner-</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -14,10 +16,10 @@
     <string name="app_name">OI Update</string>
     
     <string name="update_available">Eine neue Version von %s ist verfügbar.\nWollen Sie aktualisieren?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
-    <string name="update_available_no_comment">Eine neue Version von %s ist verfügbar.</string>
+    <string name="update_available_3">Eine neue Version von% 1 $ s ist% vorhanden 2 $ s. \ n% 3 $ s \ n</string>
+    <string name="update_available_2">Eine neue Version von %1$s ist verfügbar.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Eine neue Version von% 1 $ s ist verfügbar in% 2 $ s.</string>
+    <string name="update_available_no_comment">Eine neue Version von% s zur Verfügung steht.</string>
 	<string name="market_not_available">Android Market ist nicht verfügbar.</string>
     <string name="market_search_term">OI Update</string>
 	<string name="android_market">Android Market</string>

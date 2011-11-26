@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Sahran https://launchpad.net/~sahran</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents قول چىراغ قاراڭغۇدا يولنى تېپىشىڭىزغا ياردەم قىلىدۇ. بۇ پىروگرامما قوزغىلىش بىلەن بىللە تەگلىك چىراغ يېنىپ تۇرىدۇ.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI قول چىراغ</string>
+    
+    <string name="flashlight_info">تەگلىك چىراغنى ياندۇرۇپ تۇرىدۇ.</string>
+    
+    <string name="color">رەڭ</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI رەڭ سۈمۈرگۈچ</string>
+    
+    <string name="preferences">مايىللىق</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">مايىللىق</string>
+	<string name="settings_title_keep_color">رەڭنى ساقلا</string>
+	<string name="settings_summary_keep_color">كېيىنكى قېتىم قول چىراغ پىروگراممىسى قوزغىلىشى ئۈچۈن رەڭنى ساقلا</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">رەڭ سۈمۈرگۈچنى ئىجادكارلارغا تېخىمۇ پايدىلىق قىلىش ئۈچۈن بىز ئۇنى ئايرىم پىروگرامما قىلىپ پارچىلىدۇق.</string>
+    
+</resources>
