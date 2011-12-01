@@ -23,6 +23,11 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
+release: 1.2
+date: ?
+
+
+---------------------------------------------------------
 release: 1.1.1
 date: 2011-02-05
 - new application icon for Android 2.0 or higher.

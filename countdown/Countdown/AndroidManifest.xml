@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
-	* Copyright (C) 2008 OpenIntents.org
+	* Copyright (C) 2008-2011 OpenIntents.org
 	*
 	* Licensed under the Apache License, Version 2.0 (the "License");
 	* you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
       android:installLocation="internalOnly"
       android:versionCode="10006"
       android:versionName="1.1.1">
-    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="9" />
+    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="14" />
     <!-- History:
 	 * * * UPDATE ATRACKDOG METADATA BELOW FOR RELEASE CANDIDATES * * *
     1.1.1 [10006]: 2011-02-05
