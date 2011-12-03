@@ -15,7 +15,8 @@ Export new strings for translations:
 
 2) Execute /export_all/export_all_to_launchpad.bash or ..._cygwin.bat
 
-3) Upload at https://translations.launchpad.net/openintents/trunk/+translations-upload
+3) Commit the modified translation files. 
+   (Launchpad pulls the converted strings directly from the Google code repository.)
 
 -----------------
 
