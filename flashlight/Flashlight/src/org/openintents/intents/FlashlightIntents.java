@@ -33,7 +33,7 @@ public final class FlashlightIntents {
 	 * <p>Constant Value: "org.openintents.action.START_FLASHLIGHT"</p>
 	 */
 	public final static String ACTION_START_FLASHLIGHT = "org.openintents.action.START_FLASHLIGHT";
-	
+
 	/**
 	 * Activity Action: Pick color.
 	 * 
@@ -42,7 +42,7 @@ public final class FlashlightIntents {
 	 * <p>Constant Value: "org.openintents.action.SET_FLASHLIGHT_COLOR"</p>
 	 */
 	public final static String ACTION_PICK_COLOR = "org.openintents.action.PICK_COLOR";
-	
+
 	/**
 	 * Broadcast Action: Set flashlight property.
 	 * 
@@ -60,7 +60,7 @@ public final class FlashlightIntents {
 	 * <p>Constant Value: "org.openintents.extra.COLOR"</p>
 	 */
 	public final static String EXTRA_COLOR = "org.openintents.extra.COLOR";
-	
+
 	/**
 	 * Brightness.
 	 * 
