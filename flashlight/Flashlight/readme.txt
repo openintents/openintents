@@ -21,6 +21,11 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.1
+date: ?
+- new setting to use camera flash (Google Code-in task by Shuhao)
+
+---------------------------------------------------------
 release: 1.0.7
 date: 2011-02-04
 - new application icon for Android 2.0 or higher.
