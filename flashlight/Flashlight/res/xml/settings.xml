@@ -8,5 +8,6 @@
 		android:defaultValue="true"
 		android:title="@string/settings_title_keep_color"
 		android:summary="@string/settings_summary_keep_color" />
-
+	<CheckBoxPreference android:key="use_camera_flash" android:summary="@string/setting_use_camera_flash_summary" android:title="@string/setting_use_camera_flash" android:defaultValue="false"/>
+	
 </PreferenceScreen>

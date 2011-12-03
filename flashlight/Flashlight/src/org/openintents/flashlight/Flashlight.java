@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -67,12 +68,14 @@ public class Flashlight extends DistributionLibraryActivity {
 	private LinearLayout mBackground;
 	private View mIcon;
 	private TextView mText;
+	
+	private Camera mCamera;
 
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mWakeLockLocked = false;
 	
 	private int mColor;
-	
+	private boolean mUseCameraFlash = false;
 	
 	private static final int HIDE_ICON = 1;
 	
@@ -105,6 +108,7 @@ public class Flashlight extends DistributionLibraryActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.v(TAG, "onCreate Called");
 
         mDistribution.setFirst(MENU_DISTRIBUTION_START, DIALOG_DISTRIBUTION_START);
         
@@ -123,16 +127,20 @@ public class Flashlight extends DistributionLibraryActivity {
         mBackground = (LinearLayout) findViewById(R.id.background);
         mIcon = (View) findViewById(R.id.icon);
         mText = (TextView) findViewById(R.id.text);
-        
+
         
         mBackground.setOnTouchListener(new View.OnTouchListener() {
 
 			
 			public boolean onTouch(View arg0, MotionEvent arg1) {
-				if (mIcon.getVisibility() == View.VISIBLE) {
-					hideIcon();
+				if (mUseCameraFlash){
+					lightsOnOff();
 				} else {
-					showIconForAWhile();
+					if (mIcon.getVisibility() == View.VISIBLE) {
+						hideIcon();
+					} else {
+						showIconForAWhile();
+					}
 				}
 				return false;
 			}
@@ -164,20 +172,70 @@ public class Flashlight extends DistributionLibraryActivity {
 			mColor = state.mColor;
 			hideIcon();
 		} else {
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+			resetMainScreen();
+		}
+		mBackground.setBackgroundColor(mColor);
+	}
+    
+    private void resetMainScreen(){
+    	SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		if (prefs.getBoolean(FlashlightPrefs.PREFKEY_USE_CAMERA_FLASH, FlashlightPrefs.DEFAULT_USE_CAMERA_FLASH)){
+			mColor = Color.BLACK;
+			mUseCameraFlash = true;
+			Log.v(TAG, "Use Camera!");
+		} else {
+			mUseCameraFlash = false;
+			Log.v(TAG, "Don't use camera!");
 			if (prefs.getBoolean(FlashlightPrefs.PREFKEY_SHOULD_SAVE_COLOR, FlashlightPrefs.DEFAULT_SHOULD_SAVE_COLOR)) {
 				mColor = prefs.getInt(FlashlightPrefs.PREFKEY_SAVED_COLOR, Color.WHITE);
 			} else {
 				mColor = Color.WHITE;
 			}
-			
+		}
+		if (mUseCameraFlash){
+			mText.setText(R.string.cameralight_info);
+			showIcon();
+		} else {
+			mText.setText(R.string.backlight_info);
 			showIconForAWhile();
 		}
 		mBackground.setBackgroundColor(mColor);
     }
 
+    private void lightsOnOff() {
+    	if (mCamera == null) {
+			lightsOn();
+		} else {
+			lightsOff();
+		}
+		showIcon();
+	}
     
-    class FlashlightState {
+    private void lightsOn(){
+    	if (mCamera == null){
+			mCamera = Camera.open();
+			Camera.Parameters params = mCamera.getParameters();
+			params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+			mCamera.setParameters(params);
+			Log.v(TAG, "Activating Camera Light!");
+			mText.setText(R.string.cameralight_stop_info);
+    	}
+    }
+    
+    private void lightsOff(){
+    	if (mCamera != null){
+    		Camera.Parameters params = mCamera.getParameters();
+			params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
+			mCamera.setParameters(params);
+			mCamera.release();
+			mCamera = null;
+			Log.v(TAG, "Deactivating Camera Light!");
+			mText.setText(R.string.cameralight_info);
+    	}
+    }
+
+
+	class FlashlightState {
     	int mColor;
     }
 
@@ -192,7 +250,7 @@ public class Flashlight extends DistributionLibraryActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		resetMainScreen();
 		wakeLock();
 	}
 	
@@ -313,6 +371,7 @@ public class Flashlight extends DistributionLibraryActivity {
 
 	private void wakeUnlock() {
 		if (mWakeLockLocked) {
+			lightsOff();
 			Log.d(TAG, "WakeLock: unlocking");
 			mWakeLock.release();
 			mWakeLockLocked = false;
@@ -396,7 +455,6 @@ public class Flashlight extends DistributionLibraryActivity {
 				hideIcon();
 			}
 		}
-
 		
 	};
 	
@@ -413,20 +471,20 @@ public class Flashlight extends DistributionLibraryActivity {
 	}
 	
 
+	private void showIcon(){
+		mIcon.setVisibility(View.VISIBLE);
+		mText.setVisibility(View.VISIBLE);
+		
+		getWindow().setFlags(0, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		mHandler.removeMessages(HIDE_ICON);
+	}
+	
 	/**
 	 * Shows icon and notification bar, and set timeout for hiding it.
 	 */
 	private void showIconForAWhile() {
-		mIcon.setVisibility(View.VISIBLE);
-		mText.setVisibility(View.VISIBLE);
-		
-		getWindow().setFlags(0,
-						WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		
-
-		mHandler.removeMessages(HIDE_ICON);
-		mHandler.sendMessageDelayed(mHandler
-				.obtainMessage(HIDE_ICON), mTimeout);
+		showIcon();
+		mHandler.sendMessageDelayed(mHandler.obtainMessage(HIDE_ICON), mTimeout);
 	}
 
 }
