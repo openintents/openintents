@@ -24,6 +24,7 @@ https://translations.launchpad.net/openintents/trunk
 
 Features:
 * Shows general info, credits, and license tabs.
+* Shows translators of all language versions.
 * Retrieves information from application manifest through default tags and metadata.
 * Optionally, all fields can be modified through intent extras.
 
