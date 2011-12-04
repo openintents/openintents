@@ -12,6 +12,7 @@
 
 # For descriptions:
 filemanager filemanager/FileManager
+notepad notepad/NotePad
 STOP
 
 aboutapp aboutapp/AboutApp
@@ -22,7 +23,6 @@ descriptions translations/descriptions
 distributionlibrary distribution/DistributionLibrary
 filemanager filemanager/FileManager
 flashlight flashlight/Flashlight
-notepad notepad/NotePad
 safe safe/Safe
 shoppinglist shoppinglist/ShoppingList
 updatechecker UpdateCheckerApp

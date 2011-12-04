@@ -29,6 +29,12 @@
 		<listitem>Support for many file endings and mime types.</listitem>
 		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
 		<emptyline />
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline />
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<emptyline />
 		<string>Keywords:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>file manager, filemanager, file explorer</listitem>
@@ -38,7 +44,8 @@
 		<string>International versions:</string>
 		<international />
 		<emptyline />
-		<string>Extensions:</string>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt" />
 		<emptyline />
 	</description>

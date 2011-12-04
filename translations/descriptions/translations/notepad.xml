@@ -1,57 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<main>
-	<translators>translator-credits</translators>
-	<description application="filemanager/FileManager">
-		<!--  OI File Manager -->
-		<!--  -->
-		<!--  Application name and promo text are extracted from the application strings. -->
-		<!--  -->
-		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
-		<!--  -->
-		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
-		<emptyline />
-		<string>This application is ad free and does not require the internet permission.</string>
-		<emptyline />
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
-		<link href="http://www.openintents.org" />
-		<emptyline />
-		<string>You can help to improve the translation into your language at Launchpad:</string>
-		<link href="https://translations.launchpad.net/openintents/trunk" />
-		<emptyline />
-		<string>The source code of this free and open source application is available at:</string>
-		<link href="http://code.google.com/p/openintents" />
-		<emptyline />
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
-		<emptyline />
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<emptyline />
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
-		<emptyline />
-		<string>Keywords:</string>
-		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
-		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
-		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
-		<emptyline />
-		<string>International versions:</string>
-		<international />
-		<emptyline />
-		<string>Search strings for Market:</string>
-		<!--  (these are not translated into other languages) -->
-		<include file="description_extensions.txt" />
-		<emptyline />
-	</description>
 	<description application="notepad/NotePad">
 		<!--  OI Notepad -->
 		<!--  -->
@@ -109,4 +55,3 @@
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt" />
 	</description>
-</main>
