@@ -27,84 +27,86 @@
 	     *************************** -->
 	
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Boyan Penchev https://launchpad.net/~boyan-penchev
+  Stefani Soyanova https://launchpad.net/~stefi-stoyanova95</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">Самостоятелното за диалога е, че споделя между приложенията.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Файлов Мениджър</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Лист за пазаруване</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Бележник</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Безопасност</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Стартирай %s и избери меню &gt; За.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">OI About</string>
+    <string name="app_name">OI За</string>
 	
-    <string name="menu_about">About OI About itself</string>
+    <string name="menu_about">За OI за себе си</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
-    <string name="about_activity_name_extended">About %s</string>
+    <string name="about_activity_name_extended">Относно %s</string>
     
-	<string name="l_authors">Written by</string>
-	<string name="l_documenters">Documented by</string>
-	<string name="l_translators">Translated by</string>
-	<string name="l_artists">Artwork by</string>
-	<string name="l_international_translators">International translations by</string>
-	<string name="l_credits">Credits</string>
-	<string name="l_license">License</string>
-	<string name="l_info">General Info</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_authors">Написано от:</string>
+	<string name="l_documenters">Документирано от</string>
+	<string name="l_translators">Преведено от</string>
+	<string name="l_artists">Дизайн</string>
+	<string name="l_international_translators">Международни преводи от</string>
+	<string name="l_credits">Заслуги</string>
+	<string name="l_license">Лиценз</string>
+	<string name="l_info">Обща Информация</string>
+	<string name="l_recent_changes">Последни промени</string>
 	
-	<string name="no_information_available">No information available.</string>
+	<string name="no_information_available">Няма налична информация</string>
 	
 	<!-- ***************************
 	     International languages
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Арабски</item>
+		<item>Чешки</item>
+		<item>Датски</item>
+		<item>Немски</item>
+		<item>Английски</item>
+		<item>Гръцки</item>
+		<item>Испански</item>
+		<item>Персийски</item>
+		<item>Фински</item>
+		<item>Фарьорски</item>
+		<item>Френски</item>
+		<item>Хърватски</item>
+		<item>Унгарски</item>
+		<item>Италиански</item>
+		<item>Японски</item>
+		<item>Корейски</item>
+		<item>Лаоски</item>
+		<item>Холандси</item>
+		<item>Окситански (след 1500)</item>
+		<item>Полски</item>
+		<item>Португалски</item>
+		<item>Бразилски португалски</item>
+		<item>Румънски</item>
+		<item>Руски</item>
+		<item>Сардински</item>
+		<item>Словашки</item>
+		<item>Шведски</item>
+		<item>Турски</item>
+		<item>Китайски (опростен)</item>
+		<item>Китайски (традиционен)</item>
 	</string-array>
 </resources>

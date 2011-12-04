@@ -2,6 +2,6 @@
 OI Gestore File
 
 # Promo text:
-Manage files on the SD card.
+Gestisce file nella scheda SD.
 
 # Description:

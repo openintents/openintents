@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Andrzej Ziółek https://launchpad.net/~andro-v-zik
   usul https://launchpad.net/~usultis</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -37,16 +38,16 @@
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Menedżer plików</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Lista zakupów</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Notatnik</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Sejf</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Włącz %s i zaznacz opcję menu "O programie".</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -64,11 +65,11 @@
 	<string name="l_documenters">Dokumentacja</string>
 	<string name="l_translators">Tłumaczenie</string>
 	<string name="l_artists">Grafika</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Autorzy tłumaczeń międzynarodowych:</string>
 	<string name="l_credits">Twórcy</string>
 	<string name="l_license">Licencja</string>
 	<string name="l_info">Informacje ogólne</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">Ostatnie zmiany</string>
 	
 	<string name="no_information_available">Brak informacji.</string>
 	
@@ -77,35 +78,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
-		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Arabski</item>
+		<item>Czeski</item>
+		<item>Duński</item>
+		<item>Niemiecki</item>
+		<item>Angielski</item>
+		<item>Grecki</item>
+		<item>Hiszpański</item>
+		<item>Perski</item>
+		<item>Fiński</item>
+		<item>Farerski</item>
+		<item>Francuski</item>
+		<item>Chorwacki</item>
+		<item>Węgierski</item>
+		<item>Włoski</item>
+		<item>Japoński</item>
+		<item>Koreański</item>
+		<item>Laotański</item>
+		<item>Niderlandzki</item>
+		<item>Oksytański (po 1500)</item>
+		<item>Polski</item>
+		<item>Portugalski</item>
+		<item>Portugalski (brazylijski)</item>
+		<item>Rumuński</item>
+		<item>Rosyjski</item>
+		<item>Sardyński</item>
+		<item>Słowacki</item>
+		<item>Szwedzki</item>
+		<item>Turecki</item>
+		<item>Chiński (uproszczony)</item>
+		<item>Chiński (tradycyjny)</item>
 	</string-array>
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Anshuman Jaiswal https://launchpad.net/~good-anshuman
+  happy  nawani https://launchpad.net/~nawanihappy</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">OpenIntents रंगचयनक OI टॉर्च और अन्य संगत पूर्ण अनुप्रयोगों के लिए एक एक्सटेंशन है|</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI रंगचयनक</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">रंग चयनक</string>
+    
+    <string name="recent_colors_condensed">हाल के</string>
+    <string name="recent_colors">हाल ही के रंग</string>
+    <string name="recent_colors_expanded">हाल ही में चुना रंग</string>
+    <string name="recent_colors_clear_history">स्पष्ट</string>
+    <string name="recent_colors_empty">वहाँ नहीं कर रहे हैं हाल ही में चुना रंग.</string>
+    
+    <string name="confirm_color_title">रंग का प्रयोग करें?</string>
+    <string name="confirm_color_message">इस नए रंग का उपयोग करें? आप केंद्र वृत्त पर क्लिक करके इस संदेश से बचने कर सकते हैं.</string>
+    
+    
+	<!-- About -->
+	<string name="about">के बारे में</string>
+	<string name="aboutapp_not_available">संस्करणः% s \ n \ n कोई संगत पूर्ण जानकारी (संपर्क, क्रेडिट, लाइसेंस) प्रदर्शित करने के लिए उपलब्ध एक्सटेंशन.</string>
+	<string name="aboutapp_get">OI \'के बारें में\' प्राप्त करें</string>
+
+
+	<!-- Update -->
+	<string name="update_error">डाउनलोड अनुप्रयोग उपलब्ध नहीं है|</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">OI टॉर्च, प्रेस मेनू&gt; रंग में रंग का चयन करें करने के लिए.</string>
+    <string name="title_app_flashlight">OI टॉर्च</string>
+    
+    <string name="info_app_spiral_wallpaper">कृत्रिम निद्रावस्था, एनिमेटेड सर्पिल लाइव वॉलपेपर.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister लाइव वॉलपेपर</string>
+    
+    <string name="info_app_bettr_flickr">Android के लिए मूल निवासी फ़्लिकर इंटरफ़ेस</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">मिक्स और कलाकृति मैच anime अक्षर उत्पन्न करने के लिए</string>
+    <string name="title_app_character_gen">मोबाइल फोनों के चरित्र जनरेटर</string>
+    
+    
+	<string name="info_activity_text">इस app निम्नलिखित अनुप्रयोगों के साथ इस्तेमाल किया जा सकता है:</string>
+    <string name="info_launch">%s लॉन्च करें</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">इस app% 1 $ s% 2 $ s या अधिक की आवश्यकता है.</string>
+	<string name="info_get">जाओ %s</string>
+</resources>

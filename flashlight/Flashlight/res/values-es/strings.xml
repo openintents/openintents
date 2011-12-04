@@ -21,7 +21,7 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Flashlight</string>
     
-    <string name="flashlight_info">La luz posterior permanece encendida.</string>
+    <string name="backlight_info">La luz posterior permanece encendida.</string>
     
     <string name="color">Color</string>
     
@@ -46,5 +46,10 @@
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Para hacer el selector de color mas útil para otros desarrolladores, ha sido convertido en una aplicación separada.</string>
+    <string name="setting_use_camera_flash">Use camera flash</string>
+    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
+    <string name="cameralight_stop_info">Press to disable camera light.</string>
     
 </resources>

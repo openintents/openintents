@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Anton Dudov https://launchpad.net/~anton-cho</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">Openintents Color Picker е приставка за OI Flashlight и други съвместими приложения.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI избор на цвят</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">Избор на цвят</string>
+    
+    <string name="recent_colors_condensed">Последни</string>
+    <string name="recent_colors">Последните цветове</string>
+    <string name="recent_colors_expanded">Наскоро избрани цветове</string>
+    <string name="recent_colors_clear_history">Изчисти</string>
+    <string name="recent_colors_empty">Няма наскоро избрани цветове.</string>
+    
+    <string name="confirm_color_title">Използвай цвят?</string>
+    <string name="confirm_color_message">Използвайте този нов цвят? Като кликнете в кръкчето в средата, можете да пренабрегнете това съобщение.</string>
+    
+    
+	<!-- About -->
+	<string name="about">За</string>
+	<string name="aboutapp_not_available">Версия %s\n\n няма съвместими приставки за показване на пълната информация(контакти, кредити, лиценз)</string>
+	<string name="aboutapp_get">Вземи OI за</string>
+
+
+	<!-- Update -->
+	<string name="update_error">Сваленото приложение не е активно.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">За да изберете цвят в OI Фенерче натиснете меню &gt; Цвят</string>
+    <string name="title_app_flashlight">OI Фенерче</string>
+    
+    <string name="info_app_spiral_wallpaper">Хипнотизиращ,анимиран спираловиден жив тапет</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister жив тапет</string>
+    
+    <string name="info_app_bettr_flickr">Роден Flickr интерфейс за Андроид</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">Смеси и съчетай произведения за направата на аниме герои</string>
+    <string name="title_app_character_gen">Генератор на аниме герой</string>
+    
+    
+	<string name="info_activity_text">Това приложение може да бъде използвано със следните приложения:</string>
+    <string name="info_launch">Стартиране %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">Това приложение изивсква %1$s %2$s или по-високо.</string>
+	<string name="info_get">Вземи %s</string>
+</resources>

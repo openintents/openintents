@@ -6,11 +6,12 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Florentina Mușat https://launchpad.net/~kuchiki14
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
+	<string name="about_comments">Lanterna OpenIntents vă ajută să găsiți calea în întuneric. Lumina din spatele ecranului este menținută aprinsă în timp ce rulează această aplicație.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -18,12 +19,12 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Lanterna</string>
     
-    <string name="flashlight_info">Ecranul rămâne pornit.</string>
+    <string name="backlight_info">Ecranul rămâne pornit.</string>
     
     <string name="color">Culoare</string>
     
     <!-- Application name should be consistent across translations. -->
-    <string name="color_picker">OI Color Picker</string>
+    <string name="color_picker">Selector de culoare OI</string>
     
     <string name="preferences">Preferințe</string>
     
@@ -42,6 +43,11 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
+    <string name="color_picker_modularization_explanation">Pentru a face Selectorul de culoare mai folositor pentru ceilalți dezvoltatori, l-am separat în propria sa aplicație.</string>
+    <string name="setting_use_camera_flash">Use camera flash</string>
+    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
+    <string name="cameralight_stop_info">Press to disable camera light.</string>
     
 </resources>

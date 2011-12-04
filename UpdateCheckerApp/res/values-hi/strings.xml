@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Anshuman Jaiswal https://launchpad.net/~good-anshuman
+  happy  nawani https://launchpad.net/~nawanihappy</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI अद्यतन</string>
+    
+    <string name="update_available">% S का एक नया संस्करण उपलब्ध है \ आप को अपग्रेड करना चाहेंगे?</string>
+    <string name="update_available_3">%1$s  का एक नया संस्करण उपलब्ध है|\\n
+%2$s\\n</string>
+    <string name="update_available_2">% 1 $ s का एक नया संस्करण उपलब्ध है \ n% 2 $ s \ n है.</string>
+    <string name="update_available_location_no_comment">% 1 $ s के एक नए संस्करण 2% एस डॉलर में उपलब्ध है</string>
+    <string name="update_available_no_comment">% S का एक नया संस्करण उपलब्ध है.</string>
+	<string name="market_not_available">Android बाजार उपलब्ध नहीं है.</string>
+    <string name="market_search_term">OI अद्यतन</string>
+	<string name="android_market">Android बाजार</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">संस्करण% $ 1 \ एनएसडी कार्ड% 2 $ s \ n \ n NOS \ n% 3 $ s</string>
+    <string name="free_space">मुक्त अंतरिक्ष:% s</string>
+    <string name="os_info">बोर्ड% $ 1 \ nBrand% 2 $ s एस nDevice \ $ 3% s \ एनआईडी% $ 4 \ s nModel 5% $ s</string>
+    
+    <string name="do_update">प्रदर्शन अब अद्यतन!</string>
+    <string name="do_update_market">अब बाजार से अद्यतन की कोशिश करो!</string>
+    <string name="do_update_andAppStore">AndAppStore से अब अद्यतन करने की कोशिश करो!</string>
+    <string name="remind_me_later">मुझे बाद में याद दिलाना है!</string>
+    <string name="ignore_this_update">इस अद्यतन पर ध्यान न दें</string>
+    <string name="ignore_all_further_updates">सभी आगे अद्यतन पर ध्यान न दें</string>
+    <string name="ok">ठीक</string>
+    
+    <string name="update_not_started">अद्यतन शुरू नहीं किया जा सका \ n \ n कृपया संपर्क अनुप्रयोग विकासक! \ N \ n% s</string>
+    <string name="app_up_to_date">आवेदन अप करने की तारीख है.</string>
+    <string name="checking">नए संस्करण के लिए जाँच हो रही है.</string>
+    <string name="building_app_list">भवन आवेदनों की सूची.</string>
+    <string name="check_andappstore">AndAppStore.com की जाँच करें</string>
+    <string name="check_versions">संस्करणों की जाँच करें</string>
+    <string name="show_versions">सभी दिखाएँ</string>
+    <string name="refresh">ताज़ा करें</string>
+    <string name="checked_against_andappstore">चेक्ड AndAppStore</string>
+    <string name="current_version">वर्तमान संस्करण:% s</string>
+    <string name="current_version_code">वर्तमान संस्करण कोड:% s</string>
+    <string name="newer_version">नए संस्करण:% s</string>
+    <string name="newer_version_comment">नया संस्करण:% 1 $ s% 2 $ s</string>
+    <string name="newer_version_available">नया संस्करण उपलब्ध है.</string>
+    <string name="no_update_info_found">नहीं अद्यतन जानकारी पाया.</string>
+    <string name="title_list_new_versions">OI अद्यतन- नए संस्करणों की सूची</string>
+    <string name="title_list_new_versions_from_andappstore">OI अद्यतन - AndAppStore पर नया संस्करण</string>
+    <string name="title_list_all_versions">OI अद्यतन - प्रबंधित अनुप्रयोगों की सूची</string>
+    <string name="title_list_all_versions_from_andappstore">OI अद्यतन - प्रबंधित आवेदनों की सूची (AndAppStore पर जांच)</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="auto_update">ऑटो चेक</string>
+    <string name="ignore_title">उपेक्षित</string>
+    <string name="ignore_text">अद्यतन वर्तमान की अनदेखी कर रहे हैं. आप अद्यतन को फिर से प्राप्त करना चाहेंगे?</string>
+    <string name="unknown_title">अज्ञात</string>
+    <string name="unknown_text">कोई अद्यतन जानकारी उपलब्ध नहीं है.मैन्युअल की जाँच करें और डेवलपर पूछने के लिए भविष्य में पुराना अद्यतन समर्थन.</string>
+    <string name="search_on_market">बाजार पर खोजें</string>
+    <string name="search_on_andappstore">AndAppStore पर खोजें</string>
+    <string name="processing">प्रसंस्करण% एस</string>
+    
+    <string name="warn">इस आवेदन की अद्यतन की प्रक्रिया Android बाजार की तुलना में एक अलग साइट के लिए निर्देश. अज्ञात स्रोतों से स्थापित अनुप्रयोगों के एक सुरक्षा जोखिम प्रदर्शन हो सकता है.</string>
+    <string name="continue_anyway">फिर भी जारी रखें</string>
+    <string name="abort">छोड़ें</string>
+    
+    <string name="preference_auto_update">ऑटो अद्यतन</string>
+    <string name="preference_auto_update_summary">यदि जाँच की, नियमित रूप से अद्यतन के लिए खोज किया जाता है</string>
+    <string name="title_update_interval">अद्यतन अंतराल</string>
+    <string name="summary_update_interval">अंतराल कितनी बार अद्यतन खोज प्रदर्शन किया जाना चाहिए सेट.</string>
+    <string name="dialog_title_update_interval">अंतराल का चयन करें</string>
+    <string name="default_update_interval">हर महीने</string>
+    <string name="preference_warning_title">चेतावनी</string>
+    <string name="preference_warning_text">यदि आप अनचेक इस मद, आप नहीं रह अद्यतन के लिए सूचना प्राप्त होगा. क्या आप अभी भी को अनचेक स्वत: अद्यतन करना चाहते हैं?</string>
+    
+    <string name="preference_andappstore">AndAppStore का प्रयोग करें</string>
+    <string name="preference_andappstore_summary">संस्करण AndAppStore.com द्वारा उपलब्ध कराई गई जानकारी का उपयोग करें</string>
+    
+    <string name="permission_read_update_info">अद्यतन जानकारी पढ़ें</string>
+    <string name="permission_write_update_info">अद्यतन जानकारी लिखें</string>
+    <string name="permission_read_update_info_descr">स्थापित अनुप्रयोगों, अद्यतन स्थानों और अनुरोधों के बारे में जानकारी पढ़ें.</string>
+    <string name="permission_write_update_info_descr">स्थापित अनुप्रयोगों, अद्यतन स्थानों और अनुरोधों के बारे में जानकारी लिखें.</string>
+
+
+	<!-- About -->
+	<string name="about">के बारे में</string>
+	<string name="about_title">के बारे में %s</string>
+	<string name="about_text">संस्करण% s \ n \ n पुराना अद्यतन रहती है तुम नए आवेदन संस्करणों पर सूचित \ n OpenIntents अलग Android के अनुप्रयोगों intents और खुला इंटरफेस का उपयोग कर डेटा साझा करने के लिए अनुमति देता है \ n \ n अधिक जानकारी और अन्य महान अनुप्रयोगों के लिए पता. Www.openintents पर OpenIntents यात्राorg.</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI अद्यतन EULA</string>
+<string name="eula_description">"कॉपीराइट २,००८ OpenIntents.org \ n अपाचे लाइसेंस, संस्करण 2.0 के अंतर्गत लाइसेंस (\" लाइसेंस \ "); आप लाइसेंस के साथ अनुपालन में छोड़कर इस फ़ाइल का उपयोग नहीं आप \ n http पर लाइसेंस की एक प्रतिलिपि प्राप्त कर सकते हैं हो सकता है.www.apache.org/licenses/LICENSE-2.0: / / \ n जब तक लागू कानून द्वारा अपेक्षित या लिखित रूप में सहमत हुए, लाइसेंस के तहत वितरित सॉफ्टवेयर एक "जैसा है" आधार पर वितरित किया जाता है, किसी भी प्रकार की वारंटियों या शर्तों के के बिना,या तो व्यक्त या निहित. विशिष्ट भाषा के लिए लाइसेंस के अंतर्गत \ n \ n अनुमतियाँ और सीमाओं की गवर्निंग लाइसेंस देखें "</string>
+	<string name="eula_accept">स्वीकार करना</string>
+	<string name="eula_refuse">रद्द करना</string>
+	
+</resources>

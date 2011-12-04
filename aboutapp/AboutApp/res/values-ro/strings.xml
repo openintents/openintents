@@ -28,11 +28,12 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Florentina Mușat https://launchpad.net/~kuchiki14
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">Un dialog despre de sine stătător care este împărțit între aplicații.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -83,14 +84,14 @@
 		<item>Daneză</item>
 		<item>Germană</item>
 		<item>Engleză</item>
-		<item>Greek</item>
+		<item>Greacă</item>
 		<item>Spaniolă</item>
-		<item>Persian</item>
+		<item>Persană</item>
 		<item>Finlandeză</item>
 		<item>Feroeză</item>
 		<item>Franceză</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
+		<item>Croată</item>
+		<item>Maghiară</item>
 		<item>Italiană</item>
 		<item>Japoneză</item>
 		<item>Coreană</item>

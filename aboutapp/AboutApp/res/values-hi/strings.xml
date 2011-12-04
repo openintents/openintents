@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happy  nawani https://launchpad.net/~nawanihappy</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">एक स्वसंपूर्ण उस संवाद के बारे में जो अनुप्रयोगों के बीच साझा गया है|</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI फ़ाइल प्रबंधक</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI खरीददारी सूची</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI नोटपैड</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI सुरक्षित</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">%s को शुरू करें और  </string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI के बारे में</string>
+	
+    <string name="menu_about">OI के बारे में खुद के बारे में</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">%s के बारे में</string>
+    
+	<string name="l_authors">द्वारा लिखित</string>
+	<string name="l_documenters">द्वारा प्रलेखित</string>
+	<string name="l_translators">द्वारा अनुवादित</string>
+	<string name="l_artists">द्वारा कलाकृति</string>
+	<string name="l_international_translators">अंतर्राष्ट्रीय अनुवाद द्वारा</string>
+	<string name="l_credits">श्रेय</string>
+	<string name="l_license">लाइसेंस</string>
+	<string name="l_info">सामान्य जानकारी</string>
+	<string name="l_recent_changes">हाल में हुए बदलाव</string>
+	
+	<string name="no_information_available">कोई जानकारी उपलब्ध नहीं|</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>अरबी भाषा</item>
+		<item>चेकोस्लोवाकिया की भाषा</item>
+		<item>डेनिश भाषा</item>
+		<item>जर्मन भाषा</item>
+		<item>अंग्रेज़ी भाषा</item>
+		<item>यूनानी/ग्रीक भाषा</item>
+		<item>स्पेनिश भाषा</item>
+		<item>फ़ारसी भाषा</item>
+		<item>फ़िन भाषा</item>
+		<item>फिरोज़ी भाषा</item>
+		<item>फ्रांसीसी भाषा</item>
+		<item>क्रोएशियाई भाषा</item>
+		<item>हंगेरी भाषा</item>
+		<item>इतालवी भाषा</item>
+		<item>जापानी भाषा</item>
+		<item>कोरियाई भाषा</item>
+		<item>लाओथियाई भाषा</item>
+		<item>डच भाषा</item>
+		<item>ओसीटान ( पद 1500)</item>
+		<item>पोलिश भाषा</item>
+		<item>पुर्तगाली भाषा</item>
+		<item>ब्राज़ीली पुर्तगाली भाषा</item>
+		<item>रोमानियाई भाषा</item>
+		<item>रूसी भाषा</item>
+		<item>सार्दीनीअन भाषा</item>
+		<item>स्लोवाक भाषा</item>
+		<item>स्वीडिश भाषा</item>
+		<item>तुर्की</item>
+		<item>चीनी भाषा (सरलीकृत)</item>
+		<item>चीनी भाषा (पारंपरिक)</item>
+	</string-array>
+</resources>

@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Halilpk https://launchpad.net/~halilpk
   Peli https://launchpad.net/~peli0101
   zeugma https://launchpad.net/~sunder67</string>
 	
@@ -54,7 +55,7 @@ Launchpad Contributions:
     <string name="title_edit">Geri sayım düzenle</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">Geri sayım al</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
     <string name="title_setcountdown_action">OI Geri sayım</string>

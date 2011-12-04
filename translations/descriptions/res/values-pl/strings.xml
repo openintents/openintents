@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Tomasz Zieliński https://launchpad.net/~tomek0517</translators>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI File Manager pozwala przeglądać karty SD, tworzyć katalogi, kopiować, przenosić i usuwać pliki.</string>
+		<string>Działa również jako rozszerzenie do innych aplikacji do wyświetlenia okien dialogowych otwierania i zapisywania plików.</string>
+		<emptyline/>
+		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
+		<emptyline/>
+		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Możesz poprawić tłumaczenie na Twój język:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Cechy:</string>
+		<listitem>Pokaż listę plików z miniaturami obrazów.</listitem>
+		<listitem>Przenosić, kopiować, zmieniać nazwy i usuwać pliki.</listitem>
+		<listitem>Tworzenie i usuwanie katalogów (folderów).</listitem>
+		<listitem>Wysyłanie plików e-mailem.</listitem>
+		<listitem>Działa jako rozszerzenie do innych aplikacji, takich jak GMail, aby dołącząć pliki.</listitem>
+		<listitem>Wsparcie dla wielu rozszerzeń plików i typów MIME.</listitem>
+		<listitem>Obsługuje PICK_FILE i PICK_DIRECTORY, tak aby inne aplikacje mogły korzystać z OI File Manager.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>Słowa kluczowe:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>menedżer plików, menedżer plików, eksplorator plików</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Wersje międzynarodowe:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
+		<emptyline/>
+		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Możesz poprawić tłumaczenie na Twój język:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Cechy:</string>
+		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Change font size and sort order.</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Notepad":</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Notepad":</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>Słowa kluczowe:</string>
+		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Wersje międzynarodowe:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+</main>

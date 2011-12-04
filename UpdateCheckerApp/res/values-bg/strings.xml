@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Boyan Penchev https://launchpad.net/~boyan-penchev
+  Dariel Kremov https://launchpad.net/~dkremov</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">OI Обновления</string>
+    
+    <string name="update_available">Налична е нова версия на %s.\nЖелаете ли да обновите?</string>
+    <string name="update_available_3">Нова версия на %1$s е налична в %2$s.\n%3$s\n</string>
+    <string name="update_available_2">Налична е нова версия на %1$s.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">Нова версия на %1$s е налична в %2$s.</string>
+    <string name="update_available_no_comment">Налична е нова версия на %1$s.</string>
+	<string name="market_not_available">Android Market не е достъпен.</string>
+    <string name="market_search_term">OI Обновления</string>
+	<string name="android_market">Android Market</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">Версия %1$s\nSD карта%2$s\n\nОС\n%3$s</string>
+    <string name="free_space">свободно място: %s</string>
+    <string name="os_info">Борд %1$s\nМарка%2$s\nУстройство%3$s\nID%4$s\nМодел%5$s</string>
+    
+    <string name="do_update">Извърши обновяване сега!</string>
+    <string name="do_update_market">Опитай обновяване от Market сега!</string>
+    <string name="do_update_andAppStore">Опитай обновяване от AndAppStore сега!</string>
+    <string name="remind_me_later">Напомни ми по-късно!</string>
+    <string name="ignore_this_update">Игнорирай това обновяване</string>
+    <string name="ignore_all_further_updates">Игнорирай всички бъдещи обновявания</string>
+    <string name="ok">ОК</string>
+    
+    <string name="update_not_started">Обновяването не можа стартира!\n\n Моля свържете се разработчиците на приложението!\n\n%s</string>
+    <string name="app_up_to_date">Приложението е с най-новата версия.</string>
+    <string name="checking">Проверяване за нова версия.</string>
+    <string name="building_app_list">Съставяне на списък с приложенията.</string>
+    <string name="check_andappstore">Провери AndAppStore.com</string>
+    <string name="check_versions">Провери версиите</string>
+    <string name="show_versions">Покажи всичко</string>
+    <string name="refresh">Обнови</string>
+    <string name="checked_against_andappstore">AndAppStore проверен</string>
+    <string name="current_version">Текуща версия: %s</string>
+    <string name="current_version_code">Код на текущата версия:%s</string>
+    <string name="newer_version">По-нова версия: %s</string>
+    <string name="newer_version_comment">По-нова версия: %1$s - %2$s</string>
+    <string name="newer_version_available">Налична е по-нова версия.</string>
+    <string name="no_update_info_found">Не бе открита информация за обновяването.</string>
+    <string name="title_list_new_versions">OI Update - Списък на нови версии</string>
+    <string name="title_list_new_versions_from_andappstore">OI Update - Нови версии в AndAppStore</string>
+    <string name="title_list_all_versions">OI Update - Списък на следените приложения</string>
+    <string name="title_list_all_versions_from_andappstore">OI Update - Списък на следените приложения (проверява в AndAppStore)</string>
+    <string name="settings">Настройки</string>
+    <string name="auto_update">Автоматична проверка</string>
+    <string name="ignore_title">Ингнорирани</string>
+    <string name="ignore_text">Обновяванията се игнорират. Желаете ли да получавате обновявания отново?</string>
+    <string name="unknown_title">Неизвестно</string>
+    <string name="unknown_text">Не е налична информация за обновяването. Моля проверете ръчно и поискайте разработчика да поддържа OI Update в бъдеще.</string>
+    <string name="search_on_market">Търси в Market</string>
+    <string name="search_on_andappstore">Търси в AndAppStore</string>
+    <string name="processing">Обработка на %s</string>
+    
+    <string name="warn">Процеса на обновяване на това приложение води към различен уебсайт от Android Market. Приложения инсталирани от неизвестни източници може да представляват риск за сигурността.</string>
+    <string name="continue_anyway">Продължи</string>
+    <string name="abort">Прекрати</string>
+    
+    <string name="preference_auto_update">Автоматично обновяване</string>
+    <string name="preference_auto_update_summary">Ако е маркирано, търсене за обновявания ще се извършва редовно</string>
+    <string name="title_update_interval">Интервал между обновяванията</string>
+    <string name="summary_update_interval">Задайте интервал, колко често търсенето за обновявания да се извършва.</string>
+    <string name="dialog_title_update_interval">Избери интервал</string>
+    <string name="default_update_interval">всеки_месец</string>
+    <string name="preference_warning_title">Предупреждение</string>
+    <string name="preference_warning_text">Ако тази точка не е маркирана, няма да получавате известия за обновявания. Все още ли желаете да изключите автоматичното обновяване?</string>
+    
+    <string name="preference_andappstore">Използвай AndAppStore</string>
+    <string name="preference_andappstore_summary">Използвай предлаганата от AndAppStore.com информация за версията.</string>
+    
+    <string name="permission_read_update_info">Прочети информацията за обновяването.</string>
+    <string name="permission_write_update_info">Напиши информация за обновяването</string>
+    <string name="permission_read_update_info_descr">Прочети информация за инсталираните приложения и обновявания.</string>
+    <string name="permission_write_update_info_descr">Напиши информация за инсталираните приложения и обновявания.</string>
+
+
+	<!-- About -->
+	<string name="about">За приложението</string>
+	<string name="about_title">За %s</string>
+	<string name="about_text">Версия %s \n\n OI Update Ви уведомява за нови версии за приложения.\n OpenIntents позволява на различни Android приложения да споделят данни използвайки интерфейсите на OpenIntents.\n\n За повече информация и други невероятни приложения, посетете OpenIntents на www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">OI Update EULA</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); нямате право да използвате този файл по никакъв начин освен в съгласие с Лиценза. Можете да получите копие на Лиценза на\n http://www.apache.org/licenses/LICENSE-2.0\n Освен ако не се изисква от приложим закон или от писмено споразумение, софтуера разпространяван под Лиценза се разпространява "КАКТО Е", БЕЗ ГАРАНЦИИ ИЛИ УСЛОВИЯ ОТ КАКЪВТО И ДА БИЛО ВИД, независимо дали са изрични или подразбиращи се. Виж Лиценза за специфичните, регулиращи езика разрешения и ограничения под Лиценза.</string>
+	<string name="eula_accept">Приемам</string>
+	<string name="eula_refuse">Отказ</string>
+	
+</resources>

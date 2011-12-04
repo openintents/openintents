@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
   zeugma https://launchpad.net/~sunder67</translators>
 	<description application="filemanager/FileManager">
@@ -12,39 +13,103 @@
 		<!--  -->
 		<!--  Description of application -->
 		<string>OI Dosya Yöneticisi, yeniden adlandırma, kopyalama, taşıma, dizinler oluşturma ,SD karta göz atma ve dosyaları silmenizi sağlar.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>O "Aç" ve "Kaydet" diyaloglarını göstermek için diğer uygulamalara bir ek gibi davranır.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>Değişiklikler ve sık sorulan sorular listesini tamamlamak için lütfen şurayı ziyaret edin:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Launchpad\'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<listitem>Listeyi resimler için küçük resim ekleyerek göster.</listitem>
+		<listitem>Dosyaları taşı, kopyala, yeniden adlandır ve sil.</listitem>
+		<listitem>Dizinleri (dosyaları) oluştur ve sil.</listitem>
+		<listitem>Dosyaları email ile gönder.</listitem>
+		<listitem>Dosya eklemek için GMail gibi diğer uygulamalara eklenti gibi davranır.</listitem>
+		<listitem>Bir çok dosya ve mime tipi desteği.</listitem>
+		<listitem>PICK_FILE ve PICK_DIRECTORY amaçlarını destekler, bu sayede diğer uygulamalar OI Dosya Yönetici\'yi kullanabilir.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>dosya yönetici, dosyayönetici, dosya araştırıcı</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Uzantılar:</string>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
+		<emptyline/>
+		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Değişiklikler ve sık sorulan sorular listesini tamamlamak için lütfen şurayı ziyaret edin:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Launchpad\'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Özellikler:</string>
+		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Change font size and sort order.</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Notepad":</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Notepad":</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>Anahtar kelimeler:</string>
+		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Uluslararası versiyonlar:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
 	</description>
 </main>

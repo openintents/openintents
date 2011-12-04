@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Dvir Oren https://launchpad.net/~dvir0776</string>
+	
+	<!-- Strings for OI About -->
+	<string name="about_comments">צבע OpenIntents הוא הרחבה של  OI Flashlight ושל אפליקציות מותאמות אחרות.</string>
+	
+	<!-- ***************************
+	     Application-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">צבע OI</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">בוחר צבעים</string>
+    
+    <string name="recent_colors_condensed">ארע לאחרונה</string>
+    <string name="recent_colors">צבעים אחרונים</string>
+    <string name="recent_colors_expanded">צבעים שנבחרו לאחרונה</string>
+    <string name="recent_colors_clear_history">נקה</string>
+    <string name="recent_colors_empty">אין צבעים שנבחרו לאחרונה</string>
+    
+    <string name="confirm_color_title">להשתמש בצבע?</string>
+    <string name="confirm_color_message">רוצה להשתמש בצבע חדש זה? אתה יכול למנוע מהודעה זו להופיע על ידי לחיצה על מרכז המעגל.</string>
+    
+    
+	<!-- About -->
+	<string name="about">אודות</string>
+	<string name="aboutapp_not_available">גרסא %s\n\nאין הרחבה מותאמת זמינה כדי להציג מידע מלא (צור קשר, קרדיט, רישיון).</string>
+	<string name="aboutapp_get">קבל OI אודות</string>
+
+
+	<!-- Update -->
+	<string name="update_error">הורדת האפליקציה לא זמינה</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">כדי לבחור צבע ב OI Flashlight, לחץ על התפריט, צבע.</string>
+    <string name="title_app_flashlight">OI Flashlight</string>
+    
+    <string name="info_app_spiral_wallpaper">טפט היפנוטי, ספירלי ומונפש.</string>
+    <string name="title_app_spiral_wallpaper">טפט רמאי היפנוס חי</string>
+    
+    <string name="info_app_bettr_flickr">ממשק פליקר מקומי לאנדרואיד</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">שלב והתאם יצירות אומנות כדי לייצר דמויות מונפשות</string>
+    <string name="title_app_character_gen">מייצר דמויות מונפשות</string>
+    
+    
+	<string name="info_activity_text">ניתן להשתמש באפליקציה זו עם האפליקציות הבאות:</string>
+    <string name="info_launch">התחל %s</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">אפליקציה זו דורשת %1$s %2$s ומעלה.</string>
+	<string name="info_get">קבל %s</string>
+</resources>

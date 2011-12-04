@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
-	<translators>translator-credits</translators>
+	<translators>Launchpad Contributions:
+  Boyan Penchev https://launchpad.net/~boyan-penchev</translators>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->
@@ -9,40 +10,105 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI File Manager ви позволява да разглеждате вашата SD карта,да създавате директории,да ги преименувате,копирате,местите
+и да изтривате файлове.</string>
+		<string>Той действа и като добавка към други приложения за показване на "Отвори" и "Запамети":</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>Характеристики:</string>
+		<listitem>Покажи списък на файловете с миниатюри за изображения.</listitem>
+		<listitem>Преместване,копиране,преименуване и изтриване на файлове.</listitem>
+		<listitem>Създаване и изтриване на директории(папки).</listitem>
+		<listitem>Изпрати файловете по e-mail.</listitem>
+		<listitem>Работи и като добавка за други приложения,като GMail ,за прикачване на файлове.</listitem>
+		<listitem>Поддържа много файлови разширения и mime видове.</listitem>
+		<listitem>Поддържа PICK_FILE и PICK_DIRECTORY ,така че и други приложения да могат да използват OI File Manager.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>file manager, filemanager, file explorer</listitem>
+		<listitem>файлов мениджър,файловмениджър,файлов изследовател</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Международни версии:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<emptyline/>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Характеристики:</string>
+		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Change font size and sort order.</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Notepad":</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Notepad":</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
+		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Международни версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
 	</description>
 </main>

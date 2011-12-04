@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  happy  nawani https://launchpad.net/~nawanihappy</translators>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI फाईल प्रबंधक आपको अपने एसडी कार्ड ब्राउज़ करने,निर्देशिका बनाने,नाम बदलने,प्रतिलिपि बनाने,फाइल और कहीं भेजने और फाईल  मिटने की अनुमति देता है |</string>
+		<string>यह अन्य अनुप्रयोगों के लिए एक एक्सटेंशन के रूप में कार्य करता है "Open" और "Save"  संवाद  प्रदर्शित करने के लिए|</string>
+		<emptyline/>
+		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
+		<emptyline/>
+		<string>परिवर्तन और अक्सर पूछे जाने वाले प्रश्नों की पूरी सूची के लिए, कृपया यहाँ पर जाएँ:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>आप Launchpad पर अपनी भाषा के अनुवाद को बेहतर बनाने में मदद कर सकते हैं:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>इस स्वतंत्र और खुला स्रोत अनुप्रयोग का स्रोत कोड यहाँ पर उपलब्ध है:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>सुविधाएँ:</string>
+		<listitem>छवियों के लिए थंबनेल के साथ फ़ाइलों की सूची दिखाएँ|</listitem>
+		<listitem>भेजें,प्रतिलिपि बनाएँ,नाम बदलें और फाईल मिटाएँ|</listitem>
+		<listitem>निर्देशिका (फ़ोल्डर्स) बनाएँ और मिटाएँ|</listitem>
+		<listitem>ईमेल द्वारा फ़ाइलें भेजें|</listitem>
+		<listitem>GMail की तरह अन्य अनुप्रयोगों के लिए एक्सटेंशन के रूप में कार्य करता है,फाईलों को संलग्न करने के लिए|</listitem>
+		<listitem>कई फाईलों के अंत और MIME प्रकार के लिए समर्थन है|</listitem>
+		<listitem>PICK_FILE और PICK_DIRECTORY intents का समर्थन करता है जैसे कि अन्य अनुप्रयोग OI फ़ाइल प्रबंधक का उपयोग कर सकते हैं|</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>कीवर्ड:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>फ़ाइल प्रबंधक, filemanager, फ़ाइल अन्वेषक</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>अंतर्राष्ट्रीय संस्करण:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
+		<emptyline/>
+		<string>इस स्वतंत्र और खुला स्रोत अनुप्रयोग का स्रोत कोड यहाँ पर उपलब्ध है:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>परिवर्तन और अक्सर पूछे जाने वाले प्रश्नों की पूरी सूची के लिए, कृपया यहाँ पर जाएँ:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>आप Launchpad पर अपनी भाषा के अनुवाद को बेहतर बनाने में मदद कर सकते हैं:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>सुविधाएँ:</string>
+		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Change font size and sort order.</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Notepad":</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Notepad":</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>कीवर्ड:</string>
+		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>अंतर्राष्ट्रीय संस्करण:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+</main>

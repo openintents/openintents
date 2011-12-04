@@ -18,7 +18,7 @@
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Luche</string>
     
-    <string name="flashlight_info">Sa luche e daesecusu istata allutta.</string>
+    <string name="backlight_info">Sa luche e daesecusu istata allutta.</string>
     
     <string name="color">Colorese</string>
     
@@ -43,5 +43,10 @@
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Pro che fachere \'Issepera Colorese\' prus utile pro sos atteroso manivalese, aimusu preferriu de che creare un\'attera applicatzione.</string>
+    <string name="setting_use_camera_flash">Use camera flash</string>
+    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
+    <string name="cameralight_stop_info">Press to disable camera light.</string>
     
 </resources>

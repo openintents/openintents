@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Lacko545 https://launchpad.net/~lackorauch</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI Odpočítavanie vás upozorní po uplynutí určeného času.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Odpočítavanie</string>
+    
+    <string name="start">Spustiť</string>
+    <string name="stop">Zastaviť</string>
+    <string name="modify">Upraviť</string>
+    <string name="cont">Pokračovať</string>
+    
+	<string name="no_durations">Použite menu pre pridanie nového odpočítavania.</string>
+	<string name="countdown_list">Zoznam odpočítavaní</string>
+	
+    <string name="menu_delete">Zmazať</string>
+    <string name="menu_edit">Upraviť</string>
+    <string name="menu_insert">Pridať odpočet</string>
+    <string name="menu_pick_ringtone">Zvonenie</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Nastaviť dátum</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Nastaviť trvanie</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Nastaviť akciu</string>
+    
+    <string name="hint_title">napr. pizza</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Nastaviť odpočítavanie</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Vytvoriť odpočítavanie</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Upraviť odpočítavanie</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Vybrať odpočítavanie</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Odpočítavanie</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Chyba</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Chyba pri načítavani odpočítavania</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Upozornenie v stavovom paneli</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Spustiť cez stavový panel</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Zvoniť</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Vibrovať</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Svetlo</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Akcia: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Zvoliť akciu: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Zvoliť odpočítavanie: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Skúška</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Nastavenia</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Zavrieť</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">dní</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">deň</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Aplikácie</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Odkazy</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Automatizačné úlohy</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Zvoliť odkaz</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Zvoliť automatizačnú úlohu</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Zvoliť činnosť</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Spustiť odpočítavanie</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Zastaviť odpočítavanie</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Odpočítavanie</string>
+
+    <string name="preference_extensions">Rozšírenia</string>
+    <string name="preference_get_extensions">Získať nové rozšírenia</string>
+    <string name="preference_get_extensions_summary">Hľadať rozšírenia online</string>
+    <string name="preference_get_extensions_from">Získať rozšírenia z</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Hľadať rozšírenia na Android Markete.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Získať rozšírenia z domovskej stránky OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Prestávka medzi upozorneniami</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Prestávka pre zvonenie, vibrovanie alebo svetelné upozornenie.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Nastavť prestávku</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 sekundy</item>
+        <item>5 sekúnd</item>
+        <item>10 sekúnd</item>
+        <item>30 sekúnd</item>
+        <item>1 minúta</item>
+        <item>5 minút</item>
+        <item>10 minút</item>
+    </string-array>
+</resources>

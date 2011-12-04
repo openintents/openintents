@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  happy  nawani https://launchpad.net/~nawanihappy</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents टॉर्च आपको अंधेरे में आपका रास्ता खोजने में मदद करती है|पीछे की प्रदर्शन लाईट चालू रहती है जब यह अनुप्रयोग चल रहा होता है|</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI टॉर्च</string>
+    
+    <string name="backlight_info">पीछे की लाईट चालू रहती है|</string>
+    
+    <string name="color">रंग</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI रंगचयनक</string>
+    
+    <string name="preferences">प्राथमिकताएं</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">प्राथमिकताएं</string>
+	<string name="settings_title_keep_color">रंग रखें</string>
+	<string name="settings_summary_keep_color">इसी रंग को अगली बार टॉर्च अनुप्रयोग में परयोग करने के लिए रंग सुरक्षित कर लें</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">रंगचयनक को अन्य डेवलपर्स के लिए और उपयोगी बनाने के लिए,हमने इसे स्वयं के अनुप्रोयोग में विभाजित कर दिया है|</string>
+    <string name="setting_use_camera_flash">Use camera flash</string>
+    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
+    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    
+</resources>

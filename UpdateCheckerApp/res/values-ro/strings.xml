@@ -6,13 +6,14 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Florentina Mușat https://launchpad.net/~kuchiki14
   Peli https://launchpad.net/~peli0101
   iulargsb https://launchpad.net/~iulargsb</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
-    <string name="app_name">OI Update</string>
+    <string name="app_name">Actualizare OI</string>
     
     <string name="update_available">Este disponibilă o nouă versiune de %s.\nDoriți actualizarea?</string>
     <string name="update_available_3">O nouă versiune a %1$s este disponibilă la %2$s.\n%3$s\n</string>
@@ -20,13 +21,13 @@
     <string name="update_available_location_no_comment">O nouă versiune a %1$s este disponibilă la %2$s.</string>
     <string name="update_available_no_comment">Este disponibilă o nouă versiune de %s.</string>
 	<string name="market_not_available">Android Market nu este disponibil.</string>
-    <string name="market_search_term">OI Update</string>
+    <string name="market_search_term">Actualizare OI</string>
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
     <string name="about_text_extended">Versiunea %1$s\nSD card %2$s\n\nOS\n%3$s</string>
     <string name="free_space">spațiu liber: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="os_info">Placă %1$\nMarcă %2$s\nDispozitiv %3$s\nID %4$s\nModel %5$s</string>
     
     <string name="do_update">Aplică actualizarea acum!</string>
     <string name="do_update_market">Incearcă actualizare de pe Market acum!</string>
@@ -34,7 +35,7 @@
     <string name="remind_me_later">Reamintește-mi mai târziu!</string>
     <string name="ignore_this_update">Ignoră această actualizare</string>
     <string name="ignore_all_further_updates">Ignoră toate actualizările ulterioare</string>
-    <string name="ok">OK</string>
+    <string name="ok">Ok</string>
     
     <string name="update_not_started">Actualizarea nu a putut fi pornită!\n\nVă rugăm contactați dezvoltatorul aplicatiei!\n\n%s</string>
     <string name="app_up_to_date">Aplicația este la zi.</string>
@@ -90,22 +91,11 @@
 	<!-- About -->
 	<string name="about">Despre</string>
 	<string name="about_title">Despre %s</string>
-	<string name="about_text">Version %s \n\n
-OI Update keeps you informed on new application versions.\n
-	
-OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at www.openintents.org
-	</string>
+	<string name="about_text">Versiunea %s \n\n Actualizare OI vă menține informat în legătură cu versiunile noi ale aplicației.\n OpenIntents permite diferitelor aplicații Android să distribuie date utilizând intents și interfețele deschise.\n\n Pentru mai multe informații și alte aplicații importante vizitați OpenIntents la www.openintents.org</string>
 	
 	<!-- EULA -->
 	<string name="eula_title">OI Update ALUF</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
+<string name="eula_description">„Drepturi de autor 2008 OpentIntents.org\n Licențiat sub licența Apache, Versiunea 2.0 („Licența”); nu puteți utiliza acest fișier decât conform Licenței. Puteți să obțineți o copie a Licenței la\n http://www.apache.org/licenses/LICENSE-2.0\n Numai dacă este prevăzut de legea în vigoare sau acordat în scris, programul acordat sub Licență este distribuit pe BAZA „AȘA CUM ESTE”, FĂRĂ GARANȚII SAU CONDIȚII DE ORICE FEL”, fie ele exprimate sau sugerate. Vedeți Licența pentru limbajul specific în privința permisiunilor și limitărilor sub Licență.\n \n”</string>
 	<string name="eula_accept">Acceptă</string>
 	<string name="eula_refuse">Renunță</string>
 	

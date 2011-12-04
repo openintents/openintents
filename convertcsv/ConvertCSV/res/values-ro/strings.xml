@@ -22,22 +22,23 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Florentina Mușat https://launchpad.net/~kuchiki14
   OpenIntents devs https://launchpad.net/~openintents-devs
   iulargsb https://launchpad.net/~iulargsb</string>
 	
 	<!-- Explanation what this application does. -->
-	<string name="about_comments">This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format.</string>
+	<string name="about_comments">Această extensie pentru Lista de cumpărături OI și Carnețel OI vă permite să importați și să exportați listele și notițele în formatul CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">Lista de cumpărături OI</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">Carnețel OI</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Porniți %s și selectați menu &gt; Convertire CSV.</string>
+	<string name="info_instructions">Porniți %s și selectați meniu &gt; Convertire CSV.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -45,14 +46,14 @@
 	<!-- Application name. Can be localized.
 	  "CSV" is a common file extension meaning "comma separated values".
 	  "OI" and "CSV" should not be changed.  -->
-    <string name="app_name">OI Convert CSV</string>
+    <string name="app_name">Convertire CSV OI</string>
     <string name="convert_csv">Convertire CSV</string>
-    <string name="convert_csv_notepad">Convertire CSV la Notepad</string>
-    <string name="convert_csv_shoppinglist">Convertire CSV la Listă de cumpărături</string>
-    <string name="convert_all_notes">Convertește toate notele</string>
-    <string name="convert_all_shoppinglists">Convert all shopping lists</string>
-    <string name="convert_list">Convert list \'%s\'</string>
-    <string name="file_path">File path</string>
+    <string name="convert_csv_notepad">Convertire CSV la Carnețel</string>
+    <string name="convert_csv_shoppinglist">Convertire CSV la Lista de cumpărături</string>
+    <string name="convert_all_notes">Convertește toate notițele</string>
+    <string name="convert_all_shoppinglists">Convertește toate listele de cumpărături</string>
+    <string name="convert_list">Convertește lista „%s”</string>
+    <string name="file_path">Cale fișier</string>
     <string name="file_import">Importați</string>
     <string name="file_export">Exportați</string>
     <string name="error_writing_file">Eroare la scrierea în fişier</string>
@@ -61,99 +62,99 @@
     <string name="error_file_not_found">Fişier negăsit</string>
     <string name="error_not_yet_implemented">Nu a fost încă implementat. Vă rugăm alegeți altă opțiune.</string>
     <string name="import_finished">Importare încheiată</string>
-    <string name="export_finished">Export finished</string>
-    <string name="filemanager_title_notepad">Select notepad CSV file</string>
-    <string name="filemanager_title_shoppinglist">Select shopping list CSV file</string>
-	<string name="current_import_policy">Current Import Policy:</string>
-	<string name="import_policy">Import Policy</string>
-	<string name="select_import_policy">Select the import policy to use</string>
+    <string name="export_finished">Export finalizat</string>
+    <string name="filemanager_title_notepad">Selectează fișierul carnețel CSV</string>
+    <string name="filemanager_title_shoppinglist">Selectează fișierul lista de cumpărături CSV</string>
+	<string name="current_import_policy">Regula actuală pentru import:</string>
+	<string name="import_policy">Regulă pentru import</string>
+	<string name="select_import_policy">Selectează regula de folosit pentru import</string>
     
-    <string name="file_exists">The file exists. Do you want to overwrite?</string>
-    <string name="dont_ask_again">Don\'t ask again. Always overwrite!</string>
+    <string name="file_exists">Fișierul există deja. Doriți să îl suprascrieți?</string>
+    <string name="dont_ask_again">Nu întreba din nou. Suprascrie întotdeauna!</string>
     
-    <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
-    <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
+    <string name="warn_restore_policy_title">Regula pentru import stabilită la RESTAUREAZĂ</string>
+    <string name="warn_restore_policy">Regula actuală pentru import este stabilită la ȘTERGE TOATE ÎNREGISTRĂRILE ACTUALE și ÎNLOCUIEȘTE cu conținutul fișierului CSV. Sunteți sigur?</string>
     
-    <string name="menu_settings">Settings</string>
-    <string name="csv_file_format">CSV file format</string>
-    <string name="select_csv_file_format">Select CSV file format</string>
-    <string name="select_encoding">Select encoding</string>
-    <string name="default_encoding">Default</string>
-    <string name="use_custom_encoding">Use custom encoding (advanced users)</string>
-    <string name="preferences_select_csv_file_format">Select a CSV file format</string>
-    <string name="preferences_select_import_policy">Select the import policy to use</string>
+    <string name="menu_settings">Configurări</string>
+    <string name="csv_file_format">Format de fișier CSV</string>
+    <string name="select_csv_file_format">Selectează formatul de fișier CSV</string>
+    <string name="select_encoding">Selectează codarea</string>
+    <string name="default_encoding">Implicit</string>
+    <string name="use_custom_encoding">Utilizează codarea personalizată (utilizatori avansați)</string>
+    <string name="preferences_select_csv_file_format">Selectează un format de fișier CSV</string>
+    <string name="preferences_select_import_policy">Selectează regula de folosit pentru import</string>
     
     <!-- Preferences -->
     <!-- Preference category title -->
-    <string name="preference_common">Common settings</string>
-    <string name="preference_common_summary">Import/export settings that apply to Notepad and Shopping list.</string>
-    <string name="preference_ask_if_file_exists">Ask if file exists</string>
-    <string name="preference_ask_if_file_exists_summary">If checked a dialog appears to confirm overwriting if the export file already exists.</string>
+    <string name="preference_common">Configurări uzuale</string>
+    <string name="preference_common_summary">Configurări import/export care se aplică la Carnețel și la Lista de cumpărături.</string>
+    <string name="preference_ask_if_file_exists">Întreabă dacă fișierul există deja</string>
+    <string name="preference_ask_if_file_exists_summary">Dacă se bifează, apare un dialog pentru a confirma suprascrierea dacă fișierul de export există deja.</string>
     
-    <string name="preference_application_specific">Application specific settings</string>
-    <string name="preference_filename">Filename</string>
-    <string name="preference_filename_summary">Full path for file.</string>
+    <string name="preference_application_specific">Configurări specifice aplicației</string>
+    <string name="preference_filename">Nume de fișier</string>
+    <string name="preference_filename_summary">Cale completă pentru fișier.</string>
     
-    <string name="preference_notepad">OI Notepad</string>
-    <string name="preference_notepad_summary">Import/export settings for OI Notepad.</string>
+    <string name="preference_notepad">Carnețel OI</string>
+    <string name="preference_notepad_summary">Configurări import/export pentru Carnețel OI.</string>
     
-    <string name="preference_shoppinglist">OI Shopping list</string>
-    <string name="preference_shoppinglist_summary">Import/export settings for OI Shopping list.</string>
+    <string name="preference_shoppinglist">Lista de cumpărături OI</string>
+    <string name="preference_shoppinglist_summary">Configurări import/export pentru Lista de cumpărături OI.</string>
     
-	<string name="converting">Converting...</string>
+	<string name="converting">Se convertește...</string>
 	<string name="dialog_ok">Ok</string>
-	<string name="preference_stores">Import stores</string>
-	<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
-	<string name="preference_stores_on_summary">Import HandyShopper stores and per-store price and aisle information.</string>
+	<string name="preference_stores">Importă magazine</string>
+	<string name="preference_stores_off_summary">Importă numele de magazine HandyShopper doar ca etichete de articol.</string>
+	<string name="preference_stores_on_summary">Importă magazinele HandyShopper, prețul per-magazin și informațiile adăugate.</string>
 
 	<!-- OI Notepad -->
 	<!-- Permission -->
-    <string name="oi_notepad_permission_read">read notes</string>
-    <string name="oi_notepad_permission_read_descr">Allows an application to read notes. Note that encrypted notes are provided in the encrypted format.</string>
+    <string name="oi_notepad_permission_read">citește notițe</string>
+    <string name="oi_notepad_permission_read_descr">Permite unei aplicații să citească notițe. Observați că notițele criptate sunt furnizate în formatul criptat.</string>
 	<!-- Permission -->
-    <string name="oi_notepad_permission_write">write notes</string>
-    <string name="oi_notepad_permission_write_descr">Allows an application to create new notes or modify existing notes.</string>
+    <string name="oi_notepad_permission_write">scrie notițe</string>
+    <string name="oi_notepad_permission_write_descr">Permite unei aplicații să creeze alte notițe sau să le modifice pe cele existente.</string>
     
 	<!-- OI Shopping list -->
 	<!-- Permission -->
-    <string name="oi_shopping_permission_read">read shopping lists</string>
-    <string name="oi_shopping_permission_read_descr">Allows an application to read shopping lists. Note that encrypted lists and items are provided in the encrypted format.</string>
+    <string name="oi_shopping_permission_read">citește listele de cumpărături</string>
+    <string name="oi_shopping_permission_read_descr">Permite unei aplicații să citească liste de cumpărături. Observați că listele criptate și articolele sunt furnizate în formatul criptat.</string>
 	<!-- Permission -->
-    <string name="oi_shopping_permission_write">write shopping lists</string>
-    <string name="oi_shopping_permission_write_descr">Allows an application to create new lists and items or modify existing ones.</string>
+    <string name="oi_shopping_permission_write">scrie liste de cumpărături</string>
+    <string name="oi_shopping_permission_write_descr">Permite unei aplicații să creeze alte liste și articole sau să le modifice pe cele existente.</string>
     	
     <string-array name="notepad_format">
-        <item>MS Outlook Notes</item>
+        <item>Notițe MS Outlook</item>
         <item>Palm CSV</item>
     </string-array>
     
     <string-array name="shoppinglist_format">
-        <item>MS Outlook Tasks</item>
+        <item>Sarcini MS Outlook</item>
         <item>HandyShopper</item>
     </string-array>
     
     <string-array name="import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
-        <item>Overwrite - Overwrite existing records.</item>
-        <item>Restore - DELETE ALL, then import.</item>
+        <item>DUPLICĂ - Permite duplicarea înregistrărilor.</item>
+        <item>„PĂSTREAZĂ - Nu suprascrie înregistrările existente.”</item>
+        <item>Suprascrie - Suprascrie înregistrările existente.</item>
+        <item>Restaurează - ȘTERGE TOT, apoi importă.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
-        <item>Overwrite - A record in the CSV will OVERWRITE an existing record.</item>
-        <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
+        <item>DUPLICĂ - Adaugă o a doua copie unei înregistrări, dacă aceasta există deja.</item>
+        <item>„PĂSTREAZĂ - Nu suprascrie o înregistrare existentă, ignoră pe aceea din fișierul CSV.”</item>
+        <item>Suprascrie - O înregistrare din CSV va SUPRASCRIE o înregistrare existentă.</item>
+        <item>Restaurează copia de rezervă - ȘTERGE TOATE ÎNREGISTRĂRILE EXISTENTE, apoi importă fișierul CSV.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don\'t overwrite existing records."</item>
+        <item>DUPLICĂ - Permite duplicarea înregistrărilor.</item>
+        <item>„PĂSTREAZĂ - Nu suprascrie înregistrările existente.”</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
-        <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>DUPLICĂ - Adaugă o a doua copie unei înregistrări, dacă aceasta există deja.</item>
+        <item>„PĂSTREAZĂ - Nu suprascrie o înregistrare existentă, ignoră pe aceea din fișierul CSV.”</item>
     </string-array>
     
 </resources>

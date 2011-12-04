@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  OpenIntents devs https://launchpad.net/~openintents-devs
   zhangchun https://launchpad.net/~zhangchun</translators>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
@@ -33,6 +34,12 @@
 		<listitem>支持的许多文件结尾和MIME类型。</listitem>
 		<listitem>支持PICK_FILE 和PICK_DIRECTORY，这样其他应用程序可使用OI文件管理器。</listitem>
 		<emptyline/>
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<emptyline/>
 		<string>关键字：</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>文件管理器，文件管理器，文件浏览器</listitem>
@@ -42,8 +49,66 @@
 		<string>国际版本：</string>
 		<international/>
 		<emptyline/>
-		<string>扩展:</string>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad is a full-featured open source note taking application.</string>
+		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
+		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>应用程序的广告是免费的，不需要网络权限。</string>
+		<emptyline/>
+		<string>开放源码应用程序的源代码是：</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>完整列表的更改，请访问：</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>可以翻译成您的语言：</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>功能</string>
+		<listitem>Add, edit and delete notes.</listitem>
+		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Change font size and sort order.</listitem>
+		<listitem>A clearly arranged layout with a variety of themes.</listitem>
+		<listitem>Quickly search through notes.</listitem>
+		<listitem>Send notes as MMS or SMS.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Notepad":</string>
+		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Notepad":</string>
+		<listitem>Back up notes with "My Backup Pro".</listitem>
+		<listitem>Encrypt notes using "OI Safe".</listitem>
+		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<emptyline/>
+		<string>关键字：</string>
+		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>国际版本：</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
 	</description>
 </main>

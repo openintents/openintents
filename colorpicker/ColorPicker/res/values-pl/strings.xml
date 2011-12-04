@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Damian Skrodzki https://launchpad.net/~damienix</string>
+  Damian Skrodzki https://launchpad.net/~damienix
+  Piotr Łazarczyk https://launchpad.net/~quazarxd</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">OpenIntents Próbnik Kolorów Picker jest rozszerzeniem dla OI Latarki i innych kompatybilnych aplikacji.</string>
@@ -27,38 +28,38 @@
     <string name="recent_colors_empty">Brak ostatnio pobranych kolorów.</string>
     
     <string name="confirm_color_title">Użyć koloru?</string>
-    <string name="confirm_color_message">Use this new color? You can avoid this message by clicking on the center circle.</string>
+    <string name="confirm_color_message">Użyć tego koloru? Możesz zamknąć tą wiadomość klikając na środkowe kółko.</string>
     
     
 	<!-- About -->
 	<string name="about">O programie</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_not_available">Wersja %s\n\nRozszerzenie nie kompatybilne z pozwalającym wyświetlić wszystkie informacje (kontakty, podziękowania, licencja).</string>
+	<string name="aboutapp_get">Pobierz OI About</string>
 
 
 	<!-- Update -->
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">Nie można pobrać aplikacji.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
-    <string name="info_app_flashlight">To select a color in OI Flashlight, press menu &gt; Color.</string>
+    <string name="info_app_flashlight">Aby wybrać kolor w OI Latarka, naciśnij menu &gt; Kolor.</string>
     <string name="title_app_flashlight">OI Latarka</string>
     
-    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
-    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    <string name="info_app_spiral_wallpaper">Hipnotyzująca, animowana tapeta.</string>
+    <string name="title_app_spiral_wallpaper">Tapeta HypnoTwister</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Język interfejsu Flickr dla Androida</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
-    <string name="title_app_character_gen">Anime Character Generator</string>
+    <string name="info_app_character_gen">Mieszaj i łącz grafikę aby stworzyć postacie anime.</string>
+    <string name="title_app_character_gen">Generator postaci Anime</string>
     
     
-	<string name="info_activity_text">This app can be used with the following applications:</string>
-    <string name="info_launch">Launch %s</string>
+	<string name="info_activity_text">Ta aplikacja może być używana z następującymi aplikacjami:</string>
+    <string name="info_launch">Uruchom %s</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">This app requires %1$s %2$s or higher.</string>
-	<string name="info_get">Get %s</string>
+	<string name="info_not_available">Ta aplikacja wymaga %1$s w wersji %2$s lub wyższej.</string>
+	<string name="info_get">Pobierz %s</string>
 </resources>

@@ -8,6 +8,7 @@
 	<string name="about_translators">This is a dummy translation so that the credits are counted as translated.
 
 Launchpad Contributions:
+  Mads Peter Rommedahl https://launchpad.net/~lhademmor
   Torben Gundtofte-Bruun https://launchpad.net/~torbengb</string>
 	
     <!-- Short explanation of the application -->
@@ -19,7 +20,7 @@ Launchpad Contributions:
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
     <string name="app_name">OI Flashlight</string>
     
-    <string name="flashlight_info">Baggrundslyset forbliver tændt.</string>
+    <string name="backlight_info">Baggrundslyset forbliver tændt.</string>
     
     <string name="color">Farve</string>
     
@@ -44,5 +45,10 @@ Launchpad Contributions:
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Vi har skilt Color Picker ud i et eget program for at gøre det mere brugbart for udviklere.</string>
+    <string name="setting_use_camera_flash">Use camera flash</string>
+    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
+    <string name="cameralight_stop_info">Press to disable camera light.</string>
     
 </resources>
