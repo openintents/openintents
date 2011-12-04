@@ -1,0 +1,8 @@
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
