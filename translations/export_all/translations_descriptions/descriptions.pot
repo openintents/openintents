@@ -22,23 +22,23 @@ msgstr ""
 msgid "It also acts as an extension to other applications to display \"Open\" and \"Save\" dialogs."
 msgstr ""
 
-#: tmp_strings.xml:15(string) 
+#: tmp_strings.xml:15(string) tmp_strings.xml:68(string) 
 msgid "This application is ad free and does not require the internet permission."
 msgstr ""
 
-#: tmp_strings.xml:17(string) 
+#: tmp_strings.xml:17(string) tmp_strings.xml:73(string) 
 msgid "For the complete list of changes and a list of frequently asked questions, please visit:"
 msgstr ""
 
-#: tmp_strings.xml:20(string) 
+#: tmp_strings.xml:20(string) tmp_strings.xml:76(string) 
 msgid "You can help to improve the translation into your language at Launchpad:"
 msgstr ""
 
-#: tmp_strings.xml:23(string) 
+#: tmp_strings.xml:23(string) tmp_strings.xml:70(string) 
 msgid "The source code of this free and open source application is available at:"
 msgstr ""
 
-#: tmp_strings.xml:26(string) 
+#: tmp_strings.xml:26(string) tmp_strings.xml:79(string) 
 msgid "Features:"
 msgstr ""
 
@@ -71,24 +71,133 @@ msgid "Supports PICK_FILE and PICK_DIRECTORY intents so that other applications 
 msgstr ""
 
 #: tmp_strings.xml:35(string) 
+msgid "Available extensions for \"OI File Manager\":"
+msgstr ""
+
+#: tmp_strings.xml:36(listitem) tmp_strings.xml:90(listitem) 
+msgid "Show the license information with \"OI About\"."
+msgstr ""
+
+#: tmp_strings.xml:38(string) 
+msgid "Applications that work with \"OI File Manager\":"
+msgstr ""
+
+#: tmp_strings.xml:39(listitem) 
+msgid "Open and save text files in \"OI Notepad\"."
+msgstr ""
+
+#: tmp_strings.xml:41(string) tmp_strings.xml:101(string) 
 msgid "Keywords:"
 msgstr ""
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
-#: tmp_strings.xml:37(listitem) 
+#: tmp_strings.xml:43(listitem) 
 msgid "file manager, filemanager, file explorer"
 msgstr ""
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
-#: tmp_strings.xml:39(listitem) 
+#: tmp_strings.xml:45(listitem) 
 msgid "OI, IO, OpenIntents, Open Intents"
 msgstr ""
 
-#: tmp_strings.xml:41(string) 
+#: tmp_strings.xml:47(string) tmp_strings.xml:105(string) 
 msgid "International versions:"
 msgstr ""
 
-#: tmp_strings.xml:44(string) 
-msgid "Extensions:"
+#: tmp_strings.xml:50(string) tmp_strings.xml:108(string) 
+msgid "Search strings for Market:"
+msgstr ""
+
+#. Description of application
+#: tmp_strings.xml:63(string) 
+msgid "OI Notepad is a full-featured open source note taking application."
+msgstr ""
+
+#: tmp_strings.xml:64(string) 
+msgid "With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes."
+msgstr ""
+
+#: tmp_strings.xml:65(string) 
+msgid "Advanced features like encryption, import/export, and voice memos are all available through extensions."
+msgstr ""
+
+#: tmp_strings.xml:66(string) 
+msgid "All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes."
+msgstr ""
+
+#: tmp_strings.xml:80(listitem) 
+msgid "Add, edit and delete notes."
+msgstr ""
+
+#: tmp_strings.xml:81(listitem) 
+msgid "Long-press on notes to add tags."
+msgstr ""
+
+#: tmp_strings.xml:82(listitem) 
+msgid "Change font size and sort order."
+msgstr ""
+
+#: tmp_strings.xml:83(listitem) 
+msgid "A clearly arranged layout with a variety of themes."
+msgstr ""
+
+#: tmp_strings.xml:84(listitem) 
+msgid "Quickly search through notes."
+msgstr ""
+
+#: tmp_strings.xml:85(listitem) 
+msgid "Send notes as MMS or SMS."
+msgstr ""
+
+#: tmp_strings.xml:87(string) 
+msgid "Available extensions for \"OI Notepad\":"
+msgstr ""
+
+#: tmp_strings.xml:88(listitem) 
+msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
+msgstr ""
+
+#: tmp_strings.xml:89(listitem) 
+msgid "With \"OI Convert CSV\" import/export notes from the SD card."
+msgstr ""
+
+#: tmp_strings.xml:91(listitem) 
+msgid "Insert the date and time into notes with \"OI Insert Date\"."
+msgstr ""
+
+#: tmp_strings.xml:92(listitem) 
+msgid "Turn text upside down with \"Upside Down\"."
+msgstr ""
+
+#: tmp_strings.xml:94(string) 
+msgid "Applications that work with \"OI Notepad\":"
+msgstr ""
+
+#: tmp_strings.xml:95(listitem) 
+msgid "Back up notes with \"My Backup Pro\"."
+msgstr ""
+
+#: tmp_strings.xml:96(listitem) 
+msgid "Encrypt notes using \"OI Safe\"."
+msgstr ""
+
+#: tmp_strings.xml:97(listitem) 
+msgid "Manage notes on your SD Card with \"OI File Manager\"."
+msgstr ""
+
+#: tmp_strings.xml:98(listitem) 
+msgid "Update with \"OI Update\"."
+msgstr ""
+
+#: tmp_strings.xml:99(listitem) 
+msgid "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and many other applications."
+msgstr ""
+
+#: tmp_strings.xml:102(listitem) 
+msgid "Note, Notepad, Note book, Notes"
+msgstr ""
+
+#: tmp_strings.xml:103(listitem) 
+msgid "OI, OpenIntents, Open Intents"
 msgstr ""
 

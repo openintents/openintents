@@ -1,0 +1,230 @@
+# Arabic translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: happy  nawani <Unknown>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  happy  nawani https://launchpad.net/~nawanihappy"
+
+#. Explanation what this application does. It is a menu extension for other applications.
+#: tmp_strings.xml:33(string)
+msgid "A standalone about dialog that is shared between apps."
+msgstr "एक स्वसंपूर्ण उस संवाद के बारे में जो अनुप्रयोगों के बीच साझा गया है|"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:39(string)
+msgid "OI File Manager"
+msgstr "OI फ़ाइल प्रबंधक"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:41(string)
+msgid "OI Shopping List"
+msgstr "OI खरीददारी सूची"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:43(string)
+msgid "OI Notepad"
+msgstr "OI नोटपैड"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:45(string)
+msgid "OI Safe"
+msgstr "OI सुरक्षित"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:48(string)
+msgid "Launch %s and select menu &gt; About."
+msgstr "%s को शुरू करें और &gt मेनू चुनें ;के बारे में|"
+
+#. Application name. Can be localized, like "OI About", or "OI Info". 
+#. 	   This is an extension that shows an about dialog or info dialog.
+#: tmp_strings.xml:55(string)
+msgid "OI About"
+msgstr "OI के बारे में"
+
+#: tmp_strings.xml:57(string)
+msgid "About OI About itself"
+msgstr "OI के बारे में खुद के बारे में"
+
+#. About some application, where "%s" is the name of another application.
+#: tmp_strings.xml:60(string)
+msgid "About %s"
+msgstr "%s के बारे में"
+
+#: tmp_strings.xml:62(string)
+msgid "Written by"
+msgstr "द्वारा लिखित"
+
+#: tmp_strings.xml:63(string)
+msgid "Documented by"
+msgstr "द्वारा प्रलेखित"
+
+#: tmp_strings.xml:64(string)
+msgid "Translated by"
+msgstr "द्वारा अनुवादित"
+
+#: tmp_strings.xml:65(string)
+msgid "Artwork by"
+msgstr "द्वारा कलाकृति"
+
+#: tmp_strings.xml:66(string)
+msgid "International translations by"
+msgstr "अंतर्राष्ट्रीय अनुवाद द्वारा"
+
+#: tmp_strings.xml:67(string)
+msgid "Credits"
+msgstr "श्रेय"
+
+#: tmp_strings.xml:68(string)
+msgid "License"
+msgstr "लाइसेंस"
+
+#: tmp_strings.xml:69(string)
+msgid "General Info"
+msgstr "सामान्य जानकारी"
+
+#: tmp_strings.xml:70(string)
+msgid "Recent changes"
+msgstr "हाल में हुए बदलाव"
+
+#: tmp_strings.xml:72(string)
+msgid "No information available."
+msgstr "कोई जानकारी उपलब्ध नहीं|"
+
+#: tmp_strings.xml:79(item)
+msgid "Arabic"
+msgstr "अरबी भाषा"
+
+#: tmp_strings.xml:80(item)
+msgid "Czech"
+msgstr "चेकोस्लोवाकिया की भाषा"
+
+#: tmp_strings.xml:81(item)
+msgid "Danish"
+msgstr "डेनिश भाषा"
+
+#: tmp_strings.xml:82(item)
+msgid "German"
+msgstr "जर्मन भाषा"
+
+#: tmp_strings.xml:83(item)
+msgid "English"
+msgstr "अंग्रेज़ी भाषा"
+
+#: tmp_strings.xml:84(item)
+msgid "Greek"
+msgstr "यूनानी/ग्रीक भाषा"
+
+#: tmp_strings.xml:85(item)
+msgid "Spanish"
+msgstr "स्पेनिश भाषा"
+
+#: tmp_strings.xml:86(item)
+msgid "Persian"
+msgstr "फ़ारसी भाषा"
+
+#: tmp_strings.xml:87(item)
+msgid "Finnish"
+msgstr "फ़िन भाषा"
+
+#: tmp_strings.xml:88(item)
+msgid "Faroese"
+msgstr "फिरोज़ी भाषा"
+
+#: tmp_strings.xml:89(item)
+msgid "French"
+msgstr "फ्रांसीसी भाषा"
+
+#: tmp_strings.xml:90(item)
+msgid "Croatian"
+msgstr "क्रोएशियाई भाषा"
+
+#: tmp_strings.xml:91(item)
+msgid "Hungarian"
+msgstr "हंगेरी भाषा"
+
+#: tmp_strings.xml:92(item)
+msgid "Italian"
+msgstr "इतालवी भाषा"
+
+#: tmp_strings.xml:93(item)
+msgid "Japanese"
+msgstr "जापानी भाषा"
+
+#: tmp_strings.xml:94(item)
+msgid "Korean"
+msgstr "कोरियाई भाषा"
+
+#: tmp_strings.xml:95(item)
+msgid "Lao"
+msgstr "लाओथियाई भाषा"
+
+#: tmp_strings.xml:96(item)
+msgid "Dutch"
+msgstr "डच भाषा"
+
+#: tmp_strings.xml:97(item)
+msgid "Occitan (post 1500)"
+msgstr "ओसीटान ( पद 1500)"
+
+#: tmp_strings.xml:98(item)
+msgid "Polish"
+msgstr "पोलिश भाषा"
+
+#: tmp_strings.xml:99(item)
+msgid "Portuguese"
+msgstr "पुर्तगाली भाषा"
+
+#: tmp_strings.xml:100(item)
+msgid "Brazilian Portuguese"
+msgstr "ब्राज़ीली पुर्तगाली भाषा"
+
+#: tmp_strings.xml:101(item)
+msgid "Romanian"
+msgstr "रोमानियाई भाषा"
+
+#: tmp_strings.xml:102(item)
+msgid "Russian"
+msgstr "रूसी भाषा"
+
+#: tmp_strings.xml:103(item)
+msgid "Sardinian"
+msgstr "सार्दीनीअन भाषा"
+
+#: tmp_strings.xml:104(item)
+msgid "Slovak"
+msgstr "स्लोवाक भाषा"
+
+#: tmp_strings.xml:105(item)
+msgid "Swedish"
+msgstr "स्वीडिश भाषा"
+
+#: tmp_strings.xml:106(item)
+msgid "Turkish"
+msgstr "तुर्की"
+
+#: tmp_strings.xml:107(item)
+msgid "Chinese (Simplified)"
+msgstr "चीनी भाषा (सरलीकृत)"
+
+#: tmp_strings.xml:108(item)
+msgid "Chinese (Traditional)"
+msgstr "चीनी भाषा (पारंपरिक)"

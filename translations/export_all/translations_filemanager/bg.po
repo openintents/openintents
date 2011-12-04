@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Valentin Kirilov <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,327 +21,365 @@ msgstr ""
 #: tmp_strings.xml:23(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Stefani Soyanova https://launchpad.net/~stefi-stoyanova95\n"
+"  Tsvetelina https://launchpad.net/~ts-borisova\n"
+"  Valentin Kirilov https://launchpad.net/~val-kirilov\n"
+"  kosyo https://launchpad.net/~kosyokk"
 
 #. Short explanation of the application. Max. 80 characters.
 #: tmp_strings.xml:26(string)
 msgid "Manage files on the SD card."
-msgstr ""
+msgstr "Управление на файловете на SD карта"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI Файлов Мениджър"
 
 #: tmp_strings.xml:34(string)
 msgid "New Folder"
-msgstr ""
+msgstr "Нова директория"
 
 #. Multi select option menu
 #: tmp_strings.xml:37(string)
 msgid "Multi Select"
-msgstr ""
+msgstr "Избиране на много"
 
 #: tmp_strings.xml:39(string) tmp_strings.xml:77(string)
 msgid "Delete"
-msgstr ""
+msgstr "Изтрий"
 
 #: tmp_strings.xml:40(string)
 msgid "Rename"
-msgstr ""
+msgstr "Преименувай"
 
 #: tmp_strings.xml:41(string)
 msgid "Send"
-msgstr ""
+msgstr "Изпрати"
 
 #: tmp_strings.xml:42(string)
 msgid "Open"
-msgstr ""
+msgstr "Отвори"
 
 #: tmp_strings.xml:43(string) tmp_strings.xml:75(string)
 msgid "Move"
-msgstr ""
+msgstr "Премести"
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:76(string)
 msgid "Copy"
-msgstr ""
+msgstr "Копирай"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
-msgstr ""
+msgstr "Подробности"
 
 #: tmp_strings.xml:46(string)
 msgid "More"
-msgstr ""
+msgstr "Повече"
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
-msgstr ""
+msgstr "Филтриране"
 
 #: tmp_strings.xml:48(string)
 msgid "Include in media scan"
-msgstr ""
+msgstr "Включване в сканирането на медийни приложения"
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:127(string)
 msgid "Exclude from media scan"
-msgstr ""
+msgstr "Изключване от сканирането на медийни приложения"
 
 #: tmp_strings.xml:51(string)
 msgid "Create new folder"
-msgstr ""
+msgstr "Създаване на нова папка"
 
 #: tmp_strings.xml:52(string) tmp_strings.xml:53(string)
 msgid "Folder name"
-msgstr ""
+msgstr "Име на папка"
 
 #: tmp_strings.xml:54(string)
 msgid "Extension (with '.')"
-msgstr ""
+msgstr "Разширение (с '.')"
 
 #: tmp_strings.xml:55(string)
 msgid "This folder is empty."
-msgstr ""
+msgstr "Директорията е празна."
 
 #: tmp_strings.xml:56(string)
 msgid "Do you really want to delete %s?"
-msgstr ""
+msgstr "Наистина ли искате да изтриете %s?"
 
 #: tmp_strings.xml:57(string)
 msgid "File deleted."
-msgstr ""
+msgstr "Файлът е изтрит="
 
 #: tmp_strings.xml:58(string)
 msgid "Folder deleted."
-msgstr ""
+msgstr "Директорията е изтрита."
 
 #: tmp_strings.xml:59(string)
 msgid "File renamed."
-msgstr ""
+msgstr "Файлът е преименуван."
 
 #: tmp_strings.xml:60(string)
 msgid "Folder renamed."
-msgstr ""
+msgstr "Директорията е преименувана."
 
 #: tmp_strings.xml:61(string)
 msgid "File moved."
-msgstr ""
+msgstr "Файлът е преместен."
 
 #: tmp_strings.xml:62(string)
 msgid "Folder moved."
-msgstr ""
+msgstr "Директорията е преместена."
 
 #: tmp_strings.xml:63(string)
 msgid "File copied."
-msgstr ""
+msgstr "Файлът е копиран."
 
 #: tmp_strings.xml:64(string)
 msgid "Select folder to move to"
-msgstr ""
+msgstr "Избери директория за преместване в"
 
 #: tmp_strings.xml:65(string)
 msgid "Move here"
-msgstr ""
+msgstr "Премести тук"
 
 #: tmp_strings.xml:66(string)
 msgid "Select folder to copy to"
-msgstr ""
+msgstr "Избери директория за копиране в"
 
 #: tmp_strings.xml:67(string)
 msgid "Copy here"
-msgstr ""
+msgstr "Копиране тук"
 
 #: tmp_strings.xml:68(string)
 msgid "Deleting files..."
-msgstr ""
+msgstr "Изтриване на файлове..."
 
 #: tmp_strings.xml:69(string)
 msgid "Warning"
-msgstr ""
+msgstr "Внимание"
 
 #: tmp_strings.xml:70(string)
 msgid "Some of the following options may not work."
-msgstr ""
+msgstr "Някои от следните опции може да не работят."
 
 #: tmp_strings.xml:71(string)
 msgid "Show warning again"
-msgstr ""
+msgstr "Покажи предупреждението отново"
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:74(string)
 msgid "Do you really want to delete %d files?"
-msgstr ""
+msgstr "Наистина ли искате да изтриете %d файла?"
 
 #: tmp_strings.xml:78(string)
 msgid "Select multiple files"
-msgstr ""
+msgstr "Изберете много файлове."
 
 #: tmp_strings.xml:79(string)
 msgid "Please select one or more file(s)."
-msgstr ""
+msgstr "Моля, изберете един или повече файла."
 
 #. Strings for details table
 #: tmp_strings.xml:82(string)
 msgid "Type"
-msgstr ""
+msgstr "Вид"
 
 #: tmp_strings.xml:83(string)
 msgid "Folder"
-msgstr ""
+msgstr "Директория"
 
 #: tmp_strings.xml:84(string)
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: tmp_strings.xml:85(string)
 msgid "Other"
-msgstr ""
+msgstr "Други"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
-msgstr ""
+msgstr "Размер"
 
 #: tmp_strings.xml:87(string)
 msgid "Permissions"
-msgstr ""
+msgstr "Права"
 
 #: tmp_strings.xml:88(string)
 msgid "Hidden"
-msgstr ""
+msgstr "Скрит"
 
 #: tmp_strings.xml:89(string)
 msgid "Last Modified"
-msgstr ""
+msgstr "Последно променен"
 
 #: tmp_strings.xml:90(string)
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: tmp_strings.xml:91(string)
 msgid "No"
-msgstr ""
+msgstr "Не"
 
 #. Construct a unique file name of a file called %s.
 #: tmp_strings.xml:94(string)
 msgid "Copy of %s"
-msgstr ""
+msgstr "Копие на %s"
 
 #. Construct a unique file name with number %1$d of a file called %2$s.
 #: tmp_strings.xml:97(string)
 msgid "Copy %1$d of %2$s"
-msgstr ""
+msgstr "Копие %1$d от %2$s"
 
 #: tmp_strings.xml:99(string)
 msgid "This folder will be included in the next media scan."
-msgstr ""
+msgstr "Тази директория ще бъде включена в следващото сканиране на паметта."
 
 #: tmp_strings.xml:100(string)
 msgid "This folder will be excluded during the next media scan."
-msgstr ""
+msgstr "Тази директория ще бъде изключена при следващото сканиране на паметта."
 
 #: tmp_strings.xml:102(string)
 msgid "Could not create new folder."
-msgstr ""
+msgstr "Не може да бъде създадена нова папка."
 
 #: tmp_strings.xml:103(string)
 msgid "Could not delete file."
-msgstr ""
+msgstr "Файлът не може да бъде изтрит."
 
 #: tmp_strings.xml:104(string)
 msgid "Could not delete folder '%s'."
-msgstr ""
+msgstr "Не може да изтриете директорията '%s'."
 
 #: tmp_strings.xml:105(string)
 msgid "Could not rename file."
-msgstr ""
+msgstr "Файлът не може да бъде преименуван."
 
 #: tmp_strings.xml:106(string)
 msgid "Could not rename folder."
-msgstr ""
+msgstr "Директорията не може да бъде преименувана."
 
 #: tmp_strings.xml:107(string)
 msgid "Could not move file."
-msgstr ""
+msgstr "Файлът не може да бъде преместен."
 
 #: tmp_strings.xml:108(string)
 msgid "Could not move folder."
-msgstr ""
+msgstr "Директорията не може да бъде преместена."
 
 #: tmp_strings.xml:109(string)
 msgid "Could not copy file."
-msgstr ""
+msgstr "Файлът не може да бъде копиран."
 
 #: tmp_strings.xml:110(string)
 msgid "File does not exist."
-msgstr ""
+msgstr "Файлът не съществува."
 
 #: tmp_strings.xml:111(string)
 msgid "Could not delete child file '%s'."
-msgstr ""
+msgstr "Дъщерния файл '%s' не може да бъде изтрит."
 
 #: tmp_strings.xml:112(string)
 msgid "An error occurred:"
-msgstr ""
+msgstr "Появи се грешка:"
 
 #: tmp_strings.xml:113(string)
 msgid "Could not change media scan settings."
-msgstr ""
+msgstr "Не може да промените настройките за сканиране на паметта."
 
 #: tmp_strings.xml:115(string)
 msgid "No application available for sending."
-msgstr ""
+msgstr "Не е открито приложение за изпращане."
 
 #: tmp_strings.xml:117(string)
 msgid "Application not available"
-msgstr ""
+msgstr "Приложението не е налично."
 
 #. Menu item for Settings
 #: tmp_strings.xml:123(string)
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #. Category for preferences.
 #: tmp_strings.xml:126(string)
 msgid "Advanced features"
-msgstr ""
+msgstr "Функции за напреднали"
 
 #: tmp_strings.xml:128(string)
 msgid "Show menu item to exclude folders from media scan."
 msgstr ""
+"Покажи елементите на менюто за да изключиш директориите от сканирането на "
+"паметта."
 
 #: tmp_strings.xml:129(string)
 msgid "Hide menu item to exclude folders from media scan."
-msgstr ""
+msgstr "Скрий менюто за да изключиш директориите от сканирането на паметта."
 
 #: tmp_strings.xml:131(string)
 msgid "Show all warnings"
-msgstr ""
+msgstr "Покажи всички предупреждения."
 
 #: tmp_strings.xml:132(string)
 msgid "Show all warning messages"
-msgstr ""
+msgstr "Покажи всички съобщения с предупреждения."
 
 #: tmp_strings.xml:133(string)
 msgid "Suppress warning messages"
-msgstr ""
+msgstr "Не показвай съобщенията за предупреждение."
 
 #: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
 msgid "Display hidden files"
-msgstr ""
+msgstr "Показване на скритите файлове"
 
 #: tmp_strings.xml:137(string)
 msgid "Hide hidden files"
+msgstr "Скрии скритите файлове"
+
+#: tmp_strings.xml:139(string)
+#, fuzzy
+msgid "Sort settings"
+msgstr "Настройки"
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
 msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "Преименувай"
+
+#: tmp_strings.xml:147(item)
+#, fuzzy
+msgid "Last modified"
+msgstr "Последно променен"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
-msgstr ""
+msgstr "Не сте избрали файл."
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
-msgstr ""
+msgstr "Появи се грешка."
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
-msgstr ""
+msgstr "Файлът е запазен успешно."

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: iulargsb <Unknown>\n"
+"Last-Translator: Alex Toma <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,14 +22,17 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Alex Toma https://launchpad.net/~alex26toma\n"
+"  Eduard Roventa https://launchpad.net/~rov-93\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Pricop Alexandru-Mihai https://launchpad.net/~pricop2008\n"
+"  Tudorica Andrei https://launchpad.net/~andreitudoricacj\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
 #. Short explanation of the application
 #: tmp_strings.xml:28(string)
 msgid "OI Safe keeps all your private data encrypted."
-msgstr ""
+msgstr "OI Safe păstrează toate datele dumneavostră criptate."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:34(string)
@@ -46,11 +49,11 @@ msgstr "Nu există categorii. Vă rugăm adăugați una din Menu-&gt;Adaugă"
 
 #: tmp_strings.xml:37(string) tmp_strings.xml:197(string)
 msgid "Lock"
-msgstr ""
+msgstr "Blocat"
 
 #: tmp_strings.xml:38(string)
 msgid "View"
-msgstr ""
+msgstr "Vizualizare"
 
 #: tmp_strings.xml:39(string)
 msgid "Edit"
@@ -74,7 +77,7 @@ msgstr "Parole"
 
 #: tmp_strings.xml:44(string)
 msgid "Master Password"
-msgstr ""
+msgstr "Parola Universală"
 
 #: tmp_strings.xml:45(string)
 msgid "Username"
@@ -117,6 +120,8 @@ msgid ""
 "Please enter a password below, which will be used to keep your passwords "
 "safe."
 msgstr ""
+"Vă rugăm introduceți parola dedesubt, care va fi folosită pentru a vă păstra "
+"parolele în siguranță."
 
 #: tmp_strings.xml:55(string)
 msgid ""
@@ -124,12 +129,17 @@ msgid ""
 "request their passwords and decrypt/encrypt data. Lock to prevent further "
 "access until you type in your password again."
 msgstr ""
+"În prezent sunteţi conectat în OI Safe, ceea ce înseamnă că alte aplicaţii "
+"pot solicita parolele lor şi pot decripta / cripta datele. Blocați pentru a "
+"preveni accesul în continuare până când tastaţi din nou parola."
 
 #: tmp_strings.xml:56(string)
 msgid ""
 "Another application is asking to use the master key. Please type in your "
 "password to unlock it."
 msgstr ""
+"O altă aplicaţie solicită să utilizeze tasta de maestru. Vă rugăm să "
+"introduceţi parola pentru a-l debloca."
 
 #: tmp_strings.xml:57(string)
 msgid "Categories"
@@ -157,19 +167,19 @@ msgstr "Categoria nu este goală. Trebuie sa stergeţi parola prima dată."
 
 #: tmp_strings.xml:63(string)
 msgid "Cannot decrypt category"
-msgstr ""
+msgstr "Nu se poate decripta categoria"
 
 #: tmp_strings.xml:64(string)
 msgid "Cannot decrypt password"
-msgstr ""
+msgstr "Nu se poate decripta parola"
 
 #: tmp_strings.xml:65(string)
 msgid "Error exporting database"
-msgstr ""
+msgstr "Eroare la exportarea bazei de data"
 
 #: tmp_strings.xml:66(string)
 msgid "Export Database"
-msgstr ""
+msgstr "Exportă Baza de Date"
 
 #: tmp_strings.xml:67(string)
 msgid ""
@@ -177,99 +187,111 @@ msgid ""
 "DANGEROUS. Make sure that you delete the file after you are done with it. "
 "Are you sure you want to export?"
 msgstr ""
+"Acesta va exporta baza de date cu parole într-un fişier text clar "
+"(plaintext). ACEASTĂ OPERAȚIUNE ESTE PERICULOASĂ. Asiguraţi-vă că ştergeţi "
+"fişierul după ce aţi terminat de lucrat cu el. Sunteţi sigur că doriţi să "
+"exportaţi?"
 
 #: tmp_strings.xml:68(string)
 msgid "Export to '%s' successful. Warning! The file is not encrypted."
 msgstr ""
+"Exportul catre '%s' a fost făcut cu succes. Atenție! Fișierul nu este "
+"încriptat."
 
 #: tmp_strings.xml:69(string)
 msgid ""
 "Unable to create export file 'oisafe.csv' on SDCARD. You might try "
 "disconnecting USB from computer."
 msgstr ""
+"Imposibil de a crea fişierul de export \"oisafe.csv\" pe SDCARD. Ai putea "
+"încerca deconectarea USB-ului de la calculator."
 
 #: tmp_strings.xml:70(string)
 msgid "Import Database"
-msgstr ""
+msgstr "Importă Baza de Date"
 
 #: tmp_strings.xml:71(string)
 msgid "Import file is missing:"
-msgstr ""
+msgstr "Importă fișierele lipsă:"
 
 #: tmp_strings.xml:72(string)
 msgid ""
 "Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
 "USB from computer."
 msgstr ""
+"Imposibil de a importa fişierul 'oisafe.csv' de la SDCARD. Ai putea încerca "
+"deconectarea USB-ului de la calculator."
 
 #: tmp_strings.xml:73(string)
 msgid "First line is missing fields."
-msgstr ""
+msgstr "Prima linie din câmp lipsește."
 
 #: tmp_strings.xml:74(string)
 msgid "Import"
-msgstr ""
+msgstr "Importă"
 
 #: tmp_strings.xml:75(string)
 msgid "Do you want to replace the database (import from %s)?"
-msgstr ""
+msgstr "Doriți să înlocuiți baza de date (importați de la %s)?"
 
 #: tmp_strings.xml:76(string)
 msgid "Yes"
-msgstr ""
+msgstr "Da"
 
 #: tmp_strings.xml:77(string)
 msgid "No"
-msgstr ""
+msgstr "Nu"
 
 #: tmp_strings.xml:78(string)
 msgid "Please wait while importing..."
-msgstr ""
+msgstr "Vă rugăm asteptați în timp ce se importă..."
 
 #: tmp_strings.xml:79(string)
 msgid "No categories found."
-msgstr ""
+msgstr "Nu au fost găsite categorii."
 
 #: tmp_strings.xml:80(string)
 msgid "No entries found in CSV."
-msgstr ""
+msgstr "Nu au fost găsite accesări în CSV."
 
 #: tmp_strings.xml:81(string)
 msgid "Too many categories."
-msgstr ""
+msgstr "Prea multe categorii."
 
 #: tmp_strings.xml:82(string)
 msgid "Not enough fields"
-msgstr ""
+msgstr "Nu sunt suficiente câmpuri"
 
 #: tmp_strings.xml:83(string)
 msgid "Blank category"
-msgstr ""
+msgstr "Categorie goală"
 
 #: tmp_strings.xml:84(string)
 msgid "Blank description"
-msgstr ""
+msgstr "Descriere goală"
 
 #: tmp_strings.xml:85(string)
 msgid "Delete Database"
-msgstr ""
+msgstr "Șterge bază de date"
 
 #: tmp_strings.xml:86(string)
 msgid ""
 "Are you really sure you want to delete the database? This cannot be undone."
 msgstr ""
+"Sunteţi sigur că doriţi să ştergeţi baza de date? Acest lucru nu poate fi "
+"anulată."
 
 #: tmp_strings.xml:87(string)
 msgid "Added"
-msgstr ""
+msgstr "Adăugat"
 
 #: tmp_strings.xml:88(string)
 msgid "entries"
-msgstr ""
+msgstr "Inregistrări"
 
 #: tmp_strings.xml:89(string)
 msgid "Import complete"
-msgstr ""
+msgstr "Importare completă"
 
 #: tmp_strings.xml:90(string)
 msgid ""

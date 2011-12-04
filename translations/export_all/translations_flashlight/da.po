@@ -24,6 +24,7 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
+"  Mads Peter Rommedahl https://launchpad.net/~lhademmor\n"
 "  Torben Gundtofte-Bruun https://launchpad.net/~torbengb"
 
 #. Short explanation of the application
@@ -75,3 +76,20 @@ msgid ""
 msgstr ""
 "Vi har skilt Color Picker ud i et eget program for at gøre det mere brugbart "
 "for udviklere."
+
+#: tmp_strings.xml:44(string)
+msgid "Use camera flash"
+msgstr ""
+
+#: tmp_strings.xml:45(string)
+msgid "Use the camera flash instead of the screen backlight."
+msgstr ""
+
+#. Information to enable the camera flash as flashlight.
+#: tmp_strings.xml:47(string)
+msgid "Press to enable camera light (May take a second)."
+msgstr ""
+
+#: tmp_strings.xml:48(string)
+msgid "Press to disable camera light."
+msgstr ""

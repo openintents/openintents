@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: appricoo <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Eric Baudach https://launchpad.net/~cs-sniffer\n"
 "  Florian Sievers https://launchpad.net/~florian-sievers\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  appricoo https://launchpad.net/~appricoo"
 
@@ -74,4 +75,21 @@ msgstr "Farbe für den nächsten Start von Flashlight speichern"
 msgid ""
 "To make the Color Picker more useful to other developers, we have split it "
 "into its own app."
+msgstr ""
+
+#: tmp_strings.xml:44(string)
+msgid "Use camera flash"
+msgstr ""
+
+#: tmp_strings.xml:45(string)
+msgid "Use the camera flash instead of the screen backlight."
+msgstr ""
+
+#. Information to enable the camera flash as flashlight.
+#: tmp_strings.xml:47(string)
+msgid "Press to enable camera light (May take a second)."
+msgstr ""
+
+#: tmp_strings.xml:48(string)
+msgid "Press to disable camera light."
 msgstr ""

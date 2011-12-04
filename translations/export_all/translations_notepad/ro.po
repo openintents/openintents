@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ciprian Panaite https://launchpad.net/~2477426-5\n"
+"  Florentina Mușat https://launchpad.net/~kuchiki14\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  iulargsb https://launchpad.net/~iulargsb"
@@ -106,15 +107,17 @@ msgstr "Eroare încărcare notă"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
-msgid "Send"
-msgstr "Trimite"
+#, fuzzy
+msgid "Share"
+msgstr "Salvează"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
 msgstr "Notă goală"
 
 #: tmp_strings.xml:71(string)
-msgid "No application available for sending."
+#, fuzzy
+msgid "No application available for sharing."
 msgstr "Nu există aplicație pentru trimitere."
 
 #: tmp_strings.xml:73(string)
@@ -306,11 +309,11 @@ msgstr "Ordinea în care notele sunt afișate in listă"
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "Titluri Marquee de notiță."
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "Derulează continuu titlurile notițelor care sunt prea lungi."
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"
@@ -494,9 +497,16 @@ msgstr "Obține teme de la pagina principală OpenIntents."
 
 #: tmp_strings.xml:216(string)
 msgid "Deletion Confirmation"
-msgstr ""
+msgstr "Confirmare de ștergere"
 
 #: tmp_strings.xml:217(string)
-#, fuzzy
 msgid "Are you sure you want to delete this note?"
-msgstr "Doriți întradevăr să suprascrieți fișierul existent?"
+msgstr "Sigur doriți să ștergeți această notiță?"
+
+#: tmp_strings.xml:219(string)
+#, fuzzy
+msgid "New note"
+msgstr "Notă"
+
+
+

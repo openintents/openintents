@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zeugma <Unknown>\n"
+"Last-Translator: Halilpk <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,7 @@ msgstr ""
 "This is a dummy translation so that the credits are counted as translated.\n"
 "\n"
 "Launchpad Contributions:\n"
+"  Halilpk https://launchpad.net/~halilpk\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  zeugma https://launchpad.net/~sunder67"
 
@@ -40,15 +41,15 @@ msgstr "%s yeni bir sürümü mevcut.\\n yükseltmek ister misiniz?"
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "%1$s yeni bir versiyonuna %2$s 'de/da ulşabilirsiniz.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "%1$s in yeni versiyonu mevcut.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "%1$s in yeni versiyonu %2$s 'da/de mecvut."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
@@ -68,7 +69,7 @@ msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "Versiyon %1$s\\nSD kart %2$s\\n\\nİS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
@@ -76,11 +77,11 @@ msgstr "boş alan: %s"
 
 #: tmp_strings.xml:27(string)
 msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
-msgstr ""
+msgstr "Pano %1$s\\nMarka %2$s\\nCihaz %3$s\\nID %4$s\\nModel %5$s"
 
 #: tmp_strings.xml:29(string)
 msgid "Perform update now!"
-msgstr ""
+msgstr "Şimdi güncelle!"
 
 #: tmp_strings.xml:30(string)
 msgid "Try update from Market now!"
@@ -92,7 +93,7 @@ msgstr "AndAppStore'dan şimdi güncellemeyi dene!"
 
 #: tmp_strings.xml:32(string)
 msgid "Remind me later!"
-msgstr ""
+msgstr "Daha sonra hatırlat!"
 
 #: tmp_strings.xml:33(string)
 msgid "Ignore this update"
@@ -100,7 +101,7 @@ msgstr "Bu güncelemeyi yoksay"
 
 #: tmp_strings.xml:34(string)
 msgid "Ignore all further updates"
-msgstr ""
+msgstr "Diğer tüm güncellemeleri görmezden gel"
 
 #: tmp_strings.xml:35(string)
 msgid "Ok"
@@ -111,10 +112,12 @@ msgid ""
 "Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
 "%s"
 msgstr ""
+"Güncelleme başlatılamadı!\\n\\nLütfen uygulama geliştiricisi ile iletişime "
+"geçin!\\n\\n%s"
 
 #: tmp_strings.xml:38(string)
 msgid "Application is up-to-date."
-msgstr ""
+msgstr "Uygulama güncel değil."
 
 #: tmp_strings.xml:39(string)
 msgid "Checking for new version."
@@ -142,7 +145,7 @@ msgstr "Yenile"
 
 #: tmp_strings.xml:45(string)
 msgid "Checked AndAppStore"
-msgstr ""
+msgstr "AndAppStore İşaretlendi"
 
 #: tmp_strings.xml:46(string)
 msgid "Current version: %s"
@@ -178,11 +181,12 @@ msgstr "OI Güncelleme - AndAppStore'de yeni sürümler"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
-msgstr ""
+msgstr "OI Güncelleme - Yönetilen uygulamaların listesi"
 
 #: tmp_strings.xml:55(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
 msgstr ""
+"OI Güncelleme - Yönetilen uygulamaların listesi (AndAppStore'dan kontrol et)"
 
 #: tmp_strings.xml:56(string)
 msgid "Settings"
@@ -199,6 +203,8 @@ msgstr "Yok Sayıldı"
 #: tmp_strings.xml:59(string)
 msgid "Updates are currently ignored. Would you like to receive updates again?"
 msgstr ""
+"Güncellemeler şuan görmezden gelindi. Güncellemeleri yeniden yapmak istiyor "
+"musunuz?"
 
 #: tmp_strings.xml:60(string)
 msgid "Unknown"
@@ -209,6 +215,8 @@ msgid ""
 "No update information available. Please check manually and ask the developer "
 "to support OI Update in the future."
 msgstr ""
+"Güncelleme bilgisi mevcut değil. Lütfen manuel olarak kontrol edin ve OI "
+"Güncelleme desteği almak için geliştiriciye başvurun."
 
 #: tmp_strings.xml:62(string)
 msgid "Search on Market"
@@ -228,10 +236,13 @@ msgid ""
 "Android Market. Applications installed from unknown sources might exhibit a "
 "security risk."
 msgstr ""
+"Bu uygulamanın güncelleme işlemi Android Market'ten farklı bir siteye "
+"yönlendirilir. Bilinmeyen kaynaklardan yüklenen uygulamalar güvenlik riski "
+"sergileyebilir."
 
 #: tmp_strings.xml:70(string)
 msgid "Continue anyway"
-msgstr ""
+msgstr "Yine de devam et"
 
 #: tmp_strings.xml:71(string)
 msgid "Abort"
@@ -243,7 +254,7 @@ msgstr "Otomatik Güncelle"
 
 #: tmp_strings.xml:74(string)
 msgid "If checked, search for updates is performed regularly"
-msgstr ""
+msgstr "Eğer işaretliyse, düzenli olarak yapılan güncellemeleri araştır"
 
 #: tmp_strings.xml:75(string)
 msgid "Update interval"
@@ -251,15 +262,15 @@ msgstr "Güncelleme aralığı"
 
 #: tmp_strings.xml:76(string)
 msgid "Set the interval how often the update search should be performed."
-msgstr ""
+msgstr "Hangi sıklıkta güncelleme araştırması yapılacağını ayarla."
 
 #: tmp_strings.xml:77(string)
 msgid "Select interval"
-msgstr ""
+msgstr "Aralığı seç"
 
 #: tmp_strings.xml:78(string)
 msgid "every_month"
-msgstr ""
+msgstr "her_ay"
 
 #: tmp_strings.xml:79(string)
 msgid "Warning"
@@ -270,6 +281,8 @@ msgid ""
 "If you uncheck this item, you will no longer receive notifications for "
 "updates. Do you still want to uncheck auto update?"
 msgstr ""
+"Eğer bu itemi işaretlerseniz, bundan sonra güncellemeler hakkında bilgi "
+"almayacaksınız. Hala otomatik güncellemeyi işaretlememeyi istiyor musunuz?"
 
 #: tmp_strings.xml:82(string)
 msgid "Use AndAppStore"
@@ -277,26 +290,29 @@ msgstr "AndAppStore kullan"
 
 #: tmp_strings.xml:83(string)
 msgid "Use version information provided by AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com tarafından sağlanan versiyon bilgisini kullan"
 
 #: tmp_strings.xml:85(string)
 msgid "Read update information"
-msgstr ""
+msgstr "Güncelleme bilgisini oku"
 
 #: tmp_strings.xml:86(string)
 msgid "Write update information"
-msgstr ""
+msgstr "Güncelleme bilgisini yaz"
 
 #: tmp_strings.xml:87(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
 msgstr ""
+"Yüklenmiş uygulamalar, güncelleme konumları ve istekler hakkındaki bilgiyi "
+"oku."
 
 #: tmp_strings.xml:88(string)
 msgid ""
 "Write information about installed applications, update locations and "
 "requests."
 msgstr ""
+"Yüklenmiş uygulamalar, güncelleme konumları ve istekler hakkında bilgi yaz."
 
 #. About
 #: tmp_strings.xml:92(string)
@@ -314,6 +330,11 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
+"Versiuon %s \\n\\nOI Güncelleme sizi yeni uygulama versiyonları hakkında "
+"bilgilendirir.\\n OpenIntents farklı Android uygulamarını amaç belirterekve "
+"açık arayüzler kullanarak paylaşmaya izin verir.\\n\\nDaha fazla bilgi ve "
+"diğer muhteşem uygulamalar için OpenIntents'i  www.openintents.org 'tan "
+"ziyaret ediniz."
 
 #. EULA
 #: tmp_strings.xml:102(string)
@@ -331,6 +352,13 @@ msgid ""
 "KIND, either express or implied. See the License for the specific language "
 "governing permissions and limitations under the License.\\n \\n\""
 msgstr ""
+"\"Telif Hakkı 2008 OpenIntents.org\\nApache Lisans altında lisanslıdır, "
+"Versiyon 2.0 ( \\\"Lisans\\\"); bu dosyayı Lisans dışında kullanamazsınız. "
+"Lisans'ın bir kopyasını şuradan elde edebilirsiniz\\n http://www.apache.org/"
+"licenses/LICENSE-2.0\\nUygulanabilir kanunlar olmadıkça veya yazılı olarak "
+"kabul edilmedikçe, Lisans altında program dağıtımı TEMEL \"OLDUĞU GİBİ\", "
+"HİÇ BİR ŞART VE GARANTİ OLMADAN, gizli veya açık olmadan dağıtıldı. Özel dil "
+"yönetim izni ve lisans altında sınırlandırma için Lisans'ı görün.\\n \\n\""
 
 #: tmp_strings.xml:110(string)
 msgid "Accept"

@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sahran https://launchpad.net/~sahran"
 
 #. Short explanation of the application. Max. 80 characters.
@@ -69,16 +70,15 @@ msgstr "كۆچۈر"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
-msgstr ""
+msgstr "تەپسىلاتلار"
 
 #: tmp_strings.xml:46(string)
-#, fuzzy
 msgid "More"
-msgstr "يۆتكە"
+msgstr "تېخىمۇ كۆپ"
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
-msgstr ""
+msgstr "سۈزگۈچ"
 
 #: tmp_strings.xml:48(string)
 msgid "Include in media scan"
@@ -98,7 +98,7 @@ msgstr "قىسقۇچ ئاتى"
 
 #: tmp_strings.xml:54(string)
 msgid "Extension (with '.')"
-msgstr ""
+msgstr "كېڭەيتىلمە ('.' بىلەن)"
 
 #: tmp_strings.xml:55(string)
 msgid "This folder is empty."
@@ -158,15 +158,15 @@ msgstr "ھۆججەت ئۆچۈرۈۋاتىدۇ..."
 
 #: tmp_strings.xml:69(string)
 msgid "Warning"
-msgstr ""
+msgstr "ئاگاھلاندۇرۇش"
 
 #: tmp_strings.xml:70(string)
 msgid "Some of the following options may not work."
-msgstr ""
+msgstr "تۆۋەندىكى بەزى تاللانمىلار ئىشلىمەيۋاتقان بولۇشى مۇمكىن."
 
 #: tmp_strings.xml:71(string)
 msgid "Show warning again"
-msgstr ""
+msgstr "ئاگاھلاندۇرۇشنى قايتا كۆرسەت"
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:74(string)
@@ -184,44 +184,43 @@ msgstr "بىر ياكى بىر قانچە ھۆججەت تاللاڭ."
 #. Strings for details table
 #: tmp_strings.xml:82(string)
 msgid "Type"
-msgstr ""
+msgstr "تىپى"
 
 #: tmp_strings.xml:83(string)
-#, fuzzy
 msgid "Folder"
-msgstr "يېڭى قىسقۇچ"
+msgstr "قىسقۇچ"
 
 #: tmp_strings.xml:84(string)
 msgid "File"
-msgstr ""
+msgstr "ھۆججەت"
 
 #: tmp_strings.xml:85(string)
 msgid "Other"
-msgstr ""
+msgstr "باشقا"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
-msgstr ""
+msgstr "چوڭلۇقى"
 
 #: tmp_strings.xml:87(string)
 msgid "Permissions"
-msgstr ""
+msgstr "ھوقۇقلار"
 
 #: tmp_strings.xml:88(string)
 msgid "Hidden"
-msgstr ""
+msgstr "يوشۇرۇن"
 
 #: tmp_strings.xml:89(string)
 msgid "Last Modified"
-msgstr ""
+msgstr "ئاخىرقى ئۆزگەرتىش"
 
 #: tmp_strings.xml:90(string)
 msgid "Yes"
-msgstr ""
+msgstr "ھەئە"
 
 #: tmp_strings.xml:91(string)
 msgid "No"
-msgstr ""
+msgstr "ياق"
 
 #. Construct a unique file name of a file called %s.
 #: tmp_strings.xml:94(string)
@@ -319,36 +318,66 @@ msgstr ""
 
 #: tmp_strings.xml:131(string)
 msgid "Show all warnings"
-msgstr ""
+msgstr "ھەممە ئاگاھلاندۇرۇشنى كۆرسەت"
 
 #: tmp_strings.xml:132(string)
 msgid "Show all warning messages"
-msgstr ""
+msgstr "ھەممە ئاگاھلاندۇرۇش ئۇچۇرىنى كۆرسەت"
 
 #: tmp_strings.xml:133(string)
 msgid "Suppress warning messages"
-msgstr ""
+msgstr "ئاگاھلاندۇرۇش ئۇچۇرىنى چەكلە"
 
 #: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
 msgid "Display hidden files"
-msgstr ""
+msgstr "يوشۇرۇن ھۆججەتلەرنى كۆرسەت"
 
 #: tmp_strings.xml:137(string)
 msgid "Hide hidden files"
+msgstr "يوشۇرۇن ھۆججەتلەرنى يوشۇر"
+
+#: tmp_strings.xml:139(string)
+#, fuzzy
+msgid "Sort settings"
+msgstr "تەڭشەكلەر"
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
 msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "ئات ئۆزگەرت"
+
+#: tmp_strings.xml:147(item)
+#, fuzzy
+msgid "Last modified"
+msgstr "ئاخىرقى ئۆزگەرتىش"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
-msgstr ""
+msgstr "ھېچقانداق ھۆججەتنى تاللىمىدىڭىز."
 
-#: tmp_strings.xml:144(string)
-#, fuzzy
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
-msgstr "خاتالىق كۆرۈلدى:"
+msgstr "خاتالىق كۆرۈلدى."
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
-msgstr ""
+msgstr "ھۆججەت مۇۋەپپەقىيەتلىك ساقلاندى!"

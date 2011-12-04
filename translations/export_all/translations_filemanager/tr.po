@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Huseyin AKSU <Unknown>\n"
+"Last-Translator: ariza95 <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,9 @@ msgstr ""
 "\n"
 "Launchpad Contributions:\n"
 "  Huseyin AKSU https://launchpad.net/~huseyinaksu95\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  ariza95 https://launchpad.net/~alirizanazli95\n"
 "  zeugma https://launchpad.net/~sunder67"
 
 #. Short explanation of the application. Max. 80 characters.
@@ -73,16 +75,15 @@ msgstr "Kopyala"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
-msgstr ""
+msgstr "Detaylar."
 
 #: tmp_strings.xml:46(string)
-#, fuzzy
 msgid "More"
-msgstr "Taşı"
+msgstr "Daha Fazla"
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
-msgstr ""
+msgstr "Filtre"
 
 #: tmp_strings.xml:48(string)
 msgid "Include in media scan"
@@ -102,7 +103,7 @@ msgstr "Klasör adı"
 
 #: tmp_strings.xml:54(string)
 msgid "Extension (with '.')"
-msgstr ""
+msgstr "Uzantı('.' ile)"
 
 #: tmp_strings.xml:55(string)
 msgid "This folder is empty."
@@ -162,15 +163,15 @@ msgstr "Dosyalar siliniyor..."
 
 #: tmp_strings.xml:69(string)
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #: tmp_strings.xml:70(string)
 msgid "Some of the following options may not work."
-msgstr ""
+msgstr "Aşağıdaki seçeneklerden bazıları çalışmoypr olabilir."
 
 #: tmp_strings.xml:71(string)
 msgid "Show warning again"
-msgstr ""
+msgstr "Uyarıyı tekrar göster."
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:74(string)
@@ -188,44 +189,43 @@ msgstr "Lütfen bir veya daha çok dosya seçin."
 #. Strings for details table
 #: tmp_strings.xml:82(string)
 msgid "Type"
-msgstr ""
+msgstr "Tür"
 
 #: tmp_strings.xml:83(string)
-#, fuzzy
 msgid "Folder"
-msgstr "Yeni Klasör"
+msgstr "Klasör"
 
 #: tmp_strings.xml:84(string)
 msgid "File"
-msgstr ""
+msgstr "Dosya"
 
 #: tmp_strings.xml:85(string)
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 #: tmp_strings.xml:87(string)
 msgid "Permissions"
-msgstr ""
+msgstr "İzinler"
 
 #: tmp_strings.xml:88(string)
 msgid "Hidden"
-msgstr ""
+msgstr "Gizli"
 
 #: tmp_strings.xml:89(string)
 msgid "Last Modified"
-msgstr ""
+msgstr "Son değişiklikler"
 
 #: tmp_strings.xml:90(string)
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: tmp_strings.xml:91(string)
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #. Construct a unique file name of a file called %s.
 #: tmp_strings.xml:94(string)
@@ -321,36 +321,66 @@ msgstr "Klasörleri medya taramasına eklememek için menü öğesini gizle."
 
 #: tmp_strings.xml:131(string)
 msgid "Show all warnings"
-msgstr ""
+msgstr "Tüm uyarıları göster"
 
 #: tmp_strings.xml:132(string)
 msgid "Show all warning messages"
-msgstr ""
+msgstr "Tüm uyarı mesajlarını göster"
 
 #: tmp_strings.xml:133(string)
 msgid "Suppress warning messages"
-msgstr ""
+msgstr "Uyarı mesajını sil."
 
 #: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
 msgid "Display hidden files"
-msgstr ""
+msgstr "Gizli dosyaları göster"
 
 #: tmp_strings.xml:137(string)
 msgid "Hide hidden files"
+msgstr "Gizli dosyaları gizle"
+
+#: tmp_strings.xml:139(string)
+#, fuzzy
+msgid "Sort settings"
+msgstr "Ayarlar"
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
 msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "Yeniden adlandır"
+
+#: tmp_strings.xml:147(item)
+#, fuzzy
+msgid "Last modified"
+msgstr "Son değişiklikler"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
-msgstr ""
+msgstr "Hiç bir dosya seçilmedi."
 
-#: tmp_strings.xml:144(string)
-#, fuzzy
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
-msgstr "Bir hata meydana geldi:"
+msgstr "Hata oluştu."
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
-msgstr ""
+msgstr "Dosya başarılı bir şekilde kaydedildi."

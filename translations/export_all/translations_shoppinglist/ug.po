@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Sahran <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Sahran https://launchpad.net/~sahran"
 
 #. Short explanation of the application
@@ -73,7 +74,7 @@ msgid "i.e. wishlist, family list"
 msgstr "يەنى ئارزۇدىكى تىزىم، ئائىلە تىزىمى"
 
 #. Automation action to clean up a list.
-#: tmp_strings.xml:43(string) tmp_strings.xml:320(item)
+#: tmp_strings.xml:43(string) tmp_strings.xml:331(item)
 msgid "Clean up list"
 msgstr "تىزىمنى تازىلا"
 
@@ -242,366 +243,404 @@ msgstr "بىرلىكى"
 msgid "Note"
 msgstr "ئىزاھات"
 
-#. Total sum of all prices. '%s' is the sum
+#: tmp_strings.xml:101(string)
+#, fuzzy
+msgid "Other Quantity..."
+msgstr "سانى"
+
 #: tmp_strings.xml:102(string)
+#, fuzzy
+msgid "Other Priority..."
+msgstr "ئالدىنلىق"
+
+#. Total sum of all prices. '%s' is the sum
+#: tmp_strings.xml:105(string)
 msgid "Total: %s"
 msgstr "جەمئى: %s"
 
 #. Sum of all prices of the checked items. '%s' is the sum
-#: tmp_strings.xml:105(string)
+#: tmp_strings.xml:108(string)
 msgid "Checked: %s"
 msgstr "تەكشۈرۈلگەن: %s"
 
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:109(string)
 msgid "Priority 1: %s"
 msgstr "ئالدىنلىق 1: %s"
 
-#: tmp_strings.xml:107(string)
+#: tmp_strings.xml:110(string)
 msgid "Priority 1-2: %s"
 msgstr "ئالدىنلىق 1-2: %s"
 
-#: tmp_strings.xml:108(string)
+#: tmp_strings.xml:111(string)
 msgid "Priority 1-3: %s"
 msgstr "ئالدىنلىق 1-3: %s"
 
-#: tmp_strings.xml:109(string)
+#: tmp_strings.xml:112(string)
 msgid "Priority 1-4: %s"
 msgstr "ئالدىنلىق 1-4: %s"
 
-#: tmp_strings.xml:111(string)
+#: tmp_strings.xml:114(string)
 msgid ""
 "Are you sure you want to permanently delete this item from this shopping "
 "lists?"
 msgstr "راستلا بۇ تۈرنى سېتىۋېلىش تىزىمىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
-#: tmp_strings.xml:112(string)
+#: tmp_strings.xml:115(string)
 msgid "Delete"
 msgstr "ئۆچۈر"
 
 #. Added to an item to indicate it was bought.
-#: tmp_strings.xml:115(string)
+#: tmp_strings.xml:118(string)
 msgid "... OK"
 msgstr "…جەزملە"
 
 #. The shortcut is created on the home screen.
-#: tmp_strings.xml:119(string)
+#: tmp_strings.xml:122(string)
 msgid "Pick list for shortcut"
 msgstr "قىسقا يولنىڭ تاللاش تىزىمى"
 
 #. Shown if external application wants to insert new items.
-#: tmp_strings.xml:122(string)
+#: tmp_strings.xml:125(string)
 msgid "Pick list to insert items"
 msgstr "قىستۇرىدىغان تۈرلەرنىڭ تاللاش تىزىمى"
 
 #. Title for selecting a theme
-#: tmp_strings.xml:126(string)
+#: tmp_strings.xml:129(string)
 msgid "Pick a theme"
 msgstr "بىر ئۆرنەك تاللاڭ"
 
-#: tmp_strings.xml:127(string)
+#: tmp_strings.xml:130(string)
 msgid "Choose a theme for this list"
 msgstr "بۇ تىزىمنىڭ ئۆرنىكىنى تاللاڭ"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:128(string) tmp_strings.xml:276(item)
-#: tmp_strings.xml:283(item)
+#: tmp_strings.xml:131(string) tmp_strings.xml:287(item)
+#: tmp_strings.xml:294(item)
 msgid "Default"
 msgstr "كۆڭۈلدىكى"
 
-#: tmp_strings.xml:129(string)
+#: tmp_strings.xml:132(string)
 msgid "Classic"
 msgstr "كلاسسىك"
 
-#: tmp_strings.xml:130(string)
+#: tmp_strings.xml:133(string)
 msgid "Android"
 msgstr "Android"
 
-#: tmp_strings.xml:131(string)
+#: tmp_strings.xml:134(string)
 msgid "Classic (from OI Shopping List)"
 msgstr "كىلاسسىك (OI سېتىۋېلىش تىزىمىدىن)"
 
-#: tmp_strings.xml:132(string)
+#: tmp_strings.xml:135(string)
 msgid "Android (from OI Shopping List)"
 msgstr "Android (OI سېتىۋېلىش تىزىمىدىن)"
 
 #. Button label "OK"
-#: tmp_strings.xml:136(string)
+#: tmp_strings.xml:139(string)
 msgid "OK"
 msgstr "جەزملە"
 
 #. Button label "Cancel"
-#: tmp_strings.xml:138(string)
+#: tmp_strings.xml:141(string)
 msgid "Cancel"
 msgstr "ۋاز كەچ"
 
-#: tmp_strings.xml:139(string)
+#: tmp_strings.xml:142(string)
 msgid "Use this theme for all lists"
 msgstr "بۇ ئۆرنەكنى ھەممە تىزىمغا ئىشلەت"
 
-#: tmp_strings.xml:140(string)
+#: tmp_strings.xml:143(string)
 msgid "Get more themes"
 msgstr "تېخىمۇ كۆپ ئۆرنەككە ئېرىش"
 
 #. preferences
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:146(string)
 msgid "Settings"
 msgstr "تەڭشەكلەر"
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:148(string)
 msgid "Application settings"
 msgstr "پىروگرامما تەڭشىكى"
 
-#: tmp_strings.xml:147(string)
+#: tmp_strings.xml:150(string)
 msgid "Unchecked on top"
 msgstr "ئەڭ ئۈستىدىكى تاللانمىغان"
 
-#: tmp_strings.xml:148(string)
+#: tmp_strings.xml:151(string)
 msgid "Always show unchecked items first"
 msgstr "تاللانمىغان تۈرلەرنى ھەمىشە ئالدىدا كۆرسەت"
 
-#: tmp_strings.xml:149(string)
+#: tmp_strings.xml:152(string)
 msgid "Font size"
 msgstr "خەت چوڭلۇقى"
 
-#: tmp_strings.xml:150(string)
+#: tmp_strings.xml:153(string)
 msgid "Change font size"
 msgstr "خەت چوڭلۇقىنى ئۆزگەرت"
 
-#: tmp_strings.xml:151(string)
+#: tmp_strings.xml:154(string)
 msgid "Choose font size"
 msgstr "خەت چوڭلۇقىنى تاللاڭ"
 
-#: tmp_strings.xml:152(string)
+#: tmp_strings.xml:155(string)
 msgid "Orientation"
 msgstr ""
 
-#: tmp_strings.xml:153(string)
-#, fuzzy
+#: tmp_strings.xml:156(string)
 msgid "Change orientation"
-msgstr "خەت چوڭلۇقىنى ئۆزگەرت"
+msgstr ""
 
-#: tmp_strings.xml:154(string)
-#, fuzzy
+#: tmp_strings.xml:157(string)
 msgid "Choose orientation"
-msgstr "چوڭ يېزىلىش تاللاڭ"
+msgstr ""
 
-#: tmp_strings.xml:155(string)
+#: tmp_strings.xml:158(string)
 msgid "Sort order"
 msgstr "تەرتىپلەش تەرتىپى"
 
-#: tmp_strings.xml:156(string)
+#: tmp_strings.xml:159(string)
 msgid "Change sort order of list items"
 msgstr "تىزىم تۈرلىرىنىڭ تەرتىپلەپ تەرتىپىنى ئۆزگەرتىدۇ"
 
-#: tmp_strings.xml:157(string)
+#: tmp_strings.xml:160(string)
 msgid "Sort order - Pick Items"
 msgstr "تەرتىپلەش تەرتىپى - تۈر تاللاڭ"
 
-#: tmp_strings.xml:158(string)
+#: tmp_strings.xml:161(string)
 msgid "Change sort order of list items in Pick Items mode."
 msgstr "تۈر تاللاش ھالىتىدىكى تۈر تىزىمىنىڭ تەرتىپلەش تەرتىپىنى ئۆزگەرتىدۇ."
 
-#: tmp_strings.xml:159(string)
+#: tmp_strings.xml:162(string)
 msgid "Choose sort order"
 msgstr "تەرتىپلەش تەرتىپىنى تاللاڭ"
 
-#: tmp_strings.xml:160(string)
+#: tmp_strings.xml:163(string)
 msgid "Choose sort order for Pick Items mode"
 msgstr "تۈر تاللاش ھالىتىنىڭ تەرتىپلەش تەرتىپىنى تاللاڭ"
 
-#: tmp_strings.xml:161(string)
+#: tmp_strings.xml:164(string)
 msgid "Load last list used"
 msgstr "ئاخىرقى قېتىم ئىشلەتكەننى يۈكلە"
 
-#: tmp_strings.xml:162(string)
+#: tmp_strings.xml:165(string)
 msgid "Always start with the list viewed last time."
 msgstr "ھەمىشە ئاخىرقى قېتىم كۆرسەتكەن تىزىمنى باشلا"
 
-#: tmp_strings.xml:163(string)
+#: tmp_strings.xml:166(string)
 msgid "Capitalization"
 msgstr "چوڭ كىچىك يېزىلىش"
 
-#: tmp_strings.xml:164(string)
+#: tmp_strings.xml:167(string)
 msgid "Automatic capitalization of entries"
 msgstr "كىرگۈزگەندە ھەرپنى ئۆزلۈكىدىن چوڭ يېزىلىشقا ئۆزگەرتىدۇ"
 
-#: tmp_strings.xml:165(string)
+#: tmp_strings.xml:168(string)
 msgid "Choose capitalization"
 msgstr "چوڭ يېزىلىش تاللاڭ"
 
-#: tmp_strings.xml:166(string)
+#: tmp_strings.xml:169(string)
 msgid "Hide checked items"
 msgstr "تاللانغان تۈرلەرنى يوشۇر"
 
-#: tmp_strings.xml:167(string)
+#: tmp_strings.xml:170(string)
 msgid "Immediately hide items checked off."
 msgstr "تاللانغان تۈرلەرنى تېزلىكتە يوشۇرىدۇ."
 
-#: tmp_strings.xml:168(string)
+#: tmp_strings.xml:171(string)
 msgid "Show price"
 msgstr "باھانى كۆرسەت"
 
-#: tmp_strings.xml:169(string) tmp_strings.xml:174(string)
-#: tmp_strings.xml:176(string) tmp_strings.xml:178(string)
-#: tmp_strings.xml:180(string)
+#: tmp_strings.xml:172(string) tmp_strings.xml:181(string)
+#: tmp_strings.xml:183(string) tmp_strings.xml:185(string)
+#: tmp_strings.xml:187(string)
 msgid "Shown as extra column in list."
 msgstr "قوشۇمچە ئىستون سۈپىتىدە تىزىمدا كۆرسىتىدۇ."
 
-#: tmp_strings.xml:170(string)
+#: tmp_strings.xml:173(string)
 msgid "Per-store prices"
 msgstr "ھەر بىر دۇكاننىڭ باھاسى"
 
-#: tmp_strings.xml:171(string)
+#: tmp_strings.xml:174(string)
 msgid "Track per-store prices"
 msgstr "ھەر بىر دۇكاننىڭ باھاسىنى ئىزلا"
 
-#: tmp_strings.xml:172(string)
+#: tmp_strings.xml:175(string)
 msgid "Keep track of separate prices for each item at each store."
 msgstr "ھەر بىر تۈرنىڭ ھەر بىر دۇكاندىكى باھاسىنى ئىزلاشنى داۋاملاشتۇرىدۇ."
 
-#: tmp_strings.xml:173(string)
+#: tmp_strings.xml:176(string)
+msgid "Disable screen lock"
+msgstr ""
+
+#: tmp_strings.xml:177(string)
+msgid "Prevents the screen to be locked when checked."
+msgstr ""
+
+#: tmp_strings.xml:178(string)
+#, fuzzy
+msgid "Reset Quantity"
+msgstr "سانى"
+
+#: tmp_strings.xml:179(string)
+msgid "Resets the quantity when adding items again."
+msgstr ""
+
+#: tmp_strings.xml:180(string)
 msgid "Show tags"
 msgstr "بەلگىنى كۆرسەت"
 
-#: tmp_strings.xml:175(string)
+#: tmp_strings.xml:182(string)
 msgid "Show quantity"
 msgstr "سانىنى كۆرسەت"
 
-#: tmp_strings.xml:177(string)
+#: tmp_strings.xml:184(string)
 msgid "Show priority"
 msgstr "ئالدىنلىقنى كۆرسەت"
 
-#: tmp_strings.xml:179(string)
+#: tmp_strings.xml:186(string)
 msgid "Show units"
 msgstr "بىرلىكىنى كۆرسەت"
 
-#: tmp_strings.xml:181(string) tmp_strings.xml:182(string)
-#: tmp_strings.xml:184(string)
+#: tmp_strings.xml:188(string) tmp_strings.xml:189(string)
+#: tmp_strings.xml:191(string)
 msgid "Subtotal by priority"
 msgstr "ئالدىنلىق بويىچە كىچىك جەمئى"
 
-#: tmp_strings.xml:183(string)
+#: tmp_strings.xml:190(string)
 msgid "No subtotal by priority shown."
 msgstr "ئالدىنلىق بويىچە كىچىك جەمئى يوق."
 
-#: tmp_strings.xml:185(string)
+#: tmp_strings.xml:192(string)
 msgid "Include checked items"
 msgstr "تاللانغان تۈرلەرنى ئۆز ئىچىگە ئالىدۇ"
 
-#: tmp_strings.xml:186(string)
+#: tmp_strings.xml:193(string)
 msgid "Subtotal by priority includes checked items"
 msgstr "تاللانغان تۈرلەرنى ئۆز ئىچىگە ئالغان ئالدىنلىق بويىچە كىچىك جەمئى"
 
-#: tmp_strings.xml:187(string)
+#: tmp_strings.xml:194(string)
 msgid "Subtotal by priority excludes checked items"
 msgstr "تاللانغان تۈرلەرنى ئۆز ئىچىگە ئالمىغان ئالدىنلىق بويىچە كىچىك جەمئى"
 
-#: tmp_strings.xml:188(string)
+#: tmp_strings.xml:195(string)
 msgid "Pick items directly in list"
 msgstr "تۈرلەرنى تىزىمدىن بىۋاستە تاللاڭ"
 
-#: tmp_strings.xml:189(string)
+#: tmp_strings.xml:196(string)
 msgid "Switch main list to edit mode to re-add existing items"
 msgstr ""
 "ئاساسىي تىزىمنى تەھرىر ھالىتىگە ئالماشتۇرۇپ نۆۋەتتىكى تۈرلەرنى قايتا قوشىدۇ"
 
-#: tmp_strings.xml:190(string)
+#: tmp_strings.xml:197(string)
 msgid "Add items to list using a dedicated dialog"
 msgstr "مەخسۇس سۆزلەشكۈدىن بىرنى ئىشلىتىپ تۈرلەرنى تىزىمغا قوشىدۇ"
 
-#: tmp_strings.xml:191(string)
+#: tmp_strings.xml:198(string)
 msgid "Always same sort order"
 msgstr "ھەمىشە ئوخشاش تەرتىپلەش تەرتىپى"
 
-#: tmp_strings.xml:192(string)
+#: tmp_strings.xml:199(string)
 msgid "Items are sorted in Pick Items mode just as in Shopping mode."
 msgstr "سېتىۋېلىش ھالىتىگە ئوخشاش تۈرلەر تۈر تاللاش ھالىتىدە تەرتىپلەندى."
 
-#: tmp_strings.xml:193(string)
+#: tmp_strings.xml:200(string)
 msgid "Sort order for Pick Items mode can be chosen separately."
 msgstr "تۈر تاللاش ھالىتىنىڭ تەرتىپلەش تەرتىپىنى ئايرىم تاللاشقا بولىدۇ."
 
 #. Preference title: Shake the phone to clean up the list.
-#: tmp_strings.xml:196(string)
+#: tmp_strings.xml:203(string)
 msgid "Shake to clean up"
 msgstr "تازىلىغاندا تىترەت"
 
 #. Preference summary: Shake the phone to clean up the list.
-#: tmp_strings.xml:199(string)
+#: tmp_strings.xml:206(string)
 msgid "Shake the phone to clean up the list."
 msgstr "تىزىمنى تازىلىغاندا تېلېفوننى تىترەت."
 
-#: tmp_strings.xml:201(string)
+#: tmp_strings.xml:208(string)
 msgid "Advanced settings"
 msgstr "ئالىي تەڭشەك"
 
-#: tmp_strings.xml:202(string)
-msgid "Additional settings regarding the appearance."
-msgstr "قوشۇمچە تەڭشەك قىياپەتكە ئەھمىيەت بېرىدۇ."
+#: tmp_strings.xml:209(string)
+#, fuzzy
+msgid "Additional settings."
+msgstr "پىروگرامما تەڭشىكى"
 
 #. Preference category: General settings
-#: tmp_strings.xml:205(string)
+#: tmp_strings.xml:212(string)
 msgid "General"
 msgstr "ئادەتتىكى"
 
-#: tmp_strings.xml:206(string)
+#: tmp_strings.xml:213(string)
 msgid "Pick Items"
 msgstr "تۈرلەرنى تاللاڭ"
 
-#: tmp_strings.xml:208(string)
+#: tmp_strings.xml:215(string)
 msgid "Appearance"
 msgstr "قىياپەت"
 
-#: tmp_strings.xml:210(string)
+#: tmp_strings.xml:217(string)
 msgid "Add-ons"
 msgstr "قىستۇرمىلار"
 
-#: tmp_strings.xml:211(string)
+#: tmp_strings.xml:218(string)
 msgid "Get new add-ons"
 msgstr "يېڭى قىستۇرمىغا ئېرىش"
 
-#: tmp_strings.xml:212(string)
+#: tmp_strings.xml:219(string)
 msgid "Search for extensions and themes online."
 msgstr "توردىن كېڭەيتىلمە ۋە ئۆرنەك ئىزدەيدۇ."
 
-#: tmp_strings.xml:213(string)
+#: tmp_strings.xml:220(string)
 msgid "Get add-ons from Market"
 msgstr "بازاردىن قىستۇرمىغا ئېرىش"
 
-#: tmp_strings.xml:214(string)
+#: tmp_strings.xml:221(string)
 msgid "Get add-ons from OpenIntents"
 msgstr "OpenIntents دىن قىستۇرمىغا ئېرىش"
 
-#: tmp_strings.xml:215(string)
+#: tmp_strings.xml:222(string)
 msgid "Extensions"
 msgstr "كېڭەيتىلمە"
 
-#: tmp_strings.xml:216(string)
+#: tmp_strings.xml:223(string)
 msgid "Themes"
 msgstr "ئۇسلۇبلار"
 
-#: tmp_strings.xml:217(string)
+#: tmp_strings.xml:224(string)
 msgid "Search for extensions at Android Market."
 msgstr "كېڭەيتىلمىلەرنى ئاندىرويىد بازاردىن ئىزدەيدۇ."
 
-#: tmp_strings.xml:218(string)
+#: tmp_strings.xml:225(string)
 msgid "Search for themes at Android Market."
 msgstr "ئاندرويىد بازاردىن ئۆرنەك ئىزدەيدۇ."
 
-#: tmp_strings.xml:219(string)
+#: tmp_strings.xml:226(string)
 msgid "Get extensions from the OpenIntents homepage."
 msgstr "كېڭەيتىلمىلەرگە OpenIntents باش بەتتىن ئېرىشىدۇ."
 
-#: tmp_strings.xml:220(string)
+#: tmp_strings.xml:227(string)
 msgid "Get themes from the OpenIntents homepage."
 msgstr "OpenIntents تورتۇرادىن ئۆرنەككە ئېرىشىدۇ."
 
-#. Permission to read shopping lists
 #: tmp_strings.xml:228(string)
+msgid "Quick Edit Mode"
+msgstr ""
+
+#: tmp_strings.xml:229(string)
+msgid "Touch Priority or Quantity values for a menu of common values."
+msgstr ""
+
+#: tmp_strings.xml:230(string)
+msgid "Touching Priority or Quantity values summons the Edit Item dialog."
+msgstr ""
+
+#. Permission to read shopping lists
+#: tmp_strings.xml:239(string)
 msgid "read shopping lists"
 msgstr "سېتىۋېلىش تىزىمىنى ئوقۇ"
 
-#: tmp_strings.xml:229(string)
+#: tmp_strings.xml:240(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
@@ -610,11 +649,11 @@ msgstr ""
 "ئىزاھات شىفىرلانغان پىچىمدا تەمىنلىنىدۇ."
 
 #. Permission to write to shopping lists
-#: tmp_strings.xml:231(string)
+#: tmp_strings.xml:242(string)
 msgid "write shopping lists"
 msgstr "سېتىۋېلىش تىزىمىغا ياز"
 
-#: tmp_strings.xml:232(string)
+#: tmp_strings.xml:243(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
 msgstr ""
@@ -622,132 +661,134 @@ msgstr ""
 "يول قويىدۇ."
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
-#: tmp_strings.xml:241(item)
+#: tmp_strings.xml:252(item)
 msgid "unchecked first, alphabetical"
 msgstr "تاللانمىغىنى ئالدىدا، ئېلىپبە تەرتىپىدە"
 
 #. Preference sort order: Sort by item name
-#: tmp_strings.xml:243(item)
+#: tmp_strings.xml:254(item)
 msgid "alphabetical"
 msgstr "ئېلىپبە تەرتىپى"
 
 #. Preference sort order: Newest item first
-#: tmp_strings.xml:245(item)
+#: tmp_strings.xml:256(item)
 msgid "newest first"
 msgstr "يېڭىسى ئالدىدا"
 
 #. Preference sort order: Oldest item first
-#: tmp_strings.xml:247(item)
+#: tmp_strings.xml:258(item)
 msgid "oldest first"
 msgstr "كونىسى ئالدىدا"
 
 #. Preference sort order: Sort alphabetically by tags
-#: tmp_strings.xml:249(item)
+#: tmp_strings.xml:260(item)
 msgid "tags alphabetical"
 msgstr "بەلگە ئېلىپبە تەرتىپىدە"
 
 #. Preference sort order: Sort by priority, then alphabetically by tags
-#: tmp_strings.xml:251(item)
+#: tmp_strings.xml:262(item)
 msgid "priority, tags alphabetical"
 msgstr "ئالدىنلىق، بەلگە ئېلىپبە تەرتىپىدە"
 
 #. Preference sort order: Sort by price, the most expensive first
-#: tmp_strings.xml:253(item)
+#: tmp_strings.xml:264(item)
 msgid "most expensive first"
 msgstr "ئەڭ قىممەتلىرى ئالدىدا"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
-#: tmp_strings.xml:255(item)
+#: tmp_strings.xml:266(item)
 msgid "unchecked first, tags alphabetical"
 msgstr "تاللانمىغىنى ئالدىدا، بەلگە ئېلىپبە تەرتىپىدە"
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
-#: tmp_strings.xml:257(item)
+#: tmp_strings.xml:268(item)
 msgid "unchecked first, priority, alphabetical"
 msgstr "تاللانمىغىنى ئالدىدا، ئالدىنلىق، ئېلىپبە تەرتىپىدە"
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
-#: tmp_strings.xml:259(item)
+#: tmp_strings.xml:270(item)
 msgid "unchecked first, priority, tags alphabetical"
 msgstr "تاللانمىغىنى ئالدىدا، ئالدىنلىق، بەلگە ئېلىپبە تەرتىپىدە"
 
-#: tmp_strings.xml:263(item)
+#: tmp_strings.xml:274(item)
 msgid "Not shown"
 msgstr "كۆرسىتىلمىگەن"
 
-#: tmp_strings.xml:264(item)
+#: tmp_strings.xml:275(item)
 msgid "Priority 1"
 msgstr "ئالدىنلىق 1"
 
-#: tmp_strings.xml:265(item)
+#: tmp_strings.xml:276(item)
 msgid "Priority 1-2"
 msgstr "ئالدىنلىق 1-2"
 
-#: tmp_strings.xml:266(item)
+#: tmp_strings.xml:277(item)
 msgid "Priority 1-3"
 msgstr "ئالدىنلىق 1-2"
 
-#: tmp_strings.xml:267(item)
+#: tmp_strings.xml:278(item)
 msgid "Priority 1-4"
 msgstr "ئالدىنلىق 1-4"
 
 #. Preference fontsize: tiny font size
-#: tmp_strings.xml:272(item)
+#: tmp_strings.xml:283(item)
 msgid "Tiny"
 msgstr "كىچىكرەك"
 
 #. Preference fontsize: small font size
-#: tmp_strings.xml:274(item)
+#: tmp_strings.xml:285(item)
 msgid "Small"
 msgstr "كىچىك"
 
 #. Preference fontsize: large font size
-#: tmp_strings.xml:278(item)
+#: tmp_strings.xml:289(item)
 msgid "Large"
 msgstr "چوڭ"
 
 #. Preference orientation: landscape
-#: tmp_strings.xml:285(item)
+#: tmp_strings.xml:296(item)
 msgid "Landscape"
 msgstr ""
 
 #. Preference orientation: portrait
-#: tmp_strings.xml:287(item)
-#, fuzzy
+#: tmp_strings.xml:298(item)
 msgid "Portrait"
-msgstr "ئالدىنلىق"
+msgstr ""
 
 #. Preference capitalization: No capitalization
-#: tmp_strings.xml:292(item)
+#: tmp_strings.xml:303(item)
 msgid "None"
 msgstr "يوق"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
-#: tmp_strings.xml:294(item)
+#: tmp_strings.xml:305(item)
 msgid "Per Sentence"
 msgstr "ھەر بىر جۈملە"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
-#: tmp_strings.xml:296(item)
+#: tmp_strings.xml:307(item)
 msgid "Per Word"
 msgstr "ھەر بىر سۆز"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
-#: tmp_strings.xml:303(string)
+#: tmp_strings.xml:314(string)
 msgid "Editing item notes requires OI Notepad."
 msgstr "تۈر ئىزاھاتىنى تەھرىرلەشكە OI خاتىرە دەپتەر زۆرۈر."
 
 #. Name of application "OI Notepad". Translations should be consistent.
-#: tmp_strings.xml:305(string)
+#: tmp_strings.xml:316(string)
 msgid "OI Notepad"
 msgstr "OI خاتىرە دەپتەر"
 
 #. Label above spinner for all actions (automation tasks) that can be performed.
-#: tmp_strings.xml:311(string)
+#: tmp_strings.xml:322(string)
 msgid "Select action:"
 msgstr "مەشغۇلات تاللاڭ:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
-#: tmp_strings.xml:314(string)
+#: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "تىزىم تاللاڭ:"
+
+
+

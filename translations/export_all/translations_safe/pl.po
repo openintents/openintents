@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Damian Skrodzki <damienix1@gmail.com>\n"
+"Last-Translator: Andrzej Ziółek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Andrzej Ziółek https://launchpad.net/~andro-v-zik\n"
 "  Damian Skrodzki https://launchpad.net/~damienix"
 
 #. Short explanation of the application
@@ -48,7 +49,7 @@ msgstr "Zablokuj"
 
 #: tmp_strings.xml:38(string)
 msgid "View"
-msgstr ""
+msgstr "Widok"
 
 #: tmp_strings.xml:39(string)
 msgid "Edit"
@@ -72,7 +73,7 @@ msgstr "Hasła"
 
 #: tmp_strings.xml:44(string)
 msgid "Master Password"
-msgstr ""
+msgstr "Hasło Główne"
 
 #: tmp_strings.xml:45(string)
 msgid "Username"
@@ -124,12 +125,17 @@ msgid ""
 "request their passwords and decrypt/encrypt data. Lock to prevent further "
 "access until you type in your password again."
 msgstr ""
+"Jesteś obecnie zalogowany(a) do IO Sejf, co oznacza, że inne aplikacje mogą "
+"żądać swoich haseł i szyfrować/odszyfrowywać dane. Zablokuj by zapobiec "
+"następnym dostępom dopóki nie wpiszesz swojego hasła ponownie."
 
 #: tmp_strings.xml:56(string)
 msgid ""
 "Another application is asking to use the master key. Please type in your "
 "password to unlock it."
 msgstr ""
+"Inna aplikacja prosi o użycie głównego klucza. Proszę wpisać swoje hasło by "
+"ją odblokować."
 
 #: tmp_strings.xml:57(string)
 msgid "Categories"
@@ -141,15 +147,15 @@ msgstr "Kategoria"
 
 #: tmp_strings.xml:59(string)
 msgid "Business"
-msgstr ""
+msgstr "Biznes"
 
 #: tmp_strings.xml:60(string)
 msgid "Personal"
-msgstr ""
+msgstr "Osobiste"
 
 #: tmp_strings.xml:61(string)
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: tmp_strings.xml:62(string)
 msgid "Category is not empty. You must delete the passwords first."
@@ -157,11 +163,11 @@ msgstr "Kategoria nie jest pusta. Musisz najpierw usunąć hasła."
 
 #: tmp_strings.xml:63(string)
 msgid "Cannot decrypt category"
-msgstr ""
+msgstr "Nie można odszyfrować kateogrii"
 
 #: tmp_strings.xml:64(string)
 msgid "Cannot decrypt password"
-msgstr ""
+msgstr "Nie można odszyfrować hasła"
 
 #: tmp_strings.xml:65(string)
 msgid "Error exporting database"
@@ -192,6 +198,8 @@ msgid ""
 "Unable to create export file 'oisafe.csv' on SDCARD. You might try "
 "disconnecting USB from computer."
 msgstr ""
+"Nie można utworzyć pliku eksportowego 'oisafe.csv' na karcie pamięci. Możesz "
+"spróbować odłączyć USB od swojego komputera."
 
 #: tmp_strings.xml:70(string)
 msgid "Import Database"
@@ -206,10 +214,12 @@ msgid ""
 "Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
 "USB from computer."
 msgstr ""
+"Nie można zaimportować pliku 'oisafe.csv' z karty pamięci. Możesz spróbować "
+"odłączyć USB od swojego komputera."
 
 #: tmp_strings.xml:73(string)
 msgid "First line is missing fields."
-msgstr ""
+msgstr "W pierwszej linii brakuje pól."
 
 #: tmp_strings.xml:74(string)
 msgid "Import"
@@ -217,7 +227,7 @@ msgstr "Importuj"
 
 #: tmp_strings.xml:75(string)
 msgid "Do you want to replace the database (import from %s)?"
-msgstr ""
+msgstr "Czy chcesz zastąpić bazę danych (import z %s)?"
 
 #: tmp_strings.xml:76(string)
 msgid "Yes"
@@ -237,7 +247,7 @@ msgstr "Nie znaleziono kategorii."
 
 #: tmp_strings.xml:80(string)
 msgid "No entries found in CSV."
-msgstr ""
+msgstr "Nie znaleziono wpisów w CSV."
 
 #: tmp_strings.xml:81(string)
 msgid "Too many categories."
@@ -245,7 +255,7 @@ msgstr "Zbyt dużo kategorii."
 
 #: tmp_strings.xml:82(string)
 msgid "Not enough fields"
-msgstr ""
+msgstr "Za mało pól"
 
 #: tmp_strings.xml:83(string)
 msgid "Blank category"
@@ -262,11 +272,11 @@ msgstr "Usuń bazę"
 #: tmp_strings.xml:86(string)
 msgid ""
 "Are you really sure you want to delete the database? This cannot be undone."
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć bazę danych? Tego nie można cofnąć."
 
 #: tmp_strings.xml:87(string)
 msgid "Added"
-msgstr ""
+msgstr "Dodano"
 
 #: tmp_strings.xml:88(string)
 msgid "entries"
@@ -274,45 +284,47 @@ msgstr "wpisów"
 
 #: tmp_strings.xml:89(string)
 msgid "Import complete"
-msgstr ""
+msgstr "Import zakończony"
 
 #: tmp_strings.xml:90(string)
 msgid ""
 "Since it is not secure to keep passwords in clear text CSV files, would you "
 "like to delete"
 msgstr ""
+"Ponieważ to niebezpieczne, by trzymać hasła w czystym pliku tekstowym CSV, "
+"czy chcesz usunąć"
 
 #: tmp_strings.xml:91(string)
 msgid "Edit Entry"
-msgstr ""
+msgstr "Edytuj wpis"
 
 #: tmp_strings.xml:92(string)
 msgid "View Entry"
-msgstr ""
+msgstr "Zobacz wpis"
 
 #: tmp_strings.xml:93(string)
 msgid "Help"
-msgstr ""
+msgstr "Pomoc"
 
 #: tmp_strings.xml:94(string)
 msgid "Close"
-msgstr ""
+msgstr "Zamknij"
 
 #: tmp_strings.xml:95(string)
 msgid "Go"
-msgstr ""
+msgstr "Idź"
 
 #: tmp_strings.xml:96(string)
 msgid "Delete Password"
-msgstr ""
+msgstr "Usuń hasło"
 
 #: tmp_strings.xml:97(string)
 msgid "Are you sure you want to delete this password?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć to hasło?"
 
 #: tmp_strings.xml:98(string)
 msgid "Change Master Password"
-msgstr ""
+msgstr "Zmień Hasło Główne"
 
 #: tmp_strings.xml:99(string)
 msgid ""
@@ -320,463 +332,480 @@ msgid ""
 "re-encrypted with the new password. The more complex your password is, the "
 "safer your data will be."
 msgstr ""
+"Użyj tego, aby zmienić hasło, którego używasz do odblokowania OI Sejf. Twoje "
+"dane zostaną zaszyfrowane ponownie z nowym hasłem. Im bardziej złożone "
+"będzie hasło, bym bezpieczniejsze będą dane."
 
 #: tmp_strings.xml:100(string)
 msgid "Old password"
-msgstr ""
+msgstr "Stare hasło"
 
 #: tmp_strings.xml:101(string)
 msgid "New password"
-msgstr ""
+msgstr "Nowe hasło"
 
 #: tmp_strings.xml:102(string)
 msgid "Verify password"
-msgstr ""
+msgstr "Weryfikuj hasło"
 
 #: tmp_strings.xml:103(string)
 msgid "New and Verify passwords do not match."
-msgstr ""
+msgstr "Nowe i zweryfikowane hasło nie są identyczne."
 
 #: tmp_strings.xml:104(string)
 msgid "Old password is invalid. Please try again."
-msgstr ""
+msgstr "Stare hasło jest niepoprawne. Proszę spróbować ponownie."
 
 #: tmp_strings.xml:105(string)
 msgid "Error changing password"
-msgstr ""
+msgstr "Błąd podczas zmiany hasła"
 
 #: tmp_strings.xml:106(string)
 msgid "Master Password changed"
-msgstr ""
+msgstr "Hasło Główne zmienione"
 
 #: tmp_strings.xml:107(string)
 msgid "Confirm"
-msgstr ""
+msgstr "Potwierdź"
 
 #: tmp_strings.xml:108(string)
 msgid "Password entries do not match."
-msgstr ""
+msgstr "Podane hasła nie są identyczne."
 
 #: tmp_strings.xml:109(string)
 msgid "Backup"
-msgstr ""
+msgstr "Kopia zapasowa"
 
 #: tmp_strings.xml:110(string)
 msgid "Backing up to"
-msgstr ""
+msgstr "Tworzenie kopii zapasowych do"
 
 #: tmp_strings.xml:111(string)
 msgid "Complete. Passwords backed up:"
-msgstr ""
+msgstr "Zakończono. Hasła w kopiach zapasowych:"
 
 #: tmp_strings.xml:112(string)
 msgid "Backup failed:"
-msgstr ""
+msgstr "Archiwizowanie nie powiodło się:"
 
 #: tmp_strings.xml:113(string)
 msgid "Restore"
-msgstr ""
+msgstr "Przywróć"
 
 #: tmp_strings.xml:114(string)
 msgid "Filename"
-msgstr ""
+msgstr "Nazwa pliku"
 
 #: tmp_strings.xml:115(string)
 msgid ""
 "Backup file not found. You need to perform a backup first to create it. Or "
 "copy a backup from your PC."
 msgstr ""
+"Plik kopii zapasowej nie został odnaleziony. Musisz najpierw wykonać "
+"archiwizację by go stworzyć. Lub skopiować kopię zapasową z twojego "
+"komputera."
 
 #: tmp_strings.xml:116(string)
 msgid ""
 "Please provide the password used by the backup file. Your master password "
 "will be set to this."
 msgstr ""
+"Proszę podać hasło używane przez plik kopii zapasowej. Twoje hasło główne "
+"będzie do niego dostosowane."
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:119(string)
 msgid "Unable to open file: %s"
-msgstr ""
+msgstr "Nie można otworzyć pliku: %s"
 
 #. Toast message. %s contains the version number of the database.
 #: tmp_strings.xml:122(string)
 msgid "Version not supported: %s"
-msgstr ""
+msgstr "Wersja niewspierana: %s"
 
 #: tmp_strings.xml:124(string)
 msgid "Restore error."
-msgstr ""
+msgstr "Błąd przywracania."
 
 #: tmp_strings.xml:125(string)
 msgid "Bad password."
-msgstr ""
+msgstr "Błędne hasło."
 
 #: tmp_strings.xml:126(string)
 msgid "Restore Database"
-msgstr ""
+msgstr "Przywróć bazę danych"
 
 #: tmp_strings.xml:127(string)
 msgid "Are you sure you want to replace the current data?"
-msgstr ""
+msgstr "Czy jesteś pewny, że chcesz zastąpić obecne dane?"
 
 #: tmp_strings.xml:128(string)
 msgid "Found %1$s passwords from backup dated %2$s."
-msgstr ""
+msgstr "Znaleziono %1$s haseł z kopii zapasowej z dnia  %2$s."
 
 #: tmp_strings.xml:129(string)
 msgid "Complete. Passwords restored: %s"
-msgstr ""
+msgstr "Zakończono. Hasła przywrócone: %s"
 
 #: tmp_strings.xml:130(string)
 msgid "copied to Clipboard"
-msgstr ""
+msgstr "skopiowano do Schowka"
 
 #: tmp_strings.xml:131(string)
 msgid "Invalid website"
-msgstr ""
+msgstr "Nieprawidłowa strona internetowa"
 
 #: tmp_strings.xml:132(string)
 msgid "Database Error"
-msgstr ""
+msgstr "Błąd bazy danych"
 
 #: tmp_strings.xml:133(string)
 msgid "Database error. Out of space?"
-msgstr ""
+msgstr "Błąd bazy danych. Brak miejsca?"
 
 #. Menu label to open a category
 #: tmp_strings.xml:136(string)
 msgid "Open"
-msgstr ""
+msgstr "Otwórz"
 
 #: tmp_strings.xml:138(string)
 msgid "Database Version Error"
-msgstr ""
+msgstr "Błąd wersji bazy danych"
 
 #: tmp_strings.xml:139(string)
 msgid ""
 "Sorry, but the version of the database is not supported. You must install "
 "the version associated with this database."
 msgstr ""
+"Przykro nam, ale wersja bazy danych nie jest obsługiwana. Musisz "
+"zainstalować wersję powiązaną z tą bazą danych."
 
 #. Menu label to move a password to another category
 #: tmp_strings.xml:142(string)
 msgid "Move"
-msgstr ""
+msgstr "Przenieś"
 
 #: tmp_strings.xml:144(string)
 msgid "Select Category"
-msgstr ""
+msgstr "Wybierz kategorię"
 
 #. Toast that password has been moved to another category
 #: tmp_strings.xml:147(string)
 msgid "Moved to %s"
-msgstr ""
+msgstr "Przeniesiono do %s"
 
 #: tmp_strings.xml:149(string)
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
 #: tmp_strings.xml:150(string)
 msgid "Allow external access"
-msgstr ""
+msgstr "Pozwól na zewnętrzny dostęp"
 
 #: tmp_strings.xml:151(string)
 msgid "Allow other applications to secure your data with OI Safe"
-msgstr ""
+msgstr "Pozwól innym aplikacjom na zabezpieczenie twoich danych z OI Sejf"
 
 #: tmp_strings.xml:152(string)
 msgid "OI Safe: Another application requests access."
-msgstr ""
+msgstr "OI Sejf: Inna aplikacja żąda dostępu."
 
 #: tmp_strings.xml:153(string)
 msgid "Allow other applications to secure your data with OI Safe."
-msgstr ""
+msgstr "Pozwól innym aplikacjom na zabezpieczenie twoich danych z OI Sejf."
 
 #: tmp_strings.xml:154(string)
 msgid "This can also be set in OI Safe's Menu / Settings."
-msgstr ""
+msgstr "Można to również zmienić w menu OI Sejf / Ustawienia."
 
 #. Preference title for auto lock timeout
 #: tmp_strings.xml:157(string) tmp_strings.xml:162(string)
 msgid "Auto lock timeout"
-msgstr ""
+msgstr "Limit czasu automatycznej blokady."
 
 #. Preference summary for auto lock timeout
 #: tmp_strings.xml:160(string)
 msgid "Number of minutes before timeout occurs and safe is locked"
-msgstr ""
+msgstr "Wystąpiła liczba minut przed limitem i sejf jest zablokowany."
 
 #. Preference title for lock (OI Safe) on screen lock (device)
 #: tmp_strings.xml:165(string)
 msgid "Lock on screen lock"
-msgstr ""
+msgstr "Zablokuj na ekranie blokowania"
 
 #. Preference summary for lock (OI Safe) on screen lock
 #: tmp_strings.xml:168(string)
 msgid "Lock when the screen locks"
-msgstr ""
+msgstr "Zablokuj kiedy ekran się blokuje"
 
 #. Preference title: use a numeric keypad to enter the password
 #: tmp_strings.xml:171(string)
 msgid "Keypad"
-msgstr ""
+msgstr "Klawiatura"
 
 #. Preference summary: for a numeric keypad
 #: tmp_strings.xml:174(string)
 msgid "Use a keypad to enter Master Password"
-msgstr ""
+msgstr "Użyj klawiatury by wprowadzić Hasło Główne"
 
 #. Preference title for keypad mute
 #: tmp_strings.xml:177(string)
 msgid "Keypad Mute"
-msgstr ""
+msgstr "Wycisz klawiaturę"
 
 #. Preference summary: Make the keypad sounds mute. 
 #. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
 #: tmp_strings.xml:181(string)
 msgid "Mute keypad sounds"
-msgstr ""
+msgstr "Wycisz przyciski klawiatury"
 
 #: tmp_strings.xml:183(string)
 msgid "Auto backup"
-msgstr ""
+msgstr "Automatyczne archiwizowanie"
 
 #: tmp_strings.xml:184(string)
 msgid "Automatically prompt to backup passwords"
-msgstr ""
+msgstr "Automatycznie nakazuj archiwizowanie haseł"
 
 #: tmp_strings.xml:186(string)
 msgid "Auto backup days"
-msgstr ""
+msgstr "Dni automatycznego archiwizowania"
 
 #: tmp_strings.xml:187(string)
 msgid "Number of days to wait before next auto backup"
-msgstr ""
+msgstr "Liczba dni oczekiwania przed następnym archiwizowaniem"
 
 #: tmp_strings.xml:188(string)
 msgid "Auto Backup Days"
-msgstr ""
+msgstr "Dni automatycznego archiwizowania"
 
 #: tmp_strings.xml:191(string)
 msgid "Decrypt (OI Safe)"
-msgstr ""
+msgstr "Odszyfruj (OI Sejf)"
 
 #: tmp_strings.xml:192(string)
 msgid "Encrypt (OI Safe)"
-msgstr ""
+msgstr "Szyfruj (OI Sejf)"
 
 #: tmp_strings.xml:193(string)
 msgid "Get password (OI Safe)"
-msgstr ""
+msgstr "Uzyskaj hasło (OI Sejf)"
 
 #: tmp_strings.xml:194(string)
 msgid "Set password (OI Safe)"
-msgstr ""
+msgstr "Ustaw hasło (OI Sejf)"
 
 #: tmp_strings.xml:195(string)
 msgid "Restart timer (OI Safe)"
-msgstr ""
+msgstr "Uruchom ponownie zegar (OI Sejf)"
 
 #: tmp_strings.xml:196(string)
 msgid "Open OI Safe"
-msgstr ""
+msgstr "Otwórz OI Sejf"
 
 #: tmp_strings.xml:198(string)
 msgid "Continue"
-msgstr ""
+msgstr "Kontynuuj"
 
 #: tmp_strings.xml:199(string)
 msgid "Generate Password"
-msgstr ""
+msgstr "Generuj hasło"
 
 #: tmp_strings.xml:200(string)
 msgid "Password Length"
-msgstr ""
+msgstr "Długość hasła"
 
 #: tmp_strings.xml:201(string)
 msgid "Uppercase [A-Z]"
-msgstr ""
+msgstr "WIelkie [A-Z]"
 
 #: tmp_strings.xml:202(string)
 msgid "Lowercase [a-z]"
-msgstr ""
+msgstr "Małe [a-z]"
 
 #: tmp_strings.xml:203(string)
 msgid "Numbers [0-9]"
-msgstr ""
+msgstr "Cyfry [0-9]"
 
 #: tmp_strings.xml:204(string)
 msgid "Symbols [!@#$%^\\*]"
-msgstr ""
+msgstr "Symbole [!@#$%^\\*]"
 
 #: tmp_strings.xml:205(string)
 msgid "Copy to Current Entry"
-msgstr ""
+msgstr "Kopiuj do bieżącego wpisu"
 
 #: tmp_strings.xml:206(string)
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "Kopiuj do schowka"
 
 #: tmp_strings.xml:207(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Anuluj"
 
 #: tmp_strings.xml:208(string)
 msgid "Discard changes"
-msgstr ""
+msgstr "Porzuć zmiany"
 
 #: tmp_strings.xml:209(string)
 msgid "Entry saved"
-msgstr ""
+msgstr "Wpis zapisany"
 
 #: tmp_strings.xml:210(string)
 msgid "Unable to save due to database error"
-msgstr ""
+msgstr "Nie można zapisać z powodu błędu bazy danych"
 
 #: tmp_strings.xml:211(string)
 msgid "Last edited"
-msgstr ""
+msgstr "Ostatnio edytowane"
 
 #: tmp_strings.xml:212(string)
 msgid "unknown"
-msgstr ""
+msgstr "nieznany"
 
 #: tmp_strings.xml:213(string)
 msgid "Crypto error:"
-msgstr ""
+msgstr "Krypto błąd:"
 
 #: tmp_strings.xml:214(string)
 msgid "Unique name"
-msgstr ""
+msgstr "Unikalna nazwa"
 
 #: tmp_strings.xml:215(string)
 msgid "Package access"
-msgstr ""
+msgstr "Dostęp do paczki"
 
 #: tmp_strings.xml:216(string)
 msgid "not found"
-msgstr ""
+msgstr "nie znaleziono"
 
 #: tmp_strings.xml:217(string)
 msgid "New master key"
-msgstr ""
+msgstr "Nowy klucz główny"
 
 #: tmp_strings.xml:218(string)
 msgid ""
 "A new random master key has been created. Use menu &gt; backup and store "
 "this key in a safe place. Without this key you may lose encrypted data."
 msgstr ""
+"Nowy losowy klucz został utworzony. Użyj meny &gt; archiwizuj i przechowaj "
+"ten klucz w bezpiecznym miejscu. Bez tego klucz możesz utracić zaszyfrowane "
+"dane."
 
 #: tmp_strings.xml:219(string)
 msgid "Switch mode"
-msgstr ""
+msgstr "Przełącznik trybu"
 
 #: tmp_strings.xml:220(string)
 msgid "Decrypting..."
-msgstr ""
+msgstr "Odszyfrowywanie..."
 
 #: tmp_strings.xml:221(string)
 msgid "Search"
-msgstr ""
+msgstr "Szukaj"
 
 #: tmp_strings.xml:222(string)
 msgid "Searching..."
-msgstr ""
+msgstr "Wyszukiwanie...."
 
 #: tmp_strings.xml:223(string)
 msgid "Type search criteria"
-msgstr ""
+msgstr "Wpisz kryteria wyszukiwania"
 
 #: tmp_strings.xml:224(string)
 msgid "Nothing found"
-msgstr ""
+msgstr "Nic nie znaleziono"
 
 #: tmp_strings.xml:225(string)
 msgid "Mute"
-msgstr ""
+msgstr "Wycisz"
 
 #: tmp_strings.xml:226(string)
 msgid "Sounds"
-msgstr ""
+msgstr "Dźwięki"
 
 #: tmp_strings.xml:227(string)
 msgid "Previous"
-msgstr ""
+msgstr "Poprzedni"
 
 #: tmp_strings.xml:228(string)
 msgid "Next"
-msgstr ""
+msgstr "Następny"
 
 #: tmp_strings.xml:229(string)
 msgid "AutoBackup"
-msgstr ""
+msgstr "Automatyczne archiwizowanie"
 
 #: tmp_strings.xml:230(string)
 msgid "No backup has been performed yet. Would you like to backup now?"
-msgstr ""
+msgstr "Nie stworzono jeszcze kopii zapasowej. Chcesz archiwizować teraz?"
 
 #: tmp_strings.xml:231(string)
 msgid "The last backup was %d days ago. Would you like to backup now?"
-msgstr ""
+msgstr "Ostatnie archiwizowanie było %d dni temu. Chcesz archiwizować teraz?"
 
 #: tmp_strings.xml:232(string)
 msgid "Turn off autobackup"
-msgstr ""
+msgstr "Wyłącz automatyczne archiwizowanie"
 
 #. Permission to access master password
 #: tmp_strings.xml:240(string)
 msgid "access the master password"
-msgstr ""
+msgstr "dostęp do hasła głównego"
 
 #: tmp_strings.xml:241(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
 msgstr ""
+"Pozwala aplikacji używać klucza głównego do szyfrowania i odszyfrowywania. "
+"Nie powinno być nigdy używane poza OI Sejf."
 
 #. Permission to encrypt and decrypt data
 #: tmp_strings.xml:243(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "szyfruj i odszyfrowuj dane"
 
 #: tmp_strings.xml:244(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Pozwala aplikacji szyfrować i odszyfrowywać tekst, oraz mieć dostęp do haseł "
+"przechowywanych w OI Sejf"
 
 #: tmp_strings.xml:252(item)
 msgid "1 minute"
-msgstr ""
+msgstr "1 minuta"
 
 #: tmp_strings.xml:253(item)
 msgid "5 minutes"
-msgstr ""
+msgstr "5 minut"
 
 #: tmp_strings.xml:254(item)
 msgid "10 minutes"
-msgstr ""
+msgstr "10 minut"
 
 #: tmp_strings.xml:255(item)
 msgid "15 minutes"
-msgstr ""
+msgstr "15 minut"
 
 #: tmp_strings.xml:256(item)
 msgid "30 minutes"
-msgstr ""
+msgstr "30 minut"
 
 #: tmp_strings.xml:261(item)
 msgid "1 day"
-msgstr ""
+msgstr "1 dzień"
 
 #: tmp_strings.xml:262(item)
 msgid "7 days"
-msgstr ""
+msgstr "7 dni"
 
 #: tmp_strings.xml:263(item)
 msgid "30 days"
-msgstr ""
+msgstr "30 dni"
 
 #: tmp_strings.xml:264(item)
 msgid "60 days"
-msgstr ""
+msgstr "60 dni"

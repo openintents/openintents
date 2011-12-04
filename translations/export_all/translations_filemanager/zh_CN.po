@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: zhangchun <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Simplified Chinese <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Swandle https://launchpad.net/~swandle\n"
 "  zhangchun https://launchpad.net/~zhangchun"
 
@@ -73,9 +74,8 @@ msgid "Details"
 msgstr ""
 
 #: tmp_strings.xml:46(string)
-#, fuzzy
 msgid "More"
-msgstr "移动"
+msgstr ""
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
@@ -188,9 +188,8 @@ msgid "Type"
 msgstr ""
 
 #: tmp_strings.xml:83(string)
-#, fuzzy
 msgid "Folder"
-msgstr "新建文件夹"
+msgstr ""
 
 #: tmp_strings.xml:84(string)
 msgid "File"
@@ -200,7 +199,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
 msgstr ""
 
@@ -336,18 +335,47 @@ msgstr ""
 msgid "Hide hidden files"
 msgstr ""
 
+#: tmp_strings.xml:139(string)
+#, fuzzy
+msgid "Sort settings"
+msgstr "设置"
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
+msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "重命名"
+
+#: tmp_strings.xml:147(item)
+msgid "Last modified"
+msgstr ""
+
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
 msgstr ""
 
-#: tmp_strings.xml:144(string)
-#, fuzzy
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
-msgstr "出错"
+msgstr ""
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
 msgstr ""

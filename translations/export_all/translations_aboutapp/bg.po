@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Stefani Soyanova <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,208 +21,211 @@ msgstr ""
 #: tmp_strings.xml:30(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Boyan Penchev https://launchpad.net/~boyan-penchev\n"
+"  Stefani Soyanova https://launchpad.net/~stefi-stoyanova95"
 
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
 msgid "A standalone about dialog that is shared between apps."
-msgstr ""
+msgstr "Самостоятелното за диалога е, че споделя между приложенията."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "OI Файлов Мениджър"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "OI Лист за пазаруване"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI Бележник"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "OI Безопасност"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
-msgstr ""
+msgstr "Стартирай %s и избери меню &gt; За."
 
 #. Application name. Can be localized, like "OI About", or "OI Info". 
 #. 	   This is an extension that shows an about dialog or info dialog.
 #: tmp_strings.xml:55(string)
 msgid "OI About"
-msgstr ""
+msgstr "OI За"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr ""
+msgstr "За OI за себе си"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
 msgid "About %s"
-msgstr ""
+msgstr "Относно %s"
 
 #: tmp_strings.xml:62(string)
 msgid "Written by"
-msgstr ""
+msgstr "Написано от:"
 
 #: tmp_strings.xml:63(string)
 msgid "Documented by"
-msgstr ""
+msgstr "Документирано от"
 
 #: tmp_strings.xml:64(string)
 msgid "Translated by"
-msgstr ""
+msgstr "Преведено от"
 
 #: tmp_strings.xml:65(string)
 msgid "Artwork by"
-msgstr ""
+msgstr "Дизайн"
 
 #: tmp_strings.xml:66(string)
 msgid "International translations by"
-msgstr ""
+msgstr "Международни преводи от"
 
 #: tmp_strings.xml:67(string)
 msgid "Credits"
-msgstr ""
+msgstr "Заслуги"
 
 #: tmp_strings.xml:68(string)
 msgid "License"
-msgstr ""
+msgstr "Лиценз"
 
 #: tmp_strings.xml:69(string)
 msgid "General Info"
-msgstr ""
+msgstr "Обща Информация"
 
 #: tmp_strings.xml:70(string)
 msgid "Recent changes"
-msgstr ""
+msgstr "Последни промени"
 
 #: tmp_strings.xml:72(string)
 msgid "No information available."
-msgstr ""
+msgstr "Няма налична информация"
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr ""
+msgstr "Арабски"
 
 #: tmp_strings.xml:80(item)
 msgid "Czech"
-msgstr ""
+msgstr "Чешки"
 
 #: tmp_strings.xml:81(item)
 msgid "Danish"
-msgstr ""
+msgstr "Датски"
 
 #: tmp_strings.xml:82(item)
 msgid "German"
-msgstr ""
+msgstr "Немски"
 
 #: tmp_strings.xml:83(item)
 msgid "English"
-msgstr ""
+msgstr "Английски"
 
 #: tmp_strings.xml:84(item)
 msgid "Greek"
-msgstr ""
+msgstr "Гръцки"
 
 #: tmp_strings.xml:85(item)
 msgid "Spanish"
-msgstr ""
+msgstr "Испански"
 
 #: tmp_strings.xml:86(item)
 msgid "Persian"
-msgstr ""
+msgstr "Персийски"
 
 #: tmp_strings.xml:87(item)
 msgid "Finnish"
-msgstr ""
+msgstr "Фински"
 
 #: tmp_strings.xml:88(item)
 msgid "Faroese"
-msgstr ""
+msgstr "Фарьорски"
 
 #: tmp_strings.xml:89(item)
 msgid "French"
-msgstr ""
+msgstr "Френски"
 
 #: tmp_strings.xml:90(item)
 msgid "Croatian"
-msgstr ""
+msgstr "Хърватски"
 
 #: tmp_strings.xml:91(item)
 msgid "Hungarian"
-msgstr ""
+msgstr "Унгарски"
 
 #: tmp_strings.xml:92(item)
 msgid "Italian"
-msgstr ""
+msgstr "Италиански"
 
 #: tmp_strings.xml:93(item)
 msgid "Japanese"
-msgstr ""
+msgstr "Японски"
 
 #: tmp_strings.xml:94(item)
 msgid "Korean"
-msgstr ""
+msgstr "Корейски"
 
 #: tmp_strings.xml:95(item)
 msgid "Lao"
-msgstr ""
+msgstr "Лаоски"
 
 #: tmp_strings.xml:96(item)
 msgid "Dutch"
-msgstr ""
+msgstr "Холандси"
 
 #: tmp_strings.xml:97(item)
 msgid "Occitan (post 1500)"
-msgstr ""
+msgstr "Окситански (след 1500)"
 
 #: tmp_strings.xml:98(item)
 msgid "Polish"
-msgstr ""
+msgstr "Полски"
 
 #: tmp_strings.xml:99(item)
 msgid "Portuguese"
-msgstr ""
+msgstr "Португалски"
 
 #: tmp_strings.xml:100(item)
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Бразилски португалски"
 
 #: tmp_strings.xml:101(item)
 msgid "Romanian"
-msgstr ""
+msgstr "Румънски"
 
 #: tmp_strings.xml:102(item)
 msgid "Russian"
-msgstr ""
+msgstr "Руски"
 
 #: tmp_strings.xml:103(item)
 msgid "Sardinian"
-msgstr ""
+msgstr "Сардински"
 
 #: tmp_strings.xml:104(item)
 msgid "Slovak"
-msgstr ""
+msgstr "Словашки"
 
 #: tmp_strings.xml:105(item)
 msgid "Swedish"
-msgstr ""
+msgstr "Шведски"
 
 #: tmp_strings.xml:106(item)
 msgid "Turkish"
-msgstr ""
+msgstr "Турски"
 
 #: tmp_strings.xml:107(item)
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "Китайски (опростен)"
 
 #: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "Китайски (традиционен)"

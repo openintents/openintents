@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: iulargsb <Unknown>\n"
+"Last-Translator: Florentina Mușat <kuchiki14@yahoo.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,13 +22,14 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Florentina Mușat https://launchpad.net/~kuchiki14\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
 msgid "A standalone about dialog that is shared between apps."
-msgstr ""
+msgstr "Un dialog despre de sine stătător care este împărțit între aplicații."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
@@ -132,7 +133,7 @@ msgstr "Engleză"
 
 #: tmp_strings.xml:84(item)
 msgid "Greek"
-msgstr ""
+msgstr "Greacă"
 
 #: tmp_strings.xml:85(item)
 msgid "Spanish"
@@ -140,7 +141,7 @@ msgstr "Spaniolă"
 
 #: tmp_strings.xml:86(item)
 msgid "Persian"
-msgstr ""
+msgstr "Persană"
 
 #: tmp_strings.xml:87(item)
 msgid "Finnish"
@@ -156,11 +157,11 @@ msgstr "Franceză"
 
 #: tmp_strings.xml:90(item)
 msgid "Croatian"
-msgstr ""
+msgstr "Croată"
 
 #: tmp_strings.xml:91(item)
 msgid "Hungarian"
-msgstr ""
+msgstr "Maghiară"
 
 #: tmp_strings.xml:92(item)
 msgid "Italian"

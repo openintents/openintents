@@ -74,9 +74,8 @@ msgid "Details"
 msgstr ""
 
 #: tmp_strings.xml:46(string)
-#, fuzzy
 msgid "More"
-msgstr "Déplacer"
+msgstr ""
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
@@ -189,9 +188,8 @@ msgid "Type"
 msgstr ""
 
 #: tmp_strings.xml:83(string)
-#, fuzzy
 msgid "Folder"
-msgstr "Nouveau dossier"
+msgstr ""
 
 #: tmp_strings.xml:84(string)
 msgid "File"
@@ -201,7 +199,7 @@ msgstr ""
 msgid "Other"
 msgstr ""
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
 msgstr ""
 
@@ -337,17 +335,46 @@ msgstr ""
 msgid "Hide hidden files"
 msgstr ""
 
+#: tmp_strings.xml:139(string)
+msgid "Sort settings"
+msgstr ""
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
+msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "Renommer"
+
+#: tmp_strings.xml:147(item)
+msgid "Last modified"
+msgstr ""
+
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
 msgstr ""
 
-#: tmp_strings.xml:144(string)
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
 msgstr ""
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
 msgstr ""

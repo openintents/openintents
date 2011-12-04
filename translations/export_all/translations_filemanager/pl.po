@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Damian Skrodzki <damienix1@gmail.com>\n"
+"Last-Translator: Andrzej Ziółek <Unknown>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Andrzej Ziółek https://launchpad.net/~andro-v-zik\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
 "  Schlussarz https://launchpad.net/~schlussarz\n"
 "  usul https://launchpad.net/~usultis"
@@ -34,11 +35,11 @@ msgstr "Zarządzaj plikami na karcie pamięci."
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:32(string)
 msgid "OI File Manager"
-msgstr "OI File Manager"
+msgstr "OI Menedżer plików"
 
 #: tmp_strings.xml:34(string)
 msgid "New Folder"
-msgstr "Nowy katalog"
+msgstr "Nowy folder"
 
 #. Multi select option menu
 #: tmp_strings.xml:37(string)
@@ -71,16 +72,15 @@ msgstr "Kopiuj"
 
 #: tmp_strings.xml:45(string)
 msgid "Details"
-msgstr ""
+msgstr "Szczegóły"
 
 #: tmp_strings.xml:46(string)
-#, fuzzy
 msgid "More"
-msgstr "Przenieś"
+msgstr "Więcej"
 
 #: tmp_strings.xml:47(string)
 msgid "Filter"
-msgstr ""
+msgstr "Filtr"
 
 #: tmp_strings.xml:48(string)
 msgid "Include in media scan"
@@ -100,7 +100,7 @@ msgstr "Nazwa katalogu"
 
 #: tmp_strings.xml:54(string)
 msgid "Extension (with '.')"
-msgstr ""
+msgstr "Rozszerzenie (z \".\")"
 
 #: tmp_strings.xml:55(string)
 msgid "This folder is empty."
@@ -160,15 +160,15 @@ msgstr "Usuwanie plików..."
 
 #: tmp_strings.xml:69(string)
 msgid "Warning"
-msgstr ""
+msgstr "Ostrzeżenie"
 
 #: tmp_strings.xml:70(string)
 msgid "Some of the following options may not work."
-msgstr ""
+msgstr "Niektóre z poniższych opcji mogą nie działać"
 
 #: tmp_strings.xml:71(string)
 msgid "Show warning again"
-msgstr ""
+msgstr "Pokaż ostrzeżenie ponownie"
 
 #. Strings for a multi select feature
 #: tmp_strings.xml:74(string)
@@ -186,44 +186,43 @@ msgstr "Proszę wybrać plik(i)."
 #. Strings for details table
 #: tmp_strings.xml:82(string)
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: tmp_strings.xml:83(string)
-#, fuzzy
 msgid "Folder"
-msgstr "Nowy katalog"
+msgstr "Folder"
 
 #: tmp_strings.xml:84(string)
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 #: tmp_strings.xml:85(string)
 msgid "Other"
-msgstr ""
+msgstr "Inne"
 
-#: tmp_strings.xml:86(string)
+#: tmp_strings.xml:86(string) tmp_strings.xml:146(item)
 msgid "Size"
-msgstr ""
+msgstr "Rozmiar"
 
 #: tmp_strings.xml:87(string)
 msgid "Permissions"
-msgstr ""
+msgstr "Uprawnienia"
 
 #: tmp_strings.xml:88(string)
 msgid "Hidden"
-msgstr ""
+msgstr "Ukryty"
 
 #: tmp_strings.xml:89(string)
 msgid "Last Modified"
-msgstr ""
+msgstr "Ostatnio modyfikowane"
 
 #: tmp_strings.xml:90(string)
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: tmp_strings.xml:91(string)
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #. Construct a unique file name of a file called %s.
 #: tmp_strings.xml:94(string)
@@ -319,36 +318,66 @@ msgstr "Ukryj w menu przycisk do wyłączania folderów ze skanowanych mediów."
 
 #: tmp_strings.xml:131(string)
 msgid "Show all warnings"
-msgstr ""
+msgstr "Pokaż wszystkie ostrzeżenia"
 
 #: tmp_strings.xml:132(string)
 msgid "Show all warning messages"
-msgstr ""
+msgstr "Wyświetlaj wszystkie ostrzeżenia"
 
 #: tmp_strings.xml:133(string)
 msgid "Suppress warning messages"
-msgstr ""
+msgstr "Zawieś wyświetlanie ostrzeżeń"
 
 #: tmp_strings.xml:135(string) tmp_strings.xml:136(string)
 msgid "Display hidden files"
-msgstr ""
+msgstr "Pokaż ukryte pliki"
 
 #: tmp_strings.xml:137(string)
 msgid "Hide hidden files"
+msgstr "Ukryj ukryte pliki"
+
+#: tmp_strings.xml:139(string)
+#, fuzzy
+msgid "Sort settings"
+msgstr "Ustawienia"
+
+#: tmp_strings.xml:140(string)
+msgid "Sort by"
 msgstr ""
+
+#: tmp_strings.xml:141(string)
+msgid "In ascending order"
+msgstr ""
+
+#: tmp_strings.xml:142(string)
+msgid "Sort in ascending order"
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Sort in descending order"
+msgstr ""
+
+#: tmp_strings.xml:145(item)
+#, fuzzy
+msgid "Name"
+msgstr "Zmień nazwę"
+
+#: tmp_strings.xml:147(item)
+#, fuzzy
+msgid "Last modified"
+msgstr "Ostatnio modyfikowane"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
-#: tmp_strings.xml:143(string)
+#: tmp_strings.xml:154(string)
 msgid "You haven't picked any file."
-msgstr ""
+msgstr "Nie zaznaczono żadnych plików"
 
-#: tmp_strings.xml:144(string)
-#, fuzzy
+#: tmp_strings.xml:155(string)
 msgid "An error occured."
-msgstr "Wystąpił błąd:"
+msgstr "Wystąpił błąd."
 
-#: tmp_strings.xml:145(string)
+#: tmp_strings.xml:156(string)
 msgid "File successfully saved!"
-msgstr ""
+msgstr "Plik zapisany pomyślnie!"

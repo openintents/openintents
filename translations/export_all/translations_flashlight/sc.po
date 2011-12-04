@@ -75,3 +75,20 @@ msgid ""
 msgstr ""
 "Pro che fachere 'Issepera Colorese' prus utile pro sos atteroso manivalese, "
 "aimusu preferriu de che creare un'attera applicatzione."
+
+#: tmp_strings.xml:44(string)
+msgid "Use camera flash"
+msgstr ""
+
+#: tmp_strings.xml:45(string)
+msgid "Use the camera flash instead of the screen backlight."
+msgstr ""
+
+#. Information to enable the camera flash as flashlight.
+#: tmp_strings.xml:47(string)
+msgid "Press to enable camera light (May take a second)."
+msgstr ""
+
+#: tmp_strings.xml:48(string)
+msgid "Press to disable camera light."
+msgstr ""
