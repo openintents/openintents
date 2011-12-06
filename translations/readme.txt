@@ -1,3 +1,23 @@
+To import new translations, translate market descriptions, and upload translations, do the following:
+
+1) Download translations from  https://translations.launchpad.net/openintents/trunk/+export
+   (in the PO format)
+
+2) Place tar file into folder "import_all".
+
+3) Execute update_all.bash or ..._cygwin.bat
+
+4) Commit the modified translation files. 
+   (Launchpad pulls the converted strings directly from the Google code repository.)
+
+-----------------
+
+
+
+Below you find the steps that are performed by update_all.bash:
+
+-----------------
+
 Import new translations:
 
 1) Download translations from  https://translations.launchpad.net/openintents/trunk/+export
@@ -13,7 +33,7 @@ Import new translations:
 Export new strings for translations:
 1) Check list of applications in applications.txt.
 
-2) Execute /export_all/export_all_to_launchpad.bash or ..._cygwin.bat
+2) Execute export_all/export_all_to_launchpad.bash or ..._cygwin.bat
 
 3) Commit the modified translation files. 
    (Launchpad pulls the converted strings directly from the Google code repository.)

@@ -11,18 +11,17 @@
 #STOP
 
 # For descriptions:
+aboutapp aboutapp/AboutApp
 filemanager filemanager/FileManager
+flashlight flashlight/Flashlight
 notepad notepad/NotePad
 STOP
 
-aboutapp aboutapp/AboutApp
 colorpicker colorpicker/ColorPicker
 convertcsv convertcsv/ConvertCSV
 countdown countdown/Countdown
 descriptions translations/descriptions
 distributionlibrary distribution/DistributionLibrary
-filemanager filemanager/FileManager
-flashlight flashlight/Flashlight
 safe safe/Safe
 shoppinglist shoppinglist/ShoppingList
 updatechecker UpdateCheckerApp
