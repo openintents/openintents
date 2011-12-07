@@ -1,0 +1,7 @@
+# Application:
+OI Flashlight
+
+# Promo text:
+OpenIntents FlashLight te ayuda a encontrar tu camino en la oscuridad. La luz de fondo de la pantalla permanece encendida mientras la aplicación esté arrancada.
+
+# Description:

@@ -1,0 +1,7 @@
+# Application:
+OI About
+
+# Promo text:
+Un diálogo «Acerca de» autónomo que se comparte entre aplicaciones.
+
+# Description:

@@ -242,9 +242,8 @@ msgid "Note"
 msgstr ""
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "数量"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
 msgid "Other Priority..."
@@ -474,9 +473,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "数量"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -558,9 +556,8 @@ msgid "Advanced settings"
 msgstr "詳細設定"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "アプリケーションの設定"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
@@ -783,6 +780,3 @@ msgstr "アクションを選択"
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "リストを選択"
-
-
-

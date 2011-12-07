@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Damian Skrodzki https://launchpad.net/~damienix\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Tomasz 'Zen' Napierala https://launchpad.net/~tzn\n"
 "  Tomasz Zieliński https://launchpad.net/~tomek0517"
 
@@ -105,18 +106,16 @@ msgstr "Błąd ładowania notatki"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
-#, fuzzy
 msgid "Share"
-msgstr "Zapisz"
+msgstr "Udostępnij"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
 msgstr "Pusta notatka"
 
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No application available for sharing."
-msgstr "Brak aplikacji służącej wysłaniu."
+msgstr "Brak aplikacji dostępnych do udostępnienia"
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
@@ -500,9 +499,5 @@ msgid "Are you sure you want to delete this note?"
 msgstr "Czy jesteś pewny że chcesz skasować tą notatkę?"
 
 #: tmp_strings.xml:219(string)
-#, fuzzy
 msgid "New note"
-msgstr "Notatka"
-
-
-
+msgstr "Nowa notatka"

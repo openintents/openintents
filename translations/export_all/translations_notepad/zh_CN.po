@@ -104,18 +104,16 @@ msgstr "加载便签出错"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
-#, fuzzy
 msgid "Share"
-msgstr "保存"
+msgstr ""
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
 msgstr "空白便签"
 
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No application available for sharing."
-msgstr "无法找到用于传送的应用程序"
+msgstr ""
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
@@ -492,9 +490,5 @@ msgid "Are you sure you want to delete this note?"
 msgstr ""
 
 #: tmp_strings.xml:219(string)
-#, fuzzy
 msgid "New note"
-msgstr "便笺"
-
-
-
+msgstr ""

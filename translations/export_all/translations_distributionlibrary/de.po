@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: appricoo <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: tmp_strings.xml:3(string)
 msgid "OI Distribution Library"
-msgstr ""
+msgstr "OI Distributions Bibliothek"
 
 #. Automatically filled in by Launchpad:
 #: tmp_strings.xml:10(string)
@@ -27,6 +27,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  appricoo https://launchpad.net/~appricoo\n"
 "  hani https://launchpad.net/~markushahnenkamm"
@@ -35,7 +36,7 @@ msgstr ""
 #. 		Translation should be short, since this is a title.
 #: tmp_strings.xml:19(string)
 msgid "%s EULA"
-msgstr ""
+msgstr "%s EULA"
 
 #. EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 #. 		Translation can be as long as required.
@@ -117,16 +118,18 @@ msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
 msgstr ""
+"Es ist keine kompatible Erweiterung verhanden, um alle Informationen "
+"anzuzeigen (Kontakt, Info, Lizenz)."
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
 msgid "Get OI About"
-msgstr ""
+msgstr "OI About Herunterladen"
 
 #. Name of the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:66(string)
 msgid "OI About"
-msgstr ""
+msgstr "OI About"
 
 #. Name of the application "OI File Manager". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
@@ -146,7 +149,7 @@ msgstr "OI Safe"
 #. Dialog message.
 #: tmp_strings.xml:77(string)
 msgid "No compatible application for encryption is available."
-msgstr ""
+msgstr "Keine kompatible Anwendung zur Verschlüsselung vorhanden."
 
 #: tmp_strings.xml:78(string)
 msgid ""
@@ -154,16 +157,20 @@ msgid ""
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Keine kompatible Anwendung zur Entschlüsselung vorhanden.\\n\\nHinweis: Sie "
+"müssen den Master Schlüssel aus einer Backupdatei wiederherstellen, um auf "
+"die vorher verschlüsselten Daten zugreifen zu können."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:81(string)
 msgid "Please download %s from the Market or the OpenIntents website."
 msgstr ""
+"Bitte installieren Sie %s aus dem  Market oder über die OpenIntents Webseite."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
 #: tmp_strings.xml:83(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr ""
+msgstr "Bitte installieren Sie %s über die OpenIntents Internetseite."
 
 #. Dialog button: download the suggested application from Android Market.
 #: tmp_strings.xml:85(string)
@@ -183,7 +190,7 @@ msgstr "%s herunterladen"
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
 #: tmp_strings.xml:92(string)
 msgid "%s can be used with the following applications:"
-msgstr ""
+msgstr "%s kann in den folgenden Anwendungen genutzt werden:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
 #: tmp_strings.xml:94(string)
@@ -194,14 +201,14 @@ msgstr "Starte %s"
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
 #: tmp_strings.xml:97(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr ""
+msgstr "%1$s benötigt %2$s %3$s oder höher."
 
 #. Title of a dialog.
 #: tmp_strings.xml:99(string)
 msgid "Instructions"
-msgstr ""
+msgstr "Anleitung"
 
 #. Error message
 #: tmp_strings.xml:101(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "Anwendung konnte nicht gestartet werden"

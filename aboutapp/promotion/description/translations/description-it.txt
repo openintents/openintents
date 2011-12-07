@@ -1,0 +1,7 @@
+# Application:
+OI Info
+
+# Promo text:
+Semplice finestra di informazioni condivisa tra le applicazioni.
+
+# Description:

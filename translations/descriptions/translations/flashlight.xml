@@ -1,0 +1,47 @@
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
+		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
+		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
+		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<emptyline />
+		<string>This application is ad free and does not require the internet permission.</string>
+		<emptyline />
+		<string>The source code of this free and open source application is available at:</string>
+		<link href="http://code.google.com/p/openintents" />
+		<emptyline />
+		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<link href="http://www.openintents.org" />
+		<emptyline />
+		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk" />
+		<emptyline />
+		<string>Features:</string>
+		<listitem>Lock the display backlight on.</listitem>
+		<listitem>Lock camera flash on.</listitem>
+		<listitem>The color of backlight is customizable.</listitem>
+		<emptyline />
+		<string>Available extensions for "OI Flashlight":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<emptyline />
+		<string>Applications that work with "OI Flashlight":</string>
+		<listitem>Update with "OI Update".</listitem>
+		<emptyline />
+		<string>Keywords:</string>
+		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline />
+		<string>International versions:</string>
+		<international />
+		<emptyline />
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt" />
+	</description>

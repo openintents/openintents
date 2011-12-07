@@ -7,6 +7,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo
   ubuntuuser87 https://launchpad.net/~martin-wallner-</string>
@@ -26,9 +27,9 @@
 	<string name="android_market">Android Market</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="about_text_extended">Version %1$s\nSD Karte %2$s\n\nBetriebssystem\n%3$s</string>
     <string name="free_space">Freier Speicher: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="os_info">Platine %1$s\nHersteller %2$s\nGerät %3$s\nID %4$s\nModell %5$s</string>
     
     <string name="do_update">Update jetzt durchführen!</string>
     <string name="do_update_market">Versuche jetzt Update vom Market!</string>
@@ -50,7 +51,7 @@
     <string name="current_version">Aktuelle Version: %s</string>
     <string name="current_version_code">Aktueller Versionscode: %s</string>
     <string name="newer_version">Neuere Version: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
+    <string name="newer_version_comment">Neuere Version: %1$s - %2$s</string>
     <string name="newer_version_available">Neuere Version verfügbar.</string>
     <string name="no_update_info_found">Keine Update-Informationen gefunden.</string>
     <string name="title_list_new_versions">OI Update - Liste der neuen Versionen</string>

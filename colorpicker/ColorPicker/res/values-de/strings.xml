@@ -8,6 +8,7 @@
 	<string name="about_translators">Launchpad Contributions:
   Etienne Ruedin https://launchpad.net/~ruedin
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo</string>
 	
@@ -36,7 +37,7 @@
 	<!-- About -->
 	<string name="about">Info</string>
 	<string name="aboutapp_not_available">Version %s\n\nKeine kompatible Erweiterung verfügbar um vollständige Information anzuzeigen (Kontakt, Beitragende, Lizenz).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="aboutapp_get">OI About Herunterladen</string>
 
 
 	<!-- Update -->
@@ -49,19 +50,19 @@
     <string name="info_app_flashlight">Um eine Farbe in der OI-Taschenlampe zu wählen, wählen Sie Menü &gt; Farbe.</string>
     <string name="title_app_flashlight">OI Taschenlampe</string>
     
-    <string name="info_app_spiral_wallpaper">Hypnotic, animated spiral Live Wallpaper.</string>
-    <string name="title_app_spiral_wallpaper">HypnoTwister Live Wallpaper</string>
+    <string name="info_app_spiral_wallpaper">Hypnosierende, animierte Spirale als Live Hintergrundbild</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister Live Hintergrundbild</string>
     
-    <string name="info_app_bettr_flickr">Native Flickr interface for Android</string>
+    <string name="info_app_bettr_flickr">Flickr Interface für Android</string>
     <string name="title_app_bettr_flickr">BettrFlickr</string>
     
-    <string name="info_app_character_gen">Mix and match artwork to generate anime characters</string>
-    <string name="title_app_character_gen">Anime Character Generator</string>
+    <string name="info_app_character_gen">Bilder mixen und anpassen, um Zeichentrickfilmfiguren zu erstellen.</string>
+    <string name="title_app_character_gen">Generator für Zeichentrickfilmfiguren</string>
     
     
 	<string name="info_activity_text">Diese App kann mit mit folgenden Anwedungen verwendet werden:</string>
     <string name="info_launch">Starte %s</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
 	<string name="info_not_available">Diese Anwendung benötigt %1$s %2$s Auflösung oder höher.</string>
-	<string name="info_get">Get %s</string>
+	<string name="info_get">%s herunterladen</string>
 </resources>

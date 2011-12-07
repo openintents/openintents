@@ -1,0 +1,7 @@
+# Application:
+OI Torcia
+
+# Promo text:
+OpenIntents Torcia ti aiuta a trovare la strada nel buio. Lo schermo rimane acceso mentre questa applicazione è in esecuzione.
+
+# Description:

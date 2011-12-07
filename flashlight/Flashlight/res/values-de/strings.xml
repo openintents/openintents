@@ -9,6 +9,7 @@
   Eric Baudach https://launchpad.net/~cs-sniffer
   Florian Sievers https://launchpad.net/~florian-sievers
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo</string>
 	
@@ -45,11 +46,11 @@
 	
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
-    <string name="color_picker_modularization_explanation">To make the Color Picker more useful to other developers, we have split it into its own app.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="color_picker_modularization_explanation">Um den Color Picker für andere Entwickler nützlicher zu machen, haben wir ihn in eine eigene Anwendung ausgelagert.</string>
+    <string name="setting_use_camera_flash">Benutze den Kamera Blitz</string>
+    <string name="setting_use_camera_flash_summary">Benutze den Kamera Blitz anstelle der Bildschirmbeleuchtung.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">Klicken Sie, um das Kameralicht zu aktivieren. (Kann einige Sekunden dauern)</string>
+    <string name="cameralight_stop_info">Klicken Sie, um das Kameralicht dezuaktivieren.</string>
     
 </resources>

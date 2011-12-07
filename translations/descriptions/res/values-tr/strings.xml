@@ -4,6 +4,59 @@
   Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
   zeugma https://launchpad.net/~sunder67</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>This application is invoked through the menu of other OI applications.</string>
+		<string>It allows you to view version information, links, credits, and license of an application.</string>
+		<string>Credits include authors, documentation, translators, and artists.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<emptyline/>
+		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
+		<emptyline/>
+		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Değişiklikler ve sık sorulan sorular listesini tamamlamak için lütfen şurayı ziyaret edin:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Launchpad\'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Özellikler:</string>
+		<listitem>Shows general info, credits, and license tabs.</listitem>
+		<listitem>Shows translators of all language versions.</listitem>
+		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI About":</string>
+		<listitem>OI Notepad</listitem>
+		<listitem>OI File manager</listitem>
+		<listitem>OI Shopping List</listitem>
+		<listitem>OI Convert CSV</listitem>
+		<listitem>OI Safe</listitem>
+		<listitem>OI Countdown</listitem>
+		<listitem>OI Flashlight</listitem>
+		<emptyline/>
+		<string>Anahtar kelimeler:</string>
+		<listitem>About, Credits, Information.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Uluslararası versiyonlar:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->
@@ -54,6 +107,53 @@
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
+		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
+		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
+		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<emptyline/>
+		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
+		<emptyline/>
+		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Değişiklikler ve sık sorulan sorular listesini tamamlamak için lütfen şurayı ziyaret edin:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Launchpad\'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Özellikler:</string>
+		<listitem>Lock the display backlight on.</listitem>
+		<listitem>Lock camera flash on.</listitem>
+		<listitem>The color of backlight is customizable.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Flashlight":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Flashlight":</string>
+		<listitem>Update with "OI Update".</listitem>
+		<emptyline/>
+		<string>Anahtar kelimeler:</string>
+		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Uluslararası versiyonlar:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
 	</description>
 	<description application="notepad/NotePad">
 		<!--  OI Notepad -->
@@ -111,5 +211,63 @@
 		<string>Search strings for Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
+		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
+		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
+		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
+		<emptyline/>
+		<string>Değişiklikler ve sık sorulan sorular listesini tamamlamak için lütfen şurayı ziyaret edin:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Launchpad\'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Özellikler:</string>
+		<listitem>Add, edit and delete lists.</listitem>
+		<listitem>Create, delete, and check items quickly and easily.</listitem>
+		<listitem>Variety of themes.</listitem>
+		<listitem>Customizable font size and sort order.</listitem>
+		<listitem>Keep track of separate prices for each store.</listitem>
+		<listitem>Customizable list columns.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Shopping List":</string>
+		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
+		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Shopping List":</string>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Backup lists with "My Backup Pro".</listitem>
+		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<emptyline/>
+		<string>Anahtar kelimeler:</string>
+		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Uluslararası versiyonlar:</string>
+		<international/>
+		<emptyline/>
+		<string>Extensions:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
 	</description>
 </main>

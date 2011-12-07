@@ -1,0 +1,7 @@
+# Application:
+O aplikaci OpenIntents
+
+# Promo text:
+A standalone about dialog that is shared between apps.
+
+# Description:

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: ariza95 <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -249,14 +249,12 @@ msgid "Note"
 msgstr "Not"
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "Adet"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
-#, fuzzy
 msgid "Other Priority..."
-msgstr "Öncelik"
+msgstr ""
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
@@ -484,9 +482,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "Adet"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -568,9 +565,8 @@ msgid "Advanced settings"
 msgstr "Gelişmiş ayarlar"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "Uygulama ayarları"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
@@ -795,6 +791,3 @@ msgstr "Eylem seçin:"
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "Liste seç:"
-
-
-

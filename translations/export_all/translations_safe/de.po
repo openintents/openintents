@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: DHermit <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr ""
 "  DHermit https://launchpad.net/~dhermit\n"
 "  Kim Linoh https://launchpad.net/~psychokim\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
+"  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  appricoo https://launchpad.net/~appricoo"
 
@@ -447,7 +448,7 @@ msgstr "Sind Sie sicher, dass Sie die bestehenden Einträge ersetzen wollen?"
 
 #: tmp_strings.xml:128(string)
 msgid "Found %1$s passwords from backup dated %2$s."
-msgstr ""
+msgstr "%1$s Passwörter in der Sicherung vom %2$s gefunden."
 
 #: tmp_strings.xml:129(string)
 msgid "Complete. Passwords restored: %s"
@@ -467,7 +468,7 @@ msgstr "Datenbankfehler"
 
 #: tmp_strings.xml:133(string)
 msgid "Database error. Out of space?"
-msgstr ""
+msgstr "Datenbankfehler. Ist keine Speicherplatz mehr verfügbar?"
 
 #. Menu label to open a category
 #: tmp_strings.xml:136(string)
@@ -567,7 +568,7 @@ msgstr "Ziffernblock stumm schalten"
 
 #: tmp_strings.xml:183(string)
 msgid "Auto backup"
-msgstr ""
+msgstr "Automatisches Backup"
 
 #: tmp_strings.xml:184(string)
 msgid "Automatically prompt to backup passwords"
@@ -575,15 +576,15 @@ msgstr "Automatisch nach Password-Sicherung fragen"
 
 #: tmp_strings.xml:186(string)
 msgid "Auto backup days"
-msgstr ""
+msgstr "Tage für automatisches Backup"
 
 #: tmp_strings.xml:187(string)
 msgid "Number of days to wait before next auto backup"
-msgstr ""
+msgstr "Anzahl Tage zwischen den automatischen Backups"
 
 #: tmp_strings.xml:188(string)
 msgid "Auto Backup Days"
-msgstr ""
+msgstr "Tage für die automatischen Backups"
 
 #: tmp_strings.xml:191(string)
 msgid "Decrypt (OI Safe)"
@@ -659,7 +660,7 @@ msgstr "Eintrag gespeichert"
 
 #: tmp_strings.xml:210(string)
 msgid "Unable to save due to database error"
-msgstr ""
+msgstr "Auf Grund eines Datenbankfehlers konnte nicht gespeichert werden"
 
 #: tmp_strings.xml:211(string)
 msgid "Last edited"
@@ -740,15 +741,18 @@ msgstr "Nächster"
 
 #: tmp_strings.xml:229(string)
 msgid "AutoBackup"
-msgstr ""
+msgstr "Automatisches Backup"
 
 #: tmp_strings.xml:230(string)
 msgid "No backup has been performed yet. Would you like to backup now?"
 msgstr ""
+"Bisher wurde noch kein Backup durchgeführt. Wollen Sie jetzt eines erstellen?"
 
 #: tmp_strings.xml:231(string)
 msgid "The last backup was %d days ago. Would you like to backup now?"
 msgstr ""
+"Die letzte Sicherung wurde vor %d Tagen erstellt. Wollen Sie jetzt eine "
+"Sicherung erstellen?"
 
 #: tmp_strings.xml:232(string)
 msgid "Turn off autobackup"

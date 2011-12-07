@@ -1,0 +1,7 @@
+# Application:
+OI About
+
+# Promo text:
+アプリ間で共有されるダイアログについての単体アプリ
+
+# Description:

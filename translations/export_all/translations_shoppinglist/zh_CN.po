@@ -245,14 +245,12 @@ msgid "Note"
 msgstr "注释"
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "数量"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
-#, fuzzy
 msgid "Other Priority..."
-msgstr "优先"
+msgstr ""
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
@@ -478,9 +476,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "数量"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -562,9 +559,8 @@ msgid "Advanced settings"
 msgstr "高级设置"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "应用程序设置"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
@@ -785,6 +781,3 @@ msgstr "选择操作"
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "选择列表:"
-
-
-

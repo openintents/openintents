@@ -1,0 +1,58 @@
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
+		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
+		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
+		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<emptyline />
+		<string>The source code of this free and open source application is available at:</string>
+		<link href="http://code.google.com/p/openintents" />
+		<emptyline />
+		<string>This application is ad free and does not require the internet permission.</string>
+		<emptyline />
+		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<link href="http://www.openintents.org" />
+		<emptyline />
+		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk" />
+		<emptyline />
+		<string>Features:</string>
+		<listitem>Add, edit and delete lists.</listitem>
+		<listitem>Create, delete, and check items quickly and easily.</listitem>
+		<listitem>Variety of themes.</listitem>
+		<listitem>Customizable font size and sort order.</listitem>
+		<listitem>Keep track of separate prices for each store.</listitem>
+		<listitem>Customizable list columns.</listitem>
+		<emptyline />
+		<string>Available extensions for "OI Shopping List":</string>
+		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
+		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<listitem>Show the license information with "OI About".</listitem>
+		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<emptyline />
+		<string>Applications that work with "OI Shopping List":</string>
+		<listitem>Update with "OI Update".</listitem>
+		<listitem>Backup lists with "My Backup Pro".</listitem>
+		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<emptyline />
+		<string>Keywords:</string>
+		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline />
+		<string>International versions:</string>
+		<international />
+		<emptyline />
+		<string>Extensions:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt" />
+		<emptyline />
+		<emptyline />
+		<emptyline />
+	</description>

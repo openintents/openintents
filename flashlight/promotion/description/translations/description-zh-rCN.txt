@@ -1,0 +1,44 @@
+# Application:
+OI手电筒
+
+# Promo text:
+OpenIntents手电筒帮助你在黑暗中寻找光明。运行开启屏背光。
+
+# Description:
+OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+
+应用程序的广告是免费的，不需要网络权限。 
+
+开放源码应用程序的源代码是： 
+http://code.google.com/p/openintents
+
+完整列表的更改，请访问： 
+http://www.openintents.org
+
+可以翻译成您的语言： 
+https://translations.launchpad.net/openintents/trunk
+
+功能 
+* Lock the display backlight on.
+* Lock camera flash on.
+* The color of backlight is customizable.
+
+Available extensions for "OI Flashlight": 
+* Show the license information with "OI About".
+* Change the color of the backlight with "OI Color Picker".
+
+Applications that work with "OI Flashlight": 
+* Update with "OI Update".
+
+关键字： 
+* Flashlight, light, Backlight
+* OI, OpenIntents, Open Intents
+
+国际版本： 
+OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+
+
+Search strings for Market: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

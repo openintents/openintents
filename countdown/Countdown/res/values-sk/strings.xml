@@ -6,7 +6,8 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Lacko545 https://launchpad.net/~lackorauch</string>
+  Lacko545 https://launchpad.net/~lackorauch
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">OI Odpočítavanie vás upozorní po uplynutí určeného času.</string>

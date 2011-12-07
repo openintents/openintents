@@ -343,9 +343,8 @@ msgid "Hide hidden files"
 msgstr ""
 
 #: tmp_strings.xml:139(string)
-#, fuzzy
 msgid "Sort settings"
-msgstr "Configuración"
+msgstr ""
 
 #: tmp_strings.xml:140(string)
 msgid "Sort by"
@@ -364,9 +363,8 @@ msgid "Sort in descending order"
 msgstr ""
 
 #: tmp_strings.xml:145(item)
-#, fuzzy
 msgid "Name"
-msgstr "Renombrar"
+msgstr ""
 
 #: tmp_strings.xml:147(item)
 msgid "Last modified"

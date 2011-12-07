@@ -22,7 +22,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
-  Andrzej Ziółek https://launchpad.net/~andro-v-zik</string>
+  Andrzej Ziółek https://launchpad.net/~andro-v-zik
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
 	<string name="about_comments">To rozszerzenie do OI Listy zakupów i OI Notatnika pozwala Ci importować i eksportować listy i notatki z/do plików formatu CSV</string>

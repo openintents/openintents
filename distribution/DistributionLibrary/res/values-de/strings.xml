@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="oi_distribution_app_name">OI Distribution Library</string>
+    <string name="oi_distribution_app_name">OI Distributions Bibliothek</string>
     
 	<!-- ***************************
 	     About information
@@ -9,6 +9,7 @@
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
   appricoo https://launchpad.net/~appricoo
   hani https://launchpad.net/~markushahnenkamm</string>
@@ -60,11 +61,11 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">Info</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">Es ist keine kompatible Erweiterung verhanden, um alle Informationen anzuzeigen (Kontakt, Info, Lizenz).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
-    <string name="oi_distribution_aboutapp_get">Get OI About</string>
+    <string name="oi_distribution_aboutapp_get">OI About Herunterladen</string>
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
     <string name="oi_distribution_aboutapp">OI About</string>
@@ -78,13 +79,13 @@
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
-    <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
+    <string name="oi_distribution_safe_not_available">Keine kompatible Anwendung zur Verschlüsselung vorhanden.</string>
+    <string name="oi_distribution_safe_not_available_decrypt">Keine kompatible Anwendung zur Entschlüsselung vorhanden.\n\nHinweis: Sie müssen den Master Schlüssel aus einer Backupdatei wiederherstellen, um auf die vorher verschlüsselten Daten zugreifen zu können.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_market_message">Please download %s from the Market or the OpenIntents website.</string>
+    <string name="oi_distribution_download_market_message">Bitte installieren Sie %s aus dem  Market oder über die OpenIntents Webseite.</string>
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
-    <string name="oi_distribution_download_message">Please download %s from the OpenIntents website.</string>
+    <string name="oi_distribution_download_message">Bitte installieren Sie %s über die OpenIntents Internetseite.</string>
     <!-- Dialog button: download the suggested application from Android Market. -->
     <string name="oi_distribution_download_market">Market Download</string>
     <!-- Dialog button: download the suggested application from the developer web site. -->
@@ -93,15 +94,15 @@
     <string name="oi_distribution_download_title">%s herunterladen</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
-	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
+	<string name="oi_distribution_info_activity_text">%s kann in den folgenden Anwendungen genutzt werden:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
     <string name="oi_distribution_info_launch">Starte %s</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name
     (e.g. "OI About requires OI Notepad 1.2.0 or higher.") -->
-	<string name="oi_distribution_info_not_available">%1$s requires %2$s %3$s or higher.</string>
+	<string name="oi_distribution_info_not_available">%1$s benötigt %2$s %3$s oder höher.</string>
 	<!-- Title of a dialog. -->
-	<string name="oi_distribution_info_instructions">Instructions</string>
+	<string name="oi_distribution_info_instructions">Anleitung</string>
 	<!-- Error message -->
-	<string name="oi_distribution_launch_error">Application could not be launched</string>
+	<string name="oi_distribution_launch_error">Anwendung konnte nicht gestartet werden</string>
 	
 </resources>

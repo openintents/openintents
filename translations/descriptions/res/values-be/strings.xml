@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
-	<translators>translator-credits</translators>
+	<translators>Launchpad Contributions:
+  Alexander Geroimenko https://launchpad.net/~geroimenko</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>This application is invoked through the menu of other OI applications.</string>
+		<string>It allows you to view version information, links, credits, and license of an application.</string>
+		<string>Credits include authors, documentation, translators, and artists.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<emptyline/>
+		<string>У прыкладанні няма рэкламы і яно не патрабуе доступу ў інтэрнэт.</string>
+		<emptyline/>
+		<string>Зыходны код гэтага бясплатнага прыкладання даступны на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>З поўным спісам змен і спісам пытянняў, якія часта задаюцца, можна азнаёміцца ​​на:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Вы можаце палепшыць пераклад на вашу мову пры дапамозе Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Магчымасці:</string>
+		<listitem>Shows general info, credits, and license tabs.</listitem>
+		<listitem>Shows translators of all language versions.</listitem>
+		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI About":</string>
+		<listitem>OI Notepad</listitem>
+		<listitem>OI File manager</listitem>
+		<listitem>OI Shopping List</listitem>
+		<listitem>OI Convert CSV</listitem>
+		<listitem>OI Safe</listitem>
+		<listitem>OI Countdown</listitem>
+		<listitem>OI Flashlight</listitem>
+		<emptyline/>
+		<string>Ключавыя словы:</string>
+		<listitem>About, Credits, Information.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Перекладзеныя версіі:</string>
+		<international/>
+		<emptyline/>
+		<string>Пошук у Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->
@@ -9,48 +63,95 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI File Manager allows you to browse your SD card, create directories, rename, copy, move, and delete files.</string>
-		<string>It also acts as an extension to other applications to display "Open" and "Save" dialogs.</string>
+		<string>OI File Manager дазваляе вам праглядаць вашу SD картку, ствараць дырэкторыі, пераназываць, капіраваць, перамяшчаць і выдаляць файлы.</string>
+		<string>Ён таксама працуе як пашырэнне для другіх прыкладанняў, каб адлюстроўваць дыялогі "Адкрыць" і "Захаваць"</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>У прыкладанні няма рэкламы і яно не патрабуе доступу ў інтэрнэт.</string>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>З поўным спісам змен і спісам пытянняў, якія часта задаюцца, можна азнаёміцца ​​на:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Вы можаце палепшыць пераклад на вашу мову пры дапамозе Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Зыходны код гэтага бясплатнага прыкладання даступны на:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Show list of files with thumbnails for images.</listitem>
-		<listitem>Move, copy, rename, and delete files.</listitem>
-		<listitem>Create and delete directories (folders).</listitem>
-		<listitem>Send files by email.</listitem>
-		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
-		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<string>Магчымасці:</string>
+		<listitem>Паказвае спіс файлаў з эскізамі малюнкаў.</listitem>
+		<listitem>Перамяшчае, капіруе, пераназывае і выдаляе файлы.</listitem>
+		<listitem>Стварае і выдаляе дырэкторыі (папкі).</listitem>
+		<listitem>Адпраўляе файлы па электроннай пошце.</listitem>
+		<listitem>Працуе як пашырэнне для іншых прыкладанняў, такіх як GMail, каб прымацоўваць файлы.</listitem>
+		<listitem>Падтрымлівае шмат пашырэнняў файлаў і mime тыпаў.</listitem>
+		<listitem>Падтрымлівае PICK_FILE і PICK_DIRECTORY intents, такім чынам іншыя прыкладанні могуць карыстацца OI File Manager.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Даступныя пашырэнні для "OI File Manager":</string>
+		<listitem>Паказваць інфармацыю аб ліцэнзіі пры дапамозе "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Прыкладанні, якія працуюць з "OI File Manager":</string>
+		<listitem>Адкрываць і захоўваць тэкставыя файлы ў "OI Notepad".</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
+		<string>Ключавыя словы:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>file manager, filemanager, file explorer</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Перекладзеныя версіі:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Пошук у Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
+		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
+		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
+		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<emptyline/>
+		<string>У прыкладанні няма рэкламы і яно не патрабуе доступу ў інтэрнэт.</string>
+		<emptyline/>
+		<string>Зыходны код гэтага бясплатнага прыкладання даступны на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>З поўным спісам змен і спісам пытянняў, якія часта задаюцца, можна азнаёміцца ​​на:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Вы можаце палепшыць пераклад на вашу мову пры дапамозе Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Магчымасці:</string>
+		<listitem>Lock the display backlight on.</listitem>
+		<listitem>Lock camera flash on.</listitem>
+		<listitem>The color of backlight is customizable.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Flashlight":</string>
+		<listitem>Паказваць інфармацыю аб ліцэнзіі пры дапамозе "OI About".</listitem>
+		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Flashlight":</string>
+		<listitem>Абнавіць з "OI Update".</listitem>
+		<emptyline/>
+		<string>Ключавыя словы:</string>
+		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Перекладзеныя версіі:</string>
+		<international/>
+		<emptyline/>
+		<string>Пошук у Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
 	</description>
 	<description application="notepad/NotePad">
 		<!--  OI Notepad -->
@@ -60,53 +161,111 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notepad - гэта поўнафункцыянальнае прыкладанне для запісу нататак з адкрытым зыходным кодам.</string>
+		<string>Вы можаце пазначаць, шукаць і адпраўляць, а таксама ствараць, выдаляць і рэдагаваць нататкі.</string>
+		<string>Дадатковыя магчымасці, такія яз кадаванне, імпарт/экспарт і галасавыя нататкі даступны праз пашырэнні.</string>
+		<string>Усе гэтыя функцыі аб\'яднаны ў спрошчанай і эфектыўнай кампаноўцы, якая можа наладжвацца з дапамогай розных тэм.</string>
 		<emptyline/>
-		<string>This application is ad free and does not require the internet permission.</string>
+		<string>У прыкладанні няма рэкламы і яно не патрабуе доступу ў інтэрнэт.</string>
 		<emptyline/>
-		<string>The source code of this free and open source application is available at:</string>
+		<string>Зыходны код гэтага бясплатнага прыкладання даступны на:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<string>З поўным спісам змен і спісам пытянняў, якія часта задаюцца, можна азнаёміцца ​​на:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<string>Вы можаце палепшыць пераклад на вашу мову пры дапамозе Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>Features:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<string>Магчымасці:</string>
+		<listitem>Дабаўляць, рэдагаваць і выдаляць нататкі.</listitem>
+		<listitem>Доўга ўтрымлівайце націск на нататку каб дадаць пазнакі.</listitem>
+		<listitem>Змяніць памер шрыфта і парадак сартавання.</listitem>
+		<listitem>Наглядная схема з рознымі тэмамі.</listitem>
+		<listitem>Хуткі пошук у нататках.</listitem>
+		<listitem>Адправіць нататкі як MMS ці SMS.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>Даступныя пашырэнні для "OI Notepad":</string>
+		<listitem>Запісаць і прымацаваць галасавыя нататкі з "OI Voice Notes".</listitem>
+		<listitem>Пры дапамозе "OI Convert CSV" вы можаце імпартаваць/экспартаваць нататкі з SD карткі.</listitem>
+		<listitem>Паказваць інфармацыю аб ліцэнзіі пры дапамозе "OI About".</listitem>
+		<listitem>Уставіць дату і час у нататкі з "OI Insert Date".</listitem>
+		<listitem>Перавярнуць тэкст уверх нагамі з "Upside Down".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>Прыкладанні, якія працуюць з "OI Notepad":</string>
+		<listitem>Зарэзерваваць нататкі з "My Backup Pro".</listitem>
+		<listitem>Закадаваць нататкі пры дапамозе "OI Safe".</listitem>
+		<listitem>Кіраваць нататкамі на вашай SD картцы з дапамогай "OI File Manager".</listitem>
+		<listitem>Абнавіць з "OI Update".</listitem>
+		<listitem>Падзяліцца нататкамі праз "Facebook", "Gmail", "Google+", "Twitter", і іншыя прыкладанні.</listitem>
 		<emptyline/>
-		<string>Keywords:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<string>Ключавыя словы:</string>
+		<listitem>Нататка, Блакнот, Нататкі</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
-		<string>International versions:</string>
+		<string>Перекладзеныя версіі:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Пошук у Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
+		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
+		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
+		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Зыходны код гэтага бясплатнага прыкладання даступны на:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>У прыкладанні няма рэкламы і яно не патрабуе доступу ў інтэрнэт.</string>
+		<emptyline/>
+		<string>З поўным спісам змен і спісам пытянняў, якія часта задаюцца, можна азнаёміцца ​​на:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Вы можаце палепшыць пераклад на вашу мову пры дапамозе Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Магчымасці:</string>
+		<listitem>Add, edit and delete lists.</listitem>
+		<listitem>Create, delete, and check items quickly and easily.</listitem>
+		<listitem>Variety of themes.</listitem>
+		<listitem>Customizable font size and sort order.</listitem>
+		<listitem>Keep track of separate prices for each store.</listitem>
+		<listitem>Customizable list columns.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Shopping List":</string>
+		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
+		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<listitem>Паказваць інфармацыю аб ліцэнзіі пры дапамозе "OI About".</listitem>
+		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Shopping List":</string>
+		<listitem>Абнавіць з "OI Update".</listitem>
+		<listitem>Backup lists with "My Backup Pro".</listitem>
+		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<emptyline/>
+		<string>Ключавыя словы:</string>
+		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Перекладзеныя версіі:</string>
+		<international/>
+		<emptyline/>
+		<string>Extensions:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
 	</description>
 </main>

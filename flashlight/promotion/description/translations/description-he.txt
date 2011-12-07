@@ -1,0 +1,37 @@
+OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+
+באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט. 
+
+קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל: 
+http://code.google.com/p/openintents
+
+לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל: 
+http://www.openintents.org
+
+אתם יכולים לעזור לשפר את התרגום בשפתכם ב-Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+מאפיינים: 
+* Lock the display backlight on.
+* Lock camera flash on.
+* The color of backlight is customizable.
+
+Available extensions for "OI Flashlight": 
+* Show the license information with "OI About".
+* Change the color of the backlight with "OI Color Picker".
+
+Applications that work with "OI Flashlight": 
+* Update with "OI Update".
+
+מילות מפתח: 
+* Flashlight, light, Backlight
+* OI, OpenIntents, Open Intents
+
+גרסאות בין-לאומיות: 
+OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+
+
+Search strings for Market: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

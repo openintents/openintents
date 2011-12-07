@@ -1,0 +1,44 @@
+# Application:
+OI Lanterna
+
+# Promo text:
+Lanterna OpenIntents vă ajută să găsiți calea în întuneric. Lumina din spatele ecranului este menținută aprinsă în timp ce rulează această aplicație.
+
+# Description:
+OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+
+Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet. 
+
+Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la: 
+http://code.google.com/p/openintents
+
+Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați: 
+http://www.openintents.org
+
+Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+Caracteristici: 
+* Lock the display backlight on.
+* Lock camera flash on.
+* The color of backlight is customizable.
+
+Available extensions for "OI Flashlight": 
+* Arată informaţiile de licenţă cu "OI About".
+* Change the color of the backlight with "OI Color Picker".
+
+Applications that work with "OI Flashlight": 
+* Actualizaţi cu "OI Update".
+
+Cuvinte cheie: 
+* Flashlight, light, Backlight
+* OI, OpenIntents, Open Intents
+
+Versiuni internaționale: 
+OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+
+
+Şiruri de căutare pentru Market: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

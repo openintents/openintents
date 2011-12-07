@@ -1,0 +1,53 @@
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>This application is invoked through the menu of other OI applications.</string>
+		<string>It allows you to view version information, links, credits, and license of an application.</string>
+		<string>Credits include authors, documentation, translators, and artists.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<emptyline />
+		<string>This application is ad free and does not require the internet permission.</string>
+		<emptyline />
+		<string>The source code of this free and open source application is available at:</string>
+		<link href="http://code.google.com/p/openintents" />
+		<emptyline />
+		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<link href="http://www.openintents.org" />
+		<emptyline />
+		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk" />
+		<emptyline />
+		<string>Features:</string>
+		<listitem>Shows general info, credits, and license tabs.</listitem>
+		<listitem>Shows translators of all language versions.</listitem>
+		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<emptyline />
+		<string>Applications that work with "OI About":</string>
+		<listitem>OI Notepad</listitem>
+		<listitem>OI File manager</listitem>
+		<listitem>OI Shopping List</listitem>
+		<listitem>OI Convert CSV</listitem>
+		<listitem>OI Safe</listitem>
+		<listitem>OI Countdown</listitem>
+		<listitem>OI Flashlight</listitem>
+		<emptyline />
+		<string>Keywords:</string>
+		<listitem>About, Credits, Information.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline />
+		<string>International versions:</string>
+		<international />
+		<emptyline />
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt" />
+		<emptyline />
+		<emptyline />
+	</description>

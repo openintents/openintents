@@ -1,0 +1,7 @@
+# Application:
+OI Flashlight
+
+# Promo text:
+Το OpenIntents Flashlight σας βοηθά να βρείτε το δρόμο σας στο σκοτάδι. Ο οπίσθιος φωτισμός της οθόνης παραμένει ενερηοποιημένος κατά την εκτέλεση αυτής της εφαρμογής.
+
+# Description:

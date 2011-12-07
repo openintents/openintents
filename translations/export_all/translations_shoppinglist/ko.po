@@ -554,9 +554,8 @@ msgid "Advanced settings"
 msgstr "고급 설정"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "고급 설정"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)

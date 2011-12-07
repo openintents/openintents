@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Robert <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,6 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Florentina Mușat https://launchpad.net/~kuchiki14\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Robert https://launchpad.net/~usamird\n"
 "  iulargsb https://launchpad.net/~iulargsb"
@@ -337,9 +338,8 @@ msgid "Hide hidden files"
 msgstr "Ascunde fișierele ascunse"
 
 #: tmp_strings.xml:139(string)
-#, fuzzy
 msgid "Sort settings"
-msgstr "Configurare"
+msgstr ""
 
 #: tmp_strings.xml:140(string)
 msgid "Sort by"
@@ -358,14 +358,12 @@ msgid "Sort in descending order"
 msgstr ""
 
 #: tmp_strings.xml:145(item)
-#, fuzzy
 msgid "Name"
-msgstr "Redenumește"
+msgstr ""
 
 #: tmp_strings.xml:147(item)
-#, fuzzy
 msgid "Last modified"
-msgstr "Ultimul Modificat"
+msgstr ""
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature

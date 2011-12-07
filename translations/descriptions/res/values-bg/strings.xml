@@ -1,7 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  Boyan Penchev https://launchpad.net/~boyan-penchev</translators>
+  Boyan Penchev https://launchpad.net/~boyan-penchev
+  Dariel Kremov https://launchpad.net/~dkremov
+  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>This application is invoked through the menu of other OI applications.</string>
+		<string>It allows you to view version information, links, credits, and license of an application.</string>
+		<string>Credits include authors, documentation, translators, and artists.</string>
+		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<emptyline/>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<emptyline/>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Характеристики:</string>
+		<listitem>Shows general info, credits, and license tabs.</listitem>
+		<listitem>Shows translators of all language versions.</listitem>
+		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI About":</string>
+		<listitem>OI Notepad</listitem>
+		<listitem>OI File manager</listitem>
+		<listitem>OI Shopping List</listitem>
+		<listitem>OI Convert CSV</listitem>
+		<listitem>OI Safe</listitem>
+		<listitem>OI Countdown</listitem>
+		<listitem>OI Flashlight</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
+		<listitem>About, Credits, Information.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Международни версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Стрингове за търсенето в Market</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
 	<description application="filemanager/FileManager">
 		<!--  OI File Manager -->
 		<!--  -->
@@ -34,11 +89,11 @@
 		<listitem>Поддържа много файлови разширения и mime видове.</listitem>
 		<listitem>Поддържа PICK_FILE и PICK_DIRECTORY ,така че и други приложения да могат да използват OI File Manager.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>Налични разширения за "OI File Manager":</string>
+		<listitem>Покажи информация за лиценза с "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>Приложения, които работят със "OI File Manager":</string>
+		<listitem>Отваряйте и запазвайте текстови файлове в "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -49,23 +104,23 @@
 		<string>Международни версии:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Стрингове за търсенето в Market</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
 	</description>
-	<description application="notepad/NotePad">
-		<!--  OI Notepad -->
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
 		<!--  -->
 		<!--  Application name and promo text are extracted from the application strings. -->
 		<!--  -->
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
+		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
+		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
+		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
 		<emptyline/>
 		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
 		<emptyline/>
@@ -79,36 +134,141 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>Lock the display backlight on.</listitem>
+		<listitem>Lock camera flash on.</listitem>
+		<listitem>The color of backlight is customizable.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>Available extensions for "OI Flashlight":</string>
+		<listitem>Покажи информация за лиценза с "OI About".</listitem>
+		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>Applications that work with "OI Flashlight":</string>
+		<listitem>Обновявай с "OI Update".</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>Flashlight, light, Backlight</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Международни версии:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Стрингове за търсенето в Market</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Notepad е пълнофункционално приложение с отворен код за писане на бележки.</string>
+		<string>С него Вие можете да отбелязвате, да търсите и изпращате вашите бележки, в допълнение към основните функции като създаването, изтриването и редактирането на бележките.</string>
+		<string>Допълнителни функции като шифроване, импортиране/експортиране, и гласови записки могат да се добавят с разширения.</string>
+		<string>Цялата тази функционалност е събрана заедно в опростен и ефективен изглед, който може да се персонализира с разнообразие от палитри.</string>
+		<emptyline/>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<emptyline/>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Характеристики:</string>
+		<listitem>Добавай, редактирай и трий бележки.</listitem>
+		<listitem>Натиснете продължително върху бележки за да добавите етикети.</listitem>
+		<listitem>Промени размера на шрифта и начина на сортиране.</listitem>
+		<listitem>Ясно подреден изглед с разнообразие от палитри.</listitem>
+		<listitem>Търси бързо из бележките.</listitem>
+		<listitem>Изпращай бележки като MMS или SMS.</listitem>
+		<emptyline/>
+		<string>Налични разширения за "OI Notepad":</string>
+		<listitem>Записвай и прилагай гласови записки към бележките с "OI Voice Notes".</listitem>
+		<listitem>С "OI Convert CSV" импортирай/експортирай бележки от SD картата.</listitem>
+		<listitem>Покажи информация за лиценза с "OI About".</listitem>
+		<listitem>Вмъкни датата и часа в бележките с "OI Insert Date".</listitem>
+		<listitem>Обърне текста наобратно с "Upside Down".</listitem>
+		<emptyline/>
+		<string>Приложения, които работят с "OI Notepad":</string>
+		<listitem>Направи резервни копия на бележките си с "My Backup Pro".</listitem>
+		<listitem>Шифровай бележки с "OI Safe".</listitem>
+		<listitem>Работи с бележките на SD картата си с "OI File Manager".</listitem>
+		<listitem>Обновявай с "OI Update".</listitem>
+		<listitem>Споделяй бележки през "Facebook", "Gmail", "Google+", "Twitter" и много други приложения.</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
+		<listitem>Бележка, Бележник, Бележки</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Международни версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Стрингове за търсенето в Market</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
+		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
+		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
+		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
+		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<emptyline/>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<emptyline/>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Характеристики:</string>
+		<listitem>Add, edit and delete lists.</listitem>
+		<listitem>Create, delete, and check items quickly and easily.</listitem>
+		<listitem>Variety of themes.</listitem>
+		<listitem>Customizable font size and sort order.</listitem>
+		<listitem>Keep track of separate prices for each store.</listitem>
+		<listitem>Customizable list columns.</listitem>
+		<emptyline/>
+		<string>Available extensions for "OI Shopping List":</string>
+		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
+		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<listitem>Покажи информация за лиценза с "OI About".</listitem>
+		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<emptyline/>
+		<string>Applications that work with "OI Shopping List":</string>
+		<listitem>Обновявай с "OI Update".</listitem>
+		<listitem>Backup lists with "My Backup Pro".</listitem>
+		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
+		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Международни версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Extensions:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
 	</description>
 </main>

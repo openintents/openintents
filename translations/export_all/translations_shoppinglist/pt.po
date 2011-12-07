@@ -244,9 +244,8 @@ msgid "Note"
 msgstr ""
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "Quantidade"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
 msgid "Other Priority..."
@@ -476,9 +475,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "Quantidade"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."

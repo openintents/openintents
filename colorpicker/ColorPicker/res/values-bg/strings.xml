@@ -6,7 +6,8 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Anton Dudov https://launchpad.net/~anton-cho</string>
+  Anton Dudov https://launchpad.net/~anton-cho
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Strings for OI About -->
 	<string name="about_comments">Openintents Color Picker е приставка за OI Flashlight и други съвместими приложения.</string>

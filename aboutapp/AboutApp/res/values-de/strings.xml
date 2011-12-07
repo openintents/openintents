@@ -28,6 +28,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
@@ -82,14 +83,14 @@
 		<item>Dänisch</item>
 		<item>Deutsch</item>
 		<item>Englisch</item>
-		<item>Greek</item>
+		<item>Griechisch</item>
 		<item>Spanisch</item>
-		<item>Persian</item>
+		<item>Persisch</item>
 		<item>Finnisch</item>
 		<item>Färöisch</item>
 		<item>Französisch</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
+		<item>Kroatisch</item>
+		<item>Ungarisch</item>
 		<item>Italienisch</item>
 		<item>Japanisch</item>
 		<item>Koreanisch</item>

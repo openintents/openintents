@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	     
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OpenIntents Flashlight дапаможа вам знайсці дарогу ў цемры. Пакуль запушчана прыкладанне, падсветка экрана застаецца ўключанай.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Flashlight</string>
+    
+    <string name="backlight_info">Падсветка застаецца ўключанай.</string>
+    
+    <string name="color">Колер</string>
+    
+    <!-- Application name should be consistent across translations. -->
+    <string name="color_picker">OI Палітра</string>
+    
+    <string name="preferences">Наладкі</string>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+	
+	<!-- Title for preferences or settings -->
+	<string name="settings_titlebar">Наладкі</string>
+	<string name="settings_title_keep_color">Захаваць колер</string>
+	<string name="settings_summary_keep_color">Захаваць колер для наступнага запуску Flashlight</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	
+	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
+		user tries to access it. -->
+    <string name="color_picker_modularization_explanation">Каб зрабіць палітру больш зручнай для іншых распрацоўнікаў, мы вылучылі яе ў асобнае прыкладанне.</string>
+    <string name="setting_use_camera_flash">Выкарыстоўваць ўспышку камеры</string>
+    <string name="setting_use_camera_flash_summary">Выкарыстоўваць ўспышку камеры замест падсветкі экрана.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <!-- Information to enable the camera flash as flashlight. -->
+    <string name="cameralight_info">Дакраніцеся, каб уключыць успышку камеры (Можа заняць секунду).</string>
+    <string name="cameralight_stop_info">Дакраніцеся, каб выключыць успышку камеры.</string>
+    
+</resources>

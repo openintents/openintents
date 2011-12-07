@@ -244,14 +244,12 @@ msgid "Note"
 msgstr "ئىزاھات"
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "سانى"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
-#, fuzzy
 msgid "Other Priority..."
-msgstr "ئالدىنلىق"
+msgstr ""
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
@@ -477,9 +475,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "سانى"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -562,9 +559,8 @@ msgid "Advanced settings"
 msgstr "ئالىي تەڭشەك"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "پىروگرامما تەڭشىكى"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
@@ -789,6 +785,3 @@ msgstr "مەشغۇلات تاللاڭ:"
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "تىزىم تاللاڭ:"
-
-
-

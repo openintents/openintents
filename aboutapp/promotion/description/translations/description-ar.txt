@@ -1,0 +1,7 @@
+# Application:
+OI About
+
+# Promo text:
+A standalone about dialog that is shared between apps.
+
+# Description:

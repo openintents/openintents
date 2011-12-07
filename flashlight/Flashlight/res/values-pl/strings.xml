@@ -9,6 +9,7 @@
 
 Launchpad Contributions:
   Damian Skrodzki https://launchpad.net/~damienix
+  Karolina Kowal https://launchpad.net/~gwiazdeczka11
   Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
 	
     <!-- Short explanation of the application -->
@@ -45,8 +46,8 @@ Launchpad Contributions:
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Aby uczynić Próbnik Kolorów jeszcze bardziej użytecznym dla innych programistów, uczyniliśmy go odrębną aplikacją.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="setting_use_camera_flash">Używaj fleszu kamery.</string>
+    <string name="setting_use_camera_flash_summary">Używaj fleszu kamery zamiast podświetlenia ekranu.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
     <string name="cameralight_info">Press to enable camera light (May take a second).</string>
     <string name="cameralight_stop_info">Press to disable camera light.</string>

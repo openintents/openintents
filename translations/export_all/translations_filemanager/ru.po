@@ -338,9 +338,8 @@ msgid "Hide hidden files"
 msgstr "Скрыть скрытые файлы"
 
 #: tmp_strings.xml:139(string)
-#, fuzzy
 msgid "Sort settings"
-msgstr "Параметры"
+msgstr ""
 
 #: tmp_strings.xml:140(string)
 msgid "Sort by"
@@ -359,14 +358,12 @@ msgid "Sort in descending order"
 msgstr ""
 
 #: tmp_strings.xml:145(item)
-#, fuzzy
 msgid "Name"
-msgstr "Переименовать"
+msgstr ""
 
 #: tmp_strings.xml:147(item)
-#, fuzzy
 msgid "Last modified"
-msgstr "Последнее изменение"
+msgstr ""
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature

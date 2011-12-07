@@ -241,9 +241,8 @@ msgid "Note"
 msgstr ""
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "Antal"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
 msgid "Other Priority..."
@@ -473,9 +472,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "Antal"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -557,9 +555,8 @@ msgid "Advanced settings"
 msgstr "Avancerade inställningar"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "Applikationsinställningar"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)

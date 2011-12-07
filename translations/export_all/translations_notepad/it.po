@@ -22,7 +22,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  CAppa https://launchpad.net/~cappa-temp-1\n"
 "  Martino Barbon https://launchpad.net/~martins999\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  simone.sandri https://launchpad.net/~lexluxsox"
@@ -107,18 +106,16 @@ msgstr "Impossibile caricare la nota"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
-#, fuzzy
 msgid "Share"
-msgstr "Salva"
+msgstr ""
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
 msgstr "Nota vuota"
 
 #: tmp_strings.xml:71(string)
-#, fuzzy
 msgid "No application available for sharing."
-msgstr "Nessuna applicazione disponibile per l'invio"
+msgstr ""
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
@@ -505,9 +502,5 @@ msgid "Are you sure you want to delete this note?"
 msgstr ""
 
 #: tmp_strings.xml:219(string)
-#, fuzzy
 msgid "New note"
-msgstr "Nota"
-
-
-
+msgstr ""

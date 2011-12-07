@@ -1,0 +1,7 @@
+# Application:
+OI Flashlight
+
+# Promo text:
+OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
+
+# Description:

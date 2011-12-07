@@ -6,6 +6,7 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Dariel Kremov https://launchpad.net/~dkremov
   Kras4ooo https://launchpad.net/~kkrassi1984
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
@@ -43,10 +44,10 @@
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Да се направи избор на цвета е по-полезен за други производители, се разделя в собствените си приложения.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="setting_use_camera_flash">Използвай светкавицата на камерата</string>
+    <string name="setting_use_camera_flash_summary">Използвай светкавицата на камерата вместо осветяването на дисплея.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">Натисни за да активираш светлина от камерата (Може да отнеме няколко секунди).</string>
+    <string name="cameralight_stop_info">Натисни за да деактивираш светлина от камерата.</string>
     
 </resources>

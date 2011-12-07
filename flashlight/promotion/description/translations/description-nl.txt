@@ -1,0 +1,44 @@
+# Application:
+OI Zaklamp
+
+# Promo text:
+OpenIntents Flashlight helpt u uw weg te vinden in het donker. Het schermlicht blijft aan tijdens het uitvoeren van deze toepassing.
+
+# Description:
+OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+
+Deze applicatie is advertentievrij, en heeft geen internet toegang nodig. 
+
+De broncode van deze gratis en open source applicatie is beschikbaar op: 
+http://code.google.com/p/openintents
+
+Het complete overzicht van wijzigingen en de FAQ is te lezen op: 
+http://www.openintents.org
+
+Jij kan helpen om de vertaling in je eigen taal te verbeteren via Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+Eigenschappen: 
+* Lock the display backlight on.
+* Lock camera flash on.
+* The color of backlight is customizable.
+
+Available extensions for "OI Flashlight": 
+* Show the license information with "OI About".
+* Change the color of the backlight with "OI Color Picker".
+
+Applications that work with "OI Flashlight": 
+* Update with "OI Update".
+
+Sleutelwoorden: 
+* Flashlight, light, Backlight
+* OI, OpenIntents, Open Intents
+
+Internationale versies 
+OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+
+
+Search strings for Market: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

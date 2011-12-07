@@ -1,0 +1,7 @@
+# Application:
+Sobre o OI
+
+# Promo text:
+Um ficheiro de informação partilhado entre as aplicações.
+
+# Description:

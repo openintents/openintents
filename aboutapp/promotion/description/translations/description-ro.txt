@@ -1,0 +1,56 @@
+# Application:
+OI About
+
+# Promo text:
+Un dialog despre de sine stătător care este împărțit între aplicații.
+
+# Description:
+OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+
+Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet. 
+
+Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la: 
+http://code.google.com/p/openintents
+
+Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați: 
+http://www.openintents.org
+
+Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+Caracteristici: 
+* Shows general info, credits, and license tabs.
+* Shows translators of all language versions.
+* Retrieves information from application manifest through default tags and metadata.
+* Optionally, all fields can be modified through intent extras.
+
+Applications that work with "OI About": 
+* OI Notepad
+* OI File manager
+* OI Shopping List
+* OI Convert CSV
+* OI Safe
+* OI Countdown
+* OI Flashlight
+
+Cuvinte cheie: 
+* About, Credits, Information.
+* OI, OpenIntents, Open Intents.
+
+Versiuni internaționale: 
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, ກ່ຽວກັບ OI
+
+
+Şiruri de căutare pentru Market: 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

@@ -354,9 +354,8 @@ msgid "Sort in descending order"
 msgstr ""
 
 #: tmp_strings.xml:145(item)
-#, fuzzy
 msgid "Name"
-msgstr "ປ່ຽນຊື່"
+msgstr ""
 
 #: tmp_strings.xml:147(item)
 msgid "Last modified"

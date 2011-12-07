@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Alex Toma <Unknown>\n"
+"Last-Translator: Stelescu Raul <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,8 +24,10 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Alex Toma https://launchpad.net/~alex26toma\n"
 "  Eduard Roventa https://launchpad.net/~rov-93\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Pricop Alexandru-Mihai https://launchpad.net/~pricop2008\n"
+"  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  Tudorica Andrei https://launchpad.net/~andreitudoricacj\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
@@ -49,11 +51,11 @@ msgstr "Nu există categorii. Vă rugăm adăugați una din Menu-&gt;Adaugă"
 
 #: tmp_strings.xml:37(string) tmp_strings.xml:197(string)
 msgid "Lock"
-msgstr "Blocat"
+msgstr "Blochează"
 
 #: tmp_strings.xml:38(string)
 msgid "View"
-msgstr "Vizualizare"
+msgstr "Vizualizează"
 
 #: tmp_strings.xml:39(string)
 msgid "Edit"
@@ -77,7 +79,7 @@ msgstr "Parole"
 
 #: tmp_strings.xml:44(string)
 msgid "Master Password"
-msgstr "Parola Universală"
+msgstr "Parola principală"
 
 #: tmp_strings.xml:45(string)
 msgid "Username"
@@ -93,7 +95,7 @@ msgstr "Descriere"
 
 #: tmp_strings.xml:48(string)
 msgid "Notes"
-msgstr "Note"
+msgstr "Notițe"
 
 #: tmp_strings.xml:49(string)
 msgid "Save"
@@ -101,7 +103,7 @@ msgstr "Salvează"
 
 #: tmp_strings.xml:50(string)
 msgid "Invalid password. Please try again."
-msgstr "Parolă incorectă. Vă rugăm reîncercați."
+msgstr "Parolă incorectă. Încercați din nou."
 
 #: tmp_strings.xml:51(string)
 msgid "Password must be at least 4 characters"
@@ -120,8 +122,8 @@ msgid ""
 "Please enter a password below, which will be used to keep your passwords "
 "safe."
 msgstr ""
-"Vă rugăm introduceți parola dedesubt, care va fi folosită pentru a vă păstra "
-"parolele în siguranță."
+"Introduceți parola mai jos, care va fi folosită pentru a vă păstra parolele "
+"în sigurață."
 
 #: tmp_strings.xml:55(string)
 msgid ""
@@ -138,8 +140,8 @@ msgid ""
 "Another application is asking to use the master key. Please type in your "
 "password to unlock it."
 msgstr ""
-"O altă aplicaţie solicită să utilizeze tasta de maestru. Vă rugăm să "
-"introduceţi parola pentru a-l debloca."
+"O altă aplicație solicită folosirea cheii principale. Introduceți parola "
+"pentru a o debloca."
 
 #: tmp_strings.xml:57(string)
 msgid "Categories"
@@ -167,11 +169,11 @@ msgstr "Categoria nu este goală. Trebuie sa stergeţi parola prima dată."
 
 #: tmp_strings.xml:63(string)
 msgid "Cannot decrypt category"
-msgstr "Nu se poate decripta categoria"
+msgstr "Categoria nu poate fi decriptată"
 
 #: tmp_strings.xml:64(string)
 msgid "Cannot decrypt password"
-msgstr "Nu se poate decripta parola"
+msgstr "Parola nu poate fi decriptată"
 
 #: tmp_strings.xml:65(string)
 msgid "Error exporting database"
@@ -179,7 +181,7 @@ msgstr "Eroare la exportarea bazei de data"
 
 #: tmp_strings.xml:66(string)
 msgid "Export Database"
-msgstr "Exportă Baza de Date"
+msgstr "Exportă baze de date"
 
 #: tmp_strings.xml:67(string)
 msgid ""
@@ -195,20 +197,20 @@ msgstr ""
 #: tmp_strings.xml:68(string)
 msgid "Export to '%s' successful. Warning! The file is not encrypted."
 msgstr ""
-"Exportul catre '%s' a fost făcut cu succes. Atenție! Fișierul nu este "
-"încriptat."
+"Exportul către „%s” a fost făcut cu succes. Atenție! Fișierul nu este "
+"criptat."
 
 #: tmp_strings.xml:69(string)
 msgid ""
 "Unable to create export file 'oisafe.csv' on SDCARD. You might try "
 "disconnecting USB from computer."
 msgstr ""
-"Imposibil de a crea fişierul de export \"oisafe.csv\" pe SDCARD. Ai putea "
-"încerca deconectarea USB-ului de la calculator."
+"Nu se poate crea fişierul de export „oisafe.csv” pe SDCARD. Ați putea "
+"încerca deconectarea USBului de la calculator."
 
 #: tmp_strings.xml:70(string)
 msgid "Import Database"
-msgstr "Importă Baza de Date"
+msgstr "Importă baze de date"
 
 #: tmp_strings.xml:71(string)
 msgid "Import file is missing:"
@@ -219,8 +221,8 @@ msgid ""
 "Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
 "USB from computer."
 msgstr ""
-"Imposibil de a importa fişierul 'oisafe.csv' de la SDCARD. Ai putea încerca "
-"deconectarea USB-ului de la calculator."
+"Imposibil de a importa fişierul „oisafe.csv” de la SDCARD. Ati putea încerca "
+"deconectarea USBului de la calculator."
 
 #: tmp_strings.xml:73(string)
 msgid "First line is missing fields."
@@ -244,11 +246,11 @@ msgstr "Nu"
 
 #: tmp_strings.xml:78(string)
 msgid "Please wait while importing..."
-msgstr "Vă rugăm asteptați în timp ce se importă..."
+msgstr "Așteptați cât timp se importă..."
 
 #: tmp_strings.xml:79(string)
 msgid "No categories found."
-msgstr "Nu au fost găsite categorii."
+msgstr "Nu s-au găsit categorii."
 
 #: tmp_strings.xml:80(string)
 msgid "No entries found in CSV."
@@ -279,7 +281,7 @@ msgid ""
 "Are you really sure you want to delete the database? This cannot be undone."
 msgstr ""
 "Sunteţi sigur că doriţi să ştergeţi baza de date? Acest lucru nu poate fi "
-"anulată."
+"anulat."
 
 #: tmp_strings.xml:87(string)
 msgid "Added"
@@ -298,14 +300,16 @@ msgid ""
 "Since it is not secure to keep passwords in clear text CSV files, would you "
 "like to delete"
 msgstr ""
+"Deoarece nu este sigur să păstrați parolele în fișiere text CSV, ați vrea să "
+"le ștergeți"
 
 #: tmp_strings.xml:91(string)
 msgid "Edit Entry"
-msgstr ""
+msgstr "Editează înregistrarea"
 
 #: tmp_strings.xml:92(string)
 msgid "View Entry"
-msgstr ""
+msgstr "Vizualizează intrarea"
 
 #: tmp_strings.xml:93(string)
 msgid "Help"
@@ -317,19 +321,19 @@ msgstr "Închide"
 
 #: tmp_strings.xml:95(string)
 msgid "Go"
-msgstr ""
+msgstr "Navighează"
 
 #: tmp_strings.xml:96(string)
 msgid "Delete Password"
-msgstr ""
+msgstr "Șterge parola"
 
 #: tmp_strings.xml:97(string)
 msgid "Are you sure you want to delete this password?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să ștergeți această parolă?"
 
 #: tmp_strings.xml:98(string)
 msgid "Change Master Password"
-msgstr ""
+msgstr "Schimbă parola principală"
 
 #: tmp_strings.xml:99(string)
 msgid ""
@@ -337,26 +341,29 @@ msgid ""
 "re-encrypted with the new password. The more complex your password is, the "
 "safer your data will be."
 msgstr ""
+"Folosiți aceasta pentru a schimba parola pe care o folosiți pentru a debloca "
+"OI Safe. Datele dumneavoastă vor fi recriptate cu noua parolă. Cu cat parola "
+"este mai complexă, cu atat datele vor fi mai securizate."
 
 #: tmp_strings.xml:100(string)
 msgid "Old password"
-msgstr "Parola veche"
+msgstr "Parolă veche"
 
 #: tmp_strings.xml:101(string)
 msgid "New password"
-msgstr "Parola nouă"
+msgstr "Parolă nouă"
 
 #: tmp_strings.xml:102(string)
 msgid "Verify password"
-msgstr ""
+msgstr "Verifică parola"
 
 #: tmp_strings.xml:103(string)
 msgid "New and Verify passwords do not match."
-msgstr ""
+msgstr "Parola nouă si cea de verificare nu se potrivesc"
 
 #: tmp_strings.xml:104(string)
 msgid "Old password is invalid. Please try again."
-msgstr ""
+msgstr "Parola veche este invalidă. Încercați din nou."
 
 #: tmp_strings.xml:105(string)
 msgid "Error changing password"
@@ -364,7 +371,7 @@ msgstr "Eroare la schimbarea parolei"
 
 #: tmp_strings.xml:106(string)
 msgid "Master Password changed"
-msgstr ""
+msgstr "Parola principală a fost schimbată"
 
 #: tmp_strings.xml:107(string)
 msgid "Confirm"
@@ -380,19 +387,19 @@ msgstr "Copie de siguranță"
 
 #: tmp_strings.xml:110(string)
 msgid "Backing up to"
-msgstr ""
+msgstr "Copiere de rezervă către"
 
 #: tmp_strings.xml:111(string)
 msgid "Complete. Passwords backed up:"
-msgstr ""
+msgstr "Complet. Parolele de rezervă au fost copiate:"
 
 #: tmp_strings.xml:112(string)
 msgid "Backup failed:"
-msgstr ""
+msgstr "Copierea de rezervă a eșuat"
 
 #: tmp_strings.xml:113(string)
 msgid "Restore"
-msgstr ""
+msgstr "Restabilește"
 
 #: tmp_strings.xml:114(string)
 msgid "Filename"
@@ -403,62 +410,67 @@ msgid ""
 "Backup file not found. You need to perform a backup first to create it. Or "
 "copy a backup from your PC."
 msgstr ""
+"Fișierul de rezervă nu a fost găsit. Trebuie să efectuați o copiere de "
+"rezervă pentru a crea unul. Sau copiați unul de rezervă din PC-ul "
+"dumneavoastră"
 
 #: tmp_strings.xml:116(string)
 msgid ""
 "Please provide the password used by the backup file. Your master password "
 "will be set to this."
 msgstr ""
+"Introduceți parola folosită de către fișierul de rezervă. Parola "
+"dumneavoastră principală va fi setată ca acesta."
 
 #. Toast message. %s contains a more detailed error message.
 #: tmp_strings.xml:119(string)
 msgid "Unable to open file: %s"
-msgstr ""
+msgstr "Nu se poate deschide fișierul: %s"
 
 #. Toast message. %s contains the version number of the database.
 #: tmp_strings.xml:122(string)
 msgid "Version not supported: %s"
-msgstr ""
+msgstr "Versiunea nu este suportată: %s"
 
 #: tmp_strings.xml:124(string)
 msgid "Restore error."
-msgstr ""
+msgstr "Eroare la restabilire."
 
 #: tmp_strings.xml:125(string)
 msgid "Bad password."
-msgstr ""
+msgstr "Parolă greșită."
 
 #: tmp_strings.xml:126(string)
 msgid "Restore Database"
-msgstr ""
+msgstr "Restabilește baza de date."
 
 #: tmp_strings.xml:127(string)
 msgid "Are you sure you want to replace the current data?"
-msgstr ""
+msgstr "Sunteți sigur că doriți să înlocuiți datele curente?"
 
 #: tmp_strings.xml:128(string)
 msgid "Found %1$s passwords from backup dated %2$s."
-msgstr ""
+msgstr "S-au găsit %1$s parole din datele de rezervă %2$s."
 
 #: tmp_strings.xml:129(string)
 msgid "Complete. Passwords restored: %s"
-msgstr ""
+msgstr "Complet. Parole restabilite: %s"
 
 #: tmp_strings.xml:130(string)
 msgid "copied to Clipboard"
-msgstr ""
+msgstr "Copiat în Clipboard"
 
 #: tmp_strings.xml:131(string)
 msgid "Invalid website"
-msgstr ""
+msgstr "Pagină web invalidă"
 
 #: tmp_strings.xml:132(string)
 msgid "Database Error"
-msgstr ""
+msgstr "Eroare bază de date"
 
 #: tmp_strings.xml:133(string)
 msgid "Database error. Out of space?"
-msgstr ""
+msgstr "Eroare bază de date. Fară spațiu?"
 
 #. Menu label to open a category
 #: tmp_strings.xml:136(string)
@@ -467,13 +479,15 @@ msgstr "Deschide"
 
 #: tmp_strings.xml:138(string)
 msgid "Database Version Error"
-msgstr ""
+msgstr "Eroare versiune la baza de date."
 
 #: tmp_strings.xml:139(string)
 msgid ""
 "Sorry, but the version of the database is not supported. You must install "
 "the version associated with this database."
 msgstr ""
+"Versiunea bazei de date nu este suportată. Trebuie să instalați versiunea "
+"asociată cu această bază de date."
 
 #. Menu label to move a password to another category
 #: tmp_strings.xml:142(string)
@@ -482,12 +496,12 @@ msgstr "Mută"
 
 #: tmp_strings.xml:144(string)
 msgid "Select Category"
-msgstr ""
+msgstr "Selectează categorie"
 
 #. Toast that password has been moved to another category
 #: tmp_strings.xml:147(string)
 msgid "Moved to %s"
-msgstr ""
+msgstr "Mutat la %s"
 
 #: tmp_strings.xml:149(string)
 msgid "Settings"
@@ -495,108 +509,108 @@ msgstr "Configurări"
 
 #: tmp_strings.xml:150(string)
 msgid "Allow external access"
-msgstr ""
+msgstr "Permite acces extern"
 
 #: tmp_strings.xml:151(string)
 msgid "Allow other applications to secure your data with OI Safe"
-msgstr ""
+msgstr "Permite altor aplicații să securizeze datele cu OI Safe"
 
 #: tmp_strings.xml:152(string)
 msgid "OI Safe: Another application requests access."
-msgstr ""
+msgstr "OI Safe: Altă aplicație solicită acces."
 
 #: tmp_strings.xml:153(string)
 msgid "Allow other applications to secure your data with OI Safe."
-msgstr ""
+msgstr "Permite altor aplicații să securizeze datele cu OI Safe"
 
 #: tmp_strings.xml:154(string)
 msgid "This can also be set in OI Safe's Menu / Settings."
-msgstr ""
+msgstr "Aceasta poate fi setată în meniul OI Safe / Configurări"
 
 #. Preference title for auto lock timeout
 #: tmp_strings.xml:157(string) tmp_strings.xml:162(string)
 msgid "Auto lock timeout"
-msgstr ""
+msgstr "Autoblocare la expirarea timpului"
 
 #. Preference summary for auto lock timeout
 #: tmp_strings.xml:160(string)
 msgid "Number of minutes before timeout occurs and safe is locked"
-msgstr ""
+msgstr "Numărul de minute înainte ca timpul să expire și să fie închis"
 
 #. Preference title for lock (OI Safe) on screen lock (device)
 #: tmp_strings.xml:165(string)
 msgid "Lock on screen lock"
-msgstr ""
+msgstr "Blochează când ecranul se blochează"
 
 #. Preference summary for lock (OI Safe) on screen lock
 #: tmp_strings.xml:168(string)
 msgid "Lock when the screen locks"
-msgstr ""
+msgstr "Blochează când ecranul se blochează"
 
 #. Preference title: use a numeric keypad to enter the password
 #: tmp_strings.xml:171(string)
 msgid "Keypad"
-msgstr ""
+msgstr "Tastatură numerică"
 
 #. Preference summary: for a numeric keypad
 #: tmp_strings.xml:174(string)
 msgid "Use a keypad to enter Master Password"
-msgstr ""
+msgstr "Folosește tastatura numerică pentru a introduce parola principală"
 
 #. Preference title for keypad mute
 #: tmp_strings.xml:177(string)
 msgid "Keypad Mute"
-msgstr ""
+msgstr "Oprește tastatura numerică"
 
 #. Preference summary: Make the keypad sounds mute. 
 #. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
 #: tmp_strings.xml:181(string)
 msgid "Mute keypad sounds"
-msgstr ""
+msgstr "Oprește sunetul tastaturii numerice"
 
 #: tmp_strings.xml:183(string)
 msgid "Auto backup"
-msgstr ""
+msgstr "Autocopiere de rezervă"
 
 #: tmp_strings.xml:184(string)
 msgid "Automatically prompt to backup passwords"
-msgstr ""
+msgstr "Solicită automat să copieze parolele"
 
 #: tmp_strings.xml:186(string)
 msgid "Auto backup days"
-msgstr ""
+msgstr "Zile în care se efectuează autocopierea de rezervă"
 
 #: tmp_strings.xml:187(string)
 msgid "Number of days to wait before next auto backup"
-msgstr ""
+msgstr "Numărul de zile de așteptat până la următoarea autocopiere de rezervă"
 
 #: tmp_strings.xml:188(string)
 msgid "Auto Backup Days"
-msgstr ""
+msgstr "Zile în care se efectuează autocopierea de rezervă"
 
 #: tmp_strings.xml:191(string)
 msgid "Decrypt (OI Safe)"
-msgstr ""
+msgstr "Decriptează (OI Safe)"
 
 #: tmp_strings.xml:192(string)
 msgid "Encrypt (OI Safe)"
-msgstr ""
+msgstr "Criptează (OI Safe)"
 
 #: tmp_strings.xml:193(string)
 msgid "Get password (OI Safe)"
-msgstr ""
+msgstr "Solicită parolă (OI Safe)"
 
 #: tmp_strings.xml:194(string)
 msgid "Set password (OI Safe)"
-msgstr ""
+msgstr "Setează parolă (OI Safe)"
 
 #: tmp_strings.xml:195(string)
 msgid "Restart timer (OI Safe)"
-msgstr ""
+msgstr "Cronometru de repornire (OI Safe)"
 
 #: tmp_strings.xml:196(string)
 msgid "Open OI Safe"
-msgstr ""
+msgstr "Deschide OI Safe"
 
 #: tmp_strings.xml:198(string)
 msgid "Continue"
@@ -604,31 +618,31 @@ msgstr "Continuă"
 
 #: tmp_strings.xml:199(string)
 msgid "Generate Password"
-msgstr ""
+msgstr "Generează parolă"
 
 #: tmp_strings.xml:200(string)
 msgid "Password Length"
-msgstr ""
+msgstr "Lungimea parolei"
 
 #: tmp_strings.xml:201(string)
 msgid "Uppercase [A-Z]"
-msgstr ""
+msgstr "Litere mari [A-Z]"
 
 #: tmp_strings.xml:202(string)
 msgid "Lowercase [a-z]"
-msgstr ""
+msgstr "Litere mici [a-z]"
 
 #: tmp_strings.xml:203(string)
 msgid "Numbers [0-9]"
-msgstr ""
+msgstr "Numere [0-9]"
 
 #: tmp_strings.xml:204(string)
 msgid "Symbols [!@#$%^\\*]"
-msgstr ""
+msgstr "Simboluri [!@#$%^\\*]"
 
 #: tmp_strings.xml:205(string)
 msgid "Copy to Current Entry"
-msgstr ""
+msgstr "Copiază în înregistrarea curentă"
 
 #: tmp_strings.xml:206(string)
 msgid "Copy to Clipboard"
@@ -640,57 +654,60 @@ msgstr "Renunță"
 
 #: tmp_strings.xml:208(string)
 msgid "Discard changes"
-msgstr ""
+msgstr "Renunță la modificări"
 
 #: tmp_strings.xml:209(string)
 msgid "Entry saved"
-msgstr ""
+msgstr "Înregistrare salvată"
 
 #: tmp_strings.xml:210(string)
 msgid "Unable to save due to database error"
-msgstr ""
+msgstr "Imposibil de a salva datorită unei erori a bazei de date"
 
 #: tmp_strings.xml:211(string)
 msgid "Last edited"
-msgstr ""
+msgstr "Ultima editare"
 
 #: tmp_strings.xml:212(string)
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut"
 
 #: tmp_strings.xml:213(string)
 msgid "Crypto error:"
-msgstr ""
+msgstr "Eroare de criptare"
 
 #: tmp_strings.xml:214(string)
 msgid "Unique name"
-msgstr ""
+msgstr "Nume unic"
 
 #: tmp_strings.xml:215(string)
 msgid "Package access"
-msgstr ""
+msgstr "Acces la pachet"
 
 #: tmp_strings.xml:216(string)
 msgid "not found"
-msgstr ""
+msgstr "nu s-a găsit"
 
 #: tmp_strings.xml:217(string)
 msgid "New master key"
-msgstr ""
+msgstr "Cheie principală nouă"
 
 #: tmp_strings.xml:218(string)
 msgid ""
 "A new random master key has been created. Use menu &gt; backup and store "
 "this key in a safe place. Without this key you may lose encrypted data."
 msgstr ""
+"O nouă cheie principală aleatoare a fost creeată. Folosiți meniul &gt; "
+"copiază si stochează această cheie intr-un loc sigur. Fară această cheie "
+"puteți pierde datele criptate."
 
 #: tmp_strings.xml:219(string)
 msgid "Switch mode"
-msgstr ""
+msgstr "Modul de comutare"
 
 #: tmp_strings.xml:220(string)
 msgid "Decrypting..."
-msgstr ""
+msgstr "Se decriptează..."
 
 #: tmp_strings.xml:221(string)
 msgid "Search"
@@ -698,58 +715,64 @@ msgstr "Caută"
 
 #: tmp_strings.xml:222(string)
 msgid "Searching..."
-msgstr "Caut..."
+msgstr "Se caută..."
 
 #: tmp_strings.xml:223(string)
 msgid "Type search criteria"
-msgstr ""
+msgstr "Scrieți criteriul de căutare"
 
 #: tmp_strings.xml:224(string)
 msgid "Nothing found"
-msgstr ""
+msgstr "Nu s-a găsit nimic"
 
 #: tmp_strings.xml:225(string)
 msgid "Mute"
-msgstr ""
+msgstr "Fără sunet"
 
 #: tmp_strings.xml:226(string)
 msgid "Sounds"
-msgstr ""
+msgstr "Sunete"
 
 #: tmp_strings.xml:227(string)
 msgid "Previous"
-msgstr ""
+msgstr "Precedent"
 
 #: tmp_strings.xml:228(string)
 msgid "Next"
-msgstr ""
+msgstr "Înainte"
 
 #: tmp_strings.xml:229(string)
 msgid "AutoBackup"
-msgstr ""
+msgstr "Autocopiere de rezervă"
 
 #: tmp_strings.xml:230(string)
 msgid "No backup has been performed yet. Would you like to backup now?"
 msgstr ""
+"Nicio copiere de rezervă nu a fost efectuată pană acum. Doriți să efectuați "
+"una acum ?"
 
 #: tmp_strings.xml:231(string)
 msgid "The last backup was %d days ago. Would you like to backup now?"
 msgstr ""
+"Ultima copiere de rezervă a fost efectuată în urmă cu %d (de) zile în urmă. "
+"Doriți să  efectuați una acum ?"
 
 #: tmp_strings.xml:232(string)
 msgid "Turn off autobackup"
-msgstr ""
+msgstr "Oprește autocopierea de rezervă"
 
 #. Permission to access master password
 #: tmp_strings.xml:240(string)
 msgid "access the master password"
-msgstr ""
+msgstr "Accesează parola principală"
 
 #: tmp_strings.xml:241(string)
 msgid ""
 "Allows the application to access the master key used for encryption and "
 "decryption. Should never be used except by OI Safe."
 msgstr ""
+"Permite aplicației să acceseze cheia principală folosită pentru criptare si "
+"decriptare. Nu ar trebui folosită niciodată cu excepția OI Safe."
 
 #. Permission to encrypt and decrypt data
 #: tmp_strings.xml:243(string)
@@ -786,16 +809,16 @@ msgstr "30 de minute"
 
 #: tmp_strings.xml:261(item)
 msgid "1 day"
-msgstr ""
+msgstr "1 zi"
 
 #: tmp_strings.xml:262(item)
 msgid "7 days"
-msgstr ""
+msgstr "7 zile"
 
 #: tmp_strings.xml:263(item)
 msgid "30 days"
-msgstr ""
+msgstr "30 de zile"
 
 #: tmp_strings.xml:264(item)
 msgid "60 days"
-msgstr ""
+msgstr "60 de zile"

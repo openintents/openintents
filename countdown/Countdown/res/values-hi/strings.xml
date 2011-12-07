@@ -5,129 +5,130 @@
 	     *************************** -->
     
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  happy  nawani https://launchpad.net/~nawanihappy</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">OI काउंटडाउन एक निर्धारित समय के बाद आपको सूचित करती है|</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">OI काउंटडाउन</string>
     
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="modify">Modify</string>
-    <string name="cont">Continue</string>
+    <string name="start">प्रारंभ करें</string>
+    <string name="stop">रोकें</string>
+    <string name="modify">संशोधित करें</string>
+    <string name="cont">जारी रखें</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="no_durations">नई उलटी गिनती जोड़ने के लिए मेनू का उपयोग करें|</string>
+	<string name="countdown_list">उलटी गिनती की सूची</string>
 	
-    <string name="menu_delete">Delete</string>
-    <string name="menu_edit">Edit</string>
-    <string name="menu_insert">Add countdown</string>
-    <string name="menu_pick_ringtone">Ringtone</string>
+    <string name="menu_delete">मिटाएँ</string>
+    <string name="menu_edit">संपादित करें</string>
+    <string name="menu_insert">उलटी गिनती जोड़ें</string>
+    <string name="menu_pick_ringtone">रिंगटोन</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">तिथि निर्धारित करें</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">अवधि निर्धारित करें</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">क्रिया निर्धारित करें</string>
     
-    <string name="hint_title">e.g. pizza</string>
+    <string name="hint_title">उदाहरणार्थ पिज़्ज़ा</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">उलटी गिनती निर्धारित करें</string>
     
     <!-- Title of the activity for creating a new countdown. -->
-    <string name="title_create">Create countdown</string>
+    <string name="title_create">उलटी गिनती बनाएँ</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_edit">Edit countdown</string>
+    <string name="title_edit">उलटी गिनती संपादित करें</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">उलटी गिनती उठायें</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">OI काउंटडाउन</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
-	<string name="error_title">Error</string>
+	<string name="error_title">त्रुटि</string>
 	
 	<!-- Message to display when an internal error occurs. This should practially never happen. -->
-	<string name="error_message">Error loading countdown</string>
+	<string name="error_message">उलटी गिनती लोड होने त्रुटी</string>
 	
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">स्थिति पट्टी में अधिसूचना है</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">स्थिति पट्टी के माध्यम से लॉन्च करें</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Ring</string>
+	<string name="ring">घंटी</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
-	<string name="vibrate">Vibrate</string>
+	<string name="vibrate">हिलना</string>
 	
 	<!-- Checkbox label whether to flash light for notifications. -->
-	<string name="light">Light</string>
+	<string name="light">रोशनी</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="action">Action: %s</string>
+	<string name="action">क्रिया: %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_action">Select action: %s</string>
+	<string name="select_action">क्रिया का चयन करें:% s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">उलटी गिनती का चयन करें: %s</string>
 	
 	<!-- Button to test an action. -->
-	<string name="test">Test</string>
+	<string name="test">परखें</string>
 	
 	<!-- Button to view / edit settings. -->
-	<string name="settings">Settings</string>
+	<string name="settings">सेटिंग्स</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
-	<string name="dismiss">Dismiss</string>
+	<string name="dismiss">खारिज करें</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">days</string>
+	<string name="days">दिनों</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
-	<string name="day">day</string>
+	<string name="day">दिन</string>
 	
 	<!--  -->
 	
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
-	<string name="group_applications">Applications</string>
+	<string name="group_applications">अनुप्रयोग</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
-	<string name="group_shortcuts">Shortcuts</string>
+	<string name="group_shortcuts">शॉर्टकट्स</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">स्वचालन कार्य</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_shortcut">Select shortcut</string>
+	<string name="title_select_shortcut">शॉर्टकट का चयन करें</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">स्वचालन कार्य का चयन करें</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">गतिविधि का चयन करें</string>
  
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>उलटी गिनती प्रारंभ करें</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>उलटी गिनती रोकें</item>
     </string-array>
     
 	<!-- ***************************
@@ -135,34 +136,34 @@
 	     *************************** -->
 
 	<!-- Preference section title for general settings regarding the countdown -->
-    <string name="preference_countdown">Countdown</string>
+    <string name="preference_countdown">उलटी गिनती</string>
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
+    <string name="preference_extensions">एक्सटेंशन्स</string>
+    <string name="preference_get_extensions">नए एक्सटेंशन प्राप्त करें</string>
+    <string name="preference_get_extensions_summary">ऑनलाइन ही एक्सटेंशन खोजें|</string>
+    <string name="preference_get_extensions_from">एक्सटेंशन प्राप्त करें  यहाँ से</string>
+    <string name="preference_extensions_market">Android बाजार</string>
+    <string name="preference_extensions_market_summary">Android बाजार में एक्सटेंशन खोजें|</string>
     <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions_developer_summary">OpenIntents मुखपृष्ठ में से एक्सटेंशन प्राप्त करें|</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">अधिसूचना समयबाह्य</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">घंटी,हिलने या रोशनी अधिसूचना का समयबाह्य हो चुका है|</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">समयबाह्य निर्धारित करें</string>
     
     <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 सेकंड</item>
+        <item>5 सेकंड</item>
+        <item>10 सेकंड</item>
+        <item>30 सेकंड</item>
+        <item>1 मिनट</item>
+        <item>5 मिनट</item>
+        <item>10 मिनट</item>
     </string-array>
 </resources>

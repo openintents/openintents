@@ -250,14 +250,12 @@ msgid "Note"
 msgstr ""
 
 #: tmp_strings.xml:101(string)
-#, fuzzy
 msgid "Other Quantity..."
-msgstr "Quantité"
+msgstr ""
 
 #: tmp_strings.xml:102(string)
-#, fuzzy
 msgid "Other Priority..."
-msgstr "Priorité"
+msgstr ""
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
@@ -483,9 +481,8 @@ msgid "Prevents the screen to be locked when checked."
 msgstr ""
 
 #: tmp_strings.xml:178(string)
-#, fuzzy
 msgid "Reset Quantity"
-msgstr "Quantité"
+msgstr ""
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
@@ -567,9 +564,8 @@ msgid "Advanced settings"
 msgstr "Paramètres avancés"
 
 #: tmp_strings.xml:209(string)
-#, fuzzy
 msgid "Additional settings."
-msgstr "Paramètres de l'application"
+msgstr ""
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
@@ -794,6 +790,3 @@ msgstr "Choisir une action :"
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
 msgstr "Sélectionner une liste :"
-
-
-
