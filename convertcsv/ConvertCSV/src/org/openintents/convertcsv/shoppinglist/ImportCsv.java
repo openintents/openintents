@@ -100,7 +100,7 @@ public class ImportCsv {
 			
 			
 			ShoppingUtils.addItemToList(mContext, itemId, listId, status, null, null, 
-					false, mDuplicate);
+					false, mDuplicate, false);
 	    }
 	    
 	}
@@ -170,7 +170,7 @@ public class ImportCsv {
 			long itemId = ShoppingUtils.getItem(mContext, itemname, tags, price, units, note,
 					mDuplicate, mUpdate);
 			ShoppingUtils.addItemToList(mContext, itemId, listId, status, priority, quantity, 
-					false, mDuplicate);
+					false, mDuplicate, false);
 			
 			// Two columns contain per-store information. Column 10 lists 
 			// all stores which carry this item, delimited by semicolons. Column 11 

@@ -15,7 +15,7 @@
       1.0.0 [1]: 2008-12-09. -->
       
     <uses-sdk android:minSdkVersion="2"
-            android:targetSdkVersion="9" />
+            android:targetSdkVersion="14" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     
     <application android:icon="@drawable/ic_menu_convert_csv" android:label="@string/app_name">
