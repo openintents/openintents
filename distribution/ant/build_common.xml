@@ -237,6 +237,7 @@
 		<exclude name="**/build-private.properties" />
 		<exclude name="**/local.properties" />
 		<exclude name="**/promotion/**" />
+		<exclude name="**/icons/**" />
 	</patternset>
 
 
