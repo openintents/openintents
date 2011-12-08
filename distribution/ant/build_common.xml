@@ -27,8 +27,12 @@
 	<property name="version" value="${manifest(android:versionName)}" />
 
 	<!-- Overwrite default release file name -->
-    <property name="out.release.file.name"
-                  value="${ant.project.name}-${version}.apk" />
+	<!-- THIS BREAKS THE ANT SCRIPT IN SDK 14 & 15.
+		See: http://code.google.com/p/android/issues/detail?id=21465 -->
+	<!-- <property name="out.release.file.name"
+				value="${ant.project.name}-${version}.apk" /> -->
+	<property name="out.release.publish.name"
+					value="${ant.project.name}-${version}.apk" />
 
 	<!-- Path for java doc -->
     <property name="out.doc.dir"
@@ -129,19 +133,6 @@
 <!-- #############################################
      OpenIntents modifications to build.xml follow
      ############################################# -->
-
-	<!-- ############### Install-release ################ -->
-	
-	<target name="install-release" depends="release" 
-		description="Compiles the release version and installs it on the emulator or device" >
-		<echo>Reinstalling ${out.release.file.name} onto default emulator or device...</echo>
-		<exec executable="${adb}" failonerror="true">
-            <arg line="${adb.device.arg}" />
-			<arg value="install" />
-			<arg value="-r" />
-			<arg value="${out.release.file}" />
-		</exec>
-	</target>
 	
 	<!-- ############### JavaDoc ####################### -->
 	<!-- Create JavaDoc -->
@@ -352,16 +343,14 @@
 		<delete dir="${out.source.version}"/>
 		
 		<!-- copy apk into releasedir for convenience -->
-		<copy todir="${out.source.dir}">
-			<fileset dir="${out.absolute.dir}">
-				 <filename name="${out.release.file.name}"/>
-			</fileset>
+		<copy file="${out.final.file}"
+			tofile="${out.source.dir}/${out.release.publish.name}" >
 		</copy>
     </target>
 	
 	<!-- ############ Convencience target ############## -->
 	<target name="all" 
-		depends="update-recent-changes, release, javadoc, release-source"
+		depends="clean, update-recent-changes, release, release-source"
 		description="Creates release apk, JavaDoc, and the source code" />
-	
+	<!-- skip target "javadoc" -->
 </project>
