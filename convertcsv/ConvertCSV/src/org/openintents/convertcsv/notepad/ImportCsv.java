@@ -33,6 +33,7 @@ public class ImportCsv {
 	
 	public static final String FORMAT_OUTLOOK_NOTES = "outlook notes";
 	public static final String FORMAT_PALM_CSV = "palm";
+	public static final String FORMAT_JPILOT_MEMO = "jpilot memo";
 	
 	public ImportCsv(Context context) {
 		mContext = context;
@@ -52,6 +53,7 @@ public class ImportCsv {
 		
 		//boolean isPalm = format.equals(FORMAT_PALM_CSV); // Palm is default.
 		boolean isOutlookNotes = format.equals(FORMAT_OUTLOOK_NOTES);
+		boolean isJPilotMemo = format.equals(FORMAT_JPILOT_MEMO);
 		
 		boolean needToValidate = ((importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_KEEP) || (importPolicy == ConvertCsvBaseActivity.IMPORT_POLICY_OVERWRITE));
 		
@@ -67,7 +69,13 @@ public class ImportCsv {
 	    	if (nextLine.length != 5) {
 	    		throw new WrongFormatException();
 	    	}
-	    }
+	    } else if (isJPilotMemo) {
+		// JPilot has a header line that we ignore
+		nextLine = csvreader.readNext();
+		if (nextLine.length != 3) {
+			throw new WrongFormatException();
+		}
+            }
 	    while ((nextLine = csvreader.readNext()) != null) {
 	        // nextLine[] is an array of values from the line
 	    	if (isOutlookNotes) {
@@ -88,6 +96,13 @@ public class ImportCsv {
 		    	}
 		    	
 		    	tags = nextLine[1];
+		} else if(isJPilotMemo) {
+			if (nextLine.length != 3) {
+				throw new WrongFormatException();
+			}
+			tags = nextLine[0];
+			note = nextLine[2];
+			encrypted = 0;
 	    	} else {
 	    		// Default: Palm format
 		    	if (nextLine.length != 3) {

@@ -51,6 +51,7 @@
     <string-array name="notepad_format_value">
         <item>outlook notes</item>
         <item>palm</item>
+	<item>jpilot memo</item>
     </string-array>
     
     <string-array name="shoppinglist_format_value">

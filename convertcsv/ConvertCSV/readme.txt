@@ -21,6 +21,12 @@ To obtain the current release, visit
   http://www.openintents.org
 
 ---------------------------------------------------------
+release: 1.??
+date: ??
+
+- Add support for JPilot import and export (Issue 252 Google Code-In task by Michał Zieliński).
+
+---------------------------------------------------------
 release: 1.1.0
 date: 2011-05-28
 

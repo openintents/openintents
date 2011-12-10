@@ -42,7 +42,8 @@ public class ExportCsv {
 
 		//boolean isPalm = format.equals(FORMAT_PALM_CSV); // Palm is default.
 		boolean isOutlookNotes = format.equals(ImportCsv.FORMAT_OUTLOOK_NOTES);
-		
+		boolean isJPilotMemo = format.equals(ImportCsv.FORMAT_JPILOT_MEMO);
+
 		CSVWriter csvwriter = new CSVWriter(writer);
 		
 		//csvwriter.setLineEnd("\r\n");
@@ -56,6 +57,11 @@ public class ExportCsv {
 			csvwriter.writeValue("Note Color");
 			csvwriter.writeValue("Priority");
 			csvwriter.writeValue("Sensitivity");
+			csvwriter.writeNewline();
+		} else if(isJPilotMemo) {
+			csvwriter.writeValue("Category");
+			csvwriter.writeValue("Private");
+			csvwriter.writeValue("Memo Text");
 			csvwriter.writeNewline();
 		} else {
 			// No header line for Palm
@@ -112,6 +118,11 @@ public class ExportCsv {
 			    	csvwriter.writeValue(notecolor);
 			    	csvwriter.writeValue(priority);
 			    	csvwriter.writeValue(sensitivity);
+			} else if(isJPilotMemo) {
+				String notePrivate = "1";
+				csvwriter.writeValue(category);
+				csvwriter.writeValue(notePrivate);
+				csvwriter.writeValue(note);
 		    	} else {
 		    		// Palm CSV format
 		    		
