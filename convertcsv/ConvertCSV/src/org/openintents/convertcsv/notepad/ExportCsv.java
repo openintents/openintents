@@ -59,9 +59,9 @@ public class ExportCsv {
 			csvwriter.writeValue("Sensitivity");
 			csvwriter.writeNewline();
 		} else if(isJPilotMemo) {
-			csvwriter.writeValue("Category");
-			csvwriter.writeValue("Private");
-			csvwriter.writeValue("Memo Text");
+			csvwriter.writeValue("CSV memo version 1.6.2.4: Category");
+			csvwriter.writeValue(" Private");
+			csvwriter.writeValue(" Memo Text");
 			csvwriter.writeNewline();
 		} else {
 			// No header line for Palm
@@ -119,10 +119,10 @@ public class ExportCsv {
 			    	csvwriter.writeValue(priority);
 			    	csvwriter.writeValue(sensitivity);
 			} else if(isJPilotMemo) {
-				String notePrivate = "1";
-				csvwriter.writeValue(category);
-				csvwriter.writeValue(notePrivate);
-				csvwriter.writeValue(note);
+				String notePrivate = "0";
+				csvwriter.write(category);
+				csvwriter.write(notePrivate);
+				csvwriter.write(note);
 		    	} else {
 		    		// Palm CSV format
 		    		

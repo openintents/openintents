@@ -5,6 +5,5 @@
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="src" path="OI Distribution Library_src"/>
 	<classpathentry kind="src" path="OI Shopping List Library_src"/>
-	<classpathentry kind="lib" path="/OI Shopping List Library/bin/oi shopping list library.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -1,0 +1,68 @@
+DatabaseName: Groceries
+OmitPrefix
+
+Categories:
+	Unfiled
+	Groceries
+	Household
+	Non-food
+	Produce
+
+Preferences:
+	CurrentStore=All Stores
+	CurrentCategory=All
+	CurrentView=All
+	FlagPerStorePrices=Yes
+	StampTodayOnNewItems=No
+	StampTodayWhenComplete=Yes
+	AutoResetQuantities=No
+	NewItemsAreAutoDelete=No
+	NewItemsAreTaxable=No
+	TwoTaxes=No
+	RoundPricesToWholeNumbers=No
+	SeparateSortOrders=Yes
+	HideCompletedItems=Yes
+	ShowOnlyCoupons=No
+	ShowLinesPerItem=Auto
+	ColumnPrio=Yes
+	ColumnQuantity=Yes,13
+	ColumnUnits=Yes,Narrow
+	ColumnAisle=No
+	ColumnCategory=No
+	ColumnPrice=Yes,23
+	ColumnTaxable=No
+	ColumnDate=No
+	ColumnCoupon=No
+	ColumnCustomText=No
+	ColumnUnitPrice=No
+	Sort_Need_CompletedAtBottom=Yes
+	Sort_Need_Field1=Priority,Ascend
+	Sort_Need_Field2=Description,Ascend
+	Sort_Need_Field3=None,Ascend
+	Sort_Need_AutoOrder=No
+	Sort_All_CompletedAtBottom=No
+	Sort_All_Field1=Description,Ascend
+	Sort_All_Field2=None,Ascend
+	Sort_All_Field3=None,Ascend
+	Sort_All_AutoOrder=No
+	Currency=$
+	TaxRate=5
+	TaxRate2=0
+	DefaultPriority=1
+	ExportFlags=
+	RowColorRGB=187,187,187
+	Icon=1
+	Font=Standard
+
+Stores:
+	Big Y
+	BJ's
+	East Side Market
+	Price Chopper
+	Sam's Club
+	Shaw's
+	Stop & Shop
+	Target
+	Trader Joe's
+	Wal-Mart
+
