@@ -238,6 +238,7 @@
 		<exclude name="**/local.properties" />
 		<exclude name="**/promotion/**" />
 		<exclude name="**/icons/**" />
+		<exclude name="**/test/**" />
 	</patternset>
 
 
