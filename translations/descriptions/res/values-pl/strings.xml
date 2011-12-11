@@ -12,11 +12,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>"Ol About" to samodzielny dialog, który jest dzielony między aplikacjami.</string>
+		<string>Ta aplikacja jest wywoływana za pomocą menu innych aplikacji Ol.</string>
+		<string>Umożliwia wyświetlanie informacji o wersji, linków, punktów i licencji aplikacji.</string>
+		<string>Punkty obejmują autorów dokumentacji, tłumaczy i artystów.</string>
+		<string>Wszystkie te funkcje są połączone w uproszczony i efektywny układ.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
@@ -30,22 +30,22 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Cechy:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>Pokazuje ogólne informacje,punkty i karty licencji.</listitem>
+		<listitem>Pokazuje tłumaczy wszystkich wersji językowych.</listitem>
+		<listitem>Pobiera informacje z manifestu aplikacji poprzez domyślne etykiety i metadane.</listitem>
+		<listitem>Opcjonalnie wszystkie pola mogą być modyfikowane poprzez dodatkowe zamiary.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<string>Aplikacja który pracują z "Ol About":</string>
+		<listitem>Notatnik Ol</listitem>
+		<listitem>Menedżer plików Ol</listitem>
+		<listitem>Lista zakupów Ol</listitem>
+		<listitem>OI Konwertuj CSV</listitem>
+		<listitem>Bezpieczne Ol</listitem>
+		<listitem>OI Odliczanie</listitem>
+		<listitem>OI Latarka</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<listitem>O, Podziękowania, Informacja.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>Wersje międzynarodowe:</string>
@@ -116,10 +116,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach.</string>
+		<string>OI Flashlight blokuje podświetlanie, jasno oświetla okolicę.</string>
+		<string>Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój.</string>
+		<string>Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
@@ -133,19 +133,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Cechy:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>Zablokuj podświetlenie.</listitem>
+		<listitem>Zablokuj lampę błyskową</listitem>
+		<listitem>Kolor podświetlenia można dostosować.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
+		<string>Dostępne rozszerzenia dla "OI Flashlight":</string>
 		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<listitem>Zmiana koloru podświetlenia z "OI Color Picker".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
+		<string>Aplikacje który pracują z "OI Flashlight":</string>
 		<listitem>Aktualizuj z "OI Uptade".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>Latarka, światło, Podświetlenie</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Wersje międzynarodowe:</string>
@@ -212,6 +212,58 @@
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline/>
+		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
+		<emptyline/>
+		<string>Aby zobaczyć pełną listę zmian oraz FAQ, odwiedź:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Możesz poprawić tłumaczenie na Twój język:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Cechy:</string>
+		<listitem>Securely protect data using AES encryption.</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Backup/Restore entries.</listitem>
+		<listitem>Includes secure password generator.</listitem>
+		<listitem>Automatic timeout to protect encrypted documents.</listitem>
+		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Dostępne rozszerzenia dla "Ol File Manager":</string>
+		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
+		<emptyline/>
+		<string>Aplikacje, który pracują z "Ol File Manager":</string>
+		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>Słowa kluczowe:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Wersje międzynarodowe:</string>
+		<international/>
+		<emptyline/>
+		<string>Wyszukane ciągi znakó w Markecie:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
 	<description application="shoppinglist/ShoppingList">
 		<!--  OI Shopping List -->
 		<!--  -->
@@ -220,11 +272,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>Lista zakupów Ol to potężna aplikacja, która umożliwia łatwe tworzenie i zarządzanie listami kontrolnymi.</string>
+		<string>Lista zakupów OI ułatwia dodawanie elementów do listy, zaznacz element, usuń go z listy.</string>
+		<string>Aplikacja może śledzić oddzielne cen dla każdego sklepu, którego używasz, i oferuje wysoki poziom personalizacji.</string>
+		<string>Rozmiar czcionki, porządek sortowania, kolumny listy, a zachowanie podczas czyszczenia listy są wszystkie ustawienia kontrolowane przez użytkownika.</string>
+		<string>Wszystkie te funkcje są połączone w wyraźny układ, który można dostosować do różnych motywów.</string>
 		<emptyline/>
 		<string>Kod źródłowy tej darmowej i open-source-owej aplikacji jest dostępny pod adresem:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -238,14 +290,14 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Cechy:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>Dodawaj, edytuj i usuwaj listy.</listitem>
+		<listitem>Tworzenie, usuwanie i sprawdzanie pozycji szybko i łatwo.</listitem>
+		<listitem>Różnorodność tematów</listitem>
+		<listitem>Możliwość dostosowania rozmiaru czcionki oraz porządku sortowania.</listitem>
+		<listitem>Śledź oddzielnie ceny dla każdego sklepu.</listitem>
+		<listitem>Dostosuj kolumny listy.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
+		<string>Dostępne rozszerzenia do "Listy zakupów Ol":</string>
 		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
 		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
 		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>

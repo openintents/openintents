@@ -1,0 +1,52 @@
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline />
+		<string>This application is ad free and does not require the internet permission.</string>
+		<emptyline />
+		<string>For the complete list of changes and a list of frequently asked questions, please visit:</string>
+		<link href="http://www.openintents.org" />
+		<emptyline />
+		<string>You can help to improve the translation into your language at Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk" />
+		<emptyline />
+		<string>The source code of this free and open source application is available at:</string>
+		<link href="http://code.google.com/p/openintents" />
+		<emptyline />
+		<string>Features:</string>
+		<listitem>Securely protect data using AES encryption.</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Backup/Restore entries.</listitem>
+		<listitem>Includes secure password generator.</listitem>
+		<listitem>Automatic timeout to protect encrypted documents.</listitem>
+		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline />
+		<string>Available extensions for "OI File Manager":</string>
+		<listitem>Show the license information with "OI About".</listitem>
+		<emptyline />
+		<string>Applications that work with "OI File Manager":</string>
+		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<emptyline />
+		<string>Keywords:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline />
+		<string>International versions:</string>
+		<international />
+		<emptyline />
+		<string>Search strings for Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt" />
+	</description>

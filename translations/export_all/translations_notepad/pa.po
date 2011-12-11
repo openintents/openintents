@@ -1,0 +1,493 @@
+# Punjabi translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Angad Singh  <Unknown>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:30(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Angad Singh  https://launchpad.net/~angad21-02-1996"
+
+#. Short explanation of the application
+#: tmp_strings.xml:33(string)
+msgid "OI Notepad allows to create, edit, and delete notes."
+msgstr "OI ਨੋਟਪੈਡ ਤਵਾਨੁ ਨੋਟ ਬਣਾਣ , ਬਦਲਨੇ ਹੋਰ ਹਟਾਨ ਦੇੰਦਾ ਹੈ |"
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
+#: tmp_strings.xml:117(string)
+msgid "OI Notepad"
+msgstr "OI ਨੋਟਪੈਡ"
+
+#: tmp_strings.xml:42(string)
+msgid "Delete"
+msgstr "ਹਟਾਉ"
+
+#: tmp_strings.xml:43(string)
+msgid "Add note"
+msgstr "ਨੋਟ ਡਾਲੇ"
+
+#: tmp_strings.xml:44(string)
+msgid "Revert"
+msgstr "ਵਾਪਿਸ ਲਬੋ"
+
+#: tmp_strings.xml:45(string)
+msgid "Discard"
+msgstr "ਛੋੜ ਬੋ"
+
+#: tmp_strings.xml:47(string)
+msgid "Use menu to add new notes."
+msgstr "ਨੋਟ ਡਾਲਣ ਦੇ ਲਿਏ ਮੈਨਯੂ ਹਾ ੲਸਤਮਾਲ ਕਰੋ"
+
+#: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
+msgid "Edit note"
+msgstr "ਨੋਟ ਬਦਲੇ"
+
+#: tmp_strings.xml:50(string)
+msgid "Edit title"
+msgstr "ਸ਼ੀਰਸ਼ਕ ਬਦਲੇ"
+
+#: tmp_strings.xml:52(string)
+msgid "Create note"
+msgstr "ਨੋਟ ਬਨਾਏ"
+
+#: tmp_strings.xml:55(string)
+msgid "Note"
+msgstr "ਨੋਟ"
+
+#: tmp_strings.xml:56(string)
+msgid "Note title:"
+msgstr "ਨੋਟ  ਸ਼ੀਰਸ਼ਕ"
+
+#: tmp_strings.xml:57(string)
+msgid "%s (new note)"
+msgstr "%s (ਨਵਾ ਨੋਟ)"
+
+#: tmp_strings.xml:58(string)
+msgid "%s (edit note)"
+msgstr "%s (ਨੋਟ ਬਦਲੇ)"
+
+#. Title: Pick note for shortcut (to be placed on the home screen)
+#: tmp_strings.xml:61(string)
+msgid "Pick note for shortcut"
+msgstr "ਸ਼ੀਰਸ਼ਕ: ਨੋਟ ਓਠਾਵੇ ਸ਼ਾਰਕਟ ਤੇ ਲਿਏ ( ਹੋਮ ਸਕਰੀਨ ਤੇ ਓਤੇ ਜਾਹ ਦੇ ਲਿਓ )"
+
+#. Dialog box
+#: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
+msgid "OK"
+msgstr "ਠੀਕ ਹੈ"
+
+#: tmp_strings.xml:65(string)
+msgid "Error"
+msgstr "ਗਲਤੀ"
+
+#: tmp_strings.xml:66(string)
+msgid "Error loading note"
+msgstr "ਨੋਟ ਲੋਡ ਤੇ ਗਲਤੀ"
+
+#. <string name="no_notes">Note list is empty.</string>
+#: tmp_strings.xml:69(string)
+msgid "Share"
+msgstr "ਬਾਟਿਏ"
+
+#: tmp_strings.xml:70(string)
+msgid "Empty note"
+msgstr "ਖਾਲੀ ਨੋਟ"
+
+#: tmp_strings.xml:71(string)
+msgid "No application available for sharing."
+msgstr "ਬਾਟਣ ਤੇ ਲਿਏ ਕੋਇ ਐਪਲਿਕੇਸ਼ਨ ਨਹੀ ਹੈ"
+
+#: tmp_strings.xml:73(string)
+msgid "Encrypting note"
+msgstr "ਇੰਕ੍ਰਿਪਟਿੰਗ ਨੋਟ"
+
+#: tmp_strings.xml:74(string)
+msgid "Encrypted"
+msgstr "ਇੰਕ੍ਰਿਪਟਡ"
+
+#: tmp_strings.xml:75(string)
+msgid "Encrypt"
+msgstr "ਇੰਕ੍ਰਿਪਟ"
+
+#: tmp_strings.xml:76(string)
+msgid "Decrypt"
+msgstr "ਡਿਕ੍ਰਿਪਟ"
+
+#: tmp_strings.xml:77(string)
+msgid "Undo encryption"
+msgstr "ਇੰਕ੍ਰਿਪਸ਼ਨ ਬਦਲੇ"
+
+#: tmp_strings.xml:78(string)
+msgid "Do not encrypt"
+msgstr "ਇੰਕ੍ਰਿਪਟ ਨ ਕਰੇ"
+
+#: tmp_strings.xml:79(string)
+msgid "Already encrypted."
+msgstr "ਪਹਲੇ ਰੇ ਹੀ ਇੰਕ੍ਰਿਪਟ ਹੂਆ ਹੂਆ ਹੈ"
+
+#: tmp_strings.xml:80(string)
+msgid "Not encrypted."
+msgstr "ਇੰਕ੍ਰਿਪਟ ਨਹੀ  ਹੂਆ ਹੈ"
+
+#: tmp_strings.xml:81(string)
+msgid "Encryption failed."
+msgstr "ਇੰਕ੍ਰਿਪਸ਼ਨ ਫੇਲ੍ਹ ਹੈ।"
+
+#: tmp_strings.xml:82(string)
+msgid "Decryption failed."
+msgstr "ਡਿਸਕ੍ਰਿਪਸ਼ਨ ਫੇਲ੍ਹ ਹੈ।"
+
+#: tmp_strings.xml:84(string)
+msgid "Edit tags"
+msgstr "ਟੈਗ ਬਦਲੇ"
+
+#: tmp_strings.xml:85(string)
+msgid "Touch to see list"
+msgstr "ਲਿਸਟ ਦੇਖਣ ਦੇ ਲਿਏ ਛੁਏ"
+
+#: tmp_strings.xml:86(string)
+msgid "Enter tags, separated by comma"
+msgstr "ਟੈਗ ਡਾਲੇ, ਕੋਮਾ ਤੋ ਅਲਗ ਕਰੇ"
+
+#: tmp_strings.xml:88(string)
+msgid "Save to SD card"
+msgstr "ਏਸ ਡੀ ਕਾਰਡ ਮੇ ਸੰਭਾਲੋ"
+
+#: tmp_strings.xml:89(string)
+msgid "Open from SD card"
+msgstr "ਏਸ ਡੀ ਕਾਰਡ ਖੋਲੇ"
+
+#: tmp_strings.xml:90(string)
+msgid "File name"
+msgstr "ਫਾਲ ਨਾਮ"
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
+#: tmp_strings.xml:106(string)
+msgid "Save"
+msgstr "ਸੰਭਾਲੋ"
+
+#: tmp_strings.xml:92(string)
+msgid "Open"
+msgstr "ਖੋਲੋ"
+
+#: tmp_strings.xml:93(string)
+msgid "Error while writing file"
+msgstr "ਫਾਇਲ ਲਿਖਣ ਦੋ ਗਲਤੀ ਆ ਰਹੀ ਹੈ"
+
+#: tmp_strings.xml:94(string)
+msgid "Error while reading file"
+msgstr "ਫਾਇਲ ਪੜਣ ਦੋ ਗਲਤੀ ਆ ਰਹੀ ਹੈ"
+
+#: tmp_strings.xml:95(string)
+msgid "File not found"
+msgstr "ਫਾਇਲ ਨਹੀਂ ਲੱਭੀ"
+
+#: tmp_strings.xml:96(string)
+msgid "Note saved"
+msgstr "ਨੋਟ ਰਖ ਲਿਯਾ ਗਯਾ ਹੈ"
+
+#: tmp_strings.xml:97(string)
+msgid "File exists already"
+msgstr "ਫਾਇਲ ਪਹਲੇ ਤੋ ਹੈ"
+
+#: tmp_strings.xml:98(string)
+msgid "Do you really want to overwrite the existing file?"
+msgstr "ਤੁਸੀ ਕਯਾ ਸਚੀ ਪਹਲੀ ਫਾਇਲ ਤੇ ਓਤੇ ਲਿਖਣ ਚਹਾਨਹੇਹੋ ?"
+
+#. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
+#: tmp_strings.xml:101(string)
+msgid "Import"
+msgstr "ਇੰਪੋਰਟ"
+
+#: tmp_strings.xml:103(string)
+msgid "Save as"
+msgstr "ਇਸ ਤਰਾਂ ਸੰਭਾਲੋ"
+
+#: tmp_strings.xml:104(string)
+msgid "Text modified"
+msgstr "ਪਾਠ ਸ਼ੋਧ"
+
+#: tmp_strings.xml:105(string)
+msgid "Do you want to save the changes?"
+msgstr "ਤੁਸੀ ਕਯਾ ਬਦਲਾਵ ਰਖਣ ਚਹਾਨਦੇ ਹੈ ?"
+
+#: tmp_strings.xml:107(string)
+msgid "Don't save"
+msgstr "ਨਾ ਸੰਭਾਲੋ"
+
+#: tmp_strings.xml:109(string)
+msgid "Theme"
+msgstr "ਥੀਮ"
+
+#: tmp_strings.xml:110(string)
+msgid "Pick a theme"
+msgstr "ਥੀਮ ਓਠਾਏ"
+
+#. Preference fontsize: default font size
+#: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
+msgid "Default"
+msgstr "ਡਿਫਾਲਟ"
+
+#: tmp_strings.xml:112(string)
+msgid "Monospaced font"
+msgstr "ਮੋਨੋਸਪੇਪਡ ਫਾੰਟ"
+
+#: tmp_strings.xml:113(string)
+msgid "Serif font"
+msgstr "ਸੈਰਿਫ ਫਾੰਟ"
+
+#. Search
+#: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
+msgid "Search"
+msgstr "ਖੋਜੋ"
+
+#. %s is the search string
+#: tmp_strings.xml:119(string)
+msgid "No results found for %s."
+msgstr "%s ਲਿਏ ਕੋਈ ਰਿਜਲਟ ਨਹੀ ਮਿਲਾ"
+
+#: tmp_strings.xml:120(string)
+msgid "OI Notepad search"
+msgstr "OI ਨੋਟਪੈਡ ਖੋਜ"
+
+#. The description that will show up in the search settings for this source.
+#: tmp_strings.xml:124(string)
+msgid "Titles of your notes"
+msgstr "ਨੋਟੋ ਦੇ ਸ਼ੀਰਸ਼ਕ"
+
+#: tmp_strings.xml:128(string)
+msgid "Cancel"
+msgstr "ਰਦ ਕਰੋ"
+
+#: tmp_strings.xml:129(string)
+msgid "Use this theme for all lists"
+msgstr "ਸਭੀ ਲਿਸਟੋ ਤੇ ਲਿਏ ਯੇ ਥੀਮ ਦਾ ਇਸਤਮਾਲ ਕਰੇ"
+
+#: tmp_strings.xml:130(string)
+msgid "Get more themes"
+msgstr "ਓਰ ਥੀਮ ਲਾਏ"
+
+#: tmp_strings.xml:132(string)
+msgid "All notes"
+msgstr "ਸਭੀ ਨੋਟ"
+
+#. Title for settings regarding the list of notes
+#: tmp_strings.xml:136(string)
+msgid "Notes List"
+msgstr "ਨੋਟਾ ਦੀ ਲਿਸਟ"
+
+#: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
+msgid "List Sorting Order"
+msgstr "ਲਿਸਟ ਛਾਟਨ ਹਾ ਕਰਮ"
+
+#: tmp_strings.xml:139(string)
+msgid "The order in which notes are shown in the notes list"
+msgstr ""
+
+#: tmp_strings.xml:140(string)
+msgid "Marquee note titles."
+msgstr "ਮਾਰਕੀ ਨੋਟ ਸ਼ੀਰਸ਼ਕ"
+
+#: tmp_strings.xml:141(string)
+msgid "Continuously scroll note titles that are too long."
+msgstr ""
+
+#: tmp_strings.xml:143(string)
+msgid "Note Editor"
+msgstr "ਨੋਟ ਬਦਲੀ ਉਪਕਰਮ"
+
+#: tmp_strings.xml:144(string)
+msgid "Font size"
+msgstr "ਫੋਂਟ ਸਾਈਜ਼"
+
+#: tmp_strings.xml:145(string)
+msgid "Change font size"
+msgstr ""
+
+#: tmp_strings.xml:146(string)
+msgid "Choose font size"
+msgstr ""
+
+#: tmp_strings.xml:147(string)
+msgid "Auto-create Links"
+msgstr ""
+
+#: tmp_strings.xml:148(string)
+msgid "Create links for phone numbers and email/street/web addresses"
+msgstr ""
+
+#: tmp_strings.xml:149(string)
+msgid "Do not create links on notes"
+msgstr ""
+
+#: tmp_strings.xml:151(string)
+msgid "Settings"
+msgstr "ਸੈਟਿੰਗ"
+
+#: tmp_strings.xml:152(string)
+msgid "Sort Order"
+msgstr ""
+
+#. Permission to read notes.
+#: tmp_strings.xml:160(string)
+msgid "read notes"
+msgstr ""
+
+#: tmp_strings.xml:161(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+
+#. Permission to write notes.
+#: tmp_strings.xml:163(string)
+msgid "write notes"
+msgstr ""
+
+#: tmp_strings.xml:164(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr ""
+
+#. Permission to read shopping lists.
+#: tmp_strings.xml:168(string)
+msgid "read shopping lists"
+msgstr ""
+
+#: tmp_strings.xml:169(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+
+#. Permission to write shopping lists.
+#: tmp_strings.xml:171(string)
+msgid "write shopping lists"
+msgstr ""
+
+#: tmp_strings.xml:172(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr ""
+
+#. Permission to encrypt and decrypt data.
+#: tmp_strings.xml:176(string)
+msgid "encrypt and decrypt data"
+msgstr ""
+
+#: tmp_strings.xml:177(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+
+#: tmp_strings.xml:186(item)
+msgid "Alphabetical"
+msgstr "ਵਰਣਨਮਾਲਾ ਅਨੁਮਾਰ"
+
+#: tmp_strings.xml:187(item)
+msgid "Reverse Alphabetical"
+msgstr ""
+
+#: tmp_strings.xml:188(item)
+msgid "Last Modified"
+msgstr "ਆਖਰੀ ਬਦਲਾਵ"
+
+#: tmp_strings.xml:189(item)
+msgid "First Modified"
+msgstr ""
+
+#: tmp_strings.xml:190(item)
+msgid "Newest to Oldest"
+msgstr ""
+
+#: tmp_strings.xml:191(item)
+msgid "Oldest to Newest"
+msgstr ""
+
+#. Preference fontsize: tiny font size
+#: tmp_strings.xml:196(item)
+msgid "Tiny"
+msgstr ""
+
+#. Preference fontsize: small font size
+#: tmp_strings.xml:198(item)
+msgid "Small"
+msgstr "ਛੋਟਾ"
+
+#. Preference fontsize: large font size
+#: tmp_strings.xml:202(item)
+msgid "Large"
+msgstr "ਵੱਡਾ"
+
+#: tmp_strings.xml:205(string)
+msgid "Add-ons"
+msgstr ""
+
+#: tmp_strings.xml:206(string)
+msgid "Get new add-ons"
+msgstr ""
+
+#: tmp_strings.xml:207(string)
+msgid "Search for extensions and themes online."
+msgstr ""
+
+#: tmp_strings.xml:208(string)
+msgid "Get add-ons from Market"
+msgstr ""
+
+#: tmp_strings.xml:209(string)
+msgid "Get add-ons from OpenIntents"
+msgstr ""
+
+#: tmp_strings.xml:210(string)
+msgid "Extensions"
+msgstr "ਇਕਸਟੈਨਸ਼ਨ"
+
+#: tmp_strings.xml:211(string)
+msgid "Themes"
+msgstr "ਥੀਮ"
+
+#: tmp_strings.xml:212(string)
+msgid "Search for extensions at Android Market."
+msgstr ""
+
+#: tmp_strings.xml:213(string)
+msgid "Search for themes at Android Market."
+msgstr ""
+
+#: tmp_strings.xml:214(string)
+msgid "Get extensions from the OpenIntents homepage."
+msgstr ""
+
+#: tmp_strings.xml:215(string)
+msgid "Get themes from the OpenIntents homepage."
+msgstr ""
+
+#: tmp_strings.xml:216(string)
+msgid "Deletion Confirmation"
+msgstr ""
+
+#: tmp_strings.xml:217(string)
+msgid "Are you sure you want to delete this note?"
+msgstr ""
+
+#: tmp_strings.xml:219(string)
+msgid "New note"
+msgstr "ਨਵਾ ਨੋਟ"

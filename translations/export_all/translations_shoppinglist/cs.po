@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: friedger <Unknown>\n"
+"Last-Translator: Matěj Konečný <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,6 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Matěj Konečný https://launchpad.net/~matejkon\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  friedger https://launchpad.net/~friedger"
 
@@ -32,18 +33,18 @@ msgid ""
 "use it for other kinds of check lists, for example for ToDo lists or party "
 "guest lists."
 msgstr ""
-"Ol Seznam nákupů vám dovoluje sledovat co máte nakoupit. Můžete ho také "
-"použít i pro jiné kontrolní seznamy, například seznam denních činností, nebo "
-"seznam hostů na večírek."
+"S OI Nákupním seznamem přehledně naplánujete, co nakoupit, a v obchodě na "
+"nic nezapomenete. Můžete ho použít také pro ostatní druhy kontrolních "
+"seznamů, jako například seznam úkolů nebo seznam hostů na večírek."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
 msgid "OI Shopping list"
-msgstr "Ol Seznam nákupů"
+msgstr "OI Nákupní seznam"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
-msgstr "Nový bod"
+msgstr "Nová položka"
 
 #: tmp_strings.xml:36(string)
 msgid "New list"
@@ -55,23 +56,23 @@ msgstr "Poslat seznam"
 
 #: tmp_strings.xml:38(string)
 msgid "Mark all items"
-msgstr ""
+msgstr "Označit všechny položky"
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."
-msgstr "Prázdný seznam není poslán"
+msgstr "Prázdný seznam nebyl poslán"
 
 #: tmp_strings.xml:40(string)
 msgid "No application available for sending."
-msgstr "Žádná aplikace není k dispozici pro odeslání"
+msgstr "Pro odeslání není k dispozici žádná aplikace"
 
 #: tmp_strings.xml:41(string)
 msgid "My shopping list"
-msgstr "Můj seznam nákupů"
+msgstr "Můj nákupní seznam"
 
 #: tmp_strings.xml:42(string)
 msgid "i.e. wishlist, family list"
-msgstr "Např. seznam přání, rodinný seznam"
+msgstr "Např. K Vánocům nebo Pečivo"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:331(item)
@@ -80,43 +81,43 @@ msgstr "Vyčistit seznam"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr "Vymazat seznam"
+msgstr "Odstranit seznam"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr "Vložit jméno nového seznamu nákupů"
+msgstr "Vložte jméno nového nákupního seznamu"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr "Přejmenovat seznam nákupů"
+msgstr "Přejmenovat nákupní seznam"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
-msgstr "Editovat bod"
+msgstr "Upravit položku"
 
 #: tmp_strings.xml:48(string)
 msgid "Enter new store name"
-msgstr ""
+msgstr "Vložte jméno nového obchodu"
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
-msgstr "Prosím, napište jméno"
+msgstr "Vložte prosím jméno"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr "Žádný bod není označen jako vyškrtlý"
+msgstr "Žádné položky nejsou vyškrtlé"
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
-msgstr "Chcete opravdu vymazat tento seznam nákupů?"
+msgstr "Chcete opravdu ostranit tento nákupní seznam?"
 
 #: tmp_strings.xml:52(string)
 msgid "Error while accessing shopping lists."
-msgstr "Chyba v přístupu k seznamům nákupů"
+msgstr "Chyba při přístupu k nákupním seznamům"
 
 #: tmp_strings.xml:53(string)
 msgid "Pick an item"
-msgstr "Zvolte bod"
+msgstr "Zvolte položku"
 
 #: tmp_strings.xml:54(string)
 msgid "Pick a list"
@@ -124,11 +125,11 @@ msgstr "Zvolte seznam"
 
 #: tmp_strings.xml:55(string)
 msgid "Theme"
-msgstr "Téma"
+msgstr "Motiv"
 
 #: tmp_strings.xml:56(string)
 msgid "Theme settings"
-msgstr "Téma nastavení"
+msgstr "Nastavení motivu"
 
 #: tmp_strings.xml:57(string)
 msgid "Rename list"
@@ -136,7 +137,7 @@ msgstr "Přejmenovat seznam"
 
 #: tmp_strings.xml:58(string)
 msgid "Mark item"
-msgstr "Označit bod"
+msgstr "Označit položku"
 
 #: tmp_strings.xml:60(string)
 msgid "Auto add"
@@ -144,19 +145,19 @@ msgstr "Automaticky přidat"
 
 #: tmp_strings.xml:61(string)
 msgid "Stores..."
-msgstr ""
+msgstr "Obchody..."
 
 #: tmp_strings.xml:62(string)
 msgid "Rename store"
-msgstr ""
+msgstr "Přejmenovat obchod"
 
 #: tmp_strings.xml:63(string)
 msgid "Delete store"
-msgstr ""
+msgstr "Odstranit obchod"
 
 #: tmp_strings.xml:64(string)
 msgid "Do you really want to delete this store?"
-msgstr ""
+msgstr "Opravdu chcete odstranit tento obchod?"
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
@@ -167,17 +168,17 @@ msgstr "Žádné položky nejsou k dispozici"
 #. 	     tags or price will be kept.
 #: tmp_strings.xml:70(string)
 msgid "Remove item from list"
-msgstr "Odstranit bod ze seznamu"
+msgstr "Odebrat položku ze seznamu"
 
 #. Delete this item completely. If the user wants to add it again, they
 #. 	     have to enter all the information again.
 #: tmp_strings.xml:74(string)
 msgid "Delete item permanently"
-msgstr "Permanentně vymazat bod"
+msgstr "Odstranit položku"
 
 #: tmp_strings.xml:75(string)
 msgid "Move item to other list"
-msgstr ""
+msgstr "Přesunout položku do jiného seznamu"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:77(string)
@@ -186,7 +187,7 @@ msgstr "Přidat"
 
 #: tmp_strings.xml:79(string)
 msgid "Pick items"
-msgstr "Zvolit body"
+msgstr "Zvolit položky"
 
 #: tmp_strings.xml:80(string)
 msgid "Shopping"
@@ -195,7 +196,7 @@ msgstr "Nakupování"
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:83(string)
 msgid "%s - Pick items"
-msgstr "%s - Zvolit body"
+msgstr "%s - Zvolit položky"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:86(string)
@@ -205,11 +206,11 @@ msgstr "%s - Nakupování"
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:89(string)
 msgid "%s - Stores"
-msgstr ""
+msgstr "%s - Obchody"
 
 #: tmp_strings.xml:90(string)
 msgid "Edit Item Stores"
-msgstr ""
+msgstr "Upravit obchody s položkou"
 
 #: tmp_strings.xml:92(string)
 msgid "Tags"
@@ -221,7 +222,7 @@ msgstr "Cena"
 
 #: tmp_strings.xml:94(string)
 msgid "Item"
-msgstr "Bod"
+msgstr "Položka"
 
 #: tmp_strings.xml:95(string)
 msgid "Quantity"
@@ -229,27 +230,27 @@ msgstr "Množství"
 
 #: tmp_strings.xml:96(string)
 msgid "Priority"
-msgstr ""
+msgstr "Priorita"
 
 #: tmp_strings.xml:97(string)
 msgid "Has Note"
-msgstr ""
+msgstr "Má poznámku"
 
 #: tmp_strings.xml:98(string)
 msgid "Units"
-msgstr ""
+msgstr "Jednotky"
 
 #: tmp_strings.xml:99(string)
 msgid "Note"
-msgstr ""
+msgstr "Poznámka"
 
 #: tmp_strings.xml:101(string)
 msgid "Other Quantity..."
-msgstr ""
+msgstr "Jiné množství..."
 
 #: tmp_strings.xml:102(string)
 msgid "Other Priority..."
-msgstr ""
+msgstr "Jiná priorita..."
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
@@ -259,67 +260,68 @@ msgstr "Celkem: %s"
 #. Sum of all prices of the checked items. '%s' is the sum
 #: tmp_strings.xml:108(string)
 msgid "Checked: %s"
-msgstr "Kontrola: %s"
+msgstr "Přeškrtnuté: %s"
 
 #: tmp_strings.xml:109(string)
 msgid "Priority 1: %s"
-msgstr ""
+msgstr "Priorita 1: %s"
 
 #: tmp_strings.xml:110(string)
 msgid "Priority 1-2: %s"
-msgstr ""
+msgstr "Priorita 1-2: %s"
 
 #: tmp_strings.xml:111(string)
 msgid "Priority 1-3: %s"
-msgstr ""
+msgstr "Priorita 1-3: %s"
 
 #: tmp_strings.xml:112(string)
 msgid "Priority 1-4: %s"
-msgstr ""
+msgstr "Priorita 1-4: %s"
 
 #: tmp_strings.xml:114(string)
 msgid ""
 "Are you sure you want to permanently delete this item from this shopping "
 "lists?"
 msgstr ""
+"Opravdu chcete nadobro odstranit tuto položku z tohoto nákupního seznamu?"
 
 #: tmp_strings.xml:115(string)
 msgid "Delete"
-msgstr "Vymazat"
+msgstr "Odstranit"
 
 #. Added to an item to indicate it was bought.
 #: tmp_strings.xml:118(string)
 msgid "... OK"
-msgstr "... Dobře"
+msgstr "... OK"
 
 #. The shortcut is created on the home screen.
 #: tmp_strings.xml:122(string)
 msgid "Pick list for shortcut"
-msgstr "Zvolit seznam pro zkratku"
+msgstr "Zvolte seznam, na nějž bude zástupce odkazovat"
 
 #. Shown if external application wants to insert new items.
 #: tmp_strings.xml:125(string)
 msgid "Pick list to insert items"
-msgstr "Zvolit seznam kam vsunout body"
+msgstr "Zvolte seznam, kam se vloží položky"
 
 #. Title for selecting a theme
 #: tmp_strings.xml:129(string)
 msgid "Pick a theme"
-msgstr "Zvolte téma"
+msgstr "Zvolte motiv"
 
 #: tmp_strings.xml:130(string)
 msgid "Choose a theme for this list"
-msgstr "Zvolte téma pro tento seznam"
+msgstr "Zvolte motiv pro tento seznam"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:131(string) tmp_strings.xml:287(item)
 #: tmp_strings.xml:294(item)
 msgid "Default"
-msgstr "Výchozí nastavení"
+msgstr "Výchozí"
 
 #: tmp_strings.xml:132(string)
 msgid "Classic"
-msgstr "Klasické"
+msgstr "Klasický"
 
 #: tmp_strings.xml:133(string)
 msgid "Android"
@@ -327,16 +329,16 @@ msgstr "Android"
 
 #: tmp_strings.xml:134(string)
 msgid "Classic (from OI Shopping List)"
-msgstr "Klasické (z Ol Seznamu nákupů)"
+msgstr "Klasický (z OI Nákupního seznamu)"
 
 #: tmp_strings.xml:135(string)
 msgid "Android (from OI Shopping List)"
-msgstr "Android (z Ol Seznamu nákupů)"
+msgstr "Android (z OI Nákupního seznamu)"
 
 #. Button label "OK"
 #: tmp_strings.xml:139(string)
 msgid "OK"
-msgstr "Dobře"
+msgstr "OK"
 
 #. Button label "Cancel"
 #: tmp_strings.xml:141(string)
@@ -345,11 +347,11 @@ msgstr "Zrušit"
 
 #: tmp_strings.xml:142(string)
 msgid "Use this theme for all lists"
-msgstr "Použít toto téma pro všechny seznamy"
+msgstr "Použít tento motiv pro všechny seznamy"
 
 #: tmp_strings.xml:143(string)
 msgid "Get more themes"
-msgstr "Dostaňte více témat"
+msgstr "Získejte více motivů"
 
 #. preferences
 #: tmp_strings.xml:146(string)
@@ -362,11 +364,11 @@ msgstr "Nastavení aplikace"
 
 #: tmp_strings.xml:150(string)
 msgid "Unchecked on top"
-msgstr "Horní nezaškrtnutá"
+msgstr "Nepřeškrtnuté nahoře"
 
 #: tmp_strings.xml:151(string)
 msgid "Always show unchecked items first"
-msgstr "Vždy ukázat nezaškrtnutý bod první"
+msgstr "Vždy zobrazit nezaškrtnuté položky první"
 
 #: tmp_strings.xml:152(string)
 msgid "Font size"
@@ -382,77 +384,78 @@ msgstr "Zvolte velikost písma"
 
 #: tmp_strings.xml:155(string)
 msgid "Orientation"
-msgstr ""
+msgstr "natočení"
 
 #: tmp_strings.xml:156(string)
 msgid "Change orientation"
-msgstr ""
+msgstr "Změnit natočení"
 
 #: tmp_strings.xml:157(string)
 msgid "Choose orientation"
-msgstr ""
+msgstr "Zvolte natočení"
 
 #: tmp_strings.xml:158(string)
 msgid "Sort order"
-msgstr "Třídit objednávku"
+msgstr "Řazení"
 
 #: tmp_strings.xml:159(string)
 msgid "Change sort order of list items"
-msgstr "Změnit roztřídění bodů na seznamu"
+msgstr "Změňte, podle čeho se budou položky seznamu řadit"
 
 #: tmp_strings.xml:160(string)
 msgid "Sort order - Pick Items"
-msgstr ""
+msgstr "Řazení - Vybrat položky"
 
 #: tmp_strings.xml:161(string)
 msgid "Change sort order of list items in Pick Items mode."
 msgstr ""
+"Změňte, podle čeho se budou řadit položky seznamu v režimu \"Vybrat položky\""
 
 #: tmp_strings.xml:162(string)
 msgid "Choose sort order"
-msgstr "Zvolte řazení bodů"
+msgstr "Zvolte pořadí položek"
 
 #: tmp_strings.xml:163(string)
 msgid "Choose sort order for Pick Items mode"
-msgstr ""
+msgstr "Zvolte pořadí položek pro režim \"Vybrat položky\""
 
 #: tmp_strings.xml:164(string)
 msgid "Load last list used"
-msgstr "Natáhnout naposled použitý seznam"
+msgstr "Nahrád naposledy používaný seznam"
 
 #: tmp_strings.xml:165(string)
 msgid "Always start with the list viewed last time."
-msgstr "Vždy začít se seznamem shlédnutým naposled"
+msgstr "Vždy začít naposledy zobrazeným seznamem"
 
 #: tmp_strings.xml:166(string)
 msgid "Capitalization"
-msgstr "Velká písmena"
+msgstr ""
 
 #: tmp_strings.xml:167(string)
 msgid "Automatic capitalization of entries"
-msgstr "Automatická velká písmena vstupů"
+msgstr "Automaticky zvětšovat písmena u vstupů"
 
 #: tmp_strings.xml:168(string)
 msgid "Choose capitalization"
-msgstr "Zvolte velká písmena"
+msgstr "Zvolte, kde se budou písmenta zvětšovat"
 
 #: tmp_strings.xml:169(string)
 msgid "Hide checked items"
-msgstr "Skrýt odškrtnuté body"
+msgstr "Skrýt přeškrtnuté položky"
 
 #: tmp_strings.xml:170(string)
 msgid "Immediately hide items checked off."
-msgstr "Ihned skrýt odškrtnuté body."
+msgstr "Ihned skrývat přeškrtnuté položky"
 
 #: tmp_strings.xml:171(string)
 msgid "Show price"
-msgstr "Ukázat cenu"
+msgstr "Zobrazit cenu"
 
 #: tmp_strings.xml:172(string) tmp_strings.xml:181(string)
 #: tmp_strings.xml:183(string) tmp_strings.xml:185(string)
 #: tmp_strings.xml:187(string)
 msgid "Shown as extra column in list."
-msgstr "Ukázáno na seznamu jako další sloupek"
+msgstr "Zobrazeno jako další sloupek seznamu"
 
 #: tmp_strings.xml:173(string)
 msgid "Per-store prices"

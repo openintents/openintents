@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: happy  nawani <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,17 +77,17 @@ msgstr ""
 
 #: tmp_strings.xml:44(string)
 msgid "Use camera flash"
-msgstr ""
+msgstr "कैमरा फ्लैश का प्रयोग करें"
 
 #: tmp_strings.xml:45(string)
 msgid "Use the camera flash instead of the screen backlight."
-msgstr ""
+msgstr "स्क्रीन बेकलाइट  के बजाय कैमरा फ्लैश का प्रयोग करें|"
 
 #. Information to enable the camera flash as flashlight.
 #: tmp_strings.xml:47(string)
 msgid "Press to enable camera light (May take a second)."
-msgstr ""
+msgstr "कैमरे के प्रकाश को सक्षम करने के लिए दबाएँ (थोडा वक्त ले सकता है)|"
 
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
-msgstr ""
+msgstr "कैमरे के प्रकाश को अक्षम करने के लिए दबाएँ"

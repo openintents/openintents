@@ -1,6 +1,6 @@
+Lanternă OI
 OI El feneri
 OI Flashlight
-OI Lanterna
 OI Latarka
 OI Luche
 OI Taschenlampe

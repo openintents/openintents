@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Angad Singh  <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,471 +21,479 @@ msgstr ""
 #: tmp_strings.xml:30(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Angad Singh  https://launchpad.net/~angad21-02-1996\n"
+"  Shitiz Garg https://launchpad.net/~l95s"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
 msgid "OI Notepad allows to create, edit, and delete notes."
-msgstr ""
+msgstr "OI नोत्पाड व्याख्या को उत्पादित, सम्पादित और हटाने का कार्य करता है"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
 #: tmp_strings.xml:117(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI नोटपैड"
 
 #: tmp_strings.xml:42(string)
 msgid "Delete"
-msgstr ""
+msgstr "हटाएँ"
 
 #: tmp_strings.xml:43(string)
 msgid "Add note"
-msgstr ""
+msgstr "व्याख्या करें"
 
 #: tmp_strings.xml:44(string)
 msgid "Revert"
-msgstr ""
+msgstr "पलटें"
 
 #: tmp_strings.xml:45(string)
 msgid "Discard"
-msgstr ""
+msgstr "छोड़ दें"
 
 #: tmp_strings.xml:47(string)
 msgid "Use menu to add new notes."
-msgstr ""
+msgstr "नयी व्याख्या जोड़ने में मेनू क्या इस्तेमाल करें"
 
 #: tmp_strings.xml:49(string) tmp_strings.xml:53(string)
 msgid "Edit note"
-msgstr ""
+msgstr "व्यक्ख्या सम्पादित करें"
 
 #: tmp_strings.xml:50(string)
 msgid "Edit title"
-msgstr ""
+msgstr "शीर्षक सम्पादित करें"
 
 #: tmp_strings.xml:52(string)
 msgid "Create note"
-msgstr ""
+msgstr "व्याख्या करें"
 
 #: tmp_strings.xml:55(string)
 msgid "Note"
-msgstr ""
+msgstr "व्याख्या"
 
 #: tmp_strings.xml:56(string)
 msgid "Note title:"
-msgstr ""
+msgstr "नोट शीर्षक:"
 
 #: tmp_strings.xml:57(string)
 msgid "%s (new note)"
-msgstr ""
+msgstr "%s (नया व्याख्या)"
 
 #: tmp_strings.xml:58(string)
 msgid "%s (edit note)"
-msgstr ""
+msgstr "%s (व्याख्या संपादन)"
 
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "शोर्त्चुत के लिया व्याख्या चुनिए"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
 msgid "OK"
-msgstr ""
+msgstr "ठीक है"
 
 #: tmp_strings.xml:65(string)
 msgid "Error"
-msgstr ""
+msgstr "गलती"
 
 #: tmp_strings.xml:66(string)
 msgid "Error loading note"
-msgstr ""
+msgstr "व्याख्या खोलने में गलती"
 
 #. <string name="no_notes">Note list is empty.</string>
 #: tmp_strings.xml:69(string)
 msgid "Share"
-msgstr ""
+msgstr "बाटें"
 
 #: tmp_strings.xml:70(string)
 msgid "Empty note"
-msgstr ""
+msgstr "खली व्याक्या"
 
 #: tmp_strings.xml:71(string)
 msgid "No application available for sharing."
-msgstr ""
+msgstr "बाँटने के लिए कोई प्रयोग उपलब्ध नहीं"
 
 #: tmp_strings.xml:73(string)
 msgid "Encrypting note"
-msgstr ""
+msgstr "व्याख्या गोपनीय  हो रही हैं"
 
 #: tmp_strings.xml:74(string)
 msgid "Encrypted"
-msgstr ""
+msgstr "गोपनीय"
 
 #: tmp_strings.xml:75(string)
 msgid "Encrypt"
-msgstr ""
+msgstr "गोपन करें"
 
 #: tmp_strings.xml:76(string)
 msgid "Decrypt"
-msgstr ""
+msgstr "विकोड"
 
 #: tmp_strings.xml:77(string)
 msgid "Undo encryption"
-msgstr ""
+msgstr "गोपनीयता  हटाएँ"
 
 #: tmp_strings.xml:78(string)
 msgid "Do not encrypt"
-msgstr ""
+msgstr "गोपनीय ना करें"
 
 #: tmp_strings.xml:79(string)
 msgid "Already encrypted."
-msgstr ""
+msgstr "गोपनीय है"
 
 #: tmp_strings.xml:80(string)
 msgid "Not encrypted."
-msgstr ""
+msgstr "गोपनीय नहीं है"
 
 #: tmp_strings.xml:81(string)
 msgid "Encryption failed."
-msgstr ""
+msgstr "गोपनीय कार्य असफल"
 
 #: tmp_strings.xml:82(string)
 msgid "Decryption failed."
-msgstr ""
+msgstr "विकोड असफल"
 
 #: tmp_strings.xml:84(string)
 msgid "Edit tags"
-msgstr ""
+msgstr "टाग संपादन"
 
 #: tmp_strings.xml:85(string)
 msgid "Touch to see list"
-msgstr ""
+msgstr "सूंची देखने के लिए छूएं"
 
 #: tmp_strings.xml:86(string)
 msgid "Enter tags, separated by comma"
-msgstr ""
+msgstr "कोमा द्वारा अलग किये तेग लिख्यियें"
 
 #: tmp_strings.xml:88(string)
 msgid "Save to SD card"
-msgstr ""
+msgstr "सड कार्ड में सहेंजे"
 
 #: tmp_strings.xml:89(string)
 msgid "Open from SD card"
-msgstr ""
+msgstr "सड कार्ड से खोलें"
 
 #: tmp_strings.xml:90(string)
 msgid "File name"
-msgstr ""
+msgstr "फाइल नाम"
 
 #: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
 #: tmp_strings.xml:106(string)
 msgid "Save"
-msgstr ""
+msgstr "सहेज"
 
 #: tmp_strings.xml:92(string)
 msgid "Open"
-msgstr ""
+msgstr "खोलें"
 
 #: tmp_strings.xml:93(string)
 msgid "Error while writing file"
-msgstr ""
+msgstr "फाइल लिखने में त्रुटि"
 
 #: tmp_strings.xml:94(string)
 msgid "Error while reading file"
-msgstr ""
+msgstr "फ़ाइल पढते समय त्रुटि हुई"
 
 #: tmp_strings.xml:95(string)
 msgid "File not found"
-msgstr ""
+msgstr "फाइल नहीं मिली"
 
 #: tmp_strings.xml:96(string)
 msgid "Note saved"
-msgstr ""
+msgstr "व्याख्या सहेजी"
 
 #: tmp_strings.xml:97(string)
 msgid "File exists already"
-msgstr ""
+msgstr "फाइल मौजूद है"
 
 #: tmp_strings.xml:98(string)
 msgid "Do you really want to overwrite the existing file?"
-msgstr ""
+msgstr "क्या आप मौजूदा फाइल पर दुबारा लिखना चाहेंगे?"
 
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:101(string)
 msgid "Import"
-msgstr ""
+msgstr "आयात"
 
 #: tmp_strings.xml:103(string)
 msgid "Save as"
-msgstr ""
+msgstr "ऐसे ही संचित करें"
 
 #: tmp_strings.xml:104(string)
 msgid "Text modified"
-msgstr ""
+msgstr "टेक्स्ट बदला गया"
 
 #: tmp_strings.xml:105(string)
 msgid "Do you want to save the changes?"
-msgstr ""
+msgstr "क्या बदलाव सहेजना चाहते हैं?"
 
 #: tmp_strings.xml:107(string)
 msgid "Don't save"
-msgstr ""
+msgstr "न सहेजें"
 
 #: tmp_strings.xml:109(string)
 msgid "Theme"
-msgstr ""
+msgstr "विषयवस्तु"
 
 #: tmp_strings.xml:110(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "विषयवस्तु चुने"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
 msgid "Default"
-msgstr ""
+msgstr "तयशुदा"
 
 #: tmp_strings.xml:112(string)
 msgid "Monospaced font"
-msgstr ""
+msgstr "समंदूरी फॉण्ट"
 
 #: tmp_strings.xml:113(string)
 msgid "Serif font"
-msgstr ""
+msgstr "सेरिफ़ फॉण्ट"
 
 #. Search
 #: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
 msgid "Search"
-msgstr ""
+msgstr "खोंजे"
 
 #. %s is the search string
 #: tmp_strings.xml:119(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "%s के लिए कोई परिणाम नहीं"
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "OI नोट्पाद खोज"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
 msgid "Titles of your notes"
-msgstr ""
+msgstr "व्याख्याओं के लिए शीर्षक"
 
 #: tmp_strings.xml:128(string)
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द"
 
 #: tmp_strings.xml:129(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "सभी सूचियों के लिए इस विषयवस्तु का प्रयोग करें"
 
 #: tmp_strings.xml:130(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "और विषयवस्तु लायें"
 
 #: tmp_strings.xml:132(string)
 msgid "All notes"
-msgstr ""
+msgstr "सभी व्याख्याएं"
 
 #. Title for settings regarding the list of notes
 #: tmp_strings.xml:136(string)
 msgid "Notes List"
-msgstr ""
+msgstr "व्याख्या सूंची"
 
 #: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
 msgid "List Sorting Order"
-msgstr ""
+msgstr "सूंची क्रम बद्ध करें"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
-msgstr ""
+msgstr "जिस तरह से व्याख्याएं सूंची में क्रम बद्ध की गयी हैं"
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "मार्की व्याख्या शीर्षक"
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "ज्यादा लंबे व्याख्या शीर्षकों को लगातार खिसकाते रहें"
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"
-msgstr ""
+msgstr "व्याख्या संपादक"
 
 #: tmp_strings.xml:144(string)
 msgid "Font size"
-msgstr ""
+msgstr "फॉण्ट माप"
 
 #: tmp_strings.xml:145(string)
 msgid "Change font size"
-msgstr ""
+msgstr "फॉण्ट माप बदलें"
 
 #: tmp_strings.xml:146(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "फॉण्ट माप चुने"
 
 #: tmp_strings.xml:147(string)
 msgid "Auto-create Links"
-msgstr ""
+msgstr "स्वत: निर्मित लिंक"
 
 #: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
-msgstr ""
+msgstr "फोन नंबर तथा ईमेल/सड़क/वेब पतों के लिए लिंक बनाएँ"
 
 #: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"
-msgstr ""
+msgstr "व्याख्याओं पर लिंक ना बनाएँ"
 
 #: tmp_strings.xml:151(string)
 msgid "Settings"
-msgstr ""
+msgstr "सेटिंग्स"
 
 #: tmp_strings.xml:152(string)
 msgid "Sort Order"
-msgstr ""
+msgstr "छंटाई क्रम"
 
 #. Permission to read notes.
 #: tmp_strings.xml:160(string)
 msgid "read notes"
-msgstr ""
+msgstr "व्याख्या पढ़ें"
 
 #: tmp_strings.xml:161(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"अनुप्रयोग को व्यख्या पढ़ने देता है| ध्यान दें कि गोपनीय व्यख्या गोपनीय प्रारूप में दिए हैं"
 
 #. Permission to write notes.
 #: tmp_strings.xml:163(string)
 msgid "write notes"
-msgstr ""
+msgstr "व्याख्या लिखें"
 
 #: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
-msgstr ""
+msgstr "अनुप्रयोग को नयी व्याख्या को बनाने या मोजुदा व्याख्या को बदलने देता है"
 
 #. Permission to read shopping lists.
 #: tmp_strings.xml:168(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "खरीदारी सूची पढ़ें"
 
 #: tmp_strings.xml:169(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"अनुप्रयोग को खरीदारी सूचियों को पढ़ने देता है| ध्यान दें कि गोपनीय सूचियाँ तथा आइटम "
+"गोपनीय प्रारूप में दिए गए हैं"
 
 #. Permission to write shopping lists.
 #: tmp_strings.xml:171(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "खरीदारी सूची लिखें"
 
 #: tmp_strings.xml:172(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
-msgstr ""
+msgstr "अनुप्रयोग को नयी सूची बनाने या मोजुदा सूची को बदलने देता है"
 
 #. Permission to encrypt and decrypt data.
 #: tmp_strings.xml:176(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "डाटा गूढ़ तथा विगूढ़ करें"
 
 #: tmp_strings.xml:177(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"अनुप्रयोग को व्याख्या को  गूढ़ तथा विगूढ़ करने देता है तथा ओआई सुरक्षा में संचित पासवर्डों तक "
+"जाने देता है"
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"
-msgstr ""
+msgstr "अकारादि"
 
 #: tmp_strings.xml:187(item)
 msgid "Reverse Alphabetical"
-msgstr ""
+msgstr "प्रतिलोम वर्णमाला अनुक्रमणिका"
 
 #: tmp_strings.xml:188(item)
 msgid "Last Modified"
-msgstr ""
+msgstr "पिछली बार परिवर्धित"
 
 #: tmp_strings.xml:189(item)
 msgid "First Modified"
-msgstr ""
+msgstr "पहली बार संशोधित"
 
 #: tmp_strings.xml:190(item)
 msgid "Newest to Oldest"
-msgstr ""
+msgstr "सबसे नए से सबसे पुराने"
 
 #: tmp_strings.xml:191(item)
 msgid "Oldest to Newest"
-msgstr ""
+msgstr "सबसे पुराने से सबसे नए"
 
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:196(item)
 msgid "Tiny"
-msgstr ""
+msgstr "छोटा"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:198(item)
 msgid "Small"
-msgstr ""
+msgstr "छोटा"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:202(item)
 msgid "Large"
-msgstr ""
+msgstr "बड़ा"
 
 #: tmp_strings.xml:205(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "सहयुक्ति"
 
 #: tmp_strings.xml:206(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "नए सहयुक्ति लें"
 
 #: tmp_strings.xml:207(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "विस्तारों तथा विषयों को ऑनलाइन ढूंढें"
 
 #: tmp_strings.xml:208(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "सह्युक्तियों को बाजार से लें"
 
 #: tmp_strings.xml:209(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "सह्युक्तियों को ओपनइन्टेंटस से लें"
 
 #: tmp_strings.xml:210(string)
 msgid "Extensions"
-msgstr ""
+msgstr "विस्तार"
 
 #: tmp_strings.xml:211(string)
 msgid "Themes"
-msgstr ""
+msgstr "थीम्स"
 
 #: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "अंद्रोइड बाजार में विस्तार खोजें"
 
 #: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "अंद्रोइड बाजार में थीम्स खोजें"
 
 #: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "ओपनइन्टेंट मुखपृष्ठ में से विस्तार प्राप्त करें"
 
 #: tmp_strings.xml:215(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "ओपनइन्टेंट मुखपृष्ठ में से थीम्स प्राप्त करें"
 
 #: tmp_strings.xml:216(string)
 msgid "Deletion Confirmation"
-msgstr ""
+msgstr "हटाना पुष्टिकरण"
 
 #: tmp_strings.xml:217(string)
 msgid "Are you sure you want to delete this note?"
-msgstr ""
+msgstr "क्या आप इस व्याख्या को हटाने के लिए निश्चित हैं?"
 
 #: tmp_strings.xml:219(string)
 msgid "New note"
-msgstr ""
+msgstr "नयी व्यख्या"

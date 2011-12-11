@@ -43,10 +43,10 @@
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">रंगचयनक को अन्य डेवलपर्स के लिए और उपयोगी बनाने के लिए,हमने इसे स्वयं के अनुप्रोयोग में विभाजित कर दिया है|</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="setting_use_camera_flash">कैमरा फ्लैश का प्रयोग करें</string>
+    <string name="setting_use_camera_flash_summary">स्क्रीन बेकलाइट  के बजाय कैमरा फ्लैश का प्रयोग करें|</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">कैमरे के प्रकाश को सक्षम करने के लिए दबाएँ (थोडा वक्त ले सकता है)|</string>
+    <string name="cameralight_stop_info">कैमरे के प्रकाश को अक्षम करने के लिए दबाएँ</string>
     
 </resources>

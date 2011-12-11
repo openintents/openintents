@@ -26,6 +26,7 @@ msgstr ""
 "  Feder Sáiz https://launchpad.net/~federsaiz-deactivatedaccount\n"
 "  Julián Unrrein https://launchpad.net/~junrrein\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
+"  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  enrigp https://launchpad.net/~enrgarc"
 
 #. Short explanation of the application

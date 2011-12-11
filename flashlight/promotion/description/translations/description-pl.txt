@@ -5,7 +5,7 @@ OI Latarka
 Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight to prosta i skuteczna aplikacja, która pomaga znaleźć drogę w ciemnościach. OI Flashlight blokuje podświetlanie, jasno oświetla okolicę. Dla urządzeń z lampą błyskową aparatu, Ol Flashlight może również korzystać z lampy błyskowej jako jasna latarka, aby rozjaśnić pokój. Kolor podświetlenia jest w pełni konfigurowalny z OI Color Picker. 
 
 Ta aplikacja jest darmowa i nie wymaga dostępu do internetu. 
 
@@ -19,23 +19,23 @@ Możesz poprawić tłumaczenie na Twój język:
 https://translations.launchpad.net/openintents/trunk
 
 Cechy: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+* Zablokuj podświetlenie.
+* Zablokuj lampę błyskową
+* Kolor podświetlenia można dostosować.
 
-Available extensions for "OI Flashlight": 
+Dostępne rozszerzenia dla "OI Flashlight": 
 * Pokaż informacje licencyjne z "O Ol".
-* Change the color of the backlight with "OI Color Picker".
+* Zmiana koloru podświetlenia z "OI Color Picker".
 
-Applications that work with "OI Flashlight": 
+Aplikacje który pracują z "OI Flashlight": 
 * Aktualizuj z "OI Uptade".
 
 Słowa kluczowe: 
-* Flashlight, light, Backlight
+* Latarka, światło, Podświetlenie
 * OI, OpenIntents, Open Intents
 
 Wersje międzynarodowe: 
-OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
 
 
 Wyszukane ciągi znakó w Markecie: 

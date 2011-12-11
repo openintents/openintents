@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Dariel Kremov <Unknown>\n"
+"Last-Translator: OpenIntents devs <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,9 +31,8 @@ msgid "OI About is a standalone about dialog that is shared between apps."
 msgstr ""
 
 #: tmp_strings.xml:13(string)
-#, fuzzy
 msgid "This application is invoked through the menu of other OI applications."
-msgstr "Тази апликация е безплатна и не изисква интернет за ползването и."
+msgstr ""
 
 #: tmp_strings.xml:14(string)
 msgid ""
@@ -46,24 +45,21 @@ msgid "Credits include authors, documentation, translators, and artists."
 msgstr ""
 
 #: tmp_strings.xml:16(string)
-#, fuzzy
 msgid ""
 "All of this functionality is brought together in a simplistic and efficient "
 "layout."
 msgstr ""
-"Цялата тази функционалност е събрана заедно в опростен и ефективен изглед, "
-"който може да се персонализира с разнообразие от палитри."
 
 #: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
 #: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
-#: tmp_strings.xml:229(string)
+#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
 msgstr "Тази апликация е безплатна и не изисква интернет за ползването и."
 
 #: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
 #: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
-#: tmp_strings.xml:226(string)
+#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
 msgid ""
 "The source code of this free and open source application is available at:"
 msgstr ""
@@ -72,7 +68,7 @@ msgstr ""
 
 #: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
 #: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
-#: tmp_strings.xml:231(string)
+#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
 msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
@@ -80,7 +76,7 @@ msgstr "За пълен списък с промените и често зад�
 
 #: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
 #: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
-#: tmp_strings.xml:234(string)
+#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
 msgstr ""
@@ -88,7 +84,7 @@ msgstr ""
 
 #: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
 #: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
-#: tmp_strings.xml:237(string)
+#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
 msgid "Features:"
 msgstr "Характеристики:"
 
@@ -111,9 +107,8 @@ msgid "Optionally, all fields can be modified through intent extras."
 msgstr ""
 
 #: tmp_strings.xml:35(string)
-#, fuzzy
 msgid "Applications that work with \"OI About\":"
-msgstr "Приложения, които работят с \"OI Notepad\":"
+msgstr ""
 
 #: tmp_strings.xml:36(listitem)
 msgid "OI Notepad"
@@ -145,7 +140,7 @@ msgstr ""
 
 #: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
 #: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
-#: tmp_strings.xml:256(string)
+#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
 msgid "Keywords:"
 msgstr "Ключови думи:"
 
@@ -154,18 +149,18 @@ msgid "About, Credits, Information."
 msgstr ""
 
 #: tmp_strings.xml:46(listitem)
-#, fuzzy
 msgid "OI, OpenIntents, Open Intents."
-msgstr "OI, OpenIntents, Open Intents"
+msgstr ""
 
 #: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
 #: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
-#: tmp_strings.xml:260(string)
+#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
 msgid "International versions:"
 msgstr "Международни версии:"
 
 #: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
 #: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
+#: tmp_strings.xml:260(string)
 msgid "Search strings for Market:"
 msgstr "Стрингове за търсенето в Market"
 
@@ -222,16 +217,17 @@ msgstr ""
 "Поддържа PICK_FILE и PICK_DIRECTORY ,така че и други приложения да могат да "
 "използват OI File Manager."
 
-#: tmp_strings.xml:88(string)
+#: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
 msgid "Available extensions for \"OI File Manager\":"
 msgstr "Налични разширения за \"OI File Manager\":"
 
 #: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
-#: tmp_strings.xml:190(listitem) tmp_strings.xml:248(listitem)
+#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
+#: tmp_strings.xml:300(listitem)
 msgid "Show the license information with \"OI About\"."
 msgstr "Покажи информация за лиценза с \"OI About\"."
 
-#: tmp_strings.xml:91(string)
+#: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
 msgid "Applications that work with \"OI File Manager\":"
 msgstr "Приложения, които работят със \"OI File Manager\":"
 
@@ -245,7 +241,7 @@ msgid "file manager, filemanager, file explorer"
 msgstr "файлов мениджър,файловмениджър,файлов изследовател"
 
 #. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
-#: tmp_strings.xml:98(listitem)
+#: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
 msgid "OI, IO, OpenIntents, Open Intents"
 msgstr "OI, IO, OpenIntents, Open Intents"
 
@@ -286,21 +282,19 @@ msgid "The color of backlight is customizable."
 msgstr ""
 
 #: tmp_strings.xml:137(string)
-#, fuzzy
 msgid "Available extensions for \"OI Flashlight\":"
-msgstr "Налични разширения за \"OI File Manager\":"
+msgstr ""
 
 #: tmp_strings.xml:139(listitem)
 msgid "Change the color of the backlight with \"OI Color Picker\"."
 msgstr ""
 
 #: tmp_strings.xml:141(string)
-#, fuzzy
 msgid "Applications that work with \"OI Flashlight\":"
-msgstr "Приложения, които работят със \"OI File Manager\":"
+msgstr ""
 
 #: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
-#: tmp_strings.xml:252(listitem)
+#: tmp_strings.xml:304(listitem)
 msgid "Update with \"OI Update\"."
 msgstr "Обновявай с \"OI Update\"."
 
@@ -309,7 +303,7 @@ msgid "Flashlight, light, Backlight"
 msgstr ""
 
 #: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
-#: tmp_strings.xml:258(listitem)
+#: tmp_strings.xml:310(listitem)
 msgid "OI, OpenIntents, Open Intents"
 msgstr "OI, OpenIntents, Open Intents"
 
@@ -420,100 +414,152 @@ msgstr "Бележка, Бележник, Бележки"
 #. Description of application
 #: tmp_strings.xml:220(string)
 msgid ""
+"OI Safe safely protects all of your passwords and other private data using "
+"industry standard AES encryption."
+msgstr ""
+
+#: tmp_strings.xml:221(string)
+#, fuzzy
+msgid ""
+"It also acts as an extension to OI Notepad to encrypt notes created in OI "
+"Notepad."
+msgstr ""
+"Той действа и като добавка към други приложения за показване на \"Отвори\" и "
+"\"Запамети\":"
+
+#: tmp_strings.xml:235(listitem)
+msgid "Securely protect data using AES encryption."
+msgstr ""
+
+#: tmp_strings.xml:236(listitem)
+msgid "Freely move data entries between categories."
+msgstr ""
+
+#: tmp_strings.xml:237(listitem)
+msgid "Import/Export data entries and databases."
+msgstr ""
+
+#: tmp_strings.xml:238(listitem)
+msgid "Backup/Restore entries."
+msgstr ""
+
+#: tmp_strings.xml:239(listitem)
+msgid "Includes secure password generator."
+msgstr ""
+
+#: tmp_strings.xml:240(listitem)
+msgid "Automatic timeout to protect encrypted documents."
+msgstr ""
+
+#: tmp_strings.xml:241(listitem)
+msgid "Encrypt OI Notepad notes."
+msgstr ""
+
+#: tmp_strings.xml:242(listitem)
+msgid "Support for Obscura picture safe."
+msgstr ""
+
+#: tmp_strings.xml:243(listitem)
+msgid "MyBackup Pro."
+msgstr ""
+
+#: tmp_strings.xml:249(listitem)
+#, fuzzy
+msgid "Encrypt notes created in \"OI Notepad\"."
+msgstr "Шифровай бележки с \"OI Safe\"."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:253(listitem)
+msgid "safe, encrpytion, password, protection"
+msgstr ""
+
+#. Description of application
+#: tmp_strings.xml:272(string)
+msgid ""
 "OI Shopping List is a powerful application which makes it easy to create and "
 "manage checklists."
 msgstr ""
 
-#: tmp_strings.xml:221(string)
+#: tmp_strings.xml:273(string)
 msgid ""
 "OI Shopping List makes it easy to add items to a list, check the item off, "
 "and remove it from the list."
 msgstr ""
 
-#: tmp_strings.xml:222(string)
+#: tmp_strings.xml:274(string)
 msgid ""
 "The application can track separate prices for each store that you use, and "
 "features a high level of customization."
 msgstr ""
 
-#: tmp_strings.xml:223(string)
+#: tmp_strings.xml:275(string)
 msgid ""
 "Font size, sort order, list columns, and list cleanup behavior are all "
 "settings controlled by the user."
 msgstr ""
 
-#: tmp_strings.xml:224(string)
-#, fuzzy
+#: tmp_strings.xml:276(string)
 msgid ""
 "All of these features are brought together in a crisp layout that is "
 "customizable through a variety of themes."
 msgstr ""
-"Цялата тази функционалност е събрана заедно в опростен и ефективен изглед, "
-"който може да се персонализира с разнообразие от палитри."
 
-#: tmp_strings.xml:238(listitem)
-#, fuzzy
+#: tmp_strings.xml:290(listitem)
 msgid "Add, edit and delete lists."
-msgstr "Добавай, редактирай и трий бележки."
+msgstr ""
 
-#: tmp_strings.xml:239(listitem)
+#: tmp_strings.xml:291(listitem)
 msgid "Create, delete, and check items quickly and easily."
 msgstr ""
 
-#: tmp_strings.xml:240(listitem)
+#: tmp_strings.xml:292(listitem)
 msgid "Variety of themes."
 msgstr ""
 
-#: tmp_strings.xml:241(listitem)
-#, fuzzy
+#: tmp_strings.xml:293(listitem)
 msgid "Customizable font size and sort order."
-msgstr "Промени размера на шрифта и начина на сортиране."
+msgstr ""
 
-#: tmp_strings.xml:242(listitem)
+#: tmp_strings.xml:294(listitem)
 msgid "Keep track of separate prices for each store."
 msgstr ""
 
-#: tmp_strings.xml:243(listitem)
+#: tmp_strings.xml:295(listitem)
 msgid "Customizable list columns."
 msgstr ""
 
-#: tmp_strings.xml:245(string)
-#, fuzzy
+#: tmp_strings.xml:297(string)
 msgid "Available extensions for \"OI Shopping List\":"
-msgstr "Налични разширения за \"OI Notepad\":"
+msgstr ""
 
-#: tmp_strings.xml:246(listitem)
-#, fuzzy
+#: tmp_strings.xml:298(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
 msgstr ""
-"Записвай и прилагай гласови записки към бележките с \"OI Voice Notes\"."
 
-#: tmp_strings.xml:247(listitem)
+#: tmp_strings.xml:299(listitem)
 msgid "Import/export shopping lists with \"OI Convert CSV\"."
 msgstr ""
 
-#: tmp_strings.xml:249(listitem)
+#: tmp_strings.xml:301(listitem)
 msgid "Enter/check items with \"Barcode OI Plugin\"."
 msgstr ""
 
-#: tmp_strings.xml:251(string)
-#, fuzzy
+#: tmp_strings.xml:303(string)
 msgid "Applications that work with \"OI Shopping List\":"
-msgstr "Приложения, които работят с \"OI Notepad\":"
+msgstr ""
 
-#: tmp_strings.xml:253(listitem)
-#, fuzzy
+#: tmp_strings.xml:305(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
-msgstr "Направи резервни копия на бележките си с \"My Backup Pro\"."
+msgstr ""
 
-#: tmp_strings.xml:254(listitem)
+#: tmp_strings.xml:306(listitem)
 msgid "Import ingredients of recipes with \"Bites\"."
 msgstr ""
 
-#: tmp_strings.xml:257(listitem)
+#: tmp_strings.xml:309(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
 msgstr ""
 
-#: tmp_strings.xml:263(string)
+#: tmp_strings.xml:315(string)
 msgid "Extensions:"
 msgstr ""

@@ -35,7 +35,7 @@ Anahtar kelimeler:
 * OI, OpenIntents, Open Intents
 
 Uluslararası versiyonlar: 
-OI El feneri, OI Flashlight, OI Lanterna, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
 
 
 Search strings for Market: 

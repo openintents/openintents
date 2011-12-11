@@ -126,6 +126,7 @@
     <string-array name="notepad_format">
         <item>MS Изглед на бележки</item>
         <item>Длан CSV</item>
+        <item>JPilot Memo</item>
     </string-array>
     
     <string-array name="shoppinglist_format">

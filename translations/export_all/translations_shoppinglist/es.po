@@ -29,6 +29,7 @@ msgstr ""
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Sebas - KM Sistemas https://launchpad.net/~sebas-kmsistemas\n"
+"  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  friedger https://launchpad.net/~friedger"
 
 #. Short explanation of the application

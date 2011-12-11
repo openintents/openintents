@@ -213,6 +213,58 @@
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline/>
+		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<emptyline/>
+		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Можете да помогнете за подобряване на превода на вашия език в Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Характеристики:</string>
+		<listitem>Securely protect data using AES encryption.</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Backup/Restore entries.</listitem>
+		<listitem>Includes secure password generator.</listitem>
+		<listitem>Automatic timeout to protect encrypted documents.</listitem>
+		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Налични разширения за "OI File Manager":</string>
+		<listitem>Покажи информация за лиценза с "OI About".</listitem>
+		<emptyline/>
+		<string>Приложения, които работят със "OI File Manager":</string>
+		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>Ключови думи:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Международни версии:</string>
+		<international/>
+		<emptyline/>
+		<string>Стрингове за търсенето в Market</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
 	<description application="shoppinglist/ShoppingList">
 		<!--  OI Shopping List -->
 		<!--  -->

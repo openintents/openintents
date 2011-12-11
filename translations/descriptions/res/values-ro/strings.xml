@@ -2,9 +2,13 @@
 <main>
 	<translators>Launchpad Contributions:
   Alex Toma https://launchpad.net/~alex26toma
+  Eduard Roventa https://launchpad.net/~rov-93
   Florentina Mușat https://launchpad.net/~kuchiki14
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Robert https://launchpad.net/~usamird
   Robert Dumitrescu https://launchpad.net/~rc-dumitrescu
+  Stelescu Raul https://launchpad.net/~stelescuraul
+  Tudorica Andrei https://launchpad.net/~andreitudoricacj
   iulargsb https://launchpad.net/~iulargsb</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -14,13 +18,13 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI About este un dialog de sine stătător care este împărtășit între aplicații.</string>
+		<string>Această aplicaţie este invocată prin meniul de alte aplicaţii OI.</string>
+		<string>Acesta vă permite să vizualizaţi informaţia despre versiune, linkuri, credite, şi licența unei aplicații.</string>
+		<string>Creditele includ autori, documentaţie, traducători, şi artişti.</string>
+		<string>Toate aceste funcționalități sunt aduse împreună intr-un aspect simplist și eficient.</string>
 		<emptyline/>
-		<string>Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet.</string>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
 		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -28,32 +32,32 @@
 		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad:</string>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Caracteristici:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>Afişează informații generale, credite și filele cu licențe.</listitem>
+		<listitem>Arată translatorii tuturor limbilor.</listitem>
+		<listitem>Recuperează informație de la manifestul aplicației prin metadata și marcări implicite.</listitem>
+		<listitem>Opțional, toate câmpurile pot fi modificare prin intermediul extra-intenţie.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>Aplicații care funcționează cu „OI About”:</string>
 		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
+		<listitem>Manager OI de fișiere</listitem>
+		<listitem>Listă de cumpărături OI</listitem>
+		<listitem>OI Convertește CSV</listitem>
 		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<listitem>OI Numărătoare inversă</listitem>
+		<listitem>OI Lanternă</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<listitem>Despre, Credite, Informații.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
-		<string>Şiruri de căutare pentru Market:</string>
+		<string>Caută șiruri pentru Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -67,15 +71,15 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>Gestionarul de fișiere OI vă permite să navigați cardul SD, să creați dosare, să redenumiți, să copiați, să mutați, și să ștergeți fișiere.</string>
-		<string>Poate fi folosit și ca o extensie în alte aplicații pentru a afișa dialogurile „Deschide” și „Salvează”.</string>
+		<string>Managerul de fișiere OI vă permite să navigați cardul SD, să creați dosare, să redenumiți, să copiați, să mutați, și să ștergeți fișiere.</string>
+		<string>Funcționează de asemenea și ca o extensie în alte aplicații pentru a afișa dialogurile „Deschide” și „Salvează”.</string>
 		<emptyline/>
-		<string>Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet.</string>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
 		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad:</string>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
@@ -86,15 +90,15 @@
 		<listitem>Mută, copiază, redenumește și șterge fișiere.</listitem>
 		<listitem>Crează și șterge dosare.</listitem>
 		<listitem>Trimite fișiere prin email.</listitem>
-		<listitem>Acționează ca o extensie pentru alte aplicații, GMail de exemplu, pentru a atașa fișiere.</listitem>
+		<listitem>Funcționează ca o extensie pentru alte aplicații, GMail de exemplu, pentru a atașa fișiere.</listitem>
 		<listitem>Suport pentru multe sfârșituri de fișiere și tipuri mime.</listitem>
 		<listitem>Suportă intents PICK_FILE și PICK_DIRECTORY pentru ca alte aplicații să utilizeze Gestionarul de Fișiere OI.</listitem>
 		<emptyline/>
-		<string>Extensii disponibile pentru "OI File Manager":</string>
-		<listitem>Arată informaţiile de licenţă cu "OI About".</listitem>
+		<string>Extensii disponibile pentru „OI File Manager”:</string>
+		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
 		<emptyline/>
-		<string>Aplicaţii care funcţionează cu "OI File Manager":</string>
-		<listitem>Deschideţi şi salvaţi fişiere text în "OI Notepad".</listitem>
+		<string>Aplicaţii care funcţionează cu „OI File Manager”:</string>
+		<listitem>Deschideţi şi salvaţi fişiere text în „OI Notepad”.</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -105,7 +109,7 @@
 		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
-		<string>Şiruri de căutare pentru Market:</string>
+		<string>Caută șiruri pentru Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -118,12 +122,12 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Lanternă este o aplicaţie simplă şi eficientă, care vă ajută să găsiţi o cale în întuneric.</string>
+		<string>OI Lanternă pastrează iluminarea din spate a ecranului pornită, iluminând în mod clar zona înconjurătoare.</string>
+		<string>Pentru dispozitivele cu bliţ, lanterna OI poate utiliza de asemenea blițul ca o torță luminoasă pentru a lumina camera.</string>
+		<string>Culoarea iluminării din spate este personalizabilă cu OI Color Picker.</string>
 		<emptyline/>
-		<string>Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet.</string>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
 		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -131,29 +135,29 @@
 		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad:</string>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Caracteristici:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>Păstrați iluminarea din spate a afișajului pornită.</listitem>
+		<listitem>Păstrați blițul pornit.</listitem>
+		<listitem>Culoarea iluminării din spate este personalizabilă.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Arată informaţiile de licenţă cu "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>Extensii disponibile pentru  „OI Flashlight”:</string>
+		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
+		<listitem>Schimbați culoarea pentru iluminarea din spate cu „OI Color Picker”.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Actualizaţi cu "OI Update".</listitem>
+		<string>Aplicații care funcționează cu „OI Flashlight”:</string>
+		<listitem>Actualizaţi cu „OI Update”.</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>Lanternă, lumină, Iluminare din spate</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
-		<string>Şiruri de căutare pentru Market:</string>
+		<string>Caută șiruri pentru Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -165,12 +169,12 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad este o aplicaţie cu toate caracteristicile pentru luat notiţe.</string>
-		<string>Cu această aplicaţie puteţi etichet, căuta, şi trimite notele, în plus faţă de funcţionalitatea de bază, cum ar fi crearea, ştergerea si editarea notelor.</string>
-		<string>Caracteristici avansate cum ar fi criptarea, importarea/exportarea, şi notele vocale sunt toate disponibile prin extensii.</string>
-		<string>Toate din aceaste funcţionalităţi sunt adus împreună într-un aspect simplist şi eficient, personalizabil printr-o varietate de teme.</string>
+		<string>OI Notepad este o aplicaţie cu sursa publică, cu toate caracteristicile pentru a lua notiţe.</string>
+		<string>Cu ea puteți eticheta, căuta, şi trimite notele, pe lângă funcţionalitatea de bază, cum ar fi crearea, ştergerea si editarea notelor.</string>
+		<string>Caracteristici avansate cum ar fi criptarea, importarea/exportarea, şi memourile vocale sunt toate disponibile prin extensii.</string>
+		<string>Toate aceaste funcţionalităţi sunt aduse împreună într-un aspect simplist şi eficient, personalizabil printr-o varietate de teme.</string>
 		<emptyline/>
-		<string>Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet.</string>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
 		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -178,7 +182,7 @@
 		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad:</string>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Caracteristici:</string>
@@ -187,21 +191,21 @@
 		<listitem>Schimbă dimensiunea fontului şi ordinea de sortare.</listitem>
 		<listitem>Un aspect aranjat în mod clar cu o varietate de teme.</listitem>
 		<listitem>Căutare rapidă prin note.</listitem>
-		<listitem>Trimiteţi notele prin MMS sau SMS.</listitem>
+		<listitem>Trimiteţi note prin MMS sau SMS.</listitem>
 		<emptyline/>
-		<string>Extensii disponibile pentru "OI Notepad":</string>
-		<listitem>Înregistraţi şi ataşaţi note vocale cu "OI Voice Notes".</listitem>
-		<listitem>Cu "OI Convert CSV" puteţi importa/exporta note de pe cardul SD.</listitem>
-		<listitem>Arată informaţiile de licenţă cu "OI About".</listitem>
-		<listitem>Inseraţi data şi ora în note cu "OI Insert Date".</listitem>
-		<listitem>Întoarceţi textul cu susul în jos cu "Upside Down".</listitem>
+		<string>Extensii disponibile pentru „OI Notepad”:</string>
+		<listitem>Înregistraţi şi ataşaţi memouri vocale la note cu „OI Voice Notes”.</listitem>
+		<listitem>Cu „OI Convert CSV” puteţi importa/exporta note de pe cardul SD.</listitem>
+		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
+		<listitem>Inseraţi data şi ora în note cu „OI Insert Date”.</listitem>
+		<listitem>Întoarce textul cu susul în jos cu „Upside Down”.</listitem>
 		<emptyline/>
-		<string>Aplicaţii care funcţioneaza cu "OI Notepad":</string>
-		<listitem>Faceţi o copie de rezervă a notelor cu "My Backup Pro".</listitem>
-		<listitem>Criptaţi notele cu "OI Safe".</listitem>
-		<listitem>Administraţi notele de pe cardul SD cu "File Manager OI".</listitem>
-		<listitem>Actualizaţi cu "OI Update".</listitem>
-		<listitem>Cautaţi note prin intermediul "Facebook", "Gmail", "Google+", "Twitter", si multe alte aplicaţii.</listitem>
+		<string>Aplicaţii care funcţionează cu „OI Notepad”:</string>
+		<listitem>Crează o copie de rezervă a notelor cu „My Backup Pro”.</listitem>
+		<listitem>Criptează notele cu „OI Safe”.</listitem>
+		<listitem>Administrează notele de pe cardul dumneavoastră SD cu „File Manager OI”.</listitem>
+		<listitem>Actualizaţi cu „OI Update”.</listitem>
+		<listitem>Distribuie note prin intermediul "Facebook", "Gmail", "Google+", "Twitter", și multe alte aplicaţii.</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
 		<listitem>Notă, Notepad, Carnet de note, Note</listitem>
@@ -210,7 +214,59 @@
 		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
-		<string>Şiruri de căutare pentru Market:</string>
+		<string>Caută șiruri pentru Market:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline/>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
+		<emptyline/>
+		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Caracteristici:</string>
+		<listitem>Securely protect data using AES encryption.</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Backup/Restore entries.</listitem>
+		<listitem>Includes secure password generator.</listitem>
+		<listitem>Automatic timeout to protect encrypted documents.</listitem>
+		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Extensii disponibile pentru „OI File Manager”:</string>
+		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
+		<emptyline/>
+		<string>Aplicaţii care funcţionează cu „OI File Manager”:</string>
+		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>Cuvinte cheie:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Versiuni internaționale:</string>
+		<international/>
+		<emptyline/>
+		<string>Caută șiruri pentru Market:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -222,50 +278,50 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>Lista de cumpărături OI este o aplicaţie puternică și care simplifică gestionarea și crearea listelor de verificare.</string>
+		<string>Lista de cumpărături OI simplifică adăugarea unui produs pe o listă, debifați produsul şi scoateţi-l din listă.</string>
+		<string>Aplicația poate urmări separat preţuri pentru fiecare magazin pe care îl utilizaţi, şi dispune de un nivel ridicat de personalizare.</string>
+		<string>Dimensiunea fontului, ordinea de sortare, coloanele listă, şi comportamentul listei de curățare sunt toate setările controlate de către utilizator.</string>
+		<string>Toate aceste caracteristici sunt reunite într-un aspect proaspăt care este personalizabil printr-o varietate de teme.</string>
 		<emptyline/>
 		<string>Codul sursă al acestei aplicații gratuite și cu sursă deschisă este disponibil la:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Această aplicație nu conține anunțuri publicitare și nu necesită permisiune la internet.</string>
+		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
 		<string>Pentru lista completă cu modificări și o listă cu întrebări frecvente, vizitați:</string>
 		<link href="http://www.openintents.org"/>
 		<emptyline/>
-		<string>Puteți îmbunătăți traducerea în limba dumneavoastră la Launchpad:</string>
+		<string>Puteți ajuta la îmbunătățirea traducerii în limba dumneavoastră la Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Caracteristici:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>Adaugă, editează și șterge liste.</listitem>
+		<listitem>Creează, șterge, și verifică articolele repede și ușor.</listitem>
+		<listitem>Varietate de teme.</listitem>
+		<listitem>Mărimea fontului și ordinul de sortare personalizabile.</listitem>
+		<listitem>Țineți separat evidența prețurilor pentru fiecare magazin.</listitem>
+		<listitem>Listă de coloane personalizabilă.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Arată informaţiile de licenţă cu "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>Extensii disponibile pentru „OI Shopping List”:</string>
+		<listitem>Adaugă un mesaj înregistrat unei note cu „OI Voice Notes”.</listitem>
+		<listitem>Importă/exportă listă de cumpărături cu „OI Convert CSV”.</listitem>
+		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
+		<listitem>Introduceți/Bifați articole cu „Barcode OI Plugin”.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Actualizaţi cu "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>Aplicații care lucrează cu „OI Shopping List”:</string>
+		<listitem>Actualizaţi cu „OI Update”.</listitem>
+		<listitem>Listă de rezervă cu „My Backup Pro”.</listitem>
+		<listitem>Importă ingrediente ale rețetelor cu „Bites”.</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>Cumpărături, Listă, Listă de cumpărături, Listă de verificare</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Versiuni internaționale:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Extensii:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

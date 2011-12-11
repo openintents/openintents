@@ -6,10 +6,11 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis</string>
+  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">Το OpenIntents Flashlight σας βοηθά να βρείτε το δρόμο σας στο σκοτάδι. Ο οπίσθιος φωτισμός της οθόνης παραμένει ενερηοποιημένος κατά την εκτέλεση αυτής της εφαρμογής.</string>
+	<string name="about_comments">Το OpenIntents Flashlight σας βοηθά να βρείτε το δρόμο σας στο σκοτάδι. Ο οπίσθιος φωτισμός της οθόνης παραμένει ενεργοποιημένος κατά την εκτέλεση αυτής της εφαρμογής.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings

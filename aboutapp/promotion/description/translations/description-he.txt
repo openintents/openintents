@@ -1,3 +1,10 @@
+# Application:
+אודות OI
+
+# Promo text:
+דיאלוג נפרד שנחלק בין אפליקציות.
+
+# Description:
 OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
 
 באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט. 
@@ -31,7 +38,7 @@ Applications that work with "OI About":
 * OI, OpenIntents, Open Intents.
 
 גרסאות בין-לאומיות: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
 
 
 Search strings for Market: 

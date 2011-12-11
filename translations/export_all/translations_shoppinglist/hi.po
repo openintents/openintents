@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Shitiz Garg <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,8 @@ msgstr ""
 #: tmp_strings.xml:24(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Shitiz Garg https://launchpad.net/~l95s"
 
 #. Short explanation of the application
 #: tmp_strings.xml:27(string)
@@ -29,748 +31,753 @@ msgid ""
 "use it for other kinds of check lists, for example for ToDo lists or party "
 "guest lists."
 msgstr ""
+"ओआई शौपिंग लिस्ट आप को आपके खरीदारी आइटमों पर नजर रखने देता है| आप इसको दूसरे प्रकार "
+"की नियंत्रण सूची के लिए भी प्रयोग कर सकते हैं उदाहरण के लिए: कार्य सूची या दावत के "
+"मेहमानों की सूची"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:33(string)
 msgid "OI Shopping list"
-msgstr ""
+msgstr "ओआई शौपिंग लिस्ट"
 
 #: tmp_strings.xml:35(string)
 msgid "New item"
-msgstr ""
+msgstr "नयी चीज़"
 
 #: tmp_strings.xml:36(string)
 msgid "New list"
-msgstr ""
+msgstr "नयी सूची"
 
 #: tmp_strings.xml:37(string)
 msgid "Send list"
-msgstr ""
+msgstr "सूची भेजिए"
 
 #: tmp_strings.xml:38(string)
 msgid "Mark all items"
-msgstr ""
+msgstr "सभी आइटमों को चिन्हित करें"
 
 #: tmp_strings.xml:39(string)
 msgid "Empty list not sent."
-msgstr ""
+msgstr "खाली सूची नहीं भेजी गई"
 
 #: tmp_strings.xml:40(string)
 msgid "No application available for sending."
-msgstr ""
+msgstr "भेजने के लिए कोई अनुप्रयोग उपलब्ध नहीं है"
 
 #: tmp_strings.xml:41(string)
 msgid "My shopping list"
-msgstr ""
+msgstr "मेरी खरीदारी सूची"
 
 #: tmp_strings.xml:42(string)
 msgid "i.e. wishlist, family list"
-msgstr ""
+msgstr "जैसे कि इच्छा सूची, परिवार सूची"
 
 #. Automation action to clean up a list.
 #: tmp_strings.xml:43(string) tmp_strings.xml:331(item)
 msgid "Clean up list"
-msgstr ""
+msgstr "सूची खाली करें"
 
 #: tmp_strings.xml:44(string)
 msgid "Delete list"
-msgstr ""
+msgstr "सूची मिटाएँ"
 
 #: tmp_strings.xml:45(string)
 msgid "Enter name of new shopping list"
-msgstr ""
+msgstr "नयी खरीदारी सूची का नाम भरें"
 
 #: tmp_strings.xml:46(string)
 msgid "Rename shopping list"
-msgstr ""
+msgstr "खरीदारी सूची का नाम बदलें"
 
 #: tmp_strings.xml:47(string) tmp_strings.xml:59(string)
 msgid "Edit item"
-msgstr ""
+msgstr "आइटम सम्पादित करें"
 
 #: tmp_strings.xml:48(string)
 msgid "Enter new store name"
-msgstr ""
+msgstr "नए स्टोर का नाम भरें"
 
 #: tmp_strings.xml:49(string)
 msgid "Please enter a name"
-msgstr ""
+msgstr "कृपया कोई नाम भरें"
 
 #: tmp_strings.xml:50(string)
 msgid "No items are marked as crossed out."
-msgstr ""
+msgstr "किसी आइटम को कटा नहीं गया है"
 
 #: tmp_strings.xml:51(string)
 msgid "Do you really want to delete this shopping list?"
-msgstr ""
+msgstr "क्या आप सचमुच इस खरीदारी सूची को हटाना चाहते हैं"
 
 #: tmp_strings.xml:52(string)
 msgid "Error while accessing shopping lists."
-msgstr ""
+msgstr "खरीदारी सूची को खोलते हुए त्रुटि"
 
 #: tmp_strings.xml:53(string)
 msgid "Pick an item"
-msgstr ""
+msgstr "कोई आइटम चुनें"
 
 #: tmp_strings.xml:54(string)
 msgid "Pick a list"
-msgstr ""
+msgstr "कोई सूची चुनें"
 
 #: tmp_strings.xml:55(string)
 msgid "Theme"
-msgstr ""
+msgstr "विषयवस्तु"
 
 #: tmp_strings.xml:56(string)
 msgid "Theme settings"
-msgstr ""
+msgstr "विषयवस्तु सेटिंग"
 
 #: tmp_strings.xml:57(string)
 msgid "Rename list"
-msgstr ""
+msgstr "सूची का नाम बदलें"
 
 #: tmp_strings.xml:58(string)
 msgid "Mark item"
-msgstr ""
+msgstr "आइटम चिन्हित करें"
 
 #: tmp_strings.xml:60(string)
 msgid "Auto add"
-msgstr ""
+msgstr "स्वत: जोड़"
 
 #: tmp_strings.xml:61(string)
 msgid "Stores..."
-msgstr ""
+msgstr "स्टोर्स..."
 
 #: tmp_strings.xml:62(string)
 msgid "Rename store"
-msgstr ""
+msgstr "स्टोर का नाम बदलें"
 
 #: tmp_strings.xml:63(string)
 msgid "Delete store"
-msgstr ""
+msgstr "स्टोर हटाएँ"
 
 #: tmp_strings.xml:64(string)
 msgid "Do you really want to delete this store?"
-msgstr ""
+msgstr "क्या आप सचमुच इस स्टोर को हटाना चाहते हैं"
 
 #: tmp_strings.xml:65(string)
 msgid "No items available"
-msgstr ""
+msgstr "कोई आइटम मोजूद नहीं है"
 
 #. Remove item from this list, but keep it internally, so that the user
 #. 	     can choose it later for inclusion again. Information like
 #. 	     tags or price will be kept.
 #: tmp_strings.xml:70(string)
 msgid "Remove item from list"
-msgstr ""
+msgstr "इस आइटम को सूची से हटाएँ"
 
 #. Delete this item completely. If the user wants to add it again, they
 #. 	     have to enter all the information again.
 #: tmp_strings.xml:74(string)
 msgid "Delete item permanently"
-msgstr ""
+msgstr "आइटम सदा के लिए हटाएँ"
 
 #: tmp_strings.xml:75(string)
 msgid "Move item to other list"
-msgstr ""
+msgstr "आइटम अन्य सूची में ले जाएँ"
 
 #. Button label to add an item to the list.
 #: tmp_strings.xml:77(string)
 msgid "Add"
-msgstr ""
+msgstr "जोड़ें"
 
 #: tmp_strings.xml:79(string)
 msgid "Pick items"
-msgstr ""
+msgstr "आइटम चुनें"
 
 #: tmp_strings.xml:80(string)
 msgid "Shopping"
-msgstr ""
+msgstr "खरीदारी"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:83(string)
 msgid "%s - Pick items"
-msgstr ""
+msgstr "%s - आइटम चुनें"
 
 #. Title supplement. '%s' is the name of the current list.
 #: tmp_strings.xml:86(string)
 msgid "%s - Shopping"
-msgstr ""
+msgstr "%s - खरीदारी"
 
 #. Title supplement. '%s' is the name of the current item.
 #: tmp_strings.xml:89(string)
 msgid "%s - Stores"
-msgstr ""
+msgstr "%s - स्टोर्स"
 
 #: tmp_strings.xml:90(string)
 msgid "Edit Item Stores"
-msgstr ""
+msgstr "आइटम स्टोर्स संपादन"
 
 #: tmp_strings.xml:92(string)
 msgid "Tags"
-msgstr ""
+msgstr "टैग्स"
 
 #: tmp_strings.xml:93(string)
 msgid "Price"
-msgstr ""
+msgstr "कीमत"
 
 #: tmp_strings.xml:94(string)
 msgid "Item"
-msgstr ""
+msgstr "आइटम"
 
 #: tmp_strings.xml:95(string)
 msgid "Quantity"
-msgstr ""
+msgstr "मात्रा"
 
 #: tmp_strings.xml:96(string)
 msgid "Priority"
-msgstr ""
+msgstr "प्रधानता"
 
 #: tmp_strings.xml:97(string)
 msgid "Has Note"
-msgstr ""
+msgstr "व्याख्या है"
 
 #: tmp_strings.xml:98(string)
 msgid "Units"
-msgstr ""
+msgstr "इकाइयों"
 
 #: tmp_strings.xml:99(string)
 msgid "Note"
-msgstr ""
+msgstr "व्याख्या"
 
 #: tmp_strings.xml:101(string)
 msgid "Other Quantity..."
-msgstr ""
+msgstr "दूसरी मात्रा"
 
 #: tmp_strings.xml:102(string)
 msgid "Other Priority..."
-msgstr ""
+msgstr "दूसरी प्रधानता"
 
 #. Total sum of all prices. '%s' is the sum
 #: tmp_strings.xml:105(string)
 msgid "Total: %s"
-msgstr ""
+msgstr "कुल: %s"
 
 #. Sum of all prices of the checked items. '%s' is the sum
 #: tmp_strings.xml:108(string)
 msgid "Checked: %s"
-msgstr ""
+msgstr "चिह्नित: %s"
 
 #: tmp_strings.xml:109(string)
 msgid "Priority 1: %s"
-msgstr ""
+msgstr "प्रधानता १: %s"
 
 #: tmp_strings.xml:110(string)
 msgid "Priority 1-2: %s"
-msgstr ""
+msgstr "प्रधानता १-२: %s"
 
 #: tmp_strings.xml:111(string)
 msgid "Priority 1-3: %s"
-msgstr ""
+msgstr "प्रधानता १-३: %s"
 
 #: tmp_strings.xml:112(string)
 msgid "Priority 1-4: %s"
-msgstr ""
+msgstr "प्रधानता १-४: %s"
 
 #: tmp_strings.xml:114(string)
 msgid ""
 "Are you sure you want to permanently delete this item from this shopping "
 "lists?"
-msgstr ""
+msgstr "क्या आप हमेशा के लिए यह आइटम को इस स्टोर से हटाना चाहते है?"
 
 #: tmp_strings.xml:115(string)
 msgid "Delete"
-msgstr ""
+msgstr "हटाएँ"
 
 #. Added to an item to indicate it was bought.
 #: tmp_strings.xml:118(string)
 msgid "... OK"
-msgstr ""
+msgstr "... ठीक है"
 
 #. The shortcut is created on the home screen.
 #: tmp_strings.xml:122(string)
 msgid "Pick list for shortcut"
-msgstr ""
+msgstr "शोर्त्चुत के लिए सूची चुनिए"
 
 #. Shown if external application wants to insert new items.
 #: tmp_strings.xml:125(string)
 msgid "Pick list to insert items"
-msgstr ""
+msgstr "आइटम को जोड़ने के लिए सूची चुनिए"
 
 #. Title for selecting a theme
 #: tmp_strings.xml:129(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "विषयवस्तु चुने"
 
 #: tmp_strings.xml:130(string)
 msgid "Choose a theme for this list"
-msgstr ""
+msgstr "इस सूची के लिए विषयवस्तु चुनिए"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:131(string) tmp_strings.xml:287(item)
 #: tmp_strings.xml:294(item)
 msgid "Default"
-msgstr ""
+msgstr "तयशुदा"
 
 #: tmp_strings.xml:132(string)
 msgid "Classic"
-msgstr ""
+msgstr "क्लास्सिक"
 
 #: tmp_strings.xml:133(string)
 msgid "Android"
-msgstr ""
+msgstr "अंद्रोइड"
 
 #: tmp_strings.xml:134(string)
 msgid "Classic (from OI Shopping List)"
-msgstr ""
+msgstr "क्लास्सिक (ओई शौपिंग लिस्ट से)"
 
 #: tmp_strings.xml:135(string)
 msgid "Android (from OI Shopping List)"
-msgstr ""
+msgstr "अंद्रोइड (ओई शौपिंग लिस्ट से)"
 
 #. Button label "OK"
 #: tmp_strings.xml:139(string)
 msgid "OK"
-msgstr ""
+msgstr "ठीक है"
 
 #. Button label "Cancel"
 #: tmp_strings.xml:141(string)
 msgid "Cancel"
-msgstr ""
+msgstr "रद्द"
 
 #: tmp_strings.xml:142(string)
 msgid "Use this theme for all lists"
-msgstr ""
+msgstr "सभी सूचियों के लिए इस विषयवस्तु का प्रयोग करें"
 
 #: tmp_strings.xml:143(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "और विषयवस्तु लायें"
 
 #. preferences
 #: tmp_strings.xml:146(string)
 msgid "Settings"
-msgstr ""
+msgstr "सेटिंग्स"
 
 #: tmp_strings.xml:148(string)
 msgid "Application settings"
-msgstr ""
+msgstr "अनुप्रयोग सेटिंग"
 
 #: tmp_strings.xml:150(string)
 msgid "Unchecked on top"
-msgstr ""
+msgstr "उपर को अचिन्हित"
 
 #: tmp_strings.xml:151(string)
 msgid "Always show unchecked items first"
-msgstr ""
+msgstr "हमेशा अचिन्हित आइटम पहले दिखाए"
 
 #: tmp_strings.xml:152(string)
 msgid "Font size"
-msgstr ""
+msgstr "फॉण्ट माप"
 
 #: tmp_strings.xml:153(string)
 msgid "Change font size"
-msgstr ""
+msgstr "फॉण्ट माप बदलें"
 
 #: tmp_strings.xml:154(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "फॉण्ट माप चुने"
 
 #: tmp_strings.xml:155(string)
 msgid "Orientation"
-msgstr ""
+msgstr "दिशा"
 
 #: tmp_strings.xml:156(string)
 msgid "Change orientation"
-msgstr ""
+msgstr "दिशा बदलिए"
 
 #: tmp_strings.xml:157(string)
 msgid "Choose orientation"
-msgstr ""
+msgstr "दिशा चुनिए"
 
 #: tmp_strings.xml:158(string)
 msgid "Sort order"
-msgstr ""
+msgstr "क्रम बद्ध"
 
 #: tmp_strings.xml:159(string)
 msgid "Change sort order of list items"
-msgstr ""
+msgstr "सूची आइटम का क्रम बद्ध बदलिए"
 
 #: tmp_strings.xml:160(string)
 msgid "Sort order - Pick Items"
-msgstr ""
+msgstr "क्रम बद्ध - आइटम चुनिए"
 
 #: tmp_strings.xml:161(string)
 msgid "Change sort order of list items in Pick Items mode."
-msgstr ""
+msgstr "आइटम चुनने के मोड का क्रम बद्ध बदलिए"
 
 #: tmp_strings.xml:162(string)
 msgid "Choose sort order"
-msgstr ""
+msgstr "क्रम बद्ध चुनिए"
 
 #: tmp_strings.xml:163(string)
 msgid "Choose sort order for Pick Items mode"
-msgstr ""
+msgstr "आइटम चुनने के मोड का क्रम बद्ध चुनिए"
 
 #: tmp_strings.xml:164(string)
 msgid "Load last list used"
-msgstr ""
+msgstr "आखरी इस्तेमाल किये गयी सूची खोलिए"
 
 #: tmp_strings.xml:165(string)
 msgid "Always start with the list viewed last time."
-msgstr ""
+msgstr "हमेशा आखरी देखे गए आइटम से शुरू करो"
 
 #: tmp_strings.xml:166(string)
 msgid "Capitalization"
-msgstr ""
+msgstr "कैपिटलाइज़ेशन"
 
 #: tmp_strings.xml:167(string)
 msgid "Automatic capitalization of entries"
-msgstr ""
+msgstr "सारी आइटम को अपने आप कापितालिज़ करे"
 
 #: tmp_strings.xml:168(string)
 msgid "Choose capitalization"
-msgstr ""
+msgstr "कैपिटलाइज़ेशन चुने"
 
 #: tmp_strings.xml:169(string)
 msgid "Hide checked items"
-msgstr ""
+msgstr "चिह्नित आइटम को छुपाये"
 
 #: tmp_strings.xml:170(string)
 msgid "Immediately hide items checked off."
-msgstr ""
+msgstr "चिन्हित आइटम को एकदम से छुपाये"
 
 #: tmp_strings.xml:171(string)
 msgid "Show price"
-msgstr ""
+msgstr "मुल्ये दिखाए"
 
 #: tmp_strings.xml:172(string) tmp_strings.xml:181(string)
 #: tmp_strings.xml:183(string) tmp_strings.xml:185(string)
 #: tmp_strings.xml:187(string)
 msgid "Shown as extra column in list."
-msgstr ""
+msgstr "यह सूची में अतिरिक्त खाना के तरह से दिखया जाता है"
 
 #: tmp_strings.xml:173(string)
 msgid "Per-store prices"
-msgstr ""
+msgstr "प्रति-स्टोर मुल्ये"
 
 #: tmp_strings.xml:174(string)
 msgid "Track per-store prices"
-msgstr ""
+msgstr "प्रति-स्टोर मुल्ये पे नज़र रखें"
 
 #: tmp_strings.xml:175(string)
 msgid "Keep track of separate prices for each item at each store."
-msgstr ""
+msgstr "हर एक आइटम के अलग मूलुये पर नज़र रखें"
 
 #: tmp_strings.xml:176(string)
 msgid "Disable screen lock"
-msgstr ""
+msgstr "स्क्रीन तले को बंद करें"
 
 #: tmp_strings.xml:177(string)
 msgid "Prevents the screen to be locked when checked."
-msgstr ""
+msgstr "अगर चिह्नित, यह स्क्रीन को बंद होने से रोकता है"
 
 #: tmp_strings.xml:178(string)
 msgid "Reset Quantity"
-msgstr ""
+msgstr "मात्रा को शून्य करें"
 
 #: tmp_strings.xml:179(string)
 msgid "Resets the quantity when adding items again."
-msgstr ""
+msgstr "आइटम जोड़ने पर मात्रा को शून्य करता है"
 
 #: tmp_strings.xml:180(string)
 msgid "Show tags"
-msgstr ""
+msgstr "टाग्स दिखाए"
 
 #: tmp_strings.xml:182(string)
 msgid "Show quantity"
-msgstr ""
+msgstr "मात्रा दिखाए"
 
 #: tmp_strings.xml:184(string)
 msgid "Show priority"
-msgstr ""
+msgstr "प्रथानता दिखाए"
 
 #: tmp_strings.xml:186(string)
 msgid "Show units"
-msgstr ""
+msgstr "इकाई दिखाए"
 
 #: tmp_strings.xml:188(string) tmp_strings.xml:189(string)
 #: tmp_strings.xml:191(string)
 msgid "Subtotal by priority"
-msgstr ""
+msgstr "प्रथानता के तोर पे उप-योग"
 
 #: tmp_strings.xml:190(string)
 msgid "No subtotal by priority shown."
-msgstr ""
+msgstr "कोई प्रथानता के तोर पे उप-योग दिखाया"
 
 #: tmp_strings.xml:192(string)
 msgid "Include checked items"
-msgstr ""
+msgstr "चिन्हित आइटम के साथ"
 
 #: tmp_strings.xml:193(string)
 msgid "Subtotal by priority includes checked items"
-msgstr ""
+msgstr "प्रथानता के तोर पे उप-योग चिन्हित आइटम के साथ"
 
 #: tmp_strings.xml:194(string)
 msgid "Subtotal by priority excludes checked items"
-msgstr ""
+msgstr "प्रथानता के तोर पे उप-योग बिना चिन्हित आइटम के साथ"
 
 #: tmp_strings.xml:195(string)
 msgid "Pick items directly in list"
-msgstr ""
+msgstr "सूची से सीधे आइटम चुनिए"
 
 #: tmp_strings.xml:196(string)
 msgid "Switch main list to edit mode to re-add existing items"
-msgstr ""
+msgstr "मौजूदा आइटम को जोड़ने के लिया मुख्य सूची को संपादन मोड में करे"
 
 #: tmp_strings.xml:197(string)
 msgid "Add items to list using a dedicated dialog"
-msgstr ""
+msgstr "समर्पित डायलोग का इस्तेमाल करें आइटम सूची में जोड़ने के लिए"
 
 #: tmp_strings.xml:198(string)
 msgid "Always same sort order"
-msgstr ""
+msgstr "हमेशा यही क्रम बद्ध"
 
 #: tmp_strings.xml:199(string)
 msgid "Items are sorted in Pick Items mode just as in Shopping mode."
-msgstr ""
+msgstr "आइटमों का क्रम बद्ध आइटम चुनना मोड में शौपिंग मोड कि तरह ही हैं"
 
 #: tmp_strings.xml:200(string)
 msgid "Sort order for Pick Items mode can be chosen separately."
-msgstr ""
+msgstr "आइटम चुनने का क्रम बद्ध अलग अलग चुनना जा सकता हैं"
 
 #. Preference title: Shake the phone to clean up the list.
 #: tmp_strings.xml:203(string)
 msgid "Shake to clean up"
-msgstr ""
+msgstr "मिटने के लिया हिलाए"
 
 #. Preference summary: Shake the phone to clean up the list.
 #: tmp_strings.xml:206(string)
 msgid "Shake the phone to clean up the list."
-msgstr ""
+msgstr "सूची मिटने के लिए फोन हिलाए"
 
 #: tmp_strings.xml:208(string)
 msgid "Advanced settings"
-msgstr ""
+msgstr "उन्नत सेटिंग्स"
 
 #: tmp_strings.xml:209(string)
 msgid "Additional settings."
-msgstr ""
+msgstr "अतरिक्त सेटिंग्स"
 
 #. Preference category: General settings
 #: tmp_strings.xml:212(string)
 msgid "General"
-msgstr ""
+msgstr "साधारण"
 
 #: tmp_strings.xml:213(string)
 msgid "Pick Items"
-msgstr ""
+msgstr "आइटम चुनिए"
 
 #: tmp_strings.xml:215(string)
 msgid "Appearance"
-msgstr ""
+msgstr "रूप"
 
 #: tmp_strings.xml:217(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "आड-ओंस"
 
 #: tmp_strings.xml:218(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "नए सहयुक्ति लें"
 
 #: tmp_strings.xml:219(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "विस्तारों तथा विषयों को ऑनलाइन ढूंढें"
 
 #: tmp_strings.xml:220(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "सह्युक्तियों को बाजार से लें"
 
 #: tmp_strings.xml:221(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "सह्युक्तियों को ओपनइन्टेंटस से लें"
 
 #: tmp_strings.xml:222(string)
 msgid "Extensions"
-msgstr ""
+msgstr "विस्तार"
 
 #: tmp_strings.xml:223(string)
 msgid "Themes"
-msgstr ""
+msgstr "थीम्स"
 
 #: tmp_strings.xml:224(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "अंद्रोइड बाजार में विस्तार खोजें"
 
 #: tmp_strings.xml:225(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "अंद्रोइड बाजार में थीम्स खोजें"
 
 #: tmp_strings.xml:226(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "ओपनइन्टेंट मुखपृष्ठ में से विस्तार प्राप्त करें"
 
 #: tmp_strings.xml:227(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "ओपनइन्टेंट मुखपृष्ठ में से थीम्स प्राप्त करें"
 
 #: tmp_strings.xml:228(string)
 msgid "Quick Edit Mode"
-msgstr ""
+msgstr "जल्दी संपादन करने का मोड"
 
 #: tmp_strings.xml:229(string)
 msgid "Touch Priority or Quantity values for a menu of common values."
-msgstr ""
+msgstr "छूने के प्रधानता या मुल्ये मानों मेनू के सामान्य मनो के लिए"
 
 #: tmp_strings.xml:230(string)
 msgid "Touching Priority or Quantity values summons the Edit Item dialog."
-msgstr ""
+msgstr "छूने के प्रधानता या मुल्ये मानों आइटम संपादन सवांद के लिए"
 
 #. Permission to read shopping lists
 #: tmp_strings.xml:239(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "खरीदारी सूची पढ़ें"
 
 #: tmp_strings.xml:240(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"अनुप्रयोग को खरीदारी सूचियों को पढ़ने देता है| ध्यान दें कि गोपनीय सूचियाँ तथा आइटम "
+"गोपनीय प्रारूप में दिए गए हैं"
 
 #. Permission to write to shopping lists
 #: tmp_strings.xml:242(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "खरीदारी सूची लिखें"
 
 #: tmp_strings.xml:243(string)
 msgid ""
 "Allows an application to create new lists and items or change existing ones."
-msgstr ""
+msgstr "अनुप्रयोग को नयी आइटम या सूची जोड़ने या सम्पादित करने कि अनुमति देता है"
 
 #. Preference sort order: List unchecked items first, sort items alphabetically
 #: tmp_strings.xml:252(item)
 msgid "unchecked first, alphabetical"
-msgstr ""
+msgstr "अचिन्हित पहले, वर्णमाला"
 
 #. Preference sort order: Sort by item name
 #: tmp_strings.xml:254(item)
 msgid "alphabetical"
-msgstr ""
+msgstr "वर्णमाला"
 
 #. Preference sort order: Newest item first
 #: tmp_strings.xml:256(item)
 msgid "newest first"
-msgstr ""
+msgstr "नया सबसे पहले"
 
 #. Preference sort order: Oldest item first
 #: tmp_strings.xml:258(item)
 msgid "oldest first"
-msgstr ""
+msgstr "पुराना सबसे पहले"
 
 #. Preference sort order: Sort alphabetically by tags
 #: tmp_strings.xml:260(item)
 msgid "tags alphabetical"
-msgstr ""
+msgstr "टाग्स वर्णमाला के तोर पे"
 
 #. Preference sort order: Sort by priority, then alphabetically by tags
 #: tmp_strings.xml:262(item)
 msgid "priority, tags alphabetical"
-msgstr ""
+msgstr "प्रधानता, टाग्स वर्णमाला के तोर पे"
 
 #. Preference sort order: Sort by price, the most expensive first
 #: tmp_strings.xml:264(item)
 msgid "most expensive first"
-msgstr ""
+msgstr "सबसे महँगा पहले"
 
 #. Preference sort order: List unchecked items first, sort alphabetically by tags
 #: tmp_strings.xml:266(item)
 msgid "unchecked first, tags alphabetical"
-msgstr ""
+msgstr "अचिन्हित पहले, टाग्स वर्णमाला के तोर पे"
 
 #. Preference sort order: List unchecked items first, priority, sort items alphabetically
 #: tmp_strings.xml:268(item)
 msgid "unchecked first, priority, alphabetical"
-msgstr ""
+msgstr "अचिन्हित पहले, प्रधानता, वर्णमाला"
 
 #. Preference sort order: List unchecked items first, priority, tags, sort items alphabetically
 #: tmp_strings.xml:270(item)
 msgid "unchecked first, priority, tags alphabetical"
-msgstr ""
+msgstr "अचिन्हित पहले, प्रधानता, टाग्स वर्णमाला के तोर पे"
 
 #: tmp_strings.xml:274(item)
 msgid "Not shown"
-msgstr ""
+msgstr "नयी दिखाया"
 
 #: tmp_strings.xml:275(item)
 msgid "Priority 1"
-msgstr ""
+msgstr "प्रधानता १"
 
 #: tmp_strings.xml:276(item)
 msgid "Priority 1-2"
-msgstr ""
+msgstr "प्रधानता १-२"
 
 #: tmp_strings.xml:277(item)
 msgid "Priority 1-3"
-msgstr ""
+msgstr "प्रधानता १-३"
 
 #: tmp_strings.xml:278(item)
 msgid "Priority 1-4"
-msgstr ""
+msgstr "प्रधानता १-४"
 
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:283(item)
 msgid "Tiny"
-msgstr ""
+msgstr "छोटा"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:285(item)
 msgid "Small"
-msgstr ""
+msgstr "छोटा"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:289(item)
 msgid "Large"
-msgstr ""
+msgstr "बड़ा"
 
 #. Preference orientation: landscape
 #: tmp_strings.xml:296(item)
 msgid "Landscape"
-msgstr ""
+msgstr "परिदृश्य"
 
 #. Preference orientation: portrait
 #: tmp_strings.xml:298(item)
 msgid "Portrait"
-msgstr ""
+msgstr "पोर्ट्रेट"
 
 #. Preference capitalization: No capitalization
 #: tmp_strings.xml:303(item)
 msgid "None"
-msgstr ""
+msgstr "कोई नहीं"
 
 #. Preference capitalization: Automatically capitalize first letter of a sentence.
 #: tmp_strings.xml:305(item)
 msgid "Per Sentence"
-msgstr ""
+msgstr "प्रति वाकया"
 
 #. Preference capitalization: Automatically capitalize first letter of each word.
 #: tmp_strings.xml:307(item)
 msgid "Per Word"
-msgstr ""
+msgstr "प्रति शब्द"
 
 #. Message box warning if user wants to edit a note, but OI Notepad is not installed.
 #: tmp_strings.xml:314(string)
 msgid "Editing item notes requires OI Notepad."
-msgstr ""
+msgstr "आइटम सम्पादित करने के लिए ओई नोत्पाड ज़रूरी है"
 
 #. Name of application "OI Notepad". Translations should be consistent.
 #: tmp_strings.xml:316(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "OI नोत्पाड"
 
 #. Label above spinner for all actions (automation tasks) that can be performed.
 #: tmp_strings.xml:322(string)
 msgid "Select action:"
-msgstr ""
+msgstr "कार्यवाई चुनिए:"
 
 #. Label above button that opens a list of all shopping lists to choose from.
 #: tmp_strings.xml:325(string)
 msgid "Select list:"
-msgstr ""
+msgstr "सूची चुनिए:"

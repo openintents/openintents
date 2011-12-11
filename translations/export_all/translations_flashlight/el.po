@@ -22,7 +22,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis"
+"  Giannis Konstantinidis https://launchpad.net/~giankonstantinidis\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
@@ -31,7 +32,7 @@ msgid ""
 "backlight is kept turned on while this application is running."
 msgstr ""
 "Το OpenIntents Flashlight σας βοηθά να βρείτε το δρόμο σας στο σκοτάδι. Ο "
-"οπίσθιος φωτισμός της οθόνης παραμένει ενερηοποιημένος κατά την εκτέλεση "
+"οπίσθιος φωτισμός της οθόνης παραμένει ενεργοποιημένος κατά την εκτέλεση "
 "αυτής της εφαρμογής."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.

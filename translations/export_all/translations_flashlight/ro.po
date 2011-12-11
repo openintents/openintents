@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Florentina Mușat <kuchiki14@yahoo.com>\n"
+"Last-Translator: Stelescu Raul <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,6 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Florentina Mușat https://launchpad.net/~kuchiki14\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
 #. Short explanation of the application
@@ -39,7 +40,7 @@ msgstr ""
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string)
 msgid "OI Flashlight"
-msgstr "OI Lanterna"
+msgstr "Lanternă OI"
 
 #: tmp_strings.xml:19(string)
 msgid "The backlight stays turned on."
@@ -65,7 +66,9 @@ msgstr "Păstrează culoarea"
 
 #: tmp_strings.xml:35(string)
 msgid "Save color for next time Flashlight app is started"
-msgstr "Salvează culoarea pentru următoarea dată când aplicația va fi pornită."
+msgstr ""
+"Salvează culoarea pentru următoarea dată când aplicația Flashlight este "
+"pornită."
 
 #. Explanation that is displayed if Color Picker has not been installed yet, but 
 #. 		user tries to access it.
@@ -79,17 +82,17 @@ msgstr ""
 
 #: tmp_strings.xml:44(string)
 msgid "Use camera flash"
-msgstr ""
+msgstr "Folosește blițul"
 
 #: tmp_strings.xml:45(string)
 msgid "Use the camera flash instead of the screen backlight."
-msgstr ""
+msgstr "Folosește blițul în locul luminii din spatele ecranului."
 
 #. Information to enable the camera flash as flashlight.
 #: tmp_strings.xml:47(string)
 msgid "Press to enable camera light (May take a second)."
-msgstr ""
+msgstr "Apăsați pentru a activa lumina camerei (Poate dura o secundă)."
 
 #: tmp_strings.xml:48(string)
 msgid "Press to disable camera light."
-msgstr ""
+msgstr "Apăsați pentru a dezactiva lumina camerei."

@@ -38,7 +38,7 @@ Applications that work with "OI About":
 * OI, OpenIntents, Open Intents.
 
 Международни версии: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
 
 
 Стрингове за търсенето в Market 

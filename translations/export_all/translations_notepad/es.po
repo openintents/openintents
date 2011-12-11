@@ -27,6 +27,7 @@ msgstr ""
 "  Juan Eduardo Riva https://launchpad.net/~juaneduardoriva\n"
 "  Paco Molinero https://launchpad.net/~franciscomol\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm\n"
 "  miwie https://launchpad.net/~mw-miwie"
 
 #. Short explanation of the application

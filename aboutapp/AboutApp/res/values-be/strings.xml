@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">Асобнае акно а праграме, сумесна выкарыстоўваемае прыкладаннямі.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">OI File Manager</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">OI Shopping List</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">OI Notepad</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">OI Safe</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">Запусціце %s і выберыце пункт &gt; А праграме.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">OI About</string>
+	
+    <string name="menu_about">А самой About OI About</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">А %s</string>
+    
+	<string name="l_authors">Стваральнікі</string>
+	<string name="l_documenters">Дакументацыя</string>
+	<string name="l_translators">Пераклад</string>
+	<string name="l_artists">Афармленне</string>
+	<string name="l_international_translators">Пераклады</string>
+	<string name="l_credits">Падзякі</string>
+	<string name="l_license">Ліцэнзія</string>
+	<string name="l_info">Агульныя звесткі</string>
+	<string name="l_recent_changes">Апошнія змяненні</string>
+	
+	<string name="no_information_available">Інфармацыя недаступна.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>Арабская</item>
+		<item>Чэшская</item>
+		<item>Дацкая</item>
+		<item>Нямецкая</item>
+		<item>Ангельская</item>
+		<item>Грэцкая</item>
+		<item>Іспанская</item>
+		<item>Персідская</item>
+		<item>Фінская</item>
+		<item>Фарэрская</item>
+		<item>Французская</item>
+		<item>Харвацкая</item>
+		<item>Венгерская</item>
+		<item>Італьянская</item>
+		<item>Японская</item>
+		<item>Карэйская</item>
+		<item>Лаоская</item>
+		<item>Галандская</item>
+		<item>Аксітанская (пасля 1500)</item>
+		<item>Польская</item>
+		<item>Партугальская</item>
+		<item>Партугальская (Бразілія)</item>
+		<item>Румынская</item>
+		<item>Руская</item>
+		<item>Сардынская</item>
+		<item>Славацкая</item>
+		<item>Шведская</item>
+		<item>Турэцкая</item>
+		<item>Кітайская (Спрошчаная)</item>
+		<item>Кітайская (Традыцыйная)</item>
+	</string-array>
+</resources>

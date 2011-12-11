@@ -10,7 +10,9 @@
 Launchpad Contributions:
   Damian Skrodzki https://launchpad.net/~damienix
   Karolina Kowal https://launchpad.net/~gwiazdeczka11
-  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn</string>
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  Tomasz \'Zen\' Napierala https://launchpad.net/~tzn
+  Tomasz Zieliński https://launchpad.net/~tomek0517</string>
 	
     <!-- Short explanation of the application -->
 	<string name="about_comments">Latarka OpenIntents pomaga ci znaleźć drogę w ciemnościach. Aplikacja ta włącza podświetlanie ekranu podczas działania.</string>
@@ -49,7 +51,7 @@ Launchpad Contributions:
     <string name="setting_use_camera_flash">Używaj fleszu kamery.</string>
     <string name="setting_use_camera_flash_summary">Używaj fleszu kamery zamiast podświetlenia ekranu.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">Naciśnij, aby włączyć światło aparatu (może trwać sekundę).</string>
+    <string name="cameralight_stop_info">Naciśnij, aby wyłączyć światło aparatu.</string>
     
 </resources>

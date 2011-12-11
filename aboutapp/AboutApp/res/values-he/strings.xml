@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** 	 Copyright (C) 2008-2009 pjv (and others, see About dialog)
+** 
+** 	 This file is part of OI About.
+**
+**   OI About is free software: you can redistribute it and/or modify
+**   it under the terms of the GNU General Public License as published by
+**   the Free Software Foundation, either version 3 of the License, or
+**   (at your option) any later version.
+**
+**   OI About is distributed in the hope that it will be useful,
+**   but WITHOUT ANY WARRANTY; without even the implied warranty of
+**   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+**   GNU General Public License for more details.
+**
+**   You should have received a copy of the GNU General Public License
+**   along with OI About.  If not, see <http://www.gnu.org/licenses/>.
+**
+*/
+-->
+<resources>
+    
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Dvir Oren https://launchpad.net/~dvir0776</string>
+	
+	<!-- Explanation what this application does. It is a menu extension for other applications. -->
+	<string name="about_comments">דיאלוג נפרד שנחלק בין אפליקציות.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_filemanager">מנהל קבצים OI</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_shopping">רשימת קנייה OI</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_notepad">פנקס OI</string>
+	<!-- Name of an application. Please make sure that translations are consistent. -->
+	<string name="info_app_safe">כספת OI</string>
+	
+	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
+	<string name="info_instructions">פתח את %s ובחר תפריט &gt; אודות</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
+	   This is an extension that shows an about dialog or info dialog.  -->
+    <string name="app_name">אודות OI</string>
+	
+    <string name="menu_about">אודות OI על עצמו</string>
+    
+    <!-- About some application, where "%s" is the name of another application. -->
+    <string name="about_activity_name_extended">אודות %s</string>
+    
+	<string name="l_authors">נכתב על-ידי</string>
+	<string name="l_documenters">תועד על ידי</string>
+	<string name="l_translators">תורגם על ידי</string>
+	<string name="l_artists">אומנות על ידי</string>
+	<string name="l_international_translators">תרגומים בינ"ל על ידי</string>
+	<string name="l_credits">קרדיטים</string>
+	<string name="l_license">רשיון</string>
+	<string name="l_info">מידע כללי</string>
+	<string name="l_recent_changes">שינויים אחרונים</string>
+	
+	<string name="no_information_available">אין מידע זמין.</string>
+	
+	<!-- ***************************
+	     International languages
+	     *************************** -->
+	<!-- Language names. -->
+    <string-array name="language_names">
+		<item>ערבית</item>
+		<item>צ\'כית</item>
+		<item>דנית</item>
+		<item>גמרנית</item>
+		<item>אנגלית</item>
+		<item>יוונית</item>
+		<item>ספרדית</item>
+		<item>פרסית</item>
+		<item>פינית</item>
+		<item>פארואזית</item>
+		<item>צרפתית</item>
+		<item>קרואטית</item>
+		<item>הונגרית</item>
+		<item>איטלקית</item>
+		<item>יפנית</item>
+		<item>קוריאנית</item>
+		<item>לאו</item>
+		<item>הולנדית</item>
+		<item>אוסיטן (אחרי 1500)</item>
+		<item>פולנית</item>
+		<item>פורטוגזית</item>
+		<item>פורטוגזית ברזילאית</item>
+		<item>רומנית</item>
+		<item>רוסית</item>
+		<item>סרדינית</item>
+		<item>סלובקית</item>
+		<item>שוודית</item>
+		<item>טורקית</item>
+		<item>סינית מפושטת</item>
+		<item>סינית (מסורתית)</item>
+	</string-array>
+</resources>

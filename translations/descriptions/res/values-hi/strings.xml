@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
-  OpenIntents devs https://launchpad.net/~openintents-devs</translators>
+  Abhishek https://launchpad.net/~abhishek9797
+  OpenIntents devs https://launchpad.net/~openintents-devs
+  happy  nawani https://launchpad.net/~nawanihappy</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
 		<!--  -->
@@ -10,11 +12,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI के बारे में एक स्वसंपूर्ण उस संवाद के बारे में जो अनुप्रयोगों के बीच साझा गया है|</string>
+		<string>यह अनुप्रयोग अन्य OI अनुप्रयोगों के मेनू के माध्यम से लागू है.</string>
+		<string>यह आपको संस्करण जानकारी, लिंक, क्रेडिट, और किसी भी अनुप्रयोग  के लाइसेंस को देखने के लिए अनुमति देता है|</string>
+		<string>श्रेय में लेखक, प्रलेखन, अनुवादक, और कलाकार शामिल हैं|</string>
+		<string>इस कार्यशीलता को एक साथ एक सरलीकृत और कुशल लेआउट में लाया गया है|</string>
 		<emptyline/>
 		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
 		<emptyline/>
@@ -28,28 +30,28 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>सामान्य जानकारी, क्रेडिट, और लाइसेंस टैब दिखाएं</listitem>
+		<listitem>सभी भाषा संस्करणों के अनुवादकों को दिखाएं</listitem>
+		<listitem>डिफ़ॉल्ट टैग और मेटाडाटा के माध्यम से प्रकट आवेदन से जानकारी पुनर्प्राप्त करता है.</listitem>
+		<listitem>वैकल्पिक रूप से, सभी क्षेत्र इंटेंट  एक्स्त्रस  के माध्यम से संशोधित किये  जा सकते  है</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<string>जो अनुप्रयोग  "OI About" के साथ काम करते है</string>
+		<listitem>OI नोटपैड</listitem>
+		<listitem>OI  फाइल  मेनेजर</listitem>
+		<listitem>OI खरीदारी सूची</listitem>
+		<listitem>OI CSV परिवर्तन</listitem>
+		<listitem>OI सुरक्षित</listitem>
+		<listitem>OI काउंटडाउन</listitem>
+		<listitem>OI टॉर्च</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
-		<listitem>About, Credits, Information.</listitem>
-		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<listitem>के बारे में, क्रेडिट, सूचना.</listitem>
+		<listitem>OI, OpenIntents, Open Intents..</listitem>
 		<emptyline/>
 		<string>अंतर्राष्ट्रीय संस्करण:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>बाजार के लिए स्ट्रिंग्स को  खोजें :</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -86,11 +88,11 @@
 		<listitem>कई फाईलों के अंत और MIME प्रकार के लिए समर्थन है|</listitem>
 		<listitem>PICK_FILE और PICK_DIRECTORY intents का समर्थन करता है जैसे कि अन्य अनुप्रयोग OI फ़ाइल प्रबंधक का उपयोग कर सकते हैं|</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>"OI File Manager" के लिए उपलब्ध एक्सटेंशन:</string>
+		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>आवेदन ""OI File Manager" के साथ काम करता है:</string>
+		<listitem>\"OI Notepad\" में पाठ फ़ाइलों को खोलें और सुरक्षित करें|</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -101,7 +103,7 @@
 		<string>अंतर्राष्ट्रीय संस्करण:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>बाजार के लिए स्ट्रिंग्स को  खोजें :</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -114,10 +116,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI टॉर्च एक सरल और प्रभावी अनुप्रयोग है जो आपको अंधेरे में रास्ता खोजने में मदद करता है|</string>
+		<string>OI टॉर्च प्रदर्शन बैकलाइट को चालु छोड़ देता है,स्पष्ट रूप से आसपास के क्षेत्र रोशन करते हुए|</string>
+		<string>कैमरा फ्लैश युक्त उपकरणों के लिए, OI टॉर्च कमरे को रोशन करने के लिए एक उज्ज्वल टॉर्च के रूप में फ्लैश का भी प्रयोग कर सकता है|</string>
+		<string>बैकलाइट के रंग पूरी तरह से OI रंगचयनक के अनुकूलन योग्य है|</string>
 		<emptyline/>
 		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
 		<emptyline/>
@@ -131,25 +133,25 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>प्रदर्शन बैकलाइट को चालू रखें|</listitem>
+		<listitem>कैमरा फ्लैश चलूँ रखें|</listitem>
+		<listitem>बैकलाइट के रंग अनुकूलन योग्य हैं|</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>\"OI Flashlight\" के लिए उपलब्ध एक्सटेंशन:</string>
+		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
+		<listitem>\"OI Color Picker\" से बैकलाइट  का रंग बदलें|</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>\"OI Flashlight\" से जो अनुप्रयोग काम करते हैं:</string>
+		<listitem>\"OI Update\" से अद्यतन करें|</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>टॉर्च, प्रकाश, बैकलाइट</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>अंतर्राष्ट्रीय संस्करण:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>बाजार के लिए स्ट्रिंग्स को  खोजें :</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -161,10 +163,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI नोटपैड एक पूर्ण विशेषताओं से युक्त खुला स्रोत अनुप्रयोग है नोट लेने के लिए|</string>
+		<string>आप इससे टैग कर सकते हैं,खोज  सकते हैं और अपने नोट्स भेज सकते हैं,बनाने,मिटने और संपादन  करने जैसी बुनियादी सुविधाओं के अलावा|</string>
+		<string>एन्क्रिप्शन, आयात / निर्यात, और आवाज मेमो जैसी उन्नत सुविधाएँ उपलब्ध हैं एक्सटेंशन के माध्यम से|</string>
+		<string>यह सारी कार्यशीलता एक साथ एक सरलीकृत और कुशल लेआउट में लाई गयी है,जो अनुकूलन योग्य है अलग किस्म की थीम्स के द्वारा|</string>
 		<emptyline/>
 		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
 		<emptyline/>
@@ -178,35 +180,87 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>जोड़ें, संपादित करें और नोट्स मिटाएँ |</listitem>
+		<listitem>नोट्स पर टैग जोड़ने के लिए लम्बे समय तक दबाएँ|</listitem>
+		<listitem>फ़ॉन्ट आकार और सॉर्ट क्रम बदलें|</listitem>
+		<listitem>अलग  अलग किस्म की  थीम्स  के साथ एक स्पष्ट रूप से व्यवस्थित लेआउट|</listitem>
+		<listitem>जल्दी नोट्स के माध्यम से खोजें|</listitem>
+		<listitem>MMS या SMS के के रूप में नोट्स भेजें|</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>\"OI Notepad\" के लिए उपलब्ध एक्सटेंशन:</string>
+		<listitem>\"OI Voice Notes\"के साथ नोट्स में रिकॉर्ड करके आवाज़ वाले मेमो जोड़ें |</listitem>
+		<listitem>\"OI Convert CSV\"  के साथ एसडी कार्ड से नोट्स आयात / निर्यात|</listitem>
+		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
+		<listitem>\"OI Insert Date\" के साथ नोट्स में दिनांक और समय सम्मिलित करें|</listitem>
+		<listitem>\"Upside Down\" के साथ पाठ को उल्टा मोड़ें|</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>अनुप्रयोग जो \"OI Notepad\" के साथ काम करते हैं:</string>
+		<listitem>नोट्स को वापस लायें \"My Backup Pro\" के साथ|</listitem>
+		<listitem>\"OI Safe\" का उपयोग करके  नोट्स एन्क्रिप्ट करें|</listitem>
+		<listitem>\"OI File Manager\" के साथ अपने एसडी कार्ड पर नोट्स प्रबंधित करें|</listitem>
+		<listitem>\"OI Update\" से अद्यतन करें|</listitem>
+		<listitem>\"Facebook\", \"Gmail\", \"Google+\", \"Twitter\",  और कई अन्य अनुप्रयोगों के माध्यम से  नोट्स  शेयर करें|</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>नोट, नोटपैड, नोट बुक, नोट्स</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>अंतर्राष्ट्रीय संस्करण:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>बाजार के लिए स्ट्रिंग्स को  खोजें :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
+		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<emptyline/>
+		<string>यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है|</string>
+		<emptyline/>
+		<string>परिवर्तन और अक्सर पूछे जाने वाले प्रश्नों की पूरी सूची के लिए, कृपया यहाँ पर जाएँ:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>आप Launchpad पर अपनी भाषा के अनुवाद को बेहतर बनाने में मदद कर सकते हैं:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>इस स्वतंत्र और खुला स्रोत अनुप्रयोग का स्रोत कोड यहाँ पर उपलब्ध है:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>सुविधाएँ:</string>
+		<listitem>Securely protect data using AES encryption.</listitem>
+		<listitem>Freely move data entries between categories.</listitem>
+		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Backup/Restore entries.</listitem>
+		<listitem>Includes secure password generator.</listitem>
+		<listitem>Automatic timeout to protect encrypted documents.</listitem>
+		<listitem>Encrypt OI Notepad notes.</listitem>
+		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>"OI File Manager" के लिए उपलब्ध एक्सटेंशन:</string>
+		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
+		<emptyline/>
+		<string>आवेदन ""OI File Manager" के साथ काम करता है:</string>
+		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<emptyline/>
+		<string>कीवर्ड:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>अंतर्राष्ट्रीय संस्करण:</string>
+		<international/>
+		<emptyline/>
+		<string>बाजार के लिए स्ट्रिंग्स को  खोजें :</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -218,11 +272,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>OI खरीददारी सूची एक शक्तिशाली अनुप्रयोग है जो जाँच सूची बनाने के लिए और उसका प्रबंधन करना आसान बनाता है|</string>
+		<string>OI खरीददारी सूची एक सूची के लिए आईटम जोड़ना,उस आईटम को बंद करना और उसे सूची से हटाना आसन बनाती है|</string>
+		<string>यह अनुप्रयोग प्रत्येक दुकान की कीमतों की जानकारी रख सकता है जिसका आप उपयोग करते हैं,और उच्च स्तरीय अनुकूलता दिखता है|</string>
+		<string>फ़ॉन्ट आकार, सॉर्ट क्रम, सूची स्तंभ, और सूची सफाई व्यवहार सभी सेटिंग्स उपयोगकर्ता द्वारा नियंत्रित की जाती हैं|</string>
+		<string>यह सारी सुविधाएँ एक साथ कुरकुरे लेआउट में लाई गयी हैं जो अनुकूलन योग्य है अलग किस्म की थीम्स के द्वारा|</string>
 		<emptyline/>
 		<string>इस स्वतंत्र और खुला स्रोत अनुप्रयोग का स्रोत कोड यहाँ पर उपलब्ध है:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -236,32 +290,32 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>सुविधाएँ:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>जोड़ें, सूचियों को संपादित करें और मिटाएँ|</listitem>
+		<listitem>बनाएँ, हटाएँ, और वस्तुओं की जाँच करें जल्दी और आसानी से|</listitem>
+		<listitem>थीम्स में विविधता|</listitem>
+		<listitem>अनुकूलन फ़ॉन्ट आकार और सॉर्ट क्रम|</listitem>
+		<listitem>प्रत्येक दुकान के लिए अलग कीमतों की जानकारी रखें|</listitem>
+		<listitem>अनुकूलन सूची स्तंभों|</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>\"OI Shopping List\" के लिए उपलब्ध एक्सटेंशन:</string>
+		<listitem>\"OI Voice Notes\" के साथ नोट में रिकॉर्ड  किया गया संदेश जोड़ें|</listitem>
+		<listitem>\"OI Convert CSV\" के साथ खरीदारी सूचियों को निर्यात/आयात करें|</listitem>
+		<listitem>"OI About" के साथ लाइसेंस जानकारी दिखाएँ .</listitem>
+		<listitem>\"Barcode OI Plugin\" के साथ वस्तुओं को दर्ज/जाँच करें|</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>जो अनुप्रयोग \"OI Shopping List\" के साथ काम करते है:</string>
+		<listitem>\"OI Update\" से अद्यतन करें|</listitem>
+		<listitem>सूचियों  को वापस लायें \"My Backup Pro\" के साथ|</listitem>
+		<listitem>\"Bites\" के साथ व्यंजानो की सामग्री आयात करे|</listitem>
 		<emptyline/>
 		<string>कीवर्ड:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>खरीदारी, सूची, खरीदारी सूची,जांचसूची</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>अंतर्राष्ट्रीय संस्करण:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>एक्सटेंशन:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

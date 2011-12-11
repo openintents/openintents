@@ -5,7 +5,7 @@ OI About
 Dialog informacyjny dzielony miedzy aplikacjami
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+"Ol About" to samodzielny dialog, który jest dzielony między aplikacjami. Ta aplikacja jest wywoływana za pomocą menu innych aplikacji Ol. Umożliwia wyświetlanie informacji o wersji, linków, punktów i licencji aplikacji. Punkty obejmują autorów dokumentacji, tłumaczy i artystów. Wszystkie te funkcje są połączone w uproszczony i efektywny układ. 
 
 Ta aplikacja jest darmowa i nie wymaga dostępu do internetu. 
 
@@ -19,26 +19,26 @@ Możesz poprawić tłumaczenie na Twój język:
 https://translations.launchpad.net/openintents/trunk
 
 Cechy: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* Pokazuje ogólne informacje,punkty i karty licencji.
+* Pokazuje tłumaczy wszystkich wersji językowych.
+* Pobiera informacje z manifestu aplikacji poprzez domyślne etykiety i metadane.
+* Opcjonalnie wszystkie pola mogą być modyfikowane poprzez dodatkowe zamiary.
 
-Applications that work with "OI About": 
-* OI Notepad
-* OI File manager
-* OI Shopping List
-* OI Convert CSV
-* OI Safe
-* OI Countdown
-* OI Flashlight
+Aplikacja który pracują z "Ol About": 
+* Notatnik Ol
+* Menedżer plików Ol
+* Lista zakupów Ol
+* OI Konwertuj CSV
+* Bezpieczne Ol
+* OI Odliczanie
+* OI Latarka
 
 Słowa kluczowe: 
-* About, Credits, Information.
+* O, Podziękowania, Informacja.
 * OI, OpenIntents, Open Intents.
 
 Wersje międzynarodowe: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
 
 
 Wyszukane ciągi znakó w Markecie: 

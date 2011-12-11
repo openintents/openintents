@@ -23,6 +23,7 @@
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
   OpenIntents devs https://launchpad.net/~openintents-devs
+  Walter Reindeer Martinez H https://launchpad.net/~waltereindeerm
   dcb116 https://launchpad.net/~dcb116</string>
 	
 	<!-- Explanation what this application does. -->
@@ -125,6 +126,7 @@
     <string-array name="notepad_format">
         <item>Notas de MS Outlook</item>
         <item>Formato CSV de Palm</item>
+        <item>JPilot Memo</item>
     </string-array>
     
     <string-array name="shoppinglist_format">

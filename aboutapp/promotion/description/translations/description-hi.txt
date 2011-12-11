@@ -5,7 +5,7 @@ OI के बारे में
 एक स्वसंपूर्ण उस संवाद के बारे में जो अनुप्रयोगों के बीच साझा गया है|
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI के बारे में एक स्वसंपूर्ण उस संवाद के बारे में जो अनुप्रयोगों के बीच साझा गया है| यह अनुप्रयोग अन्य OI अनुप्रयोगों के मेनू के माध्यम से लागू है. यह आपको संस्करण जानकारी, लिंक, क्रेडिट, और किसी भी अनुप्रयोग  के लाइसेंस को देखने के लिए अनुमति देता है| श्रेय में लेखक, प्रलेखन, अनुवादक, और कलाकार शामिल हैं| इस कार्यशीलता को एक साथ एक सरलीकृत और कुशल लेआउट में लाया गया है| 
 
 यह अनुप्रयोग विज्ञापन मुक्त है और  इसे  इंटरनेट की अनुमति की आवश्यकता नहीं है| 
 
@@ -19,29 +19,29 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 सुविधाएँ: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* सामान्य जानकारी, क्रेडिट, और लाइसेंस टैब दिखाएं
+* सभी भाषा संस्करणों के अनुवादकों को दिखाएं
+* डिफ़ॉल्ट टैग और मेटाडाटा के माध्यम से प्रकट आवेदन से जानकारी पुनर्प्राप्त करता है.
+* वैकल्पिक रूप से, सभी क्षेत्र इंटेंट  एक्स्त्रस  के माध्यम से संशोधित किये  जा सकते  है
 
-Applications that work with "OI About": 
-* OI Notepad
-* OI File manager
-* OI Shopping List
-* OI Convert CSV
-* OI Safe
-* OI Countdown
-* OI Flashlight
+जो अनुप्रयोग  "OI About" के साथ काम करते है 
+* OI नोटपैड
+* OI  फाइल  मेनेजर
+* OI खरीदारी सूची
+* OI CSV परिवर्तन
+* OI सुरक्षित
+* OI काउंटडाउन
+* OI टॉर्च
 
 कीवर्ड: 
-* About, Credits, Information.
-* OI, OpenIntents, Open Intents.
+* के बारे में, क्रेडिट, सूचना.
+* OI, OpenIntents, Open Intents..
 
 अंतर्राष्ट्रीय संस्करण: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+बाजार के लिए स्ट्रिंग्स को  खोजें : 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

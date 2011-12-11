@@ -123,6 +123,7 @@
     <string-array name="notepad_format">
         <item>MS Outlook Notes</item>
         <item>Palm CSV</item>
+        <item>JPilot Memo</item>
     </string-array>
     
     <string-array name="shoppinglist_format">

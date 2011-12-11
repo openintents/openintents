@@ -296,45 +296,49 @@ msgstr "MS Outlook便签"
 msgid "Palm CSV"
 msgstr "掌上CSV"
 
-#: tmp_strings.xml:130(item)
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr ""
+
+#: tmp_strings.xml:131(item)
 msgid "MS Outlook Tasks"
 msgstr "MS Outlook任务"
 
-#: tmp_strings.xml:131(item)
+#: tmp_strings.xml:132(item)
 msgid "HandyShopper"
 msgstr "HandyShopper"
 
-#: tmp_strings.xml:135(item) tmp_strings.xml:149(item)
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
 msgstr "复制 - 允许重复记录。"
 
-#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "\"KEEP - Don't overwrite existing records.\""
 msgstr "“继续 - 不要覆盖现有的记录。”"
 
-#: tmp_strings.xml:137(item)
+#: tmp_strings.xml:138(item)
 msgid "Overwrite - Overwrite existing records."
 msgstr "覆盖 - 覆盖现有记录。"
 
-#: tmp_strings.xml:138(item)
+#: tmp_strings.xml:139(item)
 msgid "Restore - DELETE ALL, then import."
 msgstr "还原 - 全部删除，然后导入。"
 
-#: tmp_strings.xml:142(item) tmp_strings.xml:154(item)
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
 msgid "DUPLICATE - Add a second copy of a record if it already exists."
 msgstr "复制- 添加一个纪录两个副本，如果它已经存在。"
 
-#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
 msgid ""
 "\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
 "\""
 msgstr "“保持 - 不覆盖现有的记录，忽略一个CSV文件。”"
 
-#: tmp_strings.xml:144(item)
+#: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
 msgstr "覆盖 - 用CSV的记录将覆盖现有的记录。"
 
-#: tmp_strings.xml:145(item)
+#: tmp_strings.xml:146(item)
 msgid ""
 "Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
 msgstr "恢复备份 - 删除所有现有的记录，然后导入CSV文件。"
