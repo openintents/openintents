@@ -50,6 +50,10 @@
     <string name="oi_distribution_aboutapp_package">org.openintents.about</string>
     <string name="oi_distribution_aboutapp_website">http://www.openintents.org/en/node/202</string><!-- 202 = OI About -->
 	
+    <!-- Barcode plugin -->
+    <string name="oi_distribution_barcodescanner_package">org.openintents.barcodescanner</string>
+    <string name="oi_distribution_barcodescanner_website">http://www.openintents.org/en/node/679</string>
+	
     <!-- File Manager -->
     <string name="oi_distribution_filemanager_package">org.openintents.filemanager</string>
     <string name="oi_distribution_filemanager_website">http://www.openintents.org/en/filemanager</string>
