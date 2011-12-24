@@ -1,0 +1,49 @@
+# OI Countdown
+#
+# Application name and promo text are extracted from the application strings.
+#
+# (Put each sentence in a separate line. Each sentence is translated separately)
+#
+# Description of application
+
+OI Countdown is a helpful timer to increase your productivity and plan your day. 
+It allows you to set a variety of different actions to notify you at the end of a timer. 
+Fully customize all your timers, with no limit on how many you can have running or saved. 
+
+This application is ad free and does not require the internet permission. 
+
+
+
+The source code of this free and open source application is available at:
+http://code.google.com/p/openintents
+
+For the complete list of changes and a list of frequently asked questions, please visit:
+http://www.openintents.org
+
+
+You can help to improve the translation into your language at Launchpad:
+https://translations.launchpad.net/openintents/trunk
+
+Features: 
+* Set a countdown by choosing a duration or a date.
+* Be notified by vibration or any sound of your choice. 
+* Have an unlimited number of timers running at the same time. 
+* Save your countdowns and give them names to reuse at later times. 
+* Modify countdowns, even while they are still running
+
+Available extensions for "OI Countdown": 
+* Launch applications through Android shortcuts
+* Use OI About to show license information
+
+Keywords: 
+# Keywords: List several related key words and variations in your language and in English that people might search for.
+*countdown, timer, alert
+# Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+* OI, OpenIntents, Open Intents
+
+International versions:
+#$ international
+
+Search strings for Market:
+# (these are not translated into other languages)
+#$ include description_extensions.txt 
