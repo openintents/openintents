@@ -5,26 +5,26 @@ OI About
 Un diálogo «Acerca de» autónomo que se comparte entre aplicaciones.
 
 # Description:
-Acerca de OI; es un programa autónomo de diálogo que se comparte entre aplicaciones. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+"About OI" es un diálogo independiente que es compartido entre aplicaciones. Esta aplicación se ejecuta a través del menú de otras aplicaciones OI. Le permite ver información de la versión, enlaces, créditos, y la licencia de una aplicación. Los créditos incluyen autores, documentación, traductores, y artistas. Todas estas funciones se organizan en un diseño simple y eficiente. 
 
-This application is ad free and does not require the internet permission. 
+Esta aplicación no tiene anuncios y no requiere permisos de internet. 
 
-The source code of this free and open source application is available at: 
+El código fuente de esta aplicación libre y de código abierto está disponible en: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+Para la lista completa de cambios y la lista de preguntas frecuentes, por favor visite: 
 http://www.openintents.org
 
-You can help to improve the translation into your language at Launchpad: 
+Usted puede ayudar a mejorar la traducción de su idioma en Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Shows general info, credits, and license tabs.
-* Muestra los traductores de todas las versiones lingüísticas.
-* Recupera información de manifiesto de la aplicación por defecto a través de etiquetas y metadatos.
-* Optionally, all fields can be modified through intent extras.
+Características: 
+* Muestra información general, créditos y las pestañas de licencia.
+* Muestra los traductores de todas las versiones localizadas
+* Obtiene información del manifiesto de la aplicación a través de las etiquetas por defecto y los metadatos.
+* Opcionalmente, todos los campos pueden ser modificados a través de otras acciones.
 
-Aplicaciones que funcionan con "Acerca de OI": 
+Aplicaciones que funcionan con "OI About": 
 * OI Notepad
 * OI File manager
 * OI Shopping List
@@ -33,15 +33,15 @@ Aplicaciones que funcionan con "Acerca de OI":
 * OI Countdown
 * OI Flashlight
 
-Keywords: 
-* About, Credits, Information.
+Palabras clave: 
+* Acerca de, créditos, información.
 * OI, OpenIntents, Open Intents.
 
-International versions: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
+Versiones internacionales: 
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+Buscar en el Market: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

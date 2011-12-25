@@ -24,7 +24,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Anshuman Jaiswal https://launchpad.net/~good-anshuman\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happy  nawani https://launchpad.net/~nawanihappy"
+"  happynawani https://launchpad.net/~happynawani"
 
 #. Strings for OI About
 #: tmp_strings.xml:11(string)

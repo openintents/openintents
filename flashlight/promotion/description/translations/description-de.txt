@@ -5,7 +5,7 @@ OI Taschenlampe
 OpenIntents Flashlight hilft dir den Weg durch die Dunkelheit zu finden. Die Hintergrundbeleuchtung des Displays bleibt angeschaltet, solange diese Anwendung läuft.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight ist eine einfache und effektive Anwendung, die Ihnen hilft, den Weg im Dunkeln zu finden. OI Flashlight schaltet die Hintergrundbeleuchtung an, die die nähere Umgebung gut beleuchtet. Für Geräte mit einem Kamerablitz kann OI Flashlight auch den Blitz als Lichtquelle benutzen, um den Raum zu beleuchten. Mithilfe von OI Color Picker, ist die Farbe der Hintergrundbeleuchtung komplett einstellbar. 
 
 Diese Applikation ist werbefrei und benötigt keine Internetverbindung. 
 
@@ -19,23 +19,23 @@ Sie können uns mit der Verbesserung der Übersetzung in ihre Sprache auf Launch
 https://translations.launchpad.net/openintents/trunk
 
 Eigentschaften: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+* Schaltet die Hintergrundbeleuchtung an.
+* Schaltet den Kamerablitz an.
+* Die Farbe der Hintergrundbeleuchtung ist veränderbar.
 
-Available extensions for "OI Flashlight": 
+Verfügbare Erweiterungen für "OI Flashlight": 
 * Zeige die Lizenzinformationen mit OI About
-* Change the color of the backlight with "OI Color Picker".
+* Mit "OI Color Picker" die Farber der Hintergrundbeleuchtung ändern.
 
-Applications that work with "OI Flashlight": 
+Anwendungen, die mit "OI Flashlight" funktionieren: 
 * Updaten mit "OI Update"
 
 Schlüsselwörter: 
-* Flashlight, light, Backlight
+* Blitzlicht, Licht, Hintergrundbeleuchtung
 * OI, OpenIntents, Open Intents
 
 Internationale Versionen: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
 Im Market suchen nach: 

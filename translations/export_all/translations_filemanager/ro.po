@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Stelescu Raul <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,6 +26,7 @@ msgstr ""
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Peli https://launchpad.net/~peli0101\n"
 "  Robert https://launchpad.net/~usamird\n"
+"  Stelescu Raul https://launchpad.net/~stelescuraul\n"
 "  iulargsb https://launchpad.net/~iulargsb"
 
 #. Short explanation of the application. Max. 80 characters.
@@ -94,7 +95,7 @@ msgstr "Exclude din scanare media"
 
 #: tmp_strings.xml:50(string)
 msgid "Add to bookmarks"
-msgstr ""
+msgstr "Adaugă la favorite"
 
 #: tmp_strings.xml:52(string)
 msgid "Create new folder"
@@ -106,7 +107,7 @@ msgstr "Numele dosarului"
 
 #: tmp_strings.xml:55(string)
 msgid "Extension (with '.')"
-msgstr "Extensie (cu '.')"
+msgstr "Extensie (cu „ . ”)"
 
 #: tmp_strings.xml:56(string)
 msgid "This folder is empty."
@@ -114,7 +115,7 @@ msgstr "Dosarul este gol."
 
 #: tmp_strings.xml:57(string)
 msgid "Do you really want to delete %s?"
-msgstr "Doriți sa ștergeți %s?"
+msgstr "Sigur doriți să ștergeți %s?"
 
 #: tmp_strings.xml:58(string)
 msgid "File deleted."
@@ -196,7 +197,7 @@ msgstr "Tip"
 
 #: tmp_strings.xml:84(string)
 msgid "Folder"
-msgstr "Document"
+msgstr "Dosar"
 
 #: tmp_strings.xml:85(string)
 msgid "File"
@@ -212,7 +213,7 @@ msgstr "Dimensiune"
 
 #: tmp_strings.xml:88(string)
 msgid "Permissions"
-msgstr "Permisii"
+msgstr "Permisiuni"
 
 #: tmp_strings.xml:89(string)
 msgid "Hidden"
@@ -250,7 +251,7 @@ msgstr "Acest dosar va fi exclus în timpul următoarei scanări media."
 
 #: tmp_strings.xml:103(string)
 msgid "Could not create new folder."
-msgstr "Nu am putut crea un dosar nou."
+msgstr "Nu s-a putut crea un dosar nou."
 
 #: tmp_strings.xml:104(string)
 msgid "Could not delete file."
@@ -262,23 +263,23 @@ msgstr "Nu s-a putut șterge dosarul '%s'."
 
 #: tmp_strings.xml:106(string)
 msgid "Could not rename file."
-msgstr "Nu am putut redenumi fișierul."
+msgstr "Nu s-a putut redenumi fișierul."
 
 #: tmp_strings.xml:107(string)
 msgid "Could not rename folder."
-msgstr "Nu am putut redenumi dosarul."
+msgstr "Nu s-a putut redenumi dosarul."
 
 #: tmp_strings.xml:108(string)
 msgid "Could not move file."
-msgstr "Nu am putut muta fișierul."
+msgstr "Nu s-a putut muta fișierul."
 
 #: tmp_strings.xml:109(string)
 msgid "Could not move folder."
-msgstr "Nu am putut muta dosarul."
+msgstr "Nu s-a putut muta dosarul."
 
 #: tmp_strings.xml:110(string)
 msgid "Could not copy file."
-msgstr "Nu am putut copia fișierul."
+msgstr "Nu s-a putut copia fișierul."
 
 #: tmp_strings.xml:111(string)
 msgid "File does not exist."
@@ -286,7 +287,7 @@ msgstr "Fișierul nu există."
 
 #: tmp_strings.xml:112(string)
 msgid "Could not delete child file '%s'."
-msgstr "Nu s-a putut șterge fișierul inferior „%s”."
+msgstr "Nu s-a putut șterge sub-fișierul „%s”."
 
 #: tmp_strings.xml:113(string)
 msgid "An error occurred:"
@@ -307,12 +308,12 @@ msgstr "Aplicație indisponibilă"
 #. Menu item for Settings
 #: tmp_strings.xml:124(string)
 msgid "Settings"
-msgstr "Configurare"
+msgstr "Configurări"
 
 #. Category for preferences.
 #: tmp_strings.xml:127(string)
 msgid "Advanced features"
-msgstr "Funcțiuni avansate"
+msgstr "Funcții avansate"
 
 #: tmp_strings.xml:129(string)
 msgid "Show menu item to exclude folders from media scan."
@@ -324,11 +325,11 @@ msgstr "Ascunde elementul meniu pentru a exclude dosare din scanarea media."
 
 #: tmp_strings.xml:132(string)
 msgid "Show all warnings"
-msgstr "Arată toate avertizările"
+msgstr "Afișează toate avertizările"
 
 #: tmp_strings.xml:133(string)
 msgid "Show all warning messages"
-msgstr "Arată toate mesajele avertizărilor"
+msgstr "Afișează toate mesajele avertizărilor"
 
 #: tmp_strings.xml:134(string)
 msgid "Suppress warning messages"
@@ -336,7 +337,7 @@ msgstr "Suprimă mesajele avertizărilor"
 
 #: tmp_strings.xml:136(string) tmp_strings.xml:137(string)
 msgid "Display hidden files"
-msgstr "Arată toate fișierele ascuns"
+msgstr "Arată toate fișierele ascunse"
 
 #: tmp_strings.xml:138(string)
 msgid "Hide hidden files"
@@ -344,38 +345,38 @@ msgstr "Ascunde fișierele ascunse"
 
 #: tmp_strings.xml:140(string)
 msgid "Sort settings"
-msgstr ""
+msgstr "Configurări sortare"
 
 #: tmp_strings.xml:141(string)
 msgid "Sort by"
-msgstr ""
+msgstr "Sortează după"
 
 #: tmp_strings.xml:142(string)
 msgid "In ascending order"
-msgstr ""
+msgstr "În ordine ascendentă"
 
 #: tmp_strings.xml:143(string)
 msgid "Sort in ascending order"
-msgstr ""
+msgstr "Sortează în ordine ascendentă"
 
 #: tmp_strings.xml:144(string)
 msgid "Sort in descending order"
-msgstr ""
+msgstr "Sotează în ordine descendentă"
 
 #: tmp_strings.xml:146(item)
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 #: tmp_strings.xml:148(item)
 msgid "Last modified"
-msgstr ""
+msgstr "Modificat ultima dată"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
 #.     	 ***************************
 #: tmp_strings.xml:155(string)
 msgid "You haven't picked any file."
-msgstr "Nu ați ales nici un fișier."
+msgstr "Nu ați ales niciun fișier."
 
 #: tmp_strings.xml:156(string)
 msgid "An error occured."
@@ -387,33 +388,32 @@ msgstr "Fișierul a fost salvat cu succes!"
 
 #: tmp_strings.xml:161(string)
 msgid "Bookmarks"
-msgstr ""
+msgstr "Semne de carte"
 
 #: tmp_strings.xml:162(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Anulează"
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "Selectați dosarul destinație"
+msgstr "Selectează semnele de carte care să fie șterse"
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"
-msgstr ""
+msgstr "Gestionaţi semnele de carte"
 
 #: tmp_strings.xml:166(string)
 msgid "Bookmark added"
-msgstr ""
+msgstr "Semn de carte adăugat"
 
 #: tmp_strings.xml:167(string)
 msgid "Bookmarked destination not found."
-msgstr ""
+msgstr "Destinația semnului de carte nu a fost găsită."
 
 #: tmp_strings.xml:168(string)
 msgid "Selected bookmarks deleted"
-msgstr ""
+msgstr "Selectează semnele de carte șterse"
 
 #: tmp_strings.xml:169(string)
 msgid "This file is already bookmarked"
-msgstr ""
+msgstr "Acest fișier este deja semn de carte."

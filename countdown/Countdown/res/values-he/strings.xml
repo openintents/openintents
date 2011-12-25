@@ -5,129 +5,130 @@
 	     *************************** -->
     
 	<!-- Automatically filled in by Launchpad: -->
-	<string name="about_translators">translator-credits</string>
+	<string name="about_translators">Launchpad Contributions:
+  Neta Oren https://launchpad.net/~netao212</string>
 	
     <!-- Short explanation of the application -->
-	<string name="about_comments">OI Countdown notifies you after a specified amount of time.</string>
+	<string name="about_comments">סופר לאחור OI יידע אותך אחרי כמות מסוימת של זמן</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI Countdown</string>
+    <string name="app_name">סופר לאחור OI</string>
     
-    <string name="start">Start</string>
-    <string name="stop">Stop</string>
-    <string name="modify">Modify</string>
-    <string name="cont">Continue</string>
+    <string name="start">הפעלה</string>
+    <string name="stop">עצור</string>
+    <string name="modify">שינוי</string>
+    <string name="cont">המשך</string>
     
-	<string name="no_durations">Use menu to add new countdown.</string>
-	<string name="countdown_list">Countdown list</string>
+	<string name="no_durations">השתמש בתפריט כדי להוסיף ספירה לאחור חדשה</string>
+	<string name="countdown_list">רשימת ספירה לאחור</string>
 	
-    <string name="menu_delete">Delete</string>
-    <string name="menu_edit">Edit</string>
-    <string name="menu_insert">Add countdown</string>
-    <string name="menu_pick_ringtone">Ringtone</string>
+    <string name="menu_delete">מחק</string>
+    <string name="menu_edit">ערוך</string>
+    <string name="menu_insert">הוסף ספירה לאחור</string>
+    <string name="menu_pick_ringtone">צליל</string>
     
     <!-- Menu item: Set the countdown by setting a final date or deadline. -->
-    <string name="menu_set_date">Set date</string>
+    <string name="menu_set_date">קבע תאריך</string>
     
     <!-- Menu item: Set the countdown by setting a duration. -->
-    <string name="menu_set_duration">Set duration</string>
+    <string name="menu_set_duration">קבע משך זמן</string>
     
     <!-- Menu item: Set the action to be performed at the end of the countdown. -->
-    <string name="menu_set_action">Set action</string>
+    <string name="menu_set_action">בחר פעולה</string>
     
-    <string name="hint_title">e.g. pizza</string>
+    <string name="hint_title">לדוגמא פיצה</string>
     
     <!-- Title of the activity for setting (editing) the countdown. -->
-    <string name="title_setcountdown">Set countdown</string>
+    <string name="title_setcountdown">קבע ספירה לאחור</string>
     
     <!-- Title of the activity for creating a new countdown. -->
-    <string name="title_create">Create countdown</string>
+    <string name="title_create">צור ספירה לאחור</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_edit">Edit countdown</string>
+    <string name="title_edit">ערוך ספירה לאחור</string>
     
     <!-- Title of the activity for editing the countdown. -->
-    <string name="title_pick">Pick countdown</string>
+    <string name="title_pick">בחר ספירה לאחור</string>
     
     <!-- Title of the activity for setting a countdown automation action. -->
-    <string name="title_setcountdown_action">OI Countdown</string>
+    <string name="title_setcountdown_action">סופר לאחור OI</string>
     
     <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
-	<string name="error_title">Error</string>
+	<string name="error_title">שגיאה</string>
 	
 	<!-- Message to display when an internal error occurs. This should practially never happen. -->
-	<string name="error_message">Error loading countdown</string>
+	<string name="error_message">שגיאה במהלך טעינת ספירה לאחור</string>
 	
 	<!-- <string name="countdown_ended">Countdown ended</string>  -->
 	
 	<!-- Checkbox label whether to notifications. -->
-	<string name="notification_in_status_bar">Notification in status bar</string>
+	<string name="notification_in_status_bar">הודעה בפס עדכון</string>
 	
 	<!-- Checkbox label whether to launch automation task through the status bar -->
-	<string name="launch_through_status_bar">Launch through status bar</string>
+	<string name="launch_through_status_bar">הפעלה דרך פס עדכון</string>
 	
 	<!-- Checkbox label whether to use the ring tone for notifications. -->
-	<string name="ring">Ring</string>
+	<string name="ring">טבעת</string>
 	
 	<!-- Checkbox label whether to vibrate. -->
-	<string name="vibrate">Vibrate</string>
+	<string name="vibrate">רטט</string>
 	
 	<!-- Checkbox label whether to flash light for notifications. -->
-	<string name="light">Light</string>
+	<string name="light">בהיר</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="action">Action: %s</string>
+	<string name="action">פעולה %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_action">Select action: %s</string>
+	<string name="select_action">בחר פעולה : %s</string>
 	
 	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
-	<string name="select_countdown">Select countdown: %s</string>
+	<string name="select_countdown">בחר ספירה לאחור: %s</string>
 	
 	<!-- Button to test an action. -->
-	<string name="test">Test</string>
+	<string name="test">בדיקה</string>
 	
 	<!-- Button to view / edit settings. -->
-	<string name="settings">Settings</string>
+	<string name="settings">הגדרות אישיות</string>
 	
 	<!-- Button label to dismiss notification after countdown ended. -->
-	<string name="dismiss">Dismiss</string>
+	<string name="dismiss">הסר</string>
 	
 	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
-	<string name="days">days</string>
+	<string name="days">ימים</string>
 	
 	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
-	<string name="day">day</string>
+	<string name="day">יום</string>
 	
 	<!--  -->
 	
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
-	<string name="group_applications">Applications</string>
+	<string name="group_applications">ישומים</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
-	<string name="group_shortcuts">Shortcuts</string>
+	<string name="group_shortcuts">קיצורי־דרך</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">משימות אוטומטיות</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_shortcut">Select shortcut</string>
+	<string name="title_select_shortcut">בחר קיצור דרך</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">בחר משימה אוטומטית</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">בחר פעילות</string>
  
 	<!-- Arrays -->
 	
     <string-array name="automation_actions">
     	<!-- Automation action to start a countdown. -->
-    	<item>Start countdown</item>
+    	<item>התחל ספירה לאחור</item>
         <!-- Automation action to stop a countdown. -->
-    	<item>Stop countdown</item>
+    	<item>עצור ספירה לאחור</item>
     </string-array>
     
 	<!-- ***************************
@@ -135,34 +136,34 @@
 	     *************************** -->
 
 	<!-- Preference section title for general settings regarding the countdown -->
-    <string name="preference_countdown">Countdown</string>
+    <string name="preference_countdown">ספירה לאחור</string>
 
-    <string name="preference_extensions">Extensions</string>
-    <string name="preference_get_extensions">Get new extensions</string>
-    <string name="preference_get_extensions_summary">Search for extensions online.</string>
-    <string name="preference_get_extensions_from">Get extensions from</string>
-    <string name="preference_extensions_market">Android Market</string>
-    <string name="preference_extensions_market_summary">Search for extensions at Android Market.</string>
-    <string name="preference_extensions_developer">OpenIntents</string>
-    <string name="preference_extensions_developer_summary">Get extensions from the OpenIntents homepage.</string>
+    <string name="preference_extensions">הרחבות</string>
+    <string name="preference_get_extensions">השג הרחבה חדשה</string>
+    <string name="preference_get_extensions_summary">חפש הרחבות אונליין</string>
+    <string name="preference_get_extensions_from">השג הרחבות מן</string>
+    <string name="preference_extensions_market">שוק אנדרואיד</string>
+    <string name="preference_extensions_market_summary">חפש הרחבות בשוק האנדרואיד</string>
+    <string name="preference_extensions_developer">כוונות פתוחות</string>
+    <string name="preference_extensions_developer_summary">השג הרחבות מעמוד הבית של OpenIntents</string>
 	
 	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_title">Notification timeout</string>
+    <string name="preference_notification_timeout_title">פסק זמן הודעות</string>
     
     <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
-    <string name="preference_notification_timeout_summary">Timeout for ring, vibrate, or light notification.</string>
+    <string name="preference_notification_timeout_summary">פסק זמן לחידוש צלצול, רטט, או הבהוב</string>
     
     <!-- Dialog title to set timeout for notification -->
-    <string name="preference_notification_timeout_dialog_title">Set timeout</string>
+    <string name="preference_notification_timeout_dialog_title">בחר פסק זמן</string>
     
     <!-- Timeout for notifications -->
     <string-array name="preference_notification_timeout_entries">
-        <item>2 seconds</item>
-        <item>5 seconds</item>
-        <item>10 seconds</item>
-        <item>30 seconds</item>
-        <item>1 minute</item>
-        <item>5 minutes</item>
-        <item>10 minutes</item>
+        <item>2 שניות</item>
+        <item>5 שניות</item>
+        <item>10 שניות</item>
+        <item>30 שניות</item>
+        <item>דקה אחת</item>
+        <item>5 דקות</item>
+        <item>10 דקות</item>
     </string-array>
 </resources>

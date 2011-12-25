@@ -417,13 +417,10 @@ msgid ""
 msgstr ""
 
 #: tmp_strings.xml:221(string)
-#, fuzzy
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
-"Ён таксама працуе як пашырэнне для другіх прыкладанняў, каб адлюстроўваць "
-"дыялогі \"Адкрыць\" і \"Захаваць\""
 
 #: tmp_strings.xml:235(listitem)
 msgid "Securely protect data using AES encryption."
@@ -462,9 +459,8 @@ msgid "MyBackup Pro."
 msgstr ""
 
 #: tmp_strings.xml:249(listitem)
-#, fuzzy
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr "Закадаваць нататкі пры дапамозе \"OI Safe\"."
+msgstr ""
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:253(listitem)

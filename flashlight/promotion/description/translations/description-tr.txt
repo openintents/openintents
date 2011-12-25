@@ -5,7 +5,7 @@ OI El feneri
 OpenIntents Fener karanlıkta yolunuzu bulmanıza yardımcı olur.Uygulama çalışırken ekran arka ışığı açık tutulur.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight karanlıkta size yolunuzu bulmakta yardımcı olan basit ve etkili bir uygulamadır. OI Flashlight arka ışık süresini açık olarak kilitler, çevresini açıkça aydınlatır. Kamera flaşı olan aygıtlar için,  OI Flashlight ayrıca karanlıkta odayı fener ile aydınlatmanızı sağlar. OI Color Picker ile fener ışığının renkleri tamamiyle özelleştirilebilir. 
 
 Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez. 
 
@@ -19,26 +19,26 @@ Launchpad'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:
 https://translations.launchpad.net/openintents/trunk
 
 Özellikler: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+* Arka plan ışığını kilitleyin.
+* Kamera flashını kilitle.
+* Arka plan ışığının rengi özelleştirilebilir.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+"OI Flashlight" için uygun eklentiler: 
+* "OI About" ile lisans bilgilerini görüntüle.
+* "OI Color Picker" ile arka plan ışığının rengini değiştirebilirsiniz.
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+"OI Flashlight" ile çalışan uygulamalar: 
+* "OI Update" ile güncelleştirin.
 
 Anahtar kelimeler: 
-* Flashlight, light, Backlight
+* El feneri, Işık, Arkaışığı
 * OI, OpenIntents, Open Intents
 
 Uluslararası versiyonlar: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
-Search strings for Market: 
+Market için arama metinleri: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

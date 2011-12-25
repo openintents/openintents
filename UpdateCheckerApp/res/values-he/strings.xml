@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+	
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Neta Oren https://launchpad.net/~netao212</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+    <string name="app_name">עדכון OI</string>
+    
+    <string name="update_available">יש גרסא חדשה של %s זמינה. /n האם אתה רוצה לעדכן?</string>
+    <string name="update_available_3">יש גרסה חדשה של %1$s זמינה אצל %2$s.\n%3$s\n</string>
+    <string name="update_available_2">קיימת גרסה חדשה זמינה של %1$s.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">גרסא חדשה של %1$s זמינה אצל %2$s</string>
+    <string name="update_available_no_comment">יש גרסה זמינה חדשה של %s</string>
+	<string name="market_not_available">שוק אנדרואיד לא זמין.</string>
+    <string name="market_search_term">עדכון OI</string>
+	<string name="android_market">שוק אנדרואיד</string>
+	<string name="andappstore">AndAppStore.com</string>
+	    
+    <string name="about_text_extended">גרסה %1$s\nSD של כרטיס %2$s\n\nOS\n%3$s</string>
+    <string name="free_space">רווח חינם : %s</string>
+    <string name="os_info">לוח  %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    
+    <string name="do_update">בצע עדכון עכשיו!</string>
+    <string name="do_update_market">נסה עדכון מהמרקט עכשיו!</string>
+    <string name="do_update_andAppStore">נסה לעדכן מחנות היישומים עכשיו!</string>
+    <string name="remind_me_later">הזכר לי אחר כך!</string>
+    <string name="ignore_this_update">התעלם מעדכון זה</string>
+    <string name="ignore_all_further_updates">התעלם מעדכונים נוספים</string>
+    <string name="ok">אוקי</string>
+    
+    <string name="update_not_started">לא ניתן להתחיל עדכון! \n\n אנא צור קשר עם מפתח האפליקציה! \n\n%s</string>
+    <string name="app_up_to_date">היישום מעודכן</string>
+    <string name="checking">מחפש גרסה חדשה</string>
+    <string name="building_app_list">יוצר רשימה של יישומים.</string>
+    <string name="check_andappstore">בדוק  AndAppStore.com</string>
+    <string name="check_versions">בדוק גרסאות</string>
+    <string name="show_versions">הצג הכל</string>
+    <string name="refresh">רענן</string>
+    <string name="checked_against_andappstore">AndAppStore נבדק</string>
+    <string name="current_version">גרסה נוכחית : %s</string>
+    <string name="current_version_code">קוד גרסה נוכחית : %s</string>
+    <string name="newer_version">גרסה חדשה יותר : %s</string>
+    <string name="newer_version_comment">גרסה חדשה יותר : %1$s - %2$s</string>
+    <string name="newer_version_available">גרסה חדשה יותר זמינה.</string>
+    <string name="no_update_info_found">לא נמצא מידע לגבי עדכון.</string>
+    <string name="title_list_new_versions">עדכון OI - רשימה של גרסאות חדשות יותר</string>
+    <string name="title_list_new_versions_from_andappstore">עדכון OI - גרסאות חדשות יותר אצל AndAppStore</string>
+    <string name="title_list_all_versions">עדכון OI - רשימה של יישומים מנוהלים</string>
+    <string name="title_list_all_versions_from_andappstore">עדכון OI - רשימה של יישומים מנוהלים (בדוק אצל AndAppStore)</string>
+    <string name="settings">הגדרות אישיות</string>
+    <string name="auto_update">בדיקה אוטומטית</string>
+    <string name="ignore_title">מתעלם</string>
+    <string name="ignore_text">מתעלם מעדכונים כרגע. האם אתה רוצה לקבל עדכונים שוב?</string>
+    <string name="unknown_title">ֹלא ידוע</string>
+    <string name="unknown_text">אין מידע זמין על העדכון. בבקשה בדוק ידנית ושאל את המפתח שיספק עדכון OI בעתיד.</string>
+    <string name="search_on_market">חפש במרקט</string>
+    <string name="search_on_andappstore">חפש בAndAppStore</string>
+    <string name="processing">מעבד %s</string>
+    
+    <string name="warn">תהליך העדכון של יישום זה מכוון לאתר שונה מאנדרואיד מרקט. יישומים שמותקנים ממקורות לא ידועים
+יכולים להוות סיכון בטחוני.</string>
+    <string name="continue_anyway">המשך בכל זאת</string>
+    <string name="abort">ביטול</string>
+    
+    <string name="preference_auto_update">עדכון אוטומטי</string>
+    <string name="preference_auto_update_summary">אם סומן, חיפוש אחר עדכונים יעשה באופן קבוע</string>
+    <string name="title_update_interval">השהיית עדכון</string>
+    <string name="summary_update_interval">קבע את ההשהייה של התדירות שחיפוש העדכונים יבצע</string>
+    <string name="dialog_title_update_interval">בחר השהייה</string>
+    <string name="default_update_interval">כל_חודש</string>
+    <string name="preference_warning_title">אזהרה</string>
+    <string name="preference_warning_text">אם אתה לא תסמן פריט זה, אתה לא תקבל התראות לעדכונים.
+האם אתה עדיין רוצה לעשות זאת?</string>
+    
+    <string name="preference_andappstore">השתמש בAndAppStore</string>
+    <string name="preference_andappstore_summary">השתמש במידע הגרסה שמסופק על ידי AndAppStore.com</string>
+    
+    <string name="permission_read_update_info">קרא מידע על העדכון</string>
+    <string name="permission_write_update_info">כתוב מידע על העדכון</string>
+    <string name="permission_read_update_info_descr">קרא מידע על היישומים המותקנים, עדכן מיקומים ובקשות.</string>
+    <string name="permission_write_update_info_descr">כתוב מידע על יישומים מותקנים, עדכן מיקומים ובקשות.</string>
+
+
+	<!-- About -->
+	<string name="about">אודות</string>
+	<string name="about_title">אודות %s</string>
+	<string name="about_text">גרסה %s \n\n OI שמוודא שתישאר מעודכן על גרסאות חדשות ליישומים. /n OpenIntents מאפשר שאפליקציות שונות לאנדרואיד ישתפו מידע באמצעות ממשק פתוח. /n/n בשביל מידע נוסף ויישומים מעולים נוספים בקר  ב-OpenIntents  אצל www.openintents.org</string>
+	
+	<!-- EULA -->
+	<string name="eula_title">עדכון OI EULA</string>
+<string name="eula_description">"זכויות שמורות 2008 OpenIntents.org\n מאושר תחת רשיון Apache, גרסה 2.0 ( \"License\") אתה לא רשאי להשתמש בקובץ זה
+פרט להתאמה עם הרשיון. אתה רשאי להשיג עותק של רשיון זה אצל /n  http://www.apache.org/licenses/LICENSE-2.0\n
+אלא אם בוקש על ידי החוק או שנקבע בכתב, חילוק תוכנה תחת הרשיון על בסיס, בלי צווים או תנאים מכל סוג שהוא,
+או שבוטאו או שנרמזו. ראה את הרשיון עבור שפות ספציפיות והרשאות והגבלות תחת הרישיון. /n/n"</string>
+	<string name="eula_accept">אשר</string>
+	<string name="eula_refuse">ביטול</string>
+	
+</resources>

@@ -6,7 +6,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CSro https://launchpad.net/~choongsan</string>
+  Jihyeok Seo https://launchpad.net/~limeburst</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -14,18 +14,18 @@
     <string name="app_name">OI 업데이트</string>
     
     <string name="update_available">%s의 새로운 버전이 있습니다.\n업그래이드를 하시겠습니까?</string>
-    <string name="update_available_3">A new version of %1$s is available at %2$s.\n%3$s\n</string>
-    <string name="update_available_2">A new version of %1$s is available.\n%2$s\n</string>
-    <string name="update_available_location_no_comment">A new version of %1$s is available at %2$s.</string>
+    <string name="update_available_3">%1$s 의 새로운 버전을 %2$s 에서 받을 수 있습니다.\n%3$s\n</string>
+    <string name="update_available_2">%1$s 의 새로운 버전이 있습니다.\n%2$s\n</string>
+    <string name="update_available_location_no_comment">%1$s 의 새로운 버전을 %2$s 에서 받을 수 있습니다.</string>
     <string name="update_available_no_comment">%s의 새로운 버전이 있습니다.</string>
-	<string name="market_not_available">Android Market not available.</string>
+	<string name="market_not_available">안드로이드 마켓에 접속할 수 없습니다.</string>
     <string name="market_search_term">OI 업데이트</string>
 	<string name="android_market">안드로이드 마켓</string>
 	<string name="andappstore">AndAppStore.com</string>
 	    
-    <string name="about_text_extended">Version %1$s\nSD card %2$s\n\nOS\n%3$s</string>
+    <string name="about_text_extended">Version %1$s\nSD 카드 %2$s\n\nOS\n%3$s</string>
     <string name="free_space">남은 공강: %s</string>
-    <string name="os_info">Board %1$s\nBrand %2$s\nDevice %3$s\nID %4$s\nModel %5$s</string>
+    <string name="os_info">보드 %1$s\n브랜드 %2$s\n디바이스 %3$s\nID %4$s\n모델 %5$s</string>
     
     <string name="do_update">지금 업데이트 시작!</string>
     <string name="do_update_market">안드로이드 마켓에서 업데이트 시작!</string>
@@ -35,79 +35,65 @@
     <string name="ignore_all_further_updates">차후 모든 업데이트 무시</string>
     <string name="ok">확인</string>
     
-    <string name="update_not_started">Update could not be started!\n\nPlease contact application developer!\n\n%s</string>
+    <string name="update_not_started">업데이트를 시작할 수 없습니다!\n\n앱 개발자에게 연락하세요\n\n%s</string>
     <string name="app_up_to_date">최신버전입니다.</string>
     <string name="checking">새로운 버전을 확인중입니다.</string>
-    <string name="building_app_list">Building list of applications.</string>
+    <string name="building_app_list">앱 목록 작성 중.</string>
     <string name="check_andappstore">AndAppStore.com 확인</string>
     <string name="check_versions">버전 확인</string>
     <string name="show_versions">모두보기</string>
     <string name="refresh">새로고침</string>
     <string name="checked_against_andappstore">AndAppStore확인함</string>
     <string name="current_version">현재 버전: %s</string>
-    <string name="current_version_code">Current version code: %s</string>
+    <string name="current_version_code">현재 버전 코드: %s</string>
     <string name="newer_version">새로운 버전: %s</string>
-    <string name="newer_version_comment">Newer version: %1$s - %2$s</string>
-    <string name="newer_version_available">Newer version available.</string>
-    <string name="no_update_info_found">No update information found.</string>
-    <string name="title_list_new_versions">OI Update - List of new versions</string>
-    <string name="title_list_new_versions_from_andappstore">OI Update - New versions at AndAppStore</string>
-    <string name="title_list_all_versions">OI Update - List of managed applications</string>
-    <string name="title_list_all_versions_from_andappstore">OI Update - List of managed applications (check at AndAppStore)</string>
+    <string name="newer_version_comment">새 버전: %1$s - %2$s</string>
+    <string name="newer_version_available">새로운 버전이 있습니다.</string>
+    <string name="no_update_info_found">업데이트 정보를 찾을 수 없습니다.</string>
+    <string name="title_list_new_versions">OI 업데이트 - 새로운 버전 목록</string>
+    <string name="title_list_new_versions_from_andappstore">OI 업데이트 - AndAppStore에 새로운 버전이 있습니다</string>
+    <string name="title_list_all_versions">OI 업데이트 - 관리중인 앱 목록</string>
+    <string name="title_list_all_versions_from_andappstore">OI 업데이트 - 관리중인 앱 목록 (AndAppStore에서 확인함)</string>
     <string name="settings">설정</string>
     <string name="auto_update">자동확인</string>
     <string name="ignore_title">무시됨</string>
-    <string name="ignore_text">Updates are currently ignored. Would you like to receive updates again?</string>
+    <string name="ignore_text">현재 업데이트가 무시되고 있습니다. 다시 업데이트 알림을 받겠습니까?</string>
     <string name="unknown_title">알수없음</string>
-    <string name="unknown_text">No update information available. Please check manually and ask the developer to support OI Update in the future.</string>
+    <string name="unknown_text">업데이트 정보가 없습니다. 수동으로 체크 하고, 앱 개발자에게 OI 업데이트 지원을 부탁하세요.</string>
     <string name="search_on_market">안드로이드 마켓에서 검색</string>
     <string name="search_on_andappstore">AndAppStore에서 검색</string>
     <string name="processing">%s 처리중</string>
     
-    <string name="warn">The update process of this application directs to
-    a different site than Android Market. Applications installed from unknown sources might
-    exhibit a security risk. 
-    </string>
+    <string name="warn">이 앱의 업데이트를 위해서는 안드로이드 마켓이 아닌 다른 사이트로 가야 합니다. 알 수 없는 소스에서 설치한 앱은 보안 위험이 있을 수 있습니다.</string>
     <string name="continue_anyway">계속 진행</string>
     <string name="abort">취소</string>
     
     <string name="preference_auto_update">자동 업데이트</string>
-    <string name="preference_auto_update_summary">If checked, search for updates is performed regularly</string>
+    <string name="preference_auto_update_summary">체크된 경우, 업데이트 체크가 주기적으로 이루어집니다.</string>
     <string name="title_update_interval">업데이트 간격</string>
-    <string name="summary_update_interval">Set the interval how often the update search should be performed.</string>
+    <string name="summary_update_interval">업데이트 검색 주기를 정하세요.</string>
     <string name="dialog_title_update_interval">간격 선택</string>
     <string name="default_update_interval">매월</string>
-    <string name="preference_warning_title">Warning</string>
-    <string name="preference_warning_text">If you uncheck this item, you will no longer receive notifications for updates. Do you still want to uncheck auto update?</string>
+    <string name="preference_warning_title">주의</string>
+    <string name="preference_warning_text">이 항목을 체크하지 않으면, 업데이트 알림을 더 이상 받지 않게 됩니다. 정말 자동 업데이트를 끄시겠습니까?</string>
     
     <string name="preference_andappstore">AndAppStore 사용</string>
-    <string name="preference_andappstore_summary">Use version information provided by AndAppStore.com</string>
+    <string name="preference_andappstore_summary">AndAppStore.com에서 제공된 버전 정보를 사용합니다.</string>
     
-    <string name="permission_read_update_info">Read update information</string>
-    <string name="permission_write_update_info">Write update information</string>
-    <string name="permission_read_update_info_descr">Read information about installed applications, update locations and requests.</string>
-    <string name="permission_write_update_info_descr">Write information about installed applications, update locations and requests.</string>
+    <string name="permission_read_update_info">업데이트 정보 읽기</string>
+    <string name="permission_write_update_info">업데이트 정보 쓰기</string>
+    <string name="permission_read_update_info_descr">설치된 앱에 대한 정보, 업데이트 위치, 요구사항 읽기.</string>
+    <string name="permission_write_update_info_descr">설치된 앱에 대한 정보, 업데이트 위치, 요구사항 쓰기.</string>
 
 
 	<!-- About -->
 	<string name="about">프로그램 정보</string>
 	<string name="about_title">%s에 대하여</string>
-	<string name="about_text">Version %s \n\n
-OI Update keeps you informed on new application versions.\n
-	
-OpenIntents allows different Android applications to share data using intents and open interfaces.\n\n
-For more information and other great applications visit OpenIntents at www.openintents.org
-	</string>
+	<string name="about_text">버전 %s \n\n OI 업데이트는 새로운 앱 업데이트를 알려줍니다.\n OpenIntents는 intents와 공개 인터페이스를 사용하여 앱들이 서로의 데이터를 공유 할 수 있게 합니다.\n\n 더 많은 정보와 다른 유용한 앱을 원하시면 www.openintents.org에 있는 OpenIntents 사이트를 방문해 주세요.</string>
 	
 	<!-- EULA -->
-	<string name="eula_title">OI Update EULA</string>
-<string name="eula_description">
-"Copyright 2008 OpenIntents.org\n
-Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n
-http://www.apache.org/licenses/LICENSE-2.0\n
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n
-\n"
-</string>
+	<string name="eula_title">OI 업데이트 소프트웨어 사용자 라이선스 계약(EULA)</string>
+<string name="eula_description">"Copyright 2008 OpenIntents.org\n Licensed under the Apache License, Version 2.0 (the \"License\"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n http://www.apache.org/licenses/LICENSE-2.0\n Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\n \n"</string>
 	<string name="eula_accept">수락</string>
 	<string name="eula_refuse">취소</string>
 	

@@ -5,9 +5,9 @@ OI Фенерче
 OpenIntents фенерче ще ви помага да намерите пътя в тъмнината. Дисплеят е включен, докато това приложение работи.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight е просто и ефективно приложение, което Ви позволява да откривате пътя си в тъмното. OI Flashlight включва подсветката на дисплея, като по този начин ясно осветява околността. При устройства със светкавица на камерата, OI Flashlight може също да използва и светкавицата като ярък факел за да освети стаята. Цветът на подсветката може напълно да се персонализира с OI Color Picker. 
 
-Тази апликация е безплатна и не изисква интернет за ползването и. 
+Това приложение е безплатно и не изисква интернет за ползването ѝ. 
 
 Изходният код на това безплатно приложение с  отворен код е достъпен на адрес: 
 http://code.google.com/p/openintents
@@ -19,23 +19,23 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 Характеристики: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+* Включване на подсветката на дисплея.
+* Включи светкавицата на камерата.
+* Цветът на подсветката може да се персонализира.
 
-Available extensions for "OI Flashlight": 
+Налични разширения за "OI Flashlight": 
 * Покажи информация за лиценза с "OI About".
-* Change the color of the backlight with "OI Color Picker".
+* Промени цвета на осветяването на дисплея с "OI Color Picker".
 
-Applications that work with "OI Flashlight": 
+Приложения, които работят с "OI Flashlight": 
 * Обновявай с "OI Update".
 
 Ключови думи: 
-* Flashlight, light, Backlight
+* Flashlight, фенерче, светлина, осветяване на дисплея
 * OI, OpenIntents, Open Intents
 
 Международни версии: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
 Стрингове за търсенето в Market 

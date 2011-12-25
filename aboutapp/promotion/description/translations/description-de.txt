@@ -5,7 +5,7 @@ OI Info
 Informationen über diverse Anwendungen
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI About ist ein eigenständiger "About"-Dialog der zwischen mehreren Anwendungen geteilt wird. Diese Anwendung wird über das Menü von anderen Anwendungen aufgerufen. Dies erlaubt Ihnen Versionsinformationen, Links, Danksagungen und die Lizenz einer Anwendung anzuzeigen. Die Danksagungen beinhalten Autoren, Dokumentatoren, Übersetzer und Grafiker. Alle diese Funktionen werden in einem einfachen und effizienten Layout vereint. 
 
 Diese Applikation ist werbefrei und benötigt keine Internetverbindung. 
 
@@ -19,14 +19,14 @@ Sie können uns mit der Verbesserung der Übersetzung in ihre Sprache auf Launch
 https://translations.launchpad.net/openintents/trunk
 
 Eigentschaften: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* Zeigt allgemeine Informationen, Danksagungen und Lizenztabs
+* Zeigt die Übersetzer aller Sprachversionen
+* Holt Informationen über eine Anwendungen über Standard Tags und Metadaten.
+* Optional können alle Felder über Intent Extras verändert werden.
 
-Applications that work with "OI About": 
+Anwendungen, die mit "OI About" funktionieren 
 * OI Notepad
-* OI File manager
+* OI File Manager
 * OI Shopping List
 * OI Convert CSV
 * OI Safe
@@ -34,11 +34,11 @@ Applications that work with "OI About":
 * OI Flashlight
 
 Schlüsselwörter: 
-* About, Credits, Information.
-* OI, OpenIntents, Open Intents.
+* Über, Danksagungen, Informationen
+* OI, OpenIntents, Open Intents
 
 Internationale Versionen: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 Im Market suchen nach: 

@@ -1,0 +1,846 @@
+# Korean translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jihyeok Seo <Unknown>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Jihyeok Seo https://launchpad.net/~limeburst"
+
+#. Short explanation of the application
+#: tmp_strings.xml:28(string)
+msgid "OI Safe keeps all your private data encrypted."
+msgstr "OI 금고는 당신의 모든 비밀 정보를 암호화하여 보관합니다."
+
+#. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
+#: tmp_strings.xml:34(string)
+msgid "OI Safe"
+msgstr "OI 금고"
+
+#: tmp_strings.xml:35(string)
+msgid "No Passwords present for this category."
+msgstr "이 카테고리에 대한 비밀번호가 없습니다."
+
+#: tmp_strings.xml:36(string)
+msgid "No categories present. Please add one via Menu-&gt;Add"
+msgstr "카테고리가 아직 없습니다. 메뉴-&gt;추가 에서 카테고리를 만드세요."
+
+#: tmp_strings.xml:37(string) tmp_strings.xml:206(string)
+msgid "Lock"
+msgstr "잠그기"
+
+#: tmp_strings.xml:38(string)
+msgid "View"
+msgstr "보기"
+
+#: tmp_strings.xml:39(string)
+msgid "Edit"
+msgstr "수정"
+
+#: tmp_strings.xml:40(string)
+msgid "Add"
+msgstr "더하기"
+
+#: tmp_strings.xml:41(string)
+msgid "Delete"
+msgstr "지우기"
+
+#: tmp_strings.xml:42(string)
+msgid "Password"
+msgstr "비밀번호"
+
+#: tmp_strings.xml:43(string)
+msgid "Passwords"
+msgstr "비밀번호"
+
+#: tmp_strings.xml:44(string)
+msgid "Master Password"
+msgstr "마스터 비밀번호"
+
+#: tmp_strings.xml:45(string)
+msgid "Username"
+msgstr "사용자 이름"
+
+#: tmp_strings.xml:46(string)
+msgid "Website"
+msgstr "웹사이트"
+
+#: tmp_strings.xml:47(string)
+msgid "Description"
+msgstr "설명"
+
+#: tmp_strings.xml:48(string)
+msgid "Notes"
+msgstr "쪽지"
+
+#: tmp_strings.xml:49(string)
+msgid "Save"
+msgstr "저장"
+
+#: tmp_strings.xml:50(string)
+msgid "Invalid password. Please try again."
+msgstr "비밀번호가 맞지 않습니다. 다시 시도해 주세요."
+
+#: tmp_strings.xml:51(string)
+msgid "Password must be at least 4 characters"
+msgstr "비밀번호는 4글자 이상이어야 합니다."
+
+#: tmp_strings.xml:52(string)
+msgid "Description cannot be blank"
+msgstr "설명에 내용을 입력해 주세요."
+
+#: tmp_strings.xml:53(string)
+msgid "Name cannot be blank"
+msgstr "이름에 내용을 입력해 주세요."
+
+#: tmp_strings.xml:54(string)
+msgid ""
+"Please enter a password below, which will be used to keep your passwords "
+"safe."
+msgstr ""
+"아래에 비밀번호를 입력해 주세요. 이 비밀번호는 다른 비밀번호들을 보호하는 데 "
+"쓰입니다."
+
+#: tmp_strings.xml:55(string)
+msgid ""
+"You are currently logged into OI Safe, meaning that other applications can "
+"request their passwords and decrypt/encrypt data. Lock to prevent further "
+"access until you type in your password again."
+msgstr ""
+"당신은 OI 금고에 로그인 되어 있습니다. 다시 비밀번호를 입력하여 금고를 잠그"
+"기 전까지는 다른 앱들이 비밀번호를 사용하고 데이터를 암호화 및 복호화 할 수 "
+"있습니다."
+
+#: tmp_strings.xml:56(string)
+msgid ""
+"Another application is asking to use the master key. Please type in your "
+"password to unlock it."
+msgstr ""
+"다른 앱이 마스터 비밀번호 사용 권한을 요청하고 있습니다. 허용하시려면 비밀번"
+"호를 입력해 주세요."
+
+#: tmp_strings.xml:57(string)
+msgid "Categories"
+msgstr "카테고리"
+
+#: tmp_strings.xml:58(string)
+msgid "Category"
+msgstr "카테고리"
+
+#: tmp_strings.xml:59(string)
+msgid "Business"
+msgstr "업무"
+
+#: tmp_strings.xml:60(string)
+msgid "Personal"
+msgstr "개인"
+
+#: tmp_strings.xml:61(string)
+msgid "Name"
+msgstr "이름"
+
+#: tmp_strings.xml:62(string)
+msgid "Category is not empty. You must delete the passwords first."
+msgstr "카테고리가 비어 있지 않습니다. 비밀번호들을 먼저 삭제해 주세요."
+
+#: tmp_strings.xml:63(string)
+msgid "Cannot decrypt category"
+msgstr "카테고리를 복호화 할 수 없습니다."
+
+#: tmp_strings.xml:64(string)
+msgid "Cannot decrypt password"
+msgstr "비밀번호를 복호화 할 수 없습니다."
+
+#: tmp_strings.xml:65(string)
+msgid "Error exporting database"
+msgstr "데이터베이스를 내보내는 도중 에러가 발생하였습니다."
+
+#: tmp_strings.xml:66(string)
+msgid "Export Database"
+msgstr "데이터베이스 내보내기"
+
+#: tmp_strings.xml:67(string)
+msgid "Select a file for export"
+msgstr ""
+
+#: tmp_strings.xml:68(string)
+msgid ""
+"This will export the password database to a plaintext file. THIS IS VERY "
+"DANGEROUS. Make sure that you delete the file after you are done with it. "
+"Are you sure you want to export?"
+msgstr ""
+"비밀번호 데이터베이스를 평문으로 이루어진 파일에 내보냅니다. 이것은 매우 위험"
+"합니다. 파일을 사용한 뒤 꼭 삭제하시길 바랍니다. 정말 내보내시겠습니까?"
+
+#: tmp_strings.xml:69(string)
+msgid "Export to '%s' successful. Warning! The file is not encrypted."
+msgstr "'%s' 로 내보내기 완료. 주의! 이 파일은 암호화되있지 않습니다."
+
+#: tmp_strings.xml:70(string)
+msgid ""
+"Unable to create export file 'oisafe.csv' on SDCARD. You might try "
+"disconnecting USB from computer."
+msgstr ""
+"SD 카드에 내보내기 파일 'oisafe.csv' 생성에 실패하였습니다. USB를 컴퓨터에서 "
+"뽑아 보세요."
+
+#: tmp_strings.xml:71(string)
+msgid "Import Database"
+msgstr "데이터베이스 불러오기"
+
+#: tmp_strings.xml:72(string)
+msgid "Select a file for import"
+msgstr ""
+
+#: tmp_strings.xml:73(string)
+msgid "Import file is missing:"
+msgstr "불러오기 파일을 찾을 수 없습니다:"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Unable to import file 'oisafe.csv' from SDCARD. You might try disconnecting "
+"USB from computer."
+msgstr ""
+"SD 카드에서 'oisafe.csv' 파일을 불러오는 데 실패하였습니다. USB를 컴퓨터에서 "
+"뽑아 보세요."
+
+#: tmp_strings.xml:75(string)
+msgid "First line is missing fields."
+msgstr "첫 줄에 내용을 입력해 주세요."
+
+#: tmp_strings.xml:76(string)
+msgid "Import"
+msgstr "불러오기"
+
+#: tmp_strings.xml:77(string)
+msgid "Do you want to replace the database (import from %s)?"
+msgstr "데이터베이스를 교체하시겠습니까(%s 에서 불러오기)?"
+
+#: tmp_strings.xml:78(string)
+msgid "Yes"
+msgstr "네"
+
+#: tmp_strings.xml:79(string)
+msgid "No"
+msgstr "아니오"
+
+#: tmp_strings.xml:80(string)
+msgid "Please wait while importing..."
+msgstr "불러오는 동안 잠시 기다려 주세요..."
+
+#: tmp_strings.xml:81(string)
+msgid "No categories found."
+msgstr "카테고리가 없습니다."
+
+#: tmp_strings.xml:82(string)
+msgid "No entries found in CSV."
+msgstr "CSV에 내용이 없습니다."
+
+#: tmp_strings.xml:83(string)
+msgid "Too many categories."
+msgstr "카테고리가 너무 많습니다."
+
+#: tmp_strings.xml:84(string)
+msgid "Not enough fields"
+msgstr "필드가 부족합니다."
+
+#: tmp_strings.xml:85(string)
+msgid "Blank category"
+msgstr "카테고리가 비어 있습니다."
+
+#: tmp_strings.xml:86(string)
+msgid "Blank description"
+msgstr "설명이 비어 있습니다."
+
+#: tmp_strings.xml:87(string)
+msgid "Delete Database"
+msgstr "데이터베이스 삭제하기"
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Are you really sure you want to delete the database? This cannot be undone."
+msgstr "데이터베이스를 삭제하시겠습니까? 이 행동은 되돌릴 수 없습니다."
+
+#: tmp_strings.xml:89(string)
+msgid "Added"
+msgstr "추가되었습니다"
+
+#: tmp_strings.xml:90(string)
+msgid "entries"
+msgstr "항목"
+
+#: tmp_strings.xml:91(string)
+msgid "Import complete"
+msgstr "불러오기 완료"
+
+#: tmp_strings.xml:92(string)
+msgid ""
+"Since it is not secure to keep passwords in clear text CSV files, would you "
+"like to delete"
+msgstr ""
+"평문으로 이루어진 CSV 파일에 비밀번호를 저장하는 것은 안전하지 않으므로, 삭제"
+"하시겠습니까"
+
+#: tmp_strings.xml:93(string)
+msgid "Edit Entry"
+msgstr "항목 편집"
+
+#: tmp_strings.xml:94(string)
+msgid "View Entry"
+msgstr "항목 보기"
+
+#: tmp_strings.xml:95(string)
+msgid "Help"
+msgstr "도움말"
+
+#: tmp_strings.xml:96(string)
+msgid "Close"
+msgstr "닫기"
+
+#: tmp_strings.xml:97(string)
+msgid "Go"
+msgstr "이동"
+
+#: tmp_strings.xml:98(string)
+msgid "Delete Password"
+msgstr "비밀번호 삭제"
+
+#: tmp_strings.xml:99(string)
+msgid "Are you sure you want to delete this password?"
+msgstr "비밀번호를 삭제하시겠습니까?"
+
+#: tmp_strings.xml:100(string)
+msgid "Change Master Password"
+msgstr "마스터 비밀번호 바꾸기"
+
+#: tmp_strings.xml:101(string)
+msgid ""
+"Use this to change the password you use to unlock OI Safe. Your data will be "
+"re-encrypted with the new password. The more complex your password is, the "
+"safer your data will be."
+msgstr ""
+"OI 금고를 여는데 사용하는 비밀번호를 바꿀 때 쓰세요. 바뀐 비밀번호로 데이터"
+"를 다시 암호화합니다. 비밀번호가 복잡할수록, 데이터는 더 안전해집니다."
+
+#: tmp_strings.xml:102(string)
+msgid "Old password"
+msgstr "기존 비밀번호"
+
+#: tmp_strings.xml:103(string)
+msgid "New password"
+msgstr "새 비밀번호"
+
+#: tmp_strings.xml:104(string)
+msgid "Verify password"
+msgstr "비밀번호 확인"
+
+#: tmp_strings.xml:105(string)
+msgid "New and Verify passwords do not match."
+msgstr "입력한 비밀번호가 일치하지 않습니다."
+
+#: tmp_strings.xml:106(string)
+msgid "Old password is invalid. Please try again."
+msgstr "기존 비밀번호가 맞지 않습니다. 다시 시도해 주세요."
+
+#: tmp_strings.xml:107(string)
+msgid "Error changing password"
+msgstr "암호를 바꾸는 중 오류가 발생했습니다."
+
+#: tmp_strings.xml:108(string)
+msgid "Master Password changed"
+msgstr "마스터 비밀번호가 변경되었습니다."
+
+#: tmp_strings.xml:109(string)
+msgid "Confirm"
+msgstr "확인"
+
+#: tmp_strings.xml:110(string)
+msgid "Password entries do not match."
+msgstr "비밀번호 항목이 맞지 않습니다."
+
+#: tmp_strings.xml:111(string)
+msgid "Backup"
+msgstr "백업"
+
+#: tmp_strings.xml:112(string)
+msgid "Backing up to"
+msgstr "여기에 백업하는 중"
+
+#: tmp_strings.xml:113(string)
+msgid "Complete. Passwords backed up:"
+msgstr "완료. 비밀번호가 백업되었습니다:"
+
+#: tmp_strings.xml:114(string)
+msgid "Backup failed:"
+msgstr "백업에 실패하였습니다:"
+
+#: tmp_strings.xml:115(string)
+msgid "Select a file for backup"
+msgstr ""
+
+#: tmp_strings.xml:116(string)
+msgid "Error while backing up"
+msgstr ""
+
+#: tmp_strings.xml:117(string)
+msgid "Restore"
+msgstr "복구하기"
+
+#: tmp_strings.xml:118(string)
+msgid "Filename"
+msgstr "파일 이름"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Backup file not found. You need to perform a backup first to create it. Or "
+"copy a backup from your PC."
+msgstr ""
+"백업 파일을 찾을 수 없습니다. 백업을 하거나, PC 에서 백업을 복사해 올 수 있습"
+"니다."
+
+#: tmp_strings.xml:120(string)
+msgid ""
+"Please provide the password used by the backup file. Your master password "
+"will be set to this."
+msgstr ""
+"백업 파일에 사용된 비밀번호를 입력하세요. 마스터 비밀번호가 이 비밀번호로 설"
+"정됩니다."
+
+#: tmp_strings.xml:121(string)
+msgid "Select a file for restore"
+msgstr ""
+
+#: tmp_strings.xml:122(string)
+msgid "Error while restoring"
+msgstr ""
+
+#. Toast message. %s contains a more detailed error message.
+#: tmp_strings.xml:125(string)
+msgid "Unable to open file: %s"
+msgstr "파일을 열 수 없습니다: %s"
+
+#. Toast message. %s contains the version number of the database.
+#: tmp_strings.xml:128(string)
+msgid "Version not supported: %s"
+msgstr "호환되지 않는 버전입니다: %s"
+
+#: tmp_strings.xml:130(string)
+msgid "Restore error."
+msgstr "복구 에러."
+
+#: tmp_strings.xml:131(string)
+msgid "Bad password."
+msgstr "비밀번호 오류."
+
+#: tmp_strings.xml:132(string)
+msgid "Restore Database"
+msgstr "데이터베이스 복원"
+
+#: tmp_strings.xml:133(string)
+msgid "Are you sure you want to replace the current data?"
+msgstr "현재 데이터를 교체하시겠습니까?"
+
+#: tmp_strings.xml:134(string)
+msgid "Found %1$s passwords from backup dated %2$s."
+msgstr "%2$s 에 백업한 파일에서 %1$s 개 비밀번호 찾음."
+
+#: tmp_strings.xml:135(string)
+msgid "Complete. Passwords restored: %s"
+msgstr "비밀번호 복원 완료: %s"
+
+#: tmp_strings.xml:136(string)
+msgid "copied to Clipboard"
+msgstr "클립보드에 복사되었습니다."
+
+#: tmp_strings.xml:137(string)
+msgid "Invalid website"
+msgstr "유효하지 않은 웹사이트"
+
+#: tmp_strings.xml:138(string)
+msgid "Database Error"
+msgstr "데이터베이스 오류"
+
+#: tmp_strings.xml:139(string)
+msgid "Database error. Out of space?"
+msgstr "데이터베이스 에러. 디스크 공간 부족?"
+
+#. Menu label to open a category
+#: tmp_strings.xml:142(string)
+msgid "Open"
+msgstr "열기"
+
+#: tmp_strings.xml:144(string)
+msgid "Database Version Error"
+msgstr "데이터베이스 버전 에러"
+
+#: tmp_strings.xml:145(string)
+msgid ""
+"Sorry, but the version of the database is not supported. You must install "
+"the version associated with this database."
+msgstr ""
+"이 버전의 데이터베이스는 지원하지 않습니다. 이 버전의 데이터베이스와 호환되"
+"는 버전의 앱을 설치해주시기 바랍니다."
+
+#. Menu label to move a password to another category
+#: tmp_strings.xml:148(string)
+msgid "Move"
+msgstr "옮기기"
+
+#: tmp_strings.xml:150(string)
+msgid "Select Category"
+msgstr "카테고리 선택"
+
+#. Toast that password has been moved to another category
+#: tmp_strings.xml:153(string)
+msgid "Moved to %s"
+msgstr "%s 로 옮겼습니다."
+
+#: tmp_strings.xml:155(string)
+msgid "Settings"
+msgstr "설정"
+
+#: tmp_strings.xml:156(string)
+msgid "Allow external access"
+msgstr "외부 접근 허용하기"
+
+#: tmp_strings.xml:157(string)
+msgid "Allow other applications to secure your data with OI Safe"
+msgstr "다른 앱들이 데이터를 OI 금고에 안전하게 저장할 수 있게 합니다."
+
+#: tmp_strings.xml:158(string)
+msgid "OI Safe: Another application requests access."
+msgstr "OI 금고: 다른 앱이 접근을 요청합니다."
+
+#: tmp_strings.xml:159(string)
+msgid "Allow other applications to secure your data with OI Safe."
+msgstr "다른 앱들이 데이터를 OI 금고에 안전하게 저장할 수 있게 합니다."
+
+#: tmp_strings.xml:160(string)
+msgid "This can also be set in OI Safe's Menu / Settings."
+msgstr "OI 금고의 메뉴 / 설정 에서도 설정할 수 있습니다."
+
+#. Preference title for auto lock timeout
+#: tmp_strings.xml:163(string) tmp_strings.xml:168(string)
+msgid "Auto lock timeout"
+msgstr "자동 잠금 타임아웃"
+
+#. Preference summary for auto lock timeout
+#: tmp_strings.xml:166(string)
+msgid "Number of minutes before timeout occurs and safe is locked"
+msgstr "금고가 자동으로 잠길 때 까지 걸리는 시간(분)"
+
+#. Preference title for lock (OI Safe) on screen lock (device)
+#: tmp_strings.xml:171(string)
+msgid "Lock on screen lock"
+msgstr "화면이 잠길때 잠그기"
+
+#. Preference summary for lock (OI Safe) on screen lock
+#: tmp_strings.xml:174(string)
+msgid "Lock when the screen locks"
+msgstr "화면이 잠길때 금고도 잠급니다"
+
+#. Preference title: use a numeric keypad to enter the password
+#: tmp_strings.xml:177(string)
+msgid "Keypad"
+msgstr "키패드"
+
+#. Preference summary: for a numeric keypad
+#: tmp_strings.xml:180(string)
+msgid "Use a keypad to enter Master Password"
+msgstr "마스터 비밀번호를 입력할 때 키패드 사용하기"
+
+#. Preference title for keypad mute
+#: tmp_strings.xml:183(string)
+msgid "Keypad Mute"
+msgstr "키패드 음소거"
+
+#. Preference summary: Make the keypad sounds mute. 
+#. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
+#: tmp_strings.xml:187(string)
+msgid "Mute keypad sounds"
+msgstr "키패드 소리 없애기"
+
+#: tmp_strings.xml:189(string)
+msgid "Auto backup"
+msgstr "자동 백업"
+
+#: tmp_strings.xml:190(string)
+msgid "Automatically prompt to backup passwords"
+msgstr "비밀번호 백업 자동으로 묻기"
+
+#: tmp_strings.xml:192(string)
+msgid "Auto backup days"
+msgstr "자동 백업 날들"
+
+#: tmp_strings.xml:193(string)
+msgid "Number of days to wait before next auto backup"
+msgstr "다음 자동 백업까지의 일 수"
+
+#: tmp_strings.xml:194(string)
+msgid "Auto Backup Days"
+msgstr "자동 백업 날들"
+
+#: tmp_strings.xml:196(string)
+#, fuzzy
+msgid "Default backup path"
+msgstr "자동 백업 날들"
+
+#: tmp_strings.xml:197(string)
+msgid "Default export path"
+msgstr ""
+
+#: tmp_strings.xml:200(string)
+msgid "Decrypt (OI Safe)"
+msgstr "복호화 (OI 금고)"
+
+#: tmp_strings.xml:201(string)
+msgid "Encrypt (OI Safe)"
+msgstr "암호화 (OI 금고)"
+
+#: tmp_strings.xml:202(string)
+msgid "Get password (OI Safe)"
+msgstr "비밀번호 받기 (OI 금고)"
+
+#: tmp_strings.xml:203(string)
+msgid "Set password (OI Safe)"
+msgstr "비밀번호 설정 (OI 금고)"
+
+#: tmp_strings.xml:204(string)
+msgid "Restart timer (OI Safe)"
+msgstr "타이머 재시작 (OI 금고)"
+
+#: tmp_strings.xml:205(string)
+msgid "Open OI Safe"
+msgstr "OI 금고 열기"
+
+#: tmp_strings.xml:207(string)
+msgid "Continue"
+msgstr "계속"
+
+#: tmp_strings.xml:208(string)
+msgid "Generate Password"
+msgstr "비밀번호 생성하기"
+
+#: tmp_strings.xml:209(string)
+msgid "Password Length"
+msgstr "비밀번호 길이"
+
+#: tmp_strings.xml:210(string)
+msgid "Uppercase [A-Z]"
+msgstr "대문자 [A-Z]"
+
+#: tmp_strings.xml:211(string)
+msgid "Lowercase [a-z]"
+msgstr "소문자 [a-z]"
+
+#: tmp_strings.xml:212(string)
+msgid "Numbers [0-9]"
+msgstr "숫자 [0-9]"
+
+#: tmp_strings.xml:213(string)
+msgid "Symbols [!@#$%^\\*]"
+msgstr "특수문자 [!@#$%^\\*]"
+
+#: tmp_strings.xml:214(string)
+msgid "Copy to Current Entry"
+msgstr "현재 항목에 복사하기"
+
+#: tmp_strings.xml:215(string)
+msgid "Copy to Clipboard"
+msgstr "클립보드로 복사하기"
+
+#: tmp_strings.xml:216(string)
+msgid "Cancel"
+msgstr "취소"
+
+#: tmp_strings.xml:217(string)
+msgid "Discard changes"
+msgstr "변경 사항 무시"
+
+#: tmp_strings.xml:218(string)
+msgid "Entry saved"
+msgstr "항목이 저장되었습니다"
+
+#: tmp_strings.xml:219(string)
+msgid "Unable to save due to database error"
+msgstr "데이터베이스 에러로 인해 저장할 수 없습니다"
+
+#: tmp_strings.xml:220(string)
+msgid "Last edited"
+msgstr "최근 수정"
+
+#: tmp_strings.xml:221(string)
+msgid "unknown"
+msgstr "알 수 없음"
+
+#: tmp_strings.xml:222(string)
+msgid "Crypto error:"
+msgstr "암호화 에러:"
+
+#: tmp_strings.xml:223(string)
+msgid "Unique name"
+msgstr "고유 이름"
+
+#: tmp_strings.xml:224(string)
+msgid "Package access"
+msgstr "패키지 액세스"
+
+#: tmp_strings.xml:225(string)
+msgid "not found"
+msgstr "찾을 수 없습니다"
+
+#: tmp_strings.xml:226(string)
+msgid "New master key"
+msgstr "새 마스터 비밀번호"
+
+#: tmp_strings.xml:227(string)
+msgid ""
+"A new random master key has been created. Use menu &gt; backup and store "
+"this key in a safe place. Without this key you may lose encrypted data."
+msgstr ""
+"새로운 무작위의 마스터 비밀번호가 생성되었습니다. 메뉴 &gt; 백업 에서 이 비밀"
+"번호를 안전한 장소에 저장하세요. 이 비밀번호가 없으면 암호화된 데이터를 잃을 "
+"수 있습니다."
+
+#: tmp_strings.xml:228(string)
+msgid "Switch mode"
+msgstr "모드 전환"
+
+#: tmp_strings.xml:229(string)
+msgid "Decrypting..."
+msgstr "복호화 중..."
+
+#: tmp_strings.xml:230(string)
+msgid "Search"
+msgstr "검색"
+
+#: tmp_strings.xml:231(string)
+msgid "Searching..."
+msgstr "검색 중..."
+
+#: tmp_strings.xml:232(string)
+msgid "Type search criteria"
+msgstr "검색어를 입력하세요"
+
+#: tmp_strings.xml:233(string)
+msgid "Nothing found"
+msgstr "검색 결과가 없습니다"
+
+#: tmp_strings.xml:234(string)
+msgid "Mute"
+msgstr "음소거"
+
+#: tmp_strings.xml:235(string)
+msgid "Sounds"
+msgstr "소리"
+
+#: tmp_strings.xml:236(string)
+msgid "Previous"
+msgstr "이전"
+
+#: tmp_strings.xml:237(string)
+msgid "Next"
+msgstr "다음"
+
+#: tmp_strings.xml:238(string)
+msgid "AutoBackup"
+msgstr "자동 백업"
+
+#: tmp_strings.xml:239(string)
+msgid "No backup has been performed yet. Would you like to backup now?"
+msgstr "백업을 한번도 하지 않았습니다. 지금 백업하시겠습니까?"
+
+#: tmp_strings.xml:240(string)
+msgid "The last backup was %d days ago. Would you like to backup now?"
+msgstr "가장 최근 백업이 %d 일 전이었습니다. 지금 백업하시겠습니까?"
+
+#: tmp_strings.xml:241(string)
+msgid "Turn off autobackup"
+msgstr "자동 백업 끄기"
+
+#: tmp_strings.xml:242(string)
+msgid "Time to autolock: %s"
+msgstr ""
+
+#: tmp_strings.xml:243(string)
+msgid "While not downloaded, default location will be used."
+msgstr ""
+
+#. Permission to access master password
+#: tmp_strings.xml:251(string)
+msgid "access the master password"
+msgstr "마스터 비밀번호 액세스"
+
+#: tmp_strings.xml:252(string)
+msgid ""
+"Allows the application to access the master key used for encryption and "
+"decryption. Should never be used except by OI Safe."
+msgstr ""
+"앱이 암호화와 복호화에 사용되는 마스터 비밀번호에 접근하는 것을 허용합니다. "
+"OI 금고 외에는 사용하지 않아야 합니다."
+
+#. Permission to encrypt and decrypt data
+#: tmp_strings.xml:254(string)
+msgid "encrypt and decrypt data"
+msgstr "데이터 암호화 및 복호화"
+
+#: tmp_strings.xml:255(string)
+msgid ""
+"Allows the application to encrypt and decrypt text, and access the passwords "
+"they have stored in OI Safe."
+msgstr ""
+"앱이 글을 암호화/복호화 하고 앱이 OI 금고에 저장한 비밀번호를 사용할 수 있게 "
+"합니다."
+
+#: tmp_strings.xml:263(item)
+msgid "1 minute"
+msgstr "1분"
+
+#: tmp_strings.xml:264(item)
+msgid "5 minutes"
+msgstr "5분"
+
+#: tmp_strings.xml:265(item)
+msgid "10 minutes"
+msgstr "10분"
+
+#: tmp_strings.xml:266(item)
+msgid "15 minutes"
+msgstr "15분"
+
+#: tmp_strings.xml:267(item)
+msgid "30 minutes"
+msgstr "30분"
+
+#: tmp_strings.xml:272(item)
+msgid "1 day"
+msgstr "1일"
+
+#: tmp_strings.xml:273(item)
+msgid "7 days"
+msgstr "7일"
+
+#: tmp_strings.xml:274(item)
+msgid "30 days"
+msgstr "30일"
+
+#: tmp_strings.xml:275(item)
+msgid "60 days"
+msgstr "60일"

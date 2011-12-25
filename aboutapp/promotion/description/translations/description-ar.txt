@@ -1,7 +1,7 @@
 # Application:
-OI About
+عن OI
 
 # Promo text:
-A standalone about dialog that is shared between apps.
+نافذة عن مستقلة مشتركة بين التطبيقات.
 
 # Description:

@@ -1,0 +1,355 @@
+# Belarusian translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Alexander Geroimenko <Unknown>\n"
+"Language-Team: Belarusian <be@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:25(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Alexander Geroimenko https://launchpad.net/~geroimenko"
+
+#. Explanation what this application does.
+#: tmp_strings.xml:28(string)
+msgid ""
+"This extension to OI Shopping list and OI Notepad lets you import and export "
+"lists and notes in the CSV file format."
+msgstr ""
+"Гэта пашырэнне для OI Shopping list і OI Notepad дазваляе вам імпартаваць і "
+"экспартаваць спісы і нататкі ў CSV файл."
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:34(string)
+msgid "OI Shopping List"
+msgstr "OI Shopping List"
+
+#. Name of an application. Please make sure that translations are consistent.
+#: tmp_strings.xml:36(string) tmp_strings.xml:96(string)
+msgid "OI Notepad"
+msgstr "OI Notepad"
+
+#. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
+#: tmp_strings.xml:39(string)
+msgid "Launch %s and select menu &gt; Convert CSV."
+msgstr "Запусціце %s і выберыце пункт &gt; Канвертаваць CSV."
+
+#. Application name. Can be localized.
+#. 	  "CSV" is a common file extension meaning "comma separated values".
+#. 	  "OI" and "CSV" should not be changed.
+#: tmp_strings.xml:47(string)
+msgid "OI Convert CSV"
+msgstr "OI Convert CSV"
+
+#: tmp_strings.xml:48(string)
+msgid "Convert CSV"
+msgstr "Канвертаванне CSV"
+
+#: tmp_strings.xml:49(string)
+msgid "Convert CSV to Notepad"
+msgstr "Канвертаваць CSV у Notepad"
+
+#: tmp_strings.xml:50(string)
+msgid "Convert CSV to Shopping list"
+msgstr "Канвертаваць CSV у Shopping list"
+
+#: tmp_strings.xml:51(string)
+msgid "Convert all notes"
+msgstr "Канвертаваць усе нататкі"
+
+#: tmp_strings.xml:52(string)
+msgid "Convert all shopping lists"
+msgstr "Канвертаваць усе спісы пакупак"
+
+#: tmp_strings.xml:53(string)
+msgid "Convert list '%s'"
+msgstr "Канвертаванне спісу '%s'"
+
+#: tmp_strings.xml:54(string)
+msgid "File path"
+msgstr "Шлях да файла"
+
+#: tmp_strings.xml:55(string)
+msgid "Import"
+msgstr "Імпартаваць"
+
+#: tmp_strings.xml:56(string)
+msgid "Export"
+msgstr "Экспартаваць"
+
+#: tmp_strings.xml:57(string)
+msgid "Error writing to file"
+msgstr "Памылка запісу ў файл"
+
+#: tmp_strings.xml:58(string)
+msgid "Error reading from file"
+msgstr "Памылка чытання з файла"
+
+#: tmp_strings.xml:59(string)
+msgid "Wrong CSV format"
+msgstr "Няправільны фармат CSV"
+
+#: tmp_strings.xml:60(string)
+msgid "File not found"
+msgstr "Файл не знойдзены"
+
+#: tmp_strings.xml:61(string)
+msgid "Not yet implemented, please choose different option."
+msgstr "Яшчэ не рэалізавана, калі ласка, выберыце іншую опцыю."
+
+#: tmp_strings.xml:62(string)
+msgid "Import finished"
+msgstr "Імпартаванне завершана"
+
+#: tmp_strings.xml:63(string)
+msgid "Export finished"
+msgstr "Экспартаванне завершана"
+
+#: tmp_strings.xml:64(string)
+msgid "Select notepad CSV file"
+msgstr "Выберыце CSV файл блакнота"
+
+#: tmp_strings.xml:65(string)
+msgid "Select shopping list CSV file"
+msgstr "Выберыце CSV файл спісу пакупак"
+
+#: tmp_strings.xml:66(string)
+msgid "Current Import Policy:"
+msgstr "Актуальная палітыка імпарту:"
+
+#: tmp_strings.xml:67(string)
+msgid "Import Policy"
+msgstr "Палітыка імпарту"
+
+#: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
+msgid "Select the import policy to use"
+msgstr "Выберыце палітыку імпарту для выкарыстання"
+
+#: tmp_strings.xml:70(string)
+msgid "The file exists. Do you want to overwrite?"
+msgstr "Файл існуе. Жадаеце перазапісаць?"
+
+#: tmp_strings.xml:71(string)
+msgid "Don't ask again. Always overwrite!"
+msgstr "Не пытацца больш. Заўсёды перазапісваць!"
+
+#: tmp_strings.xml:73(string)
+msgid "Import policy set to RESTORE"
+msgstr "Палітыка імпарта усталявана ў АДНАВІЦЬ"
+
+#: tmp_strings.xml:74(string)
+msgid ""
+"Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
+"them with the contents of the CSV file. Are you sure?"
+msgstr ""
+"Актуалная палітыка імпарту ўсталявана ў ВЫДАЛІЦЬ УСЕ ЦЯКУЧЫЯ ЗАПІСЫ і "
+"ЗАМЯНІЦЬ іх змесцівам CSV файла. Вы ўпэўнены?"
+
+#: tmp_strings.xml:76(string)
+msgid "Settings"
+msgstr "Настройкі"
+
+#: tmp_strings.xml:77(string)
+msgid "CSV file format"
+msgstr "CSV файл"
+
+#: tmp_strings.xml:78(string)
+msgid "Select CSV file format"
+msgstr "Выберыце CSV файл"
+
+#: tmp_strings.xml:79(string)
+msgid "Select encoding"
+msgstr "Выберыце кадыроўку"
+
+#: tmp_strings.xml:80(string)
+msgid "Default"
+msgstr "Па змаўчанні"
+
+#: tmp_strings.xml:81(string)
+msgid "Use custom encoding (advanced users)"
+msgstr "Выбраць кадыроўку (для вопытных карыстальнікаў)"
+
+#: tmp_strings.xml:82(string)
+msgid "Select a CSV file format"
+msgstr "Выберыце CSV файл"
+
+#. Preference category title
+#: tmp_strings.xml:87(string)
+msgid "Common settings"
+msgstr "Агульныя настройкі"
+
+#: tmp_strings.xml:88(string)
+msgid "Import/export settings that apply to Notepad and Shopping list."
+msgstr "Імпарт/экспарт налад, якія можна ўжыць у Notepad і Shopping list."
+
+#: tmp_strings.xml:89(string)
+msgid "Ask if file exists"
+msgstr "Пытацца, калі файл існуе"
+
+#: tmp_strings.xml:90(string)
+msgid ""
+"If checked a dialog appears to confirm overwriting if the export file "
+"already exists."
+msgstr ""
+"Калі адзначана, з'яўляецца дыялогавае акно для пацверджання перазапісу "
+"існуючага файла."
+
+#: tmp_strings.xml:92(string)
+msgid "Application specific settings"
+msgstr "Спецыфічныя наладкі прыкладання"
+
+#: tmp_strings.xml:93(string)
+msgid "Filename"
+msgstr "Назва файла"
+
+#: tmp_strings.xml:94(string)
+msgid "Full path for file."
+msgstr "Поўны шлях да файла."
+
+#: tmp_strings.xml:97(string)
+msgid "Import/export settings for OI Notepad."
+msgstr "Імпартаваць/экспартаваць настройкі для OI Notepad."
+
+#: tmp_strings.xml:99(string)
+msgid "OI Shopping list"
+msgstr "OI Shopping list"
+
+#: tmp_strings.xml:100(string)
+msgid "Import/export settings for OI Shopping list."
+msgstr "Імпартаваць/экспартаваць настройкі для OI Shopping list."
+
+#: tmp_strings.xml:102(string)
+msgid "Converting..."
+msgstr "Канвертуецца..."
+
+#: tmp_strings.xml:103(string)
+msgid "Ok"
+msgstr "Ok"
+
+#: tmp_strings.xml:104(string)
+msgid "Import stores"
+msgstr "Імпарт магазінаў"
+
+#: tmp_strings.xml:105(string)
+msgid "Import HandyShopper store names only as item tags."
+msgstr "Імпартаваць назвы магазінаў HandyShopper толькі як цэннікі."
+
+#: tmp_strings.xml:106(string)
+msgid "Import HandyShopper stores and per-store price and aisle information."
+msgstr "Імпартаваць магазіны HandyShopper і інфармацыю аб іх."
+
+#. Permission
+#: tmp_strings.xml:110(string)
+msgid "read notes"
+msgstr "чытаць нататкі"
+
+#: tmp_strings.xml:111(string)
+msgid ""
+"Allows an application to read notes. Note that encrypted notes are provided "
+"in the encrypted format."
+msgstr ""
+"Дазволіць прыкладанню чытаць нататкі. Заўвага: зашыфраваныя нататкі "
+"прадастаўляюцца ў зашыфраваным фармаце."
+
+#. Permission
+#: tmp_strings.xml:113(string)
+msgid "write notes"
+msgstr "запіс нататак"
+
+#: tmp_strings.xml:114(string)
+msgid "Allows an application to create new notes or modify existing notes."
+msgstr "Дазволіць прыкладанню ствараць новыя нататкі ці змяняць існуючыя."
+
+#. Permission
+#: tmp_strings.xml:118(string)
+msgid "read shopping lists"
+msgstr "чытанне спісу пакупак"
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"Allows an application to read shopping lists. Note that encrypted lists and "
+"items are provided in the encrypted format."
+msgstr ""
+"Дазволіць прыкладанню чытаць нататкі. Заўвага: зашыфраваныя спісы і элементы "
+"прадастаўляюцца ў зашыфраваным фармаце."
+
+#. Permission
+#: tmp_strings.xml:121(string)
+msgid "write shopping lists"
+msgstr "запіс спісаў пакупак"
+
+#: tmp_strings.xml:122(string)
+msgid ""
+"Allows an application to create new lists and items or modify existing ones."
+msgstr "Дазволіць прыкладанню ствараць новыя спісы ці змяняць існуючыя."
+
+#: tmp_strings.xml:125(item)
+msgid "MS Outlook Notes"
+msgstr "Нататкі MS Outlook"
+
+#: tmp_strings.xml:126(item)
+msgid "Palm CSV"
+msgstr "Palm CSV"
+
+#: tmp_strings.xml:127(item)
+msgid "JPilot Memo"
+msgstr "JPilot Memo"
+
+#: tmp_strings.xml:131(item)
+msgid "MS Outlook Tasks"
+msgstr "Заданні MS Outlook"
+
+#: tmp_strings.xml:132(item)
+msgid "HandyShopper"
+msgstr "HandyShopper"
+
+#: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
+msgid "DUPLICATE - Allow duplicates of records."
+msgstr "ДУБЛЯВАЦЬ - Дазваляць дубляваць запісы."
+
+#: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
+msgid "\"KEEP - Don't overwrite existing records.\""
+msgstr "\"ПАКІНУЦЬ - Не перазапісваць існуючыя запісы.\""
+
+#: tmp_strings.xml:138(item)
+msgid "Overwrite - Overwrite existing records."
+msgstr "Перазапісаць - Перезапісаць існуючыя запісы."
+
+#: tmp_strings.xml:139(item)
+msgid "Restore - DELETE ALL, then import."
+msgstr "Аднавіць - ВЫДАЛІЦЬ УСЁ, а потым імпартаваць."
+
+#: tmp_strings.xml:143(item) tmp_strings.xml:155(item)
+msgid "DUPLICATE - Add a second copy of a record if it already exists."
+msgstr "ДУБЛЯВАЦЬ - Дадаць другую копію запісу, калі ўжо існуе."
+
+#: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
+msgid ""
+"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+"\""
+msgstr "\"ПАКІНУЦЬ - Не перазапісваць існуючы запіс, ігнараваць ў CSV файле.\""
+
+#: tmp_strings.xml:145(item)
+msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
+msgstr "Перазапісаць - Захаванне ў CSV ПЕРАПІША існуючы запіс."
+
+#: tmp_strings.xml:146(item)
+msgid ""
+"Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file."
+msgstr ""
+"Аднаўленне рэзервовай копіі - ВЫДАЛЯЕ ЎСЕ ВАШЫ ЗАПІСЫ, а потым імпартыруе "
+"CSV файл."

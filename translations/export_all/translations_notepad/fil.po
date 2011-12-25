@@ -22,7 +22,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Liezl https://launchpad.net/~liezl-200"
+"  Liezl https://launchpad.net/~liezl-200\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
@@ -86,7 +87,7 @@ msgstr "%s (baguhin ang tala)"
 #. Title: Pick note for shortcut (to be placed on the home screen)
 #: tmp_strings.xml:61(string)
 msgid "Pick note for shortcut"
-msgstr ""
+msgstr "Pumili ng tala para sa shortcut"
 
 #. Dialog box
 #: tmp_strings.xml:63(string) tmp_strings.xml:127(string)
@@ -193,7 +194,7 @@ msgstr "Nagkamali habang sinusulat ang file"
 
 #: tmp_strings.xml:94(string)
 msgid "Error while reading file"
-msgstr ""
+msgstr "Nagkamali habang binanasa ang file"
 
 #: tmp_strings.xml:95(string)
 msgid "File not found"
@@ -201,11 +202,11 @@ msgstr "Hindi mahanap ang file"
 
 #: tmp_strings.xml:96(string)
 msgid "Note saved"
-msgstr ""
+msgstr "Hindi na i-save"
 
 #: tmp_strings.xml:97(string)
 msgid "File exists already"
-msgstr ""
+msgstr "Mayroon ng ganitong file"
 
 #: tmp_strings.xml:98(string)
 msgid "Do you really want to overwrite the existing file?"
@@ -214,15 +215,15 @@ msgstr "Gusto mo ba talagang patungan ang file?"
 #. Menu command to import the currently open note (that has been opened from SD card) into the internal list of notes.
 #: tmp_strings.xml:101(string)
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: tmp_strings.xml:103(string)
 msgid "Save as"
-msgstr ""
+msgstr "I-save bilang"
 
 #: tmp_strings.xml:104(string)
 msgid "Text modified"
-msgstr ""
+msgstr "Binagong Teksto"
 
 #: tmp_strings.xml:105(string)
 msgid "Do you want to save the changes?"
@@ -230,7 +231,7 @@ msgstr "Gusto mo bang i-save ang mga pagbabago?"
 
 #: tmp_strings.xml:107(string)
 msgid "Don't save"
-msgstr ""
+msgstr "Huwag i-save"
 
 #: tmp_strings.xml:109(string)
 msgid "Theme"
@@ -238,20 +239,20 @@ msgstr "Tema"
 
 #: tmp_strings.xml:110(string)
 msgid "Pick a theme"
-msgstr ""
+msgstr "Pumili ng tema"
 
 #. Preference fontsize: default font size
 #: tmp_strings.xml:111(string) tmp_strings.xml:200(item)
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: tmp_strings.xml:112(string)
 msgid "Monospaced font"
-msgstr ""
+msgstr "Monospaced font"
 
 #: tmp_strings.xml:113(string)
 msgid "Serif font"
-msgstr ""
+msgstr "Serif font"
 
 #. Search
 #: tmp_strings.xml:116(string) tmp_strings.xml:121(string)
@@ -261,11 +262,11 @@ msgstr "Maghanap"
 #. %s is the search string
 #: tmp_strings.xml:119(string)
 msgid "No results found for %s."
-msgstr ""
+msgstr "Walang resultang nakita para sa %s."
 
 #: tmp_strings.xml:120(string)
 msgid "OI Notepad search"
-msgstr ""
+msgstr "OI Talaan paghanap"
 
 #. The description that will show up in the search settings for this source.
 #: tmp_strings.xml:124(string)
@@ -274,15 +275,15 @@ msgstr "Pamagat ng iyong mga tala"
 
 #: tmp_strings.xml:128(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Kanselahin"
 
 #: tmp_strings.xml:129(string)
 msgid "Use this theme for all lists"
-msgstr "Gamitin itong tema na ito para sa lahat ng mga listahan"
+msgstr "Gamitin itong tema para sa lahat ng mga listahan"
 
 #: tmp_strings.xml:130(string)
 msgid "Get more themes"
-msgstr ""
+msgstr "Kumuha ng iba pang mga tema"
 
 #: tmp_strings.xml:132(string)
 msgid "All notes"
@@ -295,199 +296,211 @@ msgstr "Listahan ng talas"
 
 #: tmp_strings.xml:137(string) tmp_strings.xml:138(string)
 msgid "List Sorting Order"
-msgstr ""
+msgstr "Ilista ang Pagkakasunud-sunod ng Pagaayos"
 
 #: tmp_strings.xml:139(string)
 msgid "The order in which notes are shown in the notes list"
 msgstr ""
+"Ang pagkakasunud-sunod kung saan ang mga tala ay ipinapakita sa listahan"
 
 #: tmp_strings.xml:140(string)
 msgid "Marquee note titles."
-msgstr ""
+msgstr "Nakatataas na pamagat ng tala."
 
 #: tmp_strings.xml:141(string)
 msgid "Continuously scroll note titles that are too long."
-msgstr ""
+msgstr "Patuloy na i-scroll ang pamagat na masyadong mahaba."
 
 #: tmp_strings.xml:143(string)
 msgid "Note Editor"
-msgstr ""
+msgstr "Tagapagpalit ng Tala"
 
 #: tmp_strings.xml:144(string)
 msgid "Font size"
-msgstr ""
+msgstr "Laki ng font"
 
 #: tmp_strings.xml:145(string)
 msgid "Change font size"
-msgstr ""
+msgstr "Palitan ang laki ng font"
 
 #: tmp_strings.xml:146(string)
 msgid "Choose font size"
-msgstr ""
+msgstr "Pumili ng laki ng font"
 
 #: tmp_strings.xml:147(string)
 msgid "Auto-create Links"
-msgstr ""
+msgstr "Kusang gumawa ng Links"
 
 #: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr ""
+"Gumawa ng mga link para sa mga numero ng telepono at email / adress ng "
+"kalye / address ng web"
 
 #: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"
-msgstr ""
+msgstr "Huwag gumawa ng link sa mga tala"
 
 #: tmp_strings.xml:151(string)
 msgid "Settings"
-msgstr ""
+msgstr "Kaayusan"
 
 #: tmp_strings.xml:152(string)
 msgid "Sort Order"
-msgstr ""
+msgstr "Pagsasaayos ng Pagkakasunod-sunod"
 
 #. Permission to read notes.
 #: tmp_strings.xml:160(string)
 msgid "read notes"
-msgstr ""
+msgstr "basahin ang mga tala"
 
 #: tmp_strings.xml:161(string)
 msgid ""
 "Allows an application to read notes. Note that encrypted notes are provided "
 "in the encrypted format."
 msgstr ""
+"Payagan ang application na bumasa ng mga tala. Tandaan na ang naka-encrypt "
+"na mga tala ay ibinigay sa naka-encrypt na ayos."
 
 #. Permission to write notes.
 #: tmp_strings.xml:163(string)
 msgid "write notes"
-msgstr ""
+msgstr "Sumulat ng mga tala"
 
 #: tmp_strings.xml:164(string)
 msgid "Allows an application to create new notes or modify existing notes."
 msgstr ""
+"Payagan ang application na lumikha ng bagong tala o baguhin ang dating tala."
 
 #. Permission to read shopping lists.
 #: tmp_strings.xml:168(string)
 msgid "read shopping lists"
-msgstr ""
+msgstr "Basahin ang listahan ng bilihin"
 
 #: tmp_strings.xml:169(string)
 msgid ""
 "Allows an application to read shopping lists. Note that encrypted lists and "
 "items are provided in the encrypted format."
 msgstr ""
+"Payagan ang application na basahin ang listahan ng bilihin. Tandaan na ang "
+"naka-encrypt na listahan at mga bagay ay ibinigay sa naka-encrypt na porma."
 
 #. Permission to write shopping lists.
 #: tmp_strings.xml:171(string)
 msgid "write shopping lists"
-msgstr ""
+msgstr "sumulat ng listahan ng mga bilihin"
 
 #: tmp_strings.xml:172(string)
 msgid ""
 "Allows an application to create new lists and items or modify existing ones."
 msgstr ""
+"Payagan ang application na lumikha ng bagong listahan at bagay o baguhin ang "
+"dati na."
 
 #. Permission to encrypt and decrypt data.
 #: tmp_strings.xml:176(string)
 msgid "encrypt and decrypt data"
-msgstr ""
+msgstr "encrypt at decrypt ng datos"
 
 #: tmp_strings.xml:177(string)
 msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
+"Payagan ang application na mag-encrypt at mag-decrypt ng teksto, at makita "
+"ang mga password na tinago sa OI Safe."
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"
-msgstr ""
+msgstr "Alpabetiko"
 
 #: tmp_strings.xml:187(item)
 msgid "Reverse Alphabetical"
-msgstr ""
+msgstr "Baliktad na Alpabetiko"
 
 #: tmp_strings.xml:188(item)
 msgid "Last Modified"
-msgstr ""
+msgstr "Huling Binago"
 
 #: tmp_strings.xml:189(item)
 msgid "First Modified"
-msgstr ""
+msgstr "Unang Binago"
 
 #: tmp_strings.xml:190(item)
 msgid "Newest to Oldest"
-msgstr ""
+msgstr "Pinakabago hangang sa Pinakaluma"
 
 #: tmp_strings.xml:191(item)
 msgid "Oldest to Newest"
-msgstr ""
+msgstr "Pinakaluma hangang sa Pinakabago"
 
 #. Preference fontsize: tiny font size
 #: tmp_strings.xml:196(item)
 msgid "Tiny"
-msgstr ""
+msgstr "Katiting"
 
 #. Preference fontsize: small font size
 #: tmp_strings.xml:198(item)
 msgid "Small"
-msgstr ""
+msgstr "Maliit"
 
 #. Preference fontsize: large font size
 #: tmp_strings.xml:202(item)
 msgid "Large"
-msgstr ""
+msgstr "Malaki"
 
 #: tmp_strings.xml:205(string)
 msgid "Add-ons"
-msgstr ""
+msgstr "Add-ons"
 
 #: tmp_strings.xml:206(string)
 msgid "Get new add-ons"
-msgstr ""
+msgstr "Kumuha ng bagong add-ons"
 
 #: tmp_strings.xml:207(string)
 msgid "Search for extensions and themes online."
-msgstr ""
+msgstr "Maghanap ng mga ekstensiyon at tema sa online."
 
 #: tmp_strings.xml:208(string)
 msgid "Get add-ons from Market"
-msgstr ""
+msgstr "Kumuha ng add-ons sa Merkado"
 
 #: tmp_strings.xml:209(string)
 msgid "Get add-ons from OpenIntents"
-msgstr ""
+msgstr "Kumuha ng add-ons sa OpenIntents"
 
 #: tmp_strings.xml:210(string)
 msgid "Extensions"
-msgstr ""
+msgstr "Mga Ekstensiyon"
 
 #: tmp_strings.xml:211(string)
 msgid "Themes"
-msgstr ""
+msgstr "Mga Tema"
 
 #: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "Maghanap ng mga ekstensiyon sa Android Merkado"
 
 #: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
-msgstr ""
+msgstr "Maghanap ng mga tema sa Android Merkado"
 
 #: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "Maghanap ng mga ekstensiyon sa OpenIntents homepage."
 
 #: tmp_strings.xml:215(string)
 msgid "Get themes from the OpenIntents homepage."
-msgstr ""
+msgstr "Kumuha ng mga tema sa OpenIntents homepage."
 
 #: tmp_strings.xml:216(string)
 msgid "Deletion Confirmation"
-msgstr ""
+msgstr "Pagtanggal Kumpirmasyon"
 
 #: tmp_strings.xml:217(string)
 msgid "Are you sure you want to delete this note?"
-msgstr ""
+msgstr "Sigurado ka bang gusto mong tanggalin ang tala na ito?"
 
 #: tmp_strings.xml:219(string)
 msgid "New note"
-msgstr ""
+msgstr "Bagong tala"

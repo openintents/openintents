@@ -6,6 +6,7 @@
     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Alexander \'FONTER\' Zinin https://launchpad.net/~spore-09
   Artur https://launchpad.net/~arturyak
   Auduf https://launchpad.net/~5097-mail
   Peli https://launchpad.net/~peli0101
@@ -113,17 +114,17 @@
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
 	<string name="group_shortcuts">Ярлыки</string>
 	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
-	<string name="group_automation_tasks">Automation tasks</string>
+	<string name="group_automation_tasks">Автоматизация задач</string>
 	
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
 	<string name="title_select_shortcut">Выбрать ярлык</string>
 	
 	<!-- Title of dialog when user is selecting shortcut to add as activity -->
-	<string name="title_select_automation_task">Select automation task</string>
+	<string name="title_select_automation_task">Выбор задачи автоматизации</string>
 	
  	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
-	<string name="activity_picker_label">Select activity</string>
+	<string name="activity_picker_label">Выберите активаторы</string>
  
 	<!-- Arrays -->
 	

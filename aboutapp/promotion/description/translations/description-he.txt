@@ -5,11 +5,11 @@
 דיאלוג נפרד שנחלק בין אפליקציות.
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+אודות OI הוא דיאלוג אודות עצמאי שנחלק בין יישומים. יישום זה מופעל דרך תפריט של יישומי OI אחרים. זה מרשה לך לראות מידע על הגרסה, לינקים, קרדיטים, ורישיון של יישום. קרדיטים כולל מחברים, תיעוד, מתרגמים, ואומנים. כל הפונקיונאליות הזט מחוברת ביחד במערך פשוט ויעיל. 
 
 באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט. 
 
-קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל: 
+קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל: 
 http://code.google.com/p/openintents
 
 לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל: 
@@ -19,29 +19,29 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 מאפיינים: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* הראה מידע כללי, קרדיטים, וטאבי רישיון.
+* מראה מתרגמים של כל גרסאות השפה.
+* מחזיר מידע ממצהר יישום דרך תגיות ברירת מחדל ומטה.
+* לחלופין, כל השדות יכולים להיערך דרך תוספות intent.
 
-Applications that work with "OI About": 
-* OI Notepad
-* OI File manager
-* OI Shopping List
-* OI Convert CSV
-* OI Safe
-* OI Countdown
-* OI Flashlight
+יישומים שעובדים עם "אודות OI": 
+* פנקס OI
+* מנהל קבצים OI
+* רשימת קנייה OI
+* ממיר OI CSV
+* כספת OI
+* סופר לאחור OI
+* פנס OI
 
-מילות מפתח: 
-* About, Credits, Information.
+‏מילות מפתח: 
+* אודות, מידע וקרדיטים
 * OI, OpenIntents, Open Intents.
 
 גרסאות בין-לאומיות: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+חפש מחרוזות לשוק: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

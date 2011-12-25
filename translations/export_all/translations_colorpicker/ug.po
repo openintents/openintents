@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Sahran <Unknown>\n"
 "Language-Team: Uyghur <ug@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -109,15 +109,15 @@ msgstr "OI قول چىراغ"
 
 #: tmp_strings.xml:48(string)
 msgid "Hypnotic, animated spiral Live Wallpaper."
-msgstr ""
+msgstr "ئۇيقۇ، ھەرىكەتچان بۇرمىسىمان تام قەغەز."
 
 #: tmp_strings.xml:49(string)
 msgid "HypnoTwister Live Wallpaper"
-msgstr ""
+msgstr "HypnoTwister ھەرىكەتچان تام قەغەز"
 
 #: tmp_strings.xml:51(string)
 msgid "Native Flickr interface for Android"
-msgstr ""
+msgstr "ئاندىرويىدنىڭ ئەسلى Flickr ئارايۈزى"
 
 #: tmp_strings.xml:52(string)
 msgid "BettrFlickr"

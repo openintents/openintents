@@ -1,0 +1,563 @@
+# Korean translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jihyeok Seo <Unknown>\n"
+"Language-Team: Korean <ko@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#: tmp_strings.xml:3(translators)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Jihyeok Seo https://launchpad.net/~limeburst"
+
+#. Description of application
+#: tmp_strings.xml:12(string)
+msgid "OI About is a standalone about dialog that is shared between apps."
+msgstr "OI에 대하여는 앱 간 공유되는 대화 상자입니다."
+
+#: tmp_strings.xml:13(string)
+msgid "This application is invoked through the menu of other OI applications."
+msgstr "이 앱은 다른 OI 앱의 메뉴를 통해 실행됩니다."
+
+#: tmp_strings.xml:14(string)
+msgid ""
+"It allows you to view version information, links, credits, and license of an "
+"application."
+msgstr "앱의 버전 정보, 링크, 크레딧, 그리고 라이선스를 볼 수 있게 해드립니다."
+
+#: tmp_strings.xml:15(string)
+msgid "Credits include authors, documentation, translators, and artists."
+msgstr "크레딧은 제작자, 문서, 번역자, 그리고 아티스트를 포함합니다."
+
+#: tmp_strings.xml:16(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout."
+msgstr "이 모든 기능은 간결하고 효율적으로 배치되어 있습니다."
+
+#: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
+#: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
+#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
+msgid ""
+"This application is ad free and does not require the internet permission."
+msgstr "이 앱은 광고가 없으며 인터넷에 접속하지 않습니다."
+
+#: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
+#: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
+#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
+msgid ""
+"The source code of this free and open source application is available at:"
+msgstr "이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:"
+
+#: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
+#: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
+#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
+msgid ""
+"For the complete list of changes and a list of frequently asked questions, "
+"please visit:"
+msgstr "모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:"
+
+#: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
+#: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
+#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
+msgid ""
+"You can help to improve the translation into your language at Launchpad:"
+msgstr "당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:"
+
+#: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
+#: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
+#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
+msgid "Features:"
+msgstr "기능:"
+
+#: tmp_strings.xml:30(listitem)
+msgid "Shows general info, credits, and license tabs."
+msgstr "일반 정보, 크레딧, 그리고 라이선스 탭을 보여줍니다."
+
+#: tmp_strings.xml:31(listitem)
+msgid "Shows translators of all language versions."
+msgstr "모든 언어 버전의 변역자를 보여줍니다."
+
+#: tmp_strings.xml:32(listitem)
+msgid ""
+"Retrieves information from application manifest through default tags and "
+"metadata."
+msgstr "기본 태그와 메타데이터를 통해 앱 마니페스트에서 정보를 가져옵니다."
+
+#: tmp_strings.xml:33(listitem)
+msgid "Optionally, all fields can be modified through intent extras."
+msgstr "선택적으로, 모든 내용은 intent extra를 통해 수정할 수 있습니다."
+
+#: tmp_strings.xml:35(string)
+msgid "Applications that work with \"OI About\":"
+msgstr "\"OI에 대해서\" 와 호환되는 앱들:"
+
+#: tmp_strings.xml:36(listitem)
+msgid "OI Notepad"
+msgstr "OI 메모장"
+
+#: tmp_strings.xml:37(listitem)
+msgid "OI File manager"
+msgstr "OI 파일 관리자"
+
+#: tmp_strings.xml:38(listitem)
+msgid "OI Shopping List"
+msgstr "OI 쇼핑 목록"
+
+#: tmp_strings.xml:39(listitem)
+msgid "OI Convert CSV"
+msgstr "OI CSV 변환기"
+
+#: tmp_strings.xml:40(listitem)
+msgid "OI Safe"
+msgstr "OI 금고"
+
+#: tmp_strings.xml:41(listitem)
+msgid "OI Countdown"
+msgstr "OI 카운트다운"
+
+#: tmp_strings.xml:42(listitem)
+msgid "OI Flashlight"
+msgstr "OI 전등"
+
+#: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
+#: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
+#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
+msgid "Keywords:"
+msgstr "키워드:"
+
+#: tmp_strings.xml:45(listitem)
+msgid "About, Credits, Information."
+msgstr "대하여, 크레딧, 정보."
+
+#: tmp_strings.xml:46(listitem)
+msgid "OI, OpenIntents, Open Intents."
+msgstr "OI, OpenIntents, Open Intents."
+
+#: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
+#: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
+#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
+msgid "International versions:"
+msgstr "국제 버전들:"
+
+#: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
+#: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
+#: tmp_strings.xml:260(string)
+msgid "Search strings for Market:"
+msgstr "마켓에서 검색하기:"
+
+#. Description of application
+#: tmp_strings.xml:65(string)
+msgid ""
+"OI File Manager allows you to browse your SD card, create directories, "
+"rename, copy, move, and delete files."
+msgstr ""
+"OI 파일 관리자에서는 SD 카드 탐색, 폴더 만들기, 파일의 이름을 바꾸거나, 복사"
+"하기, 옮기기, 삭제를 할 수 있습니다."
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"It also acts as an extension to other applications to display \"Open\" and "
+"\"Save\" dialogs."
+msgstr ""
+"또 다른 앱의 확장으로서 \"열기\"와 \"저장\" 대화 상자를 표시하는 데 쓰입니다."
+
+#: tmp_strings.xml:80(listitem)
+msgid "Show list of files with thumbnails for images."
+msgstr "이미지 썸네일과 함께 파일 목록을 보입니다."
+
+#: tmp_strings.xml:81(listitem)
+msgid "Move, copy, rename, and delete files."
+msgstr "파일 옮기기, 이름 바꾸기, 삭제하기."
+
+#: tmp_strings.xml:82(listitem)
+msgid "Create and delete directories (folders)."
+msgstr "폴더 만들기, 삭제하기."
+
+#: tmp_strings.xml:83(listitem)
+msgid "Send files by email."
+msgstr "이메일로 파일 보내기."
+
+#: tmp_strings.xml:84(listitem)
+msgid ""
+"Acts as an extension to other applications, like GMail, to attach files."
+msgstr "지메일과 같은 다은 앱의 확장 역할을 하여 파일을 첨부합니다."
+
+#: tmp_strings.xml:85(listitem)
+msgid "Support for many file endings and mime types."
+msgstr "다양한 MIME 타입과 확장자를 지원합니다."
+
+#: tmp_strings.xml:86(listitem)
+msgid ""
+"Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can "
+"use OI File Manager."
+msgstr ""
+"다른 앱이 OI 파일 관리자를 사용할 수 있도록 PICK_FILE과 PICK_DIRECTORY intent"
+"를 지원합니다."
+
+#: tmp_strings.xml:88(string) tmp_strings.xml:245(string)
+msgid "Available extensions for \"OI File Manager\":"
+msgstr "사용 가능한 \"OI 파일 관리자\" 확장들:"
+
+#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
+#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
+#: tmp_strings.xml:300(listitem)
+msgid "Show the license information with \"OI About\"."
+msgstr "\"OI에 대해서\" 로 라이선스 정보를 봅니다."
+
+#: tmp_strings.xml:91(string) tmp_strings.xml:248(string)
+msgid "Applications that work with \"OI File Manager\":"
+msgstr "\"OI 파일 관리자\" 와 호환되는 앱들:"
+
+#: tmp_strings.xml:92(listitem)
+msgid "Open and save text files in \"OI Notepad\"."
+msgstr "\"OI 메모장\" 으로 텍스트 파일을 열고 저장합니다."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:96(listitem)
+msgid "file manager, filemanager, file explorer"
+msgstr "파일 매니저, 탐색기"
+
+#. Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for.
+#: tmp_strings.xml:98(listitem) tmp_strings.xml:255(listitem)
+msgid "OI, IO, OpenIntents, Open Intents"
+msgstr "OI, IO, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:116(string)
+msgid ""
+"OI Flashlight is a simple and effective application that helps you find a "
+"way in the dark."
+msgstr ""
+"OI 전등은 어두운 주변를 밝힐 수 있도록 도와주는 간단하고 효과적인 앱입니다."
+
+#: tmp_strings.xml:117(string)
+msgid ""
+"OI Flashlight locks the display backlight on, clearly illuminating the "
+"surrounding area."
+msgstr "OI 전등은 화면 백라이트를 켜 두어 주변을 밝혀줍니다."
+
+#: tmp_strings.xml:118(string)
+msgid ""
+"For devices with a camera flash, OI Flashlight can also use the flash as a "
+"bright torch to brighten the room."
+msgstr ""
+"장치에 카메라 플래시가 있는 경우, OI 전등은 플래시를 사용하여 주변를 밝힐 수"
+"도 있습니다."
+
+#: tmp_strings.xml:119(string)
+msgid ""
+"The color of the backlight is completely customizable with OI Color Picker."
+msgstr "OI 색 추출기를 이용해 백라이트의 색을 마음대로 바꿀 수 있습니다."
+
+#: tmp_strings.xml:133(listitem)
+msgid "Lock the display backlight on."
+msgstr "화면 백라이트를 켜 둡니다."
+
+#: tmp_strings.xml:134(listitem)
+msgid "Lock camera flash on."
+msgstr "카메라 플래시를 켜 둡니다."
+
+#: tmp_strings.xml:135(listitem)
+msgid "The color of backlight is customizable."
+msgstr "백라이트의 색을 바꿀 수 있습니다."
+
+#: tmp_strings.xml:137(string)
+msgid "Available extensions for \"OI Flashlight\":"
+msgstr "사용 가능한 \"OI 전등\" 확장들:"
+
+#: tmp_strings.xml:139(listitem)
+msgid "Change the color of the backlight with \"OI Color Picker\"."
+msgstr "\"OI 색 추출기\"로 백라이트의 색을 바꿀 수 있습니다."
+
+#: tmp_strings.xml:141(string)
+msgid "Applications that work with \"OI Flashlight\":"
+msgstr "\"OI 전등\"과 호환되는 앱들:"
+
+#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
+#: tmp_strings.xml:304(listitem)
+msgid "Update with \"OI Update\"."
+msgstr "\"OI 업데이트\"로 업데이트 하기."
+
+#: tmp_strings.xml:145(listitem)
+msgid "Flashlight, light, Backlight"
+msgstr "플래시, 불, 백라이트"
+
+#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
+#: tmp_strings.xml:310(listitem)
+msgid "OI, OpenIntents, Open Intents"
+msgstr "OI, OpenIntents, Open Intents"
+
+#. Description of application
+#: tmp_strings.xml:163(string)
+msgid "OI Notepad is a full-featured open source note taking application."
+msgstr "OI 메모장은 완전한 오픈 소스 메모장 앱입니다."
+
+#: tmp_strings.xml:164(string)
+msgid ""
+"With it you can tag, search, and send your notes, in addition to basic "
+"functionality such as creating, deleting, and editing notes."
+msgstr ""
+"이것을 사용해 메모를 작성하거나, 편집하거나, 삭제하는 것 외에도 태그 달기, 찾"
+"기 보내기 등을 할 수 있습니다."
+
+#: tmp_strings.xml:165(string)
+msgid ""
+"Advanced features like encryption, import/export, and voice memos are all "
+"available through extensions."
+msgstr ""
+"확장을 통해 암호화, 내보내기, 가져오기, 음성 메모 등 고급 기능을 사용할 수 있"
+"습니다."
+
+#: tmp_strings.xml:166(string)
+msgid ""
+"All of this functionality is brought together in a simplistic and efficient "
+"layout, customizable through a variety of themes."
+msgstr ""
+"이 모든 기능은 간결하고 효율적으로 배치되어 있고, 여러 종류의 테마로 사용자"
+"화 할 수 있습니다."
+
+#: tmp_strings.xml:180(listitem)
+msgid "Add, edit and delete notes."
+msgstr "메모 쓰기, 편집하기, 삭제하기."
+
+#: tmp_strings.xml:181(listitem)
+msgid "Long-press on notes to add tags."
+msgstr "메모를 길게 눌러 태그를 달 수 있습니다."
+
+#: tmp_strings.xml:182(listitem)
+msgid "Change font size and sort order."
+msgstr "글꼴 크기와 정렬 순서 바꾸기."
+
+#: tmp_strings.xml:183(listitem)
+msgid "A clearly arranged layout with a variety of themes."
+msgstr "깔끔한 배열과 다양한 테마."
+
+#: tmp_strings.xml:184(listitem)
+msgid "Quickly search through notes."
+msgstr "메모를 빠르게 찾으세요."
+
+#: tmp_strings.xml:185(listitem)
+msgid "Send notes as MMS or SMS."
+msgstr "메모를 MMS나 SMS로 보내세요."
+
+#: tmp_strings.xml:187(string)
+msgid "Available extensions for \"OI Notepad\":"
+msgstr "사용 가능한 \"OI 메모장\" 확장들:"
+
+#: tmp_strings.xml:188(listitem)
+msgid "Record and attach voice memos to notes with \"OI Voice Notes\"."
+msgstr "\"OI 음성 메모\"로 음성을 녹음하고 메모에 첨부하세요."
+
+#: tmp_strings.xml:189(listitem)
+msgid "With \"OI Convert CSV\" import/export notes from the SD card."
+msgstr "\"OI CSV 변환기\"로 SD 카드에서 메모를 불러오거나 내보내세요."
+
+#: tmp_strings.xml:191(listitem)
+msgid "Insert the date and time into notes with \"OI Insert Date\"."
+msgstr "\"OI 날짜 입력기\"로 메모에 날짜와 시간을 입력하세요."
+
+#: tmp_strings.xml:192(listitem)
+msgid "Turn text upside down with \"Upside Down\"."
+msgstr "\"뒤집기\"로 글을 뒤집으세요."
+
+#: tmp_strings.xml:194(string)
+msgid "Applications that work with \"OI Notepad\":"
+msgstr "\"OI 메모장\"과 호환되는 앱들:"
+
+#: tmp_strings.xml:195(listitem)
+msgid "Back up notes with \"My Backup Pro\"."
+msgstr "\"My Backup Pro\"로 메모 백업하기."
+
+#: tmp_strings.xml:196(listitem)
+msgid "Encrypt notes using \"OI Safe\"."
+msgstr "\"OI 금고\"로 메모 암호화 하기."
+
+#: tmp_strings.xml:197(listitem)
+msgid "Manage notes on your SD Card with \"OI File Manager\"."
+msgstr "\"OI 파일 관리자\"로 SD 카드에 있는 메모를 관리하세요."
+
+#: tmp_strings.xml:199(listitem)
+msgid ""
+"Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
+"many other applications."
+msgstr ""
+"\"페이스북\", \"지메일\", \"구글 플러스\", \"트위터\", 그리고 다른 앱을 통해 "
+"메모를 공유하세요."
+
+#: tmp_strings.xml:202(listitem)
+msgid "Note, Notepad, Note book, Notes"
+msgstr "Note, Notepad, Note book, Notes, 메모, 노트, 노트패드"
+
+#. Description of application
+#: tmp_strings.xml:220(string)
+msgid ""
+"OI Safe safely protects all of your passwords and other private data using "
+"industry standard AES encryption."
+msgstr ""
+"OI 금고는 산업 표준 암호화 방식인 AES를 사용하여 당신의 비밀번호와 다른 비밀 "
+"정보를 보호합니다."
+
+#: tmp_strings.xml:221(string)
+msgid ""
+"It also acts as an extension to OI Notepad to encrypt notes created in OI "
+"Notepad."
+msgstr ""
+"확장 기능으로 OI 메모장에서 만들어진 메모를 암호화하기 위해서도 쓰입니다."
+
+#: tmp_strings.xml:235(listitem)
+msgid "Securely protect data using AES encryption."
+msgstr "AES를 사용하여 정보를 안전하게 보호합니다."
+
+#: tmp_strings.xml:236(listitem)
+msgid "Freely move data entries between categories."
+msgstr "데이터를 카테고리 간 자유롭게 옮기세요."
+
+#: tmp_strings.xml:237(listitem)
+msgid "Import/Export data entries and databases."
+msgstr "데이터베이스와 데이터 불러오기 및 내보내기."
+
+#: tmp_strings.xml:238(listitem)
+msgid "Backup/Restore entries."
+msgstr "데이터 백업/복원하기."
+
+#: tmp_strings.xml:239(listitem)
+msgid "Includes secure password generator."
+msgstr "안전한 비밀번호 생성기를 포함합니다."
+
+#: tmp_strings.xml:240(listitem)
+msgid "Automatic timeout to protect encrypted documents."
+msgstr "암호화된 문서를 보호하기 위한 자동 타임아웃."
+
+#: tmp_strings.xml:241(listitem)
+msgid "Encrypt OI Notepad notes."
+msgstr "OI 메모장 메모 암호화 하기."
+
+#: tmp_strings.xml:242(listitem)
+msgid "Support for Obscura picture safe."
+msgstr "Obscura 사진 금고에 대한 지원."
+
+#: tmp_strings.xml:243(listitem)
+msgid "MyBackup Pro."
+msgstr "MyBackup Pro."
+
+#: tmp_strings.xml:249(listitem)
+msgid "Encrypt notes created in \"OI Notepad\"."
+msgstr "\"OI 메모장\"에서 작성된 메모 암호화하기."
+
+#. Keywords: List several related key words and variations in your language and in English that people might search for.
+#: tmp_strings.xml:253(listitem)
+msgid "safe, encrpytion, password, protection"
+msgstr "금고, 암호화, 비밀번호, 보호"
+
+#. Description of application
+#: tmp_strings.xml:272(string)
+msgid ""
+"OI Shopping List is a powerful application which makes it easy to create and "
+"manage checklists."
+msgstr ""
+"OI 쇼핑 목록은 체크리스트를 쉽게 만들고 관리할 수 있는 강력한 앱입니다."
+
+#: tmp_strings.xml:273(string)
+msgid ""
+"OI Shopping List makes it easy to add items to a list, check the item off, "
+"and remove it from the list."
+msgstr ""
+"OI 쇼핑 목록은 항목들을 목록에 추가하거나, 체크하거나, 지우기 쉽게 합니다."
+
+#: tmp_strings.xml:274(string)
+msgid ""
+"The application can track separate prices for each store that you use, and "
+"features a high level of customization."
+msgstr ""
+"이 앱은 당신이 이용하는 각 가게마다 가격을 추적 할 수 있으며, 다양한 사용자"
+"화 옵션이 있습니다."
+
+#: tmp_strings.xml:275(string)
+msgid ""
+"Font size, sort order, list columns, and list cleanup behavior are all "
+"settings controlled by the user."
+msgstr ""
+"글꼴 크기, 정렬 순서, 목록 열, 그리고 목록 정리하기의 작동 방식은 모두 사용자"
+"에 의해 설정됩니다."
+
+#: tmp_strings.xml:276(string)
+msgid ""
+"All of these features are brought together in a crisp layout that is "
+"customizable through a variety of themes."
+msgstr ""
+"이 모든 기능은 명료하게 배치되어 있고, 여러 종류의 테마로 사용자화 할 수 있습"
+"니다."
+
+#: tmp_strings.xml:290(listitem)
+msgid "Add, edit and delete lists."
+msgstr "목록 추가, 수정 및 삭제를 할 수 있습니다."
+
+#: tmp_strings.xml:291(listitem)
+msgid "Create, delete, and check items quickly and easily."
+msgstr "항목을 쉽고 빠르게 추가, 삭제, 그리고 체크 할 수 있습니다."
+
+#: tmp_strings.xml:292(listitem)
+msgid "Variety of themes."
+msgstr "다양한 테마."
+
+#: tmp_strings.xml:293(listitem)
+msgid "Customizable font size and sort order."
+msgstr "설정 가능한 글꼴 크기 및 정렬 순서."
+
+#: tmp_strings.xml:294(listitem)
+msgid "Keep track of separate prices for each store."
+msgstr "각 가게에 대한 가격을 추적 할 수 있습니다."
+
+#: tmp_strings.xml:295(listitem)
+msgid "Customizable list columns."
+msgstr "설정 가능한 목록 열."
+
+#: tmp_strings.xml:297(string)
+msgid "Available extensions for \"OI Shopping List\":"
+msgstr "사용 가능한 \"OI 쇼핑 목록\" 확장들:"
+
+#: tmp_strings.xml:298(listitem)
+msgid "Add a recorded message to a note with \"OI Voice Notes\"."
+msgstr "\"OI 음성 메모\"로 녹음한 메시지를 메모에 첨부하세요."
+
+#: tmp_strings.xml:299(listitem)
+msgid "Import/export shopping lists with \"OI Convert CSV\"."
+msgstr "\"OI CSV 변환기\"로 쇼핑 목록을 내보내거나 불러오세요."
+
+#: tmp_strings.xml:301(listitem)
+msgid "Enter/check items with \"Barcode OI Plugin\"."
+msgstr "\"바코드 OI 플러그인\"으로 항목을 추가하거나 체크할 수 있습니다."
+
+#: tmp_strings.xml:303(string)
+msgid "Applications that work with \"OI Shopping List\":"
+msgstr "\"OI 쇼핑 목록\"과 호환되는 앱들:"
+
+#: tmp_strings.xml:305(listitem)
+msgid "Backup lists with \"My Backup Pro\"."
+msgstr "\"My Backup Pro\"로 목록을 백업 할 수 있습니다."
+
+#: tmp_strings.xml:306(listitem)
+msgid "Import ingredients of recipes with \"Bites\"."
+msgstr "\"Bites\"로 요리법의 재료를 불러오세요."
+
+#: tmp_strings.xml:309(listitem)
+msgid "Shopping, List, Shopping List, Checklist"
+msgstr "쇼핑, 목록, 쇼핑 목록, 체크리스트"
+
+#: tmp_strings.xml:315(string)
+msgid "Extensions:"
+msgstr "확장 기능:"

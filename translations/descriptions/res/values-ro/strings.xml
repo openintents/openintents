@@ -226,8 +226,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe vă protejează toate parolele si alte date private folosind standardul industrial de criptare AES.</string>
+		<string>Acționează de asemenea ca o extensie către OI Noptepad pentru a cripta notițele create în OI Notepad.</string>
 		<emptyline/>
 		<string>Această aplicație nu conține reclame și nu necesită permisiunea de internet.</string>
 		<emptyline/>
@@ -241,25 +241,25 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Caracteristici:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>Protejează datele în siguranță folosind criptarea AES.</listitem>
+		<listitem>Mută liber intrări de date între categorii.</listitem>
+		<listitem>Importă/Exportă intrări de date și baze de date.</listitem>
+		<listitem>Copie de rezervă/Restabilire intrări.</listitem>
+		<listitem>Include generator de parole sigure.</listitem>
+		<listitem>Limită de timp automată pentru a proteja documentele criptate.</listitem>
+		<listitem>Criptează notițele OI Notepad.</listitem>
+		<listitem>Ajutor pentru siguranța imaginii Obscura.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
 		<string>Extensii disponibile pentru „OI File Manager”:</string>
 		<listitem>Arată informaţiile de licenţă cu „OI About”.</listitem>
 		<emptyline/>
 		<string>Aplicaţii care funcţionează cu „OI File Manager”:</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>Criptează notițele create în „OI Notepad”</listitem>
 		<emptyline/>
 		<string>Cuvinte cheie:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>sigur, criptare, parolă, protecție</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>

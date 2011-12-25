@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Angad Singh  https://launchpad.net/~angad21-02-1996</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਅਬਾਉਟ ਹਟੈੰਡਅਲੋਨ ਡਾਇਲੋਗ ਹੈ ਐਤ ਨਾਲ ਬਾਟਦਾ  ਹੈ |</string>
+		<string>ਯੇ ਐਤਲਿਕੇਸ਼ਨ ਦੁ਼ਜੇ OI ਐਤਲਿਕੇਸ਼ਨ ਤੇ ਮੈਨੋ ਕੋ ਆੰਦਾ ਹੈ</string>
+		<string>ਵਰਜਨ, ਲਿੰਕ, ਕਰੇਡਿਟ ਹੋਰ ਲਾਇਸਨਸ ਦੇਖਣ ਦੀ ਇਜਾਜਤ ਦੇੰਦਾ ਹੈ</string>
+		<string>ਕਰੇਡਿਟ ਲੇਖਕਾਂ ,  ਪ੍ਰਲੇਖਨ ,  ਅਨੁਵਾਦਕ ,  ਅਤੇ ਕਲਾਕਾਰਾਂ  ਦੇ ਸ਼ਾਮਿਲ ਹਨ .</string>
+		<string>ਇਸ ਕਾਰਿਆਸ਼ੀਲਤਾ  ਦੇ ਸਾਰੇ ਇਕੱਠੇ ਇੱਕ ਸਰਲੀਕ੍ਰਿਤ ਅਤੇ ਕੁਸ਼ਲ ਲੇਆਉਟ ਵਿੱਚ ਲਿਆਇਆ ਜਾਂਦਾ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਇੱਕੋ ਜਿਹੇ ਜਾਣਕਾਰੀ ,  ਕਰੇਡਿਟ ,  ਅਤੇ ਲਾਇਸੇਂਸ ਟੈਬ ਦਿਖਾਂਦਾ ਹੈ .</listitem>
+		<listitem>ਸਾਰੇ ਭਾਸ਼ਾ ਸੰਸਕਰਣੋਂ  ਦੇ ਅਨੁਵਾਦਕਾਂ ਦਿਖਾਂਦਾ ਹੈ .</listitem>
+		<listitem>ਆਵੇਦਨ ਜ਼ਾਹਰ ਵਲੋਂ ਡਿਫਾਲਟ ਟੈਗ ਅਤੇ ਮੇਟਾਡਾਟਾ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਜਾਣਕਾਰੀ ਪੁਨਰਪ੍ਰਾਪਤ .</listitem>
+		<listitem>ਵਿਕਲਪਿਕ ਰੂਪ ਵਲੋਂ ,  ਸਾਰੇ ਖੇਤਰਾਂ  ਦੇ ਇਰਾਦੇ ਏਕਸਟਰਾ ਕਲਾਕਾਰ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਸੰਸ਼ੋਧਿਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ .</listitem>
+		<emptyline/>
+		<string>ਆਵੇਦਨ OI ਦੇ ਨਾਲ ਕੰਮ :</string>
+		<listitem>OI ਨੋਟਪੈਡ</listitem>
+		<listitem>OI ਫਾਇਲ ਮੈਨਿਜਰ</listitem>
+		<listitem>OI ਸ਼ੋਪਿੰਗ ਲਿਸਟ</listitem>
+		<listitem>OI  ਕਨਵਰਟ CSV</listitem>
+		<listitem>OI ਸੁਰੱਖਿਅਤ</listitem>
+		<listitem>OI ਉਲਟੀ ਗਿਣਤੀ</listitem>
+		<listitem>OI ਟਾਰਚ</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<listitem>ਦੇ ਬਾਰੇ ਵਿੱਚ ,  ਕਰੇਡਿਟ ,  ਸੂਚਨਾ .</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਬਾਜ਼ਾਰ ਲਈ ਖੋਜ ਤਾਰ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ ਤੁਸੀ ਆਪਣੇ ਏਸਡੀ ਕਾਰਡ ਬਰਾਉਜ ਕਰਣ  ਦੇ ਲਈ ,  ਨਿਰਦੇਸ਼ਿਕਾ ਬਣਾਉਣ ,  ਨਾਮ ਬਦਲਨ ,  ਨਕਲ ,  ਚਾਲ ,  ਅਤੇ ਫਾਇਲਾਂ ਨੂੰ ਹਟਾ ਦਿਓ ਆਗਿਆ ਦਿੰਦਾ ਹੈ .</string>
+		<string>ਇਹ ਵੀ ਹੋਰ ਅਨੁਪ੍ਰਯੋਗੋਂ ਲਈ ਇੱਕ ਏਕਸਟੇਂਸ਼ਨ ਖੋਲਾਂ ਅਤੇ ਸੰਵਾਦਾਂ ਸਹੇਜੇਂ ਨੁਮਾਇਸ਼  ਦੇ ਰੂਪ ਵਿੱਚ ਕਾਰਜ ਕਰਦਾ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਛਵੀਆਂ ਲਈ ਥੰਬਨੇਲ  ਦੇ ਨਾਲ ਫਾਇਲਾਂ ਦੀ ਸੂਚੀ ਦਿਖਾਵਾਂ .</listitem>
+		<listitem>ਹਟਾਂ ,  ਨਕਲ ,  ਨਾਮ ਬਦਲਨ ,  ਅਤੇ ਫਾਇਲਾਂ ਨੂੰ ਹਟਾ ਦਿਓ .</listitem>
+		<listitem>ਬਨਾਓ ਅਤੇ ਨਿਰਦੇਸ਼ਿਕਾ  ( ਫੋਲਡਰਸ )  ਹਟਾਵਾਂ .</listitem>
+		<listitem>ਈਮੇਲ ਦੁਆਰਾ ਫਾਇਲਾਂ ਭੇਜੋ .</listitem>
+		<listitem>ਜੀਮੇਲ ਦੀ ਤਰ੍ਹਾਂ ਹੋਰ ਅਨੁਪ੍ਰਯੋਗੋਂ ਲਈ ਇੱਕ ਵਿਸਥਾਰ  ਦੇ ਰੂਪ ਵਿੱਚ ,  ਅਧਿਨਿਅਮੋਂ ,  ਫਾਇਲਾਂ ਨੂੰ ਨੱਥੀ ਕਰਣ  ਦੇ ਲਈ .</listitem>
+		<listitem>ਕਈ ਫਾਇਲ  ਦੇ ਅੰਤ ਅਤੇ MIME ਪ੍ਰਕਾਰ ਲਈ ਸਮਰਥਨ .</listitem>
+		<listitem>PICK_FILE ਦਾ ਸਮਰਥਨ ਕਰਦਾ ਹੈ ਅਤੇ ਨਿਰਦੇਸ਼ਿਕਾ intents ਚੁੱਕੋ ਤਾਂਕਿ ਹੋਰ ਅਨੁਪ੍ਰਯੋਗੋਂ OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ ਦਾ ਵਰਤੋ ਕਰ ਸੱਕਦੇ ਹਨ .</listitem>
+		<emptyline/>
+		<string>OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ ਲਈ ਉਪਲੱਬਧ ਏਕਸਟੇਂਸ਼ਨ :</string>
+		<listitem>OI ਦੇ ਨਾਲ ਲਾਇਸੇਂਸ ਜਾਣਕਾਰੀ ਦਿਖਾਵਾਂ .</listitem>
+		<emptyline/>
+		<string>ਆਵੇਦਨ OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ  ਦੇ ਨਾਲ ਕੰਮ :</string>
+		<listitem>ਖੋਲਾਂ ਅਤੇ OI ਨੋਟਪੈਡ ਪਾਠ ਫਾਇਲਾਂ ਨੂੰ ਬਚਾਉਣ  ਦੇ ਲਈ .</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>ਫਾਇਲ ਪ੍ਰਬੰਧਕ ,  ਫਾਇਲਮੈਨੇਜਰ ,  ਫਾਇਲ ਏਕਸਪਲੋਰਰ</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਬਾਜ਼ਾਰ ਲਈ ਖੋਜ ਤਾਰ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਟਾਰਚ ਇੱਕ ਸਰਲ ਅਤੇ ਪਰਭਾਵੀ ਅਨੁਪ੍ਰਯੋਗ ਹੈ ਕਿ ਤੁਸੀ ਹੋ੍ਹੇਰੇ ਵਿੱਚ ਇੱਕ ਰਸਤਾ ਲੱਭਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ .</string>
+		<string>OI ਟਾਰਚ ਉੱਤੇ ਨੁਮਾਇਸ਼ backlight  ਦੇ ਤਾਲੇ ,  ਸਪੱਸ਼ਟ ਰੂਪ ਵਲੋਂ ਆਸਪਾਸ  ਦੇ ਕਸ਼ੇਤਰ ਰੋਸ਼ਨ   .</string>
+		<string>ਇੱਕ ਕੈਮਰਾ ਫਲੈਸ਼  ਦੇ ਨਾਲ ਸਮੱਗਰੀਆਂ  ਦੇ ਲਈ ,  OI ਟਾਰਚ ਵੀ ਕਮਰੇ ਨੂੰ ਰੋਸ਼ਨ  ਕਰਣ ਲਈ ਇੱਕ ਉੱਜਵਲ ਮਸ਼ਾਲ  ਦੇ ਰੂਪ ਵਿੱਚ ਫਲੈਸ਼ ਦਾ ਪ੍ਰਯੋਗ ਕਰ ਸੱਕਦੇ ਹਨ .</string>
+		<string>Backlight  ਦੇ ਰੰਗ OI ਰੰਗ ਬੀਨਨੇ  ਦੇ ਨਾਲ ਪੂਰੀ ਤਰ੍ਹਾਂ ਅਨੁਕੂਲਨ ਲਾਇਕ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਉੱਤੇ ਨੁਮਾਇਸ਼ backlight ਬੰਦ .</listitem>
+		<listitem>ਫਲੈਸ਼ ਉੱਤੇ ਬੰਦ ਕੈਮਰਾ .</listitem>
+		<listitem>ਲਿਰਨਸ ਰਨਸਿ ਕਮਲਨ ਨਲੇਨਰ ਲਨਕ</listitem>
+		<emptyline/>
+		<string>ਕੁਲਿਕ ਤੁਰੂਰੁ ਕਪਦਬ OI ਰਲਿ</string>
+		<listitem>OI ਦੇ ਨਾਲ ਲਾਇਸੇਂਸ ਜਾਣਕਾਰੀ ਦਿਖਾਵਾਂ .</listitem>
+		<listitem>OI ਰੰਗ ਪਿਕਰ  ਦੇ ਨਾਲ backlight ਦਾ ਰੰਗ ਬਦਲੀਆਂ .</listitem>
+		<emptyline/>
+		<string>ਆਵੇਦਨ OI ਟਾਰਚ  ਦੇ ਨਾਲ ਕੰਮ ਹੈ ਕਿ :</string>
+		<listitem>OI ਅਦਿਅਤਨ  ਦੇ ਨਾਲ ਅਦਿਅਤਨ .</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<listitem>ਟਾਰਚ ,  ਪ੍ਰਕਾਸ਼ ,  ਵਾਪਸ ਪ੍ਰਕਾਸ਼</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਬਾਜ਼ਾਰ ਲਈ ਖੋਜ ਤਾਰ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਨੋਟਪੈਡ ਇੱਕ ਸਾਰਾ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਅਨੁਪ੍ਰਯੋਗ ਨੋਟ ਲੈਣਾ ਹੈ .</string>
+		<string>ਤੁਸੀ ਇਸਦੇ ਨਾਲ ਟੈਗ ,  ਖੋਜ ਕਰ ਸੱਕਦੇ ਹੋ ਅਤੇ ਆਪਣੇ ਨੋਟਸ ਬਣਾਉਣ ,  ਹਟਾਣ ,  ਅਤੇ ਸੰਪਾਦਨ ਨੋਟਾਂ ਜਿਵੇਂ ਬੁਨਿਆਦੀ ਕਾਰਿਆਸ਼ੀਲਤਾ  ਦੇ ਇਲਾਵਾ ਵਿੱਚ ਭੇਜ .</string>
+		<string>ਏੰਕਰਿਪਸ਼ਨ ,  ਆਯਾਤ  /  ਨਿਰਿਆਤ ,  ਅਤੇ ਅਵਾਜ memos ਦੀ ਤਰ੍ਹਾਂ ਉੱਨਤ ਸਹੂਲਤਾਂ  ਦੇ ਸਾਰੇ ਏਕਸਟੇਂਸ਼ਨ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਉਪਲੱਬਧ ਹਨ .</string>
+		<string>ਇਸ ਕਾਰਿਆਸ਼ੀਲਤਾ  ਦੇ ਸਾਰੇ ਇਕੱਠੇ ਇੱਕ ਸਰਲੀਕ੍ਰਿਤ ਅਤੇ ਕੁਸ਼ਲ ਲੇਆਉਟ ਵਿੱਚ ਲਿਆਇਆ ਜਾਂਦਾ ਹੈ ,  ਮਜ਼ਮੂਨਾਂ ਦੀ ਇੱਕ ਕਿੱਸਮ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਅਨੁਕੂਲਨ .</string>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਜੋੜੇਂ ,  ਸੰਪਾਦਤ ਕਰੀਏ ਅਤੇ ਨੋਟਸ ਹਟਾਵਾਂ .</listitem>
+		<listitem>ਨੋਟਾਂ ਉੱਤੇ ਲਾਂਗ ਪ੍ਰੇਸ ਕਰਣ ਲਈ ਟੈਗ ਜੋੜੇਂ .</listitem>
+		<listitem>ਫਾਂਟ ਸਰੂਪ ਅਤੇ ਸਾਰਟ ਕ੍ਰਮ ਬਦਲਨਾ .</listitem>
+		<listitem>ਮਜ਼ਮੂਨਾਂ ਦੀ ਇੱਕ ਕਿੱਸਮ  ਦੇ ਨਾਲ ਇੱਕ ਸਪੱਸ਼ਟ ਰੂਪ ਵਲੋਂ ਵਿਵਸਥਿਤ ਲੇਆਉਟ .</listitem>
+		<listitem>ਜਲਦੀ ਨੋਟਾਂ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਖੋਜ .</listitem>
+		<listitem>ਏਮਏਮਏਸ ਜਾਂ ਏਸਏਮਏਸ  ਦੇ ਰੂਪ ਵਿੱਚ ਨੋਟਸ ਭੇਜੋ .</listitem>
+		<emptyline/>
+		<string>ਨੋਟਪੈਡ OI ਲਈ ਉਪਲੱਬਧ ਏਕਸਟੇਂਸ਼ਨ :</string>
+		<listitem>ਰਿਕਾਰਡ ਅਤੇ ਨੋਟਸ OI ਕਾਂ ਨੋਟਸ  ਦੇ ਨਾਲ ਅਵਾਜ ਮੇਮਾਂ ਦਿੰਦੇ ਹਨ .</listitem>
+		<listitem>ਦੇ ਨਾਲ OI ਕੰਵਰਟ ਸੀਏਸਵੀ CSV ਕਾਰਡ ਵਲੋਂ ਆਯਾਤ  /  ਨਿਰਿਆਤ SD .</listitem>
+		<listitem>OI ਦੇ ਨਾਲ ਲਾਇਸੇਂਸ ਜਾਣਕਾਰੀ ਦਿਖਾਵਾਂ .</listitem>
+		<listitem>OI ਸਮਿੱਲਤ ਤਾਰੀਖ  ਦੇ ਨਾਲ ਨੋਟਸ ਵਿੱਚ ਤਾਰੀਖ਼ ਅਤੇ ਸਮਾਂ ਸਮਿੱਲਤ ਕਰਣਾ .</listitem>
+		<listitem>ਉਲਟਿਆ  ਦੇ ਨਾਲ ਪਾਠ ਉਲਟਿਆ ਮੁੜੋ .</listitem>
+		<emptyline/>
+		<string>ਅਨੁਪ੍ਰਯੋਗੋਂ ਹੈ ਕਿ ਨੋਟਪੈਡ OI ਦੇ ਨਾਲ ਕੰਮ :</string>
+		<listitem>ਮੇਰਾ ਬੈਕਅਪ ਪ੍ਰੋ  ਦੇ ਨਾਲ ਨੋਟਸ ਉੱਤੇ ਵਾਪਸ ਜਾਓ .</listitem>
+		<listitem>ਏੰਕਰਿਪਟ OI ਸੁਰੱਖਿਅਤ ਦਾ ਵਰਤੋ ਨੋਟਾਂ .</listitem>
+		<listitem>OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ  ਦੇ ਨਾਲ ਆਪਣੇ SD ਕਾਰਡ ਉੱਤੇ ਨੋਟਸ ਪ੍ਰਬੰਧਿਤ ਕਰੋ .</listitem>
+		<listitem>OI ਅਦਿਅਤਨ  ਦੇ ਨਾਲ ਅਦਿਅਤਨ .</listitem>
+		<listitem>ਫੇਸਬੁਕ ,  ਜੀਮੇਲ ,  ਗੂਗਲ  +  ,  ਟਵਿਟਰ ,  ਅਤੇ ਕਈ ਹੋਰ ਅਨੁਪ੍ਰਯੋਗੋਂ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਸ਼ੇਅਰ ਨੋਟਾਂ .</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<listitem>ਨੋਟ ,  ਨੋਟਪੈਡ ,  ਨੋਟ ਬੁੱਕ ,  ਨੋਟਸ ,</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਬਾਜ਼ਾਰ ਲਈ ਖੋਜ ਤਾਰ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਸੁਰੱਖਿਅਤ ਸੁਰੱਖਿਅਤ ਰੂਪ ਵਲੋਂ ਤੁਹਾਡੇ ਪਾਸਵਰਡ ਅਤੇ ਹੋਰ ਨਿਜੀ ਉਦਯੋਗ ਮਾਣਕ ਏਈਏਸ ਏੰਕਰਿਪਸ਼ਨ ਦਾ ਵਰਤੋ ਕਰ ਡੇਟਾ  ਦੇ ਸਾਰੇ ਬਚਾਂਦਾ ਹੈ .</string>
+		<string>ਇਹ ਵੀ OI ਨੋਟਪੈਡ ਲਈ ਇੱਕ ਵਿਸਥਾਰ ਕਰਣ ਲਈ ਪੁਰਾਨਾ ਨੋਟ ਪੈਡ ਵਿੱਚ ਬਣਾਇਆ ਨੋਟਸ ਏੰਕਰਿਪਟ ਰੂਪ ਵਿੱਚ ਕਾਰਜ ਕਰਦਾ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਸੁਰੱਖਿਅਤ ਏਈਏਸ ਏੰਕਰਿਪਸ਼ਨ ਦਾ ਵਰਤੋ ਕਰ ਡੇਟਾ ਦੀ ਰੱਖਿਆ .</listitem>
+		<listitem>ਆਜ਼ਾਦੀ ਸ਼ਰੇਣੀਆਂ  ਦੇ ਵਿੱਚ ਡੇਟਾ ਪ੍ਰਵਿਸ਼ਟੀਆਂ ਨੂੰ ਮੁੰਤਕਿਲ .</listitem>
+		<listitem>ਆਯਾਤ  /  ਨਿਰਿਆਤ ਡੇਟਾ ਪ੍ਰਵਿਸ਼ਟੀਆਂ ਅਤੇ ਡੇਟਾਬੇਸ .</listitem>
+		<listitem>ਪ੍ਰਵਿਸ਼ਟੀਆਂ ਬੈਕਅਪ  /  ਪੁਨਰਸਥਾਪਿਤ .</listitem>
+		<listitem>ਸੁਰੱਖਿਅਤ ਪਾਸਵਰਡ ਜਨਰੇਟਰ ਵੀ ਸ਼ਾਮਿਲ ਹੈ .</listitem>
+		<listitem>ਸਵੈਕਰ ਕਰਣ ਲਈ ਏੰਕਰਿਪਟੇਡ ਦਸਤਾਵੇਜਾਂ ਦੀ ਰੱਖਿਆ ਟਾਇਮਆਉਟ .</listitem>
+		<listitem>ਏੰਕਰਿਪਟ OI ਨੋਟਪੈਡ ਨੋਟਾਂ .</listitem>
+		<listitem>ਓਬਸਕਿਉਅਰ ਚਿੱਤਰ ਸੁਰੱਖਿਅਤ ਲਈ ਸਮਰਥਨ .</listitem>
+		<listitem>MyBackup ਪ੍ਰੋ .</listitem>
+		<emptyline/>
+		<string>OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ ਲਈ ਉਪਲੱਬਧ ਏਕਸਟੇਂਸ਼ਨ :</string>
+		<listitem>OI ਦੇ ਨਾਲ ਲਾਇਸੇਂਸ ਜਾਣਕਾਰੀ ਦਿਖਾਵਾਂ .</listitem>
+		<emptyline/>
+		<string>ਆਵੇਦਨ OI ਫਾਇਲ ਪ੍ਰਬੰਧਕ  ਦੇ ਨਾਲ ਕੰਮ :</string>
+		<listitem>ਏੰਕਰਿਪਟ ਨੋਟਸ OI ਨੋਟਪੈਡ ਬਣਾਇਆ .</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>ਸੁਰਕ੍ਸ਼ਿਤ, ਏਨ੍ਕ੍ਰਿਪ੍ਸ਼ਨ, ਪਾਸਵਰ੍ਡ ਸੰਰਕ੍ਸ਼ਣ,</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਬਾਜ਼ਾਰ ਲਈ ਖੋਜ ਤਾਰ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI ਖਰੀਦਦਾਰੀ ਸੂਚੀ ਇੱਕ ਸ਼ਕਤੀਸ਼ਾਲੀ ਅਨੁਪ੍ਰਯੋਗ ਹੈ ਜੋ ਇਹ ਜਾਂਚ ਸੂਚੀ ਬਣਾਉਣ ਲਈ ਅਤੇ ਪਰਬੰਧਨ ਆਸਾਨ ਬਣਾਉਂਦਾ ਹੈ .</string>
+		<string>OI ਖਰੀਦਦਾਰੀ ਸੂਚੀ ਇੱਕ ਸੂਚੀ ਲਈ ਆਇਟਮ ਜੋੜਨ ਲਈ ਆਸਾਨ ਬਣਾਉਂਦਾ ਹੈ ,  ਆਇਟਮ ਦੀ ਜਾਂਚ ਬੰਦ ਹੈ ,  ਅਤੇ ਇਸਨੂੰ ਸੂਚੀ ਵਲੋਂ ਕੱਢਣੇ  ਦੇ .</string>
+		<string>ਆਵੇਦਨ ਹਰ ਇੱਕ ਦੁਕਾਨ ਹੈ ਕਿ ਤੁਹਾਡਾ ਵਰਤੋ ਕਰਣ ਲਈ ਵੱਖ ਕੀਮਤਾਂ ਟ੍ਰੈਕ ਕਰ ਸੱਕਦੇ ਹਨ ਅਤੇ ਅਨੁਕੂਲਨ  ਦੇ ਇੱਕ ਉੱਚ ਪੱਧਰ ਦੀਆਂ ਸਹੂਲਤਾਂ .</string>
+		<string>ਫਾਂਟ ਸਰੂਪ ,  ਸਾਰਟ ਕ੍ਰਮ ,  ਸੂਚੀ ਸਤੰਭਾਂ ,  ਅਤੇ ਸੂਚੀ ਸਫਾਈ ਸੁਭਾਅ ਸਾਰੇ ਸੇਟਿੰਗਸ ਉਪਯੋਗਕਰਤਾ ਦੁਆਰਾ ਨਿਅੰਤਰਿਤ ਕਰ ਰਹੇ ਹਨ .</string>
+		<string>ਇਸ ਸਾਰੇ ਸਹੂਲਤਾਂ  ਦੇ ਨਾਲ ਇੱਕ ਕੁਰਕੁਰਾ ਲੇਆਉਟ ਹੈ ਕਿ ਮਜ਼ਮੂਨਾਂ ਦੀ ਇੱਕ ਕਿੱਸਮ  ਦੇ ਮਾਧਿਅਮ ਵਲੋਂ ਅਨੁਕੂਲਨ ਲਾਇਕ ਹੈ ਵਿੱਚ ਲਿਆਇਆ ਜਾਂਦਾ ਹੈ .</string>
+		<emptyline/>
+		<string>ਇਸ ਆਜਾਦ ਅਤੇ ਖੁੱਲ੍ਹਾਖੁੱਲ੍ਹਾ ਸਰੋਤ ਆਵੇਦਨ  ਦੇ ਸਰੋਤ ਕੋਡ ਵਿੱਚ ਉਪਲੱਬਧ ਹੈ :</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>ਇਹ ਆਵੇਦਨ ਇਸ਼ਤਿਹਾਰ ਅਜ਼ਾਦ ਹੈ ਅਤੇ ਇੰਟਰਨੇਟ ਦੀ ਆਗਿਆ ਦੀ ਲੋੜ ਨਹੀਂ ਹੈ .</string>
+		<emptyline/>
+		<string>ਤਬਦੀਲੀ ਅਤੇ ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਪ੍ਰਸ਼ਨਾਂ ਦੀ ਇੱਕ ਸੂਚੀ ਦੀ ਪੂਰੀ ਸੂਚੀ  ਦੇ ਲਈ ,  ਕ੍ਰਿਪਾ ਉੱਤੇ ਜਾਓ :</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>ਤੁਸੀ Launchpad ਉੱਤੇ ਆਪਣੀ ਭਾਸ਼ਾ ਵਿੱਚ ਅਨੁਵਾਦ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰ ਸੱਕਦੇ ਹੋ :</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>ਫੀਛਰਸ</string>
+		<listitem>ਜੋੜੇਂ ,  ਸੂਚੀਆਂ ਨੂੰ ਸੰਪਾਦਤ ਕਰੀਏ ਅਤੇ ਹਟਾਵਾਂ .</listitem>
+		<listitem>ਬਨਾਏੰ, ਹਟਾਏੰ, ਔਰ ਆਇਟਮ ਜਲ੍ਦੀ ਔਰ ਆਸਾਨੀ ਸੇ ਜਾੰਚ.</listitem>
+		<listitem>ਮਜ਼ਮੂਨਾਂ ਦੀ ਵਿਵਿਧਤਾ .</listitem>
+		<listitem>ਅਨੁਕੂਲਨ ਫਾਂਟ ਸਰੂਪ ਅਤੇ ਸਾਰਟ ਕ੍ਰਮ .</listitem>
+		<listitem>ਹਰ ਇੱਕ ਦੁਕਾਨ ਲਈ ਵੱਖ ਕੀਮਤਾਂ ਦਾ ਟ੍ਰੈਕ ਰੱਖੋ .</listitem>
+		<listitem>ਅਨੁਕੂਲਨ ਸੂਚੀ ਸਤੰਭਾਂ .</listitem>
+		<emptyline/>
+		<string>OI ਖਰੀਦਦਾਰੀ ਸੂਚੀ ਲਈ ਉਪਲੱਬਧ ਏਕਸਟੇਂਸ਼ਨ :</string>
+		<listitem>OI ਕਾਂ ਨੋਟਸ  ਦੇ ਨਾਲ ਇੱਕ ਨੋਟ ਲਈ ਇੱਕ ਸੁਨੇਹਾ ਰਿਕਾਰਡ ਜੋੜੇਂ .</listitem>
+		<listitem>ਦੇ ਨਾਲ OI ਕੰਵਰਟ ਸੀਏਸਵੀ ਸ਼ਾਪਿੰਗ ਸੂਚੀ ਆਯਾਤ  /  ਨਿਰਿਆਤ .</listitem>
+		<listitem>OI ਦੇ ਨਾਲ ਲਾਇਸੇਂਸ ਜਾਣਕਾਰੀ ਦਿਖਾਵਾਂ .</listitem>
+		<listitem>ਦਰਜ ਕਰੋ  /  ਬਾਰਕੋਡ OI ਪਲਗਇਨ  ਦੇ ਨਾਲ ਆਇਟਮ ਦੀ ਜਾਂਚ ਕਰੋ .</listitem>
+		<emptyline/>
+		<string>ਅਨੁਪ੍ਰਯੋਗੋਂ ਹੈ ਕਿ OI ਖਰੀਦਾਰੀ ਸੂਚੀ  ਦੇ ਨਾਲ ਕੰਮ :</string>
+		<listitem>OI ਅਦਿਅਤਨ  ਦੇ ਨਾਲ ਅਦਿਅਤਨ .</listitem>
+		<listitem>ਮੇਰਾ ਬੈਕਅਪ ਪ੍ਰੋ  ਦੇ ਨਾਲ ਬੈਕਅਪ ਸੂਚੀ .</listitem>
+		<listitem>ਕੱਟਣ  ਦੇ ਨਾਲ ਵਿਅੰਜਨਾਂ ਦਾ ਆਯਾਤ ਸਾਮਗਰੀ .</listitem>
+		<emptyline/>
+		<string>ਕੀਵਰਡ :</string>
+		<listitem>ਖਰੀਦਾਰੀ ,  ਸੂਚੀ ,  ਸ਼ਾਪਿੰਗ ਸੂਚੀ ਚੇਕਲਿਸਟ ,</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>ਅੰਤਰਰਾਸ਼ਟਰੀ ਸੰਸਕਰਣ :</string>
+		<international/>
+		<emptyline/>
+		<string>ਏਕਸਟੇਂਸ਼ਨ :</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

@@ -11,6 +11,7 @@ Launchpad Contributions:
   Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
   Peli https://launchpad.net/~peli0101
+  ariza95 https://launchpad.net/~alirizanazli95
   zeugma https://launchpad.net/~sunder67</string>
 	
     <!-- Short explanation of the application -->
@@ -47,10 +48,10 @@ Launchpad Contributions:
 	<!-- Explanation that is displayed if Color Picker has not been installed yet, but 
 		user tries to access it. -->
     <string name="color_picker_modularization_explanation">Renk seçiciyi diğer geliştiriciler için daha kullanışlı yapmak için onu kendi içinde parçalara böldük.</string>
-    <string name="setting_use_camera_flash">Use camera flash</string>
-    <string name="setting_use_camera_flash_summary">Use the camera flash instead of the screen backlight.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
+    <string name="setting_use_camera_flash">Kamera flaşını kullanın</string>
+    <string name="setting_use_camera_flash_summary">Ekran arka ışığı yerine kamera flaşını kullanın.</string><!--  (Warning: Prolonged camera flash usage may damage it) -->
     <!-- Information to enable the camera flash as flashlight. -->
-    <string name="cameralight_info">Press to enable camera light (May take a second).</string>
-    <string name="cameralight_stop_info">Press to disable camera light.</string>
+    <string name="cameralight_info">Kamera ışığı etkinleştirmek için basın(Bir kaç saniyenizi alabilir).</string>
+    <string name="cameralight_stop_info">Kamera ışığını devre dışı bırakmak için basın.</string>
     
 </resources>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Nikola Miljkovic https://launchpad.net/~milja1337</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI About je nezavisni about prozor koji dele aplikacije.</string>
+		<string>Ova aplikacija je upaljena kroz meni drugih OI aplikacija.</string>
+		<string>Dozvoljava vam da vidite informacije o verziji, linkove, zasluge, i licencu aplikacije.</string>
+		<string>Zasluge sadrže autore, dokumentaciju, prevodioce, i dizajnere.</string>
+		<string>Sva funkcionalnost je spojena u jedno u prostom ali efektivnom rasporedu.</string>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Prikazuje opće podatke, zasluge, i liencne kartice.</listitem>
+		<listitem>Prikazuje prevodioce za sve verzije jezika.</listitem>
+		<listitem>Preuzima informacije iz aplikacije kroz tagove i metapodatke.</listitem>
+		<listitem>Opciono, sva polja se mogu izmeniti kroz intent extras.</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI About":</string>
+		<listitem>OI Blokčić</listitem>
+		<listitem>OI Menadžer datoteka</listitem>
+		<listitem>OI Lista za kupovinu</listitem>
+		<listitem>OI CSV Konverter</listitem>
+		<listitem>OI Sigurnost</listitem>
+		<listitem>OI Odbrojavač</listitem>
+		<listitem>OI Blic</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<listitem>O, Zasluge, Informacije.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Pretraži tekst na Marketu:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Menadžer Datoteka dozvolja va ti da pretražuješ SD kartu, praviš direktorijume, preimenuješ, kopiras, pomeris i obrišeš fajlove.</string>
+		<string>Takođe služi kao dodatak u drugim aplikacijama da prikaže "Otvori" i "Sačuvaj" dialoge.</string>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Prikaži listu fajlova sa sličicama za slike.</listitem>
+		<listitem>Pomeri, kopiraj, preimenuj, i briši fajlove.</listitem>
+		<listitem>Napravi i obriši direktorijume (foldere).</listitem>
+		<listitem>Pošalji fajlove e-mailom.</listitem>
+		<listitem>Ponaša se kao dodatak u drugim aplikacijama, kao GMail, da zakači datoteke.</listitem>
+		<listitem>Podrška za mnoge krajeve fajlova i mime tipove.</listitem>
+		<listitem>Podržava PICK_FILE i PICK_DIRECTORZ intents da bi ostale aplikacije koristile OI Menadžer Datoteka.</listitem>
+		<emptyline/>
+		<string>Dostupni dodatci za "OI Menadžer Datoteka":</string>
+		<listitem>Prikaži informacije licence sa "OI About":</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI Menadžer Datoteka":</string>
+		<listitem>Otvori i čuvaj tesktualne datoteke u "OI Blokčiću".</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>file manager, filemanager, file explorer, menadžer datoteka, fajlovi</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Pretraži tekst na Marketu:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Blic je je prosta i efektivna aplikacija koja ti pomaže da nađeš put i mraku.</string>
+		<string>OI Blic zaključa prikaz pozadinskog osvjetljenja, čisto, osvetljavajući okolinu.</string>
+		<string>Za uređaje sa blicom na kameri, OI Blic takođe može da koristi blic kao osvetljivač.</string>
+		<string>Boja pozadinskog osvjetljenja je potpuno izmenjiva pomoću OI Odabiračem Boja.</string>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Zaključaj prikaz pozadinskog osvjetljenja.</listitem>
+		<listitem>Zaključaj blic kamere.</listitem>
+		<listitem>Boja pozadinskog osvjetljenja je izmenjiva.</listitem>
+		<emptyline/>
+		<string>Dostupni dodatci za "OI Blic":</string>
+		<listitem>Prikaži informacije licence sa "OI About":</listitem>
+		<listitem>Izmeni boju pozadinskog osvetljenja za "OI Odabiračem Boja".</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI Blic":</string>
+		<listitem>Ažuriraj sa "OI Ažurator".</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<listitem>Blic, svetlost, pozadinsko osvetljenje.</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Pretraži tekst na Marketu:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Blokčić je puna aplikacija otvorenog izvora za hvatanje bilješki.</string>
+		<string>Sa njom možete tagovati, pretražiti, ili poslati vaše beleške, uz osnovne funckije za pravljenje, brisanje, i izmena bilješki.</string>
+		<string>Napredni dodatci kao šifriranje, uvoz/izvoz,i pamcenje glasa su dostupni kroz dodatke.</string>
+		<string>Sve ove funkcionalnosti su sklopljenje u jedan prosti ali efektivni raspored, izmenjivoe kroz razne teme.</string>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Dodaj, izmeni i obriši bilješke.</listitem>
+		<listitem>Drži dodir na bilješkama da bi dodao tagove.</listitem>
+		<listitem>Izmeni veličinu fonta i raspored sortiranja.</listitem>
+		<listitem>Čisto sklopljen raspored sa raznim temama.</listitem>
+		<listitem>Brzo pretraži bilješke.</listitem>
+		<listitem>Pošalji bilješke kao MMS ili SMS.</listitem>
+		<emptyline/>
+		<string>Dostupni dodatci za "OI Blkoče":</string>
+		<listitem>Snimi i zakaši glasovne podsjetnika u bilješke sa "OI Glasovne Bilješke".</listitem>
+		<listitem>Sa "OI CSV Konverter" uvedi/izvedi bilješke iz SD karte.</listitem>
+		<listitem>Prikaži informacije licence sa "OI About":</listitem>
+		<listitem>Unesi datum i vreme u belješke sa "OI Ubacivač Datuma".</listitem>
+		<listitem>Obrni tekst naopako sa "Upside Down".</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI Blokče":</string>
+		<listitem>Povrati biljepke sa "My Backup Pro".</listitem>
+		<listitem>Šifriraj bilješke koristeći "OI Siguran".</listitem>
+		<listitem>Upravljaj bilješkama na svojoj SD Karti sa "OI Menadžerom Datoteka".</listitem>
+		<listitem>Ažuriraj sa "OI Ažurator".</listitem>
+		<listitem>Podeli bilješke kroz "Facebook", "Gmail", "Google+", "Twitter", i mnogih drugih aplikacija.</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<listitem>Bilješka, Blokče, Note, Notepad, Note book, Notes</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Pretraži tekst na Marketu:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Siguran bezbedno štiti sve vaše pasworde i ostale privatne podatke koristeći standardni industrijiski AES šifrarnik.</string>
+		<string>Takođe se ponaša kao dodatak za OI Blokče da bi šifrirao bilješke korišćene u OI Blokčet-u.</string>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Bezbedno zaštiti podatke koristeći AES šifrarnik.</listitem>
+		<listitem>Slobodno pomerite unose podataka između kategorija.</listitem>
+		<listitem>Uvezi/Izvezi unose podataka i baze podataka.</listitem>
+		<listitem>Povrati unose.</listitem>
+		<listitem>Sadrži bezbeni generator lozinke.</listitem>
+		<listitem>Automatski iskljuši kod zaštićenih šifriranih dokumenata.</listitem>
+		<listitem>Šifriraj OI Blokče bilješke.</listitem>
+		<listitem>Prodška za Obscura sef slika.</listitem>
+		<listitem>MyBakup Pro.</listitem>
+		<emptyline/>
+		<string>Dostupni dodatci za "OI Menadžer Datoteka":</string>
+		<listitem>Prikaži informacije licence sa "OI About":</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI Menadžer Datoteka":</string>
+		<listitem>Šifrirane bilješke u "OI Blokče".</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>safe, encrpytion, password, protection</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Pretraži tekst na Marketu:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Lista za kupovinu je odlična aplikacija koja omogućava lako pravljenje i korišcenje lista za ispunjivanje.</string>
+		<string>OI Lista za kupovinu omogućava lako dodavanje predmeta u listu, ispunjavanje, i brisanje sa liste.</string>
+		<string>Aplikacija može pratiti različite cene za svaku prodavnicu koju koristite, i sadrži visok nivo izmena.</string>
+		<string>Veličina fonta, redoslet sortiranja, kolone liste, i čišćenje liste se kontrolišu podešavanjima korisnika.</string>
+		<string>Svi ovi dodatci su skupljeni zajedno u cvrstom rasporedu koji se moze izmeniti kroz razne teme.</string>
+		<emptyline/>
+		<string>Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Ova aplikacija nema reklame i zahtijeva internet konkciju.</string>
+		<emptyline/>
+		<string>Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Značajke:</string>
+		<listitem>Dodaj, izmeni ili obriši liste.</listitem>
+		<listitem>Napravi, obriši, i pregledaj predmete brzo i lako.</listitem>
+		<listitem>Razne teme.</listitem>
+		<listitem>Prilagodljiva veličina fonta i redosled.</listitem>
+		<listitem>Prati različite cene za svaku prodavnicu.</listitem>
+		<listitem>Izmenjive kolone listova.</listitem>
+		<emptyline/>
+		<string>Dostupni dodatci za "OI Lista za Kupovinu":</string>
+		<listitem>Dodaj snimljene poruke u bilješku sa "OI Zvučne Bilješke".</listitem>
+		<listitem>Uvezi/izvezi listu za kupovinu sa "OI CSV Konvertorom".</listitem>
+		<listitem>Prikaži informacije licence sa "OI About":</listitem>
+		<listitem>Unesi/proveri predmete sa "Barcode OI Plugin".</listitem>
+		<emptyline/>
+		<string>Aplikacije koje rade sa "OI Listom za Kupovinu":</string>
+		<listitem>Ažuriraj sa "OI Ažurator".</listitem>
+		<listitem>Povrati liste sa "Mz Backup Pro".</listitem>
+		<listitem>Uvezi materijal za recepte sa "Bites".</listitem>
+		<emptyline/>
+		<string>Ključne riječi:</string>
+		<listitem>Copy text 	 Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>Internacionalna verzija:</string>
+		<international/>
+		<emptyline/>
+		<string>Dodatci:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

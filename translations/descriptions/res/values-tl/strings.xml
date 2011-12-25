@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Liezl https://launchpad.net/~liezl-200
+  abc https://launchpad.net/~abc-g</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Tungkol ay nakapag-iisang tungkol usapan na dyalogo sa pagitan ng mga apps.</string>
+		<string>Ang applikasyon na ito ay mapapatakbo sa pamamagitan ng menu ng iba pang mga OI na applikasyon.</string>
+		<string>Ito ay nagpapahintulot sa iyo na tingnan ang bersyon impormasyon, mga link, mga kredito, at lisensya ng isang applikasyon.</string>
+		<string>Ang kredito ay kasama ang mga may-akda, taga dokument, mga tagasalin, at mga artist.</string>
+		<string>Lahat ng magagawa nito ay pinagsama sa simple at episyente na ayos.</string>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Ipinapakita ang pangkalahatang impormasyon, mga kredito, at mga tab ng lisensya.</listitem>
+		<listitem>Ipinapakita ang mga tagasalin ng lahat ng mga bersyon ng wika.</listitem>
+		<listitem>Kinukuha ang impormasyon mula sa manipesto ng applikasyon sa pamamagitan ng mga default tag ng metadata.</listitem>
+		<listitem>Opsyonal, ang lahat ng mga patlang ay maaaring mabago sa pamamagitan ng karagdagang layunin.</listitem>
+		<emptyline/>
+		<string>Applikasyon na gumagana sa "OI Tungkol":</string>
+		<listitem>OI Talaan</listitem>
+		<listitem>OI File manedyer</listitem>
+		<listitem>OI Listahan ng Bilihin</listitem>
+		<listitem>OI Palitan CSV</listitem>
+		<listitem>OI Kaha</listitem>
+		<listitem>OI Bilang-pababa</listitem>
+		<listitem>OI Plaslayt</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<listitem>Tungkol, kredito, Impormasyon.</listitem>
+		<listitem>OI, OpenIntents, Bukas na Layunin.</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings para sa Merkado:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI File Manedyer ay nagbibigay-daan para ma-basa ang iyong SD card, lumikha ng mga direktoryo, palitan ang pangalan, kopyahin, ilipat, at alisin ang mga file.</string>
+		<string>Ito rin ay gumaganap bilang isang ekstensyon sa iba pang mga applikasyon upang ipakita ang dyalogo na "Buksan" at "Save".</string>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Ipakita ang listahan ng mga file na may mga thumbnail para sa mga imahe.</listitem>
+		<listitem>Ilipat, kopyahin, palitan ang pangalan, at alisin ang mga file.</listitem>
+		<listitem>Lumikha at alisin ang direktoryo (polder).</listitem>
+		<listitem>Magpadala ng mga file sa pamamagitan ng email.</listitem>
+		<listitem>Gumaganap bilang isang ekstensiyon sa iba pang mga applikasyon, tulad ng GMail, upang magsama ng mga file.</listitem>
+		<listitem>Suporta para sa maraming mga endings ng file at uri ng mime.</listitem>
+		<listitem>Sinusuportahan ang PILI_FILE at PILI_DIREKTORYA layunin upang ang iba pang mga applikasyon ay makagamit ng OI File Manager.</listitem>
+		<emptyline/>
+		<string>Magagamit na mga ekstensiyon  para sa "OI File Manedyer":</string>
+		<listitem>Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".</listitem>
+		<emptyline/>
+		<string>Applikasyon na gumagana sa "OI File Manager":</string>
+		<listitem>Buksan at i-save ang teksto ng mga file sa "OI Talaan".</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>file manedyer, filemanager, file explorer</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Bukas na mga Layunin</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings para sa Merkado:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Ang OI plasleyt  ay isang simple at epektibong applikasyon na tumutulong sa iyo na makahanap ng daan sa dilim.</string>
+		<string>Ang OI plasleyt ay nagpapanatili na bukas ang ilaw sa likod ng display, malinaw na nag-iilaw sa paligid na lugar.</string>
+		<string>Para sa mga aparato na may camera flash, ang OI plaslayt ay maaari ring gamitin ang flash na ito bilang isang maliwanag na tanglaw para lumiwanag ang kuwarto.</string>
+		<string>Ang kulay ng ilaw sa likod ay lubos na napapasadya sa OI Tagapili ng Kulay.</string>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Panatiliin na nakabukas ilaw sa likod ng display.</listitem>
+		<listitem>Panatiliin na nakabukas ang camera flash.</listitem>
+		<listitem>Ang kulay ng ilaw sa likod ay napapasadya.</listitem>
+		<emptyline/>
+		<string>Magagamit na mga ekstensyon para sa "OI Plasleyt":</string>
+		<listitem>Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".</listitem>
+		<listitem>Palitan ang kulay ng ilaw sa likod sa "OI Tagapili ng Kulay".</listitem>
+		<emptyline/>
+		<string>Applikasyon na gumagana sa mga "OI Plasleyt":</string>
+		<listitem>Magbago sa pamamagitan ng "OI Magbago".</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<listitem>Plaslayt, ilaw, Ilaw sa Likod</listitem>
+		<listitem>OI, OpenIntents, Bukas na Layunin</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings para sa Merkado:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Ang OI Talaan ay  buong tampok na bukas na pinagmulang kodigo na applikasyon sa pagkuha ng tala.</string>
+		<string>Gamit ito, maaari mong i-tag, hanapan, at ipadala ang iyong mga tala, bilang karagdagan sa pangunahing function tulad ng paglikha, pag-alis, at pagpalit ng mga tala.</string>
+		<string>Ang paunang mga tampok tulad ng encryption, import / export, at mga boses na memo ay magagamit sa pamamagitan ng extensyon.</string>
+		<string>Ang lahat ng ito function ay pinagsama sa isang simplistic at mahusay na layout, napapasadya sa pamamagitan ng iba\'t ibang mga tema.</string>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Magdagdag, magpalit at mag-alis ng mga tala.</listitem>
+		<listitem>Matagal-pindutin ang tala para magdagdag ng mga tag.</listitem>
+		<listitem>Baguhin ang laki ng font at pagsasaayos ng pagkakasunod-sunod</listitem>
+		<listitem>Malinaw na pagkasa-ayos na may iba\'t ibang mga tema.</listitem>
+		<listitem>Mabilis na paghahanap sa mga tala.</listitem>
+		<listitem>Magpadala ng mga tala bilang MMS o SMS.</listitem>
+		<emptyline/>
+		<string>Magagamit na mga ekstensyon para sa "OI Talaan":</string>
+		<listitem>Isulat at ilakip ang tala na boses sa mga tala sa "OI Talang mga Boses".</listitem>
+		<listitem>Sa "OI palitan CSV" import / eksport ang mga tala mula sa SD card.</listitem>
+		<listitem>Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".</listitem>
+		<listitem>Ipasok ang petsa at oras sa mga tala sa pamamagitan ng "OI Ipasok Petsa".</listitem>
+		<listitem>Baliktarin ang teksto sa pamamagitan ng "Baliktarin".</listitem>
+		<emptyline/>
+		<string>Mga applikasyon  na gumagana sa "OI Talaan":</string>
+		<listitem>Back up ng mga tala sa "Aking Backup Pro".</listitem>
+		<listitem>I-Encrypt ang tala sa pamamagitan ng "OI Kaha".</listitem>
+		<listitem>Pamahalaan ang mga tala sa iyong SD Card sa pamamagitan ng "OI File Manedyer".</listitem>
+		<listitem>Magbago sa pamamagitan ng "OI Magbago".</listitem>
+		<listitem>Ibahagi ang mga tala sa pamamagitan ng "Facebook", "Gmail", "Google +", "Twitter", at maraming iba pang mga applikasyon.</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<listitem>Tala, Talaan, Libreta, Mga Tala</listitem>
+		<listitem>OI, OpenIntents, Bukas na Layunin</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings para sa Merkado:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>Ang OI Kaha ay nagpo-protekta ng lahat ng iyong mga password at iba pang mga pribadong datos sa pamamagitan ng pamantayang industriya na AES encryption.</string>
+		<string>Ito rin ay gumaganap bilang ekstensyon sa OI Talaan para i-encrypt ang mga tala na nilikha sa OI Talaan.</string>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Ligtas na protektahan ang mga datos sa pamamagitan ng AES encryption.</listitem>
+		<listitem>Malayang ilipat ang mga entry ng datos sa pagitan ng mga kategorya.</listitem>
+		<listitem>Import/Export ng pinasok na datos at mga database.</listitem>
+		<listitem>Backup/Ibalik ang mga entry.</listitem>
+		<listitem>Kasama ang matatag na password dyeneretor.</listitem>
+		<listitem>Awtomatikong timeout upang protektahan ang mga naka-encrypt na dokumento.</listitem>
+		<listitem>Encrypt OI Talaan tala.</listitem>
+		<listitem>Suporta para sa Obscura kaha ng larawan.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>Magagamit na mga ekstensiyon  para sa "OI File Manedyer":</string>
+		<listitem>Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".</listitem>
+		<emptyline/>
+		<string>Applikasyon na gumagana sa "OI File Manager":</string>
+		<listitem>Encrypt ang mga tala na nilikha sa "OI Talaan".</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>kaha, encrpytion, password, proteksyon</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Bukas na mga Layunin</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Search strings para sa Merkado:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI Listahan ng Bilihin ay isang malakas na applikasyon na nagpapadali ng paglikha at mamahala ng mga checklists.</string>
+		<string>OI Listahan ng Bilihin ay nagpapadali na magdagdag ng mga bagay sa listahan, tanggalin ang tsek ng bagay, at alisin ito sa listahan.</string>
+		<string>Ang applikasyon ay maaaring magsubaybay ng iba-ibang presyo para sa bawat tindahan na iyong ginagamit, at tampok ang isang mataas na antas ng pagpapasadya.</string>
+		<string>Laki ng font, pagsasaayos ng pagkakasunod-sunod, mga kulumna ng listahan, at gawi ng paglilinis ng listahan ay lahat ng mga setting na kinokontrol ng gumagamit.</string>
+		<string>Ang lahat na mga tampok na ito ay naipagsasama sa isang sariwang kaayusan na napapasadya sa pamamagitan ng iba\'t ibang mga tema.</string>
+		<emptyline/>
+		<string>Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet.</string>
+		<emptyline/>
+		<string>Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>Tampok:</string>
+		<listitem>Magdagdag, i-edit at mag-alis ng mga listahan.</listitem>
+		<listitem>Lumikha, alisin, at suriin ang mga item ng mabilis at madali.</listitem>
+		<listitem>Iba\'t-ibang mga tema.</listitem>
+		<listitem>Napapasadya ang laki ng font at pagsasaayos ng pagkakasunod-sunod.</listitem>
+		<listitem>Subaybayan ang mga ibat-ibang mga presyo sa bawat tindahan.</listitem>
+		<listitem>Napapasadya na mga kolumna ng listahan.</listitem>
+		<emptyline/>
+		<string>Magagamit na mga ekstensyon para sa "OI Listahan ng Bilihin":</string>
+		<listitem>Magdagdag ng isang naitalang mensahe sa isang tala sa "OI Tala na Boses".</listitem>
+		<listitem>Import/export listahan ng bilihin with "OI Palitan CSV".</listitem>
+		<listitem>Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".</listitem>
+		<listitem>Ipasok / i-tsek ang mga bagay na may "Barcode OI Plugin".</listitem>
+		<emptyline/>
+		<string>Applikasyon na gumagana sa "OI Listahan ng Bilihin":</string>
+		<listitem>Magbago sa pamamagitan ng "OI Magbago".</listitem>
+		<listitem>Listahan ng Backup sa "My Backup Pro".</listitem>
+		<listitem>Import ang mga ingredients ng mga recipe sa "Kagat".</listitem>
+		<emptyline/>
+		<string>Keywords:</string>
+		<listitem>Bilihin, Listahan, Listahan ng Bilihin, Checklist</listitem>
+		<listitem>OI, OpenIntents, Bukas na Layunin</listitem>
+		<emptyline/>
+		<string>Internasyonal na mga bersyon:</string>
+		<international/>
+		<emptyline/>
+		<string>Ekstensiyon:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

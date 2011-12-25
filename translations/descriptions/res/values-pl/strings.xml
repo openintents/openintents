@@ -220,8 +220,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe bezpiecznie chroni wszystkie hasła i inne prywatne dane przy użyciu standardowego szyfrowania AES.</string>
+		<string>Działa również jako rozszerzenie do Ol Notepad aby szyfrować notatki w nim utworzone.</string>
 		<emptyline/>
 		<string>Ta aplikacja jest darmowa i nie wymaga dostępu do internetu.</string>
 		<emptyline/>
@@ -235,25 +235,25 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Cechy:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>Bezpieczna ochrona danych przy użyciu szyfrowania AES.</listitem>
+		<listitem>Swobodnie przenosić dane pomiędzy kategoriami.</listitem>
+		<listitem>Import / Eksport wpisów danych i baz danych.</listitem>
+		<listitem>Kopia zapasowa / Przywracanie wpisów.</listitem>
+		<listitem>Włączając generatora bezpiecznych haseł.</listitem>
+		<listitem>Automatyczny timeout żeby chronić zaszyfrowane dokumenty.</listitem>
+		<listitem>Szyfrowanie notatek Ol Notepad.</listitem>
+		<listitem>Wsparcie dla bezpiecznego obrazu Obscura.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
 		<string>Dostępne rozszerzenia dla "Ol File Manager":</string>
 		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
 		<emptyline/>
 		<string>Aplikacje, który pracują z "Ol File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>Szyfruj notatki utworzone w "Ol Notepad".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>bezpieczne, szyfrowanie, hasła, ochrona</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -298,24 +298,24 @@
 		<listitem>Dostosuj kolumny listy.</listitem>
 		<emptyline/>
 		<string>Dostępne rozszerzenia do "Listy zakupów Ol":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<listitem>Dodaj nagraną wiadomość do notatki używając "Ol Voice Notes".</listitem>
+		<listitem>Import/eksport list zakupów z "Ol Convert CSV".</listitem>
 		<listitem>Pokaż informacje licencyjne z "O Ol".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<listitem>Wprowadź/sprawdź pozycje używając "Barcode Ol Plugin".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
+		<string>Aplikacje, które pracują z "Ol Shopping List":</string>
 		<listitem>Aktualizuj z "OI Uptade".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<listitem>Kopia zapasowa list z "My Backup Pro".</listitem>
+		<listitem>Importuj składniki przepisów z "Bites".</listitem>
 		<emptyline/>
 		<string>Słowa kluczowe:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>Zakupy, Lista, Lista zakupów, Lista kontrolna</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Wersje międzynarodowe:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Rozszerzenia:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

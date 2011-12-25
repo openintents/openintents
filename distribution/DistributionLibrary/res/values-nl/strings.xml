@@ -8,6 +8,7 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Anshuman Jaiswal https://launchpad.net/~good-anshuman
   Menno Vogel https://launchpad.net/~mennovogel90
   OpenIntents devs https://launchpad.net/~openintents-devs
   Willem-Martijn Brink https://launchpad.net/~willem-brink</string>
@@ -23,13 +24,13 @@
 	
 	<!-- EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 		Translation can be as long as required. -->
-	<string name="oi_distribution_eula_message">Please read and accept the following End User License Agreement (EULA) for %s.</string>
+	<string name="oi_distribution_eula_message">Lees en accepteer de volgende licentieovereenkomst voor eindgebruikers (EULA) voor %s.</string>
 	
 	<!-- Button: Accept terms of EULA. -->
-	<string name="oi_distribution_eula_accept">Accept</string>
+	<string name="oi_distribution_eula_accept">Accepteren</string>
 	
 	<!-- Button: Refuse terms of EULA. -->
-	<string name="oi_distribution_eula_refuse">Cancel</string>
+	<string name="oi_distribution_eula_refuse">Annuleren</string>
 	
 	<!-- New version -->
 	<!-- Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
@@ -37,16 +38,16 @@
 	<string name="oi_distribution_name_and_version">%1$s %2$s</string>
 	
 	<!-- Welcome message. %s is an application name. -->
-	<string name="oi_distribution_newversion_message">Welcome to this new version of %s.</string>
+	<string name="oi_distribution_newversion_message">Welkom bij deze nieuwe versie van %s.</string>
 	
-	<string name="oi_distribution_newversion_recent_changes">Recent changes:</string>
+	<string name="oi_distribution_newversion_recent_changes">Recente wijzigingen:</string>
 	
 	<!-- Button: Continue to main application. -->
-	<string name="oi_distribution_newversion_continue">Doorgaan</string>
+	<string name="oi_distribution_newversion_continue">voortzetten</string>
 	
 	<!-- Update -->
 	<!-- Menu command to look for updates. -->
-    <string name="oi_distribution_menu_update">Check updates</string>
+    <string name="oi_distribution_menu_update">Controleer updates</string>
 	<string name="oi_distribution_update_box_text">Check manually for updates or install OI Update for automatic notifications.</string>
 	<string name="oi_distribution_update_check_now">Check now</string>
 	<string name="oi_distribution_update_get_updater">Get OI Updater</string>
@@ -67,6 +68,11 @@
     
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
     <string name="oi_distribution_aboutapp">OI About</string>
+    
+    <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
+    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <!-- Dialog message. -->
+    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
     
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI File Manager</string>

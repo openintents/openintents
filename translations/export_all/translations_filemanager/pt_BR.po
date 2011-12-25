@@ -393,9 +393,8 @@ msgid "Cancel"
 msgstr ""
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "Escolha a pasta para onde deseja mover"
+msgstr ""
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"

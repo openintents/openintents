@@ -5,3 +5,52 @@ OI에 대하여
 A standalone about dialog that is shared between apps.
 
 # Description:
+OI에 대하여는 앱 간 공유되는 대화 상자입니다. 이 앱은 다른 OI 앱의 메뉴를 통해 실행됩니다. 앱의 버전 정보, 링크, 크레딧, 그리고 라이선스를 볼 수 있게 해드립니다. 크레딧은 제작자, 문서, 번역자, 그리고 아티스트를 포함합니다. 이 모든 기능은 간결하고 효율적으로 배치되어 있습니다. 
+
+이 앱은 광고가 없으며 인터넷에 접속하지 않습니다. 
+
+이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다: 
+http://code.google.com/p/openintents
+
+모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다: 
+http://www.openintents.org
+
+당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다: 
+https://translations.launchpad.net/openintents/trunk
+
+기능: 
+* 일반 정보, 크레딧, 그리고 라이선스 탭을 보여줍니다.
+* 모든 언어 버전의 변역자를 보여줍니다.
+* 기본 태그와 메타데이터를 통해 앱 마니페스트에서 정보를 가져옵니다.
+* 선택적으로, 모든 내용은 intent extra를 통해 수정할 수 있습니다.
+
+"OI에 대해서" 와 호환되는 앱들: 
+* OI 메모장
+* OI 파일 관리자
+* OI 쇼핑 목록
+* OI CSV 변환기
+* OI 금고
+* OI 카운트다운
+* OI 전등
+
+키워드: 
+* 대하여, 크레딧, 정보.
+* OI, OpenIntents, Open Intents.
+
+국제 버전들: 
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+
+
+마켓에서 검색하기: 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

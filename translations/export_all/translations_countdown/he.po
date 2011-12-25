@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Neta Oren <Unknown>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,287 +21,289 @@ msgstr ""
 #: tmp_strings.xml:8(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Neta Oren https://launchpad.net/~netao212"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)
 msgid "OI Countdown notifies you after a specified amount of time."
-msgstr ""
+msgstr "סופר לאחור OI יידע אותך אחרי כמות מסוימת של זמן"
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
 #: tmp_strings.xml:17(string) tmp_strings.xml:56(string)
 msgid "OI Countdown"
-msgstr ""
+msgstr "סופר לאחור OI"
 
 #: tmp_strings.xml:19(string)
 msgid "Start"
-msgstr ""
+msgstr "הפעלה"
 
 #: tmp_strings.xml:20(string)
 msgid "Stop"
-msgstr ""
+msgstr "עצור"
 
 #: tmp_strings.xml:21(string)
 msgid "Modify"
-msgstr ""
+msgstr "שינוי"
 
 #: tmp_strings.xml:22(string)
 msgid "Continue"
-msgstr ""
+msgstr "המשך"
 
 #: tmp_strings.xml:24(string)
 msgid "Use menu to add new countdown."
-msgstr ""
+msgstr "השתמש בתפריט כדי להוסיף ספירה לאחור חדשה"
 
 #: tmp_strings.xml:25(string)
 msgid "Countdown list"
-msgstr ""
+msgstr "רשימת ספירה לאחור"
 
 #: tmp_strings.xml:27(string)
 msgid "Delete"
-msgstr ""
+msgstr "מחק"
 
 #: tmp_strings.xml:28(string)
 msgid "Edit"
-msgstr ""
+msgstr "ערוך"
 
 #: tmp_strings.xml:29(string)
 msgid "Add countdown"
-msgstr ""
+msgstr "הוסף ספירה לאחור"
 
 #: tmp_strings.xml:30(string)
 msgid "Ringtone"
-msgstr ""
+msgstr "צליל"
 
 #. Menu item: Set the countdown by setting a final date or deadline.
 #: tmp_strings.xml:33(string)
 msgid "Set date"
-msgstr ""
+msgstr "קבע תאריך"
 
 #. Menu item: Set the countdown by setting a duration.
 #: tmp_strings.xml:36(string)
 msgid "Set duration"
-msgstr ""
+msgstr "קבע משך זמן"
 
 #. Menu item: Set the action to be performed at the end of the countdown.
 #: tmp_strings.xml:39(string)
 msgid "Set action"
-msgstr ""
+msgstr "בחר פעולה"
 
 #: tmp_strings.xml:41(string)
 msgid "e.g. pizza"
-msgstr ""
+msgstr "לדוגמא פיצה"
 
 #. Title of the activity for setting (editing) the countdown.
 #: tmp_strings.xml:44(string)
 msgid "Set countdown"
-msgstr ""
+msgstr "קבע ספירה לאחור"
 
 #. Title of the activity for creating a new countdown.
 #: tmp_strings.xml:47(string)
 msgid "Create countdown"
-msgstr ""
+msgstr "צור ספירה לאחור"
 
 #. Title of the activity for editing the countdown.
 #: tmp_strings.xml:50(string)
 msgid "Edit countdown"
-msgstr ""
+msgstr "ערוך ספירה לאחור"
 
 #. Title of the activity for editing the countdown.
 #: tmp_strings.xml:53(string)
 msgid "Pick countdown"
-msgstr ""
+msgstr "בחר ספירה לאחור"
 
 #. Title of the activity when an internal error occurs. This should practially never happen.
 #: tmp_strings.xml:59(string)
 msgid "Error"
-msgstr ""
+msgstr "שגיאה"
 
 #. Message to display when an internal error occurs. This should practially never happen.
 #: tmp_strings.xml:62(string)
 msgid "Error loading countdown"
-msgstr ""
+msgstr "שגיאה במהלך טעינת ספירה לאחור"
 
 #. Checkbox label whether to notifications.
 #: tmp_strings.xml:67(string)
 msgid "Notification in status bar"
-msgstr ""
+msgstr "הודעה בפס עדכון"
 
 #. Checkbox label whether to launch automation task through the status bar
 #: tmp_strings.xml:70(string)
 msgid "Launch through status bar"
-msgstr ""
+msgstr "הפעלה דרך פס עדכון"
 
 #. Checkbox label whether to use the ring tone for notifications.
 #: tmp_strings.xml:73(string)
 msgid "Ring"
-msgstr ""
+msgstr "טבעת"
 
 #. Checkbox label whether to vibrate.
 #: tmp_strings.xml:76(string)
 msgid "Vibrate"
-msgstr ""
+msgstr "רטט"
 
 #. Checkbox label whether to flash light for notifications.
 #: tmp_strings.xml:79(string)
 msgid "Light"
-msgstr ""
+msgstr "בהיר"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:82(string)
 msgid "Action: %s"
-msgstr ""
+msgstr "פעולה %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:85(string)
 msgid "Select action: %s"
-msgstr ""
+msgstr "בחר פעולה : %s"
 
 #. Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.
 #: tmp_strings.xml:88(string)
 msgid "Select countdown: %s"
-msgstr ""
+msgstr "בחר ספירה לאחור: %s"
 
 #. Button to test an action.
 #: tmp_strings.xml:91(string)
 msgid "Test"
-msgstr ""
+msgstr "בדיקה"
 
 #. Button to view / edit settings.
 #: tmp_strings.xml:94(string)
 msgid "Settings"
-msgstr ""
+msgstr "הגדרות אישיות"
 
 #. Button label to dismiss notification after countdown ended.
 #: tmp_strings.xml:97(string)
 msgid "Dismiss"
-msgstr ""
+msgstr "הסר"
 
 #. For the countdown display. "%s" is the number of days remaining (more than 1).
 #: tmp_strings.xml:100(string)
 msgid "days"
-msgstr ""
+msgstr "ימים"
 
 #. For the countdown display. "%s" is 1 (the number of days remaining).
 #: tmp_strings.xml:103(string)
 msgid "day"
-msgstr ""
+msgstr "יום"
 
 #. Options in "Select action" dialog box; Title of the group containing the list of all apps
 #: tmp_strings.xml:108(string)
 msgid "Applications"
-msgstr ""
+msgstr "ישומים"
 
 #. Options in "Select action" dialog box; Title of the group containing the list of all shortcuts
 #: tmp_strings.xml:110(string)
 msgid "Shortcuts"
-msgstr ""
+msgstr "קיצורי־דרך"
 
 #. Options in "Select action" dialog box; Title of the group containing the list of all automation tasks
 #: tmp_strings.xml:112(string)
 msgid "Automation tasks"
-msgstr ""
+msgstr "משימות אוטומטיות"
 
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:116(string)
 msgid "Select shortcut"
-msgstr ""
+msgstr "בחר קיצור דרך"
 
 #. Title of dialog when user is selecting shortcut to add as activity
 #: tmp_strings.xml:119(string)
 msgid "Select automation task"
-msgstr ""
+msgstr "בחר משימה אוטומטית"
 
 #. The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action.
 #: tmp_strings.xml:122(string)
 msgid "Select activity"
-msgstr ""
+msgstr "בחר פעילות"
 
 #. Automation action to start a countdown.
 #: tmp_strings.xml:128(item)
 msgid "Start countdown"
-msgstr ""
+msgstr "התחל ספירה לאחור"
 
 #. Automation action to stop a countdown.
 #: tmp_strings.xml:130(item)
 msgid "Stop countdown"
-msgstr ""
+msgstr "עצור ספירה לאחור"
 
 #. Preference section title for general settings regarding the countdown
 #: tmp_strings.xml:138(string)
 msgid "Countdown"
-msgstr ""
+msgstr "ספירה לאחור"
 
 #: tmp_strings.xml:140(string)
 msgid "Extensions"
-msgstr ""
+msgstr "הרחבות"
 
 #: tmp_strings.xml:141(string)
 msgid "Get new extensions"
-msgstr ""
+msgstr "השג הרחבה חדשה"
 
 #: tmp_strings.xml:142(string)
 msgid "Search for extensions online."
-msgstr ""
+msgstr "חפש הרחבות אונליין"
 
 #: tmp_strings.xml:143(string)
 msgid "Get extensions from"
-msgstr ""
+msgstr "השג הרחבות מן"
 
 #: tmp_strings.xml:144(string)
 msgid "Android Market"
-msgstr ""
+msgstr "שוק אנדרואיד"
 
 #: tmp_strings.xml:145(string)
 msgid "Search for extensions at Android Market."
-msgstr ""
+msgstr "חפש הרחבות בשוק האנדרואיד"
 
 #: tmp_strings.xml:146(string)
 msgid "OpenIntents"
-msgstr ""
+msgstr "כוונות פתוחות"
 
 #: tmp_strings.xml:147(string)
 msgid "Get extensions from the OpenIntents homepage."
-msgstr ""
+msgstr "השג הרחבות מעמוד הבית של OpenIntents"
 
 #. Preference title: Set the notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:150(string)
 msgid "Notification timeout"
-msgstr ""
+msgstr "פסק זמן הודעות"
 
 #. Preference summary: Set notification timeout (2 sec, 10 min, ...)
 #: tmp_strings.xml:153(string)
 msgid "Timeout for ring, vibrate, or light notification."
-msgstr ""
+msgstr "פסק זמן לחידוש צלצול, רטט, או הבהוב"
 
 #. Dialog title to set timeout for notification
 #: tmp_strings.xml:156(string)
 msgid "Set timeout"
-msgstr ""
+msgstr "בחר פסק זמן"
 
 #: tmp_strings.xml:160(item)
 msgid "2 seconds"
-msgstr ""
+msgstr "2 שניות"
 
 #: tmp_strings.xml:161(item)
 msgid "5 seconds"
-msgstr ""
+msgstr "5 שניות"
 
 #: tmp_strings.xml:162(item)
 msgid "10 seconds"
-msgstr ""
+msgstr "10 שניות"
 
 #: tmp_strings.xml:163(item)
 msgid "30 seconds"
-msgstr ""
+msgstr "30 שניות"
 
 #: tmp_strings.xml:164(item)
 msgid "1 minute"
-msgstr ""
+msgstr "דקה אחת"
 
 #: tmp_strings.xml:165(item)
 msgid "5 minutes"
-msgstr ""
+msgstr "5 דקות"
 
 #: tmp_strings.xml:166(item)
 msgid "10 minutes"
-msgstr ""
+msgstr "10 דקות"

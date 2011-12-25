@@ -5,40 +5,40 @@ OI Flashlight
 OpenIntents Flashlight vous aide à trouver votre chemin dans le noir. La lumière d'affichage arrière reste allumée tant que l'application est en marche.
 
 # Description:
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+OI Flashlight est une application simple et efficace qui vous aide à trouver un chemin dans le noir. OI Flashlight verrouille le rétroéclairage de l'écran sur le, clairement éclairant la zone environnante. Pour les appareils avec un flash d'appareil photo, lampe de poche OI peut aussi utiliser le flash comme une torche lumineuse pour égayer la pièce. La couleur du rétroéclairage est entièrement personnalisable avec Color Picker OI. 
 
-This application is ad free and does not require the internet permission. 
+Cette application est petite annonce gratuite et ne nécessite pas l'autorisation d'Internet. 
 
-The source code of this free and open source application is available at: 
+Le code source de cette application libre et open source est disponible à l'adresse: 
 http://code.google.com/p/openintents
 
-For the complete list of changes and a list of frequently asked questions, please visit: 
+Pour la liste complète des changements et une liste de questions fréquemment posées, s'il vous plaît visitez: 
 http://www.openintents.org
 
-You can help to improve the translation into your language at Launchpad: 
+Vous pouvez contribuer à améliorer la traduction dans votre langue au Launchpad: 
 https://translations.launchpad.net/openintents/trunk
 
-Features: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+caractéristiques: 
+* Verrouiller le rétro-éclairage.
+* Verrouiller la caméra flash.
+* La couleur du rétroéclairage est personnalisable.
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+Extensions disponibles pour "Flashlight OI ": 
+* Voir les informations de licence avec "OI propos ".
+* Changer la couleur du rétroéclairage avec "Color Picker OI ".
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+Applications qui fonctionnent avec "Flashlight OI ": 
+* Mise à jour avec " OI Update".
 
-Keywords: 
+Mots-clés: 
 * Flashlight, light, Backlight
 * OI, OpenIntents, Open Intents
 
-International versions: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Les versions internationales: 
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
-Search strings for Market: 
+Les chaînes de recherche pour le marché: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

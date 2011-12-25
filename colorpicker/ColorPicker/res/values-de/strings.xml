@@ -6,10 +6,12 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Daniel Winzen https://launchpad.net/~q-d
   Etienne Ruedin https://launchpad.net/~ruedin
   OpenIntents devs https://launchpad.net/~openintents-devs
   Patrick Eigensatz https://launchpad.net/~p.eigensatz
   Peli https://launchpad.net/~peli0101
+  Stefan Fenzke https://launchpad.net/~stefan-fenzke
   appricoo https://launchpad.net/~appricoo</string>
 	
 	<!-- Strings for OI About -->
@@ -19,7 +21,7 @@
 	     Application-specific strings
 	     *************************** -->
 	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
-    <string name="app_name">OI-Farbwähler</string>
+    <string name="app_name">OI Color Picker</string>
     
     <!-- Title of the color picker activity. -->
     <string name="color_picker">Farbwähler</string>
@@ -63,6 +65,6 @@
 	<string name="info_activity_text">Diese App kann mit mit folgenden Anwedungen verwendet werden:</string>
     <string name="info_launch">Starte %s</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">Diese Anwendung benötigt %1$s %2$s Auflösung oder höher.</string>
+	<string name="info_not_available">Diese Anwendung benötigt %1$s %2$s oder höher.</string>
 	<string name="info_get">%s herunterladen</string>
 </resources>

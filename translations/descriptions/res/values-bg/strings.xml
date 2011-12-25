@@ -3,6 +3,7 @@
 	<translators>Launchpad Contributions:
   Boyan Penchev https://launchpad.net/~boyan-penchev
   Dariel Kremov https://launchpad.net/~dkremov
+  Nikolay https://launchpad.net/~niki1312
   OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -12,13 +13,13 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI About е самостоятелен, обяснителен диалогов прозорец, който се споделя между приложения.</string>
+		<string>Това приложение се извиква през менюто на други OI приложения.</string>
+		<string>То Ви позволява да преглеждате информация за версията, връзки, благодарности и лиценза на дадено приложение.</string>
+		<string>Благодарностите споменават авторите, документацията, преводачите и художниците.</string>
+		<string>Всичката тази функционалност е събрана заедно в опростено и ефективно оформление.</string>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -30,22 +31,22 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>Показва подпрозорци за обща информация, благодарности и лиценз.</listitem>
+		<listitem>Показва преводачите на всички езици.</listitem>
+		<listitem>Извлича информация от приложението чрез тагове по подразбиране и мета-данни.</listitem>
+		<listitem>По желание, всички полета могат да бъдат променени чрез наличните екстри.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>Приложения, които работят с "OI About":</string>
 		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
+		<listitem>OI File Manager</listitem>
+		<listitem>Списък за пазаруване на OI</listitem>
 		<listitem>OI Convert CSV</listitem>
 		<listitem>OI Safe</listitem>
 		<listitem>OI Countdown</listitem>
 		<listitem>OI Flashlight</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<listitem>За нас, Благодарности, Информация</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>Международни версии:</string>
@@ -69,7 +70,7 @@
 и да изтривате файлове.</string>
 		<string>Той действа и като добавка към други приложения за показване на "Отвори" и "Запамети":</string>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
 		<link href="http://www.openintents.org"/>
@@ -84,16 +85,16 @@
 		<listitem>Покажи списък на файловете с миниатюри за изображения.</listitem>
 		<listitem>Преместване,копиране,преименуване и изтриване на файлове.</listitem>
 		<listitem>Създаване и изтриване на директории(папки).</listitem>
-		<listitem>Изпрати файловете по e-mail.</listitem>
+		<listitem>Изпратете файловете по email.</listitem>
 		<listitem>Работи и като добавка за други приложения,като GMail ,за прикачване на файлове.</listitem>
-		<listitem>Поддържа много файлови разширения и mime видове.</listitem>
+		<listitem>Поддържа много файлови разширения и mime типове.</listitem>
 		<listitem>Поддържа PICK_FILE и PICK_DIRECTORY ,така че и други приложения да могат да използват OI File Manager.</listitem>
 		<emptyline/>
 		<string>Налични разширения за "OI File Manager":</string>
 		<listitem>Покажи информация за лиценза с "OI About".</listitem>
 		<emptyline/>
 		<string>Приложения, които работят със "OI File Manager":</string>
-		<listitem>Отваряйте и запазвайте текстови файлове в "OI Notepad".</listitem>
+		<listitem>Отваряне и запазване на текстови файлове в "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -117,12 +118,12 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Flashlight е просто и ефективно приложение, което Ви позволява да откривате пътя си в тъмното.</string>
+		<string>OI Flashlight включва подсветката на дисплея, като по този начин ясно осветява околността.</string>
+		<string>При устройства със светкавица на камерата, OI Flashlight може също да използва и светкавицата като ярък факел за да освети стаята.</string>
+		<string>Цветът на подсветката може напълно да се персонализира с OI Color Picker.</string>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -134,19 +135,19 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>Включване на подсветката на дисплея.</listitem>
+		<listitem>Включи светкавицата на камерата.</listitem>
+		<listitem>Цветът на подсветката може да се персонализира.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
+		<string>Налични разширения за "OI Flashlight":</string>
 		<listitem>Покажи информация за лиценза с "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<listitem>Промени цвета на осветяването на дисплея с "OI Color Picker".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
+		<string>Приложения, които работят с "OI Flashlight":</string>
 		<listitem>Обновявай с "OI Update".</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>Flashlight, фенерче, светлина, осветяване на дисплея</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Международни версии:</string>
@@ -169,7 +170,7 @@
 		<string>Допълнителни функции като шифроване, импортиране/експортиране, и гласови записки могат да се добавят с разширения.</string>
 		<string>Цялата тази функционалност е събрана заедно в опростен и ефективен изглед, който може да се персонализира с разнообразие от палитри.</string>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -221,10 +222,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe пази в безопастност всичките Ви пароли и други лични данни, използвайки AES шифроване на индустриално ниво.</string>
+		<string>То също действа и като разширение за OI Notepad за да се шифроват бележки, създадени в OI Notepad.</string>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
 		<link href="http://www.openintents.org"/>
@@ -236,25 +237,25 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>Предпазвай данни използвайки AES шифроване.</listitem>
+		<listitem>Свободно местете елементи данни между категориите.</listitem>
+		<listitem>Импортирайте/екстпортирайте елементи данни и бази данни.</listitem>
+		<listitem>Направете резервни копия на/Възстановете елементи.</listitem>
+		<listitem>Включва сигурен генератор на пароли.</listitem>
+		<listitem>Автоматично прекъсване след пресрочване на период от време, за да се предпазват шифровани документи.</listitem>
+		<listitem>Шифровайте OI Notepad бележки.</listitem>
+		<listitem>Поддържа Obscura picture safe.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
 		<string>Налични разширения за "OI File Manager":</string>
 		<listitem>Покажи информация за лиценза с "OI About".</listitem>
 		<emptyline/>
 		<string>Приложения, които работят със "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<listitem>Шифровайте създадени с OI Notepad бележки.</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>safe, безопастност, парола, предпазване</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
@@ -273,16 +274,16 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>OI Shopping List е мощно приложение, с което е лесно да създавате и да управлявате списъци.</string>
+		<string>С OI Shopping List е лесно да добавите артикули към списък, да го отметнете артикул и да го премахнете от списъка.</string>
+		<string>Приложението може да следи различни цени за всеки магазин, който използвате и предлага високо ниво на персонализация.</string>
+		<string>Размера на шрифта, начина на сортиране, колоните на списъка и разчистването на списъка - всички те могат да се настройват от потребителя.</string>
+		<string>Всички тези функции са събрани заедно в ясен изглед, който може да се персонализира благодарение на множеството палитри.</string>
 		<emptyline/>
 		<string>Изходният код на това безплатно приложение с  отворен код е достъпен на адрес:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
-		<string>Тази апликация е безплатна и не изисква интернет за ползването и.</string>
+		<string>Това приложение е безплатно и не изисква интернет за ползването ѝ.</string>
 		<emptyline/>
 		<string>За пълен списък с промените и често задаваните въпроси,моля посетете:</string>
 		<link href="http://www.openintents.org"/>
@@ -291,32 +292,32 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Характеристики:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>Добавяйте, редактирайте и изтривайте списъци.</listitem>
+		<listitem>Създавайте, изтривайте и отмятайте артикули бързо и лесно.</listitem>
+		<listitem>Множество палитри.</listitem>
+		<listitem>Големината на шрифта и начина на сортиране могат да се настройват.</listitem>
+		<listitem>Следете различни цени за всеки магазин.</listitem>
+		<listitem>Персонализиране на колоните в списъка</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
+		<string>Налични разширения за "OI Shopping List":</string>
+		<listitem>Добавяне на съобщение записано като бележка, чрез "OI Voice Notes".</listitem>
+		<listitem>Внасяне/изнасяне на списъци с покупки, чрез \"OI Convert CSV\".</listitem>
 		<listitem>Покажи информация за лиценза с "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<listitem>Въвеждане/проверяване на обекти посредством \"Barcode OI Plugin\".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
+		<string>Приложения, които работят с "OI Shopping List":</string>
 		<listitem>Обновявай с "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<listitem>Архивиране на списъци с \"My Backup Pro\".</listitem>
+		<listitem>Добавяне на съставки за рецепти с "Bites".</listitem>
 		<emptyline/>
 		<string>Ключови думи:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>Пазаруване, Списък, Списък за пазаруване, Контролен списък</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Международни версии:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Разширения:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

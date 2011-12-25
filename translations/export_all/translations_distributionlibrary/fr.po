@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: Anshuman Jaiswal <Unknown>\n"
 "Language-Team: French <fr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,18 +19,20 @@ msgstr ""
 
 #: tmp_strings.xml:3(string)
 msgid "OI Distribution Library"
-msgstr ""
+msgstr "OI Bibliothèque de distribution"
 
 #. Automatically filled in by Launchpad:
 #: tmp_strings.xml:10(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Anshuman Jaiswal https://launchpad.net/~good-anshuman"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
 #: tmp_strings.xml:19(string)
 msgid "%s EULA"
-msgstr ""
+msgstr "%s CLUF"
 
 #. EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 #. 		Translation can be as long as required.
@@ -39,68 +41,72 @@ msgid ""
 "Please read and accept the following End User License Agreement (EULA) for %"
 "s."
 msgstr ""
+"S'il vous plaît lire et accepter le Contrat de Licence Utilisateur suivantes "
+"(CLUF) pour %s"
 
 #. Button: Accept terms of EULA.
 #: tmp_strings.xml:26(string)
 msgid "Accept"
-msgstr ""
+msgstr "Accepter"
 
 #. Button: Refuse terms of EULA.
 #: tmp_strings.xml:29(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #. Application name and version. %1$s is the application name (e.g. "OI Notepad") and %2$s is the version number (e.g. "1.2.0").
 #. 	Keep unmodified, unless your language requires that the version number is displayed first.
 #: tmp_strings.xml:34(string)
 msgid "%1$s %2$s"
-msgstr ""
+msgstr "%1$s %2$s"
 
 #. Welcome message. %s is an application name.
 #: tmp_strings.xml:37(string)
 msgid "Welcome to this new version of %s."
-msgstr ""
+msgstr "Bienvenue dans cette nouvelle version de %s"
 
 #: tmp_strings.xml:39(string)
 msgid "Recent changes:"
-msgstr ""
+msgstr "Changements récents:"
 
 #. Button: Continue to main application.
 #: tmp_strings.xml:42(string)
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 #. Menu command to look for updates.
 #: tmp_strings.xml:46(string)
 msgid "Check updates"
-msgstr ""
+msgstr "Vérifiez les mises à jour"
 
 #: tmp_strings.xml:47(string)
 msgid ""
 "Check manually for updates or install OI Update for automatic notifications."
 msgstr ""
+"Vérifier manuellement les mises à jour ou d'installer mise à jour de l'OI "
+"pour les notifications automatiques."
 
 #: tmp_strings.xml:48(string)
 msgid "Check now"
-msgstr ""
+msgstr "Vérifier maintenant"
 
 #: tmp_strings.xml:49(string)
 msgid "Get OI Updater"
-msgstr ""
+msgstr "Obtenez OI miser à jour"
 
 #: tmp_strings.xml:50(string)
 msgid "Download application not available."
-msgstr ""
+msgstr "Télécharger l'application indisponible."
 
 #. Name of the application "OI Update". Translations of the application name should be consistent.
 #: tmp_strings.xml:53(string)
 msgid "OI Update"
-msgstr ""
+msgstr "OI mise à jour"
 
 #. Menu command to open the "about" or "info" dialog.
 #: tmp_strings.xml:57(string)
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #. %s is the version number (e.g. "1.2.1")
 #: tmp_strings.xml:59(string)
@@ -108,91 +114,107 @@ msgid ""
 "No compatible extension available to display full info (contact, credits, "
 "license)."
 msgstr ""
+"Pas d'extension compatibles disponibles pour afficher les informations "
+"complet (contact, crédits, licence)."
 
 #. Button text: Get the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:63(string)
 msgid "Get OI About"
-msgstr ""
+msgstr "Obtenir OI propos"
 
 #. Name of the application "OI About". Translations of the application name should be consistent.
 #: tmp_strings.xml:66(string)
 msgid "OI About"
-msgstr ""
+msgstr "OI propos"
 
-#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
-msgid "OI File Manager"
+msgid "Barcode OI Plugin"
 msgstr ""
 
 #. Dialog message.
 #: tmp_strings.xml:71(string)
-msgid "No compatible file manager is available."
-msgstr ""
+#, fuzzy
+msgid "No compatible barcode scanner is available."
+msgstr "Aucun gestionnaire de fichiers compatibles sont disponibles."
 
-#. Name of the application "OI Safe". Translations of the application name should be consistent.
-#: tmp_strings.xml:75(string)
-msgid "OI Safe"
-msgstr ""
+#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#: tmp_strings.xml:74(string)
+msgid "OI File Manager"
+msgstr "OI gestionnaire de fichiers"
 
 #. Dialog message.
-#: tmp_strings.xml:77(string)
-msgid "No compatible application for encryption is available."
-msgstr ""
+#: tmp_strings.xml:76(string)
+msgid "No compatible file manager is available."
+msgstr "Aucun gestionnaire de fichiers compatibles sont disponibles."
 
-#: tmp_strings.xml:78(string)
+#. Name of the application "OI Safe". Translations of the application name should be consistent.
+#: tmp_strings.xml:80(string)
+msgid "OI Safe"
+msgstr "OI sûre"
+
+#. Dialog message.
+#: tmp_strings.xml:82(string)
+msgid "No compatible application for encryption is available."
+msgstr "Pas d'application compatibles pour le cryptage est disponible."
+
+#: tmp_strings.xml:83(string)
 msgid ""
 "No compatible application for decryption is available.\\n\\nNote: You have "
 "to restore the master key from a backup file in order to access previously "
 "encrypted data."
 msgstr ""
+"Aucune application compatible pour le décryptage est disponible \\ n \\ "
+"nRemarque:. Vous devez restaurer la clé principale d'un fichier de "
+"sauvegarde afin d'accéder à des données précédemment chiffrées."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
-msgstr ""
+msgstr "S'il vous plaît télécharger %s du marché ou le site Web OpenIntents."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:88(string)
 msgid "Please download %s from the OpenIntents website."
-msgstr ""
+msgstr "S'il vous plaît télécharger %s sur le site OpenIntents."
 
 #. Dialog button: download the suggested application from Android Market.
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:90(string)
 msgid "Market download"
-msgstr ""
+msgstr "Télécharger le marché"
 
 #. Dialog button: download the suggested application from the developer web site.
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:92(string)
 msgid "Web download"
-msgstr ""
+msgstr "téléchargement sur le Web"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:94(string)
 msgid "Download %s"
-msgstr ""
+msgstr "Télécharger %s"
 
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:97(string)
 msgid "%s can be used with the following applications:"
-msgstr ""
+msgstr "%s peut être utilisé avec les applications suivantes:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:99(string)
 msgid "Launch %s"
-msgstr ""
+msgstr "Lancer %s"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:102(string)
 msgid "%1$s requires %2$s %3$s or higher."
-msgstr ""
+msgstr "% 1 $ s% requiert% 2 $ s 3 s $ ou plus."
 
 #. Title of a dialog.
-#: tmp_strings.xml:99(string)
+#: tmp_strings.xml:104(string)
 msgid "Instructions"
-msgstr ""
+msgstr "des instructions"
 
 #. Error message
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:106(string)
 msgid "Application could not be launched"
-msgstr ""
+msgstr "Application n'a pas pu être lancé"

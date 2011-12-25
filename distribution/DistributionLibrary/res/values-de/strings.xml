@@ -70,10 +70,15 @@
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
     <string name="oi_distribution_aboutapp">OI About</string>
     
+    <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
+    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <!-- Dialog message. -->
+    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI Dateimanager</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">Kein kompatibler Dateimanager gefunden.</string>
+    <string name="oi_distribution_filemanager_not_available">Kein kompatibler Dateimanager vorhanden.</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->

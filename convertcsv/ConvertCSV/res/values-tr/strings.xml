@@ -24,6 +24,7 @@
  	<string name="about_translators">Launchpad Contributions:
   Huseyin AKSU https://launchpad.net/~huseyinaksu95
   OpenIntents devs https://launchpad.net/~openintents-devs
+  ariza95 https://launchpad.net/~alirizanazli95
   zeugma https://launchpad.net/~sunder67</string>
 	
 	<!-- Explanation what this application does. -->
@@ -126,7 +127,7 @@
     <string-array name="notepad_format">
         <item>MS Outlook Notları</item>
         <item>Palm CSV</item>
-        <item>JPilot Memo</item>
+        <item>JPilot Notu</item>
     </string-array>
     
     <string-array name="shoppinglist_format">

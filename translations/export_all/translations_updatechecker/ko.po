@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: CSro <choongsan@gmail.com>\n"
+"Last-Translator: Jihyeok Seo <Unknown>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  CSro https://launchpad.net/~choongsan"
+"  Jihyeok Seo https://launchpad.net/~limeburst"
 
 #. ***************************
 #. 	     Applicatio-specific strings
@@ -37,15 +37,15 @@ msgstr "%s의 새로운 버전이 있습니다.\\n업그래이드를 하시겠�
 
 #: tmp_strings.xml:16(string)
 msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
-msgstr ""
+msgstr "%1$s 의 새로운 버전을 %2$s 에서 받을 수 있습니다.\\n%3$s\\n"
 
 #: tmp_strings.xml:17(string)
 msgid "A new version of %1$s is available.\\n%2$s\\n"
-msgstr ""
+msgstr "%1$s 의 새로운 버전이 있습니다.\\n%2$s\\n"
 
 #: tmp_strings.xml:18(string)
 msgid "A new version of %1$s is available at %2$s."
-msgstr ""
+msgstr "%1$s 의 새로운 버전을 %2$s 에서 받을 수 있습니다."
 
 #: tmp_strings.xml:19(string)
 msgid "A new version of %s is available."
@@ -53,7 +53,7 @@ msgstr "%s의 새로운 버전이 있습니다."
 
 #: tmp_strings.xml:20(string)
 msgid "Android Market not available."
-msgstr ""
+msgstr "안드로이드 마켓에 접속할 수 없습니다."
 
 #: tmp_strings.xml:22(string)
 msgid "Android Market"
@@ -65,7 +65,7 @@ msgstr "AndAppStore.com"
 
 #: tmp_strings.xml:25(string)
 msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
-msgstr ""
+msgstr "Version %1$s\\nSD 카드 %2$s\\n\\nOS\\n%3$s"
 
 #: tmp_strings.xml:26(string)
 msgid "free space: %s"
@@ -73,7 +73,7 @@ msgstr "남은 공강: %s"
 
 #: tmp_strings.xml:27(string)
 msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
-msgstr ""
+msgstr "보드 %1$s\\n브랜드 %2$s\\n디바이스 %3$s\\nID %4$s\\n모델 %5$s"
 
 #: tmp_strings.xml:29(string)
 msgid "Perform update now!"
@@ -107,7 +107,7 @@ msgstr "확인"
 msgid ""
 "Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
 "%s"
-msgstr ""
+msgstr "업데이트를 시작할 수 없습니다!\\n\\n앱 개발자에게 연락하세요\\n\\n%s"
 
 #: tmp_strings.xml:38(string)
 msgid "Application is up-to-date."
@@ -119,7 +119,7 @@ msgstr "새로운 버전을 확인중입니다."
 
 #: tmp_strings.xml:40(string)
 msgid "Building list of applications."
-msgstr ""
+msgstr "앱 목록 작성 중."
 
 #: tmp_strings.xml:41(string)
 msgid "Check AndAppStore.com"
@@ -147,7 +147,7 @@ msgstr "현재 버전: %s"
 
 #: tmp_strings.xml:47(string)
 msgid "Current version code: %s"
-msgstr ""
+msgstr "현재 버전 코드: %s"
 
 #: tmp_strings.xml:48(string)
 msgid "Newer version: %s"
@@ -155,31 +155,31 @@ msgstr "새로운 버전: %s"
 
 #: tmp_strings.xml:49(string)
 msgid "Newer version: %1$s - %2$s"
-msgstr ""
+msgstr "새 버전: %1$s - %2$s"
 
 #: tmp_strings.xml:50(string)
 msgid "Newer version available."
-msgstr ""
+msgstr "새로운 버전이 있습니다."
 
 #: tmp_strings.xml:51(string)
 msgid "No update information found."
-msgstr ""
+msgstr "업데이트 정보를 찾을 수 없습니다."
 
 #: tmp_strings.xml:52(string)
 msgid "OI Update - List of new versions"
-msgstr ""
+msgstr "OI 업데이트 - 새로운 버전 목록"
 
 #: tmp_strings.xml:53(string)
 msgid "OI Update - New versions at AndAppStore"
-msgstr ""
+msgstr "OI 업데이트 - AndAppStore에 새로운 버전이 있습니다"
 
 #: tmp_strings.xml:54(string)
 msgid "OI Update - List of managed applications"
-msgstr ""
+msgstr "OI 업데이트 - 관리중인 앱 목록"
 
 #: tmp_strings.xml:55(string)
 msgid "OI Update - List of managed applications (check at AndAppStore)"
-msgstr ""
+msgstr "OI 업데이트 - 관리중인 앱 목록 (AndAppStore에서 확인함)"
 
 #: tmp_strings.xml:56(string)
 msgid "Settings"
@@ -195,7 +195,7 @@ msgstr "무시됨"
 
 #: tmp_strings.xml:59(string)
 msgid "Updates are currently ignored. Would you like to receive updates again?"
-msgstr ""
+msgstr "현재 업데이트가 무시되고 있습니다. 다시 업데이트 알림을 받겠습니까?"
 
 #: tmp_strings.xml:60(string)
 msgid "Unknown"
@@ -206,6 +206,8 @@ msgid ""
 "No update information available. Please check manually and ask the developer "
 "to support OI Update in the future."
 msgstr ""
+"업데이트 정보가 없습니다. 수동으로 체크 하고, 앱 개발자에게 OI 업데이트 지원"
+"을 부탁하세요."
 
 #: tmp_strings.xml:62(string)
 msgid "Search on Market"
@@ -225,6 +227,8 @@ msgid ""
 "Android Market. Applications installed from unknown sources might exhibit a "
 "security risk."
 msgstr ""
+"이 앱의 업데이트를 위해서는 안드로이드 마켓이 아닌 다른 사이트로 가야 합니"
+"다. 알 수 없는 소스에서 설치한 앱은 보안 위험이 있을 수 있습니다."
 
 #: tmp_strings.xml:70(string)
 msgid "Continue anyway"
@@ -240,7 +244,7 @@ msgstr "자동 업데이트"
 
 #: tmp_strings.xml:74(string)
 msgid "If checked, search for updates is performed regularly"
-msgstr ""
+msgstr "체크된 경우, 업데이트 체크가 주기적으로 이루어집니다."
 
 #: tmp_strings.xml:75(string)
 msgid "Update interval"
@@ -248,7 +252,7 @@ msgstr "업데이트 간격"
 
 #: tmp_strings.xml:76(string)
 msgid "Set the interval how often the update search should be performed."
-msgstr ""
+msgstr "업데이트 검색 주기를 정하세요."
 
 #: tmp_strings.xml:77(string)
 msgid "Select interval"
@@ -260,13 +264,15 @@ msgstr "매월"
 
 #: tmp_strings.xml:79(string)
 msgid "Warning"
-msgstr ""
+msgstr "주의"
 
 #: tmp_strings.xml:80(string)
 msgid ""
 "If you uncheck this item, you will no longer receive notifications for "
 "updates. Do you still want to uncheck auto update?"
 msgstr ""
+"이 항목을 체크하지 않으면, 업데이트 알림을 더 이상 받지 않게 됩니다. 정말 자"
+"동 업데이트를 끄시겠습니까?"
 
 #: tmp_strings.xml:82(string)
 msgid "Use AndAppStore"
@@ -274,26 +280,26 @@ msgstr "AndAppStore 사용"
 
 #: tmp_strings.xml:83(string)
 msgid "Use version information provided by AndAppStore.com"
-msgstr ""
+msgstr "AndAppStore.com에서 제공된 버전 정보를 사용합니다."
 
 #: tmp_strings.xml:85(string)
 msgid "Read update information"
-msgstr ""
+msgstr "업데이트 정보 읽기"
 
 #: tmp_strings.xml:86(string)
 msgid "Write update information"
-msgstr ""
+msgstr "업데이트 정보 쓰기"
 
 #: tmp_strings.xml:87(string)
 msgid ""
 "Read information about installed applications, update locations and requests."
-msgstr ""
+msgstr "설치된 앱에 대한 정보, 업데이트 위치, 요구사항 읽기."
 
 #: tmp_strings.xml:88(string)
 msgid ""
 "Write information about installed applications, update locations and "
 "requests."
-msgstr ""
+msgstr "설치된 앱에 대한 정보, 업데이트 위치, 요구사항 쓰기."
 
 #. About
 #: tmp_strings.xml:92(string)
@@ -311,11 +317,15 @@ msgid ""
 "intents and open interfaces.\\n\\n For more information and other great "
 "applications visit OpenIntents at www.openintents.org"
 msgstr ""
+"버전 %s \\n\\n OI 업데이트는 새로운 앱 업데이트를 알려줍니다.\\n OpenIntents"
+"는 intents와 공개 인터페이스를 사용하여 앱들이 서로의 데이터를 공유 할 수 있"
+"게 합니다.\\n\\n 더 많은 정보와 다른 유용한 앱을 원하시면 www.openintents.org"
+"에 있는 OpenIntents 사이트를 방문해 주세요."
 
 #. EULA
 #: tmp_strings.xml:102(string)
 msgid "OI Update EULA"
-msgstr ""
+msgstr "OI 업데이트 소프트웨어 사용자 라이선스 계약(EULA)"
 
 #: tmp_strings.xml:103(string)
 msgid ""
@@ -328,6 +338,14 @@ msgid ""
 "KIND, either express or implied. See the License for the specific language "
 "governing permissions and limitations under the License.\\n \\n\""
 msgstr ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
 
 #: tmp_strings.xml:110(string)
 msgid "Accept"

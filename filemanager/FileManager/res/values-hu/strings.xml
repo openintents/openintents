@@ -25,7 +25,7 @@
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
     <!-- Short explanation of the application. Max. 80 characters. -->
-    <string name="about_comments">Manage files on the SD card.</string>  
+    <string name="about_comments">Az SD kártya tartalmának rendszerezése.</string>  
 	
 	<!-- ***************************
 	     Applicatio-specific strings
@@ -107,7 +107,7 @@
     <string name="error_deleting_folder">A(z) \'%s\' mappa nem törölhető.</string>
     <string name="error_renaming_file">A fájlt nem lehet átnevezni.</string>
     <string name="error_renaming_folder">A mappa nem nevezhető át.</string>
-    <string name="error_moving_file">A fájl nem nevezhető át.</string>
+    <string name="error_moving_file">A fájl nem helyezhető át.</string>
     <string name="error_moving_folder">A mappát nem lehet áthelyezni.</string>
     <string name="error_copying_file">A fájl nem másolható.</string>
     <string name="error_file_does_not_exists">Nem létező fájl.</string>

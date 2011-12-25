@@ -28,14 +28,14 @@ Available extensions for "OI Flashlight":
 * Change the color of the backlight with "OI Color Picker".
 
 Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+* Обновить с помощью "OI Update".
 
 Ключевые слова: 
 * Flashlight, light, Backlight
 * OI, OpenIntents, Open Intents
 
 Переведенные версии: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
 Search strings for Market: 

@@ -391,9 +391,8 @@ msgid "Cancel"
 msgstr ""
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "Izberi mapo, kamor bo datoteka prestavljena"
+msgstr ""
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"

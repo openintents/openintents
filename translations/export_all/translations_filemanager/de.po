@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Patrick Eigensatz <patrick.eigensatz@gmail.com>\n"
+"Last-Translator: Daniel Winzen <d@winzen4.de>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,10 +23,12 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Alexander Sapronov https://launchpad.net/~warmonger\n"
+"  Daniel Winzen https://launchpad.net/~q-d\n"
 "  Flosen https://launchpad.net/~flose\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
 "  Patrick Eigensatz https://launchpad.net/~p.eigensatz\n"
 "  Peli https://launchpad.net/~peli0101\n"
+"  Schrotti https://launchpad.net/~schrott-micha\n"
 "  cmdrhenner https://launchpad.net/~cmdrhenner\n"
 "  hani https://launchpad.net/~markushahnenkamm\n"
 "  marco.jahn https://launchpad.net/~accounts+launchpad-net"
@@ -97,7 +99,7 @@ msgstr "Von Mediensuche ausschließen"
 
 #: tmp_strings.xml:50(string)
 msgid "Add to bookmarks"
-msgstr ""
+msgstr "Als Lesezeichnen hinzufügen"
 
 #: tmp_strings.xml:52(string)
 msgid "Create new folder"
@@ -391,33 +393,32 @@ msgstr "Datei erfolgreich gespeichert!"
 
 #: tmp_strings.xml:161(string)
 msgid "Bookmarks"
-msgstr ""
+msgstr "Lesezeichen"
 
 #: tmp_strings.xml:162(string)
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "Ordner zum Verschieben auswählen"
+msgstr "Wähle ein Lesezeichen zum Löschen"
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"
-msgstr ""
+msgstr "Lesezeichen verwalten"
 
 #: tmp_strings.xml:166(string)
 msgid "Bookmark added"
-msgstr ""
+msgstr "Lesezeichen hinzugefügt"
 
 #: tmp_strings.xml:167(string)
 msgid "Bookmarked destination not found."
-msgstr ""
+msgstr "Adresse des Lesezeichens nicht gefunden"
 
 #: tmp_strings.xml:168(string)
 msgid "Selected bookmarks deleted"
-msgstr ""
+msgstr "Ausgeählte Lesezeichen wurden gelöscht"
 
 #: tmp_strings.xml:169(string)
 msgid "This file is already bookmarked"
-msgstr ""
+msgstr "Diese Datei hat schon ein Lesezeichen"

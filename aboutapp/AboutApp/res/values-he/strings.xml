@@ -28,7 +28,8 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  Dvir Oren https://launchpad.net/~dvir0776</string>
+  Dvir Oren https://launchpad.net/~dvir0776
+  OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
 	<string name="about_comments">דיאלוג נפרד שנחלק בין אפליקציות.</string>

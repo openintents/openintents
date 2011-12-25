@@ -440,61 +440,61 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI Safe vă protejează toate parolele si alte date private folosind "
+"standardul industrial de criptare AES."
 
 #: tmp_strings.xml:221(string)
-#, fuzzy
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
-"Funcționează de asemenea și ca o extensie în alte aplicații pentru a afișa "
-"dialogurile „Deschide” și „Salvează”."
+"Acționează de asemenea ca o extensie către OI Noptepad pentru a cripta "
+"notițele create în OI Notepad."
 
 #: tmp_strings.xml:235(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "Protejează datele în siguranță folosind criptarea AES."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "Mută liber intrări de date între categorii."
 
 #: tmp_strings.xml:237(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "Importă/Exportă intrări de date și baze de date."
 
 #: tmp_strings.xml:238(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "Copie de rezervă/Restabilire intrări."
 
 #: tmp_strings.xml:239(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "Include generator de parole sigure."
 
 #: tmp_strings.xml:240(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "Limită de timp automată pentru a proteja documentele criptate."
 
 #: tmp_strings.xml:241(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "Criptează notițele OI Notepad."
 
 #: tmp_strings.xml:242(listitem)
 msgid "Support for Obscura picture safe."
-msgstr ""
+msgstr "Ajutor pentru siguranța imaginii Obscura."
 
 #: tmp_strings.xml:243(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:249(listitem)
-#, fuzzy
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr "Criptează notele cu „OI Safe”."
+msgstr "Criptează notițele create în „OI Notepad”"
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:253(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "sigur, criptare, parolă, protecție"
 
 #. Description of application
 #: tmp_strings.xml:272(string)

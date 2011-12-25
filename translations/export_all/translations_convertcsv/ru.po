@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: Evgrafov Vladimir <Unknown>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,8 +22,10 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Alexander 'FONTER' Zinin https://launchpad.net/~spore-09\n"
 "  Alexander Sapronov https://launchpad.net/~warmonger\n"
 "  Andrey Zaytsev https://launchpad.net/~a.einsam\n"
+"  Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Explanation what this application does.
@@ -32,6 +34,8 @@ msgid ""
 "This extension to OI Shopping list and OI Notepad lets you import and export "
 "lists and notes in the CSV file format."
 msgstr ""
+"Эти расширения для OI Shopping и OI Notepad позволят Вам производить импорт "
+"и экспорт Ваших списков и заметок в формат CSV."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:34(string)
@@ -109,7 +113,7 @@ msgstr "Файл не найден"
 
 #: tmp_strings.xml:61(string)
 msgid "Not yet implemented, please choose different option."
-msgstr ""
+msgstr "Не используется, выберите другой вариант."
 
 #: tmp_strings.xml:62(string)
 msgid "Import finished"
@@ -129,15 +133,15 @@ msgstr "Выберите CSV файл списка покупок"
 
 #: tmp_strings.xml:66(string)
 msgid "Current Import Policy:"
-msgstr ""
+msgstr "Текущая политика импорта:"
 
 #: tmp_strings.xml:67(string)
 msgid "Import Policy"
-msgstr ""
+msgstr "Политика Импорта"
 
 #: tmp_strings.xml:68(string) tmp_strings.xml:83(string)
 msgid "Select the import policy to use"
-msgstr ""
+msgstr "Выберите политику импорта"
 
 #: tmp_strings.xml:70(string)
 msgid "The file exists. Do you want to overwrite?"
@@ -156,6 +160,8 @@ msgid ""
 "Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE "
 "them with the contents of the CSV file. Are you sure?"
 msgstr ""
+"Выбрана политика импорта на УДАЛЕНИЕ ВСЕ ЗАПИСИ и ЗАМЕНА их содержимым файла "
+"CSV.Вы уверены?"
 
 #: tmp_strings.xml:76(string)
 msgid "Settings"
@@ -183,12 +189,12 @@ msgstr "Выбрать кодировку(для опытных пользова
 
 #: tmp_strings.xml:82(string)
 msgid "Select a CSV file format"
-msgstr ""
+msgstr "Выберите файл формата CSV"
 
 #. Preference category title
 #: tmp_strings.xml:87(string)
 msgid "Common settings"
-msgstr ""
+msgstr "Общие настройки"
 
 #: tmp_strings.xml:88(string)
 msgid "Import/export settings that apply to Notepad and Shopping list."
@@ -205,10 +211,12 @@ msgid ""
 "If checked a dialog appears to confirm overwriting if the export file "
 "already exists."
 msgstr ""
+"При выборе этого появится диалоговое окно для подтверждения перезаписи, если "
+"файл экспорта уже существует."
 
 #: tmp_strings.xml:92(string)
 msgid "Application specific settings"
-msgstr ""
+msgstr "Настройка специфики приложения"
 
 #: tmp_strings.xml:93(string)
 msgid "Filename"
@@ -244,11 +252,11 @@ msgstr "Импорт магазинов"
 
 #: tmp_strings.xml:105(string)
 msgid "Import HandyShopper store names only as item tags."
-msgstr ""
+msgstr "Импортировать имена магазинов HandyShopper только как тэги объектов"
 
 #: tmp_strings.xml:106(string)
 msgid "Import HandyShopper stores and per-store price and aisle information."
-msgstr ""
+msgstr "Импорт HandyShopper магазинов и информации о ценах и рядах"
 
 #. Permission
 #: tmp_strings.xml:110(string)
@@ -316,11 +324,11 @@ msgstr "MS Outlook Tasks"
 
 #: tmp_strings.xml:132(item)
 msgid "HandyShopper"
-msgstr ""
+msgstr "HandyShopper"
 
 #: tmp_strings.xml:136(item) tmp_strings.xml:150(item)
 msgid "DUPLICATE - Allow duplicates of records."
-msgstr ""
+msgstr "DUPLICATE - возможность дублирования записей"
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
 msgid "\"KEEP - Don't overwrite existing records.\""
@@ -347,6 +355,7 @@ msgstr ""
 #: tmp_strings.xml:145(item)
 msgid "Overwrite - A record in the CSV will OVERWRITE an existing record."
 msgstr ""
+"Переписать - запись в формате CSV будет ПЕРЕПИСЫВАТЬ существующие записи."
 
 #: tmp_strings.xml:146(item)
 msgid ""

@@ -128,27 +128,38 @@ msgstr "Вземи OI За"
 msgid "OI About"
 msgstr "OI За"
 
-#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
+msgid "Barcode OI Plugin"
+msgstr ""
+
+#. Dialog message.
+#: tmp_strings.xml:71(string)
+#, fuzzy
+msgid "No compatible barcode scanner is available."
+msgstr "Не е съвместим наличният файлове диспечер"
+
+#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#: tmp_strings.xml:74(string)
 msgid "OI File Manager"
 msgstr "OI Файлов Диспечер"
 
 #. Dialog message.
-#: tmp_strings.xml:71(string)
+#: tmp_strings.xml:76(string)
 msgid "No compatible file manager is available."
 msgstr "Не е съвместим наличният файлове диспечер"
 
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
-#: tmp_strings.xml:75(string)
+#: tmp_strings.xml:80(string)
 msgid "OI Safe"
 msgstr "OI Безопасен"
 
 #. Dialog message.
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:82(string)
 msgid "No compatible application for encryption is available."
 msgstr "Наличното приложение за криптиране не е съвместимо"
 
-#: tmp_strings.xml:78(string)
+#: tmp_strings.xml:83(string)
 msgid ""
 "No compatible application for decryption is available.\\n\\nNote: You have "
 "to restore the master key from a backup file in order to access previously "
@@ -159,52 +170,52 @@ msgstr ""
 "раннокриптирани данни."
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
 msgstr "Моля изтеглете %s от Пазара или от сайта на OpenIntents"
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:88(string)
 msgid "Please download %s from the OpenIntents website."
 msgstr "Моля изтеглете %s от сайта на OpenIntents"
 
 #. Dialog button: download the suggested application from Android Market.
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:90(string)
 msgid "Market download"
 msgstr "Изтегляне от пазар"
 
 #. Dialog button: download the suggested application from the developer web site.
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:92(string)
 msgid "Web download"
 msgstr "уеб изтегляне"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:94(string)
 msgid "Download %s"
 msgstr "Изтегляне %s"
 
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:97(string)
 msgid "%s can be used with the following applications:"
 msgstr "%s може да се използва със следните приложения:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:99(string)
 msgid "Launch %s"
 msgstr "Стартиране %s"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:102(string)
 msgid "%1$s requires %2$s %3$s or higher."
 msgstr "%1$s изисква %2$s %3$s или по-висока."
 
 #. Title of a dialog.
-#: tmp_strings.xml:99(string)
+#: tmp_strings.xml:104(string)
 msgid "Instructions"
 msgstr "Инструкции"
 
 #. Error message
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:106(string)
 msgid "Application could not be launched"
 msgstr "Приложението не може да бъде стартирано"

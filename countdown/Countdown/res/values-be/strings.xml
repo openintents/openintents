@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ***************************
+	     About information
+	     *************************** -->
+    
+	<!-- Automatically filled in by Launchpad: -->
+	<string name="about_translators">Launchpad Contributions:
+  Alexander Geroimenko https://launchpad.net/~geroimenko</string>
+	
+    <!-- Short explanation of the application -->
+	<string name="about_comments">OI Countdown паведамляе вас праз пэўны прамежак часу.</string>
+	
+	<!-- ***************************
+	     Applicatio-specific strings
+	     *************************** -->
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI Countdown</string>
+    
+    <string name="start">Запусціць</string>
+    <string name="stop">Спыніць</string>
+    <string name="modify">Змяніць</string>
+    <string name="cont">Працягнуць</string>
+    
+	<string name="no_durations">Выкарыстоўвайце меню, каб дадаць новы напамінак.</string>
+	<string name="countdown_list">Спіс напамінкаў</string>
+	
+    <string name="menu_delete">Выдаліць</string>
+    <string name="menu_edit">Змяніць</string>
+    <string name="menu_insert">Дадаць напамінак</string>
+    <string name="menu_pick_ringtone">Мелодыя</string>
+    
+    <!-- Menu item: Set the countdown by setting a final date or deadline. -->
+    <string name="menu_set_date">Задаць дату</string>
+    
+    <!-- Menu item: Set the countdown by setting a duration. -->
+    <string name="menu_set_duration">Задаць працягласць</string>
+    
+    <!-- Menu item: Set the action to be performed at the end of the countdown. -->
+    <string name="menu_set_action">Задаць дзеянне</string>
+    
+    <string name="hint_title">напрыклад піца</string>
+    
+    <!-- Title of the activity for setting (editing) the countdown. -->
+    <string name="title_setcountdown">Настроіць напамінак</string>
+    
+    <!-- Title of the activity for creating a new countdown. -->
+    <string name="title_create">Стварыць напамінак</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_edit">Рэдагаваць напамінак</string>
+    
+    <!-- Title of the activity for editing the countdown. -->
+    <string name="title_pick">Выбраць напамінак</string>
+    
+    <!-- Title of the activity for setting a countdown automation action. -->
+    <string name="title_setcountdown_action">OI Countdown</string>
+    
+    <!-- Title of the activity when an internal error occurs. This should practially never happen. -->
+	<string name="error_title">Памылка</string>
+	
+	<!-- Message to display when an internal error occurs. This should practially never happen. -->
+	<string name="error_message">Памылка пры загрузцы напамінку</string>
+	
+	<!-- <string name="countdown_ended">Countdown ended</string>  -->
+	
+	<!-- Checkbox label whether to notifications. -->
+	<string name="notification_in_status_bar">Апавяшчэнне ў радку стану</string>
+	
+	<!-- Checkbox label whether to launch automation task through the status bar -->
+	<string name="launch_through_status_bar">Запускаць з радка стану</string>
+	
+	<!-- Checkbox label whether to use the ring tone for notifications. -->
+	<string name="ring">Прайграваць мелодыю</string>
+	
+	<!-- Checkbox label whether to vibrate. -->
+	<string name="vibrate">Вібра</string>
+	
+	<!-- Checkbox label whether to flash light for notifications. -->
+	<string name="light">Светавыя эфекты</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="action">Дзеянне: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_action">Выбраць дзеянне: %s</string>
+	
+	<!-- Checkbox label whether to perform a specific action at the end of the countdown.  "%s" specifies the action further.-->
+	<string name="select_countdown">Выбраць напамінак: %s</string>
+	
+	<!-- Button to test an action. -->
+	<string name="test">Праверка</string>
+	
+	<!-- Button to view / edit settings. -->
+	<string name="settings">Настройкі</string>
+	
+	<!-- Button label to dismiss notification after countdown ended. -->
+	<string name="dismiss">Забыць</string>
+	
+	<!-- For the countdown display. "%s" is the number of days remaining (more than 1). -->
+	<string name="days">дзён</string>
+	
+	<!-- For the countdown display. "%s" is 1 (the number of days remaining). -->
+	<string name="day">дзень</string>
+	
+	<!--  -->
+	
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all apps -->
+	<string name="group_applications">Прыкладанні</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all shortcuts -->
+	<string name="group_shortcuts">Ярлык</string>
+	<!-- Options in "Select action" dialog box; Title of the group containing the list of all automation tasks -->
+	<string name="group_automation_tasks">Аўтаматычныя заданні</string>
+	
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_shortcut">Выбраць ярлык</string>
+	
+	<!-- Title of dialog when user is selecting shortcut to add as activity -->
+	<string name="title_select_automation_task">Выбраць аўтаматычнае заданне</string>
+	
+ 	<!-- The title of the dialog to pick an activity.  This is shown when there are multiple activities that can do a particular action. -->
+	<string name="activity_picker_label">Выбраць дзеянне</string>
+ 
+	<!-- Arrays -->
+	
+    <string-array name="automation_actions">
+    	<!-- Automation action to start a countdown. -->
+    	<item>Запусціць напамінак</item>
+        <!-- Automation action to stop a countdown. -->
+    	<item>Супыніць напамінак</item>
+    </string-array>
+    
+	<!-- ***************************
+	     Preferences
+	     *************************** -->
+
+	<!-- Preference section title for general settings regarding the countdown -->
+    <string name="preference_countdown">Напамінак</string>
+
+    <string name="preference_extensions">Пашырэнні</string>
+    <string name="preference_get_extensions">Атрымаць новыя пашырэнні</string>
+    <string name="preference_get_extensions_summary">Шукаць пашырэнні анлайн</string>
+    <string name="preference_get_extensions_from">Атрымаць пашырэнні з</string>
+    <string name="preference_extensions_market">Android Market</string>
+    <string name="preference_extensions_market_summary">Пошук пашырэнняў ў Android Market.</string>
+    <string name="preference_extensions_developer">OpenIntents</string>
+    <string name="preference_extensions_developer_summary">Усталяваць пашырэнні з хатняй старонцы OpenIntents.</string>
+	
+	<!-- Preference title: Set the notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_title">Таймаўт апавяшчэння</string>
+    
+    <!-- Preference summary: Set notification timeout (2 sec, 10 min, ...) -->
+    <string name="preference_notification_timeout_summary">Таймаўт для мелодыі, вібра, светлавых сігналаў.</string>
+    
+    <!-- Dialog title to set timeout for notification -->
+    <string name="preference_notification_timeout_dialog_title">Настроіць таймаўт</string>
+    
+    <!-- Timeout for notifications -->
+    <string-array name="preference_notification_timeout_entries">
+        <item>2 секунды</item>
+        <item>5 секунд</item>
+        <item>10 секунд</item>
+        <item>30 секунд</item>
+        <item>1 хвіліна</item>
+        <item>5 хвілін</item>
+        <item>10 хвілін</item>
+    </string-array>
+</resources>

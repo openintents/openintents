@@ -23,7 +23,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happy  nawani https://launchpad.net/~nawanihappy"
+"  happynawani https://launchpad.net/~happynawani"
 
 #. Short explanation of the application
 #: tmp_strings.xml:11(string)

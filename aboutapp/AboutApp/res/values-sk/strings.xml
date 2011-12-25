@@ -28,47 +28,48 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Lacko545 https://launchpad.net/~lackorauch
   slavino https://launchpad.net/~slavomir-hustaty</string>
 	
 	<!-- Explanation what this application does. It is a menu extension for other applications. -->
-	<string name="about_comments">A standalone about dialog that is shared between apps.</string>
+	<string name="about_comments">Samostatné "About" okno zdieľané medzi aplikáciami.</string>
 	
 	<!-- ***************************
 	     Distribution
 	     *************************** -->
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_filemanager">OI File Manager</string>
+	<string name="info_app_filemanager">OI Správca Súborov</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_shopping">OI Shopping List</string>
+	<string name="info_app_shopping">OI Nákupný Zoznam</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_notepad">OI Notepad</string>
+	<string name="info_app_notepad">OI Poznámkový blok</string>
 	<!-- Name of an application. Please make sure that translations are consistent. -->
-	<string name="info_app_safe">OI Safe</string>
+	<string name="info_app_safe">OI Trezor</string>
 	
 	<!-- %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.") -->
-	<string name="info_instructions">Launch %s and select menu &gt; About.</string>
+	<string name="info_instructions">Spustite %s a zvoľte menu &gt; O Programe.</string>
 	
 	<!-- ***************************
 	     Applicatio-specific strings
 	     *************************** -->
 	<!-- Application name. Can be localized, like "OI About", or "OI Info". 
 	   This is an extension that shows an about dialog or info dialog.  -->
-    <string name="app_name">OI About</string>
+    <string name="app_name">OI O Programe</string>
 	
-    <string name="menu_about">About OI About itself</string>
+    <string name="menu_about">O OI O Programe</string>
     
     <!-- About some application, where "%s" is the name of another application. -->
-    <string name="about_activity_name_extended">O programe %s</string>
+    <string name="about_activity_name_extended">O %s</string>
     
-	<string name="l_authors">Autor(i)</string>
+	<string name="l_authors">Napísal(i)</string>
 	<string name="l_documenters">Zdokumentovali</string>
 	<string name="l_translators">Preklad</string>
 	<string name="l_artists">Grafika od</string>
-	<string name="l_international_translators">International translations by</string>
+	<string name="l_international_translators">Medzinárodné preklady od</string>
 	<string name="l_credits">Zásluhy</string>
 	<string name="l_license">Licencia</string>
 	<string name="l_info">Všeobecné informácie</string>
-	<string name="l_recent_changes">Recent changes</string>
+	<string name="l_recent_changes">Nedávne zmeny</string>
 	
 	<string name="no_information_available">Informácie nie sú k dispozícii.</string>
 	
@@ -77,35 +78,35 @@
 	     *************************** -->
 	<!-- Language names. -->
     <string-array name="language_names">
-		<item>Arabic</item>
-		<item>Czech</item>
-		<item>Danish</item>
-		<item>German</item>
-		<item>English</item>
-		<item>Greek</item>
-		<item>Spanish</item>
-		<item>Persian</item>
-		<item>Finnish</item>
-		<item>Faroese</item>
-		<item>French</item>
-		<item>Croatian</item>
-		<item>Hungarian</item>
-		<item>Italian</item>
-		<item>Japanese</item>
-		<item>Korean</item>
+		<item>Arabčina</item>
+		<item>Čeština</item>
+		<item>Dánčina</item>
+		<item>Nemčina</item>
+		<item>Angličtina</item>
+		<item>Gréčtina</item>
+		<item>Španielčina</item>
+		<item>Perzština</item>
+		<item>Fínčina</item>
+		<item>Faerčina</item>
+		<item>Francúzština</item>
+		<item>Chorvátčina</item>
+		<item>Maďarčina</item>
+		<item>Taliančina</item>
+		<item>Japončina</item>
+		<item>Korejčina</item>
 		<item>Lao</item>
-		<item>Dutch</item>
-		<item>Occitan (post 1500)</item>
-		<item>Polish</item>
-		<item>Portuguese</item>
-		<item>Brazilian Portuguese</item>
-		<item>Romanian</item>
-		<item>Russian</item>
-		<item>Sardinian</item>
-		<item>Slovak</item>
-		<item>Swedish</item>
-		<item>Turkish</item>
-		<item>Chinese (Simplified)</item>
-		<item>Chinese (Traditional)</item>
+		<item>Holandština</item>
+		<item>Okcitánčina (po 1500)</item>
+		<item>Poľština</item>
+		<item>Portugalčina</item>
+		<item>Brazílska Portugalčina</item>
+		<item>Rumunčina</item>
+		<item>Ruština</item>
+		<item>Sardínčina</item>
+		<item>Slovenčina</item>
+		<item>Švédčina</item>
+		<item>Turecké</item>
+		<item>Čínština (zjednodušená)</item>
+		<item>Čínština (tradičná)</item>
 	</string-array>
 </resources>

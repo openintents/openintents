@@ -3,6 +3,7 @@
 	<translators>Launchpad Contributions:
   Halilpk https://launchpad.net/~halilpk
   OpenIntents devs https://launchpad.net/~openintents-devs
+  ariza95 https://launchpad.net/~alirizanazli95
   zeugma https://launchpad.net/~sunder67</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -12,11 +13,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>OI About uygulamalar arasında paylaşılan bağımsız bir hakkında diyalogudur.</string>
+		<string>Bu uygulama diğer OI uygulamalarını menü aracılığıyla çalıştırır.</string>
+		<string>Sürüm bilgilerine, linklere, katkıda bulunanlara ve uygulamanın lisansına bakmanıza izin verir.</string>
+		<string>Katkıda bulunanlar yazarları, dokümantasyonu, çevirmenleri ve sanatçıları içerir.</string>
+		<string>Tüm bu işlevsellik basit ve etkili bir düzende bir araya getirildi.</string>
 		<emptyline/>
 		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
 		<emptyline/>
@@ -30,12 +31,12 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>Genel bilgi, katkıda bulunanlar ve lisans sekmelerini gösterir.</listitem>
+		<listitem>Tüm dil sürümü çevirmenlerini gösterir.</listitem>
+		<listitem>Varsayılan etiketler ve metaverileri aracılığıyla uygulama bildiriminden bilgi alınır.</listitem>
+		<listitem>İsteğe bağlı olarak tüm alanlar ekstra aracılığıla değiştirilebilir.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
+		<string>"OI About" ile birlikte çalışan uygulamalar:</string>
 		<listitem>OI Notepad</listitem>
 		<listitem>OI File manager</listitem>
 		<listitem>OI Shopping List</listitem>
@@ -45,13 +46,13 @@
 		<listitem>OI Flashlight</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<listitem>Hakkında, Katkıda Bulunanlar, Bilgi.</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Market için arama metinleri:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -88,11 +89,11 @@
 		<listitem>Bir çok dosya ve mime tipi desteği.</listitem>
 		<listitem>PICK_FILE ve PICK_DIRECTORY amaçlarını destekler, bu sayede diğer uygulamalar OI Dosya Yönetici\'yi kullanabilir.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>"OI File Manager" için uygun eklentiler:</string>
+		<listitem>"OI About" ile lisans bilgilerini görüntüle.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>"OI File Manager" ile birlikte çalışan uygulamalar:</string>
+		<listitem>"OI Notepad" içinde metin dosyalarını açma ve kaydetme.</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
@@ -103,7 +104,7 @@
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Market için arama metinleri:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -116,10 +117,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>OI Flashlight karanlıkta size yolunuzu bulmakta yardımcı olan basit ve etkili bir uygulamadır.</string>
+		<string>OI Flashlight arka ışık süresini açık olarak kilitler, çevresini açıkça aydınlatır.</string>
+		<string>Kamera flaşı olan aygıtlar için,  OI Flashlight ayrıca karanlıkta odayı fener ile aydınlatmanızı sağlar.</string>
+		<string>OI Color Picker ile fener ışığının renkleri tamamiyle özelleştirilebilir.</string>
 		<emptyline/>
 		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
 		<emptyline/>
@@ -133,25 +134,25 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>Arka plan ışığını kilitleyin.</listitem>
+		<listitem>Kamera flashını kilitle.</listitem>
+		<listitem>Arka plan ışığının rengi özelleştirilebilir.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>"OI Flashlight" için uygun eklentiler:</string>
+		<listitem>"OI About" ile lisans bilgilerini görüntüle.</listitem>
+		<listitem>"OI Color Picker" ile arka plan ışığının rengini değiştirebilirsiniz.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>"OI Flashlight" ile çalışan uygulamalar:</string>
+		<listitem>"OI Update" ile güncelleştirin.</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<listitem>El feneri, Işık, Arkaışığı</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Market için arama metinleri:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -163,10 +164,10 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>OI Notepad çok özellikli açık kaynak kodlu not almanızı sağlayan bir uygulamadır.</string>
+		<string>Onun ile etiket ekleyebilir, arama yapabilir, ve notlarınızı gönderebilirsiniz, ek olarak olışturma, silme, ve düzenleme gibi basi fonksiyonları kullanabilirsiniz.</string>
+		<string>Şifreleme, içe/dışa aktarım ve sesli mesaj gibi gelişmiş özellikler eklentiler aracılığıyla mevcuttur.</string>
+		<string>Tüm bu işlevsellik çeşitli temalarla kişileştirilebilir, basit ve etkileyici bir düzende bir araya getirildi.</string>
 		<emptyline/>
 		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
 		<emptyline/>
@@ -180,35 +181,35 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>Notlar eklemei düzenleme ve silme.</listitem>
+		<listitem>Etiketler eklemek için notların üzerine basılı tutun.</listitem>
+		<listitem>Yazı tipi boyutunu ve sıralama seçeneklerini değiştirin.</listitem>
+		<listitem>Çeşitli temalar ile açıkça düzenlenmiş katman.</listitem>
+		<listitem>Notlar arasında hızlı arama.</listitem>
+		<listitem>Notlarınızı SMS veya MMS olarak gönderin.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>"OI Notepad" için uygun eklentiler:</string>
+		<listitem>"OI Voice Notes" ile notlar için sesli mesaj kaydetme ve notlara ekleme.</listitem>
+		<listitem>"OI Convert CSV"  ile notlarınızı SD kartta atabilirsiniz/alabilirsiniz.</listitem>
+		<listitem>"OI About" ile lisans bilgilerini görüntüle.</listitem>
+		<listitem>"OI Insert Date" ile notlarınıza tarih ve saat ekleyebilirsiniz.</listitem>
+		<listitem>"Upside Down" ile metini ters çevirebilirsiniz.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>"OI Notepad" ile birlikta çalışan uygulamalar:</string>
+		<listitem>"My Backup Pro" ile notlarınızı yedekleyin.</listitem>
+		<listitem>"OI Safe" kullanarak notlarınızı şifreleyin.</listitem>
+		<listitem>"OI File Manager" ile notlarınızı SD Karttan yönetin.</listitem>
+		<listitem>"OI Update" ile güncelleştirin.</listitem>
+		<listitem>Notlarınızı "Facebook", "Gmail", "Google+", "Twitter", ve diğer uygulamalar aracılığıyla paylaşabilirsiniz.</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<listitem>Not, Not defteri, Not kitabı, Notlar</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Market için arama metinleri:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -220,8 +221,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>OI Safe güvenli bir şekilde sizin şifrelerini korur ve AES endüstri standardı şifrelemesini kullanarak diğer özel verileride korur.</string>
+		<string>Ayrıca OI Notepad içindeki şifrelenmiş notları OI Notepad \'in uzantısı olarak görür.</string>
 		<emptyline/>
 		<string>Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez.</string>
 		<emptyline/>
@@ -235,32 +236,32 @@
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
+		<listitem>AES şifreleme kullanarak verileri güvenli bir şekilde  korumak</listitem>
+		<listitem>Serbestçe katagoriler arasında veri girişlerini taşıbilirsiniz.</listitem>
+		<listitem>İçe aktarım/Dışa aktarım veri girişi ve veritabanı.</listitem>
+		<listitem>Yedekleme/Geri yükleme girdileri.</listitem>
+		<listitem>Güvenli şifre üreticisi içerir.</listitem>
+		<listitem>Şifrelenmiş belgeleri korumak için otomatik zaman aşımı.</listitem>
+		<listitem>OI Notepad  notlarını şifrele.</listitem>
+		<listitem>Obscura resim güvenliği için destekli.</listitem>
 		<listitem>MyBackup Pro.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>"OI File Manager" için uygun eklentiler:</string>
+		<listitem>"OI About" ile lisans bilgilerini görüntüle.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<string>"OI File Manager" ile birlikte çalışan uygulamalar:</string>
+		<listitem>"OI Notepad" içinde şifreli notlar oluşturuldu.</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>güvenlik, şifreleme, şifre, koruma</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>Market için arama metinleri:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -272,11 +273,11 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>OI Shopping List</string>
+		<string>OI Shopping List  ile kolayca listeye öğe ekleyebilir, öğeleri kontrol edebilir, ve öğeleri listeden kaldırabilirsiniz.</string>
+		<string>Kullandığınız her mağaza için ayrılan fiyatları takip edebilirsiniz ve yüksek düzeyde kişiselleştirilmiş özellikler.</string>
+		<string>Yazı tipi boyutu, sıralama ölçütü, liste sütunları ve liste temizleme işlemleri kullanıcı tarafından kontrol edilebilen ayarlardır.</string>
+		<string>Tüm bu özellikler özelleştirilebilir çeşitli temalar aracılığıyla yeni bir katmanda bir araya getirilebilir.</string>
 		<emptyline/>
 		<string>Bunun kaynak kodu ücretsizdir ve açık kaynak uygulamalarına şuradan ulaşabilirsiniz:</string>
 		<link href="http://code.google.com/p/openintents"/>
@@ -290,32 +291,32 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>Özellikler:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>Listeler ekleme, düzenleme, silme</listitem>
+		<listitem>Hızlıca ve kolayca öğeler oluşturma,silme ve kontrol etme.</listitem>
+		<listitem>Çeşitli temelar.</listitem>
+		<listitem>Özelleştirilebilir yazı tipi boyutu ve sıralama ölçütleri.</listitem>
+		<listitem>Her mağaza için ayrı fiyatlar takip edin.</listitem>
+		<listitem>Özelleştirilebilir liste sütunları.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>"OI Shopping List" için uygun eklentiler:</string>
+		<listitem>"OI Voice Notes" ile notlar için sesli mesajlar ekleyin.</listitem>
+		<listitem>"OI Convert CSV" ile alışveriş listelerini içe/dışa aktarma.</listitem>
+		<listitem>"OI About" ile lisans bilgilerini görüntüle.</listitem>
+		<listitem>"Barcode OI Plugin" ile öğeleri kontrol edin/giriş yapın.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>"OI Shopping List" ile birlikte çalışan uygulamalar:</string>
+		<listitem>"OI Update" ile güncelleştirin.</listitem>
+		<listitem>"My Backup Pro" ile yedekleme listesi.</listitem>
+		<listitem>"Bites" ile yemek tarifi için gerekli malzemelerin eklenmesi.</listitem>
 		<emptyline/>
 		<string>Anahtar kelimeler:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<listitem>Alışveriş, Liste, Alışveriş listesi, Kontrol listesi</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>Uluslararası versiyonlar:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>Eklentiler:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

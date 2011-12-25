@@ -426,61 +426,61 @@ msgid ""
 "OI Safe safely protects all of your passwords and other private data using "
 "industry standard AES encryption."
 msgstr ""
+"OI Safe bezpiecznie chroni wszystkie hasła i inne prywatne dane przy użyciu "
+"standardowego szyfrowania AES."
 
 #: tmp_strings.xml:221(string)
-#, fuzzy
 msgid ""
 "It also acts as an extension to OI Notepad to encrypt notes created in OI "
 "Notepad."
 msgstr ""
-"Działa również jako rozszerzenie do innych aplikacji do wyświetlenia okien "
-"dialogowych otwierania i zapisywania plików."
+"Działa również jako rozszerzenie do Ol Notepad aby szyfrować notatki w nim "
+"utworzone."
 
 #: tmp_strings.xml:235(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr ""
+msgstr "Bezpieczna ochrona danych przy użyciu szyfrowania AES."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Freely move data entries between categories."
-msgstr ""
+msgstr "Swobodnie przenosić dane pomiędzy kategoriami."
 
 #: tmp_strings.xml:237(listitem)
 msgid "Import/Export data entries and databases."
-msgstr ""
+msgstr "Import / Eksport wpisów danych i baz danych."
 
 #: tmp_strings.xml:238(listitem)
 msgid "Backup/Restore entries."
-msgstr ""
+msgstr "Kopia zapasowa / Przywracanie wpisów."
 
 #: tmp_strings.xml:239(listitem)
 msgid "Includes secure password generator."
-msgstr ""
+msgstr "Włączając generatora bezpiecznych haseł."
 
 #: tmp_strings.xml:240(listitem)
 msgid "Automatic timeout to protect encrypted documents."
-msgstr ""
+msgstr "Automatyczny timeout żeby chronić zaszyfrowane dokumenty."
 
 #: tmp_strings.xml:241(listitem)
 msgid "Encrypt OI Notepad notes."
-msgstr ""
+msgstr "Szyfrowanie notatek Ol Notepad."
 
 #: tmp_strings.xml:242(listitem)
 msgid "Support for Obscura picture safe."
-msgstr ""
+msgstr "Wsparcie dla bezpiecznego obrazu Obscura."
 
 #: tmp_strings.xml:243(listitem)
 msgid "MyBackup Pro."
-msgstr ""
+msgstr "MyBackup Pro."
 
 #: tmp_strings.xml:249(listitem)
-#, fuzzy
 msgid "Encrypt notes created in \"OI Notepad\"."
-msgstr "Szyfruj notatki używając \"OI Safe\"."
+msgstr "Szyfruj notatki utworzone w \"Ol Notepad\"."
 
 #. Keywords: List several related key words and variations in your language and in English that people might search for.
 #: tmp_strings.xml:253(listitem)
 msgid "safe, encrpytion, password, protection"
-msgstr ""
+msgstr "bezpieczne, szyfrowanie, hasła, ochrona"
 
 #. Description of application
 #: tmp_strings.xml:272(string)
@@ -553,32 +553,32 @@ msgstr "Dostępne rozszerzenia do \"Listy zakupów Ol\":"
 
 #: tmp_strings.xml:298(listitem)
 msgid "Add a recorded message to a note with \"OI Voice Notes\"."
-msgstr ""
+msgstr "Dodaj nagraną wiadomość do notatki używając \"Ol Voice Notes\"."
 
 #: tmp_strings.xml:299(listitem)
 msgid "Import/export shopping lists with \"OI Convert CSV\"."
-msgstr ""
+msgstr "Import/eksport list zakupów z \"Ol Convert CSV\"."
 
 #: tmp_strings.xml:301(listitem)
 msgid "Enter/check items with \"Barcode OI Plugin\"."
-msgstr ""
+msgstr "Wprowadź/sprawdź pozycje używając \"Barcode Ol Plugin\"."
 
 #: tmp_strings.xml:303(string)
 msgid "Applications that work with \"OI Shopping List\":"
-msgstr ""
+msgstr "Aplikacje, które pracują z \"Ol Shopping List\":"
 
 #: tmp_strings.xml:305(listitem)
 msgid "Backup lists with \"My Backup Pro\"."
-msgstr ""
+msgstr "Kopia zapasowa list z \"My Backup Pro\"."
 
 #: tmp_strings.xml:306(listitem)
 msgid "Import ingredients of recipes with \"Bites\"."
-msgstr ""
+msgstr "Importuj składniki przepisów z \"Bites\"."
 
 #: tmp_strings.xml:309(listitem)
 msgid "Shopping, List, Shopping List, Checklist"
-msgstr ""
+msgstr "Zakupy, Lista, Lista zakupów, Lista kontrolna"
 
 #: tmp_strings.xml:315(string)
 msgid "Extensions:"
-msgstr ""
+msgstr "Rozszerzenia:"

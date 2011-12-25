@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <main>
 	<translators>Launchpad Contributions:
+  Dvir Oren https://launchpad.net/~dvir0776
   Neta Oren https://launchpad.net/~netao212
   OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
@@ -11,15 +12,15 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
-		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
-		<string>Credits include authors, documentation, translators, and artists.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
+		<string>אודות OI הוא דיאלוג אודות עצמאי שנחלק בין יישומים.</string>
+		<string>יישום זה מופעל דרך תפריט של יישומי OI אחרים.</string>
+		<string>זה מרשה לך לראות מידע על הגרסה, לינקים, קרדיטים, ורישיון של יישום.</string>
+		<string>קרדיטים כולל מחברים, תיעוד, מתרגמים, ואומנים.</string>
+		<string>כל הפונקיונאליות הזט מחוברת ביחד במערך פשוט ויעיל.</string>
 		<emptyline/>
 		<string>באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט.</string>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל:</string>
@@ -29,28 +30,28 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
-		<listitem>Shows general info, credits, and license tabs.</listitem>
-		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
-		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
+		<listitem>הראה מידע כללי, קרדיטים, וטאבי רישיון.</listitem>
+		<listitem>מראה מתרגמים של כל גרסאות השפה.</listitem>
+		<listitem>מחזיר מידע ממצהר יישום דרך תגיות ברירת מחדל ומטה.</listitem>
+		<listitem>לחלופין, כל השדות יכולים להיערך דרך תוספות intent.</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI About":</string>
-		<listitem>OI Notepad</listitem>
-		<listitem>OI File manager</listitem>
-		<listitem>OI Shopping List</listitem>
-		<listitem>OI Convert CSV</listitem>
-		<listitem>OI Safe</listitem>
-		<listitem>OI Countdown</listitem>
-		<listitem>OI Flashlight</listitem>
+		<string>יישומים שעובדים עם "אודות OI":</string>
+		<listitem>פנקס OI</listitem>
+		<listitem>מנהל קבצים OI</listitem>
+		<listitem>רשימת קנייה OI</listitem>
+		<listitem>ממיר OI CSV</listitem>
+		<listitem>כספת OI</listitem>
+		<listitem>סופר לאחור OI</listitem>
+		<listitem>פנס OI</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
-		<listitem>About, Credits, Information.</listitem>
+		<string>‏מילות מפתח:</string>
+		<listitem>אודות, מידע וקרדיטים</listitem>
 		<listitem>OI, OpenIntents, Open Intents.</listitem>
 		<emptyline/>
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>חפש מחרוזות לשוק:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -76,7 +77,7 @@
 		<string>אתם יכולים לעזור לשפר את התרגום בשפתכם ב-Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
@@ -88,13 +89,13 @@
 		<listitem>תומך בסיומות רבות של קבצים ובסוגי חיקוי (Mime).</listitem>
 		<listitem>תומך בכוונות PICK_FILE ו- PICK_DIRECTORY כך שאפליקציות אחרות יוכלו להשתמש במנהל קבצים OI.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>הרחבות זמינות בשביל "מנהל קבצים OI":</string>
+		<listitem>הראה מידע על הרישיון עם "אודות OI".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Open and save text files in "OI Notepad".</listitem>
+		<string>יישומים שעובדים עם "מנהל קבצים OI":</string>
+		<listitem>פתח ושמור קבצי טקסט בתוך "פנקס פתקים OI".</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
+		<string>‏מילות מפתח:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
 		<listitem>מנהל קבצים, סייר קבצים</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
@@ -103,7 +104,7 @@
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>חפש מחרוזות לשוק:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>
@@ -116,14 +117,14 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Flashlight is a simple and effective application that helps you find a way in the dark.</string>
-		<string>OI Flashlight locks the display backlight on, clearly illuminating the surrounding area.</string>
-		<string>For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room.</string>
-		<string>The color of the backlight is completely customizable with OI Color Picker.</string>
+		<string>פנס OI הוא יישום פשוט ויעיל שעוזר לך למצוא דרך בחשכה.</string>
+		<string>פנס OI נועל את הצגת הפנס האחורי, מאיר בבירור את האיזור המקיף.</string>
+		<string>עבור מכשירים עם מצלמת פלאש, פנס OI יכול גם להשתמש בפלאש כלפיד בהיר כדי להאיר את החדר.</string>
+		<string>הצבע של הפנס האחורי הוא ניתן לעיצוב עם בוחר צבעים OI.</string>
 		<emptyline/>
 		<string>באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט.</string>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל:</string>
@@ -133,25 +134,25 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
-		<listitem>Lock the display backlight on.</listitem>
-		<listitem>Lock camera flash on.</listitem>
-		<listitem>The color of backlight is customizable.</listitem>
+		<listitem>נעל את הצגת הפנס האחורי לפועל.</listitem>
+		<listitem>נעל פלאש המצלמה במצב פועל.</listitem>
+		<listitem>הצבע של הפנס האחורי ניתן לעיצוב</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Flashlight":</string>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
+		<string>הרחבות זמינות עבור "פנס OI":</string>
+		<listitem>הראה מידע על הרישיון עם "אודות OI".</listitem>
+		<listitem>שנה את צבע הפנס האחורי עם "בוחר צבעים OI"</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<string>יישומים שעובדים עם "פנס OI":</string>
+		<listitem>עדכן עם "מעדכן OI".</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
-		<listitem>Flashlight, light, Backlight</listitem>
+		<string>‏מילות מפתח:</string>
+		<listitem>פנס, אור, אור אחורי</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>חפש מחרוזות לשוק:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -163,14 +164,14 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Notepad is a full-featured open source note taking application.</string>
-		<string>With it you can tag, search, and send your notes, in addition to basic functionality such as creating, deleting, and editing notes.</string>
-		<string>Advanced features like encryption, import/export, and voice memos are all available through extensions.</string>
-		<string>All of this functionality is brought together in a simplistic and efficient layout, customizable through a variety of themes.</string>
+		<string>פנקס פתקים OI הוא יישום בעל קוד פתוח בעל תוספים רבים שמנהל פתקים.</string>
+		<string>איתו אתה יכול לתייג,לחפש, ולשלוח את פתקיך, בנוסף לפעולות בסיסיות כמו יצירה, מחיקה ועריכה של פתקים.</string>
+		<string>תכונות מתקדמות כמו הצפנה, ייבוא/ייצוא, ותזכירי קול זמינים דרך הרחבות.</string>
+		<string>כל הפונקציונאליות הזו היא מחוברת ביחד בדרך פשוטה ויעילה, שניתנת לעיצוב דרך מגוון של ערכות נושא.</string>
 		<emptyline/>
 		<string>באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט.</string>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל:</string>
@@ -180,35 +181,35 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
-		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
-		<listitem>Change font size and sort order.</listitem>
-		<listitem>A clearly arranged layout with a variety of themes.</listitem>
-		<listitem>Quickly search through notes.</listitem>
-		<listitem>Send notes as MMS or SMS.</listitem>
+		<listitem>הוסף, ערוך ומחק פתקים</listitem>
+		<listitem>לחץ לחיצה ארוכה על פתקים כדי להוסיף תגיות.</listitem>
+		<listitem>שנה את גודל הכתב ודרך המיון</listitem>
+		<listitem>מערך מסודר עם מגוון של ערכות נושא.</listitem>
+		<listitem>חפש במהירות דרך פתקים.</listitem>
+		<listitem>שלח פתקים בתור MMS או SMS</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
-		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
-		<listitem>Turn text upside down with "Upside Down".</listitem>
+		<string>הרחבות קיימות עבור "פנקס פתקים OI":</string>
+		<listitem>הקלט וצרף תזכירי קול לפתקים עם "פתקי קול OI".</listitem>
+		<listitem>בעזרת "ממיר CSV OI" ניתן לייבא/לייצא פתקים מכרטיס SD.</listitem>
+		<listitem>הראה מידע על הרישיון עם "אודות OI".</listitem>
+		<listitem>הכנס את המידע והזמן לפתקים עם "הכנס תאריך OI".</listitem>
+		<listitem>הפוך טקסט מלמעלה למטה עם "למעלה למטה".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Notepad":</string>
-		<listitem>Back up notes with "My Backup Pro".</listitem>
-		<listitem>Encrypt notes using "OI Safe".</listitem>
-		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
+		<string>יישומים שעובדים עם "פנקס פתקים OI":</string>
+		<listitem>גבה פתקים עם "המגבה המקצועי שלי".</listitem>
+		<listitem>הצפן פתקים בעזרת "כספת OI".</listitem>
+		<listitem>נהל פתקים על כרטיס ה-SD שלך בעזרת "מנהל קבצי OI".</listitem>
+		<listitem>עדכן עם "מעדכן OI".</listitem>
+		<listitem>חלוק קבצים דרך "פייסבוק", "ג\'י-מייל", "גוגל פלוס", "טוויטר", ויישומים רבים אחרים.</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
-		<listitem>Note, Notepad, Note book, Notes</listitem>
+		<string>‏מילות מפתח:</string>
+		<listitem>פתק, פנקס פתקים, מחברת, פתקים</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>חפש מחרוזות לשוק:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -220,8 +221,8 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Safe safely protects all of your passwords and other private data using industry standard AES encryption.</string>
-		<string>It also acts as an extension to OI Notepad to encrypt notes created in OI Notepad.</string>
+		<string>כספת OI מגנה על כל הסיסמאות שלך ומידע פרטי אחר בעזרת שימוש בהצפנת AES סטנדרטי.</string>
+		<string>זה גם פועל בתור הרחבה לפנס רשימות OI כדי להצפין פתקים שנוצרו בפנקס רשימות OI.</string>
 		<emptyline/>
 		<string>באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט.</string>
 		<emptyline/>
@@ -231,36 +232,36 @@
 		<string>אתם יכולים לעזור לשפר את התרגום בשפתכם ב-Launchpad:</string>
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
-		<listitem>Securely protect data using AES encryption.</listitem>
-		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
-		<listitem>Backup/Restore entries.</listitem>
-		<listitem>Includes secure password generator.</listitem>
-		<listitem>Automatic timeout to protect encrypted documents.</listitem>
-		<listitem>Encrypt OI Notepad notes.</listitem>
-		<listitem>Support for Obscura picture safe.</listitem>
-		<listitem>MyBackup Pro.</listitem>
+		<listitem>הגן על מידע על ידי שימוש בהצפנת AES.</listitem>
+		<listitem>העבר רשומות מידע באופן חופשי בין קטגוריות.</listitem>
+		<listitem>ייבא/ייצא רשומות מידע ובסיסי מידע.</listitem>
+		<listitem>גבה/ שחזר רשומות.</listitem>
+		<listitem>כלול מייצר גרסה מאובטח.</listitem>
+		<listitem>פסק זמן אוטומטי כדי להגן על מסמכים מוצפנים.</listitem>
+		<listitem>הצפן פתקי פנקס פתקים OI.</listitem>
+		<listitem>תמיכה עבור כספת תמונה אובסקורה.</listitem>
+		<listitem>המגבה המקצועי שלי</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI File Manager":</string>
-		<listitem>Show the license information with "OI About".</listitem>
+		<string>הרחבות זמינות בשביל "מנהל קבצים OI":</string>
+		<listitem>הראה מידע על הרישיון עם "אודות OI".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
-		<listitem>Encrypt notes created in "OI Notepad".</listitem>
+		<string>יישומים שעובדים עם "מנהל קבצים OI":</string>
+		<listitem>הצפן פתקים שנוצרו בתוך "פנקס פתקים OI".</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
+		<string>‏מילות מפתח:</string>
 		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
-		<listitem>safe, encrpytion, password, protection</listitem>
+		<listitem>כספת, הצפנה, סיסמא, הגנה</listitem>
 		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
 		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Search strings for Market:</string>
+		<string>חפש מחרוזות לשוק:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 	</description>
@@ -272,13 +273,13 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI Shopping List is a powerful application which makes it easy to create and manage checklists.</string>
-		<string>OI Shopping List makes it easy to add items to a list, check the item off, and remove it from the list.</string>
-		<string>The application can track separate prices for each store that you use, and features a high level of customization.</string>
-		<string>Font size, sort order, list columns, and list cleanup behavior are all settings controlled by the user.</string>
-		<string>All of these features are brought together in a crisp layout that is customizable through a variety of themes.</string>
+		<string>רשימת קניות OI היא יישום עוצמתי שהופך ניהול ויצירה של רשימות בדיקה לדבר פשוט וקל.</string>
+		<string>רשימת קניות OI הופכת הוספהת פריטים לרשימה, סימון לשלילה של פריט, והסרתו מהרשימה לדבר פשוט וקל.</string>
+		<string>היישום יכול לעקוב אחר מחירים נפרדים עבור כל חנות שאתה משתמש בה, ומכיל רמה גבוהה של עיצוב אישי.</string>
+		<string>גודל כתב, סדר מיון, טורי רשימה, והתנהגות ניקוי הרשימה כולם הגדרות שנשלטו תעל ידי המשתמש.</string>
+		<string>כל התכונות הללו מובאות ביחד במערך קריספי שניתן לעיצוב דרך מגוון של ערכות נושא.</string>
 		<emptyline/>
-		<string>קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל:</string>
+		<string>קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל:</string>
 		<link href="http://code.google.com/p/openintents"/>
 		<emptyline/>
 		<string>באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט.</string>
@@ -290,32 +291,32 @@
 		<link href="https://translations.launchpad.net/openintents/trunk"/>
 		<emptyline/>
 		<string>מאפיינים:</string>
-		<listitem>Add, edit and delete lists.</listitem>
-		<listitem>Create, delete, and check items quickly and easily.</listitem>
-		<listitem>Variety of themes.</listitem>
-		<listitem>Customizable font size and sort order.</listitem>
-		<listitem>Keep track of separate prices for each store.</listitem>
-		<listitem>Customizable list columns.</listitem>
+		<listitem>הוסף, ערוך ומחק רשימות.</listitem>
+		<listitem>צור, מחק, וסמן פריטים במהירות ובקלות.</listitem>
+		<listitem>מגוון של ערכות נושא.</listitem>
+		<listitem>גודל כתב וסדר מיון ניתנים לעיצוב אישי.</listitem>
+		<listitem>עקוב אחר הפרדת מחירים עבור כל חנות.</listitem>
+		<listitem>טורי טבלה שניתנים לעיצוב.</listitem>
 		<emptyline/>
-		<string>Available extensions for "OI Shopping List":</string>
-		<listitem>Add a recorded message to a note with "OI Voice Notes".</listitem>
-		<listitem>Import/export shopping lists with "OI Convert CSV".</listitem>
-		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
+		<string>הרחבות זמינות עבור "רשימת קניות OI":</string>
+		<listitem>הוסף הודעה מוקלטת לפתק עם "פתקי קול OI".</listitem>
+		<listitem>ייבא/ייצא רשימות קניות עם "ממיר CSV OI".</listitem>
+		<listitem>הראה מידע על הרישיון עם "אודות OI".</listitem>
+		<listitem>הכנס/בדוק פריטים עם "פלוגין ברקוד OI".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
-		<listitem>Backup lists with "My Backup Pro".</listitem>
-		<listitem>Import ingredients of recipes with "Bites".</listitem>
+		<string>יישמוים שעובדים עם "רשימת קניות OI":</string>
+		<listitem>עדכן עם "מעדכן OI".</listitem>
+		<listitem>גבא רשימות עם "המגבה המקצועי שלי".</listitem>
+		<listitem>יבא מרכיבים למתקון עם "נשיכות".</listitem>
 		<emptyline/>
-		<string>מילות מפתח:</string>
-		<listitem>Shopping, List, Shopping List, Checklist</listitem>
+		<string>‏מילות מפתח:</string>
+		<listitem>רשימת קניות, רשימה, רשימת קניות, רשימת סימון.</listitem>
 		<listitem>OI, OpenIntents, Open Intents</listitem>
 		<emptyline/>
 		<string>גרסאות בין-לאומיות:</string>
 		<international/>
 		<emptyline/>
-		<string>Extensions:</string>
+		<string>הרחבות:</string>
 		<!--  (these are not translated into other languages) -->
 		<include file="description_extensions.txt"/>
 		<emptyline/>

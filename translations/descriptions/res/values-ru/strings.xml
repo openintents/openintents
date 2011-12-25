@@ -2,6 +2,8 @@
 <main>
 	<translators>Launchpad Contributions:
   Alexander Sapronov https://launchpad.net/~warmonger
+  Alexander Vasilyev https://launchpad.net/~vlalevas
+  Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir
   OpenIntents devs https://launchpad.net/~openintents-devs</translators>
 	<description application="aboutapp/AboutApp">
 		<!--  OI About -->
@@ -11,9 +13,9 @@
 		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
 		<!--  -->
 		<!--  Description of application -->
-		<string>OI About is a standalone about dialog that is shared between apps.</string>
+		<string>OI About это отдельный информационный диалог используемый в различных приложениях.</string>
 		<string>This application is invoked through the menu of other OI applications.</string>
-		<string>It allows you to view version information, links, credits, and license of an application.</string>
+		<string>Это позволяет вам просматривать информацию о версии, разработчиках и лицензии приложения</string>
 		<string>Credits include authors, documentation, translators, and artists.</string>
 		<string>All of this functionality is brought together in a simplistic and efficient layout.</string>
 		<emptyline/>
@@ -31,7 +33,7 @@
 		<string>Возможности:</string>
 		<listitem>Shows general info, credits, and license tabs.</listitem>
 		<listitem>Shows translators of all language versions.</listitem>
-		<listitem>Retrieves information from application manifest through default tags and metadata.</listitem>
+		<listitem>Получает информацию из манифеста приложения через стандартные теги и метаданные</listitem>
 		<listitem>Optionally, all fields can be modified through intent extras.</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI About":</string>
@@ -85,12 +87,12 @@
 		<listitem>Отправить файлы по электронной почте.</listitem>
 		<listitem>Acts as an extension to other applications, like GMail, to attach files.</listitem>
 		<listitem>Support for many file endings and mime types.</listitem>
-		<listitem>Supports PICK_FILE and PICK_DIRECTORY intents so that other applications can use OI File Manager.</listitem>
+		<listitem>Поддерживает PICK_FILE и PICK_DIRECTORY, так что другие приложения могут использовать OI File Manager</listitem>
 		<emptyline/>
 		<string>Available extensions for "OI File Manager":</string>
 		<listitem>Show the license information with "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>Приложения работающие с "OI File Manager":</string>
 		<listitem>Open and save text files in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
@@ -141,7 +143,7 @@
 		<listitem>Change the color of the backlight with "OI Color Picker".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Flashlight":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Обновить с помощью "OI Update".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
 		<listitem>Flashlight, light, Backlight</listitem>
@@ -180,24 +182,24 @@
 		<emptyline/>
 		<string>Возможности:</string>
 		<listitem>Add, edit and delete notes.</listitem>
-		<listitem>Long-press on notes to add tags.</listitem>
+		<listitem>Долгое нажатия на записи чтобы добавить метку.</listitem>
 		<listitem>Change font size and sort order.</listitem>
 		<listitem>A clearly arranged layout with a variety of themes.</listitem>
 		<listitem>Quickly search through notes.</listitem>
 		<listitem>Send notes as MMS or SMS.</listitem>
 		<emptyline/>
 		<string>Available extensions for "OI Notepad":</string>
-		<listitem>Record and attach voice memos to notes with "OI Voice Notes".</listitem>
+		<listitem>Запись и прикрепление голосовых сообщений к заметке с помощью "OI Voice Notes".</listitem>
 		<listitem>With "OI Convert CSV" import/export notes from the SD card.</listitem>
 		<listitem>Show the license information with "OI About".</listitem>
-		<listitem>Insert the date and time into notes with "OI Insert Date".</listitem>
+		<listitem>Добавить дату и время в заметки с помощью "OI Insert Date".</listitem>
 		<listitem>Turn text upside down with "Upside Down".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Notepad":</string>
 		<listitem>Back up notes with "My Backup Pro".</listitem>
 		<listitem>Encrypt notes using "OI Safe".</listitem>
 		<listitem>Manage notes on your SD Card with "OI File Manager".</listitem>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Обновить с помощью "OI Update".</listitem>
 		<listitem>Share notes through "Facebook", "Gmail", "Google+", "Twitter", and many other applications.</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
@@ -236,7 +238,7 @@
 		<string>Возможности:</string>
 		<listitem>Securely protect data using AES encryption.</listitem>
 		<listitem>Freely move data entries between categories.</listitem>
-		<listitem>Import/Export data entries and databases.</listitem>
+		<listitem>Импорт / экспорт данных записей и баз данных</listitem>
 		<listitem>Backup/Restore entries.</listitem>
 		<listitem>Includes secure password generator.</listitem>
 		<listitem>Automatic timeout to protect encrypted documents.</listitem>
@@ -247,7 +249,7 @@
 		<string>Available extensions for "OI File Manager":</string>
 		<listitem>Show the license information with "OI About".</listitem>
 		<emptyline/>
-		<string>Applications that work with "OI File Manager":</string>
+		<string>Приложения работающие с "OI File Manager":</string>
 		<listitem>Encrypt notes created in "OI Notepad".</listitem>
 		<emptyline/>
 		<string>Ключевые слова:</string>
@@ -303,7 +305,7 @@
 		<listitem>Enter/check items with "Barcode OI Plugin".</listitem>
 		<emptyline/>
 		<string>Applications that work with "OI Shopping List":</string>
-		<listitem>Update with "OI Update".</listitem>
+		<listitem>Обновить с помощью "OI Update".</listitem>
 		<listitem>Backup lists with "My Backup Pro".</listitem>
 		<listitem>Import ingredients of recipes with "Bites".</listitem>
 		<emptyline/>

@@ -390,9 +390,8 @@ msgid "Cancel"
 msgstr ""
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "選擇要移動的資料夾"
+msgstr ""
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"

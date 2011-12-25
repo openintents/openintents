@@ -22,7 +22,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Matěj Konečný https://launchpad.net/~matejkon"
+"  Matěj Konečný https://launchpad.net/~matejkon\n"
+"  OpenIntents devs https://launchpad.net/~openintents-devs"
 
 #. Short explanation of the application
 #: tmp_strings.xml:33(string)
@@ -403,8 +404,8 @@ msgid ""
 "Allows the application to encrypt and decrypt text, and access the passwords "
 "they have stored in OI Safe."
 msgstr ""
-"Povoluje aplikaci šifrovat a dešifrovat text a přistupovat k heslům uloženým "
-"v OI Safe."
+"Povoluje aplikaci šifrovat a dešifrovat text a přistupovat k heslům, které "
+"má uložené v OI Sejfu."
 
 #: tmp_strings.xml:186(item)
 msgid "Alphabetical"
@@ -475,11 +476,11 @@ msgstr "Motivy"
 
 #: tmp_strings.xml:212(string)
 msgid "Search for extensions at Android Market."
-msgstr "Hledat rozšíření na Android Marketu."
+msgstr "Hledat rozšíření v Android Marketu."
 
 #: tmp_strings.xml:213(string)
 msgid "Search for themes at Android Market."
-msgstr "Hledat motivy na Android Marketu."
+msgstr "Hledat motivy v Android Marketu."
 
 #: tmp_strings.xml:214(string)
 msgid "Get extensions from the OpenIntents homepage."

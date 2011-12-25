@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"Last-Translator: kenn dhia <Unknown>\n"
 "Language-Team: Arabic <ar@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,155 +21,157 @@ msgstr ""
 #: tmp_strings.xml:30(string)
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  kenn dhia https://launchpad.net/~kendhia"
 
 #. Explanation what this application does. It is a menu extension for other applications.
 #: tmp_strings.xml:33(string)
 msgid "A standalone about dialog that is shared between apps."
-msgstr ""
+msgstr "نافذة عن مستقلة مشتركة بين التطبيقات."
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:39(string)
 msgid "OI File Manager"
-msgstr ""
+msgstr "مدير الملفات OI"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:41(string)
 msgid "OI Shopping List"
-msgstr ""
+msgstr "قائمة تسوقOI"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:43(string)
 msgid "OI Notepad"
-msgstr ""
+msgstr "مفكرةOI"
 
 #. Name of an application. Please make sure that translations are consistent.
 #: tmp_strings.xml:45(string)
 msgid "OI Safe"
-msgstr ""
+msgstr "حماية OI"
 
 #. %s is the name of an application (e.g. "Launch OI Notepad and select menu > About.")
 #: tmp_strings.xml:48(string)
 msgid "Launch %s and select menu &gt; About."
-msgstr ""
+msgstr "شغل %s ثم اختر القائمة &gt; عن"
 
 #. Application name. Can be localized, like "OI About", or "OI Info". 
 #. 	   This is an extension that shows an about dialog or info dialog.
 #: tmp_strings.xml:55(string)
 msgid "OI About"
-msgstr ""
+msgstr "عن OI"
 
 #: tmp_strings.xml:57(string)
 msgid "About OI About itself"
-msgstr ""
+msgstr "عن OI عن نفسه"
 
 #. About some application, where "%s" is the name of another application.
 #: tmp_strings.xml:60(string)
 msgid "About %s"
-msgstr ""
+msgstr "عن %s"
 
 #: tmp_strings.xml:62(string)
 msgid "Written by"
-msgstr ""
+msgstr "كتبت بواسطة"
 
 #: tmp_strings.xml:63(string)
 msgid "Documented by"
-msgstr ""
+msgstr "وثقت بواسطة"
 
 #: tmp_strings.xml:64(string)
 msgid "Translated by"
-msgstr ""
+msgstr "ترجمت بواسطة"
 
 #: tmp_strings.xml:65(string)
 msgid "Artwork by"
-msgstr ""
+msgstr "العمل الفني بواسطة"
 
 #: tmp_strings.xml:66(string)
 msgid "International translations by"
-msgstr ""
+msgstr "الترجمات العالمية بواسطة"
 
 #: tmp_strings.xml:67(string)
 msgid "Credits"
-msgstr ""
+msgstr "المشاركون"
 
 #: tmp_strings.xml:68(string)
 msgid "License"
-msgstr ""
+msgstr "الرخصة"
 
 #: tmp_strings.xml:69(string)
 msgid "General Info"
-msgstr ""
+msgstr "معلومات عامة"
 
 #: tmp_strings.xml:70(string)
 msgid "Recent changes"
-msgstr ""
+msgstr "التغييرات الأخيرة"
 
 #: tmp_strings.xml:72(string)
 msgid "No information available."
-msgstr ""
+msgstr "لا توجد أي معلومة متوفرة."
 
 #: tmp_strings.xml:79(item)
 msgid "Arabic"
-msgstr ""
+msgstr "العربية"
 
 #: tmp_strings.xml:80(item)
 msgid "Czech"
-msgstr ""
+msgstr "التشيكية"
 
 #: tmp_strings.xml:81(item)
 msgid "Danish"
-msgstr ""
+msgstr "الدنماركية"
 
 #: tmp_strings.xml:82(item)
 msgid "German"
-msgstr ""
+msgstr "الألمانية"
 
 #: tmp_strings.xml:83(item)
 msgid "English"
-msgstr ""
+msgstr "الانجليزية"
 
 #: tmp_strings.xml:84(item)
 msgid "Greek"
-msgstr ""
+msgstr "اليونانية"
 
 #: tmp_strings.xml:85(item)
 msgid "Spanish"
-msgstr ""
+msgstr "الاسبانية"
 
 #: tmp_strings.xml:86(item)
 msgid "Persian"
-msgstr ""
+msgstr "الفارسية"
 
 #: tmp_strings.xml:87(item)
 msgid "Finnish"
-msgstr ""
+msgstr "الفنلندية"
 
 #: tmp_strings.xml:88(item)
 msgid "Faroese"
-msgstr ""
+msgstr "الفرنسية"
 
 #: tmp_strings.xml:89(item)
 msgid "French"
-msgstr ""
+msgstr "الفرنسية"
 
 #: tmp_strings.xml:90(item)
 msgid "Croatian"
-msgstr ""
+msgstr "الكرواتية"
 
 #: tmp_strings.xml:91(item)
 msgid "Hungarian"
-msgstr ""
+msgstr "الهنغارية"
 
 #: tmp_strings.xml:92(item)
 msgid "Italian"
-msgstr ""
+msgstr "الإيطالية"
 
 #: tmp_strings.xml:93(item)
 msgid "Japanese"
-msgstr ""
+msgstr "اليابانية"
 
 #: tmp_strings.xml:94(item)
 msgid "Korean"
-msgstr ""
+msgstr "الكورية"
 
 #: tmp_strings.xml:95(item)
 msgid "Lao"
@@ -177,7 +179,7 @@ msgstr ""
 
 #: tmp_strings.xml:96(item)
 msgid "Dutch"
-msgstr ""
+msgstr "الهولندية"
 
 #: tmp_strings.xml:97(item)
 msgid "Occitan (post 1500)"
@@ -185,44 +187,44 @@ msgstr ""
 
 #: tmp_strings.xml:98(item)
 msgid "Polish"
-msgstr ""
+msgstr "البولندية"
 
 #: tmp_strings.xml:99(item)
 msgid "Portuguese"
-msgstr ""
+msgstr "البرتغالية"
 
 #: tmp_strings.xml:100(item)
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "البرتغالية البرازيلية"
 
 #: tmp_strings.xml:101(item)
 msgid "Romanian"
-msgstr ""
+msgstr "الرومانية"
 
 #: tmp_strings.xml:102(item)
 msgid "Russian"
-msgstr ""
+msgstr "الروسية"
 
 #: tmp_strings.xml:103(item)
 msgid "Sardinian"
-msgstr ""
+msgstr "الساردينية"
 
 #: tmp_strings.xml:104(item)
 msgid "Slovak"
-msgstr ""
+msgstr "السلوفاكية"
 
 #: tmp_strings.xml:105(item)
 msgid "Swedish"
-msgstr ""
+msgstr "السويدية"
 
 #: tmp_strings.xml:106(item)
 msgid "Turkish"
-msgstr ""
+msgstr "التركية"
 
 #: tmp_strings.xml:107(item)
 msgid "Chinese (Simplified)"
-msgstr ""
+msgstr "الصينية (البسيطة)"
 
 #: tmp_strings.xml:108(item)
 msgid "Chinese (Traditional)"
-msgstr ""
+msgstr "الصينية (القديمة)"

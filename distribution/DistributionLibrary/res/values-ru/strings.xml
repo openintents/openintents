@@ -8,8 +8,10 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
+  Alexander \'FONTER\' Zinin https://launchpad.net/~spore-09
   Alexander Sapronov https://launchpad.net/~warmonger
   Andrey Zaytsev https://launchpad.net/~a.einsam
+  Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- ***************************
@@ -19,11 +21,11 @@
 	<!-- EULA -->	
 	<!-- EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 		Translation should be short, since this is a title. -->
-	<string name="oi_distribution_eula_title">%s EULA</string>
+	<string name="oi_distribution_eula_title">%s Лицензионное Cоглашение</string>
 	
 	<!-- EULA welcome message. %s is an application name, e.g. "... (EULA) for OI Notepad".
 		Translation can be as long as required. -->
-	<string name="oi_distribution_eula_message">Please read and accept the following End User License Agreement (EULA) for %s.</string>
+	<string name="oi_distribution_eula_message">Пожалуйста, прочтите и примите следующее лицензионное соглашение конечного пользователя (EULA) для %s</string>
 	
 	<!-- Button: Accept terms of EULA. -->
 	<string name="oi_distribution_eula_accept">Подтвердить</string>
@@ -50,7 +52,7 @@
 	<string name="oi_distribution_update_box_text">Проверьте обновления вручную или установите OI Update для автоматической проверки.</string>
 	<string name="oi_distribution_update_check_now">Проверить сейчас</string>
 	<string name="oi_distribution_update_get_updater">Получить OI Updater</string>
-	<string name="oi_distribution_update_error">Download application not available.</string>
+	<string name="oi_distribution_update_error">Загрузка приложения не доступна.</string>
 	
     <!-- Name of the application "OI Update". Translations of the application name should be consistent. -->
     <string name="oi_distribution_update_app">OI Update</string>
@@ -59,7 +61,7 @@
     <!-- Menu command to open the "about" or "info" dialog. -->
     <string name="oi_distribution_about">О программе</string>
     <!-- %s is the version number (e.g. "1.2.1") -->
-	<string name="oi_distribution_aboutapp_not_available">No compatible extension available to display full info (contact, credits, license).</string>
+	<string name="oi_distribution_aboutapp_not_available">Нет совместимого расширения для отображения полной информации (контакты, лицензии).</string>
     
     
     <!-- Button text: Get the application "OI About". Translations of the application name should be consistent. -->
@@ -68,16 +70,21 @@
     <!-- Name of the application "OI About". Translations of the application name should be consistent. -->
     <string name="oi_distribution_aboutapp">OI About</string>
     
+    <!-- Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.  -->
+    <string name="oi_distribution_barcodescanner">Barcode OI Plugin</string>
+    <!-- Dialog message. -->
+    <string name="oi_distribution_barcodescanner_not_available">No compatible barcode scanner is available.</string>
+    
     <!-- Name of the application "OI File Manager". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_filemanager">OI File Manager</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_filemanager_not_available">No compatible file manager is available.</string>
+    <string name="oi_distribution_filemanager_not_available">Совместимый файловый менеджер не доступен</string>
     
     <!-- Safe -->
     <!-- Name of the application "OI Safe". Translations of the application name should be consistent.  -->
     <string name="oi_distribution_safe">OI Safe</string>
     <!-- Dialog message. -->
-    <string name="oi_distribution_safe_not_available">No compatible application for encryption is available.</string>
+    <string name="oi_distribution_safe_not_available">Совместимые приложения для шифрования не доступны</string>
     <string name="oi_distribution_safe_not_available_decrypt">No compatible application for decryption is available.\n\nNote: You have to restore the master key from a backup file in order to access previously encrypted data.</string>
     
     <!-- Dialog message: %s is the name of an application (e.g. "OI Notepad"). -->
@@ -92,7 +99,7 @@
     <string name="oi_distribution_download_title">Загрузка %s</string>
 	
 	<!-- %s is an application name (e.g. "OI About can be used with the following applications:") -->
-	<string name="oi_distribution_info_activity_text">%s can be used with the following applications:</string>
+	<string name="oi_distribution_info_activity_text">%s могут быть использованы для следующих приложений:</string>
 	<!-- %s is an application name (e.g. "Launch OI Notepad") -->
     <string name="oi_distribution_info_launch">Запуск %s</string>
     <!-- %1$s is the current application name. %2$s is another application name, and %3$s is the other application\'s version name

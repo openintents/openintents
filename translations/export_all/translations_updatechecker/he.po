@@ -1,0 +1,356 @@
+# Hebrew translation for openintents
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the openintents package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: openintents\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Neta Oren <Unknown>\n"
+"Language-Team: Hebrew <he@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: Launchpad (build nnnnn)\n"
+
+#. Automatically filled in by Launchpad:
+#: tmp_strings.xml:8(string)
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Neta Oren https://launchpad.net/~netao212"
+
+#. ***************************
+#. 	     Applicatio-specific strings
+#. 	     ***************************
+#: tmp_strings.xml:13(string) tmp_strings.xml:21(string)
+msgid "OI Update"
+msgstr "עדכון OI"
+
+#: tmp_strings.xml:15(string)
+msgid "A new version of %s is available.\\nWould you like to upgrade?"
+msgstr "יש גרסא חדשה של %s זמינה. /n האם אתה רוצה לעדכן?"
+
+#: tmp_strings.xml:16(string)
+msgid "A new version of %1$s is available at %2$s.\\n%3$s\\n"
+msgstr "יש גרסה חדשה של %1$s זמינה אצל %2$s.\\n%3$s\\n"
+
+#: tmp_strings.xml:17(string)
+msgid "A new version of %1$s is available.\\n%2$s\\n"
+msgstr "קיימת גרסה חדשה זמינה של %1$s.\\n%2$s\\n"
+
+#: tmp_strings.xml:18(string)
+msgid "A new version of %1$s is available at %2$s."
+msgstr "גרסא חדשה של %1$s זמינה אצל %2$s"
+
+#: tmp_strings.xml:19(string)
+msgid "A new version of %s is available."
+msgstr "יש גרסה זמינה חדשה של %s"
+
+#: tmp_strings.xml:20(string)
+msgid "Android Market not available."
+msgstr "שוק אנדרואיד לא זמין."
+
+#: tmp_strings.xml:22(string)
+msgid "Android Market"
+msgstr "שוק אנדרואיד"
+
+#: tmp_strings.xml:23(string)
+msgid "AndAppStore.com"
+msgstr "AndAppStore.com"
+
+#: tmp_strings.xml:25(string)
+msgid "Version %1$s\\nSD card %2$s\\n\\nOS\\n%3$s"
+msgstr "גרסה %1$s\\nSD של כרטיס %2$s\\n\\nOS\\n%3$s"
+
+#: tmp_strings.xml:26(string)
+msgid "free space: %s"
+msgstr "רווח חינם : %s"
+
+#: tmp_strings.xml:27(string)
+msgid "Board %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+msgstr "לוח  %1$s\\nBrand %2$s\\nDevice %3$s\\nID %4$s\\nModel %5$s"
+
+#: tmp_strings.xml:29(string)
+msgid "Perform update now!"
+msgstr "בצע עדכון עכשיו!"
+
+#: tmp_strings.xml:30(string)
+msgid "Try update from Market now!"
+msgstr "נסה עדכון מהמרקט עכשיו!"
+
+#: tmp_strings.xml:31(string)
+msgid "Try update from AndAppStore now!"
+msgstr "נסה לעדכן מחנות היישומים עכשיו!"
+
+#: tmp_strings.xml:32(string)
+msgid "Remind me later!"
+msgstr "הזכר לי אחר כך!"
+
+#: tmp_strings.xml:33(string)
+msgid "Ignore this update"
+msgstr "התעלם מעדכון זה"
+
+#: tmp_strings.xml:34(string)
+msgid "Ignore all further updates"
+msgstr "התעלם מעדכונים נוספים"
+
+#: tmp_strings.xml:35(string)
+msgid "Ok"
+msgstr "אוקי"
+
+#: tmp_strings.xml:37(string)
+msgid ""
+"Update could not be started!\\n\\nPlease contact application developer!\\n\\n"
+"%s"
+msgstr "לא ניתן להתחיל עדכון! \\n\\n אנא צור קשר עם מפתח האפליקציה! \\n\\n%s"
+
+#: tmp_strings.xml:38(string)
+msgid "Application is up-to-date."
+msgstr "היישום מעודכן"
+
+#: tmp_strings.xml:39(string)
+msgid "Checking for new version."
+msgstr "מחפש גרסה חדשה"
+
+#: tmp_strings.xml:40(string)
+msgid "Building list of applications."
+msgstr "יוצר רשימה של יישומים."
+
+#: tmp_strings.xml:41(string)
+msgid "Check AndAppStore.com"
+msgstr "בדוק  AndAppStore.com"
+
+#: tmp_strings.xml:42(string)
+msgid "Check versions"
+msgstr "בדוק גרסאות"
+
+#: tmp_strings.xml:43(string)
+msgid "Show all"
+msgstr "הצג הכל"
+
+#: tmp_strings.xml:44(string)
+msgid "Refresh"
+msgstr "רענן"
+
+#: tmp_strings.xml:45(string)
+msgid "Checked AndAppStore"
+msgstr "AndAppStore נבדק"
+
+#: tmp_strings.xml:46(string)
+msgid "Current version: %s"
+msgstr "גרסה נוכחית : %s"
+
+#: tmp_strings.xml:47(string)
+msgid "Current version code: %s"
+msgstr "קוד גרסה נוכחית : %s"
+
+#: tmp_strings.xml:48(string)
+msgid "Newer version: %s"
+msgstr "גרסה חדשה יותר : %s"
+
+#: tmp_strings.xml:49(string)
+msgid "Newer version: %1$s - %2$s"
+msgstr "גרסה חדשה יותר : %1$s - %2$s"
+
+#: tmp_strings.xml:50(string)
+msgid "Newer version available."
+msgstr "גרסה חדשה יותר זמינה."
+
+#: tmp_strings.xml:51(string)
+msgid "No update information found."
+msgstr "לא נמצא מידע לגבי עדכון."
+
+#: tmp_strings.xml:52(string)
+msgid "OI Update - List of new versions"
+msgstr "עדכון OI - רשימה של גרסאות חדשות יותר"
+
+#: tmp_strings.xml:53(string)
+msgid "OI Update - New versions at AndAppStore"
+msgstr "עדכון OI - גרסאות חדשות יותר אצל AndAppStore"
+
+#: tmp_strings.xml:54(string)
+msgid "OI Update - List of managed applications"
+msgstr "עדכון OI - רשימה של יישומים מנוהלים"
+
+#: tmp_strings.xml:55(string)
+msgid "OI Update - List of managed applications (check at AndAppStore)"
+msgstr "עדכון OI - רשימה של יישומים מנוהלים (בדוק אצל AndAppStore)"
+
+#: tmp_strings.xml:56(string)
+msgid "Settings"
+msgstr "הגדרות אישיות"
+
+#: tmp_strings.xml:57(string)
+msgid "Auto check"
+msgstr "בדיקה אוטומטית"
+
+#: tmp_strings.xml:58(string)
+msgid "Ignored"
+msgstr "מתעלם"
+
+#: tmp_strings.xml:59(string)
+msgid "Updates are currently ignored. Would you like to receive updates again?"
+msgstr "מתעלם מעדכונים כרגע. האם אתה רוצה לקבל עדכונים שוב?"
+
+#: tmp_strings.xml:60(string)
+msgid "Unknown"
+msgstr "ֹלא ידוע"
+
+#: tmp_strings.xml:61(string)
+msgid ""
+"No update information available. Please check manually and ask the developer "
+"to support OI Update in the future."
+msgstr ""
+"אין מידע זמין על העדכון. בבקשה בדוק ידנית ושאל את המפתח שיספק עדכון OI בעתיד."
+
+#: tmp_strings.xml:62(string)
+msgid "Search on Market"
+msgstr "חפש במרקט"
+
+#: tmp_strings.xml:63(string)
+msgid "Search on AndAppStore"
+msgstr "חפש בAndAppStore"
+
+#: tmp_strings.xml:64(string)
+msgid "Processing %s"
+msgstr "מעבד %s"
+
+#: tmp_strings.xml:66(string)
+msgid ""
+"The update process of this application directs to a different site than "
+"Android Market. Applications installed from unknown sources might exhibit a "
+"security risk."
+msgstr ""
+"תהליך העדכון של יישום זה מכוון לאתר שונה מאנדרואיד מרקט. יישומים שמותקנים "
+"ממקורות לא ידועים\r\n"
+"יכולים להוות סיכון בטחוני."
+
+#: tmp_strings.xml:70(string)
+msgid "Continue anyway"
+msgstr "המשך בכל זאת"
+
+#: tmp_strings.xml:71(string)
+msgid "Abort"
+msgstr "ביטול"
+
+#: tmp_strings.xml:73(string)
+msgid "Auto update"
+msgstr "עדכון אוטומטי"
+
+#: tmp_strings.xml:74(string)
+msgid "If checked, search for updates is performed regularly"
+msgstr "אם סומן, חיפוש אחר עדכונים יעשה באופן קבוע"
+
+#: tmp_strings.xml:75(string)
+msgid "Update interval"
+msgstr "השהיית עדכון"
+
+#: tmp_strings.xml:76(string)
+msgid "Set the interval how often the update search should be performed."
+msgstr "קבע את ההשהייה של התדירות שחיפוש העדכונים יבצע"
+
+#: tmp_strings.xml:77(string)
+msgid "Select interval"
+msgstr "בחר השהייה"
+
+#: tmp_strings.xml:78(string)
+msgid "every_month"
+msgstr "כל_חודש"
+
+#: tmp_strings.xml:79(string)
+msgid "Warning"
+msgstr "אזהרה"
+
+#: tmp_strings.xml:80(string)
+msgid ""
+"If you uncheck this item, you will no longer receive notifications for "
+"updates. Do you still want to uncheck auto update?"
+msgstr ""
+"אם אתה לא תסמן פריט זה, אתה לא תקבל התראות לעדכונים.\r\n"
+"האם אתה עדיין רוצה לעשות זאת?"
+
+#: tmp_strings.xml:82(string)
+msgid "Use AndAppStore"
+msgstr "השתמש בAndAppStore"
+
+#: tmp_strings.xml:83(string)
+msgid "Use version information provided by AndAppStore.com"
+msgstr "השתמש במידע הגרסה שמסופק על ידי AndAppStore.com"
+
+#: tmp_strings.xml:85(string)
+msgid "Read update information"
+msgstr "קרא מידע על העדכון"
+
+#: tmp_strings.xml:86(string)
+msgid "Write update information"
+msgstr "כתוב מידע על העדכון"
+
+#: tmp_strings.xml:87(string)
+msgid ""
+"Read information about installed applications, update locations and requests."
+msgstr "קרא מידע על היישומים המותקנים, עדכן מיקומים ובקשות."
+
+#: tmp_strings.xml:88(string)
+msgid ""
+"Write information about installed applications, update locations and "
+"requests."
+msgstr "כתוב מידע על יישומים מותקנים, עדכן מיקומים ובקשות."
+
+#. About
+#: tmp_strings.xml:92(string)
+msgid "About"
+msgstr "אודות"
+
+#: tmp_strings.xml:93(string)
+msgid "About %s"
+msgstr "אודות %s"
+
+#: tmp_strings.xml:94(string)
+msgid ""
+"Version %s \\n\\n OI Update keeps you informed on new application versions."
+"\\n OpenIntents allows different Android applications to share data using "
+"intents and open interfaces.\\n\\n For more information and other great "
+"applications visit OpenIntents at www.openintents.org"
+msgstr ""
+"גרסה %s \\n\\n OI שמוודא שתישאר מעודכן על גרסאות חדשות ליישומים. /n "
+"OpenIntents מאפשר שאפליקציות שונות לאנדרואיד ישתפו מידע באמצעות ממשק פתוח. /"
+"n/n בשביל מידע נוסף ויישומים מעולים נוספים בקר  ב-OpenIntents  אצל www."
+"openintents.org"
+
+#. EULA
+#: tmp_strings.xml:102(string)
+msgid "OI Update EULA"
+msgstr "עדכון OI EULA"
+
+#: tmp_strings.xml:103(string)
+msgid ""
+"\"Copyright 2008 OpenIntents.org\\n Licensed under the Apache License, "
+"Version 2.0 (the \\\"License\\\"); you may not use this file except in "
+"compliance with the License. You may obtain a copy of the License at\\n "
+"http://www.apache.org/licenses/LICENSE-2.0\\n Unless required by applicable "
+"law or agreed to in writing, software distributed under the License is "
+"distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY "
+"KIND, either express or implied. See the License for the specific language "
+"governing permissions and limitations under the License.\\n \\n\""
+msgstr ""
+"\"זכויות שמורות 2008 OpenIntents.org\\n מאושר תחת רשיון Apache, גרסה 2.0 ( \\"
+"\"License\\\") אתה לא רשאי להשתמש בקובץ זה\r\n"
+"פרט להתאמה עם הרשיון. אתה רשאי להשיג עותק של רשיון זה אצל /n  http://www."
+"apache.org/licenses/LICENSE-2.0\\n\r\n"
+"אלא אם בוקש על ידי החוק או שנקבע בכתב, חילוק תוכנה תחת הרשיון על בסיס, בלי "
+"צווים או תנאים מכל סוג שהוא,\r\n"
+"או שבוטאו או שנרמזו. ראה את הרשיון עבור שפות ספציפיות והרשאות והגבלות תחת "
+"הרישיון. /n/n\""
+
+#: tmp_strings.xml:110(string)
+msgid "Accept"
+msgstr "אשר"
+
+#: tmp_strings.xml:111(string)
+msgid "Cancel"
+msgstr "ביטול"

@@ -22,12 +22,14 @@
 	
 	<!-- Automatically filled in by Launchpad: -->
  	<string name="about_translators">Launchpad Contributions:
+  Alexander \'FONTER\' Zinin https://launchpad.net/~spore-09
   Alexander Sapronov https://launchpad.net/~warmonger
   Andrey Zaytsev https://launchpad.net/~a.einsam
+  Evgrafov Vladimir https://launchpad.net/~evgrafov-vladimir
   OpenIntents devs https://launchpad.net/~openintents-devs</string>
 	
 	<!-- Explanation what this application does. -->
-	<string name="about_comments">This extension to OI Shopping list and OI Notepad lets you import and export lists and notes in the CSV file format.</string>
+	<string name="about_comments">Эти расширения для OI Shopping и OI Notepad позволят Вам производить импорт и экспорт Ваших списков и заметок в формат CSV.</string>
 	
 	<!-- ***************************
 	     Distribution
@@ -60,20 +62,20 @@
     <string name="error_reading_file">Ошибка чтения из файла</string>
     <string name="wrong_csv_format">Неправильный формат CSV</string>
     <string name="error_file_not_found">Файл не найден</string>
-    <string name="error_not_yet_implemented">Not yet implemented, please choose different option.</string>
+    <string name="error_not_yet_implemented">Не используется, выберите другой вариант.</string>
     <string name="import_finished">Импорт завершен</string>
     <string name="export_finished">Экспорт завершен</string>
     <string name="filemanager_title_notepad">Выберите CSV файл блокнота</string>
     <string name="filemanager_title_shoppinglist">Выберите CSV файл списка покупок</string>
-	<string name="current_import_policy">Current Import Policy:</string>
-	<string name="import_policy">Import Policy</string>
-	<string name="select_import_policy">Select the import policy to use</string>
+	<string name="current_import_policy">Текущая политика импорта:</string>
+	<string name="import_policy">Политика Импорта</string>
+	<string name="select_import_policy">Выберите политику импорта</string>
     
     <string name="file_exists">Файл существует. Вы хотите перезаписать?</string>
     <string name="dont_ask_again">Больше не спрашивать. Всегда перезаписывать!</string>
     
     <string name="warn_restore_policy_title">Import policy set to RESTORE</string>
-    <string name="warn_restore_policy">Your current import policy is set to DELETE ALL CURRENT RECORDS and REPLACE them with the contents of the CSV file. Are you sure?</string>
+    <string name="warn_restore_policy">Выбрана политика импорта на УДАЛЕНИЕ ВСЕ ЗАПИСИ и ЗАМЕНА их содержимым файла CSV.Вы уверены?</string>
     
     <string name="menu_settings">Настройки</string>
     <string name="csv_file_format">CSV файл</string>
@@ -81,17 +83,17 @@
     <string name="select_encoding">Выберите кодировку</string>
     <string name="default_encoding">По умочанию</string>
     <string name="use_custom_encoding">Выбрать кодировку(для опытных пользователей)</string>
-    <string name="preferences_select_csv_file_format">Select a CSV file format</string>
-    <string name="preferences_select_import_policy">Select the import policy to use</string>
+    <string name="preferences_select_csv_file_format">Выберите файл формата CSV</string>
+    <string name="preferences_select_import_policy">Выберите политику импорта</string>
     
     <!-- Preferences -->
     <!-- Preference category title -->
-    <string name="preference_common">Common settings</string>
+    <string name="preference_common">Общие настройки</string>
     <string name="preference_common_summary">Импорт / экспорт настроек, которые можно применить в Блокноте и Списке покупок</string>
     <string name="preference_ask_if_file_exists">Спрашивать, если файл существует</string>
-    <string name="preference_ask_if_file_exists_summary">If checked a dialog appears to confirm overwriting if the export file already exists.</string>
+    <string name="preference_ask_if_file_exists_summary">При выборе этого появится диалоговое окно для подтверждения перезаписи, если файл экспорта уже существует.</string>
     
-    <string name="preference_application_specific">Application specific settings</string>
+    <string name="preference_application_specific">Настройка специфики приложения</string>
     <string name="preference_filename">Имя файла</string>
     <string name="preference_filename_summary">Полный путь до файла</string>
     
@@ -104,8 +106,8 @@
 	<string name="converting">Конвертирование...</string>
 	<string name="dialog_ok">OK</string>
 	<string name="preference_stores">Импорт магазинов</string>
-	<string name="preference_stores_off_summary">Import HandyShopper store names only as item tags.</string>
-	<string name="preference_stores_on_summary">Import HandyShopper stores and per-store price and aisle information.</string>
+	<string name="preference_stores_off_summary">Импортировать имена магазинов HandyShopper только как тэги объектов</string>
+	<string name="preference_stores_on_summary">Импорт HandyShopper магазинов и информации о ценах и рядах</string>
 
 	<!-- OI Notepad -->
 	<!-- Permission -->
@@ -135,7 +137,7 @@
     </string-array>
     
     <string-array name="import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
+        <item>DUPLICATE - возможность дублирования записей</item>
         <item>"KEEP - Don\'t overwrite existing records."</item>
         <item>Overwrite - Overwrite existing records.</item>
         <item>Restore - DELETE ALL, then import.</item>
@@ -144,12 +146,12 @@
     <string-array name="import_policy_detail">
         <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
         <item>"KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file."</item>
-        <item>Overwrite - A record in the CSV will OVERWRITE an existing record.</item>
+        <item>Переписать - запись в формате CSV будет ПЕРЕПИСЫВАТЬ существующие записи.</item>
         <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
-        <item>DUPLICATE - Allow duplicates of records.</item>
+        <item>DUPLICATE - возможность дублирования записей</item>
         <item>"KEEP - Don\'t overwrite existing records."</item>
     </string-array>
 

@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: OpenIntents devs <Unknown>\n"
+"Last-Translator: ariza95 <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,7 +96,7 @@ msgstr "Medya tarama hariç"
 
 #: tmp_strings.xml:50(string)
 msgid "Add to bookmarks"
-msgstr ""
+msgstr "Yer imleri ekle"
 
 #: tmp_strings.xml:52(string)
 msgid "Create new folder"
@@ -346,31 +346,31 @@ msgstr "Gizli dosyaları gizle"
 
 #: tmp_strings.xml:140(string)
 msgid "Sort settings"
-msgstr ""
+msgstr "Sıralama ayarları"
 
 #: tmp_strings.xml:141(string)
 msgid "Sort by"
-msgstr ""
+msgstr "Buna göre sırala"
 
 #: tmp_strings.xml:142(string)
 msgid "In ascending order"
-msgstr ""
+msgstr "Artan sırada"
 
 #: tmp_strings.xml:143(string)
 msgid "Sort in ascending order"
-msgstr ""
+msgstr "Artan sıraya göre sıralama"
 
 #: tmp_strings.xml:144(string)
 msgid "Sort in descending order"
-msgstr ""
+msgstr "Azalan sıraya göre sıralama"
 
 #: tmp_strings.xml:146(item)
 msgid "Name"
-msgstr ""
+msgstr "İsim"
 
 #: tmp_strings.xml:148(item)
 msgid "Last modified"
-msgstr ""
+msgstr "Son değişiklikler"
 
 #. ***************************
 #.    		 Strings for the 'Save as' feature
@@ -389,33 +389,32 @@ msgstr "Dosya başarılı bir şekilde kaydedildi."
 
 #: tmp_strings.xml:161(string)
 msgid "Bookmarks"
-msgstr ""
+msgstr "Yer imleri"
 
 #: tmp_strings.xml:162(string)
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: tmp_strings.xml:164(string)
-#, fuzzy
 msgid "Select bookmarks to delete"
-msgstr "Taşınacak klasörü seçin"
+msgstr "Seçili yer imlerini sil"
 
 #: tmp_strings.xml:165(string)
 msgid "Manage bookmarks"
-msgstr ""
+msgstr "Yer imleri yöneticisi"
 
 #: tmp_strings.xml:166(string)
 msgid "Bookmark added"
-msgstr ""
+msgstr "Yer imi eklendi"
 
 #: tmp_strings.xml:167(string)
 msgid "Bookmarked destination not found."
-msgstr ""
+msgstr "Yer imi hedefi bulunamadı."
 
 #: tmp_strings.xml:168(string)
 msgid "Selected bookmarks deleted"
-msgstr ""
+msgstr "Seçili yer imleri silindi"
 
 #: tmp_strings.xml:169(string)
 msgid "This file is already bookmarked"
-msgstr ""
+msgstr "Bu dosya zaten yer imi."

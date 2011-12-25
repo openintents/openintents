@@ -5,9 +5,9 @@ OI За
 Самостоятелното за диалога е, че споделя между приложенията.
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI About е самостоятелен, обяснителен диалогов прозорец, който се споделя между приложения. Това приложение се извиква през менюто на други OI приложения. То Ви позволява да преглеждате информация за версията, връзки, благодарности и лиценза на дадено приложение. Благодарностите споменават авторите, документацията, преводачите и художниците. Всичката тази функционалност е събрана заедно в опростено и ефективно оформление. 
 
-Тази апликация е безплатна и не изисква интернет за ползването и. 
+Това приложение е безплатно и не изисква интернет за ползването ѝ. 
 
 Изходният код на това безплатно приложение с  отворен код е достъпен на адрес: 
 http://code.google.com/p/openintents
@@ -19,26 +19,26 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 Характеристики: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* Показва подпрозорци за обща информация, благодарности и лиценз.
+* Показва преводачите на всички езици.
+* Извлича информация от приложението чрез тагове по подразбиране и мета-данни.
+* По желание, всички полета могат да бъдат променени чрез наличните екстри.
 
-Applications that work with "OI About": 
+Приложения, които работят с "OI About": 
 * OI Notepad
-* OI File manager
-* OI Shopping List
+* OI File Manager
+* Списък за пазаруване на OI
 * OI Convert CSV
 * OI Safe
 * OI Countdown
 * OI Flashlight
 
 Ключови думи: 
-* About, Credits, Information.
+* За нас, Благодарности, Информация
 * OI, OpenIntents, Open Intents.
 
 Международни версии: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
 Стрингове за търсенето в Market 

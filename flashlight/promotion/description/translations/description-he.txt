@@ -1,8 +1,15 @@
-OI Flashlight is a simple and effective application that helps you find a way in the dark. OI Flashlight locks the display backlight on, clearly illuminating the surrounding area. For devices with a camera flash, OI Flashlight can also use the flash as a bright torch to brighten the room. The color of the backlight is completely customizable with OI Color Picker. 
+# Application:
+פנס OI
+
+# Promo text:
+פנס OpenIntents  עוזר לך למצוא את דרכך באפלה. פנס הצג האחורי נשמר במצב פועל כל עוד יישום זה פועל.
+
+# Description:
+פנס OI הוא יישום פשוט ויעיל שעוזר לך למצוא דרך בחשכה. פנס OI נועל את הצגת הפנס האחורי, מאיר בבירור את האיזור המקיף. עבור מכשירים עם מצלמת פלאש, פנס OI יכול גם להשתמש בפלאש כלפיד בהיר כדי להאיר את החדר. הצבע של הפנס האחורי הוא ניתן לעיצוב עם בוחר צבעים OI. 
 
 באפליקציה זאת אין פרסומות והיא לא דורשת אישור אינטרנט. 
 
-קוד המקור של אפליקציה חינמית ובלע תקוד פתוח זמין אצל: 
+קוד המקור של אפליקציה חינמית ובעלת קוד פתוח זמין אצל: 
 http://code.google.com/p/openintents
 
 לרשימה המלאה של שינויים ולרשימה של שאלות נפוצות אנא לכו אל: 
@@ -12,26 +19,26 @@ http://www.openintents.org
 https://translations.launchpad.net/openintents/trunk
 
 מאפיינים: 
-* Lock the display backlight on.
-* Lock camera flash on.
-* The color of backlight is customizable.
+* נעל את הצגת הפנס האחורי לפועל.
+* נעל פלאש המצלמה במצב פועל.
+* הצבע של הפנס האחורי ניתן לעיצוב
 
-Available extensions for "OI Flashlight": 
-* Show the license information with "OI About".
-* Change the color of the backlight with "OI Color Picker".
+הרחבות זמינות עבור "פנס OI": 
+* הראה מידע על הרישיון עם "אודות OI".
+* שנה את צבע הפנס האחורי עם "בוחר צבעים OI"
 
-Applications that work with "OI Flashlight": 
-* Update with "OI Update".
+יישומים שעובדים עם "פנס OI": 
+* עדכן עם "מעדכן OI".
 
-מילות מפתח: 
-* Flashlight, light, Backlight
+‏מילות מפתח: 
+* פנס, אור, אור אחורי
 * OI, OpenIntents, Open Intents
 
 גרסאות בין-לאומיות: 
-Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
 
 
-Search strings for Market: 
+חפש מחרוזות לשוק: 
 * uses OI About
 * uses OI Color Picker
 * uses OI Update

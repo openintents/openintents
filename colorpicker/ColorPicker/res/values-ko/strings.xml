@@ -6,23 +6,59 @@
 	     
 	<!-- Automatically filled in by Launchpad: -->
 	<string name="about_translators">Launchpad Contributions:
-  CSro https://launchpad.net/~choongsan</string>
+  Jihyeok Seo https://launchpad.net/~limeburst</string>
 	
 	<!-- Strings for OI About -->
-	<string name="about_comments">OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.</string>
-	<string name="about_website_label">OI Flashlight at OpenIntents</string>
+	<string name="about_comments">OpenIntents 색 추출기는 OI 전등과, 다른 호환되는 앱의 확장 기능입니다.</string>
 	
 	<!-- ***************************
-	     Applicatio-specific strings
+	     Application-specific strings
 	     *************************** -->
-    <string name="app_name">OI 색 골라내기</string>
-    <string name="color_picker">색 골라내기</string>
+	<!-- Name of application. Can be localized. OI = OpenIntents should stay unmodified. -->
+    <string name="app_name">OI 색 추출기</string>
+    
+    <!-- Title of the color picker activity. -->
+    <string name="color_picker">색 추출기</string>
+    
+    <string name="recent_colors_condensed">최근</string>
+    <string name="recent_colors">최근 색</string>
+    <string name="recent_colors_expanded">최근에 선택한 색</string>
+    <string name="recent_colors_clear_history">비우기</string>
+    <string name="recent_colors_empty">최근에 선택한 색이 없습니다.</string>
+    
+    <string name="confirm_color_title">이 색을 사용하시겠습니까?</string>
+    <string name="confirm_color_message">이 색을 사용하시겠습니까? 중간에 있는 원을 클릭하여 다음부터 이 메시지를 보지 않을 수 있습니다.</string>
+    
     
 	<!-- About -->
-	<string name="about">프로그램 정보</string>
-	<string name="aboutapp_not_available">Version %s\n\nNo compatible extension available to display full info (contact, credits, license).</string>
-	<string name="aboutapp_get">Get OI About</string>
+	<string name="about">대하여</string>
+	<string name="aboutapp_not_available">버전 %s\n\n모든 정보(연락처, 크레딧, 라이선스)를 표시할 수 있는 확장이 없습니다.</string>
+	<string name="aboutapp_get">OI에 대하여 받기</string>
+
 
 	<!-- Update -->
-	<string name="update_error">Download application not available.</string>
+	<string name="update_error">업데이트 앱이 없습니다.</string>
+	
+	<!-- ***************************
+	     Distribution
+	     *************************** -->
+	<!-- Message how to use OI Color Picker from within OI Flashlight. -->
+    <string name="info_app_flashlight">OI 전등에서 색을 선택하려면, 메뉴 &gt; 색 을 눌러주세요.</string>
+    <string name="title_app_flashlight">OI 전등</string>
+    
+    <string name="info_app_spiral_wallpaper">최면적인 움직이는 나선 라이브 월페이퍼.</string>
+    <string name="title_app_spiral_wallpaper">HypnoTwister 라이브 월페이퍼</string>
+    
+    <string name="info_app_bettr_flickr">안드로이드용 네이티브 Flickr 인터페이스</string>
+    <string name="title_app_bettr_flickr">BettrFlickr</string>
+    
+    <string name="info_app_character_gen">애니매이션 캐릭터 생성을 위한 믹스앤매치 아트워크</string>
+    <string name="title_app_character_gen">애니매이션 캐릭터 생성기</string>
+    
+    
+	<string name="info_activity_text">이 앱은 다음 앱들과 함께 사용할 수 있습니다:</string>
+    <string name="info_launch">%s 실행</string>
+    <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
+	<string name="info_not_available">이 앱은 최소 %1$s %2$s 를 필요로 합니다.</string>
+	<string name="info_get">%s 받기</string>
 </resources>

@@ -1,0 +1,49 @@
+OI About je nezavisni about prozor koji dele aplikacije. Ova aplikacija je upaljena kroz meni drugih OI aplikacija. Dozvoljava vam da vidite informacije o verziji, linkove, zasluge, i licencu aplikacije. Zasluge sadrže autore, dokumentaciju, prevodioce, i dizajnere. Sva funkcionalnost je spojena u jedno u prostom ali efektivnom rasporedu. 
+
+Ova aplikacija nema reklame i zahtijeva internet konkciju. 
+
+Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na: 
+http://code.google.com/p/openintents
+
+Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite: 
+http://www.openintents.org
+
+Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u: 
+https://translations.launchpad.net/openintents/trunk
+
+Značajke: 
+* Prikazuje opće podatke, zasluge, i liencne kartice.
+* Prikazuje prevodioce za sve verzije jezika.
+* Preuzima informacije iz aplikacije kroz tagove i metapodatke.
+* Opciono, sva polja se mogu izmeniti kroz intent extras.
+
+Aplikacije koje rade sa "OI About": 
+* OI Blokčić
+* OI Menadžer datoteka
+* OI Lista za kupovinu
+* OI CSV Konverter
+* OI Sigurnost
+* OI Odbrojavač
+* OI Blic
+
+Ključne riječi: 
+* O, Zasluge, Informacije.
+* OI, OpenIntents, Open Intents.
+
+Internacionalna verzija: 
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
+
+
+Pretraži tekst na Marketu: 
+* extension for OI Notepad
+* extension for OI File Manager
+* extension for OI Shopping List
+* extension for OI Convert CSV
+* extension for OI Safe
+* extension for OI Coundown
+* extension for OI Flashlight
+* extension for OI Update
+
+
+
+

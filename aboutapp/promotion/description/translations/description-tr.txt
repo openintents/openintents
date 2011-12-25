@@ -5,7 +5,7 @@ OI Hakkında
 Uygulamalar arasında paylaşılan bir diyalog hakkındaki bağımsız bileşen.
 
 # Description:
-OI About is a standalone about dialog that is shared between apps. This application is invoked through the menu of other OI applications. It allows you to view version information, links, credits, and license of an application. Credits include authors, documentation, translators, and artists. All of this functionality is brought together in a simplistic and efficient layout. 
+OI About uygulamalar arasında paylaşılan bağımsız bir hakkında diyalogudur. Bu uygulama diğer OI uygulamalarını menü aracılığıyla çalıştırır. Sürüm bilgilerine, linklere, katkıda bulunanlara ve uygulamanın lisansına bakmanıza izin verir. Katkıda bulunanlar yazarları, dokümantasyonu, çevirmenleri ve sanatçıları içerir. Tüm bu işlevsellik basit ve etkili bir düzende bir araya getirildi. 
 
 Bu uygulama ücretsiz reklamdır ve internet izni gerektirmez. 
 
@@ -19,12 +19,12 @@ Launchpad'te dilinize çevirileri geliştirmek için yardım edebilirsiniz:
 https://translations.launchpad.net/openintents/trunk
 
 Özellikler: 
-* Shows general info, credits, and license tabs.
-* Shows translators of all language versions.
-* Retrieves information from application manifest through default tags and metadata.
-* Optionally, all fields can be modified through intent extras.
+* Genel bilgi, katkıda bulunanlar ve lisans sekmelerini gösterir.
+* Tüm dil sürümü çevirmenlerini gösterir.
+* Varsayılan etiketler ve metaverileri aracılığıyla uygulama bildiriminden bilgi alınır.
+* İsteğe bağlı olarak tüm alanlar ekstra aracılığıla değiştirilebilir.
 
-Applications that work with "OI About": 
+"OI About" ile birlikte çalışan uygulamalar: 
 * OI Notepad
 * OI File manager
 * OI Shopping List
@@ -34,14 +34,14 @@ Applications that work with "OI About":
 * OI Flashlight
 
 Anahtar kelimeler: 
-* About, Credits, Information.
+* Hakkında, Katkıda Bulunanlar, Bilgi.
 * OI, OpenIntents, Open Intents.
 
 Uluslararası versiyonlar: 
-O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, ກ່ຽວກັບ OI
+O aplikaci OpenIntents, OI About, OI Hakkında, OI Info, OI O Programe, OI За, OI ھەققىدە, OI के बारे में, OI简介, OI에 대하여, Sobre o OI, אודות OI, عن OI, ກ່ຽວກັບ OI
 
 
-Search strings for Market: 
+Market için arama metinleri: 
 * extension for OI Notepad
 * extension for OI File Manager
 * extension for OI Shopping List

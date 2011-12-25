@@ -27,7 +27,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  OpenIntents devs https://launchpad.net/~openintents-devs\n"
-"  happy  nawani https://launchpad.net/~nawanihappy"
+"  happynawani https://launchpad.net/~happynawani"
 
 #. EULA (End user license agreement). %s is an application name, e.g. "OI Notepad EULA". 
 #. 		Translation should be short, since this is a title.
@@ -124,27 +124,38 @@ msgstr "OI 'के बारें में' प्राप्त करें
 msgid "OI About"
 msgstr "OI के बारें में"
 
-#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#. Name of the application "Barcode OI Plugin". Translations of the application name should be consistent.
 #: tmp_strings.xml:69(string)
+msgid "Barcode OI Plugin"
+msgstr ""
+
+#. Dialog message.
+#: tmp_strings.xml:71(string)
+#, fuzzy
+msgid "No compatible barcode scanner is available."
+msgstr "कोई संगत पुर्ण  फ़ाइल प्रबंधक उपलब्ध है|"
+
+#. Name of the application "OI File Manager". Translations of the application name should be consistent.
+#: tmp_strings.xml:74(string)
 msgid "OI File Manager"
 msgstr "OI फ़ाइल प्रबंधक"
 
 #. Dialog message.
-#: tmp_strings.xml:71(string)
+#: tmp_strings.xml:76(string)
 msgid "No compatible file manager is available."
 msgstr "कोई संगत पुर्ण  फ़ाइल प्रबंधक उपलब्ध है|"
 
 #. Name of the application "OI Safe". Translations of the application name should be consistent.
-#: tmp_strings.xml:75(string)
+#: tmp_strings.xml:80(string)
 msgid "OI Safe"
 msgstr "OI सुरक्षित"
 
 #. Dialog message.
-#: tmp_strings.xml:77(string)
+#: tmp_strings.xml:82(string)
 msgid "No compatible application for encryption is available."
 msgstr "एन्क्रिप्शन के लिए कोई संगत पुर्ण अनुप्रयोग उपलब्ध नहीं  है|"
 
-#: tmp_strings.xml:78(string)
+#: tmp_strings.xml:83(string)
 msgid ""
 "No compatible application for decryption is available.\\n\\nNote: You have "
 "to restore the master key from a backup file in order to access previously "
@@ -154,52 +165,52 @@ msgstr ""
 "डेटा का उपयोग करने के लिए आपको बैकअप फ़ाइल से मास्टर कुंजी पुनर्स्थापित करनी होगी|"
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:81(string)
+#: tmp_strings.xml:86(string)
 msgid "Please download %s from the Market or the OpenIntents website."
 msgstr "बाजार या OpenIntents वेबसाइट से %s डाउनलोड करें|"
 
 #. Dialog message: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:83(string)
+#: tmp_strings.xml:88(string)
 msgid "Please download %s from the OpenIntents website."
 msgstr "OpenIntents वेबसाइट से%s डाउनलोड करें|"
 
 #. Dialog button: download the suggested application from Android Market.
-#: tmp_strings.xml:85(string)
+#: tmp_strings.xml:90(string)
 msgid "Market download"
 msgstr "बाजार से डाउनलोड करें"
 
 #. Dialog button: download the suggested application from the developer web site.
-#: tmp_strings.xml:87(string)
+#: tmp_strings.xml:92(string)
 msgid "Web download"
 msgstr "वेब से डाउनलोड करें"
 
 #. Dialog title: %s is the name of an application (e.g. "OI Notepad").
-#: tmp_strings.xml:89(string)
+#: tmp_strings.xml:94(string)
 msgid "Download %s"
 msgstr "%s  डाउनलोड करें"
 
 #. %s is an application name (e.g. "OI About can be used with the following applications:")
-#: tmp_strings.xml:92(string)
+#: tmp_strings.xml:97(string)
 msgid "%s can be used with the following applications:"
 msgstr "% s निम्नलिखित अनुप्रयोगों के साथ इस्तेमाल किया जा सकता है:"
 
 #. %s is an application name (e.g. "Launch OI Notepad")
-#: tmp_strings.xml:94(string)
+#: tmp_strings.xml:99(string)
 msgid "Launch %s"
 msgstr "%s लॉन्च करें"
 
 #. %1$s is the current application name. %2$s is another application name, and %3$s is the other application's version name
 #.     (e.g. "OI About requires OI Notepad 1.2.0 or higher.")
-#: tmp_strings.xml:97(string)
+#: tmp_strings.xml:102(string)
 msgid "%1$s requires %2$s %3$s or higher."
 msgstr "%1$s को आवश्यकता है  %2$s %3$s या अधिक की|"
 
 #. Title of a dialog.
-#: tmp_strings.xml:99(string)
+#: tmp_strings.xml:104(string)
 msgid "Instructions"
 msgstr "निर्देश"
 
 #. Error message
-#: tmp_strings.xml:101(string)
+#: tmp_strings.xml:106(string)
 msgid "Application could not be launched"
 msgstr "अनुप्रयोग शुरू नहीं किया जा सका"

@@ -1,0 +1,37 @@
+Ang OI plasleyt  ay isang simple at epektibong applikasyon na tumutulong sa iyo na makahanap ng daan sa dilim. Ang OI plasleyt ay nagpapanatili na bukas ang ilaw sa likod ng display, malinaw na nag-iilaw sa paligid na lugar. Para sa mga aparato na may camera flash, ang OI plaslayt ay maaari ring gamitin ang flash na ito bilang isang maliwanag na tanglaw para lumiwanag ang kuwarto. Ang kulay ng ilaw sa likod ay lubos na napapasadya sa OI Tagapili ng Kulay. 
+
+Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng pahintulot ng internet. 
+
+Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo ng applikasyon ay magagamit sa: 
+http://code.google.com/p/openintents
+
+Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas itanong, mangyaring bisitahin ang: 
+http://www.openintents.org
+
+Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+Tampok: 
+* Panatiliin na nakabukas ilaw sa likod ng display.
+* Panatiliin na nakabukas ang camera flash.
+* Ang kulay ng ilaw sa likod ay napapasadya.
+
+Magagamit na mga ekstensyon para sa "OI Plasleyt": 
+* Ipakita ang mga impormasyon ng lisensiya sa "OI Tungkol".
+* Palitan ang kulay ng ilaw sa likod sa "OI Tagapili ng Kulay".
+
+Applikasyon na gumagana sa mga "OI Plasleyt": 
+* Magbago sa pamamagitan ng "OI Magbago".
+
+Keywords: 
+* Plaslayt, ilaw, Ilaw sa Likod
+* OI, OpenIntents, Bukas na Layunin
+
+Internasyonal na mga bersyon: 
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
+
+
+Search strings para sa Merkado: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

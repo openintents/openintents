@@ -1,0 +1,37 @@
+OI Blic je je prosta i efektivna aplikacija koja ti pomaže da nađeš put i mraku. OI Blic zaključa prikaz pozadinskog osvjetljenja, čisto, osvetljavajući okolinu. Za uređaje sa blicom na kameri, OI Blic takođe može da koristi blic kao osvetljivač. Boja pozadinskog osvjetljenja je potpuno izmenjiva pomoću OI Odabiračem Boja. 
+
+Ova aplikacija nema reklame i zahtijeva internet konkciju. 
+
+Izvorni kod ovog programa je besplatan i otvoreni izvor aplikacije je dostupan na: 
+http://code.google.com/p/openintents
+
+Za punu listu promena i listu ubičaeno pitanih pitanja, molimo posetite: 
+http://www.openintents.org
+
+Možete pomoći u poboljšanju prevoda u vaš jezik na Launchpad-u: 
+https://translations.launchpad.net/openintents/trunk
+
+Značajke: 
+* Zaključaj prikaz pozadinskog osvjetljenja.
+* Zaključaj blic kamere.
+* Boja pozadinskog osvjetljenja je izmenjiva.
+
+Dostupni dodatci za "OI Blic": 
+* Prikaži informacije licence sa "OI About":
+* Izmeni boju pozadinskog osvetljenja za "OI Odabiračem Boja".
+
+Aplikacije koje rade sa "OI Blic": 
+* Ažuriraj sa "OI Ažurator".
+
+Ključne riječi: 
+* Blic, svetlost, pozadinsko osvetljenje.
+* OI, OpenIntents, Open Intents
+
+Internacionalna verzija: 
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
+
+
+Pretraži tekst na Marketu: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update

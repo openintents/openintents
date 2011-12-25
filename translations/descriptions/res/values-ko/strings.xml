@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<main>
+	<translators>Launchpad Contributions:
+  Jihyeok Seo https://launchpad.net/~limeburst</translators>
+	<description application="aboutapp/AboutApp">
+		<!--  OI About -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI에 대하여는 앱 간 공유되는 대화 상자입니다.</string>
+		<string>이 앱은 다른 OI 앱의 메뉴를 통해 실행됩니다.</string>
+		<string>앱의 버전 정보, 링크, 크레딧, 그리고 라이선스를 볼 수 있게 해드립니다.</string>
+		<string>크레딧은 제작자, 문서, 번역자, 그리고 아티스트를 포함합니다.</string>
+		<string>이 모든 기능은 간결하고 효율적으로 배치되어 있습니다.</string>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>일반 정보, 크레딧, 그리고 라이선스 탭을 보여줍니다.</listitem>
+		<listitem>모든 언어 버전의 변역자를 보여줍니다.</listitem>
+		<listitem>기본 태그와 메타데이터를 통해 앱 마니페스트에서 정보를 가져옵니다.</listitem>
+		<listitem>선택적으로, 모든 내용은 intent extra를 통해 수정할 수 있습니다.</listitem>
+		<emptyline/>
+		<string>"OI에 대해서" 와 호환되는 앱들:</string>
+		<listitem>OI 메모장</listitem>
+		<listitem>OI 파일 관리자</listitem>
+		<listitem>OI 쇼핑 목록</listitem>
+		<listitem>OI CSV 변환기</listitem>
+		<listitem>OI 금고</listitem>
+		<listitem>OI 카운트다운</listitem>
+		<listitem>OI 전등</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<listitem>대하여, 크레딧, 정보.</listitem>
+		<listitem>OI, OpenIntents, Open Intents.</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>마켓에서 검색하기:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+	<description application="filemanager/FileManager">
+		<!--  OI File Manager -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 파일 관리자에서는 SD 카드 탐색, 폴더 만들기, 파일의 이름을 바꾸거나, 복사하기, 옮기기, 삭제를 할 수 있습니다.</string>
+		<string>또 다른 앱의 확장으로서 "열기"와 "저장" 대화 상자를 표시하는 데 쓰입니다.</string>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>이미지 썸네일과 함께 파일 목록을 보입니다.</listitem>
+		<listitem>파일 옮기기, 이름 바꾸기, 삭제하기.</listitem>
+		<listitem>폴더 만들기, 삭제하기.</listitem>
+		<listitem>이메일로 파일 보내기.</listitem>
+		<listitem>지메일과 같은 다은 앱의 확장 역할을 하여 파일을 첨부합니다.</listitem>
+		<listitem>다양한 MIME 타입과 확장자를 지원합니다.</listitem>
+		<listitem>다른 앱이 OI 파일 관리자를 사용할 수 있도록 PICK_FILE과 PICK_DIRECTORY intent를 지원합니다.</listitem>
+		<emptyline/>
+		<string>사용 가능한 "OI 파일 관리자" 확장들:</string>
+		<listitem>"OI에 대해서" 로 라이선스 정보를 봅니다.</listitem>
+		<emptyline/>
+		<string>"OI 파일 관리자" 와 호환되는 앱들:</string>
+		<listitem>"OI 메모장" 으로 텍스트 파일을 열고 저장합니다.</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>파일 매니저, 탐색기</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>마켓에서 검색하기:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+	</description>
+	<description application="flashlight/Flashlight">
+		<!--  OI Flashlight -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 전등은 어두운 주변를 밝힐 수 있도록 도와주는 간단하고 효과적인 앱입니다.</string>
+		<string>OI 전등은 화면 백라이트를 켜 두어 주변을 밝혀줍니다.</string>
+		<string>장치에 카메라 플래시가 있는 경우, OI 전등은 플래시를 사용하여 주변를 밝힐 수도 있습니다.</string>
+		<string>OI 색 추출기를 이용해 백라이트의 색을 마음대로 바꿀 수 있습니다.</string>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>화면 백라이트를 켜 둡니다.</listitem>
+		<listitem>카메라 플래시를 켜 둡니다.</listitem>
+		<listitem>백라이트의 색을 바꿀 수 있습니다.</listitem>
+		<emptyline/>
+		<string>사용 가능한 "OI 전등" 확장들:</string>
+		<listitem>"OI에 대해서" 로 라이선스 정보를 봅니다.</listitem>
+		<listitem>"OI 색 추출기"로 백라이트의 색을 바꿀 수 있습니다.</listitem>
+		<emptyline/>
+		<string>"OI 전등"과 호환되는 앱들:</string>
+		<listitem>"OI 업데이트"로 업데이트 하기.</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<listitem>플래시, 불, 백라이트</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>마켓에서 검색하기:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="notepad/NotePad">
+		<!--  OI Notepad -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 메모장은 완전한 오픈 소스 메모장 앱입니다.</string>
+		<string>이것을 사용해 메모를 작성하거나, 편집하거나, 삭제하는 것 외에도 태그 달기, 찾기 보내기 등을 할 수 있습니다.</string>
+		<string>확장을 통해 암호화, 내보내기, 가져오기, 음성 메모 등 고급 기능을 사용할 수 있습니다.</string>
+		<string>이 모든 기능은 간결하고 효율적으로 배치되어 있고, 여러 종류의 테마로 사용자화 할 수 있습니다.</string>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>메모 쓰기, 편집하기, 삭제하기.</listitem>
+		<listitem>메모를 길게 눌러 태그를 달 수 있습니다.</listitem>
+		<listitem>글꼴 크기와 정렬 순서 바꾸기.</listitem>
+		<listitem>깔끔한 배열과 다양한 테마.</listitem>
+		<listitem>메모를 빠르게 찾으세요.</listitem>
+		<listitem>메모를 MMS나 SMS로 보내세요.</listitem>
+		<emptyline/>
+		<string>사용 가능한 "OI 메모장" 확장들:</string>
+		<listitem>"OI 음성 메모"로 음성을 녹음하고 메모에 첨부하세요.</listitem>
+		<listitem>"OI CSV 변환기"로 SD 카드에서 메모를 불러오거나 내보내세요.</listitem>
+		<listitem>"OI에 대해서" 로 라이선스 정보를 봅니다.</listitem>
+		<listitem>"OI 날짜 입력기"로 메모에 날짜와 시간을 입력하세요.</listitem>
+		<listitem>"뒤집기"로 글을 뒤집으세요.</listitem>
+		<emptyline/>
+		<string>"OI 메모장"과 호환되는 앱들:</string>
+		<listitem>"My Backup Pro"로 메모 백업하기.</listitem>
+		<listitem>"OI 금고"로 메모 암호화 하기.</listitem>
+		<listitem>"OI 파일 관리자"로 SD 카드에 있는 메모를 관리하세요.</listitem>
+		<listitem>"OI 업데이트"로 업데이트 하기.</listitem>
+		<listitem>"페이스북", "지메일", "구글 플러스", "트위터", 그리고 다른 앱을 통해 메모를 공유하세요.</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<listitem>Note, Notepad, Note book, Notes, 메모, 노트, 노트패드</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>마켓에서 검색하기:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="safe/Safe">
+		<!--  OI Safe -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 금고는 산업 표준 암호화 방식인 AES를 사용하여 당신의 비밀번호와 다른 비밀 정보를 보호합니다.</string>
+		<string>확장 기능으로 OI 메모장에서 만들어진 메모를 암호화하기 위해서도 쓰입니다.</string>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>AES를 사용하여 정보를 안전하게 보호합니다.</listitem>
+		<listitem>데이터를 카테고리 간 자유롭게 옮기세요.</listitem>
+		<listitem>데이터베이스와 데이터 불러오기 및 내보내기.</listitem>
+		<listitem>데이터 백업/복원하기.</listitem>
+		<listitem>안전한 비밀번호 생성기를 포함합니다.</listitem>
+		<listitem>암호화된 문서를 보호하기 위한 자동 타임아웃.</listitem>
+		<listitem>OI 메모장 메모 암호화 하기.</listitem>
+		<listitem>Obscura 사진 금고에 대한 지원.</listitem>
+		<listitem>MyBackup Pro.</listitem>
+		<emptyline/>
+		<string>사용 가능한 "OI 파일 관리자" 확장들:</string>
+		<listitem>"OI에 대해서" 로 라이선스 정보를 봅니다.</listitem>
+		<emptyline/>
+		<string>"OI 파일 관리자" 와 호환되는 앱들:</string>
+		<listitem>"OI 메모장"에서 작성된 메모 암호화하기.</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<!--  Keywords: List several related key words and variations in your language and in English that people might search for. -->
+		<listitem>금고, 암호화, 비밀번호, 보호</listitem>
+		<!--  Keep these keywords untranslated, or list the English version and a translation of the company name into your language in variations that people might search for. -->
+		<listitem>OI, IO, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>마켓에서 검색하기:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+	</description>
+	<description application="shoppinglist/ShoppingList">
+		<!--  OI Shopping List -->
+		<!--  -->
+		<!--  Application name and promo text are extracted from the application strings. -->
+		<!--  -->
+		<!--  (Put each sentence in a separate line. Each sentence is translated separately) -->
+		<!--  -->
+		<!--  Description of application -->
+		<string>OI 쇼핑 목록은 체크리스트를 쉽게 만들고 관리할 수 있는 강력한 앱입니다.</string>
+		<string>OI 쇼핑 목록은 항목들을 목록에 추가하거나, 체크하거나, 지우기 쉽게 합니다.</string>
+		<string>이 앱은 당신이 이용하는 각 가게마다 가격을 추적 할 수 있으며, 다양한 사용자화 옵션이 있습니다.</string>
+		<string>글꼴 크기, 정렬 순서, 목록 열, 그리고 목록 정리하기의 작동 방식은 모두 사용자에 의해 설정됩니다.</string>
+		<string>이 모든 기능은 명료하게 배치되어 있고, 여러 종류의 테마로 사용자화 할 수 있습니다.</string>
+		<emptyline/>
+		<string>이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다:</string>
+		<link href="http://code.google.com/p/openintents"/>
+		<emptyline/>
+		<string>이 앱은 광고가 없으며 인터넷에 접속하지 않습니다.</string>
+		<emptyline/>
+		<string>모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다:</string>
+		<link href="http://www.openintents.org"/>
+		<emptyline/>
+		<string>당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다:</string>
+		<link href="https://translations.launchpad.net/openintents/trunk"/>
+		<emptyline/>
+		<string>기능:</string>
+		<listitem>목록 추가, 수정 및 삭제를 할 수 있습니다.</listitem>
+		<listitem>항목을 쉽고 빠르게 추가, 삭제, 그리고 체크 할 수 있습니다.</listitem>
+		<listitem>다양한 테마.</listitem>
+		<listitem>설정 가능한 글꼴 크기 및 정렬 순서.</listitem>
+		<listitem>각 가게에 대한 가격을 추적 할 수 있습니다.</listitem>
+		<listitem>설정 가능한 목록 열.</listitem>
+		<emptyline/>
+		<string>사용 가능한 "OI 쇼핑 목록" 확장들:</string>
+		<listitem>"OI 음성 메모"로 녹음한 메시지를 메모에 첨부하세요.</listitem>
+		<listitem>"OI CSV 변환기"로 쇼핑 목록을 내보내거나 불러오세요.</listitem>
+		<listitem>"OI에 대해서" 로 라이선스 정보를 봅니다.</listitem>
+		<listitem>"바코드 OI 플러그인"으로 항목을 추가하거나 체크할 수 있습니다.</listitem>
+		<emptyline/>
+		<string>"OI 쇼핑 목록"과 호환되는 앱들:</string>
+		<listitem>"OI 업데이트"로 업데이트 하기.</listitem>
+		<listitem>"My Backup Pro"로 목록을 백업 할 수 있습니다.</listitem>
+		<listitem>"Bites"로 요리법의 재료를 불러오세요.</listitem>
+		<emptyline/>
+		<string>키워드:</string>
+		<listitem>쇼핑, 목록, 쇼핑 목록, 체크리스트</listitem>
+		<listitem>OI, OpenIntents, Open Intents</listitem>
+		<emptyline/>
+		<string>국제 버전들:</string>
+		<international/>
+		<emptyline/>
+		<string>확장 기능:</string>
+		<!--  (these are not translated into other languages) -->
+		<include file="description_extensions.txt"/>
+		<emptyline/>
+		<emptyline/>
+		<emptyline/>
+	</description>
+</main>

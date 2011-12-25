@@ -5,3 +5,40 @@ OI 전등
 OpenIntents Flashlight helps you find your way in the dark. The display backlight is kept turned on while this application is running.
 
 # Description:
+OI 전등은 어두운 주변를 밝힐 수 있도록 도와주는 간단하고 효과적인 앱입니다. OI 전등은 화면 백라이트를 켜 두어 주변을 밝혀줍니다. 장치에 카메라 플래시가 있는 경우, OI 전등은 플래시를 사용하여 주변를 밝힐 수도 있습니다. OI 색 추출기를 이용해 백라이트의 색을 마음대로 바꿀 수 있습니다. 
+
+이 앱은 광고가 없으며 인터넷에 접속하지 않습니다. 
+
+이 무료 오픈 소스 앱의 소스 코드는 다음 주소에서 받을 수 있습니다: 
+http://code.google.com/p/openintents
+
+모든 변경 내역과 FAQ는 다음 주소에서 볼 수 있습니다: 
+http://www.openintents.org
+
+당신의 언어로의 번역을 Launchpad에서 도울 수 있습니다: 
+https://translations.launchpad.net/openintents/trunk
+
+기능: 
+* 화면 백라이트를 켜 둡니다.
+* 카메라 플래시를 켜 둡니다.
+* 백라이트의 색을 바꿀 수 있습니다.
+
+사용 가능한 "OI 전등" 확장들: 
+* "OI에 대해서" 로 라이선스 정보를 봅니다.
+* "OI 색 추출기"로 백라이트의 색을 바꿀 수 있습니다.
+
+"OI 전등"과 호환되는 앱들: 
+* "OI 업데이트"로 업데이트 하기.
+
+키워드: 
+* 플래시, 불, 백라이트
+* OI, OpenIntents, Open Intents
+
+국제 버전들: 
+Lanternă OI, OI El feneri, OI Flashlight, OI Latarka, OI Luche, OI Taschenlampe, OI Torcia, OI Zaklamp, OI Фенерче, OI قول چىراغ, OI टॉर्च, OI 전등, OI手电筒, פנס OI
+
+
+마켓에서 검색하기: 
+* uses OI About
+* uses OI Color Picker
+* uses OI Update
