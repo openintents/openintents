@@ -64,6 +64,6 @@ Launchpad Contributions:
 	<string name="info_activity_text">Bu uygulama aşağıdaki uygulamalarla birlikte kullanılabilir:</string>
     <string name="info_launch">%s başlat</string>
     <!-- %1$s is application name, %2$s is version name (e.g. "This app requires OI Notepad 1.2.0 or higher"). -->
-	<string name="info_not_available">Bu uygulama %1s %2$s ya da daha yüksek bir sürüm gerektirir.</string>
+	<string name="info_not_available">Bu uygulama %1$s %2$s ya da daha yüksek bir sürüm gerektirir.</string>
 	<string name="info_get">%s al</string>
 </resources>

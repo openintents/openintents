@@ -134,26 +134,26 @@
     
     <string-array name="import_policy">
         <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don't overwrite existing records."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
         <item>Overwrite - Overwrite existing records.</item>
         <item>Restore - DELETE ALL, then import.</item>
     </string-array>
 
     <string-array name="import_policy_detail">
         <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
         <item>Overwrite - A record in the CSV will OVERWRITE an existing record.</item>
         <item>Restore Backup - DELETE ALL YOUR EXISTING RECORDS, then import the CSV file.</item>
     </string-array>
     
     <string-array name="shoppinglist_import_policy">
         <item>DUPLICATE - Allow duplicates of records.</item>
-        <item>"KEEP - Don't overwrite existing records."</item>
+        <item>KEEP - Don\'t overwrite existing records.</item>
     </string-array>
 
     <string-array name="shoppinglist_import_policy_detail">
         <item>DUPLICATE - Add a second copy of a record if it already exists.</item>
-        <item>"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."</item>
+        <item>KEEP - Don\'t overwrite an existing record, ignore the one in the CSV file.</item>
     </string-array>
     
 </resources>
