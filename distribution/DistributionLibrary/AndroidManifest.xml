@@ -7,7 +7,7 @@
     <!-- History: 
       1.0.1 [2]: 2011-02-07
       1.0.0 [1]: 2011-01-22 -->
-    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="14"/>
+    <uses-sdk android:minSdkVersion="2" android:targetSdkVersion="15"/>
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     <application android:label="@string/oi_distribution_app_name">
         <activity android:name="org.openintents.distribution.EulaActivity"
