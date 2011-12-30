@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="96"
+   height="96"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   inkscape:export-filename="C:\Users\sklep\Desktop\ic_stat_notify_countdown\xhdpi\ic_stat_notify_countdown.png"
+   inkscape:export-xdpi="45"
+   inkscape:export-ydpi="45"
+   sodipodi:docname="ic_stat_notify_countdown.svg"
+   enable-background="new">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 48 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="96 : 48 : 1"
+       inkscape:persp3d-origin="48 : 32 : 1"
+       id="perspective2892" />
+    <linearGradient
+       id="linearGradient4429"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#feffff;stop-opacity:1;"
+         offset="0"
+         id="stop4431" />
+    </linearGradient>
+    <filter
+       inkscape:collect="always"
+       id="filter5101">
+      <feBlend
+         inkscape:collect="always"
+         mode="lighten"
+         in2="BackgroundImage"
+         id="feBlend5103" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="98.559216"
+     inkscape:cy="37.258812"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="706"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4409"
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-956.36218)"
+     style="filter:url(#filter5101);opacity:1">
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3005"
+       width="46.86161"
+       height="9.053112"
+       x="24.56967"
+       y="968.58105"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       id="rect3777"
+       width="46.86161"
+       height="9.0531111"
+       x="24.56967"
+       y="1030.8174"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+    <path
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:5.27630520000000040;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;opacity:1"
+       d="M 62 24 L 33.875 24.21875 L 33.90625 30.15625 C 33.90625 30.15625 42.682136 47.780015 48 47.875 C 42.688413 47.875 33.9375 65.6875 33.9375 65.6875 L 33.9375 71.625 L 62.0625 71.625 L 62.0625 65.6875 C 62.0625 65.6875 53.379866 48.012618 48.0625 47.875 C 53.373987 47.8334 62.03125 29.9375 62.03125 29.9375 L 62 24 z "
+       transform="translate(0,956.36218)"
+       id="path3799" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.53240876999999998;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;opacity:1"
+       d="m 36.243231,1025.0184 0,-0.7258 c 0,0 8.661031,-3.9922 11.757244,-4.0246 3.096212,-0.032 11.464359,4.0246 11.464359,4.0246 l 0.278937,0.7258 z"
+       id="path3859"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.50126486999999997;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;opacity:1"
+       d="m 41.663129,993.02077 0,1.19094 c 0,0 4.678548,6.55129 6.351071,6.60429 1.672521,0.052 6.19286,-6.60429 6.19286,-6.60429 l 0.150688,-1.19094 z"
+       id="path3859-7"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+    <path
+       transform="translate(-1.125,956.23718)"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-opacity:1;opacity:1"
+       id="path4474"
+       sodipodi:cx="48.375"
+       sodipodi:cy="55.375"
+       sodipodi:rx="1.375"
+       sodipodi:ry="1.375"
+       d="m 49.75,55.375 c 0,0.759392 -0.615608,1.375 -1.375,1.375 C 47.615608,56.75 47,56.134392 47,55.375 47,54.615608 47.615608,54 48.375,54 c 0.759392,0 1.375,0.615608 1.375,1.375 z"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+    <path
+       transform="translate(1.125,961.48718)"
+       sodipodi:type="arc"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-opacity:1;opacity:1"
+       id="path4474-4"
+       sodipodi:cx="48.375"
+       sodipodi:cy="55.375"
+       sodipodi:rx="1.375"
+       sodipodi:ry="1.375"
+       d="m 49.75,55.375 c 0,0.759392 -0.615608,1.375 -1.375,1.375 C 47.615608,56.75 47,56.134392 47,55.375 47,54.615608 47.615608,54 48.375,54 c 0.759392,0 1.375,0.615608 1.375,1.375 z"
+       inkscape:export-filename="/home/marcin/Pulpit/ic_stat_notify_countdown/holo_light/ldpi/ic_stat_notify_countdown.png"
+       inkscape:export-xdpi="23.046581"
+       inkscape:export-ydpi="23.046581" />
+  </g>
+</svg>
