@@ -115,5 +115,15 @@ public class Build {
 		 * June 2011: Android 3.2.
 		 */
 		public static final int HONEYCOMB_MR2 = 13;
+
+		/**
+		 * October 2011: Android 4.0.
+		 */
+		public static final int ICE_CREAM_SANDWICH = 14;
+
+		/**
+		 * Android 4.0.3.
+		 */
+		public static final int ICE_CREAM_SANDWICH_MR1 = 15;
 	}
 }
