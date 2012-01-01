@@ -35,6 +35,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.support.v2.os.Build;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -117,7 +118,13 @@ public class Flashlight extends DistributionLibraryActivity {
 		}
 
 		// Turn off the title bar
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
+		{
+			// Remove title in Android versions without ActionBar.
+			// (Starting from HONEYCOMB, keep the title so that 
+			//  the action bar remains accessible.)
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+		}
 
 		setContentView(R.layout.main);
 

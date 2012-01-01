@@ -30,7 +30,7 @@
 	1.0.1 [10001]: 2008-10-30
 	1.0.0 [10000]: 2008-10-27 -->
 	
-	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="14"/>
+	<uses-sdk android:minSdkVersion="2" android:targetSdkVersion="15"/>
     
     <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
     
