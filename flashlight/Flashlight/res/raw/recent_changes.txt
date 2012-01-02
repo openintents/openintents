@@ -1,4 +1,10 @@
----------------------------------------------------------
+----------------
+release: 1.1
+date: 2012-01-01
+- new setting to use camera flash (Google Code-in task by Shuhao)
+- new translations by Google Code-in students
+
+----------------
 release: 1.0.7
 date: 2011-02-04
 - new application icon for Android 2.0 or higher.
@@ -7,23 +13,12 @@ date: 2011-02-04
 - support Android 2.3.
 - translations into various languages.
 
----------------------------------------------------------
+----------------
 release: 1.0.6
 date: 2010-07-22
 - translations: Occitan (post 1500)
 - Modularized Color Picker:
   Launches Android Market when color picker not found
-
----------------------------------------------------------
-release: 1.0.5
-date: 2010-04-25
-- Fix size of color picker widget for high density
-  devices (patch by Karl Ostmo, issue 267).
-- Bugfix: Keep color on screen rotation (patch by
-  Karl Ostmo, issue 243).
-- New preference to keep color (patch by Karl Ostmo)
-- Translations: Dutch, French, German, Italian, Japanese,
-  Korean, Lao, Romanian, Russian, Spanish
 
 ---------------------------------------------------------
 For the complete list of changes and a list of frequently asked questions, please visit:
