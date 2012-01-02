@@ -1,5 +1,5 @@
 /* 
- * Copyright (C) 2008 OpenIntents.org
+ * Copyright (C) 2008-2012 OpenIntents.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -68,8 +67,6 @@ public class Flashlight extends DistributionLibraryActivity {
 	private View mIcon;
 	private TextView mText;
 
-	private Camera mCamera;
-
 	private PowerManager.WakeLock mWakeLock;
 	private boolean mWakeLockLocked = false;
 
@@ -99,8 +96,19 @@ public class Flashlight extends DistributionLibraryActivity {
 		} catch (Throwable t) {
 			mNewClassAvailable = false;
 		}
+	}
 
+	private static boolean mCameraFlashAvailable;
+	private CameraFlash mCameraFlash;
 
+	/* establish whether the "new" class is available to us */
+	static {
+		try {
+			CameraFlash.checkAvailable();
+			mCameraFlashAvailable = true;
+		} catch (Throwable t) {
+			mCameraFlashAvailable = false;
+		}
 	}
 
 	/** Called when the activity is first created. */
@@ -180,6 +188,10 @@ public class Flashlight extends DistributionLibraryActivity {
 			resetMainScreen();
 		}
 		mBackground.setBackgroundColor(mColor);
+		
+		if (mCameraFlashAvailable) {
+			mCameraFlash = new CameraFlash();
+		}
 	}
 
 	private void resetMainScreen(){
@@ -208,35 +220,30 @@ public class Flashlight extends DistributionLibraryActivity {
 	}
 
 	private void lightsOnOff() {
-		if (mCamera == null) {
-			lightsOn();
-		} else {
-			lightsOff();
+		if (mCameraFlash != null) {
+			if (mCameraFlash.isOff()) {
+				lightsOn();
+			} else {
+				lightsOff();
+			}
 		}
 		showIcon();
 	}
 
 	private void lightsOn(){
-		if (mCamera == null){
-			mCamera = Camera.open();
-			Camera.Parameters params = mCamera.getParameters();
-			params.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-			mCamera.setParameters(params);
-			Log.v(TAG, "Activating Camera Light!");
-			mText.setText(R.string.cameralight_stop_info);
+		if (mCameraFlash != null) {
+			mCameraFlash.lightsOn();
 		}
+		Log.v(TAG, "Activating Camera Light!");
+		mText.setText(R.string.cameralight_stop_info);
 	}
 
 	private void lightsOff(){
-		if (mCamera != null){
-			Camera.Parameters params = mCamera.getParameters();
-			params.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-			mCamera.setParameters(params);
-			mCamera.release();
-			mCamera = null;
-			Log.v(TAG, "Deactivating Camera Light!");
-			mText.setText(R.string.cameralight_info);
+		if (mCameraFlash != null) {
+			mCameraFlash.lightsOff();
 		}
+		Log.v(TAG, "Deactivating Camera Light!");
+		mText.setText(R.string.cameralight_info);
 	}
 
 
