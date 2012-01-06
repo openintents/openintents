@@ -1,4 +1,4 @@
- ****************************************************************************
+﻿ ****************************************************************************
  *                                                                          *
  *   Copyright (C) 2008-2011 pjv (and others, see About dialog)             *
  *                                                                          *
@@ -29,10 +29,11 @@ To obtain the current release, visit
 
 
 ---------------------------------------------------------
-release: 1.0.4-beta
+release: 1.1
 date: ?
 
 - high-resolution icon for Android 2.3 and later.
+- support for about.xml (GCI task by Matěj Konečný, issue 248)
 - list more languages for translations.
 
 ---------------------------------------------------------

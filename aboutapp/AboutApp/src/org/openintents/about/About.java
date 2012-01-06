@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -86,6 +87,9 @@ public class About extends TabActivity {
 	private static final String LAUNCHPAD_TRANSLATOR_CREDITS_TAG = "translator-credits";
 
 	private static final String TAG = "About";
+	
+	
+	private MetaDataReader metaDataReader;
 	
 	/**
 	 * The views.
@@ -212,7 +216,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayArtists(final String packagename, final Intent intent) {
-		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_ARTISTS, AboutMetaData.METADATA_ARTISTS);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(metaDataReader, this, packagename, intent, AboutIntents.EXTRA_ARTISTS, AboutMetaData.METADATA_ARTISTS);
 
 		String text = AboutUtils.getTextFromArray(textarray);
 		
@@ -232,7 +236,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	private void displayAuthors(final String packagename, final Intent intent) {
-		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, AboutIntents.EXTRA_AUTHORS, AboutMetaData.METADATA_AUTHORS);
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(metaDataReader, this, packagename, intent, AboutIntents.EXTRA_AUTHORS, AboutMetaData.METADATA_AUTHORS);
 		
 		String text = AboutUtils.getTextFromArray(textarray);
 		
@@ -252,7 +256,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayComments(final String packagename, final Intent intent) {
-		String text = AboutUtils.getStringExtraOrMetadata(this, packagename, intent, 
+		String text = AboutUtils.getStringExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_COMMENTS, AboutMetaData.METADATA_COMMENTS);
 		
 		if (!TextUtils.isEmpty(text)) {
@@ -269,7 +273,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayCopyright(final String packagename, final Intent intent) {
-		String text = AboutUtils.getStringExtraOrMetadata(this, packagename, intent, 
+		String text = AboutUtils.getStringExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_COPYRIGHT, AboutMetaData.METADATA_COPYRIGHT);
 		
 		if (!TextUtils.isEmpty(text)) {
@@ -286,7 +290,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayDocumenters(final String packagename, final Intent intent) {
-		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this, packagename, intent, 
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_DOCUMENTERS, AboutMetaData.METADATA_DOCUMENTERS);
 		String text = AboutUtils.getTextFromArray(textarray);
 		
@@ -308,7 +312,7 @@ public class About extends TabActivity {
 	 */
 	protected void displayLicense(final String packagename, final Intent intent) {
 		
-		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_LICENSE_RESOURCE, AboutMetaData.METADATA_LICENSE);
 		
 		if (resourceid == 0) {
@@ -341,7 +345,7 @@ public class About extends TabActivity {
 	 */
 	protected void displayRecentChanges(final String packagename, final Intent intent) {
 		
-		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, AboutMetaData.METADATA_RECENT_CHANGES);
 		
 		if (resourceid == 0) {
@@ -359,7 +363,7 @@ public class About extends TabActivity {
 	 * @return true if recent changes are available
 	 **/
 	protected boolean hasRecentChanges(final String packagename, final Intent intent) {
-		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(this, packagename, intent, 
+		int resourceid = AboutUtils.getResourceIdExtraOrMetadata(metaDataReader, this, packagename, intent, 
 				AboutIntents.EXTRA_RECENT_CHANGES_RESOURCE, AboutMetaData.METADATA_RECENT_CHANGES);
 		
 		return resourceid != 0;
@@ -532,7 +536,7 @@ public class About extends TabActivity {
 	protected void displayTranslators(final String packagename,
 			final Intent intent) {
 
-		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(this,
+		String[] textarray = AboutUtils.getStringArrayExtraOrMetadata(metaDataReader, this,
 				packagename, intent, AboutIntents.EXTRA_TRANSLATORS,
 				AboutMetaData.METADATA_TRANSLATORS);
 		String text = AboutUtils.getTextFromArray(textarray);
@@ -542,7 +546,7 @@ public class About extends TabActivity {
 			mTranslatorsLabel.setVisibility(View.VISIBLE);
 			mTranslatorsText.setVisibility(View.VISIBLE);
 		} else {
-			text = AboutUtils.getStringExtraOrMetadata(this,
+			text = AboutUtils.getStringExtraOrMetadata(metaDataReader, this,
 					packagename, intent, AboutIntents.EXTRA_TRANSLATORS,
 					AboutMetaData.METADATA_TRANSLATORS);
 			
@@ -584,8 +588,7 @@ public class About extends TabActivity {
 	 */
 	protected void displayInternationalTranslators(final String packagename) {
 
-		int id = AboutUtils.getMetadataId(this,
-				packagename, AboutMetaData.METADATA_TRANSLATORS);
+		int id = AboutUtils.getMetadataId(metaDataReader, AboutMetaData.METADATA_TRANSLATORS);
 		
 		String text = null;
 		
@@ -687,9 +690,9 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayWebsiteLink(final String packagename, final Intent intent) {
-		String websitelabel = AboutUtils.getStringExtraOrMetadata(this, packagename,
+		String websitelabel = AboutUtils.getStringExtraOrMetadata(metaDataReader, this, packagename,
 			intent, AboutIntents.EXTRA_WEBSITE_LABEL, AboutMetaData.METADATA_WEBSITE_LABEL);
-		String websiteurl = AboutUtils.getStringExtraOrMetadata(this, packagename,
+		String websiteurl = AboutUtils.getStringExtraOrMetadata(metaDataReader, this, packagename,
 				intent, AboutIntents.EXTRA_WEBSITE_URL, AboutMetaData.METADATA_WEBSITE_URL);
 		
 		setAndLinkifyWebsiteLink(websitelabel, websiteurl);
@@ -736,7 +739,7 @@ public class About extends TabActivity {
 	 * @param intent The intent from which to fetch the information.
 	 */
 	protected void displayEmail(final String packagename, final Intent intent) {
-		String email = AboutUtils.getStringExtraOrMetadata(this, packagename,
+		String email = AboutUtils.getStringExtraOrMetadata(metaDataReader, this, packagename,
 			intent, AboutIntents.EXTRA_EMAIL, AboutMetaData.METADATA_EMAIL);
 		
 		if (!TextUtils.isEmpty(email)) {
@@ -769,6 +772,33 @@ public class About extends TabActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
+    	
+    	Resources res = getResources();
+    	Log.d("identifier", res.getString(res.getIdentifier("string/about_translators", null, getPackageName())));
+    		
+    	Map<String, String> metaDataNameToTagName = new HashMap<String, String>();
+    	//TODO Move this to detached file?
+    	metaDataNameToTagName.put("comments", AboutMetaData.METADATA_COMMENTS);
+    	metaDataNameToTagName.put("copyright", AboutMetaData.METADATA_COPYRIGHT);
+    	metaDataNameToTagName.put("website-url", AboutMetaData.METADATA_WEBSITE_URL);
+    	metaDataNameToTagName.put("website-label", AboutMetaData.METADATA_WEBSITE_LABEL);
+    	metaDataNameToTagName.put("authors", AboutMetaData.METADATA_AUTHORS);
+    	metaDataNameToTagName.put("documenters", AboutMetaData.METADATA_DOCUMENTERS);
+    	metaDataNameToTagName.put("translators", AboutMetaData.METADATA_TRANSLATORS);
+    	metaDataNameToTagName.put("artists", AboutMetaData.METADATA_ARTISTS);
+    	metaDataNameToTagName.put("license", AboutMetaData.METADATA_LICENSE);
+    	metaDataNameToTagName.put("email", AboutMetaData.METADATA_EMAIL);
+    	metaDataNameToTagName.put("recent-changes", AboutMetaData.METADATA_RECENT_CHANGES);
+    	
+    	String packageName = getPackageNameFromIntent(getIntent());
+    	try{
+	    	metaDataReader = new MetaDataReader(getApplicationContext(),
+	    			packageName,
+	    			metaDataNameToTagName);
+    	}catch(NameNotFoundException e){
+    		throw new IllegalArgumentException("Package name '"+packageName+"' doesn't exist.");
+    	}
+    	
     	
     	//Set up the layout with the TabHost
     	tabHost = getTabHost();

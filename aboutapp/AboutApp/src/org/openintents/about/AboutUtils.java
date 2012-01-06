@@ -38,21 +38,16 @@ public class AboutUtils {
 	 * @param extra
 	 * @param metadata
 	 */
-	public static String[] getStringArrayExtraOrMetadata(final Context context, final String packagename,
-			final Intent intent, final String extra, final String metadata) {
+	public static String[] getStringArrayExtraOrMetadata(final MetaDataReader metaDataReader, 
+			final Context context, final String packagename, final Intent intent, final String extra,
+			final String metadata) {
 		if (intent.hasExtra(extra)
-				&& intent.getStringArrayExtra(extra) 
+				&& intent.getStringArrayExtra(extra)
 					!= null) {
 			return intent.getStringArrayExtra(extra);
 		} else {
 	        //Try meta data of package
-	        Bundle md = null;
-	        try {
-	                md = context.getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-	        } catch (NameNotFoundException e) {
-	            Log.e(TAG, "Package name not found", e);
-	        }
+	        Bundle md = metaDataReader.getBundle();
 	
 	        if (md != null) {
 	        	String[] array = null;
@@ -90,20 +85,14 @@ public class AboutUtils {
 	 * @param metadata
 	 * @return
 	 */
-	public static String getStringExtraOrMetadata(final Context context, final String packagename,
-			final Intent intent, final String extra, final String metadata) {
+	public static String getStringExtraOrMetadata(final MetaDataReader metaDataReader, final Context context,
+			final String packagename, final Intent intent, final String extra, final String metadata) {
 		if (intent.hasExtra(extra)
 				&& intent.getStringExtra(extra) != null) {
 			return intent.getStringExtra(extra);
 		} else {
 	        //Try meta data of package
-	        Bundle md = null;
-	        try {
-	                md = context.getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-	        } catch (NameNotFoundException e) {
-	            Log.e(TAG, "Package name not found", e);
-	        }
+	        Bundle md = metaDataReader.getBundle();
 	
 	        if (md != null
 					&& !TextUtils.isEmpty(md
@@ -143,16 +132,9 @@ public class AboutUtils {
 	 * @param metadata
 	 * @return
 	 */
-	public static int getMetadataId(final Context context, final String packagename,
-		final String metadata) {
+	public static int getMetadataId(final MetaDataReader metaDataReader, final String metadata) {
         //Try meta data of package
-        Bundle md = null;
-        try {
-                md = context.getPackageManager().getApplicationInfo(
-					packagename, PackageManager.GET_META_DATA).metaData;
-        } catch (NameNotFoundException e) {
-            Log.e(TAG, "Package name not found", e);
-        }
+        Bundle md = metaDataReader.getBundle();
 
         if (md != null) {
         	//Still try metadata but don't expect a ready string (get it from the resources).
@@ -178,8 +160,8 @@ public class AboutUtils {
 	 * @param metadata
 	 * @return
 	 */
-	public static int getResourceIdExtraOrMetadata(final Context context, final String packagename,
-			final Intent intent, final String extra, final String metadata) {
+	public static int getResourceIdExtraOrMetadata(final MetaDataReader metaDataReader, final Context context,
+			final String packagename, final Intent intent, final String extra, final String metadata) {
 		if (intent.hasExtra(extra)
 				&& intent.getStringExtra(extra) != null) {
 
@@ -196,13 +178,7 @@ public class AboutUtils {
 			return id;
 		} else {
 	        //Try meta data of package
-	        Bundle md = null;
-	        try {
-	                md = context.getPackageManager().getApplicationInfo(
-						packagename, PackageManager.GET_META_DATA).metaData;
-	        } catch (NameNotFoundException e) {
-	            Log.e(TAG, "Package name not found", e);
-	        }
+	        Bundle md = metaDataReader.getBundle();
 	
 	        if (md != null) {
 	        	// Obtain resource ID and convert to resource name:

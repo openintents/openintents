@@ -208,6 +208,25 @@ public final class AboutMetaData {
 	 * Constant Value: "org.openintents.metadata.RECENT_CHANGES"
 	 * </p>
 	 */
+	 
+
 	public static final String METADATA_RECENT_CHANGES = "org.openintents.metadata.RECENT_CHANGES";
+		/**
+		 * Application metadata: The xml resource containing the file with other About metadata.
+		 * When found, all other metadata in manifest are ignored.
+		 * 
+		 * <p>
+		 * This key doesn't match with any AboutIntents constant.
+		 * </p>
+		 * 
+		 * <p>
+		 * Constant Value: "org.openintents.about"
+		 * </p>
+		 */
+		public static final String METADATA_ABOUT = "org.openintents.about";
+	 
+	 
+	 
+	 
 
 }
