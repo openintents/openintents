@@ -723,19 +723,17 @@ public class CountdownEditorActivity extends Activity {
         // Build the menus that are shown when editing.
         if (mState == STATE_EDIT) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                    .setShortcut('3', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         
 
         // Build the menus that are shown when inserting.
         } else {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                    .setShortcut('3', 'd')
                     .setIcon(android.R.drawable.ic_menu_delete);
         }
 
 		menu.add(0, MENU_SETTINGS, 0, R.string.settings).setIcon(
-				android.R.drawable.ic_menu_preferences).setShortcut('9', 's');
+				android.R.drawable.ic_menu_preferences).setShortcut('9', 'p');
 		
         // If we are working on a full note, then append to the
         // menu items for any other activities that can do stuff with it
