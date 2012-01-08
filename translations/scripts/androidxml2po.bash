@@ -9,6 +9,9 @@
 # Jan 30, 2011: Peli: Delete lines starting with "#~" (deleted translations) from export .po files, as they may contain duplicates that cause an error message when uploading to Launchpad..
 # Feb 9, 2011: Peli: Add option --nopo.
 # Feb 10, 2011: Peli: Add option --notimestamp.
+# Jan 8, 2012: Peli: Add special language cases: he<->iw (Hebrew), id<->in (Indonesian), yi<->ji (Yiddish)
+#                    Skip "fil" (Filipino) as it is not supported on Android.
+#                    Delimit "?" at the beginning of a string.
 
 #Change the dirs where the files are located. Dirs cannot have leading "."'s or msgmerge will complain.
 launchpad_po_files_dir="."
@@ -38,6 +41,14 @@ function delimitapostrophe
 	sed -i "s/$qot/$qot2/g" $1
 	# but undo any double delimiters
 	sed -i "s/\\\\$qot2/$qot2/g" $1
+	
+	# Delimit "?" at the beginning of a string:
+	# Change ">?" into ">\?"
+	# \x3f = "?"
+	# \x3e = ">"
+	qs="\\x3e\\x3f"
+	qs2="\\x3e\\\\\\x3f"
+	sed -i "s/$qs/$qs2/g" $1
 }
 
 # Undo delimit apostrophes: "\'" -> "'"
@@ -48,6 +59,14 @@ function undodelimitapostrophe
 	qot2="\\\\'"
 	sed -i "s/$qot2/$qot/g" $1
 	sed -i "s/$qot2/$qot/g" $1
+	
+	# Undo delimit "?" at the beginning of a string:
+	# Change ">\?" into ">?"
+	# \x3f = "?"
+	# \x3e = ">"
+	qs="\\x3e\\x3f"
+	qs2="\\x3e\\\\\\x3f"
+	sed -i "s/$qs2/$qs/g" $1
 }
 
 # Set a list of all available language codes.
@@ -68,6 +87,19 @@ function setlanguagelist
 function set_androidlanguage_from_language
 {
 	androidlanguage=`echo $language | sed 's/\(.*\)_\(.*\)/\1\-r\2/g'`
+	
+	# Treat special cases:
+	# See: http://colincooper.net/?p=238
+	# http://code.google.com/p/android/issues/detail?id=3639
+	if [ "$androidlanguage" = "he" ] ; then
+		androidlanguage="iw"
+	fi
+	if [ "$androidlanguage" = "id" ] ; then
+		androidlanguage="in"
+	fi
+	if [ "$androidlanguage" = "yi" ] ; then
+		androidlanguage="ji"
+	fi
 }
 
 
@@ -104,10 +136,15 @@ for language in ${languages[@]}
 do
     if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
 		set_androidlanguage_from_language
-        echo "Importing .xml from .po for "${language}""
-        mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
-        ${xml2po} -a -l "${language}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
-        delimitapostrophe "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
+		if [ "${androidlanguage}" = "fil" ] ; then
+			# "fil" is currently not supported on Android
+			echo "Skipping Filipino"
+		else
+			echo "Importing .xml from .po for "${language}" ("${androidlanguage}")"
+			mkdir -p "${android_xml_files_res_dir}"-"${androidlanguage}"
+			${xml2po} -a -l "${language}" -p "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po tmp_strings.xml > "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
+			delimitapostrophe "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml
+		fi
     fi
 done
 rm tmp_strings.xml
@@ -140,16 +177,12 @@ if [ $option_no_po -eq 0 ] ; then
 	do
 	    if [ -e "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po ] ; then
 			set_androidlanguage_from_language
-	    	echo "Exporting .xml to updated .po for "${language}""
-	    	if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
-				# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
-				# WORKAROUND: 
-				#    msgmerge will not merge properly, if export file is not in current directory.
-				#    Therefore: first create .po file in current directory, then
-				#    move it to export directory.
+			if [ "${androidlanguage}" = "fil" ] ; then
+				# "fil" is currently not supported on Android
+				echo "Skipping Filipino (only doing literal copy)"
+				
+				# Export a literal copy as was obtained from Launchpad
 				cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
-	            ${xml2po} -a -u "${language}".po tmp_strings.xml
-				undodelimitapostrophe "${language}".po
 				
 				# Take out lines starting with "#~".
 				# These are deleted translations, and Launchpad may show an error
@@ -159,11 +192,34 @@ if [ $option_no_po -eq 0 ] ; then
 				if [ $option_no_timestamp -eq 1 ] ; then
 					removetimestamp "${language}".po
 				fi
-
 				mv "${language}".po "${export_po}"/"${language}".po
-	        else
-			    echo "-"
-	        fi
+			else
+				# All other languages (except Filipino)
+		    	echo "Exporting .xml to updated .po for "${language}" ("${androidlanguage}")"
+		    	if [ -e "${android_xml_files_res_dir}"-"${androidlanguage}"/"${android_xml_filename}".xml ] ; then
+					# Create separate copy, because Launchpad exports "project-xx.po" but imports "xx.po".
+					# WORKAROUND: 
+					#    msgmerge will not merge properly, if export file is not in current directory.
+					#    Therefore: first create .po file in current directory, then
+					#    move it to export directory.
+					cp "${launchpad_po_files_dir}"/"${launchpad_po_filename}"-"${language}".po "${language}".po
+		            ${xml2po} -a -u "${language}".po tmp_strings.xml
+					undodelimitapostrophe "${language}".po
+					
+					# Take out lines starting with "#~".
+					# These are deleted translations, and Launchpad may show an error
+					# if duplicates appear there.
+					sed -i "s/#~.*//g" "${language}".po
+					
+					if [ $option_no_timestamp -eq 1 ] ; then
+						removetimestamp "${language}".po
+					fi
+
+					mv "${language}".po "${export_po}"/"${language}".po
+		        else
+				    echo "-"
+		        fi
+			fi
 	    fi
 	done
 fi
