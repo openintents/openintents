@@ -42,33 +42,47 @@
     
     <string-array name="languages">
 		<item>ar</item><!-- Arabic -->
+		<item>be</item><!-- Belarusian -->
+		<item>bg</item><!-- Bulgarian -->
+		<item>ca</item><!-- Catalan -->
 		<item>cs</item><!-- Czech -->
 		<item>da</item><!-- Danish -->
 		<item>de</item><!-- German -->
-		<item>en</item><!-- English -->
 		<item>el</item><!-- Greek -->
+		<item>en</item><!-- English -->
+		<item>en_GB</item><!-- English (United Kingdom) -->
 		<item>es</item><!-- Spanish -->
 		<item>fa</item><!-- Persian -->
 		<item>fi</item><!-- Finnish -->
 		<item>fo</item><!-- Faroese -->
 		<item>fr</item><!-- French -->
+		<item>hi</item><!-- Hindi -->
 		<item>hr</item><!-- Croatian -->
 		<item>hu</item><!-- Hungarian -->
 		<item>it</item><!-- Italian -->
+		<item>iw</item><!-- Hebrew -->
 		<item>ja</item><!-- Japanese -->
 		<item>ko</item><!-- Korean -->
 		<item>lo</item><!-- Lao -->
+		<item>lv</item><!-- Latvian -->
+		<item>mk</item><!-- Macedonian -->
+		<item>nb</item><!-- Norwegian Bokmal -->
 		<item>nl</item><!-- Dutch -->
 		<item>oc</item><!-- Occitan (post 1500) -->
+		<item>pa</item><!-- Punjabi -->
 		<item>pl</item><!-- Polish -->
 		<item>pt</item><!-- Portuguese -->
 		<item>pt_BR</item><!-- Brazilian Portuguese -->
 		<item>ro</item><!-- Romanian -->
 		<item>ru</item><!-- Russian -->
 		<item>sc</item><!-- Sardinian -->
+		<item>sd</item><!-- Sindhi -->
 		<item>sk</item><!-- Slovak -->
+		<item>sl</item><!-- Slovenian -->
 		<item>sv</item><!-- Swedish -->
+		<item>tl</item><!-- Tagalog -->
 		<item>tr</item><!-- Turkish -->
+		<item>ug</item><!-- Uyghur -->
 		<item>zh_CN</item><!-- Chinese (Simplified) -->
 		<item>zh_TW</item><!-- Chinese (Traditional) -->
 	</string-array>
