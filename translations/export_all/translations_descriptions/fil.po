@@ -31,7 +31,8 @@ msgstr ""
 "mga apps."
 
 #: tmp_strings.xml:13(string)
-msgid "This application is invoked through the menu of other OI applications."
+msgid ""
+"This application is invoked through the menu of other OI applications."
 msgstr ""
 "Ang applikasyon na ito ay mapapatakbo sa pamamagitan ng menu ng iba pang mga "
 "OI na applikasyon."
@@ -56,27 +57,21 @@ msgid ""
 "layout."
 msgstr "Lahat ng magagawa nito ay pinagsama sa simple at episyente na ayos."
 
-#: tmp_strings.xml:18(string) tmp_strings.xml:68(string)
-#: tmp_strings.xml:121(string) tmp_strings.xml:168(string)
-#: tmp_strings.xml:223(string) tmp_strings.xml:281(string)
+#: tmp_strings.xml:18(string) tmp_strings.xml:68(string) tmp_strings.xml:121(string) tmp_strings.xml:168(string) tmp_strings.xml:223(string) tmp_strings.xml:281(string)
 msgid ""
 "This application is ad free and does not require the internet permission."
 msgstr ""
 "Ang applikasyon na ito ay walang patalastas at hindi nangangailangan ng "
 "pahintulot ng internet."
 
-#: tmp_strings.xml:20(string) tmp_strings.xml:76(string)
-#: tmp_strings.xml:123(string) tmp_strings.xml:170(string)
-#: tmp_strings.xml:231(string) tmp_strings.xml:278(string)
+#: tmp_strings.xml:20(string) tmp_strings.xml:76(string) tmp_strings.xml:123(string) tmp_strings.xml:170(string) tmp_strings.xml:231(string) tmp_strings.xml:278(string)
 msgid ""
 "The source code of this free and open source application is available at:"
 msgstr ""
 "Ang pinagmulang kodigo ng mga ito ay libre at bukas na pinagkukunang kodigo "
 "ng applikasyon ay magagamit sa:"
 
-#: tmp_strings.xml:23(string) tmp_strings.xml:70(string)
-#: tmp_strings.xml:126(string) tmp_strings.xml:173(string)
-#: tmp_strings.xml:225(string) tmp_strings.xml:283(string)
+#: tmp_strings.xml:23(string) tmp_strings.xml:70(string) tmp_strings.xml:126(string) tmp_strings.xml:173(string) tmp_strings.xml:225(string) tmp_strings.xml:283(string)
 msgid ""
 "For the complete list of changes and a list of frequently asked questions, "
 "please visit:"
@@ -84,18 +79,14 @@ msgstr ""
 "Para sa kumpletong listahan ng mga pagbabago at ang listahan ng mga madalas "
 "itanong, mangyaring bisitahin ang:"
 
-#: tmp_strings.xml:26(string) tmp_strings.xml:73(string)
-#: tmp_strings.xml:129(string) tmp_strings.xml:176(string)
-#: tmp_strings.xml:228(string) tmp_strings.xml:286(string)
+#: tmp_strings.xml:26(string) tmp_strings.xml:73(string) tmp_strings.xml:129(string) tmp_strings.xml:176(string) tmp_strings.xml:228(string) tmp_strings.xml:286(string)
 msgid ""
 "You can help to improve the translation into your language at Launchpad:"
 msgstr ""
 "Maaari kang makatulong upang mapabuti ang mga pagsasalin sa iyong wika sa "
 "Launchpad:"
 
-#: tmp_strings.xml:29(string) tmp_strings.xml:79(string)
-#: tmp_strings.xml:132(string) tmp_strings.xml:179(string)
-#: tmp_strings.xml:234(string) tmp_strings.xml:289(string)
+#: tmp_strings.xml:29(string) tmp_strings.xml:79(string) tmp_strings.xml:132(string) tmp_strings.xml:179(string) tmp_strings.xml:234(string) tmp_strings.xml:289(string)
 msgid "Features:"
 msgstr "Tampok:"
 
@@ -155,9 +146,7 @@ msgstr "OI Bilang-pababa"
 msgid "OI Flashlight"
 msgstr "OI Plaslayt"
 
-#: tmp_strings.xml:44(string) tmp_strings.xml:94(string)
-#: tmp_strings.xml:144(string) tmp_strings.xml:201(string)
-#: tmp_strings.xml:251(string) tmp_strings.xml:308(string)
+#: tmp_strings.xml:44(string) tmp_strings.xml:94(string) tmp_strings.xml:144(string) tmp_strings.xml:201(string) tmp_strings.xml:251(string) tmp_strings.xml:308(string)
 msgid "Keywords:"
 msgstr "Keywords:"
 
@@ -169,15 +158,11 @@ msgstr "Tungkol, kredito, Impormasyon."
 msgid "OI, OpenIntents, Open Intents."
 msgstr "OI, OpenIntents, Bukas na Layunin."
 
-#: tmp_strings.xml:48(string) tmp_strings.xml:100(string)
-#: tmp_strings.xml:148(string) tmp_strings.xml:205(string)
-#: tmp_strings.xml:257(string) tmp_strings.xml:312(string)
+#: tmp_strings.xml:48(string) tmp_strings.xml:100(string) tmp_strings.xml:148(string) tmp_strings.xml:205(string) tmp_strings.xml:257(string) tmp_strings.xml:312(string)
 msgid "International versions:"
 msgstr "Internasyonal na mga bersyon:"
 
-#: tmp_strings.xml:51(string) tmp_strings.xml:103(string)
-#: tmp_strings.xml:151(string) tmp_strings.xml:208(string)
-#: tmp_strings.xml:260(string)
+#: tmp_strings.xml:51(string) tmp_strings.xml:103(string) tmp_strings.xml:151(string) tmp_strings.xml:208(string) tmp_strings.xml:260(string)
 msgid "Search strings for Market:"
 msgstr "Search strings para sa Merkado:"
 
@@ -239,9 +224,7 @@ msgstr ""
 msgid "Available extensions for \"OI File Manager\":"
 msgstr "Magagamit na mga ekstensiyon  para sa \"OI File Manedyer\":"
 
-#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem)
-#: tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem)
-#: tmp_strings.xml:300(listitem)
+#: tmp_strings.xml:89(listitem) tmp_strings.xml:138(listitem) tmp_strings.xml:190(listitem) tmp_strings.xml:246(listitem) tmp_strings.xml:300(listitem)
 msgid "Show the license information with \"OI About\"."
 msgstr "Ipakita ang mga impormasyon ng lisensiya sa \"OI Tungkol\"."
 
@@ -319,8 +302,7 @@ msgstr "Palitan ang kulay ng ilaw sa likod sa \"OI Tagapili ng Kulay\"."
 msgid "Applications that work with \"OI Flashlight\":"
 msgstr "Applikasyon na gumagana sa mga \"OI Plasleyt\":"
 
-#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem)
-#: tmp_strings.xml:304(listitem)
+#: tmp_strings.xml:142(listitem) tmp_strings.xml:198(listitem) tmp_strings.xml:304(listitem)
 msgid "Update with \"OI Update\"."
 msgstr "Magbago sa pamamagitan ng \"OI Magbago\"."
 
@@ -328,8 +310,7 @@ msgstr "Magbago sa pamamagitan ng \"OI Magbago\"."
 msgid "Flashlight, light, Backlight"
 msgstr "Plaslayt, ilaw, Ilaw sa Likod"
 
-#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem)
-#: tmp_strings.xml:310(listitem)
+#: tmp_strings.xml:146(listitem) tmp_strings.xml:203(listitem) tmp_strings.xml:310(listitem)
 msgid "OI, OpenIntents, Open Intents"
 msgstr "OI, OpenIntents, Bukas na Layunin"
 
@@ -426,16 +407,16 @@ msgstr "I-Encrypt ang tala sa pamamagitan ng \"OI Kaha\"."
 #: tmp_strings.xml:197(listitem)
 msgid "Manage notes on your SD Card with \"OI File Manager\"."
 msgstr ""
-"Pamahalaan ang mga tala sa iyong SD Card sa pamamagitan ng \"OI File Manedyer"
-"\"."
+"Pamahalaan ang mga tala sa iyong SD Card sa pamamagitan ng \"OI File "
+"Manedyer\"."
 
 #: tmp_strings.xml:199(listitem)
 msgid ""
 "Share notes through \"Facebook\", \"Gmail\", \"Google+\", \"Twitter\", and "
 "many other applications."
 msgstr ""
-"Ibahagi ang mga tala sa pamamagitan ng \"Facebook\", \"Gmail\", \"Google +"
-"\", \"Twitter\", at maraming iba pang mga applikasyon."
+"Ibahagi ang mga tala sa pamamagitan ng \"Facebook\", \"Gmail\", \"Google "
+"+\", \"Twitter\", at maraming iba pang mga applikasyon."
 
 #: tmp_strings.xml:202(listitem)
 msgid "Note, Notepad, Note book, Notes"
@@ -460,7 +441,8 @@ msgstr ""
 
 #: tmp_strings.xml:235(listitem)
 msgid "Securely protect data using AES encryption."
-msgstr "Ligtas na protektahan ang mga datos sa pamamagitan ng AES encryption."
+msgstr ""
+"Ligtas na protektahan ang mga datos sa pamamagitan ng AES encryption."
 
 #: tmp_strings.xml:236(listitem)
 msgid "Freely move data entries between categories."

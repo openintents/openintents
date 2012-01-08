@@ -65,8 +65,8 @@ msgstr "Panatilihin ang kulay"
 msgid "Save color for next time Flashlight app is started"
 msgstr "I-save ang kulay para sa susunod na patakbuhin ang plaslayt"
 
-#. Explanation that is displayed if Color Picker has not been installed yet, but 
-#. 		user tries to access it.
+#. Explanation that is displayed if Color Picker has not been installed yet, but
+#. user tries to access it.
 #: tmp_strings.xml:43(string)
 msgid ""
 "To make the Color Picker more useful to other developers, we have split it "

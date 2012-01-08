@@ -55,8 +55,8 @@ msgstr "OI Kaha"
 msgid "Launch %s and select menu &gt; About."
 msgstr "Ilunsad ang %s at piliin ang menu &gt; Tungkol."
 
-#. Application name. Can be localized, like "OI About", or "OI Info". 
-#. 	   This is an extension that shows an about dialog or info dialog.
+#. Application name. Can be localized, like "OI About", or "OI Info".
+#. This is an extension that shows an about dialog or info dialog.
 #: tmp_strings.xml:55(string)
 msgid "OI About"
 msgstr "OI Tungkol"

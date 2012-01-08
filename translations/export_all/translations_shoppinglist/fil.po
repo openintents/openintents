@@ -163,14 +163,14 @@ msgid "No items available"
 msgstr "Walang mga bagay na magagamit"
 
 #. Remove item from this list, but keep it internally, so that the user
-#. 	     can choose it later for inclusion again. Information like
-#. 	     tags or price will be kept.
+#. can choose it later for inclusion again. Information like
+#. tags or price will be kept.
 #: tmp_strings.xml:70(string)
 msgid "Remove item from list"
 msgstr "Alisin ang bagay sa listahan"
 
 #. Delete this item completely. If the user wants to add it again, they
-#. 	     have to enter all the information again.
+#. have to enter all the information again.
 #: tmp_strings.xml:74(string)
 msgid "Delete item permanently"
 msgstr "Permanenteng alisin ang bagay"
@@ -314,8 +314,7 @@ msgid "Choose a theme for this list"
 msgstr "Pumili ng tema para sa listahan"
 
 #. Preference fontsize: default font size
-#: tmp_strings.xml:133(string) tmp_strings.xml:293(item)
-#: tmp_strings.xml:300(item)
+#: tmp_strings.xml:133(string) tmp_strings.xml:293(item) tmp_strings.xml:300(item)
 msgid "Default"
 msgstr "Default"
 
@@ -400,7 +399,8 @@ msgstr "Pagsasaayos ng pagkakasunod-sunod"
 
 #: tmp_strings.xml:161(string)
 msgid "Change sort order of list items"
-msgstr "Palitan ang pagsasaayos ng pagkakasunod-sunod ng listahan ng mga bagay"
+msgstr ""
+"Palitan ang pagsasaayos ng pagkakasunod-sunod ng listahan ng mga bagay"
 
 #: tmp_strings.xml:162(string)
 msgid "Sort order - Pick Items"
@@ -453,9 +453,7 @@ msgstr "Agad na itago ang mga item na walang tsek."
 msgid "Show price"
 msgstr "Ipakita ang presyo"
 
-#: tmp_strings.xml:174(string) tmp_strings.xml:185(string)
-#: tmp_strings.xml:187(string) tmp_strings.xml:189(string)
-#: tmp_strings.xml:191(string)
+#: tmp_strings.xml:174(string) tmp_strings.xml:185(string) tmp_strings.xml:187(string) tmp_strings.xml:189(string) tmp_strings.xml:191(string)
 msgid "Shown as extra column in list."
 msgstr "Ipinapakita bilang dagdag na kulumna sa listahan."
 
@@ -514,8 +512,7 @@ msgstr "Ipakita ang prioridad"
 msgid "Show units"
 msgstr "Ipakita ang mga yunit"
 
-#: tmp_strings.xml:192(string) tmp_strings.xml:193(string)
-#: tmp_strings.xml:195(string)
+#: tmp_strings.xml:192(string) tmp_strings.xml:193(string) tmp_strings.xml:195(string)
 msgid "Subtotal by priority"
 msgstr "Subtotal ayon sa prioridad"
 

@@ -49,8 +49,8 @@ msgid "Launch %s and select menu &gt; Convert CSV."
 msgstr "Ilunsad ang %s at piliin ang menu &gt; Palitan CSV."
 
 #. Application name. Can be localized.
-#. 	  "CSV" is a common file extension meaning "comma separated values".
-#. 	  "OI" and "CSV" should not be changed.
+#. "CSV" is a common file extension meaning "comma separated values".
+#. "OI" and "CSV" should not be changed.
 #: tmp_strings.xml:47(string)
 msgid "OI Convert CSV"
 msgstr "OI Palitan CSV"
@@ -330,8 +330,7 @@ msgid "DUPLICATE - Allow duplicates of records."
 msgstr "NAULIT - Payagan ang mga naulit na mga record."
 
 #: tmp_strings.xml:137(item) tmp_strings.xml:151(item)
-#, fuzzy
-msgid "KEEP - Don't overwrite existing records."
+msgid "\"KEEP - Don't overwrite existing records.\""
 msgstr "\"PANATILIIN - Huwag patungan ang dati ng mga record.\""
 
 #: tmp_strings.xml:138(item)
@@ -348,9 +347,9 @@ msgstr ""
 "NAULIT - Dagdagan ng pangalawang kopya ng record kung ito ay nandito na."
 
 #: tmp_strings.xml:144(item) tmp_strings.xml:156(item)
-#, fuzzy
 msgid ""
-"KEEP - Don't overwrite an existing record, ignore the one in the CSV file."
+"\"KEEP - Don't overwrite an existing record, ignore the one in the CSV "
+"file.\""
 msgstr ""
 "\"PANATILIHIN - Huwag patungan ang nandito ng record, huwag pansinin ang "
 "nasa CSV file.\""

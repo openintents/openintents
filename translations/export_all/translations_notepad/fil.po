@@ -31,8 +31,7 @@ msgid "OI Notepad allows to create, edit, and delete notes."
 msgstr "OI Talaan ay pwedeng lumikha, magbago at mag-alis ng mga tala."
 
 #. Name of application. Can be localized. OI = OpenIntents should stay unmodified.
-#: tmp_strings.xml:40(string) tmp_strings.xml:54(string)
-#: tmp_strings.xml:117(string)
+#: tmp_strings.xml:40(string) tmp_strings.xml:54(string) tmp_strings.xml:117(string)
 msgid "OI Notepad"
 msgstr "OI Talaan"
 
@@ -179,8 +178,7 @@ msgstr "Buksan mula sa SD card"
 msgid "File name"
 msgstr "Pangalan ng file"
 
-#: tmp_strings.xml:91(string) tmp_strings.xml:102(string)
-#: tmp_strings.xml:106(string)
+#: tmp_strings.xml:91(string) tmp_strings.xml:102(string) tmp_strings.xml:106(string)
 msgid "Save"
 msgstr "I-save"
 
@@ -334,8 +332,8 @@ msgstr "Kusang gumawa ng Links"
 #: tmp_strings.xml:148(string)
 msgid "Create links for phone numbers and email/street/web addresses"
 msgstr ""
-"Gumawa ng mga link para sa mga numero ng telepono at email / adress ng "
-"kalye / address ng web"
+"Gumawa ng mga link para sa mga numero ng telepono at email / adress ng kalye "
+"/ address ng web"
 
 #: tmp_strings.xml:149(string)
 msgid "Do not create links on notes"

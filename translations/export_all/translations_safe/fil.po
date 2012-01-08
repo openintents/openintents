@@ -129,9 +129,9 @@ msgid ""
 "access until you type in your password again."
 msgstr ""
 "Ikaw ay kasalukuyang naka-log in sa OI Kaha, ibig sabihin ang ibang mga "
-"applikasyon ay maaaring humiling ng kanilang mga password at mag-decrypt/"
-"encrypt ng datos. I-lock upang pigilan ang karagdagang paggamit hanggang i-"
-"type mo muli ang iyong password."
+"applikasyon ay maaaring humiling ng kanilang mga password at mag-"
+"decrypt/encrypt ng datos. I-lock upang pigilan ang karagdagang paggamit "
+"hanggang i-type mo muli ang iyong password."
 
 #: tmp_strings.xml:56(string)
 msgid ""
@@ -584,8 +584,8 @@ msgstr "Gumamit ng keypad para ipasok ang Master Password"
 msgid "Keypad Mute"
 msgstr "Keypad Walang Tunog"
 
-#. Preference summary: Make the keypad sounds mute. 
-#. 	     If a user chooses this, then the keypad does not sound when pressing the keys.
+#. Preference summary: Make the keypad sounds mute.
+#. If a user chooses this, then the keypad does not sound when pressing the keys.
 #: tmp_strings.xml:187(string)
 msgid "Mute keypad sounds"
 msgstr "Tanggalin ang tunog ng keypad"
