@@ -12,6 +12,7 @@
 
 # For descriptions:
 aboutapp aboutapp/AboutApp
+countdown countdown/Countdown
 filemanager filemanager/FileManager
 flashlight flashlight/Flashlight
 notepad notepad/NotePad
@@ -21,7 +22,6 @@ STOP
 
 colorpicker colorpicker/ColorPicker
 convertcsv convertcsv/ConvertCSV
-countdown countdown/Countdown
 descriptions translations/descriptions
 distributionlibrary distribution/DistributionLibrary
 updatechecker UpdateCheckerApp

@@ -1,0 +1,41 @@
+
+
+OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+
+应用程序的广告是免费的，不需要网络权限。 
+
+
+
+
+
+开放源码应用程序的源代码是： 
+http://code.google.com/p/openintents
+
+完整列表的更改，请访问： 
+http://www.openintents.org
+
+
+
+可以翻译成您的语言： 
+https://translations.launchpad.net/openintents/trunk
+
+功能 
+* Set a countdown by choosing a duration or a date.
+* Be notified by vibration or any sound of your choice. 
+* Have an unlimited number of timers running at the same time. 
+* Save your countdowns and give them names to reuse at later times. 
+* Modify countdowns, even while they are still running
+
+Available extensions for "OI Countdown":  
+* Launch applications through Android shortcuts
+* Use OI About to show license information
+
+关键字： 
+* countdown, timer, alert
+* OI, OpenIntents, Open Intents
+
+国际版本： 
+
+
+
+Search strings for Market: 

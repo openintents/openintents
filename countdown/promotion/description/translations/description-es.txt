@@ -1,0 +1,41 @@
+
+
+OI Countdown is a helpful timer to increase your productivity and plan your day.  It allows you to set a variety of different actions to notify you at the end of a timer.  Fully customize all your timers, with no limit on how many you can have running or saved.  
+
+Esta aplicación no tiene anuncios y no requiere permisos de internet. 
+
+
+
+
+
+El código fuente de esta aplicación libre y de código abierto está disponible en: 
+http://code.google.com/p/openintents
+
+Para la lista completa de cambios y la lista de preguntas frecuentes, por favor visite: 
+http://www.openintents.org
+
+
+
+Usted puede ayudar a mejorar la traducción de su idioma en Launchpad: 
+https://translations.launchpad.net/openintents/trunk
+
+Características: 
+* Set a countdown by choosing a duration or a date.
+* Be notified by vibration or any sound of your choice. 
+* Have an unlimited number of timers running at the same time. 
+* Save your countdowns and give them names to reuse at later times. 
+* Modify countdowns, even while they are still running
+
+Available extensions for "OI Countdown":  
+* Launch applications through Android shortcuts
+* Use OI About to show license information
+
+Palabras clave: 
+* countdown, timer, alert
+* OI, OpenIntents, Open Intents
+
+Versiones internacionales: 
+
+
+
+Buscar en el Market: 
